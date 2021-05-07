@@ -45,7 +45,9 @@ export default function Home() {
 
       <div className={styles.news}>
         <div className={styles.article}>article</div>
-        <div className={styles.articleImage}>articleImage</div>
+        <div className={styles.articleImage}>
+          <Image src="/img/helseatlasbilde.jpg" height="175px" width="auto" />
+        </div>
         <div className={styles.news__title}>Aktuelt</div>
         <div className={styles.news__title_link}>SE FLERE NYHETER FRA SKDE</div>
       </div>

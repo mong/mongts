@@ -130,7 +130,7 @@
   display: grid;
   /* min-height: 100vh; */
   grid-template-columns: 1.5fr 1.5fr;
-  grid-template-rows: 0.2fr 1fr auto auto auto 0.5fr;
+  grid-template-rows: 104px 1fr auto auto auto 0.5fr;
   gap: 0px 0px;
   grid-template-areas:
     "header header"
@@ -198,6 +198,7 @@
 .buttons {
   grid-area: buttons;
   background-color: #f2f2f2;
+  padding: 64px 100px;
 }
 
 .news {
@@ -210,6 +211,7 @@
     "article articleImage";
   grid-area: news;
   height: 250px;
+  padding: 64px 100px;
 }
 
 .article {
