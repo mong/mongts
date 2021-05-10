@@ -36,28 +36,87 @@ export default function Home() {
         <div className={styles.banner__article}>article</div>
       </div>
 
-      <div className={styles.buttons}>Buttons</div>
+      <div className={styles.buttons}>
+        <h2>Resultater</h2>
+        <div className={styles.block_buttons}>
+          <div className={styles.block_button}>
+            <a href="https://www.kvalitetsregistre.no/">Kvalitetsregistre</a>
+          </div>
+
+          <div className={styles.block_button}>
+            <a href="https://helseatlas.no/">Helseatlas</a>
+          </div>
+
+          <div className={styles.block_button}>
+            <a href="https://helse-nord.no/skde/pasientstrommer">
+              Pasientstrømmer
+            </a>
+          </div>
+
+          {/* <div className={styles.block_button}>
+            <a href="/regelverk">Regelverk</a>
+          </div>
+
+          <div className={styles.block_button}>
+            <a href="/registerdrift">Registerdrift</a>
+          </div>
+
+          <div className={styles.block_button}>
+            <a href="/alt-innhold">Alt innhold</a>
+          </div> */}
+        </div>
+      </div>
 
       <div className={styles.video}>
         <div className={styles.video__article}>videoArticle</div>
         <div className={styles.video__bg}></div>
       </div>
 
-      <div className={styles.news}>
-        <div className={styles.article}>article</div>
-        <div className={styles.articleImage}>
-          <Image src="/img/helseatlasbilde.jpg" height="175px" width="auto" />
+      <div className={styles.news_section}>
+        <div className={styles.news_section_title}>
+          <h2>Aktuelt</h2>
         </div>
-        <div className={styles.news__title}>Aktuelt</div>
-        <div className={styles.news__title_link}>SE FLERE NYHETER FRA SKDE</div>
+        <div className={styles.news_section_title__link}>
+          <a href="#">Se flere nyheter fra skde</a>
+        </div>
+
+        {/* latest article  */}
+        <div className={styles.news_section_article}>
+          <h3>Article Title</h3>
+          <p>
+            Senter for klinisk dokumentasjon og evaluering (SKDE) jobber med å
+            kartlegge og synliggjøre geografiske ulikheter i
+            spesialisthelsetjenesten.
+          </p>
+          <a href="#">Les mer</a>
+        </div>
+        <div className={styles.news_article__image}>
+          <Image src="/img/helseatlasbilde.jpg" height="300" width="500" />
+        </div>
       </div>
 
       <div className={styles.footer}>
         <div className={styles.footer__logo}>
           <Image src="/img/logos/SKDE_hvit_lys.png" height="40" width="99" />
         </div>
-        <div className={styles.footer__contact}>contact</div>
-        <div className={styles.footer__social}>social</div>
+        <div className={styles.footer__contact}>
+          <p>
+            <strong>Telefon: </strong>
+            <a href="tel:77 75 58 00">77 75 58 00</a>
+            <br />
+            <strong>E-post:</strong>{" "}
+            <a href="mailto:servicemiljoet@skde.no">servicemiljoet@skde.no</a>
+          </p>
+        </div>
+        <div className={styles.footer__social}>
+          <a href="https://www.facebook.com/medisinskekvalitetsregistre">
+            Følg oss på Facebook
+          </a>
+          <a href="https://helse-nord.no/skde/kontakt-skde">Kontakt</a>
+          <a href="https://helse-nord.no/om-nettstedet/personvern">
+            Personvern
+          </a>
+        </div>
 
         <div className={styles.footer__partner_l}>
           <Image

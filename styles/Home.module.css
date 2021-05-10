@@ -159,7 +159,7 @@
   grid-area: header__links;
   /* display: inline; */
   /* position: relative; */
-  font-size: 14px;
+  font-size: 0.9rem;
   margin-top: 0.5em;
   text-align: end;
 }
@@ -200,34 +200,113 @@
   background-color: #f2f2f2;
   padding: 64px 100px;
 }
+.buttons .block_buttons {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+.buttons .block_buttons .block_button {
+  margin-right: 8px;
+  margin-bottom: 8px;
+  width: 32%;
+}
 
-.news {
+.block_button a {
+  cursor: pointer;
+  position: relative;
+  display: block;
+  font-size: 1.4rem;
+  text-decoration: none;
+  padding: 5em 1em 1em;
+  background-color: #fff;
+  background-image: url(../public/img/circle-green-light-cut.svg);
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+  background-size: 110px 110px;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.block_button a::after {
+  right: 2em;
+  top: 2.2em;
+  font-size: 0.9rem;
+  content: "";
+  display: block;
+  height: 20px;
+  width: 30px;
+  background-image: url(../public/img/arrow_small.svg);
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+  position: absolute;
+}
+
+.block_button a:hover {
+  color: #fff;
+  background-color: #00263d;
+}
+.block_button a:hover:after {
+  background-image: url(../public/img/arrow_small_white.svg);
+}
+
+.news_section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1.5fr;
-  gap: 5px 5px;
+  grid-template-rows: 64px min-content;
+  gap: 0px;
   grid-template-areas:
-    "news__title news__title_link"
-    "article articleImage";
+    "news_section_title news_section_title__link"
+    "article article_image";
   grid-area: news;
-  height: 250px;
+  height: auto;
   padding: 64px 100px;
 }
 
-.article {
+.news_section_title {
+  grid-area: news_section_title;
+}
+
+.news_section_title__link {
+  grid-area: news_section_title__link;
+  box-sizing: border-box;
+  display: block;
+  text-align: right;
+}
+
+.news_section_title__link a {
+  background: url(../public/img/arrow_small.svg) 100% 0 no-repeat;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding-right: 2em;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.news_section_article {
   grid-area: article;
 }
-
-.articleImage {
-  grid-area: articleImage;
+.news_section_article h3 {
+  font-size: 1.5em;
+  font-weight: 400;
+}
+.news_section_article p {
+  padding: 0 64px 32px 0;
+}
+.news_section_article a {
+  color: #fff;
+  background: #00263d;
+  padding: 1.5em 5em;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
-.news__title {
-  grid-area: news__title;
-}
-
-.news__title_link {
-  grid-area: news__title_link;
+.news_section_article__image {
+  grid-area: article_image;
+  text-align: end;
 }
 
 .footer {
@@ -254,12 +333,46 @@
   grid-area: footer__contact;
   border-bottom: 1px solid #27485b;
 }
+.footer__contact p {
+  -webkit-text-size-adjust: 100%;
+  font-family: Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  color: #fff;
+  line-height: 1.5em;
+  box-sizing: border-box;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 0;
+}
+.footer__contact p a {
+  -webkit-text-size-adjust: 100%;
+  font-family: Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5em;
+  box-sizing: border-box;
+  background-color: transparent;
+  color: #7ebec7;
+  text-decoration: none;
+}
 
 .footer__social {
   grid-area: footer__social;
   border-bottom: 1px solid #27485b;
 }
-
+.footer__social a {
+  -webkit-text-size-adjust: 100%;
+  font-family: Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  list-style: none outside;
+  box-sizing: border-box;
+  background-color: transparent;
+  display: block;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s;
+  text-decoration: none;
+}
 .footer__partner_l {
   grid-area: footer__partner_l;
   text-align: left;
