@@ -32,8 +32,17 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={styles.banner}>
-        <div className={styles.banner__article}>article</div>
+      <div className={styles.banner_section}>
+        <div className={styles.banner_section_article}>
+          <h2>Kvalitet og forbruk i helsetjenesten</h2>
+          <p>
+            Senter for klinisk dokumentasjon og evaluering (SKDE) jobber med å
+            kartlegge og synliggjøre geografiske ulikheter i
+            spesialisthelsetjenester. Målet er å bidra til likeverdige
+            helsetjenester av god kvalitet uansett hvor pasientene bor.
+          </p>
+          <a href="#">Les mer om SKDE</a>
+        </div>
       </div>
 
       <div className={styles.buttons}>
@@ -67,9 +76,16 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={styles.video}>
-        <div className={styles.video__article}>videoArticle</div>
-        <div className={styles.video__bg}></div>
+      <div className={styles.video_section}>
+        <div className={styles.video_section__article}>
+          <h3>Tittel her om demovideo</h3>
+          <p>
+            Her kommer det en tekst som forteller om interaktive løsninger og om
+            demo-videoen på andre siden. Her kommer det en tekst som forteller
+            om interaktive løsninger og om demo-videoen på andre siden.
+          </p>
+        </div>
+        <div className={styles.video_section__background}></div>
       </div>
 
       <div className={styles.news_section}>
@@ -82,11 +98,10 @@ export default function Home() {
 
         {/* latest article  */}
         <div className={styles.news_section_article}>
-          <h3>Article Title</h3>
+          <h3>Nytt helseatlas</h3>
           <p>
-            Senter for klinisk dokumentasjon og evaluering (SKDE) jobber med å
-            kartlegge og synliggjøre geografiske ulikheter i
-            spesialisthelsetjenesten.
+            Nytt helseatlas lanseres tirsdag 11.juni SKDE arrangerer webinar fra
+            10-13 i forbindelse med lanseringen.
           </p>
           <a href="#">Les mer</a>
         </div>
