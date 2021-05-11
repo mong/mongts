@@ -1,10 +1,27 @@
-import Head from "next/head";
+import matter from "gray-matter";
+import { GetStaticProps } from "next";
+import renderToString from "next-mdx-remote/render-to-string";
+import { MdxRemote } from "next-mdx-remote/types";
 import Image from "next/image";
 import Link from "next/link";
+import { join } from "path";
 import styles from "../styles/Home.module.css";
-import News from "./news/[slug]";
+import fs from "fs";
 
-export default function Home() {
+interface MarkdownFile {
+  title: string;
+  ingress: string;
+  date: string;
+  thumbnail?: string;
+  slug: string;
+}
+
+interface Props {
+  latestNews: MarkdownFile;
+}
+
+export default function Home({ latestNews }: Props) {
+  console.log(latestNews.title);
   return (
     <div className={styles.grid_container}>
       <div className={styles.header}>
@@ -100,13 +117,10 @@ export default function Home() {
 
         {/* latest article  */}
         <div className={styles.news_section_article}>
-          <h3>Nytt helseatlas</h3>
-          <p>
-            Nytt helseatlas lanseres tirsdag 11.juni SKDE arrangerer webinar fra
-            10-13 i forbindelse med lanseringen.
-          </p>
+          <h3>{latestNews.title}</h3>
+          <p>{latestNews.ingress}</p>
 
-          <Link href="#">
+          <Link href={`/news/${latestNews.slug}`} prefetch={true}>
             <a>Les mer</a>
           </Link>
         </div>
@@ -167,3 +181,25 @@ export default function Home() {
     </div>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const NEWS_DIR = join(process.cwd(), "_posts/news");
+  const newsArticles = fs.readdirSync(NEWS_DIR).map((slug) => {
+    const fullPath = join(NEWS_DIR, slug);
+    const file = fs.readFileSync(fullPath);
+    const { content, data } = matter(file);
+    return { content, data, slug: slug.replace(/.md?$/, "") };
+  });
+
+  newsArticles.sort((a, b) => b.data.date - a.data.date);
+  const latestNewsArticle = newsArticles[0];
+  return {
+    props: {
+      latestNews: {
+        ...latestNewsArticle.data,
+        date: latestNewsArticle.data.date.toString(),
+        slug: latestNewsArticle.slug,
+      },
+    },
+  };
+};
