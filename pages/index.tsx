@@ -21,7 +21,6 @@ interface Props {
 }
 
 export default function Home({ latestNews }: Props) {
-  console.log(latestNews.title);
   return (
     <div className={styles.grid_container}>
       <div className={styles.header}>
@@ -120,12 +119,12 @@ export default function Home({ latestNews }: Props) {
           <h3>{latestNews.title}</h3>
           <p>{latestNews.ingress}</p>
 
-          <Link href={`/news/${latestNews.slug}`} prefetch={true}>
+          <Link href={`/news/${latestNews.slug}`}>
             <a>Les mer</a>
           </Link>
         </div>
         <div className={styles.news_article__image}>
-          <Image src="/img/helseatlasbilde.jpg" height="300" width="500" />
+          <Image src={`/${latestNews.thumbnail}`} height="300" width="500" />
         </div>
       </div>
 
