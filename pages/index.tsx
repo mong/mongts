@@ -2,13 +2,14 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
+import News from "./news/[slug]";
 
 export default function Home() {
   return (
     <div className={styles.grid_container}>
       <div className={styles.header}>
         <div className={styles.header__logo}>
-          <Link href="/" rel="home">
+          <Link href="/">
             <a rel="home">
               <Image
                 src="/img/logos/SKDE_sort.png"
@@ -23,7 +24,7 @@ export default function Home() {
           <Link href="#">
             <a>Kontakt</a>
           </Link>
-          <div className={styles.fsz_helper} style={{ display: "inline" }}>
+          <div className={styles.fsz_helper}>
             Tekststørrelse A+
             <div className={styles.fsz_helper__container}>
               ENDRE SKRIFTSTØRRELSE
@@ -104,6 +105,7 @@ export default function Home() {
             Nytt helseatlas lanseres tirsdag 11.juni SKDE arrangerer webinar fra
             10-13 i forbindelse med lanseringen.
           </p>
+
           <Link href="#">
             <a>Les mer</a>
           </Link>
