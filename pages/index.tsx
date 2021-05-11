@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -7,17 +8,21 @@ export default function Home() {
     <div className={styles.grid_container}>
       <div className={styles.header}>
         <div className={styles.header__logo}>
-          <a href="index.html" rel="home">
-            <Image
-              src="/img/logos/SKDE_sort.png"
-              alt="Hjem"
-              width={96}
-              height={39}
-            />
-          </a>
+          <Link href="/" rel="home">
+            <a rel="home">
+              <Image
+                src="/img/logos/SKDE_sort.png"
+                alt="Hjem"
+                width={96}
+                height={39}
+              />
+            </a>
+          </Link>
         </div>
         <div className={styles.header__links}>
-          <a href="#">Kontakt</a>
+          <Link href="#">
+            <a>Kontakt</a>
+          </Link>
           <div className={styles.fsz_helper} style={{ display: "inline" }}>
             Tekststørrelse A+
             <div className={styles.fsz_helper__container}>
@@ -41,7 +46,9 @@ export default function Home() {
             spesialisthelsetjenester. Målet er å bidra til likeverdige
             helsetjenester av god kvalitet uansett hvor pasientene bor.
           </p>
-          <a href="#">Les mer om SKDE</a>
+          <Link href="#">
+            <a>Les mer om SKDE</a>
+          </Link>
         </div>
       </div>
 
@@ -49,30 +56,22 @@ export default function Home() {
         <h2>Resultater</h2>
         <div className={styles.block_buttons}>
           <div className={styles.block_button}>
-            <a href="https://www.kvalitetsregistre.no/">Kvalitetsregistre</a>
+            <Link href="https://www.kvalitetsregistre.no/">
+              <a>Kvalitetsregistre</a>
+            </Link>
           </div>
 
           <div className={styles.block_button}>
-            <a href="https://helseatlas.no/">Helseatlas</a>
+            <Link href="https://helseatlas.no/">
+              <a>Helseatlas</a>
+            </Link>
           </div>
 
           <div className={styles.block_button}>
-            <a href="https://helse-nord.no/skde/pasientstrommer">
-              Pasientstrømmer
-            </a>
+            <Link href="https://helse-nord.no/skde/pasientstrommer">
+              <a>Pasientstrømmer</a>
+            </Link>
           </div>
-
-          {/* <div className={styles.block_button}>
-            <a href="/regelverk">Regelverk</a>
-          </div>
-
-          <div className={styles.block_button}>
-            <a href="/registerdrift">Registerdrift</a>
-          </div>
-
-          <div className={styles.block_button}>
-            <a href="/alt-innhold">Alt innhold</a>
-          </div> */}
         </div>
       </div>
 
@@ -93,7 +92,9 @@ export default function Home() {
           <h2>Aktuelt</h2>
         </div>
         <div className={styles.news_section_title__link}>
-          <a href="#">Se flere nyheter fra skde</a>
+          <Link href="#">
+            <a>Se flere nyheter fra skde</a>
+          </Link>
         </div>
 
         {/* latest article  */}
@@ -103,7 +104,9 @@ export default function Home() {
             Nytt helseatlas lanseres tirsdag 11.juni SKDE arrangerer webinar fra
             10-13 i forbindelse med lanseringen.
           </p>
-          <a href="#">Les mer</a>
+          <Link href="#">
+            <a>Les mer</a>
+          </Link>
         </div>
         <div className={styles.news_article__image}>
           <Image src="/img/helseatlasbilde.jpg" height="300" width="500" />
@@ -120,17 +123,21 @@ export default function Home() {
             <a href="tel:77 75 58 00">77 75 58 00</a>
             <br />
             <strong>E-post:</strong>{" "}
-            <a href="mailto:servicemiljoet@skde.no">servicemiljoet@skde.no</a>
+            <Link href="mailto:servicemiljoet@skde.no">
+              <a>servicemiljoet@skde.no</a>
+            </Link>
           </p>
         </div>
         <div className={styles.footer__social}>
           <a href="https://www.facebook.com/medisinskekvalitetsregistre">
             Følg oss på Facebook
           </a>
-          <a href="https://helse-nord.no/skde/kontakt-skde">Kontakt</a>
-          <a href="https://helse-nord.no/om-nettstedet/personvern">
-            Personvern
-          </a>
+          <Link href="https://helse-nord.no/skde/kontakt-skde">
+            <a>Kontakt</a>
+          </Link>
+          <Link href="https://helse-nord.no/om-nettstedet/personvern">
+            <a>Personvern</a>
+          </Link>
         </div>
 
         <div className={styles.footer__partner_l}>

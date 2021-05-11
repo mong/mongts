@@ -243,11 +243,13 @@
   display: flex;
   flex-wrap: wrap;
   position: relative;
+  align-items: center;
 }
 .buttons .block_buttons .block_button {
   margin-right: 8px;
   margin-bottom: 8px;
   width: 32%;
+  min-width: 225px;
 }
 
 .block_button a {
@@ -346,6 +348,7 @@
 }
 .news_section_article {
   grid-area: article;
+  min-width: 250px;
 }
 
 .news_section_article p {
