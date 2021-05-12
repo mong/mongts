@@ -23,16 +23,18 @@ const Box = () => {
 const News = ({ source, frontMatter }: Props) => {
   const content = hydrate(source, { components: { Box } });
   return (
-    <div style={{ padding: "64px" }}>
-      <h2>News</h2>
-      <p style={{ padding: "32px 0", fontWeight: "bold" }}>
-        {frontMatter.ingress}
-      </p>
-      <div style={{ width: "100%", display: "flex" }}>
-        <div style={{ width: "50%" }}>
-          <p>{content}</p>
+    <div>
+      <div style={{ padding: "64px", textAlign: "left" }}>
+        <h2>News</h2>
+        <p style={{ padding: "32px 0", fontWeight: "bold" }}>
+          {frontMatter.ingress}
+        </p>
+        <div style={{ width: "100%", display: "flex" }}>
+          <div style={{ width: "50%" }}>
+            <p>{content}</p>
+          </div>
+          <Image src="/img/helseatlasbilde.jpg" height="300" width="500" />
         </div>
-        <Image src="/img/helseatlasbilde.jpg" height="300" width="500" />
       </div>
     </div>
   );

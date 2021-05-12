@@ -23,20 +23,18 @@ interface Props {
 export default function Home({ latestNews }: Props) {
   return (
     <Layout>
-      <div className={`${styles.banner_section} ${styles.fullBleed}`}>
-        <div className={styles.content_container}>
-          <div className={styles.banner_section_article}>
-            <h2>Kvalitet og forbruk i helsetjenesten</h2>
-            <p>
-              Senter for klinisk dokumentasjon og evaluering (SKDE) jobber med å
-              kartlegge og synliggjøre geografiske ulikheter i
-              spesialisthelsetjenester. Målet er å bidra til likeverdige
-              helsetjenester av god kvalitet uansett hvor pasientene bor.
-            </p>
-            <Link href="#">
-              <a>Les mer om SKDE</a>
-            </Link>
-          </div>
+      <div className={styles.banner_section}>
+        <div className={styles.banner_section_article}>
+          <h2>Kvalitet og forbruk i helsetjenesten</h2>
+          <p>
+            Senter for klinisk dokumentasjon og evaluering (SKDE) jobber med å
+            kartlegge og synliggjøre geografiske ulikheter i
+            spesialisthelsetjenester. Målet er å bidra til likeverdige
+            helsetjenester av god kvalitet uansett hvor pasientene bor.
+          </p>
+          <Link href="#">
+            <a>Les mer om SKDE</a>
+          </Link>
         </div>
       </div>
 
