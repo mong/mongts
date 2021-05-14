@@ -129,21 +129,6 @@
   text-align: center;
   width: 100%;
 }
-.grid_container {
-  background-color: #ffffff;
-  display: inline-grid;
-  grid-template-columns: auto 0.5fr 0.5fr auto;
-  grid-template-rows: 104px repeat(auto);
-  gap: 0px 0px;
-  grid-template-areas:
-    "header header header header"
-    "banner_section banner_section banner_section banner_section"
-    "buttons buttons buttons buttons"
-    "video video video video "
-    "news news news news"
-    "footer footer footer footer";
-  width: 100%;
-}
 
 /* ==================================== Refactored styles =================================*/
 .grid_wrapper {
