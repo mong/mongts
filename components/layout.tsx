@@ -30,52 +30,49 @@ export default function Layout({
           content="SKDE (Senter for klinisk dokumentasjon og evaluering)&nbsp;er et nasjonalt miljø innen arbeidet med opprettelse og drift av kliniske kvalitetsregistre. Senteret er lokalisert til Universitetssykehuset i Nord-Norge og eies av Helse Nord RHF."
         ></meta>
       </Head>
-      <div className={styles.content_container}>
-        <div className={styles.grid_container}>
-          <div className={styles.header}>
-            <div className={styles.header__logo}>
-              <Link href="/">
-                <a rel="home">
-                  <Image
-                    src="/img/logos/SKDE_sort.png"
-                    alt="Hjem"
-                    width={96}
-                    height={39}
-                  />
-                </a>
-              </Link>
-            </div>
-            <div className={styles.header__links}>
-              <Link href="#">
-                <a>Kontakt</a>
-              </Link>
-              <div className={styles.fsz_helper}>
-                Tekststørrelse A+
-                <div className={styles.fsz_helper__container}>
-                  ENDRE SKRIFTSTØRRELSE
-                  <br />
-                  Hold Ctrl-tasten nede.
-                  <br />
-                  Trykk på + for å forstørre eller - for å forminske, eventuelt
-                  scroll med hjulet på musen.
-                </div>
+      <div className={styles.grid_wrapper}>
+        <header className={styles.header_container}>
+          <div className={styles.header_logo}>
+            <Link href="/">
+              <a rel="home">
+                <Image
+                  src="/img/logos/SKDE_sort.png"
+                  alt="Hjem"
+                  width={96}
+                  height={39}
+                />
+              </a>
+            </Link>
+          </div>
+          <div className={styles.header_links}>
+            <Link href="#">
+              <a>Kontakt</a>
+            </Link>
+            <div className={styles.fsz_helper}>
+              Tekststørrelse A+
+              <div className={styles.fsz_helper__container}>
+                ENDRE SKRIFTSTØRRELSE
+                <br />
+                Hold Ctrl-tasten nede.
+                <br />
+                Trykk på + for å forstørre eller - for å forminske, eventuelt
+                scroll med hjulet på musen.
               </div>
             </div>
           </div>
+        </header>
+        {page && (
           <div className={styles.breadcrumb}>
-            {page && (
-              <ol>
-                <li>SKDE</li>
-                <li>{page}</li>
-              </ol>
-            )}
+            <ol>
+              <li>SKDE</li>
+              <li>{page}</li>
+            </ol>
           </div>
-
-          {children}
-
-          <div className={styles.footer}>
-            {/* {`${styles.footer} ${styles.fullBleed}`}> */}
-            <div className={styles.footer__logo}>
+        )}
+        {children}
+        <footer className={`${styles.full_bleed} ${styles.footer_container}`}>
+          <div className={styles.footer__top}>
+            <div>
               <Image
                 src="/img/logos/SKDE_hvit_lys.png"
                 height="40"
@@ -83,22 +80,20 @@ export default function Layout({
                 alt="SKDE logo"
               />
             </div>
-            <div className={styles.footer__contact}>
-              <p>
-                <strong>Telefon: </strong>
-                <a href="tel:77 75 58 00">77 75 58 00</a>
-                <br />
-                <strong>E-post: </strong>
-                <Link href="mailto:servicemiljoet@skde.no">
-                  <a>servicemiljoet@skde.no</a>
-                </Link>
-                <br />
-                <br />
-                <strong>Webredaktør: </strong>
-                <Link href="mailto:webmaster@skde.no">
-                  <a>webmaster@skde.no</a>
-                </Link>
-              </p>
+            <div>
+              <strong>Telefon: </strong>
+              <a href="tel:77 75 58 00">77 75 58 00</a>
+              <br />
+              <strong>E-post: </strong>
+              <Link href="mailto:servicemiljoet@skde.no">
+                <a>servicemiljoet@skde.no</a>
+              </Link>
+              <br />
+              <br />
+              <strong>Webredaktør: </strong>
+              <Link href="mailto:webmaster@skde.no">
+                <a>webmaster@skde.no</a>
+              </Link>
             </div>
             <div className={styles.footer__social}>
               <Link href="https://www.facebook.com/medisinskekvalitetsregistre">
@@ -113,7 +108,8 @@ export default function Layout({
                 <a title="link til personvern">Personvern</a>
               </Link>
             </div>
-
+          </div>
+          <div className={styles.footer__bottom}>
             <div className={styles.footer__partner_l}>
               <Link href="http://www.helse-nord.no/">
                 <a title="Link til Helse Nord">
@@ -151,7 +147,7 @@ export default function Layout({
               </Link>
             </div>
           </div>
-        </div>
+        </footer>
       </div>
     </>
   );
