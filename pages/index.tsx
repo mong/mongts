@@ -23,23 +23,24 @@ interface Props {
 export default function Home({ latestNews }: Props) {
   return (
     <Layout>
-      <div className={styles.banner_section}>
-        <div className={styles.banner_section_article}>
-          <h2>Kvalitet og forbruk i helsetjenesten</h2>
-          <p>
-            Senter for klinisk dokumentasjon og evaluering (SKDE) jobber med å
-            kartlegge og synliggjøre geografiske ulikheter i
-            spesialisthelsetjenester. Målet er å bidra til likeverdige
-            helsetjenester av god kvalitet uansett hvor pasientene bor.
-          </p>
-          <Link href="#">
-            <a>Les mer om SKDE</a>
-          </Link>
+      <div className={styles.full_bleed}>
+        <div className={styles.banner_article}>
+          <div className={styles.banner_article__content}>
+            <h2>Kvalitet og forbruk i helsetjenesten</h2>
+            <p>
+              Senter for klinisk dokumentasjon og evaluering (SKDE) jobber med å
+              kartlegge og synliggjøre geografiske ulikheter i
+              spesialisthelsetjenester. Målet er å bidra til likeverdige
+              helsetjenester av god kvalitet uansett hvor pasientene bor.
+            </p>
+            <Link href="#">
+              <a>Les mer om SKDE</a>
+            </Link>
+          </div>
         </div>
       </div>
-
-      <div className={styles.buttons}>
-        <div className={styles.content_container}>
+      <div className={`${styles.full_bleed} ${styles.buttons_container}`}>
+        <div className={`${styles.buttons}`}>
           <h2>Resultater</h2>
           <div className={styles.block_buttons}>
             <div className={styles.block_button}>
@@ -62,17 +63,21 @@ export default function Home({ latestNews }: Props) {
           </div>
         </div>
       </div>
-
-      <div className={styles.video_section}>
-        <div className={styles.video_section__article}>
-          <h3>Tittel her om demovideo</h3>
-          <p>
-            Her kommer det en tekst som forteller om interaktive løsninger og om
-            demo-videoen på andre siden. Her kommer det en tekst som forteller
-            om interaktive løsninger og om demo-videoen på andre siden.
-          </p>
+      <div
+        className={`${styles.full_bleed} ${styles.video_article__container}`}
+      >
+        <div className={styles.video_article}>
+          <div className={styles.video_article__contents}>
+            <h3>Tittel her om demovideo</h3>
+            <p>
+              Her kommer det en tekst som forteller om interaktive løsninger og
+              om demo-videoen på andre siden. Her kommer det en tekst som
+              forteller om interaktive løsninger og om demo-videoen på andre
+              siden.
+            </p>
+          </div>
+          <div className={styles.video_article__background}></div>
         </div>
-        <div className={styles.video_section__background}></div>
       </div>
 
       <div className={styles.news_section}>
