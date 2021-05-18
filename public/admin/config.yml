@@ -10,8 +10,8 @@ collections:
     folder: "_posts/news"
     create: true
     fields:
-      - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Article Image", name: "thumbnail", widget: "image" }
+      - { label: "Title", name: "title", widget: "string" }
       - { label: "Ingress", name: "ingress", widget: "text" }
       - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Article Image", name: "thumbnail", widget: "image" }
