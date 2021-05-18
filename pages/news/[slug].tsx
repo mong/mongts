@@ -6,7 +6,9 @@ import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
 import { MdxRemote } from "next-mdx-remote/types";
 import Image from "next/image";
-
+import styles from "../../styles/Home.module.css";
+import newsStyles from "../../styles/News.module.css";
+import Layout from "../../components/layout";
 const NEWS_DIR = join(process.cwd(), "_posts/news");
 
 interface Props {
@@ -23,20 +25,25 @@ const Box = () => {
 const News = ({ source, frontMatter }: Props) => {
   const content = hydrate(source, { components: { Box } });
   return (
-    <div>
-      <div style={{ padding: "64px", textAlign: "left" }}>
-        <h2>News</h2>
-        <p style={{ padding: "32px 0", fontWeight: "bold" }}>
-          {frontMatter.ingress}
-        </p>
-        <div style={{ width: "100%", display: "flex" }}>
-          <div style={{ width: "50%" }}>
-            <p>{content}</p>
+    <Layout page={`Aktuelt / ${frontMatter.title}`}>
+      <div className={newsStyles.container}>
+        <div className={newsStyles.title}>
+          <div>
+            <h2>{frontMatter.title}</h2>
           </div>
-          <Image src="/img/helseatlasbilde.jpg" height="300" width="500" />
+        </div>
+        <div className={newsStyles.article}>
+          <div>
+            <p className={newsStyles.ingress}>{frontMatter.ingress}</p>
+            {content}
+          </div>
+
+          <div>
+            <Image src={`/${frontMatter.thumbnail}`} height="300" width="500" />
+          </div>
         </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

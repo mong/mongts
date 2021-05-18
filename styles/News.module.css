@@ -1,0 +1,39 @@
+.container {
+  background-color: #fff;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 0;
+  margin-bottom: 64px;
+}
+.title {
+  width: 100%;
+  min-width: 30rem;
+  display: flex;
+  flex-flow: row wrap;
+}
+.ingress {
+  width: 100%;
+  padding: 32px 0;
+  font-weight: bold;
+  font-style: italic;
+}
+.article {
+  width: 100%;
+  align-self: center;
+  justify-content: flex-start;
+  display: flex;
+  flex-flow: row wrap;
+}
+.article > div > p:first-of-type {
+  margin-block-start: 0;
+  padding: 0 0 32px 0;
+  padding-left: 0;
+  margin: 0;
+}
+
+.article > div {
+  min-width: 30rem;
+  width: 50%;
+  padding: 32px;
+  padding-left: 0;
+}

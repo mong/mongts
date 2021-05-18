@@ -5,6 +5,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { join } from "path";
 import styles from "../styles/Home.module.css";
+
 import fs from "fs";
 import Layout from "../components/layout";
 
@@ -80,32 +81,34 @@ export default function Home({ latestNews }: Props) {
         </div>
       </div>
 
-      <div className={styles.news_section}>
-        <div className={styles.news_section_title}>
-          <h2>Aktuelt</h2>
-        </div>
-        <div className={styles.news_section_title__link}>
-          <Link href="/news">
-            <a>Se flere nyheter fra skde</a>
-          </Link>
-        </div>
+      <div className={`${styles.full_bleed} ${styles.news_section__container}`}>
+        <div className={styles.news_section}>
+          <div className={styles.news_section_title}>
+            <h2>Aktuelt</h2>
+          </div>
+          <div className={styles.news_section_title__link}>
+            <Link href="/news">
+              <a>Se flere nyheter fra skde</a>
+            </Link>
+          </div>
 
-        {/* latest article  */}
-        <div className={styles.news_section_article}>
-          <h3>{latestNews.title}</h3>
-          <p>{latestNews.ingress}</p>
+          {/* latest article  */}
+          <div className={styles.news_section_article}>
+            <h3>{latestNews.title}</h3>
+            <p>{latestNews.ingress}</p>
 
-          <Link href={`/news/${latestNews.slug}`}>
-            <a>Les mer</a>
-          </Link>
-        </div>
-        <div className={styles.news_article__image}>
-          <Image
-            src={`/${latestNews.thumbnail}`}
-            height="300"
-            width="500"
-            alt={latestNews.title}
-          />
+            <Link href={`/news/${latestNews.slug}`}>
+              <a>Les mer</a>
+            </Link>
+          </div>
+          <div className={styles.news_section_article__image}>
+            <Image
+              src={`/${latestNews.thumbnail}`}
+              height="300px"
+              width="480px"
+              alt={latestNews.title}
+            />
+          </div>
         </div>
       </div>
     </Layout>
