@@ -9,6 +9,7 @@ import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 import newsStyles from "../../styles/News.module.css";
 import Layout from "../../components/layout";
+import { dateToString } from "../../helpers/dateHelpers";
 const NEWS_DIR = join(process.cwd(), "_posts/news");
 
 interface Props {
@@ -30,6 +31,7 @@ const News = ({ source, frontMatter }: Props) => {
         <div className={newsStyles.title}>
           <div>
             <h2>{frontMatter.title}</h2>
+            <small>{frontMatter.date}</small>
           </div>
         </div>
         <div className={newsStyles.article}>
@@ -56,7 +58,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { content, data } = matter(file);
   const source = await renderToString(content);
   return {
-    props: { source, frontMatter: { ...data, date: data.date.toString() } },
+    props: { source, frontMatter: { ...data, date: dateToString(data.date) } },
   };
 };
 

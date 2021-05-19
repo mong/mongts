@@ -1,14 +1,12 @@
+import fs from "fs";
+import matter from "gray-matter";
+import { GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Layout from "../../components/layout";
-import styles from "../../styles/Home.module.css";
-import { GetStaticProps, GetStaticPaths } from "next";
-import fs from "fs";
 import { join } from "path";
-import matter from "gray-matter";
-import renderToString from "next-mdx-remote/render-to-string";
-import hydrate from "next-mdx-remote/hydrate";
-import { MdxRemote } from "next-mdx-remote/types";
+import Layout from "../../components/layout";
+import { dateToString } from "../../helpers/dateHelpers";
+import styles from "../../styles/Home.module.css";
 const NEWS_DIR = join(process.cwd(), "_posts/news");
 
 interface Article {
@@ -22,14 +20,31 @@ interface Props {
 }
 
 const News = ({ articles }: Props) => {
-  console.log("props", articles);
+  if (articles.length < 1)
+    return (
+      <Layout page="Flere aktuelle artikler">
+        <div className={`${styles.full_bleed}`}>
+          {articles.length < 1 && (
+            <div className={styles.article_container}>
+              <h3>For tiden ingen aktuelle saker</h3>
+            </div>
+          )}
+        </div>
+      </Layout>
+    );
   return (
     <Layout page="Flere aktuelle artikler">
       <div className={`${styles.full_bleed}`}>
-        {articles.map((article) => (
+        {articles.length < 1 && (
           <div className={styles.article_container}>
+            <h3>For tiden ingen aktuelle saker</h3>
+          </div>
+        )}
+        {articles.map((article) => (
+          <div className={styles.article_container} key={article.slug}>
             <div className={styles.news_section_article}>
               <h3>{article.frontMatter.title}</h3>
+              <small>{article.frontMatter.date}</small>
               <p>{article.frontMatter.ingress}</p>
 
               <Link href={`/news/${article.slug}`}>
@@ -54,24 +69,29 @@ const News = ({ articles }: Props) => {
 export default News;
 
 export const getStaticProps: GetStaticProps = async ({}) => {
-  const articleSlugs = fs.readdirSync(NEWS_DIR).map((file) => ({
-    path: { slug: file.replace(/.md?$/, "") },
-  }));
-  const fullPaths = articleSlugs.map((article) =>
-    join(NEWS_DIR, `${article.path.slug}.md`)
-  );
-  const articles = fullPaths
-    .map((fp) => {
-      const f = fs.readFileSync(fp);
-      return matter(f);
-    })
-    .sort((a, b) => b.data.date - a.data.date)
-    .map((x) => {
-      const data = x.data;
-
+  const files = fs.readdirSync(NEWS_DIR, "utf-8");
+  const articles = files
+    .filter((fn) => fn.endsWith(".md"))
+    .map((fn) => {
+      const path = join(NEWS_DIR, fn);
+      const rawContent = fs.readFileSync(path, {
+        encoding: "utf-8",
+      });
+      const { data } = matter(rawContent);
+      const slug = fn.replace(/\.md$/, "");
       return {
-        frontMatter: { ...data, date: data.date.toString() },
-        slug: data.title.toString().toLowerCase().replace(/ /gi, "-"), //<<--replace with filename from above...
+        slug: slug,
+        frontMatter: data,
+      };
+    })
+    .sort((a, b) => b.frontMatter.date - a.frontMatter.date)
+    .map((article) => {
+      return {
+        ...article,
+        frontMatter: {
+          ...article.frontMatter,
+          date: dateToString(article.frontMatter.date),
+        },
       };
     });
 
