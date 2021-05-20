@@ -27,16 +27,13 @@ export default function Home({ latestNews }: Props) {
       <div className={styles.full_bleed}>
         <div className={styles.banner_article}>
           <div className={styles.banner_article__content}>
-            <h2>Kvalitet og forbruk i helsetjenesten</h2>
+            <h2>SKDE</h2>
             <p>
               Senter for klinisk dokumentasjon og evaluering (SKDE) jobber med å
               kartlegge og synliggjøre geografiske ulikheter i
               spesialisthelsetjenester. Målet er å bidra til likeverdige
               helsetjenester av god kvalitet uansett hvor pasientene bor.
             </p>
-            <Link href="#">
-              <a>Les mer om SKDE</a>
-            </Link>
           </div>
         </div>
       </div>
@@ -45,7 +42,7 @@ export default function Home({ latestNews }: Props) {
           <h2>Resultater</h2>
           <div className={styles.block_buttons}>
             <div className={styles.block_button}>
-              <Link href="https://www.kvalitetsregistre.no/">
+              <Link href="https://skde.org/kvalitetsregistre/">
                 <a>Kvalitetsregistre</a>
               </Link>
             </div>
@@ -61,6 +58,13 @@ export default function Home({ latestNews }: Props) {
                 <a>Pasientstrømmer</a>
               </Link>
             </div>
+            
+            <div className={styles.block_button}>
+              <Link href="https://helse-nord.no/skde">
+                <a>Om SKDE</a>
+              </Link>
+            </div>
+
           </div>
         </div>
       </div>

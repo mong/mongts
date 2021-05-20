@@ -100,10 +100,11 @@
   justify-content: center;
   height: 100%;
   width: 100%;
-  min-height: 700px;
+  min-height: 500px;
   background-image: url(../public/img/background-frontpage.jpg);
   background-size: cover;
   background-repeat: initial;
+  background-position: 0% 75%;
   position: relative;
   padding: 0 64px;
 }
@@ -155,7 +156,7 @@
 .buttons > .block_buttons > .block_button {
   margin-right: 8px;
   margin-bottom: 8px;
-  width: 32%;
+  width: 24%;
   min-width: 225px;
 }
 .block_button a {
@@ -297,6 +298,8 @@
   color: #f2f2f2;
   background-color: #00263d;
   padding: 64px;
+  align-content: center;
+  flex-direction: column;
 }
 .footer__top {
   display: flex;
