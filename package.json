@@ -1,12 +1,12 @@
 {
-  "name": "netlifycms-next",
+  "name": "mongts",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "npm run build && next export"
+    "export": "yarn run build && next export"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
