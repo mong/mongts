@@ -48,17 +48,6 @@ export default function Layout({
             <Link href="#">
               <a>Kontakt</a>
             </Link>
-            <div className={styles.fsz_helper}>
-              Tekststørrelse A+
-              <div className={styles.fsz_helper__container}>
-                ENDRE SKRIFTSTØRRELSE
-                <br />
-                Hold Ctrl-tasten nede.
-                <br />
-                Trykk på + for å forstørre eller - for å forminske, eventuelt
-                scroll med hjulet på musen.
-              </div>
-            </div>
           </div>
         </header>
         {page && (
@@ -85,10 +74,9 @@ export default function Layout({
               <a href="tel:77 75 58 00">77 75 58 00</a>
               <br />
               <strong>E-post: </strong>
-              <Link href="mailto:servicemiljoet@skde.no">
-                <a>servicemiljoet@skde.no</a>
+              <Link href="mailto:postmottak@helse-nord.no">
+                <a>postmottak@helse-nord.no</a>
               </Link>
-              <br />
               <br />
               <strong>Webredaktør: </strong>
               <Link href="mailto:webmaster@skde.no">
@@ -96,11 +84,6 @@ export default function Layout({
               </Link>
             </div>
             <div className={styles.footer__social}>
-              <Link href="https://www.facebook.com/medisinskekvalitetsregistre">
-                <a title="Link til kvalitetsregistre på facebook">
-                  Følg oss på Facebook
-                </a>
-              </Link>
               <Link href="https://helse-nord.no/skde/kontakt-skde">
                 <a title="Link til kontakt SKDE">Kontakt</a>
               </Link>
