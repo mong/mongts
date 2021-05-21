@@ -1,6 +1,5 @@
 import matter from "gray-matter";
 import { GetStaticProps } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import { join } from "path";
@@ -35,12 +34,6 @@ export default function Layout({
           <div className={styles.header_logo}>
             <Link href="/">
               <a rel="home">
-                <Image
-                  src="/img/logos/SKDE_sort.png"
-                  alt="Hjem"
-                  width={96}
-                  height={39}
-                />
               </a>
             </Link>
           </div>
@@ -62,12 +55,6 @@ export default function Layout({
         <footer className={`${styles.full_bleed} ${styles.footer_container}`}>
           <div className={styles.footer__top}>
             <div>
-              <Image
-                src="/img/logos/SKDE_hvit_lys.png"
-                height="40"
-                width="99"
-                alt="SKDE logo"
-              />
             </div>
             <div>
               <strong>Telefon: </strong>
@@ -96,36 +83,18 @@ export default function Layout({
             <div className={styles.footer__partner_l}>
               <Link href="http://www.helse-nord.no/">
                 <a title="Link til Helse Nord">
-                  <Image
-                    src="/img/logos/hf_nord-white.svg"
-                    height="40px"
-                    width="180px"
-                    alt="Helse Nord logo"
-                  />
                 </a>
               </Link>
             </div>
             <div className={styles.footer__partner_m}>
               <Link href="https://www.kvalitetsregistre.no/">
                 <a title="Link til Kvalitetsregistre">
-                  <Image
-                    src="/img/logos/NSM_logo_hvit.png"
-                    height="40px"
-                    width="359px"
-                    alt="NSM logo"
-                  />
                 </a>
               </Link>
             </div>
             <div className={styles.footer_partner_r}>
               <Link href="https://helseatlas.no/">
                 <a title="Link til Helseatlas">
-                  <Image
-                    src="/img/logos/Logo_atlas_hvit.png"
-                    height="40px"
-                    width="146px"
-                    alt="Helseatlas logo"
-                  />
                 </a>
               </Link>
             </div>

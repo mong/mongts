@@ -1,7 +1,6 @@
 import fs from "fs";
 import matter from "gray-matter";
 import { GetStaticProps } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { join } from "path";
 import Layout from "../../components/layout";
@@ -52,12 +51,6 @@ const News = ({ articles }: Props) => {
               </Link>
             </div>
             <div className={styles.news_section_article__image}>
-              <Image
-                src={`/${article.frontMatter.thumbnail}`}
-                height="300px"
-                width="480px"
-                alt={article.frontMatter.title}
-              />
             </div>
             <br></br>
           </div>
