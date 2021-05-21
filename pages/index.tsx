@@ -53,17 +53,17 @@ export default function Home({ latestNews }: Props) {
             </div>
 
             <div className={styles.block_button}>
-              <Link href="https://helse-nord.no/skde/pasientstrommer">
-                <a>Pasientstrømmer</a>
-              </Link>
-            </div>
-            
-            <div className={styles.block_button}>
               <Link href="https://helse-nord.no/skde">
                 <a>Om SKDE</a>
               </Link>
             </div>
 
+            <div className={styles.block_button}>
+              <Link href="https://helse-nord.no/skde/pasientstrommer">
+                <a>Pasientstrømmer</a>
+              </Link>
+            </div>
+            
           </div>
         </div>
       </div>
