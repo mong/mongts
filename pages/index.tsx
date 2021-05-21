@@ -1,5 +1,6 @@
 import matter from "gray-matter";
 import { GetStaticProps } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import Head from "next/head";
 import { join } from "path";
@@ -105,6 +106,12 @@ export default function Home({ latestNews }: Props) {
             </Link>
           </div>
           <div className={styles.news_section_article__image}>
+            <Image
+              src={`/${latestNews.thumbnail}`}
+              height="300px"
+              width="480px"
+              alt={latestNews.title}
+            />
           </div>
         </div>
       </div>

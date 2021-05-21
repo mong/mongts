@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
 import { MdxRemote } from "next-mdx-remote/types";
+import Image from "next/image";
 import styles from "../../styles/Home.module.css";
 import newsStyles from "../../styles/News.module.css";
 import Layout from "../../components/layout";
@@ -39,6 +40,9 @@ const News = ({ source, frontMatter }: Props) => {
             {content}
           </div>
 
+          <div>
+            <Image src={`/${frontMatter.thumbnail}`} height="300" width="500" />
+          </div>
         </div>
       </div>
     </Layout>
