@@ -17,7 +17,7 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
       - name: Build package
-        run: yarn run export
+        run: yarn install && yarn run export
       - name: Sync to S3 bucket
         if: github.event_name != 'pull_request'
         run: |
