@@ -1,14 +1,8 @@
 ---
-title: First post
-date: 2021-05-03T15:49:00.256Z
-thumbnail: img/116415144-6cfc2c00-a839-11eb-9f12-2c2c35aaaf19.jpg
-ingress: First post
+date: 2021-05-22T21:38:30.551Z
+title: Nytt Helseatlas
+ingress: Nytt helseatlas lanseres tirsdag 11. juni. SKDE arrangerer webinar fra
+  10 til 13 i forbindeles med lanseringen.
+thumbnail: img/helseatlasbilde.jpg
 ---
-
-Dette Er den første posten!
-
-**hei**
-
-<Box />
-
-## fdsgdfg
+Her står det mer om hva som vil skjer.
