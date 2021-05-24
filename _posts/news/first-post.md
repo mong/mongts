@@ -5,7 +5,7 @@ ingress: For å gjøre det enkelt har SKDE samlet relevante resultater fra
   medisinske kvalitetsregistre på ett sted. På nettsiden kan du velge det
   sykehuset du er interessert i, få en samlet oversikt og samtidig sammenligne
   med andre sykehus.
-thumbnail: https://helse-nord.no/PublishingImages/SKDE/Skjermbilde.PNG?RenditionID=3
+thumbnail: img/Skjermbilde.png
 ---
 ​I Norge er vi gode på å samle informasjon om helsetjenesten i ulike helseregistre. I de medisinske kvalitetsregistrene finnes informasjon om behandlingskvalitet som kan bidra til å forbedre helsetjenesten. 
 
