@@ -40,7 +40,7 @@ const News = ({ source, frontMatter }: Props) => {
           </div>
 
           <div>
-            <img src={`/${frontMatter.thumbnail}`} height="300" width="500" />
+            <img src={`/${frontMatter.thumbnail}`} width="500" />
           </div>
         </div>
       </div>
