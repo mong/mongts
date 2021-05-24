@@ -5,7 +5,7 @@ ingress: "Nasjonalt servicemiljø for medisinske kvalitetsregistre SKDE har
   arrangert et webinar i forbindelse med publisering av nye resultater fra de
   nasjonale medisinske kvalitetsregistrene. Opptak av webinaret er tilgjengelig
   her. "
-thumbnail: https://helse-nord.no/PublishingImages/SKDE/To%20personer%20ser%20p%C3%A5%20PC.jpg?RenditionID=3
+thumbnail: img/To personer ser på PC.jpg
 ---
 ​Nasjonalt servicemiljø og SKDE inviterer til webinar i forbindelse med publisering av nye resultater fra de nasjonale medisinske kvalitetsregistrene. Tidligere år har det blitt gjennomført et åpent arrangement i forbindelse med publiseringen, men som følge av koronasituasjonen ble markeringen i år gjennomført digitalt. 
 
