@@ -4,7 +4,7 @@ title: "Webinar: Helseatlas for kvalitet for nødvendige helsetjenester"
 ingress: "Mandag 18.januar ble Helseatlas for kvalitet i nødvendige
   helsetjenester lansert under et webinar arrangert av SKDE. Hele webinaret er
   tilgjengelig som opptak for de som ønsker å se det. "
-thumbnail: https://helse-nord.no/PublishingImages/SKDE/shutterstock_1548988871.jpg?RenditionID=3
+thumbnail: img/shutterstock_1548988871.jpg
 ---
 ​I Helseatlas for kvalitet i nødvendige helsetjenester sammenlignes kvaliteten på helsetjenester mellom de ulike helseforetakenes opptaksområder. Pasientens bosted er utgangspunkt for analysene, noe som gir mulighet for å belyse om pasienter med utvalgte alvorlige sykdommer får lik kvalitet i behandling, uavhengig av bosted. 
 
