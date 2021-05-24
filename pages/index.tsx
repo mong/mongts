@@ -108,7 +108,6 @@ export default function Home({ latestNews }: Props) {
           <div className={styles.news_section_article__image}>
             <Image
               src={`/${latestNews.thumbnail}`}
-              height="300px"
               width="480px"
               alt={latestNews.title}
             />
