@@ -26,7 +26,7 @@ export default function Home({ latestNews }: Props) {
       <div className={styles.full_bleed}>
         <div className={styles.banner_article}>
           <div className={styles.banner_article__content}>
-            <h2>SKDE</h2>
+            <h2>Kvalitet og forbruk i helsetjenesten</h2>
             <p>
               Senter for klinisk dokumentasjon og evaluering (SKDE) jobber med å
               kartlegge og synliggjøre geografiske ulikheter i
