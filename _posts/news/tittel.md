@@ -4,7 +4,7 @@ title: Nytt helseatlas viser store forskjeller i rusomsorg og psykisk helsevern
 ingress: Hvor i landet du bor avgjør hvilken behandling du får mot ruslidelser
   og psykiske plager. Et nytt helseatlas viser store forskjeller i behandlingen
   folk i Norge får mot disse lidelsene.
-thumbnail: https://helse-nord.no/PublishingImages/SKDE/Marte%20Bale%20helseatlas%202020%201.jpg?RenditionID=3
+thumbnail: img/Marte Bale helseatlas 2020 1.jpg
 ---
 ​Helseatlas for psykisk helsevern og rusbehandling inneholder mye informasjon om innbyggernes bruk - og variasjon i bruk - av psykisk helsevern, avtalespesialister i psykisk helsevern og tverrfaglig spesialisert behandling av ruslidelser. Det nye helseatlaset er nummer ni i rekka, og er det første som omhandler lidelser som ikke er somatiske (kroppslige).
 
