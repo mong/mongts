@@ -54,6 +54,7 @@ const News = ({ articles }: Props) => {
             <div className={styles.news_section_article__image}>
               <Image
                 src={`/${article.frontMatter.thumbnail}`}
+                height="300px"
                 width="480px"
                 alt={article.frontMatter.title}
               />
