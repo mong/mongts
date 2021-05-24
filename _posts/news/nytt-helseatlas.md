@@ -14,7 +14,3 @@ Helse- og omsorgsminister Bent Høie åpnet webinaret før det nye helseatlaset 
 
 [Se hele webinaret her
 ](https://www.tromsostreamingstudio.no/produksjon-v1/skde-webinar-kvalitetsatlas/)
-
-Spørsmål rettes til kommunikasjonssjef Vibeke Lund Pettersen<br>
-Epost: vibeke.lund.pettersen@helse-nord.no<br>
-Telefon: 91602381
