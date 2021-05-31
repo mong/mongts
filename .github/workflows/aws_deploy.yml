@@ -12,7 +12,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_DEFAULT_REGION: 'eu-west-1'
+      AWS_DEFAULT_REGION: "eu-west-1"
     steps:
       - name: Check out the repo
         uses: actions/checkout@v2
@@ -21,4 +21,4 @@ jobs:
       - name: Sync to S3 bucket
         if: github.event_name != 'pull_request'
         run: |
-          aws s3 sync out s3://prod-mongts --delete --cache-control "public, max-age=1, s-maxage=1"
+          aws s3 sync out s3://qa.skde.org --exclude "kvalitetsregistre/*" --delete --cache-control "public, max-age=1, s-maxage=1"
