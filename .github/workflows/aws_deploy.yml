@@ -21,5 +21,4 @@ jobs:
       - name: Sync to S3 bucket
         if: github.event_name != 'pull_request'
         run: |
-          npm install && npm run build
           aws s3 sync out s3://prod-mongts --delete --cache-control "public, max-age=1, s-maxage=1"
