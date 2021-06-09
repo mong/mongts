@@ -44,7 +44,7 @@ export default function Layout({
             </Link>
           </div>
           <div className={styles.header_links}>
-            <Link href="#">
+            <Link href="https://helse-nord.no/skde/kontakt-skde">
               <a>Kontakt</a>
             </Link>
           </div>
@@ -52,7 +52,7 @@ export default function Layout({
         {page && (
           <div className={styles.breadcrumb}>
             <ol>
-              <li>SKDE</li>
+              <li><Link href="/"><a>SKDE</a></Link></li>
               <li>{page}</li>
             </ol>
           </div>
