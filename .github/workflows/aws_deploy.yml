@@ -19,10 +19,11 @@ jobs:
       - name: Build package
         run: yarn install && yarn run export
       - name: Sync main to S3 bucket skde.org
-        if: github.branch == 'main'
+        if: github.ref == 'refs/heads/main'
         run: |
           aws s3 sync out s3://skde.org --exclude "kvalitetsregistre/*" --delete --cache-control "public, max-age=1, s-maxage=1"
+          aws s3 sync out s3://verify.skde.org --exclude "kvalitetsregistre/*" --delete --cache-control "public, max-age=1, s-maxage=1"
       - name: Sync develop to S3 bucket qa.skde.org
-        if: github.branch == 'develop'
+        if: github.ref == 'refs/heads/develop'
         run: |
           aws s3 sync out s3://qa.skde.org --exclude "kvalitetsregistre/*" --delete --cache-control "public, max-age=1, s-maxage=1"
