@@ -41,7 +41,7 @@ export default function Home({ latestNews }: Props) {
           <h2>Resultater</h2>
           <div className={styles.block_buttons}>
             <div className={styles.block_button}>
-              <Link href="https://qa.skde.org/kvalitetsregistre/">
+              <Link href="/kvalitetsregistre/">
                 <a>Kvalitetsregistre</a>
               </Link>
             </div>
