@@ -78,8 +78,8 @@ export default function Layout({
               </Link>
               <br />
               <strong>Webredaktør: </strong>
-              <Link href="mailto:webmaster@skde.no">
-                <a>webmaster@skde.no</a>
+              <Link href="mailto:barthold.vonen@helse-nord.no">
+                <a>Barthold Vonen</a>
               </Link>
             </div>
             <div className={styles.footer__social}>
