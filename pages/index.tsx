@@ -67,23 +67,6 @@ export default function Home({ latestNews }: Props) {
           </div>
         </div>
       </div>
-      <div
-        className={`${styles.full_bleed} ${styles.video_article__container}`}
-      >
-        <div className={styles.video_article}>
-          <div className={styles.video_article__contents}>
-            <h3>Tittel her om demovideo</h3>
-            <p>
-              Her kommer det en tekst som forteller om interaktive løsninger og
-              om demo-videoen på andre siden. Her kommer det en tekst som
-              forteller om interaktive løsninger og om demo-videoen på andre
-              siden.
-            </p>
-          </div>
-          <div className={styles.video_article__background}></div>
-        </div>
-      </div>
-
       <div className={`${styles.full_bleed} ${styles.news_section__container}`}>
         <div className={styles.news_section}>
           <div className={styles.news_section_title}>
