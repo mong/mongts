@@ -79,7 +79,7 @@ export default function Layout({
               <br />
               <strong>Webredaktør: </strong>
               <Link href="mailto:barthold.vonen@helse-nord.no">
-                <a>barthold.vonen@helse-nord.no</a>
+                <a>Barthold Vonen</a>
               </Link>
             </div>
             <div className={styles.footer__social}>
