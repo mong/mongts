@@ -1,10 +1,6 @@
-import matter from "gray-matter";
-import { GetStaticProps } from "next";
 import Link from "next/link";
 import Head from "next/head";
-import { join } from "path";
 import styles from "../styles/Home.module.css";
-import fs from "fs";
 
 interface Props {
   children: any;
@@ -30,7 +26,7 @@ export default function Layout({
         ></meta>
       </Head>
       <div className={styles.grid_wrapper}>
-        <header className={styles.header_container}>
+        <header className={`${styles.full_bleed} ${styles.header_container}`}>
           <div className={styles.header_logo}>
             <Link href="/">
               <a rel="home">
@@ -52,12 +48,16 @@ export default function Layout({
         {page && (
           <div className={styles.breadcrumb}>
             <ol>
-              <li><Link href="/"><a>SKDE</a></Link></li>
+              <li>
+                <Link href="/">
+                  <a>SKDE</a>
+                </Link>
+              </li>
               <li>{page}</li>
             </ol>
           </div>
         )}
-        {children}
+        {/* {children} */}
         <footer className={`${styles.full_bleed} ${styles.footer_container}`}>
           <div className={styles.footer__top}>
             <div>
