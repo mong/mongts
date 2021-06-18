@@ -10,19 +10,19 @@ Rapporten [«Ett år inn i koronapandemien – ivaretakelse av spesialisthelset
 
 Funn som vil bli diskutert er blant annet hvordan spesialisthelsetjenesten har håndtert psykisk helsevern, somatiske (fysiske) helsetjenester og en utfordrende bemanningssituasjon. Funnene vil bli presentert av representanter fra regionene. 
 
-## Nyttige funn
+### Nyttige funn
 
 – Alle helseregionene har bidratt i dette analysearbeidet, som er ledet av Senter for klinisk dokumentasjon og evaluering ([SKDE](https://www.skde.no/)). Denne rapporten gir oss svært nyttig informasjon om hvor vi leverer og hvor vi ikke leverer, sier administrerende direktør i Helse Nord, Cecilie Daae.
 
 Daae vil i webinaret diskutere planverk for beredskap, bemanningsutfordringer og hvorfor Helse Nord på noen områder skiller seg fra de andre regionene. Konstituert administrerende direktør i Helse Sør-Øst, Jan Frich, vil snakke om spesialisthelsetjenestens etterlevelse av sørge-for-ansvaret. Sørge-for-ansvaret er de regionale helseforetakenes oppdrag om å legge til rette for at pasientene og befolkningen får de spesialisthelsetjenestene de skal ha.
 
-## To utfordrende spørsmål
+### To utfordrende spørsmål
 
 Innleie av personell er en nasjonal utfordring som tydelig har vist seg i pandemien, og særlig i Helse Nord. Dette viser rapporten klart. For administrerende direktør i Helse Nord, Cecilie Daae, reiser dette funnet to spørsmål:
 
 – Rapporten avklarer at vi ikke har robust nok bemanning i en krise. Er vi da robuste nok i en normalsituasjon? Det andre spørsmålet er om det er solidarisk å hente personell fra land som også er i pandemi og avhengige av det samme personellet, sier Daae.
 
-## Avstand og reisetid betyr lite
+### Avstand og reisetid betyr lite
 
 Direktør ved Senter for klinisk dokumentasjon og evaluering, Barthold Vonen, ser fram til å få presentert analysene som de regionale helseforetakene har gjort sammen: 
 
