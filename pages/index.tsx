@@ -57,16 +57,17 @@ export default function Home({ latestNews }: Props) {
                 <a>Pasientstrømmer</a>
               </Link>
             </div>
-            
+
             <div className={styles.block_button}>
               <Link href="https://helse-nord.no/skde">
                 <a>Om SKDE</a>
               </Link>
             </div>
-
           </div>
         </div>
       </div>
+      {/*       
+
       <div className={`${styles.full_bleed} ${styles.news_section__container}`}>
         <div className={styles.news_section}>
           <div className={styles.news_section_title}>
@@ -78,7 +79,7 @@ export default function Home({ latestNews }: Props) {
             </Link>
           </div>
 
-          {/* latest article  */}
+          
           <div className={styles.news_section_article}>
             <h3>{latestNews.title}</h3>
             <p>{latestNews.ingress}</p>
@@ -95,7 +96,7 @@ export default function Home({ latestNews }: Props) {
             />
           </div>
         </div>
-      </div>
+      </div> */}
     </Layout>
   );
 }

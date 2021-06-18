@@ -26,7 +26,7 @@ export default function Layout({
         ></meta>
       </Head>
       <div className={styles.grid_wrapper}>
-        <header className={`${styles.full_bleed} ${styles.header_container}`}>
+        <header className={`${styles.header_container}`}>
           <div className={styles.header_logo}>
             <Link href="/">
               <a rel="home">
@@ -57,7 +57,7 @@ export default function Layout({
             </ol>
           </div>
         )}
-        {/* {children} */}
+        {children}
         <footer className={`${styles.full_bleed} ${styles.footer_container}`}>
           <div className={styles.footer__top}>
             <div>
