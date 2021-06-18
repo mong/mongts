@@ -33,33 +33,35 @@ const News = ({ articles }: Props) => {
     );
   return (
     <Layout page="Flere aktuelle artikler">
-      <div className={`${styles.full_bleed}`}>
-        {articles.length < 1 && (
-          <div className={styles.article_container}>
-            <h3>For tiden ingen aktuelle saker</h3>
-          </div>
-        )}
-        {articles.map((article) => (
-          <div className={styles.article_container} key={article.slug}>
-            <div className={styles.news_section_article}>
-              <h3>{article.frontMatter.title}</h3>
-              <small>{article.frontMatter.date}</small>
-              <p>{article.frontMatter.ingress}</p>
-
-              <Link href={`/news/${article.slug}`}>
-                <a>Les mer</a>
-              </Link>
+      <div>
+        <div className={`${styles.full_bleed} ${styles.article_container}`}>
+          {articles.length < 1 && (
+            <div className={styles.article_container}>
+              <h3>For tiden ingen aktuelle saker</h3>
             </div>
-            <div className={styles.news_section_article__image}>
-              <img
-                src={`/${article.frontMatter.thumbnail}`}
-                width="480px"
-                alt={article.frontMatter.title}
-              />
+          )}
+          {articles.map((article) => (
+            <div className={styles.article_container} key={article.slug}>
+              <div className={styles.news_section_article}>
+                <h3>{article.frontMatter.title}</h3>
+                <small>{article.frontMatter.date}</small>
+                <p>{article.frontMatter.ingress}</p>
+              </div>
+              <div className={styles.news_section_article__image}>
+                <img
+                  src={`/${article.frontMatter.thumbnail}`}
+                  width="100%"
+                  alt={article.frontMatter.title}
+                />
+              </div>
+              <div className={styles.news_section_article__button}>
+                <Link href={`/news/${article.slug}`}>
+                  <a>Les mer</a>
+                </Link>
+              </div>
             </div>
-            <br></br>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </Layout>
   );

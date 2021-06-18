@@ -66,7 +66,6 @@ export default function Home({ latestNews }: Props) {
           </div>
         </div>
       </div>
-      {/*       
 
       <div className={`${styles.full_bleed} ${styles.news_section__container}`}>
         <div className={styles.news_section}>
@@ -78,25 +77,24 @@ export default function Home({ latestNews }: Props) {
               <a>Se flere nyheter fra skde</a>
             </Link>
           </div>
-
-          
           <div className={styles.news_section_article}>
             <h3>{latestNews.title}</h3>
             <p>{latestNews.ingress}</p>
-
-            <Link href={`/news/${latestNews.slug}`}>
-              <a>Les mer</a>
-            </Link>
           </div>
           <div className={styles.news_section_article__image}>
             <img
               src={`/${latestNews.thumbnail}`}
-              width="480px"
+              width="100%"
               alt={latestNews.title}
             />
           </div>
+          <div className={styles.news_section_article__button}>
+            <Link href={`/news/${latestNews.slug}`}>
+              <a>Les mer</a>
+            </Link>
+          </div>
         </div>
-      </div> */}
+      </div>
     </Layout>
   );
 }
