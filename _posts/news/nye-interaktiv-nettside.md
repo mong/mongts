@@ -7,9 +7,10 @@ ingress: For å gjøre det enkelt har SKDE samlet relevante resultater fra
   med andre sykehus.
 thumbnail: img/Skjermbilde.png
 ---
-​I Norge er vi gode på å samle informasjon om helsetjenesten i ulike helseregistre. I de medisinske kvalitetsregistrene finnes informasjon om behandlingskvalitet som kan bidra til å forbedre helsetjenesten. 
 
-På den nye nettsiden kan du nå finne over hundre kvalitetsindikatorer. En indikator sier noe om kvaliteten på ulike deler av en utredning og behandling. For å finne det området man er interessert har man mulighet til å sortere kvalitetsindikatorene på ulike fagområder. 
+​I Norge er vi gode på å samle informasjon om helsetjenesten i ulike helseregistre. I de medisinske kvalitetsregistrene finnes informasjon om behandlingskvalitet som kan bidra til å forbedre helsetjenesten.
+
+På den nye nettsiden kan du nå finne over hundre kvalitetsindikatorer. En indikator sier noe om kvaliteten på ulike deler av en utredning og behandling. For å finne det området man er interessert har man mulighet til å sortere kvalitetsindikatorene på ulike fagområder.
 
 Under finner du en video hvor funksjonaliteten i den nye nettsiden demonstreres.
 
@@ -21,7 +22,7 @@ Man kan velge det sykehuset man er interessert i og sammenligne det med andre sy
 
 ### Sortering på målnivå
 
-På den nye nettsiden kan man velge å fremheve indikatorer hvor sykehusene ikke har god nok kvalitet. 
+På den nye nettsiden kan man velge å fremheve indikatorer hvor sykehusene ikke har god nok kvalitet.
 Ønsket nivå er avhengig av hvilken indikator du ser på, men det er satt et nivå for høy, moderat og lav måloppnåelse på hver enkelt indikator. Nettsiden gir mulighet for å fremheve alle indikatorer som ligger innenfor en gitt måloppnåelse, enten man ønsker å se områder hvor man har gode resultater eller områder hvor det er rom for å forbedre kvaliteten på behandlingen.
 
 ### Utvikling over tid
