@@ -1,6 +1,6 @@
 import Layout from "../../components/layout";
 import style from "./index.module.css";
-import newsStyles from "../../styles/nEWS.module.css";
+import newsStyles from "../../styles/News.module.css";
 
 const Privacy = () => {
   return (
