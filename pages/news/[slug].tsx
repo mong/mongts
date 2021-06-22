@@ -27,21 +27,20 @@ const News = ({ source, frontMatter }: Props) => {
   return (
     <Layout page={`Aktuelt / ${frontMatter.title}`}>
       <div className={newsStyles.container}>
-        <div className={newsStyles.title}>
+        <div className={newsStyles.article__title}>
           <div>
             <h2>{frontMatter.title}</h2>
             <small>{frontMatter.date}</small>
           </div>
         </div>
         <div className={newsStyles.article}>
-          <div>
-            <p className={newsStyles.ingress}>{frontMatter.ingress}</p>
-            {content}
+          <div className={newsStyles.article__ingress}>
+            {frontMatter.ingress}
           </div>
-
-          <div>
-            <img src={`/${frontMatter.thumbnail}`} width="500" />
+          <div className={newsStyles.article__image}>
+            <img src={`/${frontMatter.thumbnail}`} width="100%" />
           </div>
+          <div className={newsStyles.article__content}>{content}</div>
         </div>
       </div>
     </Layout>
