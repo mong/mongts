@@ -86,7 +86,7 @@ export default function Layout({
               <Link href="https://helse-nord.no/skde/kontakt-skde">
                 <a title="Link til kontakt SKDE">Kontakt</a>
               </Link>
-              <Link href="https://helse-nord.no/om-nettstedet/personvern">
+              <Link href="/personvern">
                 <a title="link til personvern">Personvern</a>
               </Link>
             </div>
