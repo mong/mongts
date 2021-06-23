@@ -5,10 +5,11 @@ import matter from "gray-matter";
 import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
 import { MdxRemote } from "next-mdx-remote/types";
-import styles from "../../styles/Home.module.css";
 import newsStyles from "../../styles/News.module.css";
 import Layout from "../../components/layout";
 import { dateToString } from "../../helpers/dateHelpers";
+import { useEffect } from "react";
+import { Analytics } from "aws-amplify";
 const NEWS_DIR = join(process.cwd(), "_posts/news");
 
 interface Props {
@@ -23,6 +24,13 @@ const Box = () => {
 };
 
 const News = ({ source, frontMatter }: Props) => {
+  useEffect(() => {
+    Analytics.record({
+      name: "news article",
+      attributes: { title: frontMatter.title },
+    });
+  }, [frontMatter]);
+
   const content = hydrate(source, { components: { Box } });
   return (
     <Layout page={`Aktuelt / ${frontMatter.title}`}>
