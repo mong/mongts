@@ -1,8 +1,10 @@
+import { Analytics } from "aws-amplify";
 import fs from "fs";
 import matter from "gray-matter";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import { join } from "path";
+import { useEffect } from "react";
 import Layout from "../../components/layout";
 import { dateToString } from "../../helpers/dateHelpers";
 import styles from "../../styles/Home.module.css";
@@ -19,6 +21,9 @@ interface Props {
 }
 
 const News = ({ articles }: Props) => {
+  useEffect(() => {
+    Analytics.record("news");
+  }, []);
   if (articles.length < 1)
     return (
       <Layout page="Flere aktuelle artikler">

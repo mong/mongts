@@ -7,6 +7,8 @@ import styles from "../styles/Home.module.css";
 
 import fs from "fs";
 import Layout from "../components/layout";
+import { useEffect } from "react";
+import { Analytics } from "aws-amplify";
 
 interface MarkdownFile {
   title: string;
@@ -21,6 +23,10 @@ interface Props {
 }
 
 export default function Home({ latestNews }: Props) {
+  useEffect(() => {
+    Analytics.record("home");
+  }, []);
+
   return (
     <Layout>
       <div className={styles.full_bleed}>
