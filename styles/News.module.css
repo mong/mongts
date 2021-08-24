@@ -1,18 +1,12 @@
 .container {
-  display: flex;
-  flex-flow: row wrap;
   padding: 0;
-  width: 100%;
-  min-width: 80vw;
+  width: min(80vw, 100%);
   max-width: 60rem;
   margin-bottom: 64px;
-  justify-content: center;
 }
 .article__title {
   width: 100%;
   display: flex;
-  max-width: 60rem;
-  /* flex-flow: row wrap; */
 }
 .article__ingress {
   width: 100%;
@@ -26,7 +20,6 @@
   justify-content: flex-start;
   display: flex;
   flex-flow: row wrap;
-  max-width: 60rem;
 }
 .article__content {
   margin-block-start: 0;
