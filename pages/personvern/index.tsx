@@ -6,7 +6,7 @@ const Privacy = () => {
   return (
     <Layout page="Personvern">
       <div className={style.privacyWrapper}>
-        <div className={newsStyles.container}>
+        <div className={style.container}>
           <div className={newsStyles.title}>
             <div>
               <h2>Personvern</h2>
