@@ -59,7 +59,7 @@ export default function Home({ latestNews }: Props) {
             </div>
 
             <div className={styles.block_button}>
-              <Link href="https://helse-nord.no/skde">
+              <Link href="/om-skde">
                 <a>Om SKDE</a>
               </Link>
             </div>
