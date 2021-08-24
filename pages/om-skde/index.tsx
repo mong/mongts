@@ -1,4 +1,5 @@
 import Layout from "../../components/layout";
+import style from "./index.module.css";
 import newsStyles from "../../styles/News.module.css";
 
 const About = () => {
@@ -6,20 +7,14 @@ const About = () => {
     <Layout page="Om SKDE">
       <div className={newsStyles.container}>
         <div className={newsStyles.article}>
-          <div className={newsStyles.title}>
-            <div>
-              <h2>Om SKDE</h2>
-            </div>
+          <h2>Om SKDE</h2>
+          <div className={newsStyles.article__ingress}>
+            Senter for klinisk dokumentasjon og evaluering (SKDE) jobber med å
+            synliggjøre geografiske ulikheter i spesialisthelsetjenesten. Målet
+            er å bidra til likeverdige helsetjenester av god kvalitet uansett
+            hvor pasientene bor.
           </div>
-          <div>
-            <p className={newsStyles.ingress}>
-              Senter for klinisk dokumentasjon og evaluering (SKDE) jobber med å
-              synliggjøre geografiske ulikheter i spesialisthelsetjenesten.
-              Målet er å bidra til likeverdige helsetjenester av god kvalitet
-              uansett hvor pasientene bor.
-            </p>
-          </div>
-          <div className={newsStyles.content}>
+          <div className={newsStyles.article__content}>
             <p>
               Senter for klinisk dokumentasjon og evaluering (SKDE) er en
               selvstendig enhet i Helse Nord RHF. <br></br>
