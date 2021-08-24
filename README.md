@@ -15,7 +15,7 @@ git merge --no-ff develop
 git push
 ```
 
-Changes directly commited to the `main` branch (for instance new *News* posts) have to be merged into the `develop` branch:
+Changes directly commited to the `main` branch (for instance new _News_ posts) have to be merged into the `develop` branch:
 
 ```bash
 git checkout develop
