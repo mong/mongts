@@ -40,7 +40,7 @@ export default function Layout({
             </Link>
           </div>
           <div className={styles.header_links}>
-            <Link href="https://helse-nord.no/skde/kontakt-skde">
+            <Link href="/kontakt">
               <a>Kontakt</a>
             </Link>
           </div>
@@ -83,7 +83,7 @@ export default function Layout({
               </Link>
             </div>
             <div className={styles.footer__social}>
-              <Link href="https://helse-nord.no/skde/kontakt-skde">
+              <Link href="/kontakt">
                 <a title="Link til kontakt SKDE">Kontakt</a>
               </Link>
               <Link href="/personvern">
