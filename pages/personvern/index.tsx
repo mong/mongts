@@ -15,14 +15,14 @@ const Privacy = () => {
           <div className={newsStyles.article}>
             <div>
               <p className={newsStyles.ingress}>
-                SKDE følger samme behandling av personopplysninger som i Helse
-                Nord RHF. Se{" "}
+                SKDE følger samme behandling av personopplysninger som i{" "}
                 <a
                   href="https://helse-nord.no/om-nettstedet/personvern"
                   target="_blank"
                 >
-                  https://helse-nord.no/om-nettstedet/personvern
+                  Helse Nord RHF
                 </a>
+                .
               </p>
             </div>
           </div>
