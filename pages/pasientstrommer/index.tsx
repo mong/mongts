@@ -6,7 +6,7 @@ const Pasient = () => {
     <Layout page="Pasientstrømmer">
 <IframeResizer
   log
-   src="https://qa-tabellverk.skde.org/"
+   src="https://prod-tabellverk.skde.org/"
   style={{ width: '1px', minWidth: '100%', border: "none"}}
 />
     </Layout>
