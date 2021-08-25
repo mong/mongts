@@ -6,7 +6,7 @@ const Pasient = () => {
     <Layout page="Pasientstrømmer">
 <IframeResizer
   log
-   src="http://qa-tabellverk.eu-west-1.elasticbeanstalk.com/"
+   src="https://qa-tabellverk.skde.org/"
   style={{ width: '1px', minWidth: '100%', border: "none"}}
 />
     </Layout>
