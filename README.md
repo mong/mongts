@@ -6,6 +6,24 @@ There is two long-lived branches in this repository: `main` and `develop`. All c
 
 New features and changes goes into the `develop` branch through a _Pull Request_ (PR). Before these changes go into the `main` branch, the webpage [qa.skde.no](https://qa.skde.no/) has to be checked for errors.
 
+The `develop` branch will then be merged into the `main` branch with
+
+```bash
+git checkout main
+git fetch origin develop:develop
+git merge --no-ff develop
+git push
+```
+
+Changes directly commited to the `main` branch (for instance new _News_ posts) have to be merged into the `develop` branch:
+
+```bash
+git checkout develop
+git fetch origin main:main
+git merge --no-ff main
+git push
+```
+
 ### Run and develop it locally
 
 Run the development server:
