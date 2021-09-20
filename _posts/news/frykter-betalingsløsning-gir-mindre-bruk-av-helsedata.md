@@ -1,8 +1,8 @@
 ---
 date: 2021-08-19T12:58:06.624Z
 title: Frykter betalingsløsning gir mindre bruk av helsedata
-ingress: "SKDE og flere andre aktører reagerer på Helse- og
-  omsorgsdepartementets forslag om å ta betalt for tilgang til helsedata. "
+ingress: SKDE og flere andre aktører reagerer på Helse- og omsorgsdepartementets
+  forslag om å ta betalt for tilgang til helsedata.
 thumbnail: img/skde-betalingsløsning-helsedata.jpg
 ---
 Fredag 13. august gikk fristen ut for å gi høringssvar til forslag til forskrift om løsning for tilgjengeliggjøring av helsedata (Helseanalyseplattformen (HAP) og Helsedataservice).  
