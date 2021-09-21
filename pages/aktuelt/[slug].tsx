@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { content, data } = matter(file);
   const source = await renderToString(content);
   return {
-    props: { source, frontMatter: { ...data, date: dateToString(data.date) } },
+    props: { source, frontMatter: { ...data, date: dateToString(data.date, false) } },
   };
 };
 
