@@ -51,7 +51,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       source,
       frontMatter: {
-        ...data
+        ...data,
       },
     },
   };
