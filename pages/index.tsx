@@ -1,7 +1,6 @@
 import matter from "gray-matter";
 import { GetStaticProps } from "next";
 import Link from "next/link";
-import Head from "next/head";
 import { join } from "path";
 import styles from "../styles/Home.module.css";
 import { dateToString } from "../helpers/dateHelpers";

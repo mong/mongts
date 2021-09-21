@@ -5,7 +5,6 @@ import matter from "gray-matter";
 import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
 import { MdxRemote } from "next-mdx-remote/types";
-import styles from "../../styles/Home.module.css";
 import newsStyles from "../../styles/News.module.css";
 import Layout from "../../components/layout";
 import { dateToString } from "../../helpers/dateHelpers";
