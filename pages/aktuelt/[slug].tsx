@@ -30,7 +30,7 @@ const News = ({ source, frontMatter }: Props) => {
         <div className={newsStyles.article__title}>
           <div>
             <h2>{frontMatter.title}</h2>
-            <small>{frontMatter.date}</small>
+            <small>{`Publisert ${frontMatter.date}`}</small>
           </div>
         </div>
         <div className={newsStyles.article}>
