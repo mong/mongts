@@ -7,13 +7,13 @@ backend:
 media_folder: public/img
 public_folder: img
 collections:
-  - label: "News"
-    name: "news"
-    folder: "_posts/news"
+  - label: "Aktuelt"
+    name: "aktuelt"
+    folder: "_posts/aktuelt"
     create: true
     fields:
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publiseringsdato", name: "date", widget: "datetime" }
+      - { label: "Tittel", name: "title", widget: "string" }
       - { label: "Ingress", name: "ingress", widget: "text" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Article Image", name: "thumbnail", widget: "image" }
+      - { label: "Hovedtekst", name: "body", widget: "markdown" }
+      - { label: "Artikkelbilde", name: "thumbnail", widget: "image" }
