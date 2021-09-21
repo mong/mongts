@@ -73,7 +73,7 @@ export default function Home({ latestNews }: Props) {
             <h2>Aktuelt</h2>
           </div>
           <div className={styles.news_section_title__link}>
-            <Link href="/news">
+            <Link href="/aktuelt">
               <a>Se flere nyheter fra skde</a>
             </Link>
           </div>
@@ -89,7 +89,7 @@ export default function Home({ latestNews }: Props) {
             />
           </div>
           <div className={styles.news_section_article__button}>
-            <Link href={`/news/${latestNews.slug}`}>
+            <Link href={`/aktuelt/${latestNews.slug}`}>
               <a>Les mer</a>
             </Link>
           </div>
@@ -100,7 +100,7 @@ export default function Home({ latestNews }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const NEWS_DIR = join(process.cwd(), "_posts/news");
+  const NEWS_DIR = join(process.cwd(), "_posts/aktuelt");
   const newsArticles = fs.readdirSync(NEWS_DIR).map((slug) => {
     const fullPath = join(NEWS_DIR, slug);
     const file = fs.readFileSync(fullPath);

@@ -9,7 +9,7 @@ import styles from "../../styles/Home.module.css";
 import newsStyles from "../../styles/News.module.css";
 import Layout from "../../components/layout";
 import { dateToString } from "../../helpers/dateHelpers";
-const NEWS_DIR = join(process.cwd(), "_posts/news");
+const NEWS_DIR = join(process.cwd(), "_posts/aktuelt");
 
 interface Props {
   source: MdxRemote.Source;

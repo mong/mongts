@@ -6,7 +6,7 @@ import { join } from "path";
 import Layout from "../../components/layout";
 import { dateToString } from "../../helpers/dateHelpers";
 import styles from "../../styles/Home.module.css";
-const NEWS_DIR = join(process.cwd(), "_posts/news");
+const NEWS_DIR = join(process.cwd(), "_posts/aktuelt");
 
 interface Article {
   title: string;
@@ -55,7 +55,7 @@ const News = ({ articles }: Props) => {
                 />
               </div>
               <div className={styles.news_section_article__button}>
-                <Link href={`/news/${article.slug}`}>
+                <Link href={`/aktuelt/${article.slug}`}>
                   <a>Les mer</a>
                 </Link>
               </div>
