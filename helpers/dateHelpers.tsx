@@ -28,6 +28,5 @@ export const dateToString = (date: Date, includeTime = true) => {
       "." +
       date.getFullYear()
     );
-
   }
 };
