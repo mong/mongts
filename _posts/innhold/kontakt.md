@@ -1,4 +1,5 @@
 ---
+filename: kontakt
 title: Kontakt SKDE
 ingress: Senter for klinisk dokumentasjon og evaluering (SKDE) holder i 3.etasje i SIVA-bygget i Forskningsparken i Tromsø.
 ---
