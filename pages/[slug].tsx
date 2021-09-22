@@ -5,10 +5,9 @@ import matter from "gray-matter";
 import renderToString from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
 import { MdxRemote } from "next-mdx-remote/types";
-import newsStyles from "../../styles/News.module.css";
-import Layout from "../../components/layout";
-import { dateToString } from "../../helpers/dateHelpers";
-const NEWS_DIR = join(process.cwd(), "_posts/aktuelt");
+import newsStyles from "../styles/News.module.css";
+import Layout from "../components/layout";
+const CONTENT_DIR = join(process.cwd(), "_posts/innhold");
 
 interface Props {
   source: MdxRemote.Source;
@@ -21,23 +20,17 @@ const Box = () => {
   );
 };
 
-const News = ({ source, frontMatter }: Props) => {
+const Content = ({ source, frontMatter }: Props) => {
   const content = hydrate(source, { components: { Box } });
   return (
-    <Layout page={`Aktuelt / ${frontMatter.title}`}>
+    <Layout page={frontMatter.title}>
       <div className={newsStyles.container}>
         <div className={newsStyles.article__title}>
-          <div>
-            <h2>{frontMatter.title}</h2>
-            <small>{`Publisert ${frontMatter.date}`}</small>
-          </div>
+          <h2>{frontMatter.title}</h2>
         </div>
         <div className={newsStyles.article}>
           <div className={newsStyles.article__ingress}>
             {frontMatter.ingress}
-          </div>
-          <div className={newsStyles.article__image}>
-            <img src={`/${frontMatter.thumbnail}`} width="100%" />
           </div>
           <div className={newsStyles.article__content}>{content}</div>
         </div>
@@ -46,10 +39,10 @@ const News = ({ source, frontMatter }: Props) => {
   );
 };
 
-export default News;
+export default Content;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const fullPath = join(NEWS_DIR, `${params.slug}.md`);
+  const fullPath = join(CONTENT_DIR, `${params.slug}.md`);
   const file = fs.readFileSync(fullPath);
 
   const { content, data } = matter(file);
@@ -57,13 +50,15 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       source,
-      frontMatter: { ...data, date: dateToString(data.date, false) },
+      frontMatter: {
+        ...data,
+      },
     },
   };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = fs.readdirSync(NEWS_DIR).map((file) => ({
+  const paths = fs.readdirSync(CONTENT_DIR).map((file) => ({
     params: { slug: file.replace(/.md?$/, "") },
   }));
 

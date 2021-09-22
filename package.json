@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "export": "next build && next export",
-    "lint": "eslint --ignore-path .gitignore --ext js,ts,tsx src",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
     "format": "yarn prettier --write",
     "check-format": "yarn prettier --list-different",

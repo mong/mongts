@@ -90,7 +90,7 @@ export const getStaticProps: GetStaticProps = async ({}) => {
         ...article,
         frontMatter: {
           ...article.frontMatter,
-          date: dateToString(article.frontMatter.date),
+          date: dateToString(article.frontMatter.date, false),
         },
       };
     });
