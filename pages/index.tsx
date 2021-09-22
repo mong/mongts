@@ -1,9 +1,9 @@
 import matter from "gray-matter";
 import { GetStaticProps } from "next";
 import Link from "next/link";
-import Head from "next/head";
 import { join } from "path";
 import styles from "../styles/Home.module.css";
+import { dateToString } from "../helpers/dateHelpers";
 
 import fs from "fs";
 import Layout from "../components/layout";
@@ -79,6 +79,7 @@ export default function Home({ latestNews }: Props) {
           </div>
           <div className={styles.news_section_article}>
             <h3>{latestNews.title}</h3>
+            <small>{latestNews.date}</small>
             <p>{latestNews.ingress}</p>
           </div>
           <div className={styles.news_section_article__image}>
@@ -116,7 +117,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       latestNews: {
         ...latestNewsArticle.data,
-        date: latestNewsArticle.data.date.toString(),
+        date: dateToString(latestNewsArticle.data.date, false),
         slug: latestNewsArticle.slug,
       },
     },
