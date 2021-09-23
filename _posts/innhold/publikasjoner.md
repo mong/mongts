@@ -1,4 +1,5 @@
 ---
+filename: publikasjoner
 title: Publikasjoner og artikler fra SKDE
 ingress: Her finner du publikasjoner og artikler fra SKDE sortert på årstall.
 ---
