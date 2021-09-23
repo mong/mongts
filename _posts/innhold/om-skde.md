@@ -1,4 +1,5 @@
 ---
+filename: om-skde
 title: Om SKDE
 ingress: Senter for klinisk dokumentasjon og evaluering (SKDE) jobber med å synliggjøre geografiske ulikheter i spesialisthelsetjenesten. Målet er å bidra til likeverdige helsetjenester av god kvalitet uansett hvor pasientene bor.
 ---
