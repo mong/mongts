@@ -19,6 +19,6 @@ Webinaret vil fokusere på hvordan pandemien har påvirket kvaliteten i helsetje
 
 I tillegg til presentasjoner fra kvalitetsregistrene vil leder for Nasjonalt servicemiljø, Eva Stensland, presentere noen resultater fra den nye nettsiden til kvalitetsregistrene.
 
-Lenke til webinaret kommer.
+Lenke til webinaret kommer. Ingen påmelding kreves.
 
 Velkommen!
