@@ -2,7 +2,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
-import renderToString from "next-mdx-remote/render-to-string";
+import serialize from "next-mdx-remote/render-to-string";
 import hydrate from "next-mdx-remote/hydrate";
 import { MdxRemote } from "next-mdx-remote/types";
 import newsStyles from "../../styles/News.module.css";
@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const file = fs.readFileSync(fullPath);
 
   const { content, data } = matter(file);
-  const source = await renderToString(content);
+  const source = await serialize(content);
   return {
     props: {
       source,
