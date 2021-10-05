@@ -1,5 +1,5 @@
 ---
-filename: forskning-i-skde
+filename: forskning
 title: Forskning i SKDE
 ingress: Forskningsprosjektene i SKDE er basert på kobling av data fra ulike
   helseregistre og SSB.
