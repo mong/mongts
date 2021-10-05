@@ -1,5 +1,5 @@
 ---
-filename: medarbeidere-i-skde
+filename: medarbeidere
 title: Medarbeidere i SKDE
 ingress: Senter for klinisk dokumentasjon og evaluering (SKDE) har 30
   medarbeidere. SKDE holder til i 3.etasje i SIVA-bygget i Forskningsparken i
