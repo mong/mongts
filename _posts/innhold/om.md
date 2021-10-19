@@ -4,11 +4,11 @@ title: Om SKDE
 ingress: Senter for klinisk dokumentasjon og evaluering (SKDE) jobber med å synliggjøre geografiske ulikheter i spesialisthelsetjenesten. Målet er å bidra til likeverdige helsetjenester av god kvalitet uansett hvor pasientene bor.
 ---
 
-Senter for klinisk dokumentasjon og evaluering (SKDE) er en selvstendig enhet i Helse Nord RHF.
+Senter for klinisk dokumentasjon og evaluering (SKDE) er en selvstendig enhet i [Helse Nord RHF](https://helse-nord.no).
 
 SKDEs oppdrag er å bidra til kvalitetsforbedring i helsetjenesten gjennom å gi økt kunnskap om behandlingskvalitet og forbruk i spesialisthelsetjenesten.
 
-SKDE er et unikt sammensatt kompetansemiljø som blant annet består av spesialrådgivere, klinikere, analytikere og forskere. Våre ansatte utfører analyser på ulike nivåer i spesialisthelsetjenesten både tilknyttet Helse Nord RHF og nasjonalt. Vi har funksjon som rådgivende organ for nasjonale medisinske kvalitetsregistre, og lager Helseatlas som gir nasjonale oversikter over geografiske forskjeller i bruk av spesialisthelsetjenester. Vi har også flere pågående forskningsprosjekter.
+SKDE er et unikt sammensatt kompetansemiljø som blant annet består av spesialrådgivere, klinikere, analytikere og forskere. [Våre ansatte](/medarbeidere) utfører analyser på ulike nivåer i spesialisthelsetjenesten både tilknyttet Helse Nord RHF og nasjonalt. Vi har funksjon som rådgivende organ for [nasjonale medisinske kvalitetsregistre](https://www.kvalitetsregistre.no/), og lager [Helseatlas](https://helseatlas.no/) som gir nasjonale oversikter over geografiske forskjeller i bruk av spesialisthelsetjenester. Vi har også flere pågående [forskningsprosjekter](/forskning).
 
 SKDE er en tverrfaglig organisasjon med [27 ansatte](/medarbeidere), og har våre kontorer i 3.etasje i SIVA-bygget i Forskningsparken i Tromsø.
 
@@ -29,3 +29,7 @@ Nasjonalt servicemiljø for medisinske kvalitetsregistre tilbyr bistand ved oppr
 - [Analyse](/analyseseksjonen)
 - [Forskning](/forskning)
 - [Teknologiforum for medisinske kvalitetsregistre](/teknologiforum)
+
+### Vår strategi
+
+SKDE sin strategi finnes her: [Strategi for SKDE 2020-2035](/dokumenter/Strategi%20for%20SKDE%202020-2035.pdf)
