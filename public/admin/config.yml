@@ -20,10 +20,24 @@ collections:
   - label: "Innhold"
     name: "innhold"
     folder: "_posts/innhold"
-    create: true
+    create: false
     identifier_field: filename
     fields:
       - { label: "Filnavn", name: "filename", widget: "string" }
       - { label: "Tittel", name: "title", widget: "string" }
       - { label: "Ingress", name: "ingress", widget: "text" }
       - { label: "Hovedtekst", name: "body", widget: "markdown" }
+  - label: "Ansatte"
+    name: "ansatte"
+    folder: "_posts/ansatte"
+    create: true
+    slug: "{{fornavn}}_{{etternavn}}"
+    fields:
+      - { label: "Fornavn", name: "fornavn", widget: "string" }
+      - { label: "Mellomnavn", name: "mellomnavn", widget: "string", required: false }
+      - { label: "Etternavn", name: "etternavn", widget: "string" }
+      - { label: "Bilde", name: "headshot", widget: "image", required: false}
+      - { label: "Stab", name: "stab", widget: "boolean", default: false }
+      - { label: "Analyse", name: "analyse", widget: "boolean", default: false }
+      - { label: "Forskning", name: "forskning", widget: "boolean", default: false }
+      - { label: "Service", name: "service", widget: "boolean", default: false }
