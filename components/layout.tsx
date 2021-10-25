@@ -22,7 +22,7 @@ export default function Layout({
         <meta property="og:site_name" content="Helse Nord RHF"></meta>
         <meta
           property="og:description"
-          content="SKDE (Senter for klinisk dokumentasjon og evaluering)&nbsp;er et nasjonalt miljø innen arbeidet med opprettelse og drift av kliniske kvalitetsregistre. Senteret er lokalisert til Universitetssykehuset i Nord-Norge og eies av Helse Nord RHF."
+          content="Senter for klinisk dokumentasjon og evaluering (SKDE) er en selvstendig enhet i Helse Nord RHF, og har våre kontorer i Forskningsparken i Tromsø."
         ></meta>
       </Head>
       <div className={styles.grid_wrapper}>
