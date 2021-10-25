@@ -2,16 +2,21 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
-import renderToString from "next-mdx-remote/render-to-string";
-import hydrate from "next-mdx-remote/hydrate";
-import { MdxRemote } from "next-mdx-remote/types";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
 import newsStyles from "../styles/News.module.css";
 import Layout from "../components/layout";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 const CONTENT_DIR = join(process.cwd(), "_posts/innhold");
 
 interface Props {
-  source: MdxRemote.Source;
   frontMatter: any;
+  content;
 }
 
 const Box = () => {
@@ -20,8 +25,7 @@ const Box = () => {
   );
 };
 
-const Content = ({ source, frontMatter }: Props) => {
-  const content = hydrate(source, { components: { Box } });
+const Content = ({ content, frontMatter }: Props) => {
   return (
     <Layout page={frontMatter.title}>
       <div className={newsStyles.container}>
@@ -32,7 +36,29 @@ const Content = ({ source, frontMatter }: Props) => {
           <div className={newsStyles.article__ingress}>
             {frontMatter.ingress}
           </div>
-          <div className={newsStyles.article__content}>{content}</div>
+          <div className={newsStyles.article__content}>
+            <ReactMarkdown
+              rehypePlugins={[rehypeRaw]}
+              remarkPlugins={[remarkGfm]}
+              components={{
+                details: (object) => {
+                  return (
+                    <Accordion>
+                      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                        {object.children[0]}
+                      </AccordionSummary>
+                      <AccordionDetails>
+                        {object.children.filter((_, i) => i !== 0)}
+                      </AccordionDetails>
+                    </Accordion>
+                  );
+                },
+                summary: (object) => <div>{object.children}</div>,
+              }}
+            >
+              {content}
+            </ReactMarkdown>
+          </div>
         </div>
       </div>
     </Layout>
@@ -46,10 +72,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const file = fs.readFileSync(fullPath);
 
   const { content, data } = matter(file);
-  const source = await renderToString(content);
+
   return {
     props: {
-      source,
+      content,
       frontMatter: {
         ...data,
       },
