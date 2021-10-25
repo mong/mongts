@@ -25,7 +25,7 @@ Nasjonalt servicemiljø for medisinske kvalitetsregistre tilbyr bistand ved oppr
 ### Våre oppdrag
 
 - [Nasjonalt servicemiljø for medisinske kvalitetsregistre](/medisinske-kvalitetsregistre)
-- [Helseatlas](/helseatlas)
+- [Helseatlas](https://helseatlas.no/)
 - [Analyse](/analyseseksjonen)
 - [Forskning](/forskning)
 - [Teknologiforum for medisinske kvalitetsregistre](/teknologiforum)

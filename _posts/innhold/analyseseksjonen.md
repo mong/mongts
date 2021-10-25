@@ -8,7 +8,7 @@ ingress: Analyseseksjonen i SKDE utvikler nasjonale helseatlas som kartlegger
 
 ​Analyseseksjonen arbeider med å utvikle helseatlas for å beskrive uberettiget variasjon i helsetjenesten parallelt med andre større og mindre analyser på oppdrag fra Helse Nord RHF, helseforetak i regionen og andre bestillere.
 
-[Les mer om helseatlas](/helseatlas)
+[Les mer om helseatlas](https://helseatlas.no/)
 
 SKDEs regionale oppdrag om å bidra med analytisk styringsinformasjon og utarbeidelse analyser på oppdrag fra ulike enheter i Helse Nord, ivaretas gjennom utvikling og drift av et interaktivt tabellverk for pasientstrømsanalyser og gjennom mer konkrete oppdrag fra RHF, HF og kliniske miljø i regionen.
 
