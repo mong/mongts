@@ -1,7 +1,7 @@
 ---
 filename: om
 title: Om SKDE
-ingress: Senter for klinisk dokumentasjon og evaluering (SKDE) jobber med å synliggjøre geografiske ulikheter i spesialisthelsetjenesten. Målet er å bidra til likeverdige helsetjenester av god kvalitet uansett hvor pasientene bor.
+ingress: Senter for klinisk dokumentasjon og evaluering (SKDE)  jobber med å synliggjøre geografiske ulikheter i spesialisthelsetjenesten. Målet er å bidra til likeverdige helsetjenester av god kvalitet uansett hvor pasientene bor.
 ---
 
 Senter for klinisk dokumentasjon og evaluering (SKDE) er en selvstendig enhet i [Helse Nord RHF](https://helse-nord.no).
@@ -24,11 +24,11 @@ Nasjonalt servicemiljø for medisinske kvalitetsregistre tilbyr bistand ved oppr
 
 ### Våre oppdrag
 
-- [Nasjonalt servicemiljø for medisinske kvalitetsregistre](/medisinske-kvalitetsregistre)
+- [Nasjonalt servicemiljø for medisinske kvalitetsregistre](https://www.kvalitetsregistre.no/)
 - [Helseatlas](https://helseatlas.no/)
 - [Analyse](/analyseseksjonen)
 - [Forskning](/forskning)
-- [Teknologiforum for medisinske kvalitetsregistre](/teknologiforum)
+- [Teknologiforum for medisinske kvalitetsregistre](https://www.kvalitetsregistre.no/teknologiforum-medisinske-kvalitetsregistre)
 
 ### Vår strategi
 
