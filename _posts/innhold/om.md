@@ -10,7 +10,7 @@ SKDEs oppdrag er å bidra til kvalitetsforbedring i helsetjenesten gjennom å gi
 
 SKDE er et unikt sammensatt kompetansemiljø som blant annet består av spesialrådgivere, klinikere, analytikere og forskere. [Våre ansatte](/medarbeidere) utfører analyser på ulike nivåer i spesialisthelsetjenesten både tilknyttet Helse Nord RHF og nasjonalt. Vi har funksjon som rådgivende organ for [nasjonale medisinske kvalitetsregistre](https://www.kvalitetsregistre.no/), og lager [Helseatlas](https://helseatlas.no/) som gir nasjonale oversikter over geografiske forskjeller i bruk av spesialisthelsetjenester. Vi har også flere pågående [forskningsprosjekter](/forskning).
 
-SKDE er en tverrfaglig organisasjon med 30 ansatte, og har våre kontorer i 3. ​etasje i SIVA-bygget i Forskningsparken i Tromsø. 
+SKDE er en tverrfaglig organisasjon med 30 ansatte, og har våre kontorer i 3. ​etasje i SIVA-bygget i Forskningsparken i Tromsø.
 
 SKDE består av stab, forskere og to seksjoner med litt ulike arbeidsområder:
 
