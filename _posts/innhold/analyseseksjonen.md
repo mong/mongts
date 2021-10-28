@@ -20,4 +20,4 @@ Mange av analyseseksjonens regionale oppdrag er mindre analyser som svares ut i
 
 [Artikler og publikasjoner](/publikasjoner)
 
-[Kontakt analyseseksjonen](/medarbeidere)
+[Kontakt analyseseksjonen](/kontakt)
