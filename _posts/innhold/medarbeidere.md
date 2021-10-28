@@ -10,23 +10,23 @@ ingress: Senter for klinisk dokumentasjon og evaluering (SKDE) har 30
 
 **Barthold Vonen**
 
-Direktør SKDE
-Telefon: 99 46 22 26
-Epost: [barthold.vonen@helse-nord.no](mailto:barthold.vonen@helse-nord.no)
-Bistilling/verv:
-Professor II, Helsetjenesteforskning, ISM, UIT-Norges Arktiske Universitet
+Direktør SKDE<br/>
+Telefon: 99 46 22 26<br/>
+Epost: [barthold.vonen@helse-nord.no](mailto:barthold.vonen@helse-nord.no)<br/>
+Bistilling/verv:<br/>
+Professor II, Helsetjenesteforskning, ISM, UIT-Norges Arktiske Universitet<br/>
 
 **Eva Stensland**
 
-Seksjonsleder Nasjonalt servicemiljø
-Telefon: 92 83 60 36
-Epost:[eva.stensland@helse-nord.no](mailto:eva.stensland@helse-nord.no)
+Seksjonsleder Nasjonalt servicemiljø<br/>
+Telefon: 92 83 60 36<br/>
+Epost:[eva.stensland@helse-nord.no](mailto:eva.stensland@helse-nord.no)<br/>
 
 **Hanne Sigrun Byhring**
 
-Kst. l​eder Analyseseksjonen 
-Telefon: 91 69 61 82
-Epost: [hanne.sigrun.byhring@helse-nord.no](mailto:hanne.sigrun.byhring@helse-nord.no)
+Kst. l​eder Analyseseksjonen<br/>
+Telefon: 91 69 61 82<br/>
+Epost: [hanne.sigrun.byhring@helse-nord.no](mailto:hanne.sigrun.byhring@helse-nord.no)<br/>
 
 </details>
 
@@ -34,9 +34,9 @@ Epost: [hanne.sigrun.byhring@helse-nord.no](mailto:hanne.sigrun.byhring@helse-n
 
 **Eva Stensland**
 
-Fagsjef SKDE
-Telefon: 92 83 60 36
-Epost: [eva.stensland@helse-nord.no](mailto:eva.stensland@helse-nord.no)
+Fagsjef SKDE<br/>
+Telefon: 92 83 60 36<br/>
+Epost: [eva.stensland@helse-nord.no](mailto:eva.stensland@helse-nord.no)<br/>
 
 **Petra Gabriele Pohl**
 
