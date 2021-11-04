@@ -20,7 +20,7 @@ export default function Layout({
         /* @ts-ignore */
         h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
         /* @ts-ignore */
-        h._hjSettings = { hjid: 2683530, hjsv: 6 };
+        h._hjSettings = { hjid: 2684483, hjsv: 6 };
         a = o.getElementsByTagName('head')[0];
         r = o.createElement('script'); r.async = 1;
         /* @ts-ignore */
