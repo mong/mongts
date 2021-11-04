@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { useEffect } from "react";
 
 interface Props {
   children: any;
@@ -14,7 +13,6 @@ export default function Layout({
   title = "SKDE - Helse Nord RHF",
   page,
 }: Props) {
-
   return (
     <>
       <Head>
