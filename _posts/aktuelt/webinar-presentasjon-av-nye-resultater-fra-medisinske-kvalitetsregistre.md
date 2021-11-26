@@ -20,6 +20,6 @@ Webinaret vil fokusere på hvordan pandemien har påvirket kvaliteten i helsetje
 
 I tillegg til presentasjoner fra kvalitetsregistrene vil leder for Nasjonalt servicemiljø, Eva Stensland, presentere noen resultater fra den nye nettsiden til kvalitetsregistrene.
 
-Lenke til webinaret kommer. Ingen påmelding kreves.
+Webinaret er åpent for alle  - ingen påmelding. [Lenke til webinar.](https://www.tromsostreamingstudio.no/produksjon-v1/skde-webinar-mandag-18-oktober/)
 
 Velkommen!
