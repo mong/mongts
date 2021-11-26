@@ -19,5 +19,3 @@ Det interaktive tabellverket inneholder overordnet anonymisert informasjon om ak
 Mange av analyseseksjonens regionale oppdrag er mindre analyser som svares ut i e-post eller regneark med tabeller og figurer. Andre oppdrag er mer omfattende og resulterer i rapporter eller notater som publiseres fortløpende på nettsidene.
 
 [Artikler og publikasjoner](/publikasjoner)
-
-[Kontakt analyseseksjonen](/kontakt)
