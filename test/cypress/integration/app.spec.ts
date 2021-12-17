@@ -21,8 +21,10 @@ describe("Navigation", () => {
     cy.get('a[href*="kvalitetsregistre"]');
 
     // The url should return "404 This page could not be found."
-    cy.request({url: '/kvalitetsregistre', failOnStatusCode: false}).its('status').should('equal', 404);
-  })
+    cy.request({ url: "/kvalitetsregistre", failOnStatusCode: false })
+      .its("status")
+      .should("equal", 404);
+  });
 
   it("should navigate to pasientstrommer", () => {
     // Start from the index page
@@ -36,8 +38,7 @@ describe("Navigation", () => {
 
     // The page should include the 'h2' tag "Kontakt SKDE"
     cy.get("h2").contains("Pasientstrømmer, Helse Nord RHF");
-  
-  })
+  });
 });
 
 export {};
