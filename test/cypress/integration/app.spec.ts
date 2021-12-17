@@ -1,7 +1,7 @@
 describe("Navigation", () => {
   it("should navigate to the contact page", () => {
     // Start from the index page
-    cy.visit("http://localhost:3000/");
+    cy.visit("/");
 
     // Find multiple link with an href attribute containing "kontakt" and click them
     cy.get('a[href*="kontakt"]').click({ multiple: true });
