@@ -13,3 +13,5 @@ describe("Navigation", () => {
     cy.get("h2").contains("Kontakt SKDE");
   });
 });
+
+export {};
