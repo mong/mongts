@@ -20,9 +20,8 @@ jobs:
         uses: actions/setup-node@v2.5.0
         with:
           node-version: ${{ matrix.node-version }}
-      - run: |
-          yarn install --immutable
-          yarn run check-types
-          yarn run check-format
-          yarn run build
-          yarn run e2e::headless
+      - run: yarn install --immutable
+      - run: yarn run check-types
+      - run: yarn run check-format
+      - run: yarn run build
+      - run: yarn run e2e::headless
