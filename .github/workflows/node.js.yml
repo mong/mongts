@@ -24,4 +24,4 @@ jobs:
       - run: yarn run check-types
       - run: yarn run check-format
       - run: yarn run build
-      - run: yarn run e2e::headless
+      - run: yarn run e2e:headless
