@@ -43,8 +43,7 @@ describe("Navigation", () => {
   it("should navigate to personvern", () => {
     // Start from the index page
     cy.visit("/personvern");
-
-  })
+  });
 });
 
 export {};
