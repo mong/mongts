@@ -40,9 +40,10 @@ describe("Navigation", () => {
     cy.get("h2").contains("Pasientstrømmer, Helse Nord RHF");
   });
 
-  it("should navigate to personvern", () => {
+  it("should navigate to some pages", () => {
     // Start from the index page
     cy.visit("/personvern");
+    cy.visit("/pasientstrommer");
   });
 });
 
