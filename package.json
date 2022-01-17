@@ -9,6 +9,10 @@
     "export": "next build && next export",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
     "format": "yarn prettier --write",
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run",
+    "e2e": "start-server-and-test start http://localhost:3000 cypress",
+    "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless",
     "check-format": "yarn prettier --list-different",
     "check-types": "tsc --noEmit"
   },
@@ -29,8 +33,12 @@
     "remark-gfm": "^3.0.0"
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.9.12",
     "@types/react": "^17.0.37",
+    "babel-plugin-istanbul": "^6.1.1",
+    "cypress": "^9.1.1",
     "prettier": "^2.5.1",
+    "start-server-and-test": "^1.14.0",
     "typescript": "^4.5.4"
   }
 }
