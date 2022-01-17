@@ -24,3 +24,7 @@ jobs:
       - run: yarn run check-types
       - run: yarn run check-format
       - run: yarn run build
+      - run: yarn run e2e:headless
+      - name: Code coverage
+        if: matrix.node-version == '16.x'
+        uses: codecov/codecov-action@v2.1.0
