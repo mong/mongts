@@ -39,6 +39,12 @@ describe("Navigation", () => {
     // The page should include the 'h2' tag "Kontakt SKDE"
     cy.get("h2").contains("Pasientstrømmer, Helse Nord RHF");
   });
+
+  it("should navigate to personvern", () => {
+    // Start from the index page
+    cy.visit("/personvern");
+
+  })
 });
 
 export {};
