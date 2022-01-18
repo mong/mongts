@@ -26,24 +26,18 @@ describe("Navigation", () => {
       .should("equal", 404);
   });
 
-  it("should navigate to pasientstrommer", () => {
+  it("should navigate to personvern page", () => {
     // Start from the index page
     cy.visit("/");
 
-    // Find a link with an href attribute containing "pasientstrommer" and click it
-    cy.get('a[href*="pasientstrommer"]').click();
+    // Find a link with an href attribute containing "personvern" and click it
+    cy.get('a[href*="personvern"]').click();
 
-    // The new url should include "/kontakt"
-    cy.url().should("include", "/pasientstrommer");
-
-    // The page should include the 'h2' tag "Kontakt SKDE"
-    cy.get("h2").contains("Pasientstrømmer, Helse Nord RHF");
-  });
-
-  it("should navigate to some pages", () => {
-    // Start from the index page
+    // Visit /personvern page
     cy.visit("/personvern");
-    cy.visit("/pasientstrommer");
+
+    // Look for content
+    cy.contains('p', 'SKDE følger samme behandling av personopplysninger som i');
   });
 });
 
