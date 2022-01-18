@@ -37,7 +37,10 @@ describe("Navigation", () => {
     cy.visit("/personvern");
 
     // Look for content
-    cy.contains('p', 'SKDE følger samme behandling av personopplysninger som i');
+    cy.contains(
+      "p",
+      "SKDE følger samme behandling av personopplysninger som i"
+    );
   });
 });
 
