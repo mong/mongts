@@ -40,8 +40,8 @@ export default function Layout({
             </Link>
           </div>
           <div className={styles.header_links}>
-            <Link href="/kontakt">
-              <a>Kontakt</a>
+            <Link href="/om">
+              <a>Om SKDE</a>
             </Link>
           </div>
         </header>

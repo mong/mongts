@@ -54,8 +54,8 @@ export default function Home() {
             </div>
 
             <div className={styles.block_button}>
-              <Link href="https://helse-nord.no/skde">
-                <a>Om SKDE</a>
+              <Link href="/publikasjoner">
+                <a>Publikasjoner</a>
               </Link>
             </div>
           </div>
