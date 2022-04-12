@@ -9,28 +9,36 @@
     "export": "next build && next export",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
     "format": "yarn prettier --write",
+    "cypress": "cypress open",
+    "cypress:headless": "cypress run",
+    "e2e": "start-server-and-test start http://localhost:3000 cypress",
+    "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless",
     "check-format": "yarn prettier --list-different",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "test": "yarn run build && yarn run e2e:headless"
   },
   "dependencies": {
-    "@emotion/react": "^11.5.0",
-    "@emotion/styled": "^11.3.0",
-    "@mui/icons-material": "^5.0.4",
-    "@mui/material": "^5.0.4",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.6.1",
+    "@mui/material": "^5.6.1",
     "gray-matter": "^4.0.3",
     "iframe-resizer-react": "^1.1.0",
-    "next": "11.1.2",
-    "next-mdx-remote": "^2.1.4",
-    "prop-types": "^15.7.2",
+    "next": "12.1.4",
+    "prop-types": "^15.8.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-markdown": "^7.1.0",
-    "rehype-raw": "^6.1.0",
+    "react-markdown": "^8.0.2",
+    "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.0"
   },
   "devDependencies": {
-    "@types/react": "^17.0.21",
-    "prettier": "^2.4.1",
-    "typescript": "^4.4.3"
+    "@cypress/code-coverage": "^3.9.12",
+    "@types/react": "^18.0.1",
+    "babel-plugin-istanbul": "^6.1.1",
+    "cypress": "^9.5.4",
+    "prettier": "^2.6.2",
+    "start-server-and-test": "^1.14.0",
+    "typescript": "^4.6.3"
   }
 }

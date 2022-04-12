@@ -15,7 +15,7 @@ jobs:
       AWS_DEFAULT_REGION: "eu-west-1"
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Build package
         run: yarn install && yarn run export
       - name: Sync main to S3 bucket skde.org
