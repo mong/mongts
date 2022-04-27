@@ -42,7 +42,7 @@ export default function Home() {
             </div>
 
             <div className={styles.block_button}>
-              <Link href="https://helseatlas.no/">
+              <Link href="/helseatlas/">
                 <a>Helseatlas</a>
               </Link>
             </div>
