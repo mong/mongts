@@ -10,7 +10,7 @@ describe("Navigation", () => {
     cy.url().should("include", "/kontakt");
 
     // The page should include the 'h2' tag "Kontakt SKDE"
-    cy.get("h2").contains("Kontakt SKDE");
+    cy.get("strong").contains("Telefon");
   });
 
   it("return error if navigating to kvalitetsregistre", () => {
