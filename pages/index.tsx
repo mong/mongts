@@ -8,21 +8,8 @@ Sentry.init({
   dsn: "https://d48c58a239264c12bcbf8fe86d364c44@o489056.ingest.sentry.io/5799127",
   autoSessionTracking: true,
   integrations: [new BrowserTracing()],
-  // https://docs.sentry.io/platforms/javascript/performance/sampling/
   tracesSampleRate: 1.0,
 });
-
-interface MarkdownFile {
-  title: string;
-  ingress: string;
-  date: string;
-  thumbnail?: string;
-  slug: string;
-}
-
-interface Props {
-  latestNews: MarkdownFile;
-}
 
 export default function Home() {
   return (
