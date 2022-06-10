@@ -5,12 +5,18 @@ import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
 
 if (process.env.NEXT_PUBLIC_SENTRY) {
-  Sentry.init({
-    dsn: process.env.NEXT_PUBLIC_SENTRY,
-    autoSessionTracking: true,
-    integrations: [new BrowserTracing()],
-    tracesSampleRate: 1.0,
-  });
+  try {
+    Sentry.init({
+      dsn: process.env.NEXT_PUBLIC_SENTRY,
+      autoSessionTracking: true,
+      integrations: [new BrowserTracing()],
+      tracesSampleRate: 1.0,
+    });
+  } catch (error) {
+    console.log(
+      "Sentry not working with dsn=" + process.env.NEXT_PUBLIC_SENTRY
+    );
+  }
 }
 
 export default function Home() {
