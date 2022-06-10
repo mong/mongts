@@ -1,18 +1,22 @@
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
-
 import Layout from "../components/layout";
+import * as Sentry from "@sentry/react";
+import { BrowserTracing } from "@sentry/tracing";
 
-interface MarkdownFile {
-  title: string;
-  ingress: string;
-  date: string;
-  thumbnail?: string;
-  slug: string;
-}
-
-interface Props {
-  latestNews: MarkdownFile;
+if (process.env.NEXT_PUBLIC_SENTRY) {
+  try {
+    Sentry.init({
+      dsn: process.env.NEXT_PUBLIC_SENTRY,
+      autoSessionTracking: true,
+      integrations: [new BrowserTracing()],
+      tracesSampleRate: 1.0,
+    });
+  } catch (error) {
+    console.log(
+      "Sentry not working with dsn=" + process.env.NEXT_PUBLIC_SENTRY
+    );
+  }
 }
 
 export default function Home() {
