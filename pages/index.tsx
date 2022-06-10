@@ -4,7 +4,6 @@ import Layout from "../components/layout";
 import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
 
-
 if (process.env.NEXT_PUBLIC_SENTRY) {
   try {
     Sentry.init({
