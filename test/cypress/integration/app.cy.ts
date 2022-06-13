@@ -33,8 +33,8 @@ describe("Navigation", () => {
     // Find a link with an href attribute containing "personvern" and click it
     cy.get('a[href*="personvern"]').click();
 
-    // Visit /personvern page
-    cy.visit("/personvern");
+    // The new url should include "/personvern"
+    cy.url().should("include", "/personvern");
 
     // Look for content
     cy.contains(
