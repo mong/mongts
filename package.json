@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -18,29 +19,33 @@
     "test": "yarn run build && yarn run e2e:headless"
   },
   "dependencies": {
-    "@emotion/react": "^11.9.0",
-    "@emotion/styled": "^11.8.1",
-    "@mui/icons-material": "^5.6.2",
-    "@mui/material": "^5.7.0",
-    "@sentry/react": "^7.0.0",
-    "@sentry/tracing": "^7.0.0",
+    "@emotion/react": "^11.10.0",
+    "@emotion/styled": "^11.10.0",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.9.3",
+    "@sentry/react": "^7.9.0",
+    "@sentry/tracing": "^7.9.0",
     "gray-matter": "^4.0.3",
     "iframe-resizer-react": "^1.1.0",
-    "next": "12.1.6",
+    "next": "12.2.4",
     "prop-types": "^15.8.1",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-markdown": "^8.0.3",
     "rehype-raw": "^6.1.1",
-    "remark-gfm": "^3.0.0"
+    "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
-    "@cypress/code-coverage": "^3.9.12",
-    "@types/react": "^18.0.9",
+    "@cypress/code-coverage": "^3.10.0",
+    "@types/react": "^18.0.17",
     "babel-plugin-istanbul": "^6.1.1",
-    "cypress": "^9.6.1",
-    "prettier": "^2.6.2",
+    "cypress": "^10.4.0",
+    "eslint": "8.21.0",
+    "eslint-config-next": "12.2.4",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
     "start-server-and-test": "^1.14.0",
-    "typescript": "^4.6.4"
+    "typescript": "^4.7.4"
   }
 }
