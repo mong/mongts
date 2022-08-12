@@ -1,6 +1,6 @@
-import Layout from "../../components/layout";
+import Layout from "../../src/components/layout";
 import IframeResizer from "iframe-resizer-react";
-import newsStyles from "../../styles/News.module.css";
+import newsStyles from "../../src/styles/News.module.css";
 
 const Pasient = () => {
   return (

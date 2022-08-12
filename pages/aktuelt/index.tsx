@@ -3,9 +3,9 @@ import matter from "gray-matter";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import { join } from "path";
-import Layout from "../../components/layout";
-import { dateToString } from "../../helpers/dateHelpers";
-import styles from "../../styles/Home.module.css";
+import Layout from "../../src/components/layout";
+import { dateToString } from "../../src/helpers/dateHelpers";
+import styles from "../../src/styles/Home.module.css";
 const NEWS_DIR = join(process.cwd(), "_posts/aktuelt");
 
 interface Article {

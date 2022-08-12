@@ -7,8 +7,8 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import newsStyles from "../styles/News.module.css";
-import Layout from "../components/layout";
+import newsStyles from "../src/styles/News.module.css";
+import Layout from "../src/components/layout";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -18,13 +18,6 @@ interface Props {
   frontMatter: any;
   content;
 }
-
-const Box = () => {
-  return (
-    <div style={{ backgroundColor: "blue", height: 500, width: 500 }}></div>
-  );
-};
-
 const Content = ({ content, frontMatter }: Props) => {
   return (
     <Layout page={frontMatter.title}>
