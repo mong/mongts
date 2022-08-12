@@ -9,7 +9,9 @@
 
 <!-- badges: end -->
 
-This is the [Next.js](https://nextjs.org/) app behind [www.skde.no](https://www.skde.no/) front page and news section, while the repository [mong/qmongjs](https://github.com/mong/qmongjs) is behind the subpage [www.skde.no/kvalitetsregistre](https://www.skde.no/kvalitetsregistre/alle/sykehus).
+This is the [Next.js](https://nextjs.org/) app behind [www.skde.no](https://www.skde.no/) front page.
+
+The repository [mong/qmongjs](https://github.com/mong/qmongjs) is behind the subpage [www.skde.no/kvalitetsregistre](https://www.skde.no/kvalitetsregistre/alle/sykehus) and .
 
 ## Development
 
@@ -73,6 +75,6 @@ cd ../mongts
 npx serve out
 ```
 
-If the last step is not working, make sure you have the latest version of `serve` installed.
+If the last step is not working, make sure you have the latest version of `serve` installed (it did not work with `serve` version `12.0.1`).
 
 Be aware, the `helseatlas` and `kvalitetsregistre` folders will be overwritten the next time you do a `yarn export`.
