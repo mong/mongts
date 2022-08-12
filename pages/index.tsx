@@ -1,6 +1,6 @@
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
-import Layout from "../components/layout";
+import styles from "../src/styles/Home.module.css";
+import Layout from "../src/components/layout";
 import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
 
