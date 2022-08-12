@@ -31,7 +31,7 @@ Changes directly commited to the `main` branch (for instance new _News_ posts) h
 ```bash
 git checkout develop
 git fetch origin main:main
-git merge --no-ff main
+git merge main # with fast forward, if possible
 git push
 ```
 
@@ -40,9 +40,39 @@ git push
 Run the development server:
 
 ```bash
+yarn install
 yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Build static page and run it locally
+
+In production we build static html files that we serve in an S3 bucket on AWS. To reproduce this locally you can
+
+```bash
+yarn export
+npx serve out
+```
+
+If you want to mimic the full site you have to build [hamongts](https://github.com/mong/hamongts) and [qmongjs](https://github.com/mong/qmongjs) as well. The output from these builds have to be copied into `helseatlas` and `kvalitetsregistre` folders inside the `out` folder. In other words:
+
+```bash
+# build mongts
+yarn install && yarn export
+# build hamongts, which is also a nextjs-app
+cd ../hamongts
+yarn install && yarn export
+cp -r out ../mongts/out/helseatlas
+# build qmongjs, which is a create-react-app
+cd ../qmongjs
+yarn install && yarn build
+cp -r build ../mongts/out/kvalitetsregistre
+# go back and serve the full site
+cd ../mongts
+npx serve out
+```
+
+If the last step is not working, make sure you have the latest version of `serve` installed.
+
+Be aware, the `helseatlas` and `kvalitetsregistre` folders will be overwritten the next time you do a `yarn export`.
