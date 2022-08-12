@@ -40,13 +40,13 @@ export default function Home() {
           <h2>Resultater</h2>
           <div className={styles.block_buttons}>
             <div className={styles.block_button}>
-              <Link href="/kvalitetsregistre/">
+              <Link href="https://www.skde.no/kvalitetsregistre/alle/sykehus">
                 <a>Kvalitetsregistre</a>
               </Link>
             </div>
 
             <div className={styles.block_button}>
-              <Link href="/helseatlas/">
+              <Link href="https://www.skde.no/helseatlas/">
                 <a>Helseatlas</a>
               </Link>
             </div>
