@@ -2,9 +2,9 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
-import newsStyles from "../../styles/News.module.css";
-import Layout from "../../components/layout";
-import { dateToString } from "../../helpers/dateHelpers";
+import newsStyles from "../../src/styles/News.module.css";
+import Layout from "../../src/components/layout";
+import { dateToString } from "../../src/helpers/dateHelpers";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
@@ -14,12 +14,6 @@ interface Props {
   content: string;
   frontMatter: any;
 }
-
-const Box = () => {
-  return (
-    <div style={{ backgroundColor: "blue", height: 500, width: 500 }}></div>
-  );
-};
 
 const News = ({ content, frontMatter }: Props) => {
   return (
@@ -36,7 +30,11 @@ const News = ({ content, frontMatter }: Props) => {
             {frontMatter.ingress}
           </div>
           <div className={newsStyles.article__image}>
-            <img src={`/${frontMatter.thumbnail}`} width="100%" />
+            <img
+              src={`/${frontMatter.thumbnail}`}
+              width="100%"
+              alt={frontMatter.title}
+            />
           </div>
           <div className={newsStyles.article__content}>
             <ReactMarkdown
