@@ -30,7 +30,11 @@ const News = ({ content, frontMatter }: Props) => {
             {frontMatter.ingress}
           </div>
           <div className={newsStyles.article__image}>
-            <img src={`/${frontMatter.thumbnail}`} width="100%" />
+            <img
+              src={`/${frontMatter.thumbnail}`}
+              width="100%"
+              alt={frontMatter.title}
+            />
           </div>
           <div className={newsStyles.article__content}>
             <ReactMarkdown
