@@ -1,7 +1,7 @@
 name: Deploy app to AWS
 on:
   push:
-    branches: [main, fix305]
+    branches: [main, develop]
   pull_request:
     branches: [main, develop, dependabot_updates]
 
@@ -33,7 +33,7 @@ jobs:
             --delete \
             --cache-control "public, max-age=1, s-maxage=1"
       - name: Sync develop to S3 bucket qa.skde.org
-        if: github.ref == 'refs/heads/fix305'
+        if: github.ref == 'refs/heads/develop'
         run: |
           aws s3 sync out s3://qa.skde.org \
             --exclude "kvalitetsregistre/*" \
