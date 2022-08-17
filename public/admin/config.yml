@@ -1,8 +1,9 @@
+local_backend: true
 backend:
   name: github
   repo: mong/mongts
   branch: main
-  base_url: https://prod-mong-api.skde.org
+  base_url: https://qa-mong-api.skde.org
 
 media_folder: public/img
 site_url: https://www.skde.no
