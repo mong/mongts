@@ -40,27 +40,19 @@ export default function Home() {
           <h2>Resultater</h2>
           <div className={styles.block_buttons}>
             <div className={styles.block_button}>
-              <Link href="/kvalitetsregistre/">
-                <a>Kvalitetsregistre</a>
-              </Link>
+              <a href="/kvalitetsregistre/">Kvalitetsregistre</a>
             </div>
 
             <div className={styles.block_button}>
-              <Link href="/helseatlas/">
-                <a>Helseatlas</a>
-              </Link>
+              <a href="/helseatlas/">Helseatlas</a>
             </div>
 
             <div className={styles.block_button}>
-              <Link href="/pasientstrommer">
-                <a>Pasientstrømmer</a>
-              </Link>
+              <a href="/pasientstrommer">Pasientstrømmer</a>
             </div>
 
             <div className={styles.block_button}>
-              <Link href="https://helse-nord.no/skde">
-                <a>Om SKDE</a>
-              </Link>
+              <a href="https://helse-nord.no/skde">Om SKDE</a>
             </div>
           </div>
         </div>
