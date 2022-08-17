@@ -1,8 +1,8 @@
 import dynamic from "next/dynamic";
 
-const Admin = dynamic(() => import("./cms"), {
+const InitializeCMS = dynamic(() => import("../../src/components/cms/cms"), {
   ssr: false,
   loading: () => <p>Loading Admin...</p>,
 });
 
-export default Admin;
+export default InitializeCMS;
