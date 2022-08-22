@@ -1,4 +1,5 @@
 import Link from "next/link";
+import React from "react";
 import styles from "../src/styles/Home.module.css";
 import Layout from "../src/components/layout";
 import * as Sentry from "@sentry/react";
@@ -20,6 +21,10 @@ if (process.env.NEXT_PUBLIC_SENTRY) {
 }
 
 export default function Home() {
+  const [origin, setOrigin] = React.useState("");
+  React.useEffect(() => {
+    setOrigin(window.location.origin);
+  }, [setOrigin]);
   return (
     <Layout>
       <div className={styles.full_bleed}>
@@ -40,15 +45,11 @@ export default function Home() {
           <h2>Resultater</h2>
           <div className={styles.block_buttons}>
             <div className={styles.block_button}>
-              <Link href="/kvalitetsregistre/alle/sykehus">
-                <a>Kvalitetsregistre</a>
-              </Link>
+              <a href={`${origin}/kvalitetsregistre/`}>Kvalitetsregistre</a>
             </div>
 
             <div className={styles.block_button}>
-              <Link href="/helseatlas/index.html">
-                <a>Helseatlas</a>
-              </Link>
+              <a href={`${origin}/helseatlas/`}>Helseatlas</a>
             </div>
 
             <div className={styles.block_button}>
@@ -58,9 +59,7 @@ export default function Home() {
             </div>
 
             <div className={styles.block_button}>
-              <Link href="https://helse-nord.no/skde">
-                <a>Om SKDE</a>
-              </Link>
+              <a href="https://helse-nord.no/skde">Om SKDE</a>
             </div>
           </div>
         </div>
