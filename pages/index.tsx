@@ -53,7 +53,9 @@ export default function Home() {
             </div>
 
             <div className={styles.block_button}>
-              <a href={`${origin}//pasientstrommer`}>Pasientstrømmer</a>
+              <Link href="/pasientstrommer">
+                <a>Pasientstrømmer</a>
+              </Link>
             </div>
 
             <div className={styles.block_button}>
