@@ -3,7 +3,7 @@ import React from "react";
 const skdeLogo = "/img/logos/SKDE_hvit_lys.png";
 const helseNordLogo = "/img/logos/hf_nord-white.svg";
 const NSMLogo = "/img/logos/NSM_logo_hvit.png";
-const helseatlasLogo = "/img/logos/img/Logo_atlas_hvit.png";
+const helseatlasLogo = "/img/logos/Logo_atlas_hvit.png";
 
 import style from "./footer.module.css";
 

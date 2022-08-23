@@ -1,11 +1,13 @@
 import { GetServerSideProps, GetStaticPaths } from "next";
 import { useRegisterNamesQuery } from "../../../src/helpers/hooks/apihooks";
 import { QueryClient, QueryClientProvider } from "react-query";
-import Header from "../../../src/components/qmongjs/Header";
-import Footer from "../../../src/components/qmongjs/Footer";
-import MainRegister from "../../../src/components/qmongjs/RegisterPage/MainRegister";
+import Header from "../../../src/components/Header";
+import Footer from "../../../src/components/Footer";
+import MainRegister from "../../../src/components/RegisterPage/MainRegister";
 
 function Page({ registerNames }) {
+  console.log(registerNames);
+
   return (
     <>
       <Header />
