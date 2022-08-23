@@ -45,7 +45,9 @@ export default function Home() {
           <h2>Resultater</h2>
           <div className={styles.block_buttons}>
             <div className={styles.block_button}>
-              <a href={`${origin}/kvalitetsregistre/`}>Kvalitetsregistre</a>
+              <Link href="/kvalitetsregistre">
+                <a>Kvalitetsregistre</a>
+              </Link>
             </div>
 
             <div className={styles.block_button}>
