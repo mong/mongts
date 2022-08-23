@@ -1,31 +1,11 @@
 import { useQuery } from "react-query";
-
-export interface StatisticData {
-  id: number;
-  ind_id: string;
-  unit_level: string;
-  unit_name: string;
-  orgnr: number;
-  year: number;
-  denominator: number;
-  var: number;
-  level: string;
-  level_direction: number | null;
-  dg: number | null;
-  include: number | null;
-  type: "andel" | string;
-  delivery_time: Date;
-  delivery_latest_affirm: Date;
-}
+import { API_HOST, StatisticData } from "../../components/qmongjs/RegisterPage";
 
 interface FetchDescriptionParams {
   registerShortName: string;
   type?: "ind" | "dg";
 }
 
-export const API_HOST =
-  process.env.REACT_APP_API_HOST ?? "http://localhost:4000";
-  
 const descriptionUrl = (params: FetchDescriptionParams): string => {
   const typeQuery: string = params.type ? `?type=${params.type}` : "";
   return `${API_HOST}/data/${params.registerShortName}/descriptions${typeQuery}`;
