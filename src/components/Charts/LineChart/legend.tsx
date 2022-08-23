@@ -5,7 +5,7 @@ import {
   useResizeObserver,
   useLegendItemPosition,
   useTextWidth,
-} from "../../../../helpers/hooks";
+} from "../../../helpers/hooks";
 
 interface LegendProps {
   offsetLeft: number;

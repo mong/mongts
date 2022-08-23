@@ -6,7 +6,7 @@ import { mainQueryParamsConfig } from "./app_config";
 import LEGEND from "./TargetLevels";
 import { MedicalFields } from "./MedicalFields";
 import { IndicatorTable } from "./IndicatorTable";
-import { useMedicalFieldsQuery } from "../../helpers/hooks";
+import { useMedicalFieldsQuery } from "../helpers/hooks";
 import { OptsTu } from "./select_multi";
 
 interface AggData {

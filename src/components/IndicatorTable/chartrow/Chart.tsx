@@ -5,7 +5,7 @@ import { Description, StatisticData } from "../../RegisterPage";
 import BarChart, { Bar, BarStyle } from "../../Charts/BarChart";
 import LineChart, { DataPoint } from "../../Charts/LineChart";
 import { Level } from "../../Charts/types";
-import { useIndicatorQuery } from "../../../../helpers/hooks";
+import { useIndicatorQuery } from "../../../helpers/hooks";
 
 interface Props {
   context: { context: string; type: string };

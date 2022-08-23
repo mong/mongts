@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { useEventListener } from "../../../helpers/hooks";
+import { useEventListener } from "../../helpers/hooks";
 
 import style from "./index.module.css";
 import { RegisterNames } from "../RegisterPage";

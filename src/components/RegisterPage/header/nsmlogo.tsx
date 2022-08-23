@@ -1,5 +1,5 @@
-import logo from "../../../../img/nsmlogo.svg";
 import style from "./nsmlogo.module.css";
+const logo = "/img/logos/nsmlogo.svg";
 
 export const NSMLogo: React.FC = () => {
   return (

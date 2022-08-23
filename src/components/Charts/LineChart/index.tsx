@@ -13,13 +13,13 @@ import { localPoint } from "@visx/event";
 import { useTooltip } from "@visx/tooltip";
 
 import { themeTableChartLine as theme } from "./themeTableChartLine";
-import useDelayInitial from "../../../../utils/useDelayInitial";
+import useDelayInitial from "../../../utils/useDelayInitial";
 import { Level, Margin } from "../types";
-import { useResizeObserver } from "../../../../helpers/hooks";
+import { useResizeObserver } from "../../../helpers/hooks";
 import styles from "./LineChart.module.css";
 import { levelColor } from "../utils";
 import { Legend } from "./legend";
-import { customFormat } from "../../../../helpers/functions/localFormater";
+import { customFormat } from "../../../helpers/functions/localFormater";
 import { LineChartTooltip } from "./tooltip";
 import { StatisticData } from "../../RegisterPage";
 

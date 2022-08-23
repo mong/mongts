@@ -14,8 +14,8 @@ import config, {
   defaultYear,
 } from "../app_config";
 
-import { useResizeObserver, useUnitNamesQuery } from "../../../helpers/hooks";
-import { mathClamp, validateTreatmentUnits } from "../../../helpers/functions";
+import { useResizeObserver, useUnitNamesQuery } from "../../helpers/hooks";
+import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
 import { RegisterNames } from ".";
 import { UnitNameList } from "./unitnamelist";
 import { NestedTreatmentUnitName } from "./unitnamelist/unitnamelistbody";

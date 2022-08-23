@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { API_HOST, StatisticData } from "../../components/qmongjs/RegisterPage";
+import { API_HOST, StatisticData } from "../../components/RegisterPage";
 
 interface FetchDescriptionParams {
   registerShortName: string;

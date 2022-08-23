@@ -11,6 +11,7 @@ function Page({ registerNames }) {
   return (
     <>
       <Header />
+      <MainRegister registerNames={registerNames ?? []} tab="sykehus" />
       <Footer />
     </>
   );
