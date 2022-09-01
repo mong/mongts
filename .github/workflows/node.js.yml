@@ -4,7 +4,7 @@ on:
   push:
     branches: [main, develop]
   pull_request:
-    branches: [main, develop, dependabot_updates]
+    branches: [main, develop, dependency_updates]
 
 jobs:
   build:
