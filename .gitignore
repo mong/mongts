@@ -32,3 +32,16 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# cypress
+/cypress/
+.nyc_output/
+
+# yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

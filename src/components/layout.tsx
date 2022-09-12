@@ -117,7 +117,7 @@ export default function Layout({
               </Link>
             </div>
             <div className={styles.footer_partner_r}>
-              <Link href="https://helseatlas.no/">
+              <Link href="/helseatlas/index.html">
                 <a title="Link til Helseatlas">
                   <img
                     src="/img/logos/Logo_atlas_hvit.png"

@@ -1,21 +1,30 @@
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
+import React from "react";
+import styles from "../src/styles/Home.module.css";
+import Layout from "../src/components/layout";
+import * as Sentry from "@sentry/react";
+import { BrowserTracing } from "@sentry/tracing";
 
-import Layout from "../components/layout";
-
-interface MarkdownFile {
-  title: string;
-  ingress: string;
-  date: string;
-  thumbnail?: string;
-  slug: string;
-}
-
-interface Props {
-  latestNews: MarkdownFile;
+if (process.env.NEXT_PUBLIC_SENTRY) {
+  try {
+    Sentry.init({
+      dsn: process.env.NEXT_PUBLIC_SENTRY,
+      autoSessionTracking: true,
+      integrations: [new BrowserTracing()],
+      tracesSampleRate: 1.0,
+    });
+  } catch (error) {
+    console.log(
+      "Sentry not working with dsn=" + process.env.NEXT_PUBLIC_SENTRY
+    );
+  }
 }
 
 export default function Home() {
+  const [origin, setOrigin] = React.useState("");
+  React.useEffect(() => {
+    setOrigin(window.location.origin);
+  }, [setOrigin]);
   return (
     <Layout>
       <div className={styles.full_bleed}>
@@ -36,15 +45,11 @@ export default function Home() {
           <h2>Resultater</h2>
           <div className={styles.block_buttons}>
             <div className={styles.block_button}>
-              <Link href="/kvalitetsregistre/">
-                <a>Kvalitetsregistre</a>
-              </Link>
+              <a href={`${origin}/kvalitetsregistre/`}>Kvalitetsregistre</a>
             </div>
 
             <div className={styles.block_button}>
-              <Link href="https://helseatlas.no/">
-                <a>Helseatlas</a>
-              </Link>
+              <a href={`${origin}/helseatlas/`}>Helseatlas</a>
             </div>
 
             <div className={styles.block_button}>

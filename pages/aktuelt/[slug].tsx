@@ -2,27 +2,20 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
-import renderToString from "next-mdx-remote/render-to-string";
-import hydrate from "next-mdx-remote/hydrate";
-import { MdxRemote } from "next-mdx-remote/types";
-import newsStyles from "../../styles/News.module.css";
-import Layout from "../../components/layout";
-import { dateToString } from "../../helpers/dateHelpers";
+import newsStyles from "../../src/styles/News.module.css";
+import Layout from "../../src/components/layout";
+import { dateToString } from "../../src/helpers/dateHelpers";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
 const NEWS_DIR = join(process.cwd(), "_posts/aktuelt");
 
 interface Props {
-  source: MdxRemote.Source;
+  content: string;
   frontMatter: any;
 }
 
-const Box = () => {
-  return (
-    <div style={{ backgroundColor: "blue", height: 500, width: 500 }}></div>
-  );
-};
-
-const News = ({ source, frontMatter }: Props) => {
-  const content = hydrate(source, { components: { Box } });
+const News = ({ content, frontMatter }: Props) => {
   return (
     <Layout page={`Aktuelt / ${frontMatter.title}`}>
       <div className={newsStyles.container}>
@@ -37,9 +30,20 @@ const News = ({ source, frontMatter }: Props) => {
             {frontMatter.ingress}
           </div>
           <div className={newsStyles.article__image}>
-            <img src={`/${frontMatter.thumbnail}`} width="100%" />
+            <img
+              src={`/${frontMatter.thumbnail}`}
+              width="100%"
+              alt={frontMatter.title}
+            />
           </div>
-          <div className={newsStyles.article__content}>{content}</div>
+          <div className={newsStyles.article__content}>
+            <ReactMarkdown
+              rehypePlugins={[rehypeRaw]}
+              remarkPlugins={[remarkGfm]}
+            >
+              {content}
+            </ReactMarkdown>
+          </div>
         </div>
       </div>
     </Layout>
@@ -53,10 +57,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const file = fs.readFileSync(fullPath);
 
   const { content, data } = matter(file);
-  const source = await renderToString(content);
   return {
     props: {
-      source,
+      content,
       frontMatter: { ...data, date: dateToString(data.date, false) },
     },
   };
