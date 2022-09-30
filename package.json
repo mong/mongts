@@ -3,13 +3,13 @@
   "packageManager": "yarn@3.2.3",
   "scripts": {
     "postinstall": "husky install",
-    "check-types": "turbo run check-types",
     "build": "turbo run build",
     "export": "turbo run export",
-    "test": "turbo run test",
-    "lint": "turbo run lint",
     "start": "turbo run start",
     "dev": "turbo run dev",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "check-types": "turbo run check-types",
     "check-format": "turbo run check-format"
   },
   "workspaces": [
