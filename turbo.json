@@ -9,6 +9,7 @@
       "dependsOn": ["^build"],
       "outputs": [".out/**"]
     },
+    "check-format": {},
     "test": {
       "dependsOn": ["build"],
       "outputs": [],
