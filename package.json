@@ -3,7 +3,7 @@
   "packageManager": "yarn@3.2.3",
   "scripts": {
     "postinstall": "husky install",
-    "check-types": "tsc --noEmit",
+    "check-types": "turbo run check-types",
     "build": "turbo run build",
     "export": "turbo run export",
     "test": "turbo run test",
