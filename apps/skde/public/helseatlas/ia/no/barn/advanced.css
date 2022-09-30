@@ -1,0 +1,1061 @@
+/**
+Copyright (C) 2012 Geowise Ltd
+All Rights Reserved. The following is Source Code and is subject to all
+restrictions on such code as contained in the End User License Agreement
+accompanying this product.
+*/
+* {
+  -webkit-box-sizing: border-box; /* Makes everything (border,margin,padding) fit inside the defined dimensions of a widget */
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/*------------------- Collapse tables -------------------*/
+table {
+  /*border-collapse:collapse; causes rendering issues in firefox when using rowspan*/ /** All tables */
+  border-spacing: 0;
+}
+/*------------------- Canvas -------------------*/
+canvas {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+/*------------------- Custom Scrollbars -------------------*/
+/*::-webkit-scrollbar 
+{
+	width: 10px;
+	height: 10px;
+}
+::-webkit-scrollbar-track-piece  
+{
+	background-color: #f0f0f0;
+}
+::-webkit-scrollbar-thumb:vertical 
+{
+	height:30px;
+	background-color: #cccccc;
+}
+::-webkit-scrollbar-thumb:horizontal 
+{
+	width:30px;
+	background-color: #cccccc;
+}
+::-webkit-scrollbar-thumb:hover 
+{
+	background-color: #cccccc;
+}*/
+/*------------------- Touch scroll bars -------------------*/
+.touchScrollbarH {
+  position: absolute; /** Horizontal touch scroll bar container */
+  z-index: 1000;
+  height: 5px;
+  bottom: 2px;
+  left: 2px;
+  right: 2px;
+}
+.touchScrollbarH > div {
+  position: absolute; /** Horizontal touch scroll bar */
+  z-index: 1000;
+  height: 100%;
+
+  /* The following is probably what you want to customize */
+  background-color: #000000;
+  opacity: 0.2;
+
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  -o-background-clip: padding-box;
+  background-clip: padding-box;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+
+  -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+  -o-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+.touchScrollbarV {
+  position: absolute; /** Vertical touch scroll bar container */
+  z-index: 1000;
+  width: 5px;
+  bottom: 2px;
+  top: 2px;
+  right: 2px;
+}
+.touchScrollbarV > div {
+  position: absolute; /** Vertical touch scroll bar */
+  z-index: 1000;
+  width: 100%;
+
+  /* The following is probably what you want to customize */
+  background-color: #000000;
+  opacity: 0.2;
+
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+  -o-background-clip: padding-box;
+  background-clip: padding-box;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+
+  -webkit-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+  -o-box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+  box-shadow: inset 1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+/*------------------- Report -------------------*/
+.ia-report {
+  position: relative; /** The report holder */
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  user-select: none;
+}
+.ia-report-printmode {
+  box-shadow: 3px 3px 10px #888888; /** Containing settings for the report container in print mode. */
+}
+.ia-report-loading {
+  position: absolute; /** Loading screen */
+  filter: alpha(opacity=30);
+  -khtml-opacity: 0.3;
+  -moz-opacity: 0.3;
+  opacity: 0.3;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  background-color: #ffffff;
+  background-image: url(busy.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.ia-report-busy {
+  position: absolute; /** Blocks mouse interaction when busy */
+  filter: alpha(opacity=30);
+  -khtml-opacity: 0.3;
+  -moz-opacity: 0.3;
+  opacity: 0.3;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+.ia-selection-color {
+  display: none; /** Selection Color */
+}
+.ia-highlight-color {
+  display: none; /** Highlight Color */
+}
+/*------------------- Widget (inherited by panels, buttons, text and images) -------------------*/
+.ia-widget {
+  position: absolute; /** Widget */
+  overflow: hidden;
+}
+/*------------------- Dragger -------------------*/
+.ia-dragger {
+  position: absolute; /** Dragger */
+  border-width: 2px;
+  border-style: solid;
+  border-color: #ff6c00;
+  visibility: hidden;
+}
+.ia-dragger-busy {
+  position: absolute; /** Blocks mouse interaction when busy */
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+/*------------------- Panel  -------------------*/
+.ia-panel {
+  /*overflow:hidden;*/ /** Panel */
+  width: 100%;
+  height: 100%;
+}
+.ia-popup-panel {
+  box-shadow: 3px 3px 10px #888888; /** Popup panel adds drop shadow */
+}
+.ia-panel-header {
+  position: relative; /** Panel header */
+  min-height: 1em;
+  z-index: 2;
+  white-space: pre-wrap; /* CSS3 */
+  white-space: -moz-pre-wrap; /* Firefox */
+  white-space: -pre-wrap; /* Opera <7 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* IE */
+}
+.ia-panel-content {
+  position: relative; /** Panel content */
+  z-index: 1;
+}
+.ia-panel-content-text {
+  display: none; /** Panel content text */
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  line-height: 50%;
+}
+.ia-panel-footer {
+  position: relative; /** Panel footer */
+  overflow-x: hidden;
+}
+.ia-panel-btns {
+  position: absolute; /** Panel buttons */
+  visibility: hidden;
+  filter: alpha(opacity=40);
+  -khtml-opacity: 0.4;
+  -moz-opacity: 0.4;
+  opacity: 0.4;
+  z-index: 3;
+  top: 0px;
+  right: 0px;
+}
+.ia-panel-btn {
+  float: right; /** Panel button */
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 30px;
+  height: 30px;
+}
+.ia-panel-resize-btn-maximize {
+  background-image: url(maximize.png); /** Panel resize button - maximize */
+}
+.ia-panel-resize-btn-minimize {
+  background-image: url(minimize.png); /** Panel resize button - minimize */
+}
+.ia-panel-export-btn {
+  background-image: url(export.png); /** Panel export button */
+}
+.ia-panel-close-btn {
+  background-image: url(close.png); /** Panel close button */
+}
+.ia-panel-settings-btn {
+  background-image: url(settings.png); /** Panel settings button */
+}
+/*------------------- Button -------------------*/
+.button {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /** Button */
+  cursor: pointer;
+}
+.ia-button:hover {
+  -webkit-transition-property: background-color, color; /** Button hover. */
+  -webkit-transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-out;
+}
+.button:focus {
+  outline: none; /** Button - focus */
+}
+.menuButton,
+#dataButton,
+#dataButton2,
+#dataButton3,
+#dataButton4,
+#filterButton,
+#filterButton2,
+#geographyButton {
+  background-image: url(arrow_down_white.png); /** Menu buttons */
+  background-repeat: no-repeat;
+  background-position: center right;
+  padding-right: 30px;
+}
+/*------------------- Text -------------------*/
+.ia-link {
+  cursor: pointer; /** Link */
+}
+.ia-link:hover {
+  text-decoration: underline; /** Link hover */
+}
+/*------------------- Tooltip -------------------*/
+.ia-tooltip {
+  position: absolute; /** Tooltip */
+  z-index: 1000;
+  display: none;
+}
+/*------------------- Datatip -------------------*/
+.ia-datatip {
+  position: absolute; /** Datatip */
+  z-index: 1000;
+  display: none;
+  white-space: nowrap;
+  pointer-events: none;
+}
+/*------------------- Chart -------------------*/
+.ia-chart {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /** Chart */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.ia-chart-vertical-axis {
+  font-family: Verdana;
+  font-size: 12px;
+  color: #888888;
+  -webkit-transform: matrix(0, -1, 1, 0, 0, 0);
+  -moz-transform: matrix(0, -1, 1, 0, 0px, 0px);
+  -ms-transform: matrix(0, -1, 1, 0, 0, 0);
+  -o-transform: matrix(0, -1, 1, 0, 0, 0);
+  transform: matrix(0, -1, 1, 0, 0, 0);
+}
+.ia-nodata-text {
+  text-align: center; /** No data available text for charts */
+}
+/*------------------- Advanced pie chart component -------------------*/
+.ia-advanced-chart {
+  width: 100%; /** Advanced pie chart component */
+  height: 100%;
+}
+.ia-advanced-chart-scrollbox {
+  position: relative; /** Advanced pie chart component scrollbox */
+  overflow-x: auto;
+  overflow-y: auto;
+}
+/*------------------- Map -------------------*/
+.ia-map {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /** Contains the map */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+.ia-map-copyright {
+  position: absolute; /** Map copyright */
+  filter: alpha(opacity=60);
+  -khtml-opacity: 0.6;
+  -moz-opacity: 0.6;
+  opacity: 0.6;
+}
+/*------------------- Metadata -------------------*/
+.ia-metadata-scrollbox {
+  width: 100%; /** Metadata scroll box */
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+/*------------------- Time Control -------------------*/
+.ia-time-control-scrollbox {
+  width: 100%; /** Time control scroll box */
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.ia-time-control-table {
+  width: 100%; /** Time control table */
+  height: 100%;
+}
+.ia-time-control-td {
+  vertical-align: middle; /** Time control table cells */
+  text-align: center;
+}
+.ia-time-control-btn {
+  width: 50px; /** Time control button */
+  min-width: 30px;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.ia-time-control-btn-play /** Time control play button */ {
+  background-image: url(play.png);
+}
+.ia-time-control-btn-stop /** Time control stop button */ {
+  background-image: url(stop.png);
+}
+.ia-time-control-btn-back /** Time control back button */ {
+  background-image: url(previous.png);
+}
+.ia-time-control-btn-forward /** Time control forward button */ {
+  background-image: url(next.png);
+}
+/*.ia-time-control-date-notch
+{	
+	margin:0 auto;
+	width:0px;
+	height:0px;
+    border-top:0;
+    border-right:8px solid transparent;
+    border-left:8px solid transparent;
+    border-bottom:8px solid transparent;
+}
+.ia-time-control-date-notch-active
+{	
+   border-bottom: 8px solid #DCDCDC;
+}*/
+/*------------------- Menubar -------------------*/
+.ia-menubar {
+  width: 100%; /** Menubar */
+  height: 100%;
+  overflow: hidden;
+}
+.ia-menubar-table {
+  width: 100%; /** Menubar table */
+  height: 100%;
+}
+.ia-menubar-table td + td {
+  border-left-width: 1px; /** Data table cell borders */
+  border-left-style: solid;
+}
+.ia-menubar-btn {
+  vertical-align: middle; /** Menubar btn (td) */
+  text-align: center;
+}
+/*------------------- Input -------------------*/
+.ia-input {
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -o-user-select: text;
+  user-select: text;
+}
+/*------------------- Tables -------------------*/
+.ia-table {
+  position: relative; /** Data table container */
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.ia-table-scrollbox {
+  position: relative; /** Data table scroll box */
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.ia-table table {
+  table-layout: fixed; /** Data table */
+  width: 10px; /* word-wrap doesnt work unless this is set to an arbitrary value for unknown reason */
+}
+.ia-table th + th,
+.ia-table td.ia-table-cell + td.ia-table-cell,
+.ia-table th + td.ia-table-cell {
+  border-left-width: 1px; /** Data table cell borders */
+  border-left-style: solid;
+}
+.ia-table-header {
+  overflow: hidden; /** Data table header */
+  text-overflow: ellipsis;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center right;
+  /*-webkit-user-select: text;
+	-khtml-user-select: text;
+	-moz-user-select: text;
+	-o-user-select: text;
+	user-select: text;*/
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.ia-table-header.sort-asc {
+  background-image: url(table_sort_asc.png); /** Data table header sort button ascending */
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.ia-table-header.sort-desc {
+  background-image: url(table_sort_desc.png); /** Data table header sort button descending */
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.ia-table-cell {
+  cursor: pointer; /** Table cell */
+  white-space: pre-wrap; /* CSS3 */
+  white-space: -moz-pre-wrap; /* Firefox */
+  white-space: -pre-wrap; /* Opera <7 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* IE */
+  /*-webkit-user-select: text;
+	-khtml-user-select: text;
+	-moz-user-select: text;
+	-o-user-select: text;
+	user-select: text;*/
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.ia-table-header-corner {
+  position: absolute; /** Table header corner  */
+  right: 0;
+  top: 0;
+}
+.ia-table-notes {
+  cursor: pointer; /** Table notes button */
+}
+.ia-table-legend-swatch {
+  vertical-align: middle;
+  display: inline-block; /** Table legend color */
+  height: 8px;
+  width: 8px;
+  margin-right: 5px;
+  border-radius: 4px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #cccccc;
+}
+.ia-table-notes-icon {
+  vertical-align: middle; /** Table cell with notes */
+  display: inline-block;
+  background-image: url(notes.png);
+  background-repeat: no-repeat;
+  background-position: center left;
+  width: 20px;
+  height: 14px;
+}
+.ia-table-notes-icon:hover {
+  background-image: url(notes_hover.png); /** Table cell with notes - hover */
+}
+/*------------------- Profile -------------------*/
+.ia-profile-indicator-name-cell {
+  cursor: pointer; /** Table cell */
+  white-space: pre-wrap; /* CSS3 */
+  white-space: -moz-pre-wrap; /* Firefox */
+  white-space: -pre-wrap; /* Opera <7 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* IE */
+  /*-webkit-user-select: text;
+	-khtml-user-select: text;
+	-moz-user-select: text;
+	-o-user-select: text;
+	user-select: text;*/
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.ia-profile-theme-expand {
+  background-image: url(arrow_right.png); /** Profile - theme expand arrow */
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+.ia-profile-theme-collapse {
+  background-image: url(arrow_down.png); /** Profile - theme collapse arrow */
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+/*------------------- Menu Items -------------------*/
+.ia-list-item {
+  cursor: pointer; /** List item hover */
+}
+.ia-ui {
+  width: 100%;
+  height: 100%; /** User interface */
+}
+.ia-ui-row {
+  width: 100%; /** User interface row */
+  display: table;
+  border-bottom-color: #e9e9e9;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  height: 100%;
+}
+.ia-ui-row-no-border {
+  border-bottom-width: 0px; /** User interface row - no border */
+}
+.ia-ui-item {
+  text-align: left; /** User interface item */
+  vertical-align: middle;
+  text-overflow: ellipsis;
+  padding: 8px;
+}
+.ia-ui-item-align-center {
+  text-align: center; /** User interface item which is center aligned */
+}
+.ia-ui-item-table-cell {
+  display: table-cell; /** User interface item with table cell behaviour - Allows horizontal layout of divs */
+}
+.ia-ui-item-icon {
+  text-align: center; /** User interface item with icon only - the icon id text not an image */
+  font-family: Arial;
+  font-weight: normal;
+  font-size: 25px;
+  padding: 6px;
+}
+.ia-ui-item-right-arrow {
+  background-image: url(arrow_right.png); /** User interface item with right arrow */
+  background-repeat: no-repeat;
+  background-position: center left;
+  padding-left: 30px;
+}
+.ia-ui-item-up-arrow {
+  background-image: url(arrow_up.png); /** User interface item with up arrow */
+  background-repeat: no-repeat;
+  background-position: center left;
+  padding-left: 30px;
+}
+.ia-ui-item-down-arrow {
+  background-image: url(arrow_down.png); /** User interface item with down arrow */
+  background-repeat: no-repeat;
+  background-position: center left;
+  padding-left: 30px;
+}
+.ia-ui-item-left-arrow {
+  background-image: url(arrow_left.png); /** User interface item with left arrow */
+  background-repeat: no-repeat;
+  background-position: center left;
+  padding-left: 30px;
+}
+.ia-ui-item-notes {
+  background-image: url(notes.png); /** User interface item with notes */
+  background-repeat: no-repeat;
+  background-position: center left;
+  padding-left: 30px;
+}
+/*------------------- Legend editor - uses user interface -------------------*/
+.ia-editor {
+  position: relative; /** Legend editor */
+}
+.ia-editor-panel {
+  width: 100%; /** Editor panel */
+}
+.ia-editor-separator {
+  width: 100%; /** Editor separator */
+  height: 10px;
+  margin-bottom: 10px;
+  border-bottom-color: #cccccc;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+.ia-editor-classifier-panel {
+  /** Classifier panel */
+}
+.ia-editor-classifier-panel td {
+  vertical-align: middle; /** Classifier panel td */
+  text-align: left;
+  padding: 10px;
+}
+.ia-editor-classifier-selected {
+  color: #000000;
+  font-weight: bold;
+}
+.ia-editor-classifier-panel td + td {
+  border-left-color: #cccccc; /** Classifier panel td */
+  border-left-width: 1px;
+  border-left-style: solid;
+}
+.ia-editor-palette-panel {
+  /** Palette panel */
+}
+.ia-editor-palette-panel td /** Palette panel td */ {
+  vertical-align: top;
+  padding: 0px;
+}
+.ia-editor-color-panel {
+  width: 100%; /** Color panel */
+}
+.ia-editor-color-panel td {
+  padding: 5px; /** Color panel td */
+}
+.ia-editor-color-panel-discrete-swatch {
+  width: 15px; /** Discrete color swatch */
+  height: 15px;
+  margin-bottom: 3px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-color: #cccccc;
+  border-width: 1px;
+  border-style: solid;
+}
+.ia-editor-color-panel-continuous-swatch {
+  width: 15px; /** Contiuous color swatch */
+  height: 95px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  border-color: #cccccc;
+  border-width: 1px;
+  border-style: solid;
+}
+.ia-editor-swatch-selected {
+  border-color: #000000;
+  border-width: 2px;
+}
+.ia-editor-tool-panel {
+  width: 100%; /** Tool panel */
+}
+.ia-editor-tool-panel td {
+  text-align: center;
+  font-family: Arial;
+  font-weight: normal;
+  font-size: 25px;
+}
+.ia-editor-size-panel {
+  /** Size panel */
+}
+.ia-editor-size-panel td {
+  text-align: center; /** Size panel td */
+  font-family: Arial;
+  font-weight: normal;
+  font-size: 25px;
+}
+/*------------------- Explorer - uses user interface  -------------------*/
+.ia-explorer {
+  width: 100%; /** Explorer container */
+  height: 100%;
+}
+.ia-explorer-scrollbox {
+  position: relative; /** Explorer scroll box container */
+  overflow-x: auto;
+  overflow-y: auto;
+}
+.ia-explorer-tree {
+  padding: 10px; /** The padding around the explorer */
+}
+.ia-explorer-item {
+  padding-right: 10px; /** Explorer item */
+}
+.ia-explorer-branch {
+  padding-left: 30px; /** Explorer branch item */
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+.ia-explorer-branch-icon {
+  background-image: url(arrow_right.png); /** Branch item icon */
+}
+.ia-explorer-branch-expanded-icon {
+  background-image: url(arrow_down.png); /** Branch item expanded icon */
+}
+.ia-explorer-leaf {
+  padding-left: 10px; /** Explorer leaf item. */
+}
+.ia-explorer-label {
+  display: table-cell; /** Explorer item label */
+  text-align: left;
+  vertical-align: middle;
+  text-overflow: ellipsis;
+}
+.ia-explorer-notes-icon {
+  display: table-cell; /** Explorer notes icon */
+  background-image: url(notes.png);
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center left;
+  width: 20px;
+  height: 13px;
+}
+.ia-explorer-notes-icon:hover {
+  background-image: url(notes_hover.png); /** Explorer notes icon */
+}
+.ia-explorer-selected-item {
+  font-weight: bold; /* Explorer item that has been selected. */
+  border-color: #cccccc;
+  border-width: 1px;
+  border-style: dotted;
+}
+.ia-filter-explorer-selected-item {
+  background-image: url(x_active.png); /** Filter explorer selected item */
+  background-repeat: no-repeat;
+  background-position: center left;
+  padding-left: 30px;
+}
+.ia-explorer-group {
+  padding-left: 30px; /** Explorer group - Controls the indent for each successive branch. */
+}
+/*------------------- Layer List - uses user interface  -------------------*/
+.ia-layer-list {
+  width: 100%; /** Layer list */
+  height: 100%;
+}
+.ia-layer-list-scrollbox {
+  position: relative; /** Layer list scroll box */
+  overflow-x: auto;
+  overflow-y: auto;
+}
+.ia-layer-list-table {
+  width: 100%; /** Layer list table */
+  padding: 10px;
+}
+.ia-layer-list-item {
+  padding-left: 30px; /** Layer list item */
+  padding-right: 10px;
+}
+.ia-layer-list-item-unchecked {
+  background-image: url(checkbox_unchecked.png); /** Layer row unchecked */
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+.ia-layer-list-item-checked {
+  background-image: url(checkbox_checked.png); /** Layer row checked */
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+.ia-layer-list-legend-td {
+  padding: 0px; /** Layer list td that holds the legend */
+}
+/*------------------- Legend -------------------*/
+.ia-legend {
+  text-align: left; /** Legend */
+  width: 100%;
+}
+.ia-legend-table {
+  width: 100%; /** Legend label */
+}
+.ia-legend-item {
+  cursor: pointer; /** Legend item */
+}
+.ia-legend-label {
+  vertical-align: middle; /** Legend label */
+  width: 100%;
+}
+.ia-gradient-legend-label {
+  text-align: center; /** Continuous legend label */
+}
+.ia-legend-symbol {
+  text-align: center; /** Legend symbol container */
+  padding: 0px;
+  margin: 0px;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+.ia-legend-horizontal {
+  width: 100%; /** Legend - horizontal */
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+/*------------------- Feature Legend -------------------*/
+.ia-feature-legend {
+  width: 100%; /** Feature Legend */
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+/*------------------- Profile Legend -------------------*/
+.ia-profile-legend {
+  width: 100%; /** Profile Legend */
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+/*------------------- Toolbars - uses user interface  -------------------*/
+.ia-table-toolbar {
+  position: relative; /** Table Toolbar */
+  height: 37px;
+}
+.ia-map-toolbar {
+  position: absolute; /** Map toolbar */
+  visibility: hidden;
+}
+.ia-toolbar-text-btn {
+  float: left; /** Toolbar Text button */
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center right;
+  padding-right: 30px;
+  padding-left: 10px;
+  height: 37px;
+  line-height: 37px;
+}
+.ia-toolbar-text-btn-disabled {
+  color: #cccccc; /** Toolbar text button - disabled */
+}
+.ia-toolbar-btn {
+  float: left; /** Toolbar button */
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 37px;
+  height: 37px;
+}
+.ia-zoomin-btn {
+  background-image: url(map_tool_zoomin.png); /** Map toolbar zoom in button */
+}
+.ia-zoomfull-btn {
+  background-image: url(map_tool_zoomfull.png); /** Map toolbar zoom full button */
+}
+.ia-zoomout-btn {
+  background-image: url(map_tool_zoomout.png); /** Map toolbar zoom out button */
+}
+.ia-search-btn {
+  background-image: url(map_tool_search.png); /** Map toolbar search button */
+}
+.ia-cross-btn {
+  background-image: url(x_active.png); /** Toolbar cross button */
+}
+.ia-cross-btn-disabled {
+  background-image: url(x_disabled.png); /** Toolbar cross button - disabled */
+}
+/*------------------- Search  -------------------*/
+.ia-search-input {
+  font-family: Verdana;
+  font-size: 11px;
+  color: #888888;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #dcdcdc;
+  border-radius: 2px;
+  width: 96%;
+}
+.ui-autocomplete {
+  font-family: Verdana;
+  font-size: 11px;
+  color: #888888;
+  max-height: 150px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.ui-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #dcdcdc;
+  border-radius: 2px;
+  width: 250px;
+}
+.ui-menu-item {
+  cursor: pointer;
+  border-bottom-color: #e5e5e5;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  padding: 10px;
+}
+.ui-menu-item:hover {
+  text-decoration: underline;
+}
+.ui-menu-item:active {
+  text-decoration: underline;
+}
+.ui-state-focus {
+  text-decoration: underline;
+}
+.ui-helper-hidden-accessible {
+  display: none;
+}
+/*------------------- Callout -------------------*/
+.callout {
+  position: absolute; /** Callout box */
+  display: none;
+  z-index: 1000;
+  background-color: #ffffff;
+  box-shadow: 3px 3px 10px #888888;
+  border-radius: 3px;
+  border-width: 0px;
+  border-style: solid;
+  border-color: #cccccc;
+  padding: 12px;
+  min-height: 30px;
+  min-width: 30px;
+}
+.callout-notch {
+  position: absolute; /** Callout notch */
+}
+.callout-notch-left-right {
+  border-top: 10px solid transparent; /** Callout notch */
+  border-bottom: 10px solid transparent;
+}
+.callout-notch-left {
+  border-left: 0; /** Callout notch */
+  border-right: 10px solid #ffffff;
+}
+.callout-notch-right {
+  border-left: 10px solid #ffffff; /** Callout notch */
+  border-right: 0;
+}
+.callout-notch-border-left {
+  border-right-color: #cccccc; /** Callout notch */
+}
+.callout-notch-border-right {
+  border-left-color: #cccccc; /** Callout notch */
+}
+.callout-notch-top-bottom {
+  border-left: 10px solid transparent; /** Callout notch */
+  border-right: 10px solid transparent;
+}
+.callout-notch-bottom {
+  border-bottom: 0; /** Callout notch */
+  border-top: 10px solid #ffffff;
+}
+.callout-notch-top {
+  border-bottom: 10px solid #ffffff; /** Callout notch */
+  border-top: 0;
+}
+.callout-notch-border-bottom {
+  border-top-color: #cccccc; /** Callout notch */
+}
+.callout-notch-border-top {
+  border-bottom-color: #cccccc; /** Callout notch */
+}
+/*------------------- Input -------------------*/
+.ia-input {
+  font-family: Verdana; /** Input controls */
+  font-size: 12px;
+  font-weight: normal;
+  color: #888888;
+}
+/*------------------- Print -------------------*/
+.ia-print-bar {
+  width: 140px; /** Print menu */
+  margin: auto;
+  padding: 5px;
+}
+.ia-print-btn {
+  background-repeat: no-repeat; /** Print menu print button */
+  background-position: center center;
+  background-image: url(print.png);
+  border-radius: 2px;
+}
+.ia-minus-btn {
+  background-repeat: no-repeat; /** Print menu minus button */
+  background-position: center center;
+  background-image: url(map_tool_zoomout.png);
+  border-radius: 2px;
+}
+.ia-plus-btn {
+  background-repeat: no-repeat; /** Print menu plus button */
+  background-position: center center;
+  background-image: url(map_tool_zoomin.png);
+  border-radius: 2px;
+}
+@media print {
+  .ia-print-bar {
+    display: none;
+  }
+}
+/*------------------- Feature Card -------------------*/
+.ia-feature-card-scrollbox {
+  width: 100%; /** Feature card scroll box */
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+/*.ia-feature-card-item:after 
+{
+	content: "."; 	
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}*/

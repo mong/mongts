@@ -3,7 +3,7 @@ import matter from "gray-matter";
 import { GetStaticProps } from "next";
 import Link from "next/link";
 import { join } from "path";
-import Layout from "../../src/components/layout";
+import Layout from "../../src/components/frontpageLayout";
 import { dateToString } from "../../src/helpers/dateHelpers";
 import styles from "../../src/styles/Home.module.css";
 const NEWS_DIR = join(process.cwd(), "_posts/aktuelt");

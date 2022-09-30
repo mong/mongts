@@ -1,0 +1,478 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": [
+        "rateSnitt"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Antall allmennlegekonsultasjoner pr. 1 000 innbyggere",
+        "en": "Number of general practitioner consultations per 1,000 inhabitants"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "rate2019",
+        "rate2020",
+        "rate2021"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2019",
+          "2020",
+          "2021"
+        ],
+        "en": [
+          "2019",
+          "2020",
+          "2021"
+        ]
+      }
+    },
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": [
+        "FL_rate",
+        "LV_rate"
+      ],
+      "xLegend": {
+        "nb": [
+          "Fastlege",
+          "Legevakt"
+        ],
+        "en": [
+          "Family doctor",
+          "On-call doctor"
+        ]
+      },
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Antall allmennlegekonsultasjoner pr. 1 000 innbyggere",
+        "en": "Number of general practitioner consultations per 1,000 inhabitants"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      }
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nb": "Gjennomsnittsverdier for perioden 2019–2021. Rate pr. 1 000 innbyggere 18 år og eldre",
+        "en": "Average per year for the period 2019–2021. Rate per 1,000 inhabitants 18 years and older"
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområder",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "rateSnitt",
+          "label_no": "Rate",
+          "label_en": "Rate",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "kontakter_prim",
+          "label_no": "Allmennlege konsultasjoner",
+          "label_en": "# GP consultations",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "primkont_pr_pas",
+          "label_no": "Kons. pr. pas.",
+          "label_en": "Cons. per patient",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "andel_FL_kont",
+          "label_no": "Andel fastlege",
+          "label_en": "% GP",
+          "typeVar": "number",
+          "format": ",.1%"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "rateSnitt",
+      "caption": {
+        "nb": "Antall allmennlegekonsultasjoner pr. 1 000 innbyggere",
+        "en": "Number of general practitioner consultations per 1,000 inhabitants"
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": "  4.3550",
+          "min": "  4.3550",
+          "lag_min": 4.72952422021,
+          "grense": 4.54228537687
+        },
+        {
+          "cluster": 2,
+          "max": "  5.1994",
+          "min": "  4.7295",
+          "lag_min": 5.5708585936,
+          "grense": 5.38514517641
+        },
+        {
+          "cluster": 3,
+          "max": "  6.3414",
+          "min": "  5.5709",
+          "lag_min": 6.60682785578,
+          "grense": 6.47409358968
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "data": [
+        {
+          "bohf": "Finnmark",
+          "innbyggere": 60664,
+          "pasienter": 128,
+          "kontakter_prim": 298,
+          "primkont_pr_pas": 2.328125,
+          "rate2019": 4.66147937311,
+          "rate2020": 4.33061220063,
+          "rate2021": 5.15162275599,
+          "rateSnitt": 4.72952422021,
+          "FL_rate": 4.35044960247,
+          "LV_rate": 0.379074617739,
+          "andel_FL_kont": 0.919849312512,
+          "andel_LV_kont": 0.0801506874876
+        },
+        {
+          "bohf": "UNN",
+          "innbyggere": 155748.333333,
+          "pasienter": 443,
+          "kontakter_prim": 1099.33333333,
+          "primkont_pr_pas": 2.48156508653,
+          "rate2019": 6.32442542167,
+          "rate2020": 6.78746279674,
+          "rate2021": 6.69915739198,
+          "rateSnitt": 6.60682785578,
+          "FL_rate": 6.30888376029,
+          "LV_rate": 0.297944095487,
+          "andel_FL_kont": 0.954903608511,
+          "andel_LV_kont": 0.0450963914894
+        },
+        {
+          "bohf": "Nordland",
+          "innbyggere": 110493.333333,
+          "pasienter": 323.333333333,
+          "kontakter_prim": 645.333333333,
+          "primkont_pr_pas": 1.99587628866,
+          "rate2019": 4.77509975559,
+          "rate2020": 5.3362971651,
+          "rate2021": 5.48319259852,
+          "rateSnitt": 5.19943175921,
+          "FL_rate": 4.8748871347,
+          "LV_rate": 0.324544624507,
+          "andel_FL_kont": 0.937580751217,
+          "andel_LV_kont": 0.0624192487827
+        },
+        {
+          "bohf": "Helgeland",
+          "innbyggere": 62532.3333333,
+          "pasienter": 243,
+          "kontakter_prim": 475.666666667,
+          "primkont_pr_pas": 1.95747599451,
+          "rate2019": 6.61005346839,
+          "rate2020": 6.20417031315,
+          "rate2021": 6.24583800721,
+          "rateSnitt": 6.34135932358,
+          "FL_rate": 5.78448604377,
+          "LV_rate": 0.556873279809,
+          "andel_FL_kont": 0.91218392597,
+          "andel_LV_kont": 0.0878160740297
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "innbyggere": 106589,
+          "pasienter": 377,
+          "kontakter_prim": 759.333333333,
+          "primkont_pr_pas": 2.01414677277,
+          "rate2019": 6.26469388378,
+          "rate2020": 6.464852848,
+          "rate2021": 5.87468696641,
+          "rateSnitt": 6.19591355825,
+          "FL_rate": 5.94629539485,
+          "LV_rate": 0.249618163397,
+          "andel_FL_kont": 0.95971245224,
+          "andel_LV_kont": 0.0402875477604
+        },
+        {
+          "bohf": "St. Olav",
+          "innbyggere": 265559.333333,
+          "pasienter": 690.333333333,
+          "kontakter_prim": 1461.33333333,
+          "primkont_pr_pas": 2.11685176243,
+          "rate2019": 5.08888590609,
+          "rate2020": 6.09526547596,
+          "rate2021": 6.07821849699,
+          "rateSnitt": 5.75973939717,
+          "FL_rate": 5.53538687883,
+          "LV_rate": 0.224352518345,
+          "andel_FL_kont": 0.96104814769,
+          "andel_LV_kont": 0.0389518523104
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "innbyggere": 209615.666667,
+          "pasienter": 707.333333333,
+          "kontakter_prim": 1461,
+          "primkont_pr_pas": 2.06550424128,
+          "rate2019": 6.22247306318,
+          "rate2020": 6.27349882305,
+          "rate2021": 6.3181223044,
+          "rateSnitt": 6.27569958477,
+          "FL_rate": 6.04543469908,
+          "LV_rate": 0.230264885686,
+          "andel_FL_kont": 0.963308491336,
+          "andel_LV_kont": 0.0366915086638
+        },
+        {
+          "bohf": "Førde",
+          "innbyggere": 85207.3333333,
+          "pasienter": 289.666666667,
+          "kontakter_prim": 663.666666667,
+          "primkont_pr_pas": 2.29113924051,
+          "rate2019": 6.59994760532,
+          "rate2020": 7.02053192026,
+          "rate2021": 6.53514231709,
+          "rateSnitt": 6.70398500269,
+          "FL_rate": 6.38059137704,
+          "LV_rate": 0.323393625656,
+          "andel_FL_kont": 0.951760986111,
+          "andel_LV_kont": 0.048239013889
+        },
+        {
+          "bohf": "Bergen",
+          "innbyggere": 358888,
+          "pasienter": 961,
+          "kontakter_prim": 1928,
+          "primkont_pr_pas": 2.00624349636,
+          "rate2019": 5.13205792991,
+          "rate2020": 6.01169188593,
+          "rate2021": 5.97707620319,
+          "rateSnitt": 5.7122241843,
+          "FL_rate": 5.54756641969,
+          "LV_rate": 0.164657764613,
+          "andel_FL_kont": 0.971174491879,
+          "andel_LV_kont": 0.0288255081209
+        },
+        {
+          "bohf": "Fonna",
+          "innbyggere": 140218,
+          "pasienter": 464,
+          "kontakter_prim": 1109.66666667,
+          "primkont_pr_pas": 2.39152298851,
+          "rate2019": 7.23989098338,
+          "rate2020": 7.70289734489,
+          "rate2021": 7.20767722255,
+          "rateSnitt": 7.38885905017,
+          "FL_rate": 7.21596044058,
+          "LV_rate": 0.172898609593,
+          "andel_FL_kont": 0.976600093679,
+          "andel_LV_kont": 0.023399906321
+        },
+        {
+          "bohf": "Stavanger",
+          "innbyggere": 282988.666667,
+          "pasienter": 663.333333333,
+          "kontakter_prim": 1625.66666667,
+          "primkont_pr_pas": 2.45075376884,
+          "rate2019": 6.69472950924,
+          "rate2020": 6.46020735656,
+          "rate2021": 6.93314539469,
+          "rateSnitt": 6.69225984838,
+          "FL_rate": 6.47008170131,
+          "LV_rate": 0.222178147066,
+          "andel_FL_kont": 0.966800729186,
+          "andel_LV_kont": 0.0331992708143
+        },
+        {
+          "bohf": "Østfold",
+          "innbyggere": 252406.333333,
+          "pasienter": 766.333333333,
+          "kontakter_prim": 1663.33333333,
+          "primkont_pr_pas": 2.17050891692,
+          "rate2019": 5.88222606769,
+          "rate2020": 6.08192029349,
+          "rate2021": 6.11728598883,
+          "rateSnitt": 6.0332382463,
+          "FL_rate": 5.80376440762,
+          "LV_rate": 0.229473838678,
+          "andel_FL_kont": 0.961965062656,
+          "andel_LV_kont": 0.0380349373437
+        },
+        {
+          "bohf": "Akershus",
+          "innbyggere": 449568.666667,
+          "pasienter": 1021.66666667,
+          "kontakter_prim": 2646,
+          "primkont_pr_pas": 2.5898858075,
+          "rate2019": 5.24304151976,
+          "rate2020": 6.45827777823,
+          "rate2021": 6.77761631705,
+          "rateSnitt": 6.18027248628,
+          "FL_rate": 5.98610914305,
+          "LV_rate": 0.194163343225,
+          "andel_FL_kont": 0.968583368507,
+          "andel_LV_kont": 0.0314166314926
+        },
+        {
+          "bohf": "OUS",
+          "innbyggere": 218202,
+          "pasienter": 466.333333333,
+          "kontakter_prim": 1158,
+          "primkont_pr_pas": 2.48320228735,
+          "rate2019": 6.52338223678,
+          "rate2020": 7.21920879804,
+          "rate2021": 7.42083602399,
+          "rateSnitt": 7.06984495981,
+          "FL_rate": 6.92930611005,
+          "LV_rate": 0.140538849753,
+          "andel_FL_kont": 0.980121367505,
+          "andel_LV_kont": 0.0198786324951
+        },
+        {
+          "bohf": "Lovisenberg",
+          "innbyggere": 136184.333333,
+          "pasienter": 136.333333333,
+          "kontakter_prim": 294.333333333,
+          "primkont_pr_pas": 2.15892420538,
+          "rate2019": 5.35275754414,
+          "rate2020": 6.60952977962,
+          "rate2021": 7.08207016173,
+          "rateSnitt": 6.30442185569,
+          "FL_rate": 6.15419571155,
+          "LV_rate": 0.150226144133,
+          "andel_FL_kont": 0.976171305225,
+          "andel_LV_kont": 0.0238286947751
+        },
+        {
+          "bohf": "Diakonhjemmet",
+          "innbyggere": 117501.666667,
+          "pasienter": 333.333333333,
+          "kontakter_prim": 815,
+          "primkont_pr_pas": 2.445,
+          "rate2019": 6.53765420498,
+          "rate2020": 7.89002144587,
+          "rate2021": 8.16870362608,
+          "rateSnitt": 7.56305345207,
+          "FL_rate": 7.42211768423,
+          "LV_rate": 0.140935767838,
+          "andel_FL_kont": 0.981365229172,
+          "andel_LV_kont": 0.0186347708278
+        },
+        {
+          "bohf": "Innlandet",
+          "innbyggere": 274507.666667,
+          "pasienter": 846.333333333,
+          "kontakter_prim": 1925.66666667,
+          "primkont_pr_pas": 2.27530523828,
+          "rate2019": 5.46741208921,
+          "rate2020": 5.70834650632,
+          "rate2021": 6.32802212049,
+          "rateSnitt": 5.83885247315,
+          "FL_rate": 5.6878948317,
+          "LV_rate": 0.150957641457,
+          "andel_FL_kont": 0.974146008629,
+          "andel_LV_kont": 0.025853991371
+        },
+        {
+          "bohf": "Vestre Viken",
+          "innbyggere": 382236.333333,
+          "pasienter": 1128.66666667,
+          "kontakter_prim": 2868.33333333,
+          "primkont_pr_pas": 2.5413467218,
+          "rate2019": 6.85231359994,
+          "rate2020": 7.49291260362,
+          "rate2021": 7.25354648972,
+          "rateSnitt": 7.20297718602,
+          "FL_rate": 6.96048078052,
+          "LV_rate": 0.242496405495,
+          "andel_FL_kont": 0.966333864563,
+          "andel_LV_kont": 0.0336661354372
+        },
+        {
+          "bohf": "Vestfold",
+          "innbyggere": 196326.333333,
+          "pasienter": 550.666666667,
+          "kontakter_prim": 1209,
+          "primkont_pr_pas": 2.19552058111,
+          "rate2019": 5.36896353462,
+          "rate2020": 5.8645552032,
+          "rate2021": 5.47921145602,
+          "rateSnitt": 5.5708585936,
+          "FL_rate": 5.44672737665,
+          "LV_rate": 0.124131216956,
+          "andel_FL_kont": 0.977717758426,
+          "andel_LV_kont": 0.0222822415737
+        },
+        {
+          "bohf": "Telemark",
+          "innbyggere": 139439.333333,
+          "pasienter": 400,
+          "kontakter_prim": 703.666666667,
+          "primkont_pr_pas": 1.75916666667,
+          "rate2019": 4.19680141514,
+          "rate2020": 4.31324585888,
+          "rate2021": 4.53851097633,
+          "rateSnitt": 4.35504653353,
+          "FL_rate": 4.27575961206,
+          "LV_rate": 0.0792869214644,
+          "andel_FL_kont": 0.981794242414,
+          "andel_LV_kont": 0.0182057575858
+        },
+        {
+          "bohf": "Sørlandet",
+          "innbyggere": 239908.333333,
+          "pasienter": 674.666666667,
+          "kontakter_prim": 1613.66666667,
+          "primkont_pr_pas": 2.39179841897,
+          "rate2019": 6.35937843448,
+          "rate2020": 6.81307614588,
+          "rate2021": 6.65252046939,
+          "rateSnitt": 6.60958812654,
+          "FL_rate": 6.40300312324,
+          "LV_rate": 0.206585003297,
+          "andel_FL_kont": 0.968744648026,
+          "andel_LV_kont": 0.0312553519738
+        },
+        {
+          "bohf": "Norge",
+          "innbyggere": 4244785,
+          "pasienter": 11614.3333333,
+          "kontakter_prim": 26424,
+          "primkont_pr_pas": 2.27511982321,
+          "rate2019": 5.85127843262,
+          "rate2020": 6.36812857322,
+          "rate2021": 6.41865261078,
+          "rateSnitt": 6.21807556376,
+          "FL_rate": 6.00747957877,
+          "LV_rate": 0.21059598499,
+          "andel_FL_kont": 0.966131645904,
+          "andel_LV_kont": 0.0338683540961
+        }
+      ]
+    }
+  ]
+}

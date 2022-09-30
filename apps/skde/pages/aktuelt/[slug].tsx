@@ -3,7 +3,7 @@ import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
 import newsStyles from "../../src/styles/News.module.css";
-import Layout from "../../src/components/layout";
+import Layout from "../../src/components/frontpageLayout";
 import { dateToString } from "../../src/helpers/dateHelpers";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";

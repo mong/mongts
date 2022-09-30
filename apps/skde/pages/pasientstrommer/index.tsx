@@ -1,4 +1,4 @@
-import Layout from "../../src/components/layout";
+import Layout from "../../src/components/frontpageLayout";
 import IframeResizer from "iframe-resizer-react";
 import newsStyles from "../../src/styles/News.module.css";
 
