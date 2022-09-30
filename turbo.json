@@ -5,6 +5,10 @@
       "dependsOn": ["^build"],
       "outputs": [".out/**"]
     },
+    "export": {
+      "dependsOn": ["^build"],
+      "outputs": [".out/**"]
+    },
     "test": {
       "dependsOn": ["build"],
       "outputs": [],

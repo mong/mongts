@@ -5,6 +5,7 @@
     "postinstall": "husky install",
     "check-types": "tsc --noEmit",
     "build": "turbo run build",
+    "export": "turbo run export",
     "test": "turbo run test",
     "lint": "turbo run lint",
     "dev": "turbo run dev"
