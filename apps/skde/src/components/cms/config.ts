@@ -15,7 +15,7 @@ export const config: CmsConfig = {
     {
       label: "Aktuelt",
       name: "aktuelt",
-      folder: "_posts/aktuelt",
+      folder: "apps/skde/_posts/aktuelt",
       create: true,
       fields: [
         { label: "Publiseringsdato", name: "date", widget: "datetime" },
@@ -28,7 +28,7 @@ export const config: CmsConfig = {
     {
       label: "Innhold",
       name: "innhold",
-      folder: "_posts/innhold",
+      folder: "apps/skde/_posts/innhold",
       create: true,
       identifier_field: "filename",
       fields: [
