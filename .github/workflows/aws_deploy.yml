@@ -1,7 +1,7 @@
 name: Deploy app to AWS
 on:
   push:
-    branches: [main, develop]
+    branches: [main, develop, include_hamongts]
   pull_request:
     branches: [main, develop, dependency_updates]
 
@@ -24,14 +24,16 @@ jobs:
         run: |
           aws s3 sync apps/skde/out s3://skde.org \
             --exclude "kvalitetsregistre/*" \
+            --exclude "helseatlas/*" \
             --delete \
             --cache-control "public, max-age=1, s-maxage=1"
           aws s3 sync apps/skde/out s3://verify.skde.org \
             --exclude "kvalitetsregistre/*" \
+            --exclude "helseatlas/*" \
             --delete \
             --cache-control "public, max-age=1, s-maxage=1"
       - name: Sync develop to S3 bucket qa.skde.org
-        if: github.ref == 'refs/heads/develop'
+        if: github.ref == 'refs/heads/include_hamongts'
         run: |
           aws s3 sync apps/skde/out s3://qa.skde.org \
             --exclude "kvalitetsregistre/*" \
