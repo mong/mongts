@@ -1,13 +1,13 @@
 import Layout from "../../src/components/frontpageLayout";
 import IframeResizer from "iframe-resizer-react";
-import newsStyles from "../../src/styles/News.module.css";
+import styles from "../../src/styles/Pages.module.css";
 
 const Pasient = () => {
   return (
     <Layout page="Pasientstrømmer">
-      <div className={newsStyles.container_mod}>
-        <div className={newsStyles.article}>
-          <div className={newsStyles.article__title}>
+      <div className={styles.container_mod}>
+        <div className={styles.article}>
+          <div className={styles.article__title}>
             <h2>Pasientstrømmer, Helse Nord RHF</h2>
           </div>
         </div>

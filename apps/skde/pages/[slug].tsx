@@ -7,7 +7,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import newsStyles from "../src/styles/News.module.css";
+import styles from "../src/styles/Pages.module.css";
 import Layout from "../src/components/frontpageLayout";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -21,15 +21,13 @@ interface Props {
 const Content = ({ content, frontMatter }: Props) => {
   return (
     <Layout page={frontMatter.title}>
-      <div className={newsStyles.container}>
-        <div className={newsStyles.article__title}>
+      <div className={styles.container}>
+        <div className={styles.article__title}>
           <h2>{frontMatter.title}</h2>
         </div>
-        <div className={newsStyles.article}>
-          <div className={newsStyles.article__ingress}>
-            {frontMatter.ingress}
-          </div>
-          <div className={newsStyles.article__content}>
+        <div className={styles.article}>
+          <div className={styles.article__ingress}>{frontMatter.ingress}</div>
+          <div className={styles.article__content}>
             <ReactMarkdown
               rehypePlugins={[rehypeRaw]}
               remarkPlugins={[remarkGfm]}
