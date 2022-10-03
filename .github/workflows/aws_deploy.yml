@@ -24,10 +24,12 @@ jobs:
         run: |
           aws s3 sync apps/skde/out s3://skde.org \
             --exclude "kvalitetsregistre/*" \
+            --exclude "helseatlas/ia/*" --exclude "helseatlas/files/*" \
             --delete \
             --cache-control "public, max-age=1, s-maxage=1"
           aws s3 sync apps/skde/out s3://verify.skde.org \
             --exclude "kvalitetsregistre/*" \
+            --exclude "helseatlas/ia/*" --exclude "helseatlas/files/*" \
             --delete \
             --cache-control "public, max-age=1, s-maxage=1"
       - name: Sync develop to S3 bucket qa.skde.org
@@ -35,5 +37,6 @@ jobs:
         run: |
           aws s3 sync apps/skde/out s3://qa.skde.org \
             --exclude "kvalitetsregistre/*" \
+            --exclude "helseatlas/ia/*" --exclude "helseatlas/files/*" \
             --delete \
             --cache-control "public, max-age=1, s-maxage=1"
