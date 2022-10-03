@@ -7,7 +7,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-import newsStyles from "../../src/styles/News.module.css";
+import newsStyles from "../src/styles/News.module.css";
 import Layout from "../src/components/frontpageLayout";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
