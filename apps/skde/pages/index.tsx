@@ -5,6 +5,7 @@ import Layout from "../src/components/frontpageLayout";
 import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
 
+/* istanbul ignore next */
 if (process.env.NEXT_PUBLIC_SENTRY) {
   try {
     Sentry.init({

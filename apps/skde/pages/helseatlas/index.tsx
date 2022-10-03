@@ -7,24 +7,6 @@ import { MainBanner } from "../../src/components/MainBanner/MainBanner";
 import { AtlasLink } from "../../src/components/Btns/AtlasLink";
 import { getMDInfo } from "../../src/helpers/functions/markdownHelpers";
 import classNames from "../../src/styles/Atlas.module.css";
-import * as Sentry from "@sentry/react";
-import { BrowserTracing } from "@sentry/tracing";
-
-/* istanbul ignore next */
-if (process.env.NEXT_PUBLIC_SENTRY) {
-  try {
-    Sentry.init({
-      dsn: process.env.NEXT_PUBLIC_SENTRY,
-      autoSessionTracking: true,
-      integrations: [new BrowserTracing()],
-      tracesSampleRate: 1.0,
-    });
-  } catch (error) {
-    console.log(
-      "Sentry not working with dsn=" + process.env.NEXT_PUBLIC_SENTRY
-    );
-  }
-}
 
 interface HomeProps {
   atlasInfo: {
@@ -86,7 +68,6 @@ export const getStaticProps: GetStaticProps = async () => {
         publisert,
         lang,
         date,
-        mainTitle,
         shortTitle,
       } = parsedContent;
       if (!publisert) {
