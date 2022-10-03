@@ -16,7 +16,7 @@
     "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless",
     "check-format": "yarn prettier --list-different",
     "check-types": "tsc --noEmit",
-    "test": "yarn run build && yarn run e2e:headless"
+    "test": "yarn run e2e:headless"
   },
   "dependencies": {
     "@emotion/react": "11.10.4",
