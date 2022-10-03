@@ -41,7 +41,9 @@ const EnglishMenu = () => {
           <span className={classNames.title}>Our Helseatlas</span>
           <ul>
             <li>
-              <Link href="/helseatlas/en/v1/kvalitet">Healthcare Quality Atlas</Link>
+              <Link href="/helseatlas/en/v1/kvalitet">
+                Healthcare Quality Atlas
+              </Link>
             </li>
             <li data-testid="menuAtlasLink1">
               <Link href="/helseatlas/en/v1/psyk">
@@ -50,10 +52,14 @@ const EnglishMenu = () => {
               </Link>
             </li>
             <li>
-              <Link href="/helseatlas/en/v1/fodsel">Obstetrics Healthcare Atlas</Link>
+              <Link href="/helseatlas/en/v1/fodsel">
+                Obstetrics Healthcare Atlas
+              </Link>
             </li>
             <li>
-              <Link href="/helseatlas/en/v1/gyn">Gynaecology Healthcare Atlas</Link>
+              <Link href="/helseatlas/en/v1/gyn">
+                Gynaecology Healthcare Atlas
+              </Link>
             </li>
             <li>
               <Link href="/helseatlas/en/v1/ortopedi">
@@ -61,7 +67,9 @@ const EnglishMenu = () => {
               </Link>
             </li>
             <li>
-              <Link href="/helseatlas/en/v1/dagkir2">Day surgery in Norway 2013–2017</Link>
+              <Link href="/helseatlas/en/v1/dagkir2">
+                Day surgery in Norway 2013–2017
+              </Link>
             </li>
             <li>
               <Link href="/helseatlas/en/v1/kols">COPD Healthcare Atlas</Link>
@@ -77,10 +85,14 @@ const EnglishMenu = () => {
               </Link>
             </li>
             <li>
-              <Link href="/helseatlas/en/v1/barn">Child healthcare atlas for Norway</Link>
+              <Link href="/helseatlas/en/v1/barn">
+                Child healthcare atlas for Norway
+              </Link>
             </li>
             <li>
-              <Link href="/helseatlas/en/v1/dagkir">Day surgery in Norway 2011–2013</Link>
+              <Link href="/helseatlas/en/v1/dagkir">
+                Day surgery in Norway 2011–2013
+              </Link>
             </li>
           </ul>
         </ul>
@@ -115,7 +127,9 @@ const NorskMeny = () => {
               </Link>
             </li>
             <li>
-              <Link href="/helseatlas/v1/kvalitet">Helseatlas for kvalitet</Link>
+              <Link href="/helseatlas/v1/kvalitet">
+                Helseatlas for kvalitet
+              </Link>
             </li>
             <li data-testid="menuAtlasLink1">
               <Link href="/helseatlas/v1/psyk">
@@ -123,16 +137,22 @@ const NorskMeny = () => {
               </Link>
             </li>
             <li>
-              <Link href="/helseatlas/v1/fodsel">Helseatlas for fødselshjelp</Link>
+              <Link href="/helseatlas/v1/fodsel">
+                Helseatlas for fødselshjelp
+              </Link>
             </li>
             <li>
               <Link href="/helseatlas/v1/gyn">Helseatlas for gynekologi</Link>
             </li>
             <li>
-              <Link href="/helseatlas/v1/ortopedi">Helseatlas i ortopedi for Noreg</Link>
+              <Link href="/helseatlas/v1/ortopedi">
+                Helseatlas i ortopedi for Noreg
+              </Link>
             </li>
             <li>
-              <Link href="/helseatlas/v1/dagkir2">Dagkirurgi i Norge 2013–2017</Link>
+              <Link href="/helseatlas/v1/dagkir2">
+                Dagkirurgi i Norge 2013–2017
+              </Link>
             </li>
             <li>
               <Link href="/helseatlas/v1/kols">Helseatlas kols</Link>
@@ -141,13 +161,17 @@ const NorskMeny = () => {
               <Link href="/helseatlas/v1/eldre">Eldrehelseatlas for Norge</Link>
             </li>
             <li>
-              <Link href="/helseatlas/v1/nyfodt">Norsk nyfødtmedisinsk helseatlas</Link>
+              <Link href="/helseatlas/v1/nyfodt">
+                Norsk nyfødtmedisinsk helseatlas
+              </Link>
             </li>
             <li>
               <Link href="/helseatlas/v1/barn">Barnehelseatlas for Norge</Link>
             </li>
             <li>
-              <Link href="/helseatlas/v1/dagkir">Dagkirurgi i Norge 2011–2013</Link>
+              <Link href="/helseatlas/v1/dagkir">
+                Dagkirurgi i Norge 2011–2013
+              </Link>
             </li>
           </ul>
         </ul>

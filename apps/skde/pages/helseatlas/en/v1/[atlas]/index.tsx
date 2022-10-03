@@ -19,7 +19,10 @@ interface AtlasPageProps {
   };
 }
 
-const atlasDir = path.join(process.cwd(), "_posts/helseatlas/en/tidligere_atlas");
+const atlasDir = path.join(
+  process.cwd(),
+  "_posts/helseatlas/en/tidligere_atlas"
+);
 
 const AtlasPage: React.FC<AtlasPageProps> = ({ content, frontMatter }) => {
   return (

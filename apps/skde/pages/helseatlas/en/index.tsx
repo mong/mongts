@@ -46,7 +46,10 @@ const Home: React.FC<HomeProps> = ({ atlasInfo }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const atlasDir = path.join(process.cwd(), "_posts/helseatlas/en/tidligere_atlas");
+  const atlasDir = path.join(
+    process.cwd(),
+    "_posts/helseatlas/en/tidligere_atlas"
+  );
   const atlasInfo = getMDInfo(atlasDir);
   const atlasDirNew = path.join(process.cwd(), "_posts/helseatlas/en/v2");
   const atlasInfoNew = fs
