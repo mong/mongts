@@ -1,0 +1,81 @@
+name: Publish Docker image
+on:
+  push:
+    branches: [main, develop]
+    paths-ignore:
+      - "apps/skde/**"
+  pull_request:
+    branches: [main, develop, dependency_updates]
+    paths-ignore:
+      - "apps/skde/**"
+
+jobs:
+  push_to_registries:
+    name: Push Docker image to docker hub
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: "eu-west-1"
+    steps:
+      - name: Set release variables
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "S3Key='prod-mong-api.json'" >> $GITHUB_ENV
+          echo "env_name=prod-mong-api" >> $GITHUB_ENV
+          echo "version_label=${GITHUB_REF:10}" >> $GITHUB_ENV
+          echo "descr='Release tag deploy'" >> $GITHUB_ENV
+          echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_PROD }}" >> $GITHUB_ENV
+      - name: Set QA variables
+        if: github.ref == 'refs/heads/develop'
+        run: |
+          echo "S3Key='qa-mong-api.json'" >> $GITHUB_ENV
+          echo "env_name=qa-mong-api" >> $GITHUB_ENV
+          echo "version_label=${GITHUB_SHA:0:7}" >> $GITHUB_ENV
+          echo "descr='Main commits deploy'" >> $GITHUB_ENV
+          echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_QA }}" >> $GITHUB_ENV
+      - name: Check out the repo
+        uses: actions/checkout@v3
+      - name: Lint Dockerfile
+        uses: hadolint/hadolint-action@v2.1.0
+        with:
+          dockerfile: "apps/api/Dockerfile"
+      - name: Prepare
+        id: docker_meta
+        uses: docker/metadata-action@v4.0.1
+        with:
+          images: hnskde/mong-api
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Login to DockerHub
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push to Docker Hub
+        uses: docker/build-push-action@v3
+        with:
+          context: ./apps/api
+          file: ./apps/api/Dockerfile
+          build-args: version=${{ env.version_label }}
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
+      - name: Update elasticbeanstalk
+        if: github.event_name != 'pull_request'
+        run: |
+          aws elasticbeanstalk create-application-version --application-name mong-api --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-247247832514",S3Key=${{ env.S3Key }} --version-label ${{ env.version_label }} --description ${{ env.descr }}
+          aws elasticbeanstalk update-environment --environment-name ${{ env.env_name }} --version-label ${{ env.version_label }}
+          if [[ ${{ github.ref }} == 'refs/heads/main' ]]; then
+            aws elasticbeanstalk update-environment --environment-name verify-mong-api --version-label ${{ env.version_label }}
+          fi
+      - name: Create CloudFront invalidation
+        if: github.event_name != 'pull_request'
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id  ${{ env.cloudfront_id }}\
+            --paths "/*"

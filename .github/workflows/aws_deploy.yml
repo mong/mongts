@@ -2,8 +2,12 @@ name: Deploy app to AWS
 on:
   push:
     branches: [main, develop, include_hamongts]
+    paths-ignore:
+      - "apps/api/**"
   pull_request:
     branches: [main, develop, dependency_updates]
+    paths-ignore:
+      - "apps/api/**"
 
 jobs:
   deploy_to_S3:
