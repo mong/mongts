@@ -296,7 +296,7 @@ export const config: CmsConfig = {
   local_backend: true,
   backend: {
     name: "github",
-    repo: "mong/hamongts",
+    repo: "mong/mongts",
     branch: "main",
     base_url: "https://prod-mong-api.skde.org",
   },
