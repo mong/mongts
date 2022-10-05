@@ -1,0 +1,42 @@
+.legendContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.legendUL {
+  display: flex;
+  margin: 0;
+  flex-wrap: wrap;
+}
+
+.legendLI {
+  display: flex;
+  margin-right: 25px;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.legendAnnualVar {
+  display: flex;
+  margin-right: 3px;
+  justify-content: center;
+  align-items: center;
+}
+
+.legendColorOuter {
+  width: 15px;
+  height: 15px;
+  border-radius: 3px;
+  display: flex;
+  margin-right: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.legendColorInner {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+}

@@ -1,0 +1,36 @@
+.buttonscontainer {
+  display: flex;
+  list-style: none;
+  align-self: end;
+  padding: 0;
+  margin-right: 20px;
+}
+
+.bullet {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  background-color: #7da3c8;
+  outline: unset;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  margin: 3px;
+  cursor: pointer;
+  transition: ease-out 200ms;
+  offset: unset;
+}
+.bullet:hover,
+.bullet:focus {
+  border: 1px solid #033f85;
+}
+
+.active {
+  background-color: #033f85;
+}
+.active:hover,
+.active:focus {
+  border: 1px solid #033f85;
+}

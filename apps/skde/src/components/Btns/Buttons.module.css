@@ -1,0 +1,53 @@
+.button {
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: 0.1s;
+}
+.button:hover,
+.button:focus {
+  text-decoration: underline;
+}
+
+.buttonIconSearch {
+  content: "";
+  display: flex;
+  width: 1.3em;
+  height: 1.3em;
+  cursor: pointer;
+  background: transparent no-repeat url(/helseatlas/img/search-blue.svg);
+}
+
+.buttonBurgerIcon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+}
+
+.buttonBurgerIcon span {
+  display: block;
+  width: 20px;
+  background-color: #034584;
+  height: 1px;
+  margin: 4px 0 3px;
+}
+
+.buttonText {
+  letter-spacing: 0.03125rem;
+  display: block;
+  text-align: center;
+  margin-right: 6px;
+  font-family: Open Sans, Helvetica, sans-serif;
+  order: 1;
+  font-size: 1.125rem;
+  color: #034584;
+  text-transform: uppercase;
+  box-sizing: border-box;
+}

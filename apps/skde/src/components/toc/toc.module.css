@@ -1,0 +1,49 @@
+.tocWrapper {
+  position: -webkit-sticky; /* Required for Safari */
+  position: sticky;
+  top: 10px;
+}
+
+@media screen and (min-width: 943px) {
+  .toc_small_wrapper {
+    display: none;
+  }
+  .toc {
+    text-align: left;
+    margin-right: 40px;
+    max-width: 200px;
+    min-width: 200px;
+    overflow: hidden;
+    margin-top: 180px;
+    height: 100vh;
+    overflow-y: auto;
+  }
+}
+
+@media screen and (min-width: 0) and (max-width: 942px) {
+  .toc {
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+  .toc_large {
+    display: none;
+  }
+  .toc_small_wrapper {
+    width: 100%;
+    top: 0;
+    background-color: white;
+    position: sticky;
+    z-index: 998;
+    margin: auto;
+  }
+  .toc_small_content {
+    margin: 10px auto;
+    width: 95%;
+    box-sizing: content-box;
+  }
+}
+@media screen and (min-width: 942px) {
+  .toc {
+    flex: 0 0 auto;
+  }
+}

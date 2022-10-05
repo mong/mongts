@@ -1,0 +1,85 @@
+.main {
+  width: 100%;
+  background: none;
+}
+
+.headerMain {
+  background-color: #ffe6b5;
+}
+
+.headerMain::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  min-height: 385px;
+  background-color: #fff;
+}
+
+.pageImage {
+  width: min(1216px, 95%);
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: auto;
+  background: none;
+}
+
+.pageImage::before,
+.pageImage::after {
+  content: "";
+  display: table;
+}
+
+.pageImage img {
+  margin: auto;
+}
+
+.pageTitle {
+  width: 100%;
+  padding-bottom: 0;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 65px;
+  font-family: Open Sans, Helvetica, sans-serif;
+  text-align: center;
+  background: none;
+}
+
+.pageIngressContent {
+  width: 100%;
+  background-color: #fdf6e4;
+  font-size: 24px;
+  margin: auto;
+  font-family: Open Sans, Helvetica, sans-serif;
+  text-align: center;
+  line-height: 35px;
+}
+
+.pageIngress {
+  background: none;
+  margin: auto;
+  width: min(1216px, 95%);
+  padding: 50px 100px 50px 100px;
+}
+
+@media screen and (max-width: 700px) {
+  .headerMain::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    min-height: 185px;
+    background-color: #fff;
+  }
+  .pageTitle {
+    width: 100%;
+    padding-bottom: 0;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 40px;
+  }
+  .pageIngressContent {
+    font-size: 16px;
+    line-height: 25px;
+  }
+}

@@ -1,0 +1,123 @@
+.headerContainer {
+  display: flex;
+  max-width: min(1216px, 95%);
+  height: fit-content;
+  padding: 24px 16px 24px 16px;
+  margin: auto;
+  justify-content: space-between;
+}
+.headerNavContainer {
+  width: auto;
+  margin: auto 0;
+  z-index: 999;
+}
+.headerLogo {
+  z-index: 999;
+}
+.navButtons {
+  display: flex;
+  justify-content: space-around;
+}
+.lang {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  margin-left: 3rem;
+  font-size: 1.125rem;
+}
+.no {
+  color: #034584;
+  border-right: 1px solid #034584;
+  padding-right: 10px;
+  font-weight: normal;
+  text-decoration: underline;
+  transition: 200ms ease-in;
+}
+
+.eng {
+  color: #034584;
+  padding-left: 10px;
+  font-weight: normal;
+  text-decoration: underline;
+  transition: 200ms ease-in;
+}
+
+.no.active,
+.eng.active {
+  font-weight: 700;
+}
+
+.searchBar {
+  margin: auto;
+  margin-top: 4rem;
+  width: min(600px, 80%);
+  z-index: auto;
+}
+.searchBar h1 {
+  font-size: 3rem;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+.searchBar form {
+  font-family: Open Sans, Helvetica, sans-serif !important;
+  display: flex;
+  align-items: flex-end;
+  font-size: 1.25rem;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #000;
+}
+
+.searchBar label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  padding: 0%;
+  margin: -1px;
+}
+.searchBar input {
+  position: relative;
+  font-size: 1.25rem;
+  height: 3rem;
+  width: 94%;
+  color: #000;
+  padding-right: 1rem;
+  border: none;
+  background-color: #fff;
+}
+.searchBar input::placeholder {
+  color: #034584;
+}
+
+.searchBar button {
+  width: 3rem;
+  height: 3rem;
+  background: transparent no-repeat url(/helseatlas/img/search-blue.svg);
+  cursor: pointer;
+  border: none;
+}
+
+.menuButton {
+  margin-left: 3rem;
+}
+
+@media screen and (min-width: 0) and (max-width: 942px) {
+  .headerContainer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .headerLogo {
+    height: 100%;
+  }
+
+  .headerNavContainer {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .navButtons {
+    justify-content: space-between;
+  }
+  .lang {
+    margin-left: 0;
+  }
+}

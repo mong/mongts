@@ -1,0 +1,39 @@
+.tocListItem {
+  position: relative;
+  color: #034584;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding-bottom: 1rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.tocListItem.active > a {
+  position: relative;
+  color: #034584;
+  text-decoration: underline;
+}
+
+.tocListItem::before {
+  content: "";
+  position: absolute;
+  left: -14px;
+  height: 100%;
+  border-left: 1px solid #034584;
+  width: 1px;
+  box-sizing: border-box;
+  top: 13px;
+}
+
+.tocListItem:last-child::before {
+  height: 0px;
+}
+
+.tocListItem::after {
+  content: "";
+  position: absolute;
+  left: -14px;
+  top: 13px;
+  border-top: 1px solid #034584;
+  width: 7px;
+}
