@@ -51,13 +51,13 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
         label: "Forsidebilde",
         name: "image",
         widget: "file",
-        required: false,
+        required: true,
       },
       {
         label: "Forsidetekst",
         name: "frontpagetext",
         widget: "string",
-        required: false,
+        required: true,
       },
       {
         label: "Ingress",
