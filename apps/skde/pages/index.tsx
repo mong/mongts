@@ -1,10 +1,11 @@
 import Link from "next/link";
 import React from "react";
 import styles from "../src/styles/Home.module.css";
-import Layout from "../src/components/layout";
+import Layout from "../src/components/frontpageLayout";
 import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
 
+/* istanbul ignore next */
 if (process.env.NEXT_PUBLIC_SENTRY) {
   try {
     Sentry.init({

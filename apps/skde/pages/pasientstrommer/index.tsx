@@ -1,4 +1,4 @@
-import Layout from "../../src/components/layout";
+import Layout from "../../src/components/frontpageLayout";
 import IframeResizer from "iframe-resizer-react";
 import styles from "../../src/styles/Pages.module.css";
 

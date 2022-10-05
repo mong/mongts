@@ -1,0 +1,453 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": [
+        "andel_pct_sm"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Andel pasienter med minst en sykemelding",
+        "en": "Proportion of patients with at least one sick leave"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "andel_pct_sm2019",
+        "andel_pct_sm2020",
+        "andel_pct_sm2021"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2019",
+          "2020",
+          "2021"
+        ],
+        "en": [
+          "2019",
+          "2020",
+          "2021"
+        ]
+      },
+      "format": ",.0%"
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nb": "Gjennomsnittsverdier for perioden 2019–2021, pasienter som er 18 år og eldre",
+        "en": "Average per year for the period 2019–2021, patients 18 years and older"
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområder",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "andel_pct_sm",
+          "label_no": "Andel med sykemelding",
+          "label_en": "% Patient with sick leave",
+          "typeVar": "number",
+          "format": ",.1%"
+        },
+        {
+          "id": "ant_sykempas",
+          "label_no": "Pasienter sykemeldt",
+          "label_en": "# Patient with sick leave",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "pasienter",
+          "label_no": "Pasienter med migrene",
+          "label_en": "Migraine patients",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "sm_pr_smpas",
+          "label_no": "Sykemeldinger pr. pas.",
+          "label_en": "# Sick leave per patient",
+          "typeVar": "number",
+          "format": ",.1f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "andel_pct_sm",
+      "caption": {
+        "nb": "Andel pasienter med minst en sykemelding",
+        "en": "Proportion of patients with at least one sick leave"
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": "  0.1794",
+          "min": "  0.1753",
+          "lag_min": 0.186005129394,
+          "grense": 0.182706454579
+        },
+        {
+          "cluster": 2,
+          "max": "  0.2047",
+          "min": "  0.1860",
+          "lag_min": 0.211985621248,
+          "grense": 0.208335805288
+        },
+        {
+          "cluster": 3,
+          "max": "  0.2177",
+          "min": "  0.2120",
+          "lag_min": 0.247774749481,
+          "grense": 0.232748951776
+        }
+      ],
+      "format": ",.1%"
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "data": [
+        {
+          "bohf": "Finnmark",
+          "innbyggere": 60664,
+          "pasienter": 743.333333333,
+          "rateSnitt": 21.6162374068,
+          "rate2019": 20.6154013021,
+          "rate2020": 22.2633844179,
+          "rate2021": 21.7770178381,
+          "ant_sykempas": 161.333333333,
+          "sm_pr_smpas": 3,
+          "andel_pct_sm": 0.216162374068,
+          "andel_pct_sm2019": 0.206154013021,
+          "andel_pct_sm2020": 0.222633844179,
+          "andel_pct_sm2021": 0.217770178381
+        },
+        {
+          "bohf": "UNN",
+          "innbyggere": 155748.333333,
+          "pasienter": 2082,
+          "rateSnitt": 21.772315407,
+          "rate2019": 21.0656333584,
+          "rate2020": 21.4541918892,
+          "rate2021": 22.8854925494,
+          "ant_sykempas": 453.333333333,
+          "sm_pr_smpas": 3.21102941176,
+          "andel_pct_sm": 0.21772315407,
+          "andel_pct_sm2019": 0.210656333584,
+          "andel_pct_sm2020": 0.214541918892,
+          "andel_pct_sm2021": 0.228854925494
+        },
+        {
+          "bohf": "Nordland",
+          "innbyggere": 110493.333333,
+          "pasienter": 1520.33333333,
+          "rateSnitt": 17.9407779765,
+          "rate2019": 17.4838911362,
+          "rate2020": 17.7702171391,
+          "rate2021": 18.6241838967,
+          "ant_sykempas": 271.666666667,
+          "sm_pr_smpas": 2.91165644172,
+          "andel_pct_sm": 0.179407779765,
+          "andel_pct_sm2019": 0.174838911362,
+          "andel_pct_sm2020": 0.177702171391,
+          "andel_pct_sm2021": 0.186241838967
+        },
+        {
+          "bohf": "Helgeland",
+          "innbyggere": 62532.3333333,
+          "pasienter": 791.333333333,
+          "rateSnitt": 19.0703941542,
+          "rate2019": 17.3205180458,
+          "rate2020": 17.5819105771,
+          "rate2021": 22.0936880848,
+          "ant_sykempas": 151,
+          "sm_pr_smpas": 2.97350993377,
+          "andel_pct_sm": 0.190703941542,
+          "andel_pct_sm2019": 0.173205180458,
+          "andel_pct_sm2020": 0.175819105771,
+          "andel_pct_sm2021": 0.220936880848
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "innbyggere": 106589,
+          "pasienter": 1502,
+          "rateSnitt": 19.2116307076,
+          "rate2019": 19.4984121314,
+          "rate2020": 19.9659834263,
+          "rate2021": 18.2853154816,
+          "ant_sykempas": 284.666666667,
+          "sm_pr_smpas": 2.7775175644,
+          "andel_pct_sm": 0.192116307076,
+          "andel_pct_sm2019": 0.194984121314,
+          "andel_pct_sm2020": 0.199659834263,
+          "andel_pct_sm2021": 0.182853154816
+        },
+        {
+          "bohf": "St. Olav",
+          "innbyggere": 265559.333333,
+          "pasienter": 3900.33333333,
+          "rateSnitt": 20.4685989329,
+          "rate2019": 20.5479637651,
+          "rate2020": 20.1890301781,
+          "rate2021": 20.6807882217,
+          "ant_sykempas": 804,
+          "sm_pr_smpas": 3.02446102819,
+          "andel_pct_sm": 0.204685989329,
+          "andel_pct_sm2019": 0.205479637651,
+          "andel_pct_sm2020": 0.201890301781,
+          "andel_pct_sm2021": 0.206807882217
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "innbyggere": 209615.666667,
+          "pasienter": 2990.33333333,
+          "rateSnitt": 20.1887251323,
+          "rate2019": 20.0785983797,
+          "rate2020": 19.5982814209,
+          "rate2021": 20.8066717124,
+          "ant_sykempas": 587,
+          "sm_pr_smpas": 3.04713231119,
+          "andel_pct_sm": 0.201887251323,
+          "andel_pct_sm2019": 0.200785983797,
+          "andel_pct_sm2020": 0.195982814209,
+          "andel_pct_sm2021": 0.208066717124
+        },
+        {
+          "bohf": "Førde",
+          "innbyggere": 85207.3333333,
+          "pasienter": 1020,
+          "rateSnitt": 20.359150708,
+          "rate2019": 19.9936951465,
+          "rate2020": 19.0332300141,
+          "rate2021": 21.8841338302,
+          "ant_sykempas": 201.666666667,
+          "sm_pr_smpas": 3.03801652893,
+          "andel_pct_sm": 0.20359150708,
+          "andel_pct_sm2019": 0.199936951465,
+          "andel_pct_sm2020": 0.190332300141,
+          "andel_pct_sm2021": 0.218841338302
+        },
+        {
+          "bohf": "Bergen",
+          "innbyggere": 358888,
+          "pasienter": 3893.66666667,
+          "rateSnitt": 24.7774749481,
+          "rate2019": 26.1716574878,
+          "rate2020": 23.5229456863,
+          "rate2021": 24.7759048713,
+          "ant_sykempas": 972,
+          "sm_pr_smpas": 3.0877914952,
+          "andel_pct_sm": 0.247774749481,
+          "andel_pct_sm2019": 0.261716574878,
+          "andel_pct_sm2020": 0.235229456863,
+          "andel_pct_sm2021": 0.247759048713
+        },
+        {
+          "bohf": "Fonna",
+          "innbyggere": 140218,
+          "pasienter": 1658,
+          "rateSnitt": 19.0556111682,
+          "rate2019": 17.59894005,
+          "rate2020": 19.3718973523,
+          "rate2021": 20.0058984732,
+          "ant_sykempas": 308.333333333,
+          "sm_pr_smpas": 3.27567567568,
+          "andel_pct_sm": 0.190556111682,
+          "andel_pct_sm2019": 0.1759894005,
+          "andel_pct_sm2020": 0.193718973523,
+          "andel_pct_sm2021": 0.200058984732
+        },
+        {
+          "bohf": "Stavanger",
+          "innbyggere": 282988.666667,
+          "pasienter": 3419,
+          "rateSnitt": 20.0329390302,
+          "rate2019": 20.8755945373,
+          "rate2020": 19.4959051266,
+          "rate2021": 19.8901932233,
+          "ant_sykempas": 694.666666667,
+          "sm_pr_smpas": 3.05086372361,
+          "andel_pct_sm": 0.200329390302,
+          "andel_pct_sm2019": 0.208755945373,
+          "andel_pct_sm2020": 0.194959051266,
+          "andel_pct_sm2021": 0.198901932233
+        },
+        {
+          "bohf": "Østfold",
+          "innbyggere": 252406.333333,
+          "pasienter": 3912,
+          "rateSnitt": 18.7426303797,
+          "rate2019": 19.4583728676,
+          "rate2020": 17.9851700879,
+          "rate2021": 18.8622321309,
+          "ant_sykempas": 728.333333333,
+          "sm_pr_smpas": 2.94691075515,
+          "andel_pct_sm": 0.187426303797,
+          "andel_pct_sm2019": 0.194583728676,
+          "andel_pct_sm2020": 0.179851700879,
+          "andel_pct_sm2021": 0.188622321309
+        },
+        {
+          "bohf": "Akershus",
+          "innbyggere": 449568.666667,
+          "pasienter": 6661.33333333,
+          "rateSnitt": 21.1985621248,
+          "rate2019": 22.3162504179,
+          "rate2020": 20.5521001631,
+          "rate2021": 20.8761226714,
+          "ant_sykempas": 1409.66666667,
+          "sm_pr_smpas": 3.10026010877,
+          "andel_pct_sm": 0.211985621248,
+          "andel_pct_sm2019": 0.223162504179,
+          "andel_pct_sm2020": 0.205521001631,
+          "andel_pct_sm2021": 0.208761226714
+        },
+        {
+          "bohf": "OUS",
+          "innbyggere": 218202,
+          "pasienter": 3038.66666667,
+          "rateSnitt": 21.5733696412,
+          "rate2019": 22.7284239558,
+          "rate2020": 21.5515691626,
+          "rate2021": 20.5182401875,
+          "ant_sykempas": 675.333333333,
+          "sm_pr_smpas": 2.98075024679,
+          "andel_pct_sm": 0.215733696412,
+          "andel_pct_sm2019": 0.227284239558,
+          "andel_pct_sm2020": 0.215515691626,
+          "andel_pct_sm2021": 0.205182401875
+        },
+        {
+          "bohf": "Lovisenberg",
+          "innbyggere": 136184.333333,
+          "pasienter": 1802,
+          "rateSnitt": 18.6005129394,
+          "rate2019": 19.2768674673,
+          "rate2020": 17.7610694493,
+          "rate2021": 19.896692681,
+          "ant_sykempas": 372.666666667,
+          "sm_pr_smpas": 2.84078711986,
+          "andel_pct_sm": 0.186005129394,
+          "andel_pct_sm2019": 0.192768674673,
+          "andel_pct_sm2020": 0.177610694493,
+          "andel_pct_sm2021": 0.19896692681
+        },
+        {
+          "bohf": "Diakonhjemmet",
+          "innbyggere": 117501.666667,
+          "pasienter": 1370,
+          "rateSnitt": 18.7583417873,
+          "rate2019": 19.1685245207,
+          "rate2020": 16.9567595287,
+          "rate2021": 20.2732444101,
+          "ant_sykempas": 251.333333333,
+          "sm_pr_smpas": 3.05305039788,
+          "andel_pct_sm": 0.187583417873,
+          "andel_pct_sm2019": 0.191685245207,
+          "andel_pct_sm2020": 0.169567595287,
+          "andel_pct_sm2021": 0.202732444101
+        },
+        {
+          "bohf": "Innlandet",
+          "innbyggere": 274507.666667,
+          "pasienter": 4070.33333333,
+          "rateSnitt": 18.9009766141,
+          "rate2019": 18.6645353934,
+          "rate2020": 18.6665347317,
+          "rate2021": 19.3302771231,
+          "ant_sykempas": 755,
+          "sm_pr_smpas": 3.06622516556,
+          "andel_pct_sm": 0.189009766141,
+          "andel_pct_sm2019": 0.186645353934,
+          "andel_pct_sm2020": 0.186665347317,
+          "andel_pct_sm2021": 0.193302771231
+        },
+        {
+          "bohf": "Vestre Viken",
+          "innbyggere": 382236.333333,
+          "pasienter": 5478.33333333,
+          "rateSnitt": 20.199263718,
+          "rate2019": 20.1328044203,
+          "rate2020": 19.7356201772,
+          "rate2021": 20.7416244523,
+          "ant_sykempas": 1076,
+          "sm_pr_smpas": 3.1217472119,
+          "andel_pct_sm": 0.20199263718,
+          "andel_pct_sm2019": 0.201328044203,
+          "andel_pct_sm2020": 0.197356201772,
+          "andel_pct_sm2021": 0.207416244523
+        },
+        {
+          "bohf": "Vestfold",
+          "innbyggere": 196326.333333,
+          "pasienter": 2750,
+          "rateSnitt": 18.897782913,
+          "rate2019": 18.9447893455,
+          "rate2020": 17.1906030194,
+          "rate2021": 20.5814078095,
+          "ant_sykempas": 506.666666667,
+          "sm_pr_smpas": 2.97828947368,
+          "andel_pct_sm": 0.18897782913,
+          "andel_pct_sm2019": 0.189447893455,
+          "andel_pct_sm2020": 0.171906030194,
+          "andel_pct_sm2021": 0.205814078095
+        },
+        {
+          "bohf": "Telemark",
+          "innbyggere": 139439.333333,
+          "pasienter": 1768.66666667,
+          "rateSnitt": 19.523008664,
+          "rate2019": 18.9092859362,
+          "rate2020": 18.5954167257,
+          "rate2021": 21.1265467945,
+          "ant_sykempas": 336.666666667,
+          "sm_pr_smpas": 2.81485148515,
+          "andel_pct_sm": 0.19523008664,
+          "andel_pct_sm2019": 0.189092859362,
+          "andel_pct_sm2020": 0.185954167257,
+          "andel_pct_sm2021": 0.211265467945
+        },
+        {
+          "bohf": "Sørlandet",
+          "innbyggere": 239908.333333,
+          "pasienter": 4035.33333333,
+          "rateSnitt": 17.5316751708,
+          "rate2019": 17.9087152367,
+          "rate2020": 16.9853013148,
+          "rate2021": 17.7267919211,
+          "ant_sykempas": 710.333333333,
+          "sm_pr_smpas": 3.00844673862,
+          "andel_pct_sm": 0.175316751708,
+          "andel_pct_sm2019": 0.179087152367,
+          "andel_pct_sm2020": 0.169853013148,
+          "andel_pct_sm2021": 0.177267919211
+        },
+        {
+          "bohf": "Norge",
+          "innbyggere": 4244785,
+          "pasienter": 58407,
+          "rateSnitt": 20.0622221429,
+          "rate2019": 20.3438484961,
+          "rate2020": 19.4982877282,
+          "rate2021": 20.3883580999,
+          "ant_sykempas": 11711.6666667,
+          "sm_pr_smpas": 3.03606090793,
+          "andel_pct_sm": 0.200622221429,
+          "andel_pct_sm2019": 0.203438484961,
+          "andel_pct_sm2020": 0.194982877282,
+          "andel_pct_sm2021": 0.203883580999
+        }
+      ]
+    }
+  ]
+}

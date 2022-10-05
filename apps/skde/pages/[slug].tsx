@@ -8,7 +8,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import styles from "../src/styles/Pages.module.css";
-import Layout from "../src/components/layout";
+import Layout from "../src/components/frontpageLayout";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
