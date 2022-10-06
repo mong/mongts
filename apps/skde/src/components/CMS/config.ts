@@ -10,15 +10,18 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
   return {
     label: lang === "no" ? "Atlas" : "Engelske atlas",
     name: lang === "no" ? "atlas" : "atlas_eng",
-    folder: lang === "no" ? "apps/skde/_posts/atlas" : "apps/skde/_posts/en/v2",
+    folder:
+      lang === "no"
+        ? "apps/skde/_posts/helseatlas/atlas"
+        : "apps/skde/_posts/helseatlas/en/v2",
     extension: "json",
     format: "json",
     create: true,
     delete: false,
     media_folder:
       lang === "no"
-        ? "apps/skde/public/img/no/{{filename}}"
-        : "apps/skde/public/img/en/{{filename}}",
+        ? "/apps/skde/public/helseatlas/img/no/{{filename}}"
+        : "/apps/skde/public/helseatlas/img/en/{{filename}}",
     public_folder:
       lang === "no"
         ? "/helseatlas/img/no/{{filename}}"
@@ -159,7 +162,7 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
                     label: "Karusell",
                     name: "data",
                     widget: "file",
-                    media_folder: "/apps/skde/public/data",
+                    media_folder: "/apps/skde/public/helseatlas/data",
                     public_folder: "",
                     hint: "Datafil, i json-format, som inneholder definisjon av karusell",
                   },
@@ -189,14 +192,14 @@ const oldAtlas = (lang: "no" | "en"): CmsCollection => {
     name: lang === "no" ? "tidligere_atlas" : "tidligere_eng_atlas",
     folder:
       lang === "no"
-        ? "apps/skde/_posts/tidligere_atlas"
-        : "apps/skde/_posts/en/tidligere_atlas",
+        ? "apps/skde/_posts/helseatlas/tidligere_atlas"
+        : "apps/skde/_posts/helseatlas/en/tidligere_atlas",
     create: false,
     delete: false,
     media_folder:
       lang === "no"
-        ? "/apps/skde/public/img/no/{{filename}}"
-        : "/apps/skde/public/img/en/{{filename}}",
+        ? "/apps/skde/public/helseatlas/img/no/{{filename}}"
+        : "/apps/skde/public/helseatlas/img/en/{{filename}}",
     public_folder:
       lang === "no"
         ? "/helseatlas/img/no/{{filename}}"
@@ -270,7 +273,9 @@ const staticPages = (lang: "no" | "en"): CmsCollection => {
     label: lang === "no" ? "Statiske sider" : "Statiske engelske sider",
     name: lang === "no" ? "statiske_sider" : "statiske_sider_en",
     folder:
-      lang === "no" ? "apps/skde/_posts/statisk" : "apps/skde/_posts/en/static",
+      lang === "no"
+        ? "apps/skde/_posts/helseatlas/statisk"
+        : "apps/skde/_posts/helseatlas/en/static",
     create: true,
     fields: [
       filename,
@@ -304,7 +309,7 @@ export const config: CmsConfig = {
     base_url: "https://qa-mong-api.skde.org",
   },
   logo_url: "https://www.skde.no/helseatlas/img/logos/helseatlas.svg",
-  media_folder: "apps/skde/public/img",
+  media_folder: "/apps/skde/public/helseatlas/img",
   public_folder: "/helseatlas/img",
   site_url: "https://www.skde.no/helseatlas/",
   locale: "nb_no",
