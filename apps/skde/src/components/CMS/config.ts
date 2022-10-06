@@ -305,8 +305,8 @@ export const config: CmsConfig = {
   backend: {
     name: "github",
     repo: "mong/mongts",
-    branch: "develop",
-    base_url: "https://qa-mong-api.skde.org",
+    branch: "main",
+    base_url: "https://prod-mong-api.skde.org",
   },
   logo_url: "https://www.skde.no/helseatlas/img/logos/helseatlas.svg",
   media_folder: "/apps/skde/public/helseatlas/img",
