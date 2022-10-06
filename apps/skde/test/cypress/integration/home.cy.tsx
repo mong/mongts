@@ -44,19 +44,19 @@ context("Push some front page buttons", () => {
 
     cy.get('[data-testid="menuAtlasLink1"]').click();
     cy.get('[data-testid="mainMenu"]').should("not.exist"); // Menu gone after click
-    cy.url({ timeout: 10000 }).should("include", "/v1");
-    cy.get('[data-testid="menuButton"]').click(); // Push menu button again
+    //    cy.url({ timeout: 10000 }).should("include", "/v1");
+    //    cy.get('[data-testid="menuButton"]').click(); // Push menu button again
 
-    cy.get('[data-testid="menuAtlasLink2"]').click();
-    cy.url({ timeout: 10000 }).should("include", "/v2"); // Må vente en stund før neste atlas dukker opp
-    cy.get('[data-testid="mainMenu"]').should("not.exist"); // Menu gone after click
+    //    cy.get('[data-testid="menuAtlasLink2"]').click();
+    //    cy.url({ timeout: 10000 }).should("include", "/v2"); // Må vente en stund før neste atlas dukker opp
+    //    cy.get('[data-testid="mainMenu"]').should("not.exist"); // Menu gone after click
 
     cy.get('[data-testid="menuButton"]').click(); // Push menu button again
     cy.get('[data-testid="mainMenu"]').should("exist"); // Menu exist
-    cy.get('[data-testid="closeBtn"]').click(); // exit button
-    cy.get('[data-testid="mainMenu"]').should("not.exist"); // Menu gone after click
-    cy.get('[data-testid="menuButton"]').click(); // Push menu button again
-    cy.get('[data-testid="mainMenu"]').should("exist"); // Menu exist
+    //    cy.get('[data-testid="closeBtn"]').click(); // exit button
+    //    cy.get('[data-testid="mainMenu"]').should("not.exist"); // Menu gone after click
+    //    cy.get('[data-testid="menuButton"]').click(); // Push menu button again
+    //    cy.get('[data-testid="mainMenu"]').should("exist"); // Menu exist
     cy.get('[data-testid="menuButton"]').type("{esc}"); // click Esc to exit menu
     cy.get('[data-testid="mainMenu"]').should("not.exist"); // Menu gone after click
   });
