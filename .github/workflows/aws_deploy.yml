@@ -26,13 +26,13 @@ jobs:
       - run: yarn run check-format
       - name: Test build
         env:
-          REACT_APP_API_HOST: https://dc9yut6ftb9m1.cloudfront.net
+          NEXT_PUBLIC_API_HOST: https://dc9yut6ftb9m1.cloudfront.net
         run: |
           yarn install && yarn run build
       - name: Build and sync main to S3 bucket skde.org
         if: github.ref == 'refs/heads/main'
         env:
-          REACT_APP_API_HOST: https://dc9yut6ftb9m1.cloudfront.net
+          NEXT_PUBLIC_API_HOST: https://dc9yut6ftb9m1.cloudfront.net
         run: |
           yarn install && yarn run build
           aws s3 sync apps/skde/out s3://skde.org \
@@ -42,7 +42,7 @@ jobs:
       - name: Build and sync develop to S3 bucket qa.skde.org
         if: github.ref == 'refs/heads/include_qmongjs'
         env:
-          REACT_APP_API_HOST: https://qa-mong-api.skde.org
+          NEXT_PUBLIC_API_HOST: https://qa-mong-api.skde.org
         run: |
           yarn install && yarn run build
           aws s3 sync apps/skde/out s3://qa.skde.org \
@@ -52,7 +52,7 @@ jobs:
       - name: Build and sync to verify page
         if: github.ref == 'refs/heads/main'
         env:
-          REACT_APP_API_HOST: https://verify-mong-api.skde.org
+          NEXT_PUBLIC_API_HOST: https://verify-mong-api.skde.org
         run: |
           yarn install && yarn run build
           aws s3 sync apps/skde/out s3://verify.skde.org \
