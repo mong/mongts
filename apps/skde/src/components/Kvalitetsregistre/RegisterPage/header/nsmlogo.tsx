@@ -1,7 +1,7 @@
 import Image from "next/image";
-import logo from "../../../../public/img/nsmlogo.svg";
+import logo from "../../../../../public/img/logos/nsmlogo.svg";
 import style from "./nsmlogo.module.css";
-import { imgLoader } from "../../../helpers/functions";
+import { imgLoader } from "../../../../helpers/functions";
 
 export const NSMLogo: React.FC = () => {
   return (

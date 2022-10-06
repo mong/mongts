@@ -12,14 +12,14 @@ import config, {
   maxYear,
   minYear,
   defaultYear,
-} from "../../app_config";
+} from "../app_config";
 
 import {
   useResizeObserver,
   useUnitNamesQuery,
   useSelectionYearsQuery,
-} from "../../helpers/hooks";
-import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
+} from "../../../helpers/hooks";
+import { mathClamp, validateTreatmentUnits } from "../../../helpers/functions";
 import { UnitNameList } from "./unitnamelist";
 import { NestedTreatmentUnitName } from "./unitnamelist/unitnamelistbody";
 import { RegisterNames } from ".";
@@ -90,7 +90,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     if (!selection_bar_dim) {
       return;
     }
-    const top = (selection_bar_dim.target as HTMLElement).offsetHeight ?? "";
+    const top = (selection_bar_dim.target as HTMLElement).offsetHeight ?? null;
     update_selection_bar_height(top);
   }, [selection_bar_dim]);
 

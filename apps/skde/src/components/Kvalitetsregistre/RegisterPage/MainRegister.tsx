@@ -72,7 +72,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
     if (!selection_bar_dim) {
       return;
     }
-    const top = (selection_bar_dim.target as HTMLElement).offsetHeight ?? "";
+    const top = (selection_bar_dim.target as HTMLElement).offsetHeight ?? null;
     update_selection_bar_height(top);
   }, [selection_bar_dim]);
 

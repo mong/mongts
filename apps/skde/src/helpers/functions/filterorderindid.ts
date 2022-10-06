@@ -1,4 +1,7 @@
-import { StatisticData, Description } from "../../components/RegisterPage";
+import {
+  StatisticData,
+  Description,
+} from "../../components/Kvalitetsregistre/RegisterPage";
 
 export const filterOrderIndID = (
   isFetching: boolean,

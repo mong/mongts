@@ -1,6 +1,6 @@
 import React from "react";
 
-import { app_text } from "../../../app_config";
+import { app_text } from "../../app_config";
 
 export const UnitNameListHeader: React.FC = () => {
   return (
