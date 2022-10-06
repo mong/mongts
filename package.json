@@ -9,8 +9,10 @@
     "dev": "turbo run dev",
     "test": "turbo run test",
     "lint": "turbo run lint",
+    "format": "turbo run format",
     "check-types": "turbo run check-types",
-    "check-format": "turbo run check-format"
+    "check-format": "turbo run check-format",
+    "cms-server": "npx netlify-cms-proxy-server"
   },
   "workspaces": [
     "apps/*",

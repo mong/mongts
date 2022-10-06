@@ -1,0 +1,451 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": [
+        "rateSnitt"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Antall akuttinnleggelser pr. 1 000 innbyggere",
+        "en": "Number of emergency admissions per 1,000 inhabitants"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "rate2019",
+        "rate2020",
+        "rate2021"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2019",
+          "2020",
+          "2021"
+        ],
+        "en": [
+          "2019",
+          "2020",
+          "2021"
+        ]
+      }
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nb": "Gjennomsnittsverdier for perioden 2019–2021. Rate pr. 1 000 innbyggere 18 år og eldre",
+        "en": "Average per year for the period 2019–2021. Rate per 1,000 inhabitants 18 years and older"
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområder",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "rateSnitt",
+          "label_no": "Rate",
+          "label_en": "Rate",
+          "typeVar": "number",
+          "format": ",.2f"
+        },
+        {
+          "id": "ant_akutt",
+          "label_no": "Akuttinnleggelser",
+          "label_en": "Emerg. adm.",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "pas_akuttutv",
+          "label_no": "Pasienter",
+          "label_en": "Patients",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "akutt_pr_utv_pas",
+          "label_no": "Akuttinnl. pr. pas.",
+          "label_en": "Emerg. adm. per patient",
+          "typeVar": "number",
+          "format": ",.2f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "rateSnitt",
+      "caption": {
+        "nb": "Antall akuttinnleggelser pr. 1 000 innbyggere",
+        "en": "Number of emergency admissions per 1,000 inhabitants"
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": "  0.4133",
+          "min": "  0.3635",
+          "lag_min": 0.456512028809,
+          "grense": 0.434910916754
+        },
+        {
+          "cluster": 2,
+          "max": "  0.5199",
+          "min": "  0.4565",
+          "lag_min": 0.572168527527,
+          "grense": 0.546015758775
+        },
+        {
+          "cluster": 3,
+          "max": "  0.6828",
+          "min": "  0.5722",
+          "lag_min": 0.795585701867,
+          "grense": 0.739181102128
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "data": [
+        {
+          "bohf": "Finnmark",
+          "innbyggere": 60664,
+          "pasienter": 139.333333333,
+          "rate2019": 0.330307780328,
+          "rate2020": 0.389931285391,
+          "rate2021": 0.371499442275,
+          "rateSnitt": 0.363491370289,
+          "ant_akutt": 21.3333333333,
+          "akutt_pr_pas": 0.153110047847,
+          "akutt_pas": 16.3333333333,
+          "akutt_pr_akuttpas": 1.30612244898,
+          "pas_akuttutv": 110,
+          "akutt_pr_utv_pas": 0.193939393939
+        },
+        {
+          "bohf": "UNN",
+          "innbyggere": 155748.333333,
+          "pasienter": 479.333333333,
+          "rate2019": 0.725957907344,
+          "rate2020": 0.615477737572,
+          "rate2021": 0.681425175984,
+          "rateSnitt": 0.672610694625,
+          "ant_akutt": 105.333333333,
+          "akutt_pr_pas": 0.219749652295,
+          "akutt_pas": 75,
+          "akutt_pr_akuttpas": 1.40444444444,
+          "pas_akuttutv": 381.333333333,
+          "akutt_pr_utv_pas": 0.276223776224
+        },
+        {
+          "bohf": "Nordland",
+          "innbyggere": 110493.333333,
+          "pasienter": 365,
+          "rate2019": 0.644725444827,
+          "rate2020": 0.60741439083,
+          "rate2021": 0.464927201858,
+          "rateSnitt": 0.572168527527,
+          "ant_akutt": 63.6666666667,
+          "akutt_pr_pas": 0.174429223744,
+          "akutt_pas": 44.3333333333,
+          "akutt_pr_akuttpas": 1.43609022556,
+          "pas_akuttutv": 322.333333333,
+          "akutt_pr_utv_pas": 0.197518097208
+        },
+        {
+          "bohf": "Helgeland",
+          "innbyggere": 62532.3333333,
+          "pasienter": 225,
+          "rate2019": 0.658050928412,
+          "rate2020": 0.598531084187,
+          "rate2021": 0.538603435447,
+          "rateSnitt": 0.596987370469,
+          "ant_akutt": 37,
+          "akutt_pr_pas": 0.164444444444,
+          "akutt_pas": 27.3333333333,
+          "akutt_pr_akuttpas": 1.35365853659,
+          "pas_akuttutv": 211,
+          "akutt_pr_utv_pas": 0.175355450237
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "innbyggere": 106589,
+          "pasienter": 409,
+          "rate2019": 0.911963138434,
+          "rate2020": 0.680120080741,
+          "rate2021": 0.793496766316,
+          "rateSnitt": 0.795585701867,
+          "ant_akutt": 89,
+          "akutt_pr_pas": 0.21760391198,
+          "akutt_pas": 56.3333333333,
+          "akutt_pr_akuttpas": 1.5798816568,
+          "pas_akuttutv": 383.333333333,
+          "akutt_pr_utv_pas": 0.232173913043
+        },
+        {
+          "bohf": "St. Olav",
+          "innbyggere": 265559.333333,
+          "pasienter": 961.333333333,
+          "rate2019": 0.606746099947,
+          "rate2020": 0.599686953179,
+          "rate2021": 0.583228138115,
+          "rateSnitt": 0.596486776157,
+          "ant_akutt": 152.666666667,
+          "akutt_pr_pas": 0.158807212205,
+          "akutt_pas": 111,
+          "akutt_pr_akuttpas": 1.37537537538,
+          "pas_akuttutv": 837.666666667,
+          "akutt_pr_utv_pas": 0.182252288102
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "innbyggere": 209615.666667,
+          "pasienter": 923,
+          "rate2019": 0.798683946484,
+          "rate2020": 0.819223767605,
+          "rate2021": 0.856253223161,
+          "rateSnitt": 0.825242854714,
+          "ant_akutt": 177.666666667,
+          "akutt_pr_pas": 0.192488262911,
+          "akutt_pas": 125,
+          "akutt_pr_akuttpas": 1.42133333333,
+          "pas_akuttutv": 835.333333333,
+          "akutt_pr_utv_pas": 0.212689545092
+        },
+        {
+          "bohf": "Førde",
+          "innbyggere": 85207.3333333,
+          "pasienter": 314.333333333,
+          "rate2019": 0.4377358922,
+          "rate2020": 0.453689347498,
+          "rate2021": 0.480429693076,
+          "rateSnitt": 0.456962941986,
+          "ant_akutt": 39.3333333333,
+          "akutt_pr_pas": 0.125132555673,
+          "akutt_pas": 34.6666666667,
+          "akutt_pr_akuttpas": 1.13461538462,
+          "pas_akuttutv": 274.333333333,
+          "akutt_pr_utv_pas": 0.143377885784
+        },
+        {
+          "bohf": "Bergen",
+          "innbyggere": 358888,
+          "pasienter": 1194,
+          "rate2019": 0.797892701553,
+          "rate2020": 0.577429868892,
+          "rate2021": 0.672634336998,
+          "rateSnitt": 0.682776502389,
+          "ant_akutt": 237,
+          "akutt_pr_pas": 0.198492462312,
+          "akutt_pas": 157,
+          "akutt_pr_akuttpas": 1.50955414013,
+          "pas_akuttutv": 1127.66666667,
+          "akutt_pr_utv_pas": 0.210168489506
+        },
+        {
+          "bohf": "Fonna",
+          "innbyggere": 140218,
+          "pasienter": 457.333333333,
+          "rate2019": 0.677502604266,
+          "rate2020": 0.543578272587,
+          "rate2021": 0.616090591332,
+          "rateSnitt": 0.613210562062,
+          "ant_akutt": 86.6666666667,
+          "akutt_pr_pas": 0.189504373178,
+          "akutt_pas": 63.6666666667,
+          "akutt_pr_akuttpas": 1.3612565445,
+          "pas_akuttutv": 432,
+          "akutt_pr_utv_pas": 0.200617283951
+        },
+        {
+          "bohf": "Stavanger",
+          "innbyggere": 282988.666667,
+          "pasienter": 876,
+          "rate2019": 0.358080369583,
+          "rate2020": 0.382385279844,
+          "rate2021": 0.367994096938,
+          "rateSnitt": 0.369696756076,
+          "ant_akutt": 101.666666667,
+          "akutt_pr_pas": 0.116057838661,
+          "akutt_pas": 77.3333333333,
+          "akutt_pr_akuttpas": 1.31465517241,
+          "pas_akuttutv": 806.666666667,
+          "akutt_pr_utv_pas": 0.126033057851
+        },
+        {
+          "bohf": "Østfold",
+          "innbyggere": 252406.333333,
+          "pasienter": 817.333333333,
+          "rate2019": 0.657358763035,
+          "rate2020": 0.494705410989,
+          "rate2021": 0.412386511676,
+          "rateSnitt": 0.519862990022,
+          "ant_akutt": 136.666666667,
+          "akutt_pr_pas": 0.167210440457,
+          "akutt_pas": 97,
+          "akutt_pr_akuttpas": 1.4089347079,
+          "pas_akuttutv": 683.666666667,
+          "akutt_pr_utv_pas": 0.199902486592
+        },
+        {
+          "bohf": "Akershus",
+          "innbyggere": 449568.666667,
+          "pasienter": 1500.33333333,
+          "rate2019": 0.494548344245,
+          "rate2020": 0.44197073004,
+          "rate2021": 0.505411828679,
+          "rateSnitt": 0.480879678487,
+          "ant_akutt": 216.333333333,
+          "akutt_pr_pas": 0.14419017996,
+          "akutt_pas": 163.666666667,
+          "akutt_pr_akuttpas": 1.32179226069,
+          "pas_akuttutv": 1308.66666667,
+          "akutt_pr_utv_pas": 0.165308201732
+        },
+        {
+          "bohf": "OUS",
+          "innbyggere": 218202,
+          "pasienter": 590,
+          "rate2019": 0.458637027747,
+          "rate2020": 0.413075607188,
+          "rate2021": 0.50122155574,
+          "rateSnitt": 0.456512028809,
+          "ant_akutt": 86.6666666667,
+          "akutt_pr_pas": 0.146892655367,
+          "akutt_pas": 61.3333333333,
+          "akutt_pr_akuttpas": 1.41304347826,
+          "pas_akuttutv": 538.333333333,
+          "akutt_pr_utv_pas": 0.160990712074
+        },
+        {
+          "bohf": "Lovisenberg",
+          "innbyggere": 136184.333333,
+          "pasienter": 314.333333333,
+          "rate2019": 0.457710158522,
+          "rate2020": 0.505768962623,
+          "rate2021": 0.278977428939,
+          "rateSnitt": 0.4133098047,
+          "ant_akutt": 39.6666666667,
+          "akutt_pr_pas": 0.12619300106,
+          "akutt_pas": 26,
+          "akutt_pr_akuttpas": 1.52564102564,
+          "pas_akuttutv": 300,
+          "akutt_pr_utv_pas": 0.132222222222
+        },
+        {
+          "bohf": "Diakonhjemmet",
+          "innbyggere": 117501.666667,
+          "pasienter": 282.333333333,
+          "rate2019": 0.496434588119,
+          "rate2020": 0.286859067318,
+          "rate2021": 0.383759946328,
+          "rateSnitt": 0.389821648487,
+          "ant_akutt": 42,
+          "akutt_pr_pas": 0.148760330579,
+          "akutt_pas": 28.3333333333,
+          "akutt_pr_akuttpas": 1.48235294118,
+          "pas_akuttutv": 261.333333333,
+          "akutt_pr_utv_pas": 0.160714285714
+        },
+        {
+          "bohf": "Innlandet",
+          "innbyggere": 274507.666667,
+          "pasienter": 1115.33333333,
+          "rate2019": 0.656456644263,
+          "rate2020": 0.544712429167,
+          "rate2021": 0.630340370707,
+          "rateSnitt": 0.609577456706,
+          "ant_akutt": 172.333333333,
+          "akutt_pr_pas": 0.154512851166,
+          "akutt_pas": 126,
+          "akutt_pr_akuttpas": 1.36772486772,
+          "pas_akuttutv": 953,
+          "akutt_pr_utv_pas": 0.180832458902
+        },
+        {
+          "bohf": "Vestre Viken",
+          "innbyggere": 382236.333333,
+          "pasienter": 1193.66666667,
+          "rate2019": 0.571953890598,
+          "rate2020": 0.465142515354,
+          "rate2021": 0.452058340108,
+          "rateSnitt": 0.49699889888,
+          "ant_akutt": 196,
+          "akutt_pr_pas": 0.16419994415,
+          "akutt_pas": 132.333333333,
+          "akutt_pr_akuttpas": 1.48110831234,
+          "pas_akuttutv": 1084.66666667,
+          "akutt_pr_utv_pas": 0.180700676091
+        },
+        {
+          "bohf": "Vestfold",
+          "innbyggere": 196326.333333,
+          "pasienter": 651,
+          "rate2019": 0.640956756408,
+          "rate2020": 0.62494855431,
+          "rate2021": 0.674022678693,
+          "rateSnitt": 0.646658604466,
+          "ant_akutt": 135.333333333,
+          "akutt_pr_pas": 0.207885304659,
+          "akutt_pas": 81.6666666667,
+          "akutt_pr_akuttpas": 1.65714285714,
+          "pas_akuttutv": 585,
+          "akutt_pr_utv_pas": 0.231339031339
+        },
+        {
+          "bohf": "Telemark",
+          "innbyggere": 139439.333333,
+          "pasienter": 464,
+          "rate2019": 0.336385256816,
+          "rate2020": 0.475647921501,
+          "rate2021": 0.364705153291,
+          "rateSnitt": 0.392761344389,
+          "ant_akutt": 59,
+          "akutt_pr_pas": 0.127155172414,
+          "akutt_pas": 41.6666666667,
+          "akutt_pr_akuttpas": 1.416,
+          "pas_akuttutv": 431.666666667,
+          "akutt_pr_utv_pas": 0.13667953668
+        },
+        {
+          "bohf": "Sørlandet",
+          "innbyggere": 239908.333333,
+          "pasienter": 880.666666667,
+          "rate2019": 0.502755136192,
+          "rate2020": 0.416028791766,
+          "rate2021": 0.506154726848,
+          "rateSnitt": 0.47481833385,
+          "ant_akutt": 114.666666667,
+          "akutt_pr_pas": 0.130204390613,
+          "akutt_pas": 84.6666666667,
+          "akutt_pr_akuttpas": 1.35433070866,
+          "pas_akuttutv": 758.333333333,
+          "akutt_pr_utv_pas": 0.151208791209
+        },
+        {
+          "bohf": "Norge",
+          "innbyggere": 4244785,
+          "pasienter": 14152.6666667,
+          "rate2019": 0.584675176476,
+          "rate2020": 0.512594575817,
+          "rate2021": 0.535005552015,
+          "rateSnitt": 0.5439571123,
+          "ant_akutt": 2310,
+          "akutt_pr_pas": 0.163220123416,
+          "akutt_pas": 1630.66666667,
+          "akutt_pr_akuttpas": 1.41659852821,
+          "pas_akuttutv": 12626.3333333,
+          "akutt_pr_utv_pas": 0.182950975475
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+.resultBoxWrapper {
+  position: relative;
+  border-radius: 10px;
+  padding: 30px 0px 20px 0px;
+}
+
+.resultBoxTitleWrapper {
+  padding: 30px 20px 30px 20px;
+  text-align: left;
+}
+
+.resultBoxSelectionContent {
+  width: auto;
+  padding: 30px 20px 30px 20px;
+  text-align: left;
+}
+
+.crossWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 21px;
+  margin: auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: #033f85;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.horizontal {
+  position: relative;
+  left: 1px;
+  min-width: 16px;
+  max-width: 16px;
+  min-height: 2px;
+  max-height: 2px;
+  background-color: #fff;
+}
+
+.vertical {
+  position: relative;
+  left: -8px;
+  top: 0px;
+  min-width: 2px;
+  max-width: 2px;
+  min-height: 16px;
+  max-height: 16px;
+  background-color: #fff;
+}

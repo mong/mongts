@@ -1,0 +1,43 @@
+{
+  "frontpagetext": "Lorem lipsum dolor",
+  "filename": "test_atlas",
+  "publisert": false,
+  "lang": "nb",
+  "date": "2022-02-28T11:26:57.079Z",
+  "ingress": "Hovedfunn fra Helseatlas for fødselshjelp er oppsummert under. Oppsummeringene inneholder også en kort beskrivelse av pasientutvalgene. Det gis videre informasjon om befolkningens bruk i geografiske områder (opptaksområder). Befolkningens bruk måles som antall hendelser pr. 1 000 innbyggere eller som andeler av pasientene som får en gitt tjeneste. Variasjonen i bruk mellom de geografiske boområdene er kort kommentert.",
+  "kapittel": [
+    {
+      "overskrift": "MS-syke barn under fødsel",
+      "innhold": [
+        {
+          "type": "tekst",
+          "tekst": "### Dette er en overskrift!\n\n```sas\ndata test;\nset test2;\nvar = 0;\nrun;\n```\n\nOg litt tekst her\n\n\n\n![]()",
+          "beskrivelse": "Litt test-tekst"
+        },
+        {
+          "type": "faktaboks",
+          "overskrift": "Svangeskapsdiabetes",
+          "tekst": "Svangerskapsdiabetes medfører økt risiko for komplikasjoner i svangerskapet og under fødsel for både mor og barn. Svangerskapsdiabetes forsvinner vanligvis etter fødselen, men kvinner som har hatt svangerskapsdiabetes har en økt risiko for å utvikle diabetes type 2 i neste svangerskap og senere i livet. Den økte forekomsten av svangerskapsdiabetes forklares ut fra økning i risikofaktorer for svangerskapsdiabetes, slik som overvekt, økende alder for førstegangsfødende og opprinnelse fra land\\nmed høy forekomst av diabetes."
+        },
+        {
+          "type": "tekst",
+          "tekst": "Så sier vi litt mer her om blablabla.\n\n![Kart](/helseatlas/img/no/test_atlas/map.png \"Variasjon i kirurgiske aborter etter jordmorbesøk\")",
+          "beskrivelse": "Kart"
+        },
+        {
+          "type": "resultatboks",
+          "overskrift": "Svangerskapsdiabetes",
+          "ingress": "Det var stor geografisk variasjon i bruken av diagnosen svangerskapsdiabetes, og opptaksområde Førde utmerket seg spesielt med høye rater både for førstegangs- og flergangsfødende (flergangsfødende kun vist i rapport). Over fire ganger så mange pr. 1 000 førstegangsfødende bosatt i opptaksområdet Førde fikk diagnosen svangerskapsdiabetes som i opptaksområdet UNN. Ser man bort fra opptaksområdet Førde, var variasjonen mer moderat, men fortsatt betydelig.",
+          "data": "test_data.json",
+          "utvalg": "Tilstandskoder (fra kodeverket ICPC-2) W 85 Svangerskapsdiabetes",
+          "resultat": "Det var påfallende stor variasjon i bruk av diagnosen svangerskapsdiabetes, der opptaksområdet Førde skilte seg ut med svært høy rate. Befolkningssammensetningen i de ulike opptaksområdene kan ikke forklare forskjellene. Ulik etterlevelse av daværende nasjonale retningslinjer og varierende rapportering til MFR kan være forklaringer.",
+          "publisert": "2022-03-07T08:38:45.069Z",
+          "oppdatert": "2022-03-07T08:38:45.096Z"
+        }
+      ]
+    }
+  ],
+  "image": "/helseatlas/img/no/test_atlas/colourbox30300429.jpg",
+  "shortTitle": "Fødselshjelp",
+  "mainTitle": "Testatlas (ikke publiser)"
+}
