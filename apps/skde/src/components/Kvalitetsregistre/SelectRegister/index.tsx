@@ -83,7 +83,7 @@ const SelectRegister = (props: selectedRegisterProps) => {
         </div>
         <ul>
           <li>
-            <Link href={`/alle/${activeTab}`} passHref>
+            <Link href={`/kvalitetsregistre/alle/${activeTab}`} passHref>
               <a>
                 <b onClick={() => updateBtnToggle(!btnToggle)}>Alle registre</b>
               </a>
@@ -101,7 +101,10 @@ const SelectRegister = (props: selectedRegisterProps) => {
 
             return (
               <li key={reg.rname}>
-                <Link href={`/${reg.rname}/${tabName}`} passHref>
+                <Link
+                  href={`/kvalitetsregistre/${reg.rname}/${tabName}`}
+                  passHref
+                >
                   <a onClick={() => updateBtnToggle(!btnToggle)}>
                     {reg.full_name}
                   </a>
