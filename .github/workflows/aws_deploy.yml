@@ -24,6 +24,11 @@ jobs:
       - run: yarn install
       - run: yarn run check-types
       - run: yarn run check-format
+      - name: Test build
+        env:
+          REACT_APP_API_HOST: https://dc9yut6ftb9m1.cloudfront.net
+        run: |
+          yarn install && yarn run build
       - name: Build and sync main to S3 bucket skde.org
         if: github.ref == 'refs/heads/main'
         env:
