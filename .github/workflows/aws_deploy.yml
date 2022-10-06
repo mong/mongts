@@ -19,33 +19,27 @@ jobs:
       AWS_DEFAULT_REGION: "eu-west-1"
       NEXT_PUBLIC_SENTRY: "https://d48c58a239264c12bcbf8fe86d364c44@o489056.ingest.sentry.io/5799127"
     steps:
-      - name: Set release variables
-        if: github.ref == 'refs/heads/main'
-        run: |
-          echo "api=https://dc9yut6ftb9m1.cloudfront.net" >> $GITHUB_ENV
-          echo "s3_bucket=s3://skde.org" >> $GITHUB_ENV
-      - name: Set QA variables
-        if: github.ref == 'refs/heads/develop'
-        run: |
-          echo "api=https://qa-mong-api.skde.org" >> $GITHUB_ENV
-          echo "s3_bucket=s3://qa.skde.org" >> $GITHUB_ENV
       - name: Check out the repo
         uses: actions/checkout@v3
-      - name: Build package
-        env:
-          NEXT_PUBLIC_API_HOST: ${{ env.api }}
-        run: yarn install && yarn run export
-      - name: Sync main to S3 bucket skde.org
+      - run: yarn run check-types
+      - run: yarn run check-format
+      - name: Build and sync main to S3 bucket skde.org
         if: github.ref == 'refs/heads/main'
+        env:
+          REACT_APP_API_HOST: https://dc9yut6ftb9m1.cloudfront.net
         run: |
-          aws s3 sync build ${{ env.s3_bucket }} \
+          yarn install && yarn run build
+          aws s3 sync apps/skde/out s3://skde.org \
             --exclude "helseatlas/ia/*" --exclude "helseatlas/files/*" \
             --delete \
             --cache-control "public, max-age=1, s-maxage=1"
-      - name: Sync develop to S3 bucket qa.skde.org
+      - name: Build and sync develop to S3 bucket qa.skde.org
         if: github.ref == 'refs/heads/develop'
+        env:
+          REACT_APP_API_HOST: https://qa-mong-api.skde.org
         run: |
-          aws s3 sync build ${{ env.s3_bucket }} \
+          yarn install && yarn run build
+          aws s3 sync apps/skde/out s3://qa.skde.org \
             --exclude "helseatlas/ia/*" --exclude "helseatlas/files/*" \
             --delete \
             --cache-control "public, max-age=1, s-maxage=1"
