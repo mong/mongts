@@ -10,7 +10,8 @@
     "test": "turbo run test",
     "lint": "turbo run lint",
     "check-types": "turbo run check-types",
-    "check-format": "turbo run check-format"
+    "check-format": "turbo run check-format",
+    "cms-server": "npx netlify-cms-proxy-server"
   },
   "workspaces": [
     "apps/*",
