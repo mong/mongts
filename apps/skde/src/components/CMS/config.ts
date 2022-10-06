@@ -188,7 +188,9 @@ const oldAtlas = (lang: "no" | "en"): CmsCollection => {
     label: lang === "no" ? "Tidligere atlas" : "Tidligere engelske atlas",
     name: lang === "no" ? "tidligere_atlas" : "tidligere_eng_atlas",
     folder:
-      lang === "no" ? "apps/skde/_posts/tidligere_atlas" : "apps/skde/_posts/en/tidligere_atlas",
+      lang === "no"
+        ? "apps/skde/_posts/tidligere_atlas"
+        : "apps/skde/_posts/en/tidligere_atlas",
     create: false,
     delete: false,
     media_folder:
@@ -267,7 +269,8 @@ const staticPages = (lang: "no" | "en"): CmsCollection => {
   return {
     label: lang === "no" ? "Statiske sider" : "Statiske engelske sider",
     name: lang === "no" ? "statiske_sider" : "statiske_sider_en",
-    folder: lang === "no" ? "apps/skde/_posts/statisk" : "apps/skde/_posts/en/static",
+    folder:
+      lang === "no" ? "apps/skde/_posts/statisk" : "apps/skde/_posts/en/static",
     create: true,
     fields: [
       filename,
