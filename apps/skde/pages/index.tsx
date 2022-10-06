@@ -50,7 +50,9 @@ export default function Home() {
             </div>
 
             <div className={styles.block_button}>
-              <a href={`${origin}/helseatlas/`}>Helseatlas</a>
+              <Link href="/helseatlas">
+                <a>Helseatlas</a>
+              </Link>
             </div>
 
             <div className={styles.block_button}>
