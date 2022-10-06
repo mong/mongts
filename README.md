@@ -9,22 +9,22 @@
 
 <!-- badges: end -->
 
-This is the [Next.js](https://nextjs.org/) app behind [www.skde.no](https://www.skde.no/) front page.
+This is the [Next.js](https://nextjs.org/) app behind [www.skde.no](https://www.skde.no/) and the API.
 
 The repository [mong/qmongjs](https://github.com/mong/qmongjs) is behind the subpage [www.skde.no/kvalitetsregistre](https://www.skde.no/kvalitetsregistre/alle/sykehus) and .
 
 ## Development
 
-There is two long-lived branches in this repository: `main` and `develop`. All changes to `main` will update [www.skde.no](https://www.skde.no/) and [verify.skde.no](https://verify.skde.no/). All changes to `develop` will update [qa.skde.no](https://qa.skde.no/).
+There is two long-lived branches in this repository: `main` and `develop`. All changes to `main` will update [www.skde.no](https://www.skde.no/) and [verify.skde.no](https://verify.skde.no/). All changes to `develop` will update [test.skde.no](https://test.skde.no/).
 
-New features and changes goes into the `develop` branch through a _Pull Request_ (PR). Before these changes go into the `main` branch, the webpage [qa.skde.no](https://qa.skde.no/) has to be checked for errors.
+New features and changes goes into the `develop` branch through a _Pull Request_ (PR). Before these changes go into the `main` branch, the webpage [test.skde.no](https://test.skde.no/) has to be checked for errors.
 
 The `develop` branch will then be merged into the `main` branch with
 
 ```bash
 git checkout main
 git fetch origin develop:develop
-git merge --no-ff develop
+git merge develop
 git push
 ```
 
@@ -33,7 +33,7 @@ Changes directly commited to the `main` branch (for instance new _News_ posts) h
 ```bash
 git checkout develop
 git fetch origin main:main
-git merge main # with fast forward, if possible
+git merge main
 git push
 ```
 
@@ -54,27 +54,23 @@ In production we build static html files that we serve in an S3 bucket on AWS. T
 
 ```bash
 yarn export
-npx serve out
+npx serve apps/skde/out
 ```
 
-If you want to mimic the full site you have to build [hamongts](https://github.com/mong/hamongts) and [qmongjs](https://github.com/mong/qmongjs) as well. The output from these builds have to be copied into `helseatlas` and `kvalitetsregistre` folders inside the `out` folder. In other words:
+If you want to mimic the full site you have to build [qmongjs](https://github.com/mong/qmongjs) as well. The output from this build has to be copied into `kvalitetsregistre` folder inside the `apps/skde/out` folder. In other words:
 
 ```bash
 # build mongts
 yarn install && yarn export
-# build hamongts, which is also a nextjs-app
-cd ../hamongts
-yarn install && yarn export
-cp -r out ../mongts/out/helseatlas
 # build qmongjs, which is a create-react-app
 cd ../qmongjs
 yarn install && yarn build
-cp -r build ../mongts/out/kvalitetsregistre
+cp -r build ../mongts/apps/skde/out/kvalitetsregistre
 # go back and serve the full site
 cd ../mongts
-npx serve out
+npx serve apps/skde/out
 ```
 
 If the last step is not working, make sure you have the latest version of `serve` installed (it did not work with `serve` version `12.0.1`).
 
-Be aware, the `helseatlas` and `kvalitetsregistre` folders will be overwritten the next time you do a `yarn export`.
+Be aware, the `kvalitetsregistre` folder will be overwritten the next time you do a `yarn export`.
