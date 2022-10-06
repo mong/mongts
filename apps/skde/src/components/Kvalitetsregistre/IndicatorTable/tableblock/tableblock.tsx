@@ -2,7 +2,10 @@ import React, { useMemo } from "react";
 import { UseQueryResult } from "react-query";
 
 import style from "./tableblock.module.css";
-import { useDescriptionQuery, useIndicatorQuery } from "../../../../helpers/hooks";
+import {
+  useDescriptionQuery,
+  useIndicatorQuery,
+} from "../../../../helpers/hooks";
 import { filterOrderIndID } from "../../../../helpers/functions";
 import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";

@@ -1,5 +1,8 @@
 import { useQuery } from "react-query";
-import { API_HOST, StatisticData } from "../../components/Kvalitetsregistre/RegisterPage";
+import {
+  API_HOST,
+  StatisticData,
+} from "../../components/Kvalitetsregistre/RegisterPage";
 interface FetchDescriptionParams {
   registerShortName: string;
   type?: "ind" | "dg";
