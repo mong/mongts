@@ -9329,6 +9329,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"next-query-params@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "next-query-params@npm:4.0.0"
+  dependencies:
+    tslib: ^2.0.3
+  peerDependencies:
+    next: ^10.0.0 || ^11.0.0 || ^12.0.0
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    use-query-params: ^2.0.0
+  checksum: d53c35b7555b851e4304c5c1c89bd3c8810ea4ba42ada8dbb36adfaccdfba453a3aa3f7822eed19740b80b152bfec72233b7c4822fe648dfb548e66cb0bb830f
+  languageName: node
+  linkType: hard
+
 "next@npm:12.3.1":
   version: 12.3.1
   resolution: "next@npm:12.3.1"
@@ -11678,6 +11691,7 @@ __metadata:
     lint-staged: 13.0.3
     netlify-cms-app: 2.15.72
     next: 12.3.1
+    next-query-params: ^4.0.0
     prettier: 2.7.1
     react: 18.2.0
     react-dom: 18.2.0
@@ -12649,7 +12663,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.1.0, tslib@npm:^2.4.0":
+"tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.4.0":
   version: 2.4.0
   resolution: "tslib@npm:2.4.0"
   checksum: 8c4aa6a3c5a754bf76aefc38026134180c053b7bd2f81338cb5e5ebf96fefa0f417bff221592bf801077f5bf990562f6264fecbc42cd3309b33872cb6fc3b113
