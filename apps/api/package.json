@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node-dev -r dotenv/config src",
+    "dev": "yarn run start",
     "build": "tsc",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts src",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
