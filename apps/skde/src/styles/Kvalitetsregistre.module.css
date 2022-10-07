@@ -37,71 +37,17 @@
   font-size: 0.75rem;
   font-weight: 500;
 }
-.kvalitetsregister.fa.fa-fas.fa-circle {
-  color: #3baa34;
-  font-size: 1.2rem;
-  padding: 0.1em;
-}
-.kvalitetsregister.fa.fa-fas.fa-adjust {
-  color: #fd9c00;
-  font-size: 1.2rem;
-  padding: 0.1em;
-}
-.kvalitetsregister.fa.fa-circle-o {
-  color: #e30713;
-  font-size: 1.21rem;
-  padding: 0.1em;
-}
 
 /******* treatment unit and year selection *******/
-
-.kvalitetsregister.app-container {
-  box-sizing: border-box;
-}
-.kvalitetsregister.app-body {
-  width: 98%;
-  max-width: 1500px;
-  position: relative;
-  top: 0rem;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-}
-.kvalitetsregister.selection-container {
-  position: sticky;
-  top: 0;
-  display: flex;
-  background-color: white;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  box-sizing: border-box;
-  z-index: 3;
-  /* box-shadow: 0 4px 5px -1px rgba(0, 38, 61, 0.25);*/
-  position: -webkit-sticky;
-}
-.kvalitetsregister.treatment-unit-selection {
-  flex: 3 3 0%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.kvalitetsregister.treatment-unit-selection form {
-  flex: 8 1 20rem;
-  margin: 0.4rem;
-}
-.kvalitetsregister.hospital_list_btn_container {
+.hospital_list_btn_container {
   flex: 0 0 6rem;
   margin: 0.4rem;
   text-align: center;
 }
-.kvalitetsregister.year-selection {
-  flex: 1 1 0%;
-}
 
 /******* level legend and filter *******/
 
-.kvalitetsregister.table_legend {
+.table_legend {
   display: flex;
   justify-content: space-around;
   position: sticky;
@@ -114,7 +60,7 @@
   align-self: flex-end;
 }
 
-.kvalitetsregister.table_legend button {
+.table_legend button {
   outline: none;
   border: none;
   background-color: unset;
@@ -136,15 +82,15 @@
   cursor: pointer;
   transition: 300ms cubic-bezier(0, 0, 0.58, 1);
 }
-.kvalitetsregister.table_legend button:hover {
+.table_legend button:hover {
   box-shadow: 0px 4px 10px 2px rgba(196, 196, 196, 0.5);
   top: -7px;
 }
-.kvalitetsregister.table_legend button:active {
+.table_legend button:active {
   box-shadow: none;
   top: 0px;
 }
-.kvalitetsregister.table_legend button.checked {
+.table_legend button.checked {
   border: 2px solid #00263d;
   box-shadow: 0px 4px 10px 2px rgba(196, 196, 196, 0.2);
   top: -7px;
@@ -152,243 +98,14 @@
 
 /******* main content containers *******/
 
-.kvalitetsregister.content_container {
-  box-sizing: border-box;
-  display: flex;
-}
-.kvalitetsregister.main_table_container {
-  box-sizing: border-box;
-  flex: 4;
-  padding: 0 1rem 0 0.5rem;
-}
-.kvalitetsregister.med_field_container {
-  box-sizing: border-box;
-  flex: 1;
-  padding: 0 0.5rem 0 1rem;
-}
-
-/******* medical field selection  *******/
-
-.kvalitetsregister.med_field_list {
-  padding: 0;
-  margin: 0;
-  position: sticky;
-  z-index: 2;
-  position: -webkit-sticky;
-}
-.kvalitetsregister.med_field_list button {
-  position: relative;
-  border: none;
-  background-color: unset;
-  text-decoration: none;
-  cursor: pointer;
-  text-align: unset;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  transition: all 0.3s ease-in-out;
-}
-
-.kvalitetsregister.med_field_list li {
-  list-style-type: none;
-  margin-top: 1rem;
-}
-
-.kvalitetsregister.med_field_title button .med_field_text {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1rem;
-  color: #00263d;
-  margin: auto;
-  height: 40px;
-  background-color: unset;
-  width: 100%;
-}
-.kvalitetsregister.med_field_title .med_field_nrind {
-  color: #fff;
-  background-color: #00263d;
-  border-radius: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9em;
-  width: 2.2rem;
-  height: 2.2rem;
-}
-.kvalitetsregister.med_field button.med_field_text {
-  font-size: 1rem;
-  color: #9a9a9a;
-
-  background-color: unset;
-  width: 100%;
-  transition: all 0.3s ease-in;
-}
-.kvalitetsregister.med_field .med_field_nrind {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #00263d;
-  background-color: #efefef;
-  border-radius: 100%;
-  min-width: 2rem;
-  min-height: 2rem;
-  transition: all 0.3s ease-in-out;
-}
-.kvalitetsregister.med_field_list button:focus {
-  outline: none;
-}
-.kvalitetsregister.med_field button:hover,
-.kvalitetsregister.med_field button:focus {
-  color: #00263d;
-}
-.kvalitetsregister.med_field button:hover .med_field_nrind,
-.kvalitetsregister.med_field button:focus .med_field_nrind {
-  color: #efefef;
-  background-color: #00263d;
-}
-.kvalitetsregister.med_field_list button::after {
-  content: "";
-  position: absolute;
-  width: 80%;
-  bottom: -0.2rem;
-  display: block;
-  border-bottom: 4px solid #00263d;
-  transform: scale(0);
-  transition: all 0.3s ease-in-out;
-}
-.kvalitetsregister.med_field_list button:hover::after,
-.kvalitetsregister.med_field_list button:focus::after {
-  opacity: 0.5;
-  transform: scale(1);
-}
-.kvalitetsregister.med_field_list button:active {
-  opacity: 0.7;
-  transform: scale(0.95);
-}
-.kvalitetsregister.med_field button:active .med_field_nrind {
-  opacity: 0.7;
-}
-.kvalitetsregister.med_field_list button:active::after {
-  opacity: 0.2;
-  transform: scale(1);
-}
-.kvalitetsregister.med_field_list .checked button.med_field_text {
-  color: #00263d;
-  transition: all 0.3s ease-in;
-}
-.kvalitetsregister.med_field_list .checked .med_field_nrind {
-  color: #efefef;
-  background-color: #00263d;
-  opacity: 0.8;
-}
-.kvalitetsregister.med_field_list .checked ::after,
-.kvalitetsregister.med_field_list .checked ::after {
-  opacity: 0.8;
-  transform: scale(1);
-}
-
 /********* table *********/
-
-.kvalitetsregister table {
-  table-layout: fixed;
-  width: 100%;
-  border-spacing: 0;
-  margin-bottom: 50px;
-  line-height: 1.2;
-}
-.kvalitetsregister thead {
-  box-shadow: 0 4px 5px -1px #00263d;
-}
-.kvalitetsregister thead th {
-  font-size: 0.9rem;
-  background-color: #00263d;
-  color: white;
-  height: 50px;
-  position: sticky;
-  z-index: 1;
-  position: -webkit-sticky;
-}
-.kvalitetsregister th.quality_indicator {
-  padding-left: 0.5rem;
-}
-.kvalitetsregister tbody tr {
-  box-shadow: 0 4px 5px -1px #dcdcdc;
-}
-.kvalitetsregister.register-row {
-  background-color: #dee7ee;
-}
-.kvalitetsregister.register-row .reg-name {
-  text-align: left;
-  font-size: 1.1rem;
-  padding: 0 0.5rem;
-  margin: 0.8rem 0;
-}
-.kvalitetsregister.quality_indicator {
-  text-align: left;
-}
-.kvalitetsregister.quality_indicator_name h1 {
-  margin: 0.5rem;
-  font-size: 1.2em;
-  overflow: hidden;
-}
-.kvalitetsregister.qi_long_description p {
-  margin: 5px 5px 10px 0.5rem;
-  color: #7d8588;
-  font-size: 0.9em;
-}
-.kvalitetsregister.desired_target_level h4 {
-  margin: 5px 5px 10px 0.5rem;
-  color: #7ebec7;
-  font-size: 1rem;
-  font-weight: 600;
-}
-.kvalitetsregister.filter_med_field {
-  display: none;
-}
-.kvalitetsregister.filtered_level .summary,
-.kvalitetsregister.filtered_level .level {
-  opacity: 0.2;
-}
-.kvalitetsregister.selected_unit .level,
-.kvalitetsregister.selected_unit .summary,
-.kvalitetsregister.nationally .level,
-.kvalitetsregister.nationally .summary {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.kvalitetsregister.selected_unit .level h4,
-.kvalitetsregister.nationally .level h4 {
-  font-size: 1.3rem;
-  font-weight: 500;
-  margin: 0.5rem;
-}
-.kvalitetsregister.selected_unit .summary,
-.kvalitetsregister.nationally .summary {
-  font-size: 0.85rem;
-}
-.kvalitetsregister tbody .selected_unit {
-  background-color: rgba(126, 190, 199, 0.05);
-}
-.kvalitetsregister tbody .indicator:hover {
-  background-color: rgba(126, 190, 199, 0.15);
-  cursor: pointer;
-}
-.kvalitetsregister table {
-  border-bottom: 1rem solid #00263d;
-  border-radius: 0.5rem;
-}
 
 /*------ tr figure button container----*/
 
-.kvalitetsregister.tr_figure td {
+.tr_figure td {
   text-align: center;
 }
-.kvalitetsregister.tr_figure .tr_buttons_container {
+.tr_figure .tr_buttons_container {
   text-align: center;
   display: flex;
   flex-direction: row-reverse;
@@ -397,7 +114,7 @@
 
 /************ list of treatment units ***************/
 
-.kvalitetsregister.hospital_list_btn {
+.hospital_list_btn {
   color: black;
   font-weight: 500;
   font-size: 1.1rem;
@@ -412,12 +129,12 @@
   min-height: "2rem";
   transition: scale 200ms ease-in-out;
 }
-.kvalitetsregister.hospital_list_btn:hover,
-.kvalitetsregister.hospital_list_btn:focus {
+.hospital_list_btn:hover,
+.hospital_list_btn:focus {
   border: 3px solid #dee7ee;
 }
 
-.kvalitetsregister.tu_list {
+.tu_list {
   overflow-y: scroll;
   color: #2d3034;
   position: fixed;
@@ -432,24 +149,24 @@
   box-shadow: -1px 7px 10px 0 #8b9e9f;
 }
 
-.kvalitetsregister.tu_list h3 {
+.tu_list h3 {
   margin: 0;
   padding: 0.7rem;
   text-align: start;
   background-color: #dee7ee;
   border-bottom: 2px solid #b5c3c4;
 }
-.kvalitetsregister.tu_list_header {
+.tu_list_header {
   text-align: start;
   padding-left: 1%;
 }
-.kvalitetsregister.all_tu {
+.all_tu {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: auto;
 }
-.kvalitetsregister.tu_list_rhf {
+.tu_list_rhf {
   flex: 1 1 350px;
   margin: 5px;
   box-sizing: border-box;
@@ -457,46 +174,46 @@
   border: 2px solid #b5c3c4;
   max-width: 400px;
 }
-.kvalitetsregister.tu_list_rhf_header {
+.tu_list_rhf_header {
   cursor: pointer;
 }
-.kvalitetsregister.tu_list_rhf_header:hover {
+.tu_list_rhf_header:hover {
   cursor: pointer;
   text-decoration: underline;
 }
 
-.kvalitetsregister.tu_list_rhf_content {
+.tu_list_rhf_content {
   display: flex;
   justify-content: flex-start;
 }
-.kvalitetsregister.tu_list_hfs_in_rhf {
+.tu_list_hfs_in_rhf {
   display: flex;
   flex-direction: column;
   flex: 2;
 }
-.kvalitetsregister.tu_list_hf {
+.tu_list_hf {
   display: flex;
   margin: 0.7rem 0;
   flex-direction: column;
 }
-.kvalitetsregister.tu_list_hospital {
+.tu_list_hospital {
   display: flex;
   flex-direction: column;
   flex: 1;
   align-items: flex-start;
   margin-left: 5rem;
 }
-.kvalitetsregister.tu_list_hf_btn_constainer {
+.tu_list_hf_btn_constainer {
   flex: 1;
   align-self: flex-start;
   text-align: start;
 }
-.kvalitetsregister.tu_list_hf button {
+.tu_list_hf button {
   text-align: start;
   overflow-wrap: break-word;
   outline: none;
 }
-.kvalitetsregister.all_tu button {
+.all_tu button {
   font-size: 1rem;
   background: none;
   border: none;
@@ -505,14 +222,14 @@
   cursor: pointer;
   transition: all 200ms ease-in-out;
 }
-.kvalitetsregister.all_tu button:hover {
+.all_tu button:hover {
   color: #08418e;
   text-decoration: underline;
 }
-.kvalitetsregister.all_tu button:focus {
+.all_tu button:focus {
   text-decoration: underline;
 }
-.kvalitetsregister.tu_list_close_btn {
+.tu_list_close_btn {
   outline: none;
   position: fixed;
   font-size: 2rem;
@@ -524,8 +241,8 @@
   cursor: pointer;
   transition: scale 200ms ease-in-out;
 }
-.kvalitetsregister.tu_list_close_btn:hover,
-.kvalitetsregister.tu_list_close_btn:focus {
+.tu_list_close_btn:hover,
+.tu_list_close_btn:focus {
   scale: 1.2;
 }
 
@@ -535,28 +252,11 @@
   .kvalitetsregister html {
     font-size: 13px;
   }
-  .selection-container {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-  }
-  .treatment-unit-selection {
-    display: flex;
-  }
-  .treatment-unit-selection form {
-    flex: 5;
-  }
   .table_legend {
     display: flex;
     justify-content: space-around;
     width: 100%;
     font-size: 1rem;
-  }
-  .main_table_container {
-    padding: 0 0.5rem;
-  }
-  .med_field_container {
-    display: none;
   }
 }
 
@@ -570,15 +270,6 @@
     left: 19%;
     width: 81%;
   }
-  .main_table_container {
-    flex: 4;
-    padding: 0 0.5rem;
-  }
-  .med_field_container {
-    flex: 1;
-    padding: 0 0.5rem;
-  }
-
   .med_field {
     min-height: 2rem;
   }
@@ -590,15 +281,15 @@
   }
 }
 /* Tooltip container */
-.kvalitetsregister.tooltip {
+.tooltip {
   position: relative;
   display: inline-block;
 }
-.kvalitetsregister.tooltip:hover {
+.tooltip:hover {
   text-decoration: underline;
 }
 /* Tooltip text */
-.kvalitetsregister.tooltip .tooltiptext {
+.tooltip .tooltiptext {
   visibility: hidden;
   width: 200px;
   background-color: #555;
@@ -620,7 +311,7 @@
 }
 
 /* Tooltip arrow */
-.kvalitetsregister.tooltip .tooltiptext::after {
+.tooltip .tooltiptext::after {
   content: "";
   position: absolute;
   top: 100%;
@@ -632,7 +323,7 @@
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
-.kvalitetsregister.tooltip:hover .tooltiptext {
+.tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
 }

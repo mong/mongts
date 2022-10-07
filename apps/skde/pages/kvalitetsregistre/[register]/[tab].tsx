@@ -6,7 +6,6 @@ import {
   fetchRegisterNames,
 } from "../../../src/helpers/hooks";
 import { GetStaticProps, GetStaticPaths } from "next";
-import "../../../src/styles/Kvalitetsregistre.module.css";
 
 const SelectedRegisterPage = () => {
   const registryNameQuery: UseQueryResult<any, unknown> =

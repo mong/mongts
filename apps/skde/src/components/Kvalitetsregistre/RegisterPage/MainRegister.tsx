@@ -6,6 +6,7 @@ import SelectTreatmentUnits, { OptsTu } from "../SelectTreatmentUnits";
 import SelectYear from "../SelectYear";
 
 import { Header } from "./header";
+import styles from "./registerPage.module.css";
 
 import config, {
   mainQueryParamsConfig,
@@ -124,15 +125,15 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
       </div>
     ) : undefined;
   return (
-    <div className="app-container" style={{ minHeight: "100vh" }}>
+    <div className={styles.appContainer} style={{ minHeight: "100vh" }}>
       <Header
         tabNames={tabNames}
         registerNames={registerNames}
         activeTab={activeTab as string}
       />
-      <div className="app-body">
-        <div className="selection-container" ref={selection_bar_ref}>
-          <div className="treatment-unit-selection">
+      <div className={styles.appBody}>
+        <div className={styles.selectionContainer} ref={selection_bar_ref}>
+          <div className={styles.treatmentUnitSelection}>
             <SelectTreatmentUnits
               opts={optstu}
               update_tu={update_treatment_units}
@@ -145,7 +146,7 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
               update_treatment_units={update_treatment_units}
             />
           </div>
-          <div className="year-selection">
+          <div className={styles.yearSelection}>
             <SelectYear
               opts={valid_years}
               update_year={update_selected_year}

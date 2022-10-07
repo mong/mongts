@@ -1,4 +1,5 @@
 import React, { Dispatch } from "react";
+import styles from "./index.module.css";
 
 interface medField {
   shortName: string;
@@ -24,10 +25,10 @@ export const MedicalFieldEntry: React.FC<Props> = (props) => {
 
   return (
     <li
-      className={`med_field ${class_checked} med_field_${med_field.shortName}`}
+      className={`${styles.medField} ${class_checked} medField_${med_field.shortName}`}
     >
       <button
-        className="med_field_text"
+        className={styles.medFieldText}
         onClick={() => handle_med_field_click()}
       >
         {med_field.name.toUpperCase()}

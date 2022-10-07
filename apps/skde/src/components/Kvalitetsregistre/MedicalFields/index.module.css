@@ -1,0 +1,128 @@
+/******* medical field selection  *******/
+
+.medFieldList {
+  padding: 0;
+  margin: 0;
+  position: sticky;
+  z-index: 2;
+  position: -webkit-sticky;
+}
+
+.medFieldList button {
+  position: relative;
+  border: none;
+  background-color: unset;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: unset;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.medFieldList li {
+  list-style-type: none;
+  margin-top: 1rem;
+}
+
+.medFieldTitle button .medFieldText {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  color: #00263d;
+  margin: auto;
+  height: 40px;
+  background-color: unset;
+  width: 100%;
+}
+.medFieldTitle .medField_nrind {
+  color: #fff;
+  background-color: #00263d;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9em;
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.medFieldList button:focus {
+  outline: none;
+}
+
+.medFieldList button::after {
+  content: "";
+  position: absolute;
+  width: 80%;
+  bottom: -0.2rem;
+  display: block;
+  border-bottom: 4px solid #00263d;
+  transform: scale(0);
+  transition: all 0.3s ease-in-out;
+}
+.medFieldList button:hover::after,
+.medFieldList button:focus::after {
+  opacity: 0.5;
+  transform: scale(1);
+}
+.medFieldList button:active {
+  opacity: 0.7;
+  transform: scale(0.95);
+}
+
+.medFieldList button:active::after {
+  opacity: 0.2;
+  transform: scale(1);
+}
+.medFieldList .checked button.medFieldText {
+  color: #00263d;
+  transition: all 0.3s ease-in;
+}
+.medFieldList .checked .medField_nrind {
+  color: #efefef;
+  background-color: #00263d;
+  opacity: 0.8;
+}
+.medFieldList .checked ::after,
+.medFieldList .checked ::after {
+  opacity: 0.8;
+  transform: scale(1);
+}
+
+.medField button.medFieldText {
+  font-size: 1rem;
+  color: #9a9a9a;
+
+  background-color: unset;
+  width: 100%;
+  transition: all 0.3s ease-in;
+}
+.medField .medField_nrind {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00263d;
+  background-color: #efefef;
+  border-radius: 100%;
+  min-width: 2rem;
+  min-height: 2rem;
+  transition: all 0.3s ease-in-out;
+}
+.medField button:hover,
+.medField button:focus {
+  color: #00263d;
+}
+.medField button:hover .medField_nrind,
+.medField button:focus .medField_nrind {
+  color: #efefef;
+  background-color: #00263d;
+}
+.medField button:active .medField_nrind {
+  opacity: 0.7;
+}
