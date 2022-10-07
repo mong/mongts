@@ -7,6 +7,7 @@ import { level_boundary } from "./tr_utils";
 import { useQueryParam } from "use-query-params";
 import { mainQueryParamsConfig } from "../../app_config";
 import { Description, StatisticData } from "../../RegisterPage";
+import styles from "./chartrow.module.css";
 
 export interface Props {
   context: { context: string; type: string };
@@ -48,8 +49,8 @@ export function ChartRow(props: Props) {
   return (
     <tr className={figure_class}>
       <td colSpan={colspan}>
-        <div className="tr_figure">
-          <div className="tr_buttons_container">
+        <div className={styles.tr_figure}>
+          <div className={styles.tr_buttons_container}>
             <ChartButtons
               svgContainer={svgContainerRef}
               show_level={show_level}

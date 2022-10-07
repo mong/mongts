@@ -126,3 +126,14 @@
 .medField button:active .medField_nrind {
   opacity: 0.7;
 }
+
+/******media  768 - 992*****/
+
+@media All and (min-width: 769px) and (max-width: 992px) {
+  .medField {
+    min-height: 2rem;
+  }
+  .medField button::after {
+    bottom: -0.6rem;
+  }
+}

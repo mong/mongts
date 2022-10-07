@@ -1,5 +1,6 @@
 import React from "react";
 import { app_text } from "../../app_config";
+import styles from "./index.module.css";
 
 export interface NestedTreatmentUnitName {
   rhf: string;
@@ -54,7 +55,7 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
       return (
         <button
           key={`hospital_${hospital}`}
-          className="tu_list_hospital_btn"
+          className={styles.tu_list_hospital_btn}
           style={style_hospital}
           onClick={() =>
             handle_tu_list_click(
@@ -76,11 +77,11 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
       : {};
 
     return (
-      <div key={`hf_hospital_${element.hf}`} className={`tu_list_hf`}>
-        <div className="tu_list_hf_btn_constainer">
+      <div key={`hf_hospital_${element.hf}`} className={styles.tu_list_hf}>
+        <div className={styles.tu_list_hf_btn_constainer}>
           <button
             style={style_hf}
-            className="tu_list_hf_btn"
+            className={styles.tu_list_hf_btn}
             onClick={() =>
               handle_tu_list_click(
                 element.hf,
@@ -92,7 +93,7 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
             {element.hf_full}
           </button>
         </div>
-        <div className="tu_list_hospital">{hospital}</div>
+        <div className={styles.tu_list_hospital}>{hospital}</div>
       </div>
     );
   });
@@ -105,9 +106,9 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
     : {};
   return (
     <>
-      <div className={`tu_list_rhf`}>
+      <div className={styles.tu_list_rhf}>
         <h3
-          className="tu_list_rhf_header"
+          className={styles.tu_list_rhf_header}
           onClick={() =>
             handle_tu_list_click(
               tu_names.rhf,
@@ -116,15 +117,15 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
             )
           }
         >
-          <div className="tooltip" style={style_rhf}>
+          <div className={styles.tooltip} style={style_rhf}>
             {tu_names.rhf}
-            <span className="tooltiptext" style={{ fontSize: "0.5em" }}>
+            <span className={styles.tooltiptext} style={{ fontSize: "0.5em" }}>
               Velg {tu_names.rhf}
             </span>
           </div>
         </h3>
-        <div className={`tu_list_rhf_content`}>
-          <div className={`tu_list_hfs_in_rhf`}>{hf_hospital}</div>
+        <div className={styles.tu_list_rhf_content}>
+          <div className={styles.tu_list_hfs_in_rhf}>{hf_hospital}</div>
         </div>
       </div>
     </>
