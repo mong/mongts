@@ -5,6 +5,7 @@
   margin-bottom: 50px;
   line-height: 1.2;
 }
+
 .kvalitetsregister thead {
   box-shadow: 0 4px 5px -1px #00263d;
 }
@@ -17,13 +18,9 @@
   z-index: 1;
   position: -webkit-sticky;
 }
+
 .kvalitetsregister tbody tr {
   box-shadow: 0 4px 5px -1px #dcdcdc;
-}
-
-.kvalitetsregister tbody .indicator:hover {
-  background-color: rgba(126, 190, 199, 0.15);
-  cursor: pointer;
 }
 
 .kvalitetsregister table {
