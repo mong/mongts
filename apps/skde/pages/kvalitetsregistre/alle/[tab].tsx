@@ -2,6 +2,7 @@ import { UseQueryResult } from "react-query";
 import MainRegister from "../../../src/components/Kvalitetsregistre/RegisterPage/MainRegister";
 import { useRegisterNamesQuery } from "../../../src/helpers/hooks";
 import { GetStaticProps, GetStaticPaths } from "next";
+import Layout from "../../../src/components/Kvalitetsregistre/Layout";
 
 const MainRegisterPage = () => {
   const registryNameQuery: UseQueryResult<any, unknown> =
@@ -10,7 +11,11 @@ const MainRegisterPage = () => {
     return null;
   }
   const registerNames = registryNameQuery.data;
-  return <MainRegister registerNames={registerNames || []} />;
+  return (
+    <Layout>
+      <MainRegister registerNames={registerNames || []} />
+    </Layout>
+  );
 };
 
 export default MainRegisterPage;

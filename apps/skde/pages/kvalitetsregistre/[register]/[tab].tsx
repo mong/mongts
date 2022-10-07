@@ -1,10 +1,12 @@
 import { UseQueryResult } from "react-query";
 import SelectedRegister from "../../../src/components/Kvalitetsregistre/RegisterPage/SelectedRegister";
+import Layout from "../../../src/components/Kvalitetsregistre/Layout";
 import {
   useRegisterNamesQuery,
   fetchRegisterNames,
 } from "../../../src/helpers/hooks";
 import { GetStaticProps, GetStaticPaths } from "next";
+import "../../../src/styles/Kvalitetsregistre.module.css";
 
 const SelectedRegisterPage = () => {
   const registryNameQuery: UseQueryResult<any, unknown> =
@@ -13,7 +15,11 @@ const SelectedRegisterPage = () => {
     return null;
   }
   const registerNames = registryNameQuery.data;
-  return <SelectedRegister registerNames={registerNames || []} />;
+  return (
+    <Layout>
+      <SelectedRegister registerNames={registerNames || []} />
+    </Layout>
+  );
 };
 
 export default SelectedRegisterPage;

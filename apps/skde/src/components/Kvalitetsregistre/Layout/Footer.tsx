@@ -1,17 +1,17 @@
 import React from "react";
 import Link from "next/link";
-import skdeLogo from "../../../public/img/SKDE_hvit_lys.png";
-import helseNordLogo from "../../../public/img/hf_nord-white.svg";
-import NSMLogo from "../../../public/img/NSM_logo_hvit.png";
-import helseatlasLogo from "../../../public/img/Logo_atlas_hvit.png";
+import skdeLogo from "../../../../public/img/logos/SKDE_hvit_lys.png";
+import helseNordLogo from "../../../../public/img/logos/hf_nord-white.svg";
+import NSMLogo from "../../../../public/img/logos/NSM_logo_hvit.png";
+import helseatlasLogo from "../../../../public/img/logos/Logo_atlas_hvit.png";
 import { imgLoader } from "../../../helpers/functions";
 
-import style from "./footer.module.css";
+import style from "./Footer.module.css";
 import Image from "next/image";
 
 type FooterProps = {};
 
-const Footer: React.FC<FooterProps> = () => {
+export const Footer: React.FC<FooterProps> = () => {
   return (
     <footer className={style.footer}>
       <div className={style.footerTop}>
@@ -91,5 +91,3 @@ const Footer: React.FC<FooterProps> = () => {
     </footer>
   );
 };
-
-export default Footer;

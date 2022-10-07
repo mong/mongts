@@ -69,3 +69,31 @@ li.MuiBreadcrumbs-li:last-child {
 [data-slate-editor] {
   -webkit-user-modify: read-write !important;
 }
+
+table {
+  table-layout: fixed;
+  width: 100%;
+  border-spacing: 0;
+  margin-bottom: 50px;
+  line-height: 1.2;
+}
+thead {
+  box-shadow: 0 4px 5px -1px #00263d;
+}
+thead th {
+  font-size: 0.9rem;
+  background-color: #00263d;
+  color: white;
+  height: 50px;
+  position: sticky;
+  z-index: 1;
+  position: -webkit-sticky;
+}
+tbody tr {
+  box-shadow: 0 4px 5px -1px #dcdcdc;
+}
+
+table {
+  border-bottom: 1rem solid #00263d;
+  border-radius: 0.5rem;
+}

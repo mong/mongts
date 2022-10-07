@@ -1,13 +1,13 @@
 import React from "react";
-import style from "./index.module.css";
-import skdeLogo from "../../../public/img/SKDE_sort.png";
+import style from "./Header.module.css";
+import skdeLogo from "../../../../public/img/logos/SKDE_sort.png";
 import Link from "next/link";
 import Image from "next/image";
 import { imgLoader } from "../../../helpers/functions";
 
 type HeaderProps = {};
 
-const Header: React.FC<HeaderProps> = () => {
+export const Header: React.FC<HeaderProps> = () => {
   return (
     <div style={{}}>
       <header className={style.header}>
@@ -32,5 +32,3 @@ const Header: React.FC<HeaderProps> = () => {
     </div>
   );
 };
-
-export default Header;
