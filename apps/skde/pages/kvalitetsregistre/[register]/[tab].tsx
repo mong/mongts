@@ -6,6 +6,7 @@ import {
   fetchRegisterNames,
 } from "../../../src/helpers/hooks";
 import { GetStaticProps, GetStaticPaths } from "next";
+import classNames from "../../../src/styles/Kvalitetsregistre.module.css";
 
 const SelectedRegisterPage = () => {
   const registryNameQuery: UseQueryResult<any, unknown> =
@@ -16,7 +17,9 @@ const SelectedRegisterPage = () => {
   const registerNames = registryNameQuery.data;
   return (
     <Layout>
-      <SelectedRegister registerNames={registerNames || []} />
+      <div className={classNames.kvalitetsregister}>
+        <SelectedRegister registerNames={registerNames || []} />
+      </div>
     </Layout>
   );
 };

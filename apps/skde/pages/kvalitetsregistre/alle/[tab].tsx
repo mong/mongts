@@ -3,6 +3,7 @@ import MainRegister from "../../../src/components/Kvalitetsregistre/RegisterPage
 import { useRegisterNamesQuery } from "../../../src/helpers/hooks";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Layout from "../../../src/components/Kvalitetsregistre/Layout";
+import classNames from "../../../src/styles/Kvalitetsregistre.module.css";
 
 const MainRegisterPage = () => {
   const registryNameQuery: UseQueryResult<any, unknown> =
@@ -13,7 +14,9 @@ const MainRegisterPage = () => {
   const registerNames = registryNameQuery.data;
   return (
     <Layout>
-      <MainRegister registerNames={registerNames || []} />
+      <div className={classNames.kvalitetsregister}>
+        <MainRegister registerNames={registerNames || []} />
+      </div>
     </Layout>
   );
 };
