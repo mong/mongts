@@ -27,7 +27,7 @@ jobs:
         env:
           NEXT_PUBLIC_API_HOST: https://qa-mong-api.skde.org
         run: yarn run build
-      - run: yarn run e2e:headless
+      - run: yarn run test
       - name: Code coverage
         if: matrix.node-version == '16.x'
         uses: codecov/codecov-action@v3.1.1
