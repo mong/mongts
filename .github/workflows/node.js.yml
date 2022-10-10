@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_API_HOST: https://qa-mong-api.skde.org
 
     strategy:
       matrix:
@@ -23,10 +25,7 @@ jobs:
       - run: yarn install --immutable
       - run: yarn run check-types
       - run: yarn run check-format
-      - name: Build package
-        env:
-          NEXT_PUBLIC_API_HOST: https://qa-mong-api.skde.org
-        run: yarn run build
+      - run: yarn run build
       - run: yarn run test
       - name: Code coverage
         if: matrix.node-version == '16.x'
