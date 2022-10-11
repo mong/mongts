@@ -53,7 +53,9 @@ const Tab: React.FC<TabProps> = ({ tabName, activeTab }) => {
           borderRadius: "5px",
         }
       : {};
-  const path = register ? `/${register}` : "/alle";
+  const path = register
+    ? `/kvalitetsregistre/${register}`
+    : "/kvalitetsregistre/alle";
 
   return (
     <li className={style.tabsLI}>
