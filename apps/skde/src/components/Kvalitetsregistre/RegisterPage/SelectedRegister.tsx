@@ -202,8 +202,8 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
           width="100%"
         />
 
-        <div className="content_container">
-          <div className="main_table_container">
+        <div className={styles.contentContainer}>
+          <div className={styles.mainTableContainer}>
             <IndicatorTable
               context={context}
               tableType={"singleRegister"}
