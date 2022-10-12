@@ -139,3 +139,19 @@ li.MuiBreadcrumbs-li:last-child {
 .nationally .summary {
   font-size: 0.85rem;
 }
+
+/******media upto 768*****/
+
+@media All and (max-width: 768px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+/******media  768 - 992*****/
+
+@media All and (min-width: 769px) and (max-width: 992px) {
+  html {
+    font-size: 14px;
+  }
+}
