@@ -40,7 +40,6 @@ context("Classic atlases", () => {
     cy.get("nav").get("ol").get("li").get("a").contains("Brystkreft").click();
   });
 
-  /* Skipping since we removed IA files from this repository. Too many files!
   it("should visit an IA", () => {
     cy.visit("/helseatlas/v1/gyn/ia");
     cy.get("iframe");
@@ -48,7 +47,6 @@ context("Classic atlases", () => {
       .get("button")
       .contains("Last ned data");
   });
-*/
 
   it("should visit an atlas without ToC", () => {
     cy.visit("/helseatlas/v1/psyk");
