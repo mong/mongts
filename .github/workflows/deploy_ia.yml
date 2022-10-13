@@ -1,0 +1,32 @@
+name: Deploy ia files to S3 AWS
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "apps/skde/public/helseatlas/ia/**"
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "apps/skde/public/helseatlas/ia/**"
+
+jobs:
+  deploy_ia_to_S3:
+    name: Deploy Instant Atlas to S3
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: "eu-west-1"
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+      - name: Sync main to S3 bucket skde.org
+        if: github.ref == 'refs/heads/main'
+        run: |
+          aws s3 sync apps/skde/public/helseatlas/ia s3://skde.org/helseatlas/ia \
+            --delete --cache-control "public, max-age=1, s-maxage=1"
+      - name: Sync develop to S3 bucket qa.skde.org
+        if: github.ref == 'refs/heads/develop'
+        run: |
+          aws s3 sync apps/skde/public/helseatlas/ia s3://qa.skde.org/helseatlas/ia \
+            --delete --cache-control "public, max-age=1, s-maxage=1"
