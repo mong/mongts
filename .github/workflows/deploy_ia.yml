@@ -1,7 +1,7 @@
 name: Deploy ia files to S3 AWS
 on:
   push:
-    branches: [main, develop]
+    branches: [main, add_ia]
     paths:
       - "apps/skde/public/helseatlas/ia/**"
   pull_request:
@@ -26,7 +26,7 @@ jobs:
           aws s3 sync apps/skde/public/helseatlas/ia s3://skde.org/helseatlas/ia \
             --delete --cache-control "public, max-age=1, s-maxage=1"
       - name: Sync develop to S3 bucket qa.skde.org
-        if: github.ref == 'refs/heads/develop'
+        if: github.ref == 'refs/heads/add_ia'
         run: |
           aws s3 sync apps/skde/public/helseatlas/ia s3://qa.skde.org/helseatlas/ia \
             --delete --cache-control "public, max-age=1, s-maxage=1"
