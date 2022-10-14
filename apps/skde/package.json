@@ -16,7 +16,7 @@
     "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless",
     "check-format": "yarn prettier --list-different",
     "check-types": "tsc --noEmit",
-    "start-server": "serve out/",
+    "start-server": "npx serve out/",
     "test": "start-server-and-test start-server http://localhost:3000 cypress:headless"
   },
   "dependencies": {
