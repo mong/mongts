@@ -27,7 +27,7 @@ jobs:
           node-version: "16"
           cache: "yarn"
       - name: Build package
-        run: yarn --prefer-offline && yarn run export
+        run: yarn install && yarn run export
       - name: Sync main to S3 bucket skde.org
         if: github.ref == 'refs/heads/main'
         run: |
