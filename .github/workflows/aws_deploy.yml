@@ -21,6 +21,11 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v3.5.1
+        with:
+          node-version: "16"
+          cache: "yarn"
       - name: Build package
         run: yarn install && yarn run export
       - name: Sync main to S3 bucket skde.org
