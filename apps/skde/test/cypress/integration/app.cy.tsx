@@ -1,3 +1,5 @@
+/// <reference types="cypress"/>
+
 describe("Navigation", () => {
   it("should navigate to the contact page", () => {
     // Start from the index page
@@ -21,9 +23,9 @@ describe("Navigation", () => {
     cy.get('a[href*="kvalitetsregistre"]');
 
     // The url should return "404 This page could not be found."
-    cy.request({ url: "/kvalitetsregistre", failOnStatusCode: false })
-      .its("status")
-      .should("equal", 404);
+    //    cy.request({ url: "/kvalitetsregistre", failOnStatusCode: false })
+    //      .its("status")
+    //      .should("equal", 404);
   });
 
   it("should navigate to personvern page", () => {
