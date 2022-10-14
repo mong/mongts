@@ -40,13 +40,13 @@ context("Classic atlases", () => {
     cy.get("nav").get("ol").get("li").get("a").contains("Brystkreft").click();
   });
 
-  it("should visit an IA", () => {
-    cy.visit("/helseatlas/v1/gyn/ia");
-    cy.get("iframe");
-    cy.visit("/helseatlas/ia/no/gyn/index.html")
-      .get("button")
-      .contains("Last ned data");
-  });
+  //  it("should visit an IA", () => {
+  //    cy.visit("/helseatlas/v1/gyn/ia");
+  //    cy.get("iframe");
+  //    cy.visit("/helseatlas/ia/no/gyn/index.html")
+  //      .get("button")
+  //      .contains("Last ned data");
+  //  });
 
   it("should visit an atlas without ToC", () => {
     cy.visit("/helseatlas/v1/psyk");
