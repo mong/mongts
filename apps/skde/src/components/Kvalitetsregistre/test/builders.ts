@@ -1,4 +1,4 @@
-import { Level } from "../components/Charts/types";
+import { Level } from "../Charts/types";
 
 export function buildLevels(): Level[] {
   const low = Math.random();
