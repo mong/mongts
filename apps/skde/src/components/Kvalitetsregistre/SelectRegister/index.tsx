@@ -62,7 +62,10 @@ const SelectRegister = (props: selectedRegisterProps) => {
 
   return (
     <>
-      <div style={{ position: "sticky", top: selection_bar_height! }}>
+      <div
+        style={{ position: "sticky", top: selection_bar_height! }}
+        data-testid="select_registry_button"
+      >
         <button
           className={style.registerBtn}
           style={btnStyle}

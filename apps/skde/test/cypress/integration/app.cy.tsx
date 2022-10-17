@@ -20,6 +20,8 @@ describe("Navigation", () => {
     // Enter "kvalitetsregistre" page
     cy.get('[data-testid="kvalitetsregistre_button"]').click();
     cy.get('[data-testid="MainRegister"]').should("exist"); // Menu exist
+    cy.get('[data-testid="select_registry_button"]').click();
+    cy.get('[placeholder="Søk etter register"]').type("hjerne");
   });
 
   it("should navigate to personvern page", () => {
