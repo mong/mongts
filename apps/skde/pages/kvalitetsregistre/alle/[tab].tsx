@@ -1,8 +1,8 @@
 import { UseQueryResult } from "react-query";
-import MainRegister from "../../../src/components/Kvalitetsregistre/RegisterPage/MainRegister";
+import MainRegister from "qmongjs";
 import { useRegisterNamesQuery } from "../../../src/helpers/hooks";
 import { GetStaticProps, GetStaticPaths } from "next";
-import Layout from "../../../src/components/Kvalitetsregistre/Layout";
+import Layout from "qmongjs";
 import classNames from "../../../src/styles/Kvalitetsregistre.module.css";
 
 const MainRegisterPage = () => {
