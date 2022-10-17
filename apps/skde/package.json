@@ -19,7 +19,7 @@
     "start-server": "npx serve out/",
     "test:cypress": "start-server-and-test start-server http://localhost:3000 cypress:headless",
     "test:jest": "jest --watchAll=false --coverage",
-    "test": "start-server-and-test start-server http://localhost:3000 cypress:headless && jest --watchAll=false --coverage"
+    "test": "yarn run test:cypress && yarn run test:jest"
   },
   "dependencies": {
     "@emotion/react": "11.10.4",
