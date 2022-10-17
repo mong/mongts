@@ -1,6 +1,6 @@
 import { UseQueryResult } from "react-query";
-import SelectedRegister from "../../../src/components/Kvalitetsregistre/RegisterPage/SelectedRegister";
-import Layout from "../../../src/components/Kvalitetsregistre/Layout";
+import SelectedRegister from "qmongjs";
+import Layout from "qmongjs";
 import {
   useRegisterNamesQuery,
   fetchRegisterNames,
