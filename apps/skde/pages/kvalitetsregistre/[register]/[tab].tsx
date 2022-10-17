@@ -17,7 +17,10 @@ const SelectedRegisterPage = () => {
   const registerNames = registryNameQuery.data;
   return (
     <Layout>
-      <div className={classNames.kvalitetsregister}>
+      <div
+        className={classNames.kvalitetsregister}
+        data-testid="SelectedRegister"
+      >
         <SelectedRegister registerNames={registerNames || []} />
       </div>
     </Layout>

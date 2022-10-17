@@ -45,7 +45,10 @@ export default function Home() {
         <div className={`${styles.buttons}`}>
           <h2>Resultater</h2>
           <div className={styles.block_buttons}>
-            <div className={styles.block_button}>
+            <div
+              className={styles.block_button}
+              data-testid="kvalitetsregistre_button"
+            >
               <Link href="/kvalitetsregistre/alle/sykehus">
                 <a>Kvalitetsregistre</a>
               </Link>

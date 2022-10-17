@@ -14,7 +14,7 @@ const MainRegisterPage = () => {
   const registerNames = registryNameQuery.data;
   return (
     <Layout>
-      <div className={classNames.kvalitetsregister}>
+      <div className={classNames.kvalitetsregister} data-testid="MainRegister">
         <MainRegister registerNames={registerNames || []} />
       </div>
     </Layout>
