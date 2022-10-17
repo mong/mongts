@@ -13,6 +13,8 @@ const customJestConfig = {
   // if using TypeScript with a baseUrl set to the root directory then you need the below for alias' to work
   moduleDirectories: ["../../node_modules", "<rootDir>/"],
   testEnvironment: "jest-environment-jsdom",
+  collectCoverage: true,
+  coverageDirectory: "coverage/jest",
   moduleNameMapper: {
     d3: "<rootDir>/../../node_modules/d3/dist/d3.min.js",
     "react-markdown":
