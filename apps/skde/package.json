@@ -17,8 +17,9 @@
     "check-format": "yarn prettier --list-different",
     "check-types": "tsc --noEmit",
     "start-server": "npx serve out/",
-    "test": "start-server-and-test start-server http://localhost:3000 cypress:headless",
-    "jest": "jest"
+    "test:cypress": "start-server-and-test start-server http://localhost:3000 cypress:headless",
+    "test:jest": "jest --watchAll=false --coverage",
+    "test": "start-server-and-test start-server http://localhost:3000 cypress:headless && jest --watchAll=false --coverage"
   },
   "dependencies": {
     "@emotion/react": "11.10.4",
