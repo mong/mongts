@@ -19,9 +19,7 @@ describe("Navigation", () => {
   it("Enter kvalitetsregistre page", () => {
     // Enter "kvalitetsregistre" page
     cy.get('[data-testid="kvalitetsregistre_button"]').click();
-    cy.get('[data-testid="MainRegister"]').should("exist"); // Menu exist
-    cy.get('[data-testid="select_registry_button"]').click();
-    cy.get('[placeholder="Søk etter register"]').type("hjerne");
+    cy.get('[data-testid="MainRegister"]').should("exist"); // Main register page entered
   });
 
   it("should navigate to personvern page", () => {
