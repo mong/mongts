@@ -58,6 +58,7 @@ exports[`register page header renders correctly 1`] = `
           class="topHeaderRight"
         >
           <div
+            data-testid="select_registry_button"
             style="position: sticky;"
           >
             <button
@@ -75,6 +76,7 @@ exports[`register page header renders correctly 1`] = `
             >
               <input
                 class="searchInput"
+                data-testid="registry_search_input"
                 placeholder="Søk etter register"
                 type="text"
                 value=""
@@ -83,6 +85,7 @@ exports[`register page header renders correctly 1`] = `
             <ul>
               <li>
                 <a
+                  data-testid="pick_registry_all"
                   href="/kvalitetsregistre/alle/sykehus"
                 >
                   <b>
@@ -90,21 +93,27 @@ exports[`register page header renders correctly 1`] = `
                   </b>
                 </a>
               </li>
-              <li>
+              <li
+                data-testid="pick_registry_hjerneslag"
+              >
                 <a
                   href="/kvalitetsregistre/hjerneslag/sykehus"
                 >
                   Norsk hjerneslagregister
                 </a>
               </li>
-              <li>
+              <li
+                data-testid="pick_registry_norgast"
+              >
                 <a
                   href="/kvalitetsregistre/norgast/sykehus"
                 >
                   Norsk register for gastrokirurgi
                 </a>
               </li>
-              <li>
+              <li
+                data-testid="pick_registry_barnekreft"
+              >
                 <a
                   href="/kvalitetsregistre/barnekreft/sykehus"
                 >
@@ -114,6 +123,7 @@ exports[`register page header renders correctly 1`] = `
             </ul>
             <button
               class="select_reg_close"
+              data-testid="pick_registry_close_button"
             >
               <i
                 class="far fa-times-circle"
@@ -234,6 +244,7 @@ exports[`register page header renders correctly 2`] = `
           class="topHeaderRight"
         >
           <div
+            data-testid="select_registry_button"
             style="position: sticky;"
           >
             <button
@@ -251,6 +262,7 @@ exports[`register page header renders correctly 2`] = `
             >
               <input
                 class="searchInput"
+                data-testid="registry_search_input"
                 placeholder="Søk etter register"
                 type="text"
                 value=""
@@ -259,6 +271,7 @@ exports[`register page header renders correctly 2`] = `
             <ul>
               <li>
                 <a
+                  data-testid="pick_registry_all"
                   href="/kvalitetsregistre/alle/sykehus"
                 >
                   <b>
@@ -266,21 +279,27 @@ exports[`register page header renders correctly 2`] = `
                   </b>
                 </a>
               </li>
-              <li>
+              <li
+                data-testid="pick_registry_hjerneslag"
+              >
                 <a
                   href="/kvalitetsregistre/hjerneslag/sykehus"
                 >
                   Norsk hjerneslagregister
                 </a>
               </li>
-              <li>
+              <li
+                data-testid="pick_registry_norgast"
+              >
                 <a
                   href="/kvalitetsregistre/norgast/sykehus"
                 >
                   Norsk register for gastrokirurgi
                 </a>
               </li>
-              <li>
+              <li
+                data-testid="pick_registry_barnekreft"
+              >
                 <a
                   href="/kvalitetsregistre/barnekreft/sykehus"
                 >
@@ -290,6 +309,7 @@ exports[`register page header renders correctly 2`] = `
             </ul>
             <button
               class="select_reg_close"
+              data-testid="pick_registry_close_button"
             >
               <i
                 class="far fa-times-circle"
