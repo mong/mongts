@@ -2,14 +2,14 @@
 
 context("Testing of kvalitetsregistre page", () => {
   beforeEach(() => {
-    cy.visit("/kvalitetsregistre/alle/sykehus");
+    cy.visit("/kvalitetsregistre/alle/sykehus/?year=2021");
   });
 
   it("Main page", () => {
     cy.get('[data-testid="MainRegister"]').should("exist"); // main page
   });
 
-  it("Enter kvalitetsregistre page", () => {
+  it("test select registry menu", () => {
     // Enter menu for picking registry
     cy.get('[data-testid="select_registry_button"]').click();
     cy.get('[data-testid="pick_registry_all"]').should("exist");
@@ -18,12 +18,26 @@ context("Testing of kvalitetsregistre page", () => {
     cy.get('[data-testid="pick_registry_all"]').should("be.visible");
     // Close menu
     cy.get('[data-testid="pick_registry_close_button"]').click();
+    cy.get('[data-testid="med_field_list"]').should("be.visible");
     // Reopen menu
     cy.get('[data-testid="select_registry_button"]').click();
     // The typed text is still there
     cy.get('[value="hjerne"]').should("exist");
     cy.get('[data-testid="pick_registry_hjerneslag"]').click();
     cy.url().should("include", "hjerneslag");
+    cy.get('[data-testid="med_field_list"]').should("not.exist");
+  });
+
+  it("test medical field selector", () => {
+    cy.get('[data-testid="medfield_nerve"').should("not.have.class", "checked");
+    cy.get('[data-testid="indicatorrow_hjerneslag_beh_enhet"').should(
+      "be.visible"
+    );
+    cy.get('[data-testid="medfieldbutton_nerve"').click();
+    cy.get('[data-testid="medfield_nerve"').should("have.class", "checked");
+    cy.get('[data-testid="indicatorrow_hjerneslag_beh_enhet"').should(
+      "not.be.visible"
+    );
   });
 });
 

@@ -168,6 +168,7 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
         onClick={() => tr_click_handler()}
         id={`${tr_indicator_class}`}
         className={`${tr_indicator_class} ${medicalFieldClass} ${style.indicator}`}
+        data-testid={`indicatorrow_${ind_id}`}
       >
         <IndicatorDescription description={description} />
         {indPerUnit}

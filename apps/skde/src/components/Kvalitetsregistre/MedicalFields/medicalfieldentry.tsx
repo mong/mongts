@@ -26,10 +26,12 @@ export const MedicalFieldEntry: React.FC<Props> = (props) => {
   return (
     <li
       className={`${styles.medField} ${class_checked} medField_${med_field.shortName}`}
+      data-testid={`medfield_${med_field.shortName}`}
     >
       <button
         className={styles.medFieldText}
         onClick={() => handle_med_field_click()}
+        data-testid={`medfieldbutton_${med_field.shortName}`}
       >
         {med_field.name.toUpperCase()}
       </button>
