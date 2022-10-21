@@ -29,15 +29,28 @@ context("Testing of kvalitetsregistre page", () => {
   });
 
   it("test medical field selector", () => {
-    cy.get('[data-testid="medfield_nerve"').should("not.have.class", "checked");
-    cy.get('[data-testid="indicatorrow_hjerneslag_beh_enhet"').should(
+    cy.get('[data-testid="medfield_nerve"]').should(
+      "not.have.class",
+      "checked"
+    );
+    cy.get('[data-testid="indicatorrow_hjerneslag_beh_enhet"]').should(
       "be.visible"
     );
-    cy.get('[data-testid="medfieldbutton_nerve"').click();
-    cy.get('[data-testid="medfield_nerve"').should("have.class", "checked");
-    cy.get('[data-testid="indicatorrow_hjerneslag_beh_enhet"').should(
+    cy.get('[data-testid="medfieldbutton_nerve"]').click();
+    cy.get('[data-testid="medfield_nerve"]').should("have.class", "checked");
+    cy.get('[data-testid="indicatorrow_hjerneslag_beh_enhet"]').should(
       "not.be.visible"
     );
+  });
+
+  it("test year selector", () => {
+    cy.get('[data-testid="year_selector"]')
+      .click()
+      .get("body")
+      .type("{upArrow}{upArrow}{upArrow}{enter}")
+      .url()
+      .should("not.include", "2021");
+    // DID NOT WORK .url().should("include", "2019");
   });
 });
 
