@@ -52,6 +52,13 @@ context("Testing of kvalitetsregistre page", () => {
       .should("not.include", "2021");
     // DID NOT WORK .url().should("include", "2019");
   });
+
+  it("test Vis alle button", () => {
+    cy.get('[data-testid="vis_alle_button"]').click();
+    cy.get('[data-testid="tu_list"]').should("be.visible");
+    cy.get("body").type("{esc}");
+    cy.get('[data-testid="tu_list"]').should("not.be.visible");
+  });
 });
 
 export {};

@@ -7,14 +7,15 @@ exports[`unit name selection renders 1`] = `
   >
     <button
       class="hospital_list_btn"
+      data-testid="vis_alle_button"
     >
       Vis alle
     </button>
   </div>
   <div
     class="tu_list"
+    data-testid="tu_list"
     style="display: none;"
-    test-id="tu_list"
   >
     <h2
       class="tu_list_header"

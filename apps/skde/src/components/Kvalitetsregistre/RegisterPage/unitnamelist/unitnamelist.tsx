@@ -56,11 +56,16 @@ export const UnitNameList = (props: Props) => {
         <button
           className={styles.hospital_list_btn}
           onClick={() => update_tu_list_display("")}
+          data-testid="vis_alle_button"
         >
           Vis alle
         </button>
       </div>
-      <div style={style_tu_list} className={styles.tu_list} test-id="tu_list">
+      <div
+        style={style_tu_list}
+        className={styles.tu_list}
+        data-testid="tu_list"
+      >
         <UnitNameListHeader />
         <div className={styles.all_tu}>{tu_str_elm}</div>
         <button
