@@ -71,6 +71,7 @@ export const UnitNameList = (props: Props) => {
         <button
           onClick={() => update_tu_list_display("none")}
           className={styles.tu_list_close_btn}
+          data-testid="tu_list_close"
         >
           <i className="far fa-times-circle" />
         </button>

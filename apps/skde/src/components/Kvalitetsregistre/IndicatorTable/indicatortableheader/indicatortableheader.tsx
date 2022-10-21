@@ -32,6 +32,7 @@ export const IndicatorTableHeader: React.FC<IndicatorTableHeaderProps> = (
       className={tu !== "nasjonalt" ? "selected_unit" : "nationally "}
       style={style_treatment_units}
       key={tu}
+      data-testid={`tu_header_${tu}`}
     >
       {tu}
     </th>
