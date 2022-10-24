@@ -87,7 +87,7 @@ function SelectTreatmentUnits(props: Props) {
   };
 
   return (
-    <form>
+    <form data-testid="tu_selector">
       <Select
         className={select_className}
         options={selection_options}

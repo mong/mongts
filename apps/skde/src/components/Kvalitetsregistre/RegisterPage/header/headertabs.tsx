@@ -65,6 +65,7 @@ const Tab: React.FC<TabProps> = ({ tabName, activeTab }) => {
           aria-selected={tabName.value === tab}
           style={clickedStyle}
           className={style.tabsLink}
+          data-testid={`tab_${tabName.value}`}
         >
           {tabName.label}
         </a>

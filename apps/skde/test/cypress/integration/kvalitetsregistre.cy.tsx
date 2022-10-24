@@ -83,6 +83,65 @@ context("Testing of kvalitetsregistre page", () => {
     cy.get('[data-testid="tu_header_Haukeland"]').should("not.exist");
     cy.get("body").type("{esc}");
   });
+  it("test Søk etter behandlingsenheter field + tab", () => {
+    cy.contains("div", "Søk etter behandlingsenheter");
+    cy.get('[data-testid="tu_selector"]').click().type("UNN HF{enter}");
+    cy.get('[data-testid="tu_header_UNN HF"]').should("exist");
+    cy.get('[data-testid="tab_opptaksomraade"]').click();
+    cy.get('[data-testid="tab_sykehus"]').should(
+      "have.attr",
+      "aria-selected",
+      "false"
+    );
+    cy.get('[data-testid="tab_opptaksomraade"]').should(
+      "have.attr",
+      "aria-selected",
+      "true"
+    );
+    cy.get('[data-testid="tab_datakvalitet"]').should(
+      "have.attr",
+      "aria-selected",
+      "false"
+    );
+    cy.get('[data-testid="tu_header_UNN HF"]').should("not.exist");
+    cy.contains("div", "Søk etter opptaksområder");
+    cy.get('[data-testid="tu_selector"]').click().type("UNN HF{enter}");
+    cy.get('[data-testid="tu_header_UNN HF"]').should("exist");
+    cy.get('[data-testid="tab_datakvalitet"]').click();
+    cy.get('[data-testid="tab_sykehus"]').should(
+      "have.attr",
+      "aria-selected",
+      "false"
+    );
+    cy.get('[data-testid="tab_opptaksomraade"]').should(
+      "have.attr",
+      "aria-selected",
+      "false"
+    );
+    cy.get('[data-testid="tab_datakvalitet"]').should(
+      "have.attr",
+      "aria-selected",
+      "true"
+    );
+    cy.contains("div", "Søk etter behandlingsenheter");
+    cy.get('[data-testid="tu_header_UNN HF"]').should("not.exist");
+    cy.get('[data-testid="tab_sykehus"]').click();
+    cy.get('[data-testid="tab_sykehus"]').should(
+      "have.attr",
+      "aria-selected",
+      "true"
+    );
+    cy.get('[data-testid="tab_opptaksomraade"]').should(
+      "have.attr",
+      "aria-selected",
+      "false"
+    );
+    cy.get('[data-testid="tab_datakvalitet"]').should(
+      "have.attr",
+      "aria-selected",
+      "false"
+    );
+  });
 });
 
 export {};
