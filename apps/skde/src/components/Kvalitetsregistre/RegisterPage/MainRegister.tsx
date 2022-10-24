@@ -123,7 +123,11 @@ const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
       <div>
         <i className="fas fa-search" /> Søk etter opptaksområder
       </div>
-    ) : undefined;
+    ) : (
+      <div>
+        <i className="fas fa-search" /> Søk etter behandlingsenheter
+      </div>
+    );
   return (
     <div className={styles.appContainer} style={{ minHeight: "100vh" }}>
       <Header
