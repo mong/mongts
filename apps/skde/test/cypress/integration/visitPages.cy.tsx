@@ -18,7 +18,7 @@ context("Home Page", () => {
     cy.visit("/helseatlas/statisk/om");
     cy.get("a").contains("Om statistikkformidling ved hjelp av kart");
     cy.visit("/helseatlas/statisk/kontakt");
-    cy.get("a").contains("skde.helseatlas@helse-nord.no");
+    cy.get("a").contains("helseatlas@skde.no");
     cy.visit("/helseatlas/en/static/map");
     cy.get("h1").contains("Communicating statistics by means of maps");
     cy.visit("/helseatlas/en/static/about");

@@ -3,28 +3,42 @@
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": ["rateSnitt"],
+      "x": [
+        "rateSnitt"
+      ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Antall inngrep pr. 1 000 kvinner",
-        "en": "Number of operations per 1,000 women"
+        "nb": "Antall inngrep pr. 1 000 kvinner (16-55 år)",
+        "en": "Number of operations per 1,000 women (16-55 years)"
       },
       "yLabel": {
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": ["rate2019", "rate2020", "rate2021"],
+      "annualVar": [
+        "rate2019",
+        "rate2020",
+        "rate2021"
+      ],
       "annualVarLabels": {
-        "nb": ["2019", "2020", "2021"],
-        "en": ["2019", "2020", "2021"]
+        "nb": [
+          "2019",
+          "2020",
+          "2021"
+        ],
+        "en": [
+          "2019",
+          "2020",
+          "2021"
+        ]
       }
     },
     {
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2019–2021. Rate pr. 1 000 kvinner",
-        "en": "Average per year for the period 2019–2021. Rate per 1,000 women"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2019–2021. Rate pr. 1 000 kvinner i alderen 16-55 år.",
+        "en": "Average per year for the period 2019–2021. Rate per 1,000 women aged 16-55 years."
       },
       "columns": [
         {
@@ -43,14 +57,14 @@
         },
         {
           "id": "antSnitt",
-          "label_no": "Inngrep",
+          "label_no": "Antall inngrep",
           "label_en": "Operations",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
           "id": "popSnitt",
-          "label_no": "Innbyggere(kvinner)",
+          "label_no": "Innbyggere (kvinner, 16-55 år)",
           "label_en": "Inhabitants(women)",
           "typeVar": "number",
           "format": ",.0f"
@@ -62,8 +76,8 @@
       "data": "qwerty",
       "x": "rateSnitt",
       "caption": {
-        "nb": "Antall inngrep pr. 1 000 kvinner",
-        "en": "Number of operations per 1,000 women"
+        "nb": "Antall inngrep pr. 1 000 kvinner (16-55 år)",
+        "en": "Number of operations per 1,000 women (16-55 years)"
       },
       "jenks": [
         {
