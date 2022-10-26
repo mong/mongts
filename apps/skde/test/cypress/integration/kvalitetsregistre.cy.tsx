@@ -10,11 +10,13 @@ context("Testing of kvalitetsregistre page", () => {
   });
 
   it("test select registry menu", () => {
-    // Enter menu for picking registry
+    // Enter popup menu for picking registry
     cy.get('[data-testid="select_registry_button"]').click();
     cy.get('[data-testid="pick_registry_all"]').should("exist");
     cy.get('[data-testid="registry_search_input"]').should("exist");
+    // Enter text in search box
     cy.get('[data-testid="registry_search_input"]').type("hjerne");
+    cy.get('[value="hjerne"]').should("exist");
     cy.get('[data-testid="pick_registry_all"]').should("be.visible");
     // Close menu
     cy.get('[data-testid="pick_registry_close_button"]').click();
@@ -23,8 +25,10 @@ context("Testing of kvalitetsregistre page", () => {
     cy.get('[data-testid="select_registry_button"]').click();
     // The typed text is still there
     cy.get('[value="hjerne"]').should("exist");
+    // Pick hjerneslag registry
     cy.get('[data-testid="pick_registry_hjerneslag"]').click();
     cy.url().should("include", "hjerneslag");
+    // Medical field list should not exist when on specific registry page
     cy.get('[data-testid="med_field_list"]').should("not.exist");
   });
 
@@ -33,17 +37,20 @@ context("Testing of kvalitetsregistre page", () => {
       "not.have.class",
       "checked"
     );
-    cy.get('[data-testid="indicatorrow_hjerneslag_beh_enhet"]').should(
+    cy.get('[data-testid="indicatorrow_hjerteinfarkt_reper_stemi"]').should(
       "be.visible"
     );
+    // Click nerve medical field
     cy.get('[data-testid="medfieldbutton_nerve"]').click();
     cy.get('[data-testid="medfield_nerve"]').should("have.class", "checked");
-    cy.get('[data-testid="indicatorrow_hjerneslag_beh_enhet"]').should(
+    cy.get('[data-testid="indicatorrow_hjerteinfarkt_reper_stemi"]').should(
       "not.be.visible"
     );
   });
 
   it("test year selector", () => {
+    // Click year selector field, press up arrow three times, and then enter
+    // should change year from 2021 to something else
     cy.get('[data-testid="year_selector"]')
       .click()
       .get("body")
@@ -54,21 +61,26 @@ context("Testing of kvalitetsregistre page", () => {
   });
 
   it("test Vis alle button", () => {
+    // Click "show all units" button
     cy.get('[data-testid="vis_alle_button"]').click();
     cy.get('[data-testid="tu_list"]').should("be.visible");
+    // Close popup by pressing Esc button
     cy.get("body").type("{esc}");
     cy.get('[data-testid="tu_list"]').should("not.be.visible");
     cy.get('[data-testid="vis_alle_button"]').click();
     cy.get('[data-testid="tu_list"]').should("be.visible");
+    // Pick a unit
     cy.get("button").contains("Finnmarkssykehuset HF").click();
     cy.get('[data-testid="tu_header_Finnmark HF"]').should("exist");
     cy.get('[data-testid="tu_header_Finnmark HF"]').should("not.be.visible");
+    // Pick another unit
     cy.get("button").contains("Hammerfest").click();
     cy.get('[data-testid="tu_list_close"]').click();
     cy.get('[data-testid="tu_list"]').should("not.be.visible");
     cy.get('[data-testid="tu_header_Hammerfest"]').should("exist");
     cy.get('[data-testid="tu_header_Hammerfest"]').should("be.visible");
     cy.get('[data-testid="vis_alle_button"]').click();
+    // Unit should be unselected when clicked a second time
     cy.get("button").contains("Hammerfest").click();
     cy.get('[data-testid="tu_header_Hammerfest"]').should("not.exist");
     cy.get("button").contains("Hammerfest").click();
@@ -80,13 +92,16 @@ context("Testing of kvalitetsregistre page", () => {
     cy.get("button").contains("Namsos").click();
     cy.get('[data-testid="tu_header_Namsos"]').should("exist");
     cy.get("button").contains("Haukeland").click();
+    // The sixth unit should not be pickable (maximum number of pickable units is five)
     cy.get('[data-testid="tu_header_Haukeland"]').should("not.exist");
     cy.get("body").type("{esc}");
   });
   it("test Søk etter behandlingsenheter field + tab", () => {
     cy.contains("div", "Søk etter behandlingsenheter");
+    // Enter text in search field
     cy.get('[data-testid="tu_selector"]').click().type("UNN HF{enter}");
     cy.get('[data-testid="tu_header_UNN HF"]').should("exist");
+    // Change tab
     cy.get('[data-testid="tab_opptaksomraade"]').click();
     cy.get('[data-testid="tab_sykehus"]').should(
       "have.attr",
@@ -107,6 +122,7 @@ context("Testing of kvalitetsregistre page", () => {
     cy.contains("div", "Søk etter opptaksområder");
     cy.get('[data-testid="tu_selector"]').click().type("UNN HF{enter}");
     cy.get('[data-testid="tu_header_UNN HF"]').should("exist");
+    // Change tab again
     cy.get('[data-testid="tab_datakvalitet"]').click();
     cy.get('[data-testid="tab_sykehus"]').should(
       "have.attr",
