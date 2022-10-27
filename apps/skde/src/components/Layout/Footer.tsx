@@ -25,55 +25,47 @@ export const Footer: React.FC<{}> = ({}) => {
 
         <div className={classNames.footerBottom}>
           <div className={classNames.logo}>
-            <Link href="https://helse-nord.no/">
-              <a title="Link til Helse Nord">
-                <Image
-                  loader={imgLoader}
-                  src={`/helseatlas/img/logos/helse-nord-hvit.svg`}
-                  height={40}
-                  width={180}
-                  alt="Helse Nord logo"
-                />
-              </a>
+            <Link href="https://helse-nord.no/" title="Link til Helse Nord">
+              <Image
+                loader={imgLoader}
+                src={`/helseatlas/img/logos/helse-nord-hvit.svg`}
+                height={40}
+                width={180}
+                alt="Helse Nord logo"
+              />
             </Link>
           </div>
           <div className={classNames.logo}>
-            <Link href="https://www.skde.no/">
-              <a title="Link til SKDE">
-                <Image
-                  loader={imgLoader}
-                  src={`/helseatlas/img/logos/skde-hvit.svg`}
-                  height={40}
-                  width={180}
-                  alt="SKDE logo"
-                />
-              </a>
+            <Link href="https://www.skde.no/" title="Link til SKDE">
+              <Image
+                loader={imgLoader}
+                src={`/helseatlas/img/logos/skde-hvit.svg`}
+                height={40}
+                width={180}
+                alt="SKDE logo"
+              />
             </Link>
           </div>
           <div className={classNames.logo}>
-            <Link href="https://helse-forde.no/">
-              <a title="Link til Helse Førde">
-                <Image
-                  loader={imgLoader}
-                  src={`/helseatlas/img/logos/helse-forde-hvit.svg`}
-                  height={40}
-                  width={180}
-                  alt="Helse Førde logo"
-                />
-              </a>
+            <Link href="https://helse-forde.no/" title="Link til Helse Førde">
+              <Image
+                loader={imgLoader}
+                src={`/helseatlas/img/logos/helse-forde-hvit.svg`}
+                height={40}
+                width={180}
+                alt="Helse Førde logo"
+              />
             </Link>
           </div>
           <div className={classNames.logo}>
-            <Link href="https://helse-vest.no/">
-              <a title="Link til Helse Vest">
-                <Image
-                  loader={imgLoader}
-                  src={`/helseatlas/img/logos/helse-vest-hvit.svg`}
-                  height={40}
-                  width={180}
-                  alt="Helse Vest logo"
-                />
-              </a>
+            <Link href="https://helse-vest.no/" title="Link til Helse Vest">
+              <Image
+                loader={imgLoader}
+                src={`/helseatlas/img/logos/helse-vest-hvit.svg`}
+                height={40}
+                width={180}
+                alt="Helse Vest logo"
+              />
             </Link>
           </div>
         </div>
