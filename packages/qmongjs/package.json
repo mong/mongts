@@ -1,0 +1,27 @@
+{
+  "name": "qmongjs",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsup src/index.tsx",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/react": "18.0.23",
+    "eslint": "8.26.0",
+    "react": "18.2.0",
+    "tsup": "6.3.0",
+    "typescript": "4.8.4"
+  },
+  "dependencies": {
+    "react-select": "5.5.6"
+  }
+}

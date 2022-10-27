@@ -1,11 +1,11 @@
 import Select from "react-select";
-interface Props {
+export interface Props {
   opts: number[];
   select_className?: string;
   update_year(int: number): void;
   selected_year: number;
 }
-function SelectYear(props: Props) {
+export const SelectYear = (props: Props) => {
   const {
     opts = [],
     select_className = "pick_year",
@@ -68,5 +68,3 @@ function SelectYear(props: Props) {
     </form>
   );
 }
-
-export default SelectYear;
