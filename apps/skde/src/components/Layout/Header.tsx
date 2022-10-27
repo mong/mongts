@@ -20,16 +20,15 @@ export const Header: React.FC<HeaderProps> = ({ origin, lang }) => {
       <div className={classNames.headerLogo}>
         <Link
           href={`${origin}${lang === "en" ? "/helseatlas/en" : "/helseatlas"}`}
+          rel="home"
         >
-          <a rel="home">
-            <Image
-              loader={imgLoader}
-              src={`/helseatlas/img/logos/helseatlas.svg`}
-              alt="Hjem"
-              width={186}
-              height={47}
-            />
-          </a>
+          <Image
+            loader={imgLoader}
+            src={`/helseatlas/img/logos/helseatlas.svg`}
+            alt="Hjem"
+            width={186}
+            height={47}
+          />
         </Link>
       </div>
       <nav className={classNames.headerNavContainer}>
@@ -41,9 +40,7 @@ export const Header: React.FC<HeaderProps> = ({ origin, lang }) => {
               }`}
               data-testid="buttonNo"
             >
-              <Link href={`${origin}/helseatlas`}>
-                <a>NO</a>
-              </Link>
+              <Link href={`${origin}/helseatlas`}>NO</Link>
             </div>
             <div
               className={`${classNames.eng} ${
@@ -51,9 +48,7 @@ export const Header: React.FC<HeaderProps> = ({ origin, lang }) => {
               }`}
               data-testid="buttonEng"
             >
-              <Link href={`${origin}/helseatlas/en`}>
-                <a>ENG</a>
-              </Link>
+              <Link href={`${origin}/helseatlas/en`}>ENG</Link>
             </div>
           </div>
           <div className={classNames.menuButton}>
