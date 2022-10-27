@@ -1,10 +1,7 @@
 import { UseQueryResult } from "react-query";
 import { SelectedRegister } from "qmongjs";
 import { Layout } from "qmongjs";
-import {
-  useRegisterNamesQuery,
-  fetchRegisterNames,
-} from "../../../src/helpers/hooks";
+import { useRegisterNamesQuery, fetchRegisterNames } from "qmongjs";
 import { GetStaticProps, GetStaticPaths } from "next";
 import classNames from "../../../src/styles/Kvalitetsregistre.module.css";
 

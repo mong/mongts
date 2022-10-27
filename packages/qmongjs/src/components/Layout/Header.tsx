@@ -3,7 +3,7 @@ import style from "./Header.module.css";
 import skdeLogo from "../../../../public/img/logos/SKDE_sort.png";
 import Link from "next/link";
 import Image from "next/image";
-import { imgLoader } from "../../../helpers/functions";
+import { imgLoader } from "../../helpers/functions";
 
 type HeaderProps = {};
 

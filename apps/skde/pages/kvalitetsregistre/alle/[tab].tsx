@@ -1,6 +1,6 @@
 import { UseQueryResult } from "react-query";
 import { MainRegister } from "qmongjs";
-import { useRegisterNamesQuery } from "../../../src/helpers/hooks";
+import { useRegisterNamesQuery } from "qmongjs";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { Layout } from "qmongjs";
 import classNames from "../../../src/styles/Kvalitetsregistre.module.css";

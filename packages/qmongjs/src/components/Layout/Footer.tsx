@@ -4,7 +4,7 @@ import skdeLogo from "../../../../public/img/logos/SKDE_hvit_lys.png";
 import helseNordLogo from "../../../../public/img/logos/hf_nord-white.svg";
 import NSMLogo from "../../../../public/img/logos/NSM_logo_hvit.png";
 import helseatlasLogo from "../../../../public/img/logos/Logo_atlas_hvit.png";
-import { imgLoader } from "../../../helpers/functions";
+import { imgLoader } from "../../helpers/functions";
 
 import style from "./Footer.module.css";
 import Image from "next/image";
