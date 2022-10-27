@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 import { imgLoader } from "../../helpers/functions";
 import classNames from "./Header.module.css";
