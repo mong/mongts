@@ -3,7 +3,7 @@ import { UseQueryResult } from "react-query";
 import { useQueryParam } from "use-query-params";
 
 import SelectTreatmentUnits, { OptsTu } from "../SelectTreatmentUnits";
-import SelectYear from "qmongjs";
+import { SelectYear } from "qmongjs";
 
 import { Header } from "./header";
 import styles from "./registerPage.module.css";
