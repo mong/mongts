@@ -1,6 +1,7 @@
 import React, { Dispatch } from "react";
 
 import { MedicalFieldEntry } from "./medicalfieldentry";
+import styles from "./index.module.css";
 
 interface MedicalFieldProps {
   medicalFields: MedicalFieldObject[];
@@ -43,10 +44,14 @@ export const MedicalFields: React.FC<MedicalFieldProps> = (props) => {
   };
 
   return (
-    <ul style={style} className="med_field_list" data-testid="med_field_list">
-      <li className={`med_field_title ${checked_class}`}>
+    <ul
+      style={style}
+      className={styles.medFieldList}
+      data-testid="med_field_list"
+    >
+      <li className={`${styles.medFieldTitle} ${checked_class}`}>
         <button onClick={() => handle_med_field_click()}>
-          <h4 className="med_field_text">ALLE INDIKATORER</h4>
+          <h4 className={styles.medFieldText}>ALLE INDIKATORER</h4>
         </button>
       </li>
       {med_field_row}

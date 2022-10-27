@@ -13,7 +13,7 @@ export interface OptsTu {
 interface Props {
   opts: OptsTu[];
   select_className?: string;
-  placeholder?: JSX.Element;
+  placeholder: JSX.Element;
   update_tu(x: string[] | undefined): void;
   treatment_unit: string[];
 }
@@ -22,11 +22,7 @@ function SelectTreatmentUnits(props: Props) {
   const {
     opts = [],
     select_className = "pick_treatment_unit",
-    placeholder = (
-      <div>
-        <i className="fas fa-search" /> Søk etter behandlingsenheter
-      </div>
-    ),
+    placeholder,
     update_tu,
     treatment_unit,
   } = props;
@@ -91,7 +87,7 @@ function SelectTreatmentUnits(props: Props) {
   };
 
   return (
-    <form>
+    <form data-testid="tu_selector">
       <Select
         className={select_className}
         options={selection_options}
