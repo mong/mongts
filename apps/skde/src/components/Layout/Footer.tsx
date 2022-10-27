@@ -30,8 +30,8 @@ export const Footer: React.FC<{}> = ({}) => {
                 <Image
                   loader={imgLoader}
                   src={`/helseatlas/img/logos/helse-nord-hvit.svg`}
-                  height="40px"
-                  width="180px"
+                  height={40}
+                  width={180}
                   alt="Helse Nord logo"
                 />
               </a>
@@ -43,8 +43,8 @@ export const Footer: React.FC<{}> = ({}) => {
                 <Image
                   loader={imgLoader}
                   src={`/helseatlas/img/logos/skde-hvit.svg`}
-                  height="40px"
-                  width="180px"
+                  height={40}
+                  width={180}
                   alt="SKDE logo"
                 />
               </a>
@@ -56,8 +56,8 @@ export const Footer: React.FC<{}> = ({}) => {
                 <Image
                   loader={imgLoader}
                   src={`/helseatlas/img/logos/helse-forde-hvit.svg`}
-                  height="40px"
-                  width="180px"
+                  height={40}
+                  width={180}
                   alt="Helse Førde logo"
                 />
               </a>
@@ -69,8 +69,8 @@ export const Footer: React.FC<{}> = ({}) => {
                 <Image
                   loader={imgLoader}
                   src={`/helseatlas/img/logos/helse-vest-hvit.svg`}
-                  height="40px"
-                  width="180px"
+                  height={40}
+                  width={180}
                   alt="Helse Vest logo"
                 />
               </a>
