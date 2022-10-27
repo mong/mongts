@@ -7,7 +7,7 @@ interface Props {
   children: any;
 }
 
-export default function Layout({ children }: Props) {
+export const Layout = ({ children }: Props) => {
   const [origin, setOrigin] = useState("");
   useEffect(() => {
     setOrigin(window.location.origin);
@@ -21,4 +21,4 @@ export default function Layout({ children }: Props) {
       <Footer />
     </div>
   );
-}
+};
