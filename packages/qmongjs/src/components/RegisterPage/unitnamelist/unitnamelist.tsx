@@ -3,6 +3,7 @@ import { Dispatch, useState } from "react";
 import { UnitNameListHeader } from "./unitnamelistheader";
 import { UnitNameListBody } from "./unitnamelistbody";
 import useEventListener from "../../../helpers/hooks/useEventListener";
+import styles from "./index.module.css";
 
 interface NestedUnitName {
   rhf: string;
@@ -51,20 +52,26 @@ export const UnitNameList = (props: Props) => {
 
   return (
     <>
-      <div className="hospital_list_btn_container">
+      <div className={styles.hospital_list_btn_container}>
         <button
-          className="hospital_list_btn"
+          className={styles.hospital_list_btn}
           onClick={() => update_tu_list_display("")}
+          data-testid="vis_alle_button"
         >
           Vis alle
         </button>
       </div>
-      <div style={style_tu_list} className="tu_list" test-id="tu_list">
+      <div
+        style={style_tu_list}
+        className={styles.tu_list}
+        data-testid="tu_list"
+      >
         <UnitNameListHeader />
-        <div className="all_tu">{tu_str_elm}</div>
+        <div className={styles.all_tu}>{tu_str_elm}</div>
         <button
           onClick={() => update_tu_list_display("none")}
-          className="tu_list_close_btn"
+          className={styles.tu_list_close_btn}
+          data-testid="tu_list_close"
         >
           <i className="far fa-times-circle" />
         </button>
