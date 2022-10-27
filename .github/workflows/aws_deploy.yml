@@ -1,7 +1,7 @@
 name: Deploy app to AWS
 on:
   push:
-    branches: [main, develop, include_qmongjs]
+    branches: [main, develop, separate_qmongjs_package]
     paths-ignore:
       - "apps/api/**"
   pull_request:
