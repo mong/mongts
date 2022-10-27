@@ -3,6 +3,7 @@ import { useRef, useEffect } from "react";
 import LEGEND_BTN from "./button";
 
 import { useResizeObserver } from "../../helpers/hooks";
+import styles from "./index.module.css";
 
 function LEGEND(props) {
   const {
@@ -40,7 +41,7 @@ function LEGEND(props) {
   const style = { top: `${selection_bar_height}px`, width };
 
   return (
-    <div className="table_legend" ref={legend_ref} style={style}>
+    <div className={styles.table_legend} ref={legend_ref} style={style}>
       {legend_btns}
     </div>
   );

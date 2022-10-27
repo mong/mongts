@@ -6,6 +6,7 @@ import SelectTreatmentUnits, { OptsTu } from "../SelectTreatmentUnits";
 import SelectYear from "../SelectYear";
 
 import { Header } from "./header";
+import styles from "./registerPage.module.css";
 
 import config, {
   mainQueryParamsConfig,
@@ -29,7 +30,9 @@ interface MainRegisterProps {
   registerNames: RegisterNames[];
 }
 
-export const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => {
+export const MainRegister: React.FC<MainRegisterProps> = ({
+  registerNames,
+}) => {
   const { tab } = useRouter().query as { tab: string };
   const tabNames: { label: string; value: string }[] = [
     { value: "sykehus", label: "Sykehus" },
@@ -72,7 +75,7 @@ export const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => 
     if (!selection_bar_dim) {
       return;
     }
-    const top = (selection_bar_dim.target as HTMLElement).offsetHeight ?? "";
+    const top = (selection_bar_dim.target as HTMLElement).offsetHeight ?? null;
     update_selection_bar_height(top);
   }, [selection_bar_dim]);
 
@@ -122,17 +125,21 @@ export const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => 
       <div>
         <i className="fas fa-search" /> Søk etter opptaksområder
       </div>
-    ) : undefined;
+    ) : (
+      <div>
+        <i className="fas fa-search" /> Søk etter behandlingsenheter
+      </div>
+    );
   return (
-    <div className="app-container" style={{ minHeight: "100vh" }}>
+    <div className={styles.appContainer} style={{ minHeight: "100vh" }}>
       <Header
         tabNames={tabNames}
         registerNames={registerNames}
         activeTab={activeTab as string}
       />
-      <div className="app-body">
-        <div className="selection-container" ref={selection_bar_ref}>
-          <div className="treatment-unit-selection">
+      <div className={styles.appBody}>
+        <div className={styles.selectionContainer} ref={selection_bar_ref}>
+          <div className={styles.treatmentUnitSelection}>
             <SelectTreatmentUnits
               opts={optstu}
               update_tu={update_treatment_units}
@@ -145,7 +152,7 @@ export const MainRegister: React.FC<MainRegisterProps> = ({ registerNames }) => 
               update_treatment_units={update_treatment_units}
             />
           </div>
-          <div className="year-selection">
+          <div className={styles.yearSelection}>
             <SelectYear
               opts={valid_years}
               update_year={update_selected_year}
