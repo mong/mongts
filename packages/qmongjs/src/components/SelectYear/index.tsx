@@ -55,7 +55,7 @@ function SelectYear(props: Props) {
   };
 
   return (
-    <form>
+    <form data-testid="year_selector">
       <Select
         className={select_className}
         onChange={(e) => handle_input_change(e)}
