@@ -62,7 +62,10 @@ const SelectRegister = (props: selectedRegisterProps) => {
 
   return (
     <>
-      <div style={{ position: "sticky", top: selection_bar_height! }}>
+      <div
+        style={{ position: "sticky", top: selection_bar_height! }}
+        data-testid="select_registry_button"
+      >
         <button
           className={style.registerBtn}
           style={btnStyle}
@@ -79,12 +82,13 @@ const SelectRegister = (props: selectedRegisterProps) => {
             className={style.searchInput}
             type="text"
             placeholder="Søk etter register"
+            data-testid="registry_search_input"
           />
         </div>
         <ul>
           <li>
-            <Link href={`/alle/${activeTab}`} passHref>
-              <a>
+            <Link href={`/kvalitetsregistre/alle/${activeTab}`} passHref>
+              <a data-testid="pick_registry_all">
                 <b onClick={() => updateBtnToggle(!btnToggle)}>Alle registre</b>
               </a>
             </Link>
@@ -100,8 +104,11 @@ const SelectRegister = (props: selectedRegisterProps) => {
                 : "sykehus";
 
             return (
-              <li key={reg.rname}>
-                <Link href={`/${reg.rname}/${tabName}`} passHref>
+              <li key={reg.rname} data-testid={`pick_registry_${reg.rname}`}>
+                <Link
+                  href={`/kvalitetsregistre/${reg.rname}/${tabName}`}
+                  passHref
+                >
                   <a onClick={() => updateBtnToggle(!btnToggle)}>
                     {reg.full_name}
                   </a>
@@ -113,6 +120,7 @@ const SelectRegister = (props: selectedRegisterProps) => {
         <button
           onClick={() => updateBtnToggle(!btnToggle)}
           className={style.select_reg_close}
+          data-testid="pick_registry_close_button"
         >
           <i className="far fa-times-circle" />
         </button>
