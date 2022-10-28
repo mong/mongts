@@ -399,7 +399,7 @@ test("Render zoomed with levels @500px", async () => {
         { level: "mid", start: 400, end: 200 },
         { level: "low", start: 200, end: 0 },
       ]}
-      tickformat="qwerty" // test with unsupported format
+      tickformat=".0f"
       zoom
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />

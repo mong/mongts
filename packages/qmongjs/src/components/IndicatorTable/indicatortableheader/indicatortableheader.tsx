@@ -1,4 +1,5 @@
 import React from "react";
+import style from "./indicatortableheader.module.css";
 
 export interface IndicatorTableHeaderProps {
   colspan: number;
@@ -31,6 +32,7 @@ export const IndicatorTableHeader: React.FC<IndicatorTableHeaderProps> = (
       className={tu !== "nasjonalt" ? "selected_unit" : "nationally "}
       style={style_treatment_units}
       key={tu}
+      data-testid={`tu_header_${tu}`}
     >
       {tu}
     </th>
@@ -41,7 +43,7 @@ export const IndicatorTableHeader: React.FC<IndicatorTableHeaderProps> = (
       <tr>
         <th
           key="kvind_header"
-          className="quality_indicator"
+          className={style.quality_indicator}
           style={style_ind_desc}
         >
           {descriptionHeader}
