@@ -28,7 +28,7 @@ export const AnnualVariation = function <
   sizeScale,
   labels,
 }: AnnualVariaionProps<D, AnnualVar>) {
-  const annualRates = annualVar.map((v) => data[v]);
+  const annualRates = annualVar.map((v) => Number(data[v]));
 
   return (
     <>

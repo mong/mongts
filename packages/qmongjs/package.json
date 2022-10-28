@@ -5,6 +5,8 @@
   "types": "./src/index.tsx",
   "scripts": {
     "lint": "TIMING=1 eslint \"**/*.ts*\"",
+    "check-format": "yarn run prettier --check",
+    "check-types": "tsc --noEmit",
     "test": "jest --watchAll=false --coverage"
   },
   "devDependencies": {
