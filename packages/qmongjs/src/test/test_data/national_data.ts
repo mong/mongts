@@ -1,6 +1,7 @@
-const national_data = [
+import { Indicator } from "types";
+
+const national_data: Indicator[] = [
   {
-    id: 1001,
     ind_id: "barnediabetes_hba1c_ge_9",
     unit_level: "nation",
     unit_name: "Nasjonalt",
@@ -12,12 +13,11 @@ const national_data = [
     level_direction: 0,
     dg: null,
     include: 1,
-    type: "andel",
     delivery_time: new Date("October 13, 2014 11:13:00"),
     delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
+    min_denominator: null,
   },
   {
-    id: 1006,
     ind_id: "barnediabetes_hba1c_ge_9",
     unit_level: "nation",
     unit_name: "Nasjonalt",
@@ -32,6 +32,7 @@ const national_data = [
     type: "andel",
     delivery_time: new Date("October 13, 2014 11:13:00"),
     delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
+    min_denominator: null,
   },
   {
     id: 1002,
@@ -49,6 +50,7 @@ const national_data = [
     type: "andel",
     delivery_time: new Date("October 13, 2014 11:13:00"),
     delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
+    min_denominator: null,
   },
   {
     id: 1003,
@@ -66,6 +68,7 @@ const national_data = [
     type: "andel",
     delivery_time: new Date("October 13, 2014 11:13:00"),
     delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
+    min_denominator: null,
   },
   {
     id: 1004,
@@ -83,6 +86,7 @@ const national_data = [
     type: "andel",
     delivery_time: new Date("October 13, 2014 11:13:00"),
     delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
+    min_denominator: null,
   },
   {
     id: 1005,
@@ -100,6 +104,7 @@ const national_data = [
     type: "andel",
     delivery_time: new Date("October 13, 2014 11:13:00"),
     delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
+    min_denominator: null,
   },
 ];
 

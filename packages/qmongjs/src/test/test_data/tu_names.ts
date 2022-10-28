@@ -1,4 +1,6 @@
-const tu_names = [
+import { TuName } from "types";
+
+const tu_names: TuName[] = [
   {
     hospital: "",
     hf: "Akershus HF",

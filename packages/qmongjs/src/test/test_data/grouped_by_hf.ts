@@ -1,5 +1,8 @@
-const grouped_by_hf = [
+import { Indicator } from "types";
+
+const grouped_by_hf: Indicator[] = [
   {
+    id: 1001,
     ind_id: "barnediabetes_hba1c_ge_9",
     unit_level: "hf",
     unit_name: "Akershus HF",
@@ -12,6 +15,7 @@ const grouped_by_hf = [
     dg: null,
     include: 1,
     delivery_time: new Date("October 13, 2014 11:13:00"),
+    min_denominator: null,
   },
   {
     ind_id: "barnediabetes_hba1c_ge_9",
@@ -26,6 +30,7 @@ const grouped_by_hf = [
     dg: null,
     include: 1,
     delivery_time: new Date("October 13, 2014 11:13:00"),
+    min_denominator: null,
   },
   {
     ind_id: "barnediabetes_hba1c_ge_9",
@@ -40,6 +45,7 @@ const grouped_by_hf = [
     dg: null,
     include: 1,
     delivery_time: new Date("October 13, 2014 11:13:00"),
+    min_denominator: null,
   },
   {
     ind_id: "barnediabetes_hba1c_ge_9",
@@ -54,6 +60,7 @@ const grouped_by_hf = [
     dg: null,
     include: 1,
     delivery_time: new Date("October 13, 2014 11:13:00"),
+    min_denominator: null,
   },
   {
     ind_id: "barnediabetes_hba1c_ge_9",
@@ -68,6 +75,7 @@ const grouped_by_hf = [
     dg: null,
     include: 1,
     delivery_time: new Date("October 13, 2014 11:13:00"),
+    min_denominator: null,
   },
   {
     ind_id: "barnediabetes_hba1c_ge_9",
@@ -82,6 +90,7 @@ const grouped_by_hf = [
     dg: null,
     include: 1,
     delivery_time: new Date("October 13, 2014 11:13:00"),
+    min_denominator: null,
   },
   {
     ind_id: "barnediabetes_hba1c_lt_7",
@@ -96,6 +105,7 @@ const grouped_by_hf = [
     dg: null,
     include: 1,
     delivery_time: new Date("October 13, 2014 11:13:00"),
+    min_denominator: null,
   },
   {
     ind_id: "barnediabetes_hba1c_lt_7",
@@ -110,6 +120,7 @@ const grouped_by_hf = [
     dg: null,
     include: 1,
     delivery_time: new Date("October 13, 2014 11:13:00"),
+    min_denominator: null,
   },
   {
     ind_id: "barnediabetes_hba1c_lt_7",
@@ -124,6 +135,7 @@ const grouped_by_hf = [
     dg: null,
     include: 1,
     delivery_time: new Date("October 13, 2014 11:13:00"),
+    min_denominator: null,
   },
   {
     ind_id: "barnediabetes_hba1c_lt_7",
@@ -138,6 +150,7 @@ const grouped_by_hf = [
     dg: null,
     include: 1,
     delivery_time: new Date("October 13, 2014 11:13:00"),
+    min_denominator: null,
   },
   {
     ind_id: "barnediabetes_hba1c_lt_7",
@@ -152,6 +165,7 @@ const grouped_by_hf = [
     dg: null,
     include: 1,
     delivery_time: new Date("October 13, 2014 11:13:00"),
+    min_denominator: null,
   },
   {
     ind_id: "barnediabetes_hba1c_lt_7",
@@ -166,6 +180,7 @@ const grouped_by_hf = [
     dg: null,
     include: 1,
     delivery_time: new Date("October 13, 2014 11:13:00"),
+    min_denominator: null,
   },
 ];
 

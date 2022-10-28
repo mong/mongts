@@ -1,4 +1,6 @@
-const description = [
+import { Description } from "types";
+
+const description: Description[] = [
   {
     id: "barnediabetes_hba1c_ge_9",
     dg_id: "dummy_dg",

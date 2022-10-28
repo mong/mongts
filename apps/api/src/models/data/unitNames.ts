@@ -1,30 +1,7 @@
 import { Knex } from "knex";
 import db from "../../db";
 import { Filter } from ".";
-
-export interface TuName {
-  hospital: string;
-  hf: string;
-  hf_full: string;
-  rhf: string;
-}
-
-export interface NestedTreatmentUnitName {
-  rhf: string;
-  hf: {
-    hf: string;
-    hf_full: string;
-    hospital: string[];
-  }[];
-}
-
-export interface OptsTu {
-  label: "Sykehus" | "HF" | "RHF";
-  options: {
-    value: string;
-    label: string;
-  }[];
-}
+import { TuName } from "types";
 
 export const distinctUnitNamesRegister = (
   filter?: Filter
