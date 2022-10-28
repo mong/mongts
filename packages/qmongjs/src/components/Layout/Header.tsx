@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Header.module.css";
-import skdeLogo from "../../img/logos/SKDE_sort.png";
+const skdeLogo = require("../../img/logos/SKDE_sort.png");
 import Link from "next/link";
 import Image from "next/image";
 import { imgLoader } from "../../helpers/functions";

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import logo from "../../../img/logos/nsmlogo.svg";
+const logo = require("../../../img/logos/nsmlogo.svg");
 import style from "./nsmlogo.module.css";
 import { imgLoader } from "../../../helpers/functions";
 

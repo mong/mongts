@@ -4,7 +4,9 @@
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "scripts": {
-    "lint": "TIMING=1 eslint \"**/*.ts*\"",
+    "lint": "eslint --ignore-path .gitignore --ext js,ts,tsx src",
+    "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
+    "format": "yarn run prettier --write",
     "check-format": "yarn run prettier --check",
     "check-types": "tsc --noEmit",
     "test": "jest --watchAll=false --coverage"
@@ -14,6 +16,7 @@
     "@testing-library/react": "13.4.0",
     "@testing-library/user-event": "14.4.3",
     "@types/d3": "7.4.0",
+    "@types/d3-format": "^3.0.1",
     "@types/jest": "29.0.3",
     "@types/node": "18.0.0",
     "@types/react": "18.0.23",
