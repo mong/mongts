@@ -8,6 +8,7 @@ import { MedicalFields } from "../MedicalFields";
 import { IndicatorTable } from "../IndicatorTable";
 import { useMedicalFieldsQuery } from "../../helpers/hooks";
 import { OptsTu } from "../SelectTreatmentUnits";
+import styles from "./registerPage.module.css";
 
 interface AggData {
   nation: {
@@ -106,8 +107,8 @@ const Main = (props: Props) => {
         update_legend_height={update_legend_height}
         width="undefined"
       />
-      <div className="content_container">
-        <div className="med_field_container">
+      <div className={styles.contentContainer}>
+        <div className={styles.medFieldContainer}>
           <MedicalFields
             medicalFields={medicalFields}
             clicked_med_field={clicked_med_field ?? "all"}
@@ -116,7 +117,7 @@ const Main = (props: Props) => {
             legend_height={legend_height}
           />
         </div>
-        <div className="main_table_container">
+        <div className={styles.mainTableContainer}>
           <IndicatorTable
             context={context}
             tableType="allRegistries"
