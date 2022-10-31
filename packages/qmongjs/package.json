@@ -9,7 +9,7 @@
     "format": "yarn run prettier --write",
     "check-format": "yarn run prettier --check",
     "check-types": "tsc --noEmit",
-    "test": "jest --watchAll=false --coverage"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
@@ -30,8 +30,8 @@
       }
     },
     "moduleNameMapper": {
-      "d3": "<rootDir>/node_modules/d3/dist/d3.min.js",
-      "react-markdown": "<rootDir>/node_modules/react-markdown/react-markdown.min.js"
+      "d3": "<rootDir>/../../node_modules/d3/dist/d3.min.js",
+      "react-markdown": "<rootDir>/../../node_modules/react-markdown/react-markdown.min.js"
     }
   },
   "devDependencies": {
@@ -75,6 +75,7 @@
     "react": "18.2.0",
     "react-icons": "4.4.0",
     "react-query": "3.39.2",
+    "react-scripts": "5.0.1",
     "react-select": "5.4.0",
     "remark-gfm": "3.0.1",
     "resize-observer-polyfill": "1.5.1",
