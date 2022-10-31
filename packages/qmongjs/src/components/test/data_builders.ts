@@ -1,8 +1,4 @@
-import type {
-  Description,
-  RegisterNames,
-  StatisticData,
-} from "../../components/RegisterPage";
+import type { Description, RegisterName, Indicator } from "types";
 import { app_text } from "../../app_config";
 import type { GraphData, Props } from "../RegisterPage/main_component";
 import desc from "../../dev-tools/data/description.min.json";
@@ -22,18 +18,20 @@ export function buildMainProps(overrides: Partial<Props>): Props {
     selection_bar_height: null,
     legend_height: null,
     registerNames: [],
-    update_legend_height: (height: any) => {},
+    update_legend_height: (height: any) => {
+      null;
+    },
     ...overrides,
   };
 }
 interface AggData {
   nation: {
-    filtered_by_unit: StatisticData[];
-    filtered_by_year: StatisticData[];
+    filtered_by_unit: Indicator[];
+    filtered_by_year: Indicator[];
   };
-  filtered_by_unit: StatisticData[];
-  filtered_by_year: StatisticData[];
-  all_filtered_by_year: StatisticData[];
+  filtered_by_unit: Indicator[];
+  filtered_by_year: Indicator[];
+  all_filtered_by_year: Indicator[];
 }
 
 export function buildAggData(overrides: Partial<AggData>): AggData {
@@ -55,9 +53,7 @@ export function buildGraphData(overrides: Partial<GraphData>): GraphData {
     ...overrides,
   };
 }
-export function buildStatisticData(
-  overrides: Partial<StatisticData>
-): StatisticData {
+export function buildStatisticData(overrides: Partial<Indicator>): Indicator {
   return {
     id: 1001,
     ind_id: "hjerneslag_beh_enhet",
@@ -66,6 +62,7 @@ export function buildStatisticData(
     orgnr: 1,
     year: 2019,
     denominator: 9022,
+    min_denominator: null,
     var: 0.9396,
     level: "H",
     level_direction: 1,
@@ -129,12 +126,12 @@ export const buildIndicators = ({
   year,
   unitLevel,
   unitNames,
-}: MockIndicatorParams): StatisticData[] => {
+}: MockIndicatorParams): Indicator[] => {
   const registerIndicators = buildDescriptions({ register, type }).map(
     (descData) => descData.id
   );
 
-  let filteredIndicatorData: StatisticData[] = ind.filter((data) =>
+  let filteredIndicatorData: Indicator[] = ind.filter((data) =>
     registerIndicators.includes(data.ind_id)
   );
 
@@ -158,13 +155,15 @@ export const buildIndicators = ({
   return filteredIndicatorData;
 };
 
-export const buildRegisterNames = (): RegisterNames[] => {
-  const registryInfo: RegisterNames[] = registerNames.map((reg) => {
+export const buildRegisterNames = (): RegisterName[] => {
+  const registryInfo: RegisterName[] = registerNames.map((reg) => {
     return {
       ...reg,
       caregiver_data: 1,
       resident_data: 1,
       dg_data: 1,
+      description: null,
+      url: null,
     };
   });
 

@@ -19,7 +19,7 @@ import { useResizeObserver, useUnitNamesQuery } from "../../helpers/hooks";
 import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
 import { UnitNameList } from "./unitnamelist";
 import { NestedTreatmentUnitName } from "./unitnamelist/unitnamelistbody";
-import { RegisterNames } from ".";
+import { RegisterName } from "types";
 
 import MAIN from "./main_component";
 import { useRouter } from "next/router";
@@ -27,7 +27,7 @@ import { useRouter } from "next/router";
 const { app_text } = config;
 
 interface MainRegisterProps {
-  registerNames: RegisterNames[];
+  registerNames: RegisterName[];
 }
 
 export const MainRegister: React.FC<MainRegisterProps> = ({

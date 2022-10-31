@@ -7,12 +7,12 @@ import { MaskedIndicator } from "../maskedindicator";
 import { ChartRow } from "../chartrow";
 import style from "./indicatorrow.module.css";
 
-import { Description, StatisticData } from "../../RegisterPage";
+import { Description, Indicator } from "types";
 import { mainQueryParamsConfig } from "../../../app_config";
 
 const formatIndicatorValues = (
   description: Description,
-  indicator: StatisticData[],
+  indicator: Indicator[],
   showLevelFilter: string,
   unitName: string
 ) => {
@@ -99,7 +99,7 @@ export interface IndicatorRowProps {
   context: { context: string; type: string };
   treatmantYear: number;
   description: Description;
-  indicatorData: StatisticData[];
+  indicatorData: Indicator[];
   unitNames?: string[];
   medicalFieldClass?: string;
   showLevelFilter?: string;

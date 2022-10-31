@@ -6,7 +6,7 @@ import { VscChromeClose, VscZoomOut, VscZoomIn } from "react-icons/vsc";
 import { BiBarChart, BiLineChart } from "react-icons/bi";
 import { select, selectAll } from "d3";
 
-import { Description } from "../../RegisterPage";
+import { Description } from "types";
 
 interface Props {
   svgContainer: React.RefObject<HTMLDivElement>;
@@ -40,7 +40,7 @@ const FigureButtons = (props: Props) => {
 
   function getDownloadURL(svgContainer: React.RefObject<HTMLDivElement>) {
     if (!svgContainer.current) return;
-    let src = svgContainer.current.getElementsByTagName("svg")[0];
+    const src = svgContainer.current.getElementsByTagName("svg")[0];
 
     const height = src.height.baseVal.value;
     const width = src.width.baseVal.value;

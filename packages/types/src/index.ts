@@ -33,7 +33,7 @@ export interface Description {
     level: string;
     level_direction: number | null;
     dg: number | null;
-    delivery_time?: Date | null;
+    delivery_time: Date | null;
     delivery_latest_update?: Date | null;
     delivery_latest_affirm?: Date | null;
     time?: Date | null;
@@ -64,5 +64,16 @@ export interface Description {
       value: string;
       label: string;
     }[];
+  }
+  
+  export interface RegisterName {
+    id: number;
+    rname: string;
+    full_name: string;
+    caregiver_data: 0 | 1 | null;
+    resident_data: 0 | 1 | null;
+    dg_data: 0 | 1 | null;
+    url: string | null;
+    description: string | null;
   }
   

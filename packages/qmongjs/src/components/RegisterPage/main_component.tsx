@@ -1,6 +1,6 @@
 import { UseQueryResult } from "react-query";
 import { useQueryParam } from "use-query-params";
-import { Description, RegisterNames, StatisticData } from ".";
+import { Description, RegisterName, Indicator } from "types";
 import { mainQueryParamsConfig } from "../../app_config";
 
 import LEGEND from "../TargetLevels";
@@ -12,12 +12,12 @@ import styles from "./registerPage.module.css";
 
 interface AggData {
   nation: {
-    filtered_by_unit: StatisticData[];
-    filtered_by_year: StatisticData[];
+    filtered_by_unit: Indicator[];
+    filtered_by_year: Indicator[];
   };
-  filtered_by_unit: StatisticData[];
-  filtered_by_year: StatisticData[];
-  all_filtered_by_year: StatisticData[];
+  filtered_by_unit: Indicator[];
+  filtered_by_year: Indicator[];
+  all_filtered_by_year: Indicator[];
 }
 
 export interface GraphData {
@@ -34,7 +34,7 @@ export interface IndPerReg {
 export interface Props {
   context: string;
   optstu: OptsTu[] | [];
-  registerNames: RegisterNames[];
+  registerNames: RegisterName[];
   app_text: any;
   treatment_units: string[];
   selected_year: number;
@@ -72,7 +72,7 @@ const Main = (props: Props) => {
 
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
-  const registerList = registerNames.map((d: RegisterNames) => d.rname);
+  const registerList = registerNames.map((d: RegisterName) => d.rname);
 
   if (medicalFieldsQuery.isLoading) {
     return null;
@@ -87,7 +87,7 @@ const Main = (props: Props) => {
           )
           .flatMap((field: MedicalFieldObject) => field.registers);
 
-  const orderedRegisterList: RegisterNames[] = Array.from(
+  const orderedRegisterList: RegisterName[] = Array.from(
     new Set(
       medicalFields.flatMap((field: MedicalFieldObject) => field.registers)
     )
@@ -130,7 +130,7 @@ const Main = (props: Props) => {
             selection_bar_height={selection_bar_height}
             legend_height={legend_height}
             blockTitle={orderedRegisterList.map(
-              (d: RegisterNames) => d.full_name
+              (d: RegisterName) => d.full_name
             )}
           />
         </div>

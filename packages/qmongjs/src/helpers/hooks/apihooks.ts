@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
-import { API_HOST, StatisticData } from "../../components/RegisterPage";
+import { API_HOST } from "../../components/RegisterPage";
+import { Indicator } from "types";
 interface FetchDescriptionParams {
   registerShortName: string;
   type?: "ind" | "dg";
@@ -68,7 +69,7 @@ const fetchIndicators = async (params: FetchIndicatorParams) => {
 };
 
 export const useIndicatorQuery = (params: FetchIndicatorParams) => {
-  return useQuery<StatisticData[], Error>(
+  return useQuery<Indicator[], Error>(
     ["indicatorQuery", params],
     () => fetchIndicators(params),
     {

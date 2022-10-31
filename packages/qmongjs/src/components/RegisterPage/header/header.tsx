@@ -2,11 +2,11 @@ import React from "react";
 import { NSMLogo } from "./nsmlogo";
 import { HeaderTabs } from "./headertabs";
 import SelectRegister from "../../SelectRegister";
-import { RegisterNames } from "../";
+import { RegisterName } from "types";
 
 import style from "./header.module.css";
 export interface HeaderProps {
-  registerNames: RegisterNames[];
+  registerNames: RegisterName[];
   tabNames?: { label: string; value: string }[];
   dataFrom?: string;
   activeTab: string;

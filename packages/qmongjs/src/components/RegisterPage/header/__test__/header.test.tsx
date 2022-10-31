@@ -3,7 +3,7 @@ import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 
 import { Header } from "../";
-import { RegisterNames } from "../../.";
+import { RegisterName } from "types";
 import { NextAdapter } from "next-query-params";
 import mockRouter from "next-router-mock";
 import { createDynamicRouteParser } from "next-router-mock/dynamic-routes";
@@ -24,7 +24,7 @@ beforeEach(() => {
   mockRouter.setCurrentUrl("/alle/sykehus");
 });
 
-const registerInfo: RegisterNames[] = [
+const registerInfo: RegisterName[] = [
   {
     id: 1,
     rname: "hjerneslag",
@@ -32,6 +32,8 @@ const registerInfo: RegisterNames[] = [
     caregiver_data: 1,
     resident_data: 1,
     dg_data: 1,
+    description: null,
+    url: null,
   },
   {
     id: 2,
@@ -40,6 +42,8 @@ const registerInfo: RegisterNames[] = [
     caregiver_data: 1,
     resident_data: 1,
     dg_data: 1,
+    description: null,
+    url: null,
   },
   {
     id: 3,
@@ -48,6 +52,8 @@ const registerInfo: RegisterNames[] = [
     caregiver_data: 1,
     resident_data: 1,
     dg_data: 1,
+    description: null,
+    url: null,
   },
 ];
 it("register page header renders correctly", () => {

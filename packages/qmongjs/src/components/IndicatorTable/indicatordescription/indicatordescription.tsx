@@ -1,5 +1,5 @@
 import React from "react";
-import { Description } from "../../RegisterPage";
+import { Description } from "types";
 import style from "./indicatordescription.module.css";
 import { customFormat } from "../../../helpers/functions/localFormater";
 

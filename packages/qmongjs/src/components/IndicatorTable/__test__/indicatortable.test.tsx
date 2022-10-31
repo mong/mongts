@@ -4,7 +4,7 @@ import { render, screen, waitFor } from "@testing-library/react";
 
 import opts from "../../../dev-tools/data/unitnames.json";
 import { IndicatorTable } from "../";
-import { RegisterNames } from "../../RegisterPage";
+import { RegisterName } from "types";
 
 import mockRouter from "next-router-mock";
 import { NextAdapter } from "next-query-params";
@@ -25,7 +25,7 @@ beforeEach(() => {
   mockRouter.setCurrentUrl("/alle/sykehus");
 });
 
-const registerInfo: RegisterNames[] = [
+const registerInfo: RegisterName[] = [
   {
     id: 1,
     rname: "hoftebrudd",
@@ -33,6 +33,8 @@ const registerInfo: RegisterNames[] = [
     caregiver_data: 1,
     resident_data: 0,
     dg_data: 1,
+    description: null,
+    url: null,
   },
 ];
 it("registry table renders correctly for a single registry", async () => {

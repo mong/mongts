@@ -83,6 +83,7 @@ test("Render without levels @250px", async () => {
           unit_name: "Nasjonalt",
           orgnr: 1,
           denominator: 2775,
+          min_denominator: null,
           var: 0.1081,
           level: "L",
           level_direction: 0,
@@ -101,7 +102,7 @@ test("Render without levels @250px", async () => {
           unit_level: "nation",
           unit_name: "Nasjonalt",
           orgnr: 1,
-
+          min_denominator: null,
           denominator: 2775,
           var: 0.1081,
           level: "L",
@@ -121,7 +122,7 @@ test("Render without levels @250px", async () => {
           unit_level: "nation",
           unit_name: "Nasjonalt",
           orgnr: 1,
-
+          min_denominator: null,
           denominator: 2775,
           var: 0.1081,
           level: "L",
@@ -141,7 +142,7 @@ test("Render without levels @250px", async () => {
           unit_level: "nation",
           unit_name: "Nasjonalt",
           orgnr: 1,
-
+          min_denominator: null,
           denominator: 2775,
           var: 0.1081,
           level: "L",
@@ -187,7 +188,7 @@ test("Render with levels @500px", async () => {
           unit_level: "nation",
           unit_name: "Nasjonalt",
           orgnr: 1,
-
+          min_denominator: null,
           denominator: 2775,
           var: 0.1081,
           level: "L",
@@ -207,7 +208,7 @@ test("Render with levels @500px", async () => {
           unit_level: "nation",
           unit_name: "Nasjonalt",
           orgnr: 1,
-
+          min_denominator: null,
           denominator: 2775,
           var: 0.1081,
           level: "L",
@@ -227,7 +228,7 @@ test("Render with levels @500px", async () => {
           unit_level: "nation",
           unit_name: "Nasjonalt",
           orgnr: 1,
-
+          min_denominator: null,
           denominator: 2775,
           var: 0.1081,
           level: "L",
@@ -247,7 +248,7 @@ test("Render with levels @500px", async () => {
           unit_level: "nation",
           unit_name: "Nasjonalt",
           orgnr: 1,
-
+          min_denominator: null,
           denominator: 2775,
           var: 0.1081,
           level: "L",
@@ -294,7 +295,7 @@ test("Render with levels reversed @500px", async () => {
           unit_level: "nation",
           unit_name: "Nasjonalt",
           orgnr: 1,
-
+          min_denominator: null,
           denominator: 2775,
           var: 0.1081,
           level: "L",
@@ -314,7 +315,7 @@ test("Render with levels reversed @500px", async () => {
           unit_level: "nation",
           unit_name: "Nasjonalt",
           orgnr: 1,
-
+          min_denominator: null,
           denominator: 2775,
           var: 0.1081,
           level: "L",
@@ -334,7 +335,7 @@ test("Render with levels reversed @500px", async () => {
           unit_level: "nation",
           unit_name: "Nasjonalt",
           orgnr: 1,
-
+          min_denominator: null,
           denominator: 2775,
           var: 0.1081,
           level: "L",
@@ -354,7 +355,7 @@ test("Render with levels reversed @500px", async () => {
           unit_level: "nation",
           unit_name: "Nasjonalt",
           orgnr: 1,
-
+          min_denominator: null,
           denominator: 2775,
           var: 0.1081,
           level: "L",
@@ -374,7 +375,7 @@ test("Render with levels reversed @500px", async () => {
           unit_level: "nation",
           unit_name: "Nasjonalt",
           orgnr: 1,
-
+          min_denominator: null,
           denominator: 2775,
           var: 0.1081,
           level: "L",
@@ -394,7 +395,7 @@ test("Render with levels reversed @500px", async () => {
           unit_level: "nation",
           unit_name: "Nasjonalt",
           orgnr: 1,
-
+          min_denominator: null,
           denominator: 2775,
           var: 0.1081,
           level: "L",
@@ -414,7 +415,7 @@ test("Render with levels reversed @500px", async () => {
           unit_level: "nation",
           unit_name: "Nasjonalt",
           orgnr: 1,
-
+          min_denominator: null,
           denominator: 2775,
           var: 0.1081,
           level: "L",
@@ -434,7 +435,7 @@ test("Render with levels reversed @500px", async () => {
           unit_level: "nation",
           unit_name: "Nasjonalt",
           orgnr: 1,
-
+          min_denominator: null,
           denominator: 2775,
           var: 0.1081,
           level: "L",
@@ -481,7 +482,7 @@ function buildDataPoint(overrides: Partial<DataPoint>): DataPoint {
     unit_level: "nation",
     unit_name: "Nasjonalt",
     orgnr: 1,
-
+    min_denominator: null,
     denominator: 2775,
     var: 0.1081,
     level: "L",

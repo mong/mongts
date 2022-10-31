@@ -6,7 +6,7 @@ import Chart from "./Chart";
 import { level_boundary } from "./tr_utils";
 import { useQueryParam } from "use-query-params";
 import { mainQueryParamsConfig } from "../../../app_config";
-import { Description, StatisticData } from "../../RegisterPage";
+import { Description, Indicator } from "types";
 import styles from "./chartrow.module.css";
 
 export interface Props {
@@ -14,7 +14,7 @@ export interface Props {
   treatmentYear: number;
   colspan?: number;
   description: Description[];
-  indicatorData: StatisticData[];
+  indicatorData: Indicator[];
   figure_class?: string;
   selectedTreatmentUnits: string[];
   update_selected_row(row: string): void;
@@ -40,11 +40,13 @@ export function ChartRow(props: Props) {
   const [zoom, update_zoom] = useState(true);
   const [show_level, update_show_level] = useState(false);
 
-  let levels = level_boundary(description[0]);
-  let format = description[0].sformat ?? undefined;
-  let max_value = description[0].max_value ?? undefined;
+  const levels = level_boundary(description[0]);
+  const format = description[0].sformat ?? undefined;
+  const max_value = description[0].max_value ?? undefined;
 
-  let delivery_time = new Date(indicatorData[0].delivery_time);
+  const delivery_time = indicatorData[0].delivery_time
+    ? new Date(indicatorData[0].delivery_time)
+    : undefined;
 
   return (
     <tr className={figure_class}>

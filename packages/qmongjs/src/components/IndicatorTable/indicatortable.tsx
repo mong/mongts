@@ -2,7 +2,7 @@ import React from "react";
 
 import { IndicatorTableHeader } from "./indicatortableheader";
 import { IndicatorTableBody } from "./indicatortablebody";
-import { RegisterNames } from "../RegisterPage";
+import { RegisterName } from "types";
 
 export interface IndicatorTableProps {
   context: string;
@@ -13,7 +13,7 @@ export interface IndicatorTableProps {
   national?: string;
   selection_bar_height: number | null;
   legend_height: number;
-  registerNames: RegisterNames[];
+  registerNames: RegisterName[];
   treatmentYear: number;
   medicalFieldFilter: string[];
   showLevelFilter?: string;

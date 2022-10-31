@@ -1,5 +1,5 @@
 import { UseQueryResult } from "react-query";
-import { Description, StatisticData } from "../../RegisterPage";
+import { Description, Indicator } from "types";
 
 import BarChart, { Bar, BarStyle } from "../../Charts/BarChart";
 import LineChart, { DataPoint } from "../../Charts/LineChart";
@@ -12,7 +12,7 @@ interface Props {
   chartType: "bar" | "line";
   description: Description;
   treatmentYear: number;
-  indicatorData: StatisticData[];
+  indicatorData: Indicator[];
   zoom: boolean;
   showLevel: boolean;
   levels: Level[];
@@ -51,20 +51,20 @@ const GetBarChart: React.FC<Props> = (props) => {
 
   // only keep data for given indicator
   const allIndicatorData = [...(indQryData ?? [])].filter(
-    (data: StatisticData) => data.ind_id === props.description.id
+    (data: Indicator) => data.ind_id === props.description.id
   );
 
   const showUnits = () => {
     // Show HF if there is less hospitals than HF
     // Show RHF if there is less HF than RHF
     const hospitalData = allIndicatorData.filter(
-      (data: StatisticData) => data.unit_level === "hospital"
+      (data: Indicator) => data.unit_level === "hospital"
     );
     const hfData = allIndicatorData.filter(
-      (data: StatisticData) => data.unit_level === "hf"
+      (data: Indicator) => data.unit_level === "hf"
     );
     const rhfData = allIndicatorData.filter(
-      (data: StatisticData) => data.unit_level === "rhf"
+      (data: Indicator) => data.unit_level === "rhf"
     );
 
     return {
@@ -76,15 +76,15 @@ const GetBarChart: React.FC<Props> = (props) => {
   // Units selected by user
   const unitNames = props.selectedTreatmentUnits;
 
-  const filterData = (data: StatisticData[]) => {
+  const filterData = (data: Indicator[]) => {
     const filtered = data
       .filter(
-        (data: StatisticData) =>
+        (data: Indicator) =>
           data.ind_id === props.description.id &&
           ((data.dg ?? 1) >= 0.6 || data.unit_name === "Nasjonalt") &&
           data.denominator >= (description.min_denominator ?? 5)
       )
-      .map((data: StatisticData) => {
+      .map((data: Indicator) => {
         const style: BarStyle = {};
         if (data.unit_name === "Nasjonalt") {
           style.color = "#00263D";
@@ -105,7 +105,7 @@ const GetBarChart: React.FC<Props> = (props) => {
   };
 
   const filterAllData = allIndicatorData.filter(
-    (data: StatisticData) =>
+    (data: Indicator) =>
       !(
         // filter out data already selected by user
         (
@@ -143,17 +143,17 @@ const GetLineChart: React.FC<Props> = (props) => {
 
   const data: DataPoint[] = (lineChartQuery.data ?? [])
     .filter(
-      (data: StatisticData) =>
+      (data: Indicator) =>
         data.ind_id === props.description.id &&
         ((data.dg ?? 1) >= 0.6 || data.unit_name === "Nasjonalt") &&
         data.denominator >= (description.min_denominator ?? 5)
     )
-    .map((d: StatisticData) => ({
+    .map((d: Indicator) => ({
       ...d,
       label: d.unit_name,
       value: d.var,
     }))
-    .sort((a: StatisticData, b: StatisticData) => b.year - a.year);
+    .sort((a: Indicator, b: Indicator) => b.year - a.year);
 
   return (
     <LineChart {...props} data={data} lastCompleteYear={lastCompleteYear} />

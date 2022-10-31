@@ -23,14 +23,14 @@ import {
 import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
 import { UnitNameList } from "./unitnamelist";
 import { NestedTreatmentUnitName } from "./unitnamelist/unitnamelistbody";
-import { RegisterNames } from ".";
+import { RegisterName } from "types";
 
 import LEGEND from "../TargetLevels";
 import { IndicatorTable } from "../IndicatorTable";
 import { useRouter } from "next/router";
 
 interface SelectedRegisterProps {
-  registerNames: RegisterNames[];
+  registerNames: RegisterName[];
 }
 
 export const SelectedRegister: React.FC<SelectedRegisterProps> = ({

@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useEventListener } from "../../helpers/hooks";
 
 import style from "./index.module.css";
-import { RegisterNames } from "../RegisterPage";
+import { RegisterName } from "types";
 import Link from "next/link";
 
 interface selectedRegisterProps {
-  regNames: RegisterNames[];
+  regNames: RegisterName[];
   selection_bar_height: number | null;
   activeTab: string;
 }
@@ -93,7 +93,7 @@ const SelectRegister = (props: selectedRegisterProps) => {
               </a>
             </Link>
           </li>
-          {filteredReg.map((reg: RegisterNames) => {
+          {filteredReg.map((reg: RegisterName) => {
             const tabName =
               activeTab === "sykehus" && reg.caregiver_data
                 ? "sykehus"

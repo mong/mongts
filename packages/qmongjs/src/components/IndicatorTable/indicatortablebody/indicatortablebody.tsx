@@ -1,6 +1,6 @@
 import React from "react";
 
-import { RegisterNames } from "../../RegisterPage";
+import { RegisterName } from "types";
 import TableBlock from "../tableblock/tableblock";
 import { NoDataAvailible } from "../ContenForEmptyTable";
 
@@ -8,7 +8,7 @@ export interface IndicatorTableBodyProps {
   context: string;
   tableType: "allRegistries" | "singleRegister";
   colspan: number;
-  registerNames: RegisterNames[];
+  registerNames: RegisterName[];
   unitNames: string[];
   treatmentYear: number;
   medicalFieldFilter: string[];
@@ -32,7 +32,7 @@ export const IndicatorTableBody: React.FC<IndicatorTableBodyProps> = (
   } = props;
 
   const done: string[] = [];
-  let register_block = registerNames.map((register, i) => {
+  const register_block = registerNames.map((register, i) => {
     if (!done.includes(register.rname)) {
       done.push(register.rname);
 

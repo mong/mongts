@@ -1,9 +1,9 @@
-import { StatisticData, Description } from "../../components/RegisterPage";
+import { Indicator, Description } from "types";
 
 export const filterOrderIndID = (
   isFetching: boolean,
   selectedNames: string[],
-  indData: StatisticData[],
+  indData: Indicator[],
   indDescription: Description[],
   level: string,
   tableType: "singleRegister" | "allRegistries"
@@ -15,7 +15,7 @@ export const filterOrderIndID = (
   const indId: string[] = Array.from(
     new Set(
       indData
-        .filter((d: StatisticData) => {
+        .filter((d: Indicator) => {
           const nation =
             tableType === "singleRegister" ||
             isFetching ||
@@ -35,7 +35,7 @@ export const filterOrderIndID = (
           const lowN = d.denominator < (minDenom ?? 5);
           return !(nation || levelFilter || dg || lowN);
         })
-        .map((d: StatisticData) => d.ind_id)
+        .map((d: Indicator) => d.ind_id)
     )
   );
 

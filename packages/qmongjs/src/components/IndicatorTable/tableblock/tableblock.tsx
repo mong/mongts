@@ -6,12 +6,12 @@ import { useDescriptionQuery, useIndicatorQuery } from "../../../helpers/hooks";
 import { filterOrderIndID } from "../../../helpers/functions";
 import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
-import { Description, StatisticData, RegisterNames } from "../../RegisterPage";
+import { Description, Indicator, RegisterName } from "types";
 
 export interface TableBlockProps {
   context: string;
   tableType: "allRegistries" | "singleRegister";
-  registerName: RegisterNames;
+  registerName: RegisterName;
   blockTitle?: string;
   treatmentYear: number;
   unitNames: string[];
@@ -92,7 +92,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
 
   const indicatorRows = uniqueOrderedInd.map((indicator) => {
     const singleIndicatorData = indicatorDataQuery.data.filter(
-      (data: StatisticData) => data.ind_id === indicator
+      (data: Indicator) => data.ind_id === indicator
     );
     const singleIndicatorDescription = descriptionQuery.data.filter(
       (data: Description) => data.id === indicator

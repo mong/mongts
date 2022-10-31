@@ -1,11 +1,11 @@
 import React from "react";
-import { StatisticData } from "../../RegisterPage";
+import { Indicator } from "types";
 import style from "./indicatorvalue.module.css";
 import { customFormat } from "../../../helpers/functions/localFormater";
 
 export interface IndicatorValueProps {
   td_class?: string;
-  indicatorData: StatisticData;
+  indicatorData: Indicator;
   level_class?: "filtered_level" | "";
   format?: string;
   headerStyle?: React.CSSProperties;

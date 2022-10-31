@@ -21,7 +21,7 @@ import { levelColor } from "../utils";
 import { Legend } from "./legend";
 import { customFormat } from "../../../helpers/functions/localFormater";
 import { LineChartTooltip } from "./tooltip";
-import { StatisticData } from "../../RegisterPage";
+import { Indicator } from "types";
 
 const chart_colors = [
   "#4F9A94",
@@ -44,7 +44,7 @@ const chart_colors = [
 export type DataPoint = {
   label: string;
   value: number;
-} & StatisticData;
+} & Indicator;
 
 export interface Props {
   svgContainerRef: React.RefObject<HTMLDivElement>;
