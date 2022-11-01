@@ -30,31 +30,25 @@ export default function Layout({
       <div className={styles.grid_wrapper}>
         <header className={`${styles.header_container}`}>
           <div className={styles.header_logo}>
-            <Link href="/">
-              <a rel="home">
-                <Image
-                  loader={imgLoader}
-                  src="/img/logos/SKDE_sort.png"
-                  alt="Hjem"
-                  width={96}
-                  height={39}
-                />
-              </a>
+            <Link href="/" rel="home">
+              <Image
+                loader={imgLoader}
+                src="/img/logos/SKDE_sort.png"
+                alt="Hjem"
+                width={96}
+                height={39}
+              />
             </Link>
           </div>
           <div className={styles.header_links}>
-            <Link href="/kontakt">
-              <a>Kontakt</a>
-            </Link>
+            <Link href="/kontakt">Kontakt</Link>
           </div>
         </header>
         {page && (
           <div className={styles.breadcrumb}>
             <ol>
               <li>
-                <Link href="/">
-                  <a>SKDE</a>
-                </Link>
+                <Link href="/">SKDE</Link>
               </li>
               <li>{page}</li>
             </ol>
@@ -78,61 +72,61 @@ export default function Layout({
               <br />
               <strong>E-post: </strong>
               <Link href="mailto:postmottak@helse-nord.no">
-                <a>postmottak@helse-nord.no</a>
+                postmottak@helse-nord.no
               </Link>
               <br />
               <strong>Webredaktør: </strong>
               <Link href="mailto:barthold.vonen@helse-nord.no">
-                <a>Barthold Vonen</a>
+                Barthold Vonen
               </Link>
             </div>
             <div className={styles.footer__social}>
-              <Link href="/kontakt">
-                <a title="Link til kontakt SKDE">Kontakt</a>
+              <Link href="/kontakt" title="Link til kontakt SKDE">
+                Kontakt
               </Link>
-              <Link href="/personvern">
-                <a title="link til personvern">Personvern</a>
+              <Link href="/personvern" title="link til personvern">
+                Personvern
               </Link>
             </div>
           </div>
           <div className={styles.footer__bottom}>
             <div className={styles.footer__partner_l}>
-              <Link href="http://www.helse-nord.no/">
-                <a title="Link til Helse Nord">
-                  <Image
-                    loader={imgLoader}
-                    src="/img/logos/hf_nord-white.svg"
-                    height="40px"
-                    width="180px"
-                    alt="Helse Nord logo"
-                  />
-                </a>
+              <Link
+                href="http://www.helse-nord.no/"
+                title="Link til Helse Nord"
+              >
+                <Image
+                  loader={imgLoader}
+                  src="/img/logos/hf_nord-white.svg"
+                  height={40}
+                  width={180}
+                  alt="Helse Nord logo"
+                />
               </Link>
             </div>
             <div className={styles.footer__partner_m}>
-              <Link href="https://www.kvalitetsregistre.no/">
-                <a title="Link til Kvalitetsregistre">
-                  <Image
-                    loader={imgLoader}
-                    src="/img/logos/NSM_logo_hvit.png"
-                    height="40px"
-                    width="359px"
-                    alt="NSM logo"
-                  />
-                </a>
+              <Link
+                href="https://www.kvalitetsregistre.no/"
+                title="Link til Kvalitetsregistre"
+              >
+                <Image
+                  loader={imgLoader}
+                  src="/img/logos/NSM_logo_hvit.png"
+                  height={40}
+                  width={359}
+                  alt="NSM logo"
+                />
               </Link>
             </div>
             <div className={styles.footer_partner_r}>
-              <Link href="/helseatlas/index.html">
-                <a title="Link til Helseatlas">
-                  <Image
-                    loader={imgLoader}
-                    src="/img/logos/Logo_atlas_hvit.png"
-                    height="40px"
-                    width="146px"
-                    alt="Helseatlas logo"
-                  />
-                </a>
+              <Link href="/helseatlas/index.html" title="Link til Helseatlas">
+                <Image
+                  loader={imgLoader}
+                  src="/img/logos/Logo_atlas_hvit.png"
+                  height={40}
+                  width={146}
+                  alt="Helseatlas logo"
+                />
               </Link>
             </div>
           </div>

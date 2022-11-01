@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { CSSProperties } from "react";
 import classNames from "./AtlasLink.module.css";
 import { timeFormat } from "d3-time-format";
@@ -41,42 +41,40 @@ export const AtlasLink: React.FC<Props> = ({
         wide ? classNames.wide : ""
       }`}
     >
-      <Link href={`/${linkTo}`}>
-        <a data-testid={linkTo}>
-          <div className={classNames.linkInnerWrapper}>
-            <div className={classNames.linkImageWrapper}>
-              <Image
-                loader={imgLoader}
-                src={imageSource}
-                alt={"atlas photo"}
-                width={1160}
-                height={740}
-                layout="intrinsic"
-              />
+      <Link href={`/${linkTo}`} data-testid={linkTo}>
+        <div className={classNames.linkInnerWrapper}>
+          <div className={classNames.linkImageWrapper}>
+            <Image
+              loader={imgLoader}
+              src={imageSource}
+              alt={"atlas photo"}
+              width={1160}
+              height={740}
+              layout="intrinsic"
+            />
+          </div>
+          <div className={classNames.linkText}>
+            <div
+              className={`${classNames.linkDateContainer} ${
+                newlyUpdated ? classNames.newlyUpdated : ""
+              }`}
+            >
+              <div className={classNames.outerCircle}>
+                <div className={classNames.innerDot}></div>
+              </div>
+              {lang === "en" ? "Published " : "Publisert:"}
+              <strong className={classNames.date}>
+                {lang === "en"
+                  ? formatTimeEng(new Date(date))
+                  : formatTimeNo(new Date(date))}
+              </strong>
             </div>
-            <div className={classNames.linkText}>
-              <div
-                className={`${classNames.linkDateContainer} ${
-                  newlyUpdated ? classNames.newlyUpdated : ""
-                }`}
-              >
-                <div className={classNames.outerCircle}>
-                  <div className={classNames.innerDot}></div>
-                </div>
-                {lang === "en" ? "Published " : "Publisert:"}
-                <strong className={classNames.date}>
-                  {lang === "en"
-                    ? formatTimeEng(new Date(date))
-                    : formatTimeNo(new Date(date))}
-                </strong>
-              </div>
-              <div className={classNames.linkTitle}>{linkTitle}</div>
-              <div className={classNames.linkIngress}>
-                <p>{linkText}</p>
-              </div>
+            <div className={classNames.linkTitle}>{linkTitle}</div>
+            <div className={classNames.linkIngress}>
+              <p>{linkText}</p>
             </div>
           </div>
-        </a>
+        </div>
       </Link>
     </div>
   );
