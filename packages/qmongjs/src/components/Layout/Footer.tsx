@@ -1,17 +1,15 @@
 import React from "react";
 import Link from "next/link";
-const skdeLogo = require("../../img/logos/SKDE_hvit_lys.png");
-const helseNordLogo = require("../../img/logos/hf_nord-white.svg");
-const NSMLogo = require("../../img/logos/NSM_logo_hvit.png");
-const helseatlasLogo = require("../../img/logos/Logo_atlas_hvit.png");
+import skdeLogo from "../../img/logos/SKDE_hvit_lys.png";
+import helseNordLogo from "../../img/logos/hf_nord-white.svg";
+import NSMLogo from "../../img/logos/NSM_logo_hvit.png";
+import helseatlasLogo from "../../img/logos/Logo_atlas_hvit.png";
 import { imgLoader } from "../../helpers/functions";
 
 import style from "./Footer.module.css";
 import Image from "next/image";
 
-type FooterProps = {};
-
-export const Footer: React.FC<FooterProps> = () => {
+export const Footer: React.FC = () => {
   return (
     <footer className={style.footer}>
       <div className={style.footerTop}>

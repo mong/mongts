@@ -1,13 +1,11 @@
 import React from "react";
 import style from "./Header.module.css";
-const skdeLogo = require("../../img/logos/SKDE_sort.png");
+import skdeLogo from "../../img/logos/SKDE_sort.png";
 import Link from "next/link";
 import Image from "next/image";
 import { imgLoader } from "../../helpers/functions";
 
-type HeaderProps = {};
-
-export const Header: React.FC<HeaderProps> = () => {
+export const Header: React.FC = () => {
   return (
     <div style={{}}>
       <header className={style.header}>
