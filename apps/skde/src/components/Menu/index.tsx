@@ -112,6 +112,11 @@ const NorskMeny = () => {
               <Link href="/helseatlas/statisk/om">Om helseatlas</Link>
             </li>
             <li>
+              <Link href="/helseatlas/statisk/planer-for-helseatlastjenesten">
+                Planer for helseatlastjenesten
+              </Link>
+            </li>
+            <li>
               <Link href="/helseatlas/statisk/kontakt">Kontakt</Link>
             </li>
           </ul>
