@@ -3,7 +3,7 @@ filename: planer
 title: Planer for helseatlastjenesten
 lang: nb
 ---
-# Utviklingsplan for helseatlastjenesten
+## Utviklingsplan for helseatlastjenesten
 
 SKDE og Helse Førde har samarbeidet om å lage en felles utviklingsplan for den nasjonale helseatlastjenesten.
 
