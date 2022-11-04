@@ -55,15 +55,11 @@ export default function Home() {
             </div>
 
             <div className={styles.block_button}>
-              <Link href="/helseatlas">
-                <a>Helseatlas</a>
-              </Link>
+              <Link href="/helseatlas">Helseatlas</Link>
             </div>
 
             <div className={styles.block_button}>
-              <Link href="/pasientstrommer">
-                <a>Pasientstrømmer</a>
-              </Link>
+              <Link href="/pasientstrommer">Pasientstrømmer</Link>
             </div>
 
             <div className={styles.block_button}>
