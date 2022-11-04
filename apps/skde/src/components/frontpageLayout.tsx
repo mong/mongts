@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
+import Image from "next/image";
+import { imgLoader } from "../helpers/functions";
 
 interface Props {
   children: any;
@@ -29,7 +31,8 @@ export default function Layout({
         <header className={`${styles.header_container}`}>
           <div className={styles.header_logo}>
             <Link href="/" rel="home">
-              <img
+              <Image
+                loader={imgLoader}
                 src="/img/logos/SKDE_sort.png"
                 alt="Hjem"
                 width={96}
@@ -55,7 +58,8 @@ export default function Layout({
         <footer className={`${styles.full_bleed} ${styles.footer_container}`}>
           <div className={styles.footer__top}>
             <div>
-              <img
+              <Image
+                loader={imgLoader}
                 src="/img/logos/SKDE_hvit_lys.png"
                 height="40"
                 width="99"
@@ -91,10 +95,11 @@ export default function Layout({
                 href="http://www.helse-nord.no/"
                 title="Link til Helse Nord"
               >
-                <img
+                <Image
+                  loader={imgLoader}
                   src="/img/logos/hf_nord-white.svg"
-                  height="40px"
-                  width="180px"
+                  height={40}
+                  width={180}
                   alt="Helse Nord logo"
                 />
               </Link>
@@ -104,20 +109,22 @@ export default function Layout({
                 href="https://www.kvalitetsregistre.no/"
                 title="Link til Kvalitetsregistre"
               >
-                <img
+                <Image
+                  loader={imgLoader}
                   src="/img/logos/NSM_logo_hvit.png"
-                  height="40px"
-                  width="359px"
+                  height={40}
+                  width={359}
                   alt="NSM logo"
                 />
               </Link>
             </div>
             <div className={styles.footer_partner_r}>
               <Link href="/helseatlas/index.html" title="Link til Helseatlas">
-                <img
+                <Image
+                  loader={imgLoader}
                   src="/img/logos/Logo_atlas_hvit.png"
-                  height="40px"
-                  width="146px"
+                  height={40}
+                  width={146}
                   alt="Helseatlas logo"
                 />
               </Link>
