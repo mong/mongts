@@ -19,8 +19,8 @@ export const Footer: React.FC = () => {
               loader={imgLoader}
               src={skdeLogo}
               alt="skde logo"
-              width="99px"
-              height="40px"
+              width={99}
+              height={40}
             />
           </Link>
         </div>
@@ -55,8 +55,8 @@ export const Footer: React.FC = () => {
               loader={imgLoader}
               src={helseNordLogo}
               alt="Helse Nord logo"
-              width="180px"
-              height="40px"
+              width={180}
+              height={40}
             />
           </a>
         </div>
@@ -69,8 +69,8 @@ export const Footer: React.FC = () => {
               loader={imgLoader}
               src={NSMLogo}
               alt="NSM logo"
-              width="287px"
-              height="32px"
+              width={287}
+              height={32}
             />
           </a>
         </div>
@@ -80,8 +80,8 @@ export const Footer: React.FC = () => {
               loader={imgLoader}
               src={helseatlasLogo}
               alt="Helseatlas logo"
-              width="146px"
-              height="40px"
+              width={146}
+              height={40}
             />
           </Link>
         </div>

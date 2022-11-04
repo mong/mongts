@@ -17,8 +17,8 @@ export const Header: React.FC = () => {
                 className={style.logo_img}
                 src={skdeLogo}
                 alt="SKDE logo"
-                height="39px"
-                width="96px"
+                height={39}
+                width={96}
               />
             </a>
           </Link>

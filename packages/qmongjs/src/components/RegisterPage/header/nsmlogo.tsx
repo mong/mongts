@@ -1,5 +1,5 @@
 import Image from "next/image";
-const logo = require("../../../img/logos/nsmlogo.svg");
+import logo from "../../../img/logos/nsmlogo.svg";
 import style from "./nsmlogo.module.css";
 import { imgLoader } from "../../../helpers/functions";
 
@@ -12,8 +12,8 @@ export const NSMLogo: React.FC = () => {
           className={style.nsmlogo}
           src={logo}
           alt="kvalitetsregistre.no"
-          width="250px"
-          height="28px"
+          width={250}
+          height={28}
         />
       </a>
     </div>
