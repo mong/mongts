@@ -10,6 +10,8 @@ lang: nb
 - Helseatlas er en nettbasert karttjeneste. Atlaset er et tredelt produkt som består av et interaktivt Norgeskart, faktaark og en rapport som redegjør for metode og med mer inngående beskrivelse av hvert pasientutvalg.
 - Helseatlas utvikles og leveres av Senter for klinisk dokumentasjon og evaluering (SKDE) i Helse Nord, og av Helse Førde i Helse Vest. Helse Nord og Helse Vest fikk i 2015 i oppdrag fra Helse og omsorgsdepartementet å utvikle et nasjonalt helseatlas i samarbeid med Helsedirektoratet.
 
+Plan for videre utvikling av Helseatlas finner du [her](https://sites.google.com/nestegenerasjonplan.no/plan-for-helseatlas/)
+
 Les mer: [Om statistikkformidling ved hjelp av kart](/helseatlas/statisk/kart)
 
 Informasjonen framstilles som rater for antall hendelser per tjeneste (f.eks. antall utførte inngrep/konsultasjoner per 100 000 innbyggere) for befolkningen i opptaksområdene til landets helseforetak. Opptaksområdet er de kommuner/bydeler som helseforetakene har ansvar for å betjene. For noen helsetjenester kan det være aktuelt å vise hvorvidt behandlingen er utført i offentlige sykehus eller av privat behandler med avtale om offentlig finansiering, mens i andre tilfeller vises andelen av pasientene som får en gitt helsetjeneste.
