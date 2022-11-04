@@ -90,8 +90,8 @@ export const DataTable = <
                   >
                     {cell.format
                       ? lang === "en"
-                        ? customFormatEng(cell.format)(row[cell.id])
-                        : customFormat(cell.format)(row[cell.id])
+                        ? customFormatEng(cell.format)(Number(row[cell.id]))
+                        : customFormat(cell.format)(Number(row[cell.id]))
                       : row[cell.id]}
                   </TableCell>
                 ))}
