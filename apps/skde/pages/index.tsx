@@ -50,7 +50,7 @@ export default function Home() {
               data-testid="kvalitetsregistre_button"
             >
               <Link href="/kvalitetsregistre/alle/sykehus">
-                <a>Kvalitetsregistre</a>
+                Kvalitetsregistre
               </Link>
             </div>
 
