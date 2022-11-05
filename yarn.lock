@@ -4469,17 +4469,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:18.0.24":
-  version: 18.0.24
-  resolution: "@types/react@npm:18.0.24"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: 7d06125bac61e1c6661e5dfbeeeb56d5b6d1d4c743292faebaa6b0f30f8414c7af3cadf674923fd86e4ca14e82566ff9156cd40c56786be024600c31b97d6c03
-  languageName: node
-  linkType: hard
-
 "@types/redis@npm:^2.8.0":
   version: 2.8.32
   resolution: "@types/redis@npm:2.8.32"
@@ -15100,6 +15089,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"next-transpile-modules@npm:10.0.0":
+  version: 10.0.0
+  resolution: "next-transpile-modules@npm:10.0.0"
+  dependencies:
+    enhanced-resolve: ^5.10.0
+  checksum: 3300fc7081f63b2c9487588db7cbe718f209dfd2111adec22d9c8af0e3c8ade2d95fd45f91e045546d78d98cafc78a49431de9a623360d33831b5e694bf007c9
+  languageName: node
+  linkType: hard
+
 "next@npm:13.0.2":
   version: 13.0.2
   resolution: "next@npm:13.0.2"
@@ -17094,7 +17092,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qmongjs@workspace:packages/qmongjs":
+"qmongjs@*, qmongjs@workspace:packages/qmongjs":
   version: 0.0.0-use.local
   resolution: "qmongjs@workspace:packages/qmongjs"
   dependencies:
@@ -19187,7 +19185,7 @@ __metadata:
     "@types/d3-scale-chromatic": 3.0.0
     "@types/d3-shape": 3.1.0
     "@types/node": 18.11.9
-    "@types/react": 18.0.24
+    "@types/react": 18.0.23
     "@visx/axis": 2.14.0
     "@visx/group": 2.10.0
     "@visx/scale": 2.2.2
@@ -19212,7 +19210,9 @@ __metadata:
     netlify-cms-app: 2.15.72
     next: 13.0.2
     next-query-params: 4.0.0
+    next-transpile-modules: 10.0.0
     prettier: 2.7.1
+    qmongjs: "*"
     react: 18.2.0
     react-dom: 18.2.0
     react-icons: 4.6.0
