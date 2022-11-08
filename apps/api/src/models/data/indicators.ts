@@ -1,21 +1,7 @@
 import { Knex } from "knex";
 import db from "../../db";
 import { Filter } from ".";
-
-export interface Indicator {
-  ind_id: string;
-  unit_level: string;
-  unit_name: string;
-  orgnr: number;
-  year: number;
-  denominator: number;
-  var: number;
-  level: string;
-  level_direction: number | null;
-  dg?: number;
-  include: number | null;
-  min_denominator: number;
-}
+import { Indicator } from "types";
 
 export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
   db
