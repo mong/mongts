@@ -1641,10 +1641,33 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/d3-array@npm:3.0.3":
+  version: 3.0.3
+  resolution: "@types/d3-array@npm:3.0.3"
+  checksum: 972c8ff009c97c9093883d7597aac7185d4e8c2832d7f25420d8312aa1ebd60182f85fe768615cbc9d73d8819add52eea7ce640e57f5b1668ef389f1dc9569bc
+  languageName: node
+  linkType: hard
+
 "@types/d3-color@npm:^1":
   version: 1.4.2
   resolution: "@types/d3-color@npm:1.4.2"
   checksum: 60d0f00ceb53052a142c606465eeec49b264a8dee180ddeda121770bd24e2fe34d8c33140022d929a5bf3d862e6908a55ee86ac629d10ac93f124fb40db7022a
+  languageName: node
+  linkType: hard
+
+"@types/d3-format@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@types/d3-format@npm:3.0.1"
+  checksum: 6819fae7e7c3fce1e44cd56e9b6d8ea5508f708cb7a42793edf82ff914b120bf6cddc35208b1b33ec82615ab82b843c284709f9cea5c3fe1ea5f012106b3d32c
+  languageName: node
+  linkType: hard
+
+"@types/d3-geo@npm:3.0.2":
+  version: 3.0.2
+  resolution: "@types/d3-geo@npm:3.0.2"
+  dependencies:
+    "@types/geojson": "*"
+  checksum: 23ecb29d818ef62e8a7a8fd97bcea8b9e36ce52035fe8e102fb567f223b7b530716a4dd6d4e66bb353720b027aba76fea60279ffdeb2d6a7ab89e6e3571bca32
   languageName: node
   linkType: hard
 
@@ -1671,10 +1694,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/d3-scale-chromatic@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@types/d3-scale-chromatic@npm:3.0.0"
-  checksum: e06afffd2725570aa90cb3050eb96a94727264948d9256e56807ab582aba379168d84d1d98bcaa275bf38375148b35dfe13697e06fc7565dd17ac7e2acb11980
+"@types/d3-scale@npm:4.0.2":
+  version: 4.0.2
+  resolution: "@types/d3-scale@npm:4.0.2"
+  dependencies:
+    "@types/d3-time": "*"
+  checksum: 6b3c0337f38f82b582d9f3190fde82edfce7ffafb371e5b2464c443137c2660bac644099d259f1f5cc829085eb5688bed0bea2b336a957d0845433bd07bf2ddd
   languageName: node
   linkType: hard
 
@@ -1702,6 +1727,20 @@ __metadata:
   dependencies:
     "@types/d3-path": ^1
   checksum: a7f78a3f0be1215b512efb636ba381768ab4104ef9b72b7fcc2ab9810e7d6fc2ee062f3103ef99236f4462deabac60d2fd96375315ec7ad33278757918c94592
+  languageName: node
+  linkType: hard
+
+"@types/d3-time-format@npm:4.0.0":
+  version: 4.0.0
+  resolution: "@types/d3-time-format@npm:4.0.0"
+  checksum: ac3a841b0cd6e7f4d4c6c2cd09a2662facea6993c16b10f40fdf84f55adf7be59a6d08fd6ac1c42c27c7340f3b5eeafef968b45b052a5476a580c78a991668db
+  languageName: node
+  linkType: hard
+
+"@types/d3-time@npm:*":
+  version: 3.0.0
+  resolution: "@types/d3-time@npm:3.0.0"
+  checksum: e76adb056daccf80107f4db190ac6deb77e8774f00362bb6c76f178e67f2f217422fe502b654edbc9ac6451f6619045b9f6f5fe0db1ec5520e2ada377af7c72e
   languageName: node
   linkType: hard
 
@@ -1741,6 +1780,13 @@ __metadata:
     "@types/qs": "*"
     "@types/serve-static": "*"
   checksum: 15c1af46d02de834e4a225eccaa9d85c0370fdbb3ed4e1bc2d323d24872309961542b993ae236335aeb3e278630224a6ea002078d39e651d78a3b0356b1eaa79
+  languageName: node
+  linkType: hard
+
+"@types/geojson@npm:*":
+  version: 7946.0.10
+  resolution: "@types/geojson@npm:7946.0.10"
+  checksum: 12c407c2dc93ecb26c08af533ee732f1506a9b29456616ba7ba1d525df96206c28ddf44a528f6a5415d7d22893e9d967420940a9c095ee5e539c1eba5fefc1f4
   languageName: node
   linkType: hard
 
@@ -3816,21 +3862,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-interpolate@npm:1 - 3, d3-interpolate@npm:1.2.0 - 3":
-  version: 3.0.1
-  resolution: "d3-interpolate@npm:3.0.1"
-  dependencies:
-    d3-color: 1 - 3
-  checksum: a42ba314e295e95e5365eff0f604834e67e4a3b3c7102458781c477bd67e9b24b6bb9d8e41ff5521050a3f2c7c0c4bbbb6e187fd586daa3980943095b267e78b
-  languageName: node
-  linkType: hard
-
 "d3-interpolate@npm:1.2.0 - 2":
   version: 2.0.1
   resolution: "d3-interpolate@npm:2.0.1"
   dependencies:
     d3-color: 1 - 2
   checksum: 4a2018ac34fbcc3e0e7241e117087ca1b2274b8b33673913658623efacc5db013b8d876586d167b23e3145bdb34ec8e441d301299b082e1a90985b2f18d4299c
+  languageName: node
+  linkType: hard
+
+"d3-interpolate@npm:1.2.0 - 3":
+  version: 3.0.1
+  resolution: "d3-interpolate@npm:3.0.1"
+  dependencies:
+    d3-color: 1 - 3
+  checksum: a42ba314e295e95e5365eff0f604834e67e4a3b3c7102458781c477bd67e9b24b6bb9d8e41ff5521050a3f2c7c0c4bbbb6e187fd586daa3980943095b267e78b
   languageName: node
   linkType: hard
 
@@ -3854,16 +3900,6 @@ __metadata:
   version: 1.0.9
   resolution: "d3-path@npm:1.0.9"
   checksum: d4382573baf9509a143f40944baeff9fead136926aed6872f7ead5b3555d68925f8a37935841dd51f1d70b65a294fe35c065b0906fb6e42109295f6598fc16d0
-  languageName: node
-  linkType: hard
-
-"d3-scale-chromatic@npm:3.0.0":
-  version: 3.0.0
-  resolution: "d3-scale-chromatic@npm:3.0.0"
-  dependencies:
-    d3-color: 1 - 3
-    d3-interpolate: 1 - 3
-  checksum: a8ce4cb0267a17b28ebbb929f5e3071d985908a9c13b6fcaa2a198e1e018f275804d691c5794b970df0049725b7944f32297b31603d235af6414004f0c7f82c0
   languageName: node
   linkType: hard
 
@@ -11355,8 +11391,12 @@ __metadata:
     "@mui/material": 5.10.12
     "@sentry/react": 7.17.4
     "@sentry/tracing": 7.17.4
-    "@types/d3-scale-chromatic": 3.0.0
+    "@types/d3-array": 3.0.3
+    "@types/d3-format": 3.0.1
+    "@types/d3-geo": 3.0.2
+    "@types/d3-scale": 4.0.2
     "@types/d3-shape": 3.1.0
+    "@types/d3-time-format": 4.0.0
     "@types/node": 18.11.9
     "@types/react": 18.0.24
     "@visx/axis": 2.14.0
@@ -11369,7 +11409,6 @@ __metadata:
     d3-format: 3.1.0
     d3-geo: 3.0.1
     d3-scale: 4.0.2
-    d3-scale-chromatic: 3.0.0
     d3-shape: 3.1.0
     d3-time-format: 4.1.0
     eslint: 8.26.0
