@@ -167,10 +167,7 @@ export const Barchart = <
 
   //annual var scales
   const colorFillScale = scaleLinear()
-    .domain([
-      parseFloat(min(varLabels ?? [0])),
-      parseFloat(max(varLabels ?? [1])),
-    ])
+    .domain([min(varLabels ?? [0]), max(varLabels ?? [1])])
     .range(["black", "white"]);
   const sizeScale = scaleLinear<number>()
     .domain([min(varLabels ?? [0]), max(varLabels ?? [0])])
