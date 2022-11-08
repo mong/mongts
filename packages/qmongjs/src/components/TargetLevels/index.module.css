@@ -1,0 +1,64 @@
+.table_legend {
+  display: flex;
+  justify-content: space-around;
+  position: sticky;
+  background-color: white;
+  text-align: end;
+  width: 80%;
+  font-size: 1rem;
+  z-index: 2;
+  position: -webkit-sticky;
+  align-self: flex-end;
+}
+
+.table_legend button {
+  outline: none;
+  border: none;
+  background-color: unset;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5em 0.4em;
+  border: 2px solid #d2d3d4;
+  border-radius: 2em;
+  margin: 0.7em 0.2em;
+  background-color: #dee7ee;
+  position: relative;
+  box-shadow: 0 4px 5px -1px rgba(196, 196, 196, 0.2);
+  min-width: 25%;
+  box-sizing: border-box;
+  top: 0;
+  cursor: pointer;
+  transition: 300ms cubic-bezier(0, 0, 0.58, 1);
+}
+.table_legend button:hover {
+  box-shadow: 0px 4px 10px 2px rgba(196, 196, 196, 0.5);
+  top: -7px;
+}
+.table_legend button:active {
+  box-shadow: none;
+  top: 0px;
+}
+.table_legend button.checked {
+  border: 2px solid #00263d;
+  box-shadow: 0px 4px 10px 2px rgba(196, 196, 196, 0.2);
+  top: -7px;
+}
+
+@media All and (max-width: 768px) {
+  .table_legend {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    font-size: 1rem;
+  }
+}
+
+@media All and (min-width: 769px) and (max-width: 992px) {
+  .table_legend {
+    left: 19%;
+    width: 81%;
+  }
+}
