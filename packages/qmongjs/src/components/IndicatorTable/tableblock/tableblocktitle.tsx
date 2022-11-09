@@ -22,9 +22,7 @@ export const TableBlockTitle: React.FC<BlockTitleProps> = (props) => {
     <tr className={`${style.titleRow} ${tr_register_name_class}`}>
       <td colSpan={colspan}>
         <Link href={`/${link}/${tabName}`} passHref>
-          <a>
-            <h3 className={style.title}>{title}</h3>
-          </a>
+          <h3 className={style.title}>{title}</h3>
         </Link>
       </td>
     </tr>

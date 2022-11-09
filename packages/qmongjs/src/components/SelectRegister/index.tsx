@@ -87,10 +87,12 @@ const SelectRegister = (props: selectedRegisterProps) => {
         </div>
         <ul>
           <li>
-            <Link href={`/kvalitetsregistre/alle/${activeTab}`} passHref>
-              <a data-testid="pick_registry_all">
-                <b onClick={() => updateBtnToggle(!btnToggle)}>Alle registre</b>
-              </a>
+            <Link
+              href={`/kvalitetsregistre/alle/${activeTab}`}
+              passHref
+              data-testid="pick_registry_all"
+            >
+              <b onClick={() => updateBtnToggle(!btnToggle)}>Alle registre</b>
             </Link>
           </li>
           {filteredReg.map((reg: RegisterName) => {
@@ -108,10 +110,9 @@ const SelectRegister = (props: selectedRegisterProps) => {
                 <Link
                   href={`/kvalitetsregistre/${reg.rname}/${tabName}`}
                   passHref
+                  onClick={() => updateBtnToggle(!btnToggle)}
                 >
-                  <a onClick={() => updateBtnToggle(!btnToggle)}>
-                    {reg.full_name}
-                  </a>
+                  {reg.full_name}
                 </Link>
               </li>
             );

@@ -11,16 +11,14 @@ export const Header: React.FC = () => {
       <header className={style.header}>
         <div className={style.logo}>
           <Link href="/">
-            <a>
-              <Image
-                loader={imgLoader}
-                className={style.logo_img}
-                src={skdeLogo}
-                alt="SKDE logo"
-                height={39}
-                width={96}
-              />
-            </a>
+            <Image
+              loader={imgLoader}
+              className={style.logo_img}
+              src={skdeLogo}
+              alt="SKDE logo"
+              height={39}
+              width={96}
+            />
           </Link>
         </div>
         <div>
