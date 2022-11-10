@@ -1,4 +1,4 @@
-import Select from "react-select";
+import Select, { StylesConfig } from "react-select";
 
 import { app_text } from "../../app_config";
 
@@ -12,23 +12,21 @@ export interface OptsTu {
 
 interface Props {
   opts: OptsTu[];
-  select_className?: string;
   placeholder: JSX.Element;
   update_tu(x: string[] | undefined): void;
   treatment_unit: string[];
 }
 
 function SelectTreatmentUnits(props: Props) {
-  const {
-    opts = [],
-    select_className = "pick_treatment_unit",
-    placeholder,
-    update_tu,
-    treatment_unit,
-  } = props;
+  const { opts = [], placeholder, update_tu, treatment_unit } = props;
   const selection_options = opts;
-  const customStyles = {
-    control: (provided: any, state: any) => ({
+  type OptionType = {
+    label: string;
+    value: string;
+  };
+  type IsMulti = true;
+  const customStyles: StylesConfig<OptionType, IsMulti> = {
+    control: (provided, state) => ({
       ...provided,
       width: "100%",
       backgroundColor: "white",
@@ -36,43 +34,36 @@ function SelectTreatmentUnits(props: Props) {
       fontSize: "1rem",
       border: "none",
       borderRadius: state.isFocused ? 0 : 0,
-      borderBottom: state.isFocused
-        ? "3px solid #7ebec7"
-        : state.isSelected
-        ? "3px solid #EEF6F7"
-        : "3px solid #EEF6F7",
+      borderBottom: state.isFocused ? "3px solid #7ebec7" : "3px solid #EEF6F7",
       cursor: "text",
     }),
-    input: (provided: any) => ({
+    input: (provided) => ({
       ...provided,
       paddingLeft: "1.3rem",
     }),
-    multiValue: (provided: any) => ({
+    multiValue: (provided) => ({
       ...provided,
       color: "#00263d",
       backgroundColor: "#EEF6F7",
     }),
-    placeholder: (provided: any) => ({
+    placeholder: (provided) => ({
       ...provided,
       color: "black",
       fontSize: "1.2rem",
     }),
-    crossIcon: (provided: any) => ({
-      ...provided,
-    }),
-    dropdownIndicator: (provided: any) => ({
+    dropdownIndicator: (provided) => ({
       ...provided,
       display: "none",
     }),
-    indicatorSeparator: (provided: any) => ({
+    indicatorSeparator: (provided) => ({
       ...provided,
       display: "none",
     }),
-    menu: (provided: any) => ({
+    menu: (provided) => ({
       ...provided,
       zIndex: 3,
     }),
-    option: (provided: any) => ({
+    option: (provided) => ({
       ...provided,
     }),
   };
@@ -85,7 +76,6 @@ function SelectTreatmentUnits(props: Props) {
   return (
     <form data-testid="tu_selector">
       <Select
-        className={select_className}
         options={selection_options}
         placeholder={placeholder}
         closeMenuOnSelect={true}
