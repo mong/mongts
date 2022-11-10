@@ -12,7 +12,7 @@ export interface IndicatorTableProps {
   unitNames: string[];
   national?: string;
   selection_bar_height: number | null;
-  legend_height: number;
+  legend_height: number | null;
   registerNames: RegisterName[];
   treatmentYear: number;
   medicalFieldFilter: string[];

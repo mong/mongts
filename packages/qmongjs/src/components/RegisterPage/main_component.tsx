@@ -1,7 +1,7 @@
 import { UseQueryResult } from "react-query";
 import { useQueryParam } from "use-query-params";
 import { Description, RegisterName, Indicator } from "types";
-import { mainQueryParamsConfig } from "../../app_config";
+import { mainQueryParamsConfig, appTextTypes } from "../../app_config";
 
 import LEGEND from "../TargetLevels";
 import { MedicalFields } from "../MedicalFields";
@@ -35,12 +35,12 @@ export interface Props {
   context: string;
   optstu: OptsTu[] | [];
   registerNames: RegisterName[];
-  app_text: any;
+  app_text: appTextTypes;
   treatment_units: string[];
   selected_year: number;
   colspan: number;
   selection_bar_height: number | null;
-  legend_height: any;
+  legend_height: number | null;
   update_legend_height(height: any): void;
 }
 

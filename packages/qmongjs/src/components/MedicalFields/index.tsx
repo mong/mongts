@@ -8,7 +8,7 @@ interface MedicalFieldProps {
   clicked_med_field: string;
   update_clicked_med_field: Dispatch<string>;
   selection_bar_height: number;
-  legend_height: string;
+  legend_height: number | null;
 }
 interface MedicalFieldObject {
   shortName: string;
@@ -38,7 +38,9 @@ export const MedicalFields: React.FC<MedicalFieldProps> = (props) => {
   });
 
   const checked_class = (clicked_med_field ?? "all") === "all" ? "checked" : "";
-  const style = { top: `${legend_height + selection_bar_height}px` };
+  const style = legend_height
+    ? { top: `${legend_height + selection_bar_height}px` }
+    : {};
   const handle_med_field_click = () => {
     update_clicked_med_field("all");
   };

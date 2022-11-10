@@ -7,7 +7,7 @@ export interface IndicatorTableHeaderProps {
   unitNames: string[];
   national?: string;
   selection_bar_height: number | null;
-  legend_height: number;
+  legend_height: number | null;
 }
 
 export const IndicatorTableHeader: React.FC<IndicatorTableHeaderProps> = (
@@ -21,7 +21,9 @@ export const IndicatorTableHeader: React.FC<IndicatorTableHeaderProps> = (
     legend_height,
   } = props;
 
-  const offset_top = `${(selection_bar_height ?? 0) + legend_height}px`;
+  const offset_top = `${
+    (selection_bar_height ?? 0) + (legend_height ? legend_height : 0)
+  }px`;
   const width_desc = colspan === 2 ? 60 : colspan === 3 ? 50 : 40;
   const width_tu = (100 - width_desc) / (colspan - 1);
   const style_ind_desc = { width: `${width_desc}%`, top: offset_top };
