@@ -11,8 +11,6 @@
 
 This is the [Next.js](https://nextjs.org/) app behind [www.skde.no](https://www.skde.no/) and the API.
 
-The repository [mong/qmongjs](https://github.com/mong/qmongjs) is behind the subpage [www.skde.no/kvalitetsregistre](https://www.skde.no/kvalitetsregistre/alle/sykehus) and .
-
 ## Development
 
 There is two long-lived branches in this repository: `main` and `develop`. All changes to `main` will update [www.skde.no](https://www.skde.no/) and [verify.skde.no](https://verify.skde.no/). All changes to `develop` will update [test.skde.no](https://test.skde.no/).
@@ -53,24 +51,8 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 In production we build static html files that we serve in an S3 bucket on AWS. To reproduce this locally you can
 
 ```bash
+export NEXT_PUBLIC_API_HOST="https://dc9yut6ftb9m1.cloudfront.net" # Our API in production
+yarn install
 yarn export
 npx serve apps/skde/out
 ```
-
-If you want to mimic the full site you have to build [qmongjs](https://github.com/mong/qmongjs) as well. The output from this build has to be copied into `kvalitetsregistre` folder inside the `apps/skde/out` folder. In other words:
-
-```bash
-# build mongts
-yarn install && yarn export
-# build qmongjs, which is a create-react-app
-cd ../qmongjs
-yarn install && yarn build
-cp -r build ../mongts/apps/skde/out/kvalitetsregistre
-# go back and serve the full site
-cd ../mongts
-npx serve apps/skde/out
-```
-
-If the last step is not working, make sure you have the latest version of `serve` installed (it did not work with `serve` version `12.0.1`).
-
-Be aware, the `kvalitetsregistre` folder will be overwritten the next time you do a `yarn export`.
