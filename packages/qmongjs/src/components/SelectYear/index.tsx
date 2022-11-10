@@ -20,13 +20,12 @@ function SelectYear(props: Props) {
     update_year(e.value);
   };
 
-  const customStyles: StylesConfig<
-    {
-      label: string;
-      value: string;
-    },
-    false
-  > = {
+  type OptionType = {
+    label: string;
+    value: string;
+  };
+  type IsMulti = false;
+  const customStyles: StylesConfig<OptionType, IsMulti> = {
     control: (provided, state) => ({
       ...provided,
       width: "100%",

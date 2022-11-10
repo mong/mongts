@@ -20,13 +20,12 @@ interface Props {
 function SelectTreatmentUnits(props: Props) {
   const { opts = [], placeholder, update_tu, treatment_unit } = props;
   const selection_options = opts;
-  const customStyles: StylesConfig<
-    {
-      label: string;
-      value: string;
-    },
-    true
-  > = {
+  type OptionType = {
+    label: string;
+    value: string;
+  };
+  type IsMulti = true;
+  const customStyles: StylesConfig<OptionType, IsMulti> = {
     control: (provided, state) => ({
       ...provided,
       width: "100%",
