@@ -26,26 +26,41 @@ jobs:
         with:
           node-version: "16"
           cache: "yarn"
-      - name: Build package
-        run: yarn install && yarn run export
-      - name: Sync main to S3 bucket skde.org
+      - run: yarn install
+      - run: yarn run check-types
+      - run: yarn run check-format
+      - name: Test build
+        env:
+          NEXT_PUBLIC_API_HOST: https://dc9yut6ftb9m1.cloudfront.net
+        run: |
+          yarn run export
+      - name: Build and sync main to S3 bucket skde.org
         if: github.ref == 'refs/heads/main'
+        env:
+          NEXT_PUBLIC_API_HOST: https://dc9yut6ftb9m1.cloudfront.net
         run: |
+          yarn run export
           aws s3 sync apps/skde/out s3://skde.org \
-            --exclude "kvalitetsregistre/*" \
             --exclude "helseatlas/ia/*" --exclude "helseatlas/files/*" \
             --delete \
             --cache-control "public, max-age=1, s-maxage=1"
-          aws s3 sync apps/skde/out s3://verify.skde.org \
-            --exclude "kvalitetsregistre/*" \
-            --exclude "helseatlas/ia/*" --exclude "helseatlas/files/*" \
-            --delete \
-            --cache-control "public, max-age=1, s-maxage=1"
-      - name: Sync develop to S3 bucket qa.skde.org
+      - name: Build and sync develop to S3 bucket qa.skde.org
         if: github.ref == 'refs/heads/develop'
+        env:
+          NEXT_PUBLIC_API_HOST: https://qa-mong-api.skde.org
         run: |
+          yarn run export
           aws s3 sync apps/skde/out s3://qa.skde.org \
-            --exclude "kvalitetsregistre/*" \
+            --exclude "helseatlas/ia/*" --exclude "helseatlas/files/*" \
+            --delete \
+            --cache-control "public, max-age=1, s-maxage=1"
+      - name: Build and sync to verify page
+        if: github.ref == 'refs/heads/main'
+        env:
+          NEXT_PUBLIC_API_HOST: https://verify-mong-api.skde.org
+        run: |
+          yarn run export
+          aws s3 sync apps/skde/out s3://verify.skde.org \
             --exclude "helseatlas/ia/*" --exclude "helseatlas/files/*" \
             --delete \
             --cache-control "public, max-age=1, s-maxage=1"
