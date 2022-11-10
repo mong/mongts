@@ -5,7 +5,22 @@ import {
   withDefault,
 } from "use-query-params";
 
-export const app_text = {
+export interface appTextTypes {
+  menus: { unit: string; year: string };
+  indicators: {
+    high: { text: string; icon: string };
+    moderate: { text: string; icon: string };
+    low: { text: string; icon: string };
+  };
+  table: {
+    main_column: string;
+    national_column: string;
+    desired_level: string;
+  };
+  tu_list: { header_text: string; max_nr_tu: number };
+}
+
+export const app_text: appTextTypes = {
   menus: {
     unit: "Velg behandlingssted",
     year: "År:",
