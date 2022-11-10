@@ -56,7 +56,7 @@ function SelectYear(props: Props) {
   return (
     <form data-testid="year_selector">
       <Select
-        onChange={(e) => handle_input_change(e)}
+        onChange={(e: any) => handle_input_change(e)}
         options={selection_options}
         defaultValue={defaultValue}
         value={selected_option}
