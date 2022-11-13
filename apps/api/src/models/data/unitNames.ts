@@ -4,7 +4,7 @@ import { Filter } from ".";
 import { TuName } from "types";
 
 export const distinctUnitNamesRegister = (
-  filter?: Filter
+  filter: Filter
 ): Promise<{ unit_name: string }[]> =>
   db
     .from("agg_data")
@@ -16,7 +16,7 @@ export const distinctUnitNamesRegister = (
       );
     })
     .whereNot("unit_name", "LIKE", "Udefinerte%")
-    .where("context", filter!.context ?? "")
+    .where("context", filter.context ?? "")
     .modify(withFilter, filter);
 
 function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
