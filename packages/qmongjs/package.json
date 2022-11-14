@@ -4,6 +4,11 @@
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "scripts": {
+    "test": "is-ci test:coverage test:base",
+    "test:base": "react-scripts test",
+    "test:once": "yarn run test:base --watchAll=false",
+    "test:once:watch": "yarn run test:base --watchAll=true",
+    "test:coverage": "yarn run test:once --coverage",
     "lint": "eslint --ignore-path .gitignore --ext js,ts,tsx src",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
     "format": "yarn run prettier --write",
@@ -17,18 +22,21 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react": "^13.4.0",
     "@types/d3": "7.4.0",
     "@types/d3-format": "3.0.1",
+    "@types/jest": "^29.2.2",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-select": "5.0.1",
     "babel-plugin-istanbul": "6.1.1",
     "eslint": "8.26.0",
+    "is-ci-cli": "^2.2.0",
     "lint-staged": "13.0.3",
     "msw": "0.48.1",
     "prettier": "2.7.1",
     "react-markdown": "8.0.3",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "remark-gfm": "3.0.1",
     "typedoc": "0.23.20",
     "typescript": "4.8.3"
@@ -47,5 +55,11 @@
     "react-select": "5.6.0",
     "resize-observer-polyfill": "1.5.1",
     "use-query-params": "^2.1.1"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "d3": "<rootDir>/../../node_modules/d3/dist/d3.min.js",
+      "react-markdown": "<rootDir>/../../node_modules/react-markdown/react-markdown.min.js"
+    }
   }
 }
