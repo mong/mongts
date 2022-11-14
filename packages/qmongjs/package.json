@@ -60,6 +60,9 @@
     "use-query-params": "^2.1.1"
   },
   "jest": {
+    "transformIgnorePatterns": [
+      "<rootDir>/../../node_modules/remark-gfm/"
+    ],
     "moduleNameMapper": {
       "d3": "<rootDir>/../../node_modules/d3/dist/d3.min.js",
       "react-markdown": "<rootDir>/../../node_modules/react-markdown/react-markdown.min.js"
