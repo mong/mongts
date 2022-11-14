@@ -3651,6 +3651,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@testing-library/user-event@npm:^14.4.3":
+  version: 14.4.3
+  resolution: "@testing-library/user-event@npm:14.4.3"
+  peerDependencies:
+    "@testing-library/dom": ">=7.21.4"
+  checksum: 852c48ea6db1c9471b18276617c84fec4320771e466cd58339a732ca3fd73ad35e5a43ae14f51af51a8d0a150dcf60fcaab049ef367871207bea8f92c4b8195e
+  languageName: node
+  linkType: hard
+
 "@tootallnate/once@npm:1":
   version: 1.1.2
   resolution: "@tootallnate/once@npm:1.1.2"
@@ -15322,6 +15331,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"next-router-mock@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "next-router-mock@npm:0.8.0"
+  peerDependencies:
+    next: ">=10.0.0"
+    react: ">=17.0.0"
+  checksum: b0fe784feafba7f84179dd9d0787f3b0c6f23a959ec995a49b074f163bcc261819c220567f370621fee1f132e6e28e1f514e38ccca0c39d68725f740e654c092
+  languageName: node
+  linkType: hard
+
 "next-transpile-modules@npm:10.0.0":
   version: 10.0.0
   resolution: "next-transpile-modules@npm:10.0.0"
@@ -17344,6 +17363,7 @@ __metadata:
     "@mui/material": 5.10.13
     "@testing-library/jest-dom": ^5.16.5
     "@testing-library/react": ^13.4.0
+    "@testing-library/user-event": ^14.4.3
     "@types/d3": 7.4.0
     "@types/d3-format": 3.0.1
     "@types/jest": ^29.2.2
@@ -17360,6 +17380,7 @@ __metadata:
     lint-staged: 13.0.3
     msw: 0.48.1
     next: 13.0.3
+    next-router-mock: ^0.8.0
     prettier: 2.7.1
     react: 18.2.0
     react-icons: 4.4.0
