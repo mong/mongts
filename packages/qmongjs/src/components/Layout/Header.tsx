@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
     <div style={{}}>
       <header className={style.header}>
         <div className={style.logo}>
-          <Link href="/">
+          <a href="/">
             <Image
               loader={imgLoader}
               className={style.logo_img}
@@ -19,7 +19,7 @@ export const Header: React.FC = () => {
               height={39}
               width={96}
             />
-          </Link>
+          </a>
         </div>
         <div>
           <Link href={`/kontakt`}>Kontakt</Link>
