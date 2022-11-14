@@ -1,5 +1,4 @@
 # yarn
-/node_modules
 /.pnp
 .pnp.js
 .pnp.*
@@ -10,11 +9,14 @@
 !.yarn/sdks
 !.yarn/versions
 
-# testing
-/coverage
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # misc
 .DS_Store
 *.pem
+*~
 
-.turbo
+node_modules/

@@ -1,8 +1,11 @@
-describe("Navigation", () => {
-  it("should navigate to the contact page", () => {
-    // Start from the index page
-    cy.visit("/");
+/// <reference types="cypress"/>
 
+describe("Navigation", () => {
+  beforeEach(() => {
+    cy.visit("/");
+  });
+
+  it("should navigate to the contact page", () => {
     // Find multiple link with an href attribute containing "kontakt" and click them
     cy.get('a[href*="kontakt"]').click({ multiple: true });
 
@@ -13,23 +16,13 @@ describe("Navigation", () => {
     cy.get("strong").contains("Telefon");
   });
 
-  it("return error if navigating to kvalitetsregistre", () => {
-    // Start from the index page
-    cy.visit("/");
-
-    // Find a link with an href attribute containing "kvalitetsregistre" (do not click it)
-    cy.get('a[href*="kvalitetsregistre"]');
-
-    // The url should return "404 This page could not be found."
-    cy.request({ url: "/kvalitetsregistre", failOnStatusCode: false })
-      .its("status")
-      .should("equal", 404);
+  it("Enter kvalitetsregistre page", () => {
+    // Enter "kvalitetsregistre" page
+    cy.get('[data-testid="kvalitetsregistre_button"]').click();
+    cy.get('[data-testid="MainRegister"]').should("exist"); // Main register page entered
   });
 
   it("should navigate to personvern page", () => {
-    // Start from the index page
-    cy.visit("/");
-
     // Find a link with an href attribute containing "personvern" and click it
     cy.get('a[href*="personvern"]').click();
 

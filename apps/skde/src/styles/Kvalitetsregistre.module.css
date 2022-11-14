@@ -1,0 +1,53 @@
+.kvalitetsregister table {
+  table-layout: fixed;
+  width: 100%;
+  border-spacing: 0;
+  margin-bottom: 50px;
+  line-height: 1.2;
+}
+
+.kvalitetsregister thead {
+  box-shadow: 0 4px 5px -1px #00263d;
+}
+.kvalitetsregister thead th {
+  font-size: 0.9rem;
+  background-color: #00263d;
+  color: white;
+  height: 50px;
+  position: sticky;
+  z-index: 1;
+  position: -webkit-sticky;
+}
+
+.kvalitetsregister h1 {
+  font-weight: 500;
+  line-height: normal;
+}
+
+.kvalitetsregister h3 {
+  font-weight: 500;
+}
+.kvalitetsregister tbody tr {
+  box-shadow: 0 4px 5px -1px #dcdcdc;
+}
+
+.kvalitetsregister table {
+  border-bottom: 1rem solid #00263d;
+  border-radius: 0.5rem;
+}
+
+/******media upto 768*****/
+
+@media All and (max-width: 768px) {
+  .kvalitetsregister {
+    font-size: 13px;
+  }
+}
+
+/******media  768 - 992*****/
+
+@media All and (min-width: 769px) and (max-width: 992px) {
+  .kvalitetsregister {
+    font-size: 14px;
+  }
+}

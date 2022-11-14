@@ -29,12 +29,6 @@ context("Push some front page buttons", () => {
     cy.get('[data-testid="menuAtlasLink1"]').click(); // Enter an english atlas
     cy.get('[data-testid="mainMenu"]').should("not.exist"); // Menu gone after click
     cy.url({ timeout: 60000 }).should("include", "/en/v1/"); // English atlas is entered in english menu
-    // Too much problems with the next steps...
-    // "... failed because the element has been detached from the DOM"
-    // cy.get('[data-testid="buttonNo"]').click(); // Push norwegian button
-    // cy.get('[data-testid="v1/kvalitet"]', { timeout: 60000 }).should("exist"); // Wait for norwegian page to load
-    // cy.url().should("not.include", "/en/"); // Not English anymore
-    // cy.get("h1").contains("Likeverdige helsetjenester");
   });
 
   it("should push menu button", () => {
@@ -44,17 +38,7 @@ context("Push some front page buttons", () => {
 
     cy.get('[data-testid="menuAtlasLink1"]').click();
     cy.get('[data-testid="mainMenu"]').should("not.exist"); // Menu gone after click
-    cy.url({ timeout: 10000 }).should("include", "/v1");
-    cy.get('[data-testid="menuButton"]').click(); // Push menu button again
 
-    cy.get('[data-testid="menuAtlasLink2"]').click();
-    cy.url({ timeout: 10000 }).should("include", "/v2"); // Må vente en stund før neste atlas dukker opp
-    cy.get('[data-testid="mainMenu"]').should("not.exist"); // Menu gone after click
-
-    cy.get('[data-testid="menuButton"]').click(); // Push menu button again
-    cy.get('[data-testid="mainMenu"]').should("exist"); // Menu exist
-    cy.get('[data-testid="closeBtn"]').click(); // exit button
-    cy.get('[data-testid="mainMenu"]').should("not.exist"); // Menu gone after click
     cy.get('[data-testid="menuButton"]').click(); // Push menu button again
     cy.get('[data-testid="mainMenu"]').should("exist"); // Menu exist
     cy.get('[data-testid="menuButton"]').type("{esc}"); // click Esc to exit menu

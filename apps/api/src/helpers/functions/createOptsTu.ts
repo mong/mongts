@@ -1,4 +1,4 @@
-import { OptsTu, TuName } from "../../models/data/unitNames";
+import { OptsTu, TuName } from "types";
 
 export const createOptsTu = (
   distinctUnitNames: { unit_name: string }[],

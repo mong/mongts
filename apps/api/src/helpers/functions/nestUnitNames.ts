@@ -1,8 +1,4 @@
-import {
-  TuName,
-  NestedTreatmentUnitName,
-  OptsTu,
-} from "../../models/data/unitNames";
+import { TuName, NestedTreatmentUnitName, OptsTu } from "types";
 
 export const nestTuNames = (
   tu_names: TuName[],

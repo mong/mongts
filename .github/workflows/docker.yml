@@ -36,6 +36,8 @@ jobs:
           echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_QA }}" >> $GITHUB_ENV
       - name: Check out the repo
         uses: actions/checkout@v3
+      - run: yarn install
+      - run: yarn workspace api run build
       - name: Lint Dockerfile
         uses: hadolint/hadolint-action@v2.1.0
         with:
