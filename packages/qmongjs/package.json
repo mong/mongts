@@ -4,6 +4,8 @@
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "scripts": {
+    "test": "yarn run test:base --watchAll=false --coverage",
+    "test:base": "react-scripts test",
     "lint": "eslint --ignore-path .gitignore --ext js,ts,tsx src",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
     "format": "yarn run prettier --write",
@@ -17,8 +19,12 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/d3": "7.4.0",
     "@types/d3-format": "3.0.1",
+    "@types/jest": "^29.2.2",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-select": "5.0.1",
@@ -26,9 +32,10 @@
     "eslint": "8.26.0",
     "lint-staged": "13.0.3",
     "msw": "0.48.1",
+    "next-router-mock": "^0.8.0",
     "prettier": "2.7.1",
     "react-markdown": "8.0.3",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "remark-gfm": "3.0.1",
     "typedoc": "0.23.20",
     "typescript": "4.8.3"
@@ -47,5 +54,22 @@
     "react-select": "5.6.0",
     "resize-observer-polyfill": "1.5.1",
     "use-query-params": "^2.1.1"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "statements": 3,
+        "branches": 4,
+        "functions": 1,
+        "lines": 3
+      }
+    },
+    "transformIgnorePatterns": [
+      "<rootDir>/../../node_modules/remark-gfm/"
+    ],
+    "moduleNameMapper": {
+      "d3": "<rootDir>/../../node_modules/d3/dist/d3.min.js",
+      "react-markdown": "<rootDir>/../../node_modules/react-markdown/react-markdown.min.js"
+    }
   }
 }
