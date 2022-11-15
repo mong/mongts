@@ -1,4 +1,6 @@
-const description = [
+import { Description } from "types";
+
+const description: Description[] = [
   {
     id: "barnediabetes_hba1c_ge_9",
     dg_id: "dummy_dg",
@@ -19,6 +21,7 @@ const description = [
     sformat: ",.0%",
     max_value: null,
     min_value: null,
+    measure_unit: null,
   },
   {
     id: "barnediabetes_hba1c_lt_7",
@@ -40,10 +43,11 @@ const description = [
     sformat: ",.0%",
     max_value: null,
     min_value: null,
+    measure_unit: null,
   },
 ];
 
-export const descriptionData = [
+export const descriptionData: Description[] = [
   {
     id: "noric_bilde_diag",
     dg_id: "noric_dummy_dg",
