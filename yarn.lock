@@ -6696,13 +6696,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ci-info@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "ci-info@npm:2.0.0"
-  checksum: 3b374666a85ea3ca43fa49aa3a048d21c9b475c96eb13c133505d2324e7ae5efd6a454f41efe46a152269e9b6a00c9edbe63ec7fa1921957165aae16625acd67
-  languageName: node
-  linkType: hard
-
 "ci-info@npm:^3.2.0":
   version: 3.5.0
   resolution: "ci-info@npm:3.5.0"
@@ -11425,30 +11418,6 @@ __metadata:
   version: 1.2.7
   resolution: "is-callable@npm:1.2.7"
   checksum: 61fd57d03b0d984e2ed3720fb1c7a897827ea174bd44402878e059542ea8c4aeedee0ea0985998aa5cc2736b2fa6e271c08587addb5b3959ac52cf665173d1ac
-  languageName: node
-  linkType: hard
-
-"is-ci-cli@npm:^2.2.0":
-  version: 2.2.0
-  resolution: "is-ci-cli@npm:2.2.0"
-  dependencies:
-    cross-spawn: ^7.0.0
-    is-ci: ^2.0.0
-  bin:
-    is-ci: cli.js
-    is-ci-cli: cli.js
-  checksum: b209eec486bb0c136d9821f2bca2ef5f6f6f31301e5ea730b25fa512f5332126037e8d9aa10e2bad142f5c7fcba01ee754cb64a0032a6f39f827e61e0876a7f3
-  languageName: node
-  linkType: hard
-
-"is-ci@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "is-ci@npm:2.0.0"
-  dependencies:
-    ci-info: ^2.0.0
-  bin:
-    is-ci: bin.js
-  checksum: 77b869057510f3efa439bbb36e9be429d53b3f51abd4776eeea79ab3b221337fe1753d1e50058a9e2c650d38246108beffb15ccfd443929d77748d8c0cc90144
   languageName: node
   linkType: hard
 
@@ -17376,7 +17345,6 @@ __metadata:
     d3: 7.6.1
     d3-format: 3.1.0
     eslint: 8.26.0
-    is-ci-cli: ^2.2.0
     lint-staged: 13.0.3
     msw: 0.48.1
     next: 13.0.3
