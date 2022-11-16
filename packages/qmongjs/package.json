@@ -12,32 +12,25 @@
     "check-format": "yarn run prettier --check",
     "check-types": "tsc --noEmit"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^14.4.3",
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/react": "13.4.0",
+    "@testing-library/user-event": "14.4.3",
     "@types/d3": "7.4.0",
     "@types/d3-format": "3.0.1",
-    "@types/jest": "^29.2.2",
-    "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-select": "5.0.1",
-    "babel-plugin-istanbul": "6.1.1",
+    "@typescript-eslint/eslint-plugin": "5.43.0",
+    "@typescript-eslint/parser": "5.43.0",
     "eslint": "8.26.0",
-    "lint-staged": "13.0.3",
-    "msw": "0.48.2",
-    "next-router-mock": "^0.8.0",
+    "next-query-params": "4.0.0",
+    "next-router-mock": "0.8.0",
     "prettier": "2.7.1",
+    "react-dom": "18.2.0",
     "react-markdown": "8.0.3",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "5.0.1",
     "remark-gfm": "3.0.1",
-    "typedoc": "0.23.21",
+    "types": "*",
     "typescript": "4.8.3"
   },
   "dependencies": {
