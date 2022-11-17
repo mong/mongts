@@ -11,6 +11,7 @@ import {
   customFormat,
   customFormatEng,
 } from "../../helpers/functions/localFormater";
+import { useRouter } from "next/router";
 
 type DataTableProps<Data, Headers extends string & Partial<keyof Data>> = {
   caption: string;
@@ -34,6 +35,10 @@ export const DataTable = <
   headers,
   lang,
 }: DataTableProps<Data, TableHeaders>) => {
+  // Pick out bohf query from the url
+  const router = useRouter();
+  const selected_bohf = router.query.bohf;
+
   const [order, setOrder] = React.useState<"asc" | "desc">("desc");
   const [orderBy, setOrderBy] = React.useState(headers[1].id);
   const createSortHandler = (property) => (event) => {
@@ -78,7 +83,13 @@ export const DataTable = <
               )
             )
             .map((row, i) => (
-              <TableRow hover key={`${row.bohf}${i}`}>
+              <TableRow
+                hover
+                key={`${row.bohf}${i}`}
+                selected={
+                  selected_bohf && selected_bohf.includes(String(row.bohf))
+                }
+              >
                 {headers.map((cell, ind) => (
                   <TableCell
                     key={`${row.bohf}${i}${ind}`}
