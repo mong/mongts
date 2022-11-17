@@ -265,36 +265,27 @@ export const Barchart = <
                         cursor: bohfName != "Norge" ? "pointer" : "auto",
                       }}
                       onClick={() => {
+                        // Add HF to query param if clicked on.
+                        // Remove HF from query param if it already is selected.
                         // Only possible to click on HF, and not on Norge
                         bohfName != "Norge"
-                          ? selected_bohf.includes(bohfName)
-                            ? // Remove HF if it is already selected
-                              router.replace(
-                                {
-                                  query: {
-                                    ...router.query,
-                                    bohf: selected_bohf.filter(
-                                      (d) => d != bohfName
-                                    ),
-                                  },
+                          ? router.replace(
+                              {
+                                query: {
+                                  ...router.query,
+                                  bohf:
+                                    selected_bohf[0] === undefined
+                                      ? bohfName
+                                      : selected_bohf.includes(bohfName)
+                                      ? selected_bohf.filter(
+                                          (d) => d != bohfName
+                                        )
+                                      : selected_bohf.concat(bohfName),
                                 },
-                                undefined,
-                                { shallow: true }
-                              )
-                            : // Add HF if it is not selected already
-                              router.replace(
-                                {
-                                  query: {
-                                    ...router.query,
-                                    bohf:
-                                      selected_bohf[0] === undefined
-                                        ? bohfName
-                                        : selected_bohf.concat(bohfName),
-                                  },
-                                },
-                                undefined,
-                                { shallow: true }
-                              )
+                              },
+                              undefined,
+                              { shallow: true }
+                            )
                           : undefined;
                       }}
                     />
