@@ -80,7 +80,7 @@ export const Abacus = <
 }: AbacusProps<Data, X, ColorBy>) => {
   // Pick out bohf query from the url
   const router = useRouter();
-  const selected_bohf = router.query.bohf;
+  const selected_bohf = [router.query.bohf].flat();
 
   // Move Norge to the end of data to plot,
   // so they will be on top of the other circles.
@@ -158,14 +158,14 @@ export const Abacus = <
               r={circleRadiusDefalt}
               cx={xScale(d[x])}
               fill={
-                selected_bohf && selected_bohf.includes(String(d["bohf"]))
+                selected_bohf.includes(String(d["bohf"]))
                   ? colors[2]
                   : d["bohf"] === "Norge"
                   ? colors[1]
                   : colors[0]
               }
               data-testid={
-                selected_bohf && selected_bohf.includes(String(d["bohf"]))
+                selected_bohf.includes(String(d["bohf"]))
                   ? `circle_${selected_bohf}`
                   : d["bohf"] === "Norge"
                   ? "circle_norway"
@@ -193,7 +193,7 @@ export const Abacus = <
             </div>
             {nationalLabel[lang]}
           </li>
-          {selected_bohf ? (
+          {selected_bohf[0] != undefined ? (
             <li key={"selected_bohf"} className={classNames.legendLI}>
               <>
                 <div className={classNames.legendAnnualVar}>
@@ -202,7 +202,7 @@ export const Abacus = <
                   </svg>
                 </div>
                 {selected_bohf.length === 1
-                  ? { selected_bohf }
+                  ? selected_bohf[0]
                   : lang === "en"
                   ? `Selected ${valuesLabel[lang].toLowerCase()}`
                   : `Valgte ${valuesLabel[lang].toLowerCase()}`}
