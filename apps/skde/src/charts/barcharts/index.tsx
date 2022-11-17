@@ -127,7 +127,7 @@ export const Barchart = <
 
   // Pick out bohf query from the url
   const router = useRouter();
-  const selected_bohf = router.query.bohf;
+  const selected_bohf = [router.query.bohf].flat();
 
   //used to find max values
   const annualValues = annualVar
@@ -257,7 +257,7 @@ export const Barchart = <
                           : colorScale(d["key"])
                       }
                       data-testid={
-                        selected_bohf.includes(bohfName)
+                        selected_bohf && selected_bohf.includes(bohfName)
                           ? `rect_${bohfName}_selected`
                           : `rect_${bohfName}_unselected`
                       }
@@ -265,20 +265,36 @@ export const Barchart = <
                         cursor: bohfName != "Norge" ? "pointer" : "auto",
                       }}
                       onClick={() => {
+                        // Only possible to click on HF, and not on Norge
                         bohfName != "Norge"
-                          ? router.replace(
-                              {
-                                query: {
-                                  ...router.query,
-                                  bohf:
-                                    bohfName === selected_bohf
-                                      ? undefined
-                                      : bohfName,
+                          ? selected_bohf.includes(bohfName)
+                            ? // Remove HF if it is already selected
+                              router.replace(
+                                {
+                                  query: {
+                                    ...router.query,
+                                    bohf: selected_bohf.filter(
+                                      (d) => d != bohfName
+                                    ),
+                                  },
                                 },
-                              },
-                              undefined,
-                              { shallow: true }
-                            )
+                                undefined,
+                                { shallow: true }
+                              )
+                            : // Add HF if it is not selected already
+                              router.replace(
+                                {
+                                  query: {
+                                    ...router.query,
+                                    bohf:
+                                      selected_bohf[0] === undefined
+                                        ? bohfName
+                                        : selected_bohf.concat(bohfName),
+                                  },
+                                },
+                                undefined,
+                                { shallow: true }
+                              )
                           : undefined;
                       }}
                     />
