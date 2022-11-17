@@ -135,7 +135,7 @@ export const Map: React.FC<MapProps> = ({
                 key={`map-feature-${i}`}
                 d={pathGenerator(d.geometry)}
                 fill={
-                  hf === selected_bohf
+                  selected_bohf && selected_bohf.includes(String(hf))
                     ? abacusColors[2]
                     : val
                     ? colorScale(val)
