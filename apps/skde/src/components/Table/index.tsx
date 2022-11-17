@@ -37,7 +37,7 @@ export const DataTable = <
 }: DataTableProps<Data, TableHeaders>) => {
   // Pick out bohf query from the url
   const router = useRouter();
-  const selected_bohf = router.query.bohf;
+  const selected_bohf = [router.query.bohf].flat();
 
   const [order, setOrder] = React.useState<"asc" | "desc">("desc");
   const [orderBy, setOrderBy] = React.useState(headers[1].id);
@@ -86,9 +86,8 @@ export const DataTable = <
               <TableRow
                 hover
                 key={`${row.bohf}${i}`}
-                selected={
-                  selected_bohf && selected_bohf.includes(String(row.bohf))
-                }
+                selected={selected_bohf.includes(String(row.bohf))}
+                data-testid={`tablerow_${row.bohf}`}
               >
                 {headers.map((cell, ind) => (
                   <TableCell

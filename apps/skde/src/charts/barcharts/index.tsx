@@ -127,7 +127,7 @@ export const Barchart = <
 
   // Pick out bohf query from the url
   const router = useRouter();
-  const selected_bohf = router.query.bohf;
+  const selected_bohf = [router.query.bohf].flat();
 
   //used to find max values
   const annualValues = annualVar
@@ -244,7 +244,7 @@ export const Barchart = <
                       width={xScale(Math.abs(barData[0] - barData[1]))}
                       height={yScale.bandwidth()}
                       fill={
-                        selected_bohf && bohfName === selected_bohf
+                        selected_bohf.includes(bohfName)
                           ? x.length === 1
                             ? selectedColors[0]
                             : selectedColorScale(d["key"])
@@ -257,7 +257,7 @@ export const Barchart = <
                           : colorScale(d["key"])
                       }
                       data-testid={
-                        bohfName === selected_bohf
+                        selected_bohf.includes(bohfName)
                           ? `rect_${bohfName}_selected`
                           : `rect_${bohfName}_unselected`
                       }
@@ -265,15 +265,22 @@ export const Barchart = <
                         cursor: bohfName != "Norge" ? "pointer" : "auto",
                       }}
                       onClick={() => {
+                        // Add HF to query param if clicked on.
+                        // Remove HF from query param if it already is selected.
+                        // Only possible to click on HF, and not on Norge
                         bohfName != "Norge"
                           ? router.replace(
                               {
                                 query: {
                                   ...router.query,
                                   bohf:
-                                    bohfName === selected_bohf
-                                      ? undefined
-                                      : bohfName,
+                                    selected_bohf[0] === undefined
+                                      ? bohfName
+                                      : selected_bohf.includes(bohfName)
+                                      ? selected_bohf.filter(
+                                          (d) => d != bohfName
+                                        )
+                                      : selected_bohf.concat(bohfName),
                                 },
                               },
                               undefined,
