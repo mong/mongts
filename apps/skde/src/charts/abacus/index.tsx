@@ -87,14 +87,13 @@ export const Abacus = <
   var figData = data
     .filter((d) => d["bohf"] != "Norge")
     .concat(data.filter((d) => d["bohf"] === "Norge")[0]);
+
   if (selected_bohf) {
     // Move selected bohf to the end of data to plot (if it exists in the data),
     // so they will be on top of the other circles.
-    if (figData.filter((d) => d["bohf"] === selected_bohf)[0]) {
-      figData = figData
-        .filter((d) => d["bohf"] != selected_bohf)
-        .concat(figData.filter((d) => d["bohf"] === selected_bohf)[0]);
-    }
+    figData = figData
+      .filter((d) => !selected_bohf.includes(String(d["bohf"])))
+      .concat(figData.filter((d) => selected_bohf.includes(String(d["bohf"]))));
   }
 
   const values = [...figData.flatMap((dt) => parseFloat(dt[x.toString()]))];
@@ -159,14 +158,14 @@ export const Abacus = <
               r={circleRadiusDefalt}
               cx={xScale(d[x])}
               fill={
-                selected_bohf && d["bohf"] === selected_bohf
+                selected_bohf && selected_bohf.includes(String(d["bohf"]))
                   ? colors[2]
                   : d["bohf"] === "Norge"
                   ? colors[1]
                   : colors[0]
               }
               data-testid={
-                selected_bohf && d["bohf"] === selected_bohf
+                selected_bohf && selected_bohf.includes(String(d["bohf"]))
                   ? `circle_${selected_bohf}`
                   : d["bohf"] === "Norge"
                   ? "circle_norway"
@@ -196,12 +195,18 @@ export const Abacus = <
           </li>
           {selected_bohf ? (
             <li key={"selected_bohf"} className={classNames.legendLI}>
-              <div className={classNames.legendAnnualVar}>
-                <svg width="20px" height="20px">
-                  <circle r={7} cx={10} cy={10} fill={colors[2]} />
-                </svg>
-              </div>
-              {selected_bohf}
+              <>
+                <div className={classNames.legendAnnualVar}>
+                  <svg width="20px" height="20px">
+                    <circle r={7} cx={10} cy={10} fill={colors[2]} />
+                  </svg>
+                </div>
+                {selected_bohf.length === 1
+                  ? { selected_bohf }
+                  : lang === "en"
+                  ? `Selected ${valuesLabel[lang].toLowerCase()}`
+                  : `Valgte ${valuesLabel[lang].toLowerCase()}`}
+              </>
             </li>
           ) : (
             <></>
