@@ -140,6 +140,10 @@ context("v2 atlas", () => {
     cy.get('[data-testid="maphf_UNN"]')
       .get('[fill="rgba(171, 108, 166, 0.75)"]')
       .should("exist");
+    cy.get('[data-testid="maphf_Telemark"]').click();
+    cy.get('[data-testid="maphf_Telemark"]')
+      .get('[fill="rgba(3, 63, 133, 0.8)"]')
+      .should("exist");
   });
 
   it("Test english test atlas", () => {
