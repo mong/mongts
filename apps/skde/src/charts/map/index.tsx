@@ -145,6 +145,25 @@ export const Map: React.FC<MapProps> = ({
                 strokeWidth={0.4}
                 className={i + ""}
                 data-testid={`maphf_${hf}`}
+                onClick={() => {
+                  // Add HF to query param if clicked on.
+                  // Remove HF from query param if it already is selected.
+                  router.replace(
+                    {
+                      query: {
+                        ...router.query,
+                        bohf:
+                          selected_bohf[0] === undefined
+                            ? hf
+                            : selected_bohf.includes(hf)
+                            ? selected_bohf.filter((d) => d != hf)
+                            : selected_bohf.concat(hf),
+                      },
+                    },
+                    undefined,
+                    { shallow: true }
+                  );
+                }}
               />
             );
           })}
