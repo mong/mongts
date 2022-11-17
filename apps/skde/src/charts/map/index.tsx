@@ -4,7 +4,8 @@ import {
   customFormat,
   customFormatEng,
 } from "../../helpers/functions/localFormater";
-import { mapColors } from "../colors";
+import { mapColors, abacusColors } from "../colors";
+import { useRouter } from "next/router";
 
 type FeatureShape = {
   type: "Feature";
@@ -75,6 +76,10 @@ export const Map: React.FC<MapProps> = ({
   format,
   lang,
 }) => {
+  // Pick out bohf query from the url
+  const router = useRouter();
+  const selected_bohf = router.query.bohf;
+
   const color = mapColors;
   const width = 1000;
   const height = 1000;
@@ -129,7 +134,13 @@ export const Map: React.FC<MapProps> = ({
               <path
                 key={`map-feature-${i}`}
                 d={pathGenerator(d.geometry)}
-                fill={val ? colorScale(val) : "none"}
+                fill={
+                  hf === selected_bohf
+                    ? abacusColors[2]
+                    : val
+                    ? colorScale(val)
+                    : "none"
+                }
                 stroke={"black"}
                 strokeWidth={0.4}
                 className={i + ""}
