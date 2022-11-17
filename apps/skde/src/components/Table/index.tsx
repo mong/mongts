@@ -87,6 +87,7 @@ export const DataTable = <
                 hover
                 key={`${row.bohf}${i}`}
                 selected={selected_bohf.includes(String(row.bohf))}
+                data-testid={`tablerow_${row.bohf}`}
               >
                 {headers.map((cell, ind) => (
                   <TableCell

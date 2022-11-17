@@ -144,6 +144,7 @@ export const Map: React.FC<MapProps> = ({
                 stroke={"black"}
                 strokeWidth={0.4}
                 className={i + ""}
+                data-testid={`maphf_${hf}`}
               />
             );
           })}

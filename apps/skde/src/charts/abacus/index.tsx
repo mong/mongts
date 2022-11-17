@@ -166,10 +166,8 @@ export const Abacus = <
               }
               data-testid={
                 selected_bohf.includes(String(d["bohf"]))
-                  ? `circle_${selected_bohf}`
-                  : d["bohf"] === "Norge"
-                  ? "circle_norway"
-                  : "circle_unselected"
+                  ? `circle_${d["bohf"]}_selected`
+                  : `circle_${d["bohf"]}_unselected`
               }
             />
           ))}
