@@ -78,7 +78,7 @@ export const Map: React.FC<MapProps> = ({
 }) => {
   // Pick out bohf query from the url
   const router = useRouter();
-  const selected_bohf = router.query.bohf;
+  const selected_bohf = [router.query.bohf].flat();
 
   const color = mapColors;
   const width = 1000;
@@ -135,7 +135,7 @@ export const Map: React.FC<MapProps> = ({
                 key={`map-feature-${i}`}
                 d={pathGenerator(d.geometry)}
                 fill={
-                  selected_bohf && selected_bohf.includes(String(hf))
+                  selected_bohf.includes(String(hf))
                     ? abacusColors[2]
                     : val
                     ? colorScale(val)
