@@ -244,7 +244,7 @@ export const Barchart = <
                       width={xScale(Math.abs(barData[0] - barData[1]))}
                       height={yScale.bandwidth()}
                       fill={
-                        selected_bohf && bohfName === selected_bohf
+                        selected_bohf && selected_bohf.includes(bohfName)
                           ? x.length === 1
                             ? selectedColors[0]
                             : selectedColorScale(d["key"])
@@ -257,7 +257,7 @@ export const Barchart = <
                           : colorScale(d["key"])
                       }
                       data-testid={
-                        bohfName === selected_bohf
+                        selected_bohf.includes(bohfName)
                           ? `rect_${bohfName}_selected`
                           : `rect_${bohfName}_unselected`
                       }
