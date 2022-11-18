@@ -3,7 +3,9 @@
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": ["andel_pct_sm"],
+      "x": [
+        "andel_pct_sm"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Andel pasienter med minst en sykemelding",
@@ -13,10 +15,22 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": ["andel_pct_sm2019", "andel_pct_sm2020", "andel_pct_sm2021"],
+      "annualVar": [
+        "andel_pct_sm2019",
+        "andel_pct_sm2020",
+        "andel_pct_sm2021"
+      ],
       "annualVarLabels": {
-        "nb": ["2019", "2020", "2021"],
-        "en": ["2019", "2020", "2021"]
+        "nb": [
+          "2019",
+          "2020",
+          "2021"
+        ],
+        "en": [
+          "2019",
+          "2020",
+          "2021"
+        ]
       },
       "format": ",.0%"
     },
