@@ -56,3 +56,19 @@ yarn install
 yarn export
 npx serve apps/skde/out
 ```
+
+### Run CMS locally
+
+Start up `netlify-cms-proxy-server`:
+
+```bash
+yarn run cms-server
+```
+
+Run the SKDE web site (in another terminal):
+
+```bash
+yarn run dev
+```
+
+Open the admin page: http://localhost:3000/helseatlas/admin
