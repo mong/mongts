@@ -145,6 +145,9 @@ export const Map: React.FC<MapProps> = ({
                 strokeWidth={0.4}
                 className={i + ""}
                 data-testid={`maphf_${hf}`}
+                style={{
+                  cursor: "pointer",
+                }}
                 onClick={() => {
                   // Add HF to query param if clicked on.
                   // Remove HF from query param if it already is selected.
