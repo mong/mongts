@@ -3,9 +3,7 @@
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "rateSnitt"
-      ],
+      "x": ["rateSnitt"],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall med epilepsi pr. 1 000 innbyggere",
@@ -15,43 +13,23 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "rate2019",
-        "rate2020",
-        "rate2021"
-      ],
+      "annualVar": ["rate2019", "rate2020", "rate2021"],
       "annualVarLabels": {
-        "nb": [
-          "2019",
-          "2020",
-          "2021"
-        ],
-        "en": [
-          "2019",
-          "2020",
-          "2021"
-        ]
+        "nb": ["2019", "2020", "2021"],
+        "en": ["2019", "2020", "2021"]
       }
     },
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "spes_rate",
-        "overlapp_rate",
-        "prim_rate"
-      ],
+      "x": ["spes_rate", "overlapp_rate", "prim_rate"],
       "xLegend": {
         "nb": [
           "Kun spes.helsetj.",
           "Allmennlege og spes.helsetj.",
           "Kun allmennlegetj."
         ],
-        "en": [
-          "Specialist only",
-          "GP and specialist",
-          "GP only"
-        ]
+        "en": ["Specialist only", "GP and specialist", "GP only"]
       },
       "y": "bohf",
       "xLabel": {
