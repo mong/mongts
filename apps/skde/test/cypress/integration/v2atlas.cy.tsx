@@ -103,21 +103,47 @@ context("v2 atlas", () => {
   });
 
   it("Test select HF", () => {
-    cy.get('[data-testid="circle_UNN"]').should("not.exist");
+    cy.get('[data-testid="circle_UNN_selected"]').should("not.exist");
     cy.get('[data-testid="rect_UNN_selected"]').should("not.exist");
     cy.visit("/helseatlas/v2/test_atlas?bohf=UNN");
-    cy.get('[data-testid="circle_UNN"]').should("exist");
-    cy.get('[data-testid="circle_UNN"]').should("be.visible");
+    cy.get('[data-testid="circle_UNN_selected"]').should("exist");
+    cy.get('[data-testid="circle_UNN_selected"]').should("be.visible");
     cy.get('[data-testid="rect_UNN_selected"]').should("exist");
     cy.get('[data-testid="rect_UNN_selected"]').should("not.be.visible");
-    cy.get('[data-testid="circle_UNN"]').click();
+    cy.get('[data-testid="circle_UNN_selected"]').click();
     cy.get('[data-testid="rect_UNN_selected"]').should("be.visible");
     cy.get('[data-testid="rect_UNN_selected"]').click();
-    cy.get('[data-testid="circle_UNN"]').should("not.exist");
+    cy.get('[data-testid="circle_UNN_selected"]').should("not.exist");
     cy.get('[data-testid="rect_UNN_selected"]').should("not.exist");
     cy.get('[data-testid="rect_UNN_unselected"]').click();
     cy.get('[data-testid="rect_UNN_selected"]').should("exist");
-    cy.get('[data-testid="circle_UNN"]').should("exist");
+    cy.get('[data-testid="circle_UNN_selected"]').should("exist");
+    cy.get('[data-testid="circle_OUS_unselected"]').should("exist");
+    cy.get('[data-testid="rect_OUS_unselected"]').click();
+    cy.get('[data-testid="circle_UNN_selected"]').should("exist");
+    cy.get('[data-testid="circle_OUS_selected"]').should("exist");
+    cy.get('[data-testid="carouselbutton_2"]').click(); // Show the table
+    cy.get('[data-testid="tablerow_UNN"]').should("have.class", "Mui-selected");
+    cy.get('[data-testid="tablerow_OUS"]').should("have.class", "Mui-selected");
+    cy.get('[data-testid="tablerow_Telemark"]').should(
+      "not.have.class",
+      "Mui-selected"
+    );
+    cy.get('[data-testid="carouselbutton_3"]').click(); // Show the map
+    cy.get('[data-testid="maphf_UNN"]')
+      .get('[fill="rgba(3, 63, 133, 0.8)"]')
+      .should("exist");
+    cy.get('[data-testid="maphf_Telemark"]')
+      .get('[fill="rgba(171, 108, 166, 0.75)"]')
+      .should("exist");
+    cy.get('[data-testid="maphf_UNN"]').click();
+    cy.get('[data-testid="maphf_UNN"]')
+      .get('[fill="rgba(171, 108, 166, 0.75)"]')
+      .should("exist");
+    cy.get('[data-testid="maphf_Telemark"]').click();
+    cy.get('[data-testid="maphf_Telemark"]')
+      .get('[fill="rgba(3, 63, 133, 0.8)"]')
+      .should("exist");
   });
 
   it("Test english test atlas", () => {
@@ -125,7 +151,7 @@ context("v2 atlas", () => {
     cy.get('[data-testid="resultbox_expandButton"]').click(); // Open the result box
     cy.get('[data-testid="rect_UNN_unselected"]').click();
     cy.get('[data-testid="rect_UNN_selected"]').should("exist");
-    cy.get('[data-testid="circle_UNN"]').should("exist");
+    cy.get('[data-testid="circle_UNN_selected"]').should("exist");
     cy.get('[data-testid="carouselbutton_3"]').click(); // Show the map
     cy.get('[label="map"]').should("exist"); // Map exist
     cy.get('[data-testid="mapCaption"]').contains(
