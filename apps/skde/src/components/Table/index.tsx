@@ -122,6 +122,9 @@ export const DataTable = <
                     sx={{ paddingTop: "2px" }}
                     padding="none"
                     align={cell.typeVar === "number" ? "right" : "left"}
+                    style={{
+                      fontWeight: row.bohf === "Norge" ? "bolder" : "normal",
+                    }}
                   >
                     {cell.format
                       ? lang === "en"
