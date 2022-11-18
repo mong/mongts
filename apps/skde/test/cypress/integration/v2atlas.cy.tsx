@@ -129,6 +129,11 @@ context("v2 atlas", () => {
       "not.have.class",
       "Mui-selected"
     );
+    cy.get('[data-testid="tablerow_Telemark"]').click();
+    cy.get('[data-testid="tablerow_Telemark"]').should(
+      "have.class",
+      "Mui-selected"
+    );
     cy.get('[data-testid="carouselbutton_3"]').click(); // Show the map
     cy.get('[data-testid="maphf_UNN"]')
       .get('[fill="rgba(3, 63, 133, 0.8)"]')
