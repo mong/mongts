@@ -162,7 +162,8 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
                     label: "Karusell",
                     name: "data",
                     widget: "file",
-                    media_folder: "/apps/skde/public/helseatlas/data",
+                    media_folder:
+                      "/apps/skde/public/helseatlas/data/{{filename}}",
                     public_folder: "",
                     hint: "Datafil, i json-format, som inneholder definisjon av karusell",
                   },
