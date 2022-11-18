@@ -122,7 +122,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
           })
       )
     : [];
-  const mapDataPath = "public/helseatlas/data/kart_v1.geojson";
+  const mapDataPath = "public/helseatlas/data/kronikere.geojson";
   const mapData = JSON.parse(fs.readFileSync(mapDataPath, "utf-8"));
   const atlasData = fileData.reduce((result, data) => {
     const key: string = Object.keys(data)[0];
