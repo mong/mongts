@@ -3,9 +3,7 @@
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "rateSnitt"
-      ],
+      "x": ["rateSnitt"],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall konsultasjoner pr. 1 000 innbyggere",
@@ -15,40 +13,19 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "rate2019",
-        "rate2020",
-        "rate2021"
-      ],
+      "annualVar": ["rate2019", "rate2020", "rate2021"],
       "annualVarLabels": {
-        "nb": [
-          "2019",
-          "2020",
-          "2021"
-        ],
-        "en": [
-          "2019",
-          "2020",
-          "2021"
-        ]
+        "nb": ["2019", "2020", "2021"],
+        "en": ["2019", "2020", "2021"]
       }
     },
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "polikont_rate",
-        "primkont_rate"
-      ],
+      "x": ["polikont_rate", "primkont_rate"],
       "xLegend": {
-        "nb": [
-          "Spesialist",
-          "Fastlege/legevakt"
-        ],
-        "en": [
-          "Specialist",
-          "GP/On-call doctor"
-        ]
+        "nb": ["Spesialist", "Fastlege/legevakt"],
+        "en": ["Specialist", "GP/On-call doctor"]
       },
       "y": "bohf",
       "xLabel": {

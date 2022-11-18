@@ -3,9 +3,7 @@
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "rateSnitt"
-      ],
+      "x": ["rateSnitt"],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall spesialistkonsultasjoner (ekskl. Botulintoksin) pr. 1 000 innbyggere",
@@ -15,40 +13,19 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "rate2019",
-        "rate2020",
-        "rate2021"
-      ],
+      "annualVar": ["rate2019", "rate2020", "rate2021"],
       "annualVarLabels": {
-        "nb": [
-          "2019",
-          "2020",
-          "2021"
-        ],
-        "en": [
-          "2019",
-          "2020",
-          "2021"
-        ]
+        "nb": ["2019", "2020", "2021"],
+        "en": ["2019", "2020", "2021"]
       }
     },
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "off_rate",
-        "priv_rate"
-      ],
+      "x": ["off_rate", "priv_rate"],
       "xLegend": {
-        "nb": [
-          "Sykehus",
-          "Avtalespesialist"
-        ],
-        "en": [
-          "Public hospital",
-          "Private practice"
-        ]
+        "nb": ["Sykehus", "Avtalespesialist"],
+        "en": ["Public hospital", "Private practice"]
       },
       "y": "bohf",
       "xLabel": {

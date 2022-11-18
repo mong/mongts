@@ -3,9 +3,7 @@
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "rateSnitt"
-      ],
+      "x": ["rateSnitt"],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall allmennlegekonsultasjoner pr. 1 000 innbyggere",
@@ -15,40 +13,19 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "rate2019",
-        "rate2020",
-        "rate2021"
-      ],
+      "annualVar": ["rate2019", "rate2020", "rate2021"],
       "annualVarLabels": {
-        "nb": [
-          "2019",
-          "2020",
-          "2021"
-        ],
-        "en": [
-          "2019",
-          "2020",
-          "2021"
-        ]
+        "nb": ["2019", "2020", "2021"],
+        "en": ["2019", "2020", "2021"]
       }
     },
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "FL_rate",
-        "LV_rate"
-      ],
+      "x": ["FL_rate", "LV_rate"],
       "xLegend": {
-        "nb": [
-          "Fastlege",
-          "Legevakt"
-        ],
-        "en": [
-          "Family doctor",
-          "On-call doctor"
-        ]
+        "nb": ["Fastlege", "Legevakt"],
+        "en": ["Family doctor", "On-call doctor"]
       },
       "y": "bohf",
       "xLabel": {
