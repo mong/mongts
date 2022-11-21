@@ -8,7 +8,7 @@ import { OrderedList } from "../../toc/orderedlist";
 import { ListItem } from "../../toc/listitem";
 import { DataContext } from "../../Context";
 
-interface AtlasPageProps {
+export interface AtlasPageProps {
   content: string;
   atlasData: AtlasData[];
   mapData: any;

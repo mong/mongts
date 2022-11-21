@@ -2,14 +2,9 @@ import path from "path";
 import { GetStaticProps, GetStaticPaths } from "next";
 import fs from "fs";
 import matter from "gray-matter";
-import AtlasPage from "../../../../../src/components/Atlas/v2";
-import { AtlasData } from "../../../../../src/types";
-
-interface AtlasPageProps {
-  content: string;
-  atlasData: AtlasData[];
-  mapData: any;
-}
+import AtlasPage, {
+  AtlasPageProps,
+} from "../../../../../src/components/Atlas/v2";
 
 const Page: React.FC<AtlasPageProps> = ({ content, atlasData, mapData }) => {
   return (
