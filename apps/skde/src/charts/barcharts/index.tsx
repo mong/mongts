@@ -12,6 +12,7 @@ import {
   customFormat,
   customFormatEng,
 } from "../../helpers/functions/localFormater";
+import { nationalLabelList } from "../../app_config";
 
 import { AnnualVariation } from "./AnnualVariation";
 import { mainBarColors, nationBarColors, selectedBarColors } from "../colors";
@@ -248,7 +249,7 @@ export const Barchart = <
                           ? x.length === 1
                             ? selectedColors[0]
                             : selectedColorScale(d["key"])
-                          : bohfName === "Norge"
+                          : nationalLabelList.includes(bohfName)
                           ? x.length === 1
                             ? nationColors[0]
                             : nationColorScale(d["key"])
@@ -262,13 +263,15 @@ export const Barchart = <
                           : `rect_${bohfName}_unselected`
                       }
                       style={{
-                        cursor: bohfName != "Norge" ? "pointer" : "auto",
+                        cursor: nationalLabelList.includes(bohfName)
+                          ? "auto"
+                          : "pointer",
                       }}
                       onClick={() => {
                         // Add HF to query param if clicked on.
                         // Remove HF from query param if it already is selected.
-                        // Only possible to click on HF, and not on Norge
-                        bohfName != "Norge"
+                        // Only possible to click on HF, and not on national value
+                        !nationalLabelList.includes(bohfName)
                           ? router.replace(
                               {
                                 query: {

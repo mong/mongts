@@ -7,6 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import { getOrderComparator } from "../../helpers/functions/dataTransformation";
+import { nationalLabelList } from "../../app_config";
 import {
   customFormat,
   customFormatEng,
@@ -89,13 +90,15 @@ export const DataTable = <
                 selected={selected_bohf.includes(String(row.bohf))}
                 data-testid={`tablerow_${row.bohf}`}
                 style={{
-                  cursor: row.bohf != "Norge" ? "pointer" : "auto",
+                  cursor: nationalLabelList.includes(String(row.bohf))
+                    ? "auto"
+                    : "pointer",
                 }}
                 onClick={() => {
                   // Add HF to query param if clicked on.
                   // Remove HF from query param if it already is selected.
-                  // Only possible to click on HF, and not on Norge
-                  row.bohf != "Norge"
+                  // Only possible to click on HF, and not on national value
+                  !nationalLabelList.includes(String(row.bohf))
                     ? router.replace(
                         {
                           query: {
@@ -123,7 +126,9 @@ export const DataTable = <
                     padding="none"
                     align={cell.typeVar === "number" ? "right" : "left"}
                     style={{
-                      fontWeight: row.bohf === "Norge" ? "bolder" : "normal",
+                      fontWeight: nationalLabelList.includes(String(row.bohf))
+                        ? "bolder"
+                        : "normal",
                     }}
                   >
                     {cell.format

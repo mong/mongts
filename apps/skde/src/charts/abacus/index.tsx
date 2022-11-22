@@ -9,6 +9,7 @@ import {
 } from "../../helpers/functions/localFormater";
 import { useRouter } from "next/router";
 import { abacusColors } from "../colors";
+import { nationalLabelList } from "../../app_config";
 
 type AbacusData<Data, X extends keyof Data, ColorBy extends keyof Data> = {
   [k in X]: number;
@@ -82,11 +83,23 @@ export const Abacus = <
   const router = useRouter();
   const selected_bohf = [router.query.bohf].flat();
 
-  // Move Norge to the end of data to plot,
+  const valuesLabel = {
+    en: "Referral areas",
+    nb: "Opptaksområder",
+    nn: "Buområda",
+  };
+
+  const nationalLabel = {
+    en: "Norway",
+    nb: "Norge",
+    nn: "Noreg",
+  };
+
+  // Move national values to the end of data to plot,
   // so they will be on top of the other circles.
   var figData = data
-    .filter((d) => d["bohf"] != "Norge")
-    .concat(data.filter((d) => d["bohf"] === "Norge")[0]);
+    .filter((d) => !nationalLabelList.includes(d["bohf"]))
+    .concat(data.filter((d) => nationalLabelList.includes(d["bohf"]))[0]);
 
   if (selected_bohf) {
     // Move selected bohf to the end of data to plot (if it exists in the data),
@@ -100,13 +113,6 @@ export const Abacus = <
   const xMaxVal = xMax ? xMax : max(values) * 1.1;
   const innerWidth = width - margin.left - margin.right;
   const colors = abacusColors;
-
-  const valuesLabel = {
-    en: "Referral areas",
-    nb: "Opptaksområder",
-    nn: "Buområda",
-  };
-  const nationalLabel = { en: "Norway", nb: "Norge", nn: "Noreg" };
 
   const xScale = scaleLinear<number>({
     domain: [xMin, xMaxVal],
@@ -160,7 +166,7 @@ export const Abacus = <
               fill={
                 selected_bohf.includes(String(d["bohf"]))
                   ? colors[2]
-                  : d["bohf"] === "Norge"
+                  : nationalLabelList.includes(String(d["bohf"]))
                   ? colors[1]
                   : colors[0]
               }
