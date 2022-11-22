@@ -83,18 +83,6 @@ export const Abacus = <
   const router = useRouter();
   const selected_bohf = [router.query.bohf].flat();
 
-  const valuesLabel = {
-    en: "Referral areas",
-    nb: "Opptaksområder",
-    nn: "Buområda",
-  };
-
-  const nationalLabel = {
-    en: "Norway",
-    nb: "Norge",
-    nn: "Noreg",
-  };
-
   // Move national values to the end of data to plot,
   // so they will be on top of the other circles.
   var figData = data
@@ -113,6 +101,13 @@ export const Abacus = <
   const xMaxVal = xMax ? xMax : max(values) * 1.1;
   const innerWidth = width - margin.left - margin.right;
   const colors = abacusColors;
+
+  const valuesLabel = {
+    en: "Referral areas",
+    nb: "Opptaksområder",
+    nn: "Buområda",
+  };
+  const nationalLabel = { en: "Norway", nb: "Norge", nn: "Noreg" };
 
   const xScale = scaleLinear<number>({
     domain: [xMin, xMaxVal],
