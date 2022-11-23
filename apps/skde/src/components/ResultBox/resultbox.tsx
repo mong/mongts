@@ -8,7 +8,7 @@ import { Carousel } from "../carousel";
 import { CarouselItem } from "../carousel/carouelitem";
 import { Barchart } from "../../charts/barcharts";
 import { Abacus } from "../../charts/abacus";
-import { AtlasData } from "../../types";
+import { AtlasData, BarchartTypes , TableTypes, MapTypes, DataTypes, DataProps } from "../../types";
 import classNames from "./resultbox.module.css";
 import { DataContext } from "../Context";
 import { Markdown } from "../Markdown";
@@ -53,6 +53,8 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
   const atlasData: { atlasData: any; mapData: MapData } =
     React.useContext(DataContext);
 
+//    console.log(atlasData.atlasData[carousel]);
+    
   const mapData = atlasData.mapData;
   const boxData: any =
     atlasData.atlasData[carousel] !== undefined
@@ -75,7 +77,8 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
     boxData !== undefined ? (
       <Carousel active={0} selection={selection} lang={lang}>
         {boxData
-          .map((bd, i, obj) => {
+          .map((bd: (BarchartTypes | TableTypes | MapTypes | DataTypes), i: number, obj: DataProps) => {
+
             const figData = obj.filter((o) => o.type === "data")[0]["data"];
             if (bd.type === "barchart") {
               return (
@@ -105,9 +108,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
               );
             }
             if (bd.type === "map") {
-              const jenks = bd.jenks
-                ? bd.jenks.map((j) => parseFloat(j.grense))
-                : undefined;
+              const jenks = bd.jenks.map((j) => j.grense);
 
               return (
                 <CarouselItem

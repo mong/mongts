@@ -15,6 +15,7 @@ import {
 
 import { AnnualVariation } from "./AnnualVariation";
 import { mainBarColors, nationBarColors, selectedBarColors } from "../colors";
+import { BarchartTypes } from "../../types";
 
 export type BarchartData<
   Data,
@@ -124,6 +125,8 @@ export const Barchart = <
     sorted,
     x
   );
+
+  console.log(series);
 
   // Pick out bohf query from the url
   const router = useRouter();

@@ -5,8 +5,8 @@ import matter from "gray-matter";
 import Layout from "../../../../src/components/Layout";
 import { TopBanner } from "../../../../src/components/Atlas/topBanner";
 import styles from "../../../../src/styles/Atlas.module.css";
-import { ChapterProps, Chapters } from "../../../../src/components/Chapters";
-import { AtlasData } from "../../../../src/types";
+import { Chapters } from "../../../../src/components/Chapters";
+import { DataProps, ChapterProps } from "../../../../src/types";
 import { TableOfContents } from "../../../../src/components/toc";
 import { OrderedList } from "../../../../src/components/toc/orderedlist";
 import { ListItem } from "../../../../src/components/toc/listitem";
@@ -15,7 +15,7 @@ import { DataContext } from "../../../../src/components/Context";
 interface AtlasPageProps {
   content: string;
   body: string;
-  atlasData: AtlasData[];
+  atlasData: DataProps[];
   mapData: any;
 }
 
@@ -44,6 +44,7 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
         .map((subChapter) => subChapter["overskrift"]);
       return { level1, level2 };
     });
+  console.log(atlasData);
 
   return (
     <DataContext.Provider value={{ atlasData, mapData }}>

@@ -2,42 +2,7 @@ import React, { Fragment } from "react";
 import { TextBox } from "../TextBox";
 import { FactBox } from "../Factbox";
 import { ResultBox } from "../ResultBox";
-import { AtlasData } from "../../types";
-
-type Tekst = {
-  type: "tekst";
-  tekst: string;
-};
-
-type Faktaboks = {
-  type: "faktaboks";
-  overskrift: string;
-  tekst: string;
-  lang: "nb" | "en" | "nn";
-};
-
-type Resultatboks = {
-  type: "resultatboks";
-  overskrift: string;
-  data: string;
-  ingress: string;
-  utvalg: string;
-  resultat: string;
-  lang: "nb" | "en" | "nn";
-  publisert: Date;
-  oppdatert: Date;
-};
-
-export type ChapterProps = {
-  overskrift?: string;
-  innhold: (Tekst | Faktaboks | Resultatboks)[];
-  lang: "nb" | "en" | "nn";
-};
-
-type ChaptersProps = {
-  innhold: ChapterProps[];
-  lang: "nb" | "en" | "nn";
-};
+import { ChaptersProps, ChapterProps } from "../../types";
 
 const json2atlas = {
   tekst: TextBox,
