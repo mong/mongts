@@ -5,29 +5,8 @@ import {
   customFormatEng,
 } from "../../helpers/functions/localFormater";
 import { mapColors, abacusColors } from "../colors";
+import { MapData } from "../../types";
 import { useRouter } from "next/router";
-
-type FeatureShape = {
-  type: "Feature";
-  id: string;
-  geometry: {
-    type: "MultiPolygon";
-    coordinates: [number, number][][][];
-  };
-  properties: {
-    OBJECTID_1: number;
-    BoHF_num: number;
-    OBJECTID: number;
-    Shape_Leng: number;
-    Shape_Le_1: number;
-    Shape_Area: number;
-  };
-};
-
-export type MapData = {
-  type: "FeatureCollection";
-  features: FeatureShape[];
-};
 
 type MapProps = {
   mapData: MapData;

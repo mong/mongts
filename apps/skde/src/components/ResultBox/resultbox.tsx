@@ -8,12 +8,20 @@ import { Carousel } from "../carousel";
 import { CarouselItem } from "../carousel/carouelitem";
 import { Barchart } from "../../charts/barcharts";
 import { Abacus } from "../../charts/abacus";
-import { AtlasData, BarchartTypes , TableTypes, MapTypes, DataTypes, DataProps } from "../../types";
+import {
+  AtlasData,
+  MapData,
+  BarchartTypes,
+  TableTypes,
+  MapTypes,
+  DataTypes,
+  DataProps,
+} from "../../types";
 import classNames from "./resultbox.module.css";
 import { DataContext } from "../Context";
 import { Markdown } from "../Markdown";
 import { DataTable } from "../Table";
-import { Map, MapData } from "../../charts/map";
+import { Map } from "../../charts/map";
 import { timeFormat } from "d3-time-format";
 
 type ResultBoxProps = {
@@ -53,8 +61,8 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
   const atlasData: { atlasData: any; mapData: MapData } =
     React.useContext(DataContext);
 
-//    console.log(atlasData.atlasData[carousel]);
-    
+  //    console.log(atlasData.atlasData[carousel]);
+
   const mapData = atlasData.mapData;
   const boxData: any =
     atlasData.atlasData[carousel] !== undefined
@@ -77,70 +85,75 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
     boxData !== undefined ? (
       <Carousel active={0} selection={selection} lang={lang}>
         {boxData
-          .map((bd: (BarchartTypes | TableTypes | MapTypes | DataTypes), i: number, obj: DataProps) => {
+          .map(
+            (
+              bd: BarchartTypes | TableTypes | MapTypes | DataTypes,
+              i: number,
+              obj: DataProps
+            ) => {
+              const figData = obj.filter((o) => o.type === "data")[0]["data"];
+              if (bd.type === "barchart") {
+                return (
+                  <CarouselItem
+                    style={{ width: "auto" }}
+                    key={bd.type + i + id}
+                    label={bd.type}
+                  >
+                    <Barchart {...bd} data={figData} lang={lang} />
+                  </CarouselItem>
+                );
+              }
+              if (bd.type === "table") {
+                return (
+                  <CarouselItem
+                    key={bd.type + i + id}
+                    style={{ width: "auto" }}
+                    label={bd.type}
+                  >
+                    <DataTable
+                      headers={bd.columns}
+                      data={figData}
+                      caption={bd.caption[lang]}
+                      lang={lang}
+                    />
+                  </CarouselItem>
+                );
+              }
+              if (bd.type === "map") {
+                const jenks = bd.jenks.map((j) => j.grense);
 
-            const figData = obj.filter((o) => o.type === "data")[0]["data"];
-            if (bd.type === "barchart") {
-              return (
-                <CarouselItem
-                  style={{ width: "auto" }}
-                  key={bd.type + i + id}
-                  label={bd.type}
-                >
-                  <Barchart {...bd} data={figData} lang={lang} />
-                </CarouselItem>
-              );
-            }
-            if (bd.type === "table") {
-              return (
-                <CarouselItem
-                  key={bd.type + i + id}
-                  style={{ width: "auto" }}
-                  label={bd.type}
-                >
-                  <DataTable
-                    headers={bd.columns}
-                    data={figData}
-                    caption={bd.caption[lang]}
-                    lang={lang}
-                  />
-                </CarouselItem>
-              );
-            }
-            if (bd.type === "map") {
-              const jenks = bd.jenks.map((j) => j.grense);
+                return (
+                  <CarouselItem
+                    key={bd.type + i + id}
+                    style={{ width: "auto" }}
+                    label={bd.type}
+                  >
+                    {jenks && (
+                      <div
+                        style={{
+                          width: "100%",
+                          maxWidth: "500px",
+                          margin: "auto",
+                        }}
+                      >
+                        <Map
+                          mapData={mapData}
+                          classes={jenks}
+                          attrName={bd.x}
+                          mapAttr={figData}
+                          format={bd.format}
+                          caption={bd.caption[lang]}
+                          lang={lang}
+                        />
+                      </div>
+                    )}
+                  </CarouselItem>
+                );
+              }
 
-              return (
-                <CarouselItem
-                  key={bd.type + i + id}
-                  style={{ width: "auto" }}
-                  label={bd.type}
-                >
-                  {jenks && (
-                    <div
-                      style={{
-                        width: "100%",
-                        maxWidth: "500px",
-                        margin: "auto",
-                      }}
-                    >
-                      <Map
-                        mapData={mapData}
-                        classes={jenks}
-                        attrName={bd.x}
-                        mapAttr={figData}
-                        format={bd.format}
-                        caption={bd.caption[lang]}
-                        lang={lang}
-                      />
-                    </div>
-                  )}
-                </CarouselItem>
-              );
+              return null;
             }
-
-            return null;
-          })
+          )
           .filter((elm) => elm !== null)}
       </Carousel>
     ) : undefined;

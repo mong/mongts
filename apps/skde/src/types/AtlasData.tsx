@@ -86,3 +86,25 @@ export type DataProps = {
   [x: string]: any;
   innhold: (BarchartTypes | TableTypes | MapTypes | DataTypes)[];
 };
+
+type FeatureShape = {
+  type: "Feature";
+  id: string;
+  geometry: {
+    type: "MultiPolygon";
+    coordinates: [number, number][][][];
+  };
+  properties: {
+    OBJECTID_1: number;
+    BoHF_num: number;
+    OBJECTID: number;
+    Shape_Leng: number;
+    Shape_Le_1: number;
+    Shape_Area: number;
+  };
+};
+
+export type MapData = {
+  type: "FeatureCollection";
+  features: FeatureShape[];
+};
