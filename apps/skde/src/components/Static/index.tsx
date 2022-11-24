@@ -2,7 +2,7 @@ import { Markdown } from "../Markdown";
 import Layout from "../Layout";
 import styles from "./static.module.css";
 
-interface PageContentProps {
+export interface PageContentProps {
   content: string;
   frontMatter: {
     title: string;
