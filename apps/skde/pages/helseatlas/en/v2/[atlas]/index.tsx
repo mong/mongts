@@ -103,19 +103,25 @@ export const getStaticProps: GetStaticProps = async (context) => {
   );
   const file = fs.readFileSync(fullPath);
   const { content } = matter(file);
-
-  const fileData = await Promise.all(
-    await fs
-      .readdirSync("public/helseatlas/data/")
-      .filter((files) => files.includes(".json"))
-      .map(async (files) => {
-        const filePath = path.join("public/helseatlas/data/", files);
-        const fileContent = fs.readFileSync(filePath, "utf-8");
-        const data = {};
-        data[files] = fileContent;
-        return data;
-      })
+  const dataPath = path.join(
+    "public/helseatlas/data/",
+    `${context.params.atlas}/`
   );
+
+  const fileData = fs.existsSync(dataPath)
+    ? await Promise.all(
+        await fs
+          .readdirSync(dataPath)
+          .filter((files) => files.includes(".json"))
+          .map(async (files) => {
+            const filePath = `${dataPath}/${files}`;
+            const fileContent = fs.readFileSync(filePath, "utf-8");
+            const data = {};
+            data[files] = fileContent;
+            return data;
+          })
+      )
+    : [];
   const mapDataPath = "public/helseatlas/data/kronikere.geojson";
   const mapData = JSON.parse(fs.readFileSync(mapDataPath, "utf-8"));
   const atlasData = fileData.reduce((result, data) => {

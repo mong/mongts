@@ -30,9 +30,7 @@ export const TopBanner: React.FC<TopBannerProps> = ({
           >
             {lang === "en" ? "Front page" : "Forside"}
           </Link>
-          <Link color="text.primary" underline="none">
-            {mainTitle}
-          </Link>
+          <div className={style.breadcrumb_text}>{mainTitle}</div>
         </Breadcrumbs>
         <div className={style.rightbanner}>
           {pdfUrl && (
