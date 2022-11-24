@@ -3,7 +3,7 @@ import db from "../../db";
 import { Filter } from ".";
 
 export const selectionYearsModel = (
-  filter?: Filter
+  filter: Filter
 ): Promise<{ year: string }[]> =>
   db
     .distinct("agg_data.year")
@@ -11,7 +11,7 @@ export const selectionYearsModel = (
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
     .where("include", 1)
     .whereNot("unit_name", "LIKE", "Udefinerte%")
-    .where("context", filter!.context ?? "")
+    .where("context", filter.context ?? "")
     .modify(withFilter, filter);
 
 function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
