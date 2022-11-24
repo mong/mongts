@@ -1,8 +1,8 @@
 import Layout from "../../Layout";
 import { TopBanner } from "../../Atlas/topBanner";
 import styles from "../../../styles/Atlas.module.css";
-import { ChapterProps, Chapters } from "../../Chapters";
-import { AtlasData } from "../../../types";
+import { Chapters } from "../../Chapters";
+import { DataProps, ChapterProps } from "../../../types";
 import { TableOfContents } from "../../toc";
 import { OrderedList } from "../../toc/orderedlist";
 import { ListItem } from "../../toc/listitem";
@@ -10,7 +10,7 @@ import { DataContext } from "../../Context";
 
 export interface AtlasPageProps {
   content: string;
-  atlasData: AtlasData[];
+  atlasData: DataProps[];
   mapData: any;
 }
 
