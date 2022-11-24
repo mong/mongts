@@ -71,23 +71,25 @@ const FigureButtons = (props: Props) => {
         .append("canvas")
         .attr("width", canvasWidth)
         .attr("height", canvasHeight)
-        .node()!;
+        .node();
 
+      if (canvas === null) return;
       const ctx = canvas.getContext("2d");
-      ctx!.fillStyle = "#fafafa";
-      ctx!.fillRect(0, 0, canvasWidth, canvasHeight);
-      ctx!.fillStyle = "black";
-      ctx!.font = "20px Arial";
-      ctx!.textAlign = "center";
-      ctx!.textBaseline = "middle";
-      ctx!.fillText(figTitle, canvasWidth / 2, 25);
-      ctx!.font = "12px Arial";
-      ctx!.textAlign = "start";
-      ctx!.fillText(`Kilde: ${description.full_name}`, 25, 75 + height);
+      if (ctx === null) return;
+      ctx.fillStyle = "#fafafa";
+      ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+      ctx.fillStyle = "black";
+      ctx.font = "20px Arial";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(figTitle, canvasWidth / 2, 25);
+      ctx.font = "12px Arial";
+      ctx.textAlign = "start";
+      ctx.fillText(`Kilde: ${description.full_name}`, 25, 75 + height);
 
-      ctx!.imageSmoothingEnabled = false;
+      ctx.imageSmoothingEnabled = false;
 
-      ctx!.drawImage(image, 50 / 2, 50);
+      ctx.drawImage(image, 50 / 2, 50);
 
       const url = canvas.toDataURL("image/png");
 
