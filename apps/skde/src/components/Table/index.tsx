@@ -11,6 +11,7 @@ import {
   customFormat,
   customFormatEng,
 } from "../../helpers/functions/localFormater";
+import { useRouter } from "next/router";
 
 type DataTableProps<Data, Headers extends string & Partial<keyof Data>> = {
   caption: string;
@@ -34,6 +35,10 @@ export const DataTable = <
   headers,
   lang,
 }: DataTableProps<Data, TableHeaders>) => {
+  // Pick out bohf query from the url
+  const router = useRouter();
+  const selected_bohf = [router.query.bohf].flat();
+
   const [order, setOrder] = React.useState<"asc" | "desc">("desc");
   const [orderBy, setOrderBy] = React.useState(headers[1].id);
   const createSortHandler = (property) => (event) => {
@@ -78,7 +83,37 @@ export const DataTable = <
               )
             )
             .map((row, i) => (
-              <TableRow hover key={`${row.bohf}${i}`}>
+              <TableRow
+                hover
+                key={`${row.bohf}${i}`}
+                selected={selected_bohf.includes(String(row.bohf))}
+                data-testid={`tablerow_${row.bohf}`}
+                style={{
+                  cursor: row.bohf != "Norge" ? "pointer" : "auto",
+                }}
+                onClick={() => {
+                  // Add HF to query param if clicked on.
+                  // Remove HF from query param if it already is selected.
+                  // Only possible to click on HF, and not on Norge
+                  row.bohf != "Norge"
+                    ? router.replace(
+                        {
+                          query: {
+                            ...router.query,
+                            bohf:
+                              selected_bohf[0] === undefined
+                                ? row.bohf
+                                : selected_bohf.includes(String(row.bohf))
+                                ? selected_bohf.filter((d) => d != row.bohf)
+                                : selected_bohf.concat(String(row.bohf)),
+                          },
+                        },
+                        undefined,
+                        { shallow: true }
+                      )
+                    : undefined;
+                }}
+              >
                 {headers.map((cell, ind) => (
                   <TableCell
                     key={`${row.bohf}${i}${ind}`}
@@ -87,6 +122,9 @@ export const DataTable = <
                     sx={{ paddingTop: "2px" }}
                     padding="none"
                     align={cell.typeVar === "number" ? "right" : "left"}
+                    style={{
+                      fontWeight: row.bohf === "Norge" ? "bolder" : "normal",
+                    }}
                   >
                     {cell.format
                       ? lang === "en"
