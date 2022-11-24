@@ -80,6 +80,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
       duration: 200,
     }),
   });
+  const figData = boxData.filter((o) => o.type === "data")[0]["data"];
 
   const dataCarousel =
     boxData !== undefined ? (
@@ -88,10 +89,8 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
           .map(
             (
               bd: BarchartTypes | TableTypes | MapTypes | DataTypes,
-              i: number,
-              obj: DataProps
+              i: number
             ) => {
-              const figData = obj.filter((o) => o.type === "data")[0]["data"];
               if (bd.type === "barchart") {
                 return (
                   <CarouselItem
