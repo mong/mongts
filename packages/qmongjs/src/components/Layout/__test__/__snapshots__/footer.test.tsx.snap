@@ -9,17 +9,21 @@ exports[`Footer renders 1`] = `
       class="footerTop"
     >
       <div>
-        <img
-          alt="skde logo"
-          data-nimg="1"
-          decoding="async"
-          height="40"
-          loading="lazy"
-          src="SKDE_hvit_lys.png?w=256&q=75"
-          srcset="SKDE_hvit_lys.png?w=128&q=75 1x, SKDE_hvit_lys.png?w=256&q=75 2x"
-          style="color: transparent;"
-          width="99"
-        />
+        <a
+          href="/"
+        >
+          <img
+            alt="skde logo"
+            data-nimg="1"
+            decoding="async"
+            height="40"
+            loading="lazy"
+            src="SKDE_hvit_lys.png?w=256&q=75"
+            srcset="SKDE_hvit_lys.png?w=128&q=75 1x, SKDE_hvit_lys.png?w=256&q=75 2x"
+            style="color: transparent;"
+            width="99"
+          />
+        </a>
       </div>
       <div
         class="skdeContact"
@@ -109,17 +113,22 @@ exports[`Footer renders 1`] = `
         </a>
       </div>
       <div>
-        <img
-          alt="Helseatlas logo"
-          data-nimg="1"
-          decoding="async"
-          height="40"
-          loading="lazy"
-          src="Logo_atlas_hvit.png?w=384&q=75"
-          srcset="Logo_atlas_hvit.png?w=256&q=75 1x, Logo_atlas_hvit.png?w=384&q=75 2x"
-          style="color: transparent;"
-          width="146"
-        />
+        <a
+          href="/helseatlas"
+          title="Link til helseatlas"
+        >
+          <img
+            alt="Helseatlas logo"
+            data-nimg="1"
+            decoding="async"
+            height="40"
+            loading="lazy"
+            src="Logo_atlas_hvit.png?w=384&q=75"
+            srcset="Logo_atlas_hvit.png?w=256&q=75 1x, Logo_atlas_hvit.png?w=384&q=75 2x"
+            style="color: transparent;"
+            width="146"
+          />
+        </a>
       </div>
     </div>
   </footer>
