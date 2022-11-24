@@ -4,27 +4,17 @@ import fs from "fs";
 import matter from "gray-matter";
 import yaml from "js-yaml";
 
-import { AtlasContent } from "../../../../../src/components/Atlas/classic";
-
-interface AtlasPageProps {
-  content: string;
-  frontMatter: {
-    num: string;
-    mainTitle: string;
-    shortTitle: string;
-    pdfUrl: string;
-    ia: boolean;
-    lang: "nb" | "en" | "nn";
-    toc: boolean;
-  };
-}
+import {
+  AtlasContent,
+  AtlasContentProps,
+} from "../../../../../src/components/Atlas/classic";
 
 const atlasDir = path.join(
   process.cwd(),
   "_posts/helseatlas/en/tidligere_atlas"
 );
 
-const AtlasPage: React.FC<AtlasPageProps> = ({ content, frontMatter }) => {
+const AtlasPage: React.FC<AtlasContentProps> = ({ content, frontMatter }) => {
   return (
     <>
       <AtlasContent content={content} frontMatter={frontMatter} />

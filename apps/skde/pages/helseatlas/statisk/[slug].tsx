@@ -3,19 +3,11 @@ import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
 
-import Page from "../../../src/components/Static";
+import Page, { PageContentProps } from "../../../src/components/Static";
 
 const CONTENT_DIR = join(process.cwd(), "_posts/helseatlas/statisk");
 
-interface Props {
-  content: string;
-  frontMatter: {
-    title: string;
-    lang: "nb" | "en" | "nn";
-  };
-}
-
-const Content = ({ content, frontMatter }: Props) => {
+const Content = ({ content, frontMatter }: PageContentProps) => {
   return <Page content={content} frontMatter={frontMatter} />;
 };
 

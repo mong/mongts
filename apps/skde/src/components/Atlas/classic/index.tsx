@@ -14,7 +14,7 @@ import { ListItem } from "../../toc/listitem";
 import styles from "./classic.module.css";
 import { PluggableList } from "react-markdown/lib/react-markdown";
 
-interface AtlasContentProps {
+export interface AtlasContentProps {
   content: string;
   frontMatter: {
     num: string;
