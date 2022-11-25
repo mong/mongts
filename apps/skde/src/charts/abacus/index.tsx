@@ -10,27 +10,20 @@ import {
 import { useRouter } from "next/router";
 import { abacusColors } from "../colors";
 
-type AbacusData<Data, X extends keyof Data, ColorBy extends keyof Data> = {
+type AbacusData<Data, X extends keyof Data> = {
   [k in X]: number;
-} & {
-  [k in ColorBy]?: number | string;
 } & {
   [k in keyof Data]?: number | string;
 };
 
-type AbacusProps<
-  Data,
-  X extends string & keyof Data,
-  ColorBy extends keyof Data
-> = {
-  data: AbacusData<Data, X, ColorBy>[];
+type AbacusProps<Data, X extends string & keyof Data> = {
+  data: AbacusData<Data, X>[];
   lang: "en" | "nb" | "nn";
   x: X;
   width?: number;
   height?: number;
   margin?: { top: number; bottom: number; right: number; left: number };
   colorLegend?: boolean;
-  colorBy?: ColorBy;
   label?: string;
   xMin?: number;
   xMax?: number;
@@ -47,11 +40,7 @@ type AbacusProps<
   format?: string;
 };
 
-export const Abacus = <
-  Data,
-  X extends string & keyof Data,
-  ColorBy extends string & keyof Data
->({
+export const Abacus = <Data, X extends string & keyof Data>({
   width = 950,
   height = 100,
   margin = {
@@ -60,8 +49,6 @@ export const Abacus = <
     right: 30,
     left: 30,
   },
-  colorLegend = false,
-  colorBy,
   data,
   lang,
   label,
@@ -77,7 +64,7 @@ export const Abacus = <
   tickLabelSize = 22,
   labelSize = 22,
   format,
-}: AbacusProps<Data, X, ColorBy>) => {
+}: AbacusProps<Data, X>) => {
   // Pick out bohf query from the url
   const router = useRouter();
   const selected_bohf = [router.query.bohf].flat();

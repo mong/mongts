@@ -20,14 +20,11 @@ export type BarchartData<
   Data,
   X extends (string & keyof Data)[],
   Y extends keyof Data,
-  ColorBy extends keyof Data,
   AnnualVar extends (keyof Data)[]
 > = {
   [k in keyof Data & keyof X]: number;
 } & {
   [k in Y]: string;
-} & {
-  [k in ColorBy]?: number | string;
 } & {
   [k in keyof Data]?: number | string;
 } & {
@@ -38,10 +35,9 @@ type BarchartProps<
   Data,
   X extends (string & keyof Data)[],
   Y extends string & keyof Data,
-  ColorBy extends keyof Data,
   AnnualVar extends (string & keyof Data)[]
 > = {
-  data: BarchartData<Data, X, Y, ColorBy, AnnualVar>[];
+  data: BarchartData<Data, X, Y, AnnualVar>[];
   lang: "en" | "nb" | "nn";
   x: X;
   y: Y;
@@ -72,7 +68,6 @@ export const Barchart = <
   Data,
   X extends (string & keyof Data)[],
   Y extends string & keyof Data,
-  ColorBy extends string & keyof Data,
   AnnualVar extends (string & keyof Data)[]
 >({
   width = 600,
@@ -105,7 +100,7 @@ export const Barchart = <
   annualVar,
   annualVarLabels,
   format,
-}: BarchartProps<Data, X, Y, ColorBy, AnnualVar>) => {
+}: BarchartProps<Data, X, Y, AnnualVar>) => {
   //missing
   //tooltip
   //animation
@@ -120,10 +115,7 @@ export const Barchart = <
     return secondVal - firstVal;
   });
 
-  const series = toBarchart<BarchartData<Data, X, Y, ColorBy, AnnualVar>, X>(
-    sorted,
-    x
-  );
+  const series = toBarchart<BarchartData<Data, X, Y, AnnualVar>, X>(sorted, x);
 
   // Pick out bohf query from the url
   const router = useRouter();
