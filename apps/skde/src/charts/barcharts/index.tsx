@@ -63,6 +63,7 @@ type BarchartProps<
   annualVar?: AnnualVar;
   annualVarLabels?: { en: number[]; nn: number[]; nb: number[] };
   format: string;
+  national: string;
 };
 
 export const Barchart = <
@@ -101,6 +102,7 @@ export const Barchart = <
   annualVar,
   annualVarLabels,
   format,
+  national,
 }: BarchartProps<Data, X, Y, AnnualVar>) => {
   //missing
   //tooltip
@@ -193,7 +195,7 @@ export const Barchart = <
               fontSize: 14,
               x: -127,
               y: -15,
-              transform: "(rotateX(90deg))",
+              transform: "",
               fontWeight: "bold",
             }}
           />
@@ -241,7 +243,7 @@ export const Barchart = <
                           ? x.length === 1
                             ? selectedColors[0]
                             : selectedColorScale(d["key"])
-                          : bohfName === "Norge"
+                          : bohfName === national
                           ? x.length === 1
                             ? nationColors[0]
                             : nationColorScale(d["key"])
@@ -255,13 +257,13 @@ export const Barchart = <
                           : `rect_${bohfName}_unselected`
                       }
                       style={{
-                        cursor: bohfName != "Norge" ? "pointer" : "auto",
+                        cursor: bohfName != national ? "pointer" : "auto",
                       }}
                       onClick={() => {
                         // Add HF to query param if clicked on.
                         // Remove HF from query param if it already is selected.
-                        // Only possible to click on HF, and not on Norge
-                        bohfName != "Norge"
+                        // Only possible to click on HF, and not on national data
+                        bohfName != national
                           ? router.replace(
                               {
                                 query: {

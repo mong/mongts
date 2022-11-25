@@ -80,86 +80,95 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
       duration: 200,
     }),
   });
-  const figData = boxData.filter((o) => o.type === "data")[0]["data"];
+  const nationalName = boxData
+    ? boxData.filter((o) => o.type === "data")[0]["national"]
+    : undefined;
+  const figData: AtlasData[] = boxData
+    ? boxData.filter((o) => o.type === "data")[0]["data"]
+    : undefined;
 
-  const dataCarousel =
-    boxData !== undefined ? (
-      <Carousel active={0} selection={selection} lang={lang}>
-        {boxData
-          .map(
-            (
-              bd: BarchartTypes | TableTypes | MapTypes | DataTypes,
-              i: number
-            ) => {
-              if (bd.type === "barchart") {
-                return (
-                  <CarouselItem
-                    style={{ width: "auto" }}
-                    key={bd.type + i + id}
-                    label={bd.type}
-                  >
-                    <Barchart {...bd} data={figData} lang={lang} />
-                  </CarouselItem>
-                );
-              }
-              if (bd.type === "table") {
-                return (
-                  <CarouselItem
-                    key={bd.type + i + id}
-                    style={{ width: "auto" }}
-                    label={bd.type}
-                  >
-                    <DataTable
-                      headers={bd.columns}
-                      data={figData}
-                      caption={bd.caption[lang]}
-                      lang={lang}
-                    />
-                  </CarouselItem>
-                );
-              }
-              if (bd.type === "map") {
-                const jenks = bd.jenks.map((j) => j.grense);
-
-                return (
-                  <CarouselItem
-                    key={bd.type + i + id}
-                    style={{ width: "auto" }}
-                    label={bd.type}
-                  >
-                    {jenks && (
-                      <div
-                        style={{
-                          width: "100%",
-                          maxWidth: "500px",
-                          margin: "auto",
-                        }}
-                      >
-                        <Map
-                          mapData={mapData}
-                          classes={jenks}
-                          attrName={bd.x}
-                          mapAttr={figData}
-                          format={bd.format}
-                          caption={bd.caption[lang]}
-                          lang={lang}
-                        />
-                      </div>
-                    )}
-                  </CarouselItem>
-                );
-              }
-
-              return null;
+  const dataCarousel = boxData ? (
+    <Carousel active={0} selection={selection} lang={lang}>
+      {boxData
+        .map(
+          (
+            bd: BarchartTypes | TableTypes | MapTypes | DataTypes,
+            i: number
+          ) => {
+            if (bd.type === "barchart") {
+              return (
+                <CarouselItem
+                  style={{ width: "auto" }}
+                  key={bd.type + i + id}
+                  label={bd.type}
+                >
+                  <Barchart
+                    {...bd}
+                    data={figData}
+                    lang={lang}
+                    national={nationalName}
+                  />
+                </CarouselItem>
+              );
             }
-          )
-          .filter((elm) => elm !== null)}
-      </Carousel>
-    ) : undefined;
+            if (bd.type === "table") {
+              return (
+                <CarouselItem
+                  key={bd.type + i + id}
+                  style={{ width: "auto" }}
+                  label={bd.type}
+                >
+                  <DataTable
+                    headers={bd.columns}
+                    data={figData}
+                    caption={bd.caption[lang]}
+                    lang={lang}
+                    national={nationalName}
+                  />
+                </CarouselItem>
+              );
+            }
+            if (bd.type === "map") {
+              const jenks = bd.jenks
+                ? bd.jenks.map((j) => parseFloat(j.grense))
+                : undefined;
 
-  const figdata: AtlasData[] = boxData
-    ? boxData.filter((d) => d.type === "data")[0]["data"]
-    : null;
+              return (
+                <CarouselItem
+                  key={bd.type + i + id}
+                  style={{ width: "auto" }}
+                  label={bd.type}
+                >
+                  {jenks && (
+                    <div
+                      style={{
+                        width: "100%",
+                        maxWidth: "500px",
+                        margin: "auto",
+                      }}
+                    >
+                      <Map
+                        mapData={mapData}
+                        classes={jenks}
+                        attrName={bd.x}
+                        mapAttr={figData}
+                        format={bd.format}
+                        caption={bd.caption[lang]}
+                        lang={lang}
+                      />
+                    </div>
+                  )}
+                </CarouselItem>
+              );
+            }
+
+            return null;
+          }
+        )
+        .filter((elm) => elm !== null)}
+    </Carousel>
+  ) : undefined;
+
   const abacusX: Exclude<keyof AtlasData, "year" | "bohf"> = boxData
     .filter((boxd) => boxd.type === "map")
     .map((boxd) => boxd.x)[0];
@@ -198,15 +207,15 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
           >
             <h3 data-testid="resultbox_title"> {title} </h3>
             <Markdown lang={lang}>{intro}</Markdown>
-            {figdata && (
+            {figData && (
               <Abacus
-                data={figdata}
+                data={figData}
                 lang={lang}
                 x={abacusX}
-                colorBy="bohf"
                 label={boxData[0].xLabel[lang]}
                 backgroundColor="inherit"
                 format={boxData[0].format}
+                national={nationalName}
               />
             )}
           </div>
