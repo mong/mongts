@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
       <header className={style.header}>
         <div className={style.logo}>
           <Link href="/">
-            <div>
+            <>
               <Image
                 loader={imgLoader}
                 className={style.logo_img}
@@ -20,7 +20,7 @@ export const Header: React.FC = () => {
                 height={39}
                 width={96}
               />
-            </div>
+            </>
           </Link>
         </div>
         <div>
