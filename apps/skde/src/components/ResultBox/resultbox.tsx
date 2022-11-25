@@ -190,7 +190,6 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
                 data={figdata}
                 lang={lang}
                 x={abacusX}
-                colorBy="bohf"
                 label={boxData[0].xLabel[lang]}
                 backgroundColor="inherit"
                 format={boxData[0].format}
