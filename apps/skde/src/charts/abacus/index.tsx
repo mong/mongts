@@ -38,6 +38,7 @@ type AbacusProps<Data, X extends string & keyof Data> = {
   labelSize?: number;
   markerOpacity?: number;
   format?: string;
+  national: string;
 };
 
 export const Abacus = <Data, X extends string & keyof Data>({
@@ -64,6 +65,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
   tickLabelSize = 22,
   labelSize = 22,
   format,
+  national,
 }: AbacusProps<Data, X>) => {
   // Pick out bohf query from the url
   const router = useRouter();
@@ -72,8 +74,8 @@ export const Abacus = <Data, X extends string & keyof Data>({
   // Move Norge to the end of data to plot,
   // so they will be on top of the other circles.
   var figData = data
-    .filter((d) => d["bohf"] != "Norge")
-    .concat(data.filter((d) => d["bohf"] === "Norge")[0]);
+    .filter((d) => d["bohf"] != national)
+    .concat(data.filter((d) => d["bohf"] === national)[0]);
 
   if (selected_bohf) {
     // Move selected bohf to the end of data to plot (if it exists in the data),
@@ -147,7 +149,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
               fill={
                 selected_bohf.includes(String(d["bohf"]))
                   ? colors[2]
-                  : d["bohf"] === "Norge"
+                  : d["bohf"] === national
                   ? colors[1]
                   : colors[0]
               }
@@ -170,7 +172,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
             </div>
             {valuesLabel[lang]}
           </li>
-          <li key={"norge"} className={classNames.legendLI}>
+          <li key={"national"} className={classNames.legendLI}>
             <div className={classNames.legendAnnualVar}>
               <svg width="20px" height="20px">
                 <circle r={7} cx={10} cy={10} fill={colors[1]} />

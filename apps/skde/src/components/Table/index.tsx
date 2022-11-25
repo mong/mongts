@@ -24,6 +24,7 @@ type DataTableProps<Data, Headers extends string & Partial<keyof Data>> = {
     format?: string;
   }[];
   lang: "en" | "nb" | "nn";
+  national: string;
 };
 
 export const DataTable = <
@@ -34,6 +35,7 @@ export const DataTable = <
   data,
   headers,
   lang,
+  national,
 }: DataTableProps<Data, TableHeaders>) => {
   // Pick out bohf query from the url
   const router = useRouter();
@@ -89,13 +91,13 @@ export const DataTable = <
                 selected={selected_bohf.includes(String(row.bohf))}
                 data-testid={`tablerow_${row.bohf}`}
                 style={{
-                  cursor: row.bohf != "Norge" ? "pointer" : "auto",
+                  cursor: row.bohf != national ? "pointer" : "auto",
                 }}
                 onClick={() => {
                   // Add HF to query param if clicked on.
                   // Remove HF from query param if it already is selected.
-                  // Only possible to click on HF, and not on Norge
-                  row.bohf != "Norge"
+                  // Only possible to click on HF, and not on national data
+                  row.bohf != national
                     ? router.replace(
                         {
                           query: {
@@ -123,7 +125,7 @@ export const DataTable = <
                     padding="none"
                     align={cell.typeVar === "number" ? "right" : "left"}
                     style={{
-                      fontWeight: row.bohf === "Norge" ? "bolder" : "normal",
+                      fontWeight: row.bohf === national ? "bolder" : "normal",
                     }}
                   >
                     {cell.format

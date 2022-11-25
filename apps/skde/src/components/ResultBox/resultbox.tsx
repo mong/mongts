@@ -70,6 +70,9 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
       duration: 200,
     }),
   });
+  const nationalName: string = boxData.filter((o) => o.type === "data")[0][
+    "national"
+  ];
 
   const dataCarousel =
     boxData !== undefined ? (
@@ -84,7 +87,12 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
                   key={bd.type + i + id}
                   label={bd.type}
                 >
-                  <Barchart {...bd} data={figData} lang={lang} />
+                  <Barchart
+                    {...bd}
+                    data={figData}
+                    lang={lang}
+                    national={nationalName}
+                  />
                 </CarouselItem>
               );
             }
@@ -100,6 +108,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
                     data={figData}
                     caption={bd.caption[lang]}
                     lang={lang}
+                    national={nationalName}
                   />
                 </CarouselItem>
               );
@@ -193,6 +202,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
                 label={boxData[0].xLabel[lang]}
                 backgroundColor="inherit"
                 format={boxData[0].format}
+                national={nationalName}
               />
             )}
           </div>
