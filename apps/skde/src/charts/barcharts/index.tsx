@@ -194,7 +194,7 @@ export const Barchart = <
               fontSize: 14,
               x: -127,
               y: -15,
-              transform: "(rotateX(90deg))",
+              transform: "",
               fontWeight: "bold",
             }}
           />
