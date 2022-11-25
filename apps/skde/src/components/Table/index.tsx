@@ -37,7 +37,7 @@ export const DataTable = <
 }: DataTableProps<Data, TableHeaders>) => {
   // Pick out bohf query from the url
   const router = useRouter();
-  const selected_bohf = router.query.bohf;
+  const selected_bohf = [router.query.bohf].flat();
 
   const [order, setOrder] = React.useState<"asc" | "desc">("desc");
   const [orderBy, setOrderBy] = React.useState(headers[1].id);
@@ -86,9 +86,33 @@ export const DataTable = <
               <TableRow
                 hover
                 key={`${row.bohf}${i}`}
-                selected={
-                  selected_bohf && selected_bohf.includes(String(row.bohf))
-                }
+                selected={selected_bohf.includes(String(row.bohf))}
+                data-testid={`tablerow_${row.bohf}`}
+                style={{
+                  cursor: row.bohf != "Norge" ? "pointer" : "auto",
+                }}
+                onClick={() => {
+                  // Add HF to query param if clicked on.
+                  // Remove HF from query param if it already is selected.
+                  // Only possible to click on HF, and not on Norge
+                  row.bohf != "Norge"
+                    ? router.replace(
+                        {
+                          query: {
+                            ...router.query,
+                            bohf:
+                              selected_bohf[0] === undefined
+                                ? row.bohf
+                                : selected_bohf.includes(String(row.bohf))
+                                ? selected_bohf.filter((d) => d != row.bohf)
+                                : selected_bohf.concat(String(row.bohf)),
+                          },
+                        },
+                        undefined,
+                        { shallow: true }
+                      )
+                    : undefined;
+                }}
               >
                 {headers.map((cell, ind) => (
                   <TableCell
@@ -98,6 +122,9 @@ export const DataTable = <
                     sx={{ paddingTop: "2px" }}
                     padding="none"
                     align={cell.typeVar === "number" ? "right" : "left"}
+                    style={{
+                      fontWeight: row.bohf === "Norge" ? "bolder" : "normal",
+                    }}
                   >
                     {cell.format
                       ? lang === "en"
