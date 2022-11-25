@@ -15,7 +15,6 @@ import {
   TableTypes,
   MapTypes,
   DataTypes,
-  DataProps,
 } from "../../types";
 import classNames from "./resultbox.module.css";
 import { DataContext } from "../Context";
@@ -83,7 +82,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
   const nationalName = boxData
     ? boxData.filter((o) => o.type === "data")[0]["national"]
     : undefined;
-  const figData: AtlasData[] = boxData
+  const figData = boxData
     ? boxData.filter((o) => o.type === "data")[0]["data"]
     : undefined;
 
@@ -130,7 +129,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
             }
             if (bd.type === "map") {
               const jenks = bd.jenks
-                ? bd.jenks.map((j) => parseFloat(j.grense))
+                ? bd.jenks.map((j) => j.grense)
                 : undefined;
 
               return (

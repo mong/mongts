@@ -15,7 +15,6 @@ import {
 
 import { AnnualVariation } from "./AnnualVariation";
 import { mainBarColors, nationBarColors, selectedBarColors } from "../colors";
-import { BarchartTypes } from "../../types";
 
 export type BarchartData<
   Data,
