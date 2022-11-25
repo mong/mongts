@@ -15,13 +15,15 @@ export const Footer: React.FC = () => {
       <div className={style.footerTop}>
         <div>
           <Link href="/">
-            <Image
-              loader={imgLoader}
-              src={skdeLogo}
-              alt="skde logo"
-              width={99}
-              height={40}
-            />
+            <>
+              <Image
+                loader={imgLoader}
+                src={skdeLogo}
+                alt="skde logo"
+                width={99}
+                height={40}
+              />
+            </>
           </Link>
         </div>
         <div className={style.skdeContact}>
@@ -76,13 +78,15 @@ export const Footer: React.FC = () => {
         </div>
         <div>
           <Link title="Link til helseatlas" href="/helseatlas">
-            <Image
-              loader={imgLoader}
-              src={helseatlasLogo}
-              alt="Helseatlas logo"
-              width={146}
-              height={40}
-            />
+            <>
+              <Image
+                loader={imgLoader}
+                src={helseatlasLogo}
+                alt="Helseatlas logo"
+                width={146}
+                height={40}
+              />
+            </>
           </Link>
         </div>
       </div>
