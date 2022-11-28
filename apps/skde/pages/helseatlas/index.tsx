@@ -2,47 +2,11 @@ import path from "path";
 import { GetStaticProps } from "next";
 import fs from "fs";
 
-import Layout from "../../src/components/Layout";
-import { MainBanner } from "../../src/components/MainBanner/MainBanner";
-import { AtlasLink } from "../../src/components/Btns/AtlasLink";
+import FrontPage, { HomeProps } from "../../src/components/Atlas/FrontPage";
 import { getMDInfo } from "../../src/helpers/functions/markdownHelpers";
-import classNames from "../../src/styles/Atlas.module.css";
-
-interface HomeProps {
-  atlasInfo: {
-    article: string;
-    frontMatter: {
-      shortTitle: string;
-      image: string;
-      frontpagetext: string;
-      date: Date;
-    };
-  }[];
-}
 
 const Home: React.FC<HomeProps> = ({ atlasInfo }) => {
-  const Links = atlasInfo.map((atlas, i) => (
-    <AtlasLink
-      key={atlas.article}
-      linkTo={`helseatlas/${atlas.article}`}
-      imageSource={atlas.frontMatter.image}
-      linkTitle={atlas.frontMatter.shortTitle}
-      linkText={atlas.frontMatter.frontpagetext}
-      wide={i === 0}
-      date={atlas.frontMatter.date}
-      newlyUpdated={i === 0}
-      lang={"no"}
-    />
-  ));
-
-  return (
-    <Layout lang="no">
-      <main>
-        <MainBanner />
-        <div className={classNames.atlasLinksWrapper}>{Links}</div>
-      </main>
-    </Layout>
-  );
+  return <FrontPage atlasInfo={atlasInfo} lang="no" />;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
