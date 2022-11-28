@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { CarouselItemProps } from "./carouelitem";
-import { CarouselButtons } from "./carouselbuttons";
+import { CarouselItemProps } from "./CarouelItem";
+import { CarouselButtons } from "./CarouselButtons";
 import { BiBarChart, BiMapPin } from "react-icons/bi";
 import { VscTable } from "react-icons/vsc";
 import { AiOutlineInfoCircle } from "react-icons/ai";

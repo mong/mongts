@@ -4,8 +4,8 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import { useTransition, animated, easings } from "react-spring";
 
-import { Carousel } from "../carousel";
-import { CarouselItem } from "../carousel/carouelitem";
+import { Carousel } from "../Carousel";
+import { CarouselItem } from "../Carousel/CarouelItem";
 import { Barchart } from "../../charts/barcharts";
 import { Abacus } from "../../charts/abacus";
 import { AtlasData } from "../../types";
