@@ -11,7 +11,7 @@ import { AtlasData } from "../../types";
 import classNames from "./ResultBox.module.css";
 import { DataContext } from "../Context";
 import { Markdown } from "../Markdown";
-import { DataTable } from "../Table";
+import { DataTable } from "../../charts/Table";
 import { Map, MapData } from "../../charts/Map";
 import { timeFormat } from "d3-time-format";
 
