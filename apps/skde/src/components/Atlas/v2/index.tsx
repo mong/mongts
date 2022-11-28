@@ -1,4 +1,4 @@
-import Layout from "../../Layout";
+import { AtlasLayout } from "../../Layout";
 import { TopBanner } from "../TopBanner";
 import styles from "./atlas.module.css";
 import { ChapterProps, Chapters } from "../../Chapters";
@@ -42,7 +42,7 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
 
   return (
     <DataContext.Provider value={{ atlasData, mapData }}>
-      <Layout lang={obj.lang === "en" ? "en" : "no"}>
+      <AtlasLayout lang={obj.lang === "en" ? "en" : "no"}>
         <main data-testid="v2atlas">
           <TopBanner
             mainTitle={obj.shortTitle}
@@ -87,7 +87,7 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
             </div>
           </div>
         </main>
-      </Layout>
+      </AtlasLayout>
     </DataContext.Provider>
   );
 };

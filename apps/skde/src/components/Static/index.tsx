@@ -1,5 +1,5 @@
 import { Markdown } from "../Markdown";
-import Layout from "../Layout";
+import { AtlasLayout } from "../Layout";
 import styles from "./static.module.css";
 
 export interface PageContentProps {
@@ -16,7 +16,7 @@ export const PageContent: React.FC<PageContentProps> = ({
 }) => {
   return (
     <>
-      <Layout lang={frontMatter.lang === "en" ? "en" : "no"}>
+      <AtlasLayout lang={frontMatter.lang === "en" ? "en" : "no"}>
         <div className={styles.container}>
           <div className={styles.article__title}>
             <h1>{frontMatter.title}</h1>
@@ -27,7 +27,7 @@ export const PageContent: React.FC<PageContentProps> = ({
             </div>
           </div>
         </div>
-      </Layout>
+      </AtlasLayout>
     </>
   );
 };

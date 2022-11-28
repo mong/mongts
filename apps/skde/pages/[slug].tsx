@@ -8,7 +8,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import styles from "../src/styles/Pages.module.css";
-import Layout from "../src/components/frontpageLayout";
+import { FrontPageLayout } from "../src/components/Layout";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -20,7 +20,7 @@ interface Props {
 }
 const Content = ({ content, frontMatter }: Props) => {
   return (
-    <Layout page={frontMatter.title}>
+    <FrontPageLayout page={frontMatter.title}>
       <div className={styles.container}>
         <div className={styles.article__title}>
           <h2>{frontMatter.title}</h2>
@@ -52,7 +52,7 @@ const Content = ({ content, frontMatter }: Props) => {
           </div>
         </div>
       </div>
-    </Layout>
+    </FrontPageLayout>
   );
 };
 
