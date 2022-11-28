@@ -1,5 +1,5 @@
 import { AtlasLayout } from "../../Layout";
-import { MainBanner } from "../../MainBanner/MainBanner";
+import { MainBanner } from "../../MainBanner";
 import { AtlasLink } from "../../Btns";
 import classNames from "./FrontPage.module.css";
 
