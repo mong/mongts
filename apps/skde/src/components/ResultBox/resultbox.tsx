@@ -15,6 +15,7 @@ import {
   TableTypes,
   MapTypes,
   DataTypes,
+  DataProps,
 } from "../../types";
 import classNames from "./resultbox.module.css";
 import { DataContext } from "../Context";
@@ -57,15 +58,13 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
   const [expandedResultBox, setExpandedResultBox] =
     React.useState<boolean>(false);
 
-  const atlasData: { atlasData: any; mapData: MapData } =
+  const atlasData: { atlasData: DataProps; mapData: MapData } =
     React.useContext(DataContext);
 
-  //    console.log(atlasData.atlasData[carousel]);
-
   const mapData = atlasData.mapData;
-  const boxData: any =
+  const boxData: DataProps =
     atlasData.atlasData[carousel] !== undefined
-      ? Object.values(JSON.parse(atlasData.atlasData[carousel]))[0]
+      ? JSON.parse(atlasData.atlasData[carousel])
       : undefined;
 
   const transitions = useTransition(expandedResultBox, {
@@ -80,15 +79,15 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
     }),
   });
   const nationalName = boxData
-    ? boxData.filter((o) => o.type === "data")[0]["national"]
+    ? boxData[0].filter((o) => o.type === "data")[0]["national"]
     : undefined;
   const figData = boxData
-    ? boxData.filter((o) => o.type === "data")[0]["data"]
+    ? boxData[0].filter((o) => o.type === "data")[0]["data"]
     : undefined;
 
   const dataCarousel = boxData ? (
     <Carousel active={0} selection={selection} lang={lang}>
-      {boxData
+      {boxData[0]
         .map(
           (
             bd: BarchartTypes | TableTypes | MapTypes | DataTypes,
@@ -168,7 +167,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
     </Carousel>
   ) : undefined;
 
-  const abacusX: Exclude<keyof AtlasData, "year" | "bohf"> = boxData
+  const abacusX: Exclude<keyof AtlasData, "year" | "bohf"> = boxData[0]
     .filter((boxd) => boxd.type === "map")
     .map((boxd) => boxd.x)[0];
 

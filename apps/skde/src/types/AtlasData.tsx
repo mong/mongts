@@ -82,10 +82,9 @@ export type DataTypes = {
   data: AtlasData[];
 };
 
-export type DataProps = {
-  [x: string]: any;
+export interface DataProps {
   innhold: (BarchartTypes | TableTypes | MapTypes | DataTypes)[];
-};
+}
 
 type FeatureShape = {
   type: "Feature";
