@@ -1,6 +1,6 @@
 import Layout from "../../Layout";
-import { TopBanner } from "../../Atlas/topBanner";
-import styles from "../../../styles/Atlas.module.css";
+import { TopBanner } from "../topBanner";
+import styles from "./Atlas.module.css";
 import { ChapterProps, Chapters } from "../../Chapters";
 import { AtlasData } from "../../../types";
 import { TableOfContents } from "../../toc";
