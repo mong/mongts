@@ -7,7 +7,7 @@ import { rehypeWrapWithDiv } from "../../../helpers/functions/rehypeplugins";
 import remarkGfm from "remark-gfm";
 
 import Layout from "../../Layout";
-import { TopBanner } from "../topBanner";
+import { TopBanner } from "../TopBanner";
 import { TableOfContents } from "../../toc";
 import { OrderedList } from "../../toc/orderedlist";
 import { ListItem } from "../../toc/listitem";
