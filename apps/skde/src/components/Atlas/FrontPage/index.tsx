@@ -1,6 +1,6 @@
 import { AtlasLayout } from "../../Layout";
 import { MainBanner } from "../../MainBanner";
-import { AtlasLink } from "../../Btns";
+import { AtlasLink } from "../../Buttons";
 import classNames from "./FrontPage.module.css";
 
 export interface HomeProps {
