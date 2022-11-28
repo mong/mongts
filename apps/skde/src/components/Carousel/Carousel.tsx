@@ -6,7 +6,7 @@ import { VscTable } from "react-icons/vsc";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
 import styles from "./carousel.module.css";
-import { PopUp } from "../popup";
+import { PopUp } from "../PopUp";
 import { Markdown } from "../Markdown";
 
 type CarouselProps = {

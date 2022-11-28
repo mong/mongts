@@ -7,7 +7,7 @@ import classNames from "./Header.module.css";
 
 import { MenuButton } from "../Btns";
 import { Menu } from "../Menu";
-import { PopUp } from "../popup";
+import { PopUp } from "../PopUp";
 
 type HeaderProps = {
   origin: string;
