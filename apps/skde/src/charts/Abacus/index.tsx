@@ -2,7 +2,7 @@ import { AxisBottom } from "@visx/axis";
 import { scaleLinear } from "@visx/scale";
 import { Group } from "@visx/group";
 import { max } from "d3-array";
-import classNames from "../barcharts/ChartLegend.module.css";
+import classNames from "../Barchart/ChartLegend.module.css";
 import {
   customFormat,
   customFormatEng,

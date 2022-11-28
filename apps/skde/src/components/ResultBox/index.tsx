@@ -5,14 +5,14 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import { useTransition, animated, easings } from "react-spring";
 
 import { Carousel, CarouselItem } from "../Carousel";
-import { Barchart } from "../../charts/barcharts";
-import { Abacus } from "../../charts/abacus";
+import { Barchart } from "../../charts/Barchart";
+import { Abacus } from "../../charts/Abacus";
 import { AtlasData } from "../../types";
 import classNames from "./resultbox.module.css";
 import { DataContext } from "../Context";
 import { Markdown } from "../Markdown";
 import { DataTable } from "../Table";
-import { Map, MapData } from "../../charts/map";
+import { Map, MapData } from "../../charts/Map";
 import { timeFormat } from "d3-time-format";
 
 type ResultBoxProps = {
