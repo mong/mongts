@@ -1,6 +1,6 @@
-import Layout from "../../Layout";
-import { MainBanner } from "../../MainBanner/MainBanner";
-import { AtlasLink } from "../../Btns/AtlasLink";
+import { AtlasLayout } from "../../Layout";
+import { MainBanner } from "../../MainBanner";
+import { AtlasLink } from "../../Buttons";
 import classNames from "./FrontPage.module.css";
 
 export interface HomeProps {
@@ -33,12 +33,12 @@ const FrontPage: React.FC<HomeProps> = ({ atlasInfo, lang }) => {
   ));
 
   return (
-    <Layout lang={lang}>
+    <AtlasLayout lang={lang}>
       <main>
         <MainBanner lang={lang} />
         <div className={classNames.atlasLinksWrapper}>{Links}</div>
       </main>
-    </Layout>
+    </AtlasLayout>
   );
 };
 

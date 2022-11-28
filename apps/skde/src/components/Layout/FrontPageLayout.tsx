@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
+import styles from "../../styles/Home.module.css";
 import Image from "next/image";
-import { imgLoader } from "../helpers/functions";
+import { imgLoader } from "../../helpers/functions";
 
 interface Props {
   children: any;
@@ -10,7 +10,7 @@ interface Props {
   page?: string;
 }
 
-export default function Layout({
+export function FrontPageLayout({
   children,
   title = "SKDE - Helse Nord RHF",
   page,

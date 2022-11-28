@@ -4,7 +4,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import { BsCaretDownFill } from "react-icons/bs";
 
-import styles from "./toc.module.css";
+import styles from "./TableOfContents.module.css";
 
 export const TableOfContents = ({ children, lang = "no" }) => {
   const [expanded, setExpanded] = React.useState<boolean>(false);

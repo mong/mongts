@@ -1,8 +1,8 @@
 import React from "react";
 import { useIsomorphicLayoutEffect } from "../../helpers/hooks";
 
-import { PopUpButton } from "./popupbtn";
-import { PopUpContent } from "./popupcontent";
+import { PopUpButton } from "./PopUpButton";
+import { PopUpContent } from "./PopUpContent";
 
 type PopUpProps = {
   btnComponent: () => React.ReactNode;

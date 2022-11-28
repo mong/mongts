@@ -6,12 +6,12 @@ import rehypeRaw from "rehype-raw";
 import { rehypeWrapWithDiv } from "../../../helpers/functions/rehypeplugins";
 import remarkGfm from "remark-gfm";
 
-import Layout from "../../Layout";
-import { TopBanner } from "../topBanner";
-import { TableOfContents } from "../../toc";
-import { OrderedList } from "../../toc/orderedlist";
-import { ListItem } from "../../toc/listitem";
-import styles from "./classic.module.css";
+import { AtlasLayout } from "../../Layout";
+import { TopBanner } from "../TopBanner";
+import { TableOfContents } from "../../TableOfContents";
+import { OrderedList } from "../../TableOfContents/OrderedList";
+import { ListItem } from "../../TableOfContents/ListItem";
+import styles from "./atlas.module.css";
 import { PluggableList } from "react-markdown/lib/react-markdown";
 
 export interface AtlasContentProps {
@@ -151,7 +151,7 @@ export const AtlasContent: React.FC<AtlasContentProps> = ({
   `;
   return (
     <>
-      <Layout lang={frontMatter.lang === "en" ? "en" : "no"}>
+      <AtlasLayout lang={frontMatter.lang === "en" ? "en" : "no"}>
         <main data-testid="v1atlas">
           <TopBanner {...frontMatter} />
           <div className={`${styles.atlasContent}`} style={{ display: "flex" }}>
@@ -164,7 +164,7 @@ export const AtlasContent: React.FC<AtlasContentProps> = ({
             </ReactMarkdown>
           </div>
         </main>
-      </Layout>
+      </AtlasLayout>
     </>
   );
 };

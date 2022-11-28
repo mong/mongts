@@ -1,11 +1,11 @@
-import Layout from "../../Layout";
-import { TopBanner } from "../topBanner";
-import styles from "./Atlas.module.css";
+import { AtlasLayout } from "../../Layout";
+import { TopBanner } from "../TopBanner";
+import styles from "./atlas.module.css";
 import { ChapterProps, Chapters } from "../../Chapters";
 import { AtlasData } from "../../../types";
-import { TableOfContents } from "../../toc";
-import { OrderedList } from "../../toc/orderedlist";
-import { ListItem } from "../../toc/listitem";
+import { TableOfContents } from "../../TableOfContents";
+import { OrderedList } from "../../TableOfContents/OrderedList";
+import { ListItem } from "../../TableOfContents/ListItem";
 import { DataContext } from "../../Context";
 
 export interface AtlasPageProps {
@@ -42,7 +42,7 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
 
   return (
     <DataContext.Provider value={{ atlasData, mapData }}>
-      <Layout lang={obj.lang === "en" ? "en" : "no"}>
+      <AtlasLayout lang={obj.lang === "en" ? "en" : "no"}>
         <main data-testid="v2atlas">
           <TopBanner
             mainTitle={obj.shortTitle}
@@ -87,7 +87,7 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
             </div>
           </div>
         </main>
-      </Layout>
+      </AtlasLayout>
     </DataContext.Provider>
   );
 };
