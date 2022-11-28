@@ -11,7 +11,7 @@ import { TopBanner } from "../topBanner";
 import { TableOfContents } from "../../toc";
 import { OrderedList } from "../../toc/orderedlist";
 import { ListItem } from "../../toc/listitem";
-import styles from "./classic.module.css";
+import styles from "./Atlas.module.css";
 import { PluggableList } from "react-markdown/lib/react-markdown";
 
 export interface AtlasContentProps {
