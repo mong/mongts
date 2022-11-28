@@ -8,7 +8,7 @@ import { Carousel, CarouselItem } from "../Carousel";
 import { Barchart } from "../../charts/Barchart";
 import { Abacus } from "../../charts/Abacus";
 import { AtlasData } from "../../types";
-import classNames from "./resultbox.module.css";
+import classNames from "./ResultBox.module.css";
 import { DataContext } from "../Context";
 import { Markdown } from "../Markdown";
 import { DataTable } from "../Table";

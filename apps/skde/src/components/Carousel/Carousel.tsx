@@ -5,7 +5,7 @@ import { BiBarChart, BiMapPin } from "react-icons/bi";
 import { VscTable } from "react-icons/vsc";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
-import styles from "./carousel.module.css";
+import styles from "./Carousel.module.css";
 import { PopUp } from "../PopUp";
 import { Markdown } from "../Markdown";
 

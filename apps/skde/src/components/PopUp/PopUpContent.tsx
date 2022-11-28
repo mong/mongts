@@ -3,7 +3,7 @@ import { useTransition, animated, easings } from "react-spring";
 
 import { useKeys, useOnClickOutside } from "../../helpers/hooks";
 import { useRouterEvent } from "../../helpers/hooks/useRouterEvent";
-import classNames from "./popup.module.css";
+import classNames from "./PopUp.module.css";
 
 type PopUpContentProps = {
   children: React.ReactNode;

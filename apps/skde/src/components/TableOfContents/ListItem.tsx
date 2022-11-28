@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useIntersectionByID } from "../../helpers/hooks/useintersectionobserver";
-import style from "./listitem.module.css";
+import style from "./ListItem.module.css";
 
 type ListItemProps = {
   children: React.ReactNode;

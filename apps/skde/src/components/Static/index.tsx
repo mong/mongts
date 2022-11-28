@@ -1,6 +1,6 @@
 import { Markdown } from "../Markdown";
 import { AtlasLayout } from "../Layout";
-import styles from "./static.module.css";
+import styles from "./Static.module.css";
 
 export interface PageContentProps {
   content: string;
