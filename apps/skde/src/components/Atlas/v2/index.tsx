@@ -3,9 +3,9 @@ import { TopBanner } from "../TopBanner";
 import styles from "./atlas.module.css";
 import { ChapterProps, Chapters } from "../../Chapters";
 import { AtlasData } from "../../../types";
-import { TableOfContents } from "../../toc";
-import { OrderedList } from "../../toc/orderedlist";
-import { ListItem } from "../../toc/listitem";
+import { TableOfContents } from "../../TableOfContents";
+import { OrderedList } from "../../TableOfContents/OrderedList";
+import { ListItem } from "../../TableOfContents/ListItem";
 import { DataContext } from "../../Context";
 
 export interface AtlasPageProps {

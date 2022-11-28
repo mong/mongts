@@ -8,9 +8,9 @@ import remarkGfm from "remark-gfm";
 
 import Layout from "../../Layout";
 import { TopBanner } from "../TopBanner";
-import { TableOfContents } from "../../toc";
-import { OrderedList } from "../../toc/orderedlist";
-import { ListItem } from "../../toc/listitem";
+import { TableOfContents } from "../../TableOfContents";
+import { OrderedList } from "../../TableOfContents/OrderedList";
+import { ListItem } from "../../TableOfContents/ListItem";
 import styles from "./atlas.module.css";
 import { PluggableList } from "react-markdown/lib/react-markdown";
 
