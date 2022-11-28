@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import styles from "../src/styles/Home.module.css";
-import Layout from "../src/components/frontpageLayout";
+import { FrontPageLayout } from "../src/components/Layout";
 import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
 
@@ -27,7 +27,7 @@ export default function Home() {
     setOrigin(window.location.origin);
   }, [setOrigin]);
   return (
-    <Layout>
+    <FrontPageLayout>
       <div className={styles.full_bleed}>
         <div className={styles.banner_article}>
           <div className={styles.banner_article__content}>
@@ -68,6 +68,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </Layout>
+    </FrontPageLayout>
   );
 }

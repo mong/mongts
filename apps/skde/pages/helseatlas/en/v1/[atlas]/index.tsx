@@ -7,7 +7,7 @@ import yaml from "js-yaml";
 import {
   AtlasContent,
   AtlasContentProps,
-} from "../../../../../src/components/Atlas/classic";
+} from "../../../../../src/components/Atlas/v1";
 
 const atlasDir = path.join(
   process.cwd(),

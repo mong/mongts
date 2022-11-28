@@ -5,9 +5,9 @@ import Image from "next/image";
 import { imgLoader } from "../../helpers/functions";
 import classNames from "./Header.module.css";
 
-import { MenuButton } from "../Btns/MenuButton";
+import { MenuButton } from "../Buttons";
 import { Menu } from "../Menu";
-import { PopUp } from "../popup";
+import { PopUp } from "../PopUp";
 
 type HeaderProps = {
   origin: string;

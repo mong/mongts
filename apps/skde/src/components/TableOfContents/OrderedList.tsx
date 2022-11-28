@@ -1,6 +1,6 @@
 import { ListItem } from "@mui/material";
 import React from "react";
-import style from "./orderedlist.module.css";
+import style from "./OrderedList.module.css";
 
 type OrderedListProps = {
   children: React.ReactNode;

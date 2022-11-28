@@ -10,11 +10,7 @@ interface Props {
   lang: "no" | "en";
 }
 
-export default function Layout({
-  children,
-  title = "Helseatlas",
-  lang,
-}: Props) {
+export function AtlasLayout({ children, title = "Helseatlas", lang }: Props) {
   const [origin, setOrigin] = useState("");
   useEffect(() => {
     setOrigin(window.location.origin);

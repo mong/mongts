@@ -2,7 +2,7 @@ import path from "path";
 import { GetStaticProps, GetStaticPaths } from "next";
 import fs from "fs";
 
-import Layout from "../../../../src/components/Layout";
+import { AtlasLayout } from "../../../../src/components/Layout";
 
 interface IAProps {
   atlas: string;
@@ -13,7 +13,7 @@ const atlasDir = path.join(process.cwd(), "_posts/helseatlas/tidligere_atlas");
 const AtlasPage: React.FC<IAProps> = ({ atlas }) => {
   return (
     <>
-      <Layout lang="no">
+      <AtlasLayout lang="no">
         <iframe
           src={`/helseatlas/ia/no/${atlas}/index.html`}
           style={{
@@ -24,7 +24,7 @@ const AtlasPage: React.FC<IAProps> = ({ atlas }) => {
             height: "100vh",
           }}
         />
-      </Layout>
+      </AtlasLayout>
     </>
   );
 };

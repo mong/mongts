@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./carouselbuttons.module.css";
+import styles from "./CarouselButtons.module.css";
 
 type CarouselButtonsProps = {
   options: {

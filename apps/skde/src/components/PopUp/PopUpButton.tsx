@@ -1,4 +1,4 @@
-import classNames from "./popup.module.css";
+import classNames from "./PopUp.module.css";
 
 type PopUpButtonProps = {
   btnComponent: () => React.ReactNode;
