@@ -73,11 +73,14 @@ exports[`register page header renders correctly 1`] = `
             </div>
             <ul>
               <li>
-                <b
+                <a
+                  data-testid="pick_registry_all"
                   href="/kvalitetsregistre/alle/sykehus"
                 >
-                  Alle registre
-                </b>
+                  <b>
+                    Alle registre
+                  </b>
+                </a>
               </li>
               <li
                 data-testid="pick_registry_hjerneslag"
@@ -131,7 +134,12 @@ exports[`register page header renders correctly 1`] = `
               class="tabsLI"
             >
               <a
+                aria-selected="false"
+                class="tabsLink"
+                data-testid="tab_sykehus"
                 href="/kvalitetsregistre/alle/sykehus"
+                role="tab"
+                style="color: rgb(109, 167, 223); box-shadow: -7px 7px 10px -5px #ccc; background-color: white; border-bottom: 3px solid white; border-radius: 5px;"
               >
                 Sykehus
               </a>
@@ -140,7 +148,11 @@ exports[`register page header renders correctly 1`] = `
               class="tabsLI"
             >
               <a
+                aria-selected="false"
+                class="tabsLink"
+                data-testid="tab_opptaksomraade"
                 href="/kvalitetsregistre/alle/opptaksomraade"
+                role="tab"
               >
                 Opptaksområde
               </a>
@@ -149,7 +161,11 @@ exports[`register page header renders correctly 1`] = `
               class="tabsLI"
             >
               <a
+                aria-selected="false"
+                class="tabsLink"
+                data-testid="tab_datakvalitet"
                 href="/kvalitetsregistre/alle/datakvalitet"
+                role="tab"
               >
                 Datakvalitit
               </a>
@@ -235,11 +251,14 @@ exports[`register page header renders correctly 2`] = `
             </div>
             <ul>
               <li>
-                <b
+                <a
+                  data-testid="pick_registry_all"
                   href="/kvalitetsregistre/alle/sykehus"
                 >
-                  Alle registre
-                </b>
+                  <b>
+                    Alle registre
+                  </b>
+                </a>
               </li>
               <li
                 data-testid="pick_registry_hjerneslag"
@@ -293,7 +312,12 @@ exports[`register page header renders correctly 2`] = `
               class="tabsLI"
             >
               <a
+                aria-selected="false"
+                class="tabsLink"
+                data-testid="tab_sykehus"
                 href="/kvalitetsregistre/alle/sykehus"
+                role="tab"
+                style="color: rgb(109, 167, 223); box-shadow: -7px 7px 10px -5px #ccc; background-color: white; border-bottom: 3px solid white; border-radius: 5px;"
               >
                 Sykehus
               </a>
@@ -302,7 +326,11 @@ exports[`register page header renders correctly 2`] = `
               class="tabsLI"
             >
               <a
+                aria-selected="false"
+                class="tabsLink"
+                data-testid="tab_opptaksomraade"
                 href="/kvalitetsregistre/alle/opptaksomraade"
+                role="tab"
               >
                 Opptaksområde
               </a>
@@ -311,7 +339,11 @@ exports[`register page header renders correctly 2`] = `
               class="tabsLI"
             >
               <a
+                aria-selected="false"
+                class="tabsLink"
+                data-testid="tab_datakvalitet"
                 href="/kvalitetsregistre/alle/datakvalitet"
+                role="tab"
               >
                 Datakvalitit
               </a>
