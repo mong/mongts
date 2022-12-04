@@ -55,7 +55,7 @@ export const ListItem: React.FC<ListItemProps> = ({
       <a
         {...ATag[0]}
         onClick={() => {
-          if (i) {
+          if (typeof i === "number" || i) {
             setExpanded((state) => {
               return state === i ? "none" : i;
             });
