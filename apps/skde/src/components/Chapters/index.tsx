@@ -48,8 +48,8 @@ const json2atlas = {
 export const Chapters = ({ innhold, lang }: ChaptersProps) => {
   return (
     <>
-      {innhold.map((chapter) => (
-        <Chapter {...chapter} key={chapter.overskrift} lang={lang} />
+      {innhold.map((chapter, i) => (
+        <Chapter {...chapter} key={`${i}_${chapter.overskrift}`} lang={lang} />
       ))}
     </>
   );
