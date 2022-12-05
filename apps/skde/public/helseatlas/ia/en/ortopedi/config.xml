@@ -222,9 +222,9 @@
 </SubstitutionVariables>
 <Button editable="true" height="15" href="/helseatlas/files/report_orthopaedic.pdf" id="___user_extra_36" moveable="true" removeable="true" resizeable="true" target="_blank" text="Report" tooltip="Downlaod the report" width="58" x="412" y="6" />
 <Button editable="true" height="15" href="/helseatlas/en/static/about" id="___user_extra_39" moveable="true" removeable="true" resizeable="true" target="_blank" text="About helseatlas" tooltip="Read more about the healthcare atlas" width="65" x="704" y="6" />
-<Button editable="true" height="15" href="/helseatlas/en/ortopedi" id="___user_extra_37" moveable="true" removeable="true" resizeable="true" target="_blank" text="Fact sheets" tooltip="Fact sheets" width="58" x="474" y="6" />
+<Button editable="true" height="15" href="/helseatlas/en/v2/ortopedi" id="___user_extra_37" moveable="true" removeable="true" resizeable="true" target="_blank" text="Fact sheets" tooltip="Fact sheets" width="58" x="474" y="6" />
 <Button editable="true" height="15" href="/helseatlas/files/orthopaedic_download_data.xlsx" id="___user_extra_38" moveable="true" removeable="true" resizeable="true" target="_blank" text="Download data" tooltip="Download datafile" width="80" x="620" y="6" />
-<Button editable="true" height="15" href="/helseatlas/en/ortopedi" id="___user_extra_50" moveable="true" removeable="true" resizeable="true" target="_blank" text="Hospital referral area" tooltip="Definition of Hospital referral area" width="80" x="536" y="6" />
+<Button editable="true" height="15" href="/helseatlas/en/v2/ortopedi" id="___user_extra_50" moveable="true" removeable="true" resizeable="true" target="_blank" text="Hospital referral area" tooltip="Definition of Hospital referral area" width="80" x="536" y="6" />
 <Component classes="ia-panel ia-panel-header ia-explorer-item" editable="true" height="401" icon="$IAICON/48x48/text_code.png" id="dataExplorer" moveable="true" name="Data Explorer" removeable="true" resizeable="true" visible="true" width="130" x="6" y="41">
 	<Description>The data explorer component of the report.</Description>
 	<Property description="The title" id="title" name="Title" type="string" value="Map / patient selection. &lt;small&gt;Click on the pdf symbol to see the fact sheet &lt;/small&gt;" />
@@ -256,7 +256,7 @@
 </Table>
 <Button editable="true" height="15" href="/helseatlas/en/static/ortopedi_ous" id="ous_ortopedi" moveable="true" removeable="true" resizeable="true" target="_blank" text="OUS" tooltip="OUS is seperated in three areas" width="30" x="304" y="6" />
 <Button editable="true" height="15" href="/helseatlas/en/static/map" id="___user_extra_55" moveable="true" removeable="true" resizeable="true" target="_blank" text="Color groups" tooltip="The hospital referral areas are divided into groups (colors) using the natural breaks method (Jenks' natural breaks), and four groups are used (in some cases fewer groups). The method maximize the variation between groups and minimize the variation within groups. Click to read more" width="68" x="339" y="6" />
-<Image href="/helseatlas/en/ortopedi" anchor="left" editable="true" id="___user_extra_54" maintain-aspect-ratio="false" moveable="true" removeable="true" rescale="true" resizeable="true" src="./___user_extra_54_liten.png" target="_parent" x="5" y="5" />
+<Image href="/helseatlas/en/v2/ortopedi" anchor="left" editable="true" id="___user_extra_54" maintain-aspect-ratio="false" moveable="true" removeable="true" rescale="true" resizeable="true" src="./___user_extra_54_liten.png" target="_parent" x="5" y="5" />
 <Image href="/helseatlas/en" anchor="left" editable="true" id="___user_extra_57" maintain-aspect-ratio="true" moveable="true" removeable="true" rescale="true" resizeable="true" src="./___user_extra_57_vid.png" target="_parent" width="100" x="6" y="472" />
 <Image href="/helseatlas/en" anchor="left" editable="true" id="___user_extra_56" maintain-aspect-ratio="true" moveable="true" removeable="true" rescale="true" resizeable="true" src="./___user_extra_56_liten.png" target="_parent" x="14" y="550" />
 </AtlasInterface>
