@@ -22,6 +22,7 @@ type AtlasJson = {
   shortTitle: string;
   ingress: string;
   kapittel: ChapterProps[];
+  ia?: boolean;
 };
 
 const AtlasPage: React.FC<AtlasPageProps> = ({
@@ -48,7 +49,7 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
             mainTitle={obj.shortTitle}
             pdfUrl=""
             lang={obj.lang}
-            ia={false}
+            ia={obj.ia}
           />
           <div className={`${styles.atlasContent}`}>
             <TableOfContents>
