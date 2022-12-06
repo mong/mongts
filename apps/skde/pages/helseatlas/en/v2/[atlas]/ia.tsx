@@ -8,7 +8,7 @@ interface IAProps {
   atlas: string;
 }
 
-const atlasDir = path.join(process.cwd(), "_posts/helseatlas/en/v2");
+const atlasDir = path.join(process.cwd(), "_posts/helseatlas/en/atlas");
 
 const AtlasPage: React.FC<IAProps> = ({ atlas }) => {
   return (

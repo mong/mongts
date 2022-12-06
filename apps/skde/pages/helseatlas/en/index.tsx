@@ -9,7 +9,7 @@ const Home: React.FC<HomeProps> = ({ atlasInfo }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const atlasDir = path.join(process.cwd(), "_posts/helseatlas/en/v2");
+  const atlasDir = path.join(process.cwd(), "_posts/helseatlas/en/atlas");
   const atlasInfo = fs
     .readdirSync(atlasDir)
     .filter((fn) => fn.endsWith(".json"))

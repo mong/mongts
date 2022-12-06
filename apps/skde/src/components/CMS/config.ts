@@ -13,7 +13,7 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
     folder:
       lang === "no"
         ? "apps/skde/_posts/helseatlas/atlas"
-        : "apps/skde/_posts/helseatlas/en/v2",
+        : "apps/skde/_posts/helseatlas/en/atlas",
     extension: "json",
     format: "json",
     create: true,
