@@ -89,7 +89,7 @@ export const Carousel: React.FC<CarouselProps> = ({
             popupState={popupState}
             btnComponent={() => <SelectionBtn lang={lang} />}
           >
-            <Markdown>{selection}</Markdown>
+            <Markdown lang={lang}>{selection}</Markdown>
           </PopUp>
         )}
       </div>
