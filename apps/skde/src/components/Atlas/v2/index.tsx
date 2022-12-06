@@ -45,12 +45,7 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
     <DataContext.Provider value={{ atlasData, mapData }}>
       <AtlasLayout lang={obj.lang === "en" ? "en" : "no"}>
         <main data-testid="v2atlas">
-          <TopBanner
-            mainTitle={obj.shortTitle}
-            pdfUrl=""
-            lang={obj.lang}
-            ia={obj.ia}
-          />
+          <TopBanner mainTitle={obj.shortTitle} lang={obj.lang} ia={obj.ia} />
           <div className={`${styles.atlasContent}`}>
             <TableOfContents>
               <OrderedList>
