@@ -62,7 +62,7 @@ npx serve apps/skde/out
 Start up `netlify-cms-proxy-server`:
 
 ```bash
-yarn run cms
+yarn run cms-server
 ```
 
 Run the SKDE web site (in another terminal):
