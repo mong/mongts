@@ -187,88 +187,6 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
   };
 };
 
-const oldAtlas = (lang: "no" | "en"): CmsCollection => {
-  return {
-    label: lang === "no" ? "Tidligere atlas" : "Tidligere engelske atlas",
-    name: lang === "no" ? "tidligere_atlas" : "tidligere_eng_atlas",
-    folder:
-      lang === "no"
-        ? "apps/skde/_posts/helseatlas/tidligere_atlas"
-        : "apps/skde/_posts/helseatlas/en/tidligere_atlas",
-    create: false,
-    delete: false,
-    media_folder:
-      lang === "no"
-        ? "/apps/skde/public/helseatlas/img/no/{{filename}}"
-        : "/apps/skde/public/helseatlas/img/en/{{filename}}",
-    public_folder:
-      lang === "no"
-        ? "/helseatlas/img/no/{{filename}}"
-        : "/helseatlas/img/en/{{filename}}",
-    identifier_field: "mainTitle",
-    fields: [
-      filename,
-      {
-        label: "Publiseringsdato",
-        name: "date",
-        widget: "datetime",
-      },
-      {
-        label: "Publiseringsnummer",
-        name: "num",
-        widget: "number",
-      },
-      {
-        label: "Tittel",
-        name: "mainTitle",
-        widget: "string",
-      },
-      {
-        label: "Kort tittel",
-        name: "shortTitle",
-        widget: "string",
-      },
-      {
-        label: "Forsidebilde",
-        name: "image",
-        widget: "file",
-      },
-      {
-        label: "Forsidetekst",
-        name: "frontpagetext",
-        widget: "string",
-      },
-      {
-        label: "Rapport",
-        name: "pdfUrl",
-        widget: "string",
-      },
-      {
-        label: "Hovedtekst",
-        name: "body",
-        widget: "markdown",
-      },
-      {
-        label: "Instant atlas?",
-        name: "ia",
-        widget: "boolean",
-      },
-      {
-        label: "Innholdsfortegnelse?",
-        name: "toc",
-        widget: "boolean",
-      },
-      {
-        label: "Språk",
-        name: "lang",
-        widget: "select",
-        options: ["nb", "nn", "en"],
-        default: lang === "no" ? "nb" : "en",
-      },
-    ],
-  };
-};
-
 const staticPages = (lang: "no" | "en"): CmsCollection => {
   return {
     label: lang === "no" ? "Statiske sider" : "Statiske engelske sider",
@@ -314,12 +232,5 @@ export const config: CmsConfig = {
   public_folder: "/helseatlas/img",
   site_url: "https://www.skde.no/helseatlas/",
   locale: "nb_no",
-  collections: [
-    atlas("no"),
-    oldAtlas("no"),
-    staticPages("no"),
-    atlas("en"),
-    oldAtlas("en"),
-    staticPages("en"),
-  ],
+  collections: [atlas("no"), staticPages("no"), atlas("en"), staticPages("en")],
 };
