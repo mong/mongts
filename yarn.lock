@@ -8043,18 +8043,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4.3.2":
-  version: 4.3.2
-  resolution: "debug@npm:4.3.2"
-  dependencies:
-    ms: 2.1.2
-  peerDependenciesMeta:
-    supports-color:
-      optional: true
-  checksum: 820ea160e267e23c953c9ed87e7ad93494d8cda2f7349af5e7e3bb236d23707ee3022f477d5a7d2ee86ef2bf7d60aa9ab22d1f58080d7deb9dccd073585e1e43
-  languageName: node
-  linkType: hard
-
 "debug@npm:^3.1.0, debug@npm:^3.2.7":
   version: 3.2.7
   resolution: "debug@npm:3.2.7"
@@ -19151,7 +19139,7 @@ __metadata:
     rehype-slug: 5.1.0
     rehype-toc: 3.0.2
     remark-gfm: 3.0.1
-    start-server-and-test: 1.15.0
+    start-server-and-test: 1.15.1
     typescript: 4.7.4
     use-query-params: 2.1.2
   languageName: unknown
@@ -19589,14 +19577,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"start-server-and-test@npm:1.15.0":
-  version: 1.15.0
-  resolution: "start-server-and-test@npm:1.15.0"
+"start-server-and-test@npm:1.15.1":
+  version: 1.15.1
+  resolution: "start-server-and-test@npm:1.15.1"
   dependencies:
     arg: ^5.0.2
     bluebird: 3.7.2
     check-more-types: 2.24.0
-    debug: 4.3.2
+    debug: 4.3.4
     execa: 5.1.1
     lazy-ass: 1.6.0
     ps-tree: 1.2.0
@@ -19605,7 +19593,7 @@ __metadata:
     server-test: src/bin/start.js
     start-server-and-test: src/bin/start.js
     start-test: src/bin/start.js
-  checksum: cb297a07e806f5e2d9c12ad9159bb2c9f4b428ccdeb2c526bb47f60d4cbed904a706cd39b03a73692b51580d5a162beee5656bcfa887ae8aac6d4b65edf48e66
+  checksum: ac4251afb07c9d8559d2873deca39e2afc0670d295c5acb5cee9527775792246319e2a6753e4def3e028a11a0f98f8d4940b3e565b1d12a1c2c58aa8c251987d
   languageName: node
   linkType: hard
 
