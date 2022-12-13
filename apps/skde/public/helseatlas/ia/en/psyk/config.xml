@@ -222,7 +222,7 @@
 </SubstitutionVariables>
 <Button editable="true" height="15" href="/helseatlas/files/mhc_report.pdf" id="___user_extra_36" moveable="true" removeable="true" resizeable="true" target="_blank" text="Report" tooltip="Downlaod the report" width="58" x="412" y="6" />
 <Button editable="true" height="15" href="/helseatlas/en/static/about" id="___user_extra_39" moveable="true" removeable="true" resizeable="true" target="_blank" text="About helseatlas" tooltip="Read more about the healthcare atlas" width="65" x="662" y="6" />
-<Button editable="true" height="15" href="/helseatlas/en/psyk" id="___user_extra_37" moveable="true" removeable="true" resizeable="true" target="_blank" text="Fact sheets" tooltip="Fact sheets" width="58" x="546" y="6" />
+<Button editable="true" height="15" href="/helseatlas/en/v2/psyk" id="___user_extra_37" moveable="true" removeable="true" resizeable="true" target="_blank" text="Fact sheets" tooltip="Fact sheets" width="58" x="546" y="6" />
 <Button editable="true" height="15" href="/helseatlas/files/mhc_data.xlsx" id="___user_extra_38" moveable="true" removeable="true" resizeable="true" target="_blank" text="Download data" tooltip="Download datafile" width="50" x="608" y="6" />
 <Component classes="ia-panel ia-panel-header ia-explorer-item" editable="true" height="433" icon="$IAICON/48x48/text_code.png" id="dataExplorer" moveable="true" name="Data Explorer" removeable="true" resizeable="true" visible="true" width="130" x="6" y="30">
 	<Description>The data explorer component of the report.</Description>
@@ -253,7 +253,7 @@
 	<Column alias="Inhabitants" name="Innb" width="0.5" />
 </Table>
 <Button editable="true" height="15" href="/helseatlas/en/static/map" id="___user_extra_55" moveable="true" removeable="true" resizeable="true" target="_blank" text="Color groups" tooltip="The hospital referral areas are divided into groups (colors) using the natural breaks method (Jenks' natural breaks), and four groups are used (in some cases fewer groups). The method maximize the variation between groups and minimize the variation within groups. Click to read more" width="68" x="475" y="6" />
-<Image href="/helseatlas/en/psyk" anchor="left" editable="true" id="___user_extra_54" maintain-aspect-ratio="false" moveable="true" removeable="true" rescale="true" resizeable="true" src="./___user_extra_54_liten.png" target="_parent" x="5" y="5" />
+<Image href="/helseatlas/en/v2/psyk" anchor="left" editable="true" id="___user_extra_54" maintain-aspect-ratio="false" moveable="true" removeable="true" rescale="true" resizeable="true" src="./___user_extra_54_liten.png" target="_parent" x="5" y="5" />
 <Image href="/helseatlas/en" anchor="left" editable="true" id="___user_extra_57" maintain-aspect-ratio="true" moveable="true" removeable="true" rescale="true" resizeable="true" src="./___user_extra_57_vid.png" target="_parent" width="100" x="6" y="472" />
 <Image href="/helseatlas/en" anchor="left" editable="true" id="___user_extra_56" maintain-aspect-ratio="true" moveable="true" removeable="true" rescale="true" resizeable="true" src="./___user_extra_56_liten.png" target="_parent" x="14" y="550" />
 </AtlasInterface>
