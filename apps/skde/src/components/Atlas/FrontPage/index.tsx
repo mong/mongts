@@ -17,8 +17,16 @@ export interface HomeProps {
 }
 
 const FrontPage: React.FC<HomeProps> = ({ atlasInfo, lang }) => {
+  const sortedAtlas = atlasInfo
+    .sort((a, b) => {
+      const c = new Date(a.frontMatter.date);
+      const d = new Date(b.frontMatter.date);
+      return c.getTime() - d.getTime();
+    })
+    .reverse();
+
   const url = lang === "no" ? "helseatlas" : "helseatlas/en";
-  const Links = atlasInfo.map((atlas, i) => (
+  const Links = sortedAtlas.map((atlas, i) => (
     <AtlasLink
       key={atlas.article}
       linkTo={`${url}/${atlas.article}`}
