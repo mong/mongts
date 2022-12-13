@@ -24,7 +24,6 @@ export const getMDInfo = (dirPath: string) => {
         frontMatter: data,
       };
     })
-    .sort((a, b) => b.frontMatter.num - a.frontMatter.num)
     .map((article) => {
       return {
         ...article,
