@@ -3,24 +3,18 @@ import { GetStaticProps } from "next";
 import fs from "fs";
 
 import FrontPage, { HomeProps } from "../../../src/components/Atlas/FrontPage";
-import { getMDInfo } from "../../../src/helpers/functions/markdownHelpers";
 
 const Home: React.FC<HomeProps> = ({ atlasInfo }) => {
   return <FrontPage atlasInfo={atlasInfo} lang="en" />;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const atlasDir = path.join(
-    process.cwd(),
-    "_posts/helseatlas/en/tidligere_atlas"
-  );
-  const atlasInfo = getMDInfo(atlasDir);
-  const atlasDirNew = path.join(process.cwd(), "_posts/helseatlas/en/v2");
-  const atlasInfoNew = fs
-    .readdirSync(atlasDirNew)
+  const atlasDir = path.join(process.cwd(), "_posts/helseatlas/en/atlas");
+  const atlasInfo = fs
+    .readdirSync(atlasDir)
     .filter((fn) => fn.endsWith(".json"))
     .map((fn) => {
-      const filePath = path.join(atlasDirNew, fn);
+      const filePath = path.join(atlasDir, fn);
       const rawContent = fs.readFileSync(filePath, {
         encoding: "utf-8",
       });
@@ -53,7 +47,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      atlasInfo: [...atlasInfoNew, ...atlasInfo],
+      atlasInfo: [...atlasInfo],
     },
   };
 };

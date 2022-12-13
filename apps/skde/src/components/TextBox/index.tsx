@@ -3,8 +3,9 @@ import { Markdown } from "../Markdown";
 
 type TextBoxProps = {
   children: string;
+  lang: "nb" | "en" | "nn";
 };
 
-export const TextBox: React.FC<TextBoxProps> = ({ children }) => {
-  return <Markdown lang="no">{children}</Markdown>;
+export const TextBox: React.FC<TextBoxProps> = ({ children, lang }) => {
+  return <Markdown lang={lang}>{children}</Markdown>;
 };

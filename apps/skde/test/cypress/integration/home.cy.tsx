@@ -12,14 +12,14 @@ context("Push some front page buttons", () => {
   });
 
   it("should visit v1 atlas", () => {
-    cy.get('[data-testid="helseatlas/v1/dagkir"]').click();
-    cy.get('[data-testid="v1atlas"]', { timeout: 60000 }).should("exist");
-    cy.url().should("include", "/v1");
+    cy.get('[data-testid="helseatlas/v2/dagkir"]').click();
+    cy.get('[data-testid="v2atlas"]', { timeout: 60000 }).should("exist");
+    cy.url().should("include", "/v2");
   });
 
   it("should push english button", () => {
     cy.get('[data-testid="buttonEng"]').click(); // Push english button
-    cy.get('[data-testid="helseatlas/en/v1/kvalitet"]', {
+    cy.get('[data-testid="helseatlas/en/v2/kvalitet"]', {
       timeout: 60000,
     }).should("exist"); // Wait for english page to load
     cy.url().should("include", "/en/");
@@ -28,7 +28,7 @@ context("Push some front page buttons", () => {
     cy.get('[data-testid="mainMenu"]').should("exist"); // Menu exist
     cy.get('[data-testid="menuAtlasLink1"]').click(); // Enter an english atlas
     cy.get('[data-testid="mainMenu"]').should("not.exist"); // Menu gone after click
-    cy.url({ timeout: 60000 }).should("include", "/en/v1/"); // English atlas is entered in english menu
+    cy.url({ timeout: 60000 }).should("include", "/en/v2/"); // English atlas is entered in english menu
   });
 
   it("should push menu button", () => {

@@ -8,10 +8,7 @@ interface IAProps {
   atlas: string;
 }
 
-const atlasDir = path.join(
-  process.cwd(),
-  "_posts/helseatlas/en/tidligere_atlas"
-);
+const atlasDir = path.join(process.cwd(), "_posts/helseatlas/en/atlas");
 
 const AtlasPage: React.FC<IAProps> = ({ atlas }) => {
   return (
@@ -41,7 +38,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = fs
     .readdirSync(atlasDir)
-    .map((Info) => ({ params: { atlas: Info.replace(/.md?$/, "") } }));
+    .map((Info) => ({ params: { atlas: Info.replace(/.json?$/, "") } }));
   return {
     paths,
     fallback: false,

@@ -15,7 +15,7 @@ const Page: React.FC<AtlasPageProps> = ({ content, atlasData, mapData }) => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const fullPath = path.join(
     process.cwd(),
-    "_posts/helseatlas/en/v2",
+    "_posts/helseatlas/en/atlas",
     `${context.params.atlas}.json`
   );
   const file = fs.readFileSync(fullPath);
@@ -52,7 +52,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const atlasDir = path.join(process.cwd(), "_posts/helseatlas/en/v2");
+  const atlasDir = path.join(process.cwd(), "_posts/helseatlas/en/atlas");
   const paths = fs
     .readdirSync(atlasDir)
     .map((Info) => ({ params: { atlas: Info.replace(/.json?$/, "") } }));

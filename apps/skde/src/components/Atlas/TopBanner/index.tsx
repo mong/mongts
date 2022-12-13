@@ -5,14 +5,12 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 interface TopBannerProps {
   mainTitle: string;
-  pdfUrl: string;
   ia: boolean;
   lang: string;
 }
 
 export const TopBanner: React.FC<TopBannerProps> = ({
   mainTitle,
-  pdfUrl,
   ia,
   lang,
 }) => {
@@ -33,11 +31,6 @@ export const TopBanner: React.FC<TopBannerProps> = ({
           <div className={style.breadcrumb_text}>{mainTitle}</div>
         </Breadcrumbs>
         <div className={style.rightbanner}>
-          {pdfUrl && (
-            <div>
-              <a href={pdfUrl}>{lang === "en" ? "Report" : "Rapport"}</a>
-            </div>
-          )}
           {ia && (
             <div className={style.map_button}>
               <a href="ia">{lang === "en" ? "Map" : "Kart"}</a>
