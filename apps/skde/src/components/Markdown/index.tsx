@@ -92,8 +92,7 @@ export const Markdown = ({ children, lang }: MarkdownProp) => {
     a({ href, children }) {
       return (
         <a href={href} target="_blank" rel="noreferrer">
-          {" "}
-          {children}{" "}
+          {children}
         </a>
       );
     },
