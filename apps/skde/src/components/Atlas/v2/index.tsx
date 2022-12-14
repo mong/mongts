@@ -36,8 +36,10 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
     .map((chapter) => {
       const level1 = chapter.overskrift;
       const level2 = chapter.innhold
-        .filter((subChapter) => subChapter.type === "resultatboks")
-        .map((subChapter) => subChapter["overskrift"]);
+        ? chapter.innhold
+            .filter((subChapter) => subChapter.type === "resultatboks")
+            .map((subChapter) => subChapter["overskrift"])
+        : [];
       return { level1, level2 };
     });
 
