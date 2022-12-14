@@ -1,11 +1,8 @@
 /// <reference types="cypress"/>
 
 context("Home Page", () => {
-  beforeEach(() => {
-    cy.visit("/helseatlas");
-  });
-
   it("should render the home page", () => {
+    cy.visit("/helseatlas");
     cy.get("h1").contains("Likeverdige helsetjenester – uansett hvor du bor?");
   });
 
@@ -28,33 +25,14 @@ context("Home Page", () => {
 });
 
 context("Classic atlases", () => {
-  beforeEach(() => {
-    cy.visit("/helseatlas");
-  });
-
-  it("should visit an atlas", () => {
-    cy.visit("/helseatlas/v1/kvalitet");
-    cy.get("h1").contains("Helseatlas for kvalitet");
-    /* Go into the ToC */
-    cy.get("nav").get("ol").get("li").get("a").contains("Brystkreft").click();
-  });
-
-  //  it("should visit an IA", () => {
-  //    cy.visit("/helseatlas/v1/gyn/ia");
-  //    cy.get("iframe");
-  //    cy.visit("/helseatlas/ia/no/gyn/index.html")
-  //      .get("button")
-  //      .contains("Last ned data");
-  //  });
-
   it("should visit an atlas without ToC", () => {
-    cy.visit("/helseatlas/v1/psyk");
+    cy.visit("/helseatlas/v2/psyk");
     cy.get("h1").contains("Helseatlas for psykisk helsevern og rusbehandling");
     cy.get("nav").get("ol").get("li");
   });
 
   it("should visit an English atlas", () => {
-    cy.visit("/helseatlas/en/v1/kvalitet");
+    cy.visit("/helseatlas/en/v2/kvalitet");
     cy.get("h1").contains("Healthcare Quality Atlas");
     /* Go into the ToC */
     cy.get("nav").get("ol").get("li").get("a").contains("Stroke");

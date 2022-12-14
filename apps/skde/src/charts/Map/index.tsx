@@ -213,7 +213,6 @@ export const Map: React.FC<MapProps> = ({
       </div>
       <div
         style={{
-          fontFamily: "Roboto, Helvetica, Arial, sans-serif",
           fontWeight: "400",
           fontSize: "0.875rem",
           lineHeight: "1.43",

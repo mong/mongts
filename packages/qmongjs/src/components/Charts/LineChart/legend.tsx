@@ -131,7 +131,6 @@ const LegendItem: React.FC<LegendItemProps> = ({
     >
       <text
         ref={textRef}
-        fontFamily="Arial, Helvetica, sans-serif"
         fontSize="0.9rem"
         textAnchor="start"
         fill="#2D3034"

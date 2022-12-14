@@ -222,7 +222,7 @@
 </SubstitutionVariables>
 <Button editable="true" height="15" href="/helseatlas/files/eldrehelseatlas_rapport.pdf" id="___user_extra_36" moveable="true" removeable="true" resizeable="true" target="_blank" text="Rapport" tooltip="Last ned rapport" width="58" x="412" y="6" />
 <Button editable="true" height="15" href="/helseatlas/statisk/om" id="___user_extra_39" moveable="true" removeable="true" resizeable="true" target="_blank" text="Om Helseatlas" tooltip="Om helseatlas" width="65" x="662" y="6" />
-<Button editable="true" height="15" href="/helseatlas/eldre" id="___user_extra_37" moveable="true" removeable="true" resizeable="true" target="_blank" text="Faktaark" tooltip="Last ned faktaark" width="58" x="474" y="6" />
+<Button editable="true" height="15" href="/helseatlas/v2/eldre" id="___user_extra_37" moveable="true" removeable="true" resizeable="true" target="_blank" text="Faktaark" tooltip="Last ned faktaark" width="58" x="474" y="6" />
 <Button editable="true" height="15" href="/helseatlas/files/last_ned_data_eldre.xlsx" id="___user_extra_38" moveable="true" removeable="true" resizeable="true" target="_blank" text="Data" tooltip="Last ned data" width="50" x="608" y="6" />
 <Component classes="ia-panel ia-panel-header ia-explorer-item" editable="true" height="414" icon="$IAICON/48x48/text_code.png" id="dataExplorer" moveable="true" name="Data Explorer" removeable="true" resizeable="true" visible="true" width="130" x="5" y="28">
 	<Description>The data explorer component of the report.</Description>
@@ -250,7 +250,7 @@
 	<Property description="Show the legend colour in the table?" id="showLegendColor" name="Show Legend Colour" type="boolean" value="false" />
 	<Column alias="Norge" name="#1" width="0.5" />
 </Table>
-<Image href="/helseatlas/v1/eldre" anchor="left" editable="true" height="20" id="___user_extra_54" moveable="true" removeable="true" rescale="true" resizeable="true" src="./___user_extra_54.jpg" target="_parent" x="10" y="5" />
+<Image href="/helseatlas/v2/eldre" anchor="left" editable="true" height="20" id="___user_extra_54" moveable="true" removeable="true" rescale="true" resizeable="true" src="./___user_extra_54.jpg" target="_parent" x="10" y="5" />
 <Button editable="true" height="15" href="/helseatlas/statisk/kart" id="___user_extra_55" moveable="true" removeable="true" resizeable="true" target="_blank" text="Fargegrupper" tooltip="Opptaksområdene er delt inn i grupper (farger) med metoden naturlig brudd (Jenks’ natural breaks), og det er brukt fire grupper (i noen tilfeller færre grupper). Gruppene defineres slik at det er størst mulig forskjeller mellom gruppene og minst mulig forskjeller mellom opptaksområdene innad i hver gruppe. Klikk for å lese mer" width="68" x="339" y="6" />
 <Image anchor="left" editable="true" height="95" href="/helseatlas" id="___user_extra_57" moveable="true" removeable="true" rescale="true" resizeable="true" src="./___user_extra_57.jpg" target="_parent" x="8" y="475" />
 </AtlasInterface>

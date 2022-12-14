@@ -222,7 +222,7 @@
 </SubstitutionVariables>
 <Button editable="true" height="15" href="/helseatlas/files/psykiskhelsevernogrus.pdf" id="___user_extra_36" moveable="true" removeable="true" resizeable="true" target="_blank" text="Rapport" tooltip="Last ned rapport" width="58" x="412" y="6" />
 <Button editable="true" height="15" href="/helseatlas/statisk/om" id="___user_extra_39" moveable="true" removeable="true" resizeable="true" target="_blank" text="Om helseatlas" tooltip="Om helseatlas" width="65" x="662" y="6" />
-<Button editable="true" height="15" href="/helseatlas/v1/psyk" id="___user_extra_37" moveable="true" removeable="true" resizeable="true" target="_blank" text="Faktaark" tooltip="Last ned faktaark" width="58" x="546" y="6" />
+<Button editable="true" height="15" href="/helseatlas/v2/psyk" id="___user_extra_37" moveable="true" removeable="true" resizeable="true" target="_blank" text="Faktaark" tooltip="Last ned faktaark" width="58" x="546" y="6" />
 <Button editable="true" height="15" href="/helseatlas/files/psykiskhelsevernogtsb_data.xlsx" id="___user_extra_38" moveable="true" removeable="true" resizeable="true" target="_blank" text="Data" tooltip="Last ned data" width="50" x="608" y="6" />
 <Component classes="ia-panel ia-panel-header ia-explorer-item" editable="true" height="433" icon="$IAICON/48x48/text_code.png" id="dataExplorer" moveable="true" name="Data Explorer" removeable="true" resizeable="true" visible="true" width="130" x="6" y="30">
 	<Description>The data explorer component of the report.</Description>
@@ -254,7 +254,7 @@
 	<Column alias="Innbyggarar" name="Innb" width="0.5" />
 </Table>
 <Button editable="true" height="15" href="/helseatlas/statisk/kart" id="___user_extra_55" moveable="true" removeable="true" resizeable="true" target="_blank" text="Fargegrupper" tooltip="Buområder er delt inn i grupper (farger) med metode naturlig brudd (Jenks’ natural breaks), og det er brukt fire grupper (i nokon tilfeller færre grupper). Gruppene er definert slik at det blir størst mogeleg forskjeller mellom gruppene og minst mogeleg forskjeller mellom opptaksområdene innad i kvar gruppe. Klikk for å lese meir" width="68" x="475" y="6" />
-<Image href="/helseatlas/v1/psyk" anchor="left" editable="true" id="___user_extra_54" maintain-aspect-ratio="false" moveable="true" removeable="true" rescale="true" resizeable="true" src="./___user_extra_54_liten.png" target="_parent" x="5" y="5" />
+<Image href="/helseatlas/v2/psyk" anchor="left" editable="true" id="___user_extra_54" maintain-aspect-ratio="false" moveable="true" removeable="true" rescale="true" resizeable="true" src="./___user_extra_54_liten.png" target="_parent" x="5" y="5" />
 <Image href="/helseatlas" anchor="left" editable="true" id="___user_extra_57" maintain-aspect-ratio="true" moveable="true" removeable="true" rescale="true" resizeable="true" src="./___user_extra_57_vid.png" target="_parent" width="100" x="6" y="472" />
 <Image href="/helseatlas" anchor="left" editable="true" id="___user_extra_56" maintain-aspect-ratio="true" moveable="true" removeable="true" rescale="true" resizeable="true" src="./___user_extra_56_liten.png" target="_parent" x="14" y="550" />
 </AtlasInterface>
