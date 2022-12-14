@@ -16,6 +16,8 @@ const formatIndicatorValues = (
   showLevelFilter: string,
   unitName: string
 ) => {
+  console.log(indicator);
+
   if (!indicator[0]) {
     return (
       <td
@@ -161,6 +163,14 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
   const tr_click_handler = () => {
     update_selected_row(selected_row === ind_id ? undefined : ind_id);
   };
+  const latest_full_year =
+    (indicatorData[0].delivery_latest_affirm
+      ? new Date(indicatorData[0].delivery_latest_affirm)
+      : new Date(0)
+    ).getFullYear() - 1;
+
+  const this_year_full: boolean = latest_full_year >= indicatorData[0].year;
+  //  console.log(latest_full_year >= indicatorData[0].year);
 
   return (
     <>
@@ -170,7 +180,10 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
         className={`${tr_indicator_class} ${medicalFieldClass} ${style.indicator}`}
         data-testid={`indicatorrow_${ind_id}`}
       >
-        <IndicatorDescription description={description} />
+        <IndicatorDescription
+          description={description}
+          complete={this_year_full}
+        />
         {indPerUnit}
       </tr>
       {tr_fig}
