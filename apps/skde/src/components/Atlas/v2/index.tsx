@@ -1,11 +1,11 @@
-import Layout from "../../Layout";
-import { TopBanner } from "../../Atlas/topBanner";
-import styles from "../../../styles/Atlas.module.css";
+import { AtlasLayout } from "../../Layout";
+import { TopBanner } from "../TopBanner";
+import styles from "./atlas.module.css";
 import { Chapters } from "../../Chapters";
 import { DataProps, ChapterProps, MapData } from "../../../types";
-import { TableOfContents } from "../../toc";
-import { OrderedList } from "../../toc/orderedlist";
-import { ListItem } from "../../toc/listitem";
+import { TableOfContents } from "../../TableOfContents";
+import { OrderedList } from "../../TableOfContents/OrderedList";
+import { ListItem } from "../../TableOfContents/ListItem";
 import { DataContext } from "../../Context";
 
 export interface AtlasPageProps {
@@ -22,6 +22,7 @@ type AtlasJson = {
   shortTitle: string;
   ingress: string;
   kapittel: ChapterProps[];
+  ia?: boolean;
 };
 
 const AtlasPage: React.FC<AtlasPageProps> = ({
@@ -42,14 +43,9 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
 
   return (
     <DataContext.Provider value={{ atlasData, mapData }}>
-      <Layout lang={obj.lang === "en" ? "en" : "no"}>
+      <AtlasLayout lang={obj.lang === "en" ? "en" : "no"}>
         <main data-testid="v2atlas">
-          <TopBanner
-            mainTitle={obj.shortTitle}
-            pdfUrl=""
-            lang={obj.lang}
-            ia={false}
-          />
+          <TopBanner mainTitle={obj.shortTitle} lang={obj.lang} ia={obj.ia} />
           <div className={`${styles.atlasContent}`}>
             <TableOfContents>
               <OrderedList>
@@ -87,7 +83,7 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
             </div>
           </div>
         </main>
-      </Layout>
+      </AtlasLayout>
     </DataContext.Provider>
   );
 };

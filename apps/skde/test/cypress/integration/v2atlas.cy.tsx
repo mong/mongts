@@ -6,12 +6,14 @@ context("v2 atlas", () => {
   });
 
   it("Simple start", () => {
+    cy.visit("/helseatlas/v2/test_atlas");
     cy.get("h1").contains("Testatlas (ikke publiser)");
     cy.get('[data-testid="tocItem"]:visible').click(5, 5); // Click ToC element
     cy.url().should("include", "ms-syke-barn-under"); // Check url change
   });
 
   it("Test expansion of result box", () => {
+    cy.visit("/helseatlas/v2/test_atlas");
     cy.get('[data-testid="resultbox"]').invoke("height").should("be.lt", 600); // Check if result box is not expanded
     cy.get('[data-testid="resultbox_expandButton"]').click(); // Open the result box
     cy.get('[data-testid="resultbox"]').invoke("height").should("be.gt", 600); // Check if result box is expanded
@@ -23,6 +25,7 @@ context("v2 atlas", () => {
     cy.get('[data-testid="resultbox"]').invoke("height").should("be.lt", 600); // Check if result box is not expanded
   });
   it("Test the selection popup inside result box", () => {
+    cy.visit("/helseatlas/v2/test_atlas");
     cy.get('[data-testid="resultbox_ingress"]').click(); // Open the result box by click on text
     cy.get('[data-testid="resultbox"]').invoke("height").should("be.gt", 600); // Check if result box is expanded
 
@@ -48,6 +51,7 @@ context("v2 atlas", () => {
   });
 
   it(" Test the carousel", () => {
+    cy.visit("/helseatlas/v2/test_atlas");
     cy.get('[data-testid="resultbox_ingress"]').click(); // Expand the result box
     cy.get('[data-testid="resultbox"]').invoke("height").should("be.gt", 600); // Check if result box is expanded
 
@@ -93,6 +97,7 @@ context("v2 atlas", () => {
   });
 
   it("Test expansion of fact box", () => {
+    cy.visit("/helseatlas/v2/test_atlas");
     cy.get('[data-testid="factbox"]').invoke("height").should("be.lt", 100);
     cy.get('[data-testid="factbox"]').click();
     cy.get('[data-testid="factbox"]').invoke("height").should("be.gt", 200);
@@ -103,6 +108,7 @@ context("v2 atlas", () => {
   });
 
   it("Test select HF", () => {
+    cy.visit("/helseatlas/v2/test_atlas");
     cy.get('[data-testid="circle_UNN_selected"]').should("not.exist");
     cy.get('[data-testid="rect_UNN_selected"]').should("not.exist");
     cy.visit("/helseatlas/v2/test_atlas?bohf=UNN");

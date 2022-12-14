@@ -221,7 +221,7 @@
 	<Variable description="The upper limit of the map indicator" id="upperLimit" />
 </SubstitutionVariables>
 <Button editable="true" height="15" href="/helseatlas/files/copd-healthcare-atlas.pdf" id="___user_extra_36" moveable="true" removeable="true" resizeable="true" target="_blank" text="Report" tooltip="Download report" width="58" x="580" y="6" />
-<Button editable="true" height="15" href="/helseatlas/en/kols" id="___user_extra_37" moveable="true" removeable="true" resizeable="true" target="_blank" text="Fact sheets" tooltip="Download factsheets" width="58" x="650" y="6" />
+<Button editable="true" height="15" href="/helseatlas/en/v2/kols" id="___user_extra_37" moveable="true" removeable="true" resizeable="true" target="_blank" text="Fact sheets" tooltip="Download factsheets" width="58" x="650" y="6" />
 <Component classes="ia-panel ia-panel-header ia-explorer-item" editable="true" height="414" icon="$IAICON/48x48/text_code.png" id="dataExplorer" moveable="true" name="Data Explorer" removeable="true" resizeable="true" visible="true" width="130" x="6" y="29">
 	<Description>The data explorer component of the report.</Description>
 	<Property description="The title" id="title" name="Title" type="string" value="Maps&lt;br&gt;&lt;small&gt;push on PDF symbol to open factsheet&lt;/small&gt;" />
@@ -251,5 +251,5 @@
 	<Column alias="Norway" name="#1" width="0.5" />
 </Table>
 <Button editable="true" height="15" href="/helseatlas/en/static/map"  id="___user_extra_55" moveable="true" removeable="true" resizeable="true" target="_blank" text="Color groups" tooltip="The hospital referral areas are divided into groups (colors) using the natural breaks method (Jenks&apos; natural breaks), and four groups are used (in some cases fewer groups). The method maximize the variation between groups and minimize the variation within groups. Click to read more" width="68" x="500" y="6" />
-<Image href="/helseatlas/en/kols" anchor="left" editable="true" height="20" id="copd_logo_eng" moveable="true" removeable="true" rescale="true" resizeable="true" src="./copd_logo_eng.png" target="_parent" x="9" y="5" />
+<Image href="/helseatlas/en/v2/kols" anchor="left" editable="true" height="20" id="copd_logo_eng" moveable="true" removeable="true" rescale="true" resizeable="true" src="./copd_logo_eng.png" target="_parent" x="9" y="5" />
 </AtlasInterface>

@@ -13,8 +13,8 @@ const json2atlas = {
 export const Chapters = ({ innhold, lang }: ChaptersProps) => {
   return (
     <>
-      {innhold.map((chapter) => (
-        <Chapter {...chapter} key={chapter.overskrift} lang={lang} />
+      {innhold.map((chapter, i) => (
+        <Chapter {...chapter} key={`${i}_${chapter.overskrift}`} lang={lang} />
       ))}
     </>
   );
@@ -55,7 +55,7 @@ const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
                   published: box.publisert,
                   updated: box.oppdatert,
                 }
-              : { children: box.tekst };
+              : { children: box.tekst, lang: lang };
 
           const Component: React.FC<typeof props> = json2atlas[box.type];
           /* Husk: endre key til noe mer unikt to linjer under */
