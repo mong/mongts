@@ -1,4 +1,5 @@
 import { Markdown } from "../Markdown";
+import { Ingress } from "../Ingress";
 import { AtlasLayout } from "../Layout";
 import styles from "./Static.module.css";
 
@@ -7,6 +8,7 @@ export interface PageContentProps {
   frontMatter: {
     title: string;
     lang: "nb" | "en" | "nn";
+    ingress?: string;
   };
 }
 
@@ -23,6 +25,7 @@ export const PageContent: React.FC<PageContentProps> = ({
           </div>
           <div className={styles.article}>
             <div className={styles.article__content}>
+              {frontMatter.ingress && <Ingress>{frontMatter.ingress}</Ingress>}
               <Markdown lang={frontMatter.lang}>{content}</Markdown>
             </div>
           </div>
