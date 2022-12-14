@@ -3,6 +3,10 @@ import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
 import { PluggableList } from "react-markdown/lib/react-markdown";
+import Accordion from "@mui/material/Accordion";
+import AccordionSummary from "@mui/material/AccordionSummary";
+import AccordionDetails from "@mui/material/AccordionDetails";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 /**
  * ## Wrapper for markdown content
@@ -96,6 +100,19 @@ export const Markdown = ({ children, lang }: MarkdownProp) => {
         </a>
       );
     },
+    details: (object) => {
+      return (
+        <Accordion>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+            {object.children[0]}
+          </AccordionSummary>
+          <AccordionDetails>
+            {object.children.filter((_, i) => i !== 0)}
+          </AccordionDetails>
+        </Accordion>
+      );
+    },
+    summary: (object) => <div>{object.children}</div>,
   };
   return (
     <>
