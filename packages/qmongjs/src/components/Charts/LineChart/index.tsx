@@ -414,7 +414,6 @@ const LineChart = (props: Props) => {
                 y={innerWidth * 1.15}
                 style={{
                   fontSize: `${7 + innerWidth * 0.02}px`,
-                  fontFamily: theme.y_axis_label_font_family,
                 }}
               >
                 {yaxisLabel}

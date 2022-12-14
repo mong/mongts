@@ -79,11 +79,11 @@ const FigureButtons = (props: Props) => {
       ctx.fillStyle = "#fafafa";
       ctx.fillRect(0, 0, canvasWidth, canvasHeight);
       ctx.fillStyle = "black";
-      ctx.font = "20px Arial";
+      ctx.font = "20px";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(figTitle, canvasWidth / 2, 25);
-      ctx.font = "12px Arial";
+      ctx.font = "12px";
       ctx.textAlign = "start";
       ctx.fillText(`Kilde: ${description.full_name}`, 25, 75 + height);
 
