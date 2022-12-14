@@ -2,16 +2,10 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 import styles from "../src/styles/Pages.module.css";
 import { FrontPageLayout } from "../src/components/Layout";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
+import { Markdown } from "../src/components/Markdown";
 const CONTENT_DIR = join(process.cwd(), "_posts/innhold");
 
 interface Props {
@@ -28,27 +22,7 @@ const Content = ({ content, frontMatter }: Props) => {
         <div className={styles.article}>
           <div className={styles.article__ingress}>{frontMatter.ingress}</div>
           <div className={styles.article__content}>
-            <ReactMarkdown
-              rehypePlugins={[rehypeRaw]}
-              remarkPlugins={[remarkGfm]}
-              components={{
-                details: (object) => {
-                  return (
-                    <Accordion>
-                      <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-                        {object.children[0]}
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        {object.children.filter((_, i) => i !== 0)}
-                      </AccordionDetails>
-                    </Accordion>
-                  );
-                },
-                summary: (object) => <div>{object.children}</div>,
-              }}
-            >
-              {content}
-            </ReactMarkdown>
+            <Markdown>{content}</Markdown>
           </div>
         </div>
       </div>
