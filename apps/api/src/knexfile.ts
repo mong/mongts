@@ -13,6 +13,7 @@ const connections: { [env: string]: Knex.Config } = {
     client: "mysql",
     connection: {
       host: "127.0.0.1",
+      port: Number(process.env.DB_PORT) ?? 3306,
       user: "imongr",
       password: "imongr",
       database: "imongr",
