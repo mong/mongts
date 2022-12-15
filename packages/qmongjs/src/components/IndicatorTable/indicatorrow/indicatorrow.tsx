@@ -16,8 +16,6 @@ const formatIndicatorValues = (
   showLevelFilter: string,
   unitName: string
 ) => {
-  console.log(indicator);
-
   if (!indicator[0]) {
     return (
       <td
@@ -163,15 +161,24 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
   const tr_click_handler = () => {
     update_selected_row(selected_row === ind_id ? undefined : ind_id);
   };
-  const latest_full_year =
-    (indicatorData[0].delivery_latest_affirm
-      ? new Date(indicatorData[0].delivery_latest_affirm)
-      : new Date(0)
-    ).getFullYear() - 1;
 
-  const this_year_full: boolean = latest_full_year >= indicatorData[0].year;
-  //  console.log(latest_full_year >= indicatorData[0].year);
+  // Add two day to the delivery_latest_affirm date, in case the date is set to late December.
+  // Thus, if delivery_latest_affirm date is set to December 31 2020 then new date will be January 2 2021.
+  // Then delivery_latest_affirm_year will be defined as 2021 - 1 = 2020.
+  const delivery_latest_affirm_year = indicatorData[0].delivery_latest_affirm
+    ? new Date(
+        new Date(indicatorData[0].delivery_latest_affirm).setDate(
+          new Date(indicatorData[0].delivery_latest_affirm).getDate() + 2
+        )
+      ).getFullYear() - 1
+    : undefined;
 
+  // Only define last_complete_year if it is before the year of the data.
+  const last_complete_year =
+    delivery_latest_affirm_year &&
+    indicatorData[0].year > delivery_latest_affirm_year
+      ? delivery_latest_affirm_year
+      : undefined;
   return (
     <>
       <tr
@@ -182,7 +189,7 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
       >
         <IndicatorDescription
           description={description}
-          complete={this_year_full}
+          complete={last_complete_year}
         />
         {indPerUnit}
       </tr>

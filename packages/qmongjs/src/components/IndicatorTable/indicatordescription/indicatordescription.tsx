@@ -5,7 +5,7 @@ import { customFormat } from "../../../helpers/functions/localFormater";
 
 export interface DescriptionProps {
   description: Description;
-  complete: boolean;
+  complete?: number;
 }
 
 export const IndicatorDescription: React.FC<DescriptionProps> = (props) => {
@@ -39,11 +39,12 @@ export const IndicatorDescription: React.FC<DescriptionProps> = (props) => {
             ØNSKET MÅLNIVÅ: {level_sign}{" "}
             {customFormat(numberFormat)(level_green)}
           </h4>
-          {complete ? undefined : (
+          {complete ? (
             <h4 style={{ color: "#e30713" }}>
-              Data for valgt år er ikke komplett
+              Data for valgt år er ikke komplett. Siste komplette år er{" "}
+              {complete}
             </h4>
-          )}
+          ) : undefined}
         </div>
       )}
     </td>
