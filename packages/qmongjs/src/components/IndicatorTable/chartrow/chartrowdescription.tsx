@@ -20,20 +20,6 @@ const ChartRowDescription = ({
   description_title = "Om kvalitetsindikatoren",
   delivery_time,
 }: Props) => {
-  const delivery_time_text = delivery_time ? (
-    <p>
-      Data ble sist oppdatert{" "}
-      {delivery_time.toLocaleString("no-NO", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-        timeZone: "CET",
-      })}{" "}
-    </p>
-  ) : (
-    <></>
-  );
-
   return (
     <div className={style.description_container}>
       <Accordion>
@@ -52,7 +38,18 @@ const ChartRowDescription = ({
             >
               {description_text}
             </ReactMarkdown>
-            {delivery_time_text}
+            {delivery_time && (
+              <p>
+                Data ble sist oppdatert{" "}
+                {delivery_time.toLocaleString("no-NO", {
+                  day: "numeric",
+                  month: "long",
+                  year: "numeric",
+                  timeZone: "CET",
+                })}
+                .
+              </p>
+            )}
           </>
         </AccordionDetails>
       </Accordion>
