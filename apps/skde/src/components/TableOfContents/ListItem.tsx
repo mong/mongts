@@ -21,7 +21,7 @@ export const ListItem: React.FC<ListItemProps> = ({
   const isVisbile = href
     ? useIntersectionByID(href.replace("#", ""), "0px")
     : false;
- 
+
   return (
     <li
       className={`${style.tocListItem} ${isVisbile ? style.active : isVisbile}`}
