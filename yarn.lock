@@ -4008,12 +4008,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/d3-scale@npm:*, @types/d3-scale@npm:4.0.2":
+"@types/d3-scale@npm:*":
   version: 4.0.2
   resolution: "@types/d3-scale@npm:4.0.2"
   dependencies:
     "@types/d3-time": "*"
   checksum: 6b3c0337f38f82b582d9f3190fde82edfce7ffafb371e5b2464c443137c2660bac644099d259f1f5cc829085eb5688bed0bea2b336a957d0845433bd07bf2ddd
+  languageName: node
+  linkType: hard
+
+"@types/d3-scale@npm:4.0.3":
+  version: 4.0.3
+  resolution: "@types/d3-scale@npm:4.0.3"
+  dependencies:
+    "@types/d3-time": "*"
+  checksum: 76684da8519ab5f2210e647f74f96ece9c6816dea4ad5d76131121703a5268cc65687a8bc9ebbf4a44039482247336d98811ecc3fbfeb7f0122fdce4bb295547
   languageName: node
   linkType: hard
 
@@ -19255,7 +19264,7 @@ __metadata:
     "@types/d3-array": 3.0.3
     "@types/d3-format": 3.0.1
     "@types/d3-geo": 3.0.3
-    "@types/d3-scale": 4.0.2
+    "@types/d3-scale": 4.0.3
     "@types/d3-shape": 3.1.1
     "@types/d3-time-format": 4.0.0
     "@types/node": 18.11.18
