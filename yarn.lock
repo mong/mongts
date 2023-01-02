@@ -3948,7 +3948,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/d3-interpolate@npm:*":
+"@types/d3-interpolate@npm:*, @types/d3-interpolate@npm:^3.0.1":
   version: 3.0.1
   resolution: "@types/d3-interpolate@npm:3.0.1"
   dependencies:
@@ -4023,6 +4023,15 @@ __metadata:
   dependencies:
     "@types/d3-time": ^2
   checksum: 65dbf85f07a4d6ac26396075b0faa1930cfebb96dc248629d4b82c22457c89161d0f070f9a5554adccee80b959e2c6d7c1ef6b7355743afe91050d71014fe3cf
+  languageName: node
+  linkType: hard
+
+"@types/d3-scale@npm:^4.0.2":
+  version: 4.0.3
+  resolution: "@types/d3-scale@npm:4.0.3"
+  dependencies:
+    "@types/d3-time": "*"
+  checksum: 76684da8519ab5f2210e647f74f96ece9c6816dea4ad5d76131121703a5268cc65687a8bc9ebbf4a44039482247336d98811ecc3fbfeb7f0122fdce4bb295547
   languageName: node
   linkType: hard
 
@@ -5043,6 +5052,20 @@ __metadata:
   version: 2.6.0
   resolution: "@visx/point@npm:2.6.0"
   checksum: 56be8e31abaf10a182d328141a0929ea28d2956d4c06469fc51cde3f30f64ae035aaa0771f44010c3484ae63c7cd1bc9b782cde6cfcf9713190c20b301ab181e
+  languageName: node
+  linkType: hard
+
+"@visx/scale@npm:2.17.0":
+  version: 2.17.0
+  resolution: "@visx/scale@npm:2.17.0"
+  dependencies:
+    "@types/d3-interpolate": ^3.0.1
+    "@types/d3-scale": ^4.0.2
+    "@types/d3-time": ^2.0.0
+    d3-interpolate: ^3.0.1
+    d3-scale: ^4.0.2
+    d3-time: ^2.1.1
+  checksum: 38d36ed51ef913f0fcfe0a9d466aafe2ec1442eb2ab5e7b99b20bfee278f3b306a7db83b98e2560cf61e7318915fdff42405babb9238a5a1687ca68872f53076
   languageName: node
   linkType: hard
 
@@ -7861,7 +7884,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-interpolate@npm:1 - 3, d3-interpolate@npm:1.2.0 - 3, d3-interpolate@npm:3":
+"d3-interpolate@npm:1 - 3, d3-interpolate@npm:1.2.0 - 3, d3-interpolate@npm:3, d3-interpolate@npm:^3.0.1":
   version: 3.0.1
   resolution: "d3-interpolate@npm:3.0.1"
   dependencies:
@@ -7940,7 +7963,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d3-scale@npm:4, d3-scale@npm:4.0.2":
+"d3-scale@npm:4, d3-scale@npm:4.0.2, d3-scale@npm:^4.0.2":
   version: 4.0.2
   resolution: "d3-scale@npm:4.0.2"
   dependencies:
@@ -19262,7 +19285,7 @@ __metadata:
     "@types/react": 18.0.26
     "@visx/axis": 2.14.0
     "@visx/group": 2.17.0
-    "@visx/scale": 2.2.2
+    "@visx/scale": 2.17.0
     cypress: 12.2.0
     d3-array: 3.2.1
     d3-format: 3.1.0
