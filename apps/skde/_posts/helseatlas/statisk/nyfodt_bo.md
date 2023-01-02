@@ -2,11 +2,8 @@
 filename: nyfodt_bo
 title: Boområder for nyfødtmedisinatlaset
 lang: nb
+ingress: Nedenfor finner du beskrivelse av hvilke kommuner som hører inn under de ulike boområdene/opptaksområdene som nyfødtmedisinatlaset tar utgangspunkt i.
 ---
-
-<div className="ingress">
-Nedenfor finner du beskrivelse av hvilke kommuner som hører inn under de ulike boområdene/opptaksområdene som nyfødtmedisinatlaset tar utgangspunkt i.
-</div>
 
 Befolkningsområder/boområder er definert kommunevis (bydeler/postnummer for OUS og Akershus) på grunnlag av mors adresse og helseforetakenes nedslagsfelt eller ansvarsområde/opptaksområde. Boområder er i denne sammenheng det samme som forstås som opptaksområder for helseforetak eller sykehus. Det vil si området hvor foretaket eller sykehuset har øyeblikkelig-hjelp ansvar for innbyggerne.
 

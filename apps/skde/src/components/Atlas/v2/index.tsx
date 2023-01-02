@@ -7,6 +7,7 @@ import { TableOfContents } from "../../TableOfContents";
 import { OrderedList } from "../../TableOfContents/OrderedList";
 import { ListItem } from "../../TableOfContents/ListItem";
 import { DataContext } from "../../Context";
+import { Ingress } from "../../Ingress";
 
 export interface AtlasPageProps {
   content: string;
@@ -36,8 +37,10 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
     .map((chapter) => {
       const level1 = chapter.overskrift;
       const level2 = chapter.innhold
-        .filter((subChapter) => subChapter.type === "resultatboks")
-        .map((subChapter) => subChapter["overskrift"]);
+        ? chapter.innhold
+            .filter((subChapter) => subChapter.type === "resultatboks")
+            .map((subChapter) => subChapter["overskrift"])
+        : [];
       return { level1, level2 };
     });
 
@@ -78,7 +81,7 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
             </TableOfContents>
             <div className={styles.main_content}>
               <h1>{obj.mainTitle}</h1>
-              <div className="ingress">{obj.ingress}</div>
+              <Ingress>{obj.ingress}</Ingress>
               <Chapters innhold={obj.kapittel} lang={obj.lang} />
             </div>
           </div>
