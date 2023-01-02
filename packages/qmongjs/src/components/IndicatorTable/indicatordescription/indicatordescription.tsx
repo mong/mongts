@@ -39,12 +39,12 @@ export const IndicatorDescription: React.FC<DescriptionProps> = (props) => {
             ØNSKET MÅLNIVÅ: {level_sign}{" "}
             {customFormat(numberFormat)(level_green)}
           </h4>
-          {complete ? (
+          {complete && (
             <h4 style={{ color: "#e30713" }}>
               Data for valgt år er ikke komplett. Siste komplette år er{" "}
               {complete}
             </h4>
-          ) : undefined}
+          )}
         </div>
       )}
     </td>
