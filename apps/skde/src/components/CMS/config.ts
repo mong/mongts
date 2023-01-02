@@ -65,7 +65,7 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
       {
         label: "Ingress",
         name: "ingress",
-        widget: "string",
+        widget: "markdown",
       },
       {
         label: "Språk",
