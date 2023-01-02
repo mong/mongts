@@ -3923,12 +3923,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/d3-geo@npm:*, @types/d3-geo@npm:3.0.2":
+"@types/d3-geo@npm:*":
   version: 3.0.2
   resolution: "@types/d3-geo@npm:3.0.2"
   dependencies:
     "@types/geojson": "*"
   checksum: 23ecb29d818ef62e8a7a8fd97bcea8b9e36ce52035fe8e102fb567f223b7b530716a4dd6d4e66bb353720b027aba76fea60279ffdeb2d6a7ab89e6e3571bca32
+  languageName: node
+  linkType: hard
+
+"@types/d3-geo@npm:3.0.3":
+  version: 3.0.3
+  resolution: "@types/d3-geo@npm:3.0.3"
+  dependencies:
+    "@types/geojson": "*"
+  checksum: d2f0d386024efb97a0829488cf31d574669ff37f452bb4bb58ba62b03e705e583e166ba30844beffb51119909bf1a168a1efc91885c55ab72da9a52a46c114e2
   languageName: node
   linkType: hard
 
@@ -19236,7 +19245,7 @@ __metadata:
     "@sentry/tracing": 7.28.1
     "@types/d3-array": 3.0.3
     "@types/d3-format": 3.0.1
-    "@types/d3-geo": 3.0.2
+    "@types/d3-geo": 3.0.3
     "@types/d3-scale": 4.0.2
     "@types/d3-shape": 3.1.0
     "@types/d3-time-format": 4.0.0
