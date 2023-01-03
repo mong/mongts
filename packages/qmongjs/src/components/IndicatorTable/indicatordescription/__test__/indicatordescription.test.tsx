@@ -30,3 +30,17 @@ it("renders with defined green level", () => {
   );
   expect(container).toMatchSnapshot();
 });
+
+it("renders with non-complete year", () => {
+  const desc = description[1];
+  const { container } = render(
+    <table>
+      <tbody>
+        <tr>
+          <IndicatorDescription description={desc} complete={1979} />
+        </tr>
+      </tbody>
+    </table>
+  );
+  expect(container).toMatchSnapshot();
+});
