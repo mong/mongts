@@ -40,7 +40,7 @@ const ChartRowDescription = ({
             </ReactMarkdown>
             {delivery_time && (
               <p>
-                Data ble sist oppdatert{" "}
+                Disse dataene ble lastet opp{" "}
                 {delivery_time.toLocaleString("no-NO", {
                   day: "numeric",
                   month: "long",
