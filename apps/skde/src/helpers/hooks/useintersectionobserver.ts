@@ -4,7 +4,10 @@ export const useIntersectionByID = (elementID: string, rootMargin: string) => {
   const [isVisible, setVisibility] = useState<boolean>(false);
 
   useEffect(() => {
-    const element = document.getElementById(elementID) ?? undefined;
+    const element = document.getElementById(elementID);
+    if (!element) {
+      return;
+    }
     const observer = new IntersectionObserver(
       ([entry]) => {
         setVisibility(entry.isIntersecting);

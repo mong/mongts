@@ -18,9 +18,7 @@ export const ListItem: React.FC<ListItemProps> = ({
   expanded,
   setExpanded,
 }) => {
-  const isVisbile = href
-    ? useIntersectionByID(href.replace("#", ""), "0px")
-    : false;
+  const isVisbile = useIntersectionByID(href.replace("#", ""), "0px");
 
   return (
     <li
