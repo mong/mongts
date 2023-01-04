@@ -85,8 +85,9 @@ const fetchSelectionYears = async (
   context: string,
   type: string
 ) => {
+  const host = API_HOST;
   const response = await fetch(
-    `${API_HOST}/data/${registerShortName}/years?context=${context}&type=${type}`
+    `${host}/data/${registerShortName}/years?context=${context}&type=${type}`
   );
   if (!response.ok) {
     throw new Error(response.statusText);
