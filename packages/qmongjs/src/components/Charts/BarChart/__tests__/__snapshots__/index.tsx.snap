@@ -1975,7 +1975,8 @@ exports[`Render zoomed with levels @500px and gray overlay (not complete data) 1
       </g>
       <rect
         height="150"
-        style="opacity: 0.4;"
+        rx="5"
+        style="opacity: 0.35;"
         width="500"
       />
       <text
@@ -1983,10 +1984,11 @@ exports[`Render zoomed with levels @500px and gray overlay (not complete data) 1
         font-size="30"
         stroke="black"
         text-anchor="middle"
-        x="250"
+        x="260"
         y="75"
       >
-        Data er ikke komplett!
+        Data er ikke komplett. Siste komplette år er 
+        1979
       </text>
     </svg>
   </div>
