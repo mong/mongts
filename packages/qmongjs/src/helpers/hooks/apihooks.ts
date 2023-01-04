@@ -80,21 +80,13 @@ export const useIndicatorQuery = (params: FetchIndicatorParams) => {
   );
 };
 
-const selectionYearsUrl = (
-  registerShortName: string,
-  context: string,
-  type: string
-): string => {
-  return `${API_HOST}/data/${registerShortName}/years?context=${context}&type=${type}`;
-};
-
 const fetchSelectionYears = async (
   registerShortName: string,
   context: string,
   type: string
 ) => {
   const response = await fetch(
-    selectionYearsUrl(registerShortName, context, type)
+    `${API_HOST}/data/${registerShortName}/years?context=${context}&type=${type}`
   );
   if (!response.ok) {
     throw new Error(response.statusText);
