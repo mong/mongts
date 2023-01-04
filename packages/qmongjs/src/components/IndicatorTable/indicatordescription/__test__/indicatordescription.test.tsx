@@ -37,7 +37,7 @@ it("renders with non-complete year", () => {
     <table>
       <tbody>
         <tr>
-          <IndicatorDescription description={desc} complete={1979} />
+          <IndicatorDescription description={desc} lastCompleteYear={1979} />
         </tr>
       </tbody>
     </table>

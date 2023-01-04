@@ -1629,7 +1629,7 @@ exports[`Render without levels @500px 1`] = `
 </div>
 `;
 
-exports[`Render zoomed with levels @500px 1`] = `
+exports[`Render zoomed with levels @500px and gray overlay (not complete data) 1`] = `
 <div>
   <div
     style="width: 90%; margin: auto;"
@@ -1973,6 +1973,21 @@ exports[`Render zoomed with levels @500px 1`] = `
           </text>
         </g>
       </g>
+      <rect
+        height="150"
+        style="opacity: 0.4;"
+        width="500"
+      />
+      <text
+        fill="black"
+        font-size="30"
+        stroke="black"
+        text-anchor="middle"
+        x="250"
+        y="75"
+      >
+        Data er ikke komplett!
+      </text>
     </svg>
   </div>
 </div>
