@@ -31,13 +31,13 @@ jobs:
       - run: yarn run check-format
       - name: Test build
         env:
-          NEXT_PUBLIC_API_HOST: https://dc9yut6ftb9m1.cloudfront.net
+          NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
         run: |
           yarn run export
       - name: Build and sync main to S3 bucket skde.org
         if: github.ref == 'refs/heads/main'
         env:
-          NEXT_PUBLIC_API_HOST: https://dc9yut6ftb9m1.cloudfront.net
+          NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
         run: |
           yarn run export
           aws s3 sync apps/skde/out s3://skde.org \
