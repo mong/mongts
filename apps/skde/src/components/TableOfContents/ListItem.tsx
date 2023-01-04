@@ -3,49 +3,22 @@ import { useIntersectionByID } from "../../helpers/hooks/useintersectionobserver
 import style from "./ListItem.module.css";
 
 type ListItemProps = {
-  children: React.ReactNode;
-  expanded?: number | "none" | "all";
-  setExpanded?: React.Dispatch<React.SetStateAction<number | "none" | "all">>;
-  i?: number;
+  children?: React.ReactNode;
+  expanded?: string;
+  setExpanded?: React.Dispatch<React.SetStateAction<string>>;
+  href: string;
+  linkTitle: string;
+  i?: string;
 };
 
 export const ListItem: React.FC<ListItemProps> = ({
   children,
+  href,
+  linkTitle,
   expanded,
   setExpanded,
-  i,
 }) => {
-  const [expandedChild, setExpandedChild] = React.useState<
-    number | "none" | "all"
-  >("none");
-
-  const ATag: React.HTMLProps<HTMLAnchorElement>[] = React.Children.map(
-    children,
-    (child) => {
-      if (React.isValidElement(child)) {
-        if (child.type === "a") {
-          return child.props;
-        }
-      }
-    }
-  );
-  const elemID: string = (ATag[0].href ?? "").replace("#", "");
-  const isVisbile = useIntersectionByID(elemID, "0px");
-
-  const nestedChildren = React.Children.map(children, (child) => {
-    if (React.isValidElement(child)) {
-      if (child.type !== "a") {
-        return React.cloneElement(child, {
-          expanded: expandedChild,
-          setExpanded: setExpandedChild,
-        });
-      }
-    }
-  }).map((child, index) => {
-    return React.cloneElement(child, {
-      i: index,
-    });
-  });
+  const isVisbile = useIntersectionByID(href.replace("#", ""), "0px");
 
   return (
     <li
@@ -53,16 +26,14 @@ export const ListItem: React.FC<ListItemProps> = ({
       data-testid="tocItem"
     >
       <a
-        {...ATag[0]}
+        href={href}
         onClick={() => {
-          if (typeof i === "number" || i) {
-            setExpanded((state) => {
-              return state === i ? "none" : i;
-            });
-          }
+          setExpanded((state) => (state === href ? "none" : href));
         }}
-      />
-      {(expanded === i || expanded === "all") && nestedChildren}
+      >
+        {linkTitle}
+      </a>
+      {(expanded === href || expanded === "all") && children}
     </li>
   );
 };

@@ -4,8 +4,6 @@ import styles from "./atlas.module.css";
 import { ChapterProps, Chapters } from "../../Chapters";
 import { AtlasData } from "../../../types";
 import { TableOfContents } from "../../TableOfContents";
-import { OrderedList } from "../../TableOfContents/OrderedList";
-import { ListItem } from "../../TableOfContents/ListItem";
 import { DataContext } from "../../Context";
 import { Ingress } from "../../Ingress";
 
@@ -32,16 +30,22 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
   mapData,
 }) => {
   const obj: AtlasJson = JSON.parse(content);
-  const tocContent = obj.kapittel
+
+  const tocData = obj.kapittel
     .filter((chapter) => chapter.overskrift)
     .map((chapter) => {
-      const level1 = chapter.overskrift;
-      const level2 = chapter.innhold
+      const level = 1;
+      const elemID = chapter.overskrift;
+      const children = chapter.innhold
         ? chapter.innhold
             .filter((subChapter) => subChapter.type === "resultatboks")
-            .map((subChapter) => subChapter["overskrift"])
+            .map((subChapter) => ({
+              level: 2,
+              elemID: subChapter["overskrift"],
+              children: [],
+            }))
         : [];
-      return { level1, level2 };
+      return { level, elemID, children };
     });
 
   return (
@@ -50,35 +54,7 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
         <main data-testid="v2atlas">
           <TopBanner mainTitle={obj.shortTitle} lang={obj.lang} ia={obj.ia} />
           <div className={`${styles.atlasContent}`}>
-            <TableOfContents>
-              <OrderedList>
-                {tocContent.map((cont) => {
-                  const level2Header = (
-                    <OrderedList>
-                      {cont.level2.map((level2) => {
-                        const level2ID = (cont.level1 + "_" + level2)
-                          .toLowerCase()
-                          .replace(/\s/g, "-");
-                        return (
-                          <ListItem key={level2ID}>
-                            <a href={`#${level2ID}`}>{level2}</a>
-                          </ListItem>
-                        );
-                      })}
-                    </OrderedList>
-                  );
-                  const level1ID = cont.level1
-                    .toLowerCase()
-                    .replace(/\s/g, "-");
-                  return (
-                    <ListItem key={level1ID}>
-                      <a href={`#${level1ID}`}>{cont.level1}</a>
-                      {level2Header}
-                    </ListItem>
-                  );
-                })}
-              </OrderedList>
-            </TableOfContents>
+            <TableOfContents tocData={tocData} />
             <div className={styles.main_content}>
               <h1>{obj.mainTitle}</h1>
               <Ingress>{obj.ingress}</Ingress>
