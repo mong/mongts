@@ -51,7 +51,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 In production we build static html files that we serve in an S3 bucket on AWS. To reproduce this locally you can
 
 ```bash
-export NEXT_PUBLIC_API_HOST="https://dc9yut6ftb9m1.cloudfront.net" # Our API in production
+export NEXT_PUBLIC_API_HOST="https://prod-mong-api.skde.org" # Our API in production
 yarn install
 yarn export
 npx serve apps/skde/out
