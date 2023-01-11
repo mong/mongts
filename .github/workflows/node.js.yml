@@ -31,7 +31,7 @@ jobs:
       - run: yarn run test
       - name: Archive production artifacts
         if: failure()
-        uses: actions/upload-artifact@v3.1.1
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: cypress videos
           path: apps/skde/cypress/videos
