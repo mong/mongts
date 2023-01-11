@@ -5,7 +5,16 @@ import { Indicator } from "types";
 
 export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
   db
-    .select("agg_data.*", "ind.type", "ind.include", "ind.min_denominator")
+    .select(
+      "agg_data.*",
+      "ind.type",
+      "ind.include",
+      "ind.min_denominator",
+      "ind.level_green",
+      "ind.level_yellow",
+      "ind.level_direction",
+      "ind.sformat"
+    )
     .from("agg_data")
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
     .where("include", 1)
