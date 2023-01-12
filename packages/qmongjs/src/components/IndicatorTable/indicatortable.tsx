@@ -2,7 +2,7 @@ import React from "react";
 
 import { IndicatorTableHeader } from "./indicatortableheader";
 import { IndicatorTableBody } from "./indicatortablebody";
-import { RegisterName } from "types";
+import { RegisterName, Levels } from "types";
 
 export interface IndicatorTableProps {
   context: string;
@@ -16,7 +16,7 @@ export interface IndicatorTableProps {
   registerNames: RegisterName[];
   treatmentYear: number;
   medicalFieldFilter: string[];
-  showLevelFilter?: string;
+  showLevelFilter?: Levels;
   blockTitle?: string[];
 }
 

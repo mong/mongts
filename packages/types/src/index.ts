@@ -30,7 +30,7 @@ export interface Indicator {
   year: number;
   denominator: number;
   var: number;
-  level: string;
+  level: Levels;
   level_direction: number | null;
   dg: number | null;
   delivery_time: Date | null;
@@ -76,3 +76,5 @@ export interface RegisterName {
   url: string | null;
   description: string | null;
 }
+
+export type Levels = "H" | "M" | "L" | "";

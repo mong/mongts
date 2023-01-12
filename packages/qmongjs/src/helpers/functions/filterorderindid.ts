@@ -1,11 +1,11 @@
-import { Indicator, Description } from "types";
+import { Indicator, Description, Levels } from "types";
 
 export const filterOrderIndID = (
   isFetching: boolean,
   selectedNames: string[],
   indData: Indicator[],
   indDescription: Description[],
-  level: string,
+  level: Levels,
   tableType: "singleRegister" | "allRegistries"
 ): string[] => {
   const namesLength = Array.from(

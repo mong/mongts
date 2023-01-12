@@ -7,13 +7,13 @@ import { MaskedIndicator } from "../maskedindicator";
 import { ChartRow } from "../chartrow";
 import style from "./indicatorrow.module.css";
 
-import { Description, Indicator } from "types";
+import { Description, Indicator, Levels } from "types";
 import { mainQueryParamsConfig } from "../../../app_config";
 
 const formatIndicatorValues = (
   description: Description,
   indicator: Indicator[],
-  showLevelFilter: string,
+  showLevelFilter: Levels,
   unitName: string
 ) => {
   if (!indicator[0]) {
@@ -102,7 +102,7 @@ export interface IndicatorRowProps {
   indicatorData: Indicator[];
   unitNames?: string[];
   medicalFieldClass?: string;
-  showLevelFilter?: string;
+  showLevelFilter?: Levels;
   colspan?: number;
 }
 

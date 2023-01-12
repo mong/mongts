@@ -1,6 +1,6 @@
 import React from "react";
 
-import { RegisterName } from "types";
+import { RegisterName, Levels } from "types";
 import TableBlock from "../tableblock/tableblock";
 import { NoDataAvailible } from "../ContenForEmptyTable";
 
@@ -12,7 +12,7 @@ export interface IndicatorTableBodyProps {
   unitNames: string[];
   treatmentYear: number;
   medicalFieldFilter: string[];
-  showLevelFilter: string;
+  showLevelFilter: Levels;
   blockTitle?: string[];
 }
 

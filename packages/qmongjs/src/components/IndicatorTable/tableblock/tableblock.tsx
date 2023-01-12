@@ -6,7 +6,7 @@ import { useDescriptionQuery, useIndicatorQuery } from "../../../helpers/hooks";
 import { filterOrderIndID } from "../../../helpers/functions";
 import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
-import { Description, Indicator, RegisterName } from "types";
+import { Description, Indicator, RegisterName, Levels } from "types";
 
 export interface TableBlockProps {
   context: string;
@@ -17,7 +17,7 @@ export interface TableBlockProps {
   unitNames: string[];
   trRegisterNameClass?: string;
   medicalFieldFilter: string[];
-  showLevelFilter: string;
+  showLevelFilter: Levels;
   colspan: number;
 }
 
