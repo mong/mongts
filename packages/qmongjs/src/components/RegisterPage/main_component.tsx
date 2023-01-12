@@ -1,6 +1,6 @@
 import { UseQueryResult } from "react-query";
 import { useQueryParam } from "use-query-params";
-import { Description, RegisterName, Indicator } from "types";
+import { Description, RegisterName, Indicator, Levels } from "types";
 import { mainQueryParamsConfig, appTextTypes } from "../../app_config";
 
 import LEGEND from "../TargetLevels";
@@ -64,7 +64,7 @@ const Main = (props: Props) => {
   } = props;
 
   const [show_level_filter, update_show_level_filter] = useQueryParam<
-    string | undefined
+    Levels | undefined
   >("level", mainQueryParamsConfig.level);
   const [clicked_med_field, update_clicked_med_field] = useQueryParam<
     string | undefined

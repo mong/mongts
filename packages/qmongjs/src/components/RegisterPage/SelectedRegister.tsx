@@ -23,7 +23,7 @@ import {
 import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
 import { UnitNameList } from "./unitnamelist";
 import { NestedTreatmentUnitName } from "./unitnamelist/unitnamelistbody";
-import { RegisterName } from "types";
+import { RegisterName, Levels } from "types";
 
 import LEGEND from "../TargetLevels";
 import { IndicatorTable } from "../IndicatorTable";
