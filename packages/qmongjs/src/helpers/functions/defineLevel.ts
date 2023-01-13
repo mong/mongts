@@ -5,31 +5,28 @@ const numWithValidDigits = (value: number, decimals: number) => {
 };
 
 export const level = (indicatorData: Indicator) => {
+  const { level_green, level_yellow, level_direction, sformat } = indicatorData;
   if (
-    indicatorData.level_green === null ||
-    indicatorData.level_yellow === null ||
-    indicatorData.level_direction === null
+    level_green === null ||
+    level_yellow === null ||
+    level_direction === null
   ) {
-    return "";
+    return;
   }
-  let decimalPoints = indicatorData.sformat
-    ? Number(indicatorData.sformat.replace(/[^0-9]/g, ""))
-    : 0;
-  decimalPoints = indicatorData.sformat?.includes("%")
-    ? decimalPoints + 2
-    : decimalPoints;
+  let decimalPoints = sformat ? Number(sformat.replace(/[^0-9]/g, "")) : 0;
+  decimalPoints = sformat?.includes("%") ? decimalPoints + 2 : decimalPoints;
   const value = numWithValidDigits(indicatorData.var, decimalPoints);
-  const green = numWithValidDigits(indicatorData.level_green, decimalPoints);
-  const yellow = numWithValidDigits(indicatorData.level_yellow, decimalPoints);
+  const green = numWithValidDigits(level_green, decimalPoints);
+  const yellow = numWithValidDigits(level_yellow, decimalPoints);
 
   if (
-    (indicatorData.level_direction === 0 && value <= green) ||
-    (indicatorData.level_direction != 0 && value >= green)
+    (level_direction === 0 && value <= green) ||
+    (level_direction != 0 && value >= green)
   ) {
     return "H";
   } else if (
-    (indicatorData.level_direction === 0 && value > yellow) ||
-    (indicatorData.level_direction != 0 && value < yellow)
+    (level_direction === 0 && value > yellow) ||
+    (level_direction != 0 && value < yellow)
   ) {
     return "L";
   } else {
