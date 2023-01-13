@@ -26,11 +26,9 @@ export interface Indicator {
   unit_level: string;
   unit_name: string;
   context?: string;
-  orgnr: number;
   year: number;
   denominator: number;
   var: number;
-  level: string;
   level_direction: number | null;
   level_green: number | null;
   level_yellow: number | null;
@@ -39,7 +37,6 @@ export interface Indicator {
   delivery_time: Date | null;
   delivery_latest_update?: Date | null;
   delivery_latest_affirm?: Date | null;
-  time?: Date | null;
   type?: string | null;
   include: number | null;
   min_denominator: number | null;

@@ -6,10 +6,22 @@ import { Indicator } from "types";
 export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
   db
     .select(
-      "agg_data.*",
+      "agg_data.id",
+      "agg_data.ind_id",
+      "agg_data.unit_level",
+      "agg_data.unit_name",
+      "agg_data.context",
+      "agg_data.year",
+      "agg_data.denominator",
+      "agg_data.var",
+      "agg_data.dg",
+      "agg_data.delivery_time",
+      "agg_data.delivery_latest_update",
+      "agg_data.delivery_latest_affirm",
       "ind.type",
       "ind.include",
       "ind.min_denominator",
+      "ind.level_direction",
       "ind.level_green",
       "ind.level_yellow",
       "ind.sformat"
