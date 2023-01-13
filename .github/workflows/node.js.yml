@@ -2,7 +2,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [main, develop, doc_update]
+    branches: [main, develop]
   pull_request:
     branches: [main, develop, dependency_updates]
 
@@ -11,7 +11,7 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest
     env:
-      NEXT_PUBLIC_API_HOST: https://dc9yut6ftb9m1.cloudfront.net
+      NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     strategy:
@@ -37,11 +37,12 @@ jobs:
           path: apps/skde/cypress/videos
           retention-days: 1
       - name: Code coverage
+        if: matrix.node-version == '18.x'
         uses: codecov/codecov-action@v3.1.1
       - name: Generate documentation
         run: yarn run build-doc
       - name: Deploy documentation to github pages
-        if: github.ref == 'refs/heads/doc_update'
+        if: ${{ matrix.node-version == '18.x' && github.ref == 'refs/heads/main' }}
         uses: JamesIves/github-pages-deploy-action@v4.4.0
         with:
           branch: gh-pages # The branch the action should deploy to.
