@@ -12,7 +12,6 @@ export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
       "ind.min_denominator",
       "ind.level_green",
       "ind.level_yellow",
-      "ind.level_direction",
       "ind.sformat"
     )
     .from("agg_data")
