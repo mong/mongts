@@ -40,12 +40,13 @@ export const IndicatorData: React.FC<IndicatorValueProps> = ({
   headerStyle,
 }) => {
   const numberFormat = format === undefined ? ",.0%" : format;
+  const theLevel = level(indicatorData);
   const icon_class =
-    level(indicatorData) === "H"
+    theLevel === "H"
       ? "fa fa-fas fa-circle"
-      : level(indicatorData) === "M"
+      : theLevel === "M"
       ? "fa fa-fas fa-adjust"
-      : level(indicatorData) === "L"
+      : theLevel === "L"
       ? "fa fa-circle-o"
       : "undeined";
   const denominator =
