@@ -52,3 +52,66 @@ exports[`renders 1`] = `
   </table>
 </div>
 `;
+
+exports[`renders 2 1`] = `
+<div>
+  <table>
+    <tbody>
+      <tr
+        class="barnediabetes_hba1c_lt_7  barnediabetes  indicator"
+        data-testid="indicatorrow_barnediabetes_hba1c_lt_7"
+        id="barnediabetes_hba1c_lt_7  barnediabetes"
+      >
+        <td
+          class="quality_indicator"
+        >
+          <div
+            class="quality_indicator_name"
+          >
+            <h1>
+              HbA1c &lt; 7,0 %
+            </h1>
+          </div>
+          <div
+            class="qi_long_description"
+          >
+            <p>
+              Andel pasienter med HbA1c &lt; 7,0 %
+            </p>
+          </div>
+          <div
+            class="desired_target_level"
+          >
+            <h4>
+              ØNSKET MÅLNIVÅ: 
+              ≥
+               
+              40 %
+            </h4>
+          </div>
+        </td>
+        <td
+          class="nationally "
+        >
+          <div
+            aria-label="Achieved level undefined"
+            class="level"
+          >
+            <h4>
+              20 %
+              <i
+                class="undeined"
+              />
+            </h4>
+          </div>
+          <div
+            class="summary"
+          >
+            532 av 2676
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
