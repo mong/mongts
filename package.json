@@ -12,6 +12,7 @@
     "format": "turbo run format",
     "check-types": "turbo run check-types",
     "check-format": "turbo run check-format",
+    "build-doc": "typedoc",
     "cms": "npx netlify-cms-proxy-server"
   },
   "workspaces": [
@@ -21,6 +22,7 @@
   "devDependencies": {
     "husky": "8.0.3",
     "lint-staged": "13.1.0",
-    "turbo": "1.6.3"
+    "turbo": "1.6.3",
+    "typedoc": "0.23.24"
   }
 }
