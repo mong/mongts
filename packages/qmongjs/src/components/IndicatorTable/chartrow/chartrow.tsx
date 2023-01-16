@@ -13,7 +13,7 @@ export interface Props {
   context: { context: string; type: string };
   treatmentYear: number;
   colspan?: number;
-  description: Description[];
+  description: Description;
   indicatorData: Indicator[];
   figure_class?: string;
   selectedTreatmentUnits: string[];
@@ -40,9 +40,9 @@ export function ChartRow(props: Props) {
   const [zoom, update_zoom] = useState(true);
   const [show_level, update_show_level] = useState(false);
 
-  const levels = level_boundary(description[0]);
-  const format = description[0].sformat ?? undefined;
-  const max_value = description[0].max_value ?? undefined;
+  const levels = level_boundary(description);
+  const format = description.sformat ?? undefined;
+  const max_value = description.max_value ?? undefined;
 
   const delivery_time = indicatorData[0].delivery_time
     ? new Date(indicatorData[0].delivery_time)
@@ -60,7 +60,7 @@ export function ChartRow(props: Props) {
               zoom={zoom}
               update_zoom={update_zoom}
               update_selected_row={update_selected_row}
-              description={description[0]}
+              description={description}
               chartType={chart_type}
               treatmentYear={treatmentYear}
               updateChartType={update_chart_type}
@@ -69,7 +69,7 @@ export function ChartRow(props: Props) {
           <Chart
             svgContainerRef={svgContainerRef}
             context={context}
-            description={description[0]}
+            description={description}
             chartType={valid_chart_type}
             zoom={zoom}
             showLevel={show_level}
@@ -81,7 +81,7 @@ export function ChartRow(props: Props) {
             max_value={max_value}
           />
           <ChartRowDescription
-            description_text={description[0].long_description ?? ""}
+            description_text={description.long_description ?? ""}
             delivery_time={delivery_time}
           />
         </div>
