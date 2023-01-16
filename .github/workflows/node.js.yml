@@ -11,7 +11,7 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest
     env:
-      NEXT_PUBLIC_API_HOST: https://dc9yut6ftb9m1.cloudfront.net
+      NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     strategy:
