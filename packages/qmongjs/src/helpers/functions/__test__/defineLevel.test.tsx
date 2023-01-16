@@ -32,6 +32,7 @@ test("Returns correct level with direction 0", () => {
 });
 
 test("Returns correct level with direction 1", () => {
+  indicator.var = 0.01;
   indicator.level_direction = 1;
   indicator.level_green = 0.95;
   indicator.level_yellow = 0.8;
@@ -44,24 +45,26 @@ test("Returns correct level with direction 1", () => {
   expect(level(indicator)).toBe("H");
 });
 
-test("Returns no level with direction null", () => {
+test("Returns no level if direction is null", () => {
+  indicator.var = 0.85;
   indicator.level_direction = null;
   indicator.level_green = 0.95;
   indicator.level_yellow = 0.8;
   expect(level(indicator)).toBe(undefined);
 });
 
-test("Returns no level with level_green null", () => {
+test("Returns no level if level_green is null", () => {
+  indicator.var = 0.85;
   indicator.level_direction = 1;
   indicator.level_green = null;
   indicator.level_yellow = 0.8;
   expect(level(indicator)).toBe(undefined);
 });
 
-test("Returns no level with level_yellow null", () => {
+test("Use level_green for level_yellow if level_yellow is null", () => {
+  indicator.var = 0.85;
   indicator.level_direction = 1;
   indicator.level_green = 0.95;
   indicator.level_yellow = null;
-  indicator.var = 0.85;
   expect(level(indicator)).toBe("L");
 });
