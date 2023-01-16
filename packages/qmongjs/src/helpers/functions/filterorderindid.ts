@@ -1,4 +1,5 @@
 import { Indicator, Description } from "types";
+import { level as defineLevel } from "./defineLevel";
 
 export const filterOrderIndID = (
   isFetching: boolean,
@@ -27,7 +28,7 @@ export const filterOrderIndID = (
           if (level === "") {
             return !nation;
           }
-          const levelFilter = d.level !== level;
+          const levelFilter = defineLevel(d) !== level;
           const dg = (d.dg ?? 1) < 0.6;
           const minDenom = indDescription
             .filter((dDesc) => dDesc.id === d.ind_id)

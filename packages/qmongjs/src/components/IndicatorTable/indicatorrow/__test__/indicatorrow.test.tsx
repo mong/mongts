@@ -41,3 +41,22 @@ it("renders", () => {
   );
   expect(container).toMatchSnapshot();
 });
+
+it("renders 2", () => {
+  const data = national_data[3];
+  const { container } = render(
+    <QueryParamProvider adapter={NextAdapter}>
+      <table>
+        <tbody>
+          <IndicatorRow
+            context={{ context: "caregiver", type: "ind" }}
+            description={description[1]}
+            indicatorData={[data]}
+            treatmantYear={2017}
+          />
+        </tbody>
+      </table>
+    </QueryParamProvider>
+  );
+  expect(container).toMatchSnapshot();
+});

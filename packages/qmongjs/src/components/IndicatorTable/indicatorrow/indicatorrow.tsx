@@ -9,6 +9,7 @@ import style from "./indicatorrow.module.css";
 
 import { Description, Indicator } from "types";
 import { mainQueryParamsConfig } from "../../../app_config";
+import { level } from "../../../helpers/functions";
 
 const formatIndicatorValues = (
   description: Description,
@@ -33,7 +34,7 @@ const formatIndicatorValues = (
     description.type === "dg_beregnet_andel"
   ) {
     const level_class =
-      indicator.level !== showLevelFilter && !!showLevelFilter
+      level(indicator) !== showLevelFilter && !!showLevelFilter
         ? "filtered_level"
         : "";
     return (
@@ -75,7 +76,7 @@ const formatIndicatorValues = (
     );
   } else {
     const level_class =
-      indicator.level !== showLevelFilter && !!showLevelFilter
+      level(indicator) !== showLevelFilter && !!showLevelFilter
         ? "filtered_level"
         : "";
     return (
