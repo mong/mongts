@@ -1,7 +1,7 @@
 import React from "react";
 import { Indicator } from "types";
 import style from "./indicatorvalue.module.css";
-import { customFormat } from "../../../helpers/functions/localFormater";
+import { customFormat, level } from "../../../helpers/functions";
 
 export interface IndicatorValueProps {
   td_class?: string;
@@ -40,12 +40,13 @@ export const IndicatorData: React.FC<IndicatorValueProps> = ({
   headerStyle,
 }) => {
   const numberFormat = format === undefined ? ",.0%" : format;
+  const theLevel = level(indicatorData);
   const icon_class =
-    indicatorData.level === "H"
+    theLevel === "H"
       ? "fa fa-fas fa-circle"
-      : indicatorData.level === "M"
+      : theLevel === "M"
       ? "fa fa-fas fa-adjust"
-      : indicatorData.level === "L"
+      : theLevel === "L"
       ? "fa fa-circle-o"
       : "undeined";
   const denominator =
@@ -57,10 +58,7 @@ export const IndicatorData: React.FC<IndicatorValueProps> = ({
 
   return (
     <>
-      <div
-        className={style.level}
-        aria-label={`Achieved level ${indicatorData.level}`}
-      >
+      <div className={style.level} aria-label={`Achieved level ${theLevel}`}>
         <h4 style={headerStyle}>
           {customFormat(numberFormat)(indicatorData.var)}
           <i className={icon_class} />
