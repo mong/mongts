@@ -5,6 +5,9 @@
   "types": "./src/index",
   "packageManager": "yarn@3.3.1",
   "private": true,
+  "typedoc": {
+    "entryPoint": "./src/index.ts"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "5.48.1",
     "@typescript-eslint/parser": "5.48.1"
