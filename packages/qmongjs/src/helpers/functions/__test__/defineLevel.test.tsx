@@ -68,3 +68,12 @@ test("Use level_green for level_yellow if level_yellow is null", () => {
   indicator.level_yellow = null;
   expect(level(indicator)).toBe("L");
 });
+
+test("Use level if it exists", () => {
+  indicator.level = "H";
+  expect(level(indicator)).toBe("H");
+  indicator.level = "M";
+  expect(level(indicator)).toBe("M");
+  indicator.level = "L";
+  expect(level(indicator)).toBe("L");
+});
