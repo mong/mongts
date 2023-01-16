@@ -23,30 +23,45 @@ const indicator: Indicator = {
 
 test("Returns correct level with direction 0", () => {
   expect(level(indicator)).toBe("H");
-  indicator["var"] = 0.075;
+  indicator.var = 0.075;
   expect(level(indicator)).toBe("M");
-  indicator["var"] = 0.11;
+  indicator.var = 0.11;
   expect(level(indicator)).toBe("L");
-  indicator["var"] = 0.049;
+  indicator.var = 0.049;
   expect(level(indicator)).toBe("H");
 });
 
 test("Returns correct level with direction 1", () => {
-  indicator["level_direction"] = 1;
-  indicator["level_green"] = 0.95;
-  indicator["level_yellow"] = 0.8;
+  indicator.level_direction = 1;
+  indicator.level_green = 0.95;
+  indicator.level_yellow = 0.8;
   expect(level(indicator)).toBe("L");
-  indicator["var"] = 0.85;
+  indicator.var = 0.85;
   expect(level(indicator)).toBe("M");
-  indicator["var"] = 0.79;
+  indicator.var = 0.79;
   expect(level(indicator)).toBe("L");
-  indicator["var"] = 0.945;
+  indicator.var = 0.945;
   expect(level(indicator)).toBe("H");
 });
 
 test("Returns no level with direction null", () => {
-  indicator["level_direction"] = null;
-  indicator["level_green"] = 0.95;
-  indicator["level_yellow"] = 0.8;
+  indicator.level_direction = null;
+  indicator.level_green = 0.95;
+  indicator.level_yellow = 0.8;
   expect(level(indicator)).toBe(undefined);
+});
+
+test("Returns no level with level_green null", () => {
+  indicator.level_direction = 1;
+  indicator.level_green = null;
+  indicator.level_yellow = 0.8;
+  expect(level(indicator)).toBe(undefined);
+});
+
+test("Returns no level with level_yellow null", () => {
+  indicator.level_direction = 1;
+  indicator.level_green = 0.95;
+  indicator.level_yellow = null;
+  indicator.var = 0.85;
+  expect(level(indicator)).toBe("L");
 });

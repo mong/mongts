@@ -6,18 +6,18 @@ const numWithValidDigits = (value: number, decimals: number) => {
 
 export const level = (indicatorData: Indicator) => {
   const { level_green, level_yellow, level_direction, sformat } = indicatorData;
-  if (
-    level_green === null ||
-    level_yellow === null ||
-    level_direction === null
-  ) {
+  if (level_green === null || level_direction === null) {
     return;
   }
   let decimalPoints = sformat ? Number(sformat.replace(/[^0-9]/g, "")) : 0;
   decimalPoints = sformat?.includes("%") ? decimalPoints + 2 : decimalPoints;
   const value = numWithValidDigits(indicatorData.var, decimalPoints);
   const green = numWithValidDigits(level_green, decimalPoints);
-  const yellow = numWithValidDigits(level_yellow, decimalPoints);
+  // If level_yellow is NULL: set to level_green
+  const yellow =
+    level_yellow != null
+      ? numWithValidDigits(level_yellow, decimalPoints)
+      : green;
 
   if (
     (level_direction === 0 && value <= green) ||
