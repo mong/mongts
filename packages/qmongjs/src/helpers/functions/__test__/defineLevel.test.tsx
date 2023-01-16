@@ -70,6 +70,10 @@ test("Use level_green for level_yellow if level_yellow is null", () => {
 });
 
 test("Use level if it exists", () => {
+  indicator.var = 0.01;
+  indicator.level_direction = 1;
+  indicator.level_green = 0.95;
+  indicator.level_yellow = 0.8;
   indicator.level = "H";
   expect(level(indicator)).toBe("H");
   indicator.level = "M";
