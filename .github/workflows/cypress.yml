@@ -5,6 +5,8 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
     steps:
       - name: Checkout
         uses: actions/checkout@v3
