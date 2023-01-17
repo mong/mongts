@@ -49,6 +49,7 @@ context("Testing of kvalitetsregistre page", () => {
   });
 
   it("test year selector", () => {
+    cy.visit("/kvalitetsregistre/alle/sykehus/");
     cy.url().should("not.include", "year");
     // Click year selector field, press up arrow, and then enter
     // should pick a year, thus get ?year=<YEAR> in url
