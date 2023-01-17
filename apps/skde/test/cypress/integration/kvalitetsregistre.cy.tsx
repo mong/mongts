@@ -49,8 +49,10 @@ context("Testing of kvalitetsregistre page", () => {
   });
 
   it("test year selector", () => {
-    // Click year selector field, press up arrow three times, and then enter
-    // should change year from 2021 to something else
+    cy.visit("/kvalitetsregistre/alle/sykehus/");
+    cy.url().should("not.include", "year");
+    // Click year selector field, press up arrow, and then enter
+    // should pick a year, thus get ?year=<YEAR> in url
     cy.get('[data-testid="year_selector"]')
       .click()
       .get("body")
@@ -60,8 +62,7 @@ context("Testing of kvalitetsregistre page", () => {
       .get("body")
       .type("{upArrow}{upArrow}{enter}")
       .url()
-      .should("not.include", "2021");
-    // DID NOT WORK .url().should("include", "2019");
+      .should("include", "year");
   });
 
   it("test Vis alle button", () => {
