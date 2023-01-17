@@ -60,8 +60,7 @@ context("Testing of kvalitetsregistre page", () => {
       .get("body")
       .type("{upArrow}{upArrow}{enter}")
       .url()
-      .should("not.include", "2021");
-    // DID NOT WORK .url().should("include", "2019");
+      .should("include", "year");
   });
 
   it("test Vis alle button", () => {
