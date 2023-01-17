@@ -80,4 +80,8 @@ test("Use level if it exists", () => {
   expect(level(indicator)).toBe("M");
   indicator.level = "L";
   expect(level(indicator)).toBe("L");
+  indicator.level_green = undefined;
+  indicator.level_yellow = undefined;
+  indicator.level = "H";
+  expect(level(indicator)).toBe("H");
 });
