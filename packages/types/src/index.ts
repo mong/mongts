@@ -30,7 +30,7 @@ export interface Indicator {
   denominator: number;
   var: number;
   level?: null | "H" | "M" | "L" | "";
-  level_direction?: number | null;
+  level_direction: number | null;
   level_green?: number | null;
   level_yellow?: number | null;
   sformat?: string | null;
