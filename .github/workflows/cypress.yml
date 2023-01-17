@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Cypress run
         uses: cypress-io/github-action@v5 # use the explicit version number
-        working-directory: ./apps/skde
         with:
+          working-directory: ./apps/skde
           build: yarn build
           start: yarn dev
