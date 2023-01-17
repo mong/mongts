@@ -49,8 +49,9 @@ context("Testing of kvalitetsregistre page", () => {
   });
 
   it("test year selector", () => {
-    // Click year selector field, press up arrow three times, and then enter
-    // should change year from 2021 to something else
+    cy.url().should("not.include", "year");
+    // Click year selector field, press up arrow, and then enter
+    // should pick a year, thus get ?year=<YEAR> in url
     cy.get('[data-testid="year_selector"]')
       .click()
       .get("body")
