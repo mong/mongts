@@ -4,8 +4,8 @@
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "scripts": {
-    "test": "yarn run test:base --watchAll=false --coverage",
-    "test:base": "react-scripts test",
+    "test": "yarn run test:base --coverage",
+    "test:base": "react-scripts test --watchAll=false",
     "lint": "eslint --ignore-path .gitignore --ext js,ts,tsx src",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
     "format": "yarn run prettier --write",
