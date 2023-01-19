@@ -28,6 +28,7 @@ jobs:
       - run: yarn install
       - run: yarn run check-types
       - run: yarn run check-format
+      - run: yarn run build
       - run: yarn run test
       - name: Cypress run
         uses: cypress-io/github-action@v5
