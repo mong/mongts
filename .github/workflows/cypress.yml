@@ -14,5 +14,5 @@ jobs:
         uses: cypress-io/github-action@v5 # use the explicit version number
         with:
           working-directory: ./apps/skde
-          build: yarn export
-          start: yarn workspace skde start-server
+          build: yarn install && yarn build && yarn export
+          start: yarn start-server
