@@ -5,7 +5,11 @@ const numWithValidDigits = (value: number, decimals: number) => {
 };
 
 export const level = (indicatorData: Indicator) => {
-  const { level_green, level_yellow, level_direction, sformat } = indicatorData;
+  const { level, level_green, level_yellow, level_direction, sformat } =
+    indicatorData;
+  if (level !== undefined) {
+    return level;
+  }
   if (
     level_green === undefined ||
     level_green === null ||
