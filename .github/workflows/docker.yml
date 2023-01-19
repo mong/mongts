@@ -4,6 +4,10 @@ on:
     branches: [main, develop]
     paths-ignore:
       - "apps/skde/**"
+  pull_request:
+    branches: [main, develop, dependency_updates]
+    paths-ignore:
+      - "apps/skde/**"
 
 jobs:
   push_to_registries:
