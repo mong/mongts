@@ -29,6 +29,13 @@ jobs:
       - run: yarn run check-types
       - run: yarn run check-format
       - run: yarn run test
+      - run: yarn workspace skde run build
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          working-directory: ./apps/skde
+          build: yarn export
+          start: yarn start-server
       - name: Archive production artifacts
         if: failure()
         uses: actions/upload-artifact@v3.1.1
