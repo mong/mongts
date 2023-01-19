@@ -45,7 +45,7 @@ export const filterOrderIndID = (
             return !nation;
           }
           const levelFilter = defineLevel(d) !== level;
-          const dg = (d.dg ?? 1) < 0.6;
+          const dg = (d.dg ?? 1) < 0.6 && d.unit_name !== "Nasjonalt";
           const minDenom = indDescription
             .filter((dDesc) => dDesc.id === d.ind_id)
             .map((d) => d.min_denominator)[0];
