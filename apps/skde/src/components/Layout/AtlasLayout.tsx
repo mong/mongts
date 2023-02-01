@@ -4,7 +4,7 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 
 interface Props {
-  children: any;
+  children: React.ReactNode;
   title?: string;
   page?: string;
   lang: "no" | "en";
