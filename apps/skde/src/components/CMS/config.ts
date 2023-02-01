@@ -1,12 +1,12 @@
-import { CmsCollection, CmsConfig, CmsField } from "netlify-cms-core";
+import { Collection, Config, Field } from "@staticcms/core";
 
-const filename: CmsField = {
+const filename: Field = {
   label: "Filnavn",
   name: "filename",
   widget: "string",
 };
 
-const atlas = (lang: "no" | "en"): CmsCollection => {
+const atlas = (lang: "no" | "en"): Collection => {
   return {
     label: lang === "no" ? "Atlas" : "Engelske atlas",
     name: lang === "no" ? "atlas" : "atlas_eng",
@@ -187,7 +187,7 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
   };
 };
 
-const staticPages = (lang: "no" | "en"): CmsCollection => {
+const staticPages = (lang: "no" | "en"): Collection => {
   return {
     label: lang === "no" ? "Statiske sider" : "Statiske engelske sider",
     name: lang === "no" ? "statiske_sider" : "statiske_sider_en",
@@ -219,7 +219,7 @@ const staticPages = (lang: "no" | "en"): CmsCollection => {
   };
 };
 
-export const config: CmsConfig = {
+export const config: Config = {
   local_backend: true,
   backend: {
     name: "github",
