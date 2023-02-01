@@ -29,11 +29,10 @@ export interface Indicator {
   year: number;
   denominator: number;
   var: number;
-  level?: null | "H" | "M" | "L" | "";
   level_direction: number | null;
-  level_green?: number | null;
-  level_yellow?: number | null;
-  sformat?: string | null;
+  level_green: number | null;
+  level_yellow: number | null;
+  sformat: string | null;
   dg: number | null;
   delivery_time: Date | null;
   delivery_latest_update?: Date | null;
