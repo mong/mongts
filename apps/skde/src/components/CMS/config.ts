@@ -220,7 +220,6 @@ const staticPages = (lang: "no" | "en"): Collection => {
 };
 
 export const config: Config = {
-  local_backend: true,
   backend: {
     name: "github",
     repo: "mong/mongts",
