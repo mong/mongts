@@ -7,10 +7,23 @@
   "ingress": "Om atlas\n\n\n\nbla bla",
   "kapittel": [
     {
-      "overskrift": "Ev. undertekst til ingressen"
+      "overskrift": "Ev. undertekst til ingressen",
+      "innhold": [
+        {
+          "type": "tekst",
+          "beskrivelse": "Ev. indertekst",
+          "tekst": "Legge inn teksten her"
+        },
+        {
+          "type": "faktaboks",
+          "overskrift": "Om hjarteinfarkt",
+          "tekst": "Her skriv vi litt om hjarteinfarkt."
+        }
+      ]
     },
     {
-      "overskrift": "Innlegging "
+      "overskrift": "Innlegging ",
+      "innhold": []
     },
     {
       "overskrift": "Revaskularisering"
@@ -18,7 +31,15 @@
     {
       "overskrift": "Rehabilitering"
     },
-    {}
+    {
+      "overskrift": "Kommunal fysioterapi"
+    },
+    {
+      "overskrift": "Ressursgruppe"
+    },
+    {
+      "overskrift": "Datagrunnlag"
+    }
   ],
   "image": "https://www.skde.no/helseatlas/admin/#/collections/atlas/new",
   "shortTitle": "Hjerteinfarkt",
