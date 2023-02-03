@@ -1,8 +1,16 @@
 import dynamic from "next/dynamic";
+import { useMemo } from "react";
 
-const InitializeCMS = dynamic(() => import("../../../src/components/CMS"), {
-  ssr: false,
-  loading: () => <p>Loading Admin...</p>,
-});
+const Admin = () => {
+  const CMSPage = useMemo(
+    () =>
+      dynamic(() => import("../../../src/components/CMS"), {
+        ssr: false,
+      }),
+    []
+  );
 
-export default InitializeCMS;
+  return useMemo(() => <CMSPage key="admin" />, [CMSPage]);
+};
+
+export default Admin;
