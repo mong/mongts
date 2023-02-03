@@ -39,12 +39,12 @@ jobs:
       - run: yarn install
       - run: yarn workspace api run build
       - name: Lint Dockerfile
-        uses: hadolint/hadolint-action@v3.0.0
+        uses: hadolint/hadolint-action@v3.1.0
         with:
           dockerfile: "apps/api/Dockerfile"
       - name: Prepare
         id: docker_meta
-        uses: docker/metadata-action@v4.1.1
+        uses: docker/metadata-action@v4.3.0
         with:
           images: hnskde/mong-api
           tags: |
