@@ -220,6 +220,7 @@ const staticPages = (lang: "no" | "en"): Collection => {
 };
 
 export const config: Config = {
+  local_backend: true,
   backend: {
     name: "github",
     repo: "mong/mongts",
@@ -232,4 +233,5 @@ export const config: Config = {
   site_url: "https://www.skde.no/helseatlas/",
   locale: "nb_no",
   collections: [atlas("no"), staticPages("no"), atlas("en"), staticPages("en")],
+  search: false,
 };
