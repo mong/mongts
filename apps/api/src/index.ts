@@ -17,8 +17,8 @@ const app = express();
 const maxRequests = parseInt(process.env.RATELIMIT ?? "1000");
 
 const rateLimiter = rateLimit({
-  windowMs: 5 * 60 * 1000, // 5 minutes
-  max: isNaN(maxRequests) ? 1000 : maxRequests, // Limit each IP to 1000 requests per `window` (here, per 5 minutes) as default
+  windowMs: 30 * 1000, // 30 seconds
+  max: isNaN(maxRequests) ? 1000 : maxRequests, // Limit each IP to 1000 requests per `window` (here, per 30 seconds) as default
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
