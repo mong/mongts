@@ -1,7 +1,7 @@
 name: Deploy app to AWS
 on:
   push:
-    branches: [main, develop]
+    branches: [main, replace_cms]
     paths-ignore:
       - "apps/api/**"
   pull_request:
@@ -45,7 +45,7 @@ jobs:
             --delete \
             --cache-control "public, max-age=1, s-maxage=1"
       - name: Build and sync develop to S3 bucket qa.skde.org
-        if: github.ref == 'refs/heads/develop'
+        if: github.ref == 'refs/heads/replace_cms'
         env:
           NEXT_PUBLIC_API_HOST: https://qa-mong-api.skde.org
         run: |
