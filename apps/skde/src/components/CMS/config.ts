@@ -225,7 +225,8 @@ export const config: Config = {
     name: "github",
     repo: "mong/mongts",
     branch: "main",
-    base_url: "https://prod-mong-api.skde.org",
+    base_url:
+      process.env.NEXT_PUBLIC_API_HOST ?? "https://prod-mong-api.skde.org",
   },
   logo_url: "https://www.skde.no/helseatlas/img/logos/helseatlas.svg",
   media_folder: "/apps/skde/public/helseatlas/img",
