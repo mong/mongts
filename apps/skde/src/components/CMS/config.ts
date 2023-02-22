@@ -10,6 +10,13 @@ const atlas = (lang: "no" | "en"): Collection => {
   return {
     label: lang === "no" ? "Atlas" : "Engelske atlas",
     name: lang === "no" ? "atlas" : "atlas_eng",
+    sortable_fields: {
+      fields: ["date", "publisert", "mainTitle"],
+      default: {
+        field: "date",
+        direction: "Descending",
+      },
+    },
     folder:
       lang === "no"
         ? "apps/skde/_posts/helseatlas/atlas"
