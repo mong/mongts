@@ -17,7 +17,7 @@ const national_data: Indicator[] = [
     dg: null,
     include: 1,
     type: "andel",
-    delivery_time: new Date("October 13, 2014 11:13:00"),
+    delivery_latest_update: new Date("October 13, 2014 11:13:00"),
     delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
   },
   {
@@ -36,7 +36,7 @@ const national_data: Indicator[] = [
     dg: null,
     include: 1,
     type: "andel",
-    delivery_time: new Date("October 13, 2014 11:13:00"),
+    delivery_latest_update: new Date("October 13, 2014 11:13:00"),
     delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
   },
   {
@@ -55,7 +55,7 @@ const national_data: Indicator[] = [
     dg: null,
     include: 1,
     type: "andel",
-    delivery_time: new Date("October 13, 2014 11:13:00"),
+    delivery_latest_update: new Date("October 13, 2014 11:13:00"),
     delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
   },
   {
@@ -74,7 +74,7 @@ const national_data: Indicator[] = [
     dg: null,
     include: 1,
     type: "andel",
-    delivery_time: new Date("October 13, 2014 11:13:00"),
+    delivery_latest_update: new Date("October 13, 2014 11:13:00"),
     delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
   },
   {
@@ -93,7 +93,7 @@ const national_data: Indicator[] = [
     dg: null,
     include: 1,
     type: "andel",
-    delivery_time: new Date("October 13, 2014 11:13:00"),
+    delivery_latest_update: new Date("October 13, 2014 11:13:00"),
     delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
   },
   {
@@ -112,7 +112,7 @@ const national_data: Indicator[] = [
     dg: null,
     include: 1,
     type: "andel",
-    delivery_time: new Date("October 13, 2014 11:13:00"),
+    delivery_latest_update: new Date("October 13, 2014 11:13:00"),
     delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
   },
 ];

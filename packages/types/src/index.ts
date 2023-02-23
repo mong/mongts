@@ -34,7 +34,7 @@ export interface Indicator {
   level_yellow: number | null;
   sformat: string | null;
   dg: number | null;
-  delivery_time: Date | null;
+  delivery_time?: Date | null;
   delivery_latest_update?: Date | null;
   delivery_latest_affirm?: Date | null;
   type?: string | null;
