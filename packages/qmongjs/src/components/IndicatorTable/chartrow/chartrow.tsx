@@ -44,8 +44,8 @@ export function ChartRow(props: Props) {
   const format = description.sformat ?? undefined;
   const max_value = description.max_value ?? undefined;
 
-  const delivery_time = indicatorData[0].delivery_time
-    ? new Date(indicatorData[0].delivery_time)
+  const delivery_time = indicatorData[0].delivery_latest_update
+    ? new Date(indicatorData[0].delivery_latest_update)
     : undefined;
 
   return (
