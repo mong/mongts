@@ -44,8 +44,11 @@ export function ChartRow(props: Props) {
   const format = description.sformat ?? undefined;
   const max_value = description.max_value ?? undefined;
 
+  // Use delivery_latest_update if it exists. If not, use delivery_time if it exists.
   const delivery_time = indicatorData[0].delivery_latest_update
     ? new Date(indicatorData[0].delivery_latest_update)
+    : indicatorData[0].delivery_time
+    ? new Date(indicatorData[0].delivery_time)
     : undefined;
 
   return (
