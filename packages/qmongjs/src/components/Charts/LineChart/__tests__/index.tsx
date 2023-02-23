@@ -90,7 +90,7 @@ test("Render without levels @250px", async () => {
           dg: null,
           include: 1,
           type: "andel",
-          delivery_time: new Date("October 13, 2014 11:13:00"),
+          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
           delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
         },
         {
@@ -111,7 +111,7 @@ test("Render without levels @250px", async () => {
           dg: null,
           include: 1,
           type: "andel",
-          delivery_time: new Date("October 13, 2014 11:13:00"),
+          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
           delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
         },
         {
@@ -132,7 +132,7 @@ test("Render without levels @250px", async () => {
           dg: null,
           include: 1,
           type: "andel",
-          delivery_time: new Date("October 13, 2014 11:13:00"),
+          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
           delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
         },
         {
@@ -153,7 +153,7 @@ test("Render without levels @250px", async () => {
           dg: null,
           include: 1,
           type: "andel",
-          delivery_time: new Date("October 13, 2014 11:13:00"),
+          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
           delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
         },
       ]}
@@ -200,7 +200,7 @@ test("Render with levels @500px", async () => {
           dg: null,
           include: 1,
           type: "andel",
-          delivery_time: new Date("October 13, 2014 11:13:00"),
+          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
           delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
         },
         {
@@ -221,7 +221,7 @@ test("Render with levels @500px", async () => {
           dg: null,
           include: 1,
           type: "andel",
-          delivery_time: new Date("October 13, 2014 11:13:00"),
+          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
           delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
         },
         {
@@ -242,7 +242,7 @@ test("Render with levels @500px", async () => {
           dg: null,
           include: 1,
           type: "andel",
-          delivery_time: new Date("October 13, 2014 11:13:00"),
+          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
           delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
         },
         {
@@ -263,7 +263,7 @@ test("Render with levels @500px", async () => {
           dg: null,
           include: 1,
           type: "andel",
-          delivery_time: new Date("October 13, 2014 11:13:00"),
+          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
           delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
         },
       ]}
@@ -311,7 +311,7 @@ test("Render with levels reversed @500px", async () => {
           dg: null,
           include: 1,
           type: "andel",
-          delivery_time: new Date("October 13, 2014 11:13:00"),
+          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
           delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
         },
         {
@@ -332,7 +332,7 @@ test("Render with levels reversed @500px", async () => {
           dg: null,
           include: 1,
           type: "andel",
-          delivery_time: new Date("October 13, 2014 11:13:00"),
+          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
           delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
         },
         {
@@ -353,7 +353,7 @@ test("Render with levels reversed @500px", async () => {
           dg: null,
           include: 1,
           type: "andel",
-          delivery_time: new Date("October 13, 2014 11:13:00"),
+          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
           delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
         },
         {
@@ -374,7 +374,7 @@ test("Render with levels reversed @500px", async () => {
           dg: null,
           include: 1,
           type: "andel",
-          delivery_time: new Date("October 13, 2014 11:13:00"),
+          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
           delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
         },
         {
@@ -395,7 +395,7 @@ test("Render with levels reversed @500px", async () => {
           dg: null,
           include: 1,
           type: "andel",
-          delivery_time: new Date("October 13, 2014 11:13:00"),
+          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
           delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
         },
         {
@@ -416,7 +416,7 @@ test("Render with levels reversed @500px", async () => {
           dg: null,
           include: 1,
           type: "andel",
-          delivery_time: new Date("October 13, 2014 11:13:00"),
+          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
           delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
         },
         {
@@ -437,7 +437,7 @@ test("Render with levels reversed @500px", async () => {
           dg: null,
           include: 1,
           type: "andel",
-          delivery_time: new Date("October 13, 2014 11:13:00"),
+          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
           delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
         },
         {
@@ -458,7 +458,7 @@ test("Render with levels reversed @500px", async () => {
           dg: null,
           include: 1,
           type: "andel",
-          delivery_time: new Date("October 13, 2014 11:13:00"),
+          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
           delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
         },
       ]}
@@ -506,7 +506,7 @@ function buildDataPoint(overrides: Partial<DataPoint>): DataPoint {
     dg: null,
     include: 1,
     type: "andel",
-    delivery_time: new Date("October 13, 2014 11:13:00"),
+    delivery_latest_update: new Date("October 13, 2014 11:13:00"),
     delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
     ...overrides,
   };

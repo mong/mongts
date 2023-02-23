@@ -1,15 +1,22 @@
-import { CmsCollection, CmsConfig, CmsField } from "netlify-cms-core";
+import { Collection, Config, Field } from "@staticcms/core";
 
-const filename: CmsField = {
+const filename: Field = {
   label: "Filnavn",
   name: "filename",
   widget: "string",
 };
 
-const atlas = (lang: "no" | "en"): CmsCollection => {
+const atlas = (lang: "no" | "en"): Collection => {
   return {
     label: lang === "no" ? "Atlas" : "Engelske atlas",
     name: lang === "no" ? "atlas" : "atlas_eng",
+    sortable_fields: {
+      fields: ["date", "publisert", "mainTitle"],
+      default: {
+        field: "date",
+        direction: "Descending",
+      },
+    },
     folder:
       lang === "no"
         ? "apps/skde/_posts/helseatlas/atlas"
@@ -187,7 +194,7 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
   };
 };
 
-const staticPages = (lang: "no" | "en"): CmsCollection => {
+const staticPages = (lang: "no" | "en"): Collection => {
   return {
     label: lang === "no" ? "Statiske sider" : "Statiske engelske sider",
     name: lang === "no" ? "statiske_sider" : "statiske_sider_en",
@@ -219,13 +226,14 @@ const staticPages = (lang: "no" | "en"): CmsCollection => {
   };
 };
 
-export const config: CmsConfig = {
+export const config: Config = {
   local_backend: true,
   backend: {
     name: "github",
     repo: "mong/mongts",
     branch: "main",
-    base_url: "https://prod-mong-api.skde.org",
+    base_url:
+      process.env.NEXT_PUBLIC_API_HOST ?? "https://prod-mong-api.skde.org",
   },
   logo_url: "https://www.skde.no/helseatlas/img/logos/helseatlas.svg",
   media_folder: "/apps/skde/public/helseatlas/img",
@@ -233,4 +241,5 @@ export const config: CmsConfig = {
   site_url: "https://www.skde.no/helseatlas/",
   locale: "nb_no",
   collections: [atlas("no"), staticPages("no"), atlas("en"), staticPages("en")],
+  search: false,
 };
