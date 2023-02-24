@@ -22,6 +22,7 @@ type AtlasJson = {
   ingress: string;
   kapittel: ChapterProps[];
   ia?: boolean;
+  publisert: boolean;
 };
 
 const AtlasPage: React.FC<AtlasPageProps> = ({
@@ -48,6 +49,12 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
       return { level, elemID, children };
     });
 
+  const unpublished_warning =
+    obj.lang === "nn"
+      ? "Dette atlaset er berre eit utkast og er ikkje publisert! Resultata og analysane kan vere mangelfulle."
+      : obj.lang === "nb"
+      ? "Dette atlaset er kun et utkast og er ikke publisert! Resultatene og analysene kan være mangelfulle."
+      : "This is a draft!";
   return (
     <DataContext.Provider value={{ atlasData, mapData }}>
       <AtlasLayout lang={obj.lang === "en" ? "en" : "no"}>
@@ -56,6 +63,9 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
           <div className={`${styles.atlasContent}`}>
             <TableOfContents tocData={tocData} />
             <div className={styles.main_content}>
+              {!obj.publisert && (
+                <b style={{ color: "red" }}>{unpublished_warning}</b>
+              )}
               <h1>{obj.mainTitle}</h1>
               <Ingress>{obj.ingress}</Ingress>
               <Chapters innhold={obj.kapittel} lang={obj.lang} />
