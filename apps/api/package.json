@@ -17,30 +17,34 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "typedoc": {
+    "entryPoint": "./src/index.ts",
+    "readmeFile": "./README.md"
+  },
   "dependencies": {
     "compression": "1.7.4",
     "cors": "2.8.5",
     "express": "4.18.2",
     "express-rate-limit": "6.7.0",
     "helmet": "6.0.1",
-    "knex": "2.3.0",
+    "knex": "2.4.2",
     "mysql": "2.18.1",
     "simple-oauth2": "5.0.0",
-    "typescript": "4.8.4"
+    "typescript": "4.9.5"
   },
   "devDependencies": {
     "@types/apicache": "1.6.1",
     "@types/compression": "1.7.2",
     "@types/cors": "2.8.13",
-    "@types/express": "4.17.15",
-    "@types/simple-oauth2": "4.1.1",
-    "@typescript-eslint/eslint-plugin": "5.47.1",
-    "@typescript-eslint/parser": "5.47.1",
-    "eslint": "8.31.0",
-    "prettier": "2.8.1",
+    "@types/express": "4.17.17",
+    "@types/simple-oauth2": "5.0.2",
+    "@typescript-eslint/eslint-plugin": "5.53.0",
+    "@typescript-eslint/parser": "5.53.0",
+    "eslint": "8.34.0",
+    "prettier": "2.8.4",
     "ts-node-dev": "2.0.0",
     "types": "*",
-    "typescript": "4.8.4"
+    "typescript": "4.9.5"
   },
-  "packageManager": "yarn@3.3.1"
+  "packageManager": "yarn@3.4.1"
 }

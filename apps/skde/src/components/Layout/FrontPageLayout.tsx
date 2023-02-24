@@ -5,7 +5,7 @@ import Image from "next/image";
 import { imgLoader } from "../../helpers/functions";
 
 interface Props {
-  children: any;
+  children: React.ReactNode;
   title?: string;
   page?: string;
 }

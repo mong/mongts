@@ -20,9 +20,9 @@ jobs:
       NEXT_PUBLIC_SENTRY: "https://d48c58a239264c12bcbf8fe86d364c44@o489056.ingest.sentry.io/5799127"
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.3.0
       - name: Set up Node.js
-        uses: actions/setup-node@v3.5.1
+        uses: actions/setup-node@v3.6.0
         with:
           node-version: "18.x"
           cache: "yarn"
@@ -31,13 +31,13 @@ jobs:
       - run: yarn run check-format
       - name: Test build
         env:
-          NEXT_PUBLIC_API_HOST: https://dc9yut6ftb9m1.cloudfront.net
+          NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
         run: |
           yarn run export
       - name: Build and sync main to S3 bucket skde.org
         if: github.ref == 'refs/heads/main'
         env:
-          NEXT_PUBLIC_API_HOST: https://dc9yut6ftb9m1.cloudfront.net
+          NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
         run: |
           yarn run export
           aws s3 sync apps/skde/out s3://skde.org \

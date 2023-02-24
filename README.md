@@ -6,6 +6,7 @@
 [![Codecov test coverage](https://codecov.io/gh/mong/mongts/branch/develop/graph/badge.svg)](https://codecov.io/gh/mong/mongts?branch=develop)
 [![GitHub open issues](https://img.shields.io/github/issues/mong/mongts.svg)](https://github.com/mong/mongts/issues)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Doc](https://img.shields.io/badge/Doc--grey.svg)](https://mong.github.io/mongts/)
 
 <!-- badges: end -->
 
@@ -51,7 +52,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 In production we build static html files that we serve in an S3 bucket on AWS. To reproduce this locally you can
 
 ```bash
-export NEXT_PUBLIC_API_HOST="https://dc9yut6ftb9m1.cloudfront.net" # Our API in production
+export NEXT_PUBLIC_API_HOST="https://prod-mong-api.skde.org" # Our API in production
 yarn install
 yarn export
 npx serve apps/skde/out
@@ -59,7 +60,7 @@ npx serve apps/skde/out
 
 ### Run CMS locally
 
-Start up `netlify-cms-proxy-server`:
+Start up `@staticcms/proxy-server`:
 
 ```bash
 yarn run cms

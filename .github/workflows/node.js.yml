@@ -11,7 +11,7 @@ jobs:
     name: Build and Test
     runs-on: ubuntu-latest
     env:
-      NEXT_PUBLIC_API_HOST: https://dc9yut6ftb9m1.cloudfront.net
+      NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     strategy:
@@ -19,9 +19,9 @@ jobs:
         node-version: [18.x]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.3.0
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3.5.1
+        uses: actions/setup-node@v3.6.0
         with:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
@@ -29,9 +29,16 @@ jobs:
       - run: yarn run check-types
       - run: yarn run check-format
       - run: yarn run test
+      - run: yarn workspace skde run build
+      - name: Cypress run
+        uses: cypress-io/github-action@v5.0.9
+        with:
+          working-directory: ./apps/skde
+          build: yarn export
+          start: yarn start-server
       - name: Archive production artifacts
         if: failure()
-        uses: actions/upload-artifact@v3.1.1
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: cypress videos
           path: apps/skde/cypress/videos
@@ -39,3 +46,11 @@ jobs:
       - name: Code coverage
         if: matrix.node-version == '18.x'
         uses: codecov/codecov-action@v3.1.1
+      - name: Generate documentation
+        run: yarn run build-doc
+      - name: Deploy documentation to github pages
+        if: ${{ matrix.node-version == '18.x' && github.ref == 'refs/heads/main' }}
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: docs # The folder the action should deploy.
