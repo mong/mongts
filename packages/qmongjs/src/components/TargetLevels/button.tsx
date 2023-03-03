@@ -25,8 +25,6 @@ function LEGEND_BTN(props: Props) {
       : update_show_level_filter(update_state);
   };
 
-  console.log(icon_class);
-
   return (
     <button
       className={`${legend_btn_class} ${checked_class}`}
