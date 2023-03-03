@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { LayoutHead } from "./LayoutHead";
+import Head from "next/head";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 
@@ -15,7 +15,9 @@ export const Layout = ({ children }: Props) => {
 
   return (
     <div>
-      <LayoutHead />
+      <Head>
+        <title>SKDE - Kvalitetsregistre</title>
+      </Head>
       <Header />
       {children}
       <Footer />
