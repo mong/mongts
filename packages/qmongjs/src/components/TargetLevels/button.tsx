@@ -1,3 +1,5 @@
+import { FaCircle, FaAdjust, FaRegCircle } from "react-icons/fa";
+
 interface Props {
   level: string;
   icon_class: string;
@@ -23,12 +25,24 @@ function LEGEND_BTN(props: Props) {
       : update_show_level_filter(update_state);
   };
 
+  console.log(icon_class);
+
   return (
     <button
       className={`${legend_btn_class} ${checked_class}`}
       onClick={() => handle_level_filter(show_level_filter, level_filter)}
     >
-      <i className={`${icon_class} legend-icon`}> </i>
+      <i style={{ paddingRight: "0.2em" }}>
+        {icon_class === "fa fa-fas fa-circle" ? (
+          <FaCircle style={{ color: "#3baa34", fontSize: "1.2rem" }} />
+        ) : icon_class === "fa fa-fas fa-adjust" ? (
+          <FaAdjust style={{ color: "#fd9c00", fontSize: "1.2rem" }} />
+        ) : icon_class === "fa fa-circle-o" ? (
+          <FaRegCircle style={{ color: "#e30713", fontSize: "1.2rem" }} />
+        ) : (
+          <></>
+        )}
+      </i>
       <div className="legend-text">{level}</div>
     </button>
   );
