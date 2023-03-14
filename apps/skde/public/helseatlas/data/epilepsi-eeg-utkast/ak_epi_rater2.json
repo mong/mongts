@@ -3,9 +3,7 @@
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "aafe_shoandel"
-      ],
+      "x": ["aafe_shoandel"],
       "y": "bohf",
       "xLabel": {
         "nb": "Andel akutte sykehusopphold hvor eeg ble utført innen 2 måneder",
@@ -15,22 +13,10 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "aafe_shoandel19",
-        "aafe_shoandel20",
-        "aafe_shoandel21"
-      ],
+      "annualVar": ["aafe_shoandel19", "aafe_shoandel20", "aafe_shoandel21"],
       "annualVarLabels": {
-        "nb": [
-          "2019",
-          "2020",
-          "2021"
-        ],
-        "en": [
-          "2019",
-          "2020",
-          "2021"
-        ]
+        "nb": ["2019", "2020", "2021"],
+        "en": ["2019", "2020", "2021"]
       }
     },
     {
@@ -74,7 +60,7 @@
     {
       "type": "map",
       "data": "qwerty",
-      "x": "rateSnitt",
+      "x": "ratesnitt",
       "caption": {
         "nb": "Andel akutte sykehusopphold hvor eeg ble utført innen 2 måneder",
         "en": "Proportion of emergency admissions where eeg was done within 2 months"
@@ -107,6 +93,7 @@
       "type": "data",
       "label": "qwerty",
       "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Norge",
       "data": [
         {
           "bohf": "Nordland",
