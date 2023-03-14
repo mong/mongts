@@ -65,7 +65,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
   tickLabelSize = 22,
   labelSize = 22,
   format,
-  national,
+  national = "Norge",
 }: AbacusProps<Data, X>) => {
   // Pick out bohf query from the url
   const router = useRouter();
