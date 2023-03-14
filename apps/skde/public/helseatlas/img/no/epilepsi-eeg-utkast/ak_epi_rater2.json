@@ -1,0 +1,268 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": [
+        "aafe_shoandel"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Andel akutte sykehusopphold hvor eeg ble utført innen 2 måneder",
+        "en": "Proportion of emergency admissions where eeg was done within 2 months"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "aafe_shoandel19",
+        "aafe_shoandel20",
+        "aafe_shoandel21"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2019",
+          "2020",
+          "2021"
+        ],
+        "en": [
+          "2019",
+          "2020",
+          "2021"
+        ]
+      }
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nb": "Årlige gjennomsnittsverdier for perioden 2019-2021.",
+        "en": "Average per year for the period 2019-2021."
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområder",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "aafe_shoandel",
+          "label_no": "Andel opphold med eeg",
+          "label_en": "% admissions with eeg",
+          "typeVar": "number",
+          "format": ",.1%"
+        },
+        {
+          "id": "shoant",
+          "label_no": "Akutte sykehusopphold",
+          "label_en": "Emergency admissions",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "aafe_shoant",
+          "label_no": "Opphold med eeg",
+          "label_en": "Admissions with eeg",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "rateSnitt",
+      "caption": {
+        "nb": "Andel akutte sykehusopphold hvor eeg ble utført innen 2 måneder",
+        "en": "Proportion of emergency admissions where eeg was done within 2 months"
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": 0.18279900496,
+          "min": 0.18279900496,
+          "lag_min": 0.242572376565,
+          "grense": 0.212685690763
+        },
+        {
+          "cluster": 2,
+          "max": 0.297019094323,
+          "min": 0.242572376565,
+          "lag_min": 0.397062212743,
+          "grense": 0.347040653533
+        },
+        {
+          "cluster": 3,
+          "max": 0.462065192603,
+          "min": 0.397062212743,
+          "lag_min": 0.478445632753,
+          "grense": 0.470255412678
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "data": [
+        {
+          "bohf": "Nordland",
+          "shoant": 116,
+          "aafe_shoant": 71.3333333333,
+          "aafe_shoandel": 0.607706642999,
+          "ratesnitt": 0.607706642999
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "shoant": 141,
+          "aafe_shoant": 86.6666666667,
+          "aafe_shoandel": 0.606262429548,
+          "ratesnitt": 0.606262429548
+        },
+        {
+          "bohf": "Bergen",
+          "shoant": 396.333333333,
+          "aafe_shoant": 233.666666667,
+          "aafe_shoandel": 0.58960267787,
+          "ratesnitt": 0.58960267787
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "shoant": 250.666666667,
+          "aafe_shoant": 142.666666667,
+          "aafe_shoandel": 0.566957145669,
+          "ratesnitt": 0.566957145669
+        },
+        {
+          "bohf": "Diakonhjemmet",
+          "shoant": 86,
+          "aafe_shoant": 46.6666666667,
+          "aafe_shoandel": 0.549306800818,
+          "ratesnitt": 0.549306800818
+        },
+        {
+          "bohf": "UNN",
+          "shoant": 193,
+          "aafe_shoant": 100.666666667,
+          "aafe_shoandel": 0.51966441098,
+          "ratesnitt": 0.51966441098
+        },
+        {
+          "bohf": "OUS",
+          "shoant": 207.666666667,
+          "aafe_shoant": 105.666666667,
+          "aafe_shoandel": 0.516239499516,
+          "ratesnitt": 0.516239499516
+        },
+        {
+          "bohf": "Førde",
+          "shoant": 122.666666667,
+          "aafe_shoant": 62.6666666667,
+          "aafe_shoandel": 0.503860280798,
+          "ratesnitt": 0.503860280798
+        },
+        {
+          "bohf": "Telemark",
+          "shoant": 129.333333333,
+          "aafe_shoant": 65.6666666667,
+          "aafe_shoandel": 0.501176043377,
+          "ratesnitt": 0.501176043377
+        },
+        {
+          "bohf": "Fonna",
+          "shoant": 137.333333333,
+          "aafe_shoant": 68,
+          "aafe_shoandel": 0.492501476275,
+          "ratesnitt": 0.492501476275
+        },
+        {
+          "bohf": "Akershus",
+          "shoant": 419,
+          "aafe_shoant": 202.333333333,
+          "aafe_shoandel": 0.485706176202,
+          "ratesnitt": 0.485706176202
+        },
+        {
+          "bohf": "Lovisenberg",
+          "shoant": 93.6666666667,
+          "aafe_shoant": 43.3333333333,
+          "aafe_shoandel": 0.478445632753,
+          "ratesnitt": 0.478445632753
+        },
+        {
+          "bohf": "Finnmark",
+          "shoant": 56,
+          "aafe_shoant": 25.6666666667,
+          "aafe_shoandel": 0.462065192603,
+          "ratesnitt": 0.462065192603
+        },
+        {
+          "bohf": "Østfold",
+          "shoant": 247.333333333,
+          "aafe_shoant": 116.666666667,
+          "aafe_shoandel": 0.461886061955,
+          "ratesnitt": 0.461886061955
+        },
+        {
+          "bohf": "Norge",
+          "shoant": 4257.33333333,
+          "aafe_shoant": 1945.33333333,
+          "aafe_shoandel": 0.456412392189,
+          "ratesnitt": 0.456412392189
+        },
+        {
+          "bohf": "Helgeland",
+          "shoant": 69.6666666667,
+          "aafe_shoant": 30.6666666667,
+          "aafe_shoandel": 0.44941369696,
+          "ratesnitt": 0.44941369696
+        },
+        {
+          "bohf": "Innlandet",
+          "shoant": 286,
+          "aafe_shoant": 129.666666667,
+          "aafe_shoandel": 0.448226258235,
+          "ratesnitt": 0.448226258235
+        },
+        {
+          "bohf": "St. Olav",
+          "shoant": 267.333333333,
+          "aafe_shoant": 112,
+          "aafe_shoandel": 0.418872663869,
+          "ratesnitt": 0.418872663869
+        },
+        {
+          "bohf": "Stavanger",
+          "shoant": 248.333333333,
+          "aafe_shoant": 97.3333333333,
+          "aafe_shoandel": 0.397062212743,
+          "ratesnitt": 0.397062212743
+        },
+        {
+          "bohf": "Sørlandet",
+          "shoant": 251.666666667,
+          "aafe_shoant": 75,
+          "aafe_shoandel": 0.297019094323,
+          "ratesnitt": 0.297019094323
+        },
+        {
+          "bohf": "Vestre Viken",
+          "shoant": 373.666666667,
+          "aafe_shoant": 91,
+          "aafe_shoandel": 0.242572376565,
+          "ratesnitt": 0.242572376565
+        },
+        {
+          "bohf": "Vestfold",
+          "shoant": 130.333333333,
+          "aafe_shoant": 23.3333333333,
+          "aafe_shoandel": 0.18279900496,
+          "ratesnitt": 0.18279900496
+        }
+      ]
+    }
+  ]
+}
