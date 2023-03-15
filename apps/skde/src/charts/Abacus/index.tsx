@@ -38,7 +38,7 @@ type AbacusProps<Data, X extends string & keyof Data> = {
   labelSize?: number;
   markerOpacity?: number;
   format?: string;
-  national: string;
+  national?: string;
 };
 
 export const Abacus = <Data, X extends string & keyof Data>({
