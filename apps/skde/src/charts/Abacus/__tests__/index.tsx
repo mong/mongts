@@ -8,7 +8,7 @@ jest.mock("next/router", () => require("next-router-mock"));
 
 test("Standard render", async () => {
   const { container } = render(
-    <Abacus data={atlasData} lang="nb" x="rateSnitt" />
+    <Abacus data={atlasData} lang="nb" x="rateSnitt" national="Norge" />
   );
   expect(container).toMatchSnapshot();
 });
