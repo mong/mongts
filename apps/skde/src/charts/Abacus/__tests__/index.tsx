@@ -32,7 +32,13 @@ test("Render with another national", async () => {
 test("Render with many picked HF", async () => {
   mockRouter.push("/test_atlas/?bohf=OUS&bohf=UNN&bohf=Fonna");
   const { container } = render(
-    <Abacus data={atlasData} lang="nb" x="rateSnitt" national="Norge" />
+    <Abacus
+      data={atlasData}
+      lang="nb"
+      x="rateSnitt"
+      national="Norge"
+      format=",.1f"
+    />
   );
   expect(container).toMatchSnapshot();
 });
@@ -40,7 +46,13 @@ test("Render with many picked HF", async () => {
 test("Render english with many picked HF", async () => {
   mockRouter.push("/test_atlas/?bohf=OUS&bohf=UNN&bohf=Fonna");
   const { container } = render(
-    <Abacus data={atlasData} lang="en" x="rateSnitt" national="Norge" />
+    <Abacus
+      data={atlasData}
+      lang="en"
+      x="rateSnitt"
+      national="Norge"
+      format=",.1f"
+    />
   );
   expect(container).toMatchSnapshot();
 });
