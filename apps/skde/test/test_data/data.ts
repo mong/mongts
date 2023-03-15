@@ -1,4 +1,49 @@
-const atlasData = [
+export const tableHeaders = [
+  {
+    id: "bohf",
+    label_no: "Opptaksområder",
+    label_en: "Referral areas",
+    typeVar: "string",
+    format: "",
+  },
+  {
+    id: "rateSnitt",
+    label_no: "Pasientrate, alle",
+    label_en: "Patient rate, all",
+    typeVar: "number",
+    format: ",.1f",
+  },
+  {
+    id: "pasienter",
+    label_no: "Pasienter",
+    label_en: "Patients",
+    typeVar: "number",
+    format: ",.0f",
+  },
+  {
+    id: "andel3_prim",
+    label_no: "Andel kun i allmennlegetj.",
+    label_en: "GP only %",
+    typeVar: "number",
+    format: ",.1%",
+  },
+  {
+    id: "pas_rate_barn",
+    label_no: "Pasientrate, barn",
+    label_en: "Patient rate, children",
+    typeVar: "number",
+    format: ",.1f",
+  },
+  {
+    id: "pas_rate_eldre",
+    label_no: "Pasientrate, eldre",
+    label_en: "Patient rate, elderly",
+    typeVar: "number",
+    format: ",.1f",
+  },
+];
+
+export const atlasData = [
   {
     bohf: "Finnmark",
     rate2019: 4.85587067464,
@@ -374,5 +419,3 @@ const atlasData = [
     pas_rate_eldre: 6.1516249726,
   },
 ];
-
-export default atlasData;

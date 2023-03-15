@@ -1,14 +1,20 @@
 import { render } from "@testing-library/react";
 import mockRouter from "next-router-mock";
 
-import { Abacus } from "..";
-import { atlasData } from "../../../../test/test_data/data";
+import { DataTable } from "..";
+import { atlasData, tableHeaders } from "../../../../test/test_data/data";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
 test("Standard render", async () => {
   const { container } = render(
-    <Abacus data={atlasData} lang="nb" x="rateSnitt" national="Norge" />
+    <DataTable
+      data={atlasData}
+      lang="nb"
+      caption="rateSnitt"
+      national="Norge"
+      headers={tableHeaders}
+    />
   );
   expect(container).toMatchSnapshot();
 });
@@ -16,7 +22,13 @@ test("Standard render", async () => {
 test("Render with picked HF", async () => {
   mockRouter.push("/test_atlas/?bohf=UNN");
   const { container } = render(
-    <Abacus data={atlasData} lang="nb" x="rateSnitt" national="Norge" />
+    <DataTable
+      data={atlasData}
+      lang="nb"
+      caption="rateSnitt"
+      national="Norge"
+      headers={tableHeaders}
+    />
   );
   expect(container).toMatchSnapshot();
 });
@@ -24,7 +36,13 @@ test("Render with picked HF", async () => {
 test("Render with another national", async () => {
   mockRouter.push("/test_atlas");
   const { container } = render(
-    <Abacus data={atlasData} lang="nb" x="rateSnitt" national="Finnmark" />
+    <DataTable
+      data={atlasData}
+      lang="nb"
+      caption="rateSnitt"
+      national="Finnmark"
+      headers={tableHeaders}
+    />
   );
   expect(container).toMatchSnapshot();
 });
@@ -32,12 +50,12 @@ test("Render with another national", async () => {
 test("Render with many picked HF", async () => {
   mockRouter.push("/test_atlas/?bohf=OUS&bohf=UNN&bohf=Fonna");
   const { container } = render(
-    <Abacus
+    <DataTable
       data={atlasData}
       lang="nb"
-      x="rateSnitt"
+      caption="rateSnitt"
       national="Norge"
-      format=",.1f"
+      headers={tableHeaders}
     />
   );
   expect(container).toMatchSnapshot();
@@ -46,12 +64,12 @@ test("Render with many picked HF", async () => {
 test("Render english with many picked HF", async () => {
   mockRouter.push("/test_atlas/?bohf=OUS&bohf=UNN&bohf=Fonna");
   const { container } = render(
-    <Abacus
+    <DataTable
       data={atlasData}
       lang="en"
-      x="rateSnitt"
+      caption="rateSnitt"
       national="Norge"
-      format=",.1f"
+      headers={tableHeaders}
     />
   );
   expect(container).toMatchSnapshot();
