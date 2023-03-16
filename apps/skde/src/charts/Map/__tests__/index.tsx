@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import mockRouter from "next-router-mock";
 import fs from "fs";
 
@@ -11,7 +11,28 @@ jest.mock("next/router", () => require("next-router-mock"));
 const mapDataPath = "public/helseatlas/data/kronikere.geojson";
 const mapData = JSON.parse(fs.readFileSync(mapDataPath, "utf-8"));
 
+test("Click on HF", async () => {
+  const { container, getByTestId } = render(
+    <Map
+      mapAttr={atlasData}
+      lang="nb"
+      attrName="rateSnitt"
+      mapData={mapData}
+      classes={[5.0, 5.2, 5.4]}
+    />
+  );
+  expect(container).toMatchSnapshot();
+  expect(mockRouter.query).toEqual({});
+  fireEvent.click(getByTestId("maphf_UNN"));
+  expect(mockRouter.query).toEqual({ bohf: "UNN" });
+  expect(container).toMatchSnapshot();
+  fireEvent.click(getByTestId("maphf_UNN"));
+  expect(mockRouter.query).toEqual({ bohf: [] });
+  expect(container).toMatchSnapshot();
+});
+
 test("Standard render", async () => {
+  mockRouter.push("");
   const { container } = render(
     <Map
       mapAttr={atlasData}
