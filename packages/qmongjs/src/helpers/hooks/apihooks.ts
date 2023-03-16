@@ -166,7 +166,7 @@ export const fetchRegisterNames = async () => {
 };
 
 export const useRegisterNamesQuery = () => {
-  return useQuery(`registerNames`, () => fetchRegisterNames(), {
+  return useQuery([`registerNames`], () => fetchRegisterNames(), {
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
     cacheTime: 1000 * 60 * 60,
@@ -183,7 +183,7 @@ const fetchMedicalFields = async () => {
 };
 
 export const useMedicalFieldsQuery = () => {
-  return useQuery(`medicalFields`, () => fetchMedicalFields(), {
+  return useQuery([`medicalFields`], () => fetchMedicalFields(), {
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
     cacheTime: 1000 * 60 * 60,
