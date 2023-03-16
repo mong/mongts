@@ -6,6 +6,9 @@ import { atlasData, tableHeaders } from "../../../../test/test_data/data";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
+// To avoid type-check error. Have to find a better way
+const testHeaders: any = tableHeaders;
+
 test("Standard render", async () => {
   const { container } = render(
     <DataTable
@@ -13,7 +16,7 @@ test("Standard render", async () => {
       lang="nb"
       caption="rateSnitt"
       national="Norge"
-      headers={tableHeaders}
+      headers={testHeaders}
     />
   );
   expect(container).toMatchSnapshot();
@@ -27,7 +30,7 @@ test("Render with picked HF", async () => {
       lang="nb"
       caption="rateSnitt"
       national="Norge"
-      headers={tableHeaders}
+      headers={testHeaders}
     />
   );
   expect(container).toMatchSnapshot();
@@ -41,7 +44,7 @@ test("Render with another national", async () => {
       lang="nb"
       caption="rateSnitt"
       national="Finnmark"
-      headers={tableHeaders}
+      headers={testHeaders}
     />
   );
   expect(container).toMatchSnapshot();
@@ -55,7 +58,7 @@ test("Render with many picked HF", async () => {
       lang="nb"
       caption="rateSnitt"
       national="Norge"
-      headers={tableHeaders}
+      headers={testHeaders}
     />
   );
   expect(container).toMatchSnapshot();
@@ -69,7 +72,7 @@ test("Render english with many picked HF", async () => {
       lang="en"
       caption="rateSnitt"
       national="Norge"
-      headers={tableHeaders}
+      headers={testHeaders}
     />
   );
   expect(container).toMatchSnapshot();
