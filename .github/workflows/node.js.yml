@@ -31,7 +31,7 @@ jobs:
       - run: yarn run test
       - run: yarn workspace skde run build
       - name: Cypress run
-        uses: cypress-io/github-action@v5.3.1
+        uses: cypress-io/github-action@v5.4.0
         with:
           working-directory: ./apps/skde
           build: yarn export
