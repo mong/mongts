@@ -1,0 +1,129 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Longer text 1`] = `
+<div>
+  <p>
+    Dette er en test
+  </p>
+  
+
+  <h1
+    id="hovedoverskrift"
+  >
+    Hovedoverskrift
+  </h1>
+  
+
+  <p>
+    Litt mer tekst
+  </p>
+  
+
+  <h2
+    id="underoverskrift"
+  >
+    Underoverskrift
+  </h2>
+  
+
+  <h3
+    id="dette-er-en-overskrift"
+  >
+    Dette er en overskrift!
+  </h3>
+  
+
+  <pre>
+    <code
+      class="language-sas"
+    >
+      data test;
+set test2;
+var = 0;
+run;
+
+    </code>
+  </pre>
+  
+
+  <p>
+    Og litt tekst her
+  </p>
+</div>
+`;
+
+exports[`Standard render 1`] = `
+<div>
+  <p>
+    Dette er en test
+  </p>
+</div>
+`;
+
+exports[`Text with image 1`] = `
+<div>
+  <p>
+    Dette er en test
+  </p>
+  
+
+  <h1
+    id="hovedoverskrift"
+  >
+    Hovedoverskrift
+  </h1>
+  
+
+  <figure
+    style="width: 90%; display: flex; justify-content: center; align-items: center; flex-direction: column;"
+  >
+    <img
+      alt="Menisk, utvikling i antall inngrep i perioden 2013–2017"
+      src="https://picsum.photos/id/237/100/100.jpg"
+      style="display: block; margin: auto;"
+      title="Menisk, utvikling i antall inngrep i perioden 2013–2017"
+    />
+    <figcaption>
+      <strong>
+        Figur:
+      </strong>
+       
+      Menisk, utvikling i antall inngrep pr. 100 000 innbyggere i perioden 2013–2017, justert for kjønn og alder. Fordelt på opptaksområder og offentlig eller privat behandler.
+    </figcaption>
+  </figure>
+</div>
+`;
+
+exports[`Text with image, english 1`] = `
+<div>
+  <p>
+    Dette er en test
+  </p>
+  
+
+  <h1
+    id="hovedoverskrift"
+  >
+    Hovedoverskrift
+  </h1>
+  
+
+  <figure
+    style="width: 90%; display: flex; justify-content: center; align-items: center; flex-direction: column;"
+  >
+    <img
+      alt="Menisk, utvikling i antall inngrep i perioden 2013–2017"
+      src="https://picsum.photos/id/237/100/100.jpg"
+      style="display: block; margin: auto;"
+      title="Menisk, utvikling i antall inngrep i perioden 2013–2017"
+    />
+    <figcaption>
+      <strong>
+        Figure:
+      </strong>
+       
+      Menisk, utvikling i antall inngrep pr. 100 000 innbyggere i perioden 2013–2017, justert for kjønn og alder. Fordelt på opptaksområder og offentlig eller privat behandler.
+    </figcaption>
+  </figure>
+</div>
+`;
