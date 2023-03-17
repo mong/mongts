@@ -9,8 +9,6 @@
 import { render } from "@testing-library/react";
 import { ImageBox } from "..";
 
-jest.mock("next/router", () => require("next-router-mock"));
-
 test("Standard render", async () => {
   const { container } = render(
     <ImageBox
