@@ -37,6 +37,15 @@ test("Click on HF", async () => {
   fireEvent.click(getByTestId("maphf_UNN"));
   expect(mockRouter.query).toEqual({ bohf: [] });
   expect(container).toMatchSnapshot();
+  // Click more HF
+  fireEvent.click(getByTestId("maphf_UNN"));
+  expect(mockRouter.query).toEqual({ bohf: "UNN" });
+  fireEvent.click(getByTestId("maphf_Fonna"));
+  expect(mockRouter.query).toEqual({ bohf: ["UNN", "Fonna"] });
+  fireEvent.click(getByTestId("maphf_OUS"));
+  expect(mockRouter.query).toEqual({ bohf: ["UNN", "Fonna", "OUS"] });
+  fireEvent.click(getByTestId("maphf_Fonna"));
+  expect(mockRouter.query).toEqual({ bohf: ["UNN", "OUS"] });
 });
 
 test("Standard render", async () => {
@@ -95,5 +104,25 @@ test("Format etc.", async () => {
       classes={[0.1, 0.13, 0.15]}
     />
   );
+  expect(container).toMatchSnapshot();
+});
+
+test("With missing HF", async () => {
+  mockRouter.push("");
+  const newData = atlasData.filter((d) => d["bohf"] != "UNN");
+  const { container, getByTestId } = render(
+    <Map
+      mapAttr={newData}
+      lang="nb"
+      format=".0%"
+      caption="Dette er en test"
+      attrName="andel3_prim"
+      mapData={mapData}
+      classes={[0.1, 0.13, 0.15]}
+    />
+  );
+  expect(container).toMatchSnapshot();
+  fireEvent.click(getByTestId("maphf_UNN"));
+  expect(mockRouter.query).toEqual({ bohf: "UNN" });
   expect(container).toMatchSnapshot();
 });
