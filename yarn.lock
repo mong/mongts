@@ -18769,7 +18769,7 @@ __metadata:
     react-markdown: 8.0.5
     react-query: 3.39.3
     react-scripts: 5.0.1
-    react-select: 5.7.0
+    react-select: 5.7.1
     remark-gfm: 3.0.1
     resize-observer-polyfill: 1.5.1
     types: "*"
@@ -19262,7 +19262,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-select@npm:*, react-select@npm:5.7.0":
+"react-select@npm:*":
   version: 5.7.0
   resolution: "react-select@npm:5.7.0"
   dependencies:
@@ -19279,6 +19279,26 @@ __metadata:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
   checksum: 3d29f7bb6dd66ad55396d820f05da6112f1d21b67526422a8ff5aa6cd47c783804c1b73042ac2949ba0871056a3dc68c06a73a8281abb61571e475d72bbd80dc
+  languageName: node
+  linkType: hard
+
+"react-select@npm:5.7.1":
+  version: 5.7.1
+  resolution: "react-select@npm:5.7.1"
+  dependencies:
+    "@babel/runtime": ^7.12.0
+    "@emotion/cache": ^11.4.0
+    "@emotion/react": ^11.8.1
+    "@floating-ui/dom": ^1.0.1
+    "@types/react-transition-group": ^4.4.0
+    memoize-one: ^6.0.0
+    prop-types: ^15.6.0
+    react-transition-group: ^4.3.0
+    use-isomorphic-layout-effect: ^1.1.2
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: a10d09fc9233b51fd391c1871f1becded368ebdc2de18058d76236a7771e81e7582e27d6f4a47fc372bf20cb64c8eed078207da6f31cac71a31b2071e6d6f7e2
   languageName: node
   linkType: hard
 
