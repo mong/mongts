@@ -57,6 +57,11 @@ li.MuiBreadcrumbs-li:last-child {
   }
 }
 
+/* netlifycms bug fix */
+[data-slate-editor] {
+  -webkit-user-modify: read-write !important;
+}
+
 .register-row {
   background-color: #dee7ee;
 }
