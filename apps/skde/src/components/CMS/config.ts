@@ -37,11 +37,10 @@ const atlas = (lang: "no" | "en"): Collection => {
     fields: [
       filename,
       {
-        label: "Publisert på forsiden",
+        label: "Publisert",
         name: "publisert",
         widget: "boolean",
         default: false,
-        hint: "Atlaset legges på forsiden av skde.no/helseatlas hvis «Publisert på forsiden» er huket av.",
       },
       {
         label: "Publiseringsdato",
