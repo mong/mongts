@@ -33,10 +33,7 @@ const atlas = (lang: "no" | "en"): Collection => {
       lang === "no"
         ? "/helseatlas/img/no/{{filename}}"
         : "/helseatlas/img/en/{{filename}}",
-    identifier_field: "shortTitle",
-    editor: {
-      preview: false,
-    },
+    identifier_field: "mainTitle",
     fields: [
       filename,
       {
