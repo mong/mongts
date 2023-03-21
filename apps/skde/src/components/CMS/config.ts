@@ -10,6 +10,7 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
   return {
     label: lang === "no" ? "Atlas" : "Engelske atlas",
     name: lang === "no" ? "atlas" : "atlas_eng",
+    sortable_fields: ["date", "publisert", "mainTitle"],
     folder:
       lang === "no"
         ? "apps/skde/_posts/helseatlas/atlas"
