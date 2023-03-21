@@ -31,10 +31,11 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
     fields: [
       filename,
       {
-        label: "Publisert",
+        label: "Publisert på forsiden",
         name: "publisert",
         widget: "boolean",
         default: false,
+        hint: "Atlaset legges på forsiden av skde.no/helseatlas hvis «Publisert på forsiden» er huket av.",
       },
       {
         label: "Publiseringsdato",
