@@ -13,7 +13,7 @@
     "check-types": "turbo run check-types",
     "check-format": "turbo run check-format",
     "build-doc": "typedoc",
-    "cms": "npx @staticcms/proxy-server"
+    "cms": "npx netlify-cms-proxy-server"
   },
   "workspaces": [
     "apps/*",
