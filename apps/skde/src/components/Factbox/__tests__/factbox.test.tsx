@@ -29,6 +29,9 @@ test("English render", async () => {
   const firstSnap = container;
   //expand box
   fireEvent.click(getByTestId("factbox"));
+  // This is supposed to fail...
+  // Or the snapshot has not been changed.
+  expect(container).toEqual(firstSnap);
   expect(container).toMatchSnapshot();
   fireEvent.click(getByTestId("factbox"));
   expect(container).toEqual(firstSnap);
