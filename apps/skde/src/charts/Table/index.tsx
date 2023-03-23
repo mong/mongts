@@ -68,6 +68,7 @@ export const DataTable = <
                   direction={orderBy === header.id ? order : "asc"}
                   onClick={createSortHandler(header.id)}
                   sx={{ fontWeight: 600 }}
+                  data-testid={`tablehead_${header.id}`}
                 >
                   {lang === "en" ? header.label_en : header.label_no}
                 </TableSortLabel>

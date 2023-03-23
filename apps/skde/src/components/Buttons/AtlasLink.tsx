@@ -1,6 +1,5 @@
 import Link from "next/link";
 import Image from "next/image";
-import { CSSProperties } from "react";
 import classNames from "./AtlasLink.module.css";
 import { timeFormat } from "d3-time-format";
 
@@ -11,8 +10,6 @@ interface Props {
   imageSource: string;
   linkTitle: string;
   linkText: string;
-  className?: string;
-  style?: CSSProperties;
   wide?: boolean;
   date: Date;
   newlyUpdated?: boolean;
@@ -24,8 +21,6 @@ const formatTimeEng = timeFormat("%B %d %Y");
 const formatTimeNo = timeFormat("%d.%m.%Y");
 
 export const AtlasLink: React.FC<Props> = ({
-  style,
-  className,
   linkTo,
   imageSource,
   linkTitle,

@@ -1,0 +1,257 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`English render 1`] = `
+<div>
+  <div
+    class="linkOuterWrapper "
+  >
+    <a
+      data-testid="v2/en/test_atlas"
+      href="/v2/en/test_atlas"
+    >
+      <div
+        class="linkInnerWrapper"
+      >
+        <div
+          class="linkImageWrapper"
+        >
+          <img
+            alt="atlas photo"
+            data-nimg="1"
+            decoding="async"
+            height="740"
+            loading="lazy"
+            src="https://picsum.photos/id/237/100/100.jpg?w=3840&q=75"
+            srcset="https://picsum.photos/id/237/100/100.jpg?w=1200&q=75 1x, https://picsum.photos/id/237/100/100.jpg?w=3840&q=75 2x"
+            style="color: transparent; max-width: 100%; height: auto;"
+            width="1160"
+          />
+        </div>
+        <div
+          class="linkText"
+        >
+          <div
+            class="linkDateContainer "
+          >
+            <div
+              class="outerCircle"
+            >
+              <div
+                class="innerDot"
+              />
+            </div>
+            Published 
+            <strong
+              class="date"
+            >
+              October 13 2014
+            </strong>
+          </div>
+          <div
+            class="linkTitle"
+          >
+            Testatlas 2
+          </div>
+          <div
+            class="linkIngress"
+          >
+            <p>
+              Lorem lipsum dolor 2
+            </p>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Norsk render 1`] = `
+<div>
+  <div
+    class="linkOuterWrapper "
+  >
+    <a
+      data-testid="v2/test_atlas"
+      href="/v2/test_atlas"
+    >
+      <div
+        class="linkInnerWrapper"
+      >
+        <div
+          class="linkImageWrapper"
+        >
+          <img
+            alt="atlas photo"
+            data-nimg="1"
+            decoding="async"
+            height="740"
+            loading="lazy"
+            src="https://picsum.photos/id/237/100/100.jpg?w=3840&q=75"
+            srcset="https://picsum.photos/id/237/100/100.jpg?w=1200&q=75 1x, https://picsum.photos/id/237/100/100.jpg?w=3840&q=75 2x"
+            style="color: transparent; max-width: 100%; height: auto;"
+            width="1160"
+          />
+        </div>
+        <div
+          class="linkText"
+        >
+          <div
+            class="linkDateContainer "
+          >
+            <div
+              class="outerCircle"
+            >
+              <div
+                class="innerDot"
+              />
+            </div>
+            Publisert:
+            <strong
+              class="date"
+            >
+              13.10.2014
+            </strong>
+          </div>
+          <div
+            class="linkTitle"
+          >
+            Testatlas 1
+          </div>
+          <div
+            class="linkIngress"
+          >
+            <p>
+              Lorem lipsum dolor 1
+            </p>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Wide is true 1`] = `
+<div>
+  <div
+    class="linkOuterWrapper wide"
+  >
+    <a
+      data-testid=""
+      href="/"
+    >
+      <div
+        class="linkInnerWrapper"
+      >
+        <div
+          class="linkImageWrapper"
+        >
+          <img
+            alt="atlas photo"
+            data-nimg="1"
+            decoding="async"
+            height="740"
+            loading="lazy"
+            src="https://picsum.photos/id/237/100/100.jpg?w=3840&q=75"
+            srcset="https://picsum.photos/id/237/100/100.jpg?w=1200&q=75 1x, https://picsum.photos/id/237/100/100.jpg?w=3840&q=75 2x"
+            style="color: transparent; max-width: 100%; height: auto;"
+            width="1160"
+          />
+        </div>
+        <div
+          class="linkText"
+        >
+          <div
+            class="linkDateContainer "
+          >
+            <div
+              class="outerCircle"
+            >
+              <div
+                class="innerDot"
+              />
+            </div>
+            Publisert:
+            <strong
+              class="date"
+            >
+              13.10.2014
+            </strong>
+          </div>
+          <div
+            class="linkTitle"
+          />
+          <div
+            class="linkIngress"
+          >
+            <p />
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+`;
+
+exports[`newlyUpdated is true 1`] = `
+<div>
+  <div
+    class="linkOuterWrapper "
+  >
+    <a
+      data-testid=""
+      href="/"
+    >
+      <div
+        class="linkInnerWrapper"
+      >
+        <div
+          class="linkImageWrapper"
+        >
+          <img
+            alt="atlas photo"
+            data-nimg="1"
+            decoding="async"
+            height="740"
+            loading="lazy"
+            src="https://picsum.photos/id/237/100/100.jpg?w=3840&q=75"
+            srcset="https://picsum.photos/id/237/100/100.jpg?w=1200&q=75 1x, https://picsum.photos/id/237/100/100.jpg?w=3840&q=75 2x"
+            style="color: transparent; max-width: 100%; height: auto;"
+            width="1160"
+          />
+        </div>
+        <div
+          class="linkText"
+        >
+          <div
+            class="linkDateContainer newlyUpdated"
+          >
+            <div
+              class="outerCircle"
+            >
+              <div
+                class="innerDot"
+              />
+            </div>
+            Publisert:
+            <strong
+              class="date"
+            >
+              13.10.2014
+            </strong>
+          </div>
+          <div
+            class="linkTitle"
+          />
+          <div
+            class="linkIngress"
+          >
+            <p />
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+`;
