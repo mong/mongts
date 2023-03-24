@@ -419,20 +419,3 @@ export const atlasData = [
     pas_rate_eldre: 6.1516249726,
   },
 ];
-
-export const barchartinfo = {
-  type: "barchart",
-  data: "qwerty",
-  x: ["rateSnitt"],
-  y: "bohf",
-  xLabel: {
-    nb: "Antall med epilepsi pr. 1 000 innbyggere",
-    en: "Number of epilepsy patients per 1,000 inhabitants",
-  },
-  yLabel: { nb: "Opptaksområder", en: "Referral areas" },
-  annualVar: ["rate2019", "rate2020", "rate2021"],
-  annualVarLabels: {
-    nb: ["2019", "2020", "2021"],
-    en: ["2019", "2020", "2021"],
-  },
-};

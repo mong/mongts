@@ -14,6 +14,8 @@ export const AnnualVarLegend: React.FC<AnnualVarLegendPops> = ({
   labels,
   values,
 }) => {
+  console.log(labels);
+
   return (
     <div className={classNames.legendContainer}>
       <ul className={classNames.legendUL}>
