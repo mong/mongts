@@ -17087,7 +17087,7 @@ __metadata:
     resize-observer-polyfill: 1.5.1
     types: "*"
     typescript: 5.0.2
-    use-query-params: 2.2.0
+    use-query-params: 2.2.1
   languageName: unknown
   linkType: soft
 
@@ -19164,7 +19164,7 @@ __metadata:
     remark-gfm: 3.0.1
     start-server-and-test: 2.0.0
     typescript: 5.0.2
-    use-query-params: 2.2.0
+    use-query-params: 2.2.1
   languageName: unknown
   linkType: soft
 
@@ -21249,15 +21249,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-query-params@npm:2.2.0":
-  version: 2.2.0
-  resolution: "use-query-params@npm:2.2.0"
+"use-query-params@npm:2.2.1":
+  version: 2.2.1
+  resolution: "use-query-params@npm:2.2.1"
   dependencies:
     serialize-query-params: ^2.0.2
   peerDependencies:
+    "@reach/router": ^1.2.1
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: b0b6a6b0e72f95d03a0a7256713837cf2b4f39df5b98a880dcfddfe28677e774f3085e0f8e15b6cc9d0a67bfa4d90e39ae9fb6634c3ccab8a09df0284110eddd
+    react-router-dom: ">=5"
+  peerDependenciesMeta:
+    "@reach/router":
+      optional: true
+    react-router-dom:
+      optional: true
+  checksum: 5bf16511a561cf09902c3526950c6c88999767a1990619a322685448abbd09f5d71a17289d0f727bb3e68d5baced36b3fc0bbf855664b3dd5046d5d553204d28
   languageName: node
   linkType: hard
 
