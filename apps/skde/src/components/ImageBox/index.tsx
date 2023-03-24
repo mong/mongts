@@ -5,8 +5,8 @@ interface Props {
   caption?: string;
   alt: string;
   source: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   title?: string;
   layout?: "responsive" | "fixed" | "fill" | "intrinsic";
 }

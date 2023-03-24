@@ -30,6 +30,7 @@ export const ListItem: React.FC<ListItemProps> = ({
         onClick={() => {
           setExpanded((state) => (state === href ? "none" : href));
         }}
+        data-testid={`toc_a_${href}`}
       >
         {linkTitle}
       </a>
