@@ -10,6 +10,8 @@
     "export": "next export",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
     "format": "yarn prettier --write",
+    "test": "yarn run test:base --coverage",
+    "test:base": "react-scripts test --watchAll=false",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
     "e2e": "start-server-and-test start http://localhost:3000 cypress",
@@ -53,6 +55,7 @@
   },
   "devDependencies": {
     "@cypress/code-coverage": "3.10.0",
+    "@testing-library/react": "14.0.0",
     "@types/d3-array": "3.0.4",
     "@types/d3-format": "3.0.1",
     "@types/d3-geo": "3.0.3",
@@ -65,14 +68,33 @@
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "husky": "8.0.3",
+    "next-router-mock": "0.9.2",
     "next-transpile-modules": "10.0.0",
     "prettier": "2.8.7",
     "react-markdown": "8.0.6",
+    "react-scripts": "5.0.1",
     "start-server-and-test": "2.0.0",
     "typescript": "5.0.2"
   },
   "typedoc": {
     "entryPoint": "./pages/index.tsx"
   },
-  "packageManager": "yarn@3.5.0"
+  "packageManager": "yarn@3.5.0",
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "statements": 3,
+        "branches": 4,
+        "functions": 1,
+        "lines": 3
+      }
+    },
+    "transformIgnorePatterns": [
+      "<rootDir>/../../node_modules/remark-gfm/"
+    ],
+    "moduleNameMapper": {
+      "d3": "<rootDir>/../../node_modules/d3/dist/d3.min.js",
+      "react-markdown": "<rootDir>/../../node_modules/react-markdown/react-markdown.min.js"
+    }
+  }
 }
