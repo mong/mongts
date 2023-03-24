@@ -178,7 +178,7 @@ test("Render with figure split in two", async () => {
 const barchartinfo3 = {
   type: "barchart",
   data: "qwerty",
-  x: ["spes_rate"],
+  x: ["andel3_prim"],
   y: "bohf",
   yLabel: { nb: "qwerty", nn: "Referral areas" },
   xLabel: { nb: "qwerty", nn: "Referral areas" },
@@ -192,7 +192,7 @@ test("Render with very little info", async () => {
       data={atlasData}
       lang="en"
       national="Norge"
-      format=".1f"
+      format=".0%"
     />
   );
   expect(container).toMatchSnapshot();
@@ -219,7 +219,44 @@ test("Render with very little info 2", async () => {
       data={atlasData}
       lang="nb"
       national="Norge"
-      format=".1f"
+      format=",.0f"
+    />
+  );
+  expect(container).toMatchSnapshot();
+});
+
+test("Render with empty string on format", async () => {
+  mockRouter.push("");
+  const { container } = render(
+    <Barchart
+      {...barchartinfo4}
+      data={atlasData}
+      lang="nb"
+      national="Norge"
+      format=""
+    />
+  );
+  expect(container).toMatchSnapshot();
+});
+
+const barchartinfo5 = {
+  type: "barchart",
+  data: "qwerty",
+  x: ["rate2020"],
+  y: "rate2019",
+  yLabel: { en: "qwerty", nn: "Referral areas" },
+  xLabel: { en: "qwerty", nn: "Referral areas" },
+};
+
+test("Render with other y (will look bad)", async () => {
+  mockRouter.push("");
+  const { container } = render(
+    <Barchart
+      {...barchartinfo5}
+      data={atlasData}
+      lang="nb"
+      national="Norge"
+      format=""
     />
   );
   expect(container).toMatchSnapshot();
