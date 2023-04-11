@@ -5565,6 +5565,7 @@ __metadata:
     prettier: 2.8.7
     simple-oauth2: 5.0.0
     ts-node-dev: 2.0.0
+    tsconfig: "workspace:*"
     types: "*"
     typescript: 5.0.4
   languageName: unknown
@@ -17275,6 +17276,7 @@ __metadata:
     react-select: 5.7.2
     remark-gfm: 3.0.1
     resize-observer-polyfill: 1.5.1
+    tsconfig: "workspace:*"
     types: "*"
     typescript: 5.0.4
     use-query-params: 2.2.1
@@ -19353,6 +19355,7 @@ __metadata:
     rehype-toc: 3.0.2
     remark-gfm: 3.0.1
     start-server-and-test: 2.0.0
+    tsconfig: "workspace:*"
     typescript: 5.0.4
     use-query-params: 2.2.1
   languageName: unknown
@@ -20764,6 +20767,12 @@ __metadata:
   checksum: 8bce05e93c673defd56d93d83d4055e49651d3947c076339c4bc15d47b7eb5029bed194087e568764213a2e4bf45c477ba9f4da16adfd92cd901af7c09e4517e
   languageName: node
   linkType: hard
+
+"tsconfig@workspace:*, tsconfig@workspace:packages/tsconfig":
+  version: 0.0.0-use.local
+  resolution: "tsconfig@workspace:packages/tsconfig"
+  languageName: unknown
+  linkType: soft
 
 "tslib@npm:^1.10.0, tslib@npm:^1.8.1, tslib@npm:^1.9.3":
   version: 1.14.1
