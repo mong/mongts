@@ -5555,6 +5555,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 5.58.0
     "@typescript-eslint/parser": 5.58.0
     compression: 1.7.4
+    config: "workspace:*"
     cors: 2.8.5
     eslint: 8.38.0
     express: 4.18.2
@@ -5565,7 +5566,6 @@ __metadata:
     prettier: 2.8.7
     simple-oauth2: 5.0.0
     ts-node-dev: 2.0.0
-    tsconfig: "workspace:*"
     types: "*"
     typescript: 5.0.4
   languageName: unknown
@@ -7106,6 +7106,12 @@ __metadata:
   checksum: 902a9f5d8967a3e2faf138d5cb784b9979bad2e6db5357c5b21c568df4ebe62bcb15108af1b2253744844eb964fc023fbd9afbbbb6ddd0bcc204c6fb5b7bf3af
   languageName: node
   linkType: hard
+
+"config@workspace:*, config@workspace:packages/config":
+  version: 0.0.0-use.local
+  resolution: "config@workspace:packages/config"
+  languageName: unknown
+  linkType: soft
 
 "confusing-browser-globals@npm:^1.0.11":
   version: 1.0.11
@@ -17260,6 +17266,7 @@ __metadata:
     "@typescript-eslint/parser": 5.58.0
     "@visx/event": 3.0.1
     "@visx/tooltip": 3.1.2
+    config: "workspace:*"
     d3: 7.8.4
     d3-format: 3.1.0
     eslint: 8.38.0
@@ -17276,7 +17283,6 @@ __metadata:
     react-select: 5.7.2
     remark-gfm: 3.0.1
     resize-observer-polyfill: 1.5.1
-    tsconfig: "workspace:*"
     types: "*"
     typescript: 5.0.4
     use-query-params: 2.2.1
@@ -19324,6 +19330,7 @@ __metadata:
     "@visx/axis": 2.18.0
     "@visx/group": 3.0.0
     "@visx/scale": 2.18.0
+    config: "workspace:*"
     cypress: 12.9.0
     d3-array: 3.2.3
     d3-format: 3.1.0
@@ -19355,7 +19362,6 @@ __metadata:
     rehype-toc: 3.0.2
     remark-gfm: 3.0.1
     start-server-and-test: 2.0.0
-    tsconfig: "workspace:*"
     typescript: 5.0.4
     use-query-params: 2.2.1
   languageName: unknown
@@ -20767,12 +20773,6 @@ __metadata:
   checksum: 8bce05e93c673defd56d93d83d4055e49651d3947c076339c4bc15d47b7eb5029bed194087e568764213a2e4bf45c477ba9f4da16adfd92cd901af7c09e4517e
   languageName: node
   linkType: hard
-
-"tsconfig@workspace:*, tsconfig@workspace:packages/tsconfig":
-  version: 0.0.0-use.local
-  resolution: "tsconfig@workspace:packages/tsconfig"
-  languageName: unknown
-  linkType: soft
 
 "tslib@npm:^1.10.0, tslib@npm:^1.8.1, tslib@npm:^1.9.3":
   version: 1.14.1

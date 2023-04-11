@@ -1,5 +1,11 @@
 {
-  "extends": "tsconfig/nextjs.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "config/tsconfig.json",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "module": "esnext",
+    "strict": false
+  },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["./cypress.config.ts", "node_modules", "**/*.test.tsx"]
 }
