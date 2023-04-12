@@ -1,5 +1,5 @@
 import React from "react";
-import { useIsFetching } from "react-query";
+import { useIsFetching } from "@tanstack/react-query";
 
 interface NoDataAvailibleProps {
   colspan: number;

@@ -1,9 +1,9 @@
 import "../src/styles/globals.css";
 import { useState } from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { QueryParamProvider } from "use-query-params";
 import { NextAdapter } from "next-query-params";
-import { ReactQueryDevtools } from "react-query/devtools";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
 import { Open_Sans } from "next/font/google";
 

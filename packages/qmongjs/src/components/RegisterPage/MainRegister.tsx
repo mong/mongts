@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { UseQueryResult } from "react-query";
+import { UseQueryResult } from "@tanstack/react-query";
 import { useQueryParam } from "use-query-params";
 
 import SelectTreatmentUnits, { OptsTu } from "../SelectTreatmentUnits";
