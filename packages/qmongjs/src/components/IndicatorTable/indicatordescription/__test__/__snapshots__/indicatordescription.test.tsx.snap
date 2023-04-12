@@ -39,6 +39,52 @@ exports[`renders with defined green level 1`] = `
 </div>
 `;
 
+exports[`renders with non-complete year 1`] = `
+<div>
+  <table>
+    <tbody>
+      <tr>
+        <td
+          class="quality_indicator"
+        >
+          <div
+            class="quality_indicator_name"
+          >
+            <h1>
+              HbA1c &lt; 7,0 %
+            </h1>
+          </div>
+          <div
+            class="qi_long_description"
+          >
+            <p>
+              Andel pasienter med HbA1c &lt; 7,0 %
+            </p>
+          </div>
+          <div
+            class="desired_target_level"
+          >
+            <h4>
+              ØNSKET MÅLNIVÅ: 
+              ≥
+               
+              40 %
+            </h4>
+            <h4
+              style="color: rgb(227, 7, 19);"
+            >
+              Data for valgt år er ikke komplett. Siste komplette år er
+               
+              1979
+            </h4>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
 exports[`renders without defined green level 1`] = `
 <div>
   <table>
