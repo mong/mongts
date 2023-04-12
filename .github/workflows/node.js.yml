@@ -19,7 +19,7 @@ jobs:
         node-version: [18.x]
 
     steps:
-      - uses: actions/checkout@v3.3.0
+      - uses: actions/checkout@v3.5.0
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3.6.0
         with:
@@ -31,7 +31,7 @@ jobs:
       - run: yarn run test
       - run: yarn workspace skde run build
       - name: Cypress run
-        uses: cypress-io/github-action@v5.0.9
+        uses: cypress-io/github-action@v5.6.1
         with:
           working-directory: ./apps/skde
           build: yarn export
@@ -45,7 +45,7 @@ jobs:
           retention-days: 1
       - name: Code coverage
         if: matrix.node-version == '18.x'
-        uses: codecov/codecov-action@v3.1.1
+        uses: codecov/codecov-action@v3.1.2
       - name: Generate documentation
         run: yarn run build-doc
       - name: Deploy documentation to github pages
