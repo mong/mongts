@@ -4436,7 +4436,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:18.0.28":
+"@types/react@npm:*":
   version: 18.0.28
   resolution: "@types/react@npm:18.0.28"
   dependencies:
@@ -4444,6 +4444,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: e752df961105e5127652460504785897ca6e77259e0da8f233f694f9e8f451cde7fa0709d4456ade0ff600c8ce909cfe29f9b08b9c247fa9b734e126ec53edd7
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:18.0.34":
+  version: 18.0.34
+  resolution: "@types/react@npm:18.0.34"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 60d2766e7644ec480075bbb154bf8fb8476089466b643662ef59964e27cae2d8c71fd9c717a4dfa9627c3e050fa2ae866d10d16f66b4509058d1bfe2a564b18c
   languageName: node
   linkType: hard
 
@@ -17266,7 +17277,7 @@ __metadata:
     "@testing-library/user-event": 14.4.3
     "@types/d3": 7.4.0
     "@types/d3-format": 3.0.1
-    "@types/react": 18.0.28
+    "@types/react": 18.0.34
     "@types/react-select": 5.0.1
     "@typescript-eslint/eslint-plugin": 5.58.0
     "@typescript-eslint/parser": 5.58.0
@@ -19331,7 +19342,7 @@ __metadata:
     "@types/d3-shape": 3.1.1
     "@types/d3-time-format": 4.0.0
     "@types/node": 18.15.11
-    "@types/react": 18.0.28
+    "@types/react": 18.0.34
     "@visx/axis": 2.18.0
     "@visx/group": 3.0.0
     "@visx/scale": 2.18.0
