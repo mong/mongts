@@ -45,7 +45,7 @@ jobs:
           retention-days: 1
       - name: Code coverage
         if: matrix.node-version == '18.x'
-        uses: codecov/codecov-action@v3.1.1
+        uses: codecov/codecov-action@v3.1.2
       - name: Generate documentation
         run: yarn run build-doc
       - name: Deploy documentation to github pages
