@@ -1,4 +1,4 @@
-import { UseQueryResult } from "react-query";
+import { UseQueryResult } from "@tanstack/react-query";
 import { useQueryParam } from "use-query-params";
 import { Description, RegisterName, Indicator } from "types";
 import { mainQueryParamsConfig, appTextTypes } from "../../app_config";
