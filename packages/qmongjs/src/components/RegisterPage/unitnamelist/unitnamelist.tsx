@@ -4,7 +4,7 @@ import { UnitNameListHeader } from "./unitnamelistheader";
 import { UnitNameListBody } from "./unitnamelistbody";
 import useEventListener from "../../../helpers/hooks/useEventListener";
 import styles from "./index.module.css";
-import { FaTimesCircle } from "react-icons/fa";
+import { FaRegTimesCircle } from "react-icons/fa";
 
 interface NestedUnitName {
   rhf: string;
@@ -74,7 +74,7 @@ export const UnitNameList = (props: Props) => {
           className={styles.tu_list_close_btn}
           data-testid="tu_list_close"
         >
-          <FaTimesCircle style={{ fontSize: "2rem" }} />
+          <FaRegTimesCircle />
         </button>
       </div>
     </>
