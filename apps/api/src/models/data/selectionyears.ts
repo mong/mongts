@@ -10,11 +10,6 @@ export const selectionYearsModel = (
     .from("agg_data")
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
     .where("include", 1)
-    .where(function () {
-      this.whereRaw(
-        "EXTRACT(YEAR FROM delivery_latest_affirm) > year"
-      ).orWhereNull("delivery_latest_affirm");
-    })
     .whereNot("unit_name", "LIKE", "Udefinerte%")
     .where("context", filter.context ?? "")
     .modify(withFilter, filter);

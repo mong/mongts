@@ -19,6 +19,7 @@ interface Props {
   tickformat?: string;
   selectedTreatmentUnits: string[];
   max_value?: number;
+  lastCompleteYear?: number;
 }
 
 function Chart(props: Props) {
