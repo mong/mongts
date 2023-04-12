@@ -4,6 +4,7 @@ import { useEventListener } from "../../helpers/hooks";
 import style from "./index.module.css";
 import { RegisterName } from "types";
 import Link from "next/link";
+import { FaTimesCircle } from "react-icons/fa";
 
 interface selectedRegisterProps {
   regNames: RegisterName[];
@@ -123,7 +124,7 @@ const SelectRegister = (props: selectedRegisterProps) => {
           className={style.select_reg_close}
           data-testid="pick_registry_close_button"
         >
-          <i className="far fa-times-circle" />
+          <FaTimesCircle style={{ fontSize: "2rem" }} />
         </button>
       </div>
     </>
