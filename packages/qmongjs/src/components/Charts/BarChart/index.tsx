@@ -216,18 +216,22 @@ function BarChart(props: Props) {
             <rect
               height={marginOffsets.top + height + marginOffsets.bottom}
               width={width}
-              style={{ opacity: "0.35" }}
+              style={{ opacity: "0.10" }}
               rx="5"
             ></rect>
             <text
               textAnchor="middle"
-              y={height / 2}
+              y={height / 4}
               x={width / 2 + 10}
-              fill="black"
-              stroke="black"
-              fontSize={30}
+              fill="#e30713"
+              fontSize="2rem"
             >
-              Data er ikke komplett. Siste komplette år er {lastCompleteYear}
+              <tspan x={width / 2 + 10} dy="1.2em">
+                Data er ikke komplett.{" "}
+              </tspan>
+              <tspan x={width / 2 + 10} dy="1.2em">
+                Siste komplette år er {lastCompleteYear}
+              </tspan>
             </text>
           </>
         )}

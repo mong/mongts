@@ -1976,19 +1976,30 @@ exports[`Render zoomed with levels @500px and gray overlay (not complete data) 1
       <rect
         height="150"
         rx="5"
-        style="opacity: 0.35;"
+        style="opacity: 0.1;"
         width="500"
       />
       <text
-        fill="black"
-        font-size="30"
-        stroke="black"
+        fill="#e30713"
+        font-size="2rem"
         text-anchor="middle"
         x="260"
-        y="75"
+        y="37.5"
       >
-        Data er ikke komplett. Siste komplette år er 
-        1979
+        <tspan
+          dy="1.2em"
+          x="260"
+        >
+          Data er ikke komplett.
+           
+        </tspan>
+        <tspan
+          dy="1.2em"
+          x="260"
+        >
+          Siste komplette år er 
+          1979
+        </tspan>
       </text>
     </svg>
   </div>
