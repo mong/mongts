@@ -1,4 +1,4 @@
-import { UseQueryResult } from "react-query";
+import { UseQueryResult } from "@tanstack/react-query";
 import { Description, Indicator } from "types";
 
 import BarChart, { Bar, BarStyle } from "../../Charts/BarChart";
@@ -19,6 +19,7 @@ interface Props {
   tickformat?: string;
   selectedTreatmentUnits: string[];
   max_value?: number;
+  lastCompleteYear?: number;
 }
 
 function Chart(props: Props) {
