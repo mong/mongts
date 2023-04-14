@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { UseQueryResult } from "react-query";
+import { UseQueryResult } from "@tanstack/react-query";
 
 import style from "./tableblock.module.css";
 import { useDescriptionQuery, useIndicatorQuery } from "../../../helpers/hooks";

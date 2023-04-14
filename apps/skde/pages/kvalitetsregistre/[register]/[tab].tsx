@@ -1,4 +1,4 @@
-import { UseQueryResult } from "react-query";
+import { UseQueryResult } from "@tanstack/react-query";
 import { SelectedRegister } from "qmongjs";
 import { Layout } from "qmongjs";
 import { useRegisterNamesQuery, fetchRegisterNames } from "qmongjs";

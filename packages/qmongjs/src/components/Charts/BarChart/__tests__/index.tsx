@@ -376,7 +376,7 @@ test("Render with levels reversed @500px", async () => {
   expect(container).toMatchSnapshot();
 });
 
-test("Render zoomed with levels @500px", async () => {
+test("Render zoomed with levels @500px and gray overlay (not complete data)", async () => {
   const WIDTH = 500;
   (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
@@ -401,6 +401,7 @@ test("Render zoomed with levels @500px", async () => {
       tickformat="qwerty" // test with unsupported format
       zoom
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+      lastCompleteYear={1979}
     />
   );
 
