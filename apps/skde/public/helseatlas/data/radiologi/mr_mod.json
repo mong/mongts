@@ -8,21 +8,68 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "tmp",
+        "nb": "Antall per 1 000 innbyggere",
         "en": "tmp"
       },
       "yLabel": {
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
+      "annualVar": [
+        "tot2019",
+        "tot2020",
+        "tot2021",
+        "tot2022"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2019",
+          "2020",
+          "2021",
+          "2022"
+        ],
+        "en": [
+          "2019",
+          "2020",
+          "2021",
+          "2022"
+        ]
+      },
       "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "offsnitt",
+        "privsnitt"
+      ],
+      "xLegend": {
+        "nb": [
+          "Offentlig",
+          "Privat"
+        ],
+        "en": [
+          "Offentlig",
+          "Privat"
+        ]
+      },
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Antall per 1 000 innbyggere",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      }
     },
     {
       "type": "map",
       "data": "datasett_1",
       "x": "totsnitt",
       "caption": {
-        "nb": "tmp",
+        "nb": "Antall per 1 000 innbyggere",
         "en": "tmp"
       },
       "jenks": [
