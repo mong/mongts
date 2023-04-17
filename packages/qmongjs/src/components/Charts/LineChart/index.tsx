@@ -7,6 +7,7 @@ import {
   scaleOrdinal,
   scaleTime,
   select,
+  ticks,
 } from "d3";
 import React, { useEffect, useState } from "react";
 import { localPoint } from "@visx/event";
@@ -448,12 +449,18 @@ function getYScaleDomain(
   const minValue = Math.min(...data.map((d) => d.value));
 
   const additionalMargin = (maxValue - minValue) * 0.2;
-  const yMin = Math.floor((minValue - additionalMargin) * 100) / 100;
-  const yMax = Math.ceil((maxValue + additionalMargin) * 100) / 100;
+  const yMin = zoom
+    ? Math.max(Math.floor((minValue - additionalMargin) * 100) / 100, 0)
+    : 0;
+  let yMax = Math.ceil((maxValue + additionalMargin) * 100) / 100;
+  // Add space for extra tick if max value is greater than last original tick.
+  const originalTicks = ticks(yMin, yMax, theme.y_axis_tick_number);
+  const lastOriginalTick = originalTicks[originalTicks.length - 1];
+  const diffTicks = originalTicks[1] - originalTicks[0];
+  if (yMax > lastOriginalTick) {
+    yMax = lastOriginalTick + diffTicks;
+  }
 
   // yaxis max is maximum 1 (100 %) if percentage
-  return [
-    zoom ? Math.max(yMin, 0) : 0,
-    percentage ? (zoom ? Math.min(yMax, 1) : 1) : yMax,
-  ];
+  return [yMin, percentage ? Math.min(yMax, 1) : yMax];
 }
