@@ -13,7 +13,6 @@ import { buildLevels } from "../../../../test/builders";
 import { clockTick } from "../../../../test/clockTick";
 
 jest.mock("../../../../helpers/hooks");
-jest.mock("../../../../utils/useDelayInitial");
 
 test("Bar have labels with value in %", async () => {
   const WIDTH = 500;

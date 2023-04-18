@@ -14,7 +14,6 @@ import { localPoint } from "@visx/event";
 import { useTooltip } from "@visx/tooltip";
 
 import { themeTableChartLine as theme } from "./themeTableChartLine";
-import useDelayInitial from "../../../utils/useDelayInitial";
 import { Level, Margin } from "../types";
 import { useResizeObserver } from "../../../helpers/hooks";
 import styles from "./LineChart.module.css";
@@ -98,7 +97,6 @@ const LineChart = (props: Props) => {
   const [hoveredLegend, setHoveredLegend] = useState<string | null>(null);
   const [selectedLegends, setSelectedLegends] = useState<string[]>([]);
   const [legendHeight, setLegendHeight] = useState<number>(0);
-  const delayedZoom = useDelayInitial(zoom, false);
 
   const entry = useResizeObserver(svgContainerRef);
 
@@ -144,7 +142,7 @@ const LineChart = (props: Props) => {
       .domain([minYear, maxYear])
       .range([0, innerWidth]);
 
-    const yScaleDomain = getYScaleDomain(data, delayedZoom, percentage);
+    const yScaleDomain = getYScaleDomain(data, zoom, percentage);
     const yScale = scaleLinear()
       .domain(yScaleDomain)
       .range([innerHeight, 0])
@@ -356,7 +354,7 @@ const LineChart = (props: Props) => {
       .on("pointerleave", () => hideTooltip());
   }, [
     data,
-    delayedZoom,
+    zoom,
     displayLevels,
     hoveredLegend,
     innerHeight,
