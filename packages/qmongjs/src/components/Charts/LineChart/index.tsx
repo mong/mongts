@@ -175,11 +175,12 @@ const LineChart = (props: Props) => {
 
     // X-Axis
     let years = Array.from(new Set(data.map((d) => d.year)));
+    // Filter out every second year if many years. Always keep last year.
     if (years.length > 8) {
       years =
-        years.length % 2 === 0
-          ? years.filter((_, i) => i % 2 !== 0)
-          : years.filter((_, i) => i % 2 === 0);
+        Math.max(...years) % 2 === 0
+          ? years.filter((_, i) => i % 2 === 0)
+          : years.filter((_, i) => i % 2 !== 0);
     }
 
     const xAxis = axisBottom(xScale)
