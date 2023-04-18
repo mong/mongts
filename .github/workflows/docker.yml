@@ -44,7 +44,7 @@ jobs:
           dockerfile: "apps/api/Dockerfile"
       - name: Prepare
         id: docker_meta
-        uses: docker/metadata-action@v4.3.0
+        uses: docker/metadata-action@v4.4.0
         with:
           images: hnskde/mong-api
           tags: |
