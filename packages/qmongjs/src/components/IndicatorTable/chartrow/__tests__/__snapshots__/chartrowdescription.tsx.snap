@@ -230,3 +230,102 @@ exports[`ChartRowDescription with non-default title and +02:00 time zone 1`] = `
   </div>
 </div>
 `;
+
+exports[`ChartRowDescription with some markdown 1`] = `
+<div>
+  <div
+    class="description_container"
+  >
+    <div
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root MuiAccordion-rounded MuiAccordion-gutters css-1elwnq4-MuiPaper-root-MuiAccordion-root"
+    >
+      <div
+        aria-expanded="false"
+        class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root"
+        role="button"
+        tabindex="0"
+      >
+        <div
+          class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-o4b71y-MuiAccordionSummary-content"
+        >
+          <div
+            class="description_title"
+          >
+            Dette er en annen tittel
+          </div>
+        </div>
+        <div
+          class="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="ExpandMoreIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+        style="min-height: 0px;"
+      >
+        <div
+          class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+        >
+          <div
+            class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+          >
+            <div
+              class="MuiAccordion-region"
+              role="region"
+            >
+              <div
+                class="MuiAccordionDetails-root css-15v22id-MuiAccordionDetails-root"
+              >
+                <p
+                  style="margin: 0px;"
+                >
+                  Litt tekst 
+                  <em>
+                    som er kursiv
+                  </em>
+                   og 
+                  <strong>
+                    og fet
+                  </strong>
+                  . Legge inn en 
+                  <a
+                    href="https://www.nrk.no/"
+                    rel="noreferrer"
+                    style="color: rgb(0, 100, 146);"
+                    target="_blank"
+                  >
+                    lenke
+                  </a>
+                   her. Til og med bilde 
+                  <img
+                    alt="and"
+                    src="https://loremflickr.com/320/240"
+                  />
+                   Prøve med fotnote[^1]. [^1]: Som står her.
+                </p>
+                <p>
+                  Disse dataene ble lastet opp
+                   
+                  10. mars 1979
+                  .
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
