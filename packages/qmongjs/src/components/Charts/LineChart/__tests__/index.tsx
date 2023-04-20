@@ -17,7 +17,6 @@ import {
 } from "../../../../helpers/hooks";
 
 jest.mock("../../../../helpers/hooks");
-jest.mock("../../../../utils/useDelayInitial");
 
 beforeEach(() => {
   const WIDTH = 500;
@@ -175,6 +174,7 @@ test("Render with levels @500px", async () => {
   const { container } = render(
     <LineChartWithRef
       showLevel={true}
+      zoom={true}
       levels={[
         { level: "high", start: 1, end: 0.9 },
         { level: "mid", start: 0.9, end: 0.5 },
@@ -184,7 +184,7 @@ test("Render with levels @500px", async () => {
       data={[
         {
           label: "test",
-          value: 0.513343,
+          value: 0.8513343,
           year: 2020,
           id: 1006,
           ind_id: "barnediabetes_hba1c_ge_9",
@@ -205,7 +205,7 @@ test("Render with levels @500px", async () => {
         },
         {
           label: "test",
-          value: 0.15,
+          value: 0.885,
           year: 2019,
           id: 1006,
           ind_id: "barnediabetes_hba1c_ge_9",
@@ -226,7 +226,7 @@ test("Render with levels @500px", async () => {
         },
         {
           label: "test",
-          value: 0.3532,
+          value: 0.9532,
           year: 2018,
           id: 1006,
           ind_id: "barnediabetes_hba1c_ge_9",
@@ -247,7 +247,7 @@ test("Render with levels @500px", async () => {
         },
         {
           label: "test",
-          value: 0.124,
+          value: 0.724,
           year: 2017,
           id: 1006,
           ind_id: "barnediabetes_hba1c_ge_9",

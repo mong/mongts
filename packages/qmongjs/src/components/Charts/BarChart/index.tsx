@@ -1,6 +1,5 @@
 import { axisBottom, axisLeft, scaleBand, scaleLinear, select } from "d3";
 import { useEffect, useRef } from "react";
-import useDelayInitial from "../../../utils/useDelayInitial";
 import { useResizeObserver } from "../../../helpers/hooks";
 import styles from "./BarChart.module.css";
 import { levelColor } from "../utils";
@@ -43,7 +42,6 @@ function BarChart(props: Props) {
     max_value,
     lastCompleteYear,
   } = props;
-  const delayedZoom = useDelayInitial(zoom, false);
   const svgRef = useRef<SVGSVGElement>(null);
   const entry = useResizeObserver(wrapperRef);
   const height = Math.max(data.length * 30, 150);
@@ -77,12 +75,7 @@ function BarChart(props: Props) {
           : false
         : false;
 
-    const xScaleDomain = getXScaleDomain(
-      data,
-      delayedZoom,
-      percentage,
-      max_value
-    );
+    const xScaleDomain = getXScaleDomain(data, zoom, percentage, max_value);
     const xScale = scaleLinear()
       .domain(xScaleDomain)
       .range([0, innerWidth])
@@ -189,7 +182,7 @@ function BarChart(props: Props) {
     displayLevels,
     levels,
     tickformat,
-    delayedZoom,
+    zoom,
     innerHeight,
     innerWidth,
     max_value,
