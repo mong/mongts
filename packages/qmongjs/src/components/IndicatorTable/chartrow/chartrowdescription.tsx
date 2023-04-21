@@ -34,6 +34,18 @@ const ChartRowDescription = ({
                 p({ children }) {
                   return <p style={{ margin: 0 }}>{children}</p>;
                 },
+                a({ href, children }) {
+                  return (
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ color: "#006492" }}
+                    >
+                      {children}
+                    </a>
+                  );
+                },
               }}
             >
               {description_text}
