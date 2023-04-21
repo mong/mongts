@@ -178,8 +178,8 @@ const LineChart = (props: Props) => {
     if (Math.max(...years) - Math.min(...years) > 7) {
       years =
         Math.max(...years) % 2 === 0
-          ? years.filter((_, i) => i % 2 !== 0)
-          : years.filter((_, i) => i % 2 === 0);
+          ? years.filter((i) => i % 2 === 0)
+          : years.filter((i) => i % 2 !== 0);
     }
 
     const xAxis = axisBottom(xScale)
