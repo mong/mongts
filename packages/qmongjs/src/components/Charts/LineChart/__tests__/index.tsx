@@ -214,6 +214,147 @@ test("Render with levels reversed @500px", async () => {
   expect(container).toMatchSnapshot();
 });
 
+test("Render with many years", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+  const { container } = render(
+    <LineChartWithRef
+      showLevel={true}
+      levels={[
+        { level: "high", start: 0.2, end: 0 },
+        { level: "mid", start: 0.4, end: 0.2 },
+        { level: "low", start: 1, end: 0.4 },
+      ]}
+      tickformat=",.3f"
+      lastCompleteYear={2019}
+      data={[
+        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2015 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.32, year: 2016 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.33, year: 2017 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.34, year: 2018 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.35, year: 2019 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.36, year: 2020 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.37, year: 2021 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.38, year: 2022 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.39, year: 2023 }),
+      ]}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Render with many years, ending with even", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+  const { container } = render(
+    <LineChartWithRef
+      showLevel={true}
+      levels={[
+        { level: "high", start: 0.2, end: 0 },
+        { level: "mid", start: 0.4, end: 0.2 },
+        { level: "low", start: 1, end: 0.4 },
+      ]}
+      tickformat=",.2f"
+      lastCompleteYear={2019}
+      data={[
+        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2013 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2014 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2015 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.32, year: 2016 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.33, year: 2017 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.34, year: 2018 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.35, year: 2019 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.36, year: 2020 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.37, year: 2021 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.38, year: 2022 }),
+      ]}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Render with many years, including missing years", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+  const { container } = render(
+    <LineChartWithRef
+      showLevel={true}
+      levels={[
+        { level: "high", start: 0.2, end: 0 },
+        { level: "mid", start: 0.4, end: 0.2 },
+        { level: "low", start: 1, end: 0.4 },
+      ]}
+      tickformat=",.3f"
+      lastCompleteYear={2019}
+      data={[
+        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2015 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.32, year: 2016 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.33, year: 2018 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.34, year: 2020 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.35, year: 2021 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.36, year: 2022 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.37, year: 2023 }),
+      ]}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Render with many years, including missing years", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+  const { container } = render(
+    <LineChartWithRef
+      showLevel={true}
+      levels={[
+        { level: "high", start: 0.2, end: 0 },
+        { level: "mid", start: 0.4, end: 0.2 },
+        { level: "low", start: 1, end: 0.4 },
+      ]}
+      tickformat=",.3f"
+      lastCompleteYear={2022}
+      data={[
+        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2015 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.32, year: 2016 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.33, year: 2018 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.34, year: 2020 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.35, year: 2021 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.36, year: 2022 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.37, year: 2023 }),
+      ]}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
 // Helpers
 function LineChartWithRef(props: Omit<Props, "svgContainerRef">) {
   const ref = createRef<HTMLDivElement>();
