@@ -1,7 +1,7 @@
 import { Description, Indicator } from "types";
 
 import BarChart, { Bar, BarStyle } from "../../Charts/BarChart";
-import LineChart, { DataPoint } from "../../Charts/LineChart";
+import LineChart from "../../Charts/LineChart";
 import { Level } from "../../Charts/types";
 import { useIndicatorQuery } from "../../../helpers/hooks";
 
