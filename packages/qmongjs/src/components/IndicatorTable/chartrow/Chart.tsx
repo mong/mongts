@@ -141,7 +141,7 @@ const GetLineChart: React.FC<Props> = (props) => {
   if (error) return <>An error has occured: {error.message}</>;
 
   // only keep data for given indicator
-  const allIndicatorData = [...(indQryData ?? [])]
+  const data = [...(indQryData ?? [])]
     .filter(
       (data: Indicator) =>
         data.ind_id === props.description.id &&
@@ -156,17 +156,13 @@ const GetLineChart: React.FC<Props> = (props) => {
     .sort((a: Indicator, b: Indicator) => b.year - a.year);
 
   // get the last year with complete data
-  const lastCompleteYear: number | undefined = allIndicatorData
-    ? allIndicatorData[0].delivery_latest_affirm
-      ? new Date(allIndicatorData[0].delivery_latest_affirm).getFullYear() - 1
+  const lastCompleteYear: number | undefined = data
+    ? data[0].delivery_latest_affirm
+      ? new Date(data[0].delivery_latest_affirm).getFullYear() - 1
       : undefined
     : undefined;
 
   return (
-    <LineChart
-      {...props}
-      data={allIndicatorData}
-      lastCompleteYear={lastCompleteYear}
-    />
+    <LineChart {...props} data={data} lastCompleteYear={lastCompleteYear} />
   );
 };
