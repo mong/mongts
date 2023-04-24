@@ -127,22 +127,33 @@ const GetBarChart: React.FC<Props> = (props) => {
 const GetLineChart: React.FC<Props> = (props) => {
   const { description, selectedTreatmentUnits } = props;
 
-  const lineChartQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
+  const {
+    isLoading,
+    error,
+    data: indQryData,
+  } = useIndicatorQuery({
     registerShortName: description.rname ?? "",
     unitNames: selectedTreatmentUnits,
     context: props.context.context,
     type: props.context.type,
   });
 
+  if (isLoading) return <>Loading...</>;
+  if (error) return <>An error has occured: {error.message}</>;
+
+  // only keep data for given indicator
+  const allIndicatorData = [...(indQryData ?? [])].filter(
+    (data: Indicator) => data.ind_id === props.description.id
+  );
+
   // get the last year with complete data
-  const lastCompleteYear: number | undefined = lineChartQuery.data
-    ? lineChartQuery.data[0].delivery_latest_affirm
-      ? new Date(lineChartQuery.data[0].delivery_latest_affirm).getFullYear() -
-        1
+  const lastCompleteYear: number | undefined = allIndicatorData
+    ? allIndicatorData[0].delivery_latest_affirm
+      ? new Date(allIndicatorData[0].delivery_latest_affirm).getFullYear() - 1
       : undefined
     : undefined;
 
-  const data: DataPoint[] = (lineChartQuery.data ?? [])
+  const data: DataPoint[] = (allIndicatorData ?? [])
     .filter(
       (data: Indicator) =>
         data.ind_id === props.description.id &&
