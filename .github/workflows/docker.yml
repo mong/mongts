@@ -35,7 +35,7 @@ jobs:
           echo "descr='Main commits deploy'" >> $GITHUB_ENV
           echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_QA }}" >> $GITHUB_ENV
       - name: Check out the repo
-        uses: actions/checkout@v3.5.0
+        uses: actions/checkout@v3.5.2
       - run: yarn install
       - run: yarn workspace api run build
       - name: Lint Dockerfile
@@ -44,7 +44,7 @@ jobs:
           dockerfile: "apps/api/Dockerfile"
       - name: Prepare
         id: docker_meta
-        uses: docker/metadata-action@v4.3.0
+        uses: docker/metadata-action@v4.4.0
         with:
           images: hnskde/mong-api
           tags: |
