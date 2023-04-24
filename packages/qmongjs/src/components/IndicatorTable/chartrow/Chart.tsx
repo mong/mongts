@@ -1,4 +1,3 @@
-import { UseQueryResult } from "@tanstack/react-query";
 import { Description, Indicator } from "types";
 
 import BarChart, { Bar, BarStyle } from "../../Charts/BarChart";
@@ -142,20 +141,10 @@ const GetLineChart: React.FC<Props> = (props) => {
   if (error) return <>An error has occured: {error.message}</>;
 
   // only keep data for given indicator
-  const allIndicatorData = [...(indQryData ?? [])].filter(
-    (data: Indicator) => data.ind_id === props.description.id
-  );
-
-  // get the last year with complete data
-  const lastCompleteYear: number | undefined = allIndicatorData
-    ? allIndicatorData[0].delivery_latest_affirm
-      ? new Date(allIndicatorData[0].delivery_latest_affirm).getFullYear() - 1
-      : undefined
-    : undefined;
-
-  const data: DataPoint[] = (allIndicatorData ?? [])
+  const allIndicatorData = [...(indQryData ?? [])]
     .filter(
       (data: Indicator) =>
+        data.ind_id === props.description.id &&
         ((data.dg ?? 1) >= 0.6 || data.unit_name === "Nasjonalt") &&
         data.denominator >= (description.min_denominator ?? 5)
     )
@@ -166,7 +155,18 @@ const GetLineChart: React.FC<Props> = (props) => {
     }))
     .sort((a: Indicator, b: Indicator) => b.year - a.year);
 
+  // get the last year with complete data
+  const lastCompleteYear: number | undefined = allIndicatorData
+    ? allIndicatorData[0].delivery_latest_affirm
+      ? new Date(allIndicatorData[0].delivery_latest_affirm).getFullYear() - 1
+      : undefined
+    : undefined;
+
   return (
-    <LineChart {...props} data={data} lastCompleteYear={lastCompleteYear} />
+    <LineChart
+      {...props}
+      data={allIndicatorData}
+      lastCompleteYear={lastCompleteYear}
+    />
   );
 };
