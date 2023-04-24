@@ -156,7 +156,6 @@ const GetLineChart: React.FC<Props> = (props) => {
   const data: DataPoint[] = (allIndicatorData ?? [])
     .filter(
       (data: Indicator) =>
-        data.ind_id === props.description.id &&
         ((data.dg ?? 1) >= 0.6 || data.unit_name === "Nasjonalt") &&
         data.denominator >= (description.min_denominator ?? 5)
     )
