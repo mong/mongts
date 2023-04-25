@@ -5,7 +5,7 @@ import LineChart from "../../Charts/LineChart";
 import { Level } from "../../Charts/types";
 import { useIndicatorQuery } from "../../../helpers/hooks";
 
-interface Props {
+export interface Props {
   context: { context: string; type: string };
   svgContainerRef: React.RefObject<HTMLDivElement>;
   chartType: "bar" | "line";
@@ -161,6 +161,8 @@ const GetLineChart: React.FC<Props> = (props) => {
       ? new Date(data[0].delivery_latest_affirm).getFullYear() - 1
       : undefined
     : undefined;
+
+  console.log(lastCompleteYear);
 
   return (
     <LineChart {...props} data={data} lastCompleteYear={lastCompleteYear} />
