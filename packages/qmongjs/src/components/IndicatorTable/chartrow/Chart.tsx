@@ -162,8 +162,6 @@ const GetLineChart: React.FC<Props> = (props) => {
       : undefined
     : undefined;
 
-  console.log(lastCompleteYear);
-
   return (
     <LineChart {...props} data={data} lastCompleteYear={lastCompleteYear} />
   );

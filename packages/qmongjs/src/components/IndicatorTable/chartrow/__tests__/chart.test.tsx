@@ -38,22 +38,27 @@ const linedata = [
 const bardata = [
   buildDataPoint({
     unit_name: "Sykehus 1",
+    unit_level: "hospital",
     var: 0.2081,
   }),
   buildDataPoint({
     unit_name: "Sykehus 2",
+    unit_level: "hospital",
     var: 0.4081,
   }),
   buildDataPoint({
     unit_name: "Sykehus 3",
+    unit_level: "hospital",
     var: 0.1081,
   }),
   buildDataPoint({
     unit_name: "Sykehus 4",
+    unit_level: "hospital",
     var: 0.3081,
   }),
   buildDataPoint({
     unit_name: "Sykehus 5",
+    unit_level: "hospital",
     var: 0.5081,
   }),
   buildDataPoint({
@@ -77,7 +82,31 @@ test("Bar", async () => {
       zoom={true}
       showLevel={true}
       selectedTreatmentUnits={[]}
-      indicatorData={[]}
+      indicatorData={bardata}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Bar select treatment unit", async () => {
+  (useIndicatorQuery as jest.Mock).mockReturnValue({
+    data: bardata,
+    isLoading: false,
+    error: false,
+  });
+  const descr = buildDescription({ sformat: ".0%" });
+  const { container } = render(
+    <ChartWithRef
+      description={descr}
+      chartType="bar"
+      zoom={false}
+      showLevel={false}
+      selectedTreatmentUnits={["Sykehus 1"]}
+      indicatorData={bardata}
+      tickformat=".%"
     />
   );
 
@@ -100,7 +129,7 @@ test("Line", async () => {
       zoom={true}
       showLevel={true}
       selectedTreatmentUnits={[]}
-      indicatorData={[]}
+      indicatorData={bardata}
     />
   );
 
@@ -173,7 +202,7 @@ function buildDescription(overrides: Partial<Description>): Description {
     title: null,
     name: null,
     type: null,
-    sformat: ",.0%",
+    sformat: "",
     measure_unit: null,
     min_denominator: 5,
     min_value: null,
