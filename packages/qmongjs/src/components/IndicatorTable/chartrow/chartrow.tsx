@@ -40,7 +40,9 @@ export function ChartRow(props: Props) {
   >("chart_type", mainQueryParamsConfig.chart_type);
   const valid_chart_type = chart_type === "bar" ? "bar" : "line";
   const [zoom, update_zoom] = useState(false);
-  const [show_level, update_show_level] = useState(true);
+  const [show_level, update_show_level] = useState(
+    description.level_green === null ? false : true
+  );
 
   const levels = level_boundary(description);
   const format = description.sformat ?? undefined;
