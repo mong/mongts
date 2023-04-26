@@ -1,4 +1,4 @@
-import Chart, { Props } from "../Chart";
+import Chart, { ChartProps } from "../Chart";
 import { render } from "@testing-library/react";
 import { useRef } from "react";
 import {
@@ -140,7 +140,10 @@ test("Line", async () => {
 
 // Helpers
 function ChartWithRef(
-  props: Omit<Props, "svgContainerRef" | "context" | "levels" | "treatmentYear">
+  props: Omit<
+    ChartProps,
+    "svgContainerRef" | "context" | "levels" | "treatmentYear"
+  >
 ) {
   const WIDTH = 500;
   (useResizeObserver as jest.Mock).mockReturnValue({

@@ -5,7 +5,7 @@ import LineChart from "../../Charts/LineChart";
 import { Level } from "../../Charts/types";
 import { useIndicatorQuery } from "../../../helpers/hooks";
 
-export interface Props {
+export interface ChartProps {
   context: { context: string; type: string };
   svgContainerRef: React.RefObject<HTMLDivElement>;
   chartType: "bar" | "line";
@@ -21,7 +21,7 @@ export interface Props {
   lastCompleteYear?: number;
 }
 
-function Chart(props: Props) {
+function Chart(props: ChartProps) {
   switch (props.chartType) {
     case "line":
       return <GetLineChart {...props} />;
@@ -32,7 +32,7 @@ function Chart(props: Props) {
 
 export default Chart;
 
-const GetBarChart: React.FC<Props> = (props) => {
+const GetBarChart: React.FC<ChartProps> = (props) => {
   const { description, indicatorData, treatmentYear } = props;
   const registerShortName = description.rname ?? "";
   const {
@@ -123,7 +123,7 @@ const GetBarChart: React.FC<Props> = (props) => {
   return <BarChart {...props} data={filterData(barChartData)} />;
 };
 
-const GetLineChart: React.FC<Props> = (props) => {
+const GetLineChart: React.FC<ChartProps> = (props) => {
   const { description, selectedTreatmentUnits } = props;
 
   const {
