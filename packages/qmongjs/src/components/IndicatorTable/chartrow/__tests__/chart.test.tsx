@@ -62,6 +62,16 @@ const bardata = [
     var: 0.5081,
   }),
   buildDataPoint({
+    unit_name: "HF 1",
+    unit_level: "hf",
+    var: 0.999,
+  }),
+  buildDataPoint({
+    unit_name: "RHF 1",
+    unit_level: "rhf",
+    var: 0.666,
+  }),
+  buildDataPoint({
     unit_name: "Nasjonalt",
     var: 0.3381,
   }),
@@ -75,14 +85,15 @@ test("Bar", async () => {
     isLoading: false,
     error: false,
   });
+  const inddata = bardata.filter((data) => data.unit_name === "Nasjonalt");
   const { container } = render(
     <ChartWithRef
       description={descr}
       chartType="bar"
       zoom={true}
       showLevel={true}
-      selectedTreatmentUnits={[]}
-      indicatorData={bardata}
+      selectedTreatmentUnits={["Nasjonalt"]}
+      indicatorData={inddata}
     />
   );
 
@@ -97,6 +108,9 @@ test("Bar select treatment unit", async () => {
     isLoading: false,
     error: false,
   });
+  const inddata = bardata.filter((data) =>
+    ["Nasjonalt", "Sykehus 1", "RHF 1"].includes(data.unit_name)
+  );
   const descr = buildDescription({ sformat: ".0%" });
   const { container } = render(
     <ChartWithRef
@@ -104,8 +118,8 @@ test("Bar select treatment unit", async () => {
       chartType="bar"
       zoom={false}
       showLevel={false}
-      selectedTreatmentUnits={["Sykehus 1"]}
-      indicatorData={bardata}
+      selectedTreatmentUnits={["Nasjonalt", "Sykehus 1", "RHF 1"]}
+      indicatorData={inddata}
       tickformat=".%"
     />
   );
@@ -129,7 +143,99 @@ test("Line", async () => {
       zoom={true}
       showLevel={true}
       selectedTreatmentUnits={[]}
-      indicatorData={bardata}
+      indicatorData={[]}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Line, fetch with error", async () => {
+  (useIndicatorQuery as jest.Mock).mockReturnValue({
+    data: [],
+    isLoading: false,
+    error: true,
+  });
+
+  const { container } = render(
+    <ChartWithRef
+      description={descr}
+      chartType="line"
+      zoom={true}
+      showLevel={true}
+      selectedTreatmentUnits={[]}
+      indicatorData={[]}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Bar, fetch with error", async () => {
+  (useIndicatorQuery as jest.Mock).mockReturnValue({
+    data: [],
+    isLoading: false,
+    error: true,
+  });
+
+  const { container } = render(
+    <ChartWithRef
+      description={descr}
+      chartType="bar"
+      zoom={true}
+      showLevel={true}
+      selectedTreatmentUnits={[]}
+      indicatorData={[]}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Line, fetch is loading", async () => {
+  (useIndicatorQuery as jest.Mock).mockReturnValue({
+    data: [],
+    isLoading: true,
+    error: false,
+  });
+
+  const { container } = render(
+    <ChartWithRef
+      description={descr}
+      chartType="line"
+      zoom={true}
+      showLevel={true}
+      selectedTreatmentUnits={[]}
+      indicatorData={[]}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Bar, fetch is loading", async () => {
+  (useIndicatorQuery as jest.Mock).mockReturnValue({
+    data: [],
+    isLoading: true,
+    error: false,
+  });
+
+  const { container } = render(
+    <ChartWithRef
+      description={descr}
+      chartType="bar"
+      zoom={true}
+      showLevel={true}
+      selectedTreatmentUnits={[]}
+      indicatorData={[]}
     />
   );
 
