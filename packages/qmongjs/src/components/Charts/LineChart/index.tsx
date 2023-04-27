@@ -24,6 +24,7 @@ import { LineChartTooltip } from "./tooltip";
 import { Indicator } from "types";
 
 const chart_colors = [
+  "#00263d",
   "#4F9A94",
   "#90CAF9",
   "#B0BEC5",
@@ -112,7 +113,7 @@ const LineChart = (props: Props) => {
 
   const innerHeight = height - marginOffsets.top - marginOffsets.bottom;
   const innerWidth = width - marginOffsets.left - marginOffsets.right;
-  const pathLabels = Array.from(new Set(data.map((d) => d.label)));
+  const pathLabels = Array.from(new Set(data.map((d) => d.label))).reverse();
   const lineColorScale = scaleOrdinal<string>()
     .domain(pathLabels)
     .range(chart_colors);
