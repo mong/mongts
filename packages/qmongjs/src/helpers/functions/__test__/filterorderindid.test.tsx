@@ -8,7 +8,7 @@ const hisreg_haukland = hisreg_data.filter((d) => {
   return d.unit_name !== "Nasjonalt";
 });
 
-test("Returns correct level with direction 0", () => {
+test("Returns correct values without any special", () => {
   expect(
     filterOrderIndID(
       false,
@@ -22,6 +22,7 @@ test("Returns correct level with direction 0", () => {
     "hisreg_henvist_spesialist_1aar",
     "hisreg_full_responder",
     "hisreg_kompl_kir",
+    "hisreg_kompl_kir2",
   ]);
 });
 test("Do not filter if national data and length of units is 1", () => {
@@ -66,6 +67,7 @@ test("Do not filter on single registry page even if national data and length of 
     "hisreg_henvist_spesialist_1aar",
     "hisreg_full_responder",
     "hisreg_kompl_kir",
+    "hisreg_kompl_kir2",
   ]);
 });
 test("Do not filter if national data and length of units more than 1, but fetching data is true", () => {
@@ -82,6 +84,7 @@ test("Do not filter if national data and length of units more than 1, but fetchi
     "hisreg_henvist_spesialist_1aar",
     "hisreg_full_responder",
     "hisreg_kompl_kir",
+    "hisreg_kompl_kir2",
   ]);
 });
 test("Keep only level H", () => {
@@ -118,7 +121,7 @@ test("Keep only level L", () => {
       "L",
       "allRegistries"
     )
-  ).toStrictEqual(["hisreg_kompl_kir"]);
+  ).toStrictEqual(["hisreg_kompl_kir", "hisreg_kompl_kir2"]);
 });
 test("Keep only level M with all data", () => {
   expect(

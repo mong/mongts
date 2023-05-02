@@ -1,7 +1,8 @@
 import { Indicator, Description } from "types";
+import { buildIndicator, buildDescription } from "./dataBuilder";
 
 export const hisreg_data: Indicator[] = [
-  {
+  buildIndicator({
     id: 3098541,
     ind_id: "hisreg_full_responder",
     unit_level: "nation",
@@ -11,9 +12,6 @@ export const hisreg_data: Indicator[] = [
     denominator: 144,
     var: 0.95,
     dg: 0.33754,
-    delivery_time: new Date("2022-09-07T15:26:10.000Z"),
-    delivery_latest_update: new Date("2022-09-07T00:00:00.000Z"),
-    delivery_latest_affirm: new Date("2022-01-01T00:00:00.000Z"),
     type: "andel",
     include: 1,
     min_denominator: 5,
@@ -21,8 +19,8 @@ export const hisreg_data: Indicator[] = [
     level_green: 0.9,
     level_yellow: 0.7,
     sformat: ",.0%",
-  },
-  {
+  }),
+  buildIndicator({
     id: 3098606,
     ind_id: "hisreg_henvist_spesialist_1aar",
     unit_level: "nation",
@@ -32,9 +30,6 @@ export const hisreg_data: Indicator[] = [
     denominator: 250,
     var: 0.7,
     dg: 0.33754,
-    delivery_time: new Date("2022-09-07T15:26:10.000Z"),
-    delivery_latest_update: new Date("2022-09-07T00:00:00.000Z"),
-    delivery_latest_affirm: new Date("2022-01-01T00:00:00.000Z"),
     type: "andel",
     include: 1,
     min_denominator: 5,
@@ -42,8 +37,8 @@ export const hisreg_data: Indicator[] = [
     level_green: 0.8,
     level_yellow: 0.6,
     sformat: ",.0%",
-  },
-  {
+  }),
+  buildIndicator({
     id: 3098647,
     ind_id: "hisreg_kompl_kir",
     unit_level: "nation",
@@ -53,9 +48,6 @@ export const hisreg_data: Indicator[] = [
     denominator: 66,
     var: 0.4,
     dg: 0.33754,
-    delivery_time: new Date("2022-09-07T15:26:10.000Z"),
-    delivery_latest_update: new Date("2022-09-07T00:00:00.000Z"),
-    delivery_latest_affirm: new Date("2022-01-01T00:00:00.000Z"),
     type: "andel",
     include: 1,
     min_denominator: 5,
@@ -63,8 +55,26 @@ export const hisreg_data: Indicator[] = [
     level_green: 0.05,
     level_yellow: 0.3,
     sformat: ",.0%",
-  },
-  {
+  }),
+  buildIndicator({
+    id: 3098647,
+    ind_id: "hisreg_kompl_kir2",
+    unit_level: "nation",
+    unit_name: "Nasjonalt",
+    context: "caregiver",
+    year: 2019,
+    denominator: 66,
+    var: 0.4,
+    dg: 0.33754,
+    type: "andel",
+    include: 1,
+    min_denominator: 5,
+    level_direction: 0,
+    level_green: 0.05,
+    level_yellow: 0.3,
+    sformat: ",.0%",
+  }),
+  buildIndicator({
     id: 3098536,
     ind_id: "hisreg_full_responder",
     unit_level: "hospital",
@@ -74,9 +84,6 @@ export const hisreg_data: Indicator[] = [
     denominator: 8,
     var: 0.8,
     dg: 0.934694,
-    delivery_time: new Date("2022-09-07T15:26:10.000Z"),
-    delivery_latest_update: new Date("2022-09-07T00:00:00.000Z"),
-    delivery_latest_affirm: new Date("2022-01-01T00:00:00.000Z"),
     type: "andel",
     include: 1,
     min_denominator: 5,
@@ -84,8 +91,8 @@ export const hisreg_data: Indicator[] = [
     level_green: 0.9,
     level_yellow: 0.7,
     sformat: ",.0%",
-  },
-  {
+  }),
+  buildIndicator({
     id: 3098599,
     ind_id: "hisreg_henvist_spesialist_1aar",
     unit_level: "hospital",
@@ -95,9 +102,6 @@ export const hisreg_data: Indicator[] = [
     denominator: 39,
     var: 0.9,
     dg: 0.34694,
-    delivery_time: new Date("2022-09-07T15:26:10.000Z"),
-    delivery_latest_update: new Date("2022-09-07T00:00:00.000Z"),
-    delivery_latest_affirm: new Date("2022-01-01T00:00:00.000Z"),
     type: "andel",
     include: 1,
     min_denominator: 5,
@@ -105,8 +109,8 @@ export const hisreg_data: Indicator[] = [
     level_green: 0.8,
     level_yellow: 0.6,
     sformat: ",.0%",
-  },
-  {
+  }),
+  buildIndicator({
     id: 3098600,
     ind_id: "hisreg_kompl_kir",
     unit_level: "hospital",
@@ -116,9 +120,6 @@ export const hisreg_data: Indicator[] = [
     denominator: 4,
     var: 0.95,
     dg: 0.9,
-    delivery_time: new Date("2022-09-07T15:26:10.000Z"),
-    delivery_latest_update: new Date("2022-09-07T00:00:00.000Z"),
-    delivery_latest_affirm: new Date("2022-01-01T00:00:00.000Z"),
     type: "andel",
     include: 1,
     min_denominator: 5,
@@ -126,11 +127,11 @@ export const hisreg_data: Indicator[] = [
     level_green: 0.9,
     level_yellow: 0.7,
     sformat: ",.0%",
-  },
+  }),
 ];
 
 export const hisreg_dg: Indicator[] = [
-  {
+  buildIndicator({
     id: 3098494,
     ind_id: "hisreg_dg",
     unit_level: "hospital",
@@ -150,8 +151,8 @@ export const hisreg_dg: Indicator[] = [
     level_green: null,
     level_yellow: null,
     sformat: ",.0%",
-  },
-  {
+  }),
+  buildIndicator({
     id: 3098501,
     ind_id: "hisreg_dg",
     unit_level: "nation",
@@ -171,11 +172,11 @@ export const hisreg_dg: Indicator[] = [
     level_green: null,
     level_yellow: null,
     sformat: ",.0%",
-  },
+  }),
 ];
 
 export const hisreg_descr: Description[] = [
-  {
+  buildDescription({
     id: "hisreg_dg",
     dg_id: null,
     include: 1,
@@ -195,8 +196,8 @@ export const hisreg_descr: Description[] = [
     registry_id: 17,
     rname: "hisreg",
     full_name: "Nordisk kvalitetsregister for hidradenitis suppurativa",
-  },
-  {
+  }),
+  buildDescription({
     id: "hisreg_full_responder",
     dg_id: "hisreg_dg",
     include: 1,
@@ -216,8 +217,8 @@ export const hisreg_descr: Description[] = [
     registry_id: 17,
     rname: "hisreg",
     full_name: "Nordisk kvalitetsregister for hidradenitis suppurativa",
-  },
-  {
+  }),
+  buildDescription({
     id: "hisreg_henvist_spesialist_1aar",
     dg_id: "hisreg_dg",
     include: 1,
@@ -237,8 +238,8 @@ export const hisreg_descr: Description[] = [
     registry_id: 17,
     rname: "hisreg",
     full_name: "Nordisk kvalitetsregister for hidradenitis suppurativa",
-  },
-  {
+  }),
+  buildDescription({
     id: "hisreg_kompl_kir",
     dg_id: "hisreg_dg",
     include: 1,
@@ -258,5 +259,26 @@ export const hisreg_descr: Description[] = [
     registry_id: 17,
     rname: "hisreg",
     full_name: "Nordisk kvalitetsregister for hidradenitis suppurativa",
-  },
+  }),
+  buildDescription({
+    id: "hisreg_kompl_kir2",
+    dg_id: "hisreg_dg",
+    include: 1,
+    title: "Komplikasjon etter kirurgisk behandling",
+    name: "ind09",
+    type: "andel",
+    sformat: ",.0%",
+    measure_unit: null,
+    min_denominator: 5,
+    min_value: null,
+    max_value: null,
+    level_green: 0.05,
+    level_yellow: 0.3,
+    level_direction: 0,
+    short_description: "Andel pasienter med komplikasjoner rapportert",
+    long_description: "komplikasjoner.",
+    registry_id: 17,
+    rname: "hisreg",
+    full_name: "Nordisk kvalitetsregister for hidradenitis suppurativa",
+  }),
 ];
