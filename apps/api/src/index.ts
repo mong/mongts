@@ -51,8 +51,8 @@ app.use(
 );
 app.use(express.json());
 
-const BROWSER_MAX_AGE = 60 * 60;
-const CDN_MAX_AGE = 60 * 60 * 24;
+const BROWSER_MAX_AGE = process.env.BROWSER_MAX_AGE ?? 60 * 60;
+const CDN_MAX_AGE = process.env.CDN_MAX_AGE ?? 60 * 60 * 24;
 const cache: RequestHandler = (req, res, next) => {
   res.set(
     "cache-control",

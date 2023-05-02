@@ -1011,6 +1011,373 @@ exports[`Render with levels reversed @500px 1`] = `
 </div>
 `;
 
+exports[`Render with zoom @750px 1`] = `
+<div>
+  <div
+    style="width: 90%; margin: auto;"
+  >
+    <svg
+      class="barChart"
+      height="150"
+      style="background-color: white;"
+      width="750"
+    >
+      <g
+        transform="translate(0, 0)"
+      >
+        <g
+          class="x-axis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          style="transform: translateY(150px);"
+          text-anchor="middle"
+        >
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0.5,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              0 %
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(96.65384615384616,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              5 %
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(192.80769230769232,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              10 %
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(288.96153846153845,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              15 %
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(385.11538461538464,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              20 %
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(481.2692307692307,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              25 %
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(577.4230769230769,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              30 %
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(673.576923076923,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              35 %
+            </text>
+          </g>
+        </g>
+        <g
+          class="y-axis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          text-anchor="end"
+        >
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,22.674418604651155)"
+          >
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              font-size="1.2rem"
+              x="-9"
+            >
+              a
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,57.55813953488371)"
+          >
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              font-size="1.2rem"
+              x="-9"
+            >
+              b
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,92.44186046511626)"
+          >
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              font-size="1.2rem"
+              x="-9"
+            >
+              c
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,127.32558139534882)"
+          >
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              font-size="1.2rem"
+              x="-9"
+            >
+              d
+            </text>
+          </g>
+        </g>
+        <g
+          class="levels"
+        >
+          <rect
+            class="level"
+            data-testid="level-high"
+            fill="#3baa34"
+            height="150"
+            opacity="0.2"
+            width="0"
+            x="750"
+            y="0"
+          />
+          <rect
+            class="level"
+            data-testid="level-mid"
+            fill="#fd9c00"
+            height="150"
+            opacity="0.2"
+            width="0"
+            x="750"
+            y="0"
+          />
+          <rect
+            class="level"
+            data-testid="level-low"
+            fill="#e30713"
+            height="150"
+            opacity="0.2"
+            width="750"
+            x="0"
+            y="0"
+          />
+        </g>
+        <g
+          class="bars"
+        >
+          <rect
+            class="bar"
+            data-testid="bar-a"
+            fill="#7EBEC7"
+            height="24.418604651162788"
+            opacity="1"
+            width="557.0271346153846"
+            x="0"
+            y="10.465116279069761"
+          />
+          <rect
+            class="bar"
+            data-testid="bar-b"
+            fill="#7EBEC7"
+            height="24.418604651162788"
+            opacity="1"
+            width="214.45192307692307"
+            x="0"
+            y="45.34883720930232"
+          />
+          <rect
+            class="bar"
+            data-testid="bar-c"
+            fill="#7EBEC7"
+            height="24.418604651162788"
+            opacity="1"
+            width="611.2715384615384"
+            x="0"
+            y="80.23255813953487"
+          />
+          <rect
+            class="bar"
+            data-testid="bar-d"
+            fill="#7EBEC7"
+            height="24.418604651162788"
+            opacity="1"
+            width="373.4846153846154"
+            x="0"
+            y="115.11627906976743"
+          />
+        </g>
+        <g
+          class="labels"
+        >
+          <text
+            class="label"
+            data-testid="bar-label-a"
+            fill="rgb(0, 0, 0)"
+            font-size="0.7em"
+            opacity="0.9"
+            text-anchor="middle"
+            x="573.0271346153846"
+            y="25.674418604651155"
+          >
+            28,97 %
+          </text>
+          <text
+            class="label"
+            data-testid="bar-label-b"
+            fill="rgb(0, 0, 0)"
+            font-size="0.7em"
+            opacity="0.9"
+            text-anchor="middle"
+            x="230.45192307692307"
+            y="60.55813953488371"
+          >
+            11,15 %
+          </text>
+          <text
+            class="label"
+            data-testid="bar-label-c"
+            fill="rgb(0, 0, 0)"
+            font-size="0.7em"
+            opacity="0.9"
+            text-anchor="middle"
+            x="627.2715384615384"
+            y="95.44186046511626"
+          >
+            31,79 %
+          </text>
+          <text
+            class="label"
+            data-testid="bar-label-d"
+            fill="rgb(0, 0, 0)"
+            font-size="0.7em"
+            opacity="0.9"
+            text-anchor="middle"
+            x="389.4846153846154"
+            y="130.32558139534882"
+          >
+            19,42 %
+          </text>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
 exports[`Render without levels @250px 1`] = `
 <div>
   <div
@@ -1629,7 +1996,338 @@ exports[`Render without levels @500px 1`] = `
 </div>
 `;
 
-exports[`Render zoomed with levels @500px 1`] = `
+exports[`Render without zoom @750px 1`] = `
+<div>
+  <div
+    style="width: 90%; margin: auto;"
+  >
+    <svg
+      class="barChart"
+      height="150"
+      style="background-color: white;"
+      width="750"
+    >
+      <g
+        transform="translate(0, 0)"
+      >
+        <g
+          class="x-axis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          style="transform: translateY(150px);"
+          text-anchor="middle"
+        >
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0.5,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              0 %
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(150.5,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              20 %
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(300.5,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              40 %
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(450.5,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              60 %
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(600.5,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              80 %
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(750.5,0)"
+          >
+            <line
+              stroke="#D2D3D4"
+              y2="-150"
+            />
+            <text
+              dy="0.71em"
+              fill="#828586"
+              font-size="18.57px"
+              y="3"
+            >
+              100 %
+            </text>
+          </g>
+        </g>
+        <g
+          class="y-axis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          text-anchor="end"
+        >
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,22.674418604651155)"
+          >
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              font-size="1.2rem"
+              x="-9"
+            >
+              a
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,57.55813953488371)"
+          >
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              font-size="1.2rem"
+              x="-9"
+            >
+              b
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,92.44186046511626)"
+          >
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              font-size="1.2rem"
+              x="-9"
+            >
+              c
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(0,127.32558139534882)"
+          >
+            <text
+              dy="0.32em"
+              fill="currentColor"
+              font-size="1.2rem"
+              x="-9"
+            >
+              d
+            </text>
+          </g>
+        </g>
+        <g
+          class="levels"
+        >
+          <rect
+            class="level"
+            data-testid="level-high"
+            fill="#3baa34"
+            height="150"
+            opacity="0.2"
+            width="75"
+            x="675"
+            y="0"
+          />
+          <rect
+            class="level"
+            data-testid="level-mid"
+            fill="#fd9c00"
+            height="150"
+            opacity="0.2"
+            width="300"
+            x="375"
+            y="0"
+          />
+          <rect
+            class="level"
+            data-testid="level-low"
+            fill="#e30713"
+            height="150"
+            opacity="0.2"
+            width="375"
+            x="0"
+            y="0"
+          />
+        </g>
+        <g
+          class="bars"
+        >
+          <rect
+            class="bar"
+            data-testid="bar-a"
+            fill="#7EBEC7"
+            height="24.418604651162788"
+            opacity="1"
+            width="217.24058250000002"
+            x="0"
+            y="10.465116279069761"
+          />
+          <rect
+            class="bar"
+            data-testid="bar-b"
+            fill="#7EBEC7"
+            height="24.418604651162788"
+            opacity="1"
+            width="83.63625"
+            x="0"
+            y="45.34883720930232"
+          />
+          <rect
+            class="bar"
+            data-testid="bar-c"
+            fill="#7EBEC7"
+            height="24.418604651162788"
+            opacity="1"
+            width="238.3959"
+            x="0"
+            y="80.23255813953487"
+          />
+          <rect
+            class="bar"
+            data-testid="bar-d"
+            fill="#7EBEC7"
+            height="24.418604651162788"
+            opacity="1"
+            width="145.659"
+            x="0"
+            y="115.11627906976743"
+          />
+        </g>
+        <g
+          class="labels"
+        >
+          <text
+            class="label"
+            data-testid="bar-label-a"
+            fill="rgb(0, 0, 0)"
+            font-size="0.7em"
+            opacity="0.9"
+            text-anchor="middle"
+            x="233.24058250000002"
+            y="25.674418604651155"
+          >
+            28,965 %
+          </text>
+          <text
+            class="label"
+            data-testid="bar-label-b"
+            fill="rgb(0, 0, 0)"
+            font-size="0.7em"
+            opacity="0.9"
+            text-anchor="middle"
+            x="99.63625"
+            y="60.55813953488371"
+          >
+            11,152 %
+          </text>
+          <text
+            class="label"
+            data-testid="bar-label-c"
+            fill="rgb(0, 0, 0)"
+            font-size="0.7em"
+            opacity="0.9"
+            text-anchor="middle"
+            x="254.3959"
+            y="95.44186046511626"
+          >
+            31,786 %
+          </text>
+          <text
+            class="label"
+            data-testid="bar-label-d"
+            fill="rgb(0, 0, 0)"
+            font-size="0.7em"
+            opacity="0.9"
+            text-anchor="middle"
+            x="161.659"
+            y="130.32558139534882"
+          >
+            19,421 %
+          </text>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Render zoomed with levels @500px and gray overlay (not complete data) 1`] = `
 <div>
   <div
     style="width: 90%; margin: auto;"
@@ -1973,6 +2671,34 @@ exports[`Render zoomed with levels @500px 1`] = `
           </text>
         </g>
       </g>
+      <rect
+        height="150"
+        rx="5"
+        style="opacity: 0.1;"
+        width="500"
+      />
+      <text
+        fill="#e30713"
+        font-size="2rem"
+        text-anchor="middle"
+        x="260"
+        y="37.5"
+      >
+        <tspan
+          dy="1.2em"
+          x="260"
+        >
+          Data er ikke komplett.
+           
+        </tspan>
+        <tspan
+          dy="1.2em"
+          x="260"
+        >
+          Siste komplette år er 
+          1979
+        </tspan>
+      </text>
     </svg>
   </div>
 </div>

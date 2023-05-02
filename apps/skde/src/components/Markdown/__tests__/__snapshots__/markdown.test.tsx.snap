@@ -1,0 +1,600 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Longer text 1`] = `
+<div>
+  <p>
+    Dette er en test
+  </p>
+  
+
+  <h1
+    id="hovedoverskrift"
+  >
+    Hovedoverskrift
+  </h1>
+  
+
+  <p>
+    Litt mer tekst
+  </p>
+  
+
+  <h2
+    id="underoverskrift"
+  >
+    Underoverskrift
+  </h2>
+  
+
+  <h3
+    id="dette-er-en-overskrift"
+  >
+    Dette er en overskrift!
+  </h3>
+  
+
+  <pre>
+    <code
+      class="language-sas"
+    >
+      data test;
+set test2;
+var = 0;
+run;
+
+    </code>
+  </pre>
+  
+
+  <p>
+    Og litt tekst her
+  </p>
+</div>
+`;
+
+exports[`Standard render 1`] = `
+<div>
+  <p>
+    Dette er en test
+  </p>
+</div>
+`;
+
+exports[`Text with details tag 1`] = `
+<div>
+  <h2
+    id="noe-tekst"
+  >
+    Noe tekst
+  </h2>
+  
+
+  <div
+    class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 MuiAccordion-root MuiAccordion-rounded MuiAccordion-gutters css-1elwnq4-MuiPaper-root-MuiAccordion-root"
+  >
+    <div
+      aria-expanded="false"
+      class="MuiButtonBase-root MuiAccordionSummary-root MuiAccordionSummary-gutters css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root"
+      role="button"
+      tabindex="0"
+    >
+      <div
+        class="MuiAccordionSummary-content MuiAccordionSummary-contentGutters css-o4b71y-MuiAccordionSummary-content"
+      >
+        <div>
+          Ledelse
+        </div>
+      </div>
+      <div
+        class="MuiAccordionSummary-expandIconWrapper css-yw020d-MuiAccordionSummary-expandIconWrapper"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+          data-testid="ExpandMoreIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      class="MuiCollapse-root MuiCollapse-vertical MuiCollapse-hidden css-bz4dnt-MuiCollapse-root"
+      style="min-height: 0px;"
+    >
+      <div
+        class="MuiCollapse-wrapper MuiCollapse-vertical css-smkl36-MuiCollapse-wrapper"
+      >
+        <div
+          class="MuiCollapse-wrapperInner MuiCollapse-vertical css-9l5vo-MuiCollapse-wrapperInner"
+        >
+          <div
+            class="MuiAccordion-region"
+            role="region"
+          >
+            <div
+              class="MuiAccordionDetails-root css-15v22id-MuiAccordionDetails-root"
+            >
+              O-Store-Sol
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Text with image 1`] = `
+<div>
+  <p>
+    Dette er en test
+  </p>
+  
+
+  <h1
+    id="hovedoverskrift"
+  >
+    Hovedoverskrift
+  </h1>
+  
+
+  <figure
+    style="width: 90%; display: flex; justify-content: center; align-items: center; flex-direction: column;"
+  >
+    <img
+      alt="Menisk, utvikling i antall inngrep i perioden 2013–2017"
+      src="https://picsum.photos/id/237/100/100.jpg"
+      style="display: block; margin: auto;"
+      title="Menisk, utvikling i antall inngrep i perioden 2013–2017"
+    />
+    <figcaption>
+      <strong>
+        Figur:
+      </strong>
+       
+      Menisk, utvikling i antall inngrep pr. 100 000 innbyggere i perioden 2013–2017, justert for kjønn og alder. Fordelt på opptaksområder og offentlig eller privat behandler.
+    </figcaption>
+  </figure>
+</div>
+`;
+
+exports[`Text with image, language english 1`] = `
+<div>
+  <p>
+    Dette er en test
+  </p>
+  
+
+  <h1
+    id="hovedoverskrift"
+  >
+    Hovedoverskrift
+  </h1>
+  
+
+  <figure
+    style="width: 90%; display: flex; justify-content: center; align-items: center; flex-direction: column;"
+  >
+    <img
+      alt="Menisk, utvikling i antall inngrep i perioden 2013–2017"
+      src="https://picsum.photos/id/237/100/100.jpg"
+      style="display: block; margin: auto;"
+      title="Menisk, utvikling i antall inngrep i perioden 2013–2017"
+    />
+    <figcaption>
+      <strong>
+        Figure:
+      </strong>
+       
+      Menisk, utvikling i antall inngrep pr. 100 000 innbyggere i perioden 2013–2017, justert for kjønn og alder. Fordelt på opptaksområder og offentlig eller privat behandler.
+    </figcaption>
+  </figure>
+</div>
+`;
+
+exports[`Text with table 1`] = `
+<div>
+  <p>
+    Listen under viser hvilke helseforetak eller sykehus det er definert opptaksområder for og kortnavnene på disse som brukes i atlaset.
+  </p>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <table
+    style="border-collapse: collapse; margin: auto; border-top: 2px solid black; border-bottom: 2px solid black;"
+  >
+    <thead>
+      <tr>
+        <th
+          style="border-bottom: 1px solid black; margin: 0px; padding: 2px 10px; text-align: left;"
+        >
+          <strong>
+            Opptaksområde for
+          </strong>
+        </th>
+        <th
+          style="border-bottom: 1px solid black; margin: 0px; padding: 2px 10px; text-align: left;"
+        >
+          <strong>
+            Kortnavn
+          </strong>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Finnmarkssykehuset HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Finnmark
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Universitetssykehuset i Nord-Norge HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          UNN
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Nordlandssykehuset HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Nordland
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Helgelandssykehuset HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Helgeland
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Helse Nord-Trøndelag HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Nord-Trøndelag
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          St. Olavs hospital HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          St. Olavs
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Helse Møre og Romsdal HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Møre og Romsdal
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Helse Førde HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Førde
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Helse Bergen HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Bergen
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Helse Fonna HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Fonna
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Helse Stavanger HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Stavanger
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Sykehuset Østfold HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Østfold
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Akershus universitetssykehus HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Akershus
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Oslo universitetssykehus HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          OUS
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Lovisenberg diakonale sykehus
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Lovisenberg
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Diakonhjemmet sykehus
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Diakonhjemmet
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Sykehuset Innlandet HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Innlandet
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Vestre Viken HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Vestre Viken
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Sykehuset i Vestfold HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Vestfold
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Sykehuset Telemark HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Telemark
+        </td>
+      </tr>
+      <tr>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Sørlandet sykehus HF
+        </td>
+        <td
+          style="padding: 2px 10px;"
+        >
+          Sørlandet
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Text with url 1`] = `
+<div>
+  <h2
+    id="noe-tekst"
+  >
+    Noe tekst
+  </h2>
+  
+
+  <p>
+    Test 
+    <a
+      href="https://no.wikipedia.org"
+      rel="noreferrer"
+      target="_blank"
+    >
+      om
+    </a>
+     lenke fungerer
+  </p>
+</div>
+`;

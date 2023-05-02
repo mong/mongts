@@ -13,7 +13,6 @@ import { buildLevels } from "../../../../test/builders";
 import { clockTick } from "../../../../test/clockTick";
 
 jest.mock("../../../../helpers/hooks");
-jest.mock("../../../../utils/useDelayInitial");
 
 test("Bar have labels with value in %", async () => {
   const WIDTH = 500;
@@ -229,12 +228,78 @@ test("Render without levels @250px", async () => {
         { label: "d", value: 0.1 },
       ]}
       levels={[
-        { level: "high", start: 1, end: 0.09 },
+        { level: "high", start: 1, end: 0.9 },
         { level: "mid", start: 0.9, end: 0.5 },
         { level: "low", start: 0.5, end: 0 },
       ]}
       tickformat=".1%"
       zoom={false}
+      margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Render without zoom @750px", async () => {
+  const WIDTH = 750;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+
+  const { container } = render(
+    <BarChartWithRef
+      showLevel={true}
+      data={[
+        { label: "a", value: 0.28965411 },
+        { label: "b", value: 0.111515 },
+        { label: "c", value: 0.3178612 },
+        { label: "d", value: 0.194212 },
+      ]}
+      levels={[
+        { level: "high", start: 1, end: 0.9 },
+        { level: "mid", start: 0.9, end: 0.5 },
+        { level: "low", start: 0.5, end: 0 },
+      ]}
+      tickformat=".3%"
+      zoom={false}
+      margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Render with zoom @750px", async () => {
+  const WIDTH = 750;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+
+  const { container } = render(
+    <BarChartWithRef
+      showLevel={true}
+      data={[
+        { label: "a", value: 0.28965411 },
+        { label: "b", value: 0.111515 },
+        { label: "c", value: 0.3178612 },
+        { label: "d", value: 0.194212 },
+      ]}
+      levels={[
+        { level: "high", start: 1, end: 0.9 },
+        { level: "mid", start: 0.9, end: 0.5 },
+        { level: "low", start: 0.5, end: 0 },
+      ]}
+      tickformat=".2%"
+      zoom={true}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />
   );
@@ -376,7 +441,7 @@ test("Render with levels reversed @500px", async () => {
   expect(container).toMatchSnapshot();
 });
 
-test("Render zoomed with levels @500px", async () => {
+test("Render zoomed with levels @500px and gray overlay (not complete data)", async () => {
   const WIDTH = 500;
   (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
@@ -399,8 +464,9 @@ test("Render zoomed with levels @500px", async () => {
         { level: "low", start: 200, end: 0 },
       ]}
       tickformat="qwerty" // test with unsupported format
-      zoom
+      zoom={true}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
+      lastCompleteYear={1979}
     />
   );
 

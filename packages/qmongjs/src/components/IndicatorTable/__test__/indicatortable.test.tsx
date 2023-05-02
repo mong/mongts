@@ -1,5 +1,5 @@
 import { QueryParamProvider } from "use-query-params";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, screen, waitFor } from "@testing-library/react";
 
 import opts from "../../../dev-tools/data/unitnames.json";

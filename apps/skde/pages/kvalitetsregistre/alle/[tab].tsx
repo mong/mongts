@@ -1,4 +1,4 @@
-import { UseQueryResult } from "react-query";
+import { UseQueryResult } from "@tanstack/react-query";
 import { MainRegister } from "qmongjs";
 import { useRegisterNamesQuery } from "qmongjs";
 import { GetStaticProps, GetStaticPaths } from "next";

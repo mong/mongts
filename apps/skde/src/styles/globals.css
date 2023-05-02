@@ -57,20 +57,9 @@ li.MuiBreadcrumbs-li:last-child {
   }
 }
 
-.fa.fa-fas.fa-circle {
-  color: #3baa34;
-  font-size: 1.2rem;
-  padding: 0.1em;
-}
-.fa.fa-fas.fa-adjust {
-  color: #fd9c00;
-  font-size: 1.2rem;
-  padding: 0.1em;
-}
-.fa.fa-circle-o {
-  color: #e30713;
-  font-size: 1.21rem;
-  padding: 0.1em;
+/* netlifycms bug fix */
+[data-slate-editor] {
+  -webkit-user-modify: read-write !important;
 }
 
 .register-row {

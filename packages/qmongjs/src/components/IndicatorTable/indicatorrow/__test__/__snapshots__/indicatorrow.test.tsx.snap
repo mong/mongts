@@ -26,6 +26,15 @@ exports[`renders 1`] = `
               Andel pasienter med HbA1c &gt; 9,0
             </p>
           </div>
+          <div
+            class="not_complete_year"
+          >
+            <h4>
+              Data for valgt år er ikke komplett. Siste komplette år er
+               
+              2018
+            </h4>
+          </div>
         </td>
         <td
           class="nationally "
@@ -37,8 +46,23 @@ exports[`renders 1`] = `
             <h4>
               11 %
               <i
-                class="fa fa-circle-o"
-              />
+                style="padding-left: 0.2em;"
+              >
+                <svg
+                  fill="currentColor"
+                  height="1em"
+                  stroke="currentColor"
+                  stroke-width="0"
+                  style="color: rgb(227, 7, 19); font-size: 1.2rem;"
+                  viewBox="0 0 512 512"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200z"
+                  />
+                </svg>
+              </i>
             </h4>
           </div>
           <div
@@ -100,7 +124,7 @@ exports[`renders 2 1`] = `
             <h4>
               20 %
               <i
-                class="undeined"
+                style="padding-left: 0.2em;"
               />
             </h4>
           </div>

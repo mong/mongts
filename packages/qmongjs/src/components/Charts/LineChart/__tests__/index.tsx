@@ -17,7 +17,6 @@ import {
 } from "../../../../helpers/hooks";
 
 jest.mock("../../../../helpers/hooks");
-jest.mock("../../../../utils/useDelayInitial");
 
 beforeEach(() => {
   const WIDTH = 500;
@@ -72,90 +71,26 @@ test("Render without levels @250px", async () => {
       ]}
       tickformat={undefined}
       data={[
-        {
+        buildDataPoint({
           label: "a",
           value: 0.5,
           year: 2020,
-          id: 1006,
-          ind_id: "barnediabetes_hba1c_ge_9",
-          unit_level: "nation",
-          unit_name: "Nasjonalt",
-          min_denominator: null,
-          denominator: 2775,
-          var: 0.1081,
-          level_direction: 0,
-          level_green: null,
-          level_yellow: null,
-          sformat: null,
-          dg: null,
-          include: 1,
-          type: "andel",
-          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
-          delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
-        },
-        {
+        }),
+        buildDataPoint({
           label: "a",
           value: 0.15,
           year: 2019,
-          id: 1006,
-          ind_id: "barnediabetes_hba1c_ge_9",
-          unit_level: "nation",
-          unit_name: "Nasjonalt",
-          min_denominator: null,
-          denominator: 2775,
-          var: 0.1081,
-          level_direction: 0,
-          level_green: null,
-          level_yellow: null,
-          sformat: null,
-          dg: null,
-          include: 1,
-          type: "andel",
-          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
-          delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
-        },
-        {
+        }),
+        buildDataPoint({
           label: "a",
           value: 0.3,
           year: 2018,
-          id: 1006,
-          ind_id: "barnediabetes_hba1c_ge_9",
-          unit_level: "nation",
-          unit_name: "Nasjonalt",
-          min_denominator: null,
-          denominator: 2775,
-          var: 0.1081,
-          level_direction: 0,
-          level_green: null,
-          level_yellow: null,
-          sformat: null,
-          dg: null,
-          include: 1,
-          type: "andel",
-          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
-          delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
-        },
-        {
+        }),
+        buildDataPoint({
           label: "a",
           value: 0.1,
           year: 2017,
-          id: 1006,
-          ind_id: "barnediabetes_hba1c_ge_9",
-          unit_level: "nation",
-          unit_name: "Nasjonalt",
-          min_denominator: null,
-          denominator: 2775,
-          var: 0.1081,
-          level_direction: 0,
-          level_green: null,
-          level_yellow: null,
-          sformat: null,
-          dg: null,
-          include: 1,
-          type: "andel",
-          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
-          delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
-        },
+        }),
       ]}
     />
   );
@@ -175,6 +110,7 @@ test("Render with levels @500px", async () => {
   const { container } = render(
     <LineChartWithRef
       showLevel={true}
+      zoom={true}
       levels={[
         { level: "high", start: 1, end: 0.9 },
         { level: "mid", start: 0.9, end: 0.5 },
@@ -182,90 +118,26 @@ test("Render with levels @500px", async () => {
       ]}
       tickformat=",.0%"
       data={[
-        {
+        buildDataPoint({
           label: "test",
-          value: 0.513343,
+          value: 0.8513343,
           year: 2020,
-          id: 1006,
-          ind_id: "barnediabetes_hba1c_ge_9",
-          unit_level: "nation",
-          unit_name: "Nasjonalt",
-          min_denominator: null,
-          denominator: 2775,
-          var: 0.1081,
-          level_direction: 0,
-          level_green: null,
-          level_yellow: null,
-          sformat: null,
-          dg: null,
-          include: 1,
-          type: "andel",
-          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
-          delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
-        },
-        {
+        }),
+        buildDataPoint({
           label: "test",
-          value: 0.15,
+          value: 0.885,
           year: 2019,
-          id: 1006,
-          ind_id: "barnediabetes_hba1c_ge_9",
-          unit_level: "nation",
-          unit_name: "Nasjonalt",
-          min_denominator: null,
-          denominator: 2775,
-          var: 0.1081,
-          level_direction: 0,
-          level_green: null,
-          level_yellow: null,
-          sformat: null,
-          dg: null,
-          include: 1,
-          type: "andel",
-          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
-          delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
-        },
-        {
+        }),
+        buildDataPoint({
           label: "test",
-          value: 0.3532,
+          value: 0.9532,
           year: 2018,
-          id: 1006,
-          ind_id: "barnediabetes_hba1c_ge_9",
-          unit_level: "nation",
-          unit_name: "Nasjonalt",
-          min_denominator: null,
-          denominator: 2775,
-          var: 0.1081,
-          level_direction: 0,
-          level_green: null,
-          level_yellow: null,
-          sformat: null,
-          dg: null,
-          include: 1,
-          type: "andel",
-          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
-          delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
-        },
-        {
+        }),
+        buildDataPoint({
           label: "test",
-          value: 0.124,
+          value: 0.724,
           year: 2017,
-          id: 1006,
-          ind_id: "barnediabetes_hba1c_ge_9",
-          unit_level: "nation",
-          unit_name: "Nasjonalt",
-          min_denominator: null,
-          denominator: 2775,
-          var: 0.1081,
-          level_direction: 0,
-          level_green: null,
-          level_yellow: null,
-          sformat: null,
-          dg: null,
-          include: 1,
-          type: "andel",
-          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
-          delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
-        },
+        }),
       ]}
     />
   );
@@ -293,174 +165,187 @@ test("Render with levels reversed @500px", async () => {
       tickformat=",.3f"
       lastCompleteYear={2019}
       data={[
-        {
+        buildDataPoint({
           label: "test",
           value: 0.513343,
           year: 2020,
-          id: 1006,
-          ind_id: "barnediabetes_hba1c_ge_9",
-          unit_level: "nation",
-          unit_name: "Nasjonalt",
-          min_denominator: null,
-          denominator: 2775,
-          var: 0.1081,
-          level_direction: 0,
-          level_green: null,
-          level_yellow: null,
-          sformat: null,
-          dg: null,
-          include: 1,
-          type: "andel",
-          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
-          delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
-        },
-        {
+        }),
+        buildDataPoint({
           label: "test",
           value: 0.15,
           year: 2019,
-          id: 1006,
-          ind_id: "barnediabetes_hba1c_ge_9",
-          unit_level: "nation",
-          unit_name: "Nasjonalt",
-          min_denominator: null,
-          denominator: 2775,
-          var: 0.1081,
-          level_direction: 0,
-          level_green: null,
-          level_yellow: null,
-          sformat: null,
-          dg: null,
-          include: 1,
-          type: "andel",
-          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
-          delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
-        },
-        {
+        }),
+        buildDataPoint({
           label: "test",
           value: 0.3532,
           year: 2018,
-          id: 1006,
-          ind_id: "barnediabetes_hba1c_ge_9",
-          unit_level: "nation",
-          unit_name: "Nasjonalt",
-          min_denominator: null,
-          denominator: 2775,
-          var: 0.1081,
-          level_direction: 0,
-          level_green: null,
-          level_yellow: null,
-          sformat: null,
-          dg: null,
-          include: 1,
-          type: "andel",
-          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
-          delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
-        },
-        {
+        }),
+        buildDataPoint({
           label: "test",
           value: 0.124,
           year: 2017,
-          id: 1006,
-          ind_id: "barnediabetes_hba1c_ge_9",
-          unit_level: "nation",
-          unit_name: "Nasjonalt",
-          min_denominator: null,
-          denominator: 2775,
-          var: 0.1081,
-          level_direction: 0,
-          level_green: null,
-          level_yellow: null,
-          sformat: null,
-          dg: null,
-          include: 1,
-          type: "andel",
-          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
-          delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
-        },
-        {
+        }),
+        buildDataPoint({
           label: "test2",
           value: 0.13343,
           year: 2020,
-          id: 1006,
-          ind_id: "barnediabetes_hba1c_ge_9",
-          unit_level: "nation",
-          unit_name: "Nasjonalt",
-          min_denominator: null,
-          denominator: 2775,
-          var: 0.1081,
-          level_direction: 0,
-          level_green: null,
-          level_yellow: null,
-          sformat: null,
-          dg: null,
-          include: 1,
-          type: "andel",
-          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
-          delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
-        },
-        {
+        }),
+        buildDataPoint({
           label: "test2",
           value: 0.5,
           year: 2019,
-          id: 1006,
-          ind_id: "barnediabetes_hba1c_ge_9",
-          unit_level: "nation",
-          unit_name: "Nasjonalt",
-          min_denominator: null,
-          denominator: 2775,
-          var: 0.1081,
-          level_direction: 0,
-          level_green: null,
-          level_yellow: null,
-          sformat: null,
-          dg: null,
-          include: 1,
-          type: "andel",
-          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
-          delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
-        },
-        {
+        }),
+        buildDataPoint({
           label: "test2",
           value: 0.532,
           year: 2018,
-          id: 1006,
-          ind_id: "barnediabetes_hba1c_ge_9",
-          unit_level: "nation",
-          unit_name: "Nasjonalt",
-          min_denominator: null,
-          denominator: 2775,
-          var: 0.1081,
-          level_direction: 0,
-          level_green: null,
-          level_yellow: null,
-          sformat: null,
-          dg: null,
-          include: 1,
-          type: "andel",
-          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
-          delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
-        },
-        {
+        }),
+        buildDataPoint({
           label: "test2",
           value: 0.24,
           year: 2017,
-          id: 1006,
-          ind_id: "barnediabetes_hba1c_ge_9",
-          unit_level: "nation",
-          unit_name: "Nasjonalt",
-          min_denominator: null,
-          denominator: 2775,
-          var: 0.1081,
-          level_direction: 0,
-          level_green: null,
-          level_yellow: null,
-          sformat: null,
-          dg: null,
-          include: 1,
-          type: "andel",
-          delivery_latest_update: new Date("October 13, 2014 11:13:00"),
-          delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
-        },
+        }),
+      ]}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Render with many years", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+  const { container } = render(
+    <LineChartWithRef
+      showLevel={true}
+      levels={[
+        { level: "high", start: 0.2, end: 0 },
+        { level: "mid", start: 0.4, end: 0.2 },
+        { level: "low", start: 1, end: 0.4 },
+      ]}
+      tickformat=",.3f"
+      lastCompleteYear={2019}
+      data={[
+        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2015 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.32, year: 2016 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.33, year: 2017 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.34, year: 2018 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.35, year: 2019 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.36, year: 2020 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.37, year: 2021 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.38, year: 2022 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.39, year: 2023 }),
+      ]}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Render with many years, ending with even", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+  const { container } = render(
+    <LineChartWithRef
+      showLevel={true}
+      levels={[
+        { level: "high", start: 0.2, end: 0 },
+        { level: "mid", start: 0.4, end: 0.2 },
+        { level: "low", start: 1, end: 0.4 },
+      ]}
+      tickformat=",.2f"
+      lastCompleteYear={2019}
+      data={[
+        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2013 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2014 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2015 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.32, year: 2016 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.33, year: 2017 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.34, year: 2018 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.35, year: 2019 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.36, year: 2020 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.37, year: 2021 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.38, year: 2022 }),
+      ]}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Render with many years, including missing years", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+  const { container } = render(
+    <LineChartWithRef
+      showLevel={true}
+      levels={[
+        { level: "high", start: 0.2, end: 0 },
+        { level: "mid", start: 0.4, end: 0.2 },
+        { level: "low", start: 1, end: 0.4 },
+      ]}
+      tickformat=",.3f"
+      lastCompleteYear={2019}
+      data={[
+        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2015 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.32, year: 2016 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.33, year: 2018 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.34, year: 2020 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.35, year: 2021 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.36, year: 2022 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.37, year: 2023 }),
+      ]}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
+test("Render with many years, including missing years", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+  const { container } = render(
+    <LineChartWithRef
+      showLevel={true}
+      levels={[
+        { level: "high", start: 0.2, end: 0 },
+        { level: "mid", start: 0.4, end: 0.2 },
+        { level: "low", start: 1, end: 0.4 },
+      ]}
+      tickformat=",.3f"
+      lastCompleteYear={2022}
+      data={[
+        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2015 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.32, year: 2016 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.33, year: 2018 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.34, year: 2020 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.35, year: 2021 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.36, year: 2022 }),
+        buildDataPoint({ label: "Nasjonalt", value: 0.37, year: 2023 }),
       ]}
     />
   );
@@ -499,6 +384,7 @@ function buildDataPoint(overrides: Partial<DataPoint>): DataPoint {
     min_denominator: null,
     denominator: 2775,
     var: 0.1081,
+    context: "caregiver",
     level_direction: 0,
     level_green: null,
     level_yellow: null,

@@ -1,6 +1,5 @@
 import { axisBottom, axisLeft, scaleBand, scaleLinear, select } from "d3";
 import { useEffect, useRef } from "react";
-import useDelayInitial from "../../../utils/useDelayInitial";
 import { useResizeObserver } from "../../../helpers/hooks";
 import styles from "./BarChart.module.css";
 import { levelColor } from "../utils";
@@ -26,6 +25,7 @@ export interface Props {
   zoom?: boolean;
   margin?: Margin;
   max_value?: number;
+  lastCompleteYear?: number;
 }
 
 const MARGIN = { top: 0.05, bottom: 10, right: 0.05, left: 0.25 };
@@ -40,8 +40,8 @@ function BarChart(props: Props) {
     zoom = false,
     margin = {},
     max_value,
+    lastCompleteYear,
   } = props;
-  const delayedZoom = useDelayInitial(zoom, false);
   const svgRef = useRef<SVGSVGElement>(null);
   const entry = useResizeObserver(wrapperRef);
   const height = Math.max(data.length * 30, 150);
@@ -75,12 +75,7 @@ function BarChart(props: Props) {
           : false
         : false;
 
-    const xScaleDomain = getXScaleDomain(
-      data,
-      delayedZoom,
-      percentage,
-      max_value
-    );
+    const xScaleDomain = getXScaleDomain(data, zoom, percentage, max_value);
     const xScale = scaleLinear()
       .domain(xScaleDomain)
       .range([0, innerWidth])
@@ -187,7 +182,7 @@ function BarChart(props: Props) {
     displayLevels,
     levels,
     tickformat,
-    delayedZoom,
+    zoom,
     innerHeight,
     innerWidth,
     max_value,
@@ -209,6 +204,30 @@ function BarChart(props: Props) {
           <g className="bars" />
           <g className="labels" />
         </g>
+        {lastCompleteYear && (
+          <>
+            <rect
+              height={marginOffsets.top + height + marginOffsets.bottom}
+              width={width}
+              style={{ opacity: "0.10" }}
+              rx="5"
+            ></rect>
+            <text
+              textAnchor="middle"
+              y={height / 4}
+              x={width / 2 + 10}
+              fill="#e30713"
+              fontSize="2rem"
+            >
+              <tspan x={width / 2 + 10} dy="1.2em">
+                Data er ikke komplett.{" "}
+              </tspan>
+              <tspan x={width / 2 + 10} dy="1.2em">
+                Siste komplette år er {lastCompleteYear}
+              </tspan>
+            </text>
+          </>
+        )}
       </svg>
     </div>
   );

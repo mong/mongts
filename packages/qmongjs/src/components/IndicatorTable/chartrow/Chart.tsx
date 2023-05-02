@@ -1,12 +1,11 @@
-import { UseQueryResult } from "react-query";
 import { Description, Indicator } from "types";
 
 import BarChart, { Bar, BarStyle } from "../../Charts/BarChart";
-import LineChart, { DataPoint } from "../../Charts/LineChart";
+import LineChart from "../../Charts/LineChart";
 import { Level } from "../../Charts/types";
 import { useIndicatorQuery } from "../../../helpers/hooks";
 
-interface Props {
+export interface ChartProps {
   context: { context: string; type: string };
   svgContainerRef: React.RefObject<HTMLDivElement>;
   chartType: "bar" | "line";
@@ -19,9 +18,10 @@ interface Props {
   tickformat?: string;
   selectedTreatmentUnits: string[];
   max_value?: number;
+  lastCompleteYear?: number;
 }
 
-function Chart(props: Props) {
+function Chart(props: ChartProps) {
   switch (props.chartType) {
     case "line":
       return <GetLineChart {...props} />;
@@ -32,7 +32,7 @@ function Chart(props: Props) {
 
 export default Chart;
 
-const GetBarChart: React.FC<Props> = (props) => {
+const GetBarChart: React.FC<ChartProps> = (props) => {
   const { description, indicatorData, treatmentYear } = props;
   const registerShortName = description.rname ?? "";
   const {
@@ -123,25 +123,25 @@ const GetBarChart: React.FC<Props> = (props) => {
   return <BarChart {...props} data={filterData(barChartData)} />;
 };
 
-const GetLineChart: React.FC<Props> = (props) => {
+const GetLineChart: React.FC<ChartProps> = (props) => {
   const { description, selectedTreatmentUnits } = props;
 
-  const lineChartQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
+  const {
+    isLoading,
+    error,
+    data: indQryData,
+  } = useIndicatorQuery({
     registerShortName: description.rname ?? "",
     unitNames: selectedTreatmentUnits,
     context: props.context.context,
     type: props.context.type,
   });
 
-  // get the last year with complete data
-  const lastCompleteYear: number | undefined = lineChartQuery.data
-    ? lineChartQuery.data[0].delivery_latest_affirm
-      ? new Date(lineChartQuery.data[0].delivery_latest_affirm).getFullYear() -
-        1
-      : undefined
-    : undefined;
+  if (isLoading) return <>Loading...</>;
+  if (error) return <>An error has occured: {error.message}</>;
 
-  const data: DataPoint[] = (lineChartQuery.data ?? [])
+  // only keep data for given indicator
+  const data = [...(indQryData ?? [])]
     .filter(
       (data: Indicator) =>
         data.ind_id === props.description.id &&
@@ -154,6 +154,13 @@ const GetLineChart: React.FC<Props> = (props) => {
       value: d.var,
     }))
     .sort((a: Indicator, b: Indicator) => b.year - a.year);
+
+  // get the last year with complete data
+  const lastCompleteYear: number | undefined = data
+    ? data[0].delivery_latest_affirm
+      ? new Date(data[0].delivery_latest_affirm).getFullYear() - 1
+      : undefined
+    : undefined;
 
   return (
     <LineChart {...props} data={data} lastCompleteYear={lastCompleteYear} />
