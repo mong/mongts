@@ -290,6 +290,7 @@ function buildDataPoint(overrides: Partial<Indicator>): Indicator {
     min_denominator: 10,
     denominator: 2775,
     var: 0.1081,
+    context: "caregiver",
     level_direction: 0,
     level_green: null,
     level_yellow: null,

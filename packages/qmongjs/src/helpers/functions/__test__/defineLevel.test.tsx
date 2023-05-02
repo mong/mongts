@@ -10,6 +10,7 @@ const indicator: Indicator = {
   denominator: 2,
   min_denominator: null,
   var: 0.01,
+  context: "caregiver",
   level_direction: 0,
   level_green: 0.05,
   level_yellow: 0.1,
