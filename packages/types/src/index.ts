@@ -25,7 +25,7 @@ export interface Indicator {
   ind_id: string;
   unit_level: string;
   unit_name: string;
-  context?: string;
+  context: "caregiver" | "resident";
   year: number;
   denominator: number;
   var: number;
