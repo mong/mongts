@@ -6,6 +6,9 @@ type ThemeTableChartLineTypes = {
   y_axis_label_fill: string;
 };
 
+/**
+ * Test
+ */
 export const themeTableChartLine: ThemeTableChartLineTypes = {
   y_axis_label_fill: "#2D3034",
   x_axis_tick_font_fill: "#828586",

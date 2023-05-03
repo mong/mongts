@@ -30,6 +30,7 @@ interface MainRegisterProps {
   registerNames: RegisterName[];
 }
 
+/** This is a description of the foo function. */
 export const MainRegister: React.FC<MainRegisterProps> = ({
   registerNames,
 }) => {

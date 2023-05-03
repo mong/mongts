@@ -1,0 +1,15 @@
+{
+  "source": {
+    "include": ["./apps/skde/src", "./apps/api/src", "./packages/qmongjs/src"],
+    "includePattern": "(.ts|.tsx)$",
+    "excludePattern": "(node_modules/|docs)"
+  },
+  "plugins": ["typescript"],
+  "opts": {
+    "encoding": "utf8",
+    "readme": "./README.md",
+    "destination": "docs/",
+    "recurse": true,
+    "verbose": true
+  }
+}

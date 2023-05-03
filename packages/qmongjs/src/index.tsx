@@ -1,3 +1,4 @@
+/** This is a description of the foo function. */
 export { MainRegister } from "./components/RegisterPage/MainRegister";
 export { SelectedRegister } from "./components/RegisterPage/SelectedRegister";
 export { useRegisterNamesQuery, fetchRegisterNames } from "./helpers/hooks";
