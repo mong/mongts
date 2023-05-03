@@ -7,7 +7,8 @@
  */
 import { render, screen } from "@testing-library/react";
 import { createRef } from "react";
-import LineChart, { DataPoint, Props } from "..";
+import { Indicator } from "types";
+import LineChart, { Props } from "..";
 import { buildLevels } from "../../../../test/builders";
 import { clockTick } from "../../../../test/clockTick";
 import {
@@ -30,8 +31,8 @@ beforeEach(() => {
 });
 
 test("shows legend", async () => {
-  const d1 = buildDataPoint({ label: "Nasjonalt" });
-  const d2 = buildDataPoint({ label: "Ahus" });
+  const d1 = buildDataPoint({ unit_name: "Nasjonalt" });
+  const d2 = buildDataPoint({ unit_name: "Ahus" });
   const props = buildProps({ data: [d1, d2] });
 
   render(<LineChartWithRef {...props} />);
@@ -42,9 +43,9 @@ test("shows legend", async () => {
   expect(screen.getByText("Ahus")).toBeInTheDocument();
 });
 
-test("shows only one legend item per label", async () => {
-  const d1 = buildDataPoint({ label: "Nasjonalt" });
-  const d2 = buildDataPoint({ label: "Nasjonalt" });
+test("shows only one legend item per unit_name", async () => {
+  const d1 = buildDataPoint({ unit_name: "Nasjonalt" });
+  const d2 = buildDataPoint({ unit_name: "Nasjonalt" });
   const props = buildProps({ data: [d1, d2] });
 
   render(<LineChartWithRef {...props} />);
@@ -72,23 +73,23 @@ test("Render without levels @250px", async () => {
       tickformat={undefined}
       data={[
         buildDataPoint({
-          label: "a",
-          value: 0.5,
+          unit_name: "a",
+          var: 0.5,
           year: 2020,
         }),
         buildDataPoint({
-          label: "a",
-          value: 0.15,
+          unit_name: "a",
+          var: 0.15,
           year: 2019,
         }),
         buildDataPoint({
-          label: "a",
-          value: 0.3,
+          unit_name: "a",
+          var: 0.3,
           year: 2018,
         }),
         buildDataPoint({
-          label: "a",
-          value: 0.1,
+          unit_name: "a",
+          var: 0.1,
           year: 2017,
         }),
       ]}
@@ -119,23 +120,23 @@ test("Render with levels @500px", async () => {
       tickformat=",.0%"
       data={[
         buildDataPoint({
-          label: "test",
-          value: 0.8513343,
+          unit_name: "test",
+          var: 0.8513343,
           year: 2020,
         }),
         buildDataPoint({
-          label: "test",
-          value: 0.885,
+          unit_name: "test",
+          var: 0.885,
           year: 2019,
         }),
         buildDataPoint({
-          label: "test",
-          value: 0.9532,
+          unit_name: "test",
+          var: 0.9532,
           year: 2018,
         }),
         buildDataPoint({
-          label: "test",
-          value: 0.724,
+          unit_name: "test",
+          var: 0.724,
           year: 2017,
         }),
       ]}
@@ -166,43 +167,43 @@ test("Render with levels reversed @500px", async () => {
       lastCompleteYear={2019}
       data={[
         buildDataPoint({
-          label: "test",
-          value: 0.513343,
+          unit_name: "test",
+          var: 0.513343,
           year: 2020,
         }),
         buildDataPoint({
-          label: "test",
-          value: 0.15,
+          unit_name: "test",
+          var: 0.15,
           year: 2019,
         }),
         buildDataPoint({
-          label: "test",
-          value: 0.3532,
+          unit_name: "test",
+          var: 0.3532,
           year: 2018,
         }),
         buildDataPoint({
-          label: "test",
-          value: 0.124,
+          unit_name: "test",
+          var: 0.124,
           year: 2017,
         }),
         buildDataPoint({
-          label: "test2",
-          value: 0.13343,
+          unit_name: "test2",
+          var: 0.13343,
           year: 2020,
         }),
         buildDataPoint({
-          label: "test2",
-          value: 0.5,
+          unit_name: "test2",
+          var: 0.5,
           year: 2019,
         }),
         buildDataPoint({
-          label: "test2",
-          value: 0.532,
+          unit_name: "test2",
+          var: 0.532,
           year: 2018,
         }),
         buildDataPoint({
-          label: "test2",
-          value: 0.24,
+          unit_name: "test2",
+          var: 0.24,
           year: 2017,
         }),
       ]}
@@ -232,15 +233,15 @@ test("Render with many years", async () => {
       tickformat=",.3f"
       lastCompleteYear={2019}
       data={[
-        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2015 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.32, year: 2016 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.33, year: 2017 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.34, year: 2018 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.35, year: 2019 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.36, year: 2020 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.37, year: 2021 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.38, year: 2022 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.39, year: 2023 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.31, year: 2015 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.32, year: 2016 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.33, year: 2017 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.34, year: 2018 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.35, year: 2019 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.36, year: 2020 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.37, year: 2021 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.38, year: 2022 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.39, year: 2023 }),
       ]}
     />
   );
@@ -268,16 +269,16 @@ test("Render with many years, ending with even", async () => {
       tickformat=",.2f"
       lastCompleteYear={2019}
       data={[
-        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2013 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2014 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2015 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.32, year: 2016 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.33, year: 2017 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.34, year: 2018 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.35, year: 2019 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.36, year: 2020 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.37, year: 2021 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.38, year: 2022 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.31, year: 2013 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.31, year: 2014 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.31, year: 2015 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.32, year: 2016 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.33, year: 2017 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.34, year: 2018 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.35, year: 2019 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.36, year: 2020 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.37, year: 2021 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.38, year: 2022 }),
       ]}
     />
   );
@@ -305,13 +306,13 @@ test("Render with many years, including missing years", async () => {
       tickformat=",.3f"
       lastCompleteYear={2019}
       data={[
-        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2015 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.32, year: 2016 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.33, year: 2018 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.34, year: 2020 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.35, year: 2021 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.36, year: 2022 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.37, year: 2023 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.31, year: 2015 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.32, year: 2016 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.33, year: 2018 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.34, year: 2020 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.35, year: 2021 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.36, year: 2022 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.37, year: 2023 }),
       ]}
     />
   );
@@ -339,13 +340,13 @@ test("Render with many years, including missing years", async () => {
       tickformat=",.3f"
       lastCompleteYear={2022}
       data={[
-        buildDataPoint({ label: "Nasjonalt", value: 0.31, year: 2015 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.32, year: 2016 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.33, year: 2018 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.34, year: 2020 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.35, year: 2021 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.36, year: 2022 }),
-        buildDataPoint({ label: "Nasjonalt", value: 0.37, year: 2023 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.31, year: 2015 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.32, year: 2016 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.33, year: 2018 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.34, year: 2020 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.35, year: 2021 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.36, year: 2022 }),
+        buildDataPoint({ unit_name: "Nasjonalt", var: 0.37, year: 2023 }),
       ]}
     />
   );
@@ -370,13 +371,11 @@ function LineChartWithRef(props: Omit<Props, "svgContainerRef">) {
 }
 
 // Builders
-function buildDataPoint(overrides: Partial<DataPoint>): DataPoint {
+function buildDataPoint(overrides: Partial<Indicator>): Indicator {
   return {
-    label: (Math.random() + 1).toString(36).substring(7),
     year: Math.floor(
       Math.random() * 6 + 2015
     ) /* Random year between 2015 and 2020 */,
-    value: Math.random(),
     id: 1006,
     ind_id: "barnediabetes_hba1c_ge_9",
     unit_level: "nation",

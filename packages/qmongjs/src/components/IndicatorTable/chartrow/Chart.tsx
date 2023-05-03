@@ -148,11 +148,6 @@ const GetLineChart: React.FC<ChartProps> = (props) => {
         ((data.dg ?? 1) >= 0.6 || data.unit_name === "Nasjonalt") &&
         data.denominator >= (description.min_denominator ?? 5)
     )
-    .map((d: Indicator) => ({
-      ...d,
-      label: d.unit_name,
-      value: d.var,
-    }))
     .sort((a: Indicator, b: Indicator) => b.year - a.year);
 
   // get the last year with complete data

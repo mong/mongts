@@ -42,15 +42,10 @@ const chart_colors = [
   "#78909C",
 ];
 
-export type DataPoint = {
-  label: string;
-  value: number;
-} & Indicator;
-
 export interface Props {
   svgContainerRef: React.RefObject<HTMLDivElement>;
   showLevel: boolean;
-  data: DataPoint[];
+  data: Indicator[];
   levels: Level[];
   tickformat?: string;
   zoom?: boolean;
@@ -80,10 +75,10 @@ const LineChart = (props: Props) => {
     tooltipData,
     hideTooltip,
     showTooltip,
-  } = useTooltip<DataPoint>();
+  } = useTooltip<Indicator>();
 
   const handleTooltip = React.useCallback(
-    (event: React.PointerEvent<SVGSVGElement>, data?: DataPoint) => {
+    (event: React.PointerEvent<SVGSVGElement>, data?: Indicator) => {
       // coordinates should be relative to the container in which Tooltip is rendered
       const eventSvgCoords = localPoint(event) ?? { x: 0, y: 0 };
       showTooltip({
@@ -113,7 +108,9 @@ const LineChart = (props: Props) => {
 
   const innerHeight = height - marginOffsets.top - marginOffsets.bottom;
   const innerWidth = width - marginOffsets.left - marginOffsets.right;
-  const pathLabels = Array.from(new Set(data.map((d) => d.label))).reverse();
+  const pathLabels = Array.from(
+    new Set(data.map((d) => d.unit_name))
+  ).reverse();
   const lineColorScale = scaleOrdinal<string>()
     .domain(pathLabels)
     .range(chart_colors);
@@ -234,9 +231,9 @@ const LineChart = (props: Props) => {
       );
 
     // Paths
-    const lines = line<DataPoint>()
+    const lines = line<Indicator>()
       .x((d) => xScale(d.year))
-      .y((d) => yScale(d.value));
+      .y((d) => yScale(d.var));
 
     const dataComplete = lastCompleteYear
       ? data.filter(function (datapoint) {
@@ -253,7 +250,7 @@ const LineChart = (props: Props) => {
     container
       .select(".linesComplete")
       .selectAll(".line")
-      .data(group(dataComplete, (d) => d.label))
+      .data(group(dataComplete, (d) => d.unit_name))
       .join(
         (enter) =>
           enter
@@ -285,7 +282,7 @@ const LineChart = (props: Props) => {
     container
       .select(".linesIncomplete")
       .selectAll(".line")
-      .data(group(dataIncomplete, (d) => d.label))
+      .data(group(dataIncomplete, (d) => d.unit_name))
       .join(
         (enter) =>
           enter
@@ -324,11 +321,11 @@ const LineChart = (props: Props) => {
           enter
             .append("circle")
             .attr("class", "dot")
-            .attr("stroke", (d) => lineColorScale(d.label))
-            .attr("fill", (d) => lineColorScale(d.label))
+            .attr("stroke", (d) => lineColorScale(d.unit_name))
+            .attr("fill", (d) => lineColorScale(d.unit_name))
             .style("mix-blend-mode", "multiply")
             .attr("cx", (d) => xScale(d.year))
-            .attr("cy", (d) => yScale(d.value)),
+            .attr("cy", (d) => yScale(d.var)),
         (update) =>
           update.call((update) =>
             update
@@ -336,20 +333,22 @@ const LineChart = (props: Props) => {
                 if (highlightedLegends.length === 0) {
                   return 1;
                 }
-                return highlightedLegends.includes(d.label) ? 1 : 0.4;
+                return highlightedLegends.includes(d.unit_name) ? 1 : 0.4;
               })
               .transition()
               .duration(1000)
               .attr("cx", (d) => xScale(d.year))
-              .attr("cy", (d) => yScale(d.value))
+              .attr("cy", (d) => yScale(d.var))
 
-              .attr("stroke", (d) => lineColorScale(d.label))
-              .attr("fill", (d) => lineColorScale(d.label))
+              .attr("stroke", (d) => lineColorScale(d.unit_name))
+              .attr("fill", (d) => lineColorScale(d.unit_name))
           ),
         (exit) => exit.remove()
       )
       .attr("r", (d) =>
-        tooltipData?.year === d.year && tooltipData?.label === d.label ? 6 : 4
+        tooltipData?.year === d.year && tooltipData?.unit_name === d.unit_name
+          ? 6
+          : 4
       )
       .on("pointerenter", (e, d) => handleTooltip(e, d))
       .on("pointermove", (e, d) => handleTooltip(e, d))
@@ -441,12 +440,12 @@ const LineChart = (props: Props) => {
 export default LineChart;
 
 function getYScaleDomain(
-  data: DataPoint[],
+  data: Indicator[],
   zoom: boolean,
   percentage: boolean
 ): [number, number] {
-  const maxValue = Math.max(...data.map((d) => d.value));
-  const minValue = Math.min(...data.map((d) => d.value));
+  const maxValue = Math.max(...data.map((d) => d.var));
+  const minValue = Math.min(...data.map((d) => d.var));
 
   const additionalMargin = (maxValue - minValue) * 0.2;
   const yMin = zoom

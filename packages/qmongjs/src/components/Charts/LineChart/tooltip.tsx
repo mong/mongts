@@ -1,7 +1,7 @@
 import { defaultStyles, Tooltip } from "@visx/tooltip";
 
 import React from "react";
-import { DataPoint } from ".";
+import { Indicator } from "types";
 import { IndicatorData } from "../../IndicatorTable/indicatorvalue";
 
 const tooltipStyles: React.CSSProperties = {
@@ -21,7 +21,7 @@ type ChartTooltipProps = {
   tooltipOpen: boolean;
   tooltipLeft?: number;
   tooltipTop: number | undefined;
-  tooltipData?: DataPoint;
+  tooltipData?: Indicator;
   format?: string;
 };
 
@@ -43,7 +43,7 @@ export const LineChartTooltip: React.FC<ChartTooltipProps> = ({
               fontWeight: 500,
             }}
           >
-            {tooltipData.label}
+            {tooltipData.unit_name}
           </div>
           <div>{tooltipData.year}</div>
           <IndicatorData
