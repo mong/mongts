@@ -7,20 +7,6 @@
   "ingress": "dette er ein test (ingress) ",
   "kapittel": [
     {
-      "overskrift": "Hovudfunn",
-      "innhold": [
-        {
-          "type": "tekst",
-          "tekst": "* hovudfunn 1\n* hovudfunn 2",
-          "beskrivelse": "Punktvis oppsummering av hovudfunn i helseatlas fedme"
-        },
-        {
-          "type": "tekst",
-          "tekst": "tekst test"
-        }
-      ]
-    },
-    {
       "overskrift": "fedme overvekt ",
       "innhold": [
         {
@@ -30,7 +16,22 @@
         }
       ]
     },
-    {}
+    {},
+    {
+      "overskrift": "Pasientar med fedme",
+      "innhold": [
+        {
+          "type": "faktaboks",
+          "overskrift": "Om fedme",
+          "tekst": "Om fedme som kronisk sjukdom"
+        },
+        {
+          "type": "faktaboks",
+          "overskrift": "Om førekomst av fedme",
+          "tekst": "Om geografisk variasjon i førekomst"
+        }
+      ]
+    }
   ],
   "image": "/helseatlas/img/no/fedme/fedme_bilde.jpg",
   "shortTitle": "Fedme",
