@@ -27,8 +27,10 @@ const formatIndicatorValues = (
           "Gitt indikator har ingen data for valgt " +
           (context === "caregiver" ? "behandler" : "opptaksområde") +
           ". Dette er enten fordi " +
-          (context === "caregiver" ? "behandler" : "opptaksområde") +
-          " ikke har rapportert data eller fordi antall observasjoner er lavere enn " +
+          (context === "caregiver"
+            ? "behandler ikke har rapportert data"
+            : "det ikke finnes data for valgt opptaksområdet") +
+          ", eller fordi antall observasjoner er lavere enn " +
           (description.min_denominator ?? "5") +
           "."
         }
@@ -153,6 +155,8 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
     colspan,
   } = props;
 
+  console.log(context);
+
   const [selected_row, update_selected_row] = useQueryParam(
     "selected_row",
     mainQueryParamsConfig.selected_row
@@ -176,7 +180,7 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
             filteredIndicator[0],
             showLevelFilter,
             name,
-            context
+            context.context
           );
         });
 
