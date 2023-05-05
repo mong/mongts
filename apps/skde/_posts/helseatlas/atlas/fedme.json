@@ -7,11 +7,12 @@
   "ingress": "dette er ein test (ingress) ",
   "kapittel": [
     {
-      "overskrift": "Test kapittel ",
+      "overskrift": "Hovudfunn",
       "innhold": [
         {
           "type": "tekst",
-          "tekst": "test(tekst)"
+          "tekst": "* hovudfunn 1\n* hovudfunn 2",
+          "beskrivelse": "Punktvis oppsummering av hovudfunn i helseatlas fedme"
         },
         {
           "type": "tekst",
@@ -28,9 +29,10 @@
           "tekst": "<https://helseatlas.no>tekst.."
         }
       ]
-    }
+    },
+    {}
   ],
   "image": "/helseatlas/img/no/fedme/fedme_bilde.jpg",
   "shortTitle": "Fedme",
-  "mainTitle": "Fedme.. "
+  "mainTitle": "Helseatlas fedme"
 }
