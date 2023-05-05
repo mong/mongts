@@ -6,6 +6,8 @@ import { IndicatorDescription } from "../indicatordescription";
 import { MaskedIndicator } from "../maskedindicator";
 import { ChartRow } from "../chartrow";
 import style from "./indicatorrow.module.css";
+import Tooltip from "@mui/material/Tooltip";
+import Zoom from "@mui/material/Zoom";
 
 import { Description, Indicator } from "types";
 import { mainQueryParamsConfig } from "../../../app_config";
@@ -15,18 +17,34 @@ const formatIndicatorValues = (
   description: Description,
   indicator: Indicator,
   showLevelFilter: string,
-  unitName: string
+  unitName: string,
+  context: string
 ) => {
   if (!indicator) {
     return (
-      <td
-        key={`${description.id}_${unitName}__su`}
-        className={`${
-          unitName !== "Nasjonalt" ? style.selected_unit : style.nationally
-        }`}
+      <Tooltip
+        title={
+          "Gitt indikator har ingen data for valgt " +
+          (context === "caregiver" ? "behandler" : "opptaksområde") +
+          ". Dette er enten fordi " +
+          (context === "caregiver"
+            ? "behandler ikke har rapportert data"
+            : "det ikke finnes data for valgt opptaksområdet") +
+          ", eller fordi antall observasjoner er lavere enn " +
+          (description.min_denominator ?? "5") +
+          "."
+        }
+        TransitionComponent={Zoom}
       >
-        <MaskedIndicator text="Ingen Data" />
-      </td>
+        <td
+          key={`${description.id}_${unitName}__su`}
+          className={`${
+            unitName !== "Nasjonalt" ? style.selected_unit : style.nationally
+          }`}
+        >
+          <MaskedIndicator text="Ingen Data" />
+        </td>
+      </Tooltip>
     );
   } else if (
     description.type === "dg_andel" ||
@@ -50,29 +68,50 @@ const formatIndicatorValues = (
     );
   } else if ((indicator.dg ?? 1) < 0.6 && indicator.unit_name !== "Nasjonalt") {
     return (
-      <td
-        key={`${indicator.ind_id}_${indicator.unit_name}_${indicator.id}_su`}
-        className={`${
-          indicator.unit_level !== "nation"
-            ? style.selected_unit
-            : style.nationally
-        }`}
+      <Tooltip
+        title="Resultater fra enhet med dekningsgrad lavere enn 60 % vises ikke.      
+      Dekningsgrad angir andel pasienter eller hendelser som registreres,
+      i forhold til antall som skal registreres for gitt indikator. 
+      Om en indikatoren har lav dekningsgrad, er det fare for at utvalget 
+      er skjevt slik at resultatene kan være misvisende og medføre 
+      feilaktige konklusjoner."
+        TransitionComponent={Zoom}
       >
-        <MaskedIndicator text="Lav dg" />
-      </td>
+        <td
+          key={`${indicator.ind_id}_${indicator.unit_name}_${indicator.id}_su`}
+          className={`${
+            indicator.unit_level !== "nation"
+              ? style.selected_unit
+              : style.nationally
+          }`}
+        >
+          <MaskedIndicator text="Lav dg" />
+        </td>
+      </Tooltip>
     );
   } else if (indicator.denominator < (description.min_denominator ?? 5)) {
     return (
-      <td
-        key={`${indicator.ind_id}_${indicator.unit_name}_${indicator.id}_su`}
-        className={`${
-          indicator.unit_level !== "nation"
-            ? style.selected_unit
-            : style.nationally
-        }`}
+      <Tooltip
+        title={
+          "Gitt indikator for valgt " +
+          (context === "caregiver" ? "behandler" : "opptaksområde") +
+          " vises ikke fordi antall observasjoner er lavere enn " +
+          (description.min_denominator ?? "5") +
+          "."
+        }
+        TransitionComponent={Zoom}
       >
-        <MaskedIndicator text="Lav N" />
-      </td>
+        <td
+          key={`${indicator.ind_id}_${indicator.unit_name}_${indicator.id}_su`}
+          className={`${
+            indicator.unit_level !== "nation"
+              ? style.selected_unit
+              : style.nationally
+          }`}
+        >
+          <MaskedIndicator text="Lav N" />
+        </td>
+      </Tooltip>
     );
   } else {
     const level_class =
@@ -115,7 +154,6 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
     showLevelFilter = "",
     colspan,
   } = props;
-
   const [selected_row, update_selected_row] = useQueryParam(
     "selected_row",
     mainQueryParamsConfig.selected_row
@@ -138,7 +176,8 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
             description,
             filteredIndicator[0],
             showLevelFilter,
-            name
+            name,
+            context.context
           );
         });
 
