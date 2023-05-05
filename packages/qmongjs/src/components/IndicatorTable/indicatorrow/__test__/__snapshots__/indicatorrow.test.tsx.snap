@@ -38,6 +38,17 @@ exports[`renders with low N 1`] = `
             Lav N
           </div>
         </td>
+        <td
+          aria-label="Gitt indikator har ingen data for valgt behandler. Dette er enten fordi behandler ikke har rapportert data, eller fordi antall observasjoner er lavere enn 10."
+          class="nationally"
+          data-mui-internal-clone-element="true"
+        >
+          <div
+            class="maskedIndicator"
+          >
+            Ingen Data
+          </div>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -157,6 +168,26 @@ exports[`renders with low dg 1`] = `
             class="maskedIndicator"
           >
             Lav dg
+          </div>
+        </td>
+        <td
+          class="nationally "
+        >
+          <div
+            aria-label="Achieved level undefined"
+            class="level"
+          >
+            <h4>
+              50 %
+              <i
+                style="padding-left: 0.2em;"
+              />
+            </h4>
+          </div>
+          <div
+            class="summary"
+          >
+            21 av 42
           </div>
         </td>
       </tr>

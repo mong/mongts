@@ -109,7 +109,7 @@ it("renders with low N", () => {
             description={descr}
             indicatorData={[data]}
             treatmantYear={2017}
-            unitNames={["UNN"]}
+            unitNames={["UNN", "Nasjonalt"]}
           />
         </tbody>
       </table>
@@ -119,10 +119,17 @@ it("renders with low N", () => {
 });
 
 it("renders with low dg", () => {
-  const data = buildIndicator({
-    unit_name: "UNN",
-    dg: 0.5,
-  });
+  const data = [
+    buildIndicator({
+      unit_name: "UNN",
+      dg: 0.5,
+    }),
+    buildIndicator({
+      unit_name: "Nasjonalt",
+      dg: 0.5,
+      var: 0.5,
+    }),
+  ];
   const descr = buildDescription({
     title: "qwerty",
     short_description: "Andel pasienter med qwerty",
@@ -134,9 +141,9 @@ it("renders with low dg", () => {
           <IndicatorRow
             context={{ context: "caregiver", type: "ind" }}
             description={descr}
-            indicatorData={[data]}
+            indicatorData={data}
             treatmantYear={2017}
-            unitNames={["UNN"]}
+            unitNames={["UNN", "Nasjonalt"]}
           />
         </tbody>
       </table>
