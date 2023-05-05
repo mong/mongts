@@ -154,9 +154,6 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
     showLevelFilter = "",
     colspan,
   } = props;
-
-  console.log(context);
-
   const [selected_row, update_selected_row] = useQueryParam(
     "selected_row",
     mainQueryParamsConfig.selected_row
