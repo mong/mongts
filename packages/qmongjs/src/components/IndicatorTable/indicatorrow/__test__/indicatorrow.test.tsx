@@ -177,3 +177,29 @@ it("renders with missing data", () => {
   );
   expect(container).toMatchSnapshot();
 });
+
+it("renders with missing data resident", () => {
+  const data = buildIndicator({
+    unit_name: "qwerty",
+  });
+  const descr = buildDescription({
+    title: "qwerty",
+    short_description: "Andel pasienter med qwerty",
+  });
+  const { container } = render(
+    <QueryParamProvider adapter={NextAdapter}>
+      <table key="{test_table}">
+        <tbody key="{test_tbody}">
+          <IndicatorRow
+            context={{ context: "resident", type: "ind" }}
+            description={descr}
+            indicatorData={[data]}
+            treatmantYear={2017}
+            unitNames={["UNN"]}
+          />
+        </tbody>
+      </table>
+    </QueryParamProvider>
+  );
+  expect(container).toMatchSnapshot();
+});

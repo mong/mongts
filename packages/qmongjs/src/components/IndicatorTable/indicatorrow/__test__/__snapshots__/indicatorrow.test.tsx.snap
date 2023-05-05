@@ -240,6 +240,50 @@ exports[`renders with missing data 1`] = `
 </div>
 `;
 
+exports[`renders with missing data resident 1`] = `
+<div>
+  <table>
+    <tbody>
+      <tr
+        class="testdata  null  indicator"
+        data-testid="indicatorrow_testdata"
+        id="testdata  null"
+      >
+        <td
+          class="quality_indicator"
+        >
+          <div
+            class="quality_indicator_name"
+          >
+            <h1>
+              qwerty
+            </h1>
+          </div>
+          <div
+            class="qi_long_description"
+          >
+            <p>
+              Andel pasienter med qwerty
+            </p>
+          </div>
+        </td>
+        <td
+          aria-label="Gitt indikator har ingen data for valgt opptaksområde. Dette er enten fordi det ikke finnes data for valgt opptaksområdet, eller fordi antall observasjoner er lavere enn 5."
+          class="selected_unit"
+          data-mui-internal-clone-element="true"
+        >
+          <div
+            class="maskedIndicator"
+          >
+            Ingen Data
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
 exports[`renders with no achievement level on indicator 1`] = `
 <div>
   <table>
