@@ -1,0 +1,93 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snittrate"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": ["Tal pasientar pr. 1 000 innbyggarar (18-115 år)"],
+        "en": ["Number of patients per 1,000 inhabitants (18-115 years)"]
+      },
+      "yLabel": {
+        "nn": ["Opptaksområde"],
+        "en": ["Referral areas"]
+      },
+      "annualVar": ["Rate.2018", "Rate.2019", "Rate.2020", "Rate.2021", "Rate.2022"],
+      "annualVarLabels": {
+        "nn": ["2018", "2019", "2020", "2021", "2022"],
+        "en": ["2018", "2019", "2020", "2021", "2022"]
+      }
+    },
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["rate1", "rate2", "rate3"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": ["Tal pasientar pr. 1 000 innbyggarar (18-115 år)"],
+        "en": ["Number of patients per 1,000 inhabitants (18-115 years)"]
+      },
+      "yLabel": {
+        "nn": ["Opptaksområde"],
+        "en": ["Referral areas"]
+      },
+      "xLegend": {
+        "nn": ["Rate 1", "Rate 2", "Rate 3"],
+        "en": ["Rate 1", "Rate 2", "Rate 3"]
+      }
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "Snittrate",
+      "caption": {
+        "nn": ["Tal pasientar pr. 1 000 innbyggarar (18-115 år)"],
+        "en": ["Number of patients per 1,000 inhabitants (18-115 years)"]
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": 0.1,
+          "min": 0.1,
+          "lag_min": 0.1,
+          "grense": 0.1
+        },
+        {
+          "cluster": 2,
+          "max": 0.2,
+          "min": 0.2,
+          "lag_min": 0.2,
+          "grense": 0.2
+        },
+        {
+          "cluster": 3,
+          "max": 0.3,
+          "min": 0.3,
+          "lag_min": 0.3,
+          "grense": 0.3
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": ["Hoveddatasettet for gitt resultatboks"],
+      "national": ["Norge"],
+      "data": [
+        {
+          "bohf": "UNN",
+          "Snittrate": 1.71,
+          "Rate.2022": 1.71,
+          "Rate.2021": 1.71
+        },
+        {
+          "bohf": "OUS",
+          "Snittrate": 2.11,
+          "Rate.2022": 2.11,
+          "Rate.2021": 2.11
+        }
+      ]
+    }
+  ]
+}
