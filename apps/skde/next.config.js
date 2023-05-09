@@ -1,9 +1,8 @@
-const withTM = require("next-transpile-modules")(["qmongjs"]);
-
-module.exports = withTM({
+module.exports = {
   images: {
     loader: "custom",
   },
   trailingSlash: true,
   reactStrictMode: true,
-});
+  transpilePackages: ["qmongjs"],
+};
