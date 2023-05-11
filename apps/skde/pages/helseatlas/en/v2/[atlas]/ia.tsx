@@ -13,7 +13,7 @@ const atlasDir = path.join(process.cwd(), "_posts/helseatlas/en/atlas");
 const AtlasPage: React.FC<IAProps> = ({ atlas }) => {
   return (
     <>
-      <AtlasLayout lang="nb">
+      <AtlasLayout lang="en">
         <iframe
           src={`/helseatlas/ia/en/${atlas}/index.html`}
           style={{
