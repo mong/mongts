@@ -1,7 +1,7 @@
 import classNames from "./Buttons.module.css";
 
 type MenuButtonProps = {
-  lang: "en" | "no";
+  lang: "en" | "nb" | "nn";
 };
 
 export const MenuButton: React.FC<MenuButtonProps> = ({ lang }) => {

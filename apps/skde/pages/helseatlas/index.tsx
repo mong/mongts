@@ -5,7 +5,7 @@ import fs from "fs";
 import FrontPage, { HomeProps } from "../../src/components/Atlas/FrontPage";
 
 const Home: React.FC<HomeProps> = ({ atlasInfo }) => {
-  return <FrontPage atlasInfo={atlasInfo} lang="no" />;
+  return <FrontPage atlasInfo={atlasInfo} lang="nb" />;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -39,7 +39,7 @@ export const getStaticProps: GetStaticProps = async () => {
           image,
           frontpagetext,
           date,
-          lang: lang === "en" ? lang : "no",
+          lang: lang,
         },
       };
     })

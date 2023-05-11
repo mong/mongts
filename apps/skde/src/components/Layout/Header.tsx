@@ -11,7 +11,7 @@ import { PopUp } from "../PopUp";
 
 type HeaderProps = {
   origin: string;
-  lang: "no" | "en";
+  lang: "nb" | "en" | "nn";
 };
 
 export const Header: React.FC<HeaderProps> = ({ origin, lang }) => {
@@ -36,7 +36,7 @@ export const Header: React.FC<HeaderProps> = ({ origin, lang }) => {
           <div className={classNames.lang}>
             <div
               className={`${classNames.no} ${
-                lang === "no" ? classNames.active : undefined
+                lang != "en" ? classNames.active : undefined
               }`}
               data-testid="buttonNo"
             >

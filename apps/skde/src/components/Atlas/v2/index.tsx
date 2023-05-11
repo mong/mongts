@@ -57,7 +57,7 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
       : "This is a draft!";
   return (
     <DataContext.Provider value={{ atlasData, mapData }}>
-      <AtlasLayout lang={obj.lang === "en" ? "en" : "no"}>
+      <AtlasLayout lang={obj.lang}>
         <main data-testid="v2atlas">
           <TopBanner mainTitle={obj.shortTitle} lang={obj.lang} ia={obj.ia} />
           <div className={`${styles.atlasContent}`}>

@@ -4,18 +4,20 @@ import { imgLoader } from "../../helpers/functions";
 import classNames from "./MainBanner.module.css";
 
 type MainBannerProps = {
-  lang: "no" | "en";
+  lang: "nb" | "en" | "nn";
 };
 
 export const MainBanner: React.FC<MainBannerProps> = ({ lang }) => {
   const text = {
     title: {
       en: "Equitable health services – regardless of where you live?",
-      no: "Likeverdige helsetjenester – uansett hvor du bor?",
+      nb: "Likeverdige helsetjenester – uansett hvor du bor?",
+      nn: "Likeverdige helsetjenester – uansett hvor du bor?",
     },
     ingress: {
       en: "In Norway, it is a goal for the entire population to have an equal supply of health services across geography and social groups. The health atlas is a tool for comparing the population's use of health services in different geographical areas, regardless of where the patients are treated.",
-      no: "Helseatlas sammenlikner befolkningens bruk av helsetjenester i forskjellige geografiske områder, uavhengig av hvilket sted pasientene behandles.",
+      nb: "Helseatlas sammenlikner befolkningens bruk av helsetjenester i forskjellige geografiske områder, uavhengig av hvilket sted pasientene behandles.",
+      nn: "Helseatlas sammenlikner befolkningens bruk av helsetjenester i forskjellige geografiske områder, uavhengig av hvilket sted pasientene behandles.",
     },
   };
   const imageSource = "/helseatlas/img/frontpage.jpg";

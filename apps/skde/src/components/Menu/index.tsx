@@ -3,7 +3,7 @@ import Link from "next/link";
 import classNames from "./Menu.module.css";
 
 type MenuProps = {
-  lang: "no" | "en";
+  lang: "nb" | "en" | "nn";
 };
 
 export const Menu: React.FC<MenuProps> = ({ lang }) => {

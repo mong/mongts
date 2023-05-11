@@ -18,6 +18,7 @@ export function FrontPageLayout({
   return (
     <>
       <Head>
+        <html lang="nb" />
         <title>{title}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />

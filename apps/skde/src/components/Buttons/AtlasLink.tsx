@@ -13,7 +13,7 @@ interface Props {
   wide?: boolean;
   date: Date;
   newlyUpdated?: boolean;
-  lang: "no" | "en";
+  lang: "nb" | "en" | "nn";
 }
 
 const formatTimeEng = timeFormat("%B %d %Y");

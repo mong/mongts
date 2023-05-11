@@ -3,11 +3,13 @@ import Head from "next/head";
 
 type LayoutHeadProps = {
   title: string;
+  lang?: "nb" | "nn" | "en";
 };
 
-export const LayoutHead: React.FC<LayoutHeadProps> = ({ title }) => {
+export const LayoutHead: React.FC<LayoutHeadProps> = ({ title, lang }) => {
   return (
     <Head>
+      <html lang={lang ?? "nb"} />
       <title>{title}</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />

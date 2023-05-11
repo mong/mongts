@@ -13,7 +13,7 @@ export interface HomeProps {
       date: Date;
     };
   }[];
-  lang: "no" | "en";
+  lang: "nb" | "en" | "nn";
 }
 
 const FrontPage: React.FC<HomeProps> = ({ atlasInfo, lang }) => {
@@ -25,7 +25,7 @@ const FrontPage: React.FC<HomeProps> = ({ atlasInfo, lang }) => {
     })
     .reverse();
 
-  const url = lang === "no" ? "helseatlas" : "helseatlas/en";
+  const url = lang === "en" ? "helseatlas/en" : "helseatlas";
   const Links = sortedAtlas.map((atlas, i) => (
     <AtlasLink
       key={atlas.article}

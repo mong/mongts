@@ -7,7 +7,7 @@ interface Props {
   children: React.ReactNode;
   title?: string;
   page?: string;
-  lang: "no" | "en";
+  lang: "nb" | "en" | "nn";
 }
 
 export function AtlasLayout({ children, title = "Helseatlas", lang }: Props) {
@@ -15,10 +15,11 @@ export function AtlasLayout({ children, title = "Helseatlas", lang }: Props) {
   useEffect(() => {
     setOrigin(window.location.origin);
   }, [setOrigin]);
+  console.log(lang);
 
   return (
     <>
-      <LayoutHead title={title} />
+      <LayoutHead title={title} lang={lang} />
       <Header origin={origin} lang={lang} />
       {children}
       <Footer />
