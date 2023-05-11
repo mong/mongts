@@ -12,7 +12,8 @@
       "yLabel": {
         "nn": ["Opptaksområde"],
         "en": ["Referral areas"]
-      }
+      },
+      "format": ".0f"
     },
     {
       "type": "barchart",
@@ -35,43 +36,32 @@
     {
       "type": "map",
       "data": "qwerty",
-      "x": "Snittrate",
+      "x": "samlaprosentdel",
+      "format": ".0f",
       "caption": {
-        "nn": ["Tal pasientar pr. 1 000 innbyggarar (18-115 år)"],
-        "en": ["Number of patients per 1,000 inhabitants (18-115 years)"]
+        "nn": "Tal pasientar pr. 1 000 innbyggarar (18-115 år)",
+        "en": "Number of patients per 1,000 inhabitants (18-115 years)"
       },
       "jenks": [
         {
-          "cluster": 1,
-          "max": 0.1,
-          "min": 0.1,
-          "lag_min": 0.1,
-          "grense": 0.1
+          "grense": 10
         },
         {
-          "cluster": 2,
-          "max": 0.2,
-          "min": 0.2,
-          "lag_min": 0.2,
-          "grense": 0.2
+          "grense": 20
         },
         {
-          "cluster": 3,
-          "max": 0.3,
-          "min": 0.3,
-          "lag_min": 0.3,
-          "grense": 0.3
+          "grense": 30
         }
       ]
     },
     {
       "type": "data",
       "label": "qwerty",
-      "description": ["Hoveddatasettet for gitt resultatboks"],
-      "national": ["Norge"],
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
       "data": [
         {
-          "bohf": "Ahus",
+          "bohf": "Akershus",
           "samla_rehabilitering": 1310,
           "samlaindekseoppholod": 4034,
           "samlaprosentdel": 32.474,
@@ -188,7 +178,7 @@
           "prostrening": 10.0311
         },
         {
-          "bohf": "St. Olavs",
+          "bohf": "St. Olav",
           "samla_rehabilitering": 844,
           "samlaindekseoppholod": 2250,
           "samlaprosentdel": 37.5111,
