@@ -10,7 +10,7 @@ import { render } from "@testing-library/react";
 import { MainBanner } from "..";
 
 test("Bokmål render", async () => {
-  const { container } = render(<MainBanner lang="no" />);
+  const { container } = render(<MainBanner lang="nb" />);
   expect(container).toMatchSnapshot();
 });
 

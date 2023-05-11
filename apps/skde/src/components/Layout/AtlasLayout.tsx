@@ -15,7 +15,6 @@ export function AtlasLayout({ children, title = "Helseatlas", lang }: Props) {
   useEffect(() => {
     setOrigin(window.location.origin);
   }, [setOrigin]);
-  console.log(lang);
 
   return (
     <>
