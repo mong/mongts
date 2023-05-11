@@ -2,6 +2,7 @@ import { AtlasLayout } from "../../Layout";
 import { MainBanner } from "../../MainBanner";
 import { AtlasLink } from "../../Buttons";
 import classNames from "./FrontPage.module.css";
+import { log } from "console";
 
 export interface HomeProps {
   atlasInfo: {
@@ -26,6 +27,7 @@ const FrontPage: React.FC<HomeProps> = ({ atlasInfo, lang }) => {
     .reverse();
 
   const url = lang === "no" ? "helseatlas" : "helseatlas/en";
+
   const Links = sortedAtlas.map((atlas, i) => (
     <AtlasLink
       key={atlas.article}
@@ -35,7 +37,6 @@ const FrontPage: React.FC<HomeProps> = ({ atlasInfo, lang }) => {
       linkText={atlas.frontMatter.frontpagetext}
       wide={i === 0}
       date={atlas.frontMatter.date}
-      newlyUpdated={i === 0}
       lang={lang}
     />
   ));
