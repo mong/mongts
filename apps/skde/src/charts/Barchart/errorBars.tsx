@@ -5,7 +5,7 @@ import { max, min } from "d3-array";
 type ErrorBarProps<Data, ErrorBar> = {
   data: Data;
   y: keyof Data;
-  errorBar: ErrorBar;
+  errorBars: ErrorBar;
   xScale: ScaleLinear<number, number, never>;
   yScale: ScaleBand<string>;
 };
@@ -14,10 +14,10 @@ export const ErrorBars = function <D, ErrorBar extends (string & keyof D)[]>({
   data,
   xScale,
   yScale,
-  errorBar,
+  errorBars,
   y,
 }: ErrorBarProps<D, ErrorBar>) {
-  const allBars = errorBar.map((v) => Number(data[v]));
+  const allBars = errorBars.map((v) => Number(data[v]));
 
   return (
     <>
@@ -30,7 +30,7 @@ export const ErrorBars = function <D, ErrorBar extends (string & keyof D)[]>({
           stroke={"black"}
           strokeWidth="2"
         />
-        {[...errorBar].map((d) => {
+        {[...errorBars].map((d) => {
           return (
             <line
               x1={xScale(Number(data[d]))}

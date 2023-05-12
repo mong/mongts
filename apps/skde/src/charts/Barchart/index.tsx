@@ -66,7 +66,7 @@ type BarchartProps<
   yOuterPadding?: number;
   annualVar?: AnnualVar;
   annualVarLabels?: { en: number[]; nn: number[]; nb: number[] };
-  errorBar?: ErrorBar;
+  errorBars?: ErrorBar;
   format: string;
   national: string;
 };
@@ -107,7 +107,7 @@ export const Barchart = <
   xLegend,
   annualVar,
   annualVarLabels,
-  errorBar,
+  errorBars,
   format,
   national,
 }: BarchartProps<Data, X, Y, AnnualVar, ErrorBar>) => {
@@ -316,14 +316,14 @@ export const Barchart = <
                 />
               );
             })}
-          {errorBar &&
+          {errorBars &&
             data.map((d) => {
               return (
                 <ErrorBars
                   data={d}
                   xScale={xScale}
                   yScale={yScale}
-                  errorBar={errorBar}
+                  errorBars={errorBars}
                   y={y}
                   key={`${d["bohf"]}_errorbar`}
                 />
