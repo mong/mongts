@@ -261,3 +261,27 @@ test("Render with other y (will look bad)", async () => {
   );
   expect(container).toMatchSnapshot();
 });
+
+const barchartinfo6 = {
+  type: "barchart",
+  data: "qwerty",
+  x: ["rateSnitt"],
+  y: "bohf",
+  yLabel: { en: "qwerty", nn: "Referral areas" },
+  xLabel: { en: "qwerty", nn: "Referral areas" },
+  errorBars: ["rate2019", "rate2020", "rate2021", "rateSnitt"],
+};
+
+test("Render with error bars", async () => {
+  mockRouter.push("");
+  const { container } = render(
+    <Barchart
+      {...barchartinfo6}
+      data={atlasData}
+      lang="nb"
+      national="Norge"
+      format=",.0f"
+    />
+  );
+  expect(container).toMatchSnapshot();
+});
