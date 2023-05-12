@@ -14,13 +14,15 @@ import {
 } from "../../helpers/functions/localFormater";
 
 import { AnnualVariation } from "./AnnualVariation";
+import { ErrorBars } from "./errorBars";
 import { mainBarColors, nationBarColors, selectedBarColors } from "../colors";
 
 export type BarchartData<
   Data,
   X extends (string & keyof Data)[],
   Y extends keyof Data,
-  AnnualVar extends (keyof Data)[]
+  AnnualVar extends (keyof Data)[],
+  ErrorBar extends (keyof Data)[]
 > = {
   [k in keyof Data & keyof X]: number;
 } & {
@@ -35,9 +37,10 @@ type BarchartProps<
   Data,
   X extends (string & keyof Data)[],
   Y extends string & keyof Data,
-  AnnualVar extends (string & keyof Data)[]
+  AnnualVar extends (string & keyof Data)[],
+  ErrorBar extends (keyof Data)[]
 > = {
-  data: BarchartData<Data, X, Y, AnnualVar>[];
+  data: BarchartData<Data, X, Y, AnnualVar, ErrorBar>[];
   lang: "en" | "nb" | "nn";
   x: X;
   y: Y;
@@ -61,6 +64,7 @@ type BarchartProps<
   yOuterPadding?: number;
   annualVar?: AnnualVar;
   annualVarLabels?: { en: number[]; nn: number[]; nb: number[] };
+  errorBar?: ErrorBar;
   format: string;
   national: string;
 };
@@ -69,7 +73,8 @@ export const Barchart = <
   Data,
   X extends (string & keyof Data)[],
   Y extends string & keyof Data,
-  AnnualVar extends (string & keyof Data)[]
+  AnnualVar extends (string & keyof Data)[],
+  ErrorBar extends (keyof Data)[]
 >({
   width = 600,
   height = 500,
@@ -100,9 +105,12 @@ export const Barchart = <
   xLegend,
   annualVar,
   annualVarLabels,
+  errorBar,
   format,
   national,
-}: BarchartProps<Data, X, Y, AnnualVar>) => {
+}: BarchartProps<Data, X, Y, AnnualVar, ErrorBar>) => {
+  console.log(errorBar);
+
   //missing
   //tooltip
   //animation
@@ -117,7 +125,10 @@ export const Barchart = <
     return secondVal - firstVal;
   });
 
-  const series = toBarchart<BarchartData<Data, X, Y, AnnualVar>, X>(sorted, x);
+  const series = toBarchart<BarchartData<Data, X, Y, AnnualVar, ErrorBar>, X>(
+    sorted,
+    x
+  );
 
   // Pick out bohf query from the url
   const router = useRouter();
@@ -301,6 +312,21 @@ export const Barchart = <
                   sizeScale={sizeScale}
                   y={y}
                   labels={varLabels}
+                  key={`${d["bohf"]}${i}`}
+                />
+              );
+            })}
+          {errorBar &&
+            data.map((d, i) => {
+              console.log(errorBar);
+
+              return (
+                <ErrorBars
+                  data={d}
+                  xScale={xScale}
+                  yScale={yScale}
+                  errorBar={errorBar}
+                  y={y}
                   key={`${d["bohf"]}${i}`}
                 />
               );
