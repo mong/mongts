@@ -317,9 +317,7 @@ export const Barchart = <
               );
             })}
           {errorBar &&
-            data.map((d, i) => {
-              console.log(errorBar);
-
+            data.map((d) => {
               return (
                 <ErrorBars
                   data={d}
@@ -327,7 +325,7 @@ export const Barchart = <
                   yScale={yScale}
                   errorBar={errorBar}
                   y={y}
-                  key={`${d["bohf"]}${i}`}
+                  key={`${d["bohf"]}_errorbar`}
                 />
               );
             })}

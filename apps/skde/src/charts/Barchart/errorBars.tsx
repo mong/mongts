@@ -32,16 +32,15 @@ export const ErrorBars = function <D, ErrorBar extends (string & keyof D)[]>({
         />
         {[...errorBar].map((d) => {
           return (
-            <>
-              <line
-                x1={xScale(Number(data[d]))}
-                x2={xScale(Number(data[d]))}
-                y1={yScale(data[y].toString()) + 3}
-                y2={yScale(data[y].toString()) - 3}
-                stroke={"black"}
-                strokeWidth="2"
-              />
-            </>
+            <line
+              x1={xScale(Number(data[d]))}
+              x2={xScale(Number(data[d]))}
+              y1={yScale(data[y].toString()) + 3}
+              y2={yScale(data[y].toString()) - 3}
+              stroke={"black"}
+              strokeWidth="2"
+              key={`${d}_errorbar`}
+            />
           );
         })}
       </Group>
