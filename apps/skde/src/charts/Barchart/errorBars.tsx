@@ -18,33 +18,25 @@ export const ErrorBars = function <D, ErrorBar extends (string & keyof D)[]>({
   errorBar,
   y,
 }: ErrorBarProps<D, ErrorBar>) {
-  const annualRates = errorBar.map((v) => Number(data[v]));
+  const allBars = errorBar.map((v) => Number(data[v]));
 
   return (
     <>
       <Group top={yScale.bandwidth() / 2}>
         <line
-          x1={xScale(min(annualRates))}
-          x2={xScale(max(annualRates))}
+          x1={xScale(min(allBars))}
+          x2={xScale(max(allBars))}
           y1={yScale(data[y].toString())}
           y2={yScale(data[y].toString())}
           stroke={"black"}
           strokeWidth="2"
         />
-        {[...errorBar].map((d, i) => {
+        {[...errorBar].map((d) => {
           return (
             <>
               <line
-                x1={xScale(min(annualRates))}
-                x2={xScale(min(annualRates))}
-                y1={yScale(data[y].toString()) + 3}
-                y2={yScale(data[y].toString()) - 3}
-                stroke={"black"}
-                strokeWidth="2"
-              />
-              <line
-                x1={xScale(max(annualRates))}
-                x2={xScale(max(annualRates))}
+                x1={xScale(Number(data[d]))}
+                x2={xScale(Number(data[d]))}
                 y1={yScale(data[y].toString()) + 3}
                 y2={yScale(data[y].toString()) - 3}
                 stroke={"black"}
