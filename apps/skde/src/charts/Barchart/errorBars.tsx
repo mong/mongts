@@ -7,7 +7,6 @@ type ErrorBarProps<Data, ErrorBar> = {
   y: keyof Data;
   errorBar: ErrorBar;
   xScale: ScaleLinear<number, number, never>;
-  sizeScale: ScaleLinear<number, number, never>;
   yScale: ScaleBand<string>;
 };
 
