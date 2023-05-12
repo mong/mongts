@@ -31,6 +31,8 @@ export type BarchartData<
   [k in keyof Data]?: number | string;
 } & {
   [k in keyof Data & keyof AnnualVar]?: number;
+} & {
+  [k in keyof Data & keyof ErrorBar]?: number;
 };
 
 type BarchartProps<
@@ -38,7 +40,7 @@ type BarchartProps<
   X extends (string & keyof Data)[],
   Y extends string & keyof Data,
   AnnualVar extends (string & keyof Data)[],
-  ErrorBar extends (keyof Data)[]
+  ErrorBar extends (string & keyof Data)[]
 > = {
   data: BarchartData<Data, X, Y, AnnualVar, ErrorBar>[];
   lang: "en" | "nb" | "nn";
@@ -74,7 +76,7 @@ export const Barchart = <
   X extends (string & keyof Data)[],
   Y extends string & keyof Data,
   AnnualVar extends (string & keyof Data)[],
-  ErrorBar extends (keyof Data)[]
+  ErrorBar extends (string & keyof Data)[]
 >({
   width = 600,
   height = 500,
@@ -109,8 +111,6 @@ export const Barchart = <
   format,
   national,
 }: BarchartProps<Data, X, Y, AnnualVar, ErrorBar>) => {
-  console.log(errorBar);
-
   //missing
   //tooltip
   //animation
