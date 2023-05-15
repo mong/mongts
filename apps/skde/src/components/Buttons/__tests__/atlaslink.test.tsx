@@ -20,7 +20,6 @@ test("Norsk render", async () => {
       wide={false}
       linkText="Lorem lipsum dolor 1"
       date={date1}
-      newlyUpdated={false}
     />
   );
   expect(container).toMatchSnapshot();
@@ -37,7 +36,6 @@ test("English render", async () => {
       wide={false}
       linkText="Lorem lipsum dolor 2"
       date={date1}
-      newlyUpdated={false}
     />
   );
   expect(container).toMatchSnapshot();
@@ -54,7 +52,6 @@ test("Wide is true", async () => {
       wide={true}
       linkText=""
       date={date1}
-      newlyUpdated={false}
     />
   );
   expect(container).toMatchSnapshot();
@@ -62,6 +59,7 @@ test("Wide is true", async () => {
 
 test("newlyUpdated is true", async () => {
   const date1 = new Date("October 13, 2014 11:13:00");
+  jest.useFakeTimers().setSystemTime(new Date("2014-10-10"));
   const { container } = render(
     <AtlasLink
       lang="no"
@@ -71,7 +69,6 @@ test("newlyUpdated is true", async () => {
       wide={false}
       linkText=""
       date={date1}
-      newlyUpdated={true}
     />
   );
   expect(container).toMatchSnapshot();

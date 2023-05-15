@@ -12,7 +12,6 @@ interface Props {
   linkText: string;
   wide?: boolean;
   date: Date;
-  newlyUpdated?: boolean;
   lang: "nb" | "en" | "nn";
 }
 
@@ -27,9 +26,12 @@ export const AtlasLink: React.FC<Props> = ({
   wide,
   linkText,
   date,
-  newlyUpdated,
   lang,
 }) => {
+  // Newly updated if there is less than 60 says since atlas was published
+  const newlyUpdated =
+    (new Date().getTime() - new Date(date).getTime()) / (1000 * 60 * 60 * 24) <
+    60;
   return (
     <div
       className={`${classNames.linkOuterWrapper} ${
