@@ -138,7 +138,17 @@ export const Barchart = <
   const annualValues = annualVar
     ? annualVar.flatMap((annual) => data.flatMap((dt) => parseInt(dt[annual])))
     : [];
-  const values = [...annualValues, ...series.flat().flat().flat()];
+  const errorBarValues = errorBars
+    ? errorBars.flatMap((errorBar) =>
+        data.flatMap((dt) => parseInt(dt[errorBar]))
+      )
+    : [];
+
+  const values = [
+    ...annualValues,
+    ...errorBarValues,
+    ...series.flat().flat().flat(),
+  ];
   const xMaxValue = xMax ? xMax : max(values) * 1.1;
 
   const colors = mainBarColors;
