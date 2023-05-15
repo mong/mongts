@@ -1,11 +1,12 @@
 import "../src/styles/globals.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { QueryParamProvider } from "use-query-params";
 import { NextAdapter } from "next-query-params";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
 import { Open_Sans } from "next/font/google";
+import { useRouter } from "next/router";
 
 const open_sans = Open_Sans({
   subsets: ["latin"],
@@ -13,6 +14,12 @@ const open_sans = Open_Sans({
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
+  const { pathname } = useRouter();
+  const lang =
+    pathname.includes("/en/") || pathname.endsWith("/en") ? "en" : "nb";
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   return (
     <main className={open_sans.className}>
