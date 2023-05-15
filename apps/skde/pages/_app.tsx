@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
   const { pathname } = useRouter();
   const lang =
-    pathname.includes("/en/") || pathname.endsWith("/en") ? "en" : "nb";
+    pathname.includes("/en/") || pathname.endsWith("/en") ? "en" : "no";
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
