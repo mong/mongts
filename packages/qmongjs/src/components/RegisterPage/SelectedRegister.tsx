@@ -12,13 +12,13 @@ import config, {
   mainQueryParamsConfig,
   maxYear,
   minYear,
-  defaultYear,
 } from "../../app_config";
 
 import {
   useResizeObserver,
   useUnitNamesQuery,
   useSelectionYearsQuery,
+  useIndicatorQuery,
 } from "../../helpers/hooks";
 import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
 import { UnitNameList } from "./unitnamelist";
@@ -106,8 +106,27 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   );
   const min = valid_years.length === 0 ? minYear : Math.min(...valid_years);
   const max = valid_years.length === 0 ? maxYear : Math.max(...valid_years);
+
+  const lastCompleteYear = () => {
+    // get the last year with complete data
+    const { data: indQryData } = useIndicatorQuery({
+      registerShortName: register,
+      context: queryContext.context,
+      type: queryContext.type,
+    });
+    const latestAffirmDates = indQryData?.map(
+      (d) => d.delivery_latest_affirm || new Date()
+    ) || [new Date()];
+    const lastCompleteYear =
+      new Date(
+        Math.max(...latestAffirmDates.map((d) => new Date(d).getTime())) +
+          48 * 60 * 60 * 1000
+      ).getFullYear() - 1;
+    return lastCompleteYear;
+  };
+
   const validated_selected_year = mathClamp(
-    selected_year || defaultYear,
+    selected_year || lastCompleteYear(),
     min,
     max
   );
