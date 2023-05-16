@@ -12,6 +12,7 @@ import config, {
   mainQueryParamsConfig,
   maxYear,
   minYear,
+  defaultYear,
 } from "../../app_config";
 
 import {
@@ -115,8 +116,8 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
       type: queryContext.type,
     });
     const latestAffirmDates = data?.map(
-      (d) => d.delivery_latest_affirm || new Date()
-    ) || [new Date()];
+      (d) => d.delivery_latest_affirm || new Date(defaultYear + 1, 0)
+    ) || [new Date(defaultYear + 1, 0)];
     const lastCompleteYear =
       new Date(
         Math.max(...latestAffirmDates.map((d) => new Date(d).getTime())) +
