@@ -109,17 +109,18 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
 
   const lastCompleteYear = () => {
     // get the last year with complete data
-    const { data: indQryData } = useIndicatorQuery({
+    const { data } = useIndicatorQuery({
       registerShortName: register,
       context: queryContext.context,
       type: queryContext.type,
     });
-    const latestAffirmDates = indQryData?.map(
+    const latestAffirmDates = data?.map(
       (d) => d.delivery_latest_affirm || new Date()
     ) || [new Date()];
     const lastCompleteYear =
       new Date(
         Math.max(...latestAffirmDates.map((d) => new Date(d).getTime())) +
+          // add a couple of days so 30. des 1980 will return 1980 instead of 1979.
           48 * 60 * 60 * 1000
       ).getFullYear() - 1;
     return lastCompleteYear;
