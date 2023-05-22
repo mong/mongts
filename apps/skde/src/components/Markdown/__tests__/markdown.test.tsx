@@ -28,6 +28,13 @@ test("Text with image", async () => {
   expect(container).toMatchSnapshot();
 });
 
+test("Text with image without alt-text", async () => {
+  const markdownText =
+    'Dette er en test\n\n# Hovedoverskrift\n\n![](https://picsum.photos/id/237/100/100.jpg "Menisk, utvikling i antall inngrep pr. 100 000 innbyggere i perioden 2013–2017, justert for kjønn og alder. Fordelt på opptaksområder og offentlig eller privat behandler.")\n\n';
+  const { container } = render(<Markdown>{markdownText}</Markdown>);
+  expect(container).toMatchSnapshot();
+});
+
 test("Text with image, language english", async () => {
   const markdownText =
     'Dette er en test\n\n# Hovedoverskrift\n\n![Menisk, utvikling i antall inngrep i perioden 2013–2017](https://picsum.photos/id/237/100/100.jpg "Menisk, utvikling i antall inngrep pr. 100 000 innbyggere i perioden 2013–2017, justert for kjønn og alder. Fordelt på opptaksområder og offentlig eller privat behandler.")\n\n';

@@ -163,6 +163,40 @@ exports[`Text with image 1`] = `
 </div>
 `;
 
+exports[`Text with image without alt-text 1`] = `
+<div>
+  <p>
+    Dette er en test
+  </p>
+  
+
+  <h1
+    id="hovedoverskrift"
+  >
+    Hovedoverskrift
+  </h1>
+  
+
+  <figure
+    style="width: 90%; display: flex; justify-content: center; align-items: center; flex-direction: column;"
+  >
+    <img
+      alt="Menisk, utvikling i antall inngrep pr. 100 000 innbyggere i perioden 2013–2017, justert for kjønn og alder. Fordelt på opptaksområder og offentlig eller privat behandler."
+      src="https://picsum.photos/id/237/100/100.jpg"
+      style="display: block; margin: auto;"
+      title=""
+    />
+    <figcaption>
+      <strong>
+        Figur:
+      </strong>
+       
+      Menisk, utvikling i antall inngrep pr. 100 000 innbyggere i perioden 2013–2017, justert for kjønn og alder. Fordelt på opptaksområder og offentlig eller privat behandler.
+    </figcaption>
+  </figure>
+</div>
+`;
+
 exports[`Text with image, language english 1`] = `
 <div>
   <p>
