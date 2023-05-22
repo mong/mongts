@@ -47,7 +47,7 @@ export const Markdown = ({ children, lang }: MarkdownProp) => {
         >
           <img
             src={src}
-            alt={alt}
+            alt={alt ? alt : title ? title : ""}
             title={alt}
             style={{
               display: "block",
