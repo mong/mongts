@@ -4,10 +4,10 @@
   "publisert": false,
   "lang": "nn",
   "date": "2023-05-03T08:41:38.301Z",
-  "ingress": "Om atlas\n\nbla bla\n\nDette er eit helseatlas\n\nDet er sol.",
+  "ingress": "Helseatlas hjarteinfarkt inneheld to hovuddelar; akuttbehandling av hjarteinfarkt med revaskularisering, og rehabilitering etter hjarteinfarkt. Analysane som gjeld revaskularisering av hjarteinfarkt er både ei oppdatering av resultat frå eldrehelseatlaset, og informasjon om revaskularisering for personar i alle aldersgrupper.\n\n\nDet er stor interesse knytt til informasjon om rehabilitering etter hjarteinfarkt. Frå tidlegare er det lite kunnskap om omfanget av rehabiliteringa, trass i at rehabilitering har ein klar sekundærforebyggande effekt på hjarteinfarkt - og med det stor påverknad på både enkeltpersonar og helsevesen.",
   "kapittel": [
     {
-      "overskrift": "Ev. undertekst til ingressen",
+      "overskrift": "Hovudfunn",
       "innhold": [
         {
           "type": "tekst",
@@ -17,12 +17,12 @@
         {
           "type": "faktaboks",
           "overskrift": "Om hjarteinfarkt",
-          "tekst": "Her skriv vi litt om hjarteinfarkt."
+          "tekst": "Kvart år blir i underkant av 12 000 nordmenn ramma av akutt hjarteinfarkt. I om lag 25 % av hjarteinfarkta er ein av koronararteriane heilt tett på grunn av brist i overflata på eit trongt parti i blodåra, og danning av trombe (blodpropp). I 75 % av hjarteinfarkta er det er mindre EKG-forandringar, og koronararterien er i dei fleste tilfelle ikkje heilt tett. Hjarteinfarkt er ein alvorleg tilstand som utviklar seg raskt. Det er derfor viktig å komme tidleg i gang med behandling.\n\nHovudmål for akuttbehandlinga er å avgrense skaden på hjartemuskelen ved å opne opp blodkar; revaskularisering. Avhengig av avstand til sjukehus og type infarkt, er det tilrådd at pasientane får blodpropp-oppløysande behandling (trombolyse), perkutan koronar intervensjon (PCI, utblokking) eller bypassoperasjon. \n\nDet er ni sjukehus i Noreg som gir akuttbehandling med mekanisk utblokking ved hjarteinfarkt. Pasientar kan bli direkte akuttinnlagt i eit slikt «invasivt sjukehus», eller bli overflytta frå andre sjukehus [(Årsrapport 2021 Norsk hjerteinfarktregister).](https://www.kvalitetsregistre.no/register/hjerte-og-karsykdommer/norsk-hjerteinfarktregister)"
         }
       ]
     },
     {
-      "overskrift": "Innlegging ",
+      "overskrift": "Hjarteinfarktinnlegging ",
       "innhold": [
         {
           "type": "tekst",
@@ -30,13 +30,13 @@
         },
         {
           "type": "resultatboks",
-          "publisert": "2023-05-03T08:30:43.017Z",
-          "oppdatert": "2023-05-03T08:30:43.056Z",
-          "data": "l1_hjarteinfarkt_inn_pas.json",
-          "overskrift": "Hjarteinfarte innleging",
-          "ingress": "pasientar",
-          "utvalg": "infarkt",
-          "resultat": "infasrkt"
+          "publisert": "2023-05-10T07:50:57.499Z",
+          "oppdatert": "2023-05-10T07:50:57.544Z",
+          "overskrift": "hjarteinfarkt",
+          "ingress": "hjarteinfarkt innlegging",
+          "utvalg": "Utvalet består av pasientar innlagt i sjukehus med akutt hjarteinfarkt (ICD-10 kode I21 akutt hjarteinfarkt, eller I22 påfølgande hjarteinfarkt) som hovud- eller bitilstand, i perioden 2018-2022. \n\nAlder: 18 år eller meir.",
+          "resultat": "hjarteinfarkt.\n\nSkrive om pasientraten, men også ta med noko om tal innleggingar.",
+          "data": "innlagtepasient1905.json"
         }
       ]
     },
@@ -47,6 +47,11 @@
           "type": "tekst",
           "beskrivelse": "Houdfunn",
           "tekst": "* hovudfunn 1"
+        },
+        {
+          "type": "faktaboks",
+          "overskrift": "Revaskularisering",
+          "tekst": "kort tekst - flytte til resultatboks - utval:\n\n\n\nUtvalet består av pasientar med hjarteinfarkt og med ein av følgande prosedyrekodar: FNA\\*, FNB\\*, FNC\\*, FND\\*, FNE\\*, FNG\\*, FNP02B, FNP12B, FNQ05B eller FNQ12B, i perioden 2018-2022."
         }
       ]
     },
@@ -55,12 +60,23 @@
       "innhold": [
         {
           "type": "tekst",
-          "tekst": "* hovudfunn 1\n* hovudfunn 1"
+          "tekst": "* hovudfunn 1\n* hovudfunn 1",
+          "beskrivelse": "Rehabilitering"
         },
         {
           "type": "faktaboks",
           "overskrift": "Om rehabilitering",
-          "tekst": "rehabilitering..."
+          "tekst": "Rehabilitering eller sekundærforebyggande behandling er tilrådd for alle pasientar etter hjarteinfarkt. Rehabiliteringa er kostnadseffektiv, betrar livskvalitet, reduserer risiko for tilbakefall, død, og reinnlegging. Forskinga på området er av høg kvalitet og med sterk grad på anbefalingane.\n\nHjarterehabilitering etter hjarteinfarkt kan delast inn i tre fasar. Første fase skjer medan pasienten er på sjukehuset. Fase to skjer hovudsakleg gjennom eit poliklinisk tilbod etter utskriving frå sjukehus, og fase tre handlar om ein livslang vedlikehaldsfase med justering av levevanar og fysisk aktivitet. I helseatlas hjarteinfarkt har vi sett på geografisk variasjon i fase to av hjarterehabiliteringa.\n\nRehabiliteringa er samansette program, skal bli utført under rettleiing av personell med kompetanse på området, og med mål om å oppnå symptom-meistring og redusert risiko for framtidige tilfelle av infarkt. \n\nHelsetenestene kan ha noko ulikt innhald og blir organisert på ulike måtar. Vi har derfor supplert analysar om rehabilitering etter hjarteinfarkt med deltaking på Lærings- og meistringskurs (LMS-kurs) og trening i spesialisthelsetenesta etter sjukehusopphald med akutt hjarteinfarkt. Også trening hos fysioterapeut med kommunalt driftstilskot /som har sendt rekning til Helfo er inkludert i atlaset. Aktivitet ved frisklivssentralane inngår ikkje, fordi det  ikkje finst informasjon om slik aktivitet i KPR (sjå eigen omtale av frisklivssentralane)."
+        },
+        {
+          "type": "resultatboks",
+          "publisert": "2023-05-15T13:26:12.822Z",
+          "oppdatert": "2023-05-15T13:26:12.874Z",
+          "overskrift": "aarsprikke",
+          "ingress": "aarsprikke",
+          "utvalg": "I analyse av rehabilitering etter hjarteinfarkt har vi brukt forløpsanalyse, og sett på rehabilitering eit halvt år etter eit indeksopphald/startopphald.\n\n\n**Indeksopphald/startopphald** \n\ner opphald der pasienten harI21 (akutt hjarteinfarkt) som hovudtilstand ved innleggelse.  Dersom pasienten er flytta mellom ulike sjukehus, og det er mindre enn 8 timar mellom opphalda, er dei slått saman.\n\nOpphald med ukjent opptaksområde på pasient er ekskludert. Dersom indeksopphaldet går over fleire år, er det utdato for indeksopphaldet som gjeld.\n\nVi har brukt ein snevrare definisjon av hjarteinfarkt i analysane knytt til rehabilitering, enn elles. Ved å bruke ein streng definisjon er vi meir sikre på at vi inkluderer rett pasientgruppe, og vi såg at det meste av rehabiliteringa var knytt til indeksopphald med I21 som hovudtilstand. \n\n**Rehabiliteringsepisode** \n*Alle episodar som har minst ein hoved- eller bitilstand*\nZ50.0 Rehabilitering etter hjertesykdom\nZ50.80 Kompleks rehabilitering\nZ50.89 Enkel rehabilitering\nZ50.9 Behandling som omfatter bruk av uspesifisert rehabiliteringstiltak\n\n*Alle episodar med følgande prosedyrekodar* \nWPCK00 Lærings- og mestringsaktivitet vedrørende aktuelle tilstand\nOBAB00 Veiledet og instruert fysisk trening knyttet til motorikk og/eller kondisjon\n\nEpisodar 1 – 182 dagar etter utskriving av indeksopphald i 2018-2021 inngår i analysane.",
+          "resultat": "aarsprikke\n\n\n\nta noko med om at trening er ein viktig del av rehabiliteringa G.O.Dibben 2023",
+          "data": "rehab_180523new.json"
         }
       ]
     },
@@ -69,7 +85,7 @@
       "innhold": [
         {
           "type": "faktaboks",
-          "overskrift": "Trening hos kommunal fysioterapeut",
+          "overskrift": "Trening hos fysioterapeut",
           "tekst": "trening"
         },
         {
@@ -79,12 +95,9 @@
         {
           "type": "faktaboks",
           "overskrift": "Frisklivssentralar",
-          "tekst": "om sentralane"
+          "tekst": "Frisklivssentralar finst i 60 prosent av kommunane i Noreg ([Frisklivssentraler 2019](https://www.ssb.no/helse/artikler-og-publikasjoner/_attachment/441034?_ts=17674b5b0a8)). Deltaking i frisklivssentralar skal, på lik linje med anna helsehjelp, journalførast. Fagpersonar i spesialisthelsetenesta vi har vore i kontakt med i utvikling av atlaset, fortel at dei tilrår pasientar med hjarteinfarkt oppfølging ved frisklivssentralane. Det har likevel ikkje vore mogleg å få oversikt over pasientane sin bruk av tenestene, fordi det per i dag ikkje finst kodeverk som er tilpassa registrering av aktiviteten. Vi har derfor ikkje relevante aktivitetsdata frå Kommunalt pasient- og brukarregister (KPR). \n\n\nEin frisklivssentral er ein tilrådd, men ikkje-lovpålagt måte å organisere den førebyggande helsetenesta på i kommunane ([Veileder for kommunale frisklivssentraler](https://www.helsedirektoratet.no/tema/frisklivssentraler)). Den skal tilby kunnskapsbasert og effektiv hjelp til å endre levevanar og meistre sjukdom og helseplager. Målgruppa er personar med sjukdom eller auka risiko for sjukdom, som treng hjelp til å endre levevaner og meistre sjukdom."
         }
       ]
-    },
-    {
-      "overskrift": "Ressursgruppe"
     },
     {
       "overskrift": "Om atlaset",
@@ -92,12 +105,26 @@
         {
           "type": "faktaboks",
           "overskrift": "Datagrunnlaget",
-          "tekst": "Data frå..."
+          "tekst": "Helseatlas hjarteinfarkt bygger på opplysingar utlevert frå Helsedirektoratet ved Norsk pasientregister (NPR) og Kommunalt pasient- og brukerregister (KPR) for perioden 2018 til 2022. \n\nFrå KPR er det henta informasjon om trening hos fysioterapeut for pasienter etter akutt hjarteinfarkt. Andre analysar bygger på informasjon frå NPR.\n\nTal innbyggarar er henta frå SSB.\n\n**Fråskriving**\n\n\nHelse Førde er aleine ansvarleg for tolking og presentasjon av data som er utleverte. NPR og KPR har ikkje ansvar for analysar eller tolkingar som er basert på data dei har levert ut."
         },
         {
           "type": "faktaboks",
           "overskrift": "Inndeling i opptaksområde",
           "tekst": "Tabell med info om opptaksområda, og ev. tal innbyggarar per område"
+        },
+        {
+          "type": "faktaboks",
+          "overskrift": "Ressursgruppe",
+          "tekst": "Helseatlas hjarteinfarkt er utarbeida av Helse Førde i samarbeid med ei ressursgruppe beståande av:\n\n* Torstein Hole, dr. med., medlem av fagleg rådgjevingsgruppe i Norsk hjerteinfarktregister, Helse Møre og Romsdal, NTNU\n* Charlotte B. Ingul, dr. med. professor NTNU, Nord Universitet \n* Tove Johansen, analytiker, SKDE\n* John Munkhaugen, dr. med., Drammen sjukehus, UIO \n* Tone Merete Norekvål, leiar forskingsgruppa PROCARD, Haukeland universitetssykehus, professor HVL og UiB\n* Eva Stensland, Fag- og forskningssjef/seksjonsleder Forskningsseksjonen, SKDE\n* Barthold Vonen, direktør, SKDE\n  Gjennom prosjektperioden har vi vore i kontakt med fagmiljø og -personar i ulike delar av landet. Dette for å sikre oss at analyseresultata kan gi eit best mogleg bilde av praksis.\n  Takk for bidrag med å gjere atlaset praksisnært og relevant.\n*"
+        }
+      ]
+    },
+    {
+      "overskrift": "Har du spørsmål?",
+      "innhold": [
+        {
+          "type": "tekst",
+          "tekst": "Ved spørsmål eller kommentarar, ta kontakt med helseatlastenesta i Helse Førde HF gjennom \n\n[post@helse-forde.no](post@helse-forde.no)"
         }
       ]
     }

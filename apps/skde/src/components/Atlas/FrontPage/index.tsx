@@ -35,7 +35,6 @@ const FrontPage: React.FC<HomeProps> = ({ atlasInfo, lang }) => {
       linkText={atlas.frontMatter.frontpagetext}
       wide={i === 0}
       date={atlas.frontMatter.date}
-      newlyUpdated={i === 0}
       lang={lang}
     />
   ));
