@@ -14,13 +14,15 @@ import {
 } from "../../helpers/functions/localFormater";
 
 import { AnnualVariation } from "./AnnualVariation";
+import { ErrorBars } from "./errorBars";
 import { mainBarColors, nationBarColors, selectedBarColors } from "../colors";
 
 export type BarchartData<
   Data,
   X extends (string & keyof Data)[],
   Y extends keyof Data,
-  AnnualVar extends (keyof Data)[]
+  AnnualVar extends (keyof Data)[],
+  ErrorBar extends (keyof Data)[]
 > = {
   [k in keyof Data & keyof X]: number;
 } & {
@@ -29,15 +31,18 @@ export type BarchartData<
   [k in keyof Data]?: number | string;
 } & {
   [k in keyof Data & keyof AnnualVar]?: number;
+} & {
+  [k in keyof Data & keyof ErrorBar]?: number;
 };
 
 type BarchartProps<
   Data,
   X extends (string & keyof Data)[],
   Y extends string & keyof Data,
-  AnnualVar extends (string & keyof Data)[]
+  AnnualVar extends (string & keyof Data)[],
+  ErrorBar extends (string & keyof Data)[]
 > = {
-  data: BarchartData<Data, X, Y, AnnualVar>[];
+  data: BarchartData<Data, X, Y, AnnualVar, ErrorBar>[];
   lang: "en" | "nb" | "nn";
   x: X;
   y: Y;
@@ -61,6 +66,7 @@ type BarchartProps<
   yOuterPadding?: number;
   annualVar?: AnnualVar;
   annualVarLabels?: { en: number[]; nn: number[]; nb: number[] };
+  errorBars?: ErrorBar;
   format: string;
   national: string;
 };
@@ -69,7 +75,8 @@ export const Barchart = <
   Data,
   X extends (string & keyof Data)[],
   Y extends string & keyof Data,
-  AnnualVar extends (string & keyof Data)[]
+  AnnualVar extends (string & keyof Data)[],
+  ErrorBar extends (string & keyof Data)[]
 >({
   width = 600,
   height = 500,
@@ -100,9 +107,10 @@ export const Barchart = <
   xLegend,
   annualVar,
   annualVarLabels,
+  errorBars,
   format,
   national,
-}: BarchartProps<Data, X, Y, AnnualVar>) => {
+}: BarchartProps<Data, X, Y, AnnualVar, ErrorBar>) => {
   //missing
   //tooltip
   //animation
@@ -117,7 +125,10 @@ export const Barchart = <
     return secondVal - firstVal;
   });
 
-  const series = toBarchart<BarchartData<Data, X, Y, AnnualVar>, X>(sorted, x);
+  const series = toBarchart<BarchartData<Data, X, Y, AnnualVar, ErrorBar>, X>(
+    sorted,
+    x
+  );
 
   // Pick out bohf query from the url
   const router = useRouter();
@@ -127,7 +138,17 @@ export const Barchart = <
   const annualValues = annualVar
     ? annualVar.flatMap((annual) => data.flatMap((dt) => parseInt(dt[annual])))
     : [];
-  const values = [...annualValues, ...series.flat().flat().flat()];
+  const errorBarValues = errorBars
+    ? errorBars.flatMap((errorBar) =>
+        data.flatMap((dt) => parseInt(dt[errorBar]))
+      )
+    : [];
+
+  const values = [
+    ...annualValues,
+    ...errorBarValues,
+    ...series.flat().flat().flat(),
+  ];
   const xMaxValue = xMax ? xMax : max(values) * 1.1;
 
   const colors = mainBarColors;
@@ -302,6 +323,19 @@ export const Barchart = <
                   y={y}
                   labels={varLabels}
                   key={`${d["bohf"]}${i}`}
+                />
+              );
+            })}
+          {errorBars &&
+            data.map((d) => {
+              return (
+                <ErrorBars
+                  data={d}
+                  xScale={xScale}
+                  yScale={yScale}
+                  errorBars={errorBars}
+                  y={y}
+                  key={`${d["bohf"]}_errorbar`}
                 />
               );
             })}
