@@ -76,7 +76,7 @@
           "ingress": "aarsprikke",
           "utvalg": "I analyse av rehabilitering etter hjarteinfarkt har vi brukt forløpsanalyse, og sett på rehabilitering eit halvt år etter eit indeksopphald/startopphald.\n\n\n**Indeksopphald/startopphald** \n\ner opphald der pasienten harI21 (akutt hjarteinfarkt) som hovudtilstand ved innleggelse.  Dersom pasienten er flytta mellom ulike sjukehus, og det er mindre enn 8 timar mellom opphalda, er dei slått saman.\n\nOpphald med ukjent opptaksområde på pasient er ekskludert. Dersom indeksopphaldet går over fleire år, er det utdato for indeksopphaldet som gjeld.\n\nVi har brukt ein snevrare definisjon av hjarteinfarkt i analysane knytt til rehabilitering, enn elles. Ved å bruke ein streng definisjon er vi meir sikre på at vi inkluderer rett pasientgruppe, og vi såg at det meste av rehabiliteringa var knytt til indeksopphald med I21 som hovudtilstand. \n\n**Rehabiliteringsepisode** \n*Alle episodar som har minst ein hoved- eller bitilstand*\nZ50.0 Rehabilitering etter hjertesykdom\nZ50.80 Kompleks rehabilitering\nZ50.89 Enkel rehabilitering\nZ50.9 Behandling som omfatter bruk av uspesifisert rehabiliteringstiltak\n\n*Alle episodar med følgande prosedyrekodar* \nWPCK00 Lærings- og mestringsaktivitet vedrørende aktuelle tilstand\nOBAB00 Veiledet og instruert fysisk trening knyttet til motorikk og/eller kondisjon\n\nEpisodar 1 – 182 dagar etter utskriving av indeksopphald i 2018-2021 inngår i analysane.",
           "resultat": "aarsprikke\n\n\n\nta noko med om at trening er ein viktig del av rehabiliteringa G.O.Dibben 2023",
-          "data": "rehab_180523new.json"
+          "data": "rehab_220523correct.json"
         }
       ]
     },
@@ -110,7 +110,7 @@
         {
           "type": "faktaboks",
           "overskrift": "Inndeling i opptaksområde",
-          "tekst": "Tabell med info om opptaksområda, og ev. tal innbyggarar per område"
+          "tekst": "Dei fire regionale helseføretaka har eit lovpålagt sørge-for-ansvar for å tilby innbyggarane tilbod i spesialisthelsetenesta, og tilbodet skal vere likeverdig uansett kvar ein bur (Lov om spesialisthelsetenesta).  I vurdering av geografisk variasjon av innbyggarane sin bruk av helsetenester, er landet derfor inndelt etter helseføretaka sine opptaksområde. \n\nAnalysane i helseatlas blir gjennomført ut frå kva opptaksområde pasienten bur i, og ikkje ut frå kvar han eller ho fekk behandling. Innbyggarane i dei ulike opptaksområda har ulik alders- og kjønnssamansetjing. Ratane i atlaset er derfor alders- og kjønnsjusterte for å kunne samanlikne meir homogene grupper sin bruk av helsetenester, enn utan slik justering. Dersom informasjon om kva kommune pasienten budde i mangla i datasetta, blei pasienten ekskludert frå analysane. Gjennom analysane kan dei regionale helseføretaka danne seg eit bilde av korleis sørge-for-ansvaret blir innfridd.\n\nInformasjon om inndeling i opptaksområde, tal innbyggarar og median alder på innbyggarane (2020) som er brukt i dette atlaset finn de her:\n\nTabell med info om opptaksområda, og ev. tal innbyggarar per område"
         },
         {
           "type": "faktaboks",
@@ -124,7 +124,7 @@
       "innhold": [
         {
           "type": "tekst",
-          "tekst": "Ved spørsmål eller kommentarar, ta kontakt med helseatlastenesta i Helse Førde HF gjennom \n\n[post@helse-forde.no](post@helse-forde.no)"
+          "tekst": "Ved spørsmål eller kommentarar, ta kontakt med helseatlastenesta i Helse Førde HF gjennom post@helse-forde.no"
         }
       ]
     }
