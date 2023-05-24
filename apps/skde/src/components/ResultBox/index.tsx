@@ -25,6 +25,7 @@ type ResultBoxProps = {
   lang: "nb" | "en" | "nn";
   published: Date;
   updated: Date;
+  map?: string;
 };
 
 export const ResultBox: React.FC<ResultBoxProps> = ({
@@ -37,6 +38,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
   carousel,
   published,
   updated,
+  map,
 }) => {
   /* Define dates as days from 1. jan. 1970 */
   const minute = 1000 * 60;
@@ -52,7 +54,15 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
   const atlasData: { atlasData: any; mapData: MapData } =
     React.useContext(DataContext);
 
-  const mapData = atlasData.mapData;
+  const fetchMap = async (newmap) => {
+    const mapDataPath = `/helseatlas/data/kart/${newmap}`;
+    const response = await fetch(mapDataPath);
+    const json = await response.json();
+    return json;
+  };
+
+  const mapData = map ? fetchMap(map) : atlasData.mapData;
+
   const boxData: any =
     atlasData.atlasData[carousel] !== undefined
       ? Object.values(JSON.parse(atlasData.atlasData[carousel]))[0]
