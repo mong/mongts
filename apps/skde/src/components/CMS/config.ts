@@ -173,6 +173,15 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
                     hint: "Datafil, i json-format, som inneholder definisjon av karusell",
                   },
                   {
+                    label: "Kartgrunnlag",
+                    name: "kart",
+                    widget: "file",
+                    media_folder: "/apps/skde/public/helseatlas/data/kart",
+                    public_folder: "",
+                    hint: "Kartgrunnlag i geojson-format",
+                    default: "kronikere.geojson",
+                  },
+                  {
                     label: "Utvalgsbeskrivelse",
                     name: "utvalg",
                     widget: "markdown",

@@ -16,7 +16,7 @@ import { atlasData } from "../../../../test/test_data/data";
 
 jest.mock("next/router", () => require("next-router-mock"));
 
-const mapDataPath = "public/helseatlas/data/kronikere.geojson";
+const mapDataPath = "public/helseatlas/data/kart/kronikere.geojson";
 const mapData = JSON.parse(fs.readFileSync(mapDataPath, "utf-8"));
 
 test("Click on HF", async () => {
