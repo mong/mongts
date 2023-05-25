@@ -180,6 +180,7 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
                     public_folder: "",
                     hint: "Kartgrunnlag i geojson-format",
                     default: "kronikere.geojson",
+                    required: false,
                   },
                   {
                     label: "Utvalgsbeskrivelse",
