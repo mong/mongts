@@ -26,7 +26,7 @@ type ResultBoxProps = {
   lang: "nb" | "en" | "nn";
   published: Date;
   updated: Date;
-  map?: string;
+  map: string | undefined;
 };
 
 export const ResultBox: React.FC<ResultBoxProps> = ({
