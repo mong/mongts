@@ -105,7 +105,7 @@
           "overskrift": "Prosentdel hjarteinfarkt opphald som fekk rehabilitering",
           "ingress": "Prosentdel rehabilitering",
           "utvalg": "I analyse av rehabilitering etter hjarteinfarkt har vi brukt forløpsanalyse, og sett på rehabilitering eit halvt år etter eit indeksopphald/startopphald.\n\n**Indeksopphald/startopphald** \n\ner opphald der pasienten harI21 (akutt hjarteinfarkt) som hovudtilstand ved innleggelse.  Dersom pasienten er flytta mellom ulike sjukehus, og det er mindre enn 8 timar mellom opphalda, er dei slått saman.\n\nOpphald med ukjent opptaksområde på pasient er ekskludert. Dersom indeksopphaldet går over fleire år, er det utdato for indeksopphaldet som gjeld.\n\nVi har brukt ein snevrare definisjon av hjarteinfarkt i analysane knytt til rehabilitering, enn elles. Ved å bruke ein streng definisjon er vi meir sikre på at vi inkluderer rett pasientgruppe, og vi såg at det meste av rehabiliteringa var knytt til indeksopphald med I21 som hovudtilstand. \n\n**Rehabiliteringsepisode** \n*Alle episodar som har minst ein hoved- eller bitilstand*\nZ50.0 Rehabilitering etter hjertesykdom\nZ50.80 Kompleks rehabilitering\nZ50.89 Enkel rehabilitering\nZ50.9 Behandling som omfatter bruk av uspesifisert rehabiliteringstiltak\n\n*Alle episodar med følgande prosedyrekodar* \nWPCK00 Lærings- og mestringsaktivitet vedrørende aktuelle tilstand\nOBAB00 Veiledet og instruert fysisk trening knyttet til motorikk og/eller kondisjon\n\nEpisodar 1 – 182 dagar etter utskriving av indeksopphald i 2018-2021 inngår i analysane.\n\nAlder: 18 år eller meir",
-          "resultat": "Prosentdel med rehabilitering\n\nta noko med om at trening er ein viktig del av rehabiliteringa G.O.Dibben 2023",
+          "resultat": "![]()\n\nProsentdel med rehabilitering\n\nta noko med om at trening er ein viktig del av rehabiliteringa G.O.Dibben 2023",
           "data": "rehab_correct2305.json"
         },
         {
@@ -115,24 +115,8 @@
           "overskrift": "Rehabiliteringsrate",
           "ingress": "Rehabiliterings rate per innbyggarar",
           "utvalg": "Rehabilitering etter hjarteinfarkt per innbyggarar",
-          "resultat": "Rate",
+          "resultat": "Rate\n\n![prosentdel ](/helseatlas/img/no/hjarteinfarkt/rehabiliteringtype.png \"Prosentviss fordeling av type rehabilitering \")\n\n![dagar til rehab](/helseatlas/img/no/hjarteinfarkt/dagar_til_første_rehabepisode1.png \"Dagar til første rehabilitering\")",
           "data": "rehabiliteringrate24.json"
-        },
-        {
-          "type": "tekst",
-          "tekst": "type av rehabilitering\n\n![tre type rehabilitering](/helseatlas/img/no/hjarteinfarkt/rehabiliteringtype.png \"Type av rehabilitering\")"
-        },
-        {
-          "type": "tekst",
-          "tekst": "Rehabilitering med Z kodar , type av koder\n\n![Z rehabilitering](/helseatlas/img/no/hjarteinfarkt/zrehabiliteringstype.png \"Type av Z rehabilitering\")\n\nZ50.0,  Z50.80, Z50.89,  og Z50.9"
-        },
-        {
-          "type": "tekst",
-          "tekst": "Rate ,Z rehabilitering\n\n![Rehabilitering rate (Z kodar basert) per innbyggarar](/helseatlas/img/no/hjarteinfarkt/zrehabilitergsrate.png \"Z rehabilitering rate\")"
-        },
-        {
-          "type": "tekst",
-          "tekst": "Dagar til rehabilitering oppstart\n\n![Dager til første rehabilitering episodar](/helseatlas/img/no/hjarteinfarkt/dagar_til_første_rehabepisode1.png \"Dagar til rehabilitering\")"
         }
       ]
     },
@@ -181,6 +165,15 @@
         {
           "type": "tekst",
           "tekst": "Ved spørsmål eller kommentarar, ta kontakt med helseatlastenesta i Helse Førde HF gjennom post@helse-forde.no"
+        }
+      ]
+    },
+    {
+      "overskrift": "Z rehabilitering",
+      "innhold": [
+        {
+          "type": "tekst",
+          "tekst": "\n\n![Rate av Z rehabilitering](/helseatlas/img/no/hjarteinfarkt/zrehabilitergsrate.png \"Rehabilitering Z kodar\")\n\n![Z50.0, Z50.80, Z50.89, Z50.9](/helseatlas/img/no/hjarteinfarkt/zrehabiliteringstype.png \"Prosentviss fordeling av Z kodar\")"
         }
       ]
     }
