@@ -14,7 +14,7 @@ import { Markdown } from "../Markdown";
 import { DataTable } from "../../charts/Table";
 import { Map, MapData } from "../../charts/Map";
 import { timeFormat } from "d3-time-format";
-import { useFetchMapQuery } from "../../helpers/hooks";
+import { FetchMap } from "../../helpers/hooks";
 
 type ResultBoxProps = {
   title: string;
@@ -55,8 +55,8 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
   const atlasData: { atlasData: any; mapData: MapData } =
     React.useContext(DataContext);
 
-  const { data: indQryData } = useFetchMapQuery(`/helseatlas/kart/${map}`);
-  const mapData = map ? indQryData : atlasData.mapData;
+  const { data: anotherMap } = FetchMap(`/helseatlas/kart/${map}`);
+  const mapData = map ? anotherMap : atlasData.mapData;
 
   const boxData: any =
     atlasData.atlasData[carousel] !== undefined
