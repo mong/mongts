@@ -5,7 +5,7 @@
       "dependsOn": ["^build"]
     },
     "export": {
-      "dependsOn": ["build"]
+      "dependsOn": ["^build"]
     },
     "check-format": {},
     "check-types": {},

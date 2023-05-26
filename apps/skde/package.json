@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next export",
+    "export": "next build",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
     "format": "yarn prettier --write",
     "test": "yarn run test:base --coverage",
