@@ -170,8 +170,11 @@ const LineChart = (props: Props) => {
       .style("font-size", `${8 + innerHeight * 0.02}px`)
       .attr("fill", theme.y_axis_tick_font_fill);
 
-    // X-Axis
-    let years = Array.from(new Set(data.map((d) => d.year)));
+    // X-Axis, every year from min to max
+    let years = Array.from(Array(maxYear - minYear + 1).keys()).map(
+      (i) => i + minYear
+    );
+
     // Filter out every second year if many years. Always keep last year.
     if (Math.max(...years) - Math.min(...years) > 7) {
       years =
