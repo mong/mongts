@@ -12,7 +12,7 @@ import classNames from "./ResultBox.module.css";
 import { DataContext } from "../Context";
 import { Markdown } from "../Markdown";
 import { DataTable } from "../../charts/Table";
-import { Map, MapData } from "../../charts/Map";
+import { Map } from "../../charts/Map";
 import { timeFormat } from "d3-time-format";
 import { FetchMap } from "../../helpers/hooks";
 
@@ -52,11 +52,10 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
   const [expandedResultBox, setExpandedResultBox] =
     React.useState<boolean>(false);
 
-  const atlasData: { atlasData: any; mapData: MapData } =
-    React.useContext(DataContext);
+  const atlasData: { atlasData: any } = React.useContext(DataContext);
 
-  const { data: anotherMap } = FetchMap(`/helseatlas/kart/${map}`);
-  const mapData = map ? anotherMap : atlasData.mapData;
+  const mapFile = map ? map : "kronikere.geojson";
+  const { data: mapData } = FetchMap(`/helseatlas/kart/${mapFile}`);
 
   const boxData: any =
     atlasData.atlasData[carousel] !== undefined

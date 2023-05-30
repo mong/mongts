@@ -6,10 +6,8 @@ import AtlasPage, {
   AtlasPageProps,
 } from "../../../../../src/components/Atlas/v2";
 
-const Page: React.FC<AtlasPageProps> = ({ content, atlasData, mapData }) => {
-  return (
-    <AtlasPage content={content} atlasData={atlasData} mapData={mapData} />
-  );
+const Page: React.FC<AtlasPageProps> = ({ content, atlasData }) => {
+  return <AtlasPage content={content} atlasData={atlasData} />;
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -39,15 +37,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
           })
       )
     : [];
-  const mapDataPath = "public/helseatlas/kart/kronikere.geojson";
-  const mapData = JSON.parse(fs.readFileSync(mapDataPath, "utf-8"));
   const atlasData = fileData.reduce((result, data) => {
     const key: string = Object.keys(data)[0];
     result[key] = data[key];
     return result;
   }, {});
   return {
-    props: { content, atlasData, mapData },
+    props: { content, atlasData },
   };
 };
 
