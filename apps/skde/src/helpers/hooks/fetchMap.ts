@@ -8,9 +8,9 @@ export const FetchMap = (filename: string) => {
     }
     return await response.json();
   };
-  return useQuery([`registerNames`], () => fetching(filename), {
-    staleTime: 1000 * 60 * 60,
+  return useQuery([`map_${filename}`], () => fetching(filename), {
+    staleTime: 1000 * 60 * 60 * 24 * 365,
     refetchOnWindowFocus: false,
-    cacheTime: 1000 * 60 * 60,
+    cacheTime: 1000 * 60 * 60 * 24 * 365,
   });
 };
