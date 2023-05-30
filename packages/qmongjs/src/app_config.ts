@@ -52,7 +52,3 @@ export const mainQueryParamsConfig = {
   selected_treatment_units: withDefault(DelimitedArrayParam, undefined),
   chart_type: withDefault(StringParam, undefined),
 };
-
-const appConfig = { app_text };
-
-export default appConfig;

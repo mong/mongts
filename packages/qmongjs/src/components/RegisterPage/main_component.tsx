@@ -1,7 +1,7 @@
 import { UseQueryResult } from "@tanstack/react-query";
 import { useQueryParam } from "use-query-params";
 import { Description, RegisterName, Indicator, OptsTu } from "types";
-import { mainQueryParamsConfig, appTextTypes } from "../../app_config";
+import { mainQueryParamsConfig } from "../../app_config";
 
 import LEGEND from "../TargetLevels";
 import { MedicalFields } from "../MedicalFields";
@@ -34,7 +34,6 @@ export interface Props {
   context: string;
   optstu: OptsTu[] | [];
   registerNames: RegisterName[];
-  app_text: appTextTypes;
   treatment_units: string[];
   selected_year: number;
   colspan: number;
@@ -53,7 +52,6 @@ const Main = (props: Props) => {
   const {
     context,
     registerNames,
-    app_text,
     treatment_units,
     selected_year,
     colspan,
@@ -99,7 +97,6 @@ const Main = (props: Props) => {
   return (
     <>
       <LEGEND
-        app_text={app_text}
         update_show_level_filter={update_show_level_filter}
         show_level_filter={show_level_filter}
         selection_bar_height={selection_bar_height}

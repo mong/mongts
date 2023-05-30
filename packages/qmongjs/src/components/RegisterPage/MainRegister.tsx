@@ -8,7 +8,7 @@ import SelectYear from "../SelectYear";
 import { Header } from "./header";
 import styles from "./registerPage.module.css";
 
-import config, {
+import {
   mainQueryParamsConfig,
   maxYear,
   minYear,
@@ -23,8 +23,6 @@ import { RegisterName, OptsTu } from "types";
 
 import MAIN from "./main_component";
 import { useRouter } from "next/router";
-
-const { app_text } = config;
 
 interface MainRegisterProps {
   registerNames: RegisterName[];
@@ -167,7 +165,6 @@ export const MainRegister: React.FC<MainRegisterProps> = ({
             registerNames={registerNames}
             treatment_units={validated_treatment_units}
             selected_year={validated_selected_year}
-            app_text={app_text}
             colspan={colspan}
             selection_bar_height={selection_bar_height}
             legend_height={legend_height}

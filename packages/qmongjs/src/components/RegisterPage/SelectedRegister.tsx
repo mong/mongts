@@ -8,7 +8,7 @@ import SelectYear from "../SelectYear";
 import { Header } from "./header";
 import styles from "./registerPage.module.css";
 
-import config, {
+import {
   mainQueryParamsConfig,
   maxYear,
   minYear,
@@ -198,7 +198,6 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
         </div>
 
         <LEGEND
-          app_text={config.app_text}
           update_show_level_filter={update_show_level_filter}
           show_level_filter={show_level_filter}
           selection_bar_height={selection_bar_height}
