@@ -43,24 +43,16 @@
     },
     {
       "type": "linechart",
-      "data": "qwerty",
-      "x": ["spes_rate", "overlapp_rate", "prim_rate"],
-      "xLegend": {
-        "nb": [
-          "Kun spes.helsetj.",
-          "Allmennlege og spes.helsetj.",
-          "Kun allmennlegetj."
-        ],
-        "en": ["Specialist only", "GP and specialist", "GP only"]
-      },
-      "y": "bohf",
+      "data": "linjedata",
+      "x": "year",
+      "y": "rate",
       "xLabel": {
-        "nb": "Antall med epilepsi pr. 1 000 innbyggere",
-        "en": "Number of epilepsy patients per 1,000 inhabitants"
+        "nb": "År",
+        "en": "Year"
       },
       "yLabel": {
-        "nb": "Opptaksområder",
-        "en": "Referral areas"
+        "nb": "Antall med epilepsi pr. 1 000 innbyggere",
+        "en": "Number of epilepsy patients per 1,000 inhabitants"
       }
     },
     {
@@ -526,6 +518,34 @@
           "andel3_prim": 0.142671252388,
           "pas_rate_barn": 4.35484743416,
           "pas_rate_eldre": 6.1516249726
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "linjedata",
+      "description": "Ekstradatasett til linjediagram",
+      "national": "Norge",
+      "data": [
+        {
+          "year": 2021,
+          "rate": 4.8558,
+          "bohf": "Norge"
+        },
+        {
+          "year": 2020,
+          "rate": 4.8558,
+          "bohf": "Norge"
+        },
+        {
+          "year": 2019,
+          "rate": 4.8558,
+          "bohf": "Norge"
+        },
+        {
+          "year": 2018,
+          "rate": 4.8558,
+          "bohf": "Norge"
         }
       ]
     }

@@ -70,17 +70,21 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
       duration: 200,
     }),
   });
+
   const nationalName = boxData
     ? boxData.filter((o) => o.type === "data")[0]["national"]
-    : undefined;
-  const figData: AtlasData[] = boxData
-    ? boxData.filter((o) => o.type === "data")[0]["data"]
     : undefined;
 
   const dataCarousel = boxData ? (
     <Carousel active={0} selection={selection} lang={lang}>
       {boxData
         .map((bd, i) => {
+          const figData: AtlasData[] =
+            bd.type !== "data"
+              ? boxData.filter(
+                  (o) => o.type === "data" && o.label === bd.data
+                )[0]["data"]
+              : undefined;
           if (bd.type === "barchart") {
             return (
               <CarouselItem
@@ -174,6 +178,9 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
     .filter((boxd) => boxd.type === "map")
     .map((boxd) => boxd.x)[0];
 
+  const figData: AtlasData[] = boxData
+    ? boxData.filter((o) => o.type === "data")[0]["data"]
+    : undefined;
   const handleChange = (cb: React.Dispatch<React.SetStateAction<boolean>>) =>
     cb((state) => !state);
   return (
