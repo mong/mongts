@@ -14,6 +14,7 @@ import { Markdown } from "../Markdown";
 import { DataTable } from "../../charts/Table";
 import { Map, MapData } from "../../charts/Map";
 import { timeFormat } from "d3-time-format";
+import { Linechart } from "../../charts/Linechart";
 
 type ResultBoxProps = {
   title: string;
@@ -88,6 +89,22 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
                 label={bd.type}
               >
                 <Barchart
+                  {...bd}
+                  data={figData}
+                  lang={lang}
+                  national={nationalName}
+                />
+              </CarouselItem>
+            );
+          }
+          if (bd.type === "linechart") {
+            return (
+              <CarouselItem
+                style={{ width: "auto" }}
+                key={bd.type + i + id}
+                label={bd.type}
+              >
+                <Linechart
                   {...bd}
                   data={figData}
                   lang={lang}
