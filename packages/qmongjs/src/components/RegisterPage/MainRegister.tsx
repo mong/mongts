@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useQueryParam } from "use-query-params";
 
-import SelectTreatmentUnits, { OptsTu } from "../SelectTreatmentUnits";
+import SelectTreatmentUnits from "../SelectTreatmentUnits";
 import SelectYear from "../SelectYear";
 
 import { Header } from "./header";
@@ -19,7 +19,7 @@ import { useResizeObserver, useUnitNamesQuery } from "../../helpers/hooks";
 import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
 import { UnitNameList } from "./unitnamelist";
 import { NestedTreatmentUnitName } from "./unitnamelist/unitnamelistbody";
-import { RegisterName } from "types";
+import { RegisterName, OptsTu } from "types";
 
 import MAIN from "./main_component";
 import { useRouter } from "next/router";

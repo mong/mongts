@@ -1,13 +1,12 @@
 import { UseQueryResult } from "@tanstack/react-query";
 import { useQueryParam } from "use-query-params";
-import { Description, RegisterName, Indicator } from "types";
+import { Description, RegisterName, Indicator, OptsTu } from "types";
 import { mainQueryParamsConfig, appTextTypes } from "../../app_config";
 
 import LEGEND from "../TargetLevels";
 import { MedicalFields } from "../MedicalFields";
 import { IndicatorTable } from "../IndicatorTable";
 import { useMedicalFieldsQuery } from "../../helpers/hooks";
-import { OptsTu } from "../SelectTreatmentUnits";
 import styles from "./registerPage.module.css";
 
 interface AggData {
