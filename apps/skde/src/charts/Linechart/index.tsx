@@ -3,8 +3,32 @@ import { LinePath } from "@visx/shape";
 import { AxisBottom, AxisLeft } from "@visx/axis";
 import { scaleLinear, scaleOrdinal, scaleBand } from "@visx/scale";
 
-type LinechartProps<> = {
+export type LinechartData<
+  Data,
+  X extends keyof Data,
+  Y extends keyof Data,
+  Label extends keyof Data
+> = {
+  [k in keyof Data & keyof X]: number;
+} & {
+  [k in Y]: number;
+} & {
+  [k in keyof Data]?: number | string;
+} & {
+  [k in keyof Data & keyof Label]?: string;
+};
+
+type LinechartProps<
+  Data,
+  X extends string & keyof Data,
+  Y extends string & keyof Data,
+  Label extends string & keyof Data
+> = {
+  data: LinechartData<Data, X, Y, Label>[];
   lang: "en" | "nb" | "nn";
+  x: X;
+  y: Y;
+  label: Label;
   width?: number;
   height?: number;
   backgroundColor?: string;
@@ -13,8 +37,17 @@ type LinechartProps<> = {
   yLabel?: { en: string; nb: string; nn: string };
 };
 
-export const Linechart = ({
+export const Linechart = <
+  Data,
+  X extends string & keyof Data,
+  Y extends string & keyof Data,
+  Label extends string & keyof Data
+>({
+  data,
   lang,
+  x,
+  y,
+  label,
   width = 600,
   height = 500,
   backgroundColor = "white",
@@ -26,11 +59,15 @@ export const Linechart = ({
   },
   xLabel,
   yLabel,
-}: LinechartProps) => {
+}: LinechartProps<Data, X, Y, Label>) => {
+  const xValues = data.map((d) => d[x]);
+  const yValues: number[] = data.map((d) => d[y]);
+  const labels = data.map((d) => d[label]);
+
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
   const yScale = scaleLinear({
-    domain: [0, 100], // y-coordinate data values
+    domain: [0, Math.max(...yValues)], // y-coordinate data values
     // svg y-coordinates, these increase from top to bottom so we reverse the order
     // so that minY in data space maps to graphHeight in svg y-coordinate space
     range: [0, innerHeight],
