@@ -1,0 +1,288 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "andel_pf"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Andel av MR-undersøkelsene utført på pasienter i pakkeforløp",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "pfsnitt",
+        "npfsnitt"
+      ],
+      "xLegend": {
+        "nb": [
+          "Pakkeforløp",
+          "Ikke pakkeforløp"
+        ],
+        "en": [
+          "Pakkeforløp",
+          "Ikke pakkeforløp"
+        ]
+      },
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Andel av MR-undersøkelsene utført på pasienter i pakkeforløp",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      }
+    },
+    {
+      "type": "table",
+      "data": "datasett_1",
+      "caption": {
+        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 innbyggere",
+        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 innbyggere"
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområder",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "totsnitt",
+          "label_no": "Rate",
+          "label_en": "Rate",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "pfsnitt",
+          "label_no": "Pakkeforløp",
+          "label_en": "Pathway",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "npfsnitt",
+          "label_no": "Ikke pakkeforløp",
+          "label_en": "Not pathway",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "andel_pf",
+          "label_no": "Prosent Pakkeforløp",
+          "label_en": "Percent PF",
+          "typeVar": "number",
+          "format": ",.2f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "datasett_1",
+      "x": "andel_pf",
+      "caption": {
+        "nb": "Andel av MR-undersøkelsene utført på pasienter i pakkeforløp",
+        "en": "tmp"
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": 20.2907064871,
+          "min": 16.8005363486,
+          "lag_min": 28.4431405171,
+          "grense": 24.3669235021
+        },
+        {
+          "cluster": 2,
+          "max": 36.1233996239,
+          "min": 28.4431405171,
+          "lag_min": 36.5588312751,
+          "grense": 36.3411154495
+        },
+        {
+          "cluster": 3,
+          "max": 44.3061103182,
+          "min": 36.5588312751,
+          "lag_min": 49.3863513408,
+          "grense": 46.8462308295
+        }
+      ],
+      "format": ",.0f"
+    },
+    {
+      "type": "data",
+      "label": "datasett_1",
+      "national": "Norge",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "data": [
+        {
+          "bohf": "Finnmark",
+          "npfsnitt": 20.4379488281,
+          "pfsnitt": 19.9423623518,
+          "totsnitt": 40.38031118,
+          "andel_pf": 49.3863513408
+        },
+        {
+          "bohf": "UNN",
+          "npfsnitt": 26.6537468877,
+          "pfsnitt": 11.3884859685,
+          "totsnitt": 38.0422328562,
+          "andel_pf": 29.9364288409
+        },
+        {
+          "bohf": "Nordland",
+          "npfsnitt": 29.9171975825,
+          "pfsnitt": 14.3241270179,
+          "totsnitt": 44.2413246003,
+          "andel_pf": 32.377256213
+        },
+        {
+          "bohf": "Helgeland",
+          "npfsnitt": 25.5948406971,
+          "pfsnitt": 20.361440761,
+          "totsnitt": 45.9562814581,
+          "andel_pf": 44.3061103182
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "npfsnitt": 19.5323706365,
+          "pfsnitt": 14.8923631946,
+          "totsnitt": 34.424733831,
+          "andel_pf": 43.2606487756
+        },
+        {
+          "bohf": "St. Olav",
+          "npfsnitt": 24.9098728935,
+          "pfsnitt": 11.6890446038,
+          "totsnitt": 36.5989174973,
+          "andel_pf": 31.9382249616
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "npfsnitt": 41.8535419005,
+          "pfsnitt": 16.6363669677,
+          "totsnitt": 58.4899088682,
+          "andel_pf": 28.4431405171
+        },
+        {
+          "bohf": "Førde",
+          "npfsnitt": 18.7522577276,
+          "pfsnitt": 12.8730881842,
+          "totsnitt": 31.6253459118,
+          "andel_pf": 40.7049719553
+        },
+        {
+          "bohf": "Bergen",
+          "npfsnitt": 26.4869253781,
+          "pfsnitt": 13.7132388713,
+          "totsnitt": 40.2001642494,
+          "andel_pf": 34.1123951291
+        },
+        {
+          "bohf": "Fonna",
+          "npfsnitt": 28.6220759343,
+          "pfsnitt": 7.28600287669,
+          "totsnitt": 35.908078811,
+          "andel_pf": 20.2907064871
+        },
+        {
+          "bohf": "Stavanger",
+          "npfsnitt": 60.4058614569,
+          "pfsnitt": 12.197805449,
+          "totsnitt": 72.6036669058,
+          "andel_pf": 16.8005363486
+        },
+        {
+          "bohf": "Østfold",
+          "npfsnitt": 54.4320374529,
+          "pfsnitt": 11.7593538978,
+          "totsnitt": 66.1913913506,
+          "andel_pf": 17.7656847179
+        },
+        {
+          "bohf": "Akershus",
+          "npfsnitt": 27.9900586482,
+          "pfsnitt": 18.7367853545,
+          "totsnitt": 46.7268440027,
+          "andel_pf": 40.09854668
+        },
+        {
+          "bohf": "OUS",
+          "npfsnitt": 30.0763697728,
+          "pfsnitt": 17.3319147486,
+          "totsnitt": 47.4082845214,
+          "andel_pf": 36.5588312751
+        },
+        {
+          "bohf": "Lovisenberg",
+          "npfsnitt": 22.6960741733,
+          "pfsnitt": 15.6310787684,
+          "totsnitt": 38.3271529416,
+          "andel_pf": 40.7833026163
+        },
+        {
+          "bohf": "Diakonhjemmet",
+          "npfsnitt": 30.2735937316,
+          "pfsnitt": 18.2059072056,
+          "totsnitt": 48.4795009373,
+          "andel_pf": 37.5538255421
+        },
+        {
+          "bohf": "Innlandet",
+          "npfsnitt": 30.8607390263,
+          "pfsnitt": 13.4832958298,
+          "totsnitt": 44.3440348562,
+          "andel_pf": 30.4061095784
+        },
+        {
+          "bohf": "Vestre Viken",
+          "npfsnitt": 37.5105405562,
+          "pfsnitt": 23.7372183513,
+          "totsnitt": 61.2477589075,
+          "andel_pf": 38.7560602619
+        },
+        {
+          "bohf": "Vestfold",
+          "npfsnitt": 29.5389036977,
+          "pfsnitt": 22.3675835801,
+          "totsnitt": 51.9064872778,
+          "andel_pf": 43.0920772203
+        },
+        {
+          "bohf": "Telemark",
+          "npfsnitt": 24.766615944,
+          "pfsnitt": 24.5118353436,
+          "totsnitt": 49.2784512876,
+          "andel_pf": 49.7414888316
+        },
+        {
+          "bohf": "Sørlandet",
+          "npfsnitt": 14.8202331075,
+          "pfsnitt": 8.38111608805,
+          "totsnitt": 23.2013491956,
+          "andel_pf": 36.1233996239
+        },
+        {
+          "bohf": "Norge",
+          "npfsnitt": 31.8505807992,
+          "pfsnitt": 15.6745064123,
+          "totsnitt": 47.5250872114,
+          "andel_pf": 32.9815416067
+        }
+      ]
+    }
+  ]
+}
