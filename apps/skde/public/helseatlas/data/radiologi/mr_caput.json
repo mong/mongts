@@ -16,6 +16,7 @@
         "en": "Referral areas"
       },
       "annualVar": [
+        "tot2018",
         "tot2019",
         "tot2020",
         "tot2021",
@@ -23,12 +24,14 @@
       ],
       "annualVarLabels": {
         "nb": [
+          "2018",
           "2019",
           "2020",
           "2021",
           "2022"
         ],
         "en": [
+          "2018",
           "2019",
           "2020",
           "2021",
@@ -47,11 +50,11 @@
       "xLegend": {
         "nb": [
           "Offentlig",
-          "Privat"
+          "Private"
         ],
         "en": [
           "Offentlig",
-          "Privat"
+          "Private"
         ]
       },
       "y": "bohf",
@@ -83,6 +86,27 @@
           "id": "totsnitt",
           "label_no": "Rate",
           "label_en": "Rate",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "andel_priv",
+          "label_no": "Prosent private",
+          "label_en": "Percent private",
+          "typeVar": "number",
+          "format": ",.2f"
+        },
+        {
+          "id": "tot_events",
+          "label_no": "Undersøkelser",
+          "label_en": "Examinations",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "tot_pas",
+          "label_no": "Pasienter",
+          "label_en": "Patients",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -168,7 +192,8 @@
           "tot_events": 1242.2,
           "tot_pas": 1153,
           "tot_pop": 75263.4,
-          "tot_pr_pas": 1.07736339983
+          "tot_pr_pas": 1.07736339983,
+          "andel_priv": 8.24901627743
         },
         {
           "bohf": "UNN",
@@ -204,7 +229,8 @@
           "tot_events": 3744.2,
           "tot_pas": 3467.8,
           "tot_pop": 193459,
-          "tot_pr_pas": 1.07970471192
+          "tot_pr_pas": 1.07970471192,
+          "andel_priv": 65.8880540169
         },
         {
           "bohf": "Nordland",
@@ -240,7 +266,8 @@
           "tot_events": 2558.8,
           "tot_pas": 2336,
           "tot_pop": 137648.4,
-          "tot_pr_pas": 1.09537671233
+          "tot_pr_pas": 1.09537671233,
+          "andel_priv": 59.4761863778
         },
         {
           "bohf": "Helgeland",
@@ -276,7 +303,8 @@
           "tot_events": 1618.6,
           "tot_pas": 1482,
           "tot_pop": 77916.8,
-          "tot_pr_pas": 1.09217273954
+          "tot_pr_pas": 1.09217273954,
+          "andel_priv": 2.90139468825
         },
         {
           "bohf": "Nord-Trøndelag",
@@ -312,7 +340,8 @@
           "tot_events": 2844.2,
           "tot_pas": 2632.8,
           "tot_pop": 135042.4,
-          "tot_pr_pas": 1.08029474324
+          "tot_pr_pas": 1.08029474324,
+          "andel_priv": 15.0253123414
         },
         {
           "bohf": "St. Olav",
@@ -348,7 +377,8 @@
           "tot_events": 6890.4,
           "tot_pas": 6426.6,
           "tot_pop": 333346.6,
-          "tot_pr_pas": 1.07216879843
+          "tot_pr_pas": 1.07216879843,
+          "andel_priv": 65.6692023695
         },
         {
           "bohf": "Møre og Romsdal",
@@ -384,7 +414,8 @@
           "tot_events": 5402.4,
           "tot_pas": 5019.8,
           "tot_pop": 265204.2,
-          "tot_pr_pas": 1.07621817602
+          "tot_pr_pas": 1.07621817602,
+          "andel_priv": 24.1968921616
         },
         {
           "bohf": "Førde",
@@ -420,7 +451,8 @@
           "tot_events": 2186.2,
           "tot_pas": 1994.4,
           "tot_pop": 108588.2,
-          "tot_pr_pas": 1.09616927397
+          "tot_pr_pas": 1.09616927397,
+          "andel_priv": 10.4149178192
         },
         {
           "bohf": "Bergen",
@@ -456,7 +488,8 @@
           "tot_events": 9942.6,
           "tot_pas": 9169.8,
           "tot_pop": 455966.6,
-          "tot_pr_pas": 1.08427664726
+          "tot_pr_pas": 1.08427664726,
+          "andel_priv": 64.0960390763
         },
         {
           "bohf": "Fonna",
@@ -492,7 +525,8 @@
           "tot_events": 4195.8,
           "tot_pas": 3871.6,
           "tot_pop": 180623.6,
-          "tot_pr_pas": 1.08373798946
+          "tot_pr_pas": 1.08373798946,
+          "andel_priv": 70.9144913366
         },
         {
           "bohf": "Stavanger",
@@ -528,7 +562,8 @@
           "tot_events": 7632.8,
           "tot_pas": 6867.6,
           "tot_pop": 370595.4,
-          "tot_pr_pas": 1.1114217485
+          "tot_pr_pas": 1.1114217485,
+          "andel_priv": 64.8516548592
         },
         {
           "bohf": "Østfold",
@@ -564,7 +599,8 @@
           "tot_events": 7902.8,
           "tot_pas": 7357,
           "tot_pop": 317597.6,
-          "tot_pr_pas": 1.07418784831
+          "tot_pr_pas": 1.07418784831,
+          "andel_priv": 71.0717787586
         },
         {
           "bohf": "Akershus",
@@ -600,7 +636,8 @@
           "tot_events": 12034,
           "tot_pas": 11185,
           "tot_pop": 577585,
-          "tot_pr_pas": 1.07590523022
+          "tot_pr_pas": 1.07590523022,
+          "andel_priv": 70.8392995955
         },
         {
           "bohf": "OUS",
@@ -636,7 +673,8 @@
           "tot_events": 5610.6,
           "tot_pas": 5216.8,
           "tot_pop": 277343.6,
-          "tot_pr_pas": 1.07548688851
+          "tot_pr_pas": 1.07548688851,
+          "andel_priv": 66.8350928472
         },
         {
           "bohf": "Lovisenberg",
@@ -672,7 +710,8 @@
           "tot_events": 2766.8,
           "tot_pas": 2579.8,
           "tot_pop": 158383.6,
-          "tot_pr_pas": 1.07248623924
+          "tot_pr_pas": 1.07248623924,
+          "andel_priv": 66.1592997618
         },
         {
           "bohf": "Diakonhjemmet",
@@ -708,7 +747,8 @@
           "tot_events": 2896.8,
           "tot_pas": 2667.4,
           "tot_pop": 143065.8,
-          "tot_pr_pas": 1.08600134963
+          "tot_pr_pas": 1.08600134963,
+          "andel_priv": 64.0810012427
         },
         {
           "bohf": "Innlandet",
@@ -744,7 +784,8 @@
           "tot_events": 7806,
           "tot_pas": 7230.4,
           "tot_pop": 338587.6,
-          "tot_pr_pas": 1.07960832042
+          "tot_pr_pas": 1.07960832042,
+          "andel_priv": 57.2503492219
         },
         {
           "bohf": "Vestre Viken",
@@ -780,7 +821,8 @@
           "tot_events": 9813.2,
           "tot_pas": 9058.2,
           "tot_pop": 488231.4,
-          "tot_pr_pas": 1.08334989291
+          "tot_pr_pas": 1.08334989291,
+          "andel_priv": 60.8025752265
         },
         {
           "bohf": "Vestfold",
@@ -816,7 +858,8 @@
           "tot_events": 5732.2,
           "tot_pas": 5312.6,
           "tot_pop": 246406,
-          "tot_pr_pas": 1.07898204269
+          "tot_pr_pas": 1.07898204269,
+          "andel_priv": 80.0978739697
         },
         {
           "bohf": "Telemark",
@@ -852,7 +895,8 @@
           "tot_events": 4037.2,
           "tot_pas": 3728.8,
           "tot_pop": 173513.6,
-          "tot_pr_pas": 1.08270757348
+          "tot_pr_pas": 1.08270757348,
+          "andel_priv": 61.0967843075
         },
         {
           "bohf": "Sørlandet",
@@ -888,7 +932,8 @@
           "tot_events": 6229.2,
           "tot_pas": 5795.6,
           "tot_pop": 307241.2,
-          "tot_pr_pas": 1.07481537718
+          "tot_pr_pas": 1.07481537718,
+          "andel_priv": 61.9723021573
         },
         {
           "bohf": "Norge",
@@ -924,7 +969,8 @@
           "tot_events": 113087.8,
           "tot_pas": 104553.8,
           "tot_pop": 5361610,
-          "tot_pr_pas": 1.08162304957
+          "tot_pr_pas": 1.08162304957,
+          "andel_priv": 59.959983453
         }
       ]
     }
