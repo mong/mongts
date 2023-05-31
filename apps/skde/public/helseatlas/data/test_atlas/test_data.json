@@ -22,6 +22,21 @@
     {
       "type": "barchart",
       "data": "qwerty",
+      "x": ["rateSnitt"],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Antall med epilepsi pr. 1 000 innbyggere med error bars",
+        "en": "Number of epilepsy patients per 1,000 inhabitants with error bars"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "errorBars": ["rate2019", "rate2020", "rate2021"]
+    },
+    {
+      "type": "barchart",
+      "data": "qwerty",
       "x": ["spes_rate", "overlapp_rate", "prim_rate"],
       "xLegend": {
         "nb": [
