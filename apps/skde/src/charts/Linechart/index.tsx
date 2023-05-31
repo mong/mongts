@@ -70,8 +70,13 @@ export const Linechart = <
     domain: [0, Math.max(...yValues)], // y-coordinate data values
     // svg y-coordinates, these increase from top to bottom so we reverse the order
     // so that minY in data space maps to graphHeight in svg y-coordinate space
-    range: [0, innerHeight],
+    range: [innerHeight, 0],
     round: true,
+  });
+
+  const xScale = scaleLinear<number>({
+    domain: [Math.min(...xValues), Math.max(...xValues)],
+    range: [0, innerWidth],
   });
 
   return (
@@ -84,12 +89,10 @@ export const Linechart = <
       >
         <Group left={margin.left} top={margin.top}>
           <AxisLeft
-            top={5}
-            left={-10}
             scale={yScale}
             strokeWidth={0}
             stroke="black"
-            tickValues={[1, 2, 3, 4, 5, 6]}
+            numTicks={4}
             tickStroke="black"
             tickLabelProps={() => ({
               fontSize: 14,
@@ -99,13 +102,34 @@ export const Linechart = <
             label={yLabel[lang]}
             labelProps={{
               fontSize: 14,
-              x: -127,
-              y: -15,
-              transform: "",
+              textAnchor: "middle",
+              transform: "rotate(-90)",
               fontWeight: "bold",
             }}
           />
         </Group>
+        <Group left={margin.left} top={margin.top + innerHeight}>
+          <AxisBottom
+            scale={xScale}
+            strokeWidth={0}
+            stroke="black"
+            numTicks={4}
+            tickStroke="black"
+            tickLabelProps={() => ({
+              fontSize: 14,
+              fill: "black",
+              textAnchor: "end",
+            })}
+            label={xLabel[lang]}
+            labelProps={{
+              fontSize: 14,
+              textAnchor: "middle",
+              fontWeight: "bold",
+            }}
+            tickFormat={(val) => val.toString()}
+          />
+        </Group>
+        <Group left={margin.left} top={margin.top}></Group>
       </svg>
     </div>
   );
