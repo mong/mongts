@@ -1,0 +1,338 @@
+
+{
+"innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snittrate"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Tal revaskularisering pr. 1 000 innbyggarar (18 år og eldre)",
+        "en": "Number of revascularisation per 1,000 inhabitants (18 years and older)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "Rate.2018",
+        "Rate.2019",
+        "Rate.2020",
+        "Rate.2021",
+        "Rate.2022"
+      ],
+      "annualVarLabels": {
+        "nn": ["2018", "2019", "2020", "2021", "2022"],
+        "en": ["2018", "2019", "2020", "2021", "2022"]
+      }
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 1 000 innbyggarar i alderen 18 år og eldre.",
+        "en": "Average per year for the period 2018–2022. Rate per 1,000 inhabitants aged 18 years and older."
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "Snittrate",
+          "label_no": "Revaskulariseringsrate",
+          "label_en": "Revascularisation rate",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Snitt_revaskularisert",
+          "label_no": "Tal revaskulariseringar",
+          "label_en": "number of revascularisions",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Snitt_innbyggarar",
+          "label_no": "innbyggarar (18 år og eldre)",
+          "label_en": "Inhabitants (18 years and older)",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "Snittrate",
+      "caption": {
+        "nn": "Tal Tal revaskulariseringar pr. 1 000 innbyggarar (18 år og eldre)",
+        "en": "Number of revascularisions per 1,000 inhabitants (18 years and older)"
+      },
+      "jenks": [
+        {
+          "grense": 2.6
+        },
+        {
+          "grense": 3.1
+        },
+        {
+          "grense": 4.0
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data": [
+        {
+    "bohf": "Diakonhjemmet",
+    "Snitt_revaskularisert": 207.2,
+    "Snitt_innbyggarar": 117218.6,
+    "Snittrate": 1.97,
+    "Rate.2022": 1.79,
+    "Rate.2021": 2.04,
+    "Rate.2020": 1.84,
+    "Rate.2019": 2.18,
+    "Rate.2018": 2.01
+  },
+  {
+    "bohf": "Førde",
+    "Snitt_revaskularisert": 251.6,
+    "Snitt_innbyggarar": 85281.4,
+    "Snittrate": 2.61,
+    "Rate.2022": 2.21,
+    "Rate.2021": 2.83,
+    "Rate.2020": 2.47,
+    "Rate.2019": 2.68,
+    "Rate.2018": 2.85
+  },
+  {
+    "bohf": "Vestre Viken",
+    "Snitt_revaskularisert": 1062.8,
+    "Snitt_innbyggarar": 382239.6,
+    "Snittrate": 2.68,
+    "Rate.2022": 2.4,
+    "Rate.2021": 2.64,
+    "Rate.2020": 2.81,
+    "Rate.2019": 3.06,
+    "Rate.2018": 2.47
+  },
+  {
+    "bohf": "OUS",
+    "Snitt_revaskularisert": 465,
+    "Snitt_innbyggarar": 216543.6,
+    "Snittrate": 2.74,
+    "Rate.2022": 2.55,
+    "Rate.2021": 2.78,
+    "Rate.2020": 2.5,
+    "Rate.2019": 2.76,
+    "Rate.2018": 3.09
+  },
+  {
+    "bohf": "Lovisenberg",
+    "Snitt_revaskularisert": 177.2,
+    "Snitt_innbyggarar": 136966.8,
+    "Snittrate": 2.75,
+    "Rate.2022": 2.39,
+    "Rate.2021": 2.13,
+    "Rate.2020": 3.16,
+    "Rate.2019": 3.21,
+    "Rate.2018": 2.88
+  },
+  {
+    "bohf": "Vestfold",
+    "Snitt_revaskularisert": 593.6,
+    "Snitt_innbyggarar": 196405.4,
+    "Snittrate": 2.78,
+    "Rate.2022": 2.5,
+    "Rate.2021": 2.9,
+    "Rate.2020": 2.82,
+    "Rate.2019": 2.94,
+    "Rate.2018": 2.77
+  },
+  {
+    "bohf": "Innlandet",
+    "Snitt_revaskularisert": 880.6,
+    "Snitt_innbyggarar": 274482.6,
+    "Snittrate": 2.79,
+    "Rate.2022": 2.51,
+    "Rate.2021": 2.54,
+    "Rate.2020": 3.06,
+    "Rate.2019": 3.21,
+    "Rate.2018": 2.63
+  },
+  {
+    "bohf": "Møre og Romsdal",
+    "Snitt_revaskularisert": 650.4,
+    "Snitt_innbyggarar": 209533.2,
+    "Snittrate": 2.84,
+    "Rate.2022": 2.66,
+    "Rate.2021": 2.78,
+    "Rate.2020": 2.84,
+    "Rate.2019": 3.08,
+    "Rate.2018": 2.82
+  },
+  {
+    "bohf": "Nord-Trøndelag",
+    "Snitt_revaskularisert": 351.2,
+    "Snitt_innbyggarar": 106472.2,
+    "Snittrate": 2.91,
+    "Rate.2022": 2.7,
+    "Rate.2021": 3.01,
+    "Rate.2020": 2.83,
+    "Rate.2019": 3.22,
+    "Rate.2018": 2.82
+  },
+  {
+    "bohf": "Telemark",
+    "Snitt_revaskularisert": 481.6,
+    "Snitt_innbyggarar": 139504,
+    "Snittrate": 3.07,
+    "Rate.2022": 2.77,
+    "Rate.2021": 3,
+    "Rate.2020": 2.92,
+    "Rate.2019": 3.25,
+    "Rate.2018": 3.4
+  },
+  {
+    "bohf": "Noreg",
+    "Snitt_revaskularisert": 13257,
+    "Snitt_innbyggarar": 4243542.8,
+    "Snittrate": 3.12,
+    "Rate.2022": 2.89,
+    "Rate.2021": 3.06,
+    "Rate.2020": 3.1,
+    "Rate.2019": 3.39,
+    "Rate.2018": 3.16
+  },
+  {
+    "bohf": "Stavanger",
+    "Snitt_revaskularisert": 805.8,
+    "Snitt_innbyggarar": 282917.2,
+    "Snittrate": 3.16,
+    "Rate.2022": 2.84,
+    "Rate.2021": 2.81,
+    "Rate.2020": 3.14,
+    "Rate.2019": 3.57,
+    "Rate.2018": 3.45
+  },
+  {
+    "bohf": "Østfold",
+    "Snitt_revaskularisert": 883.2,
+    "Snitt_innbyggarar": 252499.4,
+    "Snittrate": 3.23,
+    "Rate.2022": 3.07,
+    "Rate.2021": 3.2,
+    "Rate.2020": 3.24,
+    "Rate.2019": 3.7,
+    "Rate.2018": 2.95
+  },
+  {
+    "bohf": "Bergen",
+    "Snitt_revaskularisert": 1099.2,
+    "Snitt_innbyggarar": 358788.8,
+    "Snittrate": 3.24,
+    "Rate.2022": 3.13,
+    "Rate.2021": 3.32,
+    "Rate.2020": 3.16,
+    "Rate.2019": 3.32,
+    "Rate.2018": 3.29
+  },
+  {
+    "bohf": "St. Olav",
+    "Snitt_revaskularisert": 819.4,
+    "Snitt_innbyggarar": 265537.8,
+    "Snittrate": 3.25,
+    "Rate.2022": 2.98,
+    "Rate.2021": 3.23,
+    "Rate.2020": 3.24,
+    "Rate.2019": 3.42,
+    "Rate.2018": 3.36
+  },
+  {
+    "bohf": "Fonna",
+    "Snitt_revaskularisert": 493.8,
+    "Snitt_innbyggarar": 140304.2,
+    "Snittrate": 3.32,
+    "Rate.2022": 2.99,
+    "Rate.2021": 3.19,
+    "Rate.2020": 3.31,
+    "Rate.2019": 3.62,
+    "Rate.2018": 3.52
+  },
+  {
+    "bohf": "Akershus",
+    "Snitt_revaskularisert": 1453.8,
+    "Snitt_innbyggarar": 449731.4,
+    "Snittrate": 3.33,
+    "Rate.2022": 3.18,
+    "Rate.2021": 3.23,
+    "Rate.2020": 3.04,
+    "Rate.2019": 3.79,
+    "Rate.2018": 3.4
+  },
+  {
+    "bohf": "Sørlandet",
+    "Snitt_revaskularisert": 824.8,
+    "Snitt_innbyggarar": 239960.6,
+    "Snittrate": 3.38,
+    "Rate.2022": 3.06,
+    "Rate.2021": 3.51,
+    "Rate.2020": 3.31,
+    "Rate.2019": 3.56,
+    "Rate.2018": 3.47
+  },
+  {
+    "bohf": "Helgeland",
+    "Snitt_revaskularisert": 269.6,
+    "Snitt_innbyggarar": 62546.6,
+    "Snittrate": 3.66,
+    "Rate.2022": 3.64,
+    "Rate.2021": 3.74,
+    "Rate.2020": 3.42,
+    "Rate.2019": 3.61,
+    "Rate.2018": 3.89
+  },
+  {
+    "bohf": "UNN",
+    "Snitt_revaskularisert": 660.8,
+    "Snitt_innbyggarar": 155033.8,
+    "Snittrate": 4.04,
+    "Rate.2022": 3.67,
+    "Rate.2021": 3.84,
+    "Rate.2020": 4.02,
+    "Rate.2019": 4.36,
+    "Rate.2018": 4.3
+  },
+  {
+    "bohf": "Nordland",
+    "Snitt_revaskularisert": 498.8,
+    "Snitt_innbyggarar": 111035.2,
+    "Snittrate": 4.07,
+    "Rate.2022": 3.8,
+    "Rate.2021": 4.27,
+    "Rate.2020": 4.39,
+    "Rate.2019": 3.94,
+    "Rate.2018": 3.96
+  },
+  {
+    "bohf": "Finnmark",
+    "Snitt_revaskularisert": 287.8,
+    "Snitt_innbyggarar": 60540.4,
+    "Snittrate": 4.5,
+    "Rate.2022": 4.64,
+    "Rate.2021": 4.07,
+    "Rate.2020": 4.27,
+    "Rate.2019": 4.95,
+    "Rate.2018": 4.58
+  }
+      ]
+    }
+  ]
+}
