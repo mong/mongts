@@ -93,7 +93,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
   const valuesLabel = {
     en: "Referral areas",
     nb: "Opptaksområder",
-    nn: "Buområda",
+    nn: "Opptaksområde",
   };
   const nationalLabel = { en: "Norway", nb: "Norge", nn: "Noreg" };
 
