@@ -1,0 +1,277 @@
+{
+"innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snittrate"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Tal rehabilitering episodar etter hjarteinfarkt pr. 10 000 innbyggarar (18 år og eldre)",
+        "en": "Number of rehabilitation episodes after heart attack per 10,000 inhabitants (18 years and older)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      }
+    },
+{
+      "type": "barchart",
+      "data": "qwerty",
+      "x": [ "offentleg",  "Privat"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Tal rehabilitering episodar etter hjarteinfarkt pr. 10 000 innbyggarar (18 år og eldre)",
+        "en": "Number of rehabilitation episodes after heart attack per 10,000 inhabitants (18 years and older)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "xLegend": {
+        "nn": ["Offentleg", "Privat"],
+        "en": ["Public", "Private"]
+      }
+        },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 innbyggarar i alderen 18 år og eldre.",
+        "en": "Average per year for the period 2018–2022. Rate per 10,000 inhabitants aged 18 years and older."
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "Snittrate",
+          "label_no": "Rehabiliteringsrate",
+          "label_en": "Rehabilitation rate",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Snitt_rehabilitering",
+          "label_no": "Tal rehabilitering episodar",
+          "label_en": "Rehabilitation episodes",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Snitt_innbyggarar",
+          "label_no": "innbyggarar (18 år og eldre)",
+          "label_en": "Inhabitants (18 years and older)",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "Snittrate",
+      "caption": {
+        "nn": "Tal rehabilitering etter hjarteinfarkt pr. 10 000 innbyggarar (18 år og eldre)",
+        "en": "Number of rehabilitering after heart attack per 10,000 inhabitants (18 years and older)"
+      },
+      "jenks": [
+        {
+          "grense": 19.2
+        },
+        {
+          "grense": 38.4
+        },
+        {
+          "grense": 55.6
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data": [
+        {
+    "bohf": "Akershus",
+    "Snitt_rehabilitering": 1135.75,
+    "Snitt_innbyggarar": 446129.75,
+    "Snittrate": 25.5,
+ "offentleg": 23.13,
+    "Privat": 1.98
+  },
+  {
+    "bohf": "Bergen",
+    "Snitt_rehabilitering": 2326.5,
+    "Snitt_innbyggarar": 357225.25,
+    "Snittrate": 68.61,
+"offentleg": 54.38,
+    "Privat": 14.21
+  },
+  {
+    "bohf": "Diakonhjemmet",
+    "Snitt_rehabilitering": 454,
+    "Snitt_innbyggarar": 116824,
+    "Snittrate": 43.8,
+"offentleg": 39.25,
+    "Privat": 4.38
+  },
+  {
+    "bohf": "Finnmark",
+    "Snitt_rehabilitering": 42.5,
+    "Snitt_innbyggarar": 60642.75,
+    "Snittrate": 6.9,
+"offentleg": 5.09,
+    "Privat": 1.72
+  },
+  {
+    "bohf": "Fonna",
+    "Snitt_rehabilitering": 412.25,
+    "Snitt_innbyggarar": 140002.25,
+    "Snittrate": 28.2,
+"offentleg": 25.33,
+    "Privat": 2.85
+  },
+  {
+    "bohf": "Førde",
+    "Snitt_rehabilitering": 485.75,
+    "Snitt_innbyggarar": 85177.75,
+    "Snittrate": 52.34,
+"offentleg": 50.98,
+    "Privat": 1.36
+  },
+  {
+    "bohf": "Helgeland",
+    "Snitt_rehabilitering": 80.75,
+    "Snitt_innbyggarar": 62564.75,
+    "Snittrate": 11.27,"offentleg": 10.38,
+    "Privat": 0.89
+  },
+  {
+    "bohf": "Innlandet",
+    "Snitt_rehabilitering": 411,
+    "Snitt_innbyggarar": 274019.75,
+    "Snittrate": 13.45,
+"offentleg": 11.76,
+    "Privat": 1.06
+  },
+  {
+    "bohf": "Lovisenberg",
+    "Snitt_rehabilitering": 382,
+    "Snitt_innbyggarar": 135737,
+    "Snittrate": 55.61,
+"offentleg": 38.12,
+    "Privat": 17.21
+  },
+  {
+    "bohf": "Møre og Romsdal",
+    "Snitt_rehabilitering": 1347,
+    "Snitt_innbyggarar": 209117.75,
+    "Snittrate": 60.38,
+"offentleg": 59.14,
+    "Privat": 1.21
+  },
+  {
+    "bohf": "Nord-Trøndelag",
+    "Snitt_rehabilitering": 668.5,
+    "Snitt_innbyggarar": 106445.75,
+    "Snittrate": 58.44,
+ "offentleg": 52.81,
+    "Privat": 5.6
+  },
+  {
+    "bohf": "Nordland",
+    "Snitt_rehabilitering": 115.75,
+    "Snitt_innbyggarar": 110932.5,
+    "Snittrate": 9.76,
+"offentleg": 8.55,
+    "Privat": 1.17
+  },
+  {
+    "bohf": "Noreg",
+    "Snitt_rehabilitering": 16168.25,
+    "Snitt_innbyggarar": 4225241.75,
+    "Snittrate": 38.4,
+"offentleg": 32.96,
+    "Privat": 5.25
+  },
+  {
+    "bohf": "OUS",
+    "Snitt_rehabilitering": 1147.5,
+    "Snitt_innbyggarar": 215469.75,
+    "Snittrate": 64.51,
+"offentleg": 18.24,
+    "Privat": 46.09
+  },
+  {
+    "bohf": "St. Olav",
+    "Snitt_rehabilitering": 1449.5,
+    "Snitt_innbyggarar": 263871,
+    "Snittrate": 57.93,
+"offentleg": 54.09,
+    "Privat": 3.74
+  },
+  {
+    "bohf": "Stavanger",
+    "Snitt_rehabilitering": 109.25,
+    "Snitt_innbyggarar": 281470.75,
+    "Snittrate": 4.29,
+"offentleg": 2.53,
+    "Privat": 1.75
+  },
+  {
+    "bohf": "Sørlandet",
+    "Snitt_rehabilitering": 464.25,
+    "Snitt_innbyggarar": 238863.5,
+    "Snittrate": 19.23,
+ "offentleg": 19.15,
+    "Privat": 0.07
+  },
+  {
+    "bohf": "Telemark",
+    "Snitt_rehabilitering": 413.25,
+    "Snitt_innbyggarar": 139235,
+    "Snittrate": 26.85,
+"offentleg": 26.49,
+    "Privat": 0.21
+  },
+  {
+    "bohf": "UNN",
+    "Snitt_rehabilitering": 227.75,
+    "Snitt_innbyggarar": 154796,
+    "Snittrate": 14.13,
+"offentleg": 13.01,
+    "Privat": 1.12
+  },
+  {
+    "bohf": "Vestfold",
+    "Snitt_rehabilitering": 1650.25,
+    "Snitt_innbyggarar": 195281.25,
+    "Snittrate": 78.8,
+"offentleg": 78.5,
+    "Privat": 0.14
+  },
+  {
+    "bohf": "Vestre Viken",
+    "Snitt_rehabilitering": 1630,
+    "Snitt_innbyggarar": 380426,
+    "Snittrate": 41.48
+  },
+  {
+    "bohf": "Østfold",
+    "Snitt_rehabilitering": 1211.25,
+    "Snitt_innbyggarar": 251009.25,
+    "Snittrate": 45.21,
+"offentleg": 34.23,
+    "Privat": 6.87, 
+"offentleg": 44.42,
+    "Privat": 0.46
+  }
+      ]
+    }
+  ]
+}
