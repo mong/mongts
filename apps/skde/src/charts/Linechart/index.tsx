@@ -90,7 +90,7 @@ export const Linechart = <
         <Group left={margin.left} top={margin.top}>
           <AxisLeft
             scale={yScale}
-            strokeWidth={0}
+            strokeWidth={2}
             stroke="black"
             numTicks={4}
             tickStroke="black"
@@ -111,14 +111,14 @@ export const Linechart = <
         <Group left={margin.left} top={margin.top + innerHeight}>
           <AxisBottom
             scale={xScale}
-            strokeWidth={0}
+            strokeWidth={2}
             stroke="black"
             numTicks={4}
             tickStroke="black"
             tickLabelProps={() => ({
               fontSize: 14,
               fill: "black",
-              textAnchor: "end",
+              textAnchor: "middle",
             })}
             label={xLabel[lang]}
             labelProps={{
