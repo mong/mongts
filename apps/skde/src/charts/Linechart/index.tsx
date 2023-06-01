@@ -129,7 +129,16 @@ export const Linechart = <
             tickFormat={(val) => val.toString()}
           />
         </Group>
-        <Group left={margin.left} top={margin.top}></Group>
+        {xValues.map((linedata, i) => (
+          <Group left={margin.left} top={margin.top} key={i}>
+            <LinePath
+              x={linedata}
+              y={yValues[i]}
+              stroke="black"
+              strokeWidth={3}
+            />
+          </Group>
+        ))}
       </svg>
     </div>
   );
