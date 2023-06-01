@@ -4,23 +4,6 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": [
-        "psasnitt"
-      ],
-      "y": "bohf",
-      "xLabel": {
-        "nb": "Andel av MR-undersøkelsene utført på pasienter i pakkeforløp",
-        "en": "tmp"
-      },
-      "yLabel": {
-        "nb": "Antall PSA-tester, rate pr. 10 000 menn (snitt 2018-2021)",
-        "en": "Referral areas"
-      },
-      "format": ",.0f"
-    },
-    {
-      "type": "barchart",
-      "data": "datasett_1",
-      "x": [
         "pfsnitt",
         "npfsnitt"
       ],
@@ -42,13 +25,30 @@
       "yLabel": {
         "nb": "Opptaksområder",
         "en": "Referral areas"
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "psasnitt"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Andel av MR-undersøkelsene utført på pasienter i pakkeforløp",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Antall PSA-tester, rate pr. 10 000 menn (snitt 2018-2021)",
+        "en": "Referral areas"
       }
     },
     {
       "type": "barchart",
       "data": "datasett_1",
       "x": [
-        "k_f_us_ant",
+        "k_f_us_rate",
         "ik_f_us_rate"
       ],
       "y": "bohf",
@@ -58,8 +58,8 @@
           "Ikke kreftdiagnsoe før MR"
         ],
         "en": [
-          "Pakkeforløp",
-          "Ikke pakkeforløp"
+          "Kreftdiagnose før MR",
+          "Ikke kreftdiagnsoe før MR"
         ]
       },
       "xLabel": {
