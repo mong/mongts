@@ -57,6 +57,21 @@
       }
     },
     {
+      "type": "linechart",
+      "data": "linjedata",
+      "x": "year",
+      "y": "rate",
+      "label": "bohf",
+      "xLabel": {
+        "nb": "År",
+        "en": "Year"
+      },
+      "yLabel": {
+        "nb": "Antall med epilepsi pr. 1 000 innbyggere",
+        "en": "Number of epilepsy patients per 1,000 inhabitants"
+      }
+    },
+    {
       "type": "table",
       "data": "qwerty",
       "caption": {
@@ -519,6 +534,54 @@
           "andel3_prim": 0.142671252388,
           "pas_rate_barn": 4.35484743416,
           "pas_rate_eldre": 6.1516249726
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "linjedata",
+      "description": "Ekstradatasett til linjediagram",
+      "national": "Norge",
+      "data": [
+        {
+          "year": 2019,
+          "rate": 2.8558,
+          "bohf": "Norge"
+        },
+        {
+          "year": 2018,
+          "rate": 4.8558,
+          "bohf": "Norge"
+        },
+        {
+          "year": 2020,
+          "rate": 3.8558,
+          "bohf": "Norge"
+        },
+        {
+          "year": 2018,
+          "rate": 1.8558,
+          "bohf": "UNN"
+        },
+        {
+          "year": 2019,
+          "rate": 3.8558,
+          "bohf": "UNN"
+        },
+        {
+          "year": 2020,
+          "rate": 2,
+          "bohf": "UNN"
+        },
+        {
+          "year": 2021,
+          "rate": 3.8558,
+          "bohf": "UNN"
+        },
+        {
+          "year": 2021,
+          "rate": 1.8558,
+          "bohf": "Norge"
         }
       ]
     }
