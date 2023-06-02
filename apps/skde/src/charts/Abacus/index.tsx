@@ -95,6 +95,12 @@ export const Abacus = <Data, X extends string & keyof Data>({
     nb: "Opptaksområder",
     nn: "Opptaksområde",
   };
+  const selectedText = {
+    en: "Selected",
+    nb: "Valgte",
+    nn: "Valde",
+  };
+
   const nationalLabel = { en: "Norway", nb: "Norge", nn: "Noreg" };
 
   const xScale = scaleLinear<number>({
@@ -190,9 +196,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
                 </div>
                 {selected_bohf.length === 1
                   ? selected_bohf[0]
-                  : lang === "en"
-                  ? `Selected ${valuesLabel[lang].toLowerCase()}`
-                  : `Valgte ${valuesLabel[lang].toLowerCase()}`}
+                  : `${selectedText[lang]} ${valuesLabel[lang].toLowerCase()}`}
               </>
             </li>
           ) : (
