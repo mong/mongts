@@ -25,6 +25,9 @@ type LinechartProps<
   x: X;
   y: Y;
   label: Label;
+  lang: "en" | "nb" | "nn";
+  xLabel?: { en: string; nb: string; nn: string };
+  yLabel?: { en: string; nb: string; nn: string };
 };
 
 export const Linechart = <
@@ -37,12 +40,11 @@ export const Linechart = <
   x,
   y,
   label,
+  lang,
+  xLabel,
+  yLabel,
 }: LinechartProps<Data, X, Y, Label>) => {
-  const xValues = data.map((d) => d[x]);
-  const yValues: number[] = data.map((d) => d[y]);
-  const labels = data.map((d) => d[label]);
-
-  let uniqueLabels = Array.from(new Set(labels));
+  let uniqueLabels = Array.from(new Set(data.map((d) => d[label])));
 
   const values = uniqueLabels.map((l) => {
     return {
@@ -69,8 +71,30 @@ export const Linechart = <
         xScale={{ type: "band" }}
         yScale={{ type: "linear" }}
       >
-        <Axis orientation="bottom" />
-        <Axis orientation="left" />
+        <Axis
+          orientation="bottom"
+          label={xLabel[lang]}
+          labelProps={{
+            fontSize: 14,
+            textAnchor: "middle",
+            fontWeight: "bold",
+          }}
+        />
+        <Axis
+          orientation="left"
+          tickLabelProps={() => ({
+            fontSize: 14,
+            fill: "black",
+            textAnchor: "end",
+          })}
+          label={yLabel[lang]}
+          labelProps={{
+            fontSize: 14,
+            textAnchor: "middle",
+            fontWeight: "bold",
+            y: -35,
+          }}
+        />
         <Grid columns={false} numTicks={4} />
         {values.map((plots, i) => (
           <LineSeries

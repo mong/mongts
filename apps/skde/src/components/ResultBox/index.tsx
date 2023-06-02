@@ -108,7 +108,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
                 key={bd.type + i + id}
                 label={bd.type}
               >
-                <Linechart {...bd} data={figData} />
+                <Linechart {...bd} data={figData} lang={lang} />
               </CarouselItem>
             );
           }
