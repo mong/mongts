@@ -1,0 +1,1719 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "totsnitt"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Antall per 10 000 innbyggere",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "tot2018",
+        "tot2019",
+        "tot2020",
+        "tot2021",
+        "tot2022"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022"
+        ],
+        "en": [
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022"
+        ]
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "linechart",
+      "data": "datasett_2",
+      "label": "ermann",
+      "x": [
+        "alder"
+      ],
+      "y": "pctandel",
+      "xLabel": {
+        "nb": "Alder, ettårig",
+        "en": "Alder, ettårig"
+      },
+      "yLabel": {
+        "nb": "Andel",
+        "en": "Andel"
+      }
+    },
+    {
+      "type": "table",
+      "data": "datasett_1",
+      "caption": {
+        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 innbyggere",
+        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 innbyggere"
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområder",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "totsnitt",
+          "label_no": "MR Rate",
+          "label_en": "Rate",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "tot_events",
+          "label_no": "Undersøkelser",
+          "label_en": "Examinations",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "tot_pas",
+          "label_no": "Pasienter",
+          "label_en": "Patients",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "tot_pop",
+          "label_no": "Innbyggere",
+          "label_en": "Inhabitants",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "tot_pr_pas",
+          "label_no": "Undersøkelser pr. pas.",
+          "label_en": "Examinations per patient",
+          "typeVar": "number",
+          "format": ",.2f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "datasett_1",
+      "x": "totsnitt",
+      "caption": {
+        "nb": "Antall per 10 000 innbyggere",
+        "en": "tmp"
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": 30.3746690809,
+          "min": 25.3374331685,
+          "lag_min": 32.1367616144,
+          "grense": 31.2557153477
+        },
+        {
+          "cluster": 2,
+          "max": 37.3343135246,
+          "min": 32.1367616144,
+          "lag_min": 39.5432644725,
+          "grense": 38.4387889985
+        },
+        {
+          "cluster": 3,
+          "max": 46.7131506242,
+          "min": 39.5432644725,
+          "lag_min": 51.1959355038,
+          "grense": 48.954543064
+        }
+      ],
+      "format": ",.0f"
+    },
+    {
+      "type": "data",
+      "label": "datasett_1",
+      "national": "Norge",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "data": [
+        {
+          "bohf": "Finnmark",
+          "tot2018": 21.981160024,
+          "tot2019": 28.3148135379,
+          "tot2020": 24.8663576317,
+          "tot2021": 32.3574803755,
+          "tot2022": 35.7777364088,
+          "totsnitt": 28.6012930618,
+          "tot_events": 217.2,
+          "tot_pas": 209.8,
+          "tot_pop": 75263.4,
+          "tot_pr_pas": 1.03527168732
+        },
+        {
+          "bohf": "UNN",
+          "tot2018": 35.8912865736,
+          "tot2019": 34.1935028546,
+          "tot2020": 40.2441338183,
+          "tot2021": 48.3729968611,
+          "tot2022": 56.6811876058,
+          "totsnitt": 43.0520070033,
+          "tot_events": 836.8,
+          "tot_pas": 798,
+          "tot_pop": 193459,
+          "tot_pr_pas": 1.04862155388
+        },
+        {
+          "bohf": "Nordland",
+          "tot2018": 27.8840424265,
+          "tot2019": 33.5639278986,
+          "tot2020": 25.9857799411,
+          "tot2021": 34.0300184197,
+          "tot2022": 30.4287089328,
+          "totsnitt": 30.3746690809,
+          "tot_events": 413.8,
+          "tot_pas": 395,
+          "tot_pop": 137648.4,
+          "tot_pr_pas": 1.04759493671
+        },
+        {
+          "bohf": "Helgeland",
+          "tot2018": 27.1380876122,
+          "tot2019": 31.8056985874,
+          "tot2020": 30.8389773444,
+          "tot2021": 38.2874139444,
+          "tot2022": 32.7246489501,
+          "totsnitt": 32.1367616144,
+          "tot_events": 247.8,
+          "tot_pas": 238.4,
+          "tot_pop": 77916.8,
+          "tot_pr_pas": 1.0394295302
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "tot2018": 25.4710526571,
+          "tot2019": 29.6010229265,
+          "tot2020": 30.1570804492,
+          "tot2021": 32.0951051785,
+          "tot2022": 27.3616232344,
+          "totsnitt": 28.9602608752,
+          "tot_events": 380.4,
+          "tot_pas": 362.2,
+          "tot_pop": 135042.4,
+          "tot_pr_pas": 1.0502484815
+        },
+        {
+          "bohf": "St. Olav",
+          "tot2018": 38.5660669719,
+          "tot2019": 37.2789622524,
+          "tot2020": 35.8600482658,
+          "tot2021": 38.8625889209,
+          "tot2022": 35.593733325,
+          "totsnitt": 37.2023265884,
+          "tot_events": 1245.4,
+          "tot_pas": 1196.8,
+          "tot_pop": 333346.6,
+          "tot_pr_pas": 1.04060828877
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "tot2018": 48.2173714153,
+          "tot2019": 49.9320987896,
+          "tot2020": 45.7240786149,
+          "tot2021": 56.0442942269,
+          "tot2022": 55.9619378492,
+          "totsnitt": 51.1959355038,
+          "tot_events": 1343.6,
+          "tot_pas": 1285,
+          "tot_pop": 265204.2,
+          "tot_pr_pas": 1.04560311284
+        },
+        {
+          "bohf": "Førde",
+          "tot2018": 22.2993815551,
+          "tot2019": 26.6431122832,
+          "tot2020": 22.1100703847,
+          "tot2021": 29.599251419,
+          "tot2022": 26.0077455863,
+          "totsnitt": 25.3374331685,
+          "tot_events": 267,
+          "tot_pas": 256.2,
+          "tot_pop": 108588.2,
+          "tot_pr_pas": 1.04215456674
+        },
+        {
+          "bohf": "Bergen",
+          "tot2018": 38.9921896723,
+          "tot2019": 39.3603062073,
+          "tot2020": 36.4795857914,
+          "tot2021": 43.3585700727,
+          "tot2022": 39.5663975723,
+          "totsnitt": 39.5432644725,
+          "tot_events": 1792.4,
+          "tot_pas": 1745.4,
+          "tot_pop": 455966.6,
+          "tot_pr_pas": 1.02692792483
+        },
+        {
+          "bohf": "Fonna",
+          "tot2018": 38.7994621763,
+          "tot2019": 38.4252051026,
+          "tot2020": 37.6210382975,
+          "tot2021": 41.4594865846,
+          "tot2022": 42.2904165423,
+          "totsnitt": 39.7282358477,
+          "tot_events": 703,
+          "tot_pas": 671,
+          "tot_pop": 180623.6,
+          "tot_pr_pas": 1.0476900149
+        },
+        {
+          "bohf": "Stavanger",
+          "tot2018": 44.1027209763,
+          "tot2019": 45.4448504041,
+          "tot2020": 42.0257349624,
+          "tot2021": 49.5324681734,
+          "tot2022": 52.1897077828,
+          "totsnitt": 46.7131506242,
+          "tot_events": 1702.4,
+          "tot_pas": 1601.2,
+          "tot_pop": 370595.4,
+          "tot_pr_pas": 1.06320259805
+        },
+        {
+          "bohf": "Østfold",
+          "tot2018": 35.4633591557,
+          "tot2019": 32.6188297533,
+          "tot2020": 35.1744338483,
+          "tot2021": 37.9773693594,
+          "tot2022": 41.8337045166,
+          "totsnitt": 36.6478040126,
+          "tot_events": 1165.8,
+          "tot_pas": 1114.2,
+          "tot_pop": 317597.6,
+          "tot_pr_pas": 1.04631125471
+        },
+        {
+          "bohf": "Akershus",
+          "tot2018": 35.9708978542,
+          "tot2019": 35.6524084633,
+          "tot2020": 35.5984452004,
+          "tot2021": 42.91732699,
+          "tot2022": 49.2193482307,
+          "totsnitt": 39.9755023735,
+          "tot_events": 2317.6,
+          "tot_pas": 2215.4,
+          "tot_pop": 577585,
+          "tot_pr_pas": 1.04613162409
+        },
+        {
+          "bohf": "OUS",
+          "tot2018": 35.5995265092,
+          "tot2019": 37.5330452151,
+          "tot2020": 34.13431934,
+          "tot2021": 46.3258336405,
+          "tot2022": 48.6104698343,
+          "totsnitt": 40.5309952951,
+          "tot_events": 1112.2,
+          "tot_pas": 1058.6,
+          "tot_pop": 277343.6,
+          "tot_pr_pas": 1.05063291139
+        },
+        {
+          "bohf": "Lovisenberg",
+          "tot2018": 29.1495295377,
+          "tot2019": 33.5000969752,
+          "tot2020": 34.8018300467,
+          "tot2021": 41.3577831912,
+          "tot2022": 46.8176326836,
+          "totsnitt": 37.3343135246,
+          "tot_events": 604.6,
+          "tot_pas": 579.2,
+          "tot_pop": 158383.6,
+          "tot_pr_pas": 1.04385359116
+        },
+        {
+          "bohf": "Diakonhjemmet",
+          "tot2018": 28.2284974401,
+          "tot2019": 34.4329750839,
+          "tot2020": 31.2461317767,
+          "tot2021": 41.1955150894,
+          "tot2022": 39.6107282848,
+          "totsnitt": 34.9868915485,
+          "tot_events": 503.6,
+          "tot_pas": 486.8,
+          "tot_pop": 143065.8,
+          "tot_pr_pas": 1.03451109285
+        },
+        {
+          "bohf": "Innlandet",
+          "tot2018": 42.2568740878,
+          "tot2019": 40.7659269252,
+          "tot2020": 40.6251054078,
+          "tot2021": 49.7831234879,
+          "tot2022": 49.6617098315,
+          "totsnitt": 44.6289244464,
+          "tot_events": 1530.8,
+          "tot_pas": 1452,
+          "tot_pop": 338587.6,
+          "tot_pr_pas": 1.05426997245
+        },
+        {
+          "bohf": "Vestre Viken",
+          "tot2018": 27.3711061401,
+          "tot2019": 27.8221322474,
+          "tot2020": 23.8885456353,
+          "tot2021": 28.6892964087,
+          "tot2022": 27.2252284074,
+          "totsnitt": 26.9930150627,
+          "tot_events": 1314.2,
+          "tot_pas": 1274,
+          "tot_pop": 488231.4,
+          "tot_pr_pas": 1.03155416013
+        },
+        {
+          "bohf": "Vestfold",
+          "tot2018": 48.6968446081,
+          "tot2019": 42.6307555836,
+          "tot2020": 43.6773129898,
+          "tot2021": 47.4389319551,
+          "tot2022": 46.8733053416,
+          "totsnitt": 45.8959286099,
+          "tot_events": 1136.4,
+          "tot_pas": 1101,
+          "tot_pop": 246406,
+          "tot_pr_pas": 1.03215258856
+        },
+        {
+          "bohf": "Telemark",
+          "tot2018": 31.9664870045,
+          "tot2019": 25.8702999711,
+          "tot2020": 26.2399339321,
+          "tot2021": 23.9817624541,
+          "tot2022": 27.5485326877,
+          "totsnitt": 27.1086057578,
+          "tot_events": 469,
+          "tot_pas": 458.8,
+          "tot_pop": 173513.6,
+          "tot_pr_pas": 1.02223190933
+        },
+        {
+          "bohf": "Sørlandet",
+          "tot2018": 29.4441706797,
+          "tot2019": 29.4588303173,
+          "tot2020": 29.4828438152,
+          "tot2021": 35.6662807797,
+          "tot2022": 37.9812761277,
+          "totsnitt": 32.453590592,
+          "tot_events": 989.2,
+          "tot_pas": 935.2,
+          "tot_pop": 307241.2,
+          "tot_pr_pas": 1.05774165954
+        },
+        {
+          "bohf": "Norge",
+          "tot2018": 35.6805162026,
+          "tot2019": 35.8056323585,
+          "tot2020": 34.6002573682,
+          "tot2021": 40.9616317239,
+          "tot2022": 41.7593029002,
+          "totsnitt": 37.7873741978,
+          "tot_events": 20293.4,
+          "tot_pas": 19434.4,
+          "tot_pop": 5361610,
+          "tot_pr_pas": 1.0441999753
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "datasett_2",
+      "description": "Ekstradatasettet for gitt resultatboks",
+      "data": [
+        {
+          "alder": 0,
+          "ermann": "Kvinner",
+          "pctandel": 7.426165351e-06,
+          "bohf": null
+        },
+        {
+          "alder": 0,
+          "ermann": "Menn",
+          "pctandel": 7.03650538996e-06,
+          "bohf": null
+        },
+        {
+          "alder": 1,
+          "ermann": "Kvinner",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 1,
+          "ermann": "Menn",
+          "pctandel": 6.88112850507e-06,
+          "bohf": null
+        },
+        {
+          "alder": 2,
+          "ermann": "Kvinner",
+          "pctandel": 7.10378631811e-06,
+          "bohf": null
+        },
+        {
+          "alder": 2,
+          "ermann": "Menn",
+          "pctandel": 1.33661248931e-05,
+          "bohf": null
+        },
+        {
+          "alder": 3,
+          "ermann": "Kvinner",
+          "pctandel": 6.95739292572e-06,
+          "bohf": null
+        },
+        {
+          "alder": 3,
+          "ermann": "Menn",
+          "pctandel": 1.31116588871e-05,
+          "bohf": null
+        },
+        {
+          "alder": 4,
+          "ermann": "Kvinner",
+          "pctandel": 1.364526407e-05,
+          "bohf": null
+        },
+        {
+          "alder": 4,
+          "ermann": "Menn",
+          "pctandel": 6.45323662083e-06,
+          "bohf": null
+        },
+        {
+          "alder": 5,
+          "ermann": "Kvinner",
+          "pctandel": 6.69891075711e-05,
+          "bohf": null
+        },
+        {
+          "alder": 5,
+          "ermann": "Menn",
+          "pctandel": 3.17313245289e-05,
+          "bohf": null
+        },
+        {
+          "alder": 6,
+          "ermann": "Kvinner",
+          "pctandel": 8.61280790788e-05,
+          "bohf": null
+        },
+        {
+          "alder": 6,
+          "ermann": "Menn",
+          "pctandel": 5.66322678077e-05,
+          "bohf": null
+        },
+        {
+          "alder": 7,
+          "ermann": "Kvinner",
+          "pctandel": 0.000260569344017,
+          "bohf": null
+        },
+        {
+          "alder": 7,
+          "ermann": "Menn",
+          "pctandel": 9.91682265002e-05,
+          "bohf": null
+        },
+        {
+          "alder": 8,
+          "ermann": "Kvinner",
+          "pctandel": 0.000428599758193,
+          "bohf": null
+        },
+        {
+          "alder": 8,
+          "ermann": "Menn",
+          "pctandel": 0.000182588372772,
+          "bohf": null
+        },
+        {
+          "alder": 9,
+          "ermann": "Kvinner",
+          "pctandel": 0.00088524673091,
+          "bohf": null
+        },
+        {
+          "alder": 9,
+          "ermann": "Menn",
+          "pctandel": 0.000377401441314,
+          "bohf": null
+        },
+        {
+          "alder": 10,
+          "ermann": "Kvinner",
+          "pctandel": 0.00162564742354,
+          "bohf": null
+        },
+        {
+          "alder": 10,
+          "ermann": "Menn",
+          "pctandel": 0.000668940267218,
+          "bohf": null
+        },
+        {
+          "alder": 11,
+          "ermann": "Kvinner",
+          "pctandel": 0.00209180051887,
+          "bohf": null
+        },
+        {
+          "alder": 11,
+          "ermann": "Menn",
+          "pctandel": 0.00104911153367,
+          "bohf": null
+        },
+        {
+          "alder": 12,
+          "ermann": "Kvinner",
+          "pctandel": 0.00251858883088,
+          "bohf": null
+        },
+        {
+          "alder": 12,
+          "ermann": "Menn",
+          "pctandel": 0.00123783199135,
+          "bohf": null
+        },
+        {
+          "alder": 13,
+          "ermann": "Kvinner",
+          "pctandel": 0.00337330615948,
+          "bohf": null
+        },
+        {
+          "alder": 13,
+          "ermann": "Menn",
+          "pctandel": 0.00160931825635,
+          "bohf": null
+        },
+        {
+          "alder": 14,
+          "ermann": "Kvinner",
+          "pctandel": 0.00421571028917,
+          "bohf": null
+        },
+        {
+          "alder": 14,
+          "ermann": "Menn",
+          "pctandel": 0.00212925236856,
+          "bohf": null
+        },
+        {
+          "alder": 15,
+          "ermann": "Kvinner",
+          "pctandel": 0.00440631550257,
+          "bohf": null
+        },
+        {
+          "alder": 15,
+          "ermann": "Menn",
+          "pctandel": 0.00285800892045,
+          "bohf": null
+        },
+        {
+          "alder": 16,
+          "ermann": "Kvinner",
+          "pctandel": 0.00441682301438,
+          "bohf": null
+        },
+        {
+          "alder": 16,
+          "ermann": "Menn",
+          "pctandel": 0.00333064566148,
+          "bohf": null
+        },
+        {
+          "alder": 17,
+          "ermann": "Kvinner",
+          "pctandel": 0.00462146038148,
+          "bohf": null
+        },
+        {
+          "alder": 17,
+          "ermann": "Menn",
+          "pctandel": 0.00371153940224,
+          "bohf": null
+        },
+        {
+          "alder": 18,
+          "ermann": "Kvinner",
+          "pctandel": 0.00414812918094,
+          "bohf": null
+        },
+        {
+          "alder": 18,
+          "ermann": "Menn",
+          "pctandel": 0.00334836887462,
+          "bohf": null
+        },
+        {
+          "alder": 19,
+          "ermann": "Kvinner",
+          "pctandel": 0.00386849656735,
+          "bohf": null
+        },
+        {
+          "alder": 19,
+          "ermann": "Menn",
+          "pctandel": 0.00356857745422,
+          "bohf": null
+        },
+        {
+          "alder": 20,
+          "ermann": "Kvinner",
+          "pctandel": 0.00392452356284,
+          "bohf": null
+        },
+        {
+          "alder": 20,
+          "ermann": "Menn",
+          "pctandel": 0.00340941653947,
+          "bohf": null
+        },
+        {
+          "alder": 21,
+          "ermann": "Kvinner",
+          "pctandel": 0.00421675217475,
+          "bohf": null
+        },
+        {
+          "alder": 21,
+          "ermann": "Menn",
+          "pctandel": 0.00325096782346,
+          "bohf": null
+        },
+        {
+          "alder": 22,
+          "ermann": "Kvinner",
+          "pctandel": 0.00435391454831,
+          "bohf": null
+        },
+        {
+          "alder": 22,
+          "ermann": "Menn",
+          "pctandel": 0.00346316401044,
+          "bohf": null
+        },
+        {
+          "alder": 23,
+          "ermann": "Kvinner",
+          "pctandel": 0.00447659440969,
+          "bohf": null
+        },
+        {
+          "alder": 23,
+          "ermann": "Menn",
+          "pctandel": 0.00356935430212,
+          "bohf": null
+        },
+        {
+          "alder": 24,
+          "ermann": "Kvinner",
+          "pctandel": 0.00412238210993,
+          "bohf": null
+        },
+        {
+          "alder": 24,
+          "ermann": "Menn",
+          "pctandel": 0.00390742076927,
+          "bohf": null
+        },
+        {
+          "alder": 25,
+          "ermann": "Kvinner",
+          "pctandel": 0.00446247699307,
+          "bohf": null
+        },
+        {
+          "alder": 25,
+          "ermann": "Menn",
+          "pctandel": 0.00368144334395,
+          "bohf": null
+        },
+        {
+          "alder": 26,
+          "ermann": "Kvinner",
+          "pctandel": 0.00477386507311,
+          "bohf": null
+        },
+        {
+          "alder": 26,
+          "ermann": "Menn",
+          "pctandel": 0.00429470248449,
+          "bohf": null
+        },
+        {
+          "alder": 27,
+          "ermann": "Kvinner",
+          "pctandel": 0.00469135938907,
+          "bohf": null
+        },
+        {
+          "alder": 27,
+          "ermann": "Menn",
+          "pctandel": 0.00418781256766,
+          "bohf": null
+        },
+        {
+          "alder": 28,
+          "ermann": "Kvinner",
+          "pctandel": 0.00484018710331,
+          "bohf": null
+        },
+        {
+          "alder": 28,
+          "ermann": "Menn",
+          "pctandel": 0.00413880598567,
+          "bohf": null
+        },
+        {
+          "alder": 29,
+          "ermann": "Kvinner",
+          "pctandel": 0.00452512890734,
+          "bohf": null
+        },
+        {
+          "alder": 29,
+          "ermann": "Menn",
+          "pctandel": 0.00413671748381,
+          "bohf": null
+        },
+        {
+          "alder": 30,
+          "ermann": "Kvinner",
+          "pctandel": 0.00465960342665,
+          "bohf": null
+        },
+        {
+          "alder": 30,
+          "ermann": "Menn",
+          "pctandel": 0.00403171686094,
+          "bohf": null
+        },
+        {
+          "alder": 31,
+          "ermann": "Kvinner",
+          "pctandel": 0.00493909525244,
+          "bohf": null
+        },
+        {
+          "alder": 31,
+          "ermann": "Menn",
+          "pctandel": 0.00390963252565,
+          "bohf": null
+        },
+        {
+          "alder": 32,
+          "ermann": "Kvinner",
+          "pctandel": 0.00486552754578,
+          "bohf": null
+        },
+        {
+          "alder": 32,
+          "ermann": "Menn",
+          "pctandel": 0.00386944553677,
+          "bohf": null
+        },
+        {
+          "alder": 33,
+          "ermann": "Kvinner",
+          "pctandel": 0.00472961707331,
+          "bohf": null
+        },
+        {
+          "alder": 33,
+          "ermann": "Menn",
+          "pctandel": 0.00408109112137,
+          "bohf": null
+        },
+        {
+          "alder": 34,
+          "ermann": "Kvinner",
+          "pctandel": 0.00507660178954,
+          "bohf": null
+        },
+        {
+          "alder": 34,
+          "ermann": "Menn",
+          "pctandel": 0.00421306856299,
+          "bohf": null
+        },
+        {
+          "alder": 35,
+          "ermann": "Kvinner",
+          "pctandel": 0.00514583678388,
+          "bohf": null
+        },
+        {
+          "alder": 35,
+          "ermann": "Menn",
+          "pctandel": 0.00397338157385,
+          "bohf": null
+        },
+        {
+          "alder": 36,
+          "ermann": "Kvinner",
+          "pctandel": 0.00484854774176,
+          "bohf": null
+        },
+        {
+          "alder": 36,
+          "ermann": "Menn",
+          "pctandel": 0.00372180082924,
+          "bohf": null
+        },
+        {
+          "alder": 37,
+          "ermann": "Kvinner",
+          "pctandel": 0.00538089059821,
+          "bohf": null
+        },
+        {
+          "alder": 37,
+          "ermann": "Menn",
+          "pctandel": 0.00392930529445,
+          "bohf": null
+        },
+        {
+          "alder": 38,
+          "ermann": "Kvinner",
+          "pctandel": 0.00541236512782,
+          "bohf": null
+        },
+        {
+          "alder": 38,
+          "ermann": "Menn",
+          "pctandel": 0.0040527571362,
+          "bohf": null
+        },
+        {
+          "alder": 39,
+          "ermann": "Kvinner",
+          "pctandel": 0.00559829184826,
+          "bohf": null
+        },
+        {
+          "alder": 39,
+          "ermann": "Menn",
+          "pctandel": 0.00371191563527,
+          "bohf": null
+        },
+        {
+          "alder": 40,
+          "ermann": "Kvinner",
+          "pctandel": 0.0056589046442,
+          "bohf": null
+        },
+        {
+          "alder": 40,
+          "ermann": "Menn",
+          "pctandel": 0.00377501786991,
+          "bohf": null
+        },
+        {
+          "alder": 41,
+          "ermann": "Kvinner",
+          "pctandel": 0.00520957087868,
+          "bohf": null
+        },
+        {
+          "alder": 41,
+          "ermann": "Menn",
+          "pctandel": 0.00403178455396,
+          "bohf": null
+        },
+        {
+          "alder": 42,
+          "ermann": "Kvinner",
+          "pctandel": 0.00535431576825,
+          "bohf": null
+        },
+        {
+          "alder": 42,
+          "ermann": "Menn",
+          "pctandel": 0.00405248614139,
+          "bohf": null
+        },
+        {
+          "alder": 43,
+          "ermann": "Kvinner",
+          "pctandel": 0.00518234726406,
+          "bohf": null
+        },
+        {
+          "alder": 43,
+          "ermann": "Menn",
+          "pctandel": 0.00367440956901,
+          "bohf": null
+        },
+        {
+          "alder": 44,
+          "ermann": "Kvinner",
+          "pctandel": 0.00562845283934,
+          "bohf": null
+        },
+        {
+          "alder": 44,
+          "ermann": "Menn",
+          "pctandel": 0.00359568298792,
+          "bohf": null
+        },
+        {
+          "alder": 45,
+          "ermann": "Kvinner",
+          "pctandel": 0.0054504974213,
+          "bohf": null
+        },
+        {
+          "alder": 45,
+          "ermann": "Menn",
+          "pctandel": 0.00383498339244,
+          "bohf": null
+        },
+        {
+          "alder": 46,
+          "ermann": "Kvinner",
+          "pctandel": 0.0058106169297,
+          "bohf": null
+        },
+        {
+          "alder": 46,
+          "ermann": "Menn",
+          "pctandel": 0.00413132034268,
+          "bohf": null
+        },
+        {
+          "alder": 47,
+          "ermann": "Kvinner",
+          "pctandel": 0.00574311426234,
+          "bohf": null
+        },
+        {
+          "alder": 47,
+          "ermann": "Menn",
+          "pctandel": 0.00384960596014,
+          "bohf": null
+        },
+        {
+          "alder": 48,
+          "ermann": "Kvinner",
+          "pctandel": 0.00613619869802,
+          "bohf": null
+        },
+        {
+          "alder": 48,
+          "ermann": "Menn",
+          "pctandel": 0.00375750213611,
+          "bohf": null
+        },
+        {
+          "alder": 49,
+          "ermann": "Kvinner",
+          "pctandel": 0.00635115424155,
+          "bohf": null
+        },
+        {
+          "alder": 49,
+          "ermann": "Menn",
+          "pctandel": 0.00388568499295,
+          "bohf": null
+        },
+        {
+          "alder": 50,
+          "ermann": "Kvinner",
+          "pctandel": 0.006426380617,
+          "bohf": null
+        },
+        {
+          "alder": 50,
+          "ermann": "Menn",
+          "pctandel": 0.00383274361425,
+          "bohf": null
+        },
+        {
+          "alder": 51,
+          "ermann": "Kvinner",
+          "pctandel": 0.006932380609,
+          "bohf": null
+        },
+        {
+          "alder": 51,
+          "ermann": "Menn",
+          "pctandel": 0.00383657640142,
+          "bohf": null
+        },
+        {
+          "alder": 52,
+          "ermann": "Kvinner",
+          "pctandel": 0.00653371152339,
+          "bohf": null
+        },
+        {
+          "alder": 52,
+          "ermann": "Menn",
+          "pctandel": 0.00416769329971,
+          "bohf": null
+        },
+        {
+          "alder": 53,
+          "ermann": "Kvinner",
+          "pctandel": 0.00744630071599,
+          "bohf": null
+        },
+        {
+          "alder": 53,
+          "ermann": "Menn",
+          "pctandel": 0.00427710073291,
+          "bohf": null
+        },
+        {
+          "alder": 54,
+          "ermann": "Kvinner",
+          "pctandel": 0.00696446001033,
+          "bohf": null
+        },
+        {
+          "alder": 54,
+          "ermann": "Menn",
+          "pctandel": 0.00445264157327,
+          "bohf": null
+        },
+        {
+          "alder": 55,
+          "ermann": "Kvinner",
+          "pctandel": 0.0066304188097,
+          "bohf": null
+        },
+        {
+          "alder": 55,
+          "ermann": "Menn",
+          "pctandel": 0.00419811531419,
+          "bohf": null
+        },
+        {
+          "alder": 56,
+          "ermann": "Kvinner",
+          "pctandel": 0.00676561503951,
+          "bohf": null
+        },
+        {
+          "alder": 56,
+          "ermann": "Menn",
+          "pctandel": 0.00440338951913,
+          "bohf": null
+        },
+        {
+          "alder": 57,
+          "ermann": "Kvinner",
+          "pctandel": 0.00675035382438,
+          "bohf": null
+        },
+        {
+          "alder": 57,
+          "ermann": "Menn",
+          "pctandel": 0.00426619146526,
+          "bohf": null
+        },
+        {
+          "alder": 58,
+          "ermann": "Kvinner",
+          "pctandel": 0.00660068079334,
+          "bohf": null
+        },
+        {
+          "alder": 58,
+          "ermann": "Menn",
+          "pctandel": 0.00396290814631,
+          "bohf": null
+        },
+        {
+          "alder": 59,
+          "ermann": "Kvinner",
+          "pctandel": 0.00623705921702,
+          "bohf": null
+        },
+        {
+          "alder": 59,
+          "ermann": "Menn",
+          "pctandel": 0.00402321796014,
+          "bohf": null
+        },
+        {
+          "alder": 60,
+          "ermann": "Kvinner",
+          "pctandel": 0.00554964710432,
+          "bohf": null
+        },
+        {
+          "alder": 60,
+          "ermann": "Menn",
+          "pctandel": 0.00402991145459,
+          "bohf": null
+        },
+        {
+          "alder": 61,
+          "ermann": "Kvinner",
+          "pctandel": 0.00594318933859,
+          "bohf": null
+        },
+        {
+          "alder": 61,
+          "ermann": "Menn",
+          "pctandel": 0.00401522359657,
+          "bohf": null
+        },
+        {
+          "alder": 62,
+          "ermann": "Kvinner",
+          "pctandel": 0.00572316406404,
+          "bohf": null
+        },
+        {
+          "alder": 62,
+          "ermann": "Menn",
+          "pctandel": 0.00392139157804,
+          "bohf": null
+        },
+        {
+          "alder": 63,
+          "ermann": "Kvinner",
+          "pctandel": 0.00487383224176,
+          "bohf": null
+        },
+        {
+          "alder": 63,
+          "ermann": "Menn",
+          "pctandel": 0.00384325844923,
+          "bohf": null
+        },
+        {
+          "alder": 64,
+          "ermann": "Kvinner",
+          "pctandel": 0.00536475611981,
+          "bohf": null
+        },
+        {
+          "alder": 64,
+          "ermann": "Menn",
+          "pctandel": 0.00358980252706,
+          "bohf": null
+        },
+        {
+          "alder": 65,
+          "ermann": "Kvinner",
+          "pctandel": 0.00471189444257,
+          "bohf": null
+        },
+        {
+          "alder": 65,
+          "ermann": "Menn",
+          "pctandel": 0.00353400792391,
+          "bohf": null
+        },
+        {
+          "alder": 66,
+          "ermann": "Kvinner",
+          "pctandel": 0.00465844005975,
+          "bohf": null
+        },
+        {
+          "alder": 66,
+          "ermann": "Menn",
+          "pctandel": 0.0031461537914,
+          "bohf": null
+        },
+        {
+          "alder": 67,
+          "ermann": "Kvinner",
+          "pctandel": 0.00436242096277,
+          "bohf": null
+        },
+        {
+          "alder": 67,
+          "ermann": "Menn",
+          "pctandel": 0.00297723292469,
+          "bohf": null
+        },
+        {
+          "alder": 68,
+          "ermann": "Kvinner",
+          "pctandel": 0.00427724813192,
+          "bohf": null
+        },
+        {
+          "alder": 68,
+          "ermann": "Menn",
+          "pctandel": 0.00325829824588,
+          "bohf": null
+        },
+        {
+          "alder": 69,
+          "ermann": "Kvinner",
+          "pctandel": 0.0038631965149,
+          "bohf": null
+        },
+        {
+          "alder": 69,
+          "ermann": "Menn",
+          "pctandel": 0.00260974505959,
+          "bohf": null
+        },
+        {
+          "alder": 70,
+          "ermann": "Kvinner",
+          "pctandel": 0.00373302487682,
+          "bohf": null
+        },
+        {
+          "alder": 70,
+          "ermann": "Menn",
+          "pctandel": 0.00280003051804,
+          "bohf": null
+        },
+        {
+          "alder": 71,
+          "ermann": "Kvinner",
+          "pctandel": 0.00354641566668,
+          "bohf": null
+        },
+        {
+          "alder": 71,
+          "ermann": "Menn",
+          "pctandel": 0.00304829257512,
+          "bohf": null
+        },
+        {
+          "alder": 72,
+          "ermann": "Kvinner",
+          "pctandel": 0.00320716468488,
+          "bohf": null
+        },
+        {
+          "alder": 72,
+          "ermann": "Menn",
+          "pctandel": 0.00281292850147,
+          "bohf": null
+        },
+        {
+          "alder": 73,
+          "ermann": "Kvinner",
+          "pctandel": 0.00344674659799,
+          "bohf": null
+        },
+        {
+          "alder": 73,
+          "ermann": "Menn",
+          "pctandel": 0.0026995601018,
+          "bohf": null
+        },
+        {
+          "alder": 74,
+          "ermann": "Kvinner",
+          "pctandel": 0.00351506808908,
+          "bohf": null
+        },
+        {
+          "alder": 74,
+          "ermann": "Menn",
+          "pctandel": 0.00258047699726,
+          "bohf": null
+        },
+        {
+          "alder": 75,
+          "ermann": "Kvinner",
+          "pctandel": 0.00306171968059,
+          "bohf": null
+        },
+        {
+          "alder": 75,
+          "ermann": "Menn",
+          "pctandel": 0.00288137849712,
+          "bohf": null
+        },
+        {
+          "alder": 76,
+          "ermann": "Kvinner",
+          "pctandel": 0.00343791557898,
+          "bohf": null
+        },
+        {
+          "alder": 76,
+          "ermann": "Menn",
+          "pctandel": 0.00252481470244,
+          "bohf": null
+        },
+        {
+          "alder": 77,
+          "ermann": "Kvinner",
+          "pctandel": 0.00295552737356,
+          "bohf": null
+        },
+        {
+          "alder": 77,
+          "ermann": "Menn",
+          "pctandel": 0.0022974956095,
+          "bohf": null
+        },
+        {
+          "alder": 78,
+          "ermann": "Kvinner",
+          "pctandel": 0.00323894241489,
+          "bohf": null
+        },
+        {
+          "alder": 78,
+          "ermann": "Menn",
+          "pctandel": 0.00241891891892,
+          "bohf": null
+        },
+        {
+          "alder": 79,
+          "ermann": "Kvinner",
+          "pctandel": 0.00237445690613,
+          "bohf": null
+        },
+        {
+          "alder": 79,
+          "ermann": "Menn",
+          "pctandel": 0.00188826279823,
+          "bohf": null
+        },
+        {
+          "alder": 80,
+          "ermann": "Kvinner",
+          "pctandel": 0.00222859394746,
+          "bohf": null
+        },
+        {
+          "alder": 80,
+          "ermann": "Menn",
+          "pctandel": 0.00179128242553,
+          "bohf": null
+        },
+        {
+          "alder": 81,
+          "ermann": "Kvinner",
+          "pctandel": 0.00198546867132,
+          "bohf": null
+        },
+        {
+          "alder": 81,
+          "ermann": "Menn",
+          "pctandel": 0.00205898820597,
+          "bohf": null
+        },
+        {
+          "alder": 82,
+          "ermann": "Kvinner",
+          "pctandel": 0.00180188576666,
+          "bohf": null
+        },
+        {
+          "alder": 82,
+          "ermann": "Menn",
+          "pctandel": 0.00161684755149,
+          "bohf": null
+        },
+        {
+          "alder": 83,
+          "ermann": "Kvinner",
+          "pctandel": 0.0018025606469,
+          "bohf": null
+        },
+        {
+          "alder": 83,
+          "ermann": "Menn",
+          "pctandel": 0.00111280176231,
+          "bohf": null
+        },
+        {
+          "alder": 84,
+          "ermann": "Kvinner",
+          "pctandel": 0.0016140273651,
+          "bohf": null
+        },
+        {
+          "alder": 84,
+          "ermann": "Menn",
+          "pctandel": 0.00140780178151,
+          "bohf": null
+        },
+        {
+          "alder": 85,
+          "ermann": "Kvinner",
+          "pctandel": 0.00101715470532,
+          "bohf": null
+        },
+        {
+          "alder": 85,
+          "ermann": "Menn",
+          "pctandel": 0.000973570426367,
+          "bohf": null
+        },
+        {
+          "alder": 86,
+          "ermann": "Kvinner",
+          "pctandel": 0.000794048813106,
+          "bohf": null
+        },
+        {
+          "alder": 86,
+          "ermann": "Menn",
+          "pctandel": 0.000839956063837,
+          "bohf": null
+        },
+        {
+          "alder": 87,
+          "ermann": "Kvinner",
+          "pctandel": 0.000873088719246,
+          "bohf": null
+        },
+        {
+          "alder": 87,
+          "ermann": "Menn",
+          "pctandel": 0.000690231409162,
+          "bohf": null
+        },
+        {
+          "alder": 88,
+          "ermann": "Kvinner",
+          "pctandel": 0.000685032049714,
+          "bohf": null
+        },
+        {
+          "alder": 88,
+          "ermann": "Menn",
+          "pctandel": 0.000754463911476,
+          "bohf": null
+        },
+        {
+          "alder": 89,
+          "ermann": "Kvinner",
+          "pctandel": 0.000730697410084,
+          "bohf": null
+        },
+        {
+          "alder": 89,
+          "ermann": "Menn",
+          "pctandel": 0.000443611987382,
+          "bohf": null
+        },
+        {
+          "alder": 90,
+          "ermann": "Kvinner",
+          "pctandel": 0.000558763270628,
+          "bohf": null
+        },
+        {
+          "alder": 90,
+          "ermann": "Menn",
+          "pctandel": 0.000603099933659,
+          "bohf": null
+        },
+        {
+          "alder": 91,
+          "ermann": "Kvinner",
+          "pctandel": 0.000430585955721,
+          "bohf": null
+        },
+        {
+          "alder": 91,
+          "ermann": "Menn",
+          "pctandel": 0.000515767757147,
+          "bohf": null
+        },
+        {
+          "alder": 92,
+          "ermann": "Kvinner",
+          "pctandel": 0.000299388392284,
+          "bohf": null
+        },
+        {
+          "alder": 92,
+          "ermann": "Menn",
+          "pctandel": 0.000655369347439,
+          "bohf": null
+        },
+        {
+          "alder": 93,
+          "ermann": "Kvinner",
+          "pctandel": 0.00035936136352,
+          "bohf": null
+        },
+        {
+          "alder": 93,
+          "ermann": "Menn",
+          "pctandel": 0.000242865816636,
+          "bohf": null
+        },
+        {
+          "alder": 94,
+          "ermann": "Kvinner",
+          "pctandel": 0.000255444153522,
+          "bohf": null
+        },
+        {
+          "alder": 94,
+          "ermann": "Menn",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 95,
+          "ermann": "Kvinner",
+          "pctandel": 0.000162232316677,
+          "bohf": null
+        },
+        {
+          "alder": 95,
+          "ermann": "Menn",
+          "pctandel": 0.00022143489814,
+          "bohf": null
+        },
+        {
+          "alder": 96,
+          "ermann": "Kvinner",
+          "pctandel": 0.000212381862589,
+          "bohf": null
+        },
+        {
+          "alder": 96,
+          "ermann": "Menn",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 97,
+          "ermann": "Kvinner",
+          "pctandel": 0.000289393720156,
+          "bohf": null
+        },
+        {
+          "alder": 97,
+          "ermann": "Menn",
+          "pctandel": 0.000505561172902,
+          "bohf": null
+        },
+        {
+          "alder": 98,
+          "ermann": "Kvinner",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 98,
+          "ermann": "Menn",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 99,
+          "ermann": "Kvinner",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 99,
+          "ermann": "Menn",
+          "pctandel": 0.00135135135135,
+          "bohf": null
+        },
+        {
+          "alder": 100,
+          "ermann": "Kvinner",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 100,
+          "ermann": "Menn",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 101,
+          "ermann": "Kvinner",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 101,
+          "ermann": "Menn",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 102,
+          "ermann": "Kvinner",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 102,
+          "ermann": "Menn",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 103,
+          "ermann": "Kvinner",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 103,
+          "ermann": "Menn",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 104,
+          "ermann": "Kvinner",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 104,
+          "ermann": "Menn",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 105,
+          "ermann": "Kvinner",
+          "pctandel": 0,
+          "bohf": null
+        },
+        {
+          "alder": 105,
+          "ermann": "Menn",
+          "pctandel": 0,
+          "bohf": null
+        }
+      ]
+    }
+  ]
+}
