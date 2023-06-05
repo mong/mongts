@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CarouselItemProps } from "./CarouelItem";
 import { CarouselButtons } from "./CarouselButtons";
-import { BiBarChart, BiMapPin } from "react-icons/bi";
+import { BiBarChart, BiLineChart, BiMapPin } from "react-icons/bi";
 import { VscTable } from "react-icons/vsc";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
@@ -21,6 +21,7 @@ type CarouselProps = {
 
 const chartIcons = {
   barchart: <BiBarChart color="white" size="28px" />,
+  linechart: <BiLineChart color="white" size="28px" />,
   table: <VscTable color="white" size="28px" />,
   map: <BiMapPin color="white" size="28px" />,
 };
