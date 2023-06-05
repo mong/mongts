@@ -77,7 +77,7 @@ export const Linechart = <
   return (
     <div style={{ width: "auto", margin: "auto" }}>
       <XYChart
-        height={300}
+        height={500}
         xScale={{ type: "band" }}
         yScale={{ type: "linear" }}
       >
