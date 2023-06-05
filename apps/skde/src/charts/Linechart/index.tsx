@@ -89,6 +89,7 @@ export const Linechart = <
             fill: "black",
             textAnchor: "end",
           })}
+          numTicks={4}
           label={yLabel[lang]}
           labelProps={{
             fontSize: 14,
@@ -96,6 +97,7 @@ export const Linechart = <
             fontWeight: "bold",
             y: -35,
           }}
+          stroke="black"
         />
         <Grid columns={false} numTicks={4} />
         {values.map((plots, i) => (
