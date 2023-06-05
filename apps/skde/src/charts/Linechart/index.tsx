@@ -49,13 +49,15 @@ export const Linechart = <
   const values = uniqueLabels.map((l) => {
     return {
       label: l,
-      points: data.flatMap((d) => {
-        if (d[label] === l) {
-          return { x: d[x], y: d[y] };
-        } else {
-          return [];
-        }
-      }),
+      points: data
+        .flatMap((d) => {
+          if (d[label] === l) {
+            return { x: d[x], y: d[y] };
+          } else {
+            return [];
+          }
+        })
+        .sort((a, b) => a.x - b.x),
     };
   });
 
