@@ -1,0 +1,550 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "privsnitt",
+        "offsnitt"
+      ],
+      "xLegend": {
+        "nb": [
+          "Private",
+          "Offentlig"
+        ],
+        "en": [
+          "Private",
+          "Offentlig"
+        ]
+      },
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Andel av undersøkelsene utført ved private røngteninstitutt",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "linechart",
+      "data": "datasett_2",
+      "label": "tid",
+      "x": [
+        "mnd"
+      ],
+      "y": "antall",
+      "xLabel": {
+        "nb": "Måned",
+        "en": "Måned"
+      },
+      "yLabel": {
+        "nb": "Antall undersøkelser",
+        "en": "Antall undersøkelser"
+      },
+      "format": "Snitt 2018-2019",
+      "Pandemi 2020": "Snitt 2021-2022"
+    },
+    {
+      "type": "table",
+      "data": "datasett_1",
+      "caption": {
+        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 innbyggere",
+        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 innbyggere"
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområder",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "totsnitt",
+          "label_no": "MR Rate",
+          "label_en": "Rate",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "offsnitt",
+          "label_no": "Offentlig",
+          "label_en": "Public",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "privsnitt",
+          "label_no": "Privat",
+          "label_en": "Private",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "andel_priv",
+          "label_no": "Prosent private",
+          "label_en": "Percent private",
+          "typeVar": "number",
+          "format": ",.2f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "datasett_1",
+      "x": "andel_priv",
+      "caption": {
+        "nb": "Andel av undersøkelsene utført ved private røngteninstitutt",
+        "en": "tmp"
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": 13.3313190328,
+          "min": 6.04627046144,
+          "lag_min": 29.3676864346,
+          "grense": 21.3495027337
+        },
+        {
+          "cluster": 2,
+          "max": 35.4813249973,
+          "min": 29.3676864346,
+          "lag_min": 42.6659346463,
+          "grense": 39.0736298218
+        },
+        {
+          "cluster": 3,
+          "max": 42.6659346463,
+          "min": 42.6659346463,
+          "lag_min": 77.0410855383,
+          "grense": 59.8535100923
+        }
+      ],
+      "format": ",.0f"
+    },
+    {
+      "type": "data",
+      "label": "datasett_1",
+      "national": "Norge",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "data": [
+        {
+          "bohf": "Finnmark",
+          "offsnitt": 104.047817067,
+          "privsnitt": 16.0045662228,
+          "totsnitt": 120.05238329,
+          "andel_priv": 13.3313190328
+        },
+        {
+          "bohf": "UNN",
+          "offsnitt": 16.1780151583,
+          "privsnitt": 137.049869123,
+          "totsnitt": 153.227884281,
+          "andel_priv": 89.4418595974
+        },
+        {
+          "bohf": "Nordland",
+          "offsnitt": 31.8447639425,
+          "privsnitt": 106.858500951,
+          "totsnitt": 138.703264894,
+          "andel_priv": 77.0410855383
+        },
+        {
+          "bohf": "Helgeland",
+          "offsnitt": 122.982126115,
+          "privsnitt": 7.91435529026,
+          "totsnitt": 130.896481405,
+          "andel_priv": 6.04627046144
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "offsnitt": 89.4483819165,
+          "privsnitt": 49.1911389861,
+          "totsnitt": 138.639520903,
+          "andel_priv": 35.4813249973
+        },
+        {
+          "bohf": "St. Olav",
+          "offsnitt": 19.7226320783,
+          "privsnitt": 121.940365247,
+          "totsnitt": 141.662997326,
+          "andel_priv": 86.0777814598
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "offsnitt": 94.9747536442,
+          "privsnitt": 70.6767714278,
+          "totsnitt": 165.651525072,
+          "andel_priv": 42.6659346463
+        },
+        {
+          "bohf": "Førde",
+          "offsnitt": 100.672574429,
+          "privsnitt": 41.8579039699,
+          "totsnitt": 142.530478399,
+          "andel_priv": 29.3676864346
+        },
+        {
+          "bohf": "Bergen",
+          "offsnitt": 26.7747471859,
+          "privsnitt": 141.346828161,
+          "totsnitt": 168.121575347,
+          "andel_priv": 84.0741754111
+        },
+        {
+          "bohf": "Fonna",
+          "offsnitt": 13.4824433005,
+          "privsnitt": 138.364624996,
+          "totsnitt": 151.847068296,
+          "andel_priv": 91.1210381262
+        },
+        {
+          "bohf": "Stavanger",
+          "offsnitt": 28.6683409004,
+          "privsnitt": 110.587625516,
+          "totsnitt": 139.255966417,
+          "andel_priv": 79.4132045915
+        },
+        {
+          "bohf": "Østfold",
+          "offsnitt": 18.3957110357,
+          "privsnitt": 145.716897497,
+          "totsnitt": 164.112608532,
+          "andel_priv": 88.7907996831
+        },
+        {
+          "bohf": "Akershus",
+          "offsnitt": 16.9018672312,
+          "privsnitt": 135.437616827,
+          "totsnitt": 152.339484058,
+          "andel_priv": 88.9051303175
+        },
+        {
+          "bohf": "OUS",
+          "offsnitt": 22.6097237387,
+          "privsnitt": 134.679751437,
+          "totsnitt": 157.289475176,
+          "andel_priv": 85.6254058236
+        },
+        {
+          "bohf": "Lovisenberg",
+          "offsnitt": 22.3136546425,
+          "privsnitt": 121.702730681,
+          "totsnitt": 144.016385324,
+          "andel_priv": 84.5061694943
+        },
+        {
+          "bohf": "Diakonhjemmet",
+          "offsnitt": 21.8221970526,
+          "privsnitt": 107.771814471,
+          "totsnitt": 129.594011523,
+          "andel_priv": 83.1611069091
+        },
+        {
+          "bohf": "Innlandet",
+          "offsnitt": 32.397420611,
+          "privsnitt": 118.052974424,
+          "totsnitt": 150.450395035,
+          "andel_priv": 78.4663771713
+        },
+        {
+          "bohf": "Vestre Viken",
+          "offsnitt": 19.369341509,
+          "privsnitt": 116.805211913,
+          "totsnitt": 136.174553422,
+          "andel_priv": 85.7760932404
+        },
+        {
+          "bohf": "Vestfold",
+          "offsnitt": 8.04292765122,
+          "privsnitt": 148.269424702,
+          "totsnitt": 156.312352353,
+          "andel_priv": 94.8545796093
+        },
+        {
+          "bohf": "Telemark",
+          "offsnitt": 13.9953202134,
+          "privsnitt": 116.474477522,
+          "totsnitt": 130.469797736,
+          "andel_priv": 89.2731341227
+        },
+        {
+          "bohf": "Sørlandet",
+          "offsnitt": 14.5499026726,
+          "privsnitt": 116.491586941,
+          "totsnitt": 131.041489614,
+          "andel_priv": 88.8967206375
+        },
+        {
+          "bohf": "Norge",
+          "offsnitt": 30.3644128095,
+          "privsnitt": 116.891881043,
+          "totsnitt": 147.256293853,
+          "andel_priv": 79.3798879389
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "datasett_2",
+      "description": "Ekstradatasettet for gitt resultatboks",
+      "data": [
+        {
+          "mnd": 1,
+          "antall": 7089.5,
+          "tid": 1,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 1,
+          "antall": 7227,
+          "tid": 2,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 1,
+          "antall": 6532.5,
+          "tid": 3,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 2,
+          "antall": 6462.5,
+          "tid": 1,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 2,
+          "antall": 6636,
+          "tid": 2,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 2,
+          "antall": 6425.5,
+          "tid": 3,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 3,
+          "antall": 6701,
+          "tid": 1,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 3,
+          "antall": 5960,
+          "tid": 2,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 3,
+          "antall": 7408,
+          "tid": 3,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 4,
+          "antall": 6347.5,
+          "tid": 1,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 4,
+          "antall": 4322,
+          "tid": 2,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 4,
+          "antall": 5998.5,
+          "tid": 3,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 5,
+          "antall": 6613.5,
+          "tid": 1,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 5,
+          "antall": 5284,
+          "tid": 2,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 5,
+          "antall": 6565,
+          "tid": 3,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 6,
+          "antall": 6869,
+          "tid": 1,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 6,
+          "antall": 6230,
+          "tid": 2,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 6,
+          "antall": 7204.5,
+          "tid": 3,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 7,
+          "antall": 5069,
+          "tid": 1,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 7,
+          "antall": 4809,
+          "tid": 2,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 7,
+          "antall": 4534.5,
+          "tid": 3,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 8,
+          "antall": 6987,
+          "tid": 1,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 8,
+          "antall": 6351,
+          "tid": 2,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 8,
+          "antall": 6998,
+          "tid": 3,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 9,
+          "antall": 7623.5,
+          "tid": 1,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 9,
+          "antall": 7557,
+          "tid": 2,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 9,
+          "antall": 8071,
+          "tid": 3,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 10,
+          "antall": 7923.5,
+          "tid": 1,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 10,
+          "antall": 7437,
+          "tid": 2,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 10,
+          "antall": 7861,
+          "tid": 3,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 11,
+          "antall": 6866.5,
+          "tid": 1,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 11,
+          "antall": 6872,
+          "tid": 2,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 11,
+          "antall": 7773.5,
+          "tid": 3,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 12,
+          "antall": 4914.5,
+          "tid": 1,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 12,
+          "antall": 5561,
+          "tid": 2,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "mnd": 12,
+          "antall": 5857.5,
+          "tid": 3,
+          "bohf": null,
+          "ermann": null
+        }
+      ]
+    }
+  ]
+}
