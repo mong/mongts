@@ -1,11 +1,12 @@
 import { FaCircle, FaAdjust, FaRegCircle } from "react-icons/fa";
+import styles from "./index.module.css";
 
 interface Props {
   level: string;
   icon_class: string;
   legend_btn_class: string;
   update_show_level_filter(p: string | undefined): void;
-  show_level_filter: string;
+  show_level_filter: string | undefined;
 }
 
 function LEGEND_BTN(props: Props) {
@@ -19,7 +20,10 @@ function LEGEND_BTN(props: Props) {
 
   const level_filter = legend_btn_class[0].toUpperCase();
   const checked_class = level_filter === show_level_filter ? "checked" : "";
-  const handle_level_filter = (current_state: string, update_state: string) => {
+  const handle_level_filter = (
+    current_state: string | undefined,
+    update_state: string
+  ) => {
     current_state === update_state
       ? update_show_level_filter(undefined)
       : update_show_level_filter(update_state);
@@ -27,7 +31,9 @@ function LEGEND_BTN(props: Props) {
 
   return (
     <button
-      className={`${legend_btn_class} ${checked_class}`}
+      className={
+        checked_class === "checked" ? styles.button_checked : undefined
+      }
       onClick={() => handle_level_filter(show_level_filter, level_filter)}
     >
       <i style={{ paddingRight: "0.2em" }}>
