@@ -419,3 +419,46 @@ export const atlasData = [
     pas_rate_eldre: 6.1516249726,
   },
 ];
+
+export const atlasData2 = [
+  {
+    year: 2019,
+    rate: 2.8558,
+    bohf: "Norge",
+  },
+  {
+    year: 2018,
+    rate: 4.8558,
+    bohf: "Norge",
+  },
+  {
+    year: 2020,
+    rate: 3.8558,
+    bohf: "Norge",
+  },
+  {
+    year: 2018,
+    rate: 1.8558,
+    bohf: "UNN",
+  },
+  {
+    year: 2019,
+    rate: 3.8558,
+    bohf: "UNN",
+  },
+  {
+    year: 2020,
+    rate: 2,
+    bohf: "UNN",
+  },
+  {
+    year: 2021,
+    rate: 3.8558,
+    bohf: "UNN",
+  },
+  {
+    year: 2021,
+    rate: 1.8558,
+    bohf: "Norge",
+  },
+];

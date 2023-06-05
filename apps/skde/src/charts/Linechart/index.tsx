@@ -55,7 +55,7 @@ export const Linechart = <
   format_x,
   format_y,
 }: LinechartProps<Data, X, Y, Label>) => {
-  let uniqueLabels = Array.from(new Set(data.map((d) => d[label])));
+  const uniqueLabels = Array.from(new Set(data.map((d) => d[label])));
 
   const values = uniqueLabels.map((l) => {
     return {
