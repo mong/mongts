@@ -70,7 +70,10 @@ export const Linechart = <
   });
 
   const accessors = {
-    xAccessor: (d) => d.x,
+    xAccessor: (d) =>
+      format_x === "month"
+        ? new Date(2020, d.x - 1).toLocaleString(lang, { month: "short" })
+        : d.x,
     yAccessor: (d) => d.y,
   };
 
