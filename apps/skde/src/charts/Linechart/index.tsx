@@ -104,9 +104,11 @@ export const Linechart = <
           label={yLabel[lang]}
           labelProps={{
             fontSize: 14,
-            textAnchor: "middle",
+            textAnchor: "start",
             fontWeight: "bold",
-            y: -35,
+            x: -50,
+            y: 25,
+            transform: "",
           }}
           stroke="black"
           tickFormat={(val) =>
