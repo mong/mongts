@@ -1,4 +1,8 @@
 import { Grid, Axis, LineSeries, XYChart, Tooltip } from "@visx/xychart";
+import {
+  customFormat,
+  customFormatEng,
+} from "../../helpers/functions/localFormater";
 
 export type LinechartData<
   Data,
@@ -28,6 +32,8 @@ type LinechartProps<
   lang: "en" | "nb" | "nn";
   xLabel?: { en: string; nb: string; nn: string };
   yLabel?: { en: string; nb: string; nn: string };
+  format_x?: string;
+  format_y?: string;
 };
 
 export const Linechart = <
@@ -43,6 +49,8 @@ export const Linechart = <
   lang,
   xLabel,
   yLabel,
+  format_x,
+  format_y,
 }: LinechartProps<Data, X, Y, Label>) => {
   let uniqueLabels = Array.from(new Set(data.map((d) => d[label])));
 
@@ -98,6 +106,13 @@ export const Linechart = <
             y: -35,
           }}
           stroke="black"
+          tickFormat={(val) =>
+            format_y
+              ? lang === "en"
+                ? customFormatEng(format_y)(val)
+                : customFormat(format_y)(val)
+              : val.toString()
+          }
         />
         <Grid columns={false} numTicks={4} />
         {values.map((plots, i) => (
