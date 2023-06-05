@@ -122,8 +122,8 @@ export const Linechart = <
           <LineSeries
             dataKey={plots.label}
             data={plots.points}
-            xAccessor={(d) => d.x}
-            yAccessor={(d) => d.y}
+            xAccessor={accessors.xAccessor}
+            yAccessor={accessors.yAccessor}
             key={i}
           />
         ))}
