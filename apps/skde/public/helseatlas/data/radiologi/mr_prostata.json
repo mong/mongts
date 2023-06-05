@@ -16,6 +16,7 @@
         "en": "Referral areas"
       },
       "annualVar": [
+        "tot2018",
         "tot2019",
         "tot2020",
         "tot2021",
@@ -23,12 +24,14 @@
       ],
       "annualVarLabels": {
         "nb": [
+          "2018",
           "2019",
           "2020",
           "2021",
           "2022"
         ],
         "en": [
+          "2018",
           "2019",
           "2020",
           "2021",
@@ -47,11 +50,11 @@
       "xLegend": {
         "nb": [
           "Offentlig",
-          "Privat"
+          "Private"
         ],
         "en": [
           "Offentlig",
-          "Privat"
+          "Private"
         ]
       },
       "y": "bohf",
@@ -83,6 +86,27 @@
           "id": "totsnitt",
           "label_no": "Rate",
           "label_en": "Rate",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "andel_priv",
+          "label_no": "Prosent private",
+          "label_en": "Percent private",
+          "typeVar": "number",
+          "format": ",.2f"
+        },
+        {
+          "id": "tot_events",
+          "label_no": "Undersøkelser",
+          "label_en": "Examinations",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "tot_pas",
+          "label_no": "Pasienter",
+          "label_en": "Patients",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -189,6 +213,7 @@
           "tot_pas": 163.8,
           "tot_pop": 38730.6,
           "tot_pr_pas": 1.05494505495,
+          "andel_priv": 20.8176414787,
           "andel_pf": 49.3863513408
         },
         {
@@ -246,6 +271,7 @@
           "tot_pas": 385.4,
           "tot_pop": 98359.6,
           "tot_pr_pas": 1.06901920083,
+          "andel_priv": 16.8678696097,
           "andel_pf": 29.9364288409
         },
         {
@@ -303,6 +329,7 @@
           "tot_pas": 334.2,
           "tot_pop": 69691.2,
           "tot_pr_pas": 1.06403351287,
+          "andel_priv": 1.78570946529,
           "andel_pf": 32.377256213
         },
         {
@@ -360,6 +387,7 @@
           "tot_pas": 201.8,
           "tot_pop": 39750,
           "tot_pr_pas": 1.10009910803,
+          "andel_priv": 0.901005524353,
           "andel_pf": 44.3061103182
         },
         {
@@ -417,6 +445,7 @@
           "tot_pas": 268.2,
           "tot_pop": 68226,
           "tot_pr_pas": 1.01938851603,
+          "andel_priv": 1.25827396389,
           "andel_pf": 43.2606487756
         },
         {
@@ -474,6 +503,7 @@
           "tot_pas": 588.2,
           "tot_pop": 169615.4,
           "tot_pr_pas": 1.01292077525,
+          "andel_priv": 2.21570380665,
           "andel_pf": 31.9382249616
         },
         {
@@ -531,6 +561,7 @@
           "tot_pas": 839.4,
           "tot_pop": 135163.8,
           "tot_pr_pas": 1.04884441268,
+          "andel_priv": 2.05458214199,
           "andel_pf": 28.4431405171
         },
         {
@@ -588,6 +619,7 @@
           "tot_pas": 195.6,
           "tot_pop": 55432.4,
           "tot_pr_pas": 1.01840490798,
+          "andel_priv": 61.1738525989,
           "andel_pf": 40.7049719553
         },
         {
@@ -645,6 +677,7 @@
           "tot_pas": 862.2,
           "tot_pop": 230475.4,
           "tot_pr_pas": 1.01206216655,
+          "andel_priv": 47.7128886893,
           "andel_pf": 34.1123951291
         },
         {
@@ -702,6 +735,7 @@
           "tot_pas": 341.6,
           "tot_pop": 92125.2,
           "tot_pr_pas": 1.01405152225,
+          "andel_priv": 64.2205254091,
           "andel_pf": 20.2907064871
         },
         {
@@ -759,6 +793,7 @@
           "tot_pas": 1153,
           "tot_pop": 187970.8,
           "tot_pr_pas": 1.03469210755,
+          "andel_priv": 8.65682277168,
           "andel_pf": 16.8005363486
         },
         {
@@ -816,6 +851,7 @@
           "tot_pas": 1144.4,
           "tot_pop": 159297.2,
           "tot_pr_pas": 1.02202027263,
+          "andel_priv": 8.95279861743,
           "andel_pf": 17.7656847179
         },
         {
@@ -873,6 +909,7 @@
           "tot_pas": 1224.4,
           "tot_pop": 290408.2,
           "tot_pr_pas": 1.07203528259,
+          "andel_priv": 24.4824971448,
           "andel_pf": 40.09854668
         },
         {
@@ -930,6 +967,7 @@
           "tot_pas": 477.8,
           "tot_pop": 137544.4,
           "tot_pr_pas": 1.05860192549,
+          "andel_priv": 28.9923499537,
           "andel_pf": 36.5588312751
         },
         {
@@ -987,6 +1025,7 @@
           "tot_pas": 150.4,
           "tot_pop": 80884.6,
           "tot_pr_pas": 1.04521276596,
+          "andel_priv": 23.0697018474,
           "andel_pf": 40.7833026163
         },
         {
@@ -1044,6 +1083,7 @@
           "tot_pas": 309.6,
           "tot_pop": 70170.2,
           "tot_pr_pas": 1.05684754522,
+          "andel_priv": 25.4985691598,
           "andel_pf": 37.5538255421
         },
         {
@@ -1101,6 +1141,7 @@
           "tot_pas": 867.6,
           "tot_pop": 170032.6,
           "tot_pr_pas": 1.05325034578,
+          "andel_priv": 1.38109498404,
           "andel_pf": 30.4061095784
         },
         {
@@ -1158,6 +1199,7 @@
           "tot_pas": 1329.2,
           "tot_pop": 244712.6,
           "tot_pr_pas": 1.1724345471,
+          "andel_priv": 13.3479725927,
           "andel_pf": 38.7560602619
         },
         {
@@ -1215,6 +1257,7 @@
           "tot_pas": 608.6,
           "tot_pop": 123204.2,
           "tot_pr_pas": 1.18238580348,
+          "andel_priv": 2.33415438258,
           "andel_pf": 43.0920772203
         },
         {
@@ -1272,6 +1315,7 @@
           "tot_pas": 448.6,
           "tot_pop": 86908,
           "tot_pr_pas": 1.13464110566,
+          "andel_priv": 2.3531329263,
           "andel_pf": 49.7414888316
         },
         {
@@ -1329,6 +1373,7 @@
           "tot_pas": 355.8,
           "tot_pop": 154617,
           "tot_pr_pas": 1.03147835863,
+          "andel_priv": 2.31213567643,
           "andel_pf": 36.1233996239
         },
         {
@@ -1386,6 +1431,7 @@
           "tot_pas": 12249.8,
           "tot_pop": 2703319.4,
           "tot_pr_pas": 1.0664174109,
+          "andel_priv": 15.0792344613,
           "andel_pf": 32.9815416067
         }
       ]
