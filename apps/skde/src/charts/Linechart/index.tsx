@@ -97,6 +97,10 @@ export const Linechart = <
             textAnchor: "middle",
             fontWeight: "bold",
           }}
+          tickLabelProps={() => ({
+            fontSize: 14,
+            fill: "black",
+          })}
           tickFormat={(val) =>
             format_x === "month"
               ? new Date(2020, val - 1).toLocaleString(lang, { month: "short" })
