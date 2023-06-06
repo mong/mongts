@@ -35,7 +35,7 @@
           "overskrift": "hjarteinfarkt",
           "ingress": "Hjarteinfarkt innlegging , pasientar 18 år og eldre",
           "utvalg": "![kjønn og alder]( \"Kjønns-og aldersfordeling av pasientar med hjarteinfarkt\")\n\nUtvalet består av pasientar innlagt i sjukehus med akutt hjarteinfarkt (ICD-10 kode I21 akutt hjarteinfarkt, eller I22 påfølgande hjarteinfarkt) som hovud- eller bitilstand, i perioden 2018-2022. \n\nAlder: 18 år eller meir.\n\nRatane er justerte for alder og kjønn.",
-          "resultat": "![Kjønn og alder](/helseatlas/img/no/hjarteinfarkt/rplot_hjarte_pas_kjald.png \"Kjønns-og aldersfordeling av innalgte hjarteinfark pasientar\")\n\nhjarteinfarkt.\n\nSkrive om pasientraten, men også ta med noko om tal innleggingar.",
+          "resultat": "![Kjønn og alder](/helseatlas/img/no/hjarteinfarkt/hjarte_kjonn_alder.png \"Kjønns-og aldersfordeling av innalgte hjarteinfark pasientar\")\n\nhjarteinfarkt.\n\nSkrive om pasientraten, men også ta med noko om tal innleggingar.",
           "data": "innlagtepasient230523.json"
         },
         {
@@ -70,7 +70,7 @@
           "overskrift": "Revaskularisering for pasientar 18 år og eldre",
           "ingress": "revask",
           "utvalg": "![kjønn og alder]( \"Kjønns-og aldersfordeling av pasientar som fekk revaskularisering\")\n\nUtvalet består av pasientar med ein eller fleire av følgande prosedyrekodar: FNA\\*, FNB\\*, FNC\\*, FND\\*, FNE\\*, FNG\\*, FNP02B, FNP12B, FNQ05B eller FNQ12B, i perioden 2018-2022.\n\nAlder: 18 år og eldre.\n\nRatane er justerte for alder og kjønn.",
-          "resultat": "revask\n\n![kjønn og alder](/helseatlas/img/no/hjarteinfarkt/rplot_revask_kjald.png \"Kjønns- og aldersfordeling av pasientar som fekk revaskularisering\")",
+          "resultat": "revask\n\n![kjønn og alder](/helseatlas/img/no/hjarteinfarkt/revaskularisering_kjonn_alder.png \"Kjønns- og aldersfordeling av pasientar som fekk revaskularisering\")",
           "data": "revask.json"
         },
         {
@@ -105,7 +105,7 @@
           "overskrift": "Prosentdel av indeksopphald med ekte rehabilitering (Z-kodar)",
           "ingress": "Ekte rehabilitering",
           "utvalg": "\n\n![Type Zkodarrehab]( \"Prosetviss fordeling av type av Z kodar \")\n\n![Dagar_til første rehabiliteringsepisodar]( \"Dagar_til føste Z rehabiliteringsepisodar\")\n\nzzzzzzz\n\nzzzzzzzzzzzzzzzzz",
-          "resultat": "![Fordeling av Z kodar](/helseatlas/img/no/hjarteinfarkt/rplot_zkodaer.png \"Prosentviss fordeling av ulike Z kode rehabilitering\")\n\n![Dagar til første rehabiliteringsepisodar (Z kodar)](/helseatlas/img/no/hjarteinfarkt/dagar_til_første_ekte_rehab_episode.png \"Dagar til første ekte  rehabiliteringsepisodar\")\n\nZ-kodar \n\n![Rehabiliteringsrate med Z kodar](/helseatlas/img/no/hjarteinfarkt/rplot_zrehab.png \"Rehabiliteringsrate (Z-kodar)\")\n\nZ50.0, Z50.80, Z50.89, Z50.9\n\nProsentdel rehabilitering fordeling med kjønns- og alder \n\nRate for ekte rehabilitering\n\ntype av Z kodar\n\nDagar til første ekte rehabiliteringsepisodar\n\n![Prosentdel kjønns-og aldersfordeling ](/helseatlas/img/no/hjarteinfarkt/rplot_zprosent_rehab_kjald.png \"Kjønns og aldersfordeling av rehabilitering \")",
+          "resultat": "![Fordeling av Z kodar](/helseatlas/img/no/hjarteinfarkt/rplot_zkodaer.png \"Prosentviss fordeling av ulike Z kode rehabilitering\")\n\n![Dagar til første rehabiliteringsepisodar (Z kodar)](/helseatlas/img/no/hjarteinfarkt/dagar_til_første_ekte_rehab_episode.png \"Dagar til første ekte  rehabiliteringsepisodar\")\n\nZ-kodar \n\n![Rehabiliteringsrate med Z kodar](/helseatlas/img/no/hjarteinfarkt/rplot_zrehab.png \"Rehabiliteringsrate (Z-kodar)\")\n\nZ50.0, Z50.80, Z50.89, Z50.9\n\nProsentdel rehabilitering fordeling med kjønns- og alder \n\nRate for ekte rehabilitering\n\ntype av Z kodar\n\nDagar til første ekte rehabiliteringsepisodar\n\n![Prosentdel kjønns-og aldersfordeling ](/helseatlas/img/no/hjarteinfarkt/prosentdel_rehab_ekte.png \"Kjønns og aldersfordeling av rehabilitering \")",
           "data": "z_rehab_prosentdel310523.json"
         },
         {
@@ -115,7 +115,7 @@
           "overskrift": "Prosentdel hjarteinfarkt opphald som fekk rehabilitering",
           "ingress": "Prosentdel rehabilitering samla",
           "utvalg": "I analyse av rehabilitering etter hjarteinfarkt har vi brukt forløpsanalyse, og sett på rehabilitering eit halvt år etter eit indeksopphald/startopphald.\n\n**Indeksopphald/startopphald** \n\ner opphald der pasienten har I21 (akutt hjarteinfarkt) som hovudtilstand ved innleggelse.  Dersom pasienten er flytta mellom ulike sjukehus, og det er mindre enn 8 timar mellom opphalda, er dei slått saman.\n\nOpphald med ukjent opptaksområde på pasient er ekskludert. Dersom indeksopphaldet går over fleire år, er det utdato for indeksopphaldet som gjeld.\n\nVi har brukt ein snevrare definisjon av hjarteinfarkt i analysane knytt til rehabilitering, enn elles. Ved å bruke ein streng definisjon er vi meir sikre på at vi inkluderer rett pasientgruppe, og vi såg at det meste av rehabiliteringa var knytt til indeksopphald med I21 som hovudtilstand. \n\n**Rehabiliteringsepisode** \n\n*Alle episodar med minst ein av følgande hoved- eller bitilstandar:* \nZ50.0 Rehabilitering etter hjertesykdom\nZ50.80 Kompleks rehabilitering\nZ50.89 Enkel rehabilitering\nZ50.9 Behandling som omfatter bruk av uspesifisert rehabiliteringstiltak\n\n*Alle episodar med følgande prosedyrekodar:*\\\nWPCK00 Lærings- og mestringsaktivitet vedrørende aktuelle tilstand\nOBAB00 Veiledet og instruert fysisk trening knyttet til motorikk og/eller kondisjon\n\nVed  treff i minst ein av episodane i definisjonen inngikk episoden i utrekning av  kor stor prosentdel av indeksopphalda som hadde påfølgande rehabilitering. \n\nEpisodar 1 – 182 dagar etter utskriving av indeksopphald i 2018-2021 inngår i analysane.\n\nAlder: 18 år eller meir",
-          "resultat": "![](/helseatlas/img/no/hjarteinfarkt/rplot_prosentdel_rehab_kjald.png \"kjønn alder\")\n\nProsentdel med rehabilitering\n\nta noko med om at trening er ein viktig del av rehabiliteringa G.O.Dibben 2023",
+          "resultat": "![](/helseatlas/img/no/hjarteinfarkt/prosentdel_samla_kjonn_alder.png \"kjønn alder\")\n\nProsentdel med rehabilitering\n\nta noko med om at trening er ein viktig del av rehabiliteringa G.O.Dibben 2023",
           "data": "rehab_correct.json"
         },
         {
