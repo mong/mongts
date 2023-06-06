@@ -149,9 +149,16 @@ export const Linechart = <
               <div style={{ color: colorScale(tooltipData.nearestDatum.key) }}>
                 {tooltipData.nearestDatum.key}
               </div>
-              {accessors.xAccessor(tooltipData.nearestDatum.datum)}
-              {": "}
-              {accessors.yAccessor(tooltipData.nearestDatum.datum)}
+              <div>
+                {xLabel[lang].split(/[^A-Za-zæøåÆØÅ]/)[0]}
+                {": "}
+                {accessors.xAccessor(tooltipData.nearestDatum.datum)}
+              </div>
+              <div>
+                {yLabel[lang].split(/[^A-Za-zæøåÆØÅ]/)[0]}
+                {": "}
+                {accessors.yAccessor(tooltipData.nearestDatum.datum)}
+              </div>
             </div>
           )}
         />
