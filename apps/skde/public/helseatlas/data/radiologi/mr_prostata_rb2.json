@@ -3,38 +3,27 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "privsnitt",
-        "offsnitt"
-      ],
+      "x": ["privsnitt", "offsnitt"],
       "xLegend": {
-        "nb": [
-          "Private",
-          "Offentlig"
-        ],
-        "en": [
-          "Private",
-          "Offentlig"
-        ]
+        "nb": ["Private", "Offentlig"],
+        "en": ["Private", "Offentlig"]
       },
       "y": "bohf",
       "xLabel": {
-        "nb": "Andel av undersøkelsene utført ved private røngteninstitutt",
+        "nb": "Rate, antall per 10 000 innbyggere, offentlig eller private røngteninstitutt",
         "en": "tmp"
       },
       "yLabel": {
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "format": ",.0f"
+      "format": ",.1f"
     },
     {
       "type": "linechart",
       "data": "datasett_2",
       "label": "tid",
-      "x": [
-        "mnd"
-      ],
+      "x": ["mnd"],
       "y": "antall",
       "xLabel": {
         "nb": "Måned",
@@ -71,21 +60,21 @@
         },
         {
           "id": "offsnitt",
-          "label_no": "Offentlig",
+          "label_no": "Offentlig rate",
           "label_en": "Public",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
           "id": "privsnitt",
-          "label_no": "Privat",
+          "label_no": "Privat rate",
           "label_en": "Private",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
           "id": "andel_priv",
-          "label_no": "Prosent private",
+          "label_no": "Andel private",
           "label_en": "Percent private",
           "typeVar": "number",
           "format": ",.1%"
@@ -123,7 +112,7 @@
           "grense": 0.544433706441
         }
       ],
-      "format": ",.0f"
+      "format": ",.1%"
     },
     {
       "type": "data",
