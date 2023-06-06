@@ -3,19 +3,10 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "privsnitt",
-        "offsnitt"
-      ],
+      "x": ["privsnitt", "offsnitt"],
       "xLegend": {
-        "nb": [
-          "Private",
-          "Offentlig"
-        ],
-        "en": [
-          "Private",
-          "Offentlig"
-        ]
+        "nb": ["Private", "Offentlig"],
+        "en": ["Private", "Offentlig"]
       },
       "y": "bohf",
       "xLabel": {
@@ -26,15 +17,13 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "format": ",.1f%"
+      "format": ",.1f"
     },
     {
       "type": "linechart",
       "data": "datasett_2",
       "label": "tid",
-      "x": [
-        "mnd"
-      ],
+      "x": ["mnd"],
       "y": "antall",
       "xLabel": {
         "nb": "Måned",
