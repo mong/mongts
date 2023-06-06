@@ -72,9 +72,14 @@ export const Linechart = <
   const accessors = {
     xAccessor: (d) =>
       format_x === "month"
-        ? new Date(2020, d.x - 1).toLocaleString(lang, { month: "short" })
+        ? new Date(2020, d.x - 1).toLocaleString(lang, { month: "long" })
         : d.x,
-    yAccessor: (d) => d.y,
+    yAccessor: (d) =>
+      format_y
+        ? lang === "en"
+          ? customFormatEng(format_y)(d.y)
+          : customFormat(format_y)(d.y)
+        : d.y,
   };
 
   return (
@@ -92,6 +97,11 @@ export const Linechart = <
             textAnchor: "middle",
             fontWeight: "bold",
           }}
+          tickFormat={(val) =>
+            format_x === "month"
+              ? new Date(2020, val - 1).toLocaleString(lang, { month: "short" })
+              : val
+          }
         />
         <Axis
           orientation="left"
@@ -124,8 +134,8 @@ export const Linechart = <
           <LineSeries
             dataKey={plots.label}
             data={plots.points}
-            xAccessor={accessors.xAccessor}
-            yAccessor={accessors.yAccessor}
+            xAccessor={(d) => d.x}
+            yAccessor={(d) => d.y}
             key={i}
           />
         ))}
@@ -140,7 +150,7 @@ export const Linechart = <
                 {tooltipData.nearestDatum.key}
               </div>
               {accessors.xAccessor(tooltipData.nearestDatum.datum)}
-              {", "}
+              {": "}
               {accessors.yAccessor(tooltipData.nearestDatum.datum)}
             </div>
           )}
