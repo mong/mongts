@@ -147,19 +147,22 @@ export const Linechart = <
           showSeriesGlyphs
           renderTooltip={({ tooltipData, colorScale }) => (
             <div>
-              <div style={{ color: colorScale(tooltipData.nearestDatum.key) }}>
-                {tooltipData.nearestDatum.key}
-              </div>
               <div>
                 {xLabel[lang].split(/[^A-Za-zæøåÆØÅ]/)[0]}
                 {": "}
                 {accessors.xAccessor(tooltipData.nearestDatum.datum)}
               </div>
-              <div>
-                {yLabel[lang].split(/[^A-Za-zæøåÆØÅ]/)[0]}
-                {": "}
-                {accessors.yAccessor(tooltipData.nearestDatum.datum)}
-              </div>
+              {Object.keys(tooltipData.datumByKey).map((d) => {
+                return (
+                  <div key={d}>
+                    <div style={{ color: colorScale(d) }}>
+                      {d}
+                      {": "}
+                      {accessors.yAccessor(tooltipData.datumByKey[d].datum)}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           )}
         />
