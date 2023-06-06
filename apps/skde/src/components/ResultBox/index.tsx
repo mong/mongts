@@ -14,6 +14,7 @@ import { Markdown } from "../Markdown";
 import { DataTable } from "../../charts/Table";
 import { Map, MapData } from "../../charts/Map";
 import { timeFormat } from "d3-time-format";
+import { Linechart } from "../../charts/Linechart";
 
 type ResultBoxProps = {
   title: string;
@@ -69,17 +70,21 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
       duration: 200,
     }),
   });
+
   const nationalName = boxData
     ? boxData.filter((o) => o.type === "data")[0]["national"]
-    : undefined;
-  const figData: AtlasData[] = boxData
-    ? boxData.filter((o) => o.type === "data")[0]["data"]
     : undefined;
 
   const dataCarousel = boxData ? (
     <Carousel active={0} selection={selection} lang={lang}>
       {boxData
         .map((bd, i) => {
+          const figData: AtlasData[] =
+            bd.type !== "data"
+              ? boxData.filter(
+                  (o) => o.type === "data" && o.label === bd.data
+                )[0]["data"]
+              : undefined;
           if (bd.type === "barchart") {
             return (
               <CarouselItem
@@ -93,6 +98,17 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
                   lang={lang}
                   national={nationalName}
                 />
+              </CarouselItem>
+            );
+          }
+          if (bd.type === "linechart") {
+            return (
+              <CarouselItem
+                style={{ width: "auto" }}
+                key={bd.type + i + id}
+                label={bd.type}
+              >
+                <Linechart {...bd} data={figData} lang={lang} />
               </CarouselItem>
             );
           }
@@ -157,6 +173,9 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
     .filter((boxd) => boxd.type === "map")
     .map((boxd) => boxd.x)[0];
 
+  const figData: AtlasData[] = boxData
+    ? boxData.filter((o) => o.type === "data")[0]["data"]
+    : undefined;
   const handleChange = (cb: React.Dispatch<React.SetStateAction<boolean>>) =>
     cb((state) => !state);
   return (
