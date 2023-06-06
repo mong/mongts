@@ -102,6 +102,7 @@ export const Linechart = <
               ? new Date(2020, val - 1).toLocaleString(lang, { month: "short" })
               : val
           }
+          numTicks={11}
         />
         <Axis
           orientation="left"
