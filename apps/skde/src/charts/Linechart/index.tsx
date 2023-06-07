@@ -81,6 +81,17 @@ export const Linechart = <
           : customFormat(format_y)(d.y)
         : d.y,
   };
+  const yvaluesMaxTextLength = Math.max(
+    ...data.map(
+      (d) =>
+        (format_y
+          ? lang === "en"
+            ? customFormatEng(format_y)(d[y])
+            : customFormat(format_y)(d[y])
+          : d[y]
+        ).toString().length
+    )
+  );
 
   return (
     <div style={{ width: "auto", margin: "auto" }}>
@@ -88,6 +99,12 @@ export const Linechart = <
         height={500}
         xScale={{ type: "band" }}
         yScale={{ type: "linear" }}
+        margin={{
+          top: 50,
+          right: 50,
+          bottom: 50,
+          left: 50 + yvaluesMaxTextLength,
+        }}
       >
         <Axis
           orientation="bottom"
