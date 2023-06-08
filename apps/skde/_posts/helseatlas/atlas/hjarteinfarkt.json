@@ -12,12 +12,17 @@
         {
           "type": "tekst",
           "beskrivelse": "Ev. undertekst til ingressen",
-          "tekst": "Legge inn teksten her\n\n* punktvis oppsummering av hovudfunn for hjarteinfarkt-området \n* ev. legge inn oversikts-tabell\n\n```\n<table border=1>\n<tr> <th>  </th> <th> Indikator </th> <th> Tal </th> <th> Rate </th> <th> Lågaste rate </th> <th> Høgaste rate </th> <th> FT </th> <th> FT2 </th> <th> FT3 </th> <th> CV </th> <th> SCV </th> <th> SCV2 </th>  </tr>\n  <tr> <td align=\"right\"> 1 </td> <td> Hjarteinfarkt, innleging, 18 år og eldre </td> <td> 11846.2 </td> <td align=\"right\"> 2.79 </td> <td align=\"right\"> 1.71 </td> <td align=\"right\"> 3.93 </td> <td align=\"right\"> 2.30 </td> <td align=\"right\"> 1.56 </td> <td align=\"right\"> 1.36 </td> <td align=\"right\"> 17.24 </td> <td align=\"right\"> 3.40 </td> <td align=\"right\"> 1.80 </td> </tr>\n  <tr> <td align=\"right\"> 2 </td> <td> Hjarteinfarkt, innleging, 75 år og eldre </td> <td> 5 223 </td> <td align=\"right\"> 12.81 </td> <td align=\"right\"> 8.90 </td> <td align=\"right\"> 17.40 </td> <td align=\"right\"> 1.96 </td> <td align=\"right\"> 1.61 </td> <td align=\"right\"> 1.53 </td> <td align=\"right\"> 17.72 </td> <td align=\"right\"> 3.90 </td> <td align=\"right\"> 3.00 </td> </tr>\n  <tr> <td align=\"right\"> 3 </td> <td> Revaskularisering, 18 år og eldre </td> <td> 13038 </td> <td align=\"right\"> 3.10 </td> <td align=\"right\"> 2.00 </td> <td align=\"right\"> 4.40 </td> <td align=\"right\"> 2.27 </td> <td align=\"right\"> 1.56 </td> <td align=\"right\"> 1.48 </td> <td align=\"right\"> 18.60 </td> <td align=\"right\"> 3.30 </td> <td align=\"right\"> 1.90 </td> </tr>\n  <tr> <td align=\"right\"> 4 </td> <td> Revaskularisering, 75 år og eldre </td> <td> 3787 </td> <td align=\"right\"> 9.30 </td> <td align=\"right\"> 6.80 </td> <td align=\"right\"> 13.70 </td> <td align=\"right\"> 2.02 </td> <td align=\"right\"> 1.83 </td> <td align=\"right\"> 1.68 </td> <td align=\"right\"> 22.60 </td> <td align=\"right\"> 5.00 </td> <td align=\"right\"> 3.80 </td> </tr>\n  <tr> <td align=\"right\"> 5 </td> <td> Ekte rehabilitering, 18 år og eldre </td> <td> 8516 </td> <td align=\"right\"> 20.20 </td> <td align=\"right\"> 0.84 </td> <td align=\"right\"> 59.10 </td> <td align=\"right\"> 70.36 </td> <td align=\"right\"> 65.79 </td> <td align=\"right\"> 47.56 </td> <td align=\"right\"> 116.00 </td> <td align=\"right\"> 48.70 </td> <td align=\"right\"> 42.90 </td> </tr>\n  <tr> <td align=\"right\"> 6 </td> <td> Samla rehabilitering, 18 år og eldre </td> <td> 16168 </td> <td align=\"right\"> 38.40 </td> <td align=\"right\"> 4.30 </td> <td align=\"right\"> 78.80 </td> <td align=\"right\"> 18.37 </td> <td align=\"right\"> 9.94 </td> <td align=\"right\"> 6.61 </td> <td align=\"right\"> 61.87 </td> <td align=\"right\"> 39.30 </td> <td align=\"right\"> 31.70 </td> </tr>\n  <tr> <td align=\"right\"> 7 </td> <td> Trening hos fysioterapuet, 18 år og eldre </td> <td>  </td> <td align=\"right\">  </td> <td align=\"right\">  </td> <td align=\"right\">  </td> <td align=\"right\">  </td> <td align=\"right\">  </td> <td align=\"right\">  </td> <td align=\"right\">  </td> <td align=\"right\">  </td> <td align=\"right\">  </td> </tr>\n   </table>\n```"
+          "tekst": "Legge inn teksten her\n\n* punktvis oppsummering av hovudfunn for hjarteinfarkt-området \n* ev. legge inn oversikts-tabell"
         },
         {
           "type": "faktaboks",
           "overskrift": "Om hjarteinfarkt",
           "tekst": "Kvart år blir i underkant av 12 000 nordmenn ramma av akutt hjarteinfarkt. I om lag 25 % av hjarteinfarkta er ein av koronararteriane heilt tett på grunn av brist i overflata  i eit trongt parti av blodåra, og danning av trombe (blodpropp). I 75 % av hjarteinfarkta er det er mindre EKG-forandringar, og koronararterien er i dei fleste tilfelle ikkje heilt tett. Hjarteinfarkt er ein alvorleg tilstand som utviklar seg raskt. Det er derfor viktig å komme tidleg i gang med behandling."
+        },
+        {
+          "type": "faktaboks",
+          "overskrift": "Vurdering av geografiske variasjon",
+          "tekst": "FT, CV, SCV"
         }
       ]
     },
@@ -34,7 +39,7 @@
           "oppdatert": "2023-05-10T07:50:57.544Z",
           "overskrift": "hjarteinfarkt",
           "ingress": "Hjarteinfarkt innlegging , pasientar 18 år og eldre",
-          "utvalg": "![]()\n\nUtvalet består av pasientar innlagt i sjukehus med akutt hjarteinfarkt (ICD-10 kode I21 akutt hjarteinfarkt, eller I22 påfølgande hjarteinfarkt) som hovud- eller bitilstand, i perioden 2018-2022. \n\nAlder: 18 år eller meir.\n\nRatane er justerte for alder og kjønn.",
+          "utvalg": "![kjønn og alder]( \"Kjønns-og aldersfordeling av pasientar med hjarteinfarkt\")\n\nUtvalet består av pasientar innlagt i sjukehus med akutt hjarteinfarkt (ICD-10 kode I21 akutt hjarteinfarkt, eller I22 påfølgande hjarteinfarkt) som hovud- eller bitilstand, i perioden 2018-2022. \n\nAlder: 18 år eller meir.\n\nRatane er justerte for alder og kjønn.",
           "resultat": "![Kjønn og alder](/helseatlas/img/no/hjarteinfarkt/hjarte_kjonn_alder.png \"Kjønns-og aldersfordeling av innalgte hjarteinfark pasientar\")\n\nhjarteinfarkt.\n\nSkrive om pasientraten, men også ta med noko om tal innleggingar.",
           "data": "innlagtepasient230523.json"
         },
