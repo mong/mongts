@@ -1,0 +1,415 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "andel_rtg"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Andel av MR-undersøkelsene med røntgen i forkant",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0%"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "rtg50_snitt",
+        "irtg50_snitt"
+      ],
+      "xLegend": {
+        "nb": [
+          "Røntgen",
+          "Ikke røntgen"
+        ],
+        "en": [
+          "Røntgen",
+          "Ikke røntgen"
+        ]
+      },
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Rate med/uten røntgen i forkant, pr. 10 000 innbyggere",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "andel_artkir",
+        "andel_akir",
+        "andel_ikir"
+      ],
+      "y": "bohf",
+      "xLegend": {
+        "nb": [
+          "Artrose",
+          "Annen",
+          "Ikke"
+        ],
+        "en": [
+          "Artrose",
+          "Annen",
+          "Ikke"
+        ]
+      },
+      "xLabel": {
+        "nb": "Rate, fordelt på type kirurgi, antall pr. 10 000 innbyggere",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "table",
+      "data": "datasett_1",
+      "caption": {
+        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 innbyggere",
+        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 innbyggere"
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområder",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "tot50_snitt",
+          "label_no": "MR Rate",
+          "label_en": "Rate",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "andel_rtg",
+          "label_no": "Andel røntgen",
+          "label_en": "Andel røntgen",
+          "typeVar": "number",
+          "format": ",.0%"
+        },
+        {
+          "id": "andel_artkir",
+          "label_no": "Artrosekirurgi",
+          "label_en": "Artrosekirurgi",
+          "typeVar": "number",
+          "format": ",.0%"
+        },
+        {
+          "id": "andel_akir",
+          "label_no": "Annen kirurgi",
+          "label_en": "Annen kirurgi",
+          "typeVar": "number",
+          "format": ",.0%"
+        },
+        {
+          "id": "andel_ikir",
+          "label_no": "Ikke kirurgi",
+          "label_en": "Ikke kirurgi",
+          "typeVar": "number",
+          "format": ",.0%"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "datasett_1",
+      "x": "andel_rtg",
+      "caption": {
+        "nb": "Andel av MR-undersøkelsene med røntgen i forkant",
+        "en": "tmp"
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": 0.273281947305,
+          "min": 0.235991561322,
+          "lag_min": 0.281649358932,
+          "grense": 0.277465653118
+        },
+        {
+          "cluster": 2,
+          "max": 0.349293635164,
+          "min": 0.281649358932,
+          "lag_min": 0.377697252121,
+          "grense": 0.363495443643
+        },
+        {
+          "cluster": 3,
+          "max": 0.451734444562,
+          "min": 0.377697252121,
+          "lag_min": 0.518089696698,
+          "grense": 0.48491207063
+        }
+      ],
+      "format": ",.0%"
+    },
+    {
+      "type": "data",
+      "label": "datasett_1",
+      "national": "Norge",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "data": [
+        {
+          "bohf": "Finnmark",
+          "rtg50_snitt": 62.8486927953,
+          "sum50mr": 139.127519612,
+          "andel_artkir": 0.0190216516496,
+          "andel_akir": 0.0787907446443,
+          "andel_ikir": 0.902187603706,
+          "andel_rtg": 0.451734444562,
+          "irtg50_snitt": 76.2788268169,
+          "andel_priv": 0.133313190328
+        },
+        {
+          "bohf": "UNN",
+          "rtg50_snitt": 44.7239783985,
+          "sum50mr": 183.91131504,
+          "andel_artkir": 0.0219579045223,
+          "andel_akir": 0.0576993284607,
+          "andel_ikir": 0.920342767017,
+          "andel_rtg": 0.243182309848,
+          "irtg50_snitt": 139.187336641,
+          "andel_priv": 0.894418595974
+        },
+        {
+          "bohf": "Nordland",
+          "rtg50_snitt": 63.6610958536,
+          "sum50mr": 168.55059309,
+          "andel_artkir": 0.0277684097646,
+          "andel_akir": 0.0722278339757,
+          "andel_ikir": 0.90000375626,
+          "andel_rtg": 0.377697252121,
+          "irtg50_snitt": 104.889497237,
+          "andel_priv": 0.770410855383
+        },
+        {
+          "bohf": "Helgeland",
+          "rtg50_snitt": 62.3455529605,
+          "sum50mr": 155.774282074,
+          "andel_artkir": 0.0273837546766,
+          "andel_akir": 0.07382058203,
+          "andel_ikir": 0.898795663293,
+          "andel_rtg": 0.400230077331,
+          "irtg50_snitt": 93.4287291131,
+          "andel_priv": 0.0604627046144
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "rtg50_snitt": 81.9399482592,
+          "sum50mr": 158.157841743,
+          "andel_artkir": 0.0564335534059,
+          "andel_akir": 0.0947032132794,
+          "andel_ikir": 0.848863233315,
+          "andel_rtg": 0.518089696698,
+          "irtg50_snitt": 76.217893484,
+          "andel_priv": 0.354813249973
+        },
+        {
+          "bohf": "St. Olav",
+          "rtg50_snitt": 43.7792167546,
+          "sum50mr": 185.511789105,
+          "andel_artkir": 0.0434797477464,
+          "andel_akir": 0.0731392597676,
+          "andel_ikir": 0.883380992486,
+          "andel_rtg": 0.235991561322,
+          "irtg50_snitt": 141.73257235,
+          "andel_priv": 0.860777814598
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "rtg50_snitt": 78.7517441345,
+          "sum50mr": 203.018576369,
+          "andel_artkir": 0.0356579502601,
+          "andel_akir": 0.123001448885,
+          "andel_ikir": 0.841340600855,
+          "andel_rtg": 0.387904129479,
+          "irtg50_snitt": 124.266832235,
+          "andel_priv": 0.426659346463
+        },
+        {
+          "bohf": "Førde",
+          "rtg50_snitt": 72.4533132186,
+          "sum50mr": 162.964029976,
+          "andel_artkir": 0.0514044921131,
+          "andel_akir": 0.148292290035,
+          "andel_ikir": 0.800303217852,
+          "andel_rtg": 0.444596965533,
+          "irtg50_snitt": 90.5107167578,
+          "andel_priv": 0.293676864346
+        },
+        {
+          "bohf": "Bergen",
+          "rtg50_snitt": 57.1671749874,
+          "sum50mr": 223.83759271,
+          "andel_artkir": 0.0328293334231,
+          "andel_akir": 0.0582459815685,
+          "andel_ikir": 0.908924685008,
+          "andel_rtg": 0.255395772869,
+          "irtg50_snitt": 166.670417723,
+          "andel_priv": 0.840741754111
+        },
+        {
+          "bohf": "Fonna",
+          "rtg50_snitt": 48.9400120904,
+          "sum50mr": 193.199076157,
+          "andel_artkir": 0.0390342136354,
+          "andel_akir": 0.0665047291287,
+          "andel_ikir": 0.894461057236,
+          "andel_rtg": 0.253313903275,
+          "irtg50_snitt": 144.259064067,
+          "andel_priv": 0.911210381262
+        },
+        {
+          "bohf": "Stavanger",
+          "rtg50_snitt": 72.4433187879,
+          "sum50mr": 178.945386126,
+          "andel_artkir": 0.0323873174582,
+          "andel_akir": 0.0445610469153,
+          "andel_ikir": 0.923051635626,
+          "andel_rtg": 0.404834795445,
+          "irtg50_snitt": 106.502067338,
+          "andel_priv": 0.794132045915
+        },
+        {
+          "bohf": "Østfold",
+          "rtg50_snitt": 63.9218833227,
+          "sum50mr": 209.295187769,
+          "andel_artkir": 0.0195445687774,
+          "andel_akir": 0.0207697575132,
+          "andel_ikir": 0.959685673709,
+          "andel_rtg": 0.305414969183,
+          "irtg50_snitt": 145.373304447,
+          "andel_priv": 0.887907996831
+        },
+        {
+          "bohf": "Akershus",
+          "rtg50_snitt": 54.8837357336,
+          "sum50mr": 200.831911054,
+          "andel_artkir": 0.0322979069963,
+          "andel_akir": 0.0273236334651,
+          "andel_ikir": 0.940378459539,
+          "andel_rtg": 0.273281947305,
+          "irtg50_snitt": 145.94817532,
+          "andel_priv": 0.889051303175
+        },
+        {
+          "bohf": "OUS",
+          "rtg50_snitt": 58.8033224752,
+          "sum50mr": 220.937361556,
+          "andel_artkir": 0.0221542678025,
+          "andel_akir": 0.0228777310404,
+          "andel_ikir": 0.954968001157,
+          "andel_rtg": 0.266153818716,
+          "irtg50_snitt": 162.134039081,
+          "andel_priv": 0.856254058236
+        },
+        {
+          "bohf": "Lovisenberg",
+          "rtg50_snitt": 53.61150893,
+          "sum50mr": 205.760180065,
+          "andel_artkir": 0.0198898454667,
+          "andel_akir": 0.0226064160459,
+          "andel_ikir": 0.957503738487,
+          "andel_rtg": 0.260553372927,
+          "irtg50_snitt": 152.148671135,
+          "andel_priv": 0.845061694943
+        },
+        {
+          "bohf": "Diakonhjemmet",
+          "rtg50_snitt": 52.527469259,
+          "sum50mr": 185.826228337,
+          "andel_artkir": 0.0206025963263,
+          "andel_akir": 0.0266365489215,
+          "andel_ikir": 0.952760854752,
+          "andel_rtg": 0.282669834765,
+          "irtg50_snitt": 133.298759078,
+          "andel_priv": 0.831611069091
+        },
+        {
+          "bohf": "Innlandet",
+          "rtg50_snitt": 57.0594979129,
+          "sum50mr": 189.018656165,
+          "andel_artkir": 0.0342523243374,
+          "andel_akir": 0.0438122395111,
+          "andel_ikir": 0.921935436151,
+          "andel_rtg": 0.301872307583,
+          "irtg50_snitt": 131.959158252,
+          "andel_priv": 0.784663771713
+        },
+        {
+          "bohf": "Vestre Viken",
+          "rtg50_snitt": 48.7772309134,
+          "sum50mr": 173.184242629,
+          "andel_artkir": 0.0344546477462,
+          "andel_akir": 0.0455055394121,
+          "andel_ikir": 0.920039812842,
+          "andel_rtg": 0.281649358932,
+          "irtg50_snitt": 124.407011715,
+          "andel_priv": 0.857760932404
+        },
+        {
+          "bohf": "Vestfold",
+          "rtg50_snitt": 57.6720628823,
+          "sum50mr": 198.999820729,
+          "andel_artkir": 0.043960645763,
+          "andel_akir": 0.0400100210348,
+          "andel_ikir": 0.916029333202,
+          "andel_rtg": 0.289809622296,
+          "irtg50_snitt": 141.327757846,
+          "andel_priv": 0.948545796093
+        },
+        {
+          "bohf": "Telemark",
+          "rtg50_snitt": 52.9162506121,
+          "sum50mr": 151.495032502,
+          "andel_artkir": 0.0376556087938,
+          "andel_akir": 0.0441361009112,
+          "andel_ikir": 0.918208290295,
+          "andel_rtg": 0.349293635164,
+          "irtg50_snitt": 98.5787818903,
+          "andel_priv": 0.892731341227
+        },
+        {
+          "bohf": "Sørlandet",
+          "rtg50_snitt": 54.8581351602,
+          "sum50mr": 160.57024981,
+          "andel_artkir": 0.0264864659549,
+          "andel_akir": 0.0361205917039,
+          "andel_ikir": 0.937392942341,
+          "andel_rtg": 0.341645698535,
+          "irtg50_snitt": 105.712114649,
+          "andel_priv": 0.888967206375
+        },
+        {
+          "bohf": "Norge",
+          "rtg50_snitt": 58.0252502868,
+          "sum50mr": 188.187369138,
+          "andel_artkir": 0.0325737102489,
+          "andel_akir": 0.051372207839,
+          "andel_ikir": 0.916054081912,
+          "andel_rtg": 0.308337645362,
+          "irtg50_snitt": 130.162118851,
+          "andel_priv": 0.793798879389
+        }
+      ]
+    }
+  ]
+}
