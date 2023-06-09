@@ -5,5 +5,16 @@ module.exports = {
   },
   trailingSlash: true,
   reactStrictMode: true,
-  transpilePackages: ["qmongjs"],
+  transpilePackages: [
+    "qmongjs",
+    "d3",
+    "d3-scale",
+    "@visx/scale",
+    "@visx/xychart",
+    "@visx/axis",
+    "@visx",
+  ],
+  experimental: {
+    esmExternals: "loose",
+  },
 };
