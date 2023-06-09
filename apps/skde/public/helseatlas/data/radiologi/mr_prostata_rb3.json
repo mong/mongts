@@ -97,8 +97,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 innbyggere",
-        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 innbyggere"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 innbyggere.Andel uten er andel som ikke er i pakkeforløp eller har kreftdiagnose før eller ved tidspunktet for MR undersøkelsen.",
+        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 innbyggere.Andel uten er andel som ikke er i pakkeforløp eller har kreftdiagnose før eller ved tidspunktet for MR undersøkelsen."
       },
       "columns": [
         {
@@ -117,7 +117,7 @@
         },
         {
           "id": "andel_pf",
-          "label_no": "Pakkeforløp",
+          "label_no": "Andel pakkeforløp",
           "label_en": "Percent PF",
           "typeVar": "number",
           "format": ",.0%"
@@ -138,7 +138,7 @@
         },
         {
           "id": "k_f_us_andel",
-          "label_no": "Kreft før MR",
+          "label_no": "Andel kreft før MR",
           "label_en": "Kreft før MR",
           "typeVar": "number",
           "format": ",.0%"
