@@ -49,23 +49,6 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": [
-        "psasnitt"
-      ],
-      "y": "bohf",
-      "xLabel": {
-        "nb": "Rate PSA-tester, antall pr. 10 000 menn",
-        "en": "tmp"
-      },
-      "yLabel": {
-        "nb": "Opptaksområder",
-        "en": "Referral areas"
-      },
-      "format": ",.0f"
-    },
-    {
-      "type": "barchart",
-      "data": "datasett_1",
-      "x": [
         "pfsnitt",
         "k_f_us_rate",
         "restrate"
@@ -85,6 +68,23 @@
       },
       "xLabel": {
         "nb": "Status ved MR-undersøkelsen, antall pr. 10 000 menn",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "psasnitt"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Rate PSA-tester, antall pr. 10 000 menn",
         "en": "tmp"
       },
       "yLabel": {
