@@ -3,27 +3,55 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["privsnitt", "offsnitt"],
-      "xLegend": {
-        "nb": ["Private", "Offentlig"],
-        "en": ["Private", "Offentlig"]
-      },
+      "x": [
+        "andel_priv"
+      ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Rate, antall per 10 000 innbyggere, offentlig eller private røngteninstitutt",
+        "nb": "Andel av undersøkelsene utført ved private røntgeninstitutt",
         "en": "tmp"
       },
       "yLabel": {
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "format": ",.1f"
+      "format": ",.0%"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "privsnitt",
+        "offsnitt"
+      ],
+      "xLegend": {
+        "nb": [
+          "Private røntgeninstitutt",
+          "Offentlig"
+        ],
+        "en": [
+          "Private røntgeninstitutt",
+          "Offentlig"
+        ]
+      },
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Rate offentlig/privat, antall per 10 000 innbyggere",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0f"
     },
     {
       "type": "linechart",
       "data": "datasett_2",
       "label": "tid",
-      "x": ["mnd"],
+      "x": [
+        "mnd"
+      ],
       "y": "antall",
       "xLabel": {
         "nb": "Måned",
@@ -86,7 +114,7 @@
       "data": "datasett_1",
       "x": "andel_priv",
       "caption": {
-        "nb": "Andel av undersøkelsene utført ved private røngteninstitutt",
+        "nb": "Andel av undersøkelsene utført ved private røntgeninstitutt",
         "en": "tmp"
       },
       "jenks": [
@@ -112,7 +140,7 @@
           "grense": 0.486148022711
         }
       ],
-      "format": ",.1%"
+      "format": ",.0%"
     },
     {
       "type": "data",
@@ -284,252 +312,288 @@
         {
           "mnd": 1,
           "antall": 54995,
-          "tid": 1,
+          "tid": "Snitt 2018-2019",
+          "nr": 1,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 1,
           "antall": 56023,
-          "tid": 2,
+          "tid": "Pandemi: 2020",
+          "nr": 2,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 1,
           "antall": 54105,
-          "tid": 3,
+          "tid": "Snitt 2021-2022",
+          "nr": 3,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 2,
           "antall": 50027.5,
-          "tid": 1,
+          "tid": "Snitt 2018-2019",
+          "nr": 1,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 2,
           "antall": 50951,
-          "tid": 2,
+          "tid": "Pandemi: 2020",
+          "nr": 2,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 2,
           "antall": 52960,
-          "tid": 3,
+          "tid": "Snitt 2021-2022",
+          "nr": 3,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 3,
           "antall": 50791.5,
-          "tid": 1,
+          "tid": "Snitt 2018-2019",
+          "nr": 1,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 3,
           "antall": 45774,
-          "tid": 2,
+          "tid": "Pandemi: 2020",
+          "nr": 2,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 3,
           "antall": 60504.5,
-          "tid": 3,
+          "tid": "Snitt 2021-2022",
+          "nr": 3,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 4,
           "antall": 47973,
-          "tid": 1,
+          "tid": "Snitt 2018-2019",
+          "nr": 1,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 4,
           "antall": 35422,
-          "tid": 2,
+          "tid": "Pandemi: 2020",
+          "nr": 2,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 4,
           "antall": 48237,
-          "tid": 3,
+          "tid": "Snitt 2021-2022",
+          "nr": 3,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 5,
           "antall": 49134,
-          "tid": 1,
+          "tid": "Snitt 2018-2019",
+          "nr": 1,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 5,
           "antall": 42337,
-          "tid": 2,
+          "tid": "Pandemi: 2020",
+          "nr": 2,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 5,
           "antall": 51857,
-          "tid": 3,
+          "tid": "Snitt 2021-2022",
+          "nr": 3,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 6,
           "antall": 49925,
-          "tid": 1,
+          "tid": "Snitt 2018-2019",
+          "nr": 1,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 6,
           "antall": 49353,
-          "tid": 2,
+          "tid": "Pandemi: 2020",
+          "nr": 2,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 6,
           "antall": 55174,
-          "tid": 3,
+          "tid": "Snitt 2021-2022",
+          "nr": 3,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 7,
           "antall": 35296,
-          "tid": 1,
+          "tid": "Snitt 2018-2019",
+          "nr": 1,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 7,
           "antall": 35169,
-          "tid": 2,
+          "tid": "Pandemi: 2020",
+          "nr": 2,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 7,
           "antall": 34058,
-          "tid": 3,
+          "tid": "Snitt 2021-2022",
+          "nr": 3,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 8,
           "antall": 48591,
-          "tid": 1,
+          "tid": "Snitt 2018-2019",
+          "nr": 1,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 8,
           "antall": 45673,
-          "tid": 2,
+          "tid": "Pandemi: 2020",
+          "nr": 2,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 8,
           "antall": 51306,
-          "tid": 3,
+          "tid": "Snitt 2021-2022",
+          "nr": 3,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 9,
           "antall": 53893,
-          "tid": 1,
+          "tid": "Snitt 2018-2019",
+          "nr": 1,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 9,
           "antall": 54687,
-          "tid": 2,
+          "tid": "Pandemi: 2020",
+          "nr": 2,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 9,
           "antall": 60227,
-          "tid": 3,
+          "tid": "Snitt 2021-2022",
+          "nr": 3,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 10,
           "antall": 58113,
-          "tid": 1,
+          "tid": "Snitt 2018-2019",
+          "nr": 1,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 10,
           "antall": 56189,
-          "tid": 2,
+          "tid": "Pandemi: 2020",
+          "nr": 2,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 10,
           "antall": 59706.5,
-          "tid": 3,
+          "tid": "Snitt 2021-2022",
+          "nr": 3,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 11,
           "antall": 52890.5,
-          "tid": 1,
+          "tid": "Snitt 2018-2019",
+          "nr": 1,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 11,
           "antall": 55948,
-          "tid": 2,
+          "tid": "Pandemi: 2020",
+          "nr": 2,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 11,
           "antall": 61057.5,
-          "tid": 3,
+          "tid": "Snitt 2021-2022",
+          "nr": 3,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 12,
           "antall": 39037,
-          "tid": 1,
+          "tid": "Snitt 2018-2019",
+          "nr": 1,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 12,
           "antall": 46871,
-          "tid": 2,
+          "tid": "Pandemi: 2020",
+          "nr": 2,
           "bohf": null,
           "ermann": null
         },
         {
           "mnd": 12,
           "antall": 49201.5,
-          "tid": 3,
+          "tid": "Snitt 2021-2022",
+          "nr": 3,
           "bohf": null,
           "ermann": null
         }
