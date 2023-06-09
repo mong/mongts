@@ -4,7 +4,7 @@
   "publisert": false,
   "lang": "nn",
   "date": "2023-05-03T08:41:38.301Z",
-  "ingress": "Helseatlas hjarteinfarkt inneheld to hovuddelar; akuttbehandling av hjarteinfarkt med revaskularisering, og rehabilitering etter hjarteinfarkt. Analysane som gjeld revaskularisering av hjarteinfarkt er både ei oppdatering av resultat frå eldrehelseatlaset, og informasjon om revaskularisering for personar i alle aldersgrupper.\n\n\nDet er stor interesse knytt til informasjon om rehabilitering etter hjarteinfarkt. Frå tidlegare er det lite kunnskap om omfanget av rehabiliteringa, trass i at rehabilitering har ein klar sekundærforebyggande effekt på hjarteinfarkt - og med det stor påverknad på både enkeltpersonar og helsevesen.",
+  "ingress": "Helseatlas hjarteinfarkt inneheld to hovuddelar: ei oppdatering av resultat frå eldrehelseatlaset med innlegging ved akutt hjarteinfarkt og revaskularisering, og rehabilitering etter hjarteinfarkt.\n\n\nRehabilitering har ein klar sekundærforebyggande effekt på hjarteinfarkt - og med det stor påverknad på både enkeltpersonar og helsevesen. Frå tidlegare er det lite kunnskap om omfanget av rehabilitering etter hjarteinfarkt.",
   "kapittel": [
     {
       "overskrift": "Hovudfunn",
@@ -18,6 +18,11 @@
           "type": "faktaboks",
           "overskrift": "Om hjarteinfarkt",
           "tekst": "Kvart år blir i underkant av 12 000 nordmenn ramma av akutt hjarteinfarkt. I om lag 25 % av hjarteinfarkta er ein av koronararteriane heilt tett på grunn av brist i overflata  i eit trongt parti av blodåra, og danning av trombe (blodpropp). I 75 % av hjarteinfarkta er det er mindre EKG-forandringar, og koronararterien er i dei fleste tilfelle ikkje heilt tett. Hjarteinfarkt er ein alvorleg tilstand som utviklar seg raskt. Det er derfor viktig å komme tidleg i gang med behandling."
+        },
+        {
+          "type": "faktaboks",
+          "overskrift": "Vurdering av geografiske variasjon",
+          "tekst": "FT, CV, SCV"
         }
       ]
     },
@@ -26,14 +31,14 @@
       "innhold": [
         {
           "type": "tekst",
-          "tekst": "* Hovudfunn 1\n* hovudfunn 2"
+          "tekst": "**Hovudfunn:** \n\n* Tal eldre innlagt med akutt hjarteinfarkt har gått ned, trass i fleire eldre.\n* Rate for akutt hjarteinfarktinnlegging var høgast i Finnmark. Dette kan tolkast som høgare førekomst av hjarteinfarkt i Finnmark enn i resten av landet.\n* Den geografiske variasjonen i inneggingar med akutt hjarteinfarkt var liten når vi såg bort frå områda med høgast og lågast rate."
         },
         {
           "type": "resultatboks",
           "publisert": "2023-05-10T07:50:57.499Z",
           "oppdatert": "2023-05-10T07:50:57.544Z",
-          "overskrift": "hjarteinfarkt",
-          "ingress": "Hjarteinfarkt innlegging , pasientar 18 år og eldre",
+          "overskrift": "Hjarteinfarktinnlegging, pasientar 18 år og eldre",
+          "ingress": "I Noreg var det 2,8 innleggingar med akutt hjarteinfarkt per 1000 innbyggarar i snitt per år i 2018 -2022. Raten gjekk ned i løpet av perioden. Sett bort frå områda med høgast (Finnmark) og lågast (Diakonhjemmet) rate var det liten geografisk variasjon.",
           "utvalg": "![kjønn og alder]( \"Kjønns-og aldersfordeling av pasientar med hjarteinfarkt\")\n\nUtvalet består av pasientar innlagt i sjukehus med akutt hjarteinfarkt (ICD-10 kode I21 akutt hjarteinfarkt, eller I22 påfølgande hjarteinfarkt) som hovud- eller bitilstand, i perioden 2018-2022. \n\nAlder: 18 år eller meir.\n\nRatane er justerte for alder og kjønn.",
           "resultat": "![Kjønn og alder](/helseatlas/img/no/hjarteinfarkt/hjarte_kjonn_alder.png \"Kjønns-og aldersfordeling av innalgte hjarteinfark pasientar\")\n\nhjarteinfarkt.\n\nSkrive om pasientraten, men også ta med noko om tal innleggingar.",
           "data": "innlagtepasient230523.json"
@@ -71,7 +76,7 @@
           "ingress": "revask",
           "utvalg": "![kjønn og alder]( \"Kjønns-og aldersfordeling av pasientar som fekk revaskularisering\")\n\nUtvalet består av pasientar med ein eller fleire av følgande prosedyrekodar: FNA\\*, FNB\\*, FNC\\*, FND\\*, FNE\\*, FNG\\*, FNP02B, FNP12B, FNQ05B eller FNQ12B, i perioden 2018-2022.\n\nAlder: 18 år og eldre.\n\nRatane er justerte for alder og kjønn.",
           "resultat": "revask\n\n![kjønn og alder](/helseatlas/img/no/hjarteinfarkt/revaskularisering_kjonn_alder.png \"Kjønns- og aldersfordeling av pasientar som fekk revaskularisering\")",
-          "data": "revask.json"
+          "data": "revask_oppdatert.json.json"
         },
         {
           "type": "resultatboks",
@@ -81,7 +86,7 @@
           "ingress": "75 år plus",
           "utvalg": "Utvalet består av pasientar med ein eller fleire av følgande prosedyrekodar: FNA\\*, FNB\\*, FNC\\*, FND\\*, FNE\\*, FNG\\*, FNP02B, FNP12B, FNQ05B eller FNQ12B, i perioden 2018-2022.\n\nAlder: 75 år og eldre.\n\nRatane er justerte for alder og kjønn.",
           "resultat": "75 plus",
-          "data": "revask75.json"
+          "data": "revask75_oppdatert.json"
         }
       ]
     },
@@ -104,8 +109,8 @@
           "oppdatert": "2023-05-31T11:53:51.445Z",
           "overskrift": "Prosentdel \"ekte\" rehabilitering etter hjarteinfarkt",
           "ingress": "Ved \"ekte rehabilitering\" er kontaktane i spesialisthelsetenesta koda som rehabilitering (Z-kodar).",
-          "utvalg": "![Type Zkodarrehab]( \"Prosetviss fordeling av type av Z kodar \")\n\n![Dagar_til første rehabiliteringsepisodar]( \"Dagar_til føste Z rehabiliteringsepisodar\")\n\nI analyse av rehabilitering etter hjarteinfarkt har vi brukt forløpsanalyse, og sett på rehabilitering eit halvt år etter eit indeksopphald/startopphald.\n\n\n**Indeksopphald/startopphald** \n\n\ner opphald der pasienten har I21 (akutt hjarteinfarkt) som hovudtilstand ved innleggelse. Dersom pasienten er flytta mellom ulike sjukehus, og det er mindre enn 8 timar mellom opphalda, er dei slått saman.\n\n\nOpphald med ukjent opptaksområde på pasient er ekskludert. Dersom indeksopphaldet går over fleire år, er det utdato for indeksopphaldet som gjeld.\n\n\nVi har brukt ein snevrare definisjon av hjarteinfarkt i analysane knytt til rehabilitering, enn elles. Ved å bruke ein streng definisjon er vi meir sikre på at vi inkluderer rett pasientgruppe, og vi såg at det meste av rehabiliteringa var knytt til indeksopphald med I21 som hovudtilstand. \n\n\n**Rehabiliteringsepisode** \nAlle episodar med minst ein av følgande hoved- eller bitilstandar: Z50.0 Rehabilitering etter hjertesykdom Z50.80 Kompleks rehabilitering Z50.89 Enkel rehabilitering Z50.9 Behandling som omfatter bruk av uspesifisert rehabiliteringstiltak\n\n\nVed treff i minst ein av episodane i definisjonen inngikk episoden i utrekning av kor stor prosentdel av indeksopphalda som hadde påfølgande rehabilitering. \n\n\nEpisodar 1 – 182 dagar etter utskriving av indeksopphald i 2018-2021 inngår i analysane.\n\n\nAlder: 18 år eller meir",
-          "resultat": "![Fordeling av Z kodar](/helseatlas/img/no/hjarteinfarkt/rplot_zkodaer.png \"Prosentviss fordeling av ulike Z kode rehabilitering\")\n\n![Dagar til første rehabiliteringsepisodar (Z kodar)](/helseatlas/img/no/hjarteinfarkt/dagar_til_første_ekte_rehab_episode.png \"Dagar til første ekte  rehabiliteringsepisodar\")\n\nZ-kodar \n\n![Rehabiliteringsrate med Z kodar](/helseatlas/img/no/hjarteinfarkt/rplot_zrehab.png \"Rehabiliteringsrate (Z-kodar)\")\n\nZ50.0, Z50.80, Z50.89, Z50.9\n\nProsentdel rehabilitering fordeling med kjønns- og alder \n\nRate for ekte rehabilitering\n\ntype av Z kodar\n\nDagar til første ekte rehabiliteringsepisodar\n\n![Prosentdel kjønns-og aldersfordeling ](/helseatlas/img/no/hjarteinfarkt/prosentdel_rehab_ekte.png \"Kjønns og aldersfordeling av rehabilitering \")",
+          "utvalg": "I analyse av rehabilitering etter hjarteinfarkt har vi brukt forløpsanalyse, og sett på rehabilitering eit halvt år etter eit indeksopphald/startopphald.\n\n**Indeksopphald/startopphald** \n\ner opphald der pasienten har I21 (akutt hjarteinfarkt) som hovudtilstand ved innleggelse. Dersom pasienten er flytta mellom ulike sjukehus, og det er mindre enn 8 timar mellom opphalda, er dei slått saman.\n\nOpphald med ukjent opptaksområde på pasient er ekskludert. Dersom indeksopphaldet går over fleire år, er det utdato for indeksopphaldet som gjeld.\n\nVi har brukt ein snevrare definisjon av hjarteinfarkt i analysane knytt til rehabilitering, enn elles. Ved å bruke ein streng definisjon er vi meir sikre på at vi inkluderer rett pasientgruppe, og vi såg at det meste av rehabiliteringa var knytt til indeksopphald med I21 som hovudtilstand. \n\n**Rehabiliteringsepisode** \nAlle episodar med minst ein av følgande hoved- eller bitilstandar: Z50.0 Rehabilitering etter hjertesykdom Z50.80 Kompleks rehabilitering Z50.89 Enkel rehabilitering Z50.9 Behandling som omfatter bruk av uspesifisert rehabiliteringstiltak\n\nVed treff i minst ein av episodane i definisjonen inngikk episoden i utrekning av kor stor prosentdel av indeksopphalda som hadde påfølgande rehabilitering. \n\nEpisodar 1 – 182 dagar etter utskriving av indeksopphald i 2018-2021 inngår i analysane.\n\nAlder: 18 år eller meir",
+          "resultat": "\n\n![Kjønn og alder](/helseatlas/img/no/hjarteinfarkt/prosentdel_rehab_ekte.png \"Prosentdel fordeling av rehabilitering med kjønns og aldersgruppe\")\n\n![](/helseatlas/img/no/hjarteinfarkt/rplot_zrehab.png \"\\\"Ekte\\\" rehabiliteringsrate\")\n\n\n\n![Fordeling av Z kodar](/helseatlas/img/no/hjarteinfarkt/rplot_zkodaer.png \"Prosentviss fordeling av ulike Z kode rehabilitering\")\n\n![Dagar til første rehabiliteringsepisodar (Z kodar)](/helseatlas/img/no/hjarteinfarkt/dagar_til_første_ekte_rehab_episode.png \"Dagar til første ekte  rehabiliteringsepisodar\")\n\nZ50.0, Z50.80, Z50.89, Z50.9\n\nProsentdel rehabilitering fordeling med kjønns- og alder \n\nRate for ekte rehabilitering\n\ntype av Z kodar\n\nDagar til første ekte rehabiliteringsepisodar",
           "data": "z_rehab_prosentdel310523.json"
         },
         {
