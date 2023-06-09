@@ -3870,12 +3870,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/apicache@npm:1.6.1":
-  version: 1.6.1
-  resolution: "@types/apicache@npm:1.6.1"
+"@types/apicache@npm:1.6.2":
+  version: 1.6.2
+  resolution: "@types/apicache@npm:1.6.2"
   dependencies:
+    "@types/express": "*"
     "@types/redis": ^2.8.0
-  checksum: bc482d175b6f0f62e64d1220370b2bdadc091b41082ec392a214d526cc6ee05267e82ccb333b14ac715e26adc354a9b9771e96bca86a7f05ebf3d4f2fcb77e80
+  checksum: 9ad6f2171fd785c0fd4b8555954fb067442acb898d20abc4566c8dfbfcb9e9e7d10a2ee93c3256a0b4e6193e9ad859f3977cf067263e05ba1eb499e4044cd40c
   languageName: node
   linkType: hard
 
@@ -5971,7 +5972,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "api@workspace:apps/api"
   dependencies:
-    "@types/apicache": 1.6.1
+    "@types/apicache": 1.6.2
     "@types/compression": 1.7.2
     "@types/cors": 2.8.13
     "@types/express": 4.17.17
