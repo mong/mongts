@@ -56,7 +56,26 @@
         "nb": "Andel av befolkningen med undersøkelse",
         "en": "Andel"
       },
-      "format_y": ",.0%"
+      "format_y": ",.1%"
+    },
+    {
+      "type": "linechart",
+      "data": "datasett_3",
+      "label": "tid",
+      "x": [
+        "mnd"
+      ],
+      "y": "antall",
+      "xLabel": {
+        "nb": "Måned",
+        "en": "Måned"
+      },
+      "yLabel": {
+        "nb": "Tidstrend, antall undersøkelser",
+        "en": "Antall undersøkelser"
+      },
+      "format_x": "month",
+      "format_y": ",.0f"
     },
     {
       "type": "table",
@@ -1925,6 +1944,229 @@
           "pctandel": 0,
           "gender": "Menn",
           "bohf": null
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "datasett_3",
+      "description": "Ekstradatasettet for gitt resultatboks",
+      "data": [
+        {
+          "mnd": 1,
+          "antall": 10639,
+          "tid": "Snitt 2018-2019",
+          "nr": 1
+        },
+        {
+          "mnd": 1,
+          "antall": 10784,
+          "tid": "Pandemi: 2020",
+          "nr": 2
+        },
+        {
+          "mnd": 1,
+          "antall": 10239,
+          "tid": "Snitt 2021-2022",
+          "nr": 3
+        },
+        {
+          "mnd": 2,
+          "antall": 9381,
+          "tid": "Snitt 2018-2019",
+          "nr": 1
+        },
+        {
+          "mnd": 2,
+          "antall": 9971,
+          "tid": "Pandemi: 2020",
+          "nr": 2
+        },
+        {
+          "mnd": 2,
+          "antall": 9920.5,
+          "tid": "Snitt 2021-2022",
+          "nr": 3
+        },
+        {
+          "mnd": 3,
+          "antall": 9699,
+          "tid": "Snitt 2018-2019",
+          "nr": 1
+        },
+        {
+          "mnd": 3,
+          "antall": 8890,
+          "tid": "Pandemi: 2020",
+          "nr": 2
+        },
+        {
+          "mnd": 3,
+          "antall": 11607,
+          "tid": "Snitt 2021-2022",
+          "nr": 3
+        },
+        {
+          "mnd": 4,
+          "antall": 8934.5,
+          "tid": "Snitt 2018-2019",
+          "nr": 1
+        },
+        {
+          "mnd": 4,
+          "antall": 6855,
+          "tid": "Pandemi: 2020",
+          "nr": 2
+        },
+        {
+          "mnd": 4,
+          "antall": 9179.5,
+          "tid": "Snitt 2021-2022",
+          "nr": 3
+        },
+        {
+          "mnd": 5,
+          "antall": 9203,
+          "tid": "Snitt 2018-2019",
+          "nr": 1
+        },
+        {
+          "mnd": 5,
+          "antall": 8237,
+          "tid": "Pandemi: 2020",
+          "nr": 2
+        },
+        {
+          "mnd": 5,
+          "antall": 9863.5,
+          "tid": "Snitt 2021-2022",
+          "nr": 3
+        },
+        {
+          "mnd": 6,
+          "antall": 9038,
+          "tid": "Snitt 2018-2019",
+          "nr": 1
+        },
+        {
+          "mnd": 6,
+          "antall": 9227,
+          "tid": "Pandemi: 2020",
+          "nr": 2
+        },
+        {
+          "mnd": 6,
+          "antall": 10389.5,
+          "tid": "Snitt 2021-2022",
+          "nr": 3
+        },
+        {
+          "mnd": 7,
+          "antall": 6139,
+          "tid": "Snitt 2018-2019",
+          "nr": 1
+        },
+        {
+          "mnd": 7,
+          "antall": 6220,
+          "tid": "Pandemi: 2020",
+          "nr": 2
+        },
+        {
+          "mnd": 7,
+          "antall": 6175,
+          "tid": "Snitt 2021-2022",
+          "nr": 3
+        },
+        {
+          "mnd": 8,
+          "antall": 8255.5,
+          "tid": "Snitt 2018-2019",
+          "nr": 1
+        },
+        {
+          "mnd": 8,
+          "antall": 8151,
+          "tid": "Pandemi: 2020",
+          "nr": 2
+        },
+        {
+          "mnd": 8,
+          "antall": 9196,
+          "tid": "Snitt 2021-2022",
+          "nr": 3
+        },
+        {
+          "mnd": 9,
+          "antall": 9605.5,
+          "tid": "Snitt 2018-2019",
+          "nr": 1
+        },
+        {
+          "mnd": 9,
+          "antall": 9664,
+          "tid": "Pandemi: 2020",
+          "nr": 2
+        },
+        {
+          "mnd": 9,
+          "antall": 11132.5,
+          "tid": "Snitt 2021-2022",
+          "nr": 3
+        },
+        {
+          "mnd": 10,
+          "antall": 10420.5,
+          "tid": "Snitt 2018-2019",
+          "nr": 1
+        },
+        {
+          "mnd": 10,
+          "antall": 10516,
+          "tid": "Pandemi: 2020",
+          "nr": 2
+        },
+        {
+          "mnd": 10,
+          "antall": 11168.5,
+          "tid": "Snitt 2021-2022",
+          "nr": 3
+        },
+        {
+          "mnd": 11,
+          "antall": 9866,
+          "tid": "Snitt 2018-2019",
+          "nr": 1
+        },
+        {
+          "mnd": 11,
+          "antall": 10523,
+          "tid": "Pandemi: 2020",
+          "nr": 2
+        },
+        {
+          "mnd": 11,
+          "antall": 11646.5,
+          "tid": "Snitt 2021-2022",
+          "nr": 3
+        },
+        {
+          "mnd": 12,
+          "antall": 7457,
+          "tid": "Snitt 2018-2019",
+          "nr": 1
+        },
+        {
+          "mnd": 12,
+          "antall": 9050,
+          "tid": "Pandemi: 2020",
+          "nr": 2
+        },
+        {
+          "mnd": 12,
+          "antall": 9518,
+          "tid": "Snitt 2021-2022",
+          "nr": 3
         }
       ]
     }
