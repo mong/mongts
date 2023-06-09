@@ -46,23 +46,32 @@
       "format": ",.0f"
     },
     {
-      "type": "linechart",
-      "data": "datasett_2",
-      "label": "tid",
+      "type": "barchart",
+      "data": "datasett_1",
       "x": [
-        "mnd"
+        "skulder_bltsnitt",
+        "skulder_iblt"
       ],
-      "y": "antall",
+      "y": "bohf",
+      "xLegend": {
+        "nb": [
+          "Bilateralt",
+          "Ikke bilateralt"
+        ],
+        "en": [
+          "Bilateralt",
+          "Ikke bilateralt"
+        ]
+      },
       "xLabel": {
-        "nb": "Måned",
-        "en": "Måned"
+        "nb": "Rate bilateralt eller ikke, pr. 10 000 innbyggere",
+        "en": "tmp"
       },
       "yLabel": {
-        "nb": "Antall undersøkelser",
-        "en": "Antall undersøkelser"
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
       },
-      "format_x": "month",
-      "format_y": ",.0f"
+      "format": ",.0f"
     },
     {
       "type": "table",
@@ -105,7 +114,14 @@
           "label_no": "Andel private",
           "label_en": "Percent private",
           "typeVar": "number",
-          "format": ",.1%"
+          "format": ",.0%"
+        },
+        {
+          "id": "andel_blt",
+          "label_no": "Andel bilateralt",
+          "label_en": "Percent bilateralt",
+          "typeVar": "number",
+          "format": ",.0%"
         }
       ]
     },
@@ -150,6 +166,10 @@
       "data": [
         {
           "bohf": "Finnmark",
+          "skulder_bltsnitt": 4.85263932209,
+          "mr_skulder_rate": 118.333957188,
+          "andel_blt": 0.0410080034287,
+          "skulder_iblt": 113.481317866,
           "offsnitt": 102.437338952,
           "privsnitt": 15.8966182361,
           "totsnitt": 118.333957188,
@@ -157,6 +177,10 @@
         },
         {
           "bohf": "UNN",
+          "skulder_bltsnitt": 10.5246840385,
+          "mr_skulder_rate": 133.095761039,
+          "andel_blt": 0.0790760273383,
+          "skulder_iblt": 122.571077,
           "offsnitt": 13.0687132619,
           "privsnitt": 120.027047777,
           "totsnitt": 133.095761039,
@@ -164,6 +188,10 @@
         },
         {
           "bohf": "Nordland",
+          "skulder_bltsnitt": 6.36054254439,
+          "mr_skulder_rate": 109.628854472,
+          "andel_blt": 0.0580188726316,
+          "skulder_iblt": 103.268311928,
           "offsnitt": 27.3587970786,
           "privsnitt": 82.2700573938,
           "totsnitt": 109.628854472,
@@ -171,6 +199,10 @@
         },
         {
           "bohf": "Helgeland",
+          "skulder_bltsnitt": 4.94649002831,
+          "mr_skulder_rate": 94.1667486803,
+          "andel_blt": 0.0525290518961,
+          "skulder_iblt": 89.220258652,
           "offsnitt": 87.7098901305,
           "privsnitt": 6.45685854986,
           "totsnitt": 94.1667486803,
@@ -178,6 +210,10 @@
         },
         {
           "bohf": "Nord-Trøndelag",
+          "skulder_bltsnitt": 5.16801000999,
+          "mr_skulder_rate": 105.937312304,
+          "andel_blt": 0.0487836617485,
+          "skulder_iblt": 100.769302294,
           "offsnitt": 66.3355881016,
           "privsnitt": 39.6017242024,
           "totsnitt": 105.937312304,
@@ -185,6 +221,10 @@
         },
         {
           "bohf": "St. Olav",
+          "skulder_bltsnitt": 5.49822567239,
+          "mr_skulder_rate": 100.609275219,
+          "andel_blt": 0.0546492921293,
+          "skulder_iblt": 95.1110495471,
           "offsnitt": 10.843180576,
           "privsnitt": 89.7660946435,
           "totsnitt": 100.609275219,
@@ -192,6 +232,10 @@
         },
         {
           "bohf": "Møre og Romsdal",
+          "skulder_bltsnitt": 8.4410723514,
+          "mr_skulder_rate": 131.917691359,
+          "andel_blt": 0.0639874171877,
+          "skulder_iblt": 123.476619007,
           "offsnitt": 74.1618139911,
           "privsnitt": 57.7558773675,
           "totsnitt": 131.917691359,
@@ -199,6 +243,10 @@
         },
         {
           "bohf": "Førde",
+          "skulder_bltsnitt": 8.33084442445,
+          "mr_skulder_rate": 102.985829114,
+          "andel_blt": 0.080893114093,
+          "skulder_iblt": 94.6549846892,
           "offsnitt": 69.2892870374,
           "privsnitt": 33.6965420763,
           "totsnitt": 102.985829114,
@@ -206,6 +254,10 @@
         },
         {
           "bohf": "Bergen",
+          "skulder_bltsnitt": 9.61600732129,
+          "mr_skulder_rate": 122.015922804,
+          "andel_blt": 0.0788094463438,
+          "skulder_iblt": 112.399915482,
           "offsnitt": 19.6170197477,
           "privsnitt": 102.398903056,
           "totsnitt": 122.015922804,
@@ -213,6 +265,10 @@
         },
         {
           "bohf": "Fonna",
+          "skulder_bltsnitt": 11.7709395198,
+          "mr_skulder_rate": 124.313002006,
+          "andel_blt": 0.0946879194441,
+          "skulder_iblt": 112.542062486,
           "offsnitt": 8.41355440047,
           "privsnitt": 115.899447605,
           "totsnitt": 124.313002006,
@@ -220,6 +276,10 @@
         },
         {
           "bohf": "Stavanger",
+          "skulder_bltsnitt": 8.7500829607,
+          "mr_skulder_rate": 90.3802663121,
+          "andel_blt": 0.0968140869433,
+          "skulder_iblt": 81.6301833514,
           "offsnitt": 10.2347044033,
           "privsnitt": 80.1455619088,
           "totsnitt": 90.3802663121,
@@ -227,6 +287,10 @@
         },
         {
           "bohf": "Østfold",
+          "skulder_bltsnitt": 12.9503530501,
+          "mr_skulder_rate": 135.495048102,
+          "andel_blt": 0.0955780541913,
+          "skulder_iblt": 122.544695051,
           "offsnitt": 11.66382192,
           "privsnitt": 123.831226182,
           "totsnitt": 135.495048102,
@@ -234,6 +298,10 @@
         },
         {
           "bohf": "Akershus",
+          "skulder_bltsnitt": 9.55767855137,
+          "mr_skulder_rate": 119.245852962,
+          "andel_blt": 0.0801510351429,
+          "skulder_iblt": 109.68817441,
           "offsnitt": 14.5723673306,
           "privsnitt": 104.673485631,
           "totsnitt": 119.245852962,
@@ -241,6 +309,10 @@
         },
         {
           "bohf": "OUS",
+          "skulder_bltsnitt": 7.78534638541,
+          "mr_skulder_rate": 103.632785807,
+          "andel_blt": 0.0751243568797,
+          "skulder_iblt": 95.8474394217,
           "offsnitt": 12.315338478,
           "privsnitt": 91.3174473291,
           "totsnitt": 103.632785807,
@@ -248,6 +320,10 @@
         },
         {
           "bohf": "Lovisenberg",
+          "skulder_bltsnitt": 7.20909981933,
+          "mr_skulder_rate": 93.3659451097,
+          "andel_blt": 0.0772133759355,
+          "skulder_iblt": 86.1568452903,
           "offsnitt": 11.9426556515,
           "privsnitt": 81.4232894582,
           "totsnitt": 93.3659451097,
@@ -255,6 +331,10 @@
         },
         {
           "bohf": "Diakonhjemmet",
+          "skulder_bltsnitt": 5.52907392067,
+          "mr_skulder_rate": 82.6927707792,
+          "andel_blt": 0.0668628450657,
+          "skulder_iblt": 77.1636968586,
           "offsnitt": 12.9922525603,
           "privsnitt": 69.7005182189,
           "totsnitt": 82.6927707792,
@@ -262,6 +342,10 @@
         },
         {
           "bohf": "Innlandet",
+          "skulder_bltsnitt": 8.59680744298,
+          "mr_skulder_rate": 116.879872641,
+          "andel_blt": 0.0735525052241,
+          "skulder_iblt": 108.283065198,
           "offsnitt": 20.7115653383,
           "privsnitt": 96.1683073023,
           "totsnitt": 116.879872641,
@@ -269,6 +353,10 @@
         },
         {
           "bohf": "Vestre Viken",
+          "skulder_bltsnitt": 6.74557400777,
+          "mr_skulder_rate": 95.9632460203,
+          "andel_blt": 0.0702933079852,
+          "skulder_iblt": 89.2176720125,
           "offsnitt": 11.3409938943,
           "privsnitt": 84.622252126,
           "totsnitt": 95.9632460203,
@@ -276,6 +364,10 @@
         },
         {
           "bohf": "Vestfold",
+          "skulder_bltsnitt": 6.35213314133,
+          "mr_skulder_rate": 93.3931849908,
+          "andel_blt": 0.0680149535745,
+          "skulder_iblt": 87.0410518495,
           "offsnitt": 5.59389164704,
           "privsnitt": 87.7992933438,
           "totsnitt": 93.3931849908,
@@ -283,6 +375,10 @@
         },
         {
           "bohf": "Telemark",
+          "skulder_bltsnitt": 6.34370950006,
+          "mr_skulder_rate": 73.4941023527,
+          "andel_blt": 0.0863158987863,
+          "skulder_iblt": 67.1503928526,
           "offsnitt": 5.93768017662,
           "privsnitt": 67.5564221761,
           "totsnitt": 73.4941023527,
@@ -290,6 +386,10 @@
         },
         {
           "bohf": "Sørlandet",
+          "skulder_bltsnitt": 5.69706717518,
+          "mr_skulder_rate": 87.8866133933,
+          "andel_blt": 0.0648229230279,
+          "skulder_iblt": 82.1895462181,
           "offsnitt": 9.83428956795,
           "privsnitt": 78.0523238253,
           "totsnitt": 87.8866133933,
@@ -297,305 +397,14 @@
         },
         {
           "bohf": "Norge",
+          "skulder_bltsnitt": 8.05793376434,
+          "mr_skulder_rate": 107.769826855,
+          "andel_blt": 0.0747698497759,
+          "skulder_iblt": 99.711893091,
           "offsnitt": 21.0150524484,
           "privsnitt": 86.7547744069,
           "totsnitt": 107.769826855,
           "andel_priv": 0.805000591895
-        }
-      ]
-    },
-    {
-      "type": "data",
-      "label": "datasett_2",
-      "description": "Ekstradatasettet for gitt resultatboks",
-      "data": [
-        {
-          "mnd": 1,
-          "antall": 5641.5,
-          "tid": "Snitt 2018-2019",
-          "nr": 1,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 1,
-          "antall": 5521,
-          "tid": "Pandemi: 2020",
-          "nr": 2,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 1,
-          "antall": 5277.5,
-          "tid": "Snitt 2021-2022",
-          "nr": 3,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 2,
-          "antall": 5308.5,
-          "tid": "Snitt 2018-2019",
-          "nr": 1,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 2,
-          "antall": 5152,
-          "tid": "Pandemi: 2020",
-          "nr": 2,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 2,
-          "antall": 5346,
-          "tid": "Snitt 2021-2022",
-          "nr": 3,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 3,
-          "antall": 5231,
-          "tid": "Snitt 2018-2019",
-          "nr": 1,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 3,
-          "antall": 4575,
-          "tid": "Pandemi: 2020",
-          "nr": 2,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 3,
-          "antall": 6020,
-          "tid": "Snitt 2021-2022",
-          "nr": 3,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 4,
-          "antall": 4999.5,
-          "tid": "Snitt 2018-2019",
-          "nr": 1,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 4,
-          "antall": 3424,
-          "tid": "Pandemi: 2020",
-          "nr": 2,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 4,
-          "antall": 4777,
-          "tid": "Snitt 2021-2022",
-          "nr": 3,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 5,
-          "antall": 4808.5,
-          "tid": "Snitt 2018-2019",
-          "nr": 1,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 5,
-          "antall": 3900,
-          "tid": "Pandemi: 2020",
-          "nr": 2,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 5,
-          "antall": 5001.5,
-          "tid": "Snitt 2021-2022",
-          "nr": 3,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 6,
-          "antall": 4743.5,
-          "tid": "Snitt 2018-2019",
-          "nr": 1,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 6,
-          "antall": 4442,
-          "tid": "Pandemi: 2020",
-          "nr": 2,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 6,
-          "antall": 5086,
-          "tid": "Snitt 2021-2022",
-          "nr": 3,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 7,
-          "antall": 3322,
-          "tid": "Snitt 2018-2019",
-          "nr": 1,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 7,
-          "antall": 3201,
-          "tid": "Pandemi: 2020",
-          "nr": 2,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 7,
-          "antall": 3133.5,
-          "tid": "Snitt 2021-2022",
-          "nr": 3,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 8,
-          "antall": 4593,
-          "tid": "Snitt 2018-2019",
-          "nr": 1,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 8,
-          "antall": 4327,
-          "tid": "Pandemi: 2020",
-          "nr": 2,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 8,
-          "antall": 4618.5,
-          "tid": "Snitt 2021-2022",
-          "nr": 3,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 9,
-          "antall": 5150.5,
-          "tid": "Snitt 2018-2019",
-          "nr": 1,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 9,
-          "antall": 4958,
-          "tid": "Pandemi: 2020",
-          "nr": 2,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 9,
-          "antall": 5248.5,
-          "tid": "Snitt 2021-2022",
-          "nr": 3,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 10,
-          "antall": 5509.5,
-          "tid": "Snitt 2018-2019",
-          "nr": 1,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 10,
-          "antall": 5181,
-          "tid": "Pandemi: 2020",
-          "nr": 2,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 10,
-          "antall": 5308.5,
-          "tid": "Snitt 2021-2022",
-          "nr": 3,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 11,
-          "antall": 5023.5,
-          "tid": "Snitt 2018-2019",
-          "nr": 1,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 11,
-          "antall": 5263,
-          "tid": "Pandemi: 2020",
-          "nr": 2,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 11,
-          "antall": 5536.5,
-          "tid": "Snitt 2021-2022",
-          "nr": 3,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 12,
-          "antall": 3677,
-          "tid": "Snitt 2018-2019",
-          "nr": 1,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 12,
-          "antall": 4391,
-          "tid": "Pandemi: 2020",
-          "nr": 2,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "mnd": 12,
-          "antall": 4519.5,
-          "tid": "Snitt 2021-2022",
-          "nr": 3,
-          "bohf": null,
-          "ermann": null
         }
       ]
     }
