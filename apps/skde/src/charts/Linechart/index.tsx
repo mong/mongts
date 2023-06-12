@@ -175,6 +175,7 @@ export const Linechart = <
           snapTooltipToDatumY
           showVerticalCrosshair
           showSeriesGlyphs
+          glyphStyle={{ fill: linechartColors[0] }}
           renderTooltip={({ tooltipData }) => (
             <div>
               <div>
