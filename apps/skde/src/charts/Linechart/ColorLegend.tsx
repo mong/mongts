@@ -2,7 +2,6 @@ import classNames from "../Barchart/ChartLegend.module.css";
 
 type ColorLegendProps = {
   colorScale: Function;
-  onClick?: Function;
   values: string[];
 };
 
@@ -16,19 +15,12 @@ export const ColorLegend: React.FC<ColorLegendProps> = ({
         {values.map((val, i) => (
           <li key={val + i} className={classNames.legendLI}>
             <div
-              className={classNames.legendColorOuter}
               style={{
-                border: `2px solid ${colorScale(val)}`,
+                borderBottom: `4px solid ${colorScale(val)}`,
               }}
             >
-              <div
-                className={classNames.legendColorInner}
-                style={{
-                  backgroundColor: colorScale(val),
-                }}
-              ></div>
+              {val}
             </div>
-            {val}
           </li>
         ))}
       </ul>
