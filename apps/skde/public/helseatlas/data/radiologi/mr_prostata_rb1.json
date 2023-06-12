@@ -8,7 +8,7 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Rate, antall pr. 10 000 innbyggere",
+        "nb": "Rate, antall MR prostata pr. 10 000 menn",
         "en": "tmp"
       },
       "yLabel": {
@@ -49,11 +49,11 @@
       ],
       "y": "pctandel",
       "xLabel": {
-        "nb": "Alder, ettårig",
-        "en": "Alder, ettårig"
+        "nb": "Alder",
+        "en": "Alder"
       },
       "yLabel": {
-        "nb": "Andel av befolkningen med undersøkelse",
+        "nb": "Andel av befolkningen med MR prostata undersøkelse",
         "en": "Andel"
       },
       "format_y": ",.1%"
@@ -71,7 +71,7 @@
         "en": "Måned"
       },
       "yLabel": {
-        "nb": "Tidstrend, antall undersøkelser",
+        "nb": "Tidstrend, antall MR prostata undersøkelser",
         "en": "Antall undersøkelser"
       },
       "format_x": "month",
@@ -81,8 +81,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 innbyggere",
-        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 innbyggere"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall (rate) pr. 10  000 menn",
+        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall (rate) pr. 10  000 menn"
       },
       "columns": [
         {
@@ -94,7 +94,7 @@
         },
         {
           "id": "totsnitt",
-          "label_no": "MR Rate",
+          "label_no": "Rate",
           "label_en": "Rate",
           "typeVar": "number",
           "format": ",.0f"
@@ -134,7 +134,7 @@
       "data": "datasett_1",
       "x": "totsnitt",
       "caption": {
-        "nb": "Rate, antall pr. 10 000 innbyggere",
+        "nb": "Antall (rate) MR prostata pr. 10 000 menn",
         "en": "tmp"
       },
       "jenks": [
