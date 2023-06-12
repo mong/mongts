@@ -32,3 +32,9 @@ export const selectedBarColors: string[] = [
   `rgba(${pickedcolor}, 0.7)`,
   `rgba(${pickedcolor}, 0.4)`,
 ];
+
+export const linechartColors: string[] = [
+  `rgb(${pickedcolor})`,
+  "rgb(125,163,200)",
+  "rgb(112,131,127)",
+];
