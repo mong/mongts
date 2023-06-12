@@ -4,7 +4,7 @@
   "publisert": false,
   "lang": "nn",
   "date": "2023-05-03T08:41:38.301Z",
-  "ingress": "Helseatlas hjarteinfarkt inneheld to hovuddelar: 1) ei oppdatering av resultat frå eldrehelseatlaset med innlegging ved akutt hjarteinfarkt og revaskularisering og 2) rehabilitering etter hjarteinfarkt.\n\nFrå tidlegare er det lite kunnskap om omfanget av rehabilitering etter hjarteinfarkt, trass i at rehabilitering har ein klar sekundærforebyggande effekt på hjarteinfarkt - og med det stor påverknad på både enkeltpersonar og helsevesen.",
+  "ingress": "Helseatlas hjarteinfarkt inneheld to hovuddelar: ei oppdatering av resultat frå eldrehelseatlaset med innlegging ved akutt hjarteinfarkt og revaskularisering, og rehabilitering etter hjarteinfarkt.\n\n\nRehabilitering har ein klar sekundærforebyggande effekt på hjarteinfarkt - og med det stor påverknad på både enkeltpersonar og helsevesen. Frå tidlegare er det lite kunnskap om omfanget av rehabilitering etter hjarteinfarkt.",
   "kapittel": [
     {
       "overskrift": "Hovudfunn",
@@ -39,7 +39,7 @@
           "oppdatert": "2023-05-10T07:50:57.544Z",
           "overskrift": "Hjarteinfarktinnlegging, pasientar 18 år og eldre",
           "ingress": "I Noreg var det 2,8 innleggingar med akutt hjarteinfarkt per 1000 innbyggarar i snitt per år i 2018 -2022. Raten gjekk ned i løpet av perioden. Sett bort frå områda med høgast (Finnmark) og lågast (Diakonhjemmet) rate var det liten geografisk variasjon.",
-          "utvalg": "![]()\n\nUtvalet består av pasientar innlagt i sjukehus med akutt hjarteinfarkt (ICD-10 kode I21 akutt hjarteinfarkt, eller I22 påfølgande hjarteinfarkt) som hovud- eller bitilstand, i perioden 2018-2022. \n\nAlder: 18 år eller meir.\n\nRatane er justerte for alder og kjønn.",
+          "utvalg": "Utvalet består av pasientar innlagt i sjukehus med akutt hjarteinfarkt (ICD-10 kode I21 akutt hjarteinfarkt, eller I22 påfølgande hjarteinfarkt) som hovud- eller bitilstand, i perioden 2018-2022. \n\nAlder: 18 år eller meir.\n\nRatane er justerte for alder og kjønn.",
           "resultat": "![Kjønn og alder](/helseatlas/img/no/hjarteinfarkt/hjarte_kjonn_alder.png \"Kjønns-og aldersfordeling av innalgte hjarteinfark pasientar\")\n\nhjarteinfarkt.\n\nSkrive om pasientraten, men også ta med noko om tal innleggingar.",
           "data": "innlagtepasient230523.json"
         },
@@ -74,7 +74,7 @@
           "oppdatert": "2023-05-23T12:40:30.016Z",
           "overskrift": "Revaskularisering for pasientar 18 år og eldre",
           "ingress": "revask",
-          "utvalg": "![]()\n\nUtvalet består av pasientar med ein eller fleire av følgande prosedyrekodar: FNA\\*, FNB\\*, FNC\\*, FND\\*, FNE\\*, FNG\\*, FNP02B, FNP12B, FNQ05B eller FNQ12B, i perioden 2018-2022.\n\nAlder: 18 år og eldre.\n\nRatane er justerte for alder og kjønn.",
+          "utvalg": "![kjønn og alder]( \"Kjønns-og aldersfordeling av pasientar som fekk revaskularisering\")\n\nUtvalet består av pasientar med ein eller fleire av følgande prosedyrekodar: FNA\\*, FNB\\*, FNC\\*, FND\\*, FNE\\*, FNG\\*, FNP02B, FNP12B, FNQ05B eller FNQ12B, i perioden 2018-2022.\n\nAlder: 18 år og eldre.\n\nRatane er justerte for alder og kjønn.",
           "resultat": "revask\n\n![kjønn og alder](/helseatlas/img/no/hjarteinfarkt/revaskularisering_kjonn_alder.png \"Kjønns- og aldersfordeling av pasientar som fekk revaskularisering\")",
           "data": "revask_oppdatert.json.json"
         },
@@ -140,7 +140,7 @@
           "overskrift": "Prosentdel ekte rehabilitering med 95% Konfidensintervall ",
           "ingress": "ekte rehabilitering med 95% KI",
           "utvalg": "Z rehabilitering er ekte",
-          "data": "test_z_rehab_med95ki.json",
+          "data": "rehab_ekte_med95persentki.json",
           "resultat": "det er velig stor variasjon mellom opptaksområde"
         }
       ]
