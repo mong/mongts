@@ -182,17 +182,19 @@ export const Linechart = <
                 {": "}
                 {accessors.xAccessor(tooltipData.nearestDatum.datum)}
               </div>
-              {Object.keys(tooltipData.datumByKey).map((d, i) => {
-                return (
-                  <div key={d}>
-                    <div style={{ color: linechartColors[i] }}>
-                      {d}
-                      {": "}
-                      {accessors.yAccessor(tooltipData.datumByKey[d].datum)}
+              {Object.keys(tooltipData.datumByKey).map(
+                (d: LinechartData<Data, X, Y, Label>[Label]) => {
+                  return (
+                    <div key={d}>
+                      <div style={{ color: colorScale(d) }}>
+                        {d}
+                        {": "}
+                        {accessors.yAccessor(tooltipData.datumByKey[d].datum)}
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                }
+              )}
             </div>
           )}
         />
