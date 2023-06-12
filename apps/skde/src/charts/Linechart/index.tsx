@@ -5,7 +5,7 @@ import {
   customFormatEng,
 } from "../../helpers/functions/localFormater";
 import { ColorLegend } from "./ColorLegend";
-import { abacusColors } from "../colors";
+import { linechartColors } from "../colors";
 
 export type LinechartData<
   Data,
@@ -98,7 +98,7 @@ export const Linechart = <
 
   const colorScale = scaleOrdinal({
     domain: values.map((s) => s.label),
-    range: [...abacusColors],
+    range: [...linechartColors],
   });
 
   return (
@@ -185,7 +185,7 @@ export const Linechart = <
               {Object.keys(tooltipData.datumByKey).map((d, i) => {
                 return (
                   <div key={d}>
-                    <div style={{ color: abacusColors[i] }}>
+                    <div style={{ color: linechartColors[i] }}>
                       {d}
                       {": "}
                       {accessors.yAccessor(tooltipData.datumByKey[d].datum)}
