@@ -1,8 +1,11 @@
 import { Grid, Axis, LineSeries, XYChart, Tooltip } from "@visx/xychart";
+import { scaleOrdinal } from "@visx/scale";
 import {
   customFormat,
   customFormatEng,
 } from "../../helpers/functions/localFormater";
+import { ColorLegend } from "./ColorLegend";
+import { linechartColors } from "../colors";
 
 export type LinechartData<
   Data,
@@ -93,6 +96,11 @@ export const Linechart = <
     )
   );
 
+  const colorScale = scaleOrdinal({
+    domain: values.map((s) => s.label),
+    range: [...linechartColors],
+  });
+
   return (
     <div style={{ width: "auto", margin: "auto" }}>
       <XYChart
@@ -159,6 +167,7 @@ export const Linechart = <
             xAccessor={(d) => d.x}
             yAccessor={(d) => d.y}
             key={i}
+            colorAccessor={colorScale}
           />
         ))}
         <Tooltip
@@ -166,28 +175,31 @@ export const Linechart = <
           snapTooltipToDatumY
           showVerticalCrosshair
           showSeriesGlyphs
-          renderTooltip={({ tooltipData, colorScale }) => (
+          renderTooltip={({ tooltipData }) => (
             <div>
               <div>
                 {xLabel[lang].split(/[^A-Za-zæøåÆØÅ]/)[0]}
                 {": "}
                 {accessors.xAccessor(tooltipData.nearestDatum.datum)}
               </div>
-              {Object.keys(tooltipData.datumByKey).map((d) => {
-                return (
-                  <div key={d}>
-                    <div style={{ color: colorScale(d) }}>
-                      {d}
-                      {": "}
-                      {accessors.yAccessor(tooltipData.datumByKey[d].datum)}
+              {Object.keys(tooltipData.datumByKey).map(
+                (d: LinechartData<Data, X, Y, Label>[Label]) => {
+                  return (
+                    <div key={d}>
+                      <div style={{ color: colorScale(d) }}>
+                        {d}
+                        {": "}
+                        {accessors.yAccessor(tooltipData.datumByKey[d].datum)}
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                }
+              )}
             </div>
           )}
         />
       </XYChart>
+      <ColorLegend colorScale={colorScale} values={uniqueLabels} />
     </div>
   );
 };
