@@ -19,11 +19,12 @@ import {
   useResizeObserver,
   useUnitNamesQuery,
   useSelectionYearsQuery,
+  useIndicatorQuery,
 } from "../../helpers/hooks";
 import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
 import { UnitNameList } from "./unitnamelist";
 import { NestedTreatmentUnitName } from "./unitnamelist/unitnamelistbody";
-import { RegisterName } from "types";
+import { RegisterName, Indicator } from "types";
 
 import LEGEND from "../TargetLevels";
 import { IndicatorTable } from "../IndicatorTable";
@@ -106,8 +107,34 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   );
   const min = valid_years.length === 0 ? minYear : Math.min(...valid_years);
   const max = valid_years.length === 0 ? maxYear : Math.max(...valid_years);
+
+  const lastCompleteYear = (data: Indicator[] | undefined) => {
+    if (!data) {
+      return defaultYear;
+    }
+    // get the last year with complete data
+    const latestAffirmDates = data.flatMap((d) =>
+      d.delivery_latest_affirm
+        ? new Date(d.delivery_latest_affirm).getTime()
+        : new Date(defaultYear + 1, 0).getTime()
+    );
+    const lastCompleteYear =
+      new Date(
+        Math.max(...latestAffirmDates) +
+          // add a couple of days so 30. des 1980 will return 1980 instead of 1979.
+          48 * 60 * 60 * 1000
+      ).getFullYear() - 1;
+    return lastCompleteYear;
+  };
+
+  const { data } = useIndicatorQuery({
+    registerShortName: register,
+    context: queryContext.context,
+    type: queryContext.type,
+  });
+
   const validated_selected_year = mathClamp(
-    selected_year || defaultYear,
+    selected_year || lastCompleteYear(data),
     min,
     max
   );
