@@ -27,6 +27,7 @@ type Resultatboks = {
   lang: "nb" | "en" | "nn";
   publisert: Date;
   oppdatert: Date;
+  kart?: string;
 };
 
 export type ChapterProps = {
@@ -91,6 +92,7 @@ const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
                     carousel: box.data,
                     published: box.publisert,
                     updated: box.oppdatert,
+                    map: box.kart,
                   }
                 : { children: box.tekst, lang: lang };
 

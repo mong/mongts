@@ -1,4 +1,4 @@
 import React from "react";
 
-export const DataContext: React.Context<{ atlasData: any; mapData: any }> =
-  React.createContext({ atlasData: {}, mapData: {} });
+export const DataContext: React.Context<{ atlasData: any }> =
+  React.createContext({ atlasData: {} });
