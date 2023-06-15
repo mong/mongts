@@ -64,7 +64,7 @@ context("v2 atlas", () => {
     cy.get('[label="map"]').should("not.exist"); // Map does not exist
     cy.get('[label="table"]').should("not.exist"); // Table does not exist
 
-    cy.get('[data-testid="carouselbutton_3"]').click(); // Show the table
+    cy.get('[data-testid="carouselbutton_4"]').click(); // Show the table
     cy.get('[label="table"]').should("exist"); // Table exist
     cy.get('[label="barchart"]').should("not.exist"); // Barchart does not exist
     cy.get('[label="map"]').should("not.exist"); // Map does not exist
@@ -81,7 +81,7 @@ context("v2 atlas", () => {
       "173"
     );
 
-    cy.get('[data-testid="carouselbutton_4"]').click(); // Show the map
+    cy.get('[data-testid="carouselbutton_5"]').click(); // Show the map
     cy.get('[label="map"]').should("exist"); // Map exist
     cy.get('[label="table"]').should("not.exist"); // Table does not exist
     cy.get('[label="barchart"]').should("not.exist"); // Barchart does not exist
@@ -128,7 +128,7 @@ context("v2 atlas", () => {
     cy.get('[data-testid="rect_OUS_unselected"]').click();
     cy.get('[data-testid="circle_UNN_selected"]').should("exist");
     cy.get('[data-testid="circle_OUS_selected"]').should("exist");
-    cy.get('[data-testid="carouselbutton_3"]').click(); // Show the table
+    cy.get('[data-testid="carouselbutton_4"]').click(); // Show the table
     cy.get('[data-testid="tablerow_UNN"]').should("have.class", "Mui-selected");
     cy.get('[data-testid="tablerow_OUS"]').should("have.class", "Mui-selected");
     cy.get('[data-testid="tablerow_Telemark"]').should(
@@ -140,7 +140,7 @@ context("v2 atlas", () => {
       "have.class",
       "Mui-selected"
     );
-    cy.get('[data-testid="carouselbutton_4"]').click(); // Show the map
+    cy.get('[data-testid="carouselbutton_5"]').click(); // Show the map
     cy.get('[data-testid="maphf_Telemark"]')
       .get('[fill="rgba(171, 108, 166, 0.75)"]')
       .should("exist");
@@ -160,12 +160,12 @@ context("v2 atlas", () => {
     cy.get('[data-testid="rect_UNN_unselected"]').click();
     cy.get('[data-testid="rect_UNN_selected"]').should("exist");
     cy.get('[data-testid="circle_UNN_selected"]').should("exist");
-    cy.get('[data-testid="carouselbutton_4"]').click(); // Show the map
+    cy.get('[data-testid="carouselbutton_5"]').click(); // Show the map
     cy.get('[label="map"]').should("exist"); // Map exist
     cy.get('[data-testid="mapCaption"]').contains(
       "Number of epilepsy patients per 1,000 inhabitants"
     );
-    cy.get('[data-testid="carouselbutton_3"]').click(); // Show the table
+    cy.get('[data-testid="carouselbutton_4"]').click(); // Show the table
     cy.get('[label="table"]').should("exist"); // Table exist
     cy.get("caption").contains("Average per year for the period ");
     cy.get('[data-testid="carouselbutton_1"]').click(); // Show the second barchart

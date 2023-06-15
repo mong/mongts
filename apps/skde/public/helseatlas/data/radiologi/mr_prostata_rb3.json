@@ -1,0 +1,571 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "andel_pf"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Andel av MR prostata utført på pasienter i pakkeforløp",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0%"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "pfsnitt",
+        "npfsnitt"
+      ],
+      "xLegend": {
+        "nb": [
+          "Pakkeforløp",
+          "Ikke pakkeforløp"
+        ],
+        "en": [
+          "Pakkeforløp",
+          "Ikke pakkeforløp"
+        ]
+      },
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Antall (rate) pakkeforløp/ikke pakkeforløp pr. 10 000 menn",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "pfsnitt",
+        "k_f_us_rate",
+        "restrate"
+      ],
+      "y": "bohf",
+      "xLegend": {
+        "nb": [
+          "I Pakkeforløp",
+          "Med kreftdiagnose",
+          "Uten"
+        ],
+        "en": [
+          "I Pakkeforløp",
+          "Med kreftdiagnose",
+          "Uten"
+        ]
+      },
+      "xLabel": {
+        "nb": "Status ved MR-undersøkelsen, antall (rate) pr. 10 000 menn",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "psasnitt"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Antall (rate) PSA-tester pr. 10 000 menn",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "table",
+      "data": "datasett_1",
+      "caption": {
+        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 menn. Andel uten er andel som ikke er i pakkeforløp eller har kreftdiagnose før eller ved tidspunktet for MR undersøkelsen.",
+        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 menn. Andel uten er andel som ikke er i pakkeforløp eller har kreftdiagnose før eller ved tidspunktet for MR undersøkelsen."
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområder",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "totsnitt",
+          "label_no": "MR Rate",
+          "label_en": "Rate",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "andel_pf",
+          "label_no": "Andel pakkeforløp",
+          "label_en": "Percent PF",
+          "typeVar": "number",
+          "format": ",.0%"
+        },
+        {
+          "id": "k_f_us_andel",
+          "label_no": "Andel kreft før MR",
+          "label_en": "Kreft før MR",
+          "typeVar": "number",
+          "format": ",.0%"
+        },
+        {
+          "id": "andel_ikke_pf_k",
+          "label_no": "Andel uten",
+          "label_en": "Andel uten",
+          "typeVar": "number",
+          "format": ",.0%"
+        },
+        {
+          "id": "psasnitt",
+          "label_no": "PSA rate",
+          "label_en": "PSA rate",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "psa_pr_mr",
+          "label_no": "PSA pr. MR",
+          "label_en": "PSA pr. MR",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "datasett_1",
+      "x": "andel_pf",
+      "caption": {
+        "nb": "Andel av MR prostata utført på pasienter i pakkeforløp",
+        "en": "tmp"
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": 0.203331320357,
+          "min": 0.168608459878,
+          "lag_min": 0.28506778088,
+          "grense": 0.244199550619
+        },
+        {
+          "cluster": 2,
+          "max": 0.361861702753,
+          "min": 0.28506778088,
+          "lag_min": 0.366252433115,
+          "grense": 0.364057067934
+        },
+        {
+          "cluster": 3,
+          "max": 0.443562417677,
+          "min": 0.366252433115,
+          "lag_min": 0.493863513408,
+          "grense": 0.468712965542
+        }
+      ],
+      "format": ",.0%"
+    },
+    {
+      "type": "data",
+      "label": "datasett_1",
+      "national": "Norge",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "data": [
+        {
+          "bohf": "Finnmark",
+          "k_f_us_rate": 9.78252095981,
+          "k_f_us_ant": 23.4,
+          "npfsnitt": 36.8873501371,
+          "pfsnitt": 35.9928928691,
+          "psasnitt": 2650.86540422,
+          "psa_ant": 6171.4,
+          "totsnitt": 72.8802430063,
+          "tot_events": 172.8,
+          "andel_pf": 0.493863513408,
+          "psa_pr_mr": 35.7141203704,
+          "k_f_us_andel": 0.135416666667,
+          "ik_f_us_rate": 63.0977220464,
+          "restrate": 27.1048291773,
+          "andel_ikke_pf_k": 0.371909149301
+        },
+        {
+          "bohf": "UNN",
+          "k_f_us_rate": 13.4259115638,
+          "k_f_us_ant": 81.6,
+          "npfsnitt": 47.9589153117,
+          "pfsnitt": 20.5544633165,
+          "psasnitt": 3184.34343823,
+          "psa_ant": 18975.4,
+          "totsnitt": 68.5133786282,
+          "tot_events": 411.2,
+          "andel_pf": 0.300006564091,
+          "psa_pr_mr": 46.1464007782,
+          "k_f_us_andel": 0.198443579767,
+          "ik_f_us_rate": 55.0874670644,
+          "restrate": 34.5330037479,
+          "andel_ikke_pf_k": 0.504032999676
+        },
+        {
+          "bohf": "Nordland",
+          "k_f_us_rate": 12.9268445369,
+          "k_f_us_ant": 59,
+          "npfsnitt": 53.9422885483,
+          "pfsnitt": 25.7991975529,
+          "psasnitt": 3281.6767527,
+          "psa_ant": 14449.6,
+          "totsnitt": 79.7414861012,
+          "tot_events": 355.2,
+          "andel_pf": 0.323535449542,
+          "psa_pr_mr": 40.6801801802,
+          "k_f_us_andel": 0.166103603604,
+          "ik_f_us_rate": 66.8146415643,
+          "restrate": 41.0154440114,
+          "andel_ikke_pf_k": 0.514355149582
+        },
+        {
+          "bohf": "Helgeland",
+          "k_f_us_rate": 11.5815318485,
+          "k_f_us_ant": 31.6,
+          "npfsnitt": 46.1010024183,
+          "pfsnitt": 36.7492648584,
+          "psasnitt": 3656.24419645,
+          "psa_ant": 9728.4,
+          "totsnitt": 82.8502672767,
+          "tot_events": 221.8,
+          "andel_pf": 0.443562417677,
+          "psa_pr_mr": 43.8611361587,
+          "k_f_us_andel": 0.142470694319,
+          "ik_f_us_rate": 71.2687354282,
+          "restrate": 34.5194705698,
+          "andel_ikke_pf_k": 0.41664887398
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "k_f_us_rate": 5.48526183242,
+          "k_f_us_ant": 24.6,
+          "npfsnitt": 35.1481762525,
+          "pfsnitt": 26.8784221033,
+          "psasnitt": 3272.59733914,
+          "psa_ant": 14351.2,
+          "totsnitt": 62.0265983558,
+          "tot_events": 273,
+          "andel_pf": 0.433337033076,
+          "psa_pr_mr": 52.5684981685,
+          "k_f_us_andel": 0.0901098901099,
+          "ik_f_us_rate": 56.5413365234,
+          "restrate": 29.6629144201,
+          "andel_ikke_pf_k": 0.478228940589
+        },
+        {
+          "bohf": "St. Olav",
+          "k_f_us_rate": 7.15771385765,
+          "k_f_us_ant": 65.2,
+          "npfsnitt": 44.9211066361,
+          "pfsnitt": 21.0773984795,
+          "psasnitt": 3158.86403215,
+          "psa_ant": 28698.8,
+          "totsnitt": 65.9985051156,
+          "tot_events": 595.2,
+          "andel_pf": 0.319361755885,
+          "psa_pr_mr": 48.2170698925,
+          "k_f_us_andel": 0.109543010753,
+          "ik_f_us_rate": 58.840791258,
+          "restrate": 37.7633927785,
+          "andel_ikke_pf_k": 0.572185577724
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "k_f_us_rate": 20.3710547353,
+          "k_f_us_ant": 171.4,
+          "npfsnitt": 75.3035372059,
+          "pfsnitt": 30.0260803327,
+          "psasnitt": 3501.15511195,
+          "psa_ant": 29101,
+          "totsnitt": 105.329617539,
+          "tot_events": 878.8,
+          "andel_pf": 0.28506778088,
+          "psa_pr_mr": 33.1144742831,
+          "k_f_us_andel": 0.195038689122,
+          "ik_f_us_rate": 84.9585628033,
+          "restrate": 54.9324824706,
+          "andel_ikke_pf_k": 0.521529307276
+        },
+        {
+          "bohf": "Førde",
+          "k_f_us_rate": 6.07288351553,
+          "k_f_us_ant": 21.4,
+          "npfsnitt": 33.7671766075,
+          "pfsnitt": 23.2339416831,
+          "psasnitt": 3430.46223327,
+          "psa_ant": 11981,
+          "totsnitt": 57.0011182907,
+          "tot_events": 199,
+          "andel_pf": 0.407605015127,
+          "psa_pr_mr": 60.2060301508,
+          "k_f_us_andel": 0.107537688442,
+          "ik_f_us_rate": 50.9282347752,
+          "restrate": 27.694293092,
+          "andel_ikke_pf_k": 0.485855259028
+        },
+        {
+          "bohf": "Bergen",
+          "k_f_us_rate": 9.01300773456,
+          "k_f_us_ant": 108,
+          "npfsnitt": 47.5577803901,
+          "pfsnitt": 24.7357376257,
+          "psasnitt": 3098.36249863,
+          "psa_ant": 37581.8,
+          "totsnitt": 72.2935180158,
+          "tot_events": 869,
+          "andel_pf": 0.342157060613,
+          "psa_pr_mr": 43.2471806674,
+          "k_f_us_andel": 0.124280782509,
+          "ik_f_us_rate": 63.2805102813,
+          "restrate": 38.5447726556,
+          "andel_ikke_pf_k": 0.533170520864
+        },
+        {
+          "bohf": "Fonna",
+          "k_f_us_rate": 17.7420547494,
+          "k_f_us_ant": 95.4,
+          "npfsnitt": 51.5232146487,
+          "pfsnitt": 13.1501131289,
+          "psasnitt": 4140.7833128,
+          "psa_ant": 22259.2,
+          "totsnitt": 64.6733277777,
+          "tot_events": 345.8,
+          "andel_pf": 0.203331320357,
+          "psa_pr_mr": 64.3701561596,
+          "k_f_us_andel": 0.275882012724,
+          "ik_f_us_rate": 46.9312730282,
+          "restrate": 33.7811598993,
+          "andel_ikke_pf_k": 0.522335266487
+        },
+        {
+          "bohf": "Stavanger",
+          "k_f_us_rate": 30.65483412,
+          "k_f_us_ant": 277.4,
+          "npfsnitt": 108.554565266,
+          "pfsnitt": 22.0151603414,
+          "psasnitt": 2958.26456431,
+          "psa_ant": 26996,
+          "totsnitt": 130.569725608,
+          "tot_events": 1188,
+          "andel_pf": 0.168608459878,
+          "psa_pr_mr": 22.7239057239,
+          "k_f_us_andel": 0.233501683502,
+          "ik_f_us_rate": 99.9148914876,
+          "restrate": 77.8997311462,
+          "andel_ikke_pf_k": 0.596614037317
+        },
+        {
+          "bohf": "Østfold",
+          "k_f_us_rate": 17.9451695415,
+          "k_f_us_ant": 177.2,
+          "npfsnitt": 98.0104878916,
+          "pfsnitt": 21.197959874,
+          "psasnitt": 5167.33539299,
+          "psa_ant": 50227.2,
+          "totsnitt": 119.208447766,
+          "tot_events": 1167.6,
+          "andel_pf": 0.17782263146,
+          "psa_pr_mr": 43.0174717369,
+          "k_f_us_andel": 0.151764302843,
+          "ik_f_us_rate": 101.263278224,
+          "restrate": 80.0653183501,
+          "andel_ikke_pf_k": 0.671641312766
+        },
+        {
+          "bohf": "Akershus",
+          "k_f_us_rate": 9.73618302313,
+          "k_f_us_ant": 150.4,
+          "npfsnitt": 50.3431421389,
+          "pfsnitt": 33.7898380489,
+          "psasnitt": 4509.38311463,
+          "psa_ant": 70935.6,
+          "totsnitt": 84.1329801878,
+          "tot_events": 1309.6,
+          "andel_pf": 0.401624166569,
+          "psa_pr_mr": 54.1658521686,
+          "k_f_us_andel": 0.114844227245,
+          "ik_f_us_rate": 74.3967971647,
+          "restrate": 40.6069591158,
+          "andel_ikke_pf_k": 0.482652094638
+        },
+        {
+          "bohf": "OUS",
+          "k_f_us_rate": 9.96245647075,
+          "k_f_us_ant": 57.4,
+          "npfsnitt": 54.1280624243,
+          "pfsnitt": 31.281436961,
+          "psasnitt": 4498.79206471,
+          "psa_ant": 27512.2,
+          "totsnitt": 85.4094993853,
+          "tot_events": 504.4,
+          "andel_pf": 0.366252433115,
+          "psa_pr_mr": 54.544409199,
+          "k_f_us_andel": 0.113798572561,
+          "ik_f_us_rate": 75.4470429145,
+          "restrate": 44.1656059535,
+          "andel_ikke_pf_k": 0.517104142647
+        },
+        {
+          "bohf": "Lovisenberg",
+          "k_f_us_rate": 6.88279222468,
+          "k_f_us_ant": 14.4,
+          "npfsnitt": 40.8055476054,
+          "pfsnitt": 28.2116899499,
+          "psasnitt": 3695.16444221,
+          "psa_ant": 9079.8,
+          "totsnitt": 69.0172375553,
+          "tot_events": 155.8,
+          "andel_pf": 0.408762954723,
+          "psa_pr_mr": 58.2785622593,
+          "k_f_us_andel": 0.0924261874198,
+          "ik_f_us_rate": 62.1344453306,
+          "restrate": 33.9227553807,
+          "andel_ikke_pf_k": 0.491511346764
+        },
+        {
+          "bohf": "Diakonhjemmet",
+          "k_f_us_rate": 11.1721807492,
+          "k_f_us_ant": 42,
+          "npfsnitt": 54.4317403743,
+          "pfsnitt": 32.8588587488,
+          "psasnitt": 4716.12471889,
+          "psa_ant": 17618.6,
+          "totsnitt": 87.2905991231,
+          "tot_events": 326.2,
+          "andel_pf": 0.376430670415,
+          "psa_pr_mr": 54.0116492949,
+          "k_f_us_andel": 0.128755364807,
+          "ik_f_us_rate": 76.118418374,
+          "restrate": 43.2595596251,
+          "andel_ikke_pf_k": 0.495580968165
+        },
+        {
+          "bohf": "Innlandet",
+          "k_f_us_rate": 10.6443095391,
+          "k_f_us_ant": 126.8,
+          "npfsnitt": 55.6479859854,
+          "pfsnitt": 24.310628943,
+          "psasnitt": 3970.33352048,
+          "psa_ant": 44623.2,
+          "totsnitt": 79.9586149284,
+          "tot_events": 913.2,
+          "andel_pf": 0.304040145828,
+          "psa_pr_mr": 48.864651774,
+          "k_f_us_andel": 0.13885238721,
+          "ik_f_us_rate": 69.3143053893,
+          "restrate": 45.0036764462,
+          "andel_ikke_pf_k": 0.562837118759
+        },
+        {
+          "bohf": "Vestre Viken",
+          "k_f_us_rate": 19.0511868328,
+          "k_f_us_ant": 269,
+          "npfsnitt": 67.443376386,
+          "pfsnitt": 42.8232175928,
+          "psasnitt": 4543.2371314,
+          "psa_ant": 64418.4,
+          "totsnitt": 110.266593979,
+          "tot_events": 1555.2,
+          "andel_pf": 0.388360754129,
+          "psa_pr_mr": 41.4212962963,
+          "k_f_us_andel": 0.172968106996,
+          "ik_f_us_rate": 91.215407146,
+          "restrate": 48.3921895532,
+          "andel_ikke_pf_k": 0.438865369891
+        },
+        {
+          "bohf": "Vestfold",
+          "k_f_us_rate": 15.7249935315,
+          "k_f_us_ant": 121.6,
+          "npfsnitt": 53.2224615263,
+          "pfsnitt": 40.3700436956,
+          "psasnitt": 4099.38066606,
+          "psa_ant": 31143.8,
+          "totsnitt": 93.592505222,
+          "tot_events": 719,
+          "andel_pf": 0.431338423946,
+          "psa_pr_mr": 43.3154381085,
+          "k_f_us_andel": 0.169123783032,
+          "ik_f_us_rate": 77.8675116905,
+          "restrate": 37.4974679948,
+          "andel_ikke_pf_k": 0.400646055001
+        },
+        {
+          "bohf": "Telemark",
+          "k_f_us_rate": 13.8354060495,
+          "k_f_us_ant": 80.6,
+          "npfsnitt": 44.4104030983,
+          "pfsnitt": 44.1912512687,
+          "psasnitt": 3035.46094155,
+          "psa_ant": 17038,
+          "totsnitt": 88.6016543669,
+          "tot_events": 507.6,
+          "andel_pf": 0.498763274619,
+          "psa_pr_mr": 33.5657998424,
+          "k_f_us_andel": 0.15878644602,
+          "ik_f_us_rate": 74.7662483175,
+          "restrate": 30.5749970488,
+          "andel_ikke_pf_k": 0.345083816631
+        },
+        {
+          "bohf": "Sørlandet",
+          "k_f_us_rate": 11.2382835049,
+          "k_f_us_ant": 98.6,
+          "npfsnitt": 26.6755998146,
+          "pfsnitt": 15.1266238251,
+          "psasnitt": 4169.38976999,
+          "psa_ant": 36423,
+          "totsnitt": 41.8022236398,
+          "tot_events": 366.4,
+          "andel_pf": 0.361861702753,
+          "psa_pr_mr": 99.4077510917,
+          "k_f_us_andel": 0.269104803493,
+          "ik_f_us_rate": 30.5639401349,
+          "restrate": 15.4373163098,
+          "andel_ikke_pf_k": 0.369294141929
+        },
+        {
+          "bohf": "Norge",
+          "k_f_us_rate": 13.7269936016,
+          "k_f_us_ant": 2097,
+          "npfsnitt": 57.3071566872,
+          "pfsnitt": 28.278069155,
+          "psasnitt": 3868.34104223,
+          "psa_ant": 589313.6,
+          "totsnitt": 85.5852258422,
+          "tot_events": 13034.8,
+          "andel_pf": 0.330408302096,
+          "psa_pr_mr": 45.2107895787,
+          "k_f_us_andel": 0.160877036855,
+          "ik_f_us_rate": 71.8582322406,
+          "restrate": 43.5801630856,
+          "andel_ikke_pf_k": 0.509201940601
+        }
+      ]
+    }
+  ]
+}
