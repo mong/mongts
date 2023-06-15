@@ -10,7 +10,6 @@ import { Ingress } from "../../Ingress";
 export interface AtlasPageProps {
   content: string;
   atlasData: AtlasData[];
-  mapData: any;
 }
 
 type AtlasJson = {
@@ -25,11 +24,7 @@ type AtlasJson = {
   publisert: boolean;
 };
 
-const AtlasPage: React.FC<AtlasPageProps> = ({
-  content,
-  atlasData,
-  mapData,
-}) => {
+const AtlasPage: React.FC<AtlasPageProps> = ({ content, atlasData }) => {
   const obj: AtlasJson = JSON.parse(content);
 
   const tocData = obj.kapittel
@@ -56,7 +51,7 @@ const AtlasPage: React.FC<AtlasPageProps> = ({
       ? "Dette atlaset er kun et utkast og er ikke publisert! Resultatene og analysene kan være mangelfulle."
       : "This is a draft!";
   return (
-    <DataContext.Provider value={{ atlasData, mapData }}>
+    <DataContext.Provider value={{ atlasData }}>
       <AtlasLayout lang={obj.lang === "en" ? "en" : "no"}>
         <main data-testid="v2atlas">
           <TopBanner mainTitle={obj.shortTitle} lang={obj.lang} ia={obj.ia} />
