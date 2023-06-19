@@ -102,13 +102,13 @@ test("Bar", async () => {
   expect(container).toMatchSnapshot();
 });
 
-test("Bar with level_direction ne 0", async () => {
+test("Bar with level_direction eq 0", async () => {
   (useIndicatorQuery as jest.Mock).mockReturnValue({
     data: bardata,
     isLoading: false,
     error: false,
   });
-  const descr = buildDescription({ level_direction: 1 });
+  const descr = buildDescription({ level_direction: 0 });
   const inddata = bardata.filter((data) => data.unit_name === "Nasjonalt");
   const { container } = render(
     <ChartWithRef
@@ -343,7 +343,7 @@ function buildDescription(overrides: Partial<Description>): Description {
     max_value: null,
     level_green: null,
     level_yellow: null,
-    level_direction: 0,
+    level_direction: null,
     short_description: null,
     long_description: null,
     registry_id: 99,

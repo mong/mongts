@@ -167,7 +167,7 @@ exports[`Bar 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 3
+              Sykehus 5
             </text>
           </g>
           <g
@@ -181,7 +181,7 @@ exports[`Bar 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 1
+              Sykehus 2
             </text>
           </g>
           <g
@@ -195,7 +195,7 @@ exports[`Bar 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 4
+              Nasjonalt
             </text>
           </g>
           <g
@@ -209,7 +209,7 @@ exports[`Bar 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Nasjonalt
+              Sykehus 4
             </text>
           </g>
           <g
@@ -223,7 +223,7 @@ exports[`Bar 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 2
+              Sykehus 1
             </text>
           </g>
           <g
@@ -237,7 +237,7 @@ exports[`Bar 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 5
+              Sykehus 3
             </text>
           </g>
         </g>
@@ -280,43 +280,13 @@ exports[`Bar 1`] = `
         >
           <rect
             class="bar"
-            data-testid="bar-Sykehus 3"
+            data-testid="bar-Sykehus 5"
             fill="#7EBEC7"
             height="18.88333333333333"
             opacity="1"
-            width="61.024193548387096"
+            width="286.8306451612903"
             x="0"
             y="8.092857142857142"
-          />
-          <rect
-            class="bar"
-            data-testid="bar-Sykehus 1"
-            fill="#7EBEC7"
-            height="18.88333333333333"
-            opacity="1"
-            width="117.4758064516129"
-            x="0"
-            y="35.069047619047616"
-          />
-          <rect
-            class="bar"
-            data-testid="bar-Sykehus 4"
-            fill="#7EBEC7"
-            height="18.88333333333333"
-            opacity="1"
-            width="173.9274193548387"
-            x="0"
-            y="62.04523809523809"
-          />
-          <rect
-            class="bar"
-            data-testid="bar-Nasjonalt"
-            fill="#00263D"
-            height="18.88333333333333"
-            opacity="1"
-            width="190.86290322580643"
-            x="0"
-            y="89.02142857142856"
           />
           <rect
             class="bar"
@@ -326,15 +296,45 @@ exports[`Bar 1`] = `
             opacity="1"
             width="230.3790322580645"
             x="0"
+            y="35.069047619047616"
+          />
+          <rect
+            class="bar"
+            data-testid="bar-Nasjonalt"
+            fill="#00263D"
+            height="18.88333333333333"
+            opacity="1"
+            width="190.86290322580643"
+            x="0"
+            y="62.04523809523809"
+          />
+          <rect
+            class="bar"
+            data-testid="bar-Sykehus 4"
+            fill="#7EBEC7"
+            height="18.88333333333333"
+            opacity="1"
+            width="173.9274193548387"
+            x="0"
+            y="89.02142857142856"
+          />
+          <rect
+            class="bar"
+            data-testid="bar-Sykehus 1"
+            fill="#7EBEC7"
+            height="18.88333333333333"
+            opacity="1"
+            width="117.4758064516129"
+            x="0"
             y="115.99761904761904"
           />
           <rect
             class="bar"
-            data-testid="bar-Sykehus 5"
+            data-testid="bar-Sykehus 3"
             fill="#7EBEC7"
             height="18.88333333333333"
             opacity="1"
-            width="286.8306451612903"
+            width="61.024193548387096"
             x="0"
             y="142.9738095238095"
           />
@@ -344,37 +344,25 @@ exports[`Bar 1`] = `
         >
           <text
             class="label"
-            data-testid="bar-label-Sykehus 3"
+            data-testid="bar-label-Sykehus 5"
             fill="rgb(0, 0, 0)"
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="77.0241935483871"
+            x="302.8306451612903"
             y="20.534523809523805"
           >
-            0
+            1
           </text>
           <text
             class="label"
-            data-testid="bar-label-Sykehus 1"
+            data-testid="bar-label-Sykehus 2"
             fill="rgb(0, 0, 0)"
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="133.4758064516129"
+            x="246.3790322580645"
             y="47.51071428571428"
-          >
-            0
-          </text>
-          <text
-            class="label"
-            data-testid="bar-label-Sykehus 4"
-            fill="rgb(0, 0, 0)"
-            font-size="0.7em"
-            opacity="0.9"
-            text-anchor="middle"
-            x="189.9274193548387"
-            y="74.48690476190475"
           >
             0
           </text>
@@ -386,33 +374,45 @@ exports[`Bar 1`] = `
             opacity="0.9"
             text-anchor="middle"
             x="206.86290322580643"
+            y="74.48690476190475"
+          >
+            0
+          </text>
+          <text
+            class="label"
+            data-testid="bar-label-Sykehus 4"
+            fill="rgb(0, 0, 0)"
+            font-size="0.7em"
+            opacity="0.9"
+            text-anchor="middle"
+            x="189.9274193548387"
             y="101.46309523809522"
           >
             0
           </text>
           <text
             class="label"
-            data-testid="bar-label-Sykehus 2"
+            data-testid="bar-label-Sykehus 1"
             fill="rgb(0, 0, 0)"
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="246.3790322580645"
+            x="133.4758064516129"
             y="128.4392857142857"
           >
             0
           </text>
           <text
             class="label"
-            data-testid="bar-label-Sykehus 5"
+            data-testid="bar-label-Sykehus 3"
             fill="rgb(0, 0, 0)"
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="302.8306451612903"
+            x="77.0241935483871"
             y="155.41547619047617"
           >
-            1
+            0
           </text>
         </g>
       </g>
@@ -570,7 +570,7 @@ exports[`Bar select treatment unit 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 3
+              RHF 1
             </text>
           </g>
           <g
@@ -584,7 +584,7 @@ exports[`Bar select treatment unit 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 1
+              Sykehus 5
             </text>
           </g>
           <g
@@ -598,7 +598,7 @@ exports[`Bar select treatment unit 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 4
+              Sykehus 2
             </text>
           </g>
           <g
@@ -626,7 +626,7 @@ exports[`Bar select treatment unit 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 2
+              Sykehus 4
             </text>
           </g>
           <g
@@ -640,7 +640,7 @@ exports[`Bar select treatment unit 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 5
+              Sykehus 1
             </text>
           </g>
           <g
@@ -654,7 +654,7 @@ exports[`Bar select treatment unit 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              RHF 1
+              Sykehus 3
             </text>
           </g>
         </g>
@@ -666,31 +666,31 @@ exports[`Bar select treatment unit 1`] = `
         >
           <rect
             class="bar"
-            data-testid="bar-Sykehus 3"
+            data-testid="bar-RHF 1"
             fill="#7EBEC7"
             height="19.173287671232874"
-            opacity="0.5"
-            width="37.835"
+            opacity="1"
+            width="233.10000000000002"
             x="0"
             y="8.217123287671228"
           />
           <rect
             class="bar"
-            data-testid="bar-Sykehus 1"
+            data-testid="bar-Sykehus 5"
             fill="#7EBEC7"
             height="19.173287671232874"
-            opacity="1"
-            width="72.83500000000001"
+            opacity="0.5"
+            width="177.835"
             x="0"
             y="35.60753424657534"
           />
           <rect
             class="bar"
-            data-testid="bar-Sykehus 4"
+            data-testid="bar-Sykehus 2"
             fill="#7EBEC7"
             height="19.173287671232874"
             opacity="0.5"
-            width="107.835"
+            width="142.835"
             x="0"
             y="62.997945205479446"
           />
@@ -706,31 +706,31 @@ exports[`Bar select treatment unit 1`] = `
           />
           <rect
             class="bar"
-            data-testid="bar-Sykehus 2"
+            data-testid="bar-Sykehus 4"
             fill="#7EBEC7"
             height="19.173287671232874"
             opacity="0.5"
-            width="142.835"
+            width="107.835"
             x="0"
             y="117.77876712328766"
           />
           <rect
             class="bar"
-            data-testid="bar-Sykehus 5"
+            data-testid="bar-Sykehus 1"
             fill="#7EBEC7"
             height="19.173287671232874"
-            opacity="0.5"
-            width="177.835"
+            opacity="1"
+            width="72.83500000000001"
             x="0"
             y="145.16917808219176"
           />
           <rect
             class="bar"
-            data-testid="bar-RHF 1"
+            data-testid="bar-Sykehus 3"
             fill="#7EBEC7"
             height="19.173287671232874"
-            opacity="1"
-            width="233.10000000000002"
+            opacity="0.5"
+            width="37.835"
             x="0"
             y="172.55958904109588"
           />
@@ -740,36 +740,36 @@ exports[`Bar select treatment unit 1`] = `
         >
           <text
             class="label"
-            data-testid="bar-label-Sykehus 3"
+            data-testid="bar-label-RHF 1"
             fill="rgb(0, 0, 0)"
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="53.835"
+            x="249.10000000000002"
             y="20.803767123287663"
           >
-            0
+            1
           </text>
           <text
             class="label"
-            data-testid="bar-label-Sykehus 1"
+            data-testid="bar-label-Sykehus 5"
             fill="rgb(0, 0, 0)"
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="88.83500000000001"
+            x="193.835"
             y="48.194178082191776"
           >
-            0
+            1
           </text>
           <text
             class="label"
-            data-testid="bar-label-Sykehus 4"
+            data-testid="bar-label-Sykehus 2"
             fill="rgb(0, 0, 0)"
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="123.835"
+            x="158.835"
             y="75.58458904109588"
           >
             0
@@ -788,39 +788,39 @@ exports[`Bar select treatment unit 1`] = `
           </text>
           <text
             class="label"
-            data-testid="bar-label-Sykehus 2"
+            data-testid="bar-label-Sykehus 4"
             fill="rgb(0, 0, 0)"
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="158.835"
+            x="123.835"
             y="130.3654109589041"
           >
             0
           </text>
           <text
             class="label"
-            data-testid="bar-label-Sykehus 5"
+            data-testid="bar-label-Sykehus 1"
             fill="rgb(0, 0, 0)"
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="193.835"
+            x="88.83500000000001"
             y="157.7558219178082"
           >
-            1
+            0
           </text>
           <text
             class="label"
-            data-testid="bar-label-RHF 1"
+            data-testid="bar-label-Sykehus 3"
             fill="rgb(0, 0, 0)"
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="249.10000000000002"
+            x="53.835"
             y="185.1462328767123"
           >
-            1
+            0
           </text>
         </g>
       </g>
@@ -829,7 +829,7 @@ exports[`Bar select treatment unit 1`] = `
 </div>
 `;
 
-exports[`Bar with level_direction ne 0 1`] = `
+exports[`Bar with level_direction eq 0 1`] = `
 <div>
   <div
     style="width: 90%; margin: auto;"
@@ -996,7 +996,7 @@ exports[`Bar with level_direction ne 0 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 5
+              Sykehus 3
             </text>
           </g>
           <g
@@ -1010,7 +1010,7 @@ exports[`Bar with level_direction ne 0 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 2
+              Sykehus 1
             </text>
           </g>
           <g
@@ -1024,7 +1024,7 @@ exports[`Bar with level_direction ne 0 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Nasjonalt
+              Sykehus 4
             </text>
           </g>
           <g
@@ -1038,7 +1038,7 @@ exports[`Bar with level_direction ne 0 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 4
+              Nasjonalt
             </text>
           </g>
           <g
@@ -1052,7 +1052,7 @@ exports[`Bar with level_direction ne 0 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 1
+              Sykehus 2
             </text>
           </g>
           <g
@@ -1066,7 +1066,7 @@ exports[`Bar with level_direction ne 0 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 3
+              Sykehus 5
             </text>
           </g>
         </g>
@@ -1109,43 +1109,13 @@ exports[`Bar with level_direction ne 0 1`] = `
         >
           <rect
             class="bar"
-            data-testid="bar-Sykehus 5"
+            data-testid="bar-Sykehus 3"
             fill="#7EBEC7"
             height="18.88333333333333"
             opacity="1"
-            width="286.8306451612903"
+            width="61.024193548387096"
             x="0"
             y="8.092857142857142"
-          />
-          <rect
-            class="bar"
-            data-testid="bar-Sykehus 2"
-            fill="#7EBEC7"
-            height="18.88333333333333"
-            opacity="1"
-            width="230.3790322580645"
-            x="0"
-            y="35.069047619047616"
-          />
-          <rect
-            class="bar"
-            data-testid="bar-Nasjonalt"
-            fill="#00263D"
-            height="18.88333333333333"
-            opacity="1"
-            width="190.86290322580643"
-            x="0"
-            y="62.04523809523809"
-          />
-          <rect
-            class="bar"
-            data-testid="bar-Sykehus 4"
-            fill="#7EBEC7"
-            height="18.88333333333333"
-            opacity="1"
-            width="173.9274193548387"
-            x="0"
-            y="89.02142857142856"
           />
           <rect
             class="bar"
@@ -1155,15 +1125,45 @@ exports[`Bar with level_direction ne 0 1`] = `
             opacity="1"
             width="117.4758064516129"
             x="0"
+            y="35.069047619047616"
+          />
+          <rect
+            class="bar"
+            data-testid="bar-Sykehus 4"
+            fill="#7EBEC7"
+            height="18.88333333333333"
+            opacity="1"
+            width="173.9274193548387"
+            x="0"
+            y="62.04523809523809"
+          />
+          <rect
+            class="bar"
+            data-testid="bar-Nasjonalt"
+            fill="#00263D"
+            height="18.88333333333333"
+            opacity="1"
+            width="190.86290322580643"
+            x="0"
+            y="89.02142857142856"
+          />
+          <rect
+            class="bar"
+            data-testid="bar-Sykehus 2"
+            fill="#7EBEC7"
+            height="18.88333333333333"
+            opacity="1"
+            width="230.3790322580645"
+            x="0"
             y="115.99761904761904"
           />
           <rect
             class="bar"
-            data-testid="bar-Sykehus 3"
+            data-testid="bar-Sykehus 5"
             fill="#7EBEC7"
             height="18.88333333333333"
             opacity="1"
-            width="61.024193548387096"
+            width="286.8306451612903"
             x="0"
             y="142.9738095238095"
           />
@@ -1173,49 +1173,13 @@ exports[`Bar with level_direction ne 0 1`] = `
         >
           <text
             class="label"
-            data-testid="bar-label-Sykehus 5"
+            data-testid="bar-label-Sykehus 3"
             fill="rgb(0, 0, 0)"
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="302.8306451612903"
+            x="77.0241935483871"
             y="20.534523809523805"
-          >
-            1
-          </text>
-          <text
-            class="label"
-            data-testid="bar-label-Sykehus 2"
-            fill="rgb(0, 0, 0)"
-            font-size="0.7em"
-            opacity="0.9"
-            text-anchor="middle"
-            x="246.3790322580645"
-            y="47.51071428571428"
-          >
-            0
-          </text>
-          <text
-            class="label"
-            data-testid="bar-label-Nasjonalt"
-            fill="rgb(0, 0, 0)"
-            font-size="0.7em"
-            opacity="0.9"
-            text-anchor="middle"
-            x="206.86290322580643"
-            y="74.48690476190475"
-          >
-            0
-          </text>
-          <text
-            class="label"
-            data-testid="bar-label-Sykehus 4"
-            fill="rgb(0, 0, 0)"
-            font-size="0.7em"
-            opacity="0.9"
-            text-anchor="middle"
-            x="189.9274193548387"
-            y="101.46309523809522"
           >
             0
           </text>
@@ -1227,21 +1191,57 @@ exports[`Bar with level_direction ne 0 1`] = `
             opacity="0.9"
             text-anchor="middle"
             x="133.4758064516129"
+            y="47.51071428571428"
+          >
+            0
+          </text>
+          <text
+            class="label"
+            data-testid="bar-label-Sykehus 4"
+            fill="rgb(0, 0, 0)"
+            font-size="0.7em"
+            opacity="0.9"
+            text-anchor="middle"
+            x="189.9274193548387"
+            y="74.48690476190475"
+          >
+            0
+          </text>
+          <text
+            class="label"
+            data-testid="bar-label-Nasjonalt"
+            fill="rgb(0, 0, 0)"
+            font-size="0.7em"
+            opacity="0.9"
+            text-anchor="middle"
+            x="206.86290322580643"
+            y="101.46309523809522"
+          >
+            0
+          </text>
+          <text
+            class="label"
+            data-testid="bar-label-Sykehus 2"
+            fill="rgb(0, 0, 0)"
+            font-size="0.7em"
+            opacity="0.9"
+            text-anchor="middle"
+            x="246.3790322580645"
             y="128.4392857142857"
           >
             0
           </text>
           <text
             class="label"
-            data-testid="bar-label-Sykehus 3"
+            data-testid="bar-label-Sykehus 5"
             fill="rgb(0, 0, 0)"
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="77.0241935483871"
+            x="302.8306451612903"
             y="155.41547619047617"
           >
-            0
+            1
           </text>
         </g>
       </g>
