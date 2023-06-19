@@ -102,6 +102,30 @@ test("Bar", async () => {
   expect(container).toMatchSnapshot();
 });
 
+test("Bar with level_direction eq 0", async () => {
+  (useIndicatorQuery as jest.Mock).mockReturnValue({
+    data: bardata,
+    isLoading: false,
+    error: false,
+  });
+  const descr = buildDescription({ level_direction: 0 });
+  const inddata = bardata.filter((data) => data.unit_name === "Nasjonalt");
+  const { container } = render(
+    <ChartWithRef
+      description={descr}
+      chartType="bar"
+      zoom={true}
+      showLevel={true}
+      selectedTreatmentUnits={["Nasjonalt"]}
+      indicatorData={inddata}
+    />
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
 test("Bar select treatment unit", async () => {
   (useIndicatorQuery as jest.Mock).mockReturnValue({
     data: bardata,
