@@ -100,7 +100,11 @@ const GetBarChart: React.FC<ChartProps> = (props) => {
           style,
         };
       })
-      .sort((a: Bar, b: Bar) => b.value - a.value);
+      .sort((a: Bar, b: Bar) =>
+        props.description.level_direction === 0
+          ? a.value - b.value
+          : b.value - a.value
+      );
     return filtered ?? [];
   };
 
