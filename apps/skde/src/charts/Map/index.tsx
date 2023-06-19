@@ -63,6 +63,7 @@ const ObjectIDToBoHF = [
   { BoHF_num: 21, bohf: "Vestfold" },
   { BoHF_num: 22, bohf: "Telemark" },
   { BoHF_num: 23, bohf: "Sørlandet" },
+  { BoHF_num: 30, bohf: "Indre Oslo" },
 ];
 
 export const Map: React.FC<MapProps> = ({
@@ -122,6 +123,8 @@ export const Map: React.FC<MapProps> = ({
           {mapData.features.map((d, i) => {
             const mapId = connection.mapData;
             const attrID = connection.mapAttr;
+            console.log(mapId, attrID);
+
             const hf = dataToMap.filter(
               (dtm) => dtm[mapId] === d.properties[mapId]
             )[0][attrID];
