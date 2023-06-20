@@ -43,8 +43,9 @@ const Tab: React.FC<TabProps> = ({ tabName, activeTab }) => {
     register: string;
   };
 
-  const routes = useRouter().asPath.split("?")[1];
-  const queries = routes ? `?${routes}` : "";
+  const queries = useRouter().asPath.split("?")[1]
+    ? `?${useRouter().asPath.split("?")[1]}`
+    : "";
   const clickedStyle =
     activeTab === tabName.value
       ? {
