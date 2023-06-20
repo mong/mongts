@@ -8,9 +8,9 @@ import {
 export interface appTextTypes {
   menus: { unit: string; year: string };
   indicators: {
-    high: { text: string; icon: string };
-    moderate: { text: string; icon: string };
-    low: { text: string; icon: string };
+    high: { text: string };
+    moderate: { text: string };
+    low: { text: string };
   };
   table: {
     main_column: string;
@@ -26,9 +26,9 @@ export const app_text: appTextTypes = {
     year: "År:",
   },
   indicators: {
-    high: { text: "Høy måloppnåelse", icon: "fa fa-fas fa-circle" },
-    moderate: { text: "Moderat måloppnåelse", icon: "fa fa-fas fa-adjust" },
-    low: { text: "Lav måloppnåelse", icon: "fa fa-circle-o" },
+    high: { text: "Høy måloppnåelse" },
+    moderate: { text: "Moderat måloppnåelse" },
+    low: { text: "Lav måloppnåelse" },
   },
   table: {
     main_column: "Kvalitetsindikator",
@@ -52,7 +52,3 @@ export const mainQueryParamsConfig = {
   selected_treatment_units: withDefault(DelimitedArrayParam, undefined),
   chart_type: withDefault(StringParam, undefined),
 };
-
-const appConfig = { app_text };
-
-export default appConfig;
