@@ -2,6 +2,7 @@ import {
   DelimitedArrayParam,
   NumberParam,
   StringParam,
+  BooleanParam,
   withDefault,
 } from "use-query-params";
 
@@ -51,6 +52,7 @@ export const mainQueryParamsConfig = {
   year: withDefault(NumberParam, undefined),
   selected_treatment_units: withDefault(DelimitedArrayParam, undefined),
   chart_type: withDefault(StringParam, undefined),
+  chart_show_level: withDefault(BooleanParam, undefined),
 };
 
 const appConfig = { app_text };

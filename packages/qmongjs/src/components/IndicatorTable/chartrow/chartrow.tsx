@@ -38,11 +38,11 @@ export function ChartRow(props: Props) {
   const [chart_type = "line", update_chart_type] = useQueryParam<
     string | undefined
   >("chart_type", mainQueryParamsConfig.chart_type);
+  const [chart_show_level = true, update_chart_show_level] = useQueryParam<
+    boolean | undefined
+  >("chart_show_level", mainQueryParamsConfig.chart_show_level);
   const valid_chart_type = chart_type === "bar" ? "bar" : "line";
   const [zoom, update_zoom] = useState(false);
-  const [show_level, update_show_level] = useState(
-    description.level_green === null ? false : true
-  );
 
   const levels = level_boundary(description);
   const format = description.sformat ?? undefined;
@@ -62,8 +62,8 @@ export function ChartRow(props: Props) {
           <div className={styles.tr_buttons_container}>
             <ChartButtons
               svgContainer={svgContainerRef}
-              show_level={show_level}
-              update_show_level={update_show_level}
+              show_level={chart_show_level}
+              update_show_level={update_chart_show_level}
               zoom={zoom}
               update_zoom={update_zoom}
               update_selected_row={update_selected_row}
@@ -79,7 +79,7 @@ export function ChartRow(props: Props) {
             description={description}
             chartType={valid_chart_type}
             zoom={zoom}
-            showLevel={show_level}
+            showLevel={chart_show_level}
             levels={levels}
             tickformat={format}
             treatmentYear={treatmentYear}

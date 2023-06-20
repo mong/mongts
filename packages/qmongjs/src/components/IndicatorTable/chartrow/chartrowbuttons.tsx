@@ -13,7 +13,10 @@ interface Props {
   show_level: boolean;
   zoom: boolean;
   update_zoom: React.Dispatch<React.SetStateAction<boolean>>;
-  update_show_level: React.Dispatch<React.SetStateAction<boolean>>;
+  update_show_level: (
+    newValue: true | false,
+    updateType?: UrlUpdateType | undefined
+  ) => void;
   update_selected_row(row: string | undefined): void;
   description: Description;
   chartType: string;
@@ -128,7 +131,7 @@ const FigureButtons = (props: Props) => {
     },
     {
       label: show_level ? "Skjul målnivå" : "Vis målnivå",
-      click: () => update_show_level((showLevel) => !showLevel),
+      click: () => update_show_level(show_level === true ? false : true),
       class: "btn-level",
       //style: { border: "2px solid rgba(0, 0, 0, 0.1)" },
       title: show_level ? "Skjul målnivå" : "Vis målnivå",
