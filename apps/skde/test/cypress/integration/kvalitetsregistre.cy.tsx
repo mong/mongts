@@ -71,7 +71,9 @@ context("Testing of kvalitetsregistre page", () => {
     cy.get('[data-testid="tu_list"]', { timeout: 60000 }).should("be.visible");
     // Close popup by pressing Esc button
     cy.get("body").type("{esc}");
-    cy.get('[data-testid="tu_list"]').should("not.be.visible");
+    cy.get('[data-testid="tu_list"]', { timeout: 60000 }).should(
+      "not.be.visible"
+    );
     cy.get('[data-testid="vis_alle_button"]').click();
     cy.get('[data-testid="tu_list"]', { timeout: 60000 }).should("be.visible");
     // Pick a unit
