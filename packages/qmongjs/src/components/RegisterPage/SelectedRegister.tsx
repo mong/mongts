@@ -2,13 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import { useQueryParam } from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
 
-import SelectTreatmentUnits, { OptsTu } from "../SelectTreatmentUnits";
+import SelectTreatmentUnits from "../SelectTreatmentUnits";
 import SelectYear from "../SelectYear";
 
 import { Header } from "./header";
 import styles from "./registerPage.module.css";
 
-import config, {
+import {
   mainQueryParamsConfig,
   maxYear,
   minYear,
@@ -24,7 +24,7 @@ import {
 import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
 import { UnitNameList } from "./unitnamelist";
 import { NestedTreatmentUnitName } from "./unitnamelist/unitnamelistbody";
-import { RegisterName, Indicator } from "types";
+import { RegisterName, OptsTu, Indicator } from "types";
 
 import LEGEND from "../TargetLevels";
 import { IndicatorTable } from "../IndicatorTable";
@@ -225,7 +225,6 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
         </div>
 
         <LEGEND
-          app_text={config.app_text}
           update_show_level_filter={update_show_level_filter}
           show_level_filter={show_level_filter}
           selection_bar_height={selection_bar_height}

@@ -3,7 +3,6 @@ import styles from "./index.module.css";
 
 interface Props {
   level: string;
-  icon_class: string;
   legend_btn_class: string;
   update_show_level_filter(p: string | undefined): void;
   show_level_filter: string | undefined;
@@ -11,9 +10,8 @@ interface Props {
 
 function LEGEND_BTN(props: Props) {
   const {
-    level = "Høy måloppnåelse",
-    icon_class = "fa fa-fas fa-circle",
-    legend_btn_class = "high",
+    level,
+    legend_btn_class,
     update_show_level_filter,
     show_level_filter,
   } = props;
@@ -37,11 +35,11 @@ function LEGEND_BTN(props: Props) {
       onClick={() => handle_level_filter(show_level_filter, level_filter)}
     >
       <i style={{ paddingRight: "0.2em" }}>
-        {icon_class === "fa fa-fas fa-circle" ? (
+        {level_filter === "H" ? (
           <FaCircle style={{ color: "#3baa34", fontSize: "1.2rem" }} />
-        ) : icon_class === "fa fa-fas fa-adjust" ? (
+        ) : level_filter === "M" ? (
           <FaAdjust style={{ color: "#fd9c00", fontSize: "1.2rem" }} />
-        ) : icon_class === "fa fa-circle-o" ? (
+        ) : level_filter === "L" ? (
           <FaRegCircle style={{ color: "#e30713", fontSize: "1.2rem" }} />
         ) : (
           <></>
