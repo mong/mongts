@@ -43,6 +43,8 @@ const Tab: React.FC<TabProps> = ({ tabName, activeTab }) => {
     register: string;
   };
 
+  const routes = useRouter().asPath.split("?")[1];
+  const queries = routes ? `?${routes}` : "";
   const clickedStyle =
     activeTab === tabName.value
       ? {
@@ -60,7 +62,7 @@ const Tab: React.FC<TabProps> = ({ tabName, activeTab }) => {
   return (
     <li className={style.tabsLI}>
       <Link
-        href={`${path}/${tabName.value}`}
+        href={`${path}/${tabName.value}/${queries}`}
         passHref
         role="tab"
         aria-selected={tabName.value === tab}
