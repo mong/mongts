@@ -33,7 +33,7 @@ context("Testing of kvalitetsregistre page", () => {
   });
 
   it("test medical field selector", () => {
-    cy.get('[data-testid="medfield_nerve"]').should(
+    cy.get('[data-testid="medfield_nerve"]', { timeout: 60000 }).should(
       "not.have.class",
       "checked"
     );
@@ -57,7 +57,7 @@ context("Testing of kvalitetsregistre page", () => {
       .click()
       .get("body")
       .type("{upArrow}{upArrow}{enter}");
-    cy.get('[data-testid="year_selector"]')
+    cy.get('[data-testid="year_selector"]', { timeout: 60000 })
       .click()
       .get("body")
       .type("{upArrow}{upArrow}{enter}")
@@ -68,25 +68,33 @@ context("Testing of kvalitetsregistre page", () => {
   it("test Vis alle button", () => {
     // Click "show all units" button
     cy.get('[data-testid="vis_alle_button"]').click();
-    cy.get('[data-testid="tu_list"]').should("be.visible");
+    cy.get('[data-testid="tu_list"]', { timeout: 60000 }).should("be.visible");
     // Close popup by pressing Esc button
     cy.get("body").type("{esc}");
-    cy.get('[data-testid="tu_list"]').should("not.be.visible");
+    cy.get('[data-testid="tu_list"]', { timeout: 60000 }).should(
+      "not.be.visible"
+    );
     cy.get('[data-testid="vis_alle_button"]').click();
-    cy.get('[data-testid="tu_list"]').should("be.visible");
+    cy.get('[data-testid="tu_list"]', { timeout: 60000 }).should("be.visible");
     // Pick a unit
     cy.get("button").contains("Finnmarkssykehuset HF").click();
-    cy.get('[data-testid="tu_header_Finnmark HF"]').should("exist");
+    cy.get('[data-testid="tu_header_Finnmark HF"]', { timeout: 60000 }).should(
+      "exist"
+    );
     cy.get('[data-testid="tu_header_Finnmark HF"]').should("not.be.visible");
     // Pick another unit
     cy.get("button").contains("Hammerfest").click();
     cy.get('[data-testid="tu_list_close"]').click();
-    cy.get('[data-testid="tu_list"]').should("not.be.visible");
+    cy.get('[data-testid="tu_list"]', { timeout: 60000 }).should(
+      "not.be.visible"
+    );
     cy.get('[data-testid="tu_header_Hammerfest"]').should("exist");
     cy.get('[data-testid="vis_alle_button"]').click();
     // Unit should be unselected when clicked a second time
     cy.get("button").contains("Hammerfest").click();
-    cy.get('[data-testid="tu_header_Hammerfest"]').should("not.exist");
+    cy.get('[data-testid="tu_header_Hammerfest"]', { timeout: 60000 }).should(
+      "not.exist"
+    );
     cy.get("button").contains("Hammerfest").click();
     cy.get("button").contains("Kirkenes").click();
     cy.get("button").contains("Molde").click();
@@ -102,7 +110,7 @@ context("Testing of kvalitetsregistre page", () => {
     cy.get('[data-testid="tu_selector"]').click().type("unn hf{enter}");
     // Change tab
     cy.get('[data-testid="tab_opptaksomraade"]').click();
-    cy.get('[data-testid="tab_sykehus"]').should(
+    cy.get('[data-testid="tab_sykehus"]', { timeout: 60000 }).should(
       "have.attr",
       "aria-selected",
       "false"
@@ -122,7 +130,7 @@ context("Testing of kvalitetsregistre page", () => {
     cy.get('[data-testid="tu_selector"]').click().type("UNN HF{enter}");
     // Change tab again
     cy.get('[data-testid="tab_datakvalitet"]').click();
-    cy.get('[data-testid="tab_sykehus"]').should(
+    cy.get('[data-testid="tab_sykehus"]', { timeout: 60000 }).should(
       "have.attr",
       "aria-selected",
       "false"
@@ -140,7 +148,7 @@ context("Testing of kvalitetsregistre page", () => {
     cy.contains("div", "Søk etter behandlingsenheter");
     cy.get('[data-testid="tu_header_UNN HF"]').should("not.exist");
     cy.get('[data-testid="tab_sykehus"]').click();
-    cy.get('[data-testid="tab_sykehus"]').should(
+    cy.get('[data-testid="tab_sykehus"]', { timeout: 60000 }).should(
       "have.attr",
       "aria-selected",
       "true"

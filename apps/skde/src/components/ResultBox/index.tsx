@@ -12,8 +12,10 @@ import classNames from "./ResultBox.module.css";
 import { DataContext } from "../Context";
 import { Markdown } from "../Markdown";
 import { DataTable } from "../../charts/Table";
-import { Map, MapData } from "../../charts/Map";
+import { Map } from "../../charts/Map";
 import { timeFormat } from "d3-time-format";
+import { FetchMap } from "../../helpers/hooks";
+import { Linechart } from "../../charts/Linechart";
 
 type ResultBoxProps = {
   title: string;
@@ -25,6 +27,7 @@ type ResultBoxProps = {
   lang: "nb" | "en" | "nn";
   published: Date;
   updated: Date;
+  map: string | undefined;
 };
 
 export const ResultBox: React.FC<ResultBoxProps> = ({
@@ -37,6 +40,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
   carousel,
   published,
   updated,
+  map,
 }) => {
   /* Define dates as days from 1. jan. 1970 */
   const minute = 1000 * 60;
@@ -49,10 +53,11 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
   const [expandedResultBox, setExpandedResultBox] =
     React.useState<boolean>(false);
 
-  const atlasData: { atlasData: any; mapData: MapData } =
-    React.useContext(DataContext);
+  const atlasData: { atlasData: any } = React.useContext(DataContext);
 
-  const mapData = atlasData.mapData;
+  const mapFile = map ? map : "kronikere.geojson";
+  const { data: mapData } = FetchMap(`/helseatlas/kart/${mapFile}`);
+
   const boxData: any =
     atlasData.atlasData[carousel] !== undefined
       ? Object.values(JSON.parse(atlasData.atlasData[carousel]))[0]
@@ -69,17 +74,21 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
       duration: 200,
     }),
   });
+
   const nationalName = boxData
     ? boxData.filter((o) => o.type === "data")[0]["national"]
-    : undefined;
-  const figData: AtlasData[] = boxData
-    ? boxData.filter((o) => o.type === "data")[0]["data"]
     : undefined;
 
   const dataCarousel = boxData ? (
     <Carousel active={0} selection={selection} lang={lang}>
       {boxData
         .map((bd, i) => {
+          const figData: AtlasData[] =
+            bd.type !== "data"
+              ? boxData.filter(
+                  (o) => o.type === "data" && o.label === bd.data
+                )[0]["data"]
+              : undefined;
           if (bd.type === "barchart") {
             return (
               <CarouselItem
@@ -93,6 +102,17 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
                   lang={lang}
                   national={nationalName}
                 />
+              </CarouselItem>
+            );
+          }
+          if (bd.type === "linechart") {
+            return (
+              <CarouselItem
+                style={{ width: "auto" }}
+                key={bd.type + i + id}
+                label={bd.type}
+              >
+                <Linechart {...bd} data={figData} lang={lang} />
               </CarouselItem>
             );
           }
@@ -157,6 +177,9 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
     .filter((boxd) => boxd.type === "map")
     .map((boxd) => boxd.x)[0];
 
+  const figData: AtlasData[] = boxData
+    ? boxData.filter((o) => o.type === "data")[0]["data"]
+    : undefined;
   const handleChange = (cb: React.Dispatch<React.SetStateAction<boolean>>) =>
     cb((state) => !state);
   return (
