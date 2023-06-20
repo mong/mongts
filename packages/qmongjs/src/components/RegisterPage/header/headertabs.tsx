@@ -38,11 +38,14 @@ interface TabProps {
 }
 
 const Tab: React.FC<TabProps> = ({ tabName, activeTab }) => {
-  const { tab, register } = useRouter().query as {
+  const { tab, register, selected_treatment_units } = useRouter().query as {
     tab: string;
     register: string;
+    selected_treatment_units: string;
   };
-
+  const queries = selected_treatment_units
+    ? `?selected_treatment_units=${selected_treatment_units}`
+    : "";
   const clickedStyle =
     activeTab === tabName.value
       ? {
@@ -60,7 +63,7 @@ const Tab: React.FC<TabProps> = ({ tabName, activeTab }) => {
   return (
     <li className={style.tabsLI}>
       <Link
-        href={`${path}/${tabName.value}`}
+        href={`${path}/${tabName.value}/${queries}`}
         passHref
         role="tab"
         aria-selected={tabName.value === tab}
