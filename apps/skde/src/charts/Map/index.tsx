@@ -123,7 +123,6 @@ export const Map: React.FC<MapProps> = ({
           {mapData.features.map((d, i) => {
             const mapId = connection.mapData;
             const attrID = connection.mapAttr;
-            console.log(mapId, attrID);
 
             const hf = dataToMap.filter(
               (dtm) => dtm[mapId] === d.properties[mapId]
