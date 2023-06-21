@@ -41,6 +41,11 @@ const EnglishMenu = () => {
           <span className={classNames.title}>Our Helseatlas</span>
           <ul>
             <li>
+              <Link href="/helseatlas/en/v2/kronikere">
+                Health atlas for chronic diseases
+              </Link>
+            </li>
+            <li>
               <Link href="/helseatlas/en/v2/kvalitet">
                 Healthcare Quality Atlas
               </Link>
@@ -127,6 +132,11 @@ const NorskMeny = () => {
           <span className={classNames.title}>Våre helseatlas</span>
           <ul>
             <li data-testid="menuAtlasLink2">
+              <Link href="/helseatlas/v2/radiologi">
+                Helseatlas radiologi del 1, MR
+              </Link>
+            </li>
+            <li data-testid="menuAtlasLink2">
               <Link href="/helseatlas/v2/kronikere">
                 Helseatlas for utvalgte kroniske sykdommer
               </Link>
@@ -176,6 +186,18 @@ const NorskMeny = () => {
             <li>
               <Link href="/helseatlas/v2/dagkir">
                 Dagkirurgi i Norge 2011–2013
+              </Link>
+            </li>
+          </ul>
+        </ul>
+      </div>
+      <div className={classNames.inner_nav_group}>
+        <ul>
+          <span className={classNames.title}>Andre analyser</span>
+          <ul>
+            <li data-testid="menuAtlasLink2">
+              <Link href="/helseatlas/v2/endometriose">
+                Kirurgiske inngrep for endometriose
               </Link>
             </li>
           </ul>

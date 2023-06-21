@@ -10,7 +10,6 @@ it("Button renders", async () => {
     <LEGEND_BTN
       level="Høy måloppnåelse"
       legend_btn_class="high"
-      icon_class="fa fa-fas fa-circle"
       update_show_level_filter={dummy_function}
       show_level_filter=""
     />
@@ -20,7 +19,6 @@ it("Button renders", async () => {
     <LEGEND_BTN
       level="Høy måloppnåelse"
       legend_btn_class="high"
-      icon_class="fa fa-fas fa-circle"
       update_show_level_filter={dummy_function}
       show_level_filter="L"
     />
@@ -33,7 +31,6 @@ it("Button renders", async () => {
     <LEGEND_BTN
       level="Høy måloppnåelse"
       legend_btn_class="high"
-      icon_class="fa fa-fas fa-circle"
       update_show_level_filter={dummy_function}
       show_level_filter="H"
     />
@@ -46,7 +43,6 @@ it("Button renders", async () => {
     <LEGEND_BTN
       level="Bla bla bla"
       legend_btn_class="mamma"
-      icon_class="fa fa-fas fa-adjust"
       update_show_level_filter={dummy_function}
       show_level_filter="H"
     />
@@ -59,7 +55,6 @@ it("Button renders", async () => {
     <LEGEND_BTN
       level="Bla bla bla"
       legend_btn_class="anna"
-      icon_class=""
       update_show_level_filter={dummy_function}
       show_level_filter="H"
     />
@@ -72,7 +67,6 @@ it("Button renders", async () => {
     <LEGEND_BTN
       level="Bla bla bla"
       legend_btn_class="anna"
-      icon_class=""
       update_show_level_filter={dummy_function}
       show_level_filter="A"
     />
@@ -85,7 +79,6 @@ it("Button renders", async () => {
     <LEGEND_BTN
       level="Bla bla og bla"
       legend_btn_class="likes"
-      icon_class="fa fa-circle-o"
       update_show_level_filter={dummy_function}
       show_level_filter="L"
     />

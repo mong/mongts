@@ -54,6 +54,13 @@ exports[`English menu 1`] = `
               <ul>
                 <li>
                   <a
+                    href="/helseatlas/en/v2/kronikere"
+                  >
+                    Health atlas for chronic diseases
+                  </a>
+                </li>
+                <li>
+                  <a
                     href="/helseatlas/en/v2/kvalitet"
                   >
                     Healthcare Quality Atlas
@@ -204,6 +211,15 @@ exports[`Norwegian menu 1`] = `
                   data-testid="menuAtlasLink2"
                 >
                   <a
+                    href="/helseatlas/v2/radiologi"
+                  >
+                    Helseatlas radiologi del 1, MR
+                  </a>
+                </li>
+                <li
+                  data-testid="menuAtlasLink2"
+                >
+                  <a
                     href="/helseatlas/v2/kronikere"
                   >
                     Helseatlas for utvalgte kroniske sykdommer
@@ -286,6 +302,28 @@ exports[`Norwegian menu 1`] = `
                     href="/helseatlas/v2/dagkir"
                   >
                     Dagkirurgi i Norge 2011–2013
+                  </a>
+                </li>
+              </ul>
+            </ul>
+          </div>
+          <div
+            class="inner_nav_group"
+          >
+            <ul>
+              <span
+                class="title"
+              >
+                Andre analyser
+              </span>
+              <ul>
+                <li
+                  data-testid="menuAtlasLink2"
+                >
+                  <a
+                    href="/helseatlas/v2/endometriose"
+                  >
+                    Kirurgiske inngrep for endometriose
                   </a>
                 </li>
               </ul>
