@@ -35,6 +35,7 @@ const formatIndicatorValues = (
           "."
         }
         TransitionComponent={Zoom}
+        key={`$${description.id}_${unitName}_tooltip`}
       >
         <td
           key={`${description.id}_${unitName}__su`}
@@ -76,6 +77,7 @@ const formatIndicatorValues = (
       er skjevt slik at resultatene kan være misvisende og medføre 
       feilaktige konklusjoner."
         TransitionComponent={Zoom}
+        key={`${indicator.ind_id}_${indicator.unit_name}_${indicator.id}_tooltip`}
       >
         <td
           key={`${indicator.ind_id}_${indicator.unit_name}_${indicator.id}_su`}
@@ -100,6 +102,7 @@ const formatIndicatorValues = (
           "."
         }
         TransitionComponent={Zoom}
+        key={`${indicator.ind_id}_${indicator.unit_name}_${indicator.id}_tooltip`}
       >
         <td
           key={`${indicator.ind_id}_${indicator.unit_name}_${indicator.id}_su`}
