@@ -8,7 +8,6 @@ interface Props {
   width?: number;
   height?: number;
   title?: string;
-  layout?: "responsive" | "fixed" | "fill" | "intrinsic";
 }
 
 export const ImageBox: React.FC<Props> = ({
@@ -18,7 +17,6 @@ export const ImageBox: React.FC<Props> = ({
   width,
   height,
   title,
-  layout = "responsive",
 }) => {
   return (
     <figure style={{ display: "flex", flexDirection: "column" }}>
@@ -29,7 +27,6 @@ export const ImageBox: React.FC<Props> = ({
         alt={alt}
         width={width}
         height={height}
-        layout={layout}
       />
       {caption && <figcaption>{caption}</figcaption>}
     </figure>
