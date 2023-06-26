@@ -1,0 +1,252 @@
+{
+"innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["snitt.rate"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Tal treningsepisodar hos fysioterapeut etter hjarteinfarkt pr. 10 000 innbyggarar",
+        "en": "Number of training episodes with physioterapist after heart attack per 10,000 inhabitants"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      }
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlige gjennomsnittsverdiar for perioden 2018–2022. Rate pr. 10 000 innbyggarar i alderen 18 år og eldre.",
+        "en": "Average per year for the period 2018–2022. Rate per 10,000 inhabitants aged 18 years and older."
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "snitt.rate",
+          "label_no": "Treningsrate",
+          "label_en": "Training rate",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "snitt_talrehab",
+          "label_no": "Tal treningsepisodar",
+          "label_en": "Training episodes",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "snitt_talinnbyggarar",
+          "label_no": "Innbyggarar (18 år og eldre)",
+          "label_en": "Inhabitants (18 years and older)",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "snitt.rate",
+      "caption": {
+        "nn": "Tal treningsepisodar hos fysioterapeut etter hjarteinfarkt pr. 10 000 innbyggarar",
+        "en": "Number of rehabilitering after heart attack per 10,000 inhabitants"
+      },
+      "jenks": [
+        {
+          "grense": 8.8
+        },
+        {
+          "grense": 16.3
+        },
+        {
+          "grense": 36.4
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data": [
+       {
+    "bohf": "Akershus",
+    "snitt_talrehab": 298,
+    "snitt_talinnbyggarar": 446130,
+    "snitt.rate": 7.0894,
+    "LG": 6.6862,
+    "HG": 7.4927
+  },
+  {
+    "bohf": "Bergen",
+    "snitt_talrehab": 184,
+    "snitt_talinnbyggarar": 357225,
+    "snitt.rate": 5.4449,
+    "LG": 5.0509,
+    "HG": 5.8389
+  },
+  {
+    "bohf": "Finnmark",
+    "snitt_talrehab": 47,
+    "snitt_talinnbyggarar": 60643,
+    "snitt.rate": 7.4174,
+    "LG": 6.3533,
+    "HG": 8.4815
+  },
+  {
+    "bohf": "Fonna",
+    "snitt_talrehab": 140,
+    "snitt_talinnbyggarar": 140002,
+    "snitt.rate": 9.6074,
+    "LG": 8.8105,
+    "HG": 10.4042
+  },
+  {
+    "bohf": "Førde",
+    "snitt_talrehab": 94,
+    "snitt_talinnbyggarar": 85178,
+    "snitt.rate": 9.7995,
+    "LG": 8.8016,
+    "HG": 10.7974
+  },
+  {
+    "bohf": "Helgeland",
+    "snitt_talrehab": 75,
+    "snitt_talinnbyggarar": 62565,
+    "snitt.rate": 10.2348,
+    "LG": 9.0746,
+    "HG": 11.3949
+  },
+  {
+    "bohf": "Indre Oslo",
+    "snitt_talrehab": 67,
+    "snitt_talinnbyggarar": 252561,
+    "snitt.rate": 3.9379,
+    "LG": 3.4587,
+    "HG": 4.4171
+  },
+  {
+    "bohf": "Innlandet",
+    "snitt_talrehab": 375,
+    "snitt_talinnbyggarar": 274020,
+    "snitt.rate": 11.8146,
+    "LG": 11.2139,
+    "HG": 12.4153
+  },
+  {
+    "bohf": "Møre og Romsdal",
+    "snitt_talrehab": 257,
+    "snitt_talinnbyggarar": 209118,
+    "snitt.rate": 11.2713,
+    "LG": 10.5819,
+    "HG": 11.9608
+  },
+  {
+    "bohf": "Nord-Trøndelag",
+    "snitt_talrehab": 267,
+    "snitt_talinnbyggarar": 106446,
+    "snitt.rate": 21.6909,
+    "LG": 20.387,
+    "HG": 22.9948
+  },
+  {
+    "bohf": "Nordland",
+    "snitt_talrehab": 197,
+    "snitt_talinnbyggarar": 110933,
+    "snitt.rate": 16.2611,
+    "LG": 15.124,
+    "HG": 17.3982
+  },
+  {
+    "bohf": "Noreg",
+    "snitt_talrehab": 5216,
+    "snitt_talinnbyggarar": 4225242,
+    "snitt.rate": 12.3967,
+    "LG": 12.2285,
+    "HG": 12.5649
+  },
+  {
+    "bohf": "OUS",
+    "snitt_talrehab": 112,
+    "snitt_talinnbyggarar": 215470,
+    "snitt.rate": 6.4201,
+    "LG": 5.8154,
+    "HG": 7.0248
+  },
+  {
+    "bohf": "St. Olav",
+    "snitt_talrehab": 268,
+    "snitt_talinnbyggarar": 263871,
+    "snitt.rate": 10.7029,
+    "LG": 10.0624,
+    "HG": 11.3434
+  },
+  {
+    "bohf": "Stavanger",
+    "snitt_talrehab": 928,
+    "snitt_talinnbyggarar": 281471,
+    "snitt.rate": 36.3464,
+    "LG": 35.1708,
+    "HG": 37.5221
+  },
+  {
+    "bohf": "Sørlandet",
+    "snitt_talrehab": 219,
+    "snitt_talinnbyggarar": 238864,
+    "snitt.rate": 9.0485,
+    "LG": 8.4493,
+    "HG": 9.6478
+  },
+  {
+    "bohf": "Telemark",
+    "snitt_talrehab": 394,
+    "snitt_talinnbyggarar": 139235,
+    "snitt.rate": 25.2772,
+    "LG": 24.0261,
+    "HG": 26.5283
+  },
+  {
+    "bohf": "UNN",
+    "snitt_talrehab": 81,
+    "snitt_talinnbyggarar": 154796,
+    "snitt.rate": 5.0513,
+    "LG": 4.5009,
+    "HG": 5.6017
+  },
+  {
+    "bohf": "Vestfold",
+    "snitt_talrehab": 186,
+    "snitt_talinnbyggarar": 195281,
+    "snitt.rate": 8.765,
+    "LG": 8.1346,
+    "HG": 9.3954
+  },
+  {
+    "bohf": "Vestre Viken",
+    "snitt_talrehab": 679,
+    "snitt_talinnbyggarar": 380426,
+    "snitt.rate": 17.4155,
+    "LG": 16.7602,
+    "HG": 18.0708
+  },
+  {
+    "bohf": "Østfold",
+    "snitt_talrehab": 349,
+    "snitt_talinnbyggarar": 251009,
+    "snitt.rate": 12.8694,
+    "LG": 12.1934,
+    "HG": 13.5454
+  }
+      ]
+    }
+  ]
+}
