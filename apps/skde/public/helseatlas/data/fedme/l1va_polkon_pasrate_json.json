@@ -1,0 +1,336 @@
+{
+"innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snittrate"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Tal pasientar pr. 1 000 innbyggarar (18 år og eldre)",
+        "en": "Number of patients per 1,000 inhabitants (18 years and older)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "Rate.2018",
+        "Rate.2019",
+        "Rate.2020",
+        "Rate.2021",
+        "Rate.2022"
+      ],
+      "annualVarLabels": {
+        "nn": ["2018", "2019", "2020", "2021", "2022"],
+        "en": ["2018", "2019", "2020", "2021", "2022"]
+      }
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 1 000 innbyggarar i alderen 18 år og eldre.",
+        "en": "Average per year for the period 2018–2022. Rate per 1,000 inhabitants aged 18 years and older."
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "Snittrate",
+          "label_no": "Pasientrate",
+          "label_en": "Patient rate",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Snitt_innlagte",
+          "label_no": "Tal pasientar i poliklinisk behandling",
+          "label_en": "Number of outpatients",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Snitt_innbyggarar",
+          "label_no": "innbyggarar (18 år og eldre)",
+          "label_en": "Inhabitants (18 years and older)",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "Snittrate",
+      "caption": {
+        "nn": "Tal innlagte pasientar pr. 1 000 innbyggarar (18 år og eldre)",
+        "en": "Number of admitted patients per 1,000 inhabitants (18 years and older)"
+      },
+      "jenks": [
+        {
+          "grense": 49.7
+        },
+        {
+          "grense": 67.5
+        },
+        {
+          "grense": 116.8
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data": [
+	  {
+    "bohf": "Ahus",
+    "Snittrate": 40.794,
+    "Rate.2022": 43.7357,
+    "Rate.2021": 44.6278,
+    "Rate.2020": 39.3909,
+    "Rate.2019": 39.8377,
+    "Rate.2018": 36.3778,
+    "Snitt_innlagde": 1885.2,
+    "Snitt_innbyggarar": 449731.4
+ 	 },
+	  {
+    "bohf": "Bergen",
+    "Snittrate": 67.5405,
+    "Rate.2022": 83.0736,
+    "Rate.2021": 81.2837,
+    "Rate.2020": 63.6018,
+    "Rate.2019": 59.8957,
+    "Rate.2018": 49.8479,
+    "Snitt_innlagde": 2426.4,
+    "Snitt_innbyggarar": 358788.8
+	  },
+  	{
+    "bohf": "Diakonhjemmet",
+    "Snittrate": 21.2251,
+    "Rate.2022": 26.4018,
+    "Rate.2021": 24.0328,
+    "Rate.2020": 19.7642,
+    "Rate.2019": 17.9021,
+    "Rate.2018": 18.0247,
+    "Snitt_innlagde": 243.8,
+    "Snitt_innbyggarar": 117218.6
+ 	 },
+  	{
+    "bohf": "Finnmark",
+    "Snittrate": 76.3678,
+    "Rate.2022": 93.3531,
+    "Rate.2021": 86.1336,
+    "Rate.2020": 70.7162,
+    "Rate.2019": 70.6813,
+    "Rate.2018": 60.9549,
+    "Snitt_innlagde": 449,
+    "Snitt_innbyggarar": 60540.4
+	  },
+ 	 {
+    "bohf": "Fonna",
+    "Snittrate": 44.4994,
+    "Rate.2022": 44.0381,
+    "Rate.2021": 43.987,
+    "Rate.2020": 45.3806,
+    "Rate.2019": 47.8125,
+    "Rate.2018": 41.2787,
+    "Snitt_innlagde": 605.2,
+    "Snitt_innbyggarar": 140304.2
+ 	 },
+	  {
+    "bohf": "Førde",
+    "Snittrate": 51.4684,
+    "Rate.2022": 51.3471,
+    "Rate.2021": 62.0455,
+    "Rate.2020": 50.6538,
+    "Rate.2019": 51.041,
+    "Rate.2018": 42.2544,
+    "Snitt_innlagde": 415,
+    "Snitt_innbyggarar": 85281.4
+	  },
+ 	 {
+    "bohf": "Helgeland",
+    "Snittrate": 49.7203,
+    "Rate.2022": 53.8739,
+    "Rate.2021": 52.0708,
+    "Rate.2020": 47.2414,
+    "Rate.2019": 50.0592,
+    "Rate.2018": 45.356,
+    "Snitt_innlagde": 291.6,
+    "Snitt_innbyggarar": 62546.6
+  	},
+  	{
+    "bohf": "Innlandet",
+    "Snittrate": 63.0191,
+    "Rate.2022": 68.1718,
+    "Rate.2021": 70.347,
+    "Rate.2020": 60.842,
+    "Rate.2019": 59.2169,
+    "Rate.2018": 56.5179,
+    "Snitt_innlagde": 1622,
+    "Snitt_innbyggarar": 274482.6
+ 	 },
+  	{
+    "bohf": "Lovisenberg",
+    "Snittrate": 38.8405,
+    "Rate.2022": 44.6305,
+    "Rate.2021": 44.9756,
+    "Rate.2020": 36.4183,
+    "Rate.2019": 36.9707,
+    "Rate.2018": 31.2075,
+    "Snitt_innlagde": 443.2,
+    "Snitt_innbyggarar": 136966.8
+  	},
+  	{
+    "bohf": "Møre og Romsdal",
+    "Snittrate": 53.4527,
+    "Rate.2022": 67.088,
+    "Rate.2021": 63.0828,
+    "Rate.2020": 48.1908,
+    "Rate.2019": 49.0128,
+    "Rate.2018": 39.8892,
+    "Snitt_innlagde": 1078.6,
+    "Snitt_innbyggarar": 209533.2
+  	},
+ 	 {
+    "bohf": "Nord-Trøndelag",
+    "Snittrate": 59.0084,
+    "Rate.2022": 66.3337,
+    "Rate.2021": 58.6134,
+    "Rate.2020": 57.9669,
+    "Rate.2019": 59.0345,
+    "Rate.2018": 53.0936,
+    "Snitt_innlagde": 594.2,
+    "Snitt_innbyggarar": 106472.2
+ 	 },
+  	{
+    "bohf": "Nordland",
+    "Snittrate": 57.4105,
+    "Rate.2022": 64.264,
+    "Rate.2021": 61.0671,
+    "Rate.2020": 55.6532,
+    "Rate.2019": 56.7692,
+    "Rate.2018": 49.2991,
+    "Snitt_innlagde": 616.6,
+    "Snitt_innbyggarar": 111035.2
+ 	 },
+ 	 {
+    "bohf": "Noreg",
+    "Snittrate": 56.7254,
+    "Rate.2022": 62.299,
+    "Rate.2021": 62.0837,
+    "Rate.2020": 55.4934,
+    "Rate.2019": 54.8434,
+    "Rate.2018": 48.9074,
+    "Snitt_innlagde": 24089.6,
+    "Snitt_innbyggarar": 4243542.8
+ 	 },
+ 	 {
+    "bohf": "OUS",
+    "Snittrate": 43.0807,
+    "Rate.2022": 46.7238,
+    "Rate.2021": 47.7738,
+    "Rate.2020": 41.6318,
+    "Rate.2019": 41.4505,
+    "Rate.2018": 37.8235,
+    "Snitt_innlagde": 926.2,
+    "Snitt_innbyggarar": 216543.6
+ 	 },
+	  {
+    "bohf": "St. Olavs",
+    "Snittrate": 62.0771,
+    "Rate.2022": 65.1064,
+    "Rate.2021": 67.7567,
+    "Rate.2020": 60.7044,
+    "Rate.2019": 61.8785,
+    "Rate.2018": 54.9394,
+    "Snitt_innlagde": 1629.8,
+    "Snitt_innbyggarar": 265537.8
+  	},
+  	{
+    "bohf": "Stavanger",
+    "Snittrate": 25.8003,
+    "Rate.2022": 24.4275,
+    "Rate.2021": 25.4593,
+    "Rate.2020": 27.3241,
+    "Rate.2019": 28.0899,
+    "Rate.2018": 23.7007,
+    "Snitt_innlagde": 755.4,
+    "Snitt_innbyggarar": 282917.2
+  	},
+  	{
+    "bohf": "Sørlandet",
+    "Snittrate": 67.6143,
+    "Rate.2022": 63.2116,
+    "Rate.2021": 68.6898,
+    "Rate.2020": 65.7639,
+    "Rate.2019": 72.2353,
+    "Rate.2018": 68.1707,
+    "Snitt_innlagde": 1607.2,
+    "Snitt_innbyggarar": 239960.6
+  	},
+  	{
+    "bohf": "Telemark",
+    "Snittrate": 77.871,
+    "Rate.2022": 76.6873,
+    "Rate.2021": 78.3788,
+    "Rate.2020": 80.1808,
+    "Rate.2019": 81.2114,
+    "Rate.2018": 72.8966,
+    "Snitt_innlagde": 1064.4,
+    "Snitt_innbyggarar": 139504
+  	},
+  	{
+    "bohf": "UNN",
+    "Snittrate": 59.8713,
+    "Rate.2022": 69.345,
+    "Rate.2021": 65.1981,
+    "Rate.2020": 58.706,
+    "Rate.2019": 54.2907,
+    "Rate.2018": 51.8167,
+    "Snitt_innlagde": 903.4,
+    "Snitt_innbyggarar": 155033.8
+  	},
+  	{
+    "bohf": "Vestfold",
+    "Snittrate": 116.8085,
+    "Rate.2022": 127.3245,
+    "Rate.2021": 129.5596,
+    "Rate.2020": 118.7021,
+    "Rate.2019": 109.4427,
+    "Rate.2018": 99.0136,
+    "Snitt_innlagde": 2282.6,
+    "Snitt_innbyggarar": 196405.4
+  	},
+  	{
+    "bohf": "Vestre Viken",
+    "Snittrate": 55.2203,
+    "Rate.2022": 66.8734,
+    "Rate.2021": 58.9257,
+    "Rate.2020": 54.178,
+    "Rate.2019": 51.6982,
+    "Rate.2018": 44.4263,
+    "Snitt_innlagde": 2140.2,
+    "Snitt_innbyggarar": 382239.6
+  	},
+  	{
+    "bohf": "Østfold",
+    "Snittrate": 84.359,
+    "Rate.2022": 87.3916,
+    "Rate.2021": 92.4185,
+    "Rate.2020": 86.0586,
+    "Rate.2019": 81.5001,
+    "Rate.2018": 74.4264,
+    "Snitt_innlagde": 2109.6,
+    "Snitt_innbyggarar": 252499.4
+        }
+      ]
+    }
+  ]}
