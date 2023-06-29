@@ -1,5 +1,5 @@
 ---
-filename: komm
+filename: Kommunar og bydelar
 title: Kommunar og bydelar
 lang: nb
 ---
