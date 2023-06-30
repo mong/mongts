@@ -1,7 +1,7 @@
 ---
 filename: Kommunar og bydelar
 title: Kommunar og bydelar
-lang: nb
+lang: nn
 ---
 <html>
 <style>
@@ -18,158 +18,27 @@ table, th, td {
     <th>Kortnamn opptaksområda</th>
     <th>Kommunar/bydelar</th>
    </tr>
-  <tr>
-    <td>Finnmark</td>
-    <td>2002 Vardø, 2003 Vadsø, 2004 Hammerfest, 2011 Kautokeino, 2012 Alta,
-2014 Loppa, 2015 Hasvik, 2017 Kvalsund, 2018 Måsøy, 2019 Nordkapp, 2020
-Porsanger, 2021 Karasjok, 2022 Lebesby, 2023 Gamvik, 2024 Berlevåg, 2025
-Deatnu Tana, 2027 Nesseby, 2028 Båtsfjord, 2030 Sør-Varanger</td>
-      </tr>
-  <tr>
-    <td>UNN</td>
-    <td>1805 Narvik, 1851 Lødingen, 1852 Tjeldsund, 1853 Evenes, 1854 Ballangen,
-1902 Tromsø, 1903 Harstad, 1911 Kvæfjord, 1913 Skånland, 1917 Ibestad,
-1919 Gratangen, 1920 Lavangen, 1922 Bardu, 1923 Salangen, 1924 Målselv,
-1925 Sørreisa, 1926 Dyrøy, 1927 Tranøy, 1928 Torsken, 1929 Berg, 1931
-Lenvik, 1933 Balsfjord, 1936 Karlsøy, 1938 Lyngen, 1939 Storfjord, 1940
-Kåfjord, 1941 Skjervøy, 1942 Nordreisa, 1943 Kvænangen</td>
-  </tr>
-   <tr>
-    <td>Nordland</td>
-    <td>1804 Bodø, 1837 Meløy, 1838 Gildeskål, 1839 Beiarn, 1840 Saltdal, 1841
-Fauske, 1845 Sørfold, 1848 Steigen, 1849 Hamarøy, 1850 Tysfjord, 1856
-Røst, 1857 Værøy, 1859 Flakstad, 1860 Vestvågøy, 1865 Vågan, 1866 Hadsel,
-1867 Bø, 1868 Øksnes, 1870 Sortland, 1871 Andøy, 1874 Moskenes</td>
-  </tr>
-   <tr>
-    <td>Helgeland</td>
-    <td>1811 Bindal, 1812 Sømna, 1813 Brønnøy, 1815 Vega, 1816 Vevelstad, 1818
-Herøy, 1820 Alstahaug, 1822 Leirfjord, 1824 Vefsn, 1825 Grane, 1826 Hattfjelldal, 1827 Dønna, 1828 Nesna, 1832 Hemnes, 1833 Rana, 1834 Lurøy,
-1835 Træna, 1836 Rødøy</td>
-  </tr>
-   <tr>
-    <td>Nord-Trøndelag </td>
-    <td>5004 Steinkjer, 5005 Namsos, 5019 Roan, 5020 Osen, 5034 Meråker, 5035 Stjørdal, 5036 Frosta, 5037 Levanger, 5038 Verdal, 5039 Verran, 5040 Nam dalseid, 5041 Snåase–Snåsa, 5042 Lierne, 5043 Raarvikhe – Røyrvik, 5044 Namsskogan, 5045 Grong, 5046 Høylandet, 5047 Overhalla, 5048 Fosnes, 5049 Flatanger, 5050 Vikna, 5051 Nærøy, 5052 Leka, 5053 Inderøy</td>
-  </tr>
-   <tr>
-    <td>St. Olavs</td>
-    <td>5001 Trondheim, 5011 Hemne, 5012 Snillfjord, 5013 Hitra, 5014 Frøya,
-5015 Ørland, 5016 Agdenes, 5017 Bjugn, 5018 Åfjord, 5021 Oppdal, 5022
-Rennebu, 5023 Meldal, 5024 Orkdal, 5025 Røros, 5026 Holtålen, 5027 Midtre
-Gauldal, 5028 Melhus, 5029 Skaun, 5030 Klæbu, 5031 Malvik, 5032 Selbu,
-5033 Tydal, 5054 Indre Fosen, 1567 Rindal</td>
-  </tr>
-   <tr>
-    <td>Møre og Romsdal</td>
-    <td>1502 Molde, 1504 Ålesund, 1505 Kristiansund, 1511 Vanylven, 1514 Sande,
-1515 Herøy, 1516 Ulstein, 1517 Hareid, 1519 Volda, 1520 Ørsta, 1523 Ørskog,
-1524 Norddal, 1525 Stranda, 1526 Stordal, 1528 Sykkylven, 1529 Skodje, 1531
-Sula, 1532 Giske, 1534 Haram, 1535 Vestnes, 1539 Rauma, 1543 Nesset, 1545
-Midsund, 1546 Sandøy, 1547 Aukra, 1548 Fræna, 1551 Eide, 1554 Averøy,
-1557 Gjemnes, 1560 Tingvoll, 1563 Sunndal, 1566 Surnadal, 1571 Halsa,
-1573 Smøla, 1576 Aure</td>
-  </tr>
-   <tr>
-    <td>Førde</td>
-    <td>1401 Flora, 1411 Gulen, 1412 Solund, 1413 Hyllestad, 1416 Høyanger, 1417
-Vik, 1418 Balestrand, 1419 Leikanger, 1420 Sogndal, 1421 Aurland, 1422
-Lærdal, 1424 Årdal, 1426 Luster, 1428 Askvoll, 1429 Fjaler, 1430 Gaular,
-1431 Jølster, 1432 Førde, 1433 Naustdal, 1438 Bremanger, 1439 Vågsøy, 1441
-Selje, 1443 Eid, 1444 Hornindal, 1445 Gloppen, 1449 Stryn</td>
-  </tr>
-   <tr>
-    <td>Bergen</td>
-    <td>1201 Bergen, 1233 Ulvik, 1234 Granvin, 1235 Voss, 1238 Kvam, 1241 Fusa,
-1242 Samnanger, 1243 Os, 1244 Austevoll, 1245 Sund, 1246 Fjell, 1247 Askøy,
-1251 Vaksdal, 1252 Modalen, 1253 Osterøy, 1256 Meland, 1259 Øygarden,
-1260 Radøy, 1263 Lindås, 1264 Austrheim, 1265 Fedje, 1266 Masfjorden</td>
-  </tr>
-   <tr>
-    <td>Fonna</td>
-    <td>1106 Haugesund, 1134 Suldal, 1135 Sauda, 1145 Bokn, 1146 Tysvær, 1149
-Karmøy, 1151 Utsira, 1160 Vindafjord, 1211 Etne, 1216 Sveio, 1219 Bømlo,
-1221 Stord, 1222 Fitjar, 1223 Tysnes, 1224 Kvinnherad, 1227 Jondal, 1228
-Odda, 1231 Ullensvang, 1232 Eidfjord</td>
-  </tr>
-   <tr>
-    <td>Stavanger</td>
-    <td>1101 Eigersund, 1102 Sandnes, 1103 Stavanger, 1111 Sokndal, 1112 Lund,
-1114 Bjerkreim, 1119 Hå, 1120 Klepp, 1121 Time, 1122 Gjesdal, 1124 Sola,
-1127 Randaberg, 1129 Forsand, 1130 Strand, 1133 Hjelmeland, 1141 Finnøy,
-1142 Rennesøy, 1144 Kvitsøy
-</td>
-  </tr>
-   <tr>
-    <td>Østfold</td>
-    <td>0101 Halden, 0104 Moss, 0105 Sarpsborg, 0106 Fredrikstad, 0111 Hvaler,
-0118 Aremark, 0119 Marker, 0122 Trøgstad, 0123 Spydeberg, 0124 Askim,
-0125 Eidsberg, 0127 Skiptvet, 0128 Rakkestad, 0135 Råde, 0136 Rygge, 0137
-Våler, 0138 Hobøl, 0211 Vestby</td>
-  </tr>
-   <tr>
-    <td>OUS</td>
-    <td>030103 Sagene, 030108 Nordre Aker, 030109 Bjerke, 030113 Østensjø, 030114
-Nordstrand, 030115 Søndre Nordstrand og 030117 Marka bydelar i Oslo</td>
-  </tr>
-   <tr>
-    <td>Lovisenberg</td>
-    <td>030101 Gamle Oslo, 030102 Grünerløkka, 030104 St. Hanshaugen og 030116
-Sentrum bydelar i Oslo
-</td>
-  </tr>
-   <tr>
-    <td>Diakonhjemmet</td>
-    <td> 030105 Frogner, 030106 Ullern, og 030107 Vestre Aker bydelar i Oslo</td>
-  </tr>
-   <tr>
-    <td>Akershus</td>
-    <td>0121 Rømskog, 0213 Ski, 0214 Ås, 0215 Frogn, 0216 Nesodden, 0217 Oppegård, 0221 Aurskog-Høland, 0226 Sørum, 0227 Fet, 0228 Rælingen, 0229
-Enebakk, 0230 Lørenskog, 0231 Skedsmo, 0233 Nittedal, 0234 Gjerdrum,
-0235 Ullensaker, 0237 Eidsvoll, 0238 Nannestad, 0239 Hurdal, 0402 Kongsvinger, 0418 Nord-Odal, 0419 Sør-Odal, 0420 Eidskog, 0423 Grue, og 030110
-Grorud, 030111 Stovner og 030112 Alna bydelar i Oslo</td>
-  </tr>
-   <tr>
-    <td>Innlandet </td>
-    <td>0236 Nes, 0403 Hamar, 0412 Ringsaker, 0415 Løten, 0417 Stange, 0425
-Åsnes, 0426 Våler, 0427 Elverum, 0428 Trysil, 0429 Åmot, 0430 Stor-Elvdal,
-0432 Rendalen, 0434 Engerdal, 0436 Tolga, 0437 Tynset, 0438 Alvdal, 0439
-Folldal, 0441 Os, 0501 Lillehammer, 0502 Gjøvik, 0511 Dovre, 0512 Lesja,
-0513 Skjåk, 0514 Lom, 0515 Vågå, 0516 Nord-Fron, 0517 Sel, 0519 Sør-Fron,
-0520 Ringebu, 0521 Øyer, 0522 Gausdal, 0528 Østre Toten, 0529 Vestre
-Toten, 0533 Lunner, 0534 Gran, 0536 Søndre Land, 0538 Nordre Land, 0540
-Sør-Aurdal, 0541 Etnedal, 0542 Nord-Aurdal, 0543 Vestre Slidre, 0544 Øystre
-Slidre, 0545 Vang</td>
-  </tr>
-   <tr>
-    <td>Vestre Viken</td>
-    <td>0219 Bærum, 0220 Asker, 0532 Jevnaker, 0602 Drammen, 0604 Kongsberg,
-0605 Ringerike, 0612 Hole, 0615 Flå, 0616 Nes, 0617 Gol, 0618 Hemsedal,
-0619 Ål, 0620 Hol, 0621 Sigdal, 0622 Krødsherad, 0623 Modum, 0624 Øvre
-Eiker, 0625 Nedre Eiker, 0626 Lier, 0627 Røyken, 0628 Hurum, 0631 Flesberg,
-0632 Rollag, 0633 Nore og Uvdal, 0711 Svelvik, 0713 Sande
-</td>
-  </tr>
-   <tr>
-    <td>Vestfold</td>
-    <td>0701 Horten, 0704 Tønsberg, 0710 Sandefjord, 0712 Larvik, 0715 Holmestrand, 0716 Re, 0729 Færder</td>
-  </tr>
-   <tr>
-    <td>Telemark</td>
-    <td>0805 Porsgrunn, 0806 Skien, 0807 Notodden, 0811 Siljan, 0814 Bamble, 0815
-Kragerø, 0817 Drangedal, 0819 Nome, 0821 Bø, 0822 Sauherad, 0826 Tinn,
-0827 Hjartdal, 0828 Seljord, 0829 Kviteseid, 0830 Nissedal, 0831 Fyresdal,
-0833 Tokke, 0834 Vinje</td>
-  </tr>
-   <tr>
-    <td>Sørlandet</td>
-    <td>0901 Risør, 0904 Grimstad, 0906 Arendal, 0911 Gjerstad, 0912 Vegårshei,
-0914 Tvedestrand, 0919 Froland, 0926 Lillesand, 0928 Birkenes, 0929 Åmli,
-0935 Iveland, 0937 Evje og Hornnes, 0938 Bygland, 0940 Valle, 0941 Bykle,
-1001 Kristiansand, 1002 Mandal, 1003 Farsund, 1004 Flekkefjord, 1014
-Vennesla, 1017 Songdalen, 1018 Søgne, 1021 Marnardal, 1026 Åseral, 1027
-Audnedal, 1029 Lindesnes, 1032 Lyngdal, 1034 Hægebostad, 1037 Kvinesdal,
-1046 Sirda</td>
-  </tr>
+  <TR><TD>Finnmark</TD> <TD> 5403 Alta, 5404 Vardø, 5405 Vadsø, 5406 Hammerfest, 5430 Kautokeino, 5432 Loppa, 5433 Hasvik, 5434 Måsøy, 5435 Nordkapp, 5436 Porsanger, 5437 Karasjok, 5438 Lebesby, 5439 Gamvik, 5440 Berlevåg, 5441 Tana, 5442 Nesseby, 5443 Båtsfjord, 5444 Sør-Varanger</TD> </TR>
+<TR><TD>UNN</TD> <TD> 1806 Narvik, 1851 Lødingen, 1853 Evenes, 5401 Tromsø, 5402 Harstad, 5411 Kvæfjord, 5412 Tjeldsund, 5413 Ibestad, 5414 Gratangen, 5415 Lavangen, 5416 Bardu, 5417 Salangen, 5418 Målselv, 5419 Sørreisa, 5420 Dyrøy, 5421 Senja, 5422 Balsfjord, 5423 Karlsøy, 5424 Lyngen, 5425 Storfjord, 5426 Kåfjord, 5427 Skjervøy, 5428 Nordreisa, 5429 Kvænangen</TD> </TR>
+<TR><TD>Nordland</TD> <TD> 1804 Bodø, 1837 Meløy, 1838 Gildeskål, 1839 Beiarn, 1840 Saltdal, 1841 Fauske, 1845 Sørfold, 1848 Steigen, 1856 Røst, 1857 Værøy, 1859 Flakstad, 1860 Vestvågøy, 1865 Vågan, 1866 Hadsel, 1867 Bø, 1868 Øksnes, 1870 Sortland, 1871 Andøy, 1874 Moskenes, 1875 Hamarøy</TD> </TR>
+<TR><TD>Helgeland</TD> <TD> 1811 Bindal, 1812 Sømna, 1813 Brønnøy, 1815 Vega, 1816 Vevelstad, 1818 Herøy (Nordl.), 1820 Alstahaug, 1822 Leirfjord, 1824 Vefsn, 1825 Grane, 1826 Hattfjelldal, 1827 Dønna, 1828 Nesna, 1832 Hemnes, 1833 Rana, 1834 Lurøy, 1835 Træna, 1836 Rødøy</TD> </TR>
+<TR><TD>Nord-Trøndelag</TD> <TD> 5006 Steinkjer, 5007 Namsos, 5020 Osen, 5034 Meråker, 5035 Stjørdal, 5036 Frosta, 5037 Levanger, 5038 Verdal, 5041 Snåsa, 5042 Lierne, 5043 Røyrvik, 5044 Namsskogan, 5045 Grong, 5046 Høylandet, 5047 Overhalla, 5049 Flatanger, 5052 Leka, 5053 Inderøy, 5060 Nærøysund</TD> </TR>
+<TR><TD>St. Olavs</TD> <TD> 5001 Trondheim, 5014 Frøya, 5021 Oppdal, 5022 Rennebu, 5025 Røros, 5026 Holtålen, 5027 Midtre Gauldal, 5028 Melhus, 5029 Skaun, 5031 Malvik, 5032 Selbu, 5033 Tydal, 5054 Indre Fosen, 5055 Heim, 5056 Hitra, 5057 Ørland, 5058 Åfjord, 5059 Orkland, 5061 Rindal</TD> </TR>
+<TR><TD>Møre og Romsdal</TD> <TD> 1505 Kristiansund, 1506 Molde, 1507 Ålesund, 1511 Vanylven, 1514 Sande, 1515 Herøy (M. og R.), 1516 Ulstein, 1517 Hareid, 1520 Ørsta, 1525 Stranda, 1528 Sykkylven, 1531 Sula, 1532 Giske, 1535 Vestnes, 1539 Rauma, 1547 Aukra, 1554 Averøy, 1557 Gjemnes, 1560 Tingvoll, 1563 Sunndal, 1566 Surnadal, 1573 Smøla, 1576 Aure, 1577 Volda, 1578 Fjord, 1579 Hustadvika</TD> </TR>
+<TR><TD>Førde</TD> <TD> 4602 Kinn, 4635 Gulen, 4636 Solund, 4637 Hyllestad, 4638 Høyanger, 4639 Vik, 4640 Sogndal, 4641 Aurland, 4642 Lærdal, 4643 Årdal, 4644 Luster, 4645 Askvoll, 4646 Fjaler, 4647 Sunnfjord, 4648 Bremanger, 4649 Stad, 4650 Gloppen, 4651 Stryn</TD> </TR>
+<TR><TD>Bergen</TD> <TD> 4601 Bergen, 4620 Ulvik, 4621 Voss, 4622 Kvam, 4623 Samnanger, 4624 Bjørnafjorden, 4625 Austevoll, 4626 Øygarden, 4627 Askøy, 4628 Vaksdal, 4629 Modalen, 4630 Osterøy, 4631 Alver, 4632 Austrheim, 4633 Fedje, 4634 Masfjorden</TD> </TR>
+<TR><TD>Fonna</TD> <TD> 1106 Haugesund, 1134 Suldal, 1135 Sauda, 1145 Bokn, 1146 Tysvær, 1149 Karmøy, 1151 Utsira, 1160 Vindafjord, 4611 Etne, 4612 Sveio, 4613 Bømlo, 4614 Stord, 4615 Fitjar, 4616 Tysnes, 4617 Kvinnherad, 4618 Ullensvang, 4619 Eidfjord</TD> </TR>
+<TR><TD>Stavanger</TD> <TD> 1101 Eigersund, 1103 Stavanger, 1108 Sandnes, 1111 Sokndal, 1112 Lund, 1114 Bjerkreim, 1119 Hå, 1120 Klepp, 1121 Time, 1122 Gjesdal, 1124 Sola, 1127 Randaberg, 1130 Strand, 1133 Hjelmeland, 1144 Kvitsøy</TD> </TR>
+<TR><TD>Østfold</TD> <TD> 3001 Halden, 3002 Moss, 3003 Sarpsborg, 3004 Fredrikstad, 3011 Hvaler, 3012 Aremark, 3013 Marker, 3014 Indre Østfold, 3015 Skiptvet, 3016 Rakkestad, 3017 Råde, 3018 Våler (Viken), 3019 Vestby</TD> </TR>
+<TR><TD>OUS</TD> <TD> 030103 Sagene, 030108 Nordre Aker, 030109 Bjerke, 030113 Østensjø, 030114 Nordstrand, 030115 Søndre Nordstrand, 030117 Marka, 030199 Uoppgitt</TD> </TR>
+<TR><TD>Lovisenberg</TD> <TD> 030101 Gamle Oslo, 030102 Grünerløkka, 030104 St. Hanshaugen, 030116 Sentrum</TD> </TR>
+<TR><TD>Diakonhjemmet</TD> <TD> 030105 Frogner, 030106 Ullern, 030107 Vestre Aker</TD> </TR>
+<TR><TD>Ahus</TD> <TD> 030110 Grorud, 030111 Stovner, 030112 Alna, 3020 Nordre Follo, 3021 Ås, 3022 Frogn, 3023 Nesodden, 3026 Aurskog-Høland, 3027 Rælingen, 3028 Enebakk, 3029 Lørenskog, 3030 Lillestrøm, 3031 Nittedal, 3032 Gjerdrum, 3033 Ullensaker, 3034 Nes, 3035 Eidsvoll, 3036 Nannestad, 3037 Hurdal, 3401 Kongsvinger, 3414 Nord-Odal, 3415 Sør-Odal, 3416 Eidskog, 3417 Grue</TD> </TR>
+<TR><TD>Innlandet</TD> <TD> 3054 Lunner, 3403 Hamar, 3405 Lillehammer, 3407 Gjøvik, 3411 Ringsaker, 3412 Løten, 3413 Stange, 3418 Åsnes, 3419 Våler (Innlandet), 3420 Elverum, 3421 Trysil, 3422 Åmot, 3423 Stor-Elvdal, 3424 Rendalen, 3425 Engerdal, 3426 Tolga, 3427 Tynset, 3428 Alvdal, 3429 Folldal, 3430 Os (Innlandet), 3431 Dovre, 3432 Lesja, 3433 Skjåk, 3434 Lom, 3435 Vågå, 3436 Nord-Fron, 3437 Sel, 3438 Sør-Fron, 3439 Ringebu, 3440 Øyer, 3441 Gausdal, 3442 Østre Toten, 3443 Vestre Toten, 3446 Gran, 3447 Søndre Land, 3448 Nordre Land, 3449 Sør-Aurdal, 3450 Etnedal, 3451 Nord-Aurdal, 3452 Vestre Slidre, 3453 Øystre Slidre, 3454 Vang</TD> </TR>
+<TR><TD>Vestre Viken</TD> <TD> 3005 Drammen, 3006 Kongsberg, 3007 Ringerike, 3024 Bærum, 3025 Asker, 3038 Hole, 3039 Flå, 3040 Nesbyen, 3041 Gol, 3042 Hemsedal, 3043 Ål, 3044 Hol, 3045 Sigdal, 3046 Krødsherad, 3047 Modum, 3048 Øvre Eiker, 3049 Lier, 3050 Flesberg, 3051 Rollag, 3052 Nore og Uvdal, 3053 Jevnaker</TD> </TR>
+<TR><TD>Vestfold</TD> <TD> 3801 Horten, 3802 Holmestrand, 3803 Tønsberg, 3804 Sandefjord, 3805 Larvik, 3811 Færder</TD> </TR>
+<TR><TD>Telemark</TD> <TD> 3806 Porsgrunn, 3807 Skien, 3808 Notodden, 3812 Siljan, 3813 Bamble, 3814 Kragerø, 3815 Drangedal, 3816 Nome, 3817 Midt-Telemark, 3818 Tinn, 3819 Hjartdal, 3820 Seljord, 3821 Kviteseid, 3822 Nissedal, 3823 Fyresdal, 3824 Tokke, 3825 Vinje</TD> </TR>
+<TR><TD>Sørlandet</TD> <TD> 4201 Risør, 4202 Grimstad, 4203 Arendal, 4204 Kristiansand, 4205 Lindesnes, 4206 Farsund, 4207 Flekkefjord, 4211 Gjerstad, 4212 Vegårshei, 4213 Tvedestrand, 4214 Froland, 4215 Lillesand, 4216 Birkenes, 4217 Åmli, 4218 Iveland, 4219 Evje og Hornnes, 4220 Bygland, 4221 Valle, 4222 Bykle, 4223 Vennesla, 4224 Åseral, 4225 Lyngdal, 4226 Hægebostad, 4227 Kvinesdal, 4228 Sirdal</TD> </TR>
    </table>
 </body>
 </html>
