@@ -1,67 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render with layout fill 1`] = `
-<div>
-  <figure
-    style="display: flex; flex-direction: column;"
-  >
-    <img
-      alt=""
-      data-nimg="fill"
-      decoding="async"
-      loading="lazy"
-      sizes="100vw"
-      src="https://picsum.photos/id/237/100/100.jpg?w=3840&q=75"
-      srcset="https://picsum.photos/id/237/100/100.jpg?w=640&q=75 640w, https://picsum.photos/id/237/100/100.jpg?w=750&q=75 750w, https://picsum.photos/id/237/100/100.jpg?w=828&q=75 828w, https://picsum.photos/id/237/100/100.jpg?w=1080&q=75 1080w, https://picsum.photos/id/237/100/100.jpg?w=1200&q=75 1200w, https://picsum.photos/id/237/100/100.jpg?w=1920&q=75 1920w, https://picsum.photos/id/237/100/100.jpg?w=2048&q=75 2048w, https://picsum.photos/id/237/100/100.jpg?w=3840&q=75 3840w"
-      style="position: absolute; height: 100%; width: 100%; left: 0px; top: 0px; right: 0px; bottom: 0px; color: transparent;"
-      title=""
-    />
-  </figure>
-</div>
-`;
-
-exports[`Render with layout fixed 1`] = `
-<div>
-  <figure
-    style="display: flex; flex-direction: column;"
-  >
-    <img
-      alt=""
-      data-nimg="1"
-      decoding="async"
-      height="250"
-      loading="lazy"
-      src="https://picsum.photos/id/237/100/100.jpg?w=828&q=75"
-      srcset="https://picsum.photos/id/237/100/100.jpg?w=640&q=75 1x, https://picsum.photos/id/237/100/100.jpg?w=828&q=75 2x"
-      style="color: transparent;"
-      title=""
-      width="400"
-    />
-  </figure>
-</div>
-`;
-
-exports[`Render with layout intrinsic 1`] = `
-<div>
-  <figure
-    style="display: flex; flex-direction: column;"
-  >
-    <img
-      alt=""
-      data-nimg="1"
-      decoding="async"
-      height="250"
-      loading="lazy"
-      src="https://picsum.photos/id/237/100/100.jpg?w=828&q=75"
-      srcset="https://picsum.photos/id/237/100/100.jpg?w=640&q=75 1x, https://picsum.photos/id/237/100/100.jpg?w=828&q=75 2x"
-      style="color: transparent; max-width: 100%; height: auto;"
-      title=""
-      width="400"
-    />
-  </figure>
-</div>
-`;
-
 exports[`Render with some more text 1`] = `
 <div>
   <figure
@@ -73,10 +11,9 @@ exports[`Render with some more text 1`] = `
       decoding="async"
       height="200"
       loading="lazy"
-      sizes="100vw"
-      src="https://picsum.photos/id/237/300/200?w=3840&q=75"
-      srcset="https://picsum.photos/id/237/300/200?w=640&q=75 640w, https://picsum.photos/id/237/300/200?w=750&q=75 750w, https://picsum.photos/id/237/300/200?w=828&q=75 828w, https://picsum.photos/id/237/300/200?w=1080&q=75 1080w, https://picsum.photos/id/237/300/200?w=1200&q=75 1200w, https://picsum.photos/id/237/300/200?w=1920&q=75 1920w, https://picsum.photos/id/237/300/200?w=2048&q=75 2048w, https://picsum.photos/id/237/300/200?w=3840&q=75 3840w"
-      style="color: transparent; width: 100%; height: auto;"
+      src="https://picsum.photos/id/237/300/200?w=640&q=75"
+      srcset="https://picsum.photos/id/237/300/200?w=384&q=75 1x, https://picsum.photos/id/237/300/200?w=640&q=75 2x"
+      style="color: transparent;"
       title="Æ Å"
       width="300"
     />
@@ -98,10 +35,9 @@ exports[`Standard render 1`] = `
       decoding="async"
       height="250"
       loading="lazy"
-      sizes="100vw"
-      src="https://picsum.photos/id/237/100/100.jpg?w=3840&q=75"
-      srcset="https://picsum.photos/id/237/100/100.jpg?w=640&q=75 640w, https://picsum.photos/id/237/100/100.jpg?w=750&q=75 750w, https://picsum.photos/id/237/100/100.jpg?w=828&q=75 828w, https://picsum.photos/id/237/100/100.jpg?w=1080&q=75 1080w, https://picsum.photos/id/237/100/100.jpg?w=1200&q=75 1200w, https://picsum.photos/id/237/100/100.jpg?w=1920&q=75 1920w, https://picsum.photos/id/237/100/100.jpg?w=2048&q=75 2048w, https://picsum.photos/id/237/100/100.jpg?w=3840&q=75 3840w"
-      style="color: transparent; width: 100%; height: auto;"
+      src="https://picsum.photos/id/237/100/100.jpg?w=828&q=75"
+      srcset="https://picsum.photos/id/237/100/100.jpg?w=640&q=75 1x, https://picsum.photos/id/237/100/100.jpg?w=828&q=75 2x"
+      style="color: transparent;"
       title=""
       width="400"
     />
