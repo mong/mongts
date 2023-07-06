@@ -40,6 +40,7 @@ git push
 Run the development server:
 
 ```bash
+nvm install
 yarn install
 yarn dev
 ```
