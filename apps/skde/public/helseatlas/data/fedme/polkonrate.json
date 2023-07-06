@@ -1,0 +1,268 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": [
+        "prosentdel"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Tal pasientar i poliklinsk behandling per 10 000 innbyggarar",
+        "en": "Number of outpatients per 10 000 population"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "errorBars": [
+        "Lågast_95KI",
+        "høgast_95KI"
+      ],
+    "format": ",.0%"
+  },
+  {
+    "type": "table",
+    "data": "qwerty",
+    "caption": {
+      "nn": "Gjennomsnittsverdier for perioden 2018–2022",
+      "en": "Average per year for the period 2018–2022"
+    },
+    "columns": [
+      {
+        "id": "bohf",
+        "label_no": "Opptaksområde",
+        "label_en": "Referral areas",
+        "typeVar": "string",
+        "format": ""
+      },
+      {
+        "id": "prosentdel",
+        "label_no": "Pasientar i poliklinisk behandling",
+        "label_en": "Number of outpatients",
+        "typeVar": "number",
+        "format": ",.1%"
+      },
+      {
+        "id": "snitt_tal_z",
+        "label_no": "Årleg tal pasientar i poliklinisk behandling",
+        "label_en": "Number of outpatients each year",
+        "typeVar": "number",
+        "format": ",.0f"
+      },
+      {
+        "id": "snitt_indeksopphald",
+        "label_no": "Årleg tal innbyggarar",
+        "label_en": "Population",
+        "typeVar": "number",
+        "format": ",.0f"
+      }
+    ]
+  },
+  {
+    "type": "map",
+    "data": "qwerty",
+    "x": "prosentdel",
+    "caption": {
+      "nn": "Pasientar i poliklinisk behandling per 10 000 innbyggarar",
+      "en": "Number of outpatients per 10 000 population"
+    },
+    "jenks": [
+      {
+        "grense": 47.7
+      },
+      {
+        "grense": 65.8
+      },
+      {
+        "grense": 115.4
+      }
+    ],
+    "format": ",.0%"
+  },
+  {
+    "type": "data",
+    "label": "qwerty",
+    "description": "Hoveddatasettet for gitt resultatboks",
+    "national": "Noreg",
+    "data": [
+      {
+    "bohf": "Akershus",
+    "snitt_tal_z": 1823.8,
+    "snitt_indeksopphald": 449731.4,
+    "prosentdel": 39.45,
+    "Lågast_95KI": 38.64,
+    "høgast_95KI": 40.27
+  },
+  {
+    "bohf": "Bergen",
+    "snitt_tal_z": 2373.4,
+    "snitt_indeksopphald": 358788.8,
+    "prosentdel": 66.1,
+    "Lågast_95KI": 64.9,
+    "høgast_95KI": 67.3
+  },
+  {
+    "bohf": "Diakonhjemmet",
+    "snitt_tal_z": 237.2,
+    "snitt_indeksopphald": 117218.6,
+    "prosentdel": 20.7,
+    "Lågast_95KI": 19.51,
+    "høgast_95KI": 21.9
+  },
+  {
+    "bohf": "Finnmark",
+    "snitt_tal_z": 440.6,
+    "snitt_indeksopphald": 60540,
+    "prosentdel": 74.9,
+    "Lågast_95KI": 71.8,
+    "høgast_95KI": 78.16
+  },
+  {
+    "bohf": "Fonna",
+    "snitt_tal_z": 590.0,
+    "snitt_indeksopphald": 140304,
+    "prosentdel": 43.4,
+    "Lågast_95KI": 41.8,
+    "høgast_95KI": 45.00
+  },
+  {
+    "bohf": "Førde",
+    "snitt_tal_z": 401.2,
+    "snitt_indeksopphald": 85281.4,
+    "prosentdel": 49.75,
+    "Lågast_95KI": 47.58,
+    "høgast_95KI": 51.99
+  },
+  {
+    "bohf": "Helgeland",
+    "snitt_tal_z": 279.0,
+    "snitt_indeksopphald": 62546.6,
+    "prosentdel": 47.65,
+    "Lågast_95KI": 45.16,
+    "høgast_95KI": 50.24
+  },
+  {
+    "bohf": "Innlandet",
+    "snitt_tal_z": 1565.0,
+    "snitt_indeksopphald": 274482.6,
+    "prosentdel": 60.84,
+    "Lågast_95KI": 59.49,
+    "høgast_95KI": 62.21
+  },
+  {
+    "bohf": "Lovisenberg",
+    "snitt_tal_z": 434.8,
+    "snitt_indeksopphald": 136966.8,
+    "prosentdel": 37.93,
+    "Lågast_95KI": 36.14,
+    "høgast_95KI": 39.77
+  },
+  {
+    "bohf": "Møre og Romsdal",
+    "snitt_tal_z": 1053.8,
+    "snitt_indeksopphald": 209533.2,
+    "prosentdel": 52.21,
+    "Lågast_95KI": 50.80,
+    "høgast_95KI": 53.64
+  },
+  {
+    "bohf": "Nord-Trøndelag",
+    "snitt_tal_z": 580.8,
+    "snitt_indeksopphald": 106472.2,
+    "prosentdel": 57.72,
+    "Lågast_95KI": 55.62,
+    "høgast_95KI": 59.87
+  },
+  {
+    "bohf": "Nordland",
+    "snitt_tal_z": 606.2,
+    "snitt_indeksopphald": 111035.2,
+    "prosentdel": 56.46,
+    "Lågast_95KI": 54.46,
+    "høgast_95KI": 58.51
+  },
+  {
+    "bohf": "Noreg",
+    "snitt_tal_z": 23.548,
+    "snitt_indeksopphald": 4243542.8,
+    "prosentdel": 55.45,
+    "Lågast_95KI": 55.13,
+    "høgast_95KI": 55.77
+  },
+  {
+    "bohf": "OUS",
+    "snitt_tal_z": 908.6,
+    "snitt_indeksopphald": 216543.6,
+    "prosentdel": 42.25,
+    "Lågast_95KI": 41.01,
+    "høgast_95KI": 43.52
+  },
+  {
+    "bohf": "St. Olav",
+    "snitt_tal_z": 1612.4,
+    "snitt_indeksopphald": 265537.8,
+    "prosentdel": 61.41,
+    "Lågast_95KI": 60.08,
+    "høgast_95KI": 62.77
+  },
+  {
+    "bohf": "Stavanger",
+    "snitt_tal_z": 716.0,
+    "snitt_indeksopphald": 282917.2,
+    "prosentdel": 24.45,
+    "Lågast_95KI": 23.65,
+    "høgast_95KI": 25.26
+  },
+  {
+    "bohf": "Sørlandet",
+    "snitt_tal_z": 1563.8,
+    "snitt_indeksopphald": 239960.6,
+    "prosentdel": 65.78,
+    "Lågast_95KI": 64.33,
+    "høgast_95KI": 67.26
+  },
+  {
+    "bohf": "Telemark",
+    "snitt_tal_z": 1050.2,
+    "snitt_indeksopphald": 139504,
+    "prosentdel": 76.87,
+    "Lågast_95KI": 74.79,
+    "høgast_95KI": 78.99
+  },
+  {
+    "bohf": "UNN",
+    "snitt_tal_z": 877.4,
+    "snitt_indeksopphald": 155033.8,
+    "prosentdel": 58.16,
+    "Lågast_95KI": 56.45,
+    "høgast_95KI": 59.91
+  },
+  {
+    "bohf": "Vestfold",
+    "snitt_tal_z": 2254.2,
+    "snitt_indeksopphald": 196405.4,
+    "prosentdel": 115.35,
+    "Lågast_95KI": 113.22,
+    "høgast_95KI": 117.51
+  },
+  {
+    "bohf": "Vestre Viken",
+    "snitt_tal_z": 2101.6,
+    "snitt_indeksopphald": 382239.6,
+    "prosentdel": 54.22,
+    "Lågast_95KI": 53.18,
+    "høgast_95KI": 55.27
+  },
+  {
+    "bohf": "Østfold",
+    "snitt_tal_z": 2078.0,
+    "snitt_indeksopphald": 252499,
+    "prosentdel": 83.10,
+    "Lågast_95KI": 81.50,
+    "høgast_95KI": 84.72
+  }
+    ]
+  }
+]
+}
