@@ -1,6 +1,6 @@
 {
   "name": "mongts",
-  "packageManager": "yarn@3.6.0",
+  "packageManager": "yarn@3.6.1",
   "scripts": {
     "postinstall": "husky install",
     "build": "turbo run build",
@@ -20,7 +20,7 @@
   ],
   "devDependencies": {
     "husky": "8.0.3",
-    "lint-staged": "13.2.2",
-    "turbo": "1.10.3"
+    "lint-staged": "13.2.3",
+    "turbo": "1.10.7"
   }
 }
