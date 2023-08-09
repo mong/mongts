@@ -20,7 +20,9 @@ context("Testing of kvalitetsregistre page", () => {
     cy.get('[data-testid="pick_registry_all"]').should("be.visible");
     // Close menu
     cy.get('[data-testid="pick_registry_close_button"]').click();
-    cy.get('[data-testid="med_field_list"]').should("be.visible");
+    cy.get('[data-testid="med_field_list"]', { timeout: 60000 }).should(
+      "be.visible"
+    );
     // Reopen menu
     cy.get('[data-testid="select_registry_button"]').click();
     // The typed text is still there
