@@ -54,7 +54,7 @@ export const MainRegister: React.FC<MainRegisterProps> = ({
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     "all",
     queryContext.context,
-    queryContext.type
+    queryContext.type,
   );
 
   const nestedUnitNames: NestedTreatmentUnitName[] | [] =
@@ -79,28 +79,28 @@ export const MainRegister: React.FC<MainRegisterProps> = ({
 
   const [treatment_units, update_treatment_units] = useQueryParam(
     "selected_treatment_units",
-    mainQueryParamsConfig.selected_treatment_units
+    mainQueryParamsConfig.selected_treatment_units,
   );
 
   const [selected_year, update_selected_year] = useQueryParam(
     "year",
-    mainQueryParamsConfig.year
+    mainQueryParamsConfig.year,
   );
   const validated_selected_year = mathClamp(
     selected_year || defaultYear,
     minYear,
-    maxYear
+    maxYear,
   );
 
   const validated_treatment_units = validateTreatmentUnits(
     treatment_units as string[],
-    optstu
+    optstu,
   );
 
   const colspan = validated_treatment_units.length + 2;
 
   const valid_years = Array.from(Array(maxYear - minYear + 1).keys()).map(
-    (v) => minYear + v
+    (v) => minYear + v,
   );
 
   if (

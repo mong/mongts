@@ -10,14 +10,14 @@ export interface CarouselItemProps {
 export const CarouselItem = forwardRef(
   (
     { tag: Tag = "div", children, ...rest }: CarouselItemProps,
-    externalRef: React.MutableRefObject<any>
+    externalRef: React.MutableRefObject<any>,
   ) => {
     return (
       <Tag ref={externalRef} className={`${"slideClasses"}${""}`} {...rest}>
         {children}
       </Tag>
     );
-  }
+  },
 );
 
 CarouselItem.displayName = "CarouselItem";

@@ -59,7 +59,7 @@ export const Carousel: React.FC<CarouselProps> = ({
       value: i,
       label: child ? child.props.label : `figur ${i + 1}`,
       icon: chartIcons[child.props.label],
-    })
+    }),
   );
 
   if (numberOfChildren === 0) {

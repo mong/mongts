@@ -12,7 +12,7 @@ it("renders without defined green level", () => {
           <IndicatorDescription description={desc} />
         </tr>
       </tbody>
-    </table>
+    </table>,
   );
   expect(container).toMatchSnapshot();
 });
@@ -26,7 +26,7 @@ it("renders with defined green level", () => {
           <IndicatorDescription description={desc} />
         </tr>
       </tbody>
-    </table>
+    </table>,
   );
   expect(container).toMatchSnapshot();
 });
@@ -40,7 +40,7 @@ it("renders with non-complete year", () => {
           <IndicatorDescription description={desc} lastCompleteYear={1979} />
         </tr>
       </tbody>
-    </table>
+    </table>,
   );
   expect(container).toMatchSnapshot();
 });

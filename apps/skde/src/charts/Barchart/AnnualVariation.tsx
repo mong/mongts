@@ -17,7 +17,7 @@ type AnnualVariaionProps<Data, AnnualVar> = {
 
 export const AnnualVariation = function <
   D,
-  AnnualVar extends (string & keyof D)[]
+  AnnualVar extends (string & keyof D)[],
 >({
   data,
   xScale,

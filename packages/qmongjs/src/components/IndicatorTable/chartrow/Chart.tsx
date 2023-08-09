@@ -51,20 +51,20 @@ const GetBarChart: React.FC<ChartProps> = (props) => {
 
   // only keep data for given indicator
   const allIndicatorData = [...(indQryData ?? [])].filter(
-    (data: Indicator) => data.ind_id === props.description.id
+    (data: Indicator) => data.ind_id === props.description.id,
   );
 
   const showUnits = () => {
     // Show HF if there is less hospitals than HF
     // Show RHF if there is less HF than RHF
     const hospitalData = allIndicatorData.filter(
-      (data: Indicator) => data.unit_level === "hospital"
+      (data: Indicator) => data.unit_level === "hospital",
     );
     const hfData = allIndicatorData.filter(
-      (data: Indicator) => data.unit_level === "hf"
+      (data: Indicator) => data.unit_level === "hf",
     );
     const rhfData = allIndicatorData.filter(
-      (data: Indicator) => data.unit_level === "rhf"
+      (data: Indicator) => data.unit_level === "rhf",
     );
 
     return {
@@ -82,7 +82,7 @@ const GetBarChart: React.FC<ChartProps> = (props) => {
         (data: Indicator) =>
           data.ind_id === props.description.id &&
           ((data.dg ?? 1) >= 0.6 || data.unit_name === "Nasjonalt") &&
-          data.denominator >= (description.min_denominator ?? 5)
+          data.denominator >= (description.min_denominator ?? 5),
       )
       .map((data: Indicator) => {
         const style: BarStyle = {};
@@ -103,7 +103,7 @@ const GetBarChart: React.FC<ChartProps> = (props) => {
       .sort((a: Bar, b: Bar) =>
         props.description.level_direction === 0
           ? a.value - b.value
-          : b.value - a.value
+          : b.value - a.value,
       );
     return filtered ?? [];
   };
@@ -119,7 +119,7 @@ const GetBarChart: React.FC<ChartProps> = (props) => {
           // filter out RHF if showRHF() is false
           (data.unit_level === "rhf" && !showUnits().rhf)
         )
-      )
+      ),
   );
 
   const barChartData = [...filterAllData, ...indicatorData];
@@ -150,7 +150,7 @@ const GetLineChart: React.FC<ChartProps> = (props) => {
       (data: Indicator) =>
         data.ind_id === props.description.id &&
         ((data.dg ?? 1) >= 0.6 || data.unit_name === "Nasjonalt") &&
-        data.denominator >= (description.min_denominator ?? 5)
+        data.denominator >= (description.min_denominator ?? 5),
     )
     .sort((a: Indicator, b: Indicator) => b.year - a.year);
 

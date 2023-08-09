@@ -27,7 +27,7 @@ export const useDescriptionQuery = (params: FetchDescriptionParams) => {
       staleTime: 1000 * 60 * 60,
       refetchOnWindowFocus: false,
       cacheTime: 1000 * 60 * 60,
-    }
+    },
   );
 };
 
@@ -76,14 +76,14 @@ export const useIndicatorQuery = (params: FetchIndicatorParams) => {
       staleTime: 1000 * 60 * 60,
       refetchOnWindowFocus: false,
       cacheTime: 1000 * 60 * 60,
-    }
+    },
   );
 };
 
 const selectionYearsUrl = (
   registerShortName: string,
   context: string,
-  type: string
+  type: string,
 ): string => {
   return `${API_HOST}/data/${registerShortName}/years?context=${context}&type=${type}`;
 };
@@ -91,10 +91,10 @@ const selectionYearsUrl = (
 const fetchSelectionYears = async (
   registerShortName: string,
   context: string,
-  type: string
+  type: string,
 ) => {
   const response = await fetch(
-    selectionYearsUrl(registerShortName, context, type)
+    selectionYearsUrl(registerShortName, context, type),
   );
   if (!response.ok) {
     throw new Error(response.statusText);
@@ -106,7 +106,7 @@ const fetchSelectionYears = async (
 export const useSelectionYearsQuery = (
   registerShortName: string,
   context: string,
-  type: string
+  type: string,
 ) => {
   return useQuery(
     ["selectionYears", registerShortName, context, type],
@@ -115,14 +115,14 @@ export const useSelectionYearsQuery = (
       staleTime: 1000 * 60 * 60,
       refetchOnWindowFocus: false,
       cacheTime: 1000 * 60 * 60,
-    }
+    },
   );
 };
 
 const unitNamesUrl = (
   registerShortName: string,
   context: string,
-  type: string
+  type: string,
 ): string => {
   return `${API_HOST}/data/${registerShortName}/unitnames?context=${context}&type=${type}`;
 };
@@ -130,7 +130,7 @@ const unitNamesUrl = (
 const fetchUnitNames = async (
   registerShortName: string,
   context: string,
-  type: string
+  type: string,
 ) => {
   const response = await fetch(unitNamesUrl(registerShortName, context, type));
   if (!response.ok) {
@@ -143,7 +143,7 @@ const fetchUnitNames = async (
 export const useUnitNamesQuery = (
   registerShortName: string,
   context: string,
-  type: string
+  type: string,
 ) => {
   return useQuery(
     ["unitNames", registerShortName, context, type],
@@ -152,7 +152,7 @@ export const useUnitNamesQuery = (
       staleTime: 1000 * 60 * 60,
       refetchOnWindowFocus: false,
       cacheTime: 1000 * 60 * 60,
-    }
+    },
   );
 };
 

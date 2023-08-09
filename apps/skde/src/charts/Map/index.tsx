@@ -125,7 +125,7 @@ export const Map: React.FC<MapProps> = ({
             const attrID = connection.mapAttr;
 
             const hf = dataToMap.filter(
-              (dtm) => dtm[mapId] === d.properties[mapId]
+              (dtm) => dtm[mapId] === d.properties[mapId],
             )[0][attrID];
 
             const attr = mapAttr.filter((attribute) => {
@@ -166,7 +166,7 @@ export const Map: React.FC<MapProps> = ({
                       },
                     },
                     undefined,
-                    { shallow: true }
+                    { shallow: true },
                   );
                 }}
               />
@@ -198,10 +198,10 @@ export const Map: React.FC<MapProps> = ({
                         >
                           {lang === "en"
                             ? customFormatEng(format ? format : ".1f")(
-                                colorScale.invertExtent(d)[0]
+                                colorScale.invertExtent(d)[0],
                               )
                             : customFormat(format ? format : ".1f")(
-                                colorScale.invertExtent(d)[0]
+                                colorScale.invertExtent(d)[0],
                               )}
                         </text>
                       </>
