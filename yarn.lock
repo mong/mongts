@@ -5219,9 +5219,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@visx/bounds@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@visx/bounds@npm:3.0.0"
+"@visx/bounds@npm:3.3.0":
+  version: 3.3.0
+  resolution: "@visx/bounds@npm:3.3.0"
   dependencies:
     "@types/react": "*"
     "@types/react-dom": "*"
@@ -5229,7 +5229,7 @@ __metadata:
   peerDependencies:
     react: ^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0
     react-dom: ^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0
-  checksum: 3c50dad1c78b526bebe20a690360ae5ad3dd2a31c86150553071671e49309a9fcf3bca3303eab7f7ac2e28be8d7987ac9ce5daa28b8df32c647b0aa97f118fa9
+  checksum: e682b343735f53d7eed04cc9e4bc40308583724faa0577f752449d59daea57030f05cb72a9711d7e7f46db932691fea6bb7a545b204b4df24b80ffff0ed04e78
   languageName: node
   linkType: hard
 
@@ -5452,19 +5452,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@visx/tooltip@npm:3.1.2":
-  version: 3.1.2
-  resolution: "@visx/tooltip@npm:3.1.2"
+"@visx/tooltip@npm:3.3.0":
+  version: 3.3.0
+  resolution: "@visx/tooltip@npm:3.3.0"
   dependencies:
     "@types/react": "*"
-    "@visx/bounds": 3.0.0
+    "@visx/bounds": 3.3.0
     classnames: ^2.3.1
     prop-types: ^15.5.10
     react-use-measure: ^2.0.4
   peerDependencies:
     react: ^16.8.0-0 || ^17.0.0-0 || ^18.0.0-0
     react-dom: ^16.8.0-0 || ^17.0.0-0 || ^18.0.0-0
-  checksum: 4c2127068f22766e984ed3ed1452dcece919bacb0297b17ba862a6815bb7f04c4fc462a100d3934e0cb56a9c7962b82f7c4184748ef4b2dbef3b4b0d5b717fdd
+  checksum: eb525afd34bf108f9343e7998a8752e0002190afa76d2e9e7f47ec83f89139f611def8fe59ba55af4ab2d15bb7d31b836d372ef338e8aa4ca2e7e4cd68567c7f
   languageName: node
   linkType: hard
 
@@ -17808,7 +17808,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": 6.3.0
     "@typescript-eslint/parser": 6.3.0
     "@visx/event": 3.3.0
-    "@visx/tooltip": 3.1.2
+    "@visx/tooltip": 3.3.0
     d3: 7.8.5
     d3-format: 3.1.0
     eslint: 8.44.0
