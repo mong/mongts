@@ -41,13 +41,13 @@ app.use(
         "script-src": ["'self'", (req, res) => `'nonce-${res.locals.nonce}'`],
       },
     },
-  })
+  }),
 );
 app.use(cors());
 app.use(
   compression({
     level: 6,
-  })
+  }),
 );
 app.use(express.json());
 
@@ -56,7 +56,7 @@ const CDN_MAX_AGE = process.env.CDN_MAX_AGE ?? 60 * 60 * 24;
 const cache: RequestHandler = (req, res, next) => {
   res.set(
     "cache-control",
-    `public, max-age=${BROWSER_MAX_AGE}, s-maxage=${CDN_MAX_AGE}`
+    `public, max-age=${BROWSER_MAX_AGE}, s-maxage=${CDN_MAX_AGE}`,
   );
   next();
 };
@@ -65,7 +65,7 @@ app.use("/data", cache, registerDataRouter);
 app.use("/info", cache, registerInfoRouter);
 
 app.get("/", (_, res) =>
-  res.json({ status: "OK", version: process.env.VERSION ?? "local" })
+  res.json({ status: "OK", version: process.env.VERSION ?? "local" }),
 );
 
 // Auth routes for CMS

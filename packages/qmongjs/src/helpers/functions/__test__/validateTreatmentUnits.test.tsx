@@ -13,15 +13,15 @@ test("Returns correct results", () => {
     "Helse Nord",
   ]);
   expect(
-    validateTreatmentUnits(["Narvik", "UNN", "Helse Nord"], optstu)
+    validateTreatmentUnits(["Narvik", "UNN", "Helse Nord"], optstu),
   ).toEqual(["Narvik", "UNN", "Helse Nord"]);
   expect(validateTreatmentUnits([], optstu)).toEqual([]);
   expect(validateTreatmentUnits(["Alta"], optstu)).toEqual([]);
   expect(
     validateTreatmentUnits(
       ["Narvik", "UNN", "Helse Nord", "Harstad", "Alta"],
-      optstu
-    )
+      optstu,
+    ),
   ).toEqual(["Narvik", "UNN", "Helse Nord"]);
   expect(validateTreatmentUnits(["Narvik"], [])).toEqual([]);
 });

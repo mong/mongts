@@ -3,7 +3,7 @@ import { Indicator, Description } from "types";
 export function buildIndicator(overrides: Partial<Indicator>): Indicator {
   return {
     year: Math.floor(
-      Math.random() * 6 + 2015
+      Math.random() * 6 + 2015,
     ) /* Random year between 2015 and 2020 */,
     id: Math.floor(Math.random() * 1000),
     ind_id: "testdata",

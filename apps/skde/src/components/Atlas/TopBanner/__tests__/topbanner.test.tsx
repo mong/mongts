@@ -12,7 +12,7 @@ import { TopBanner } from "..";
 test("Bokmål render", async () => {
   const title = "Dette er en tittel";
   const { container } = render(
-    <TopBanner mainTitle={title} ia={false} lang="nb" />
+    <TopBanner mainTitle={title} ia={false} lang="nb" />,
   );
   //  expect(container).toMatchSnapshot();
 });
@@ -20,7 +20,7 @@ test("Bokmål render", async () => {
 test("Nynorsk render", async () => {
   const title = "Dette er ein tittel";
   const { container } = render(
-    <TopBanner mainTitle={title} ia={false} lang="nn" />
+    <TopBanner mainTitle={title} ia={false} lang="nn" />,
   );
   //  expect(container).toMatchSnapshot();
 });
@@ -28,7 +28,7 @@ test("Nynorsk render", async () => {
 test("English render", async () => {
   const title = "This is a title";
   const { container } = render(
-    <TopBanner mainTitle={title} ia={false} lang="en" />
+    <TopBanner mainTitle={title} ia={false} lang="en" />,
   );
   //  expect(container).toMatchSnapshot();
 });
@@ -36,7 +36,7 @@ test("English render", async () => {
 test("Random lang render", async () => {
   const title = "Dette er ein tittel";
   const { container } = render(
-    <TopBanner mainTitle={title} ia={false} lang="qwerty" />
+    <TopBanner mainTitle={title} ia={false} lang="qwerty" />,
   );
   //  expect(container).toMatchSnapshot();
 });
@@ -44,7 +44,7 @@ test("Random lang render", async () => {
 test("IA render", async () => {
   const title = "Dette er en tittel";
   const { container } = render(
-    <TopBanner mainTitle={title} ia={true} lang="nb" />
+    <TopBanner mainTitle={title} ia={true} lang="nb" />,
   );
   //  expect(container).toMatchSnapshot();
 });
@@ -52,7 +52,7 @@ test("IA render", async () => {
 test("IA english render", async () => {
   const title = "Dette er en tittel";
   const { container } = render(
-    <TopBanner mainTitle={title} ia={true} lang="en" />
+    <TopBanner mainTitle={title} ia={true} lang="en" />,
   );
   //  expect(container).toMatchSnapshot();
 });

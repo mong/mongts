@@ -22,11 +22,11 @@ export const filterOrderIndID = (
   indData: Indicator[],
   indDescription: Description[],
   level: string,
-  tableType: "singleRegister" | "allRegistries"
+  tableType: "singleRegister" | "allRegistries",
 ): string[] => {
   /* Number of unique treatment units in indData */
   const namesLength = Array.from(
-    new Set(indData.map((data) => data.unit_name))
+    new Set(indData.map((data) => data.unit_name)),
   ).length;
 
   const indId: string[] = Array.from(
@@ -52,8 +52,8 @@ export const filterOrderIndID = (
           const lowN = d.denominator < (minDenom ?? 5);
           return !(nation || levelFilter || dg || lowN);
         })
-        .map((d: Indicator) => d.ind_id)
-    )
+        .map((d: Indicator) => d.ind_id),
+    ),
   );
 
   const orderedIndID = indDescription

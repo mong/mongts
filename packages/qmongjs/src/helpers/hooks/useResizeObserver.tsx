@@ -2,10 +2,10 @@ import { MutableRefObject, useEffect, useState } from "react";
 import ResizeObserver from "resize-observer-polyfill";
 
 export const useResizeObserver = function (
-  ref: MutableRefObject<Element | null>
+  ref: MutableRefObject<Element | null>,
 ) {
   const [dimensions, setDimensions] = useState<ResizeObserverEntry | null>(
-    null
+    null,
   );
   useEffect(() => {
     const observeTarget = ref?.current;
@@ -19,7 +19,7 @@ export const useResizeObserver = function (
         entries.forEach((entry) => {
           setDimensions(entry);
         });
-      }
+      },
     );
 
     resizeObserver.observe(observeTarget);

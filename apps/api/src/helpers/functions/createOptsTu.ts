@@ -2,7 +2,7 @@ import { OptsTu, TuName } from "types";
 
 export const createOptsTu = (
   distinctUnitNames: { unit_name: string }[],
-  allUnitNames: TuName[]
+  allUnitNames: TuName[],
 ): OptsTu[] => {
   const dunArray = distinctUnitNames.map((names) => names.unit_name);
 
@@ -18,8 +18,8 @@ export const createOptsTu = (
     new Set(
       allUnitNames
         .filter((unitName) => dunArray.includes(unitName.hf))
-        .map((unitName) => unitName.hf)
-    )
+        .map((unitName) => unitName.hf),
+    ),
   ).map((unitName) => {
     return {
       label: unitName,
@@ -30,8 +30,8 @@ export const createOptsTu = (
     new Set(
       allUnitNames
         .filter((unitName) => dunArray.includes(unitName.rhf))
-        .map((unitName) => unitName.rhf)
-    )
+        .map((unitName) => unitName.rhf),
+    ),
   ).map((unitName) => {
     return {
       label: unitName,

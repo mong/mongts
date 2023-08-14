@@ -3,7 +3,7 @@ import db from "../../db";
 import { Filter } from ".";
 
 export const selectionYearsModel = (
-  filter: Filter
+  filter: Filter,
 ): Promise<{ year: string }[]> =>
   db
     .distinct("agg_data.year")

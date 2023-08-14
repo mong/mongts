@@ -88,7 +88,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
           const figData: AtlasData[] =
             bd.type !== "data"
               ? boxData.filter(
-                  (o) => o.type === "data" && o.label === bd.data
+                  (o) => o.type === "data" && o.label === bd.data,
                 )[0]["data"]
               : undefined;
           if (bd.type === "barchart") {
@@ -268,7 +268,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
                   ...styles,
                 }}
               />
-            )
+            ),
         )}
       </div>
     </div>

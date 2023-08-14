@@ -135,9 +135,9 @@ function BarChart(props: Props) {
               .transition()
               .duration(1000)
               .attr("x", ({ end }) => xScale(end))
-              .attr("width", ({ start, end }) => xScale(start) - xScale(end))
+              .attr("width", ({ start, end }) => xScale(start) - xScale(end)),
           ),
-        (exit) => exit.remove()
+        (exit) => exit.remove(),
       );
 
     svg
@@ -175,7 +175,7 @@ function BarChart(props: Props) {
       .attr("opacity", 0.9)
       .attr("fill", (d) => (d.value > 0.95 ? "white" : "black"))
       .attr("x", (d) =>
-        d.value > 0.95 ? xScale(d.value) - 18 : xScale(d.value) + 16
+        d.value > 0.95 ? xScale(d.value) - 18 : xScale(d.value) + 16,
       );
   }, [
     data,
@@ -238,7 +238,7 @@ function getXScaleDomain(
   data: Bar[],
   zoom: boolean,
   percentage: boolean,
-  max_value?: number
+  max_value?: number,
 ): [number, number] {
   const maxVal = Math.max(...data.map((d) => d.value));
   const additionalMargin = (0.01 + maxVal) * 0.2;

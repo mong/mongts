@@ -60,7 +60,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
         indicatorDataQuery.data ?? [],
         descriptionQuery.data ?? [],
         showLevelFilter,
-        tableType
+        tableType,
       ),
     [
       tableType,
@@ -69,7 +69,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
       descriptionQuery.data,
       indicatorDataQuery.data,
       showLevelFilter,
-    ]
+    ],
   );
 
   if (descriptionQuery.isLoading || indicatorDataQuery.isLoading) {
@@ -92,10 +92,10 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
 
   const indicatorRows = uniqueOrderedInd.map((indicator) => {
     const singleIndicatorData = indicatorDataQuery.data.filter(
-      (data: Indicator) => data.ind_id === indicator
+      (data: Indicator) => data.ind_id === indicator,
     );
     const singleIndicatorDescription = descriptionQuery.data.filter(
-      (data: Description) => data.id === indicator
+      (data: Description) => data.id === indicator,
     );
     return (
       <IndicatorRow

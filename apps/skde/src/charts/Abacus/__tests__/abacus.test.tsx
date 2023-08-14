@@ -16,7 +16,7 @@ jest.mock("next/router", () => require("next-router-mock"));
 
 test("Standard render", async () => {
   const { container } = render(
-    <Abacus data={atlasData} lang="nb" x="rateSnitt" national="Norge" />
+    <Abacus data={atlasData} lang="nb" x="rateSnitt" national="Norge" />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -24,7 +24,7 @@ test("Standard render", async () => {
 test("Render with picked HF", async () => {
   mockRouter.push("/test_atlas/?bohf=UNN");
   const { container } = render(
-    <Abacus data={atlasData} lang="nb" x="rateSnitt" national="Norge" />
+    <Abacus data={atlasData} lang="nb" x="rateSnitt" national="Norge" />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -32,7 +32,7 @@ test("Render with picked HF", async () => {
 test("Render with another national", async () => {
   mockRouter.push("/test_atlas");
   const { container } = render(
-    <Abacus data={atlasData} lang="nb" x="rateSnitt" national="Finnmark" />
+    <Abacus data={atlasData} lang="nb" x="rateSnitt" national="Finnmark" />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -46,7 +46,7 @@ test("Render with many picked HF", async () => {
       x="rateSnitt"
       national="Norge"
       format=",.1f"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -60,7 +60,7 @@ test("Render english with many picked HF", async () => {
       x="rateSnitt"
       national="Norge"
       format=",.1f"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });

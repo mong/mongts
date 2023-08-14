@@ -39,7 +39,7 @@ test("Bar have labels with value in %", async () => {
       tickformat=".0%"
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -76,7 +76,7 @@ test("Bar have labels with value as number", async () => {
       tickformat=".0f"
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -145,7 +145,7 @@ test("Level widths are correct", async () => {
       showLevel={true}
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -183,30 +183,30 @@ test("Can set color and opacity for bars", async () => {
       {...props}
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-    />
+    />,
   );
 
   await clockTick(1500);
 
   expect(screen.getByTestId(`bar-${dataPoint1.label}`)).toHaveAttribute(
     "fill",
-    "#7EBEC7"
+    "#7EBEC7",
   );
   expect(screen.getByTestId(`bar-${dataPoint2.label}`)).toHaveAttribute(
     "fill",
-    dataPoint2.style?.color
+    dataPoint2.style?.color,
   );
   expect(screen.getByTestId(`bar-${dataPoint3.label}`)).toHaveAttribute(
     "fill",
-    "#7EBEC7"
+    "#7EBEC7",
   );
   expect(screen.getByTestId(`bar-${dataPoint4.label}`)).toHaveAttribute(
     "fill",
-    dataPoint4.style?.color
+    dataPoint4.style?.color,
   );
   expect(screen.getByTestId(`bar-${dataPoint4.label}`)).toHaveAttribute(
     "opacity",
-    `${dataPoint4.style?.opacity}`
+    `${dataPoint4.style?.opacity}`,
   );
 });
 
@@ -235,7 +235,7 @@ test("Render without levels @250px", async () => {
       tickformat=".1%"
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -268,7 +268,7 @@ test("Render without zoom @750px", async () => {
       tickformat=".3%"
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -301,7 +301,7 @@ test("Render with zoom @750px", async () => {
       tickformat=".2%"
       zoom={true}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -334,7 +334,7 @@ test("Render with levels @250px", async () => {
       tickformat=".0%"
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -367,7 +367,7 @@ test("Render without levels @500px", async () => {
       tickformat=".2f"
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -400,7 +400,7 @@ test("Render with levels @500px", async () => {
       tickformat={undefined} // test with default format
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -433,7 +433,7 @@ test("Render with levels reversed @500px", async () => {
       tickformat=".0%"
       zoom={true}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -467,7 +467,7 @@ test("Render zoomed with levels @500px and gray overlay (not complete data)", as
       zoom={true}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
       lastCompleteYear={1979}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -493,7 +493,7 @@ function buildBar(overrides?: Partial<Bar>): Bar {
 }
 
 function buildProps(
-  overrides?: Partial<Props>
+  overrides?: Partial<Props>,
 ): Omit<Props, "svgContainerRef"> {
   return {
     showLevel: Math.random() < 0.5 /* Random true or false */,

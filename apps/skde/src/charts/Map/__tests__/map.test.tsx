@@ -27,7 +27,7 @@ test("Click on HF", async () => {
       attrName="rateSnitt"
       mapData={mapData}
       classes={[5.0, 5.2, 5.4]}
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
   expect(mockRouter.query).toEqual({});
@@ -57,7 +57,7 @@ test("Standard render", async () => {
       attrName="rateSnitt"
       mapData={mapData}
       classes={[5.0, 5.2, 5.4]}
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -71,7 +71,7 @@ test("Render with picked HF", async () => {
       attrName="rateSnitt"
       mapData={mapData}
       classes={[5.0, 5.2, 5.4]}
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -86,7 +86,7 @@ test("Render with many picked HF", async () => {
       attrName="rateSnitt"
       mapData={mapData}
       classes={[5.0, 5.2, 5.4]}
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -102,7 +102,7 @@ test("Format etc.", async () => {
       attrName="andel3_prim"
       mapData={mapData}
       classes={[0.1, 0.13, 0.15]}
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -119,7 +119,7 @@ test("With missing HF", async () => {
       attrName="andel3_prim"
       mapData={mapData}
       classes={[0.1, 0.13, 0.15]}
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
   fireEvent.click(getByTestId("maphf_UNN"));

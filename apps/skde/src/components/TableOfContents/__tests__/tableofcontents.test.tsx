@@ -52,7 +52,7 @@ const tocData = obj
 
 test("English menu", async () => {
   const { container, getAllByTestId } = render(
-    <TableOfContents lang="en" tocData={tocData} />
+    <TableOfContents lang="en" tocData={tocData} />,
   );
   const firstSnap = container;
   expect(container).toMatchSnapshot();

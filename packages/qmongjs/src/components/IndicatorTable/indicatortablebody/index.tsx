@@ -17,7 +17,7 @@ export interface IndicatorTableBodyProps {
 }
 
 export const IndicatorTableBody: React.FC<IndicatorTableBodyProps> = (
-  props
+  props,
 ) => {
   const {
     context,

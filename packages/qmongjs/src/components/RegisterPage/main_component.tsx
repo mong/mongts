@@ -80,14 +80,15 @@ const Main = (props: Props) => {
       ? registerList
       : medicalFields
           .filter(
-            (field: MedicalFieldObject) => field.shortName === clicked_med_field
+            (field: MedicalFieldObject) =>
+              field.shortName === clicked_med_field,
           )
           .flatMap((field: MedicalFieldObject) => field.registers);
 
   const orderedRegisterList: RegisterName[] = Array.from(
     new Set(
-      medicalFields.flatMap((field: MedicalFieldObject) => field.registers)
-    )
+      medicalFields.flatMap((field: MedicalFieldObject) => field.registers),
+    ),
   )
     .map((reg) => {
       return registerNames.filter((regLit) => regLit.rname === reg)[0];
@@ -126,7 +127,7 @@ const Main = (props: Props) => {
             selection_bar_height={selection_bar_height}
             legend_height={legend_height}
             blockTitle={orderedRegisterList.map(
-              (d: RegisterName) => d.full_name
+              (d: RegisterName) => d.full_name,
             )}
           />
         </div>

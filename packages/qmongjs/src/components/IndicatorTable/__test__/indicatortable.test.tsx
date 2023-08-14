@@ -19,7 +19,7 @@ mockRouter.useParser(
     // These paths should match those found in the `/pages` folder:
     "/alle/[tab].js",
     "/[register]/[tab].js",
-  ])
+  ]),
 );
 beforeEach(() => {
   mockRouter.setCurrentUrl("/alle/sykehus");
@@ -59,7 +59,7 @@ it("registry table renders correctly for a single registry", async () => {
           {...props}
         />
       </QueryParamProvider>
-    </QueryClientProvider>
+    </QueryClientProvider>,
   );
 
   await waitFor(() => screen.findAllByText(props.unitNames[0]));

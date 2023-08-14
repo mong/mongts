@@ -4,7 +4,7 @@ export const useKeys = (
   key: string[],
   eventName: string,
   handler: Function,
-  targetElement = global
+  targetElement = global,
 ) => {
   const listenerRef = React.useRef<Function>();
 

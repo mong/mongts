@@ -23,7 +23,7 @@ test("Bokmål render", async () => {
   };
   const markdownText = "Dette er en kort tekst";
   const { container } = render(
-    <PageContent frontMatter={frontMatter} content={markdownText} />
+    <PageContent frontMatter={frontMatter} content={markdownText} />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -36,7 +36,7 @@ test("Nynorsk render", async () => {
   };
   const markdownText = "Dette er ein kort tekst";
   const { container } = render(
-    <PageContent frontMatter={frontMatter} content={markdownText} />
+    <PageContent frontMatter={frontMatter} content={markdownText} />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -50,7 +50,7 @@ test("English render", async () => {
   const markdownText =
     "Dette er en test\n\n# Hovedoverskrift\nLitt mer tekst\n## Underoverskrift\n### Dette er en overskrift!\n\n```sas\ndata test;\nset test2;\nvar = 0;\nrun;\n```\n\nOg litt tekst her";
   const { container } = render(
-    <PageContent frontMatter={frontMatter} content={markdownText} />
+    <PageContent frontMatter={frontMatter} content={markdownText} />,
   );
   expect(container).toMatchSnapshot();
 });

@@ -8,5 +8,5 @@ export const registerNamesModel = (): Promise<RegisterName[]> =>
     .leftJoin(
       "vw_registry_contexts",
       "registry.name",
-      "vw_registry_contexts.registry_name"
+      "vw_registry_contexts.registry_name",
     );

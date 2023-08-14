@@ -39,7 +39,7 @@ test("Standard render", async () => {
       lang="nb"
       national="Norge"
       format=".1f"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -52,7 +52,7 @@ test("English render", async () => {
       lang="en"
       national="Norge"
       format=".1f"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -65,7 +65,7 @@ test("Click in table", async () => {
       lang="nb"
       national="OUS"
       format=".1f"
-    />
+    />,
   );
   expect(mockRouter.query).toEqual({});
   // Click national (in this case OUS) and nothing should happen
@@ -101,7 +101,7 @@ test("Render with picked HF", async () => {
       lang="nb"
       national="Norge"
       format=".1f"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -135,7 +135,7 @@ test("Render with split figure", async () => {
       lang="nn"
       national="Norge"
       format=".1f"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -149,7 +149,7 @@ test("Render with language not in file, picked HF and split figure", async () =>
       lang="en"
       national="Norge"
       format=".2f"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -165,7 +165,7 @@ test("Render with figure split in two", async () => {
       lang="nn"
       national="Norge"
       format=".1f"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
   fireEvent.click(getAllByTestId("rect_UNN_unselected")[1]);
@@ -193,7 +193,7 @@ test("Render with very little info", async () => {
       lang="en"
       national="Norge"
       format=".0%"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -220,7 +220,7 @@ test("Render with very little info 2", async () => {
       lang="nb"
       national="Norge"
       format=",.0f"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -234,7 +234,7 @@ test("Render with empty string on format", async () => {
       lang="nb"
       national="Norge"
       format=""
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -257,7 +257,7 @@ test("Render with other y (will look bad)", async () => {
       lang="nb"
       national="Norge"
       format=""
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -281,7 +281,7 @@ test("Render with error bars", async () => {
       lang="nb"
       national="Norge"
       format=",.0f"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -305,7 +305,7 @@ test("Render with error bars outside bars", async () => {
       lang="nb"
       national="Norge"
       format=",.0f"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });

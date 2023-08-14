@@ -11,7 +11,7 @@ const medField = (): Promise<MedFieldInterface[]> =>
     .select(
       "mf.name as shortName",
       "mf.full_name as name",
-      "r.name as registers"
+      "r.name as registers",
     )
     .from("registry_medfield as rmf")
     .leftJoin("medfield as mf", "rmf.medfield_id", "mf.id")

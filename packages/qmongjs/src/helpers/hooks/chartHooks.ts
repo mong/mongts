@@ -15,7 +15,7 @@ export const useLegendItemPosition = function (
   vMargin: number,
   hMargin: number,
   legendLabelsString: string,
-  textWidth: number
+  textWidth: number,
 ) {
   const [position, setPosition] = useState<{ x: number; y: number }>({
     x: 0,
@@ -38,10 +38,10 @@ export const useLegendItemPosition = function (
       setPosition({ x: 0, y: Math.ceil(vMargin / 2) });
     } else if (newLegendWidth <= legendWidth) {
       const x = Math.ceil(
-        previousElemDim.right - parentElementDim.left + hMargin
+        previousElemDim.right - parentElementDim.left + hMargin,
       );
       const y = Math.ceil(
-        previousElemDim.top - parentElementDim.top + vMargin / 2
+        previousElemDim.top - parentElementDim.top + vMargin / 2,
       );
       setPosition({ x, y });
     } else if (newLegendWidth > legendWidth) {
@@ -50,7 +50,7 @@ export const useLegendItemPosition = function (
         previousElemDim.top -
           parentElementDim.top +
           currentElementDim.height +
-          vMargin / 2
+          vMargin / 2,
       );
       setPosition({ x, y });
     }
@@ -77,7 +77,7 @@ export const useTextWidth = (
   element: SVGTextElement | null,
   label: string,
   color: string,
-  legendWidth: number
+  legendWidth: number,
 ) => {
   const [textWidth, setTextWidth] = useState(0);
   useEffect(() => {

@@ -2,7 +2,7 @@ import { TuName, NestedTreatmentUnitName, OptsTu } from "types";
 
 export const nestTuNames = (
   tu_names: TuName[],
-  opts_tu: OptsTu[]
+  opts_tu: OptsTu[],
 ): NestedTreatmentUnitName[] => {
   const opts_rhf = opts_tu.filter((opts) => opts.label === "RHF")[0].options;
 

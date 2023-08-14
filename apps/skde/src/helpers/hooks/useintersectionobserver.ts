@@ -12,7 +12,7 @@ export const useIntersectionByID = (elementID: string, rootMargin: string) => {
       ([entry]) => {
         setVisibility(entry.isIntersecting);
       },
-      { rootMargin, threshold: 0.1 }
+      { rootMargin, threshold: 0.1 },
     );
 
     element && observer.observe(element);

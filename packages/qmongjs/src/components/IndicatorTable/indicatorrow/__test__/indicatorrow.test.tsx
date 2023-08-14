@@ -19,7 +19,7 @@ mockRouter.useParser(
     // These paths should match those found in the `/pages` folder:
     "/alle/[tab].js",
     "/[register]/[tab].js",
-  ])
+  ]),
 );
 beforeEach(() => {
   mockRouter.setCurrentUrl("/alle/sykehus");
@@ -51,7 +51,7 @@ it("renders with low achievement level and not complete year", () => {
           />
         </tbody>
       </table>
-    </QueryParamProvider>
+    </QueryParamProvider>,
   );
   expect(container).toMatchSnapshot();
 });
@@ -85,7 +85,7 @@ it("renders with no achievement level on indicator", () => {
           />
         </tbody>
       </table>
-    </QueryParamProvider>
+    </QueryParamProvider>,
   );
   expect(container).toMatchSnapshot();
 });
@@ -113,7 +113,7 @@ it("renders with low N", () => {
           />
         </tbody>
       </table>
-    </QueryParamProvider>
+    </QueryParamProvider>,
   );
   expect(container).toMatchSnapshot();
 });
@@ -147,7 +147,7 @@ it("renders with low dg", () => {
           />
         </tbody>
       </table>
-    </QueryParamProvider>
+    </QueryParamProvider>,
   );
   expect(container).toMatchSnapshot();
 });
@@ -173,7 +173,7 @@ it("renders with missing data", () => {
           />
         </tbody>
       </table>
-    </QueryParamProvider>
+    </QueryParamProvider>,
   );
   expect(container).toMatchSnapshot();
 });
@@ -199,7 +199,7 @@ it("renders with missing data resident", () => {
           />
         </tbody>
       </table>
-    </QueryParamProvider>
+    </QueryParamProvider>,
   );
   expect(container).toMatchSnapshot();
 });

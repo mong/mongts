@@ -94,7 +94,7 @@ test("Bar", async () => {
       showLevel={true}
       selectedTreatmentUnits={["Nasjonalt"]}
       indicatorData={inddata}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -118,7 +118,7 @@ test("Bar with level_direction eq 0", async () => {
       showLevel={true}
       selectedTreatmentUnits={["Nasjonalt"]}
       indicatorData={inddata}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -133,7 +133,7 @@ test("Bar select treatment unit", async () => {
     error: false,
   });
   const inddata = bardata.filter((data) =>
-    ["Nasjonalt", "Sykehus 1", "RHF 1"].includes(data.unit_name)
+    ["Nasjonalt", "Sykehus 1", "RHF 1"].includes(data.unit_name),
   );
   const descr = buildDescription({ sformat: ".0%" });
   const { container } = render(
@@ -145,7 +145,7 @@ test("Bar select treatment unit", async () => {
       selectedTreatmentUnits={["Nasjonalt", "Sykehus 1", "RHF 1"]}
       indicatorData={inddata}
       tickformat=".%"
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -168,7 +168,7 @@ test("Line", async () => {
       showLevel={true}
       selectedTreatmentUnits={[]}
       indicatorData={[]}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -191,7 +191,7 @@ test("Line, fetch with error", async () => {
       showLevel={true}
       selectedTreatmentUnits={[]}
       indicatorData={[]}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -214,7 +214,7 @@ test("Bar, fetch with error", async () => {
       showLevel={true}
       selectedTreatmentUnits={[]}
       indicatorData={[]}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -237,7 +237,7 @@ test("Line, fetch is loading", async () => {
       showLevel={true}
       selectedTreatmentUnits={[]}
       indicatorData={[]}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -260,7 +260,7 @@ test("Bar, fetch is loading", async () => {
       showLevel={true}
       selectedTreatmentUnits={[]}
       indicatorData={[]}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -273,7 +273,7 @@ function ChartWithRef(
   props: Omit<
     ChartProps,
     "svgContainerRef" | "context" | "levels" | "treatmentYear"
-  >
+  >,
 ) {
   const WIDTH = 500;
   (useResizeObserver as jest.Mock).mockReturnValue({
@@ -305,7 +305,7 @@ function ChartWithRef(
 function buildDataPoint(overrides: Partial<Indicator>): Indicator {
   return {
     year: Math.floor(
-      Math.random() * 6 + 2015
+      Math.random() * 6 + 2015,
     ) /* Random year between 2015 and 2020 */,
     id: 1006,
     ind_id: "testdata",

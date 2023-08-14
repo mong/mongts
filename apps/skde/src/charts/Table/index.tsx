@@ -29,7 +29,7 @@ type DataTableProps<Data, Headers extends string & Partial<keyof Data>> = {
 
 export const DataTable = <
   Data extends { [n: string]: string | number },
-  TableHeaders extends string & Partial<keyof Data>
+  TableHeaders extends string & Partial<keyof Data>,
 >({
   caption,
   data,
@@ -82,8 +82,8 @@ export const DataTable = <
               getOrderComparator(
                 order,
                 orderBy,
-                headers.filter((header) => header.id === orderBy)[0].typeVar
-              )
+                headers.filter((header) => header.id === orderBy)[0].typeVar,
+              ),
             )
             .map((row, i) => (
               <TableRow
@@ -112,7 +112,7 @@ export const DataTable = <
                           },
                         },
                         undefined,
-                        { shallow: true }
+                        { shallow: true },
                       )
                     : undefined;
                 }}

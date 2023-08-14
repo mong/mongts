@@ -19,7 +19,7 @@ mockRouter.useParser(
     // These paths should match those found in the `/pages` folder:
     "/alle/[tab].js",
     "/[register]/[tab].js",
-  ])
+  ]),
 );
 beforeEach(() => {
   mockRouter.setCurrentUrl("/alle/sykehus");
@@ -35,12 +35,12 @@ it("unit name selection renders", async () => {
           arnfinn;
         }}
       />
-    </QueryParamProvider>
+    </QueryParamProvider>,
   );
   // Avoid using container to query for elements!
   // eslint-disable-next-line
   expect(container.getElementsByClassName("tu_list")[0]).toHaveStyle(
-    "display: none"
+    "display: none",
   );
   expect(container).toMatchSnapshot();
 
@@ -49,7 +49,7 @@ it("unit name selection renders", async () => {
   // Avoid using container to query for elements!
   // eslint-disable-next-line
   expect(container.getElementsByClassName("tu_list")[0]).not.toHaveStyle(
-    "display: none"
+    "display: none",
   );
 });
 
@@ -63,7 +63,7 @@ it("should close the list of TUs when ESC/ESCAPE is clicked", async () => {
           arnfinn;
         }}
       />
-    </QueryParamProvider>
+    </QueryParamProvider>,
   );
 
   const user = userEvent.setup();
@@ -71,7 +71,7 @@ it("should close the list of TUs when ESC/ESCAPE is clicked", async () => {
   // Avoid using container to query for elements!
   // eslint-disable-next-line
   expect(container.getElementsByClassName("tu_list")[0]).not.toHaveStyle(
-    "display: none"
+    "display: none",
   );
   act(() => {
     const event = new KeyboardEvent("keydown", { key: "Esc" });
@@ -80,6 +80,6 @@ it("should close the list of TUs when ESC/ESCAPE is clicked", async () => {
   // Avoid using container to query for elements!
   // eslint-disable-next-line
   expect(container.getElementsByClassName("tu_list")[0]).toHaveStyle(
-    "display: none"
+    "display: none",
   );
 });

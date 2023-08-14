@@ -2,7 +2,7 @@ import React from "react";
 
 export const useOnClickOutside = <T extends Element>(
   handler: Function,
-  active: boolean
+  active: boolean,
 ) => {
   let ref = React.useRef<T>();
 

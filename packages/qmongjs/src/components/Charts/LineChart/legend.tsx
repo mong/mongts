@@ -34,7 +34,7 @@ export const Legend: React.FC<LegendProps> = ({
   const legendRef = useRef<SVGGElement | null>(null);
 
   const legendH = Math.ceil(
-    useResizeObserver(legendRef)?.contentRect.height ?? 0
+    useResizeObserver(legendRef)?.contentRect.height ?? 0,
   );
   const legendLabelsString = legendLabels.toString();
 
@@ -98,7 +98,7 @@ const LegendItem: React.FC<LegendItemProps> = ({
     vMargin,
     hMargin,
     legendLabelsString,
-    textWidth
+    textWidth,
   );
 
   return (
@@ -106,7 +106,7 @@ const LegendItem: React.FC<LegendItemProps> = ({
       onMouseOver={() => setHoveredLegend(label)}
       onMouseOut={() =>
         setHoveredLegend((current: string | null) =>
-          current === label ? null : current
+          current === label ? null : current,
         )
       }
       onClick={() => {

@@ -8,11 +8,11 @@ type InputData<D, K extends (string & keyof D)[]> = {
 
 export const toBarchart = <Data, Keys extends (string & keyof Data)[]>(
   data: InputData<Data, Keys>[],
-  dataKeys: Keys
+  dataKeys: Keys,
 ) => {
   const stackGen = stack().keys(dataKeys);
   const stackData = stackGen(data).map(
-    (d) => (d.forEach((v) => (v["key"] = d.key)), d)
+    (d) => (d.forEach((v) => (v["key"] = d.key)), d),
   );
 
   return stackData;
@@ -20,7 +20,7 @@ export const toBarchart = <Data, Keys extends (string & keyof Data)[]>(
 
 export function getOrderComparator<
   D extends { [n: string]: string | number },
-  K extends string & keyof D
+  K extends string & keyof D,
 >(order: "asc" | "desc", orderBy: K, varType: D[K]) {
   return order === "desc"
     ? (a: D, b: D) => sortDesc<D, K>(a, b, orderBy, varType)
@@ -29,7 +29,7 @@ export function getOrderComparator<
 
 function sortDesc<
   Data extends { [n: string]: string | number },
-  K extends string & keyof Data
+  K extends string & keyof Data,
 >(a: Data, b: Data, orderBy: K, varType: Data[K]) {
   if (varType === "number") {
     if (parseFloat(b[orderBy].toString()) < parseFloat(a[orderBy].toString())) {

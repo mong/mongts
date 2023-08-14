@@ -20,7 +20,7 @@ test("Norsk render", async () => {
       wide={false}
       linkText="Lorem lipsum dolor 1"
       date={date1}
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -36,7 +36,7 @@ test("English render", async () => {
       wide={false}
       linkText="Lorem lipsum dolor 2"
       date={date1}
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -52,7 +52,7 @@ test("Wide is true", async () => {
       wide={true}
       linkText=""
       date={date1}
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -69,7 +69,7 @@ test("newlyUpdated is true", async () => {
       wide={false}
       linkText=""
       date={date1}
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
