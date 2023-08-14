@@ -22,7 +22,7 @@ export type BarchartData<
   X extends (string & keyof Data)[],
   Y extends keyof Data,
   AnnualVar extends (keyof Data)[],
-  ErrorBar extends (keyof Data)[]
+  ErrorBar extends (keyof Data)[],
 > = {
   [k in keyof Data & keyof X]: number;
 } & {
@@ -40,7 +40,7 @@ type BarchartProps<
   X extends (string & keyof Data)[],
   Y extends string & keyof Data,
   AnnualVar extends (string & keyof Data)[],
-  ErrorBar extends (string & keyof Data)[]
+  ErrorBar extends (string & keyof Data)[],
 > = {
   data: BarchartData<Data, X, Y, AnnualVar, ErrorBar>[];
   lang: "en" | "nb" | "nn";
@@ -76,7 +76,7 @@ export const Barchart = <
   X extends (string & keyof Data)[],
   Y extends string & keyof Data,
   AnnualVar extends (string & keyof Data)[],
-  ErrorBar extends (string & keyof Data)[]
+  ErrorBar extends (string & keyof Data)[],
 >({
   width = 600,
   height = 500,
@@ -127,7 +127,7 @@ export const Barchart = <
 
   const series = toBarchart<BarchartData<Data, X, Y, AnnualVar, ErrorBar>, X>(
     sorted,
-    x
+    x,
   );
 
   // Pick out bohf query from the url
@@ -140,7 +140,7 @@ export const Barchart = <
     : [];
   const errorBarValues = errorBars
     ? errorBars.flatMap((errorBar) =>
-        data.flatMap((dt) => parseInt(dt[errorBar]))
+        data.flatMap((dt) => parseInt(dt[errorBar])),
       )
     : [];
 
@@ -293,13 +293,13 @@ export const Barchart = <
                                       ? bohfName
                                       : selected_bohf.includes(bohfName)
                                       ? selected_bohf.filter(
-                                          (d) => d != bohfName
+                                          (d) => d != bohfName,
                                         )
                                       : selected_bohf.concat(bohfName),
                                 },
                               },
                               undefined,
-                              { shallow: true }
+                              { shallow: true },
                             )
                           : undefined;
                       }}

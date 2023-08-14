@@ -7,7 +7,7 @@ test("ChartRowDescription where date will change with time zone", () => {
     <ChartRowDescription
       description_text="Denne kvalitetsindikatoren er definert som andel pasienter med..."
       delivery_time={delivery_time}
-    />
+    />,
   );
 
   expect(container).toMatchSnapshot();
@@ -19,7 +19,7 @@ test("ChartRowDescription with date equals zero and Norwegian characters", () =>
     <ChartRowDescription
       description_text="Vi prøver ågså særnårske bokstaver"
       delivery_time={delivery_time}
-    />
+    />,
   );
 
   expect(container).toMatchSnapshot();
@@ -32,7 +32,7 @@ test("ChartRowDescription with non-default title and +02:00 time zone", () => {
       description_text="Denne kvalitetsindikatoren er definert som andel pasienter med..."
       delivery_time={delivery_time}
       description_title="Dette er en annen tittel"
-    />
+    />,
   );
 
   expect(container).toMatchSnapshot();
@@ -53,7 +53,7 @@ test("ChartRowDescription with some markdown", () => {
       [^1]: Som står her."
       delivery_time={delivery_time}
       description_title="Dette er en annen tittel"
-    />
+    />,
   );
 
   expect(container).toMatchSnapshot();

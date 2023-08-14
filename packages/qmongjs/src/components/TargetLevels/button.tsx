@@ -20,7 +20,7 @@ function LEGEND_BTN(props: Props) {
   const checked_class = level_filter === show_level_filter ? "checked" : "";
   const handle_level_filter = (
     current_state: string | undefined,
-    update_state: string
+    update_state: string,
   ) => {
     current_state === update_state
       ? update_show_level_filter(undefined)

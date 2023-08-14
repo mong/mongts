@@ -64,7 +64,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     register as string,
     queryContext.context,
-    queryContext.type
+    queryContext.type,
   );
   const nestedUnitNames: NestedTreatmentUnitName[] | [] =
     unitNamesQuery.data?.nestedUnitNames ?? [];
@@ -74,7 +74,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     useSelectionYearsQuery(
       register as string,
       queryContext.context,
-      queryContext.type
+      queryContext.type,
     );
 
   const valid_years =
@@ -98,12 +98,12 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
 
   const [treatment_units, update_treatment_units] = useQueryParam(
     "selected_treatment_units",
-    mainQueryParamsConfig.selected_treatment_units
+    mainQueryParamsConfig.selected_treatment_units,
   );
 
   const [selected_year, update_selected_year] = useQueryParam(
     "year",
-    mainQueryParamsConfig.year
+    mainQueryParamsConfig.year,
   );
   const min = valid_years.length === 0 ? minYear : Math.min(...valid_years);
   const max = valid_years.length === 0 ? maxYear : Math.max(...valid_years);
@@ -116,13 +116,13 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     const latestAffirmDates = data.flatMap((d) =>
       d.delivery_latest_affirm
         ? new Date(d.delivery_latest_affirm).getTime()
-        : new Date(defaultYear + 1, 0).getTime()
+        : new Date(defaultYear + 1, 0).getTime(),
     );
     const lastCompleteYear =
       new Date(
         Math.max(...latestAffirmDates) +
           // add a couple of days so 30. des 1980 will return 1980 instead of 1979.
-          48 * 60 * 60 * 1000
+          48 * 60 * 60 * 1000,
       ).getFullYear() - 1;
     return lastCompleteYear;
   };
@@ -136,12 +136,12 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
   const validated_selected_year = mathClamp(
     selected_year || lastCompleteYear(data),
     min,
-    max
+    max,
   );
 
   const validated_treatment_units = validateTreatmentUnits(
     treatment_units as string[],
-    optstu
+    optstu,
   );
 
   const colspan = validated_treatment_units.length + 2;

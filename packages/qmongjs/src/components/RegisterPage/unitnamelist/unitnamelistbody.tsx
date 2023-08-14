@@ -22,7 +22,7 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
   const handle_tu_list_click = (
     selected_unit: string,
     treatment_units: string[],
-    update_treatment_units: (arg: string[]) => void
+    update_treatment_units: (arg: string[]) => void,
   ) => {
     if (
       treatment_units.length < app_text.tu_list.max_nr_tu &&
@@ -31,7 +31,7 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
       update_treatment_units([...treatment_units, selected_unit]);
     } else if (treatment_units.includes(selected_unit)) {
       update_treatment_units(
-        treatment_units.filter((tu) => tu !== selected_unit)
+        treatment_units.filter((tu) => tu !== selected_unit),
       );
     } else {
       alert(`maks ${app_text.tu_list.max_nr_tu} behandlingsenheter!`);
@@ -43,7 +43,7 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
       ? 1
       : b.hf_full === "Avtalespesialister"
       ? -1
-      : 0
+      : 0,
   );
 
   const hf_hospital = new_order_hf.map((element) => {
@@ -61,7 +61,7 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
             handle_tu_list_click(
               hospital,
               treatment_units,
-              update_treatment_units
+              update_treatment_units,
             )
           }
         >
@@ -86,7 +86,7 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
               handle_tu_list_click(
                 element.hf,
                 treatment_units,
-                update_treatment_units
+                update_treatment_units,
               )
             }
           >
@@ -113,7 +113,7 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
             handle_tu_list_click(
               tu_names.rhf,
               treatment_units,
-              update_treatment_units
+              update_treatment_units,
             )
           }
         >

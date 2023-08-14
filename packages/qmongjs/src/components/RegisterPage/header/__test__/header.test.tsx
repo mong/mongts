@@ -18,7 +18,7 @@ mockRouter.useParser(
     // These paths should match those found in the `/pages` folder:
     "/alle/[tab].js",
     "/[register]/[tab].js",
-  ])
+  ]),
 );
 beforeEach(() => {
   mockRouter.setCurrentUrl("/alle/sykehus");
@@ -73,7 +73,7 @@ it("register page header renders correctly", () => {
         tabNames={tabNames}
         dataFrom={dataFrom}
       />
-    </QueryParamProvider>
+    </QueryParamProvider>,
   );
 
   expect(screen.getByText(tabNames[0].label)).toBeInTheDocument();

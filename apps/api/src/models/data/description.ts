@@ -5,7 +5,7 @@ import { Description } from "types";
 
 export const descriptionModel = (
   register: string,
-  filter: Filter | undefined
+  filter: Filter | undefined,
 ): Promise<Description[]> =>
   db
     .select("ind.*", "registry.name as rname", "registry.full_name")

@@ -18,7 +18,7 @@ const formatIndicatorValues = (
   indicator: Indicator,
   showLevelFilter: string,
   unitName: string,
-  context: string
+  context: string,
 ) => {
   if (!indicator) {
     return (
@@ -159,7 +159,7 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
   } = props;
   const [selected_row, update_selected_row] = useQueryParam(
     "selected_row",
-    mainQueryParamsConfig.selected_row
+    mainQueryParamsConfig.selected_row,
   );
 
   if (!(description && indicatorData)) {
@@ -173,14 +173,14 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
       ? null
       : unitNames.map((name) => {
           const filteredIndicator = indicatorData.filter(
-            (ind) => ind.unit_name === name
+            (ind) => ind.unit_name === name,
           );
           return formatIndicatorValues(
             description,
             filteredIndicator[0],
             showLevelFilter,
             name,
-            context.context
+            context.context,
           );
         });
 
@@ -190,8 +190,8 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
   const delivery_latest_affirm_year = indicatorData[0].delivery_latest_affirm
     ? new Date(
         new Date(indicatorData[0].delivery_latest_affirm).setDate(
-          new Date(indicatorData[0].delivery_latest_affirm).getDate() + 2
-        )
+          new Date(indicatorData[0].delivery_latest_affirm).getDate() + 2,
+        ),
       ).getFullYear() - 1
     : undefined;
 

@@ -34,7 +34,7 @@ function LEGEND(props: Props) {
 
   const legend_btns = Object.keys(app_text.indicators).map(function (
     this: any,
-    level
+    level,
   ) {
     return (
       <LEGEND_BTN
@@ -45,8 +45,7 @@ function LEGEND(props: Props) {
         legend_btn_class={level}
       />
     );
-  },
-  app_text.indicators);
+  }, app_text.indicators);
 
   const style = { top: `${selection_bar_height}px`, width };
 

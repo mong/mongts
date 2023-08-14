@@ -3,7 +3,7 @@ export const validateTreatmentUnits = function (
   valid_treatment_units: {
     label: string;
     options: { value: string; label: string }[];
-  }[]
+  }[],
 ) {
   if (!treatment_units || valid_treatment_units.length === 0) {
     return [];
@@ -13,7 +13,7 @@ export const validateTreatmentUnits = function (
       const hosp = valid_treatment_units
         .filter((opts) => opts.label === "Sykehus")
         .map((validHosp) =>
-          validHosp.options.map((hospName) => hospName.value)
+          validHosp.options.map((hospName) => hospName.value),
         );
       return hosp[0].includes(unit);
     })

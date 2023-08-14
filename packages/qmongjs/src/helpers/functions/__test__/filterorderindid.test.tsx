@@ -16,8 +16,8 @@ test("Returns correct values without any special", () => {
       hisreg_national,
       hisreg_descr,
       "",
-      "singleRegister"
-    )
+      "singleRegister",
+    ),
   ).toStrictEqual([
     "hisreg_henvist_spesialist_1aar",
     "hisreg_full_responder",
@@ -33,8 +33,8 @@ test("Do not filter if national data and length of units is 1", () => {
       hisreg_haukland,
       hisreg_descr,
       "",
-      "allRegistries"
-    )
+      "allRegistries",
+    ),
   ).toStrictEqual([
     "hisreg_henvist_spesialist_1aar",
     "hisreg_full_responder",
@@ -49,8 +49,8 @@ test("Filter away everything if national data, but length of units more than 1",
       hisreg_national,
       hisreg_descr,
       "",
-      "allRegistries"
-    )
+      "allRegistries",
+    ),
   ).toStrictEqual([]);
 });
 test("Do not filter on single registry page even if national data and length of units more than 1", () => {
@@ -61,8 +61,8 @@ test("Do not filter on single registry page even if national data and length of 
       hisreg_national,
       hisreg_descr,
       "",
-      "singleRegister"
-    )
+      "singleRegister",
+    ),
   ).toStrictEqual([
     "hisreg_henvist_spesialist_1aar",
     "hisreg_full_responder",
@@ -78,8 +78,8 @@ test("Do not filter if national data and length of units more than 1, but fetchi
       hisreg_national,
       hisreg_descr,
       "",
-      "allRegistries"
-    )
+      "allRegistries",
+    ),
   ).toStrictEqual([
     "hisreg_henvist_spesialist_1aar",
     "hisreg_full_responder",
@@ -95,8 +95,8 @@ test("Keep only level H", () => {
       hisreg_national,
       hisreg_descr,
       "H",
-      "allRegistries"
-    )
+      "allRegistries",
+    ),
   ).toStrictEqual(["hisreg_full_responder"]);
 });
 test("Keep only level M", () => {
@@ -107,8 +107,8 @@ test("Keep only level M", () => {
       hisreg_national,
       hisreg_descr,
       "M",
-      "allRegistries"
-    )
+      "allRegistries",
+    ),
   ).toStrictEqual(["hisreg_henvist_spesialist_1aar"]);
 });
 test("Keep only level L", () => {
@@ -119,8 +119,8 @@ test("Keep only level L", () => {
       hisreg_national,
       hisreg_descr,
       "L",
-      "allRegistries"
-    )
+      "allRegistries",
+    ),
   ).toStrictEqual(["hisreg_kompl_kir", "hisreg_kompl_kir2"]);
 });
 test("Keep only level M with all data", () => {
@@ -131,8 +131,8 @@ test("Keep only level M with all data", () => {
       hisreg_data,
       hisreg_descr,
       "M",
-      "allRegistries"
-    )
+      "allRegistries",
+    ),
   ).toStrictEqual(["hisreg_full_responder"]);
 });
 test("Filter out data with low dg and low denominator", () => {
@@ -143,7 +143,7 @@ test("Filter out data with low dg and low denominator", () => {
       hisreg_data,
       hisreg_descr,
       "H",
-      "allRegistries"
-    )
+      "allRegistries",
+    ),
   ).toStrictEqual([]);
 });

@@ -93,7 +93,7 @@ test("Render without levels @250px", async () => {
           year: 2017,
         }),
       ]}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -140,7 +140,7 @@ test("Render with levels @500px", async () => {
           year: 2017,
         }),
       ]}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -207,7 +207,7 @@ test("Render with levels reversed @500px", async () => {
           year: 2017,
         }),
       ]}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -243,7 +243,7 @@ test("Render with many years", async () => {
         buildDataPoint({ unit_name: "Nasjonalt", var: 0.38, year: 2022 }),
         buildDataPoint({ unit_name: "Nasjonalt", var: 0.39, year: 2023 }),
       ]}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -280,7 +280,7 @@ test("Render with many years, ending with even", async () => {
         buildDataPoint({ unit_name: "Nasjonalt", var: 0.37, year: 2021 }),
         buildDataPoint({ unit_name: "Nasjonalt", var: 0.38, year: 2022 }),
       ]}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -314,7 +314,7 @@ test("Render with many years, including missing years", async () => {
         buildDataPoint({ unit_name: "Nasjonalt", var: 0.36, year: 2022 }),
         buildDataPoint({ unit_name: "Nasjonalt", var: 0.37, year: 2023 }),
       ]}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -348,7 +348,7 @@ test("Render with many years, including missing years", async () => {
         buildDataPoint({ unit_name: "Nasjonalt", var: 0.36, year: 2022 }),
         buildDataPoint({ unit_name: "Nasjonalt", var: 0.37, year: 2023 }),
       ]}
-    />
+    />,
   );
 
   await clockTick(1500);
@@ -374,7 +374,7 @@ function LineChartWithRef(props: Omit<Props, "svgContainerRef">) {
 function buildDataPoint(overrides: Partial<Indicator>): Indicator {
   return {
     year: Math.floor(
-      Math.random() * 6 + 2015
+      Math.random() * 6 + 2015,
     ) /* Random year between 2015 and 2020 */,
     id: 1006,
     ind_id: "barnediabetes_hba1c_ge_9",

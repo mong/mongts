@@ -12,13 +12,13 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const fullPath = path.join(
     process.cwd(),
     "_posts/helseatlas/atlas",
-    `${context.params.atlas}.json`
+    `${context.params.atlas}.json`,
   );
   const file = fs.readFileSync(fullPath);
   const { content } = matter(file);
   const dataPath = path.join(
     "public/helseatlas/data",
-    `${context.params.atlas}/`
+    `${context.params.atlas}/`,
   );
 
   const fileData = fs.existsSync(dataPath)
@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
             const data = {};
             data[files] = fileContent;
             return data;
-          })
+          }),
       )
     : [];
   const atlasData = fileData.reduce((result, data) => {
