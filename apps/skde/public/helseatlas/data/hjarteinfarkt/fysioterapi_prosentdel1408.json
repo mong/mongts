@@ -1,0 +1,260 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": [
+        "Snittprosentdel"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Prosentdel trening hos fysioterapeut (18 år og eldre)",
+        "en": "Percent of training wyth physiotarapist (18 years and older)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "errorBars": [
+       "LG",
+        "HG"
+      ],
+    "format": ",.0%"
+  },
+  {
+    "type": "table",
+    "data": "qwerty",
+    "caption": {
+      "nn": "Samla verdiar for perioden 2018–2021, prosentdel trening hos fysioterapeut etter hjarteinfarkt",
+      "en": "Total for the period 2018–2021, training with phsiotarapist"
+    },
+    "columns": [
+      {
+        "id": "bohf",
+        "label_no": "Opptaksområde",
+        "label_en": "Referral areas",
+        "typeVar": "string",
+        "format": ""
+      },
+      {
+        "id": "Snittprosentdel",
+        "label_no": "Prosentdel trening hos fysioterapeut",
+        "label_en": "% with training with physioterapist",
+        "typeVar": "number",
+        "format": ",.1%"
+      },
+      {
+        "id": "Samla_trening",
+        "label_no": "Tal med trening hos fysioterapuet",
+        "label_en": "# Heart attacks with training with phsiotarapist",
+        "typeVar": "number",
+        "format": ",.0f"
+      },
+      {
+        "id":  "Samla_indeks",
+        "label_no": "Hjarteinfarkt pasientar",
+        "label_en": "# Heart attack stays",
+        "typeVar": "number",
+        "format": ",.0f"
+      }
+    ]
+  },
+  {
+    "type": "map",
+    "data": "qwerty",
+    "x": "Snittprosentdel",
+    "caption": {
+      "nn": "Prosentdel trening hos fysioterapeut (18 år og eldre)",
+      "en": "Percent of training with physioterapist (18 years and older)"
+    },
+    "jenks": [
+      {
+        "grense": 0.04
+      },
+      {
+        "grense": 0.07
+      },
+      {
+        "grense": 0.13
+      }
+    ],
+    "format": ",.0%"
+  },
+  {
+    "type": "data",
+    "label": "qwerty",
+    "description": "Hoveddatasettet for gitt resultatboks",
+    "national": "Noreg",
+    "data": [
+  {
+    "bohf": "Akershus",
+    "Samla_trening": 107,
+    "Samla_indeks": 3710,
+    "Snittprosentdel": 0.03,
+    "LG": 0.02,
+    "HG": 0.03
+  },
+  {
+    "bohf": "Bergen",
+    "Samla_trening": 82,
+    "Samla_indeks": 2794,
+    "Snittprosentdel": 0.03,
+    "LG": 0.02,
+    "HG": 0.04
+  },
+  {
+    "bohf": "Finnmark",
+    "Samla_trening": 15,
+    "Samla_indeks": 749,
+    "Snittprosentdel": 0.02,
+    "LG": 0.01,
+    "HG": 0.03
+  },
+  {
+    "bohf": "Fonna",
+    "Samla_trening": 47,
+    "Samla_indeks": 1605,
+    "Snittprosentdel": 0.03,
+    "LG": 0.02,
+    "HG": 0.04
+  },
+  {
+    "bohf": "Førde",
+    "Samla_trening": 30,
+    "Samla_indeks": 917,
+    "Snittprosentdel": 0.03,
+    "LG": 0.02,
+    "HG": 0.05
+  },
+  {
+    "bohf": "Helgeland",
+    "Samla_trening": 33,
+    "Samla_indeks": 755,
+    "Snittprosentdel": 0.04,
+    "LG": 0.03,
+    "HG": 0.06
+  },
+  {
+    "bohf": "Indre Oslo",
+    "Samla_trening": 19,
+    "Samla_indeks": 1106,
+    "Snittprosentdel": 0.02,
+    "LG": 0.01,
+    "HG": 0.02
+  },
+  {
+    "bohf": "Innlandet",
+    "Samla_trening": 119,
+    "Samla_indeks": 2825,
+    "Snittprosentdel": 0.04,
+    "LG": 0.03,
+    "HG": 0.05
+  },
+  {
+    "bohf": "Møre og Romsdal",
+    "Samla_trening": 81,
+    "Samla_indeks": 2098,
+    "Snittprosentdel": 0.04,
+    "LG": 0.03,
+    "HG": 0.05
+  },
+  {
+    "bohf": "Nord-Trøndelag",
+    "Samla_trening": 83,
+    "Samla_indeks": 1190,
+    "Snittprosentdel": 0.07,
+    "LG": 0.06,
+    "HG": 0.09
+  },
+  {
+    "bohf": "Nordland",
+    "Samla_trening": 53,
+    "Samla_indeks": 1286,
+    "Snittprosentdel": 0.04,
+    "LG": 0.03,
+    "HG": 0.05
+  },
+  {
+    "bohf": "Noreg",
+    "Samla_trening": 1635,
+    "Samla_indeks": 37129,
+    "Snittprosentdel": 0.04,
+    "LG": 0.04,
+    "HG": 0.05
+  },
+  {
+    "bohf": "OUS",
+    "Samla_trening": 38,
+    "Samla_indeks": 1181,
+    "Snittprosentdel": 0.03,
+    "LG": 0.02,
+    "HG": 0.05
+  },
+  {
+    "bohf": "St. Olav",
+    "Samla_trening": 98,
+    "Samla_indeks": 2087,
+    "Snittprosentdel": 0.05,
+    "LG": 0.04,
+    "HG": 0.06
+  },
+  {
+    "bohf": "Stavanger",
+    "Samla_trening": 286,
+    "Samla_indeks": 2185,
+    "Snittprosentdel": 0.13,
+    "LG": 0.12,
+    "HG": 0.15
+  },
+  {
+    "bohf": "Sørlandet",
+    "Samla_trening": 62,
+    "Samla_indeks": 1732,
+    "Snittprosentdel": 0.03,
+    "LG": 0.03,
+    "HG": 0.04
+  },
+  {
+    "bohf": "Telemark",
+    "Samla_trening": 112,
+    "Samla_indeks": 1397,
+    "Snittprosentdel": 0.08,
+    "LG": 0.06,
+    "HG": 0.09
+  },
+  {
+    "bohf": "UNN",
+    "Samla_trening": 32,
+    "Samla_indeks": 1446,
+    "Snittprosentdel": 0.02,
+    "LG": 0.01,
+    "HG": 0.03
+  },
+  {
+    "bohf": "Vestfold",
+    "Samla_trening": 47,
+    "Samla_indeks": 1906,
+    "Snittprosentdel": 0.02,
+    "LG": 0.02,
+    "HG": 0.03
+  },
+  {
+    "bohf": "Vestre Viken",
+    "Samla_trening": 183,
+    "Samla_indeks": 3370,
+    "Snittprosentdel": 0.05,
+    "LG": 0.05,
+    "HG": 0.06
+  },
+  {
+    "bohf": "Østfold",
+    "Samla_trening": 108,
+    "Samla_indeks": 2790,
+    "Snittprosentdel": 0.04,
+    "LG": 0.03,
+    "HG": 0.05
+  }
+]
+  }
+]
+}
