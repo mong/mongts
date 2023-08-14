@@ -13,7 +13,7 @@ it("renders", () => {
           <IndicatorValue indicatorData={data} />
         </tr>
       </tbody>
-    </table>
+    </table>,
   );
   expect(container).toMatchSnapshot();
 });
@@ -27,7 +27,7 @@ it("renders beregnet_andel", () => {
           <IndicatorValue indicatorData={data} />
         </tr>
       </tbody>
-    </table>
+    </table>,
   );
   expect(container).toMatchSnapshot();
 });

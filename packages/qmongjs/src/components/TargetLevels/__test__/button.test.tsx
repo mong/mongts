@@ -12,7 +12,7 @@ it("Button renders", async () => {
       legend_btn_class="high"
       update_show_level_filter={dummy_function}
       show_level_filter=""
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
   const { container: another } = render(
@@ -21,7 +21,7 @@ it("Button renders", async () => {
       legend_btn_class="high"
       update_show_level_filter={dummy_function}
       show_level_filter="L"
-    />
+    />,
   );
   expect(another).toEqual(container);
 });
@@ -33,7 +33,7 @@ it("Button renders", async () => {
       legend_btn_class="high"
       update_show_level_filter={dummy_function}
       show_level_filter="H"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -45,7 +45,7 @@ it("Button renders", async () => {
       legend_btn_class="mamma"
       update_show_level_filter={dummy_function}
       show_level_filter="H"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -57,7 +57,7 @@ it("Button renders", async () => {
       legend_btn_class="anna"
       update_show_level_filter={dummy_function}
       show_level_filter="H"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -69,7 +69,7 @@ it("Button renders", async () => {
       legend_btn_class="anna"
       update_show_level_filter={dummy_function}
       show_level_filter="A"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -81,7 +81,7 @@ it("Button renders", async () => {
       legend_btn_class="likes"
       update_show_level_filter={dummy_function}
       show_level_filter="L"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });

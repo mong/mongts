@@ -18,7 +18,7 @@ test("Standard render", async () => {
       width={400}
       height={250}
       title=""
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -32,7 +32,7 @@ test("Render with some more text", async () => {
       width={300}
       height={200}
       title="Æ Å"
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });

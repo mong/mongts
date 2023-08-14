@@ -10,7 +10,7 @@ const originPattern = process.env.ORIGIN ?? "";
 
 if ("".match(originPattern)) {
   console.warn(
-    "Insecure ORIGIN pattern used. This can give unauthorized users access to your repository."
+    "Insecure ORIGIN pattern used. This can give unauthorized users access to your repository.",
   );
   if (process.env.NODE_ENV === "production") {
     console.error("Will not run without a safe ORIGIN pattern in production.");

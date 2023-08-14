@@ -25,7 +25,7 @@ test("Standard render", async () => {
       caption="rateSnitt"
       national="Norge"
       headers={testHeaders}
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -38,7 +38,7 @@ test("Click in table", async () => {
       caption="rateSnitt"
       national="OUS"
       headers={testHeaders}
-    />
+    />,
   );
   expect(mockRouter.query).toEqual({});
   // Click national (in this case OUS) and nothing should happen
@@ -81,7 +81,7 @@ test("Render with picked HF", async () => {
       caption="rateSnitt"
       national="Norge"
       headers={testHeaders}
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -95,7 +95,7 @@ test("Render with another national", async () => {
       caption="rateSnitt"
       national="Finnmark"
       headers={testHeaders}
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -109,7 +109,7 @@ test("Render with many picked HF", async () => {
       caption="rateSnitt"
       national="Norge"
       headers={testHeaders}
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -123,7 +123,7 @@ test("Render english with many picked HF", async () => {
       caption="rateSnitt"
       national="Norge"
       headers={testHeaders}
-    />
+    />,
   );
   expect(container).toMatchSnapshot();
 });

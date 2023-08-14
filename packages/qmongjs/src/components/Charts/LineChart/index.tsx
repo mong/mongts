@@ -87,7 +87,7 @@ const LineChart = (props: Props) => {
         tooltipData: data,
       });
     },
-    [showTooltip]
+    [showTooltip],
   );
 
   const [hoveredLegend, setHoveredLegend] = useState<string | null>(null);
@@ -109,7 +109,7 @@ const LineChart = (props: Props) => {
   const innerHeight = height - marginOffsets.top - marginOffsets.bottom;
   const innerWidth = width - marginOffsets.left - marginOffsets.right;
   const pathLabels = Array.from(
-    new Set(data.map((d) => d.unit_name))
+    new Set(data.map((d) => d.unit_name)),
   ).reverse();
   const lineColorScale = scaleOrdinal<string>()
     .domain(pathLabels)
@@ -151,7 +151,7 @@ const LineChart = (props: Props) => {
 
     if (hoveredLegend) {
       highlightedLegends = Array.from(
-        new Set([...selectedLegends, hoveredLegend])
+        new Set([...selectedLegends, hoveredLegend]),
       );
     }
 
@@ -172,7 +172,7 @@ const LineChart = (props: Props) => {
 
     // X-Axis, every year from min to max
     let years = Array.from(Array(maxYear - minYear + 1).keys()).map(
-      (i) => i + minYear
+      (i) => i + minYear,
     );
 
     // Filter out every second year if many years. Always keep last year.
@@ -213,7 +213,7 @@ const LineChart = (props: Props) => {
             .attr(
               "height",
               ({ start, end }) =>
-                innerHeight - yScale(start) - (innerHeight - yScale(end))
+                innerHeight - yScale(start) - (innerHeight - yScale(end)),
             )
             .attr("fill", ({ level }) => levelColor(level))
             .attr("opacity", 0.2),
@@ -227,10 +227,10 @@ const LineChart = (props: Props) => {
               .attr(
                 "height",
                 ({ start, end }) =>
-                  innerHeight - yScale(start) - (innerHeight - yScale(end))
-              )
+                  innerHeight - yScale(start) - (innerHeight - yScale(end)),
+              ),
           ),
-        (exit) => exit.remove()
+        (exit) => exit.remove(),
       );
 
     // Paths
@@ -277,9 +277,9 @@ const LineChart = (props: Props) => {
               })
               .transition()
               .duration(1000)
-              .attr("d", ([, d]) => lines(d))
+              .attr("d", ([, d]) => lines(d)),
           ),
-        (exit) => exit.remove()
+        (exit) => exit.remove(),
       );
 
     container
@@ -310,9 +310,9 @@ const LineChart = (props: Props) => {
               })
               .transition()
               .duration(1000)
-              .attr("d", ([, d]) => lines(d))
+              .attr("d", ([, d]) => lines(d)),
           ),
-        (exit) => exit.remove()
+        (exit) => exit.remove(),
       );
 
     container
@@ -344,14 +344,14 @@ const LineChart = (props: Props) => {
               .attr("cy", (d) => yScale(d.var))
 
               .attr("stroke", (d) => lineColorScale(d.unit_name))
-              .attr("fill", (d) => lineColorScale(d.unit_name))
+              .attr("fill", (d) => lineColorScale(d.unit_name)),
           ),
-        (exit) => exit.remove()
+        (exit) => exit.remove(),
       )
       .attr("r", (d) =>
         tooltipData?.year === d.year && tooltipData?.unit_name === d.unit_name
           ? 6
-          : 4
+          : 4,
       )
       .on("pointerenter", (e, d) => handleTooltip(e, d))
       .on("pointermove", (e, d) => handleTooltip(e, d))
@@ -445,7 +445,7 @@ export default LineChart;
 function getYScaleDomain(
   data: Indicator[],
   zoom: boolean,
-  percentage: boolean
+  percentage: boolean,
 ): [number, number] {
   const maxValue = Math.max(...data.map((d) => d.var));
   const minValue = Math.min(...data.map((d) => d.var));

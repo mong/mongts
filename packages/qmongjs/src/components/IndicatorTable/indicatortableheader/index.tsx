@@ -11,7 +11,7 @@ export interface IndicatorTableHeaderProps {
 }
 
 export const IndicatorTableHeader: React.FC<IndicatorTableHeaderProps> = (
-  props
+  props,
 ) => {
   const {
     colspan = 2,

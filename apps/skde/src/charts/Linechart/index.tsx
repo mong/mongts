@@ -11,7 +11,7 @@ export type LinechartData<
   Data,
   X extends keyof Data,
   Y extends keyof Data,
-  Label extends keyof Data
+  Label extends keyof Data,
 > = {
   [k in keyof Data & keyof X]: number;
 } & {
@@ -26,7 +26,7 @@ type LinechartProps<
   Data,
   X extends string & keyof Data,
   Y extends string & keyof Data,
-  Label extends string & keyof Data
+  Label extends string & keyof Data,
 > = {
   data: LinechartData<Data, X, Y, Label>[];
   x: X;
@@ -43,7 +43,7 @@ export const Linechart = <
   Data,
   X extends string & keyof Data,
   Y extends string & keyof Data,
-  Label extends string & keyof Data
+  Label extends string & keyof Data,
 >({
   data,
   x,
@@ -92,8 +92,8 @@ export const Linechart = <
             ? customFormatEng(format_y)(d[y])
             : customFormat(format_y)(d[y])
           : d[y]
-        ).toString().length
-    )
+        ).toString().length,
+    ),
   );
 
   const colorScale = scaleOrdinal({
@@ -194,7 +194,7 @@ export const Linechart = <
                       </div>
                     </div>
                   );
-                }
+                },
               )}
             </div>
           )}
