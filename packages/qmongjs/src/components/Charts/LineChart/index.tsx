@@ -464,5 +464,5 @@ function getYScaleDomain(
   }
 
   // yaxis max is maximum 1 (100 %) if percentage
-  return [yMin, percentage ? Math.min(yMax, 1) : yMax];
+  return [yMin, percentage ? (zoom ? Math.min(yMax, 1) : 1) : yMax];
 }
