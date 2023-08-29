@@ -1,0 +1,221 @@
+{
+"innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snittrate"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Tal pasientar pr. 10 000 innbyggarar (18 år og eldre)",
+        "en": "Number of patients per 10,000 inhabitants (18 years and older)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+      ],
+      "annualVarLabels": {
+        "nn": [""],
+        "en": [""]
+      }
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 innbyggarar i alderen 18 år og eldre.",
+        "en": "Average per year for the period 2018–2022. Rate per 10,000 inhabitants aged 18 years and older."
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "Snittrate",
+          "label_no": "Pasientrate",
+          "label_en": "Patient rate",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Snitt_innlagde",
+          "label_no": "Overordna pasientutval",
+          "label_en": "Included patients",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Snitt_innbyggarar",
+          "label_no": "Innbyggarar (18 år og eldre)",
+          "label_en": "Inhabitants (18 years and older)",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "Snittrate",
+      "caption": {
+        "nn": "Tal innlagte pasientar pr. 10 000 innbyggarar (18 år og eldre)",
+        "en": "Number of admitted patients per 10,000 inhabitants (18 years and older)"
+      },
+      "jenks": [
+        {
+          "grense": 104
+        },
+        {
+          "grense": 132
+        },
+        {
+          "grense": 176
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data": [
+	  {
+    "bohf": "Ahus",
+    "Snittrate": 119.23,
+    "Snitt_innlagde": 5546,
+    "Snitt_innbyggarar": 449731
+ 	 },
+	  {
+    "bohf": "Bergen",
+    "Snittrate": 113.71,
+    "Snitt_innlagde": 4075,
+    "Snitt_innbyggarar": 358789
+	  },
+  	{
+    "bohf": "Diakonhjemmet",
+    "Snittrate": 50.7,
+    "Snitt_innlagde": 578,
+    "Snitt_innbyggarar": 117219
+ 	 },
+  	{
+    "bohf": "Finnmark",
+    "Snittrate": 156.7,
+    "Snitt_innlagde": 925,
+    "Snitt_innbyggarar": 60540
+	  },
+ 	 {
+    "bohf": "Fonna",
+    "Snittrate": 104.4,
+    "Snitt_innlagde": 1432,
+    "Snitt_innbyggarar": 140304
+ 	 },
+	  {
+    "bohf": "Førde",
+    "Snittrate": 107.30,
+    "Snitt_innlagde": 873,
+    "Snitt_innbyggarar": 85281
+	  },
+ 	 {
+    "bohf": "Helgeland",
+    "Snittrate": 118.6,
+    "Snitt_innlagde": 712,
+    "Snitt_innbyggarar": 62547
+  	},
+  	{
+    "bohf": "Innlandet",
+    "Snittrate": 133.1,
+    "Snitt_innlagde": 3492,
+    "Snitt_innbyggarar": 274483
+ 	 },
+  	{
+    "bohf": "Lovisenberg",
+    "Snittrate": 81.8,
+    "Snitt_innlagde": 918,
+    "Snitt_innbyggarar": 136967
+  	},
+  	{
+    "bohf": "Møre og Romsdal",
+    "Snittrate": 132.8,
+    "Snitt_innlagde": 2706,
+    "Snitt_innbyggarar": 209533
+  	},
+ 	 {
+    "bohf": "Nord-Trøndelag",
+    "Snittrate": 146.99,
+    "Snitt_innlagde": 1497,
+    "Snitt_innbyggarar": 106472.2
+ 	 },
+  	{
+    "bohf": "Nordland",
+    "Snittrate": 125.56,
+    "Snitt_innlagde": 1354,
+    "Snitt_innbyggarar": 111035.2
+ 	 },
+ 	 {
+    "bohf": "Noreg",
+    "Snittrate": 123.16,
+    "Snitt_innlagde": 52415,
+    "Snitt_innbyggarar": 4243542.8
+ 	 },
+ 	 {
+    "bohf": "OUS",
+    "Snittrate": 94.06,
+    "Snitt_innlagde": 2015,
+    "Snitt_innbyggarar": 216543.6
+ 	 },
+	  {
+    "bohf": "St. Olavs",
+    "Snittrate": 131.98,
+    "Snitt_innlagde": 3459,
+    "Snitt_innbyggarar": 265537.8
+  	},
+  	{
+    "bohf": "Stavanger",
+    "Snittrate": 88.3,
+    "Snitt_innlagde": 88.3,
+    "Snitt_innbyggarar": 282917.2
+  	},
+  	{
+    "bohf": "Sørlandet",
+    "Snittrate": 138.40,
+    "Snitt_innlagde": 3310,
+    "Snitt_innbyggarar": 239960.6
+  	},
+  	{
+    "bohf": "Telemark",
+    "Snittrate": 138.51,
+    "Snitt_innlagde": 1905,
+    "Snitt_innbyggarar": 139504
+  	},
+  	{
+    "bohf": "UNN",
+    "Snittrate": 120.91,
+    "Snitt_innlagde": 1828,
+    "Snitt_innbyggarar": 155033.8
+  	},
+  	{
+    "bohf": "Vestfold",
+    "Snittrate": 196.33,
+    "Snitt_innlagde": 3882,
+    "Snitt_innbyggarar": 196405.4
+  	},
+  	{
+    "bohf": "Vestre Viken",
+    "Snittrate": 124.20,
+    "Snitt_innlagde": 4854,
+    "Snitt_innbyggarar": 382239.6
+  	},
+  	{
+    "bohf": "Østfold",
+    "Snittrate": 176.17,
+    "Snitt_innlagde": 4468,
+    "Snitt_innbyggarar": 252499.4
+        }
+      ]
+    }
+  ]}

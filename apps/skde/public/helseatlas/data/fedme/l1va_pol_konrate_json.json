@@ -6,8 +6,8 @@
       "x": ["Snittrate"],
       "y": "bohf",
       "xLabel": {
-        "nn": "Tal pasientar pr. 1 000 innbyggarar (18 år og eldre)",
-        "en": "Number of patients per 1,000 inhabitants (18 years and older)"
+        "nn": "Tal kontaktar pr. 10 000 innbyggarar",
+        "en": "Number of patients per 10,000 inhabitants"
       },
       "yLabel": {
         "nn": "Opptaksområde",
@@ -45,10 +45,10 @@
           "label_no": "Poliklinisk kontaktrate",
           "label_en": "Outpatient contacts",
           "typeVar": "number",
-          "format": ",.1f"
+          "format": ",.0f"
         },
         {
-          "id": "Snitt_innlagte",
+          "id": "Snitt_innlagde",
           "label_no": "Tal polikliniske kontaktar",
           "label_en": "Number of outpatient contacts",
           "typeVar": "number",
@@ -56,7 +56,7 @@
         },
         {
           "id": "Snitt_innbyggarar",
-          "label_no": "innbyggarar (18 år og eldre)",
+          "label_no": "Innbyggarar (18 år og eldre)",
           "label_en": "Inhabitants (18 years and older)",
           "typeVar": "number",
           "format": ",.0f"
@@ -68,8 +68,8 @@
       "data": "qwerty",
       "x": "Snittrate",
       "caption": {
-        "nn": "Tal polikliniske kontaktar pr. 1 000 innbyggarar (18 år og eldre)",
-        "en": "Number of outpatient contacts per 1,000 inhabitants (18 years and older)"
+        "nn": "Tal polikliniske kontaktar pr. 10 000 innbyggarar (18 år og eldre)",
+        "en": "Number of outpatient contacts per 10,000 inhabitants (18 years and older)"
       },
       "jenks": [
         {
@@ -97,7 +97,7 @@
     "Rate.2020": 126,
     "Rate.2019": 147,
     "Rate.2018": 143,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 6234,
     "Snitt_innbyggarar": 449731.4
  	 },
 	  {
@@ -108,7 +108,7 @@
     "Rate.2020": 173,
     "Rate.2019": 141,
     "Rate.2018": 118,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 6544,
     "Snitt_innbyggarar": 358788.8
 	  },
   	{
@@ -119,7 +119,7 @@
     "Rate.2020": 66,
     "Rate.2019": 67,
     "Rate.2018": 81,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 879,
     "Snitt_innbyggarar": 117218.6
  	 },
   	{
@@ -130,7 +130,7 @@
     "Rate.2020": 215,
     "Rate.2019": 193,
     "Rate.2018": 161,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 1360,
     "Snitt_innbyggarar": 60540.4
 	  },
  	 {
@@ -141,7 +141,7 @@
     "Rate.2020": 106,
     "Rate.2019": 123,
     "Rate.2018": 111,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 1447,
     "Snitt_innbyggarar": 140304.2
  	 },
 	  {
@@ -152,7 +152,7 @@
     "Rate.2020": 101,
     "Rate.2019": 103,
     "Rate.2018": 89,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 876,
     "Snitt_innbyggarar": 85281.4
 	  },
  	 {
@@ -163,7 +163,7 @@
     "Rate.2020": 115,
     "Rate.2019": 135,
     "Rate.2018": 115,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 763,
     "Snitt_innbyggarar": 62546.6
   	},
   	{
@@ -174,7 +174,7 @@
     "Rate.2020": 187,
     "Rate.2019": 203,
     "Rate.2018": 193,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 5104,
     "Snitt_innbyggarar": 274482.6
  	 },
   	{
@@ -185,7 +185,7 @@
     "Rate.2020": 135,
     "Rate.2019": 147,
     "Rate.2018": 139,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 1650,
     "Snitt_innbyggarar": 136966.8
   	},
   	{
@@ -196,7 +196,7 @@
     "Rate.2020": 95,
     "Rate.2019": 97,
     "Rate.2018": 81,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 2191,
     "Snitt_innbyggarar": 209533.2
   	},
  	 {
@@ -207,7 +207,7 @@
     "Rate.2020": 154,
     "Rate.2019": 177,
     "Rate.2018": 173,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 1794,
     "Snitt_innbyggarar": 106472.2
  	 },
   	{
@@ -218,7 +218,7 @@
     "Rate.2020": 154,
     "Rate.2019": 143,
     "Rate.2018": 138,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 2004,
     "Snitt_innbyggarar": 111035.2
  	 },
  	 {
@@ -229,7 +229,7 @@
     "Rate.2020": 183,
     "Rate.2019": 207,
     "Rate.2018": 190,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 84774,
     "Snitt_innbyggarar": 4243542.8
  	 },
  	 {
@@ -240,7 +240,7 @@
     "Rate.2020": 134,
     "Rate.2019": 162,
     "Rate.2018": 160,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 3149,
     "Snitt_innbyggarar": 216543.6
  	 },
 	  {
@@ -251,7 +251,7 @@
     "Rate.2020": 169,
     "Rate.2019": 340,
     "Rate.2018": 338,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 6510,
     "Snitt_innbyggarar": 265537.8
   	},
   	{
@@ -262,7 +262,7 @@
     "Rate.2020": 63,
     "Rate.2019": 79,
     "Rate.2018": 74,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 2095,
     "Snitt_innbyggarar": 282917.2
   	},
   	{
@@ -273,7 +273,7 @@
     "Rate.2020": 213,
     "Rate.2019": 281,
     "Rate.2018": 260,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 5797,
     "Snitt_innbyggarar": 239960.6
   	},
   	{
@@ -284,7 +284,7 @@
     "Rate.2020": 331,
     "Rate.2019": 339,
     "Rate.2018": 305,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 4475,
     "Snitt_innbyggarar": 139504
   	},
   	{
@@ -295,7 +295,7 @@
     "Rate.2020": 160,
     "Rate.2019": 160,
     "Rate.2018": 142,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 2702,
     "Snitt_innbyggarar": 155033.8
   	},
   	{
@@ -306,7 +306,7 @@
     "Rate.2020": 556,
     "Rate.2019": 639,
     "Rate.2018": 621,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 11506,
     "Snitt_innbyggarar": 196405.4
   	},
   	{
@@ -317,7 +317,7 @@
     "Rate.2020": 232,
     "Rate.2019": 243,
     "Rate.2018": 147,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 8965,
     "Snitt_innbyggarar": 382239.6
   	},
   	{
@@ -328,7 +328,7 @@
     "Rate.2020": 321,
     "Rate.2019": 332,
     "Rate.2018": 362,
-    "Snitt_innlagde": 0,
+    "Snitt_innlagde": 8730,
     "Snitt_innbyggarar": 252499.4
         }
       ]
