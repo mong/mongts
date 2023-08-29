@@ -50,18 +50,6 @@ const ChartRowDescription = ({
             >
               {description_text}
             </ReactMarkdown>
-            {delivery_time && (
-              <p>
-                Disse dataene ble lastet opp{" "}
-                {delivery_time.toLocaleString("no-NO", {
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                  timeZone: "CET",
-                })}
-                .
-              </p>
-            )}
           </>
         </AccordionDetails>
       </Accordion>
