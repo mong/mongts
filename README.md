@@ -60,7 +60,7 @@ npx serve apps/skde/out
 
 ### Run CMS locally
 
-Start up `netlify-cms-proxy-server`:
+Start up `decap-server`:
 
 ```bash
 yarn run cms

@@ -4,7 +4,7 @@ import { config } from "./config";
 
 const Admin = () => {
   useEffect(() => {
-    import("netlify-cms-app").then(async (cms: any) => {
+    import("decap-cms-app").then(async (cms: any) => {
       cms.init({ config });
     });
   }, []);
