@@ -38,7 +38,7 @@ jobs:
           start: yarn start-server
       - name: Archive production artifacts
         if: failure()
-        uses: actions/upload-artifact@v3.1.2
+        uses: actions/upload-artifact@v3.1.3
         with:
           name: cypress videos
           path: apps/skde/cypress/videos
