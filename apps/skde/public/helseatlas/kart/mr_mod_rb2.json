@@ -1,0 +1,278 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": ["andel_priv"],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Percent of examinations performed at private institutions",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0%"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": ["privsnitt", "offsnitt"],
+      "xLegend": {
+        "nb": ["Private", "Public"],
+        "en": ["Private", "Public"]
+      },
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Number of examinations at public v.s. private institutions pr. 10 000 population",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "table",
+      "data": "datasett_1",
+      "caption": {
+        "nb": "Annual average pr. 10  000 population during 2018-2022",
+        "en": "Annual average pr. 10  000 population during 2018-2022"
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområder",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "totsnitt",
+          "label_no": "Rate",
+          "label_en": "Rate",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "offsnitt",
+          "label_no": "Offentlig rate",
+          "label_en": "Public",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "privsnitt",
+          "label_no": "Privat rate",
+          "label_en": "Private",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "andel_priv",
+          "label_no": "Andel private",
+          "label_en": "Percent private",
+          "typeVar": "number",
+          "format": ",.0%"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "datasett_1",
+      "x": "andel_priv",
+      "caption": {
+        "nb": "Percent of examinations performed at private institutions",
+        "en": "tmp"
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": 0.10587088567,
+          "min": 0.0423128071877,
+          "lag_min": 0.243063829661,
+          "grense": 0.174467357665
+        },
+        {
+          "cluster": 2,
+          "max": 0.249904758485,
+          "min": 0.243063829661,
+          "lag_min": 0.321543677728,
+          "grense": 0.285724218106
+        },
+        {
+          "cluster": 3,
+          "max": 0.321543677728,
+          "min": 0.321543677728,
+          "lag_min": 0.650752367694,
+          "grense": 0.486148022711
+        }
+      ],
+      "format": ",.0%"
+    },
+    {
+      "type": "data",
+      "label": "datasett_1",
+      "national": "Norge",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "data": [
+        {
+          "bohf": "Finnmark",
+          "offsnitt": 884.051390552,
+          "privsnitt": 104.677615565,
+          "totsnitt": 988.729006116,
+          "andel_priv": 0.10587088567
+        },
+        {
+          "bohf": "UNN",
+          "offsnitt": 278.79239661,
+          "privsnitt": 887.144081607,
+          "totsnitt": 1165.93647822,
+          "andel_priv": 0.760885432595
+        },
+        {
+          "bohf": "Nordland",
+          "offsnitt": 368.009796702,
+          "privsnitt": 685.711868559,
+          "totsnitt": 1053.72166526,
+          "andel_priv": 0.650752367694
+        },
+        {
+          "bohf": "Helgeland",
+          "offsnitt": 1027.59268344,
+          "privsnitt": 45.4013914023,
+          "totsnitt": 1072.99407484,
+          "andel_priv": 0.0423128071877
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "offsnitt": 746.631643973,
+          "privsnitt": 248.750812347,
+          "totsnitt": 995.38245632,
+          "andel_priv": 0.249904758485
+        },
+        {
+          "bohf": "St. Olav",
+          "offsnitt": 328.692450952,
+          "privsnitt": 735.701485671,
+          "totsnitt": 1064.39393662,
+          "andel_priv": 0.691192856665
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "offsnitt": 818.794732679,
+          "privsnitt": 388.054854833,
+          "totsnitt": 1206.84958751,
+          "andel_priv": 0.321543677728
+        },
+        {
+          "bohf": "Førde",
+          "offsnitt": 689.388296744,
+          "privsnitt": 221.373170019,
+          "totsnitt": 910.761466764,
+          "andel_priv": 0.243063829661
+        },
+        {
+          "bohf": "Bergen",
+          "offsnitt": 319.188400518,
+          "privsnitt": 946.795439306,
+          "totsnitt": 1265.98383982,
+          "andel_priv": 0.747873242551
+        },
+        {
+          "bohf": "Fonna",
+          "offsnitt": 258.232773817,
+          "privsnitt": 1023.57551967,
+          "totsnitt": 1281.80829348,
+          "andel_priv": 0.798540253539
+        },
+        {
+          "bohf": "Stavanger",
+          "offsnitt": 347.84348423,
+          "privsnitt": 790.059235987,
+          "totsnitt": 1137.90272022,
+          "andel_priv": 0.694311756137
+        },
+        {
+          "bohf": "Østfold",
+          "offsnitt": 292.670108667,
+          "privsnitt": 975.441798983,
+          "totsnitt": 1268.11190765,
+          "andel_priv": 0.769207980068
+        },
+        {
+          "bohf": "Akershus",
+          "offsnitt": 289.225872684,
+          "privsnitt": 900.534632285,
+          "totsnitt": 1189.76050497,
+          "andel_priv": 0.756904123581
+        },
+        {
+          "bohf": "OUS",
+          "offsnitt": 293.935460368,
+          "privsnitt": 851.480214316,
+          "totsnitt": 1145.41567468,
+          "andel_priv": 0.743380969141
+        },
+        {
+          "bohf": "Lovisenberg",
+          "offsnitt": 286.447147123,
+          "privsnitt": 773.150187518,
+          "totsnitt": 1059.59733464,
+          "andel_priv": 0.729664149052
+        },
+        {
+          "bohf": "Diakonhjemmet",
+          "offsnitt": 306.031674502,
+          "privsnitt": 701.96868331,
+          "totsnitt": 1008.00035781,
+          "andel_priv": 0.696397256082
+        },
+        {
+          "bohf": "Innlandet",
+          "offsnitt": 383.556189969,
+          "privsnitt": 780.033498313,
+          "totsnitt": 1163.58968828,
+          "andel_priv": 0.670368177175
+        },
+        {
+          "bohf": "Vestre Viken",
+          "offsnitt": 289.406895889,
+          "privsnitt": 727.611863356,
+          "totsnitt": 1017.01875925,
+          "andel_priv": 0.715436029809
+        },
+        {
+          "bohf": "Vestfold",
+          "offsnitt": 190.974734817,
+          "privsnitt": 968.492368982,
+          "totsnitt": 1159.4671038,
+          "andel_priv": 0.835290941682
+        },
+        {
+          "bohf": "Telemark",
+          "offsnitt": 289.748884499,
+          "privsnitt": 770.688978017,
+          "totsnitt": 1060.43786252,
+          "andel_priv": 0.726764863137
+        },
+        {
+          "bohf": "Sørlandet",
+          "offsnitt": 297.201533616,
+          "privsnitt": 732.184904524,
+          "totsnitt": 1029.38643814,
+          "andel_priv": 0.711282835479
+        },
+        {
+          "bohf": "Norge",
+          "offsnitt": 365.807749659,
+          "privsnitt": 759.990149308,
+          "totsnitt": 1125.79789897,
+          "andel_priv": 0.675068011768
+        }
+      ]
+    }
+  ]
+}
