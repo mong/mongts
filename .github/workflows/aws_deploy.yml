@@ -9,6 +9,10 @@ on:
     paths-ignore:
       - "apps/api/**"
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy_to_S3:
     name: Deploy app to S3
