@@ -39,7 +39,7 @@ jobs:
           echo "descr='Main commits deploy'" >> $GITHUB_ENV
           echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_QA }}" >> $GITHUB_ENV
       - name: Check out the repo
-        uses: actions/checkout@v3.6.0
+        uses: actions/checkout@v4.0.0
       - run: yarn install
       - run: yarn workspace api run build
       - name: Lint Dockerfile
@@ -63,7 +63,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push to Docker Hub
-        uses: docker/build-push-action@v4.1.1
+        uses: docker/build-push-action@v4.2.1
         with:
           context: ./apps/api
           file: ./apps/api/Dockerfile
