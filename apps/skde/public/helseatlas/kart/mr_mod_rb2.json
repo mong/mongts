@@ -3,9 +3,7 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "andel_priv"
-      ],
+      "x": ["andel_priv"],
       "y": "bohf",
       "xLabel": {
         "nb": "Percent of examinations performed at private institutions",
@@ -20,19 +18,10 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "privsnitt",
-        "offsnitt"
-      ],
+      "x": ["privsnitt", "offsnitt"],
       "xLegend": {
-        "nb": [
-          "Private",
-          "Public"
-        ],
-        "en": [
-          "Private",
-          "Public"
-        ]
+        "nb": ["Private", "Public"],
+        "en": ["Private", "Public"]
       },
       "y": "bohf",
       "xLabel": {

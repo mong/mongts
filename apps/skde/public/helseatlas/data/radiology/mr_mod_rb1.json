@@ -3,9 +3,7 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "totsnitt"
-      ],
+      "x": ["totsnitt"],
       "y": "bohf",
       "xLabel": {
         "nb": "Number of MR  pr. 10 000 population",
@@ -15,28 +13,10 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "tot2018",
-        "tot2019",
-        "tot2020",
-        "tot2021",
-        "tot2022"
-      ],
+      "annualVar": ["tot2018", "tot2019", "tot2020", "tot2021", "tot2022"],
       "annualVarLabels": {
-        "nb": [
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022"
-        ],
-        "en": [
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022"
-        ]
+        "nb": ["2018", "2019", "2020", "2021", "2022"],
+        "en": ["2018", "2019", "2020", "2021", "2022"]
       },
       "format": ",.0f"
     },
@@ -44,9 +24,7 @@
       "type": "linechart",
       "data": "datasett_2",
       "label": "gender",
-      "x": [
-        "alder"
-      ],
+      "x": ["alder"],
       "y": "pctandel",
       "xLabel": {
         "nb": "Age",
@@ -62,9 +40,7 @@
       "type": "linechart",
       "data": "datasett_3",
       "label": "tid",
-      "x": [
-        "mnd"
-      ],
+      "x": ["mnd"],
       "y": "antall",
       "xLabel": {
         "nb": "Month",
