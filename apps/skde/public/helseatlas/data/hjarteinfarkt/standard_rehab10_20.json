@@ -1,0 +1,268 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": [
+        "snitt_pros"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Prosentdel standard rehabilitering (18 år og eldre)",
+        "en": "Percent of standard rehabilitation (18 years and older)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "errorBars": [
+        "logkI95",
+        "hogKI95"
+      ],
+    "format": ",.1%"
+  },
+  {
+    "type": "table",
+    "data": "qwerty",
+    "caption": {
+      "nn": "Gjennomsnittsverdier for perioden 2018–2021, prosentdel standard rehabilitering etter hjarteinfarkt",
+      "en": "Average per year for the period 2018–2021, patients 18 years and older"
+    },
+    "columns": [
+      {
+        "id": "bohf",
+        "label_no": "Opptaksområde",
+        "label_en": "Referral areas",
+        "typeVar": "string",
+        "format": ""
+      },
+      {
+        "id": "snitt_pros",
+        "label_no": "prosentdel standard rehabilitering",
+        "label_en": "% with actual rehabiltation",
+        "typeVar": "number",
+        "format": ",.1%"
+      },
+      {
+        "id": "pas.standardrehab",
+        "label_no": "Tal pasientar med standard rehabilitering",
+        "label_en": "# Heart attacks with rehabilitation",
+        "typeVar": "number",
+        "format": ",.0f"
+      },
+      {
+        "id": "total_pas",
+        "label_no": "Hjarteinfarkt pasientar",
+        "label_en": "# Heart attack stays",
+        "typeVar": "number",
+        "format": ",.0f"
+      }
+    ]
+  },
+  {
+    "type": "map",
+    "data": "qwerty",
+    "x": "snitt_pros",
+    "caption": {
+      "nn": "Prosentdel standard rehabilitering (18 år og eldre)",
+      "en": "Percent of standard rehabilitation (18 years and older)"
+    },
+    "jenks": [
+      {
+        "grense": 0.099
+      },
+      {
+        "grense": 0.196
+      },
+      {
+        "grense": 0.413
+      }
+    ],
+    "format": ",.1%"
+  },
+  {
+    "type": "data",
+    "label": "qwerty",
+    "description": "Hoveddatasettet for gitt resultatboks",
+    "national": "Noreg",
+    "data": [
+  {
+    "bohf": "Akershus",
+    "pas.standardrehab": 238,
+    "total_pas": 928,
+    "snitt_pros": 0.249,
+    "logkI95": 0.233,
+    "hogKI95": 0.265
+  },
+  {
+    "bohf": "Bergen",
+    "pas.standardrehab": 190,
+    "total_pas": 699,
+    "snitt_pros": 0.28,
+    "logkI95": 0.26,
+    "hogKI95": 0.3
+  },
+  {
+    "bohf": "Diakonhjemmet",
+    "pas.standardrehab": 7,
+    "total_pas": 147,
+    "snitt_pros": 0.05,
+    "logkI95": 0.03,
+    "hogKI95": 0.069
+  },
+  {
+    "bohf": "Finnmark",
+    "pas.standardrehab": 7,
+    "total_pas": 187,
+    "snitt_pros": 0.036,
+    "logkI95": 0.023,
+    "hogKI95": 0.05
+  },
+  {
+    "bohf": "Fonna",
+    "pas.standardrehab": 18,
+    "total_pas": 401,
+    "snitt_pros": 0.046,
+    "logkI95": 0.035,
+    "hogKI95": 0.057
+  },
+  {
+    "bohf": "Førde",
+    "pas.standardrehab": 47,
+    "total_pas": 229,
+    "snitt_pros": 0.234,
+    "logkI95": 0.2,
+    "hogKI95": 0.269
+  },
+  {
+    "bohf": "Helgeland",
+    "pas.standardrehab": 7,
+    "total_pas": 189,
+    "snitt_pros": 0.036,
+    "logkI95": 0.022,
+    "hogKI95": 0.049
+  },
+  {
+    "bohf": "Innlandet",
+    "pas.standardrehab": 73,
+    "total_pas": 706,
+    "snitt_pros": 0.104,
+    "logkI95": 0.092,
+    "hogKI95": 0.116
+  },
+  {
+    "bohf": "Lovisenberg",
+    "pas.standardrehab": 8,
+    "total_pas": 130,
+    "snitt_pros": 0.057,
+    "logkI95": 0.036,
+    "hogKI95": 0.078
+  },
+  {
+    "bohf": "Møre og Romsdal",
+    "pas.standardrehab": 119,
+    "total_pas": 525,
+    "snitt_pros": 0.233,
+    "logkI95": 0.212,
+    "hogKI95": 0.254
+  },
+  {
+    "bohf": "Nord-Trøndelag",
+    "pas.standardrehab": 17,
+    "total_pas": 298,
+    "snitt_pros": 0.059,
+    "logkI95": 0.045,
+    "hogKI95": 0.074
+  },
+  {
+    "bohf": "Nordland",
+    "pas.standardrehab": 13,
+    "total_pas": 322,
+    "snitt_pros": 0.043,
+    "logkI95": 0.031,
+    "hogKI95": 0.054
+  },
+  {
+    "bohf": "Noreg",
+    "pas.standardrehab": 1315,
+    "total_pas": 9284,
+    "snitt_pros": 0.142,
+    "logkI95": 0.139,
+    "hogKI95": 0.146
+  },
+  {
+    "bohf": "OUS",
+    "pas.standardrehab": 46,
+    "total_pas": 296,
+    "snitt_pros": 0.157,
+    "logkI95": 0.133,
+    "hogKI95": 0.18
+  },
+  {
+    "bohf": "St. Olav",
+    "pas.standardrehab": 52,
+    "total_pas": 522,
+    "snitt_pros": 0.099,
+    "logkI95": 0.085,
+    "hogKI95": 0.112
+  },
+  {
+    "bohf": "Stavanger",
+    "pas.standardrehab": 21,
+    "total_pas": 546,
+    "snitt_pros": 0.036,
+    "logkI95": 0.028,
+    "hogKI95": 0.044
+  },
+  {
+    "bohf": "Sørlandet",
+    "pas.standardrehab": 51,
+    "total_pas": 433,
+    "snitt_pros": 0.112,
+    "logkI95": 0.097,
+    "hogKI95": 0.128
+  },
+  {
+    "bohf": "Telemark",
+    "pas.standardrehab": 9,
+    "total_pas": 350,
+    "snitt_pros": 0.025,
+    "logkI95": 0.016,
+    "hogKI95": 0.033
+  },
+  {
+    "bohf": "UNN",
+    "pas.standardrehab": 14,
+    "total_pas": 362,
+    "snitt_pros": 0.038,
+    "logkI95": 0.028,
+    "hogKI95": 0.048
+  },
+  {
+    "bohf": "Vestfold",
+    "pas.standardrehab": 199,
+    "total_pas": 477,
+    "snitt_pros": 0.413,
+    "logkI95": 0.384,
+    "hogKI95": 0.442
+  },
+  {
+    "bohf": "Vestre Viken",
+    "pas.standardrehab": 163,
+    "total_pas": 843,
+    "snitt_pros": 0.196,
+    "logkI95": 0.18,
+    "hogKI95": 0.211
+  },
+  {
+    "bohf": "Østfold",
+    "pas.standardrehab": 19,
+    "total_pas": 698,
+    "snitt_pros": 0.027,
+    "logkI95": 0.021,
+    "hogKI95": 0.034
+  }
+]
+  }
+]
+}
