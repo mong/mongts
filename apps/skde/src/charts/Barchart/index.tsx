@@ -149,7 +149,7 @@ export const Barchart = <
     ...errorBarValues,
     ...series.flat().flat().flat(),
   ];
-  const xMaxValue = xMax ? xMax : max(values) * 1.1;
+  const xMaxValue = xMax ? xMax : max(values) * 1.15;
 
   const colors = mainBarColors;
   const nationColors = nationBarColors;
