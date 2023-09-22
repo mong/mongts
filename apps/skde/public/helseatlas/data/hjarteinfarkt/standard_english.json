@@ -1,0 +1,263 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["prosentdel"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Prosentdel standard rehabilitering (18 år og eldre)",
+        "en": "Percent cardiac rehabilitation (18 years and older)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "errorBars": ["Lågast_95KI", "høgast_95KI"],
+      "format": ",.0%"
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Gjennomsnittsverdier for perioden 2018–2021, prosentdel standard rehabilitering etter hjarteinfarkt",
+        "en": "Average per year for the period 2018–2021, patients 18 years and older"
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "prosentdel",
+          "label_no": "prosentdel standard rehabilitering",
+          "label_en": "% with actual rehabiltation",
+          "typeVar": "number",
+          "format": ",.1%"
+        },
+        {
+          "id": "snitt_tal_z",
+          "label_no": "Tal pasientar med standard rehabilitering",
+          "label_en": "# Heart attacks with rehabilitation",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "snitt_indeksopphald",
+          "label_no": "Hjarteinfarkt pasientar",
+          "label_en": "# Heart attack stays",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "prosentdel",
+      "caption": {
+        "nn": "Percent cardiac rehabilitation (18 years and older)",
+        "en": "Percent cardiac rehabilitation (18 years and older)"
+      },
+      "jenks": [
+        {
+          "grense": 0.1
+        },
+        {
+          "grense": 0.2
+        },
+        {
+          "grense": 0.41
+        }
+      ],
+      "format": ",.0%"
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Norway",
+      "data": [
+        {
+          "bohf": "Akershus",
+          "snitt_tal_z": 238,
+          "snitt_indeksopphald": 928,
+          "prosentdel": 0.25,
+          "Lågast_95KI": 0.23,
+          "høgast_95KI": 0.27
+        },
+        {
+          "bohf": "Bergen",
+          "snitt_tal_z": 190,
+          "snitt_indeksopphald": 699,
+          "prosentdel": 0.28,
+          "Lågast_95KI": 0.26,
+          "høgast_95KI": 0.3
+        },
+        {
+          "bohf": "Diakonhjemmet",
+          "snitt_tal_z": 7,
+          "snitt_indeksopphald": 147,
+          "prosentdel": 0.05,
+          "Lågast_95KI": 0.03,
+          "høgast_95KI": 0.07
+        },
+        {
+          "bohf": "Finnmark",
+          "snitt_tal_z": 7,
+          "snitt_indeksopphald": 187,
+          "prosentdel": 0.04,
+          "Lågast_95KI": 0.02,
+          "høgast_95KI": 0.05
+        },
+        {
+          "bohf": "Fonna",
+          "snitt_tal_z": 18,
+          "snitt_indeksopphald": 401,
+          "prosentdel": 0.05,
+          "Lågast_95KI": 0.04,
+          "høgast_95KI": 0.06
+        },
+        {
+          "bohf": "Førde",
+          "snitt_tal_z": 47,
+          "snitt_indeksopphald": 229,
+          "prosentdel": 0.23,
+          "Lågast_95KI": 0.2,
+          "høgast_95KI": 0.27
+        },
+        {
+          "bohf": "Helgeland",
+          "snitt_tal_z": 7,
+          "snitt_indeksopphald": 189,
+          "prosentdel": 0.04,
+          "Lågast_95KI": 0.02,
+          "høgast_95KI": 0.05
+        },
+        {
+          "bohf": "Innlandet",
+          "snitt_tal_z": 73,
+          "snitt_indeksopphald": 706,
+          "prosentdel": 0.1,
+          "Lågast_95KI": 0.09,
+          "høgast_95KI": 0.12
+        },
+        {
+          "bohf": "Lovisenberg",
+          "snitt_tal_z": 8,
+          "snitt_indeksopphald": 130,
+          "prosentdel": 0.06,
+          "Lågast_95KI": 0.04,
+          "høgast_95KI": 0.08
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "snitt_tal_z": 119,
+          "snitt_indeksopphald": 525,
+          "prosentdel": 0.23,
+          "Lågast_95KI": 0.21,
+          "høgast_95KI": 0.25
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "snitt_tal_z": 17,
+          "snitt_indeksopphald": 298,
+          "prosentdel": 0.06,
+          "Lågast_95KI": 0.05,
+          "høgast_95KI": 0.07
+        },
+        {
+          "bohf": "Nordland",
+          "snitt_tal_z": 13,
+          "snitt_indeksopphald": 322,
+          "prosentdel": 0.04,
+          "Lågast_95KI": 0.03,
+          "høgast_95KI": 0.05
+        },
+        {
+          "bohf": "Noreg",
+          "snitt_tal_z": 1315,
+          "snitt_indeksopphald": 9284,
+          "prosentdel": 0.14,
+          "Lågast_95KI": 0.14,
+          "høgast_95KI": 0.15
+        },
+        {
+          "bohf": "OUS",
+          "snitt_tal_z": 46,
+          "snitt_indeksopphald": 296,
+          "prosentdel": 0.16,
+          "Lågast_95KI": 0.13,
+          "høgast_95KI": 0.18
+        },
+        {
+          "bohf": "St. Olav",
+          "snitt_tal_z": 52,
+          "snitt_indeksopphald": 522,
+          "prosentdel": 0.1,
+          "Lågast_95KI": 0.09,
+          "høgast_95KI": 0.11
+        },
+        {
+          "bohf": "Stavanger",
+          "snitt_tal_z": 21,
+          "snitt_indeksopphald": 546,
+          "prosentdel": 0.04,
+          "Lågast_95KI": 0.03,
+          "høgast_95KI": 0.04
+        },
+        {
+          "bohf": "Sørlandet",
+          "snitt_tal_z": 51,
+          "snitt_indeksopphald": 433,
+          "prosentdel": 0.11,
+          "Lågast_95KI": 0.1,
+          "høgast_95KI": 0.13
+        },
+        {
+          "bohf": "Telemark",
+          "snitt_tal_z": 9,
+          "snitt_indeksopphald": 350,
+          "prosentdel": 0.02,
+          "Lågast_95KI": 0.02,
+          "høgast_95KI": 0.03
+        },
+        {
+          "bohf": "UNN",
+          "snitt_tal_z": 14,
+          "snitt_indeksopphald": 362,
+          "prosentdel": 0.04,
+          "Lågast_95KI": 0.03,
+          "høgast_95KI": 0.05
+        },
+        {
+          "bohf": "Vestfold",
+          "snitt_tal_z": 199,
+          "snitt_indeksopphald": 477,
+          "prosentdel": 0.41,
+          "Lågast_95KI": 0.38,
+          "høgast_95KI": 0.44
+        },
+        {
+          "bohf": "Vestre Viken",
+          "snitt_tal_z": 163,
+          "snitt_indeksopphald": 843,
+          "prosentdel": 0.2,
+          "Lågast_95KI": 0.18,
+          "høgast_95KI": 0.21
+        },
+        {
+          "bohf": "Østfold",
+          "snitt_tal_z": 19,
+          "snitt_indeksopphald": 698,
+          "prosentdel": 0.03,
+          "Lågast_95KI": 0.02,
+          "høgast_95KI": 0.03
+        }
+      ]
+    }
+  ]
+}

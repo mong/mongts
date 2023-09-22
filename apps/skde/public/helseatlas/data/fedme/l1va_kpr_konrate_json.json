@@ -1,0 +1,336 @@
+{
+"innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snittrate"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Tal kontaktar pr. 10 000 innbyggarar (18 år og eldre)",
+        "en": "Number of contacts per 10,000 inhabitants (18 years and older)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "Rate.2018",
+        "Rate.2019",
+        "Rate.2020",
+        "Rate.2021",
+        "Rate.2022"
+      ],
+      "annualVarLabels": {
+        "nn": ["2018", "2019", "2020", "2021", "2022"],
+        "en": ["2018", "2019", "2020", "2021", "2022"]
+      }
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlige gjennomsnittsverdiar for perioden 2018–2022. Rate pr. 10 000 innbyggarar i alderen 18 år og eldre.",
+        "en": "Average per year for the period 2018–2022. Rate per 10,000 inhabitants aged 18 years and older."
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "Snittrate",
+          "label_no": "Kontaktrate",
+          "label_en": "Contact rate",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Snitt_innlagde",
+          "label_no": "Tal kontaktar hjå allmennlege",
+          "label_en": "Number of contacts by general practitioner",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Snitt_innbyggarar",
+          "label_no": "innbyggarar (18 år og eldre)",
+          "label_en": "Inhabitants (18 years and older)",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "Snittrate",
+      "caption": {
+        "nn": "Tal kontaktar hjå allmennlege pr. 1 000 innbyggarar (18 år og eldre)",
+        "en": "Number of contacts by general practitioner per 1,000 inhabitants (18 years and older)"
+      },
+      "jenks": [
+        {
+          "grense": 297
+        },
+        {
+          "grense": 383
+        },
+        {
+          "grense": 475
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data": [
+	  {
+    "bohf": "Ahus",
+    "Snittrate": 392,
+    "Rate.2022": 702,
+    "Rate.2021": 567,
+    "Rate.2020": 282,
+    "Rate.2019": 214,
+    "Rate.2018": 194,
+    "Snitt_innlagde": 18331,
+    "Snitt_innbyggarar": 449731.4
+ 	 },
+	  {
+    "bohf": "Bergen",
+    "Snittrate": 246,
+    "Rate.2022": 460,
+    "Rate.2021": 345,
+    "Rate.2020": 166,
+    "Rate.2019": 139,
+    "Rate.2018": 117,
+    "Snitt_innlagde": 8787,
+    "Snitt_innbyggarar": 358788.8
+	  },
+  	{
+    "bohf": "Diakonhjemmet",
+    "Snittrate": 143,
+    "Rate.2022": 254,
+    "Rate.2021": 209,
+    "Rate.2020": 112,
+    "Rate.2019": 71,
+    "Rate.2018": 66,
+    "Snitt_innlagde": 1632,
+    "Snitt_innbyggarar": 117218.6
+ 	 },
+  	{
+    "bohf": "Finnmark",
+    "Snittrate": 475,
+    "Rate.2022": 906,
+    "Rate.2021": 649,
+    "Rate.2020": 278,
+    "Rate.2019": 276,
+    "Rate.2018": 266,
+    "Snitt_innlagde": 2814,
+    "Snitt_innbyggarar": 60540.4
+	  },
+ 	 {
+    "bohf": "Fonna",
+    "Snittrate": 263,
+    "Rate.2022": 499,
+    "Rate.2021": 347,
+    "Rate.2020": 195,
+    "Rate.2019": 143,
+    "Rate.2018": 130,
+    "Snitt_innlagde": 3622,
+    "Snitt_innbyggarar": 140304.2
+ 	 },
+	  {
+    "bohf": "Førde",
+    "Snittrate": 314,
+    "Rate.2022": 555,
+    "Rate.2021": 427,
+    "Rate.2020": 234,
+    "Rate.2019": 185,
+    "Rate.2018": 170,
+    "Snitt_innlagde": 2555,
+    "Snitt_innbyggarar": 85281.4
+	  },
+ 	 {
+    "bohf": "Helgeland",
+    "Snittrate": 347,
+    "Rate.2022": 603,
+    "Rate.2021": 425,
+    "Rate.2020": 260,
+    "Rate.2019": 228,
+    "Rate.2018": 219,
+    "Snitt_innlagde": 2086,
+    "Snitt_innbyggarar": 62546.6
+  	},
+  	{
+    "bohf": "Innlandet",
+    "Snittrate": 436,
+    "Rate.2022": 724,
+    "Rate.2021": 549,
+    "Rate.2020": 327,
+    "Rate.2019": 294,
+    "Rate.2018": 284,
+    "Snitt_innlagde": 11486,
+    "Snitt_innbyggarar": 274482.6
+ 	 },
+  	{
+    "bohf": "Lovisenberg",
+    "Snittrate": 220,
+    "Rate.2022": 364,
+    "Rate.2021": 317,
+    "Rate.2020": 170,
+    "Rate.2019": 132,
+    "Rate.2018": 116,
+    "Snitt_innlagde": 2449,
+    "Snitt_innbyggarar": 136966.8
+  	},
+  	{
+    "bohf": "Møre og Romsdal",
+    "Snittrate": 446,
+    "Rate.2022": 769,
+    "Rate.2021": 624,
+    "Rate.2020": 350,
+    "Rate.2019": 265,
+    "Rate.2018": 223,
+    "Snitt_innlagde": 9121,
+    "Snitt_innbyggarar": 209533.2
+  	},
+ 	 {
+    "bohf": "Nord-Trøndelag",
+    "Snittrate": 496,
+    "Rate.2022": 886,
+    "Rate.2021": 689,
+    "Rate.2020": 374,
+    "Rate.2019": 264,
+    "Rate.2018": 266,
+    "Snitt_innlagde": 5052,
+    "Snitt_innbyggarar": 106472.2
+ 	 },
+  	{
+    "bohf": "Nordland",
+    "Snittrate": 335,
+    "Rate.2022": 617,
+    "Rate.2021": 435,
+    "Rate.2020": 234,
+    "Rate.2019": 196,
+    "Rate.2018": 195,
+    "Snitt_innlagde": 3600,
+    "Snitt_innbyggarar": 111035.2
+ 	 },
+ 	 {
+    "bohf": "Noreg",
+    "Snittrate": 369,
+    "Rate.2022": 637,
+    "Rate.2021": 506,
+    "Rate.2020": 276,
+    "Rate.2019": 222,
+    "Rate.2018": 203,
+    "Snitt_innlagde": 157292,
+    "Snitt_innbyggarar": 4243542.8
+ 	 },
+ 	 {
+    "bohf": "OUS",
+    "Snittrate": 248,
+    "Rate.2022": 415,
+    "Rate.2021": 348,
+    "Rate.2020": 193,
+    "Rate.2019": 154,
+    "Rate.2018": 129,
+    "Snitt_innlagde": 5372,
+    "Snitt_innbyggarar": 216543.6
+ 	 },
+	  {
+    "bohf": "St. Olavs",
+    "Snittrate": 422,
+    "Rate.2022": 708,
+    "Rate.2021": 609,
+    "Rate.2020": 334,
+    "Rate.2019": 253,
+    "Rate.2018": 208,
+    "Snitt_innlagde": 11063,
+    "Snitt_innbyggarar": 265537.8
+  	},
+  	{
+    "bohf": "Stavanger",
+    "Snittrate": 297,
+    "Rate.2022": 528,
+    "Rate.2021": 416,
+    "Rate.2020": 211,
+    "Rate.2019": 172,
+    "Rate.2018": 157,
+    "Snitt_innlagde": 8627,
+    "Snitt_innbyggarar": 282917.2
+  	},
+  	{
+    "bohf": "Sørlandet",
+    "Snittrate": 425,
+    "Rate.2022": 672,
+    "Rate.2021": 526,
+    "Rate.2020": 334,
+    "Rate.2019": 253,
+    "Rate.2018": 208,
+    "Snitt_innlagde": 10185,
+    "Snitt_innbyggarar": 239960.6
+  	},
+  	{
+    "bohf": "Telemark",
+    "Snittrate": 403,
+    "Rate.2022": 634,
+    "Rate.2021": 552,
+    "Rate.2020": 312,
+    "Rate.2019": 257,
+    "Rate.2018": 261,
+    "Snitt_innlagde": 5554,
+    "Snitt_innbyggarar": 139504
+  	},
+  	{
+    "bohf": "UNN",
+    "Snittrate": 401,
+    "Rate.2022": 683,
+    "Rate.2021": 545,
+    "Rate.2020": 298,
+    "Rate.2019": 240,
+    "Rate.2018": 240,
+    "Snitt_innlagde": 6054,
+    "Snitt_innbyggarar": 155033.8
+  	},
+  	{
+    "bohf": "Vestfold",
+    "Snittrate": 545,
+    "Rate.2022": 952,
+    "Rate.2021": 744,
+    "Rate.2020": 398,
+    "Rate.2019": 323,
+    "Rate.2018": 309,
+    "Snitt_innlagde": 10858,
+    "Snitt_innbyggarar": 196405.4
+  	},
+  	{
+    "bohf": "Vestre Viken",
+    "Snittrate": 383,
+    "Rate.2022": 657,
+    "Rate.2021": 505,
+    "Rate.2020": 298,
+    "Rate.2019": 241,
+    "Rate.2018": 215,
+    "Snitt_innlagde": 15072,
+    "Snitt_innbyggarar": 382239.6
+  	},
+  	{
+    "bohf": "Østfold",
+    "Snittrate": 507,
+    "Rate.2022": 850,
+    "Rate.2021": 733,
+    "Rate.2020": 385,
+    "Rate.2019": 300,
+    "Rate.2018": 265,
+    "Snitt_innlagde": 12970,
+    "Snitt_innbyggarar": 252499.4
+        }
+      ]
+    }
+  ]}

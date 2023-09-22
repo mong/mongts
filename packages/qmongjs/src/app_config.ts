@@ -9,9 +9,9 @@ import {
 export interface appTextTypes {
   menus: { unit: string; year: string };
   indicators: {
-    high: { text: string; icon: string };
-    moderate: { text: string; icon: string };
-    low: { text: string; icon: string };
+    high: { text: string };
+    moderate: { text: string };
+    low: { text: string };
   };
   table: {
     main_column: string;
@@ -27,9 +27,9 @@ export const app_text: appTextTypes = {
     year: "År:",
   },
   indicators: {
-    high: { text: "Høy måloppnåelse", icon: "fa fa-fas fa-circle" },
-    moderate: { text: "Moderat måloppnåelse", icon: "fa fa-fas fa-adjust" },
-    low: { text: "Lav måloppnåelse", icon: "fa fa-circle-o" },
+    high: { text: "Høy måloppnåelse" },
+    moderate: { text: "Moderat måloppnåelse" },
+    low: { text: "Lav måloppnåelse" },
   },
   table: {
     main_column: "Kvalitetsindikator",
@@ -44,7 +44,7 @@ export const app_text: appTextTypes = {
 
 export const minYear = 2017;
 export const maxYear = 2022;
-export const defaultYear = 2021;
+export const defaultYear = 2022;
 export const mainQueryParamsConfig = {
   selected_row: withDefault(StringParam, undefined),
   indicator: withDefault(StringParam, undefined),
@@ -54,7 +54,3 @@ export const mainQueryParamsConfig = {
   chart_type: withDefault(StringParam, undefined),
   chart_show_level: withDefault(BooleanParam, undefined),
 };
-
-const appConfig = { app_text };
-
-export default appConfig;

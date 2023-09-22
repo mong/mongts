@@ -1,6 +1,6 @@
 {
   "name": "mongts",
-  "packageManager": "yarn@3.6.0",
+  "packageManager": "yarn@3.6.3",
   "scripts": {
     "postinstall": "husky install",
     "build": "turbo run build",
@@ -12,7 +12,7 @@
     "format": "turbo run format",
     "check-types": "turbo run check-types",
     "check-format": "turbo run check-format",
-    "cms": "npx netlify-cms-proxy-server"
+    "cms": "npx decap-server"
   },
   "workspaces": [
     "apps/*",
@@ -20,7 +20,7 @@
   ],
   "devDependencies": {
     "husky": "8.0.3",
-    "lint-staged": "13.2.2",
-    "turbo": "1.10.3"
+    "lint-staged": "14.0.1",
+    "turbo": "1.10.13"
   }
 }

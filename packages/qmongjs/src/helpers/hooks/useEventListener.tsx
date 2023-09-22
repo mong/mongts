@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 export const useEventListener = (
   eventName: string,
   handler: (event: KeyboardEvent) => void,
-  targetElement = global
+  targetElement = global,
 ) => {
   const listenerRef = useRef<any>();
 

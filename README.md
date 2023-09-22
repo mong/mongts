@@ -40,6 +40,7 @@ git push
 Run the development server:
 
 ```bash
+nvm use
 yarn install
 yarn dev
 ```
@@ -59,7 +60,7 @@ npx serve apps/skde/out
 
 ### Run CMS locally
 
-Start up `netlify-cms-proxy-server`:
+Start up `decap-server`:
 
 ```bash
 yarn run cms

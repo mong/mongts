@@ -12,6 +12,6 @@ export function clockTick(milliseconds: number) {
     requestAnimationFrame((time) => {
       performance.now = now;
       resolve(time);
-    })
+    }),
   );
 }

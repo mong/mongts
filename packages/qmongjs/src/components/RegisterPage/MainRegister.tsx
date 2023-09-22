@@ -2,13 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useQueryParam } from "use-query-params";
 
-import SelectTreatmentUnits, { OptsTu } from "../SelectTreatmentUnits";
+import SelectTreatmentUnits from "../SelectTreatmentUnits";
 import SelectYear from "../SelectYear";
 
 import { Header } from "./header";
 import styles from "./registerPage.module.css";
 
-import config, {
+import {
   mainQueryParamsConfig,
   maxYear,
   minYear,
@@ -19,12 +19,10 @@ import { useResizeObserver, useUnitNamesQuery } from "../../helpers/hooks";
 import { mathClamp, validateTreatmentUnits } from "../../helpers/functions";
 import { UnitNameList } from "./unitnamelist";
 import { NestedTreatmentUnitName } from "./unitnamelist/unitnamelistbody";
-import { RegisterName } from "types";
+import { RegisterName, OptsTu } from "types";
 
 import MAIN from "./main_component";
 import { useRouter } from "next/router";
-
-const { app_text } = config;
 
 interface MainRegisterProps {
   registerNames: RegisterName[];
@@ -56,7 +54,7 @@ export const MainRegister: React.FC<MainRegisterProps> = ({
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     "all",
     queryContext.context,
-    queryContext.type
+    queryContext.type,
   );
 
   const nestedUnitNames: NestedTreatmentUnitName[] | [] =
@@ -81,28 +79,28 @@ export const MainRegister: React.FC<MainRegisterProps> = ({
 
   const [treatment_units, update_treatment_units] = useQueryParam(
     "selected_treatment_units",
-    mainQueryParamsConfig.selected_treatment_units
+    mainQueryParamsConfig.selected_treatment_units,
   );
 
   const [selected_year, update_selected_year] = useQueryParam(
     "year",
-    mainQueryParamsConfig.year
+    mainQueryParamsConfig.year,
   );
   const validated_selected_year = mathClamp(
     selected_year || defaultYear,
     minYear,
-    maxYear
+    maxYear,
   );
 
   const validated_treatment_units = validateTreatmentUnits(
     treatment_units as string[],
-    optstu
+    optstu,
   );
 
   const colspan = validated_treatment_units.length + 2;
 
   const valid_years = Array.from(Array(maxYear - minYear + 1).keys()).map(
-    (v) => minYear + v
+    (v) => minYear + v,
   );
 
   if (
@@ -167,7 +165,6 @@ export const MainRegister: React.FC<MainRegisterProps> = ({
             registerNames={registerNames}
             treatment_units={validated_treatment_units}
             selected_year={validated_selected_year}
-            app_text={app_text}
             colspan={colspan}
             selection_bar_height={selection_bar_height}
             legend_height={legend_height}

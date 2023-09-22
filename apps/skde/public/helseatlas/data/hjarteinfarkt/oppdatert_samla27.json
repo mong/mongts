@@ -1,0 +1,466 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["snitt_prosentdel"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Prosentdel rehabilitering (18 år og eldre)",
+        "en": "Percent of rehabilitering (18 years and older)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+          },
+    "annualVar": [
+        "Rate.2018",
+        "Rate.2019",
+        "Rate.2020",
+        "Rate.2021"
+           ],
+      "annualVarLabels": {
+        "nn": ["2018", "2019", "2020", "2021"],
+        "en": ["2018", "2019", "2020", "2021"]
+      },
+      "format": ",.0%"
+    },
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["prosrehab", "proslms", "prostrening"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Prosentdel rehabilitering (18 år og eldre)",
+        "en": "Percent of rehabilitering (18 years and older)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "xLegend": {
+        "nn": ["Standard rehabilitering", "LMS", "Trening"],
+        "en": ["Z codes", "LMS", "Training"]
+      },
+      "format": ",.0%"
+    },
+{
+      "type": "barchart",
+      "data": "qwerty",
+      "x": [
+        "snitt_prosentdel"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Prosentdel rehabilitering (18 år og eldre)",
+        "en": "Percent of rehabilitering (18 years and older)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "errorBars": [
+       "Lågast95KI",
+        "Hogast95KI"
+      ],
+    "format": ",.0%"
+  },
+  {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Gjennomsnittsverdier for perioden 2018–2021, prosentdel rehabilitering etter hjarteinfarkt",
+        "en": "Average per year for the period 2018–2021, patients 18 years and older"
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "snitt_prosentdel",
+          "label_no": "Prosentdel med rehabilitering",
+          "label_en": "% with rehabiltation",
+          "typeVar": "number",
+          "format": ",.1%"
+        },
+        {
+          "id":  "snitt_rehabilitering",
+          "label_no": "Tal med rehabilitering",
+          "label_en": "Heart attacks with rehabilitation",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id":  "snitt_indekseoppholod",
+          "label_no": "Hjarteinfarkt indeksopphald",
+          "label_en": "# Heart attack stays",
+          "typeVar": "number",
+          "format": ",.0f"
+             }
+           ]
+          },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "snitt_prosentdel",
+      "caption": {
+        "nn": "Prosentdel rehabilitering (18 år og eldre)",
+        "en": "Percent of rehabilitering (18 years and older)"
+      },
+      "jenks": [
+        {
+          "grense": 0.2161588
+        },
+        {
+          "grense": 0.3247397
+        },
+        {
+          "grense": 0.4015385
+        }
+      ],
+       "format": ",.1%"
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data": [
+       {
+    "bohf": "Akershus",
+    "snitt_rehabilitering": 327.5,
+    "snitt_indekseoppholod": 1008.25,
+    "snitt_prosentdel": 0.3135,
+    "Lågast95KI": 0.2966,
+    "Hogast95KI": 0.3312,
+    "Rate.2018": 0.3637,
+    "Rate.2019": 0.3419,
+    "Rate.2020": 0.2566,
+    "Rate.2021": 0.2919,
+    "prosrehab": 0.24,
+    "proslms": 0.03,
+    "prostrening": 0.05
+  },
+  {
+    "bohf": "Bergen",
+    "snitt_rehabilitering": 261.75,
+    "snitt_indekseoppholod": 764.5,
+    "snitt_prosentdel": 0.3504,
+    "Lågast95KI": 0.3294,
+    "Hogast95KI": 0.3724,
+    "Rate.2018": 0.3605,
+    "Rate.2019": 0.3626,
+    "Rate.2020": 0.3418,
+    "Rate.2021": 0.3366,
+    "prosrehab": 0.27,
+    "proslms": 0.06,
+    "prostrening": 0.02
+  },
+  {
+    "bohf": "Diakonhjemmet",
+    "snitt_rehabilitering": 65.25,
+    "snitt_indekseoppholod": 162,
+    "snitt_prosentdel": 0.4341,
+    "Lågast95KI": 0.3796,
+    "Hogast95KI": 0.4938,
+    "Rate.2018": 0.4207,
+    "Rate.2019": 0.3969,
+    "Rate.2020": 0.4533,
+    "Rate.2021": 0.4654,
+    "prosrehab": 0.04,
+    "proslms": 0.09,
+    "prostrening": 0.31
+  },
+  {
+    "bohf": "Finnmark",
+    "snitt_rehabilitering": 23.25,
+    "snitt_indekseoppholod": 208.75,
+    "snitt_prosentdel": 0.1089,
+    "Lågast95KI": 0.0867,
+    "Hogast95KI": 0.1347,
+    "Rate.2018": 0.182,
+    "Rate.2019": 0.1063,
+    "Rate.2020": 0.093,
+    "Rate.2021": 0.0542,
+    "prosrehab": 0.03,
+    "proslms": 0.04,
+    "prostrening": 0.04
+  },
+  {
+    "bohf": "Fonna",
+    "snitt_rehabilitering": 119.75,
+    "snitt_indekseoppholod": 443.75,
+    "snitt_prosentdel": 0.2816,
+    "Lågast95KI": 0.2566,
+    "Hogast95KI": 0.3084,
+    "Rate.2018": 0.3452,
+    "Rate.2019": 0.3142,
+    "Rate.2020": 0.216,
+    "Rate.2021": 0.2512,
+    "prosrehab": 0.04,
+    "proslms": 0.22,
+    "prostrening": 0.02
+  },
+  {
+    "bohf": "Førde",
+    "snitt_rehabilitering": 65.5,
+    "snitt_indekseoppholod": 253.25,
+    "snitt_prosentdel": 0.2945,
+    "Lågast95KI": 0.2586,
+    "Hogast95KI": 0.3339,
+    "Rate.2018": 0.3397,
+    "Rate.2019": 0.2741,
+    "Rate.2020": 0.2547,
+    "Rate.2021": 0.3096,
+    "prosrehab": 0.22,
+    "proslms": 0.05,
+    "prostrening": 0.02
+  },
+  {
+    "bohf": "Helgeland",
+    "snitt_rehabilitering": 32.75,
+    "snitt_indekseoppholod": 203.75,
+    "snitt_prosentdel": 0.1653,
+    "Lågast95KI": 0.1374,
+    "Hogast95KI": 0.1972,
+    "Rate.2018": 0.2048,
+    "Rate.2019": 0.1921,
+    "Rate.2020": 0.1172,
+    "Rate.2021": 0.1473,
+    "prosrehab": 0.03,
+    "proslms": 0.09,
+    "prostrening": 0.05
+  },
+  {
+    "bohf": "Innlandet",
+    "snitt_rehabilitering": 135.75,
+    "snitt_indekseoppholod": 794.25,
+    "snitt_prosentdel": 0.1698,
+    "Lågast95KI": 0.1557,
+    "Hogast95KI": 0.1847,
+    "Rate.2018": 0.21,
+    "Rate.2019": 0.2124,
+    "Rate.2020": 0.107,
+    "Rate.2021": 0.1496,
+    "prosrehab": 0.1,
+    "proslms": 0.04,
+    "prostrening": 0.04
+  },
+  {
+    "bohf": "Lovisenberg",
+    "snitt_rehabilitering": 50.75,
+    "snitt_indekseoppholod": 141.75,
+    "snitt_prosentdel": 0.3221,
+    "Lågast95KI": 0.2767,
+    "Hogast95KI": 0.3725,
+    "Rate.2018": 0.3839,
+    "Rate.2019": 0.3497,
+    "Rate.2020": 0.2332,
+    "Rate.2021": 0.3216,
+    "prosrehab": 0.02,
+    "proslms": 0.11,
+    "prostrening": 0.2
+  },
+  {
+    "bohf": "Møre og Romsdal",
+    "snitt_rehabilitering": 160.25,
+    "snitt_indekseoppholod": 575.75,
+    "snitt_prosentdel": 0.2905,
+    "Lågast95KI": 0.2683,
+    "Hogast95KI": 0.3141,
+    "Rate.2018": 0.3557,
+    "Rate.2019": 0.2863,
+    "Rate.2020": 0.2278,
+    "Rate.2021": 0.2922,
+    "prosrehab": 0.22,
+    "proslms": 0.03,
+    "prostrening": 0.05
+  },
+  {
+    "bohf": "Nord-Trøndelag",
+    "snitt_rehabilitering": 87,
+    "snitt_indekseoppholod": 339.25,
+    "snitt_prosentdel": 0.2688,
+    "Lågast95KI": 0.2407,
+    "Hogast95KI": 0.2992,
+    "Rate.2018": 0.315,
+    "Rate.2019": 0.2958,
+    "Rate.2020": 0.2254,
+    "Rate.2021": 0.2389,
+    "prosrehab": 0.05,
+    "proslms": 0.08,
+    "prostrening": 0.14
+  },
+  {
+    "bohf": "Nordland",
+    "snitt_rehabilitering": 76.25,
+    "snitt_indekseoppholod": 353,
+    "snitt_prosentdel": 0.2205,
+    "Lågast95KI": 0.1961,
+    "Hogast95KI": 0.2471,
+    "Rate.2018": 0.2875,
+    "Rate.2019": 0.2223,
+    "Rate.2020": 0.1419,
+    "Rate.2021": 0.2302,
+    "prosrehab": 0.03,
+    "proslms": 0.13,
+    "prostrening": 0.06
+  },
+  {
+    "bohf": "Noreg",
+    "snitt_rehabilitering": 2718.75,
+    "snitt_indekseoppholod": 10241.75,
+    "snitt_prosentdel": 0.2662,
+    "Lågast95KI": 0.2612,
+    "Hogast95KI": 0.2713,
+    "Rate.2018": 0.3011,
+    "Rate.2019": 0.2899,
+    "Rate.2020": 0.2249,
+    "Rate.2021": 0.2491,
+    "prosrehab": 0.13,
+    "proslms": 0.06,
+    "prostrening": 0.08
+  },
+  {
+    "bohf": "OUS",
+    "snitt_rehabilitering": 142.25,
+    "snitt_indekseoppholod": 321.5,
+    "snitt_prosentdel": 0.4484,
+    "Lågast95KI": 0.4113,
+    "Hogast95KI": 0.4878,
+    "Rate.2018": 0.4342,
+    "Rate.2019": 0.4162,
+    "Rate.2020": 0.5126,
+    "Rate.2021": 0.4305,
+    "prosrehab": 0.08,
+    "proslms": 0.26,
+    "prostrening": 0.1
+  },
+  {
+    "bohf": "St. Olav",
+    "snitt_rehabilitering": 211,
+    "snitt_indekseoppholod": 562.5,
+    "snitt_prosentdel": 0.3761,
+    "Lågast95KI": 0.3508,
+    "Hogast95KI": 0.4026,
+    "Rate.2018": 0.4273,
+    "Rate.2019": 0.4217,
+    "Rate.2020": 0.339,
+    "Rate.2021": 0.3163,
+    "prosrehab": 0.07,
+    "proslms": 0.15,
+    "prostrening": 0.15
+  },
+  {
+    "bohf": "Stavanger",
+    "snitt_rehabilitering": 56,
+    "snitt_indekseoppholod": 593.5,
+    "snitt_prosentdel": 0.0928,
+    "Lågast95KI": 0.0808,
+    "Hogast95KI": 0.106,
+    "Rate.2018": 0.1237,
+    "Rate.2019": 0.0803,
+    "Rate.2020": 0.0746,
+    "Rate.2021": 0.0926,
+    "prosrehab": 0.04,
+    "proslms": 0.02,
+    "prostrening": 0.03
+  },
+  {
+    "bohf": "Sørlandet",
+    "snitt_rehabilitering": 82.5,
+    "snitt_indekseoppholod": 460,
+    "snitt_prosentdel": 0.1741,
+    "Lågast95KI": 0.1553,
+    "Hogast95KI": 0.1944,
+    "Rate.2018": 0.1799,
+    "Rate.2019": 0.2042,
+    "Rate.2020": 0.1573,
+    "Rate.2021": 0.1549,
+    "prosrehab": 0.11,
+    "proslms": 0.01,
+    "prostrening": 0.06
+  },
+  {
+    "bohf": "Telemark",
+    "snitt_rehabilitering": 89.75,
+    "snitt_indekseoppholod": 380.25,
+    "snitt_prosentdel": 0.2325,
+    "Lågast95KI": 0.2088,
+    "Hogast95KI": 0.2581,
+    "Rate.2018": 0.2363,
+    "Rate.2019": 0.2848,
+    "Rate.2020": 0.1856,
+    "Rate.2021": 0.2233,
+    "prosrehab": 0.02,
+    "proslms": 0.05,
+    "prostrening": 0.16
+  },
+  {
+    "bohf": "UNN",
+    "snitt_rehabilitering": 71.25,
+    "snitt_indekseoppholod": 389.25,
+    "snitt_prosentdel": 0.1846,
+    "Lågast95KI": 0.1634,
+    "Hogast95KI": 0.2078,
+    "Rate.2018": 0.1932,
+    "Rate.2019": 0.1973,
+    "Rate.2020": 0.1531,
+    "Rate.2021": 0.1948,
+    "prosrehab": 0.04,
+    "proslms": 0.07,
+    "prostrening": 0.07
+  },
+  {
+    "bohf": "Vestfold",
+    "snitt_rehabilitering": 237.25,
+    "snitt_indekseoppholod": 516,
+    "snitt_prosentdel": 0.4564,
+    "Lågast95KI": 0.4276,
+    "Hogast95KI": 0.4867,
+    "Rate.2018": 0.4613,
+    "Rate.2019": 0.5088,
+    "Rate.2020": 0.4224,
+    "Rate.2021": 0.4332,
+    "prosrehab": 0.36,
+    "proslms": 0,
+    "prostrening": 0.09
+  },
+  {
+    "bohf": "Vestre Viken",
+    "snitt_rehabilitering": 273,
+    "snitt_indekseoppholod": 931,
+    "snitt_prosentdel": 0.296,
+    "Lågast95KI": 0.2786,
+    "Hogast95KI": 0.3142,
+    "Rate.2018": 0.3438,
+    "Rate.2019": 0.3312,
+    "Rate.2020": 0.2567,
+    "Rate.2021": 0.2525,
+    "prosrehab": 0.19,
+    "proslms": 0.02,
+    "prostrening": 0.09
+  },
+  {
+    "bohf": "Østfold",
+    "snitt_rehabilitering": 148,
+    "snitt_indekseoppholod": 800.75,
+    "snitt_prosentdel": 0.1874,
+    "Lågast95KI": 0.1724,
+    "Hogast95KI": 0.2032,
+    "Rate.2018": 0.2168,
+    "Rate.2019": 0.2337,
+    "Rate.2020": 0.1337,
+    "Rate.2021": 0.1651,
+    "prosrehab": 0.02,
+    "proslms": 0.01,
+    "prostrening": 0.15
+  }
+      ]
+    }
+  ]
+}

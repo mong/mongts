@@ -24,7 +24,7 @@ export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
       "ind.level_direction",
       "ind.level_green",
       "ind.level_yellow",
-      "ind.sformat"
+      "ind.sformat",
     )
     .from("agg_data")
     .leftJoin("ind", "agg_data.ind_id", "ind.id")

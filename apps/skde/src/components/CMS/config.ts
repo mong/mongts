@@ -1,4 +1,4 @@
-import { CmsCollection, CmsConfig, CmsField } from "netlify-cms-core";
+import { CmsCollection, CmsConfig, CmsField } from "decap-cms-core";
 
 const filename: CmsField = {
   label: "Filnavn",
@@ -27,7 +27,7 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
       lang === "no"
         ? "/helseatlas/img/no/{{filename}}"
         : "/helseatlas/img/en/{{filename}}",
-    identifier_field: "shortTitle",
+    identifier_field: "filename",
     editor: {
       preview: false,
     },

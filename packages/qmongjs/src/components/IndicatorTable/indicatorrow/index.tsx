@@ -18,7 +18,7 @@ const formatIndicatorValues = (
   indicator: Indicator,
   showLevelFilter: string,
   unitName: string,
-  context: string
+  context: string,
 ) => {
   if (!indicator) {
     return (
@@ -35,6 +35,7 @@ const formatIndicatorValues = (
           "."
         }
         TransitionComponent={Zoom}
+        key={`$${description.id}_${unitName}_tooltip`}
       >
         <td
           key={`${description.id}_${unitName}__su`}
@@ -76,6 +77,7 @@ const formatIndicatorValues = (
       er skjevt slik at resultatene kan være misvisende og medføre 
       feilaktige konklusjoner."
         TransitionComponent={Zoom}
+        key={`${indicator.ind_id}_${indicator.unit_name}_${indicator.id}_tooltip`}
       >
         <td
           key={`${indicator.ind_id}_${indicator.unit_name}_${indicator.id}_su`}
@@ -100,6 +102,7 @@ const formatIndicatorValues = (
           "."
         }
         TransitionComponent={Zoom}
+        key={`${indicator.ind_id}_${indicator.unit_name}_${indicator.id}_tooltip`}
       >
         <td
           key={`${indicator.ind_id}_${indicator.unit_name}_${indicator.id}_su`}
@@ -156,7 +159,7 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
   } = props;
   const [selected_row, update_selected_row] = useQueryParam(
     "selected_row",
-    mainQueryParamsConfig.selected_row
+    mainQueryParamsConfig.selected_row,
   );
 
   if (!(description && indicatorData)) {
@@ -170,14 +173,14 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
       ? null
       : unitNames.map((name) => {
           const filteredIndicator = indicatorData.filter(
-            (ind) => ind.unit_name === name
+            (ind) => ind.unit_name === name,
           );
           return formatIndicatorValues(
             description,
             filteredIndicator[0],
             showLevelFilter,
             name,
-            context.context
+            context.context,
           );
         });
 
@@ -187,8 +190,8 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
   const delivery_latest_affirm_year = indicatorData[0].delivery_latest_affirm
     ? new Date(
         new Date(indicatorData[0].delivery_latest_affirm).setDate(
-          new Date(indicatorData[0].delivery_latest_affirm).getDate() + 2
-        )
+          new Date(indicatorData[0].delivery_latest_affirm).getDate() + 2,
+        ),
       ).getFullYear() - 1
     : undefined;
 

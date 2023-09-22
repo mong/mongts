@@ -9,6 +9,10 @@ on:
     paths-ignore:
       - "apps/api/**"
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy_to_S3:
     name: Deploy app to S3
@@ -20,9 +24,9 @@ jobs:
       NEXT_PUBLIC_SENTRY: "https://d48c58a239264c12bcbf8fe86d364c44@o489056.ingest.sentry.io/5799127"
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v3.5.3
+        uses: actions/checkout@v4.0.0
       - name: Set up Node.js
-        uses: actions/setup-node@v3.6.0
+        uses: actions/setup-node@v3.8.1
         with:
           node-version: "18.x"
           cache: "yarn"

@@ -75,18 +75,20 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
     }),
   });
 
-  const nationalName = boxData
-    ? boxData.filter((o) => o.type === "data")[0]["national"]
-    : undefined;
+  if (!boxData) {
+    return;
+  }
 
-  const dataCarousel = boxData ? (
+  const nationalName = boxData.filter((o) => o.type === "data")[0]["national"];
+
+  const dataCarousel = (
     <Carousel active={0} selection={selection} lang={lang}>
       {boxData
         .map((bd, i) => {
           const figData: AtlasData[] =
             bd.type !== "data"
               ? boxData.filter(
-                  (o) => o.type === "data" && o.label === bd.data
+                  (o) => o.type === "data" && o.label === bd.data,
                 )[0]["data"]
               : undefined;
           if (bd.type === "barchart") {
@@ -171,15 +173,15 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
         })
         .filter((elm) => elm !== null)}
     </Carousel>
-  ) : undefined;
+  );
 
   const abacusX: Exclude<keyof AtlasData, "year" | "bohf"> = boxData
     .filter((boxd) => boxd.type === "map")
     .map((boxd) => boxd.x)[0];
 
-  const figData: AtlasData[] = boxData
-    ? boxData.filter((o) => o.type === "data")[0]["data"]
-    : undefined;
+  const figData: AtlasData[] = boxData.filter((o) => o.type === "data")[0][
+    "data"
+  ];
   const handleChange = (cb: React.Dispatch<React.SetStateAction<boolean>>) =>
     cb((state) => !state);
   return (
@@ -266,7 +268,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
                   ...styles,
                 }}
               />
-            )
+            ),
         )}
       </div>
     </div>

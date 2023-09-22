@@ -15,10 +15,10 @@ export const medicalFields: RequestHandler = async (_, res) => {
         .filter((val) => val.shortName === currVal.shortName)
         .forEach(
           (val) =>
-            (val.registers = [...(val.registers ?? []), currVal.registers])
+            (val.registers = [...(val.registers ?? []), currVal.registers]),
         );
       const returnValue = prevVal.some(
-        (val) => val.shortName === currVal.shortName
+        (val) => val.shortName === currVal.shortName,
       )
         ? []
         : [

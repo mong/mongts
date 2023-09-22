@@ -4,7 +4,7 @@ import { Filter } from ".";
 import { TuName } from "types";
 
 export const distinctUnitNamesRegister = (
-  filter: Filter
+  filter: Filter,
 ): Promise<{ unit_name: string }[]> =>
   db
     .from("agg_data")
@@ -12,7 +12,7 @@ export const distinctUnitNamesRegister = (
     .where("include", 1)
     .where(function () {
       this.whereRaw("denominator >= min_denominator").orWhereNull(
-        "min_denominator"
+        "min_denominator",
       );
     })
     .whereNot("unit_name", "LIKE", "Udefinerte%")
@@ -65,7 +65,7 @@ export const unitNamesAllLevels = (): Promise<TuName[]> =>
       "hospital.short_name as hospital",
       "hf.short_name as hf",
       "hf.full_name as hf_full",
-      "rhf.short_name as rhf"
+      "rhf.short_name as rhf",
     )
     .from("hospital")
     .leftJoin("hf", "hospital.hf_orgnr", "hf.orgnr")

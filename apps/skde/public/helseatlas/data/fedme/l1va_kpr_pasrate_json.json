@@ -1,0 +1,268 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": [
+        "prosentdel"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Tal pasientar hjå allmennlege per 10 000 innbyggarar",
+        "en": "Number of patients receiving care by general practitioners per 10 000 population"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "errorBars": [
+        "Lågast_95KI",
+        "høgast_95KI"
+      ],
+    "format": ",.1f"
+  },
+  {
+    "type": "table",
+    "data": "qwerty",
+    "caption": {
+      "nn": "Gjennomsnittsverdier for perioden 2018–2022",
+      "en": "Average per year for the period 2018–2022"
+    },
+    "columns": [
+      {
+        "id": "bohf",
+        "label_no": "Opptaksområde",
+        "label_en": "Referral areas",
+        "typeVar": "string",
+        "format": ""
+      },
+      {
+        "id": "prosentdel",
+        "label_no": "Pasientar hjå allmennlege",
+        "label_en": "Number of patients receiving care by general practitioners",
+        "typeVar": "number",
+        "format": ",.1f"
+      },
+      {
+        "id": "snitt_tal_z",
+        "label_no": "Årleg tal pasientar hjå allmennlege",
+        "label_en": "Number of patients receiving care by general practitioners each year",
+        "typeVar": "number",
+        "format": ",.0f"
+      },
+      {
+        "id": "snitt_indeksopphald",
+        "label_no": "Årleg tal innbyggarar",
+        "label_en": "Population",
+        "typeVar": "number",
+        "format": ",.0f"
+      }
+    ]
+  },
+  {
+    "type": "map",
+    "data": "qwerty",
+    "x": "prosentdel",
+    "caption": {
+      "nn": "Pasientar hjå allmennlege per 10 000 innbyggarar",
+      "en": "Number patients receiving care by general practitioners per 10 000 population"
+    },
+    "jenks": [
+      {
+        "grense": 62.6
+      },
+      {
+        "grense": 93.2
+      },
+      {
+        "grense": 119.9
+      }
+    ],
+    "format": ",.1f"
+  },
+  {
+    "type": "data",
+    "label": "qwerty",
+    "description": "Hoveddatasettet for gitt resultatboks",
+    "national": "Noreg",
+    "data": [
+      {
+    "bohf": "Akershus",
+    "snitt_tal_z": 4845,
+    "snitt_indeksopphald": 449731.4,
+    "prosentdel": 103.9,
+    "Lågast_95KI": 102.6,
+    "høgast_95KI": 105.2
+  },
+  {
+    "bohf": "Bergen",
+    "snitt_tal_z": 2893,
+    "snitt_indeksopphald": 358788.8,
+    "prosentdel": 80.8,
+    "Lågast_95KI": 79.5,
+    "høgast_95KI": 82.2
+  },
+  {
+    "bohf": "Diakonhjemmet",
+    "snitt_tal_z": 456,
+    "snitt_indeksopphald": 117218.6,
+    "prosentdel": 40.0,
+    "Lågast_95KI": 38.3,
+    "høgast_95KI": 41.6
+  },
+  {
+    "bohf": "Finnmark",
+    "snitt_tal_z": 750,
+    "snitt_indeksopphald": 60540,
+    "prosentdel": 126.8,
+    "Lågast_95KI": 122.7,
+    "høgast_95KI": 130.9
+  },
+  {
+    "bohf": "Fonna",
+    "snitt_tal_z": 1099,
+    "snitt_indeksopphald": 140304,
+    "prosentdel": 79.8,
+    "Lågast_95KI": 77.7,
+    "høgast_95KI": 82.0
+  },
+  {
+    "bohf": "Førde",
+    "snitt_tal_z": 669,
+    "snitt_indeksopphald": 85281.4,
+    "prosentdel": 82.1,
+    "Lågast_95KI": 79.4,
+    "høgast_95KI": 85.0
+  },
+  {
+    "bohf": "Helgeland",
+    "snitt_tal_z": 595,
+    "snitt_indeksopphald": 62546.6,
+    "prosentdel": 98.6,
+    "Lågast_95KI": 95.0,
+    "høgast_95KI": 102.2
+  },
+  {
+    "bohf": "Innlandet",
+    "snitt_tal_z": 2850,
+    "snitt_indeksopphald": 274482.6,
+    "prosentdel": 108.3,
+    "Lågast_95KI": 106.5,
+    "høgast_95KI": 110.1
+  },
+  {
+    "bohf": "Lovisenberg",
+    "snitt_tal_z": 716,
+    "snitt_indeksopphald": 136966.8,
+    "prosentdel": 62.5,
+    "Lågast_95KI": 60.4,
+    "høgast_95KI": 65.0
+  },
+  {
+    "bohf": "Møre og Romsdal",
+    "snitt_tal_z": 3354,
+    "snitt_indeksopphald": 209533.2,
+    "prosentdel": 110.5,
+    "Lågast_95KI": 108.5,
+    "høgast_95KI": 112.6
+  },
+  {
+    "bohf": "Nord-Trøndelag",
+    "snitt_tal_z": 1222,
+    "snitt_indeksopphald": 106472.2,
+    "prosentdel": 119.9,
+    "Lågast_95KI": 116.8,
+    "høgast_95KI": 122.9
+  },
+  {
+    "bohf": "Nordland",
+    "snitt_tal_z": 1001,
+    "snitt_indeksopphald": 111035.2,
+    "prosentdel": 93.2,
+    "Lågast_95KI": 90.6,
+    "høgast_95KI": 95.8
+  },
+  {
+    "bohf": "Noreg",
+    "snitt_tal_z": 41902,
+    "snitt_indeksopphald": 4243542.8,
+    "prosentdel": 98.4,
+    "Lågast_95KI": 98.0,
+    "høgast_95KI": 98.8
+  },
+  {
+    "bohf": "OUS",
+    "snitt_tal_z": 1533,
+    "snitt_indeksopphald": 216543.6,
+    "prosentdel": 71.0,
+    "Lågast_95KI": 69.4,
+    "høgast_95KI": 72.7
+  },
+  {
+    "bohf": "St. Olav",
+    "snitt_tal_z": 2777,
+    "snitt_indeksopphald": 265537.8,
+    "prosentdel": 105.9,
+    "Lågast_95KI": 104.2,
+    "høgast_95KI": 107.7
+  },
+  {
+    "bohf": "Stavanger",
+    "snitt_tal_z": 2324,
+    "snitt_indeksopphald": 282917.2,
+    "prosentdel": 80.2,
+    "Lågast_95KI": 78.7,
+    "høgast_95KI": 81.6
+  },
+  {
+    "bohf": "Sørlandet",
+    "snitt_tal_z": 2633,
+    "snitt_indeksopphald": 239960.6,
+    "prosentdel": 109.8,
+    "Lågast_95KI": 108.0,
+    "høgast_95KI": 111.7
+  },
+  {
+    "bohf": "Telemark",
+    "snitt_tal_z": 1434,
+    "snitt_indeksopphald": 139504,
+    "prosentdel": 104.4,
+    "Lågast_95KI": 102.0,
+    "høgast_95KI": 106.9
+  },
+  {
+    "bohf": "UNN",
+    "snitt_tal_z": 1498,
+    "snitt_indeksopphald": 155033.8,
+    "prosentdel": 99.1,
+    "Lågast_95KI": 96.9,
+    "høgast_95KI": 101.4
+  },
+  {
+    "bohf": "Vestfold",
+    "snitt_tal_z": 2856,
+    "snitt_indeksopphald": 196405.4,
+    "prosentdel": 144.0,
+    "Lågast_95KI": 141.6,
+    "høgast_95KI": 146.4
+  },
+  {
+    "bohf": "Vestre Viken",
+    "snitt_tal_z": 4012,
+    "snitt_indeksopphald": 382239.6,
+    "prosentdel": 102.5,
+    "Lågast_95KI": 101.0,
+    "høgast_95KI": 103.9
+  },
+  {
+    "bohf": "Østfold",
+    "snitt_tal_z": 3487,
+    "snitt_indeksopphald": 252499,
+    "prosentdel": 136.9,
+    "Lågast_95KI": 134.9,
+    "høgast_95KI": 139.0
+  }
+    ]
+  }
+]
+}

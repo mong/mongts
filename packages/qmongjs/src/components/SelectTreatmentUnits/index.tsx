@@ -1,14 +1,6 @@
 import Select, { StylesConfig } from "react-select";
-
+import { OptsTu } from "types";
 import { app_text } from "../../app_config";
-
-export interface OptsTu {
-  label: string;
-  options: {
-    value: string;
-    label: string;
-  }[];
-}
 
 interface Props {
   opts: OptsTu[];

@@ -42,14 +42,6 @@ export const IndicatorData: React.FC<IndicatorValueProps> = ({
 }) => {
   const numberFormat = format === undefined ? ",.0%" : format;
   const theLevel = level(indicatorData);
-  const icon_class =
-    theLevel === "H"
-      ? "fa fa-fas fa-circle"
-      : theLevel === "M"
-      ? "fa fa-fas fa-adjust"
-      : theLevel === "L"
-      ? "fa fa-circle-o"
-      : "undeined";
   const denominator =
     indicatorData.type === "andel" ? indicatorData.denominator : 0;
   const numerator =
@@ -63,11 +55,11 @@ export const IndicatorData: React.FC<IndicatorValueProps> = ({
         <h4 style={headerStyle}>
           {customFormat(numberFormat)(indicatorData.var)}
           <i style={{ paddingLeft: "0.2em" }}>
-            {icon_class === "fa fa-fas fa-circle" ? (
+            {theLevel === "H" ? (
               <FaCircle style={{ color: "#3baa34", fontSize: "1.2rem" }} />
-            ) : icon_class === "fa fa-fas fa-adjust" ? (
+            ) : theLevel === "M" ? (
               <FaAdjust style={{ color: "#fd9c00", fontSize: "1.2rem" }} />
-            ) : icon_class === "fa fa-circle-o" ? (
+            ) : theLevel === "L" ? (
               <FaRegCircle style={{ color: "#e30713", fontSize: "1.2rem" }} />
             ) : (
               <></>

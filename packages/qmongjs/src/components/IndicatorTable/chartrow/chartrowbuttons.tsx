@@ -23,7 +23,7 @@ interface Props {
   treatmentYear: number;
   updateChartType: (
     newValue: "line" | "bar",
-    updateType?: UrlUpdateType | undefined
+    updateType?: UrlUpdateType | undefined,
   ) => void;
 }
 
@@ -161,7 +161,7 @@ const FigureButtons = (props: Props) => {
 
   const buttons = buttonValues
     .filter(
-      (btn) => description.level_green !== null || btn.class !== "btn-level"
+      (btn) => description.level_green !== null || btn.class !== "btn-level",
     )
     .map((btn) => {
       return (
