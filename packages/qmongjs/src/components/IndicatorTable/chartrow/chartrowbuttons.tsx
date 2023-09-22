@@ -15,7 +15,7 @@ interface Props {
   update_zoom: React.Dispatch<React.SetStateAction<boolean>>;
   update_show_level: (
     newValue: true | false,
-    updateType?: UrlUpdateType | undefined
+    updateType?: UrlUpdateType | undefined,
   ) => void;
   update_selected_row(row: string | undefined): void;
   description: Description;
