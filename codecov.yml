@@ -7,5 +7,11 @@ coverage:
       default:
         target: auto
         threshold: 1%
+      qmongjs:
+        paths:
+          - packages/qmongjs
+      skde:
+        paths:
+          - apps/skde
 
 comment: false
