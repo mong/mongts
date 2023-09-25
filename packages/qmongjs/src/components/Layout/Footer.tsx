@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
             postmottak@helse-nord.no
           </a>
           <br />
-          <strong>Ansvarlig redaktør:</strong>
+          <strong>Webredaktør:</strong>
           <a href="mailto:webmaster@skde.no"> webmaster@skde.no</a>
           <br />
         </div>
