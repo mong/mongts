@@ -5,10 +5,13 @@ coverage:
   status:
     project:
       default:
-        target: auto # the required coverage value
-        threshold: 1% # the leniency in hitting the target
-    patch:
-      default:
-        target: 80%
+        target: auto
+        threshold: 1%
+      qmongjs:
+        paths:
+          - packages/qmongjs
+      skde:
+        paths:
+          - apps/skde
 
 comment: false

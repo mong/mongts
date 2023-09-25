@@ -75,7 +75,7 @@ export function FrontPageLayout({
                 postmottak@helse-nord.no
               </Link>
               <br />
-              <strong>Webredaktør: </strong>
+              <strong>Ansvarlig redaktør: </strong>
               <Link href="mailto:barthold.vonen@helse-nord.no">
                 Barthold Vonen
               </Link>
