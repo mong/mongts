@@ -87,16 +87,15 @@ const Main = (props: Props) => {
 
   const orderedRegisterList: RegisterName[] = Array.from(
     new Set(
-      medicalFields.flatMap((field: MedicalFieldObject) => field.registers),
+      medicalFields.flatMap((field: MedicalFieldObject) =>
+        field.registers.sort(),
+      ),
     ),
   )
     .map((reg) => {
       return registerNames.filter((regLit) => regLit.rname === reg)[0];
     })
-    .filter((data) => data)
-    .sort((a, b) =>
-      a.full_name > b.full_name ? 1 : b.full_name > a.full_name ? -1 : 0,
-    );
+    .filter((data) => data);
 
   return (
     <>
