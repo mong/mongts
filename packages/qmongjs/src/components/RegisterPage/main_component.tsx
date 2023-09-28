@@ -87,7 +87,9 @@ const Main = (props: Props) => {
 
   const orderedRegisterList: RegisterName[] = Array.from(
     new Set(
-      medicalFields.flatMap((field: MedicalFieldObject) => field.registers),
+      medicalFields.flatMap((field: MedicalFieldObject) =>
+        field.registers.sort(),
+      ),
     ),
   )
     .map((reg) => {

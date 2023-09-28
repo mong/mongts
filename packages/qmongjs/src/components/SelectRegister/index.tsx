@@ -63,6 +63,10 @@ const SelectRegister = (props: selectedRegisterProps) => {
             reg.rname !== "dummy",
         );
 
+  filteredReg.sort((a, b) =>
+    a.full_name > b.full_name ? 1 : b.full_name > a.full_name ? -1 : 0,
+  );
+
   return (
     <>
       <div
