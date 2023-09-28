@@ -11,9 +11,7 @@ import { render } from "@testing-library/react";
 import { Linechart } from "..";
 import { atlasData2 } from "../../../../test/test_data/data";
 
-const barchartinfo = {
-  type: "barchart",
-  data: "qwerty",
+const linechartinfo = {
   x: "year",
   y: "rate",
   label: "bohf",
@@ -22,11 +20,13 @@ const barchartinfo = {
     en: "Number of epilepsy patients per 1,000 inhabitants",
   },
   yLabel: { nb: "Opptaksområder", en: "Referral areas" },
+  format_x: "string",
+  format_y: ",.0%",
 };
 
 test("Standard linechart render", async () => {
   const { container } = render(
-    <Linechart {...barchartinfo} data={atlasData2} lang="nb" />
+    <Linechart {...linechartinfo} data={atlasData2} lang="nb" />,
   );
   expect(container).toMatchSnapshot();
 });
