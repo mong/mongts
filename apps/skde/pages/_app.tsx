@@ -1,5 +1,4 @@
 import "../src/styles/globals.css";
-import React from "react";
 import { useState, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { QueryParamProvider } from "use-query-params";
@@ -22,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     var _mtm = (window._mtm = window._mtm || []);
     _mtm.push({ "mtm.startTime": new Date().getTime(), event: "mtm.Start" });
     var d = document,
