@@ -1,4 +1,5 @@
 import "../src/styles/globals.css";
+import React from "react";
 import { useState, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { QueryParamProvider } from "use-query-params";
@@ -20,6 +21,17 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
+
+  React.useEffect(() => {
+    var _mtm = (window._mtm = window._mtm || []);
+    _mtm.push({ "mtm.startTime": new Date().getTime(), event: "mtm.Start" });
+    var d = document,
+      g = d.createElement("script"),
+      s = d.getElementsByTagName("script")[0];
+    g.async = true;
+    g.src = "https://matomo.skde.org/js/container_hZ91wYd2.js";
+    s.parentNode.insertBefore(g, s);
+  }, []);
 
   return (
     <main className={open_sans.className}>
