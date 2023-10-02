@@ -1,0 +1,311 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": [
+        "aafe_shoandel"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Andel akuttinnleggelser hvor eeg ble utført innen 2 måneder",
+        "en": "Proportion of emergency admissions where eeg was done within 2 months"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "aafe_shoandel21",
+        "aafe_shoandel22"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2021",
+          "2022"
+        ],
+        "en": [
+          "2021",
+          "2022"
+        ]
+      },
+      "format": ",.0%"
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nb": "Årlige gjennomsnittsverdier for perioden 2020-2022.",
+        "en": "Average per year for the period 2020-2022."
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområder",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "aafe_shoandel",
+          "label_no": "Andel opphold med eeg",
+          "label_en": "% admissions with eeg",
+          "typeVar": "number",
+          "format": ",.1%"
+        },
+        {
+          "id": "shoant",
+          "label_no": "Akuttinnleggelser",
+          "label_en": "Emergency admissions",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "aafe_shoant",
+          "label_no": "Innleggelser med eeg",
+          "label_en": "Admissions with eeg",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "rateSnitt",
+      "caption": {
+        "nb": "Andel akuttinnleggelser hvor eeg ble utført innen 2 måneder",
+        "en": "Proportion of emergency admissions where eeg was done within 2 months"
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": 0.247177783188,
+          "min": 0.208226690938,
+          "lag_min": 0.285842158018,
+          "grense": 0.266509970603
+        },
+        {
+          "cluster": 2,
+          "max": 0.379577110317,
+          "min": 0.285842158018,
+          "lag_min": 0.389342110679,
+          "grense": 0.384459610498
+        },
+        {
+          "cluster": 3,
+          "max": 0.509760085427,
+          "min": 0.389342110679,
+          "lag_min": 0.533738157621,
+          "grense": 0.521749121524
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "national": "Norge",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "data": [
+        {
+          "bohf": "Finnmark",
+          "shoant": 30.5,
+          "aafe_shoant": 11,
+          "aafe_shoandel": 0.357712854178,
+          "aafe_shoandel21": 0.374014958694,
+          "aafe_shoandel22": 0.33887231011,
+          "rateSnitt": 0.357712854178
+        },
+        {
+          "bohf": "UNN",
+          "shoant": 76,
+          "aafe_shoant": 31,
+          "aafe_shoandel": 0.407490098429,
+          "aafe_shoandel21": 0.449113311081,
+          "aafe_shoandel22": 0.360256352632,
+          "rateSnitt": 0.407490098429
+        },
+        {
+          "bohf": "Nordland",
+          "shoant": 41.5,
+          "aafe_shoant": 26,
+          "aafe_shoandel": 0.623923983086,
+          "aafe_shoandel21": 0.705369612337,
+          "aafe_shoandel22": 0.551330403471,
+          "rateSnitt": 0.623923983086
+        },
+        {
+          "bohf": "Helgeland",
+          "shoant": 28,
+          "aafe_shoant": 6,
+          "aafe_shoandel": 0.21758790051,
+          "aafe_shoandel21": 0.237924549495,
+          "aafe_shoandel22": 0.193752290506,
+          "rateSnitt": 0.21758790051
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "shoant": 59.5,
+          "aafe_shoant": 32,
+          "aafe_shoandel": 0.533738157621,
+          "aafe_shoandel21": 0.522627696592,
+          "aafe_shoandel22": 0.549639263633,
+          "rateSnitt": 0.533738157621
+        },
+        {
+          "bohf": "St. Olav",
+          "shoant": 107.5,
+          "aafe_shoant": 30.5,
+          "aafe_shoandel": 0.285842158018,
+          "aafe_shoandel21": 0.230199407892,
+          "aafe_shoandel22": 0.330890920786,
+          "rateSnitt": 0.285842158018
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "shoant": 121.5,
+          "aafe_shoant": 55.5,
+          "aafe_shoandel": 0.457312598543,
+          "aafe_shoandel21": 0.432485969354,
+          "aafe_shoandel22": 0.478565471675,
+          "rateSnitt": 0.457312598543
+        },
+        {
+          "bohf": "Førde",
+          "shoant": 40,
+          "aafe_shoant": 17,
+          "aafe_shoandel": 0.434402841063,
+          "aafe_shoandel21": 0.506047731957,
+          "aafe_shoandel22": 0.359593370134,
+          "rateSnitt": 0.434402841063
+        },
+        {
+          "bohf": "Bergen",
+          "shoant": 176.5,
+          "aafe_shoant": 102,
+          "aafe_shoandel": 0.57680800236,
+          "aafe_shoandel21": 0.54582381165,
+          "aafe_shoandel22": 0.60571337952,
+          "rateSnitt": 0.57680800236
+        },
+        {
+          "bohf": "Fonna",
+          "shoant": 63,
+          "aafe_shoant": 24,
+          "aafe_shoandel": 0.379577110317,
+          "aafe_shoandel21": 0.384159382565,
+          "aafe_shoandel22": 0.377106943344,
+          "rateSnitt": 0.379577110317
+        },
+        {
+          "bohf": "Stavanger",
+          "shoant": 93,
+          "aafe_shoant": 28.5,
+          "aafe_shoandel": 0.312910797378,
+          "aafe_shoandel21": 0.288233665717,
+          "aafe_shoandel22": 0.331577500724,
+          "rateSnitt": 0.312910797378
+        },
+        {
+          "bohf": "Østfold",
+          "shoant": 99.5,
+          "aafe_shoant": 37,
+          "aafe_shoandel": 0.369633397427,
+          "aafe_shoandel21": 0.357925767929,
+          "aafe_shoandel22": 0.378821858965,
+          "rateSnitt": 0.369633397427
+        },
+        {
+          "bohf": "Akershus",
+          "shoant": 205.5,
+          "aafe_shoant": 75,
+          "aafe_shoandel": 0.3637872203,
+          "aafe_shoandel21": 0.348872982095,
+          "aafe_shoandel22": 0.379109585191,
+          "rateSnitt": 0.3637872203
+        },
+        {
+          "bohf": "OUS",
+          "shoant": 84,
+          "aafe_shoant": 34,
+          "aafe_shoandel": 0.406134339991,
+          "aafe_shoandel21": 0.362349474878,
+          "aafe_shoandel22": 0.452315102274,
+          "rateSnitt": 0.406134339991
+        },
+        {
+          "bohf": "Lovisenberg",
+          "shoant": 42,
+          "aafe_shoant": 16.5,
+          "aafe_shoandel": 0.423735042813,
+          "aafe_shoandel21": 0.49837145093,
+          "aafe_shoandel22": 0.35113932334,
+          "rateSnitt": 0.423735042813
+        },
+        {
+          "bohf": "Diakonhjemmet",
+          "shoant": 43,
+          "aafe_shoant": 21.5,
+          "aafe_shoandel": 0.509760085427,
+          "aafe_shoandel21": 0.654137979077,
+          "aafe_shoandel22": 0.378775952677,
+          "rateSnitt": 0.509760085427
+        },
+        {
+          "bohf": "Innlandet",
+          "shoant": 138.5,
+          "aafe_shoant": 46.5,
+          "aafe_shoandel": 0.333252435975,
+          "aafe_shoandel21": 0.321123634971,
+          "aafe_shoandel22": 0.347545813935,
+          "rateSnitt": 0.333252435975
+        },
+        {
+          "bohf": "Vestre Viken",
+          "shoant": 181,
+          "aafe_shoant": 45,
+          "aafe_shoandel": 0.247177783188,
+          "aafe_shoandel21": 0.237991303139,
+          "aafe_shoandel22": 0.261487095102,
+          "rateSnitt": 0.247177783188
+        },
+        {
+          "bohf": "Vestfold",
+          "shoant": 49.5,
+          "aafe_shoant": 15.5,
+          "aafe_shoandel": 0.320945393201,
+          "aafe_shoandel21": 0.310510681428,
+          "aafe_shoandel22": 0.332963148457,
+          "rateSnitt": 0.320945393201
+        },
+        {
+          "bohf": "Telemark",
+          "shoant": 71.5,
+          "aafe_shoant": 28.5,
+          "aafe_shoandel": 0.389342110679,
+          "aafe_shoandel21": 0.397591529686,
+          "aafe_shoandel22": 0.384702598316,
+          "rateSnitt": 0.389342110679
+        },
+        {
+          "bohf": "Sørlandet",
+          "shoant": 102.5,
+          "aafe_shoant": 21.5,
+          "aafe_shoandel": 0.208226690938,
+          "aafe_shoandel21": 0.235005256265,
+          "aafe_shoandel22": 0.18179260594,
+          "rateSnitt": 0.208226690938
+        },
+        {
+          "bohf": "Norge",
+          "shoant": 1855.5,
+          "aafe_shoant": 705.5,
+          "aafe_shoandel": 0.380147207601,
+          "aafe_shoandel21": 0.375068045727,
+          "aafe_shoandel22": 0.385452851812,
+          "rateSnitt": 0.380147207601
+        }
+      ]
+    }
+  ]
+}
