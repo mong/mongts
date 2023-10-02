@@ -18,6 +18,82 @@
       "format": ",.0%"
     },
     {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "pfsnitt",
+        "npfsnitt"
+      ],
+      "xLegend": {
+        "nb": [
+          "Pakkeforløp",
+          "Ikke pakkeforløp"
+        ],
+        "en": [
+          "Pakkeforløp",
+          "Ikke pakkeforløp"
+        ]
+      },
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Antall (rate) pakkeforløp/ikke pakkeforløp pr. 10 000 menn",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "pfsnitt",
+        "k_f_us_rate",
+        "restrate"
+      ],
+      "y": "bohf",
+      "xLegend": {
+        "nb": [
+          "I Pakkeforløp",
+          "Med kreftdiagnose",
+          "Uten"
+        ],
+        "en": [
+          "I Pakkeforløp",
+          "Med kreftdiagnose",
+          "Uten"
+        ]
+      },
+      "xLabel": {
+        "nb": "Status ved MR-undersøkelsen, antall (rate) pr. 10 000 menn",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "psasnitt"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Antall (rate) PSA-tester pr. 10 000 menn",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0f"
+    },
+    {
       "type": "table",
       "data": "datasett_1",
       "caption": {
