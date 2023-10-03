@@ -92,7 +92,7 @@ export function FrontPageLayout({
           <div className={styles.footer__bottom}>
             <div className={styles.footer__partner_l}>
               <Link
-                href="http://www.helse-nord.no/"
+                href="https://www.helse-nord.no/"
                 title="Link til Helse Nord"
               >
                 <Image
