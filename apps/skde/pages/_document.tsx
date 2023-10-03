@@ -13,6 +13,10 @@ class MyDocument extends Document<{ lang: string }> {
     const { lang } = this.props;
     return (
       <Html lang={lang}>
+        <meta
+          name="google-site-verification"
+          content="FHmfT4_kWFk4h0B5r_hil2Mz0CAm_keKrt7kUL5BmIM"
+        />
         <Head />
         <body>
           <Main />
