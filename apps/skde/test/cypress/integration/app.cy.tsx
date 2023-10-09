@@ -32,8 +32,19 @@ describe("Navigation", () => {
     // Look for content
     cy.contains(
       "p",
-      "SKDE følger samme behandling av personopplysninger som i"
+      "SKDE følger samme behandling av personopplysninger som i",
     );
+  });
+
+  it("should navigate to cookies page", () => {
+    // Find a link with an href attribute containing "informasjonskapsler" and click it
+    cy.get('a[href*="informasjonskapsler"]').click();
+
+    // The new url should include "/informasjonskapsler"
+    cy.url().should("include", "/informasjonskapsler");
+
+    // Look for content
+    cy.contains("p", "Dette nettstedet benytter informasjonskapsler");
   });
 });
 
