@@ -48,6 +48,12 @@ export const Footer: React.FC = () => {
           <Link title="Link til personvern" href={`/personvern`}>
             Personvern
           </Link>
+          <Link
+            href="/informasjonskapsler"
+            title="Link til informasjon om informasjonskapsler"
+          >
+            Informasjonskapsler
+          </Link>
         </div>
       </div>
       <div className={style.footerBottom}>

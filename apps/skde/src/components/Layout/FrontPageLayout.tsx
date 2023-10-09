@@ -87,6 +87,12 @@ export function FrontPageLayout({
               <Link href="/personvern" title="link til personvern">
                 Personvern
               </Link>
+              <Link
+                href="/informasjonskapsler"
+                title="Link til informasjon om informasjonskapsler"
+              >
+                Informasjonskapsler
+              </Link>
             </div>
           </div>
           <div className={styles.footer__bottom}>
