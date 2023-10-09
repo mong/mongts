@@ -10,13 +10,13 @@ Informasjonskapsler (cookies) er informasjonselementer som plasseres på datamas
 
 Alle som besøker et nettsted skal ha informasjon om at nettstedet benytter informasjonskapsler. Du må godkjenne at informasjonskapsler blir benyttet. Godkjenningen gjøres gjennom innstillingene i din nettleser.
 
-Du kan hindre at slike informasjonskapsler lagres ved å endre på nettleserens innstillinger. Da vil imidlertid sidene ikke fungere optimalt. Du kan også slette informasjonskapsler i nettleseren eller ved filbehandling. [Slik administrerer du informasjonskapsler](https://nettvett.no/slik-administrer-du-informasjonskapsler/).
+Du kan hindre at slike informasjonskapsler lagres ved å endre på nettleserens innstillinger. Du kan også slette informasjonskapsler i nettleseren eller ved filbehandling. [Slik administrerer du informasjonskapsler](https://nettvett.no/slik-administrer-du-informasjonskapsler/).
 
 Du har rett til å få vite om og godkjenne hvilke opplysninger som behandles, hva formålet med behandlingen er og hvem som behandler opplysningene, jf. ekomloven § 2-7b.
 
 ### Informasjonskapsler i bruk
 
-Felles nettløsning for spesialisthelsetjenesten benytter informasjonskapsler til å samle inn anonymisert statistikk.
+Senter for klinisk dokumentasjon og evaluering (SKDE) benytter informasjonskapsler til å samle inn anonymisert statistikk.
 
 | Kapsler    | Benyttes av | Beskrivelse                                                                   |
 | ---------- | ----------- | ----------------------------------------------------------------------------- |
