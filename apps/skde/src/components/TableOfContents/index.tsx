@@ -19,7 +19,7 @@ type TableOfContentsProps = {
   tocData: TocData;
 };
 
-const TocDataToList = (tocData: TocData, parentID?: string) => {
+const TocDataToList = ({ tocData, parentID }) => {
   const [expanded, setExpanded] = React.useState<string>("none");
 
   return (
@@ -38,7 +38,7 @@ const TocDataToList = (tocData: TocData, parentID?: string) => {
             setExpanded={setExpanded}
             linkTitle={content.elemID}
           >
-            {TocDataToList(content.children, href)}
+            <TocDataToList tocData={content.children} parentID={href} />
           </ListItem>
         ) : (
           <ListItem
@@ -61,7 +61,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({
   const [expanded, setExpanded] = React.useState<boolean>(false);
   const handleChange = () => setExpanded((state) => !state);
 
-  const TOCOrderedList = TocDataToList(tocData);
+  const TOCOrderedList = <TocDataToList tocData={tocData} parentID={null} />;
 
   return (
     <>
