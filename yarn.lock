@@ -1898,11 +1898,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/code-coverage@npm:3.12.1":
-  version: 3.12.1
-  resolution: "@cypress/code-coverage@npm:3.12.1"
+"@cypress/code-coverage@npm:3.12.3":
+  version: 3.12.3
+  resolution: "@cypress/code-coverage@npm:3.12.3"
   dependencies:
-    "@cypress/webpack-preprocessor": ^5.11.0
+    "@cypress/webpack-preprocessor": ^6.0.0
     chalk: 4.1.2
     dayjs: 1.11.9
     debug: 4.3.4
@@ -1917,7 +1917,7 @@ __metadata:
     babel-loader: ^8.3 || ^9
     cypress: "*"
     webpack: ^4 || ^5
-  checksum: 02e41a418f71a3763eb45c135b29121504a6b444ce6a95630b80cba84b8ed9dae8f5fd8529178149e237278f2f9c4ad70982bcdbe454ff72fccf2acb3c6f9ae2
+  checksum: ed8654248c8538219e5afcb61d5b8dd8832e37037986c755245974ce5937447e5d3831f9d05aacc34c7f98b1b366532ea3f71e5d84278eced8767f831873fa9b
   languageName: node
   linkType: hard
 
@@ -1947,9 +1947,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/webpack-preprocessor@npm:^5.11.0":
-  version: 5.17.1
-  resolution: "@cypress/webpack-preprocessor@npm:5.17.1"
+"@cypress/webpack-preprocessor@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@cypress/webpack-preprocessor@npm:6.0.0"
   dependencies:
     bluebird: 3.7.1
     debug: ^4.3.4
@@ -1957,9 +1957,9 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.1
     "@babel/preset-env": ^7.0.0
-    babel-loader: ^8.0.2 || ^9
+    babel-loader: ^8.3 || ^9
     webpack: ^4 || ^5
-  checksum: 4dc2babc77df5fad7eb16629ca716f73df930739563be6bff4e336f9a8f08cf80915a7eed2ea582294ed67336313b62cc30d04ebe3fc2a9b1e48e1445be3c297
+  checksum: 257c470e5a3bf9795fd7d388bdc0e91b3da87dbb94ec4aa70966e63b8d0640efedf3ad9258b84e83b99a112fa5dbdbbc83b4aaeeeb5511a91e2ee2c8a659df43
   languageName: node
   linkType: hard
 
@@ -5515,24 +5515,6 @@ __metadata:
   peerDependencies:
     react: ^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0
   checksum: 1b073c7e4608c03f3200eb17dee325ad4ced21292171c7b774001e94f61e02237fbbbda96abf24de453230e4cb2209571e8fffe7bd9270cda58511389efc9ada
-  languageName: node
-  linkType: hard
-
-"@visx/axis@npm:3.3.0":
-  version: 3.3.0
-  resolution: "@visx/axis@npm:3.3.0"
-  dependencies:
-    "@types/react": "*"
-    "@visx/group": 3.3.0
-    "@visx/point": 3.3.0
-    "@visx/scale": 3.3.0
-    "@visx/shape": 3.3.0
-    "@visx/text": 3.3.0
-    classnames: ^2.3.1
-    prop-types: ^15.6.0
-  peerDependencies:
-    react: ^16.3.0-0 || ^17.0.0-0 || ^18.0.0-0
-  checksum: b82d5017ca01c23b0f5c3dbf23d99ea28dcfd37bac8f15d0397d6ba0ac3d569dd935f7cc90588a6c1c1bee185af444539ecde1d653484c0922131f7ab43c5928
   languageName: node
   linkType: hard
 
@@ -20498,7 +20480,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "skde@workspace:apps/skde"
   dependencies:
-    "@cypress/code-coverage": 3.12.1
+    "@cypress/code-coverage": 3.12.3
     "@emotion/react": 11.11.1
     "@emotion/styled": 11.11.0
     "@mui/icons-material": 5.14.13
