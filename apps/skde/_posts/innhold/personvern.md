@@ -1,10 +1,8 @@
 ---
 filename: personvern
 title: Personvern
-ingress:
+ingress: Personvern handler her om hvordan nettstedet samler inn og bruker informasjonen fra besøkende.
 ---
-
-> Personvern handler her om hvordan nettstedet samler inn og bruker informasjonen fra besøkende.
 
 ### Generelt om personvern
 

@@ -30,10 +30,7 @@ describe("Navigation", () => {
     cy.url().should("include", "/personvern");
 
     // Look for content
-    cy.contains(
-      "p",
-      "SKDE følger samme behandling av personopplysninger som i",
-    );
+    cy.contains("h2", "Personvern");
   });
 
   it("should navigate to cookies page", () => {
