@@ -1,0 +1,246 @@
+{
+"innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snittrate"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Prosentdel i private rehabiliteringsinstitusjonar",
+        "en": "Percentage in rehabilitation"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "Rate.2018",
+        "Rate.2019",
+        "Rate.2020"
+      ],
+      "annualVarLabels": {
+        "nn": ["2018", "2019", "2020"],
+        "en": ["2018", "2019", "2020"]
+      }
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Prosentdel i private rehabiliteringsinstitusjonar",
+        "en": "Percentage in rehabilitation"
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "Rate.2018",
+          "label_no": "Prosentdel 2018",
+          "label_en": "Percentage 2018",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Rate.2019",
+          "label_no": "Prosentdel 2019",
+          "label_en": "Percentage 2019",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Rate.2020",
+          "label_no": "Prosentdel 2020",
+          "label_en": "Percentage 2020",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "Snittrate",
+      "caption": {
+        "nn": "Gjennomsnittleg prosentdel 2018-2020",
+        "en": "Mean percentage 2018-2020"
+      },
+      "jenks": [
+        {
+          "grense": 0.0511
+        },
+        {
+          "grense": 0.103
+        },
+        {
+          "grense": 0.1876
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data": [
+	  {
+    "bohf": "Ahus",
+    "Snittrate": 5.3,
+    "Rate.2020": 4.2,
+    "Rate.2019": 5.5,
+    "Rate.2018": 6.1
+ 	 },
+	  {
+    "bohf": "Bergen",
+    "Snittrate": 6.5,
+    "Rate.2020": 4.2,
+    "Rate.2019": 6.0,
+    "Rate.2018": 9.2
+	  },
+  	{
+    "bohf": "Diakonhjemmet",
+    "Snittrate": 3.8,
+    "Rate.2020": 1.5,
+    "Rate.2019": 3.5,
+    "Rate.2018": 6.6
+ 	 },
+  	{
+    "bohf": "Finnmark",
+    "Snittrate": 7.6,
+    "Rate.2020": 5.8,
+    "Rate.2019": 6.5,
+    "Rate.2018": 10.7
+	  },
+ 	 {
+    "bohf": "Fonna",
+    "Snittrate": 2.9,
+    "Rate.2020": 2.1,
+    "Rate.2019": 3.5,
+    "Rate.2018": 3.1
+ 	 },
+	  {
+    "bohf": "Førde",
+    "Snittrate": 7.6,
+    "Rate.2020": 6.7,
+    "Rate.2019": 6.7,
+    "Rate.2018": 9.2
+	  },
+ 	 {
+    "bohf": "Helgeland",
+    "Snittrate": 3.3,
+    "Rate.2020": 3.0,
+    "Rate.2019": 2.4,
+    "Rate.2018": 4.6
+  	},
+  	{
+    "bohf": "Innlandet",
+    "Snittrate": 7.0,
+    "Rate.2020": 7.0,
+    "Rate.2019": 6.0,
+    "Rate.2018": 7.8
+ 	 },
+  	{
+    "bohf": "Lovisenberg",
+    "Snittrate": 5.1,
+    "Rate.2020": 3.7,
+    "Rate.2019": 5.8,
+    "Rate.2018": 5.8
+  	},
+  	{
+    "bohf": "Møre og Romsdal",
+    "Snittrate": 21.3,
+    "Rate.2020": 19.5,
+    "Rate.2019": 19.5,
+    "Rate.2018": 25.1
+  	},
+ 	 {
+    "bohf": "Nord-Trøndelag",
+    "Snittrate": 10.4,
+    "Rate.2020": 10.7,
+    "Rate.2019": 11.5,
+    "Rate.2018": 8.9
+ 	 },
+  	{
+    "bohf": "Nordland",
+    "Snittrate": 18.8,
+    "Rate.2020": 18.2,
+    "Rate.2019": 15.7,
+    "Rate.2018": 22.4
+ 	 },
+ 	 {
+    "bohf": "Noreg",
+    "Snittrate": 7.7,
+    "Rate.2020": 6.3,
+    "Rate.2019": 7.6,
+    "Rate.2018": 9.2
+ 	 },
+ 	 {
+    "bohf": "OUS",
+    "Snittrate": 5.6,
+    "Rate.2020": 4.6,
+    "Rate.2019": 4.1,
+    "Rate.2018": 8.0
+ 	 },
+	  {
+    "bohf": "St. Olavs",
+    "Snittrate": 18.8,
+    "Rate.2020": 18.0,
+    "Rate.2019": 18.8,
+    "Rate.2018": 19.5
+  	},
+  	{
+    "bohf": "Stavanger",
+    "Snittrate": 5.2,
+    "Rate.2020": 5.2,
+    "Rate.2019": 5.9,
+    "Rate.2018": 4.5
+  	},
+  	{
+    "bohf": "Sørlandet",
+    "Snittrate": 4.1,
+    "Rate.2020": 3.0,
+    "Rate.2019": 3.8,
+    "Rate.2018": 5.7
+  	},
+  	{
+    "bohf": "Telemark",
+    "Snittrate": 0.5,
+    "Rate.2020": 1.0,
+    "Rate.2019": 0.2,
+    "Rate.2018": 0.3
+  	},
+  	{
+    "bohf": "UNN",
+    "Snittrate": 7.5,
+    "Rate.2020": 1.9,
+    "Rate.2019": 5.7,
+    "Rate.2018": 14.9
+  	},
+  	{
+    "bohf": "Vestfold",
+    "Snittrate": 1.0,
+    "Rate.2020": 0.7,
+    "Rate.2019": 1.0,
+    "Rate.2018": 1.4
+  	},
+  	{
+    "bohf": "Vestre Viken",
+    "Snittrate": 10.3,
+    "Rate.2020": 7.1,
+    "Rate.2019": 12.9,
+    "Rate.2018": 10.9
+  	},
+  	{
+    "bohf": "Østfold",
+    "Snittrate": 5.8,
+    "Rate.2020": 3.3,
+    "Rate.2019": 4.4,
+    "Rate.2018": 9.9
+        }
+      ]
+    }
+  ]}
