@@ -1,0 +1,441 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["prosrehab", "proslms", "prostrening"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Tal pasientar per 10,000 innbyggarar",
+        "en": "Number of patients per 10,000 inhabitants"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "xLegend": {
+        "nn": ["Berre spesialisthelsetenesta", "Begge", "Berre allmennlegetenesta"],
+        "en": ["Only specialist health services", "Both", "Only general practitioners"]
+      },
+      "format": ",.0f"
+    },
+{
+      "type": "barchart",
+      "data": "qwerty",
+      "x": [
+        "snitt_prosentdel"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Tal pasientar per 10,000 innbyggarar",
+        "en": "Number of patients per 10,000 inhabitants"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "errorBars": [
+       "Lågast95KI",
+        "Hogast95KI"
+      ],
+    "format": ",.0f"
+  },
+  {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Gjennomsnittsverdier for perioden 2018–2022",
+        "en": "Average per year for the period 2018–2022"
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "snitt_prosentdel",
+          "label_no": "Tal pasientar per 10 000 innbyggarar",
+          "label_en": "Number of patients per 10 000 population",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id":  "snitt_rehabilitering",
+          "label_no": "Tal pasientar",
+          "label_en": "Number of inhabitants",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id":  "snitt_indekseoppholod",
+          "label_no": "Tal innbyggarar",
+          "label_en": "Population",
+          "typeVar": "number",
+          "format": ",.0f"
+             }
+           ]
+          },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "snitt_prosentdel",
+      "caption": {
+        "nn": "Overordna pasientutval",
+        "en": "Patient population"
+      },
+      "jenks": [
+        {
+          "grense": 104
+        },
+        {
+          "grense": 132
+        },
+        {
+          "grense": 176
+        }
+      ],
+       "format": ",.0f"
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data": [
+       {
+    "bohf": "Akershus",
+    "snitt_rehabilitering": 5546,
+    "snitt_indekseoppholod": 449731,
+    "snitt_prosentdel": 119,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 20.0,
+    "proslms": 19.4,
+    "prostrening": 57.6
+  },
+  {
+    "bohf": "Bergen",
+    "snitt_rehabilitering": 4075,
+    "snitt_indekseoppholod": 358789,
+    "snitt_prosentdel": 114,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 27.7,
+    "proslms": 18.6,
+    "prostrening": 27.3
+  },
+  {
+    "bohf": "Diakonhjemmet",
+    "snitt_rehabilitering": 578,
+    "snitt_indekseoppholod": 117219,
+    "snitt_prosentdel": 51,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 10.7,
+    "proslms": 7.0,
+    "prostrening": 19.3
+  },
+  {
+    "bohf": "Finnmark",
+    "snitt_rehabilitering": 925,
+    "snitt_indekseoppholod": 60540,
+    "snitt_prosentdel": 157,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 31.7,
+    "proslms": 30.9,
+    "prostrening": 54.9
+  },
+  {
+    "bohf": "Fonna",
+    "snitt_rehabilitering": 1432,
+    "snitt_indekseoppholod": 140304,
+    "snitt_prosentdel": 104,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 23.6,
+    "proslms": 11.7,
+    "prostrening": 37.8
+  },
+  {
+    "bohf": "Førde",
+    "snitt_rehabilitering": 873,
+    "snitt_indekseoppholod": 85281,
+    "snitt_prosentdel": 107,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 23.8,
+    "proslms": 15.1,
+    "prostrening": 35.7
+  },
+  {
+    "bohf": "Helgeland",
+    "snitt_rehabilitering": 712,
+    "snitt_indekseoppholod": 62547,
+    "snitt_prosentdel": 119,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 23.4,
+    "proslms": 17.2,
+    "prostrening": 47.6
+  },
+  {
+    "bohf": "Innlandet",
+    "snitt_rehabilitering": 3492,
+    "snitt_indekseoppholod": 274483,
+    "snitt_prosentdel": 133,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 26.5,
+    "proslms": 25.3,
+    "prostrening": 46.6
+  },
+  {
+    "bohf": "Lovisenberg",
+    "snitt_rehabilitering": 918,
+    "snitt_indekseoppholod": 117219,
+    "snitt_prosentdel": 82,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 17.6,
+    "proslms": 12.6,
+    "prostrening": 26.2
+  },
+  {
+    "bohf": "Møre og Romsdal",
+    "snitt_rehabilitering": 2706,
+    "snitt_indekseoppholod": 209533,
+    "snitt_prosentdel": 133,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 26.5,
+    "proslms": 21.8,
+    "prostrening": 51.6
+  },
+  {
+    "bohf": "Nord-Trøndelag",
+    "snitt_rehabilitering": 1497,
+    "snitt_indekseoppholod": 106472,
+    "snitt_prosentdel": 147,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 30.7,
+    "proslms": 21.5,
+    "prostrening": 55.3
+  },
+  {
+    "bohf": "Nordland",
+    "snitt_rehabilitering": 1354,
+    "snitt_indekseoppholod": 111035,
+    "snitt_prosentdel": 126,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 29.6,
+    "proslms": 18.9,
+    "prostrening": 36.3
+  },
+  {
+    "bohf": "Noreg",
+    "snitt_rehabilitering": 52415,
+    "snitt_indekseoppholod": 4243543,
+    "snitt_prosentdel": 123,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 35.5,
+    "proslms": 28.7,
+    "prostrening": 58.8
+  },
+  {
+    "bohf": "OUS",
+    "snitt_rehabilitering": 2015,
+    "snitt_indekseoppholod": 216544,
+    "snitt_prosentdel": 94,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 20.8,
+    "proslms": 12.8,
+    "prostrening": 31.5
+  },
+  {
+    "bohf": "St. Olav",
+    "snitt_rehabilitering": 3459,
+    "snitt_indekseoppholod": 265538,
+    "snitt_prosentdel": 132,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 28.7,
+    "proslms": 25.1,
+    "prostrening": 40.7
+  },
+  {
+    "bohf": "Stavanger",
+    "snitt_rehabilitering": 2561,
+    "snitt_indekseoppholod": 282917,
+    "snitt_prosentdel": 88,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 13.8,
+    "proslms": 12.7,
+    "prostrening": 46.8
+  },
+  {
+    "bohf": "Sørlandet",
+    "snitt_rehabilitering": 3310,
+    "snitt_indekseoppholod": 239961,
+    "snitt_prosentdel": 138,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 29.1,
+    "proslms": 24.4,
+    "prostrening": 46.2
+  },
+  {
+    "bohf": "Telemark",
+    "snitt_rehabilitering": 1905,
+    "snitt_indekseoppholod": 139504,
+    "snitt_prosentdel": 139,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 32.3,
+    "proslms": 23.6,
+    "prostrening": 36.4
+  },
+  {
+    "bohf": "UNN",
+    "snitt_rehabilitering": 1828,
+    "snitt_indekseoppholod": 155034,
+    "snitt_prosentdel": 121,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 24.3,
+    "proslms": 26.1,
+    "prostrening": 39.8
+  },
+  {
+    "bohf": "Vestfold",
+    "snitt_rehabilitering": 3882,
+    "snitt_indekseoppholod": 196405,
+    "snitt_prosentdel": 196,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 45.7,
+    "proslms": 35.1,
+    "prostrening": 49.9
+  },
+  {
+    "bohf": "Vestre Viken",
+    "snitt_rehabilitering": 4854,
+    "snitt_indekseoppholod": 382240,
+    "snitt_prosentdel": 124,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 23.6,
+    "proslms": 22.9,
+    "prostrening": 47.9
+  },
+  {
+    "bohf": "Østfold",
+    "snitt_rehabilitering": 4468,
+    "snitt_indekseoppholod": 252499,
+    "snitt_prosentdel": 176,
+    "Lågast95KI": 0,
+    "Hogast95KI": 0,
+    "Rate.2018": 0,
+    "Rate.2019": 0,
+    "Rate.2020": 0,
+    "Rate.2021": 0,
+    "prosrehab": 38.0,
+    "proslms": 30.4,
+    "prostrening": 57.3
+  }
+      ]
+    }
+  ]
+}
