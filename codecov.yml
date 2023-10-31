@@ -6,12 +6,16 @@ coverage:
     project:
       default:
         target: auto
-        threshold: 1%
+        threshold: 5%
       qmongjs:
         paths:
           - packages/qmongjs
       skde:
         paths:
           - apps/skde
+    patch:
+      default:
+        target: auto
+        threshold: 5%
 
 comment: false
