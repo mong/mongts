@@ -1,30 +1,69 @@
 import { GetStaticProps, GetStaticPaths } from "next";
+import { useEffect, useState } from "react";
 import fs from "fs";
 import { join } from "path";
-import matter from "gray-matter";
 
 import Page, { PageContentProps } from "../../../src/components/Static";
 
 const CONTENT_DIR = join(process.cwd(), "_posts/helseatlas/statisk");
 
-const Content = ({ content, frontMatter }: PageContentProps) => {
-  return <Page content={content} frontMatter={frontMatter} />;
+const Content = ({ slug, strapiHost }: PageContentProps) => {
+  const [content, setContent] = useState<PageContentProps>({
+    content: "",
+    frontMatter: { title: "", lang: "nb" },
+    slug: slug,
+    strapiHost: strapiHost,
+  });
+
+  if (content.slug !== slug) {
+    setContent({ ...content, slug: slug });
+  }
+
+  useEffect(() => {
+    const fetchPageContent = async () => {
+      const response = await fetch(
+        `${content.strapiHost}/api/static-pages?filters[name][$eq]=${content.slug}`,
+      );
+
+      // TODO: Add error handling if fetch fails
+
+      const json = await response.json();
+
+      let body = "";
+      let frontMatter = {
+        fileName: "",
+        title: "",
+        lang: "nb",
+      } as PageContentProps["frontMatter"];
+
+      if (json.data.length === 1) {
+        const pageAttr = json.data[0].attributes;
+        body = pageAttr.body;
+        let { name, title, lang } = pageAttr;
+        const frontMatter = { filename: name, title, lang };
+      }
+
+      setContent({
+        content: body,
+        frontMatter,
+        slug: content.slug,
+        strapiHost: content.strapiHost,
+      });
+    };
+
+    fetchPageContent();
+  }, [content.slug, content.strapiHost]);
+
+  return <Page content={content.content} frontMatter={content.frontMatter} />;
 };
 
 export default Content;
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const fullPath = join(CONTENT_DIR, `${params.slug}.md`);
-  const file = fs.readFileSync(fullPath);
-
-  const { content, data } = matter(file);
-
   return {
     props: {
-      content,
-      frontMatter: {
-        ...data,
-      },
+      slug: params.slug,
+      strapiHost: process.env.STRAPI_PUBLIC_API_HOST ?? "http://localhost:1337",
     },
   };
 };

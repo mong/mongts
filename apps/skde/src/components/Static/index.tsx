@@ -10,6 +10,8 @@ export interface PageContentProps {
     lang: "nb" | "en" | "nn";
     ingress?: string;
   };
+  slug?: string;
+  strapiHost?: string;
 }
 
 export const PageContent: React.FC<PageContentProps> = ({

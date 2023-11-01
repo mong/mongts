@@ -36,12 +36,14 @@ jobs:
       - name: Test build
         env:
           NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
+          STRAPI_PUBLIC_API_HOST: https://prod-strapi-api.skde.org
         run: |
           yarn run export
       - name: Build and sync main to S3 bucket skde.org
         if: github.ref == 'refs/heads/main'
         env:
           NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
+          STRAPI_PUBLIC_API_HOST: https://prod-strapi-api.skde.org
         run: |
           yarn run export
           aws s3 sync apps/skde/out s3://skde.org \
@@ -52,6 +54,7 @@ jobs:
         if: github.ref == 'refs/heads/develop'
         env:
           NEXT_PUBLIC_API_HOST: https://qa-mong-api.skde.org
+          STRAPI_PUBLIC_API_HOST: https://qa-strapi-api.skde.org
         run: |
           yarn run export
           aws s3 sync apps/skde/out s3://qa.skde.org \
@@ -62,6 +65,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         env:
           NEXT_PUBLIC_API_HOST: https://verify-mong-api.skde.org
+          STRAPI_PUBLIC_API_HOST: https://verify-strapi-api.skde.org
         run: |
           yarn run export
           aws s3 sync apps/skde/out s3://verify.skde.org \
