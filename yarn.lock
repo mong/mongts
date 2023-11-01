@@ -5366,6 +5366,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@visx/axis@npm:3.4.1":
+  version: 3.4.1
+  resolution: "@visx/axis@npm:3.4.1"
+  dependencies:
+    "@types/react": "*"
+    "@visx/group": 3.3.0
+    "@visx/point": 3.3.0
+    "@visx/scale": 3.3.0
+    "@visx/shape": 3.3.0
+    "@visx/text": 3.3.0
+    classnames: ^2.3.1
+    prop-types: ^15.6.0
+  peerDependencies:
+    react: ^16.3.0-0 || ^17.0.0-0 || ^18.0.0-0
+  checksum: 7e23043186ffd7b4d5472ba7eddfe013afb59634129168d65afd2aa5b6cb1cbe753502a704f6142df4d4bcee4e58bb4fed02fde00c57087aeb3a5dbfb67f4d59
+  languageName: node
+  linkType: hard
+
 "@visx/bounds@npm:3.3.0":
   version: 3.3.0
   resolution: "@visx/bounds@npm:3.3.0"
@@ -5468,12 +5486,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@visx/react-spring@npm:3.4.0":
-  version: 3.4.0
-  resolution: "@visx/react-spring@npm:3.4.0"
+"@visx/react-spring@npm:3.4.1":
+  version: 3.4.1
+  resolution: "@visx/react-spring@npm:3.4.1"
   dependencies:
     "@types/react": "*"
-    "@visx/axis": 3.4.0
+    "@visx/axis": 3.4.1
     "@visx/grid": 3.3.0
     "@visx/scale": 3.3.0
     "@visx/text": 3.3.0
@@ -5482,7 +5500,7 @@ __metadata:
   peerDependencies:
     "@react-spring/web": ^9.4.5
     react: ^16.3.0-0 || ^17.0.0 || ^18.0.0
-  checksum: 352015be95925345225a7106993e8e5fbb21bf3788dcb4c59df21d0c41e7af165abca39a404a708e0036e4b2ab2aa5d164fbda6d7f6f5e583e42ab6153192fd9
+  checksum: 859737903873cb5600e4d9be282dccf8d99a87c69660feb7e1ebe0c5a4b019ffcc49a4dd28778ce6ac9d8b54df3d7683a258e03740ba639ce77f97dcddbeea0a
   languageName: node
   linkType: hard
 
@@ -5603,18 +5621,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@visx/xychart@npm:3.4.0":
-  version: 3.4.0
-  resolution: "@visx/xychart@npm:3.4.0"
+"@visx/xychart@npm:3.4.1":
+  version: 3.4.1
+  resolution: "@visx/xychart@npm:3.4.1"
   dependencies:
     "@types/lodash": ^4.14.172
     "@types/react": "*"
     "@visx/annotation": 3.3.0
-    "@visx/axis": 3.4.0
+    "@visx/axis": 3.4.1
     "@visx/event": 3.3.0
     "@visx/glyph": 3.3.0
     "@visx/grid": 3.3.0
-    "@visx/react-spring": 3.4.0
+    "@visx/react-spring": 3.4.1
     "@visx/responsive": 3.3.0
     "@visx/scale": 3.3.0
     "@visx/shape": 3.3.0
@@ -5631,7 +5649,7 @@ __metadata:
   peerDependencies:
     "@react-spring/web": ^9.4.5
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 8a6ef8db8f7ca89b9d33322d09657a68d63cbff9dadb14cd53681618902e72601b22116ceb0d20ede2c27bd833b31b466c6d6782490674dd96ed6fa7a09c81b5
+  checksum: 689e2c177fa9da8a6c6edb95043cb954335dc4550bf3c2d73f040c6925093387386e1657b9e4306435acf6f7947695a125d3abf96961911d8ba994abd244a545
   languageName: node
   linkType: hard
 
@@ -20278,7 +20296,7 @@ __metadata:
     "@visx/axis": 3.4.0
     "@visx/group": 3.3.0
     "@visx/scale": 3.3.0
-    "@visx/xychart": 3.4.0
+    "@visx/xychart": 3.4.1
     cypress: 13.3.1
     d3-array: 3.2.4
     d3-format: 3.1.0
