@@ -1,7 +1,7 @@
 name: Deploy app to AWS
 on:
   push:
-    branches: [main, develop]
+    branches: [main, develop, 387-strapi-cms]
     paths-ignore:
       - "apps/api/**"
   pull_request:
@@ -36,14 +36,14 @@ jobs:
       - name: Test build
         env:
           NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
-          STRAPI_PUBLIC_API_HOST: https://prod-strapi-api.skde.org
+          STRAPI_PUBLIC_API_HOST: https://prod-mong-strapi.skde.org
         run: |
           yarn run export
       - name: Build and sync main to S3 bucket skde.org
         if: github.ref == 'refs/heads/main'
         env:
           NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
-          STRAPI_PUBLIC_API_HOST: https://prod-strapi-api.skde.org
+          STRAPI_PUBLIC_API_HOST: https://prod-mong-strapi.skde.org
         run: |
           yarn run export
           aws s3 sync apps/skde/out s3://skde.org \
@@ -51,10 +51,10 @@ jobs:
             --delete \
             --cache-control "public, max-age=1, s-maxage=1"
       - name: Build and sync develop to S3 bucket qa.skde.org
-        if: github.ref == 'refs/heads/develop'
+        if: github.ref == 'refs/heads/387-strapi-cms'
         env:
           NEXT_PUBLIC_API_HOST: https://qa-mong-api.skde.org
-          STRAPI_PUBLIC_API_HOST: https://qa-strapi-api.skde.org
+          STRAPI_PUBLIC_API_HOST: https://qa-mong-strapi.skde.org
         run: |
           yarn run export
           aws s3 sync apps/skde/out s3://qa.skde.org \
@@ -65,7 +65,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         env:
           NEXT_PUBLIC_API_HOST: https://verify-mong-api.skde.org
-          STRAPI_PUBLIC_API_HOST: https://verify-strapi-api.skde.org
+          STRAPI_PUBLIC_API_HOST: https://qa-mong-strapi.skde.org
         run: |
           yarn run export
           aws s3 sync apps/skde/out s3://verify.skde.org \

@@ -1,14 +1,14 @@
 name: Publish Docker image
 on:
   push:
-    branches: [main, develop]
+    branches: [main, develop, 387-strapi-cms]
     paths-ignore:
-      - "apps/strapi/**"
+      - "apps/api/**"
       - "apps/skde/**"
   pull_request:
     branches: [main, develop, dependency_updates]
     paths-ignore:
-      - "apps/strapi/**"
+      - "apps/api/**"
       - "apps/skde/**"
 
 concurrency:
@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   push_to_registries:
-    name: Push Docker image to docker hub
+    name: Build and push Strapi Docker image to docker hub
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -27,32 +27,30 @@ jobs:
       - name: Set release variables
         if: github.ref == 'refs/heads/main'
         run: |
-          echo "S3Key='prod-mong-api.json'" >> $GITHUB_ENV
-          echo "env_name=prod-mong-api" >> $GITHUB_ENV
+          echo "S3Key='prod-mong-strapi.json'" >> $GITHUB_ENV
+          echo "env_name=prod-mong-strapi" >> $GITHUB_ENV
           echo "version_label=${GITHUB_SHA:0:7}_prod_${RANDOM}" >> $GITHUB_ENV
           echo "descr='Release tag deploy'" >> $GITHUB_ENV
-          echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_PROD }}" >> $GITHUB_ENV
       - name: Set QA variables
-        if: github.ref == 'refs/heads/develop'
+        if: github.ref == 'refs/heads/387-strapi-cms'
         run: |
-          echo "S3Key='qa-mong-api.json'" >> $GITHUB_ENV
-          echo "env_name=qa-mong-api" >> $GITHUB_ENV
+          echo "S3Key='qa-mong-strapi.json'" >> $GITHUB_ENV
+          echo "env_name=qa-mong-strapi" >> $GITHUB_ENV
           echo "version_label=${GITHUB_SHA:0:7}_qa_${RANDOM}" >> $GITHUB_ENV
           echo "descr='Main commits deploy'" >> $GITHUB_ENV
-          echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_QA }}" >> $GITHUB_ENV
       - name: Check out the repo
         uses: actions/checkout@v4.1.0
       - run: yarn install
-      - run: yarn workspace api run build
+      - run: yarn workspace strapi run build
       - name: Lint Dockerfile
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: "apps/api/Dockerfile"
+          dockerfile: "apps/strapi/Dockerfile"
       - name: Prepare
         id: docker_meta
         uses: docker/metadata-action@v5.0.0
         with:
-          images: hnskde/mong-api
+          images: hnskde/mong-strapi
           tags: |
             type=ref,event=branch
             type=ref,event=pr
@@ -67,8 +65,8 @@ jobs:
       - name: Build and push to Docker Hub
         uses: docker/build-push-action@v5.0.0
         with:
-          context: ./apps/api
-          file: ./apps/api/Dockerfile
+          context: ./apps/strapi
+          file: ./apps/strapi/Dockerfile
           build-args: version=${{ env.version_label }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
@@ -78,14 +76,5 @@ jobs:
       - name: Update elasticbeanstalk
         if: github.event_name != 'pull_request'
         run: |
-          aws elasticbeanstalk create-application-version --application-name mong-api --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-247247832514",S3Key=${{ env.S3Key }} --version-label ${{ env.version_label }} --description ${{ env.descr }}
+          aws elasticbeanstalk create-application-version --application-name mong-strapi --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-247247832514",S3Key=${{ env.S3Key }} --version-label ${{ env.version_label }} --description ${{ env.descr }}
           aws elasticbeanstalk update-environment --environment-name ${{ env.env_name }} --version-label ${{ env.version_label }}
-          if [[ ${{ github.ref }} == 'refs/heads/main' ]]; then
-            aws elasticbeanstalk update-environment --environment-name verify-mong-api --version-label ${{ env.version_label }}
-          fi
-      - name: Create CloudFront invalidation
-        if: github.event_name != 'pull_request'
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id  ${{ env.cloudfront_id }}\
-            --paths "/*"
