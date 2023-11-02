@@ -22,7 +22,7 @@ const Content = ({ slug, strapiHost }: PageContentProps) => {
   useEffect(() => {
     const fetchPageContent = async () => {
       const response = await fetch(
-        `${content.strapiHost}/api/static-pages?filters[name][$eq]=${content.slug}`,
+        `${content.strapiHost}/api/static-pages?filters[name][$eq]=${content.slug}&locale=${content.frontMatter.lang}`,
       );
 
       // TODO: Add error handling if fetch fails
@@ -40,7 +40,11 @@ const Content = ({ slug, strapiHost }: PageContentProps) => {
         const pageAttr = json.data[0].attributes;
         body = pageAttr.body;
         let { name, title, lang } = pageAttr;
-        const frontMatter = { filename: name, title, lang };
+        frontMatter = {
+          filename: name,
+          title,
+          lang,
+        } as PageContentProps["frontMatter"];
       }
 
       setContent({
