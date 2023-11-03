@@ -56,7 +56,7 @@ const Content = ({ slug, strapiHost }: PageContentProps) => {
     };
 
     fetchPageContent();
-  }, [content.slug, content.strapiHost]);
+  }, [content.slug, content.strapiHost, content.frontMatter.lang]);
 
   return <Page content={content.content} frontMatter={content.frontMatter} />;
 };
