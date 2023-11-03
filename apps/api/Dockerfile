@@ -1,4 +1,4 @@
-FROM node:18.18.1-alpine
+FROM node:18.18.2-alpine
 WORKDIR /app
 COPY package*.json ./
 RUN yarn install --only=production && yarn cache clean
