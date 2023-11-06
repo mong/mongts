@@ -40,7 +40,8 @@ git push
 Run the development server:
 
 ```bash
-nvm use
+nvm use # To pick (and install) correct (major) version of node
+corepack enable # To enable yarn > v1
 yarn install
 yarn dev
 ```
