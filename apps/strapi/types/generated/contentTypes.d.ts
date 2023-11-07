@@ -683,12 +683,26 @@ export interface ApiAtlasAtlas extends Schema.CollectionType {
     singularName: "atlas";
     pluralName: "atlases";
     displayName: "Atlas";
+    description: "";
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    filename: Attribute.String;
+    name: Attribute.String;
+    publisert: Attribute.Boolean & Attribute.DefaultTo<false>;
+    date: Attribute.DateTime;
+    mainTitle: Attribute.String;
+    shortTitle: Attribute.String;
+    image: Attribute.Media & Attribute.Required;
+    frontpagetext: Attribute.Text & Attribute.Required;
+    ingress: Attribute.RichText;
+    lang: Attribute.Enumeration<["nb", "nn", "en"]>;
+    kapittel: Attribute.Relation<
+      "api::atlas.atlas",
+      "oneToMany",
+      "api::kapittel.kapittel"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -700,6 +714,40 @@ export interface ApiAtlasAtlas extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       "api::atlas.atlas",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiKapittelKapittel extends Schema.CollectionType {
+  collectionName: "kapitler";
+  info: {
+    singularName: "kapittel";
+    pluralName: "kapitler";
+    displayName: "Kapittel";
+    description: "";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    innhold: Attribute.DynamicZone<
+      ["tekst.tekst", "faktaboks.faktaboks", "resultatboks.resultatboks"]
+    >;
+    overskrift: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "api::kapittel.kapittel",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "api::kapittel.kapittel",
       "oneToOne",
       "admin::user"
     > &
@@ -789,6 +837,7 @@ declare module "@strapi/types" {
       "plugin::users-permissions.role": PluginUsersPermissionsRole;
       "plugin::users-permissions.user": PluginUsersPermissionsUser;
       "api::atlas.atlas": ApiAtlasAtlas;
+      "api::kapittel.kapittel": ApiKapittelKapittel;
       "api::static-page.static-page": ApiStaticPageStaticPage;
     }
   }

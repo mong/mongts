@@ -4,15 +4,51 @@
   "info": {
     "singularName": "atlas",
     "pluralName": "atlases",
-    "displayName": "Atlas"
+    "displayName": "Atlas",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
-    "filename": {
+    "name": {
       "type": "string"
+    },
+    "publisert": {
+      "type": "boolean",
+      "default": false
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "mainTitle": {
+      "type": "string"
+    },
+    "shortTitle": {
+      "type": "string"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "frontpagetext": {
+      "type": "text",
+      "required": true
+    },
+    "ingress": {
+      "type": "richtext"
+    },
+    "lang": {
+      "type": "enumeration",
+      "enum": ["nb", "nn", "en"]
+    },
+    "kapittel": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::kapittel.kapittel"
     }
   }
 }

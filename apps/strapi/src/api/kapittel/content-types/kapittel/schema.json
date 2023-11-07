@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kapitler",
+  "info": {
+    "singularName": "kapittel",
+    "pluralName": "kapitler",
+    "displayName": "Kapittel",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "innhold": {
+      "type": "dynamiczone",
+      "components": [
+        "tekst.tekst",
+        "faktaboks.faktaboks",
+        "resultatboks.resultatboks"
+      ]
+    },
+    "overskrift": {
+      "type": "string"
+    }
+  }
+}
