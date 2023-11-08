@@ -703,6 +703,11 @@ export interface ApiAtlasAtlas extends Schema.CollectionType {
       "oneToMany",
       "api::kapittel.kapittel"
     >;
+    jsondata: Attribute.Relation<
+      "api::atlas.atlas",
+      "oneToMany",
+      "api::atlas-data-json.atlas-data-json"
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -714,6 +719,37 @@ export interface ApiAtlasAtlas extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       "api::atlas.atlas",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiAtlasDataJsonAtlasDataJson extends Schema.CollectionType {
+  collectionName: "atlas_data_jsons";
+  info: {
+    singularName: "atlas-data-json";
+    pluralName: "atlas-data-jsons";
+    displayName: "Atlas Data JSON";
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    json: Attribute.JSON;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "api::atlas-data-json.atlas-data-json",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "api::atlas-data-json.atlas-data-json",
       "oneToOne",
       "admin::user"
     > &
@@ -837,6 +873,7 @@ declare module "@strapi/types" {
       "plugin::users-permissions.role": PluginUsersPermissionsRole;
       "plugin::users-permissions.user": PluginUsersPermissionsUser;
       "api::atlas.atlas": ApiAtlasAtlas;
+      "api::atlas-data-json.atlas-data-json": ApiAtlasDataJsonAtlasDataJson;
       "api::kapittel.kapittel": ApiKapittelKapittel;
       "api::static-page.static-page": ApiStaticPageStaticPage;
     }

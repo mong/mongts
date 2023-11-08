@@ -61,6 +61,7 @@ const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
   const mainID = overskrift
     ? overskrift.toLowerCase().replace(/\s/g, "-")
     : "qwerty";
+
   return (
     <div id={mainID} style={{ paddingTop: "10px" }}>
       {overskrift ? <h2>{overskrift}</h2> : undefined}

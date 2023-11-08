@@ -9,10 +9,17 @@ import { Ingress } from "../../Ingress";
 
 export interface AtlasPageProps {
   content: string;
+  frontMatter?: {
+    title: string;
+    lang: "nb" | "en" | "nn";
+    ingress?: string;
+  };
+  atlas?: string;
   atlasData: AtlasData[];
+  strapiHost?: string;
 }
 
-type AtlasJson = {
+export type AtlasJson = {
   lang: "nb" | "en" | "nn";
   date: Date;
   filename: string;

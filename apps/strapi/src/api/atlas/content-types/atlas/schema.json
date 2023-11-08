@@ -49,6 +49,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::kapittel.kapittel"
+    },
+    "jsondata": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::atlas-data-json.atlas-data-json"
     }
   }
 }

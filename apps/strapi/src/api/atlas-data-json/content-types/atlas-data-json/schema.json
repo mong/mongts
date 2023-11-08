@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "atlas_data_jsons",
+  "info": {
+    "singularName": "atlas-data-json",
+    "pluralName": "atlas-data-jsons",
+    "displayName": "Atlas Data JSON"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "json": {
+      "type": "json"
+    }
+  }
+}
