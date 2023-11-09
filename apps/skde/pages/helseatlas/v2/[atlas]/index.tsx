@@ -6,10 +6,11 @@ import AtlasPage, {
   AtlasPageProps,
   AtlasJson,
 } from "../../../../src/components/Atlas/v2";
-import { ControlPointSharp } from "@mui/icons-material";
+
+const defaultLang = "nb";
 
 const emptyAtlasJson: AtlasJson = {
-  lang: "nb",
+  lang: defaultLang,
   date: new Date(),
   filename: "",
   shortTitle: "",
@@ -46,7 +47,7 @@ const transformChapterEntry = (chapterInput) => {
 const Page: React.FC<AtlasPageProps> = ({ atlas, strapiHost }) => {
   const [content, setContent] = useState<AtlasPageProps>({
     content: JSON.stringify(emptyAtlasJson),
-    frontMatter: { title: "", lang: "nb" },
+    frontMatter: { title: "", lang: defaultLang },
     atlas: atlas,
     strapiHost: strapiHost,
     atlasData: [],

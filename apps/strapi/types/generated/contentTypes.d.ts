@@ -688,16 +688,69 @@ export interface ApiAtlasAtlas extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
-    name: Attribute.String;
-    publisert: Attribute.Boolean & Attribute.DefaultTo<false>;
-    date: Attribute.DateTime;
-    mainTitle: Attribute.String;
-    shortTitle: Attribute.String;
-    image: Attribute.Media & Attribute.Required;
-    frontpagetext: Attribute.Text & Attribute.Required;
-    ingress: Attribute.RichText;
-    lang: Attribute.Enumeration<["nb", "nn", "en"]>;
+    name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    publisert: Attribute.Boolean &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }> &
+      Attribute.DefaultTo<false>;
+    date: Attribute.DateTime &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    mainTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    shortTitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    image: Attribute.Media &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    frontpagetext: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ingress: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    lang: Attribute.Enumeration<["nb", "nn", "en"]> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     kapittel: Attribute.Relation<
       "api::atlas.atlas",
       "oneToMany",
@@ -723,6 +776,12 @@ export interface ApiAtlasAtlas extends Schema.CollectionType {
       "admin::user"
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      "api::atlas.atlas",
+      "oneToMany",
+      "api::atlas.atlas"
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -768,11 +827,26 @@ export interface ApiKapittelKapittel extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
   attributes: {
     innhold: Attribute.DynamicZone<
       ["tekst.tekst", "faktaboks.faktaboks", "resultatboks.resultatboks"]
-    >;
-    overskrift: Attribute.String;
+    > &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    overskrift: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -788,6 +862,12 @@ export interface ApiKapittelKapittel extends Schema.CollectionType {
       "admin::user"
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      "api::kapittel.kapittel",
+      "oneToMany",
+      "api::kapittel.kapittel"
+    >;
+    locale: Attribute.String;
   };
 }
 
