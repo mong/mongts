@@ -26,48 +26,52 @@ export default function Home() {
   React.useEffect(() => {
     setOrigin(window.location.origin);
   }, [setOrigin]);
-  return (
-    <FrontPageLayout>
-      <div className={styles.full_bleed}>
-        <div className={styles.banner_article}>
-          <div className={styles.banner_article__content}>
-            <h2>Kvalitet og forbruk i helsetjenesten</h2>
-            <p>
-              Senter for klinisk dokumentasjon og evaluering (SKDE) jobber med å
-              kartlegge og synliggjøre geografiske ulikheter i
-              spesialisthelsetjenester. Målet er å bidra til likeverdige
-              helsetjenester av god kvalitet uansett hvor pasientene bor.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div className={`${styles.full_bleed} ${styles.buttons_container}`}>
-        <div className={`${styles.buttons}`}>
-          <h2>Resultater</h2>
-          <div className={styles.block_buttons}>
-            <div
-              className={styles.block_button}
-              data-testid="kvalitetsregistre_button"
-            >
-              <Link href="/kvalitetsregistre/alle/sykehus">
-                Kvalitetsregistre
-              </Link>
-            </div>
-
-            <div className={styles.block_button}>
-              <Link href="/helseatlas">Helseatlas</Link>
-            </div>
-
-            <div className={styles.block_button}>
-              <Link href="/pasientstrommer">Pasientstrømmer</Link>
-            </div>
-
-            <div className={styles.block_button}>
-              <a href="https://helse-nord.no/skde">Om SKDE</a>
+  if (process.env.NEXT_PUBLIC_ENV === "dev") {
+    return <div></div>;
+  } else {
+    return (
+      <FrontPageLayout>
+        <div className={styles.full_bleed}>
+          <div className={styles.banner_article}>
+            <div className={styles.banner_article__content}>
+              <h2>Kvalitet og forbruk i helsetjenesten</h2>
+              <p>
+                Senter for klinisk dokumentasjon og evaluering (SKDE) jobber med
+                å kartlegge og synliggjøre geografiske ulikheter i
+                spesialisthelsetjenester. Målet er å bidra til likeverdige
+                helsetjenester av god kvalitet uansett hvor pasientene bor.
+              </p>
             </div>
           </div>
         </div>
-      </div>
-    </FrontPageLayout>
-  );
+        <div className={`${styles.full_bleed} ${styles.buttons_container}`}>
+          <div className={`${styles.buttons}`}>
+            <h2>Resultater</h2>
+            <div className={styles.block_buttons}>
+              <div
+                className={styles.block_button}
+                data-testid="kvalitetsregistre_button"
+              >
+                <Link href="/kvalitetsregistre/alle/sykehus">
+                  Kvalitetsregistre
+                </Link>
+              </div>
+
+              <div className={styles.block_button}>
+                <Link href="/helseatlas">Helseatlas</Link>
+              </div>
+
+              <div className={styles.block_button}>
+                <Link href="/pasientstrommer">Pasientstrømmer</Link>
+              </div>
+
+              <div className={styles.block_button}>
+                <a href="https://helse-nord.no/skde">Om SKDE</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </FrontPageLayout>
+    );
+  }
 }
