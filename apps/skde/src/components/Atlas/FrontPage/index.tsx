@@ -3,16 +3,18 @@ import { MainBanner } from "../../MainBanner";
 import { AtlasLink } from "../../Buttons";
 import classNames from "./FrontPage.module.css";
 
+export interface AtlasInfo {
+  article: string;
+  frontMatter: {
+    shortTitle: string;
+    image: string;
+    frontpagetext: string;
+    date: Date;
+  };
+}
+
 export interface HomeProps {
-  atlasInfo: {
-    article: string;
-    frontMatter: {
-      shortTitle: string;
-      image: string;
-      frontpagetext: string;
-      date: Date;
-    };
-  }[];
+  atlasInfo: AtlasInfo[];
   lang: "no" | "en";
 }
 

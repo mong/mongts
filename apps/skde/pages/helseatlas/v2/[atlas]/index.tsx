@@ -60,7 +60,7 @@ const Page: React.FC<AtlasPageProps> = ({ atlas, strapiHost }) => {
   useEffect(() => {
     const fetchPageContent = async () => {
       const response = await fetch(
-        `${content.strapiHost}/api/atlases/?filters[name][$eq]=${content.atlas}&locale=${content.frontMatter.lang}&populate=kapittel.innhold&populate=jsondata&populate=image`,
+        `${content.strapiHost}/api/atlases/?filters[name][$eq]=${content.atlas}&locale=${content.frontMatter.lang}&populate=kapittel.innhold`,
       );
 
       // TODO: Add error handling if fetch fails
@@ -91,6 +91,8 @@ const Page: React.FC<AtlasPageProps> = ({ atlas, strapiHost }) => {
           title: mainTitle,
           lang,
         } as AtlasPageProps["frontMatter"];
+
+        if (!atlasTmp.jsondata) atlasTmp.jsondata = { data: [] };
 
         atlasData = atlasTmp.jsondata.data.reduce((result, entry) => {
           result[entry.attributes.name] = JSON.stringify(entry.attributes.json);
