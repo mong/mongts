@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 export const Skde = (): JSX.Element => {
   return (
@@ -10,13 +11,13 @@ export const Skde = (): JSX.Element => {
             alt="Figure"
             src="/img/forsideny/figure.svg"
           />
-          <a href="https://helse-nord.no/skde/">
+          <Link href="https://helse-nord.no/skde/">
             <img
               className="div-promobox-content"
               alt="Div promobox content"
               src="/img/forsideny/div-promobox-content.svg"
             />
-          </a>
+          </Link>
         </div>
         <div className="item-link">
           <div className="div-2">
@@ -45,12 +46,12 @@ export const Skde = (): JSX.Element => {
               pasientene behandles.
             </p>
           </div>
-          <a href="/helseatlas/">
+          <Link href="/helseatlas/">
             <div className="div-content-card">
               <div className="text-wrapper-2">Se oversikt</div>
               <div className="text-wrapper-3">→</div>
             </div>
-          </a>
+          </Link>
         </div>
         <div className="item-link-3">
           <div className="div-2">
@@ -64,12 +65,12 @@ export const Skde = (): JSX.Element => {
               <br />
             </p>
           </div>
-          <a href="/kvalitetsregistre/alle/sykehus">
+          <Link href="/kvalitetsregistre/alle/sykehus">
             <div className="div-content-card">
               <div className="text-wrapper-2">Se oversikt</div>
               <div className="text-wrapper-3">→</div>
             </div>
-          </a>
+          </Link>
         </div>
         <img
           className="figure-mask"
