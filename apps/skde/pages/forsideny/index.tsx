@@ -10,15 +10,13 @@ export const Skde = (): JSX.Element => {
             alt="Figure"
             src="/img/forsideny/figure.svg"
           />
-          <img
-            onClick={() => {
-              window.location.href = "https://helse-nord.no/skde/";
-            }}
-            style={{ cursor: "pointer" }}
-            className="div-promobox-content"
-            alt="Div promobox content"
-            src="/img/forsideny/div-promobox-content.svg"
-          />
+          <a href="https://helse-nord.no/skde/">
+            <img
+              className="div-promobox-content"
+              alt="Div promobox content"
+              src="/img/forsideny/div-promobox-content.svg"
+            />
+          </a>
         </div>
         <div className="item-link">
           <div className="div-2">
@@ -47,16 +45,12 @@ export const Skde = (): JSX.Element => {
               pasientene behandles.
             </p>
           </div>
-          <div
-            className="div-content-card"
-            onClick={() => {
-              window.location.href = "/helseatlas/";
-            }}
-            style={{ cursor: "pointer" }}
-          >
-            <div className="text-wrapper-2">Se oversikt</div>
-            <div className="text-wrapper-3">→</div>
-          </div>
+          <a href="/helseatlas/">
+            <div className="div-content-card">
+              <div className="text-wrapper-2">Se oversikt</div>
+              <div className="text-wrapper-3">→</div>
+            </div>
+          </a>
         </div>
         <div className="item-link-3">
           <div className="div-2">
@@ -70,16 +64,12 @@ export const Skde = (): JSX.Element => {
               <br />
             </p>
           </div>
-          <div
-            className="div-content-card"
-            onClick={() => {
-              window.location.href = "/kvalitetsregistre/alle/sykehus/";
-            }}
-            style={{ cursor: "pointer" }}
-          >
-            <div className="text-wrapper-2">Se oversikt</div>
-            <div className="text-wrapper-3">→</div>
-          </div>
+          <a href="/kvalitetsregistre/alle/sykehus">
+            <div className="div-content-card">
+              <div className="text-wrapper-2">Se oversikt</div>
+              <div className="text-wrapper-3">→</div>
+            </div>
+          </a>
         </div>
         <img
           className="figure-mask"
