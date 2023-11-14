@@ -11,6 +11,10 @@ export const Skde = (): JSX.Element => {
             src="/img/forsideny/figure.svg"
           />
           <img
+            onClick={() => {
+              window.location.href = "https://helse-nord.no/skde/";
+            }}
+            style={{ cursor: "pointer" }}
             className="div-promobox-content"
             alt="Div promobox content"
             src="/img/forsideny/div-promobox-content.svg"
@@ -43,7 +47,13 @@ export const Skde = (): JSX.Element => {
               pasientene behandles.
             </p>
           </div>
-          <div className="div-content-card">
+          <div
+            className="div-content-card"
+            onClick={() => {
+              window.location.href = "/helseatlas/";
+            }}
+            style={{ cursor: "pointer" }}
+          >
             <div className="text-wrapper-2">Se oversikt</div>
             <div className="text-wrapper-3">→</div>
           </div>
@@ -56,9 +66,17 @@ export const Skde = (): JSX.Element => {
             <p className="p">
               Medisinske kvalitetsregistre har informasjon om
               behandlingskvalitet som skal bidra til å forbedre helsetjenesten.
+              <br />
+              <br />
             </p>
           </div>
-          <div className="div-content-card">
+          <div
+            className="div-content-card"
+            onClick={() => {
+              window.location.href = "/kvalitetsregistre/alle/sykehus/";
+            }}
+            style={{ cursor: "pointer" }}
+          >
             <div className="text-wrapper-2">Se oversikt</div>
             <div className="text-wrapper-3">→</div>
           </div>
