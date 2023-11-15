@@ -4158,12 +4158,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/d3-geo@npm:*, @types/d3-geo@npm:3.0.7":
+"@types/d3-geo@npm:*":
   version: 3.0.7
   resolution: "@types/d3-geo@npm:3.0.7"
   dependencies:
     "@types/geojson": "npm:*"
   checksum: 76ca21e1a02e1b4ed893176f15cefb48bca6959189a311567820b2279d5571f349eb73071456a241bf3df6257e06bba9165b6619a6ac5482b74f037e86195a43
+  languageName: node
+  linkType: hard
+
+"@types/d3-geo@npm:3.1.0":
+  version: 3.1.0
+  resolution: "@types/d3-geo@npm:3.1.0"
+  dependencies:
+    "@types/geojson": "npm:*"
+  checksum: e759d98470fe605ff0088247af81c3197cefce72b16eafe8acae606216c3e0a9f908df4e7cd5005ecfe13b8ac8396a51aaa0d282f3ca7d1c3850313a13fac905
   languageName: node
   linkType: hard
 
@@ -19875,7 +19884,7 @@ __metadata:
     "@testing-library/react": "npm:14.1.0"
     "@types/d3-array": "npm:3.2.1"
     "@types/d3-format": "npm:3.0.4"
-    "@types/d3-geo": "npm:3.0.7"
+    "@types/d3-geo": "npm:3.1.0"
     "@types/d3-scale": "npm:4.0.8"
     "@types/d3-shape": "npm:3.1.5"
     "@types/d3-time-format": "npm:4.0.3"
