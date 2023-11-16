@@ -19,11 +19,14 @@ const emptyHomeProps: HomeProps = {
 const buildAtlasInfo = (strapiHost: string, atlasData: any): AtlasInfo[] => {
   const atlasInfos = atlasData.map((entry) => {
     const info = entry.attributes;
+    const imageUrl =
+      info.image.data.attributes.formats?.medium?.url ??
+      info.image.data.attributes.url;
     return {
       article: `v2/${info.name}`,
       frontMatter: {
         shortTitle: info.shortTitle,
-        image: `${strapiHost}${info.image.data.attributes.formats.medium.url}`,
+        image: `${strapiHost}${imageUrl}`,
         frontpagetext: info.frontpagetext,
         date: info.date,
         lang: info.lang === "en" ? info.lang : "no",
@@ -41,10 +44,10 @@ const Home: React.FC<AtlasHomeStaticProps> = ({ strapiHost }) => {
     const fetchHomeProps = async () => {
       const localFilter =
         homeProps.lang === "en"
-          ? `filters[lang][$eq]=en`
+          ? `&filters[lang][$eq]=en`
           : `&filters[$and][0][$or][0][locale][$eq]=nb&filters[$and][0][$or][1][locale][$eq]=nn`;
 
-      const apiUrl = `http://localhost:1337/api/atlases/?locale=all&populate=image&&filters[publisert][$eq]=true&${localFilter}`;
+      const apiUrl = `http://localhost:1337/api/atlases/?locale=all&populate=image&filters[publisert][$eq]=true${localFilter}`;
       const response = await fetch(apiUrl);
 
       // TODO: Add error handling if fetch fails

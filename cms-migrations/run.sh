@@ -8,7 +8,7 @@ export API_TOKEN=658b19e426a24018d843c370174e2cebee524fb3f329045181e39f57dc1c0f0
 
 #python3 ./import_pages.py $ATLAS_DIR/statisk $STRAPI_HOST $API_TOKEN
 #python3 ./import_pages.py $ATLAS_DIR/en/static $STRAPI_HOST $API_TOKEN
-#python3 ./import_data.py $RES_DIR/data $STRAPI_HOST $API_TOKEN
+python3 ./import_data.py $RES_DIR/data $STRAPI_HOST $API_TOKEN
 
 python3 ./import_atlas.py $ATLAS_DIR/atlas $PUBLIC_DIR $STRAPI_HOST $API_TOKEN
 python3 ./import_atlas.py $ATLAS_DIR/en/atlas $PUBLIC_DIR $STRAPI_HOST $API_TOKEN

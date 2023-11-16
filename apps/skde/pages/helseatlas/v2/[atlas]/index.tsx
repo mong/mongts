@@ -16,7 +16,7 @@ const emptyAtlasJson: AtlasJson = {
   shortTitle: "",
   mainTitle: "",
   ingress: "",
-  publisert: false,
+  publisert: true,
   kapittel: [],
 };
 
@@ -59,8 +59,11 @@ const Page: React.FC<AtlasPageProps> = ({ atlas, strapiHost }) => {
 
   useEffect(() => {
     const fetchPageContent = async () => {
+      // Norwegian filter (nb and nn)
+      const localFilter = `&filters[$and][0][$or][0][locale][$eq]=nb&filters[$and][0][$or][1][locale][$eq]=nn`;
+
       const response = await fetch(
-        `${content.strapiHost}/api/atlases/?filters[name][$eq]=${content.atlas}&locale=${content.frontMatter.lang}&populate=kapittel.innhold`,
+        `${content.strapiHost}/api/atlases/?filters[name][$eq]=${content.atlas}&locale=all&populate=kapittel.innhold&populate=jsondata${localFilter}`,
       );
 
       // TODO: Add error handling if fetch fails
@@ -73,7 +76,7 @@ const Page: React.FC<AtlasPageProps> = ({ atlas, strapiHost }) => {
       let frontMatter = {
         fileName: "",
         title: "",
-        lang: "en",
+        lang: "nb",
       } as AtlasPageProps["frontMatter"];
 
       if (json.data.length === 1) {
@@ -89,7 +92,7 @@ const Page: React.FC<AtlasPageProps> = ({ atlas, strapiHost }) => {
         frontMatter = {
           filename,
           title: mainTitle,
-          lang,
+          lang: lang,
         } as AtlasPageProps["frontMatter"];
 
         if (!atlasTmp.jsondata) atlasTmp.jsondata = { data: [] };

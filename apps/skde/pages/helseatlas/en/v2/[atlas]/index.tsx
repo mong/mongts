@@ -16,7 +16,7 @@ const emptyAtlasJson: AtlasJson = {
   shortTitle: "",
   mainTitle: "",
   ingress: "",
-  publisert: false,
+  publisert: true,
   kapittel: [],
 };
 
@@ -60,7 +60,7 @@ const Page: React.FC<AtlasPageProps> = ({ atlas, strapiHost }) => {
   useEffect(() => {
     const fetchPageContent = async () => {
       const response = await fetch(
-        `${content.strapiHost}/api/atlases/?filters[name][$eq]=${content.atlas}&locale=${content.frontMatter.lang}&populate=kapittel.innhold&populate=jsondata`,
+        `${content.strapiHost}/api/atlases/?filters[name][$eq]=${content.atlas}&locale=en&populate=kapittel.innhold&populate=jsondata`,
       );
 
       // TODO: Add error handling if fetch fails
