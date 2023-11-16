@@ -4,7 +4,8 @@
   "info": {
     "singularName": "atlas-data-json",
     "pluralName": "atlas-data-jsons",
-    "displayName": "Atlas Data JSON"
+    "displayName": "Atlas Data JSON",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "json": {
       "type": "json"

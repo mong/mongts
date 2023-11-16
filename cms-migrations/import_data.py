@@ -24,8 +24,8 @@ def main(data_dir, strapi_url, token):
         for file in files:
             if file.endswith('.json'):
                 file_path = os.path.join(root, file)
-                print(file_path)
-                name = os.path.splitext(os.path.basename(file_path))[0]
+                name = f'{os.path.split(os.path.dirname(file_path))[-1]}_{os.path.splitext(os.path.basename(file_path))[0]}'
+                print(f'file_path: {file_path}, name: {name}')
 
                 try:
                     with open(file_path, 'r') as f:

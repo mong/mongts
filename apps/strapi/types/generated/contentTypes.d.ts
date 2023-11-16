@@ -791,12 +791,13 @@ export interface ApiAtlasDataJsonAtlasDataJson extends Schema.CollectionType {
     singularName: "atlas-data-json";
     pluralName: "atlas-data-jsons";
     displayName: "Atlas Data JSON";
+    description: "";
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
     json: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
