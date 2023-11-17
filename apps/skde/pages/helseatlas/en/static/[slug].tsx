@@ -21,8 +21,9 @@ const Content = ({ slug, strapiHost }: PageContentProps) => {
 
   useEffect(() => {
     const fetchPageContent = async () => {
+      const locale = content.frontMatter.lang === "en" ? "en" : "nb";
       const response = await fetch(
-        `${content.strapiHost}/api/static-pages?filters[name][$eq]=${content.slug}&locale=${content.frontMatter.lang}`,
+        `${content.strapiHost}/api/static-pages?filters[name][$eq]=${content.slug}&locale=${locale}`,
       );
 
       // TODO: Add error handling if fetch fails

@@ -42,12 +42,8 @@ const Home: React.FC<AtlasHomeStaticProps> = ({ strapiHost }) => {
 
   useEffect(() => {
     const fetchHomeProps = async () => {
-      const localFilter =
-        homeProps.lang === "en"
-          ? `&filters[lang][$eq]=en`
-          : `&filters[$and][0][$or][0][locale][$eq]=nb&filters[$and][0][$or][1][locale][$eq]=nn`;
-
-      const apiUrl = `http://localhost:1337/api/atlases/?locale=all&populate=image&filters[publisert][$eq]=true${localFilter}`;
+      const locale = homeProps.lang === "en" ? "en" : "nb";
+      const apiUrl = `http://localhost:1337/api/atlases/?populate=image&filters[publisert][$eq]=true&locale=${locale}`;
       const response = await fetch(apiUrl);
 
       // TODO: Add error handling if fetch fails

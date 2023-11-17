@@ -32,7 +32,7 @@ def parse_markdown_file(content):
                 'name': match.group('name'),
                 'title': match.group('title'),
                 'lang': match.group('lang'),
-                'locale': match.group('lang'),
+                'locale': 'en' if match.group('lang') == 'en' else 'nb'
             }
         }
         if match.group('body'):

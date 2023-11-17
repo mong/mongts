@@ -75,7 +75,7 @@ def post_chapter(atlas_name, chapter_input, lang, strapi_host, token):
     chapter = { 'data': { 'innhold': [] } }
     chapter_data = chapter['data']
     chapter_data['overskrift'] = chapter_input.get('overskrift')
-    chapter_data['locale'] = lang
+    chapter_data['locale'] = 'en' if lang == 'en' else 'nb'
 
     for content in chapter_input.get('innhold', []):
         transformed_content, content_data_names = transform_content(content, atlas_name)
@@ -137,12 +137,11 @@ def get_data_ids(atlas_name, data_names, strapi_host, token):
 
 
 def import_atlas(atlas_input, public_dir, strapi_host, token):
-    locale = atlas_input['lang']
-    
     atlas = { 'data': {} }
     atlas_data = atlas['data']
     atlas_data['name'] = atlas_input.get('filename')
-    atlas_data['locale'] = atlas_input.get('lang')
+    atlas_data['locale'] = 'en' if atlas_input.get('lang') == 'en' else 'nb'
+    locale = atlas_data['locale']
     atlas_data['lang'] = atlas_input.get('lang')
     atlas_data['publisert'] = atlas_input.get('publisert')
     atlas_data['date'] = atlas_input.get('date')

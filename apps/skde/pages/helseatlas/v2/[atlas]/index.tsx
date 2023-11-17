@@ -59,11 +59,8 @@ const Page: React.FC<AtlasPageProps> = ({ atlas, strapiHost }) => {
 
   useEffect(() => {
     const fetchPageContent = async () => {
-      // Norwegian filter (nb and nn)
-      const localFilter = `&filters[$and][0][$or][0][locale][$eq]=nb&filters[$and][0][$or][1][locale][$eq]=nn`;
-
       const response = await fetch(
-        `${content.strapiHost}/api/atlases/?filters[name][$eq]=${content.atlas}&locale=all&populate=kapittel.innhold&populate=jsondata${localFilter}`,
+        `${content.strapiHost}/api/atlases/?filters[name][$eq]=${content.atlas}&locale=${defaultLang}&populate=kapittel.innhold&populate=jsondata`,
       );
 
       // TODO: Add error handling if fetch fails

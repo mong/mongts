@@ -686,7 +686,7 @@ export interface ApiAtlasAtlas extends Schema.CollectionType {
     description: "";
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   pluginOptions: {
     i18n: {
@@ -763,7 +763,6 @@ export interface ApiAtlasAtlas extends Schema.CollectionType {
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       "api::atlas.atlas",
       "oneToOne",
@@ -794,14 +793,13 @@ export interface ApiAtlasDataJsonAtlasDataJson extends Schema.CollectionType {
     description: "";
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     name: Attribute.String & Attribute.Required & Attribute.Unique;
     json: Attribute.JSON;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       "api::atlas-data-json.atlas-data-json",
       "oneToOne",
@@ -826,7 +824,7 @@ export interface ApiKapittelKapittel extends Schema.CollectionType {
     description: "";
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   pluginOptions: {
     i18n: {
@@ -850,7 +848,6 @@ export interface ApiKapittelKapittel extends Schema.CollectionType {
       }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       "api::kapittel.kapittel",
       "oneToOne",
