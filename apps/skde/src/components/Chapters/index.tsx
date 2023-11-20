@@ -68,6 +68,9 @@ const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
       {innhold ? (
         <div>
           {innhold.map((box, index) => {
+            if (box.type !== "tekst" && !box.overskrift)
+              console.log(`Box overskrift`);
+
             const props =
               box.type === "faktaboks"
                 ? {

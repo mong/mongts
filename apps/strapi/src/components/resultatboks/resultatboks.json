@@ -2,12 +2,14 @@
   "collectionName": "components_resultatboks_resultatboks",
   "info": {
     "displayName": "resultatboks",
-    "icon": "chartPie"
+    "icon": "chartPie",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "overskrift": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "ingress": {
       "type": "richtext"

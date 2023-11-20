@@ -2,12 +2,14 @@
   "collectionName": "components_faktaboks_faktaboks",
   "info": {
     "displayName": "faktaboks",
-    "icon": "quote"
+    "icon": "quote",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "overskrift": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "tekst": {
       "type": "richtext"

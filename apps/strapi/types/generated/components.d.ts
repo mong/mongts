@@ -5,9 +5,10 @@ export interface FaktaboksFaktaboks extends Schema.Component {
   info: {
     displayName: "faktaboks";
     icon: "quote";
+    description: "";
   };
   attributes: {
-    overskrift: Attribute.String;
+    overskrift: Attribute.String & Attribute.Required;
     tekst: Attribute.RichText;
   };
 }
@@ -17,9 +18,10 @@ export interface ResultatboksResultatboks extends Schema.Component {
   info: {
     displayName: "resultatboks";
     icon: "chartPie";
+    description: "";
   };
   attributes: {
-    overskrift: Attribute.String;
+    overskrift: Attribute.String & Attribute.Required;
     ingress: Attribute.RichText;
     publisert: Attribute.DateTime;
     oppdatert: Attribute.DateTime;
