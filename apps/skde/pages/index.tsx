@@ -26,7 +26,7 @@ export default function Home() {
   React.useEffect(() => {
     setOrigin(window.location.origin);
   }, [setOrigin]);
-  if (process.env.NEXT_PUBLIC_ENV === "dev") {
+  if (process.env.NEXT_PUBLIC_ENV === "dev2") {
     return <div></div>;
   } else {
     return (

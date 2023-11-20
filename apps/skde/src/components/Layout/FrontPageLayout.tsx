@@ -27,6 +27,14 @@ export function FrontPageLayout({
           content="Senter for klinisk dokumentasjon og evaluering (SKDE) er en selvstendig enhet i Helse Nord RHF, og har våre kontorer i Forskningsparken i Tromsø."
         ></meta>
       </Head>
+      {process.env.NEXT_PUBLIC_ENV === "qa" ? (
+        <div style={{ color: "red" }}>
+          Dette er test-siden. Produksjonssiden ligger på{" "}
+          <a href="https://www.skde.no/">www.skde.no</a>{" "}
+        </div>
+      ) : (
+        <></>
+      )}
       <div className={styles.grid_wrapper}>
         <header className={`${styles.header_container}`}>
           <div className={styles.header_logo}>

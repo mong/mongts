@@ -21,22 +21,35 @@ export const Header: React.FC<HeaderProps> = (props) => {
   } = props;
 
   return (
-    <div className={style.headerOuterWrapper}>
+    <div
+      className={
+        process.env.NEXT_PUBLIC_ENV === "dev"
+          ? style.headerOuterWrapper + " " + style.redBackground
+          : style.headerOuterWrapper
+      }
+    >
       <div className={style.headerInnerWrapper}>
         <div className={style.topHeader}>
           <div className={style.topHeaderLeft}>
             <NSMLogo />
             <div className={style.headerText}>
-              <h3>Resultater fra {dataFrom}</h3>
+              <h3>
+                {process.env.NEXT_PUBLIC_ENV === "dev"
+                  ? "Dette er midlertidige resultater"
+                  : "Resulteter"}{" "}
+                fra {dataFrom}
+              </h3>
             </div>
           </div>
-          <div className={style.topHeaderRight}>
-            <SelectRegister
-              activeTab={activeTab}
-              regNames={registerNames}
-              selection_bar_height={null}
-            />
-          </div>
+          {process.env.NEXT_PUBLIC_ENV !== "dev" && (
+            <div className={style.topHeaderRight}>
+              <SelectRegister
+                activeTab={activeTab}
+                regNames={registerNames}
+                selection_bar_height={null}
+              />
+            </div>
+          )}
         </div>
         {tabNames.length > 1 ? (
           <HeaderTabs activeTab={activeTab} tabNames={tabNames} />
