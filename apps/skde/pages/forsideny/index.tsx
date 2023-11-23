@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import LinechartBase from "../../src/charts/LinechartBase";
-import generateDateValue, { DateValue } from '@visx/mock-data/lib/generators/genDateValue';
 import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
 import { Indicator } from "types";
-
-const allData = generateDateValue(25, /* seed= */ 1 / 72).sort(
-  (a: DateValue, b: DateValue) => a.date.getTime() - b.date.getTime());
-
+import { LinechartData } from "../../src/charts/LinechartBase";
 
 export const Skde = (): JSX.Element => {
   
@@ -15,20 +10,23 @@ export const Skde = (): JSX.Element => {
 
   let data: Indicator[] = [];
 
-  if (!!indQryData) {
-    console.log("Hei, ", indQryData.data)
-
-    console.log(
-      data.filter((row) => row.ind_id === "hjerneslag_beh_enh")
-    )
+  if (!!indQryData.data) {
+    console.log("Hei, ", indQryData.data);
+    
+    const chartData: LinechartData[] = indQryData.data
+      .filter((row) => {return row.ind_id === "hjerneslag_beh_enhet" &&
+        row.unit_name === "Tromsø"})
+      .map((row) => { return { x: new Date(row.year, 0), y: row.var } as LinechartData });
     
     return (
       <div>
-        <LinechartBase data = {allData} height = {500} width = {1000}></LinechartBase>
+        <LinechartBase data={chartData} height={500} width={1000} ></LinechartBase>
       </div>
     );
   }
-  
+  else {
+    return <></>;
+  }
 };
 
 export default Skde;

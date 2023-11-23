@@ -1,34 +1,41 @@
 import React from 'react';
-import { extent, max } from '@visx/vendor/d3-array';
+import { extent, min, max } from '@visx/vendor/d3-array';
 import { curveLinear } from '@visx/curve';
 import { LinePath } from '@visx/shape';
 import { scaleTime, scaleLinear } from '@visx/scale';
 import { MarkerCircle} from '@visx/marker';
-import { DateValue } from '@visx/mock-data/lib/generators/genDateValue';
 import { AxisBottom, AxisLeft } from '@visx/axis';
+import _ from 'lodash';
 
-
-
-
-
-export type LinechartBaseProps = {
-  data: DateValue[];
-  width: number;
-  height: number;
+export interface LinechartData {
+  x: Date;
+  y: number;
 };
 
-export default function LinechartBase({data, width, height }: LinechartBaseProps) {
-  // data accessors
-const getX = (d: DateValue) => d.date;
-const getY = (d: DateValue) => d.value;
+export interface LinechartBaseProps {
+  data: LinechartData[];
+  width: number;
+  height: number;
+  yMin?: number;
+  yMax?: number;
+};
 
-// scales
-const xScale = scaleTime<number>({
-  domain: extent(data, getX) as [Date, Date],
-});
-const yScale = scaleLinear<number>({
-  domain: [0, max(data, getY) as number],
-});
+export default function LinechartBase({ data, width, height, yMin, yMax }: LinechartBaseProps) {  
+  // data accessors
+  const getX = (d: LinechartData) => d.x;
+  const getY = (d: LinechartData) => d.y;
+
+  yMin = yMin ?? _.floor(min(data, getY), 2);
+  yMax = yMax ?? _.ceil(max(data, getY), 2);
+
+  // scales
+  const xScale = scaleTime<number>({
+    domain: extent(data, getX) as [Date, Date],
+  });
+  
+  const yScale = scaleLinear<number>({
+    domain: [yMin, yMax],
+  });
   
   const svgHeight = height;
   const lineHeight = svgHeight;
@@ -45,19 +52,19 @@ const yScale = scaleLinear<number>({
 
   return (
     <div className="visx-linechartbase">
-      <svg width={width} height={svgHeight}>
+      <svg className="linechartbase" width={width} height={svgHeight}>
         <MarkerCircle id="marker-circle" fill="#333" 
         size = {pointSize} refX={pointXOffset} refY={pointYOffset} />
         <rect width={width} height={svgHeight} rx={14} ry={14} />
-          <LinePath<DateValue>
-            curve={curveLinear}
-            data={data}
-            x={(d) => xScale(getX(d)) ?? 0}
-            y={(d) => yScale(getY(d)) ?? 0}
-            stroke="#333"
-            shapeRendering="geometricPrecision"
-            markerMid="url(#marker-circle)"
-          />
+        <LinePath<LinechartData>
+          curve={curveLinear}
+          data={data}
+          x={(d) => xScale(getX(d)) ?? 0}
+          y={(d) => yScale(getY(d)) ?? 0}
+          stroke="#333"
+          shapeRendering="geometricPrecision"
+          markerMid="url(#marker-circle)"
+        />
         <AxisBottom
           scale = {xScale}
           top = {yScale.range()[0]}
@@ -68,16 +75,14 @@ const yScale = scaleLinear<number>({
         />
       </svg>
       <style jsx>{`
-        .visx-linechartbase  {
-          label { 
-            font-size: 12px;
-          }
-          rect {
-            fill: #e0efef;
-            rx: 14;
-            ry: 14;
-          }
+        .visx-linechartbase {
         }
+
+        svg.linechartbase rect {
+          fill: #efefef;
+          rx: 14;
+          ry: 14;
+        }        
       `}</style>
     </div>
   );
