@@ -29,7 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       s = d.getElementsByTagName("script")[0];
     g.async = true;
     g.src = "https://matomo.skde.org/js/container_PKGSpuF8.js";
-    s.parentNode.insertBefore(g, s);
+    s.parentNode && s.parentNode.insertBefore(g, s);
   }, []);
 
   return (
