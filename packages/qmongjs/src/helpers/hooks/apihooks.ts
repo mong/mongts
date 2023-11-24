@@ -59,7 +59,7 @@ const indicatorUrl = (params: FetchIndicatorParams): string => {
   return `${API_HOST}/data/${params.registerShortName}/indicators?${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}${typeQuery}`;
 };
 
-const fetchIndicators = async (params: FetchIndicatorParams) => {
+export const fetchIndicators = async (params: FetchIndicatorParams) => {
   const response = await fetch(indicatorUrl(params));
   if (!response.ok) {
     throw new Error(response.statusText);
