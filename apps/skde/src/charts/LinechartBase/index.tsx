@@ -36,9 +36,6 @@ export default function LinechartBase({ data, width, height, yMin, yMax }: Linec
   const yScale = scaleLinear<number>({
     domain: [yMin, yMax],
   });
-  
-  const svgHeight = height;
-  const lineHeight = svgHeight;
 
   const borderWidth = 50
 
@@ -46,16 +43,21 @@ export default function LinechartBase({ data, width, height, yMin, yMax }: Linec
   const pointXOffset = pointSize
   const pointYOffset = pointSize
 
+  const roundX = 14
+  const roundY = 14
+
+  const backgroundColour = "#efefef";
+
   // update scale output ranges
   xScale.range([borderWidth, width - borderWidth]);
-  yScale.range([lineHeight - borderWidth, borderWidth]);
+  yScale.range([height - borderWidth, borderWidth]);
 
   return (
     <div className="visx-linechartbase">
-      <svg className="linechartbase" width={width} height={svgHeight}>
+      <svg className="linechartbase" width={width} height={height}>
         <MarkerCircle id="marker-circle" fill="#333" 
         size = {pointSize} refX={pointXOffset} refY={pointYOffset} />
-        <rect width={width} height={svgHeight} rx={14} ry={14} />
+        <rect width={width} height={height} rx={roundX} ry={roundY} />
         <LinePath<LinechartData>
           curve={curveLinear}
           data={data}
@@ -79,9 +81,7 @@ export default function LinechartBase({ data, width, height, yMin, yMax }: Linec
         }
 
         svg.linechartbase rect {
-          fill: #efefef;
-          rx: 14;
-          ry: 14;
+          fill: ${backgroundColour};
         }        
       `}</style>
     </div>
