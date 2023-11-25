@@ -19,11 +19,15 @@
       "justMyCode": true
     },
     {
-      "type": "chrome",
+      "name": "Strapi debugger",
+      "type": "pwa-chrome",
       "request": "launch",
-      "name": "Launch Chrome against localhost",
-      "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}"
+      "url": "http://localhost:1337",
+      "cwd": "${workspaceFolder}/apps/strapi/",
+      "webRoot": "${workspaceFolder}/apps/strapi/",
+      "sourceMaps": true,
+      "trace": true,
+      "preLaunchTask": "startStrapiServer"
     }
   ]
 }
