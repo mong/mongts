@@ -6,6 +6,8 @@ import { scaleTime, scaleLinear } from '@visx/scale';
 import { MarkerCircle} from '@visx/marker';
 import { AxisBottom, AxisLeft } from '@visx/axis';
 import _ from 'lodash';
+import { LinechartBackground } from './LinechartBaseStyles';
+
 
 export interface LinechartData {
   x: Date;
@@ -38,15 +40,7 @@ export default function LinechartBase({ data, width, height, yMin, yMax }: Linec
   });
 
   const borderWidth = 50;
-
   const pointSize = 4;
-  const pointXOffset = pointSize;
-  const pointYOffset = pointSize;
-
-  const roundX = 14;
-  const roundY = 14;
-
-  const backgroundColour = "#efefef";
 
   // update scale output ranges
   xScale.range([borderWidth, width - borderWidth]);
@@ -56,8 +50,8 @@ export default function LinechartBase({ data, width, height, yMin, yMax }: Linec
     <div className="visx-linechartbase">
       <svg className="linechartbase" width={width} height={height}>
         <MarkerCircle id="marker-circle" fill="#333" 
-        size = {pointSize} refX={pointXOffset} refY={pointYOffset} />
-        <rect width={width} height={height} rx={roundX} ry={roundY} />
+        size = {pointSize} refX={pointSize} refY={pointSize} />
+        <LinechartBackground width={width} height={height} />
         <LinePath<LinechartData>
           curve={curveLinear}
           data={data}
@@ -76,14 +70,6 @@ export default function LinechartBase({ data, width, height, yMin, yMax }: Linec
         left = {borderWidth}
         />
       </svg>
-      <style jsx>{`
-        .visx-linechartbase {
-        }
-
-        svg.linechartbase rect {
-          fill: ${backgroundColour};
-        }        
-      `}</style>
     </div>
   );
 };

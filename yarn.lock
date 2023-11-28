@@ -2214,7 +2214,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/unitless@npm:^0.8.1":
+"@emotion/unitless@npm:^0.8.0, @emotion/unitless@npm:^0.8.1":
   version: 0.8.1
   resolution: "@emotion/unitless@npm:0.8.1"
   checksum: 918f73c46ac0b7161e3c341cc07d651ce87e31ab1695e74b12adb7da6bb98dfbff8c69cf68a4e40d9eb3d820ca055dc1267aeb3007927ce88f98b885bf729b63
@@ -4236,13 +4236,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/d3-random@npm:^2.2.0":
-  version: 2.2.3
-  resolution: "@types/d3-random@npm:2.2.3"
-  checksum: aa0e5310969f31a34ddd32b4897cb6eb3d6e5aa11883ec2bc6fd18e1c7b4713b7c4a891f7b32390daa58e46b376c47c0e5871edaa29972bb7fa013158a2b19fd
-  languageName: node
-  linkType: hard
-
 "@types/d3-scale-chromatic@npm:*":
   version: 3.0.1
   resolution: "@types/d3-scale-chromatic@npm:3.0.1"
@@ -4900,6 +4893,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/stylis@npm:^4.0.2":
+  version: 4.2.4
+  resolution: "@types/stylis@npm:4.2.4"
+  checksum: 0734b4136192f97f4c8792ea41f1293091dfda53434ede08281fa42689d31f16cd1ad0e058de88c11980c18aae29e62a87027b235b98ab0cb237641b6ec44bcb
+  languageName: node
+  linkType: hard
+
 "@types/testing-library__jest-dom@npm:^5.9.1":
   version: 5.14.9
   resolution: "@types/testing-library__jest-dom@npm:5.14.9"
@@ -5467,16 +5467,6 @@ __metadata:
   peerDependencies:
     react: ^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0
   checksum: a24367abed0a7bf1ef05a3637e4a3cb304667087c6a1edb6f05849dc34cbf592900ffb87fb93453fee028fcdc29f9459a481047c6adfe071506b5cda4a4bc542
-  languageName: node
-  linkType: hard
-
-"@visx/mock-data@npm:3.3.0":
-  version: 3.3.0
-  resolution: "@visx/mock-data@npm:3.3.0"
-  dependencies:
-    "@types/d3-random": "npm:^2.2.0"
-    d3-random: "npm:^2.2.2"
-  checksum: fb7933c6e9bffbb54af70424f86e0391ed8d5f17ae21a3c9605d306d498436e7a5d61b74dc5abb76a4506773a876a7000a117441e141bb78acd74597ea85b96b
   languageName: node
   linkType: hard
 
@@ -7217,6 +7207,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"camelize@npm:^1.0.0":
+  version: 1.0.1
+  resolution: "camelize@npm:1.0.1"
+  checksum: 0e147b4299ac6363c50050716aadfae42831257ec56ce54773ffd2a94a88abb2e2540c5ccc38345e8a39963105b76d86cb24477165a36b78c9958fb304513db3
+  languageName: node
+  linkType: hard
+
 "caniuse-api@npm:^3.0.0":
   version: 3.0.0
   resolution: "caniuse-api@npm:3.0.0"
@@ -7970,6 +7967,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"css-color-keywords@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "css-color-keywords@npm:1.0.0"
+  checksum: 8f125e3ad477bd03c77b533044bd9e8a6f7c0da52d49bbc0bbe38327b3829d6ba04d368ca49dd9ff3b667d2fc8f1698d891c198bbf8feade1a5501bf5a296408
+  languageName: node
+  linkType: hard
+
 "css-declaration-sorter@npm:^6.3.1":
   version: 6.4.1
   resolution: "css-declaration-sorter@npm:6.4.1"
@@ -8075,6 +8079,17 @@ __metadata:
     domutils: "npm:^2.8.0"
     nth-check: "npm:^2.0.1"
   checksum: 8f7310c9af30ccaba8f72cb4a54d32232c53bf9ba05d019b693e16bfd7ba5df0affc1f4d74b1ee55923643d23b80a837eedcf60938c53356e479b04049ff9994
+  languageName: node
+  linkType: hard
+
+"css-to-react-native@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "css-to-react-native@npm:3.2.0"
+  dependencies:
+    camelize: "npm:^1.0.0"
+    css-color-keywords: "npm:^1.0.0"
+    postcss-value-parser: "npm:^4.0.2"
+  checksum: 62ef744254e333abc696efdc945ecf13ad6ba7b726d0a39c0405b2fcb86542aa2f3fe7b7b6770f67ae9679d98b159b4d66353107bf7d6144a445eafcf5fa250a
   languageName: node
   linkType: hard
 
@@ -8519,13 +8534,6 @@ __metadata:
   version: 3.0.1
   resolution: "d3-random@npm:3.0.1"
   checksum: 9f41d6ca3a1826cea8d88392917b5039504337d442a4d1357c870fa3031701e60209a2689a6ddae7df8fca824383d038c957eb545bc49a7428c71aaf3b11f56f
-  languageName: node
-  linkType: hard
-
-"d3-random@npm:^2.2.2":
-  version: 2.2.2
-  resolution: "d3-random@npm:2.2.2"
-  checksum: 70492c13b84cc75860a6cee440a402587f44f2e37c0239a6a76e70f794242a88f68d5a6223a190ef7f7dfd1e0b0a9e0f2680b411f1f79c10aa29210ee9a4ccca
   languageName: node
   linkType: hard
 
@@ -17600,14 +17608,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-value-parser@npm:^4.0.0, postcss-value-parser@npm:^4.1.0, postcss-value-parser@npm:^4.2.0":
+"postcss-value-parser@npm:^4.0.0, postcss-value-parser@npm:^4.0.2, postcss-value-parser@npm:^4.1.0, postcss-value-parser@npm:^4.2.0":
   version: 4.2.0
   resolution: "postcss-value-parser@npm:4.2.0"
   checksum: e4e4486f33b3163a606a6ed94f9c196ab49a37a7a7163abfcd469e5f113210120d70b8dd5e33d64636f41ad52316a3725655421eb9a1094f1bcab1db2f555c62
   languageName: node
   linkType: hard
 
-"postcss@npm:8.4.31, postcss@npm:^8.3.5, postcss@npm:^8.4.21, postcss@npm:^8.4.23, postcss@npm:^8.4.4":
+"postcss@npm:8.4.31, postcss@npm:^8.3.5, postcss@npm:^8.4.21, postcss@npm:^8.4.23, postcss@npm:^8.4.31, postcss@npm:^8.4.4":
   version: 8.4.31
   resolution: "postcss@npm:8.4.31"
   dependencies:
@@ -19990,7 +19998,6 @@ __metadata:
     "@visx/axis": "npm:3.4.1"
     "@visx/group": "npm:3.3.0"
     "@visx/marker": "npm:3.5.0"
-    "@visx/mock-data": "npm:3.3.0"
     "@visx/scale": "npm:3.3.0"
     "@visx/xychart": "npm:3.4.1"
     cypress: "npm:13.4.0"
@@ -20023,6 +20030,7 @@ __metadata:
     rehype-toc: "npm:3.0.2"
     remark-gfm: "npm:3.0.1"
     start-server-and-test: "npm:2.0.2"
+    styled-components: "npm:^6.1.1"
     typescript: "npm:5.2.2"
     use-query-params: "npm:2.2.1"
   languageName: unknown
@@ -20759,6 +20767,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"styled-components@npm:^6.1.1":
+  version: 6.1.1
+  resolution: "styled-components@npm:6.1.1"
+  dependencies:
+    "@emotion/is-prop-valid": "npm:^1.2.1"
+    "@emotion/unitless": "npm:^0.8.0"
+    "@types/stylis": "npm:^4.0.2"
+    css-to-react-native: "npm:^3.2.0"
+    csstype: "npm:^3.1.2"
+    postcss: "npm:^8.4.31"
+    shallowequal: "npm:^1.1.0"
+    stylis: "npm:^4.3.0"
+    tslib: "npm:^2.5.0"
+  peerDependencies:
+    react: ">= 16.8.0"
+    react-dom: ">= 16.8.0"
+  checksum: 7e9538c7d22bd4911d515961167d62cd7b4c42e25eccb9413572ea1a1e9073c363a849807dee7cd4347ad37fafb59bb517fcc399f7f72b2fa6561c5cb6d573a0
+  languageName: node
+  linkType: hard
+
 "styled-jsx@npm:5.1.1":
   version: 5.1.1
   resolution: "styled-jsx@npm:5.1.1"
@@ -20791,6 +20819,13 @@ __metadata:
   version: 4.2.0
   resolution: "stylis@npm:4.2.0"
   checksum: 58359185275ef1f39c339ae94e598168aa6bb789f6cf0d52e726c1e7087a94e9c17f0385a28d34483dec1ffc2c75670ec714dc5603d99c3124ec83bc2b0a0f42
+  languageName: node
+  linkType: hard
+
+"stylis@npm:^4.3.0":
+  version: 4.3.0
+  resolution: "stylis@npm:4.3.0"
+  checksum: 54eb1a13a9ec394a01a2e1a5ca8f856b96ecd8b85b8c04a24c0ff0aa8416798a6a1e9555f6a4345b6f088d03424f5a4376ea093d0ec73e419698415a3c8b59d0
   languageName: node
   linkType: hard
 
@@ -21436,7 +21471,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.0, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.4.0":
+"tslib@npm:^2.0.0, tslib@npm:^2.0.3, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.5.0":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: bd26c22d36736513980091a1e356378e8b662ded04204453d353a7f34a4c21ed0afc59b5f90719d4ba756e581a162ecbf93118dc9c6be5acf70aa309188166ca
