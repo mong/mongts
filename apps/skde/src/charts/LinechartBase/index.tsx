@@ -37,14 +37,14 @@ export default function LinechartBase({ data, width, height, yMin, yMax }: Linec
     domain: [yMin, yMax],
   });
 
-  const borderWidth = 50
+  const borderWidth = 50;
 
-  const pointSize = 4
-  const pointXOffset = pointSize
-  const pointYOffset = pointSize
+  const pointSize = 4;
+  const pointXOffset = pointSize;
+  const pointYOffset = pointSize;
 
-  const roundX = 14
-  const roundY = 14
+  const roundX = 14;
+  const roundY = 14;
 
   const backgroundColour = "#efefef";
 
@@ -86,4 +86,4 @@ export default function LinechartBase({ data, width, height, yMin, yMax }: Linec
       `}</style>
     </div>
   );
-}
+};

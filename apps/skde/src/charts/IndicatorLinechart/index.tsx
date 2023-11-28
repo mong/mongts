@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
 import { useIndicatorQuery, useRegisterNamesQuery } from "qmongjs/src/helpers/hooks";
 import LinechartBase, {LinechartData} from "../LinechartBase";
-import { UseQueryResult } from "@tanstack/react-query";
 
 export declare interface IndicatorLinechartParams {
   registerShortName: string;
@@ -11,7 +9,7 @@ export declare interface IndicatorLinechartParams {
   type: "ind" | "dg";
   width?: number;
   height?: number
-}
+};
 
 const validateParams = (indicatorParams: IndicatorLinechartParams) => {
   if (indicatorParams.context === "resident" && 
