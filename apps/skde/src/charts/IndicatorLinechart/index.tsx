@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchIndicators, useRegisterNamesQuery } from "qmongjs/src/helpers/hooks";
+import { useIndicatorQuery, useRegisterNamesQuery } from "qmongjs/src/helpers/hooks";
 import LinechartBase, {LinechartData} from "../LinechartBase";
 import { UseQueryResult } from "@tanstack/react-query";
 
@@ -24,21 +24,12 @@ const validateParams = (indicatorParams: IndicatorLinechartParams) => {
 };
 
 export const IndicatorLinechart = (indicatorParams: IndicatorLinechartParams) => {
-  const [data, setData] = useState<any>([]);
 
-  useEffect(() => {
-    const fetchIndicatorData = async () => {
-      if(validateParams(indicatorParams)) {
-        const responseData = await fetchIndicators(indicatorParams);
-        setData(responseData);
-      }
-    };
+  const {isFetching, data} = useIndicatorQuery(indicatorParams);
 
-    fetchIndicatorData();
-  }, []);
-
-  const registryNameQuery: UseQueryResult<any, unknown> =
-    useRegisterNamesQuery();
+  if (isFetching) {
+    return null;
+  }
 
     const chartData: LinechartData[] = data
       .filter((row) => {return row.ind_id === "hjerneslag_beh_enhet"})
