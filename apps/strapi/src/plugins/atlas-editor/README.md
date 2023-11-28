@@ -1,3 +1,3 @@
 # Strapi plugin atlas-editor
 
-A quick description of atlas-editor.
+A plugin for publishing and managing health atlas content.

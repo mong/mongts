@@ -482,6 +482,58 @@ export interface PluginUploadFolder extends Schema.CollectionType {
   };
 }
 
+export interface PluginAtlasEditorHealthAtlas extends Schema.CollectionType {
+  collectionName: "health_atlases";
+  info: {
+    singularName: "health-atlas";
+    pluralName: "health-atlases";
+    displayName: "Helseatlas";
+  };
+  options: {
+    draftAndPublish: false;
+    comment: "";
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+    "content-manager": {
+      visible: true;
+    };
+    "content-type-builder": {
+      visible: true;
+    };
+    timestamps: true;
+    softDelete: false;
+  };
+  attributes: {
+    isPublished: Attribute.Boolean & Attribute.DefaultTo<false>;
+    mainTitle: Attribute.String & Attribute.Required;
+    shortTitle: Attribute.String & Attribute.Required;
+    frontPageText: Attribute.Text & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      "plugin::atlas-editor.health-atlas",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      "plugin::atlas-editor.health-atlas",
+      "oneToOne",
+      "admin::user"
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      "plugin::atlas-editor.health-atlas",
+      "oneToMany",
+      "plugin::atlas-editor.health-atlas"
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface PluginI18NLocale extends Schema.CollectionType {
   collectionName: "i18n_locale";
   info: {
@@ -946,6 +998,7 @@ declare module "@strapi/types" {
       "admin::transfer-token-permission": AdminTransferTokenPermission;
       "plugin::upload.file": PluginUploadFile;
       "plugin::upload.folder": PluginUploadFolder;
+      "plugin::atlas-editor.health-atlas": PluginAtlasEditorHealthAtlas;
       "plugin::i18n.locale": PluginI18NLocale;
       "plugin::users-permissions.permission": PluginUsersPermissionsPermission;
       "plugin::users-permissions.role": PluginUsersPermissionsRole;

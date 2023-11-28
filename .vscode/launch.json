@@ -19,15 +19,23 @@
       "justMyCode": true
     },
     {
-      "name": "Strapi debugger",
-      "type": "pwa-chrome",
+      "name": "Strapi: debug server-side",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn dev --watch-admin",
+      "cwd": "${workspaceFolder}/apps/strapi/",
+      "sourceMaps": true,
+      "trace": true
+    },
+    {
+      "name": "Strapi: debug client-side",
+      "type": "chrome",
       "request": "launch",
       "url": "http://localhost:1337",
-      "cwd": "${workspaceFolder}/apps/strapi/",
       "webRoot": "${workspaceFolder}/apps/strapi/",
+      "cwd": "${workspaceFolder}/apps/strapi/",
       "sourceMaps": true,
-      "trace": true,
-      "preLaunchTask": "startStrapiServer"
+      "trace": true
     }
   ]
 }

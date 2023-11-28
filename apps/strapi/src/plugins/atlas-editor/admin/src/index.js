@@ -4,7 +4,8 @@ import pluginId from "./pluginId";
 import Initializer from "./components/Initializer";
 import PluginIcon from "./components/PluginIcon";
 
-const name = pluginPkg.strapi.name;
+// const name = pluginPkg.strapi.name;
+const name = "Helseatlas";
 
 export default {
   register(app) {

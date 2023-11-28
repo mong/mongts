@@ -1,4 +1,4 @@
-import favicon from "./extensions/favicon.png";
+import favicon from "./extensions/favicon.ico";
 
 const config = {
   config: {
@@ -17,6 +17,7 @@ const config = {
           "Logg inn for å administrere og publisere innhold",
       },
     },
+    tutorials: false,
   },
   bootstrap: (app) => {
     console.log(app);

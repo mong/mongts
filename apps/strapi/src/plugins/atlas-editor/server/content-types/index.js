@@ -1,3 +1,7 @@
 "use strict";
 
-module.exports = {};
+const healthAtlas = require("./health-atlas");
+
+module.exports = {
+  "health-atlas": healthAtlas,
+};
