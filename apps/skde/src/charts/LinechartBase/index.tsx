@@ -1,18 +1,17 @@
-import React from 'react';
-import { extent, min, max } from '@visx/vendor/d3-array';
-import { curveLinear } from '@visx/curve';
-import { LinePath } from '@visx/shape';
-import { scaleTime, scaleLinear } from '@visx/scale';
-import { MarkerCircle} from '@visx/marker';
-import { AxisBottom, AxisLeft } from '@visx/axis';
-import _ from 'lodash';
-import { LinechartBackground } from './LinechartBaseStyles';
-
+import React from "react";
+import { extent, min, max } from "@visx/vendor/d3-array";
+import { curveLinear } from "@visx/curve";
+import { LinePath } from "@visx/shape";
+import { scaleTime, scaleLinear } from "@visx/scale";
+import { MarkerCircle } from "@visx/marker";
+import { AxisBottom, AxisLeft } from "@visx/axis";
+import _ from "lodash";
+import { LinechartBackground } from "./LinechartBaseStyles";
 
 export interface LinechartData {
   x: Date;
   y: number;
-};
+}
 
 export interface LinechartBaseProps {
   data: LinechartData[];
@@ -20,9 +19,15 @@ export interface LinechartBaseProps {
   height: number;
   yMin?: number;
   yMax?: number;
-};
+}
 
-export default function LinechartBase({ data, width, height, yMin, yMax }: LinechartBaseProps) {  
+export default function LinechartBase({
+  data,
+  width,
+  height,
+  yMin,
+  yMax,
+}: LinechartBaseProps) {
   // data accessors
   const getX = (d: LinechartData) => d.x;
   const getY = (d: LinechartData) => d.y;
@@ -34,7 +39,7 @@ export default function LinechartBase({ data, width, height, yMin, yMax }: Linec
   const xScale = scaleTime<number>({
     domain: extent(data, getX) as [Date, Date],
   });
-  
+
   const yScale = scaleLinear<number>({
     domain: [yMin, yMax],
   });
@@ -49,8 +54,13 @@ export default function LinechartBase({ data, width, height, yMin, yMax }: Linec
   return (
     <div className="visx-linechartbase">
       <svg className="linechartbase" width={width} height={height}>
-        <MarkerCircle id="marker-circle" fill="#333" 
-        size = {pointSize} refX={pointSize} refY={pointSize} />
+        <MarkerCircle
+          id="marker-circle"
+          fill="#333"
+          size={pointSize}
+          refX={pointSize}
+          refY={pointSize}
+        />
         <LinechartBackground width={width} height={height} />
         <LinePath<LinechartData>
           curve={curveLinear}
@@ -61,15 +71,9 @@ export default function LinechartBase({ data, width, height, yMin, yMax }: Linec
           shapeRendering="geometricPrecision"
           markerMid="url(#marker-circle)"
         />
-        <AxisBottom
-          scale = {xScale}
-          top = {yScale.range()[0]}
-        />
-        <AxisLeft
-        scale = {yScale}
-        left = {borderWidth}
-        />
+        <AxisBottom scale={xScale} top={yScale.range()[0]} />
+        <AxisLeft scale={yScale} left={borderWidth} />
       </svg>
     </div>
   );
-};
+}
