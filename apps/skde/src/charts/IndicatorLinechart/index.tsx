@@ -1,4 +1,4 @@
-import { useIndicatorQuery, useRegisterNamesQuery } from "qmongjs/src/helpers/hooks";
+import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
 import LinechartBase, {LinechartData} from "../LinechartBase";
 
 export declare interface IndicatorLinechartParams {
@@ -9,16 +9,6 @@ export declare interface IndicatorLinechartParams {
   type: "ind" | "dg";
   width?: number;
   height?: number
-};
-
-const validateParams = (indicatorParams: IndicatorLinechartParams) => {
-  if (indicatorParams.context === "resident" && 
-      indicatorParams.unitLevel === "hospital") {
-        console.error("Cannot combine resident and hospital");
-        return false;
-  }
-
-  return true;
 };
 
 export const IndicatorLinechart = (indicatorParams: IndicatorLinechartParams) => {
