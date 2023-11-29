@@ -5362,24 +5362,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@visx/axis@npm:3.4.1":
-  version: 3.4.1
-  resolution: "@visx/axis@npm:3.4.1"
-  dependencies:
-    "@types/react": "npm:*"
-    "@visx/group": "npm:3.3.0"
-    "@visx/point": "npm:3.3.0"
-    "@visx/scale": "npm:3.3.0"
-    "@visx/shape": "npm:3.3.0"
-    "@visx/text": "npm:3.3.0"
-    classnames: "npm:^2.3.1"
-    prop-types: "npm:^15.6.0"
-  peerDependencies:
-    react: ^16.3.0-0 || ^17.0.0-0 || ^18.0.0-0
-  checksum: fa0068b2caf43f5033627017253edb8d051e691ce01a26e6dd57d29cb54da7c921337ecab814e5291c758bde32be28e65c967e7ff4fb46d2ee9d776f9503830f
-  languageName: node
-  linkType: hard
-
 "@visx/axis@npm:3.5.0":
   version: 3.5.0
   resolution: "@visx/axis@npm:3.5.0"
@@ -5462,21 +5444,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@visx/grid@npm:3.3.0":
-  version: 3.3.0
-  resolution: "@visx/grid@npm:3.3.0"
+"@visx/grid@npm:3.5.0":
+  version: 3.5.0
+  resolution: "@visx/grid@npm:3.5.0"
   dependencies:
     "@types/react": "npm:*"
     "@visx/curve": "npm:3.3.0"
     "@visx/group": "npm:3.3.0"
     "@visx/point": "npm:3.3.0"
-    "@visx/scale": "npm:3.3.0"
-    "@visx/shape": "npm:3.3.0"
+    "@visx/scale": "npm:3.5.0"
+    "@visx/shape": "npm:3.5.0"
     classnames: "npm:^2.3.1"
     prop-types: "npm:^15.6.2"
   peerDependencies:
     react: ^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0
-  checksum: ac12b9051f05b0c292a9325e8a1e05fea95d76954d1f967598cb2777f2d71e5fae38b697e166b30edbfd87caafbc7fd7323f1e8ebdce70b9d1847f5c6220fd32
+  checksum: 9d99c661459b13ba345bc62d2cec64865ebff4b89d0815b157864531fc08d12b2f5f088ebee4cbbcc3790319647878f4f74c55dbe3c68d88b6b12111270a20a1
   languageName: node
   linkType: hard
 
@@ -5500,21 +5482,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@visx/react-spring@npm:3.4.1":
-  version: 3.4.1
-  resolution: "@visx/react-spring@npm:3.4.1"
+"@visx/react-spring@npm:3.5.1":
+  version: 3.5.1
+  resolution: "@visx/react-spring@npm:3.5.1"
   dependencies:
     "@types/react": "npm:*"
-    "@visx/axis": "npm:3.4.1"
-    "@visx/grid": "npm:3.3.0"
-    "@visx/scale": "npm:3.3.0"
+    "@visx/axis": "npm:3.5.0"
+    "@visx/grid": "npm:3.5.0"
+    "@visx/scale": "npm:3.5.0"
     "@visx/text": "npm:3.3.0"
     classnames: "npm:^2.3.1"
     prop-types: "npm:^15.6.2"
   peerDependencies:
     "@react-spring/web": ^9.4.5
     react: ^16.3.0-0 || ^17.0.0 || ^18.0.0
-  checksum: 30751d29790f520c9fd6e1eabd09c58f66e76d860d8e695105a01e24af1e3b32a2112948e68575c8c78b100e2fb672057528448881db8013b92ba83a862ab9ef
+  checksum: 55d9b17acd4bce9a6527faedfb606f52c2af241e145987108ec1b4bfc290c5c99f1d59f9b68b0ca803a2b0b0835da50f9916ee01755ae8877e5ce4d90fed657b
   languageName: node
   linkType: hard
 
@@ -5532,43 +5514,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@visx/scale@npm:3.3.0":
-  version: 3.3.0
-  resolution: "@visx/scale@npm:3.3.0"
-  dependencies:
-    "@visx/vendor": "npm:3.3.0"
-  checksum: 751b62bf69f0d628ade0574b745c02406fb9a1eb54909286ec4ff928a3df3d89522df8584d5356bfdad2a6a2bf827ce8c552f2ba2b30b1c70745d3beb70e397a
-  languageName: node
-  linkType: hard
-
 "@visx/scale@npm:3.5.0":
   version: 3.5.0
   resolution: "@visx/scale@npm:3.5.0"
   dependencies:
     "@visx/vendor": "npm:3.5.0"
   checksum: 75116fa455f3c5e811094da0072e0ef08105de78a183c8cf7f6ba4fda08ce0b9f85318e089c97ece3e5bb74d6933c423d0ce9570afe33231cab2df01b4c2c7f8
-  languageName: node
-  linkType: hard
-
-"@visx/shape@npm:3.3.0":
-  version: 3.3.0
-  resolution: "@visx/shape@npm:3.3.0"
-  dependencies:
-    "@types/d3-path": "npm:^1.0.8"
-    "@types/d3-shape": "npm:^1.3.1"
-    "@types/lodash": "npm:^4.14.172"
-    "@types/react": "npm:*"
-    "@visx/curve": "npm:3.3.0"
-    "@visx/group": "npm:3.3.0"
-    "@visx/scale": "npm:3.3.0"
-    classnames: "npm:^2.3.1"
-    d3-path: "npm:^1.0.5"
-    d3-shape: "npm:^1.2.0"
-    lodash: "npm:^4.17.21"
-    prop-types: "npm:^15.5.10"
-  peerDependencies:
-    react: ^16.3.0-0 || ^17.0.0-0 || ^18.0.0-0
-  checksum: 8c04bc6c2b3751f6b4db500f40933ba2e94a732a63d0f1e2c14f5560a13ce21d86d97838baa282a1dac966a7ea34626043177982c9bddae5e1235752945022d5
   languageName: node
   linkType: hard
 
@@ -5626,31 +5577,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@visx/vendor@npm:3.3.0":
-  version: 3.3.0
-  resolution: "@visx/vendor@npm:3.3.0"
-  dependencies:
-    "@types/d3-array": "npm:3.0.3"
-    "@types/d3-color": "npm:3.1.0"
-    "@types/d3-delaunay": "npm:6.0.1"
-    "@types/d3-format": "npm:3.0.1"
-    "@types/d3-interpolate": "npm:3.0.1"
-    "@types/d3-scale": "npm:4.0.2"
-    "@types/d3-time": "npm:3.0.0"
-    "@types/d3-time-format": "npm:2.1.0"
-    d3-array: "npm:3.2.1"
-    d3-color: "npm:3.1.0"
-    d3-delaunay: "npm:6.0.2"
-    d3-format: "npm:3.1.0"
-    d3-interpolate: "npm:3.0.1"
-    d3-scale: "npm:4.0.2"
-    d3-time: "npm:3.1.0"
-    d3-time-format: "npm:4.1.0"
-    internmap: "npm:2.0.3"
-  checksum: 5b2ccf4c7a0cbc608f6cef32f9d036faa1f77eaf85f55953b05854c0761d16be4625b0c9199c6c1e2fee51ab4cbe19a3164bf62f9a7546d57b7a0d7594a0a4ab
-  languageName: node
-  linkType: hard
-
 "@visx/vendor@npm:3.5.0":
   version: 3.5.0
   resolution: "@visx/vendor@npm:3.5.0"
@@ -5693,24 +5619,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@visx/xychart@npm:3.4.1":
-  version: 3.4.1
-  resolution: "@visx/xychart@npm:3.4.1"
+"@visx/xychart@npm:3.5.1":
+  version: 3.5.1
+  resolution: "@visx/xychart@npm:3.5.1"
   dependencies:
     "@types/lodash": "npm:^4.14.172"
     "@types/react": "npm:*"
     "@visx/annotation": "npm:3.3.0"
-    "@visx/axis": "npm:3.4.1"
+    "@visx/axis": "npm:3.5.0"
     "@visx/event": "npm:3.3.0"
     "@visx/glyph": "npm:3.3.0"
-    "@visx/grid": "npm:3.3.0"
-    "@visx/react-spring": "npm:3.4.1"
+    "@visx/grid": "npm:3.5.0"
+    "@visx/react-spring": "npm:3.5.1"
     "@visx/responsive": "npm:3.3.0"
-    "@visx/scale": "npm:3.3.0"
-    "@visx/shape": "npm:3.3.0"
+    "@visx/scale": "npm:3.5.0"
+    "@visx/shape": "npm:3.5.0"
     "@visx/text": "npm:3.3.0"
     "@visx/tooltip": "npm:3.3.0"
-    "@visx/vendor": "npm:3.3.0"
+    "@visx/vendor": "npm:3.5.0"
     "@visx/voronoi": "npm:3.3.0"
     classnames: "npm:^2.3.1"
     d3-interpolate-path: "npm:2.2.1"
@@ -5721,7 +5647,7 @@ __metadata:
   peerDependencies:
     "@react-spring/web": ^9.4.5
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: d988026140fcadaf12a05ac371178b6e807a2b8c51ffb4f7e32ceafa8b4b5767b305ac2f93fd12318965383f7b4f7b8c03e1acac71eb9f23270261fc4922c606
+  checksum: ff2ac0c304e09fcd1082c8154e81b85d5c87cce4c43fe1b1253c8b6527e021b5df925f128821b3d2971afe57155f90cc25b60120571921c59053cfbafa697cc1
   languageName: node
   linkType: hard
 
@@ -19981,8 +19907,8 @@ __metadata:
     "@types/react": "npm:18.2.39"
     "@visx/axis": "npm:3.5.0"
     "@visx/group": "npm:3.3.0"
-    "@visx/scale": "npm:3.3.0"
-    "@visx/xychart": "npm:3.4.1"
+    "@visx/scale": "npm:3.5.0"
+    "@visx/xychart": "npm:3.5.1"
     cypress: "npm:13.5.1"
     d3-array: "npm:3.2.4"
     d3-format: "npm:3.1.0"
