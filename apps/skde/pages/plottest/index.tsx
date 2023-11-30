@@ -11,7 +11,9 @@ export const Skde = (): JSX.Element => {
     type: "ind",
   };
 
-  return <IndicatorLinechart {...indicatorParams} />;
+  return <div>
+     <IndicatorLinechart {...indicatorParams} />
+  </div>
 };
 
 export default Skde;

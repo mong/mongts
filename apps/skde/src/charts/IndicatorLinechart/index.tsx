@@ -31,7 +31,7 @@ export const IndicatorLinechart = (
     return null;
   };
 
-  // Count green, red and yellow indicators per year
+  // Set indicator colour from value and colour limits
   const levels: IndicatorLevels[] = indicatorQuery.data
     .map((row) => {
 
@@ -48,18 +48,7 @@ export const IndicatorLinechart = (
       return {ind_id: row.ind_id, year: row.year, level: level};
     });
 
-    const minYear = _.min(levels.map((row) => {
-      return row.year
-      })
-    );
-
-    const maxYear = _.max(levels.map((row) => {
-      return row.year
-      })
-    );
-
-    const nYears = maxYear - minYear + 1;
-
+    // Count green, red and yellow indicators per year
     const groupedLevels = _(levels).countBy((row) => {return [row.level, row.year]})
     
       .reduce((result, value, key) => {
@@ -73,7 +62,18 @@ export const IndicatorLinechart = (
         }, {green:[], yellow:[], red:[]}
       );
 
- 
+    // Time series bounds
+    const minYear = _.min(levels.map((row) => {
+      return row.year
+      })
+    );
+
+    const maxYear = _.max(levels.map((row) => {
+      return row.year
+      })
+    );
+
+
     // Fill missing years with zero
     const dataAllLevels = {green:[], yellow:[], red:[]};
 
@@ -105,16 +105,28 @@ export const IndicatorLinechart = (
       j++;
     };
 
-  const chartData: LinechartData[] = dataAllLevels.yellow
+    const chartDataGreen: LinechartData[] = dataAllLevels.green
     .map((row) => {
       return { x: new Date(row.year, 0), y: row.number} as LinechartData;
     });
 
+    const chartDataYellow: LinechartData[] = dataAllLevels.yellow
+    .map((row) => {
+      return { x: new Date(row.year, 0), y: row.number} as LinechartData;
+    });
+
+    const chartDataRed: LinechartData[] = dataAllLevels.red
+    .map((row) => {
+      return { x: new Date(row.year, 0), y: row.number} as LinechartData;
+    });
+
+
   return (
     <LinechartBase
-      data={chartData}
+      data={chartDataRed}
       height={indicatorParams.height ?? 500}
       width={indicatorParams.width ?? 1000}
+      yMin={0}
     />
   );
 };

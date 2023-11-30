@@ -69,7 +69,9 @@ export default function LinechartBase({
           y={(d) => yScale(getY(d)) ?? 0}
           stroke="#333"
           shapeRendering="geometricPrecision"
+          markerStart="url(#marker-circle)"
           markerMid="url(#marker-circle)"
+          markerEnd="url(#marker-circle)"
         />
         <AxisBottom scale={xScale} top={yScale.range()[0]} />
         <AxisLeft scale={yScale} left={borderWidth} />
