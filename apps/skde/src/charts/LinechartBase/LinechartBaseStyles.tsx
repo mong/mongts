@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 
 export const LinechartBackground = styled.rect`
-  rx: 14;
-  ry: 14;
-  fill: #efefef;
+  rx: 0;
+  ry: 0;
+  fill: #ffffff;
   width: ${(props) => props.width};
   height: ${(props) => props.height};
 `;

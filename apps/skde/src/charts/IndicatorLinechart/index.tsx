@@ -36,12 +36,12 @@ export const IndicatorLinechart = (
     .map((row) => {
 
       if (row.level_direction === 1) {
-        var level = row.var > row.level_green ? "green"
-          : row.var > row.level_yellow ? "yellow"
+        var level = _.round(row.var, 2) >= row.level_green ? "green"
+          : _.round(row.var, 2) >= row.level_yellow ? "yellow"
           : "red";
       } else {
-        var level = row.var < row.level_green ? "green"
-          : row.var < row.level_yellow ? "yellow"
+        var level = _.round(row.var, 2) < row.level_green ? "green"
+          : _.round(row.var, 2) < row.level_yellow ? "yellow"
           : "red";
       };
 
@@ -120,13 +120,16 @@ export const IndicatorLinechart = (
       return { x: new Date(row.year, 0), y: row.number} as LinechartData;
     });
 
+    const chartData = [chartDataGreen, chartDataYellow, chartDataRed];
+
 
   return (
     <LinechartBase
-      data={chartDataRed}
+      data={chartData}
       height={indicatorParams.height ?? 500}
       width={indicatorParams.width ?? 1000}
       yMin={0}
+      yMax={8}
     />
   );
 };
