@@ -20,13 +20,6 @@ declare interface IndicatorLevels {
   level: "green" | "yellow" | "red"
 }; 
 
-declare interface IndicatorLevelCounts {
-  year: number;
-  greenCounts: number;
-  yellowCounts: number;
-  redCounts: number
-};
-
 export const IndicatorLinechart = (
   indicatorParams: IndicatorLinechartParams,
 ) => {
@@ -65,31 +58,56 @@ export const IndicatorLinechart = (
       })
     );
 
+    const nYears = maxYear - minYear + 1;
+
     const groupedLevels = _(levels).countBy((row) => {return [row.level, row.year]})
     
       .reduce((result, value, key) => {
 
         const [level, year] = key.split(",");
 
-        result[level].push({date:new Date(parseInt(year), 0), number:value});
+        result[level].push({year:parseInt(year), number:value});
         
         return result;
 
         }, {green:[], yellow:[], red:[]}
       );
 
-    console.log(groupedLevels);
  
+    // Fill missing years with zero
+    const dataAllLevels = {green:[], yellow:[], red:[]};
 
-    
+    let j = 0;
+    for (let i = minYear; i <= maxYear; i++) {
+      dataAllLevels.green[j] = {year:i, number:0};
 
+      for (let k = 0; k < groupedLevels.green.length; k++) {
+        if (groupedLevels.green[k].year === dataAllLevels.green[j].year) {
+          dataAllLevels.green[j].number = groupedLevels.green[k].number;
+        }
+      }
 
-  const chartData: LinechartData[] = indicatorQuery.data
-    .filter((row) => {
-      return row.ind_id === "hjerneslag_beh_enhet";
-    })
+      dataAllLevels.yellow[j] = {year:i, number:0};
+
+      for (let k = 0; k < groupedLevels.yellow.length; k++) {
+        if (groupedLevels.yellow[k].year === dataAllLevels.yellow[j].year) {
+          dataAllLevels.yellow[j].number = groupedLevels.yellow[k].number;
+        }
+      }
+
+      dataAllLevels.red[j] = {year:i, number:0};
+
+      for (let k = 0; k < groupedLevels.red.length; k++) {
+        if (groupedLevels.red[k].year === dataAllLevels.red[j].year) {
+          dataAllLevels.red[j].number = groupedLevels.red[k].number;
+        }
+      }
+      j++;
+    };
+
+  const chartData: LinechartData[] = dataAllLevels.yellow
     .map((row) => {
-      return { x: new Date(row.year, 0), y: row.var } as LinechartData;
+      return { x: new Date(row.year, 0), y: row.number} as LinechartData;
     });
 
   return (
