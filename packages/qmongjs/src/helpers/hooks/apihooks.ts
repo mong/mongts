@@ -103,7 +103,7 @@ const fetchSelectionYears = async (
   return await response.json();
 };
 
-const useSelectionYearsQuery = (
+export const useSelectionYearsQuery = (
   registerShortName: string,
   context: string,
   type: string,
