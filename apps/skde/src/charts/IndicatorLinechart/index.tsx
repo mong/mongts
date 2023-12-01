@@ -1,8 +1,10 @@
-import { useDescriptionQuery, useIndicatorQuery } from "qmongjs/src/helpers/hooks";
+import { indicatorUrl, useDescriptionQuery, useIndicatorQuery } from "qmongjs/src/helpers/hooks";
 import LinechartBase, { LinechartData } from "../LinechartBase";
 import { UseQueryResult } from "@tanstack/react-query";
 import { NumberMatcher } from "cypress/types/net-stubbing";
 import _ from "lodash";
+import { url } from "inspector";
+import { level } from "qmongjs/src/helpers/functions";
 
 export declare interface IndicatorLinechartParams {
   registerShortName: string;
@@ -20,10 +22,29 @@ declare interface IndicatorLevels {
   level: "green" | "yellow" | "red"
 }; 
 
+const mapLevel = (indicatorLevel) => {
+  let mappedLevel = "";
+  switch(indicatorLevel) {
+    case 'L':
+      mappedLevel = 'red';
+      break;
+    case 'M':
+      mappedLevel = 'yellow';
+      break;
+    case 'H':
+      mappedLevel = 'green';
+      break;
+    default:
+      throw new Error(`Unknown indicator level: ${indicatorLevel}`);
+  };
+
+  return mappedLevel;
+};
+
 export const IndicatorLinechart = (
   indicatorParams: IndicatorLinechartParams,
 ) => {
-
+  console.log(indicatorUrl(indicatorParams));
   // Fetch aggregated data
   const indicatorQuery: UseQueryResult<any, unknown> = useIndicatorQuery(indicatorParams);
 
@@ -34,19 +55,10 @@ export const IndicatorLinechart = (
   // Set indicator colour from value and colour limits
   const levels: IndicatorLevels[] = indicatorQuery.data
     .map((row) => {
-
-      if (row.level_direction === 1) {
-        var level = _.round(row.var, 2) >= row.level_green ? "green"
-          : _.round(row.var, 2) >= row.level_yellow ? "yellow"
-          : "red";
-      } else {
-        var level = _.round(row.var, 2) < row.level_green ? "green"
-          : _.round(row.var, 2) < row.level_yellow ? "yellow"
-          : "red";
-      };
-
-      return {ind_id: row.ind_id, year: row.year, level: level};
+      const indicatorLevel = mapLevel(level(row));
+      return {ind_id: row.ind_id, year: row.year, level: indicatorLevel};
     });
+
 
     // Count green, red and yellow indicators per year
     const groupedLevels = _(levels).countBy((row) => {return [row.level, row.year]})

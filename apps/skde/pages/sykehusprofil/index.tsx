@@ -12,7 +12,17 @@ export const Skde = (): JSX.Element => {
   };
 
   return <div>
+         <img
+        className="figure"
+        alt="Figure"
+        src="/img/sykehusprofil/SKDE-innholdsboks1-sykehusprofil.png"
+        />
      <IndicatorLinechart {...indicatorParams} />
+     <img
+        className="figure"
+        alt="Figure"
+        src="/img/sykehusprofil/SKDE-innholdsboks3-sykehusprofil.png"
+        />
   </div>
 };
 

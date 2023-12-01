@@ -40,7 +40,7 @@ export interface FetchIndicatorParams {
   type?: string;
 }
 
-const indicatorUrl = (params: FetchIndicatorParams): string => {
+export const indicatorUrl = (params: FetchIndicatorParams): string => {
   const unitQuery: string = params.unitNames
     ? params.unitNames.reduce((acc, cur) => {
         return `${acc}unit_name[]=${cur}&`;
@@ -59,7 +59,7 @@ const indicatorUrl = (params: FetchIndicatorParams): string => {
   return `${API_HOST}/data/${params.registerShortName}/indicators?${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}${typeQuery}`;
 };
 
-export const fetchIndicators = async (params: FetchIndicatorParams) => {
+const fetchIndicators = async (params: FetchIndicatorParams) => {
   const response = await fetch(indicatorUrl(params));
   if (!response.ok) {
     throw new Error(response.statusText);
@@ -103,7 +103,7 @@ const fetchSelectionYears = async (
   return await response.json();
 };
 
-export const useSelectionYearsQuery = (
+const useSelectionYearsQuery = (
   registerShortName: string,
   context: string,
   type: string,
