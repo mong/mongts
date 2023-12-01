@@ -40,7 +40,7 @@ export interface FetchIndicatorParams {
   type?: string;
 }
 
-export const indicatorUrl = (params: FetchIndicatorParams): string => {
+const indicatorUrl = (params: FetchIndicatorParams): string => {
   const unitQuery: string = params.unitNames
     ? params.unitNames.reduce((acc, cur) => {
         return `${acc}unit_name[]=${cur}&`;

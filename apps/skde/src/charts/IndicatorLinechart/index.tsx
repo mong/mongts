@@ -1,9 +1,7 @@
-import { indicatorUrl, useDescriptionQuery, useIndicatorQuery } from "qmongjs/src/helpers/hooks";
+import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
 import LinechartBase, { LinechartData } from "../LinechartBase";
 import { UseQueryResult } from "@tanstack/react-query";
-import { NumberMatcher } from "cypress/types/net-stubbing";
 import _ from "lodash";
-import { url } from "inspector";
 import { level } from "qmongjs/src/helpers/functions";
 
 export declare interface IndicatorLinechartParams {
@@ -44,7 +42,7 @@ const mapLevel = (indicatorLevel) => {
 export const IndicatorLinechart = (
   indicatorParams: IndicatorLinechartParams,
 ) => {
-  console.log(indicatorUrl(indicatorParams));
+
   // Fetch aggregated data
   const indicatorQuery: UseQueryResult<any, unknown> = useIndicatorQuery(indicatorParams);
 

@@ -4,7 +4,7 @@ import IndicatorLinechart, {
 
 export const Skde = (): JSX.Element => {
   const indicatorParams: IndicatorLinechartParams = {
-    registerShortName: "hjerteinfarkt",
+    registerShortName: "hjerneslag",
     unitNames: ["Tromsø"],
     unitLevel: "hospital",
     context: "caregiver",

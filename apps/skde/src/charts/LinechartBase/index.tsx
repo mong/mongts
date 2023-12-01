@@ -1,13 +1,11 @@
 import React from "react";
 import { extent, min, max } from "@visx/vendor/d3-array";
-import { curveLinear, curveNatural, curveBasis, curveMonotoneX } from "@visx/curve";
+import { curveLinear } from "@visx/curve";
 import { LinePath } from "@visx/shape";
 import { scaleTime, scaleLinear } from "@visx/scale";
-import { MarkerCircle } from "@visx/marker";
 import { AxisBottom, AxisLeft } from "@visx/axis";
 import _ from "lodash";
 import { LinechartBackground } from "./LinechartBaseStyles";
-import { Group } from '@visx/group';
 
 export interface LinechartData {
   x: Date;
@@ -61,9 +59,9 @@ export default function LinechartBase({
         <LinechartBackground width={width} height={height} />
         {
           data.map((lineData, i) => {
-            const even = i;
             return (
                 <LinePath<LinechartData>
+                  key={`lineid-${i}`}
                   curve={curveLinear}
                   data={lineData}
                   x = {(d) => xScale(getX(d))}
