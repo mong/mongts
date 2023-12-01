@@ -11,19 +11,21 @@ export const Skde = (): JSX.Element => {
     type: "ind",
   };
 
-  return <div>
-         <img
+  return (
+    <div>
+      <img
         className="figure"
         alt="Figure"
         src="/img/sykehusprofil/SKDE-innholdsboks1-sykehusprofil.png"
-        />
-     <IndicatorLinechart {...indicatorParams} />
-     <img
+      />
+      <IndicatorLinechart {...indicatorParams} />
+      <img
         className="figure"
         alt="Figure"
         src="/img/sykehusprofil/SKDE-innholdsboks3-sykehusprofil.png"
-        />
-  </div>
+      />
+    </div>
+  );
 };
 
 export default Skde;

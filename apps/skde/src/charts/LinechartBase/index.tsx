@@ -57,34 +57,33 @@ export default function LinechartBase({
     <div className="visx-linechartbase">
       <svg className="linechartbase" width={width} height={height}>
         <LinechartBackground width={width} height={height} />
-        {
-          data.map((lineData, i) => {
-            return (
-                <LinePath<LinechartData>
-                  key={`lineid-${i}`}
-                  curve={curveLinear}
-                  data={lineData}
-                  x = {(d) => xScale(getX(d))}
-                  y = {(d) => yScale(getY(d))}
-                  stroke={
-                    i === 0 ? "#3BAA34" : 
-                    i === 1 ? "#FD9C00" :
-                    i === 2 ? "#E30713" :
-                    "blue"}
-                  shapeRendering="geometricPrecision"
-                  strokeDasharray={
-                    i === 0 ? "0" : 
-                    i === 1 ? "1 3" :
-                    i === 2 ? "8 8" :
-                    0
-                  }
-                  strokeWidth={"1px"}
-                  strokeLinejoin={"round"}
-                  strokeLinecap={"square"}
-                />
-            );
-          })
-        }
+        {data.map((lineData, i) => {
+          return (
+            <LinePath<LinechartData>
+              key={`lineid-${i}`}
+              curve={curveLinear}
+              data={lineData}
+              x={(d) => xScale(getX(d))}
+              y={(d) => yScale(getY(d))}
+              stroke={
+                i === 0
+                  ? "#3BAA34"
+                  : i === 1
+                  ? "#FD9C00"
+                  : i === 2
+                  ? "#E30713"
+                  : "blue"
+              }
+              shapeRendering="geometricPrecision"
+              strokeDasharray={
+                i === 0 ? "0" : i === 1 ? "1 3" : i === 2 ? "8 8" : 0
+              }
+              strokeWidth={"1px"}
+              strokeLinejoin={"round"}
+              strokeLinecap={"square"}
+            />
+          );
+        })}
 
         <AxisBottom scale={xScale} top={yScale.range()[0]} numTicks={nXTicks} />
         <AxisLeft scale={yScale} left={borderWidth} />
