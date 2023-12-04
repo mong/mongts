@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import { SelectedRegister } from "qmongjs";
 import { Layout } from "qmongjs";
