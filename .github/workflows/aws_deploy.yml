@@ -24,13 +24,15 @@ jobs:
       NEXT_PUBLIC_SENTRY: "https://d48c58a239264c12bcbf8fe86d364c44@o489056.ingest.sentry.io/5799127"
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v4.1.0
+        uses: actions/checkout@v4.1.1
+      - name: Enable Corepack before setting up Node
+        run: corepack enable
       - name: Set up Node.js
-        uses: actions/setup-node@v3.8.1
+        uses: actions/setup-node@v4.0.0
         with:
-          node-version: "18.x"
+          node-version: "20.x"
           cache: "yarn"
-      - run: yarn install
+      - run: corepack enable && yarn install
       - run: yarn run check-types
       - run: yarn run check-format
       - name: Test build

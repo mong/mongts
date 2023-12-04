@@ -39,8 +39,8 @@ jobs:
           echo "descr='Main commits deploy'" >> $GITHUB_ENV
           echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_QA }}" >> $GITHUB_ENV
       - name: Check out the repo
-        uses: actions/checkout@v4.1.0
-      - run: yarn install
+        uses: actions/checkout@v4.1.1
+      - run: corepack enable && yarn install
       - run: yarn workspace api run build
       - name: Lint Dockerfile
         uses: hadolint/hadolint-action@v3.1.0
@@ -71,6 +71,8 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       - name: Update elasticbeanstalk
         if: github.event_name != 'pull_request'
         run: |
