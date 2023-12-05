@@ -1970,9 +1970,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/code-coverage@npm:3.12.12":
-  version: 3.12.12
-  resolution: "@cypress/code-coverage@npm:3.12.12"
+"@cypress/code-coverage@npm:3.12.13":
+  version: 3.12.13
+  resolution: "@cypress/code-coverage@npm:3.12.13"
   dependencies:
     "@cypress/webpack-preprocessor": "npm:^6.0.0"
     chalk: "npm:4.1.2"
@@ -1980,7 +1980,7 @@ __metadata:
     debug: "npm:4.3.4"
     execa: "npm:4.1.0"
     globby: "npm:11.1.0"
-    istanbul-lib-coverage: "npm:3.0.0"
+    istanbul-lib-coverage: "npm:^3.0.0"
     js-yaml: "npm:4.1.0"
     nyc: "npm:15.1.0"
   peerDependencies:
@@ -1989,7 +1989,7 @@ __metadata:
     babel-loader: ^8.3 || ^9
     cypress: "*"
     webpack: ^4 || ^5
-  checksum: 346c75e3b07f1dcd279339087c0298c28196e9b65652f5cf0a77220f1a89ce92ba8e594e4c117117842123c85ef02c1a69fac7b12e73bdcde484f54ddb943648
+  checksum: f7c0efa7244d47c18caf9e53bdea51666ddbe59d382fb3dd340ba373615fb8905837f784982122d68935db7f3d3bc329d3db32bfae9bbd0135713c87616d2607
   languageName: node
   linkType: hard
 
@@ -13143,13 +13143,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"istanbul-lib-coverage@npm:3.0.0":
-  version: 3.0.0
-  resolution: "istanbul-lib-coverage@npm:3.0.0"
-  checksum: eb0ba205890ee02ea9d76b31d6adf196f532b28a158c0c4db0db6ee6b60de476aca7bba34a9321d17fc396853db758d9430f1202ed28a7a6060e9d1cc8f555c0
-  languageName: node
-  linkType: hard
-
 "istanbul-lib-coverage@npm:^3.0.0, istanbul-lib-coverage@npm:^3.2.0":
   version: 3.2.0
   resolution: "istanbul-lib-coverage@npm:3.2.0"
@@ -20015,7 +20008,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "skde@workspace:apps/skde"
   dependencies:
-    "@cypress/code-coverage": "npm:3.12.12"
+    "@cypress/code-coverage": "npm:3.12.13"
     "@emotion/react": "npm:11.11.1"
     "@emotion/styled": "npm:11.11.0"
     "@mui/icons-material": "npm:5.14.19"
