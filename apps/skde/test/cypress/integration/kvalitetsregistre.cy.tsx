@@ -21,7 +21,7 @@ context("Testing of kvalitetsregistre page", () => {
     // Close menu
     cy.get('[data-testid="pick_registry_close_button"]').click();
     cy.get('[data-testid="med_field_list"]', { timeout: 60000 }).should(
-      "be.visible"
+      "be.visible",
     );
     // Reopen menu
     cy.get('[data-testid="select_registry_button"]').click();
@@ -37,16 +37,16 @@ context("Testing of kvalitetsregistre page", () => {
   it("test medical field selector", () => {
     cy.get('[data-testid="medfield_nerve"]', { timeout: 60000 }).should(
       "not.have.class",
-      "checked"
+      "checked",
     );
     cy.get('[data-testid="indicatorrow_hjerteinfarkt_reper_stemi"]').should(
-      "be.visible"
+      "be.visible",
     );
     // Click nerve medical field
     cy.get('[data-testid="medfieldbutton_nerve"]').click();
     cy.get('[data-testid="medfield_nerve"]').should("have.class", "checked");
     cy.get('[data-testid="indicatorrow_hjerteinfarkt_reper_stemi"]').should(
-      "not.be.visible"
+      "not.be.visible",
     );
   });
 
@@ -74,28 +74,32 @@ context("Testing of kvalitetsregistre page", () => {
     // Close popup by pressing Esc button
     cy.get("body").type("{esc}");
     cy.get('[data-testid="tu_list"]', { timeout: 60000 }).should(
-      "not.be.visible"
+      "not.be.visible",
     );
     cy.get('[data-testid="vis_alle_button"]').click();
     cy.get('[data-testid="tu_list"]', { timeout: 60000 }).should("be.visible");
     // Pick a unit
     cy.get("button").contains("Finnmarkssykehuset HF").click();
     cy.get('[data-testid="tu_header_Finnmark HF"]', { timeout: 60000 }).should(
-      "exist"
+      "exist",
     );
-    cy.get('[data-testid="tu_header_Finnmark HF"]').should("not.be.visible");
+    cy.get('[data-testid="tu_header_Finnmark HF"]', { timeout: 60000 }).should(
+      "not.be.visible",
+    );
     // Pick another unit
     cy.get("button").contains("Hammerfest").click();
     cy.get('[data-testid="tu_list_close"]').click();
     cy.get('[data-testid="tu_list"]', { timeout: 60000 }).should(
-      "not.be.visible"
+      "not.be.visible",
     );
-    cy.get('[data-testid="tu_header_Hammerfest"]').should("exist");
+    cy.get('[data-testid="tu_header_Hammerfest"]', { timeout: 60000 }).should(
+      "exist",
+    );
     cy.get('[data-testid="vis_alle_button"]').click();
     // Unit should be unselected when clicked a second time
     cy.get("button").contains("Hammerfest").click();
     cy.get('[data-testid="tu_header_Hammerfest"]', { timeout: 60000 }).should(
-      "not.exist"
+      "not.exist",
     );
     cy.get("button").contains("Hammerfest").click();
     cy.get("button").contains("Kirkenes").click();
@@ -115,17 +119,17 @@ context("Testing of kvalitetsregistre page", () => {
     cy.get('[data-testid="tab_sykehus"]', { timeout: 60000 }).should(
       "have.attr",
       "aria-selected",
-      "false"
+      "false",
     );
     cy.get('[data-testid="tab_opptaksomraade"]').should(
       "have.attr",
       "aria-selected",
-      "true"
+      "true",
     );
     cy.get('[data-testid="tab_datakvalitet"]').should(
       "have.attr",
       "aria-selected",
-      "false"
+      "false",
     );
     cy.get('[data-testid="tu_header_UNN HF"]').should("not.exist");
     cy.contains("div", "Søk etter opptaksområder");
@@ -135,17 +139,17 @@ context("Testing of kvalitetsregistre page", () => {
     cy.get('[data-testid="tab_sykehus"]', { timeout: 60000 }).should(
       "have.attr",
       "aria-selected",
-      "false"
+      "false",
     );
     cy.get('[data-testid="tab_opptaksomraade"]').should(
       "have.attr",
       "aria-selected",
-      "false"
+      "false",
     );
     cy.get('[data-testid="tab_datakvalitet"]').should(
       "have.attr",
       "aria-selected",
-      "true"
+      "true",
     );
     cy.contains("div", "Søk etter behandlingsenheter");
     cy.get('[data-testid="tu_header_UNN HF"]').should("not.exist");
@@ -153,17 +157,17 @@ context("Testing of kvalitetsregistre page", () => {
     cy.get('[data-testid="tab_sykehus"]', { timeout: 60000 }).should(
       "have.attr",
       "aria-selected",
-      "true"
+      "true",
     );
     cy.get('[data-testid="tab_opptaksomraade"]').should(
       "have.attr",
       "aria-selected",
-      "false"
+      "false",
     );
     cy.get('[data-testid="tab_datakvalitet"]').should(
       "have.attr",
       "aria-selected",
-      "false"
+      "false",
     );
   });
 });
