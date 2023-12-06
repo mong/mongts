@@ -19,6 +19,15 @@
       "justMyCode": true
     },
     {
+      "name": "SKDE: debug API",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "yarn dev",
+      "cwd": "${workspaceFolder}/apps/api/",
+      "sourceMaps": true,
+      "trace": true
+    },
+    {
       "name": "Strapi: debug server-side",
       "type": "node-terminal",
       "request": "launch",
