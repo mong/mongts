@@ -1,10 +1,10 @@
-name: Node.js CI
+name: Cypress
 
 on:
   push:
     branches: [develop]
   pull_request:
-    branches: [main, develop, dependency_updates]
+    branches: [main, develop]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build and Test
+    name: Cypress testing
     runs-on: ubuntu-latest
     env:
       NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
@@ -20,7 +20,7 @@ jobs:
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [20.x]
 
     steps:
       - uses: actions/checkout@v4.1.1
@@ -32,9 +32,18 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
       - run: corepack enable && yarn install
-      - run: yarn run check-types
-      - run: yarn run check-format
-      - run: yarn run test
-      - name: Code coverage
-        if: matrix.node-version == '20.x'
-        uses: codecov/codecov-action@v3.1.4
+      - run: yarn workspace skde run build
+      - name: Cypress run
+        uses: cypress-io/github-action@v6.6.0
+        with:
+          working-directory: ./apps/skde
+          build: yarn export
+          start: yarn start-server
+          browser: chrome
+      - name: Archive production artifacts
+        if: failure()
+        uses: actions/upload-artifact@v3.1.3
+        with:
+          name: cypress videos
+          path: apps/skde/cypress/videos
+          retention-days: 1
