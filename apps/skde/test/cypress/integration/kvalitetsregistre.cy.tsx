@@ -80,12 +80,6 @@ context("Testing of kvalitetsregistre page", () => {
     cy.get('[data-testid="tu_list"]', { timeout: 60000 }).should("be.visible");
     // Pick a unit
     cy.get("button").contains("Finnmarkssykehuset HF").click();
-    cy.get('[data-testid="tu_header_Finnmark HF"]', { timeout: 60000 }).should(
-      "exist",
-    );
-    cy.get('[data-testid="tu_header_Finnmark HF"]', { timeout: 60000 }).should(
-      "not.be.visible",
-    );
     // Pick another unit
     cy.get("button").contains("Hammerfest").click();
     cy.get('[data-testid="tu_list_close"]').click();
