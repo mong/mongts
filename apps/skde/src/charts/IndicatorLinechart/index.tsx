@@ -117,6 +117,7 @@ export const IndicatorLinechart = (
     j++;
   }
 
+  // Reassemble into array
   const chartDataGreen: LinechartData[] = dataAllLevels.green.map((row) => {
     return { x: new Date(row.year, 0), y: row.number } as LinechartData;
   });
@@ -136,8 +137,6 @@ export const IndicatorLinechart = (
       data={chartData}
       height={indicatorParams.height ?? 500}
       width={indicatorParams.width ?? 1000}
-      yMin={0}
-      yMax={8}
     />
   );
 };

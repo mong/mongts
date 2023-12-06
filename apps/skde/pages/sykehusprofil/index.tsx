@@ -9,6 +9,8 @@ export const Skde = (): JSX.Element => {
     unitLevel: "hospital",
     context: "caregiver",
     type: "ind",
+    width: 860,
+    height: 400
   };
 
   return (
