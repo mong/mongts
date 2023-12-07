@@ -19,30 +19,28 @@ type lineStyle = {
 };
 
 export class LineStyles {
-  0: lineStyle;
-  1: lineStyle;
-  2: lineStyle;
+  styles: lineStyle[];
 
-  constructor(style0: lineStyle, style1: lineStyle, style2: lineStyle) {
-    this[0] = style0;
-    this[1] = style1;
-    this[2] = style2;
-  }
+  constructor(styles: lineStyle[]) {
+    this.styles = styles.map((row) => {
+      return row;
+    });
+  };
 
   getLabels = () => {
-    return [0, 1, 2].map((i) => this[i].text);
+    return this.styles.map((row) => row.text);
   };
 
   getPaths = () => {
-    return [0, 1, 2].map((i) => (
-      <path
+    return this.styles.map((row) => {
+      return <path
         d="M0 1H30"
-        stroke={this[i].colour}
+        stroke={row.colour}
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeDasharray={this[i].strokeDash}
+        strokeDasharray={row.strokeDash}
       />
-    ));
+  });
   };
 }
 
@@ -130,7 +128,7 @@ export default function LinechartBase({
                   >
                     {label.value}
                   </svg>
-                  <LegendLabel align="keft" margin={10}>
+                  <LegendLabel align="left" margin={10}>
                     {label.text}
                   </LegendLabel>
                 </LegendItem>
@@ -150,8 +148,8 @@ export default function LinechartBase({
               data={lineData}
               x={(d) => xScale(getX(d))}
               y={(d) => yScale(getY(d))}
-              stroke={lineStyles[i].colour}
-              strokeDasharray={lineStyles[i].strokeDash}
+              stroke={lineStyles.styles[i].colour}
+              strokeDasharray={lineStyles.styles[i].strokeDash}
               shapeRendering="geometricPrecision"
               strokeWidth={"1px"}
               strokeLinejoin={"round"}

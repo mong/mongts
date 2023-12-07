@@ -11,14 +11,14 @@ export const Skde = (): JSX.Element => {
     type: "ind",
     width: 860,
     height: 400,
-    lineStyles: new LineStyles(
+    lineStyles: new LineStyles([
       { text: "Høy måloppnåelse", strokeDash: "0", colour: "#3BAA34" },
       { text: "Moderat måloppnåelse", strokeDash: "1 3", colour: "#FD9C00" },
       { text: "Lav måloppnåelse", strokeDash: "8 8", colour: "#E30713" },
-    ),
-    startYear: 2017,
+    ]),
+    startYear: 2016,
     endYear: 2022,
-    yMin: 10,
+    yMin: 0,
   };
 
   return (
