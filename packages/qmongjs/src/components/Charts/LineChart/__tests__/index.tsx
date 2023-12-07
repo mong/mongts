@@ -15,6 +15,7 @@ import {
   useLegendItemPosition,
   useTextWidth,
 } from "../../../../helpers/hooks";
+import { vi } from "vitest";
 
 vi.mock("../../../../helpers/hooks");
 
