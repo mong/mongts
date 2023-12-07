@@ -20,13 +20,13 @@ vi.mock("../../../../helpers/hooks");
 
 beforeEach(() => {
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
   });
-  (useLegendItemPosition as vi.mock).mockReturnValue({ x: 0, y: 0 });
-  (useTextWidth as vi.mock).mockReturnValue(15);
+  (useLegendItemPosition as jest.Mock).mockReturnValue({ x: 0, y: 0 });
+  (useTextWidth as jest.Mock).mockReturnValue(15);
 });
 
 test("shows legend", async () => {
@@ -56,7 +56,7 @@ test("shows only one legend item per unit_name", async () => {
 
 test("Render without levels @250px", async () => {
   const WIDTH = 250;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -102,7 +102,7 @@ test("Render without levels @250px", async () => {
 
 test("Render with levels @500px", async () => {
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -149,7 +149,7 @@ test("Render with levels @500px", async () => {
 
 test("Render with levels reversed @500px", async () => {
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -216,7 +216,7 @@ test("Render with levels reversed @500px", async () => {
 
 test("Render with many years", async () => {
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -252,7 +252,7 @@ test("Render with many years", async () => {
 
 test("Render with many years, ending with even", async () => {
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -289,7 +289,7 @@ test("Render with many years, ending with even", async () => {
 
 test("Render with many years, including missing years", async () => {
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -323,7 +323,7 @@ test("Render with many years, including missing years", async () => {
 
 test("Render with many years, including missing years", async () => {
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -359,12 +359,12 @@ test("Render with many years, including missing years", async () => {
 function LineChartWithRef(props: Omit<Props, "svgContainerRef">) {
   const ref = createRef<HTMLDivElement>();
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
   });
-  (useLegendItemPosition as vi.mock).mockReturnValue({ x: 0, y: 0 });
+  (useLegendItemPosition as jest.Mock).mockReturnValue({ x: 0, y: 0 });
 
   return <LineChart {...props} svgContainerRef={ref} />;
 }

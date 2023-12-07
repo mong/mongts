@@ -17,7 +17,7 @@ vi.mock("../../../../helpers/hooks");
 
 test("Bar have labels with value in %", async () => {
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -54,7 +54,7 @@ test("Bar have labels with value in %", async () => {
 
 test("Bar have labels with value as number", async () => {
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -91,7 +91,7 @@ test("Bar have labels with value as number", async () => {
 
 test("Bar widths are correct", async () => {
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -132,7 +132,7 @@ test("Bar widths are correct", async () => {
 
 test("Level widths are correct", async () => {
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -162,7 +162,7 @@ test("Level widths are correct", async () => {
 
 test("Can set color and opacity for bars", async () => {
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -213,7 +213,7 @@ test("Can set color and opacity for bars", async () => {
 
 test("Render without levels @250px", async () => {
   const WIDTH = 250;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -246,7 +246,7 @@ test("Render without levels @250px", async () => {
 
 test("Render without zoom @750px", async () => {
   const WIDTH = 750;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -279,7 +279,7 @@ test("Render without zoom @750px", async () => {
 
 test("Render with zoom @750px", async () => {
   const WIDTH = 750;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -312,7 +312,7 @@ test("Render with zoom @750px", async () => {
 
 test("Render with levels @250px", async () => {
   const WIDTH = 250;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -345,7 +345,7 @@ test("Render with levels @250px", async () => {
 
 test("Render without levels @500px", async () => {
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -378,7 +378,7 @@ test("Render without levels @500px", async () => {
 
 test("Render with levels @500px", async () => {
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -411,7 +411,7 @@ test("Render with levels @500px", async () => {
 
 test("Render with levels reversed @500px", async () => {
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -444,7 +444,7 @@ test("Render with levels reversed @500px", async () => {
 
 test("Render zoomed with levels @500px and gray overlay (not complete data)", async () => {
   const WIDTH = 500;
-  (useResizeObserver as vi.mock).mockReturnValue({
+  (useResizeObserver as jest.Mock).mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
