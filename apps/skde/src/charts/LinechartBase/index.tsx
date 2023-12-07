@@ -12,10 +12,45 @@ export interface LinechartData {
   y: number;
 }
 
+type lineStyle = {
+  text: string;
+  strokeDash: string;
+  colour: string;
+};
+
+export class LineStyles {
+  0: lineStyle;
+  1: lineStyle;
+  2: lineStyle;
+
+  constructor(style0: lineStyle, style1: lineStyle, style2: lineStyle) {
+    this[0] = style0;
+    this[1] = style1;
+    this[2] = style2;
+  }
+
+  getLabels = () => {
+    return [0, 1, 2].map((i) => this[i].text);
+  };
+
+  getPaths = () => {
+    return [0, 1, 2].map((i) => (
+      <path
+        d="M0 1H30"
+        stroke={this[i].colour}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeDasharray={this[i].strokeDash}
+      />
+    ));
+  };
+}
+
 export interface LinechartBaseProps {
   data: LinechartData[][];
   width: number;
   height: number;
+  lineStyles: LineStyles;
   yMin?: number;
   yMax?: number;
 }
@@ -24,6 +59,7 @@ export default function LinechartBase({
   data,
   width,
   height,
+  lineStyles,
   yMin,
   yMax,
 }: LinechartBaseProps) {
@@ -67,49 +103,6 @@ export default function LinechartBase({
     fontFamily: font,
     fontWeight: fontWeight,
   };
-
-  // Style the lines
-  type lineStyle = {
-    text: string;
-    strokeDash: string;
-    colour: string;
-  };
-
-  class LineStyles {
-    0: lineStyle;
-    1: lineStyle;
-    2: lineStyle;
-
-    constructor(style0: lineStyle, style1: lineStyle, style2: lineStyle) {
-      this[0] = style0;
-      this[1] = style1;
-      this[2] = style2;
-    }
-
-    getLabels = () => {
-      return [0, 1, 2].map((i) => this[i].text);
-    };
-
-    getPaths = () => {
-      return [0, 1, 2].map((i) => (
-        <path
-          d="M0 1H30"
-          stroke={this[i].colour}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeDasharray={this[i].strokeDash}
-        />
-      ));
-    };
-  }
-
-  // This could be passed into the component
-  // Need to check that there is one style for each line
-  const lineStyles = new LineStyles(
-    { text: "Høy måloppnåelse", strokeDash: "0", colour: "#3BAA34" },
-    { text: "Moderat måloppnåelse", strokeDash: "1 3", colour: "#FD9C00" },
-    { text: "Lav måloppnåelse", strokeDash: "8 8", colour: "#E30713" },
-  );
 
   const legendScale = scaleOrdinal<string, React.JSX.Element>({
     domain: lineStyles.getLabels(),
