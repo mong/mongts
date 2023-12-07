@@ -6,10 +6,10 @@ import {
   useLegendItemPosition,
   useResizeObserver,
 } from "../../../../helpers/hooks";
-import { clockTick } from "../../../../test/clockTick";
 import { Description, Indicator } from "types";
+import { vi } from "vitest";
 
-jest.mock("../../../../helpers/hooks");
+vi.mock("../../../../helpers/hooks");
 
 const linedata = [
   buildDataPoint({
@@ -97,7 +97,7 @@ test("Bar", async () => {
     />,
   );
 
-  await clockTick(1500);
+  await 1500;
 
   expect(container).toMatchSnapshot();
 });
@@ -121,7 +121,7 @@ test("Bar with level_direction eq 0", async () => {
     />,
   );
 
-  await clockTick(1500);
+  await 1500;
 
   expect(container).toMatchSnapshot();
 });
@@ -148,7 +148,7 @@ test("Bar select treatment unit", async () => {
     />,
   );
 
-  await clockTick(1500);
+  await 1500;
 
   expect(container).toMatchSnapshot();
 });
@@ -171,7 +171,7 @@ test("Line", async () => {
     />,
   );
 
-  await clockTick(1500);
+  await 1500;
 
   expect(container).toMatchSnapshot();
 });
@@ -194,7 +194,7 @@ test("Line, fetch with error", async () => {
     />,
   );
 
-  await clockTick(1500);
+  await 1500;
 
   expect(container).toMatchSnapshot();
 });
@@ -217,7 +217,7 @@ test("Bar, fetch with error", async () => {
     />,
   );
 
-  await clockTick(1500);
+  await 1500;
 
   expect(container).toMatchSnapshot();
 });
@@ -240,7 +240,7 @@ test("Line, fetch is loading", async () => {
     />,
   );
 
-  await clockTick(1500);
+  await 1500;
 
   expect(container).toMatchSnapshot();
 });
@@ -263,7 +263,7 @@ test("Bar, fetch is loading", async () => {
     />,
   );
 
-  await clockTick(1500);
+  await 1500;
 
   expect(container).toMatchSnapshot();
 });

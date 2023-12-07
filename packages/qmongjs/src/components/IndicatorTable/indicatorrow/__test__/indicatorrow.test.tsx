@@ -9,10 +9,11 @@ import {
   buildIndicator,
   buildDescription,
 } from "../../../../test/test_data/dataBuilder";
+import { vi } from "vitest";
 
-jest.mock("next/router", () => require("next-router-mock"));
+vi.mock("next/router", () => require("next-router-mock"));
 // This is needed for mocking 'next/link':
-jest.mock("next/dist/client/router", () => require("next-router-mock"));
+vi.mock("next/dist/client/router", () => require("next-router-mock"));
 
 mockRouter.useParser(
   createDynamicRouteParser([

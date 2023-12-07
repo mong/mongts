@@ -9,10 +9,11 @@ import { RegisterName } from "types";
 import mockRouter from "next-router-mock";
 import { NextAdapter } from "next-query-params";
 import { createDynamicRouteParser } from "next-router-mock/dynamic-routes";
+import { vi } from "vitest";
 
-jest.mock("next/router", () => require("next-router-mock"));
+vi.mock("next/router", () => require("next-router-mock"));
 // This is needed for mocking 'next/link':
-jest.mock("next/dist/client/router", () => require("next-router-mock"));
+vi.mock("next/dist/client/router", () => require("next-router-mock"));
 
 mockRouter.useParser(
   createDynamicRouteParser([
