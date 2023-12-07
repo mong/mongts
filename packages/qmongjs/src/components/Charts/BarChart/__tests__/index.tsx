@@ -11,6 +11,8 @@ import BarChart, { Props, Bar } from "..";
 import { useResizeObserver } from "../../../../helpers/hooks";
 import { buildLevels } from "../../../../test/builders";
 
+import { vi } from "vitest";
+
 vi.mock("../../../../helpers/hooks");
 
 test("Bar have labels with value in %", async () => {
