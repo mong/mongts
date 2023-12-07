@@ -52,22 +52,5 @@
     "react-select": "5.8.0",
     "resize-observer-polyfill": "1.5.1",
     "use-query-params": "2.2.1"
-  },
-  "jest": {
-    "coverageThreshold": {
-      "global": {
-        "statements": 3,
-        "branches": 4,
-        "functions": 1,
-        "lines": 3
-      }
-    },
-    "transformIgnorePatterns": [
-      "<rootDir>/../../node_modules/remark-gfm/"
-    ],
-    "moduleNameMapper": {
-      "d3": "<rootDir>/../../node_modules/d3/dist/d3.min.js",
-      "react-markdown": "<rootDir>/../../node_modules/react-markdown/react-markdown.min.js"
-    }
   }
 }
