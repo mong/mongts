@@ -25,7 +25,7 @@ export class LineStyles {
     this.styles = styles.map((row) => {
       return row;
     });
-  };
+  }
 
   getLabels = () => {
     return this.styles.map((row) => row.text);
@@ -33,14 +33,16 @@ export class LineStyles {
 
   getPaths = () => {
     return this.styles.map((row) => {
-      return <path
-        d="M0 1H30"
-        stroke={row.colour}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeDasharray={row.strokeDash}
-      />
-  });
+      return (
+        <path
+          d="M0 1H30"
+          stroke={row.colour}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeDasharray={row.strokeDash}
+        />
+      );
+    });
   };
 }
 
