@@ -12,6 +12,8 @@ export declare interface IndicatorLinechartParams {
   type: "ind" | "dg";
   width?: number;
   height?: number;
+  yMin?: number,
+  yMax?: number,
   startYear?: number;
   endYear?: number
 }
@@ -122,6 +124,8 @@ export const IndicatorLinechart = (
       data={chartData}
       height={indicatorParams.height ?? 500}
       width={indicatorParams.width ?? 1000}
+      yMin={indicatorParams.yMin}
+      yMax={indicatorParams.yMax}
     />
   );
 };

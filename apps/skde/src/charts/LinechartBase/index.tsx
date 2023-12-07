@@ -115,7 +115,6 @@ export default function LinechartBase({
           {(labels) => (
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               {labels.map((label, i) => {
-                console.log(label);
                 return (
                   <LegendItem
                     key={`legend-${i}`}
