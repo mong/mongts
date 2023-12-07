@@ -69,46 +69,45 @@ export default function LinechartBase({
     fontWeight: fontWeight
   }
 
-
-  const lineStyles= {
-    high: {
-      text: "High",
-      strokeDash: "0",
-      colour: "#3BAA34"
-    },
-    medium: {
-      text: "Medium",
-      strokeDash: "1 3",
-      colour: "#FD9C00"
-    },
-    low: {
-      text: "Low",
-      strokeDash: "8 8",
-      colour: "#E30713"
-    }
+  // Style the lines
+  type lineStyle = {
+    text: string,
+    strokeDash: string,
+    colour: string
   };
 
-  const getLineColour = (lineID: number) => {
-    return lineID === 0 ? lineStyles.high.colour
-         : lineID === 1 ? lineStyles.medium.colour
-         : lineID === 2 ? lineStyles.low.colour
-         : null
-  }
+  class LineStyles {
+    0: lineStyle;
+    1: lineStyle;
+    2: lineStyle;
 
-  const getStrokeDash = (lineID: number) => {
-    return lineID === 0 ? lineStyles.high.strokeDash
-         : lineID === 1 ? lineStyles.medium.strokeDash
-         : lineID === 2 ? lineStyles.low.strokeDash
-         : 0
+    constructor(style0: lineStyle, style1: lineStyle, style2: lineStyle) {
+      this[0] = style0;
+      this[1] = style1;
+      this[2] = style2;
+    };
+
+    getLabels = () => {
+      return [0,1,2].map((i) => this[i].text);
+    };
+
+    getPaths = () => {
+      return [0,1,2].map((i) => 
+        <path d="M0 1H30" stroke={this[i].colour} strokeLinecap="round" strokeLinejoin="round" strokeDasharray={this[i].strokeDash}/>);
+    };
   };
+
+  // This could be passed into the component
+  // Need to check that there is one style for each line
+  const lineStyles = new LineStyles(
+    {text: "Høy måloppnåelse", strokeDash: "0", colour: "#3BAA34"}, 
+    {text: "Moderat måloppnåelse", strokeDash: "1 3", colour: "#FD9C00"},
+    {text: "Lav måloppnåelse", strokeDash: "8 8", colour: "#E30713"}
+  );
   
-  const legendScale = scaleOrdinal<string, any>({
-      domain: ["High", "Medium", "Low"],
-      range: [
-        <path d="M0 1H12" stroke="#3BAA34"/>,
-        <path d="M1 1H13" stroke="#FD9C00" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="1 3"/>,
-        <path d="M1 1H13" stroke="#E30713" strokeLinecap="square" strokeLinejoin="round" strokeDasharray="8 8"/>
-      ]
+  const legendScale = scaleOrdinal<string, React.JSX.Element>({
+      domain: lineStyles.getLabels(),
+      range: lineStyles.getPaths()
   });
 
   return (
@@ -121,13 +120,13 @@ export default function LinechartBase({
                 return (
                   <LegendItem
                     key={`legend-${i}`}
-                    margin="0 4px 0 0"
+                    margin="0 40px 0 0"
                     flexDirection="column"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="2" viewBox="0 0 12 2" fill="none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="6" viewBox="0 0 30 2" fill="none">
                       {label.value}
                     </svg>
-                    <LegendLabel align="left" margin={0}>
+                    <LegendLabel align="keft" margin={10}>
                       {label.text}
                     </LegendLabel>
                   </LegendItem>
@@ -147,8 +146,8 @@ export default function LinechartBase({
               data={lineData}
               x={(d) => xScale(getX(d))}
               y={(d) => yScale(getY(d))}
-              stroke={getLineColour(i)}
-              strokeDasharray={getStrokeDash(i)}
+              stroke={lineStyles[i].colour}
+              strokeDasharray={lineStyles[i].strokeDash}
               shapeRendering="geometricPrecision"
               strokeWidth={"1px"}
               strokeLinejoin={"round"}

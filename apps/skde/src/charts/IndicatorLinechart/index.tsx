@@ -5,7 +5,7 @@ import _ from "lodash";
 import { level } from "qmongjs/src/helpers/functions";
 
 export declare interface IndicatorLinechartParams {
-  registerShortName: string;
+  registerShortName?: string;
   unitNames: string[];
   unitLevel: "nation" | "rhf" | "hf" | "hospital";
   context: "caregiver" | "resident";
@@ -20,7 +20,7 @@ declare interface IndicatorLevels {
   level: "green" | "yellow" | "red";
 }
 
-const mapLevel = (indicatorLevel) => {
+const mapLevel = (indicatorLevel: string) => {
   let mappedLevel = "";
   switch (indicatorLevel) {
     case "L":
@@ -33,7 +33,7 @@ const mapLevel = (indicatorLevel) => {
       mappedLevel = "green";
       break;
     default:
-      throw new Error(`Unknown indicator level: ${indicatorLevel}`);
+      mappedLevel = "NA";
   }
 
   return mappedLevel;
@@ -66,8 +66,10 @@ export const IndicatorLinechart = (
       (result, value, key) => {
         const [level, year] = key.split(",");
 
-        result[level].push({ year: parseInt(year), number: value });
-
+        if (level !== "NA") {
+          result[level].push({ year: parseInt(year), number: value });
+        }
+        
         return result;
       },
       { green: [], yellow: [], red: [] },
