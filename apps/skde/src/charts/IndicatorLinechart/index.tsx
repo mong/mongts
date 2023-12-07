@@ -128,8 +128,8 @@ export const IndicatorLinechart = (
   return (
     <LinechartBase
       data={chartData}
-      height={indicatorParams.height ?? 500}
-      width={indicatorParams.width ?? 1000}
+      height={indicatorParams.height}
+      width={indicatorParams.width}
       lineStyles={indicatorParams.lineStyles}
       yMin={indicatorParams.yMin}
       yMax={indicatorParams.yMax}
