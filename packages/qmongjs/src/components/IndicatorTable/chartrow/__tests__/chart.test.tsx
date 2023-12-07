@@ -7,7 +7,7 @@ import {
   useResizeObserver,
 } from "../../../../helpers/hooks";
 import { Description, Indicator } from "types";
-import { vi } from "vitest";
+import { vi, test } from "vitest";
 
 vi.mock("../../../../helpers/hooks");
 
