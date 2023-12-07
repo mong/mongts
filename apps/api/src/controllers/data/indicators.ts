@@ -41,7 +41,8 @@ function parseQuery(req: Request): Query {
     if (typeof req.query.type === "string") {
       query.filter.type = req.query.type;
     }
-    query.filter.register = req.params.register;
+    query.filter.register =
+      req.params.register === "all" ? "" : req.params.register;
   }
   return query;
 }
