@@ -12,10 +12,10 @@ export declare interface IndicatorLinechartParams {
   type: "ind" | "dg";
   width?: number;
   height?: number;
-  yMin?: number,
-  yMax?: number,
+  yMin?: number;
+  yMax?: number;
   startYear?: number;
-  endYear?: number
+  endYear?: number;
 }
 
 declare interface IndicatorLevels {
@@ -76,27 +76,31 @@ export const IndicatorLinechart = (
         if (level !== "-1") {
           result[level].push({ year: parseInt(year), number: value });
         }
-        
+
         return result;
       },
       { 0: [], 1: [], 2: [] },
     );
 
   // Time series bounds
-  const minYear = indicatorParams.startYear ?? _.min(
-    levels.map((row) => {
-      return row.year;
-    }),
-  );
+  const minYear =
+    indicatorParams.startYear ??
+    _.min(
+      levels.map((row) => {
+        return row.year;
+      }),
+    );
 
-  const maxYear = indicatorParams.endYear ?? _.max(
-    levels.map((row) => {
-      return row.year;
-    }),
-  );
+  const maxYear =
+    indicatorParams.endYear ??
+    _.max(
+      levels.map((row) => {
+        return row.year;
+      }),
+    );
 
   // Fill missing years with zero
-  const dataAllLevels = [ [], [], [] ];
+  const dataAllLevels = [[], [], []];
 
   let i = 0;
   for (let year = minYear; year <= maxYear; year++) {
@@ -113,11 +117,11 @@ export const IndicatorLinechart = (
   }
 
   // Reassemble into array
-  const chartData: LinechartData[][] = [0,1,2].map((i) => {
+  const chartData: LinechartData[][] = [0, 1, 2].map((i) => {
     return dataAllLevels[i].map((row) => {
-        return { x: new Date(row.year, 0), y: row.number } as LinechartData;
-      });
-  })
+      return { x: new Date(row.year, 0), y: row.number } as LinechartData;
+    });
+  });
 
   return (
     <LinechartBase

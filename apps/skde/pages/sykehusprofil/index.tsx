@@ -10,9 +10,9 @@ export const Skde = (): JSX.Element => {
     type: "ind",
     width: 860,
     height: 400,
-    startYear: 2017, 
+    startYear: 2017,
     endYear: 2022,
-    yMin: 10
+    yMin: 10,
   };
 
   return (
