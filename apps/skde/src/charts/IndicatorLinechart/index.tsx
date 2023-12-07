@@ -12,28 +12,33 @@ export declare interface IndicatorLinechartParams {
   type: "ind" | "dg";
   width?: number;
   height?: number;
+  startYear?: number;
+  endYear?: number
 }
 
 declare interface IndicatorLevels {
   ind_id: string;
   year: number;
-  level: "green" | "yellow" | "red";
+  level: 0 | 1 | 2;
 }
 
+// Define high achievement as 0, medium as 1 and low as 2
+// If the limits are not set the level is undefined
+// Let -1 be undefined
 const mapLevel = (indicatorLevel: string) => {
-  let mappedLevel = "";
+  let mappedLevel: number;
   switch (indicatorLevel) {
-    case "L":
-      mappedLevel = "red";
+    case "H":
+      mappedLevel = 0;
       break;
     case "M":
-      mappedLevel = "yellow";
+      mappedLevel = 1;
       break;
-    case "H":
-      mappedLevel = "green";
+    case "L":
+      mappedLevel = 2;
       break;
     default:
-      mappedLevel = "NA";
+      mappedLevel = -1;
   }
 
   return mappedLevel;
@@ -56,7 +61,7 @@ export const IndicatorLinechart = (
     return { ind_id: row.ind_id, year: row.year, level: indicatorLevel };
   });
 
-  // Count green, red and yellow indicators per year
+  // Count indicators per level per year
   const groupedLevels = _(levels)
     .countBy((row) => {
       return [row.level, row.year];
@@ -66,73 +71,51 @@ export const IndicatorLinechart = (
       (result, value, key) => {
         const [level, year] = key.split(",");
 
-        if (level !== "NA") {
+        if (level !== "-1") {
           result[level].push({ year: parseInt(year), number: value });
         }
         
         return result;
       },
-      { green: [], yellow: [], red: [] },
+      { 0: [], 1: [], 2: [] },
     );
 
   // Time series bounds
-  const minYear = _.min(
+  const minYear = indicatorParams.startYear ?? _.min(
     levels.map((row) => {
       return row.year;
     }),
   );
 
-  const maxYear = _.max(
+  const maxYear = indicatorParams.endYear ?? _.max(
     levels.map((row) => {
       return row.year;
     }),
   );
 
   // Fill missing years with zero
-  const dataAllLevels = { green: [], yellow: [], red: [] };
+  const dataAllLevels = [ [], [], [] ];
 
-  let j = 0;
-  for (let i = minYear; i <= maxYear; i++) {
-    dataAllLevels.green[j] = { year: i, number: 0 };
+  let i = 0;
+  for (let year = minYear; year <= maxYear; year++) {
+    for (let level = 0; level < 3; level++) {
+      dataAllLevels[level][i] = { year: year, number: 0 };
 
-    for (let k = 0; k < groupedLevels.green.length; k++) {
-      if (groupedLevels.green[k].year === dataAllLevels.green[j].year) {
-        dataAllLevels.green[j].number = groupedLevels.green[k].number;
+      for (let j = 0; j < groupedLevels[level].length; j++) {
+        if (dataAllLevels[level][i].year === groupedLevels[level][j].year) {
+          dataAllLevels[level][i].number = groupedLevels[level][j].number;
+        }
       }
     }
-
-    dataAllLevels.yellow[j] = { year: i, number: 0 };
-
-    for (let k = 0; k < groupedLevels.yellow.length; k++) {
-      if (groupedLevels.yellow[k].year === dataAllLevels.yellow[j].year) {
-        dataAllLevels.yellow[j].number = groupedLevels.yellow[k].number;
-      }
-    }
-
-    dataAllLevels.red[j] = { year: i, number: 0 };
-
-    for (let k = 0; k < groupedLevels.red.length; k++) {
-      if (groupedLevels.red[k].year === dataAllLevels.red[j].year) {
-        dataAllLevels.red[j].number = groupedLevels.red[k].number;
-      }
-    }
-    j++;
+    i++;
   }
 
   // Reassemble into array
-  const chartDataGreen: LinechartData[] = dataAllLevels.green.map((row) => {
-    return { x: new Date(row.year, 0), y: row.number } as LinechartData;
-  });
-
-  const chartDataYellow: LinechartData[] = dataAllLevels.yellow.map((row) => {
-    return { x: new Date(row.year, 0), y: row.number } as LinechartData;
-  });
-
-  const chartDataRed: LinechartData[] = dataAllLevels.red.map((row) => {
-    return { x: new Date(row.year, 0), y: row.number } as LinechartData;
-  });
-
-  const chartData = [chartDataGreen, chartDataYellow, chartDataRed];
+  const chartData: LinechartData[][] = [0,1,2].map((i) => {
+    return dataAllLevels[i].map((row) => {
+        return { x: new Date(row.year, 0), y: row.number } as LinechartData;
+      });
+  })
 
   return (
     <LinechartBase

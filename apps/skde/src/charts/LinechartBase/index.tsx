@@ -4,7 +4,6 @@ import { curveLinear } from "@visx/curve";
 import { LinePath } from "@visx/shape";
 import { scaleTime, scaleLinear, scaleOrdinal } from "@visx/scale";
 import { AxisBottom, AxisLeft } from "@visx/axis";
-import _ from "lodash";
 import { LinechartBackground } from "./LinechartBaseStyles";
 import { Legend, LegendItem, LegendLabel } from "@visx/legend"
 
@@ -61,13 +60,13 @@ export default function LinechartBase({
     x: -height/1.7, 
     fontFamily: font, 
     fontWeight: fontWeight
-  }
+  };
 
   const xTicksProps = {
     fontSize: 11,
     fontFamily: font,
     fontWeight: fontWeight
-  }
+  };
 
   // Style the lines
   type lineStyle = {
@@ -161,4 +160,4 @@ export default function LinechartBase({
       </svg>
     </div>
   );
-}
+};

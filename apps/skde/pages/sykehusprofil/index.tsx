@@ -9,7 +9,9 @@ export const Skde = (): JSX.Element => {
     context: "caregiver",
     type: "ind",
     width: 860,
-    height: 400
+    height: 400,
+    startYear: 2017, 
+    endYear: 2022
   };
 
   return (
