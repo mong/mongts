@@ -1,6 +1,8 @@
+import { createContext } from "react";
+import { formatMessage } from "@formatjs/intl";
 import getTrad from "../../utils/getTrad";
 
-class HomePageStrings {
+export class HomePageStrings {
   constructor(formatMessage) {
     this.formatMessage = formatMessage;
 
@@ -73,6 +75,16 @@ class HomePageStrings {
       id: getTrad("Homepage.Subtitle.entriesFound"),
       defaultMessage: "entries found",
     });
+
+    this.search = formatMessage({
+      id: getTrad("Homepage.AtlasSearch.search"),
+      defaultMessage: "Search",
+    });
+
+    this.clearLabel = formatMessage({
+      id: getTrad("Homepage.AtlasSearch.clearLabel"),
+      defaultMessage: "Clear",
+    });
   }
 
   numEntriesFound(numEntries) {
@@ -87,4 +99,6 @@ class HomePageStrings {
   }
 }
 
-export default HomePageStrings;
+const HomePageStringsContext = createContext(null);
+
+export default HomePageStringsContext;
