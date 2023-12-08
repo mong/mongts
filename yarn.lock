@@ -8277,6 +8277,59 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cypress@npm:13.6.1":
+  version: 13.6.1
+  resolution: "cypress@npm:13.6.1"
+  dependencies:
+    "@cypress/request": "npm:^3.0.0"
+    "@cypress/xvfb": "npm:^1.2.4"
+    "@types/node": "npm:^18.17.5"
+    "@types/sinonjs__fake-timers": "npm:8.1.1"
+    "@types/sizzle": "npm:^2.3.2"
+    arch: "npm:^2.2.0"
+    blob-util: "npm:^2.0.2"
+    bluebird: "npm:^3.7.2"
+    buffer: "npm:^5.6.0"
+    cachedir: "npm:^2.3.0"
+    chalk: "npm:^4.1.0"
+    check-more-types: "npm:^2.24.0"
+    cli-cursor: "npm:^3.1.0"
+    cli-table3: "npm:~0.6.1"
+    commander: "npm:^6.2.1"
+    common-tags: "npm:^1.8.0"
+    dayjs: "npm:^1.10.4"
+    debug: "npm:^4.3.4"
+    enquirer: "npm:^2.3.6"
+    eventemitter2: "npm:6.4.7"
+    execa: "npm:4.1.0"
+    executable: "npm:^4.1.1"
+    extract-zip: "npm:2.0.1"
+    figures: "npm:^3.2.0"
+    fs-extra: "npm:^9.1.0"
+    getos: "npm:^3.2.1"
+    is-ci: "npm:^3.0.0"
+    is-installed-globally: "npm:~0.4.0"
+    lazy-ass: "npm:^1.6.0"
+    listr2: "npm:^3.8.3"
+    lodash: "npm:^4.17.21"
+    log-symbols: "npm:^4.0.0"
+    minimist: "npm:^1.2.8"
+    ospath: "npm:^1.2.2"
+    pretty-bytes: "npm:^5.6.0"
+    process: "npm:^0.11.10"
+    proxy-from-env: "npm:1.0.0"
+    request-progress: "npm:^3.0.0"
+    semver: "npm:^7.5.3"
+    supports-color: "npm:^8.1.1"
+    tmp: "npm:~0.2.1"
+    untildify: "npm:^4.0.0"
+    yauzl: "npm:^2.10.0"
+  bin:
+    cypress: bin/cypress
+  checksum: 22e3431faf87b31f57a1afbcb92eb8f2bf366468f0a47399545af772a89acc198df2ce80c3d3169e3a82649811ee60685fbd7a512e0ec9ffb9ddbe13f21ecfd0
+  languageName: node
+  linkType: hard
+
 "d3-array@npm:2 - 3, d3-array@npm:2.10.0 - 3, d3-array@npm:2.5.0 - 3, d3-array@npm:3, d3-array@npm:3.2.4, d3-array@npm:^3.2.0":
   version: 3.2.4
   resolution: "d3-array@npm:3.2.4"
@@ -16021,6 +16074,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"nextjs@npm:^0.0.3":
+  version: 0.0.3
+  resolution: "nextjs@npm:0.0.3"
+  checksum: 863a1121b51eda269b59955ff3d63e56abc53a67f93774896b8b9fdcf89c7cb8b67bd2c136ab622aa1cc8797c1733d03388e3e4778fc85addf49942c933a8372
+  languageName: node
+  linkType: hard
+
 "no-case@npm:^3.0.4":
   version: 3.0.4
   resolution: "no-case@npm:3.0.4"
@@ -17927,12 +17987,14 @@ __metadata:
     "@typescript-eslint/parser": "npm:6.13.1"
     "@visx/event": "npm:3.3.0"
     "@visx/tooltip": "npm:3.3.0"
+    cypress: "npm:13.6.1"
     d3: "npm:7.8.5"
     d3-format: "npm:3.1.0"
     eslint: "npm:8.55.0"
     next: "npm:14.0.3"
     next-query-params: "npm:5.0.0"
     next-router-mock: "npm:0.9.10"
+    nextjs: "npm:^0.0.3"
     prettier: "npm:3.0.3"
     react: "npm:18.2.0"
     react-dom: "npm:18.2.0"
