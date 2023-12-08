@@ -1,5 +1,5 @@
-export * from "./Chart";
-export * from "./chartrowbuttons";
-export * from "./chartrow";
-export * from "./chartrowdescription";
-export * from "./tr_utils";
+export { Chart } from "./Chart";
+export { FigureButtons } from "./chartrowbuttons";
+export { ChartRow } from "./chartrow";
+export { ChartRowDescription } from "./chartrowdescription";
+export { level_boundary } from "./tr_utils";
