@@ -10,7 +10,8 @@ import { Switch, Route } from "react-router-dom";
 import { AnErrorOccurred } from "@strapi/helper-plugin";
 import pluginId from "../../pluginId";
 import HomePage from "../HomePage";
-import EditorPage from "../EditorPage";
+import EditPage from "../EditPage";
+import CreatePage from "../CreatePage";
 
 const App = () => {
   return (
@@ -18,8 +19,13 @@ const App = () => {
       <Switch>
         <Route path={`/plugins/${pluginId}`} component={HomePage} exact />
         <Route
-          path={`/plugins/${pluginId}/editor`}
-          component={EditorPage}
+          path={`/plugins/${pluginId}/edit/:id`}
+          component={EditPage}
+          exact
+        />
+        <Route
+          path={`/plugins/${pluginId}/create`}
+          component={CreatePage}
           exact
         />
         <Route component={AnErrorOccurred} />

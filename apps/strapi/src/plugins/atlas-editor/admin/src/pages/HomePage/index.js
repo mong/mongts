@@ -6,7 +6,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import {
   BaseHeaderLayout,
   EmptyStateLayout,
@@ -60,7 +60,13 @@ const HomePage = () => {
     <>
       <BaseHeaderLayout
         primaryAction={
-          <Button startIcon={<Plus />}>{strings.createButtonText}</Button>
+          <LinkButton
+            as={NavLink}
+            to={`/plugins/${pluginId}/create`}
+            startIcon={<Plus />}
+          >
+            {strings.createButtonText}
+          </LinkButton>
         }
         title={strings.title}
         subtitle={strings.numEntriesFound(atlasList.length)}
@@ -73,7 +79,7 @@ const HomePage = () => {
           action={
             <LinkButton
               as={NavLink}
-              to={`/plugins/${pluginId}/editor`}
+              to={`/plugins/${pluginId}/create`}
               startIcon={<Plus />}
             >
               {strings.createButtonText}
@@ -138,7 +144,10 @@ const HomePage = () => {
                       <Td>
                         <Flex>
                           <IconButton
-                            onClick={() => console.log(strings.edit)}
+                            forwardedAs={Link}
+                            to={{
+                              pathname: `/plugins/${pluginId}/edit/${atlas.id}`,
+                            }}
                             label={strings.edit}
                             noBorder
                             icon={<Pencil />}
