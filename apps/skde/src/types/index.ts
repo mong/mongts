@@ -1,1 +1,1 @@
-export * from "./AtlasData";
+export type { AtlasData } from "./AtlasData";

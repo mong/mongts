@@ -8,8 +8,8 @@ export {
   fetchRegisterNames,
   useRegisterNamesQuery,
   useMedicalFieldsQuery,
+  type FetchIndicatorParams,
 } from "./apihooks";
-export type { FetchIndicatorParams } from "./apihooks";
 export {
   elementDimensions,
   useLegendItemPosition,
