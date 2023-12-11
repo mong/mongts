@@ -1,2 +1,2 @@
-export { default as medField } from "./medField";
-export * from "./names";
+export { medField, type MedFieldInterface } from "./medField";
+export { registerNamesModel } from "./names";
