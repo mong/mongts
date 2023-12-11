@@ -32,7 +32,7 @@ export class LineStyles {
   };
 
   getPaths = () => {
-    return this.styles.map((row) => {
+    return this.styles.map((row, i) => {
       return (
         <path
           d="M0 1H30"
@@ -40,6 +40,7 @@ export class LineStyles {
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeDasharray={row.strokeDash}
+          key={`linestyle-${i}`}
         />
       );
     });
