@@ -3,7 +3,7 @@ import LinechartBase, { LinechartData } from "../LinechartBase";
 import { UseQueryResult } from "@tanstack/react-query";
 import _ from "lodash";
 import { level } from "qmongjs/src/helpers/functions";
-import { LineStyles } from "../LinechartBase";
+import { LineStyles, font } from "../LinechartBase";
 
 export declare interface IndicatorLinechartParams {
   registerShortName?: string;
@@ -14,6 +14,7 @@ export declare interface IndicatorLinechartParams {
   width: number;
   height: number;
   lineStyles: LineStyles;
+  font: font;
   yMin?: number;
   yMax?: number;
   startYear?: number;
@@ -131,6 +132,7 @@ export const IndicatorLinechart = (
       height={indicatorParams.height}
       width={indicatorParams.width}
       lineStyles={indicatorParams.lineStyles}
+      font={indicatorParams.font}
       yMin={indicatorParams.yMin}
       yMax={indicatorParams.yMax}
     />

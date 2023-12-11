@@ -7,10 +7,10 @@ import { AxisBottom, AxisLeft } from "@visx/axis";
 import { LinechartBackground } from "./LinechartBaseStyles";
 import { Legend, LegendItem, LegendLabel } from "@visx/legend";
 
-export interface LinechartData {
+export type LinechartData = {
   x: Date;
   y: number;
-}
+};
 
 type lineStyle = {
   text: string;
@@ -18,13 +18,21 @@ type lineStyle = {
   colour: string;
 };
 
+export type font = {
+  fontSize: number;
+  fontFamily: string;
+  fontWeight: number;
+};
+
 export class LineStyles {
   styles: lineStyle[];
+  font: font;
 
-  constructor(styles: lineStyle[]) {
+  constructor(styles: lineStyle[], font: font) {
     this.styles = styles.map((row) => {
       return row;
     });
+    this.font = font;
   }
 
   getLabels = () => {
@@ -47,20 +55,22 @@ export class LineStyles {
   };
 }
 
-export interface LinechartBaseProps {
+export type LinechartBaseProps = {
   data: LinechartData[][];
   width: number;
   height: number;
   lineStyles: LineStyles;
+  font: font;
   yMin?: number;
   yMax?: number;
-}
+};
 
 export default function LinechartBase({
   data,
   width,
   height,
   lineStyles,
+  font,
   yMin,
   yMax,
 }: LinechartBaseProps) {
@@ -85,24 +95,22 @@ export default function LinechartBase({
   });
 
   const borderWidth = 100;
-  const fontWeight = 700;
-  const font = "Plus Jakarta Sans";
 
   // update scale output ranges
   xScale.range([borderWidth, width - borderWidth]);
   yScale.range([height - borderWidth, borderWidth]);
 
   const yLabelProps = {
-    fontSize: 12,
+    fontSize: font.fontSize,
     x: -height / 1.7,
-    fontFamily: font,
-    fontWeight: fontWeight,
+    fontFamily: font.fontFamily,
+    fontWeight: font.fontWeight,
   };
 
   const xTicksProps = {
-    fontSize: 11,
-    fontFamily: font,
-    fontWeight: fontWeight,
+    fontSize: font.fontSize,
+    fontFamily: font.fontFamily,
+    fontWeight: font.fontWeight,
   };
 
   const legendScale = scaleOrdinal<string, React.JSX.Element>({
@@ -114,27 +122,27 @@ export default function LinechartBase({
     <div className="visx-linechartbase">
       <Legend scale={legendScale}>
         {(labels) => (
-          <div style={{ display: "flex", flexDirection: "row" }}>
+          <div
+            style={{ display: "flex", flexDirection: "row", marginLeft: "10%" }}
+          >
             {labels.map((label, i) => {
               return (
-                <LegendItem
-                  key={`legend-${i}`}
-                  margin="0 40px 0 0"
-                  flexDirection="column"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="200"
-                    height="6"
-                    viewBox="0 0 30 2"
-                    fill="none"
-                  >
-                    {label.value}
-                  </svg>
-                  <LegendLabel align="left" margin={10}>
-                    {label.text}
-                  </LegendLabel>
-                </LegendItem>
+                <div style={{ padding: "10px" }}>
+                  <LegendItem key={`legend-${i}`}>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="70"
+                      height="6"
+                      viewBox="0 0 40 1"
+                      fill="none"
+                    >
+                      {label.value}
+                    </svg>
+                    <LegendLabel align="left" style={{ ...lineStyles.font }}>
+                      {label.text}
+                    </LegendLabel>
+                  </LegendItem>
+                </div>
               );
             })}
           </div>
