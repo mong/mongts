@@ -35,6 +35,7 @@ jobs:
       - run: yarn run check-types
       - run: yarn run check-format
       - run: yarn run test
+      - run: yarn workspace qmongjs cypress:headless
       - name: Code coverage
         if: matrix.node-version == '20.x'
         uses: codecov/codecov-action@v3.1.4
