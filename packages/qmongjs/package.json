@@ -7,7 +7,7 @@
     "test": "yarn run test:base --coverage",
     "test:base": "react-scripts test --watchAll=false",
     "cypress": "cypress open",
-    "cypress:headless": "cypress run --component --spec src/components/IndicatorTable/indexIndicatorTable.cy.tsx",
+    "cypress:headless": "cypress run --component",
     "lint": "eslint --ignore-path .gitignore --ext js,ts,tsx src",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
     "format": "yarn run prettier --write",
@@ -15,6 +15,7 @@
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.12.13",
     "@testing-library/jest-dom": "5.17.0",
     "@testing-library/react": "14.1.2",
     "@testing-library/user-event": "14.5.1",
