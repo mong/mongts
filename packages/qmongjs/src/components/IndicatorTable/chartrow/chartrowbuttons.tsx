@@ -27,7 +27,7 @@ interface Props {
   ) => void;
 }
 
-const FigureButtons = (props: Props) => {
+export const FigureButtons = (props: Props) => {
   const {
     show_level,
     update_show_level,

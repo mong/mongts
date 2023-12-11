@@ -15,7 +15,7 @@ interface Props {
 
 const remarkPlugins: PluggableList = [remarkGfm];
 
-const ChartRowDescription = ({
+export const ChartRowDescription = ({
   description_text,
   description_title = "Om kvalitetsindikatoren",
   delivery_time,

@@ -6,7 +6,7 @@ export interface MedFieldInterface {
   registers: string;
 }
 
-const medField = (): Promise<MedFieldInterface[]> =>
+export const medField = (): Promise<MedFieldInterface[]> =>
   db
     .select(
       "mf.name as shortName",
@@ -18,5 +18,3 @@ const medField = (): Promise<MedFieldInterface[]> =>
     .join("registry as r", "rmf.registry_id", "r.id")
     .orderBy("mf.id")
     .orderBy("r.id");
-
-export default medField;

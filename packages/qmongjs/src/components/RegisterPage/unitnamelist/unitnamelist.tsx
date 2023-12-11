@@ -15,7 +15,7 @@ interface NestedUnitName {
   }[];
 }
 
-export interface Props {
+interface Props {
   nestedUnitNames: NestedUnitName[];
   treatment_units: string[];
   update_treatment_units: Dispatch<string[]>;
