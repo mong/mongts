@@ -1,8 +1,18 @@
+import { ThemeProvider } from "styled-components";
+
 import IndicatorLinechart, {
   IndicatorLinechartParams,
 } from "../../src/charts/IndicatorLinechart";
 import { LineStyles, font } from "../../src/charts/LinechartBase";
 import { Text } from "@visx/text";
+
+const theme = {
+  lineChartBackground: {
+    fill: "#000000",
+    rx: 25,
+    ry: 25,
+  },
+};
 
 export const Skde = (): JSX.Element => {
   const indicatorParams: IndicatorLinechartParams = {
@@ -51,7 +61,9 @@ export const Skde = (): JSX.Element => {
         </Text>
       </div>
       <div>
-        <IndicatorLinechart {...indicatorParams} />
+        <ThemeProvider theme={theme}>
+          <IndicatorLinechart {...indicatorParams} />
+        </ThemeProvider>
       </div>
       <div>
         <img
