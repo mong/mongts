@@ -1,2 +1,2 @@
-export * from "./medField";
-export * from "./names";
+export { medicalFields } from "./medField";
+export { registerNames } from "./names";

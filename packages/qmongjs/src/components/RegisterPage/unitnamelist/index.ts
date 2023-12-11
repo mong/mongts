@@ -1,1 +1,1 @@
-export * from "./unitnamelist";
+export { UnitNameList } from "./unitnamelist";

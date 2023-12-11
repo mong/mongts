@@ -1,11 +1,7 @@
 import { Indicator } from "types";
 
-const numWithValidDigits = (value: number, decimals: number) => {
-  return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
-};
-
 export const level = (indicatorData: Indicator) => {
-  const { level_green, level_yellow, level_direction, sformat } = indicatorData;
+  const { level_green, level_yellow, level_direction } = indicatorData;
   if (
     level_green === undefined ||
     level_green === null ||
@@ -13,19 +9,13 @@ export const level = (indicatorData: Indicator) => {
   ) {
     return;
   }
-  let decimalPoints = sformat ? Number(sformat.replace(/[^0-9]/g, "")) : 0;
-  decimalPoints = sformat?.includes("%") ? decimalPoints + 2 : decimalPoints;
-  const value = numWithValidDigits(indicatorData.var, decimalPoints);
-  const green = numWithValidDigits(level_green, decimalPoints);
+  const value = indicatorData.var;
   // If level_yellow is NULL: set to level_green
-  const yellow =
-    level_yellow != null
-      ? numWithValidDigits(level_yellow, decimalPoints)
-      : green;
+  const yellow = level_yellow != null ? level_yellow : level_green;
 
   if (
-    (level_direction === 0 && value <= green) ||
-    (level_direction != 0 && value >= green)
+    (level_direction === 0 && value <= level_green) ||
+    (level_direction != 0 && value >= level_green)
   ) {
     return "H";
   } else if (
