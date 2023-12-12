@@ -1,3 +1,3 @@
-export * from "./AtlasLink";
-export * from "./MenuButton";
-export * from "./SearchButton";
+export { AtlasLink } from "./AtlasLink";
+export { MenuButton } from "./MenuButton";
+export { SearchButton } from "./SearchButton";

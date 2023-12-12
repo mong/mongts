@@ -1,2 +1,2 @@
-export * from "./AtlasLayout";
-export * from "./FrontPageLayout";
+export { AtlasLayout } from "./AtlasLayout";
+export { FrontPageLayout } from "./FrontPageLayout";
