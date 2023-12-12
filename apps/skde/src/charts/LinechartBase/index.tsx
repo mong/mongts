@@ -127,7 +127,7 @@ export default function LinechartBase({
           >
             {labels.map((label, i) => {
               return (
-                <div style={{ padding: "10px" }}>
+                <div style={{ padding: "10px" }} key={`legend-div-${i}`}>
                   <LegendItem key={`legend-${i}`}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

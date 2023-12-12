@@ -8,7 +8,7 @@ import { Text } from "@visx/text";
 
 const theme = {
   lineChartBackground: {
-    fill: "#000000",
+    fill: "#FFFFFF",
     rx: 25,
     ry: 25,
   },
@@ -35,7 +35,7 @@ export const Skde = (): JSX.Element => {
       fontWeight: 700,
       fontFamily: "Plus Jakarta Sans",
     },
-    startYear: 2016,
+    startYear: 2017,
     endYear: 2022,
     yMin: 0,
   };
