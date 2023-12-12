@@ -1,8 +1,8 @@
 import { request } from "@strapi/helper-plugin";
 
 export const atlasEditorRequests = {
-  getAllAtlases: async () => {
-    return await request("/atlas-editor/find", {
+  getAtlases: async (query) => {
+    return await request(`/atlas-editor/find?${query}`, {
       method: "GET",
     });
   },

@@ -1,5 +1,4 @@
 import { createContext } from "react";
-import { formatMessage } from "@formatjs/intl";
 import getTrad from "../../utils/getTrad";
 
 export class HomePageStrings {
@@ -26,6 +25,11 @@ export class HomePageStrings {
       defaultMessage: "Create new atlas",
     });
 
+    this.id = formatMessage({
+      id: getTrad("Homepage.Table.id"),
+      defaultMessage: "ID",
+    });
+
     this.mainTitle = formatMessage({
       id: getTrad("Homepage.Table.mainTitle"),
       defaultMessage: "Main Title",
@@ -39,6 +43,16 @@ export class HomePageStrings {
     this.published = formatMessage({
       id: getTrad("Homepage.Table.published"),
       defaultMessage: "Published",
+    });
+
+    this.created = formatMessage({
+      id: getTrad("Homepage.Table.created"),
+      defaultMessage: "Created",
+    });
+
+    this.updated = formatMessage({
+      id: getTrad("Homepage.Table.updated"),
+      defaultMessage: "Updated",
     });
 
     this.yes = formatMessage({

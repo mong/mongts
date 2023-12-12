@@ -21,7 +21,6 @@ import {
   VisuallyHidden,
   Flex,
   IconButton,
-  Button,
 } from "@strapi/design-system";
 import { LoadingIndicatorPage } from "@strapi/helper-plugin";
 import { LinkButton } from "@strapi/design-system/v2";
@@ -34,9 +33,10 @@ import HomePageStringsContext, {
 } from "./HomePageStringsContext";
 import AtlasSearch from "./AtlasSearch";
 import isFilterMatch from "./utils/isFilterMatch";
+import toQueryString from "../../utils/toQueryString";
 
 const HomePage = () => {
-  const { formatMessage } = useIntl();
+  const { formatMessage, formatDate } = useIntl();
   const strings = new HomePageStrings(formatMessage);
 
   const [atlasList, setAtlasList] = useState([]);
@@ -46,7 +46,18 @@ const HomePage = () => {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      const atlases = await atlasEditorRequests.getAllAtlases();
+      const queryString = toQueryString({
+        fields: [
+          "id",
+          "mainTitle",
+          "shortTitle",
+          "isPublished",
+          "createdAt",
+          "updatedAt",
+        ],
+        sort: "shortTitle:ASC",
+      });
+      const atlases = await atlasEditorRequests.getAtlases(queryString);
       setAtlasList(atlases);
       setIsLoading(false);
     };
@@ -103,12 +114,27 @@ const HomePage = () => {
                 <Tr>
                   <Th>
                     <Typography variant="sigma">
+                      {strings.id.toUpperCase()}
+                    </Typography>
+                  </Th>
+                  <Th>
+                    <Typography variant="sigma">
                       {strings.shortTitle.toUpperCase()}
                     </Typography>
                   </Th>
                   <Th>
                     <Typography variant="sigma">
                       {strings.mainTitle.toUpperCase()}
+                    </Typography>
+                  </Th>
+                  <Th>
+                    <Typography variant="sigma">
+                      {strings.created.toUpperCase()}
+                    </Typography>
+                  </Th>
+                  <Th>
+                    <Typography variant="sigma">
+                      {strings.updated.toUpperCase()}
                     </Typography>
                   </Th>
                   <Th>
@@ -128,12 +154,27 @@ const HomePage = () => {
                     <Tr key={atlas.id}>
                       <Td>
                         <Typography textColor="neutral800">
+                          {atlas.id}
+                        </Typography>
+                      </Td>
+                      <Td>
+                        <Typography textColor="neutral800">
                           {atlas.shortTitle}
                         </Typography>
                       </Td>
                       <Td>
                         <Typography textColor="neutral800">
                           {atlas.mainTitle}
+                        </Typography>
+                      </Td>
+                      <Td>
+                        <Typography textColor="neutral800">
+                          {formatDate(atlas.createdAt)}
+                        </Typography>
+                      </Td>
+                      <Td>
+                        <Typography textColor="neutral800">
+                          {formatDate(atlas.updatedAt)}
                         </Typography>
                       </Td>
                       <Td>
