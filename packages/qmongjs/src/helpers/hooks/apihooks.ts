@@ -32,7 +32,7 @@ export const useDescriptionQuery = (params: FetchDescriptionParams) => {
 };
 
 export interface FetchIndicatorParams {
-  registerShortName?: string;
+  registerShortName: string;
   treatmentYear?: number;
   unitNames?: string[];
   unitLevel?: string;
@@ -41,9 +41,6 @@ export interface FetchIndicatorParams {
 }
 
 const indicatorUrl = (params: FetchIndicatorParams): string => {
-  const registerShortNameQuery: string = params.registerShortName
-    ? params.registerShortName
-    : "all";
   const unitQuery: string = params.unitNames
     ? params.unitNames.reduce((acc, cur) => {
         return `${acc}unit_name[]=${cur}&`;
@@ -59,7 +56,7 @@ const indicatorUrl = (params: FetchIndicatorParams): string => {
     ? `year=${params.treatmentYear}&`
     : "";
   const typeQuery: string = params.type ? `type=${params.type}` : "";
-  return `${API_HOST}/data/${registerShortNameQuery}/indicators?${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}${typeQuery}`;
+  return `${API_HOST}/data/${params.registerShortName}/indicators?${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}${typeQuery}`;
 };
 
 const fetchIndicators = async (params: FetchIndicatorParams) => {
