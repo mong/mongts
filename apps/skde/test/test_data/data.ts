@@ -421,7 +421,31 @@ export const atlasData = [
 ];
 
 export const linechartData = [
-  [{x: new Date(2018, 0), y: 10}, {x: new Date(2019, 0), y: 15}, {x: new Date(2020, 0), y: 20}],
-  [{x: new Date(2018, 0), y: 5}, {x: new Date(2019, 7), y: 15}, {x: new Date(2020, 0), y: 9}],
-  [{x: new Date(2018, 0), y: 2}, {x: new Date(2019, 3), y: 15}, {x: new Date(2020, 0), y: 6}]
+  [
+    { x: new Date(2018, 0), y: 10 },
+    { x: new Date(2019, 0), y: 15 },
+    { x: new Date(2020, 0), y: 20 },
+  ],
+  [
+    { x: new Date(2018, 0), y: 5 },
+    { x: new Date(2019, 7), y: 15 },
+    { x: new Date(2020, 0), y: 9 },
+  ],
+  [
+    { x: new Date(2018, 0), y: 2 },
+    { x: new Date(2019, 3), y: 15 },
+    { x: new Date(2020, 0), y: 6 },
+  ],
+];
+
+export const levelData = [
+  { ind_id: "ind1", year: 2018, level: 1 },
+  { ind_id: "ind1", year: 2019, level: 1 },
+  { ind_id: "ind1", year: 2020, level: 2 },
+  { ind_id: "ind2", year: 2018, level: 0 },
+  { ind_id: "ind2", year: 2019, level: 1 },
+  { ind_id: "ind2", year: 2020, level: 2 },
+  { ind_id: "ind3", year: 2018, level: 0 },
+  { ind_id: "ind3", year: 2019, level: 1 },
+  { ind_id: "ind3", year: 2020, level: 2 },
 ];
