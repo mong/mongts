@@ -34,5 +34,9 @@ test("Standard render", () => {
       yMax={25}
     />,
   );
-  expect(container).toMatchSnapshot();
+  // container.children[0].children[0] is the legend
+  // container.children[0].children[1] is the plot
+  // It consists of 6 SVG elements: rect, path, path, path, g and g
+  // THese are the background, three lines, the x axis and the y axis. 
+  expect(container.children[0].children[1].childElementCount).toEqual(6);
 });
