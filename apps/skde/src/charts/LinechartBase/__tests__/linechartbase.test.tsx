@@ -22,7 +22,7 @@ const font = {
   fontFamily: "Plus Jakarta Sans",
 };
 
-test("Standard render", async () => {
+test("Standard render", () => {
   const { container } = render(
     <LinechartBase
       data={linechartData}
