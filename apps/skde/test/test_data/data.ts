@@ -432,7 +432,7 @@ export const linechartData = [
     { x: new Date(2020, 0), y: 9 },
   ],
   [
-    { x: new Date(2018, 0), y: 2 },
+    { x: new Date(2018, 0), y: 3 },
     { x: new Date(2019, 3), y: 15 },
     { x: new Date(2020, 0), y: 6 },
   ],
