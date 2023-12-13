@@ -1,8 +1,8 @@
 module.exports = [
   {
     method: "GET",
-    path: "/",
-    handler: "myController.index",
+    path: "/:id",
+    handler: "atlasEditor.findOne",
     config: {
       policies: [],
       auth: false,
@@ -10,7 +10,7 @@ module.exports = [
   },
   {
     method: "GET",
-    path: "/find",
+    path: "/",
     handler: "atlasEditor.find",
     config: {
       policies: [],

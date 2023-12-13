@@ -7,4 +7,10 @@ module.exports = ({ strapi }) => ({
       query,
     );
   },
+  async findOne(id) {
+    return await strapi.entityService.findOne(
+      "plugin::atlas-editor.health-atlas",
+      id,
+    );
+  },
 });

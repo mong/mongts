@@ -11,4 +11,14 @@ module.exports = {
       ctx.throw(500, err);
     }
   },
+  async findOne(ctx) {
+    try {
+      return await strapi
+        .plugin("atlas-editor")
+        .service("atlasEditorService")
+        .findOne(ctx.params.id);
+    } catch (err) {
+      ctx.throw(500, err);
+    }
+  },
 };

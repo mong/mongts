@@ -27,7 +27,7 @@ import { LinkButton } from "@strapi/design-system/v2";
 import { Plus, Pencil } from "@strapi/icons";
 import { Illo } from "../../components/Illo";
 import pluginId from "../../pluginId";
-import atlasEditorRequests from "../../api/atlas-editor";
+import { getAtlases } from "../../api/atlas-editor";
 import HomePageStringsContext, {
   HomePageStrings,
 } from "./HomePageStringsContext";
@@ -43,27 +43,28 @@ const HomePage = () => {
   const [atlasFilter, setAtlasFilter] = useState({ search: "" });
   const [isLoading, setIsLoading] = useState(true);
 
+  const queryString = toQueryString({
+    fields: [
+      "id",
+      "mainTitle",
+      "shortTitle",
+      "isPublished",
+      "createdAt",
+      "updatedAt",
+    ],
+    sort: "shortTitle:ASC",
+  });
+
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      const queryString = toQueryString({
-        fields: [
-          "id",
-          "mainTitle",
-          "shortTitle",
-          "isPublished",
-          "createdAt",
-          "updatedAt",
-        ],
-        sort: "shortTitle:ASC",
-      });
-      const atlases = await atlasEditorRequests.getAtlases(queryString);
+      const atlases = await getAtlases(queryString);
       setAtlasList(atlases);
       setIsLoading(false);
     };
 
     fetchData();
-  }, []);
+  }, [queryString]);
 
   if (isLoading) return <LoadingIndicatorPage />;
 

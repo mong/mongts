@@ -1,11 +1,21 @@
-import { request } from "@strapi/helper-plugin";
+import { getFetchClient } from "@strapi/helper-plugin";
+import pluginId from "../pluginId";
 
-export const atlasEditorRequests = {
-  getAtlases: async (query) => {
-    return await request(`/atlas-editor/find?${query}`, {
-      method: "GET",
-    });
-  },
+export const getAtlases = async (query) => {
+  const { get } = getFetchClient();
+  const response = await get(`/${pluginId}?${query}`);
+  return response.data;
 };
 
-export default atlasEditorRequests;
+export const getAtlas = async (id) => {
+  const { get } = getFetchClient();
+  const response = await get(`/${pluginId}/${id}`);
+  return response.data;
+};
+
+const AtlasEditorRequests = {
+  getAtlases,
+  getAtlas,
+};
+
+export default AtlasEditorRequests;
