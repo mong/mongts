@@ -419,3 +419,9 @@ export const atlasData = [
     pas_rate_eldre: 6.1516249726,
   },
 ];
+
+export const linechartData = [
+  [{x: new Date(2018, 0), y: 10}, {x: new Date(2019, 0), y: 15}, {x: new Date(2020, 0), y: 20}],
+  [{x: new Date(2018, 0), y: 5}, {x: new Date(2019, 7), y: 15}, {x: new Date(2020, 0), y: 9}],
+  [{x: new Date(2018, 0), y: 2}, {x: new Date(2019, 3), y: 15}, {x: new Date(2020, 0), y: 6}]
+];
