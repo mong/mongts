@@ -1,8 +1,9 @@
-import { countLevels, setMissingToZero, IndicatorLevels } from "..";
+import { countLevels, setMissingToZero, IndicatorLevels, } from "..";
+import { LinechartData } from "../../LinechartBase";
 import { levelData } from "../../../../test/test_data/data";
 
-test("Standard render", async () => {
-  const expected = {
+test("Levels counts are correct", async () => {
+  const expectedGroupedLevels = {
     0: [
       { number: 2, year: 2018 },
     ],
@@ -14,6 +15,29 @@ test("Standard render", async () => {
       { number: 3, year: 2020 },
     ],
   };
+
+  const expectedChartData: LinechartData[][] = [
+    [
+        {x: new Date(2018, 0), y: 2},
+        {x: new Date(2019, 0), y: 0},
+        {x: new Date(2020, 0), y: 0},
+    ] as LinechartData[], 
+    [
+        {x: new Date(2018, 0), y: 1},
+        {x: new Date(2019, 0), y: 3},
+        {x: new Date(2020, 0), y: 0},
+    ] as LinechartData[], 
+    [
+        {x: new Date(2018, 0), y: 0},
+        {x: new Date(2019, 0), y: 0},
+        {x: new Date(2020, 0), y: 3},
+    ] as LinechartData[], 
+    
+  ]; 
+
   const groupedLevels = countLevels(levelData as IndicatorLevels[]);
-  expect(groupedLevels).toEqual(expected);
+  expect(groupedLevels).toEqual(expectedGroupedLevels);
+
+  const chartData = setMissingToZero(groupedLevels, 2018, 2020);
+  expect(chartData).toEqual(expectedChartData);
 });
