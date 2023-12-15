@@ -58,9 +58,9 @@ export const filterOrderIndID = (
 
   const orderedIndID = indDescription
     .sort((a, b) => {
-      return (a.name ?? "") > (b.name ?? "")
+      return a.name === null || a.name > (b.name ?? "")
         ? 1
-        : (a.name ?? "") < (b.name ?? "")
+        : b.name === null || a.name < b.name
         ? -1
         : 0;
     })
