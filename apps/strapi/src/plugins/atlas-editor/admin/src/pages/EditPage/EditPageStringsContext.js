@@ -35,6 +35,42 @@ export class EditPageStrings {
       defaultMessage:
         "You have unsaved changes. Are you sure you want to leave?",
     });
+
+    this.editModalTitle = formatMessage({
+      id: getTrad("Editpage.EditTitleModal.editModalTitle"),
+      defaultMessage: "Edit Title",
+    });
+
+    this.cancel = formatMessage({
+      id: getTrad("Editpage.EditTitleModal.cancel"),
+      defaultMessage: "Cancel",
+    });
+
+    this.finish = formatMessage({
+      id: getTrad("Editpage.EditTitleModal.finish"),
+      defaultMessage: "Finish",
+    });
+
+    this.enterMainTitle = formatMessage({
+      id: getTrad("Editpage.EditTitleModal.enterMainTitle"),
+      defaultMessage: "Enter main title...",
+    });
+
+    this.mainTitleLabel = formatMessage({
+      id: getTrad("Editpage.EditTitleModal.mainTitleLabel"),
+      defaultMessage: "Main Title",
+    });
+
+    this.editMainTitleHint = formatMessage({
+      id: getTrad("Editpage.EditTitleModal.editMainTitleHint"),
+      defaultMessage:
+        "The main title is shown at the top of the page for the atlas.",
+    });
+
+    this.mainTitleCannotBeEmpty = formatMessage({
+      id: getTrad("Editpage.EditTitleModal.mainTitleCannotBeEmpty"),
+      defaultMessage: "The main title cannot be empty!",
+    });
   }
 }
 

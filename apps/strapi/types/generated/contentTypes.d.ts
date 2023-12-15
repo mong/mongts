@@ -803,7 +803,7 @@ export interface ApiAtlasAtlas extends Schema.CollectionType {
           localized: true;
         };
       }>;
-    kapittel: Attribute.Relation<
+    kapittels: Attribute.Relation<
       "api::atlas.atlas",
       "oneToMany",
       "api::kapittel.kapittel"

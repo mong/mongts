@@ -6,7 +6,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useIntl } from "react-intl";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useHistory } from "react-router-dom";
 import {
   BaseHeaderLayout,
   EmptyStateLayout,
@@ -36,6 +36,7 @@ import isFilterMatch from "./utils/isFilterMatch";
 import toQueryString from "../../utils/toQueryString";
 
 const HomePage = () => {
+  const history = useHistory();
   const { formatMessage, formatDate } = useIntl();
   const strings = new HomePageStrings(formatMessage);
 
@@ -67,6 +68,10 @@ const HomePage = () => {
   }, [queryString]);
 
   if (isLoading) return <LoadingIndicatorPage />;
+
+  const navigateEdit = (id) => {
+    history.push(`/plugins/${pluginId}/edit/${id}`);
+  };
 
   return (
     <>
@@ -110,7 +115,7 @@ const HomePage = () => {
             </HomePageStringsContext.Provider>
           </Box>
           <Box paddingLeft={10} paddingRight={10}>
-            <Table>
+            <Table footer={<></>}>
               <Thead>
                 <Tr>
                   <Th>
@@ -153,32 +158,32 @@ const HomePage = () => {
                   .filter((atlas) => isFilterMatch(atlasFilter, atlas))
                   .map((atlas) => (
                     <Tr key={atlas.id}>
-                      <Td>
+                      <Td onClick={() => navigateEdit(atlas.id)}>
                         <Typography textColor="neutral800">
                           {atlas.id}
                         </Typography>
                       </Td>
-                      <Td>
+                      <Td onClick={() => navigateEdit(atlas.id)}>
                         <Typography textColor="neutral800">
                           {atlas.shortTitle}
                         </Typography>
                       </Td>
-                      <Td>
+                      <Td onClick={() => navigateEdit(atlas.id)}>
                         <Typography textColor="neutral800">
                           {atlas.mainTitle}
                         </Typography>
                       </Td>
-                      <Td>
+                      <Td onClick={() => navigateEdit(atlas.id)}>
                         <Typography textColor="neutral800">
                           {formatDate(atlas.createdAt)}
                         </Typography>
                       </Td>
-                      <Td>
+                      <Td onClick={() => navigateEdit(atlas.id)}>
                         <Typography textColor="neutral800">
                           {formatDate(atlas.updatedAt)}
                         </Typography>
                       </Td>
-                      <Td>
+                      <Td onClick={() => navigateEdit(atlas.id)}>
                         <Typography textColor="neutral800">
                           {atlas.isPublished ? strings.yes : strings.no}
                         </Typography>

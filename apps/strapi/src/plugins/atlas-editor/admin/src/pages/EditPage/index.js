@@ -14,8 +14,11 @@ import { Pencil, ArrowLeft } from "@strapi/icons";
 import EditorPageStringsContext, {
   EditPageStrings,
 } from "./EditPageStringsContext";
+import EditTitleModal from "./EditTitleModal";
 import { getAtlas } from "../../api/atlas-editor";
 import pluginId from "../../pluginId";
+import { string } from "prop-types";
+import { constant } from "lodash";
 
 const emptyAtlas = {
   id: -1,
@@ -27,12 +30,23 @@ const emptyAtlas = {
 };
 
 const EditPage = () => {
-  const { id } = useParams();
-  const [atlas, setAtlas] = useState(emptyAtlas);
-  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
+  const onEditTitleModalFinished = (editedResults) => {
+    if (editedResults.mainTitle !== atlas.mainTitle) {
+      setHasUnsavedChanges(true);
+      setAtlas({ ...atlas, mainTitle: editedResults.mainTitle });
+    }
 
+    setIsEditingTitle((prev) => !prev);
+  };
+
+  const { id } = useParams();
   const { formatMessage, formatDate } = useIntl();
+
+  const [atlas, setAtlas] = useState(emptyAtlas);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const [isEditingTitle, setIsEditingTitle] = useState(false);
+
   const strings = new EditPageStrings(formatMessage);
 
   useEffect(() => {
@@ -71,7 +85,11 @@ const EditPage = () => {
             <Button disabled={!hasUnsavedChanges}>{strings.save}</Button>
           }
           secondaryAction={
-            <Button variant="tertiary" startIcon={<Pencil />}>
+            <Button
+              variant="tertiary"
+              startIcon={<Pencil />}
+              onClick={() => setIsEditingTitle((prev) => !prev)}
+            >
               {strings.edit}
             </Button>
           }
@@ -79,6 +97,15 @@ const EditPage = () => {
           as="h2"
         />
       </Box>
+      {isEditingTitle && (
+        <EditorPageStringsContext.Provider value={strings}>
+          <EditTitleModal
+            mainTitle={atlas?.mainTitle}
+            onCancel={(editedTitle) => setIsEditingTitle((prev) => !prev)}
+            onFinish={onEditTitleModalFinished}
+          ></EditTitleModal>
+        </EditorPageStringsContext.Provider>
+      )}
     </>
   );
 };
