@@ -108,9 +108,13 @@ const LineChart = (props: Props) => {
 
   const innerHeight = height - marginOffsets.top - marginOffsets.bottom;
   const innerWidth = width - marginOffsets.left - marginOffsets.right;
-  const pathLabels = Array.from(
-    new Set(data.map((d) => d.unit_name)),
-  ).reverse();
+
+  // Put Nasjonalt first
+  const allUnits = Array.from(new Set(data.map((d) => d.unit_name)));
+  const pathLabels = allUnits
+    .filter((name) => name === "Nasjonalt")
+    .concat(allUnits.filter((name) => name != "Nasjonalt"));
+
   const lineColorScale = scaleOrdinal<string>()
     .domain(pathLabels)
     .range(chart_colors);
