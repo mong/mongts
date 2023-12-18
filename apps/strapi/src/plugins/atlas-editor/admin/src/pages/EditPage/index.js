@@ -7,7 +7,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams, NavLink, Prompt } from "react-router-dom";
 import { useIntl } from "react-intl";
-import { LoadingIndicatorPage } from "@strapi/helper-plugin";
+import { AxiosError } from "axios";
+import {
+  LoadingIndicatorPage,
+  useNotification,
+  useAPIErrorHandler,
+} from "@strapi/helper-plugin";
 import { BaseHeaderLayout, Button, Box } from "@strapi/design-system";
 import { Link } from "@strapi/design-system/v2";
 import { Pencil, ArrowLeft } from "@strapi/icons";
@@ -15,10 +20,8 @@ import EditorPageStringsContext, {
   EditPageStrings,
 } from "./EditPageStringsContext";
 import EditTitleModal from "./EditTitleModal";
-import { getAtlas } from "../../api/atlas-editor";
+import { getAtlas, updateAtlas } from "../../api/atlas-editor";
 import pluginId from "../../pluginId";
-import { string } from "prop-types";
-import { constant } from "lodash";
 
 const emptyAtlas = {
   id: -1,
@@ -30,6 +33,25 @@ const emptyAtlas = {
 };
 
 const EditPage = () => {
+  const handleUpdateAtlas = async (atlas) => {
+    setIsLoading(true);
+
+    const { updateSuccess, err } = await updateAtlas(atlas);
+
+    if (updateSuccess) {
+      setHasUnsavedChanges(false);
+      toggleNotification({ type: "info", message: strings.updateSuccess });
+    } else {
+      if (err instanceof AxiosError) {
+        toggleNotification({ type: "warning", message: formatAPIError(err) });
+      } else {
+        toggleNotification({ type: "warning", message: strings.updateError });
+      }
+    }
+
+    setIsLoading(false);
+  };
+
   const onEditTitleModalFinished = (editedResults) => {
     if (editedResults.mainTitle !== atlas.mainTitle) {
       setHasUnsavedChanges(true);
@@ -41,7 +63,8 @@ const EditPage = () => {
 
   const { id } = useParams();
   const { formatMessage, formatDate } = useIntl();
-
+  const { formatAPIError } = useAPIErrorHandler();
+  const toggleNotification = useNotification();
   const [atlas, setAtlas] = useState(emptyAtlas);
   const [isLoading, setIsLoading] = useState(true);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
@@ -82,7 +105,12 @@ const EditPage = () => {
             </Link>
           }
           primaryAction={
-            <Button disabled={!hasUnsavedChanges}>{strings.save}</Button>
+            <Button
+              onClick={() => handleUpdateAtlas(atlas)}
+              disabled={!hasUnsavedChanges}
+            >
+              {strings.save}
+            </Button>
           }
           secondaryAction={
             <Button

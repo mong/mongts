@@ -71,6 +71,16 @@ export class EditPageStrings {
       id: getTrad("Editpage.EditTitleModal.mainTitleCannotBeEmpty"),
       defaultMessage: "The main title cannot be empty!",
     });
+
+    this.updateSuccess = formatMessage({
+      id: getTrad("Editpage.Notifications.updateSuccess"),
+      defaultMessage: "The atlas was updated.",
+    });
+
+    this.updateError = formatMessage({
+      id: getTrad("Editpage.Notifications.updateError"),
+      defaultMessage: "The atlas could not be updated!",
+    });
   }
 }
 

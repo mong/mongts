@@ -13,4 +13,11 @@ module.exports = ({ strapi }) => ({
       id,
     );
   },
+  async update(atlas) {
+    return await strapi.entityService.update(
+      "plugin::atlas-editor.health-atlas",
+      atlas.id,
+      { data: atlas },
+    );
+  },
 });

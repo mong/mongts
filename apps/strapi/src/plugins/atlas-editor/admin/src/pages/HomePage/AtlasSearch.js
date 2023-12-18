@@ -13,13 +13,15 @@ const AtlasSearch = ({ setSearchString }) => {
 
   return (
     <SearchForm
+      id="atlas-search"
       onSubmit={(e) => {
         e.preventDefault();
         setSearchString(value);
       }}
     >
       <Searchbar
-        name="search"
+        id="search-bar"
+        name="search-bar"
         placeholder={strings.search}
         aria-label={strings.search}
         onChange={(e) => setValue(e.target.value)}

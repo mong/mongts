@@ -13,9 +13,28 @@ export const getAtlas = async (id) => {
   return response.data;
 };
 
+export const updateAtlas = async (atlas) => {
+  let res = { updateSuccess: false, err: null };
+
+  const { post } = getFetchClient(); // Using POST because Strapi updates are partial
+
+  try {
+    const response = await post(`/${pluginId}/${atlas.id}`, atlas);
+    if (response.status == 200) {
+      res.updateSuccess = true;
+    }
+  } catch (err) {
+    console.log(err);
+    res.err = err;
+  }
+
+  return res;
+};
+
 const AtlasEditorRequests = {
   getAtlases,
   getAtlas,
+  updateAtlas,
 };
 
 export default AtlasEditorRequests;

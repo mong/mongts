@@ -21,4 +21,14 @@ module.exports = {
       ctx.throw(500, err);
     }
   },
+  async update(ctx) {
+    try {
+      return await strapi
+        .plugin("atlas-editor")
+        .service("atlasEditorService")
+        .update(ctx.request.body);
+    } catch (err) {
+      ctx.throw(500, err);
+    }
+  },
 };
