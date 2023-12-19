@@ -12,7 +12,7 @@ import mockRouter from "next-router-mock";
 import { Abacus } from "..";
 import { atlasData } from "../../../../test/test_data/data";
 
-jest.mock("next/router", () => require("next-router-mock"));
+vi.mock("next/router", () => require("next-router-mock"));
 
 test("Standard render", async () => {
   const { container } = render(
