@@ -244,7 +244,7 @@ export const hisreg_descr: Description[] = [
     dg_id: "hisreg_dg",
     include: 1,
     title: "Komplikasjon etter kirurgisk behandling",
-    name: "ind09",
+    name: null,
     type: "andel",
     sformat: ",.0%",
     measure_unit: null,

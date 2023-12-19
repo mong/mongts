@@ -21,8 +21,8 @@ test("Returns correct values without any special", () => {
   ).toStrictEqual([
     "hisreg_henvist_spesialist_1aar",
     "hisreg_full_responder",
-    "hisreg_kompl_kir",
     "hisreg_kompl_kir2",
+    "hisreg_kompl_kir",
   ]);
 });
 test("Do not filter if national data and length of units is 1", () => {
@@ -66,8 +66,8 @@ test("Do not filter on single registry page even if national data and length of 
   ).toStrictEqual([
     "hisreg_henvist_spesialist_1aar",
     "hisreg_full_responder",
-    "hisreg_kompl_kir",
     "hisreg_kompl_kir2",
+    "hisreg_kompl_kir",
   ]);
 });
 test("Do not filter if national data and length of units more than 1, but fetching data is true", () => {
@@ -83,8 +83,8 @@ test("Do not filter if national data and length of units more than 1, but fetchi
   ).toStrictEqual([
     "hisreg_henvist_spesialist_1aar",
     "hisreg_full_responder",
-    "hisreg_kompl_kir",
     "hisreg_kompl_kir2",
+    "hisreg_kompl_kir",
   ]);
 });
 test("Keep only level H", () => {
@@ -121,7 +121,7 @@ test("Keep only level L", () => {
       "L",
       "allRegistries",
     ),
-  ).toStrictEqual(["hisreg_kompl_kir", "hisreg_kompl_kir2"]);
+  ).toStrictEqual(["hisreg_kompl_kir2", "hisreg_kompl_kir"]);
 });
 test("Keep only level M with all data", () => {
   expect(
