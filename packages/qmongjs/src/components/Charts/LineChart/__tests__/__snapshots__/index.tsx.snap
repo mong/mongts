@@ -369,32 +369,6 @@ exports[`Render with levels reversed @500px 1`] = `
           transform="translate(25, 8)"
         >
           <g
-            class="legendItem test2"
-            opacity="1"
-            transform="translate(0,0)"
-          >
-            <text
-              dy="0.35em"
-              fill="#2D3034"
-              font-size="0.9rem"
-              text-anchor="start"
-              x="0"
-              y="0"
-            >
-               
-              test2
-            </text>
-            <line
-              stroke="#00263d"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="0"
-              x2="15"
-              y1="15"
-              y2="15"
-            />
-          </g>
-          <g
             class="legendItem test"
             opacity="1"
             transform="translate(0,0)"
@@ -409,6 +383,32 @@ exports[`Render with levels reversed @500px 1`] = `
             >
                
               test
+            </text>
+            <line
+              stroke="#00263d"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="0"
+              x2="15"
+              y1="15"
+              y2="15"
+            />
+          </g>
+          <g
+            class="legendItem test2"
+            opacity="1"
+            transform="translate(0,0)"
+          >
+            <text
+              dy="0.35em"
+              fill="#2D3034"
+              font-size="0.9rem"
+              text-anchor="start"
+              x="0"
+              y="0"
+            >
+               
+              test2
             </text>
             <line
               stroke="#4F9A94"
@@ -692,7 +692,7 @@ exports[`Render with levels reversed @500px 1`] = `
               d="M270,163.429L135,103.049L0,171.154"
               fill="none"
               opacity="1"
-              stroke="#4F9A94"
+              stroke="#00263d"
               style="stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
             />
             <path
@@ -700,7 +700,7 @@ exports[`Render with levels reversed @500px 1`] = `
               d="M270,59.429L135,49.92L0,136.686"
               fill="none"
               opacity="1"
-              stroke="#00263d"
+              stroke="#4F9A94"
               style="stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
             />
           </g>
@@ -712,7 +712,7 @@ exports[`Render with levels reversed @500px 1`] = `
               d="M405,55.464L270,163.429"
               fill="none"
               opacity="1"
-              stroke="#4F9A94"
+              stroke="#00263d"
               style="stroke-width: 3; stroke-dasharray: 10, 10; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
             />
             <path
@@ -720,7 +720,7 @@ exports[`Render with levels reversed @500px 1`] = `
               d="M405,168.352L270,59.429"
               fill="none"
               opacity="1"
-              stroke="#00263d"
+              stroke="#4F9A94"
               style="stroke-width: 3; stroke-dasharray: 10, 10; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
             />
           </g>
@@ -731,36 +731,46 @@ exports[`Render with levels reversed @500px 1`] = `
               class="dot"
               cx="405"
               cy="55.463794285714286"
-              fill="#4F9A94"
+              fill="#00263d"
               opacity="1"
               r="4"
-              stroke="#4F9A94"
+              stroke="#00263d"
               style="mix-blend-mode: multiply;"
             />
             <circle
               class="dot"
               cx="270"
               cy="163.42857142857142"
-              fill="#4F9A94"
+              fill="#00263d"
               opacity="1"
               r="4"
-              stroke="#4F9A94"
+              stroke="#00263d"
               style="mix-blend-mode: multiply;"
             />
             <circle
               class="dot"
               cx="135"
               cy="103.04914285714284"
-              fill="#4F9A94"
+              fill="#00263d"
               opacity="1"
               r="4"
-              stroke="#4F9A94"
+              stroke="#00263d"
               style="mix-blend-mode: multiply;"
             />
             <circle
               class="dot"
               cx="0"
               cy="171.15428571428572"
+              fill="#00263d"
+              opacity="1"
+              r="4"
+              stroke="#00263d"
+              style="mix-blend-mode: multiply;"
+            />
+            <circle
+              class="dot"
+              cx="405"
+              cy="168.35222857142855"
               fill="#4F9A94"
               opacity="1"
               r="4"
@@ -769,42 +779,32 @@ exports[`Render with levels reversed @500px 1`] = `
             />
             <circle
               class="dot"
-              cx="405"
-              cy="168.35222857142855"
-              fill="#00263d"
-              opacity="1"
-              r="4"
-              stroke="#00263d"
-              style="mix-blend-mode: multiply;"
-            />
-            <circle
-              class="dot"
               cx="270"
               cy="59.42857142857142"
-              fill="#00263d"
+              fill="#4F9A94"
               opacity="1"
               r="4"
-              stroke="#00263d"
+              stroke="#4F9A94"
               style="mix-blend-mode: multiply;"
             />
             <circle
               class="dot"
               cx="135"
               cy="49.91999999999997"
-              fill="#00263d"
+              fill="#4F9A94"
               opacity="1"
               r="4"
-              stroke="#00263d"
+              stroke="#4F9A94"
               style="mix-blend-mode: multiply;"
             />
             <circle
               class="dot"
               cx="0"
               cy="136.68571428571428"
-              fill="#00263d"
+              fill="#4F9A94"
               opacity="1"
               r="4"
-              stroke="#00263d"
+              stroke="#4F9A94"
               style="mix-blend-mode: multiply;"
             />
           </g>
@@ -2515,6 +2515,550 @@ exports[`Render with many years, including missing years 2`] = `
               opacity="1"
               r="4"
               stroke="#00263d"
+              style="mix-blend-mode: multiply;"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Render with nasjonalt 1`] = `
+<div>
+  <div>
+    <div
+      style="width: 90%; margin: auto; position: relative;"
+    >
+      <svg
+        class="lineChart"
+        height="322"
+        style="background-color: white;"
+        width="500"
+      >
+        <g
+          transform="translate(25, 8)"
+        >
+          <g
+            class="legendItem Nasjonalt"
+            opacity="1"
+            transform="translate(0,0)"
+          >
+            <text
+              dy="0.35em"
+              fill="#2D3034"
+              font-size="0.9rem"
+              text-anchor="start"
+              x="0"
+              y="0"
+            >
+               
+              Nasjonalt
+            </text>
+            <line
+              stroke="#00263d"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="0"
+              x2="15"
+              y1="15"
+              y2="15"
+            />
+          </g>
+          <g
+            class="legendItem test"
+            opacity="1"
+            transform="translate(0,0)"
+          >
+            <text
+              dy="0.35em"
+              fill="#2D3034"
+              font-size="0.9rem"
+              text-anchor="start"
+              x="0"
+              y="0"
+            >
+               
+              test
+            </text>
+            <line
+              stroke="#4F9A94"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="0"
+              x2="15"
+              y1="15"
+              y2="15"
+            />
+          </g>
+          <g
+            class="legendItem atest2"
+            opacity="1"
+            transform="translate(0,0)"
+          >
+            <text
+              dy="0.35em"
+              fill="#2D3034"
+              font-size="0.9rem"
+              text-anchor="start"
+              x="0"
+              y="0"
+            >
+               
+              atest2
+            </text>
+            <line
+              stroke="#90CAF9"
+              stroke-linecap="round"
+              stroke-width="4"
+              x1="0"
+              x2="15"
+              y1="15"
+              y2="15"
+            />
+          </g>
+        </g>
+        <g
+          transform="translate(25, 38)"
+        >
+          <g
+            class="x-axis"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            text-anchor="middle"
+            transform="translate(0, 208)"
+          >
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0.5,0)"
+            >
+              <text
+                dy="0.71em"
+                fill="#828586"
+                style="font-size: 16.075px;"
+                y="21.64"
+              >
+                2017
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(135.5,0)"
+            >
+              <text
+                dy="0.71em"
+                fill="#828586"
+                style="font-size: 16.075px;"
+                y="21.64"
+              >
+                2018
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(270.5,0)"
+            >
+              <text
+                dy="0.71em"
+                fill="#828586"
+                style="font-size: 16.075px;"
+                y="21.64"
+              >
+                2019
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(405.5,0)"
+            >
+              <text
+                dy="0.71em"
+                fill="#828586"
+                style="font-size: 16.075px;"
+                y="21.64"
+              >
+                2020
+              </text>
+            </g>
+          </g>
+          <g
+            class="y-axis"
+            fill="none"
+            font-family="sans-serif"
+            font-size="10"
+            text-anchor="start"
+          >
+            <text
+              fill="#2D3034"
+              style="font-size: 15.1px;"
+              transform="rotate(-90)"
+              x="-138.66666666666666"
+              y="465.74999999999994"
+            >
+              Antall
+            </text>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,208.5)"
+            >
+              <line
+                stroke="#D2D3D4"
+                x2="405"
+              />
+              <text
+                dy="0.32em"
+                fill="#828586"
+                style="font-size: 12.16px;"
+                x="408"
+              >
+                0
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,182.5)"
+            >
+              <line
+                stroke="#D2D3D4"
+                x2="405"
+              />
+              <text
+                dy="0.32em"
+                fill="#828586"
+                style="font-size: 12.16px;"
+                x="408"
+              >
+                0,1
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,156.5)"
+            >
+              <line
+                stroke="#D2D3D4"
+                x2="405"
+              />
+              <text
+                dy="0.32em"
+                fill="#828586"
+                style="font-size: 12.16px;"
+                x="408"
+              >
+                0,2
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,130.5)"
+            >
+              <line
+                stroke="#D2D3D4"
+                x2="405"
+              />
+              <text
+                dy="0.32em"
+                fill="#828586"
+                style="font-size: 12.16px;"
+                x="408"
+              >
+                0,3
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,104.49999999999997)"
+            >
+              <line
+                stroke="#D2D3D4"
+                x2="405"
+              />
+              <text
+                dy="0.32em"
+                fill="#828586"
+                style="font-size: 12.16px;"
+                x="408"
+              >
+                0,4
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,78.5)"
+            >
+              <line
+                stroke="#D2D3D4"
+                x2="405"
+              />
+              <text
+                dy="0.32em"
+                fill="#828586"
+                style="font-size: 12.16px;"
+                x="408"
+              >
+                0,5
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,52.5)"
+            >
+              <line
+                stroke="#D2D3D4"
+                x2="405"
+              />
+              <text
+                dy="0.32em"
+                fill="#828586"
+                style="font-size: 12.16px;"
+                x="408"
+              >
+                0,6
+              </text>
+            </g>
+            <g
+              class="tick"
+              opacity="1"
+              transform="translate(0,26.5)"
+            >
+              <line
+                stroke="#D2D3D4"
+                x2="405"
+              />
+              <text
+                dy="0.32em"
+                fill="#828586"
+                style="font-size: 12.16px;"
+                x="408"
+              >
+                0,7
+              </text>
+            </g>
+          </g>
+          <g
+            class="levels"
+          >
+            <rect
+              class="level"
+              data-testid="level-high"
+              fill="#3baa34"
+              height="52"
+              opacity="0.2"
+              width="405"
+              x="0"
+              y="156"
+            />
+            <rect
+              class="level"
+              data-testid="level-mid"
+              fill="#fd9c00"
+              height="52.00000000000003"
+              opacity="0.2"
+              width="405"
+              x="0"
+              y="103.99999999999997"
+            />
+            <rect
+              class="level"
+              data-testid="level-low"
+              fill="#e30713"
+              height="103.99999999999997"
+              opacity="0.2"
+              width="405"
+              x="0"
+              y="0"
+            />
+          </g>
+          <g
+            class="linesComplete"
+          >
+            <path
+              class="line"
+              d="M270,169L135,116.168L0,175.76"
+              fill="none"
+              opacity="1"
+              stroke="#4F9A94"
+              style="stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
+            />
+            <path
+              class="line"
+              d="M270,78L135,69.68L0,145.6"
+              fill="none"
+              opacity="1"
+              stroke="#00263d"
+              style="stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
+            />
+            <path
+              class="line"
+              d="M270,37.7L135,95.368L0,176.176"
+              fill="none"
+              opacity="1"
+              stroke="#90CAF9"
+              style="stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
+            />
+          </g>
+          <g
+            class="linesIncomplete"
+          >
+            <path
+              class="line"
+              d="M405,74.531L270,169"
+              fill="none"
+              opacity="1"
+              stroke="#4F9A94"
+              style="stroke-width: 3; stroke-dasharray: 10, 10; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
+            />
+            <path
+              class="line"
+              d="M405,173.308L270,78"
+              fill="none"
+              opacity="1"
+              stroke="#00263d"
+              style="stroke-width: 3; stroke-dasharray: 10, 10; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
+            />
+            <path
+              class="line"
+              d="M405,100.282L270,37.7"
+              fill="none"
+              opacity="1"
+              stroke="#90CAF9"
+              style="stroke-width: 3; stroke-dasharray: 10, 10; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
+            />
+          </g>
+          <g
+            class="dots"
+          >
+            <circle
+              class="dot"
+              cx="405"
+              cy="74.53081999999998"
+              fill="#4F9A94"
+              opacity="1"
+              r="4"
+              stroke="#4F9A94"
+              style="mix-blend-mode: multiply;"
+            />
+            <circle
+              class="dot"
+              cx="270"
+              cy="169"
+              fill="#4F9A94"
+              opacity="1"
+              r="4"
+              stroke="#4F9A94"
+              style="mix-blend-mode: multiply;"
+            />
+            <circle
+              class="dot"
+              cx="135"
+              cy="116.168"
+              fill="#4F9A94"
+              opacity="1"
+              r="4"
+              stroke="#4F9A94"
+              style="mix-blend-mode: multiply;"
+            />
+            <circle
+              class="dot"
+              cx="0"
+              cy="175.76"
+              fill="#4F9A94"
+              opacity="1"
+              r="4"
+              stroke="#4F9A94"
+              style="mix-blend-mode: multiply;"
+            />
+            <circle
+              class="dot"
+              cx="405"
+              cy="173.3082"
+              fill="#00263d"
+              opacity="1"
+              r="4"
+              stroke="#00263d"
+              style="mix-blend-mode: multiply;"
+            />
+            <circle
+              class="dot"
+              cx="270"
+              cy="78"
+              fill="#00263d"
+              opacity="1"
+              r="4"
+              stroke="#00263d"
+              style="mix-blend-mode: multiply;"
+            />
+            <circle
+              class="dot"
+              cx="135"
+              cy="69.67999999999999"
+              fill="#00263d"
+              opacity="1"
+              r="4"
+              stroke="#00263d"
+              style="mix-blend-mode: multiply;"
+            />
+            <circle
+              class="dot"
+              cx="0"
+              cy="145.6"
+              fill="#00263d"
+              opacity="1"
+              r="4"
+              stroke="#00263d"
+              style="mix-blend-mode: multiply;"
+            />
+            <circle
+              class="dot"
+              cx="405"
+              cy="100.28199999999998"
+              fill="#90CAF9"
+              opacity="1"
+              r="4"
+              stroke="#90CAF9"
+              style="mix-blend-mode: multiply;"
+            />
+            <circle
+              class="dot"
+              cx="270"
+              cy="37.69999999999998"
+              fill="#90CAF9"
+              opacity="1"
+              r="4"
+              stroke="#90CAF9"
+              style="mix-blend-mode: multiply;"
+            />
+            <circle
+              class="dot"
+              cx="135"
+              cy="95.36800000000001"
+              fill="#90CAF9"
+              opacity="1"
+              r="4"
+              stroke="#90CAF9"
+              style="mix-blend-mode: multiply;"
+            />
+            <circle
+              class="dot"
+              cx="0"
+              cy="176.176"
+              fill="#90CAF9"
+              opacity="1"
+              r="4"
+              stroke="#90CAF9"
               style="mix-blend-mode: multiply;"
             />
           </g>

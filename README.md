@@ -73,4 +73,4 @@ Run the SKDE web site (in another terminal):
 yarn run dev
 ```
 
-Open the admin page: http://localhost:3000/helseatlas/admin
+Open the admin page [helseatlas/admin](http://localhost:3000/helseatlas/admin).
