@@ -13,8 +13,17 @@ import {
   useNotification,
   useAPIErrorHandler,
 } from "@strapi/helper-plugin";
-import { BaseHeaderLayout, Button, Box } from "@strapi/design-system";
-import { Link } from "@strapi/design-system/v2";
+import {
+  BaseHeaderLayout,
+  Button,
+  Box,
+  Layout,
+  ContentLayout,
+  Grid,
+  GridItem,
+  Flex,
+} from "@strapi/design-system";
+import { Link, SubNav } from "@strapi/design-system/v2";
 import { Pencil, ArrowLeft } from "@strapi/icons";
 import EditorPageStringsContext, {
   EditPageStrings,
@@ -87,53 +96,91 @@ const EditPage = () => {
 
   return (
     <>
+      <Box background="neutral100">
+        <Layout sideNav={<SubNav ariaLabel="Atlas-editor sub nav"></SubNav>}>
+          <>
+            <BaseHeaderLayout
+              navigationAction={
+                <Link
+                  as={NavLink}
+                  startIcon={<ArrowLeft />}
+                  to={`/plugins/${pluginId}`}
+                >
+                  {strings.goBack}
+                </Link>
+              }
+              primaryAction={
+                <Button
+                  onClick={() => handleUpdateAtlas(atlas)}
+                  disabled={!hasUnsavedChanges}
+                >
+                  {strings.save}
+                </Button>
+              }
+              secondaryAction={
+                <Button
+                  variant="tertiary"
+                  startIcon={<Pencil />}
+                  onClick={() => setIsEditingTitle((prev) => !prev)}
+                >
+                  {strings.edit}
+                </Button>
+              }
+              title={atlas?.mainTitle}
+              as="h2"
+            />
+            <ContentLayout>
+              <Grid gap={4}>
+                <GridItem col={9} s={12}>
+                  <Flex direction="column" alignItems="stretch" gap={6}>
+                    <Box
+                      hasRadius
+                      background="neutral0"
+                      shadow="tableShadow"
+                      paddingLeft={6}
+                      paddingRight={6}
+                      paddingTop={6}
+                      paddingBottom={6}
+                      borderColor="neutral150"
+                    ></Box>
+                  </Flex>
+                </GridItem>
+                <GridItem col={3} s={12}>
+                  <Flex direction="column" alignItems="stretch" gap={2}>
+                    <Box
+                      as="aside"
+                      aria-labelledby="additional-information"
+                      background="neutral0"
+                      borderColor="neutral150"
+                      hasRadius
+                      paddingBottom={4}
+                      paddingLeft={4}
+                      paddingRight={4}
+                      paddingTop={6}
+                      shadow="tableShadow"
+                    ></Box>
+                  </Flex>
+                </GridItem>
+              </Grid>
+            </ContentLayout>
+          </>
+        </Layout>
+      </Box>
+      {isEditingTitle && (
+        <EditorPageStringsContext.Provider value={strings}>
+          <EditTitleModal
+            mainTitle={atlas.mainTitle}
+            onCancel={() => setIsEditingTitle((prev) => !prev)}
+            onFinish={onEditTitleModalFinished}
+          ></EditTitleModal>
+        </EditorPageStringsContext.Provider>
+      )}
       <Prompt
         message={(location) =>
           location.hash === "#back" ? false : strings.unsavedChangesPrompt
         }
         when={hasUnsavedChanges}
       />
-      <Box background="neutral100">
-        <BaseHeaderLayout
-          navigationAction={
-            <Link
-              as={NavLink}
-              startIcon={<ArrowLeft />}
-              to={`/plugins/${pluginId}`}
-            >
-              {strings.goBack}
-            </Link>
-          }
-          primaryAction={
-            <Button
-              onClick={() => handleUpdateAtlas(atlas)}
-              disabled={!hasUnsavedChanges}
-            >
-              {strings.save}
-            </Button>
-          }
-          secondaryAction={
-            <Button
-              variant="tertiary"
-              startIcon={<Pencil />}
-              onClick={() => setIsEditingTitle((prev) => !prev)}
-            >
-              {strings.edit}
-            </Button>
-          }
-          title={atlas?.mainTitle}
-          as="h2"
-        />
-      </Box>
-      {isEditingTitle && (
-        <EditorPageStringsContext.Provider value={strings}>
-          <EditTitleModal
-            mainTitle={atlas?.mainTitle}
-            onCancel={(editedTitle) => setIsEditingTitle((prev) => !prev)}
-            onFinish={onEditTitleModalFinished}
-          ></EditTitleModal>
-        </EditorPageStringsContext.Provider>
-      )}
     </>
   );
 };
