@@ -30,6 +30,7 @@ import EditorPageStringsContext, {
 } from "./EditPageStringsContext";
 import EditTitleModal from "./EditTitleModal";
 import { getAtlas, updateAtlas } from "../../api/atlas-editor";
+import InformationBox from "../../components/InformationBox";
 import pluginId from "../../pluginId";
 
 const emptyAtlas = {
@@ -158,7 +159,9 @@ const EditPage = () => {
                       paddingRight={4}
                       paddingTop={6}
                       shadow="tableShadow"
-                    ></Box>
+                    >
+                      <InformationBox atlas={atlas} />
+                    </Box>
                   </Flex>
                 </GridItem>
               </Grid>
