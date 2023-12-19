@@ -11,7 +11,7 @@
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
     "format": "yarn prettier --write",
     "test": "yarn run test:base --coverage",
-    "test:base": "vitest",
+    "test:base": "vitest run",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
     "e2e": "start-server-and-test start http://localhost:3000 cypress",
