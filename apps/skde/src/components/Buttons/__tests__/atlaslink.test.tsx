@@ -59,7 +59,7 @@ test("Wide is true", async () => {
 
 test("newlyUpdated is true", async () => {
   const date1 = new Date("October 13, 2014 11:13:00");
-  jest.useFakeTimers().setSystemTime(new Date("2014-10-10"));
+  vi.useFakeTimers().setSystemTime(new Date("2014-10-10"));
   const { container } = render(
     <AtlasLink
       lang="no"
