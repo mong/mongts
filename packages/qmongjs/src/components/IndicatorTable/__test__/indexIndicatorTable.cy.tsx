@@ -1,17 +1,10 @@
 import React from "react";
-import IndicatorTable from "./index";
-
-describe("<IndicatorTable />", () => {
-  it("renders", () => {
-    // see: https://on.cypress.io/mounting-react
-    cy.mount(<IndicatorTable />);
-  });
-});
+import IndicatorTable from "../index";
 
 import { QueryParamProvider } from "use-query-params";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import opts from "../../dev-tools/data/unitnames.json";
+import opts from "../../../dev-tools/data/unitnames.json";
 import { RegisterName } from "types";
 
 import mockRouter from "next-router-mock";
