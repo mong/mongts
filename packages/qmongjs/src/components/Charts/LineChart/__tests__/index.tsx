@@ -215,6 +215,93 @@ test("Render with levels reversed @500px", async () => {
   expect(container).toMatchSnapshot();
 });
 
+test("Render with nasjonalt", async () => {
+  const WIDTH = 500;
+  (useResizeObserver as jest.Mock).mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+  const { container } = render(
+    <LineChartWithRef
+      showLevel={true}
+      levels={[
+        { level: "high", start: 0.2, end: 0 },
+        { level: "mid", start: 0.4, end: 0.2 },
+        { level: "low", start: 1, end: 0.4 },
+      ]}
+      tickformat=",.3f"
+      lastCompleteYear={2019}
+      data={[
+        buildDataPoint({
+          unit_name: "test",
+          var: 0.513343,
+          year: 2020,
+        }),
+        buildDataPoint({
+          unit_name: "test",
+          var: 0.15,
+          year: 2019,
+        }),
+        buildDataPoint({
+          unit_name: "test",
+          var: 0.3532,
+          year: 2018,
+        }),
+        buildDataPoint({
+          unit_name: "test",
+          var: 0.124,
+          year: 2017,
+        }),
+        buildDataPoint({
+          unit_name: "Nasjonalt",
+          var: 0.13343,
+          year: 2020,
+        }),
+        buildDataPoint({
+          unit_name: "Nasjonalt",
+          var: 0.5,
+          year: 2019,
+        }),
+        buildDataPoint({
+          unit_name: "Nasjonalt",
+          var: 0.532,
+          year: 2018,
+        }),
+        buildDataPoint({
+          unit_name: "Nasjonalt",
+          var: 0.24,
+          year: 2017,
+        }),
+        buildDataPoint({
+          unit_name: "atest2",
+          var: 0.4143,
+          year: 2020,
+        }),
+        buildDataPoint({
+          unit_name: "atest2",
+          var: 0.655,
+          year: 2019,
+        }),
+        buildDataPoint({
+          unit_name: "atest2",
+          var: 0.4332,
+          year: 2018,
+        }),
+        buildDataPoint({
+          unit_name: "atest2",
+          var: 0.1224,
+          year: 2017,
+        }),
+      ]}
+    />,
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
 test("Render with many years", async () => {
   const WIDTH = 500;
   (useResizeObserver as jest.Mock).mockReturnValue({
