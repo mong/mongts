@@ -297,7 +297,7 @@ test("Render with nasjonalt", async () => {
     />,
   );
 
-  await clockTick(1500);
+  await 1500;
 
   expect(container).toMatchSnapshot();
 });
