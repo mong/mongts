@@ -96,9 +96,6 @@ test("Bar", async () => {
       indicatorData={inddata}
     />,
   );
-
-  await 1500;
-
   expect(container).toMatchSnapshot();
 });
 
@@ -120,9 +117,6 @@ test("Bar with level_direction eq 0", async () => {
       indicatorData={inddata}
     />,
   );
-
-  await 1500;
-
   expect(container).toMatchSnapshot();
 });
 
@@ -147,9 +141,6 @@ test("Bar select treatment unit", async () => {
       tickformat=".%"
     />,
   );
-
-  await 1500;
-
   expect(container).toMatchSnapshot();
 });
 
@@ -170,9 +161,6 @@ test("Line", async () => {
       indicatorData={[]}
     />,
   );
-
-  await 1500;
-
   expect(container).toMatchSnapshot();
 });
 
@@ -193,9 +181,6 @@ test("Line, fetch with error", async () => {
       indicatorData={[]}
     />,
   );
-
-  await 1500;
-
   expect(container).toMatchSnapshot();
 });
 
@@ -216,9 +201,6 @@ test("Bar, fetch with error", async () => {
       indicatorData={[]}
     />,
   );
-
-  await 1500;
-
   expect(container).toMatchSnapshot();
 });
 
@@ -239,9 +221,6 @@ test("Line, fetch is loading", async () => {
       indicatorData={[]}
     />,
   );
-
-  await 1500;
-
   expect(container).toMatchSnapshot();
 });
 
@@ -262,9 +241,6 @@ test("Bar, fetch is loading", async () => {
       indicatorData={[]}
     />,
   );
-
-  await 1500;
-
   expect(container).toMatchSnapshot();
 });
 

@@ -37,8 +37,6 @@ test("shows legend", async () => {
 
   render(<LineChartWithRef {...props} />);
 
-  await 1500;
-
   expect(screen.getByText("Nasjonalt")).toBeInTheDocument();
   expect(screen.getByText("Ahus")).toBeInTheDocument();
 });
@@ -49,8 +47,6 @@ test("shows only one legend item per unit_name", async () => {
   const props = buildProps({ data: [d1, d2] });
 
   render(<LineChartWithRef {...props} />);
-
-  await 1500;
 
   expect(screen.getAllByText("Nasjonalt").length).toBe(1);
 });
@@ -96,8 +92,6 @@ test("Render without levels @250px", async () => {
     />,
   );
 
-  await 1500;
-
   expect(container).toMatchSnapshot();
 });
 
@@ -142,8 +136,6 @@ test("Render with levels @500px", async () => {
       ]}
     />,
   );
-
-  await 1500;
 
   expect(container).toMatchSnapshot();
 });
@@ -209,8 +201,6 @@ test("Render with levels reversed @500px", async () => {
       ]}
     />,
   );
-
-  await 1500;
 
   expect(container).toMatchSnapshot();
 });
@@ -297,8 +287,6 @@ test("Render with nasjonalt", async () => {
     />,
   );
 
-  await 1500;
-
   expect(container).toMatchSnapshot();
 });
 
@@ -332,8 +320,6 @@ test("Render with many years", async () => {
       ]}
     />,
   );
-
-  await 1500;
 
   expect(container).toMatchSnapshot();
 });
@@ -370,8 +356,6 @@ test("Render with many years, ending with even", async () => {
     />,
   );
 
-  await 1500;
-
   expect(container).toMatchSnapshot();
 });
 
@@ -404,8 +388,6 @@ test("Render with many years, including missing years", async () => {
     />,
   );
 
-  await 1500;
-
   expect(container).toMatchSnapshot();
 });
 
@@ -437,8 +419,6 @@ test("Render with many years, including missing years", async () => {
       ]}
     />,
   );
-
-  await 1500;
 
   expect(container).toMatchSnapshot();
 });

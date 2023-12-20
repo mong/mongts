@@ -43,8 +43,6 @@ test("Bar have labels with value in %", async () => {
     />,
   );
 
-  await 1500;
-
   for (const dataPoint of data) {
     const bar = screen.getByTestId(`bar-label-${dataPoint.label}`);
     const valueInPct = Math.round((dataPoint.value * 100 * 100) / 100) + " %";
@@ -80,8 +78,6 @@ test("Bar have labels with value as number", async () => {
     />,
   );
 
-  await 1500;
-
   for (const dataPoint of data) {
     const bar = screen.getByTestId(`bar-label-${dataPoint.label}`);
     const valueInNum = dataPoint.value.toString();
@@ -108,8 +104,6 @@ test("Bar widths are correct", async () => {
 
   const { rerender } = render(<BarChartWithRef {...props} />);
 
-  await 1500;
-
   for (const dataPoint of props.data) {
     const bar = screen.getByTestId(`bar-${dataPoint.label}`);
     const width = bar.getAttribute("width") ?? "";
@@ -120,8 +114,6 @@ test("Bar widths are correct", async () => {
   const newProps = { ...props, data: [{ ...bar1, value: 0.75 }, bar2] };
 
   await rerender(<BarChartWithRef {...newProps} />);
-
-  await 1500;
 
   for (const dataPoint of newProps.data) {
     const bar = screen.getByTestId(`bar-${dataPoint.label}`);
@@ -148,8 +140,6 @@ test("Level widths are correct", async () => {
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />,
   );
-
-  await 1500;
 
   for (const l of props.levels) {
     const level = screen.getByTestId(`level-${l.level}`);
@@ -186,8 +176,6 @@ test("Can set color and opacity for bars", async () => {
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />,
   );
-
-  await 1500;
 
   expect(screen.getByTestId(`bar-${dataPoint1.label}`)).toHaveAttribute(
     "fill",
@@ -239,8 +227,6 @@ test("Render without levels @250px", async () => {
     />,
   );
 
-  await 1500;
-
   expect(container).toMatchSnapshot();
 });
 
@@ -271,8 +257,6 @@ test("Render without zoom @750px", async () => {
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />,
   );
-
-  await 1500;
 
   expect(container).toMatchSnapshot();
 });
@@ -305,8 +289,6 @@ test("Render with zoom @750px", async () => {
     />,
   );
 
-  await 1500;
-
   expect(container).toMatchSnapshot();
 });
 
@@ -337,8 +319,6 @@ test("Render with levels @250px", async () => {
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />,
   );
-
-  await 1500;
 
   expect(container).toMatchSnapshot();
 });
@@ -371,8 +351,6 @@ test("Render without levels @500px", async () => {
     />,
   );
 
-  await 1500;
-
   expect(container).toMatchSnapshot();
 });
 
@@ -403,8 +381,6 @@ test("Render with levels @500px", async () => {
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />,
   );
-
-  await 1500;
 
   expect(container).toMatchSnapshot();
 });
@@ -437,8 +413,6 @@ test("Render with levels reversed @500px", async () => {
     />,
   );
 
-  await 1500;
-
   expect(container).toMatchSnapshot();
 });
 
@@ -470,8 +444,6 @@ test("Render zoomed with levels @500px and gray overlay (not complete data)", as
       lastCompleteYear={1979}
     />,
   );
-
-  await 1500;
 
   expect(container).toMatchSnapshot();
 });
