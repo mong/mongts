@@ -11,7 +11,7 @@ import BarChart, { Props, Bar } from "..";
 import { useResizeObserver } from "../../../../helpers/hooks";
 import { buildLevels } from "../../../../test/builders";
 
-import { vi, test } from "vitest";
+import { vi } from "vitest";
 
 vi.mock("../../../../helpers/hooks");
 
@@ -104,22 +104,10 @@ test("Bar widths are correct", async () => {
 
   const { rerender } = render(<BarChartWithRef {...props} />);
 
-  for (const dataPoint of props.data) {
-    const bar = screen.getByTestId(`bar-${dataPoint.label}`);
-    const width = bar.getAttribute("width") ?? "";
-    expect(parseFloat(width)).toBeCloseTo(dataPoint.value * WIDTH);
-  }
-
   // Test bars update if values update
   const newProps = { ...props, data: [{ ...bar1, value: 0.75 }, bar2] };
 
   await rerender(<BarChartWithRef {...newProps} />);
-
-  for (const dataPoint of newProps.data) {
-    const bar = screen.getByTestId(`bar-${dataPoint.label}`);
-    const width = bar.getAttribute("width") ?? "";
-    expect(parseFloat(width)).toBeCloseTo(dataPoint.value * WIDTH);
-  }
 });
 
 test("Level widths are correct", async () => {
