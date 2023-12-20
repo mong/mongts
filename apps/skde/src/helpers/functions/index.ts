@@ -1,1 +1,1 @@
-export * from "./imgLoader";
+export { imgLoader } from "./imgLoader";
