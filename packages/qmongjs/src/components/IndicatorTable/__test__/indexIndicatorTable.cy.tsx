@@ -12,7 +12,7 @@ import { NextAdapter } from "next-query-params";
 import { createDynamicRouteParser } from "next-router-mock/dynamic-routes";
 import Router from "next/router";
 
-describe("<MainRegister />", () => {
+describe("<IndicatorTable />", () => {
   context("stubbing out `useRouter` hook", () => {
     let router;
 
@@ -23,10 +23,6 @@ describe("<MainRegister />", () => {
 
       cy.stub(Router, "useRouter").returns(router);
     });
-
-    //jest.mock("next/router", () => require("next-router-mock"));
-    // This is needed for mocking 'next/link':
-    //jest.mock("next/dist/client/router", () => require("next-router-mock"));
 
     mockRouter.useParser(
       createDynamicRouteParser([
@@ -75,9 +71,7 @@ describe("<MainRegister />", () => {
           </QueryParamProvider>
         </QueryClientProvider>,
       );
-
-      //  await waitFor(() => screen.findAllByText(props.unitNames[0]));
-      //  expect(container).toMatchSnapshot();
+      cy.get("th").should("contains.text", "Nasjonalt");
     });
   });
 });
