@@ -4,7 +4,7 @@
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "scripts": {
-    "test": "yarn run test:base --coverage",
+    "test": "yarn run test:base run --coverage",
     "test:base": "vitest",
     "lint": "eslint --ignore-path .gitignore --ext js,ts,tsx src",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
