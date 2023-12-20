@@ -12,7 +12,7 @@ import mockRouter from "next-router-mock";
 import { DataTable } from "..";
 import { atlasData, tableHeaders } from "../../../../test/test_data/data";
 
-jest.mock("next/router", () => require("next-router-mock"));
+vi.mock("next/router", () => require("next-router-mock"));
 
 // To avoid type-check error. Have to find a better way
 const testHeaders: any = tableHeaders;

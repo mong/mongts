@@ -12,7 +12,7 @@ import mockRouter from "next-router-mock";
 import { Barchart } from "..";
 import { atlasData } from "../../../../test/test_data/data";
 
-jest.mock("next/router", () => require("next-router-mock"));
+vi.mock("next/router", () => require("next-router-mock"));
 
 const barchartinfo = {
   type: "barchart",

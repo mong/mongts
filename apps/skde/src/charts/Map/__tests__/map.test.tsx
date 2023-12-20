@@ -14,7 +14,7 @@ import { Map } from "..";
 
 import { atlasData } from "../../../../test/test_data/data";
 
-jest.mock("next/router", () => require("next-router-mock"));
+vi.mock("next/router", () => require("next-router-mock"));
 
 const mapDataPath = "public/helseatlas/kart/kronikere.geojson";
 const mapData = JSON.parse(fs.readFileSync(mapDataPath, "utf-8"));
