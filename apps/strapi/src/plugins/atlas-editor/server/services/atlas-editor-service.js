@@ -2,6 +2,37 @@
 
 const atlas = require("../../../../api/atlas/controllers/atlas");
 
+const populateParams = {
+  id: true,
+  isPublished: true,
+  mainTitle: true,
+  shortTitle: true,
+  frontPageText: true,
+  createdAt: true,
+  updatedAt: true,
+  locale: true,
+  createdBy: true,
+  updatedBy: true,
+};
+
+const removeSensitiveData = (atlas) => {
+  if (atlas) {
+    if (atlas?.createdBy)
+      atlas.createdBy = {
+        firstname: atlas.createdBy.firstname,
+        lastname: atlas.createdBy.lastname,
+      };
+
+    if (atlas?.updatedBy)
+      atlas.updatedBy = {
+        firstname: atlas.updatedBy.firstname,
+        lastname: atlas.updatedBy.lastname,
+      };
+  }
+
+  return atlas;
+};
+
 module.exports = ({ strapi }) => ({
   async find(query) {
     return await strapi.entityService.findMany(
@@ -10,43 +41,21 @@ module.exports = ({ strapi }) => ({
     );
   },
   async findOne(id) {
-    const atlas = await strapi.entityService.findOne(
+    let atlas = await strapi.entityService.findOne(
       "plugin::atlas-editor.health-atlas",
       id,
       {
-        populate: {
-          id: true,
-          isPublished: true,
-          mainTitle: true,
-          shortTitle: true,
-          frontPageText: true,
-          createdAt: true,
-          updatedAt: true,
-          locale: true,
-          createdBy: true,
-          updatedBy: true,
-        },
+        populate: populateParams,
       },
     );
 
-    // Remove password hash, id, etc.
-    if (atlas) {
-      if (atlas?.createdBy)
-        atlas.createdBy = {
-          firstname: atlas.createdBy.firstname,
-          lastname: atlas.createdBy.lastname,
-        };
-
-      if (atlas?.updatedBy)
-        atlas.updatedBy = {
-          firstname: atlas.updatedBy.firstname,
-          lastname: atlas.updatedBy.lastname,
-        };
-    }
+    atlas = removeSensitiveData(atlas);
 
     return atlas;
   },
-  async update(atlas) {
+  async update(ctx) {
+    const atlas = ctx.request.body;
+    const userInfo = ctx.state.user;
     const atlasCleaned = {
       id: atlas.id,
       isPublished: atlas.isPublished,
@@ -54,12 +63,20 @@ module.exports = ({ strapi }) => ({
       shortTitle: atlas.shortTitle,
       frontPageText: atlas.frontPageText,
       updatedAt: new Date(),
+      updatedBy: userInfo.id,
     };
 
-    return await strapi.entityService.update(
+    let updateResult = await strapi.entityService.update(
       "plugin::atlas-editor.health-atlas",
       atlas.id,
-      { data: atlasCleaned },
+      {
+        populate: populateParams,
+        data: atlasCleaned,
+      },
     );
+
+    updateResult = removeSensitiveData(updateResult);
+
+    return updateResult;
   },
 });

@@ -26,7 +26,7 @@ module.exports = {
       return await strapi
         .plugin("atlas-editor")
         .service("atlasEditorService")
-        .update(ctx.request.body);
+        .update(ctx);
     } catch (err) {
       ctx.throw(500, err);
     }

@@ -46,7 +46,7 @@ const EditPage = () => {
   const handleUpdateAtlas = async (atlas) => {
     setIsLoading(true);
 
-    const { updateSuccess, err } = await updateAtlas(atlas);
+    const { updateSuccess, err, updatedContent } = await updateAtlas(atlas);
 
     if (updateSuccess) {
       setHasUnsavedChanges(false);
@@ -60,6 +60,10 @@ const EditPage = () => {
     }
 
     setIsLoading(false);
+
+    if (updateSuccess) {
+      setAtlas(updatedContent);
+    }
   };
 
   const onEditTitleModalFinished = (editedResults) => {
