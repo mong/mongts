@@ -85,31 +85,6 @@ test("Bar have labels with value as number", async () => {
   }
 });
 
-test("Bar widths are correct", async () => {
-  const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
-    contentRect: {
-      width: WIDTH,
-    },
-  });
-
-  const bar1 = buildBar({ value: 1 });
-  const bar2 = buildBar({ value: 0.5 });
-
-  const props = {
-    ...buildProps({ data: [bar1, bar2] }),
-    zoom: false,
-    margin: { top: 0, right: 0, bottom: 0, left: 0 },
-  };
-
-  const { rerender } = render(<BarChartWithRef {...props} />);
-
-  // Test bars update if values update
-  const newProps = { ...props, data: [{ ...bar1, value: 0.75 }, bar2] };
-
-  await rerender(<BarChartWithRef {...newProps} />);
-});
-
 test("Level widths are correct", async () => {
   const WIDTH = 500;
   (useResizeObserver as jest.Mock).mockReturnValue({
