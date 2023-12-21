@@ -62,7 +62,6 @@ module.exports = ({ strapi }) => ({
       mainTitle: atlas.mainTitle,
       shortTitle: atlas.shortTitle,
       frontPageText: atlas.frontPageText,
-      updatedAt: new Date(),
       updatedBy: userInfo.id,
     };
 

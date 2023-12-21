@@ -81,6 +81,21 @@ export class EditPageStrings {
       id: getTrad("Editpage.Notifications.updateError"),
       defaultMessage: "The atlas could not be updated!",
     });
+
+    this.isPublished = formatMessage({
+      id: getTrad("Editpage.Form.isPublished"),
+      defaultMessage: "Is published",
+    });
+
+    this.yes = formatMessage({
+      id: getTrad("Editpage.Form.yes"),
+      defaultMessage: "Yes",
+    });
+
+    this.no = formatMessage({
+      id: getTrad("Editpage.Form.no"),
+      defaultMessage: "No",
+    });
   }
 }
 

@@ -12,7 +12,7 @@ import {
   FieldInput,
   FieldLabel,
 } from "@strapi/design-system";
-import EditPageStringsContext from "./EditPageStringsContext";
+import EditPageStringsContext from "../../EditPageStringsContext";
 
 const EditTitleModal = ({ mainTitle, onFinish, onCancel }) => {
   const handleCancel = () => {

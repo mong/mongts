@@ -22,16 +22,19 @@ import {
   Grid,
   GridItem,
   Flex,
+  ToggleInput,
 } from "@strapi/design-system";
-import { Link, SubNav } from "@strapi/design-system/v2";
+import { Link } from "@strapi/design-system/v2";
 import { Pencil, ArrowLeft } from "@strapi/icons";
 import EditorPageStringsContext, {
   EditPageStrings,
 } from "./EditPageStringsContext";
-import EditTitleModal from "./EditTitleModal";
 import { getAtlas, updateAtlas } from "../../api/atlas-editor";
 import InformationBox from "../../components/InformationBox";
+import EditTitleModal from "./components/EditTitleModal";
 import pluginId from "../../pluginId";
+import _ from "lodash";
+import { EditAtlasNav } from "./components/EditAtlasNav";
 
 const emptyAtlas = {
   id: -1,
@@ -42,14 +45,21 @@ const emptyAtlas = {
   updatedAt: new Date(),
 };
 
+const areDifferent = (atlas1, atlas2) => {
+  return !_.isEqual(atlas1, atlas2);
+};
+
 const EditPage = () => {
   const handleUpdateAtlas = async (atlas) => {
     setIsLoading(true);
 
-    const { updateSuccess, err, updatedContent } = await updateAtlas(atlas);
+    const { updateSuccess, err, updatedContent } = await updateAtlas(
+      atlas.current,
+    );
 
     if (updateSuccess) {
       setHasUnsavedChanges(false);
+      setAtlas({ current: updatedContent, original: updatedContent });
       toggleNotification({ type: "info", message: strings.updateSuccess });
     } else {
       if (err instanceof AxiosError) {
@@ -60,26 +70,45 @@ const EditPage = () => {
     }
 
     setIsLoading(false);
+  };
 
-    if (updateSuccess) {
-      setAtlas(updatedContent);
+  const handleFieldChange = (fieldName, value) => {
+    const updatedCurrentAtlas = { ...atlas.current, [fieldName]: value };
+
+    setAtlas({ current: updatedCurrentAtlas, original: atlas.original });
+
+    const hasChanges = areDifferent(updatedCurrentAtlas, atlas.original);
+    if (hasUnsavedChanges != hasChanges) {
+      setHasUnsavedChanges(hasChanges);
     }
   };
 
   const onEditTitleModalFinished = (editedResults) => {
-    if (editedResults.mainTitle !== atlas.mainTitle) {
-      setHasUnsavedChanges(true);
-      setAtlas({ ...atlas, mainTitle: editedResults.mainTitle });
+    if (editedResults.mainTitle !== atlas.current.mainTitle) {
+      const updatedCurrentAtlas = {
+        ...atlas.current,
+        mainTitle: editedResults.mainTitle,
+      };
+
+      setAtlas({ current: updatedCurrentAtlas, original: atlas.original });
+
+      const hasChanges = areDifferent(updatedCurrentAtlas, atlas.original);
+      if (hasUnsavedChanges != hasChanges) {
+        setHasUnsavedChanges(hasChanges);
+      }
     }
 
     setIsEditingTitle((prev) => !prev);
   };
 
   const { id } = useParams();
-  const { formatMessage, formatDate } = useIntl();
+  const { formatMessage } = useIntl();
   const { formatAPIError } = useAPIErrorHandler();
   const toggleNotification = useNotification();
-  const [atlas, setAtlas] = useState(emptyAtlas);
+  const [atlas, setAtlas] = useState({
+    current: emptyAtlas,
+    original: emptyAtlas,
+  });
   const [isLoading, setIsLoading] = useState(true);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [isEditingTitle, setIsEditingTitle] = useState(false);
@@ -89,8 +118,8 @@ const EditPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
-      const atlas = await getAtlas(id);
-      setAtlas(atlas);
+      const fetchedAtlas = await getAtlas(id);
+      setAtlas({ current: fetchedAtlas, original: fetchedAtlas });
       setIsLoading(false);
     };
 
@@ -102,7 +131,7 @@ const EditPage = () => {
   return (
     <>
       <Box background="neutral100">
-        <Layout sideNav={<SubNav ariaLabel="Atlas-editor sub nav"></SubNav>}>
+        <Layout sideNav={<EditAtlasNav />}>
           <>
             <BaseHeaderLayout
               navigationAction={
@@ -131,7 +160,7 @@ const EditPage = () => {
                   {strings.edit}
                 </Button>
               }
-              title={atlas?.mainTitle}
+              title={atlas.current?.mainTitle}
               as="h2"
             />
             <ContentLayout>
@@ -147,7 +176,18 @@ const EditPage = () => {
                       paddingTop={6}
                       paddingBottom={6}
                       borderColor="neutral150"
-                    ></Box>
+                    >
+                      <ToggleInput
+                        size="S"
+                        label={strings.isPublished}
+                        onLabel={strings.yes}
+                        offLabel={strings.no}
+                        checked={atlas.current.isPublished}
+                        onChange={(e) =>
+                          handleFieldChange("isPublished", e.target.checked)
+                        }
+                      />
+                    </Box>
                   </Flex>
                 </GridItem>
                 <GridItem col={3} s={12}>
@@ -164,7 +204,7 @@ const EditPage = () => {
                       paddingTop={6}
                       shadow="tableShadow"
                     >
-                      <InformationBox atlas={atlas} />
+                      <InformationBox atlas={atlas.current} />
                     </Box>
                   </Flex>
                 </GridItem>
@@ -176,7 +216,7 @@ const EditPage = () => {
       {isEditingTitle && (
         <EditorPageStringsContext.Provider value={strings}>
           <EditTitleModal
-            mainTitle={atlas.mainTitle}
+            mainTitle={atlas.current?.mainTitle}
             onCancel={() => setIsEditingTitle((prev) => !prev)}
             onFinish={onEditTitleModalFinished}
           ></EditTitleModal>
