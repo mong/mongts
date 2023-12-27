@@ -1,4 +1,4 @@
-import isFilterMatch from "../utils/isFilterMatch";
+import isFilterMatch from "../isFilterMatch";
 
 // Test case 1: Filter search is empty, should return true
 test("Empty filter search should return true", () => {

@@ -96,6 +96,16 @@ export class EditPageStrings {
       id: getTrad("Editpage.Form.no"),
       defaultMessage: "No",
     });
+
+    this.toc = formatMessage({
+      id: getTrad("Editpage.EditAtlasNav.toc"),
+      defaultMessage: "Table of Contents",
+    });
+
+    this.overview = formatMessage({
+      id: getTrad("Editpage.EditAtlasNav.overview"),
+      defaultMessage: "Overview",
+    });
   }
 }
 

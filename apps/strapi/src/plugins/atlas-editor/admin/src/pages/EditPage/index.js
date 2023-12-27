@@ -33,8 +33,8 @@ import { getAtlas, updateAtlas } from "../../api/atlas-editor";
 import InformationBox from "../../components/InformationBox";
 import EditTitleModal from "./components/EditTitleModal";
 import pluginId from "../../pluginId";
-import _ from "lodash";
 import { EditAtlasNav } from "./components/EditAtlasNav";
+import { areDifferent, findDiff } from "./utils/differences";
 
 const emptyAtlas = {
   id: -1,
@@ -43,10 +43,6 @@ const emptyAtlas = {
   isPublished: false,
   createdAt: new Date(),
   updatedAt: new Date(),
-};
-
-const areDifferent = (atlas1, atlas2) => {
-  return !_.isEqual(atlas1, atlas2);
 };
 
 const EditPage = () => {
@@ -130,104 +126,104 @@ const EditPage = () => {
 
   return (
     <>
-      <Box background="neutral100">
-        <Layout sideNav={<EditAtlasNav />}>
-          <>
-            <BaseHeaderLayout
-              navigationAction={
-                <Link
-                  as={NavLink}
-                  startIcon={<ArrowLeft />}
-                  to={`/plugins/${pluginId}`}
-                >
-                  {strings.goBack}
-                </Link>
-              }
-              primaryAction={
-                <Button
-                  onClick={() => handleUpdateAtlas(atlas)}
-                  disabled={!hasUnsavedChanges}
-                >
-                  {strings.save}
-                </Button>
-              }
-              secondaryAction={
-                <Button
-                  variant="tertiary"
-                  startIcon={<Pencil />}
-                  onClick={() => setIsEditingTitle((prev) => !prev)}
-                >
-                  {strings.edit}
-                </Button>
-              }
-              title={atlas.current?.mainTitle}
-              as="h2"
-            />
-            <ContentLayout>
-              <Grid gap={4}>
-                <GridItem col={9} s={12}>
-                  <Flex direction="column" alignItems="stretch" gap={6}>
-                    <Box
-                      hasRadius
-                      background="neutral0"
-                      shadow="tableShadow"
-                      paddingLeft={6}
-                      paddingRight={6}
-                      paddingTop={6}
-                      paddingBottom={6}
-                      borderColor="neutral150"
-                    >
-                      <ToggleInput
-                        size="S"
-                        label={strings.isPublished}
-                        onLabel={strings.yes}
-                        offLabel={strings.no}
-                        checked={atlas.current.isPublished}
-                        onChange={(e) =>
-                          handleFieldChange("isPublished", e.target.checked)
-                        }
-                      />
-                    </Box>
-                  </Flex>
-                </GridItem>
-                <GridItem col={3} s={12}>
-                  <Flex direction="column" alignItems="stretch" gap={2}>
-                    <Box
-                      as="aside"
-                      aria-labelledby="additional-information"
-                      background="neutral0"
-                      borderColor="neutral150"
-                      hasRadius
-                      paddingBottom={4}
-                      paddingLeft={4}
-                      paddingRight={4}
-                      paddingTop={6}
-                      shadow="tableShadow"
-                    >
-                      <InformationBox atlas={atlas.current} />
-                    </Box>
-                  </Flex>
-                </GridItem>
-              </Grid>
-            </ContentLayout>
-          </>
-        </Layout>
-      </Box>
-      {isEditingTitle && (
-        <EditorPageStringsContext.Provider value={strings}>
+      <EditorPageStringsContext.Provider value={strings}>
+        <Box background="neutral100">
+          <Layout sideNav={<EditAtlasNav />}>
+            <>
+              <BaseHeaderLayout
+                navigationAction={
+                  <Link
+                    as={NavLink}
+                    startIcon={<ArrowLeft />}
+                    to={`/plugins/${pluginId}`}
+                  >
+                    {strings.goBack}
+                  </Link>
+                }
+                primaryAction={
+                  <Button
+                    onClick={() => handleUpdateAtlas(atlas)}
+                    disabled={!hasUnsavedChanges}
+                  >
+                    {strings.save}
+                  </Button>
+                }
+                secondaryAction={
+                  <Button
+                    variant="tertiary"
+                    startIcon={<Pencil />}
+                    onClick={() => setIsEditingTitle((prev) => !prev)}
+                  >
+                    {strings.edit}
+                  </Button>
+                }
+                title={atlas.current?.mainTitle}
+                as="h2"
+              />
+              <ContentLayout>
+                <Grid gap={4}>
+                  <GridItem col={9} s={12}>
+                    <Flex direction="column" alignItems="stretch" gap={6}>
+                      <Box
+                        hasRadius
+                        background="neutral0"
+                        shadow="tableShadow"
+                        paddingLeft={6}
+                        paddingRight={6}
+                        paddingTop={6}
+                        paddingBottom={6}
+                        borderColor="neutral150"
+                      >
+                        <ToggleInput
+                          size="S"
+                          label={strings.isPublished}
+                          onLabel={strings.yes}
+                          offLabel={strings.no}
+                          checked={atlas.current.isPublished}
+                          onChange={(e) =>
+                            handleFieldChange("isPublished", e.target.checked)
+                          }
+                        />
+                      </Box>
+                    </Flex>
+                  </GridItem>
+                  <GridItem col={3} s={12}>
+                    <Flex direction="column" alignItems="stretch" gap={2}>
+                      <Box
+                        as="aside"
+                        aria-labelledby="additional-information"
+                        background="neutral0"
+                        borderColor="neutral150"
+                        hasRadius
+                        paddingBottom={4}
+                        paddingLeft={4}
+                        paddingRight={4}
+                        paddingTop={6}
+                        shadow="tableShadow"
+                      >
+                        <InformationBox atlas={atlas.current} />
+                      </Box>
+                    </Flex>
+                  </GridItem>
+                </Grid>
+              </ContentLayout>
+            </>
+          </Layout>
+        </Box>
+        {isEditingTitle && (
           <EditTitleModal
             mainTitle={atlas.current?.mainTitle}
             onCancel={() => setIsEditingTitle((prev) => !prev)}
             onFinish={onEditTitleModalFinished}
           ></EditTitleModal>
-        </EditorPageStringsContext.Provider>
-      )}
-      <Prompt
-        message={(location) =>
-          location.hash === "#back" ? false : strings.unsavedChangesPrompt
-        }
-        when={hasUnsavedChanges}
-      />
+        )}
+        <Prompt
+          message={(location) =>
+            location.hash === "#back" ? false : strings.unsavedChangesPrompt
+          }
+          when={hasUnsavedChanges}
+        />
+      </EditorPageStringsContext.Provider>
     </>
   );
 };
