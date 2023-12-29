@@ -106,6 +106,11 @@ export class EditPageStrings {
       id: getTrad("Editpage.EditAtlasNav.overview"),
       defaultMessage: "Overview",
     });
+
+    this.frontPageFields = formatMessage({
+      id: getTrad("Editpage.AtlasFrontPageFields.frontPageFields"),
+      defaultMessage: "Front Page",
+    });
   }
 }
 
