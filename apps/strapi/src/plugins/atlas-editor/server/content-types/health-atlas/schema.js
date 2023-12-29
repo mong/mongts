@@ -28,6 +28,14 @@ module.exports = {
       type: "boolean",
       default: false,
     },
+    publishedAt: {
+      type: "datetime",
+      default: null,
+    },
+    publishedBy: {
+      type: "string",
+      required: false,
+    },
     mainTitle: {
       type: "string",
       required: true,

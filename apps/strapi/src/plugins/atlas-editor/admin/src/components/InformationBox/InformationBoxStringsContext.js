@@ -24,6 +24,11 @@ export class InformationBoxStrings {
       id: getTrad("Component.Information.lastUpdate"),
       defaultMessage: "Last update",
     });
+
+    this.publishedAt = formatMessage({
+      id: getTrad("Component.Information.publishedAt"),
+      defaultMessage: "Last published",
+    });
   }
 }
 

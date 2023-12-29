@@ -4,14 +4,16 @@ const atlas = require("../../../../api/atlas/controllers/atlas");
 
 const populateParams = {
   id: true,
-  isPublished: true,
   mainTitle: true,
   shortTitle: true,
   frontPageText: true,
-  createdAt: true,
-  updatedAt: true,
   locale: true,
+  isPublished: true,
+  publishedAt: true,
+  publishedBy: true,
+  createdAt: true,
   createdBy: true,
+  updatedAt: true,
   updatedBy: true,
 };
 
@@ -56,14 +58,20 @@ module.exports = ({ strapi }) => ({
   async update(ctx) {
     const atlas = ctx.request.body;
     const userInfo = ctx.state.user;
-    const atlasCleaned = {
+    let atlasCleaned = {
       id: atlas.id,
       isPublished: atlas.isPublished,
+      publishedAt: atlas.publishedAt,
       mainTitle: atlas.mainTitle,
       shortTitle: atlas.shortTitle,
       frontPageText: atlas.frontPageText,
       updatedBy: userInfo.id,
     };
+
+    if (atlas.updatePublishedInfo) {
+      atlasCleaned.publishedBy = `${userInfo.firstname} ${userInfo.lastname}`;
+      atlasCleaned.publishedAt = new Date();
+    }
 
     let updateResult = await strapi.entityService.update(
       "plugin::atlas-editor.health-atlas",

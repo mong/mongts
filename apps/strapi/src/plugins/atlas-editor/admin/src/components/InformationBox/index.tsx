@@ -57,6 +57,14 @@ const Body = ({ atlas }) => {
   const { initialData, isCreatingEntry } = useCMEditViewDataManager();
   const currentTime = React.useRef(Date.now());
 
+  const formatDate = (at) => {
+    const timestamp = at ? new Date(at).getTime() : Date.now();
+    const elapsed = timestamp - currentTime.current;
+    const { unit, value } = getUnits(-elapsed);
+
+    return formatRelativeTime(value, unit, { numeric: "auto" });
+  };
+
   const getFieldInfo = (
     atlas,
     atField: "updatedAt" | "createdAt",
@@ -66,12 +74,9 @@ const Body = ({ atlas }) => {
     const at = atlas[atField];
 
     const displayName = user ? `${user.firstname} ${user.lastname}` : "-";
-    const timestamp = at ? new Date(at).getTime() : Date.now();
-    const elapsed = timestamp - currentTime.current;
-    const { unit, value } = getUnits(-elapsed);
 
     return {
-      at: formatRelativeTime(value, unit, { numeric: "auto" }),
+      at: formatDate(at),
       by: isCreatingEntry ? "-" : displayName,
     };
   };
@@ -83,15 +88,23 @@ const Body = ({ atlas }) => {
     <Flex direction="column" alignItems="stretch" gap={4}>
       <Flex direction="column" alignItems="stretch" gap={2} as="dl">
         <KeyValuePair label={strings.created} value={created.at} />
-
         <KeyValuePair label={strings.by} value={created.by} />
       </Flex>
 
       <Flex direction="column" alignItems="stretch" gap={2} as="dl">
         <KeyValuePair label={strings.lastUpdate} value={updated.at} />
-
         <KeyValuePair label={strings.by} value={updated.by} />
       </Flex>
+
+      {atlas?.publishedAt && (
+        <Flex direction="column" alignItems="stretch" gap={2} as="dl">
+          <KeyValuePair
+            label={strings.publishedAt}
+            value={formatDate(atlas.publishedAt)}
+          />
+          <KeyValuePair label={strings.by} value={atlas.publishedBy} />
+        </Flex>
+      )}
     </Flex>
   );
 };

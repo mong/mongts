@@ -508,6 +508,8 @@ export interface PluginAtlasEditorHealthAtlas extends Schema.CollectionType {
   };
   attributes: {
     isPublished: Attribute.Boolean & Attribute.DefaultTo<false>;
+    publishedAt: Attribute.DateTime;
+    publishedBy: Attribute.String;
     mainTitle: Attribute.String & Attribute.Required;
     shortTitle: Attribute.String & Attribute.Required;
     frontPageText: Attribute.Text & Attribute.Required;

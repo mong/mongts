@@ -32,9 +32,11 @@ import EditorPageStringsContext, {
 import { getAtlas, updateAtlas } from "../../api/atlas-editor";
 import InformationBox from "../../components/InformationBox";
 import EditTitleModal from "./components/EditTitleModal";
+import AtlasFrontPageFields from "./components/AtlasFrontPageFields";
 import pluginId from "../../pluginId";
 import { EditAtlasNav } from "./components/EditAtlasNav";
 import { areDifferent, findDiff } from "./utils/differences";
+import { update } from "lodash";
 
 const emptyAtlas = {
   id: -1,
@@ -43,11 +45,14 @@ const emptyAtlas = {
   isPublished: false,
   createdAt: new Date(),
   updatedAt: new Date(),
+  publishedAt: null,
 };
 
 const EditPage = () => {
   const handleUpdateAtlas = async (atlas) => {
     setIsLoading(true);
+
+    updatePublishedInfo(atlas);
 
     const { updateSuccess, err, updatedContent } = await updateAtlas(
       atlas.current,
@@ -66,6 +71,12 @@ const EditPage = () => {
     }
 
     setIsLoading(false);
+  };
+
+  const updatePublishedInfo = (atlas) => {
+    if (atlas.current.isPublished && !atlas.original.isPublished) {
+      atlas.current.updatePublishedInfo = true;
+    }
   };
 
   const handleFieldChange = (fieldName, value) => {
@@ -184,6 +195,18 @@ const EditPage = () => {
                             handleFieldChange("isPublished", e.target.checked)
                           }
                         />
+                      </Box>
+                      <Box
+                        hasRadius
+                        background="neutral0"
+                        shadow="tableShadow"
+                        paddingLeft={6}
+                        paddingRight={6}
+                        paddingTop={6}
+                        paddingBottom={6}
+                        borderColor="neutral150"
+                      >
+                        <AtlasFrontPageFields />
                       </Box>
                     </Flex>
                   </GridItem>
