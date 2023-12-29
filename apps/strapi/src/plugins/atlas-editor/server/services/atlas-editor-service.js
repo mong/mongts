@@ -56,7 +56,8 @@ module.exports = ({ strapi }) => ({
     return atlas;
   },
   async update(ctx) {
-    const atlas = ctx.request.body;
+    const atlasUpdate = ctx.request.body;
+    const atlas = atlasUpdate.atlas;
     const userInfo = ctx.state.user;
     let atlasCleaned = {
       id: atlas.id,
@@ -68,7 +69,7 @@ module.exports = ({ strapi }) => ({
       updatedBy: userInfo.id,
     };
 
-    if (atlas.updatePublishedInfo) {
+    if (atlasUpdate.updatePublishedInfo) {
       atlasCleaned.publishedBy = `${userInfo.firstname} ${userInfo.lastname}`;
       atlasCleaned.publishedAt = new Date();
     }

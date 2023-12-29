@@ -4,7 +4,7 @@
  *
  */
 
-import React, { useEffect, useState } from "react";
+import React, { isValidElement, useEffect, useState } from "react";
 import { useParams, NavLink, Prompt } from "react-router-dom";
 import { useIntl } from "react-intl";
 import { AxiosError } from "axios";
@@ -36,7 +36,7 @@ import AtlasFrontPageFields from "./components/AtlasFrontPageFields";
 import pluginId from "../../pluginId";
 import { EditAtlasNav } from "./components/EditAtlasNav";
 import { areDifferent, findDiff } from "./utils/differences";
-import { update } from "lodash";
+import { validate } from "./utils/validate";
 
 const emptyAtlas = {
   id: -1,
@@ -52,11 +52,10 @@ const EditPage = () => {
   const handleUpdateAtlas = async (atlas) => {
     setIsLoading(true);
 
-    updatePublishedInfo(atlas);
-
-    const { updateSuccess, err, updatedContent } = await updateAtlas(
-      atlas.current,
-    );
+    const { updateSuccess, err, updatedContent } = await updateAtlas({
+      atlas: atlas.current,
+      updatePublishedInfo: shouldUpdatePublishedInfo(atlas),
+    });
 
     if (updateSuccess) {
       setHasUnsavedChanges(false);
@@ -73,13 +72,11 @@ const EditPage = () => {
     setIsLoading(false);
   };
 
-  const updatePublishedInfo = (atlas) => {
-    if (atlas.current.isPublished && !atlas.original.isPublished) {
-      atlas.current.updatePublishedInfo = true;
-    }
+  const shouldUpdatePublishedInfo = (atlas) => {
+    return atlas.current.isPublished && !atlas.original.isPublished;
   };
 
-  const handleFieldChange = (fieldName, value) => {
+  const handleFieldChange = (fieldName, value, isInvalid) => {
     const updatedCurrentAtlas = { ...atlas.current, [fieldName]: value };
 
     setAtlas({ current: updatedCurrentAtlas, original: atlas.original });
@@ -87,6 +84,12 @@ const EditPage = () => {
     const hasChanges = areDifferent(updatedCurrentAtlas, atlas.original);
     if (hasUnsavedChanges != hasChanges) {
       setHasUnsavedChanges(hasChanges);
+    }
+
+    if (!!invalidStates[fieldName] !== isInvalid) {
+      const updatedInvalidStates = { ...invalidStates, [fieldName]: isInvalid };
+      setInvalidStates(updatedInvalidStates);
+      setValid(validate(updatedInvalidStates));
     }
   };
 
@@ -118,6 +121,8 @@ const EditPage = () => {
   });
   const [isLoading, setIsLoading] = useState(true);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const [invalidStates, setInvalidStates] = useState({});
+  const [isValid, setValid] = useState(true);
   const [isEditingTitle, setIsEditingTitle] = useState(false);
 
   const strings = new EditPageStrings(formatMessage);
@@ -154,7 +159,7 @@ const EditPage = () => {
                 primaryAction={
                   <Button
                     onClick={() => handleUpdateAtlas(atlas)}
-                    disabled={!hasUnsavedChanges}
+                    disabled={!hasUnsavedChanges || !isValid}
                   >
                     {strings.save}
                   </Button>
@@ -192,7 +197,11 @@ const EditPage = () => {
                           offLabel={strings.no}
                           checked={atlas.current.isPublished}
                           onChange={(e) =>
-                            handleFieldChange("isPublished", e.target.checked)
+                            handleFieldChange(
+                              "isPublished",
+                              e.target.checked,
+                              false,
+                            )
                           }
                         />
                       </Box>
@@ -206,7 +215,12 @@ const EditPage = () => {
                         paddingBottom={6}
                         borderColor="neutral150"
                       >
-                        <AtlasFrontPageFields />
+                        <AtlasFrontPageFields
+                          shortTitle={atlas.current?.shortTitle}
+                          onFieldChanged={(field, value, isInvalid) =>
+                            handleFieldChange(field, value, isInvalid)
+                          }
+                        />
                       </Box>
                     </Flex>
                   </GridItem>

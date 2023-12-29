@@ -1,3 +1,5 @@
+"use strict";
+
 import _ from "lodash";
 
 const areDifferent = (atlas1, atlas2) => {

@@ -111,6 +111,26 @@ export class EditPageStrings {
       id: getTrad("Editpage.AtlasFrontPageFields.frontPageFields"),
       defaultMessage: "Front Page",
     });
+
+    this.shortTitleLabel = formatMessage({
+      id: getTrad("Editpage.AtlasFrontPageFields.shortTitleLabel"),
+      defaultMessage: "Short Title",
+    });
+
+    this.shortTitleHint = formatMessage({
+      id: getTrad("Editpage.AtlasFrontPageFields.shortTitleHint"),
+      defaultMessage: "Title shown on the Helseatlas front page",
+    });
+
+    this.enterShortTitle = formatMessage({
+      id: getTrad("Editpage.AtlasFrontPageFields.enterShortTitle"),
+      defaultMessage: "Enter short title...",
+    });
+
+    this.shortTitleCannotBeEmpty = formatMessage({
+      id: getTrad("Editpage.AtlasFrontPageFields.shortTitleCannotBeEmpty"),
+      defaultMessage: "The short title cannot be empty!",
+    });
   }
 }
 
