@@ -5,7 +5,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { PluggableList } from "react-markdown/lib/react-markdown";
+import { PluggableList } from "react-markdown/lib";
 
 interface Props {
   description_title?: string;
