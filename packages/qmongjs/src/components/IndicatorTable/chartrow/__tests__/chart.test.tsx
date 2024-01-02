@@ -8,8 +8,9 @@ import {
 } from "../../../../helpers/hooks";
 import { clockTick } from "../../../../test/clockTick";
 import { Description, Indicator } from "types";
+import { vi, test } from "vitest";
 
-jest.mock("../../../../helpers/hooks");
+vi.mock("../../../../helpers/hooks");
 
 const linedata = [
   buildDataPoint({

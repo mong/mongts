@@ -16,8 +16,9 @@ import {
   useLegendItemPosition,
   useTextWidth,
 } from "../../../../helpers/hooks";
+import { vi } from "vitest";
 
-jest.mock("../../../../helpers/hooks");
+vi.mock("../../../../helpers/hooks");
 
 beforeEach(() => {
   const WIDTH = 500;
@@ -37,7 +38,7 @@ test("shows legend", async () => {
 
   render(<LineChartWithRef {...props} />);
 
-  await clockTick(1500);
+  //  await clockTick(1500);
 
   expect(screen.getByText("Nasjonalt")).toBeInTheDocument();
   expect(screen.getByText("Ahus")).toBeInTheDocument();
@@ -50,7 +51,7 @@ test("shows only one legend item per unit_name", async () => {
 
   render(<LineChartWithRef {...props} />);
 
-  await clockTick(1500);
+  //  await clockTick(1500);
 
   expect(screen.getAllByText("Nasjonalt").length).toBe(1);
 });

@@ -17,5 +17,10 @@
     "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["./cypress.config.ts", "node_modules", "**/*.test.tsx"]
+  "exclude": [
+    "./cypress.config.ts",
+    "node_modules",
+    "**/*.test.tsx",
+    "vitest.config.ts"
+  ]
 }
