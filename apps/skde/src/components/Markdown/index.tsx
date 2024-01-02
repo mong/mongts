@@ -2,7 +2,7 @@ import ReactMarkdown, { Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
-import { PluggableList } from "react-markdown/lib/react-markdown";
+import { PluggableList } from "react-markdown/lib";
 
 /**
  * ## Wrapper for markdown content
