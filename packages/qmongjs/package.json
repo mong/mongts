@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
+  "type": "module",
   "scripts": {
-    "test": "yarn run test:base --coverage",
-    "test:base": "react-scripts test --watchAll=false",
+    "test": "yarn run test:base run --coverage",
+    "test:base": "vitest",
     "lint": "eslint --ignore-path .gitignore --ext js,ts,tsx src",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
     "format": "yarn run prettier --write",
@@ -22,6 +23,8 @@
     "@types/react-select": "5.0.1",
     "@typescript-eslint/eslint-plugin": "6.16.0",
     "@typescript-eslint/parser": "6.16.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-v8": "^1.0.2",
     "eslint": "8.56.0",
     "next-query-params": "5.0.0",
     "next-router-mock": "0.9.10",
@@ -31,7 +34,9 @@
     "react-scripts": "5.0.1",
     "remark-gfm": "3.0.1",
     "types": "*",
-    "typescript": "5.3.3"
+    "typescript": "5.3.3",
+    "vite": "^5.0.10",
+    "vitest": "^1.0.2"
   },
   "dependencies": {
     "@emotion/react": "11.11.3",
@@ -49,22 +54,5 @@
     "react-select": "5.8.0",
     "resize-observer-polyfill": "1.5.1",
     "use-query-params": "2.2.1"
-  },
-  "jest": {
-    "coverageThreshold": {
-      "global": {
-        "statements": 3,
-        "branches": 4,
-        "functions": 1,
-        "lines": 3
-      }
-    },
-    "transformIgnorePatterns": [
-      "<rootDir>/../../node_modules/remark-gfm/"
-    ],
-    "moduleNameMapper": {
-      "d3": "<rootDir>/../../node_modules/d3/dist/d3.min.js",
-      "react-markdown": "<rootDir>/../../node_modules/react-markdown/react-markdown.min.js"
-    }
   }
 }
