@@ -10,6 +10,7 @@ import { useRef } from "react";
 import BarChart, { Props, Bar } from "..";
 import { useResizeObserver } from "../../../../helpers/hooks";
 import { buildLevels } from "../../../../test/builders";
+import { clockTick } from "../../../../test/clockTick";
 
 import { vi } from "vitest";
 
@@ -190,6 +191,8 @@ test("Render without levels @250px", async () => {
     />,
   );
 
+  await clockTick(1500);
+
   expect(container).toMatchSnapshot();
 });
 
@@ -220,6 +223,8 @@ test("Render without zoom @750px", async () => {
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />,
   );
+
+  await clockTick(1500);
 
   expect(container).toMatchSnapshot();
 });
@@ -252,6 +257,8 @@ test("Render with zoom @750px", async () => {
     />,
   );
 
+  await clockTick(1500);
+
   expect(container).toMatchSnapshot();
 });
 
@@ -282,6 +289,8 @@ test("Render with levels @250px", async () => {
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />,
   );
+
+  await clockTick(1500);
 
   expect(container).toMatchSnapshot();
 });
@@ -314,6 +323,8 @@ test("Render without levels @500px", async () => {
     />,
   );
 
+  await clockTick(1500);
+
   expect(container).toMatchSnapshot();
 });
 
@@ -344,6 +355,8 @@ test("Render with levels @500px", async () => {
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />,
   );
+
+  await clockTick(1500);
 
   expect(container).toMatchSnapshot();
 });
@@ -376,6 +389,8 @@ test("Render with levels reversed @500px", async () => {
     />,
   );
 
+  await clockTick(1500);
+
   expect(container).toMatchSnapshot();
 });
 
@@ -407,6 +422,8 @@ test("Render zoomed with levels @500px and gray overlay (not complete data)", as
       lastCompleteYear={1979}
     />,
   );
+
+  await clockTick(1500);
 
   expect(container).toMatchSnapshot();
 });
