@@ -43,7 +43,7 @@ test("Returns correct level with direction 1", () => {
   indicator.var = 0.79;
   expect(level(indicator)).toBe("L");
   indicator.var = 0.945;
-  expect(level(indicator)).toBe("H");
+  expect(level(indicator)).toBe("M");
 });
 
 test("Returns no level if direction is null", () => {

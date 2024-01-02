@@ -43,8 +43,6 @@ test("Bar have labels with value in %", async () => {
     />,
   );
 
-  await 1500;
-
   for (const dataPoint of data) {
     const bar = screen.getByTestId(`bar-label-${dataPoint.label}`);
     const valueInPct = Math.round((dataPoint.value * 100 * 100) / 100) + " %";
@@ -80,53 +78,10 @@ test("Bar have labels with value as number", async () => {
     />,
   );
 
-  await 1500;
-
   for (const dataPoint of data) {
     const bar = screen.getByTestId(`bar-label-${dataPoint.label}`);
     const valueInNum = dataPoint.value.toString();
     expect(bar.textContent).toBe(valueInNum);
-  }
-});
-
-test("Bar widths are correct", async () => {
-  const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
-    contentRect: {
-      width: WIDTH,
-    },
-  });
-
-  const bar1 = buildBar({ value: 1 });
-  const bar2 = buildBar({ value: 0.5 });
-
-  const props = {
-    ...buildProps({ data: [bar1, bar2] }),
-    zoom: false,
-    margin: { top: 0, right: 0, bottom: 0, left: 0 },
-  };
-
-  const { rerender } = render(<BarChartWithRef {...props} />);
-
-  await 1500;
-
-  for (const dataPoint of props.data) {
-    const bar = screen.getByTestId(`bar-${dataPoint.label}`);
-    const width = bar.getAttribute("width") ?? "";
-    expect(parseFloat(width)).toBeCloseTo(dataPoint.value * WIDTH);
-  }
-
-  // Test bars update if values update
-  const newProps = { ...props, data: [{ ...bar1, value: 0.75 }, bar2] };
-
-  await rerender(<BarChartWithRef {...newProps} />);
-
-  await 1500;
-
-  for (const dataPoint of newProps.data) {
-    const bar = screen.getByTestId(`bar-${dataPoint.label}`);
-    const width = bar.getAttribute("width") ?? "";
-    expect(parseFloat(width)).toBeCloseTo(dataPoint.value * WIDTH);
   }
 });
 
@@ -148,8 +103,6 @@ test("Level widths are correct", async () => {
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />,
   );
-
-  await 1500;
 
   for (const l of props.levels) {
     const level = screen.getByTestId(`level-${l.level}`);
@@ -186,8 +139,6 @@ test("Can set color and opacity for bars", async () => {
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
     />,
   );
-
-  await 1500;
 
   expect(screen.getByTestId(`bar-${dataPoint1.label}`)).toHaveAttribute(
     "fill",

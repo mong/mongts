@@ -21,7 +21,7 @@ export interface ChartProps {
   lastCompleteYear?: number;
 }
 
-function Chart(props: ChartProps) {
+export function Chart(props: ChartProps) {
   switch (props.chartType) {
     case "line":
       return <GetLineChart {...props} />;
