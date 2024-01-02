@@ -513,6 +513,7 @@ export interface PluginAtlasEditorHealthAtlas extends Schema.CollectionType {
     mainTitle: Attribute.String & Attribute.Required;
     shortTitle: Attribute.String & Attribute.Required;
     frontPageText: Attribute.Text & Attribute.Required;
+    frontPageImage: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

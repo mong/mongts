@@ -48,5 +48,11 @@ module.exports = {
       type: "text",
       required: true,
     },
+    frontPageImage: {
+      type: "media",
+      multiple: false,
+      allowedTypes: ["images"],
+      required: false,
+    },
   },
 };

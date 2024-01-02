@@ -217,6 +217,7 @@ const EditPage = () => {
                       >
                         <AtlasFrontPageFields
                           shortTitle={atlas.current?.shortTitle}
+                          frontPageText={atlas.current?.frontPageText}
                           onFieldChanged={(field, value, isInvalid) =>
                             handleFieldChange(field, value, isInvalid)
                           }

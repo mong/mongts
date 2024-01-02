@@ -7,6 +7,7 @@ const populateParams = {
   mainTitle: true,
   shortTitle: true,
   frontPageText: true,
+  frontPageImage: true,
   locale: true,
   isPublished: true,
   publishedAt: true,
@@ -59,6 +60,7 @@ module.exports = ({ strapi }) => ({
     const atlasUpdate = ctx.request.body;
     const atlas = atlasUpdate.atlas;
     const userInfo = ctx.state.user;
+
     let atlasCleaned = {
       id: atlas.id,
       isPublished: atlas.isPublished,
@@ -66,6 +68,7 @@ module.exports = ({ strapi }) => ({
       mainTitle: atlas.mainTitle,
       shortTitle: atlas.shortTitle,
       frontPageText: atlas.frontPageText,
+      frontPageImage: atlas.frontPageImage,
       updatedBy: userInfo.id,
     };
 
