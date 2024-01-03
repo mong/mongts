@@ -15,8 +15,8 @@ export function level_boundary(config: Config) {
     config.level_green !== null
       ? config.level_green
       : level_direction === 1
-      ? 0
-      : 1;
+        ? 0
+        : 1;
   // If level_yellow is NULL: set to level_green
   const level_yellow =
     config.level_yellow !== null ? config.level_yellow : level_green;

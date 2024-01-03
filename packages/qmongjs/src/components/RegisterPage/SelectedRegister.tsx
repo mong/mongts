@@ -50,10 +50,10 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     tab === "sykehus"
       ? "caregiver"
       : tab === "opptaksomraade"
-      ? "resident"
-      : tab === "datakvalitet"
-      ? "coverage"
-      : "caregiver";
+        ? "resident"
+        : tab === "datakvalitet"
+          ? "coverage"
+          : "caregiver";
   const registerInfo = registerNames.filter((reg) => reg.rname === register);
 
   const queryContext =

@@ -79,22 +79,22 @@ const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
                     lang: lang,
                   }
                 : box.type === "resultatboks"
-                ? {
-                    result: box.resultat,
-                    title: box.overskrift,
-                    intro: box.ingress,
-                    selection: box.utvalg,
-                    id:
-                      mainID +
-                      "_" +
-                      box.overskrift.toLowerCase().replace(/\s/g, "-"),
-                    lang: lang,
-                    carousel: box.data,
-                    published: box.publisert,
-                    updated: box.oppdatert,
-                    map: box.kart,
-                  }
-                : { children: box.tekst, lang: lang };
+                  ? {
+                      result: box.resultat,
+                      title: box.overskrift,
+                      intro: box.ingress,
+                      selection: box.utvalg,
+                      id:
+                        mainID +
+                        "_" +
+                        box.overskrift.toLowerCase().replace(/\s/g, "-"),
+                      lang: lang,
+                      carousel: box.data,
+                      published: box.publisert,
+                      updated: box.oppdatert,
+                      map: box.kart,
+                    }
+                  : { children: box.tekst, lang: lang };
 
             const Component: React.FC<typeof props> = json2atlas[box.type];
             /* Husk: endre key til noe mer unikt to linjer under */

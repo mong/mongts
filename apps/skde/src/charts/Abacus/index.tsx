@@ -156,8 +156,8 @@ export const Abacus = <Data, X extends string & keyof Data>({
                 selected_bohf.includes(String(d["bohf"]))
                   ? colors[2]
                   : d["bohf"] === national
-                  ? colors[1]
-                  : colors[0]
+                    ? colors[1]
+                    : colors[0]
               }
               data-testid={
                 selected_bohf.includes(String(d["bohf"]))

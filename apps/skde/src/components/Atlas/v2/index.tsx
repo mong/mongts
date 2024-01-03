@@ -48,8 +48,8 @@ const AtlasPage: React.FC<AtlasPageProps> = ({ content, atlasData }) => {
     obj.lang === "nn"
       ? "Dette atlaset er berre eit utkast og er ikkje publisert! Resultata og analysane kan vere mangelfulle."
       : obj.lang === "nb"
-      ? "Dette atlaset er kun et utkast og er ikke publisert! Resultatene og analysene kan være mangelfulle."
-      : "This is a draft!";
+        ? "Dette atlaset er kun et utkast og er ikke publisert! Resultatene og analysene kan være mangelfulle."
+        : "This is a draft!";
   return (
     <DataContext.Provider value={{ atlasData }}>
       <AtlasLayout lang={obj.lang === "en" ? "en" : "no"}>

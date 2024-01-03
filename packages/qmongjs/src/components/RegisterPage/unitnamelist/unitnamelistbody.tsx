@@ -42,8 +42,8 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
     a.hf_full === "Avtalespesialister"
       ? 1
       : b.hf_full === "Avtalespesialister"
-      ? -1
-      : 0,
+        ? -1
+        : 0,
   );
 
   const hf_hospital = new_order_hf.map((element) => {
