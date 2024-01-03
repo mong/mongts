@@ -116,10 +116,10 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
     context === "caregiver" && registerName.caregiver_data
       ? "sykehus"
       : context === "resident" && registerName.resident_data
-      ? "opptaksomraade"
-      : context === "coverage" && registerName.dg_data
-      ? "datakvalitet"
-      : "sykehus";
+        ? "opptaksomraade"
+        : context === "coverage" && registerName.dg_data
+          ? "datakvalitet"
+          : "sykehus";
 
   return (
     <>
