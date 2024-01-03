@@ -264,12 +264,12 @@ export const Barchart = <
                             ? selectedColors[0]
                             : selectedColorScale(d["key"])
                           : bohfName === national
-                          ? x.length === 1
-                            ? nationColors[0]
-                            : nationColorScale(d["key"])
-                          : x.length === 1
-                          ? colors[0]
-                          : colorScale(d["key"])
+                            ? x.length === 1
+                              ? nationColors[0]
+                              : nationColorScale(d["key"])
+                            : x.length === 1
+                              ? colors[0]
+                              : colorScale(d["key"])
                       }
                       data-testid={
                         selected_bohf.includes(bohfName)
@@ -292,10 +292,10 @@ export const Barchart = <
                                     selected_bohf[0] === undefined
                                       ? bohfName
                                       : selected_bohf.includes(bohfName)
-                                      ? selected_bohf.filter(
-                                          (d) => d != bohfName,
-                                        )
-                                      : selected_bohf.concat(bohfName),
+                                        ? selected_bohf.filter(
+                                            (d) => d != bohfName,
+                                          )
+                                        : selected_bohf.concat(bohfName),
                                 },
                               },
                               undefined,

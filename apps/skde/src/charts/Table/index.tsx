@@ -107,8 +107,8 @@ export const DataTable = <
                               selected_bohf[0] === undefined
                                 ? row.bohf
                                 : selected_bohf.includes(String(row.bohf))
-                                ? selected_bohf.filter((d) => d != row.bohf)
-                                : selected_bohf.concat(String(row.bohf)),
+                                  ? selected_bohf.filter((d) => d != row.bohf)
+                                  : selected_bohf.concat(String(row.bohf)),
                           },
                         },
                         undefined,

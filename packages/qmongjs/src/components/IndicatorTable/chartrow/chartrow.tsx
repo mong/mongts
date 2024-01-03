@@ -52,8 +52,8 @@ export function ChartRow(props: Props) {
   const delivery_time = indicatorData[0].delivery_latest_update
     ? new Date(indicatorData[0].delivery_latest_update)
     : indicatorData[0].delivery_time
-    ? new Date(indicatorData[0].delivery_time)
-    : undefined;
+      ? new Date(indicatorData[0].delivery_time)
+      : undefined;
 
   return (
     <tr className={figure_class}>

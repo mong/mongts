@@ -254,7 +254,7 @@ function getXScaleDomain(
         ? Math.min(xMax, 1)
         : 1
       : zoom
-      ? xMax
-      : Math.max(max_value ?? xMax, xMax),
+        ? xMax
+        : Math.max(max_value ?? xMax, xMax),
   ];
 }

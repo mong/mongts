@@ -122,8 +122,8 @@ const LegendItem: React.FC<LegendItemProps> = ({
         selectedLegends.length === 0
           ? 1
           : selectedLegends.includes(label)
-          ? 1
-          : 0.4
+            ? 1
+            : 0.4
       }
       className={`${style.legendItem} ${label.replace(/\s/g, "")}`}
       ref={legendRef}

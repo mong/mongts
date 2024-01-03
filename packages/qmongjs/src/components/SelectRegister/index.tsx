@@ -107,10 +107,10 @@ const SelectRegister = (props: selectedRegisterProps) => {
               activeTab === "sykehus" && reg.caregiver_data
                 ? "sykehus"
                 : activeTab === "opptaksomraade" && reg.resident_data
-                ? "opptaksomraade"
-                : activeTab === "datakvalitet" && reg.dg_data
-                ? "datakvalitet"
-                : "sykehus";
+                  ? "opptaksomraade"
+                  : activeTab === "datakvalitet" && reg.dg_data
+                    ? "datakvalitet"
+                    : "sykehus";
 
             return (
               <li key={reg.rname} data-testid={`pick_registry_${reg.rname}`}>
