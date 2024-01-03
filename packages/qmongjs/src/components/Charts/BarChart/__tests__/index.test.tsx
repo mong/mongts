@@ -12,7 +12,7 @@ import * as hooks from "../../../../helpers/hooks";
 import { buildLevels } from "../../../../test/builders";
 import { clockTick } from "../../../../test/clockTick";
 
-import { vi, test, expect } from "vitest";
+import { vi } from "vitest";
 
 vi.mock("../../../../helpers/hooks");
 

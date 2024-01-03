@@ -4,7 +4,7 @@ import { useRef } from "react";
 import * as hooks from "../../../../helpers/hooks";
 import { clockTick } from "../../../../test/clockTick";
 import { Description, Indicator } from "types";
-import { vi, test, expect } from "vitest";
+import { vi, test } from "vitest";
 
 vi.mock("../../../../helpers/hooks");
 

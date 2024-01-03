@@ -1,6 +1,5 @@
 import LEGEND_BTN from "../button";
 import { render } from "@testing-library/react";
-import { it, expect } from "vitest";
 
 const dummy_function = (n: string) => {
   n;

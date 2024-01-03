@@ -12,7 +12,7 @@ import LineChart, { Props } from "..";
 import { buildLevels } from "../../../../test/builders";
 import { clockTick } from "../../../../test/clockTick";
 import * as hooks from "../../../../helpers/hooks";
-import { vi, test, expect, beforeEach } from "vitest";
+import { vi } from "vitest";
 
 vi.mock("../../../../helpers/hooks");
 
