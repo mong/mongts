@@ -1,4 +1,5 @@
 import { render } from "@testing-library/react";
+import { it, expect, afterEach, beforeEach } from "vitest";
 
 import { MaskedIndicator } from "../";
 

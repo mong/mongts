@@ -1,4 +1,5 @@
 import { validateTreatmentUnits } from "../";
+import { test, expect } from "vitest";
 
 const optstu = [
   { label: "Sykehus", options: [{ value: "Narvik", label: "Narvik" }] },

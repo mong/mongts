@@ -1,4 +1,5 @@
 import { render } from "@testing-library/react";
+import { it, expect } from "vitest";
 
 import { IndicatorDescription } from "../";
 import description from "../../../../test/test_data/description";

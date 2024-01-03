@@ -1,4 +1,5 @@
 import { level_boundary, Config } from "../tr_utils";
+import { test, expect } from "vitest";
 
 test("level_direction 1", () => {
   const config: Config = {

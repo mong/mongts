@@ -1,14 +1,10 @@
 import Chart, { ChartProps } from "../Chart";
 import { render } from "@testing-library/react";
 import { useRef } from "react";
-import {
-  useIndicatorQuery,
-  useLegendItemPosition,
-  useResizeObserver,
-} from "../../../../helpers/hooks";
+import * as hooks from "../../../../helpers/hooks";
 import { clockTick } from "../../../../test/clockTick";
 import { Description, Indicator } from "types";
-import { vi, test } from "vitest";
+import { vi, test, expect } from "vitest";
 
 vi.mock("../../../../helpers/hooks");
 
@@ -81,7 +77,7 @@ const bardata = [
 const descr = buildDescription({});
 
 test("Bar", async () => {
-  (useIndicatorQuery as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useIndicatorQuery").mockReturnValue({
     data: bardata,
     isLoading: false,
     error: false,
@@ -104,7 +100,7 @@ test("Bar", async () => {
 });
 
 test("Bar with level_direction eq 0", async () => {
-  (useIndicatorQuery as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useIndicatorQuery").mockReturnValue({
     data: bardata,
     isLoading: false,
     error: false,
@@ -128,11 +124,12 @@ test("Bar with level_direction eq 0", async () => {
 });
 
 test("Bar select treatment unit", async () => {
-  (useIndicatorQuery as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useIndicatorQuery").mockReturnValue({
     data: bardata,
     isLoading: false,
     error: false,
   });
+
   const inddata = bardata.filter((data) =>
     ["Nasjonalt", "Sykehus 1", "RHF 1"].includes(data.unit_name),
   );
@@ -155,7 +152,7 @@ test("Bar select treatment unit", async () => {
 });
 
 test("Line", async () => {
-  (useIndicatorQuery as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useIndicatorQuery").mockReturnValue({
     data: linedata,
     isLoading: false,
     error: false,
@@ -178,7 +175,7 @@ test("Line", async () => {
 });
 
 test("Line, fetch with error", async () => {
-  (useIndicatorQuery as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useIndicatorQuery").mockReturnValue({
     data: [],
     isLoading: false,
     error: true,
@@ -201,7 +198,7 @@ test("Line, fetch with error", async () => {
 });
 
 test("Bar, fetch with error", async () => {
-  (useIndicatorQuery as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useIndicatorQuery").mockReturnValue({
     data: [],
     isLoading: false,
     error: true,
@@ -224,7 +221,7 @@ test("Bar, fetch with error", async () => {
 });
 
 test("Line, fetch is loading", async () => {
-  (useIndicatorQuery as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useIndicatorQuery").mockReturnValue({
     data: [],
     isLoading: true,
     error: false,
@@ -247,7 +244,7 @@ test("Line, fetch is loading", async () => {
 });
 
 test("Bar, fetch is loading", async () => {
-  (useIndicatorQuery as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useIndicatorQuery").mockReturnValue({
     data: [],
     isLoading: true,
     error: false,
@@ -277,7 +274,7 @@ function ChartWithRef(
   >,
 ) {
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -290,7 +287,7 @@ function ChartWithRef(
   ];
 
   const ref = useRef<HTMLDivElement>(null);
-  (useLegendItemPosition as jest.Mock).mockReturnValue({ x: 0, y: 0 });
+  vi.spyOn(hooks, "useLegendItemPosition").mockReturnValue({ x: 0, y: 0 });
   return (
     <Chart
       {...props}

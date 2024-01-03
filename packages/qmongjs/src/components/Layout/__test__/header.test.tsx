@@ -1,4 +1,5 @@
 import { render } from "@testing-library/react";
+import { it, expect } from "vitest";
 
 import { Header } from "../Header";
 

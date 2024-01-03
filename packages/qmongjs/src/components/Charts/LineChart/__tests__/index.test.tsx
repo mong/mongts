@@ -11,24 +11,20 @@ import { Indicator } from "types";
 import LineChart, { Props } from "..";
 import { buildLevels } from "../../../../test/builders";
 import { clockTick } from "../../../../test/clockTick";
-import {
-  useResizeObserver,
-  useLegendItemPosition,
-  useTextWidth,
-} from "../../../../helpers/hooks";
-import { vi } from "vitest";
+import * as hooks from "../../../../helpers/hooks";
+import { vi, test, expect, beforeEach } from "vitest";
 
 vi.mock("../../../../helpers/hooks");
 
 beforeEach(() => {
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
   });
-  (useLegendItemPosition as jest.Mock).mockReturnValue({ x: 0, y: 0 });
-  (useTextWidth as jest.Mock).mockReturnValue(15);
+  vi.spyOn(hooks, "useLegendItemPosition").mockReturnValue({ x: 0, y: 0 });
+  vi.spyOn(hooks, "useTextWidth").mockReturnValue(15);
 });
 
 test("shows legend", async () => {
@@ -58,7 +54,7 @@ test("shows only one legend item per unit_name", async () => {
 
 test("Render without levels @250px", async () => {
   const WIDTH = 250;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -104,7 +100,7 @@ test("Render without levels @250px", async () => {
 
 test("Render with levels @500px", async () => {
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -151,7 +147,7 @@ test("Render with levels @500px", async () => {
 
 test("Render with levels reversed @500px", async () => {
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -218,7 +214,7 @@ test("Render with levels reversed @500px", async () => {
 
 test("Render with nasjonalt", async () => {
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -305,7 +301,7 @@ test("Render with nasjonalt", async () => {
 
 test("Render with many years", async () => {
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -341,7 +337,7 @@ test("Render with many years", async () => {
 
 test("Render with many years, ending with even", async () => {
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -378,7 +374,7 @@ test("Render with many years, ending with even", async () => {
 
 test("Render with many years, including missing years", async () => {
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -412,7 +408,7 @@ test("Render with many years, including missing years", async () => {
 
 test("Render with many years, including missing years", async () => {
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -448,12 +444,12 @@ test("Render with many years, including missing years", async () => {
 function LineChartWithRef(props: Omit<Props, "svgContainerRef">) {
   const ref = createRef<HTMLDivElement>();
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
   });
-  (useLegendItemPosition as jest.Mock).mockReturnValue({ x: 0, y: 0 });
+  vi.spyOn(hooks, "useLegendItemPosition").mockReturnValue({ x: 0, y: 0 });
 
   return <LineChart {...props} svgContainerRef={ref} />;
 }
