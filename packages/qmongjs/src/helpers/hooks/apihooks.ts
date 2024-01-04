@@ -24,7 +24,7 @@ export const useDescriptionQuery = (params: FetchDescriptionParams) => {
     queryFn: () => fetchDescription(params),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
-    cacheTime: 1000 * 60 * 60,
+    gcTime: 1000 * 60 * 60,
   });
 };
 
@@ -74,7 +74,7 @@ export const useIndicatorQuery = (params: FetchIndicatorParams) => {
     queryFn: () => fetchIndicators(params),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
-    cacheTime: 1000 * 60 * 60,
+    gcTime: 1000 * 60 * 60,
   });
 };
 
@@ -111,7 +111,7 @@ export const useSelectionYearsQuery = (
     queryFn: () => fetchSelectionYears(registerShortName, context, type),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
-    cacheTime: 1000 * 60 * 60,
+    gcTime: 1000 * 60 * 60,
   });
 };
 
@@ -146,7 +146,7 @@ export const useUnitNamesQuery = (
     queryFn: () => fetchUnitNames(registerShortName, context, type),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
-    cacheTime: 1000 * 60 * 60,
+    gcTime: 1000 * 60 * 60,
   });
 };
 
@@ -165,7 +165,7 @@ export const useRegisterNamesQuery = () => {
     queryFn: () => fetchRegisterNames(),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
-    cacheTime: 1000 * 60 * 60,
+    gcTime: 1000 * 60 * 60,
   });
 };
 
@@ -184,6 +184,6 @@ export const useMedicalFieldsQuery = () => {
     queryFn: () => fetchMedicalFields(),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
-    cacheTime: 1000 * 60 * 60,
+    gcTime: 1000 * 60 * 60,
   });
 };

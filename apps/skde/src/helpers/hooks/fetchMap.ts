@@ -13,6 +13,6 @@ export const FetchMap = (filename: string) => {
     queryFn: () => fetching(filename),
     staleTime: 1000 * 60 * 60 * 24 * 365,
     refetchOnWindowFocus: false,
-    cacheTime: 1000 * 60 * 60 * 24 * 365,
+    gcTime: 1000 * 60 * 60 * 24 * 365,
   });
 };
