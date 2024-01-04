@@ -8,7 +8,9 @@ export const FetchMap = (filename: string) => {
     }
     return await response.json();
   };
-  return useQuery([`map_${filename}`], () => fetching(filename), {
+  return useQuery({
+    queryKey: [`map_${filename}`],
+    queryFn: () => fetching(filename),
     staleTime: 1000 * 60 * 60 * 24 * 365,
     refetchOnWindowFocus: false,
     cacheTime: 1000 * 60 * 60 * 24 * 365,
