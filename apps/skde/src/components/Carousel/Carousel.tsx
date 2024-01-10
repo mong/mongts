@@ -35,8 +35,8 @@ const SelectionBtn = ({ lang }: { lang?: "nb" | "en" | "nn" }) => {
         {lang === "nn"
           ? "Utval"
           : lang === "en"
-          ? "Patient selection"
-          : "Utvalg"}
+            ? "Patient selection"
+            : "Utvalg"}
       </span>
     </button>
   );

@@ -41,10 +41,10 @@ export const MainRegister: React.FC<MainRegisterProps> = ({
     tab === "sykehus"
       ? "caregiver"
       : tab === "opptaksomraade"
-      ? "resident"
-      : tab === "datakvalitet"
-      ? "coverage"
-      : "caregiver";
+        ? "resident"
+        : tab === "datakvalitet"
+          ? "coverage"
+          : "caregiver";
   const activeTab = tab;
   const queryContext =
     context === "coverage"
