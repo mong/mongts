@@ -43,7 +43,7 @@ export const app_text: appTextTypes = {
 };
 
 export const minYear = 2017;
-export const maxYear = 2022;
+export const maxYear = 2023;
 export const defaultYear = 2022;
 export const mainQueryParamsConfig = {
   selected_row: withDefault(StringParam, undefined),
