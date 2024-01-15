@@ -60,7 +60,7 @@ function SelectYear(props: Props) {
         options={selection_options}
         defaultValue={defaultValue}
         value={selected_option}
-        isSearchable
+        isSearchable={false}
         styles={customStyles}
       />
     </form>
