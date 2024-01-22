@@ -2,7 +2,7 @@ import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
 import LinechartBase, { LinechartData } from "../LinechartBase";
 import { UseQueryResult } from "@tanstack/react-query";
 import _ from "lodash";
-import { level } from "qmongjs/src/helpers/functions";
+import { level } from "qmongjs";
 import { LineStyles, font } from "../LinechartBase";
 
 export type IndicatorLinechartParams = {
