@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { API_HOST } from "../../components/RegisterPage";
-import { Indicator } from "types";
 interface FetchDescriptionParams {
   registerShortName: string;
   type?: "ind" | "dg";
@@ -20,15 +19,13 @@ const fetchDescription = async (params: FetchDescriptionParams) => {
 };
 
 export const useDescriptionQuery = (params: FetchDescriptionParams) => {
-  return useQuery(
-    ["descriptions", params.registerShortName],
-    () => fetchDescription(params),
-    {
-      staleTime: 1000 * 60 * 60,
-      refetchOnWindowFocus: false,
-      cacheTime: 1000 * 60 * 60,
-    },
-  );
+  return useQuery({
+    queryKey: ["descriptions", params.registerShortName],
+    queryFn: () => fetchDescription(params),
+    staleTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    gcTime: 1000 * 60 * 60,
+  });
 };
 
 export interface FetchIndicatorParams {
@@ -72,15 +69,13 @@ const fetchIndicators = async (params: FetchIndicatorParams) => {
 };
 
 export const useIndicatorQuery = (params: FetchIndicatorParams) => {
-  return useQuery<Indicator[], Error>(
-    ["indicatorQuery", params],
-    () => fetchIndicators(params),
-    {
-      staleTime: 1000 * 60 * 60,
-      refetchOnWindowFocus: false,
-      cacheTime: 1000 * 60 * 60,
-    },
-  );
+  return useQuery({
+    queryKey: ["indicatorQuery", params],
+    queryFn: () => fetchIndicators(params),
+    staleTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    gcTime: 1000 * 60 * 60,
+  });
 };
 
 const selectionYearsUrl = (
@@ -111,15 +106,13 @@ export const useSelectionYearsQuery = (
   context: string,
   type: string,
 ) => {
-  return useQuery(
-    ["selectionYears", registerShortName, context, type],
-    () => fetchSelectionYears(registerShortName, context, type),
-    {
-      staleTime: 1000 * 60 * 60,
-      refetchOnWindowFocus: false,
-      cacheTime: 1000 * 60 * 60,
-    },
-  );
+  return useQuery({
+    queryKey: ["selectionYears", registerShortName, context, type],
+    queryFn: () => fetchSelectionYears(registerShortName, context, type),
+    staleTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    gcTime: 1000 * 60 * 60,
+  });
 };
 
 const unitNamesUrl = (
@@ -148,15 +141,13 @@ export const useUnitNamesQuery = (
   context: string,
   type: string,
 ) => {
-  return useQuery(
-    ["unitNames", registerShortName, context, type],
-    () => fetchUnitNames(registerShortName, context, type),
-    {
-      staleTime: 1000 * 60 * 60,
-      refetchOnWindowFocus: false,
-      cacheTime: 1000 * 60 * 60,
-    },
-  );
+  return useQuery({
+    queryKey: ["unitNames", registerShortName, context, type],
+    queryFn: () => fetchUnitNames(registerShortName, context, type),
+    staleTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    gcTime: 1000 * 60 * 60,
+  });
 };
 
 export const fetchRegisterNames = async () => {
@@ -169,10 +160,12 @@ export const fetchRegisterNames = async () => {
 };
 
 export const useRegisterNamesQuery = () => {
-  return useQuery([`registerNames`], () => fetchRegisterNames(), {
+  return useQuery({
+    queryKey: [`registerNames`],
+    queryFn: () => fetchRegisterNames(),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
-    cacheTime: 1000 * 60 * 60,
+    gcTime: 1000 * 60 * 60,
   });
 };
 
@@ -186,9 +179,11 @@ const fetchMedicalFields = async () => {
 };
 
 export const useMedicalFieldsQuery = () => {
-  return useQuery([`medicalFields`], () => fetchMedicalFields(), {
+  return useQuery({
+    queryKey: [`medicalFields`],
+    queryFn: () => fetchMedicalFields(),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
-    cacheTime: 1000 * 60 * 60,
+    gcTime: 1000 * 60 * 60,
   });
 };

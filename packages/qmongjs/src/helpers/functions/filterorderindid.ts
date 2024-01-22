@@ -39,8 +39,8 @@ export const filterOrderIndID = (
             selectedNames.length === 1
               ? false
               : namesLength === 1 && isFetching
-              ? false
-              : d.unit_name === "Nasjonalt";
+                ? false
+                : d.unit_name === "Nasjonalt";
           if (level === "") {
             return !nation;
           }
@@ -58,11 +58,15 @@ export const filterOrderIndID = (
 
   const orderedIndID = indDescription
     .sort((a, b) => {
-      return (a.name ?? "") > (b.name ?? "")
+      return a.name === null
         ? 1
-        : (a.name ?? "") < (b.name ?? "")
-        ? -1
-        : 0;
+        : b.name === null
+          ? -1
+          : a.name > b.name
+            ? 1
+            : a.name < b.name
+              ? -1
+              : 0;
     })
     .map((d) => d.id)
     .filter((d) => indId.includes(d));

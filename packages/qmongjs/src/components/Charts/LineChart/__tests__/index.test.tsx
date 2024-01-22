@@ -11,23 +11,20 @@ import { Indicator } from "types";
 import LineChart, { Props } from "..";
 import { buildLevels } from "../../../../test/builders";
 import { clockTick } from "../../../../test/clockTick";
-import {
-  useResizeObserver,
-  useLegendItemPosition,
-  useTextWidth,
-} from "../../../../helpers/hooks";
+import * as hooks from "../../../../helpers/hooks";
+import { vi } from "vitest";
 
-jest.mock("../../../../helpers/hooks");
+vi.mock("../../../../helpers/hooks");
 
 beforeEach(() => {
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
   });
-  (useLegendItemPosition as jest.Mock).mockReturnValue({ x: 0, y: 0 });
-  (useTextWidth as jest.Mock).mockReturnValue(15);
+  vi.spyOn(hooks, "useLegendItemPosition").mockReturnValue({ x: 0, y: 0 });
+  vi.spyOn(hooks, "useTextWidth").mockReturnValue(15);
 });
 
 test("shows legend", async () => {
@@ -37,7 +34,7 @@ test("shows legend", async () => {
 
   render(<LineChartWithRef {...props} />);
 
-  await clockTick(1500);
+  //  await clockTick(1500);
 
   expect(screen.getByText("Nasjonalt")).toBeInTheDocument();
   expect(screen.getByText("Ahus")).toBeInTheDocument();
@@ -50,14 +47,14 @@ test("shows only one legend item per unit_name", async () => {
 
   render(<LineChartWithRef {...props} />);
 
-  await clockTick(1500);
+  //  await clockTick(1500);
 
   expect(screen.getAllByText("Nasjonalt").length).toBe(1);
 });
 
 test("Render without levels @250px", async () => {
   const WIDTH = 250;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -103,7 +100,7 @@ test("Render without levels @250px", async () => {
 
 test("Render with levels @500px", async () => {
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -150,7 +147,7 @@ test("Render with levels @500px", async () => {
 
 test("Render with levels reversed @500px", async () => {
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -215,9 +212,96 @@ test("Render with levels reversed @500px", async () => {
   expect(container).toMatchSnapshot();
 });
 
+test("Render with nasjonalt", async () => {
+  const WIDTH = 500;
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
+    contentRect: {
+      width: WIDTH,
+    },
+  });
+  const { container } = render(
+    <LineChartWithRef
+      showLevel={true}
+      levels={[
+        { level: "high", start: 0.2, end: 0 },
+        { level: "mid", start: 0.4, end: 0.2 },
+        { level: "low", start: 1, end: 0.4 },
+      ]}
+      tickformat=",.3f"
+      lastCompleteYear={2019}
+      data={[
+        buildDataPoint({
+          unit_name: "test",
+          var: 0.513343,
+          year: 2020,
+        }),
+        buildDataPoint({
+          unit_name: "test",
+          var: 0.15,
+          year: 2019,
+        }),
+        buildDataPoint({
+          unit_name: "test",
+          var: 0.3532,
+          year: 2018,
+        }),
+        buildDataPoint({
+          unit_name: "test",
+          var: 0.124,
+          year: 2017,
+        }),
+        buildDataPoint({
+          unit_name: "Nasjonalt",
+          var: 0.13343,
+          year: 2020,
+        }),
+        buildDataPoint({
+          unit_name: "Nasjonalt",
+          var: 0.5,
+          year: 2019,
+        }),
+        buildDataPoint({
+          unit_name: "Nasjonalt",
+          var: 0.532,
+          year: 2018,
+        }),
+        buildDataPoint({
+          unit_name: "Nasjonalt",
+          var: 0.24,
+          year: 2017,
+        }),
+        buildDataPoint({
+          unit_name: "atest2",
+          var: 0.4143,
+          year: 2020,
+        }),
+        buildDataPoint({
+          unit_name: "atest2",
+          var: 0.655,
+          year: 2019,
+        }),
+        buildDataPoint({
+          unit_name: "atest2",
+          var: 0.4332,
+          year: 2018,
+        }),
+        buildDataPoint({
+          unit_name: "atest2",
+          var: 0.1224,
+          year: 2017,
+        }),
+      ]}
+    />,
+  );
+
+  await clockTick(1500);
+
+  expect(container).toMatchSnapshot();
+});
+
 test("Render with many years", async () => {
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -253,7 +337,7 @@ test("Render with many years", async () => {
 
 test("Render with many years, ending with even", async () => {
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -290,7 +374,7 @@ test("Render with many years, ending with even", async () => {
 
 test("Render with many years, including missing years", async () => {
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -324,7 +408,7 @@ test("Render with many years, including missing years", async () => {
 
 test("Render with many years, including missing years", async () => {
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
@@ -360,12 +444,12 @@ test("Render with many years, including missing years", async () => {
 function LineChartWithRef(props: Omit<Props, "svgContainerRef">) {
   const ref = createRef<HTMLDivElement>();
   const WIDTH = 500;
-  (useResizeObserver as jest.Mock).mockReturnValue({
+  vi.spyOn(hooks, "useResizeObserver").mockReturnValue({
     contentRect: {
       width: WIDTH,
     },
   });
-  (useLegendItemPosition as jest.Mock).mockReturnValue({ x: 0, y: 0 });
+  vi.spyOn(hooks, "useLegendItemPosition").mockReturnValue({ x: 0, y: 0 });
 
   return <LineChart {...props} svgContainerRef={ref} />;
 }

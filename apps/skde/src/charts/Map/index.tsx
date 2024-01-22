@@ -140,8 +140,8 @@ export const Map: React.FC<MapProps> = ({
                   selected_bohf.includes(String(hf))
                     ? abacusColors[2]
                     : val
-                    ? colorScale(val)
-                    : "none"
+                      ? colorScale(val)
+                      : "none"
                 }
                 stroke={"black"}
                 strokeWidth={0.4}
@@ -161,8 +161,8 @@ export const Map: React.FC<MapProps> = ({
                           selected_bohf[0] === undefined
                             ? hf
                             : selected_bohf.includes(hf)
-                            ? selected_bohf.filter((d) => d != hf)
-                            : selected_bohf.concat(hf),
+                              ? selected_bohf.filter((d) => d != hf)
+                              : selected_bohf.concat(hf),
                       },
                     },
                     undefined,
