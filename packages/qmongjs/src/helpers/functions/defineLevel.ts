@@ -1,6 +1,6 @@
 import { Indicator } from "types";
 
-const level = (indicatorData: Indicator) => {
+export const level = (indicatorData: Indicator) => {
   const { level_green, level_yellow, level_direction } = indicatorData;
   if (
     level_green === undefined ||
