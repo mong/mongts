@@ -133,7 +133,7 @@ export const IndicatorLinechart = (
 
   // Count indicators per level per year
   const groupedLevels = countLevels(levels);
-  console.log(groupedLevels);
+
   // Time series bounds
   const minYear =
     indicatorParams.startYear ??

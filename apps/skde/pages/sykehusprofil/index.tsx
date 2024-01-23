@@ -1,10 +1,20 @@
 import { ThemeProvider } from "styled-components";
-
+import React from "react";
 import IndicatorLinechart, {
   IndicatorLinechartParams,
 } from "../../src/charts/IndicatorLinechart";
 import { LineStyles, font } from "../../src/charts/LinechartBase";
 import { Text } from "@visx/text";
+import { useQueryParam } from "use-query-params";
+import { UseQueryResult } from "@tanstack/react-query";
+import SelectTreatmentUnits from "qmongjs/src/components/SelectTreatmentUnits";
+import { useUnitNamesQuery } from "qmongjs/src/helpers/hooks";
+import { useRouter } from "next/router";
+import { NestedTreatmentUnitName } from "qmongjs/src/components/RegisterPage/unitnamelist/unitnamelistbody";
+import { OptsTu } from "types";
+import { mainQueryParamsConfig } from "qmongjs/src/app_config";
+import { validateTreatmentUnits } from "qmongjs/src/helpers/functions";
+import { UnitNameList } from "qmongjs/src/components/RegisterPage/unitnamelist";
 
 const theme = {
   lineChartBackground: {
@@ -15,8 +25,39 @@ const theme = {
 };
 
 export const Skde = (): JSX.Element => {
+  // Gjenbruk av kode fra indikatorvisning
+  const queryContext = { context: "caregiver", type: "ind" };
+
+  // Hent sykehusnavn fra et register
+  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
+    "Hjerteinfarkt",
+    queryContext.context,
+    queryContext.type,
+  );
+
+  const nestedUnitNames: NestedTreatmentUnitName[] | [] =
+    unitNamesQuery.data?.nestedUnitNames ?? [];
+
+  const optstu: OptsTu[] | [] = unitNamesQuery.data?.opts_tu ?? [];
+
+  const [treatment_units, update_treatment_units] = useQueryParam(
+    "selected_treatment_units",
+    mainQueryParamsConfig.selected_treatment_units,
+  );
+
+  const validated_treatment_units = validateTreatmentUnits(
+    treatment_units as string[],
+    optstu,
+  );
+
+  const placeholder = (
+    <div>
+      <i className="fas fa-search" /> Søk etter behandlingsenheter
+    </div>
+  );
+
   const indicatorParams: IndicatorLinechartParams = {
-    unitNames: ["Tromsø"],
+    unitNames: [validated_treatment_units[0]],
     unitLevel: "hospital",
     context: "caregiver",
     type: "ind",
@@ -43,10 +84,28 @@ export const Skde = (): JSX.Element => {
   return (
     <div>
       <div>
-        <img
-          className="figure"
-          alt="Figure"
-          src="/img/sykehusprofil/SKDE-innholdsboks1-sykehusprofil.png"
+        <Text
+          x={"10%"}
+          y={50}
+          width={500}
+          verticalAnchor="start"
+          style={{ fontWeight: 700, fontSize: 24 }}
+        >
+          {validated_treatment_units[0]}
+        </Text>
+      </div>
+      <div>
+        <SelectTreatmentUnits
+          opts={optstu}
+          update_tu={update_treatment_units}
+          treatment_unit={validated_treatment_units}
+          placeholder={placeholder}
+        />
+        <UnitNameList
+          nestedUnitNames={nestedUnitNames}
+          treatment_units={validated_treatment_units}
+          update_treatment_units={update_treatment_units}
+          multiple_choice={false}
         />
       </div>
       <div>
