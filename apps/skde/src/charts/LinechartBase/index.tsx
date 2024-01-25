@@ -61,6 +61,7 @@ export type LinechartBaseProps = {
   height: number;
   lineStyles: LineStyles;
   font: font;
+  yAxisText: string;
   yMin?: number;
   yMax?: number;
 };
@@ -71,6 +72,7 @@ export default function LinechartBase({
   height,
   lineStyles,
   font,
+  yAxisText,
   yMin,
   yMax,
 }: LinechartBaseProps) {
@@ -178,7 +180,7 @@ export default function LinechartBase({
         <AxisLeft
           scale={yScale}
           left={borderWidth}
-          label={"Antall indikatorer"}
+          label={yAxisText}
           labelProps={yLabelProps}
         />
       </svg>

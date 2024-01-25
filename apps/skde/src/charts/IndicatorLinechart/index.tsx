@@ -15,6 +15,7 @@ export type IndicatorLinechartParams = {
   height: number;
   lineStyles: LineStyles;
   font: font;
+  yAxisText: string;
   normalise: boolean;
   yMin?: number;
   yMax?: number;
@@ -184,6 +185,7 @@ export const IndicatorLinechart = (
       width={indicatorParams.width}
       lineStyles={indicatorParams.lineStyles}
       font={indicatorParams.font}
+      yAxisText={indicatorParams.yAxisText}
       yMin={indicatorParams.yMin}
       yMax={indicatorParams.yMax}
     />

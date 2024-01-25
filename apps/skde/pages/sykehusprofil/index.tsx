@@ -75,6 +75,7 @@ export const Skde = (): JSX.Element => {
       fontWeight: 700,
       fontFamily: "Plus Jakarta Sans",
     },
+    yAxisText: "Antall indikatorer",
     startYear: 2017,
     endYear: 2022,
     yMin: 0,
@@ -89,6 +90,12 @@ export const Skde = (): JSX.Element => {
   const checkNormalise = () => {
     setNormalise(!normalise);
   };
+
+  if (normalise) {
+    indicatorParams.yAxisText = "Andel"
+  } else {
+    indicatorParams.yAxisText = "Antall indikatorer"
+  }
 
   return (
     <div>
