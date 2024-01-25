@@ -58,7 +58,6 @@ export const Skde = (): JSX.Element => {
 
   const indicatorParams: IndicatorLinechartParams = {
     unitNames: [validated_treatment_units[0]],
-    unitLevel: "hospital",
     context: "caregiver",
     type: "ind",
     width: 800,

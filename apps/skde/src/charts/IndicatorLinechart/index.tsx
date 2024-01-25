@@ -7,8 +7,8 @@ import { LineStyles, font } from "../LinechartBase";
 
 export type IndicatorLinechartParams = {
   registerShortName?: string;
-  unitNames: string[];
-  unitLevel: "nation" | "rhf" | "hf" | "hospital";
+  unitNames?: string[];
+  unitLevel?: "nation" | "rhf" | "hf" | "hospital";
   context: "caregiver" | "resident";
   type: "ind" | "dg";
   width: number;
