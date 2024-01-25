@@ -9,12 +9,12 @@ import { useQueryParam } from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
 import SelectTreatmentUnits from "qmongjs/src/components/SelectTreatmentUnits";
 import { useUnitNamesQuery } from "qmongjs/src/helpers/hooks";
-import { useRouter } from "next/router";
 import { NestedTreatmentUnitName } from "qmongjs/src/components/RegisterPage/unitnamelist/unitnamelistbody";
 import { OptsTu } from "types";
 import { mainQueryParamsConfig } from "qmongjs/src/app_config";
 import { validateTreatmentUnits } from "qmongjs/src/helpers/functions";
 import { UnitNameList } from "qmongjs/src/components/RegisterPage/unitnamelist";
+import { Checkbox, FormControlLabel } from "@mui/material";
 
 const theme = {
   lineChartBackground: {
@@ -79,6 +79,16 @@ export const Skde = (): JSX.Element => {
     startYear: 2017,
     endYear: 2022,
     yMin: 0,
+    normalise: false,
+  };
+
+  //State logic for normalising the lien plot
+  const [normalise, setNormalise] = React.useState(indicatorParams.normalise);
+
+  indicatorParams.normalise = normalise;
+
+  const checkNormalise = () => {
+    setNormalise(!normalise);
   };
 
   return (
@@ -123,6 +133,12 @@ export const Skde = (): JSX.Element => {
         <ThemeProvider theme={theme}>
           <IndicatorLinechart {...indicatorParams} />
         </ThemeProvider>
+      </div>
+      <div>
+        <FormControlLabel
+          control={<Checkbox onChange={checkNormalise} />}
+          label="Vis andel"
+        />
       </div>
       <div>
         <img

@@ -15,6 +15,7 @@ export type IndicatorLinechartParams = {
   height: number;
   lineStyles: LineStyles;
   font: font;
+  normalise: boolean;
   yMin?: number;
   yMax?: number;
   startYear?: number;
@@ -114,6 +115,22 @@ export const setMissingToZero = (
   return chartData;
 };
 
+const normaliseChartData = (data: LinechartData[][]) => {
+  // Count instances per year
+  const sum0 = data[0].map((point: LinechartData) => point.y);
+  const sum1 = data[1].map((point: LinechartData) => point.y);
+  const sum2 = data[2].map((point: LinechartData) => point.y);
+
+  for (let i = 0; i < data[0].length; i++) {
+    const sumAll = sum0[i] + sum1[i] + sum2[i];
+    data[0][i].y = data[0][i].y / sumAll;
+    data[1][i].y = data[1][i].y / sumAll;
+    data[2][i].y = data[2][i].y / sumAll;
+  }
+
+  return data;
+};
+
 export const IndicatorLinechart = (
   indicatorParams: IndicatorLinechartParams,
 ) => {
@@ -152,7 +169,13 @@ export const IndicatorLinechart = (
     );
 
   // Fill missing years with zero
-  const chartData = setMissingToZero(groupedLevels, minYear, maxYear);
+  let chartData = setMissingToZero(groupedLevels, minYear, maxYear);
+
+  const normalise = indicatorParams.normalise ?? false;
+
+  if (normalise) {
+    chartData = normaliseChartData(chartData);
+  }
 
   return (
     <LinechartBase
