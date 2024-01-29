@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import {
+  Box,
   Typography,
   Flex,
   Field,
@@ -10,7 +11,8 @@ import {
 } from "@strapi/design-system";
 import EditPageStringsContext from "../../EditPageStringsContext";
 import MediaLib from "../MediaLib";
-import { Media } from "@strapi/icons";
+import atlas from "../../../../../../../../api/atlas/controllers/atlas";
+import AtlasEditorRequests from "../../../../api/atlas-editor";
 
 const AtlasFrontPageFields = ({
   shortTitle,
@@ -138,12 +140,9 @@ const AtlasFrontPageFields = ({
           onChange={handleFrontPageImageChange}
           onToggle={handleToggleFrontPageImageModal}
         />
-        {/* Display selected assets */}
-        {selectedFrontPageImageAssets.map((asset) => (
-          <div key={asset.url}>
-            <img src={asset.url} alt={asset.alt} />
-          </div>
-        ))}
+        {
+          // ? displayFrontPageImageThumb()
+        }
       </Field>
     </Flex>
   );

@@ -24,23 +24,11 @@ const MediaLib = ({ isOpen, onChange, onToggle }) => {
 
   return (
     <MediaLibraryDialog
-      onClose={onToggle}
       onSelectAssets={handleSelectAssets}
-      multiple={false}
+      allowedTypes={["images"]}
+      onClose={onToggle}
     />
   );
-};
-
-MediaLib.defaultProps = {
-  isOpen: false,
-  onChange: () => {},
-  onToggle: () => {},
-};
-
-MediaLib.propTypes = {
-  isOpen: PropTypes.bool,
-  onChange: PropTypes.func,
-  onToggle: PropTypes.func,
 };
 
 export default MediaLib;
