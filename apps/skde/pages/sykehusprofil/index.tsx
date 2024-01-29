@@ -92,9 +92,9 @@ export const Skde = (): JSX.Element => {
   };
 
   if (normalise) {
-    indicatorParams.yAxisText = "Andel"
+    indicatorParams.yAxisText = "Andel";
   } else {
-    indicatorParams.yAxisText = "Antall indikatorer"
+    indicatorParams.yAxisText = "Antall indikatorer";
   }
 
   return (

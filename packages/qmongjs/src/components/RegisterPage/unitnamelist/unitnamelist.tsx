@@ -19,11 +19,16 @@ interface Props {
   nestedUnitNames: NestedUnitName[];
   treatment_units: string[];
   update_treatment_units: Dispatch<string[]>;
-  multiple_choice: boolean
+  multiple_choice: boolean;
 }
 
 export const UnitNameList = (props: Props) => {
-  const { nestedUnitNames, treatment_units, update_treatment_units, multiple_choice } = props;
+  const {
+    nestedUnitNames,
+    treatment_units,
+    update_treatment_units,
+    multiple_choice,
+  } = props;
   const [tu_list_display, update_tu_list_display] = useState("none");
   const style_tu_list = { display: tu_list_display };
   const tu_str_elm = nestedUnitNames.map((element) => {
