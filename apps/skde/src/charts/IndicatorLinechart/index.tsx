@@ -1,4 +1,4 @@
-import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
+import { useIndicatorQuery } from "qmongjs";
 import LinechartBase, { LinechartData } from "../LinechartBase";
 import { UseQueryResult } from "@tanstack/react-query";
 import _ from "lodash";
