@@ -148,6 +148,7 @@ export const MainRegister: React.FC<MainRegisterProps> = ({
               nestedUnitNames={nestedUnitNames}
               treatment_units={validated_treatment_units}
               update_treatment_units={update_treatment_units}
+              multiple_choice={true}
             />
           </div>
           <div className={styles.yearSelection}>
