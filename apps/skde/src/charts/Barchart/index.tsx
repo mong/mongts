@@ -217,6 +217,9 @@ export const Barchart = <
               y: -15,
               transform: "",
               fontWeight: "bold",
+              textAnchor: "start",
+              fill: "",
+              fontFamily: "",
             }}
           />
         </Group>
@@ -242,6 +245,8 @@ export const Barchart = <
               fontSize: 14,
               textAnchor: "middle",
               fontWeight: "bold",
+              fill: "",
+              fontFamily: "",
             }}
           />
         </Group>
