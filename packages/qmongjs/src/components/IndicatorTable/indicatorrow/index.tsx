@@ -137,7 +137,7 @@ const formatIndicatorValues = (
 
 export interface IndicatorRowProps {
   context: { context: string; type: string };
-  treatmantYear: number;
+  treatmentYear: number;
   description: Description;
   indicatorData: Indicator[];
   unitNames?: string[];
@@ -149,7 +149,7 @@ export interface IndicatorRowProps {
 export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
   const {
     context,
-    treatmantYear,
+    treatmentYear,
     description,
     indicatorData,
     unitNames = ["Nasjonalt"],
@@ -197,7 +197,7 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
 
   // Only define lastCompleteYear if it is before the year of the data.
   const lastCompleteYear =
-    delivery_latest_affirm_year && treatmantYear > delivery_latest_affirm_year
+    delivery_latest_affirm_year && treatmentYear > delivery_latest_affirm_year
       ? delivery_latest_affirm_year
       : undefined;
 
@@ -205,7 +205,7 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
     selected_row === ind_id ? (
       <ChartRow
         context={context}
-        treatmentYear={treatmantYear}
+        treatmentYear={treatmentYear}
         colspan={colspan}
         description={description}
         figure_class={medicalFieldClass}
