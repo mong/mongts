@@ -201,6 +201,11 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
       ? delivery_latest_affirm_year
       : undefined;
 
+  const lastCompleteDate = indicatorData[0].delivery_latest_affirm;
+
+  const lastCompleteDateString = lastCompleteDate ? 
+    new Date(lastCompleteDate).toLocaleString("no-NB", {month: "long", day: "numeric", year: "numeric"}) : undefined;
+
   const tr_fig =
     selected_row === ind_id ? (
       <ChartRow
@@ -231,6 +236,7 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
         <IndicatorDescription
           description={description}
           lastCompleteYear={lastCompleteYear}
+          lastCompleteDateString={lastCompleteDateString}
         />
         {indPerUnit}
       </tr>
