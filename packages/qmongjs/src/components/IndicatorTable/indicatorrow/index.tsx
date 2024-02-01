@@ -203,8 +203,13 @@ export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
 
   const lastCompleteDate = indicatorData[0].delivery_latest_affirm;
 
-  const lastCompleteDateString = lastCompleteDate ? 
-    new Date(lastCompleteDate).toLocaleString("no-NB", {month: "long", day: "numeric", year: "numeric"}) : undefined;
+  const lastCompleteDateString = lastCompleteDate
+    ? new Date(lastCompleteDate).toLocaleString("no-NB", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      })
+    : undefined;
 
   const tr_fig =
     selected_row === ind_id ? (
