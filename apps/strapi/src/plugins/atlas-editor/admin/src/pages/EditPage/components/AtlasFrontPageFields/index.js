@@ -11,8 +11,6 @@ import {
 } from "@strapi/design-system";
 import EditPageStringsContext from "../../EditPageStringsContext";
 import MediaLib from "../MediaLib";
-import atlas from "../../../../../../../../api/atlas/controllers/atlas";
-import AtlasEditorRequests from "../../../../api/atlas-editor";
 
 const AtlasFrontPageFields = ({
   shortTitle,

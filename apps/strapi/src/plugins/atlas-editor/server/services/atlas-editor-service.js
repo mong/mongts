@@ -1,7 +1,5 @@
 "use strict";
 
-const atlas = require("../../../../api/atlas/controllers/atlas");
-
 const populateParams = {
   id: true,
   mainTitle: true,
