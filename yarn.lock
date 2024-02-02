@@ -9601,80 +9601,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"decap-cms-core@npm:3.2.8":
-  version: 3.2.8
-  resolution: "decap-cms-core@npm:3.2.8"
-  dependencies:
-    "@iarna/toml": "npm:2.2.5"
-    "@reduxjs/toolkit": "npm:^1.9.1"
-    ajv: "npm:8.12.0"
-    ajv-errors: "npm:^3.0.0"
-    ajv-keywords: "npm:^5.0.0"
-    clean-stack: "npm:^4.1.0"
-    copy-text-to-clipboard: "npm:^3.0.0"
-    deepmerge: "npm:^4.2.2"
-    diacritics: "npm:^1.3.0"
-    fuzzy: "npm:^0.1.1"
-    gotrue-js: "npm:^0.9.24"
-    gray-matter: "npm:^4.0.2"
-    history: "npm:^4.7.2"
-    immer: "npm:^9.0.0"
-    js-base64: "npm:^3.0.0"
-    jwt-decode: "npm:^3.0.0"
-    node-polyglot: "npm:^2.3.0"
-    prop-types: "npm:^15.7.2"
-    react: "npm:^16.8.4"
-    react-dnd: "npm:^14.0.0"
-    react-dnd-html5-backend: "npm:^14.0.0"
-    react-dom: "npm:^16.8.4"
-    react-frame-component: "npm:^5.2.1"
-    react-hot-loader: "npm:^4.8.0"
-    react-immutable-proptypes: "npm:^2.1.0"
-    react-is: "npm:16.13.1"
-    react-markdown: "npm:^6.0.2"
-    react-modal: "npm:^3.8.1"
-    react-polyglot: "npm:^0.7.0"
-    react-redux: "npm:^7.2.0"
-    react-router-dom: "npm:^5.2.0"
-    react-scroll-sync: "npm:^0.9.0"
-    react-split-pane: "npm:^0.1.85"
-    react-toastify: "npm:^9.1.1"
-    react-topbar-progress-indicator: "npm:^4.0.0"
-    react-virtualized-auto-sizer: "npm:^1.0.2"
-    react-waypoint: "npm:^10.0.0"
-    react-window: "npm:^1.8.5"
-    redux: "npm:^4.0.5"
-    redux-devtools-extension: "npm:^2.13.8"
-    redux-notifications: "npm:^4.0.1"
-    redux-thunk: "npm:^2.3.0"
-    remark-gfm: "npm:1.0.0"
-    sanitize-filename: "npm:^1.6.1"
-    semaphore: "npm:^1.0.5"
-    tomlify-j0.4: "npm:^3.0.0-alpha.0"
-    url: "npm:^0.11.0"
-    url-join: "npm:^4.0.1"
-    what-input: "npm:^5.1.4"
-    yaml: "npm:^1.8.3"
-  peerDependencies:
-    "@emotion/react": ^11.11.1
-    "@emotion/styled": ^11.11.0
-    decap-cms-editor-component-image: ^3.0.0
-    decap-cms-lib-auth: ^3.0.0
-    decap-cms-lib-util: ^3.0.0
-    decap-cms-lib-widgets: ^3.0.0
-    decap-cms-ui-default: ^3.0.0
-    immutable: ^3.7.6
-    lodash: ^4.17.11
-    moment: ^2.24.0
-    prop-types: ^15.7.2
-    react: ^16.8.4 || ^17.0.0
-    react-dom: ^16.8.4 || ^17.0.0
-    react-immutable-proptypes: ^2.1.0
-  checksum: 10/7f65574a411d213082189e49a94a5e004221fbad49db3e43b235aff40a94d1e2c9374753765ff5ee692677257d56e60f0156016359b8b2b0c1d0e1473547ac8b
-  languageName: node
-  linkType: hard
-
-"decap-cms-core@npm:^3.3.1":
+"decap-cms-core@npm:3.3.1, decap-cms-core@npm:^3.3.1":
   version: 3.3.1
   resolution: "decap-cms-core@npm:3.3.1"
   dependencies:
@@ -10451,13 +10378,6 @@ __metadata:
     domhandler: "npm:^4.2.0"
     entities: "npm:^2.0.0"
   checksum: 10/53b217bcfed4a0f90dd47f34f239b1c81fff53ffa39d164d722325817fdb554903b145c2d12c8421ce0df7d31c1b180caf7eacd3c86391dd925f803df8027dcc
-  languageName: node
-  linkType: hard
-
-"dom-walk@npm:^0.1.0":
-  version: 0.1.2
-  resolution: "dom-walk@npm:0.1.2"
-  checksum: 10/19eb0ce9c6de39d5e231530685248545d9cd2bd97b2cb3486e0bfc0f2a393a9addddfd5557463a932b52fdfcf68ad2a619020cd2c74a5fe46fbecaa8e80872f3
   languageName: node
   linkType: hard
 
@@ -12449,16 +12369,6 @@ __metadata:
     kind-of: "npm:^6.0.2"
     which: "npm:^1.3.1"
   checksum: 10/a405b9f83c7d88a49dc1c1e458d6585e258356810d3d0f41094265152a06a0f393b14d911f45616e35a4ce3894176a73be2984883575e778f55e90bf812d7337
-  languageName: node
-  linkType: hard
-
-"global@npm:^4.3.0":
-  version: 4.4.0
-  resolution: "global@npm:4.4.0"
-  dependencies:
-    min-document: "npm:^2.19.0"
-    process: "npm:^0.11.10"
-  checksum: 10/9c057557c8f5a5bcfbeb9378ba4fe2255d04679452be504608dd5f13b54edf79f7be1db1031ea06a4ec6edd3b9f5f17d2d172fb47e6c69dae57fd84b7e72b77f
   languageName: node
   linkType: hard
 
@@ -15263,7 +15173,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loader-utils@npm:^2.0.0, loader-utils@npm:^2.0.3, loader-utils@npm:^2.0.4":
+"loader-utils@npm:^2.0.0, loader-utils@npm:^2.0.4":
   version: 2.0.4
   resolution: "loader-utils@npm:2.0.4"
   dependencies:
@@ -16646,15 +16556,6 @@ __metadata:
   version: 4.0.0
   resolution: "mimic-fn@npm:4.0.0"
   checksum: 10/995dcece15ee29aa16e188de6633d43a3db4611bcf93620e7e62109ec41c79c0f34277165b8ce5e361205049766e371851264c21ac64ca35499acb5421c2ba56
-  languageName: node
-  linkType: hard
-
-"min-document@npm:^2.19.0":
-  version: 2.19.0
-  resolution: "min-document@npm:2.19.0"
-  dependencies:
-    dom-walk: "npm:^0.1.0"
-  checksum: 10/4e45a0686c81cc04509989235dc6107e2678a59bb48ce017d3c546d7d9a18d782e341103e66c78081dd04544704e2196e529905c41c2550bca069b69f95f07c8
   languageName: node
   linkType: hard
 
@@ -19247,20 +19148,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^16.8.4":
-  version: 16.14.0
-  resolution: "react-dom@npm:16.14.0"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-    object-assign: "npm:^4.1.1"
-    prop-types: "npm:^15.6.2"
-    scheduler: "npm:^0.19.1"
-  peerDependencies:
-    react: ^16.14.0
-  checksum: 10/d59f3376ab41ee874fbb9bd738160f6d70f619b4cba40531d5c60dfa289c216cff4d5e6552babdf59843a1a8e7f08faf4a746bf4df6c68d2b406a6c13bdbd92b
-  languageName: node
-  linkType: hard
-
 "react-error-overlay@npm:^6.0.11":
   version: 6.0.11
   resolution: "react-error-overlay@npm:6.0.11"
@@ -19276,29 +19163,6 @@ __metadata:
     react: ">= 16.3"
     react-dom: ">= 16.3"
   checksum: 10/58b34e1c2346a39df41e363b6f1dbde550d8ac974b562bf8df84dde1ceff27c9e6691eded947a39e4554ca8049cc7e3176c4e8fc954d54948393d27938e646d8
-  languageName: node
-  linkType: hard
-
-"react-hot-loader@npm:^4.8.0":
-  version: 4.13.1
-  resolution: "react-hot-loader@npm:4.13.1"
-  dependencies:
-    fast-levenshtein: "npm:^2.0.6"
-    global: "npm:^4.3.0"
-    hoist-non-react-statics: "npm:^3.3.0"
-    loader-utils: "npm:^2.0.3"
-    prop-types: "npm:^15.6.1"
-    react-lifecycles-compat: "npm:^3.0.4"
-    shallowequal: "npm:^1.1.0"
-    source-map: "npm:^0.7.3"
-  peerDependencies:
-    "@types/react": ^15.0.0 || ^16.0.0 || ^17.0.0
-    react: ^15.0.0 || ^16.0.0 || ^17.0.0
-    react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-  checksum: 10/8a87d5152b09812649ef5500913d61049d2130d8afda2b39c285ff373fb6673b88bbd95b1c0c454858bc9f15196f3c0667509bbaae925b43381200aa05802db9
   languageName: node
   linkType: hard
 
@@ -19801,17 +19665,6 @@ __metadata:
   dependencies:
     loose-envify: "npm:^1.1.0"
   checksum: 10/b9214a9bd79e99d08de55f8bef2b7fc8c39630be97c4e29d7be173d14a9a10670b5325e94485f74cd8bff4966ef3c78ee53c79a7b0b9b70cba20aa8973acc694
-  languageName: node
-  linkType: hard
-
-"react@npm:^16.8.4":
-  version: 16.14.0
-  resolution: "react@npm:16.14.0"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-    object-assign: "npm:^4.1.1"
-    prop-types: "npm:^15.6.2"
-  checksum: 10/ee04c82f5ecb70fe15a48d8cfc3fb20ce2f7e65277d4adcb56a0ac2b82c54550d4c65eabce0d5dc0cc90d053831b9586d72ee515b11cdf0c5436c7f95aafdcda
   languageName: node
   linkType: hard
 
@@ -20803,16 +20656,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.19.1":
-  version: 0.19.1
-  resolution: "scheduler@npm:0.19.1"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-    object-assign: "npm:^4.1.1"
-  checksum: 10/2bf42cd56994dd8a97bad0ecb6fbd720674f640c4a95957f9ab453dda28133d5f56755d842e6a0b203efef89a49c52354d151946f50e5c0b633d97d718285c8d
-  languageName: node
-  linkType: hard
-
 "scheduler@npm:^0.23.0":
   version: 0.23.0
   resolution: "scheduler@npm:0.23.0"
@@ -21047,13 +20890,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"shallowequal@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "shallowequal@npm:1.1.0"
-  checksum: 10/f4c1de0837f106d2dbbfd5d0720a5d059d1c66b42b580965c8f06bb1db684be8783538b684092648c981294bf817869f743a066538771dbecb293df78f765e00
-  languageName: node
-  linkType: hard
-
 "shebang-command@npm:^2.0.0":
   version: 2.0.0
   resolution: "shebang-command@npm:2.0.0"
@@ -21164,7 +21000,7 @@ __metadata:
     d3-shape: "npm:3.2.0"
     d3-time-format: "npm:4.1.0"
     decap-cms-app: "npm:3.1.1"
-    decap-cms-core: "npm:3.2.8"
+    decap-cms-core: "npm:3.3.1"
     eslint: "npm:8.56.0"
     eslint-config-next: "npm:14.1.0"
     gray-matter: "npm:4.0.3"
