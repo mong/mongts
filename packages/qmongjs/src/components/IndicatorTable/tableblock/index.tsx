@@ -107,7 +107,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
         medicalFieldClass={medicalFieldClass}
         showLevelFilter={showLevelFilter}
         colspan={colspan}
-        treatmantYear={treatmentYear}
+        treatmentYear={treatmentYear}
       />
     );
   });
