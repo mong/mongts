@@ -15,6 +15,10 @@ import { mainQueryParamsConfig } from "qmongjs/src/app_config";
 import { validateTreatmentUnits } from "qmongjs/src/helpers/functions";
 import { UnitNameList } from "qmongjs/src/components/RegisterPage/unitnamelist";
 import { Checkbox, FormControlLabel } from "@mui/material";
+import {
+  MedfieldTable,
+  MedfieldTableProps,
+} from "../../src/charts/MedfieldTable/MedfieldTableRow";
 
 const theme = {
   lineChartBackground: {
@@ -82,6 +86,15 @@ export const Skde = (): JSX.Element => {
     normalise: false,
   };
 
+  const medfieldTableProps: MedfieldTableProps = {
+    unitNames: [validated_treatment_units[0]],
+    context: "caregiver",
+    type: "ind",
+    width: 800,
+    height: 400,
+    treatmentYear: 2023,
+  };
+
   //State logic for normalising the lien plot
   const [normalise, setNormalise] = React.useState(indicatorParams.normalise);
 
@@ -145,6 +158,20 @@ export const Skde = (): JSX.Element => {
           control={<Checkbox onChange={checkNormalise} />}
           label="Vis andel"
         />
+      </div>
+      <div>
+        <Text
+          x={"10%"}
+          y={50}
+          width={500}
+          verticalAnchor="start"
+          style={{ fontWeight: 700, fontSize: 24 }}
+        >
+          Fagområder
+        </Text>
+      </div>
+      <div>
+        <MedfieldTable {...medfieldTableProps} />
       </div>
       <div>
         <img
