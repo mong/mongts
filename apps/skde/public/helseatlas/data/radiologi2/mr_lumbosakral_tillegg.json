@@ -72,8 +72,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnitt antalll undersøkelser",
-        "en": "Årlige gjennomsnitt antalll undersøkelser"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2021.",
+        "en": "Årlige gjennomsnittsverdier for perioden 2018–2021."
       },
       "columns": [
         {
@@ -84,15 +84,29 @@
           "format": ""
         },
         {
-          "id": "tot_events",
-          "label_no": "Gjentatte",
+          "id": "totsnitt",
+          "label_no": "Gjentatte rate",
           "label_en": "Repeats",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
+          "id": "tot_events",
+          "label_no": "Gjentatte antall",
+          "label_en": "Repeats",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "rg_andel",
+          "label_no": "Røntgen rate",
+          "label_en": "X-ray",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
           "id": "rg_antall",
-          "label_no": "Røntgen",
+          "label_no": "Røntgen antall",
           "label_en": "X-ray",
           "typeVar": "number",
           "format": ",.0f"
