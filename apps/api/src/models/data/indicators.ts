@@ -25,9 +25,18 @@ export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
       "ind.level_green",
       "ind.level_yellow",
       "ind.sformat",
+      "registry.id as registry_id",
+      "registry.name as registry_name",
+      "registry.full_name as registry_full_name",
+      "medfield.id as medfield_id",
+      "medfield.name as medfield_name",
+      "medfield.full_name as medfield_full_name",
     )
     .from("agg_data")
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
+    .leftJoin("registry", "ind.registry_id", "registry.id")
+    .leftJoin("registry_medfield", "registry.id", "registry_medfield.registry_id")
+    .leftJoin("medfield", "registry_medfield.medfield_id", "medfield.id")
     .where("include", 1)
     .where(function () {
       this.whereRaw("denominator >= min_denominator")
