@@ -45,8 +45,8 @@ export const IndicatorDescription: React.FC<DescriptionProps> = (props) => {
       {lastCompleteYear && (
         <div className={style.not_complete_year}>
           <h4>
-            Data er komplett til og med {lastCompleteDateString}. Siste
-            komplette år er {lastCompleteYear}.
+            Data er komplett til {lastCompleteDateString}. Siste komplette år er{" "}
+            {lastCompleteYear}.
           </h4>
         </div>
       )}
