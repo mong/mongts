@@ -12,24 +12,31 @@ export type MedfieldTableProps = {
 };
 
 export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
-
   // Fetch aggregated data
   const indicatorQuery: UseQueryResult<any, unknown> =
-  useIndicatorQuery(medfieldTableParams);
+    useIndicatorQuery(medfieldTableParams);
 
   if (indicatorQuery.isFetching) {
     return null;
   }
 
-  console.log(indicatorQuery.data)
+  console.log(indicatorQuery.data);
 
   // Trenger register-id og fagområde
 
-  return(
-      <div>
-        <svg id="medfieldtable" width={medfieldTableParams.width} height={medfieldTableParams.height}>
-          <LinechartBackground id="medfieldtablebackground" width={medfieldTableParams.width} height={medfieldTableParams.height} />
-        </svg>
-      </div>
+  return (
+    <div>
+      <svg
+        id="medfieldtable"
+        width={medfieldTableParams.width}
+        height={medfieldTableParams.height}
+      >
+        <LinechartBackground
+          id="medfieldtablebackground"
+          width={medfieldTableParams.width}
+          height={medfieldTableParams.height}
+        />
+      </svg>
+    </div>
   );
 };
