@@ -1,0 +1,634 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "totsnitt"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Antall MR kolumna pr. 10 000 innbyggere 68 år eller eldre",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "tot2018",
+        "tot2019",
+        "tot2020",
+        "tot2021",
+        "tot2022"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022"
+        ],
+        "en": [
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022"
+        ]
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_2",
+      "x": [
+        "privsnitt",
+        "offsnitt"
+      ],
+      "xLegend": {
+        "nb": [
+          "Private røntgeninstitutt",
+          "Offentlig"
+        ],
+        "en": [
+          "Private røntgeninstitutt",
+          "Offentlig"
+        ]
+      },
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Antall offentlig/privat pr. 10 000 innbyggere 68 år eller eldre",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "table",
+      "data": "datasett_1",
+      "caption": {
+        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall pr. 10  000 innbyggere 68 år eller eldre",
+        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall pr. 10  000 innbyggere 68 år eller eldre"
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområder",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "totsnitt",
+          "label_no": "Rate",
+          "label_en": "Rate",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "tot_events",
+          "label_no": "Undersøkelser",
+          "label_en": "Examinations",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "tot_pas",
+          "label_no": "Pasienter",
+          "label_en": "Patients",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "tot_pop",
+          "label_no": "Innbyggere",
+          "label_en": "Inhabitants",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "tot_pr_pas",
+          "label_no": "Undersøkelser pr. pas.",
+          "label_en": "Examinations per patient",
+          "typeVar": "number",
+          "format": ",.2f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "datasett_1",
+      "x": "totsnitt",
+      "caption": {
+        "nb": "Antall MR kolumna pr. 10 000 innbyggere 68 år eller eldre",
+        "en": "tmp"
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": 331.890977203,
+          "min": 293.264479305,
+          "lag_min": 343.568162618,
+          "grense": 337.729569911
+        },
+        {
+          "cluster": 2,
+          "max": 392.04403136,
+          "min": 343.568162618,
+          "lag_min": 408.330716886,
+          "grense": 400.187374123
+        },
+        {
+          "cluster": 3,
+          "max": 459.754165339,
+          "min": 408.330716886,
+          "lag_min": 484.941621272,
+          "grense": 472.347893305
+        }
+      ],
+      "format": ",.0f"
+    },
+    {
+      "type": "data",
+      "label": "datasett_1",
+      "national": "Norge",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "data": [
+        {
+          "bohf": "Finnmark",
+          "tot2018": 289.392421799,
+          "tot2019": 318.874879515,
+          "tot2020": 304.829886547,
+          "tot2021": 380.509033496,
+          "tot2022": 357.992600038,
+          "totsnitt": 331.890977203,
+          "tot_events": 381.6,
+          "tot_pas": 361.2,
+          "tot_pop": 11337.6,
+          "tot_pr_pas": 1.05647840532
+        },
+        {
+          "bohf": "UNN",
+          "tot2018": 403.424734689,
+          "tot2019": 384.41047582,
+          "tot2020": 365.700454588,
+          "tot2021": 398.12957234,
+          "tot2022": 402.706437264,
+          "totsnitt": 390.95825127,
+          "tot_events": 1193.2,
+          "tot_pas": 1122.8,
+          "tot_pop": 30205.2,
+          "tot_pr_pas": 1.06270039188
+        },
+        {
+          "bohf": "Nordland",
+          "tot2018": 369.102697505,
+          "tot2019": 376.098003996,
+          "tot2020": 352.698828986,
+          "tot2021": 430.150306425,
+          "tot2022": 425.891546313,
+          "totsnitt": 392.04403136,
+          "tot_events": 893.2,
+          "tot_pas": 834.6,
+          "tot_pop": 22691.4,
+          "tot_pr_pas": 1.07021327582
+        },
+        {
+          "bohf": "Helgeland",
+          "tot2018": 380.747643156,
+          "tot2019": 419.704840327,
+          "tot2020": 419.075546432,
+          "tot2021": 398.039292301,
+          "tot2022": 427.640154516,
+          "totsnitt": 408.989851502,
+          "tot_events": 564.8,
+          "tot_pas": 531.8,
+          "tot_pop": 13845.8,
+          "tot_pr_pas": 1.06205340354
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "tot2018": 309.825641807,
+          "tot2019": 312.948895342,
+          "tot2020": 318.297556159,
+          "tot2021": 313.812500599,
+          "tot2022": 296.420060992,
+          "totsnitt": 310.207436262,
+          "tot_events": 717.2,
+          "tot_pas": 681.4,
+          "tot_pop": 23056.2,
+          "tot_pr_pas": 1.05253889052
+        },
+        {
+          "bohf": "St. Olav",
+          "tot2018": 397.312085188,
+          "tot2019": 362.750779691,
+          "tot2020": 331.097428763,
+          "tot2021": 336.331453114,
+          "tot2022": 336.078662052,
+          "totsnitt": 351.685112486,
+          "tot_events": 1625.6,
+          "tot_pas": 1537.8,
+          "tot_pop": 45942.8,
+          "tot_pr_pas": 1.05709455066
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "tot2018": 358.258624514,
+          "tot2019": 379.461668895,
+          "tot2020": 349.804482081,
+          "tot2021": 394.644385621,
+          "tot2022": 402.438448428,
+          "totsnitt": 377.301723884,
+          "tot_events": 1604,
+          "tot_pas": 1523,
+          "tot_pop": 42897,
+          "tot_pr_pas": 1.05318450427
+        },
+        {
+          "bohf": "Førde",
+          "tot2018": 274.926239647,
+          "tot2019": 318.382190958,
+          "tot2020": 253.106853365,
+          "tot2021": 316.848915431,
+          "tot2022": 303.352711563,
+          "totsnitt": 293.264479305,
+          "tot_events": 521.8,
+          "tot_pas": 496.6,
+          "tot_pop": 18221.6,
+          "tot_pr_pas": 1.05074506645
+        },
+        {
+          "bohf": "Bergen",
+          "tot2018": 501.890603009,
+          "tot2019": 493.466990182,
+          "tot2020": 461.872358754,
+          "tot2021": 482.872265237,
+          "tot2022": 484.81078934,
+          "totsnitt": 484.941621272,
+          "tot_events": 2957.8,
+          "tot_pas": 2776,
+          "tot_pop": 61452.6,
+          "tot_pr_pas": 1.06548991354
+        },
+        {
+          "bohf": "Fonna",
+          "tot2018": 418.394367115,
+          "tot2019": 458.617768818,
+          "tot2020": 418.833209359,
+          "tot2021": 453.456659508,
+          "tot2022": 448.525375169,
+          "totsnitt": 439.751754525,
+          "tot_events": 1197,
+          "tot_pas": 1129,
+          "tot_pop": 27423.8,
+          "tot_pr_pas": 1.06023029229
+        },
+        {
+          "bohf": "Stavanger",
+          "tot2018": 487.379353579,
+          "tot2019": 458.18641979,
+          "tot2020": 442.174854219,
+          "tot2021": 427.101204304,
+          "tot2022": 461.401567539,
+          "totsnitt": 454.540071465,
+          "tot_events": 1945.2,
+          "tot_pas": 1820.2,
+          "tot_pop": 42597.2,
+          "tot_pr_pas": 1.06867377211
+        },
+        {
+          "bohf": "Østfold",
+          "tot2018": 455.619275752,
+          "tot2019": 438.793564806,
+          "tot2020": 429.682750567,
+          "tot2021": 450.728017802,
+          "tot2022": 479.939556104,
+          "totsnitt": 451.533144785,
+          "tot_events": 2330.4,
+          "tot_pas": 2187.6,
+          "tot_pop": 50778.2,
+          "tot_pr_pas": 1.06527701591
+        },
+        {
+          "bohf": "Akershus",
+          "tot2018": 436.789045236,
+          "tot2019": 444.329268168,
+          "tot2020": 399.754638957,
+          "tot2021": 458.976273767,
+          "tot2022": 492.891441406,
+          "totsnitt": 447.278557533,
+          "tot_events": 3491.8,
+          "tot_pas": 3262.6,
+          "tot_pop": 76679,
+          "tot_pr_pas": 1.07025072028
+        },
+        {
+          "bohf": "OUS",
+          "tot2018": 486.491790382,
+          "tot2019": 482.634062744,
+          "tot2020": 433.104209992,
+          "tot2021": 496.138027135,
+          "tot2022": 533.771146567,
+          "totsnitt": 486.870822053,
+          "tot_events": 1384.4,
+          "tot_pas": 1240.6,
+          "tot_pop": 28897,
+          "tot_pr_pas": 1.11591165565
+        },
+        {
+          "bohf": "Lovisenberg",
+          "tot2018": 423.059328905,
+          "tot2019": 409.631334578,
+          "tot2020": 420.476548537,
+          "tot2021": 447.246985232,
+          "tot2022": 444.167507229,
+          "totsnitt": 430.473901468,
+          "tot_events": 385.6,
+          "tot_pas": 355.4,
+          "tot_pop": 8811.4,
+          "tot_pr_pas": 1.08497467642
+        },
+        {
+          "bohf": "Diakonhjemmet",
+          "tot2018": 520.253469257,
+          "tot2019": 473.641043369,
+          "tot2020": 453.588619563,
+          "tot2021": 550.91187565,
+          "tot2022": 541.175005925,
+          "totsnitt": 508.399594704,
+          "tot_events": 1027.4,
+          "tot_pas": 928,
+          "tot_pop": 20174,
+          "tot_pr_pas": 1.10711206897
+        },
+        {
+          "bohf": "Innlandet",
+          "tot2018": 396.388546203,
+          "tot2019": 411.233140626,
+          "tot2020": 388.460806967,
+          "tot2021": 432.702985297,
+          "tot2022": 480.831442245,
+          "totsnitt": 422.854404024,
+          "tot_events": 2607.6,
+          "tot_pas": 2428.4,
+          "tot_pop": 61461.8,
+          "tot_pr_pas": 1.07379344424
+        },
+        {
+          "bohf": "Vestre Viken",
+          "tot2018": 420.00902336,
+          "tot2019": 423.131832918,
+          "tot2020": 371.892715254,
+          "tot2021": 405.787009335,
+          "tot2022": 420.145147621,
+          "totsnitt": 408.330716886,
+          "tot_events": 2948.8,
+          "tot_pas": 2763.2,
+          "tot_pop": 72275.8,
+          "tot_pr_pas": 1.06716850029
+        },
+        {
+          "bohf": "Vestfold",
+          "tot2018": 452.132396599,
+          "tot2019": 442.117222198,
+          "tot2020": 449.18326748,
+          "tot2021": 470.17696538,
+          "tot2022": 481.846233369,
+          "totsnitt": 459.754165339,
+          "tot_events": 1841.8,
+          "tot_pas": 1703.4,
+          "tot_pop": 39869.8,
+          "tot_pr_pas": 1.08124926617
+        },
+        {
+          "bohf": "Telemark",
+          "tot2018": 440.398600901,
+          "tot2019": 407.840415918,
+          "tot2020": 417.404754884,
+          "tot2021": 400.907517797,
+          "tot2022": 417.347902562,
+          "totsnitt": 416.446939838,
+          "tot_events": 1252,
+          "tot_pas": 1163.2,
+          "tot_pop": 29919.6,
+          "tot_pr_pas": 1.07634112792
+        },
+        {
+          "bohf": "Sørlandet",
+          "tot2018": 328.355112299,
+          "tot2019": 337.141271014,
+          "tot2020": 314.771475217,
+          "tot2021": 344.550425,
+          "tot2022": 388.282714408,
+          "totsnitt": 343.568162618,
+          "tot_events": 1536.4,
+          "tot_pas": 1463.8,
+          "tot_pop": 44427.6,
+          "tot_pr_pas": 1.04959693947
+        },
+        {
+          "bohf": "Norge",
+          "tot2018": 418.413665808,
+          "tot2019": 416.765206855,
+          "tot2020": 391.087364658,
+          "tot2021": 422.81449761,
+          "tot2022": 439.977268251,
+          "totsnitt": 418.143352679,
+          "tot_events": 32407.6,
+          "tot_pas": 30310.6,
+          "tot_pop": 772965.4,
+          "tot_pr_pas": 1.06918371791
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "datasett_2",
+      "description": "Ekstradatasettet for gitt resultatboks",
+      "data": [
+        {
+          "bohf": "Finnmark",
+          "offsnitt": 309.82719275,
+          "privsnitt": 22.0637844528,
+          "totsnitt": 331.890977203,
+          "andel_priv": 0.0664790125926,
+          "ermann": null
+        },
+        {
+          "bohf": "UNN",
+          "offsnitt": 102.728310688,
+          "privsnitt": 288.229940582,
+          "totsnitt": 390.95825127,
+          "andel_priv": 0.737239691568,
+          "ermann": null
+        },
+        {
+          "bohf": "Nordland",
+          "offsnitt": 122.724263407,
+          "privsnitt": 269.319767954,
+          "totsnitt": 392.04403136,
+          "andel_priv": 0.686963061315,
+          "ermann": null
+        },
+        {
+          "bohf": "Helgeland",
+          "offsnitt": 397.993659494,
+          "privsnitt": 10.9961920081,
+          "totsnitt": 408.989851502,
+          "andel_priv": 0.0268862221585,
+          "ermann": null
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "offsnitt": 249.288682701,
+          "privsnitt": 60.9187535612,
+          "totsnitt": 310.207436262,
+          "andel_priv": 0.196380700267,
+          "ermann": null
+        },
+        {
+          "bohf": "St. Olav",
+          "offsnitt": 88.0758417292,
+          "privsnitt": 263.609270757,
+          "totsnitt": 351.685112486,
+          "andel_priv": 0.749560505685,
+          "ermann": null
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "offsnitt": 253.238803425,
+          "privsnitt": 124.062920459,
+          "totsnitt": 377.301723884,
+          "andel_priv": 0.328816203599,
+          "ermann": null
+        },
+        {
+          "bohf": "Førde",
+          "offsnitt": 221.630165201,
+          "privsnitt": 71.6343141039,
+          "totsnitt": 293.264479305,
+          "andel_priv": 0.244265225279,
+          "ermann": null
+        },
+        {
+          "bohf": "Bergen",
+          "offsnitt": 113.255169455,
+          "privsnitt": 371.686451818,
+          "totsnitt": 484.941621272,
+          "andel_priv": 0.766456075357,
+          "ermann": null
+        },
+        {
+          "bohf": "Fonna",
+          "offsnitt": 82.1389251976,
+          "privsnitt": 357.612829327,
+          "totsnitt": 439.751754525,
+          "andel_priv": 0.813215241662,
+          "ermann": null
+        },
+        {
+          "bohf": "Stavanger",
+          "offsnitt": 90.1828486986,
+          "privsnitt": 364.357222766,
+          "totsnitt": 454.540071465,
+          "andel_priv": 0.801595383201,
+          "ermann": null
+        },
+        {
+          "bohf": "Østfold",
+          "offsnitt": 91.2095030683,
+          "privsnitt": 360.323641716,
+          "totsnitt": 451.533144785,
+          "andel_priv": 0.798000425613,
+          "ermann": null
+        },
+        {
+          "bohf": "Akershus",
+          "offsnitt": 96.0146764174,
+          "privsnitt": 351.263881115,
+          "totsnitt": 447.278557533,
+          "andel_priv": 0.785335838706,
+          "ermann": null
+        },
+        {
+          "bohf": "OUS",
+          "offsnitt": 116.432460873,
+          "privsnitt": 370.43836118,
+          "totsnitt": 486.870822053,
+          "andel_priv": 0.760855537857,
+          "ermann": null
+        },
+        {
+          "bohf": "Lovisenberg",
+          "offsnitt": 98.8742888785,
+          "privsnitt": 331.599612589,
+          "totsnitt": 430.473901468,
+          "andel_priv": 0.770312930607,
+          "ermann": null
+        },
+        {
+          "bohf": "Diakonhjemmet",
+          "offsnitt": 129.885580459,
+          "privsnitt": 378.514014246,
+          "totsnitt": 508.399594704,
+          "andel_priv": 0.744520684494,
+          "ermann": null
+        },
+        {
+          "bohf": "Innlandet",
+          "offsnitt": 138.022262201,
+          "privsnitt": 284.832141823,
+          "totsnitt": 422.854404024,
+          "andel_priv": 0.67359388743,
+          "ermann": null
+        },
+        {
+          "bohf": "Vestre Viken",
+          "offsnitt": 101.211879356,
+          "privsnitt": 307.11883753,
+          "totsnitt": 408.330716886,
+          "andel_priv": 0.752132584764,
+          "ermann": null
+        },
+        {
+          "bohf": "Vestfold",
+          "offsnitt": 53.7300445157,
+          "privsnitt": 406.024120823,
+          "totsnitt": 459.754165339,
+          "andel_priv": 0.88313309902,
+          "ermann": null
+        },
+        {
+          "bohf": "Telemark",
+          "offsnitt": 111.929875146,
+          "privsnitt": 304.517064691,
+          "totsnitt": 416.446939838,
+          "andel_priv": 0.731226563485,
+          "ermann": null
+        },
+        {
+          "bohf": "Sørlandet",
+          "offsnitt": 68.2040509248,
+          "privsnitt": 275.364111694,
+          "totsnitt": 343.568162618,
+          "andel_priv": 0.801483203784,
+          "ermann": null
+        },
+        {
+          "bohf": "Norge",
+          "offsnitt": 123.793582513,
+          "privsnitt": 294.349770166,
+          "totsnitt": 418.143352679,
+          "andel_priv": 0.703944635924,
+          "ermann": null
+        }
+      ]
+    }
+  ]
+}
