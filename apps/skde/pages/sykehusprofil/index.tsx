@@ -18,7 +18,7 @@ import { Checkbox, FormControlLabel } from "@mui/material";
 import {
   MedfieldTable,
   MedfieldTableProps,
-} from "../../src/charts/MedfieldTable/MedfieldTableRow";
+} from "../../src/charts/MedfieldTable";
 
 const theme = {
   lineChartBackground: {
