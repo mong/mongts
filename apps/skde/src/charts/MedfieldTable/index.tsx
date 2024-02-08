@@ -17,6 +17,8 @@ import { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import { Indicator } from "types";
 import { FaCircle, FaAdjust, FaRegCircle } from "react-icons/fa";
+import { level } from "qmongjs";
+import _ from "lodash";
 
 export type MedfieldTableProps = {
   unitNames: string[];
@@ -25,6 +27,12 @@ export type MedfieldTableProps = {
   type: string;
   width: number;
   height: number;
+};
+
+export type IndicatorLevels = {
+  ind_id: string;
+  year: number;
+  level: "H" | "M" | "L";
 };
 
 const createSymbols = (green: number, yellow: number, red: number) => {
@@ -45,30 +53,20 @@ const createSymbols = (green: number, yellow: number, red: number) => {
   return (symbols);
 }
 
-const rows = [
-  {
-    name: "Hjerte",
-    green: 2,
-    yellow: 1,
-    red: 3,
-    registers: [
-      { name: "reg1", green: 2, yellow: 5, red: 2 },
-      { name: "reg2", green: 2, yellow: 5, red: 2 },
-    ],
-  },
-  {
-    name: "Lunge",
-    green: 2,
-    yellow: 1,
-    red: 3,
-    registers: [
-      { name: "reg3", green: 2, yellow: 5, red: 2 },
-      { name: "reg4", green: 2, yellow: 5, red: 2 },
-    ],
-  },
-];
+type RowData = {
+  name: string; 
+  green: number; 
+  yellow: number;
+  red: number;
+  registers: {
+    name: string;
+    green: number;
+    yellow: number;
+    red: number;
+  }[]
+};
 
-const Row = (props: { row: (typeof rows)[0] }) => {
+const Row = (props: { row: RowData}) => {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
   return (
@@ -126,6 +124,57 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
   if (indicatorQuery.isFetching) {
     return null;
   }
+
+  console.log(indicatorQuery.data)
+
+   // Set indicator colour from value and colour limits
+   const levels = indicatorQuery.data.map((row) => {
+    const indicatorLevel = level(row);
+    return {
+      ind_id: row.ind_id, 
+      registry_id: row.registry_id, 
+      registry_full_name: row.registry_full_name,
+      medfield_id: row.medfield_id,
+      medfield_full_name: row.medfield_full_name,
+      level: indicatorLevel };
+  });
+
+  console.log((levels).reduce((result, value) => {
+    if (!(value.medfield_full_name in result)) {
+      result[value.medfield_full_name] = new Array();
+    }
+    result[value.medfield_full_name].push({ind_id: value.ind_id, registry_full_name: value.registry_full_name, level: value.level})
+
+    return(result)
+  }, 
+  {
+  })
+  )
+
+  // TODO: Få blokken over til å se ut som blokken under
+  
+  const rows: RowData[] = [
+    {
+      name: "Hjerte",
+      green: 2,
+      yellow: 1,
+      red: 3,
+      registers: [
+        { name: "reg1", green: 2, yellow: 5, red: 2 },
+        { name: "reg2", green: 2, yellow: 5, red: 2 },
+      ],
+    },
+    {
+      name: "Lunge",
+      green: 2,
+      yellow: 1,
+      red: 3,
+      registers: [
+        { name: "reg3", green: 2, yellow: 5, red: 2 },
+        { name: "reg4", green: 2, yellow: 5, red: 2 },
+      ],
+    },
+  ];
 
   return (
     <TableContainer component={Paper}>
