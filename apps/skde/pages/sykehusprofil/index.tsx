@@ -169,8 +169,6 @@ export const Skde = (): JSX.Element => {
         >
           Fagområder
         </Text>
-      </div>
-      <div>
         <MedfieldTable {...medfieldTableProps} />
       </div>
       <div>
