@@ -16,6 +16,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import { Indicator } from "types";
+import { FaCircle, FaAdjust, FaRegCircle } from "react-icons/fa";
 
 export type MedfieldTableProps = {
   unitNames: string[];
@@ -25,6 +26,24 @@ export type MedfieldTableProps = {
   width: number;
   height: number;
 };
+
+const createSymbols = (green: number, yellow: number, red: number) => {
+  let symbols = [];
+
+  for (let i = 0; i < green; i++) {
+    symbols.push(<FaCircle style={{ color: "#3baa34", fontSize: "1.2rem" }} />);
+  }; 
+
+  for (let i = 0; i < yellow; i++) {
+    symbols.push(<FaAdjust style={{ color: "#fd9c00", fontSize: "1.2rem" }} />);
+  }; 
+
+  for (let i = 0; i < red; i++) {
+    symbols.push(<FaRegCircle style={{ color: "#e30713", fontSize: "1.2rem" }} />);
+  };
+
+  return (symbols);
+}
 
 const rows = [
   {
@@ -67,20 +86,17 @@ const Row = (props: { row: (typeof rows)[0] }) => {
         <TableCell component="th" scope="row">
           {row.name}
         </TableCell>
-        <TableCell>{row.green}</TableCell>
+        <TableCell>{createSymbols(row.green, row.yellow, row.red)}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
-              <Typography variant="h6" gutterBottom component="div">
-                Registre i fagområde
-              </Typography>
               <Table size="small" aria-label="purchases">
                 <TableHead>
                   <TableRow>
                     <TableCell>Register</TableCell>
-                    <TableCell>Grønn</TableCell>
+                    <TableCell>Resultat</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -89,7 +105,7 @@ const Row = (props: { row: (typeof rows)[0] }) => {
                       <TableCell component="th" scope="row">
                         {registerRow.name}
                       </TableCell>
-                      <TableCell>{registerRow.green}</TableCell>
+                      <TableCell>{createSymbols(registerRow.green,registerRow.yellow, registerRow.red)}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
