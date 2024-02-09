@@ -91,8 +91,7 @@ export const Skde = (): JSX.Element => {
     context: "caregiver",
     type: "ind",
     width: 800,
-    height: 400,
-    treatmentYear: 2023,
+    treatmentYear: 2022,
   };
 
   //State logic for normalising the lien plot

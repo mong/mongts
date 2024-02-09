@@ -8,18 +8,14 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-
 import { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
-import { Indicator } from "types";
 import { FaCircle, FaAdjust, FaRegCircle } from "react-icons/fa";
 import { level } from "qmongjs";
 import _ from "lodash";
-import { mapLevel } from "../IndicatorLinechart";
 
 export type MedfieldTableProps = {
   unitNames: string[];
@@ -27,7 +23,6 @@ export type MedfieldTableProps = {
   context: string;
   type: string;
   width: number;
-  height: number;
 };
 
 export type IndicatorLevels = {
@@ -72,6 +67,7 @@ type RowData = {
 const Row = (props: { row: RowData }) => {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
+
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -93,7 +89,7 @@ const Row = (props: { row: RowData }) => {
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
-              <Table size="small" aria-label="purchases">
+              <Table size="small" aria-label="registries">
                 <TableHead>
                   <TableRow>
                     <TableCell>Register</TableCell>
@@ -193,7 +189,7 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
 
   return (
     <TableContainer component={Paper}>
-      <Table aria-label="collapsible table">
+      <Table aria-label="collapsible table" style={{ width: medfieldTableParams.width }}>
         <TableHead>
           <TableRow>
             <TableCell />
