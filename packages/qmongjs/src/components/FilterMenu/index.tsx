@@ -19,6 +19,7 @@ export type FilterMenuSelectionChangedHandler = (
 
 export type FilterMenuProps = PropsWithChildren<{
   onSelectionChanged?: FilterMenuSelectionChangedHandler;
+  initialSelections?: Map<string, FilterSettingsValue[]>;
   children:
     | ReactElement<FilterMenuSectionProps>
     | ReactElement<FilterMenuSectionProps>[];
@@ -55,8 +56,14 @@ const FilterMenuSection = ({
   }
 };
 
-const initialFilterSelections = () => {
-  return new Map<string, FilterSettingsValue[]>();
+const initialFilterSelections = (
+  initialFilterSelections?: Map<string, FilterSettingsValue[]>,
+) => {
+  if (initialFilterSelections)
+    return new Map<string, FilterSettingsValue[]>(
+      initialFilterSelections.entries(),
+    );
+  else return new Map<string, FilterSettingsValue[]>();
 };
 
 const buildFilterMenuSection = (elmt: ReactElement<FilterMenuSectionProps>) => {
@@ -93,10 +100,14 @@ const wrapReducer = (
   };
 };
 
-const FilterMenu = ({ onSelectionChanged, children }: FilterMenuProps) => {
+const FilterMenu = ({
+  onSelectionChanged,
+  initialSelections,
+  children,
+}: FilterMenuProps) => {
   const [filterSettings, dispatch] = useReducer(
     wrapReducer(filterSettingsReducer, onSelectionChanged),
-    initialFilterSelections(),
+    initialFilterSelections(initialSelections),
   );
 
   const sections = Array.isArray(children)
