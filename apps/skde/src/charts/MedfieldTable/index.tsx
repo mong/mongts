@@ -19,6 +19,7 @@ import { Indicator } from "types";
 import { FaCircle, FaAdjust, FaRegCircle } from "react-icons/fa";
 import { level } from "qmongjs";
 import _ from "lodash";
+import { mapLevel } from "../IndicatorLinechart";
 
 export type MedfieldTableProps = {
   unitNames: string[];
@@ -40,22 +41,24 @@ const createSymbols = (green: number, yellow: number, red: number) => {
 
   for (let i = 0; i < green; i++) {
     symbols.push(<FaCircle style={{ color: "#3baa34", fontSize: "1.2rem" }} />);
-  }; 
+  }
 
   for (let i = 0; i < yellow; i++) {
     symbols.push(<FaAdjust style={{ color: "#fd9c00", fontSize: "1.2rem" }} />);
-  }; 
+  }
 
   for (let i = 0; i < red; i++) {
-    symbols.push(<FaRegCircle style={{ color: "#e30713", fontSize: "1.2rem" }} />);
-  };
+    symbols.push(
+      <FaRegCircle style={{ color: "#e30713", fontSize: "1.2rem" }} />,
+    );
+  }
 
-  return (symbols);
-}
+  return symbols;
+};
 
 type RowData = {
-  name: string; 
-  green: number; 
+  name: string;
+  green: number;
   yellow: number;
   red: number;
   registers: {
@@ -63,10 +66,10 @@ type RowData = {
     green: number;
     yellow: number;
     red: number;
-  }[]
+  }[];
 };
 
-const Row = (props: { row: RowData}) => {
+const Row = (props: { row: RowData }) => {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
   return (
@@ -103,7 +106,13 @@ const Row = (props: { row: RowData}) => {
                       <TableCell component="th" scope="row">
                         {registerRow.name}
                       </TableCell>
-                      <TableCell>{createSymbols(registerRow.green,registerRow.yellow, registerRow.red)}</TableCell>
+                      <TableCell>
+                        {createSymbols(
+                          registerRow.green,
+                          registerRow.yellow,
+                          registerRow.red,
+                        )}
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -125,56 +134,62 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
     return null;
   }
 
-  console.log(indicatorQuery.data)
-
-   // Set indicator colour from value and colour limits
-   const levels = indicatorQuery.data.map((row) => {
+  // Set indicator colour from value and colour limits
+  const levels = indicatorQuery.data.map((row) => {
     const indicatorLevel = level(row);
     return {
-      ind_id: row.ind_id, 
-      registry_id: row.registry_id, 
+      ind_id: row.ind_id,
+      registry_id: row.registry_id,
       registry_full_name: row.registry_full_name,
       medfield_id: row.medfield_id,
       medfield_full_name: row.medfield_full_name,
-      level: indicatorLevel };
+      level: indicatorLevel,
+    };
   });
 
-  console.log((levels).reduce((result, value) => {
-    if (!(value.medfield_full_name in result)) {
-      result[value.medfield_full_name] = new Array();
+  // Group by medfield and registry and initialise counts
+  const rowData = levels.reduce((result, value) => {
+    if (!result[value.medfield_id]) {
+      result[value.medfield_id] = {
+        name: value.medfield_full_name,
+        green: 0,
+        yellow: 0,
+        red: 0,
+        registers: [],
+      };
     }
-    result[value.medfield_full_name].push({ind_id: value.ind_id, registry_full_name: value.registry_full_name, level: value.level})
 
-    return(result)
-  }, 
-  {
-  })
-  )
+    result[value.medfield_id].registers[value.registry_id] = {
+      name: value.registry_full_name,
+      green: 0,
+      yellow: 0,
+      red: 0,
+    };
 
-  // TODO: Få blokken over til å se ut som blokken under
-  
-  const rows: RowData[] = [
-    {
-      name: "Hjerte",
-      green: 2,
-      yellow: 1,
-      red: 3,
-      registers: [
-        { name: "reg1", green: 2, yellow: 5, red: 2 },
-        { name: "reg2", green: 2, yellow: 5, red: 2 },
-      ],
-    },
-    {
-      name: "Lunge",
-      green: 2,
-      yellow: 1,
-      red: 3,
-      registers: [
-        { name: "reg3", green: 2, yellow: 5, red: 2 },
-        { name: "reg4", green: 2, yellow: 5, red: 2 },
-      ],
-    },
-  ];
+    return result;
+  }, []);
+
+  // Count levels
+  for (let i = 0; i < levels.length; i++) {
+    const registry_id = levels[i].registry_id;
+    const medfield_id = levels[i].medfield_id;
+    const level = levels[i].level;
+
+    if (level == "H") {
+      rowData[medfield_id].green += 1;
+      rowData[medfield_id].registers[registry_id].green += 1;
+    }
+
+    if (level == "M") {
+      rowData[medfield_id].yellow += 1;
+      rowData[medfield_id].registers[registry_id].yellow += 1;
+    }
+
+    if (level == "L") {
+      rowData[medfield_id].red += 1;
+      rowData[medfield_id].registers[registry_id].red += 1;
+    }
+  }
 
   return (
     <TableContainer component={Paper}>
@@ -187,7 +202,7 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {rowData.map((row) => (
             <Row key={row.name} row={row} />
           ))}
         </TableBody>
