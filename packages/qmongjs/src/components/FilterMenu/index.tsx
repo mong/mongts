@@ -100,7 +100,7 @@ const wrapReducer = (
   };
 };
 
-const FilterMenu = ({
+export const FilterMenu = ({
   onSelectionChanged,
   initialSelections,
   children,
