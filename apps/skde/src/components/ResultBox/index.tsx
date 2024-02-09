@@ -254,7 +254,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
       <div
         className={classNames.crossWrapper}
         role="button"
-        aria-controls={`${id}-content-selection`}
+        aria-label="Open"
         onClick={() => setExpandedResultBox(!expandedResultBox)}
         data-testid="resultbox_expandButton"
       >
