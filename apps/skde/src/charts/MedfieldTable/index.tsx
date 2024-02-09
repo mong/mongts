@@ -16,6 +16,7 @@ import { useIndicatorQuery } from "qmongjs";
 import { FaCircle, FaAdjust, FaRegCircle } from "react-icons/fa";
 import { level } from "qmongjs";
 import _ from "lodash";
+import { Indicator } from "types";
 
 export type MedfieldTableProps = {
   unitNames: string[];
@@ -62,6 +63,67 @@ type RowData = {
     yellow: number;
     red: number;
   }[];
+};
+
+export const createMedfieldTableData = (data: Indicator[]) => {
+  // Set indicator colour from value and colour limits
+  const levels = data.map((row) => {
+    const indicatorLevel = level(row);
+    return {
+      ind_id: row.ind_id,
+      registry_id: row.registry_id,
+      registry_full_name: row.registry_full_name,
+      medfield_id: row.medfield_id,
+      medfield_full_name: row.medfield_full_name,
+      level: indicatorLevel,
+    };
+  });
+
+  // Group by medfield and registry and initialise counts
+  const rowData: RowData[] = levels.reduce((result, value) => {
+    if (!result[value.medfield_id]) {
+      result[value.medfield_id] = {
+        name: value.medfield_full_name,
+        green: 0,
+        yellow: 0,
+        red: 0,
+        registers: [],
+      };
+    }
+
+    result[value.medfield_id].registers[value.registry_id] = {
+      name: value.registry_full_name,
+      green: 0,
+      yellow: 0,
+      red: 0,
+    };
+
+    return result;
+  }, []);
+
+  // Count levels
+  for (let i = 0; i < levels.length; i++) {
+    const registry_id = levels[i].registry_id;
+    const medfield_id = levels[i].medfield_id;
+    const level = levels[i].level;
+
+    if (level == "H") {
+      rowData[medfield_id].green += 1;
+      rowData[medfield_id].registers[registry_id].green += 1;
+    }
+
+    if (level == "M") {
+      rowData[medfield_id].yellow += 1;
+      rowData[medfield_id].registers[registry_id].yellow += 1;
+    }
+
+    if (level == "L") {
+      rowData[medfield_id].red += 1;
+      rowData[medfield_id].registers[registry_id].red += 1;
+    }
+  }
+
+  return rowData;
 };
 
 const Row = (props: { row: RowData }) => {
@@ -130,66 +192,14 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
     return null;
   }
 
-  // Set indicator colour from value and colour limits
-  const levels = indicatorQuery.data.map((row) => {
-    const indicatorLevel = level(row);
-    return {
-      ind_id: row.ind_id,
-      registry_id: row.registry_id,
-      registry_full_name: row.registry_full_name,
-      medfield_id: row.medfield_id,
-      medfield_full_name: row.medfield_full_name,
-      level: indicatorLevel,
-    };
-  });
-
-  // Group by medfield and registry and initialise counts
-  const rowData = levels.reduce((result, value) => {
-    if (!result[value.medfield_id]) {
-      result[value.medfield_id] = {
-        name: value.medfield_full_name,
-        green: 0,
-        yellow: 0,
-        red: 0,
-        registers: [],
-      };
-    }
-
-    result[value.medfield_id].registers[value.registry_id] = {
-      name: value.registry_full_name,
-      green: 0,
-      yellow: 0,
-      red: 0,
-    };
-
-    return result;
-  }, []);
-
-  // Count levels
-  for (let i = 0; i < levels.length; i++) {
-    const registry_id = levels[i].registry_id;
-    const medfield_id = levels[i].medfield_id;
-    const level = levels[i].level;
-
-    if (level == "H") {
-      rowData[medfield_id].green += 1;
-      rowData[medfield_id].registers[registry_id].green += 1;
-    }
-
-    if (level == "M") {
-      rowData[medfield_id].yellow += 1;
-      rowData[medfield_id].registers[registry_id].yellow += 1;
-    }
-
-    if (level == "L") {
-      rowData[medfield_id].red += 1;
-      rowData[medfield_id].registers[registry_id].red += 1;
-    }
-  }
+  const rowData: RowData[] = createMedfieldTableData(indicatorQuery.data);
 
   return (
     <TableContainer component={Paper}>
-      <Table aria-label="collapsible table" style={{ width: medfieldTableParams.width }}>
+      <Table
+        aria-label="collapsible table"
+        style={{ width: medfieldTableParams.width }}
+      >
         <TableHead>
           <TableRow>
             <TableCell />
@@ -206,3 +216,5 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
     </TableContainer>
   );
 };
+
+export default MedfieldTable;
