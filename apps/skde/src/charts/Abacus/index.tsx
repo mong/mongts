@@ -164,6 +164,28 @@ export const Abacus = <Data, X extends string & keyof Data>({
                   ? `circle_${d["bohf"]}_selected`
                   : `circle_${d["bohf"]}_unselected`
               }
+              onClick={() => {
+                // Add HF to query param if clicked on.
+                // Remove HF from query param if it already is selected.
+                // Only possible to click on HF, and not on national data
+                d["bohf"] != national
+                  ? router.replace(
+                      {
+                        query: {
+                          ...router.query,
+                          bohf:
+                            selected_bohf[0] === undefined
+                              ? d["bohf"]
+                              : selected_bohf.includes(d["bohf"])
+                                ? selected_bohf.filter((d) => d != d["bohf"])
+                                : selected_bohf.concat(d["bohf"]),
+                        },
+                      },
+                      undefined,
+                      { shallow: true },
+                    )
+                  : undefined;
+              }}
             />
           ))}
         </Group>
