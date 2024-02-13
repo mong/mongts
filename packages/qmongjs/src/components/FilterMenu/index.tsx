@@ -67,10 +67,11 @@ const initialFilterSelections = (
 };
 
 const buildFilterMenuSection = (elmt: ReactElement<FilterMenuSectionProps>) => {
-  const { sectionid, sectiontitle, accordion } = elmt.props;
+  const { filterkey, sectionid, sectiontitle, accordion } = elmt.props;
 
   return (
     <FilterMenuSection
+      filterkey={filterkey}
       sectionid={sectionid}
       sectiontitle={sectiontitle}
       accordion={accordion}
