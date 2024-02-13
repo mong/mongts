@@ -1,5 +1,3 @@
-import { useIndicatorQuery } from "./helpers/hooks";
-
 export { MainRegister } from "./components/RegisterPage/MainRegister";
 export { SelectedRegister } from "./components/RegisterPage/SelectedRegister";
 export {
@@ -15,5 +13,7 @@ export {
   FilterSettingsContext,
   FilterSettingsDispatchContext,
   filterSettingsReducer,
-  FilterSettingsActionType
+  FilterSettingsActionType,
 } from "./components/FilterMenu/FilterSettingsContext";
+export { RadioGroupFilterSection } from "./components/FilterMenu/RadioGroupFilterSection";
+export { SelectedFiltersSection } from "./components/FilterMenu/SelectedFiltersSection";
