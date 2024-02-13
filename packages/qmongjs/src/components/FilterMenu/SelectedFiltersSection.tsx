@@ -9,7 +9,7 @@ import {
 
 export type SelectedFiltersSectionProps = FilterMenuSectionProps;
 
-export function SelectedFiltersSection(/*props: SelectedFiltersSectionProps*/) {
+export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
   const sep = "---";
   const filterSettings = useContext(FilterSettingsContext);
   const filterSettingsDispatch = useContext(FilterSettingsDispatchContext);
@@ -31,9 +31,13 @@ export function SelectedFiltersSection(/*props: SelectedFiltersSectionProps*/) {
   };
 
   return (
-    <Stack direction="row" spacing={1}>
-      {Array.from(filterSettings.keys()).map((key) => {
-        return filterSettings.get(key)?.map((filterSetting) => {
+    <Stack
+      direction="row"
+      spacing={1}
+      id={`selected-filter-section-id-${props.sectionid}`}
+    >
+      {Array.from(filterSettings.map.keys()).map((key) => {
+        return filterSettings.map.get(key)?.map((filterSetting) => {
           const chipId = `${key}${sep}${filterSetting.value}`;
           return (
             <Chip

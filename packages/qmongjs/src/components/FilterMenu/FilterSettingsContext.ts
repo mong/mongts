@@ -6,7 +6,10 @@ export enum FilterSettingsActionType {
   DEL_SECTION_SELECTIONS,
 }
 export type FilterSettingsValue = { valueLabel: string; value: string };
-export type FilterSettings = Map<string, FilterSettingsValue[]>;
+export type FilterSettings = {
+  map: Map<string, FilterSettingsValue[]>;
+  defaults: Map<string, FilterSettingsValue[]>;
+};
 export type FilterSettingsAction = {
   type: FilterSettingsActionType;
   sectionSetting: { key: string; values: FilterSettingsValue[] };
@@ -19,19 +22,19 @@ export function filterSettingsReducer(
   switch (action.type) {
     case FilterSettingsActionType.SET_SECTION_SELECTIONS: {
       const newFilterSettings = new Map<string, FilterSettingsValue[]>(
-        filterSettings.entries(),
+        filterSettings.map.entries(),
       );
       newFilterSettings.set(
         action.sectionSetting.key,
         action.sectionSetting.values,
       );
-      return newFilterSettings;
+      return { map: newFilterSettings, defaults: filterSettings.defaults };
     }
 
     // Remove selections from give section. Not that only the value is used to identify the selection.
     case FilterSettingsActionType.DEL_SECTION_SELECTIONS: {
       const newFilterSettings = new Map<string, FilterSettingsValue[]>(
-        filterSettings.entries(),
+        filterSettings.map.entries(),
       );
       const sectionValues = newFilterSettings.get(action.sectionSetting.key);
 
@@ -45,13 +48,20 @@ export function filterSettingsReducer(
         );
 
         if (newSectionValues.length === 0) {
-          newFilterSettings.delete(action.sectionSetting.key);
+          const defaults = filterSettings.defaults.get(
+            action.sectionSetting.key,
+          );
+          if (defaults !== undefined) {
+            newFilterSettings.set(action.sectionSetting.key, defaults);
+          } else {
+            newFilterSettings.delete(action.sectionSetting.key);
+          }
         } else {
           newFilterSettings.set(action.sectionSetting.key, newSectionValues);
         }
       }
 
-      return newFilterSettings;
+      return { map: newFilterSettings, defaults: filterSettings.defaults };
     }
 
     default:
@@ -59,9 +69,10 @@ export function filterSettingsReducer(
   }
 }
 
-export const FilterSettingsContext = createContext<FilterSettings>(
-  new Map<string, FilterSettingsValue[]>(),
-);
+export const FilterSettingsContext = createContext<FilterSettings>({
+  map: new Map<string, FilterSettingsValue[]>(),
+  defaults: new Map<string, FilterSettingsValue[]>(),
+});
 export const FilterSettingsDispatchContext = createContext<
   React.Dispatch<FilterSettingsAction>
 >(() => {});
