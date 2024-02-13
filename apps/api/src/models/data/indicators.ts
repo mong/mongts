@@ -35,7 +35,11 @@ export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
     .from("agg_data")
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
     .leftJoin("registry", "ind.registry_id", "registry.id")
-    .leftJoin("registry_medfield", "registry.id", "registry_medfield.registry_id")
+    .leftJoin(
+      "registry_medfield",
+      "registry.id",
+      "registry_medfield.registry_id",
+    )
     .leftJoin("medfield", "registry_medfield.medfield_id", "medfield.id")
     .where("include", 1)
     .where(function () {
