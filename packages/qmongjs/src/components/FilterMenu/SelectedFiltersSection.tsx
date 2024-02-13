@@ -18,13 +18,14 @@ export function SelectedFiltersSection(/*props: SelectedFiltersSectionProps*/) {
     const idParts = chipId.split("---");
     const filterKey = idParts[0];
     const filterValue = idParts[1];
-    const filterLabel = idParts[2];
 
     filterSettingsDispatch({
       type: FilterSettingsActionType.DEL_SECTION_SELECTIONS,
       sectionSetting: {
         key: filterKey,
-        values: [{ value: filterValue, valueLabel: filterLabel }],
+        values: [
+          { value: filterValue, valueLabel: "" /* not used for deletion*/ },
+        ],
       },
     });
   };
@@ -33,7 +34,7 @@ export function SelectedFiltersSection(/*props: SelectedFiltersSectionProps*/) {
     <Stack direction="row" spacing={1}>
       {Array.from(filterSettings.keys()).map((key) => {
         return filterSettings.get(key)?.map((filterSetting) => {
-          const chipId = `${key}${sep}${filterSetting.value}${sep}${filterSetting.valueLabel}`;
+          const chipId = `${key}${sep}${filterSetting.value}`;
           return (
             <Chip
               key={chipId}
