@@ -135,6 +135,7 @@ const Row = (props: { row: RowData }) => {
       <TableRow
         sx={{ "& > *": { borderBottom: "unset" } }}
         onClick={() => setOpen(!open)}
+        style={{cursor: "pointer"}}
       >
         <TableCell>
           <IconButton aria-label="expand row" size="small">
