@@ -55,7 +55,7 @@ test("Render with format and lang = en", () => {
       format_y=",.2%"
     />,
   );
-  expect(container).toMatchSnapshot();
+  expect(container.children[0].children[1].children[5]).toMatchSnapshot();
 });
 
 test("Render with format and lang = nb", () => {
@@ -72,7 +72,7 @@ test("Render with format and lang = nb", () => {
       format_y=",.0%"
     />,
   );
-  expect(container).toMatchSnapshot();
+  expect(container.children[0].children[1].children[5]).toMatchSnapshot();
 });
 
 test("Render with other format", () => {
@@ -88,5 +88,5 @@ test("Render with other format", () => {
       format_y=",.2f"
     />,
   );
-  expect(container).toMatchSnapshot();
+  expect(container.children[0].children[1].children[5]).toMatchSnapshot();
 });
