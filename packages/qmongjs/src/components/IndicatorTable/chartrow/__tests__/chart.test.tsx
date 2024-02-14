@@ -1,7 +1,7 @@
 import Chart, { ChartProps } from "../Chart";
 import { render } from "@testing-library/react";
 import { useRef } from "react";
-import * as hooks from "../../../../helpers/hooks";
+import * as hooks from "helpers/hooks";
 import { clockTick } from "../../../../test/clockTick";
 import { Description, Indicator } from "types";
 import { vi, test } from "vitest";
