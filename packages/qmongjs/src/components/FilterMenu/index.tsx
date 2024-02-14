@@ -15,6 +15,7 @@ import {
 export type FilterMenuSelectionChangedHandler = (
   newFilterSettings: { map: Map<string, FilterSettingsValue[]> },
   oldFilterSettings: { map: Map<string, FilterSettingsValue[]> },
+  action: FilterSettingsAction,
 ) => void;
 
 export type FilterMenuProps = PropsWithChildren<{
@@ -107,7 +108,7 @@ export const wrapReducer = (
     const oldFilterSettings = filterSettings;
     const newFilterSettings = reducer(filterSettings, action);
     if (onSelectionChanged) {
-      onSelectionChanged(newFilterSettings, oldFilterSettings);
+      onSelectionChanged(newFilterSettings, oldFilterSettings, action);
     }
     return newFilterSettings;
   };
