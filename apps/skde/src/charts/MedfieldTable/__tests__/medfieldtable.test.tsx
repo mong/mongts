@@ -1,4 +1,3 @@
-import MedfieldTable from "..";
 import { createMedfieldTableData } from "..";
 import { medfieldTableData } from "../../../../test/test_data/data";
 
