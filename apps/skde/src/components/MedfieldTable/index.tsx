@@ -132,12 +132,12 @@ const Row = (props: { row: RowData }) => {
 
   return (
     <React.Fragment>
-      <TableRow sx={{ "& > *": { borderBottom: "unset" } } } onClick={() => setOpen(!open)}>
+      <TableRow
+        sx={{ "& > *": { borderBottom: "unset" } }}
+        onClick={() => setOpen(!open)}
+      >
         <TableCell>
-          <IconButton
-            aria-label="expand row"
-            size="small"
-          >
+          <IconButton aria-label="expand row" size="small">
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
@@ -215,5 +215,3 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
     </TableContainer>
   );
 };
-
-export default MedfieldTable;

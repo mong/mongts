@@ -1,0 +1,71 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Levels counts are correct 1`] = `
+[
+  ,
+  {
+    "green": 1,
+    "name": "Hjerte- og karsykdommer",
+    "red": 1,
+    "registers": [
+      ,
+      {
+        "green": 1,
+        "name": "Hjerteregister nummer 1",
+        "red": 0,
+        "yellow": 0,
+      },
+      {
+        "green": 0,
+        "name": "Hjerteregister nummer 2",
+        "red": 1,
+        "yellow": 0,
+      },
+    ],
+    "yellow": 0,
+  },
+  ,
+  {
+    "green": 1,
+    "name": "Diabetes",
+    "red": 0,
+    "registers": [
+      ,
+      ,
+      ,
+      {
+        "green": 1,
+        "name": "Diabetesregister nummer 1",
+        "red": 0,
+        "yellow": 1,
+      },
+    ],
+    "yellow": 1,
+  },
+  ,
+  {
+    "green": 3,
+    "name": "Barn",
+    "red": 0,
+    "registers": [
+      ,
+      ,
+      ,
+      ,
+      {
+        "green": 1,
+        "name": "Barneregister nummer 1",
+        "red": 0,
+        "yellow": 0,
+      },
+      {
+        "green": 2,
+        "name": "Barneregister nummer 2",
+        "red": 0,
+        "yellow": 0,
+      },
+    ],
+    "yellow": 0,
+  },
+]
+`;
