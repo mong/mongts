@@ -146,13 +146,6 @@ export const Skde = (): JSX.Element => {
           label="Vis andel"
         />
       </div>
-      <div>
-        <img
-          className="figure"
-          alt="Figure"
-          src="/img/sykehusprofil/SKDE-innholdsboks3-sykehusprofil.png"
-        />
-      </div>
     </div>
   );
 };
