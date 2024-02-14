@@ -72,7 +72,7 @@ export const RadioGroupFilterSection = (
         value={getSelectedValue(
           props.filterkey,
           filterSettings.map,
-          props.defaultValues,
+          props.defaultvalues,
         )}
         onChange={handleChange}
       >
