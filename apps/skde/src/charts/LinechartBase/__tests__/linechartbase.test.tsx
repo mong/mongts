@@ -1,9 +1,9 @@
 import { render } from "@testing-library/react";
-import mockRouter from "next-router-mock";
 
 import LinechartBase from "..";
 import { LineStyles } from "..";
 import { linechartData } from "../../../../test/test_data/data";
+import { vi, test, expect } from "vitest";
 
 vi.mock("next/router", () => require("next-router-mock"));
 
@@ -39,4 +39,54 @@ test("Standard render", () => {
   // It consists of 6 SVG elements: rect, path, path, path, g and g
   // These are the background, three lines, the x axis and the y axis.
   expect(container.children[0].children[1].childElementCount).toEqual(6);
+});
+
+test("Render with format and lang = en", () => {
+  const { container } = render(
+    <LinechartBase
+      data={linechartData}
+      width={800}
+      height={400}
+      lineStyles={lineStyles}
+      font={font}
+      yMin={0}
+      yMax={25}
+      lang="en"
+      format_y=",.2%"
+    />,
+  );
+  expect(container).toMatchSnapshot();
+});
+
+test("Render with format and lang = nb", () => {
+  const { container } = render(
+    <LinechartBase
+      data={linechartData}
+      width={800}
+      height={400}
+      lineStyles={lineStyles}
+      font={font}
+      yMin={0}
+      yMax={25}
+      lang="nb"
+      format_y=",.0%"
+    />,
+  );
+  expect(container).toMatchSnapshot();
+});
+
+test("Render with other format", () => {
+  const { container } = render(
+    <LinechartBase
+      data={linechartData}
+      width={800}
+      height={400}
+      lineStyles={lineStyles}
+      font={font}
+      yMin={0}
+      yMax={25}
+      format_y=",.2f"
+    />,
+  );
+  expect(container).toMatchSnapshot();
 });
