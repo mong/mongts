@@ -476,10 +476,10 @@ export const medfieldTableData: Indicator[] = [
     medfield_id: 1,
     medfield_name: "hjerte",
     medfield_full_name: "Hjerte- og karsykdommer",
-    short_description: "Kort beskrivelse av indikator nr. 1 for hjerte- og karsykdommer",
-    long_description: "Lang beskrivelse av indikator nr. 1 for hjerte- og karsykdommer",
-    title: "Tittel til indikator nr. 1 for hjerte- og karsykdommer",
-    name: "aaa",
+    ind_short_description: "Kort beskrivelse av indikator nr. 1 for hjerte- og karsykdommer",
+    ind_long_description: "Lang beskrivelse av indikator nr. 1 for hjerte- og karsykdommer",
+    ind_title: "Tittel til indikator nr. 1 for hjerte- og karsykdommer",
+    ind_name: "aaa",
   },
   {
     // Red
@@ -504,10 +504,10 @@ export const medfieldTableData: Indicator[] = [
     medfield_id: 1,
     medfield_name: "hjerte",
     medfield_full_name: "Hjerte- og karsykdommer",
-    short_description: "Kort beskrivelse av indikator nr. 2 for hjerte- og karsykdommer",
-    long_description: "Lang beskrivelse av indikator nr. 2 for hjerte- og karsykdommer",
-    title: "Tittel til indikator nr. 2 for hjerte- og karsykdommer",
-    name: "aab",
+    ind_short_description: "Kort beskrivelse av indikator nr. 2 for hjerte- og karsykdommer",
+    ind_long_description: "Lang beskrivelse av indikator nr. 2 for hjerte- og karsykdommer",
+    ind_title: "Tittel til indikator nr. 2 for hjerte- og karsykdommer",
+    ind_name: "aab",
   },
   {
     // Yellow
@@ -532,10 +532,10 @@ export const medfieldTableData: Indicator[] = [
     medfield_id: 3,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
-    short_description: "Kort beskrivelse av indikator nr. 1 for diabetes",
-    long_description: "Lang beskrivelse av indikator nr. 1 for diabetes",
-    title: "Tittel til indikator nr. 1 for diabetes",
-    name: "aac",
+    ind_short_description: "Kort beskrivelse av indikator nr. 1 for diabetes",
+    ind_long_description: "Lang beskrivelse av indikator nr. 1 for diabetes",
+    ind_title: "Tittel til indikator nr. 1 for diabetes",
+    ind_name: "aac",
   },
   {
     // Green
@@ -560,10 +560,10 @@ export const medfieldTableData: Indicator[] = [
     medfield_id: 3,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
-    short_description: "Kort beskrivelse av indikator nr. 2 for diabetes",
-    long_description: "Lang beskrivelse av indikator nr. 2 for diabetes",
-    title: "Tittel til indikator nr. 2 for diabetes",
-    name: "aac",
+    ind_short_description: "Kort beskrivelse av indikator nr. 2 for diabetes",
+    ind_long_description: "Lang beskrivelse av indikator nr. 2 for diabetes",
+    ind_title: "Tittel til indikator nr. 2 for diabetes",
+    ind_name: "aac",
   },
   {
     // Green
@@ -588,10 +588,10 @@ export const medfieldTableData: Indicator[] = [
     medfield_id: 5,
     medfield_name: "barn",
     medfield_full_name: "Barn",
-    short_description: "Kort beskrivelse av indikator nr. 1 for barn",
-    long_description: "Lang beskrivelse av indikator nr. 1 for barn",
-    title: "Tittel til indikator nr. 1 for barn",
-    name: "aad",
+    ind_short_description: "Kort beskrivelse av indikator nr. 1 for barn",
+    ind_long_description: "Lang beskrivelse av indikator nr. 1 for barn",
+    ind_title: "Tittel til indikator nr. 1 for barn",
+    ind_name: "aad",
   },
   {
     // Green
@@ -616,10 +616,10 @@ export const medfieldTableData: Indicator[] = [
     medfield_id: 5,
     medfield_name: "barn",
     medfield_full_name: "Barn",
-    short_description: "Kort beskrivelse av indikator nr. 2 for barn",
-    long_description: "Lang beskrivelse av indikator nr. 2 for barn",
-    title: "Tittel til indikator nr. 2 for barn",
-    name: "aae",
+    ind_short_description: "Kort beskrivelse av indikator nr. 2 for barn",
+    ind_long_description: "Lang beskrivelse av indikator nr. 2 for barn",
+    ind_title: "Tittel til indikator nr. 2 for barn",
+    ind_name: "aae",
   },
   {
     // Green
@@ -644,9 +644,9 @@ export const medfieldTableData: Indicator[] = [
     medfield_id: 5,
     medfield_name: "barn",
     medfield_full_name: "Barn",
-    short_description: "Kort beskrivelse av indikator nr. 3 for barn",
-    long_description: "Lang beskrivelse av indikator nr. 3 for barn",
-    title: "Tittel til indikator nr. 3 for barn",
-    name: "aaf",
+    ind_short_description: "Kort beskrivelse av indikator nr. 3 for barn",
+    ind_long_description: "Lang beskrivelse av indikator nr. 3 for barn",
+    ind_title: "Tittel til indikator nr. 3 for barn",
+    ind_name: "aaf",
   },
 ];
