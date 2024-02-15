@@ -15,6 +15,10 @@ import { mainQueryParamsConfig } from "qmongjs/src/app_config";
 import { validateTreatmentUnits } from "qmongjs/src/helpers/functions";
 import { UnitNameList } from "qmongjs/src/components/RegisterPage/unitnamelist";
 import { Checkbox, FormControlLabel } from "@mui/material";
+import {
+  MedfieldTable,
+  MedfieldTableProps,
+} from "../../src/components/MedfieldTable";
 
 const theme = {
   lineChartBackground: {
@@ -82,6 +86,22 @@ export const Skde = (): JSX.Element => {
     normalise: false,
   };
 
+  const medfieldTableProps: MedfieldTableProps = {
+    unitNames: [validated_treatment_units[0]],
+    context: "caregiver",
+    type: "ind",
+    width: 800,
+    treatmentYear: 2022,
+  };
+
+  const medfieldTablePropsDG: MedfieldTableProps = {
+    unitNames: [validated_treatment_units[0]],
+    context: "caregiver",
+    type: "dg",
+    width: 800,
+    treatmentYear: 2022,
+  };
+
   //State logic for normalising the lien plot
   const [normalise, setNormalise] = React.useState(indicatorParams.normalise);
 
@@ -147,11 +167,28 @@ export const Skde = (): JSX.Element => {
         />
       </div>
       <div>
-        <img
-          className="figure"
-          alt="Figure"
-          src="/img/sykehusprofil/SKDE-innholdsboks3-sykehusprofil.png"
-        />
+        <Text
+          x={"10%"}
+          y={50}
+          width={500}
+          verticalAnchor="start"
+          style={{ fontWeight: 700, fontSize: 24 }}
+        >
+          Fagområder
+        </Text>
+        <MedfieldTable {...medfieldTableProps} />
+      </div>
+      <div>
+        <Text
+          x={"10%"}
+          y={50}
+          width={500}
+          verticalAnchor="start"
+          style={{ fontWeight: 700, fontSize: 24 }}
+        >
+          Fagområder (dekningsgrad)
+        </Text>
+        <MedfieldTable {...medfieldTablePropsDG} />
       </div>
     </div>
   );

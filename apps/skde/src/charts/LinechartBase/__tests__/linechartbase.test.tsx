@@ -1,5 +1,4 @@
 import { render } from "@testing-library/react";
-import mockRouter from "next-router-mock";
 
 import LinechartBase from "..";
 import { LineStyles } from "..";
