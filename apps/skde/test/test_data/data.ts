@@ -476,8 +476,10 @@ export const medfieldTableData: Indicator[] = [
     medfield_id: 1,
     medfield_name: "hjerte",
     medfield_full_name: "Hjerte- og karsykdommer",
-    ind_short_description: "Kort beskrivelse av indikator nr. 1 for hjerte- og karsykdommer",
-    ind_long_description: "Lang beskrivelse av indikator nr. 1 for hjerte- og karsykdommer",
+    ind_short_description:
+      "Kort beskrivelse av indikator nr. 1 for hjerte- og karsykdommer",
+    ind_long_description:
+      "Lang beskrivelse av indikator nr. 1 for hjerte- og karsykdommer",
     ind_title: "Tittel til indikator nr. 1 for hjerte- og karsykdommer",
     ind_name: "aaa",
   },
@@ -504,8 +506,10 @@ export const medfieldTableData: Indicator[] = [
     medfield_id: 1,
     medfield_name: "hjerte",
     medfield_full_name: "Hjerte- og karsykdommer",
-    ind_short_description: "Kort beskrivelse av indikator nr. 2 for hjerte- og karsykdommer",
-    ind_long_description: "Lang beskrivelse av indikator nr. 2 for hjerte- og karsykdommer",
+    ind_short_description:
+      "Kort beskrivelse av indikator nr. 2 for hjerte- og karsykdommer",
+    ind_long_description:
+      "Lang beskrivelse av indikator nr. 2 for hjerte- og karsykdommer",
     ind_title: "Tittel til indikator nr. 2 for hjerte- og karsykdommer",
     ind_name: "aab",
   },
