@@ -188,6 +188,7 @@ export const IndicatorLinechart = (
       yAxisText={indicatorParams.yAxisText}
       yMin={indicatorParams.yMin}
       yMax={indicatorParams.yMax}
+      format_y={normalise ? ",.0%" : ",.0f"}
     />
   );
 };
