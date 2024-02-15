@@ -22,6 +22,12 @@ export function buildIndicator(overrides: Partial<Indicator>): Indicator {
     type: "andel",
     delivery_latest_update: new Date("October 13, 2014 11:13:00"),
     delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
+    registry_id: 1,
+    registry_name: "Testreg",
+    registry_full_name: "Testregister",
+    medfield_id: 1,
+    medfield_name: "Testmedfield",
+    medfield_full_name: "Fagområde for testing",
     ...overrides,
   };
 }
