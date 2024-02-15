@@ -6,6 +6,10 @@ import { scaleTime, scaleLinear, scaleOrdinal } from "@visx/scale";
 import { AxisBottom, AxisLeft } from "@visx/axis";
 import { LinechartBackground } from "./LinechartBaseStyles";
 import { Legend, LegendItem, LegendLabel } from "@visx/legend";
+import {
+  customFormat,
+  customFormatEng,
+} from "../../helpers/functions/localFormater";
 
 export type LinechartData = {
   x: Date;
@@ -64,6 +68,8 @@ export type LinechartBaseProps = {
   yAxisText: string;
   yMin?: number;
   yMax?: number;
+  format_y?: string;
+  lang?: "en" | "nb" | "nn";
 };
 
 export default function LinechartBase({
@@ -75,6 +81,8 @@ export default function LinechartBase({
   yAxisText,
   yMin,
   yMax,
+  format_y,
+  lang = "nb",
 }: LinechartBaseProps) {
   // data accessors
   const getX = (d: LinechartData) => d.x;
@@ -182,6 +190,13 @@ export default function LinechartBase({
           left={borderWidth}
           label={yAxisText}
           labelProps={yLabelProps}
+          tickFormat={(val) =>
+            format_y
+              ? lang === "en"
+                ? customFormatEng(format_y)(val)
+                : customFormat(format_y)(val)
+              : val.toString()
+          }
         />
       </svg>
     </div>
