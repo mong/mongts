@@ -46,6 +46,8 @@ export interface Indicator {
   medfield_id: number;
   medfield_name: string;
   medfield_full_name: string;
+  short_description: string | null;
+  long_description: string | null;
 }
 
 export interface TuName {

@@ -31,6 +31,10 @@ export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
       "medfield.id as medfield_id",
       "medfield.name as medfield_name",
       "medfield.full_name as medfield_full_name",
+      "ind.short_description",
+      "ind.long_description",
+      "ind.title",
+      "ind.name",
     )
     .from("agg_data")
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
