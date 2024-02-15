@@ -190,13 +190,6 @@ export const Skde = (): JSX.Element => {
         </Text>
         <MedfieldTable {...medfieldTablePropsDG} />
       </div>
-      <div>
-        <img
-          className="figure"
-          alt="Figure"
-          src="/img/sykehusprofil/SKDE-innholdsboks3-sykehusprofil.png"
-        />
-      </div>
     </div>
   );
 };
