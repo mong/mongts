@@ -28,6 +28,10 @@ export function buildIndicator(overrides: Partial<Indicator>): Indicator {
     medfield_id: 1,
     medfield_name: "Testmedfield",
     medfield_full_name: "Fagområde for testing",
+    ind_short_description: "Kort beskrivelse",
+    ind_long_description: "Lang beskrivelse",
+    ind_title: "Indikatortittel",
+    ind_name: "aaa",
     ...overrides,
   };
 }

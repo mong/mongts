@@ -27,6 +27,10 @@ const national_data: Indicator[] = [
     medfield_id: 4,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
+    ind_title: "HbA1c ≥ 75 mmol/mol",
+    ind_name: "KiA",
+    ind_short_description: "Andel pasienter med HbA1c ≥ 75 mmol/mol",
+    ind_long_description: "Andel pasienter med HbA1c ≥ 75 mmol/mol",
   },
   {
     id: 1006,
@@ -54,6 +58,10 @@ const national_data: Indicator[] = [
     medfield_id: 4,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
+    ind_title: "HbA1c ≥ 75 mmol/mol",
+    ind_name: "KiA",
+    ind_short_description: "Andel pasienter med HbA1c ≥ 75 mmol/mol",
+    ind_long_description: "Andel pasienter med HbA1c ≥ 75 mmol/mol",
   },
   {
     id: 1002,
@@ -81,6 +89,10 @@ const national_data: Indicator[] = [
     medfield_id: 4,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
+    ind_title: "HbA1c ≥ 75 mmol/mol",
+    ind_name: "KiA",
+    ind_short_description: "Andel pasienter med HbA1c ≥ 75 mmol/mol",
+    ind_long_description: "Andel pasienter med HbA1c ≥ 75 mmol/mol",
   },
   {
     id: 1003,
@@ -108,6 +120,10 @@ const national_data: Indicator[] = [
     medfield_id: 4,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
+    ind_title: "HbA1c < 53 mmol/mol",
+    ind_name: "KiA",
+    ind_short_description: "Andel pasienter med HbA1c < 53 mmol/mol",
+    ind_long_description: "Andel pasienter med HbA1c < 53 mmol/mol",
   },
   {
     id: 1004,
@@ -135,6 +151,10 @@ const national_data: Indicator[] = [
     medfield_id: 4,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
+    ind_title: "HbA1c < 53 mmol/mol",
+    ind_name: "KiA",
+    ind_short_description: "Andel pasienter med HbA1c < 53 mmol/mol",
+    ind_long_description: "Andel pasienter med HbA1c < 53 mmol/mol",
   },
   {
     id: 1005,
@@ -162,6 +182,10 @@ const national_data: Indicator[] = [
     medfield_id: 4,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
+    ind_title: "HbA1c < 53 mmol/mol",
+    ind_name: "KiA",
+    ind_short_description: "Andel pasienter med HbA1c < 53 mmol/mol",
+    ind_long_description: "Andel pasienter med HbA1c < 53 mmol/mol",
   },
 ];
 
