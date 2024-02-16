@@ -60,6 +60,19 @@ const FilterMenuSection = ({
   }
 };
 
+/**
+ * Function used by FilterMenu to merge initial and default filter settings.
+ *
+ * FilterMenu accepts both initial settings and default (fallback) settings that
+ * can be set either at the top level or at the section level. The initial
+ * settings are used to initialize the filter settings, whereas the default
+ * settings are applied when resetting the filter settings, if present.
+ *
+ * @param initialFilterSelections Initial key-value pairs of filter settings
+ * @param defaultValues Default key-value pairs of filter settings
+ * @param sections Child elements that can have initial and default values
+ * @returns A FilterSettings instance with the merged initial and default values
+ */
 export const initialState = (
   initialFilterSelections?: Map<string, FilterSettingsValue[]>,
   defaultValues?: Map<string, FilterSettingsValue[]>,
@@ -79,12 +92,14 @@ export const initialState = (
     );
   else defaultValuesMap = new Map<string, FilterSettingsValue[]>();
 
+  // Add default values from sections to the overall defaults. Section default
+  // values will overwrite top level default values.
+  //
   sections?.forEach((section) => {
     const sectionFilterKey = section.props.filterkey;
     const sectionDefaults = section.props.defaultvalues;
     if (sectionFilterKey && sectionDefaults && sectionDefaults.length > 0) {
-      if (!defaultValuesMap.has(sectionFilterKey))
-        defaultValuesMap.set(sectionFilterKey, sectionDefaults);
+      defaultValuesMap.set(sectionFilterKey, sectionDefaults);
     }
   });
 

@@ -6,6 +6,11 @@ export enum FilterSettingsActionType {
   DEL_SECTION_SELECTIONS,
 }
 export type FilterSettingsValue = { valueLabel: string; value: string };
+/**
+ * The filter settings has a map of section keys to arrays of selected values.
+ * It also has a map of default values. Defaults are used to reset the filter
+ * settings. Default values are optional
+ */
 export type FilterSettings = {
   map: Map<string, FilterSettingsValue[]>;
   defaults: Map<string, FilterSettingsValue[]>;
@@ -15,6 +20,15 @@ export type FilterSettingsAction = {
   sectionSetting: { key: string; values: FilterSettingsValue[] };
 };
 
+/**
+ * This is the reducer that FilterMenu uses by default and wraps in a context
+ * available to child components. Reducers are functions that take the current
+ * state and an action and return an updated state.
+ *
+ * @param filterSettings The current filter settings
+ * @param action The action to perform
+ * @returns The updated filter settings
+ */
 export function filterSettingsReducer(
   filterSettings: FilterSettings,
   action: FilterSettingsAction,
