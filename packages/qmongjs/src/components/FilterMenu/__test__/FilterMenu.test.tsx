@@ -84,8 +84,8 @@ describe("FilterMenu", () => {
       ];
 
       const sections = [
-        <SectionTestComponent {...sectionProps[0]} />,
-        <SectionTestComponent {...sectionProps[1]} />,
+        <SectionTestComponent key="1" {...sectionProps[0]} />,
+        <SectionTestComponent key="2" {...sectionProps[1]} />,
       ];
 
       const result = initialState(new Map(), new Map(), sections);
@@ -120,7 +120,7 @@ describe("FilterMenu", () => {
         ],
       };
 
-      const sections = [<SectionTestComponent {...sectionProps} />];
+      const sections = [<SectionTestComponent key="1" {...sectionProps} />];
 
       const result = initialState(new Map(), defaults, sections);
 
