@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
 import { Stack, Chip } from "@mui/material";
 import { FilterMenuSectionProps } from ".";
-import {
-  FilterSettingsAction,
-  FilterSettingsActionType,
-  FilterSettingsContext,
-  FilterSettingsDispatchContext,
-} from "./FilterSettingsContext";
+import { FilterSettingsContext } from "./FilterSettingsContext";
+import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
+import { FilterSettingsAction } from "./FilterSettingsReducer";
+import { FilterSettingsActionType } from "./FilterSettingsReducer";
 
 export type SelectedFiltersSectionProps = FilterMenuSectionProps;
 

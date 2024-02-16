@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { FilterMenuSectionProps } from ".";
 import {
-  FilterSettingsActionType,
   FilterSettingsContext,
-  FilterSettingsDispatchContext,
   FilterSettingsValue,
 } from "./FilterSettingsContext";
+import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
+import { FilterSettingsActionType } from "./FilterSettingsReducer";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormLabel from "@mui/material/FormLabel";
 import FormControl from "@mui/material/FormControl";

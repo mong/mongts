@@ -105,7 +105,7 @@ describe("FilterMenu", () => {
       );
     });
 
-    it("should overwrite default values from filter menu with section default values", () => {
+    it("should overwrite default values set for FilterMenu component with default values set for child component", () => {
       const defaults = new Map<string, FilterSettingsValue[]>();
       defaults.set("key", [
         { value: "topDefaultValue", valueLabel: "topDefaultLabel" },

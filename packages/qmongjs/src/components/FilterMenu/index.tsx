@@ -5,19 +5,31 @@ import { Card, CardContent } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
   FilterSettingsContext,
-  FilterSettingsDispatchContext,
-  filterSettingsReducer,
   FilterSettingsValue,
   FilterSettings,
-  FilterSettingsAction,
 } from "./FilterSettingsContext";
+import {
+  FilterSettingsDispatchContext,
+  FilterSettingsReducerType,
+} from "./FilterSettingsReducer";
+import { filterSettingsReducer } from "./FilterSettingsReducer";
+import { FilterSettingsAction } from "./FilterSettingsReducer";
 
+/**
+ * The type/signalture of the handler to call when the selection changes. It is called with the new
+ * filter settings, the old filter settings, and the action that caused the change.
+ */
 export type FilterMenuSelectionChangedHandler = (
   newFilterSettings: { map: Map<string, FilterSettingsValue[]> },
   oldFilterSettings: { map: Map<string, FilterSettingsValue[]> },
   action: FilterSettingsAction,
 ) => void;
 
+/**
+ * The properties for the FilterMenu component. The onSelectionChanged handler is called when the
+ * selection changes. The initialSelections are used to initialize the filter settings. The
+ * defaultValues are used to reset the filter settings. The children are the filter sections.
+ */
 export type FilterMenuProps = PropsWithChildren<{
   onSelectionChanged?: FilterMenuSelectionChangedHandler;
   initialSelections?: Map<string, FilterSettingsValue[]>;
@@ -27,7 +39,14 @@ export type FilterMenuProps = PropsWithChildren<{
     | ReactElement<FilterMenuSectionProps>[];
 }>;
 
-// The properties are all small caps for use as attribtues directly in JSX elements
+/**
+ * The properties for a filter menu section. The sectionid is a unique identifier for the section.
+ * The sectiontitle is the title of the section. The filterkey is the key for the filter settings. The
+ * accordion property is used to indicate if the section should be an accordion. The defaultvalues are
+ * the default values for the section.
+ *
+ * Note that the properties are all small caps for use as attribtues directly in JSX elements
+ */
 export type FilterMenuSectionProps = PropsWithChildren<{
   sectionid: string;
   sectiontitle: string;
@@ -36,6 +55,10 @@ export type FilterMenuSectionProps = PropsWithChildren<{
   defaultvalues?: FilterSettingsValue[];
 }>;
 
+/**
+ * A section of the filter menu, wrapping a child component.
+ * It can be a card or an accordion.
+ */
 const FilterMenuSection = ({
   sectionid,
   sectiontitle,
@@ -110,13 +133,16 @@ export const initialState = (
   return { map: filterSettingsMap, defaults: defaultValuesMap };
 };
 
-export type FilterMenuReducerType = (
-  state: FilterSettings,
-  action: FilterSettingsAction,
-) => FilterSettings;
-
+/**
+ * Function to wrap a reducer with a handler that is called when the selection
+ * changes.
+ *
+ * @param reducer The reducer to wrap
+ * @param onSelectionChanged The handler to call when the selection changes
+ * @returns The updated filter settings
+ */
 export const wrapReducer = (
-  reducer: FilterMenuReducerType,
+  reducer: FilterSettingsReducerType,
   onSelectionChanged?: FilterMenuSelectionChangedHandler,
 ) => {
   return (filterSettings: FilterSettings, action: FilterSettingsAction) => {
@@ -129,6 +155,10 @@ export const wrapReducer = (
   };
 };
 
+/**
+ * Function to build a FilterMenuSection wrapping the input child element.
+ * @param elmt The child ReactElement supporting FilterMenuSectionProps to wrap
+ */
 const buildFilterMenuSection = (elmt: ReactElement<FilterMenuSectionProps>) => {
   const { filterkey, sectionid, sectiontitle, accordion, defaultvalues } =
     elmt.props;
@@ -147,6 +177,12 @@ const buildFilterMenuSection = (elmt: ReactElement<FilterMenuSectionProps>) => {
   );
 };
 
+/**
+ * The FilterMenu component is a container for a set of filter sections. It
+ * manages the state of the filter settings and provides a context for child
+ * components to access the filter settings and dispatch actions to update them.
+ * It also provides a handler to notify when the filter settings change.
+ */
 export const FilterMenu = ({
   onSelectionChanged,
   initialSelections,
