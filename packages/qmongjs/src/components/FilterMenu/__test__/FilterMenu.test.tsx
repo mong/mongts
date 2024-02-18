@@ -1,6 +1,6 @@
 import React from "react";
 import { describe, it, expect } from "vitest";
-import { initialState, FilterMenuSectionProps } from "..";
+import { createInitialFilterSettings, FilterMenuSectionProps } from "..";
 import { FilterSettingsValue } from "../FilterSettingsContext";
 
 const SectionTestComponent = (props: FilterMenuSectionProps) => {
@@ -14,7 +14,7 @@ describe("FilterMenu", () => {
       defaults.set("testkey", [
         { value: "testValue", valueLabel: "testLabel" },
       ]);
-      const result = initialState(new Map(), defaults, []);
+      const result = createInitialFilterSettings(new Map(), defaults, []);
       expect(result.defaults).toEqual(defaults);
     });
 
@@ -23,7 +23,11 @@ describe("FilterMenu", () => {
       initialSelections.set("testkey", [
         { value: "testValue", valueLabel: "testLabel" },
       ]);
-      const result = initialState(initialSelections, new Map(), []);
+      const result = createInitialFilterSettings(
+        initialSelections,
+        new Map(),
+        [],
+      );
       expect(result.map).toEqual(initialSelections);
     });
 
@@ -32,7 +36,7 @@ describe("FilterMenu", () => {
       defaults.set("testkey", [
         { value: "testValue", valueLabel: "testLabel" },
       ]);
-      const result = initialState(new Map(), defaults, []);
+      const result = createInitialFilterSettings(new Map(), defaults, []);
       expect(result.map).toEqual(defaults);
     });
 
@@ -41,7 +45,11 @@ describe("FilterMenu", () => {
       initialSelections.set("testkey", [
         { value: "testValue", valueLabel: "testLabel" },
       ]);
-      const result = initialState(initialSelections, new Map(), []);
+      const result = createInitialFilterSettings(
+        initialSelections,
+        new Map(),
+        [],
+      );
       expect(result.defaults).toEqual(new Map());
     });
 
@@ -62,7 +70,11 @@ describe("FilterMenu", () => {
       initialSelections.set(keyInit, [
         { value: "initValue", valueLabel: "initLabel" },
       ]);
-      const result = initialState(initialSelections, defaults, []);
+      const result = createInitialFilterSettings(
+        initialSelections,
+        defaults,
+        [],
+      );
       expect(result.map.get(keyInit)).toEqual(initialSelections.get(keyInit));
       expect(result.map.get(keyDefault)).toEqual(defaults.get(keyDefault));
     });
@@ -88,7 +100,11 @@ describe("FilterMenu", () => {
         <SectionTestComponent key="2" {...sectionProps[1]} />,
       ];
 
-      const result = initialState(new Map(), new Map(), sections);
+      const result = createInitialFilterSettings(
+        new Map(),
+        new Map(),
+        sections,
+      );
 
       expect(result.map.get(sectionProps[0].filterkey)).toEqual(
         sectionProps[0].defaultvalues,
@@ -122,7 +138,7 @@ describe("FilterMenu", () => {
 
       const sections = [<SectionTestComponent key="1" {...sectionProps} />];
 
-      const result = initialState(new Map(), defaults, sections);
+      const result = createInitialFilterSettings(new Map(), defaults, sections);
 
       expect(result.map.get("key")).toEqual(sectionProps.defaultvalues);
       expect(result.defaults.get("key")).toEqual(sectionProps.defaultvalues);

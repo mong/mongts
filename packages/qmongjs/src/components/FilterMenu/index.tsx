@@ -16,7 +16,7 @@ import { filterSettingsReducer } from "./FilterSettingsReducer";
 import { FilterSettingsAction } from "./FilterSettingsReducer";
 
 /**
- * The type/signalture of the handler to call when the selection changes. It is called with the new
+ * The type/signature of the handler function to call when the selection changes. It is called with the new
  * filter settings, the old filter settings, and the action that caused the change.
  */
 export type FilterMenuSelectionChangedHandler = (
@@ -84,6 +84,28 @@ const FilterMenuSection = ({
 };
 
 /**
+ * Used by initialState to merge default values from sections into the overall default values map.
+ *
+ * @param sections Child elements that can have initial and default values
+ * @param defaultValuesMap Default key-value pairs of filter settings
+ * @returns The updated default values map
+ */
+const mergeWithSectionDefaults = (
+  sections: ReactElement<FilterMenuSectionProps>[],
+  defaultValuesMap: Map<string, FilterSettingsValue[]>,
+) => {
+  sections.forEach((section) => {
+    const sectionFilterKey = section.props.filterkey;
+    const sectionDefaults = section.props.defaultvalues;
+    if (sectionFilterKey && sectionDefaults && sectionDefaults.length > 0) {
+      defaultValuesMap.set(sectionFilterKey, sectionDefaults);
+    }
+  });
+
+  return defaultValuesMap;
+};
+
+/**
  * Function used by FilterMenu to merge initial and default filter settings.
  *
  * FilterMenu accepts both initial settings and default (fallback) settings that
@@ -96,7 +118,7 @@ const FilterMenuSection = ({
  * @param sections Child elements that can have initial and default values
  * @returns A FilterSettings instance with the merged initial and default values
  */
-export const initialState = (
+export const createInitialFilterSettings = (
   initialFilterSelections?: Map<string, FilterSettingsValue[]>,
   defaultValues?: Map<string, FilterSettingsValue[]>,
   sections?: ReactElement<FilterMenuSectionProps>[],
@@ -115,16 +137,8 @@ export const initialState = (
     );
   else defaultValuesMap = new Map<string, FilterSettingsValue[]>();
 
-  // Add default values from sections to the overall defaults. Section default
-  // values will overwrite top level default values.
-  //
-  sections?.forEach((section) => {
-    const sectionFilterKey = section.props.filterkey;
-    const sectionDefaults = section.props.defaultvalues;
-    if (sectionFilterKey && sectionDefaults && sectionDefaults.length > 0) {
-      defaultValuesMap.set(sectionFilterKey, sectionDefaults);
-    }
-  });
+  if (sections)
+    defaultValuesMap = mergeWithSectionDefaults(sections, defaultValuesMap);
 
   defaultValuesMap.forEach((value, key) => {
     if (!filterSettingsMap.has(key)) filterSettingsMap.set(key, value);
@@ -195,7 +209,7 @@ export const FilterMenu = ({
 
   const [filterSettings, dispatch] = useReducer(
     wrapReducer(filterSettingsReducer, onSelectionChanged),
-    initialState(initialSelections, defaultValues, sections),
+    createInitialFilterSettings(initialSelections, defaultValues, sections),
   );
 
   return (
