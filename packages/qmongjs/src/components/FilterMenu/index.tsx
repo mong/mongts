@@ -53,6 +53,7 @@ export type FilterMenuSectionProps = PropsWithChildren<{
   filterkey: string;
   accordion?: string;
   defaultvalues?: FilterSettingsValue[];
+  initialselections?: FilterSettingsValue[];
 }>;
 
 /**
@@ -84,7 +85,8 @@ const FilterMenuSection = ({
 };
 
 /**
- * Used by initialState to merge default values from sections into the overall default values map.
+ * Used by the initialState function to merge default values from sections
+ * into the overall default values map.
  *
  * @param sections Child elements that can have initial and default values
  * @param defaultValuesMap Default key-value pairs of filter settings
@@ -103,6 +105,33 @@ const mergeWithSectionDefaults = (
   });
 
   return defaultValuesMap;
+};
+
+/**
+ * Used by the initialState function to merge the initial filter settings
+ * per section into the overall initial filter settings map.
+ *
+ * @param sections Child elements that can have initial and default values
+ * @param initialSelectionsMap Initial key-value pairs of filter settings
+ * @returns The updated initial settings values map
+ */
+const mergeWithSectionInitialSelections = (
+  sections: ReactElement<FilterMenuSectionProps>[],
+  initialSelectionsMap: Map<string, FilterSettingsValue[]>,
+) => {
+  sections.forEach((section) => {
+    const sectionFilterKey = section.props.filterkey;
+    const sectionInitialSelections = section.props.initialselections;
+    if (
+      sectionFilterKey &&
+      sectionInitialSelections &&
+      sectionInitialSelections.length > 0
+    ) {
+      initialSelectionsMap.set(sectionFilterKey, sectionInitialSelections);
+    }
+  });
+
+  return initialSelectionsMap;
 };
 
 /**
@@ -144,6 +173,12 @@ export const createInitialFilterSettings = (
     if (!filterSettingsMap.has(key)) filterSettingsMap.set(key, value);
   });
 
+  if (sections)
+    filterSettingsMap = mergeWithSectionInitialSelections(
+      sections,
+      filterSettingsMap,
+    );
+
   return { map: filterSettingsMap, defaults: defaultValuesMap };
 };
 
@@ -174,8 +209,14 @@ export const wrapReducer = (
  * @param elmt The child ReactElement supporting FilterMenuSectionProps to wrap
  */
 const buildFilterMenuSection = (elmt: ReactElement<FilterMenuSectionProps>) => {
-  const { filterkey, sectionid, sectiontitle, accordion, defaultvalues } =
-    elmt.props;
+  const {
+    filterkey,
+    sectionid,
+    sectiontitle,
+    accordion,
+    defaultvalues,
+    initialselections,
+  } = elmt.props;
 
   return (
     <FilterMenuSection
@@ -185,6 +226,7 @@ const buildFilterMenuSection = (elmt: ReactElement<FilterMenuSectionProps>) => {
       accordion={accordion}
       key={`fms-${sectionid}`}
       defaultvalues={defaultvalues}
+      initialselections={initialselections}
     >
       {elmt}
     </FilterMenuSection>
