@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { FilterMenuSectionProps } from ".";
 import {
-  FilterSettingsActionType,
+  FilterSettings,
   FilterSettingsContext,
-  FilterSettingsDispatchContext,
   FilterSettingsValue,
 } from "./FilterSettingsContext";
+import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
+import { FilterSettingsActionType } from "./FilterSettingsReducer";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormLabel from "@mui/material/FormLabel";
 import FormControl from "@mui/material/FormControl";
@@ -25,11 +26,11 @@ const getDefaultValue = (defaultValues?: FilterSettingsValue[]) => {
 
 const getSelectedValue = (
   filterkey: string,
-  filterSettings: Map<string, FilterSettingsValue[]>,
-  defaultValues?: FilterSettingsValue[],
+  filterSettings: FilterSettings,
 ) => {
   return (
-    filterSettings.get(filterkey)?.[0].value || getDefaultValue(defaultValues)
+    filterSettings.map.get(filterkey)?.[0].value ||
+    getDefaultValue(filterSettings.defaults.get(filterkey))
   );
 };
 
@@ -57,6 +58,7 @@ export const RadioGroupFilterSection = (
   const filterKey = props.filterkey;
   const accordion = props.accordion;
   const filterSettings = useContext(FilterSettingsContext);
+  const defaultValue = getDefaultValue(filterSettings.defaults.get(filterKey));
   const filterSettingsDispatch = useContext(FilterSettingsDispatchContext);
 
   return (
@@ -69,11 +71,7 @@ export const RadioGroupFilterSection = (
       <RadioGroup
         name={`radio-buttons-group-${props.sectionid}`}
         aria-labelledby={`filter-section-radio-group-label-${props.sectionid}`}
-        value={getSelectedValue(
-          props.filterkey,
-          filterSettings.map,
-          props.defaultvalues,
-        )}
+        value={getSelectedValue(props.filterkey, filterSettings)}
         onChange={handleChange}
       >
         {props.radios.map((radio) => (
@@ -82,6 +80,7 @@ export const RadioGroupFilterSection = (
             value={radio.value}
             control={<Radio />}
             label={radio.valueLabel}
+            sx={radio.value === defaultValue ? { color: "primary.main" } : {}}
           />
         ))}
       </RadioGroup>
