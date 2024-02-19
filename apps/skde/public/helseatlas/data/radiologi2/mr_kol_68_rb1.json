@@ -72,7 +72,7 @@
       "type": "barchart",
       "data": "datasett_3",
       "x": [
-        "totsnitt"
+        "ratesnitt"
       ],
       "y": "bohf",
       "xLabel": {
@@ -84,10 +84,10 @@
         "en": "Referral areas"
       },
       "annualVar": [
-        "tot2019",
-        "tot2020",
-        "tot2021",
-        "tot2022"
+        "rate2019",
+        "rate2020",
+        "rate2021",
+        "rate2022"
       ],
       "annualVarLabels": {
         "nb": [
@@ -131,13 +131,6 @@
           "id": "tot_events",
           "label_no": "Undersøkelser",
           "label_en": "Examinations",
-          "typeVar": "number",
-          "format": ",.0f"
-        },
-        {
-          "id": "tot_pas",
-          "label_no": "Pasienter",
-          "label_en": "Patients",
           "typeVar": "number",
           "format": ",.0f"
         },
