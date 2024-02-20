@@ -1,5 +1,6 @@
 import { Grid, Axis, LineSeries, XYChart, Tooltip } from "@visx/xychart";
 import { scaleOrdinal } from "@visx/scale";
+import { useRouter } from "next/router";
 import {
   customFormat,
   customFormatEng,
@@ -55,22 +56,52 @@ export const Linechart = <
   format_x,
   format_y,
 }: LinechartProps<Data, X, Y, Label>) => {
-  let uniqueLabels = Array.from(new Set(data.map((d) => d[label])));
+  const router = useRouter();
+  const selected_bohf = [router.query.bohf].flat();
 
-  const values = uniqueLabels.map((l) => {
-    return {
-      label: l,
-      points: data
-        .flatMap((d) => {
-          if (d[label] === l) {
-            return { x: d[x], y: d[y] };
-          } else {
-            return [];
-          }
-        })
-        .sort((a, b) => a.x - b.x),
-    };
+  const National =
+    lang === "en"
+      ? "Norway"
+      : lang === "nb"
+        ? "Norge"
+        : lang === "nn"
+          ? "Noreg"
+          : "";
+  const uniqueLabels =
+    label === "bohf"
+      ? [National].concat(selected_bohf)
+      : Array.from(new Set(data.map((d) => d[label])));
+
+  const allNonSelectedHF = Array.from(
+    new Set(data.map((d) => d[label])),
+  ).filter(function (item) {
+    return !uniqueLabels.includes(item);
   });
+
+  const plotableData = (
+    uniqueLabels: string[],
+    data: LinechartData<Data, X, Y, Label>[],
+  ) => {
+    // put data in a plotable format
+    const values = uniqueLabels.map((l) => {
+      return {
+        label: l,
+        points: data
+          .flatMap((d) => {
+            if (d[label] === l) {
+              return { x: d[x], y: d[y] };
+            } else {
+              return [];
+            }
+          })
+          .sort((a, b) => a.x - b.x),
+      };
+    });
+    return values;
+  };
+
+  const values = plotableData(uniqueLabels, data);
+  const greyValues = plotableData(allNonSelectedHF, data);
 
   const accessors = {
     xAccessor: (d) =>
@@ -114,6 +145,16 @@ export const Linechart = <
           left: 50 + yvaluesMaxTextLength,
         }}
       >
+        {greyValues.map((plots, i) => (
+          <LineSeries
+            stroke="rgb(229, 228, 226)"
+            dataKey={plots.label}
+            data={plots.points}
+            xAccessor={(d) => d.x}
+            yAccessor={(d) => d.y}
+            key={i}
+          />
+        ))}
         <Axis
           orientation="bottom"
           label={xLabel[lang]}
@@ -183,8 +224,11 @@ export const Linechart = <
                 {": "}
                 {accessors.xAccessor(tooltipData.nearestDatum.datum)}
               </div>
-              {Object.keys(tooltipData.datumByKey).map(
-                (d: LinechartData<Data, X, Y, Label>[Label]) => {
+              {Object.keys(tooltipData.datumByKey)
+                .filter(function (value) {
+                  return uniqueLabels.includes(value);
+                })
+                .map((d: LinechartData<Data, X, Y, Label>[Label]) => {
                   return (
                     <div key={d}>
                       <div style={{ color: colorScale(d) }}>
@@ -194,8 +238,7 @@ export const Linechart = <
                       </div>
                     </div>
                   );
-                },
-              )}
+                })}
             </div>
           )}
         />
