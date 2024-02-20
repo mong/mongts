@@ -3263,7 +3263,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/base@npm:5.0.0-beta.36":
+"@mui/base@npm:5.0.0-beta.36, @mui/base@npm:^5.0.0-beta.20":
   version: 5.0.0-beta.36
   resolution: "@mui/base@npm:5.0.0-beta.36"
   dependencies:
@@ -3419,7 +3419,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/utils@npm:^5.15.9":
+"@mui/utils@npm:^5.14.14, @mui/utils@npm:^5.15.9":
   version: 5.15.9
   resolution: "@mui/utils@npm:5.15.9"
   dependencies:
@@ -3434,6 +3434,28 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10/8628e4402856427bbc1ee3628afff596149ae3067ca6d62a1890d7b15217248fbeb65ec9360afc6963b330c08945fe6452deef2849d8ca35d894b42746cdad77
+  languageName: node
+  linkType: hard
+
+"@mui/x-tree-view@npm:^6.17.0":
+  version: 6.17.0
+  resolution: "@mui/x-tree-view@npm:6.17.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.23.2"
+    "@mui/base": "npm:^5.0.0-beta.20"
+    "@mui/utils": "npm:^5.14.14"
+    "@types/react-transition-group": "npm:^4.4.8"
+    clsx: "npm:^2.0.0"
+    prop-types: "npm:^15.8.1"
+    react-transition-group: "npm:^4.4.5"
+  peerDependencies:
+    "@emotion/react": ^11.9.0
+    "@emotion/styled": ^11.8.1
+    "@mui/material": ^5.8.6
+    "@mui/system": ^5.8.0
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: 10/64f06dbf1c399c9415824bce6f8c8d6564edcaba6803d278899b65a9925c101fdc2e51698dd824309d3bd5f2fa0298f888084f8cc00f591d003857236559e295
   languageName: node
   linkType: hard
 
@@ -5305,7 +5327,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-transition-group@npm:^4.4.10":
+"@types/react-transition-group@npm:^4.4.10, @types/react-transition-group@npm:^4.4.8":
   version: 4.4.10
   resolution: "@types/react-transition-group@npm:4.4.10"
   dependencies:
@@ -8222,7 +8244,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^2.1.0":
+"clsx@npm:^2.0.0, clsx@npm:^2.1.0":
   version: 2.1.0
   resolution: "clsx@npm:2.1.0"
   checksum: 10/2e0ce7c3b6803d74fc8147c408f88e79245583202ac14abd9691e2aebb9f312de44270b79154320d10bb7804a9197869635d1291741084826cff20820f31542b
@@ -18962,6 +18984,7 @@ __metadata:
     "@emotion/styled": "npm:11.11.0"
     "@mui/icons-material": "npm:5.15.10"
     "@mui/material": "npm:5.15.10"
+    "@mui/x-tree-view": "npm:^6.17.0"
     "@tanstack/react-query": "npm:5.20.5"
     "@testing-library/jest-dom": "npm:6.4.2"
     "@testing-library/react": "npm:14.2.1"
