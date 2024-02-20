@@ -13,26 +13,101 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { Indicator } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
+import { FetchIndicatorParams } from "../../../helpers/hooks";
 
 export type IndicatorTableBodyV2Props = {
-  context: string;
-  tableType: "allRegistries" | "singleRegister";
-  colspan: number;
-  registerNames: RegisterName[];
-  unitNames: string[];
-  treatmentYear: number;
-  medicalFieldFilter: string[];
-  showLevelFilter: string;
-  blockTitle?: string[];
+  context: string,
+  type: string,
+  year: number,
+  registers: string[],
+  unitNames: string[],
+  width: number,
 }
 
-type RowData = {
+
+type IndicatorData = {
+  indicatorID: string,
+  indicatorName: string | null,
+  targetMeasure: number | null,
+  shortDescription: string | null,
+  longDescription: string | null,
+  sortingName: string | null,
+  unitName: string[],
+  var: number[],
+  numerator: number[],
+  denominator: number[],
+}
+
+type RegisterData = {
+  registerName: string,
+  registerID: number,
+  medfieldID: number,
+  data: IndicatorData[],
+}
+
+const searchArray = (arr: Array<IndicatorData>, target: string) => {
+  let i = 0;
+
+  while (arr[i].indicatorID !== target) {
+    i++;
+  };
+
+  return(i);
+}
+
+const createData = (indicatorData: Indicator[]) => {
   
-}
+  const regData: RegisterData[] = indicatorData.reduce((returnData: RegisterData[], row) => {
+    // Initialise array
+    const i = row.registry_id;
 
-const Row = (props: { row: RowData }) => {
+    // Add medfield to array if not already there
+    if (!returnData[i]) {
+      returnData[i] = { 
+        registerName: row.registry_full_name,
+        registerID: row.registry_id,
+        medfieldID: row.medfield_id,
+        data: [] as IndicatorData[],
+      };
+    };
+
+    // Add indicator to register and initialise of not already there
+    if (!(row.ind_id in returnData[i].data.map((row) => {return(row.indicatorName)}))) {
+      returnData[i].data.push({
+        indicatorID: row.ind_id,
+        indicatorName: row.ind_title,
+        targetMeasure: row.level_green,
+        shortDescription: row.ind_short_description,
+        longDescription: row.ind_long_description,
+        sortingName: row.ind_name,
+        unitName: [] as string[],
+        var: [] as number[],
+        numerator: [] as number[],
+        denominator: [] as number[]
+      });
+  };
+
+    // Add data to indicator
+    const j = searchArray(returnData[i].data, row.ind_id);
+    returnData[i].data[j].unitName.push(row.unit_name);
+    returnData[i].data[j].var.push(row.var);
+    returnData[i].data[j].numerator.push(Math.round(row.var*row.denominator));
+    returnData[i].data[j].var.push(row.denominator);
+
+    return(returnData);
+  }, [] as RegisterData[]);
+
+
+  return(regData);
+
+};
+
+
+
+const Row = (props: { row: RegisterData }) => {
   const { row } = props;
   const [open, setOpen] = React.useState(false);
 
@@ -49,9 +124,9 @@ const Row = (props: { row: RowData }) => {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.name}
+          {row.registerName}
         </TableCell>
-        <TableCell>{createSymbols(row.green, row.yellow, row.red)}</TableCell>
+        <TableCell>{}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -65,17 +140,10 @@ const Row = (props: { row: RowData }) => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.registers.map((registerRow) => (
-                    <TableRow key={registerRow.name}>
+                  {row.data.map((registerRow) => (
+                    <TableRow key={registerRow.indicatorName}>
                       <TableCell component="th" scope="row">
-                        {registerRow.name}
-                      </TableCell>
-                      <TableCell>
-                        {createSymbols(
-                          registerRow.green,
-                          registerRow.yellow,
-                          registerRow.red,
-                        )}
+                        {registerRow.var}
                       </TableCell>
                     </TableRow>
                   ))}
@@ -89,31 +157,32 @@ const Row = (props: { row: RowData }) => {
   );
 };
 
-export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
-  props,
-) => {
-  const {
-    context,
-    tableType,
-    colspan,
-    registerNames,
-    unitNames,
-    treatmentYear,
-    medicalFieldFilter,
-    showLevelFilter,
-    blockTitle,
-  } = props;
+export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (props) => {
 
-  const done: string[] = [];
-  const register_block = registerNames.map((register, i) => {
-    if (!done.includes(register.rname)) {
-      done.push(register.rname);
+  const {context, type, year, registers, unitNames, width} = props;
+
+  // Filtrering her? 
+  const queryParams: FetchIndicatorParams = { 
+    context: context,
+    treatmentYear: year,
+    unitNames: unitNames,
+    type: type,
+   };
+
+  const indicatorQuery: UseQueryResult<any, unknown> =
+  useIndicatorQuery(queryParams);
+
+  if (indicatorQuery.isFetching) {
+    return null;
+  }
+
+  const rowData = createData(indicatorQuery.data);
 
       return (
         <TableContainer component={Paper}>
         <Table
           aria-label="collapsible table"
-          style={{ width: medfieldTableParams.width }}
+          style={{ width: width }}
         >
           <TableHead>
             <TableRow>
@@ -124,22 +193,10 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
           </TableHead>
           <TableBody>
             {rowData.map((row) => (
-              <Row key={row.name} row={row} />
+              <Row key={row.registerName} row={row} />
             ))}
           </TableBody>
         </Table>
       </TableContainer>
       );
-    } else {
-      return null;
-    }
-  });
-  const isEmpty = !done.length;
-
-  return (
-    <tbody>
-      {isEmpty && <NoDataAvailible colspan={colspan} />}
-      {register_block}
-    </tbody>
-  );
 };

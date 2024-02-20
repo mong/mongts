@@ -1,7 +1,7 @@
 import React from "react";
 
 import { IndicatorTableHeader } from "./indicatortableheader";
-import { IndicatorTableBody } from "./indicatortablebody";
+import { IndicatorTableBodyV2 } from "./IndicatortablebodyV2";
 import { RegisterName } from "types";
 
 export interface IndicatorTableProps {
@@ -45,16 +45,14 @@ export const IndicatorTable: React.FC<IndicatorTableProps> = (props) => {
         legend_height={legend_height}
         descriptionHeader={descriptionHeader}
       />
-      <IndicatorTableBody
+      <IndicatorTableBodyV2
         context={context}
-        tableType={tableType}
-        colspan={colspan}
-        registerNames={registerNames}
         unitNames={unitNames}
-        treatmentYear={treatmentYear}
-        medicalFieldFilter={medicalFieldFilter}
-        showLevelFilter={showLevelFilter ?? ""}
-        blockTitle={blockTitle}
+        registers={registerNames.map((row) => {return(row.rname)})}
+        year={treatmentYear}
+        type={"ind"}
+        width={800}
+
       />
     </table>
   );
