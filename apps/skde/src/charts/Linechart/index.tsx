@@ -38,6 +38,7 @@ type LinechartProps<
   yLabel?: { en: string; nb: string; nn: string };
   format_x?: string;
   format_y?: string;
+  national?: string;
 };
 
 export const Linechart = <
@@ -55,21 +56,14 @@ export const Linechart = <
   yLabel,
   format_x,
   format_y,
+  national,
 }: LinechartProps<Data, X, Y, Label>) => {
   const router = useRouter();
   const selected_bohf = [router.query.bohf].flat();
 
-  const National =
-    lang === "en"
-      ? "Norway"
-      : lang === "nb"
-        ? "Norge"
-        : lang === "nn"
-          ? "Noreg"
-          : "";
   const uniqueLabels =
     label === "bohf"
-      ? [National].concat(selected_bohf)
+      ? [national].concat(selected_bohf)
       : Array.from(new Set(data.map((d) => d[label])));
 
   const allNonSelectedHF = Array.from(
