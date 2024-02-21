@@ -1,4 +1,4 @@
-import type { } from "@mui/x-tree-view/themeAugmentation";
+import type {} from "@mui/x-tree-view/themeAugmentation";
 import React, { useContext, useState } from "react";
 import Box from "@mui/material/Box";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
