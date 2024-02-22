@@ -17,3 +17,4 @@ export {
 } from "./components/FilterMenu/FilterSettingsReducer";
 export { RadioGroupFilterSection } from "./components/FilterMenu/RadioGroupFilterSection";
 export { SelectedFiltersSection } from "./components/FilterMenu/SelectedFiltersSection";
+export { TreeViewFilterSection } from "./components/FilterMenu/TreeViewFilterSection";

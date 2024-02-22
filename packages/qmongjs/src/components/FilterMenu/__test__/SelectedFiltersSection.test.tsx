@@ -5,7 +5,7 @@ import SelectedFiltersSection, {
 } from "../SelectedFiltersSection";
 import { FilterSettingsActionType } from "../FilterSettingsReducer";
 import FilterMenu, { FilterMenuSectionProps } from "..";
-import { FilterSettings, FilterSettingsValue } from "../FilterSettingsContext";
+import { FilterSettingsValue } from "../FilterSettingsContext";
 
 const filterSettingsDispatch = vi.fn();
 
