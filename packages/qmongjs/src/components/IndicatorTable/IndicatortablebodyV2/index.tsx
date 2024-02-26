@@ -105,13 +105,25 @@ const createData = (indicatorData: Indicator[]) => {
 
 };
 
+type TableCellCollectionProps = {
+  rowNames: string[];
+};
 
+const TableCellCollection: React.FC<TableCellCollectionProps> = (props) => {
+  
+  return(props.rowNames.map((row) => {
+    return(<TableCell align={"right"}>{row}</TableCell>)
+  }))
+};
 
-const Row = (props: { row: RegisterData }) => {
-  const { row } = props;
-  const [open, setOpen] = React.useState(false);
+const RowContent = (props: {unitNames: string[], data: IndicatorData[] }) => {
+  const { unitNames, data } = props;
 
-  return (
+  return(
+    data.map((row) => {
+      
+      const [open, setOpen] = React.useState(false);
+      return(
     <React.Fragment>
       <TableRow
         sx={{ "& > *": { borderBottom: "unset" } }}
@@ -123,36 +135,65 @@ const Row = (props: { row: RegisterData }) => {
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component="th" scope="row">
-          {row.registerName}
-        </TableCell>
-        <TableCell>{}</TableCell>
+        <TableCell>{row.indicatorName}</TableCell>
       </TableRow>
       <TableRow>
-        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={unitNames.length + 1}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
-              <Table size="small" aria-label="registries">
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Register</TableCell>
-                    <TableCell>Resultat</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {row.data.map((registerRow) => (
-                    <TableRow key={registerRow.indicatorName}>
-                      <TableCell component="th" scope="row">
-                        {registerRow.var}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
+              <Table>
+
+
+                    <TableCell>
+                      {row.shortDescription}
+                    </TableCell>
+
+
               </Table>
             </Box>
           </Collapse>
         </TableCell>
       </TableRow>
+    </React.Fragment>
+      )
+
+    }
+    )
+  )
+};
+
+const Row = (props: { unitNames: string[], regData: RegisterData }) => {
+  const { unitNames, regData } = props;
+  const [open, setOpen] = React.useState(false);
+
+  return (
+    <React.Fragment>
+
+      <TableRow
+        sx={{ "& > *": { borderBottom: "unset" } }}
+        onClick={() => setOpen(!open)}
+        style={{ cursor: "pointer" }}
+      >
+        <TableCell>
+          <IconButton aria-label="expand row" size="small">
+            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+          </IconButton>
+        </TableCell>
+        <TableCell component="th" scope="row">
+          {regData.registerName}
+        </TableCell>
+      </TableRow>
+
+      <TableRow>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={unitNames.length + 1}>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <Box sx={{ margin: 1 }}>
+                <RowContent unitNames={unitNames} data={regData.data}/>
+            </Box>
+          </Collapse>
+        </TableCell>
+      </TableRow>
+
     </React.Fragment>
   );
 };
@@ -177,7 +218,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (props)
   }
 
   const rowData = createData(indicatorQuery.data);
-
+      // Returnere tabell isteden? 
       return (
         <TableContainer component={Paper}>
         <Table
@@ -186,14 +227,13 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (props)
         >
           <TableHead>
             <TableRow>
-              <TableCell />
-              <TableCell>Fagområde</TableCell>
-              <TableCell>Resultat</TableCell>
+              <TableCell width={width/2} align={"left"}>{"Kvalitetsindikator"}</TableCell>
+              <TableCell width={width/2} align={"right"}>{"Målnivå"}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {rowData.map((row) => (
-              <Row key={row.registerName} row={row} />
+              <Row key={row.registerName} unitNames={unitNames} regData={row} />
             ))}
           </TableBody>
         </Table>

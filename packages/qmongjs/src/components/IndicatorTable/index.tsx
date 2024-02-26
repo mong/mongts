@@ -38,13 +38,6 @@ export const IndicatorTable: React.FC<IndicatorTableProps> = (props) => {
 
   return (
     <table>
-      <IndicatorTableHeader
-        colspan={colspan}
-        unitNames={unitNames}
-        selection_bar_height={selection_bar_height}
-        legend_height={legend_height}
-        descriptionHeader={descriptionHeader}
-      />
       <IndicatorTableBodyV2
         context={context}
         unitNames={unitNames}
