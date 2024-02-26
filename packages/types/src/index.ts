@@ -40,6 +40,16 @@ export interface Indicator {
   type?: string | null;
   include: number | null;
   min_denominator: number | null;
+  registry_id: number;
+  registry_name: string;
+  registry_full_name: string;
+  medfield_id: number;
+  medfield_name: string;
+  medfield_full_name: string;
+  ind_short_description: string | null;
+  ind_long_description: string | null;
+  ind_title: string | null;
+  ind_name: string | null;
 }
 
 export interface TuName {

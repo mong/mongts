@@ -27,7 +27,7 @@ jobs:
       - name: Enable Corepack before setting up Node
         run: corepack enable
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4.0.1
+        uses: actions/setup-node@v4.0.2
         with:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
@@ -42,7 +42,7 @@ jobs:
           browser: chrome
       - name: Archive production artifacts
         if: failure()
-        uses: actions/upload-artifact@v4.3.0
+        uses: actions/upload-artifact@v4.3.1
         with:
           name: cypress videos
           path: apps/skde/cypress/videos
