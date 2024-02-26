@@ -4,9 +4,9 @@ import { render, screen, within } from "@testing-library/react";
 import TreeViewFilterSection, {
   flattenTreeValues,
   getSelectedNodeIds,
-  handleSelect,
   initDefaultExpanded,
   initFilterSettingsValuesMap,
+  selectionHandlerFunc,
 } from "../TreeViewFilterSection";
 import { FilterSettingsActionType } from "../FilterSettingsReducer";
 import FilterMenu from "..";
@@ -144,27 +144,21 @@ describe("TreeViewFilterSection", () => {
     });
   });
 
-  describe("handleSelect()", () => {
+  describe("selectionHandlerFunc()", () => {
     const idToValueMap = initFilterSettingsValuesMap(treeData);
 
-    it("should work with a string, non-array nodeId", () => {
+    it("should call dispatcher with correct params when handler is called", () => {
       const mockDispatch = vi.fn();
 
-      handleSelect("filterkey", "rootValue", idToValueMap, mockDispatch);
+      const handleCheckboxClick = selectionHandlerFunc(
+        [],
+        "filterkey",
+        true,
+        idToValueMap,
+        mockDispatch,
+      );
 
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: FilterSettingsActionType.SET_SECTION_SELECTIONS,
-        sectionSetting: {
-          key: "filterkey",
-          values: [treeData[0].nodeValue],
-        },
-      });
-    });
-
-    it("should work with array of nodeIds", () => {
-      const mockDispatch = vi.fn();
-
-      handleSelect("filterkey", "childValue-0-1", idToValueMap, mockDispatch);
+      handleCheckboxClick(true, "childValue-0-1-0");
 
       expect(mockDispatch).toHaveBeenCalledWith({
         type: FilterSettingsActionType.SET_SECTION_SELECTIONS,
@@ -172,8 +166,8 @@ describe("TreeViewFilterSection", () => {
           key: "filterkey",
           values: [
             {
-              value: "childValue-0-1",
-              valueLabel: "Child 0-1",
+              value: "childValue-0-1-0",
+              valueLabel: "Child 0-1-0",
             },
           ],
         },
@@ -189,7 +183,7 @@ describe("TreeViewFilterSection", () => {
             sectionid="testSection"
             sectiontitle="testTitle"
             filterkey="testKey"
-            treeData={treeData}
+            treedata={treeData}
           />
         </FilterMenu>,
       );
@@ -200,7 +194,7 @@ describe("TreeViewFilterSection", () => {
       expect(treeViewComponent).toBeInTheDocument();
     });
 
-    it("should select a node when clicked", async () => {
+    it("should select the node when the checkbox is clicked", async () => {
       const selectionHandlerMock = vi.fn();
 
       render(
@@ -209,20 +203,28 @@ describe("TreeViewFilterSection", () => {
             sectionid="testSection"
             sectiontitle="testTitle"
             filterkey="testKey"
-            treeData={treeData}
+            treedata={treeData}
             accordion="false"
           />
         </FilterMenu>,
       );
 
-      const treeViewItem = await screen.getByTestId(
-        "tree-view-section-item-rootValue",
+      const treeViewCheckbox = await screen.getByTestId(
+        "checkbox-testKey-rootValue",
       );
 
-      await act(() => within(treeViewItem).getByText("Root Value").click());
+      const checkboxIconBlank = await within(treeViewCheckbox).getByTestId(
+        "CheckBoxOutlineBlankIcon",
+      );
+      expect(checkboxIconBlank).toBeVisible();
+
+      await act(() => treeViewCheckbox.click());
 
       expect(selectionHandlerMock).toHaveBeenCalled();
-      expect(treeViewItem.ariaSelected).toBe("true");
+
+      const checkboxIcon =
+        await within(treeViewCheckbox).getByTestId("CheckBoxIcon");
+      expect(checkboxIcon).toBeVisible();
     });
 
     it("should expand tree to show initially selected nodes", () => {
@@ -232,7 +234,7 @@ describe("TreeViewFilterSection", () => {
             sectionid="testSection"
             sectiontitle="testTitle"
             filterkey="testKey"
-            treeData={treeData}
+            treedata={treeData}
             initialselections={[
               {
                 value: "childValue-0-1-0",
@@ -245,7 +247,7 @@ describe("TreeViewFilterSection", () => {
       );
 
       expect(
-        result.getByTestId("tree-view-section-item-childValue-0-1-0"),
+        result.getByTestId("tree-view-item-childValue-0-1-0"),
       ).toBeVisible();
     });
   });
