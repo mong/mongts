@@ -177,7 +177,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
                             selected_bohf[0] === undefined
                               ? d["bohf"]
                               : selected_bohf.includes(d["bohf"])
-                                ? selected_bohf.filter((e) => e != d["bohf"])
+                                ? selected_bohf.filter((f) => f != d["bohf"])
                                 : selected_bohf.concat(d["bohf"]),
                         },
                       },

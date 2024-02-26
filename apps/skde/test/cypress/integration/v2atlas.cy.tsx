@@ -70,15 +70,15 @@ context("v2 atlas", () => {
     cy.get('[label="map"]').should("not.exist"); // Map does not exist
     cy.get("caption").contains("gjennomsnittsverdier for perioden");
     cy.get(".MuiTableBody-root > :nth-child(1) > :nth-child(3)").contains(
-      "812"
+      "812",
     );
     cy.get("span").contains("Pasienter").click(); // Sort table
     cy.get(".MuiTableBody-root > :nth-child(1) > :nth-child(3)").contains(
-      "368"
+      "368",
     );
     cy.get("span").contains("Pasienter").click(); // Sort table again
     cy.get(".MuiTableBody-root > :nth-child(1) > :nth-child(3)").contains(
-      "173"
+      "173",
     );
 
     cy.get('[data-testid="carouselbutton_5"]').click(); // Show the map
@@ -102,7 +102,7 @@ context("v2 atlas", () => {
     cy.get('[data-testid="factbox"]').click();
     cy.get('[data-testid="factbox"]').invoke("height").should("be.gt", 200);
     cy.get(
-      '[id="ms-syke-barn-under-fødsel-fact-svangeskapsdiabetes-header"]'
+      '[id="ms-syke-barn-under-fødsel-fact-svangeskapsdiabetes-header"]',
     ).click();
     cy.get('[data-testid="factbox"]').invoke("height").should("be.lt", 100);
   });
@@ -116,29 +116,34 @@ context("v2 atlas", () => {
     cy.get('[data-testid="circle_UNN_selected"]').should("be.visible");
     cy.get('[data-testid="rect_UNN_selected"]').should("exist");
     cy.get('[data-testid="rect_UNN_selected"]').should("not.be.visible");
-    cy.get('[data-testid="circle_UNN_selected"]').click();
+    cy.get('[data-testid="resultbox_title"]').click();
     cy.get('[data-testid="rect_UNN_selected"]').should("be.visible");
     cy.get('[data-testid="rect_UNN_selected"]').click();
-    cy.get('[data-testid="circle_UNN_selected"]').should("not.exist");
     cy.get('[data-testid="rect_UNN_selected"]').should("not.exist");
     cy.get('[data-testid="rect_UNN_unselected"]').click();
     cy.get('[data-testid="rect_UNN_selected"]').should("exist");
     cy.get('[data-testid="circle_UNN_selected"]').should("exist");
+    cy.get('[data-testid="circle_UNN_selected"]').click();
+    cy.get('[data-testid="circle_UNN_selected"]').should("not.exist");
+    cy.get('[data-testid="circle_Diakonhjemmet_unselected"]').click();
+    cy.get('[data-testid="circle_Diakonhjemmet_selected"]').should("exist");
     cy.get('[data-testid="circle_OUS_unselected"]').should("exist");
     cy.get('[data-testid="rect_OUS_unselected"]').click();
-    cy.get('[data-testid="circle_UNN_selected"]').should("exist");
     cy.get('[data-testid="circle_OUS_selected"]').should("exist");
     cy.get('[data-testid="carouselbutton_4"]').click(); // Show the table
-    cy.get('[data-testid="tablerow_UNN"]').should("have.class", "Mui-selected");
+    cy.get('[data-testid="tablerow_Diakonhjemmet"]').should(
+      "have.class",
+      "Mui-selected",
+    );
     cy.get('[data-testid="tablerow_OUS"]').should("have.class", "Mui-selected");
     cy.get('[data-testid="tablerow_Telemark"]').should(
       "not.have.class",
-      "Mui-selected"
+      "Mui-selected",
     );
     cy.get('[data-testid="tablerow_Telemark"]').click();
     cy.get('[data-testid="tablerow_Telemark"]').should(
       "have.class",
-      "Mui-selected"
+      "Mui-selected",
     );
     cy.get('[data-testid="carouselbutton_5"]').click(); // Show the map
     cy.get('[data-testid="maphf_Telemark"]')
@@ -163,7 +168,7 @@ context("v2 atlas", () => {
     cy.get('[data-testid="carouselbutton_5"]').click(); // Show the map
     cy.get('[label="map"]').should("exist"); // Map exist
     cy.get('[data-testid="mapCaption"]').contains(
-      "Number of epilepsy patients per 1,000 inhabitants"
+      "Number of epilepsy patients per 1,000 inhabitants",
     );
     cy.get('[data-testid="carouselbutton_4"]').click(); // Show the table
     cy.get('[label="table"]').should("exist"); // Table exist
