@@ -30,6 +30,7 @@ export type TreatmentQualityFilterMenuProps = {
   medicalfields: TreatmentQualityRadioGroupOptions;
   goalaccomplishments?: TreatmentQualityRadioGroupOptions;
   treatmentunitstree: TreatmentQualityTreeViewOptions;
+  maxtreatmentunits?: number;
   onSelectionChanged?: FilterMenuSelectionChangedHandler;
 };
 
@@ -81,6 +82,7 @@ export function TreatmentQualityFilterMenu(
   const goalAccomplishmentOptions = goalAccomplishments.options;
   const goalAccomplishmentDefault = goalAccomplishments.default;
   const treatmentUnitsTree = props.treatmentunitstree;
+  const maxSelections = props.maxtreatmentunits;
   const yearOptions = getYearOptions();
 
   return (
@@ -116,6 +118,7 @@ export function TreatmentQualityFilterMenu(
         sectionid="treatment-units"
         sectiontitle="Behandlingsenheter"
         filterkey="unit_name"
+        maxselections={maxSelections}
         treedata={treatmentUnitsTree.treedata}
         defaultvalues={treatmentUnitsTree.defaults}
       />

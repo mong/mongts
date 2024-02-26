@@ -13,6 +13,7 @@ import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
 import { FilterSettingsAction } from "./FilterSettingsReducer";
 import { FilterSettingsActionType } from "./FilterSettingsReducer";
 import { TreeViewFilterSectionItem } from "./TreeViewFilterSectionItem";
+import Alert from "@mui/material/Alert";
 
 /**
  * The structure of a node in the tree data used with the TreeViewFilterSection
@@ -41,6 +42,7 @@ export type TreeViewFilterSettingsValue = FilterSettingsValue & {
  */
 export type TreeViewSectionProps = FilterMenuSectionProps & {
   multiselect?: boolean;
+  maxselections?: number;
   treedata: TreeViewFilterSectionNode[];
 };
 
@@ -209,14 +211,20 @@ export const selectionHandlerFunc = (
   isMultiSelect: boolean,
   filterSettingsValuesMap: Map<string, TreeViewFilterSettingsValue>,
   filterSettingsDispatch: React.Dispatch<FilterSettingsAction>,
+  setMaxSelectionAlert: React.Dispatch<React.SetStateAction<boolean>>,
+  maxSelections?: number,
 ) => {
   return (checked: boolean, nodeId: string) => {
     let updatedSelectedIds = selectedIds;
 
     if (checked) {
       if (isMultiSelect) {
-        // TODO: Control must support an optional maximum allowed selections.
-        updatedSelectedIds = [...selectedIds, nodeId];
+        if (maxSelections && selectedIds.length >= maxSelections) {
+          setMaxSelectionAlert(true);
+          return;
+        } else {
+          updatedSelectedIds = [...selectedIds, nodeId];
+        }
       } else {
         updatedSelectedIds = [nodeId];
       }
@@ -247,6 +255,10 @@ export const selectionHandlerFunc = (
         },
       });
     }
+
+    if (maxSelections !== undefined) {
+      setMaxSelectionAlert(false);
+    }
   };
 };
 
@@ -263,6 +275,7 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
   const filterSettingsDispatch = useContext(FilterSettingsDispatchContext);
 
   const isMultiSelect = props.multiselect ?? true;
+  const maxSelections = props.maxselections;
   const filterKey = props.filterkey;
   const treeData = props.treedata;
   const selectedIds = getSelectedNodeIds(filterSettings.map.get(filterKey));
@@ -272,6 +285,7 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
   const [defaultExpanded] = useState<string[]>(
     initDefaultExpanded(selectedIds, filterSettingsValuesMap),
   );
+  const [showMaxSelectionAlert, setMaxSelectionAlert] = useState(false);
 
   // selectionHandlerFunc returns a handler-function for checkbox events
   const handleCheckboxClick = selectionHandlerFunc(
@@ -280,10 +294,15 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
     isMultiSelect,
     filterSettingsValuesMap,
     filterSettingsDispatch,
+    setMaxSelectionAlert,
+    maxSelections,
   );
 
   return (
     <Box>
+      {showMaxSelectionAlert && (
+        <Alert severity="warning">{`Du kan maksimalt huke av ${maxSelections} valg.`}</Alert>
+      )}
       <TreeView
         aria-label={`${props.sectiontitle} (TreeView)}`}
         data-testid={`tree-view-section-${props.sectionid}`}
