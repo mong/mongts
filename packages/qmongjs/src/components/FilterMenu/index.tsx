@@ -40,8 +40,8 @@ export type FilterMenuProps = PropsWithChildren<{
   initialSelections?: Map<string, FilterSettingsValue[]>;
   defaultValues?: Map<string, FilterSettingsValue[]>;
   children:
-    | ReactElement<FilterMenuSectionProps>
-    | ReactElement<FilterMenuSectionProps>[];
+  | ReactElement<FilterMenuSectionProps>
+  | ReactElement<FilterMenuSectionProps>[];
 }>;
 
 /**

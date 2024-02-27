@@ -19,3 +19,5 @@ export { RadioGroupFilterSection } from "./components/FilterMenu/RadioGroupFilte
 export { SelectedFiltersSection } from "./components/FilterMenu/SelectedFiltersSection";
 export { TreeViewFilterSection } from "./components/FilterMenu/TreeViewFilterSection";
 export { TreatmentQualityFilterMenu } from "./components/FilterMenu/TreatmentQualityFilterMenu";
+
+export { MainRegisterDemo } from "./components/RegisterPage/MainRegisterDemo";
