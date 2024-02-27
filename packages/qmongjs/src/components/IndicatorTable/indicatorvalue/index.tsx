@@ -3,6 +3,7 @@ import { Indicator } from "types";
 import style from "./indicatorvalue.module.css";
 import { customFormat, level } from "../../../helpers/functions";
 import { FaCircle, FaAdjust, FaRegCircle } from "react-icons/fa";
+import { levelSymbols } from "../../../helpers/functions";
 
 export interface IndicatorValueProps {
   td_class?: string;

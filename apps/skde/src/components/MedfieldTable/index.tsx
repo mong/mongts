@@ -14,7 +14,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import { FaCircle, FaAdjust, FaRegCircle } from "react-icons/fa";
-import { level } from "qmongjs";
+import { level, levelSymbols } from "qmongjs";
 import _ from "lodash";
 import { Indicator } from "types";
 
