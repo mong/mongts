@@ -1,6 +1,11 @@
 import { ReactElement, PropsWithChildren, useReducer } from "react";
 import Stack from "@mui/material/Container";
-import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Typography,
+} from "@mui/material";
 import { Card, CardContent } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
@@ -76,7 +81,7 @@ const FilterMenuSection = ({
     return (
       <Accordion key={`fms-accordion-${sectionid}`}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          {sectiontitle}
+          <Typography>{sectiontitle}</Typography>
         </AccordionSummary>
         <AccordionDetails>{children}</AccordionDetails>
       </Accordion>
