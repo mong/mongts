@@ -115,7 +115,7 @@ const createData = (indicatorData: Indicator[]) => {
 };
 
 type TableCellCollectionProps = {
-  rowNames: string[];
+  rowNames: string[] | number[];
 };
 
 const TableCellCollection: React.FC<TableCellCollectionProps> = (props) => {
@@ -158,7 +158,9 @@ const IndicatorSection = (props: {
               <Box sx={{ margin: 1 }}>
                 <Table>
                   <TableCell>{row.shortDescription}</TableCell>
-                  <TableCell align="right">{row.data[0].var}</TableCell>
+                  <TableCellCollection
+                    rowNames={row.data.map((row) => row.var)}
+                  />
                 </Table>
               </Box>
             </Collapse>
