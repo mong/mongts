@@ -130,7 +130,7 @@ export const Linechart = <
     <div style={{ width: "auto", margin: "auto" }}>
       <XYChart
         height={500}
-        xScale={{ type: "band" }}
+        xScale={{ type: "band", paddingOuter: label === "bohf" ? -0.3 : 0 }}
         yScale={{ type: "linear" }}
         margin={{
           top: 50,
