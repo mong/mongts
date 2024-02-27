@@ -233,7 +233,6 @@ export const Linechart = <
                     return uniqueLabels.includes(value);
                   })
                   .map((d: LinechartData<Data, X, Y, Label>[Label]) => {
-                    console.log(tooltipData.nearestDatum);
                     return (
                       <div key={d}>
                         <div style={{ color: colorScale(d) }}>
