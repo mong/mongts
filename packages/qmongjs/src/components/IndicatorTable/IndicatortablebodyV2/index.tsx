@@ -27,6 +27,13 @@ export type IndicatorTableBodyV2Props = {
   width: number;
 };
 
+type DataPoint = {
+  unitName: string;
+  var: number;
+  numerator: number;
+  denominator: number;
+};
+
 type IndicatorData = {
   indicatorID: string;
   indicatorName: string | null;
@@ -34,10 +41,7 @@ type IndicatorData = {
   shortDescription: string | null;
   longDescription: string | null;
   sortingName: string | null;
-  unitName: string[];
-  var: number[];
-  numerator: number[];
-  denominator: number[];
+  data: DataPoint[];
 };
 
 type RegisterData = {
@@ -47,6 +51,7 @@ type RegisterData = {
   data: IndicatorData[];
 };
 
+// Find the index of the array element where the indicator ID is equal to the input string
 const searchArray = (arr: Array<IndicatorData>, target: string) => {
   let i = 0;
 
@@ -73,14 +78,13 @@ const createData = (indicatorData: Indicator[]) => {
         };
       }
 
-      // Add indicator to register and initialise of not already there
+      // Add indicator to register and initialise if not already there
       if (
-        !(
-          row.ind_id in
-          returnData[i].data.map((row) => {
-            return row.indicatorName;
+        !returnData[i].data
+          .map((row) => {
+            return row.indicatorID;
           })
-        )
+          .includes(row.ind_id)
       ) {
         returnData[i].data.push({
           indicatorID: row.ind_id,
@@ -89,21 +93,18 @@ const createData = (indicatorData: Indicator[]) => {
           shortDescription: row.ind_short_description,
           longDescription: row.ind_long_description,
           sortingName: row.ind_name,
-          unitName: [] as string[],
-          var: [] as number[],
-          numerator: [] as number[],
-          denominator: [] as number[],
+          data: [] as DataPoint[],
         });
       }
 
       // Add data to indicator
       const j = searchArray(returnData[i].data, row.ind_id);
-      returnData[i].data[j].unitName.push(row.unit_name);
-      returnData[i].data[j].var.push(row.var);
-      returnData[i].data[j].numerator.push(
-        Math.round(row.var * row.denominator),
-      );
-      returnData[i].data[j].var.push(row.denominator);
+      returnData[i].data[j].data.push({
+        unitName: row.unit_name,
+        var: row.var,
+        numerator: Math.round(row.var * row.denominator),
+        denominator: row.denominator,
+      });
 
       return returnData;
     },
@@ -139,7 +140,7 @@ const IndicatorSection = (props: {
           onClick={() => setOpen(!open)}
           style={{ cursor: "pointer" }}
         >
-          <TableCell>{row.indicatorName}</TableCell>
+          <TableCell colSpan={unitNames.length}>{row.indicatorName}</TableCell>
 
           <TableCell align="right">
             <IconButton aria-label="expand row" size="small">
@@ -157,6 +158,7 @@ const IndicatorSection = (props: {
               <Box sx={{ margin: 1 }}>
                 <Table>
                   <TableCell>{row.shortDescription}</TableCell>
+                  <TableCell align="right">{row.data[0].var}</TableCell>
                 </Table>
               </Box>
             </Collapse>
@@ -172,7 +174,7 @@ const RegistrySection = (props: {
   regData: RegisterData;
 }) => {
   const { unitNames, regData } = props;
-
+  console.log(regData);
   return (
     <Table>
       <TableRow>
