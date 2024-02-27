@@ -41,11 +41,12 @@ export const IndicatorTable: React.FC<IndicatorTableProps> = (props) => {
       <IndicatorTableBodyV2
         context={context}
         unitNames={unitNames}
-        registers={registerNames.map((row) => {return(row.rname)})}
+        registers={registerNames.map((row) => {
+          return row.rname;
+        })}
         year={treatmentYear}
         type={"ind"}
         width={800}
-
       />
     </table>
   );
