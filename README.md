@@ -74,3 +74,25 @@ yarn run dev
 ```
 
 Open the admin page [helseatlas/admin](http://localhost:3000/helseatlas/admin).
+
+### Commit without `--no-verify`
+
+This repository is set up with a hook that will run linting on staged files when you commit. You will therefore often end up with the following error:
+
+```
+$ git commit -m "some message"
+✔ Preparing lint-staged...
+⚠ Running tasks for staged files...
+  ❯ .lintstagedrc — 1 file
+    ↓ *.+(js|ts|tsx) — no files
+    ❯ **/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md) — 1 file
+      ✖ prettier --write [EACCES]
+↓ Skipped because of errors from tasks.
+✔ Reverting to original state because of errors...
+✔ Cleaning up temporary files...
+
+✖ prettier --write failed without output (EACCES).
+husky - pre-commit script failed (code 1)
+```
+
+It might help running `npx husky` (or `yarn prepare`).

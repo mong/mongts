@@ -2,7 +2,6 @@
   "name": "mongts",
   "packageManager": "yarn@4.1.0",
   "scripts": {
-    "postinstall": "husky install",
     "build": "turbo run build",
     "export": "turbo run export",
     "start": "turbo run start",
@@ -12,15 +11,16 @@
     "format": "turbo run format",
     "check-types": "turbo run check-types",
     "check-format": "turbo run check-format",
-    "cms": "npx decap-server"
+    "cms": "npx decap-server",
+    "prepare": "husky"
   },
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "devDependencies": {
-    "husky": "9.0.10",
-    "lint-staged": "15.2.1",
-    "turbo": "1.12.2"
+    "husky": "9.0.11",
+    "lint-staged": "15.2.2",
+    "turbo": "1.12.4"
   }
 }
