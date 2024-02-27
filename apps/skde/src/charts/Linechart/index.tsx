@@ -208,8 +208,9 @@ export const Linechart = <
         <Tooltip
           snapTooltipToDatumX
           snapTooltipToDatumY
-          showVerticalCrosshair
-          showSeriesGlyphs
+          showDatumGlyph={label === "bohf"}
+          showVerticalCrosshair={label !== "bohf"}
+          showSeriesGlyphs={label !== "bohf"}
           glyphStyle={{ fill: linechartColors[0] }}
           renderTooltip={({ tooltipData }) => (
             <div>
@@ -218,21 +219,32 @@ export const Linechart = <
                 {": "}
                 {accessors.xAccessor(tooltipData.nearestDatum.datum)}
               </div>
-              {Object.keys(tooltipData.datumByKey)
-                .filter(function (value) {
-                  return uniqueLabels.includes(value);
-                })
-                .map((d: LinechartData<Data, X, Y, Label>[Label]) => {
-                  return (
-                    <div key={d}>
-                      <div style={{ color: colorScale(d) }}>
-                        {d}
-                        {": "}
-                        {accessors.yAccessor(tooltipData.datumByKey[d].datum)}
+              {label === "bohf" ? (
+                <div>
+                  <div>
+                    {tooltipData.nearestDatum.key}
+                    {": "}
+                    {accessors.yAccessor(tooltipData.nearestDatum.datum)}
+                  </div>
+                </div>
+              ) : (
+                Object.keys(tooltipData.datumByKey)
+                  .filter(function (value) {
+                    return uniqueLabels.includes(value);
+                  })
+                  .map((d: LinechartData<Data, X, Y, Label>[Label]) => {
+                    console.log(tooltipData.nearestDatum);
+                    return (
+                      <div key={d}>
+                        <div style={{ color: colorScale(d) }}>
+                          {d}
+                          {": "}
+                          {accessors.yAccessor(tooltipData.datumByKey[d].datum)}
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })
+              )}
             </div>
           )}
         />
