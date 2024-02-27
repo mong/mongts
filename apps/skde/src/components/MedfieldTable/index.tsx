@@ -13,7 +13,6 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
-import { FaCircle, FaAdjust, FaRegCircle } from "react-icons/fa";
 import { level, levelSymbols } from "qmongjs";
 import _ from "lodash";
 import { Indicator } from "types";
@@ -36,17 +35,15 @@ const createSymbols = (green: number, yellow: number, red: number) => {
   let symbols = [];
 
   for (let i = 0; i < green; i++) {
-    symbols.push(<FaCircle style={{ color: "#3baa34", fontSize: "1.2rem" }} />);
+    symbols.push(levelSymbols("H"));
   }
 
   for (let i = 0; i < yellow; i++) {
-    symbols.push(<FaAdjust style={{ color: "#fd9c00", fontSize: "1.2rem" }} />);
+    symbols.push(levelSymbols("M"));
   }
 
   for (let i = 0; i < red; i++) {
-    symbols.push(
-      <FaRegCircle style={{ color: "#e30713", fontSize: "1.2rem" }} />,
-    );
+    symbols.push(levelSymbols("L"));
   }
 
   return symbols;

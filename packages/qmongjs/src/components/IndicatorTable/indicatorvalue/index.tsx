@@ -2,7 +2,6 @@ import React from "react";
 import { Indicator } from "types";
 import style from "./indicatorvalue.module.css";
 import { customFormat, level } from "../../../helpers/functions";
-import { FaCircle, FaAdjust, FaRegCircle } from "react-icons/fa";
 import { levelSymbols } from "../../../helpers/functions";
 
 export interface IndicatorValueProps {
@@ -55,17 +54,7 @@ export const IndicatorData: React.FC<IndicatorValueProps> = ({
       <div className={style.level} aria-label={`Achieved level ${theLevel}`}>
         <h4 style={headerStyle}>
           {customFormat(numberFormat)(indicatorData.var)}
-          <i style={{ paddingLeft: "0.2em" }}>
-            {theLevel === "H" ? (
-              <FaCircle style={{ color: "#3baa34", fontSize: "1.2rem" }} />
-            ) : theLevel === "M" ? (
-              <FaAdjust style={{ color: "#fd9c00", fontSize: "1.2rem" }} />
-            ) : theLevel === "L" ? (
-              <FaRegCircle style={{ color: "#e30713", fontSize: "1.2rem" }} />
-            ) : (
-              <></>
-            )}
-          </i>
+          <i style={{ paddingLeft: "0.2em" }}>{levelSymbols(theLevel)}</i>
         </h4>
       </div>
       {indicatorData.type === "andel" && (
