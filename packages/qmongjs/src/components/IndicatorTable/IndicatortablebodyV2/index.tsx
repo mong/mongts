@@ -17,6 +17,7 @@ import { Indicator } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
+import { customFormat, level } from "../../../helpers/functions";
 
 export type IndicatorTableBodyV2Props = {
   context: string;
@@ -32,6 +33,7 @@ type DataPoint = {
   var: number;
   numerator: number;
   denominator: number;
+  format: string | null;
 };
 
 type IndicatorData = {
@@ -93,6 +95,7 @@ const createData = (indicatorData: Indicator[]) => {
           shortDescription: row.ind_short_description,
           longDescription: row.ind_long_description,
           sortingName: row.ind_name,
+
           data: [] as DataPoint[],
         });
       }
@@ -104,6 +107,7 @@ const createData = (indicatorData: Indicator[]) => {
         var: row.var,
         numerator: Math.round(row.var * row.denominator),
         denominator: row.denominator,
+        format: row.sformat,
       });
 
       return returnData;
@@ -159,7 +163,10 @@ const IndicatorSection = (props: {
                 <Table>
                   <TableCell>{row.shortDescription}</TableCell>
                   <TableCellCollection
-                    rowNames={row.data.map((row) => row.var)}
+                    rowNames={row.data.map((row) => {
+                      const format = row.format === null ? ",.0%" : row.format;
+                      return customFormat(format)(row.var);
+                    })}
                   />
                 </Table>
               </Box>
