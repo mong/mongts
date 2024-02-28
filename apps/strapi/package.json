@@ -1,0 +1,46 @@
+{
+  "name": "strapi",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "dev": "strapi develop",
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.23.5",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.2.5",
+    "ts-jest": "^29.1.1"
+  },
+  "dependencies": {
+    "@codemirror/view": "^6.21.4",
+    "@strapi/plugin-cloud": "4.19.0",
+    "@strapi/plugin-i18n": "4.19.0",
+    "@strapi/plugin-users-permissions": "4.19.0",
+    "@strapi/strapi": "4.19.0",
+    "better-sqlite3": "8.6.0",
+    "lodash": "latest",
+    "mysql": "^2.18.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "5.3.4",
+    "semver": "^7.5.4",
+    "styled-components": "5.3.3"
+  },
+  "author": {
+    "name": "SKDE"
+  },
+  "strapi": {
+    "uuid": "2a376fd7-587d-4867-bf0f-5e094b73fc6b"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
