@@ -79,7 +79,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
     return;
   }
 
-  const nationalName = boxData.filter((o) => o.type === "data")[0]["national"];
+  const nationalName = boxData.find((o) => o.type === "data")["national"];
 
   const dataCarousel = (
     <Carousel active={0} selection={selection} lang={lang}>
@@ -87,9 +87,9 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
         .map((bd, i) => {
           const figData: AtlasData[] =
             bd.type !== "data"
-              ? boxData.filter(
+              ? boxData.find(
                   (o) => o.type === "data" && o.label === bd.data,
-                )[0]["data"]
+                )["data"]
               : undefined;
           if (bd.type === "barchart") {
             return (
@@ -168,10 +168,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
               </CarouselItem>
             );
           }
-
-          return null;
-        })
-        .filter((elm) => elm !== null)}
+        }).filter(Boolean)}
     </Carousel>
   );
 
