@@ -55,20 +55,3 @@ Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/
 ---
 
 <sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
-
-# SKDE
-
-Additional information regarding Strapi and SKDE.
-
-## Configuring for development
-
-Copy and rename the file `strapi/.env.example` to `strapi/.env` and edit the file to match your local environment.
-
-### Database
-
-By default, a SQLite database is used for development. To use MySQL or MariaDB, you can edit the strapi/.env file.
-
-### Internationalization
-
-The Internationalization plugin cannot be configured via a file, and the Strapi admin UI has to be used for this. 
-Add Norwegian as a locale and set it as the default.
