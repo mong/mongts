@@ -20,7 +20,6 @@ export const FactBox: React.FC<FactBoxProps> = ({
   lang,
 }) => {
   const [expanded, setExpanded] = React.useState<boolean>(false);
-  const handleChange = () => setExpanded((state) => !state);
   return (
     <div style={{ marginBottom: "10px" }} data-testid="factbox">
       <Accordion
@@ -29,7 +28,7 @@ export const FactBox: React.FC<FactBoxProps> = ({
           borderBottom: "2px solid #033F85",
         }}
         expanded={expanded}
-        onChange={() => handleChange()}
+        onChange={() => setExpanded(!expanded)}
       >
         <AccordionSummary
           sx={{
