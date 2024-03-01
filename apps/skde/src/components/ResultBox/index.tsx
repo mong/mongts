@@ -168,6 +168,8 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
               </CarouselItem>
             );
           }
+
+          return false;
         }).filter(Boolean)}
     </Carousel>
   );
