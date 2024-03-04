@@ -3,7 +3,7 @@ import { describe, it, expect } from "vitest";
 import { createInitialFilterSettings, FilterMenuSectionProps } from "..";
 import { FilterSettingsValue } from "../FilterSettingsContext";
 
-const SectionTestComponent = (/*props: FilterMenuSectionProps*/) => {
+const SectionTestComponent = (props: FilterMenuSectionProps) => {
   return <></>;
 };
 

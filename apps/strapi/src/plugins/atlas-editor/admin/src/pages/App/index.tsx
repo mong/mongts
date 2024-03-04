@@ -15,17 +15,8 @@ const App = () => {
   return (
     <div>
       <Switch>
-      <Route path={`/plugins/${pluginId}`} component={HomePage} exact />
-        <Route
-          path={`/plugins/${pluginId}/edit/:id`}
-          component={EditPage}
-          exact
-        />
-        <Route
-          path={`/plugins/${pluginId}/create`}
-          component={CreatePage}
-          exact
-        />
+        <Route path={`/plugins/${pluginId}`} component={HomePage} exact />
+        <Route component={AnErrorOccurred} />
       </Switch>
     </div>
   );
