@@ -176,10 +176,9 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
   );
 
   const abacusX: Exclude<keyof AtlasData, "year" | "bohf"> = boxData
-    .filter((boxd) => boxd.type === "map")
-    .map((boxd) => boxd.x)[0];
+    .find((boxd) => boxd.type === "map").x;
 
-  const figData: AtlasData[] = boxData.filter((o) => o.type === "data")[0][
+  const figData: AtlasData[] = boxData.find((o) => o.type === "data")[
     "data"
   ];
   return (
@@ -195,7 +194,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
           borderBottom: "3px solid #033F85",
         }}
         expanded={expandedResultBox}
-        onChange={() =>  setExpandedResultBox(!expandedResultBox)}
+        onChange={() => setExpandedResultBox(!expandedResultBox)}
       >
         <AccordionSummary
           aria-controls={`${id}-content`}
