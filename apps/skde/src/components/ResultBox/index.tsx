@@ -87,9 +87,9 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
         .map((bd, i) => {
           const figData: AtlasData[] =
             bd.type !== "data"
-              ? boxData.find(
-                  (o) => o.type === "data" && o.label === bd.data,
-                )["data"]
+              ? boxData.find((o) => o.type === "data" && o.label === bd.data)[
+                  "data"
+                ]
               : undefined;
           if (bd.type === "barchart") {
             return (
@@ -170,7 +170,8 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
           }
 
           return false;
-        }).filter(Boolean)}
+        })
+        .filter(Boolean)}
     </Carousel>
   );
 
