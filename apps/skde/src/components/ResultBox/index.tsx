@@ -175,12 +175,11 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
     </Carousel>
   );
 
-  const abacusX: Exclude<keyof AtlasData, "year" | "bohf"> = boxData
-    .find((boxd) => boxd.type === "map").x;
+  const abacusX: Exclude<keyof AtlasData, "year" | "bohf"> = boxData.find(
+    (boxd) => boxd.type === "map",
+  ).x;
 
-  const figData: AtlasData[] = boxData.find((o) => o.type === "data")[
-    "data"
-  ];
+  const figData: AtlasData[] = boxData.find((o) => o.type === "data")["data"];
   return (
     <div
       id={id}
