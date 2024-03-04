@@ -182,8 +182,6 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
   const figData: AtlasData[] = boxData.filter((o) => o.type === "data")[0][
     "data"
   ];
-  const handleChange = (cb: React.Dispatch<React.SetStateAction<boolean>>) =>
-    cb((state) => !state);
   return (
     <div
       id={id}
@@ -197,7 +195,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
           borderBottom: "3px solid #033F85",
         }}
         expanded={expandedResultBox}
-        onChange={() => handleChange(setExpandedResultBox)}
+        onChange={() =>  setExpandedResultBox(!expandedResultBox)}
       >
         <AccordionSummary
           aria-controls={`${id}-content`}
