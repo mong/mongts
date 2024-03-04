@@ -12,6 +12,8 @@ import mockRouter from "next-router-mock";
 import { DataTable } from "..";
 import { atlasData, tableHeaders } from "../../../../test/test_data/data";
 
+import { vi, test, expect } from "vitest";
+
 vi.mock("next/router", () => require("next-router-mock"));
 
 // To avoid type-check error. Have to find a better way
@@ -122,6 +124,19 @@ test("Render english with many picked HF", async () => {
       lang="en"
       caption="rateSnitt"
       national="Norge"
+      headers={testHeaders}
+    />,
+  );
+  expect(container).toMatchSnapshot();
+});
+
+test("Markdown in caption", async () => {
+  const { container, getByTestId } = render(
+    <DataTable
+      data={atlasData}
+      lang="nb"
+      caption="**Dette** er _litt_ tekst<br>og litt til, med en lenke til [Avisa](https://klassekampen.no/)."
+      national="OUS"
       headers={testHeaders}
     />,
   );

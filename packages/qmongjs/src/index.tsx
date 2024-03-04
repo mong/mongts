@@ -7,7 +7,7 @@ export {
 } from "./helpers/hooks";
 export { API_HOST } from "./components/RegisterPage";
 export { Layout } from "./components/Layout";
-export { level } from "./helpers/functions";
+export { level, levelSymbols } from "./helpers/functions";
 export { FilterMenu } from "./components/FilterMenu";
 export { FilterSettingsContext } from "./components/FilterMenu/FilterSettingsContext";
 export {

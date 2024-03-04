@@ -1,4 +1,4 @@
-import { FaCircle, FaAdjust, FaRegCircle } from "react-icons/fa";
+import { levelSymbols } from "../../helpers/functions";
 import styles from "./index.module.css";
 
 interface Props {
@@ -34,17 +34,7 @@ function LEGEND_BTN(props: Props) {
       }
       onClick={() => handle_level_filter(show_level_filter, level_filter)}
     >
-      <i style={{ paddingRight: "0.2em" }}>
-        {level_filter === "H" ? (
-          <FaCircle style={{ color: "#3baa34", fontSize: "1.2rem" }} />
-        ) : level_filter === "M" ? (
-          <FaAdjust style={{ color: "#fd9c00", fontSize: "1.2rem" }} />
-        ) : level_filter === "L" ? (
-          <FaRegCircle style={{ color: "#e30713", fontSize: "1.2rem" }} />
-        ) : (
-          <></>
-        )}
-      </i>
+      <i style={{ paddingRight: "0.2em" }}>{levelSymbols(level_filter)}</i>
       <div className="legend-text">{level}</div>
     </button>
   );
