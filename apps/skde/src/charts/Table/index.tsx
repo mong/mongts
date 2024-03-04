@@ -12,6 +12,7 @@ import {
   customFormatEng,
 } from "../../helpers/functions/localFormater";
 import { useRouter } from "next/router";
+import { Markdown } from "../../components/Markdown";
 
 type DataTableProps<Data, Headers extends string & Partial<keyof Data>> = {
   caption: string;
@@ -53,7 +54,9 @@ export const DataTable = <
   return (
     <TableContainer>
       <Table>
-        <caption>{caption}</caption>
+        <caption>
+          <Markdown lang={lang}>{caption}</Markdown>
+        </caption>
         <TableHead>
           <TableRow>
             {headers.map((header, i) => (
