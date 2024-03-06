@@ -127,8 +127,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall pr. 10  000 innbyggere. Ratene er kjønns- og aldersjusterte.",
-        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall pr. 10  000 innbyggere. Ratene er kjønns- og aldersjusterte."
+        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. <br>* Antall pr. 10  000 innbyggere. Ratene er kjønns- og aldersjusterte. <br>** Andelene er basert på kjønns- og aldersjusterte rater.",
+        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. <br>* Antall pr. 10  000 innbyggere. Ratene er kjønns- og aldersjusterte. <br>** Andelene er basert på kjønns- og aldersjusterte rater."
       },
       "columns": [
         {
@@ -140,8 +140,8 @@
         },
         {
           "id": "totsnitt",
-          "label_no": "Rate",
-          "label_en": "Rate",
+          "label_no": "Rate*",
+          "label_en": "Rate*",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -168,15 +168,15 @@
         },
         {
           "id": "andel_priv",
-          "label_no": "Andel privat",
-          "label_en": "Proportion in private",
+          "label_no": "Andel** privat",
+          "label_en": "Proportion** in private",
           "typeVar": "number",
           "format": ",.0%"
         },
         {
           "id": "andel_rg",
-          "label_no": "Andel røntgen",
-          "label_en": "Proportion with X-ray",
+          "label_no": "Andel** røntgen",
+          "label_en": "Proportion** with X-ray",
           "typeVar": "number",
           "format": ",.0%"
         }

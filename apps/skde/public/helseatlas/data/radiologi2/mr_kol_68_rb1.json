@@ -109,8 +109,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall pr. 10  000 innbyggere 68 år eller eldre. Ratene er kjønns- og aldersjusterte.  \\\\n * Årlig andel kirurgi for perioden 2018-2021.",
-        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall pr. 10  000 innbyggere 68 år eller eldre. Ratene er kjønns- og aldersjusterte.  \\\\n * Årlig andel kirurgi for perioden 2018-2021."
+        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. <br>* Antall pr. 10  000 innbyggere 68 år eller eldre. Ratene er kjønns- og aldersjusterte.  <br>** Årlig andel kirurgi for perioden 2018-2021.",
+        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. <br>* Antall pr. 10  000 innbyggere 68 år eller eldre. Ratene er kjønns- og aldersjusterte.  <br>** Årlig andel kirurgi for perioden 2018-2021."
       },
       "columns": [
         {
@@ -122,8 +122,8 @@
         },
         {
           "id": "totsnitt",
-          "label_no": "Rate",
-          "label_en": "Rate",
+          "label_no": "Rate*",
+          "label_en": "Rate*",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -157,8 +157,8 @@
         },
         {
           "id": "andel_kir",
-          "label_no": "Andel kirurgi*",
-          "label_en": "Proportion with operation",
+          "label_no": "Andel kirurgi**",
+          "label_en": "Proportion with operation**",
           "typeVar": "number",
           "format": ",.1%"
         }
