@@ -42,8 +42,8 @@ export type FilterMenuProps = PropsWithChildren<{
   defaultValues?: Map<string, FilterSettingsValue[]>;
   refreshState?: boolean;
   children:
-  | ReactElement<FilterMenuSectionProps>
-  | ReactElement<FilterMenuSectionProps>[];
+    | ReactElement<FilterMenuSectionProps>
+    | ReactElement<FilterMenuSectionProps>[];
 }>;
 
 /**
@@ -259,15 +259,20 @@ export const FilterMenu = ({
 
   const [filterSettings, dispatch] = useReducer(
     wrapReducer(filterSettingsReducer, onSelectionChanged),
-    createInitialFilterSettings(initialSelections, defaultValues, sections)
+    createInitialFilterSettings(initialSelections, defaultValues, sections),
   );
 
+  // If the refreshState changes to true, reset the filter settings by re-initializing the state.
   useEffect(() => {
     if (refreshState) {
       dispatch({
         type: FilterSettingsActionType.SET_ALL_SELECTIONS,
         sectionSetting: { key: "", values: [] },
-        filterSettings: createInitialFilterSettings(initialSelections, defaultValues, sections).map,
+        filterSettings: createInitialFilterSettings(
+          initialSelections,
+          defaultValues,
+          sections,
+        ).map,
       });
     }
   }, [refreshState]);

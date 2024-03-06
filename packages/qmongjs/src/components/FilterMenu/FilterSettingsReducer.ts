@@ -108,4 +108,4 @@ export function filterSettingsReducer(
  */
 export const FilterSettingsDispatchContext = createContext<
   React.Dispatch<FilterSettingsAction>
->(() => { });
+>(() => {});
