@@ -1,4 +1,4 @@
-import { ReactElement, PropsWithChildren, useReducer } from "react";
+import { ReactElement, PropsWithChildren, useReducer, useEffect } from "react";
 import Stack from "@mui/material/Container";
 import {
   Accordion,
@@ -14,6 +14,7 @@ import {
   FilterSettings,
 } from "./FilterSettingsContext";
 import {
+  FilterSettingsActionType,
   FilterSettingsDispatchContext,
   FilterSettingsReducerType,
 } from "./FilterSettingsReducer";
@@ -39,9 +40,10 @@ export type FilterMenuProps = PropsWithChildren<{
   onSelectionChanged?: FilterMenuSelectionChangedHandler;
   initialSelections?: Map<string, FilterSettingsValue[]>;
   defaultValues?: Map<string, FilterSettingsValue[]>;
+  refreshState?: boolean;
   children:
-    | ReactElement<FilterMenuSectionProps>
-    | ReactElement<FilterMenuSectionProps>[];
+  | ReactElement<FilterMenuSectionProps>
+  | ReactElement<FilterMenuSectionProps>[];
 }>;
 
 /**
@@ -248,6 +250,7 @@ export const FilterMenu = ({
   onSelectionChanged,
   initialSelections,
   defaultValues,
+  refreshState,
   children,
 }: FilterMenuProps) => {
   const sections = Array.isArray(children)
@@ -256,8 +259,18 @@ export const FilterMenu = ({
 
   const [filterSettings, dispatch] = useReducer(
     wrapReducer(filterSettingsReducer, onSelectionChanged),
-    createInitialFilterSettings(initialSelections, defaultValues, sections),
+    createInitialFilterSettings(initialSelections, defaultValues, sections)
   );
+
+  useEffect(() => {
+    if (refreshState) {
+      dispatch({
+        type: FilterSettingsActionType.SET_ALL_SELECTIONS,
+        sectionSetting: { key: "", values: [] },
+        filterSettings: createInitialFilterSettings(initialSelections, defaultValues, sections).map,
+      });
+    }
+  }, [refreshState]);
 
   return (
     <FilterSettingsContext.Provider value={filterSettings}>

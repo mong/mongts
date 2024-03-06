@@ -30,6 +30,7 @@ export type TreatmentQualityFilterMenuProps = {
   medicalfields: TreatmentQualityRadioGroupOptions;
   goalaccomplishments?: TreatmentQualityRadioGroupOptions;
   treatmentunitstree: TreatmentQualityTreeViewOptions;
+  years?: TreatmentQualityRadioGroupOptions;
   maxtreatmentunits?: number;
   onSelectionChanged?: FilterMenuSelectionChangedHandler;
 };
@@ -83,7 +84,7 @@ export function TreatmentQualityFilterMenu(
   const goalAccomplishmentDefault = goalAccomplishments.default;
   const treatmentUnitsTree = props.treatmentunitstree;
   const maxSelections = props.maxtreatmentunits;
-  const yearOptions = getYearOptions();
+  const yearOptions = props.years ?? getYearOptions();
 
   return (
     <FilterMenu onSelectionChanged={props.onSelectionChanged}>
