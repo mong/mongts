@@ -12,6 +12,8 @@ import { useState } from "react";
 import HospitalQualityFilterMenu from "./HospitalQualityFilterMenu";
 
 const drawerWidth = 300;
+const appBarElevation = 2;
+const filterMenuTopMargin = 2;
 
 /**
  * Hospital quality page (sykehuskvalitet)
@@ -42,6 +44,7 @@ export default function HospitalQuality() {
       <CssBaseline />
       <AppBar
         position="fixed"
+        elevation={appBarElevation}
         sx={{
           zIndex: (theme) => theme.zIndex.drawer + 1,
           backgroundColor: "rgba(222, 231, 238, 1)",
@@ -78,6 +81,7 @@ export default function HospitalQuality() {
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="filtermenyboks"
       >
+        <Toolbar />
         <Drawer
           variant="temporary"
           open={mobileOpen}
@@ -95,7 +99,9 @@ export default function HospitalQuality() {
           }}
         >
           <Toolbar />
-          <HospitalQualityFilterMenu />
+          <Box sx={{ marginTop: filterMenuTopMargin }}>
+            <HospitalQualityFilterMenu />
+          </Box>
         </Drawer>
         <Drawer
           variant="permanent"
@@ -109,7 +115,9 @@ export default function HospitalQuality() {
           open
         >
           <Toolbar />
-          <HospitalQualityFilterMenu />
+          <Box sx={{ marginTop: filterMenuTopMargin }}>
+            <HospitalQualityFilterMenu />
+          </Box>
         </Drawer>
       </Box>
       <Box
