@@ -145,8 +145,8 @@ export default function Sykehuskvalitet() {
             />
           </Box>
           <Box sx={{ marginLeft: 2 }}>
-            <Typography variant="h5" noWrap>
-              SYKEHUSKVALITET
+            <Typography variant="h6" noWrap>
+              Sykehuskvalitet
             </Typography>
           </Box>
         </Toolbar>
