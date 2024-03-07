@@ -136,11 +136,13 @@ export const Barchart = <
 
   //used to find max values
   const annualValues = annualVar
-    ? annualVar.flatMap((annual) => data.flatMap((dt) => parseInt(dt[annual])))
+    ? annualVar.flatMap((annual) =>
+        data.flatMap((dt) => parseFloat(dt[annual])),
+      )
     : [];
   const errorBarValues = errorBars
     ? errorBars.flatMap((errorBar) =>
-        data.flatMap((dt) => parseInt(dt[errorBar])),
+        data.flatMap((dt) => parseFloat(dt[errorBar])),
       )
     : [];
 
