@@ -27,8 +27,11 @@ export const extractQueryParams = (path: string) => {
   return new URLSearchParams(queryString);
 };
 
-export type HospitalQualityFilterMenuProps = PropsWithChildren<{}>;
-
+/**
+ * Component for the hospital quality (sykehuskvalitet) filter menu
+ *
+ * @returns The hospital quality filter menu component
+ */
 export default function HospitalQualityFilterMenu() {
   const defaultYear = "2022";
 

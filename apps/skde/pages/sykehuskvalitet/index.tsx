@@ -61,9 +61,7 @@ export default function HospitalQuality() {
             <Typography>Filter</Typography>
           </IconButton>
           <Box sx={{ marginLeft: 2 }}>
-            <Typography variant="h6">
-              Sykehuskvalitet
-            </Typography>
+            <Typography variant="h6">Sykehuskvalitet</Typography>
           </Box>
           <Box sx={{ marginLeft: "auto", marginTop: 1.15 }}>
             <Image
