@@ -122,6 +122,8 @@ export default function Sykehuskvalitet() {
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          backgroundColor: "rgba(222, 231, 238, .8)",
+          color: "black",
         }}
       >
         <Toolbar>
@@ -135,19 +137,19 @@ export default function Sykehuskvalitet() {
             <TuneIcon />
             <Typography>Filter</Typography>
           </IconButton>
-          <Box sx={{ marginTop: 1.15 }}>
+          <Box sx={{ marginLeft: 2 }}>
+            <Typography variant="h6">
+              Resultater fra medisinske kvalitetsregistre
+            </Typography>
+          </Box>
+          <Box sx={{ marginLeft: "auto", marginTop: 1.15 }}>
             <Image
               loader={imgLoader}
-              src="/img/logos/SKDE_hvit_lys.png"
+              src="/img/logos/SKDE_sort.png"
               height="40"
               width="99"
               alt="SKDE logo"
             />
-          </Box>
-          <Box sx={{ marginLeft: 2 }}>
-            <Typography variant="h6" noWrap>
-              Sykehuskvalitet
-            </Typography>
           </Box>
         </Toolbar>
       </AppBar>
