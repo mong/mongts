@@ -15,11 +15,18 @@ import {
   FilterSettingsValue,
   FilterSettingsAction,
 } from "qmongjs";
-import { Layout } from "qmongjs";
+import Image from "next/image";
+import { imgLoader } from "qmongjs/src/helpers/functions";
 
 const drawerWidth = 300;
 
-export const getInitialQueryParams = (path: string) => {
+/**
+ * Extracts the query parameters from a path string
+ *
+ * @param path A path string
+ * @returns A URLSearchParams object containing the query parameters in the path
+ */
+export const extractQueryParams = (path: string) => {
   const queryParamsStartIndex = path.lastIndexOf("?");
   let queryString: string;
 
@@ -32,8 +39,15 @@ export const getInitialQueryParams = (path: string) => {
   return new URLSearchParams(queryString);
 };
 
+/**
+ * Sykehuskvalitet (hospital quality) page
+ *
+ * @returns The page component
+ */
 export default function Sykehuskvalitet() {
-  // Use router to get the current path containing the initial query parameters
+  // When the user navigates to the page, it may contain query parameters for
+  // filtering indicators. Use NextRouter to get the current path containing the
+  // initial query parameters.
 
   const router = useRouter();
   const path = router.asPath;
@@ -50,7 +64,7 @@ export default function Sykehuskvalitet() {
     setPrevReady(router.isReady);
   }, [router.isReady]);
 
-  const initialQueryParams = getInitialQueryParams(path);
+  const initialQueryParams = extractQueryParams(path);
 
   // State and functions controlling the mobile drawer
 
@@ -101,146 +115,124 @@ export default function Sykehuskvalitet() {
   };
 
   return (
-    <Layout>
-      <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-        <AppBar
-          position="fixed"
-          sx={{
-            width: { sm: `calc(100% - ${drawerWidth}px)` },
-            ml: { sm: `${drawerWidth}px` },
-          }}
-        >
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="åpne sidemeny"
-              edge="start"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: "none" } }}
-            >
-              <TuneIcon />
-              <Typography>Filter</Typography>
-            </IconButton>
-            <Typography variant="h6" noWrap component="div">
-              Sykehuskvalitet
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline />
+      <AppBar
+        position="fixed"
+        sx={{
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          ml: { sm: `${drawerWidth}px` },
+        }}
+      >
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="åpne sidemeny"
+            edge="start"
+            onClick={handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: "none" } }}
+          >
+            <TuneIcon />
+            <Typography>Filter</Typography>
+          </IconButton>
+          <Box sx={{ marginTop: 1.15 }}>
+            <Image
+              loader={imgLoader}
+              src="/img/logos/SKDE_hvit_lys.png"
+              height="40"
+              width="99"
+              alt="SKDE logo"
+            />
+          </Box>
+          <Box sx={{ marginLeft: 2 }}>
+            <Typography variant="h5" noWrap>
+              SYKEHUSKVALITET
             </Typography>
-          </Toolbar>
-        </AppBar>
-        <Box
-          component="nav"
-          sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-          aria-label="filtermenyboks"
-        >
-          <Drawer
-            variant="temporary"
-            open={mobileOpen}
-            onTransitionEnd={handleDrawerTransitionEnd}
-            onClose={handleDrawerClose}
-            ModalProps={{
-              keepMounted: true,
-            }}
-            sx={{
-              display: { xs: "block", sm: "none" },
-              "& .MuiDrawer-paper": {
-                boxSizing: "border-box",
-                width: drawerWidth,
-              },
-            }}
-          >
-            <FilterMenu
-              refreshState={shouldRefreshInititalState}
-              onSelectionChanged={filterSelectionChanged}
-            >
-              <SelectedFiltersSection
-                accordion="false"
-                filterkey="selectedfilters"
-                sectionid="selectedfilters"
-                sectiontitle="Valgte filtre"
-                defaultvalues={[
-                  { value: defaultYear, valueLabel: defaultYear },
-                ]}
-                initialselections={
-                  selectedYear
-                    ? [{ value: selectedYear, valueLabel: selectedYear }]
-                    : undefined
-                }
-              />
-            </FilterMenu>
-          </Drawer>
-          <Drawer
-            variant="permanent"
-            sx={{
-              display: { xs: "none", sm: "block" },
-              "& .MuiDrawer-paper": {
-                boxSizing: "border-box",
-                width: drawerWidth,
-              },
-            }}
-            open
-          >
-            <FilterMenu
-              refreshState={shouldRefreshInititalState}
-              onSelectionChanged={filterSelectionChanged}
-            >
-              <SelectedFiltersSection
-                accordion="false"
-                filterkey="selectedfilters"
-                sectionid="selectedfilters"
-                sectiontitle="Valgte filtre"
-                defaultvalues={[
-                  { value: defaultYear, valueLabel: defaultYear },
-                ]}
-                initialselections={
-                  selectedYear
-                    ? [{ value: selectedYear, valueLabel: selectedYear }]
-                    : undefined
-                }
-              />
-            </FilterMenu>
-          </Drawer>
-        </Box>
-        <Box
-          component="main"
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <Box
+        component="nav"
+        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        aria-label="filtermenyboks"
+      >
+        <Drawer
+          variant="temporary"
+          open={mobileOpen}
+          onTransitionEnd={handleDrawerTransitionEnd}
+          onClose={handleDrawerClose}
+          ModalProps={{
+            keepMounted: true,
+          }}
           sx={{
-            flexGrow: 1,
-            p: 3,
-            width: { sm: `calc(100% - ${drawerWidth}px)` },
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
           }}
         >
-          <Toolbar />
-          <Typography paragraph>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-            dolor purus non enim praesent elementum facilisis leo vel. Risus at
-            ultrices mi tempus imperdiet. Semper risus in hendrerit gravida
-            rutrum quisque non tellus. Convallis convallis tellus id interdum
-            velit laoreet id donec ultrices. Odio morbi quis commodo odio aenean
-            sed adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-            integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-            eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-            quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-            vivamus at augue. At augue eget arcu dictum varius duis at
-            consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem
-            donec massa sapien faucibus et molestie ac.
-          </Typography>
-          <Typography paragraph>
-            Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-            ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-            elementum integer enim neque volutpat ac tincidunt. Ornare
-            suspendisse sed nisi lacus sed viverra tellus. Purus sit amet
-            volutpat consequat mauris. Elementum eu facilisis sed odio morbi.
-            Euismod lacinia at quis risus sed vulputate odio. Morbi tincidunt
-            ornare massa eget egestas purus viverra accumsan in. In hendrerit
-            gravida rutrum quisque non tellus orci ac. Pellentesque nec nam
-            aliquam sem et tortor. Habitant morbi tristique senectus et.
-            Adipiscing elit duis tristique sollicitudin nibh sit. Ornare aenean
-            euismod elementum nisi quis eleifend. Commodo viverra maecenas
-            accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam
-            ultrices sagittis orci a.
-          </Typography>
-        </Box>
+          <FilterMenu
+            refreshState={shouldRefreshInititalState}
+            onSelectionChanged={filterSelectionChanged}
+          >
+            <SelectedFiltersSection
+              accordion="false"
+              filterkey="selectedfilters"
+              sectionid="selectedfilters"
+              sectiontitle="Valgte filtre"
+              defaultvalues={[{ value: defaultYear, valueLabel: defaultYear }]}
+              initialselections={
+                selectedYear
+                  ? [{ value: selectedYear, valueLabel: selectedYear }]
+                  : undefined
+              }
+            />
+          </FilterMenu>
+        </Drawer>
+        <Drawer
+          variant="permanent"
+          sx={{
+            display: { xs: "none", sm: "block" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
+          }}
+          open
+        >
+          <FilterMenu
+            refreshState={shouldRefreshInititalState}
+            onSelectionChanged={filterSelectionChanged}
+          >
+            <SelectedFiltersSection
+              accordion="false"
+              filterkey="selectedfilters"
+              sectionid="selectedfilters"
+              sectiontitle="Valgte filtre"
+              defaultvalues={[{ value: defaultYear, valueLabel: defaultYear }]}
+              initialselections={
+                selectedYear
+                  ? [{ value: selectedYear, valueLabel: selectedYear }]
+                  : undefined
+              }
+            />
+          </FilterMenu>
+        </Drawer>
       </Box>
-    </Layout>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+        }}
+      >
+        <Toolbar />
+        <Typography paragraph>
+          Tabell for sykehuskvalitet vil vises her.
+        </Typography>
+      </Box>
+    </Box>
   );
 }
