@@ -43,9 +43,8 @@ export default function HospitalQuality() {
       <AppBar
         position="fixed"
         sx={{
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
-          ml: { sm: `${drawerWidth}px` },
-          backgroundColor: "rgba(222, 231, 238, .8)",
+          zIndex: (theme) => theme.zIndex.drawer + 1,
+          backgroundColor: "rgba(222, 231, 238, 1)",
           color: "black",
         }}
       >
@@ -95,6 +94,7 @@ export default function HospitalQuality() {
             },
           }}
         >
+          <Toolbar />
           <HospitalQualityFilterMenu />
         </Drawer>
         <Drawer
@@ -108,6 +108,7 @@ export default function HospitalQuality() {
           }}
           open
         >
+          <Toolbar />
           <HospitalQualityFilterMenu />
         </Drawer>
       </Box>
