@@ -72,7 +72,7 @@ export const Markdown = ({ children, lang }: MarkdownProp) => {
         </table>
       );
     },
-    th({ children }) {
+    th({ children, style }) {
       return (
         <th
           style={{
@@ -80,14 +80,15 @@ export const Markdown = ({ children, lang }: MarkdownProp) => {
             margin: 0,
             padding: "2px 10px",
             textAlign: "left",
+            ...style,
           }}
         >
           {children}
         </th>
       );
     },
-    td({ children }) {
-      return <td style={{ padding: "2px 10px" }}>{children}</td>;
+    td({ children, style }) {
+      return <td style={{ padding: "2px 10px", ...style }}>{children}</td>;
     },
     a({ href, children }) {
       return (
