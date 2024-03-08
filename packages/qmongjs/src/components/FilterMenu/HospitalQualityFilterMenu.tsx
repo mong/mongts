@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { StringParam, useQueryParam, withDefault } from "use-query-params";
+import { StringParam, useQueryParam, useQueryParams, withDefault } from "use-query-params";
 import {
   FilterMenu,
   SelectedFiltersSection,
@@ -47,6 +47,27 @@ export const getYearOptions = (): {
   return {
     values: yearValues,
     default: { value: defaultYearString, valueLabel: defaultYearString },
+  };
+};
+
+/**
+ * Gets the goal achievement options available for selection
+ *
+ * @returns The an object with values and the default value
+ */
+export const getAchievementLevelOptions = (): {
+  values: FilterSettingsValue[];
+  default: FilterSettingsValue;
+} => {
+  const goalAchievementValues = [
+    { value: "", valueLabel: "Alle måloppnåelser" },
+    { value: "H", valueLabel: "Høy måloppnåelse" },
+    { value: "M", valueLabel: "Moderat måloppnåelse" },
+    { value: "L", valueLabel: "Lav måloppnåelse" },
+  ];
+  return {
+    values: goalAchievementValues,
+    default: goalAchievementValues[0],
   };
 };
 
@@ -98,31 +119,37 @@ export function HospitalQualityFilterMenu(
 
   const initialQueryParams = extractQueryParams(path);
 
+  // Year selection
   const yearOptions = getYearOptions();
-
-  const [selectedYear, setSelectedYear] = useQueryParam<string>(
+  const [selectedYear, setSelectedYear] = useQueryParam<string | null | undefined>(
     "year",
-    withDefault(StringParam, yearOptions.default.value),
+    withDefault(StringParam, initialQueryParams.get("year") as string | null | undefined),
   );
+
+  // Goal achievement selection
+  const achievementLevelOptions = getAchievementLevelOptions();
+  const [selectedAchievementLevel, setSelectedAchievementLevel] = useQueryParam<string | null | undefined>(
+    "level",
+    withDefault(StringParam, initialQueryParams.get("level") as string | null | undefined),
+  );
+
+  // Map with filter options, defaults, and query parameter values and setters
+  const optionsMap = new Map<string, { options: FilterSettingsValue[]; default: FilterSettingsValue; selected: string | null | undefined; setSelected: (value: string | null | undefined) => void }>([
+    ["year", { options: yearOptions.values, default: yearOptions.default, selected: selectedYear, setSelected: setSelectedYear }],
+    ["level", { options: achievementLevelOptions.values, default: achievementLevelOptions.default, selected: selectedAchievementLevel, setSelected: setSelectedAchievementLevel }],
+  ]);
 
   /**
    * Handler function for setting section selections,
    * called by handleFilterChanged
    */
-  const setSectionSelections = (
-    action: FilterSettingsAction,
-    newFilterSettings: { map: Map<string, FilterSettingsValue[]> },
-  ) => {
-    switch (action.sectionSetting.key) {
-      case "year": {
-        const selectedYear =
-          newFilterSettings.map.get("year")?.[0]?.value ??
-          yearOptions.default.value;
-        setSelectedYear(selectedYear);
-        break;
-      }
-      default:
-        break;
+  const setSectionSelections = (filterKey: string, newSelections: FilterSettingsValue[] | undefined) => {
+    const options = optionsMap.get(filterKey);
+    if (options) {
+      const setSelected = options.setSelected;
+      const defaultOption = options.default;
+      const selectedValue = newSelections?.[0].value ?? defaultOption.value;
+      setSelected(selectedValue ?? null);
     }
   };
 
@@ -135,8 +162,13 @@ export function HospitalQualityFilterMenu(
     action: FilterSettingsAction,
   ) => {
     switch (action.type) {
+      case FilterSettingsActionType.DEL_SECTION_SELECTIONS:
       case FilterSettingsActionType.SET_SECTION_SELECTIONS: {
-        setSectionSelections(action, newFilterSettings);
+        const key = action.sectionSetting.key;
+        setSectionSelections(key, newFilterSettings.map.get(key));
+        break;
+      }
+      case FilterSettingsActionType.SET_ALL_SELECTIONS: {
         break;
       }
       default:
@@ -169,10 +201,11 @@ export function HospitalQualityFilterMenu(
         sectiontitle={"År"}
         sectionid={"year"}
         filterkey={"year"}
+        initialselections={[{ value: initialQueryParams.get("year") ?? defaultYear.toString(), valueLabel: initialQueryParams.get("year") ?? defaultYear.toString() }]}
       />
       <RadioGroupFilterSection
-        radios={[]}
-        defaultvalues={[]}
+        radios={achievementLevelOptions.values}
+        defaultvalues={[achievementLevelOptions.default]}
         sectiontitle={"Måloppnåelse"}
         sectionid={"goal-accomplishment"}
         filterkey={"level"}
