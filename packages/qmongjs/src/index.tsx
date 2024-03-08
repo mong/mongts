@@ -21,4 +21,4 @@ export type { FilterSettingsAction } from "./components/FilterMenu/FilterSetting
 export { RadioGroupFilterSection } from "./components/FilterMenu/RadioGroupFilterSection";
 export { SelectedFiltersSection } from "./components/FilterMenu/SelectedFiltersSection";
 export { TreeViewFilterSection } from "./components/FilterMenu/TreeViewFilterSection";
-export { TreatmentQualityFilterMenu } from "./components/FilterMenu/TreatmentQualityFilterMenu";
+export { HospitalQualityFilterMenu } from "./components/FilterMenu/HospitalQualityFilterMenu";

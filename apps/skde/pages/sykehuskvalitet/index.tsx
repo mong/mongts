@@ -9,7 +9,11 @@ import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { imgLoader } from "qmongjs/src/helpers/functions";
 import { useState } from "react";
-import HospitalQualityFilterMenu from "./HospitalQualityFilterMenu";
+import {
+  FilterSettingsAction,
+  FilterSettingsValue,
+  HospitalQualityFilterMenu,
+} from "qmongjs";
 
 const drawerWidth = 300;
 const appBarElevation = 2;
