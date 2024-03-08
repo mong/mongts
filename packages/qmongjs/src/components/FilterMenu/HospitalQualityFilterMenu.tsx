@@ -61,25 +61,6 @@ export const getAchievementLevelOptions = (): {
 };
 
 /**
- * Extracts the query parameters from a path string
- *
- * @param path A path string
- * @returns A URLSearchParams object containing the query parameters in the path
- */
-export const extractQueryParams = (path: string) => {
-  const queryParamsStartIndex = path.lastIndexOf("?");
-  let queryString: string;
-
-  if (queryParamsStartIndex === -1) {
-    queryString = "";
-  } else {
-    queryString = path.substring(queryParamsStartIndex);
-  }
-
-  return new URLSearchParams(queryString);
-};
-
-/**
  * The function returns an array containing the valueString as a FilterSettingsValue,
  * or undefined if valueString is null or undefined.
  *
@@ -120,8 +101,6 @@ export function HospitalQualityFilterMenu() {
   useEffect(() => {
     setPrevReady(router.isReady);
   }, [router.isReady]);
-
-  const initialQueryParams = extractQueryParams(path);
 
   // Year selection
   const yearOptions = getYearOptions();
