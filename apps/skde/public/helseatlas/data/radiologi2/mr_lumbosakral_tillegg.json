@@ -72,8 +72,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2019–2021. Andelene er basert på kjønns- og aldersjusterte rater.",
-        "en": "Årlige gjennomsnittsverdier for perioden 2019–2021. Andelene er basert på kjønns- og aldersjusterte rater."
+        "nb": "Årlige gjennomsnittsverdier for perioden 2019–2021. <br>* Andelene er basert på kjønns- og aldersjusterte rater.",
+        "en": "Årlige gjennomsnittsverdier for perioden 2019–2021. <br>* Andelene er basert på kjønns- og aldersjusterte rater."
       },
       "columns": [
         {
@@ -85,8 +85,8 @@
         },
         {
           "id": "totsnitt",
-          "label_no": "Andel gjentatte",
-          "label_en": "Repeats %",
+          "label_no": "Andel* gjentatte",
+          "label_en": "Repeats %*",
           "typeVar": "number",
           "format": ",.0%"
         },
@@ -99,8 +99,8 @@
         },
         {
           "id": "rg_andel",
-          "label_no": "Andel røntgen",
-          "label_en": "X-ray rate",
+          "label_no": "Andel* røntgen",
+          "label_en": "X-ray %*",
           "typeVar": "number",
           "format": ",.0%"
         },
