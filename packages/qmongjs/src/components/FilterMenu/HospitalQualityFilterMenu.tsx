@@ -88,7 +88,6 @@ export function HospitalQualityFilterMenu() {
   // initial query parameters.
 
   const router = useRouter();
-  const path = router.asPath;
 
   // Next's prerender stage causes problems for the initial values given to
   // useReducer, because they are only set once by the reducer and are missing
@@ -109,7 +108,7 @@ export function HospitalQualityFilterMenu() {
     withDefault(StringParam, yearOptions.default.value),
   );
 
-  // Goal achievement selection
+  // Achievement level selection
   const achievementLevelOptions = getAchievementLevelOptions();
   const [selectedAchievementLevel, setSelectedAchievementLevel] =
     useQueryParam<string>(
