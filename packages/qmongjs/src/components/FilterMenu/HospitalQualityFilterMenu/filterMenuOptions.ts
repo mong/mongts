@@ -1,6 +1,11 @@
 import { FilterSettingsValue } from "../FilterSettingsContext";
 import { maxYear, minYear, defaultYear } from "../../../app_config";
 
+/** Maximum allowed number of selected treatment units */
+export const maxSelectedTreatmentUnits = () => {
+  return 5;
+};
+
 /**
  * Gets the years available for selection
  *

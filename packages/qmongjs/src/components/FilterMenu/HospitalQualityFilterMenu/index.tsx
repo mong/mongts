@@ -18,10 +18,8 @@ import {
 import {
   getAchievementLevelOptions,
   getYearOptions,
+  maxSelectedTreatmentUnits,
 } from "./filterMenuOptions";
-
-// Maximum allowed number of selected treatment units
-const maxTreatmentUnits = 5;
 
 type StringNullOrUndefined = string | null | undefined;
 
@@ -215,7 +213,7 @@ export function HospitalQualityFilterMenu() {
         sectionid="treatment-units"
         sectiontitle="Behandlingsenheter"
         filterkey="unit_name"
-        maxselections={maxTreatmentUnits}
+        maxselections={maxSelectedTreatmentUnits()}
         treedata={[]}
         defaultvalues={[]}
       />
