@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { StringParam, useQueryParam, withDefault } from "use-query-params";
+import {
+  StringParam,
+  UrlUpdateType,
+  useQueryParam,
+  withDefault,
+} from "use-query-params";
 import {
   FilterMenu,
   SelectedFiltersSection,
@@ -10,54 +15,24 @@ import {
   FilterSettingsAction,
   FilterSettingsActionType,
 } from "qmongjs";
-import { maxYear, minYear, defaultYear } from "../../app_config";
+import {
+  getAchievementLevelOptions,
+  getYearOptions,
+} from "./filterMenuOptions";
 
 // Maximum allowed number of selected treatment units
 const maxTreatmentUnits = 5;
 
-/**
- * Gets the years available for selection
- *
- * @returns The an object with year values and the default year
- */
-export const getYearOptions = (): {
-  values: FilterSettingsValue[];
+type StringNullOrUndefined = string | null | undefined;
+
+type OptionsMapEntry = {
+  options: FilterSettingsValue[];
   default: FilterSettingsValue;
-} => {
-  const defaultYearString = defaultYear.toString();
-  const yearValues = [];
-  let yearString: string;
-
-  for (let year = minYear; year <= maxYear; year++) {
-    yearString = year.toString();
-    yearValues.push({ value: yearString, valueLabel: yearString });
-  }
-
-  return {
-    values: yearValues,
-    default: { value: defaultYearString, valueLabel: defaultYearString },
-  };
-};
-
-/**
- * Gets the goal achievement options available for selection
- *
- * @returns The an object with values and the default value
- */
-export const getAchievementLevelOptions = (): {
-  values: FilterSettingsValue[];
-  default: FilterSettingsValue;
-} => {
-  const goalAchievementValues = [
-    { value: "", valueLabel: "Alle måloppnåelser" },
-    { value: "H", valueLabel: "Høy måloppnåelse" },
-    { value: "M", valueLabel: "Moderat måloppnåelse" },
-    { value: "L", valueLabel: "Lav måloppnåelse" },
-  ];
-  return {
-    values: goalAchievementValues,
-    default: goalAchievementValues[0],
-  };
+  selected: StringNullOrUndefined;
+  setSelected: (
+    newValue: string,
+    updateType?: UrlUpdateType | undefined,
+  ) => void;
 };
 
 /**
@@ -67,9 +42,7 @@ export const getAchievementLevelOptions = (): {
  * @param valueString A string, null, or undefined value
  * @returns An array with a single FilterSettingsValue, or undefined
  */
-export const valueArrayOrUndefined = (
-  valueString: string | null | undefined,
-) => {
+export const valueArrayOrUndefined = (valueString: StringNullOrUndefined) => {
   if (valueString) {
     return [{ value: valueString, valueLabel: valueString }];
   } else {
@@ -117,15 +90,7 @@ export function HospitalQualityFilterMenu() {
     );
 
   // Map with filter options, defaults, and query parameter values and setters
-  const optionsMap = new Map<
-    string,
-    {
-      options: FilterSettingsValue[];
-      default: FilterSettingsValue;
-      selected: string | null | undefined;
-      setSelected: (value: string | null | undefined) => void;
-    }
-  >([
+  const optionsMap = new Map<string, OptionsMapEntry>([
     [
       "year",
       {
@@ -184,12 +149,29 @@ export function HospitalQualityFilterMenu() {
       default:
         break;
     }
-    console.log(
-      "Filter selection changed",
-      newFilterSettings,
-      oldFilterSettings,
-      action,
-    );
+  };
+
+  const getFilterSettingsValue = (
+    filterKey: string,
+    value: string,
+  ): FilterSettingsValue[] => {
+    const result: FilterSettingsValue[] = [];
+
+    switch (filterKey) {
+      case "level": {
+        const filterSettingsValue = achievementLevelOptions.values.find(
+          (settingsVal) => settingsVal.value === value,
+        );
+        if (filterSettingsValue) {
+          result.push(filterSettingsValue);
+        }
+        break;
+      }
+      default:
+        break;
+    }
+
+    return result;
   };
 
   return (
@@ -214,11 +196,10 @@ export function HospitalQualityFilterMenu() {
       <RadioGroupFilterSection
         radios={achievementLevelOptions.values}
         defaultvalues={[achievementLevelOptions.default]}
-        initialselections={[
-          achievementLevelOptions.values.find(
-            (settingsVal) => settingsVal.value === selectedAchievementLevel,
-          ),
-        ]}
+        initialselections={getFilterSettingsValue(
+          "level",
+          selectedAchievementLevel,
+        )}
         sectiontitle={"Måloppnåelse"}
         sectionid={"goal-accomplishment"}
         filterkey={"level"}
