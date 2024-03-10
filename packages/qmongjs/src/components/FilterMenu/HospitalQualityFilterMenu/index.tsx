@@ -20,6 +20,8 @@ import {
   getYearOptions,
   maxSelectedTreatmentUnits,
 } from "./filterMenuOptions";
+import { UseQueryResult } from "@tanstack/react-query";
+import { useMedicalFieldsQuery } from "../../../helpers/hooks";
 
 type StringNullOrUndefined = string | null | undefined;
 
@@ -87,6 +89,30 @@ export function HospitalQualityFilterMenu() {
       withDefault(StringParam, achievementLevelOptions.default.value),
     );
 
+  // Medical fields
+  const medicalFieldsQuery = useMedicalFieldsQuery();
+
+  let medicalFields: FilterSettingsValue[];
+  if (!medicalFieldsQuery.isLoading) {
+    medicalFields = medicalFieldsQuery.data.map((field: {
+      shortName?: string;
+      name?: string;
+      registers?: string[];
+    }) => ({
+      value: field.shortName,
+      valueLabel: field.name,
+    }));
+  } else {
+    medicalFields = [];
+  }
+
+  medicalFields.unshift({ value: "all", valueLabel: "Alle fagområder" });
+
+  const medicalFieldOptions = {
+    values: medicalFields,
+    default: medicalFields[0],
+  };
+
   // Map with filter options, defaults, and query parameter values and setters
   const optionsMap = new Map<string, OptionsMapEntry>([
     [
@@ -105,6 +131,15 @@ export function HospitalQualityFilterMenu() {
         default: achievementLevelOptions.default,
         selected: selectedAchievementLevel,
         setSelected: setSelectedAchievementLevel,
+      },
+    ],
+    [
+      "indicator",
+      {
+        options: medicalFieldOptions.values,
+        default: medicalFieldOptions.default,
+        selected: undefined,
+        setSelected: () => {},
       },
     ],
   ]);
@@ -203,8 +238,8 @@ export function HospitalQualityFilterMenu() {
         filterkey={"level"}
       />
       <RadioGroupFilterSection
-        radios={[]}
-        defaultvalues={[]}
+        radios={medicalFieldOptions.values}
+        defaultvalues={[medicalFieldOptions.default]}
         sectiontitle={"Fagområder"}
         sectionid={"medical-field"}
         filterkey={"indicator"}
