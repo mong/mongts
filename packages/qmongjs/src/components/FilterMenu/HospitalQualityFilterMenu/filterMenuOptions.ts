@@ -1,9 +1,9 @@
 import { FilterSettingsValue } from "../FilterSettingsContext";
-import { maxYear, minYear, defaultYear } from "../../../app_config";
+import { maxYear, minYear, defaultYear, app_text } from "../../../app_config";
 
 /** Maximum allowed number of selected treatment units */
 export const maxSelectedTreatmentUnits = () => {
-  return 5;
+  return app_text.tu_list.max_nr_tu;
 };
 
 /**
@@ -40,10 +40,10 @@ export const getAchievementLevelOptions = (): {
   default: FilterSettingsValue;
 } => {
   const goalAchievementValues = [
-    { value: "", valueLabel: "Alle måloppnåelser" },
-    { value: "H", valueLabel: "Høy måloppnåelse" },
-    { value: "M", valueLabel: "Moderat måloppnåelse" },
-    { value: "L", valueLabel: "Lav måloppnåelse" },
+    { value: "", valueLabel: app_text.indicators.all.text },
+    { value: "H", valueLabel: app_text.indicators.high.text },
+    { value: "M", valueLabel: app_text.indicators.moderate.text },
+    { value: "L", valueLabel: app_text.indicators.low.text },
   ];
   return {
     values: goalAchievementValues,

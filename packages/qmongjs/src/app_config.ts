@@ -9,6 +9,7 @@ import {
 export interface appTextTypes {
   menus: { unit: string; year: string };
   indicators: {
+    all: { text: string };    
     high: { text: string };
     moderate: { text: string };
     low: { text: string };
@@ -27,6 +28,7 @@ export const app_text: appTextTypes = {
     year: "År:",
   },
   indicators: {
+    all: { text: "Alle måloppnåelser" },
     high: { text: "Høy måloppnåelse" },
     moderate: { text: "Moderat måloppnåelse" },
     low: { text: "Lav måloppnåelse" },
