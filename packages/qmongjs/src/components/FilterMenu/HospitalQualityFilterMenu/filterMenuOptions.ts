@@ -50,3 +50,16 @@ export const getAchievementLevelOptions = (): {
     default: goalAchievementValues[0],
   };
 };
+
+export const getQualityIndicatorOptions = (): {
+  values: FilterSettingsValue[];
+  default: FilterSettingsValue;
+} => {
+  const qualityIndicatorValues = [
+    { value: "all", valueLabel: "Alle indikatorer" },
+  ];
+  return {
+    values: qualityIndicatorValues,
+    default: qualityIndicatorValues[0],
+  };
+}
