@@ -20,11 +20,15 @@ import {
   getYearOptions,
   maxSelectedTreatmentUnits,
 } from "./filterMenuOptions";
-import { UseQueryResult } from "@tanstack/react-query";
 import { useMedicalFieldsQuery } from "../../../helpers/hooks";
+import Alert from "@mui/material/Alert";
 
 type StringNullOrUndefined = string | null | undefined;
 
+/**
+ * Type for holding values and setters per filter section, used by
+ * setSectionSelections().
+ */
 type OptionsMapEntry = {
   options: FilterSettingsValue[];
   default: FilterSettingsValue;
@@ -74,12 +78,21 @@ export function HospitalQualityFilterMenu() {
     setPrevReady(router.isReady);
   }, [router.isReady]);
 
+  // Map for filter options, defaults, and query parameter values and setters
+  const optionsMap = new Map<string, OptionsMapEntry>();
+
   // Year selection
   const yearOptions = getYearOptions();
   const [selectedYear, setSelectedYear] = useQueryParam<string>(
     "year",
     withDefault(StringParam, yearOptions.default.value),
   );
+  optionsMap.set("year", {
+    options: yearOptions.values,
+    default: yearOptions.default,
+    selected: selectedYear,
+    setSelected: setSelectedYear,
+  });
 
   // Achievement level selection
   const achievementLevelOptions = getAchievementLevelOptions();
@@ -88,12 +101,18 @@ export function HospitalQualityFilterMenu() {
       "level",
       withDefault(StringParam, achievementLevelOptions.default.value),
     );
+  optionsMap.set("level", {
+    options: achievementLevelOptions.values,
+    default: achievementLevelOptions.default,
+    selected: selectedAchievementLevel,
+    setSelected: setSelectedAchievementLevel,
+  });
 
   // Medical fields
   const medicalFieldsQuery = useMedicalFieldsQuery();
 
   let medicalFields: FilterSettingsValue[];
-  if (!medicalFieldsQuery.isLoading) {
+  if (!medicalFieldsQuery.isLoading && !medicalFieldsQuery.isError) {
     medicalFields = medicalFieldsQuery.data.map((field: {
       shortName?: string;
       name?: string;
@@ -113,36 +132,18 @@ export function HospitalQualityFilterMenu() {
     default: medicalFields[0],
   };
 
-  // Map with filter options, defaults, and query parameter values and setters
-  const optionsMap = new Map<string, OptionsMapEntry>([
-    [
-      "year",
-      {
-        options: yearOptions.values,
-        default: yearOptions.default,
-        selected: selectedYear,
-        setSelected: setSelectedYear,
-      },
-    ],
-    [
-      "level",
-      {
-        options: achievementLevelOptions.values,
-        default: achievementLevelOptions.default,
-        selected: selectedAchievementLevel,
-        setSelected: setSelectedAchievementLevel,
-      },
-    ],
-    [
+  const [selectedMedicalField, setSelectedMedicalField] =
+    useQueryParam<string>(
       "indicator",
-      {
-        options: medicalFieldOptions.values,
-        default: medicalFieldOptions.default,
-        selected: undefined,
-        setSelected: () => {},
-      },
-    ],
-  ]);
+      withDefault(StringParam, medicalFieldOptions.default.value),
+    );
+
+  optionsMap.set("indicator", {
+    options: medicalFields,
+    default: medicalFields[0],
+    selected: selectedMedicalField,
+    setSelected: setSelectedMedicalField,
+  });
 
   /**
    * Handler function for setting section selections,
@@ -176,9 +177,6 @@ export function HospitalQualityFilterMenu() {
         setSectionSelections(key, newFilterSettings.map.get(key));
         break;
       }
-      case FilterSettingsActionType.SET_ALL_SELECTIONS: {
-        break;
-      }
       default:
         break;
     }
@@ -190,14 +188,23 @@ export function HospitalQualityFilterMenu() {
   ): FilterSettingsValue[] => {
     const result: FilterSettingsValue[] = [];
 
+    const findAndAddValue =
+    (value: string, filterSettingsValues: FilterSettingsValue[], result: FilterSettingsValue[]) => {
+      const filterSettingsValue = filterSettingsValues.find(
+        (settingsVal) => settingsVal.value === value,
+      );
+      if (filterSettingsValue) {
+        result.push(filterSettingsValue);
+      }
+    }
+
     switch (filterKey) {
       case "level": {
-        const filterSettingsValue = achievementLevelOptions.values.find(
-          (settingsVal) => settingsVal.value === value,
-        );
-        if (filterSettingsValue) {
-          result.push(filterSettingsValue);
-        }
+        findAndAddValue(value, achievementLevelOptions.values, result);
+        break;
+      }
+      case "indicator": {
+        findAndAddValue(value, medicalFieldOptions.values, result);
         break;
       }
       default:
@@ -208,51 +215,60 @@ export function HospitalQualityFilterMenu() {
   };
 
   return (
-    <FilterMenu
-      refreshState={shouldRefreshInititalState}
-      onSelectionChanged={handleFilterChanged}
-    >
-      <SelectedFiltersSection
-        accordion="false"
-        filterkey="selectedfilters"
-        sectionid="selectedfilters"
-        sectiontitle="Valgte filtre"
-      />
-      <RadioGroupFilterSection
-        radios={yearOptions.values}
-        defaultvalues={[yearOptions.default]}
-        initialselections={[{ value: selectedYear, valueLabel: selectedYear }]}
-        sectiontitle={"År"}
-        sectionid={"year"}
-        filterkey={"year"}
-      />
-      <RadioGroupFilterSection
-        radios={achievementLevelOptions.values}
-        defaultvalues={[achievementLevelOptions.default]}
-        initialselections={getFilterSettingsValue(
-          "level",
-          selectedAchievementLevel,
-        )}
-        sectiontitle={"Måloppnåelse"}
-        sectionid={"goal-accomplishment"}
-        filterkey={"level"}
-      />
-      <RadioGroupFilterSection
-        radios={medicalFieldOptions.values}
-        defaultvalues={[medicalFieldOptions.default]}
-        sectiontitle={"Fagområder"}
-        sectionid={"medical-field"}
-        filterkey={"indicator"}
-      />
-      <TreeViewFilterSection
-        sectionid="treatment-units"
-        sectiontitle="Behandlingsenheter"
-        filterkey="unit_name"
-        maxselections={maxSelectedTreatmentUnits()}
-        treedata={[]}
-        defaultvalues={[]}
-      />
-    </FilterMenu>
+    <>
+      {medicalFieldsQuery.isError &&
+        <Alert severity="error">Det oppstod en feil ved henting av fagområder</Alert>
+      }
+      <FilterMenu
+        refreshState={shouldRefreshInititalState}
+        onSelectionChanged={handleFilterChanged}
+      >
+        <SelectedFiltersSection
+          accordion="false"
+          filterkey="selectedfilters"
+          sectionid="selectedfilters"
+          sectiontitle="Valgte filtre"
+        />
+        <RadioGroupFilterSection
+          radios={yearOptions.values}
+          defaultvalues={[yearOptions.default]}
+          initialselections={[{ value: selectedYear, valueLabel: selectedYear }]}
+          sectiontitle={"År"}
+          sectionid={"year"}
+          filterkey={"year"}
+        />
+        <RadioGroupFilterSection
+          radios={achievementLevelOptions.values}
+          defaultvalues={[achievementLevelOptions.default]}
+          initialselections={getFilterSettingsValue(
+            "level",
+            selectedAchievementLevel,
+          )}
+          sectiontitle={"Måloppnåelse"}
+          sectionid={"goal-accomplishment"}
+          filterkey={"level"}
+        />
+        <RadioGroupFilterSection
+          radios={medicalFieldOptions.values}
+          defaultvalues={[medicalFieldOptions.default]}
+          initialselections={getFilterSettingsValue(
+            "indicator",
+            selectedMedicalField,
+          )}
+          sectiontitle={"Fagområder"}
+          sectionid={"medical-field"}
+          filterkey={"indicator"}
+        />
+        <TreeViewFilterSection
+          sectionid="treatment-units"
+          sectiontitle="Behandlingsenheter"
+          filterkey="unit_name"
+          maxselections={maxSelectedTreatmentUnits()}
+          treedata={[]}
+          defaultvalues={[]}
+        />
+      </FilterMenu>
+    </>
   );
 }
 
