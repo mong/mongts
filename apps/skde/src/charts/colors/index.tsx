@@ -1,5 +1,3 @@
-import { concat } from "lodash";
-
 const maincolor: string = "171, 108, 166";
 const nationalcolor: string = "120, 45, 135";
 const pickedcolor: string = "3, 63, 133";
