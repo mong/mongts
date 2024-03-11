@@ -70,11 +70,11 @@ export const valueArrayOrUndefined = (valueString: StringNullOrUndefined) => {
 };
 
 /**
- * Component for the hospital quality (sykehuskvalitet) filter menu.
+ * Component for the treatment quality (Behandlingskvalitet) filter menu.
  *
- * @returns The hospital quality filter menu component
+ * @returns The treatment quality filter menu component
  */
-export function HospitalQualityFilterMenu() {
+export function TreatmentQualityFilterMenu() {
   const selectedRegister = "all";
   const queryContext = { context: "caregiver", type: "ind" };
 
@@ -335,4 +335,4 @@ export function HospitalQualityFilterMenu() {
   );
 }
 
-export default HospitalQualityFilterMenu;
+export default TreatmentQualityFilterMenu;
