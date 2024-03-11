@@ -62,18 +62,16 @@ export const Linechart = <
   const selected_bohf = [router.query.bohf].flat();
 
   var uniqueLabels: string[] = Array.from(new Set(data.map((d) => d[label])));
+  var allNonSelectedHF = [];
 
   if (label === "bohf") {
+    allNonSelectedHF = uniqueLabels.filter(
+      (item) => ![national].concat(selected_bohf).includes(item),
+    );
     uniqueLabels = [national].concat(
       uniqueLabels.filter((item) => selected_bohf.includes(item)),
     );
   }
-
-  const allNonSelectedHF = Array.from(
-    new Set(data.map((d) => d[label])),
-  ).filter(function (item) {
-    return !uniqueLabels.includes(item);
-  });
 
   const plotableData = (
     uniqueLabels: string[],
