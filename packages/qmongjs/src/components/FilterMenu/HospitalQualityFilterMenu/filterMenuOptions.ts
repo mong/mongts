@@ -1,5 +1,6 @@
 import { FilterSettingsValue } from "../FilterSettingsContext";
 import { maxYear, minYear, defaultYear, app_text } from "../../../app_config";
+import { UseQueryResult } from "@tanstack/react-query";
 
 /** Maximum allowed number of selected treatment units */
 export const maxSelectedTreatmentUnits = () => {
@@ -49,4 +50,55 @@ export const getAchievementLevelOptions = (): {
     values: goalAchievementValues,
     default: goalAchievementValues[0],
   };
-}
+};
+
+/**
+ * Builds tree data for the treatment units filter section from
+ * unitNamesQuery.nestedUnitNames.
+ *
+ * @param unitNamesQuery
+ * @returns
+ */
+export const getTreatmentUnitsTree = (
+  unitNamesQuery: UseQueryResult<any, unknown>,
+) => {
+  const unitnames = unitNamesQuery.data?.nestedUnitNames;
+  if (unitnames === undefined)
+    return {
+      defaults: [{ value: "Nasjonalt", valueLabel: "Nasjonalt" }],
+      treedata: [
+        { nodeValue: { value: "Nasjonalt", valueLabel: "Nasjonalt" } },
+      ],
+    };
+
+  return {
+    defaults: [{ value: "Nasjonalt", valueLabel: "Nasjonalt" }],
+    treedata: [
+      { nodeValue: { value: "Nasjonalt", valueLabel: "Nasjonalt" } },
+      ...unitnames.map((unit: any) => {
+        return {
+          nodeValue: {
+            value: unit.rhf,
+            valueLabel: unit.rhf,
+          },
+          children: unit.hf.map((hf: any) => {
+            return {
+              nodeValue: {
+                value: hf.hf,
+                valueLabel: hf.hf_full,
+              },
+              children: hf.hospital.map((hospital: any) => {
+                return {
+                  nodeValue: {
+                    value: hospital,
+                    valueLabel: hospital,
+                  },
+                };
+              }),
+            };
+          }),
+        };
+      }),
+    ],
+  };
+};

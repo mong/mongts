@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import {
+  DelimitedArrayParam,
   StringParam,
   UrlUpdateType,
   useQueryParam,
@@ -17,13 +18,26 @@ import {
 } from "qmongjs";
 import {
   getAchievementLevelOptions,
+  getTreatmentUnitsTree,
   getYearOptions,
   maxSelectedTreatmentUnits,
 } from "./filterMenuOptions";
-import { useMedicalFieldsQuery } from "../../../helpers/hooks";
+import {
+  useMedicalFieldsQuery,
+  useUnitNamesQuery,
+} from "../../../helpers/hooks";
 import Alert from "@mui/material/Alert";
+import { UseQueryResult } from "@tanstack/react-query";
+import { OptsTu } from "types";
+import { validateTreatmentUnits } from "../../../helpers/functions";
 
+// Types used due to the use of useQueryParam
+type SetSelectedType = (
+  newVal: string | string[],
+  updateType?: UrlUpdateType,
+) => void;
 type StringNullOrUndefined = string | null | undefined;
+type UndefinedOrArrayOfStringOrNull = (string | null)[] | undefined;
 
 /**
  * Type for holding values and setters per filter section, used by
@@ -32,9 +46,10 @@ type StringNullOrUndefined = string | null | undefined;
 type OptionsMapEntry = {
   options: FilterSettingsValue[];
   default: FilterSettingsValue;
-  selected: StringNullOrUndefined;
+  multiselect: boolean;
+  selected: StringNullOrUndefined | UndefinedOrArrayOfStringOrNull;
   setSelected: (
-    newValue: string,
+    newValue: string | string[],
     updateType?: UrlUpdateType | undefined,
   ) => void;
 };
@@ -60,6 +75,9 @@ export const valueArrayOrUndefined = (valueString: StringNullOrUndefined) => {
  * @returns The hospital quality filter menu component
  */
 export function HospitalQualityFilterMenu() {
+  const selectedRegister = "all";
+  const queryContext = { context: "caregiver", type: "ind" };
+
   // When the user navigates to the page, it may contain query parameters for
   // filtering indicators. Use NextRouter to get the current path containing the
   // initial query parameters.
@@ -90,8 +108,9 @@ export function HospitalQualityFilterMenu() {
   optionsMap.set("year", {
     options: yearOptions.values,
     default: yearOptions.default,
+    multiselect: false,
     selected: selectedYear,
-    setSelected: setSelectedYear,
+    setSelected: setSelectedYear as SetSelectedType,
   });
 
   // Achievement level selection
@@ -104,8 +123,9 @@ export function HospitalQualityFilterMenu() {
   optionsMap.set("level", {
     options: achievementLevelOptions.values,
     default: achievementLevelOptions.default,
+    multiselect: false,
     selected: selectedAchievementLevel,
-    setSelected: setSelectedAchievementLevel,
+    setSelected: setSelectedAchievementLevel as SetSelectedType,
   });
 
   // Medical fields
@@ -113,14 +133,12 @@ export function HospitalQualityFilterMenu() {
 
   let medicalFields: FilterSettingsValue[];
   if (!medicalFieldsQuery.isLoading && !medicalFieldsQuery.isError) {
-    medicalFields = medicalFieldsQuery.data.map((field: {
-      shortName?: string;
-      name?: string;
-      registers?: string[];
-    }) => ({
-      value: field.shortName,
-      valueLabel: field.name,
-    }));
+    medicalFields = medicalFieldsQuery.data.map(
+      (field: { shortName?: string; name?: string; registers?: string[] }) => ({
+        value: field.shortName,
+        valueLabel: field.name,
+      }),
+    );
   } else {
     medicalFields = [];
   }
@@ -132,17 +150,39 @@ export function HospitalQualityFilterMenu() {
     default: medicalFields[0],
   };
 
-  const [selectedMedicalField, setSelectedMedicalField] =
-    useQueryParam<string>(
-      "indicator",
-      withDefault(StringParam, medicalFieldOptions.default.value),
-    );
+  const [selectedMedicalField, setSelectedMedicalField] = useQueryParam<string>(
+    "indicator",
+    withDefault(StringParam, medicalFieldOptions.default.value),
+  );
 
   optionsMap.set("indicator", {
     options: medicalFields,
     default: medicalFields[0],
+    multiselect: false,
     selected: selectedMedicalField,
-    setSelected: setSelectedMedicalField,
+    setSelected: setSelectedMedicalField as SetSelectedType,
+  });
+
+  // Treatment units
+  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useQueryParam(
+    "selected_treatment_units",
+    withDefault(DelimitedArrayParam, ["Nasjonalt"]),
+  );
+
+  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
+    selectedRegister,
+    queryContext.context,
+    queryContext.type,
+  );
+
+  const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
+
+  optionsMap.set("selected_treatment_units", {
+    options: treatmentUnits.treedata,
+    default: treatmentUnits.defaults[0],
+    multiselect: true,
+    selected: selectedTreatmentUnits,
+    setSelected: setSelectedTreatmentUnits as SetSelectedType,
   });
 
   /**
@@ -157,8 +197,17 @@ export function HospitalQualityFilterMenu() {
     if (options) {
       const setSelected = options.setSelected;
       const defaultOption = options.default;
-      const selectedValue = newSelections?.[0].value ?? defaultOption.value;
-      setSelected(selectedValue ?? null);
+      const multiselect = options.multiselect;
+
+      if (!multiselect) {
+        const selectedValue = newSelections?.[0].value ?? defaultOption.value;
+        setSelected(selectedValue ?? null);
+      } else {
+        const selectedValues = newSelections?.map(
+          (filterSettingsValue) => filterSettingsValue.value,
+        ) ?? [defaultOption.value];
+        setSelected(selectedValues ?? null);
+      }
     }
   };
 
@@ -188,15 +237,18 @@ export function HospitalQualityFilterMenu() {
   ): FilterSettingsValue[] => {
     const result: FilterSettingsValue[] = [];
 
-    const findAndAddValue =
-    (value: string, filterSettingsValues: FilterSettingsValue[], result: FilterSettingsValue[]) => {
+    const findAndAddValue = (
+      value: string,
+      filterSettingsValues: FilterSettingsValue[],
+      result: FilterSettingsValue[],
+    ) => {
       const filterSettingsValue = filterSettingsValues.find(
         (settingsVal) => settingsVal.value === value,
       );
       if (filterSettingsValue) {
         result.push(filterSettingsValue);
       }
-    }
+    };
 
     switch (filterKey) {
       case "level": {
@@ -216,9 +268,11 @@ export function HospitalQualityFilterMenu() {
 
   return (
     <>
-      {medicalFieldsQuery.isError &&
-        <Alert severity="error">Det oppstod en feil ved henting av fagområder</Alert>
-      }
+      {medicalFieldsQuery.isError && (
+        <Alert severity="error">
+          Det oppstod en feil ved henting av fagområder
+        </Alert>
+      )}
       <FilterMenu
         refreshState={shouldRefreshInititalState}
         onSelectionChanged={handleFilterChanged}
@@ -232,7 +286,9 @@ export function HospitalQualityFilterMenu() {
         <RadioGroupFilterSection
           radios={yearOptions.values}
           defaultvalues={[yearOptions.default]}
-          initialselections={[{ value: selectedYear, valueLabel: selectedYear }]}
+          initialselections={[
+            { value: selectedYear, valueLabel: selectedYear },
+          ]}
           sectiontitle={"År"}
           sectionid={"year"}
           filterkey={"year"}
@@ -260,12 +316,19 @@ export function HospitalQualityFilterMenu() {
           filterkey={"indicator"}
         />
         <TreeViewFilterSection
+          refreshState={shouldRefreshInititalState}
+          maxselections={maxSelectedTreatmentUnits()}
+          treedata={treatmentUnits.treedata}
+          defaultvalues={treatmentUnits.defaults}
+          initialselections={
+            selectedTreatmentUnits.map((value) => ({
+              value: value,
+              valueLabel: value,
+            })) as FilterSettingsValue[]
+          }
           sectionid="treatment-units"
           sectiontitle="Behandlingsenheter"
-          filterkey="unit_name"
-          maxselections={maxSelectedTreatmentUnits()}
-          treedata={[]}
-          defaultvalues={[]}
+          filterkey="selected_treatment_units"
         />
       </FilterMenu>
     </>

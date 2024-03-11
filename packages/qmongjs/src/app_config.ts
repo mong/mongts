@@ -9,7 +9,7 @@ import {
 export interface appTextTypes {
   menus: { unit: string; year: string };
   indicators: {
-    all: { text: string };    
+    all: { text: string };
     high: { text: string };
     moderate: { text: string };
     low: { text: string };

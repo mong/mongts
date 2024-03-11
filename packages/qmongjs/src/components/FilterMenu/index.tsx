@@ -20,6 +20,7 @@ import {
 } from "./FilterSettingsReducer";
 import { filterSettingsReducer } from "./FilterSettingsReducer";
 import { FilterSettingsAction } from "./FilterSettingsReducer";
+import { ChildCareSharp } from "@mui/icons-material";
 
 /**
  * The type/signature of the handler function to call when the selection changes. It is called with the new
@@ -61,6 +62,7 @@ export type FilterMenuSectionProps = PropsWithChildren<{
   accordion?: string;
   defaultvalues?: FilterSettingsValue[];
   initialselections?: FilterSettingsValue[];
+  refreshState?: boolean;
 }>;
 
 /**

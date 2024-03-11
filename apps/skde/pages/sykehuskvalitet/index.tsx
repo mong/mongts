@@ -11,7 +11,7 @@ import { imgLoader } from "qmongjs/src/helpers/functions";
 import { useState } from "react";
 import { HospitalQualityFilterMenu } from "qmongjs";
 
-const drawerWidth = 300;
+const drawerWidth = 350;
 const appBarElevation = 2;
 const filterMenuTopMargin = 2;
 
