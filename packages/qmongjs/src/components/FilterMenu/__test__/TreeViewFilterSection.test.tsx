@@ -142,19 +142,19 @@ describe("TreeViewFilterSection", () => {
     });
   });
 
-describe("Rendered TreeViewFilterSection", () => {
-   it("should render the tree data", () => {
-     const result = render(
-       <FilterMenu>
-         <TreeViewFilterSection
-           sectionid="testSection"
-           sectiontitle="testTitle"
-           filterkey="testKey"
-           treedata={treeData}
-         />
-       </FilterMenu>,
-     );
-   
+  describe("Rendered TreeViewFilterSection", () => {
+    it("should render the tree data", () => {
+      const result = render(
+        <FilterMenu>
+          <TreeViewFilterSection
+            sectionid="testSection"
+            sectiontitle="testTitle"
+            filterkey="testKey"
+            treedata={treeData}
+          />
+        </FilterMenu>,
+      );
+
       const treeViewComponent = result.getByTestId(
         "tree-view-section-testSection",
       );
