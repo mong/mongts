@@ -142,80 +142,80 @@ describe("TreeViewFilterSection", () => {
     });
   });
 
-  // describe("Rendered TreeViewFilterSection", () => {
-  //   it("should render the tree data", () => {
-  //     const result = render(
-  //       <FilterMenu>
-  //         <TreeViewFilterSection
-  //           sectionid="testSection"
-  //           sectiontitle="testTitle"
-  //           filterkey="testKey"
-  //           treedata={treeData}
-  //         />
-  //       </FilterMenu>,
-  //     );
+describe("Rendered TreeViewFilterSection", () => {
+   it("should render the tree data", () => {
+     const result = render(
+       <FilterMenu>
+         <TreeViewFilterSection
+           sectionid="testSection"
+           sectiontitle="testTitle"
+           filterkey="testKey"
+           treedata={treeData}
+         />
+       </FilterMenu>,
+     );
+   
+      const treeViewComponent = result.getByTestId(
+        "tree-view-section-testSection",
+      );
+      expect(treeViewComponent).toBeInTheDocument();
+    });
 
-  //     const treeViewComponent = result.getByTestId(
-  //       "tree-view-section-testSection",
-  //     );
-  //     expect(treeViewComponent).toBeInTheDocument();
-  //   });
+    it("should select the node when the checkbox is clicked", async () => {
+      const selectionHandlerMock = vi.fn();
 
-  //   it("should select the node when the checkbox is clicked", async () => {
-  //     const selectionHandlerMock = vi.fn();
+      render(
+        <FilterMenu onSelectionChanged={selectionHandlerMock}>
+          <TreeViewFilterSection
+            sectionid="testSection"
+            sectiontitle="testTitle"
+            filterkey="testKey"
+            treedata={treeData}
+            accordion="false"
+          />
+        </FilterMenu>,
+      );
 
-  //     render(
-  //       <FilterMenu onSelectionChanged={selectionHandlerMock}>
-  //         <TreeViewFilterSection
-  //           sectionid="testSection"
-  //           sectiontitle="testTitle"
-  //           filterkey="testKey"
-  //           treedata={treeData}
-  //           accordion="false"
-  //         />
-  //       </FilterMenu>,
-  //     );
+      const treeViewCheckbox = await screen.getByTestId(
+        "checkbox-testKey-rootValue",
+      );
 
-  //     const treeViewCheckbox = await screen.getByTestId(
-  //       "checkbox-testKey-rootValue",
-  //     );
+      const checkboxIconBlank = await within(treeViewCheckbox).getByTestId(
+        "CheckBoxOutlineBlankIcon",
+      );
+      expect(checkboxIconBlank).toBeVisible();
 
-  //     const checkboxIconBlank = await within(treeViewCheckbox).getByTestId(
-  //       "CheckBoxOutlineBlankIcon",
-  //     );
-  //     expect(checkboxIconBlank).toBeVisible();
+      await act(() => treeViewCheckbox.click());
 
-  //     await act(() => treeViewCheckbox.click());
+      expect(selectionHandlerMock).toHaveBeenCalled();
 
-  //     expect(selectionHandlerMock).toHaveBeenCalled();
+      const checkboxIcon =
+        await within(treeViewCheckbox).getByTestId("CheckBoxIcon");
+      expect(checkboxIcon).toBeVisible();
+    });
 
-  //     const checkboxIcon =
-  //       await within(treeViewCheckbox).getByTestId("CheckBoxIcon");
-  //     expect(checkboxIcon).toBeVisible();
-  //   });
+    it("should expand tree to show initially selected nodes", () => {
+      const result = render(
+        <FilterMenu>
+          <TreeViewFilterSection
+            sectionid="testSection"
+            sectiontitle="testTitle"
+            filterkey="testKey"
+            treedata={treeData}
+            initialselections={[
+              {
+                value: "childValue-0-1-0",
+                valueLabel: "Child 0-1-0",
+              },
+            ]}
+            accordion="false"
+          />
+        </FilterMenu>,
+      );
 
-  //   it("should expand tree to show initially selected nodes", () => {
-  //     const result = render(
-  //       <FilterMenu>
-  //         <TreeViewFilterSection
-  //           sectionid="testSection"
-  //           sectiontitle="testTitle"
-  //           filterkey="testKey"
-  //           treedata={treeData}
-  //           initialselections={[
-  //             {
-  //               value: "childValue-0-1-0",
-  //               valueLabel: "Child 0-1-0",
-  //             },
-  //           ]}
-  //           accordion="false"
-  //         />
-  //       </FilterMenu>,
-  //     );
-
-  //     expect(
-  //       result.getByTestId("tree-view-item-childValue-0-1-0"),
-  //     ).toBeVisible();
-  //   });
-  // });
+      expect(
+        result.getByTestId("tree-view-item-childValue-0-1-0"),
+      ).toBeVisible();
+    });
+  });
 });
