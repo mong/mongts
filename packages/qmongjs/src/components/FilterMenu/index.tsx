@@ -20,7 +20,6 @@ import {
 } from "./FilterSettingsReducer";
 import { filterSettingsReducer } from "./FilterSettingsReducer";
 import { FilterSettingsAction } from "./FilterSettingsReducer";
-import { ChildCareSharp } from "@mui/icons-material";
 
 /**
  * The type/signature of the handler function to call when the selection changes. It is called with the new
@@ -43,8 +42,8 @@ export type FilterMenuProps = PropsWithChildren<{
   defaultValues?: Map<string, FilterSettingsValue[]>;
   refreshState?: boolean;
   children:
-    | ReactElement<FilterMenuSectionProps>
-    | ReactElement<FilterMenuSectionProps>[];
+  | ReactElement<FilterMenuSectionProps>
+  | ReactElement<FilterMenuSectionProps>[];
 }>;
 
 /**
