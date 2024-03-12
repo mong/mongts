@@ -7,7 +7,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { imgLoader } from "qmongjs/src/helpers/functions";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TreatmentQualityFilterMenu } from "qmongjs";
 import {
   FilterDrawer,
@@ -15,6 +15,7 @@ import {
   MainBox,
   appBarElevation,
   filterMenuTopMargin,
+  smSizeWidth,
 } from "./styled";
 
 /**
@@ -23,8 +24,29 @@ import {
  * @returns The page component
  */
 export default function TreatmentQuality() {
+  const [width, setWidth] = useState(smSizeWidth);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
+  const isSmallScreen = width <= smSizeWidth;
+  const drawerOpen = isSmallScreen ? mobileOpen : true;
+  const drawerType = isSmallScreen ? "temporary" : "permanent";
+
+  // Used to change drawer style between small screens and larger screens
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWidth(window.innerWidth);
+
+      const handleResize = () => {
+        setWidth(window.innerWidth);
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, []);
 
   const handleDrawerClose = () => {
     setIsClosing(true);
@@ -85,34 +107,19 @@ export default function TreatmentQuality() {
       >
         <Toolbar />
         <FilterDrawer
-          variant="temporary"
-          open={mobileOpen}
+          variant={drawerType}
+          open={drawerOpen}
           onTransitionEnd={handleDrawerTransitionEnd}
           onClose={handleDrawerClose}
           ModalProps={{
             keepMounted: true,
           }}
           sx={{
-            display: { xs: "block", sm: "none" },
+            display: "block",
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
             },
           }}
-        >
-          <Toolbar />
-          <Box sx={{ marginTop: filterMenuTopMargin }}>
-            <TreatmentQualityFilterMenu />
-          </Box>
-        </FilterDrawer>
-        <FilterDrawer
-          variant="permanent"
-          sx={{
-            display: { xs: "none", sm: "block" },
-            "& .MuiDrawer-paper": {
-              boxSizing: "border-box",
-            },
-          }}
-          open
         >
           <Toolbar />
           <Box sx={{ marginTop: filterMenuTopMargin }}>
@@ -123,6 +130,7 @@ export default function TreatmentQuality() {
       <MainBox
         component="main"
         sx={{
+          paddingLeft: "0px",
           flexGrow: 1,
           p: 3,
         }}
