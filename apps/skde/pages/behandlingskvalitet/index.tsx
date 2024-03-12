@@ -1,7 +1,6 @@
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import TuneIcon from "@mui/icons-material/Tune";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,10 +9,13 @@ import Image from "next/image";
 import { imgLoader } from "qmongjs/src/helpers/functions";
 import { useState } from "react";
 import { TreatmentQualityFilterMenu } from "qmongjs";
-
-const drawerWidth = 350;
-const appBarElevation = 2;
-const filterMenuTopMargin = 2;
+import {
+  FilterDrawer,
+  FilterDrawerBox,
+  MainBox,
+  appBarElevation,
+  filterMenuTopMargin,
+} from "./styled";
 
 /**
  * Treatment quality page (Behandlingskvalitet)
@@ -76,13 +78,13 @@ export default function TreatmentQuality() {
           </Box>
         </Toolbar>
       </AppBar>
-      <Box
+      <FilterDrawerBox
         component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
+        sx={{ flexShrink: { sm: 0 } }}
         aria-label="filtermenyboks"
       >
         <Toolbar />
-        <Drawer
+        <FilterDrawer
           variant="temporary"
           open={mobileOpen}
           onTransitionEnd={handleDrawerTransitionEnd}
@@ -94,7 +96,6 @@ export default function TreatmentQuality() {
             display: { xs: "block", sm: "none" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
-              width: drawerWidth,
             },
           }}
         >
@@ -102,14 +103,13 @@ export default function TreatmentQuality() {
           <Box sx={{ marginTop: filterMenuTopMargin }}>
             <TreatmentQualityFilterMenu />
           </Box>
-        </Drawer>
-        <Drawer
+        </FilterDrawer>
+        <FilterDrawer
           variant="permanent"
           sx={{
             display: { xs: "none", sm: "block" },
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
-              width: drawerWidth,
             },
           }}
           open
@@ -118,21 +118,20 @@ export default function TreatmentQuality() {
           <Box sx={{ marginTop: filterMenuTopMargin }}>
             <TreatmentQualityFilterMenu />
           </Box>
-        </Drawer>
-      </Box>
-      <Box
+        </FilterDrawer>
+      </FilterDrawerBox>
+      <MainBox
         component="main"
         sx={{
           flexGrow: 1,
           p: 3,
-          width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}
       >
         <Toolbar />
         <Typography paragraph>
           Resultater fra medisinske kvalitetsregistre
         </Typography>
-      </Box>
+      </MainBox>
     </Box>
   );
 }
