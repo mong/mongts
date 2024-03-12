@@ -10,7 +10,7 @@ export const maxSelectedTreatmentUnits = () => {
 /**
  * Gets the years available for selection
  *
- * @returns The an object with year values and the default year
+ * @returns An object with year values and the default year
  */
 export const getYearOptions = (): {
   values: FilterSettingsValue[];
@@ -34,7 +34,7 @@ export const getYearOptions = (): {
 /**
  * Gets the goal achievement options available for selection
  *
- * @returns The an object with values and the default value
+ * @returns An object with values and the default value
  */
 export const getAchievementLevelOptions = (): {
   values: FilterSettingsValue[];

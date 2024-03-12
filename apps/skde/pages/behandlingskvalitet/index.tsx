@@ -9,7 +9,7 @@ import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { imgLoader } from "qmongjs/src/helpers/functions";
 import { useState } from "react";
-import { HospitalQualityFilterMenu } from "qmongjs";
+import { TreatmentQualityFilterMenu } from "qmongjs";
 
 const drawerWidth = 350;
 const appBarElevation = 2;
@@ -100,7 +100,7 @@ export default function TreatmentQuality() {
         >
           <Toolbar />
           <Box sx={{ marginTop: filterMenuTopMargin }}>
-            <HospitalQualityFilterMenu />
+            <TreatmentQualityFilterMenu />
           </Box>
         </Drawer>
         <Drawer
@@ -116,7 +116,7 @@ export default function TreatmentQuality() {
         >
           <Toolbar />
           <Box sx={{ marginTop: filterMenuTopMargin }}>
-            <HospitalQualityFilterMenu />
+            <TreatmentQualityFilterMenu />
           </Box>
         </Drawer>
       </Box>

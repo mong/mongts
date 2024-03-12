@@ -55,21 +55,6 @@ type OptionsMapEntry = {
 };
 
 /**
- * The function returns an array containing the valueString as a FilterSettingsValue,
- * or undefined if valueString is null or undefined.
- *
- * @param valueString A string, null, or undefined value
- * @returns An array with a single FilterSettingsValue, or undefined
- */
-export const valueArrayOrUndefined = (valueString: StringNullOrUndefined) => {
-  if (valueString) {
-    return [{ value: valueString, valueLabel: valueString }];
-  } else {
-    return undefined;
-  }
-};
-
-/**
  * Component for the treatment quality (Behandlingskvalitet) filter menu.
  *
  * @returns The treatment quality filter menu component

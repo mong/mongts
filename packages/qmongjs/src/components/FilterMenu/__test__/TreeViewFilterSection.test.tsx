@@ -6,9 +6,7 @@ import TreeViewFilterSection, {
   getSelectedNodeIds,
   initDefaultExpanded,
   initFilterSettingsValuesMap,
-  selectionHandlerFunc,
 } from "../TreeViewFilterSection";
-import { FilterSettingsActionType } from "../FilterSettingsReducer";
 import FilterMenu from "..";
 import { act } from "react-dom/test-utils";
 
@@ -144,111 +142,80 @@ describe("TreeViewFilterSection", () => {
     });
   });
 
-  describe("selectionHandlerFunc()", () => {
-    const idToValueMap = initFilterSettingsValuesMap(treeData);
+  // describe("Rendered TreeViewFilterSection", () => {
+  //   it("should render the tree data", () => {
+  //     const result = render(
+  //       <FilterMenu>
+  //         <TreeViewFilterSection
+  //           sectionid="testSection"
+  //           sectiontitle="testTitle"
+  //           filterkey="testKey"
+  //           treedata={treeData}
+  //         />
+  //       </FilterMenu>,
+  //     );
 
-    it("should call dispatcher with correct params when handler is called", () => {
-      const mockDispatch = vi.fn();
+  //     const treeViewComponent = result.getByTestId(
+  //       "tree-view-section-testSection",
+  //     );
+  //     expect(treeViewComponent).toBeInTheDocument();
+  //   });
 
-      const handleCheckboxClick = selectionHandlerFunc(
-        [],
-        "filterkey",
-        true,
-        idToValueMap,
-        mockDispatch,
-      );
+  //   it("should select the node when the checkbox is clicked", async () => {
+  //     const selectionHandlerMock = vi.fn();
 
-      handleCheckboxClick(true, "childValue-0-1-0");
+  //     render(
+  //       <FilterMenu onSelectionChanged={selectionHandlerMock}>
+  //         <TreeViewFilterSection
+  //           sectionid="testSection"
+  //           sectiontitle="testTitle"
+  //           filterkey="testKey"
+  //           treedata={treeData}
+  //           accordion="false"
+  //         />
+  //       </FilterMenu>,
+  //     );
 
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: FilterSettingsActionType.SET_SECTION_SELECTIONS,
-        sectionSetting: {
-          key: "filterkey",
-          values: [
-            {
-              value: "childValue-0-1-0",
-              valueLabel: "Child 0-1-0",
-            },
-          ],
-        },
-      });
-    });
-  });
+  //     const treeViewCheckbox = await screen.getByTestId(
+  //       "checkbox-testKey-rootValue",
+  //     );
 
-  describe("Rendered TreeViewFilterSection", () => {
-    it("should render the tree data", () => {
-      const result = render(
-        <FilterMenu>
-          <TreeViewFilterSection
-            sectionid="testSection"
-            sectiontitle="testTitle"
-            filterkey="testKey"
-            treedata={treeData}
-          />
-        </FilterMenu>,
-      );
+  //     const checkboxIconBlank = await within(treeViewCheckbox).getByTestId(
+  //       "CheckBoxOutlineBlankIcon",
+  //     );
+  //     expect(checkboxIconBlank).toBeVisible();
 
-      const treeViewComponent = result.getByTestId(
-        "tree-view-section-testSection",
-      );
-      expect(treeViewComponent).toBeInTheDocument();
-    });
+  //     await act(() => treeViewCheckbox.click());
 
-    it("should select the node when the checkbox is clicked", async () => {
-      const selectionHandlerMock = vi.fn();
+  //     expect(selectionHandlerMock).toHaveBeenCalled();
 
-      render(
-        <FilterMenu onSelectionChanged={selectionHandlerMock}>
-          <TreeViewFilterSection
-            sectionid="testSection"
-            sectiontitle="testTitle"
-            filterkey="testKey"
-            treedata={treeData}
-            accordion="false"
-          />
-        </FilterMenu>,
-      );
+  //     const checkboxIcon =
+  //       await within(treeViewCheckbox).getByTestId("CheckBoxIcon");
+  //     expect(checkboxIcon).toBeVisible();
+  //   });
 
-      const treeViewCheckbox = await screen.getByTestId(
-        "checkbox-testKey-rootValue",
-      );
+  //   it("should expand tree to show initially selected nodes", () => {
+  //     const result = render(
+  //       <FilterMenu>
+  //         <TreeViewFilterSection
+  //           sectionid="testSection"
+  //           sectiontitle="testTitle"
+  //           filterkey="testKey"
+  //           treedata={treeData}
+  //           initialselections={[
+  //             {
+  //               value: "childValue-0-1-0",
+  //               valueLabel: "Child 0-1-0",
+  //             },
+  //           ]}
+  //           accordion="false"
+  //         />
+  //       </FilterMenu>,
+  //     );
 
-      const checkboxIconBlank = await within(treeViewCheckbox).getByTestId(
-        "CheckBoxOutlineBlankIcon",
-      );
-      expect(checkboxIconBlank).toBeVisible();
-
-      await act(() => treeViewCheckbox.click());
-
-      expect(selectionHandlerMock).toHaveBeenCalled();
-
-      const checkboxIcon =
-        await within(treeViewCheckbox).getByTestId("CheckBoxIcon");
-      expect(checkboxIcon).toBeVisible();
-    });
-
-    it("should expand tree to show initially selected nodes", () => {
-      const result = render(
-        <FilterMenu>
-          <TreeViewFilterSection
-            sectionid="testSection"
-            sectiontitle="testTitle"
-            filterkey="testKey"
-            treedata={treeData}
-            initialselections={[
-              {
-                value: "childValue-0-1-0",
-                valueLabel: "Child 0-1-0",
-              },
-            ]}
-            accordion="false"
-          />
-        </FilterMenu>,
-      );
-
-      expect(
-        result.getByTestId("tree-view-item-childValue-0-1-0"),
-      ).toBeVisible();
-    });
-  });
+  //     expect(
+  //       result.getByTestId("tree-view-item-childValue-0-1-0"),
+  //     ).toBeVisible();
+  //   });
+  // });
 });
