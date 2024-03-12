@@ -1,3 +1,4 @@
+import React from "react";
 import { vi, describe, it, expect } from "vitest";
 import { fireEvent, render, within } from "@testing-library/react";
 import SelectedFiltersSection, {

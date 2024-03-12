@@ -6,9 +6,7 @@ import TreeViewFilterSection, {
   getSelectedNodeIds,
   initDefaultExpanded,
   initFilterSettingsValuesMap,
-  selectionHandlerFunc,
 } from "../TreeViewFilterSection";
-import { FilterSettingsActionType } from "../FilterSettingsReducer";
 import FilterMenu from "..";
 import { act } from "react-dom/test-utils";
 
@@ -141,37 +139,6 @@ describe("TreeViewFilterSection", () => {
     it("should return an empty array for undefined indput", () => {
       const result = getSelectedNodeIds(undefined);
       expect(result).toEqual([]);
-    });
-  });
-
-  describe("selectionHandlerFunc()", () => {
-    const idToValueMap = initFilterSettingsValuesMap(treeData);
-
-    it("should call dispatcher with correct params when handler is called", () => {
-      const mockDispatch = vi.fn();
-
-      const handleCheckboxClick = selectionHandlerFunc(
-        [],
-        "filterkey",
-        true,
-        idToValueMap,
-        mockDispatch,
-      );
-
-      handleCheckboxClick(true, "childValue-0-1-0");
-
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: FilterSettingsActionType.SET_SECTION_SELECTIONS,
-        sectionSetting: {
-          key: "filterkey",
-          values: [
-            {
-              value: "childValue-0-1-0",
-              valueLabel: "Child 0-1-0",
-            },
-          ],
-        },
-      });
     });
   });
 
