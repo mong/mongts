@@ -41,7 +41,7 @@ export const getAchievementLevelOptions = (): {
   default: FilterSettingsValue;
 } => {
   const goalAchievementValues = [
-    { value: "", valueLabel: app_text.indicators.all.text },
+    { value: "", valueLabel: "Alle måloppnåelser" },
     { value: "H", valueLabel: app_text.indicators.high.text },
     { value: "M", valueLabel: app_text.indicators.moderate.text },
     { value: "L", valueLabel: app_text.indicators.low.text },

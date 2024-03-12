@@ -16,7 +16,7 @@ import {
   appBarElevation,
   filterMenuTopMargin,
   smSizeWidth,
-} from "./styled";
+} from "../../src/components/TreatmentQuality";
 
 /**
  * Treatment quality page (Behandlingskvalitet)
