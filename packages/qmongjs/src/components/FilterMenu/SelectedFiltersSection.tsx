@@ -48,6 +48,8 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
       spacing={1}
       id={`selected-filters-section-id-${props.sectionid}`}
       data-testid={`selected-filters-section-id-${props.sectionid}`}
+      useFlexGap
+      flexWrap="wrap"
     >
       {Array.from(filterSettings.map.keys()).map((key) => {
         return filterSettings.map.get(key)?.map((filterSetting) => {

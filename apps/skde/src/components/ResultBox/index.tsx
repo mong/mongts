@@ -210,7 +210,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
           sx={{
             backgroundColor: "#FAFAFA",
             ":hover": {
-              backgroundColor: expandedResultBox ? "" : "rgb(241, 241, 241)",
+              backgroundColor: "rgb(241, 241, 241)",
               transition: "200ms ease-in",
             },
           }}
