@@ -55,14 +55,6 @@ export const AnnualVariation = function <
             />
           );
         })}
-        <line
-          x1={xScale(min(annualRates))}
-          x2={xScale(max(annualRates))}
-          y1={yScale(data[y].toString())}
-          y2={yScale(data[y].toString())}
-          stroke={"black"}
-          strokeWidth="2"
-        />
       </Group>
     </>
   );
