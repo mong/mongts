@@ -218,16 +218,13 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
   const selectedIds = getSelectedNodeIds(filterSettings.map.get(filterKey));
   const filterSettingsValuesMap = initFilterSettingsValuesMap(treeData);
   const [showMaxSelectionAlert, setMaxSelectionAlert] = useState(false);
-  const [initiallyExpanded, setInitiallyExpanded] = useState(
+  const [expanded, setExpanded] = useState(
     initDefaultExpanded(selectedIds, filterSettingsValuesMap),
   );
-  const [expanded, setExpanded] = useState<string[]>(initiallyExpanded);
   const [treeViewKey, setTreeViewKey] = useState(0);
 
   useEffect(() => {
-    setInitiallyExpanded(
-      initDefaultExpanded(selectedIds, filterSettingsValuesMap),
-    );
+    setExpanded(initDefaultExpanded(selectedIds, filterSettingsValuesMap));
     setTreeViewKey(treeViewKey + 1);
   }, [props.refreshState]);
 
@@ -301,7 +298,7 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
         data-testid={`tree-view-section-${props.sectionid}`}
         defaultCollapseIcon={<ExpandMoreIcon />}
         defaultExpandIcon={<ChevronRightIcon />}
-        defaultExpanded={initiallyExpanded}
+        defaultExpanded={expanded}
         expanded={expanded}
         onNodeFocus={(event, nodeId) => {
           const checkbox = document.getElementById(
@@ -312,7 +309,9 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
           }
         }}
         onNodeSelect={(event, nodeId) => {
-          toggleExpanded(nodeId);
+          if (typeof nodeId == "string") {
+            toggleExpanded(nodeId);
+          }
         }}
       >
         {buildTreeView(props, selectedIds, handleCheckboxClick, toggleExpanded)}
