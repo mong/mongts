@@ -37,11 +37,9 @@ export const TreeViewFilterSectionItem = (
     toggleExpand,
   } = props;
   const isSelected = selectedIds.includes(labeledValue.value);
-  const treeItemRef = React.useRef<HTMLLIElement>(null);
 
   return (
     <TreeItem
-      ref={treeItemRef}
       key={`tree-view-item-${filterKey}-${labeledValue.value}`}
       data-testid={`tree-view-item-${labeledValue.value}`}
       nodeId={labeledValue.value}
