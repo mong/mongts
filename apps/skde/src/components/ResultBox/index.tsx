@@ -114,7 +114,12 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
                 key={bd.type + i + id}
                 label={bd.type}
               >
-                <Linechart {...bd} data={figData} lang={lang} />
+                <Linechart
+                  {...bd}
+                  data={figData}
+                  lang={lang}
+                  national={nationalName}
+                />
               </CarouselItem>
             );
           }
