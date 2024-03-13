@@ -34,7 +34,13 @@ export const selectedBarColors: string[] = [
 ];
 
 export const linechartColors: string[] = [
-  `rgb(${pickedcolor})`,
-  "rgb(125,163,200)",
-  "rgb(112,131,127)",
+  "#253776",
+  "#74A5CD",
+  "#6D8480",
+  "#4AB69B",
+  "#99C326",
+  "#C0614E",
+  "#901D81",
+  "#ADB8B3",
+  "#B6D7A5",
 ];

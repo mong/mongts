@@ -1,5 +1,6 @@
 import { Grid, Axis, LineSeries, XYChart, Tooltip } from "@visx/xychart";
 import { scaleOrdinal } from "@visx/scale";
+import { useRouter } from "next/router";
 import {
   customFormat,
   customFormatEng,
@@ -37,6 +38,7 @@ type LinechartProps<
   yLabel?: { en: string; nb: string; nn: string };
   format_x?: string;
   format_y?: string;
+  national?: string;
 };
 
 export const Linechart = <
@@ -54,23 +56,47 @@ export const Linechart = <
   yLabel,
   format_x,
   format_y,
+  national,
 }: LinechartProps<Data, X, Y, Label>) => {
-  let uniqueLabels = Array.from(new Set(data.map((d) => d[label])));
+  const router = useRouter();
+  const selected_bohf = [router.query.bohf].flat();
 
-  const values = uniqueLabels.map((l) => {
-    return {
-      label: l,
-      points: data
-        .flatMap((d) => {
-          if (d[label] === l) {
-            return { x: d[x], y: d[y] };
-          } else {
-            return [];
-          }
-        })
-        .sort((a, b) => a.x - b.x),
-    };
-  });
+  var uniqueLabels: string[] = Array.from(new Set(data.map((d) => d[label])));
+  var allNonSelectedHF = [];
+
+  if (label === "bohf") {
+    allNonSelectedHF = uniqueLabels.filter(
+      (item) => ![national].concat(selected_bohf).includes(item),
+    );
+    uniqueLabels = [national].concat(
+      uniqueLabels.filter((item) => selected_bohf.includes(item)),
+    );
+  }
+
+  const plotableData = (
+    uniqueLabels: string[],
+    data: LinechartData<Data, X, Y, Label>[],
+  ) => {
+    // put data in a plotable format
+    const values = uniqueLabels.map((l) => {
+      return {
+        label: l,
+        points: data
+          .flatMap((d) => {
+            if (d[label] === l) {
+              return { x: d[x], y: d[y] };
+            } else {
+              return [];
+            }
+          })
+          .sort((a, b) => a.x - b.x),
+      };
+    });
+    return values;
+  };
+
+  const values = plotableData(uniqueLabels, data);
+  const greyValues = plotableData(allNonSelectedHF, data);
 
   const accessors = {
     xAccessor: (d) =>
@@ -105,7 +131,7 @@ export const Linechart = <
     <div style={{ width: "auto", margin: "auto" }}>
       <XYChart
         height={500}
-        xScale={{ type: "band" }}
+        xScale={{ type: "band", paddingOuter: label === "bohf" ? -0.3 : 0 }}
         yScale={{ type: "linear" }}
         margin={{
           top: 50,
@@ -114,6 +140,16 @@ export const Linechart = <
           left: 50 + yvaluesMaxTextLength,
         }}
       >
+        {greyValues.map((plots, i) => (
+          <LineSeries
+            stroke="rgb(229, 228, 226)"
+            dataKey={plots.label}
+            data={plots.points}
+            xAccessor={(d) => d.x}
+            yAccessor={(d) => d.y}
+            key={i}
+          />
+        ))}
         <Axis
           orientation="bottom"
           label={xLabel[lang]}
@@ -162,6 +198,7 @@ export const Linechart = <
         <Grid columns={false} numTicks={4} />
         {values.map((plots, i) => (
           <LineSeries
+            strokeWidth={label === "bohf" ? 5 : 2}
             dataKey={plots.label}
             data={plots.points}
             xAccessor={(d) => d.x}
@@ -173,8 +210,9 @@ export const Linechart = <
         <Tooltip
           snapTooltipToDatumX
           snapTooltipToDatumY
-          showVerticalCrosshair
-          showSeriesGlyphs
+          showDatumGlyph={label === "bohf"}
+          showVerticalCrosshair={label !== "bohf"}
+          showSeriesGlyphs={label !== "bohf"}
           glyphStyle={{ fill: linechartColors[0] }}
           renderTooltip={({ tooltipData }) => (
             <div>
@@ -183,18 +221,30 @@ export const Linechart = <
                 {": "}
                 {accessors.xAccessor(tooltipData.nearestDatum.datum)}
               </div>
-              {Object.keys(tooltipData.datumByKey).map(
-                (d: LinechartData<Data, X, Y, Label>[Label]) => {
-                  return (
-                    <div key={d}>
-                      <div style={{ color: colorScale(d) }}>
-                        {d}
-                        {": "}
-                        {accessors.yAccessor(tooltipData.datumByKey[d].datum)}
+              {label === "bohf" ? (
+                <div>
+                  <div>
+                    {tooltipData.nearestDatum.key}
+                    {": "}
+                    {accessors.yAccessor(tooltipData.nearestDatum.datum)}
+                  </div>
+                </div>
+              ) : (
+                Object.keys(tooltipData.datumByKey)
+                  .filter(function (value) {
+                    return uniqueLabels.includes(value);
+                  })
+                  .map((d: LinechartData<Data, X, Y, Label>[Label]) => {
+                    return (
+                      <div key={d}>
+                        <div style={{ color: colorScale(d) }}>
+                          {d}
+                          {": "}
+                          {accessors.yAccessor(tooltipData.datumByKey[d].datum)}
+                        </div>
                       </div>
-                    </div>
-                  );
-                },
+                    );
+                  })
               )}
             </div>
           )}
