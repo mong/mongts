@@ -198,7 +198,7 @@ export const Linechart = <
         <Grid columns={false} numTicks={4} />
         {values.map((plots, i) => (
           <LineSeries
-            strokeWidth={label === "bohf" ? 3 : 2}
+            strokeWidth={label === "bohf" ? 5 : 2}
             dataKey={plots.label}
             data={plots.points}
             xAccessor={(d) => d.x}

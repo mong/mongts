@@ -37,10 +37,10 @@ export const linechartColors: string[] = [
   "#253776",
   "#74A5CD",
   "#6D8480",
-  "#B6D7A5",
   "#4AB69B",
   "#99C326",
   "#C0614E",
   "#901D81",
   "#ADB8B3",
+  "#B6D7A5",
 ];
