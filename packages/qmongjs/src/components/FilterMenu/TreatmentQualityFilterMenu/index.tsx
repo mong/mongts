@@ -16,6 +16,7 @@ import {
   FilterSettingsAction,
   FilterSettingsActionType,
   FilterMenuSelectionChangedHandler,
+  FilterMenuFilterInitializedHandler,
 } from "qmongjs";
 import {
   getAchievementLevelOptions,
@@ -30,7 +31,6 @@ import {
 import Alert from "@mui/material/Alert";
 import { UseQueryResult } from "@tanstack/react-query";
 
-
 // The keys used for the different filter sections
 export const yearKey = "year";
 export const levelKey = "level";
@@ -41,8 +41,9 @@ export const treatmentUnitsKey = "selected_treatment_units";
  * The properties for the TreatmentQualityFilterMenu component.
  * The onSelectionChanged handler is called when the selection changes.
  */
-export type TreatmentQualityFilterMenu = PropsWithChildren<{
+export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   onSelectionChanged?: FilterMenuSelectionChangedHandler;
+  onFilterInitialized?: FilterMenuFilterInitializedHandler;
 }>;
 
 // Types used due to the use of useQueryParam
@@ -73,7 +74,10 @@ type OptionsMapEntry = {
  *
  * @returns The treatment quality filter menu component
  */
-export function TreatmentQualityFilterMenu({ onSelectionChanged }: TreatmentQualityFilterMenu) {
+export function TreatmentQualityFilterMenu({
+  onSelectionChanged,
+  onFilterInitialized: onFilterInitialized,
+}: TreatmentQualityFilterMenuProps) {
   const selectedRegister = "all";
   const queryContext = { context: "caregiver", type: "ind" };
 
@@ -168,6 +172,7 @@ export function TreatmentQualityFilterMenu({ onSelectionChanged }: TreatmentQual
     withDefault(DelimitedArrayParam, ["Nasjonalt"]),
   );
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     selectedRegister,
     queryContext.context,
@@ -277,6 +282,7 @@ export function TreatmentQualityFilterMenu({ onSelectionChanged }: TreatmentQual
       <FilterMenu
         refreshState={shouldRefreshInititalState}
         onSelectionChanged={handleFilterChanged}
+        onFilterInitialized={onFilterInitialized}
       >
         <SelectedFiltersSection
           accordion="false"
