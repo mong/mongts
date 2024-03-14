@@ -96,18 +96,15 @@ export default function TreatmentQuality() {
   // Load register names and medical fields
   const registryNameQuery: UseQueryResult<any, unknown> =
     useRegisterNamesQuery();
-  const registers = registryNameQuery?.data;
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
-  const medicalFields = medicalFieldsQuery?.data;
 
-  if (registryNameQuery.isLoading || medicalFieldsQuery.isLoading) {
-    return (
-      <Box sx={{ width: "100%" }}>
-        <LinearProgress />
-      </Box>
-    );
-  }
+  const queriesReady = !(
+    registryNameQuery.isLoading || medicalFieldsQuery.isLoading
+  );
+
+  const registers = registryNameQuery?.data;
+  const medicalFields = medicalFieldsQuery?.data;
 
   /**
    * Handle that the initial filter settings are loaded, which can happen
@@ -248,10 +245,12 @@ export default function TreatmentQuality() {
           >
             <Toolbar />
             <Box sx={{ marginTop: filterMenuTopMargin }}>
-              <TreatmentQualityFilterMenu
-                onSelectionChanged={handleFilterChanged}
-                onFilterInitialized={handleFilterInitialized}
-              />
+              {queriesReady && (
+                <TreatmentQualityFilterMenu
+                  onSelectionChanged={handleFilterChanged}
+                  onFilterInitialized={handleFilterInitialized}
+                />
+              )}
             </Box>
           </FilterDrawer>
         </FilterDrawerBox>
@@ -265,7 +264,7 @@ export default function TreatmentQuality() {
         >
           <Toolbar />
           <Paper>
-            {registers && medicalFields && (
+            {queriesReady && (
               <IndicatorTable
                 key="indicator-table"
                 context={"caregiver"}
