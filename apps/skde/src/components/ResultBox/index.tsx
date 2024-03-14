@@ -53,6 +53,8 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
   const [expandedResultBox, setExpandedResultBox] =
     React.useState<boolean>(false);
 
+  const height_ref = React.useRef(null);
+
   const atlasData: { atlasData: any } = React.useContext(DataContext);
 
   const mapFile = map ? map : "kronikere.geojson";
@@ -238,6 +240,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
           sx={{
             backgroundColor: "#F2F2F2",
           }}
+          ref={height_ref}
         >
           {dataCarousel}
 
@@ -260,7 +263,15 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
         className={classNames.crossWrapper}
         role="button"
         aria-label="Open"
-        onClick={() => setExpandedResultBox(!expandedResultBox)}
+        onClick={() => {
+          if (expandedResultBox) {
+            window.scrollTo({
+              top: window.scrollY - height_ref.current.offsetHeight,
+              behavior: "smooth",
+            });
+          }
+          setExpandedResultBox(!expandedResultBox);
+        }}
         data-testid="resultbox_expandButton"
       >
         <span className={classNames.horizontal}></span>
