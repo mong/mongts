@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { imgLoader } from "qmongjs/src/helpers/functions";
 import { useState, useEffect } from "react";
-import { TreatmentQualityFilterMenu } from "qmongjs";
+import { FilterSettingsAction, FilterSettingsValue, TreatmentQualityFilterMenu, useRegisterNamesQuery } from "qmongjs";
 import {
   FilterIconButton,
   FilterDrawer,
@@ -19,6 +19,12 @@ import {
   treatmentQualityTheme,
 } from "../../src/components/TreatmentQuality";
 import { ThemeProvider } from "@mui/material/styles";
+import IndicatorTable from "qmongjs/src/components/IndicatorTable";
+import { UseQueryResult } from "@tanstack/react-query";
+import { Paper } from "@mui/material";
+import { defaultYear } from "qmongjs/src/app_config";
+import { levelKey, treatmentUnitsKey, yearKey, medicalFieldKey } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu";
+import { useMedicalFieldsQuery } from "qmongjs/src/helpers/hooks";
 
 /**
  * Treatment quality page (Behandlingskvalitet)
@@ -32,6 +38,12 @@ export default function TreatmentQuality() {
   const isPhoneSizedScreen = width < desktopBreakpoint;
   const drawerOpen = isPhoneSizedScreen ? mobileOpen : true;
   const drawerType = isPhoneSizedScreen ? "temporary" : "permanent";
+
+  // Used by indicator table
+  const [selectedYear, setSelectedYear] = useState(defaultYear);
+  const [selectedLevel, setSelectedLevel] = useState<string | undefined>(undefined);
+  const [selectedMedicalFields, setSelectedMedicalFields] = useState<string[]>([]);
+  const [selectedTreatmentUnits, setSelecteTreatmentUnits] = useState(["Nasjonalt"]);
 
   // Used to change drawer style between small screens and larger screens
   useEffect(() => {
@@ -64,6 +76,52 @@ export default function TreatmentQuality() {
       setMobileOpen(!mobileOpen);
     }
   };
+
+  // Load register names and medical fields
+
+  const registryNameQuery: UseQueryResult<any, unknown> = useRegisterNamesQuery();
+  const medicalFieldsQuery: UseQueryResult<any, unknown> = useMedicalFieldsQuery();
+
+  if (registryNameQuery.isLoading || medicalFieldsQuery.isLoading) {
+    return null;
+  }
+
+  const registers = registryNameQuery.data;
+  const medicalFields = medicalFieldsQuery.data;
+
+  /**
+   * Handle filter changes
+   */
+  const handleFilterChanged = (newFilterSettings: { map: Map<string, FilterSettingsValue[]>; }, oldFilterSettings: { map: Map<string, FilterSettingsValue[]>; }, action: FilterSettingsAction): void => {
+    switch (action.sectionSetting.key) {
+      case yearKey: {
+        setSelectedYear(parseInt(newFilterSettings.map.get(yearKey)[0].value ?? defaultYear.toString()));
+        break;
+      }
+      case levelKey: {
+        setSelectedLevel(newFilterSettings.map.get(levelKey)[0].value ?? undefined);
+        break;
+      }
+      case medicalFieldKey: {
+        let medicalFieldFilter = newFilterSettings.map.get(medicalFieldKey)[0].value;
+        if (!medicalFieldFilter || medicalFieldFilter === "all") {
+          setSelectedMedicalFields(registers.map((register) => register.rname));
+        } else {
+          const selectedMedicalFields =
+            medicalFields.filter((field) => field.shortName === medicalFieldFilter)
+              .flatMap((field) => field.registers);
+          setSelectedMedicalFields(selectedMedicalFields);
+        }
+        break;
+      }
+      case treatmentUnitsKey: {
+        setSelecteTreatmentUnits(newFilterSettings.map.get(treatmentUnitsKey).map((value) => value.value));
+        break;
+      }
+      default:
+        break;
+    }
+  }
 
   return (
     <ThemeProvider theme={treatmentQualityTheme}>
@@ -125,7 +183,7 @@ export default function TreatmentQuality() {
           >
             <Toolbar />
             <Box sx={{ marginTop: filterMenuTopMargin }}>
-              <TreatmentQualityFilterMenu />
+              <TreatmentQualityFilterMenu onSelectionChanged={handleFilterChanged} />
             </Box>
           </FilterDrawer>
         </FilterDrawerBox>
@@ -138,9 +196,21 @@ export default function TreatmentQuality() {
           }}
         >
           <Toolbar />
-          <Typography paragraph>
-            Resultater fra medisinske kvalitetsregistre
-          </Typography>
+          <Paper>
+            <IndicatorTable
+              context={"caregiver"}
+              tableType="allRegistries"
+              registerNames={registers}
+              unitNames={selectedTreatmentUnits}
+              treatmentYear={selectedYear}
+              colspan={selectedTreatmentUnits.length + 1}
+              medicalFieldFilter={selectedMedicalFields}
+              showLevelFilter={selectedLevel}
+              selection_bar_height={0}
+              legend_height={null}
+              blockTitle={registers.map((register) => register.full_name)}
+            />
+          </Paper>
         </MainBox>
       </Box>
     </ThemeProvider>
