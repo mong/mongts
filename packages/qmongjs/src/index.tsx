@@ -9,7 +9,10 @@ export { API_HOST } from "./components/RegisterPage";
 export { Layout } from "./components/Layout";
 export { level, levelSymbols } from "./helpers/functions";
 export { FilterMenu } from "./components/FilterMenu";
-export type { FilterMenuSelectionChangedHandler } from "./components/FilterMenu";
+export type {
+  FilterMenuSelectionChangedHandler,
+  FilterMenuFilterInitializedHandler,
+} from "./components/FilterMenu";
 export { FilterSettingsContext } from "./components/FilterMenu/FilterSettingsContext";
 export type { FilterSettingsValue } from "./components/FilterMenu/FilterSettingsContext";
 export {
@@ -22,3 +25,4 @@ export { RadioGroupFilterSection } from "./components/FilterMenu/RadioGroupFilte
 export { SelectedFiltersSection } from "./components/FilterMenu/SelectedFiltersSection";
 export { TreeViewFilterSection } from "./components/FilterMenu/TreeViewFilterSection";
 export { TreatmentQualityFilterMenu } from "./components/FilterMenu/TreatmentQualityFilterMenu";
+export type { TreatmentQualityFilterMenuProps } from "./components/FilterMenu/TreatmentQualityFilterMenu";
