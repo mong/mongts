@@ -113,7 +113,8 @@ export const MainBox = styled(Box)(({ theme }) => ({
   height: `calc(100vh - 64px)`,
   "& th": {
     whiteSpace: "nowrap",
-    padding: 2,
+    paddingTop: 10,
+    paddingBottom: 10,
     paddingRight: 15,
   },
   [theme.breakpoints.down("sm")]: {
