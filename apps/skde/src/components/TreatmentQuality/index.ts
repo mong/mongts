@@ -116,3 +116,27 @@ export const MainBox = styled(Box)(({ theme }) => ({
     },
   },
 }));
+
+export const SkdeLogoBox = styled(Box)(({ theme }) => ({
+  "& .skde-logo": {
+    verticalAlign: "middle",
+  },
+  [theme.breakpoints.down("sm")]: {
+    "& .skde-logo": {
+      height: 20,
+      width: 49,
+    },
+  },
+  [theme.breakpoints.up("sm")]: {
+    "& .skde-logo": {
+      height: 30,
+      width: 75,
+    },
+  },
+  [theme.breakpoints.up("md")]: {
+    "& .skde-logo": {
+      height: 40,
+      width: 100,
+    },
+  },
+}));
