@@ -107,10 +107,12 @@ export const FilterDrawerBox = styled(Box)(({ theme }) => ({
 
 export const MainBox = styled(Box)(({ theme }) => ({
   marginTop: "64px",
+  height: `calc(100vh - 64px)`,
   padding: 0,
   flexGrow: 1,
+  gap: "10px",
+  mask: "linear-gradient(90deg,#0000,#000 0% 96.5%, #0000)",
   overflow: "auto",
-  height: `calc(100vh - 64px)`,
   "& th": {
     whiteSpace: "nowrap",
     paddingTop: 10,
