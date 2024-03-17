@@ -305,7 +305,14 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
             `checkbox-${filterKey}-${nodeId}`,
           );
           if (checkbox) {
-            checkbox.focus();
+            // Focus the checkbox if the node is not the first node in the tree.
+            // The focus is set to the checkbox to allow for consitent Tab and Shift+Tab
+            // navigation and disabling parallel navigation with the arrow keys.
+            // Focus on the first node in the tree is allowed because of Shift+Tab
+            // navigation, which otherwise gets stuck on the checkbox.
+            if (nodeId !== props.treedata[0].nodeValue.value) {
+              checkbox.focus();
+            }
           }
         }}
         onNodeSelect={(event, nodeId) => {
