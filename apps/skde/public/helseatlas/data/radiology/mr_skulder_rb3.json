@@ -3,9 +3,7 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "andel_rtg"
-      ],
+      "x": ["andel_rtg"],
       "y": "bohf",
       "xLabel": {
         "nb": "Andel av MR skulder med røntgen i forkant",
@@ -20,19 +18,10 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "rtg50_snitt",
-        "irtg50_snitt"
-      ],
+      "x": ["rtg50_snitt", "irtg50_snitt"],
       "xLegend": {
-        "nb": [
-          "Røntgen",
-          "Ikke røntgen"
-        ],
-        "en": [
-          "X-ray",
-          "No X-ray"
-        ]
+        "nb": ["Røntgen", "Ikke røntgen"],
+        "en": ["X-ray", "No X-ray"]
       },
       "y": "bohf",
       "xLabel": {
@@ -48,23 +37,11 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "art_kir50_snitt",
-        "a_kir50_snitt",
-        "i_kir50_snitt"
-      ],
+      "x": ["art_kir50_snitt", "a_kir50_snitt", "i_kir50_snitt"],
       "y": "bohf",
       "xLegend": {
-        "nb": [
-          "Artrose",
-          "Annen",
-          "Ikke"
-        ],
-        "en": [
-          "Osteoarthritis",
-          "Other ",
-          "None"
-        ]
+        "nb": ["Artrose", "Annen", "Ikke"],
+        "en": ["Osteoarthritis", "Other ", "None"]
       },
       "xLabel": {
         "nb": "Antall (rate), fordelt på type kirurgi, pr. 10 000 innbyggere",
@@ -82,7 +59,6 @@
       "caption": {
         "nb": "Årlige gjennomsnittsverdier for perioden 2019–2022 for røntgen, 2018-2021 ellers. Rate pr. 10  000 innbyggere. Andel røntgen er andelen som har utført røntgen skulder i tidsperioden ett år i forkant av MR undersøkelsen. Andel kirurgi er andelen som har fått utført kirurgi innen et år i etterkant av MR undersøkelsen.",
         "en": "*Annual average number of outpatient shoulder MRI per 10,000 population over 50 years old during 2018-2022. The rates are gender and age adjusted.<br> ** Proportions of exams with X-ray before MRI during 2019-2022. The proportions are based on gender and age adjusted rates."
-        "en": "Årlige gjennomsnittsverdier for perioden 2019–2022 for røntgen, 2018-2021 ellers. Rate pr. 10  000 innbyggere. Andel røntgen er andelen som har utført røntgen skulder i tidsperioden ett år i forkant av MR undersøkelsen. Andel kirurgi er andelen som har fått utført kirurgi innen et år i etterkant av MR undersøkelsen."
       },
       "columns": [
         {
