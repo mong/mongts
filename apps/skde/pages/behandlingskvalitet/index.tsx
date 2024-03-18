@@ -36,8 +36,6 @@ import {
   medicalFieldKey,
 } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu";
 import { useMedicalFieldsQuery } from "qmongjs/src/helpers/hooks";
-import Stack from "@mui/material/Stack";
-import Container from "@mui/material/Container";
 
 /**
  * Treatment quality page (Behandlingskvalitet)
