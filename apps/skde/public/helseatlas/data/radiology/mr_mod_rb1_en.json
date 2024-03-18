@@ -3,20 +3,40 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["totsnitt"],
+      "x": [
+        "totsnitt"
+      ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Number of MR  pr. 10 000 population",
-        "en": "tmp"
+        "nb": "Antall (rate) MR  pr. 10 000 innbyggere",
+        "en": "Number of outpatient MRI per 10,000 population"
       },
       "yLabel": {
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": ["tot2018", "tot2019", "tot2020", "tot2021", "tot2022"],
+      "annualVar": [
+        "tot2018",
+        "tot2019",
+        "tot2020",
+        "tot2021",
+        "tot2022"
+      ],
       "annualVarLabels": {
-        "nb": ["2018", "2019", "2020", "2021", "2022"],
-        "en": ["2018", "2019", "2020", "2021", "2022"]
+        "nb": [
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022"
+        ],
+        "en": [
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022"
+        ]
       },
       "format": ",.0f"
     },
@@ -24,31 +44,35 @@
       "type": "linechart",
       "data": "datasett_2",
       "label": "gender",
-      "x": ["alder"],
+      "x": [
+        "alder"
+      ],
       "y": "pctandel",
       "xLabel": {
-        "nb": "Age",
+        "nb": "Alder",
         "en": "Age"
       },
       "yLabel": {
-        "nb": "Percent of population with MR  examination",
-        "en": "Percent"
+        "nb": "Andel av befolkningen med MR  undersøkelse",
+        "en": "Proportion of population within the age group with MRI"
       },
-      "format_y": ",.1%"
+      "format_y": ",.0%"
     },
     {
       "type": "linechart",
       "data": "datasett_3",
       "label": "tid",
-      "x": ["mnd"],
+      "x": [
+        "mnd"
+      ],
       "y": "antall",
       "xLabel": {
-        "nb": "Month",
+        "nb": "Måned",
         "en": "Month"
       },
       "yLabel": {
-        "nb": "Time series, Number of MR  examination",
-        "en": "Number of examination"
+        "nb": "Tidstrend, antall MR  undersøkelser",
+        "en": "Historical trend, number of MRI examinations"
       },
       "format_x": "month",
       "format_y": ",.0f"
@@ -57,8 +81,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Annual average pr. 10  000 population during 2018-2022",
-        "en": "Annual average pr. 10  000 population during 2018-2022"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall (rate) pr. 10  000 innbyggere",
+        "en": "Annual average during 2018–2022. <br> * Number of outpatient MRI per 10,000 population. The rates are gender and age adjusted."
       },
       "columns": [
         {
@@ -71,7 +95,7 @@
         {
           "id": "totsnitt",
           "label_no": "Rate",
-          "label_en": "Rate",
+          "label_en": "Rate*",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -110,8 +134,8 @@
       "data": "datasett_1",
       "x": "totsnitt",
       "caption": {
-        "nb": "Number of MR  pr. 10 000 population",
-        "en": "tmp"
+        "nb": "Antall (rate) MR  pr. 10 000 innbyggere",
+        "en": "Number of outpatient MRI per 10,000 population"
       },
       "jenks": [
         {
@@ -141,7 +165,7 @@
     {
       "type": "data",
       "label": "datasett_1",
-      "national": "Norge",
+      "national": "Norway",
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
@@ -418,17 +442,17 @@
           "tot_pr_pas": 1.16553888979
         },
         {
-          "bohf": "Norge",
+          "bohf": "Norway",
           "tot2018": 1116.02342235,
           "tot2019": 1112.84235687,
           "tot2020": 1065.29302225,
-          "tot2021": 1162.64599794,
-          "tot2022": 1169.82534281,
-          "totsnitt": 1125.79789897,
-          "tot_events": 606503.6,
-          "tot_pas": 511876.2,
+          "tot2021": 1162.64789377,
+          "tot2022": 1169.87157232,
+          "totsnitt": 1125.8076041,
+          "tot_events": 606508.8,
+          "tot_pas": 511881.2,
           "tot_pop": 5361610,
-          "tot_pr_pas": 1.18486384012
+          "tot_pr_pas": 1.18486242511
         }
       ]
     },
@@ -441,1484 +465,1484 @@
           "alder": 0,
           "ermann": "Kvinner",
           "pctandel": 0.00361654252594,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 0,
           "ermann": "Menn",
           "pctandel": 0.0042078302232,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 1,
           "ermann": "Kvinner",
           "pctandel": 0.00277690721048,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 1,
           "ermann": "Menn",
           "pctandel": 0.00333734732496,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 2,
           "ermann": "Kvinner",
           "pctandel": 0.0023158343397,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 2,
           "ermann": "Menn",
           "pctandel": 0.00308089178785,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 3,
           "ermann": "Kvinner",
           "pctandel": 0.00212200484235,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 3,
           "ermann": "Menn",
           "pctandel": 0.00354670372896,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 4,
           "ermann": "Kvinner",
           "pctandel": 0.00233334015597,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 4,
           "ermann": "Menn",
           "pctandel": 0.00343312188228,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 5,
           "ermann": "Kvinner",
           "pctandel": 0.00330926191401,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 5,
           "ermann": "Menn",
           "pctandel": 0.00417584230801,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 6,
           "ermann": "Kvinner",
           "pctandel": 0.00498880334972,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 6,
           "ermann": "Menn",
           "pctandel": 0.00578278379059,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 7,
           "ermann": "Kvinner",
           "pctandel": 0.00756302521008,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 7,
           "ermann": "Menn",
           "pctandel": 0.00778470578027,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 8,
           "ermann": "Kvinner",
           "pctandel": 0.010881316249,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 8,
           "ermann": "Menn",
           "pctandel": 0.0100423605025,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 9,
           "ermann": "Kvinner",
           "pctandel": 0.0148468523156,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 9,
           "ermann": "Menn",
           "pctandel": 0.0127238200214,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 10,
           "ermann": "Kvinner",
           "pctandel": 0.0213161443172,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 10,
           "ermann": "Menn",
           "pctandel": 0.0167414247233,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 11,
           "ermann": "Kvinner",
           "pctandel": 0.0272310968447,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 11,
           "ermann": "Menn",
           "pctandel": 0.0213518040546,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 12,
           "ermann": "Kvinner",
           "pctandel": 0.0358234456573,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 12,
           "ermann": "Menn",
           "pctandel": 0.0258382405961,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 13,
           "ermann": "Kvinner",
           "pctandel": 0.0473412853063,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 13,
           "ermann": "Menn",
           "pctandel": 0.0326053951635,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 14,
           "ermann": "Kvinner",
           "pctandel": 0.0605798857762,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 14,
           "ermann": "Menn",
           "pctandel": 0.0407503313534,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 15,
           "ermann": "Kvinner",
           "pctandel": 0.0698456167219,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 15,
           "ermann": "Menn",
           "pctandel": 0.0479984658307,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 16,
           "ermann": "Kvinner",
           "pctandel": 0.0724932249322,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 16,
           "ermann": "Menn",
           "pctandel": 0.0493704645537,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 17,
           "ermann": "Kvinner",
           "pctandel": 0.0758889039706,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 17,
           "ermann": "Menn",
           "pctandel": 0.0514418138238,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 18,
           "ermann": "Kvinner",
           "pctandel": 0.0724834362897,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 18,
           "ermann": "Menn",
           "pctandel": 0.0497497756713,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 19,
           "ermann": "Kvinner",
           "pctandel": 0.0689075951058,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 19,
           "ermann": "Menn",
           "pctandel": 0.0503592407688,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 20,
           "ermann": "Kvinner",
           "pctandel": 0.0706665410819,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 20,
           "ermann": "Menn",
           "pctandel": 0.0504979619525,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 21,
           "ermann": "Kvinner",
           "pctandel": 0.071752699524,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 21,
           "ermann": "Menn",
           "pctandel": 0.0529287429208,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 22,
           "ermann": "Kvinner",
           "pctandel": 0.0740410075154,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 22,
           "ermann": "Menn",
           "pctandel": 0.0570795502444,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 23,
           "ermann": "Kvinner",
           "pctandel": 0.0764218617082,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 23,
           "ermann": "Menn",
           "pctandel": 0.0568277293155,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 24,
           "ermann": "Kvinner",
           "pctandel": 0.0781714839984,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 24,
           "ermann": "Menn",
           "pctandel": 0.0601098962091,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 25,
           "ermann": "Kvinner",
           "pctandel": 0.0817599870351,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 25,
           "ermann": "Menn",
           "pctandel": 0.0619955059121,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 26,
           "ermann": "Kvinner",
           "pctandel": 0.0839451855968,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 26,
           "ermann": "Menn",
           "pctandel": 0.0639695935064,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 27,
           "ermann": "Kvinner",
           "pctandel": 0.0848810030336,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 27,
           "ermann": "Menn",
           "pctandel": 0.0667937621132,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 28,
           "ermann": "Kvinner",
           "pctandel": 0.0884946638699,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 28,
           "ermann": "Menn",
           "pctandel": 0.0705884799767,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 29,
           "ermann": "Kvinner",
           "pctandel": 0.0907807184578,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 29,
           "ermann": "Menn",
           "pctandel": 0.0723822656246,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 30,
           "ermann": "Kvinner",
           "pctandel": 0.0929678951723,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 30,
           "ermann": "Menn",
           "pctandel": 0.0751158925013,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 31,
           "ermann": "Kvinner",
           "pctandel": 0.0980286661215,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 31,
           "ermann": "Menn",
           "pctandel": 0.075994130366,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 32,
           "ermann": "Kvinner",
           "pctandel": 0.102493514454,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 32,
           "ermann": "Menn",
           "pctandel": 0.0785476471359,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 33,
           "ermann": "Kvinner",
           "pctandel": 0.103907074974,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 33,
           "ermann": "Menn",
           "pctandel": 0.0804702011357,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 34,
           "ermann": "Kvinner",
           "pctandel": 0.109370490059,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 34,
           "ermann": "Menn",
           "pctandel": 0.0829249966456,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 35,
           "ermann": "Kvinner",
           "pctandel": 0.112465946668,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 35,
           "ermann": "Menn",
           "pctandel": 0.0831287418702,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 36,
           "ermann": "Kvinner",
           "pctandel": 0.116393971889,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 36,
           "ermann": "Menn",
           "pctandel": 0.0855089181748,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 37,
           "ermann": "Kvinner",
           "pctandel": 0.119897131736,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 37,
           "ermann": "Menn",
           "pctandel": 0.0880186245792,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 38,
           "ermann": "Kvinner",
           "pctandel": 0.123109459113,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 38,
           "ermann": "Menn",
           "pctandel": 0.0885025638213,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 39,
           "ermann": "Kvinner",
           "pctandel": 0.127947585481,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 39,
           "ermann": "Menn",
           "pctandel": 0.0909722681845,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 40,
           "ermann": "Kvinner",
           "pctandel": 0.13260877278,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 40,
           "ermann": "Menn",
           "pctandel": 0.0933870175125,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 41,
           "ermann": "Kvinner",
           "pctandel": 0.134765717816,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 41,
           "ermann": "Menn",
           "pctandel": 0.0952865586678,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 42,
           "ermann": "Kvinner",
           "pctandel": 0.137225835908,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 42,
           "ermann": "Menn",
           "pctandel": 0.0980668015627,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 43,
           "ermann": "Kvinner",
           "pctandel": 0.140438101366,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 43,
           "ermann": "Menn",
           "pctandel": 0.0979824050176,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 44,
           "ermann": "Kvinner",
           "pctandel": 0.144180757041,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 44,
           "ermann": "Menn",
           "pctandel": 0.100739417127,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 45,
           "ermann": "Kvinner",
           "pctandel": 0.144824282051,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 45,
           "ermann": "Menn",
           "pctandel": 0.102180645368,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 46,
           "ermann": "Kvinner",
           "pctandel": 0.148548725306,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 46,
           "ermann": "Menn",
           "pctandel": 0.104569124811,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 47,
           "ermann": "Kvinner",
           "pctandel": 0.153411508045,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 47,
           "ermann": "Menn",
           "pctandel": 0.107757837995,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 48,
           "ermann": "Kvinner",
           "pctandel": 0.159254124197,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 48,
           "ermann": "Menn",
           "pctandel": 0.108977856474,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 49,
           "ermann": "Kvinner",
           "pctandel": 0.161308553067,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 49,
           "ermann": "Menn",
           "pctandel": 0.111023965142,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 50,
           "ermann": "Kvinner",
           "pctandel": 0.16465166096,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 50,
           "ermann": "Menn",
           "pctandel": 0.114357292285,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 51,
           "ermann": "Kvinner",
           "pctandel": 0.168037846756,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 51,
           "ermann": "Menn",
           "pctandel": 0.116682869011,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 52,
           "ermann": "Kvinner",
           "pctandel": 0.16866798371,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 52,
           "ermann": "Menn",
           "pctandel": 0.119798902245,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 53,
           "ermann": "Kvinner",
           "pctandel": 0.169608311105,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 53,
           "ermann": "Menn",
           "pctandel": 0.122730952787,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 54,
           "ermann": "Kvinner",
           "pctandel": 0.167370959407,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 54,
           "ermann": "Menn",
           "pctandel": 0.124630310703,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 55,
           "ermann": "Kvinner",
           "pctandel": 0.165595885378,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 55,
           "ermann": "Menn",
           "pctandel": 0.12683667545,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 56,
           "ermann": "Kvinner",
           "pctandel": 0.164473605081,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 56,
           "ermann": "Menn",
           "pctandel": 0.128932622973,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 57,
           "ermann": "Kvinner",
           "pctandel": 0.162174635407,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 57,
           "ermann": "Menn",
           "pctandel": 0.130428625378,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 58,
           "ermann": "Kvinner",
           "pctandel": 0.161374398653,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 58,
           "ermann": "Menn",
           "pctandel": 0.132757422902,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 59,
           "ermann": "Kvinner",
           "pctandel": 0.159073678846,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 59,
           "ermann": "Menn",
           "pctandel": 0.133312858942,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 60,
           "ermann": "Kvinner",
           "pctandel": 0.155415901254,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 60,
           "ermann": "Menn",
           "pctandel": 0.132830637339,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 61,
           "ermann": "Kvinner",
           "pctandel": 0.153283676992,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 61,
           "ermann": "Menn",
           "pctandel": 0.136441484301,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 62,
           "ermann": "Kvinner",
           "pctandel": 0.149543064679,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 62,
           "ermann": "Menn",
           "pctandel": 0.135920075848,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 63,
           "ermann": "Kvinner",
           "pctandel": 0.148728348682,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 63,
           "ermann": "Menn",
           "pctandel": 0.13689131899,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 64,
           "ermann": "Kvinner",
           "pctandel": 0.149449673317,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 64,
           "ermann": "Menn",
           "pctandel": 0.138487956246,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 65,
           "ermann": "Kvinner",
           "pctandel": 0.147655386053,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 65,
           "ermann": "Menn",
           "pctandel": 0.139054928975,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 66,
           "ermann": "Kvinner",
           "pctandel": 0.145268285085,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 66,
           "ermann": "Menn",
           "pctandel": 0.140331271487,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 67,
           "ermann": "Kvinner",
           "pctandel": 0.141543559099,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 67,
           "ermann": "Menn",
           "pctandel": 0.137558377116,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 68,
           "ermann": "Kvinner",
           "pctandel": 0.142577391688,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 68,
           "ermann": "Menn",
           "pctandel": 0.140404386056,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 69,
           "ermann": "Kvinner",
           "pctandel": 0.145867425856,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 69,
           "ermann": "Menn",
           "pctandel": 0.143045708252,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 70,
           "ermann": "Kvinner",
           "pctandel": 0.14157703401,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 70,
           "ermann": "Menn",
           "pctandel": 0.140283817807,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 71,
           "ermann": "Kvinner",
           "pctandel": 0.142919807884,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 71,
           "ermann": "Menn",
           "pctandel": 0.140930186479,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 72,
           "ermann": "Kvinner",
           "pctandel": 0.147484191099,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 72,
           "ermann": "Menn",
           "pctandel": 0.14508129285,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 73,
           "ermann": "Kvinner",
           "pctandel": 0.150022952376,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 73,
           "ermann": "Menn",
           "pctandel": 0.146085231292,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 74,
           "ermann": "Kvinner",
           "pctandel": 0.152401553513,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 74,
           "ermann": "Menn",
           "pctandel": 0.148764064468,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 75,
           "ermann": "Kvinner",
           "pctandel": 0.151762474081,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 75,
           "ermann": "Menn",
           "pctandel": 0.149460811351,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 76,
           "ermann": "Kvinner",
           "pctandel": 0.157287100429,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 76,
           "ermann": "Menn",
           "pctandel": 0.156235100342,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 77,
           "ermann": "Kvinner",
           "pctandel": 0.151473464738,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 77,
           "ermann": "Menn",
           "pctandel": 0.150143142397,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 78,
           "ermann": "Kvinner",
           "pctandel": 0.145975379344,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 78,
           "ermann": "Menn",
           "pctandel": 0.146256756757,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 79,
           "ermann": "Kvinner",
           "pctandel": 0.138413155502,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 79,
           "ermann": "Menn",
           "pctandel": 0.136509411342,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 80,
           "ermann": "Kvinner",
           "pctandel": 0.127695715392,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 80,
           "ermann": "Menn",
           "pctandel": 0.127114708419,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 81,
           "ermann": "Kvinner",
           "pctandel": 0.122998345443,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 81,
           "ermann": "Menn",
           "pctandel": 0.120143767948,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 82,
           "ermann": "Kvinner",
           "pctandel": 0.11744877829,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 82,
           "ermann": "Menn",
           "pctandel": 0.117544816993,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 83,
           "ermann": "Kvinner",
           "pctandel": 0.11108490566,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 83,
           "ermann": "Menn",
           "pctandel": 0.109463357028,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 84,
           "ermann": "Kvinner",
           "pctandel": 0.103132680386,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 84,
           "ermann": "Menn",
           "pctandel": 0.104791645336,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 85,
           "ermann": "Kvinner",
           "pctandel": 0.0888836727109,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 85,
           "ermann": "Menn",
           "pctandel": 0.089310769407,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 86,
           "ermann": "Kvinner",
           "pctandel": 0.0798645937813,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 86,
           "ermann": "Menn",
           "pctandel": 0.0828648962977,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 87,
           "ermann": "Kvinner",
           "pctandel": 0.0695560679666,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 87,
           "ermann": "Menn",
           "pctandel": 0.0737094489047,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 88,
           "ermann": "Kvinner",
           "pctandel": 0.0609923178549,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 88,
           "ermann": "Menn",
           "pctandel": 0.0686981306061,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 89,
           "ermann": "Kvinner",
           "pctandel": 0.0521772076534,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 89,
           "ermann": "Menn",
           "pctandel": 0.0578174290221,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 90,
           "ermann": "Kvinner",
           "pctandel": 0.0399515738499,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 90,
           "ermann": "Menn",
           "pctandel": 0.0484892346662,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 91,
           "ermann": "Kvinner",
           "pctandel": 0.0331192364276,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 91,
           "ermann": "Menn",
           "pctandel": 0.0377247273799,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 92,
           "ermann": "Kvinner",
           "pctandel": 0.0278003507121,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 92,
           "ermann": "Menn",
           "pctandel": 0.0356708173392,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 93,
           "ermann": "Kvinner",
           "pctandel": 0.0222804045382,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 93,
           "ermann": "Menn",
           "pctandel": 0.029386763813,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 94,
           "ermann": "Kvinner",
           "pctandel": 0.0177533686698,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 94,
           "ermann": "Menn",
           "pctandel": 0.0226192427471,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 95,
           "ermann": "Kvinner",
           "pctandel": 0.0141953277093,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 95,
           "ermann": "Menn",
           "pctandel": 0.01904340124,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 96,
           "ermann": "Kvinner",
           "pctandel": 0.0110438568546,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 96,
           "ermann": "Menn",
           "pctandel": 0.0156914024191,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 97,
           "ermann": "Kvinner",
           "pctandel": 0.00969468962524,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 97,
           "ermann": "Menn",
           "pctandel": 0.0151668351871,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 98,
           "ermann": "Kvinner",
           "pctandel": 0.00704375667022,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 98,
           "ermann": "Menn",
           "pctandel": 0.0107705053853,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 99,
           "ermann": "Kvinner",
           "pctandel": 0.00607222754874,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 99,
           "ermann": "Menn",
           "pctandel": 0.00405405405405,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 100,
           "ermann": "Kvinner",
           "pctandel": 0.00405268490375,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 100,
           "ermann": "Menn",
           "pctandel": 0.00709219858156,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 101,
           "ermann": "Kvinner",
           "pctandel": 0.00334728033473,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 101,
           "ermann": "Menn",
           "pctandel": 0,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 102,
           "ermann": "Kvinner",
           "pctandel": 0,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 102,
           "ermann": "Menn",
           "pctandel": 0,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 103,
           "ermann": "Kvinner",
           "pctandel": 0,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 103,
           "ermann": "Menn",
           "pctandel": 0,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 104,
           "ermann": "Kvinner",
           "pctandel": 0,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 104,
           "ermann": "Menn",
           "pctandel": 0,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         },
         {
           "alder": 105,
           "ermann": "Kvinner",
           "pctandel": 0,
-          "gender": "Kvinner",
+          "gender":"Women",
           "bohf": null
         },
         {
           "alder": 105,
           "ermann": "Menn",
           "pctandel": 0,
-          "gender": "Menn",
+          "gender":"Men",
           "bohf": null
         }
       ]
@@ -1931,217 +1955,217 @@
         {
           "mnd": 1,
           "antall": 54995,
-          "tid": "Snitt 2018-2019",
+          "tid": "Average 2018-2019",
           "nr": 1
         },
         {
           "mnd": 1,
           "antall": 56023,
-          "tid": "Pandemi: 2020",
+          "tid": "Pandemic 2020",
           "nr": 2
         },
         {
           "mnd": 1,
           "antall": 54105,
-          "tid": "Snitt 2021-2022",
+          "tid": "Average 2021-2022",
           "nr": 3
         },
         {
           "mnd": 2,
           "antall": 50027.5,
-          "tid": "Snitt 2018-2019",
+          "tid": "Average 2018-2019",
           "nr": 1
         },
         {
           "mnd": 2,
           "antall": 50951,
-          "tid": "Pandemi: 2020",
+          "tid": "Pandemic 2020",
           "nr": 2
         },
         {
           "mnd": 2,
           "antall": 52960,
-          "tid": "Snitt 2021-2022",
+          "tid": "Average 2021-2022",
           "nr": 3
         },
         {
           "mnd": 3,
           "antall": 50791.5,
-          "tid": "Snitt 2018-2019",
+          "tid": "Average 2018-2019",
           "nr": 1
         },
         {
           "mnd": 3,
           "antall": 45774,
-          "tid": "Pandemi: 2020",
+          "tid": "Pandemic 2020",
           "nr": 2
         },
         {
           "mnd": 3,
           "antall": 60504.5,
-          "tid": "Snitt 2021-2022",
+          "tid": "Average 2021-2022",
           "nr": 3
         },
         {
           "mnd": 4,
           "antall": 47973,
-          "tid": "Snitt 2018-2019",
+          "tid": "Average 2018-2019",
           "nr": 1
         },
         {
           "mnd": 4,
           "antall": 35422,
-          "tid": "Pandemi: 2020",
+          "tid": "Pandemic 2020",
           "nr": 2
         },
         {
           "mnd": 4,
           "antall": 48237,
-          "tid": "Snitt 2021-2022",
+          "tid": "Average 2021-2022",
           "nr": 3
         },
         {
           "mnd": 5,
           "antall": 49134,
-          "tid": "Snitt 2018-2019",
+          "tid": "Average 2018-2019",
           "nr": 1
         },
         {
           "mnd": 5,
           "antall": 42337,
-          "tid": "Pandemi: 2020",
+          "tid": "Pandemic 2020",
           "nr": 2
         },
         {
           "mnd": 5,
           "antall": 51857,
-          "tid": "Snitt 2021-2022",
+          "tid": "Average 2021-2022",
           "nr": 3
         },
         {
           "mnd": 6,
           "antall": 49925,
-          "tid": "Snitt 2018-2019",
+          "tid": "Average 2018-2019",
           "nr": 1
         },
         {
           "mnd": 6,
           "antall": 49353,
-          "tid": "Pandemi: 2020",
+          "tid": "Pandemic 2020",
           "nr": 2
         },
         {
           "mnd": 6,
           "antall": 55174,
-          "tid": "Snitt 2021-2022",
+          "tid": "Average 2021-2022",
           "nr": 3
         },
         {
           "mnd": 7,
           "antall": 35296,
-          "tid": "Snitt 2018-2019",
+          "tid": "Average 2018-2019",
           "nr": 1
         },
         {
           "mnd": 7,
           "antall": 35169,
-          "tid": "Pandemi: 2020",
+          "tid": "Pandemic 2020",
           "nr": 2
         },
         {
           "mnd": 7,
           "antall": 34058,
-          "tid": "Snitt 2021-2022",
+          "tid": "Average 2021-2022",
           "nr": 3
         },
         {
           "mnd": 8,
           "antall": 48591,
-          "tid": "Snitt 2018-2019",
+          "tid": "Average 2018-2019",
           "nr": 1
         },
         {
           "mnd": 8,
           "antall": 45673,
-          "tid": "Pandemi: 2020",
+          "tid": "Pandemic 2020",
           "nr": 2
         },
         {
           "mnd": 8,
           "antall": 51306,
-          "tid": "Snitt 2021-2022",
+          "tid": "Average 2021-2022",
           "nr": 3
         },
         {
           "mnd": 9,
           "antall": 53893,
-          "tid": "Snitt 2018-2019",
+          "tid": "Average 2018-2019",
           "nr": 1
         },
         {
           "mnd": 9,
           "antall": 54687,
-          "tid": "Pandemi: 2020",
+          "tid": "Pandemic 2020",
           "nr": 2
         },
         {
           "mnd": 9,
           "antall": 60227,
-          "tid": "Snitt 2021-2022",
+          "tid": "Average 2021-2022",
           "nr": 3
         },
         {
           "mnd": 10,
           "antall": 58113,
-          "tid": "Snitt 2018-2019",
+          "tid": "Average 2018-2019",
           "nr": 1
         },
         {
           "mnd": 10,
           "antall": 56189,
-          "tid": "Pandemi: 2020",
+          "tid": "Pandemic 2020",
           "nr": 2
         },
         {
           "mnd": 10,
           "antall": 59706.5,
-          "tid": "Snitt 2021-2022",
+          "tid": "Average 2021-2022",
           "nr": 3
         },
         {
           "mnd": 11,
           "antall": 52890.5,
-          "tid": "Snitt 2018-2019",
+          "tid": "Average 2018-2019",
           "nr": 1
         },
         {
           "mnd": 11,
           "antall": 55948,
-          "tid": "Pandemi: 2020",
+          "tid": "Pandemic 2020",
           "nr": 2
         },
         {
           "mnd": 11,
           "antall": 61057.5,
-          "tid": "Snitt 2021-2022",
+          "tid": "Average 2021-2022",
           "nr": 3
         },
         {
           "mnd": 12,
           "antall": 39037,
-          "tid": "Snitt 2018-2019",
+          "tid": "Average 2018-2019",
           "nr": 1
         },
         {
           "mnd": 12,
           "antall": 46871,
-          "tid": "Pandemi: 2020",
+          "tid": "Pandemic 2020",
           "nr": 2
         },
         {
           "mnd": 12,
           "antall": 49201.5,
-          "tid": "Snitt 2021-2022",
+          "tid": "Average 2021-2022",
           "nr": 3
         }
       ]
