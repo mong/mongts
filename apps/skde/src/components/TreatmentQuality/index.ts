@@ -2,6 +2,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
+import Paper from "@mui/material/Paper";
 import { createTheme, styled } from "@mui/material/styles";
 
 export const appBarElevation = 2;
@@ -105,21 +106,48 @@ export const FilterDrawerBox = styled(Box)(({ theme }) => ({
   },
 }));
 
+export const SkdeLogoBox = styled(Box)(({ theme }) => ({
+  marginLeft: "auto",
+  "& .skde-logo": {
+    verticalAlign: "middle",
+  },
+  [theme.breakpoints.down("sm")]: {
+    "& .skde-logo": {
+      height: 27,
+      width: 67,
+    },
+  },
+  [theme.breakpoints.up("sm")]: {
+    "& .skde-logo": {
+      height: 30,
+      width: 75,
+    },
+  },
+  [theme.breakpoints.up("md")]: {
+    "& .skde-logo": {
+      height: 40,
+      width: 100,
+    },
+  },
+}));
+
+export const TreatmentQualityFooterWrapper = styled(Paper)(({ theme }) => ({}));
+
 export const MainBox = styled(Box)(({ theme }) => ({
   marginTop: "64px",
   height: `calc(100vh - 64px)`,
   padding: 0,
   flexGrow: 1,
-  overflow: "auto",
-  mask: "linear-gradient(90deg,#0000,#000 0% 95%, #0005)",
+  overflowX: "auto",
+  display: "grid",
+  "& .gradient-box": {
+    mask: "linear-gradient(90deg,#0000,#000 0% 95%, #0005)",
+  },
   "& th": {
     whiteSpace: "nowrap",
     paddingTop: 10,
     paddingBottom: 10,
     paddingRight: 15,
-  },
-  "& table": {
-    paddingRight: 20,
   },
   [theme.breakpoints.down("sm")]: {
     "& .MuiDrawer-paper": {

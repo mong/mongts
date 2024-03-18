@@ -22,7 +22,9 @@ import {
   desktopBreakpoint,
   treatmentQualityTheme,
   TreatmentQualityAppBar,
+  SkdeLogoBox,
 } from "../../src/components/TreatmentQuality";
+import TreatmentQualityFooter from "../../src/components/TreatmentQuality/TreatmentQualityFooter";
 import { ThemeProvider } from "@mui/material/styles";
 import IndicatorTable from "qmongjs/src/components/IndicatorTable";
 import { UseQueryResult } from "@tanstack/react-query";
@@ -34,6 +36,8 @@ import {
   medicalFieldKey,
 } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu";
 import { useMedicalFieldsQuery } from "qmongjs/src/helpers/hooks";
+import Stack from "@mui/material/Stack";
+import Container from "@mui/material/Container";
 
 /**
  * Treatment quality page (Behandlingskvalitet)
@@ -202,15 +206,16 @@ export default function TreatmentQuality() {
             <Box sx={{ marginLeft: 2 }}>
               <Typography variant="h6">Behandlingskvalitet</Typography>
             </Box>
-            <Box sx={{ marginLeft: "auto", marginTop: 1.15 }}>
+            <SkdeLogoBox>
               <Image
+                className="skde-logo"
                 loader={imgLoader}
                 src="/img/logos/SKDE_sort.png"
                 height="40"
                 width="99"
                 alt="SKDE logo"
               />
-            </Box>
+            </SkdeLogoBox>
           </Toolbar>
         </TreatmentQualityAppBar>
         <FilterDrawerBox
@@ -238,22 +243,25 @@ export default function TreatmentQuality() {
             </Box>
           </FilterDrawer>
         </FilterDrawerBox>
-        <MainBox component="main">
+        <MainBox>
           {queriesReady && (
-            <IndicatorTable
-              key="indicator-table"
-              context={"caregiver"}
-              tableType="allRegistries"
-              registerNames={registers}
-              unitNames={selectedTreatmentUnits}
-              treatmentYear={selectedYear}
-              colspan={selectedTreatmentUnits.length + 1}
-              medicalFieldFilter={selectedMedicalFields}
-              showLevelFilter={selectedLevel}
-              selection_bar_height={0}
-              legend_height={0}
-              blockTitle={registers.map((register) => register.full_name)}
-            />
+            <>
+              <IndicatorTable
+                key="indicator-table"
+                context={"caregiver"}
+                tableType="allRegistries"
+                registerNames={registers}
+                unitNames={selectedTreatmentUnits}
+                treatmentYear={selectedYear}
+                colspan={selectedTreatmentUnits.length + 1}
+                medicalFieldFilter={selectedMedicalFields}
+                showLevelFilter={selectedLevel}
+                selection_bar_height={0}
+                legend_height={100}
+                blockTitle={registers.map((register) => register.full_name)}
+              />
+              <TreatmentQualityFooter />
+            </>
           )}
         </MainBox>
       </Box>
