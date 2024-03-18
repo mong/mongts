@@ -22,7 +22,6 @@ import {
   getAchievementLevelOptions,
   getTreatmentUnitsTree,
   getYearOptions,
-  maxSelectedTreatmentUnits,
 } from "./filterMenuOptions";
 import {
   useMedicalFieldsQuery,
@@ -324,7 +323,6 @@ export function TreatmentQualityFilterMenu({
         />
         <TreeViewFilterSection
           refreshState={shouldRefreshInititalState}
-          maxselections={maxSelectedTreatmentUnits()}
           treedata={treatmentUnits.treedata}
           defaultvalues={treatmentUnits.defaults}
           initialselections={

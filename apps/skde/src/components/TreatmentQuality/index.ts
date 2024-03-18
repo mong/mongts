@@ -1,3 +1,4 @@
+import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
@@ -41,13 +42,24 @@ export const treatmentQualityTheme = createTheme({
   },
 });
 
+export const TreatmentQualityAppBar = styled(AppBar)(({ theme }) => ({
+  zIndex: theme.zIndex.drawer + 1,
+  backgroundColor: "rgba(222, 231, 238, 1)",
+  color: "black",
+}));
+
 export const FilterIconButton = styled(IconButton)(({ theme }) => ({
+  paddingLeft: 0,
   [theme.breakpoints.up("desktop")]: {
     display: "none",
   },
 }));
 
 export const FilterDrawer = styled(Drawer)(({ theme }) => ({
+  display: "block",
+  "& .MuiDrawer-paper": {
+    boxSizing: "border-box",
+  },
   [theme.breakpoints.down("sm")]: {
     "& .MuiDrawer-paper": {
       width: smDrawerWidth,
@@ -94,6 +106,21 @@ export const FilterDrawerBox = styled(Box)(({ theme }) => ({
 }));
 
 export const MainBox = styled(Box)(({ theme }) => ({
+  marginTop: "64px",
+  height: `calc(100vh - 64px)`,
+  padding: 0,
+  flexGrow: 1,
+  overflow: "auto",
+  mask: "linear-gradient(90deg,#0000,#000 0% 95%, #0005)",
+  "& th": {
+    whiteSpace: "nowrap",
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingRight: 15,
+  },
+  "& table": {
+    paddingRight: 20,
+  },
   [theme.breakpoints.down("sm")]: {
     "& .MuiDrawer-paper": {
       width: "100%",
