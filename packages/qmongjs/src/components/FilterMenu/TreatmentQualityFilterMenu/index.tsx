@@ -323,7 +323,6 @@ export function TreatmentQualityFilterMenu({
         />
         <TreeViewFilterSection
           refreshState={shouldRefreshInititalState}
-          maxselections={25 /*maxSelectedTreatmentUnits()*/}
           treedata={treatmentUnits.treedata}
           defaultvalues={treatmentUnits.defaults}
           initialselections={
