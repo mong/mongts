@@ -1,4 +1,3 @@
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import TuneIcon from "@mui/icons-material/Tune";
@@ -22,11 +21,11 @@ import {
   filterMenuTopMargin,
   desktopBreakpoint,
   treatmentQualityTheme,
+  TreatmentQualityAppBar,
 } from "../../src/components/TreatmentQuality";
 import { ThemeProvider } from "@mui/material/styles";
 import IndicatorTable from "qmongjs/src/components/IndicatorTable";
 import { UseQueryResult } from "@tanstack/react-query";
-import { LinearProgress, Paper } from "@mui/material";
 import { defaultYear } from "qmongjs/src/app_config";
 import {
   levelKey,
@@ -189,15 +188,7 @@ export default function TreatmentQuality() {
     <ThemeProvider theme={treatmentQualityTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <AppBar
-          position="fixed"
-          elevation={appBarElevation}
-          sx={{
-            zIndex: (theme) => theme.zIndex.drawer + 1,
-            backgroundColor: "rgba(222, 231, 238, 1)",
-            color: "black",
-          }}
-        >
+        <TreatmentQualityAppBar position="fixed" elevation={appBarElevation}>
           <Toolbar>
             <FilterIconButton
               color="inherit"
@@ -221,13 +212,12 @@ export default function TreatmentQuality() {
               />
             </Box>
           </Toolbar>
-        </AppBar>
+        </TreatmentQualityAppBar>
         <FilterDrawerBox
           component="nav"
           sx={{ flexShrink: { sm: 0 } }}
           aria-label="filtermenyboks"
         >
-          <Toolbar />
           <FilterDrawer
             variant={drawerType}
             open={drawerOpen}
@@ -235,12 +225,6 @@ export default function TreatmentQuality() {
             onClose={handleDrawerClose}
             ModalProps={{
               keepMounted: true,
-            }}
-            sx={{
-              display: "block",
-              "& .MuiDrawer-paper": {
-                boxSizing: "border-box",
-              },
             }}
           >
             <Toolbar />
@@ -254,33 +238,23 @@ export default function TreatmentQuality() {
             </Box>
           </FilterDrawer>
         </FilterDrawerBox>
-        <MainBox
-          component="main"
-          sx={{
-            paddingLeft: "0px",
-            flexGrow: 1,
-            p: 3,
-          }}
-        >
-          <Toolbar />
-          <Paper>
-            {queriesReady && (
-              <IndicatorTable
-                key="indicator-table"
-                context={"caregiver"}
-                tableType="allRegistries"
-                registerNames={registers}
-                unitNames={selectedTreatmentUnits}
-                treatmentYear={selectedYear}
-                colspan={selectedTreatmentUnits.length + 1}
-                medicalFieldFilter={selectedMedicalFields}
-                showLevelFilter={selectedLevel}
-                selection_bar_height={0}
-                legend_height={null}
-                blockTitle={registers.map((register) => register.full_name)}
-              />
-            )}
-          </Paper>
+        <MainBox component="main">
+          {queriesReady && (
+            <IndicatorTable
+              key="indicator-table"
+              context={"caregiver"}
+              tableType="allRegistries"
+              registerNames={registers}
+              unitNames={selectedTreatmentUnits}
+              treatmentYear={selectedYear}
+              colspan={selectedTreatmentUnits.length + 1}
+              medicalFieldFilter={selectedMedicalFields}
+              showLevelFilter={selectedLevel}
+              selection_bar_height={0}
+              legend_height={0}
+              blockTitle={registers.map((register) => register.full_name)}
+            />
+          )}
         </MainBox>
       </Box>
     </ThemeProvider>
