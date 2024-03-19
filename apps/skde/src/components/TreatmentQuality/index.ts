@@ -144,7 +144,7 @@ export const TreatmentQualityFooterGrid = styled(Grid)(({ theme }) => ({
 }));
 
 export const TreatmentQualityFooterItem = styled(Grid)(({ theme }) => ({
-  textAlign: "center",
+  textAlign: "left",
   "& .footer-logo": {
     verticalAlign: "middle",
   },
