@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { imgLoader } from "../../helpers/functions";
 import {
-  TqfWrapper,
-  TqfItem,
-  TqfGrid,
-  TqfListItemIcon,
-  TqfListItemText,
-  TqfDividerBox,
-  TqfDivider,
+  FooterWrapper,
+  FooterItem,
+  FooterGrid,
+  FooterListItemIcon,
+  FooterListItemText,
+  FooterDividerBox,
+  FooterDivider,
 } from ".";
 import Link from "next/link";
 import List from "@mui/material/List";
@@ -17,13 +17,13 @@ import { ArrowForward, Call, ContactSupport, Email } from "@mui/icons-material";
 
 export function TreatmentQualityFooter() {
   return (
-    <TqfWrapper>
-      <TqfGrid
+    <FooterWrapper>
+      <FooterGrid
         container
         columns={{ xs: 4, sm: 8, md: 12, lg: 12 }}
         padding={{ xs: 1, sm: 1, md: 2, lg: 2 }}
       >
-        <TqfItem item xs={4} sm={8} md={2} lg={2}>
+        <FooterItem item xs={4} sm={8} md={3} lg={3}>
           <Link title="Link til SKDEs forside" href="/">
             <Image
               className="footer-logo"
@@ -35,15 +35,15 @@ export function TreatmentQualityFooter() {
               height={40}
             />
           </Link>
-        </TqfItem>
-        <TqfItem item xs={4} sm={8} md={6} lg={6}>
+        </FooterItem>
+        <FooterItem item xs={4} sm={8} md={6} lg={6}>
           <List>
             <ListItem disablePadding>
               <ListItemButton component="a" href="tel:77755800">
-                <TqfListItemIcon>
+                <FooterListItemIcon>
                   <Call />
-                </TqfListItemIcon>
-                <TqfListItemText primary="Telefon: 777 55 800" />
+                </FooterListItemIcon>
+                <FooterListItemText primary="Telefon: 777 55 800" />
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
@@ -51,10 +51,10 @@ export function TreatmentQualityFooter() {
                 component="a"
                 href="mailto:postmottak@helse-nord.no"
               >
-                <TqfListItemIcon>
+                <FooterListItemIcon>
                   <Email />
-                </TqfListItemIcon>
-                <TqfListItemText primary="E-post: postmottak@helse-nord.no" />
+                </FooterListItemIcon>
+                <FooterListItemText primary="E-post: postmottak@helse-nord.no" />
               </ListItemButton>
             </ListItem>
             <ListItem disablePadding>
@@ -62,50 +62,50 @@ export function TreatmentQualityFooter() {
                 component="a"
                 href="mailto:eva.stensland@helse-nord.no"
               >
-                <TqfListItemIcon>
+                <FooterListItemIcon>
                   <ContactSupport />
-                </TqfListItemIcon>
-                <TqfListItemText primary="Ansvarlig redaktør: Eva Stensland" />
+                </FooterListItemIcon>
+                <FooterListItemText primary="Ansvarlig redaktør: Eva Stensland" />
               </ListItemButton>
             </ListItem>
           </List>
-        </TqfItem>
-        <TqfItem item xs={4} sm={8} md={4} lg={4}>
+        </FooterItem>
+        <FooterItem item xs={4} sm={8} md={3} lg={3}>
           <nav aria-label="Linker til nettstedsinformasjon">
             <List>
               <ListItem disablePadding>
                 <ListItemButton component="a" href="/kontakt">
-                  <TqfListItemIcon>
+                  <FooterListItemIcon>
                     <ArrowForward />
-                  </TqfListItemIcon>
-                  <TqfListItemText primary="Kontakt" />
+                  </FooterListItemIcon>
+                  <FooterListItemText primary="Kontakt" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton component="a" href="/personvern">
-                  <TqfListItemIcon>
+                  <FooterListItemIcon>
                     <ArrowForward />
-                  </TqfListItemIcon>
-                  <TqfListItemText primary="Personvern" />
+                  </FooterListItemIcon>
+                  <FooterListItemText primary="Personvern" />
                 </ListItemButton>
               </ListItem>
               <ListItem disablePadding>
                 <ListItemButton component="a" href="/informasjonskapsler">
-                  <TqfListItemIcon>
+                  <FooterListItemIcon>
                     <ArrowForward />
-                  </TqfListItemIcon>
-                  <TqfListItemText primary="Informasjonskapsler" />
+                  </FooterListItemIcon>
+                  <FooterListItemText primary="Informasjonskapsler" />
                 </ListItemButton>
               </ListItem>
             </List>
           </nav>
-        </TqfItem>
-        <TqfItem item xs={4} sm={8} md={12} lg={12}>
-          <TqfDividerBox sx={{ paddingTop: 2, paddingBottom: 2 }}>
-            <TqfDivider />
-          </TqfDividerBox>
-        </TqfItem>
-        <TqfItem item xs={4} sm={8} md={4} lg={4}>
+        </FooterItem>
+        <FooterItem item xs={4} sm={8} md={12} lg={12}>
+          <FooterDividerBox sx={{ paddingTop: 2, paddingBottom: 2 }}>
+            <FooterDivider />
+          </FooterDividerBox>
+        </FooterItem>
+        <FooterItem item xs={4} sm={8} md={4} lg={4}>
           <Link
             title="Link til Helse Nord RHF"
             href="https://www.helse-nord.no"
@@ -120,8 +120,8 @@ export function TreatmentQualityFooter() {
               height={40}
             />
           </Link>
-        </TqfItem>
-        <TqfItem item xs={4} sm={8} md={4} lg={4}>
+        </FooterItem>
+        <FooterItem item xs={4} sm={8} md={4} lg={4}>
           <Link
             title="Link til kvalitetsregistre"
             href="https://www.kvalitetsregistre.no"
@@ -136,8 +136,8 @@ export function TreatmentQualityFooter() {
               height={32}
             />
           </Link>
-        </TqfItem>
-        <TqfItem item xs={4} sm={8} md={4} lg={4}>
+        </FooterItem>
+        <FooterItem item xs={4} sm={8} md={4} lg={4}>
           <Link title="Link til helseatlas" href="/helseatlas">
             <Image
               className="footer-logo"
@@ -149,9 +149,9 @@ export function TreatmentQualityFooter() {
               height={40}
             />
           </Link>
-        </TqfItem>
-      </TqfGrid>
-    </TqfWrapper>
+        </FooterItem>
+      </FooterGrid>
+    </FooterWrapper>
   );
 }
 

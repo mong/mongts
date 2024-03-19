@@ -136,16 +136,16 @@ export const SkdeLogoBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const TqfWrapper = styled(Paper)(({ theme }) => ({
+export const FooterWrapper = styled(Paper)(({ theme }) => ({
   color: "white",
 }));
 
-export const TqfGrid = styled(Grid)(({ theme }) => ({
+export const FooterGrid = styled(Grid)(({ theme }) => ({
   justifyContent: "space-around",
   backgroundColor: "#00263d",
 }));
 
-export const TqfItem = styled(Grid)(({ theme }) => ({
+export const FooterItem = styled(Grid)(({ theme }) => ({
   textAlign: "center",
   "& .footer-logo": {
     verticalAlign: "middle",
@@ -154,18 +154,18 @@ export const TqfItem = styled(Grid)(({ theme }) => ({
   },
 }));
 
-export const TqfListItemIcon = styled(ListItemIcon)(({ theme }) => ({
+export const FooterListItemIcon = styled(ListItemIcon)(({ theme }) => ({
   color: "white",
 }));
 
-export const TqfListItemText = styled(ListItemText)(({ theme }) => ({
+export const FooterListItemText = styled(ListItemText)(({ theme }) => ({
   lineHeight: 1,
   margin: 0,
 }));
 
-export const TqfDividerBox = styled(Box)(({ theme }) => ({}));
+export const FooterDividerBox = styled(Box)(({ theme }) => ({}));
 
-export const TqfDivider = styled(Divider)(({ theme }) => ({
+export const FooterDivider = styled(Divider)(({ theme }) => ({
   backgroundColor: "#27485b",
 }));
 
