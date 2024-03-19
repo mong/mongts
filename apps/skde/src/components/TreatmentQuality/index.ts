@@ -1,9 +1,11 @@
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
 import { createTheme, styled } from "@mui/material/styles";
 
@@ -134,27 +136,38 @@ export const SkdeLogoBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const TreatmentQualityFooterWrapper = styled(Paper)(({ theme }) => ({
+export const TqfWrapper = styled(Paper)(({ theme }) => ({
   color: "white",
 }));
 
-export const TreatmentQualityFooterGrid = styled(Grid)(({ theme }) => ({
+export const TqfGrid = styled(Grid)(({ theme }) => ({
   justifyContent: "space-around",
   backgroundColor: "#00263d",
 }));
 
-export const TreatmentQualityFooterItem = styled(Grid)(({ theme }) => ({
-  textAlign: "left",
+export const TqfItem = styled(Grid)(({ theme }) => ({
+  textAlign: "center",
   "& .footer-logo": {
     verticalAlign: "middle",
+    marginTop: "8px",
+    marginBottom: "8px",
   },
 }));
 
-export const TreatmentQualityFooterListItemIcon = styled(ListItemIcon)(
-  ({ theme }) => ({
-    color: "white",
-  }),
-);
+export const TqfListItemIcon = styled(ListItemIcon)(({ theme }) => ({
+  color: "white",
+}));
+
+export const TqfListItemText = styled(ListItemText)(({ theme }) => ({
+  lineHeight: 1,
+  margin: 0,
+}));
+
+export const TqfDividerBox = styled(Box)(({ theme }) => ({}));
+
+export const TqfDivider = styled(Divider)(({ theme }) => ({
+  backgroundColor: "#27485b",
+}));
 
 export const MainBox = styled(Box)(({ theme }) => ({
   marginTop: "64px",
