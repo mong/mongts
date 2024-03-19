@@ -1,7 +1,9 @@
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
+import Grid from "@mui/material/Grid";
 import IconButton from "@mui/material/IconButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
 import Paper from "@mui/material/Paper";
 import { createTheme, styled } from "@mui/material/styles";
 
@@ -21,7 +23,7 @@ export const desktopBreakpoint = 1300;
 
 declare module "@mui/material/styles" {
   interface BreakpointOverrides {
-    xs: false;
+    xs: true;
     sm: true;
     md: true;
     lg: true;
@@ -34,6 +36,7 @@ declare module "@mui/material/styles" {
 export const treatmentQualityTheme = createTheme({
   breakpoints: {
     values: {
+      xs: 0,
       sm: 600,
       md: 900,
       lg: 1200,
@@ -131,7 +134,27 @@ export const SkdeLogoBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const TreatmentQualityFooterWrapper = styled(Paper)(({ theme }) => ({}));
+export const TreatmentQualityFooterWrapper = styled(Paper)(({ theme }) => ({
+  color: "white",
+}));
+
+export const TreatmentQualityFooterGrid = styled(Grid)(({ theme }) => ({
+  justifyContent: "space-around",
+  backgroundColor: "#00263d",
+}));
+
+export const TreatmentQualityFooterItem = styled(Grid)(({ theme }) => ({
+  textAlign: "center",
+  "& .footer-logo": {
+    verticalAlign: "middle",
+  },
+}));
+
+export const TreatmentQualityFooterListItemIcon = styled(ListItemIcon)(
+  ({ theme }) => ({
+    color: "white",
+  }),
+);
 
 export const MainBox = styled(Box)(({ theme }) => ({
   marginTop: "64px",
