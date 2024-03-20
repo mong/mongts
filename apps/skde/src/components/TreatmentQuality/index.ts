@@ -170,27 +170,34 @@ export const FooterDivider = styled(Divider)(({ theme }) => ({
 }));
 
 export const MainBox = styled(Box)(({ theme }) => ({
-  marginTop: "64px",
-  height: `calc(100vh - 64px)`,
   padding: 0,
   flexGrow: 1,
   overflowX: "auto",
   display: "grid",
-  "& .gradient-box": {
-    mask: "linear-gradient(90deg,#0000,#000 0% 95%, #0005)",
+  "& table": {
+    borderSpacing: "0px",
   },
   "& th": {
-    whiteSpace: "nowrap",
+    top: "0px !important",
+    minWidth: "128px",
+    verticalAlign: "top",
     paddingTop: 10,
     paddingBottom: 10,
     paddingRight: 15,
+    position: "sticky",
+    backgroundColor: "#00263d",
+    color: "white",
   },
   [theme.breakpoints.down("sm")]: {
+    marginTop: "56px",
+    height: "calc(100vh - 56px)",
     "& .MuiDrawer-paper": {
       width: "100%",
     },
   },
   [theme.breakpoints.up("sm")]: {
+    marginTop: "64px",
+    height: "calc(100vh - 64px)",
     "& .MuiDrawer-paper": {
       width: "100%",
     },
