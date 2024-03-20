@@ -23,7 +23,7 @@ export function TreatmentQualityFooter() {
         columns={{ xs: 4, sm: 8, md: 12, lg: 12 }}
         padding={{ xs: 1, sm: 1, md: 2, lg: 2 }}
       >
-        <FooterItem item xs={4} sm={8} md={3} lg={3}>
+        <FooterItem item xs={4} sm={8} md={2} lg={2}>
           <Link title="Link til SKDEs forside" href="/">
             <Image
               className="footer-logo"
@@ -70,7 +70,7 @@ export function TreatmentQualityFooter() {
             </ListItem>
           </List>
         </FooterItem>
-        <FooterItem item xs={4} sm={8} md={3} lg={3}>
+        <FooterItem item xs={4} sm={8} md={4} lg={4}>
           <nav aria-label="Linker til nettstedsinformasjon">
             <List>
               <ListItem disablePadding>
