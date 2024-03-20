@@ -180,7 +180,7 @@ export const MainBox = styled(Box)(({ theme }) => ({
   "& th": {
     top: "0px !important",
     position: "sticky",
-    zIndex: theme.zIndex.drawer,
+    zIndex: theme.zIndex.drawer - 1,
     minWidth: "128px",
     verticalAlign: "top",
     paddingTop: 10,
