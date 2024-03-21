@@ -255,7 +255,7 @@ export default function TreatmentQuality() {
                 medicalFieldFilter={selectedMedicalFields}
                 showLevelFilter={selectedLevel}
                 selection_bar_height={0}
-                legend_height={100}
+                legend_height={0}
                 blockTitle={registers.map((register) => register.full_name)}
               />
               <TreatmentQualityFooter />

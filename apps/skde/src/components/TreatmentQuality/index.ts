@@ -181,15 +181,16 @@ export const MainBox = styled(Box)(({ theme }) => ({
     top: "0px !important",
     position: "sticky",
     zIndex: theme.zIndex.drawer - 1,
-    minWidth: "128px",
+    minWidth: "10rem",
     verticalAlign: "top",
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingRight: 15,
+    lineHeight: "1.5rem",
     backgroundColor: "#00263d",
     color: "white",
   },
   [theme.breakpoints.down("sm")]: {
+    "& th": {
+      minWidth: "6rem",
+    },
     marginTop: "56px",
     height: "calc(100vh - 56px)",
     "& .MuiDrawer-paper": {
