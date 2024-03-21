@@ -137,6 +137,7 @@ export const SkdeLogoBox = styled(Box)(({ theme }) => ({
 }));
 
 export const FooterWrapper = styled(Paper)(({ theme }) => ({
+  marginTop: "calc(100vh)",
   color: "white",
 }));
 
