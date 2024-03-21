@@ -134,13 +134,15 @@ export const Barchart = <
   const router = useRouter();
   const selected_bohf = [router.query.bohf].flat();
 
-  //used to find max values
+  // Find max values
   const annualValues = annualVar
-    ? annualVar.flatMap((annual) => data.flatMap((dt) => parseInt(dt[annual])))
+    ? annualVar.flatMap((annual) =>
+        data.flatMap((dt) => parseFloat(dt[annual])),
+      )
     : [];
   const errorBarValues = errorBars
     ? errorBars.flatMap((errorBar) =>
-        data.flatMap((dt) => parseInt(dt[errorBar])),
+        data.flatMap((dt) => parseFloat(dt[errorBar])),
       )
     : [];
 
@@ -149,7 +151,7 @@ export const Barchart = <
     ...errorBarValues,
     ...series.flat().flat().flat(),
   ];
-  const xMaxValue = xMax ? xMax : max(values) * 1.15;
+  const xMaxValue = xMax ? xMax : max(values);
 
   const colors = mainBarColors;
   const nationColors = nationBarColors;

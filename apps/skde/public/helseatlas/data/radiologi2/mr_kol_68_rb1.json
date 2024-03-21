@@ -69,11 +69,48 @@
       "format": ",.0f"
     },
     {
+      "type": "barchart",
+      "data": "datasett_3",
+      "x": [
+        "ratesnitt"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Andel kirurgi ett år etter undersøkelsen",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "rate2018",
+        "rate2019",
+        "rate2020",
+        "rate2021"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2018",
+          "2019",
+          "2020",
+          "2021"
+        ],
+        "en": [
+          "2018",
+          "2019",
+          "2020",
+          "2021"
+        ]
+      },
+      "format": ",.0%"
+    },
+    {
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall pr. 10  000 innbyggere 68 år eller eldre",
-        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall pr. 10  000 innbyggere 68 år eller eldre"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. <br>* Antall pr. 10  000 innbyggere 68 år eller eldre. Ratene er kjønns- og aldersjusterte. <br>** Andelene er basert på kjønns- og aldersjusterte rater. <br>*** Årlig andel kirurgi for perioden 2018-2021.",
+        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. <br>* Antall pr. 10  000 innbyggere 68 år eller eldre. Ratene er kjønns- og aldersjusterte. <br>** Andelene er basert på kjønns- og aldersjusterte rater. <br>*** Årlig andel kirurgi for perioden 2018-2021."
       },
       "columns": [
         {
@@ -85,8 +122,8 @@
         },
         {
           "id": "totsnitt",
-          "label_no": "Rate",
-          "label_en": "Rate",
+          "label_no": "Rate*",
+          "label_en": "Rate*",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -94,13 +131,6 @@
           "id": "tot_events",
           "label_no": "Undersøkelser",
           "label_en": "Examinations",
-          "typeVar": "number",
-          "format": ",.0f"
-        },
-        {
-          "id": "tot_pas",
-          "label_no": "Pasienter",
-          "label_en": "Patients",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -117,6 +147,20 @@
           "label_en": "Examinations per patient",
           "typeVar": "number",
           "format": ",.2f"
+        },
+        {
+          "id": "andel_priv",
+          "label_no": "Andel** privat",
+          "label_en": "Proportion in private",
+          "typeVar": "number",
+          "format": ",.0%"
+        },
+        {
+          "id": "andel_kir",
+          "label_no": "Andel** kirurgi***",
+          "label_en": "Proportion with operation**",
+          "typeVar": "number",
+          "format": ",.1%"
         }
       ]
     },
@@ -170,7 +214,9 @@
           "tot_events": 381.6,
           "tot_pas": 361.2,
           "tot_pop": 11337.6,
-          "tot_pr_pas": 1.05647840532
+          "tot_pr_pas": 1.05647840532,
+          "andel_priv": 0.0664790125926,
+          "andel_kir": 0.0553141661837
         },
         {
           "bohf": "UNN",
@@ -183,7 +229,9 @@
           "tot_events": 1193.2,
           "tot_pas": 1122.8,
           "tot_pop": 30205.2,
-          "tot_pr_pas": 1.06270039188
+          "tot_pr_pas": 1.06270039188,
+          "andel_priv": 0.737239691568,
+          "andel_kir": 0.0645561086541
         },
         {
           "bohf": "Nordland",
@@ -196,7 +244,9 @@
           "tot_events": 893.2,
           "tot_pas": 834.6,
           "tot_pop": 22691.4,
-          "tot_pr_pas": 1.07021327582
+          "tot_pr_pas": 1.07021327582,
+          "andel_priv": 0.686963061315,
+          "andel_kir": 0.0613290536678
         },
         {
           "bohf": "Helgeland",
@@ -209,7 +259,9 @@
           "tot_events": 564.8,
           "tot_pas": 531.8,
           "tot_pop": 13845.8,
-          "tot_pr_pas": 1.06205340354
+          "tot_pr_pas": 1.06205340354,
+          "andel_priv": 0.0268862221585,
+          "andel_kir": 0.0626797869756
         },
         {
           "bohf": "Nord-Trøndelag",
@@ -222,7 +274,9 @@
           "tot_events": 717.2,
           "tot_pas": 681.4,
           "tot_pop": 23056.2,
-          "tot_pr_pas": 1.05253889052
+          "tot_pr_pas": 1.05253889052,
+          "andel_priv": 0.196380700267,
+          "andel_kir": 0.0829238120048
         },
         {
           "bohf": "St. Olav",
@@ -235,7 +289,9 @@
           "tot_events": 1625.6,
           "tot_pas": 1537.8,
           "tot_pop": 45942.8,
-          "tot_pr_pas": 1.05709455066
+          "tot_pr_pas": 1.05709455066,
+          "andel_priv": 0.749560505685,
+          "andel_kir": 0.0863592125521
         },
         {
           "bohf": "Møre og Romsdal",
@@ -248,7 +304,9 @@
           "tot_events": 1604,
           "tot_pas": 1523,
           "tot_pop": 42897,
-          "tot_pr_pas": 1.05318450427
+          "tot_pr_pas": 1.05318450427,
+          "andel_priv": 0.328816203599,
+          "andel_kir": 0.0661359936785
         },
         {
           "bohf": "Førde",
@@ -261,7 +319,9 @@
           "tot_events": 521.8,
           "tot_pas": 496.6,
           "tot_pop": 18221.6,
-          "tot_pr_pas": 1.05074506645
+          "tot_pr_pas": 1.05074506645,
+          "andel_priv": 0.244265225279,
+          "andel_kir": 0.0787536151644
         },
         {
           "bohf": "Bergen",
@@ -274,7 +334,9 @@
           "tot_events": 2957.8,
           "tot_pas": 2776,
           "tot_pop": 61452.6,
-          "tot_pr_pas": 1.06548991354
+          "tot_pr_pas": 1.06548991354,
+          "andel_priv": 0.766456075357,
+          "andel_kir": 0.0654826536023
         },
         {
           "bohf": "Fonna",
@@ -287,7 +349,9 @@
           "tot_events": 1197,
           "tot_pas": 1129,
           "tot_pop": 27423.8,
-          "tot_pr_pas": 1.06023029229
+          "tot_pr_pas": 1.06023029229,
+          "andel_priv": 0.813215241662,
+          "andel_kir": 0.066992191518
         },
         {
           "bohf": "Stavanger",
@@ -300,7 +364,9 @@
           "tot_events": 1945.2,
           "tot_pas": 1820.2,
           "tot_pop": 42597.2,
-          "tot_pr_pas": 1.06867377211
+          "tot_pr_pas": 1.06867377211,
+          "andel_priv": 0.801595383201,
+          "andel_kir": 0.0807154990997
         },
         {
           "bohf": "Østfold",
@@ -313,7 +379,9 @@
           "tot_events": 2330.4,
           "tot_pas": 2187.6,
           "tot_pop": 50778.2,
-          "tot_pr_pas": 1.06527701591
+          "tot_pr_pas": 1.06527701591,
+          "andel_priv": 0.798000425613,
+          "andel_kir": 0.035103791641
         },
         {
           "bohf": "Akershus",
@@ -326,7 +394,9 @@
           "tot_events": 3491.8,
           "tot_pas": 3262.6,
           "tot_pop": 76679,
-          "tot_pr_pas": 1.07025072028
+          "tot_pr_pas": 1.07025072028,
+          "andel_priv": 0.785335838706,
+          "andel_kir": 0.0481693902795
         },
         {
           "bohf": "OUS",
@@ -339,7 +409,9 @@
           "tot_events": 1384.4,
           "tot_pas": 1240.6,
           "tot_pop": 28897,
-          "tot_pr_pas": 1.11591165565
+          "tot_pr_pas": 1.11591165565,
+          "andel_priv": 0.760855537857,
+          "andel_kir": 0.0519461871015
         },
         {
           "bohf": "Lovisenberg",
@@ -352,7 +424,9 @@
           "tot_events": 385.6,
           "tot_pas": 355.4,
           "tot_pop": 8811.4,
-          "tot_pr_pas": 1.08497467642
+          "tot_pr_pas": 1.08497467642,
+          "andel_priv": 0.770312930607,
+          "andel_kir": 0.0453644621325
         },
         {
           "bohf": "Diakonhjemmet",
@@ -365,7 +439,9 @@
           "tot_events": 1027.4,
           "tot_pas": 928,
           "tot_pop": 20174,
-          "tot_pr_pas": 1.10711206897
+          "tot_pr_pas": 1.10711206897,
+          "andel_priv": 0.744520684494,
+          "andel_kir": 0.045522012943
         },
         {
           "bohf": "Innlandet",
@@ -378,7 +454,9 @@
           "tot_events": 2607.6,
           "tot_pas": 2428.4,
           "tot_pop": 61461.8,
-          "tot_pr_pas": 1.07379344424
+          "tot_pr_pas": 1.07379344424,
+          "andel_priv": 0.67359388743,
+          "andel_kir": 0.0524900816546
         },
         {
           "bohf": "Vestre Viken",
@@ -391,7 +469,9 @@
           "tot_events": 2948.8,
           "tot_pas": 2763.2,
           "tot_pop": 72275.8,
-          "tot_pr_pas": 1.06716850029
+          "tot_pr_pas": 1.06716850029,
+          "andel_priv": 0.752132584764,
+          "andel_kir": 0.0643229103798
         },
         {
           "bohf": "Vestfold",
@@ -404,7 +484,9 @@
           "tot_events": 1841.8,
           "tot_pas": 1703.4,
           "tot_pop": 39869.8,
-          "tot_pr_pas": 1.08124926617
+          "tot_pr_pas": 1.08124926617,
+          "andel_priv": 0.88313309902,
+          "andel_kir": 0.0691713157678
         },
         {
           "bohf": "Telemark",
@@ -417,7 +499,9 @@
           "tot_events": 1252,
           "tot_pas": 1163.2,
           "tot_pop": 29919.6,
-          "tot_pr_pas": 1.07634112792
+          "tot_pr_pas": 1.07634112792,
+          "andel_priv": 0.731226563485,
+          "andel_kir": 0.0613166302629
         },
         {
           "bohf": "Sørlandet",
@@ -430,7 +514,9 @@
           "tot_events": 1536.4,
           "tot_pas": 1463.8,
           "tot_pop": 44427.6,
-          "tot_pr_pas": 1.04959693947
+          "tot_pr_pas": 1.04959693947,
+          "andel_priv": 0.801483203784,
+          "andel_kir": 0.0767531903468
         },
         {
           "bohf": "Norge",
@@ -443,7 +529,9 @@
           "tot_events": 32407.6,
           "tot_pas": 30310.6,
           "tot_pop": 772965.4,
-          "tot_pr_pas": 1.06918371791
+          "tot_pr_pas": 1.06918371791,
+          "andel_priv": 0.703944635924,
+          "andel_kir": 0.0616981177028
         }
       ]
     },
@@ -627,6 +715,233 @@
           "totsnitt": 418.143352679,
           "andel_priv": 0.703944635924,
           "ermann": null
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "datasett_3",
+      "description": "Ekstradatasettet for gitt resultatboks",
+      "data": [
+        {
+          "bohf": "Finnmark",
+          "ratesnitt": 0.0553141661837,
+          "antmr_snitt": 381.6,
+          "ant_kirsnitt": 20.75,
+          "rate2018": 0.0751902492299,
+          "rate2019": 0.0339196941353,
+          "rate2020": 0.059703571118,
+          "rate2021": 0.0587620858405
+        },
+        {
+          "bohf": "UNN",
+          "ratesnitt": 0.0645561086541,
+          "antmr_snitt": 1193.2,
+          "ant_kirsnitt": 76.5,
+          "rate2018": 0.0514569003175,
+          "rate2019": 0.0560526409867,
+          "rate2020": 0.0773758981086,
+          "rate2021": 0.0758691531659
+        },
+        {
+          "bohf": "Nordland",
+          "ratesnitt": 0.0613290536678,
+          "antmr_snitt": 893.2,
+          "ant_kirsnitt": 54,
+          "rate2018": 0.0691755772558,
+          "rate2019": 0.0445878478726,
+          "rate2020": 0.0638992642545,
+          "rate2021": 0.0711088873642
+        },
+        {
+          "bohf": "Helgeland",
+          "ratesnitt": 0.0626797869756,
+          "antmr_snitt": 564.8,
+          "ant_kirsnitt": 35,
+          "rate2018": 0.0441228329816,
+          "rate2019": 0.0601488810359,
+          "rate2020": 0.0689172722495,
+          "rate2021": 0.0788934498406
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "ratesnitt": 0.0829238120048,
+          "antmr_snitt": 717.2,
+          "ant_kirsnitt": 58.75,
+          "rate2018": 0.103581298,
+          "rate2019": 0.0624385495565,
+          "rate2020": 0.0816626672985,
+          "rate2021": 0.0809608442186
+        },
+        {
+          "bohf": "St. Olav",
+          "ratesnitt": 0.0863592125521,
+          "antmr_snitt": 1625.6,
+          "ant_kirsnitt": 138.5,
+          "rate2018": 0.0873651354062,
+          "rate2019": 0.0720335005689,
+          "rate2020": 0.0888473392196,
+          "rate2021": 0.093126378916
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "ratesnitt": 0.0661359936785,
+          "antmr_snitt": 1604,
+          "ant_kirsnitt": 104,
+          "rate2018": 0.0664848798198,
+          "rate2019": 0.0688901558726,
+          "rate2020": 0.0578793191985,
+          "rate2021": 0.0744360157357
+        },
+        {
+          "bohf": "Førde",
+          "ratesnitt": 0.0787536151644,
+          "antmr_snitt": 521.8,
+          "ant_kirsnitt": 40.25,
+          "rate2018": 0.0867156158068,
+          "rate2019": 0.0741255457215,
+          "rate2020": 0.0698955279754,
+          "rate2021": 0.0861629656702
+        },
+        {
+          "bohf": "Bergen",
+          "ratesnitt": 0.0654826536023,
+          "antmr_snitt": 2957.8,
+          "ant_kirsnitt": 190.75,
+          "rate2018": 0.0551283549544,
+          "rate2019": 0.0669559254376,
+          "rate2020": 0.075057125972,
+          "rate2021": 0.0652880236031
+        },
+        {
+          "bohf": "Fonna",
+          "ratesnitt": 0.066992191518,
+          "antmr_snitt": 1197,
+          "ant_kirsnitt": 79,
+          "rate2018": 0.0621012508739,
+          "rate2019": 0.0708087948264,
+          "rate2020": 0.0667822190488,
+          "rate2021": 0.0683921984675
+        },
+        {
+          "bohf": "Stavanger",
+          "ratesnitt": 0.0807154990997,
+          "antmr_snitt": 1945.2,
+          "ant_kirsnitt": 154.25,
+          "rate2018": 0.0944233200063,
+          "rate2019": 0.0731876724962,
+          "rate2020": 0.0924427651047,
+          "rate2021": 0.0641952102367
+        },
+        {
+          "bohf": "Østfold",
+          "ratesnitt": 0.035103791641,
+          "antmr_snitt": 2330.4,
+          "ant_kirsnitt": 80.75,
+          "rate2018": 0.0408250885453,
+          "rate2019": 0.0438734797163,
+          "rate2020": 0.0269969824368,
+          "rate2021": 0.0313406879541
+        },
+        {
+          "bohf": "Akershus",
+          "ratesnitt": 0.0481693902795,
+          "antmr_snitt": 3491.8,
+          "ant_kirsnitt": 166.75,
+          "rate2018": 0.0480631997524,
+          "rate2019": 0.0425351459116,
+          "rate2020": 0.0517491609873,
+          "rate2021": 0.0557845482556
+        },
+        {
+          "bohf": "OUS",
+          "ratesnitt": 0.0519461871015,
+          "antmr_snitt": 1384.4,
+          "ant_kirsnitt": 70.25,
+          "rate2018": 0.0537135810585,
+          "rate2019": 0.0529191167878,
+          "rate2020": 0.044974221368,
+          "rate2021": 0.0604970252365
+        },
+        {
+          "bohf": "Lovisenberg",
+          "ratesnitt": 0.0453644621325,
+          "antmr_snitt": 385.6,
+          "ant_kirsnitt": 17.5,
+          "rate2018": 0.0602148652512,
+          "rate2019": 0.0425913756172,
+          "rate2020": 0.0470585859555,
+          "rate2021": 0.0347016120705
+        },
+        {
+          "bohf": "Diakonhjemmet",
+          "ratesnitt": 0.045522012943,
+          "antmr_snitt": 1027.4,
+          "ant_kirsnitt": 45.75,
+          "rate2018": 0.0479144261633,
+          "rate2019": 0.0492966502094,
+          "rate2020": 0.0431812953725,
+          "rate2021": 0.0460650025144
+        },
+        {
+          "bohf": "Innlandet",
+          "ratesnitt": 0.0524900816546,
+          "antmr_snitt": 2607.6,
+          "ant_kirsnitt": 135,
+          "rate2018": 0.0604272919802,
+          "rate2019": 0.0501728469149,
+          "rate2020": 0.0493361619295,
+          "rate2021": 0.0577937465868
+        },
+        {
+          "bohf": "Vestre Viken",
+          "ratesnitt": 0.0643229103798,
+          "antmr_snitt": 2948.8,
+          "ant_kirsnitt": 186.5,
+          "rate2018": 0.0764454288514,
+          "rate2019": 0.0652547189733,
+          "rate2020": 0.0531793355969,
+          "rate2021": 0.0638233012076
+        },
+        {
+          "bohf": "Vestfold",
+          "ratesnitt": 0.0691713157678,
+          "antmr_snitt": 1841.8,
+          "ant_kirsnitt": 125.25,
+          "rate2018": 0.0743009092603,
+          "rate2019": 0.077302195226,
+          "rate2020": 0.0694509466092,
+          "rate2021": 0.0607776713739
+        },
+        {
+          "bohf": "Telemark",
+          "ratesnitt": 0.0613166302629,
+          "antmr_snitt": 1252,
+          "ant_kirsnitt": 75.75,
+          "rate2018": 0.0546452013875,
+          "rate2019": 0.0602819963332,
+          "rate2020": 0.0595270160714,
+          "rate2021": 0.0707433667385
+        },
+        {
+          "bohf": "Sørlandet",
+          "ratesnitt": 0.0767531903468,
+          "antmr_snitt": 1536.4,
+          "ant_kirsnitt": 116.25,
+          "rate2018": 0.0793602201034,
+          "rate2019": 0.0779606079867,
+          "rate2020": 0.0782760083043,
+          "rate2021": 0.0828677382841
+        },
+        {
+          "bohf": "Norge",
+          "ratesnitt": 0.0616981177028,
+          "antmr_snitt": 32407.6,
+          "ant_kirsnitt": 1971.5,
+          "rate2018": 0.0644164056769,
+          "rate2019": 0.0599974496302,
+          "rate2020": 0.0620112476997,
+          "rate2021": 0.063888952366
         }
       ]
     }

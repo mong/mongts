@@ -6,11 +6,12 @@
  * Replace the contents with what you copied
  */
 
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import mockRouter from "next-router-mock";
 
 import { Abacus } from "..";
 import { atlasData } from "../../../../test/test_data/data";
+import { vi, test, expect } from "vitest";
 
 vi.mock("next/router", () => require("next-router-mock"));
 
@@ -62,5 +63,28 @@ test("Render english with many picked HF", async () => {
       format=",.1f"
     />,
   );
+  expect(container).toMatchSnapshot();
+});
+
+test("Click on dots", async () => {
+  mockRouter.push("/test_atlas/");
+  const { container, getByTestId } = render(
+    <Abacus
+      data={atlasData}
+      lang="nb"
+      x="rateSnitt"
+      national="Norge"
+      format=",.1f"
+    />,
+  );
+  fireEvent.click(getByTestId("circle_Finnmark_unselected"));
+  expect(container).toMatchSnapshot();
+  expect(mockRouter.query).toEqual({ bohf: "Finnmark" });
+  fireEvent.click(getByTestId("circle_Finnmark_selected"));
+  expect(mockRouter.query).toEqual({ bohf: [] });
+  fireEvent.click(getByTestId("circle_OUS_unselected"));
+  fireEvent.click(getByTestId("circle_UNN_unselected"));
+  fireEvent.click(getByTestId("circle_Fonna_unselected"));
+  expect(mockRouter.query).toEqual({ bohf: ["OUS", "UNN", "Fonna"] });
   expect(container).toMatchSnapshot();
 });
