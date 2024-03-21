@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
 import TuneIcon from "@mui/icons-material/Tune";
@@ -5,7 +6,6 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import { imgLoader } from "qmongjs/src/helpers/functions";
-import { useState, useEffect } from "react";
 import {
   FilterSettingsAction,
   FilterSettingsValue,
@@ -255,7 +255,7 @@ export default function TreatmentQuality() {
                 medicalFieldFilter={selectedMedicalFields}
                 showLevelFilter={selectedLevel}
                 selection_bar_height={0}
-                legend_height={100}
+                legend_height={0}
                 blockTitle={registers.map((register) => register.full_name)}
               />
               <TreatmentQualityFooter />
