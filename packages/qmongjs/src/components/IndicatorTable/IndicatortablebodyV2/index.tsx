@@ -25,7 +25,6 @@ export type IndicatorTableBodyV2Props = {
   year: number;
   registers: string[];
   unitNames: string[];
-  width: number;
 };
 
 type DataPoint = {
@@ -198,7 +197,7 @@ const RegistrySection = (props: {
 export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   props,
 ) => {
-  const { context, type, year, registers, unitNames, width } = props;
+  const { context, type, year, registers, unitNames } = props;
 
   // Filtrering her?
   const queryParams: FetchIndicatorParams = {
