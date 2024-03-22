@@ -139,35 +139,19 @@ const IndicatorSection = (props: {
     const [open, setOpen] = React.useState(false);
 
     return (
-        <Table>
-          <TableBody>
-            <TableRow
-              onClick={() => setOpen(!open)}
-              style={{ cursor: "pointer" }}
-            >
-              <TableCell>{row.indicatorName}</TableCell>
+      <React.Fragment>
+        <TableRow onClick={() => setOpen(!open)} style={{ cursor: "pointer" }}>
+          <TableCell>{row.indicatorName}</TableCell>
+          <TableCellCollection
+            rowNames={row.data.map((row) => {
+              const format = row.format === null ? ",.0%" : row.format;
+              return customFormat(format)(row.var);
+            })}
+          />
+        </TableRow>
 
-              <TableCell align="right">
-                <IconButton aria-label="expand row" size="small">
-                  {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                </IconButton>
-              </TableCell>
-            </TableRow>
-            
-        <Collapse in={open} timeout="auto" unmountOnExit>
-              <TableRow>
-                <TableCell width={"50%"}>{row.shortDescription}</TableCell>
-                <TableCellCollection
-                  rowNames={row.data.map((row) => {
-                    const format = row.format === null ? ",.0%" : row.format;
-                    return customFormat(format)(row.var);
-                  })}
-                />
-              </TableRow>
- 
-        </Collapse>
-        </TableBody>
-        </Table>
+        <Collapse in={open} timeout="auto" unmountOnExit></Collapse>
+      </React.Fragment>
     );
   });
 };
@@ -179,21 +163,15 @@ const RegistrySection = (props: {
   const { unitNames, regData } = props;
 
   return (
-    <Table>
-      <TableHead>
-      <TableRow>
-        <TableCell width={"50%"}>{regData.registerName}</TableCell>
-        <TableCell>
+<React.Fragment>
+  <TableHead>
+        <TableRow>
+          <TableCell>{regData.registerName}</TableCell>
           <TableCellCollection rowNames={unitNames} />
-        </TableCell>
-      </TableRow>
-      </TableHead>
-      <TableRow>
-        <TableCell colSpan={unitNames.length + 1}>
+        </TableRow>
+        </TableHead>
       <IndicatorSection unitNames={unitNames} data={regData.data} />
-      </TableCell>
-      </TableRow>
-    </Table>
+      </React.Fragment>
   );
 };
 
@@ -201,7 +179,6 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   props,
 ) => {
   const { context, type, year, registers, unitNames, level, medfields } = props;
-
 
   const queryParams: FetchIndicatorParams = {
     context: context,
@@ -218,8 +195,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   }
 
   // Filtrering her?
-  const rowData = createData(indicatorQuery.data).filter((row) => true );
-
+  const rowData = createData(indicatorQuery.data).filter((row) => true);
 
   // Returnere tabell isteden?
   return (
@@ -229,7 +205,9 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
           <TableCell align={"left"}>{"Kvalitetsindikator"}</TableCell>
           <TableCell align={"right"}>{"Målnivå"}</TableCell>
         </TableRow>
-      </Table>
+        </Table>
+        <Table>
+
       {rowData.map((row) => (
         <RegistrySection
           key={row.registerName}
@@ -237,6 +215,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
           regData={row}
         />
       ))}
+      </Table>
     </TableContainer>
   );
 };
