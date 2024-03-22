@@ -25,6 +25,8 @@ export type IndicatorTableBodyV2Props = {
   year: number;
   registers: string[];
   unitNames: string[];
+  level: string;
+  medfields: string[];
 };
 
 type DataPoint = {
@@ -123,7 +125,7 @@ type TableCellCollectionProps = {
 
 const TableCellCollection: React.FC<TableCellCollectionProps> = (props) => {
   return props.rowNames.map((row) => {
-    return <TableCell align={"right"}>{row}</TableCell>;
+    return <TableCell align={"center"}>{row}</TableCell>;
   });
 };
 
@@ -137,42 +139,35 @@ const IndicatorSection = (props: {
     const [open, setOpen] = React.useState(false);
 
     return (
-      <React.Fragment>
-        <TableRow
-          sx={{ "& > *": { borderBottom: "unset" } }}
-          onClick={() => setOpen(!open)}
-          style={{ cursor: "pointer" }}
-        >
-          <TableCell colSpan={unitNames.length}>{row.indicatorName}</TableCell>
+        <Table>
+          <TableBody>
+            <TableRow
+              onClick={() => setOpen(!open)}
+              style={{ cursor: "pointer" }}
+            >
+              <TableCell>{row.indicatorName}</TableCell>
 
-          <TableCell align="right">
-            <IconButton aria-label="expand row" size="small">
-              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-            </IconButton>
-          </TableCell>
-        </TableRow>
-
-        <TableRow>
-          <TableCell
-            style={{ paddingBottom: 0, paddingTop: 0 }}
-            colSpan={unitNames.length + 1}
-          >
-            <Collapse in={open} timeout="auto" unmountOnExit>
-              <Box sx={{ margin: 1 }}>
-                <Table>
-                  <TableCell>{row.shortDescription}</TableCell>
-                  <TableCellCollection
-                    rowNames={row.data.map((row) => {
-                      const format = row.format === null ? ",.0%" : row.format;
-                      return customFormat(format)(row.var);
-                    })}
-                  />
-                </Table>
-              </Box>
-            </Collapse>
-          </TableCell>
-        </TableRow>
-      </React.Fragment>
+              <TableCell align="right">
+                <IconButton aria-label="expand row" size="small">
+                  {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                </IconButton>
+              </TableCell>
+            </TableRow>
+            
+        <Collapse in={open} timeout="auto" unmountOnExit>
+              <TableRow>
+                <TableCell width={"50%"}>{row.shortDescription}</TableCell>
+                <TableCellCollection
+                  rowNames={row.data.map((row) => {
+                    const format = row.format === null ? ",.0%" : row.format;
+                    return customFormat(format)(row.var);
+                  })}
+                />
+              </TableRow>
+ 
+        </Collapse>
+        </TableBody>
+        </Table>
     );
   });
 };
@@ -182,14 +177,22 @@ const RegistrySection = (props: {
   regData: RegisterData;
 }) => {
   const { unitNames, regData } = props;
-  console.log(regData);
+
   return (
     <Table>
+      <TableHead>
       <TableRow>
-        <TableCell>{regData.registerName}</TableCell>
-        <TableCellCollection rowNames={unitNames} />
+        <TableCell width={"50%"}>{regData.registerName}</TableCell>
+        <TableCell>
+          <TableCellCollection rowNames={unitNames} />
+        </TableCell>
       </TableRow>
+      </TableHead>
+      <TableRow>
+        <TableCell colSpan={unitNames.length + 1}>
       <IndicatorSection unitNames={unitNames} data={regData.data} />
+      </TableCell>
+      </TableRow>
     </Table>
   );
 };
@@ -197,9 +200,9 @@ const RegistrySection = (props: {
 export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   props,
 ) => {
-  const { context, type, year, registers, unitNames } = props;
+  const { context, type, year, registers, unitNames, level, medfields } = props;
 
-  // Filtrering her?
+
   const queryParams: FetchIndicatorParams = {
     context: context,
     treatmentYear: year,
@@ -214,7 +217,10 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
     return null;
   }
 
-  const rowData = createData(indicatorQuery.data);
+  // Filtrering her?
+  const rowData = createData(indicatorQuery.data).filter((row) => true );
+
+
   // Returnere tabell isteden?
   return (
     <TableContainer component={Paper}>

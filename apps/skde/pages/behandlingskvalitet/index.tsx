@@ -26,7 +26,6 @@ import {
 } from "../../src/components/TreatmentQuality";
 import TreatmentQualityFooter from "../../src/components/TreatmentQuality/TreatmentQualityFooter";
 import { ThemeProvider } from "@mui/material/styles";
-import IndicatorTable from "qmongjs/src/components/IndicatorTable";
 import { UseQueryResult } from "@tanstack/react-query";
 import { defaultYear } from "qmongjs/src/app_config";
 import {
@@ -252,8 +251,9 @@ export default function TreatmentQuality() {
                 registers={registers}
                 unitNames={selectedTreatmentUnits}
                 year={selectedYear}
-                type = {"ind"}
-                width = {800}
+                type={"ind"}
+                level={selectedLevel}
+                medfields={selectedMedicalFields}
               />
               <TreatmentQualityFooter />
             </>
