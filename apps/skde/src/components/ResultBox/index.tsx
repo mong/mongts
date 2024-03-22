@@ -81,7 +81,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
     return;
   }
 
-  const nationalName = boxData.filter((o) => o.type === "data")[0]["national"];
+  const nationalName = boxData.find((o) => o.type === "data")["national"];
 
   const dataCarousel = (
     <Carousel active={0} selection={selection} lang={lang}>
@@ -89,9 +89,9 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
         .map((bd, i) => {
           const figData: AtlasData[] =
             bd.type !== "data"
-              ? boxData.filter(
-                  (o) => o.type === "data" && o.label === bd.data,
-                )[0]["data"]
+              ? boxData.find((o) => o.type === "data" && o.label === bd.data)[
+                  "data"
+                ]
               : undefined;
           if (bd.type === "barchart") {
             return (
@@ -176,21 +176,17 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
             );
           }
 
-          return null;
+          return false;
         })
-        .filter((elm) => elm !== null)}
+        .filter(Boolean)}
     </Carousel>
   );
 
-  const abacusX: Exclude<keyof AtlasData, "year" | "bohf"> = boxData
-    .filter((boxd) => boxd.type === "map")
-    .map((boxd) => boxd.x)[0];
+  const abacusX: Exclude<keyof AtlasData, "year" | "bohf"> = boxData.find(
+    (boxd) => boxd.type === "map",
+  ).x;
 
-  const figData: AtlasData[] = boxData.filter((o) => o.type === "data")[0][
-    "data"
-  ];
-  const handleChange = (cb: React.Dispatch<React.SetStateAction<boolean>>) =>
-    cb((state) => !state);
+  const figData: AtlasData[] = boxData.find((o) => o.type === "data")["data"];
   return (
     <div
       id={id}
@@ -204,7 +200,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
           borderBottom: "3px solid #033F85",
         }}
         expanded={expandedResultBox}
-        onChange={() => handleChange(setExpandedResultBox)}
+        onChange={() => setExpandedResultBox(!expandedResultBox)}
       >
         <AccordionSummary
           aria-controls={`${id}-content`}
