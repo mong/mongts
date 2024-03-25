@@ -150,7 +150,6 @@ const IndicatorSection = (props: {
         
         <TableRow onClick={() => setOpen(!open)} style={{ cursor: "pointer" }}>
           <TableCell key={row.indicatorName}>{row.indicatorName}</TableCell>
-
           {rowNames.map((row2, index) => {
             return (
             <TableCell align={"center"} key={row.indicatorID + index}>
@@ -158,7 +157,6 @@ const IndicatorSection = (props: {
             </TableCell>
             )
           })}
-
         </TableRow>
 
         <TableRow sx={{ visibility: open ? "visible" : "collapse" }}>
@@ -167,6 +165,12 @@ const IndicatorSection = (props: {
           </TableCell>
           <TableCell key={row.indicatorName + "-targetLevel"} colSpan={unitNames.length} align="center">
             {"Ønsket målnivå: " + (row.targetMeasure === null ? "" : customFormat(",.0%")(row.targetMeasure))}
+          </TableCell>
+        </TableRow>
+
+        <TableRow sx={{ visibility: open ? "visible" : "collapse" }}>
+        <TableCell key={row.indicatorName + "-charts"} colSpan={unitNames.length + 1} align="center">
+            Charts
           </TableCell>
         </TableRow>
 
@@ -183,20 +187,25 @@ const RegistrySection = (props: {
 
   return (
     <React.Fragment>
-      <TableRow key={regData.registerName + "-row"}>
-        <TableCell key={regData.registerName}>{regData.registerName}</TableCell>
-        
-        {unitNames.map((row, index) => {
-          return(
-            <TableCell align="center" key={regData.registerName + index}>
-              {row}
-            </TableCell>
-          )
-        }
-        )}
+      <TableHead>
+        <TableRow key={regData.registerName + "-row"}>
+          <TableCell key={regData.registerName}>{regData.registerName}</TableCell>
+          
+          {unitNames.map((row, index) => {
+            return(
+              <TableCell align="center" key={regData.registerName + index}>
+                {row}
+              </TableCell>
+            )
+          }
+          )}
 
-      </TableRow>
-      <IndicatorSection unitNames={unitNames} data={regData.indicatorData} />
+        </TableRow>
+      </TableHead>
+
+      <TableBody>
+        <IndicatorSection unitNames={unitNames} data={regData.indicatorData} />
+      </TableBody>
     </React.Fragment>
   );
 };
@@ -227,22 +236,13 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   return (
     <TableContainer component={Paper}>
       <Table>
-        <TableBody>
-          <TableRow key={"header-row"}>
-            <TableCell width="30%" align="left" key="top-header1">Kvalitetsindikator</TableCell>
-            <TableCell colSpan={unitNames.length} align={"right"} key="top-header2">
-              Målnivå
-            </TableCell>
-          </TableRow>
-
-          {rowData.map((row) => (
-            <RegistrySection
-              key={row.registerName}
-              unitNames={unitNames}
-              regData={row}
-            />
-          ))}
-        </TableBody>
+        {rowData.map((row) => (
+          <RegistrySection
+            key={row.registerName}
+            unitNames={unitNames}
+            regData={row}
+          />
+        ))}
       </Table>
     </TableContainer>
   );
