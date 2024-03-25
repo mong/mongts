@@ -18,7 +18,6 @@ import { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
 import { customFormat, level } from "../../../helpers/functions";
-import { index } from "d3";
 
 export type IndicatorTableBodyV2Props = {
   context: string;
@@ -140,17 +139,40 @@ const IndicatorSection = (props: {
   return data.map((row) => {
     const [open, setOpen] = React.useState(false);
 
-     const rowNames = row.data.map((row) => {
+    const rowData = row.data.map((row) => {
       const format = row.format === null ? ",.0%" : row.format;
-      return customFormat(format)(row.var);
-    }) 
+      return({unitName: row.unitName, result: customFormat(format)(row.var) });
+    })
+
+    const rowDataSorted = unitNames.map((row) => {
+      return(rowData.find(item => item.unitName === row)?.result)
+    })
 
     return (
       <React.Fragment>
         
         <TableRow onClick={() => setOpen(!open)} style={{ cursor: "pointer" }}>
-          <TableCell key={row.indicatorName}>{row.indicatorName}</TableCell>
-          {rowNames.map((row2, index) => {
+          <TableCell key={row.indicatorName}>
+            <table>
+              <tr>
+                <td>
+                  <IconButton 
+                  onClick={() => setOpen(!open)} 
+                  aria-label="expand"
+                  size="small"
+                  > 
+                    {open ? <KeyboardArrowUpIcon /> 
+                        : <KeyboardArrowDownIcon />} 
+                  </IconButton> 
+                </td>
+                <td>
+                  {row.indicatorName}
+                </td>
+              </tr>
+            </table>
+            </TableCell>
+
+          {rowDataSorted.map((row2, index) => {
             return (
             <TableCell align={"center"} key={row.indicatorID + index}>
               {row2}
