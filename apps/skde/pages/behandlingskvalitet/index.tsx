@@ -161,15 +161,29 @@ export default function TreatmentQuality() {
         break;
       }
       case medicalFieldKey: {
-        let medicalFieldFilter =
-          newFilterSettings.map.get(medicalFieldKey)[0].value;
-        if (!medicalFieldFilter || medicalFieldFilter === "all") {
+        let medicalFieldFilter = newFilterSettings.map
+          .get(medicalFieldKey)
+          .map((value) => value.value);
+
+        if (!medicalFieldFilter || medicalFieldFilter[0] === "all") {
           setSelectedMedicalFields(registers.map((register) => register.rname));
         } else {
-          const selectedMedicalFields = medicalFields
-            .filter((field) => field.shortName === medicalFieldFilter)
-            .flatMap((field) => field.registers);
-          setSelectedMedicalFields(selectedMedicalFields);
+          const selectedMedicalFields = medicalFields.filter((field) =>
+            medicalFieldFilter.includes(field.shortName),
+          );
+          const selectedMedicalFieldNames = selectedMedicalFields.map(
+            (field) => field.shortName,
+          );
+          let selectedRegisters = medicalFieldFilter.filter(
+            (name) => !selectedMedicalFieldNames.includes(name),
+          );
+          selectedRegisters = Array.from(
+            new Set<string>([
+              ...selectedMedicalFields.flatMap((field) => field.registers),
+              ...selectedRegisters,
+            ]),
+          );
+          setSelectedMedicalFields(selectedRegisters);
         }
         break;
       }
@@ -236,6 +250,8 @@ export default function TreatmentQuality() {
                 <TreatmentQualityFilterMenu
                   onSelectionChanged={handleFilterChanged}
                   onFilterInitialized={handleFilterInitialized}
+                  registryNameData={registers}
+                  medicalFieldData={medicalFields}
                 />
               )}
             </Box>

@@ -20,15 +20,14 @@ import {
 } from "qmongjs";
 import {
   getAchievementLevelOptions,
+  getMedicalFields,
   getTreatmentUnitsTree,
   getYearOptions,
 } from "./filterMenuOptions";
-import {
-  useMedicalFieldsQuery,
-  useUnitNamesQuery,
-} from "../../../helpers/hooks";
+import { useUnitNamesQuery } from "../../../helpers/hooks";
 import Alert from "@mui/material/Alert";
 import { UseQueryResult } from "@tanstack/react-query";
+import { TreeViewFilterSectionNode } from "../TreeViewFilterSection";
 
 // The keys used for the different filter sections
 export const yearKey = "year";
@@ -43,6 +42,10 @@ export const treatmentUnitsKey = "selected_treatment_units";
 export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   onSelectionChanged?: FilterMenuSelectionChangedHandler;
   onFilterInitialized?: FilterMenuFilterInitializedHandler;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  registryNameData: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  medicalFieldData: any;
 }>;
 
 // Types used due to the use of useQueryParam
@@ -58,7 +61,7 @@ type UndefinedOrArrayOfStringOrNull = (string | null)[] | undefined;
  * setSectionSelections().
  */
 type OptionsMapEntry = {
-  options: FilterSettingsValue[];
+  options: FilterSettingsValue[] | TreeViewFilterSectionNode[];
   default: FilterSettingsValue;
   multiselect: boolean;
   selected: StringNullOrUndefined | UndefinedOrArrayOfStringOrNull;
@@ -76,6 +79,8 @@ type OptionsMapEntry = {
 export function TreatmentQualityFilterMenu({
   onSelectionChanged,
   onFilterInitialized: onFilterInitialized,
+  registryNameData: registryNameData,
+  medicalFieldData: medicalFieldData,
 }: TreatmentQualityFilterMenuProps) {
   const selectedRegister = "all";
   const queryContext = { context: "caregiver", type: "ind" };
@@ -131,38 +136,19 @@ export function TreatmentQualityFilterMenu({
   });
 
   // Medical fields
-  const medicalFieldsQuery = useMedicalFieldsQuery();
+  const medicalFields = getMedicalFields(medicalFieldData, registryNameData);
 
-  let medicalFields: FilterSettingsValue[];
-  if (!medicalFieldsQuery.isLoading && !medicalFieldsQuery.isError) {
-    medicalFields = medicalFieldsQuery.data.map(
-      (field: { shortName?: string; name?: string; registers?: string[] }) => ({
-        value: field.shortName,
-        valueLabel: field.name,
-      }),
-    );
-  } else {
-    medicalFields = [];
-  }
-
-  medicalFields.unshift({ value: "all", valueLabel: "Alle fagområder" });
-
-  const medicalFieldOptions = {
-    values: medicalFields,
-    default: medicalFields[0],
-  };
-
-  const [selectedMedicalField, setSelectedMedicalField] = useQueryParam<string>(
+  const [selectedMedicalFields, setSelectedMedicalFields] = useQueryParam(
     medicalFieldKey,
-    withDefault(StringParam, medicalFieldOptions.default.value),
+    withDefault(DelimitedArrayParam, [medicalFields.defaults[0].value]),
   );
 
   optionsMap.set(medicalFieldKey, {
-    options: medicalFields,
-    default: medicalFields[0],
-    multiselect: false,
-    selected: selectedMedicalField,
-    setSelected: setSelectedMedicalField as SetSelectedType,
+    options: medicalFields.treedata,
+    default: medicalFields.defaults[0],
+    multiselect: true,
+    selected: selectedMedicalFields,
+    setSelected: setSelectedMedicalFields as SetSelectedType,
   });
 
   // Treatment units
@@ -260,10 +246,6 @@ export function TreatmentQualityFilterMenu({
         findAndAddValue(value, achievementLevelOptions.values, result);
         break;
       }
-      case medicalFieldKey: {
-        findAndAddValue(value, medicalFieldOptions.values, result);
-        break;
-      }
       default:
         break;
     }
@@ -273,9 +255,9 @@ export function TreatmentQualityFilterMenu({
 
   return (
     <>
-      {medicalFieldsQuery.isError && (
+      {!(medicalFieldData || registryNameData) && (
         <Alert severity="error">
-          Det oppstod en feil ved henting av fagområder!
+          Det oppstod en feil ved henting av fagområder og registre!
         </Alert>
       )}
       <FilterMenu
@@ -310,15 +292,18 @@ export function TreatmentQualityFilterMenu({
           sectionid={levelKey}
           filterkey={levelKey}
         />
-        <RadioGroupFilterSection
-          radios={medicalFieldOptions.values}
-          defaultvalues={[medicalFieldOptions.default]}
-          initialselections={getFilterSettingsValue(
-            medicalFieldKey,
-            selectedMedicalField,
-          )}
-          sectiontitle={"Fagområder"}
+        <TreeViewFilterSection
+          refreshState={shouldRefreshInititalState}
+          treedata={medicalFields.treedata}
+          defaultvalues={medicalFields.defaults}
+          initialselections={
+            selectedMedicalFields.map((value) => ({
+              value: value,
+              valueLabel: value,
+            })) as FilterSettingsValue[]
+          }
           sectionid={medicalFieldKey}
+          sectiontitle="Fagområder"
           filterkey={medicalFieldKey}
         />
         <TreeViewFilterSection
