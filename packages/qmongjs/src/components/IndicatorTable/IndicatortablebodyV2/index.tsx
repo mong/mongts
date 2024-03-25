@@ -51,7 +51,7 @@ type RegisterData = {
   registerName: string;
   registerID: number;
   medfieldID: number;
-  data: IndicatorData[];
+  indicatorData: IndicatorData[];
 };
 
 // Find the index of the array element where the indicator ID is equal to the input string
@@ -77,39 +77,50 @@ const createData = (indicatorData: Indicator[]) => {
           registerName: row.registry_full_name,
           registerID: row.registry_id,
           medfieldID: row.medfield_id,
-          data: [] as IndicatorData[],
+          indicatorData: [] as IndicatorData[],
         };
       }
 
       // Add indicator to register and initialise if not already there
       if (
-        !returnData[i].data
+        !returnData[i].indicatorData
           .map((row) => {
             return row.indicatorID;
           })
           .includes(row.ind_id)
       ) {
-        returnData[i].data.push({
+        returnData[i].indicatorData.push({
           indicatorID: row.ind_id,
           indicatorName: row.ind_title,
           targetMeasure: row.level_green,
           shortDescription: row.ind_short_description,
           longDescription: row.ind_long_description,
           sortingName: row.ind_name,
-
           data: [] as DataPoint[],
         });
       }
 
       // Add data to indicator
-      const j = searchArray(returnData[i].data, row.ind_id);
-      returnData[i].data[j].data.push({
-        unitName: row.unit_name,
-        var: row.var,
-        numerator: Math.round(row.var * row.denominator),
-        denominator: row.denominator,
-        format: row.sformat,
-      });
+      const j = searchArray(returnData[i].indicatorData, row.ind_id);
+
+      if (  
+        // The same regstry can belong to different medfields
+        // If so, the unit will appear more than once
+        // We therefore need to check if it is already there
+        !returnData[i].indicatorData[j].data
+          .map((row) => {
+            return row.unitName;
+          })
+          .includes(row.unit_name)
+      ) {
+        returnData[i].indicatorData[j].data.push({
+          unitName: row.unit_name,
+          var: row.var,
+          numerator: Math.round(row.var * row.denominator),
+          denominator: row.denominator,
+          format: row.sformat,
+        });
+      }
 
       return returnData;
     },
@@ -121,11 +132,16 @@ const createData = (indicatorData: Indicator[]) => {
 
 type TableCellCollectionProps = {
   rowNames: string[] | number[];
+  keyPrefix: string;
 };
 
 const TableCellCollection: React.FC<TableCellCollectionProps> = (props) => {
   return props.rowNames.map((row) => {
-    return <TableCell align={"center"}>{row}</TableCell>;
+    return (
+      <TableCell key={props.keyPrefix + row} align={"center"}>
+        {row}
+      </TableCell>
+    );
   });
 };
 
@@ -147,10 +163,14 @@ const IndicatorSection = (props: {
               const format = row.format === null ? ",.0%" : row.format;
               return customFormat(format)(row.var);
             })}
+            keyPrefix={row.indicatorID}
           />
         </TableRow>
-
-        <Collapse in={open} timeout="auto" unmountOnExit></Collapse>
+        <TableRow sx={{ visibility: open ? "visible" : "collapse" }}>
+          <TableCell colSpan={unitNames.length + 1}>
+            {row.shortDescription}
+          </TableCell>
+        </TableRow>
       </React.Fragment>
     );
   });
@@ -163,15 +183,16 @@ const RegistrySection = (props: {
   const { unitNames, regData } = props;
 
   return (
-<React.Fragment>
-  <TableHead>
-        <TableRow>
-          <TableCell>{regData.registerName}</TableCell>
-          <TableCellCollection rowNames={unitNames} />
-        </TableRow>
-        </TableHead>
-      <IndicatorSection unitNames={unitNames} data={regData.data} />
-      </React.Fragment>
+    <React.Fragment>
+      <TableRow>
+        <TableCell>{regData.registerName}</TableCell>
+        <TableCellCollection
+          rowNames={unitNames}
+          keyPrefix={regData.registerName}
+        />
+      </TableRow>
+      <IndicatorSection unitNames={unitNames} data={regData.indicatorData} />
+    </React.Fragment>
   );
 };
 
@@ -201,20 +222,22 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   return (
     <TableContainer component={Paper}>
       <Table>
-        <TableRow>
-          <TableCell align={"left"}>{"Kvalitetsindikator"}</TableCell>
-          <TableCell align={"right"}>{"Målnivå"}</TableCell>
-        </TableRow>
-        </Table>
-        <Table>
+        <TableBody>
+          <TableRow>
+            <TableCell align={"left"}>{"Kvalitetsindikator"}</TableCell>
+            <TableCell colSpan={unitNames.length} align={"right"}>
+              {"Målnivå"}
+            </TableCell>
+          </TableRow>
 
-      {rowData.map((row) => (
-        <RegistrySection
-          key={row.registerName}
-          unitNames={unitNames}
-          regData={row}
-        />
-      ))}
+          {rowData.map((row) => (
+            <RegistrySection
+              key={row.registerName}
+              unitNames={unitNames}
+              regData={row}
+            />
+          ))}
+        </TableBody>
       </Table>
     </TableContainer>
   );
