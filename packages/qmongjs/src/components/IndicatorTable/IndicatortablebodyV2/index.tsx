@@ -253,7 +253,7 @@ const RegistrySection = (props: {
 export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   props,
 ) => {
-  const {context, type, year, unitNames, level, medfields,} = props;
+  const { context, type, year, unitNames, level, medfields } = props;
 
   const queryParams: FetchIndicatorParams = {
     context: context,
@@ -261,7 +261,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
     unitNames: unitNames,
     type: type,
   };
- 
+
   const indicatorQuery: UseQueryResult<any, unknown> =
     useIndicatorQuery(queryParams);
 
@@ -271,9 +271,8 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
 
   const rowData = createData(indicatorQuery.data);
 
-
   const rowDataFiltered = rowData.filter((row) => {
-    return(medfields.includes(row.registerShortName))
+    return medfields.includes(row.registerShortName);
   });
 
   return (
