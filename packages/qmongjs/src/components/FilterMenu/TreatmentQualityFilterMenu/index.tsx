@@ -297,6 +297,7 @@ export function TreatmentQualityFilterMenu({
           refreshState={shouldRefreshInititalState}
           treedata={medicalFields.treedata}
           defaultvalues={medicalFields.defaults}
+          autoUncheckId={medicalFields.defaults[0].value}
           initialselections={
             selectedMedicalFields.map((value) => ({
               value: value,
