@@ -98,7 +98,7 @@ const createData = (indicatorData: Indicator[]) => {
       const j = searchArray(returnData[i].indicatorData, row.ind_id);
 
       if (
-        // The same regstry can belong to different medfields
+        // The same registry can belong to different medfields
         // If so, the unit will appear more than once
         // We therefore need to check if it is already there
         !returnData[i].indicatorData[j].data
@@ -252,13 +252,12 @@ const RegistrySection = (props: {
 export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   props,
 ) => {
-  const { context, type, year, registers, unitNames, level, medfields } = props;
 
   const queryParams: FetchIndicatorParams = {
-    context: context,
-    treatmentYear: year,
-    unitNames: unitNames,
-    type: type,
+    context: props.context,
+    treatmentYear: props.year,
+    unitNames: props.unitNames,
+    type: props.type,
   };
 
   const indicatorQuery: UseQueryResult<any, unknown> =
@@ -268,15 +267,14 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
     return null;
   }
 
-  // Filtrering her?
-  const rowData = createData(indicatorQuery.data).filter((row) => true);
+  const rowData = createData(indicatorQuery.data);
 
   return (
     <Table>
       {rowData.map((row) => (
         <RegistrySection
           key={row.registerName}
-          unitNames={unitNames}
+          unitNames={props.unitNames}
           regData={row}
         />
       ))}
