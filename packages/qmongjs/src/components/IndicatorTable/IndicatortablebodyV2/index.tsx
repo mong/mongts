@@ -258,7 +258,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
     unitNames: props.unitNames,
     type: props.type,
   };
-  console.log(props)
+ 
   const indicatorQuery: UseQueryResult<any, unknown> =
     useIndicatorQuery(queryParams);
 
@@ -267,7 +267,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   }
 
   const rowData = createData(indicatorQuery.data);
-  console.log(rowData)
+
   return (
     <Table>
       {rowData.map((row) => (
