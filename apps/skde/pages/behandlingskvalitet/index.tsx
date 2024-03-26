@@ -26,7 +26,6 @@ import {
 } from "../../src/components/TreatmentQuality";
 import TreatmentQualityFooter from "../../src/components/TreatmentQuality/TreatmentQualityFooter";
 import { ThemeProvider } from "@mui/material/styles";
-import IndicatorTable from "qmongjs/src/components/IndicatorTable";
 import { UseQueryResult } from "@tanstack/react-query";
 import { defaultYear } from "qmongjs/src/app_config";
 import {
@@ -36,6 +35,7 @@ import {
   medicalFieldKey,
 } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu";
 import { useMedicalFieldsQuery } from "qmongjs/src/helpers/hooks";
+import { IndicatorTableBodyV2 } from "qmongjs/src/components/IndicatorTable/IndicatortablebodyV2";
 
 /**
  * Treatment quality page (Behandlingskvalitet)
@@ -271,19 +271,14 @@ export default function TreatmentQuality() {
         <MainBox>
           {queriesReady && (
             <>
-              <IndicatorTable
+              <IndicatorTableBodyV2
                 key="indicator-table"
                 context={"caregiver"}
-                tableType="allRegistries"
-                registerNames={registers}
                 unitNames={selectedTreatmentUnits}
-                treatmentYear={selectedYear}
-                colspan={selectedTreatmentUnits.length + 1}
-                medicalFieldFilter={selectedMedicalFields}
-                showLevelFilter={selectedLevel}
-                selection_bar_height={0}
-                legend_height={0}
-                blockTitle={registers.map((register) => register.full_name)}
+                year={selectedYear}
+                type={"ind"}
+                level={selectedLevel}
+                medfields={selectedMedicalFields}
               />
               <TreatmentQualityFooter />
             </>
