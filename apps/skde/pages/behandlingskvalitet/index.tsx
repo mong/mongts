@@ -108,6 +108,38 @@ export default function TreatmentQuality() {
   const medicalFields = medicalFieldsQuery?.data;
 
   /**
+   * Get the register names for the selected medical fields and registers
+   *
+   * @param medicalFieldFilter Array of medical field and register names
+   * @returns Array of register names
+   */
+  const getMedicalFieldFilterRegisters = (medicalFieldFilter: string[]) => {
+    let registerFilter: string[];
+
+    if (!medicalFieldFilter || medicalFieldFilter[0] === "all") {
+      registerFilter = registers.map((register) => register.rname);
+    } else {
+      const selectedMedicalFields = medicalFields.filter((field) =>
+        medicalFieldFilter.includes(field.shortName),
+      );
+      const selectedMedicalFieldNames = selectedMedicalFields.map(
+        (field) => field.shortName,
+      );
+      let selectedRegisters = medicalFieldFilter.filter(
+        (name) => !selectedMedicalFieldNames.includes(name),
+      );
+      registerFilter = Array.from(
+        new Set<string>([
+          ...selectedMedicalFields.flatMap((field) => field.registers),
+          ...selectedRegisters,
+        ]),
+      );
+    }
+
+    return registerFilter;
+  };
+
+  /**
    * Handle that the initial filter settings are loaded, which can happen
    * more than once due to Next's pre-rendering and hydration behaviour combined
    * with reading of query params.
@@ -122,15 +154,12 @@ export default function TreatmentQuality() {
     );
     setSelectedLevel(filterSettings.get(levelKey)[0].value ?? undefined);
 
-    let medicalFieldFilter = filterSettings.get(medicalFieldKey)[0].value;
-    if (!medicalFieldFilter || medicalFieldFilter === "all") {
-      setSelectedMedicalFields(registers.map((register) => register.rname));
-    } else {
-      const selectedMedicalFields = medicalFields
-        .filter((field) => field.shortName === medicalFieldFilter)
-        .flatMap((field) => field.registers);
-      setSelectedMedicalFields(selectedMedicalFields);
-    }
+    const medicalFieldFilter = filterSettings
+      .get(medicalFieldKey)
+      .map((value) => value.value);
+    const registerFilter = getMedicalFieldFilterRegisters(medicalFieldFilter);
+    setSelectedMedicalFields(registerFilter);
+
     setSelectedTreatmentUnits(
       filterSettings.get(treatmentUnitsKey).map((value) => value.value),
     );
@@ -161,16 +190,12 @@ export default function TreatmentQuality() {
         break;
       }
       case medicalFieldKey: {
-        let medicalFieldFilter =
-          newFilterSettings.map.get(medicalFieldKey)[0].value;
-        if (!medicalFieldFilter || medicalFieldFilter === "all") {
-          setSelectedMedicalFields(registers.map((register) => register.rname));
-        } else {
-          const selectedMedicalFields = medicalFields
-            .filter((field) => field.shortName === medicalFieldFilter)
-            .flatMap((field) => field.registers);
-          setSelectedMedicalFields(selectedMedicalFields);
-        }
+        const medicalFieldFilter = newFilterSettings.map
+          .get(medicalFieldKey)
+          .map((value) => value.value);
+        const registerFilter =
+          getMedicalFieldFilterRegisters(medicalFieldFilter);
+        setSelectedMedicalFields(registerFilter);
         break;
       }
       case treatmentUnitsKey: {
@@ -236,6 +261,8 @@ export default function TreatmentQuality() {
                 <TreatmentQualityFilterMenu
                   onSelectionChanged={handleFilterChanged}
                   onFilterInitialized={handleFilterInitialized}
+                  registryNameData={registers}
+                  medicalFieldData={medicalFields}
                 />
               )}
             </Box>

@@ -1,6 +1,7 @@
 import { FilterSettingsValue } from "../FilterSettingsContext";
 import { maxYear, minYear, defaultYear, app_text } from "../../../app_config";
 import { UseQueryResult } from "@tanstack/react-query";
+import { TreeViewFilterSectionNode } from "../TreeViewFilterSection";
 
 /** Maximum allowed number of selected treatment units */
 export const maxSelectedTreatmentUnits = () => {
@@ -60,6 +61,7 @@ export const getAchievementLevelOptions = (): {
  * @returns
  */
 export const getTreatmentUnitsTree = (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   unitNamesQuery: UseQueryResult<any, unknown>,
 ) => {
   const unitnames = unitNamesQuery.data?.nestedUnitNames;
@@ -75,18 +77,21 @@ export const getTreatmentUnitsTree = (
     defaults: [{ value: "Nasjonalt", valueLabel: "Nasjonalt" }],
     treedata: [
       { nodeValue: { value: "Nasjonalt", valueLabel: "Nasjonalt" } },
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ...unitnames.map((unit: any) => {
         return {
           nodeValue: {
             value: unit.rhf,
             valueLabel: unit.rhf,
           },
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           children: unit.hf.map((hf: any) => {
             return {
               nodeValue: {
                 value: hf.hf,
                 valueLabel: hf.hf_full,
               },
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               children: hf.hospital.map((hospital: any) => {
                 return {
                   nodeValue: {
@@ -99,6 +104,48 @@ export const getTreatmentUnitsTree = (
           }),
         };
       }),
-    ],
+    ] as TreeViewFilterSectionNode[],
   };
+};
+
+/**
+ * Gets the medical field options available for selection
+ *
+ * @returns The tree structure with medical field options and the default value
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getMedicalFields = (medicalFieldData: any, registryData: any) => {
+  let medicalFields: TreeViewFilterSectionNode[];
+  if (medicalFieldData && registryData) {
+    medicalFields = medicalFieldData.map(
+      (field: { shortName?: string; name?: string; registers?: string[] }) => ({
+        nodeValue: {
+          value: field.shortName,
+          valueLabel: field.name,
+        },
+        children: field.registers?.map((register: string) => ({
+          nodeValue: {
+            value: register,
+            valueLabel:
+              registryData.find(
+                (reg: { rname: string }) => reg.rname === register,
+              )?.full_name ?? register,
+          },
+        })),
+      }),
+    );
+  } else {
+    medicalFields = [];
+  }
+
+  medicalFields.unshift({
+    nodeValue: { value: "all", valueLabel: "Alle fagområder" },
+  });
+
+  const medicalFieldOptions = {
+    treedata: medicalFields,
+    defaults: [medicalFields[0].nodeValue],
+  };
+
+  return medicalFieldOptions;
 };
