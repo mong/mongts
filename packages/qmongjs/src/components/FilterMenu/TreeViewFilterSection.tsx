@@ -252,12 +252,14 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
           return;
         } else {
           let selectedIdsFiltered = selectedIds;
-          if (autoUncheckId) {
+          if (autoUncheckId && nodeId !== autoUncheckId) {
             selectedIdsFiltered = selectedIds.filter(
               (id) => id !== autoUncheckId,
             );
+            updatedSelectedIds = [...selectedIdsFiltered, nodeId];
+          } else if (nodeId === autoUncheckId) {
+            updatedSelectedIds = [nodeId];
           }
-          updatedSelectedIds = [...selectedIdsFiltered, nodeId];
         }
       } else {
         updatedSelectedIds = [nodeId];
