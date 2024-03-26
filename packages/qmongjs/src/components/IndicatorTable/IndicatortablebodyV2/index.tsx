@@ -1,23 +1,17 @@
 import React from "react";
-import { RegisterName } from "types";
-import { NoDataAvailible } from "../ContenForEmptyTable";
-import Box from "@mui/material/Box";
-import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Indicator } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
-import { customFormat, level } from "../../../helpers/functions";
+import { customFormat } from "../../../helpers/functions";
 
 export type IndicatorTableBodyV2Props = {
   context: string;
@@ -136,10 +130,11 @@ const IndicatorSection = (props: {
 }) => {
   const { unitNames, data } = props;
 
-  return data.map((row) => {
+  // Map indicators to rows
+  return data.map((indDataRow) => {
     const [open, setOpen] = React.useState(false);
 
-    const rowData = row.data.map((row) => {
+    const rowData = indDataRow.data.map((row) => {
       const format = row.format === null ? ",.0%" : row.format;
       return({unitName: row.unitName, result: customFormat(format)(row.var) });
     })
@@ -149,11 +144,12 @@ const IndicatorSection = (props: {
     })
 
     return (
-      <React.Fragment>
+      <React.Fragment key={indDataRow.indicatorName}>
         
-        <TableRow onClick={() => setOpen(!open)} style={{ cursor: "pointer" }}>
-          <TableCell key={row.indicatorName}>
+        <TableRow key={indDataRow.indicatorName + "-mainrow"} onClick={() => setOpen(!open)} style={{ cursor: "pointer" }}>
+          <TableCell key={indDataRow.indicatorName}>
             <table>
+              <tbody>
               <tr>
                 <td>
                   <IconButton 
@@ -166,32 +162,33 @@ const IndicatorSection = (props: {
                   </IconButton> 
                 </td>
                 <td>
-                  {row.indicatorName}
+                  {indDataRow.indicatorName}
                 </td>
               </tr>
+              </tbody>
             </table>
             </TableCell>
 
-          {rowDataSorted.map((row2, index) => {
+          {rowDataSorted.map((row, index) => {
             return (
-            <TableCell align={"center"} key={row.indicatorID + index}>
-              {row2}
+            <TableCell align={"center"} key={indDataRow.indicatorID + index}>
+              {row}
             </TableCell>
             )
           })}
         </TableRow>
 
-        <TableRow sx={{ visibility: open ? "visible" : "collapse" }}>
-          <TableCell key={row.indicatorName + "-shortDescription"}>
-            {row.shortDescription}
+        <TableRow key={indDataRow.indicatorName + "-collapse"} sx={{ visibility: open ? "visible" : "collapse" }}>
+          <TableCell key={indDataRow.indicatorName + "-shortDescription"}>
+            {indDataRow.shortDescription}
           </TableCell>
-          <TableCell key={row.indicatorName + "-targetLevel"} colSpan={unitNames.length} align="center">
-            {"Ønsket målnivå: " + (row.targetMeasure === null ? "" : customFormat(",.0%")(row.targetMeasure))}
+          <TableCell key={indDataRow.indicatorName + "-targetLevel"} colSpan={unitNames.length} align="center">
+            {"Ønsket målnivå: " + (indDataRow.targetMeasure === null ? "" : customFormat(",.0%")(indDataRow.targetMeasure))}
           </TableCell>
         </TableRow>
 
-        <TableRow sx={{ visibility: open ? "visible" : "collapse" }}>
-        <TableCell key={row.indicatorName + "-charts"} colSpan={unitNames.length + 1} align="center">
+        <TableRow key={indDataRow.indicatorName + "-charts"} sx={{ visibility: open ? "visible" : "collapse" }}>
+        <TableCell key={indDataRow.indicatorName + "-charts"} colSpan={unitNames.length + 1} align="center">
             Charts
           </TableCell>
         </TableRow>
@@ -254,9 +251,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   // Filtrering her?
   const rowData = createData(indicatorQuery.data).filter((row) => true);
 
-  // Returnere tabell isteden?
   return (
-    <TableContainer component={Paper}>
       <Table>
         {rowData.map((row) => (
           <RegistrySection
@@ -266,6 +261,5 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
           />
         ))}
       </Table>
-    </TableContainer>
   );
 };
