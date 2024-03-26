@@ -37,12 +37,15 @@ export type TreeViewFilterSettingsValue = FilterSettingsValue & {
  * treeData prop, which is an array of TreeViewFilterSectionNode objects
  * representing the tree structure of the filter options. Also accepts the
  * multiselect prop, which is a boolean that determines whether the filter
- * is single or multi-select.
+ * is single or multi-select. If an autoUncheckedId is provided, e.g., "all",
+ * the component will automatically uncheck this node when another node is
+ * checked.
  */
 export type TreeViewSectionProps = FilterMenuSectionProps & {
   multiselect?: boolean;
   maxselections?: number;
   treedata: TreeViewFilterSectionNode[];
+  autouncheckid?: string;
 };
 
 /**
@@ -60,6 +63,7 @@ const buildTreeLevel = (
   filterKey: string,
   handleCheckboxChange: (checked: boolean, value: string) => void,
   toggleExpand: (value: string) => void,
+  autoUncheckId?: string,
 ) => {
   return treeData.map((node) => {
     return (
@@ -68,6 +72,7 @@ const buildTreeLevel = (
         filterKey={filterKey}
         labeledValue={node.nodeValue}
         selectedIds={selectedIds}
+        autoUncheckId={autoUncheckId}
         handleCheckboxChange={handleCheckboxChange}
         toggleExpand={toggleExpand}
       >
@@ -78,6 +83,7 @@ const buildTreeLevel = (
             filterKey,
             handleCheckboxChange,
             toggleExpand,
+            autoUncheckId,
           )}
       </TreeViewFilterSectionItem>
     );
@@ -106,6 +112,7 @@ export const buildTreeView = (
         props.filterkey,
         handleCheckboxChange,
         toggleExpand,
+        props.autouncheckid,
       )}
     </>
   );
@@ -231,7 +238,11 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
   /**
    * A for updating the selected nodes in the filter settings state
    */
-  const handleCheckboxClick = (checked: boolean, nodeId: string) => {
+  const handleCheckboxClick = (
+    checked: boolean,
+    nodeId: string,
+    autoUncheckId?: string,
+  ) => {
     let updatedSelectedIds = selectedIds;
 
     if (checked) {
@@ -240,7 +251,17 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
           setMaxSelectionAlert(true);
           return;
         } else {
-          updatedSelectedIds = [...selectedIds, nodeId];
+          let selectedIdsFiltered = selectedIds;
+          if (autoUncheckId && nodeId !== autoUncheckId) {
+            selectedIdsFiltered = selectedIds.filter(
+              (id) => id !== autoUncheckId,
+            );
+            updatedSelectedIds = [...selectedIdsFiltered, nodeId];
+          } else if (nodeId === autoUncheckId) {
+            updatedSelectedIds = [nodeId];
+          } else {
+            updatedSelectedIds = [...selectedIds, nodeId];
+          }
         }
       } else {
         updatedSelectedIds = [nodeId];

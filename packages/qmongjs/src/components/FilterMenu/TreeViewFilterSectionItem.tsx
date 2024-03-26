@@ -13,8 +13,13 @@ type TreeViewFilterSectionItemProps = PropsWithChildren<{
   filterKey: string;
   labeledValue: FilterSettingsValue;
   selectedIds: string[];
-  handleCheckboxChange: (checked: boolean, value: string) => void;
+  handleCheckboxChange: (
+    checked: boolean,
+    value: string,
+    autoUncheckId?: string,
+  ) => void;
   toggleExpand: (value: string) => void;
+  autoUncheckId?: string;
 }>;
 
 /**
@@ -35,6 +40,7 @@ export const TreeViewFilterSectionItem = (
     selectedIds,
     handleCheckboxChange,
     toggleExpand,
+    autoUncheckId,
   } = props;
   const isSelected = selectedIds.includes(labeledValue.value);
 
@@ -51,7 +57,11 @@ export const TreeViewFilterSectionItem = (
             data-testid={`checkbox-${filterKey}-${labeledValue.value}`}
             checked={isSelected}
             onClick={(event) => {
-              handleCheckboxChange(!isSelected, labeledValue.value);
+              handleCheckboxChange(
+                !isSelected,
+                labeledValue.value,
+                autoUncheckId,
+              );
               event.stopPropagation();
             }}
             onKeyUp={(event) => {
