@@ -45,7 +45,7 @@ export type TreeViewSectionProps = FilterMenuSectionProps & {
   multiselect?: boolean;
   maxselections?: number;
   treedata: TreeViewFilterSectionNode[];
-  autoUncheckId?: string;
+  autouncheckid?: string;
 };
 
 /**
@@ -112,7 +112,7 @@ export const buildTreeView = (
         props.filterkey,
         handleCheckboxChange,
         toggleExpand,
-        props.autoUncheckId,
+        props.autouncheckid,
       )}
     </>
   );
