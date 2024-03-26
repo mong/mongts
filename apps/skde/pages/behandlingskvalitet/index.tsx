@@ -37,7 +37,6 @@ import {
 import { useMedicalFieldsQuery } from "qmongjs/src/helpers/hooks";
 import { IndicatorTableBodyV2 } from "qmongjs/src/components/IndicatorTable/IndicatortablebodyV2";
 
-
 /**
  * Treatment quality page (Behandlingskvalitet)
  *

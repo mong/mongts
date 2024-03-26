@@ -97,7 +97,7 @@ const createData = (indicatorData: Indicator[]) => {
       // Add data to indicator
       const j = searchArray(returnData[i].indicatorData, row.ind_id);
 
-      if (  
+      if (
         // The same regstry can belong to different medfields
         // If so, the unit will appear more than once
         // We therefore need to check if it is already there
@@ -136,63 +136,83 @@ const IndicatorSection = (props: {
 
     const rowData = indDataRow.data.map((row) => {
       const format = row.format === null ? ",.0%" : row.format;
-      return({unitName: row.unitName, result: customFormat(format)(row.var) });
-    })
+      return { unitName: row.unitName, result: customFormat(format)(row.var) };
+    });
 
     const rowDataSorted = unitNames.map((row) => {
-      return(rowData.find(item => item.unitName === row)?.result)
-    })
+      return rowData.find((item) => item.unitName === row)?.result;
+    });
 
     return (
       <React.Fragment key={indDataRow.indicatorName}>
-        
-        <TableRow key={indDataRow.indicatorName + "-mainrow"} onClick={() => setOpen(!open)} style={{ cursor: "pointer" }}>
+        <TableRow
+          key={indDataRow.indicatorName + "-mainrow"}
+          onClick={() => setOpen(!open)}
+          style={{ cursor: "pointer" }}
+        >
           <TableCell key={indDataRow.indicatorName}>
             <table>
               <tbody>
-              <tr>
-                <td>
-                  <IconButton 
-                  onClick={() => setOpen(!open)} 
-                  aria-label="expand"
-                  size="small"
-                  > 
-                    {open ? <KeyboardArrowUpIcon /> 
-                        : <KeyboardArrowDownIcon />} 
-                  </IconButton> 
-                </td>
-                <td>
-                  {indDataRow.indicatorName}
-                </td>
-              </tr>
+                <tr>
+                  <td>
+                    <IconButton
+                      onClick={() => setOpen(!open)}
+                      aria-label="expand"
+                      size="small"
+                    >
+                      {open ? (
+                        <KeyboardArrowUpIcon />
+                      ) : (
+                        <KeyboardArrowDownIcon />
+                      )}
+                    </IconButton>
+                  </td>
+                  <td>{indDataRow.indicatorName}</td>
+                </tr>
               </tbody>
             </table>
-            </TableCell>
+          </TableCell>
 
           {rowDataSorted.map((row, index) => {
             return (
-            <TableCell align={"center"} key={indDataRow.indicatorID + index}>
-              {row}
-            </TableCell>
-            )
+              <TableCell align={"center"} key={indDataRow.indicatorID + index}>
+                {row}
+              </TableCell>
+            );
           })}
         </TableRow>
 
-        <TableRow key={indDataRow.indicatorName + "-collapse"} sx={{ visibility: open ? "visible" : "collapse" }}>
+        <TableRow
+          key={indDataRow.indicatorName + "-collapse"}
+          sx={{ visibility: open ? "visible" : "collapse" }}
+        >
           <TableCell key={indDataRow.indicatorName + "-shortDescription"}>
             {indDataRow.shortDescription}
           </TableCell>
-          <TableCell key={indDataRow.indicatorName + "-targetLevel"} colSpan={unitNames.length} align="center">
-            {"Ønsket målnivå: " + (indDataRow.targetMeasure === null ? "" : customFormat(",.0%")(indDataRow.targetMeasure))}
+          <TableCell
+            key={indDataRow.indicatorName + "-targetLevel"}
+            colSpan={unitNames.length}
+            align="center"
+          >
+            {"Ønsket målnivå: " +
+              (indDataRow.targetMeasure === null
+                ? ""
+                : customFormat(",.0%")(indDataRow.targetMeasure))}
           </TableCell>
         </TableRow>
 
-        <TableRow key={indDataRow.indicatorName + "-charts"} sx={{ visibility: open ? "visible" : "collapse" }}>
-        <TableCell key={indDataRow.indicatorName + "-charts"} colSpan={unitNames.length + 1} align="center">
+        <TableRow
+          key={indDataRow.indicatorName + "-charts"}
+          sx={{ visibility: open ? "visible" : "collapse" }}
+        >
+          <TableCell
+            key={indDataRow.indicatorName + "-charts"}
+            colSpan={unitNames.length + 1}
+            align="center"
+          >
             Charts
           </TableCell>
         </TableRow>
-
       </React.Fragment>
     );
   });
@@ -208,17 +228,17 @@ const RegistrySection = (props: {
     <React.Fragment>
       <TableHead>
         <TableRow key={regData.registerName + "-row"}>
-          <TableCell key={regData.registerName}>{regData.registerName}</TableCell>
-          
+          <TableCell key={regData.registerName}>
+            {regData.registerName}
+          </TableCell>
+
           {unitNames.map((row, index) => {
-            return(
+            return (
               <TableCell align="center" key={regData.registerName + index}>
                 {row}
               </TableCell>
-            )
-          }
-          )}
-
+            );
+          })}
         </TableRow>
       </TableHead>
 
@@ -252,14 +272,14 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   const rowData = createData(indicatorQuery.data).filter((row) => true);
 
   return (
-      <Table>
-        {rowData.map((row) => (
-          <RegistrySection
-            key={row.registerName}
-            unitNames={unitNames}
-            regData={row}
-          />
-        ))}
-      </Table>
+    <Table>
+      {rowData.map((row) => (
+        <RegistrySection
+          key={row.registerName}
+          unitNames={unitNames}
+          regData={row}
+        />
+      ))}
+    </Table>
   );
 };
