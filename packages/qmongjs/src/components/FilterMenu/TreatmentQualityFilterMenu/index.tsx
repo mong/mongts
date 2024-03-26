@@ -1,6 +1,7 @@
 import { PropsWithChildren, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import {
+  ArrayParam,
   DelimitedArrayParam,
   StringParam,
   UrlUpdateType,
@@ -140,7 +141,7 @@ export function TreatmentQualityFilterMenu({
 
   const [selectedMedicalFields, setSelectedMedicalFields] = useQueryParam(
     medicalFieldKey,
-    withDefault(DelimitedArrayParam, [medicalFields.defaults[0].value]),
+    withDefault(ArrayParam, [medicalFields.defaults[0].value]),
   );
 
   optionsMap.set(medicalFieldKey, {
