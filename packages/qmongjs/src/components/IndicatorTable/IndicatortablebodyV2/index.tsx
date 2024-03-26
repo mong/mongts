@@ -252,7 +252,6 @@ const RegistrySection = (props: {
 export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   props,
 ) => {
-
   const queryParams: FetchIndicatorParams = {
     context: props.context,
     treatmentYear: props.year,
