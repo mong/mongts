@@ -259,6 +259,8 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
             updatedSelectedIds = [...selectedIdsFiltered, nodeId];
           } else if (nodeId === autoUncheckId) {
             updatedSelectedIds = [nodeId];
+          } else {
+            updatedSelectedIds = [...selectedIds, nodeId];
           }
         }
       } else {
