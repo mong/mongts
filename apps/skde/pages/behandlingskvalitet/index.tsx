@@ -274,7 +274,6 @@ export default function TreatmentQuality() {
               <IndicatorTableBodyV2
                 key="indicator-table"
                 context={"caregiver"}
-                registers={registers}
                 unitNames={selectedTreatmentUnits}
                 year={selectedYear}
                 type={"ind"}

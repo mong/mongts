@@ -17,7 +17,6 @@ export type IndicatorTableBodyV2Props = {
   context: string;
   type: string;
   year: number;
-  registers: string[];
   unitNames: string[];
   level: string;
   medfields: string[];
@@ -43,6 +42,7 @@ type IndicatorData = {
 
 type RegisterData = {
   registerName: string;
+  registerShortName: string;
   registerID: number;
   medfieldID: number;
   indicatorData: IndicatorData[];
@@ -69,6 +69,7 @@ const createData = (indicatorData: Indicator[]) => {
       if (!returnData[i]) {
         returnData[i] = {
           registerName: row.registry_full_name,
+          registerShortName: row.registry_name,
           registerID: row.registry_id,
           medfieldID: row.medfield_id,
           indicatorData: [] as IndicatorData[],
@@ -252,11 +253,13 @@ const RegistrySection = (props: {
 export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   props,
 ) => {
+  const {context, type, year, unitNames, level, medfields,} = props;
+
   const queryParams: FetchIndicatorParams = {
-    context: props.context,
-    treatmentYear: props.year,
-    unitNames: props.unitNames,
-    type: props.type,
+    context: context,
+    treatmentYear: year,
+    unitNames: unitNames,
+    type: type,
   };
  
   const indicatorQuery: UseQueryResult<any, unknown> =
@@ -268,9 +271,14 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
 
   const rowData = createData(indicatorQuery.data);
 
+
+  const rowDataFiltered = rowData.filter((row) => {
+    return(medfields.includes(row.registerShortName))
+  });
+
   return (
     <Table>
-      {rowData.map((row) => (
+      {rowDataFiltered.map((row) => (
         <RegistrySection
           key={row.registerName}
           unitNames={props.unitNames}
