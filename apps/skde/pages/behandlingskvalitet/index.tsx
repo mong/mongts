@@ -36,6 +36,10 @@ import {
 } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu";
 import { useMedicalFieldsQuery } from "qmongjs/src/helpers/hooks";
 import { IndicatorTableBodyV2 } from "qmongjs/src/components/IndicatorTable/IndicatortablebodyV2";
+import Switch from "@mui/material/Switch";
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import IndicatorTable from "qmongjs/src/components/IndicatorTable";
 
 /**
  * Treatment quality page (Behandlingskvalitet)
@@ -43,6 +47,8 @@ import { IndicatorTableBodyV2 } from "qmongjs/src/components/IndicatorTable/Indi
  * @returns The page component
  */
 export default function TreatmentQuality() {
+  const [newIndicatorTableActivated, setNewIndicatorTableActivated] =
+    useState(false);
   const [width, setWidth] = useState(desktopBreakpoint);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
@@ -258,31 +264,66 @@ export default function TreatmentQuality() {
             <Toolbar />
             <Box sx={{ marginTop: filterMenuTopMargin }}>
               {queriesReady && (
-                <TreatmentQualityFilterMenu
-                  onSelectionChanged={handleFilterChanged}
-                  onFilterInitialized={handleFilterInitialized}
-                  registryNameData={registers}
-                  medicalFieldData={medicalFields}
-                />
+                <>
+                  <TreatmentQualityFilterMenu
+                    onSelectionChanged={handleFilterChanged}
+                    onFilterInitialized={handleFilterInitialized}
+                    registryNameData={registers}
+                    medicalFieldData={medicalFields}
+                  />
+                  <FormGroup sx={{ paddingRight: "1.5rem" }}>
+                    <FormControlLabel
+                      label="Prøv ny tabellversjon"
+                      labelPlacement="start"
+                      control={
+                        <Switch
+                          checked={newIndicatorTableActivated}
+                          onChange={(event) =>
+                            setNewIndicatorTableActivated(event.target.checked)
+                          }
+                        />
+                      }
+                    />
+                  </FormGroup>
+                </>
               )}
             </Box>
           </FilterDrawer>
         </FilterDrawerBox>
         <MainBox>
-          {queriesReady && (
-            <>
-              <IndicatorTableBodyV2
-                key="indicator-table"
-                context={"caregiver"}
-                unitNames={selectedTreatmentUnits}
-                year={selectedYear}
-                type={"ind"}
-                level={selectedLevel}
-                medfields={selectedMedicalFields}
-              />
-              <TreatmentQualityFooter />
-            </>
-          )}
+          {queriesReady &&
+            (newIndicatorTableActivated ? (
+              <>
+                <IndicatorTableBodyV2
+                  key="indicator-table"
+                  context={"caregiver"}
+                  unitNames={selectedTreatmentUnits}
+                  year={selectedYear}
+                  type={"ind"}
+                  level={selectedLevel}
+                  medfields={selectedMedicalFields}
+                />
+                <TreatmentQualityFooter />
+              </>
+            ) : (
+              <>
+                <IndicatorTable
+                  key="indicator-table"
+                  context={"caregiver"}
+                  tableType="allRegistries"
+                  registerNames={registers}
+                  unitNames={selectedTreatmentUnits}
+                  treatmentYear={selectedYear}
+                  colspan={selectedTreatmentUnits.length + 1}
+                  medicalFieldFilter={selectedMedicalFields}
+                  showLevelFilter={selectedLevel}
+                  selection_bar_height={0}
+                  legend_height={0}
+                  blockTitle={registers.map((register) => register.full_name)}
+                />
+                <TreatmentQualityFooter />
+              </>
+            ))}
         </MainBox>
       </Box>
     </ThemeProvider>
