@@ -13132,9 +13132,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"decap-cms-app@npm:3.1.5":
-  version: 3.1.5
-  resolution: "decap-cms-app@npm:3.1.5"
+"decap-cms-app@npm:3.1.6":
+  version: 3.1.6
+  resolution: "decap-cms-app@npm:3.1.6"
   dependencies:
     "@emotion/react": "npm:^11.11.1"
     "@emotion/styled": "npm:^11.11.0"
@@ -13148,7 +13148,7 @@ __metadata:
     decap-cms-backend-gitlab: "npm:^3.1.2"
     decap-cms-backend-proxy: "npm:^3.1.1"
     decap-cms-backend-test: "npm:^3.1.1"
-    decap-cms-core: "npm:^3.3.5"
+    decap-cms-core: "npm:^3.3.6"
     decap-cms-editor-component-image: "npm:^3.1.1"
     decap-cms-lib-auth: "npm:^3.0.5"
     decap-cms-lib-util: "npm:^3.0.3"
@@ -13158,7 +13158,7 @@ __metadata:
     decap-cms-widget-boolean: "npm:^3.1.1"
     decap-cms-widget-code: "npm:^3.1.2"
     decap-cms-widget-colorstring: "npm:^3.1.1"
-    decap-cms-widget-datetime: "npm:^3.1.1"
+    decap-cms-widget-datetime: "npm:^3.1.2"
     decap-cms-widget-file: "npm:^3.1.1"
     decap-cms-widget-image: "npm:^3.1.1"
     decap-cms-widget-list: "npm:^3.1.1"
@@ -13178,7 +13178,7 @@ __metadata:
   peerDependencies:
     react: ^18.2.0
     react-dom: ^18.2.0
-  checksum: 10/eca78d17c150a1dbece5279bb87211dfc4207ab9349a61b7eba36bfd6568060892f0069f3a65f1c2949681e604c7989916cc0c7b23a43514b2e7baecb0258bc9
+  checksum: 10/0536efc79969720fd0e12641f97a4597adc280724c0a5aa52c72266e5634d418b88910b0e4349bbae01890e5bc6aa6816a89ca3bee26ea4bda4b0f86873be8b8
   languageName: node
   linkType: hard
 
@@ -13355,7 +13355,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"decap-cms-core@npm:3.3.5, decap-cms-core@npm:^3.3.5":
+"decap-cms-core@npm:3.3.5":
   version: 3.3.5
   resolution: "decap-cms-core@npm:3.3.5"
   dependencies:
@@ -13424,6 +13424,78 @@ __metadata:
     react-dom: ^18.2.0
     react-immutable-proptypes: ^2.1.0
   checksum: 10/b8aaaec28659d402585124b3d906c27349e89bf50af7e735493eb3fd708a0fa4ddb2feeee1a7ee12f2902692f6add1d4929c1bdda60a7c408203d13503678b1e
+  languageName: node
+  linkType: hard
+
+"decap-cms-core@npm:^3.3.6":
+  version: 3.3.6
+  resolution: "decap-cms-core@npm:3.3.6"
+  dependencies:
+    "@iarna/toml": "npm:2.2.5"
+    "@reduxjs/toolkit": "npm:^1.9.1"
+    ajv: "npm:8.12.0"
+    ajv-errors: "npm:^3.0.0"
+    ajv-keywords: "npm:^5.0.0"
+    clean-stack: "npm:^4.1.0"
+    copy-text-to-clipboard: "npm:^3.0.0"
+    dayjs: "npm:^1.11.10"
+    deepmerge: "npm:^4.2.2"
+    diacritics: "npm:^1.3.0"
+    fuzzy: "npm:^0.1.1"
+    gotrue-js: "npm:^0.9.24"
+    gray-matter: "npm:^4.0.2"
+    history: "npm:^4.7.2"
+    immer: "npm:^9.0.0"
+    js-base64: "npm:^3.0.0"
+    jwt-decode: "npm:^3.0.0"
+    node-polyglot: "npm:^2.3.0"
+    prop-types: "npm:^15.7.2"
+    react: "npm:^18.2.0"
+    react-dnd: "npm:^14.0.0"
+    react-dnd-html5-backend: "npm:^14.0.0"
+    react-dom: "npm:^18.2.0"
+    react-frame-component: "npm:^5.2.1"
+    react-immutable-proptypes: "npm:^2.1.0"
+    react-is: "npm:16.13.1"
+    react-markdown: "npm:^6.0.2"
+    react-modal: "npm:^3.8.1"
+    react-polyglot: "npm:^0.7.0"
+    react-redux: "npm:^7.2.0"
+    react-router-dom: "npm:^5.2.0"
+    react-scroll-sync: "npm:^0.9.0"
+    react-split-pane: "npm:^0.1.85"
+    react-toastify: "npm:^9.1.1"
+    react-topbar-progress-indicator: "npm:^4.0.0"
+    react-virtualized-auto-sizer: "npm:^1.0.2"
+    react-waypoint: "npm:^10.0.0"
+    react-window: "npm:^1.8.5"
+    redux: "npm:^4.0.5"
+    redux-devtools-extension: "npm:^2.13.8"
+    redux-notifications: "npm:^4.0.1"
+    redux-thunk: "npm:^2.3.0"
+    remark-gfm: "npm:1.0.0"
+    sanitize-filename: "npm:^1.6.1"
+    semaphore: "npm:^1.0.5"
+    tomlify-j0.4: "npm:^3.0.0-alpha.0"
+    url: "npm:^0.11.0"
+    url-join: "npm:^4.0.1"
+    what-input: "npm:^5.1.4"
+    yaml: "npm:^1.8.3"
+  peerDependencies:
+    "@emotion/react": ^11.11.1
+    "@emotion/styled": ^11.11.0
+    decap-cms-editor-component-image: ^3.0.0
+    decap-cms-lib-auth: ^3.0.0
+    decap-cms-lib-util: ^3.0.0
+    decap-cms-lib-widgets: ^3.0.0
+    decap-cms-ui-default: ^3.0.0
+    immutable: ^3.7.6
+    lodash: ^4.17.11
+    prop-types: ^15.7.2
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    react-immutable-proptypes: ^2.1.0
+  checksum: 10/b68ef53db6ff35b69950f29cf13105e2d402f0a697f83078f403f9fcd05f465c3dc249193909b1fa77d67bdb960d1c5c338f325b2fe1822714f1a612ca484fdb
   languageName: node
   linkType: hard
 
@@ -13542,15 +13614,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"decap-cms-widget-datetime@npm:^3.1.1":
-  version: 3.1.1
-  resolution: "decap-cms-widget-datetime@npm:3.1.1"
+"decap-cms-widget-datetime@npm:^3.1.2":
+  version: 3.1.2
+  resolution: "decap-cms-widget-datetime@npm:3.1.2"
   dependencies:
     dayjs: "npm:^1.11.10"
   peerDependencies:
     "@emotion/react": ^11.11.1
     react: ^18.2.0
-  checksum: 10/617417ecae051d94a2dfec84ddbb41ddc01d85f696317d46da9a181d2a2521d77bdbbc5d090babc2aeb9d182abd9a4c3f4c59b44ec68479397da47fd16001f33
+  checksum: 10/90bd5b14865a90b36eb40de5e4c0f6f760ce50645c7cd5a22d893da42369829905eff170d85fdb16b939e2d70f5ebed4c2ac1b0ca2a1a5ab4fead6336f55cf65
   languageName: node
   linkType: hard
 
@@ -28648,7 +28720,7 @@ __metadata:
     d3-scale: "npm:4.0.2"
     d3-shape: "npm:3.2.0"
     d3-time-format: "npm:4.1.0"
-    decap-cms-app: "npm:3.1.5"
+    decap-cms-app: "npm:3.1.6"
     decap-cms-core: "npm:3.3.5"
     eslint: "npm:8.57.0"
     eslint-config-next: "npm:14.1.4"
