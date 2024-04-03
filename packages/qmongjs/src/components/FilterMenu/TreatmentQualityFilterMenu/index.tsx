@@ -28,7 +28,11 @@ import {
 import { useUnitNamesQuery } from "../../../helpers/hooks";
 import Alert from "@mui/material/Alert";
 import { UseQueryResult } from "@tanstack/react-query";
-import { TreeViewFilterSectionNode } from "../TreeViewFilterSection";
+import {
+  TreeViewFilterSectionNode,
+  TreeViewFilterSettingsValue,
+  initFilterSettingsValuesMap as getFilterSettingsValuesMap,
+} from "../TreeViewFilterSection";
 
 // The keys used for the different filter sections
 export const yearKey = "year";
@@ -138,6 +142,7 @@ export function TreatmentQualityFilterMenu({
 
   // Medical fields
   const medicalFields = getMedicalFields(medicalFieldData, registryNameData);
+  const medicalFieldsMap = getFilterSettingsValuesMap(medicalFields.treedata);
 
   const [selectedMedicalFields, setSelectedMedicalFields] = useQueryParam(
     medicalFieldKey,
@@ -254,6 +259,17 @@ export function TreatmentQualityFilterMenu({
     return result;
   };
 
+  const getValueLabel = (
+    value: string | null,
+    medicalFieldsMap: Map<string, TreeViewFilterSettingsValue>,
+  ): string | null => {
+    if (value === null) {
+      return null;
+    }
+    const filterSettingsValue = medicalFieldsMap.get(value);
+    return filterSettingsValue?.valueLabel ?? null;
+  };
+
   return (
     <>
       {!(medicalFieldData || registryNameData) && (
@@ -301,7 +317,7 @@ export function TreatmentQualityFilterMenu({
           initialselections={
             selectedMedicalFields.map((value) => ({
               value: value,
-              valueLabel: value,
+              valueLabel: getValueLabel(value, medicalFieldsMap),
             })) as FilterSettingsValue[]
           }
           sectionid={medicalFieldKey}
