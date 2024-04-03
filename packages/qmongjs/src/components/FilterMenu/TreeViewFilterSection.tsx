@@ -160,7 +160,8 @@ export const flattenTreeValues = (
 };
 
 /**
- * Initialzes the map used for looking up FilterSettingValues by values/nodeIds
+ * Creates a map from treeData that can be used for looking up
+ * FilterSettingValues by values/nodeIds
  *
  * @param treeData The TreeViewFilterSectionNode structure
  * @returns A map with the string values as keys and TreeViewFilterSettingsValue-objects as values
