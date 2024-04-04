@@ -17,10 +17,29 @@ def get_matching_filenames(directory, pattern):
     return matching_filenames
 
 
-def extract_urls(text):
-    url_pattern = r"href=\"((?:http[s]?://|www\.)[^\"]*)"
-    urls = re.findall(url_pattern, text)
-    urls = [url for url in urls if not url.startswith("#")]
+def extract_urls(text, base_url, current_url):
+    # Extract URLs from href attributes
+    url_pattern = r'href\s*=\s*"([^"]+)'
+    urls = re.findall(url_pattern, text, flags=re.MULTILINE)
+    urls = [url for url in urls if not url.startswith('#')]
+
+    # Remove duplicates
+    urls = list(set(urls))
+
+    # Remove irrelevant link types
+    urls = [url for url in urls if not (url.startswith('mailto:') or url.startswith('javascript:') or url.startswith('tel:'))]
+
+    # Remove trailing slash from base URL, if present
+    if base_url.endswith('/'):
+        base_url = base_url[:-1]
+
+    # Ensure trailing slash to current URL
+    if not current_url.endswith('/'):
+        current_url = current_url + '/'
+
+    # If the URL is not absolute, prefix with base URL or current URL
+    urls = [url if url.startswith('http') else base_url + url if url.startswith('/') else current_url + url for url in urls]
+
     return urls
 
 
@@ -28,23 +47,32 @@ def check_link(url):
     status_code = -1
     with requests.Session() as s:
         try:
-            headers = {"User-Agent": "Mozilla/5.0", "Referer": "https://www.skde.no"}
+            headers = {'User-Agent': 'Mozilla/5.0', 'Referer': 'https://www.skde.no'}
             response = s.head(url, headers=headers, timeout=5)
             status_code = response.status_code
             print(status_code)
         except requests.exceptions.RequestException as e:
-            print(f"Error: {e}")
+            print(f'Error: {e}')
     return status_code
 
 
-def process_file(filename, visited_links):
+def process_file(filename, base_path, base_url, visited_links):
     link_results = {}
-    with open(filename, "r") as file:
+    with open(filename, 'r') as file:
         file_content = file.read()
-        print(f"Processing file: {filename}")
-        urls = extract_urls(file_content)
+        print(f'Processing file: {filename}')
+        
+        current_url = base_url
+        if not current_url.endswith('/'):
+            current_url = current_url + '/'
+        rel_path = filename[filename.rindex(base_path) + len(base_path):]
+        current_url = current_url + rel_path
+        current_url = current_url.replace('index.html', '')
+        print(f'Current URL: {current_url}')
+
+        urls = extract_urls(file_content, base_url, current_url)
         for url in urls:
-            print(f"URL: {url}")
+            print(f'URL: {url}')
             if url not in visited_links:
                 response = check_link(url)
                 visited_links[url] = response
@@ -61,25 +89,22 @@ def export_to_csv(file_results):
             for url, status_code in link_results.items():
                 writer.writerow({'filename': filename, 'url': url, 'status code': status_code})
 
-def main(search_dir, file_pattern="*.html"):
-    script_dir = os.path.dirname(os.path.realpath(__file__))
-    directory = os.path.join(script_dir, search_dir)
-    matching_files = get_matching_filenames(directory, file_pattern)
+
+def main(search_dir, base_path, base_url, file_pattern='*.html'):
+    matching_files = get_matching_filenames(search_dir, file_pattern)
     file_results = {}
     visited_links = {}
     for filename in matching_files:
-        file_results[filename] = process_file(filename, visited_links)
-
-
+        file_results[filename] = process_file(filename, base_path, base_url, visited_links)
     export_to_csv(file_results)
+    print('Done.')
 
-    print("Done.")
 
-
-if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Please provide the search directory as a command-line argument.")
+if __name__ == '__main__':
+    if len(sys.argv) < 4:
+        print('Please provide the search directory, base path, and base url as command-line arguments.')
         sys.exit(1)
     search_dir = sys.argv[1]
-    file_pattern = sys.argv[2] if len(sys.argv) >= 3 else "*.html"
-    main(search_dir, file_pattern)
+    base_path = sys.argv[2]
+    base_url = sys.argv[3]
+    main(search_dir, base_path, base_url)
