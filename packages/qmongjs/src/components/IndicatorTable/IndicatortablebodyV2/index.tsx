@@ -158,13 +158,6 @@ const randomHexColorCode = () => {
 };
 
 const createChartStyles = (unitNames: string[], font: font) => {
-  const lineStyle = {
-    text: "Indikator",
-    strokeDash: "0",
-    colour: "#3BAA34",
-  };
-
-  // Ugly hack
   const lineStyles = unitNames.map((unitNameRow) => {
     const lineStyle = {
       text: unitNameRow,
