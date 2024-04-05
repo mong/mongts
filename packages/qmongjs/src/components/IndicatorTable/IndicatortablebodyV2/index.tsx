@@ -9,14 +9,14 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Indicator } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
-import { useIndicatorQuery } from "qmongjs";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
-import { customFormat } from "qmongjs";
 import {
   LinechartBase,
   font,
   LinechartData,
   LineStyles,
+  customFormat,
+  useIndicatorQuery,
 } from "qmongjs";
 
 export type IndicatorTableBodyV2Props = {
