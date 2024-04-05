@@ -1,13 +1,11 @@
 name: Find dead links
 on:
-  push:
-    branches: [2247-fange-opp-dde-linker-i-helseatlas]
-    paths-ignore:
-      - "apps/api/**"
   pull_request:
     branches: [main, develop, dependency_updates]
     paths-ignore:
       - "apps/api/**"
+  schedule:
+    - cron: "0 3 * * *"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -34,4 +32,4 @@ jobs:
         run: |
           yarn run export
       - name: Find dead links
-        run: scripts/atlas/checklinks.py apps/skde/out/kontakt/ apps/skde/out/ https://www.skde.no/
+        run: scripts/atlas/checklinks.py apps/skde/out/helseatlas/v2/kronikere apps/skde/out/ https://www.skde.no/
