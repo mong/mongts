@@ -11,7 +11,7 @@ import { toBarchart } from "../../helpers/functions/dataTransformation";
 import {
   customFormat,
   customFormatEng,
-} from "../../helpers/functions/localFormater";
+} from "qmongjs/src/helpers/localFormater";
 
 import { AnnualVariation } from "./AnnualVariation";
 import { ErrorBars } from "./errorBars";

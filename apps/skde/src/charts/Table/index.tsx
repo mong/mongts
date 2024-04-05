@@ -10,7 +10,7 @@ import { getOrderComparator } from "../../helpers/functions/dataTransformation";
 import {
   customFormat,
   customFormatEng,
-} from "../../helpers/functions/localFormater";
+} from "qmongjs/src/helpers/localFormater";
 import { useRouter } from "next/router";
 import { Markdown } from "../../components/Markdown";
 

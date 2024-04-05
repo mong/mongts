@@ -12,8 +12,7 @@ import { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
 import { customFormat } from "../../../helpers/functions";
-import { font, LinechartData, LineStyles } from "../../Charts/LinechartBase";
-import LinechartBase from "../../Charts/LinechartBase";
+import { LinechartBase, font, LinechartData, LineStyles } from "../../Charts/LinechartBase";
 
 
 export type IndicatorTableBodyV2Props = {
