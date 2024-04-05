@@ -6,7 +6,7 @@ import classNames from "../Barchart/ChartLegend.module.css";
 import {
   customFormat,
   customFormatEng,
-} from "../../helpers/functions/localFormater";
+} from "qmongjs/src/helpers/localFormater";
 import { useRouter } from "next/router";
 import { abacusColors } from "../colors";
 

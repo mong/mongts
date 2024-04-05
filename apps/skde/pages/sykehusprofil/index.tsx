@@ -3,7 +3,7 @@ import React from "react";
 import IndicatorLinechart, {
   IndicatorLinechartParams,
 } from "../../src/charts/IndicatorLinechart";
-import { LineStyles, font } from "../../src/charts/LinechartBase";
+import { LineStyles } from "qmongjs/src/components/Charts/LinechartBase";
 import { Text } from "@visx/text";
 import { useQueryParam } from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";

@@ -6,10 +6,7 @@ import { scaleTime, scaleLinear, scaleOrdinal } from "@visx/scale";
 import { AxisBottom, AxisLeft } from "@visx/axis";
 import { LinechartBackground } from "./LinechartBaseStyles";
 import { Legend, LegendItem, LegendLabel } from "@visx/legend";
-import {
-  customFormat,
-  customFormatEng,
-} from "../../helpers/functions/localFormater";
+import { customFormat, customFormatEng } from "../../../helpers/localFormater";
 
 export type LinechartData = {
   x: Date;
@@ -66,13 +63,13 @@ export type LinechartBaseProps = {
   lineStyles: LineStyles;
   font: font;
   yAxisText: string;
-  yMin?: number;
-  yMax?: number;
+  yMin: number;
+  yMax: number;
   format_y?: string;
   lang?: "en" | "nb" | "nn";
 };
 
-export default function LinechartBase({
+export function LinechartBase({
   data,
   width,
   height,

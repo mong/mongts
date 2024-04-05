@@ -2,10 +2,27 @@ import { render } from "@testing-library/react";
 
 import LinechartBase from "..";
 import { LineStyles } from "..";
-import { linechartData } from "../../../../test/test_data/data";
 import { vi, test, expect } from "vitest";
 
 vi.mock("next/router", () => require("next-router-mock"));
+
+const linechartTestData = [
+  [
+    { x: new Date(2018, 0), y: 10 },
+    { x: new Date(2019, 0), y: 15 },
+    { x: new Date(2020, 0), y: 20 },
+  ],
+  [
+    { x: new Date(2018, 0), y: 5 },
+    { x: new Date(2019, 7), y: 15 },
+    { x: new Date(2020, 0), y: 9 },
+  ],
+  [
+    { x: new Date(2018, 0), y: 3 },
+    { x: new Date(2019, 3), y: 15 },
+    { x: new Date(2020, 0), y: 6 },
+  ],
+];
 
 const lineStyles = new LineStyles(
   [
@@ -25,13 +42,14 @@ const font = {
 test("Standard render", () => {
   const { container } = render(
     <LinechartBase
-      data={linechartData}
+      data={linechartTestData}
       width={800}
       height={400}
       lineStyles={lineStyles}
       font={font}
       yMin={0}
       yMax={25}
+      yAxisText={"Andel"}
     />,
   );
   // container.children[0].children[0] is the legend
@@ -44,7 +62,7 @@ test("Standard render", () => {
 test("Render with format and lang = en", () => {
   const { container } = render(
     <LinechartBase
-      data={linechartData}
+      data={linechartTestData}
       width={800}
       height={400}
       lineStyles={lineStyles}
@@ -53,6 +71,7 @@ test("Render with format and lang = en", () => {
       yMax={25}
       lang="en"
       format_y=",.2%"
+      yAxisText={"Andel"}
     />,
   );
   expect(container.children[0].children[1].children[5]).toMatchSnapshot();
@@ -61,7 +80,7 @@ test("Render with format and lang = en", () => {
 test("Render with format and lang = nb", () => {
   const { container } = render(
     <LinechartBase
-      data={linechartData}
+      data={linechartTestData}
       width={800}
       height={400}
       lineStyles={lineStyles}
@@ -70,6 +89,7 @@ test("Render with format and lang = nb", () => {
       yMax={25}
       lang="nb"
       format_y=",.0%"
+      yAxisText={"Andel"}
     />,
   );
   expect(container.children[0].children[1].children[5]).toMatchSnapshot();
@@ -78,7 +98,7 @@ test("Render with format and lang = nb", () => {
 test("Render with other format", () => {
   const { container } = render(
     <LinechartBase
-      data={linechartData}
+      data={linechartTestData}
       width={800}
       height={400}
       lineStyles={lineStyles}
@@ -86,6 +106,7 @@ test("Render with other format", () => {
       yMin={0}
       yMax={25}
       format_y=",.2f"
+      yAxisText={"Andel"}
     />,
   );
   expect(container.children[0].children[1].children[5]).toMatchSnapshot();
