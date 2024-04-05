@@ -6,7 +6,7 @@ import { scaleTime, scaleLinear, scaleOrdinal } from "@visx/scale";
 import { AxisBottom, AxisLeft } from "@visx/axis";
 import { LinechartBackground } from "./LinechartBaseStyles";
 import { Legend, LegendItem, LegendLabel } from "@visx/legend";
-import { customFormat, customFormatEng } from "../../../helpers/localFormater";
+import { customFormat, customFormatEng } from "qmongjs";
 
 export type LinechartData = {
   x: Date;
