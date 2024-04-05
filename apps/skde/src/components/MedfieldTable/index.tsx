@@ -14,6 +14,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import { level, levelSymbols } from "qmongjs";
+import { newLevelSymbols } from "qmongjs";
 import _ from "lodash";
 import { Indicator } from "types";
 
@@ -35,15 +36,15 @@ const createSymbols = (green: number, yellow: number, red: number) => {
   let symbols = [];
 
   for (let i = 0; i < green; i++) {
-    symbols.push(levelSymbols("H"));
+    symbols.push(newLevelSymbols("H"));
   }
 
   for (let i = 0; i < yellow; i++) {
-    symbols.push(levelSymbols("M"));
+    symbols.push(newLevelSymbols("M"));
   }
 
   for (let i = 0; i < red; i++) {
-    symbols.push(levelSymbols("L"));
+    symbols.push(newLevelSymbols("L"));
   }
 
   return symbols;
