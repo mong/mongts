@@ -89,6 +89,15 @@ def export_to_csv(file_results):
             for url, status_code in link_results.items():
                 writer.writerow({'filename': filename, 'url': url, 'status code': status_code})
 
+def failed_links(file_results):
+    errors_found = 0
+    for filename, link_results in file_results.items():
+        for url, status_code in link_results.items():
+            if status_code >= 400:
+                print(f'Invalid link in {filename}: {url} (status code: {status_code})', file=sys.stderr)
+                errors_found += 1
+    return errors_found
+
 
 def main(search_dir, base_path, base_url, file_pattern='*.html'):
     matching_files = get_matching_filenames(search_dir, file_pattern)
@@ -96,9 +105,10 @@ def main(search_dir, base_path, base_url, file_pattern='*.html'):
     visited_links = {}
     for filename in matching_files:
         file_results[filename] = process_file(filename, base_path, base_url, visited_links)
-    export_to_csv(file_results)
+#    export_to_csv(file_results)
+    num_failed = failed_links(file_results)
     print('Done.')
-    return 1
+    return num_failed
 
 
 if __name__ == '__main__':
