@@ -108,4 +108,7 @@ if __name__ == '__main__':
     search_dir = sys.argv[1]
     base_path = sys.argv[2]
     base_url = sys.argv[3]
-    main(search_dir, base_path, base_url)
+    code_status = main(search_dir, base_path, base_url)
+    if code_status != 0:
+        sys.exit("Found invalid link(s)")
+    
