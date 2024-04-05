@@ -7,10 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import { getOrderComparator } from "../../helpers/functions/dataTransformation";
-import {
-  customFormat,
-  customFormatEng,
-} from "qmongjs";
+import { customFormat, customFormatEng } from "qmongjs";
 import { useRouter } from "next/router";
 import { Markdown } from "../../components/Markdown";
 

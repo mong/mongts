@@ -1,10 +1,7 @@
 import { Grid, Axis, LineSeries, XYChart, Tooltip } from "@visx/xychart";
 import { scaleOrdinal } from "@visx/scale";
 import { useRouter } from "next/router";
-import {
-  customFormat,
-  customFormatEng,
-} from "qmongjs";
+import { customFormat, customFormatEng } from "qmongjs";
 import { ColorLegend } from "./ColorLegend";
 import { linechartColors } from "../colors";
 

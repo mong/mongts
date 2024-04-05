@@ -8,10 +8,7 @@ import { useRouter } from "next/router";
 import { ColorLegend } from "./ColorLegend";
 import { AnnualVarLegend } from "./AnnualVarLegend";
 import { toBarchart } from "../../helpers/functions/dataTransformation";
-import {
-  customFormat,
-  customFormatEng,
-} from "qmongjs";
+import { customFormat, customFormatEng } from "qmongjs";
 
 import { AnnualVariation } from "./AnnualVariation";
 import { ErrorBars } from "./errorBars";

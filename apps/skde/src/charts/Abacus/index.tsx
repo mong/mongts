@@ -3,10 +3,7 @@ import { scaleLinear } from "@visx/scale";
 import { Group } from "@visx/group";
 import { max } from "d3-array";
 import classNames from "../Barchart/ChartLegend.module.css";
-import {
-  customFormat,
-  customFormatEng,
-} from "qmongjs"
+import { customFormat, customFormatEng } from "qmongjs";
 import { useRouter } from "next/router";
 import { abacusColors } from "../colors";
 
