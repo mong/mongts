@@ -218,7 +218,7 @@ const IndicatorSection = (props: {
             key={indDataRow.indicatorName + "-targetLevel"}
             colSpan={unitNames.length}
             align="center"
-            style={{backgroundColor: "#E0E7EB"}}
+            style={{ backgroundColor: "#E0E7EB" }}
           >
             {"Ønsket målnivå: " +
               (indDataRow.targetMeasure === null
