@@ -98,6 +98,7 @@ def main(search_dir, base_path, base_url, file_pattern='*.html'):
         file_results[filename] = process_file(filename, base_path, base_url, visited_links)
     export_to_csv(file_results)
     print('Done.')
+    return 1
 
 
 if __name__ == '__main__':
