@@ -2,11 +2,11 @@ import { useIndicatorQuery } from "qmongjs";
 import {
   LinechartBase,
   LinechartData,
-} from "qmongjs/src/components/Charts/LinechartBase";
+} from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
 import _ from "lodash";
 import { level } from "qmongjs";
-import { LineStyles, font } from "qmongjs/src/components/Charts/LinechartBase";
+import { LineStyles, font } from "qmongjs/";
 
 export type IndicatorLinechartParams = {
   registerShortName?: string;

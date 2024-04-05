@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import {
   customFormat,
   customFormatEng,
-} from "qmongjs/src/helpers/localFormater";
+} from "qmongjs";
 import { ColorLegend } from "./ColorLegend";
 import { linechartColors } from "../colors";
 

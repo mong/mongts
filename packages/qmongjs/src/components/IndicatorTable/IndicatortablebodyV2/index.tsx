@@ -11,13 +11,13 @@ import { Indicator } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
-import { customFormat } from "../../../helpers/functions";
+import { customFormat } from "qmongjs";
 import {
   LinechartBase,
   font,
   LinechartData,
   LineStyles,
-} from "../../Charts/LinechartBase";
+} from "qmongjs";
 
 export type IndicatorTableBodyV2Props = {
   context: string;

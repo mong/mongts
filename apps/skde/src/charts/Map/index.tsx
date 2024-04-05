@@ -3,7 +3,7 @@ import { scaleThreshold } from "d3-scale";
 import {
   customFormat,
   customFormatEng,
-} from "qmongjs/src/helpers/localFormater";
+} from "qmongjs";
 import { mapColors, abacusColors } from "../colors";
 import { useRouter } from "next/router";
 
