@@ -6,6 +6,10 @@ import * as hooks from "../../../../../../packages/qmongjs/src/helpers/hooks";
 import { clockTick } from "qmongjs/src/test/clockTick";
 import { render } from "@testing-library/react";
 
+Object.defineProperty(global, "performance", {
+  writable: true,
+});
+
 const data = createMedfieldTableData(medfieldTableData);
 
 test("Levels counts are correct", () => {
@@ -28,8 +32,6 @@ test("Table renders correctly", async () => {
       width={800}
     />,
   );
-
-  await clockTick(1500);
 
   expect(container).toMatchSnapshot();
 });
