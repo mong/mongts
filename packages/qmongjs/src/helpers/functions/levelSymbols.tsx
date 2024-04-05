@@ -1,7 +1,5 @@
-import { FaCircle, FaAdjust, FaRegCircle } from "react-icons/fa";
-import CircleIcon from "@mui/icons-material/Circle";
-import SquareIcon from "@mui/icons-material/Square";
-import ChangeHistoryIcon from "@mui/icons-material/ChangeHistory";
+import { FaCircle, FaAdjust, FaRegCircle, FaSquare } from "react-icons/fa";
+import { IoTriangle } from "react-icons/io5";
 
 export const levelSymbols = (level: string | undefined) => {
   return level === "H" ? (
@@ -17,17 +15,11 @@ export const levelSymbols = (level: string | undefined) => {
 
 export const newLevelSymbols = (level: string | undefined) => {
   return level === "H" ? (
-    <CircleIcon
-      style={{ outline: "#36883B", color: "#58A55C", fontSize: "1.2rem" }}
-    />
+    <FaCircle style={{ color: "#58A55C", fontSize: "1.2rem" }} />
   ) : level === "M" ? (
-    <SquareIcon
-      style={{ outline: "#DA8700", color: "#FD9C00", fontSize: "1.2rem" }}
-    />
+    <FaSquare style={{ color: "#FD9C00", fontSize: "1.2rem" }} />
   ) : level === "L" ? (
-    <ChangeHistoryIcon
-      style={{ outline: "#C43E2D", color: "#D85140", fontSize: "1.2rem" }}
-    />
+    <IoTriangle style={{ color: "#D85140", fontSize: "1.2rem" }} />
   ) : (
     <></>
   );
