@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import React from "react";
-import { LinechartBase } from "..";
+import { LinechartBase } from "..";
 import { LineStyles } from "..";
 import { vi, test, expect } from "vitest";
 
