@@ -12,8 +12,12 @@ import { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
 import { customFormat } from "../../../helpers/functions";
-import { LinechartBase, font, LinechartData, LineStyles } from "../../Charts/LinechartBase";
-
+import {
+  LinechartBase,
+  font,
+  LinechartData,
+  LineStyles,
+} from "../../Charts/LinechartBase";
 
 export type IndicatorTableBodyV2Props = {
   context: string;
@@ -127,46 +131,52 @@ const createData = (indicatorData: Indicator[]) => {
   return regData;
 };
 
-const createChartData = (data: Indicator[], indID: string, unitNames: string[]) => {
-  const indData = data.filter((row) => {return row.ind_id === indID});
-  
+const createChartData = (
+  data: Indicator[],
+  indID: string,
+  unitNames: string[],
+) => {
+  const indData = data.filter((row) => {
+    return row.ind_id === indID;
+  });
+
   const chartData = unitNames.map((unitNamesRow) => {
     let unitIndData = indData.filter((indDataRow) => {
-      return(indDataRow.unit_name === unitNamesRow)
-    })
-      return(unitIndData.map((row) => {
-        return({ x: new Date(row.year, 0), y: row.var } as LinechartData);
-  })
-  )})
+      return indDataRow.unit_name === unitNamesRow;
+    });
+    return unitIndData.map((row) => {
+      return { x: new Date(row.year, 0), y: row.var } as LinechartData;
+    });
+  });
 
-  return(chartData);
+  return chartData;
 };
 
 const randomHexColorCode = () => {
   const n = (Math.random() * 0xfffff * 1000000).toString(16);
-  return '#' + n.slice(0, 6);
+  return "#" + n.slice(0, 6);
 };
 
 const createChartStyles = (unitNames: string[], font: font) => {
   const lineStyle = {
     text: "Indikator",
     strokeDash: "0",
-    colour: "#3BAA34" 
+    colour: "#3BAA34",
   };
-  
+
   // Ugly hack
   const lineStyles = unitNames.map((unitNameRow) => {
     const lineStyle = {
       text: unitNameRow,
       strokeDash: "0",
-      colour: randomHexColorCode() 
+      colour: randomHexColorCode(),
     };
 
-    return(lineStyle)
-  }); 
+    return lineStyle;
+  });
 
-  return(new LineStyles(lineStyles, font));
-}
+  return new LineStyles(lineStyles, font);
+};
 
 const IndicatorSection = (props: {
   unitNames: string[];
@@ -188,7 +198,11 @@ const IndicatorSection = (props: {
       return rowData.find((item) => item.unitName === row)?.result;
     });
 
-    const chartDataFiltered = createChartData(chartData, indDataRow.indicatorID, unitNames)
+    const chartDataFiltered = createChartData(
+      chartData,
+      indDataRow.indicatorID,
+      unitNames,
+    );
 
     const font = {
       fontSize: 20,
@@ -308,7 +322,7 @@ const RegistrySection = (props: {
       </TableHead>
 
       <TableBody>
-        <IndicatorSection 
+        <IndicatorSection
           unitNames={unitNames}
           data={regData.indicatorData}
           chartData={chartData}
@@ -336,7 +350,11 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
     return null;
   }
 
-  const rowData = createData(indicatorQuery.data.filter((row: Indicator) => {return row.year === year}));
+  const rowData = createData(
+    indicatorQuery.data.filter((row: Indicator) => {
+      return row.year === year;
+    }),
+  );
 
   const chartData = indicatorQuery.data;
 
@@ -352,7 +370,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
           unitNames={props.unitNames}
           regData={row}
           chartData={chartData.filter((chartDataRow: Indicator) => {
-            return(chartDataRow.registry_name === row.registerShortName)
+            return chartDataRow.registry_name === row.registerShortName;
           })}
         />
       ))}
