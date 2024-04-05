@@ -48,7 +48,7 @@ def check_link(url):
     with requests.Session() as s:
         try:
             headers = {'User-Agent': 'Mozilla/5.0', 'Referer': 'https://www.skde.no'}
-            response = s.head(url, headers=headers, timeout=5)
+            response = s.head(url, headers=headers, timeout=5, allow_redirects=True)
             status_code = response.status_code
             print(status_code)
         except requests.exceptions.RequestException as e:
@@ -61,7 +61,7 @@ def process_file(filename, base_path, base_url, visited_links):
     with open(filename, 'r') as file:
         file_content = file.read()
         print(f'Processing file: {filename}')
-        
+
         current_url = base_url
         if not current_url.endswith('/'):
             current_url = current_url + '/'
