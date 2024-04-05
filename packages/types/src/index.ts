@@ -80,6 +80,7 @@ export interface RegisterName {
   id: number;
   rname: string;
   full_name: string;
+  short_name: string;
   caregiver_data: 0 | 1 | null;
   resident_data: 0 | 1 | null;
   dg_data: 0 | 1 | null;

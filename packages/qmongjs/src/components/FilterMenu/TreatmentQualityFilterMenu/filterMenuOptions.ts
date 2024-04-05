@@ -129,7 +129,7 @@ export const getMedicalFields = (medicalFieldData: any, registryData: any) => {
             valueLabel:
               registryData.find(
                 (reg: { rname: string }) => reg.rname === register,
-              )?.full_name ?? register,
+              )?.short_name ?? register,
           },
         })),
       }),
