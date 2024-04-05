@@ -3,7 +3,6 @@ import { MedfieldTable, createMedfieldTableData } from "..";
 import { medfieldTableData } from "../../../../test/test_data/data";
 import { vi, test, expect } from "vitest";
 import * as hooks from "../../../../../../packages/qmongjs/src/helpers/hooks";
-import { clockTick } from "qmongjs/src/test/clockTick";
 import { render } from "@testing-library/react";
 
 const data = createMedfieldTableData(medfieldTableData);
@@ -28,8 +27,6 @@ test("Table renders correctly", async () => {
       width={800}
     />,
   );
-
-  await clockTick(1500);
 
   expect(container).toMatchSnapshot();
 });
