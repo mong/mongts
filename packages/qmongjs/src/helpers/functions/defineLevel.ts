@@ -1,6 +1,7 @@
 import { Indicator } from "types";
+import { DataPoint } from "../../components/IndicatorTable/IndicatortablebodyV2";
 
-export const level = (indicatorData: Indicator) => {
+export const level = (indicatorData: Indicator | DataPoint) => {
   const { level_green, level_yellow, level_direction } = indicatorData;
   if (
     level_green === undefined ||
