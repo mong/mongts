@@ -5,12 +5,20 @@ import TuneIcon from "@mui/icons-material/Tune";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import { imgLoader } from "qmongjs/src/helpers/functions";
+import { imgLoader } from "../../src/helpers/functions";
 import {
   FilterSettingsAction,
   FilterSettingsValue,
   TreatmentQualityFilterMenu,
   useRegisterNamesQuery,
+  defaultYear,
+  levelKey,
+  treatmentUnitsKey,
+  yearKey,
+  medicalFieldKey,
+  useMedicalFieldsQuery,
+  IndicatorTableBodyV2,
+  IndicatorTable,
 } from "qmongjs";
 import {
   FilterIconButton,
@@ -27,19 +35,9 @@ import {
 import TreatmentQualityFooter from "../../src/components/TreatmentQuality/TreatmentQualityFooter";
 import { ThemeProvider } from "@mui/material/styles";
 import { UseQueryResult } from "@tanstack/react-query";
-import { defaultYear } from "qmongjs/src/app_config";
-import {
-  levelKey,
-  treatmentUnitsKey,
-  yearKey,
-  medicalFieldKey,
-} from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu";
-import { useMedicalFieldsQuery } from "qmongjs/src/helpers/hooks";
-import { IndicatorTableBodyV2 } from "qmongjs/src/components/IndicatorTable/IndicatortablebodyV2";
 import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import IndicatorTable from "qmongjs/src/components/IndicatorTable";
 
 /**
  * Treatment quality page (Behandlingskvalitet)
