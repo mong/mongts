@@ -26,6 +26,10 @@ export { SelectedFiltersSection } from "./components/FilterMenu/SelectedFiltersS
 export { TreeViewFilterSection } from "./components/FilterMenu/TreeViewFilterSection";
 export { TreatmentQualityFilterMenu } from "./components/FilterMenu/TreatmentQualityFilterMenu";
 export type { TreatmentQualityFilterMenuProps } from "./components/FilterMenu/TreatmentQualityFilterMenu";
+export {
+  encodeRegisterQueryParam,
+  decodeRegisterQueryParam,
+} from "./components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 export { LinechartBase, LineStyles } from "./components/Charts/LinechartBase";
 export type { LinechartData, font } from "./components/Charts/LinechartBase";
 export { customFormat } from "./helpers/functions/localFormater";
