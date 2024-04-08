@@ -1,10 +1,7 @@
 import { Grid, Axis, LineSeries, XYChart, Tooltip } from "@visx/xychart";
 import { scaleOrdinal } from "@visx/scale";
 import { useRouter } from "next/router";
-import {
-  customFormat,
-  customFormatEng,
-} from "../../helpers/functions/localFormater";
+import { customFormat } from "qmongjs";
 import { ColorLegend } from "./ColorLegend";
 import { linechartColors } from "../colors";
 
@@ -103,22 +100,13 @@ export const Linechart = <
       format_x === "month"
         ? new Date(2020, d.x - 1).toLocaleString(lang, { month: "long" })
         : d.x,
-    yAccessor: (d) =>
-      format_y
-        ? lang === "en"
-          ? customFormatEng(format_y)(d.y)
-          : customFormat(format_y)(d.y)
-        : d.y,
+    yAccessor: (d) => (format_y ? customFormat(format_y, lang)(d.y) : d.y),
   };
   const yvaluesMaxTextLength = Math.max(
     ...data.map(
       (d) =>
-        (format_y
-          ? lang === "en"
-            ? customFormatEng(format_y)(d[y])
-            : customFormat(format_y)(d[y])
-          : d[y]
-        ).toString().length,
+        (format_y ? customFormat(format_y, lang)(d[y]) : d[y]).toString()
+          .length,
     ),
   );
 
@@ -188,11 +176,7 @@ export const Linechart = <
           }}
           stroke="black"
           tickFormat={(val) =>
-            format_y
-              ? lang === "en"
-                ? customFormatEng(format_y)(val)
-                : customFormat(format_y)(val)
-              : val.toString()
+            format_y ? customFormat(format_y, lang)(val) : val.toString()
           }
         />
         <Grid columns={false} numTicks={4} />

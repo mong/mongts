@@ -7,10 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import { getOrderComparator } from "../../helpers/functions/dataTransformation";
-import {
-  customFormat,
-  customFormatEng,
-} from "../../helpers/functions/localFormater";
+import { customFormat } from "qmongjs";
 import { useRouter } from "next/router";
 import { Markdown } from "../../components/Markdown";
 
@@ -133,9 +130,7 @@ export const DataTable = <
                     }}
                   >
                     {cell.format
-                      ? lang === "en"
-                        ? customFormatEng(cell.format)(Number(row[cell.id]))
-                        : customFormat(cell.format)(Number(row[cell.id]))
+                      ? customFormat(cell.format, lang)(Number(row[cell.id]))
                       : row[cell.id]}
                   </TableCell>
                 ))}

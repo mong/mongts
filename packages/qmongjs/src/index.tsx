@@ -26,3 +26,5 @@ export { SelectedFiltersSection } from "./components/FilterMenu/SelectedFiltersS
 export { TreeViewFilterSection } from "./components/FilterMenu/TreeViewFilterSection";
 export { TreatmentQualityFilterMenu } from "./components/FilterMenu/TreatmentQualityFilterMenu";
 export type { TreatmentQualityFilterMenuProps } from "./components/FilterMenu/TreatmentQualityFilterMenu";
+
+export { customFormat } from "./helpers/functions/localFormater";
