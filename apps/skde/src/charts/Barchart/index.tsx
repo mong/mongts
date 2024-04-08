@@ -8,10 +8,7 @@ import { useRouter } from "next/router";
 import { ColorLegend } from "./ColorLegend";
 import { AnnualVarLegend } from "./AnnualVarLegend";
 import { toBarchart } from "../../helpers/functions/dataTransformation";
-import {
-  customFormat,
-  customFormatEng,
-} from "../../helpers/functions/localFormater";
+import { customFormat } from "qmongjs";
 
 import { AnnualVariation } from "./AnnualVariation";
 import { ErrorBars } from "./errorBars";
@@ -233,11 +230,7 @@ export const Barchart = <
             stroke={xAxisLineStroke}
             numTicks={4}
             tickFormat={(val) =>
-              format
-                ? lang === "en"
-                  ? customFormatEng(format)(val)
-                  : customFormat(format)(val)
-                : val.toString()
+              format ? customFormat(format, lang)(val) : val.toString()
             }
             tickLength={tickLength}
             tickStroke={xAxisTickStroke}
