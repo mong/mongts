@@ -69,8 +69,6 @@ export type LinechartBaseProps = {
   lang?: "en" | "nb" | "nn";
 };
 
-type YLim<T> = (p: T) => T
-
 export function LinechartBase({
   data,
   width,
