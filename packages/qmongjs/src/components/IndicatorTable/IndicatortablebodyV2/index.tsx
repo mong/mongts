@@ -10,7 +10,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Indicator } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
-import { levelSymbols, level } from "qmongjs";
+import { newLevelSymbols, level } from "qmongjs";
 
 import {
   LinechartBase,
@@ -196,7 +196,7 @@ const IndicatorSection = (props: {
       return {
         unitName: row.unitName,
         result: customFormat(format)(row.var),
-        symbol: levelSymbols(level(row)),
+        symbol: newLevelSymbols(level(row)),
         numerator: Math.round(row.var * row.denominator),
         denominator: row.denominator,
       };
@@ -299,8 +299,8 @@ const IndicatorSection = (props: {
           >
             <LinechartBase
               data={chartDataFiltered}
-              width={2000}
-              height={1000}
+              width={1000}
+              height={500}
               yMin={0}
               yMax={1}
               lineStyles={lineStyles}
