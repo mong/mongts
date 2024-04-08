@@ -28,4 +28,4 @@ export { TreatmentQualityFilterMenu } from "./components/FilterMenu/TreatmentQua
 export type { TreatmentQualityFilterMenuProps } from "./components/FilterMenu/TreatmentQualityFilterMenu";
 export { LinechartBase, LineStyles } from "./components/Charts/LinechartBase";
 export type { LinechartData, font } from "./components/Charts/LinechartBase";
-export { customFormat } from "./helpers/functions/localFormater";
+export { customFormat, imgLoader } from "./helpers/functions";

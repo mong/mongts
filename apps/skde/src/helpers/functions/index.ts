@@ -1,1 +1,0 @@
-export { imgLoader } from "./imgLoader";
