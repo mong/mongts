@@ -8,7 +8,7 @@ export {
 } from "./helpers/hooks";
 export { API_HOST } from "./components/RegisterPage";
 export { Layout } from "./components/Layout";
-export { level, levelSymbols } from "./helpers/functions";
+export { level, levelSymbols, newLevelSymbols } from "./helpers/functions";
 export { FilterMenu } from "./components/FilterMenu";
 export type {
   FilterMenuSelectionChangedHandler,
@@ -33,10 +33,12 @@ export {
   medicalFieldKey,
 } from "./components/FilterMenu/TreatmentQualityFilterMenu";
 export type { TreatmentQualityFilterMenuProps } from "./components/FilterMenu/TreatmentQualityFilterMenu";
+export { LinechartBase, LineStyles } from "./components/Charts/LinechartBase";
+export type { LinechartData, font } from "./components/Charts/LinechartBase";
+export { customFormat } from "./helpers/functions/localFormater";
 export { IndicatorTableBodyV2 } from "./components/IndicatorTable/IndicatortablebodyV2";
 export { IndicatorTable } from "./components/IndicatorTable";
 export { defaultYear } from "./app_config";
-
 export { SelectTreatmentUnits } from "./components/SelectTreatmentUnits";
 export { useUnitNamesQuery } from "./helpers/hooks";
 export type { NestedTreatmentUnitName } from "./components/RegisterPage/unitnamelist/unitnamelistbody";

@@ -1,14 +1,25 @@
 import { formatLocale, FormatLocaleDefinition } from "d3-format";
 
-const formatDefinition: FormatLocaleDefinition = {
-  decimal: ",",
-  thousands: "\u202f",
-  grouping: [3],
-  currency: ["NOK", ""],
-  percent: "\u202f%",
-};
-
-export function customFormat(numberFormat: string) {
+export function customFormat(
+  numberFormat: string,
+  lang?: "en" | "nb" | "nn" | "no",
+) {
+  const formatDefinition: FormatLocaleDefinition =
+    lang === "en"
+      ? {
+          decimal: ".",
+          thousands: ",",
+          grouping: [3],
+          currency: ["USD", ""],
+          percent: "%",
+        }
+      : {
+          decimal: ",",
+          thousands: "\u202f",
+          grouping: [3],
+          currency: ["NOK", ""],
+          percent: "\u202f%",
+        };
   try {
     return formatLocale(formatDefinition).format(numberFormat);
   } catch (error) {

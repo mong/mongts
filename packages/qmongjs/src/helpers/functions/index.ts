@@ -4,4 +4,4 @@ export { filterOrderIndID } from "./filterorderindid";
 export { imgLoader } from "./imgLoader";
 export { level } from "./defineLevel";
 export { customFormat } from "./localFormater";
-export { levelSymbols } from "./levelSymbols";
+export { levelSymbols, newLevelSymbols } from "./levelSymbols";

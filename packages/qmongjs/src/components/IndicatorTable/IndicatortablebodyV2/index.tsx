@@ -9,9 +9,17 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Indicator } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
-import { useIndicatorQuery } from "qmongjs";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
-import { customFormat } from "../../../helpers/functions";
+import { newLevelSymbols, level } from "qmongjs";
+
+import {
+  LinechartBase,
+  font,
+  LinechartData,
+  LineStyles,
+  customFormat,
+  useIndicatorQuery,
+} from "qmongjs";
 
 export type IndicatorTableBodyV2Props = {
   context: string;
@@ -22,12 +30,15 @@ export type IndicatorTableBodyV2Props = {
   medfields: string[];
 };
 
-type DataPoint = {
+export type DataPoint = {
   unitName: string;
   var: number;
   numerator: number;
   denominator: number;
   format: string | null;
+  level_direction: number | null;
+  level_green: number | null;
+  level_yellow: number | null;
 };
 
 type IndicatorData = {
@@ -114,6 +125,9 @@ const createData = (indicatorData: Indicator[]) => {
           numerator: Math.round(row.var * row.denominator),
           denominator: row.denominator,
           format: row.sformat,
+          level_direction: row.level_direction,
+          level_green: row.level_green,
+          level_yellow: row.level_yellow,
         });
       }
 
@@ -125,11 +139,52 @@ const createData = (indicatorData: Indicator[]) => {
   return regData;
 };
 
+const createChartData = (
+  data: Indicator[],
+  indID: string,
+  unitNames: string[],
+) => {
+  const indData = data.filter((row) => {
+    return row.ind_id === indID;
+  });
+
+  const chartData = unitNames.map((unitNamesRow) => {
+    let unitIndData = indData.filter((indDataRow) => {
+      return indDataRow.unit_name === unitNamesRow;
+    });
+    return unitIndData.map((row) => {
+      return { x: new Date(row.year, 0), y: row.var } as LinechartData;
+    });
+  });
+
+  return chartData;
+};
+
+const randomHexColorCode = () => {
+  const n = (Math.random() * 0xfffff * 1000000).toString(16);
+  return "#" + n.slice(0, 6);
+};
+
+const createChartStyles = (unitNames: string[], font: font) => {
+  const lineStyles = unitNames.map((unitNameRow) => {
+    const lineStyle = {
+      text: unitNameRow,
+      strokeDash: "0",
+      colour: randomHexColorCode(),
+    };
+
+    return lineStyle;
+  });
+
+  return new LineStyles(lineStyles, font);
+};
+
 const IndicatorSection = (props: {
   unitNames: string[];
   data: IndicatorData[];
+  chartData: Indicator[];
 }) => {
-  const { unitNames, data } = props;
+  const { unitNames, data, chartData } = props;
 
   // Map indicators to rows
   return data.map((indDataRow) => {
@@ -137,12 +192,33 @@ const IndicatorSection = (props: {
 
     const rowData = indDataRow.data.map((row) => {
       const format = row.format === null ? ",.0%" : row.format;
-      return { unitName: row.unitName, result: customFormat(format)(row.var) };
+
+      return {
+        unitName: row.unitName,
+        result: customFormat(format)(row.var),
+        symbol: newLevelSymbols(level(row)),
+        numerator: Math.round(row.var * row.denominator),
+        denominator: row.denominator,
+      };
     });
 
     const rowDataSorted = unitNames.map((row) => {
-      return rowData.find((item) => item.unitName === row)?.result;
+      return rowData.find((item) => item.unitName === row);
     });
+
+    const chartDataFiltered = createChartData(
+      chartData,
+      indDataRow.indicatorID,
+      unitNames,
+    );
+
+    const font = {
+      fontSize: 20,
+      fontWeight: 700,
+      fontFamily: "Plus Jakarta Sans",
+    };
+
+    const lineStyles = createChartStyles(unitNames, font);
 
     return (
       <React.Fragment key={indDataRow.indicatorName}>
@@ -177,7 +253,16 @@ const IndicatorSection = (props: {
           {rowDataSorted.map((row, index) => {
             return (
               <TableCell align={"center"} key={indDataRow.indicatorID + index}>
-                {row}
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>{[row?.result, row?.symbol]}</td>
+                    </tr>
+                    <tr>
+                      <td>{row?.numerator + " av " + row?.denominator}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </TableCell>
             );
           })}
@@ -194,6 +279,7 @@ const IndicatorSection = (props: {
             key={indDataRow.indicatorName + "-targetLevel"}
             colSpan={unitNames.length}
             align="center"
+            style={{ backgroundColor: "#E0E7EB" }}
           >
             {"Ønsket målnivå: " +
               (indDataRow.targetMeasure === null
@@ -211,7 +297,16 @@ const IndicatorSection = (props: {
             colSpan={unitNames.length + 1}
             align="center"
           >
-            Charts
+            <LinechartBase
+              data={chartDataFiltered}
+              width={1000}
+              height={500}
+              yMin={0}
+              yMax={1}
+              lineStyles={lineStyles}
+              font={font}
+              yAxisText={"Andel"}
+            />
           </TableCell>
         </TableRow>
       </React.Fragment>
@@ -222,8 +317,9 @@ const IndicatorSection = (props: {
 const RegistrySection = (props: {
   unitNames: string[];
   regData: RegisterData;
+  chartData: Indicator[];
 }) => {
-  const { unitNames, regData } = props;
+  const { unitNames, regData, chartData } = props;
 
   return (
     <React.Fragment>
@@ -244,7 +340,11 @@ const RegistrySection = (props: {
       </TableHead>
 
       <TableBody>
-        <IndicatorSection unitNames={unitNames} data={regData.indicatorData} />
+        <IndicatorSection
+          unitNames={unitNames}
+          data={regData.indicatorData}
+          chartData={chartData}
+        />
       </TableBody>
     </React.Fragment>
   );
@@ -257,7 +357,6 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
 
   const queryParams: FetchIndicatorParams = {
     context: context,
-    treatmentYear: year,
     unitNames: unitNames,
     type: type,
   };
@@ -269,7 +368,13 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
     return null;
   }
 
-  const rowData = createData(indicatorQuery.data);
+  const rowData = createData(
+    indicatorQuery.data.filter((row: Indicator) => {
+      return row.year === year;
+    }),
+  );
+
+  const chartData = indicatorQuery.data;
 
   const rowDataFiltered = rowData.filter((row) => {
     return medfields.includes(row.registerShortName);
@@ -282,6 +387,9 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
           key={row.registerName}
           unitNames={props.unitNames}
           regData={row}
+          chartData={chartData.filter((chartDataRow: Indicator) => {
+            return chartDataRow.registry_name === row.registerShortName;
+          })}
         />
       ))}
     </Table>
