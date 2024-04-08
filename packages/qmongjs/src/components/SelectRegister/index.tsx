@@ -47,7 +47,7 @@ const SelectRegister = (props: selectedRegisterProps) => {
             .filter(
               (reg) =>
                 reg.rname?.toLowerCase().includes(value.toLocaleLowerCase()) ||
-                reg.full_name
+                reg.short_name
                   ?.toLowerCase()
                   .includes(value.toLocaleLowerCase()),
             )
@@ -64,7 +64,7 @@ const SelectRegister = (props: selectedRegisterProps) => {
         );
 
   filteredReg.sort((a, b) =>
-    a.full_name > b.full_name ? 1 : b.full_name > a.full_name ? -1 : 0,
+    a.short_name > b.short_name ? 1 : b.short_name > a.short_name ? -1 : 0,
   );
 
   return (
@@ -119,7 +119,7 @@ const SelectRegister = (props: selectedRegisterProps) => {
                   passHref
                   onClick={() => updateBtnToggle(!btnToggle)}
                 >
-                  {reg.full_name}
+                  {reg.short_name}
                 </Link>
               </li>
             );

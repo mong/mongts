@@ -10,6 +10,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Indicator } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
+
 import {
   LinechartBase,
   font,
@@ -28,12 +29,15 @@ export type IndicatorTableBodyV2Props = {
   medfields: string[];
 };
 
-type DataPoint = {
+export type DataPoint = {
   unitName: string;
   var: number;
   numerator: number;
   denominator: number;
   format: string | null;
+  level_direction: number | null;
+  level_green: number | null;
+  level_yellow: number | null;
 };
 
 type IndicatorData = {
@@ -120,6 +124,9 @@ const createData = (indicatorData: Indicator[]) => {
           numerator: Math.round(row.var * row.denominator),
           denominator: row.denominator,
           format: row.sformat,
+          level_direction: row.level_direction,
+          level_green: row.level_green,
+          level_yellow: row.level_yellow,
         });
       }
 
@@ -184,11 +191,18 @@ const IndicatorSection = (props: {
 
     const rowData = indDataRow.data.map((row) => {
       const format = row.format === null ? ",.0%" : row.format;
-      return { unitName: row.unitName, result: customFormat(format)(row.var) };
+
+      return {
+        unitName: row.unitName,
+        result: customFormat(format)(row.var),
+        symbol: levelSymbols(level(row)),
+        numerator: Math.round(row.var * row.denominator),
+        denominator: row.denominator,
+      };
     });
 
     const rowDataSorted = unitNames.map((row) => {
-      return rowData.find((item) => item.unitName === row)?.result;
+      return rowData.find((item) => item.unitName === row);
     });
 
     const chartDataFiltered = createChartData(
@@ -238,7 +252,16 @@ const IndicatorSection = (props: {
           {rowDataSorted.map((row, index) => {
             return (
               <TableCell align={"center"} key={indDataRow.indicatorID + index}>
-                {row}
+                <table>
+                  <tbody>
+                    <tr>
+                      <td>{[row?.result, row?.symbol]}</td>
+                    </tr>
+                    <tr>
+                      <td>{row?.numerator + " av " + row?.denominator}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </TableCell>
             );
           })}
@@ -255,6 +278,7 @@ const IndicatorSection = (props: {
             key={indDataRow.indicatorName + "-targetLevel"}
             colSpan={unitNames.length}
             align="center"
+            style={{ backgroundColor: "#E0E7EB" }}
           >
             {"Ønsket målnivå: " +
               (indDataRow.targetMeasure === null
