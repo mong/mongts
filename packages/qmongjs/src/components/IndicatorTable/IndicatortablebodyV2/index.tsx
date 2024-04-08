@@ -321,6 +321,18 @@ const RegistrySection = (props: {
 }) => {
   const { unitNames, regData, chartData } = props;
 
+  regData.indicatorData.sort((a: IndicatorData, b: IndicatorData) => {
+    if (a.sortingName === b.sortingName) {
+      return 0;
+    } else if (a.sortingName === null) {
+      return 1;
+    } else if (b.sortingName === null) {
+      return -1;
+    } else {
+      return a.sortingName < b.sortingName ? 1 : -1;
+    }
+  });
+
   return (
     <React.Fragment>
       <TableHead>
