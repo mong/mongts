@@ -63,11 +63,13 @@ export type LinechartBaseProps = {
   lineStyles: LineStyles;
   font: font;
   yAxisText: string;
-  yMin: number;
-  yMax: number;
+  yMin?: number;
+  yMax?: number;
   format_y?: string;
   lang?: "en" | "nb" | "nn";
 };
+
+type YLim<T> = (p: T) => T
 
 export function LinechartBase({
   data,
@@ -98,7 +100,7 @@ export function LinechartBase({
   });
 
   const yScale = scaleLinear<number>({
-    domain: [yMin, yMax],
+    domain: [yMin!, yMax!],
   });
 
   const borderWidth = 100;
