@@ -10,6 +10,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { Indicator } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
+import { levelSymbols, level } from "qmongjs";
 
 import {
   LinechartBase,
