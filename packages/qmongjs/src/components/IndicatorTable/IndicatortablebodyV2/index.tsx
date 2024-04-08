@@ -52,6 +52,7 @@ type IndicatorData = {
 };
 
 type RegisterData = {
+  registerFullName: string;
   registerName: string;
   registerShortName: string;
   registerID: number;
@@ -79,8 +80,9 @@ const createData = (indicatorData: Indicator[]) => {
       // Add medfield to array if not already there
       if (!returnData[i]) {
         returnData[i] = {
-          registerName: row.registry_full_name,
-          registerShortName: row.registry_name,
+          registerFullName: row.registry_full_name,
+          registerName: row.registry_name,
+          registerShortName: row.registry_short_name,
           registerID: row.registry_id,
           medfieldID: row.medfield_id,
           indicatorData: [] as IndicatorData[],
@@ -338,7 +340,7 @@ const RegistrySection = (props: {
       <TableHead>
         <TableRow key={regData.registerName + "-row"}>
           <TableCell key={regData.registerName}>
-            {regData.registerName}
+            {regData.registerShortName}
           </TableCell>
 
           {unitNames.map((row, index) => {
@@ -388,8 +390,16 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
 
   const chartData = indicatorQuery.data;
 
-  const rowDataFiltered = rowData.filter((row) => {
-    return medfields.includes(row.registerShortName);
+  let rowDataFiltered = rowData.filter((row) => {
+    return medfields.includes(row.registerName);
+  });
+
+  rowDataFiltered.sort((a: RegisterData, b: RegisterData) => {
+    if (a.registerShortName === b.registerShortName) {
+      return 0;
+    } else {
+      return a.registerShortName < b.registerShortName ? -1 : 1;
+    }
   });
 
   return (
@@ -400,7 +410,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
           unitNames={props.unitNames}
           regData={row}
           chartData={chartData.filter((chartDataRow: Indicator) => {
-            return chartDataRow.registry_name === row.registerShortName;
+            return chartDataRow.registry_name === row.registerName;
           })}
         />
       ))}
