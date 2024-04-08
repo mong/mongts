@@ -1,15 +1,7 @@
 name: Find dead links
 on:
-  pull_request:
-    branches: [main, develop, dependency_updates]
-    paths-ignore:
-      - "apps/api/**"
   schedule:
     - cron: "0 3 * * *"
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
 
 jobs:
   find_dead_links:
