@@ -1,6 +1,6 @@
 import { geoMercator, geoPath } from "d3-geo";
 import { scaleThreshold } from "d3-scale";
-import { customFormat, customFormatEng } from "qmongjs";
+import { customFormat } from "qmongjs";
 import { mapColors, abacusColors } from "../colors";
 import { useRouter } from "next/router";
 
@@ -193,13 +193,10 @@ export const Map: React.FC<MapProps> = ({
                           textAnchor="middle"
                           fontSize={30}
                         >
-                          {lang === "en"
-                            ? customFormatEng(format ? format : ".1f")(
-                                colorScale.invertExtent(d)[0],
-                              )
-                            : customFormat(format ? format : ".1f")(
-                                colorScale.invertExtent(d)[0],
-                              )}
+                          {customFormat(
+                            format ? format : ".1f",
+                            lang,
+                          )(colorScale.invertExtent(d)[0])}
                         </text>
                       </>
                     )}

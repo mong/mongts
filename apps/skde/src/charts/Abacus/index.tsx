@@ -3,7 +3,7 @@ import { scaleLinear } from "@visx/scale";
 import { Group } from "@visx/group";
 import { max } from "d3-array";
 import classNames from "../Barchart/ChartLegend.module.css";
-import { customFormat, customFormatEng } from "qmongjs";
+import { customFormat } from "qmongjs";
 import { useRouter } from "next/router";
 import { abacusColors } from "../colors";
 
@@ -120,11 +120,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
             stroke={axisLineStroke}
             numTicks={4}
             tickFormat={(val) =>
-              format
-                ? lang === "en"
-                  ? customFormatEng(format)(val)
-                  : customFormat(format)(val)
-                : val.toString()
+              format ? customFormat(format, lang)(val) : val.toString()
             }
             tickLength={tickLength}
             tickStroke={axisTickStroke}
