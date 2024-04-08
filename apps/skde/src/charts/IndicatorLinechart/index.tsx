@@ -1,9 +1,13 @@
-import { useIndicatorQuery } from "qmongjs";
-import LinechartBase, { LinechartData } from "../LinechartBase";
 import { UseQueryResult } from "@tanstack/react-query";
 import _ from "lodash";
-import { level } from "qmongjs";
-import { LineStyles, font } from "../LinechartBase";
+import {
+  useIndicatorQuery,
+  LineStyles,
+  font,
+  level,
+  LinechartBase,
+  LinechartData,
+} from "qmongjs";
 
 export type IndicatorLinechartParams = {
   registerShortName?: string;

@@ -69,7 +69,7 @@ export type LinechartBaseProps = {
   lang?: "en" | "nb" | "nn";
 };
 
-export default function LinechartBase({
+export function LinechartBase({
   data,
   width,
   height,
@@ -98,7 +98,7 @@ export default function LinechartBase({
   });
 
   const yScale = scaleLinear<number>({
-    domain: [yMin, yMax],
+    domain: [yMin!, yMax!],
   });
 
   const borderWidth = 100;

@@ -1,7 +1,6 @@
 import { geoMercator, geoPath } from "d3-geo";
 import { scaleThreshold } from "d3-scale";
 import { customFormat } from "qmongjs";
-
 import { mapColors, abacusColors } from "../colors";
 import { useRouter } from "next/router";
 
