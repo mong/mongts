@@ -39,5 +39,5 @@ jobs:
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Github Actions job result
           body: "test"
-          to: ${{secrets.MAILING_LIST_INVALID_LINKS}}
+          to: arnfinn.steindal@gmail.com
           from: "SKDE sin bot"
