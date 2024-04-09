@@ -1,9 +1,7 @@
 name: Find dead links
 on:
-  push:
-    branches: email
   schedule:
-    - cron: "0 3 * * *"
+    - cron: "30 8 * * *"
 
 jobs:
   find_dead_links:
