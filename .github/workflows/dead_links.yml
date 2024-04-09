@@ -1,5 +1,7 @@
 name: Find dead links
 on:
+  push:
+    branches: email
   schedule:
     - cron: "0 3 * * *"
 
@@ -27,3 +29,14 @@ jobs:
           yarn run export
       - name: Find dead links
         run: scripts/atlas/checklinks.py apps/skde/out/ apps/skde/out/ https://www.skde.no/
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: Github Actions job result
+          body: "test"
+          to: ${{secrets.MAILING_LIST_INVALID_LINKS}}
+          from: "SKDE sin bot"
