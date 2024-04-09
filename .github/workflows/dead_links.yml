@@ -19,10 +19,11 @@ jobs:
         with:
           server_address: smtp.gmail.com
           server_port: 465
+          secure: true
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
           subject: Døde lenker på skde.no
           body: |
             Det finnes lenker på skde.no som ikke lenger lever. Se https://github.com/mong/mongts/actions/workflows/dead_links.yml for mer informasjon.
           to: arnfinn.hykkerud.steindal@helse-nord.no
-          from: "SKDE sin bot"
+          from: "Github actions"
