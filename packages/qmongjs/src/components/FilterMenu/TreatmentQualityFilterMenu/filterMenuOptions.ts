@@ -108,6 +108,33 @@ export const getTreatmentUnitsTree = (
   };
 };
 
+/** The prefix used in the query params for the register names */
+export const registerQueryParamPrefix = "reg-";
+
+/**
+ * Formats a register name for use in query parameters, i.e., adding a prefix.
+ *
+ * @param register Plain register short name
+ * @returns Register name formatted for use in query parameters
+ */
+export const encodeRegisterQueryParam = (register: string) => {
+  return `${registerQueryParamPrefix}${register}`;
+};
+
+/**
+ * Decode a register name formatted for query parameters, i.e., remove prefix.
+ *
+ * @param register Plain register short name
+ * @returns Register name formatted for use in query parameters
+ */
+export const decodeRegisterQueryParam = (registerParam: string) => {
+  if (registerParam && registerParam.startsWith(registerQueryParamPrefix)) {
+    return registerParam.substring(registerQueryParamPrefix.length);
+  } else {
+    return registerParam;
+  }
+};
+
 /**
  * Gets the medical field options available for selection
  *
@@ -123,15 +150,18 @@ export const getMedicalFields = (medicalFieldData: any, registryData: any) => {
           value: field.shortName,
           valueLabel: field.name,
         },
-        children: field.registers?.map((register: string) => ({
-          nodeValue: {
-            value: register,
-            valueLabel:
-              registryData.find(
-                (reg: { rname: string }) => reg.rname === register,
-              )?.short_name ?? register,
-          },
-        })),
+        children: field.registers?.map((register: string) => {
+          const prefixedRegister = encodeRegisterQueryParam(register);
+          return {
+            nodeValue: {
+              value: prefixedRegister,
+              valueLabel:
+                registryData.find(
+                  (reg: { rname: string }) => reg.rname === register,
+                )?.short_name ?? register,
+            },
+          };
+        }),
       }),
     );
   } else {

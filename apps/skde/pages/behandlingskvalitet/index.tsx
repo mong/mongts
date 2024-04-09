@@ -10,6 +10,7 @@ import {
   FilterSettingsAction,
   FilterSettingsValue,
   TreatmentQualityFilterMenu,
+  decodeRegisterQueryParam,
   useRegisterNamesQuery,
 } from "qmongjs";
 import {
@@ -137,7 +138,9 @@ export default function TreatmentQuality() {
       registerFilter = Array.from(
         new Set<string>([
           ...selectedMedicalFields.flatMap((field) => field.registers),
-          ...selectedRegisters,
+          ...selectedRegisters.map((register) =>
+            decodeRegisterQueryParam(register),
+          ),
         ]),
       );
     }
