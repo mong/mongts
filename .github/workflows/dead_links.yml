@@ -21,7 +21,8 @@ jobs:
           server_port: 465
           username: ${{secrets.MAIL_USERNAME}}
           password: ${{secrets.MAIL_PASSWORD}}
-          subject: Github Actions job result
-          body: "test"
-          to: arnfinn.steindal@gmail.com
+          subject: Døde lenker på skde.no
+          body: |
+            Det finnes lenker på skde.no som ikke lenger lever. Se https://github.com/mong/mongts/actions/workflows/dead_links.yml for mer informasjon.
+          to: arnfinn.hykkerud.steindal@helse-nord.no
           from: "SKDE sin bot"
