@@ -2,7 +2,7 @@ import Link from "next/link";
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Image from "next/image";
-import { imgLoader } from "../../helpers/functions";
+import { imgLoader } from "qmongjs";
 
 interface Props {
   children: React.ReactNode;

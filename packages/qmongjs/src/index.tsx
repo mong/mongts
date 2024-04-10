@@ -32,4 +32,4 @@ export {
 } from "./components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 export { LinechartBase, LineStyles } from "./components/Charts/LinechartBase";
 export type { LinechartData, font } from "./components/Charts/LinechartBase";
-export { customFormat } from "./helpers/functions/localFormater";
+export { customFormat, imgLoader } from "./helpers/functions";

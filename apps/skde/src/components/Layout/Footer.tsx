@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import classNames from "./Footer.module.css";
-import { imgLoader } from "../../helpers/functions";
+import { imgLoader } from "qmongjs";
 
 export const Footer: React.FC<{}> = ({}) => {
   return (

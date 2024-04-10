@@ -3,7 +3,7 @@ import Image from "next/legacy/image";
 import classNames from "./AtlasLink.module.css";
 import { timeFormat } from "d3-time-format";
 
-import { imgLoader } from "../../helpers/functions";
+import { imgLoader } from "qmongjs";
 
 interface Props {
   linkTo: string;
