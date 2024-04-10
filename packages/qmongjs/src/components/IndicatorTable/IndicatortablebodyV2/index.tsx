@@ -200,6 +200,7 @@ const IndicatorRow = (props: {
       symbol: newLevelSymbols(level(row)),
       numerator: Math.round(row.var * row.denominator),
       denominator: row.denominator,
+      dg: row.dg,
     };
   });
 
@@ -249,15 +250,36 @@ const IndicatorRow = (props: {
         </TableCell>
 
         {rowDataSorted.map((row, index) => {
+          const cellData = [row?.result, row?.symbol];
+
+          const lowDG = row?.dg == null ? false : row?.dg! < 0.6;
+          const lowN = row?.denominator == null ? true : row?.denominator! < 10;
+
+          if (row?.dg === null) {
+            let cellData = "Ingen DG";
+          } else if (row?.dg! < 0.6) {
+            const cellData = " Lav DG";
+          } else if (row?.denominator === null) {
+            const cellData = "Ingen data";
+          } else if (row?.denominator! < 10) {
+            const cellData = "N mindre enn 10";
+          } else {
+            var c;
+          }
+
           return (
             <TableCell align={"center"} key={indData.indicatorID + index}>
               <table>
                 <tbody>
                   <tr>
-                    <td>{[row?.result, row?.symbol]}</td>
+                    <td>{lowDG ? "Lav DG" : lowN ? "Lav N" : cellData}</td>
                   </tr>
                   <tr>
-                    <td>{row?.numerator + " av " + row?.denominator}</td>
+                    <td>
+                      {lowDG || lowN
+                        ? null
+                        : row?.numerator + " av " + row?.denominator}
+                    </td>
                   </tr>
                 </tbody>
               </table>
