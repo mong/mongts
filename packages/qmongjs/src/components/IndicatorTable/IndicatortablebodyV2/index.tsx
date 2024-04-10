@@ -181,6 +181,137 @@ const createChartStyles = (unitNames: string[], font: font) => {
   return new LineStyles(lineStyles, font);
 };
 
+// Component for individual rows
+const IndicatorRow = (props: {
+  unitNames: string[];
+  indData: IndicatorData;
+  chartData: Indicator[];
+}) => {
+  const { unitNames, indData, chartData } = props;
+
+  const [open, setOpen] = React.useState(false);
+
+  const rowData = indData.data.map((row) => {
+    const format = row.format === null ? ",.0%" : row.format;
+
+    return {
+      unitName: row.unitName,
+      result: customFormat(format)(row.var),
+      symbol: newLevelSymbols(level(row)),
+      numerator: Math.round(row.var * row.denominator),
+      denominator: row.denominator,
+    };
+  });
+
+  // Get the units in the right order
+  const rowDataSorted = unitNames.map((row) => {
+    return rowData.find((item) => item.unitName === row);
+  });
+
+  const chartDataFiltered = createChartData(
+    chartData,
+    indData.indicatorID,
+    unitNames,
+  );
+
+  const font = {
+    fontSize: 20,
+    fontWeight: 700,
+    fontFamily: "Plus Jakarta Sans",
+  };
+
+  const lineStyles = createChartStyles(unitNames, font);
+
+  return (
+    <React.Fragment key={indData.indicatorName}>
+      <TableRow
+        key={indData.indicatorName + "-mainrow"}
+        onClick={() => setOpen(!open)}
+        style={{ cursor: "pointer" }}
+      >
+        <TableCell key={indData.indicatorName}>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <IconButton
+                    onClick={() => setOpen(!open)}
+                    aria-label="expand"
+                    size="small"
+                  >
+                    {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                  </IconButton>
+                </td>
+                <td>{indData.indicatorName}</td>
+              </tr>
+            </tbody>
+          </table>
+        </TableCell>
+
+        {rowDataSorted.map((row, index) => {
+          return (
+            <TableCell align={"center"} key={indData.indicatorID + index}>
+              <table>
+                <tbody>
+                  <tr>
+                    <td>{[row?.result, row?.symbol]}</td>
+                  </tr>
+                  <tr>
+                    <td>{row?.numerator + " av " + row?.denominator}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </TableCell>
+          );
+        })}
+      </TableRow>
+
+      <TableRow
+        key={indData.indicatorName + "-collapse"}
+        sx={{ visibility: open ? "visible" : "collapse" }}
+      >
+        <TableCell key={indData.indicatorName + "-shortDescription"}>
+          {indData.shortDescription}
+        </TableCell>
+        <TableCell
+          key={indData.indicatorName + "-targetLevel"}
+          colSpan={unitNames.length}
+          align="center"
+          style={{ backgroundColor: "#E0E7EB" }}
+        >
+          {"Ønsket målnivå: " +
+            (indData.targetMeasure === null
+              ? ""
+              : customFormat(",.0%")(indData.targetMeasure))}
+        </TableCell>
+      </TableRow>
+
+      <TableRow
+        key={indData.indicatorName + "-charts"}
+        sx={{ visibility: open ? "visible" : "collapse" }}
+      >
+        <TableCell
+          key={indData.indicatorName + "-charts"}
+          colSpan={unitNames.length + 1}
+          align="center"
+        >
+          <LinechartBase
+            data={chartDataFiltered}
+            width={1000}
+            height={500}
+            yMin={0}
+            yMax={1}
+            lineStyles={lineStyles}
+            font={font}
+            yAxisText={"Andel"}
+          />
+        </TableCell>
+      </TableRow>
+    </React.Fragment>
+  );
+};
+
+// Component for collection of indicators per registry
 const IndicatorSection = (props: {
   unitNames: string[];
   data: IndicatorData[];
@@ -190,132 +321,18 @@ const IndicatorSection = (props: {
 
   // Map indicators to rows
   return data.map((indDataRow) => {
-    const [open, setOpen] = React.useState(false);
-
-    const rowData = indDataRow.data.map((row) => {
-      const format = row.format === null ? ",.0%" : row.format;
-
-      return {
-        unitName: row.unitName,
-        result: customFormat(format)(row.var),
-        symbol: newLevelSymbols(level(row)),
-        numerator: Math.round(row.var * row.denominator),
-        denominator: row.denominator,
-      };
-    });
-
-    const rowDataSorted = unitNames.map((row) => {
-      return rowData.find((item) => item.unitName === row);
-    });
-
-    const chartDataFiltered = createChartData(
-      chartData,
-      indDataRow.indicatorID,
-      unitNames,
-    );
-
-    const font = {
-      fontSize: 20,
-      fontWeight: 700,
-      fontFamily: "Plus Jakarta Sans",
-    };
-
-    const lineStyles = createChartStyles(unitNames, font);
-
     return (
-      <React.Fragment key={indDataRow.indicatorName}>
-        <TableRow
-          key={indDataRow.indicatorName + "-mainrow"}
-          onClick={() => setOpen(!open)}
-          style={{ cursor: "pointer" }}
-        >
-          <TableCell key={indDataRow.indicatorName}>
-            <table>
-              <tbody>
-                <tr>
-                  <td>
-                    <IconButton
-                      onClick={() => setOpen(!open)}
-                      aria-label="expand"
-                      size="small"
-                    >
-                      {open ? (
-                        <KeyboardArrowUpIcon />
-                      ) : (
-                        <KeyboardArrowDownIcon />
-                      )}
-                    </IconButton>
-                  </td>
-                  <td>{indDataRow.indicatorName}</td>
-                </tr>
-              </tbody>
-            </table>
-          </TableCell>
-
-          {rowDataSorted.map((row, index) => {
-            return (
-              <TableCell align={"center"} key={indDataRow.indicatorID + index}>
-                <table>
-                  <tbody>
-                    <tr>
-                      <td>{[row?.result, row?.symbol]}</td>
-                    </tr>
-                    <tr>
-                      <td>{row?.numerator + " av " + row?.denominator}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </TableCell>
-            );
-          })}
-        </TableRow>
-
-        <TableRow
-          key={indDataRow.indicatorName + "-collapse"}
-          sx={{ visibility: open ? "visible" : "collapse" }}
-        >
-          <TableCell key={indDataRow.indicatorName + "-shortDescription"}>
-            {indDataRow.shortDescription}
-          </TableCell>
-          <TableCell
-            key={indDataRow.indicatorName + "-targetLevel"}
-            colSpan={unitNames.length}
-            align="center"
-            style={{ backgroundColor: "#E0E7EB" }}
-          >
-            {"Ønsket målnivå: " +
-              (indDataRow.targetMeasure === null
-                ? ""
-                : customFormat(",.0%")(indDataRow.targetMeasure))}
-          </TableCell>
-        </TableRow>
-
-        <TableRow
-          key={indDataRow.indicatorName + "-charts"}
-          sx={{ visibility: open ? "visible" : "collapse" }}
-        >
-          <TableCell
-            key={indDataRow.indicatorName + "-charts"}
-            colSpan={unitNames.length + 1}
-            align="center"
-          >
-            <LinechartBase
-              data={chartDataFiltered}
-              width={1000}
-              height={500}
-              yMin={0}
-              yMax={1}
-              lineStyles={lineStyles}
-              font={font}
-              yAxisText={"Andel"}
-            />
-          </TableCell>
-        </TableRow>
-      </React.Fragment>
+      <IndicatorRow
+        key={"IndicatorRow" + indDataRow.indicatorID}
+        unitNames={unitNames}
+        indData={indDataRow}
+        chartData={chartData}
+      />
     );
   });
 };
 
+// Component for registry and unit names header plus indicator rows
 const RegistrySection = (props: {
   unitNames: string[];
   regData: RegisterData;
@@ -352,6 +369,7 @@ const RegistrySection = (props: {
   );
 };
 
+// Top level component for the table
 export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   props,
 ) => {
