@@ -39,6 +39,7 @@ export type DataPoint = {
   level_direction: number | null;
   level_green: number | null;
   level_yellow: number | null;
+  dg: number | null;
 };
 
 type IndicatorData = {
@@ -128,6 +129,7 @@ const createData = (indicatorData: Indicator[]) => {
           level_direction: row.level_direction,
           level_green: row.level_green,
           level_yellow: row.level_yellow,
+          dg: row.dg,
         });
       }
 
@@ -370,7 +372,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
 
   const rowData = createData(
     indicatorQuery.data.filter((row: Indicator) => {
-      return row.year === year;
+      return row.year === year && medfields.includes(row.registry_name);
     }),
   );
 
