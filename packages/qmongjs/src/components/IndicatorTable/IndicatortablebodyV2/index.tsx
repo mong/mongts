@@ -305,6 +305,18 @@ const IndicatorRow = (props: {
           />
         </TableCell>
       </TableRow>
+
+      <TableRow
+        key={indData.indicatorName + "-description"}
+        sx={{ visibility: open ? "visible" : "collapse" }}
+      >
+        <TableCell
+          key={indData.indicatorName + "-decription"}
+          colSpan={unitNames.length + 1}
+        >
+          {indData.longDescription}
+        </TableCell>
+      </TableRow>
     </React.Fragment>
   );
 };
