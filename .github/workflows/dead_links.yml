@@ -1,7 +1,7 @@
 name: Find dead links
 on:
   schedule:
-    - cron: "30 8 * * *"
+    - cron: "0 7 * * 1-5"
 
 jobs:
   find_dead_links:
