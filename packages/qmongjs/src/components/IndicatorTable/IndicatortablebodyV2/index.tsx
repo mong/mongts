@@ -26,7 +26,7 @@ export type IndicatorTableBodyV2Props = {
   type: string;
   year: number;
   unitNames: string[];
-  level: string;
+  levels: string;
   medfields: string[];
 };
 
@@ -149,7 +149,7 @@ const createChartData = (
   });
 
   const chartData = unitNames.map((unitNamesRow) => {
-    let unitIndData = indData.filter((indDataRow) => {
+    const unitIndData = indData.filter((indDataRow) => {
       return indDataRow.unit_name === unitNamesRow;
     });
     return unitIndData.map((row) => {
@@ -182,10 +182,11 @@ const createChartStyles = (unitNames: string[], font: font) => {
 // Component for individual rows
 const IndicatorRow = (props: {
   unitNames: string[];
+  levels: string;
   indData: IndicatorData;
   chartData: Indicator[];
 }) => {
-  const { unitNames, indData, chartData } = props;
+  const { unitNames, levels, indData, chartData } = props;
 
   const [open, setOpen] = React.useState(false);
 
@@ -196,6 +197,12 @@ const IndicatorRow = (props: {
       unitName: row.unitName,
       result: customFormat(format)(row.var),
       symbol: newLevelSymbols(level(row)),
+      showCell:
+        levels === ""
+          ? true
+          : level(row) == null
+            ? true
+            : level(row) === levels,
       numerator: Math.round(row.var * row.denominator),
       denominator: row.denominator,
     };
@@ -252,10 +259,14 @@ const IndicatorRow = (props: {
               <table>
                 <tbody>
                   <tr>
-                    <td>{[row?.result, row?.symbol]}</td>
+                    <td>{row?.showCell ? [row?.result, row.symbol] : null}</td>
                   </tr>
                   <tr>
-                    <td>{row?.numerator + " av " + row?.denominator}</td>
+                    <td>
+                      {row?.showCell
+                        ? row?.numerator + " av " + row?.denominator
+                        : null}
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -312,10 +323,11 @@ const IndicatorRow = (props: {
 // Component for collection of indicators per registry
 const IndicatorSection = (props: {
   unitNames: string[];
+  levels: string;
   data: IndicatorData[];
   chartData: Indicator[];
 }) => {
-  const { unitNames, data, chartData } = props;
+  const { unitNames, levels, data, chartData } = props;
 
   // Map indicators to rows
   return data.map((indDataRow) => {
@@ -323,6 +335,7 @@ const IndicatorSection = (props: {
       <IndicatorRow
         key={"IndicatorRow" + indDataRow.indicatorID}
         unitNames={unitNames}
+        levels={levels}
         indData={indDataRow}
         chartData={chartData}
       />
@@ -333,10 +346,11 @@ const IndicatorSection = (props: {
 // Component for registry and unit names header plus indicator rows
 const RegistrySection = (props: {
   unitNames: string[];
+  levels: string;
   regData: RegisterData;
   chartData: Indicator[];
 }) => {
-  const { unitNames, regData, chartData } = props;
+  const { unitNames, levels, regData, chartData } = props;
 
   return (
     <React.Fragment>
@@ -359,6 +373,7 @@ const RegistrySection = (props: {
       <TableBody>
         <IndicatorSection
           unitNames={unitNames}
+          levels={levels}
           data={regData.indicatorData}
           chartData={chartData}
         />
@@ -371,7 +386,7 @@ const RegistrySection = (props: {
 export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   props,
 ) => {
-  const { context, type, year, unitNames, level, medfields } = props;
+  const { context, type, year, unitNames, levels, medfields } = props;
 
   const queryParams: FetchIndicatorParams = {
     context: context,
@@ -403,6 +418,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
       {rowDataFiltered.map((row) => (
         <RegistrySection
           key={row.registerName}
+          levels={levels}
           unitNames={props.unitNames}
           regData={row}
           chartData={chartData.filter((chartDataRow: Indicator) => {
