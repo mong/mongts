@@ -1,7 +1,7 @@
 name: Find dead links
 on:
   schedule:
-    - cron: "0 3 * * *"
+    - cron: "0 7 * * 1-5"
 
 jobs:
   find_dead_links:
@@ -27,3 +27,17 @@ jobs:
           yarn run export
       - name: Find dead links
         run: scripts/atlas/checklinks.py apps/skde/out/ apps/skde/out/ https://www.skde.no/
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3
+        if: failure()
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: Døde lenker på skde.no
+          html_body: |
+            Det finnes lenker på skde.no som ikke lenger lever. Se <a href="https://github.com/mong/mongts/actions/workflows/dead_links.yml">github</a>  for mer informasjon.
+          to: arnfinn.hykkerud.steindal@helse-nord.no
+          from: "Github actions"
