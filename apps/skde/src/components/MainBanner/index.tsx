@@ -1,6 +1,6 @@
 import Image from "next/legacy/image";
 
-import { imgLoader } from "../../helpers/functions";
+import { imgLoader } from "qmongjs";
 import classNames from "./MainBanner.module.css";
 
 type MainBannerProps = {
