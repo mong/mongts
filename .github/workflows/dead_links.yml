@@ -1,0 +1,43 @@
+name: Find dead links
+on:
+  schedule:
+    - cron: "0 7 * * 1-5"
+
+jobs:
+  find_dead_links:
+    name: Find dead links
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4.1.1
+        with:
+          ref: main
+      - name: Enable Corepack before setting up Node
+        run: corepack enable
+      - name: Set up Node.js
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: "20.x"
+          cache: "yarn"
+      - run: corepack enable && yarn install
+      - name: Build page
+        env:
+          NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
+        run: |
+          yarn run export
+      - name: Find dead links
+        run: scripts/atlas/checklinks.py apps/skde/out/ apps/skde/out/ https://www.skde.no/
+      - name: Send email
+        uses: dawidd6/action-send-mail@v3
+        if: failure()
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+          subject: Døde lenker på skde.no
+          html_body: |
+            Det finnes lenker på skde.no som ikke lenger lever. Se <a href="https://github.com/mong/mongts/actions/workflows/dead_links.yml">github</a>  for mer informasjon.
+          to: arnfinn.hykkerud.steindal@helse-nord.no
+          from: "Github actions"

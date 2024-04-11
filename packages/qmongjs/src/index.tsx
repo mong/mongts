@@ -33,9 +33,13 @@ export {
   medicalFieldKey,
 } from "./components/FilterMenu/TreatmentQualityFilterMenu";
 export type { TreatmentQualityFilterMenuProps } from "./components/FilterMenu/TreatmentQualityFilterMenu";
+export {
+  encodeRegisterQueryParam,
+  decodeRegisterQueryParam,
+} from "./components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 export { LinechartBase, LineStyles } from "./components/Charts/LinechartBase";
 export type { LinechartData, font } from "./components/Charts/LinechartBase";
-export { customFormat } from "./helpers/functions/localFormater";
+export { customFormat, imgLoader } from "./helpers/functions";
 export { IndicatorTableBodyV2 } from "./components/IndicatorTable/IndicatortablebodyV2";
 export { IndicatorTable } from "./components/IndicatorTable";
 export { defaultYear } from "./app_config";

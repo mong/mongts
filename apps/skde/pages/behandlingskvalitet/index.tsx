@@ -5,11 +5,12 @@ import TuneIcon from "@mui/icons-material/Tune";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import { imgLoader } from "../../src/helpers/functions";
+import { imgLoader } from "qmongjs";
 import {
   FilterSettingsAction,
   FilterSettingsValue,
   TreatmentQualityFilterMenu,
+  decodeRegisterQueryParam,
   useRegisterNamesQuery,
   defaultYear,
   levelKey,
@@ -135,7 +136,9 @@ export default function TreatmentQuality() {
       registerFilter = Array.from(
         new Set<string>([
           ...selectedMedicalFields.flatMap((field) => field.registers),
-          ...selectedRegisters,
+          ...selectedRegisters.map((register) =>
+            decodeRegisterQueryParam(register),
+          ),
         ]),
       );
     }
