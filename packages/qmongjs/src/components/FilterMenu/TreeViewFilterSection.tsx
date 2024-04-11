@@ -13,6 +13,7 @@ import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
 import { FilterSettingsActionType } from "./FilterSettingsReducer";
 import { TreeViewFilterSectionItem } from "./TreeViewFilterSectionItem";
 import Alert from "@mui/material/Alert";
+import TreeViewSearchBox from "./TreeViewSearchBox";
 
 /**
  * The structure of a node in the tree data used with the TreeViewFilterSection
@@ -46,6 +47,7 @@ export type TreeViewSectionProps = FilterMenuSectionProps & {
   maxselections?: number;
   treedata: TreeViewFilterSectionNode[];
   autouncheckid?: string;
+  searchbox?: boolean;
 };
 
 /**
@@ -220,6 +222,7 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
   const filterSettingsDispatch = useContext(FilterSettingsDispatchContext);
 
   const isMultiSelect = props.multiselect ?? true;
+  const searchBox = props.searchbox ?? false;
   const maxSelections = props.maxselections;
   const filterKey = props.filterkey;
   const treeData = props.treedata;
@@ -313,6 +316,11 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
     <Box>
       {showMaxSelectionAlert && (
         <Alert severity="warning">{`Du kan maksimalt huke av ${maxSelections} valg.`}</Alert>
+      )}
+      {searchBox && (
+        <TreeViewSearchBox
+          options={Array.from(filterSettingsValuesMap.values())}
+        />
       )}
       <TreeView
         key={treeViewKey}
