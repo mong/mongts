@@ -329,7 +329,7 @@ const IndicatorRow = (props: {
                 return (
                   <a
                     href={href}
-                    target="_blank"
+                    target={href?.startsWith("#") ? "_self" : "_blank"}
                     rel="noreferrer"
                     style={{ color: "#006492" }}
                   >
