@@ -11,6 +11,11 @@ import { Indicator } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
 import { newLevelSymbols, level } from "qmongjs";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { PluggableList } from "react-markdown/lib";
+
+const remarkPlugins: PluggableList = [remarkGfm];
 
 import {
   LinechartBase,
@@ -314,7 +319,28 @@ const IndicatorRow = (props: {
           key={indData.indicatorName + "-decription"}
           colSpan={unitNames.length + 1}
         >
-          {indData.longDescription}
+          <ReactMarkdown
+              remarkPlugins={remarkPlugins}
+              components={{
+                p({ children }) {
+                  return <p style={{ margin: 0 }}>{children}</p>;
+                },
+                a({ href, children }) {
+                  return (
+                    <a
+                      href={href}
+                      target="_blank"
+                      rel="noreferrer"
+                      style={{ color: "#006492" }}
+                    >
+                      {children}
+                    </a>
+                  );
+                },
+              }}
+            >
+              {indData.longDescription}
+            </ReactMarkdown>
         </TableCell>
       </TableRow>
     </React.Fragment>
