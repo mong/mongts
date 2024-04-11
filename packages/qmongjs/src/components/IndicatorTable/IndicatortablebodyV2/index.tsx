@@ -320,27 +320,27 @@ const IndicatorRow = (props: {
           colSpan={unitNames.length + 1}
         >
           <ReactMarkdown
-              remarkPlugins={remarkPlugins}
-              components={{
-                p({ children }) {
-                  return <p style={{ margin: 0 }}>{children}</p>;
-                },
-                a({ href, children }) {
-                  return (
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noreferrer"
-                      style={{ color: "#006492" }}
-                    >
-                      {children}
-                    </a>
-                  );
-                },
-              }}
-            >
-              {indData.longDescription}
-            </ReactMarkdown>
+            remarkPlugins={remarkPlugins}
+            components={{
+              p({ children }) {
+                return <p style={{ margin: 0 }}>{children}</p>;
+              },
+              a({ href, children }) {
+                return (
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    style={{ color: "#006492" }}
+                  >
+                    {children}
+                  </a>
+                );
+              },
+            }}
+          >
+            {indData.longDescription}
+          </ReactMarkdown>
         </TableCell>
       </TableRow>
     </React.Fragment>
