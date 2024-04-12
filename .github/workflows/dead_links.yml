@@ -1,5 +1,7 @@
 name: Find dead links
 on:
+  push:
+    branches: "fix_dead_links"
   schedule:
     - cron: "0 5 * * 1-5"
 
@@ -10,8 +12,6 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4.1.1
-        with:
-          ref: main
       - name: Enable Corepack before setting up Node
         run: corepack enable
       - name: Set up Node.js
