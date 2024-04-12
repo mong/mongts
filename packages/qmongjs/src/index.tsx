@@ -4,6 +4,7 @@ export {
   useRegisterNamesQuery,
   fetchRegisterNames,
   useIndicatorQuery,
+  useMedicalFieldsQuery,
 } from "./helpers/hooks";
 export { API_HOST } from "./components/RegisterPage";
 export { Layout } from "./components/Layout";
@@ -24,7 +25,13 @@ export type { FilterSettingsAction } from "./components/FilterMenu/FilterSetting
 export { RadioGroupFilterSection } from "./components/FilterMenu/RadioGroupFilterSection";
 export { SelectedFiltersSection } from "./components/FilterMenu/SelectedFiltersSection";
 export { TreeViewFilterSection } from "./components/FilterMenu/TreeViewFilterSection";
-export { TreatmentQualityFilterMenu } from "./components/FilterMenu/TreatmentQualityFilterMenu";
+export {
+  TreatmentQualityFilterMenu,
+  levelKey,
+  treatmentUnitsKey,
+  yearKey,
+  medicalFieldKey,
+} from "./components/FilterMenu/TreatmentQualityFilterMenu";
 export type { TreatmentQualityFilterMenuProps } from "./components/FilterMenu/TreatmentQualityFilterMenu";
 export {
   encodeRegisterQueryParam,
@@ -33,3 +40,12 @@ export {
 export { LinechartBase, LineStyles } from "./components/Charts/LinechartBase";
 export type { LinechartData, font } from "./components/Charts/LinechartBase";
 export { customFormat, imgLoader } from "./helpers/functions";
+export { IndicatorTableBodyV2 } from "./components/IndicatorTable/IndicatortablebodyV2";
+export { IndicatorTable } from "./components/IndicatorTable";
+export { defaultYear } from "./app_config";
+export { SelectTreatmentUnits } from "./components/SelectTreatmentUnits";
+export { useUnitNamesQuery } from "./helpers/hooks";
+export type { NestedTreatmentUnitName } from "./components/RegisterPage/unitnamelist/unitnamelistbody";
+export { mainQueryParamsConfig } from "./app_config";
+export { validateTreatmentUnits } from "./helpers/functions";
+export { UnitNameList } from "./components/RegisterPage/unitnamelist";
