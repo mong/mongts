@@ -8,21 +8,21 @@ export type TreeViewSearchBoxProps = {
 
 interface AutocompleteOption {
   label: string;
-  displayText: string;
 }
 
 export function TreeViewSearchBox(props: TreeViewSearchBoxProps) {
   const hintText = props.hintText || "Søk...";
   const options: AutocompleteOption[] = props.options.map((option) => ({
-    displayText: option.valueLabel,
-    label: option.value,
+    label: option.valueLabel,
   }));
 
   return (
     <>
       <Autocomplete
         autoHighlight
-        options={options}
+        options={Array.from(
+          new Set<string>(options.map((option) => option.label)),
+        )}
         renderInput={(params) => <TextField {...params} label={hintText} />}
       />
     </>
