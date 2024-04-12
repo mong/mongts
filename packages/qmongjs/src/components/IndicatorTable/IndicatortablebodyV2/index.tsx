@@ -357,7 +357,7 @@ const RegistrySection = (props: {
       <TableHead>
         <TableRow key={regData.registerName + "-row"}>
           <TableCell key={regData.registerName}>
-            {regData.registerShortName}
+            {regData.registerFullName}
           </TableCell>
 
           {unitNames.map((row, index) => {
