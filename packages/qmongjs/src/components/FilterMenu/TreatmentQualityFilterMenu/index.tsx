@@ -323,6 +323,7 @@ export function TreatmentQualityFilterMenu({
           sectionid={medicalFieldKey}
           sectiontitle="Fagområder"
           filterkey={medicalFieldKey}
+          searchbox={true}
         />
         <TreeViewFilterSection
           refreshState={shouldRefreshInititalState}
@@ -337,6 +338,7 @@ export function TreatmentQualityFilterMenu({
           sectionid={treatmentUnitsKey}
           sectiontitle="Behandlingsenheter"
           filterkey={treatmentUnitsKey}
+          searchbox={true}
         />
       </FilterMenu>
     </>

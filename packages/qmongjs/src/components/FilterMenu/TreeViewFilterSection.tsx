@@ -13,6 +13,7 @@ import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
 import { FilterSettingsActionType } from "./FilterSettingsReducer";
 import { TreeViewFilterSectionItem } from "./TreeViewFilterSectionItem";
 import Alert from "@mui/material/Alert";
+import TreeViewSearchBox from "./TreeViewSearchBox";
 
 /**
  * The structure of a node in the tree data used with the TreeViewFilterSection
@@ -46,6 +47,7 @@ export type TreeViewSectionProps = FilterMenuSectionProps & {
   maxselections?: number;
   treedata: TreeViewFilterSectionNode[];
   autouncheckid?: string;
+  searchbox?: boolean;
 };
 
 /**
@@ -181,13 +183,14 @@ export const initFilterSettingsValuesMap = (
 };
 
 /**
- * Initializes the default expanded nodes for the TreeView
+ * Gets a list of the nodes to expand, including their anchestor ids, given the
+ * selectedIds, which can be at various levels.
  *
  * @param selectedIds The selected node ids
  * @param filterSettingsValuesMap The map used for looking up FilterSettingValues by node ids
- * @returns A list of node ids that should be expanded by default
+ * @returns A list of node ids that should be expanded
  */
-export const initDefaultExpanded = (
+export const buildExpandedNodeList = (
   selectedIds: string[],
   filterSettingsValuesMap: Map<string, TreeViewFilterSettingsValue>,
 ) => {
@@ -220,31 +223,37 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
   const filterSettingsDispatch = useContext(FilterSettingsDispatchContext);
 
   const isMultiSelect = props.multiselect ?? true;
+  const searchBox = props.searchbox ?? false;
   const maxSelections = props.maxselections;
+  const autoUncheckId = props.autouncheckid;
   const filterKey = props.filterkey;
   const treeData = props.treedata;
   const selectedIds = getSelectedNodeIds(filterSettings.map.get(filterKey));
   const filterSettingsValuesMap = initFilterSettingsValuesMap(treeData);
   const [showMaxSelectionAlert, setMaxSelectionAlert] = useState(false);
   const [expanded, setExpanded] = useState(
-    initDefaultExpanded(selectedIds, filterSettingsValuesMap),
+    buildExpandedNodeList(selectedIds, filterSettingsValuesMap),
   );
   const [treeViewKey, setTreeViewKey] = useState(0);
 
   useEffect(() => {
-    setExpanded(initDefaultExpanded(selectedIds, filterSettingsValuesMap));
+    setExpanded(buildExpandedNodeList(selectedIds, filterSettingsValuesMap));
     setTreeViewKey(treeViewKey + 1);
   }, [props.refreshState]);
 
   /**
-   * A for updating the selected nodes in the filter settings state
+   * Handler for updating the selected nodes in the filter settings state
    */
   const handleCheckboxClick = (
     checked: boolean,
-    nodeId: string,
+    nodeIds: string | string[],
     autoUncheckId?: string,
   ) => {
     let updatedSelectedIds = selectedIds;
+
+    if (!Array.isArray(nodeIds)) {
+      nodeIds = [nodeIds];
+    }
 
     if (checked) {
       if (isMultiSelect) {
@@ -253,19 +262,23 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
           return;
         } else {
           let selectedIdsFiltered = selectedIds;
-          if (autoUncheckId && nodeId !== autoUncheckId) {
+          if (autoUncheckId && !nodeIds.includes(autoUncheckId)) {
             selectedIdsFiltered = selectedIds.filter(
               (id) => id !== autoUncheckId,
             );
-            updatedSelectedIds = [...selectedIdsFiltered, nodeId];
-          } else if (nodeId === autoUncheckId) {
-            updatedSelectedIds = [nodeId];
+            updatedSelectedIds = Array.from(
+              new Set(selectedIdsFiltered.concat(nodeIds)),
+            );
+          } else if (autoUncheckId && nodeIds.includes(autoUncheckId)) {
+            updatedSelectedIds = [autoUncheckId];
           } else {
-            updatedSelectedIds = [...selectedIds, nodeId];
+            updatedSelectedIds = Array.from(
+              new Set(selectedIdsFiltered.concat(nodeIds)),
+            );
           }
         }
       } else {
-        updatedSelectedIds = [nodeId];
+        updatedSelectedIds = nodeIds;
       }
 
       const selectedFilterSettingValues = updatedSelectedIds
@@ -290,7 +303,9 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
         type: FilterSettingsActionType.DEL_SECTION_SELECTIONS,
         sectionSetting: {
           key: filterKey,
-          values: [{ value: nodeId, valueLabel: "" }],
+          values: nodeIds.map((nodeId) => {
+            return { value: nodeId, valueLabel: "" };
+          }),
         },
       });
     }
@@ -298,6 +313,23 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
     if (maxSelections !== undefined) {
       setMaxSelectionAlert(false);
     }
+  };
+
+  /**
+   * Search handler for the search box. Selects and expands matching nodes
+   *
+   * @param searchText The text entered in the search box
+   */
+  const handleSearch = (nodeIds: string[]) => {
+    handleCheckboxClick(true, nodeIds, autoUncheckId);
+    const nodeAndAnchestorIds = buildExpandedNodeList(
+      nodeIds,
+      filterSettingsValuesMap,
+    );
+    const newExpanded = Array.from(
+      new Set<string>(expanded.concat(nodeAndAnchestorIds)),
+    );
+    setExpanded(newExpanded);
   };
 
   /** Toggle expanded state for a node */
@@ -313,6 +345,12 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
     <Box>
       {showMaxSelectionAlert && (
         <Alert severity="warning">{`Du kan maksimalt huke av ${maxSelections} valg.`}</Alert>
+      )}
+      {searchBox && (
+        <TreeViewSearchBox
+          options={Array.from(filterSettingsValuesMap.values())}
+          onSearch={handleSearch}
+        />
       )}
       <TreeView
         key={treeViewKey}
