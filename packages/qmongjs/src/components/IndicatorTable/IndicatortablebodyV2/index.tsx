@@ -413,13 +413,22 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
     return medfields.includes(row.registerName);
   });
 
-  rowDataFiltered.sort((a: RegisterData, b: RegisterData) => {
-    return a.medfieldID - b.medfieldID ||  a.registerShortName === b.registerShortName ? 0 : a.registerShortName < b.registerShortName ? -1 : 1;
-  });
+  let rowDataSorted = rowDataFiltered.sort(
+    (a: RegisterData, b: RegisterData) => {
+      return (
+        a.medfieldID - b.medfieldID ||
+        (a.registerShortName === b.registerShortName
+          ? 0
+          : a.registerShortName < b.registerShortName
+            ? -1
+            : 1)
+      );
+    },
+  );
 
   return (
     <Table>
-      {rowDataFiltered.map((row) => (
+      {rowDataSorted.map((row) => (
         <RegistrySection
           key={row.registerName}
           unitNames={props.unitNames}
