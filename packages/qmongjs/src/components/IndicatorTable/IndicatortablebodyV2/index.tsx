@@ -338,9 +338,9 @@ const IndicatorSection = (props: {
       ? (showRow = true)
       : indDataRow.data
             .map((dataPointRow) => level(dataPointRow) === levels)
-            .every((x) => x === true)
-        ? (showRow = true)
-        : (showRow = false);
+            .every((x) => x === false)
+        ? (showRow = false)
+        : (showRow = true);
 
     const returnVal = showRow ? (
       <IndicatorRow
