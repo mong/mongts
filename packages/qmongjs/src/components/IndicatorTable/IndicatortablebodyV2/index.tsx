@@ -26,7 +26,7 @@ export type IndicatorTableBodyV2Props = {
   type: string;
   year: number;
   unitNames: string[];
-  levels: "H" | "M" | "L" | "";
+  levels: string;
   medfields: string[];
 };
 
