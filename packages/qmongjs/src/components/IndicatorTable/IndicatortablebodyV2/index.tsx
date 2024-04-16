@@ -332,25 +332,28 @@ const IndicatorSection = (props: {
   // Map indicators to rows and show only rows where there is at least
   // one indicator not removed by the filter
   return data.map((indDataRow) => {
-
     let showRow;
 
-    levels === "" ? showRow = true :
-      indDataRow.data.map((dataPointRow) => level(dataPointRow) === levels).every(x => x === true) ?
-      showRow = true : showRow = false;
+    levels === ""
+      ? (showRow = true)
+      : indDataRow.data
+            .map((dataPointRow) => level(dataPointRow) === levels)
+            .every((x) => x === true)
+        ? (showRow = true)
+        : (showRow = false);
 
-     const returnVal = showRow ? 
+    const returnVal = showRow ? (
       <IndicatorRow
-      key={"IndicatorRow" + indDataRow.indicatorID}
-      unitNames={unitNames}
-      levels={levels}
-      indData={indDataRow}
-      chartData={chartData}
-    /> : null
+        key={"IndicatorRow" + indDataRow.indicatorID}
+        unitNames={unitNames}
+        levels={levels}
+        indData={indDataRow}
+        chartData={chartData}
+      />
+    ) : null;
 
     return returnVal;
-    } 
-  )
+  });
 };
 
 // Component for registry and unit names header plus indicator rows
