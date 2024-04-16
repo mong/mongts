@@ -93,7 +93,9 @@ def failed_links(file_results):
     errors_found = 0
     for filename, link_results in file_results.items():
         for url, status_code in link_results.items():
-            if status_code >= 400:
+            if status_code == 403:
+                print(f'Forbidden link in {filename}: {url} (status code: {status_code})', file=sys.stdout)
+            elif status_code >= 400:
                 print(f'Invalid link in {filename}: {url} (status code: {status_code})', file=sys.stderr)
                 errors_found += 1
     return errors_found
