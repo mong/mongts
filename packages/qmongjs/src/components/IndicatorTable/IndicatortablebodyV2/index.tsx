@@ -1,8 +1,6 @@
 import React from "react";
 import IconButton from "@mui/material/IconButton";
-import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -14,6 +12,11 @@ import { newLevelSymbols, level } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
+import {
+  StyledTable,
+  StyledTableRow,
+  StyledTableCell,
+} from "./IndicatorTableBodyV2Styles";
 
 const remarkPlugins: PluggableList = [remarkGfm];
 
@@ -227,12 +230,12 @@ const IndicatorRow = (props: {
 
   return (
     <React.Fragment key={indData.indicatorName}>
-      <TableRow
+      <StyledTableRow
         key={indData.indicatorName + "-mainrow"}
         onClick={() => setOpen(!open)}
         style={{ cursor: "pointer" }}
       >
-        <TableCell key={indData.indicatorName}>
+        <StyledTableCell key={indData.indicatorName}>
           <table>
             <tbody>
               <tr>
@@ -249,11 +252,11 @@ const IndicatorRow = (props: {
               </tr>
             </tbody>
           </table>
-        </TableCell>
+        </StyledTableCell>
 
         {rowDataSorted.map((row, index) => {
           return (
-            <TableCell align={"center"} key={indData.indicatorID + index}>
+            <StyledTableCell align={"center"} key={indData.indicatorID + index}>
               <table>
                 <tbody>
                   <tr>
@@ -264,19 +267,19 @@ const IndicatorRow = (props: {
                   </tr>
                 </tbody>
               </table>
-            </TableCell>
+            </StyledTableCell>
           );
         })}
-      </TableRow>
+      </StyledTableRow>
 
       <TableRow
         key={indData.indicatorName + "-collapse"}
         sx={{ visibility: open ? "visible" : "collapse" }}
       >
-        <TableCell key={indData.indicatorName + "-shortDescription"}>
+        <StyledTableCell key={indData.indicatorName + "-shortDescription"}>
           {indData.shortDescription}
-        </TableCell>
-        <TableCell
+        </StyledTableCell>
+        <StyledTableCell
           key={indData.indicatorName + "-targetLevel"}
           colSpan={unitNames.length}
           align="center"
@@ -286,14 +289,14 @@ const IndicatorRow = (props: {
             (indData.targetMeasure === null
               ? ""
               : customFormat(",.0%")(indData.targetMeasure))}
-        </TableCell>
+        </StyledTableCell>
       </TableRow>
 
       <TableRow
         key={indData.indicatorName + "-charts"}
         sx={{ visibility: open ? "visible" : "collapse" }}
       >
-        <TableCell
+        <StyledTableCell
           key={indData.indicatorName + "-charts"}
           colSpan={unitNames.length + 1}
           align="center"
@@ -308,14 +311,14 @@ const IndicatorRow = (props: {
             font={font}
             yAxisText={"Andel"}
           />
-        </TableCell>
+        </StyledTableCell>
       </TableRow>
 
-      <TableRow
+      <StyledTableRow
         key={indData.indicatorName + "-description"}
         sx={{ visibility: open ? "visible" : "collapse" }}
       >
-        <TableCell
+        <StyledTableCell
           key={indData.indicatorName + "-decription"}
           colSpan={unitNames.length + 1}
         >
@@ -341,8 +344,8 @@ const IndicatorRow = (props: {
           >
             {indData.longDescription}
           </ReactMarkdown>
-        </TableCell>
-      </TableRow>
+        </StyledTableCell>
+      </StyledTableRow>
     </React.Fragment>
   );
 };
@@ -380,15 +383,18 @@ const RegistrySection = (props: {
     <React.Fragment>
       <TableHead>
         <TableRow key={regData.registerName + "-row"}>
-          <TableCell key={regData.registerName}>
+          <StyledTableCell key={regData.registerName}>
             {regData.registerName}
-          </TableCell>
+          </StyledTableCell>
 
           {unitNames.map((row, index) => {
             return (
-              <TableCell align="center" key={regData.registerName + index}>
+              <StyledTableCell
+                align="center"
+                key={regData.registerName + index}
+              >
                 {row}
-              </TableCell>
+              </StyledTableCell>
             );
           })}
         </TableRow>
@@ -437,7 +443,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   });
 
   return (
-    <Table>
+    <StyledTable>
       {rowDataFiltered.map((row) => (
         <RegistrySection
           key={row.registerName}
@@ -448,6 +454,6 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
           })}
         />
       ))}
-    </Table>
+    </StyledTable>
   );
 };
