@@ -223,13 +223,13 @@ const IndicatorRow = (props: {
   const lineStyles = createChartStyles(unitNames, font);
 
   return (
-    <React.Fragment key={indData.indicatorName}>
+    <React.Fragment key={indData.indicatorID + "-indicatorSection"}>
       <TableRow
         key={indData.indicatorName + "-mainrow"}
         onClick={() => setOpen(!open)}
         style={{ cursor: "pointer" }}
       >
-        <TableCell key={indData.indicatorName}>
+        <TableCell key={indData.indicatorID}>
           <table>
             <tbody>
               <tr>
@@ -267,10 +267,10 @@ const IndicatorRow = (props: {
       </TableRow>
 
       <TableRow
-        key={indData.indicatorName + "-collapse"}
+        key={indData.indicatorID + "-collapse"}
         sx={{ visibility: open ? "visible" : "collapse" }}
       >
-        <TableCell key={indData.indicatorName + "-shortDescription"}>
+        <TableCell key={indData.indicatorID + "-shortDescription"}>
           {indData.shortDescription}
         </TableCell>
         <TableCell
@@ -287,11 +287,11 @@ const IndicatorRow = (props: {
       </TableRow>
 
       <TableRow
-        key={indData.indicatorName + "-charts"}
+        key={indData.indicatorID + "-charts"}
         sx={{ visibility: open ? "visible" : "collapse" }}
       >
         <TableCell
-          key={indData.indicatorName + "-charts"}
+          key={indData.indicatorID + "-charts"}
           colSpan={unitNames.length + 1}
           align="center"
         >
@@ -341,15 +341,15 @@ const RegistrySection = (props: {
   const { unitNames, regData, chartData } = props;
 
   regData.indicatorData.sort((a: IndicatorData, b: IndicatorData) => {
-    if (a.sortingName === b.sortingName) {
-      return 0;
-    } else if (a.sortingName === null) {
-      return 1;
-    } else if (b.sortingName === null) {
-      return -1;
-    } else {
-      return a.sortingName < b.sortingName ? 1 : -1;
-    }
+    return a.sortingName === b.sortingName
+      ? 0
+      : a.sortingName === null
+        ? 1
+        : b.sortingName === null
+          ? -1
+          : a.sortingName < b.sortingName
+            ? -1
+            : 1;
   });
 
   return (
@@ -372,6 +372,7 @@ const RegistrySection = (props: {
 
       <TableBody>
         <IndicatorSection
+          key={regData.registerName}
           unitNames={unitNames}
           data={regData.indicatorData}
           chartData={chartData}
