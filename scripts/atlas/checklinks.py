@@ -5,7 +5,6 @@ import os
 import fnmatch
 import re
 import requests
-import csv
 
 
 def get_matching_filenames(directory, pattern):
@@ -83,15 +82,6 @@ def process_file(filename, base_path, base_url, visited_links, verbose):
     return link_results
 
 
-def export_to_csv(file_results):
-    with open('results.csv', 'w', newline='') as csvfile:
-        fieldnames = ['filename', 'url', 'status code']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        for filename, link_results in file_results.items():
-            for url, status_code in link_results.items():
-                writer.writerow({'filename': filename, 'url': url, 'status code': status_code})
-
 def failed_links(file_results):
     errors_found = 0
     for filename, link_results in file_results.items():
@@ -110,7 +100,6 @@ def main(search_dir, base_path, base_url, file_pattern='*.html', verbose=False):
     visited_links = {}
     for filename in matching_files:
         file_results[filename] = process_file(filename, base_path, base_url, visited_links, verbose)
-#    export_to_csv(file_results)
     num_failed = failed_links(file_results)
     print('Done.')
     return num_failed
