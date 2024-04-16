@@ -5,7 +5,6 @@ import os
 import fnmatch
 import re
 import requests
-import csv
 
 
 def get_matching_filenames(directory, pattern):
@@ -50,13 +49,12 @@ def check_link(url):
             headers = {'User-Agent': 'Mozilla/5.0', 'Referer': 'https://www.skde.no'}
             response = s.head(url, headers=headers, timeout=5, allow_redirects=True)
             status_code = response.status_code
-            print(status_code)
         except requests.exceptions.RequestException as e:
-            print(f'Error: {e}')
+            print(f'Error for URL {url}: {e}')
     return status_code
 
 
-def process_file(filename, base_path, base_url, visited_links):
+def process_file(filename, base_path, base_url, visited_links, verbose):
     link_results = {}
     with open(filename, 'r') as file:
         file_content = file.read()
@@ -68,44 +66,40 @@ def process_file(filename, base_path, base_url, visited_links):
         rel_path = filename[filename.rindex(base_path) + len(base_path):]
         current_url = current_url + rel_path
         current_url = current_url.replace('index.html', '')
-        print(f'Current URL: {current_url}')
+        if verbose:
+            print(f'Current URL: {current_url}')
 
         urls = extract_urls(file_content, base_url, current_url)
         for url in urls:
-            print(f'URL: {url}')
+            if verbose:
+                print(f'URL: {url}')
             if url not in visited_links:
                 response = check_link(url)
+                if verbose:
+                    print(f'Status code: {response}')
                 visited_links[url] = response
             link_results[url] = visited_links[url]
     return link_results
 
 
-def export_to_csv(file_results):
-    with open('results.csv', 'w', newline='') as csvfile:
-        fieldnames = ['filename', 'url', 'status code']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-        writer.writeheader()
-        for filename, link_results in file_results.items():
-            for url, status_code in link_results.items():
-                writer.writerow({'filename': filename, 'url': url, 'status code': status_code})
-
 def failed_links(file_results):
     errors_found = 0
     for filename, link_results in file_results.items():
         for url, status_code in link_results.items():
-            if status_code >= 400:
+            if status_code == 403:
+                print(f'Forbidden link in {filename}: {url} (status code: {status_code})', file=sys.stdout)
+            elif status_code >= 400 or status_code == -1:
                 print(f'Invalid link in {filename}: {url} (status code: {status_code})', file=sys.stderr)
                 errors_found += 1
     return errors_found
 
 
-def main(search_dir, base_path, base_url, file_pattern='*.html'):
+def main(search_dir, base_path, base_url, file_pattern='*.html', verbose=False):
     matching_files = get_matching_filenames(search_dir, file_pattern)
     file_results = {}
     visited_links = {}
     for filename in matching_files:
-        file_results[filename] = process_file(filename, base_path, base_url, visited_links)
-#    export_to_csv(file_results)
+        file_results[filename] = process_file(filename, base_path, base_url, visited_links, verbose)
     num_failed = failed_links(file_results)
     print('Done.')
     return num_failed
