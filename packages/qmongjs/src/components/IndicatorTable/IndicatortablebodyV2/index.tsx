@@ -414,11 +414,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   });
 
   rowDataFiltered.sort((a: RegisterData, b: RegisterData) => {
-    if (a.registerShortName === b.registerShortName) {
-      return 0;
-    } else {
-      return a.registerShortName < b.registerShortName ? -1 : 1;
-    }
+    return a.medfieldID - b.medfieldID ||  a.registerShortName === b.registerShortName ? 0 : a.registerShortName < b.registerShortName ? -1 : 1;
   });
 
   return (
