@@ -1,5 +1,7 @@
 name: Find dead links
 on:
+  push:
+    branches: "epost-liste"
   schedule:
     - cron: "0 5 * * 1-5"
 
