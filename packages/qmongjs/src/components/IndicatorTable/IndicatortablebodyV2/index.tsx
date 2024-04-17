@@ -267,7 +267,7 @@ const IndicatorRow = (props: {
         </TableCell>
 
         {rowDataSorted.map((row, index) => {
-          const cellOpacity = row?.showCell ? 1 : 0.3;
+          const cellOpacity = levels === "" ? 1 : row?.showCell ? 1 : 0.3;
 
           const lowDG = row?.dg == null ? false : row?.dg! < 0.6 ? true : false;
           const noData = row?.denominator == null ? true : false;
@@ -299,12 +299,9 @@ const IndicatorRow = (props: {
               key={indData.indicatorID + index}
             >
               <div>
-                <body>
-                  {row?.result}
-                  {row?.symbol}
-                </body>
+                <body>{cellData}</body>
               </div>
-              <div>{row?.numerator + " av " + row?.denominator}</div>
+              <div>{patientCounts}</div>
             </TableCell>
           );
         })}
