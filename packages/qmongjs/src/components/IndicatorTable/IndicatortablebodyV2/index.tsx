@@ -31,7 +31,7 @@ export type IndicatorTableBodyV2Props = {
   type: string;
   year: number;
   unitNames: string[];
-  level: string;
+  levels: string;
   medfields: string[];
 };
 
@@ -156,7 +156,7 @@ const createChartData = (
   });
 
   const chartData = unitNames.map((unitNamesRow) => {
-    let unitIndData = indData.filter((indDataRow) => {
+    const unitIndData = indData.filter((indDataRow) => {
       return indDataRow.unit_name === unitNamesRow;
     });
     return unitIndData.map((row) => {
@@ -189,10 +189,11 @@ const createChartStyles = (unitNames: string[], font: font) => {
 // Component for individual rows
 const IndicatorRow = (props: {
   unitNames: string[];
+  levels: string;
   indData: IndicatorData;
   chartData: Indicator[];
 }) => {
-  const { unitNames, indData, chartData } = props;
+  const { unitNames, levels, indData, chartData } = props;
 
   const [open, setOpen] = React.useState(false);
 
@@ -203,6 +204,12 @@ const IndicatorRow = (props: {
       unitName: row.unitName,
       result: customFormat(format)(row.var),
       symbol: newLevelSymbols(level(row)),
+      showCell:
+        levels === ""
+          ? true
+          : level(row) == null
+            ? true
+            : level(row) === levels,
       numerator: Math.round(row.var * row.denominator),
       denominator: row.denominator,
     };
@@ -254,18 +261,20 @@ const IndicatorRow = (props: {
         </TableCell>
 
         {rowDataSorted.map((row, index) => {
+          const cellOpacity = row?.showCell ? 1 : 0.3;
           return (
-            <TableCell align={"center"} key={indData.indicatorID + index}>
-              <table>
-                <tbody>
-                  <tr>
-                    <td>{[row?.result, row?.symbol]}</td>
-                  </tr>
-                  <tr>
-                    <td>{row?.numerator + " av " + row?.denominator}</td>
-                  </tr>
-                </tbody>
-              </table>
+            <TableCell
+              sx={{ opacity: cellOpacity }}
+              align={"center"}
+              key={indData.indicatorID + index}
+            >
+              <div>
+                <body>
+                  {row?.result}
+                  {row?.symbol}
+                </body>
+              </div>
+              <div>{row?.numerator + " av " + row?.denominator}</div>
             </TableCell>
           );
         })}
@@ -352,31 +361,47 @@ const IndicatorRow = (props: {
 // Component for collection of indicators per registry
 const IndicatorSection = (props: {
   unitNames: string[];
+  levels: string;
   data: IndicatorData[];
   chartData: Indicator[];
 }) => {
-  const { unitNames, data, chartData } = props;
+  const { unitNames, levels, data, chartData } = props;
 
-  // Map indicators to rows
+  // Map indicators to rows and show only rows where there is at least
+  // one indicator not removed by the filter
   return data.map((indDataRow) => {
-    return (
+    let showRow;
+
+    levels === ""
+      ? (showRow = true)
+      : indDataRow.data
+            .map((dataPointRow) => level(dataPointRow) === levels)
+            .every((x) => x === false)
+        ? (showRow = false)
+        : (showRow = true);
+
+    const returnVal = showRow ? (
       <IndicatorRow
         key={"IndicatorRow" + indDataRow.indicatorID}
         unitNames={unitNames}
+        levels={levels}
         indData={indDataRow}
         chartData={chartData}
       />
-    );
+    ) : null;
+
+    return returnVal;
   });
 };
 
 // Component for registry and unit names header plus indicator rows
 const RegistrySection = (props: {
   unitNames: string[];
+  levels: string;
   regData: RegisterData;
   chartData: Indicator[];
 }) => {
-  const { unitNames, regData, chartData } = props;
+  const { unitNames, levels, regData, chartData } = props;
 
   regData.indicatorData.sort((a: IndicatorData, b: IndicatorData) => {
     return a.sortingName === b.sortingName
@@ -390,41 +415,62 @@ const RegistrySection = (props: {
             : 1;
   });
 
-  return (
-    <React.Fragment>
-      <TableHead>
-        <TableRow key={regData.registerName + "-row"}>
-          <TableCell key={regData.registerName}>
-            {regData.registerFullName}
-          </TableCell>
+  let showSection;
 
-          {unitNames.map((row, index) => {
-            return (
-              <TableCell align="center" key={regData.registerName + index}>
-                {row}
-              </TableCell>
-            );
-          })}
-        </TableRow>
-      </TableHead>
+  if (levels === "") {
+    showSection = true;
+  } else {
+    showSection = !regData.indicatorData
+      .map((indRow) => {
+        return !indRow.data
+          .map((dataRow) => {
+            return level(dataRow) === levels;
+          })
+          .every((x) => x == false);
+      })
+      .every((x) => x == false);
+  }
 
-      <TableBody>
-        <IndicatorSection
-          key={regData.registerName}
-          unitNames={unitNames}
-          data={regData.indicatorData}
-          chartData={chartData}
-        />
-      </TableBody>
-    </React.Fragment>
-  );
+  if (showSection) {
+    return (
+      <React.Fragment>
+        <TableHead>
+          <TableRow key={regData.registerName + "-row"}>
+            <TableCell key={regData.registerName}>
+              {regData.registerFullName}
+            </TableCell>
+
+            {unitNames.map((row, index) => {
+              return (
+                <TableCell align="center" key={regData.registerName + index}>
+                  {row}
+                </TableCell>
+              );
+            })}
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+          <IndicatorSection
+            key={regData.registerName}
+            unitNames={unitNames}
+            levels={levels}
+            data={regData.indicatorData}
+            chartData={chartData}
+          />
+        </TableBody>
+      </React.Fragment>
+    );
+  } else {
+    return null;
+  }
 };
 
 // Top level component for the table
 export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   props,
 ) => {
-  const { context, type, year, unitNames, level, medfields } = props;
+  const { context, type, year, unitNames, levels, medfields } = props;
 
   const queryParams: FetchIndicatorParams = {
     context: context,
@@ -467,6 +513,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
       {rowDataFiltered.map((row) => (
         <RegistrySection
           key={row.registerName}
+          levels={levels}
           unitNames={props.unitNames}
           regData={row}
           chartData={chartData.filter((chartDataRow: Indicator) => {

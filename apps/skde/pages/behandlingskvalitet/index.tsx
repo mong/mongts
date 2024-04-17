@@ -301,7 +301,7 @@ export default function TreatmentQuality() {
                   unitNames={selectedTreatmentUnits}
                   year={selectedYear}
                   type={"ind"}
-                  level={selectedLevel}
+                  levels={selectedLevel}
                   medfields={selectedMedicalFields}
                 />
                 <TreatmentQualityFooter />
