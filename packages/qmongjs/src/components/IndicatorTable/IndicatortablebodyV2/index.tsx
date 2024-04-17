@@ -261,22 +261,20 @@ const IndicatorRow = (props: {
         </TableCell>
 
         {rowDataSorted.map((row, index) => {
+          const cellOpacity = row?.showCell ? 1 : 0.3;
           return (
-            <TableCell align={"center"} key={indData.indicatorID + index}>
-              <table>
-                <tbody>
-                  <tr>
-                    <td>{row?.showCell ? [row?.result, row.symbol] : null}</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      {row?.showCell
-                        ? row?.numerator + " av " + row?.denominator
-                        : null}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+            <TableCell
+              sx={{ opacity: cellOpacity }}
+              align={"center"}
+              key={indData.indicatorID + index}
+            >
+              <div>
+                <body>
+                  {row?.result}
+                  {row?.symbol}
+                </body>
+              </div>
+              <div>{row?.numerator + " av " + row?.denominator}</div>
             </TableCell>
           );
         })}
@@ -417,35 +415,55 @@ const RegistrySection = (props: {
             : 1;
   });
 
-  return (
-    <React.Fragment>
-      <TableHead>
-        <TableRow key={regData.registerName + "-row"}>
-          <TableCell key={regData.registerName}>
-            {regData.registerFullName}
-          </TableCell>
+  let showSection;
 
-          {unitNames.map((row, index) => {
-            return (
-              <TableCell align="center" key={regData.registerName + index}>
-                {row}
-              </TableCell>
-            );
-          })}
-        </TableRow>
-      </TableHead>
+  if (levels === "") {
+    showSection = true;
+  } else {
+    showSection = !regData.indicatorData
+      .map((indRow) => {
+        return !indRow.data
+          .map((dataRow) => {
+            return level(dataRow) === levels;
+          })
+          .every((x) => x == false);
+      })
+      .every((x) => x == false);
+  }
 
-      <TableBody>
-        <IndicatorSection
-          key={regData.registerName}
-          unitNames={unitNames}
-          levels={levels}
-          data={regData.indicatorData}
-          chartData={chartData}
-        />
-      </TableBody>
-    </React.Fragment>
-  );
+  if (showSection) {
+    return (
+      <React.Fragment>
+        <TableHead>
+          <TableRow key={regData.registerName + "-row"}>
+            <TableCell key={regData.registerName}>
+              {regData.registerFullName}
+            </TableCell>
+
+            {unitNames.map((row, index) => {
+              return (
+                <TableCell align="center" key={regData.registerName + index}>
+                  {row}
+                </TableCell>
+              );
+            })}
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+          <IndicatorSection
+            key={regData.registerName}
+            unitNames={unitNames}
+            levels={levels}
+            data={regData.indicatorData}
+            chartData={chartData}
+          />
+        </TableBody>
+      </React.Fragment>
+    );
+  } else {
+    return null;
+  }
 };
 
 // Top level component for the table
