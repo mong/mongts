@@ -267,8 +267,6 @@ const IndicatorRow = (props: {
         </TableCell>
 
         {rowDataSorted.map((row, index) => {
-          const cellOpacity = levels === "" ? 1 : row?.showCell ? 1 : 0.3;
-
           const lowDG = row?.dg == null ? false : row?.dg! < 0.6 ? true : false;
           const noData = row?.denominator == null ? true : false;
           const lowN =
@@ -280,6 +278,16 @@ const IndicatorRow = (props: {
                   ? true
                   : false;
 
+          const cellAlpha = 0.3;
+          const cellOpacity =
+            levels === ""
+              ? 1
+              : levels !== "" && lowDG
+                ? cellAlpha
+                : row?.showCell && !lowDG
+                  ? 1
+                  : cellAlpha;
+
           let cellData;
           Array.from([lowDG, noData, lowN]).every((x) => x == false)
             ? (cellData = [row?.result, row?.symbol])
@@ -290,7 +298,7 @@ const IndicatorRow = (props: {
             ? (patientCounts = "Lav dekning")
             : noData || lowN
               ? (patientCounts = "Lite data")
-              : row?.numerator + " av " + row?.denominator;
+              : (patientCounts = row?.numerator + " av " + row?.denominator);
 
           return (
             <TableCell
