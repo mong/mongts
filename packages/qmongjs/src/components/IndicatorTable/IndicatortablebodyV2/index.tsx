@@ -287,7 +287,7 @@ const IndicatorRow = (props: {
 
           let patientCounts;
           lowDG
-            ? (patientCounts = "Lav dekning*")
+            ? (patientCounts = "Lav dekning")
             : noData || lowN
               ? (patientCounts = "Lite data")
               : row?.numerator + " av " + row?.denominator;
