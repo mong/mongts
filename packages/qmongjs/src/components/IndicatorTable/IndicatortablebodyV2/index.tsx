@@ -51,6 +51,7 @@ type IndicatorData = {
   indicatorID: string;
   indicatorName: string | null;
   targetMeasure: number | null;
+  minDenominator: number | null;
   shortDescription: string | null;
   longDescription: string | null;
   sortingName: string | null;
@@ -107,6 +108,7 @@ const createData = (indicatorData: Indicator[]) => {
           indicatorID: row.ind_id,
           indicatorName: row.ind_title,
           targetMeasure: row.level_green,
+          minDenominator: row.min_denominator,
           shortDescription: row.ind_short_description,
           longDescription: row.ind_long_description,
           sortingName: row.ind_name,
@@ -207,6 +209,7 @@ const IndicatorRow = (props: {
       symbol: newLevelSymbols(level(row)),
       numerator: Math.round(row.var * row.denominator),
       denominator: row.denominator,
+      minDenominator: indData.minDenominator,
       dg: row.dg,
     };
   });
@@ -257,36 +260,38 @@ const IndicatorRow = (props: {
         </TableCell>
 
         {rowDataSorted.map((row, index) => {
-          const cellData = [row?.result, row?.symbol];
+          const lowDG = row?.dg == null ? false : row?.dg! < 0.6 ? true : false;
+          const noData = row?.denominator == null ? true : false;
+          const lowN =
+            row?.denominator == null
+              ? false
+              : row.minDenominator == null
+                ? false
+                : row.denominator < row.minDenominator
+                  ? true
+                  : false;
 
-          const lowDG = row?.dg == null ? false : row?.dg! < 0.6;
-          const lowN = row?.denominator == null ? true : row?.denominator! < 10;
+          let cellData;
+          Array.from([lowDG, noData, lowN]).every((x) => x == false)
+            ? (cellData = [row?.result, row?.symbol])
+            : (cellData = "N/A");
 
-          if (row?.dg === null) {
-            let cellData = "Ingen DG";
-          } else if (row?.dg! < 0.6) {
-            const cellData = " Lav DG";
-          } else if (row?.denominator === null) {
-            const cellData = "Ingen data";
-          } else if (row?.denominator! < 10) {
-            const cellData = "N mindre enn 10";
-          } else {
-            var c;
-          }
+          let patientCounts;
+          lowDG
+            ? (patientCounts = "Lav dekning*")
+            : noData || lowN
+              ? (patientCounts = "Lite data")
+              : row?.numerator + " av " + row?.denominator;
 
           return (
             <TableCell align={"center"} key={indData.indicatorID + index}>
               <table>
                 <tbody>
                   <tr>
-                    <td>{lowDG ? "Lav DG" : lowN ? "Lav N" : cellData}</td>
+                    <td>{cellData}</td>
                   </tr>
                   <tr>
-                    <td>
-                      {lowDG || lowN
-                        ? null
-                        : row?.numerator + " av " + row?.denominator}
-                    </td>
+                    <td>{patientCounts}</td>
                   </tr>
                 </tbody>
               </table>
