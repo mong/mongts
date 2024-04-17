@@ -43,6 +43,7 @@ export interface Indicator {
   registry_id: number;
   registry_name: string;
   registry_full_name: string;
+  registry_short_name: string;
   medfield_id: number;
   medfield_name: string;
   medfield_full_name: string;

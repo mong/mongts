@@ -25,6 +25,7 @@ export function buildIndicator(overrides: Partial<Indicator>): Indicator {
     registry_id: 1,
     registry_name: "Testreg",
     registry_full_name: "Testregister",
+    registry_short_name: "Testregister",
     medfield_id: 1,
     medfield_name: "Testmedfield",
     medfield_full_name: "Fagområde for testing",
