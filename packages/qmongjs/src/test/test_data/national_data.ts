@@ -24,6 +24,7 @@ const national_data: Indicator[] = [
     registry_name: "barnediabetes",
     registry_full_name:
       "Nasjonalt medisinsk kvalitetsregister for barne- og ungdomsdiabetes",
+    registry_short_name: "Diabetes barn og ungdom",
     medfield_id: 4,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
@@ -55,6 +56,7 @@ const national_data: Indicator[] = [
     registry_name: "barnediabetes",
     registry_full_name:
       "Nasjonalt medisinsk kvalitetsregister for barne- og ungdomsdiabetes",
+    registry_short_name: "Diabetes barn og ungdom",
     medfield_id: 4,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
@@ -86,6 +88,7 @@ const national_data: Indicator[] = [
     registry_name: "barnediabetes",
     registry_full_name:
       "Nasjonalt medisinsk kvalitetsregister for barne- og ungdomsdiabetes",
+    registry_short_name: "Diabetes barn og ungdom",
     medfield_id: 4,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
@@ -117,6 +120,7 @@ const national_data: Indicator[] = [
     registry_name: "barnediabetes",
     registry_full_name:
       "Nasjonalt medisinsk kvalitetsregister for barne- og ungdomsdiabetes",
+    registry_short_name: "Diabetes barn og ungdom",
     medfield_id: 4,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
@@ -148,6 +152,7 @@ const national_data: Indicator[] = [
     registry_name: "barnediabetes",
     registry_full_name:
       "Nasjonalt medisinsk kvalitetsregister for barne- og ungdomsdiabetes",
+    registry_short_name: "Diabetes barn og ungdom",
     medfield_id: 4,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
@@ -179,6 +184,7 @@ const national_data: Indicator[] = [
     registry_name: "barnediabetes",
     registry_full_name:
       "Nasjonalt medisinsk kvalitetsregister for barne- og ungdomsdiabetes",
+    registry_short_name: "Diabetes barn og ungdom",
     medfield_id: 4,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",

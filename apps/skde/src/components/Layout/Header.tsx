@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { imgLoader } from "../../helpers/functions";
+import { imgLoader } from "qmongjs";
 import classNames from "./Header.module.css";
 
 import { MenuButton } from "../Buttons";

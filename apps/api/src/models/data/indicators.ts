@@ -28,6 +28,7 @@ export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
       "registry.id as registry_id",
       "registry.name as registry_name",
       "registry.full_name as registry_full_name",
+      "registry.short_name as registry_short_name",
       "medfield.id as medfield_id",
       "medfield.name as medfield_name",
       "medfield.full_name as medfield_full_name",

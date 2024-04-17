@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { imgLoader } from "../../helpers/functions";
+import { imgLoader } from "qmongjs";
 import {
   FooterWrapper,
   FooterItem,
