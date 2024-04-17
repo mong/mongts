@@ -268,7 +268,7 @@ const IndicatorRow = (props: {
 
         {rowDataSorted.map((row, index) => {
           const cellOpacity = row?.showCell ? 1 : 0.3;
-          
+
           const lowDG = row?.dg == null ? false : row?.dg! < 0.6 ? true : false;
           const noData = row?.denominator == null ? true : false;
           const lowN =
