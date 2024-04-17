@@ -248,7 +248,11 @@ const IndicatorRow = (props: {
                     {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                   </IconButton>
                 </td>
-                <td>{indData.indicatorName}</td>
+                <td>
+                  <body>
+                  {indData.indicatorName}
+                  </body>
+                </td>
               </tr>
             </tbody>
           </table>
