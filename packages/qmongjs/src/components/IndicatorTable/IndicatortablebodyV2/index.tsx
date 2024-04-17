@@ -44,12 +44,14 @@ export type DataPoint = {
   level_direction: number | null;
   level_green: number | null;
   level_yellow: number | null;
+  dg: number | null;
 };
 
 type IndicatorData = {
   indicatorID: string;
   indicatorName: string | null;
   targetMeasure: number | null;
+  minDenominator: number | null;
   shortDescription: string | null;
   longDescription: string | null;
   sortingName: string | null;
@@ -106,6 +108,7 @@ const createData = (indicatorData: Indicator[]) => {
           indicatorID: row.ind_id,
           indicatorName: row.ind_title,
           targetMeasure: row.level_green,
+          minDenominator: row.min_denominator,
           shortDescription: row.ind_short_description,
           longDescription: row.ind_long_description,
           sortingName: row.ind_name,
@@ -135,6 +138,7 @@ const createData = (indicatorData: Indicator[]) => {
           level_direction: row.level_direction,
           level_green: row.level_green,
           level_yellow: row.level_yellow,
+          dg: row.dg,
         });
       }
 
@@ -212,6 +216,8 @@ const IndicatorRow = (props: {
             : level(row) === levels,
       numerator: Math.round(row.var * row.denominator),
       denominator: row.denominator,
+      minDenominator: indData.minDenominator,
+      dg: row.dg,
     };
   });
 
@@ -261,7 +267,39 @@ const IndicatorRow = (props: {
         </TableCell>
 
         {rowDataSorted.map((row, index) => {
-          const cellOpacity = row?.showCell ? 1 : 0.3;
+          const lowDG = row?.dg == null ? false : row?.dg! < 0.6 ? true : false;
+          const noData = row?.denominator == null ? true : false;
+          const lowN =
+            row?.denominator == null
+              ? false
+              : row.minDenominator == null
+                ? false
+                : row.denominator < row.minDenominator
+                  ? true
+                  : false;
+
+          const cellAlpha = 0.3;
+          const cellOpacity =
+            levels === ""
+              ? 1
+              : levels !== "" && lowDG
+                ? cellAlpha
+                : row?.showCell && !lowDG
+                  ? 1
+                  : cellAlpha;
+
+          let cellData;
+          Array.from([lowDG, noData, lowN]).every((x) => x == false)
+            ? (cellData = [row?.result, row?.symbol])
+            : (cellData = "N/A");
+
+          let patientCounts;
+          lowDG
+            ? (patientCounts = "Lav dekning")
+            : noData || lowN
+              ? (patientCounts = "Lite data")
+              : (patientCounts = row?.numerator + " av " + row?.denominator);
+
           return (
             <TableCell
               sx={{ opacity: cellOpacity }}
@@ -269,12 +307,9 @@ const IndicatorRow = (props: {
               key={indData.indicatorID + index}
             >
               <div>
-                <body>
-                  {row?.result}
-                  {row?.symbol}
-                </body>
+                <body>{cellData}</body>
               </div>
-              <div>{row?.numerator + " av " + row?.denominator}</div>
+              <div>{patientCounts}</div>
             </TableCell>
           );
         })}
@@ -487,7 +522,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
 
   const rowData = createData(
     indicatorQuery.data.filter((row: Indicator) => {
-      return row.year === year;
+      return row.year === year && medfields.includes(row.registry_name);
     }),
   );
 
