@@ -244,8 +244,6 @@ const IndicatorRow = (props: {
   const lineStyles = createChartStyles(unitNames, font);
 
   return (
-
-    
     <React.Fragment key={indData.indicatorName + "-indicatorSection"}>
       <StyledTableRow
         key={indData.indicatorName + "-mainrow"}
@@ -266,9 +264,7 @@ const IndicatorRow = (props: {
                   </IconButton>
                 </td>
                 <td>
-                  <body>
-                  {indData.indicatorName}
-                  </body>
+                  <body>{indData.indicatorName}</body>
                 </td>
               </tr>
             </tbody>
@@ -348,7 +344,6 @@ const IndicatorRow = (props: {
         key={indData.indicatorID + "-charts"}
         sx={{ visibility: open ? "visible" : "collapse" }}
       >
-
         <StyledTableCell
           key={indData.indicatorID + "-charts"}
           colSpan={unitNames.length + 1}
@@ -487,7 +482,10 @@ const RegistrySection = (props: {
 
             {unitNames.map((row, index) => {
               return (
-                <StyledTableCell align="center" key={regData.registerName + index}>
+                <StyledTableCell
+                  align="center"
+                  key={regData.registerName + index}
+                >
                   {row}
                 </StyledTableCell>
               );
