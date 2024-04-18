@@ -276,20 +276,21 @@ export default function TreatmentQuality() {
           </FilterDrawer>
         </FilterDrawerBox>
         <MainBox>
-          {queriesReady && (
-            <>
-              <IndicatorTableBodyV2
-                key="indicator-table"
-                context={"caregiver"}
-                unitNames={selectedTreatmentUnits}
-                year={selectedYear}
-                type={"ind"}
-                level={selectedLevel}
-                medfields={selectedMedicalFields}
-              />
-              <TreatmentQualityFooter />
-            </>
-          )}
+          {queriesReady &&
+            (
+              <>
+                <IndicatorTableBodyV2
+                  key="indicator-table"
+                  context={"caregiver"}
+                  unitNames={selectedTreatmentUnits}
+                  year={selectedYear}
+                  type={"ind"}
+                  levels={selectedLevel}
+                  medfields={selectedMedicalFields}
+                />
+                <TreatmentQualityFooter />
+              </>
+            )}
         </MainBox>
       </Box>
     </ThemeProvider>

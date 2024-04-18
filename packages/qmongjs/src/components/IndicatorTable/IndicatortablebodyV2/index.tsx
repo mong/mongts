@@ -34,7 +34,7 @@ export type IndicatorTableBodyV2Props = {
   type: string;
   year: number;
   unitNames: string[];
-  level: string;
+  levels: string;
   medfields: string[];
 };
 
@@ -47,12 +47,14 @@ export type DataPoint = {
   level_direction: number | null;
   level_green: number | null;
   level_yellow: number | null;
+  dg: number | null;
 };
 
 type IndicatorData = {
   indicatorID: string;
   indicatorName: string | null;
   targetMeasure: number | null;
+  minDenominator: number | null;
   shortDescription: string | null;
   longDescription: string | null;
   sortingName: string | null;
@@ -60,6 +62,7 @@ type IndicatorData = {
 };
 
 type RegisterData = {
+  registerFullName: string;
   registerName: string;
   registerShortName: string;
   registerID: number;
@@ -87,8 +90,9 @@ const createData = (indicatorData: Indicator[]) => {
       // Add medfield to array if not already there
       if (!returnData[i]) {
         returnData[i] = {
-          registerName: row.registry_full_name,
-          registerShortName: row.registry_name,
+          registerFullName: row.registry_full_name,
+          registerName: row.registry_name,
+          registerShortName: row.registry_short_name,
           registerID: row.registry_id,
           medfieldID: row.medfield_id,
           indicatorData: [] as IndicatorData[],
@@ -107,6 +111,7 @@ const createData = (indicatorData: Indicator[]) => {
           indicatorID: row.ind_id,
           indicatorName: row.ind_title,
           targetMeasure: row.level_green,
+          minDenominator: row.min_denominator,
           shortDescription: row.ind_short_description,
           longDescription: row.ind_long_description,
           sortingName: row.ind_name,
@@ -136,6 +141,7 @@ const createData = (indicatorData: Indicator[]) => {
           level_direction: row.level_direction,
           level_green: row.level_green,
           level_yellow: row.level_yellow,
+          dg: row.dg,
         });
       }
 
@@ -157,7 +163,7 @@ const createChartData = (
   });
 
   const chartData = unitNames.map((unitNamesRow) => {
-    let unitIndData = indData.filter((indDataRow) => {
+    const unitIndData = indData.filter((indDataRow) => {
       return indDataRow.unit_name === unitNamesRow;
     });
     return unitIndData.map((row) => {
@@ -190,10 +196,11 @@ const createChartStyles = (unitNames: string[], font: font) => {
 // Component for individual rows
 const IndicatorRow = (props: {
   unitNames: string[];
+  levels: string;
   indData: IndicatorData;
   chartData: Indicator[];
 }) => {
-  const { unitNames, indData, chartData } = props;
+  const { unitNames, levels, indData, chartData } = props;
 
   const [open, setOpen] = React.useState(false);
 
@@ -204,8 +211,16 @@ const IndicatorRow = (props: {
       unitName: row.unitName,
       result: customFormat(format)(row.var),
       symbol: newLevelSymbols(level(row)),
+      showCell:
+        levels === ""
+          ? true
+          : level(row) == null
+            ? true
+            : level(row) === levels,
       numerator: Math.round(row.var * row.denominator),
       denominator: row.denominator,
+      minDenominator: indData.minDenominator,
+      dg: row.dg,
     };
   });
 
@@ -229,13 +244,15 @@ const IndicatorRow = (props: {
   const lineStyles = createChartStyles(unitNames, font);
 
   return (
-    <React.Fragment key={indData.indicatorName}>
+
+    
+    <React.Fragment key={indData.indicatorName + "-indicatorSection"}>
       <StyledTableRow
         key={indData.indicatorName + "-mainrow"}
         onClick={() => setOpen(!open)}
         style={{ cursor: "pointer" }}
       >
-        <StyledTableCell key={indData.indicatorName}>
+        <StyledTableCell key={indData.indicatorID}>
           <table>
             <tbody>
               <tr>
@@ -259,28 +276,59 @@ const IndicatorRow = (props: {
         </StyledTableCell>
 
         {rowDataSorted.map((row, index) => {
+          const lowDG = row?.dg == null ? false : row?.dg! < 0.6 ? true : false;
+          const noData = row?.denominator == null ? true : false;
+          const lowN =
+            row?.denominator == null
+              ? false
+              : row.minDenominator == null
+                ? false
+                : row.denominator < row.minDenominator
+                  ? true
+                  : false;
+
+          const cellAlpha = 0.3;
+          const cellOpacity =
+            levels === ""
+              ? 1
+              : levels !== "" && lowDG
+                ? cellAlpha
+                : row?.showCell && !lowDG
+                  ? 1
+                  : cellAlpha;
+
+          let cellData;
+          Array.from([lowDG, noData, lowN]).every((x) => x == false)
+            ? (cellData = [row?.result, row?.symbol])
+            : (cellData = "N/A");
+
+          let patientCounts;
+          lowDG
+            ? (patientCounts = "Lav dekning")
+            : noData || lowN
+              ? (patientCounts = "Lite data")
+              : (patientCounts = row?.numerator + " av " + row?.denominator);
+
           return (
-            <StyledTableCell align={"center"} key={indData.indicatorID + index}>
-              <table>
-                <tbody>
-                  <tr>
-                    <td>{[row?.result, row?.symbol]}</td>
-                  </tr>
-                  <tr>
-                    <td>{row?.numerator + " av " + row?.denominator}</td>
-                  </tr>
-                </tbody>
-              </table>
+            <StyledTableCell
+              sx={{ opacity: cellOpacity }}
+              align={"center"}
+              key={indData.indicatorID + index}
+            >
+              <div>
+                <body>{cellData}</body>
+              </div>
+              <div>{patientCounts}</div>
             </StyledTableCell>
           );
         })}
       </StyledTableRow>
 
       <TableRow
-        key={indData.indicatorName + "-collapse"}
+        key={indData.indicatorID + "-collapse"}
         sx={{ visibility: open ? "visible" : "collapse" }}
       >
-        <StyledTableCell key={indData.indicatorName + "-shortDescription"}>
+        <StyledTableCell key={indData.indicatorID + "-shortDescription"}>
           {indData.shortDescription}
         </StyledTableCell>
         <StyledTableCell
@@ -297,11 +345,12 @@ const IndicatorRow = (props: {
       </TableRow>
 
       <TableRow
-        key={indData.indicatorName + "-charts"}
+        key={indData.indicatorID + "-charts"}
         sx={{ visibility: open ? "visible" : "collapse" }}
       >
+
         <StyledTableCell
-          key={indData.indicatorName + "-charts"}
+          key={indData.indicatorID + "-charts"}
           colSpan={unitNames.length + 1}
           align="center"
         >
@@ -357,69 +406,116 @@ const IndicatorRow = (props: {
 // Component for collection of indicators per registry
 const IndicatorSection = (props: {
   unitNames: string[];
+  levels: string;
   data: IndicatorData[];
   chartData: Indicator[];
 }) => {
-  const { unitNames, data, chartData } = props;
+  const { unitNames, levels, data, chartData } = props;
 
-  // Map indicators to rows
+  // Map indicators to rows and show only rows where there is at least
+  // one indicator not removed by the filter
   return data.map((indDataRow) => {
-    return (
+    let showRow;
+
+    levels === ""
+      ? (showRow = true)
+      : indDataRow.data
+            .map((dataPointRow) => level(dataPointRow) === levels)
+            .every((x) => x === false)
+        ? (showRow = false)
+        : (showRow = true);
+
+    const returnVal = showRow ? (
       <IndicatorRow
         key={"IndicatorRow" + indDataRow.indicatorID}
         unitNames={unitNames}
+        levels={levels}
         indData={indDataRow}
         chartData={chartData}
       />
-    );
+    ) : null;
+
+    return returnVal;
   });
 };
 
 // Component for registry and unit names header plus indicator rows
 const RegistrySection = (props: {
   unitNames: string[];
+  levels: string;
   regData: RegisterData;
   chartData: Indicator[];
 }) => {
-  const { unitNames, regData, chartData } = props;
+  const { unitNames, levels, regData, chartData } = props;
 
-  return (
-    <React.Fragment>
-      <TableHead>
-        <TableRow key={regData.registerName + "-row"}>
-          <StyledTableCell key={regData.registerName}>
-            {regData.registerName}
-          </StyledTableCell>
+  regData.indicatorData.sort((a: IndicatorData, b: IndicatorData) => {
+    return a.sortingName === b.sortingName
+      ? 0
+      : a.sortingName === null
+        ? 1
+        : b.sortingName === null
+          ? -1
+          : a.sortingName < b.sortingName
+            ? -1
+            : 1;
+  });
 
-          {unitNames.map((row, index) => {
-            return (
-              <StyledTableCell
-                align="center"
-                key={regData.registerName + index}
-              >
-                {row}
-              </StyledTableCell>
-            );
-          })}
-        </TableRow>
-      </TableHead>
+  let showSection;
 
-      <TableBody>
-        <IndicatorSection
-          unitNames={unitNames}
-          data={regData.indicatorData}
-          chartData={chartData}
-        />
-      </TableBody>
-    </React.Fragment>
-  );
+  if (levels === "") {
+    showSection = true;
+  } else {
+    showSection = !regData.indicatorData
+      .map((indRow) => {
+        return !indRow.data
+          .map((dataRow) => {
+            return level(dataRow) === levels;
+          })
+          .every((x) => x == false);
+      })
+      .every((x) => x == false);
+  }
+
+  if (showSection) {
+    return (
+      <React.Fragment>
+        <TableHead>
+          <TableRow key={regData.registerName + "-row"}>
+            <StyledTableCell key={regData.registerName}>
+              {regData.registerFullName}
+            </StyledTableCell>
+
+            {unitNames.map((row, index) => {
+              return (
+                <StyledTableCell align="center" key={regData.registerName + index}>
+                  {row}
+                </StyledTableCell>
+              );
+            })}
+          </TableRow>
+        </TableHead>
+
+        <TableBody>
+          <IndicatorSection
+            key={regData.registerName}
+            unitNames={unitNames}
+            levels={levels}
+            data={regData.indicatorData}
+            chartData={chartData}
+          />
+        </TableBody>
+      </React.Fragment>
+    );
+  } else {
+    return null;
+  }
 };
 
 // Top level component for the table
 export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   props,
 ) => {
-  const { context, type, year, unitNames, level, medfields } = props;
+  const { context, type, year, unitNames, levels, medfields } = props;
 
   const queryParams: FetchIndicatorParams = {
     context: context,
@@ -436,14 +532,25 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
 
   const rowData = createData(
     indicatorQuery.data.filter((row: Indicator) => {
-      return row.year === year;
+      return row.year === year && medfields.includes(row.registry_name);
     }),
   );
 
   const chartData = indicatorQuery.data;
 
-  const rowDataFiltered = rowData.filter((row) => {
-    return medfields.includes(row.registerShortName);
+  let rowDataFiltered = rowData.filter((row) => {
+    return medfields.includes(row.registerName);
+  });
+
+  rowDataFiltered.sort((a: RegisterData, b: RegisterData) => {
+    return (
+      a.medfieldID - b.medfieldID ||
+      (a.registerShortName === b.registerShortName
+        ? 0
+        : a.registerShortName < b.registerShortName
+          ? -1
+          : 1)
+    );
   });
 
   return (
@@ -451,10 +558,11 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
       {rowDataFiltered.map((row) => (
         <RegistrySection
           key={row.registerName}
+          levels={levels}
           unitNames={props.unitNames}
           regData={row}
           chartData={chartData.filter((chartDataRow: Indicator) => {
-            return chartDataRow.registry_name === row.registerShortName;
+            return chartDataRow.registry_name === row.registerName;
           })}
         />
       ))}
