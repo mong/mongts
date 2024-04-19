@@ -39,6 +39,8 @@ import { UseQueryResult } from "@tanstack/react-query";
 import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { BooleanParam, useQueryParam, withDefault } from "use-query-params";
+import { useSearchParams } from "next/navigation";
 
 /**
  * Treatment quality page (Behandlingskvalitet)
@@ -54,6 +56,9 @@ export default function TreatmentQuality() {
   const isPhoneSizedScreen = width < desktopBreakpoint;
   const drawerOpen = isPhoneSizedScreen ? mobileOpen : true;
   const drawerType = isPhoneSizedScreen ? "temporary" : "permanent";
+
+  const searchParams = useSearchParams();
+  const newTableOnly = searchParams.get("newtable") === "true";
 
   // Used by indicator table
   const [selectedYear, setSelectedYear] = useState(defaultYear);
@@ -272,20 +277,24 @@ export default function TreatmentQuality() {
                     registryNameData={registers}
                     medicalFieldData={medicalFields}
                   />
-                  <FormGroup sx={{ paddingRight: "1.5rem" }}>
-                    <FormControlLabel
-                      label="Prøv ny tabellversjon"
-                      labelPlacement="start"
-                      control={
-                        <Switch
-                          checked={newIndicatorTableActivated}
-                          onChange={(event) =>
-                            setNewIndicatorTableActivated(event.target.checked)
-                          }
-                        />
-                      }
-                    />
-                  </FormGroup>
+                  {!newTableOnly && (
+                    <FormGroup sx={{ paddingRight: "1.5rem" }}>
+                      <FormControlLabel
+                        label="Prøv ny tabellversjon"
+                        labelPlacement="start"
+                        control={
+                          <Switch
+                            checked={newIndicatorTableActivated}
+                            onChange={(event) =>
+                              setNewIndicatorTableActivated(
+                                event.target.checked,
+                              )
+                            }
+                          />
+                        }
+                      />
+                    </FormGroup>
+                  )}
                 </>
               )}
             </Box>
@@ -293,7 +302,7 @@ export default function TreatmentQuality() {
         </FilterDrawerBox>
         <MainBox>
           {queriesReady &&
-            (newIndicatorTableActivated ? (
+            (newIndicatorTableActivated || newTableOnly ? (
               <>
                 <IndicatorTableBodyV2
                   key="indicator-table"
