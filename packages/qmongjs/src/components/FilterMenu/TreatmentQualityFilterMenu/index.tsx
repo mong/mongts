@@ -170,12 +170,13 @@ export function TreatmentQualityFilterMenu({
     queryContext.type,
   );
 
-  const [queriesCompleted, setQueriesCompleted] = useState(
-    !unitNamesQuery.isLoading,
+  const [prevApiQueryLoading, setPrevApiQueryLoading] = useState(
+    unitNamesQuery.isLoading,
   );
+  const apiQueriesCompleted = prevApiQueryLoading && !unitNamesQuery.isLoading;
 
   useEffect(() => {
-    setQueriesCompleted(!unitNamesQuery.isLoading);
+    setPrevApiQueryLoading(unitNamesQuery.isLoading);
   }, [unitNamesQuery.isLoading]);
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
@@ -278,7 +279,7 @@ export function TreatmentQualityFilterMenu({
     return filterSettingsValue?.valueLabel ?? null;
   };
 
-  const shouldRefreshInitialState = prerenderFinished || queriesCompleted;
+  const shouldRefreshInitialState = prerenderFinished || apiQueriesCompleted;
 
   return (
     <>
