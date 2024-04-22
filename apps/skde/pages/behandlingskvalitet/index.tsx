@@ -39,7 +39,6 @@ import { UseQueryResult } from "@tanstack/react-query";
 import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { BooleanParam, useQueryParam, withDefault } from "use-query-params";
 import { useSearchParams } from "next/navigation";
 
 /**
