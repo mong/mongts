@@ -42,7 +42,7 @@ jobs:
           browser: chrome
       - name: Archive production artifacts
         if: failure()
-        uses: actions/upload-artifact@v4.3.2
+        uses: actions/upload-artifact@v4.3.3
         with:
           name: cypress videos
           path: apps/skde/cypress/videos
