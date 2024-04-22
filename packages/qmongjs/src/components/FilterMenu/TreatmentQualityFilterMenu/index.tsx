@@ -102,7 +102,7 @@ export function TreatmentQualityFilterMenu({
   // the first call after the prerender is done.
 
   const [prevReady, setPrevReady] = useState(router.isReady);
-  const shouldRefreshInititalState = prevReady !== router.isReady;
+  const prerenderFinished = prevReady !== router.isReady;
 
   useEffect(() => {
     setPrevReady(router.isReady);
@@ -169,6 +169,14 @@ export function TreatmentQualityFilterMenu({
     queryContext.context,
     queryContext.type,
   );
+
+  const [queriesCompleted, setQueriesCompleted] = useState(
+    !unitNamesQuery.isLoading,
+  );
+
+  useEffect(() => {
+    setQueriesCompleted(!unitNamesQuery.isLoading);
+  }, [unitNamesQuery.isLoading]);
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
@@ -270,6 +278,8 @@ export function TreatmentQualityFilterMenu({
     return filterSettingsValue?.valueLabel ?? null;
   };
 
+  const shouldRefreshInitialState = prerenderFinished || queriesCompleted;
+
   return (
     <>
       {!(medicalFieldData || registryNameData) && (
@@ -278,7 +288,7 @@ export function TreatmentQualityFilterMenu({
         </Alert>
       )}
       <FilterMenu
-        refreshState={shouldRefreshInititalState}
+        refreshState={shouldRefreshInitialState}
         onSelectionChanged={handleFilterChanged}
         onFilterInitialized={onFilterInitialized}
       >
@@ -310,7 +320,7 @@ export function TreatmentQualityFilterMenu({
           filterkey={levelKey}
         />
         <TreeViewFilterSection
-          refreshState={shouldRefreshInititalState}
+          refreshState={shouldRefreshInitialState}
           treedata={medicalFields.treedata}
           defaultvalues={medicalFields.defaults}
           autouncheckid={medicalFields.defaults[0].value}
@@ -326,7 +336,7 @@ export function TreatmentQualityFilterMenu({
           searchbox={true}
         />
         <TreeViewFilterSection
-          refreshState={shouldRefreshInititalState}
+          refreshState={shouldRefreshInitialState}
           treedata={treatmentUnits.treedata}
           defaultvalues={treatmentUnits.defaults}
           initialselections={
