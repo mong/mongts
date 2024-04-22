@@ -1,15 +1,6 @@
 import { createTheme } from "@mui/material";
 
 declare module "@mui/material/styles" {
-  interface Theme {
-    table: {
-      margin: number;
-      border: number;
-      rowgap: number;
-      gap: number;
-    };
-  }
-
   interface BreakpointOverrides {
     xs: true;
     sm: true;
@@ -17,16 +8,6 @@ declare module "@mui/material/styles" {
     lg: true;
     xl: true;
     desktop: true;
-  }
-
-  // allow configuration using `createTheme`
-  interface ThemeOptions {
-    table?: {
-      margin: number;
-      border: number;
-      rowgap: number;
-      gap: number;
-    };
   }
 }
 
@@ -185,7 +166,7 @@ const colourTokens = {
   },
 };
 
-const SKDEtheme = createTheme({
+export const SKDEtheme = createTheme({
   typography: {
     h1: fonts.H1,
     h2: fonts.H2,
@@ -219,13 +200,4 @@ const SKDEtheme = createTheme({
       desktop: 1300,
     },
   },
-  spacing: 10,
-  table: {
-    margin: 0,
-    border: 100,
-    gap: 40,
-    rowgap: 40,
-  },
 });
-
-export default SKDEtheme;

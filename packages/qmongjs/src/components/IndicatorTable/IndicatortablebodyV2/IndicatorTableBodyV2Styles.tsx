@@ -1,17 +1,37 @@
-import { styled, Table, TableCell, TableRow } from "@mui/material";
+import { createTheme, styled, Table, TableCell, TableRow } from "@mui/material";
+import { SKDEtheme } from "../../../themes/SKDEtheme";
+
+declare module "@mui/material/styles" {
+  interface Theme {
+    table: {
+      margin: number;
+    };
+  }
+
+  // allow configuration using `createTheme`
+  interface ThemeOptions {
+    table?: {
+      margin: number;
+    };
+  }
+}
+
+export const indicatorTableTheme = createTheme({
+  ...SKDEtheme,
+  table: {
+    margin: 10,
+  },
+});
 
 export const StyledTable = styled(Table)(({ theme }) => ({
   margin: theme.table.margin,
-  borderCollapse: "separate !important",
-  borderSpacing: "1px 4px !important",
-  backgroundColor: "#F5F5F5",
 }));
 
-export const StyledTableRow = styled(TableRow)(({ theme }) => ({
+export const StyledTableRow = styled(TableRow)(() => ({
   color: "#FFFFFF",
 }));
 
-export const StyledTableCell = styled(TableCell)(({ theme }) => ({
+export const StyledTableCell = styled(TableCell)(() => ({
   borderTopRightRadius: "8px",
   borderBottomRightRadius: "8px",
   borderTopLeftRadius: "8px",
