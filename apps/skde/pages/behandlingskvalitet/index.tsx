@@ -19,6 +19,7 @@ import {
   medicalFieldKey,
   useMedicalFieldsQuery,
   IndicatorTableBodyV2,
+  IndicatorTable,
   indicatorTableTheme,
   IndicatorTable,
 } from "qmongjs";
