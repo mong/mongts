@@ -132,6 +132,11 @@ const NorskMeny = () => {
           <span className={classNames.title}>Våre helseatlas</span>
           <ul>
             <li data-testid="menuAtlasLink2">
+              <Link href="/helseatlas/v2/radiologi">
+                Helseatlas radiologi andre del, MR
+              </Link>
+            </li>
+            <li data-testid="menuAtlasLink2">
               <Link href="/helseatlas/v2/fedme">Helseatlas fedme</Link>
             </li>
             <li data-testid="menuAtlasLink2">
