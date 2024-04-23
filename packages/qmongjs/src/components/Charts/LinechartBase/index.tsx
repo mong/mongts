@@ -7,6 +7,7 @@ import { AxisBottom, AxisLeft } from "@visx/axis";
 import { LinechartBackground } from "./LinechartBaseStyles";
 import { Legend, LegendItem, LegendLabel } from "@visx/legend";
 import { customFormat } from "qmongjs";
+import { MarkerCircle } from "@visx/marker";
 
 export type LinechartData = {
   x: Date;
@@ -157,6 +158,7 @@ export function LinechartBase({
       </Legend>
 
       <svg className="linechartbase" width={width} height={height}>
+        <MarkerCircle id="marker-circle" fill="#333" size={2} />
         <LinechartBackground width={width} height={height} />
         {data.map((lineData, i) => {
           return (
@@ -169,9 +171,12 @@ export function LinechartBase({
               stroke={lineStyles.styles[i].colour}
               strokeDasharray={lineStyles.styles[i].strokeDash}
               shapeRendering="geometricPrecision"
-              strokeWidth={"1px"}
+              strokeWidth={"2px"}
               strokeLinejoin={"round"}
               strokeLinecap={"square"}
+              markerMid="url(#marker-circle)"
+              markerStart="url(#marker-circle)"
+              markerEnd="url(#marker-circle)"
             />
           );
         })}
