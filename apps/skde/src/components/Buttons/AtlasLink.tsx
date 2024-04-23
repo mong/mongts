@@ -45,8 +45,8 @@ export const AtlasLink: React.FC<Props> = ({
               loader={imgLoader}
               src={imageSource}
               alt={"atlas photo"}
-              width={1160}
-              height={740}
+              width={610}
+              height={407}
               style={{
                 maxWidth: "100%",
                 height: "auto",
