@@ -14,6 +14,7 @@ import { newLevelSymbols, level } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
+import { useParentSize } from "@visx/responsive";
 
 const remarkPlugins: PluggableList = [remarkGfm];
 
@@ -240,6 +241,27 @@ const IndicatorRow = (props: {
 
   const lineStyles = createChartStyles(unitNames, font);
 
+  const ResponsiveChart = () => {
+    const { parentRef, width, height } = useParentSize({ debounceTime: 150 });
+
+    return (
+      <div ref={parentRef}>
+        <LinechartBase
+          data={chartDataFiltered}
+          width={width}
+          height={width / 2}
+          yMin={0}
+          yMax={1}
+          lineStyles={lineStyles}
+          font={font}
+          yAxisText={"Andel"}
+        />
+      </div>
+    );
+  };
+
+  const responsiveChart = <ResponsiveChart />;
+
   return (
     <React.Fragment key={indData.indicatorID + "-indicatorSection"}>
       <TableRow
@@ -344,16 +366,7 @@ const IndicatorRow = (props: {
           colSpan={unitNames.length + 1}
           align="center"
         >
-          <LinechartBase
-            data={chartDataFiltered}
-            width={1000}
-            height={500}
-            yMin={0}
-            yMax={1}
-            lineStyles={lineStyles}
-            font={font}
-            yAxisText={"Andel"}
-          />
+          {responsiveChart}
         </TableCell>
       </TableRow>
 
