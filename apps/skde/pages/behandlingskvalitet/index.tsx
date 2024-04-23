@@ -5,8 +5,8 @@ import TuneIcon from "@mui/icons-material/Tune";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import { imgLoader } from "qmongjs";
 import {
+  imgLoader,
   FilterSettingsAction,
   FilterSettingsValue,
   TreatmentQualityFilterMenu,
@@ -19,6 +19,7 @@ import {
   medicalFieldKey,
   useMedicalFieldsQuery,
   IndicatorTableBodyV2,
+  indicatorTableTheme,
   IndicatorTable,
 } from "qmongjs";
 import {
@@ -29,7 +30,6 @@ import {
   appBarElevation,
   filterMenuTopMargin,
   desktopBreakpoint,
-  treatmentQualityTheme,
   TreatmentQualityAppBar,
   SkdeLogoBox,
 } from "../../src/components/TreatmentQuality";
@@ -39,6 +39,7 @@ import { UseQueryResult } from "@tanstack/react-query";
 import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import { useSearchParams } from "next/navigation";
 
 /**
  * Treatment quality page (Behandlingskvalitet)
@@ -54,6 +55,9 @@ export default function TreatmentQuality() {
   const isPhoneSizedScreen = width < desktopBreakpoint;
   const drawerOpen = isPhoneSizedScreen ? mobileOpen : true;
   const drawerType = isPhoneSizedScreen ? "temporary" : "permanent";
+
+  const searchParams = useSearchParams();
+  const newTableOnly = searchParams.get("newtable") === "true";
 
   // Used by indicator table
   const [selectedYear, setSelectedYear] = useState(defaultYear);
@@ -219,7 +223,7 @@ export default function TreatmentQuality() {
   };
 
   return (
-    <ThemeProvider theme={treatmentQualityTheme}>
+    <ThemeProvider theme={indicatorTableTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <TreatmentQualityAppBar position="fixed" elevation={appBarElevation}>
@@ -272,20 +276,24 @@ export default function TreatmentQuality() {
                     registryNameData={registers}
                     medicalFieldData={medicalFields}
                   />
-                  <FormGroup sx={{ paddingRight: "1.5rem" }}>
-                    <FormControlLabel
-                      label="Prøv ny tabellversjon"
-                      labelPlacement="start"
-                      control={
-                        <Switch
-                          checked={newIndicatorTableActivated}
-                          onChange={(event) =>
-                            setNewIndicatorTableActivated(event.target.checked)
-                          }
-                        />
-                      }
-                    />
-                  </FormGroup>
+                  {!newTableOnly && (
+                    <FormGroup sx={{ paddingRight: "1.5rem" }}>
+                      <FormControlLabel
+                        label="Prøv ny tabellversjon"
+                        labelPlacement="start"
+                        control={
+                          <Switch
+                            checked={newIndicatorTableActivated}
+                            onChange={(event) =>
+                              setNewIndicatorTableActivated(
+                                event.target.checked,
+                              )
+                            }
+                          />
+                        }
+                      />
+                    </FormGroup>
+                  )}
                 </>
               )}
             </Box>
@@ -293,7 +301,7 @@ export default function TreatmentQuality() {
         </FilterDrawerBox>
         <MainBox>
           {queriesReady &&
-            (newIndicatorTableActivated ? (
+            (newIndicatorTableActivated || newTableOnly ? (
               <>
                 <IndicatorTableBodyV2
                   key="indicator-table"
@@ -301,7 +309,7 @@ export default function TreatmentQuality() {
                   unitNames={selectedTreatmentUnits}
                   year={selectedYear}
                   type={"ind"}
-                  level={selectedLevel}
+                  levels={selectedLevel}
                   medfields={selectedMedicalFields}
                 />
                 <TreatmentQualityFooter />
