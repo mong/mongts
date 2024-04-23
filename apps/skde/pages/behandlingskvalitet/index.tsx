@@ -5,8 +5,8 @@ import TuneIcon from "@mui/icons-material/Tune";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
-import { imgLoader } from "qmongjs";
 import {
+  imgLoader,
   FilterSettingsAction,
   FilterSettingsValue,
   TreatmentQualityFilterMenu,
@@ -19,6 +19,7 @@ import {
   medicalFieldKey,
   useMedicalFieldsQuery,
   IndicatorTableBodyV2,
+  indicatorTableTheme,
   IndicatorTable,
 } from "qmongjs";
 import {
@@ -29,7 +30,6 @@ import {
   appBarElevation,
   filterMenuTopMargin,
   desktopBreakpoint,
-  treatmentQualityTheme,
   TreatmentQualityAppBar,
   SkdeLogoBox,
 } from "../../src/components/TreatmentQuality";
@@ -223,7 +223,7 @@ export default function TreatmentQuality() {
   };
 
   return (
-    <ThemeProvider theme={treatmentQualityTheme}>
+    <ThemeProvider theme={indicatorTableTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <TreatmentQualityAppBar position="fixed" elevation={appBarElevation}>

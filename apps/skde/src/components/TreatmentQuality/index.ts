@@ -7,7 +7,7 @@ import IconButton from "@mui/material/IconButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
-import { createTheme, styled } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 
 export const appBarElevation = 2;
 export const filterMenuTopMargin = 2;
@@ -22,31 +22,6 @@ export const xlDrawerWidth = 450;
  * many smart phones have landscape mode width of 1280 px.
  * */
 export const desktopBreakpoint = 1300;
-
-declare module "@mui/material/styles" {
-  interface BreakpointOverrides {
-    xs: true;
-    sm: true;
-    md: true;
-    lg: true;
-    xl: true;
-    desktop: true;
-  }
-}
-
-/** The theme for the treatment quality page */
-export const treatmentQualityTheme = createTheme({
-  breakpoints: {
-    values: {
-      xs: 0,
-      sm: 600,
-      md: 900,
-      lg: 1200,
-      xl: 1536,
-      desktop: desktopBreakpoint,
-    },
-  },
-});
 
 export const TreatmentQualityAppBar = styled(AppBar)(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,

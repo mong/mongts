@@ -49,3 +49,5 @@ export type { NestedTreatmentUnitName } from "./components/RegisterPage/unitname
 export { mainQueryParamsConfig } from "./app_config";
 export { validateTreatmentUnits } from "./helpers/functions";
 export { UnitNameList } from "./components/RegisterPage/unitnamelist";
+export { SKDEtheme } from "./themes/SKDEtheme";
+export { indicatorTableTheme } from "./components/IndicatorTable/IndicatortablebodyV2/IndicatorTableBodyV2Styles";
