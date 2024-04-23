@@ -12,7 +12,7 @@ import { newLevelSymbols, level } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
-import { useParentSize } from "@visx/responsive";
+import { useScreenSize } from "@visx/responsive";
 import {
   StyledTable,
   StyledTableRow,
@@ -245,21 +245,21 @@ const IndicatorRow = (props: {
   const lineStyles = createChartStyles(unitNames, font);
 
   const ResponsiveChart = () => {
-    const { parentRef, width, height } = useParentSize({ debounceTime: 150 });
+    const { width, height } = useScreenSize({ debounceTime: 150 });
+
+    const sizeFactor = 0.5;
 
     return (
-      <div ref={parentRef}>
-        <LinechartBase
-          data={chartDataFiltered}
-          width={width}
-          height={width / 2}
-          yMin={0}
-          yMax={1}
-          lineStyles={lineStyles}
-          font={font}
-          yAxisText={"Andel"}
-        />
-      </div>
+      <LinechartBase
+        data={chartDataFiltered}
+        width={sizeFactor * width}
+        height={sizeFactor * height}
+        yMin={0}
+        yMax={1}
+        lineStyles={lineStyles}
+        font={font}
+        yAxisText={"Andel"}
+      />
     );
   };
 
@@ -294,7 +294,7 @@ const IndicatorRow = (props: {
         </StyledTableCell>
 
         {rowDataSorted.map((row, index) => {
-          const lowDG = row?.dg == null ? false : row?.dg! < 0.6 ? true : false;
+          const lowDG = row?.dg == null ? false : row?.dg < 0.6 ? true : false;
           const noData = row?.denominator == null ? true : false;
           const lowN =
             row?.denominator == null
@@ -549,7 +549,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
 
   const chartData = indicatorQuery.data;
 
-  let rowDataFiltered = rowData.filter((row) => {
+  const rowDataFiltered = rowData.filter((row) => {
     return medfields.includes(row.registerName);
   });
 
