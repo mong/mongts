@@ -158,7 +158,7 @@ export function LinechartBase({
       </Legend>
 
       <svg className="linechartbase" width={width} height={height}>
-        <MarkerCircle id="marker-circle" fill="#333" size={2} />
+        <MarkerCircle id="marker-circle" fill="#333" size={2} refX={2} />
         <LinechartBackground width={width} height={height} />
         {data.map((lineData, i) => {
           return (
