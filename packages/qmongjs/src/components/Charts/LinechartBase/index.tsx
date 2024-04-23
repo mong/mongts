@@ -4,9 +4,10 @@ import { curveLinear } from "@visx/curve";
 import { LinePath } from "@visx/shape";
 import { scaleTime, scaleLinear, scaleOrdinal } from "@visx/scale";
 import { AxisBottom, AxisLeft } from "@visx/axis";
-import { LinechartBackground } from "./LinechartBaseStyles";
 import { Legend, LegendItem, LegendLabel } from "@visx/legend";
 import { customFormat } from "qmongjs";
+import { LinechartGrid } from "qmongjs";
+import { IndicatorData } from "../../IndicatorTable/indicatorvalue";
 
 export type LinechartData = {
   x: Date;
@@ -65,6 +66,9 @@ export type LinechartBaseProps = {
   yAxisText: string;
   yMin?: number;
   yMax?: number;
+  levelGreen?: number;
+  levelYellow?: number;
+  levelDirection?: number;
   format_y?: string;
   lang?: "en" | "nb" | "nn";
 };
@@ -78,6 +82,9 @@ export function LinechartBase({
   yAxisText,
   yMin,
   yMax,
+  levelGreen,
+  levelYellow,
+  levelDirection,
   format_y,
   lang = "nb",
 }: LinechartBaseProps) {
@@ -89,8 +96,11 @@ export function LinechartBase({
 
   const nXTicks = data[0].length;
 
-  yMin = yMin ?? min(allData, getY);
-  yMax = yMax ?? max(allData, getY);
+  const xMin = min(allData, getX);
+  const xMax = max(allData, getX);
+
+  yMin = yMin ?? min(allData, getY)!;
+  yMax = yMax ?? max(allData, getY)!;
 
   // scales
   const xScale = scaleTime<number>({
@@ -125,6 +135,21 @@ export function LinechartBase({
     range: lineStyles.getPaths(),
   });
 
+  const backgroundProps = {
+    xStart: xScale(xMin),
+    xStop: xScale(xMax),
+    yStart: yScale(yMax),
+    yStop: yScale(yMin),
+    levelGreen: yScale(levelGreen),
+    levelYellow: yScale(levelYellow),
+    levelDirection: levelDirection,
+  };
+
+  const background =
+    levelGreen && levelYellow && levelDirection
+      ? LinechartGrid(backgroundProps)
+      : null;
+
   return (
     <div className="visx-linechartbase">
       <Legend scale={legendScale}>
@@ -157,7 +182,7 @@ export function LinechartBase({
       </Legend>
 
       <svg className="linechartbase" width={width} height={height}>
-        <LinechartBackground width={width} height={height} />
+        {background}
         {data.map((lineData, i) => {
           return (
             <LinePath<LinechartData>

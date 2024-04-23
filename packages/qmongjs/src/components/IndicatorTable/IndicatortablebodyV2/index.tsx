@@ -53,7 +53,9 @@ export type DataPoint = {
 type IndicatorData = {
   indicatorID: string;
   indicatorName: string | null;
-  targetMeasure: number | null;
+  levelGreen: number | null;
+  levelYellow: number | null;
+  levelDirection: number | null;
   minDenominator: number | null;
   shortDescription: string | null;
   longDescription: string | null;
@@ -110,7 +112,9 @@ const createData = (indicatorData: Indicator[]) => {
         returnData[i].indicatorData.push({
           indicatorID: row.ind_id,
           indicatorName: row.ind_title,
-          targetMeasure: row.level_green,
+          levelGreen: row.level_green,
+          levelYellow: row.level_yellow,
+          levelDirection: row.level_direction,
           minDenominator: row.min_denominator,
           shortDescription: row.ind_short_description,
           longDescription: row.ind_long_description,
@@ -263,9 +267,7 @@ const IndicatorRow = (props: {
                     {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                   </IconButton>
                 </td>
-                <td>
-                  <body>{indData.indicatorName}</body>
-                </td>
+                <td>{indData.indicatorName}</td>
               </tr>
             </tbody>
           </table>
@@ -311,9 +313,7 @@ const IndicatorRow = (props: {
               align={"center"}
               key={indData.indicatorID + index}
             >
-              <div>
-                <body>{cellData}</body>
-              </div>
+              <div>{cellData}</div>
               <div>{patientCounts}</div>
             </StyledTableCell>
           );
@@ -334,9 +334,9 @@ const IndicatorRow = (props: {
           style={{ backgroundColor: "#E0E7EB" }}
         >
           {"Ønsket målnivå: " +
-            (indData.targetMeasure === null
+            (indData.levelGreen === null
               ? ""
-              : customFormat(",.0%")(indData.targetMeasure))}
+              : customFormat(",.0%")(indData.levelGreen))}
         </StyledTableCell>
       </TableRow>
 
@@ -355,6 +355,9 @@ const IndicatorRow = (props: {
             height={500}
             yMin={0}
             yMax={1}
+            levelGreen={indData.levelGreen!}
+            levelYellow={indData.levelYellow!}
+            levelDirection={indData.levelDirection!}
             lineStyles={lineStyles}
             font={font}
             yAxisText={"Andel"}
