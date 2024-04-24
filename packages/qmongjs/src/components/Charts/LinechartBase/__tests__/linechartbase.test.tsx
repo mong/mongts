@@ -76,7 +76,7 @@ test("Render with format and lang = en", () => {
       yAxisText={"Andel"}
     />,
   );
-  expect(container.children[0].children[1].children[5]).toMatchSnapshot();
+  expect(container.children[0].children[1].children[0]).toMatchSnapshot();
 });
 
 test("Render with format and lang = nb", () => {
@@ -94,7 +94,7 @@ test("Render with format and lang = nb", () => {
       yAxisText={"Andel"}
     />,
   );
-  expect(container.children[0].children[1].children[5]).toMatchSnapshot();
+  expect(container.children[0].children[1].children[0]).toMatchSnapshot();
 });
 
 test("Render with other format", () => {
@@ -111,5 +111,45 @@ test("Render with other format", () => {
       yAxisText={"Andel"}
     />,
   );
-  expect(container.children[0].children[1].children[5]).toMatchSnapshot();
+  expect(container.children[0].children[1].children[0]).toMatchSnapshot();
+});
+
+test("Render with background", () => {
+  const { container } = render(
+    <LinechartBase
+      data={linechartTestData}
+      width={800}
+      height={400}
+      lineStyles={lineStyles}
+      font={font}
+      yMin={0}
+      yMax={25}
+      format_y=",.2f"
+      levelGreen={15}
+      levelYellow={10}
+      levelDirection={1}
+      yAxisText={"Andel"}
+    />,
+  );
+  expect(container.children[0].children[1]).toMatchSnapshot();
+});
+
+test("Render with background", () => {
+  const { container } = render(
+    <LinechartBase
+      data={linechartTestData}
+      width={800}
+      height={400}
+      lineStyles={lineStyles}
+      font={font}
+      yMin={0}
+      yMax={25}
+      format_y=",.2f"
+      levelGreen={10}
+      levelYellow={15}
+      levelDirection={0}
+      yAxisText={"Andel"}
+    />,
+  );
+  expect(container.children[0].children[1]).toMatchSnapshot();
 });
