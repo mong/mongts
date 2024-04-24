@@ -259,11 +259,14 @@ const IndicatorRow = (props: {
         lineStyles={lineStyles}
         font={font}
         yAxisText={"Andel"}
+        format_y=",.0%"
       />
     );
   };
 
-  const responsiveChart = <ResponsiveChart />;
+  let responsiveChart;
+
+  open ? responsiveChart = <ResponsiveChart/> : responsiveChart = null;
 
   return (
     <React.Fragment key={indData.indicatorName + "-indicatorSection"}>
