@@ -266,7 +266,7 @@ const IndicatorRow = (props: {
 
   let responsiveChart;
 
-  open ? responsiveChart = <ResponsiveChart/> : responsiveChart = null;
+  open ? (responsiveChart = <ResponsiveChart />) : (responsiveChart = null);
 
   return (
     <React.Fragment key={indData.indicatorName + "-indicatorSection"}>
