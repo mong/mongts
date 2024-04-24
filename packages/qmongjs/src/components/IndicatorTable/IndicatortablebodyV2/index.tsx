@@ -363,20 +363,22 @@ const IndicatorRow = (props: {
           colSpan={unitNames.length + 1}
           align="center"
         >
-         {open ? <LinechartBase
-            data={chartDataFiltered}
-            width={1000}
-            height={500}
-            yMin={0}
-            yMax={1}
-            levelGreen={indData.levelGreen!}
-            levelYellow={indData.levelYellow!}
-            levelDirection={indData.levelDirection!}
-            lineStyles={lineStyles}
-            font={font}
-            yAxisText={"Andel"}
-            format_y=",.0%"
-          /> : null}
+          {open ? (
+            <LinechartBase
+              data={chartDataFiltered}
+              width={1000}
+              height={500}
+              yMin={0}
+              yMax={1}
+              levelGreen={indData.levelGreen!}
+              levelYellow={indData.levelYellow!}
+              levelDirection={indData.levelDirection!}
+              lineStyles={lineStyles}
+              font={font}
+              yAxisText={"Andel"}
+              format_y=",.0%"
+            />
+          ) : null}
         </StyledTableCell>
       </TableRow>
 
