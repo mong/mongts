@@ -183,7 +183,20 @@ const createChartData = (
     });
   });
 
-  return chartData;
+  // The same indicator can appear twice if it belongs to two different medfields
+  const chartDataUnique = chartData.map((array) => {
+    return array.filter((value, index) => {
+      const _value = JSON.stringify(value);
+      return (
+        index ===
+        array.findIndex((obj) => {
+          return JSON.stringify(obj) === _value;
+        })
+      );
+    });
+  });
+
+  return chartDataUnique;
 };
 
 const randomHexColorCode = () => {
