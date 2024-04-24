@@ -7,6 +7,7 @@ import { AxisBottom, AxisLeft } from "@visx/axis";
 import { LinechartBackground } from "./LinechartBaseStyles";
 import { Legend, LegendItem, LegendLabel } from "@visx/legend";
 import { customFormat } from "qmongjs";
+import { Group } from "@visx/group";
 
 export type LinechartData = {
   x: Date;
@@ -160,19 +161,31 @@ export function LinechartBase({
         <LinechartBackground width={width} height={height} />
         {data.map((lineData, i) => {
           return (
-            <LinePath<LinechartData>
-              key={`lineid-${i}`}
-              curve={curveLinear}
-              data={lineData}
-              x={(d) => xScale(getX(d))}
-              y={(d) => yScale(getY(d))}
-              stroke={lineStyles.styles[i].colour}
-              strokeDasharray={lineStyles.styles[i].strokeDash}
-              shapeRendering="geometricPrecision"
-              strokeWidth={"1px"}
-              strokeLinejoin={"round"}
-              strokeLinecap={"square"}
-            />
+            <Group>
+              {lineData.map((d, j) => (
+                <circle
+                  key={i + j}
+                  r={3}
+                  cx={xScale(getX(d))}
+                  cy={yScale(getY(d))}
+                  stroke={lineStyles.styles[i].colour}
+                  fill={lineStyles.styles[i].colour}
+                />
+              ))}
+              <LinePath<LinechartData>
+                key={`lineid-${i}`}
+                curve={curveLinear}
+                data={lineData}
+                x={(d) => xScale(getX(d))}
+                y={(d) => yScale(getY(d))}
+                stroke={lineStyles.styles[i].colour}
+                strokeDasharray={lineStyles.styles[i].strokeDash}
+                shapeRendering="geometricPrecision"
+                strokeWidth={"2px"}
+                strokeLinejoin={"round"}
+                strokeLinecap={"square"}
+              />
+            </Group>
           );
         })}
 
