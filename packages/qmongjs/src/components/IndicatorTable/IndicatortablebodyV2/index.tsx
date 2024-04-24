@@ -17,9 +17,6 @@ import {
   StyledTableRow,
   StyledTableCell,
 } from "./IndicatorTableBodyV2Styles";
-
-const remarkPlugins: PluggableList = [remarkGfm];
-
 import {
   LinechartBase,
   font,
@@ -28,6 +25,12 @@ import {
   customFormat,
   useIndicatorQuery,
 } from "qmongjs";
+
+const remarkPlugins: PluggableList = [remarkGfm];
+
+// ###########################
+// ########## Types ##########
+// ###########################
 
 export type IndicatorTableBodyV2Props = {
   context: string;
@@ -71,6 +74,10 @@ type RegisterData = {
   medfieldID: number;
   indicatorData: IndicatorData[];
 };
+
+// ###############################
+// ########## Functions ##########
+// ###############################
 
 // Find the index of the array element where the indicator ID is equal to the input string
 const searchArray = (arr: Array<IndicatorData>, target: string) => {
@@ -197,7 +204,14 @@ const createChartStyles = (unitNames: string[], font: font) => {
   return new LineStyles(lineStyles, font);
 };
 
+// ################################
+// ########## Components ##########
+// ################################
+
+// #############################
 // Component for individual rows
+// #############################
+
 const IndicatorRow = (props: {
   unitNames: string[];
   levels: string;
@@ -361,6 +375,7 @@ const IndicatorRow = (props: {
             lineStyles={lineStyles}
             font={font}
             yAxisText={"Andel"}
+            format_y=",.0%"
           />
         </StyledTableCell>
       </TableRow>
@@ -401,7 +416,10 @@ const IndicatorRow = (props: {
   );
 };
 
+// ###################################################
 // Component for collection of indicators per registry
+// ###################################################
+
 const IndicatorSection = (props: {
   unitNames: string[];
   levels: string;
@@ -437,7 +455,10 @@ const IndicatorSection = (props: {
   });
 };
 
+// ################################################################
 // Component for registry and unit names header plus indicator rows
+// ################################################################
+
 const RegistrySection = (props: {
   unitNames: string[];
   levels: string;
@@ -512,7 +533,10 @@ const RegistrySection = (props: {
   }
 };
 
+// #################################
 // Top level component for the table
+// #################################
+
 export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   props,
 ) => {

@@ -21,6 +21,8 @@ export const LinechartGrid = (props: LinechartGridProps) => {
     levelDirection,
   } = props;
 
+  const opacity = "100%";
+
   if (levelDirection === 1) {
     return (
       <React.Fragment>
@@ -29,8 +31,8 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           width={xStop - xStart}
           y={yStart}
           height={levelGreen - yStart}
-          fill="green"
-          opacity={"50%"}
+          fill="#EAF6EB"
+          opacity={opacity}
         />
 
         <rect
@@ -38,8 +40,8 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           width={xStop - xStart}
           y={levelGreen}
           height={levelYellow - levelGreen}
-          fill="yellow"
-          opacity={"50%"}
+          fill="#FFEFC7"
+          opacity={opacity}
         />
 
         <rect
@@ -47,8 +49,8 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           width={xStop - xStart}
           y={levelYellow}
           height={yStop - levelYellow}
-          fill="red"
-          opacity={"50%"}
+          fill="#FFE5E2"
+          opacity={opacity}
         />
       </React.Fragment>
     );
@@ -61,7 +63,7 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           y={yStart}
           height={levelYellow - yStart}
           fill="red"
-          opacity={"50%"}
+          opacity={opacity}
         />
 
         <rect
@@ -70,7 +72,7 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           y={levelYellow}
           height={levelGreen - levelYellow}
           fill="yellow"
-          opacity={"50%"}
+          opacity={opacity}
         />
 
         <rect
@@ -79,7 +81,7 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           y={levelGreen}
           height={yStop - levelGreen}
           fill="green"
-          opacity={"50%"}
+          opacity={opacity}
         />
       </React.Fragment>
     );

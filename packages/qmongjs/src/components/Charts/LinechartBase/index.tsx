@@ -7,7 +7,8 @@ import { AxisBottom, AxisLeft } from "@visx/axis";
 import { Legend, LegendItem, LegendLabel } from "@visx/legend";
 import { customFormat } from "qmongjs";
 import { LinechartGrid } from "qmongjs";
-import { IndicatorData } from "../../IndicatorTable/indicatorvalue";
+import { GridRows } from "@visx/grid";
+import { Group } from "@visx/group";
 
 export type LinechartData = {
   x: Date;
@@ -96,9 +97,6 @@ export function LinechartBase({
 
   const nXTicks = data[0].length;
 
-  const xMin = min(allData, getX);
-  const xMax = max(allData, getX);
-
   yMin = yMin ?? min(allData, getY)!;
   yMax = yMax ?? max(allData, getY)!;
 
@@ -111,15 +109,20 @@ export function LinechartBase({
     domain: [yMin!, yMax!],
   });
 
+  const xMin = xScale.domain()[0];
+  const xMax = xScale.domain()[1];
+
   const borderWidth = 100;
 
   // update scale output ranges
   xScale.range([borderWidth, width - borderWidth]);
   yScale.range([height - borderWidth, borderWidth]);
 
+  const yAxisLabelDisplacementFactor = 0.5;
+
   const yLabelProps = {
     fontSize: font.fontSize,
-    x: -height / 1.7,
+    x: -height * yAxisLabelDisplacementFactor,
     fontFamily: font.fontFamily,
     fontWeight: font.fontWeight,
   };
@@ -135,19 +138,17 @@ export function LinechartBase({
     range: lineStyles.getPaths(),
   });
 
-  const backgroundProps = {
-    xStart: xScale(xMin),
-    xStop: xScale(xMax),
-    yStart: yScale(yMax),
-    yStop: yScale(yMin),
-    levelGreen: yScale(levelGreen),
-    levelYellow: yScale(levelYellow),
-    levelDirection: levelDirection,
-  };
-
   const background =
     levelGreen && levelYellow && levelDirection
-      ? LinechartGrid(backgroundProps)
+      ? LinechartGrid({
+          xStart: xScale(xMin),
+          xStop: xScale(xMax),
+          yStart: yScale(yMax),
+          yStop: yScale(yMin),
+          levelGreen: yScale(levelGreen),
+          levelYellow: yScale(levelYellow),
+          levelDirection: levelDirection,
+        })
       : null;
 
   return (
@@ -183,39 +184,49 @@ export function LinechartBase({
 
       <svg className="linechartbase" width={width} height={height}>
         {background}
-        {data.map((lineData, i) => {
-          return (
-            <LinePath<LinechartData>
-              key={`lineid-${i}`}
-              curve={curveLinear}
-              data={lineData}
-              x={(d) => xScale(getX(d))}
-              y={(d) => yScale(getY(d))}
-              stroke={lineStyles.styles[i].colour}
-              strokeDasharray={lineStyles.styles[i].strokeDash}
-              shapeRendering="geometricPrecision"
-              strokeWidth={"1px"}
-              strokeLinejoin={"round"}
-              strokeLinecap={"square"}
-            />
-          );
-        })}
+        <Group>
+          <GridRows
+            numTicks={5}
+            scale={yScale}
+            left={xScale(xMin)}
+            width={xScale(xMax) - xScale(xMin)}
+            height={yMax}
+            stroke="#989898"
+          />
+          {data.map((lineData, i) => {
+            return (
+              <LinePath<LinechartData>
+                key={`lineid-${i}`}
+                curve={curveLinear}
+                data={lineData}
+                x={(d) => xScale(getX(d))}
+                y={(d) => yScale(getY(d))}
+                stroke={lineStyles.styles[i].colour}
+                strokeDasharray={lineStyles.styles[i].strokeDash}
+                shapeRendering="geometricPrecision"
+                strokeWidth={"2px"}
+                strokeLinejoin={"round"}
+                strokeLinecap={"square"}
+              />
+            );
+          })}
 
-        <AxisBottom
-          scale={xScale}
-          top={yScale.range()[0]}
-          numTicks={nXTicks}
-          tickLabelProps={xTicksProps}
-        />
-        <AxisLeft
-          scale={yScale}
-          left={borderWidth}
-          label={yAxisText}
-          labelProps={yLabelProps}
-          tickFormat={(val) =>
-            format_y ? customFormat(format_y, lang)(val) : val.toString()
-          }
-        />
+          <AxisBottom
+            scale={xScale}
+            top={yScale.range()[0]}
+            numTicks={nXTicks}
+            tickLabelProps={xTicksProps}
+          />
+          <AxisLeft
+            scale={yScale}
+            left={borderWidth}
+            label={yAxisText}
+            labelProps={yLabelProps}
+            tickFormat={(val) =>
+              format_y ? customFormat(format_y, lang)(val) : val.toString()
+            }
+          />
+        </Group>
       </svg>
     </div>
   );
