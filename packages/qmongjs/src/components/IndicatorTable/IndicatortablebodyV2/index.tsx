@@ -363,7 +363,7 @@ const IndicatorRow = (props: {
           colSpan={unitNames.length + 1}
           align="center"
         >
-          <LinechartBase
+         {open ? <LinechartBase
             data={chartDataFiltered}
             width={1000}
             height={500}
@@ -376,7 +376,7 @@ const IndicatorRow = (props: {
             font={font}
             yAxisText={"Andel"}
             format_y=",.0%"
-          />
+          /> : null}
         </StyledTableCell>
       </TableRow>
 
