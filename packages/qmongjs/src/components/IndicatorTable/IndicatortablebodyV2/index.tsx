@@ -12,6 +12,7 @@ import { newLevelSymbols, level } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
+import { useScreenSize } from "@visx/responsive";
 import {
   StyledTable,
   StyledTableRow,
@@ -261,6 +262,33 @@ const IndicatorRow = (props: {
 
   const lineStyles = createChartStyles(unitNames, font);
 
+  const ResponsiveChart = () => {
+    const { width, height } = useScreenSize({ debounceTime: 150 });
+
+    const sizeFactor = 0.5;
+
+    return (
+      <LinechartBase
+        data={chartDataFiltered}
+        width={sizeFactor * width}
+        height={sizeFactor * height}
+        yMin={0}
+        yMax={1}
+        lineStyles={lineStyles}
+        font={font}
+        yAxisText={"Andel"}
+        format_y=",.0%"
+        levelGreen={indData.levelGreen!}
+        levelYellow={indData.levelYellow!}
+        levelDirection={indData.levelDirection!}
+      />
+    );
+  };
+
+  let responsiveChart;
+
+  open ? (responsiveChart = <ResponsiveChart />) : (responsiveChart = null);
+
   return (
     <React.Fragment key={indData.indicatorName + "-indicatorSection"}>
       <StyledTableRow
@@ -288,7 +316,7 @@ const IndicatorRow = (props: {
         </StyledTableCell>
 
         {rowDataSorted.map((row, index) => {
-          const lowDG = row?.dg == null ? false : row?.dg! < 0.6 ? true : false;
+          const lowDG = row?.dg == null ? false : row?.dg < 0.6 ? true : false;
           const noData = row?.denominator == null ? true : false;
           const lowN =
             row?.denominator == null
@@ -363,22 +391,7 @@ const IndicatorRow = (props: {
           colSpan={unitNames.length + 1}
           align="center"
         >
-          {open ? (
-            <LinechartBase
-              data={chartDataFiltered}
-              width={1000}
-              height={500}
-              yMin={0}
-              yMax={1}
-              levelGreen={indData.levelGreen!}
-              levelYellow={indData.levelYellow!}
-              levelDirection={indData.levelDirection!}
-              lineStyles={lineStyles}
-              font={font}
-              yAxisText={"Andel"}
-              format_y=",.0%"
-            />
-          ) : null}
+          {responsiveChart}
         </StyledTableCell>
       </TableRow>
 
@@ -565,7 +578,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
 
   const chartData = indicatorQuery.data;
 
-  let rowDataFiltered = rowData.filter((row) => {
+  const rowDataFiltered = rowData.filter((row) => {
     return medfields.includes(row.registerName);
   });
 
