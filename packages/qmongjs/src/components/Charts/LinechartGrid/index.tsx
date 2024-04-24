@@ -62,7 +62,7 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           width={xStop - xStart}
           y={yStart}
           height={levelYellow - yStart}
-          fill="#EAF6EB"
+          fill="#FFE5E2"
           opacity={opacity}
         />
 
@@ -80,7 +80,7 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           width={xStop - xStart}
           y={levelGreen}
           height={yStop - levelGreen}
-          fill="#FFE5E2"
+          fill="#EAF6EB"
           opacity={opacity}
         />
       </React.Fragment>

@@ -131,7 +131,7 @@ test("Render with background", () => {
       yAxisText={"Andel"}
     />,
   );
-  expect(container.children[0].children[1]).toMatchSnapshot();
+  expect(container.children[0].children[1].children[0]).toMatchSnapshot();
 });
 
 test("Render with background", () => {
@@ -151,5 +151,5 @@ test("Render with background", () => {
       yAxisText={"Andel"}
     />,
   );
-  expect(container.children[0].children[1]).toMatchSnapshot();
+  expect(container.children[0].children[1].children[0]).toMatchSnapshot();
 });
