@@ -139,7 +139,7 @@ export function LinechartBase({
   });
 
   const background =
-    levelGreen && levelYellow && levelDirection
+    levelGreen && levelYellow && (levelDirection === 0 || levelDirection === 1)
       ? LinechartGrid({
           xStart: xScale(xMin),
           xStop: xScale(xMax),
