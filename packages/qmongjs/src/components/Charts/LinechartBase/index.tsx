@@ -4,9 +4,10 @@ import { curveLinear } from "@visx/curve";
 import { LinePath, Bar } from "@visx/shape";
 import { scaleTime, scaleLinear, scaleOrdinal } from "@visx/scale";
 import { AxisBottom, AxisLeft } from "@visx/axis";
-import { LinechartBackground } from "./LinechartBaseStyles";
 import { Legend, LegendItem, LegendLabel } from "@visx/legend";
 import { customFormat } from "qmongjs";
+import { LinechartGrid } from "qmongjs";
+import { GridRows } from "@visx/grid";
 import { Group } from "@visx/group";
 import {
   withTooltip,
@@ -88,6 +89,9 @@ export type LinechartBaseProps = {
   yAxisText: string;
   yMin?: number;
   yMax?: number;
+  levelGreen?: number;
+  levelYellow?: number;
+  levelDirection?: number;
   format_y?: string;
   lang?: "en" | "nb" | "nn";
 };
@@ -102,6 +106,9 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
     yAxisText,
     yMin,
     yMax,
+    levelGreen,
+    levelYellow,
+    levelDirection,
     format_y,
     lang = "nb",
     showTooltip,
@@ -118,8 +125,8 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
 
     const nXTicks = data[0].length;
 
-    yMin = yMin ?? min(allData, getY);
-    yMax = yMax ?? max(allData, getY);
+    yMin = yMin ?? min(allData, getY)!;
+    yMax = yMax ?? max(allData, getY)!;
 
     // scales
     const xScale = scaleTime<number>({
@@ -130,15 +137,20 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
       domain: [yMin!, yMax!],
     });
 
+    const xMin = xScale.domain()[0];
+    const xMax = xScale.domain()[1];
+
     const borderWidth = 100;
 
     // update scale output ranges
     xScale.range([borderWidth, width - borderWidth]);
     yScale.range([height - borderWidth, borderWidth]);
 
+    const yAxisLabelDisplacementFactor = 0.5;
+
     const yLabelProps = {
       fontSize: font.fontSize,
-      x: -height / 1.7,
+      x: -height * yAxisLabelDisplacementFactor,
       fontFamily: font.fontFamily,
       fontWeight: font.fontWeight,
     };
@@ -211,6 +223,21 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
       [showTooltip, xScale, yScale],
     );
 
+    const background =
+      levelGreen &&
+      levelYellow &&
+      (levelDirection === 0 || levelDirection === 1)
+        ? LinechartGrid({
+            xStart: xScale(xMin),
+            xStop: xScale(xMax),
+            yStart: yScale(yMax),
+            yStop: yScale(yMin),
+            levelGreen: yScale(levelGreen),
+            levelYellow: yScale(levelYellow),
+            levelDirection: levelDirection,
+          })
+        : null;
+
     return (
       <div className="visx-linechartbase">
         <Legend scale={legendScale}>
@@ -247,75 +274,85 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
         </Legend>
 
         <svg className="linechartbase" width={width} height={height}>
-          <LinechartBackground width={width} height={height} />
-          {data.map((lineData, i) => {
-            return (
-              <Group>
-                {lineData.map((d, j) => (
-                  <circle
-                    key={i + j}
-                    r={3}
-                    cx={xScale(getX(d))}
-                    cy={yScale(getY(d))}
-                    stroke={lineStyles.styles[i].colour}
-                    fill={lineStyles.styles[i].colour}
-                  />
-                ))}
-                <LinePath<LinechartData>
-                  key={`lineid-${i}`}
-                  curve={curveLinear}
-                  data={lineData}
-                  x={(d) => xScale(getX(d))}
-                  y={(d) => yScale(getY(d))}
-                  stroke={lineStyles.styles[i].colour}
-                  strokeDasharray={lineStyles.styles[i].strokeDash}
-                  shapeRendering="geometricPrecision"
-                  strokeWidth={"2px"}
-                  strokeLinejoin={"round"}
-                  strokeLinecap={"square"}
-                />
-              </Group>
-            );
-          })}
-
-          <AxisBottom
-            scale={xScale}
-            top={yScale.range()[0]}
-            numTicks={nXTicks}
-            tickLabelProps={xTicksProps}
-          />
-          <AxisLeft
-            scale={yScale}
-            left={borderWidth}
-            label={yAxisText}
-            labelProps={yLabelProps}
-            tickFormat={(val) =>
-              format_y ? customFormat(format_y, lang)(val) : val.toString()
-            }
-          />
-          <Bar
-            x={0}
-            y={0}
-            width={innerWidth}
-            height={innerHeight}
-            fill="transparent"
-            rx={14}
-            onTouchStart={handleToolTip}
-            onTouchMove={handleToolTip}
-            onMouseMove={handleToolTip}
-            onMouseLeave={() => hideTooltip()}
-          />
-          {tooltipData && (
-            <circle
-              cx={tooltipLeft}
-              cy={tooltipTop}
-              r={6}
-              fill={"#000000"}
-              stroke="white"
-              strokeWidth={2}
-              pointerEvents="none"
+          {background}
+          <Group>
+            <GridRows
+              numTicks={5}
+              scale={yScale}
+              left={xScale(xMin)}
+              width={xScale(xMax) - xScale(xMin)}
+              height={yMax}
+              stroke="#989898"
             />
-          )}
+            {data.map((lineData, i) => {
+              return (
+                <Group>
+                  {lineData.map((d, j) => (
+                    <circle
+                      key={i + j}
+                      r={3}
+                      cx={xScale(getX(d))}
+                      cy={yScale(getY(d))}
+                      stroke={lineStyles.styles[i].colour}
+                      fill={lineStyles.styles[i].colour}
+                    />
+                  ))}
+                  <LinePath<LinechartData>
+                    key={`lineid-${i}`}
+                    curve={curveLinear}
+                    data={lineData}
+                    x={(d) => xScale(getX(d))}
+                    y={(d) => yScale(getY(d))}
+                    stroke={lineStyles.styles[i].colour}
+                    strokeDasharray={lineStyles.styles[i].strokeDash}
+                    shapeRendering="geometricPrecision"
+                    strokeWidth={"2px"}
+                    strokeLinejoin={"round"}
+                    strokeLinecap={"square"}
+                  />
+                </Group>
+              );
+            })}
+
+            <AxisBottom
+              scale={xScale}
+              top={yScale.range()[0]}
+              numTicks={nXTicks}
+              tickLabelProps={xTicksProps}
+            />
+            <AxisLeft
+              scale={yScale}
+              left={borderWidth}
+              label={yAxisText}
+              labelProps={yLabelProps}
+              tickFormat={(val) =>
+                format_y ? customFormat(format_y, lang)(val) : val.toString()
+              }
+            />
+            <Bar
+              x={0}
+              y={0}
+              width={innerWidth}
+              height={innerHeight}
+              fill="transparent"
+              rx={14}
+              onTouchStart={handleToolTip}
+              onTouchMove={handleToolTip}
+              onMouseMove={handleToolTip}
+              onMouseLeave={() => hideTooltip()}
+            />
+            {tooltipData && (
+              <circle
+                cx={tooltipLeft}
+                cy={tooltipTop}
+                r={6}
+                fill={"#000000"}
+                stroke="white"
+                strokeWidth={2}
+                pointerEvents="none"
+              />
+            )}
+          </Group>
         </svg>
 
         {tooltipData && (
