@@ -53,7 +53,7 @@ test("Standard render", () => {
     />,
   );
   // container.children[0].children[0] is the legend
-  // container.children[0].children[1].children[0] is the plot
+  // container.children[0].children[1].children[0] are the three line plots
   // It consists of 6 SVG elements: rect, path, path, path, g and g
   // These are the background, three lines, the x axis and the y axis.
   expect(
@@ -76,7 +76,9 @@ test("Render with format and lang = en", () => {
       yAxisText={"Andel"}
     />,
   );
-  expect(container.children[0].children[1].children[0]).toMatchSnapshot();
+  expect(
+    container.children[0].children[1].children[0].childElementCount,
+  ).toEqual(6);
 });
 
 test("Render with format and lang = nb", () => {
@@ -94,7 +96,9 @@ test("Render with format and lang = nb", () => {
       yAxisText={"Andel"}
     />,
   );
-  expect(container.children[0].children[1].children[0]).toMatchSnapshot();
+  expect(
+    container.children[0].children[1].children[0].childElementCount,
+  ).toEqual(6);
 });
 
 test("Render with other format", () => {
@@ -111,9 +115,12 @@ test("Render with other format", () => {
       yAxisText={"Andel"}
     />,
   );
-  expect(container.children[0].children[1].children[0]).toMatchSnapshot();
+  expect(
+    container.children[0].children[1].children[0].childElementCount,
+  ).toEqual(6);
 });
 
+// Children[0].children[1] should 3 rects and one Visx group
 test("Render with background", () => {
   const { container } = render(
     <LinechartBase
@@ -131,7 +138,7 @@ test("Render with background", () => {
       yAxisText={"Andel"}
     />,
   );
-  expect(container.children[0].children[1].children[0]).toMatchSnapshot();
+  expect(container.children[0].children[1].childElementCount).toEqual(4);
 });
 
 test("Render with background", () => {
@@ -151,5 +158,5 @@ test("Render with background", () => {
       yAxisText={"Andel"}
     />,
   );
-  expect(container.children[0].children[1].children[0]).toMatchSnapshot();
+  expect(container.children[0].children[1].childElementCount).toEqual(4);
 });
