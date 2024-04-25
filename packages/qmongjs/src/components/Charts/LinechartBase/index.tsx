@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { extent, min, max, bisector } from "@visx/vendor/d3-array";
 import { curveLinear } from "@visx/curve";
-import { LinePath, Line, Bar } from "@visx/shape";
+import { LinePath, Bar } from "@visx/shape";
 import { scaleTime, scaleLinear, scaleOrdinal } from "@visx/scale";
 import { AxisBottom, AxisLeft } from "@visx/axis";
 import { LinechartBackground } from "./LinechartBaseStyles";
@@ -92,7 +92,7 @@ export type LinechartBaseProps = {
   lang?: "en" | "nb" | "nn";
 };
 
-export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData[]>(
+export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
   ({
     data,
     width,
@@ -109,14 +109,10 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData[]>(
     tooltipData,
     tooltipTop = 0,
     tooltipLeft = 0,
-  }: LinechartBaseProps & WithTooltipProvidedProps<LinechartData[]>) => {
+  }: LinechartBaseProps & WithTooltipProvidedProps<LinechartData>) => {
     // data accessors
     const getX = (d: LinechartData) => d.x;
     const getY = (d: LinechartData) => d.y;
-
-    const getTooltipData = (d: LinechartData[], x: Date) => {
-      return d.filter((el) => { return(el.x === x)})
-    }
 
     const allData = data.reduce((rec, d) => rec.concat(d), []);
 
@@ -169,31 +165,47 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData[]>(
           | React.TouchEvent<SVGRectElement>
           | React.MouseEvent<SVGRectElement>,
       ) => {
-
-        // x and y are the plot coordinates
-        // u and v are the SVG coordinates
-        const { x } = localPoint(event) || { x: 0 }; // SVG cordinates
+        // x and y are the SVG coordinates
+        // u and v are the plot coordinates
+        const { x, y } = localPoint(event) || { x: 0 }; // SVG cordinates
         const u = xScale.invert(x); // Plot coordinates
-        
+        const v = yScale.invert(y);
 
-        const u_nearest = new Date(Math.round(u.getFullYear()), 0);
-        let x_nearest = xScale(u_nearest)
-
+        let u_nearest = new Date(Math.round(u.getFullYear()), 0);
         // Stop the cursor from snapping to the first year to the left of the y-axis
-        if (x_nearest < xScale.range()[0]) {
-          x_nearest = xScale.range()[0]
+        if (u_nearest < xScale.domain()[0]) {
+          u_nearest = xScale.domain()[0];
+        } else if (u_nearest > xScale.domain()[1]) {
+          u_nearest = xScale.domain()[1];
         }
+
+        const x_nearest = xScale(u_nearest);
+
         const index = bisectDate(data[0], u_nearest);
 
-        showTooltip({
-          tooltipData: data.map((d) => { return(d[index]) })
-            .map((d) => {
-              const retVal = d?.x && d?.y ? {x: getX(d), y: getY(d)} : {x: data[0][index].x, y: 0}
-              return retVal
-            }),
+        const goal = v;
+        const v_nearest = data
+          .map((row) => {
+            const validPoints = row.filter((p) => {
+              return p.x.getFullYear() === u_nearest.getFullYear();
+            });
 
+            const ind = bisectDate(validPoints, u_nearest);
+
+            const retVal = validPoints.length > 0 ? validPoints[ind].y : null;
+            return retVal;
+          })
+          .filter((arr) => arr !== null)
+          .reduce((prev, curr) => {
+            return Math.abs(curr - goal) < Math.abs(prev - goal) ? curr : prev;
+          });
+
+        const y_nearest = yScale(v_nearest);
+
+        showTooltip({
+          tooltipData: { x: data[0][index].x, y: v_nearest },
           tooltipLeft: x_nearest,
-          tooltipTop: yScale(data[1][index].y),
+          tooltipTop: y_nearest,
         });
       },
       [showTooltip, xScale, yScale],
@@ -294,36 +306,15 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData[]>(
             onMouseLeave={() => hideTooltip()}
           />
           {tooltipData && (
-            <g>
-              <Line
-                from={{ x: tooltipLeft, y: 0 }}
-                to={{ x: tooltipLeft, y: innerHeight }}
-                stroke={"#000000"}
-                strokeWidth={2}
-                pointerEvents="none"
-                strokeDasharray="5,2"
-              />
-              <circle
-                cx={tooltipLeft}
-                cy={tooltipTop + 1}
-                r={4}
-                fill="black"
-                fillOpacity={0.1}
-                stroke="black"
-                strokeOpacity={0.1}
-                strokeWidth={2}
-                pointerEvents="none"
-              />
-              <circle
-                cx={tooltipLeft}
-                cy={tooltipTop}
-                r={4}
-                fill={"#000000"}
-                stroke="white"
-                strokeWidth={2}
-                pointerEvents="none"
-              />
-            </g>
+            <circle
+              cx={tooltipLeft}
+              cy={tooltipTop}
+              r={6}
+              fill={"#000000"}
+              stroke="white"
+              strokeWidth={2}
+              pointerEvents="none"
+            />
           )}
         </svg>
 
@@ -335,9 +326,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData[]>(
               left={tooltipLeft + 12}
               style={tooltipStyles}
             >
-              {[tooltipData[0].y,
-              tooltipData[1].y]
-              }
+              {tooltipData.y}
             </TooltipWithBounds>
             <Tooltip
               top={innerHeight}
@@ -349,7 +338,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData[]>(
                 transform: "translateX(-50%)",
               }}
             >
-              {formatDate(tooltipData[0].x)}
+              {formatDate(tooltipData.x)}
             </Tooltip>
           </div>
         )}
