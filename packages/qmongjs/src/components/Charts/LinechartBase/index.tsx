@@ -1,13 +1,22 @@
-import React from "react";
-import { extent, min, max } from "@visx/vendor/d3-array";
+import React, { useCallback } from "react";
+import { extent, min, max, bisector } from "@visx/vendor/d3-array";
 import { curveLinear } from "@visx/curve";
-import { LinePath } from "@visx/shape";
+import { LinePath, Line, Bar } from "@visx/shape";
 import { scaleTime, scaleLinear, scaleOrdinal } from "@visx/scale";
 import { AxisBottom, AxisLeft } from "@visx/axis";
 import { LinechartBackground } from "./LinechartBaseStyles";
 import { Legend, LegendItem, LegendLabel } from "@visx/legend";
 import { customFormat } from "qmongjs";
 import { Group } from "@visx/group";
+import {
+  withTooltip,
+  Tooltip,
+  TooltipWithBounds,
+  defaultStyles,
+} from "@visx/tooltip";
+import { WithTooltipProvidedProps } from "@visx/tooltip/lib/enhancers/withTooltip";
+import { localPoint } from "@visx/event";
+import { timeFormat } from "@visx/vendor/d3-time-format";
 
 export type LinechartData = {
   x: Date;
@@ -57,6 +66,19 @@ export class LineStyles {
   };
 }
 
+export const background = "#3b6978";
+export const background2 = "#204051";
+export const accentColor = "#edffea";
+export const accentColorDark = "#75daad";
+const tooltipStyles = {
+  ...defaultStyles,
+  background,
+  border: "1px solid white",
+  color: "white",
+};
+
+const formatDate = timeFormat("%b %d, '%y");
+
 export type LinechartBaseProps = {
   data: LinechartData[][];
   width: number;
@@ -70,141 +92,246 @@ export type LinechartBaseProps = {
   lang?: "en" | "nb" | "nn";
 };
 
-export function LinechartBase({
-  data,
-  width,
-  height,
-  lineStyles,
-  font,
-  yAxisText,
-  yMin,
-  yMax,
-  format_y,
-  lang = "nb",
-}: LinechartBaseProps) {
-  // data accessors
-  const getX = (d: LinechartData) => d.x;
-  const getY = (d: LinechartData) => d.y;
+export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
+  ({
+    data,
+    width,
+    height,
+    lineStyles,
+    font,
+    yAxisText,
+    yMin,
+    yMax,
+    format_y,
+    lang = "nb",
+    showTooltip,
+    hideTooltip,
+    tooltipData,
+    tooltipTop = 0,
+    tooltipLeft = 0,
+  }: LinechartBaseProps & WithTooltipProvidedProps<LinechartData>) => {
+    // data accessors
+    const getX = (d: LinechartData) => d.x;
+    const getY = (d: LinechartData) => d.y;
 
-  const allData = data.reduce((rec, d) => rec.concat(d), []);
+    const allData = data.reduce((rec, d) => rec.concat(d), []);
 
-  const nXTicks = data[0].length;
+    const nXTicks = data[0].length;
 
-  yMin = yMin ?? min(allData, getY);
-  yMax = yMax ?? max(allData, getY);
+    yMin = yMin ?? min(allData, getY);
+    yMax = yMax ?? max(allData, getY);
 
-  // scales
-  const xScale = scaleTime<number>({
-    domain: extent(allData, getX) as [Date, Date],
-  });
+    // scales
+    const xScale = scaleTime<number>({
+      domain: extent(allData, getX) as [Date, Date],
+    });
 
-  const yScale = scaleLinear<number>({
-    domain: [yMin!, yMax!],
-  });
+    const yScale = scaleLinear<number>({
+      domain: [yMin!, yMax!],
+    });
 
-  const borderWidth = 100;
+    const borderWidth = 100;
 
-  // update scale output ranges
-  xScale.range([borderWidth, width - borderWidth]);
-  yScale.range([height - borderWidth, borderWidth]);
+    // update scale output ranges
+    xScale.range([borderWidth, width - borderWidth]);
+    yScale.range([height - borderWidth, borderWidth]);
 
-  const yLabelProps = {
-    fontSize: font.fontSize,
-    x: -height / 1.7,
-    fontFamily: font.fontFamily,
-    fontWeight: font.fontWeight,
-  };
+    const yLabelProps = {
+      fontSize: font.fontSize,
+      x: -height / 1.7,
+      fontFamily: font.fontFamily,
+      fontWeight: font.fontWeight,
+    };
 
-  const xTicksProps = {
-    fontSize: font.fontSize,
-    fontFamily: font.fontFamily,
-    fontWeight: font.fontWeight,
-  };
+    const xTicksProps = {
+      fontSize: font.fontSize,
+      fontFamily: font.fontFamily,
+      fontWeight: font.fontWeight,
+    };
 
-  const legendScale = scaleOrdinal<string, React.JSX.Element>({
-    domain: lineStyles.getLabels(),
-    range: lineStyles.getPaths(),
-  });
+    const legendScale = scaleOrdinal<string, React.JSX.Element>({
+      domain: lineStyles.getLabels(),
+      range: lineStyles.getPaths(),
+    });
 
-  return (
-    <div className="visx-linechartbase">
-      <Legend scale={legendScale}>
-        {(labels) => (
-          <div
-            style={{ display: "flex", flexDirection: "row", marginLeft: "10%" }}
-          >
-            {labels.map((label, i) => {
-              return (
-                <div style={{ padding: "10px" }} key={`legend-div-${i}`}>
-                  <LegendItem key={`legend-${i}`}>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="70"
-                      height="6"
-                      viewBox="0 0 40 1"
-                      fill="none"
-                    >
-                      {label.value}
-                    </svg>
-                    <LegendLabel align="left" style={{ ...lineStyles.font }}>
-                      {label.text}
-                    </LegendLabel>
-                  </LegendItem>
-                </div>
-              );
-            })}
+    const bisectDate = bisector<LinechartData[], Date>((d) => {
+      return d[0]?.x ? d[0].x : new Date(2016, 0);
+    }).left;
+
+    // Tooltip handler
+    const handleToolTip = useCallback(
+      (
+        event:
+          | React.TouchEvent<SVGRectElement>
+          | React.MouseEvent<SVGRectElement>,
+      ) => {
+        const { x } = localPoint(event) || { x: 0 };
+        const x0 = xScale.invert(x);
+        const index = bisectDate(data, x0, 1);
+        const d = data[0][index];
+
+        showTooltip({
+          tooltipData: d,
+          tooltipLeft: x,
+          tooltipTop: d.y,
+        });
+      },
+      [showTooltip, xScale, yScale],
+    );
+
+    return (
+      <div className="visx-linechartbase">
+        <Legend scale={legendScale}>
+          {(labels) => (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                marginLeft: "10%",
+              }}
+            >
+              {labels.map((label, i) => {
+                return (
+                  <div style={{ padding: "10px" }} key={`legend-div-${i}`}>
+                    <LegendItem key={`legend-${i}`}>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="70"
+                        height="6"
+                        viewBox="0 0 40 1"
+                        fill="none"
+                      >
+                        {label.value}
+                      </svg>
+                      <LegendLabel align="left" style={{ ...lineStyles.font }}>
+                        {label.text}
+                      </LegendLabel>
+                    </LegendItem>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </Legend>
+
+        <svg className="linechartbase" width={width} height={height}>
+          <LinechartBackground width={width} height={height} />
+          {data.map((lineData, i) => {
+            return (
+              <Group>
+                {lineData.map((d, j) => (
+                  <circle
+                    key={i + j}
+                    r={3}
+                    cx={xScale(getX(d))}
+                    cy={yScale(getY(d))}
+                    stroke={lineStyles.styles[i].colour}
+                    fill={lineStyles.styles[i].colour}
+                  />
+                ))}
+                <LinePath<LinechartData>
+                  key={`lineid-${i}`}
+                  curve={curveLinear}
+                  data={lineData}
+                  x={(d) => xScale(getX(d))}
+                  y={(d) => yScale(getY(d))}
+                  stroke={lineStyles.styles[i].colour}
+                  strokeDasharray={lineStyles.styles[i].strokeDash}
+                  shapeRendering="geometricPrecision"
+                  strokeWidth={"2px"}
+                  strokeLinejoin={"round"}
+                  strokeLinecap={"square"}
+                />
+              </Group>
+            );
+          })}
+
+          <AxisBottom
+            scale={xScale}
+            top={yScale.range()[0]}
+            numTicks={nXTicks}
+            tickLabelProps={xTicksProps}
+          />
+          <AxisLeft
+            scale={yScale}
+            left={borderWidth}
+            label={yAxisText}
+            labelProps={yLabelProps}
+            tickFormat={(val) =>
+              format_y ? customFormat(format_y, lang)(val) : val.toString()
+            }
+          />
+          <Bar
+            x={0}
+            y={0}
+            width={innerWidth}
+            height={innerHeight}
+            fill="transparent"
+            rx={14}
+            onTouchStart={handleToolTip}
+            onTouchMove={handleToolTip}
+            onMouseMove={handleToolTip}
+            onMouseLeave={() => hideTooltip()}
+          />
+          {tooltipData && (
+            <g>
+              <Line
+                from={{ x: tooltipLeft, y: 0 }}
+                to={{ x: tooltipLeft, y: innerHeight }}
+                stroke={"#000000"}
+                strokeWidth={2}
+                pointerEvents="none"
+                strokeDasharray="5,2"
+              />
+              <circle
+                cx={tooltipLeft}
+                cy={tooltipTop + 1}
+                r={4}
+                fill="black"
+                fillOpacity={0.1}
+                stroke="black"
+                strokeOpacity={0.1}
+                strokeWidth={2}
+                pointerEvents="none"
+              />
+              <circle
+                cx={tooltipLeft}
+                cy={tooltipTop}
+                r={4}
+                fill={"#000000"}
+                stroke="white"
+                strokeWidth={2}
+                pointerEvents="none"
+              />
+            </g>
+          )}
+        </svg>
+
+        {tooltipData && (
+          <div>
+            <TooltipWithBounds
+              key={Math.random()}
+              top={tooltipTop - 12}
+              left={tooltipLeft + 12}
+              style={tooltipStyles}
+            >
+              {tooltipData.y}
+            </TooltipWithBounds>
+            <Tooltip
+              top={innerHeight - 14}
+              left={tooltipLeft}
+              style={{
+                ...defaultStyles,
+                minWidth: 72,
+                textAlign: "center",
+                transform: "translateX(-50%)",
+              }}
+            >
+              {formatDate(tooltipData.x)}
+            </Tooltip>
           </div>
         )}
-      </Legend>
-
-      <svg className="linechartbase" width={width} height={height}>
-        <LinechartBackground width={width} height={height} />
-        {data.map((lineData, i) => {
-          return (
-            <Group>
-              {lineData.map((d, j) => (
-                <circle
-                  key={i + j}
-                  r={3}
-                  cx={xScale(getX(d))}
-                  cy={yScale(getY(d))}
-                  stroke={lineStyles.styles[i].colour}
-                  fill={lineStyles.styles[i].colour}
-                />
-              ))}
-              <LinePath<LinechartData>
-                key={`lineid-${i}`}
-                curve={curveLinear}
-                data={lineData}
-                x={(d) => xScale(getX(d))}
-                y={(d) => yScale(getY(d))}
-                stroke={lineStyles.styles[i].colour}
-                strokeDasharray={lineStyles.styles[i].strokeDash}
-                shapeRendering="geometricPrecision"
-                strokeWidth={"2px"}
-                strokeLinejoin={"round"}
-                strokeLinecap={"square"}
-              />
-            </Group>
-          );
-        })}
-
-        <AxisBottom
-          scale={xScale}
-          top={yScale.range()[0]}
-          numTicks={nXTicks}
-          tickLabelProps={xTicksProps}
-        />
-        <AxisLeft
-          scale={yScale}
-          left={borderWidth}
-          label={yAxisText}
-          labelProps={yLabelProps}
-          tickFormat={(val) =>
-            format_y ? customFormat(format_y, lang)(val) : val.toString()
-          }
-        />
-      </svg>
-    </div>
-  );
-}
+      </div>
+    );
+  },
+);
