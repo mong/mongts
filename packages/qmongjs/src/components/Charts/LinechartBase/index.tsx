@@ -114,6 +114,10 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
     const getX = (d: LinechartData) => d.x;
     const getY = (d: LinechartData) => d.y;
 
+    const getTooltipData = (d: LinechartData[], x: Date) => {
+      return d.filter((el) => { return(el.x === x)})
+    }
+
     const allData = data.reduce((rec, d) => rec.concat(d), []);
 
     const nXTicks = data[0].length;
@@ -155,7 +159,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
     });
 
     const bisectDate = bisector<LinechartData[], Date>((d) => {
-      return d[0]?.x ? d[0].x : new Date(2016, 0);
+      return d[0]?.x;
     }).left;
 
     // Tooltip handler
@@ -167,12 +171,15 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
       ) => {
         const { x } = localPoint(event) || { x: 0 };
         const x0 = xScale.invert(x);
-        const index = bisectDate(data, x0, 1);
+        const nearestPoint = new Date(Math.round(x0.getFullYear()), 0);
+        const x0_nearest = xScale(nearestPoint)
+        const index = bisectDate(data, nearestPoint, 1);
         const d = data[0][index];
-
+        console.log(d)
+        
         showTooltip({
-          tooltipData: d,
-          tooltipLeft: x,
+          tooltipData: {x: getX(d), y: getY(d)},
+          tooltipLeft: x0_nearest,
           tooltipTop: d.y,
         });
       },
