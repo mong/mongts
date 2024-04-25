@@ -18,9 +18,6 @@ import {
   StyledTableRow,
   StyledTableCell,
 } from "./IndicatorTableBodyV2Styles";
-
-const remarkPlugins: PluggableList = [remarkGfm];
-
 import {
   LinechartBase,
   font,
@@ -29,6 +26,12 @@ import {
   customFormat,
   useIndicatorQuery,
 } from "qmongjs";
+
+const remarkPlugins: PluggableList = [remarkGfm];
+
+// ###########################
+// ########## Types ##########
+// ###########################
 
 export type IndicatorTableBodyV2Props = {
   context: string;
@@ -54,7 +57,9 @@ export type DataPoint = {
 type IndicatorData = {
   indicatorID: string;
   indicatorName: string | null;
-  targetMeasure: number | null;
+  levelGreen: number | null;
+  levelYellow: number | null;
+  levelDirection: number | null;
   minDenominator: number | null;
   shortDescription: string | null;
   longDescription: string | null;
@@ -70,6 +75,10 @@ type RegisterData = {
   medfieldID: number;
   indicatorData: IndicatorData[];
 };
+
+// ###############################
+// ########## Functions ##########
+// ###############################
 
 // Find the index of the array element where the indicator ID is equal to the input string
 const searchArray = (arr: Array<IndicatorData>, target: string) => {
@@ -111,7 +120,9 @@ const createData = (indicatorData: Indicator[]) => {
         returnData[i].indicatorData.push({
           indicatorID: row.ind_id,
           indicatorName: row.ind_title,
-          targetMeasure: row.level_green,
+          levelGreen: row.level_green,
+          levelYellow: row.level_yellow,
+          levelDirection: row.level_direction,
           minDenominator: row.min_denominator,
           shortDescription: row.ind_short_description,
           longDescription: row.ind_long_description,
@@ -172,7 +183,20 @@ const createChartData = (
     });
   });
 
-  return chartData;
+  // The same indicator can appear twice if it belongs to two different medfields
+  const chartDataUnique = chartData.map((array) => {
+    return array.filter((value, index) => {
+      const _value = JSON.stringify(value);
+      return (
+        index ===
+        array.findIndex((obj) => {
+          return JSON.stringify(obj) === _value;
+        })
+      );
+    });
+  });
+
+  return chartDataUnique;
 };
 
 const randomHexColorCode = () => {
@@ -194,7 +218,14 @@ const createChartStyles = (unitNames: string[], font: font) => {
   return new LineStyles(lineStyles, font);
 };
 
+// ################################
+// ########## Components ##########
+// ################################
+
+// #############################
 // Component for individual rows
+// #############################
+
 const IndicatorRow = (props: {
   unitNames: string[];
   levels: string;
@@ -260,6 +291,9 @@ const IndicatorRow = (props: {
         font={font}
         yAxisText={"Andel"}
         format_y=",.0%"
+        levelGreen={indData.levelGreen!}
+        levelYellow={indData.levelYellow!}
+        levelDirection={indData.levelDirection!}
       />
     );
   };
@@ -288,9 +322,7 @@ const IndicatorRow = (props: {
                     {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                   </IconButton>
                 </td>
-                <td>
-                  <body>{indData.indicatorName}</body>
-                </td>
+                <td>{indData.indicatorName}</td>
               </tr>
             </tbody>
           </table>
@@ -336,9 +368,7 @@ const IndicatorRow = (props: {
               align={"center"}
               key={indData.indicatorID + index}
             >
-              <div>
-                <body>{cellData}</body>
-              </div>
+              <div>{cellData}</div>
               <div>{patientCounts}</div>
             </StyledTableCell>
           );
@@ -359,9 +389,9 @@ const IndicatorRow = (props: {
           style={{ backgroundColor: "#E0E7EB" }}
         >
           {"Ønsket målnivå: " +
-            (indData.targetMeasure === null
+            (indData.levelGreen === null
               ? ""
-              : customFormat(",.0%")(indData.targetMeasure))}
+              : customFormat(",.0%")(indData.levelGreen))}
         </StyledTableCell>
       </TableRow>
 
@@ -414,7 +444,10 @@ const IndicatorRow = (props: {
   );
 };
 
+// ###################################################
 // Component for collection of indicators per registry
+// ###################################################
+
 const IndicatorSection = (props: {
   unitNames: string[];
   levels: string;
@@ -450,7 +483,10 @@ const IndicatorSection = (props: {
   });
 };
 
+// ################################################################
 // Component for registry and unit names header plus indicator rows
+// ################################################################
+
 const RegistrySection = (props: {
   unitNames: string[];
   levels: string;
@@ -525,7 +561,10 @@ const RegistrySection = (props: {
   }
 };
 
+// #################################
 // Top level component for the table
+// #################################
+
 export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   props,
 ) => {
