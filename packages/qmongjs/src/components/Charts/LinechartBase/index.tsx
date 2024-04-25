@@ -92,7 +92,7 @@ export type LinechartBaseProps = {
   lang?: "en" | "nb" | "nn";
 };
 
-export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
+export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData[]>(
   ({
     data,
     width,
@@ -109,7 +109,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
     tooltipData,
     tooltipTop = 0,
     tooltipLeft = 0,
-  }: LinechartBaseProps & WithTooltipProvidedProps<LinechartData>) => {
+  }: LinechartBaseProps & WithTooltipProvidedProps<LinechartData[]>) => {
     // data accessors
     const getX = (d: LinechartData) => d.x;
     const getY = (d: LinechartData) => d.y;
@@ -158,9 +158,9 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
       range: lineStyles.getPaths(),
     });
 
-    const bisectDate = bisector<LinechartData[], Date>((d) => {
-      return d[0]?.x;
-    }).left;
+    const bisectDate = bisector<LinechartData, Date>((d) => {
+      return d.x;
+    }).center;
 
     // Tooltip handler
     const handleToolTip = useCallback(
@@ -169,18 +169,31 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
           | React.TouchEvent<SVGRectElement>
           | React.MouseEvent<SVGRectElement>,
       ) => {
-        const { x } = localPoint(event) || { x: 0 };
-        const x0 = xScale.invert(x);
-        const nearestPoint = new Date(Math.round(x0.getFullYear()), 0);
-        const x0_nearest = xScale(nearestPoint)
-        const index = bisectDate(data, nearestPoint, 1);
-        const d = data[0][index];
-        console.log(d)
+
+        // x and y are the plot coordinates
+        // u and v are the SVG coordinates
+        const { x } = localPoint(event) || { x: 0 }; // SVG cordinates
+        const u = xScale.invert(x); // Plot coordinates
         
+
+        const u_nearest = new Date(Math.round(u.getFullYear()), 0);
+        let x_nearest = xScale(u_nearest)
+
+        // Stop the cursor from snapping to the first year to the left of the y-axis
+        if (x_nearest < xScale.range()[0]) {
+          x_nearest = xScale.range()[0]
+        }
+        const index = bisectDate(data[0], u_nearest);
+
         showTooltip({
-          tooltipData: {x: getX(d), y: getY(d)},
-          tooltipLeft: x0_nearest,
-          tooltipTop: d.y,
+          tooltipData: data.map((d) => { return(d[index]) })
+            .map((d) => {
+              const retVal = d?.x && d?.y ? {x: getX(d), y: getY(d)} : {x: data[0][index].x, y: 0}
+              return retVal
+            }),
+
+          tooltipLeft: x_nearest,
+          tooltipTop: yScale(data[1][index].y),
         });
       },
       [showTooltip, xScale, yScale],
@@ -322,10 +335,12 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
               left={tooltipLeft + 12}
               style={tooltipStyles}
             >
-              {tooltipData.y}
+              {[tooltipData[0].y,
+              tooltipData[1].y]
+              }
             </TooltipWithBounds>
             <Tooltip
-              top={innerHeight - 14}
+              top={innerHeight}
               left={tooltipLeft}
               style={{
                 ...defaultStyles,
@@ -334,7 +349,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
                 transform: "translateX(-50%)",
               }}
             >
-              {formatDate(tooltipData.x)}
+              {formatDate(tooltipData[0].x)}
             </Tooltip>
           </div>
         )}
