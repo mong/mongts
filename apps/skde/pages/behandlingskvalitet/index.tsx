@@ -41,6 +41,8 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useSearchParams } from "next/navigation";
 
+const dataQualityKey = "dg";
+
 /**
  * Treatment quality page (Behandlingskvalitet)
  *
@@ -70,6 +72,8 @@ export default function TreatmentQuality() {
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState([
     "Nasjonalt",
   ]);
+  const [dataQualitySelected, setDataQualitySelected] =
+    useState<boolean>(false);
 
   // Used to change drawer style between small screens and larger screens
   useEffect(() => {
@@ -174,6 +178,10 @@ export default function TreatmentQuality() {
     setSelectedTreatmentUnits(
       filterSettings.get(treatmentUnitsKey).map((value) => value.value),
     );
+
+    setDataQualitySelected(
+      filterSettings.get(dataQualityKey)?.[0].value === "true" ? true : false,
+    );
   };
 
   /**
@@ -214,6 +222,14 @@ export default function TreatmentQuality() {
           newFilterSettings.map
             .get(treatmentUnitsKey)
             .map((value) => value.value),
+        );
+        break;
+      }
+      case dataQualityKey: {
+        setDataQualitySelected(
+          newFilterSettings.map.get(dataQualityKey)?.[0].value === "true"
+            ? true
+            : false,
         );
         break;
       }
@@ -308,7 +324,7 @@ export default function TreatmentQuality() {
                   context={"caregiver"}
                   unitNames={selectedTreatmentUnits}
                   year={selectedYear}
-                  type={"ind"}
+                  type={dataQualitySelected ? "dg" : "ind"}
                   levels={selectedLevel}
                   medfields={selectedMedicalFields}
                 />
@@ -318,7 +334,7 @@ export default function TreatmentQuality() {
               <>
                 <IndicatorTable
                   key="indicator-table"
-                  context={"caregiver"}
+                  context={dataQualitySelected ? "coverage" : "caregiver"}
                   tableType="allRegistries"
                   registerNames={registers}
                   unitNames={selectedTreatmentUnits}

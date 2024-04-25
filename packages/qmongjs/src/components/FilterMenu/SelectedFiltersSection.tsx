@@ -9,7 +9,7 @@ import { FilterSettingsActionType } from "./FilterSettingsReducer";
 export type SelectedFiltersSectionProps = FilterMenuSectionProps;
 
 /**
- * Utility function to handle the delete event for a chip
+ * Function for handling the delete event for a chip
  *
  * @param chipId Element id for the chip to delete
  * @param filterSettingsDispatch The dispatch function for updating the filter settings

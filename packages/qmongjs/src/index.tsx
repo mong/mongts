@@ -24,6 +24,7 @@ export {
 export type { FilterSettingsAction } from "./components/FilterMenu/FilterSettingsReducer";
 export { RadioGroupFilterSection } from "./components/FilterMenu/RadioGroupFilterSection";
 export { SelectedFiltersSection } from "./components/FilterMenu/SelectedFiltersSection";
+export { SwitchFilterSection } from "./components/FilterMenu/SwitchFilterSection";
 export { TreeViewFilterSection } from "./components/FilterMenu/TreeViewFilterSection";
 export {
   TreatmentQualityFilterMenu,

@@ -18,6 +18,7 @@ import {
   FilterSettingsActionType,
   FilterMenuSelectionChangedHandler,
   FilterMenuFilterInitializedHandler,
+  SwitchFilterSection,
 } from "qmongjs";
 import {
   getAchievementLevelOptions,
@@ -39,6 +40,7 @@ export const yearKey = "year";
 export const levelKey = "level";
 export const medicalFieldKey = "indicator";
 export const treatmentUnitsKey = "selected_treatment_units";
+export const dataQualityKey = "dg";
 
 /**
  * The properties for the TreatmentQualityFilterMenu component.
@@ -189,6 +191,24 @@ export function TreatmentQualityFilterMenu({
     setSelected: setSelectedTreatmentUnits as SetSelectedType,
   });
 
+  // Data quality selection
+  const [dataQualitySelected, setDataQualitySelected] = useQueryParam<string>(
+    dataQualityKey,
+    withDefault(StringParam, "false"),
+  );
+  const dataQualitySelectedValue = {
+    value: "true",
+    valueLabel: "Vis datakvalitet",
+  };
+  const dataQualityEmptyValue = { value: "", valueLabel: "" };
+  optionsMap.set(dataQualityKey, {
+    options: [dataQualityEmptyValue, dataQualitySelectedValue],
+    default: dataQualityEmptyValue,
+    multiselect: false,
+    selected: dataQualitySelected,
+    setSelected: setDataQualitySelected as SetSelectedType,
+  });
+
   /**
    * Handler function for setting section selections,
    * called by handleFilterChanged
@@ -205,12 +225,12 @@ export function TreatmentQualityFilterMenu({
 
       if (!multiselect) {
         const selectedValue = newSelections?.[0].value ?? defaultOption.value;
-        setSelected(selectedValue ?? null);
+        setSelected(selectedValue);
       } else {
         const selectedValues = newSelections?.map(
           (filterSettingsValue) => filterSettingsValue.value,
         ) ?? [defaultOption.value];
-        setSelected(selectedValues ?? null);
+        setSelected(selectedValues);
       }
     }
   };
@@ -350,6 +370,18 @@ export function TreatmentQualityFilterMenu({
           sectiontitle="Behandlingsenheter"
           filterkey={treatmentUnitsKey}
           searchbox={true}
+        />
+        <SwitchFilterSection
+          sectionid={dataQualityKey}
+          filterkey={dataQualityKey}
+          sectiontitle={"Datakvalitet"}
+          label={dataQualitySelectedValue.valueLabel}
+          initialselections={
+            dataQualitySelected === "true"
+              ? [dataQualitySelectedValue]
+              : undefined
+          }
+          activatedswitchvalue={dataQualitySelectedValue}
         />
       </FilterMenu>
     </>
