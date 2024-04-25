@@ -52,3 +52,4 @@ export { validateTreatmentUnits } from "./helpers/functions";
 export { UnitNameList } from "./components/RegisterPage/unitnamelist";
 export { SKDEtheme } from "./themes/SKDEtheme";
 export { indicatorTableTheme } from "./components/IndicatorTable/IndicatortablebodyV2/IndicatorTableBodyV2Styles";
+export { LinechartGrid } from "./components/Charts/LinechartGrid";

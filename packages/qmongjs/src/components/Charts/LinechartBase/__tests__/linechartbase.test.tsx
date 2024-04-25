@@ -53,10 +53,22 @@ test("Standard render", () => {
     />,
   );
   // container.children[0].children[0] is the legend
-  // container.children[0].children[1] is the plot
+  // container.children[0].children[1].children[0] are the three line plots
   // It consists of 6 SVG elements: rect, path, path, path, g and g
   // These are the background, three lines, the x axis and the y axis.
-  expect(container.children[0].children[1].childElementCount).toEqual(6);
+  expect(
+    container.children[0].children[1].children[0].children[0],
+  ).toMatchSnapshot();
+  expect(
+    container.children[0].children[1].children[0].children[4],
+  ).toMatchSnapshot();
+  expect(
+    container.children[0].children[1].children[0].children[5],
+  ).toMatchSnapshot();
+
+  expect(
+    container.children[0].children[1].children[0].childElementCount,
+  ).toEqual(6);
 });
 
 test("Render with format and lang = en", () => {
@@ -74,7 +86,13 @@ test("Render with format and lang = en", () => {
       yAxisText={"Andel"}
     />,
   );
-  expect(container.children[0].children[1].children[5]).toMatchSnapshot();
+  expect(
+    container.children[0].children[1].children[0].children[5],
+  ).toMatchSnapshot();
+
+  expect(
+    container.children[0].children[1].children[0].childElementCount,
+  ).toEqual(6);
 });
 
 test("Render with format and lang = nb", () => {
@@ -92,7 +110,12 @@ test("Render with format and lang = nb", () => {
       yAxisText={"Andel"}
     />,
   );
-  expect(container.children[0].children[1].children[5]).toMatchSnapshot();
+  expect(
+    container.children[0].children[1].children[0].children[5],
+  ).toMatchSnapshot();
+  expect(
+    container.children[0].children[1].children[0].childElementCount,
+  ).toEqual(6);
 });
 
 test("Render with other format", () => {
@@ -105,9 +128,64 @@ test("Render with other format", () => {
       font={font}
       yMin={0}
       yMax={25}
-      format_y=",.2f"
+      format_y=",.4f"
       yAxisText={"Andel"}
     />,
   );
-  expect(container.children[0].children[1].children[5]).toMatchSnapshot();
+  expect(
+    container.children[0].children[1].children[0].children[5],
+  ).toMatchSnapshot();
+
+  expect(
+    container.children[0].children[1].children[0].childElementCount,
+  ).toEqual(6);
+});
+
+// Children[0].children[1] should 3 rects and one Visx group
+test("Render with background levelDirection one", () => {
+  const { container } = render(
+    <LinechartBase
+      data={linechartTestData}
+      width={800}
+      height={400}
+      lineStyles={lineStyles}
+      font={font}
+      yMin={0}
+      yMax={25}
+      format_y=",.2f"
+      levelGreen={15}
+      levelYellow={10}
+      levelDirection={1}
+      yAxisText={"Andel"}
+    />,
+  );
+  expect(container.children[0].children[1].children[0]).toMatchSnapshot();
+  expect(container.children[0].children[1].children[1]).toMatchSnapshot();
+  expect(container.children[0].children[1].children[2]).toMatchSnapshot();
+  expect(container.children[0].children[1].childElementCount).toEqual(4);
+});
+
+test("Render with background levelDirection zero", () => {
+  const { container } = render(
+    <LinechartBase
+      data={linechartTestData}
+      width={800}
+      height={400}
+      lineStyles={lineStyles}
+      font={font}
+      yMin={0}
+      yMax={25}
+      format_y=",.2f"
+      levelGreen={10}
+      levelYellow={15}
+      levelDirection={0}
+      yAxisText={"Andel"}
+    />,
+  );
+
+  expect(container.children[0].children[1].children[0]).toMatchSnapshot();
+  expect(container.children[0].children[1].children[1]).toMatchSnapshot();
+  expect(container.children[0].children[1].children[2]).toMatchSnapshot();
+
+  expect(container.children[0].children[1].childElementCount).toEqual(4);
 });
