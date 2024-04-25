@@ -193,8 +193,6 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
 
         const x_nearest = xScale(u_nearest);
 
-        const index = bisectDate(data[0], u_nearest);
-
         const goal = v;
         const v_nearest = data
           .map((row) => {
@@ -215,7 +213,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
         const y_nearest = yScale(v_nearest);
 
         showTooltip({
-          tooltipData: { x: data[0][index].x, y: v_nearest },
+          tooltipData: {x: u_nearest, y: v_nearest },
           tooltipLeft: x_nearest,
           tooltipTop: y_nearest,
         });
@@ -332,8 +330,8 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
             <Bar
               x={0}
               y={0}
-              width={innerWidth}
-              height={innerHeight}
+              width={width}
+              height={height}
               fill="transparent"
               rx={14}
               onTouchStart={handleToolTip}
@@ -354,30 +352,15 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
             )}
           </Group>
         </svg>
-
         {tooltipData && (
-          <div>
             <TooltipWithBounds
               key={Math.random()}
               top={tooltipTop - 12}
-              left={tooltipLeft + 12}
+              left={tooltipLeft}
               style={tooltipStyles}
             >
               {tooltipData.y}
             </TooltipWithBounds>
-            <Tooltip
-              top={innerHeight}
-              left={tooltipLeft}
-              style={{
-                ...defaultStyles,
-                minWidth: 72,
-                textAlign: "center",
-                transform: "translateX(-50%)",
-              }}
-            >
-              {formatDate(tooltipData.x)}
-            </Tooltip>
-          </div>
         )}
       </div>
     );
