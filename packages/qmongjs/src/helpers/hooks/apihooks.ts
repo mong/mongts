@@ -35,6 +35,7 @@ export interface FetchIndicatorParams {
   unitLevel?: string;
   context?: string;
   type?: string;
+  id?: number;
 }
 
 const indicatorUrl = (params: FetchIndicatorParams): string => {
@@ -55,8 +56,9 @@ const indicatorUrl = (params: FetchIndicatorParams): string => {
   const yearQuery: string = params.treatmentYear
     ? `year=${params.treatmentYear}&`
     : "";
+  const idQuery: string = params.id ? `id=${params.id}&` : "";
   const typeQuery: string = params.type ? `type=${params.type}` : "";
-  return `${API_HOST}/data/${registerShortNameQuery}/indicators?${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}${typeQuery}`;
+  return `${API_HOST}/data/${registerShortNameQuery}/indicators?${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}${typeQuery}${idQuery}`;
 };
 
 const fetchIndicators = async (params: FetchIndicatorParams) => {

@@ -181,7 +181,11 @@ const createChartData = (
       return indDataRow.unit_name === unitNamesRow;
     });
     return unitIndData.map((row) => {
-      return {id: row.id, x: new Date(row.year, 0), y: row.var } as LinechartData;
+      return {
+        id: row.id,
+        x: new Date(row.year, 0),
+        y: row.var,
+      } as LinechartData;
     });
   });
 

@@ -12,7 +12,9 @@ import { Group } from "@visx/group";
 import { withTooltip, TooltipWithBounds, defaultStyles } from "@visx/tooltip";
 import { WithTooltipProvidedProps } from "@visx/tooltip/lib/enhancers/withTooltip";
 import { localPoint } from "@visx/event";
-import { newLevelSymbols } from "qmongjs";
+import { newLevelSymbols, useIndicatorQuery, level } from "qmongjs";
+import { UseQueryResult } from "@tanstack/react-query";
+import { Indicator } from "types";
 
 export type LinechartData = {
   id?: number;
@@ -91,47 +93,44 @@ export type LinechartBaseProps = {
 };
 
 type ToolTipBoxProps = {
+  id?: number;
   y: number;
-  levelGreen?: number;
-  levelYellow?: number;
-  levelDirection?: number;
   format_y?: string;
   lang: "en" | "nb" | "nn";
 };
 
 const ToolTipBox = (props: ToolTipBoxProps) => {
-  const { y, levelGreen, levelYellow, levelDirection, format_y, lang } = props;
+  const { id, y, lang } = props;
 
-  let level;
+  const indicatorQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
+    id: id,
+  });
 
-  if (
-    levelGreen &&
-    levelYellow &&
-    (levelDirection === 0 || levelDirection === 1)
-  ) {
-    if (levelDirection === 1) {
-      y > levelGreen
-        ? (level = "H")
-        : y > levelYellow
-          ? (level = "M")
-          : (level = "L");
-    } else {
-      y < levelGreen
-        ? (level = "H")
-        : y < levelYellow
-          ? (level = "M")
-          : (level = "L");
-    }
+  if (indicatorQuery.isFetching) {
+    return null;
   }
+
+  const dataPointInfo = indicatorQuery.data[0] as Indicator;
 
   return (
     <div>
+      <div>{dataPointInfo.unit_name}</div>
+      <div>{dataPointInfo.year}</div>
       <div>
         {[
-          format_y ? customFormat(format_y, lang)(y) : y.toString(),
+          dataPointInfo.sformat
+            ? customFormat(dataPointInfo.sformat, lang)(y)
+            : y.toString(),
           " ",
-          newLevelSymbols(level),
+          newLevelSymbols(level(dataPointInfo)),
         ]}
+      </div>
+      <div>
+        {dataPointInfo.type === "andel"
+          ? Math.round(dataPointInfo.var * dataPointInfo.denominator) +
+            " av " +
+            dataPointInfo.denominator
+          : null}
       </div>
     </div>
   );
@@ -262,16 +261,17 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
 
         // Filter out the data point with the closest y value
         // The point's id will be required for the tooltip box
-        const dataPoint_nearest = valid_dataPoints
-        .filter((dataPoint) => dataPoint?.y === v_nearest)[0];
+        const dataPoint_nearest = valid_dataPoints.filter(
+          (dataPoint) => dataPoint?.y === v_nearest,
+        )[0];
 
         const y_nearest = yScale(v_nearest!);
 
         showTooltip({
-          tooltipData: { 
+          tooltipData: {
             id: dataPoint_nearest ? dataPoint_nearest.id : undefined,
             x: u_nearest,
-            y: v_nearest!
+            y: v_nearest!,
           },
           tooltipLeft: x_nearest,
           tooltipTop: y_nearest,
@@ -420,11 +420,8 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
           >
             {
               <ToolTipBox
+                id={tooltipData.id}
                 y={tooltipData.y}
-                levelGreen={levelGreen}
-                levelYellow={levelYellow}
-                levelDirection={levelDirection}
-                format_y={format_y}
                 lang={lang}
               ></ToolTipBox>
             }
