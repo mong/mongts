@@ -11,13 +11,11 @@ import { GridRows } from "@visx/grid";
 import { Group } from "@visx/group";
 import {
   withTooltip,
-  Tooltip,
   TooltipWithBounds,
   defaultStyles,
 } from "@visx/tooltip";
 import { WithTooltipProvidedProps } from "@visx/tooltip/lib/enhancers/withTooltip";
 import { localPoint } from "@visx/event";
-import { timeFormat } from "@visx/vendor/d3-time-format";
 
 export type LinechartData = {
   x: Date;
@@ -77,8 +75,6 @@ const tooltipStyles = {
   border: "1px solid white",
   color: "white",
 };
-
-const formatDate = timeFormat("%b %d, '%y");
 
 export type LinechartBaseProps = {
   data: LinechartData[][];
@@ -179,7 +175,8 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
       ) => {
         // x and y are the SVG coordinates
         // u and v are the plot coordinates
-        const { x, y } = localPoint(event) || { x: 0 }; // SVG cordinates
+        let { x, y } = localPoint(event) || { x: 0 }; // SVG cordinates
+        y = y ? y : 0;
         const u = xScale.invert(x); // Plot coordinates
         const v = yScale.invert(y);
 
@@ -207,13 +204,13 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
           })
           .filter((arr) => arr !== null)
           .reduce((prev, curr) => {
-            return Math.abs(curr - goal) < Math.abs(prev - goal) ? curr : prev;
+            return Math.abs(curr! - goal) < Math.abs(prev! - goal) ? curr : prev;
           });
 
-        const y_nearest = yScale(v_nearest);
+        const y_nearest = yScale(v_nearest!);
 
         showTooltip({
-          tooltipData: {x: u_nearest, y: v_nearest },
+          tooltipData: {x: u_nearest, y: v_nearest! },
           tooltipLeft: x_nearest,
           tooltipTop: y_nearest,
         });
