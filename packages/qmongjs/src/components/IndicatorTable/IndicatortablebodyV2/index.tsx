@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import IconButton from "@mui/material/IconButton";
 import TableBody from "@mui/material/TableBody";
 import TableHead from "@mui/material/TableHead";
@@ -584,10 +584,11 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   }
 
   const rowData = createData(
-    indicatorQuery.data.filter((row: Indicator) => {
-      return row.year === year && medfields.includes(row.registry_name);
-    }),
+    indicatorQuery.data
   );
+
+ // Filter function here
+ // UseMemo
 
   const chartData = indicatorQuery.data;
 
