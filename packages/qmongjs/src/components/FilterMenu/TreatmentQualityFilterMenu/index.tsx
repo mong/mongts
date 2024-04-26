@@ -49,6 +49,7 @@ export const dataQualityKey = "dg";
 export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   onSelectionChanged?: FilterMenuSelectionChangedHandler;
   onFilterInitialized?: FilterMenuFilterInitializedHandler;
+  context: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   registryNameData: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -88,9 +89,10 @@ export function TreatmentQualityFilterMenu({
   onFilterInitialized: onFilterInitialized,
   registryNameData: registryNameData,
   medicalFieldData: medicalFieldData,
+  context: context,
 }: TreatmentQualityFilterMenuProps) {
   const selectedRegister = "all";
-  const queryContext = { context: "caregiver", type: "ind" };
+  const queryContext = { context: context, type: "ind" }; // TODO: Variable for "ind"/"dg"?
 
   // When the user navigates to the page, it may contain query parameters for
   // filtering indicators. Use NextRouter to get the current path containing the
@@ -367,7 +369,9 @@ export function TreatmentQualityFilterMenu({
             })) as FilterSettingsValue[]
           }
           sectionid={treatmentUnitsKey}
-          sectiontitle="Behandlingsenheter"
+          sectiontitle={
+            context === "resident" ? "Opptaksområder" : "Behandlingsenheter"
+          }
           filterkey={treatmentUnitsKey}
           searchbox={true}
         />
