@@ -38,6 +38,11 @@ export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
       "ind.name as ind_name",
     )
     .from("agg_data")
+    .modify((queryBuilder) => {
+      if(filter?.id) {
+        queryBuilder.where("agg_data.id", filter.id)
+      }
+    })
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
     .leftJoin("registry", "ind.registry_id", "registry.id")
     .leftJoin(

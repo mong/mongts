@@ -15,6 +15,7 @@ import { localPoint } from "@visx/event";
 import { newLevelSymbols } from "qmongjs";
 
 export type LinechartData = {
+  id?: number;
   x: Date;
   y: number;
 };
@@ -225,6 +226,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
         const v = yScale.invert(y);
 
         let u_nearest = new Date(Math.round(u.getFullYear()), 0);
+
         // Stop the cursor from snapping to the first year to the left of the y-axis
         if (u_nearest < xScale.domain()[0]) {
           u_nearest = xScale.domain()[0];
@@ -234,7 +236,8 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
 
         const x_nearest = xScale(u_nearest);
 
-        const dataPoint_nearest = data.map((row) => {
+        // Find the data points for the closest year if they exist
+        const valid_dataPoints = data.map((row) => {
           const validPoints = row.filter((p) => {
             return p.x.getFullYear() === u_nearest.getFullYear();
           });
@@ -245,8 +248,10 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
           return retVal;
         });
 
+        // Find the point with the closest y value to the cursor location
         const goal = v;
-        const v_nearest = dataPoint_nearest
+
+        const v_nearest = valid_dataPoints
           .map((dataPoint) => (dataPoint !== null ? dataPoint.y : null))
           .filter((arr) => arr !== null)
           .reduce((prev, curr) => {
@@ -255,10 +260,19 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
               : prev;
           });
 
+        // Filter out the data point with the closest y value
+        // The point's id will be required for the tooltip box
+        const dataPoint_nearest = valid_dataPoints
+        .filter((dataPoint) => dataPoint?.y === v_nearest)[0];
+
         const y_nearest = yScale(v_nearest!);
 
         showTooltip({
-          tooltipData: { x: u_nearest, y: v_nearest! },
+          tooltipData: { 
+            id: dataPoint_nearest ? dataPoint_nearest.id : undefined,
+            x: u_nearest,
+            y: v_nearest!
+          },
           tooltipLeft: x_nearest,
           tooltipTop: y_nearest,
         });
