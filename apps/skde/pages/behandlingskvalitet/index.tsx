@@ -4,6 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TuneIcon from "@mui/icons-material/Tune";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { useQueryParam, withDefault, StringParam } from "use-query-params";
 import Image from "next/image";
 import {
   imgLoader,
@@ -40,6 +41,8 @@ import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useSearchParams } from "next/navigation";
+import TreatmentQualityTabs from "../../src/components/TreatmentQuality/TreatmentQualityTabs";
+import Paper from "@mui/material/Paper";
 
 const dataQualityKey = "dg";
 
@@ -60,8 +63,14 @@ export default function TreatmentQuality() {
 
   const searchParams = useSearchParams();
   const newTableOnly = searchParams.get("newtable") === "true";
-  const tableContext =
-    searchParams.get("context") === "resident" ? "resident" : "caregiver";
+  // const tableContext =
+  //   searchParams.get("context") === "resident" ? "resident" : "caregiver";
+
+  // Context (caregiver or resident)
+  const [tableContext, setTableContext] = useQueryParam<string>(
+    "context",
+    withDefault(StringParam, "caregiver"),
+  );
 
   // Used by indicator table
   const [selectedYear, setSelectedYear] = useState(defaultYear);
@@ -288,6 +297,16 @@ export default function TreatmentQuality() {
             <Box sx={{ marginTop: filterMenuTopMargin }}>
               {queriesReady && (
                 <>
+                  <Box
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                  >
+                    <TreatmentQualityTabs
+                      context={tableContext}
+                      onTabChanged={setTableContext}
+                    />
+                  </Box>
                   <TreatmentQualityFilterMenu
                     onSelectionChanged={handleFilterChanged}
                     onFilterInitialized={handleFilterInitialized}
