@@ -337,7 +337,7 @@ export default function TreatmentQuality() {
               <>
                 <IndicatorTable
                   key="indicator-table"
-                  context={dataQualitySelected ? "coverage" : tableContext} // TODO: ... DG FOR RESIDENT
+                  context={dataQualitySelected ? "coverage" : tableContext}
                   tableType="allRegistries"
                   registerNames={registers}
                   unitNames={selectedTreatmentUnits}
