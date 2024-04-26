@@ -9,13 +9,10 @@ import { customFormat } from "qmongjs";
 import { LinechartGrid } from "qmongjs";
 import { GridRows } from "@visx/grid";
 import { Group } from "@visx/group";
-import {
-  withTooltip,
-  TooltipWithBounds,
-  defaultStyles,
-} from "@visx/tooltip";
+import { withTooltip, TooltipWithBounds, defaultStyles } from "@visx/tooltip";
 import { WithTooltipProvidedProps } from "@visx/tooltip/lib/enhancers/withTooltip";
 import { localPoint } from "@visx/event";
+import { newLevelSymbols } from "qmongjs";
 
 export type LinechartData = {
   x: Date;
@@ -90,6 +87,53 @@ export type LinechartBaseProps = {
   levelDirection?: number;
   format_y?: string;
   lang?: "en" | "nb" | "nn";
+};
+
+type ToolTipBoxProps = {
+  y: number;
+  levelGreen?: number;
+  levelYellow?: number;
+  levelDirection?: number;
+  format_y?: string;
+  lang: "en" | "nb" | "nn";
+};
+
+const ToolTipBox = (props: ToolTipBoxProps) => {
+  const { y, levelGreen, levelYellow, levelDirection, format_y, lang } = props;
+
+  let level;
+
+  if (
+    levelGreen &&
+    levelYellow &&
+    (levelDirection === 0 || levelDirection === 1)
+  ) {
+    if (levelDirection === 1) {
+      y > levelGreen
+        ? (level = "H")
+        : y > levelYellow
+          ? (level = "M")
+          : (level = "L");
+    } else {
+      y < levelGreen
+        ? (level = "H")
+        : y < levelYellow
+          ? (level = "M")
+          : (level = "L");
+    }
+  }
+
+  return (
+    <div>
+      <div>
+        {[
+          format_y ? customFormat(format_y, lang)(y) : y.toString(),
+          " ",
+          newLevelSymbols(level),
+        ]}
+      </div>
+    </div>
+  );
 };
 
 export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
@@ -190,27 +234,31 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
 
         const x_nearest = xScale(u_nearest);
 
+        const dataPoint_nearest = data.map((row) => {
+          const validPoints = row.filter((p) => {
+            return p.x.getFullYear() === u_nearest.getFullYear();
+          });
+
+          const ind = bisectDate(validPoints, u_nearest);
+
+          const retVal = validPoints.length > 0 ? validPoints[ind] : null;
+          return retVal;
+        });
+
         const goal = v;
-        const v_nearest = data
-          .map((row) => {
-            const validPoints = row.filter((p) => {
-              return p.x.getFullYear() === u_nearest.getFullYear();
-            });
-
-            const ind = bisectDate(validPoints, u_nearest);
-
-            const retVal = validPoints.length > 0 ? validPoints[ind].y : null;
-            return retVal;
-          })
+        const v_nearest = dataPoint_nearest
+          .map((dataPoint) => (dataPoint !== null ? dataPoint.y : null))
           .filter((arr) => arr !== null)
           .reduce((prev, curr) => {
-            return Math.abs(curr! - goal) < Math.abs(prev! - goal) ? curr : prev;
+            return Math.abs(curr! - goal) < Math.abs(prev! - goal)
+              ? curr
+              : prev;
           });
 
         const y_nearest = yScale(v_nearest!);
 
         showTooltip({
-          tooltipData: {x: u_nearest, y: v_nearest! },
+          tooltipData: { x: u_nearest, y: v_nearest! },
           tooltipLeft: x_nearest,
           tooltipTop: y_nearest,
         });
@@ -350,14 +398,23 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
           </Group>
         </svg>
         {tooltipData && (
-            <TooltipWithBounds
-              key={Math.random()}
-              top={tooltipTop - 12}
-              left={tooltipLeft}
-              style={tooltipStyles}
-            >
-              {tooltipData.y}
-            </TooltipWithBounds>
+          <TooltipWithBounds
+            key={Math.random()}
+            top={tooltipTop - 12}
+            left={tooltipLeft}
+            style={tooltipStyles}
+          >
+            {
+              <ToolTipBox
+                y={tooltipData.y}
+                levelGreen={levelGreen}
+                levelYellow={levelYellow}
+                levelDirection={levelDirection}
+                format_y={format_y}
+                lang={lang}
+              ></ToolTipBox>
+            }
+          </TooltipWithBounds>
         )}
       </div>
     );
