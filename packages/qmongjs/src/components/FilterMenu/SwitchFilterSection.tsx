@@ -12,9 +12,11 @@ import { getSelectedValue } from "./utils";
 export type SwitchFilterSectionProps = FilterMenuSectionProps & {
   label: string;
   activatedswitchvalue: FilterSettingsValue;
+  disabled?: boolean;
 };
 
 export function SwitchFilterSection(props: SwitchFilterSectionProps) {
+  const disabled = props.disabled ?? false;
   const labelText = props.label;
   const filterKey = props.filterkey;
   const activatedSwitchValue = props.activatedswitchvalue;
@@ -44,7 +46,12 @@ export function SwitchFilterSection(props: SwitchFilterSectionProps) {
         labelPlacement="start"
         label={labelText}
         control={
-          <Switch checked={isChecked} onChange={handleChange} color="primary" />
+          <Switch
+            checked={!disabled && isChecked}
+            onChange={handleChange}
+            color="primary"
+            disabled={disabled}
+          />
         }
       />
     </FormGroup>

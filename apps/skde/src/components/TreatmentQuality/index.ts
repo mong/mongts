@@ -8,6 +8,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
+import TreatmentQualityTabs from "./TreatmentQualityTabs";
 
 export const appBarElevation = 2;
 export const filterMenuTopMargin = 2;

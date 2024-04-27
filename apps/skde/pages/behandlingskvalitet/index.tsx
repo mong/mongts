@@ -4,6 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TuneIcon from "@mui/icons-material/Tune";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { useQueryParam, withDefault, StringParam } from "use-query-params";
 import Image from "next/image";
 import {
   imgLoader,
@@ -40,6 +41,8 @@ import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useSearchParams } from "next/navigation";
+import TreatmentQualityTabs from "../../src/components/TreatmentQuality/TreatmentQualityTabs";
+import { Paper } from "@mui/material";
 
 const dataQualityKey = "dg";
 
@@ -60,6 +63,14 @@ export default function TreatmentQuality() {
 
   const searchParams = useSearchParams();
   const newTableOnly = searchParams.get("newtable") === "true";
+  // const tableContext =
+  //   searchParams.get("context") === "resident" ? "resident" : "caregiver";
+
+  // Context (caregiver or resident)
+  const [tableContext, setTableContext] = useQueryParam<string>(
+    "context",
+    withDefault(StringParam, "caregiver"),
+  );
 
   // Used by indicator table
   const [selectedYear, setSelectedYear] = useState(defaultYear);
@@ -283,6 +294,13 @@ export default function TreatmentQuality() {
             }}
           >
             <Toolbar />
+            <Paper sx={{ marginLeft: 3, marginRight: 3, marginTop: 0 }}>
+              <TreatmentQualityTabs
+                context={tableContext}
+                onTabChanged={setTableContext}
+                isPhoneSizedScreen={isPhoneSizedScreen}
+              />
+            </Paper>
             <Box sx={{ marginTop: filterMenuTopMargin }}>
               {queriesReady && (
                 <>
@@ -291,6 +309,7 @@ export default function TreatmentQuality() {
                     onFilterInitialized={handleFilterInitialized}
                     registryNameData={registers}
                     medicalFieldData={medicalFields}
+                    context={tableContext}
                   />
                   {!newTableOnly && (
                     <FormGroup sx={{ paddingRight: "1.5rem" }}>
@@ -321,7 +340,7 @@ export default function TreatmentQuality() {
               <>
                 <IndicatorTableBodyV2
                   key="indicator-table"
-                  context={"caregiver"}
+                  context={tableContext}
                   unitNames={selectedTreatmentUnits}
                   year={selectedYear}
                   type={dataQualitySelected ? "dg" : "ind"}
@@ -334,7 +353,7 @@ export default function TreatmentQuality() {
               <>
                 <IndicatorTable
                   key="indicator-table"
-                  context={dataQualitySelected ? "coverage" : "caregiver"}
+                  context={dataQualitySelected ? "coverage" : tableContext}
                   tableType="allRegistries"
                   registerNames={registers}
                   unitNames={selectedTreatmentUnits}
