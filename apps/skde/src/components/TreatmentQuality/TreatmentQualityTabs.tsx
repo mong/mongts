@@ -4,9 +4,16 @@ import { Tabs, Tab } from "@mui/material";
 type TreatmentQualityTabsProps = PropsWithChildren<{
   context: string | undefined;
   onTabChanged: (string) => void;
+  isPhoneSizedScreen?: boolean;
 }>;
 
-export default function TreatmentQualityTabs({ context, onTabChanged }) {
+export default function TreatmentQualityTabs({
+  context,
+  onTabChanged,
+  isPhoneSizedScreen,
+}) {
+  const orientation = isPhoneSizedScreen ? "vertical" : "horizontal";
+
   const [value, setValue] = useState(
     context === "resident" ? "resident" : "caregiver",
   );
@@ -22,12 +29,20 @@ export default function TreatmentQualityTabs({ context, onTabChanged }) {
     <Tabs
       value={value}
       onChange={handleChange}
-      textColor="primary"
-      indicatorColor="primary"
       aria-label="Arkfaner for behandlingskvalitet og opptaksområde"
+      sx={{ backgroundColor: "#00263d", borderRadius: 1 }}
+      orientation={orientation}
     >
-      <Tab label="Behandlingsenheter" value={"caregiver"} />
-      <Tab label="Opptaksområder" value={"resident"} />
+      <Tab
+        label="Behandlingsenheter"
+        value={"caregiver"}
+        sx={{ textTransform: "none" }}
+      />
+      <Tab
+        label="Opptaksområder"
+        value={"resident"}
+        sx={{ textTransform: "none" }}
+      />
     </Tabs>
   );
 }

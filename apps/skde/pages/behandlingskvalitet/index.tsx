@@ -42,7 +42,7 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useSearchParams } from "next/navigation";
 import TreatmentQualityTabs from "../../src/components/TreatmentQuality/TreatmentQualityTabs";
-import Paper from "@mui/material/Paper";
+import { Paper } from "@mui/material";
 
 const dataQualityKey = "dg";
 
@@ -294,19 +294,16 @@ export default function TreatmentQuality() {
             }}
           >
             <Toolbar />
+            <Paper sx={{ marginLeft: 3, marginRight: 3, marginTop: 0 }}>
+              <TreatmentQualityTabs
+                context={tableContext}
+                onTabChanged={setTableContext}
+                isPhoneSizedScreen={isPhoneSizedScreen}
+              />
+            </Paper>
             <Box sx={{ marginTop: filterMenuTopMargin }}>
               {queriesReady && (
                 <>
-                  <Box
-                    display="flex"
-                    justifyContent="center"
-                    alignItems="center"
-                  >
-                    <TreatmentQualityTabs
-                      context={tableContext}
-                      onTabChanged={setTableContext}
-                    />
-                  </Box>
                   <TreatmentQualityFilterMenu
                     onSelectionChanged={handleFilterChanged}
                     onFilterInitialized={handleFilterInitialized}
