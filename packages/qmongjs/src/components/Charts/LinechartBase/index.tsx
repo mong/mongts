@@ -414,8 +414,8 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
         {tooltipData && (
           <TooltipWithBounds
             key={Math.random()}
-            top={tooltipTop - 12}
-            left={tooltipLeft}
+            top={tooltipTop - 70}
+            left={tooltipLeft + 200}
             style={tooltipStyles}
           >
             {
