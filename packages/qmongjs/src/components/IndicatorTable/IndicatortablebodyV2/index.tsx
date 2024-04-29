@@ -576,6 +576,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
     type: type,
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const indicatorQuery: UseQueryResult<any, unknown> =
     useIndicatorQuery(queryParams);
 

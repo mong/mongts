@@ -94,6 +94,7 @@ const breakpoints = {
   XXL: 1408,
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const spacingScale = {
   XXXS: "2px",
   XXS: "4px",

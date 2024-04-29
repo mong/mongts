@@ -10,6 +10,7 @@ interface Props {
   update_show_level_filter(level: "high" | "moderate" | "low"): void;
   selection_bar_height: number | null;
   show_level_filter: string | undefined;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   update_legend_height(height: any): void;
   width: string;
 }
@@ -33,6 +34,7 @@ function LEGEND(props: Props) {
   }, [dim, legend_ref, update_legend_height]);
 
   const legend_btns = Object.keys(app_text.indicators).map(function (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this: any,
     level,
   ) {
