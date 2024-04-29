@@ -12,5 +12,9 @@ export default tseslint.config(
       ['@typescript-eslint']: tseslint.plugin,
     },
     files: ["**/*.ts", "**/*.tsx"]
-  }
+  },
+  {ignores: [
+    "**/build/**",
+    "**/out/**"
+  ]}
 )
