@@ -57,17 +57,21 @@ test("Standard render", () => {
   // It consists of 6 SVG elements: rect, path, path, path, g and g
   // These are the background, three lines, the x axis and the y axis.
   expect(
-    container.children[0].children[1].children[0].children[0],
+    container.children[0].children[0].children[1].children[0].children[0]
+      .children[0],
   ).toMatchSnapshot();
   expect(
-    container.children[0].children[1].children[0].children[4],
+    container.children[0].children[0].children[1].children[0].children[0]
+      .children[4],
   ).toMatchSnapshot();
   expect(
-    container.children[0].children[1].children[0].children[5],
+    container.children[0].children[0].children[1].children[0].children[0]
+      .children[5],
   ).toMatchSnapshot();
 
   expect(
-    container.children[0].children[1].children[0].childElementCount,
+    container.children[0].children[0].children[1].children[0].children[0]
+      .childElementCount,
   ).toEqual(6);
 });
 
@@ -86,12 +90,23 @@ test("Render with format and lang = en", () => {
       yAxisText={"Andel"}
     />,
   );
+
   expect(
-    container.children[0].children[1].children[0].children[5],
+    container.children[0].children[0].children[1].children[0].children[0]
+      .children[0],
+  ).toMatchSnapshot();
+  expect(
+    container.children[0].children[0].children[1].children[0].children[0]
+      .children[4],
+  ).toMatchSnapshot();
+  expect(
+    container.children[0].children[0].children[1].children[0].children[0]
+      .children[5],
   ).toMatchSnapshot();
 
   expect(
-    container.children[0].children[1].children[0].childElementCount,
+    container.children[0].children[0].children[1].children[0].children[0]
+      .childElementCount,
   ).toEqual(6);
 });
 
@@ -110,11 +125,23 @@ test("Render with format and lang = nb", () => {
       yAxisText={"Andel"}
     />,
   );
+
   expect(
-    container.children[0].children[1].children[0].children[5],
+    container.children[0].children[0].children[1].children[0].children[0]
+      .children[0],
   ).toMatchSnapshot();
   expect(
-    container.children[0].children[1].children[0].childElementCount,
+    container.children[0].children[0].children[1].children[0].children[0]
+      .children[4],
+  ).toMatchSnapshot();
+  expect(
+    container.children[0].children[0].children[1].children[0].children[0]
+      .children[5],
+  ).toMatchSnapshot();
+
+  expect(
+    container.children[0].children[0].children[1].children[0].children[0]
+      .childElementCount,
   ).toEqual(6);
 });
 
@@ -132,12 +159,23 @@ test("Render with other format", () => {
       yAxisText={"Andel"}
     />,
   );
+
   expect(
-    container.children[0].children[1].children[0].children[5],
+    container.children[0].children[0].children[1].children[0].children[0]
+      .children[0],
+  ).toMatchSnapshot();
+  expect(
+    container.children[0].children[0].children[1].children[0].children[0]
+      .children[4],
+  ).toMatchSnapshot();
+  expect(
+    container.children[0].children[0].children[1].children[0].children[0]
+      .children[5],
   ).toMatchSnapshot();
 
   expect(
-    container.children[0].children[1].children[0].childElementCount,
+    container.children[0].children[0].children[1].children[0].children[0]
+      .childElementCount,
   ).toEqual(6);
 });
 
@@ -159,10 +197,19 @@ test("Render with background levelDirection one", () => {
       yAxisText={"Andel"}
     />,
   );
-  expect(container.children[0].children[1].children[0]).toMatchSnapshot();
-  expect(container.children[0].children[1].children[1]).toMatchSnapshot();
-  expect(container.children[0].children[1].children[2]).toMatchSnapshot();
-  expect(container.children[0].children[1].childElementCount).toEqual(4);
+
+  expect(
+    container.children[0].children[0].children[1].children[0],
+  ).toMatchSnapshot();
+  expect(
+    container.children[0].children[0].children[1].children[1],
+  ).toMatchSnapshot();
+  expect(
+    container.children[0].children[0].children[1].children[2],
+  ).toMatchSnapshot();
+  expect(
+    container.children[0].children[0].children[1].childElementCount,
+  ).toEqual(4);
 });
 
 test("Render with background levelDirection zero", () => {
@@ -183,9 +230,16 @@ test("Render with background levelDirection zero", () => {
     />,
   );
 
-  expect(container.children[0].children[1].children[0]).toMatchSnapshot();
-  expect(container.children[0].children[1].children[1]).toMatchSnapshot();
-  expect(container.children[0].children[1].children[2]).toMatchSnapshot();
-
-  expect(container.children[0].children[1].childElementCount).toEqual(4);
+  expect(
+    container.children[0].children[0].children[1].children[0],
+  ).toMatchSnapshot();
+  expect(
+    container.children[0].children[0].children[1].children[1],
+  ).toMatchSnapshot();
+  expect(
+    container.children[0].children[0].children[1].children[2],
+  ).toMatchSnapshot();
+  expect(
+    container.children[0].children[0].children[1].childElementCount,
+  ).toEqual(4);
 });
