@@ -22,6 +22,7 @@ import {
   IndicatorTableBodyV2,
   indicatorTableTheme,
   IndicatorTable,
+  FilterSettingsActionType,
 } from "qmongjs";
 import {
   FilterIconButton,
@@ -247,6 +248,45 @@ export default function TreatmentQuality() {
       default:
         break;
     }
+
+    if (action.type == FilterSettingsActionType.RESET_SELECTIONS) {
+      updateAllFilterSections(newFilterSettings);
+    }
+  };
+
+  const updateAllFilterSections = (updatedFilterSettings: {
+    map: Map<string, FilterSettingsValue[]>;
+  }) => {
+    setSelectedYear(
+      parseInt(
+        updatedFilterSettings.map.get(yearKey)[0].value ??
+          defaultYear.toString(),
+      ),
+    );
+
+    setSelectedLevel(
+      updatedFilterSettings.map.get(levelKey)[0].value ?? undefined,
+    );
+
+    const medicalFieldFilter = updatedFilterSettings.map
+      .get(medicalFieldKey)
+      .map((value) => value.value);
+
+    setSelectedMedicalFields(
+      getMedicalFieldFilterRegisters(medicalFieldFilter),
+    );
+
+    setSelectedTreatmentUnits(
+      updatedFilterSettings.map
+        .get(treatmentUnitsKey)
+        .map((value) => value.value),
+    );
+
+    setDataQualitySelected(
+      updatedFilterSettings.map.get(dataQualityKey)?.[0].value === "true"
+        ? true
+        : false,
+    );
   };
 
   return (

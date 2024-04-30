@@ -252,6 +252,14 @@ export function TreatmentQualityFilterMenu({
         setSectionSelections(key, newFilterSettings.map.get(key));
         break;
       }
+      case FilterSettingsActionType.RESET_SELECTIONS: {
+        newFilterSettings.map.forEach((value, key) => {
+          if (oldFilterSettings.map.get(key) != value) {
+            setSectionSelections(key, value);
+          }
+        });
+        break;
+      }
       default:
         break;
     }
