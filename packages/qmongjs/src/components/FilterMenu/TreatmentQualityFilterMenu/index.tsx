@@ -6,6 +6,7 @@ import {
   StringParam,
   UrlUpdateType,
   useQueryParam,
+  useQueryParams,
   withDefault,
 } from "use-query-params";
 import {
@@ -114,6 +115,15 @@ export function TreatmentQualityFilterMenu({
 
   // Map for filter options, defaults, and query parameter values and setters
   const optionsMap = new Map<string, OptionsMapEntry>();
+
+  // All params
+  const [, setAllQueries] = useQueryParams({
+    year: StringParam,
+    level: StringParam,
+    indicator: ArrayParam,
+    selected_treatment_units: DelimitedArrayParam,
+    dg: StringParam,
+  });
 
   // Year selection
   const yearOptions = getYearOptions();
@@ -253,10 +263,24 @@ export function TreatmentQualityFilterMenu({
         break;
       }
       case FilterSettingsActionType.RESET_SELECTIONS: {
-        newFilterSettings.map.forEach((value, key) => {
-          if (oldFilterSettings.map.get(key) != value) {
-            setSectionSelections(key, value);
-          }
+        setAllQueries({
+          year:
+            newFilterSettings.map.get(yearKey)?.[0].value ??
+            yearOptions.default.value,
+          level:
+            newFilterSettings.map.get(levelKey)?.[0].value ??
+            achievementLevelOptions.default.value,
+          indicator: [
+            newFilterSettings.map.get(medicalFieldKey)?.[0].value ??
+              medicalFields.defaults[0].value,
+          ],
+          selected_treatment_units: [
+            newFilterSettings.map.get(treatmentUnitsKey)?.[0].value ??
+              treatmentUnits.defaults[0].value,
+          ],
+          dg:
+            newFilterSettings.map.get(dataQualityKey)?.[0].value ??
+            dataQualityEmptyValue.value,
         });
         break;
       }
