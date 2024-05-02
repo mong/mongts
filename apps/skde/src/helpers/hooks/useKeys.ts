@@ -3,10 +3,11 @@ import React from "react";
 export const useKeys = (
   key: string[],
   eventName: string,
-  handler: Function,
+  handler: () => void,
   targetElement = global,
 ) => {
-  const listenerRef = React.useRef<Function>();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const listenerRef = React.useRef<any>();
 
   React.useEffect(() => {
     listenerRef.current = handler;

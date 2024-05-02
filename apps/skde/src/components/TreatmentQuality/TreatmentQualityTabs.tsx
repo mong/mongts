@@ -1,11 +1,5 @@
-import React, { PropsWithChildren, useState } from "react";
+import React, { useState } from "react";
 import { Tabs, Tab } from "@mui/material";
-
-type TreatmentQualityTabsProps = PropsWithChildren<{
-  context: string | undefined;
-  onTabChanged: (string) => void;
-  isPhoneSizedScreen?: boolean;
-}>;
 
 export default function TreatmentQualityTabs({
   context,

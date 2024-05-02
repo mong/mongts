@@ -58,8 +58,8 @@ export const Linechart = <
   const router = useRouter();
   const selected_bohf = [router.query.bohf].flat();
 
-  var uniqueLabels: string[] = Array.from(new Set(data.map((d) => d[label])));
-  var allNonSelectedHF = [];
+  let uniqueLabels: string[] = Array.from(new Set(data.map((d) => d[label])));
+  let allNonSelectedHF = [];
 
   if (label === "bohf") {
     allNonSelectedHF = uniqueLabels.filter(

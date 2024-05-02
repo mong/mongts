@@ -9,6 +9,7 @@ import { Markdown } from "../src/components/Markdown";
 const CONTENT_DIR = join(process.cwd(), "_posts/innhold");
 
 interface Props {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   frontMatter: any;
   content;
 }

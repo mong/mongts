@@ -35,6 +35,7 @@ export const Skde = (): JSX.Element => {
   const queryContext = { context: "caregiver", type: "ind" };
 
   // Hent sykehusnavn fra et register
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     "Hjerteinfarkt",
     queryContext.context,

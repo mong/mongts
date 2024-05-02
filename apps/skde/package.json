@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "export": "next build",
+    "lint": "eslint --ignore-pattern .gitignore src pages",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
     "format": "yarn prettier --write",
     "test": "yarn run test:base run --coverage",

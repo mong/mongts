@@ -8,7 +8,6 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import TreatmentQualityTabs from "./TreatmentQualityTabs";
 
 export const appBarElevation = 2;
 export const filterMenuTopMargin = 2;
@@ -112,17 +111,17 @@ export const SkdeLogoBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const FooterWrapper = styled(Paper)(({ theme }) => ({
+export const FooterWrapper = styled(Paper)(() => ({
   marginTop: "calc(100vh)",
   color: "white",
 }));
 
-export const FooterGrid = styled(Grid)(({ theme }) => ({
+export const FooterGrid = styled(Grid)(() => ({
   justifyContent: "space-around",
   backgroundColor: "#00263d",
 }));
 
-export const FooterItem = styled(Grid)(({ theme }) => ({
+export const FooterItem = styled(Grid)(() => ({
   textAlign: "center",
   "& .footer-logo": {
     verticalAlign: "middle",
@@ -131,18 +130,18 @@ export const FooterItem = styled(Grid)(({ theme }) => ({
   },
 }));
 
-export const FooterListItemIcon = styled(ListItemIcon)(({ theme }) => ({
+export const FooterListItemIcon = styled(ListItemIcon)(() => ({
   color: "white",
 }));
 
-export const FooterListItemText = styled(ListItemText)(({ theme }) => ({
+export const FooterListItemText = styled(ListItemText)(() => ({
   lineHeight: 1,
   margin: 0,
 }));
 
-export const FooterDividerBox = styled(Box)(({ theme }) => ({}));
+export const FooterDividerBox = styled(Box)(() => ({}));
 
-export const FooterDivider = styled(Divider)(({ theme }) => ({
+export const FooterDivider = styled(Divider)(() => ({
   backgroundColor: "#27485b",
 }));
 

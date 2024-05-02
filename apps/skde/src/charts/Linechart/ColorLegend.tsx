@@ -1,7 +1,8 @@
 import classNames from "../Barchart/ChartLegend.module.css";
 
 type ColorLegendProps = {
-  colorScale: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  colorScale: (args: any) => void;
   values: string[];
 };
 

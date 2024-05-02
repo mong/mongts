@@ -1,9 +1,10 @@
 import classNames from "./ChartLegend.module.css";
 
 type ColorLegendProps = {
-  colorScale: Function;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  colorScale: (args: any) => void;
   labels?: string[];
-  onClick?: Function;
+  onClick?: () => void;
   values: string[];
 };
 
