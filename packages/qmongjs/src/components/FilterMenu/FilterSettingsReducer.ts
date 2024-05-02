@@ -10,6 +10,7 @@ export enum FilterSettingsActionType {
   SET_SECTION_SELECTIONS,
   DEL_SECTION_SELECTIONS,
   SET_ALL_SELECTIONS,
+  RESET_SELECTIONS,
 }
 
 /**
@@ -96,6 +97,12 @@ export function filterSettingsReducer(
       }
 
       return { map: action.filterSettings, defaults: filterSettings.defaults };
+    }
+    case FilterSettingsActionType.RESET_SELECTIONS: {
+      const newFilterSettings = new Map<string, FilterSettingsValue[]>(
+        filterSettings.defaults.entries(),
+      );
+      return { map: newFilterSettings, defaults: filterSettings.defaults };
     }
     default:
       return filterSettings;
