@@ -15,6 +15,16 @@ import { Map } from "..";
 import { atlasData } from "../../../../test/test_data/data";
 
 vi.mock("next/router", () => require("next-router-mock"));
+vi.mock("next/font/google", () => ({
+  Plus_Jakarta_Sans: () => ({
+    weight: ["200", "300", "400", "500", "600", "700", "800"],
+    subsets: ["latin"],
+    display: "swap",
+    style: {
+      fontFamily: "Plus Jakarta Sans",
+    },
+  }),
+}));
 
 const mapDataPath = "public/helseatlas/kart/kronikere.geojson";
 const mapData = JSON.parse(fs.readFileSync(mapDataPath, "utf-8"));
