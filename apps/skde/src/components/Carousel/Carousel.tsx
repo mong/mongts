@@ -73,7 +73,6 @@ export const Carousel: React.FC<CarouselProps> = ({
         <CarouselButtons
           options={options}
           activeCarousel={activeComp}
-          nrOfButtons={numberOfChildren}
           onClick={(i) => setActiveComp(i)}
         />
       )}

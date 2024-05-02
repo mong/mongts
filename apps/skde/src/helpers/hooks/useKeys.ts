@@ -3,7 +3,7 @@ import React from "react";
 export const useKeys = (
   key: string[],
   eventName: string,
-  handler: () => void,
+  handler: (event: KeyboardEvent) => void,
   targetElement = global,
 ) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
