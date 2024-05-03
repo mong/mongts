@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { Tabs, Tab } from "@mui/material";
+import { Tabs, Tab, styled } from "@mui/material";
+
+export const StyledTab = styled(Tab)(({ theme }) => ({
+  fontFamily: theme.typography.button.fontFamily,
+  textTransform: "none",
+}));
 
 export default function TreatmentQualityTabs({
   context,
@@ -27,16 +32,8 @@ export default function TreatmentQualityTabs({
       sx={{ backgroundColor: "#00263d", borderRadius: 1 }}
       orientation={orientation}
     >
-      <Tab
-        label="Behandlingsenheter"
-        value={"caregiver"}
-        sx={{ textTransform: "none" }}
-      />
-      <Tab
-        label="Opptaksområder"
-        value={"resident"}
-        sx={{ textTransform: "none" }}
-      />
+      <StyledTab label="Behandlingsenheter" value={"caregiver"} />
+      <StyledTab label="Opptaksområder" value={"resident"} />
     </Tabs>
   );
 }
