@@ -14,7 +14,7 @@ import {
   mainQueryParamsConfig,
   validateTreatmentUnits,
   UnitNameList,
-  LowLevelIndicatorList
+  LowLevelIndicatorList,
 } from "qmongjs";
 import { OptsTu } from "types";
 import { Checkbox, FormControlLabel } from "@mui/material";
@@ -55,7 +55,7 @@ export const Skde = (): JSX.Element => {
   const validated_treatment_units = validateTreatmentUnits(
     treatment_units as string[],
     optstu,
-  ) || ["Nasjonalt"];
+  );
 
   const placeholder = (
     <div>
@@ -194,7 +194,11 @@ export const Skde = (): JSX.Element => {
         <MedfieldTable {...medfieldTablePropsDG} />
       </div>
       <div>
-        <LowLevelIndicatorList context={"caregiver"} type={"ind"} unitNames={validateTreatmentUnits[0] ? validateTreatmentUnits[0] : "Nasjonalt"}/>
+        <LowLevelIndicatorList
+          context={"caregiver"}
+          type={"ind"}
+          unitNames={[validated_treatment_units[0] || "Nasjonalt"]}
+        />
       </div>
     </div>
   );
