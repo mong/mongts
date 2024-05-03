@@ -44,6 +44,7 @@ export type IndicatorTableBodyV2Props = {
 
 export type DataPoint = {
   unitName: string;
+  year: number;
   var: number;
   numerator: number;
   denominator: number;
@@ -54,7 +55,7 @@ export type DataPoint = {
   dg: number | null;
 };
 
-type IndicatorData = {
+export type IndicatorData = {
   indicatorID: string;
   indicatorName: string | null;
   levelGreen: number | null;
@@ -67,7 +68,7 @@ type IndicatorData = {
   data: DataPoint[];
 };
 
-type RegisterData = {
+export type RegisterData = {
   registerFullName: string;
   registerName: string;
   registerShortName: string;
@@ -91,7 +92,7 @@ const searchArray = (arr: Array<IndicatorData>, target: string) => {
   return i;
 };
 
-const createData = (indicatorData: Indicator[]) => {
+export const createData = (indicatorData: Indicator[]) => {
   const regData: RegisterData[] = indicatorData.reduce(
     (returnData: RegisterData[], row) => {
       // Initialise array
@@ -138,14 +139,22 @@ const createData = (indicatorData: Indicator[]) => {
         // The same registry can belong to different medfields
         // If so, the unit will appear more than once
         // We therefore need to check if it is already there
-        !returnData[i].indicatorData[j].data
-          .map((row) => {
-            return row.unitName;
-          })
-          .includes(row.unit_name)
+        !(
+          returnData[i].indicatorData[j].data
+            .map((row) => {
+              return row.unitName;
+            })
+            .includes(row.unit_name) &&
+          returnData[i].indicatorData[j].data
+            .map((row) => {
+              return row.year;
+            })
+            .includes(row.year)
+        )
       ) {
         returnData[i].indicatorData[j].data.push({
           unitName: row.unit_name,
+          year: row.year,
           var: row.var,
           numerator: Math.round(row.var * row.denominator),
           denominator: row.denominator,
