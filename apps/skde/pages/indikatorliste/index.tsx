@@ -22,9 +22,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import {
   createData,
-  RegisterData,
   IndicatorData,
-  DataPoint,
 } from "qmongjs/src/components/IndicatorTable/IndicatortablebodyV2";
 
 const getVar = (data: Indicator[], year: number) => {
@@ -129,6 +127,7 @@ const IndicatorRow = (props: { data: Indicator[]; row: Indicator }) => {
 };
 
 export const Indikatorliste = (): JSX.Element => {
+  // UI stuff
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [setting, setSetting] = React.useState("last-year");
 
@@ -141,12 +140,15 @@ export const Indikatorliste = (): JSX.Element => {
     setAnchorEl(null);
   };
 
+  // Years for filtering
   const currentYear = new Date().getFullYear();
+
   const last5years = Array.from(
     { length: 5 },
     (value, index) => currentYear - 5 + index,
   );
 
+  // Get data
   const context = "caregiver";
   const unitNames = ["Nasjonalt"];
   const type = "ind";
@@ -164,23 +166,47 @@ export const Indikatorliste = (): JSX.Element => {
     return null;
   }
 
-  const data = createData(indicatorQuery.data);
+  const data = indicatorQuery.data;
 
-  const indDataFlat = data.map((row) => row.indicatorData).flat();
+  // Transform to hierarchical structure
+  // THis removes duplicate data due to multiple medfields per registry
+  const data5years = createData(
+    data.filter((row: Indicator) => {
+      return row.year >= currentYear - 5;
+    }),
+  );
 
-  console.log(indDataFlat);
+  const indDataFlat = data5years.map((row) => row.indicatorData).flat();
 
-  let filteredDataLastYear = indicatorQuery.data.filter((row: Indicator) => {
-    return row.year === currentYear - 1 && level(row) === "L";
-  });
+  // Find the indicators that were red last year
+  const redIn2023 = indDataFlat
+    .filter((row) => {
+      const lastYear = row.data.find((p) => {
+        return p.year === currentYear - 1;
+      });
 
-  let filteredData: Indicator[];
+      if (lastYear) {
+        return level(lastYear) === "L";
+      } else return false;
+    })
+    .map((row) => row.indicatorID);
 
-  const indIDs = filteredDataLastYear.map((row) => row.ind_id);
+  const filteredData = data
+    .filter((row) => {
+      return row.year === currentYear - 1 && redIn2023.includes(row.ind_id);
+    })
+    .reduce((acc: Indicator[], val: Indicator) => {
+      if (!acc.map((row: Indicator) => row.ind_id).includes(val.ind_id)) {
+        acc.push(val);
+      }
+      return acc;
+    }, [] as Indicator[]);
 
-  setting === "last-year"
-    ? (filteredData = filteredDataLastYear)
-    : (filteredData = filteredDataLastYear);
+  // Find the indicators that have bben red the last 5 years
+
+  // setting === "last-year"
+  //   ? (filteredData = filteredDataLastYear)
+  //   : (filteredData = filteredDataLastYear);
 
   return (
     <div>
@@ -256,7 +282,6 @@ export const Indikatorliste = (): JSX.Element => {
       <div>
         <TableContainer component={Paper}>
           <Table>
-            ,
             <TableHead>
               <TableRow>
                 <TableCell></TableCell>
