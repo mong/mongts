@@ -25,8 +25,8 @@ export const desktopBreakpoint = 1300;
 
 export const TreatmentQualityAppBar = styled(AppBar)(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,
-  backgroundColor: "rgba(222, 231, 238, 1)",
-  color: "black",
+  // backgroundColor: "rgba(222, 231, 238, 1)",
+  // color: "black",
 }));
 
 export const FilterIconButton = styled(IconButton)(({ theme }) => ({

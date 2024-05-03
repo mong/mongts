@@ -56,6 +56,7 @@ const fonts = {
     fontWeight: "500",
     fontSize: "24px",
     letterSpacing: "0.15px",
+    color: "#001B52",
   },
   S1: {
     fontFamily: `${jakarta_style.fontFamily}`,
@@ -119,16 +120,16 @@ const breakpoints = {
 //   XXXXXXXL: "128px",
 // };
 
-const colourTokens = {
+const colorTokens = {
   Primary: {
-    main: "#BFCED6",
+    main: "#E0E7EB", //"#BFCED6",
     light: "#E3EBF2",
-    dark: "#748C9B",
+    dark: "#173844",
   },
 
   Secondary: {
-    main: "#BFC7E4",
-    light: "#E6E9F4",
+    main: "#003087", // "#BFC7E4",
+    light: "#ffffff", //"#E6E9F4",
     dark: "#003087",
   },
 
@@ -192,12 +193,15 @@ export const SKDEtheme = createTheme({
   },
   palette: {
     mode: "light",
-    primary: colourTokens.Primary,
-    secondary: colourTokens.Secondary,
-    error: colourTokens.Error,
-    success: colourTokens.Success,
-    text: colourTokens.Text,
-    info: colourTokens.Info,
+    primary: colorTokens.Primary,
+    secondary: colorTokens.Secondary,
+    error: colorTokens.Error,
+    success: colorTokens.Success,
+    text: colorTokens.Text,
+    info: colorTokens.Info,
+    background: {
+      paper: colorTokens.Background.light,
+    },
   },
   breakpoints: {
     values: {
