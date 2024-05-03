@@ -42,8 +42,12 @@ const getVar = (data: Indicator[], year: number) => {
   }
 };
 
-const CollapsedRow = (props: { data: Indicator[]; indID: string }) => {
-  const { data, indID } = props;
+const CollapsedRow = (props: {
+  data: Indicator[];
+  indID: string;
+  currentYear: number;
+}) => {
+  const { data, indID, currentYear } = props;
 
   const filteredData = data.filter((row) => {
     return row.ind_id === indID;
@@ -54,24 +58,28 @@ const CollapsedRow = (props: { data: Indicator[]; indID: string }) => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>2020</TableCell>
-            <TableCell>2021</TableCell>
-            <TableCell>2022</TableCell>
+            <TableCell>{currentYear - 5}</TableCell>
+            <TableCell>{currentYear - 4}</TableCell>
+            <TableCell>{currentYear - 3}</TableCell>
+            <TableCell>{currentYear - 2}</TableCell>
           </TableRow>
         </TableHead>
 
         <TableBody>
           <TableRow>
             <TableCell>
-              {filteredData ? getVar(filteredData, 2020) : null}
+              {filteredData ? getVar(filteredData, currentYear - 5) : null}
+            </TableCell>
+            <TableCell>
+              {filteredData ? getVar(filteredData, currentYear - 4) : null}
             </TableCell>
 
             <TableCell>
-              {filteredData ? getVar(filteredData, 2021) : null}
+              {filteredData ? getVar(filteredData, currentYear - 3) : null}
             </TableCell>
 
             <TableCell>
-              {filteredData ? getVar(filteredData, 2022) : null}
+              {filteredData ? getVar(filteredData, currentYear - 2) : null}
             </TableCell>
           </TableRow>
         </TableBody>
@@ -80,8 +88,12 @@ const CollapsedRow = (props: { data: Indicator[]; indID: string }) => {
   );
 };
 
-const IndicatorRow = (props: { data: Indicator[]; row: Indicator }) => {
-  const { data, row } = props;
+const IndicatorRow = (props: {
+  data: Indicator[];
+  row: Indicator;
+  currentYear: number;
+}) => {
+  const { data, row, currentYear } = props;
 
   const [open, setOpen] = React.useState(false);
 
@@ -120,7 +132,11 @@ const IndicatorRow = (props: { data: Indicator[]; row: Indicator }) => {
         key={row.id + "-collapse"}
         sx={{ visibility: open ? "visible" : "collapse" }}
       >
-        <CollapsedRow data={data} indID={row.ind_id} />
+        <CollapsedRow
+          data={data}
+          indID={row.ind_id}
+          currentYear={currentYear}
+        />
       </TableRow>
     </React.Fragment>
   );
@@ -179,7 +195,7 @@ export const Indikatorliste = (): JSX.Element => {
   const indDataFlat = data5years.map((row) => row.indicatorData).flat();
 
   // Find the indicators that were red last year
-  const redIn2023 = indDataFlat
+  const redLastYear = indDataFlat
     .filter((row) => {
       const lastYear = row.data.find((p) => {
         return p.year === currentYear - 1;
@@ -191,9 +207,28 @@ export const Indikatorliste = (): JSX.Element => {
     })
     .map((row) => row.indicatorID);
 
+  // Find the indicators that have bben red the last 5 years
+  const redLast5Years = indDataFlat
+    .filter((row) => {
+      return row.data
+        .map((row) => {
+          return level(row) === "L";
+        })
+        .every((v) => v == true);
+    })
+    .map((row) => row.indicatorID);
+
+  let indicatorSubset: string[];
+
+  setting === "last-year"
+    ? (indicatorSubset = redLastYear)
+    : (indicatorSubset = redLast5Years);
+
   const filteredData = data
     .filter((row) => {
-      return row.year === currentYear - 1 && redIn2023.includes(row.ind_id);
+      return (
+        row.year === currentYear - 1 && indicatorSubset.includes(row.ind_id)
+      );
     })
     .reduce((acc: Indicator[], val: Indicator) => {
       if (!acc.map((row: Indicator) => row.ind_id).includes(val.ind_id)) {
@@ -201,12 +236,6 @@ export const Indikatorliste = (): JSX.Element => {
       }
       return acc;
     }, [] as Indicator[]);
-
-  // Find the indicators that have bben red the last 5 years
-
-  // setting === "last-year"
-  //   ? (filteredData = filteredDataLastYear)
-  //   : (filteredData = filteredDataLastYear);
 
   return (
     <div>
@@ -300,6 +329,7 @@ export const Indikatorliste = (): JSX.Element => {
                   <IndicatorRow
                     data={data}
                     row={row}
+                    currentYear={currentYear}
                     key={row.id + row.medfield_id}
                   />
                 );
