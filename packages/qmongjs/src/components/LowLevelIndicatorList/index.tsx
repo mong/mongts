@@ -138,11 +138,17 @@ const IndicatorRow = (props: {
   );
 };
 
-export const LowLevelIndicatorList = () => {
+export type LowLevelIndicatorListProps = {
+  context: string,
+  unitNames: string[],
+  type: string
+}
+
+export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
   // UI stuff
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [setting, setSetting] = React.useState("last-year");
-
+  console.log(props)
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -156,14 +162,12 @@ export const LowLevelIndicatorList = () => {
   const currentYear = new Date().getFullYear();
 
   // Get data
-  const context = "caregiver";
-  const unitNames = ["Nasjonalt"];
-  const type = "ind";
+
 
   const queryParams: FetchIndicatorParams = {
-    context: context,
-    unitNames: unitNames,
-    type: type,
+    context: props.context,
+    unitNames: props.unitNames,
+    type: props.type,
   };
 
   const indicatorQuery: UseQueryResult<any, unknown> =
