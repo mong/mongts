@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Stack, Chip, Button, Box } from "@mui/material";
+import { Stack, Chip, Button, Box, styled } from "@mui/material";
 import ClearAllIcon from "@mui/icons-material/ClearAll";
 import { FilterMenuSectionProps } from ".";
 import { FilterSettingsContext } from "./FilterSettingsContext";
@@ -8,6 +8,10 @@ import { FilterSettingsAction } from "./FilterSettingsReducer";
 import { FilterSettingsActionType } from "./FilterSettingsReducer";
 
 export type SelectedFiltersSectionProps = FilterMenuSectionProps;
+
+export const StyledChip = styled(Chip)(({ theme }) => ({
+  fontFamily: theme.typography.button.fontFamily,
+}));
 
 /**
  * Function for handling the delete event for a chip
@@ -86,10 +90,11 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
           return filterSettings.map.get(key)?.map((filterSetting) => {
             const chipId = `${key}${sep}${filterSetting.value}`;
             return (
-              <Chip
+              <StyledChip
                 key={chipId}
                 data-testid={chipId}
                 label={filterSetting.valueLabel}
+                size={"small"}
                 onDelete={() => handleDelete(chipId, filterSettingsDispatch)}
               />
             );
