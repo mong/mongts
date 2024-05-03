@@ -8,19 +8,15 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Indicator } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
-import {
-  FetchIndicatorParams,
-  useIndicatorQuery,
-} from "qmongjs/src/helpers/hooks";
-import { newLevelSymbols, level } from "qmongjs";
-import { customFormat } from "qmongjs";
+import { FetchIndicatorParams, useIndicatorQuery } from "../../helpers/hooks";
+import { customFormat, newLevelSymbols, level } from "qmongjs";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import IconButton from "@mui/material/IconButton";
 import { Box, Button } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { createData } from "qmongjs/src/components/IndicatorTable/IndicatortablebodyV2";
+import { createData } from "../IndicatorTable/IndicatortablebodyV2";
 
 const getVar = (data: Indicator[], year: number) => {
   const row = data.find((row: Indicator) => {
@@ -121,7 +117,7 @@ const IndicatorRow = (props: {
             newLevelSymbols(level(row)),
           ]}
         </TableCell>
-        <TableCell>{row.dg}</TableCell>
+        <TableCell>{row.dg ? customFormat(",.0%")(row.dg) : "Ingen"}</TableCell>
       </TableRow>
 
       <TableRow
