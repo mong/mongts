@@ -1,4 +1,13 @@
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { createTheme } from "@mui/material";
+
+const plus_jakarta_sans = Plus_Jakarta_Sans({
+  weight: ["200", "300", "400", "500", "600", "700", "800"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const jakarta_style = plus_jakarta_sans.style;
 
 declare module "@mui/material/styles" {
   interface BreakpointOverrides {
@@ -13,74 +22,74 @@ declare module "@mui/material/styles" {
 
 const fonts = {
   H1: {
-    fontFamily: "Plus Jakarta Sans",
-    fontWeight: "Light",
+    fontFamily: `${jakarta_style.fontFamily}`,
+    fontWeight: "300",
     fontSize: "64px",
     letterSpacing: "-1.5px",
   },
   H2: {
-    fontFamily: "Plus Jakarta Sans",
-    fontWeight: "Light",
+    fontFamily: `${jakarta_style.fontFamily}`,
+    fontWeight: "300",
     fontSize: "48px",
     letterSpacing: "-0.5px",
   },
   H3: {
-    fontFamily: "Plus Jakarta Sans",
-    fontWeight: "Normal",
+    fontFamily: `${jakarta_style.fontFamily}`,
+    fontWeight: "400",
     fontSize: "40px",
     letterSpacing: "0px",
   },
   H4: {
-    fontFamily: "Plus Jakarta Sans",
-    fontWeight: "Normal",
+    fontFamily: `${jakarta_style.fontFamily}`,
+    fontWeight: "400",
     fontSize: "32px",
     letterSpacing: "0.25px",
   },
   H5: {
-    fontFamily: "Plus Jakarta Sans",
-    fontWeight: "Normal",
+    fontFamily: `${jakarta_style.fontFamily}`,
+    fontWeight: "400",
     fontSize: "28px",
     letterSpacing: "0px",
   },
   H6: {
-    fontFamily: "Plus Jakarta Sans",
-    fontWeight: "Medium",
+    fontFamily: `${jakarta_style.fontFamily}`,
+    fontWeight: "500",
     fontSize: "24px",
     letterSpacing: "0.15px",
   },
   S1: {
-    fontFamily: "Plus Jakarta Sans",
-    fontWeight: "Normal",
+    fontFamily: `${jakarta_style.fontFamily}`,
+    fontWeight: "400",
     fontSize: "20px",
     letterSpacing: "0.15px",
   },
   S2: {
-    fontFamily: "Plus Jakarta Sans",
-    fontWeight: "Medium",
+    fontFamily: `${jakarta_style.fontFamily}`,
+    fontWeight: "500",
     fontSize: "20px",
     letterSpacing: "0.1px",
   },
   B1: {
-    fontFamily: "Plus Jakarta Sans",
-    fontWeight: "Normal",
+    fontFamily: `${jakarta_style.fontFamily}`,
+    fontWeight: "400",
     fontSize: "18px",
     letterSpacing: "0.5px",
   },
   B2: {
-    fontFamily: "Plus Jakarta Sans",
-    fontWeight: "Normal",
+    fontFamily: `${jakarta_style.fontFamily}`,
+    fontWeight: "400",
     fontSize: "14px",
     letterSpacing: "0.25px",
   },
   BUTT: {
-    fontFamily: "Plus Jakarta Sans",
-    fontWeight: "Medium",
+    fontFamily: `${jakarta_style.fontFamily}`,
+    fontWeight: "500",
     fontSize: "16px",
     letterSpacing: "1.25px",
   },
   OVER: {
-    fontFamily: "Plus Jakarta Sans",
-    fontWeight: "Medium",
+    fontFamily: `${jakarta_style.fontFamily}`,
+    fontWeight: "500",
     fontSize: "14px",
     letterSpacing: "1.5px",
   },
@@ -94,22 +103,21 @@ const breakpoints = {
   XXL: 1408,
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const spacingScale = {
-  XXXS: "2px",
-  XXS: "4px",
-  XS: "8px",
-  SM: "12px",
-  MD: "16px",
-  LG: "24px",
-  XL: "32px",
-  XXL: "48px",
-  XXXL: "64px",
-  XXXXL: "80px",
-  XXXXXL: "96px",
-  XXXXXXL: "112px",
-  XXXXXXXL: "128px",
-};
+// const spacingScale = {
+//   XXXS: "2px",
+//   XXS: "4px",
+//   XS: "8px",
+//   SM: "12px",
+//   MD: "16px",
+//   LG: "24px",
+//   XL: "32px",
+//   XXL: "48px",
+//   XXXL: "64px",
+//   XXXXL: "80px",
+//   XXXXXL: "96px",
+//   XXXXXXL: "112px",
+//   XXXXXXXL: "128px",
+// };
 
 const colourTokens = {
   Primary: {
@@ -143,9 +151,9 @@ const colourTokens = {
   },
 
   Text: {
-    disabled: "#C4C4C4",
-    secondary: "#F5F5F5",
-    primary: "#003087",
+    disabled: "#F5F5F5",
+    secondary: "#C4C4C4",
+    primary: "#002F87",
   },
 
   Success: {

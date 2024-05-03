@@ -5,6 +5,16 @@ import { LineStyles } from "..";
 import { vi, test, expect } from "vitest";
 
 vi.mock("next/router", () => require("next-router-mock"));
+vi.mock("next/font/google", () => ({
+  Plus_Jakarta_Sans: () => ({
+    weight: ["200", "300", "400", "500", "600", "700", "800"],
+    subsets: ["latin"],
+    display: "swap",
+    style: {
+      fontFamily: "Plus Jakarta Sans",
+    },
+  }),
+}));
 
 const linechartTestData = [
   [

@@ -22,6 +22,7 @@ import {
   IndicatorTableBodyV2,
   indicatorTableTheme,
   IndicatorTable,
+  FilterSettingsActionType,
 } from "qmongjs";
 import {
   FilterIconButton,
@@ -197,6 +198,62 @@ export default function TreatmentQuality() {
     );
   };
 
+  const valueOrDefault = (
+    key: string,
+    filterSettings: { map: Map<string, FilterSettingsValue[]> },
+  ) => {
+    switch (key) {
+      case yearKey: {
+        return (
+          filterSettings.map.get(yearKey)[0].value ?? defaultYear.toString()
+        );
+      }
+      case levelKey: {
+        return filterSettings.map.get(levelKey)[0].value ?? undefined;
+      }
+      case medicalFieldKey: {
+        const medicalFieldFilter = filterSettings.map
+          .get(medicalFieldKey)
+          .map((value) => value.value);
+        const registerFilter =
+          getMedicalFieldFilterRegisters(medicalFieldFilter);
+        return registerFilter;
+      }
+      case treatmentUnitsKey: {
+        return filterSettings.map
+          .get(treatmentUnitsKey)
+          .map((value) => value.value);
+      }
+      case dataQualityKey: {
+        return filterSettings.map.get(dataQualityKey)?.[0].value === "true"
+          ? true
+          : false;
+      }
+      default:
+        break;
+    }
+  };
+
+  const setAllSelected = (newFilterSettings: {
+    map: Map<string, FilterSettingsValue[]>;
+  }) => {
+    setSelectedYear(
+      parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
+    );
+    setSelectedLevel(
+      valueOrDefault(levelKey, newFilterSettings) as string | undefined,
+    );
+    setSelectedMedicalFields(
+      valueOrDefault(medicalFieldKey, newFilterSettings) as string[],
+    );
+    setSelectedTreatmentUnits(
+      valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+    );
+    setDataQualitySelected(
+      valueOrDefault(dataQualityKey, newFilterSettings) as boolean,
+    );
+  };
+
   /**
    * Handle filter changes
    */
@@ -208,46 +265,40 @@ export default function TreatmentQuality() {
     switch (action.sectionSetting.key) {
       case yearKey: {
         setSelectedYear(
-          parseInt(
-            newFilterSettings.map.get(yearKey)[0].value ??
-              defaultYear.toString(),
-          ),
+          parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
         );
         break;
       }
       case levelKey: {
         setSelectedLevel(
-          newFilterSettings.map.get(levelKey)[0].value ?? undefined,
+          valueOrDefault(levelKey, newFilterSettings) as string | undefined,
         );
         break;
       }
       case medicalFieldKey: {
-        const medicalFieldFilter = newFilterSettings.map
-          .get(medicalFieldKey)
-          .map((value) => value.value);
-        const registerFilter =
-          getMedicalFieldFilterRegisters(medicalFieldFilter);
-        setSelectedMedicalFields(registerFilter);
+        setSelectedMedicalFields(
+          valueOrDefault(medicalFieldKey, newFilterSettings) as string[],
+        );
         break;
       }
       case treatmentUnitsKey: {
         setSelectedTreatmentUnits(
-          newFilterSettings.map
-            .get(treatmentUnitsKey)
-            .map((value) => value.value),
+          valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
         );
         break;
       }
       case dataQualityKey: {
         setDataQualitySelected(
-          newFilterSettings.map.get(dataQualityKey)?.[0].value === "true"
-            ? true
-            : false,
+          valueOrDefault(dataQualityKey, newFilterSettings) as boolean,
         );
         break;
       }
       default:
         break;
+    }
+
+    if (action.type === FilterSettingsActionType.RESET_SELECTIONS) {
+      setAllSelected(newFilterSettings);
     }
   };
 
@@ -365,7 +416,9 @@ export default function TreatmentQuality() {
                   showLevelFilter={selectedLevel}
                   selection_bar_height={0}
                   legend_height={0}
-                  blockTitle={registers.map((register) => register.full_name)}
+                  blockTitle={registers.map(
+                    (register: { full_name: string }) => register.full_name,
+                  )}
                 />
                 <TreatmentQualityFooter />
               </>
