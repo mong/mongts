@@ -11,6 +11,6 @@ export default tseslint.config(
     plugins: {
       ['@typescript-eslint']: tseslint.plugin,
     },
-    files: ["**/*.js", "**/*.ts", "**/*.tsx"]
+    files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"]
   },
 )
