@@ -6,8 +6,7 @@ export const useKeys = (
   handler: (event: KeyboardEvent) => void,
   targetElement = global,
 ) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const listenerRef = React.useRef<any>();
+  const listenerRef = React.useRef<(event: KeyboardEvent) => void>();
 
   React.useEffect(() => {
     listenerRef.current = handler;
