@@ -17,13 +17,20 @@ import { customFormat } from "qmongjs";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import IconButton from "@mui/material/IconButton";
+import { Box, Button } from "@mui/material";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import {
+  createData,
+  RegisterData,
+  IndicatorData,
+  DataPoint,
+} from "qmongjs/src/components/IndicatorTable/IndicatortablebodyV2";
 
 const getVar = (data: Indicator[], year: number) => {
   const rows = data.filter((row: Indicator) => {
     return row.year === year;
   });
-
-  console.log(rows);
 
   if (rows.length > 0) {
     const row = rows[0];
@@ -48,23 +55,27 @@ const CollapsedRow = (props: { data: Indicator[]; indID: string }) => {
     <TableCell colSpan={6}>
       <Table>
         <TableHead>
-          <TableCell>2020</TableCell>
-          <TableCell>2021</TableCell>
-          <TableCell>2022</TableCell>
+          <TableRow>
+            <TableCell>2020</TableCell>
+            <TableCell>2021</TableCell>
+            <TableCell>2022</TableCell>
+          </TableRow>
         </TableHead>
 
         <TableBody>
-          <TableCell>
-            {filteredData ? getVar(filteredData, 2020) : null}
-          </TableCell>
+          <TableRow>
+            <TableCell>
+              {filteredData ? getVar(filteredData, 2020) : null}
+            </TableCell>
 
-          <TableCell>
-            {filteredData ? getVar(filteredData, 2021) : null}
-          </TableCell>
+            <TableCell>
+              {filteredData ? getVar(filteredData, 2021) : null}
+            </TableCell>
 
-          <TableCell>
-            {filteredData ? getVar(filteredData, 2022) : null}
-          </TableCell>
+            <TableCell>
+              {filteredData ? getVar(filteredData, 2022) : null}
+            </TableCell>
+          </TableRow>
         </TableBody>
       </Table>
     </TableCell>
@@ -118,10 +129,27 @@ const IndicatorRow = (props: { data: Indicator[]; row: Indicator }) => {
 };
 
 export const Indikatorliste = (): JSX.Element => {
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [setting, setSetting] = React.useState("last-year");
+
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const currentYear = new Date().getFullYear();
+  const last5years = Array.from(
+    { length: 5 },
+    (value, index) => currentYear - 5 + index,
+  );
+
   const context = "caregiver";
   const unitNames = ["Nasjonalt"];
   const type = "ind";
-  const year = 2023;
 
   const queryParams: FetchIndicatorParams = {
     context: context,
@@ -136,19 +164,99 @@ export const Indikatorliste = (): JSX.Element => {
     return null;
   }
 
-  const data = indicatorQuery.data;
-  const filteredData = data.filter((row: Indicator) => {
-    return row.year === year && level(row) === "L";
+  const data = createData(indicatorQuery.data);
+
+  const indDataFlat = data.map((row) => row.indicatorData).flat();
+
+  console.log(indDataFlat);
+
+  let filteredDataLastYear = indicatorQuery.data.filter((row: Indicator) => {
+    return row.year === currentYear - 1 && level(row) === "L";
   });
+
+  let filteredData: Indicator[];
+
+  const indIDs = filteredDataLastYear.map((row) => row.ind_id);
+
+  setting === "last-year"
+    ? (filteredData = filteredDataLastYear)
+    : (filteredData = filteredDataLastYear);
 
   return (
     <div>
       <div>
         <h1>Indikatorliste</h1>
       </div>
+      <Box>
+        <Button
+          id="demo-customized-button"
+          aria-controls={open ? "demo-customized-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          variant="contained"
+          disableElevation
+          onClick={handleClick}
+          endIcon={<KeyboardArrowDownIcon />}
+        >
+          Alternativer
+        </Button>
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+        >
+          <MenuItem
+            onClick={() => {
+              setSetting("last-year");
+              setAnchorEl(null);
+            }}
+          >
+            Lav måloppnåelse siste år
+          </MenuItem>
+          <MenuItem
+            onClick={() => {
+              setSetting("last-5-years");
+              setAnchorEl(null);
+            }}
+          >
+            Lav måloppnåelse siste 5 år
+          </MenuItem>
+        </Menu>
+      </Box>
+      <div>
+        <Button
+          variant="text"
+          onClick={() => {
+            const items = filteredData;
+            const replacer = (key, value) => (value === null ? "" : value); // specify how you want to handle null values here
+            const header = Object.keys(items[0]);
+            const csv = [
+              header.join(","), // header row first
+              ...items.map((row) =>
+                header
+                  .map((fieldName) => JSON.stringify(row[fieldName], replacer))
+                  .join(","),
+              ),
+            ].join("\r\n");
+
+            var a = document.createElement("a");
+            var file = new Blob([csv], { type: "text/plain" });
+            a.href = URL.createObjectURL(file);
+            a.download = "json.txt";
+            a.click();
+          }}
+        >
+          Last ned data
+        </Button>
+      </div>
       <div>
         <TableContainer component={Paper}>
           <Table>
+            ,
             <TableHead>
               <TableRow>
                 <TableCell></TableCell>
@@ -161,10 +269,15 @@ export const Indikatorliste = (): JSX.Element => {
                 <TableCell>Dekningsgrad</TableCell>
               </TableRow>
             </TableHead>
-
             <TableBody>
               {filteredData.map((row: Indicator) => {
-                return <IndicatorRow data={data} row={row} key={row.id} />;
+                return (
+                  <IndicatorRow
+                    data={data}
+                    row={row}
+                    key={row.id + row.medfield_id}
+                  />
+                );
               })}
             </TableBody>
           </Table>
