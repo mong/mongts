@@ -1,5 +1,5 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
-import { createTheme } from "@mui/material";
+import { createTheme, responsiveFontSizes } from "@mui/material";
 
 const plus_jakarta_sans = Plus_Jakarta_Sans({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
@@ -121,7 +121,7 @@ const breakpoints = {
 
 const colourTokens = {
   Primary: {
-    main: "#BFCED6",
+    main: "#748C9B", // "#BFCED6",
     light: "#E3EBF2",
     dark: "#748C9B",
   },
@@ -175,38 +175,40 @@ const colourTokens = {
   },
 };
 
-export const SKDEtheme = createTheme({
-  typography: {
-    h1: fonts.H1,
-    h2: fonts.H2,
-    h3: fonts.H3,
-    h4: fonts.H4,
-    h5: fonts.H5,
-    h6: fonts.H6,
-    body1: fonts.B1,
-    body2: fonts.B2,
-    subtitle1: fonts.S1,
-    subtitle2: fonts.S2,
-    button: fonts.BUTT,
-    overline: fonts.OVER,
-  },
-  palette: {
-    mode: "light",
-    primary: colourTokens.Primary,
-    secondary: colourTokens.Secondary,
-    error: colourTokens.Error,
-    success: colourTokens.Success,
-    text: colourTokens.Text,
-    info: colourTokens.Info,
-  },
-  breakpoints: {
-    values: {
-      xs: breakpoints.XS,
-      sm: breakpoints.MD,
-      md: breakpoints.XL,
-      lg: breakpoints.LG,
-      xl: breakpoints.XXL,
-      desktop: 1300,
+export const SKDEtheme = responsiveFontSizes(
+  createTheme({
+    typography: {
+      h1: fonts.H1,
+      h2: fonts.H2,
+      h3: fonts.H3,
+      h4: fonts.H4,
+      h5: fonts.H5,
+      h6: fonts.H6,
+      body1: fonts.B1,
+      body2: fonts.B2,
+      subtitle1: fonts.S1,
+      subtitle2: fonts.S2,
+      button: fonts.BUTT,
+      overline: fonts.OVER,
     },
-  },
-});
+    palette: {
+      mode: "light",
+      primary: colourTokens.Primary,
+      secondary: colourTokens.Secondary,
+      error: colourTokens.Error,
+      success: colourTokens.Success,
+      text: colourTokens.Text,
+      info: colourTokens.Info,
+    },
+    breakpoints: {
+      values: {
+        xs: breakpoints.XS,
+        sm: breakpoints.MD,
+        md: breakpoints.XL,
+        lg: breakpoints.LG,
+        xl: breakpoints.XXL,
+        desktop: 1300,
+      },
+    },
+  }),
+);
