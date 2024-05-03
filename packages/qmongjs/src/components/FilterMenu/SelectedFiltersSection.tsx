@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { Stack, Chip, Button, Box, styled } from "@mui/material";
-import ClearAllIcon from "@mui/icons-material/ClearAll";
+import { Stack, Chip, Link, Box, styled } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import { FilterMenuSectionProps } from ".";
 import { FilterSettingsContext } from "./FilterSettingsContext";
@@ -68,16 +67,15 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
   return (
     <>
       <Box
-        sx={{ display: "flex", flexDirection: "row-reverse", marginBottom: 1 }}
+        sx={{ display: "flex", flexDirection: "row-reverse", marginBottom: 1, cursor: "pointer" }}
       >
-        <Button
-          variant="outlined"
-          size="small"
-          endIcon={<ClearAllIcon />}
+        <Link
+          type="button"
+          variant="body2"
           onClick={() => handleReset(filterSettingsDispatch)}
         >
           Nullstill
-        </Button>
+        </Link>
       </Box>
       <Stack
         direction="row"
