@@ -20,12 +20,14 @@ import {
 } from "./IndicatorTableBodyV2Styles";
 import {
   LinechartBase,
+  BarchartBase,
   font,
   LinechartData,
   LineStyles,
   customFormat,
   useIndicatorQuery,
 } from "qmongjs";
+import { Group } from "@visx/group";
 
 const remarkPlugins: PluggableList = [remarkGfm];
 
@@ -208,17 +210,13 @@ const createChartData = (
   return chartDataUnique;
 };
 
-const createBarChartData = (
-  data: Indicator[],
-  indID: string,
-  year: number,
-) => {
+const createBarChartData = (data: Indicator[], indID: string, year: number) => {
   const indData = data.filter((row) => {
     return row.ind_id === indID;
   });
 
-  return(null)
-}
+  return null;
+};
 
 const randomHexColorCode = () => {
   const n = (Math.random() * 0xfffff * 1000000).toString(16);
@@ -302,20 +300,27 @@ const IndicatorRow = (props: {
     const sizeFactor = 0.5;
 
     return (
-      <LinechartBase
-        data={chartDataFiltered}
-        width={sizeFactor * width}
-        height={sizeFactor * height}
-        yMin={0}
-        yMax={1}
-        lineStyles={lineStyles}
-        font={font}
-        yAxisText={"Andel"}
-        format_y=",.0%"
-        levelGreen={indData.levelGreen!}
-        levelYellow={indData.levelYellow!}
-        levelDirection={indData.levelDirection!}
-      />
+      <Group>
+        <LinechartBase
+          data={chartDataFiltered}
+          width={sizeFactor * width}
+          height={sizeFactor * height}
+          yMin={0}
+          yMax={1}
+          lineStyles={lineStyles}
+          font={font}
+          yAxisText={"Andel"}
+          format_y=",.0%"
+          levelGreen={indData.levelGreen!}
+          levelYellow={indData.levelYellow!}
+          levelDirection={indData.levelDirection!}
+        />
+        <BarchartBase
+          indicatorData={indData}
+          width={sizeFactor * width * 0.7}
+          height={sizeFactor * height}
+        />
+      </Group>
     );
   };
 
