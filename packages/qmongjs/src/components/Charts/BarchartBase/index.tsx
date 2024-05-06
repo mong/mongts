@@ -14,18 +14,15 @@ export type BarGroupHorizontalProps = {
 const blue = '#aeeef8';
 export const green = '#e5fd3d';
 const purple = '#9caff6';
-export const background = '#612efb';
+export const background = "#DEDEDE";
 const defaultMargin = { top: 20, right: 40, bottom: 40, left: 150 };
 
-const parseDate = timeParse('%Y-%m-%d');
-const format = timeFormat('%b %d');
-const formatDate = (date: string) => format(parseDate(date) as Date);
-function max<D>(arr: D[], fn: (d: D) => number) {
-  return Math.max(...arr.map(fn));
+type BarchartData = {
+  unitName: string;
+  value: number;
 }
 
-
-const data = [
+const data: BarchartData[] = [
   {unitName: "Tromsø", value: 50},
   {unitName: "Bodø", value: 80},
   {unitName: "Stavanger", value: 70},
@@ -33,10 +30,8 @@ const data = [
 ]
 
 // accessors
-const getY = (d) => d.unitName;
-const getX = (d) => d.value;
-
-
+const getY = (d: BarchartData) => d.unitName;
+const getX = (d: BarchartData) => d.value;
 
 
 export const BarchartBase = ({
@@ -61,8 +56,8 @@ export const BarchartBase = ({
   });
 
   return (
-    <svg width={width} height={height}>
-      <rect x={0} y={0} width={width} height={height} fill={background} rx={14} />
+    <svg width={width + 2*margin.left} height={height + margin.top}>
+      <rect x={0} y={0} width={width + 2*margin.left} height={height + margin.top} fill={background} rx={14} />
       <Group>
         <Group top={margin.top} left={margin.left}>
                   {data.map((d) => {
@@ -77,7 +72,7 @@ export const BarchartBase = ({
                       y={barY}
                       width={barWidth}
                       height={barHeight}
-                      fill={"#005544"}
+                      fill={"#BFCED6"}
                       rx={4}
                     />
                   )}
@@ -87,22 +82,23 @@ export const BarchartBase = ({
           <AxisLeft
             scale={yScale}
             left={margin.left}
-            stroke={green}
-            tickStroke={green}
+            stroke={"#000000"}
+            tickStroke={"#000000"}
             tickLabelProps={{
-              fill: green,
+              fill: "#000000",
               fontSize: 11,
               textAnchor: 'end',
               dy: '0.33em',
             }}/>
 
             <AxisBottom
-              top={yMax - margin.bottom}
+              top={yMax - margin.top}
+              left={margin.left}
               scale={xScale}
-              stroke={purple}
-              tickStroke={purple}
+              stroke={"#000000"}
+              tickStroke={"#000000"}
               tickLabelProps={{
-                fill: purple,
+                fill: "#000000",
                 fontSize: 11,
                 textAnchor: 'middle',
               }}/>
