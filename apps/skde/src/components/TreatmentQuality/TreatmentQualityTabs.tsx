@@ -1,6 +1,5 @@
 import React, { PropsWithChildren, useState } from "react";
 import { Tabs, Tab, styled } from "@mui/material";
-import { TreatmentQualityFilterMenuProps } from "qmongjs";
 
 type TreatmentQualityTabsProps = PropsWithChildren<{
   context: string | undefined;
@@ -15,11 +14,9 @@ export const StyledTabs = styled(Tabs)(({ theme }) => ({
 }));
 
 export const StyledTab = styled(Tab)(({ theme }) => ({
-  fontFamily: theme.typography.button.fontFamily,
-  fontWeight: "600",
+  font: theme.typography.body2.font,
   textTransform: "none",
-  borderRadius: 5,
-  height: theme.mixins.toolbar.minHeight,
+  borderRadius: 4,
 }));
 
 export default function TreatmentQualityTabs({

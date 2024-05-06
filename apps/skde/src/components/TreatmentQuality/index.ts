@@ -31,6 +31,7 @@ export const TreatmentQualityAppBar = styled(AppBar)(({ theme }) => ({
 
 export const FilterIconButton = styled(IconButton)(({ theme }) => ({
   paddingLeft: 0,
+  color: theme.palette.secondary.main,
   [theme.breakpoints.up("desktop")]: {
     display: "none",
   },
@@ -174,8 +175,8 @@ export const MainBox = styled(Box)(({ theme }) => ({
     },
   },
   [theme.breakpoints.up("sm")]: {
-    marginTop: "140px",
-    height: "calc(100vh - 140px)",
+    marginTop: "129px",
+    height: "calc(100vh - 129px)",
     "& .MuiDrawer-paper": {
       width: "100%",
     },
