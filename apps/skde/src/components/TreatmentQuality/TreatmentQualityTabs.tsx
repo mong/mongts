@@ -1,5 +1,6 @@
 import React, { PropsWithChildren, useState } from "react";
 import { Tabs, Tab, styled } from "@mui/material";
+import { TreatmentQualityFilterMenuProps } from "qmongjs";
 
 type TreatmentQualityTabsProps = PropsWithChildren<{
   context: string | undefined;
@@ -7,16 +8,25 @@ type TreatmentQualityTabsProps = PropsWithChildren<{
   isPhoneSizedScreen?: boolean;
 }>;
 
+export const StyledTabs = styled(Tabs)(({ theme }) => ({
+  "& .Mui-selected": {
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
+
 export const StyledTab = styled(Tab)(({ theme }) => ({
   fontFamily: theme.typography.button.fontFamily,
+  fontWeight: "600",
   textTransform: "none",
+  borderRadius: 5,
+  height: theme.mixins.toolbar.minHeight,
 }));
 
 export default function TreatmentQualityTabs({
   context,
   onTabChanged,
   isPhoneSizedScreen,
-}) {
+}: TreatmentQualityTabsProps) {
   const orientation = isPhoneSizedScreen ? "vertical" : "horizontal";
 
   const [value, setValue] = useState(
@@ -31,15 +41,14 @@ export default function TreatmentQualityTabs({
   };
 
   return (
-    <Tabs
+    <StyledTabs
       value={value}
       onChange={handleChange}
       aria-label="Arkfaner for behandlingskvalitet og opptaksområde"
-      sx={{ backgroundColor: "#00263d", borderRadius: 1 }}
       orientation={orientation}
     >
       <StyledTab label="Behandlingsenheter" value={"caregiver"} />
       <StyledTab label="Opptaksområder" value={"resident"} />
-    </Tabs>
+    </StyledTabs>
   );
 }
