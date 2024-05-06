@@ -2,7 +2,7 @@ import style from "./chartrowdescription.module.css";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { ExpandMore } from "@mui/icons-material";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
@@ -23,7 +23,7 @@ export const ChartRowDescription = ({
   return (
     <div className={style.description_container}>
       <Accordion>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <AccordionSummary expandIcon={<ExpandMore />}>
           <div className={style.description_title}>{description_title}</div>
         </AccordionSummary>
         <AccordionDetails>

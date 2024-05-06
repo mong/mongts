@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import TuneIcon from "@mui/icons-material/Tune";
+import { Tune } from "@mui/icons-material";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { useQueryParam, withDefault, StringParam } from "use-query-params";
@@ -329,7 +329,7 @@ export default function TreatmentQuality() {
               edge="start"
               onClick={handleDrawerToggle}
             >
-              <TuneIcon />
+              <Tune />
               <Typography>Filter</Typography>
             </FilterIconButton>
             <TreatmentQualityTabs
