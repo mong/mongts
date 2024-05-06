@@ -54,3 +54,5 @@ export { SKDEtheme } from "./themes/SKDEtheme";
 export { indicatorTableTheme } from "./components/IndicatorTable/IndicatortablebodyV2/IndicatorTableBodyV2Styles";
 export { LinechartGrid } from "./components/Charts/LinechartGrid";
 export { BarchartBase } from "./components/Charts/BarchartBase"
+export { LowLevelIndicatorList } from "./components/LowLevelIndicatorList";
+
