@@ -1,7 +1,7 @@
 import React from 'react';
-import { BarGroupHorizontal, Bar } from '@visx/shape';
+import { Bar } from '@visx/shape';
 import { Group } from '@visx/group';
-import { AxisLeft } from '@visx/axis';
+import { AxisLeft, AxisBottom } from '@visx/axis';
 import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale';
 import { timeParse, timeFormat } from '@visx/vendor/d3-time-format';
 
@@ -9,16 +9,13 @@ export type BarGroupHorizontalProps = {
   width: number;
   height: number;
   margin?: { top: number; right: number; bottom: number; left: number };
-  events?: boolean;
 };
-
-type CityName = 'New York' | 'San Francisco' | 'Austin';
 
 const blue = '#aeeef8';
 export const green = '#e5fd3d';
 const purple = '#9caff6';
 export const background = '#612efb';
-const defaultMargin = { top: 20, right: 20, bottom: 20, left: 50 };
+const defaultMargin = { top: 20, right: 40, bottom: 40, left: 150 };
 
 const parseDate = timeParse('%Y-%m-%d');
 const format = timeFormat('%b %d');
@@ -29,100 +26,88 @@ function max<D>(arr: D[], fn: (d: D) => number) {
 
 
 const data = [
-  {col1: "50", col2: "60", col3: "70", date: "2011-10-10"},
-  {col1: "50", col2: "60", col3: "70", date: "2011-10-11"}, 
-  {col1: "50", col2: "60", col3: "70", date: "2011-10-12"}, 
+  {unitName: "Tromsø", value: 50},
+  {unitName: "Bodø", value: 80},
+  {unitName: "Stavanger", value: 70},
+  {unitName: "Harstad", value: 100},
 ]
 
-const keys = Object.keys(data[0]).filter((d) => d !== 'date') as CityName[];
-
 // accessors
-const getDate = (d) => d.date;
+const getY = (d) => d.unitName;
+const getX = (d) => d.value;
 
-// scales
-const dateScale = scaleBand({
-  domain: data.map(getDate),
-  padding: 0.2,
-});
-const cityScale = scaleBand({
-  domain: keys,
-  padding: 0.1,
-});
-const tempScale = scaleLinear<number>({
-  domain: [0, max(data, (d) => max(keys, (key) => Number(d[key])))],
-});
-const colorScale = scaleOrdinal<string, string>({
-  domain: keys,
-  range: [blue, green, purple],
-});
 
-export function BarchartBase({
+
+
+export const BarchartBase = ({
   width,
   height,
-  margin = defaultMargin,
-  events = false,
-}: BarGroupHorizontalProps) {
-  // bounds
-  const xMax = width - margin.left - margin.right;
-  const yMax = height - margin.top - margin.bottom;
+  margin = defaultMargin
+}: BarGroupHorizontalProps) => {
 
-  // update scale output dimensions
-  dateScale.rangeRound([0, yMax]);
-  cityScale.rangeRound([0, dateScale.bandwidth()]);
-  tempScale.rangeRound([0, xMax]);
+  const xMax = width; 
+  const yMax = height;
 
-  return width < 10 ? null : (
+  // scales
+  const yScale = scaleBand({
+    range: [0, yMax],
+    domain: data.map(getY),
+    padding: 0.2,
+  });
+
+  const xScale = scaleLinear<number>({
+    range: [0, xMax],
+    domain: [0, 100]
+  });
+
+  return (
     <svg width={width} height={height}>
       <rect x={0} y={0} width={width} height={height} fill={background} rx={14} />
-      <Group top={margin.top} left={margin.left}>
-        <BarGroupHorizontal
-          data={data}
-          keys={keys}
-          width={xMax}
-          y0={getDate}
-          y0Scale={dateScale}
-          y1Scale={cityScale}
-          xScale={tempScale}
-          color={colorScale}
-        >
-          {(barGroups) =>
-            barGroups.map((barGroup) => (
-              <Group
-                key={`bar-group-horizontal-${barGroup.index}-${barGroup.y0}`}
-                top={barGroup.y0}
-              >
-                {barGroup.bars.map((bar) => (
-                  <Bar
-                    key={`${barGroup.index}-${bar.index}-${bar.key}`}
-                    x={bar.x}
-                    y={bar.y}
-                    width={bar.width}
-                    height={bar.height}
-                    fill={bar.color}
-                    rx={4}
-                    onClick={() => {
-                      if (events) alert(`${bar.key} (${bar.value}) - ${JSON.stringify(bar)}`);
-                    }}
-                  />
-                ))}
-              </Group>
-            ))
-          }
-        </BarGroupHorizontal>
-        <AxisLeft
-          scale={dateScale}
-          stroke={green}
-          tickStroke={green}
-          tickFormat={formatDate}
-          hideAxisLine
-          tickLabelProps={{
-            fill: green,
-            fontSize: 11,
-            textAnchor: 'end',
-            dy: '0.33em',
-          }}
-        />
-      </Group>
+      <Group>
+        <Group top={margin.top} left={margin.left}>
+                  {data.map((d) => {
+                    const name = getY(d);
+                    const barHeight = yScale.bandwidth();
+                    const barWidth= xScale(getX(d));
+                    const barY = yScale(name);
+                    return(
+                    <Bar
+                      key={d.unitName}
+                      x={0}
+                      y={barY}
+                      width={barWidth}
+                      height={barHeight}
+                      fill={"#005544"}
+                      rx={4}
+                    />
+                  )}
+                )}
+                </Group>
+
+          <AxisLeft
+            scale={yScale}
+            left={margin.left}
+            stroke={green}
+            tickStroke={green}
+            tickLabelProps={{
+              fill: green,
+              fontSize: 11,
+              textAnchor: 'end',
+              dy: '0.33em',
+            }}/>
+
+            <AxisBottom
+              top={yMax - margin.bottom}
+              scale={xScale}
+              stroke={purple}
+              tickStroke={purple}
+              tickLabelProps={{
+                fill: purple,
+                fontSize: 11,
+                textAnchor: 'middle',
+              }}/>
+          
+        </Group>
     </svg>
-  );
+        );
 }
