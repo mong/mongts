@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
-import { Stack, Chip, Box, styled, Link } from "@mui/material";
+import { Stack, Chip, Link, Box, styled } from "@mui/material";
+import ClearIcon from "@mui/icons-material/Clear";
 import { FilterMenuSectionProps } from ".";
 import { FilterSettingsContext } from "./FilterSettingsContext";
 import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
@@ -10,6 +11,7 @@ export type SelectedFiltersSectionProps = FilterMenuSectionProps;
 
 export const StyledChip = styled(Chip)(({ theme }) => ({
   fontFamily: theme.typography.button.fontFamily,
+  padding: "1rem",
 }));
 
 /**
@@ -72,8 +74,9 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
           type="button"
           variant="body2"
           onClick={() => handleReset(filterSettingsDispatch)}
+          sx={{ cursor: "pointer", fontWeight: "600" }}
         >
-          Nullstill
+          Tøm filter
         </Link>
       </Box>
       <Stack
@@ -93,6 +96,8 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
                 data-testid={chipId}
                 label={filterSetting.valueLabel}
                 size={"small"}
+                color="secondary"
+                deleteIcon={<ClearIcon />}
                 onDelete={() => handleDelete(chipId, filterSettingsDispatch)}
               />
             );

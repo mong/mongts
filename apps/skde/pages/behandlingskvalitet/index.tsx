@@ -43,7 +43,6 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useSearchParams } from "next/navigation";
 import TreatmentQualityTabs from "../../src/components/TreatmentQuality/TreatmentQualityTabs";
-import { Paper } from "@mui/material";
 
 const dataQualityKey = "dg";
 
@@ -306,17 +305,11 @@ export default function TreatmentQuality() {
         <CssBaseline />
         <TreatmentQualityAppBar position="fixed" elevation={appBarElevation}>
           <Toolbar>
-            <FilterIconButton
-              color="inherit"
-              aria-label="åpne sidemeny"
-              edge="start"
-              onClick={handleDrawerToggle}
-            >
-              <TuneIcon />
-              <Typography>Filter</Typography>
-            </FilterIconButton>
             <Box sx={{ marginLeft: 2 }}>
-              <Typography variant="h6">Behandlingskvalitet</Typography>
+              <Typography variant="h3">Behandlingskvalitet</Typography>
+              <Typography variant="body1">
+                Resultater fra nasjonale medisinske kvalitetsregistre.
+              </Typography>
             </Box>
             <SkdeLogoBox>
               <Image
@@ -328,6 +321,21 @@ export default function TreatmentQuality() {
                 alt="SKDE logo"
               />
             </SkdeLogoBox>
+          </Toolbar>
+          <Toolbar>
+            <FilterIconButton
+              color="inherit"
+              aria-label="åpne sidemeny"
+              edge="start"
+              onClick={handleDrawerToggle}
+            >
+              <TuneIcon />
+              <Typography>Filter</Typography>
+            </FilterIconButton>
+            <TreatmentQualityTabs
+              context={tableContext}
+              onTabChanged={setTableContext}
+            />
           </Toolbar>
         </TreatmentQualityAppBar>
         <FilterDrawerBox
@@ -345,13 +353,7 @@ export default function TreatmentQuality() {
             }}
           >
             <Toolbar />
-            <Paper sx={{ marginLeft: 3, marginRight: 3, marginTop: 0 }}>
-              <TreatmentQualityTabs
-                context={tableContext}
-                onTabChanged={setTableContext}
-                isPhoneSizedScreen={isPhoneSizedScreen}
-              />
-            </Paper>
+            <Toolbar />
             <Box sx={{ marginTop: filterMenuTopMargin }}>
               {queriesReady && (
                 <>
