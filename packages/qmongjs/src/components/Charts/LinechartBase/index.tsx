@@ -224,7 +224,10 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
         const u = xScale.invert(x); // Plot coordinates
         const v = yScale.invert(y);
 
-        let u_nearest = new Date(Math.round(u.getFullYear()), 0);
+        let u_nearest = new Date(
+          Math.round(new Date(u.setMonth(u.getMonth() + 6)).getFullYear()),
+          0,
+        );
 
         // Stop the cursor from snapping to the first year to the left of the y-axis
         if (u_nearest < xScale.domain()[0]) {
@@ -414,8 +417,8 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
         {tooltipData && (
           <TooltipWithBounds
             key={Math.random()}
-            top={tooltipTop - 70}
-            left={tooltipLeft + 200}
+            top={tooltipTop - 50}
+            left={tooltipLeft + 400}
             style={tooltipStyles}
           >
             {
