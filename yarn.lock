@@ -4483,13 +4483,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/d3-random@npm:^2.2.0":
-  version: 2.2.3
-  resolution: "@types/d3-random@npm:2.2.3"
-  checksum: 10/aa0e5310969f31a34ddd32b4897cb6eb3d6e5aa11883ec2bc6fd18e1c7b4713b7c4a891f7b32390daa58e46b376c47c0e5871edaa29972bb7fa013158a2b19fd
-  languageName: node
-  linkType: hard
-
 "@types/d3-scale-chromatic@npm:*":
   version: 3.0.3
   resolution: "@types/d3-scale-chromatic@npm:3.0.3"
@@ -5657,16 +5650,6 @@ __metadata:
   peerDependencies:
     react: ^16.0.0-0 || ^17.0.0-0 || ^18.0.0-0
   checksum: 10/a24367abed0a7bf1ef05a3637e4a3cb304667087c6a1edb6f05849dc34cbf592900ffb87fb93453fee028fcdc29f9459a481047c6adfe071506b5cda4a4bc542
-  languageName: node
-  linkType: hard
-
-"@visx/mock-data@npm:^3.3.0":
-  version: 3.3.0
-  resolution: "@visx/mock-data@npm:3.3.0"
-  dependencies:
-    "@types/d3-random": "npm:^2.2.0"
-    d3-random: "npm:^2.2.2"
-  checksum: 10/fb7933c6e9bffbb54af70424f86e0391ed8d5f17ae21a3c9605d306d498436e7a5d61b74dc5abb76a4506773a876a7000a117441e141bb78acd74597ea85b96b
   languageName: node
   linkType: hard
 
@@ -8843,13 +8826,6 @@ __metadata:
   version: 3.0.1
   resolution: "d3-random@npm:3.0.1"
   checksum: 10/9f41d6ca3a1826cea8d88392917b5039504337d442a4d1357c870fa3031701e60209a2689a6ddae7df8fca824383d038c957eb545bc49a7428c71aaf3b11f56f
-  languageName: node
-  linkType: hard
-
-"d3-random@npm:^2.2.2":
-  version: 2.2.2
-  resolution: "d3-random@npm:2.2.2"
-  checksum: 10/70492c13b84cc75860a6cee440a402587f44f2e37c0239a6a76e70f794242a88f68d5a6223a190ef7f7dfd1e0b0a9e0f2680b411f1f79c10aa29210ee9a4ccca
   languageName: node
   linkType: hard
 
@@ -16493,7 +16469,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mongts@workspace:."
   dependencies:
-    "@visx/mock-data": "npm:^3.3.0"
     husky: "npm:9.0.11"
     lint-staged: "npm:15.2.2"
     prettier: "npm:3.2.5"

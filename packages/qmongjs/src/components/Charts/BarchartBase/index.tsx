@@ -2,7 +2,6 @@ import React from 'react';
 import { BarGroupHorizontal, Bar } from '@visx/shape';
 import { Group } from '@visx/group';
 import { AxisLeft } from '@visx/axis';
-import cityTemperature, { CityTemperature } from '@visx/mock-data/lib/mocks/cityTemperature';
 import { scaleBand, scaleLinear, scaleOrdinal } from '@visx/scale';
 import { timeParse, timeFormat } from '@visx/vendor/d3-time-format';
 
@@ -28,11 +27,17 @@ function max<D>(arr: D[], fn: (d: D) => number) {
   return Math.max(...arr.map(fn));
 }
 
-const data = cityTemperature.slice(0, 4);
+
+const data = [
+  {col1: "50", col2: "60", col3: "70", date: "2011-10-10"},
+  {col1: "50", col2: "60", col3: "70", date: "2011-10-11"}, 
+  {col1: "50", col2: "60", col3: "70", date: "2011-10-12"}, 
+]
+
 const keys = Object.keys(data[0]).filter((d) => d !== 'date') as CityName[];
 
 // accessors
-const getDate = (d: CityTemperature) => d.date;
+const getDate = (d) => d.date;
 
 // scales
 const dateScale = scaleBand({
