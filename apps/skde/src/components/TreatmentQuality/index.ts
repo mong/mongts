@@ -25,8 +25,8 @@ export const desktopBreakpoint = 1300;
 
 export const TreatmentQualityAppBar = styled(AppBar)(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,
-  // backgroundColor: "rgba(222, 231, 238, 1)",
-  // color: "black",
+  backgroundColor: theme.palette.primary.light,
+  color: theme.palette.text.primary,
 }));
 
 export const FilterIconButton = styled(IconButton)(({ theme }) => ({
@@ -167,15 +167,15 @@ export const MainBox = styled(Box)(({ theme }) => ({
     "& th": {
       minWidth: "6rem",
     },
-    marginTop: "56px",
-    height: "calc(100vh - 56px)",
+    marginTop: "112px",
+    height: "calc(100vh - 112px)",
     "& .MuiDrawer-paper": {
       width: "100%",
     },
   },
   [theme.breakpoints.up("sm")]: {
-    marginTop: "64px",
-    height: "calc(100vh - 64px)",
+    marginTop: "140px",
+    height: "calc(100vh - 140px)",
     "& .MuiDrawer-paper": {
       width: "100%",
     },

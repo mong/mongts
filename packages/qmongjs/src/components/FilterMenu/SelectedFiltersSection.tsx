@@ -11,6 +11,7 @@ export type SelectedFiltersSectionProps = FilterMenuSectionProps;
 
 export const StyledChip = styled(Chip)(({ theme }) => ({
   fontFamily: theme.typography.button.fontFamily,
+  padding: "1rem",
 }));
 
 /**
@@ -67,14 +68,15 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
   return (
     <>
       <Box
-        sx={{ display: "flex", flexDirection: "row-reverse", marginBottom: 1, cursor: "pointer" }}
+        sx={{ display: "flex", flexDirection: "row-reverse", marginBottom: 1 }}
       >
         <Link
           type="button"
           variant="body2"
           onClick={() => handleReset(filterSettingsDispatch)}
+          sx={{ cursor: "pointer", fontWeight: "600" }}
         >
-          Nullstill
+          Tøm filter
         </Link>
       </Box>
       <Stack
