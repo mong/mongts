@@ -305,11 +305,13 @@ export default function TreatmentQuality() {
         <CssBaseline />
         <TreatmentQualityAppBar position="fixed" elevation={appBarElevation}>
           <Toolbar>
-            <Box sx={{ marginLeft: 2 }}>
+            <Box sx={{ marginLeft: 1 }}>
               <Typography variant="h3">Behandlingskvalitet</Typography>
-              <Typography variant="body1">
-                Resultater fra nasjonale medisinske kvalitetsregistre.
-              </Typography>
+              {!isPhoneSizedScreen && (
+                <Typography variant="body1">
+                  Resultater fra nasjonale medisinske kvalitetsregistre.
+                </Typography>
+              )}
             </Box>
             <SkdeLogoBox>
               <Image
@@ -330,7 +332,7 @@ export default function TreatmentQuality() {
               onClick={handleDrawerToggle}
             >
               <Tune />
-              <Typography>Filter</Typography>
+              <Typography variant="body1">Filter</Typography>
             </FilterIconButton>
             <TreatmentQualityTabs
               context={tableContext}
