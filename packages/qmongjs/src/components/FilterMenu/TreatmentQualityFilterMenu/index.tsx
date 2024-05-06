@@ -6,6 +6,7 @@ import {
   StringParam,
   UrlUpdateType,
   useQueryParam,
+  useQueryParams,
   withDefault,
 } from "use-query-params";
 import {
@@ -18,6 +19,7 @@ import {
   FilterSettingsActionType,
   FilterMenuSelectionChangedHandler,
   FilterMenuFilterInitializedHandler,
+  SwitchFilterSection,
 } from "qmongjs";
 import {
   getAchievementLevelOptions,
@@ -39,6 +41,7 @@ export const yearKey = "year";
 export const levelKey = "level";
 export const medicalFieldKey = "indicator";
 export const treatmentUnitsKey = "selected_treatment_units";
+export const dataQualityKey = "dg";
 
 /**
  * The properties for the TreatmentQualityFilterMenu component.
@@ -47,6 +50,7 @@ export const treatmentUnitsKey = "selected_treatment_units";
 export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   onSelectionChanged?: FilterMenuSelectionChangedHandler;
   onFilterInitialized?: FilterMenuFilterInitializedHandler;
+  context: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   registryNameData: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -86,9 +90,10 @@ export function TreatmentQualityFilterMenu({
   onFilterInitialized: onFilterInitialized,
   registryNameData: registryNameData,
   medicalFieldData: medicalFieldData,
+  context: context,
 }: TreatmentQualityFilterMenuProps) {
   const selectedRegister = "all";
-  const queryContext = { context: "caregiver", type: "ind" };
+  const queryContext = { context: context, type: "ind" }; // TODO: Variable for "ind"/"dg"?
 
   // When the user navigates to the page, it may contain query parameters for
   // filtering indicators. Use NextRouter to get the current path containing the
@@ -110,6 +115,15 @@ export function TreatmentQualityFilterMenu({
 
   // Map for filter options, defaults, and query parameter values and setters
   const optionsMap = new Map<string, OptionsMapEntry>();
+
+  // All params
+  const [, setAllQueries] = useQueryParams({
+    year: StringParam,
+    level: StringParam,
+    indicator: ArrayParam,
+    selected_treatment_units: DelimitedArrayParam,
+    dg: StringParam,
+  });
 
   // Year selection
   const yearOptions = getYearOptions();
@@ -189,6 +203,24 @@ export function TreatmentQualityFilterMenu({
     setSelected: setSelectedTreatmentUnits as SetSelectedType,
   });
 
+  // Data quality selection
+  const [dataQualitySelected, setDataQualitySelected] = useQueryParam<string>(
+    dataQualityKey,
+    withDefault(StringParam, "false"),
+  );
+  const dataQualitySelectedValue = {
+    value: "true",
+    valueLabel: "Vis datakvalitet",
+  };
+  const dataQualityEmptyValue = { value: "", valueLabel: "" };
+  optionsMap.set(dataQualityKey, {
+    options: [dataQualityEmptyValue, dataQualitySelectedValue],
+    default: dataQualityEmptyValue,
+    multiselect: false,
+    selected: dataQualitySelected,
+    setSelected: setDataQualitySelected as SetSelectedType,
+  });
+
   /**
    * Handler function for setting section selections,
    * called by handleFilterChanged
@@ -205,12 +237,12 @@ export function TreatmentQualityFilterMenu({
 
       if (!multiselect) {
         const selectedValue = newSelections?.[0].value ?? defaultOption.value;
-        setSelected(selectedValue ?? null);
+        setSelected(selectedValue);
       } else {
         const selectedValues = newSelections?.map(
           (filterSettingsValue) => filterSettingsValue.value,
         ) ?? [defaultOption.value];
-        setSelected(selectedValues ?? null);
+        setSelected(selectedValues);
       }
     }
   };
@@ -228,6 +260,28 @@ export function TreatmentQualityFilterMenu({
       case FilterSettingsActionType.SET_SECTION_SELECTIONS: {
         const key = action.sectionSetting.key;
         setSectionSelections(key, newFilterSettings.map.get(key));
+        break;
+      }
+      case FilterSettingsActionType.RESET_SELECTIONS: {
+        setAllQueries({
+          year:
+            newFilterSettings.map.get(yearKey)?.[0].value ??
+            yearOptions.default.value,
+          level:
+            newFilterSettings.map.get(levelKey)?.[0].value ??
+            achievementLevelOptions.default.value,
+          indicator: [
+            newFilterSettings.map.get(medicalFieldKey)?.[0].value ??
+              medicalFields.defaults[0].value,
+          ],
+          selected_treatment_units: [
+            newFilterSettings.map.get(treatmentUnitsKey)?.[0].value ??
+              treatmentUnits.defaults[0].value,
+          ],
+          dg:
+            newFilterSettings.map.get(dataQualityKey)?.[0].value ??
+            dataQualityEmptyValue.value,
+        });
         break;
       }
       default:
@@ -347,9 +401,24 @@ export function TreatmentQualityFilterMenu({
             })) as FilterSettingsValue[]
           }
           sectionid={treatmentUnitsKey}
-          sectiontitle="Behandlingsenheter"
+          sectiontitle={
+            context === "resident" ? "Opptaksområder" : "Behandlingsenheter"
+          }
           filterkey={treatmentUnitsKey}
           searchbox={true}
+        />
+        <SwitchFilterSection
+          sectionid={dataQualityKey}
+          filterkey={dataQualityKey}
+          sectiontitle={"Datakvalitet"}
+          label={dataQualitySelectedValue.valueLabel}
+          initialselections={
+            dataQualitySelected === "true"
+              ? [dataQualitySelectedValue]
+              : undefined
+          }
+          activatedswitchvalue={dataQualitySelectedValue}
+          disabled={context === "resident"}
         />
       </FilterMenu>
     </>

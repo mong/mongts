@@ -4,9 +4,10 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TuneIcon from "@mui/icons-material/Tune";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import { useQueryParam, withDefault, StringParam } from "use-query-params";
 import Image from "next/image";
-import { imgLoader } from "qmongjs";
 import {
+  imgLoader,
   FilterSettingsAction,
   FilterSettingsValue,
   TreatmentQualityFilterMenu,
@@ -19,7 +20,9 @@ import {
   medicalFieldKey,
   useMedicalFieldsQuery,
   IndicatorTableBodyV2,
+  indicatorTableTheme,
   IndicatorTable,
+  FilterSettingsActionType,
 } from "qmongjs";
 import {
   FilterIconButton,
@@ -29,7 +32,6 @@ import {
   appBarElevation,
   filterMenuTopMargin,
   desktopBreakpoint,
-  treatmentQualityTheme,
   TreatmentQualityAppBar,
   SkdeLogoBox,
 } from "../../src/components/TreatmentQuality";
@@ -40,6 +42,10 @@ import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useSearchParams } from "next/navigation";
+import TreatmentQualityTabs from "../../src/components/TreatmentQuality/TreatmentQualityTabs";
+import { Paper } from "@mui/material";
+
+const dataQualityKey = "dg";
 
 /**
  * Treatment quality page (Behandlingskvalitet)
@@ -58,6 +64,14 @@ export default function TreatmentQuality() {
 
   const searchParams = useSearchParams();
   const newTableOnly = searchParams.get("newtable") === "true";
+  // const tableContext =
+  //   searchParams.get("context") === "resident" ? "resident" : "caregiver";
+
+  // Context (caregiver or resident)
+  const [tableContext, setTableContext] = useQueryParam<string>(
+    "context",
+    withDefault(StringParam, "caregiver"),
+  );
 
   // Used by indicator table
   const [selectedYear, setSelectedYear] = useState(defaultYear);
@@ -70,6 +84,8 @@ export default function TreatmentQuality() {
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState([
     "Nasjonalt",
   ]);
+  const [dataQualitySelected, setDataQualitySelected] =
+    useState<boolean>(false);
 
   // Used to change drawer style between small screens and larger screens
   useEffect(() => {
@@ -174,6 +190,66 @@ export default function TreatmentQuality() {
     setSelectedTreatmentUnits(
       filterSettings.get(treatmentUnitsKey).map((value) => value.value),
     );
+
+    setDataQualitySelected(
+      filterSettings.get(dataQualityKey)?.[0].value === "true" ? true : false,
+    );
+  };
+
+  const valueOrDefault = (
+    key: string,
+    filterSettings: { map: Map<string, FilterSettingsValue[]> },
+  ) => {
+    switch (key) {
+      case yearKey: {
+        return (
+          filterSettings.map.get(yearKey)[0].value ?? defaultYear.toString()
+        );
+      }
+      case levelKey: {
+        return filterSettings.map.get(levelKey)[0].value ?? undefined;
+      }
+      case medicalFieldKey: {
+        const medicalFieldFilter = filterSettings.map
+          .get(medicalFieldKey)
+          .map((value) => value.value);
+        const registerFilter =
+          getMedicalFieldFilterRegisters(medicalFieldFilter);
+        return registerFilter;
+      }
+      case treatmentUnitsKey: {
+        return filterSettings.map
+          .get(treatmentUnitsKey)
+          .map((value) => value.value);
+      }
+      case dataQualityKey: {
+        return filterSettings.map.get(dataQualityKey)?.[0].value === "true"
+          ? true
+          : false;
+      }
+      default:
+        break;
+    }
+  };
+
+  const setAllSelected = (newFilterSettings: {
+    map: Map<string, FilterSettingsValue[]>;
+  }) => {
+    setSelectedYear(
+      parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
+    );
+    setSelectedLevel(
+      valueOrDefault(levelKey, newFilterSettings) as string | undefined,
+    );
+    setSelectedMedicalFields(
+      valueOrDefault(medicalFieldKey, newFilterSettings) as string[],
+    );
+    setSelectedTreatmentUnits(
+      valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+    );
+    setDataQualitySelected(
+      valueOrDefault(dataQualityKey, newFilterSettings) as boolean,
+    );
   };
 
   /**
@@ -187,43 +263,45 @@ export default function TreatmentQuality() {
     switch (action.sectionSetting.key) {
       case yearKey: {
         setSelectedYear(
-          parseInt(
-            newFilterSettings.map.get(yearKey)[0].value ??
-              defaultYear.toString(),
-          ),
+          parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
         );
         break;
       }
       case levelKey: {
         setSelectedLevel(
-          newFilterSettings.map.get(levelKey)[0].value ?? undefined,
+          valueOrDefault(levelKey, newFilterSettings) as string | undefined,
         );
         break;
       }
       case medicalFieldKey: {
-        const medicalFieldFilter = newFilterSettings.map
-          .get(medicalFieldKey)
-          .map((value) => value.value);
-        const registerFilter =
-          getMedicalFieldFilterRegisters(medicalFieldFilter);
-        setSelectedMedicalFields(registerFilter);
+        setSelectedMedicalFields(
+          valueOrDefault(medicalFieldKey, newFilterSettings) as string[],
+        );
         break;
       }
       case treatmentUnitsKey: {
         setSelectedTreatmentUnits(
-          newFilterSettings.map
-            .get(treatmentUnitsKey)
-            .map((value) => value.value),
+          valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+        );
+        break;
+      }
+      case dataQualityKey: {
+        setDataQualitySelected(
+          valueOrDefault(dataQualityKey, newFilterSettings) as boolean,
         );
         break;
       }
       default:
         break;
     }
+
+    if (action.type === FilterSettingsActionType.RESET_SELECTIONS) {
+      setAllSelected(newFilterSettings);
+    }
   };
 
   return (
-    <ThemeProvider theme={treatmentQualityTheme}>
+    <ThemeProvider theme={indicatorTableTheme}>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
         <TreatmentQualityAppBar position="fixed" elevation={appBarElevation}>
@@ -267,6 +345,13 @@ export default function TreatmentQuality() {
             }}
           >
             <Toolbar />
+            <Paper sx={{ marginLeft: 3, marginRight: 3, marginTop: 0 }}>
+              <TreatmentQualityTabs
+                context={tableContext}
+                onTabChanged={setTableContext}
+                isPhoneSizedScreen={isPhoneSizedScreen}
+              />
+            </Paper>
             <Box sx={{ marginTop: filterMenuTopMargin }}>
               {queriesReady && (
                 <>
@@ -275,6 +360,7 @@ export default function TreatmentQuality() {
                     onFilterInitialized={handleFilterInitialized}
                     registryNameData={registers}
                     medicalFieldData={medicalFields}
+                    context={tableContext}
                   />
                   {!newTableOnly && (
                     <FormGroup sx={{ paddingRight: "1.5rem" }}>
@@ -305,10 +391,10 @@ export default function TreatmentQuality() {
               <>
                 <IndicatorTableBodyV2
                   key="indicator-table"
-                  context={"caregiver"}
+                  context={tableContext}
                   unitNames={selectedTreatmentUnits}
                   year={selectedYear}
-                  type={"ind"}
+                  type={dataQualitySelected ? "dg" : "ind"}
                   levels={selectedLevel}
                   medfields={selectedMedicalFields}
                 />
@@ -318,7 +404,7 @@ export default function TreatmentQuality() {
               <>
                 <IndicatorTable
                   key="indicator-table"
-                  context={"caregiver"}
+                  context={dataQualitySelected ? "coverage" : tableContext}
                   tableType="allRegistries"
                   registerNames={registers}
                   unitNames={selectedTreatmentUnits}
@@ -328,7 +414,9 @@ export default function TreatmentQuality() {
                   showLevelFilter={selectedLevel}
                   selection_bar_height={0}
                   legend_height={0}
-                  blockTitle={registers.map((register) => register.full_name)}
+                  blockTitle={registers.map(
+                    (register: { full_name: string }) => register.full_name,
+                  )}
                 />
                 <TreatmentQualityFooter />
               </>

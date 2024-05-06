@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Stack, Chip } from "@mui/material";
+import { Stack, Chip, Box, styled, Link } from "@mui/material";
 import { FilterMenuSectionProps } from ".";
 import { FilterSettingsContext } from "./FilterSettingsContext";
 import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
@@ -8,8 +8,12 @@ import { FilterSettingsActionType } from "./FilterSettingsReducer";
 
 export type SelectedFiltersSectionProps = FilterMenuSectionProps;
 
+export const StyledChip = styled(Chip)(({ theme }) => ({
+  fontFamily: theme.typography.button.fontFamily,
+}));
+
 /**
- * Utility function to handle the delete event for a chip
+ * Function for handling the delete event for a chip
  *
  * @param chipId Element id for the chip to delete
  * @param filterSettingsDispatch The dispatch function for updating the filter settings
@@ -34,6 +38,23 @@ export const handleDelete = (
 };
 
 /**
+ * Function for handling the reset event for restoring selected chips to default
+ *
+ * @param filterSettingsDispatch The dispatch function for updating the filter settings
+ */
+export const handleReset = (
+  filterSettingsDispatch: React.Dispatch<FilterSettingsAction>,
+) => {
+  filterSettingsDispatch({
+    type: FilterSettingsActionType.RESET_SELECTIONS,
+    sectionSetting: {
+      key: "",
+      values: [],
+    },
+  });
+};
+
+/**
  * A component for displaying currently selected filter settings as a collection of chips.
  * The chips can be deleted individually to remove filter settings.
  */
@@ -43,28 +64,42 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
   const filterSettingsDispatch = useContext(FilterSettingsDispatchContext);
 
   return (
-    <Stack
-      direction="row"
-      spacing={1}
-      id={`selected-filters-section-id-${props.sectionid}`}
-      data-testid={`selected-filters-section-id-${props.sectionid}`}
-      useFlexGap
-      flexWrap="wrap"
-    >
-      {Array.from(filterSettings.map.keys()).map((key) => {
-        return filterSettings.map.get(key)?.map((filterSetting) => {
-          const chipId = `${key}${sep}${filterSetting.value}`;
-          return (
-            <Chip
-              key={chipId}
-              data-testid={chipId}
-              label={filterSetting.valueLabel}
-              onDelete={() => handleDelete(chipId, filterSettingsDispatch)}
-            />
-          );
-        });
-      })}
-    </Stack>
+    <>
+      <Box
+        sx={{ display: "flex", flexDirection: "row-reverse", marginBottom: 1 }}
+      >
+        <Link
+          type="button"
+          variant="body2"
+          onClick={() => handleReset(filterSettingsDispatch)}
+        >
+          Nullstill
+        </Link>
+      </Box>
+      <Stack
+        direction="row"
+        spacing={1}
+        id={`selected-filters-section-id-${props.sectionid}`}
+        data-testid={`selected-filters-section-id-${props.sectionid}`}
+        useFlexGap
+        flexWrap="wrap"
+      >
+        {Array.from(filterSettings.map.keys()).map((key) => {
+          return filterSettings.map.get(key)?.map((filterSetting) => {
+            const chipId = `${key}${sep}${filterSetting.value}`;
+            return (
+              <StyledChip
+                key={chipId}
+                data-testid={chipId}
+                label={filterSetting.valueLabel}
+                size={"small"}
+                onDelete={() => handleDelete(chipId, filterSettingsDispatch)}
+              />
+            );
+          });
+        })}
+      </Stack>
+    </>
   );
 }
 

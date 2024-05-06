@@ -1,8 +1,6 @@
 import React from "react";
 import IconButton from "@mui/material/IconButton";
-import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -14,9 +12,12 @@ import { newLevelSymbols, level } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
-
-const remarkPlugins: PluggableList = [remarkGfm];
-
+import { useScreenSize } from "@visx/responsive";
+import {
+  StyledTable,
+  StyledTableRow,
+  StyledTableCell,
+} from "./IndicatorTableBodyV2Styles";
 import {
   LinechartBase,
   font,
@@ -25,6 +26,12 @@ import {
   customFormat,
   useIndicatorQuery,
 } from "qmongjs";
+
+const remarkPlugins: PluggableList = [remarkGfm];
+
+// ###########################
+// ########## Types ##########
+// ###########################
 
 export type IndicatorTableBodyV2Props = {
   context: string;
@@ -37,6 +44,7 @@ export type IndicatorTableBodyV2Props = {
 
 export type DataPoint = {
   unitName: string;
+  year: number;
   var: number;
   numerator: number;
   denominator: number;
@@ -47,10 +55,12 @@ export type DataPoint = {
   dg: number | null;
 };
 
-type IndicatorData = {
+export type IndicatorData = {
   indicatorID: string;
   indicatorName: string | null;
-  targetMeasure: number | null;
+  levelGreen: number | null;
+  levelYellow: number | null;
+  levelDirection: number | null;
   minDenominator: number | null;
   shortDescription: string | null;
   longDescription: string | null;
@@ -58,7 +68,7 @@ type IndicatorData = {
   data: DataPoint[];
 };
 
-type RegisterData = {
+export type RegisterData = {
   registerFullName: string;
   registerName: string;
   registerShortName: string;
@@ -66,6 +76,10 @@ type RegisterData = {
   medfieldID: number;
   indicatorData: IndicatorData[];
 };
+
+// ###############################
+// ########## Functions ##########
+// ###############################
 
 // Find the index of the array element where the indicator ID is equal to the input string
 const searchArray = (arr: Array<IndicatorData>, target: string) => {
@@ -78,7 +92,7 @@ const searchArray = (arr: Array<IndicatorData>, target: string) => {
   return i;
 };
 
-const createData = (indicatorData: Indicator[]) => {
+export const createData = (indicatorData: Indicator[]) => {
   const regData: RegisterData[] = indicatorData.reduce(
     (returnData: RegisterData[], row) => {
       // Initialise array
@@ -107,7 +121,9 @@ const createData = (indicatorData: Indicator[]) => {
         returnData[i].indicatorData.push({
           indicatorID: row.ind_id,
           indicatorName: row.ind_title,
-          targetMeasure: row.level_green,
+          levelGreen: row.level_green,
+          levelYellow: row.level_yellow,
+          levelDirection: row.level_direction,
           minDenominator: row.min_denominator,
           shortDescription: row.ind_short_description,
           longDescription: row.ind_long_description,
@@ -123,14 +139,22 @@ const createData = (indicatorData: Indicator[]) => {
         // The same registry can belong to different medfields
         // If so, the unit will appear more than once
         // We therefore need to check if it is already there
-        !returnData[i].indicatorData[j].data
-          .map((row) => {
-            return row.unitName;
-          })
-          .includes(row.unit_name)
+        !(
+          returnData[i].indicatorData[j].data
+            .map((row) => {
+              return row.unitName;
+            })
+            .includes(row.unit_name) &&
+          returnData[i].indicatorData[j].data
+            .map((row) => {
+              return row.year;
+            })
+            .includes(row.year)
+        )
       ) {
         returnData[i].indicatorData[j].data.push({
           unitName: row.unit_name,
+          year: row.year,
           var: row.var,
           numerator: Math.round(row.var * row.denominator),
           denominator: row.denominator,
@@ -168,7 +192,20 @@ const createChartData = (
     });
   });
 
-  return chartData;
+  // The same indicator can appear twice if it belongs to two different medfields
+  const chartDataUnique = chartData.map((array) => {
+    return array.filter((value, index) => {
+      const _value = JSON.stringify(value);
+      return (
+        index ===
+        array.findIndex((obj) => {
+          return JSON.stringify(obj) === _value;
+        })
+      );
+    });
+  });
+
+  return chartDataUnique;
 };
 
 const randomHexColorCode = () => {
@@ -190,7 +227,14 @@ const createChartStyles = (unitNames: string[], font: font) => {
   return new LineStyles(lineStyles, font);
 };
 
+// ################################
+// ########## Components ##########
+// ################################
+
+// #############################
 // Component for individual rows
+// #############################
+
 const IndicatorRow = (props: {
   unitNames: string[];
   levels: string;
@@ -240,14 +284,41 @@ const IndicatorRow = (props: {
 
   const lineStyles = createChartStyles(unitNames, font);
 
+  const ResponsiveChart = () => {
+    const { width, height } = useScreenSize({ debounceTime: 150 });
+
+    const sizeFactor = 0.5;
+
+    return (
+      <LinechartBase
+        data={chartDataFiltered}
+        width={sizeFactor * width}
+        height={sizeFactor * height}
+        yMin={0}
+        yMax={1}
+        lineStyles={lineStyles}
+        font={font}
+        yAxisText={"Andel"}
+        format_y=",.0%"
+        levelGreen={indData.levelGreen!}
+        levelYellow={indData.levelYellow!}
+        levelDirection={indData.levelDirection!}
+      />
+    );
+  };
+
+  let responsiveChart;
+
+  open ? (responsiveChart = <ResponsiveChart />) : (responsiveChart = null);
+
   return (
-    <React.Fragment key={indData.indicatorID + "-indicatorSection"}>
-      <TableRow
+    <React.Fragment key={indData.indicatorName + "-indicatorSection"}>
+      <StyledTableRow
         key={indData.indicatorName + "-mainrow"}
         onClick={() => setOpen(!open)}
         style={{ cursor: "pointer" }}
       >
-        <TableCell key={indData.indicatorID}>
+        <StyledTableCell key={indData.indicatorID}>
           <table>
             <tbody>
               <tr>
@@ -264,10 +335,10 @@ const IndicatorRow = (props: {
               </tr>
             </tbody>
           </table>
-        </TableCell>
+        </StyledTableCell>
 
         {rowDataSorted.map((row, index) => {
-          const lowDG = row?.dg == null ? false : row?.dg! < 0.6 ? true : false;
+          const lowDG = row?.dg == null ? false : row?.dg < 0.6 ? true : false;
           const noData = row?.denominator == null ? true : false;
           const lowN =
             row?.denominator == null
@@ -301,67 +372,56 @@ const IndicatorRow = (props: {
               : (patientCounts = row?.numerator + " av " + row?.denominator);
 
           return (
-            <TableCell
+            <StyledTableCell
               sx={{ opacity: cellOpacity }}
               align={"center"}
               key={indData.indicatorID + index}
             >
-              <div>
-                <body>{cellData}</body>
-              </div>
+              <div>{cellData}</div>
               <div>{patientCounts}</div>
-            </TableCell>
+            </StyledTableCell>
           );
         })}
-      </TableRow>
+      </StyledTableRow>
 
       <TableRow
         key={indData.indicatorID + "-collapse"}
         sx={{ visibility: open ? "visible" : "collapse" }}
       >
-        <TableCell key={indData.indicatorID + "-shortDescription"}>
+        <StyledTableCell key={indData.indicatorID + "-shortDescription"}>
           {indData.shortDescription}
-        </TableCell>
-        <TableCell
+        </StyledTableCell>
+        <StyledTableCell
           key={indData.indicatorName + "-targetLevel"}
           colSpan={unitNames.length}
           align="center"
           style={{ backgroundColor: "#E0E7EB" }}
         >
           {"Ønsket målnivå: " +
-            (indData.targetMeasure === null
+            (indData.levelGreen === null
               ? ""
-              : customFormat(",.0%")(indData.targetMeasure))}
-        </TableCell>
+              : customFormat(",.0%")(indData.levelGreen))}
+        </StyledTableCell>
       </TableRow>
 
       <TableRow
         key={indData.indicatorID + "-charts"}
         sx={{ visibility: open ? "visible" : "collapse" }}
       >
-        <TableCell
+        <StyledTableCell
           key={indData.indicatorID + "-charts"}
           colSpan={unitNames.length + 1}
           align="center"
         >
-          <LinechartBase
-            data={chartDataFiltered}
-            width={1000}
-            height={500}
-            yMin={0}
-            yMax={1}
-            lineStyles={lineStyles}
-            font={font}
-            yAxisText={"Andel"}
-          />
-        </TableCell>
+          {responsiveChart}
+        </StyledTableCell>
       </TableRow>
 
-      <TableRow
+      <StyledTableRow
         key={indData.indicatorName + "-description"}
         sx={{ visibility: open ? "visible" : "collapse" }}
       >
-        <TableCell
+        <StyledTableCell
           key={indData.indicatorName + "-decription"}
           colSpan={unitNames.length + 1}
         >
@@ -387,13 +447,16 @@ const IndicatorRow = (props: {
           >
             {indData.longDescription}
           </ReactMarkdown>
-        </TableCell>
-      </TableRow>
+        </StyledTableCell>
+      </StyledTableRow>
     </React.Fragment>
   );
 };
 
+// ###################################################
 // Component for collection of indicators per registry
+// ###################################################
+
 const IndicatorSection = (props: {
   unitNames: string[];
   levels: string;
@@ -429,7 +492,10 @@ const IndicatorSection = (props: {
   });
 };
 
+// ################################################################
 // Component for registry and unit names header plus indicator rows
+// ################################################################
+
 const RegistrySection = (props: {
   unitNames: string[];
   levels: string;
@@ -471,15 +537,18 @@ const RegistrySection = (props: {
       <React.Fragment>
         <TableHead>
           <TableRow key={regData.registerName + "-row"}>
-            <TableCell key={regData.registerName}>
+            <StyledTableCell key={regData.registerName}>
               {regData.registerFullName}
-            </TableCell>
+            </StyledTableCell>
 
             {unitNames.map((row, index) => {
               return (
-                <TableCell align="center" key={regData.registerName + index}>
+                <StyledTableCell
+                  align="center"
+                  key={regData.registerName + index}
+                >
                   {row}
-                </TableCell>
+                </StyledTableCell>
               );
             })}
           </TableRow>
@@ -501,7 +570,10 @@ const RegistrySection = (props: {
   }
 };
 
+// #################################
 // Top level component for the table
+// #################################
+
 export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   props,
 ) => {
@@ -528,7 +600,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
 
   const chartData = indicatorQuery.data;
 
-  let rowDataFiltered = rowData.filter((row) => {
+  const rowDataFiltered = rowData.filter((row) => {
     return medfields.includes(row.registerName);
   });
 
@@ -544,7 +616,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
   });
 
   return (
-    <Table>
+    <StyledTable>
       {rowDataFiltered.map((row) => (
         <RegistrySection
           key={row.registerName}
@@ -556,6 +628,6 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
           })}
         />
       ))}
-    </Table>
+    </StyledTable>
   );
 };
