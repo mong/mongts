@@ -319,6 +319,7 @@ const IndicatorRow = (props: {
           indicatorData={indData}
           width={sizeFactor * width * 0.7}
           height={sizeFactor * height}
+          xTickFormat=",.0%"
         />
       </Group>
     );

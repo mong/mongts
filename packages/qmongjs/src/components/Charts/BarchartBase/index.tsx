@@ -4,19 +4,21 @@ import { Group } from "@visx/group";
 import { AxisLeft, AxisBottom } from "@visx/axis";
 import { scaleBand, scaleLinear, scaleOrdinal } from "@visx/scale";
 import { IndicatorData } from "../../IndicatorTable/IndicatortablebodyV2";
+import { customFormat } from "../../../helpers/functions";
 
 export type BarchartProps = {
   indicatorData: IndicatorData;
   width: number;
   height: number;
   margin?: { top: number; right: number; bottom: number; left: number };
+  xTickFormat: string;
 };
 
 const blue = "#aeeef8";
 export const green = "#e5fd3d";
 const purple = "#9caff6";
 export const background = "#DEDEDE";
-const defaultMargin = { top: 20, right: 40, bottom: 40, left: 150 };
+const defaultMargin = { top: 40, right: 40, bottom: 40, left: 150 };
 
 type BarchartData = {
   unitName: string;
@@ -38,6 +40,7 @@ export const BarchartBase = ({
   width,
   height,
   margin = defaultMargin,
+  xTickFormat,
 }: BarchartProps) => {
   const data = createBarchartData(indicatorData);
 
@@ -57,12 +60,15 @@ export const BarchartBase = ({
   });
 
   return (
-    <svg width={width + 2 * margin.left} height={height + margin.top}>
+    <svg
+      width={width + margin.left + margin.right}
+      height={height + margin.top + margin.bottom}
+    >
       <rect
         x={0}
         y={0}
-        width={width + 2 * margin.left}
-        height={height + margin.top}
+        width={width + margin.left + margin.right}
+        height={height + margin.top + margin.bottom}
         fill={background}
         rx={14}
       />
@@ -90,6 +96,7 @@ export const BarchartBase = ({
         <AxisLeft
           scale={yScale}
           left={margin.left}
+          top={margin.top}
           stroke={"#000000"}
           tickStroke={"#000000"}
           tickLabelProps={{
@@ -101,9 +108,10 @@ export const BarchartBase = ({
         />
 
         <AxisBottom
-          top={yMax - margin.top}
+          top={yMax + margin.top}
           left={margin.left}
           scale={xScale}
+          tickFormat={customFormat(xTickFormat)}
           stroke={"#000000"}
           tickStroke={"#000000"}
           tickLabelProps={{
