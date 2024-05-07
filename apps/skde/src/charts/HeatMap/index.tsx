@@ -42,7 +42,7 @@ export type HeatmapProps = {
   events?: boolean;
 };
 
-const defaultMargin = { top: 40, left: 100, right: 40, bottom: 20 };
+const defaultMargin = { top: 0, left: 0, right: 0, bottom: 0 };
 
 export const HeatMap = ({
   data,
@@ -52,29 +52,29 @@ export const HeatMap = ({
   separation = 3,
 }: HeatmapProps) => {
   // Bounds
-  const bucketSizeMax = max(data, (d) => getX(d).length);
-  const xMax = width;
-  const binWidth = width / data[0].bins.length;
-  const height = binWidth * data.length;
-  const yMax = height;
+  const nRows = data[0].bins.length;
+  const nCols = data.length;
+
+  const binWidth = width / nCols;
+  const height = binWidth * nRows;
 
   // Scales
   const xScale = scaleLinear<number>({
-    domain: [0, bucketSizeMax],
-    range: [0, xMax],
+    domain: [0, nCols],
+    range: [0, width],
   });
 
   const yScale = scaleLinear<number>({
-    domain: [0, data.length],
-    range: [0, yMax],
+    domain: [0, nRows],
+    range: [0, height],
   });
 
   return (
     <svg
-      width={binWidth + width + margin.left + margin.right}
-      height={height + margin.top + margin.bottom}
+      width={width + margin.left + margin.right + separation}
+      height={height + margin.top + margin.bottom + separation}
     >
-      <Group left={margin.left} top={margin.top}>
+      <Group left={margin.left + separation} top={margin.top}>
         <HeatmapRect
           data={data}
           xScale={(d) => xScale(d) ?? 0}
