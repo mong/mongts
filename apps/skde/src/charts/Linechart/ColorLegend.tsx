@@ -1,7 +1,7 @@
 import classNames from "../Barchart/ChartLegend.module.css";
 
 type ColorLegendProps = {
-  colorScale: Function;
+  colorScale: (args: string) => void;
   values: string[];
 };
 

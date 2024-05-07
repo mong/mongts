@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import classNames from "./AtlasLink.module.css";
 import { timeFormat } from "d3-time-format";
 
@@ -47,7 +47,10 @@ export const AtlasLink: React.FC<Props> = ({
               alt={"atlas photo"}
               width={610}
               height={407}
-              layout="intrinsic"
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+              }}
             />
           </div>
           <div className={classNames.linkText}>

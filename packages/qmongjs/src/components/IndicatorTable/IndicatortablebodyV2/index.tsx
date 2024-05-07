@@ -3,8 +3,7 @@ import IconButton from "@mui/material/IconButton";
 import TableBody from "@mui/material/TableBody";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { Indicator } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
@@ -20,12 +19,14 @@ import {
 } from "./IndicatorTableBodyV2Styles";
 import {
   LinechartBase,
+  BarchartBase,
   font,
   LinechartData,
   LineStyles,
   customFormat,
   useIndicatorQuery,
 } from "qmongjs";
+import { Group } from "@visx/group";
 
 const remarkPlugins: PluggableList = [remarkGfm];
 
@@ -43,6 +44,7 @@ export type IndicatorTableBodyV2Props = {
 };
 
 export type DataPoint = {
+  id?: number;
   unitName: string;
   year: number;
   var: number;
@@ -153,6 +155,7 @@ export const createData = (indicatorData: Indicator[]) => {
         )
       ) {
         returnData[i].indicatorData[j].data.push({
+          id: row.id,
           unitName: row.unit_name,
           year: row.year,
           var: row.var,
@@ -188,7 +191,11 @@ const createChartData = (
       return indDataRow.unit_name === unitNamesRow;
     });
     return unitIndData.map((row) => {
-      return { x: new Date(row.year, 0), y: row.var } as LinechartData;
+      return {
+        id: row.id,
+        x: new Date(row.year, 0),
+        y: row.var,
+      } as LinechartData;
     });
   });
 
@@ -206,6 +213,14 @@ const createChartData = (
   });
 
   return chartDataUnique;
+};
+
+const createBarChartData = (data: Indicator[], indID: string, year: number) => {
+  const indData = data.filter((row) => {
+    return row.ind_id === indID;
+  });
+
+  return null;
 };
 
 const randomHexColorCode = () => {
@@ -290,20 +305,28 @@ const IndicatorRow = (props: {
     const sizeFactor = 0.5;
 
     return (
-      <LinechartBase
-        data={chartDataFiltered}
-        width={sizeFactor * width}
-        height={sizeFactor * height}
-        yMin={0}
-        yMax={1}
-        lineStyles={lineStyles}
-        font={font}
-        yAxisText={"Andel"}
-        format_y=",.0%"
-        levelGreen={indData.levelGreen!}
-        levelYellow={indData.levelYellow!}
-        levelDirection={indData.levelDirection!}
-      />
+      <Group>
+        <LinechartBase
+          data={chartDataFiltered}
+          width={sizeFactor * width}
+          height={sizeFactor * height}
+          yMin={0}
+          yMax={1}
+          lineStyles={lineStyles}
+          font={font}
+          yAxisText={"Andel"}
+          format_y=",.0%"
+          levelGreen={indData.levelGreen!}
+          levelYellow={indData.levelYellow!}
+          levelDirection={indData.levelDirection!}
+        />
+        <BarchartBase
+          indicatorData={indData}
+          width={sizeFactor * width * 0.7}
+          height={sizeFactor * height}
+          xTickFormat=",.0%"
+        />
+      </Group>
     );
   };
 
@@ -328,7 +351,7 @@ const IndicatorRow = (props: {
                     aria-label="expand"
                     size="small"
                   >
-                    {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                    {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
                   </IconButton>
                 </td>
                 <td>{indData.indicatorName}</td>
@@ -585,6 +608,7 @@ export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
     type: type,
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const indicatorQuery: UseQueryResult<any, unknown> =
     useIndicatorQuery(queryParams);
 

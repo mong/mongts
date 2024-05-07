@@ -3,20 +3,31 @@ import { Tabs, Tab, styled } from "@mui/material";
 
 type TreatmentQualityTabsProps = PropsWithChildren<{
   context: string | undefined;
-  onTabChanged: (string) => void;
+  onTabChanged: (newValue: string) => void;
   isPhoneSizedScreen?: boolean;
 }>;
 
+export const StyledTabs = styled(Tabs)(({ theme }) => ({
+  "& .Mui-selected": {
+    backgroundColor: theme.palette.background.paper,
+  },
+}));
+
 export const StyledTab = styled(Tab)(({ theme }) => ({
-  fontFamily: theme.typography.button.fontFamily,
+  font: theme.typography.button.font,
   textTransform: "none",
+  borderRadius: 4,
+  [theme.breakpoints.down("sm")]: {
+    padding: "12px",
+    fontSize: "13px",
+  },
 }));
 
 export default function TreatmentQualityTabs({
   context,
   onTabChanged,
   isPhoneSizedScreen,
-}) {
+}: TreatmentQualityTabsProps) {
   const orientation = isPhoneSizedScreen ? "vertical" : "horizontal";
 
   const [value, setValue] = useState(
@@ -31,15 +42,14 @@ export default function TreatmentQualityTabs({
   };
 
   return (
-    <Tabs
+    <StyledTabs
       value={value}
       onChange={handleChange}
       aria-label="Arkfaner for behandlingskvalitet og opptaksområde"
-      sx={{ backgroundColor: "#00263d", borderRadius: 1 }}
       orientation={orientation}
     >
       <StyledTab label="Behandlingsenheter" value={"caregiver"} />
       <StyledTab label="Opptaksområder" value={"resident"} />
-    </Tabs>
+    </StyledTabs>
   );
 }

@@ -14,8 +14,9 @@ type CarouselProps = {
   selection?: string;
   popupState?: React.Dispatch<React.SetStateAction<boolean>>;
   lang?: "nb" | "en" | "nn";
-  children:
-    | React.ReactElement<CarouselItemProps & React.RefObject<any>>
+  children: // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  | React.ReactElement<CarouselItemProps & React.RefObject<any>>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     | Array<React.ReactElement<CarouselItemProps & React.RefObject<any>>>;
 };
 
@@ -72,7 +73,6 @@ export const Carousel: React.FC<CarouselProps> = ({
         <CarouselButtons
           options={options}
           activeCarousel={activeComp}
-          nrOfButtons={numberOfChildren}
           onClick={(i) => setActiveComp(i)}
         />
       )}
