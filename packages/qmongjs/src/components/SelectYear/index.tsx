@@ -56,6 +56,7 @@ function SelectYear(props: Props) {
   return (
     <form data-testid="year_selector">
       <Select
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onChange={(e: any) => handle_input_change(e)}
         options={selection_options}
         defaultValue={defaultValue}

@@ -14,6 +14,7 @@ import {
   mainQueryParamsConfig,
   validateTreatmentUnits,
   UnitNameList,
+  LowLevelIndicatorList,
 } from "qmongjs";
 import { OptsTu } from "types";
 import { Checkbox, FormControlLabel } from "@mui/material";
@@ -35,6 +36,7 @@ export const Skde = (): JSX.Element => {
   const queryContext = { context: "caregiver", type: "ind" };
 
   // Hent sykehusnavn fra et register
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     "Hjerteinfarkt",
     queryContext.context,
@@ -191,6 +193,13 @@ export const Skde = (): JSX.Element => {
           Fagområder (dekningsgrad)
         </Text>
         <MedfieldTable {...medfieldTablePropsDG} />
+      </div>
+      <div>
+        <LowLevelIndicatorList
+          context={"caregiver"}
+          type={"ind"}
+          unitNames={[validated_treatment_units[0] || "Nasjonalt"]}
+        />
       </div>
     </div>
   );

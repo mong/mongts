@@ -55,11 +55,13 @@ export const ResultBox = ({
 
   const height_ref = React.useRef(null);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const atlasData: { atlasData: any } = React.useContext(DataContext);
 
   const mapFile = map ? map : "kronikere.geojson";
   const { data: mapData } = FetchMap(`/helseatlas/kart/${mapFile}`);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const boxData: any =
     atlasData.atlasData[carousel] !== undefined
       ? Object.values(JSON.parse(atlasData.atlasData[carousel]))[0]
@@ -71,7 +73,7 @@ export const ResultBox = ({
     enter: { transform: "translate(0,0)" },
     leave: { transform: "translate(0,-40px)" },
 
-    config: (it, ind, state) => ({
+    config: () => ({
       easing: easings.easeInQuad, // : easings.easeOutQuad,
       duration: 200,
     }),
