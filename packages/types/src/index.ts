@@ -88,3 +88,46 @@ export interface RegisterName {
   url: string | null;
   description: string | null;
 }
+
+export type DataPoint = {
+  unitName: string;
+  year: number;
+  var: number | null;
+  denominator: number;
+  dg: number | null;
+  context: "caregiver" | "resident";
+  deliveryTime: Date;
+  affirmTime: Date;
+};
+
+export type IndicatorData = {
+  indicatorID: string;
+  indicatorTitle: string | null;
+  levelGreen: number | null;
+  levelYellow: number | null;
+  levelDirection: number | null;
+  minDenominator: number | null;
+  minValue: number | null;
+  maxValue: number | null;
+  shortDescription: string | null;
+  longDescription: string | null;
+  indType:
+    | "andel"
+    | "beregnet_andel"
+    | "antall"
+    | "gjennomsnitt"
+    | "median"
+    | "dg_andel";
+  sortingName: string | null;
+  format: string | null;
+  data: DataPoint[];
+};
+
+export type RegisterData = {
+  registerFullName: string;
+  registerName: string;
+  registerShortName: string;
+  registerID: number;
+  medfieldID: number[];
+  indicatorData: IndicatorData[];
+};
