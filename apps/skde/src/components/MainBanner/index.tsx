@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 import { imgLoader } from "qmongjs";
 import classNames from "./MainBanner.module.css";
@@ -29,7 +29,10 @@ export const MainBanner: React.FC<MainBannerProps> = ({ lang }) => {
             alt={"mainpage photo"}
             width={1184}
             height={435}
-            layout="intrinsic"
+            style={{
+              maxWidth: "100%",
+              height: "auto",
+            }}
           />
           <h1 className={classNames.pageTitle}>{text.title[lang]}</h1>
         </div>
