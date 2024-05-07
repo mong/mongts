@@ -34,7 +34,6 @@ import {
   desktopBreakpoint,
   TreatmentQualityAppBar,
   SkdeLogoBox,
-  TreatmentQualitySubtitle,
   TabsRow,
 } from "../../src/components/TreatmentQuality";
 import TreatmentQualityFooter from "../../src/components/TreatmentQuality/TreatmentQualityFooter";
@@ -45,7 +44,6 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useSearchParams } from "next/navigation";
 import TreatmentQualityTabs from "../../src/components/TreatmentQuality/TreatmentQualityTabs";
-import { Grid } from "@mui/material";
 
 const dataQualityKey = "dg";
 
@@ -332,7 +330,9 @@ export default function TreatmentQuality() {
               onClick={handleDrawerToggle}
             >
               <Menu />
-              <Typography variant="button">Filter</Typography>
+              <Typography variant="button" sx={{ textTransform: "none" }}>
+                Filter
+              </Typography>
             </FilterIconButton>
             <TreatmentQualityTabs
               context={tableContext}

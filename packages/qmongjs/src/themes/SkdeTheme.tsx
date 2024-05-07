@@ -86,7 +86,6 @@ const fonts = {
     fontWeight: "500",
     fontSize: "16px",
     letterSpacing: "1.25px",
-    textTransform: "none",
   },
   over: {
     fontFamily: `${jakartaStyle.fontFamily}`,

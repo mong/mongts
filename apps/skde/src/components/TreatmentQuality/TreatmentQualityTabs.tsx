@@ -15,6 +15,7 @@ export const StyledTabs = styled(Tabs)(({ theme }) => ({
 
 export const StyledTab = styled(Tab)(({ theme }) => ({
   font: theme.typography.button.font,
+  textTransform: "none",
   borderRadius: 4,
   [theme.breakpoints.down("sm")]: {
     padding: "12px",
