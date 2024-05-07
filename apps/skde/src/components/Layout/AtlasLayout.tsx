@@ -10,10 +10,10 @@ interface Props {
   lang: "no" | "en";
 }
 
-export function AtlasLayout({ children, title = "Helseatlas", lang }: Props) {
+export function AtlasLayout({ children, lang }: Props) {
   return (
     <>
-      <LayoutHead title={title} />
+      <LayoutHead />
       <Header lang={lang} />
       {children}
       <Footer />

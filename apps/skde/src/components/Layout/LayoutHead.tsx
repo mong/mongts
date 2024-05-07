@@ -1,14 +1,9 @@
-import React from "react";
 import Head from "next/head";
 
-type LayoutHeadProps = {
-  title: string;
-};
-
-export const LayoutHead: React.FC<LayoutHeadProps> = ({ title }) => {
+export const LayoutHead = () => {
   return (
     <Head>
-      <title>{title}</title>
+      <title>Helseatlas</title>
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       <meta property="og:site_name" content="Helse Nord RHF"></meta>
