@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -30,11 +31,20 @@ export const TreatmentQualityAppBar = styled(AppBar)(({ theme }) => ({
 }));
 
 export const FilterIconButton = styled(IconButton)(({ theme }) => ({
-  paddingLeft: 0,
   color: theme.palette.secondary.main,
   [theme.breakpoints.up("desktop")]: {
     display: "none",
   },
+  [theme.breakpoints.down("sm")]: {
+    "& .MuiTypography-root": {
+      fontSize: "13px",
+    },
+  },
+}));
+
+export const TabsRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  paddingLeft: theme.typography.body1.fontSize,
 }));
 
 export const FilterDrawer = styled(Drawer)(({ theme }) => ({
@@ -168,15 +178,15 @@ export const MainBox = styled(Box)(({ theme }) => ({
     "& th": {
       minWidth: "6rem",
     },
-    marginTop: "112px",
-    height: "calc(100vh - 112px)",
+    marginTop: "104px",
+    height: "calc(100vh - 104px)",
     "& .MuiDrawer-paper": {
       width: "100%",
     },
   },
   [theme.breakpoints.up("sm")]: {
-    marginTop: "129px",
-    height: "calc(100vh - 129px)",
+    marginTop: "112px",
+    height: "calc(100vh - 112px)",
     "& .MuiDrawer-paper": {
       width: "100%",
     },

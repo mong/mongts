@@ -3,7 +3,7 @@ import { Tabs, Tab, styled } from "@mui/material";
 
 type TreatmentQualityTabsProps = PropsWithChildren<{
   context: string | undefined;
-  onTabChanged: (string) => void;
+  onTabChanged: (newValue: string) => void;
   isPhoneSizedScreen?: boolean;
 }>;
 
@@ -14,9 +14,12 @@ export const StyledTabs = styled(Tabs)(({ theme }) => ({
 }));
 
 export const StyledTab = styled(Tab)(({ theme }) => ({
-  font: theme.typography.body2.font,
-  textTransform: "none",
+  font: theme.typography.button.font,
   borderRadius: 4,
+  [theme.breakpoints.down("sm")]: {
+    padding: "12px",
+    fontSize: "13px",
+  },
 }));
 
 export default function TreatmentQualityTabs({

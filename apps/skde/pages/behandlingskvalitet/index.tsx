@@ -34,6 +34,8 @@ import {
   desktopBreakpoint,
   TreatmentQualityAppBar,
   SkdeLogoBox,
+  TreatmentQualitySubtitle,
+  TabsRow,
 } from "../../src/components/TreatmentQuality";
 import TreatmentQualityFooter from "../../src/components/TreatmentQuality/TreatmentQualityFooter";
 import { ThemeProvider } from "@mui/material/styles";
@@ -43,6 +45,7 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useSearchParams } from "next/navigation";
 import TreatmentQualityTabs from "../../src/components/TreatmentQuality/TreatmentQualityTabs";
+import { Grid } from "@mui/material";
 
 const dataQualityKey = "dg";
 
@@ -306,12 +309,10 @@ export default function TreatmentQuality() {
         <TreatmentQualityAppBar position="fixed" elevation={appBarElevation}>
           <Toolbar>
             <Box>
-              <Typography variant="h4">Behandlingskvalitet</Typography>
-              {!isPhoneSizedScreen && (
-                <Typography variant="body1">
-                  Resultater fra nasjonale medisinske kvalitetsregistre
-                </Typography>
-              )}
+              <Typography variant="h5">Behandlingskvalitet</Typography>
+              <Typography variant="body1">
+                Nasjonale medisinske kvalitetsregistre
+              </Typography>
             </Box>
             <SkdeLogoBox>
               <Image
@@ -324,20 +325,20 @@ export default function TreatmentQuality() {
               />
             </SkdeLogoBox>
           </Toolbar>
-          <Toolbar>
+          <TabsRow>
             <FilterIconButton
               aria-label="åpne sidemeny"
               edge="start"
               onClick={handleDrawerToggle}
             >
               <Menu />
-              <Typography variant="body2">Filter</Typography>
+              <Typography variant="button">Filter</Typography>
             </FilterIconButton>
             <TreatmentQualityTabs
               context={tableContext}
               onTabChanged={setTableContext}
             />
-          </Toolbar>
+          </TabsRow>
         </TreatmentQualityAppBar>
         <FilterDrawerBox
           component="nav"
