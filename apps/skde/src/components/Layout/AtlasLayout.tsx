@@ -11,15 +11,10 @@ interface Props {
 }
 
 export function AtlasLayout({ children, title = "Helseatlas", lang }: Props) {
-  const [origin, setOrigin] = useState("");
-  useEffect(() => {
-    setOrigin(window.location.origin);
-  }, [setOrigin]);
-
   return (
     <>
       <LayoutHead title={title} />
-      <Header origin={origin} lang={lang} />
+      <Header lang={lang} />
       {children}
       <Footer />
     </>
