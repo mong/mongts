@@ -422,24 +422,6 @@ export const atlasData = [
   },
 ];
 
-export const linechartData = [
-  [
-    { x: new Date(2018, 0), y: 10 },
-    { x: new Date(2019, 0), y: 15 },
-    { x: new Date(2020, 0), y: 20 },
-  ],
-  [
-    { x: new Date(2018, 0), y: 5 },
-    { x: new Date(2019, 7), y: 15 },
-    { x: new Date(2020, 0), y: 9 },
-  ],
-  [
-    { x: new Date(2018, 0), y: 3 },
-    { x: new Date(2019, 3), y: 15 },
-    { x: new Date(2020, 0), y: 6 },
-  ],
-];
-
 export const levelData = [
   { ind_id: "ind1", year: 2018, level: 1 },
   { ind_id: "ind1", year: 2019, level: 1 },
@@ -473,6 +455,7 @@ export const medfieldTableData: Indicator[] = [
     registry_id: 1,
     registry_name: "hjertereg1",
     registry_full_name: "Hjerteregister nummer 1",
+    registry_short_name: "Hjerteregister 1",
     medfield_id: 1,
     medfield_name: "hjerte",
     medfield_full_name: "Hjerte- og karsykdommer",
@@ -503,6 +486,7 @@ export const medfieldTableData: Indicator[] = [
     registry_id: 2,
     registry_name: "hjertereg2",
     registry_full_name: "Hjerteregister nummer 2",
+    registry_short_name: "Hjerteregister 2",
     medfield_id: 1,
     medfield_name: "hjerte",
     medfield_full_name: "Hjerte- og karsykdommer",
@@ -533,6 +517,7 @@ export const medfieldTableData: Indicator[] = [
     registry_id: 3,
     registry_name: "diabetesreg1",
     registry_full_name: "Diabetesregister nummer 1",
+    registry_short_name: "Diabetesregister 1",
     medfield_id: 3,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
@@ -561,6 +546,7 @@ export const medfieldTableData: Indicator[] = [
     registry_id: 3,
     registry_name: "diabetesreg1",
     registry_full_name: "Diabetesregister nummer 1",
+    registry_short_name: "Diabetesregister 1",
     medfield_id: 3,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
@@ -589,6 +575,7 @@ export const medfieldTableData: Indicator[] = [
     registry_id: 4,
     registry_name: "barnereg1",
     registry_full_name: "Barneregister nummer 1",
+    registry_short_name: "Barneregister 1",
     medfield_id: 5,
     medfield_name: "barn",
     medfield_full_name: "Barn",
@@ -617,6 +604,7 @@ export const medfieldTableData: Indicator[] = [
     registry_id: 5,
     registry_name: "barnereg2",
     registry_full_name: "Barneregister nummer 2",
+    registry_short_name: "Barneregister 2",
     medfield_id: 5,
     medfield_name: "barn",
     medfield_full_name: "Barn",
@@ -645,6 +633,7 @@ export const medfieldTableData: Indicator[] = [
     registry_id: 5,
     registry_name: "barnereg2",
     registry_full_name: "Barneregister nummer 2",
+    registry_short_name: "Barneregister 2",
     medfield_id: 5,
     medfield_name: "barn",
     medfield_full_name: "Barn",

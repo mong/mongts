@@ -3,17 +3,20 @@ import React from "react";
 import IndicatorLinechart, {
   IndicatorLinechartParams,
 } from "../../src/charts/IndicatorLinechart";
-import { LineStyles, font } from "../../src/charts/LinechartBase";
+import { LineStyles } from "qmongjs";
 import { Text } from "@visx/text";
 import { useQueryParam } from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
-import SelectTreatmentUnits from "qmongjs/src/components/SelectTreatmentUnits";
-import { useUnitNamesQuery } from "qmongjs/src/helpers/hooks";
-import { NestedTreatmentUnitName } from "qmongjs/src/components/RegisterPage/unitnamelist/unitnamelistbody";
+import {
+  SelectTreatmentUnits,
+  useUnitNamesQuery,
+  NestedTreatmentUnitName,
+  mainQueryParamsConfig,
+  validateTreatmentUnits,
+  UnitNameList,
+  LowLevelIndicatorList,
+} from "qmongjs";
 import { OptsTu } from "types";
-import { mainQueryParamsConfig } from "qmongjs/src/app_config";
-import { validateTreatmentUnits } from "qmongjs/src/helpers/functions";
-import { UnitNameList } from "qmongjs/src/components/RegisterPage/unitnamelist";
 import { Checkbox, FormControlLabel } from "@mui/material";
 import {
   MedfieldTable,
@@ -189,6 +192,13 @@ export const Skde = (): JSX.Element => {
           Fagområder (dekningsgrad)
         </Text>
         <MedfieldTable {...medfieldTablePropsDG} />
+      </div>
+      <div>
+        <LowLevelIndicatorList
+          context={"caregiver"}
+          type={"ind"}
+          unitNames={[validated_treatment_units[0] || "Nasjonalt"]}
+        />
       </div>
     </div>
   );

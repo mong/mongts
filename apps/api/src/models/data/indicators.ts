@@ -28,6 +28,7 @@ export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
       "registry.id as registry_id",
       "registry.name as registry_name",
       "registry.full_name as registry_full_name",
+      "registry.short_name as registry_short_name",
       "medfield.id as medfield_id",
       "medfield.name as medfield_name",
       "medfield.full_name as medfield_full_name",
@@ -37,6 +38,11 @@ export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
       "ind.name as ind_name",
     )
     .from("agg_data")
+    .modify((queryBuilder) => {
+      if (filter?.id) {
+        queryBuilder.where("agg_data.id", filter.id);
+      }
+    })
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
     .leftJoin("registry", "ind.registry_id", "registry.id")
     .leftJoin(

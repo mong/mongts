@@ -9,7 +9,7 @@ interface Props {
   treatment_unit: string[];
 }
 
-function SelectTreatmentUnits(props: Props) {
+export function SelectTreatmentUnits(props: Props) {
   const { opts = [], placeholder, update_tu, treatment_unit } = props;
   const selection_options = opts;
   type OptionType = {
@@ -75,6 +75,7 @@ function SelectTreatmentUnits(props: Props) {
         openMenuOnClick={false}
         isSearchable
         isMulti={true}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         onChange={(e: any) => handle_input_change(e)}
         styles={customStyles}
         menuIsOpen={

@@ -1,8 +1,7 @@
 import type {} from "@mui/x-tree-view/themeAugmentation";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { ExpandMore, ChevronRight } from "@mui/icons-material";
 import { TreeView } from "@mui/x-tree-view/TreeView";
 import { FilterMenuSectionProps } from ".";
 import {
@@ -10,10 +9,10 @@ import {
   FilterSettingsValue,
 } from "./FilterSettingsContext";
 import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
-import { FilterSettingsAction } from "./FilterSettingsReducer";
 import { FilterSettingsActionType } from "./FilterSettingsReducer";
 import { TreeViewFilterSectionItem } from "./TreeViewFilterSectionItem";
 import Alert from "@mui/material/Alert";
+import TreeViewSearchBox from "./TreeViewSearchBox";
 
 /**
  * The structure of a node in the tree data used with the TreeViewFilterSection
@@ -38,12 +37,16 @@ export type TreeViewFilterSettingsValue = FilterSettingsValue & {
  * treeData prop, which is an array of TreeViewFilterSectionNode objects
  * representing the tree structure of the filter options. Also accepts the
  * multiselect prop, which is a boolean that determines whether the filter
- * is single or multi-select.
+ * is single or multi-select. If an autoUncheckedId is provided, e.g., "all",
+ * the component will automatically uncheck this node when another node is
+ * checked.
  */
 export type TreeViewSectionProps = FilterMenuSectionProps & {
   multiselect?: boolean;
   maxselections?: number;
   treedata: TreeViewFilterSectionNode[];
+  autouncheckid?: string;
+  searchbox?: boolean;
 };
 
 /**
@@ -60,6 +63,8 @@ const buildTreeLevel = (
   selectedIds: string[],
   filterKey: string,
   handleCheckboxChange: (checked: boolean, value: string) => void,
+  toggleExpand: (value: string) => void,
+  autoUncheckId?: string,
 ) => {
   return treeData.map((node) => {
     return (
@@ -68,7 +73,9 @@ const buildTreeLevel = (
         filterKey={filterKey}
         labeledValue={node.nodeValue}
         selectedIds={selectedIds}
+        autoUncheckId={autoUncheckId}
         handleCheckboxChange={handleCheckboxChange}
+        toggleExpand={toggleExpand}
       >
         {node.children &&
           buildTreeLevel(
@@ -76,6 +83,8 @@ const buildTreeLevel = (
             selectedIds,
             filterKey,
             handleCheckboxChange,
+            toggleExpand,
+            autoUncheckId,
           )}
       </TreeViewFilterSectionItem>
     );
@@ -94,6 +103,7 @@ export const buildTreeView = (
   props: TreeViewSectionProps,
   selectedIds: string[],
   handleCheckboxChange: (checked: boolean, value: string) => void,
+  toggleExpand: (value: string) => void,
 ) => {
   return (
     <>
@@ -102,6 +112,8 @@ export const buildTreeView = (
         selectedIds,
         props.filterkey,
         handleCheckboxChange,
+        toggleExpand,
+        props.autouncheckid,
       )}
     </>
   );
@@ -149,7 +161,8 @@ export const flattenTreeValues = (
 };
 
 /**
- * Initialzes the map used for looking up FilterSettingValues by values/nodeIds
+ * Creates a map from treeData that can be used for looking up
+ * FilterSettingValues by values/nodeIds
  *
  * @param treeData The TreeViewFilterSectionNode structure
  * @returns A map with the string values as keys and TreeViewFilterSettingsValue-objects as values
@@ -169,13 +182,14 @@ export const initFilterSettingsValuesMap = (
 };
 
 /**
- * Initializes the default expanded nodes for the TreeView
+ * Gets a list of the nodes to expand, including their anchestor ids, given the
+ * selectedIds, which can be at various levels.
  *
  * @param selectedIds The selected node ids
  * @param filterSettingsValuesMap The map used for looking up FilterSettingValues by node ids
- * @returns A list of node ids that should be expanded by default
+ * @returns A list of node ids that should be expanded
  */
-export const initDefaultExpanded = (
+export const buildExpandedNodeList = (
   selectedIds: string[],
   filterSettingsValuesMap: Map<string, TreeViewFilterSettingsValue>,
 ) => {
@@ -196,26 +210,49 @@ export const initDefaultExpanded = (
 };
 
 /**
- * Function that returns a function to handle checkbox change events
+ * Component for use with the FilterMenu component, which uses a TreeView to
+ * display filter options. The component can be used for either single or
+ * multi-select filters.
  *
- * @param selectedIds The ids (values) of the currently selected nodes
- * @param filterKey The key for the filter section
- * @param isMultiSelect Whether the tree is multi- or single select
- * @param filterSettingsValuesMap Map for looking up FilterSettingValues by ids
- * @param filterSettingsDispatch Dispatch function for the filter settings reducer
- * @returns A handler updating the selected nodes, which take a boolean and a node id (value) as input
+ * @param props The props for the TreeViewFilterSection
+ * @returns The TreeViewFilterSection component
  */
-export const selectionHandlerFunc = (
-  selectedIds: string[],
-  filterKey: string,
-  isMultiSelect: boolean,
-  filterSettingsValuesMap: Map<string, TreeViewFilterSettingsValue>,
-  filterSettingsDispatch: React.Dispatch<FilterSettingsAction>,
-  setMaxSelectionAlert: React.Dispatch<React.SetStateAction<boolean>>,
-  maxSelections?: number,
-) => {
-  return (checked: boolean, nodeId: string) => {
+export function TreeViewFilterSection(props: TreeViewSectionProps) {
+  const filterSettings = useContext(FilterSettingsContext);
+  const filterSettingsDispatch = useContext(FilterSettingsDispatchContext);
+
+  const isMultiSelect = props.multiselect ?? true;
+  const searchBox = props.searchbox ?? false;
+  const maxSelections = props.maxselections;
+  const autoUncheckId = props.autouncheckid;
+  const filterKey = props.filterkey;
+  const treeData = props.treedata;
+  const selectedIds = getSelectedNodeIds(filterSettings.map.get(filterKey));
+  const filterSettingsValuesMap = initFilterSettingsValuesMap(treeData);
+  const [showMaxSelectionAlert, setMaxSelectionAlert] = useState(false);
+  const [expanded, setExpanded] = useState(
+    buildExpandedNodeList(selectedIds, filterSettingsValuesMap),
+  );
+  const [treeViewKey, setTreeViewKey] = useState(0);
+
+  useEffect(() => {
+    setExpanded(buildExpandedNodeList(selectedIds, filterSettingsValuesMap));
+    setTreeViewKey(treeViewKey + 1);
+  }, [props.refreshState]);
+
+  /**
+   * Handler for updating the selected nodes in the filter settings state
+   */
+  const handleCheckboxClick = (
+    checked: boolean,
+    nodeIds: string | string[],
+    autoUncheckId?: string,
+  ) => {
     let updatedSelectedIds = selectedIds;
+
+    if (!Array.isArray(nodeIds)) {
+      nodeIds = [nodeIds];
+    }
 
     if (checked) {
       if (isMultiSelect) {
@@ -223,10 +260,24 @@ export const selectionHandlerFunc = (
           setMaxSelectionAlert(true);
           return;
         } else {
-          updatedSelectedIds = [...selectedIds, nodeId];
+          let selectedIdsFiltered = selectedIds;
+          if (autoUncheckId && !nodeIds.includes(autoUncheckId)) {
+            selectedIdsFiltered = selectedIds.filter(
+              (id) => id !== autoUncheckId,
+            );
+            updatedSelectedIds = Array.from(
+              new Set(selectedIdsFiltered.concat(nodeIds)),
+            );
+          } else if (autoUncheckId && nodeIds.includes(autoUncheckId)) {
+            updatedSelectedIds = [autoUncheckId];
+          } else {
+            updatedSelectedIds = Array.from(
+              new Set(selectedIdsFiltered.concat(nodeIds)),
+            );
+          }
         }
       } else {
-        updatedSelectedIds = [nodeId];
+        updatedSelectedIds = nodeIds;
       }
 
       const selectedFilterSettingValues = updatedSelectedIds
@@ -251,7 +302,9 @@ export const selectionHandlerFunc = (
         type: FilterSettingsActionType.DEL_SECTION_SELECTIONS,
         sectionSetting: {
           key: filterKey,
-          values: [{ value: nodeId, valueLabel: "" }],
+          values: nodeIds.map((nodeId) => {
+            return { value: nodeId, valueLabel: "" };
+          }),
         },
       });
     }
@@ -260,57 +313,74 @@ export const selectionHandlerFunc = (
       setMaxSelectionAlert(false);
     }
   };
-};
 
-/**
- * Component for use with the FilterMenu component, which uses a TreeView to
- * display filter options. The component can be used for either single or
- * multi-select filters.
- *
- * @param props The props for the TreeViewFilterSection
- * @returns The TreeViewFilterSection component
- */
-export function TreeViewFilterSection(props: TreeViewSectionProps) {
-  const filterSettings = useContext(FilterSettingsContext);
-  const filterSettingsDispatch = useContext(FilterSettingsDispatchContext);
+  /**
+   * Search handler for the search box. Selects and expands matching nodes
+   *
+   * @param searchText The text entered in the search box
+   */
+  const handleSearch = (nodeIds: string[]) => {
+    handleCheckboxClick(true, nodeIds, autoUncheckId);
+    const nodeAndAnchestorIds = buildExpandedNodeList(
+      nodeIds,
+      filterSettingsValuesMap,
+    );
+    const newExpanded = Array.from(
+      new Set<string>(expanded.concat(nodeAndAnchestorIds)),
+    );
+    setExpanded(newExpanded);
+  };
 
-  const isMultiSelect = props.multiselect ?? true;
-  const maxSelections = props.maxselections;
-  const filterKey = props.filterkey;
-  const treeData = props.treedata;
-  const selectedIds = getSelectedNodeIds(filterSettings.map.get(filterKey));
-  const [filterSettingsValuesMap] = useState(
-    initFilterSettingsValuesMap(treeData),
-  );
-  const [defaultExpanded] = useState<string[]>(
-    initDefaultExpanded(selectedIds, filterSettingsValuesMap),
-  );
-  const [showMaxSelectionAlert, setMaxSelectionAlert] = useState(false);
-
-  // selectionHandlerFunc returns a handler-function for checkbox events
-  const handleCheckboxClick = selectionHandlerFunc(
-    selectedIds,
-    filterKey,
-    isMultiSelect,
-    filterSettingsValuesMap,
-    filterSettingsDispatch,
-    setMaxSelectionAlert,
-    maxSelections,
-  );
+  /** Toggle expanded state for a node */
+  const toggleExpanded = (value: string) => {
+    if (expanded.includes(value)) {
+      setExpanded(expanded.filter((id) => id !== value));
+    } else {
+      setExpanded([...expanded, value]);
+    }
+  };
 
   return (
     <Box>
       {showMaxSelectionAlert && (
         <Alert severity="warning">{`Du kan maksimalt huke av ${maxSelections} valg.`}</Alert>
       )}
+      {searchBox && (
+        <TreeViewSearchBox
+          options={Array.from(filterSettingsValuesMap.values())}
+          onSearch={handleSearch}
+        />
+      )}
       <TreeView
+        key={treeViewKey}
         aria-label={`${props.sectiontitle} (TreeView)}`}
         data-testid={`tree-view-section-${props.sectionid}`}
-        defaultCollapseIcon={<ExpandMoreIcon />}
-        defaultExpandIcon={<ChevronRightIcon />}
-        defaultExpanded={defaultExpanded}
+        defaultCollapseIcon={<ExpandMore />}
+        defaultExpandIcon={<ChevronRight />}
+        defaultExpanded={expanded}
+        expanded={expanded}
+        onNodeFocus={(event, nodeId) => {
+          const checkbox = document.getElementById(
+            `checkbox-${filterKey}-${nodeId}`,
+          );
+          if (checkbox) {
+            // Focus the checkbox if the node is not the first node in the tree.
+            // The focus is set to the checkbox to allow for consitent Tab and Shift+Tab
+            // navigation and disabling parallel navigation with the arrow keys.
+            // Focus on the first node in the tree is allowed because of Shift+Tab
+            // navigation, which otherwise gets stuck on the checkbox.
+            if (nodeId !== props.treedata[0].nodeValue.value) {
+              checkbox.focus();
+            }
+          }
+        }}
+        onNodeSelect={(event, nodeId) => {
+          if (typeof nodeId == "string") {
+            toggleExpanded(nodeId);
+          }
+        }}
       >
-        {buildTreeView(props, selectedIds, handleCheckboxClick)}
+        {buildTreeView(props, selectedIds, handleCheckboxClick, toggleExpanded)}
       </TreeView>
     </Box>
   );

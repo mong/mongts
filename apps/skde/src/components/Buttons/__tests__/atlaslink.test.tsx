@@ -8,6 +8,18 @@
 
 import { render } from "@testing-library/react";
 import { AtlasLink } from "..";
+import { vi } from "vitest";
+
+vi.mock("next/font/google", () => ({
+  Plus_Jakarta_Sans: () => ({
+    weight: ["200", "300", "400", "500", "600", "700", "800"],
+    subsets: ["latin"],
+    display: "swap",
+    style: {
+      fontFamily: "Plus Jakarta Sans",
+    },
+  }),
+}));
 
 test("Norsk render", async () => {
   const date1 = new Date("October 13, 2014 11:13:00");

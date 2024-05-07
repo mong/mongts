@@ -43,6 +43,7 @@ export interface Indicator {
   registry_id: number;
   registry_name: string;
   registry_full_name: string;
+  registry_short_name: string;
   medfield_id: number;
   medfield_name: string;
   medfield_full_name: string;
@@ -80,9 +81,53 @@ export interface RegisterName {
   id: number;
   rname: string;
   full_name: string;
+  short_name: string;
   caregiver_data: 0 | 1 | null;
   resident_data: 0 | 1 | null;
   dg_data: 0 | 1 | null;
   url: string | null;
   description: string | null;
 }
+
+export type DataPoint = {
+  unitName: string;
+  year: number;
+  var: number | null;
+  denominator: number;
+  dg: number | null;
+  context: "caregiver" | "resident";
+  deliveryTime: Date;
+  affirmTime: Date;
+};
+
+export type IndicatorData = {
+  indicatorID: string;
+  indicatorTitle: string | null;
+  levelGreen: number | null;
+  levelYellow: number | null;
+  levelDirection: number | null;
+  minDenominator: number | null;
+  minValue: number | null;
+  maxValue: number | null;
+  shortDescription: string | null;
+  longDescription: string | null;
+  indType:
+    | "andel"
+    | "beregnet_andel"
+    | "antall"
+    | "gjennomsnitt"
+    | "median"
+    | "dg_andel";
+  sortingName: string | null;
+  format: string | null;
+  data: DataPoint[];
+};
+
+export type RegisterData = {
+  registerFullName: string;
+  registerName: string;
+  registerShortName: string;
+  registerID: number;
+  medfieldID: number[];
+  indicatorData: IndicatorData[];
+};

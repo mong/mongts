@@ -53,6 +53,8 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
   const [expandedResultBox, setExpandedResultBox] =
     React.useState<boolean>(false);
 
+  const height_ref = React.useRef(null);
+
   const atlasData: { atlasData: any } = React.useContext(DataContext);
 
   const mapFile = map ? map : "kronikere.geojson";
@@ -79,7 +81,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
     return;
   }
 
-  const nationalName = boxData.filter((o) => o.type === "data")[0]["national"];
+  const nationalName = boxData.find((o) => o.type === "data")["national"];
 
   const dataCarousel = (
     <Carousel active={0} selection={selection} lang={lang}>
@@ -87,9 +89,9 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
         .map((bd, i) => {
           const figData: AtlasData[] =
             bd.type !== "data"
-              ? boxData.filter(
-                  (o) => o.type === "data" && o.label === bd.data,
-                )[0]["data"]
+              ? boxData.find((o) => o.type === "data" && o.label === bd.data)[
+                  "data"
+                ]
               : undefined;
           if (bd.type === "barchart") {
             return (
@@ -114,7 +116,12 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
                 key={bd.type + i + id}
                 label={bd.type}
               >
-                <Linechart {...bd} data={figData} lang={lang} />
+                <Linechart
+                  {...bd}
+                  data={figData}
+                  lang={lang}
+                  national={nationalName}
+                />
               </CarouselItem>
             );
           }
@@ -169,21 +176,17 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
             );
           }
 
-          return null;
+          return false;
         })
-        .filter((elm) => elm !== null)}
+        .filter(Boolean)}
     </Carousel>
   );
 
-  const abacusX: Exclude<keyof AtlasData, "year" | "bohf"> = boxData
-    .filter((boxd) => boxd.type === "map")
-    .map((boxd) => boxd.x)[0];
+  const abacusX: Exclude<keyof AtlasData, "year" | "bohf"> = boxData.find(
+    (boxd) => boxd.type === "map",
+  ).x;
 
-  const figData: AtlasData[] = boxData.filter((o) => o.type === "data")[0][
-    "data"
-  ];
-  const handleChange = (cb: React.Dispatch<React.SetStateAction<boolean>>) =>
-    cb((state) => !state);
+  const figData: AtlasData[] = boxData.find((o) => o.type === "data")["data"];
   return (
     <div
       id={id}
@@ -197,7 +200,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
           borderBottom: "3px solid #033F85",
         }}
         expanded={expandedResultBox}
-        onChange={() => handleChange(setExpandedResultBox)}
+        onChange={() => setExpandedResultBox(!expandedResultBox)}
       >
         <AccordionSummary
           aria-controls={`${id}-content`}
@@ -233,6 +236,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
           sx={{
             backgroundColor: "#F2F2F2",
           }}
+          ref={height_ref}
         >
           {dataCarousel}
 
@@ -255,7 +259,15 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
         className={classNames.crossWrapper}
         role="button"
         aria-label="Open"
-        onClick={() => setExpandedResultBox(!expandedResultBox)}
+        onClick={() => {
+          if (expandedResultBox) {
+            window.scrollTo({
+              top: window.scrollY - height_ref.current.offsetHeight,
+              behavior: "smooth",
+            });
+          }
+          setExpandedResultBox(!expandedResultBox);
+        }}
         data-testid="resultbox_expandButton"
       >
         <span className={classNames.horizontal}></span>

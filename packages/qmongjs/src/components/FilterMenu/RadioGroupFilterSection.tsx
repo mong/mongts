@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { FilterMenuSectionProps } from ".";
 import {
-  FilterSettings,
   FilterSettingsContext,
   FilterSettingsValue,
 } from "./FilterSettingsContext";
@@ -12,26 +11,10 @@ import FormLabel from "@mui/material/FormLabel";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
+import { getDefaultValue, getSelectedValue } from "./utils";
 
 export type RadioGroupFilterSectionProps = FilterMenuSectionProps & {
   radios: FilterSettingsValue[];
-};
-
-const getDefaultValue = (defaultValues?: FilterSettingsValue[]) => {
-  if (defaultValues == null || defaultValues.length === 0) {
-    return undefined;
-  }
-  return defaultValues[0].value;
-};
-
-const getSelectedValue = (
-  filterkey: string,
-  filterSettings: FilterSettings,
-) => {
-  return (
-    filterSettings.map.get(filterkey)?.[0].value ||
-    getDefaultValue(filterSettings.defaults.get(filterkey))
-  );
 };
 
 export const RadioGroupFilterSection = (

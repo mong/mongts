@@ -13,7 +13,13 @@ type TreeViewFilterSectionItemProps = PropsWithChildren<{
   filterKey: string;
   labeledValue: FilterSettingsValue;
   selectedIds: string[];
-  handleCheckboxChange: (checked: boolean, value: string) => void;
+  handleCheckboxChange: (
+    checked: boolean,
+    value: string,
+    autoUncheckId?: string,
+  ) => void;
+  toggleExpand: (value: string) => void;
+  autoUncheckId?: string;
 }>;
 
 /**
@@ -28,7 +34,14 @@ type TreeViewFilterSectionItemProps = PropsWithChildren<{
 export const TreeViewFilterSectionItem = (
   props: TreeViewFilterSectionItemProps,
 ) => {
-  const { filterKey, labeledValue, selectedIds, handleCheckboxChange } = props;
+  const {
+    filterKey,
+    labeledValue,
+    selectedIds,
+    handleCheckboxChange,
+    toggleExpand,
+    autoUncheckId,
+  } = props;
   const isSelected = selectedIds.includes(labeledValue.value);
 
   return (
@@ -39,12 +52,22 @@ export const TreeViewFilterSectionItem = (
       label={
         <>
           <Checkbox
+            id={`checkbox-${filterKey}-${labeledValue.value}`}
             key={`checkbox-${filterKey}-${labeledValue.value}`}
             data-testid={`checkbox-${filterKey}-${labeledValue.value}`}
             checked={isSelected}
             onClick={(event) => {
-              handleCheckboxChange(!isSelected, labeledValue.value);
+              handleCheckboxChange(
+                !isSelected,
+                labeledValue.value,
+                autoUncheckId,
+              );
               event.stopPropagation();
+            }}
+            onKeyUp={(event) => {
+              if (event.key === "Enter") {
+                toggleExpand(labeledValue.value);
+              }
             }}
           />
           {labeledValue.valueLabel}

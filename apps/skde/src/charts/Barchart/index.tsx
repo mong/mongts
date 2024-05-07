@@ -8,10 +8,7 @@ import { useRouter } from "next/router";
 import { ColorLegend } from "./ColorLegend";
 import { AnnualVarLegend } from "./AnnualVarLegend";
 import { toBarchart } from "../../helpers/functions/dataTransformation";
-import {
-  customFormat,
-  customFormatEng,
-} from "../../helpers/functions/localFormater";
+import { customFormat } from "qmongjs";
 
 import { AnnualVariation } from "./AnnualVariation";
 import { ErrorBars } from "./errorBars";
@@ -134,7 +131,7 @@ export const Barchart = <
   const router = useRouter();
   const selected_bohf = [router.query.bohf].flat();
 
-  //used to find max values
+  // Find max values
   const annualValues = annualVar
     ? annualVar.flatMap((annual) =>
         data.flatMap((dt) => parseFloat(dt[annual])),
@@ -151,7 +148,7 @@ export const Barchart = <
     ...errorBarValues,
     ...series.flat().flat().flat(),
   ];
-  const xMaxValue = xMax ? xMax : max(values) * 1.15;
+  const xMaxValue = xMax ? xMax : max(values);
 
   const colors = mainBarColors;
   const nationColors = nationBarColors;
@@ -233,11 +230,7 @@ export const Barchart = <
             stroke={xAxisLineStroke}
             numTicks={4}
             tickFormat={(val) =>
-              format
-                ? lang === "en"
-                  ? customFormatEng(format)(val)
-                  : customFormat(format)(val)
-                : val.toString()
+              format ? customFormat(format, lang)(val) : val.toString()
             }
             tickLength={tickLength}
             tickStroke={xAxisTickStroke}

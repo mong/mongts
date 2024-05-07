@@ -2,7 +2,7 @@ import Link from "next/link";
 import Head from "next/head";
 import styles from "../../styles/Home.module.css";
 import Image from "next/image";
-import { imgLoader } from "../../helpers/functions";
+import { imgLoader } from "qmongjs";
 
 interface Props {
   children: React.ReactNode;
@@ -76,8 +76,8 @@ export function FrontPageLayout({
               </Link>
               <br />
               <strong>Ansvarlig redaktør: </strong>
-              <Link href="mailto:barthold.vonen@helse-nord.no">
-                Barthold Vonen
+              <Link href="mailto:eva.stensland@helse-nord.no">
+                Eva Stensland
               </Link>
             </div>
             <div className={styles.footer__social}>

@@ -9,11 +9,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import { level, levelSymbols } from "qmongjs";
+import { newLevelSymbols } from "qmongjs";
 import _ from "lodash";
 import { Indicator } from "types";
 
@@ -35,15 +35,15 @@ const createSymbols = (green: number, yellow: number, red: number) => {
   let symbols = [];
 
   for (let i = 0; i < green; i++) {
-    symbols.push(levelSymbols("H"));
+    symbols.push(newLevelSymbols("H"));
   }
 
   for (let i = 0; i < yellow; i++) {
-    symbols.push(levelSymbols("M"));
+    symbols.push(newLevelSymbols("M"));
   }
 
   for (let i = 0; i < red; i++) {
-    symbols.push(levelSymbols("L"));
+    symbols.push(newLevelSymbols("L"));
   }
 
   return symbols;
@@ -136,7 +136,7 @@ const Row = (props: { row: RowData }) => {
       >
         <TableCell>
           <IconButton aria-label="expand row" size="small">
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">

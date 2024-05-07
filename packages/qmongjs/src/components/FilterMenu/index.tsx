@@ -1,4 +1,4 @@
-import { ReactElement, PropsWithChildren, useReducer } from "react";
+import { ReactElement, PropsWithChildren, useReducer, useEffect } from "react";
 import Stack from "@mui/material/Container";
 import {
   Accordion,
@@ -7,13 +7,15 @@ import {
   Typography,
 } from "@mui/material";
 import { Card, CardContent } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import CustomAccordionExpandIcon from "./CustomAccordionExpandIcon";
+
 import {
   FilterSettingsContext,
   FilterSettingsValue,
   FilterSettings,
 } from "./FilterSettingsContext";
 import {
+  FilterSettingsActionType,
   FilterSettingsDispatchContext,
   FilterSettingsReducerType,
 } from "./FilterSettingsReducer";
@@ -31,14 +33,24 @@ export type FilterMenuSelectionChangedHandler = (
 ) => void;
 
 /**
+ * The type/signature of the handler function to call when the filter settings are initialized. It is called
+ * with the filter settings.
+ */
+export type FilterMenuFilterInitializedHandler = (
+  filterSettings: Map<string, FilterSettingsValue[]>,
+) => void;
+
+/**
  * The properties for the FilterMenu component. The onSelectionChanged handler is called when the
  * selection changes. The initialSelections are used to initialize the filter settings. The
  * defaultValues are used to reset the filter settings. The children are the filter sections.
  */
 export type FilterMenuProps = PropsWithChildren<{
   onSelectionChanged?: FilterMenuSelectionChangedHandler;
+  onFilterInitialized?: FilterMenuFilterInitializedHandler;
   initialSelections?: Map<string, FilterSettingsValue[]>;
   defaultValues?: Map<string, FilterSettingsValue[]>;
+  refreshState?: boolean;
   children:
     | ReactElement<FilterMenuSectionProps>
     | ReactElement<FilterMenuSectionProps>[];
@@ -59,6 +71,7 @@ export type FilterMenuSectionProps = PropsWithChildren<{
   accordion?: string;
   defaultvalues?: FilterSettingsValue[];
   initialselections?: FilterSettingsValue[];
+  refreshState?: boolean;
 }>;
 
 /**
@@ -80,8 +93,13 @@ const FilterMenuSection = ({
   } else {
     return (
       <Accordion key={`fms-accordion-${sectionid}`}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>{sectiontitle}</Typography>
+        <AccordionSummary
+          expandIcon={<CustomAccordionExpandIcon />}
+          sx={{ flexDirection: "row-reverse" }}
+        >
+          <Typography variant="body1" sx={{ margin: 1 }}>
+            {sectiontitle}
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>{children}</AccordionDetails>
       </Accordion>
@@ -140,6 +158,20 @@ const mergeWithSectionInitialSelections = (
 };
 
 /**
+ * Input arguments for the createInitialFilterSettingsWrapper function.
+ *
+ * @property initialFilterSelections Initial key-value pairs of filter settings
+ * @property defaultValues Default key-value pairs of filter settings
+ * @property sections Child elements that can have initial and default values
+ */
+export type CreateInitialFilterSettingsArgs = {
+  initialFilterSelections?: Map<string, FilterSettingsValue[]>;
+  defaultValues?: Map<string, FilterSettingsValue[]>;
+  sections?: ReactElement<FilterMenuSectionProps>[];
+  onFilterInitialized?: FilterMenuFilterInitializedHandler;
+};
+
+/**
  * Function used by FilterMenu to merge initial and default filter settings.
  *
  * FilterMenu accepts both initial settings and default (fallback) settings that
@@ -147,16 +179,14 @@ const mergeWithSectionInitialSelections = (
  * settings are used to initialize the filter settings, whereas the default
  * settings are applied when resetting the filter settings, if present.
  *
- * @param initialFilterSelections Initial key-value pairs of filter settings
- * @param defaultValues Default key-value pairs of filter settings
- * @param sections Child elements that can have initial and default values
  * @returns A FilterSettings instance with the merged initial and default values
  */
-export const createInitialFilterSettings = (
-  initialFilterSelections?: Map<string, FilterSettingsValue[]>,
-  defaultValues?: Map<string, FilterSettingsValue[]>,
-  sections?: ReactElement<FilterMenuSectionProps>[],
-) => {
+export const createInitialFilterSettings = ({
+  initialFilterSelections,
+  defaultValues,
+  sections,
+  onFilterInitialized,
+}: CreateInitialFilterSettingsArgs) => {
   let filterSettingsMap: Map<string, FilterSettingsValue[]>;
   if (initialFilterSelections)
     filterSettingsMap = new Map<string, FilterSettingsValue[]>(
@@ -184,6 +214,15 @@ export const createInitialFilterSettings = (
       filterSettingsMap,
     );
 
+  if (onFilterInitialized) {
+    // Call after the current compoennt has finished rendering, because an error
+    // will be thrown if the other component's state is updated during the current
+    // render phase.
+    setTimeout(() => {
+      onFilterInitialized(filterSettingsMap);
+    }, 0);
+  }
+
   return { map: filterSettingsMap, defaults: defaultValuesMap };
 };
 
@@ -202,9 +241,16 @@ export const wrapReducer = (
   return (filterSettings: FilterSettings, action: FilterSettingsAction) => {
     const oldFilterSettings = filterSettings;
     const newFilterSettings = reducer(filterSettings, action);
+
     if (onSelectionChanged) {
-      onSelectionChanged(newFilterSettings, oldFilterSettings, action);
+      // Call after the current compoennt has finished rendering, because an error
+      // will be thrown if the other component's state is updated during the current
+      // render phase.
+      setTimeout(() => {
+        onSelectionChanged(newFilterSettings, oldFilterSettings, action);
+      }, 0);
     }
+
     return newFilterSettings;
   };
 };
@@ -246,8 +292,10 @@ const buildFilterMenuSection = (elmt: ReactElement<FilterMenuSectionProps>) => {
  */
 export const FilterMenu = ({
   onSelectionChanged,
+  onFilterInitialized,
   initialSelections,
   defaultValues,
+  refreshState,
   children,
 }: FilterMenuProps) => {
   const sections = Array.isArray(children)
@@ -256,8 +304,30 @@ export const FilterMenu = ({
 
   const [filterSettings, dispatch] = useReducer(
     wrapReducer(filterSettingsReducer, onSelectionChanged),
-    createInitialFilterSettings(initialSelections, defaultValues, sections),
+    {
+      initialSelections,
+      defaultValues,
+      sections,
+      onFilterInitialized,
+    } as CreateInitialFilterSettingsArgs,
+    createInitialFilterSettings,
   );
+
+  // If the refreshState changes to true, reset the filter settings by re-initializing the state.
+  useEffect(() => {
+    if (refreshState) {
+      dispatch({
+        type: FilterSettingsActionType.SET_ALL_SELECTIONS,
+        sectionSetting: { key: "", values: [] },
+        filterSettings: createInitialFilterSettings({
+          initialSelections,
+          defaultValues,
+          sections,
+          onFilterInitialized,
+        } as CreateInitialFilterSettingsArgs).map,
+      });
+    }
+  }, [refreshState]);
 
   return (
     <FilterSettingsContext.Provider value={filterSettings}>

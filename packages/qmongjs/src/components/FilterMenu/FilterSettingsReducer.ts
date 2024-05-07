@@ -9,6 +9,8 @@ export enum FilterSettingsActionType {
   NOT_SET,
   SET_SECTION_SELECTIONS,
   DEL_SECTION_SELECTIONS,
+  SET_ALL_SELECTIONS,
+  RESET_SELECTIONS,
 }
 
 /**
@@ -18,6 +20,7 @@ export enum FilterSettingsActionType {
 export type FilterSettingsAction = {
   type: FilterSettingsActionType;
   sectionSetting: { key: string; values: FilterSettingsValue[] };
+  filterSettings?: Map<string, FilterSettingsValue[]>;
 };
 
 /**
@@ -85,7 +88,22 @@ export function filterSettingsReducer(
 
       return { map: newFilterSettings, defaults: filterSettings.defaults };
     }
+    case FilterSettingsActionType.SET_ALL_SELECTIONS: {
+      if (action.filterSettings === undefined) {
+        return {
+          map: new Map<string, FilterSettingsValue[]>(),
+          defaults: filterSettings.defaults,
+        };
+      }
 
+      return { map: action.filterSettings, defaults: filterSettings.defaults };
+    }
+    case FilterSettingsActionType.RESET_SELECTIONS: {
+      const newFilterSettings = new Map<string, FilterSettingsValue[]>(
+        filterSettings.defaults.entries(),
+      );
+      return { map: newFilterSettings, defaults: filterSettings.defaults };
+    }
     default:
       return filterSettings;
   }
