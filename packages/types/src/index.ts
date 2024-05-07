@@ -96,8 +96,8 @@ export type DataPoint = {
   denominator: number;
   dg: number | null;
   context: "caregiver" | "resident";
-  deliveryTime: Date;
-  affirmTime: Date;
+  deliveryTime?: Date | null;
+  affirmTime?: Date | null;
 };
 
 export type IndicatorData = {
@@ -107,17 +107,11 @@ export type IndicatorData = {
   levelYellow: number | null;
   levelDirection: number | null;
   minDenominator: number | null;
-  minValue: number | null;
-  maxValue: number | null;
+  minValue?: number | null;
+  maxValue?: number | null;
   shortDescription: string | null;
   longDescription: string | null;
-  indType:
-    | "andel"
-    | "beregnet_andel"
-    | "antall"
-    | "gjennomsnitt"
-    | "median"
-    | "dg_andel";
+  indType?: string | null;
   sortingName: string | null;
   format: string | null;
   data: DataPoint[];
@@ -129,5 +123,5 @@ export type RegisterData = {
   registerShortName: string;
   registerID: number;
   medfieldID: number[];
-  indicatorData: IndicatorData[];
+  indicatorData?: IndicatorData[];
 };
