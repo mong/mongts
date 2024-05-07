@@ -9,12 +9,7 @@ import { MenuButton } from "../Buttons";
 import { Menu } from "../Menu";
 import { PopUp } from "../PopUp";
 
-type HeaderProps = {
-  origin: string;
-  lang: "no" | "en";
-};
-
-export const Header: React.FC<HeaderProps> = ({ lang }) => {
+export const Header = ({ lang }: { lang: "no" | "en" }) => {
   return (
     <header className={`${classNames.headerContainer}`}>
       <div className={classNames.headerLogo}>
