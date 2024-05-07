@@ -1,12 +1,12 @@
 import React from "react";
-import Example from "../../src/charts/HeatMap";
+import { HeatMap } from "../../src/charts/HeatMap";
 
-const box_size = 500;
+const box_size = 400;
 
 export const Skde = (): JSX.Element => {
   return (
     <div>
-      <Example width={box_size} height={box_size}></Example>
+      <HeatMap width={box_size} height={box_size}></HeatMap>
     </div>
   );
 };

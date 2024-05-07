@@ -1,6 +1,7 @@
 import React from "react";
 import { scaleLinear } from "@visx/scale";
 import { HeatmapRect } from "@visx/heatmap";
+import { Group } from "@visx/group";
 
 type Box = {
   bin: number;
@@ -91,17 +92,17 @@ export type HeatmapProps = {
   events?: boolean;
 };
 
-const defaultMargin = { top: 0, left: 0, right: 0, bottom: 0 };
+const defaultMargin = { top: 20, left: 200, right: 40, bottom: 40 };
 
-function Example({
+export const HeatMap = ({
   width,
   height,
   events = true,
   margin = defaultMargin,
-}: HeatmapProps) {
+}: HeatmapProps) => {
   // bounds
-  const xMax = width - margin.left - margin.right;
-  const yMax = height - margin.bottom - margin.top;
+  const xMax = width;
+  const yMax = height;
 
   const binWidth = xMax / binData2.length;
 
@@ -109,41 +110,42 @@ function Example({
   yScale.range([yMax, 0]);
 
   return (
-    <svg width={width} height={binWidth + height}>
-      <rect x={0} y={0} width={width} height={height} rx={0} fill={"#FFFFFF"} />
-
-      <HeatmapRect
-        data={binData2}
-        xScale={(d) => xScale(d) ?? 0}
-        yScale={(d) => yScale(d) ?? 0}
-        colorScale={rectColorScale}
-        binWidth={binWidth}
-        binHeight={binWidth}
-        gap={2}
-      >
-        {(heatmap) =>
-          heatmap.map((heatmapBins) =>
-            heatmapBins.map((bin) => (
-              <rect
-                key={`heatmap-rect-${bin.row}-${bin.column}`}
-                className="visx-heatmap-rect"
-                width={bin.width}
-                height={bin.height}
-                x={bin.x}
-                y={bin.y}
-                fill={bin.color}
-                onClick={() => {
-                  if (!events) return;
-                  const { row, column } = bin;
-                  alert(JSON.stringify({ row, column, bin: bin.bin }));
-                }}
-              />
-            )),
-          )
-        }
-      </HeatmapRect>
+    <svg
+      width={width + margin.left + margin.right}
+      height={binWidth + height + margin.top + margin.bottom}
+    >
+      <Group left={margin.left} top={margin.top}>
+        <HeatmapRect
+          data={binData2}
+          xScale={(d) => xScale(d) ?? 0}
+          yScale={(d) => yScale(d) ?? 0}
+          colorScale={rectColorScale}
+          binWidth={binWidth}
+          binHeight={binWidth}
+          gap={2}
+        >
+          {(heatmap) =>
+            heatmap.map((heatmapBins) =>
+              heatmapBins.map((bin) => (
+                <rect
+                  key={`heatmap-rect-${bin.row}-${bin.column}`}
+                  className="visx-heatmap-rect"
+                  width={bin.width}
+                  height={bin.height}
+                  x={bin.x}
+                  y={bin.y}
+                  fill={bin.color}
+                  onClick={() => {
+                    if (!events) return;
+                    const { row, column } = bin;
+                    alert(JSON.stringify({ row, column, bin: bin.bin }));
+                  }}
+                />
+              )),
+            )
+          }
+        </HeatmapRect>
+      </Group>
     </svg>
   );
-}
-
-export default Example;
+};
