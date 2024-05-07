@@ -61,6 +61,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
       ? { context: "caregiver", type: "dg" }
       : { context, type: "ind" };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     register as string,
     queryContext.context,
@@ -70,6 +71,7 @@ export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
     unitNamesQuery.data?.nestedUnitNames ?? [];
   const optstu: OptsTu[] | [] = unitNamesQuery.data?.opts_tu ?? [];
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const selectionYearQuery: UseQueryResult<any, unknown> =
     useSelectionYearsQuery(
       register as string,

@@ -36,6 +36,7 @@ const SelectRegister = (props: selectedRegisterProps) => {
 
   useEventListener("keydown", handleKeyDown);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleInputChange = (e: any) => {
     setValue(e.target.value);
   };

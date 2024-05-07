@@ -22,6 +22,7 @@ if (process.env.NEXT_PUBLIC_SENTRY) {
 }
 
 export default function Home() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [origin, setOrigin] = React.useState("");
   React.useEffect(() => {
     setOrigin(window.location.origin);

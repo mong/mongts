@@ -15,7 +15,7 @@ interface Props {
   tu_names: NestedTreatmentUnitName;
   treatment_units: string[];
   update_treatment_units: (arg: string[]) => void;
-  multiple_choice: Boolean;
+  multiple_choice: boolean;
 }
 
 export const UnitNameListBody: React.FC<Props> = (props) => {
@@ -26,7 +26,7 @@ export const UnitNameListBody: React.FC<Props> = (props) => {
     treatment_units: string[],
     update_treatment_units: (arg: string[]) => void,
   ) => {
-    if (!!!multiple_choice) {
+    if (!multiple_choice) {
       update_treatment_units([selected_unit]);
     } else if (
       treatment_units.length < app_text.tu_list.max_nr_tu &&

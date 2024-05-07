@@ -6,6 +6,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import classNames from "../../../src/styles/Kvalitetsregistre.module.css";
 
 const SelectedRegisterPage = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const registryNameQuery: UseQueryResult<any, unknown> =
     useRegisterNamesQuery();
   if (registryNameQuery.isLoading) {
@@ -26,7 +27,7 @@ const SelectedRegisterPage = () => {
 
 export default SelectedRegisterPage;
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async () => {
   return {
     props: { content: [] },
   };
@@ -34,6 +35,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const registries = await fetchRegisterNames();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const paths = registries.flatMap((registry: any) => {
     const { caregiver_data, resident_data, dg_data } = registry;
     const sykehustab =

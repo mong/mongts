@@ -140,6 +140,7 @@ export const IndicatorLinechart = (
   indicatorParams: IndicatorLinechartParams,
 ) => {
   // Fetch aggregated data
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const indicatorQuery: UseQueryResult<any, unknown> =
     useIndicatorQuery(indicatorParams);
 
