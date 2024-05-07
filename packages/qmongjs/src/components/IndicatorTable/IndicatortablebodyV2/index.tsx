@@ -42,6 +42,7 @@ export type IndicatorTableBodyV2Props = {
 };
 
 export type DataPoint = {
+  id?: number;
   unitName: string;
   year: number;
   var: number;
@@ -152,6 +153,7 @@ export const createData = (indicatorData: Indicator[]) => {
         )
       ) {
         returnData[i].indicatorData[j].data.push({
+          id: row.id,
           unitName: row.unit_name,
           year: row.year,
           var: row.var,
@@ -187,7 +189,11 @@ const createChartData = (
       return indDataRow.unit_name === unitNamesRow;
     });
     return unitIndData.map((row) => {
-      return { x: new Date(row.year, 0), y: row.var } as LinechartData;
+      return {
+        id: row.id,
+        x: new Date(row.year, 0),
+        y: row.var,
+      } as LinechartData;
     });
   });
 

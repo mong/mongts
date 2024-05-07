@@ -10,4 +10,5 @@ export interface Filter {
   register?: string;
   type?: string;
   context?: string;
+  id?: number;
 }
