@@ -1,10 +1,9 @@
 import React, { PropsWithChildren, useState } from "react";
 import { Tabs, Tab, styled } from "@mui/material";
-import { TreatmentQualityFilterMenuProps } from "qmongjs";
 
 type TreatmentQualityTabsProps = PropsWithChildren<{
   context: string | undefined;
-  onTabChanged: (string) => void;
+  onTabChanged: (newValue: string) => void;
   isPhoneSizedScreen?: boolean;
 }>;
 
@@ -15,11 +14,13 @@ export const StyledTabs = styled(Tabs)(({ theme }) => ({
 }));
 
 export const StyledTab = styled(Tab)(({ theme }) => ({
-  fontFamily: theme.typography.button.fontFamily,
-  fontWeight: "600",
+  font: theme.typography.button.font,
   textTransform: "none",
-  borderRadius: 5,
-  height: theme.mixins.toolbar.minHeight,
+  borderRadius: 4,
+  [theme.breakpoints.down("sm")]: {
+    padding: "12px",
+    fontSize: "13px",
+  },
 }));
 
 export default function TreatmentQualityTabs({
