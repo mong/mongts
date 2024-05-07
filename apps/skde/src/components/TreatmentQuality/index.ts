@@ -25,15 +25,25 @@ export const desktopBreakpoint = 1300;
 
 export const TreatmentQualityAppBar = styled(AppBar)(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,
-  backgroundColor: "rgba(222, 231, 238, 1)",
-  color: "black",
+  backgroundColor: theme.palette.primary.light,
+  color: theme.palette.text.primary,
 }));
 
 export const FilterIconButton = styled(IconButton)(({ theme }) => ({
-  paddingLeft: 0,
+  color: theme.palette.secondary.main,
   [theme.breakpoints.up("desktop")]: {
     display: "none",
   },
+  [theme.breakpoints.down("sm")]: {
+    "& .MuiTypography-root": {
+      fontSize: "13px",
+    },
+  },
+}));
+
+export const TabsRow = styled(Box)(({ theme }) => ({
+  display: "flex",
+  paddingLeft: theme.typography.body1.fontSize,
 }));
 
 export const FilterDrawer = styled(Drawer)(({ theme }) => ({
@@ -111,17 +121,17 @@ export const SkdeLogoBox = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const FooterWrapper = styled(Paper)(({ theme }) => ({
+export const FooterWrapper = styled(Paper)(() => ({
   marginTop: "calc(100vh)",
   color: "white",
 }));
 
-export const FooterGrid = styled(Grid)(({ theme }) => ({
+export const FooterGrid = styled(Grid)(() => ({
   justifyContent: "space-around",
   backgroundColor: "#00263d",
 }));
 
-export const FooterItem = styled(Grid)(({ theme }) => ({
+export const FooterItem = styled(Grid)(() => ({
   textAlign: "center",
   "& .footer-logo": {
     verticalAlign: "middle",
@@ -130,18 +140,18 @@ export const FooterItem = styled(Grid)(({ theme }) => ({
   },
 }));
 
-export const FooterListItemIcon = styled(ListItemIcon)(({ theme }) => ({
+export const FooterListItemIcon = styled(ListItemIcon)(() => ({
   color: "white",
 }));
 
-export const FooterListItemText = styled(ListItemText)(({ theme }) => ({
+export const FooterListItemText = styled(ListItemText)(() => ({
   lineHeight: 1,
   margin: 0,
 }));
 
-export const FooterDividerBox = styled(Box)(({ theme }) => ({}));
+export const FooterDividerBox = styled(Box)(() => ({}));
 
-export const FooterDivider = styled(Divider)(({ theme }) => ({
+export const FooterDivider = styled(Divider)(() => ({
   backgroundColor: "#27485b",
 }));
 
@@ -167,15 +177,15 @@ export const MainBox = styled(Box)(({ theme }) => ({
     "& th": {
       minWidth: "6rem",
     },
-    marginTop: "56px",
-    height: "calc(100vh - 56px)",
+    marginTop: "104px",
+    height: "calc(100vh - 104px)",
     "& .MuiDrawer-paper": {
       width: "100%",
     },
   },
   [theme.breakpoints.up("sm")]: {
-    marginTop: "64px",
-    height: "calc(100vh - 64px)",
+    marginTop: "112px",
+    height: "calc(100vh - 112px)",
     "& .MuiDrawer-paper": {
       width: "100%",
     },

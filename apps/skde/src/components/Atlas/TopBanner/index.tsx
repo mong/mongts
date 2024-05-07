@@ -1,7 +1,7 @@
 import style from "./TopBanner.module.css";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { NavigateNext } from "@mui/icons-material";
 
 interface TopBannerProps {
   mainTitle: string;
@@ -15,7 +15,7 @@ export const TopBanner = ({ mainTitle, ia, lang }: TopBannerProps) => {
       <div className={style.bannerWrapper}>
         <Breadcrumbs
           aria-label="breadcrumb"
-          separator={<NavigateNextIcon htmlColor="#D3D7DA" />}
+          separator={<NavigateNext htmlColor="#D3D7DA" />}
         >
           <Link
             underline="hover"

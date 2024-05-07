@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import TuneIcon from "@mui/icons-material/Tune";
+import { Menu } from "@mui/icons-material";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { useQueryParam, withDefault, StringParam } from "use-query-params";
@@ -34,6 +34,7 @@ import {
   desktopBreakpoint,
   TreatmentQualityAppBar,
   SkdeLogoBox,
+  TabsRow,
 } from "../../src/components/TreatmentQuality";
 import TreatmentQualityFooter from "../../src/components/TreatmentQuality/TreatmentQualityFooter";
 import { ThemeProvider } from "@mui/material/styles";
@@ -43,7 +44,6 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useSearchParams } from "next/navigation";
 import TreatmentQualityTabs from "../../src/components/TreatmentQuality/TreatmentQualityTabs";
-import { Paper } from "@mui/material";
 
 const dataQualityKey = "dg";
 
@@ -120,8 +120,10 @@ export default function TreatmentQuality() {
   };
 
   // Load register names and medical fields
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const registryNameQuery: UseQueryResult<any, unknown> =
     useRegisterNamesQuery();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
 
@@ -150,7 +152,7 @@ export default function TreatmentQuality() {
       const selectedMedicalFieldNames = selectedMedicalFields.map(
         (field) => field.shortName,
       );
-      let selectedRegisters = medicalFieldFilter.filter(
+      const selectedRegisters = medicalFieldFilter.filter(
         (name) => !selectedMedicalFieldNames.includes(name),
       );
       registerFilter = Array.from(
@@ -306,17 +308,11 @@ export default function TreatmentQuality() {
         <CssBaseline />
         <TreatmentQualityAppBar position="fixed" elevation={appBarElevation}>
           <Toolbar>
-            <FilterIconButton
-              color="inherit"
-              aria-label="åpne sidemeny"
-              edge="start"
-              onClick={handleDrawerToggle}
-            >
-              <TuneIcon />
-              <Typography>Filter</Typography>
-            </FilterIconButton>
-            <Box sx={{ marginLeft: 2 }}>
-              <Typography variant="h6">Behandlingskvalitet</Typography>
+            <Box>
+              <Typography variant="h5">Behandlingskvalitet</Typography>
+              <Typography variant="body1">
+                Nasjonale medisinske kvalitetsregistre
+              </Typography>
             </Box>
             <SkdeLogoBox>
               <Image
@@ -329,6 +325,22 @@ export default function TreatmentQuality() {
               />
             </SkdeLogoBox>
           </Toolbar>
+          <TabsRow>
+            <FilterIconButton
+              aria-label="åpne sidemeny"
+              edge="start"
+              onClick={handleDrawerToggle}
+            >
+              <Menu />
+              <Typography variant="button" sx={{ textTransform: "none" }}>
+                Filter
+              </Typography>
+            </FilterIconButton>
+            <TreatmentQualityTabs
+              context={tableContext}
+              onTabChanged={setTableContext}
+            />
+          </TabsRow>
         </TreatmentQualityAppBar>
         <FilterDrawerBox
           component="nav"
@@ -345,13 +357,7 @@ export default function TreatmentQuality() {
             }}
           >
             <Toolbar />
-            <Paper sx={{ marginLeft: 3, marginRight: 3, marginTop: 0 }}>
-              <TreatmentQualityTabs
-                context={tableContext}
-                onTabChanged={setTableContext}
-                isPhoneSizedScreen={isPhoneSizedScreen}
-              />
-            </Paper>
+            <Toolbar />
             <Box sx={{ marginTop: filterMenuTopMargin }}>
               {queriesReady && (
                 <>
