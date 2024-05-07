@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
-import { Tune } from "@mui/icons-material";
+import { Menu } from "@mui/icons-material";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { useQueryParam, withDefault, StringParam } from "use-query-params";
@@ -34,6 +34,7 @@ import {
   desktopBreakpoint,
   TreatmentQualityAppBar,
   SkdeLogoBox,
+  TabsRow,
 } from "../../src/components/TreatmentQuality";
 import TreatmentQualityFooter from "../../src/components/TreatmentQuality/TreatmentQualityFooter";
 import { ThemeProvider } from "@mui/material/styles";
@@ -305,13 +306,11 @@ export default function TreatmentQuality() {
         <CssBaseline />
         <TreatmentQualityAppBar position="fixed" elevation={appBarElevation}>
           <Toolbar>
-            <Box sx={{ marginLeft: 1 }}>
-              <Typography variant="h3">Behandlingskvalitet</Typography>
-              {!isPhoneSizedScreen && (
-                <Typography variant="body1">
-                  Resultater fra nasjonale medisinske kvalitetsregistre.
-                </Typography>
-              )}
+            <Box>
+              <Typography variant="h5">Behandlingskvalitet</Typography>
+              <Typography variant="body1">
+                Nasjonale medisinske kvalitetsregistre
+              </Typography>
             </Box>
             <SkdeLogoBox>
               <Image
@@ -324,21 +323,22 @@ export default function TreatmentQuality() {
               />
             </SkdeLogoBox>
           </Toolbar>
-          <Toolbar>
+          <TabsRow>
             <FilterIconButton
-              color="inherit"
               aria-label="åpne sidemeny"
               edge="start"
               onClick={handleDrawerToggle}
             >
-              <Tune />
-              <Typography variant="body1">Filter</Typography>
+              <Menu />
+              <Typography variant="button" sx={{ textTransform: "none" }}>
+                Filter
+              </Typography>
             </FilterIconButton>
             <TreatmentQualityTabs
               context={tableContext}
               onTabChanged={setTableContext}
             />
-          </Toolbar>
+          </TabsRow>
         </TreatmentQualityAppBar>
         <FilterDrawerBox
           component="nav"
