@@ -7,7 +7,8 @@ import {
   Typography,
 } from "@mui/material";
 import { Card, CardContent } from "@mui/material";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import CustomAccordionExpandIcon from "./CustomAccordionExpandIcon";
+
 import {
   FilterSettingsContext,
   FilterSettingsValue,
@@ -92,8 +93,13 @@ const FilterMenuSection = ({
   } else {
     return (
       <Accordion key={`fms-accordion-${sectionid}`}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>{sectiontitle}</Typography>
+        <AccordionSummary
+          expandIcon={<CustomAccordionExpandIcon />}
+          sx={{ flexDirection: "row-reverse" }}
+        >
+          <Typography variant="body1" sx={{ margin: 1 }}>
+            {sectiontitle}
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>{children}</AccordionDetails>
       </Accordion>

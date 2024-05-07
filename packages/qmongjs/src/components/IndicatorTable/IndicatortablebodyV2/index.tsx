@@ -3,8 +3,7 @@ import IconButton from "@mui/material/IconButton";
 import TableBody from "@mui/material/TableBody";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { Indicator } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
@@ -328,7 +327,7 @@ const IndicatorRow = (props: {
                     aria-label="expand"
                     size="small"
                   >
-                    {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                    {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
                   </IconButton>
                 </td>
                 <td>{indData.indicatorName}</td>
