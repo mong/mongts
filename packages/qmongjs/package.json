@@ -6,7 +6,7 @@
   "scripts": {
     "test": "yarn run test:base run --coverage",
     "test:base": "vitest",
-    "lint": "eslint --ignore-path .gitignore --ext js,ts,tsx src",
+    "lint": "eslint src",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
     "format": "yarn run prettier --write",
     "check-format": "yarn run prettier --check",
@@ -24,7 +24,7 @@
     "@typescript-eslint/parser": "7.8.0",
     "@vitejs/plugin-react": "4.2.1",
     "@vitest/coverage-v8": "1.6.0",
-    "eslint": "8.57.0",
+    "eslint": "9.1.1",
     "jsdom": "24.0.0",
     "next-query-params": "5.0.0",
     "next-router-mock": "0.9.13",

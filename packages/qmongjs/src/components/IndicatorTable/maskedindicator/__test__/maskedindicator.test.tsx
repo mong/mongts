@@ -2,6 +2,7 @@ import { render } from "@testing-library/react";
 
 import { MaskedIndicator } from "../";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let container: any = null;
 beforeEach(() => {
   container = document.createElement("div");

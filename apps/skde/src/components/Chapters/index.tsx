@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import { TextBox } from "../TextBox";
 import { FactBox } from "../Factbox";
 import { ResultBox } from "../ResultBox";
-import { AtlasData } from "../../types";
 
 type Tekst = {
   type: "tekst";

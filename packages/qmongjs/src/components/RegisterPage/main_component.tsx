@@ -39,6 +39,7 @@ export interface Props {
   colspan: number;
   selection_bar_height: number | null;
   legend_height: number | null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   update_legend_height(height: any): void;
 }
 
@@ -67,6 +68,7 @@ const Main = (props: Props) => {
     string | undefined
   >("indicator", mainQueryParamsConfig.indicator);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
   const registerList = registerNames.map((d: RegisterName) => d.rname);

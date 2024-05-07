@@ -1,10 +1,10 @@
 import React from "react";
 
 export const useOnClickOutside = <T extends Element>(
-  handler: Function,
+  handler: () => void,
   active: boolean,
 ) => {
-  let ref = React.useRef<T>();
+  const ref = React.useRef<T>();
 
   React.useEffect(() => {
     const clickHandler = (event) => {

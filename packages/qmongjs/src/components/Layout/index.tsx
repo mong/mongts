@@ -8,6 +8,7 @@ interface Props {
 }
 
 export const Layout = ({ children }: Props) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [origin, setOrigin] = useState("");
   useEffect(() => {
     setOrigin(window.location.origin);

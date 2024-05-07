@@ -28,8 +28,11 @@ export type MapData = {
 
 type MapProps = {
   mapData: MapData;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   mapAttr?: any[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   dataToMap?: any[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   connection?: any;
   attrName?: string;
   classes?: number[];

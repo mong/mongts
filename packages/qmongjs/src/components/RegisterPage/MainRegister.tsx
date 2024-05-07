@@ -51,6 +51,7 @@ export const MainRegister: React.FC<MainRegisterProps> = ({
       ? { context: "caregiver", type: "dg" }
       : { context, type: "ind" };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     "all",
     queryContext.context,

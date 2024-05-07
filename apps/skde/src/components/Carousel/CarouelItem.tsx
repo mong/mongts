@@ -10,6 +10,7 @@ export interface CarouselItemProps {
 export const CarouselItem = forwardRef(
   (
     { tag: Tag = "div", children, ...rest }: CarouselItemProps,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     externalRef: React.MutableRefObject<any>,
   ) => {
     return (

@@ -5,6 +5,7 @@ export const useEventListener = (
   handler: (event: KeyboardEvent) => void,
   targetElement = global,
 ) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const listenerRef = useRef<any>();
 
   useEffect(() => {

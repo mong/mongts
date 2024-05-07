@@ -39,6 +39,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
       ? { context: "caregiver", type: "dg" }
       : { context, type: "ind" };
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const indicatorDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
     registerShortName: registerName.rname,
     unitNames,
@@ -48,6 +49,7 @@ export const TableBlock: React.FC<TableBlockProps> = (props) => {
   });
   const { isFetching } = indicatorDataQuery;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const descriptionQuery: UseQueryResult<any, unknown> = useDescriptionQuery({
     registerShortName: registerName.rname,
   });

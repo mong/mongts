@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useIntersectionByID } from "../../helpers/hooks/useintersectionobserver";
 import style from "./ListItem.module.css";
 

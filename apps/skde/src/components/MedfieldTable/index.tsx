@@ -12,9 +12,8 @@ import Paper from "@mui/material/Paper";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
-import { level, levelSymbols } from "qmongjs";
+import { level } from "qmongjs";
 import { newLevelSymbols } from "qmongjs";
-import _ from "lodash";
 import { Indicator } from "types";
 
 export type MedfieldTableProps = {
@@ -32,7 +31,7 @@ export type IndicatorLevels = {
 };
 
 const createSymbols = (green: number, yellow: number, red: number) => {
-  let symbols = [];
+  const symbols = [];
 
   for (let i = 0; i < green; i++) {
     symbols.push(newLevelSymbols("H"));
@@ -182,6 +181,7 @@ const Row = (props: { row: RowData }) => {
 
 export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
   // Fetch aggregated data
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const indicatorQuery: UseQueryResult<any, unknown> =
     useIndicatorQuery(medfieldTableParams);
 

@@ -1,9 +1,9 @@
 import classNames from "./ChartLegend.module.css";
 
 type ColorLegendProps = {
-  colorScale: Function;
+  colorScale: (args: string) => string;
   labels?: string[];
-  onClick?: Function;
+  onClick?: () => void;
   values: string[];
 };
 

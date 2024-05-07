@@ -120,8 +120,10 @@ export default function TreatmentQuality() {
   };
 
   // Load register names and medical fields
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const registryNameQuery: UseQueryResult<any, unknown> =
     useRegisterNamesQuery();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
 
@@ -150,7 +152,7 @@ export default function TreatmentQuality() {
       const selectedMedicalFieldNames = selectedMedicalFields.map(
         (field) => field.shortName,
       );
-      let selectedRegisters = medicalFieldFilter.filter(
+      const selectedRegisters = medicalFieldFilter.filter(
         (name) => !selectedMedicalFieldNames.includes(name),
       );
       registerFilter = Array.from(

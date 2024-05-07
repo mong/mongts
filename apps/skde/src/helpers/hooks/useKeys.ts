@@ -3,10 +3,10 @@ import React from "react";
 export const useKeys = (
   key: string[],
   eventName: string,
-  handler: Function,
+  handler: (event: KeyboardEvent) => void,
   targetElement = global,
 ) => {
-  const listenerRef = React.useRef<Function>();
+  const listenerRef = React.useRef<(event: KeyboardEvent) => void>();
 
   React.useEffect(() => {
     listenerRef.current = handler;

@@ -2,6 +2,7 @@ import { ScaleLinear } from "d3-scale";
 
 import classNames from "./ChartLegend.module.css";
 type AnnualVarLegendPops = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   colorFillScale: ScaleLinear<any, any, never>;
   sizeScale: ScaleLinear<number, number, never>;
   labels?: number[];

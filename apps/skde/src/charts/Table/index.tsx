@@ -41,7 +41,7 @@ export const DataTable = <
 
   const [order, setOrder] = React.useState<"asc" | "desc">("desc");
   const [orderBy, setOrderBy] = React.useState(headers[1].id);
-  const createSortHandler = (property) => (event) => {
+  const createSortHandler = (property) => () => {
     (() => {
       const isAsc = orderBy === property && order === "asc";
       setOrder(isAsc ? "desc" : "asc");
