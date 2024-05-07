@@ -3,72 +3,22 @@ import { scaleLinear } from "@visx/scale";
 import { HeatmapRect } from "@visx/heatmap";
 import { Group } from "@visx/group";
 
-type Box = {
+export type Box = {
   bin: number;
   count: number;
 };
 
-type HeatMapColumn = {
+export type HeatMapColumn = {
   bin: number;
   bins: Box[];
 };
-
-const binData2: HeatMapColumn[] = [
-  {
-    bin: 0,
-    bins: [
-      { bin: 0, count: 2 },
-      { bin: 1, count: 2 },
-      { bin: 2, count: 1 },
-      { bin: 3, count: 2 },
-    ],
-  },
-  {
-    bin: 1,
-    bins: [
-      { bin: 0, count: 2 },
-      { bin: 1, count: 2 },
-      { bin: 2, count: 1 },
-      { bin: 3, count: 2 },
-    ],
-  },
-  {
-    bin: 2,
-    bins: [
-      { bin: 0, count: 0 },
-      { bin: 1, count: 1 },
-      { bin: 2, count: 0 },
-      { bin: 3, count: 0 },
-    ],
-  },
-  {
-    bin: 3,
-    bins: [
-      { bin: 0, count: 0 },
-      { bin: 1, count: 2 },
-      { bin: 2, count: 2 },
-      { bin: 3, count: 2 },
-    ],
-  },
-];
 
 function max(data: any[], value: (d: any) => number): number {
   return Math.max(...data.map(value));
 }
 
 // accessors
-const x = (d: HeatMapColumn) => d.bins;
-
-const bucketSizeMax = max(binData2, (d) => x(d).length);
-
-// scales
-const xScale = scaleLinear<number>({
-  domain: [0, binData2.length],
-});
-
-const yScale = scaleLinear<number>({
-  domain: [0, bucketSizeMax],
-});
+const getX = (d: HeatMapColumn) => d.bins;
 
 const rectColorScale = (x: number) => {
   switch (x) {
@@ -85,44 +35,54 @@ const rectColorScale = (x: number) => {
 };
 
 export type HeatmapProps = {
+  data: HeatMapColumn[];
   width: number;
-  height: number;
   margin?: { top: number; right: number; bottom: number; left: number };
   separation?: number;
   events?: boolean;
 };
 
-const defaultMargin = { top: 20, left: 200, right: 40, bottom: 40 };
+const defaultMargin = { top: 40, left: 100, right: 40, bottom: 20 };
 
 export const HeatMap = ({
+  data,
   width,
-  height,
   events = true,
   margin = defaultMargin,
+  separation = 3,
 }: HeatmapProps) => {
-  // bounds
+  // Bounds
+  const bucketSizeMax = max(data, (d) => getX(d).length);
   const xMax = width;
+  const binWidth = width / data[0].bins.length;
+  const height = binWidth * data.length;
   const yMax = height;
 
-  const binWidth = xMax / binData2.length;
+  // Scales
+  const xScale = scaleLinear<number>({
+    domain: [0, bucketSizeMax],
+    range: [0, xMax],
+  });
 
-  xScale.range([0, xMax]);
-  yScale.range([yMax, 0]);
+  const yScale = scaleLinear<number>({
+    domain: [0, data.length],
+    range: [0, yMax],
+  });
 
   return (
     <svg
-      width={width + margin.left + margin.right}
-      height={binWidth + height + margin.top + margin.bottom}
+      width={binWidth + width + margin.left + margin.right}
+      height={height + margin.top + margin.bottom}
     >
       <Group left={margin.left} top={margin.top}>
         <HeatmapRect
-          data={binData2}
+          data={data}
           xScale={(d) => xScale(d) ?? 0}
           yScale={(d) => yScale(d) ?? 0}
           colorScale={rectColorScale}
           binWidth={binWidth}
           binHeight={binWidth}
-          gap={2}
+          gap={separation}
         >
           {(heatmap) =>
             heatmap.map((heatmapBins) =>
