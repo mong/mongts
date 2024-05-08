@@ -65,7 +65,7 @@ export const Skde = (): JSX.Element => {
 
   const queryParams: FetchIndicatorParams = {
     context: "caregiver",
-    treatmentYear: 2022,
+    treatmentYear: 2023,
     unitNames: unitNames,
     type: "ind",
   };
@@ -82,7 +82,7 @@ export const Skde = (): JSX.Element => {
     "colon_relsurv_fra_opr",
     "hjerneslag_beh_tromb",
     "breast_bct_invasiv_0_30mm",
-    "lungekreft_andellobektomithoraskopisk",
+    "Lungekreft_AndelLobektomiThorakoskopisk",
     "NDV_andel_HbA1C_mindre_eller_lik_53",
     "rectum_laparoskopi",
     "prostata_utfoert_lymfadenektomi",
@@ -105,17 +105,37 @@ export const Skde = (): JSX.Element => {
     "nyre_transplant_bt",
   ];
 
+
   const indicatorData = indicatorQuery.data as Indicator[];
 
   const filteredData = indicatorData.filter((row) => {
     return(indIDs.includes(row.ind_id))
   })
 
+  const indNameKey = filteredData.map((row) => {
+    return(
+      {indID: row.ind_id, indTitle: row.ind_title}
+    )
+  })
+
   const data = createHeatmapData(filteredData, unitNames, indIDs)
 
   return (
     <div>
-      <HeatMap data={data} width={width} separation={gap}></HeatMap>
+      <div>
+        <HeatMap heatmapData={data} width={width} separation={gap}></HeatMap>
+      </div>
+      <div>
+        <h3>Indikatorer</h3>
+        <ol>
+          {indIDs.map((indIDRow, index) => {
+            const indName = indNameKey.find((indKeyRow) => {
+              return(indKeyRow.indID === indIDRow)
+            })
+            return(<li key={"ind-" + index}>{indName ? indName.indTitle : null}</li>)
+          })}
+        </ol>
+      </div>
     </div>
   );
 };

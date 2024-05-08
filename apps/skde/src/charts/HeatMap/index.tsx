@@ -4,6 +4,8 @@ import { HeatmapRect } from "@visx/heatmap";
 import { Group } from "@visx/group";
 import { Indicator } from "types";
 import { level } from "qmongjs";
+import { Axis, AxisLeft, AxisTop } from "@visx/axis";
+import { scaleBand } from "@visx/scale";
 
 export type Box = {
   bin: number;
@@ -16,17 +18,14 @@ export type HeatMapColumn = {
   bins: Box[];
 };
 
+export type HeatMapData = {
+  data: HeatMapColumn[];
+  xTicks: string[];
+  yTicks: string[];
+}
+
 export const createHeatmapData = (indicatorData: Indicator[], unitNames: string[], indIDs: string[]) => {
 
-  const uniqueValues = (value, index, array) => {return(array.indexOf(value) === index)}
-
-  // const unitNames = indicatorData.map((row) => row.unit_name)
-  //   .filter(uniqueValues);
-
-  // const indIDs = indicatorData.map((row) => row.ind_id)
-  //   .filter(uniqueValues);
-
-  console.log(indicatorData)
   const heatmapData = indIDs.map((indID, indIndex) => {
     const indBin = indIndex;
 
@@ -47,7 +46,7 @@ export const createHeatmapData = (indicatorData: Indicator[], unitNames: string[
     return({bin: indBin, bins: bins} as HeatMapColumn)
   })
 
-  return(heatmapData as HeatMapColumn[])
+  return({data: heatmapData as HeatMapColumn[], xTicks: unitNames, yTicks: indIDs} as HeatMapData)
 };
 
 const rectColorScale = (x: number) => {
@@ -68,22 +67,25 @@ const rectColorScale = (x: number) => {
 };
 
 export type HeatmapProps = {
-  data: HeatMapColumn[];
+  heatmapData: HeatMapData;
   width: number;
   margin?: { top: number; right: number; bottom: number; left: number };
   separation?: number;
   events?: boolean;
 };
 
-const defaultMargin = { top: 40, left: 150, right: 0, bottom: 0 };
+const defaultMargin = { top: 200, left: 150, right: 0, bottom: 0 };
 
 export const HeatMap = ({
-  data,
+  heatmapData,
   width,
   events = true,
   margin = defaultMargin,
   separation = 3,
 }: HeatmapProps) => {
+
+  const { data, xTicks, yTicks } = heatmapData;
+
 
   // Bounds
   const nRows = data[0].bins.length;
@@ -102,6 +104,16 @@ export const HeatMap = ({
     domain: [0, nRows],
     range: [0, height],
   });
+
+  const xAxisScale = scaleBand<string>({
+    domain: xTicks,
+    range: [0, height]
+  })
+
+  const yAxisScale = scaleBand<number>({
+    domain: Array.from({length: yTicks.length}, (_, i) => i + 1),
+    range: [0, width]
+  })
 
   return (
     <svg
@@ -139,6 +151,17 @@ export const HeatMap = ({
             )
           }
         </HeatmapRect>
+
+        <AxisLeft
+          scale={xAxisScale}
+          hideAxisLine={true}
+          numTicks={nRows}
+          />
+        <AxisTop
+          scale={yAxisScale}
+          hideAxisLine={true}
+          numTicks={nCols}
+          />
       </Group>
     </svg>
   );
