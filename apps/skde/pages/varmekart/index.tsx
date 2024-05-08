@@ -12,54 +12,6 @@ import { Indicator } from "types";
 const width = 2000;
 const gap = 2;
 
-const binData: HeatMapColumn[] = [
-  {
-    bin: 0,
-    bins: [
-      { bin: 0, name: "row0", count: 1 },
-      { bin: 1, name: "row1", count: 2 },
-      { bin: 2, name: "row2", count: 1 },
-      { bin: 3, name: "row3", count: 2 },
-    ],
-  },
-  {
-    bin: 1,
-    bins: [
-      { bin: 0, name: "row0", count: 0 },
-      { bin: 1, name: "row1", count: 1 },
-      { bin: 2, name: "row2", count: 1 },
-      { bin: 3, name: "row3", count: 1 },
-    ],
-  },
-  {
-    bin: 2,
-    bins: [
-      { bin: 0, name: "row0", count: 2 },
-      { bin: 1, name: "row1", count: 1 },
-      { bin: 2, name: "row2", count: 0 },
-      { bin: 3, name: "row3", count: 2 },
-    ],
-  },
-  {
-    bin: 3,
-    bins: [
-      { bin: 0, name: "row0", count: 1 },
-      { bin: 1, name: "row1", count: 2 },
-      { bin: 2, name: "row2", count: 2 },
-      { bin: 3, name: "row3", count: 0 },
-    ],
-  },
-  {
-    bin: 4,
-    bins: [
-      { bin: 0, name: "row0", count: 1 },
-      { bin: 1, name: "row1", count: 2 },
-      { bin: 2, name: "row2", count: 1 },
-      { bin: 3, name: "row3", count: 2 },
-    ],
-  },
-];
-
 export const Skde = (): JSX.Element => {
   const unitNames = [
     "Helse Nord RHF",
