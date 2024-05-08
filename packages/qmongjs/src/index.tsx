@@ -55,3 +55,4 @@ export { indicatorTableTheme } from "./components/IndicatorTable/Indicatortableb
 export { LinechartGrid } from "./components/Charts/LinechartGrid";
 export { BarchartBase } from "./components/Charts/BarchartBase";
 export { LowLevelIndicatorList } from "./components/LowLevelIndicatorList";
+export { HeatMap, createHeatmapData } from "./components/Charts/HeatMap";

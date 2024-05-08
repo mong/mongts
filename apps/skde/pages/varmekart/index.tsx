@@ -1,5 +1,5 @@
 import React from "react";
-import { HeatMap, createHeatmapData } from "../../src/charts/HeatMap";
+import { HeatMap, createHeatmapData } from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "qmongjs/src/helpers/hooks";
 import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";

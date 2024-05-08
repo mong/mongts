@@ -1,11 +1,10 @@
-import React from "react";
 import { scaleLinear } from "@visx/scale";
 import { HeatmapRect } from "@visx/heatmap";
 import { Group } from "@visx/group";
 import { Indicator } from "types";
 import { level } from "qmongjs";
 import { AxisLeft, AxisTop } from "@visx/axis";
-import { scaleBand } from "@visx/scale";
+import { scaleOrdinal, scaleBand } from "@visx/scale";
 
 export type Box = {
   bin: number;
@@ -38,8 +37,8 @@ export const createHeatmapData = (
         return row.ind_id === indID && row.unit_name === unitName;
       });
 
-      let count: string;
-      indRow ? (count = level(indRow)) : (count = null);
+      let count: string | undefined;
+      indRow ? (count = level(indRow)) : (count = undefined);
 
       return {
         bin: unitBin,
@@ -57,22 +56,13 @@ export const createHeatmapData = (
   } as HeatMapData;
 };
 
-const rectColorScale = (x: number) => {
-  switch (x) {
-    case -1: {
-      return "#222222";
-    }
-    case 0: {
-      return "#e30713";
-    }
-    case 1: {
-      return "#fd9c00";
-    }
-    case 2: {
-      return "#3baa34";
-    }
-  }
-};
+const rectColorScale = scaleOrdinal<
+  number | { valueOf(): number },
+  string | undefined
+>({
+  range: ["#e30713", "#fd9c00", "#3baa34"],
+  domain: [0, 1, 2],
+});
 
 export type HeatmapProps = {
   heatmapData: HeatMapData;
