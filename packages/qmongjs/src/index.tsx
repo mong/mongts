@@ -53,4 +53,5 @@ export { UnitNameList } from "./components/RegisterPage/unitnamelist";
 export { SkdeTheme as SKDEtheme } from "./themes/SkdeTheme";
 export { indicatorTableTheme } from "./components/IndicatorTable/IndicatortablebodyV2/IndicatorTableBodyV2Styles";
 export { LinechartGrid } from "./components/Charts/LinechartGrid";
+export { BarchartBase } from "./components/Charts/BarchartBase";
 export { LowLevelIndicatorList } from "./components/LowLevelIndicatorList";

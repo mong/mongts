@@ -7,17 +7,16 @@ type CarouselButtonsProps = {
     label: string;
     icon: JSX.Element;
   }[];
-  nrOfButtons: number;
   activeCarousel: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onClick?: (nr: number) => any;
 };
 
-export const CarouselButtons: React.FC<CarouselButtonsProps> = ({
+export const CarouselButtons = ({
   options,
-  nrOfButtons,
   onClick,
   activeCarousel,
-}) => {
+}: CarouselButtonsProps) => {
   const clickHandler = (index) => {
     if (onClick) {
       onClick(index);

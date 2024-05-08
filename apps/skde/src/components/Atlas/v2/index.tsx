@@ -24,7 +24,7 @@ type AtlasJson = {
   publisert: boolean;
 };
 
-const AtlasPage: React.FC<AtlasPageProps> = ({ content, atlasData }) => {
+const AtlasPage = ({ content, atlasData }: AtlasPageProps) => {
   const obj: AtlasJson = JSON.parse(content);
 
   const tocData = obj.kapittel

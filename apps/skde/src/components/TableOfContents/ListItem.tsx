@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useIntersectionByID } from "../../helpers/hooks/useintersectionobserver";
 import style from "./ListItem.module.css";
 
@@ -11,13 +11,13 @@ type ListItemProps = {
   i?: string;
 };
 
-export const ListItem: React.FC<ListItemProps> = ({
+export const ListItem = ({
   children,
   href,
   linkTitle,
   expanded,
   setExpanded,
-}) => {
+}: ListItemProps) => {
   const isVisbile = useIntersectionByID(href.replace("#", ""), "0px");
 
   return (

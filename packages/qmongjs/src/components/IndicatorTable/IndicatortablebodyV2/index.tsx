@@ -19,12 +19,14 @@ import {
 } from "./IndicatorTableBodyV2Styles";
 import {
   LinechartBase,
+  BarchartBase,
   font,
   LinechartData,
   LineStyles,
   customFormat,
   useIndicatorQuery,
 } from "qmongjs";
+import { Group } from "@visx/group";
 
 const remarkPlugins: PluggableList = [remarkGfm];
 
@@ -42,6 +44,7 @@ export type IndicatorTableBodyV2Props = {
 };
 
 export type DataPoint = {
+  id?: number;
   unitName: string;
   year: number;
   var: number;
@@ -152,6 +155,7 @@ export const createData = (indicatorData: Indicator[]) => {
         )
       ) {
         returnData[i].indicatorData[j].data.push({
+          id: row.id,
           unitName: row.unit_name,
           year: row.year,
           var: row.var,
@@ -187,7 +191,11 @@ const createChartData = (
       return indDataRow.unit_name === unitNamesRow;
     });
     return unitIndData.map((row) => {
-      return { x: new Date(row.year, 0), y: row.var } as LinechartData;
+      return {
+        id: row.id,
+        x: new Date(row.year, 0),
+        y: row.var,
+      } as LinechartData;
     });
   });
 
@@ -289,20 +297,28 @@ const IndicatorRow = (props: {
     const sizeFactor = 0.5;
 
     return (
-      <LinechartBase
-        data={chartDataFiltered}
-        width={sizeFactor * width}
-        height={sizeFactor * height}
-        yMin={0}
-        yMax={1}
-        lineStyles={lineStyles}
-        font={font}
-        yAxisText={"Andel"}
-        format_y=",.0%"
-        levelGreen={indData.levelGreen!}
-        levelYellow={indData.levelYellow!}
-        levelDirection={indData.levelDirection!}
-      />
+      <Group>
+        <LinechartBase
+          data={chartDataFiltered}
+          width={sizeFactor * width}
+          height={sizeFactor * height}
+          yMin={0}
+          yMax={1}
+          lineStyles={lineStyles}
+          font={font}
+          yAxisText={"Andel"}
+          format_y=",.0%"
+          levelGreen={indData.levelGreen!}
+          levelYellow={indData.levelYellow!}
+          levelDirection={indData.levelDirection!}
+        />
+        <BarchartBase
+          indicatorData={indData}
+          width={sizeFactor * width * 0.7}
+          height={sizeFactor * height}
+          xTickFormat=",.0%"
+        />
+      </Group>
     );
   };
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/legacy/image";
+import Image from "next/image";
 import classNames from "./AtlasLink.module.css";
 import { timeFormat } from "d3-time-format";
 
@@ -19,7 +19,7 @@ const formatTimeEng = timeFormat("%B %d %Y");
 
 const formatTimeNo = timeFormat("%d.%m.%Y");
 
-export const AtlasLink: React.FC<Props> = ({
+export const AtlasLink = ({
   linkTo,
   imageSource,
   linkTitle,
@@ -27,7 +27,7 @@ export const AtlasLink: React.FC<Props> = ({
   linkText,
   date,
   lang,
-}) => {
+}: Props) => {
   // Newly updated if there is less than 60 says since atlas was published
   const newlyUpdated =
     (new Date().getTime() - new Date(date).getTime()) / (1000 * 60 * 60 * 24) <
@@ -47,7 +47,10 @@ export const AtlasLink: React.FC<Props> = ({
               alt={"atlas photo"}
               width={610}
               height={407}
-              layout="intrinsic"
+              style={{
+                maxWidth: "100%",
+                height: "auto",
+              }}
             />
           </div>
           <div className={classNames.linkText}>
