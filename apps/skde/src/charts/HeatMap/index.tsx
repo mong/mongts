@@ -2,6 +2,8 @@ import React from "react";
 import { scaleLinear } from "@visx/scale";
 import { HeatmapRect } from "@visx/heatmap";
 import { Group } from "@visx/group";
+import { Indicator } from "types";
+import { level } from "qmongjs";
 
 export type Box = {
   bin: number;
@@ -13,12 +15,37 @@ export type HeatMapColumn = {
   bins: Box[];
 };
 
-function max(data: any[], value: (d: any) => number): number {
-  return Math.max(...data.map(value));
-}
+export const createHeatmapData = (indicatorData: Indicator[]) => {
 
-// accessors
-const getX = (d: HeatMapColumn) => d.bins;
+  const uniqueValues = (value, index, array) => {return(array.indexOf(value) === index)}
+
+  const unitNames = indicatorData.map((row) => row.unit_name)
+    .filter(uniqueValues);
+
+  const indIDs = indicatorData.map((row) => row.ind_id)
+    .filter(uniqueValues);
+
+
+  const heatmapData = indIDs.map((indID, indIndex) => {
+    const indBin = indIndex;
+
+    const bins = unitNames.map((unitName, unitIndex) => {
+      const unitBin = unitIndex;
+      
+      const count = level(
+        indicatorData.find((row) => {
+          return(row.ind_id === indID && row.unit_name === unitName)
+        })
+      )
+
+      return({bin: unitBin, count: count === "L" ? 0 : count === "M" ? 1 : count === "H" ? 2 : null} as Box)
+    })
+
+    return({bin: indBin, bins: bins} as HeatMapColumn)
+  })
+
+  return(heatmapData as HeatMapColumn[])
+};
 
 const rectColorScale = (x: number) => {
   switch (x) {
