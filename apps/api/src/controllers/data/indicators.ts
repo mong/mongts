@@ -1,12 +1,15 @@
 import { RequestHandler, Request } from "express";
 import { indicatorsModel, Filter } from "../../models/data";
+import { nestedData } from "../../helpers/functions";
 
 export const indicatorsContoller: RequestHandler = async (req, res) => {
   const query = parseQuery(req);
 
   try {
     const rows = await indicatorsModel(query.filter);
-    res.json(rows);
+    //    console.log(rows);
+    const nestData = nestedData(rows);
+    res.json(nestData);
   } catch (error) {
     const error_message =
       error instanceof Error ? error.message : String(error);

@@ -123,5 +123,5 @@ export type RegisterData = {
   registerShortName: string;
   registerID: number;
   medfieldID: number[];
-  indicatorData?: IndicatorData[];
+  indicatorData: IndicatorData[];
 };
