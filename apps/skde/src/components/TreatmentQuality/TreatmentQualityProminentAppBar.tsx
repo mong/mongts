@@ -1,20 +1,21 @@
 import { AppBar, styled } from "@mui/material";
 import { HeaderTopToolbar } from "./HeaderTopToolbar";
 import { HeaderMiddleToolbar } from "./HeaderMiddleToolbar";
+import { StickyToolbar } from "./StickyToolbar";
 
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  "& .MuiToolbar-root": {
-    paddingLeft: theme.spacing(6),
-    paddingRight: theme.spacing(6),
-  },
+const StyledAppBar = styled(AppBar)(() => ({
+  elevation: 0,
 }));
 
 export const TreatmentQualityProminentAppBar = () => {
   return (
-    <StyledAppBar position="static">
+    <>
       <HeaderTopToolbar />
       <HeaderMiddleToolbar />
-    </StyledAppBar>
+      <StyledAppBar position="sticky" elevation={0}>
+        <StickyToolbar />
+      </StyledAppBar>
+    </>
   );
 };
 

@@ -6,10 +6,6 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
   paddingTop: theme.spacing(5),
   paddingBottom: theme.spacing(5),
-  // // Override media queries injected by theme.mixins.toolbar
-  // "@media all": {
-  //   minHeight: 128,
-  // },
 }));
 
 const LogoImage = styled("img")(({ theme }) => ({
@@ -41,7 +37,6 @@ const SkdeBreadcrumbs = () => {
       >
         Forside
       </Link>
-      ,
       <Link
         underline="hover"
         key="2"
@@ -50,11 +45,9 @@ const SkdeBreadcrumbs = () => {
       >
         Resultater
       </Link>
-      ,
       <Typography key="3" color="text.primary">
         Behandlingskvalitet
       </Typography>
-      ,
     </Breadcrumbs>
   );
 };
