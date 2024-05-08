@@ -12,11 +12,11 @@ type CarouselButtonsProps = {
   onClick?: (nr: number) => any;
 };
 
-export const CarouselButtons: React.FC<CarouselButtonsProps> = ({
+export const CarouselButtons = ({
   options,
   onClick,
   activeCarousel,
-}) => {
+}: CarouselButtonsProps) => {
   const clickHandler = (index) => {
     if (onClick) {
       onClick(index);

@@ -9,17 +9,12 @@ import { MenuButton } from "../Buttons";
 import { Menu } from "../Menu";
 import { PopUp } from "../PopUp";
 
-type HeaderProps = {
-  origin: string;
-  lang: "no" | "en";
-};
-
-export const Header: React.FC<HeaderProps> = ({ origin, lang }) => {
+export const Header = ({ lang }: { lang: "no" | "en" }) => {
   return (
     <header className={`${classNames.headerContainer}`}>
       <div className={classNames.headerLogo}>
         <Link
-          href={`${origin}${lang === "en" ? "/helseatlas/en" : "/helseatlas"}`}
+          href={`${lang === "en" ? "/helseatlas/en" : "/helseatlas"}`}
           rel="home"
         >
           <Image
@@ -40,7 +35,7 @@ export const Header: React.FC<HeaderProps> = ({ origin, lang }) => {
               }`}
               data-testid="buttonNo"
             >
-              <Link href={`${origin}/helseatlas`}>NO</Link>
+              <Link href={`/helseatlas`}>NO</Link>
             </div>
             <div
               className={`${classNames.eng} ${
@@ -48,7 +43,7 @@ export const Header: React.FC<HeaderProps> = ({ origin, lang }) => {
               }`}
               data-testid="buttonEng"
             >
-              <Link href={`${origin}/helseatlas/en`}>ENG</Link>
+              <Link href={`/helseatlas/en`}>ENG</Link>
             </div>
           </div>
           <div className={classNames.menuButton}>

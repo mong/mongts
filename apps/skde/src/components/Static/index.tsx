@@ -12,10 +12,7 @@ export interface PageContentProps {
   };
 }
 
-export const PageContent: React.FC<PageContentProps> = ({
-  content,
-  frontMatter,
-}) => {
+export const PageContent = ({ content, frontMatter }: PageContentProps) => {
   return (
     <>
       <AtlasLayout lang={frontMatter.lang === "en" ? "en" : "no"}>

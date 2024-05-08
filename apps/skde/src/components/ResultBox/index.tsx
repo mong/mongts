@@ -30,7 +30,7 @@ type ResultBoxProps = {
   map: string | undefined;
 };
 
-export const ResultBox: React.FC<ResultBoxProps> = ({
+export const ResultBox = ({
   title,
   intro,
   selection,
@@ -41,7 +41,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
   published,
   updated,
   map,
-}) => {
+}: ResultBoxProps) => {
   /* Define dates as days from 1. jan. 1970 */
   const minute = 1000 * 60;
   const hour = minute * 60;

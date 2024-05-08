@@ -16,7 +16,7 @@ export interface HomeProps {
   lang: "no" | "en";
 }
 
-const FrontPage: React.FC<HomeProps> = ({ atlasInfo, lang }) => {
+const FrontPage = ({ atlasInfo, lang }: HomeProps) => {
   const sortedAtlas = atlasInfo
     .sort((a, b) => {
       const c = new Date(a.frontMatter.date);

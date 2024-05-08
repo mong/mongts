@@ -12,7 +12,7 @@ type PopUpContentProps = {
   innerContentStyle?: React.CSSProperties;
 };
 
-export const PopUpContent: React.FC<PopUpContentProps> = ({
+export const PopUpContent = ({
   children,
   active,
   setActive,
@@ -22,7 +22,7 @@ export const PopUpContent: React.FC<PopUpContentProps> = ({
     margin: "auto",
     padding: 0,
   },
-}) => {
+}: PopUpContentProps) => {
   const ref = useOnClickOutside<HTMLDivElement>(() => setActive(false), active);
 
   const transitions = useTransition(active, {

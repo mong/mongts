@@ -13,12 +13,7 @@ type FactBoxProps = {
   lang: "nb" | "en" | "nn";
 };
 
-export const FactBox: React.FC<FactBoxProps> = ({
-  boxTitle,
-  boxContent,
-  id,
-  lang,
-}) => {
+export const FactBox = ({ boxTitle, boxContent, id, lang }: FactBoxProps) => {
   return (
     <div style={{ marginBottom: "10px" }} data-testid="factbox">
       <Accordion

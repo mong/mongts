@@ -5,10 +5,7 @@ type ColorLegendProps = {
   values: string[];
 };
 
-export const ColorLegend: React.FC<ColorLegendProps> = ({
-  colorScale,
-  values,
-}) => {
+export const ColorLegend = ({ colorScale, values }: ColorLegendProps) => {
   return (
     <div className={classNames.legendContainer}>
       <ul className={classNames.legendUL}>

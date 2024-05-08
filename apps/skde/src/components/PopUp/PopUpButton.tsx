@@ -6,11 +6,11 @@ type PopUpButtonProps = {
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const PopUpButton: React.FC<PopUpButtonProps> = ({
+export const PopUpButton = ({
   btnComponent,
   active,
   setActive,
-}) => {
+}: PopUpButtonProps) => {
   return (
     <div
       className={classNames.popUpBtn}

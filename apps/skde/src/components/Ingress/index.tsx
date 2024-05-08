@@ -1,14 +1,10 @@
 import styles from "./Ingress.module.css";
 import { Markdown } from "../Markdown";
 
-type IngressProp = {
-  children: string;
-};
-
-export const Ingress = ({ children }: IngressProp) => {
+export const Ingress = (props: { children: string }) => {
   return (
     <div className={styles.ingress}>
-      <Markdown>{children}</Markdown>
+      <Markdown>{props.children}</Markdown>
     </div>
   );
 };

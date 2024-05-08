@@ -54,10 +54,10 @@ const TocDataToList = ({ tocData, parentID }) => {
   );
 };
 
-export const TableOfContents: React.FC<TableOfContentsProps> = ({
+export const TableOfContents = ({
   lang = "no",
   tocData,
-}) => {
+}: TableOfContentsProps) => {
   const [expanded, setExpanded] = React.useState<boolean>(false);
   const handleChange = () => setExpanded((state) => !state);
 

@@ -6,6 +6,6 @@ type TextBoxProps = {
   lang: "nb" | "en" | "nn";
 };
 
-export const TextBox: React.FC<TextBoxProps> = ({ children, lang }) => {
+export const TextBox = ({ children, lang }: TextBoxProps) => {
   return <Markdown lang={lang}>{children}</Markdown>;
 };
