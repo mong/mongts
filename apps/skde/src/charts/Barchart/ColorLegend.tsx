@@ -1,17 +1,17 @@
 import classNames from "./ChartLegend.module.css";
 
 type ColorLegendProps = {
-  colorScale: Function;
+  colorScale: (args: string) => string;
   labels?: string[];
-  onClick?: Function;
+  onClick?: () => void;
   values: string[];
 };
 
-export const ColorLegend: React.FC<ColorLegendProps> = ({
+export const ColorLegend = ({
   colorScale,
   labels,
   values,
-}) => {
+}: ColorLegendProps) => {
   return (
     <div className={classNames.legendContainer}>
       <ul className={classNames.legendUL}>

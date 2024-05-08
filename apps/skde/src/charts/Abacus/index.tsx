@@ -70,7 +70,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
 
   // Move Norge to the end of data to plot,
   // so they will be on top of the other circles.
-  var figData = data
+  let figData = data
     .filter((d) => d["bohf"] != national)
     .concat(data.filter((d) => d["bohf"] === national)[0]);
 

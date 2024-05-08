@@ -2,11 +2,7 @@ import React from "react";
 import Link from "next/link";
 import classNames from "./Menu.module.css";
 
-type MenuProps = {
-  lang: "no" | "en";
-};
-
-export const Menu: React.FC<MenuProps> = ({ lang }) => {
+export const Menu = ({ lang }: { lang: "no" | "en" }) => {
   return (
     <div className={classNames.main_menu} data-testid="mainMenu">
       <div className={classNames.container}>

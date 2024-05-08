@@ -6,6 +6,7 @@ import { Layout } from "qmongjs";
 import classNames from "../../../src/styles/Kvalitetsregistre.module.css";
 
 const MainRegisterPage = () => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const registryNameQuery: UseQueryResult<any, unknown> =
     useRegisterNamesQuery();
   if (registryNameQuery.isLoading) {
@@ -23,7 +24,7 @@ const MainRegisterPage = () => {
 
 export default MainRegisterPage;
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async () => {
   return {
     props: { content: [] },
   };

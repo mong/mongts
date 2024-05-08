@@ -4,7 +4,7 @@ import Image from "next/image";
 import classNames from "./Footer.module.css";
 import { imgLoader } from "qmongjs";
 
-export const Footer: React.FC<{}> = ({}) => {
+export const Footer = () => {
   return (
     <footer className={classNames.footerContainer}>
       <div className={classNames.footerContent}>

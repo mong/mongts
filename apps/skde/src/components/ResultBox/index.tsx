@@ -30,7 +30,7 @@ type ResultBoxProps = {
   map: string | undefined;
 };
 
-export const ResultBox: React.FC<ResultBoxProps> = ({
+export const ResultBox = ({
   title,
   intro,
   selection,
@@ -41,7 +41,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
   published,
   updated,
   map,
-}) => {
+}: ResultBoxProps) => {
   /* Define dates as days from 1. jan. 1970 */
   const minute = 1000 * 60;
   const hour = minute * 60;
@@ -55,11 +55,13 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
 
   const height_ref = React.useRef(null);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const atlasData: { atlasData: any } = React.useContext(DataContext);
 
   const mapFile = map ? map : "kronikere.geojson";
   const { data: mapData } = FetchMap(`/helseatlas/kart/${mapFile}`);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const boxData: any =
     atlasData.atlasData[carousel] !== undefined
       ? Object.values(JSON.parse(atlasData.atlasData[carousel]))[0]
@@ -71,7 +73,7 @@ export const ResultBox: React.FC<ResultBoxProps> = ({
     enter: { transform: "translate(0,0)" },
     leave: { transform: "translate(0,-40px)" },
 
-    config: (it, ind, state) => ({
+    config: () => ({
       easing: easings.easeInQuad, // : easings.easeOutQuad,
       duration: 200,
     }),

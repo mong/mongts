@@ -102,6 +102,7 @@ type ToolTipBoxProps = {
 const ToolTipBox = (props: ToolTipBoxProps) => {
   const { id, y, lang } = props;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const indicatorQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
     id: id,
   });
@@ -219,6 +220,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
       ) => {
         // x and y are the SVG coordinates
         // u and v are the plot coordinates
+        // eslint-disable-next-line prefer-const
         let { x, y } = localPoint(event) || { x: 0 }; // SVG cordinates
         y = y ? y : 0;
         const u = xScale.invert(x); // Plot coordinates

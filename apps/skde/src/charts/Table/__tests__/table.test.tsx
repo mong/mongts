@@ -27,6 +27,7 @@ vi.mock("next/font/google", () => ({
 }));
 
 // To avoid type-check error. Have to find a better way
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const testHeaders: any = tableHeaders;
 
 test("Standard render", async () => {
@@ -141,7 +142,7 @@ test("Render english with many picked HF", async () => {
 });
 
 test("Markdown in caption", async () => {
-  const { container, getByTestId } = render(
+  const { container } = render(
     <DataTable
       data={atlasData}
       lang="nb"
