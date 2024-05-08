@@ -1,10 +1,6 @@
 import classNames from "./Buttons.module.css";
 
-type MenuButtonProps = {
-  lang: "en" | "no";
-};
-
-export const MenuButton: React.FC<MenuButtonProps> = ({ lang }) => {
+export const MenuButton = ({ lang }: { lang: "en" | "no" }) => {
   return (
     <button className={classNames.button} data-testid="menuButton">
       <span className={classNames.buttonBurgerIcon}>

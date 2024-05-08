@@ -9,12 +9,12 @@ type AnnualVarLegendPops = {
   values: (string | number)[];
 };
 
-export const AnnualVarLegend: React.FC<AnnualVarLegendPops> = ({
+export const AnnualVarLegend = ({
   colorFillScale,
   sizeScale,
   labels,
   values,
-}) => {
+}: AnnualVarLegendPops) => {
   return (
     <div className={classNames.legendContainer}>
       <ul className={classNames.legendUL}>
