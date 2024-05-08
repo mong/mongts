@@ -7,6 +7,7 @@ import { level } from "qmongjs";
 
 export type Box = {
   bin: number;
+  name: string;
   count: number;
 };
 
@@ -15,30 +16,32 @@ export type HeatMapColumn = {
   bins: Box[];
 };
 
-export const createHeatmapData = (indicatorData: Indicator[]) => {
+export const createHeatmapData = (indicatorData: Indicator[], unitNames: string[], indIDs: string[]) => {
 
   const uniqueValues = (value, index, array) => {return(array.indexOf(value) === index)}
 
-  const unitNames = indicatorData.map((row) => row.unit_name)
-    .filter(uniqueValues);
+  // const unitNames = indicatorData.map((row) => row.unit_name)
+  //   .filter(uniqueValues);
 
-  const indIDs = indicatorData.map((row) => row.ind_id)
-    .filter(uniqueValues);
+  // const indIDs = indicatorData.map((row) => row.ind_id)
+  //   .filter(uniqueValues);
 
-
+  console.log(indicatorData)
   const heatmapData = indIDs.map((indID, indIndex) => {
     const indBin = indIndex;
 
     const bins = unitNames.map((unitName, unitIndex) => {
       const unitBin = unitIndex;
       
-      const count = level(
+      const indRow = 
         indicatorData.find((row) => {
           return(row.ind_id === indID && row.unit_name === unitName)
         })
-      )
+      
+      let count: string;
+      indRow ? count = level(indRow) : count = null;
 
-      return({bin: unitBin, count: count === "L" ? 0 : count === "M" ? 1 : count === "H" ? 2 : null} as Box)
+      return({bin: unitBin, name: indID + " " + unitName, count: count === "L" ? 0 : count === "M" ? 1 : count === "H" ? 2 : -1} as Box)
     })
 
     return({bin: indBin, bins: bins} as HeatMapColumn)
@@ -49,6 +52,9 @@ export const createHeatmapData = (indicatorData: Indicator[]) => {
 
 const rectColorScale = (x: number) => {
   switch (x) {
+    case -1: {
+      return "#222222"
+    }
     case 0: {
       return "#e30713";
     }
@@ -69,7 +75,7 @@ export type HeatmapProps = {
   events?: boolean;
 };
 
-const defaultMargin = { top: 0, left: 0, right: 0, bottom: 0 };
+const defaultMargin = { top: 40, left: 150, right: 0, bottom: 0 };
 
 export const HeatMap = ({
   data,
@@ -78,6 +84,7 @@ export const HeatMap = ({
   margin = defaultMargin,
   separation = 3,
 }: HeatmapProps) => {
+
   // Bounds
   const nRows = data[0].bins.length;
   const nCols = data.length;

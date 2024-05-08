@@ -5,65 +5,71 @@ import { FetchIndicatorParams } from "qmongjs/src/helpers/hooks";
 import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
 import { Indicator } from "types";
 
-const width = 600;
-const gap = 10;
+const width = 2000;
+const gap = 2;
 
 const binData: HeatMapColumn[] = [
   {
     bin: 0,
     bins: [
-      { bin: 0, count: 1 },
-      { bin: 1, count: 2 },
-      { bin: 2, count: 1 },
-      { bin: 3, count: 2 },
+      { bin: 0, name: "row0", count: 1 },
+      { bin: 1, name: "row1", count: 2 },
+      { bin: 2, name: "row2", count: 1 },
+      { bin: 3, name: "row3", count: 2 },
     ],
   },
   {
     bin: 1,
     bins: [
-      { bin: 0, count: 0 },
-      { bin: 1, count: 2 },
-      { bin: 2, count: 1 },
-      { bin: 3, count: 2 },
+      { bin: 0, name: "row0", count: 0 },
+      { bin: 1, name: "row1", count: 1 },
+      { bin: 2, name: "row2", count: 1 },
+      { bin: 3, name: "row3", count: 1 },
     ],
   },
   {
     bin: 2,
     bins: [
-      { bin: 0, count: 0 },
-      { bin: 1, count: 1 },
-      { bin: 2, count: 0 },
-      { bin: 3, count: 0 },
+      { bin: 0, name: "row0", count: 2 },
+      { bin: 1, name: "row1", count: 1 },
+      { bin: 2, name: "row2", count: 0 },
+      { bin: 3, name: "row3", count: 2 },
     ],
   },
   {
     bin: 3,
     bins: [
-      { bin: 0, count: 0 },
-      { bin: 1, count: 2 },
-      { bin: 2, count: 2 },
-      { bin: 3, count: 2 },
+      { bin: 0, name: "row0", count: 1 },
+      { bin: 1, name: "row1", count: 2 },
+      { bin: 2, name: "row2", count: 2 },
+      { bin: 3, name: "row3", count: 0 },
     ],
   },
   {
     bin: 4,
     bins: [
-      { bin: 0, count: 0 },
-      { bin: 1, count: 2 },
-      { bin: 2, count: 1 },
-      { bin: 3, count: 2 },
+      { bin: 0, name: "row0", count: 1 },
+      { bin: 1, name: "row1", count: 2 },
+      { bin: 2, name: "row2", count: 1 },
+      { bin: 3, name: "row3", count: 2 },
     ],
   },
 ];
 
-const queryParams: FetchIndicatorParams = {
-  context: "caregiver",
-  unitNames: ["Helse Nord RHF", "Helse Midt-Norge RHF", "Helse Vest RHF", "Helse Sør-Øst RHF"],
-  type: "ind",
-};
+
 
 
 export const Skde = (): JSX.Element => {
+
+  const unitNames = ["Helse Nord RHF", "Helse Midt-Norge RHF", "Helse Vest RHF", "Helse Sør-Øst RHF"];
+
+  const queryParams: FetchIndicatorParams = {
+    context: "caregiver",
+    treatmentYear: 2022,
+    unitNames: unitNames,
+    type: "ind",
+  };
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const indicatorQuery: UseQueryResult<any, unknown> =
   useIndicatorQuery(queryParams);
@@ -101,10 +107,11 @@ export const Skde = (): JSX.Element => {
 
   const indicatorData = indicatorQuery.data as Indicator[];
 
-
-  const data = createHeatmapData(indicatorData.filter((row) => {
+  const filteredData = indicatorData.filter((row) => {
     return(indIDs.includes(row.ind_id))
-  }))
+  })
+
+  const data = createHeatmapData(filteredData, unitNames, indIDs)
 
   return (
     <div>
