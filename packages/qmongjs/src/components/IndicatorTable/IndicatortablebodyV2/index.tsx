@@ -215,14 +215,6 @@ const createChartData = (
   return chartDataUnique;
 };
 
-const createBarChartData = (data: Indicator[], indID: string, year: number) => {
-  const indData = data.filter((row) => {
-    return row.ind_id === indID;
-  });
-
-  return null;
-};
-
 const randomHexColorCode = () => {
   const n = (Math.random() * 0xfffff * 1000000).toString(16);
   return "#" + n.slice(0, 6);

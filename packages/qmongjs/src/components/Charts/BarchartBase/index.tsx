@@ -1,8 +1,7 @@
-import React from "react";
 import { Bar } from "@visx/shape";
 import { Group } from "@visx/group";
 import { AxisLeft, AxisBottom } from "@visx/axis";
-import { scaleBand, scaleLinear, scaleOrdinal } from "@visx/scale";
+import { scaleBand, scaleLinear } from "@visx/scale";
 import { IndicatorData } from "../../IndicatorTable/IndicatortablebodyV2";
 import { customFormat } from "../../../helpers/functions";
 
@@ -14,9 +13,7 @@ export type BarchartProps = {
   xTickFormat: string;
 };
 
-const blue = "#aeeef8";
 export const green = "#e5fd3d";
-const purple = "#9caff6";
 export const background = "#DEDEDE";
 const defaultMargin = { top: 40, right: 40, bottom: 40, left: 150 };
 
