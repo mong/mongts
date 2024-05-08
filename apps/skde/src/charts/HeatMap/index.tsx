@@ -22,37 +22,47 @@ export type HeatMapData = {
   data: HeatMapColumn[];
   xTicks: string[];
   yTicks: string[];
-}
+};
 
-export const createHeatmapData = (indicatorData: Indicator[], unitNames: string[], indIDs: string[]) => {
-
+export const createHeatmapData = (
+  indicatorData: Indicator[],
+  unitNames: string[],
+  indIDs: string[],
+) => {
   const heatmapData = indIDs.map((indID, indIndex) => {
     const indBin = indIndex;
 
     const bins = unitNames.map((unitName, unitIndex) => {
       const unitBin = unitIndex;
-      
-      const indRow = 
-        indicatorData.find((row) => {
-          return(row.ind_id === indID && row.unit_name === unitName)
-        })
-      
+
+      const indRow = indicatorData.find((row) => {
+        return row.ind_id === indID && row.unit_name === unitName;
+      });
+
       let count: string;
-      indRow ? count = level(indRow) : count = null;
+      indRow ? (count = level(indRow)) : (count = null);
 
-      return({bin: unitBin, name: indID + " " + unitName, count: count === "L" ? 0 : count === "M" ? 1 : count === "H" ? 2 : -1} as Box)
-    })
+      return {
+        bin: unitBin,
+        name: indID + " " + unitName,
+        count: count === "L" ? 0 : count === "M" ? 1 : count === "H" ? 2 : -1,
+      } as Box;
+    });
 
-    return({bin: indBin, bins: bins} as HeatMapColumn)
-  })
+    return { bin: indBin, bins: bins } as HeatMapColumn;
+  });
 
-  return({data: heatmapData as HeatMapColumn[], xTicks: unitNames, yTicks: indIDs} as HeatMapData)
+  return {
+    data: heatmapData as HeatMapColumn[],
+    xTicks: unitNames,
+    yTicks: indIDs,
+  } as HeatMapData;
 };
 
 const rectColorScale = (x: number) => {
   switch (x) {
     case -1: {
-      return "#222222"
+      return "#222222";
     }
     case 0: {
       return "#e30713";
@@ -74,7 +84,7 @@ export type HeatmapProps = {
   events?: boolean;
 };
 
-const defaultMargin = { top: 200, left: 150, right: 0, bottom: 0 };
+const defaultMargin = { top: 50, left: 150, right: 0, bottom: 0 };
 
 export const HeatMap = ({
   heatmapData,
@@ -83,9 +93,11 @@ export const HeatMap = ({
   margin = defaultMargin,
   separation = 3,
 }: HeatmapProps) => {
+  let { data, xTicks, yTicks } = heatmapData;
 
-  const { data, xTicks, yTicks } = heatmapData;
-
+  data = data.filter((col) => {
+    return col.bins.map((bin) => bin.count).every((v) => v !== -1);
+  });
 
   // Bounds
   const nRows = data[0].bins.length;
@@ -107,13 +119,13 @@ export const HeatMap = ({
 
   const xAxisScale = scaleBand<string>({
     domain: xTicks,
-    range: [0, height]
-  })
+    range: [0, height],
+  });
 
   const yAxisScale = scaleBand<number>({
-    domain: Array.from({length: yTicks.length}, (_, i) => i + 1),
-    range: [0, width]
-  })
+    domain: Array.from({ length: nCols }, (_, i) => i + 1),
+    range: [0, width],
+  });
 
   return (
     <svg
@@ -152,16 +164,8 @@ export const HeatMap = ({
           }
         </HeatmapRect>
 
-        <AxisLeft
-          scale={xAxisScale}
-          hideAxisLine={true}
-          numTicks={nRows}
-          />
-        <AxisTop
-          scale={yAxisScale}
-          hideAxisLine={true}
-          numTicks={nCols}
-          />
+        <AxisLeft scale={xAxisScale} hideAxisLine={true} numTicks={nRows} />
+        <AxisTop scale={yAxisScale} hideAxisLine={true} numTicks={nCols} />
       </Group>
     </svg>
   );

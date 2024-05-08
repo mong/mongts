@@ -1,5 +1,9 @@
 import React from "react";
-import { HeatMap, HeatMapColumn, createHeatmapData } from "../../src/charts/HeatMap";
+import {
+  HeatMap,
+  HeatMapColumn,
+  createHeatmapData,
+} from "../../src/charts/HeatMap";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "qmongjs/src/helpers/hooks";
 import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
@@ -56,26 +60,27 @@ const binData: HeatMapColumn[] = [
   },
 ];
 
-
-
-
 export const Skde = (): JSX.Element => {
-
-  const unitNames = ["Helse Nord RHF", "Helse Midt-Norge RHF", "Helse Vest RHF", "Helse Sør-Øst RHF"];
+  const unitNames = [
+    "Helse Nord RHF",
+    "Helse Midt-Norge RHF",
+    "Helse Vest RHF",
+    "Helse Sør-Øst RHF",
+  ];
 
   const queryParams: FetchIndicatorParams = {
     context: "caregiver",
-    treatmentYear: 2023,
+    treatmentYear: 2021,
     unitNames: unitNames,
     type: "ind",
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const indicatorQuery: UseQueryResult<any, unknown> =
-  useIndicatorQuery(queryParams);
+    useIndicatorQuery(queryParams);
 
   if (indicatorQuery.isFetching) {
-  return null;
+    return null;
   }
 
   const indIDs = [
@@ -105,23 +110,20 @@ export const Skde = (): JSX.Element => {
     "nyre_transplant_bt",
   ];
 
-
   const indicatorData = indicatorQuery.data as Indicator[];
 
   const filteredData = indicatorData.filter((row) => {
-    return(indIDs.includes(row.ind_id))
-  })
+    return indIDs.includes(row.ind_id);
+  });
 
   const indNameKey = filteredData.map((row) => {
-    return(
-      {indID: row.ind_id, indTitle: row.ind_title}
-    )
-  })
+    return { indID: row.ind_id, indTitle: row.ind_title };
+  });
 
-  const data = createHeatmapData(filteredData, unitNames, indIDs)
+  const data = createHeatmapData(filteredData, unitNames, indIDs);
 
   return (
-    <div>
+    <div style={{margin: 40}}>
       <div>
         <HeatMap heatmapData={data} width={width} separation={gap}></HeatMap>
       </div>
@@ -130,9 +132,11 @@ export const Skde = (): JSX.Element => {
         <ol>
           {indIDs.map((indIDRow, index) => {
             const indName = indNameKey.find((indKeyRow) => {
-              return(indKeyRow.indID === indIDRow)
-            })
-            return(<li key={"ind-" + index}>{indName ? indName.indTitle : null}</li>)
+              return indKeyRow.indID === indIDRow;
+            });
+            return indName ? (
+              <li key={"ind-" + index}>{indName.indTitle}</li>
+            ) : null;
           })}
         </ol>
       </div>
