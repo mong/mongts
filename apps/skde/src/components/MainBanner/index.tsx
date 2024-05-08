@@ -3,11 +3,7 @@ import Image from "next/image";
 import { imgLoader } from "qmongjs";
 import classNames from "./MainBanner.module.css";
 
-type MainBannerProps = {
-  lang: "no" | "en";
-};
-
-export const MainBanner: React.FC<MainBannerProps> = ({ lang }) => {
+export const MainBanner = ({ lang }: { lang: "no" | "en" }) => {
   const text = {
     title: {
       en: "Equitable health services – regardless of where you live?",

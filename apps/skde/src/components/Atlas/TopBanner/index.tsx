@@ -9,11 +9,7 @@ interface TopBannerProps {
   lang: string;
 }
 
-export const TopBanner: React.FC<TopBannerProps> = ({
-  mainTitle,
-  ia,
-  lang,
-}) => {
+export const TopBanner = ({ mainTitle, ia, lang }: TopBannerProps) => {
   return (
     <div className={style.atlasTopBanner}>
       <div className={style.bannerWrapper}>

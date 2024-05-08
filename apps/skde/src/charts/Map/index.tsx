@@ -66,7 +66,7 @@ const ObjectIDToBoHF = [
   { BoHF_num: 30, bohf: "Indre Oslo" },
 ];
 
-export const Map: React.FC<MapProps> = ({
+export const Map = ({
   mapData,
   mapAttr,
   dataToMap = ObjectIDToBoHF,
@@ -76,7 +76,7 @@ export const Map: React.FC<MapProps> = ({
   caption,
   format,
   lang,
-}) => {
+}: MapProps) => {
   // Pick out bohf query from the url
   const router = useRouter();
   const selected_bohf = [router.query.bohf].flat();

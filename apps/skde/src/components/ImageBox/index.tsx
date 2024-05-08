@@ -10,14 +10,14 @@ interface Props {
   title?: string;
 }
 
-export const ImageBox: React.FC<Props> = ({
+export const ImageBox = ({
   caption,
   alt,
   source,
   width,
   height,
   title,
-}) => {
+}: Props) => {
   return (
     <figure style={{ display: "flex", flexDirection: "column" }}>
       <Image
