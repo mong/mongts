@@ -151,8 +151,8 @@ const colorTokens = {
   },
 
   text: {
-    primary: "#001b52",
-    secondary: "#c4c4c4",
+    primary: "#000000", // "#001b52",
+    secondary: "#003087", // "#c4c4c4",
     disabled: "#f5f5f5",
   },
 
