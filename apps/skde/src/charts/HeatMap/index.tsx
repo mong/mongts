@@ -4,7 +4,7 @@ import { HeatmapRect } from "@visx/heatmap";
 import { Group } from "@visx/group";
 import { Indicator } from "types";
 import { level } from "qmongjs";
-import { Axis, AxisLeft, AxisTop } from "@visx/axis";
+import { AxisLeft, AxisTop } from "@visx/axis";
 import { scaleBand } from "@visx/scale";
 
 export type Box = {
@@ -21,7 +21,6 @@ export type HeatMapColumn = {
 export type HeatMapData = {
   data: HeatMapColumn[];
   xTicks: string[];
-  yTicks: string[];
 };
 
 export const createHeatmapData = (
@@ -55,7 +54,6 @@ export const createHeatmapData = (
   return {
     data: heatmapData as HeatMapColumn[],
     xTicks: unitNames,
-    yTicks: indIDs,
   } as HeatMapData;
 };
 
@@ -93,7 +91,8 @@ export const HeatMap = ({
   margin = defaultMargin,
   separation = 3,
 }: HeatmapProps) => {
-  let { data, xTicks, yTicks } = heatmapData;
+  let data = heatmapData.data;
+  const xTicks = heatmapData.xTicks;
 
   data = data.filter((col) => {
     return col.bins.map((bin) => bin.count).every((v) => v !== -1);

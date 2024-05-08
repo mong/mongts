@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  HeatMap,
-  HeatMapColumn,
-  createHeatmapData,
-} from "../../src/charts/HeatMap";
+import { HeatMap, createHeatmapData } from "../../src/charts/HeatMap";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "qmongjs/src/helpers/hooks";
 import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
@@ -75,7 +71,7 @@ export const Skde = (): JSX.Element => {
   const data = createHeatmapData(filteredData, unitNames, indIDs);
 
   return (
-    <div style={{margin: 40}}>
+    <div style={{ margin: 40 }}>
       <div>
         <HeatMap heatmapData={data} width={width} separation={gap}></HeatMap>
       </div>
