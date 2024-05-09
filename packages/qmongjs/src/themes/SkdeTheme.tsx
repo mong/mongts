@@ -207,8 +207,8 @@ export const SkdeTheme = responsiveFontSizes(
       values: {
         xs: breakpoints.xs,
         sm: breakpoints.md,
-        md: breakpoints.xl,
-        lg: breakpoints.lg,
+        md: breakpoints.lg,
+        lg: breakpoints.xl,
         xl: breakpoints.xxl,
         desktop: 1300,
       },
