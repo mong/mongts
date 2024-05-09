@@ -16,7 +16,7 @@ export default function TreatmentQualityPage() {
       <CssBaseline />
       <PageWrapper>
         <TreatmentQualityProminentAppBar />
-        <Grid container spacing={2}>
+        <Grid container spacing={2} disableEqualOverflow>
           <Grid xs={4}>
             <Paper>
               amet reprehenderit officia sit mollit mollit non minim occaecat
