@@ -10,11 +10,13 @@ export type QualityAtlasFigureProps = {
   context: string;
   year: number;
   indicatorIDs: string[];
+  medField: string;
   unitNames: string[];
 };
 
 export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
-  const { width, gap, context, year, indicatorIDs, unitNames } = props;
+  const { width, gap, context, year, indicatorIDs, medField, unitNames } =
+    props;
 
   const queryParams: FetchIndicatorParams = {
     context: context,
@@ -33,15 +35,30 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
 
   const indicatorData = indicatorQuery.data as Indicator[];
 
-  const filteredData = indicatorData.filter((row) => {
-    return indicatorIDs.includes(row.ind_id);
-  });
+  let filteredData: Indicator[];
+  let indIDs: string[];
+
+  if (medField.length === 0) {
+    filteredData = indicatorData.filter((row) => {
+      return indicatorIDs.includes(row.ind_id);
+    });
+    indIDs = indicatorIDs;
+  } else {
+    filteredData = indicatorData.filter((row) => {
+      return row.medfield_name === medField;
+    });
+    indIDs = filteredData
+      .map((row) => row.ind_id)
+      .filter((val, ind, array) => {
+        return array.indexOf(val) === ind;
+      });
+  }
 
   const indNameKey = filteredData.map((row) => {
     return { indID: row.ind_id, indTitle: row.ind_title };
   });
 
-  const data = createHeatmapData(filteredData, unitNames, indicatorIDs);
+  const data = createHeatmapData(filteredData, unitNames, indIDs);
 
   return (
     <div style={{ margin: 40 }}>
@@ -51,7 +68,7 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
       <div>
         <h3>Indikatorer</h3>
         <ol>
-          {indicatorIDs.map((indIDRow, index) => {
+          {indIDs.map((indIDRow, index) => {
             const indName = indNameKey.find((indKeyRow) => {
               return indKeyRow.indID === indIDRow;
             });

@@ -14,7 +14,7 @@ const context = "caregiver";
 export const Skde = (): JSX.Element => {
   const [year, setYear] = React.useState("2020");
   const [unitLevel, setUnitLevel] = React.useState("RHF");
-  const [medField, setMedField] = React.useState("custom");
+  const [medField, setMedField] = React.useState("");
 
   const handleChangeYear = (event: SelectChangeEvent) => {
     setYear(event.target.value as string);
@@ -82,7 +82,6 @@ export const Skde = (): JSX.Element => {
     }
   }
 
-  console.log(unitNames);
   const indicatorIDs = [
     "colon_relsurv_fra_opr",
     "hjerneslag_beh_tromb",
@@ -126,6 +125,7 @@ export const Skde = (): JSX.Element => {
               <MenuItem value={2020}>2020</MenuItem>
               <MenuItem value={2021}>2021</MenuItem>
               <MenuItem value={2022}>2022</MenuItem>
+              <MenuItem value={2023}>2023</MenuItem>
             </Select>
           </FormControl>
         </Box>
@@ -161,7 +161,7 @@ export const Skde = (): JSX.Element => {
               label="Medical field"
               onChange={handleChangeMedField}
             >
-              <MenuItem id="custom" value={"custom"}>
+              <MenuItem id="custom" value={""}>
                 Egendefinerte indikatorer
               </MenuItem>
               {medfieldsQuery.data.map((row) => {
@@ -183,6 +183,7 @@ export const Skde = (): JSX.Element => {
           context={context}
           year={Number(year)}
           indicatorIDs={indicatorIDs}
+          medField={medField}
           unitNames={unitNames}
         />
       </div>
