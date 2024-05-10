@@ -21,8 +21,8 @@ const StyledTabs = styled(Tabs)(({ theme }) => ({
 const StyledTab = styled(Tab)(({ theme }) => ({
   font: theme.typography.button.font,
   textTransform: "none",
-  borderTopLeftRadius: 8,
-  borderTopRightRadius: 8,
+  borderTopLeftRadius: 4,
+  borderTopRightRadius: 4,
   fontWeight: "bold",
   paddingLeft: theme.spacing(4),
   paddingRight: theme.spacing(4),
@@ -57,7 +57,7 @@ export const StickyToolbar = ({
     <StyledToolbar>
       <Grid
         container
-        spacing={2}
+        spacing={4}
         columns={{ xs: 4, sm: 8, md: 12 }}
         alignItems={"top"}
       >
@@ -65,7 +65,10 @@ export const StickyToolbar = ({
           <Button
             variant="contained"
             aria-label="Åpne sidemeny"
-            sx={{ height: `${isSmallScreen ? "50%" : "100%"}` }}
+            color="primary"
+            sx={{
+              height: `${isSmallScreen ? "50%" : "100%"}`,
+            }}
             onClick={() => {
               openDrawer();
             }}
@@ -80,6 +83,7 @@ export const StickyToolbar = ({
         </Grid>
         <Grid xs={3} sm={6} md={9}>
           <StyledTabs
+            indicatorColor="secondary"
             aria-label="Arkfaner for behandlingskvalitet og opptaksområde"
             value={value}
             onChange={handleChange}
