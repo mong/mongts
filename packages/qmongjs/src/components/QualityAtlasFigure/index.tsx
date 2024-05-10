@@ -54,6 +54,10 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
       });
   }
 
+  if (filteredData.length === 0) {
+    return null;
+  }
+
   const indNameKey = filteredData.map((row) => {
     return { indID: row.ind_id, indTitle: row.ind_title };
   });
