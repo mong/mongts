@@ -157,6 +157,7 @@ export const FooterDivider = styled(Divider)(({ theme }) => ({
 
 export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
   padding: 0,
+  overflow: "hidden",
   "& table": {
     fontFamily: theme.typography.fontFamily,
     borderSpacing: "0px",
