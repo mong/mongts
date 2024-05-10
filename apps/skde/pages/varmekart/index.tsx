@@ -1,12 +1,10 @@
 import React from "react";
-import { HeatMap, createHeatmapData } from "qmongjs";
-import { UseQueryResult } from "@tanstack/react-query";
-import { FetchIndicatorParams } from "qmongjs/src/helpers/hooks";
-import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
-import { Indicator } from "types";
+import { QualityAtlasFigure } from "qmongjs";
 
 const width = 2000;
 const gap = 2;
+const year = 2021;
+const context = "caregiver";
 
 export const Skde = (): JSX.Element => {
   const unitNames = [
@@ -16,22 +14,7 @@ export const Skde = (): JSX.Element => {
     "Helse Sør-Øst RHF",
   ];
 
-  const queryParams: FetchIndicatorParams = {
-    context: "caregiver",
-    treatmentYear: 2021,
-    unitNames: unitNames,
-    type: "ind",
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const indicatorQuery: UseQueryResult<any, unknown> =
-    useIndicatorQuery(queryParams);
-
-  if (indicatorQuery.isFetching) {
-    return null;
-  }
-
-  const indIDs = [
+  const indicatorIDs = [
     "colon_relsurv_fra_opr",
     "hjerneslag_beh_tromb",
     "breast_bct_invasiv_0_30mm",
@@ -58,37 +41,15 @@ export const Skde = (): JSX.Element => {
     "nyre_transplant_bt",
   ];
 
-  const indicatorData = indicatorQuery.data as Indicator[];
-
-  const filteredData = indicatorData.filter((row) => {
-    return indIDs.includes(row.ind_id);
-  });
-
-  const indNameKey = filteredData.map((row) => {
-    return { indID: row.ind_id, indTitle: row.ind_title };
-  });
-
-  const data = createHeatmapData(filteredData, unitNames, indIDs);
-
   return (
-    <div style={{ margin: 40 }}>
-      <div>
-        <HeatMap heatmapData={data} width={width} separation={gap}></HeatMap>
-      </div>
-      <div>
-        <h3>Indikatorer</h3>
-        <ol>
-          {indIDs.map((indIDRow, index) => {
-            const indName = indNameKey.find((indKeyRow) => {
-              return indKeyRow.indID === indIDRow;
-            });
-            return indName ? (
-              <li key={"ind-" + index}>{indName.indTitle}</li>
-            ) : null;
-          })}
-        </ol>
-      </div>
-    </div>
+    <QualityAtlasFigure
+      width={width}
+      gap={gap}
+      context={context}
+      year={year}
+      indicatorIDs={indicatorIDs}
+      unitNames={unitNames}
+    />
   );
 };
 
