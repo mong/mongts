@@ -72,7 +72,7 @@ export type HeatmapProps = {
   events?: boolean;
 };
 
-const defaultMargin = { top: 50, left: 150, right: 0, bottom: 0 };
+const defaultMargin = { top: 50, left: 2000, right: 0, bottom: 0 };
 
 export const HeatMap = ({
   heatmapData,

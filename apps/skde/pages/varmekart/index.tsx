@@ -31,17 +31,23 @@ export const Skde = (): JSX.Element => {
 
   const nestedUnitNames = unitNamesQuery.data.nestedUnitNames;
 
-  const RHFs = nestedUnitNames.map((row) => row.rhf);
+  const RHFs = nestedUnitNames
+    .map((row) => row.rhf)
+    .filter((row) => !row.includes("Private"));
 
   const HFs = nestedUnitNames
+    .filter((row) => !row.rhf.includes("Private"))
     .map((row) => {
       return row.hf.map((hf) => hf.hf);
     })
-    .flat();
+    .flat()
+    .filter((row) => !row.includes("Private"));
 
   const hospitals = nestedUnitNames
-    .map((row) => {
-      return row.hf
+    .filter((row) => !row.rhf.includes("Private"))
+    .map((rhf) => {
+      return rhf.hf
+        .filter((hf) => !hf.hf.includes("Private"))
         .map((hf) => {
           return hf.hospital;
         })
