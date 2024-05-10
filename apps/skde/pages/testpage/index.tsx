@@ -1,7 +1,18 @@
-import { Box, CssBaseline, Paper, ThemeProvider, styled } from "@mui/material";
+import {
+  Box,
+  CssBaseline,
+  Divider,
+  Drawer,
+  IconButton,
+  Paper,
+  ThemeProvider,
+  styled,
+} from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import TreatmentQualityProminentAppBar from "../../src/components/TreatmentQuality/TreatmentQualityProminentAppBar";
 import { indicatorTableTheme } from "qmongjs";
+import { useState } from "react";
+import { ChevronLeft } from "@mui/icons-material";
 
 const PageWrapper = styled(Box)(({ theme }) => ({
   "& .MuiToolbar-root": {
@@ -11,11 +22,20 @@ const PageWrapper = styled(Box)(({ theme }) => ({
 }));
 
 export default function TreatmentQualityPage() {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const toggleDrawer = (newOpen: boolean) => {
+    setDrawerOpen(newOpen);
+    console.log(`toggle: ${newOpen}`);
+  };
+
   return (
     <ThemeProvider theme={indicatorTableTheme}>
       <CssBaseline />
       <PageWrapper>
-        <TreatmentQualityProminentAppBar />
+        <TreatmentQualityProminentAppBar
+          openDrawer={() => toggleDrawer(true)}
+        />
         <Grid container spacing={2} disableEqualOverflow>
           <Grid xs={4}>
             <Paper>
@@ -239,6 +259,15 @@ export default function TreatmentQualityPage() {
           </Grid>
         </Grid>
       </PageWrapper>
+      <Drawer open={drawerOpen} onClose={() => toggleDrawer(false)}>
+        <IconButton
+          aria-label="Lukk sidemeny"
+          onClick={() => toggleDrawer(false)}
+        >
+          <ChevronLeft fontSize="large" />
+        </IconButton>
+        <Divider />
+      </Drawer>
     </ThemeProvider>
   );
 }

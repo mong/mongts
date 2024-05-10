@@ -1,4 +1,5 @@
-import { Tab, Tabs, Toolbar, styled } from "@mui/material";
+import { Button, Tab, Tabs, Toolbar, Typography, styled } from "@mui/material";
+import { Menu } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
@@ -26,18 +27,45 @@ const StyledTab = styled(Tab)(({ theme }) => ({
   paddingRight: theme.spacing(4),
 }));
 
-export const StickyToolbar = () => {
+type StickyToolbarProps = {
+  openDrawer: () => void;
+};
+
+export const StickyToolbar = ({ openDrawer }: StickyToolbarProps) => {
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("phone"));
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
     <StyledToolbar>
-      <Grid container spacing={2}>
-        <Grid xs={12}>
+      <Grid
+        container
+        spacing={2}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+        alignItems={"top"}
+      >
+        <Grid xs={1} sm={2} md={3}>
+          <Button
+            variant="contained"
+            aria-label="Åpne sidemeny"
+            sx={{ height: `${isSmallScreen ? "50%" : "100%"}` }}
+            onClick={() => {
+              openDrawer();
+            }}
+          >
+            <Menu fontSize="large" />
+            {!isSmallScreen && (
+              <Typography variant="button" sx={{ textTransform: "none" }}>
+                Filter
+              </Typography>
+            )}
+          </Button>
+        </Grid>
+        <Grid xs={3} sm={6} md={9}>
           <StyledTabs
             aria-label="Arkfaner for behandlingskvalitet og opptaksområde"
             value="caregiver"
             orientation={isSmallScreen ? "vertical" : "horizontal"}
+            variant="fullWidth"
           >
             <StyledTab label="Behandlingsenheter" value={"caregiver"} />
             <StyledTab label="Opptaksområder" value={"resident"} />

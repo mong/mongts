@@ -7,13 +7,19 @@ const StyledAppBar = styled(AppBar)(() => ({
   elevation: 0,
 }));
 
-export const TreatmentQualityProminentAppBar = () => {
+type AppBarProps = {
+  openDrawer: () => void;
+};
+
+export const TreatmentQualityProminentAppBar = ({
+  openDrawer,
+}: AppBarProps) => {
   return (
     <>
       <HeaderTopToolbar />
       <HeaderMiddleToolbar />
       <StyledAppBar position="sticky" elevation={0}>
-        <StickyToolbar />
+        <StickyToolbar openDrawer={openDrawer} />
       </StyledAppBar>
     </>
   );

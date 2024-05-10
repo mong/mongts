@@ -30,7 +30,7 @@ export const TreatmentQualityAppBar = styled(AppBar)(({ theme }) => ({
 }));
 
 export const FilterIconButton = styled(IconButton)(({ theme }) => ({
-  color: theme.palette.secondary.main,
+  color: theme.palette.primary.main,
   [theme.breakpoints.up("desktop")]: {
     display: "none",
   },

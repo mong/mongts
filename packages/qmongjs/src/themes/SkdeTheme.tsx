@@ -26,6 +26,7 @@ const fonts = {
     fontWeight: "300",
     fontSize: "64px",
     letterSpacing: "-1.5px",
+    color: "#001b52",
   },
   h2: {
     fontFamily: `${jakartaStyle.fontFamily}`,
@@ -97,6 +98,7 @@ const fonts = {
 
 const breakpoints = {
   xs: 0,
+  sm: 544,
   md: 768,
   lg: 992,
   xl: 1080,
@@ -121,15 +123,15 @@ const breakpoints = {
 
 const colorTokens = {
   primary: {
-    main: "#003087", // "#bfced6",
-    light: "#e0e7eb", // "#bfced6", // "#e3ebf2",
-    dark: "#173844",
+    main: "#003087",
+    light: "#e3ebf2",
+    dark: "#001b52",
   },
 
   secondary: {
-    main: "#003087", //"#001b52", //"#003087", // "#bfc7e4",
+    main: "#bfc7e4",
     light: "#e6e9f4",
-    dark: "#003087",
+    dark: "#000000",
   },
 
   background: {
@@ -151,8 +153,8 @@ const colorTokens = {
   },
 
   text: {
-    primary: "#000000", // "#001b52",
-    secondary: "#003087", // "#c4c4c4",
+    primary: "#000000",
+    secondary: "#003087",
     disabled: "#f5f5f5",
   },
 

@@ -3,7 +3,6 @@ import Grid from "@mui/material/Unstable_Grid2";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
-  color: theme.palette.primary.dark,
   paddingTop: theme.spacing(12),
   paddingBottom: theme.spacing(8),
 }));
