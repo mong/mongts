@@ -156,29 +156,15 @@ export const FooterDivider = styled(Divider)(({ theme }) => ({
 }));
 
 export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
-  padding: 0,
-  overflow: "hidden",
   "& table": {
+    tableLayout: "fixed",
+    width: "100vw",
     fontFamily: theme.typography.fontFamily,
     borderSpacing: "0px",
   },
   "& th": {
-    fontFamily: theme.typography.fontFamily,
-    minWidth: "10rem",
-    lineHeight: "3rem",
     backgroundColor: theme.palette.secondary.dark,
-    color: "white",
-  },
-  "& tr": {
-    fontFamily: theme.typography.fontFamily,
-  },
-  "& td": {
-    fontFamily: theme.typography.fontFamily,
-  },
-  [theme.breakpoints.down("sm")]: {
-    "& th": {
-      minWidth: "6rem",
-    },
+    color: theme.palette.secondary.light,
   },
 }));
 
