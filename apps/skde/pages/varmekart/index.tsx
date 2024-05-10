@@ -99,7 +99,7 @@ export const Skde = (): JSX.Element => {
   return (
     <div>
       <div style={{ margin: 40, display: "flex", flexDirection: "row" }}>
-        <Box width={70}>
+        <Box width={100}>
           <FormControl fullWidth>
             <InputLabel id="year-input-label">År</InputLabel>
             <Select
@@ -116,7 +116,7 @@ export const Skde = (): JSX.Element => {
           </FormControl>
         </Box>
         <Box width={50} />
-        <Box width={200}>
+        <Box width={250}>
           <FormControl fullWidth>
             <InputLabel id="unitlevel-input-label">Enhetsnivå</InputLabel>
             <Select
