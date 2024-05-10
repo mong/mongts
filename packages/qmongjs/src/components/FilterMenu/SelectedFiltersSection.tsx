@@ -96,7 +96,7 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
                 data-testid={chipId}
                 label={filterSetting.valueLabel}
                 size={"small"}
-                color="secondary"
+                color="primary"
                 deleteIcon={<Clear />}
                 onDelete={() => handleDelete(chipId, filterSettingsDispatch)}
               />
