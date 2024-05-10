@@ -12,8 +12,8 @@ const gap = 2;
 const context = "caregiver";
 
 export const Skde = (): JSX.Element => {
-  const [year, setYear] = React.useState("");
-  const [unitLevel, setUnitLevel] = React.useState("");
+  const [year, setYear] = React.useState("2020");
+  const [unitLevel, setUnitLevel] = React.useState("RHF");
 
   const handleChangeYear = (event: SelectChangeEvent) => {
     setYear(event.target.value as string);
