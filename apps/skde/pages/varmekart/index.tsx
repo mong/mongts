@@ -1,5 +1,5 @@
 import React from "react";
-import { QualityAtlasFigure } from "qmongjs";
+import { QualityAtlasFigure, useMedicalFieldsQuery } from "qmongjs";
 import { useUnitNamesQuery } from "qmongjs";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -14,6 +14,7 @@ const context = "caregiver";
 export const Skde = (): JSX.Element => {
   const [year, setYear] = React.useState("2020");
   const [unitLevel, setUnitLevel] = React.useState("RHF");
+  const [medField, setMedField] = React.useState("custom");
 
   const handleChangeYear = (event: SelectChangeEvent) => {
     setYear(event.target.value as string);
@@ -23,14 +24,20 @@ export const Skde = (): JSX.Element => {
     setUnitLevel(event.target.value as string);
   };
 
+  const handleChangeMedField = (event: SelectChangeEvent) => {
+    setMedField(event.target.value as string);
+  };
+
+  const medfieldsQuery = useMedicalFieldsQuery();
   const unitNamesQuery = useUnitNamesQuery("all", "caregiver", "ind");
 
-  if (unitNamesQuery.isFetching) {
+  if (unitNamesQuery.isFetching || medfieldsQuery.isFetching) {
     return null;
   }
 
   const nestedUnitNames = unitNamesQuery.data.nestedUnitNames;
 
+  console.log(nestedUnitNames);
   const RHFs = nestedUnitNames
     .map((row) => row.rhf)
     .filter((row) => !row.includes("Private"));
@@ -75,6 +82,7 @@ export const Skde = (): JSX.Element => {
     }
   }
 
+  console.log(unitNames);
   const indicatorIDs = [
     "colon_relsurv_fra_opr",
     "hjerneslag_beh_tromb",
@@ -121,13 +129,15 @@ export const Skde = (): JSX.Element => {
             </Select>
           </FormControl>
         </Box>
+
         <Box width={50} />
+
         <Box width={250}>
           <FormControl fullWidth>
             <InputLabel id="unitlevel-input-label">Enhetsnivå</InputLabel>
             <Select
               labelId="unitlevel-input-label"
-              id="unilevel-input"
+              id="unitlevel-input"
               value={unitLevel}
               label="Unit level"
               onChange={handleChangeUnitLevel}
@@ -138,16 +148,44 @@ export const Skde = (): JSX.Element => {
             </Select>
           </FormControl>
         </Box>
+
+        <Box width={50} />
+
+        <Box width={250}>
+          <FormControl fullWidth>
+            <InputLabel id="medfield-input-label">Fagområder</InputLabel>
+            <Select
+              labelId="medfield-input-label"
+              id="medifield-input"
+              value={medField}
+              label="Medical field"
+              onChange={handleChangeMedField}
+            >
+              <MenuItem id="custom" value={"custom"}>
+                Egendefinerte indikatorer
+              </MenuItem>
+              {medfieldsQuery.data.map((row) => {
+                return (
+                  <MenuItem id={row.shortName} value={row.shortName}>
+                    {row.name}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+          </FormControl>
+        </Box>
       </div>
 
-      <QualityAtlasFigure
-        width={width}
-        gap={gap}
-        context={context}
-        year={Number(year)}
-        indicatorIDs={indicatorIDs}
-        unitNames={unitNames}
-      />
+      <div>
+        <QualityAtlasFigure
+          width={width}
+          gap={gap}
+          context={context}
+          year={Number(year)}
+          indicatorIDs={indicatorIDs}
+          unitNames={unitNames}
+        />
+      </div>
     </div>
   );
 };
