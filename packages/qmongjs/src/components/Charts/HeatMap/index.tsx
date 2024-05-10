@@ -60,7 +60,7 @@ const rectColorScale = scaleOrdinal<
   number | { valueOf(): number },
   string | undefined
 >({
-  range: ["#e30713", "#fd9c00", "#3baa34", "#555555"],
+  range: ["#e30713", "#fd9c00", "#3baa34", "#EEEEEE"],
   domain: [0, 1, 2, -1],
 });
 
