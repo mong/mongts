@@ -66,7 +66,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
 }: AbacusProps<Data, X>) => {
   // Pick out bohf query from the url
   const router = useRouter();
-  const selected_bohf = [router.query.bohf].flat();
+  const selected_bohf = [router.query.bohf].flat().filter(Boolean);
 
   // Move Norge to the end of data to plot,
   // so they will be on top of the other circles.
@@ -161,23 +161,20 @@ export const Abacus = <Data, X extends string & keyof Data>({
                 // Add HF to query param if clicked on.
                 // Remove HF from query param if it already is selected.
                 // Only possible to click on HF, and not on national data
-                d["bohf"] != national
-                  ? router.replace(
-                      {
-                        query: {
-                          ...router.query,
-                          bohf:
-                            selected_bohf[0] === undefined
-                              ? d["bohf"]
-                              : selected_bohf.includes(d["bohf"])
-                                ? selected_bohf.filter((f) => f != d["bohf"])
-                                : selected_bohf.concat(d["bohf"]),
-                        },
+                if (d["bohf"] != national) {
+                  router.replace(
+                    {
+                      query: {
+                        ...router.query,
+                        bohf: selected_bohf.includes(d["bohf"])
+                          ? selected_bohf.filter((f) => f != d["bohf"])
+                          : selected_bohf.concat(d["bohf"]),
                       },
-                      undefined,
-                      { shallow: true },
-                    )
-                  : undefined;
+                    },
+                    undefined,
+                    { shallow: true },
+                  );
+                }
                 event.stopPropagation();
               }}
             />
@@ -202,7 +199,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
             </div>
             {nationalLabel[lang]}
           </li>
-          {selected_bohf[0] != undefined ? (
+          {selected_bohf.length && (
             <li key={"selected_bohf"} className={classNames.legendLI}>
               <>
                 <div className={classNames.legendAnnualVar}>
@@ -215,8 +212,6 @@ export const Abacus = <Data, X extends string & keyof Data>({
                   : `${selectedText[lang]} ${valuesLabel[lang].toLowerCase()}`}
               </>
             </li>
-          ) : (
-            <></>
           )}
         </ul>
       </div>
