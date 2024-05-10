@@ -37,14 +37,6 @@ const SkdeBreadcrumbs = () => {
       >
         Forside
       </Link>
-      <Link
-        underline="hover"
-        key="2"
-        color="inherit"
-        href="https://www.skde.no/resultater/"
-      >
-        Resultater
-      </Link>
       <Typography key="3" color="text.primary">
         Behandlingskvalitet
       </Typography>

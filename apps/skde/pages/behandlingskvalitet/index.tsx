@@ -5,6 +5,7 @@ import {
   Divider,
   IconButton,
   ThemeProvider,
+  Typography,
   styled,
 } from "@mui/material";
 import { ChevronLeft } from "@mui/icons-material";
@@ -323,7 +324,8 @@ export default function TreatmentQualityPage() {
         open={drawerOpen}
         onClose={() => toggleDrawer(false)}
       >
-        <Box sx={{ display: "flex", m: 2, justifyContent: "flex-end" }}>
+        <Box sx={{ display: "flex", m: 2, justifyContent: "space-between" }}>
+          <Typography variant="h3">Filtermeny</Typography>
           <IconButton
             aria-label="Lukk sidemeny"
             onClick={() => toggleDrawer(false)}
