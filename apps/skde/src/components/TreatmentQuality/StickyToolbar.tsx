@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button, Tab, Tabs, Toolbar, Typography, styled } from "@mui/material";
 import { Menu } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
@@ -29,11 +30,28 @@ const StyledTab = styled(Tab)(({ theme }) => ({
 
 type StickyToolbarProps = {
   openDrawer: () => void;
+  context;
+  onTabChanged;
 };
 
-export const StickyToolbar = ({ openDrawer }: StickyToolbarProps) => {
+export const StickyToolbar = ({
+  openDrawer,
+  context,
+  onTabChanged,
+}: StickyToolbarProps) => {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
+  const [value, setValue] = useState(
+    context === "resident" ? "resident" : "caregiver",
+  );
+
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+    setTimeout(() => {
+      onTabChanged(newValue);
+    }, 0);
+  };
 
   return (
     <StyledToolbar>
@@ -63,7 +81,8 @@ export const StickyToolbar = ({ openDrawer }: StickyToolbarProps) => {
         <Grid xs={3} sm={6} md={9}>
           <StyledTabs
             aria-label="Arkfaner for behandlingskvalitet og opptaksområde"
-            value="caregiver"
+            value={value}
+            onChange={handleChange}
             orientation={isSmallScreen ? "vertical" : "horizontal"}
             variant="fullWidth"
           >

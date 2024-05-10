@@ -9,17 +9,25 @@ const StyledAppBar = styled(AppBar)(() => ({
 
 type AppBarProps = {
   openDrawer: () => void;
+  context;
+  onTabChanged;
 };
 
 export const TreatmentQualityProminentAppBar = ({
   openDrawer,
+  context,
+  onTabChanged,
 }: AppBarProps) => {
   return (
     <>
       <HeaderTopToolbar />
       <HeaderMiddleToolbar />
       <StyledAppBar position="sticky" elevation={0}>
-        <StickyToolbar openDrawer={openDrawer} />
+        <StickyToolbar
+          openDrawer={openDrawer}
+          onTabChanged={onTabChanged}
+          context={context}
+        />
       </StyledAppBar>
     </>
   );
