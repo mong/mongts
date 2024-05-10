@@ -60,8 +60,8 @@ const rectColorScale = scaleOrdinal<
   number | { valueOf(): number },
   string | undefined
 >({
-  range: ["#e30713", "#fd9c00", "#3baa34"],
-  domain: [0, 1, 2],
+  range: ["#e30713", "#fd9c00", "#3baa34", "#555555"],
+  domain: [0, 1, 2, -1],
 });
 
 export type HeatmapProps = {
@@ -84,8 +84,14 @@ export const HeatMap = ({
   let data = heatmapData.data;
   const xTicks = heatmapData.xTicks;
 
+  // Remove columns whith no data
   data = data.filter((col) => {
-    return col.bins.map((bin) => bin.count).every((v) => v !== -1);
+    const nRows = data[0].bins.length;
+    const counts = col.bins.map((bin) => bin.count);
+    const invalidCounts = counts.filter((bin) => {
+      return bin == -1;
+    });
+    return invalidCounts.length === nRows ? false : true;
   });
 
   // Bounds
