@@ -3,6 +3,7 @@ import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "qmongjs/src/helpers/hooks";
 import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
 import { Indicator } from "types";
+import { level } from "qmongjs";
 
 export type QualityAtlasFigureProps = {
   width: number;
@@ -60,6 +61,21 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
     return null;
   }
 
+  // Remove units with no data
+  const validUnitNames = unitNames.filter((unitName) => {
+    return (
+      filteredData
+        .filter((row) => {
+          return row.unit_name === unitName;
+        })
+        .map((row) => level(row)).length > 0
+    );
+  });
+
+  filteredData = filteredData.filter((row) => {
+    return validUnitNames.includes(row.unit_name);
+  });
+
   const indNameKey = filteredData.map((row) => {
     return {
       indID: row.ind_id,
@@ -68,7 +84,7 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
     };
   });
 
-  const heatmapData = createHeatmapData(filteredData, unitNames, indIDs);
+  const heatmapData = createHeatmapData(filteredData, validUnitNames, indIDs);
 
   // Remove columns whith no data
   heatmapData.data = heatmapData.data.filter((col) => {
