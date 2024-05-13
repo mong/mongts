@@ -199,7 +199,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
             </div>
             {nationalLabel[lang]}
           </li>
-          {selected_bohf.length && (
+          {selected_bohf.length > 0 && (
             <li key={"selected_bohf"} className={classNames.legendLI}>
               <>
                 <div className={classNames.legendAnnualVar}>
