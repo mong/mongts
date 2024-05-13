@@ -10,9 +10,15 @@ import Box from "@mui/material/Box";
 const width = 1000;
 const gap = 2;
 const context = "caregiver";
+const currentYear = new Date().getFullYear();
+const numberOfYears = 5;
+const selectYearOptions = Array.from(
+  { length: numberOfYears },
+  (_, i) => i + currentYear - numberOfYears,
+);
 
 export const Skde = (): JSX.Element => {
-  const [year, setYear] = React.useState("2020");
+  const [year, setYear] = React.useState((currentYear - 1).toString());
   const [unitLevel, setUnitLevel] = React.useState("RHF");
   const [medField, setMedField] = React.useState("");
 
@@ -37,7 +43,6 @@ export const Skde = (): JSX.Element => {
 
   const nestedUnitNames = unitNamesQuery.data.nestedUnitNames;
 
-  console.log(nestedUnitNames);
   const RHFs = nestedUnitNames
     .map((row) => row.rhf)
     .filter((row) => !row.includes("Private"));
@@ -122,10 +127,9 @@ export const Skde = (): JSX.Element => {
               label="Year"
               onChange={handleChangeYear}
             >
-              <MenuItem value={2020}>2020</MenuItem>
-              <MenuItem value={2021}>2021</MenuItem>
-              <MenuItem value={2022}>2022</MenuItem>
-              <MenuItem value={2023}>2023</MenuItem>
+              {selectYearOptions.map((year) => {
+                return <MenuItem value={year}>{year.toString()}</MenuItem>;
+              })}
             </Select>
           </FormControl>
         </Box>
