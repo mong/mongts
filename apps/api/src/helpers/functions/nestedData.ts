@@ -21,6 +21,13 @@ export const nestedData = (flatdata: Indicator[]): RegisterData[] => {
     })
     .sort((a, b) => {
       return a.ind_id > b.ind_id ? 1 : a.ind_id < b.ind_id ? -1 : 0;
+    })
+    .sort((a, b) => {
+      return a.registry_id > b.registry_id
+        ? 1
+        : a.registry_id < b.registry_id
+          ? -1
+          : 0;
     });
 
   let medfields: number[] = [];
@@ -54,6 +61,7 @@ export const nestedData = (flatdata: Indicator[]): RegisterData[] => {
             format: cur.sformat,
             data: [
               {
+                id: cur.id,
                 unitName: cur.unit_name,
                 year: cur.year,
                 var: cur.var,
@@ -97,6 +105,7 @@ export const nestedData = (flatdata: Indicator[]): RegisterData[] => {
               format: cur.sformat,
               data: [
                 {
+                  id: cur.id,
                   unitName: cur.unit_name,
                   year: cur.year,
                   var: cur.var,
@@ -109,21 +118,31 @@ export const nestedData = (flatdata: Indicator[]): RegisterData[] => {
               ],
             });
         } else {
-          acc
-            .filter(
-              (acc_data) =>
-                acc_data.indicatorData[0].indicatorID === cur.ind_id,
-            )[0]
-            .indicatorData[0].data.push({
-              unitName: cur.unit_name,
-              year: cur.year,
-              var: cur.var,
-              denominator: cur.denominator,
-              dg: cur.dg,
-              context: cur.context,
-              deliveryTime: cur.delivery_time,
-              affirmTime: cur.delivery_latest_affirm,
-            });
+          try {
+            acc.filter((acc_data) =>
+              acc_data.indicatorData
+                .filter((deep) => deep.indicatorID === cur.ind_id)[0]
+                .data.push({
+                  id: cur.id,
+                  unitName: cur.unit_name,
+                  year: cur.year,
+                  var: cur.var,
+                  denominator: cur.denominator,
+                  dg: cur.dg,
+                  context: cur.context,
+                  deliveryTime: cur.delivery_time,
+                  affirmTime: cur.delivery_latest_affirm,
+                }),
+            );
+          } catch (error) {
+            console.log("FORRIGE");
+
+            console.log(all[index - 1]);
+
+            console.log("DENNE");
+
+            console.log(cur);
+          }
         }
       }
     }
