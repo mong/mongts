@@ -43,16 +43,14 @@ const SelectionBtn = ({ lang }: { lang?: "nb" | "en" | "nn" }) => {
   );
 };
 
-export const Carousel: React.FC<CarouselProps> = ({
+export const Carousel = ({
   active,
   children,
   selection,
   lang,
   popupState,
-}) => {
-  const [activeComp, setActiveComp] = useState<number>(active ?? 0);
-
-  const numberOfChildren: number = React.Children.count(children);
+}: CarouselProps) => {
+  const [activeComp, setActiveComp] = useState(active ?? 0);
 
   const options = React.Children.map(
     children,
@@ -63,19 +61,13 @@ export const Carousel: React.FC<CarouselProps> = ({
     }),
   );
 
-  if (numberOfChildren === 0) {
-    return;
-  }
-
   return (
     <div className={styles.carouselWrapper}>
-      {numberOfChildren > 1 && (
-        <CarouselButtons
-          options={options}
-          activeCarousel={activeComp}
-          onClick={(i) => setActiveComp(i)}
-        />
-      )}
+      <CarouselButtons
+        options={options}
+        activeCarousel={activeComp}
+        onClick={(i) => setActiveComp(i)}
+      />
       <div className={styles.carousel}>{children[activeComp]}</div>
       <div style={{ alignSelf: "flex-start" }}>
         {selection && (
