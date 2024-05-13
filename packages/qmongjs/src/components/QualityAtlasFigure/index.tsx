@@ -68,12 +68,26 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
     };
   });
 
-  const data = createHeatmapData(filteredData, unitNames, indIDs);
+  const heatmapData = createHeatmapData(filteredData, unitNames, indIDs);
+
+  // Remove columns whith no data
+  heatmapData.data = heatmapData.data.filter((col) => {
+    const nRows = heatmapData.data[0].bins.length;
+    const counts = col.bins.map((bin) => bin.count);
+    const invalidCounts = counts.filter((bin) => {
+      return bin == -1;
+    });
+    return invalidCounts.length === nRows ? false : true;
+  });
 
   return (
     <div style={{ margin: 40 }}>
       <div>
-        <HeatMap heatmapData={data} width={width} separation={gap}></HeatMap>
+        <HeatMap
+          heatmapData={heatmapData}
+          width={width}
+          separation={gap}
+        ></HeatMap>
       </div>
       <div>
         <h3>Indikatorer</h3>

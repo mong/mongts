@@ -81,18 +81,8 @@ export const HeatMap = ({
   margin = defaultMargin,
   separation = 3,
 }: HeatmapProps) => {
-  let data = heatmapData.data;
+  const data = heatmapData.data;
   const xTicks = heatmapData.xTicks;
-
-  // Remove columns whith no data
-  data = data.filter((col) => {
-    const nRows = data[0].bins.length;
-    const counts = col.bins.map((bin) => bin.count);
-    const invalidCounts = counts.filter((bin) => {
-      return bin == -1;
-    });
-    return invalidCounts.length === nRows ? false : true;
-  });
 
   // Bounds
   const nRows = data[0].bins.length;
