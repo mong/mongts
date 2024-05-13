@@ -48,7 +48,9 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
       return row.medfield_name === medField;
     });
     indIDs = filteredData
-      .map((row) => row.ind_id)
+      .map((row) => {
+        return row.ind_id;
+      })
       .filter((val, ind, array) => {
         return array.indexOf(val) === ind;
       });
@@ -59,7 +61,11 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
   }
 
   const indNameKey = filteredData.map((row) => {
-    return { indID: row.ind_id, indTitle: row.ind_title };
+    return {
+      indID: row.ind_id,
+      indTitle: row.ind_title,
+      registryShortName: row.registry_short_name,
+    };
   });
 
   const data = createHeatmapData(filteredData, unitNames, indIDs);
@@ -77,7 +83,9 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
               return indKeyRow.indID === indIDRow;
             });
             return indName ? (
-              <li key={"ind-" + index}>{indName.indTitle}</li>
+              <li key={"ind-" + index}>
+                {indName.indTitle + " [" + indName.registryShortName + "]"}
+              </li>
             ) : null;
           })}
         </ol>
