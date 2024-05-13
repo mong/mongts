@@ -44,7 +44,7 @@ const SkdeBreadcrumbs = () => {
   );
 };
 
-export const HeaderTopToolbar = () => {
+export const TreatmentQualityHeaderTop = () => {
   return (
     <StyledToolbar>
       <Grid container spacing={2}>
@@ -58,3 +58,5 @@ export const HeaderTopToolbar = () => {
     </StyledToolbar>
   );
 };
+
+export default TreatmentQualityHeaderTop;

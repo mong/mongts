@@ -33,7 +33,7 @@ import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useSearchParams } from "next/navigation";
-import TreatmentQualityProminentAppBar from "../../src/components/TreatmentQuality/TreatmentQualityProminentAppBar";
+import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import {
   FilterDrawer,
   IndicatorTableWrapper,
@@ -272,7 +272,7 @@ export default function TreatmentQualityPage() {
     <ThemeProvider theme={indicatorTableTheme}>
       <CssBaseline />
       <PageWrapper>
-        <TreatmentQualityProminentAppBar
+        <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
           context={tableContext}
           onTabChanged={setTableContext}

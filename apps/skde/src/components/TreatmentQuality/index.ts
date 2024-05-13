@@ -9,19 +9,10 @@ import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 
-export const appBarElevation = 2;
-export const filterMenuTopMargin = 2;
-
-export const smDrawerWidth = 320;
-export const mdDrawerWidth = 500;
-export const lgDrawerWidth = 700;
-export const xlDrawerWidth = 992;
-
-/** The width at which the drawer type changes.
- * Most modern desktops have a resolution greater than this, whereas
- * many smart phones have landscape mode width of 1280 px.
- * */
-export const desktopBreakpoint = 1300;
+const narrowDrawerWidth = 320;
+const smDrawerWidth = 544;
+const mdDrawerWidth = 768;
+const lgDrawerWidth = 992;
 
 export const TreatmentQualityAppBar = styled(AppBar)(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,
@@ -51,24 +42,24 @@ export const FilterDrawer = styled(Drawer)(({ theme }) => ({
   "& .MuiDrawer-paper": {
     boxSizing: "border-box",
   },
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("narrow")]: {
+    "& .MuiDrawer-paper": {
+      width: narrowDrawerWidth,
+    },
+  },
+  [theme.breakpoints.up("narrow")]: {
     "& .MuiDrawer-paper": {
       width: smDrawerWidth,
     },
   },
-  [theme.breakpoints.up("sm")]: {
+  [theme.breakpoints.up("md")]: {
     "& .MuiDrawer-paper": {
       width: mdDrawerWidth,
     },
   },
-  [theme.breakpoints.up("md")]: {
+  [theme.breakpoints.up("lg")]: {
     "& .MuiDrawer-paper": {
       width: lgDrawerWidth,
-    },
-  },
-  [theme.breakpoints.up("desktop")]: {
-    "& .MuiDrawer-paper": {
-      width: xlDrawerWidth,
     },
   },
 }));
@@ -89,36 +80,6 @@ export const FilterDrawerBox = styled(Box)(({ theme }) => ({
       width: lgDrawerWidth,
     },
   },
-  [theme.breakpoints.up("desktop")]: {
-    "& .MuiDrawer-paper": {
-      width: xlDrawerWidth,
-    },
-  },
-}));
-
-export const SkdeLogoBox = styled(Box)(({ theme }) => ({
-  marginLeft: "auto",
-  "& .skde-logo": {
-    verticalAlign: "middle",
-  },
-  [theme.breakpoints.down("sm")]: {
-    "& .skde-logo": {
-      height: 27,
-      width: 67,
-    },
-  },
-  [theme.breakpoints.up("sm")]: {
-    "& .skde-logo": {
-      height: 30,
-      width: 75,
-    },
-  },
-  [theme.breakpoints.up("md")]: {
-    "& .skde-logo": {
-      height: 40,
-      width: 100,
-    },
-  },
 }));
 
 export const FooterWrapper = styled(Paper)(() => ({
@@ -131,12 +92,12 @@ export const FooterGrid = styled(Grid)(() => ({
   backgroundColor: "#00263d",
 }));
 
-export const FooterItem = styled(Grid)(() => ({
+export const FooterItem = styled(Grid)(({ theme }) => ({
   textAlign: "center",
   "& .footer-logo": {
     verticalAlign: "middle",
-    marginTop: "8px",
-    marginBottom: "8px",
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
   },
 }));
 
@@ -161,57 +122,28 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
     width: "100vw",
     fontFamily: theme.typography.fontFamily,
     borderSpacing: "0px",
-  },
-  "& th": {
-    backgroundColor: theme.palette.secondary.dark,
-    color: theme.palette.secondary.light,
-  },
-}));
-
-export const MainBox = styled(Box)(({ theme }) => ({
-  padding: 0,
-  flexGrow: 1,
-  overflowX: "auto",
-  display: "grid",
-  "& table": {
-    borderSpacing: "0px",
-  },
-  "& th": {
-    top: "0px !important",
-    position: "sticky",
-    zIndex: theme.zIndex.drawer - 1,
-    minWidth: "10rem",
-    verticalAlign: "top",
-    lineHeight: "1.5rem",
-    backgroundColor: "#00263d",
-    color: "white",
-  },
-  [theme.breakpoints.down("sm")]: {
+    paddingLeft: theme.spacing(6),
+    paddingRight: theme.spacing(6),
     "& th": {
-      minWidth: "6rem",
+      verticalAlign: "top",
+      backgroundColor: theme.palette.primary,
+      paddingLeft: 0,
+      paddingRight: theme.spacing(1),
+      paddingTop: theme.spacing(4),
+      paddingBottom: theme.spacing(2),
+      ...theme.typography.subtitle2,
     },
-    marginTop: "104px",
-    height: "calc(100vh - 104px)",
-    "& .MuiDrawer-paper": {
-      width: "100%",
+    ".register-row": {
+      backgroundColor: theme.palette.primary.light,
+      color: theme.palette.primary,
+      "& td": {
+        wordBreak: "break-word",
+        ...theme.typography.body1,
+      },
     },
-  },
-  [theme.breakpoints.up("sm")]: {
-    marginTop: "112px",
-    height: "calc(100vh - 112px)",
-    "& .MuiDrawer-paper": {
-      width: "100%",
-    },
-  },
-  [theme.breakpoints.up("md")]: {
-    "& .MuiDrawer-paper": {
-      width: `calc(100% - ${lgDrawerWidth}px)`,
-    },
-  },
-  [theme.breakpoints.up("desktop")]: {
-    marginLeft: xlDrawerWidth,
-    "& .MuiDrawer-paper": {
-      width: `calc(100% - ${xlDrawerWidth}px)`,
+    "& td": {
+      paddingLeft: 0,
+      ...theme.typography.body2,
     },
   },
 }));
