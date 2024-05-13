@@ -14,7 +14,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 const StyledTabs = styled(Tabs)(({ theme }) => ({
   "& .Mui-selected": {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.default,
   },
   "& .MuiTabs-indicator": {
     display: "none",
@@ -22,13 +22,12 @@ const StyledTabs = styled(Tabs)(({ theme }) => ({
 }));
 
 const StyledTab = styled(Tab)(({ theme }) => ({
-  font: theme.typography.button.font,
-  textTransform: "none",
   borderTopLeftRadius: 12,
   borderTopRightRadius: 12,
-  fontWeight: "500",
   paddingLeft: theme.spacing(4),
   paddingRight: theme.spacing(4),
+  ...theme.typography.button,
+  textTransform: "none",
 }));
 
 type StickyToolbarProps = {
@@ -43,7 +42,7 @@ export const TreatmentQualityToolbar = ({
   onTabChanged,
 }: StickyToolbarProps) => {
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("narrow"));
+  const isNarrowScreen = useMediaQuery(theme.breakpoints.down("narrow"));
 
   const [value, setValue] = useState(
     context === "resident" ? "resident" : "caregiver",
@@ -59,11 +58,21 @@ export const TreatmentQualityToolbar = ({
   return (
     <StyledToolbar>
       <Grid container spacing={4} columns={{ xs: 4, sm: 8, md: 12 }}>
-        <Grid xs={1} sm={2} md={2} alignContent="center">
+        <Grid
+          xs={1}
+          sm={1}
+          md={2}
+          sx={{
+            alignContent: "center",
+          }}
+        >
           <Button
             variant="contained"
             aria-label="Åpne sidemeny"
             color="primary"
+            sx={{
+              borderRadius: 4,
+            }}
             onClick={() => {
               openDrawer();
             }}
@@ -71,12 +80,13 @@ export const TreatmentQualityToolbar = ({
             <Menu fontSize="medium" />
           </Button>
         </Grid>
-        <Grid xs={3} sm={6} md={10}>
+        <Grid xs={3} sm={7} md={10}>
           <StyledTabs
+            indicatorColor="secondary"
             aria-label="Arkfaner for behandlingskvalitet og opptaksområde"
             value={value}
             onChange={handleChange}
-            orientation={isSmallScreen ? "vertical" : "horizontal"}
+            orientation={isNarrowScreen ? "vertical" : "horizontal"}
             variant="fullWidth"
           >
             <StyledTab label="Behandlingsenheter" value={"caregiver"} />
