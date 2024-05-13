@@ -140,7 +140,7 @@ export const HeatMap = ({
                   fill={bin.color}
                   onClick={() => {
                     if (!events) return;
-                    alert(JSON.stringify(bin.bin.name));
+                    alert(JSON.stringify(bin.bin));
                   }}
                 />
               )),
