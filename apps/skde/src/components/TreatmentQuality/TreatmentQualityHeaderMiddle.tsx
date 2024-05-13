@@ -7,7 +7,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   paddingBottom: theme.spacing(8),
 }));
 
-export const TreatmentQualityHeaderMiddle = () => {
+export const HeaderMiddleToolbar = () => {
   return (
     <StyledToolbar>
       <Grid container spacing={2} rowSpacing={6}>
