@@ -128,7 +128,11 @@ export const Skde = (): JSX.Element => {
               onChange={handleChangeYear}
             >
               {selectYearOptions.map((year) => {
-                return <MenuItem value={year}>{year.toString()}</MenuItem>;
+                return (
+                  <MenuItem key={year.toString()} value={year}>
+                    {year.toString()}
+                  </MenuItem>
+                );
               })}
             </Select>
           </FormControl>
@@ -146,9 +150,15 @@ export const Skde = (): JSX.Element => {
               label="Unit level"
               onChange={handleChangeUnitLevel}
             >
-              <MenuItem value={"RHF"}>Regionale helseforetak</MenuItem>
-              <MenuItem value={"HF"}>Helseforetak</MenuItem>
-              <MenuItem value={"Sykehus"}>Sykehus</MenuItem>
+              <MenuItem key={"RHF"} value={"RHF"}>
+                Regionale helseforetak
+              </MenuItem>
+              <MenuItem key={"HF"} value={"HF"}>
+                Helseforetak
+              </MenuItem>
+              <MenuItem key={"Sykehus"} value={"Sykehus"}>
+                Sykehus
+              </MenuItem>
             </Select>
           </FormControl>
         </Box>
@@ -165,12 +175,12 @@ export const Skde = (): JSX.Element => {
               label="Medical field"
               onChange={handleChangeMedField}
             >
-              <MenuItem id="custom" value={""}>
+              <MenuItem key="custom" value={""}>
                 Egendefinerte indikatorer
               </MenuItem>
               {medfieldsQuery.data.map((row) => {
                 return (
-                  <MenuItem id={row.shortName} value={row.shortName}>
+                  <MenuItem key={row.shortName} value={row.shortName}>
                     {row.name}
                   </MenuItem>
                 );
