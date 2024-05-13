@@ -15,7 +15,7 @@ export const filterMenuTopMargin = 2;
 export const smDrawerWidth = 320;
 export const mdDrawerWidth = 500;
 export const lgDrawerWidth = 700;
-export const xlDrawerWidth = 450;
+export const xlDrawerWidth = 992;
 
 /** The width at which the drawer type changes.
  * Most modern desktops have a resolution greater than this, whereas
@@ -30,7 +30,7 @@ export const TreatmentQualityAppBar = styled(AppBar)(({ theme }) => ({
 }));
 
 export const FilterIconButton = styled(IconButton)(({ theme }) => ({
-  color: theme.palette.secondary.main,
+  color: theme.palette.primary.main,
   [theme.breakpoints.up("desktop")]: {
     display: "none",
   },
@@ -151,8 +151,21 @@ export const FooterListItemText = styled(ListItemText)(() => ({
 
 export const FooterDividerBox = styled(Box)(() => ({}));
 
-export const FooterDivider = styled(Divider)(() => ({
-  backgroundColor: "#27485b",
+export const FooterDivider = styled(Divider)(({ theme }) => ({
+  backgroundColor: theme.palette.secondary.dark,
+}));
+
+export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
+  "& table": {
+    tableLayout: "fixed",
+    width: "100vw",
+    fontFamily: theme.typography.fontFamily,
+    borderSpacing: "0px",
+  },
+  "& th": {
+    backgroundColor: theme.palette.secondary.dark,
+    color: theme.palette.secondary.light,
+  },
 }));
 
 export const MainBox = styled(Box)(({ theme }) => ({

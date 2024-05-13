@@ -1,13 +1,17 @@
-import { useState, useEffect } from "react";
-import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import { Menu } from "@mui/icons-material";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import { useQueryParam, withDefault, StringParam } from "use-query-params";
-import Image from "next/image";
+import { useState } from "react";
 import {
-  imgLoader,
+  Box,
+  CssBaseline,
+  Divider,
+  IconButton,
+  ThemeProvider,
+  Typography,
+  styled,
+} from "@mui/material";
+import { ChevronLeft } from "@mui/icons-material";
+import Grid from "@mui/material/Unstable_Grid2";
+import { useQueryParam, withDefault, StringParam } from "use-query-params";
+import {
   FilterSettingsAction,
   FilterSettingsValue,
   TreatmentQualityFilterMenu,
@@ -19,48 +23,42 @@ import {
   yearKey,
   medicalFieldKey,
   useMedicalFieldsQuery,
-  IndicatorTableBodyV2,
   indicatorTableTheme,
-  IndicatorTable,
   FilterSettingsActionType,
+  IndicatorTable,
+  IndicatorTableBodyV2,
 } from "qmongjs";
-import {
-  FilterIconButton,
-  FilterDrawer,
-  FilterDrawerBox,
-  MainBox,
-  appBarElevation,
-  filterMenuTopMargin,
-  desktopBreakpoint,
-  TreatmentQualityAppBar,
-  SkdeLogoBox,
-  TabsRow,
-} from "../../src/components/TreatmentQuality";
-import TreatmentQualityFooter from "../../src/components/TreatmentQuality/TreatmentQualityFooter";
-import { ThemeProvider } from "@mui/material/styles";
 import { UseQueryResult } from "@tanstack/react-query";
 import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useSearchParams } from "next/navigation";
-import TreatmentQualityTabs from "../../src/components/TreatmentQuality/TreatmentQualityTabs";
+import TreatmentQualityProminentAppBar from "../../src/components/TreatmentQuality/TreatmentQualityProminentAppBar";
+import {
+  FilterDrawer,
+  IndicatorTableWrapper,
+} from "../../src/components/TreatmentQuality";
+import TreatmentQualityFooter from "../../src/components/TreatmentQuality/TreatmentQualityFooter";
 
 const dataQualityKey = "dg";
 
-/**
- * Treatment quality page (Behandlingskvalitet)
- *
- * @returns The page component
- */
-export default function TreatmentQuality() {
+const PageWrapper = styled(Box)(({ theme }) => ({
+  "& .MuiToolbar-root": {
+    paddingLeft: theme.spacing(6),
+    paddingRight: theme.spacing(6),
+  },
+}));
+
+export default function TreatmentQualityPage() {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const toggleDrawer = (newOpen: boolean) => {
+    setDrawerOpen(newOpen);
+    console.log(`toggle: ${newOpen}`);
+  };
+
   const [newIndicatorTableActivated, setNewIndicatorTableActivated] =
     useState(false);
-  const [width, setWidth] = useState(desktopBreakpoint);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
-  const isPhoneSizedScreen = width < desktopBreakpoint;
-  const drawerOpen = isPhoneSizedScreen ? mobileOpen : true;
-  const drawerType = isPhoneSizedScreen ? "temporary" : "permanent";
 
   const searchParams = useSearchParams();
   const newTableOnly = searchParams.get("newtable") === "true";
@@ -86,38 +84,6 @@ export default function TreatmentQuality() {
   ]);
   const [dataQualitySelected, setDataQualitySelected] =
     useState<boolean>(false);
-
-  // Used to change drawer style between small screens and larger screens
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setWidth(window.innerWidth);
-
-      const handleResize = () => {
-        setWidth(window.innerWidth);
-      };
-
-      window.addEventListener("resize", handleResize);
-
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }
-  }, []);
-
-  const handleDrawerClose = () => {
-    setIsClosing(true);
-    setMobileOpen(false);
-  };
-
-  const handleDrawerTransitionEnd = () => {
-    setIsClosing(false);
-  };
-
-  const handleDrawerToggle = () => {
-    if (!isClosing) {
-      setMobileOpen(!mobileOpen);
-    }
-  };
 
   // Load register names and medical fields
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -304,131 +270,98 @@ export default function TreatmentQuality() {
 
   return (
     <ThemeProvider theme={indicatorTableTheme}>
-      <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-        <TreatmentQualityAppBar position="fixed" elevation={appBarElevation}>
-          <Toolbar>
-            <Box>
-              <Typography variant="h5">Behandlingskvalitet</Typography>
-              <Typography variant="body1">
-                Nasjonale medisinske kvalitetsregistre
-              </Typography>
-            </Box>
-            <SkdeLogoBox>
-              <Image
-                className="skde-logo"
-                loader={imgLoader}
-                src="/img/logos/SKDE_sort.png"
-                height="40"
-                width="99"
-                alt="SKDE logo"
-              />
-            </SkdeLogoBox>
-          </Toolbar>
-          <TabsRow>
-            <FilterIconButton
-              aria-label="åpne sidemeny"
-              edge="start"
-              onClick={handleDrawerToggle}
-            >
-              <Menu />
-              <Typography variant="button" sx={{ textTransform: "none" }}>
-                Filter
-              </Typography>
-            </FilterIconButton>
-            <TreatmentQualityTabs
-              context={tableContext}
-              onTabChanged={setTableContext}
-            />
-          </TabsRow>
-        </TreatmentQualityAppBar>
-        <FilterDrawerBox
-          component="nav"
-          sx={{ flexShrink: { sm: 0 } }}
-          aria-label="filtermenyboks"
-        >
-          <FilterDrawer
-            variant={drawerType}
-            open={drawerOpen}
-            onTransitionEnd={handleDrawerTransitionEnd}
-            onClose={handleDrawerClose}
-            ModalProps={{
-              keepMounted: true,
-            }}
-          >
-            <Toolbar />
-            <Toolbar />
-            <Box sx={{ marginTop: filterMenuTopMargin }}>
-              {queriesReady && (
-                <>
-                  <TreatmentQualityFilterMenu
-                    onSelectionChanged={handleFilterChanged}
-                    onFilterInitialized={handleFilterInitialized}
-                    registryNameData={registers}
-                    medicalFieldData={medicalFields}
+      <CssBaseline />
+      <PageWrapper>
+        <TreatmentQualityProminentAppBar
+          openDrawer={() => toggleDrawer(true)}
+          context={tableContext}
+          onTabChanged={setTableContext}
+        />
+        <Grid container spacing={2} disableEqualOverflow>
+          <Grid xs={12}>
+            {queriesReady &&
+              (newIndicatorTableActivated || newTableOnly ? (
+                <IndicatorTableWrapper>
+                  <IndicatorTableBodyV2
+                    key="indicator-table"
                     context={tableContext}
+                    unitNames={selectedTreatmentUnits}
+                    year={selectedYear}
+                    type={dataQualitySelected ? "dg" : "ind"}
+                    levels={selectedLevel}
+                    medfields={selectedMedicalFields}
                   />
-                  {!newTableOnly && (
-                    <FormGroup sx={{ paddingRight: "1.5rem" }}>
-                      <FormControlLabel
-                        label="Prøv ny tabellversjon"
-                        labelPlacement="start"
-                        control={
-                          <Switch
-                            checked={newIndicatorTableActivated}
-                            onChange={(event) =>
-                              setNewIndicatorTableActivated(
-                                event.target.checked,
-                              )
-                            }
-                          />
-                        }
-                      />
-                    </FormGroup>
-                  )}
-                </>
-              )}
-            </Box>
-          </FilterDrawer>
-        </FilterDrawerBox>
-        <MainBox>
-          {queriesReady &&
-            (newIndicatorTableActivated || newTableOnly ? (
-              <>
-                <IndicatorTableBodyV2
-                  key="indicator-table"
-                  context={tableContext}
-                  unitNames={selectedTreatmentUnits}
-                  year={selectedYear}
-                  type={dataQualitySelected ? "dg" : "ind"}
-                  levels={selectedLevel}
-                  medfields={selectedMedicalFields}
+                  <TreatmentQualityFooter />
+                </IndicatorTableWrapper>
+              ) : (
+                <IndicatorTableWrapper>
+                  <IndicatorTable
+                    key="indicator-table"
+                    context={dataQualitySelected ? "coverage" : tableContext}
+                    tableType="allRegistries"
+                    registerNames={registers}
+                    unitNames={selectedTreatmentUnits}
+                    treatmentYear={selectedYear}
+                    colspan={selectedTreatmentUnits.length + 1}
+                    medicalFieldFilter={selectedMedicalFields}
+                    showLevelFilter={selectedLevel}
+                    selection_bar_height={0}
+                    legend_height={0}
+                    blockTitle={registers.map(
+                      (register: { full_name: string }) => register.full_name,
+                    )}
+                  />
+                  <TreatmentQualityFooter />
+                </IndicatorTableWrapper>
+              ))}
+          </Grid>
+        </Grid>
+      </PageWrapper>
+      <FilterDrawer
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile.
+        }}
+        open={drawerOpen}
+        onClose={() => toggleDrawer(false)}
+      >
+        <Box sx={{ display: "flex", m: 2, justifyContent: "space-between" }}>
+          <Typography variant="h3">Filtermeny</Typography>
+          <IconButton
+            aria-label="Lukk sidemeny"
+            onClick={() => toggleDrawer(false)}
+          >
+            <ChevronLeft fontSize="large" />
+          </IconButton>
+        </Box>
+        <Divider />
+        {queriesReady && (
+          <Box sx={{ mt: 4 }}>
+            <TreatmentQualityFilterMenu
+              onSelectionChanged={handleFilterChanged}
+              onFilterInitialized={handleFilterInitialized}
+              registryNameData={registers}
+              medicalFieldData={medicalFields}
+              context={tableContext}
+            />
+            {!newTableOnly && (
+              <FormGroup sx={{ paddingRight: "1.5rem" }}>
+                <FormControlLabel
+                  label="Prøv ny tabellversjon"
+                  labelPlacement="start"
+                  control={
+                    <Switch
+                      checked={newIndicatorTableActivated}
+                      onChange={(event) =>
+                        setNewIndicatorTableActivated(event.target.checked)
+                      }
+                    />
+                  }
                 />
-                <TreatmentQualityFooter />
-              </>
-            ) : (
-              <>
-                <IndicatorTable
-                  key="indicator-table"
-                  context={dataQualitySelected ? "coverage" : tableContext}
-                  tableType="allRegistries"
-                  registerNames={registers}
-                  unitNames={selectedTreatmentUnits}
-                  treatmentYear={selectedYear}
-                  colspan={selectedTreatmentUnits.length + 1}
-                  medicalFieldFilter={selectedMedicalFields}
-                  showLevelFilter={selectedLevel}
-                  selection_bar_height={0}
-                  legend_height={0}
-                  blockTitle={registers.map(
-                    (register: { full_name: string }) => register.full_name,
-                  )}
-                />
-                <TreatmentQualityFooter />
-              </>
-            ))}
-        </MainBox>
-      </Box>
+              </FormGroup>
+            )}
+          </Box>
+        )}
+      </FilterDrawer>
     </ThemeProvider>
   );
 }
