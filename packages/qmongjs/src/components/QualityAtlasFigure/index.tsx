@@ -4,6 +4,7 @@ import { FetchIndicatorParams } from "qmongjs/src/helpers/hooks";
 import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
 import { Indicator } from "types";
 import { level } from "qmongjs";
+import { HeatMapColumn } from "../Charts/HeatMap";
 
 export type QualityAtlasFigureProps = {
   width: number;
@@ -39,6 +40,7 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
   let filteredData: Indicator[];
   let indIDs: string[];
 
+  // If the medfield argument is set, filter out the correct indicators and ignore the indicatorID argument
   if (medField.length === 0) {
     filteredData = indicatorData.filter((row) => {
       return indicatorIDs.includes(row.ind_id);
@@ -76,6 +78,11 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
     return validUnitNames.includes(row.unit_name);
   });
 
+  const filteredIndIDs = indIDs.filter((indID) => {
+    return filteredData.map((row) => row.ind_id).includes(indID);
+  });
+
+  // Map indicator IDs to description
   const indNameKey = filteredData.map((row) => {
     return {
       indID: row.ind_id,
@@ -84,7 +91,12 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
     };
   });
 
-  const heatmapData = createHeatmapData(filteredData, validUnitNames, indIDs);
+  // Transform the data
+  const heatmapData = createHeatmapData(
+    filteredData,
+    validUnitNames,
+    filteredIndIDs,
+  );
 
   // Remove columns whith no data
   heatmapData.data = heatmapData.data.filter((col) => {
@@ -95,6 +107,31 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
     });
     return invalidCounts.length === nRows ? false : true;
   });
+
+  // Sort the columns according to the number of data-less units
+  const combinedList = [];
+
+  for (let i = 0; i < heatmapData.data.length; i++) {
+    combinedList.push({
+      column: heatmapData.data[i],
+      indID: filteredIndIDs[i],
+    });
+  }
+
+  combinedList.sort((a, b) => {
+    const count = (x: { column: HeatMapColumn; indID: string }) =>
+      x.column.bins.filter((val) => {
+        return val.count !== -1;
+      }).length;
+
+    const aCount = count(a);
+    const bCount = count(b);
+
+    return aCount > bCount ? -1 : aCount === bCount ? 0 : 1;
+  });
+
+  heatmapData.data = combinedList.map((x) => x.column);
+  const sortedIndIDs = combinedList.map((x) => x.indID);
 
   return (
     <div style={{ margin: 40 }}>
@@ -108,7 +145,7 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
       <div>
         <h3>Indikatorer</h3>
         <ol>
-          {indIDs.map((indIDRow, index) => {
+          {sortedIndIDs.map((indIDRow, index) => {
             const indName = indNameKey.find((indKeyRow) => {
               return indKeyRow.indID === indIDRow;
             });
