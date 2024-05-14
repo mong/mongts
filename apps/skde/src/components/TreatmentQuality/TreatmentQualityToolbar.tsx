@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Tab, Tabs, Toolbar, styled } from "@mui/material";
-import { Menu } from "@mui/icons-material";
+import { MenuRounded } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
@@ -77,7 +77,7 @@ export const TreatmentQualityToolbar = ({
               openDrawer();
             }}
           >
-            <Menu fontSize="medium" />
+            <MenuRounded fontSize="medium" />
           </Button>
         </Grid>
         <Grid xs={3} sm={7} md={10}>

@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import {
-  AddCircleOutlineOutlined,
-  RemoveCircleOutlineOutlined,
+  AddCircleOutlineRounded,
+  RemoveCircleOutlineRounded,
 } from "@mui/icons-material";
 
 export const CustomAccordionExpandIcon = () => {
@@ -20,10 +20,10 @@ export const CustomAccordionExpandIcon = () => {
       }}
     >
       <Box className="expandIconWrapper">
-        <RemoveCircleOutlineOutlined color="primary" />
+        <RemoveCircleOutlineRounded color="primary" />
       </Box>
       <Box className="collapseIconWrapper">
-        <AddCircleOutlineOutlined color="primary" />
+        <AddCircleOutlineRounded color="primary" />
       </Box>
     </Box>
   );

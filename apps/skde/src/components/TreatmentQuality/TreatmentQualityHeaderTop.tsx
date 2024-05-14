@@ -1,4 +1,4 @@
-import { NavigateNext } from "@mui/icons-material";
+import { NavigateNextRounded } from "@mui/icons-material";
 import { Breadcrumbs, Link, Toolbar, Typography, styled } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 
@@ -19,7 +19,7 @@ const LogoImage = styled("img")(({ theme }) => ({
   },
 }));
 
-const StyledBreadcrumbSeparator = styled(NavigateNext)(({ theme }) => ({
+const StyledBreadcrumbSeparator = styled(NavigateNextRounded)(({ theme }) => ({
   color: theme.palette.primary.light,
 }));
 

@@ -8,7 +8,7 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import { ChevronLeft } from "@mui/icons-material";
+import { ChevronLeftRounded } from "@mui/icons-material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useQueryParam, withDefault, StringParam } from "use-query-params";
 import {
@@ -37,6 +37,7 @@ import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/Treatm
 import {
   FilterDrawer,
   IndicatorTableWrapper,
+  IndicatorTableV2Wrapper,
 } from "../../src/components/TreatmentQuality";
 import TreatmentQualityFooter from "../../src/components/TreatmentQuality/TreatmentQualityFooter";
 
@@ -281,7 +282,7 @@ export default function TreatmentQualityPage() {
           <Grid xs={12}>
             {queriesReady &&
               (newIndicatorTableActivated || newTableOnly ? (
-                <IndicatorTableWrapper>
+                <IndicatorTableV2Wrapper>
                   <IndicatorTableBodyV2
                     key="indicator-table"
                     context={tableContext}
@@ -292,7 +293,7 @@ export default function TreatmentQualityPage() {
                     medfields={selectedMedicalFields}
                   />
                   <TreatmentQualityFooter />
-                </IndicatorTableWrapper>
+                </IndicatorTableV2Wrapper>
               ) : (
                 <IndicatorTableWrapper>
                   <IndicatorTable
@@ -330,7 +331,7 @@ export default function TreatmentQualityPage() {
             aria-label="Lukk sidemeny"
             onClick={() => toggleDrawer(false)}
           >
-            <ChevronLeft fontSize="large" />
+            <ChevronLeftRounded fontSize="large" />
           </IconButton>
         </Box>
         <Divider />
