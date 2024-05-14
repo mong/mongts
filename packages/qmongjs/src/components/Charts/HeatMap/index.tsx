@@ -67,6 +67,7 @@ const rectColorScale = scaleOrdinal<
 export type HeatmapProps = {
   heatmapData: HeatMapData;
   width: number;
+  maxBoxWidth?: number;
   margin?: { top: number; right: number; bottom: number; left: number };
   separation?: number;
   events?: boolean;
@@ -77,6 +78,7 @@ const defaultMargin = { top: 50, left: 200, right: 0, bottom: 0 };
 export const HeatMap = ({
   heatmapData,
   width,
+  maxBoxWidth,
   events = true,
   margin = defaultMargin,
   separation = 3,
@@ -88,7 +90,13 @@ export const HeatMap = ({
   const nRows = data[0].bins.length;
   const nCols = data.length;
 
-  const binWidth = width / nCols;
+  let binWidth = width / nCols;
+
+  if (maxBoxWidth && binWidth > maxBoxWidth) {
+    binWidth = maxBoxWidth;
+    width = binWidth * nCols;
+  }
+
   const height = binWidth * nRows;
 
   // Scales
@@ -102,12 +110,12 @@ export const HeatMap = ({
     range: [0, height],
   });
 
-  const xAxisScale = scaleBand<string>({
+  const yAxisScale = scaleBand<string>({
     domain: xTicks,
     range: [0, height],
   });
 
-  const yAxisScale = scaleBand<number>({
+  const xAxisScale = scaleBand<number>({
     domain: Array.from({ length: nCols }, (_, i) => i + 1),
     range: [0, width],
   });
@@ -148,8 +156,8 @@ export const HeatMap = ({
           }
         </HeatmapRect>
 
-        <AxisLeft scale={xAxisScale} hideAxisLine={true} numTicks={nRows} />
-        <AxisTop scale={yAxisScale} hideAxisLine={true} numTicks={nCols} />
+        <AxisLeft scale={yAxisScale} hideAxisLine={true} numTicks={nRows} />
+        <AxisTop scale={xAxisScale} hideAxisLine={true} numTicks={nCols} />
       </Group>
     </svg>
   );
