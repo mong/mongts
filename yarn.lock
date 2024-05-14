@@ -6436,6 +6436,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@visx/heatmap@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "@visx/heatmap@npm:3.3.0"
+  dependencies:
+    "@types/react": "npm:*"
+    "@visx/group": "npm:3.3.0"
+    classnames: "npm:^2.3.1"
+    prop-types: "npm:^15.6.1"
+  peerDependencies:
+    react: ^16.3.0-0 || ^17.0.0-0 || ^18.0.0-0
+  checksum: 10/525d2767c537913f48c0215376e0a2a2d98df1a2ada25df4d2ad199abd541e2bab4742db73112d661eb002b58a98cc41a056d69a3688ffe62ad25146a816c48b
+  languageName: node
+  linkType: hard
+
 "@visx/legend@npm:3.5.0":
   version: 3.5.0
   resolution: "@visx/legend@npm:3.5.0"
@@ -19792,6 +19806,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:7.8.0"
     "@typescript-eslint/parser": "npm:7.8.0"
     "@visx/event": "npm:3.3.0"
+    "@visx/heatmap": "npm:^3.3.0"
     "@visx/tooltip": "npm:3.3.0"
     "@vitejs/plugin-react": "npm:4.2.1"
     "@vitest/coverage-v8": "npm:1.6.0"
