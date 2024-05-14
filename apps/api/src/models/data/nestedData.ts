@@ -61,10 +61,18 @@ function withRegFilter(builder: Knex.QueryBuilder, filter?: Filter) {
 function withIndFilter(builder: Knex.QueryBuilder, filter?: Filter) {
   if (filter?.type) {
     if (filter.type === "dg") {
-      builder.where("type", filter.type).orWhereNull("type");
-    } else if (filter.type === "ind") {
-      builder.whereNot("type", "dg").whereNotNull("type");
+      builder.whereIn("type", ["dg", "dg_andel"]);
     }
+    if (filter.type === "ind") {
+      builder.whereNotIn("type", ["dg", "dg_andel"]);
+    }
+  }
+  if (filter?.register) {
+    builder.whereIn("registry_id", function (this: Knex.QueryBuilder) {
+      this.select("registry.id")
+        .from("registry")
+        .modify(registerFilter, filter.register ?? "");
+    });
   }
 }
 
