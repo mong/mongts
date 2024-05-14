@@ -8,6 +8,7 @@ import { HeatMapColumn } from "../Charts/HeatMap";
 
 export type QualityAtlasFigureProps = {
   width: number;
+  maxBoxWidth?: number;
   gap: number;
   context: string;
   year: number;
@@ -17,8 +18,16 @@ export type QualityAtlasFigureProps = {
 };
 
 export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
-  const { width, gap, context, year, indicatorIDs, medField, unitNames } =
-    props;
+  const {
+    width,
+    maxBoxWidth,
+    gap,
+    context,
+    year,
+    indicatorIDs,
+    medField,
+    unitNames,
+  } = props;
 
   const queryParams: FetchIndicatorParams = {
     context: context,
@@ -119,15 +128,27 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
   }
 
   combinedList.sort((a, b) => {
-    const count = (x: { column: HeatMapColumn; indID: string }) =>
+    const count = (
+      x: { column: HeatMapColumn; indID: string },
+      score: number[],
+    ) =>
       x.column.bins.filter((val) => {
-        return val.count !== -1;
+        return score.includes(val.count);
       }).length;
 
-    const aCount = count(a);
-    const bCount = count(b);
-
-    return aCount > bCount ? -1 : aCount === bCount ? 0 : 1;
+    return count(a, [2]) > count(b, [2])
+      ? -1
+      : count(a, [2]) < count(b, [2])
+        ? 1
+        : count(a, [1]) > count(b, [1])
+          ? -1
+          : count(a, [1]) < count(b, [1])
+            ? 1
+            : count(a, [0]) > count(b, [0])
+              ? -1
+              : count(a, [0]) < count(b, [0])
+                ? 1
+                : 0;
   });
 
   heatmapData.data = combinedList.map((x) => x.column);
@@ -139,6 +160,7 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
         <HeatMap
           heatmapData={heatmapData}
           width={width}
+          maxBoxWidth={maxBoxWidth}
           separation={gap}
         ></HeatMap>
       </div>
