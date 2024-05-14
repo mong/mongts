@@ -143,7 +143,6 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
   // UI stuff
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [setting, setSetting] = React.useState("last-year");
-  console.log(props);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
