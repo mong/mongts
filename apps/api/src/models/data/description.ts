@@ -11,12 +11,12 @@ export const descriptionModel = (
     .select("ind.*", "registry.name as rname", "registry.full_name")
     .from("ind")
     .leftJoin("registry", "ind.registry_id", "registry.id")
-    .modify(withIndFilter, filter)
+    .modify(withFilter, filter)
     .where("registry_id", function (this: Knex) {
       this.select("id").from("registry").where("name", register);
     });
 
-function withIndFilter(builder: Knex.QueryBuilder, filter?: Filter) {
+function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
   if (filter?.type) {
     if (filter.type === "dg") {
       builder.where("type", filter.type).orWhereNull("type");
