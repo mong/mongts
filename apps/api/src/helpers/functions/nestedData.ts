@@ -35,27 +35,20 @@ export const nestedData = (
 
   /* Create nested data */
   const mydata = registries.reduce((acc, cur) => {
-    // First entry overall or first entry of a registry
-    if (
-      acc.length === 0 ||
-      acc.every((curr_entry) => curr_entry.registerID !== cur.registerID)
-    ) {
-      const myIndicators = allIndicators.filter(
-        (x) => x.registerID === cur.registerID,
-      );
+    const myIndicators = allIndicators.filter(
+      (x) => x.registerID === cur.registerID,
+    );
 
-      // redefine array of medical fields for given registry
-      const entry = {
-        registerFullName: cur.registerFullName,
-        registerName: cur.registerName,
-        registerShortName: cur.registerShortName,
-        registerID: cur.registerID,
-        medfieldID: cur.medfieldID,
-        indicatorData: myIndicators,
-      };
+    const entry = {
+      registerFullName: cur.registerFullName,
+      registerName: cur.registerName,
+      registerShortName: cur.registerShortName,
+      registerID: cur.registerID,
+      medfieldID: cur.medfieldID,
+      indicatorData: myIndicators,
+    };
 
-      acc = [...acc, entry];
-    }
+    acc = [...acc, entry];
     return acc;
   }, [] as RegisterData[]);
 
