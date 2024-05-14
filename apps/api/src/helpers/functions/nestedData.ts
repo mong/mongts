@@ -12,20 +12,7 @@ export const nestedData = (
 
     if (currentDatapoints.length > 0) {
       const entry = {
-        indicatorID: cur.indicatorID,
-        indicatorTitle: cur.indicatorTitle,
-        levelGreen: cur.levelGreen,
-        levelYellow: cur.levelYellow,
-        levelDirection: cur.levelDirection,
-        minDenominator: cur.minDenominator,
-        minValue: cur.minValue,
-        maxValue: cur.maxValue,
-        shortDescription: cur.shortDescription,
-        longDescription: cur.longDescription,
-        indType: cur.indType,
-        sortingName: cur.sortingName,
-        format: cur.format,
-        registerID: cur.registerID,
+        ...cur,
         data: currentDatapoints,
       };
       acc = [...acc, entry];
@@ -40,11 +27,7 @@ export const nestedData = (
     );
 
     const entry = {
-      registerFullName: cur.registerFullName,
-      registerName: cur.registerName,
-      registerShortName: cur.registerShortName,
-      registerID: cur.registerID,
-      medfieldID: cur.medfieldID,
+      ...cur,
       indicatorData: myIndicators,
     };
 
