@@ -2,7 +2,7 @@ export * from "./unitNames";
 export * from "./indicators";
 export * from "./description";
 export * from "./selectionyears";
-export { nestedDataModel } from "./nestedData";
+export { aggData, indTable, regTable } from "./nestedData";
 
 export interface Filter {
   unit_level?: string;

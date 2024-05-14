@@ -1,11 +1,15 @@
 import { RequestHandler } from "express";
-import { nestedDataModel } from "../../models/data";
+import { regTable, indTable, aggData } from "../../models/data";
 import { parseQuery } from "./indicators";
+import { nestedData } from "../../helpers/functions";
 
 export const dataController: RequestHandler = async (req, res) => {
   const query = parseQuery(req);
   try {
-    const rows = await nestedDataModel(query.filter);
+    const aggdata = await aggData(query.filter);
+    const registries = await regTable();
+    const indicators = await indTable(query.filter);
+    const rows = nestedData(registries, indicators, aggdata);
     res.json(rows);
   } catch (error) {
     const error_message =
