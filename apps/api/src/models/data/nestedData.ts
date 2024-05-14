@@ -69,9 +69,6 @@ function withIndFilter(builder: Knex.QueryBuilder, filter?: Filter) {
 }
 
 function withDataFilter(builder: Knex.QueryBuilder, filter?: Filter) {
-  if (filter?.unit_level) {
-    builder.andWhere("unit_level", filter.unit_level);
-  }
   if (filter?.year && typeof filter?.year === "number") {
     builder.where("year", filter.year);
   }
@@ -80,14 +77,6 @@ function withDataFilter(builder: Knex.QueryBuilder, filter?: Filter) {
   }
   if (filter?.context) {
     builder.where("context", filter.context);
-  }
-  if (filter?.type) {
-    if (filter.type === "dg") {
-      builder.whereIn("type", ["dg", "dg_andel"]);
-    }
-    if (filter.type === "ind") {
-      builder.whereNotIn("type", ["dg", "dg_andel"]);
-    }
   }
   if (filter?.register) {
     builder.whereIn("ind_id", function (this: Knex.QueryBuilder) {
