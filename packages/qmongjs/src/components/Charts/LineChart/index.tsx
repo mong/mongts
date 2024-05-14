@@ -386,6 +386,7 @@ const LineChart = (props: Props) => {
       <div
         ref={svgContainerRef}
         style={{ width: "90%", margin: "auto", position: "relative" }}
+        className="linechart-wrapper"
       >
         <svg
           className={styles.lineChart}

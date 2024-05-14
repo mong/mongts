@@ -124,6 +124,7 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
     borderSpacing: "0px",
     paddingLeft: theme.spacing(6),
     paddingRight: theme.spacing(6),
+    wordBreak: "break-word",
     "& th": {
       verticalAlign: "top",
       backgroundColor: theme.palette.primary,
@@ -145,5 +146,33 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
       paddingLeft: 0,
       ...theme.typography.body2,
     },
+    "& div.barchart-wrapper": {
+      borderColor: "green",
+      [theme.breakpoints.down("sm")]: {
+        width: "100% !important",
+        "& text": {
+          fontSize: `10px !important`,
+        },
+      },
+      ...theme.typography.body2,
+    },
+    "& div.linechart-wrapper": {
+      [theme.breakpoints.down("sm")]: {
+        width: "100% !important",
+        "& text": {
+          fontSize: `10px !important`,
+        },
+      },
+      ...theme.typography.body2,
+    },
+  },
+}));
+
+export const IndicatorTableV2Wrapper = styled(Box)(({ theme }) => ({
+  "& table": {
+    tableLayout: "fixed",
+    width: "100vw",
+    paddingLeft: theme.spacing(6),
+    paddingRight: theme.spacing(6),
   },
 }));
