@@ -8,6 +8,7 @@ import { InputLabel } from "@mui/material";
 import Box from "@mui/material/Box";
 
 const width = 1000;
+const maxBoxWidth = 100;
 const gap = 2;
 const context = "caregiver";
 const currentYear = new Date().getFullYear();
@@ -193,6 +194,7 @@ export const Skde = (): JSX.Element => {
       <div>
         <QualityAtlasFigure
           width={width}
+          maxBoxWidth={maxBoxWidth}
           gap={gap}
           context={context}
           year={Number(year)}
