@@ -16,7 +16,7 @@ export const descriptionModel = (
       this.select("id").from("registry").where("name", register);
     });
 
-export function withIndFilter(builder: Knex.QueryBuilder, filter?: Filter) {
+function withIndFilter(builder: Knex.QueryBuilder, filter?: Filter) {
   if (filter?.type) {
     if (filter.type === "dg") {
       builder.where("type", filter.type).orWhereNull("type");

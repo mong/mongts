@@ -1,8 +1,7 @@
+import { Knex } from "knex";
 import db from "../../db";
 import { Filter } from ".";
 import { IndicatorData, Registry, DataPoint } from "types";
-import { withFilter } from "./indicators";
-import { withIndFilter } from "./description";
 
 export const aggData = (filter?: Filter): Promise<DataPoint[]> =>
   db
@@ -18,7 +17,7 @@ export const aggData = (filter?: Filter): Promise<DataPoint[]> =>
       "delivery_latest_affirm as affirmTime",
     )
     .from("agg_data")
-    .modify(withFilter, filter);
+    .modify(withDataFilter, filter);
 
 export const indTable = (filter?: Filter): Promise<IndicatorData[]> =>
   db
@@ -42,7 +41,7 @@ export const indTable = (filter?: Filter): Promise<IndicatorData[]> =>
     .where("include", 1)
     .modify(withIndFilter, filter);
 
-export const regTable = (): Promise<Registry[]> =>
+export const regTable = (filter?: Filter): Promise<Registry[]> =>
   db
     .select(
       "full_name as registerFullName",
@@ -50,4 +49,57 @@ export const regTable = (): Promise<Registry[]> =>
       "short_name as registerShortName",
       "id as registerID",
     )
-    .from("registry");
+    .from("registry")
+    .modify(withRegFilter, filter);
+
+function withRegFilter(builder: Knex.QueryBuilder, filter?: Filter) {
+  if (filter?.register) {
+    builder.where("name", filter.register);
+  }
+}
+
+function withIndFilter(builder: Knex.QueryBuilder, filter?: Filter) {
+  if (filter?.type) {
+    if (filter.type === "dg") {
+      builder.where("type", filter.type).orWhereNull("type");
+    } else if (filter.type === "ind") {
+      builder.whereNot("type", "dg").whereNotNull("type");
+    }
+  }
+}
+
+function withDataFilter(builder: Knex.QueryBuilder, filter?: Filter) {
+  if (filter?.unit_level) {
+    builder.andWhere("unit_level", filter.unit_level);
+  }
+  if (filter?.year && typeof filter?.year === "number") {
+    builder.where("year", filter.year);
+  }
+  if (filter?.unit_name) {
+    builder.whereIn("unit_name", filter.unit_name);
+  }
+  if (filter?.context) {
+    builder.where("context", filter.context);
+  }
+  if (filter?.type) {
+    if (filter.type === "dg") {
+      builder.whereIn("type", ["dg", "dg_andel"]);
+    }
+    if (filter.type === "ind") {
+      builder.whereNotIn("type", ["dg", "dg_andel"]);
+    }
+  }
+  if (filter?.register) {
+    builder.whereIn("ind_id", function (this: Knex.QueryBuilder) {
+      this.select("ind.id")
+        .from("ind")
+        .modify(registerFilter, filter.register ?? "");
+    });
+  }
+}
+
+function registerFilter(builder: Knex.QueryBuilder, registerName: string) {
+  builder.where("registry_id", function (this: Knex.QueryBuilder) {
+    this.select("id").from("registry").where("name", registerName);
+  });
+}

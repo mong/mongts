@@ -60,7 +60,7 @@ export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
     .whereNot("unit_name", "LIKE", "Udefinerte%")
     .modify(withFilter, filter);
 
-export function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
+function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
   if (filter?.unit_level) {
     builder.andWhere("unit_level", filter.unit_level);
   }

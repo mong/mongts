@@ -7,7 +7,7 @@ export const dataController: RequestHandler = async (req, res) => {
   const query = parseQuery(req);
   try {
     const aggdata = await aggData(query.filter);
-    const registries = await regTable();
+    const registries = await regTable(query.filter);
     const indicators = await indTable(query.filter);
     const rows = nestedData(registries, indicators, aggdata);
     res.json(rows);
