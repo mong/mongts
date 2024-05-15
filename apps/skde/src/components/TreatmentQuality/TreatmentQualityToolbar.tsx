@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Tab, Tabs, Toolbar, styled } from "@mui/material";
-import { MenuRounded } from "@mui/icons-material";
+import { TuneRounded } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
@@ -9,7 +9,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
   color: theme.palette.primary.dark,
   paddingTop: theme.spacing(2),
-  paddingBottom: theme.spacing(0),
+  paddingBottom: 0,
 }));
 
 const StyledTabs = styled(Tabs)(({ theme }) => ({
@@ -56,8 +56,8 @@ export const TreatmentQualityToolbar = ({
   };
 
   return (
-    <StyledToolbar>
-      <Grid container spacing={4} columns={{ xs: 4, sm: 8, md: 12 }}>
+    <StyledToolbar className="main-toolbar">
+      <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
         <Grid
           xs={1}
           sm={1}
@@ -77,7 +77,7 @@ export const TreatmentQualityToolbar = ({
               openDrawer();
             }}
           >
-            <MenuRounded fontSize="medium" />
+            <TuneRounded fontSize="medium" />
           </Button>
         </Grid>
         <Grid xs={3} sm={7} md={10}>
