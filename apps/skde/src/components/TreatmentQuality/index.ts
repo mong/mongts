@@ -211,7 +211,7 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
 }));
 
 export const IndicatorTableV2Wrapper = styled(Box)(({ theme }) => ({
-  "& table": {
+  "& .MuiTable-root": {
     tableLayout: "fixed",
     width: "100vw",
     paddingLeft: theme.spacing(6),
