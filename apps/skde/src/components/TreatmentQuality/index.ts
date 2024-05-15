@@ -8,6 +8,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
+import { breakpoints } from "qmongjs/src/themes/SkdeTheme";
 
 const narrowDrawerWidth = 320;
 const smDrawerWidth = 544;
@@ -124,26 +125,96 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
     borderSpacing: "0px",
     paddingLeft: theme.spacing(6),
     paddingRight: theme.spacing(6),
-    "& th": {
-      verticalAlign: "top",
-      backgroundColor: theme.palette.primary,
-      paddingLeft: 0,
-      paddingRight: theme.spacing(1),
-      paddingTop: theme.spacing(4),
-      paddingBottom: theme.spacing(2),
-      ...theme.typography.subtitle2,
-    },
-    ".register-row": {
-      backgroundColor: theme.palette.primary.light,
-      color: theme.palette.primary,
-      "& td": {
-        wordBreak: "break-word",
-        ...theme.typography.body1,
+    wordBreak: "break-word",
+    "& th:nth-last-of-type(n+3):first-of-type ~ th, & th:nth-last-of-type(n+3):first-of-type":
+      {
+        [theme.breakpoints.down("sm")]: {
+          fontSize: "1.0rem",
+        },
+        [theme.breakpoints.down("narrow")]: {
+          fontSize: "0.8rem",
+        },
+      },
+    "& td:nth-last-of-type(n+4):first-of-type ~ td, & td:nth-last-of-type(n+4):first-of-type":
+      {
+        "& h4": {
+          [theme.breakpoints.down("md")]: {
+            fontSize: "1.2rem",
+          },
+          [theme.breakpoints.down("sm")]: {
+            fontSize: "1.0rem",
+          },
+        },
+      },
+    ...theme.typography.body2,
+  },
+
+  "& th:nth-last-of-type(n+4):first-of-type ~ th, & th:nth-last-of-type(n+4):first-of-type":
+    {
+      [theme.breakpoints.down("md")]: {
+        fontSize: "1rem",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "0.8rem",
+      },
+      [theme.breakpoints.down("narrow")]: {
+        fontSize: "0.6rem",
       },
     },
+  "& th": {
+    verticalAlign: "top",
+    backgroundColor: theme.palette.primary,
+    paddingLeft: 0,
+    paddingRight: theme.spacing(1),
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(2),
+    ...theme.typography.subtitle2,
+  },
+  ".register-row": {
+    backgroundColor: theme.palette.primary.light,
+    color: theme.palette.primary,
     "& td": {
-      paddingLeft: 0,
+      wordBreak: "break-word",
+      ...theme.typography.body1,
+    },
+    "& a": {
+      pointerEvents: "none",
+    },
+  },
+  "& td": {
+    paddingLeft: 0,
+    "& div.barchart-wrapper": {
+      [theme.breakpoints.up("xl")]: {
+        width: `${breakpoints.xl}px !important`,
+      },
+      [theme.breakpoints.down("sm")]: {
+        width: "100% !important",
+        "& text": {
+          fontSize: `10px !important`,
+        },
+      },
       ...theme.typography.body2,
     },
+    "& div.linechart-wrapper": {
+      [theme.breakpoints.up("xl")]: {
+        width: `${breakpoints.xl}px !important`,
+      },
+      [theme.breakpoints.down("sm")]: {
+        width: "100% !important",
+        "& text": {
+          fontSize: `10px !important`,
+        },
+      },
+      ...theme.typography.body2,
+    },
+  },
+}));
+
+export const IndicatorTableV2Wrapper = styled(Box)(({ theme }) => ({
+  "& table": {
+    tableLayout: "fixed",
+    width: "100vw",
+    paddingLeft: theme.spacing(6),
+    paddingRight: theme.spacing(6),
   },
 }));

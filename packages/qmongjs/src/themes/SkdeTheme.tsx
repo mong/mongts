@@ -97,7 +97,7 @@ const fonts = {
   },
 };
 
-const breakpoints = {
+export const breakpoints = {
   xs: 0,
   sm: 544,
   md: 768,
