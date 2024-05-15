@@ -4,6 +4,7 @@ import {
   indicatorsContoller,
   unitNamesContoller,
   selectionYearsContoller,
+  dataController,
 } from "../controllers/data";
 
 const Router = express.Router();
@@ -18,5 +19,8 @@ Router.get("/:register/indicators", indicatorsContoller);
 Router.get("/:register/unitNames", unitNamesContoller);
 
 Router.get("/:register/years", selectionYearsContoller);
+
+// Nested data output
+Router.get("/:register/nestedData", dataController);
 
 export default Router;
