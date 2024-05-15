@@ -21,7 +21,7 @@ export function TreatmentQualityFooter() {
       <FooterGrid
         container
         columns={{ xs: 4, sm: 8, md: 12, lg: 12 }}
-        padding={{ xs: 1, sm: 1, md: 2, lg: 2 }}
+        className="footer"
       >
         <FooterItem item xs={4} sm={8} md={2} lg={2}>
           <Link title="Link til SKDEs forside" href="/">
