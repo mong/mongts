@@ -4,6 +4,7 @@ export const nestedData = (
   registries: Registry[],
   indicators: IndicatorData[],
   aggdata: DataPoint[],
+  medfields: { medfield_id: number; registry_id: number }[],
 ): RegisterData[] => {
   const allIndicators = indicators.reduce((acc, cur) => {
     const currentDatapoints = aggdata
@@ -30,13 +31,19 @@ export const nestedData = (
     const myIndicators = allIndicators.filter(
       (x) => x.registerID === cur.registerID,
     );
+    const medfieldList = medfields
+      .filter((el) => el.registry_id === cur.registerID)
+      .map((element) => element.medfield_id);
 
-    const entry = {
-      ...cur,
-      indicatorData: myIndicators,
-    };
+    if (myIndicators.length > 0) {
+      const entry = {
+        ...cur,
+        medfieldID: medfieldList,
+        indicatorData: myIndicators,
+      };
 
-    acc = [...acc, entry];
+      acc = [...acc, entry];
+    }
     return acc;
   }, [] as RegisterData[]);
 

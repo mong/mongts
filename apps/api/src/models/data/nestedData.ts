@@ -100,3 +100,10 @@ function registerFilter(builder: Knex.QueryBuilder, registerName: string) {
     this.select("id").from("registry").where("name", registerName);
   });
 }
+
+export const medfieldTable = () => {
+  const medfields = db
+    .select("medfield_id", "registry_id")
+    .from("registry_medfield");
+  return medfields;
+};
