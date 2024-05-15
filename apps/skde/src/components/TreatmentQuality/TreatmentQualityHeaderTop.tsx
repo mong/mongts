@@ -46,7 +46,7 @@ const SkdeBreadcrumbs = () => {
 
 export const TreatmentQualityHeaderTop = () => {
   return (
-    <StyledToolbar>
+    <StyledToolbar className="header-top">
       <Grid container spacing={2}>
         <Grid xs={12}>
           <LogoImage src="/img/logos/skde-blue.png" alt="SKDE logo" />
