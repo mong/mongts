@@ -59,12 +59,8 @@ const PageWrapper = styled(Box)(({ theme }) => ({
         paddingRight: theme.spacing(6),
       },
       [theme.breakpoints.up("xl")]: {
-        paddingLeft: theme.spacing(8),
-        paddingRight: theme.spacing(8),
-      },
-      [theme.breakpoints.up("xxl")]: {
-        paddingLeft: `calc((100% - 1360px) / 2)`,
-        paddingRight: `calc((100% - 1360px) / 2)`,
+        paddingLeft: theme.spacing(16),
+        paddingRight: theme.spacing(16),
       },
     },
 }));
