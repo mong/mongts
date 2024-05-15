@@ -19,7 +19,7 @@ interface LegendProps {
   selectedLegends: string[] | [];
   setSelectedLegends: Dispatch<SetStateAction<string[] | []>>;
 }
-export const Legend: React.FC<LegendProps> = ({
+export const Legend = ({
   offsetLeft,
   offsetTop,
   legendWidth,
@@ -30,7 +30,7 @@ export const Legend: React.FC<LegendProps> = ({
   setHoveredLegend,
   selectedLegends,
   setSelectedLegends,
-}) => {
+}: LegendProps) => {
   const legendRef = useRef<SVGGElement | null>(null);
 
   const legendH = Math.ceil(
@@ -76,7 +76,7 @@ interface LegendItemProps {
   legendLabelsString: string;
 }
 
-const LegendItem: React.FC<LegendItemProps> = ({
+const LegendItem = ({
   label,
   color,
   legendWidth,
@@ -84,7 +84,7 @@ const LegendItem: React.FC<LegendItemProps> = ({
   selectedLegends,
   setSelectedLegends,
   legendLabelsString,
-}) => {
+}: LegendItemProps) => {
   const legendRef = useRef<SVGGElement | null>(null);
   const textRef = useRef<SVGTextElement | null>(null);
   const textWidth = useTextWidth(textRef.current, label, color, legendWidth);

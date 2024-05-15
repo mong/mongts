@@ -33,7 +33,7 @@ export function Chart(props: ChartProps) {
 export default Chart;
 
 const GetBarChart: React.FC<ChartProps> = (props) => {
-  const { description, indicatorData, treatmentYear } = props;
+  const { description, indicatorData, treatmentYear }: ChartProps = props;
   const registerShortName = description.rname ?? "";
   const {
     isLoading,
