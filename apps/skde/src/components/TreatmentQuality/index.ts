@@ -30,12 +30,12 @@ export const FilterDrawer = styled(Drawer)(({ theme }) => ({
   "& .MuiDrawer-paper": {
     boxSizing: "border-box",
   },
-  [theme.breakpoints.down("narrow")]: {
+  [theme.breakpoints.down("sm")]: {
     "& .MuiDrawer-paper": {
       width: narrowDrawerWidth,
     },
   },
-  [theme.breakpoints.up("narrow")]: {
+  [theme.breakpoints.up("sm")]: {
     "& .MuiDrawer-paper": {
       width: smDrawerWidth,
     },
@@ -96,7 +96,7 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
         [theme.breakpoints.down("sm")]: {
           fontSize: "1.0rem",
         },
-        [theme.breakpoints.down("narrow")]: {
+        [theme.breakpoints.down("md")]: {
           fontSize: "0.8rem",
         },
       },
@@ -121,18 +121,28 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
       [theme.breakpoints.down("sm")]: {
         fontSize: "0.8rem",
       },
-      [theme.breakpoints.down("narrow")]: {
+      [theme.breakpoints.down("md")]: {
         fontSize: "0.6rem",
       },
     },
   "& th": {
+    position: "sticky",
     verticalAlign: "top",
-    backgroundColor: theme.palette.primary,
+    backgroundColor: theme.palette.background.default,
     paddingLeft: 0,
     paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(2),
     ...theme.typography.subtitle2,
+    borderBottom: "1px solid",
+    borderColor: theme.palette.primary.light,
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: theme.spacing(2),
+      top: `calc(2 * ${theme.mixins.toolbar.minHeight}px) !important`,
+    },
+    [theme.breakpoints.up("sm")]: {
+      paddingTop: theme.spacing(4),
+      top: `calc(${theme.mixins.toolbar.minHeight}px) !important`,
+    },
   },
   ".register-row": {
     backgroundColor: theme.palette.primary.light,
