@@ -36,29 +36,39 @@ export interface FetchIndicatorParams {
   context?: string;
   type?: string;
   id?: number;
+  nested?: boolean;
 }
 
 const indicatorUrl = (params: FetchIndicatorParams): string => {
   const registerShortNameQuery: string = params.registerShortName
     ? params.registerShortName
     : "all";
+
   const unitQuery: string = params.unitNames
     ? params.unitNames.reduce((acc, cur) => {
         return `${acc}unit_name[]=${cur}&`;
       }, "")
     : "";
+
   const unitLevelQuery: string = params.unitLevel
     ? `unit_level=${params.unitLevel}&`
     : "";
+
   const contextQuery: string = params.context
     ? `context=${params.context}&`
     : "";
+
   const yearQuery: string = params.treatmentYear
     ? `year=${params.treatmentYear}&`
     : "";
+
   const idQuery: string = params.id ? `id=${params.id}&` : "";
   const typeQuery: string = params.type ? `type=${params.type}` : "";
-  return `${API_HOST}/data/${registerShortNameQuery}/indicators?${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}${typeQuery}${idQuery}`;
+
+  let structure: string;
+  params.nested ? (structure = "/nestedData?") : (structure = "/indicators?");
+
+  return `${API_HOST}/data/${registerShortNameQuery}${structure}${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}${typeQuery}${idQuery}`;
 };
 
 const fetchIndicators = async (params: FetchIndicatorParams) => {

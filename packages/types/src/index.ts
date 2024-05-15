@@ -92,7 +92,7 @@ export interface RegisterName {
 export type DataPoint = {
   unitName: string;
   year: number;
-  var: number | null;
+  var: number;
   denominator: number;
   dg: number | null;
   context: "caregiver" | "resident";
@@ -122,6 +122,7 @@ export type IndicatorData = {
   sortingName: string | null;
   format: string | null;
   registerID: number;
+  data: DataPoint[];
 };
 
 export type Registry = {

@@ -1,7 +1,6 @@
-import { Indicator } from "types";
-import { DataPoint } from "../../components/IndicatorTable/IndicatortablebodyV2";
+import { Indicator, IndicatorData, DataPoint } from "types";
 
-export const level = (indicatorData: Indicator | DataPoint) => {
+export const level = (indicatorData: Indicator) => {
   const { level_green, level_yellow, level_direction } = indicatorData;
   if (
     level_green === undefined ||
@@ -22,6 +21,35 @@ export const level = (indicatorData: Indicator | DataPoint) => {
   } else if (
     (level_direction === 0 && value > yellow) ||
     (level_direction != 0 && value < yellow)
+  ) {
+    return "L";
+  } else {
+    return "M";
+  }
+};
+
+export const level2 = (indicatorData: IndicatorData, dataPoint: DataPoint) => {
+  const { levelGreen, levelYellow, levelDirection } = indicatorData;
+  if (
+    levelGreen === undefined ||
+    levelGreen === null ||
+    levelDirection === null ||
+    dataPoint.var == null
+  ) {
+    return;
+  }
+  const value = dataPoint.var;
+  // If levelYellow is NULL: set to levelGreen
+  const yellow = levelYellow != null ? levelYellow : levelGreen;
+
+  if (
+    (levelDirection === 0 && value <= levelGreen) ||
+    (levelDirection != 0 && value >= levelGreen)
+  ) {
+    return "H";
+  } else if (
+    (levelDirection === 0 && value > yellow) ||
+    (levelDirection != 0 && value < yellow)
   ) {
     return "L";
   } else {
