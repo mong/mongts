@@ -18,7 +18,6 @@ declare module "@mui/material/styles" {
     xl: true;
     xxl: true;
     desktop: true;
-    narrow: true;
   }
 }
 
@@ -216,7 +215,6 @@ export const SkdeTheme = responsiveFontSizes(
         xl: breakpoints.xl,
         xxl: breakpoints.xxl,
         desktop: 1300,
-        narrow: 600,
       },
     },
   }),
