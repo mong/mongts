@@ -6,16 +6,15 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Indicator } from "types";
+import { Indicator, RegisterData } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams, useIndicatorQuery } from "../../helpers/hooks";
-import { customFormat, newLevelSymbols, level } from "qmongjs";
+import { customFormat, newLevelSymbols, level, level2 } from "qmongjs";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import { Box, Button } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import { createData } from "../IndicatorTable/IndicatortablebodyV2";
 
 const getVar = (data: Indicator[], year: number) => {
   const row = data.find((row: Indicator) => {
@@ -143,6 +142,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
   // UI stuff
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [setting, setSetting] = React.useState("last-year");
+  console.log(props);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -156,7 +156,6 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
   const currentYear = new Date().getFullYear();
 
   // Get data
-
   const queryParams: FetchIndicatorParams = {
     context: props.context,
     unitNames: props.unitNames,
@@ -167,41 +166,50 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
   const indicatorQuery: UseQueryResult<any, unknown> =
     useIndicatorQuery(queryParams);
 
-  if (indicatorQuery.isFetching) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const nestedIndicatorQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
+    ...queryParams,
+    nested: true,
+  });
+
+  if (indicatorQuery.isFetching || nestedIndicatorQuery.isFetching) {
     return null;
   }
 
-  const data = indicatorQuery.data;
+  const data = nestedIndicatorQuery.data as RegisterData[];
 
-  // Transform to hierarchical structure
-  // This removes duplicate data due to multiple medfields per registry
-  const data5years = createData(
-    data.filter((row: Indicator) => {
-      return row.year >= currentYear - 5;
-    }),
-  );
-
-  const indDataFlat = data5years.map((row) => row.indicatorData).flat();
+  const indData = data.map((row) => row.indicatorData).flat();
 
   // Find the indicators that were red last year
-  const redLastYear = indDataFlat
-    .filter((row) => {
-      const lastYear = row.data.find((p) => {
+  const redLastYear = indData
+    .filter((indDataRow) => {
+      if (indDataRow.data === undefined) {
+        return false;
+      }
+
+      const lastYear = indDataRow.data.find((p) => {
         return p.year === currentYear - 1;
       });
 
       if (lastYear) {
-        return level(lastYear) === "L";
+        return level2(indDataRow, lastYear) === "L";
       } else return false;
     })
-    .map((row) => row.indicatorID);
+    .map((indDataRow) => indDataRow.indicatorID);
 
   // Find the indicators that have bben red the last 5 years
-  const redLast5Years = indDataFlat
-    .filter((row) => {
-      return row.data
-        .map((row) => {
-          return level(row) === "L";
+  console.log(indData);
+  const redLast5Years = indData
+    .filter((indDataRow) => {
+      return indDataRow.data !== undefined;
+    })
+    .filter((indDataRow) => {
+      return indDataRow
+        .data!.map((dataPoint) => {
+          return (
+            level2(indDataRow, dataPoint) === "L" &&
+            dataPoint.year >= currentYear - 5
+          );
         })
         .every((v) => v == true);
     })
@@ -213,7 +221,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
     ? (indicatorSubset = redLastYear)
     : (indicatorSubset = redLast5Years);
 
-  const filteredData = data
+  const filteredData = indicatorQuery.data
     .filter((row: Indicator) => {
       return (
         row.year === currentYear - 1 && indicatorSubset.includes(row.ind_id)
@@ -290,7 +298,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
               {filteredData.map((row: Indicator) => {
                 return (
                   <IndicatorRow
-                    data={data}
+                    data={indicatorQuery.data}
                     row={row}
                     currentYear={currentYear}
                     key={row.ind_id}
