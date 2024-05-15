@@ -198,7 +198,6 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
     .map((indDataRow) => indDataRow.indicatorID);
 
   // Find the indicators that have bben red the last 5 years
-  console.log(indData);
   const redLast5Years = indData
     .filter((indDataRow) => {
       return indDataRow.data !== undefined;
