@@ -18,7 +18,7 @@ interface Query {
   filter?: Filter;
 }
 
-function parseQuery(req: Request): Query {
+export function parseQuery(req: Request): Query {
   const query: Query = {};
 
   if (typeof req.query === "object" && !Array.isArray(req.query)) {
