@@ -124,6 +124,10 @@ const IndicatorRow = (props: {
 
   const format = indData.format === null ? ",.0%" : indData.format;
 
+  if (indData.data === undefined) {
+    return null;
+  }
+
   const rowData = indData.data.map((row) => {
     return {
       unitName: row.unitName,
@@ -357,7 +361,8 @@ const IndicatorSection = (props: {
 
     levels === ""
       ? (showRow = true)
-      : indDataRow.data
+      : indDataRow.data &&
+          indDataRow.data
             .map((dataPointRow) => level2(indDataRow, dataPointRow) === levels)
             .every((x) => x === false)
         ? (showRow = false)
@@ -408,11 +413,13 @@ const RegistrySection = (props: {
   } else {
     showSection = !regData.indicatorData
       .map((indRow) => {
-        return !indRow.data
-          .map((dataRow) => {
-            return level2(indRow, dataRow) === levels;
-          })
-          .every((x) => x == false);
+        return indRow.data
+          ? !indRow.data
+              .map((dataRow) => {
+                return level2(indRow, dataRow) === levels;
+              })
+              .every((x) => x == false)
+          : null;
       })
       .every((x) => x == false);
   }

@@ -122,7 +122,6 @@ export type IndicatorData = {
   sortingName: string | null;
   format: string | null;
   registerID: number;
-  data: DataPoint[];
 };
 
 export type Registry = {
@@ -134,5 +133,5 @@ export type Registry = {
 };
 
 export type RegisterData = Registry & {
-  indicatorData: IndicatorData[];
+  indicatorData: (IndicatorData & { data?: DataPoint[] })[];
 };
