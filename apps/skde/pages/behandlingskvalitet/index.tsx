@@ -5,9 +5,10 @@ import {
   Divider,
   IconButton,
   ThemeProvider,
+  Typography,
   styled,
 } from "@mui/material";
-import { ChevronLeft } from "@mui/icons-material";
+import { ChevronLeftRounded } from "@mui/icons-material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useQueryParam, withDefault, StringParam } from "use-query-params";
 import {
@@ -32,10 +33,11 @@ import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useSearchParams } from "next/navigation";
-import TreatmentQualityProminentAppBar from "../../src/components/TreatmentQuality/TreatmentQualityProminentAppBar";
+import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import {
   FilterDrawer,
   IndicatorTableWrapper,
+  IndicatorTableV2Wrapper,
 } from "../../src/components/TreatmentQuality";
 import TreatmentQualityFooter from "../../src/components/TreatmentQuality/TreatmentQualityFooter";
 
@@ -271,7 +273,7 @@ export default function TreatmentQualityPage() {
     <ThemeProvider theme={indicatorTableTheme}>
       <CssBaseline />
       <PageWrapper>
-        <TreatmentQualityProminentAppBar
+        <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
           context={tableContext}
           onTabChanged={setTableContext}
@@ -280,7 +282,7 @@ export default function TreatmentQualityPage() {
           <Grid xs={12}>
             {queriesReady &&
               (newIndicatorTableActivated || newTableOnly ? (
-                <IndicatorTableWrapper>
+                <IndicatorTableV2Wrapper>
                   <IndicatorTableBodyV2
                     key="indicator-table"
                     context={tableContext}
@@ -291,7 +293,7 @@ export default function TreatmentQualityPage() {
                     medfields={selectedMedicalFields}
                   />
                   <TreatmentQualityFooter />
-                </IndicatorTableWrapper>
+                </IndicatorTableV2Wrapper>
               ) : (
                 <IndicatorTableWrapper>
                   <IndicatorTable
@@ -323,12 +325,13 @@ export default function TreatmentQualityPage() {
         open={drawerOpen}
         onClose={() => toggleDrawer(false)}
       >
-        <Box sx={{ display: "flex", m: 2, justifyContent: "flex-end" }}>
+        <Box sx={{ display: "flex", m: 2, justifyContent: "space-between" }}>
+          <Typography variant="h3">Filtermeny</Typography>
           <IconButton
             aria-label="Lukk sidemeny"
             onClick={() => toggleDrawer(false)}
           >
-            <ChevronLeft fontSize="large" />
+            <ChevronLeftRounded fontSize="large" />
           </IconButton>
         </Box>
         <Divider />

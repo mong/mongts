@@ -8,20 +8,12 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
+import { breakpoints } from "qmongjs/src/themes/SkdeTheme";
 
-export const appBarElevation = 2;
-export const filterMenuTopMargin = 2;
-
-export const smDrawerWidth = 320;
-export const mdDrawerWidth = 500;
-export const lgDrawerWidth = 700;
-export const xlDrawerWidth = 992;
-
-/** The width at which the drawer type changes.
- * Most modern desktops have a resolution greater than this, whereas
- * many smart phones have landscape mode width of 1280 px.
- * */
-export const desktopBreakpoint = 1300;
+const narrowDrawerWidth = 320;
+const smDrawerWidth = 544;
+const mdDrawerWidth = 768;
+const lgDrawerWidth = 992;
 
 export const TreatmentQualityAppBar = styled(AppBar)(({ theme }) => ({
   zIndex: theme.zIndex.drawer + 1,
@@ -51,24 +43,24 @@ export const FilterDrawer = styled(Drawer)(({ theme }) => ({
   "& .MuiDrawer-paper": {
     boxSizing: "border-box",
   },
-  [theme.breakpoints.down("sm")]: {
+  [theme.breakpoints.down("narrow")]: {
+    "& .MuiDrawer-paper": {
+      width: narrowDrawerWidth,
+    },
+  },
+  [theme.breakpoints.up("narrow")]: {
     "& .MuiDrawer-paper": {
       width: smDrawerWidth,
     },
   },
-  [theme.breakpoints.up("sm")]: {
+  [theme.breakpoints.up("md")]: {
     "& .MuiDrawer-paper": {
       width: mdDrawerWidth,
     },
   },
-  [theme.breakpoints.up("md")]: {
+  [theme.breakpoints.up("lg")]: {
     "& .MuiDrawer-paper": {
       width: lgDrawerWidth,
-    },
-  },
-  [theme.breakpoints.up("desktop")]: {
-    "& .MuiDrawer-paper": {
-      width: xlDrawerWidth,
     },
   },
 }));
@@ -89,36 +81,6 @@ export const FilterDrawerBox = styled(Box)(({ theme }) => ({
       width: lgDrawerWidth,
     },
   },
-  [theme.breakpoints.up("desktop")]: {
-    "& .MuiDrawer-paper": {
-      width: xlDrawerWidth,
-    },
-  },
-}));
-
-export const SkdeLogoBox = styled(Box)(({ theme }) => ({
-  marginLeft: "auto",
-  "& .skde-logo": {
-    verticalAlign: "middle",
-  },
-  [theme.breakpoints.down("sm")]: {
-    "& .skde-logo": {
-      height: 27,
-      width: 67,
-    },
-  },
-  [theme.breakpoints.up("sm")]: {
-    "& .skde-logo": {
-      height: 30,
-      width: 75,
-    },
-  },
-  [theme.breakpoints.up("md")]: {
-    "& .skde-logo": {
-      height: 40,
-      width: 100,
-    },
-  },
 }));
 
 export const FooterWrapper = styled(Paper)(() => ({
@@ -131,12 +93,12 @@ export const FooterGrid = styled(Grid)(() => ({
   backgroundColor: "#00263d",
 }));
 
-export const FooterItem = styled(Grid)(() => ({
+export const FooterItem = styled(Grid)(({ theme }) => ({
   textAlign: "center",
   "& .footer-logo": {
     verticalAlign: "middle",
-    marginTop: "8px",
-    marginBottom: "8px",
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
   },
 }));
 
@@ -156,76 +118,103 @@ export const FooterDivider = styled(Divider)(({ theme }) => ({
 }));
 
 export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
-  padding: 0,
-  overflow: "hidden",
   "& table": {
+    tableLayout: "fixed",
+    width: "100vw",
     fontFamily: theme.typography.fontFamily,
     borderSpacing: "0px",
+    paddingLeft: theme.spacing(6),
+    paddingRight: theme.spacing(6),
+    wordBreak: "break-word",
+    "& th:nth-last-of-type(n+3):first-of-type ~ th, & th:nth-last-of-type(n+3):first-of-type":
+      {
+        [theme.breakpoints.down("sm")]: {
+          fontSize: "1.0rem",
+        },
+        [theme.breakpoints.down("narrow")]: {
+          fontSize: "0.8rem",
+        },
+      },
+    "& td:nth-last-of-type(n+4):first-of-type ~ td, & td:nth-last-of-type(n+4):first-of-type":
+      {
+        "& h4": {
+          [theme.breakpoints.down("md")]: {
+            fontSize: "1.2rem",
+          },
+          [theme.breakpoints.down("sm")]: {
+            fontSize: "1.0rem",
+          },
+        },
+      },
+    ...theme.typography.body2,
   },
+
+  "& th:nth-last-of-type(n+4):first-of-type ~ th, & th:nth-last-of-type(n+4):first-of-type":
+    {
+      [theme.breakpoints.down("md")]: {
+        fontSize: "1rem",
+      },
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "0.8rem",
+      },
+      [theme.breakpoints.down("narrow")]: {
+        fontSize: "0.6rem",
+      },
+    },
   "& th": {
-    fontFamily: theme.typography.fontFamily,
-    minWidth: "10rem",
-    lineHeight: "3rem",
-    backgroundColor: theme.palette.secondary.dark,
-    color: "white",
+    verticalAlign: "top",
+    backgroundColor: theme.palette.primary,
+    paddingLeft: 0,
+    paddingRight: theme.spacing(1),
+    paddingTop: theme.spacing(4),
+    paddingBottom: theme.spacing(2),
+    ...theme.typography.subtitle2,
   },
-  "& tr": {
-    fontFamily: theme.typography.fontFamily,
+  ".register-row": {
+    backgroundColor: theme.palette.primary.light,
+    color: theme.palette.primary,
+    "& td": {
+      wordBreak: "break-word",
+      ...theme.typography.body1,
+    },
+    "& a": {
+      pointerEvents: "none",
+    },
   },
   "& td": {
-    fontFamily: theme.typography.fontFamily,
-  },
-  [theme.breakpoints.down("sm")]: {
-    "& th": {
-      minWidth: "6rem",
+    paddingLeft: 0,
+    "& div.barchart-wrapper": {
+      [theme.breakpoints.up("xl")]: {
+        width: `${breakpoints.xl}px !important`,
+      },
+      [theme.breakpoints.down("sm")]: {
+        width: "100% !important",
+        "& text": {
+          fontSize: `10px !important`,
+        },
+      },
+      ...theme.typography.body2,
+    },
+    "& div.linechart-wrapper": {
+      [theme.breakpoints.up("xl")]: {
+        width: `${breakpoints.xl}px !important`,
+      },
+      [theme.breakpoints.down("sm")]: {
+        width: "100% !important",
+        "& text": {
+          fontSize: `10px !important`,
+        },
+      },
+      ...theme.typography.body2,
     },
   },
 }));
 
-export const MainBox = styled(Box)(({ theme }) => ({
-  padding: 0,
-  flexGrow: 1,
-  overflowX: "auto",
-  display: "grid",
-  "& table": {
-    borderSpacing: "0px",
-  },
-  "& th": {
-    top: "0px !important",
-    position: "sticky",
-    zIndex: theme.zIndex.drawer - 1,
-    minWidth: "10rem",
-    verticalAlign: "top",
-    lineHeight: "1.5rem",
-    backgroundColor: "#00263d",
-    color: "white",
-  },
-  [theme.breakpoints.down("sm")]: {
-    "& th": {
-      minWidth: "6rem",
-    },
-    marginTop: "104px",
-    height: "calc(100vh - 104px)",
-    "& .MuiDrawer-paper": {
-      width: "100%",
-    },
-  },
-  [theme.breakpoints.up("sm")]: {
-    marginTop: "112px",
-    height: "calc(100vh - 112px)",
-    "& .MuiDrawer-paper": {
-      width: "100%",
-    },
-  },
-  [theme.breakpoints.up("md")]: {
-    "& .MuiDrawer-paper": {
-      width: `calc(100% - ${lgDrawerWidth}px)`,
-    },
-  },
-  [theme.breakpoints.up("desktop")]: {
-    marginLeft: xlDrawerWidth,
-    "& .MuiDrawer-paper": {
-      width: `calc(100% - ${xlDrawerWidth}px)`,
-    },
+export const IndicatorTableV2Wrapper = styled(Box)(({ theme }) => ({
+  "& .MuiTable-root": {
+    tableLayout: "fixed",
+    width: "100vw",
+    paddingLeft: theme.spacing(6),
+    paddingRight: theme.spacing(6),
   },
 }));

@@ -1,4 +1,4 @@
-import { NavigateNext } from "@mui/icons-material";
+import { NavigateNextRounded } from "@mui/icons-material";
 import { Breadcrumbs, Link, Toolbar, Typography, styled } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 
@@ -19,7 +19,7 @@ const LogoImage = styled("img")(({ theme }) => ({
   },
 }));
 
-const StyledBreadcrumbSeparator = styled(NavigateNext)(({ theme }) => ({
+const StyledBreadcrumbSeparator = styled(NavigateNextRounded)(({ theme }) => ({
   color: theme.palette.primary.light,
 }));
 
@@ -37,14 +37,6 @@ const SkdeBreadcrumbs = () => {
       >
         Forside
       </Link>
-      <Link
-        underline="hover"
-        key="2"
-        color="inherit"
-        href="https://www.skde.no/resultater/"
-      >
-        Resultater
-      </Link>
       <Typography key="3" color="text.primary">
         Behandlingskvalitet
       </Typography>
@@ -52,7 +44,7 @@ const SkdeBreadcrumbs = () => {
   );
 };
 
-export const HeaderTopToolbar = () => {
+export const TreatmentQualityHeaderTop = () => {
   return (
     <StyledToolbar>
       <Grid container spacing={2}>
@@ -66,3 +58,5 @@ export const HeaderTopToolbar = () => {
     </StyledToolbar>
   );
 };
+
+export default TreatmentQualityHeaderTop;
