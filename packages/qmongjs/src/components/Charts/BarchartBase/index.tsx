@@ -2,7 +2,7 @@ import { Bar } from "@visx/shape";
 import { Group } from "@visx/group";
 import { AxisLeft, AxisBottom } from "@visx/axis";
 import { scaleBand, scaleLinear } from "@visx/scale";
-import { IndicatorData } from "../../IndicatorTable/IndicatortablebodyV2";
+import { IndicatorData } from "types";
 import { customFormat } from "../../../helpers/functions";
 
 export type BarchartProps = {

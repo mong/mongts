@@ -134,5 +134,5 @@ export type Registry = {
 };
 
 export type RegisterData = Registry & {
-  indicatorData: (IndicatorData & { data?: DataPoint[] })[];
+  indicatorData: IndicatorData[];
 };
