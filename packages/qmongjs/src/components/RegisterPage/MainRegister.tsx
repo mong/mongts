@@ -24,7 +24,11 @@ import { RegisterName, OptsTu } from "types";
 import MAIN from "./main_component";
 import { useRouter } from "next/router";
 
-export const MainRegister = (registerNames: RegisterName[]) => {
+interface MainRegisterProps {
+  registerNames: RegisterName[];
+}
+
+export const MainRegister = ({ registerNames }: MainRegisterProps) => {
   const { tab } = useRouter().query as { tab: string };
   const tabNames: { label: string; value: string }[] = [
     { value: "sykehus", label: "Sykehus" },

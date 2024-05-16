@@ -30,7 +30,11 @@ import LEGEND from "../TargetLevels";
 import { IndicatorTable } from "../IndicatorTable";
 import { useRouter } from "next/router";
 
-export const SelectedRegister = (registerNames: RegisterName[]) => {
+interface SelectedRegisterProps {
+  registerNames: RegisterName[];
+}
+
+export const SelectedRegister = ({ registerNames }: SelectedRegisterProps) => {
   const { register, tab } = useRouter().query as {
     register: string;
     tab: string;
