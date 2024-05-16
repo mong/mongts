@@ -18,20 +18,22 @@ export interface IndicatorTableProps {
   blockTitle?: string[];
 }
 
-export const IndicatorTable = ({
-  context,
-  tableType,
-  unitNames = ["Nasjonalt"],
-  treatmentYear = 2019,
-  colspan,
-  medicalFieldFilter,
-  showLevelFilter,
-  selection_bar_height,
-  legend_height,
-  registerNames,
-  descriptionHeader,
-  blockTitle,
-}: IndicatorTableProps) => {
+export const IndicatorTable = (props: IndicatorTableProps) => {
+  const {
+    context,
+    tableType,
+    unitNames = ["Nasjonalt"],
+    treatmentYear = 2019,
+    colspan,
+    medicalFieldFilter,
+    showLevelFilter,
+    selection_bar_height,
+    legend_height,
+    registerNames,
+    descriptionHeader,
+    blockTitle,
+  } = props;
+
   return (
     <table>
       <IndicatorTableHeader
