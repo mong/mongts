@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import Grid from "@mui/material/Grid";
-import IconButton from "@mui/material/IconButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
@@ -21,18 +20,6 @@ export const TreatmentQualityAppBar = styled(AppBar)(({ theme }) => ({
   color: theme.palette.text.primary,
 }));
 
-export const FilterIconButton = styled(IconButton)(({ theme }) => ({
-  color: theme.palette.primary.main,
-  [theme.breakpoints.up("desktop")]: {
-    display: "none",
-  },
-  [theme.breakpoints.down("sm")]: {
-    "& .MuiTypography-root": {
-      fontSize: "13px",
-    },
-  },
-}));
-
 export const TabsRow = styled(Box)(({ theme }) => ({
   display: "flex",
   paddingLeft: theme.typography.body1.fontSize,
@@ -43,12 +30,12 @@ export const FilterDrawer = styled(Drawer)(({ theme }) => ({
   "& .MuiDrawer-paper": {
     boxSizing: "border-box",
   },
-  [theme.breakpoints.down("narrow")]: {
+  [theme.breakpoints.down("sm")]: {
     "& .MuiDrawer-paper": {
       width: narrowDrawerWidth,
     },
   },
-  [theme.breakpoints.up("narrow")]: {
+  [theme.breakpoints.up("sm")]: {
     "& .MuiDrawer-paper": {
       width: smDrawerWidth,
     },
@@ -59,24 +46,6 @@ export const FilterDrawer = styled(Drawer)(({ theme }) => ({
     },
   },
   [theme.breakpoints.up("lg")]: {
-    "& .MuiDrawer-paper": {
-      width: lgDrawerWidth,
-    },
-  },
-}));
-
-export const FilterDrawerBox = styled(Box)(({ theme }) => ({
-  [theme.breakpoints.down("sm")]: {
-    "& .MuiDrawer-paper": {
-      width: smDrawerWidth,
-    },
-  },
-  [theme.breakpoints.up("sm")]: {
-    "& .MuiDrawer-paper": {
-      width: mdDrawerWidth,
-    },
-  },
-  [theme.breakpoints.up("md")]: {
     "& .MuiDrawer-paper": {
       width: lgDrawerWidth,
     },
@@ -119,19 +88,15 @@ export const FooterDivider = styled(Divider)(({ theme }) => ({
 
 export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
   "& table": {
-    tableLayout: "fixed",
-    width: "100vw",
     fontFamily: theme.typography.fontFamily,
     borderSpacing: "0px",
-    paddingLeft: theme.spacing(6),
-    paddingRight: theme.spacing(6),
     wordBreak: "break-word",
     "& th:nth-last-of-type(n+3):first-of-type ~ th, & th:nth-last-of-type(n+3):first-of-type":
       {
         [theme.breakpoints.down("sm")]: {
           fontSize: "1.0rem",
         },
-        [theme.breakpoints.down("narrow")]: {
+        [theme.breakpoints.down("md")]: {
           fontSize: "0.8rem",
         },
       },
@@ -148,7 +113,6 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
       },
     ...theme.typography.body2,
   },
-
   "& th:nth-last-of-type(n+4):first-of-type ~ th, & th:nth-last-of-type(n+4):first-of-type":
     {
       [theme.breakpoints.down("md")]: {
@@ -157,18 +121,28 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
       [theme.breakpoints.down("sm")]: {
         fontSize: "0.8rem",
       },
-      [theme.breakpoints.down("narrow")]: {
+      [theme.breakpoints.down("md")]: {
         fontSize: "0.6rem",
       },
     },
   "& th": {
+    position: "sticky",
     verticalAlign: "top",
-    backgroundColor: theme.palette.primary,
+    backgroundColor: theme.palette.background.default,
     paddingLeft: 0,
     paddingRight: theme.spacing(1),
-    paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(2),
     ...theme.typography.subtitle2,
+    borderBottom: "1px solid",
+    borderColor: theme.palette.primary.light,
+    [theme.breakpoints.down("sm")]: {
+      paddingTop: theme.spacing(2),
+      top: `calc(2 * ${theme.mixins.toolbar.minHeight}px) !important`,
+    },
+    [theme.breakpoints.up("sm")]: {
+      paddingTop: theme.spacing(4),
+      top: `calc(${theme.mixins.toolbar.minHeight}px) !important`,
+    },
   },
   ".register-row": {
     backgroundColor: theme.palette.primary.light,
@@ -210,11 +184,9 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const IndicatorTableV2Wrapper = styled(Box)(({ theme }) => ({
+export const IndicatorTableV2Wrapper = styled(Box)((/*{ theme }*/) => ({
   "& .MuiTable-root": {
     tableLayout: "fixed",
-    width: "100vw",
-    paddingLeft: theme.spacing(6),
-    paddingRight: theme.spacing(6),
+    width: "95%",
   },
 }));
