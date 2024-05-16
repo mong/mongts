@@ -1,4 +1,4 @@
-import React, { Dispatch } from "react";
+import { Dispatch } from "react";
 import styles from "./index.module.css";
 
 interface medField {

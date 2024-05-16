@@ -1,4 +1,4 @@
-import React, { Dispatch } from "react";
+import { Dispatch } from "react";
 
 import { MedicalFieldEntry } from "./medicalfieldentry";
 import styles from "./index.module.css";

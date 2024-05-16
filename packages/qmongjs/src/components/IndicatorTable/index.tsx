@@ -1,5 +1,3 @@
-import React from "react";
-
 import { IndicatorTableHeader } from "./indicatortableheader";
 import { IndicatorTableBody } from "./indicatortablebody";
 import { RegisterName } from "types";

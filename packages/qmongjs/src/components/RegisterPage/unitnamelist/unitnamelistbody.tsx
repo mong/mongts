@@ -1,4 +1,3 @@
-import React from "react";
 import { app_text } from "../../../app_config";
 import styles from "./index.module.css";
 

@@ -1,4 +1,4 @@
-import React, { Dispatch, useRef, SetStateAction, useEffect } from "react";
+import { Dispatch, useRef, SetStateAction, useEffect } from "react";
 import { ScaleOrdinal } from "d3";
 import style from "./legend.module.css";
 import {

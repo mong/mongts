@@ -1,5 +1,3 @@
-import React from "react";
-
 import { RegisterName } from "types";
 import TableBlock from "../tableblock";
 import { NoDataAvailible } from "../ContenForEmptyTable";

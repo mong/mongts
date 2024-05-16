@@ -1,4 +1,3 @@
-import React from "react";
 import { useQueryParam } from "use-query-params";
 
 import { IndicatorValue } from "../indicatorvalue";
