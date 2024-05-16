@@ -99,7 +99,7 @@ export function TreatmentQualityFilterMenu({
   // Restrict max number of treatment units for small view sizes
   const theme = useTheme();
   const maxSelectedTreatmentUnits = useMediaQuery(theme.breakpoints.down("sm"))
-    ? 6
+    ? 5
     : 10;
 
   // When the user navigates to the page, it may contain query parameters for
