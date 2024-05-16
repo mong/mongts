@@ -89,7 +89,7 @@ test("Click on dots", async () => {
   );
   fireEvent.click(getByTestId("circle_Finnmark_unselected"));
   expect(container).toMatchSnapshot();
-  expect(mockRouter.query).toEqual({ bohf: "Finnmark" });
+  expect(mockRouter.query).toEqual({ bohf: ["Finnmark"] });
   fireEvent.click(getByTestId("circle_Finnmark_selected"));
   expect(mockRouter.query).toEqual({ bohf: [] });
   fireEvent.click(getByTestId("circle_OUS_unselected"));

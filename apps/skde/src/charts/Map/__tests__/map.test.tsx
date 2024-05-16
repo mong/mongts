@@ -42,14 +42,14 @@ test("Click on HF", async () => {
   expect(container).toMatchSnapshot();
   expect(mockRouter.query).toEqual({});
   fireEvent.click(getByTestId("maphf_UNN"));
-  expect(mockRouter.query).toEqual({ bohf: "UNN" });
+  expect(mockRouter.query).toEqual({ bohf: ["UNN"] });
   expect(container).toMatchSnapshot();
   fireEvent.click(getByTestId("maphf_UNN"));
   expect(mockRouter.query).toEqual({ bohf: [] });
   expect(container).toMatchSnapshot();
   // Click more HF
   fireEvent.click(getByTestId("maphf_UNN"));
-  expect(mockRouter.query).toEqual({ bohf: "UNN" });
+  expect(mockRouter.query).toEqual({ bohf: ["UNN"] });
   fireEvent.click(getByTestId("maphf_Fonna"));
   expect(mockRouter.query).toEqual({ bohf: ["UNN", "Fonna"] });
   fireEvent.click(getByTestId("maphf_OUS"));
@@ -133,6 +133,6 @@ test("With missing HF", async () => {
   );
   expect(container).toMatchSnapshot();
   fireEvent.click(getByTestId("maphf_UNN"));
-  expect(mockRouter.query).toEqual({ bohf: "UNN" });
+  expect(mockRouter.query).toEqual({ bohf: ["UNN"] });
   expect(container).toMatchSnapshot();
 });

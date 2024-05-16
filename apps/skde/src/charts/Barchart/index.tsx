@@ -129,7 +129,7 @@ export const Barchart = <
 
   // Pick out bohf query from the url
   const router = useRouter();
-  const selected_bohf = [router.query.bohf].flat();
+  const selected_bohf = [router.query.bohf].flat().filter(Boolean);
 
   // Find max values
   const annualValues = annualVar
@@ -283,25 +283,20 @@ export const Barchart = <
                         // Add HF to query param if clicked on.
                         // Remove HF from query param if it already is selected.
                         // Only possible to click on HF, and not on national data
-                        bohfName != national
-                          ? router.replace(
-                              {
-                                query: {
-                                  ...router.query,
-                                  bohf:
-                                    selected_bohf[0] === undefined
-                                      ? bohfName
-                                      : selected_bohf.includes(bohfName)
-                                        ? selected_bohf.filter(
-                                            (d) => d != bohfName,
-                                          )
-                                        : selected_bohf.concat(bohfName),
-                                },
+                        if (bohfName != national) {
+                          router.replace(
+                            {
+                              query: {
+                                ...router.query,
+                                bohf: selected_bohf.includes(bohfName)
+                                  ? selected_bohf.filter((d) => d != bohfName)
+                                  : selected_bohf.concat(bohfName),
                               },
-                              undefined,
-                              { shallow: true },
-                            )
-                          : undefined;
+                            },
+                            undefined,
+                            { shallow: true },
+                          );
+                        }
                       }}
                     />
                   );

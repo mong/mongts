@@ -84,14 +84,14 @@ test("Click in table", async () => {
   expect(container).toMatchSnapshot();
   // Click UNN
   fireEvent.click(getByTestId("rect_UNN_unselected"));
-  expect(mockRouter.query).toEqual({ bohf: "UNN" });
+  expect(mockRouter.query).toEqual({ bohf: ["UNN"] });
   expect(container).toMatchSnapshot();
   // Unclick UNN
   fireEvent.click(getByTestId("rect_UNN_selected"));
   expect(mockRouter.query).toEqual({ bohf: [] });
   // Click more HF
   fireEvent.click(getByTestId("rect_UNN_unselected"));
-  expect(mockRouter.query).toEqual({ bohf: "UNN" });
+  expect(mockRouter.query).toEqual({ bohf: ["UNN"] });
   fireEvent.click(getByTestId("rect_Fonna_unselected"));
   expect(mockRouter.query).toEqual({ bohf: ["UNN", "Fonna"] });
   fireEvent.click(getByTestId("rect_Norge_unselected"));
@@ -179,7 +179,7 @@ test("Render with figure split in two", async () => {
   );
   expect(container).toMatchSnapshot();
   fireEvent.click(getAllByTestId("rect_UNN_unselected")[1]);
-  expect(mockRouter.query).toEqual({ bohf: "UNN" });
+  expect(mockRouter.query).toEqual({ bohf: ["UNN"] });
   fireEvent.click(getAllByTestId("rect_Fonna_unselected")[0]);
   expect(mockRouter.query).toEqual({ bohf: ["UNN", "Fonna"] });
   expect(container).toMatchSnapshot();
