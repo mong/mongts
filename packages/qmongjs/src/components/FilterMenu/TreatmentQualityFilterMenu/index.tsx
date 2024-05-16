@@ -35,6 +35,7 @@ import {
   TreeViewFilterSettingsValue,
   initFilterSettingsValuesMap as getFilterSettingsValuesMap,
 } from "../TreeViewFilterSection";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 // The keys used for the different filter sections
 export const yearKey = "year";
@@ -94,6 +95,12 @@ export function TreatmentQualityFilterMenu({
 }: TreatmentQualityFilterMenuProps) {
   const selectedRegister = "all";
   const queryContext = { context: context, type: "ind" }; // TODO: Variable for "ind"/"dg"?
+
+  // Restrict max number of treatment units for small view sizes
+  const theme = useTheme();
+  const maxSelectedTreatmentUnits = useMediaQuery(theme.breakpoints.down("sm"))
+    ? 6
+    : 10;
 
   // When the user navigates to the page, it may contain query parameters for
   // filtering indicators. Use NextRouter to get the current path containing the
@@ -353,6 +360,40 @@ export function TreatmentQualityFilterMenu({
           sectionid="selectedfilters"
           sectiontitle="Valgte filtre"
         />
+        <TreeViewFilterSection
+          refreshState={shouldRefreshInitialState}
+          treedata={treatmentUnits.treedata}
+          defaultvalues={treatmentUnits.defaults}
+          initialselections={
+            selectedTreatmentUnits.map((value) => ({
+              value: value,
+              valueLabel: value,
+            })) as FilterSettingsValue[]
+          }
+          sectionid={treatmentUnitsKey}
+          sectiontitle={
+            context === "resident" ? "Opptaksområder" : "Behandlingsenheter"
+          }
+          filterkey={treatmentUnitsKey}
+          searchbox={true}
+          maxselections={maxSelectedTreatmentUnits}
+        />
+        <TreeViewFilterSection
+          refreshState={shouldRefreshInitialState}
+          treedata={medicalFields.treedata}
+          defaultvalues={medicalFields.defaults}
+          autouncheckid={medicalFields.defaults[0].value}
+          initialselections={
+            selectedMedicalFields.map((value) => ({
+              value: value,
+              valueLabel: getValueLabel(value, medicalFieldsMap),
+            })) as FilterSettingsValue[]
+          }
+          sectionid={medicalFieldKey}
+          sectiontitle="Fagområder"
+          filterkey={medicalFieldKey}
+          searchbox={true}
+        />
         <RadioGroupFilterSection
           radios={yearOptions.values}
           defaultvalues={[yearOptions.default]}
@@ -373,39 +414,6 @@ export function TreatmentQualityFilterMenu({
           sectiontitle={"Måloppnåelse"}
           sectionid={levelKey}
           filterkey={levelKey}
-        />
-        <TreeViewFilterSection
-          refreshState={shouldRefreshInitialState}
-          treedata={medicalFields.treedata}
-          defaultvalues={medicalFields.defaults}
-          autouncheckid={medicalFields.defaults[0].value}
-          initialselections={
-            selectedMedicalFields.map((value) => ({
-              value: value,
-              valueLabel: getValueLabel(value, medicalFieldsMap),
-            })) as FilterSettingsValue[]
-          }
-          sectionid={medicalFieldKey}
-          sectiontitle="Fagområder"
-          filterkey={medicalFieldKey}
-          searchbox={true}
-        />
-        <TreeViewFilterSection
-          refreshState={shouldRefreshInitialState}
-          treedata={treatmentUnits.treedata}
-          defaultvalues={treatmentUnits.defaults}
-          initialselections={
-            selectedTreatmentUnits.map((value) => ({
-              value: value,
-              valueLabel: value,
-            })) as FilterSettingsValue[]
-          }
-          sectionid={treatmentUnitsKey}
-          sectiontitle={
-            context === "resident" ? "Opptaksområder" : "Behandlingsenheter"
-          }
-          filterkey={treatmentUnitsKey}
-          searchbox={true}
         />
         <SwitchFilterSection
           sectionid={dataQualityKey}

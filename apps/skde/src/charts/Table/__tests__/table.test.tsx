@@ -60,7 +60,7 @@ test("Click in table", async () => {
   expect(container).toMatchSnapshot();
   // Click UNN
   fireEvent.click(getByTestId("tablerow_UNN"));
-  expect(mockRouter.query).toEqual({ bohf: "UNN" });
+  expect(mockRouter.query).toEqual({ bohf: ["UNN"] });
   expect(container).toMatchSnapshot();
   // Ascending sort table by num of patients
   fireEvent.click(getByTestId("tablehead_pasienter"));
@@ -76,7 +76,7 @@ test("Click in table", async () => {
   expect(container).toMatchSnapshot();
   // Click more HF
   fireEvent.click(getByTestId("tablerow_UNN"));
-  expect(mockRouter.query).toEqual({ bohf: "UNN" });
+  expect(mockRouter.query).toEqual({ bohf: ["UNN"] });
   fireEvent.click(getByTestId("tablerow_Fonna"));
   expect(mockRouter.query).toEqual({ bohf: ["UNN", "Fonna"] });
   fireEvent.click(getByTestId("tablerow_Norge"));
