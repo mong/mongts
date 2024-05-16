@@ -9,7 +9,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 export const HeaderMiddleToolbar = () => {
   return (
-    <StyledToolbar>
+    <StyledToolbar className="header-middle">
       <Grid container spacing={2} rowSpacing={6}>
         <Grid xs={12}>
           <Typography variant="h1">Behandlingskvalitet</Typography>
