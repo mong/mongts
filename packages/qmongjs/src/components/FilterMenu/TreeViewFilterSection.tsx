@@ -343,7 +343,11 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
   return (
     <Box>
       {showMaxSelectionAlert && (
-        <Alert severity="warning">{`Du kan maksimalt huke av ${maxSelections} valg.`}</Alert>
+        <Alert
+          sx={{ marginBottom: 1 }}
+          severity="info"
+          variant="filled"
+        >{`Du kan maksimalt huke av ${maxSelections} valg.`}</Alert>
       )}
       {searchBox && (
         <TreeViewSearchBox

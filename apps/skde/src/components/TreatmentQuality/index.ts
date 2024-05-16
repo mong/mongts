@@ -96,16 +96,16 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
     wordBreak: "break-word",
     "& th:nth-last-of-type(n+3):first-of-type ~ th, & th:nth-last-of-type(n+3):first-of-type":
       {
-        [theme.breakpoints.down("md")]: {
-          fontSize: "1.2rem",
+        [theme.breakpoints.between("sm", "md")]: {
+          fontSize: "1.0rem",
         },
         [theme.breakpoints.down("sm")]: {
-          fontSize: "1.0rem",
+          fontSize: ".8rem",
         },
       },
     "& th:nth-last-of-type(n+4):first-of-type ~ th, & th:nth-last-of-type(n+4):first-of-type":
       {
-        [theme.breakpoints.down("md")]: {
+        [theme.breakpoints.between("sm", "md")]: {
           fontSize: "0.8rem !important",
         },
         [theme.breakpoints.down("sm")]: {
@@ -115,7 +115,7 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
     "& td:nth-last-of-type(n+4):first-of-type ~ td, & td:nth-last-of-type(n+4):first-of-type":
       {
         "& h4": {
-          [theme.breakpoints.down("md")]: {
+          [theme.breakpoints.between("sm", "md")]: {
             fontSize: "1.0rem",
           },
           [theme.breakpoints.down("sm")]: {
@@ -184,6 +184,9 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
     },
     "& button": {
       ...theme.typography.body2,
+      [theme.breakpoints.down("sm")]: {
+        fontSize: "0.8em",
+      },
     },
   },
 }));
