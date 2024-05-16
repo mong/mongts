@@ -8,7 +8,7 @@ import {
   Typography,
   styled,
 } from "@mui/material";
-import { ChevronLeft } from "@mui/icons-material";
+import { ChevronLeftRounded } from "@mui/icons-material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useQueryParam, withDefault, StringParam } from "use-query-params";
 import {
@@ -33,20 +33,36 @@ import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { useSearchParams } from "next/navigation";
-import TreatmentQualityProminentAppBar from "../../src/components/TreatmentQuality/TreatmentQualityProminentAppBar";
+import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import {
   FilterDrawer,
   IndicatorTableWrapper,
+  IndicatorTableV2Wrapper,
 } from "../../src/components/TreatmentQuality";
 import TreatmentQualityFooter from "../../src/components/TreatmentQuality/TreatmentQualityFooter";
 
 const dataQualityKey = "dg";
 
 const PageWrapper = styled(Box)(({ theme }) => ({
-  "& .MuiToolbar-root": {
-    paddingLeft: theme.spacing(6),
-    paddingRight: theme.spacing(6),
-  },
+  "& .header-top, & .header-middle, & .main-toolbar, & .footer, & .table-wrapper table, & .table-wrapper .MuiTable-root":
+    {
+      [theme.breakpoints.down("sm")]: {
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2),
+      },
+      [theme.breakpoints.up("sm")]: {
+        paddingLeft: theme.spacing(4),
+        paddingRight: theme.spacing(4),
+      },
+      [theme.breakpoints.up("lg")]: {
+        paddingLeft: theme.spacing(6),
+        paddingRight: theme.spacing(6),
+      },
+      [theme.breakpoints.up("xl")]: {
+        paddingLeft: theme.spacing(16),
+        paddingRight: theme.spacing(16),
+      },
+    },
 }));
 
 export default function TreatmentQualityPage() {
@@ -62,8 +78,6 @@ export default function TreatmentQualityPage() {
 
   const searchParams = useSearchParams();
   const newTableOnly = searchParams.get("newtable") === "true";
-  // const tableContext =
-  //   searchParams.get("context") === "resident" ? "resident" : "caregiver";
 
   // Context (caregiver or resident)
   const [tableContext, setTableContext] = useQueryParam<string>(
@@ -272,7 +286,7 @@ export default function TreatmentQualityPage() {
     <ThemeProvider theme={indicatorTableTheme}>
       <CssBaseline />
       <PageWrapper>
-        <TreatmentQualityProminentAppBar
+        <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
           context={tableContext}
           onTabChanged={setTableContext}
@@ -281,7 +295,7 @@ export default function TreatmentQualityPage() {
           <Grid xs={12}>
             {queriesReady &&
               (newIndicatorTableActivated || newTableOnly ? (
-                <IndicatorTableWrapper>
+                <IndicatorTableV2Wrapper className="table-wrapper">
                   <IndicatorTableBodyV2
                     key="indicator-table"
                     context={tableContext}
@@ -292,9 +306,9 @@ export default function TreatmentQualityPage() {
                     medfields={selectedMedicalFields}
                   />
                   <TreatmentQualityFooter />
-                </IndicatorTableWrapper>
+                </IndicatorTableV2Wrapper>
               ) : (
-                <IndicatorTableWrapper>
+                <IndicatorTableWrapper className="table-wrapper">
                   <IndicatorTable
                     key="indicator-table"
                     context={dataQualitySelected ? "coverage" : tableContext}
@@ -330,7 +344,7 @@ export default function TreatmentQualityPage() {
             aria-label="Lukk sidemeny"
             onClick={() => toggleDrawer(false)}
           >
-            <ChevronLeft fontSize="large" />
+            <ChevronLeftRounded fontSize="large" />
           </IconButton>
         </Box>
         <Divider />

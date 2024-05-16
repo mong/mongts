@@ -1,7 +1,7 @@
 import { AppBar, styled } from "@mui/material";
-import { HeaderTopToolbar } from "./HeaderTopToolbar";
-import { HeaderMiddleToolbar } from "./HeaderMiddleToolbar";
-import { StickyToolbar } from "./StickyToolbar";
+import { TreatmentQualityHeaderTop } from "./TreatmentQualityHeaderTop";
+import { HeaderMiddleToolbar } from "./TreatmentQualityHeaderMiddle";
+import { TreatmentQualityToolbar } from "./TreatmentQualityToolbar";
 
 const StyledAppBar = styled(AppBar)(() => ({
   elevation: 0,
@@ -13,17 +13,17 @@ type AppBarProps = {
   onTabChanged;
 };
 
-export const TreatmentQualityProminentAppBar = ({
+export const TreatmentQualityAppBar = ({
   openDrawer,
   context,
   onTabChanged,
 }: AppBarProps) => {
   return (
     <>
-      <HeaderTopToolbar />
+      <TreatmentQualityHeaderTop />
       <HeaderMiddleToolbar />
       <StyledAppBar position="sticky" elevation={0}>
-        <StickyToolbar
+        <TreatmentQualityToolbar
           openDrawer={openDrawer}
           onTabChanged={onTabChanged}
           context={context}
@@ -33,4 +33,4 @@ export const TreatmentQualityProminentAppBar = ({
   );
 };
 
-export default TreatmentQualityProminentAppBar;
+export default TreatmentQualityAppBar;

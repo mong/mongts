@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Button, Tab, Tabs, Toolbar, Typography, styled } from "@mui/material";
-import { Menu } from "@mui/icons-material";
+import { Button, Tab, Tabs, Toolbar, styled } from "@mui/material";
+import { TuneRounded } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
@@ -9,23 +9,25 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
   color: theme.palette.primary.dark,
   paddingTop: theme.spacing(2),
-  paddingBottom: theme.spacing(0),
+  paddingBottom: 0,
 }));
 
 const StyledTabs = styled(Tabs)(({ theme }) => ({
   "& .Mui-selected": {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.background.default,
+  },
+  "& .MuiTabs-indicator": {
+    display: "none",
   },
 }));
 
 const StyledTab = styled(Tab)(({ theme }) => ({
-  font: theme.typography.button.font,
-  textTransform: "none",
-  borderTopLeftRadius: 4,
-  borderTopRightRadius: 4,
-  fontWeight: "bold",
+  borderTopLeftRadius: 12,
+  borderTopRightRadius: 12,
   paddingLeft: theme.spacing(4),
   paddingRight: theme.spacing(4),
+  ...theme.typography.button,
+  textTransform: "none",
 }));
 
 type StickyToolbarProps = {
@@ -34,13 +36,13 @@ type StickyToolbarProps = {
   onTabChanged;
 };
 
-export const StickyToolbar = ({
+export const TreatmentQualityToolbar = ({
   openDrawer,
   context,
   onTabChanged,
 }: StickyToolbarProps) => {
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const isNarrowScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [value, setValue] = useState(
     context === "resident" ? "resident" : "caregiver",
@@ -54,40 +56,37 @@ export const StickyToolbar = ({
   };
 
   return (
-    <StyledToolbar>
-      <Grid
-        container
-        spacing={4}
-        columns={{ xs: 4, sm: 8, md: 12 }}
-        alignItems={"top"}
-      >
-        <Grid xs={1} sm={2} md={3}>
+    <StyledToolbar className="main-toolbar">
+      <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
+        <Grid
+          xs={1}
+          sm={1}
+          md={2}
+          sx={{
+            alignContent: "center",
+          }}
+        >
           <Button
             variant="contained"
             aria-label="Åpne sidemeny"
             color="primary"
             sx={{
-              height: `${isSmallScreen ? "50%" : "100%"}`,
+              borderRadius: 4,
             }}
             onClick={() => {
               openDrawer();
             }}
           >
-            <Menu fontSize="large" />
-            {!isSmallScreen && (
-              <Typography variant="button" sx={{ textTransform: "none" }}>
-                Filter
-              </Typography>
-            )}
+            <TuneRounded fontSize="medium" />
           </Button>
         </Grid>
-        <Grid xs={3} sm={6} md={9}>
+        <Grid xs={3} sm={7} md={10}>
           <StyledTabs
             indicatorColor="secondary"
             aria-label="Arkfaner for behandlingskvalitet og opptaksområde"
             value={value}
             onChange={handleChange}
-            orientation={isSmallScreen ? "vertical" : "horizontal"}
+            orientation={isNarrowScreen ? "vertical" : "horizontal"}
             variant="fullWidth"
           >
             <StyledTab label="Behandlingsenheter" value={"caregiver"} />

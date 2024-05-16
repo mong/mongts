@@ -16,6 +16,7 @@ declare module "@mui/material/styles" {
     md: true;
     lg: true;
     xl: true;
+    xxl: true;
     desktop: true;
   }
 }
@@ -96,7 +97,7 @@ const fonts = {
   },
 };
 
-const breakpoints = {
+export const breakpoints = {
   xs: 0,
   sm: 544,
   md: 768,
@@ -208,10 +209,11 @@ export const SkdeTheme = responsiveFontSizes(
     breakpoints: {
       values: {
         xs: breakpoints.xs,
-        sm: breakpoints.md,
-        md: breakpoints.lg,
-        lg: breakpoints.xl,
-        xl: breakpoints.xxl,
+        sm: breakpoints.sm,
+        md: breakpoints.md,
+        lg: breakpoints.lg,
+        xl: breakpoints.xl,
+        xxl: breakpoints.xxl,
         desktop: 1300,
       },
     },
