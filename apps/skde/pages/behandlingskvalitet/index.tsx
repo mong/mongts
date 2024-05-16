@@ -43,6 +43,9 @@ import TreatmentQualityFooter from "../../src/components/TreatmentQuality/Treatm
 
 const dataQualityKey = "dg";
 
+// Set to true to display the switch for activating the new table
+const showNewTableSwitch = false;
+
 const PageWrapper = styled(Box)(({ theme }) => ({
   "& .header-top, & .header-middle, & .main-toolbar, & .footer, & .table-wrapper table, & .table-wrapper .MuiTable-root":
     {
@@ -357,7 +360,7 @@ export default function TreatmentQualityPage() {
               medicalFieldData={medicalFields}
               context={tableContext}
             />
-            {!newTableOnly && (
+            {showNewTableSwitch && !newTableOnly && (
               <FormGroup sx={{ paddingRight: "1.5rem" }}>
                 <FormControlLabel
                   label="Prøv ny tabellversjon"
