@@ -5,9 +5,7 @@ interface NoDataAvailibleProps {
   colspan: number;
 }
 
-export const NoDataAvailible: React.FC<NoDataAvailibleProps> = ({
-  colspan,
-}) => {
+export const NoDataAvailible = ({ colspan }: NoDataAvailibleProps) => {
   const isFetching = useIsFetching();
 
   if (isFetching === 0) {

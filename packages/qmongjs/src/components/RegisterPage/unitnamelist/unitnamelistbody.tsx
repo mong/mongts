@@ -18,7 +18,7 @@ interface Props {
   multiple_choice: boolean;
 }
 
-export const UnitNameListBody: React.FC<Props> = (props) => {
+export const UnitNameListBody = (props: Props) => {
   const { tu_names, treatment_units, update_treatment_units, multiple_choice } =
     props;
   const handle_tu_list_click = (

@@ -21,7 +21,7 @@ export interface TableBlockProps {
   colspan: number;
 }
 
-export const TableBlock: React.FC<TableBlockProps> = (props) => {
+export const TableBlock = (props: TableBlockProps) => {
   const {
     context,
     tableType,

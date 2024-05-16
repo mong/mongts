@@ -24,13 +24,7 @@ import { RegisterName, OptsTu } from "types";
 import MAIN from "./main_component";
 import { useRouter } from "next/router";
 
-interface MainRegisterProps {
-  registerNames: RegisterName[];
-}
-
-export const MainRegister: React.FC<MainRegisterProps> = ({
-  registerNames,
-}) => {
+export const MainRegister = (registerNames: RegisterName[]) => {
   const { tab } = useRouter().query as { tab: string };
   const tabNames: { label: string; value: string }[] = [
     { value: "sykehus", label: "Sykehus" },

@@ -16,9 +16,7 @@ export interface IndicatorTableBodyProps {
   blockTitle?: string[];
 }
 
-export const IndicatorTableBody: React.FC<IndicatorTableBodyProps> = (
-  props,
-) => {
+export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
   const {
     context,
     tableType,

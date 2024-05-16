@@ -16,7 +16,7 @@ interface MedicalFieldObject {
   registers: string[];
 }
 
-export const MedicalFields: React.FC<MedicalFieldProps> = (props) => {
+export const MedicalFields = (props: MedicalFieldProps) => {
   const {
     medicalFields,
     clicked_med_field,

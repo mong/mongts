@@ -10,7 +10,7 @@ interface BlockTitleProps {
   tr_register_name_class: string;
 }
 
-export const TableBlockTitle: React.FC<BlockTitleProps> = (props) => {
+export const TableBlockTitle = (props: BlockTitleProps) => {
   const {
     tabName,
     link = "",

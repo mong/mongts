@@ -10,9 +10,7 @@ export interface IndicatorTableHeaderProps {
   legend_height: number | null;
 }
 
-export const IndicatorTableHeader: React.FC<IndicatorTableHeaderProps> = (
-  props,
-) => {
+export const IndicatorTableHeader = (props: IndicatorTableHeaderProps) => {
   const {
     colspan = 2,
     descriptionHeader = "Kvalitetsindikator",
