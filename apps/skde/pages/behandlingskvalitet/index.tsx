@@ -23,10 +23,10 @@ import {
   yearKey,
   medicalFieldKey,
   useMedicalFieldsQuery,
-  indicatorTableTheme,
   FilterSettingsActionType,
   IndicatorTable,
   IndicatorTableBodyV2,
+  skdeTheme,
 } from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
 import Switch from "@mui/material/Switch";
@@ -286,7 +286,7 @@ export default function TreatmentQualityPage() {
   };
 
   return (
-    <ThemeProvider theme={indicatorTableTheme}>
+    <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
       <PageWrapper>
         <TreatmentQualityAppBar
