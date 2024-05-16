@@ -79,7 +79,7 @@ export const Map = ({
 }: MapProps) => {
   // Pick out bohf query from the url
   const router = useRouter();
-  const selected_bohf = [router.query.bohf].flat();
+  const selected_bohf = [router.query.bohf].flat().filter(Boolean);
 
   const color = mapColors;
   const width = 1000;
@@ -157,12 +157,9 @@ export const Map = ({
                     {
                       query: {
                         ...router.query,
-                        bohf:
-                          selected_bohf[0] === undefined
-                            ? hf
-                            : selected_bohf.includes(hf)
-                              ? selected_bohf.filter((d) => d != hf)
-                              : selected_bohf.concat(hf),
+                        bohf: selected_bohf.includes(hf)
+                          ? selected_bohf.filter((d) => d != hf)
+                          : selected_bohf.concat(hf),
                       },
                     },
                     undefined,
