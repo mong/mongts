@@ -86,6 +86,9 @@ export const FooterDivider = styled(Divider)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.dark,
 }));
 
+/**
+ * Style overrides for old indicator table
+ */
 export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
   "& table": {
     fontFamily: theme.typography.fontFamily,
@@ -93,38 +96,35 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
     wordBreak: "break-word",
     "& th:nth-last-of-type(n+3):first-of-type ~ th, & th:nth-last-of-type(n+3):first-of-type":
       {
+        [theme.breakpoints.down("md")]: {
+          fontSize: "1.2rem",
+        },
         [theme.breakpoints.down("sm")]: {
           fontSize: "1.0rem",
         },
+      },
+    "& th:nth-last-of-type(n+4):first-of-type ~ th, & th:nth-last-of-type(n+4):first-of-type":
+      {
         [theme.breakpoints.down("md")]: {
-          fontSize: "0.8rem",
+          fontSize: "0.8rem !important",
+        },
+        [theme.breakpoints.down("sm")]: {
+          fontSize: "0.6rem !important",
         },
       },
     "& td:nth-last-of-type(n+4):first-of-type ~ td, & td:nth-last-of-type(n+4):first-of-type":
       {
         "& h4": {
           [theme.breakpoints.down("md")]: {
-            fontSize: "1.2rem",
+            fontSize: "1.0rem",
           },
           [theme.breakpoints.down("sm")]: {
-            fontSize: "1.0rem",
+            fontSize: "0.8rem",
           },
         },
       },
     ...theme.typography.body2,
   },
-  "& th:nth-last-of-type(n+4):first-of-type ~ th, & th:nth-last-of-type(n+4):first-of-type":
-    {
-      [theme.breakpoints.down("md")]: {
-        fontSize: "1rem",
-      },
-      [theme.breakpoints.down("sm")]: {
-        fontSize: "0.8rem",
-      },
-      [theme.breakpoints.down("md")]: {
-        fontSize: "0.6rem",
-      },
-    },
   "& th": {
     position: "sticky",
     verticalAlign: "top",
@@ -157,6 +157,7 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
   },
   "& td": {
     paddingLeft: 0,
+    verticalAlign: "top",
     "& div.barchart-wrapper": {
       [theme.breakpoints.up("xl")]: {
         width: `${breakpoints.xl}px !important`,
@@ -179,6 +180,9 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
           fontSize: `10px !important`,
         },
       },
+      ...theme.typography.body2,
+    },
+    "& button": {
       ...theme.typography.body2,
     },
   },

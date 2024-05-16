@@ -70,11 +70,11 @@ const formatIndicatorValues = (
   } else if ((indicator.dg ?? 1) < 0.6 && indicator.unit_name !== "Nasjonalt") {
     return (
       <Tooltip
-        title="Resultater fra enhet med dekningsgrad lavere enn 60 % vises ikke.      
+        title="Resultater fra enhet med dekningsgrad lavere enn 60 % vises ikke.
       Dekningsgrad angir andel pasienter eller hendelser som registreres,
-      i forhold til antall som skal registreres for gitt indikator. 
-      Om en indikatoren har lav dekningsgrad, er det fare for at utvalget 
-      er skjevt slik at resultatene kan være misvisende og medføre 
+      i forhold til antall som skal registreres for gitt indikator.
+      Om en indikatoren har lav dekningsgrad, er det fare for at utvalget
+      er skjevt slik at resultatene kan være misvisende og medføre
       feilaktige konklusjoner."
         TransitionComponent={Zoom}
         key={`${indicator.ind_id}_${indicator.unit_name}_${indicator.id}_tooltip`}
