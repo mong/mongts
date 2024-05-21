@@ -23,10 +23,10 @@ import {
   yearKey,
   medicalFieldKey,
   useMedicalFieldsQuery,
-  indicatorTableTheme,
   FilterSettingsActionType,
   IndicatorTable,
   IndicatorTableBodyV2,
+  skdeTheme,
 } from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
 import Switch from "@mui/material/Switch";
@@ -42,6 +42,9 @@ import {
 import TreatmentQualityFooter from "../../src/components/TreatmentQuality/TreatmentQualityFooter";
 
 const dataQualityKey = "dg";
+
+// Set to true to display the switch for activating the new table
+const showNewTableSwitch = false;
 
 const PageWrapper = styled(Box)(({ theme }) => ({
   "& .header-top, & .header-middle, & .main-toolbar, & .footer, & .table-wrapper table, & .table-wrapper .MuiTable-root":
@@ -283,7 +286,7 @@ export default function TreatmentQualityPage() {
   };
 
   return (
-    <ThemeProvider theme={indicatorTableTheme}>
+    <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
       <PageWrapper>
         <TreatmentQualityAppBar
@@ -357,7 +360,7 @@ export default function TreatmentQualityPage() {
               medicalFieldData={medicalFields}
               context={tableContext}
             />
-            {!newTableOnly && (
+            {showNewTableSwitch && !newTableOnly && (
               <FormGroup sx={{ paddingRight: "1.5rem" }}>
                 <FormControlLabel
                   label="Prøv ny tabellversjon"

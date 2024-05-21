@@ -1,5 +1,5 @@
 import { createTheme, styled, Table, TableCell, TableRow } from "@mui/material";
-import { SkdeTheme } from "../../../themes/SkdeTheme";
+import { skdeTheme } from "../../../themes/SkdeTheme";
 
 declare module "@mui/material/styles" {
   interface Theme {
@@ -17,7 +17,7 @@ declare module "@mui/material/styles" {
 }
 
 export const indicatorTableTheme = createTheme({
-  ...SkdeTheme,
+  ...skdeTheme,
   table: {
     margin: 10,
   },

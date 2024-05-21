@@ -6,6 +6,7 @@ import { IndicatorData, Registry, DataPoint } from "types";
 export const aggData = (filter?: Filter): Promise<DataPoint[]> =>
   db
     .select(
+      "id",
       "ind_id as indicatorID",
       "unit_name as unitName",
       "year",
@@ -67,6 +68,9 @@ function withIndFilter(builder: Knex.QueryBuilder, filter?: Filter) {
       builder.whereNotIn("type", ["dg", "dg_andel"]);
     }
   }
+  if (filter?.ind_id) {
+    builder.where("id", filter.ind_id);
+  }
   if (filter?.register) {
     builder.whereIn("registry_id", function (this: Knex.QueryBuilder) {
       this.select("registry.id")
@@ -77,6 +81,9 @@ function withIndFilter(builder: Knex.QueryBuilder, filter?: Filter) {
 }
 
 function withDataFilter(builder: Knex.QueryBuilder, filter?: Filter) {
+  if (filter?.id) {
+    builder.where("id", filter.id);
+  }
   if (filter?.year && typeof filter?.year === "number") {
     builder.where("year", filter.year);
   }

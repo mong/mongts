@@ -159,13 +159,19 @@ const colorTokens = {
     disabled: "#f5f5f5",
   },
 
+  info: {
+    main: "#bfc7e4",
+    light: "#e6e9fa",
+    dark: "#003087",
+  },
+
   success: {
     main: "#add9b1",
     light: "#eaf6eb",
     dark: "#002f87",
   },
 
-  info: {
+  warning: {
     main: "#fef17f",
     light: "#fffac8",
     dark: "#ffc745",
@@ -178,7 +184,7 @@ const colorTokens = {
   },
 };
 
-export const SkdeTheme = responsiveFontSizes(
+export const skdeTheme = responsiveFontSizes(
   createTheme({
     typography: {
       h1: fonts.h1,
@@ -199,9 +205,10 @@ export const SkdeTheme = responsiveFontSizes(
       primary: colorTokens.primary,
       secondary: colorTokens.secondary,
       error: colorTokens.error,
+      warning: colorTokens.warning,
       success: colorTokens.success,
-      text: colorTokens.text,
       info: colorTokens.info,
+      text: colorTokens.text,
       background: {
         paper: colorTokens.background.light,
       },
@@ -219,3 +226,5 @@ export const SkdeTheme = responsiveFontSizes(
     },
   }),
 );
+
+export default skdeTheme;
