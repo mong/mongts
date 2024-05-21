@@ -55,7 +55,7 @@ export type { NestedTreatmentUnitName } from "./components/RegisterPage/unitname
 export { mainQueryParamsConfig } from "./app_config";
 export { validateTreatmentUnits } from "./helpers/functions";
 export { UnitNameList } from "./components/RegisterPage/unitnamelist";
-export { SkdeTheme as SKDEtheme } from "./themes/SkdeTheme";
+export { skdeTheme } from "./themes/SkdeTheme";
 export { indicatorTableTheme } from "./components/IndicatorTable/IndicatortablebodyV2/IndicatorTableBodyV2Styles";
 export { LinechartGrid } from "./components/Charts/LinechartGrid";
 export { BarchartBase } from "./components/Charts/BarchartBase";

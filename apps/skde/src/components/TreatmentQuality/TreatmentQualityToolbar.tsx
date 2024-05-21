@@ -42,7 +42,7 @@ export const TreatmentQualityToolbar = ({
   onTabChanged,
 }: StickyToolbarProps) => {
   const theme = useTheme();
-  const isNarrowScreen = useMediaQuery(theme.breakpoints.down("narrow"));
+  const isNarrowScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   const [value, setValue] = useState(
     context === "resident" ? "resident" : "caregiver",

@@ -90,6 +90,7 @@ export interface RegisterName {
 }
 
 export type DataPoint = {
+  id: number;
   unitName: string;
   year: number;
   var: number;
