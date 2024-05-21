@@ -90,6 +90,7 @@ export interface RegisterName {
 }
 
 export type DataPoint = {
+  id: number;
   unitName: string;
   year: number;
   var: number | null;
@@ -98,6 +99,7 @@ export type DataPoint = {
   context: "caregiver" | "resident";
   deliveryTime: Date;
   affirmTime: Date;
+  indicatorID: string;
 };
 
 export type IndicatorData = {
@@ -120,14 +122,17 @@ export type IndicatorData = {
     | "dg_andel";
   sortingName: string | null;
   format: string | null;
-  data: DataPoint[];
+  registerID: number;
 };
 
-export type RegisterData = {
+export type Registry = {
   registerFullName: string;
   registerName: string;
   registerShortName: string;
   registerID: number;
   medfieldID: number[];
-  indicatorData: IndicatorData[];
+};
+
+export type RegisterData = Registry & {
+  indicatorData: (IndicatorData & { data?: DataPoint[] })[];
 };

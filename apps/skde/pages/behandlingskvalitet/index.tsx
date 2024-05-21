@@ -23,10 +23,10 @@ import {
   yearKey,
   medicalFieldKey,
   useMedicalFieldsQuery,
-  indicatorTableTheme,
   FilterSettingsActionType,
   IndicatorTable,
   IndicatorTableBodyV2,
+  skdeTheme,
 } from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
 import Switch from "@mui/material/Switch";
@@ -43,11 +43,29 @@ import TreatmentQualityFooter from "../../src/components/TreatmentQuality/Treatm
 
 const dataQualityKey = "dg";
 
+// Set to true to display the switch for activating the new table
+const showNewTableSwitch = false;
+
 const PageWrapper = styled(Box)(({ theme }) => ({
-  "& .MuiToolbar-root": {
-    paddingLeft: theme.spacing(6),
-    paddingRight: theme.spacing(6),
-  },
+  "& .header-top, & .header-middle, & .main-toolbar, & .footer, & .table-wrapper table, & .table-wrapper .MuiTable-root":
+    {
+      [theme.breakpoints.down("sm")]: {
+        paddingLeft: theme.spacing(2),
+        paddingRight: theme.spacing(2),
+      },
+      [theme.breakpoints.up("sm")]: {
+        paddingLeft: theme.spacing(4),
+        paddingRight: theme.spacing(4),
+      },
+      [theme.breakpoints.up("lg")]: {
+        paddingLeft: theme.spacing(6),
+        paddingRight: theme.spacing(6),
+      },
+      [theme.breakpoints.up("xl")]: {
+        paddingLeft: theme.spacing(16),
+        paddingRight: theme.spacing(16),
+      },
+    },
 }));
 
 export default function TreatmentQualityPage() {
@@ -63,8 +81,6 @@ export default function TreatmentQualityPage() {
 
   const searchParams = useSearchParams();
   const newTableOnly = searchParams.get("newtable") === "true";
-  // const tableContext =
-  //   searchParams.get("context") === "resident" ? "resident" : "caregiver";
 
   // Context (caregiver or resident)
   const [tableContext, setTableContext] = useQueryParam<string>(
@@ -270,7 +286,7 @@ export default function TreatmentQualityPage() {
   };
 
   return (
-    <ThemeProvider theme={indicatorTableTheme}>
+    <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
       <PageWrapper>
         <TreatmentQualityAppBar
@@ -282,7 +298,7 @@ export default function TreatmentQualityPage() {
           <Grid xs={12}>
             {queriesReady &&
               (newIndicatorTableActivated || newTableOnly ? (
-                <IndicatorTableV2Wrapper>
+                <IndicatorTableV2Wrapper className="table-wrapper">
                   <IndicatorTableBodyV2
                     key="indicator-table"
                     context={tableContext}
@@ -295,7 +311,7 @@ export default function TreatmentQualityPage() {
                   <TreatmentQualityFooter />
                 </IndicatorTableV2Wrapper>
               ) : (
-                <IndicatorTableWrapper>
+                <IndicatorTableWrapper className="table-wrapper">
                   <IndicatorTable
                     key="indicator-table"
                     context={dataQualitySelected ? "coverage" : tableContext}
@@ -344,7 +360,7 @@ export default function TreatmentQualityPage() {
               medicalFieldData={medicalFields}
               context={tableContext}
             />
-            {!newTableOnly && (
+            {showNewTableSwitch && !newTableOnly && (
               <FormGroup sx={{ paddingRight: "1.5rem" }}>
                 <FormControlLabel
                   label="Prøv ny tabellversjon"
