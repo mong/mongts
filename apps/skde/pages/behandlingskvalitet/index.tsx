@@ -73,7 +73,6 @@ export default function TreatmentQualityPage() {
 
   const toggleDrawer = (newOpen: boolean) => {
     setDrawerOpen(newOpen);
-    console.log(`toggle: ${newOpen}`);
   };
 
   const [newIndicatorTableActivated, setNewIndicatorTableActivated] =
