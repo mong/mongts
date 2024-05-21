@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 
 import style from "./tableblock.module.css";
@@ -21,7 +21,7 @@ export interface TableBlockProps {
   colspan: number;
 }
 
-export const TableBlock: React.FC<TableBlockProps> = (props) => {
+export const TableBlock = (props: TableBlockProps) => {
   const {
     context,
     tableType,
