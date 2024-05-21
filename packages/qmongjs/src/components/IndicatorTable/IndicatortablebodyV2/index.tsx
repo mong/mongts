@@ -293,7 +293,7 @@ const IndicatorRow = (props: {
 
   const ResponsiveChart = () => {
     const [showBars, setShowBars] = React.useState(false);
-    console.log(showBars);
+
     const { width, height } = useScreenSize({ debounceTime: 150 });
 
     const sizeFactor = 0.5;
@@ -328,7 +328,7 @@ const IndicatorRow = (props: {
         ));
 
     showBars
-      ? (buttonText = "Vis gjeldende sykehus")
+      ? (buttonText = "Vis tidstrend")
       : (buttonText = "Vis alle sykehus");
 
     return (
