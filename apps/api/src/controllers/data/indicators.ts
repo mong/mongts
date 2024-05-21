@@ -45,6 +45,9 @@ export function parseQuery(req: Request): Query {
       const id = Number(req.query.id) || undefined;
       query.filter.id = id;
     }
+    if (typeof req.query.ind_id === "string") {
+      query.filter.ind_id = req.query.ind_id;
+    }
     query.filter.register =
       req.params.register === "all" ? "" : req.params.register;
   }

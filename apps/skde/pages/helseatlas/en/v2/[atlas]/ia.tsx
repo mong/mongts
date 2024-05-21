@@ -10,7 +10,7 @@ interface IAProps {
 
 const atlasDir = path.join(process.cwd(), "_posts/helseatlas/en/atlas");
 
-const AtlasPage: React.FC<IAProps> = ({ atlas }) => {
+const AtlasPage = ({ atlas }: IAProps) => {
   return (
     <>
       <AtlasLayout lang="en">

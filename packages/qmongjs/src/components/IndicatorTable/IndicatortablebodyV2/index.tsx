@@ -466,9 +466,7 @@ const RegistrySection = (props: {
 // Top level component for the table
 // #################################
 
-export const IndicatorTableBodyV2: React.FC<IndicatorTableBodyV2Props> = (
-  props,
-) => {
+export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
   const { context, type, year, unitNames, levels, medfields } = props;
 
   const queryParams: FetchIndicatorParams = {
