@@ -68,6 +68,9 @@ function withIndFilter(builder: Knex.QueryBuilder, filter?: Filter) {
       builder.whereNotIn("type", ["dg", "dg_andel"]);
     }
   }
+  if (filter?.ind_id) {
+    builder.where("id", filter.ind_id);
+  }
   if (filter?.register) {
     builder.whereIn("registry_id", function (this: Knex.QueryBuilder) {
       this.select("registry.id")

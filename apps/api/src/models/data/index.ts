@@ -12,4 +12,5 @@ export interface Filter {
   type?: string;
   context?: string;
   id?: number;
+  ind_id?: string;
 }
