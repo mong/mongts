@@ -1,4 +1,4 @@
-import React, { Dispatch } from "react";
+import { Dispatch } from "react";
 
 import { MedicalFieldEntry } from "./medicalfieldentry";
 import styles from "./index.module.css";
@@ -16,7 +16,7 @@ interface MedicalFieldObject {
   registers: string[];
 }
 
-export const MedicalFields: React.FC<MedicalFieldProps> = (props) => {
+export const MedicalFields = (props: MedicalFieldProps) => {
   const {
     medicalFields,
     clicked_med_field,
