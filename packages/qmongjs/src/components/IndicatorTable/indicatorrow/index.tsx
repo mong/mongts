@@ -1,4 +1,3 @@
-import React from "react";
 import { useQueryParam } from "use-query-params";
 
 import { IndicatorValue } from "../indicatorvalue";
@@ -146,7 +145,7 @@ export interface IndicatorRowProps {
   colspan?: number;
 }
 
-export const IndicatorRow: React.FC<IndicatorRowProps> = (props) => {
+export const IndicatorRow = (props: IndicatorRowProps) => {
   const {
     context,
     treatmentYear,

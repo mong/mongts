@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { TreeItem } from "@mui/x-tree-view/TreeItem";
 import { FilterSettingsValue } from "./FilterSettingsContext";

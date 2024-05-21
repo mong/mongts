@@ -12,7 +12,7 @@ export interface IndicatorValueProps {
   headerStyle?: React.CSSProperties;
 }
 
-export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
+export const IndicatorValue = (props: IndicatorValueProps) => {
   const {
     td_class = "selected_unit",
     indicatorData,
@@ -35,11 +35,11 @@ export const IndicatorValue: React.FC<IndicatorValueProps> = (props) => {
   );
 };
 
-export const IndicatorData: React.FC<IndicatorValueProps> = ({
+export const IndicatorData = ({
   indicatorData,
   format,
   headerStyle,
-}) => {
+}: IndicatorValueProps) => {
   const numberFormat = format === undefined ? ",.0%" : format;
   const theLevel = level(indicatorData);
   const denominator =

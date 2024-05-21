@@ -1,5 +1,4 @@
 import Link from "next/link";
-import React from "react";
 import style from "./tableblocktitle.module.css";
 
 interface BlockTitleProps {
@@ -10,7 +9,7 @@ interface BlockTitleProps {
   tr_register_name_class: string;
 }
 
-export const TableBlockTitle: React.FC<BlockTitleProps> = (props) => {
+export const TableBlockTitle = (props: BlockTitleProps) => {
   const {
     tabName,
     link = "",

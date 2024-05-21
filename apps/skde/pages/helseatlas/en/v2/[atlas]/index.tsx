@@ -6,7 +6,7 @@ import AtlasPage, {
   AtlasPageProps,
 } from "../../../../../src/components/Atlas/v2";
 
-const Page: React.FC<AtlasPageProps> = ({ content, atlasData }) => {
+const Page = ({ content, atlasData }: AtlasPageProps) => {
   return <AtlasPage content={content} atlasData={atlasData} />;
 };
 

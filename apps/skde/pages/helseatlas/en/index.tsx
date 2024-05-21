@@ -4,7 +4,7 @@ import fs from "fs";
 
 import FrontPage, { HomeProps } from "../../../src/components/Atlas/FrontPage";
 
-const Home: React.FC<HomeProps> = ({ atlasInfo }) => {
+const Home = ({ atlasInfo }: HomeProps) => {
   return <FrontPage atlasInfo={atlasInfo} lang="en" />;
 };
 

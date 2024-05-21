@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useQueryParam } from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
 
@@ -34,9 +34,7 @@ interface SelectedRegisterProps {
   registerNames: RegisterName[];
 }
 
-export const SelectedRegister: React.FC<SelectedRegisterProps> = ({
-  registerNames,
-}) => {
+export const SelectedRegister = ({ registerNames }: SelectedRegisterProps) => {
   const { register, tab } = useRouter().query as {
     register: string;
     tab: string;

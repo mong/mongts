@@ -25,13 +25,13 @@ type ChartTooltipProps = {
   format?: string;
 };
 
-export const LineChartTooltip: React.FC<ChartTooltipProps> = ({
+export const LineChartTooltip = ({
   tooltipData,
   tooltipLeft,
   tooltipOpen,
   tooltipTop,
   format,
-}) => {
+}: ChartTooltipProps) => {
   return (
     <>
       {tooltipOpen && tooltipData && (

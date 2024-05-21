@@ -1,5 +1,3 @@
-import React from "react";
-
 import { IndicatorTableHeader } from "./indicatortableheader";
 import { IndicatorTableBody } from "./indicatortablebody";
 import { RegisterName } from "types";
@@ -20,7 +18,7 @@ export interface IndicatorTableProps {
   blockTitle?: string[];
 }
 
-export const IndicatorTable: React.FC<IndicatorTableProps> = (props) => {
+export const IndicatorTable = (props: IndicatorTableProps) => {
   const {
     context,
     tableType,

@@ -43,13 +43,13 @@ const SelectionBtn = ({ lang }: { lang?: "nb" | "en" | "nn" }) => {
   );
 };
 
-export const Carousel: React.FC<CarouselProps> = ({
+export const Carousel = ({
   active,
   children,
   selection,
   lang,
   popupState,
-}) => {
+}: CarouselProps) => {
   const [activeComp, setActiveComp] = useState<number>(active ?? 0);
 
   const numberOfChildren: number = React.Children.count(children);

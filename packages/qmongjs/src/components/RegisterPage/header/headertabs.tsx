@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
 
 import style from "./headertabs.module.css";
 
@@ -9,10 +8,7 @@ export interface HeaderTabProps {
   activeTab: string;
 }
 
-export const HeaderTabs: React.FC<HeaderTabProps> = ({
-  tabNames,
-  activeTab,
-}) => {
+export const HeaderTabs = ({ tabNames, activeTab }: HeaderTabProps) => {
   const tabs = tabNames.map((tabName, i) => {
     return (
       <Tab
@@ -37,7 +33,7 @@ interface TabProps {
   activeTab: string;
 }
 
-const Tab: React.FC<TabProps> = ({ tabName, activeTab }) => {
+const Tab = ({ tabName, activeTab }: TabProps) => {
   const { tab, register } = useRouter().query as {
     tab: string;
     register: string;

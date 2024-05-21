@@ -1,4 +1,3 @@
-import React from "react";
 import { NSMLogo } from "./nsmlogo";
 import { HeaderTabs } from "./headertabs";
 import SelectRegister from "../../SelectRegister";
@@ -12,7 +11,7 @@ export interface HeaderProps {
   activeTab: string;
 }
 
-export const Header: React.FC<HeaderProps> = (props) => {
+export const Header = (props: HeaderProps) => {
   const {
     registerNames,
     tabNames = [],
