@@ -32,8 +32,8 @@ export function Chart(props: ChartProps) {
 
 export default Chart;
 
-const GetBarChart: React.FC<ChartProps> = (props) => {
-  const { description, indicatorData, treatmentYear } = props;
+const GetBarChart = (props: ChartProps) => {
+  const { description, indicatorData, treatmentYear }: ChartProps = props;
   const registerShortName = description.rname ?? "";
   const {
     isLoading,
@@ -127,7 +127,7 @@ const GetBarChart: React.FC<ChartProps> = (props) => {
   return <BarChart {...props} data={filterData(barChartData)} />;
 };
 
-const GetLineChart: React.FC<ChartProps> = (props) => {
+const GetLineChart = (props: ChartProps) => {
   const { description, selectedTreatmentUnits } = props;
 
   const {
