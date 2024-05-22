@@ -8,7 +8,12 @@ export {
 } from "./helpers/hooks";
 export { API_HOST } from "./components/RegisterPage";
 export { Layout } from "./components/Layout";
-export { level, levelSymbols, newLevelSymbols } from "./helpers/functions";
+export {
+  level,
+  level2,
+  levelSymbols,
+  newLevelSymbols,
+} from "./helpers/functions";
 export { FilterMenu } from "./components/FilterMenu";
 export type {
   FilterMenuSelectionChangedHandler,
