@@ -1,6 +1,17 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { createTheme, responsiveFontSizes } from "@mui/material";
 
+// Custom colour tokens
+declare module "@mui/material/styles" {
+  interface Palette {
+    hospitalProfileHeader: Palette["primary"];
+  }
+
+  interface PaletteOptions {
+    hospitalProfileHeader?: PaletteOptions["primary"];
+  }
+}
+
 const plusJakartaSans = Plus_Jakarta_Sans({
   weight: ["200", "300", "400", "500", "600", "700", "800"],
   subsets: ["latin"],
@@ -209,6 +220,7 @@ export const skdeTheme = responsiveFontSizes(
       success: colorTokens.success,
       info: colorTokens.info,
       text: colorTokens.text,
+      hospitalProfileHeader: colorTokens.surface2,
       background: {
         paper: colorTokens.background.light,
       },
@@ -226,5 +238,3 @@ export const skdeTheme = responsiveFontSizes(
     },
   }),
 );
-
-export default skdeTheme;
