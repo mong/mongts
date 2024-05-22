@@ -93,7 +93,7 @@ export type DataPoint = {
   id: number;
   unitName: string;
   year: number;
-  var: number | null;
+  var: number;
   denominator: number;
   dg: number | null;
   context: "caregiver" | "resident";
@@ -102,7 +102,7 @@ export type DataPoint = {
   indicatorID: string;
 };
 
-export type IndicatorData = {
+export type IndicatorInfo = {
   indicatorID: string;
   indicatorTitle: string | null;
   levelGreen: number | null;
@@ -125,6 +125,8 @@ export type IndicatorData = {
   registerID: number;
 };
 
+export type IndicatorData = IndicatorInfo & { data?: DataPoint[] };
+
 export type Registry = {
   registerFullName: string;
   registerName: string;
@@ -134,5 +136,5 @@ export type Registry = {
 };
 
 export type RegisterData = Registry & {
-  indicatorData: (IndicatorData & { data?: DataPoint[] })[];
+  indicatorData: IndicatorData[];
 };

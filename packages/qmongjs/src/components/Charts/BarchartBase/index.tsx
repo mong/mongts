@@ -2,7 +2,7 @@ import { Bar } from "@visx/shape";
 import { Group } from "@visx/group";
 import { AxisLeft, AxisBottom } from "@visx/axis";
 import { scaleBand, scaleLinear } from "@visx/scale";
-import { IndicatorData } from "../../IndicatorTable/IndicatortablebodyV2";
+import { IndicatorData } from "types";
 import { customFormat } from "../../../helpers/functions";
 
 export type BarchartProps = {
@@ -27,9 +27,13 @@ const getY = (d: BarchartData) => d.unitName;
 const getX = (d: BarchartData) => d.value;
 
 const createBarchartData = (data: IndicatorData) => {
-  return data.data.map((row) => {
-    return { unitName: row.unitName, value: row.var } as BarchartData;
-  });
+  if (data.data) {
+    return data.data.map((row) => {
+      return { unitName: row.unitName, value: row.var } as BarchartData;
+    });
+  } else {
+    return null;
+  }
 };
 
 export const BarchartBase = ({
@@ -40,6 +44,10 @@ export const BarchartBase = ({
   xTickFormat,
 }: BarchartProps) => {
   const data = createBarchartData(indicatorData);
+
+  if (data === null) {
+    return null;
+  }
 
   const xMax = width;
   const yMax = height;
