@@ -4,7 +4,7 @@ const getLevel = (
   levelGreen: number | null,
   levelYellow: number | null,
   levelDirection: number | null,
-  value: number,
+  value: number | null,
 ) => {
   if (
     levelGreen === undefined ||
