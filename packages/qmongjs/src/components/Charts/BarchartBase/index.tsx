@@ -13,8 +13,8 @@ export type BarchartProps = {
   xTickFormat: string;
 };
 
-export const green = "#e5fd3d";
-export const background = "#DEDEDE";
+const background = "#FFFFFF";
+
 const defaultMargin = { top: 40, right: 40, bottom: 40, left: 150 };
 
 type BarchartData = {
