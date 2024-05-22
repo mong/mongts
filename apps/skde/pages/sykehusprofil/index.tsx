@@ -1,12 +1,19 @@
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider } from "@mui/material";
 import React from "react";
-import IndicatorLinechart, {
-  IndicatorLinechartParams,
-} from "../../src/charts/IndicatorLinechart";
 import { LineStyles } from "qmongjs";
 import { Text } from "@visx/text";
 import { useQueryParam } from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
+import { OptsTu } from "types";
+import { Checkbox, FormControlLabel } from "@mui/material";
+import { Header } from "../../src/components/HospitalProfile";
+import { skdeTheme } from "qmongjs";
+import { Footer } from "../../src/components/Footer";
+
+import IndicatorLinechart, {
+  IndicatorLinechartParams,
+} from "../../src/charts/IndicatorLinechart";
+
 import {
   SelectTreatmentUnits,
   useUnitNamesQuery,
@@ -16,8 +23,7 @@ import {
   UnitNameList,
   LowLevelIndicatorList,
 } from "qmongjs";
-import { OptsTu } from "types";
-import { Checkbox, FormControlLabel } from "@mui/material";
+
 import {
   MedfieldTable,
   MedfieldTableProps,
@@ -122,7 +128,8 @@ export const Skde = (): JSX.Element => {
   }
 
   return (
-    <div>
+    <ThemeProvider theme={skdeTheme}>
+      <Header />
       <div>
         <Text
           x={"10%"}
@@ -201,7 +208,8 @@ export const Skde = (): JSX.Element => {
           unitNames={[validated_treatment_units[0] || "Nasjonalt"]}
         />
       </div>
-    </div>
+      <Footer />
+    </ThemeProvider>
   );
 };
 
