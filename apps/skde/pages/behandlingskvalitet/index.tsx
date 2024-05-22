@@ -39,7 +39,7 @@ import {
   IndicatorTableWrapper,
   IndicatorTableV2Wrapper,
 } from "../../src/components/TreatmentQuality";
-import TreatmentQualityFooter from "../../src/components/TreatmentQuality/TreatmentQualityFooter";
+import { Footer } from "../../src/components/Footer";
 
 const dataQualityKey = "dg";
 
@@ -307,7 +307,7 @@ export default function TreatmentQualityPage() {
                     levels={selectedLevel}
                     medfields={selectedMedicalFields}
                   />
-                  <TreatmentQualityFooter />
+                  <Footer />
                 </IndicatorTableV2Wrapper>
               ) : (
                 <IndicatorTableWrapper className="table-wrapper">
@@ -327,7 +327,7 @@ export default function TreatmentQualityPage() {
                       (register: { full_name: string }) => register.full_name,
                     )}
                   />
-                  <TreatmentQualityFooter />
+                  <Footer />
                 </IndicatorTableWrapper>
               ))}
           </Grid>

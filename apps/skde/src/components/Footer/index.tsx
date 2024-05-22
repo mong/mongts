@@ -1,21 +1,53 @@
 import Image from "next/image";
 import { imgLoader } from "qmongjs";
-import {
-  FooterWrapper,
-  FooterItem,
-  FooterGrid,
-  FooterListItemIcon,
-  FooterListItemText,
-  FooterDividerBox,
-  FooterDivider,
-} from ".";
 import Link from "next/link";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import { ArrowForward, Call, ContactSupport, Email } from "@mui/icons-material";
+import Paper from "@mui/material/Paper";
+import { styled } from "@mui/material/styles";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import Grid from "@mui/material/Grid";
 
-export function TreatmentQualityFooter() {
+export const FooterWrapper = styled(Paper)(() => ({
+  marginTop: "calc(100vh)",
+  color: "white",
+}));
+
+export const FooterGrid = styled(Grid)(() => ({
+  justifyContent: "space-around",
+  backgroundColor: "#00263d",
+}));
+
+export const FooterItem = styled(Grid)(({ theme }) => ({
+  textAlign: "center",
+  "& .footer-logo": {
+    verticalAlign: "middle",
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2),
+  },
+}));
+
+export const FooterListItemIcon = styled(ListItemIcon)(() => ({
+  color: "white",
+}));
+
+export const FooterListItemText = styled(ListItemText)(() => ({
+  lineHeight: 1,
+  margin: 0,
+}));
+
+export const FooterDividerBox = styled(Box)(() => ({}));
+
+export const FooterDivider = styled(Divider)(({ theme }) => ({
+  backgroundColor: theme.palette.secondary.dark,
+}));
+
+export function Footer() {
   return (
     <FooterWrapper>
       <FooterGrid
@@ -154,5 +186,3 @@ export function TreatmentQualityFooter() {
     </FooterWrapper>
   );
 }
-
-export default TreatmentQualityFooter;
