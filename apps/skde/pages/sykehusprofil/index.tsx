@@ -6,9 +6,13 @@ import { useQueryParam } from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
 import { OptsTu } from "types";
 import { Checkbox, FormControlLabel } from "@mui/material";
-import { Header } from "../../src/components/HospitalProfile";
+import {
+  Header,
+  TreatmentUnitSelector,
+} from "../../src/components/HospitalProfile";
 import { skdeTheme } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
+import { useState } from "react";
 
 import IndicatorLinechart, {
   IndicatorLinechartParams,
@@ -38,6 +42,7 @@ const theme = {
 };
 
 export const Skde = (): JSX.Element => {
+
   // Gjenbruk av kode fra indikatorvisning
   const queryContext = { context: "caregiver", type: "ind" };
 
@@ -130,6 +135,7 @@ export const Skde = (): JSX.Element => {
   return (
     <ThemeProvider theme={skdeTheme}>
       <Header />
+      <TreatmentUnitSelector />
       <div>
         <Text
           x={"10%"}

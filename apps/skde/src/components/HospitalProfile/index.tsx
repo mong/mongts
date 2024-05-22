@@ -2,6 +2,14 @@ import { NavigateNextRounded } from "@mui/icons-material";
 import { Breadcrumbs, Link, Toolbar, Typography, styled } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import React from "react";
+import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
+import { UseQueryResult } from "@tanstack/react-query";
+import { useUnitNamesQuery } from "qmongjs";
+import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
+import { useQueryParam } from "use-query-params";
+import { DelimitedArrayParam } from "use-query-params";
+import { withDefault } from "use-query-params";
+import { FilterSettingsValue } from "qmongjs";
 
 const StyledToolbarTop = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -87,5 +95,42 @@ export const Header = () => {
       <HeaderTop />
       <HeaderMiddle />
     </React.Fragment>
+  );
+};
+
+export const TreatmentUnitSelector = () => {
+  const treatmentUnitsKey = "selected_treatment_units";
+
+  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useQueryParam(
+    treatmentUnitsKey,
+    withDefault(DelimitedArrayParam, ["Nasjonalt"]),
+  );
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
+    "all",
+    "caregiver",
+    "ind",
+  );
+
+  const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
+
+  return (
+    <TreeViewFilterSection
+      refreshState={false}
+      treedata={treatmentUnits.treedata}
+      defaultvalues={treatmentUnits.defaults}
+      initialselections={
+        selectedTreatmentUnits.map((value) => ({
+          value: value,
+          valueLabel: value,
+        })) as FilterSettingsValue[]
+      }
+      sectionid={treatmentUnitsKey}
+      sectiontitle={"Behandlingsenheter"}
+      filterkey={treatmentUnitsKey}
+      searchbox={true}
+      maxselections={1}
+    />
   );
 };
