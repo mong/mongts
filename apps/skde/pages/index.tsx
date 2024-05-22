@@ -3,7 +3,7 @@ import React from "react";
 import styles from "../src/styles/Home.module.css";
 import { FrontPageLayout } from "../src/components/Layout";
 import * as Sentry from "@sentry/react";
-import { BrowserTracing } from "@sentry/browser";
+import { browserTracingIntegration } from "@sentry/browser";
 
 /* istanbul ignore next */
 if (process.env.NEXT_PUBLIC_SENTRY) {
@@ -11,7 +11,7 @@ if (process.env.NEXT_PUBLIC_SENTRY) {
     Sentry.init({
       dsn: process.env.NEXT_PUBLIC_SENTRY,
       autoSessionTracking: true,
-      integrations: [new BrowserTracing()],
+      integrations: [browserTracingIntegration()],
       tracesSampleRate: 1.0,
     });
   } catch (error) {
