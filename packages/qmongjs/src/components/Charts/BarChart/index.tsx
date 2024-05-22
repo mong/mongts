@@ -189,7 +189,11 @@ function BarChart(props: Props) {
   ]);
 
   return (
-    <div ref={wrapperRef} style={{ width: "90%", margin: "auto" }}>
+    <div
+      ref={wrapperRef}
+      style={{ width: "90%", margin: "auto" }}
+      className="barchart-wrapper"
+    >
       <svg
         ref={svgRef}
         className={styles.barChart}

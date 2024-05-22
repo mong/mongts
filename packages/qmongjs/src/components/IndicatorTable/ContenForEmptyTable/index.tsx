@@ -1,13 +1,10 @@
-import React from "react";
 import { useIsFetching } from "@tanstack/react-query";
 
 interface NoDataAvailibleProps {
   colspan: number;
 }
 
-export const NoDataAvailible: React.FC<NoDataAvailibleProps> = ({
-  colspan,
-}) => {
+export const NoDataAvailible = ({ colspan }: NoDataAvailibleProps) => {
   const isFetching = useIsFetching();
 
   if (isFetching === 0) {

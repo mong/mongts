@@ -18,7 +18,7 @@ interface Query {
   filter?: Filter;
 }
 
-function parseQuery(req: Request): Query {
+export function parseQuery(req: Request): Query {
   const query: Query = {};
 
   if (typeof req.query === "object" && !Array.isArray(req.query)) {
@@ -44,6 +44,9 @@ function parseQuery(req: Request): Query {
     if (typeof req.query.id === "string") {
       const id = Number(req.query.id) || undefined;
       query.filter.id = id;
+    }
+    if (typeof req.query.ind_id === "string") {
+      query.filter.ind_id = req.query.ind_id;
     }
     query.filter.register =
       req.params.register === "all" ? "" : req.params.register;

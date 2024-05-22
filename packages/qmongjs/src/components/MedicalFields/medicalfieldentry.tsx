@@ -1,4 +1,4 @@
-import React, { Dispatch } from "react";
+import { Dispatch } from "react";
 import styles from "./index.module.css";
 
 interface medField {
@@ -13,7 +13,7 @@ interface Props {
   update_clicked_med_field: Dispatch<string>;
   clicked_med_field: string;
 }
-export const MedicalFieldEntry: React.FC<Props> = (props) => {
+export const MedicalFieldEntry = (props: Props) => {
   const { med_field, update_clicked_med_field, clicked_med_field } = props;
 
   const class_checked =

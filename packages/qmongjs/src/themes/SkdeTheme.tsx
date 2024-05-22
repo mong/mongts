@@ -16,6 +16,7 @@ declare module "@mui/material/styles" {
     md: true;
     lg: true;
     xl: true;
+    xxl: true;
     desktop: true;
   }
 }
@@ -26,6 +27,7 @@ const fonts = {
     fontWeight: "300",
     fontSize: "64px",
     letterSpacing: "-1.5px",
+    color: "#001b52",
   },
   h2: {
     fontFamily: `${jakartaStyle.fontFamily}`,
@@ -95,8 +97,9 @@ const fonts = {
   },
 };
 
-const breakpoints = {
+export const breakpoints = {
   xs: 0,
+  sm: 544,
   md: 768,
   lg: 992,
   xl: 1080,
@@ -121,15 +124,15 @@ const breakpoints = {
 
 const colorTokens = {
   primary: {
-    main: "#003087", // "#bfced6",
-    light: "#e0e7eb", // "#bfced6", // "#e3ebf2",
-    dark: "#173844",
+    main: "#003087",
+    light: "#e3ebf2",
+    dark: "#001b52",
   },
 
   secondary: {
-    main: "#003087", //"#001b52", //"#003087", // "#bfc7e4",
+    main: "#bfc7e4",
     light: "#e6e9f4",
-    dark: "#003087",
+    dark: "#000000",
   },
 
   background: {
@@ -151,9 +154,15 @@ const colorTokens = {
   },
 
   text: {
-    primary: "#001b52",
-    secondary: "#c4c4c4",
+    primary: "#000000",
+    secondary: "#003087",
     disabled: "#f5f5f5",
+  },
+
+  info: {
+    main: "#bfc7e4",
+    light: "#e6e9fa",
+    dark: "#003087",
   },
 
   success: {
@@ -162,7 +171,7 @@ const colorTokens = {
     dark: "#002f87",
   },
 
-  info: {
+  warning: {
     main: "#fef17f",
     light: "#fffac8",
     dark: "#ffc745",
@@ -175,7 +184,7 @@ const colorTokens = {
   },
 };
 
-export const SkdeTheme = responsiveFontSizes(
+export const skdeTheme = responsiveFontSizes(
   createTheme({
     typography: {
       h1: fonts.h1,
@@ -196,9 +205,10 @@ export const SkdeTheme = responsiveFontSizes(
       primary: colorTokens.primary,
       secondary: colorTokens.secondary,
       error: colorTokens.error,
+      warning: colorTokens.warning,
       success: colorTokens.success,
-      text: colorTokens.text,
       info: colorTokens.info,
+      text: colorTokens.text,
       background: {
         paper: colorTokens.background.light,
       },
@@ -206,12 +216,15 @@ export const SkdeTheme = responsiveFontSizes(
     breakpoints: {
       values: {
         xs: breakpoints.xs,
-        sm: breakpoints.md,
-        md: breakpoints.xl,
+        sm: breakpoints.sm,
+        md: breakpoints.md,
         lg: breakpoints.lg,
-        xl: breakpoints.xxl,
+        xl: breakpoints.xl,
+        xxl: breakpoints.xxl,
         desktop: 1300,
       },
     },
   }),
 );
+
+export default skdeTheme;

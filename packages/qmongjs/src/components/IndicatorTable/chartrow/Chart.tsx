@@ -32,8 +32,8 @@ export function Chart(props: ChartProps) {
 
 export default Chart;
 
-const GetBarChart: React.FC<ChartProps> = (props) => {
-  const { description, indicatorData, treatmentYear } = props;
+const GetBarChart = (props: ChartProps) => {
+  const { description, indicatorData, treatmentYear }: ChartProps = props;
   const registerShortName = description.rname ?? "";
   const {
     isLoading,
@@ -127,7 +127,7 @@ const GetBarChart: React.FC<ChartProps> = (props) => {
   return <BarChart {...props} data={filterData(barChartData)} />;
 };
 
-const GetLineChart: React.FC<ChartProps> = (props) => {
+const GetLineChart = (props: ChartProps) => {
   const { description, selectedTreatmentUnits } = props;
 
   const {
@@ -154,14 +154,5 @@ const GetLineChart: React.FC<ChartProps> = (props) => {
     )
     .sort((a: Indicator, b: Indicator) => b.year - a.year);
 
-  // get the last year with complete data
-  const lastCompleteYear: number | undefined = data
-    ? data[0].delivery_latest_affirm
-      ? new Date(data[0].delivery_latest_affirm).getFullYear() - 1
-      : undefined
-    : undefined;
-
-  return (
-    <LineChart {...props} data={data} lastCompleteYear={lastCompleteYear} />
-  );
+  return <LineChart {...props} data={data} />;
 };

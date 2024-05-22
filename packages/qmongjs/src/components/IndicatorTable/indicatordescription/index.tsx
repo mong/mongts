@@ -1,4 +1,3 @@
-import React from "react";
 import { Description } from "types";
 import style from "./indicatordescription.module.css";
 import { customFormat } from "../../../helpers/functions/localFormater";
@@ -9,7 +8,7 @@ export interface DescriptionProps {
   lastCompleteDateString?: string;
 }
 
-export const IndicatorDescription: React.FC<DescriptionProps> = (props) => {
+export const IndicatorDescription = (props: DescriptionProps) => {
   const { description, lastCompleteYear, lastCompleteDateString } = props;
   const numberFormat: string =
     description.sformat === undefined || description.sformat === null

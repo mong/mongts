@@ -1,7 +1,7 @@
 import type {} from "@mui/x-tree-view/themeAugmentation";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import { ExpandMore, ChevronRight } from "@mui/icons-material";
+import { ExpandMoreRounded, ChevronRightRounded } from "@mui/icons-material";
 import { TreeView } from "@mui/x-tree-view/TreeView";
 import { FilterMenuSectionProps } from ".";
 import {
@@ -343,7 +343,11 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
   return (
     <Box>
       {showMaxSelectionAlert && (
-        <Alert severity="warning">{`Du kan maksimalt huke av ${maxSelections} valg.`}</Alert>
+        <Alert
+          sx={{ marginBottom: 1 }}
+          severity="info"
+          variant="filled"
+        >{`Du kan maksimalt huke av ${maxSelections} valg.`}</Alert>
       )}
       {searchBox && (
         <TreeViewSearchBox
@@ -355,8 +359,8 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
         key={treeViewKey}
         aria-label={`${props.sectiontitle} (TreeView)}`}
         data-testid={`tree-view-section-${props.sectionid}`}
-        defaultCollapseIcon={<ExpandMore />}
-        defaultExpandIcon={<ChevronRight />}
+        defaultCollapseIcon={<ExpandMoreRounded />}
+        defaultExpandIcon={<ChevronRightRounded />}
         defaultExpanded={expanded}
         expanded={expanded}
         onNodeFocus={(event, nodeId) => {

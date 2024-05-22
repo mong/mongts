@@ -2,6 +2,7 @@ export * from "./unitNames";
 export * from "./indicators";
 export * from "./description";
 export * from "./selectionyears";
+export { aggData, indTable, regTable, medfieldTable } from "./nestedData";
 
 export interface Filter {
   unit_level?: string;
@@ -11,4 +12,5 @@ export interface Filter {
   type?: string;
   context?: string;
   id?: number;
+  ind_id?: string;
 }
