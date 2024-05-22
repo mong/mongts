@@ -8,6 +8,7 @@ import { OptsTu } from "types";
 import { Checkbox, FormControlLabel } from "@mui/material";
 import { Header } from "../../src/components/HospitalProfile";
 import { skdeTheme } from "qmongjs";
+import { Footer } from "../../src/components/Footer";
 
 import IndicatorLinechart, {
   IndicatorLinechartParams,
@@ -207,6 +208,7 @@ export const Skde = (): JSX.Element => {
           unitNames={[validated_treatment_units[0] || "Nasjonalt"]}
         />
       </div>
+      <Footer />
     </ThemeProvider>
   );
 };
