@@ -61,7 +61,7 @@ const HeaderTop = () => {
 };
 
 const StyledToolbarMiddle = styled(Toolbar)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.light,
+  backgroundColor: theme.palette.hospitalProfileHeader.light,
   paddingTop: theme.spacing(12),
   paddingBottom: theme.spacing(8),
 }));
