@@ -5,6 +5,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { Indicator, RegisterData, IndicatorData } from "types";
+import Button from "@mui/material/Button";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
 import { newLevelSymbols, level2 } from "qmongjs";
@@ -26,7 +27,6 @@ import {
   customFormat,
   useIndicatorQuery,
 } from "qmongjs";
-import { Group } from "@visx/group";
 
 const remarkPlugins: PluggableList = [remarkGfm];
 
@@ -166,33 +166,60 @@ const IndicatorRow = (props: {
   const lineStyles = createChartStyles(unitNames, font);
 
   const ResponsiveChart = () => {
+    const [showBars, setShowBars] = React.useState(false);
+
     const { width, height } = useScreenSize({ debounceTime: 150 });
 
     const sizeFactor = 0.5;
 
+    let figure;
+    let buttonText;
+
+    showBars
+      ? (figure = (
+          <BarchartBase
+            indicatorData={indData}
+            width={sizeFactor * width * 0.7}
+            height={sizeFactor * height}
+            xTickFormat=",.0%"
+          />
+        ))
+      : (figure = (
+          <LinechartBase
+            data={chartDataFiltered}
+            width={sizeFactor * width}
+            height={sizeFactor * height}
+            yMin={0}
+            yMax={1}
+            lineStyles={lineStyles}
+            font={font}
+            yAxisText={"Andel"}
+            format_y=",.0%"
+            levelGreen={indData.levelGreen!}
+            levelYellow={indData.levelYellow!}
+            levelDirection={indData.levelDirection!}
+          />
+        ));
+
+    showBars
+      ? (buttonText = "Vis tidstrend")
+      : (buttonText = "Vis alle sykehus");
+
     return (
-      <Group>
-        <LinechartBase
-          data={chartDataFiltered}
-          width={sizeFactor * width}
-          height={sizeFactor * height}
-          yMin={0}
-          yMax={1}
-          lineStyles={lineStyles}
-          font={font}
-          yAxisText={"Andel"}
-          format_y=",.0%"
-          levelGreen={indData.levelGreen!}
-          levelYellow={indData.levelYellow!}
-          levelDirection={indData.levelDirection!}
-        />
-        <BarchartBase
-          indicatorData={indData}
-          width={sizeFactor * width * 0.7}
-          height={sizeFactor * height}
-          xTickFormat=",.0%"
-        />
-      </Group>
+      <div>
+        <div>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              setShowBars(!showBars);
+            }}
+          >
+            {buttonText}
+          </Button>
+        </div>
+
+        <div>{figure}</div>
+      </div>
     );
   };
 
