@@ -23,8 +23,8 @@ export const indicatorTableTheme = createTheme({
   },
 });
 
-export const StyledTable = styled(Table)(({ theme }) => ({
-  margin: theme.table.margin,
+export const StyledTable = styled(Table)(() => ({
+  margin: 0,
 }));
 
 export const StyledTableRow = styled(TableRow)(() => ({
