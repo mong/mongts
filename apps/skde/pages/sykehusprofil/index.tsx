@@ -17,6 +17,8 @@ import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/Treatme
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import { DelimitedArrayParam } from "use-query-params";
 import { withDefault } from "use-query-params";
+import { Toolbar, styled, Typography } from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
 
 import IndicatorLinechart, {
   IndicatorLinechartParams,
@@ -36,6 +38,12 @@ const theme = {
     ry: 25,
   },
 };
+
+const StyledToolbarMiddle = styled(Toolbar)(({ theme }) => ({
+  backgroundColor: theme.palette.hospitalProfileHeader.light,
+  paddingTop: theme.spacing(12),
+  paddingBottom: theme.spacing(8),
+}));
 
 export const Skde = (): JSX.Element => {
   const treatmentUnitsKey = "selected_treatment_units";
@@ -127,36 +135,49 @@ export const Skde = (): JSX.Element => {
   return (
     <ThemeProvider theme={skdeTheme}>
       <Header />
-      <FilterMenu
-        refreshState={true}
-        onSelectionChanged={handleChange}
-        onFilterInitialized={() => {
-          return null;
-        }}
-      >
-        <SelectedFiltersSection
-          accordion="false"
-          filterkey="selectedfilters"
-          sectionid="selectedfilters"
-          sectiontitle="Valgte filtre"
-        />
-        <TreeViewFilterSection
-          refreshState={false}
-          treedata={treatmentUnits.treedata}
-          defaultvalues={treatmentUnits.defaults}
-          initialselections={
-            selectedTreatmentUnits.map((value) => ({
-              value: value,
-              valueLabel: value,
-            })) as FilterSettingsValue[]
-          }
-          sectionid={treatmentUnitsKey}
-          sectiontitle={"Behandlingsenheter"}
-          filterkey={treatmentUnitsKey}
-          searchbox={true}
-          multiselect={false}
-        />
-      </FilterMenu>
+      <StyledToolbarMiddle className="header-middle">
+        <Grid container spacing={2} rowSpacing={6}>
+          <Grid xs={12}>
+            <Typography variant="h1">Sykehusprofil</Typography>
+          </Grid>
+          <Grid xs={12}>
+            <Typography variant="h6">Resultater fra sykehus</Typography>
+          </Grid>
+          <Grid xs={6}>
+            <FilterMenu
+              refreshState={true}
+              onSelectionChanged={handleChange}
+              onFilterInitialized={() => {
+                return null;
+              }}
+            >
+              <SelectedFiltersSection
+                accordion="false"
+                filterkey="selectedfilters"
+                sectionid="selectedfilters"
+                sectiontitle="Valgte filtre"
+              />
+              <TreeViewFilterSection
+                refreshState={false}
+                treedata={treatmentUnits.treedata}
+                defaultvalues={treatmentUnits.defaults}
+                initialselections={
+                  selectedTreatmentUnits.map((value) => ({
+                    value: value,
+                    valueLabel: value,
+                  })) as FilterSettingsValue[]
+                }
+                sectionid={treatmentUnitsKey}
+                sectiontitle={"Behandlingsenheter"}
+                filterkey={treatmentUnitsKey}
+                searchbox={true}
+                multiselect={false}
+              />
+            </FilterMenu>
+          </Grid>
+        </Grid>
+      </StyledToolbarMiddle>
+
       <div>
         <Text
           x={"10%"}
