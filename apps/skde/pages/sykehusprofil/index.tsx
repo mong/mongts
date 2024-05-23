@@ -4,29 +4,25 @@ import { LineStyles } from "qmongjs";
 import { Text } from "@visx/text";
 import { useQueryParam } from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
-import { OptsTu } from "types";
 import { Checkbox, FormControlLabel } from "@mui/material";
+import { Header } from "../../src/components/HospitalProfile";
 import {
-  Header,
-  TreatmentUnitSelector,
-} from "../../src/components/HospitalProfile";
-import { skdeTheme } from "qmongjs";
+  skdeTheme,
+  FilterSettingsValue,
+  FilterMenu,
+  SelectedFiltersSection,
+} from "qmongjs";
 import { Footer } from "../../src/components/Footer";
-import { useState } from "react";
+import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
+import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
+import { DelimitedArrayParam } from "use-query-params";
+import { withDefault } from "use-query-params";
 
 import IndicatorLinechart, {
   IndicatorLinechartParams,
 } from "../../src/charts/IndicatorLinechart";
 
-import {
-  SelectTreatmentUnits,
-  useUnitNamesQuery,
-  NestedTreatmentUnitName,
-  mainQueryParamsConfig,
-  validateTreatmentUnits,
-  UnitNameList,
-  LowLevelIndicatorList,
-} from "qmongjs";
+import { useUnitNamesQuery, LowLevelIndicatorList } from "qmongjs";
 
 import {
   MedfieldTable,
@@ -42,41 +38,37 @@ const theme = {
 };
 
 export const Skde = (): JSX.Element => {
+  const treatmentUnitsKey = "selected_treatment_units";
 
-  // Gjenbruk av kode fra indikatorvisning
-  const queryContext = { context: "caregiver", type: "ind" };
+  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useQueryParam(
+    treatmentUnitsKey,
+    withDefault(DelimitedArrayParam, ["Nasjonalt"]),
+  );
 
-  // Hent sykehusnavn fra et register
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
-    "Hjerteinfarkt",
-    queryContext.context,
-    queryContext.type,
+    "all",
+    "caregiver",
+    "ind",
   );
 
-  const nestedUnitNames: NestedTreatmentUnitName[] | [] =
-    unitNamesQuery.data?.nestedUnitNames ?? [];
+  const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
-  const optstu: OptsTu[] | [] = unitNamesQuery.data?.opts_tu ?? [];
+  const handleChange = (a) => {
+    const newUnit = a.map
+      .get(treatmentUnitsKey)
+      .map((el) => el.value)
+      .filter((el) => el !== "Nasjonalt");
 
-  const [treatment_units, update_treatment_units] = useQueryParam(
-    "selected_treatment_units",
-    mainQueryParamsConfig.selected_treatment_units,
-  );
+    let retVal: string[];
 
-  const validated_treatment_units = validateTreatmentUnits(
-    treatment_units as string[],
-    optstu,
-  );
+    newUnit.length === 0 ? (retVal = ["Nasjonalt"]) : (retVal = newUnit);
 
-  const placeholder = (
-    <div>
-      <i className="fas fa-search" /> Søk etter behandlingsenheter
-    </div>
-  );
+    setSelectedTreatmentUnits(retVal);
+  };
 
   const indicatorParams: IndicatorLinechartParams = {
-    unitNames: [validated_treatment_units[0]],
+    unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
     width: 800,
@@ -102,7 +94,7 @@ export const Skde = (): JSX.Element => {
   };
 
   const medfieldTableProps: MedfieldTableProps = {
-    unitNames: [validated_treatment_units[0]],
+    unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
     width: 800,
@@ -110,7 +102,7 @@ export const Skde = (): JSX.Element => {
   };
 
   const medfieldTablePropsDG: MedfieldTableProps = {
-    unitNames: [validated_treatment_units[0]],
+    unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "dg",
     width: 800,
@@ -135,7 +127,36 @@ export const Skde = (): JSX.Element => {
   return (
     <ThemeProvider theme={skdeTheme}>
       <Header />
-      <TreatmentUnitSelector />
+      <FilterMenu
+        refreshState={true}
+        onSelectionChanged={handleChange}
+        onFilterInitialized={() => {
+          return null;
+        }}
+      >
+        <SelectedFiltersSection
+          accordion="false"
+          filterkey="selectedfilters"
+          sectionid="selectedfilters"
+          sectiontitle="Valgte filtre"
+        />
+        <TreeViewFilterSection
+          refreshState={false}
+          treedata={treatmentUnits.treedata}
+          defaultvalues={treatmentUnits.defaults}
+          initialselections={
+            selectedTreatmentUnits.map((value) => ({
+              value: value,
+              valueLabel: value,
+            })) as FilterSettingsValue[]
+          }
+          sectionid={treatmentUnitsKey}
+          sectiontitle={"Behandlingsenheter"}
+          filterkey={treatmentUnitsKey}
+          searchbox={true}
+          maxselections={2}
+        />
+      </FilterMenu>
       <div>
         <Text
           x={"10%"}
@@ -144,22 +165,8 @@ export const Skde = (): JSX.Element => {
           verticalAnchor="start"
           style={{ fontWeight: 700, fontSize: 24 }}
         >
-          {validated_treatment_units[0]}
+          {selectedTreatmentUnits[0]}
         </Text>
-      </div>
-      <div>
-        <SelectTreatmentUnits
-          opts={optstu}
-          update_tu={update_treatment_units}
-          treatment_unit={validated_treatment_units}
-          placeholder={placeholder}
-        />
-        <UnitNameList
-          nestedUnitNames={nestedUnitNames}
-          treatment_units={validated_treatment_units}
-          update_treatment_units={update_treatment_units}
-          multiple_choice={false}
-        />
       </div>
       <div>
         <Text
@@ -211,7 +218,7 @@ export const Skde = (): JSX.Element => {
         <LowLevelIndicatorList
           context={"caregiver"}
           type={"ind"}
-          unitNames={[validated_treatment_units[0] || "Nasjonalt"]}
+          unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
         />
       </div>
       <Footer />
