@@ -166,7 +166,6 @@ test("Line", async () => {
       showLevel={true}
       selectedTreatmentUnits={[]}
       indicatorData={[]}
-      lastCompleteYear={2018}
     />,
   );
 
