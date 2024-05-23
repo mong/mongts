@@ -62,17 +62,12 @@ export const Skde = (): JSX.Element => {
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
-  const handleChange = (a) => {
-    const newUnit = a.map
+  const handleChange = (filterInput) => {
+    const newUnit = filterInput.map
       .get(treatmentUnitsKey)
-      .map((el) => el.value)
-      .filter((el) => el !== "Nasjonalt");
+      .map((el) => el.value);
 
-    let retVal: string[];
-
-    newUnit.length === 0 ? (retVal = ["Nasjonalt"]) : (retVal = newUnit);
-
-    setSelectedTreatmentUnits(retVal);
+    setSelectedTreatmentUnits(newUnit);
   };
 
   const indicatorParams: IndicatorLinechartParams = {
@@ -117,7 +112,7 @@ export const Skde = (): JSX.Element => {
     treatmentYear: 2022,
   };
 
-  //State logic for normalising the lien plot
+  //State logic for normalising the line plot
   const [normalise, setNormalise] = React.useState(indicatorParams.normalise);
 
   indicatorParams.normalise = normalise;
