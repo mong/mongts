@@ -1,9 +1,12 @@
-import { Grid, Axis, LineSeries, XYChart, Tooltip } from "@visx/xychart";
+import { Grid, Axis, LineSeries, XYChart, DataContext } from "@visx/xychart";
 import { scaleOrdinal } from "@visx/scale";
-import { useRouter } from "next/router";
+import { useBohfQueryParam } from "../../helpers/hooks";
 import { customFormat } from "qmongjs";
 import { ColorLegend } from "./ColorLegend";
 import { linechartColors } from "../colors";
+import React from "react";
+import { localPoint } from "@visx/event";
+import { useTooltip, useTooltipInPortal } from "@visx/tooltip";
 
 export type LinechartData<
   Data,
@@ -38,6 +41,75 @@ type LinechartProps<
   national?: string;
 };
 
+const Lines = ({ hoverRef, values, colorScale, isBohf }) => {
+  return values.map((lineData, i) => {
+    const colorAccessor = () => {
+      if (lineData.isSelected || hoverRef.current === lineData.labelText)
+        return colorScale(lineData.labelText);
+      else return "rgb(239, 238, 236)";
+    };
+
+    return (
+      <LineSeries
+        colorAccessor={colorAccessor}
+        strokeWidth={
+          isBohf && lineData.isSelected
+            ? 5
+            : isBohf && hoverRef.current === lineData.labelText
+              ? 20
+              : 2
+        }
+        dataKey={lineData.labelText}
+        data={lineData.points}
+        xAccessor={(d) => d.x}
+        yAccessor={(d) => d.y}
+        key={i}
+      />
+    );
+  });
+};
+
+const MyTooltip = ({ hoverRef, mousePosRef, render }) => {
+  const { xScale, yScale, dataRegistry } = React.useContext(DataContext);
+
+  const dataPoints = dataRegistry.entries().flatMap((entry) => {
+    return entry.data.map((d) => ({
+      x: d.x,
+      y: d.y,
+      key: entry.key,
+      dist: Infinity,
+    }));
+  });
+
+  const findClosest = (best, datum) => {
+    const x = xScale(datum.x);
+    const y = yScale(datum.y);
+    const dist = Math.sqrt(
+      (mousePosRef.current.x - x) ** 2 + (mousePosRef.current.y - y) ** 2,
+    );
+    // ^ Pythagorean theorem
+
+    return best.dist < dist ? best : { x: x, y: y, dist: dist, key: datum.key };
+  };
+
+  const closest = dataPoints.reduce(findClosest);
+  hoverRef.current = closest.key;
+
+  return (
+    <>
+      {render()}
+      <rect
+        x={closest.x - 5}
+        fill={"red"}
+        y={closest.y - 5}
+        width="10"
+        height="10"
+        rx="1"
+      />
+    </>
+  );
+};
+
 export const Linechart = <
   Data,
   X extends string & keyof Data,
@@ -55,53 +127,61 @@ export const Linechart = <
   format_y,
   national,
 }: LinechartProps<Data, X, Y, Label>) => {
-  const router = useRouter();
-  const selected_bohf = [router.query.bohf].flat();
+  const {
+    tooltipData,
+    tooltipLeft,
+    tooltipTop,
+    tooltipOpen,
+    showTooltip,
+    hideTooltip,
+  } = useTooltip();
+  const { containerRef, TooltipInPortal } = useTooltipInPortal({
+    scroll: true,
+  });
 
-  let uniqueLabels: string[] = Array.from(new Set(data.map((d) => d[label])));
-  let allNonSelectedHF = [];
+  const handleMouseOver = (event, datum) => {
+    const coords = localPoint(event.target.ownerSVGElement, event);
+    showTooltip({
+      tooltipLeft: coords.x,
+      tooltipTop: coords.y,
+      tooltipData: datum,
+    });
+  };
 
-  if (label === "bohf") {
-    allNonSelectedHF = uniqueLabels.filter(
-      (item) => ![national].concat(selected_bohf).includes(item),
+  const [selectedBohfs, toggleBohf] = useBohfQueryParam(national);
+  const isBohf = label === "bohf";
+
+  const allLabels: string[] = Array.from(new Set(data.map((d) => d[label])));
+  let nonSelectedLabels = [];
+  let selectedLabels: string[] = allLabels;
+
+  const hoverRef = React.useRef(null);
+  const mousePosRef = React.useRef({ x: 0, y: 0 });
+
+  if (isBohf) {
+    nonSelectedLabels = selectedLabels.filter(
+      (item) => !selectedBohfs.has(item),
     );
-    uniqueLabels = [national].concat(
-      uniqueLabels.filter((item) => selected_bohf.includes(item)),
+    selectedLabels = [national].concat(
+      selectedLabels.filter((item) => selectedBohfs.has(item)),
     );
   }
 
-  const plotableData = (
-    uniqueLabels: string[],
-    data: LinechartData<Data, X, Y, Label>[],
-  ) => {
+  const plotableData = (labels: string[]) => {
     // put data in a plotable format
-    const values = uniqueLabels.map((l) => {
-      return {
-        label: l,
-        points: data
-          .flatMap((d) => {
-            if (d[label] === l) {
-              return { x: d[x], y: d[y] };
-            } else {
-              return [];
-            }
-          })
-          .sort((a, b) => a.x - b.x),
-      };
-    });
-    return values;
+    return labels.map((labelText) => ({
+      labelText: labelText,
+      isSelected: selectedLabels.includes(labelText),
+      points: data
+        .flatMap((d) => (d[label] === labelText ? { x: d[x], y: d[y] } : []))
+        .sort((a, b) => a.x - b.x),
+    }));
   };
 
-  const values = plotableData(uniqueLabels, data);
-  const greyValues = plotableData(allNonSelectedHF, data);
+  const allValues = plotableData(nonSelectedLabels).concat(
+    plotableData(selectedLabels),
+  );
 
-  const accessors = {
-    xAccessor: (d) =>
-      format_x === "month"
-        ? new Date(2020, d.x - 1).toLocaleString(lang, { month: "long" })
-        : d.x,
-    yAccessor: (d) => (format_y ? customFormat(format_y, lang)(d.y) : d.y),
-  };
   const yvaluesMaxTextLength = Math.max(
     ...data.map(
       (d) =>
@@ -111,33 +191,31 @@ export const Linechart = <
   );
 
   const colorScale = scaleOrdinal({
-    domain: values.map((s) => s.label),
-    range: [...linechartColors],
+    domain: allLabels,
+    range: linechartColors,
   });
-
   return (
-    <div style={{ width: "auto", margin: "auto" }}>
+    <div ref={containerRef} style={{ width: "auto", margin: "auto" }}>
       <XYChart
         height={500}
-        xScale={{ type: "band", paddingOuter: label === "bohf" ? -0.3 : 0 }}
+        xScale={{ type: "point" }}
         yScale={{ type: "linear" }}
         margin={{
           top: 50,
           right: 50,
           bottom: 50,
-          left: 50 + yvaluesMaxTextLength,
+          left: 18 + yvaluesMaxTextLength * 8,
         }}
+        onPointerMove={(e) => {
+          handleMouseOver(e.event, e.svgPoint);
+          mousePosRef.current = e.svgPoint;
+        }}
+        onPointerOut={() => {
+          hoverRef.current = null;
+          hideTooltip();
+        }}
+        onPointerDown={() => isBohf && toggleBohf(hoverRef.current)}
       >
-        {greyValues.map((plots, i) => (
-          <LineSeries
-            stroke="rgb(229, 228, 226)"
-            dataKey={plots.label}
-            data={plots.points}
-            xAccessor={(d) => d.x}
-            yAccessor={(d) => d.y}
-            key={i}
-          />
-        ))}
         <Axis
           orientation="bottom"
           label={xLabel[lang]}
@@ -180,61 +258,34 @@ export const Linechart = <
           }
         />
         <Grid columns={false} numTicks={4} />
-        {values.map((plots, i) => (
-          <LineSeries
-            strokeWidth={label === "bohf" ? 5 : 2}
-            dataKey={plots.label}
-            data={plots.points}
-            xAccessor={(d) => d.x}
-            yAccessor={(d) => d.y}
-            key={i}
-            colorAccessor={colorScale}
-          />
-        ))}
-        <Tooltip
-          snapTooltipToDatumX
-          snapTooltipToDatumY
-          showDatumGlyph={label === "bohf"}
-          showVerticalCrosshair={label !== "bohf"}
-          showSeriesGlyphs={label !== "bohf"}
-          glyphStyle={{ fill: linechartColors[0] }}
-          renderTooltip={({ tooltipData }) => (
-            <div>
-              <div>
-                {xLabel[lang].split(/[^A-Za-zæøåÆØÅ]/)[0]}
-                {": "}
-                {accessors.xAccessor(tooltipData.nearestDatum.datum)}
-              </div>
-              {label === "bohf" ? (
-                <div>
-                  <div>
-                    {tooltipData.nearestDatum.key}
-                    {": "}
-                    {accessors.yAccessor(tooltipData.nearestDatum.datum)}
-                  </div>
-                </div>
-              ) : (
-                Object.keys(tooltipData.datumByKey)
-                  .filter(function (value) {
-                    return uniqueLabels.includes(value);
-                  })
-                  .map((d: LinechartData<Data, X, Y, Label>[Label]) => {
-                    return (
-                      <div key={d}>
-                        <div style={{ color: colorScale(d) }}>
-                          {d}
-                          {": "}
-                          {accessors.yAccessor(tooltipData.datumByKey[d].datum)}
-                        </div>
-                      </div>
-                    );
-                  })
-              )}
-            </div>
-          )}
+        <Lines
+          hoverRef={hoverRef}
+          values={allValues}
+          colorScale={colorScale}
+          isBohf={isBohf}
         />
+        {tooltipOpen && (
+          <MyTooltip
+            hoverRef={hoverRef}
+            mousePosRef={mousePosRef}
+            render={() => (
+              <TooltipInPortal
+                // set this to random so it correctly updates with parent bounds
+                key={Math.random()}
+                top={tooltipTop}
+                left={tooltipLeft}
+              >
+                Data value{" "}
+                <strong>
+                  {Math.round(tooltipData.x)}, {Math.round(tooltipData.y)},{" "}
+                  {hoverRef.current}
+                </strong>
+              </TooltipInPortal>
+            )}
+          />
+        )}
       </XYChart>
-      <ColorLegend colorScale={colorScale} values={uniqueLabels} />
+      <ColorLegend colorScale={colorScale} values={selectedLabels} />
     </div>
   );
 };
