@@ -1,32 +1,38 @@
-import { ThemeProvider } from "@mui/material";
-import React from "react";
-import { LineStyles } from "qmongjs";
+import React, { useEffect, useState } from "react";
 import { Text } from "@visx/text";
-import { useQueryParam } from "use-query-params";
+import {
+  useQueryParam,
+  DelimitedArrayParam,
+  withDefault,
+} from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
-import { Checkbox, FormControlLabel } from "@mui/material";
 import { Header } from "../../src/components/HospitalProfile";
 import {
   skdeTheme,
   FilterSettingsValue,
   FilterMenu,
   SelectedFiltersSection,
+  useUnitNamesQuery,
+  LowLevelIndicatorList,
+  LineStyles,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
-import { DelimitedArrayParam } from "use-query-params";
-import { withDefault } from "use-query-params";
-import { Toolbar, styled, Typography } from "@mui/material";
+import {
+  Toolbar,
+  styled,
+  Typography,
+  Checkbox,
+  FormControlLabel,
+  ThemeProvider,
+} from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
-
+import { useRouter } from "next/router";
 import IndicatorLinechart, {
   IndicatorLinechartParams,
 } from "../../src/charts/IndicatorLinechart";
-
-import { useUnitNamesQuery, LowLevelIndicatorList } from "qmongjs";
-
 import {
   MedfieldTable,
   MedfieldTableProps,
@@ -49,10 +55,23 @@ const StyledToolbarMiddle = styled(Toolbar)(({ theme }) => ({
 export const Skde = (): JSX.Element => {
   const treatmentUnitsKey = "selected_treatment_units";
 
+  // Need this to get filter options from the URL
+  const router = useRouter();
+
+  const [prevReady, setPrevReady] = useState(router.isReady);
+  const prerenderFinished = prevReady !== router.isReady;
+
+  useEffect(() => {
+    setPrevReady(router.isReady);
+  }, [router.isReady]);
+
+  // Current unit name and its setter function
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useQueryParam(
     treatmentUnitsKey,
     withDefault(DelimitedArrayParam, ["Nasjonalt"]),
   );
+
+  // Get unit names
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
@@ -63,6 +82,19 @@ export const Skde = (): JSX.Element => {
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
+  // Make sure everything is good to go
+  const [prevApiQueryLoading, setPrevApiQueryLoading] = useState(
+    unitNamesQuery.isLoading,
+  );
+  const apiQueriesCompleted = prevApiQueryLoading && !unitNamesQuery.isLoading;
+
+  const shouldRefreshInitialState = prerenderFinished || apiQueriesCompleted;
+
+  useEffect(() => {
+    setPrevApiQueryLoading(unitNamesQuery.isLoading);
+  }, [unitNamesQuery.isLoading]);
+
+  // Callback function for updating the filter menu
   const handleChange = (filterInput: FilterSettings) => {
     const newUnit = filterInput.map
       .get(treatmentUnitsKey)
@@ -71,6 +103,7 @@ export const Skde = (): JSX.Element => {
     setSelectedTreatmentUnits(newUnit);
   };
 
+  // Props
   const indicatorParams: IndicatorLinechartParams = {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
@@ -113,7 +146,7 @@ export const Skde = (): JSX.Element => {
     treatmentYear: 2022,
   };
 
-  //State logic for normalising the line plot
+  // State logic for normalising the line plot
   const [normalise, setNormalise] = React.useState(indicatorParams.normalise);
 
   indicatorParams.normalise = normalise;
@@ -141,7 +174,7 @@ export const Skde = (): JSX.Element => {
           </Grid>
           <Grid xs={6}>
             <FilterMenu
-              refreshState={true}
+              refreshState={shouldRefreshInitialState}
               onSelectionChanged={handleChange}
               onFilterInitialized={() => {
                 return null;
@@ -154,7 +187,7 @@ export const Skde = (): JSX.Element => {
                 sectiontitle="Valgte filtre"
               />
               <TreeViewFilterSection
-                refreshState={false}
+                refreshState={shouldRefreshInitialState}
                 treedata={treatmentUnits.treedata}
                 defaultvalues={treatmentUnits.defaults}
                 initialselections={
