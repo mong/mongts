@@ -154,7 +154,7 @@ export const Skde = (): JSX.Element => {
           sectiontitle={"Behandlingsenheter"}
           filterkey={treatmentUnitsKey}
           searchbox={true}
-          maxselections={2}
+          multiselect={false}
         />
       </FilterMenu>
       <div>
