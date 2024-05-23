@@ -9,7 +9,14 @@ import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeVie
 import { useQueryParam } from "use-query-params";
 import { DelimitedArrayParam } from "use-query-params";
 import { withDefault } from "use-query-params";
-import { FilterSettingsValue } from "qmongjs";
+import { FilterSettingsValue, FilterMenu,
+  SelectedFiltersSection, 
+  RadioGroupFilterSection,
+  FilterSettingsAction,
+  FilterSettingsActionType,
+  FilterMenuSelectionChangedHandler,
+  FilterMenuFilterInitializedHandler,
+  SwitchFilterSection,} from "qmongjs";
 
 const StyledToolbarTop = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -115,7 +122,31 @@ export const TreatmentUnitSelector = () => {
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
+  const handleChange = (a,b,c) => {
+    const newUnit = a.map.get(treatmentUnitsKey)
+      .map((el) => el.value)
+      .filter((el) => el !== "Nasjonalt")
+
+    let retVal: string[];
+
+    newUnit.length === 0 ? retVal = ["Nasjonalt"] : retVal = newUnit
+
+    setSelectedTreatmentUnits(retVal)
+  }
+
+
   return (
+    <FilterMenu
+    refreshState={true}
+    onSelectionChanged={handleChange}
+    onFilterInitialized={() => {return null}}
+  >
+    <SelectedFiltersSection
+      accordion="false"
+      filterkey="selectedfilters"
+      sectionid="selectedfilters"
+      sectiontitle="Valgte filtre"
+    />
     <TreeViewFilterSection
       refreshState={false}
       treedata={treatmentUnits.treedata}
@@ -130,7 +161,8 @@ export const TreatmentUnitSelector = () => {
       sectiontitle={"Behandlingsenheter"}
       filterkey={treatmentUnitsKey}
       searchbox={true}
-      maxselections={1}
+      maxselections={2}
     />
+    </FilterMenu>
   );
 };
