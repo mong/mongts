@@ -19,6 +19,7 @@ import { DelimitedArrayParam } from "use-query-params";
 import { withDefault } from "use-query-params";
 import { Toolbar, styled, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
+import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
 
 import IndicatorLinechart, {
   IndicatorLinechartParams,
@@ -62,7 +63,7 @@ export const Skde = (): JSX.Element => {
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
-  const handleChange = (filterInput) => {
+  const handleChange = (filterInput: FilterSettings) => {
     const newUnit = filterInput.map
       .get(treatmentUnitsKey)
       .map((el) => el.value);
