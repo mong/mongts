@@ -1,29 +1,38 @@
-import { ThemeProvider } from "@mui/material";
-import React from "react";
-import { LineStyles } from "qmongjs";
+import React, { useEffect, useState } from "react";
 import { Text } from "@visx/text";
-import { useQueryParam } from "use-query-params";
+import {
+  useQueryParam,
+  DelimitedArrayParam,
+  withDefault,
+} from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
-import { OptsTu } from "types";
-import { Checkbox, FormControlLabel } from "@mui/material";
 import { Header } from "../../src/components/HospitalProfile";
-import { skdeTheme } from "qmongjs";
+import {
+  skdeTheme,
+  FilterSettingsValue,
+  FilterMenu,
+  SelectedFiltersSection,
+  useUnitNamesQuery,
+  LowLevelIndicatorList,
+  LineStyles,
+} from "qmongjs";
 import { Footer } from "../../src/components/Footer";
-
+import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
+import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
+import {
+  Toolbar,
+  styled,
+  Typography,
+  Checkbox,
+  FormControlLabel,
+  ThemeProvider,
+} from "@mui/material";
+import Grid from "@mui/material/Unstable_Grid2";
+import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
+import { useRouter } from "next/router";
 import IndicatorLinechart, {
   IndicatorLinechartParams,
 } from "../../src/charts/IndicatorLinechart";
-
-import {
-  SelectTreatmentUnits,
-  useUnitNamesQuery,
-  NestedTreatmentUnitName,
-  mainQueryParamsConfig,
-  validateTreatmentUnits,
-  UnitNameList,
-  LowLevelIndicatorList,
-} from "qmongjs";
-
 import {
   MedfieldTable,
   MedfieldTableProps,
@@ -37,41 +46,66 @@ const theme = {
   },
 };
 
-export const Skde = (): JSX.Element => {
-  // Gjenbruk av kode fra indikatorvisning
-  const queryContext = { context: "caregiver", type: "ind" };
+const StyledToolbarMiddle = styled(Toolbar)(({ theme }) => ({
+  backgroundColor: theme.palette.hospitalProfileHeader.light,
+  paddingTop: theme.spacing(12),
+  paddingBottom: theme.spacing(8),
+}));
 
-  // Hent sykehusnavn fra et register
+export const Skde = (): JSX.Element => {
+  const treatmentUnitsKey = "selected_treatment_units";
+
+  // Need this to get filter options from the URL
+  const router = useRouter();
+
+  const [prevReady, setPrevReady] = useState(router.isReady);
+  const prerenderFinished = prevReady !== router.isReady;
+
+  useEffect(() => {
+    setPrevReady(router.isReady);
+  }, [router.isReady]);
+
+  // Current unit name and its setter function
+  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useQueryParam(
+    treatmentUnitsKey,
+    withDefault(DelimitedArrayParam, ["Nasjonalt"]),
+  );
+
+  // Get unit names
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
-    "Hjerteinfarkt",
-    queryContext.context,
-    queryContext.type,
+    "all",
+    "caregiver",
+    "ind",
   );
 
-  const nestedUnitNames: NestedTreatmentUnitName[] | [] =
-    unitNamesQuery.data?.nestedUnitNames ?? [];
+  const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
-  const optstu: OptsTu[] | [] = unitNamesQuery.data?.opts_tu ?? [];
-
-  const [treatment_units, update_treatment_units] = useQueryParam(
-    "selected_treatment_units",
-    mainQueryParamsConfig.selected_treatment_units,
+  // Make sure everything is good to go
+  const [prevApiQueryLoading, setPrevApiQueryLoading] = useState(
+    unitNamesQuery.isLoading,
   );
+  const apiQueriesCompleted = prevApiQueryLoading && !unitNamesQuery.isLoading;
 
-  const validated_treatment_units = validateTreatmentUnits(
-    treatment_units as string[],
-    optstu,
-  );
+  const shouldRefreshInitialState = prerenderFinished || apiQueriesCompleted;
 
-  const placeholder = (
-    <div>
-      <i className="fas fa-search" /> Søk etter behandlingsenheter
-    </div>
-  );
+  useEffect(() => {
+    setPrevApiQueryLoading(unitNamesQuery.isLoading);
+  }, [unitNamesQuery.isLoading]);
 
+  // Callback function for updating the filter menu
+  const handleChange = (filterInput: FilterSettings) => {
+    const newUnit = filterInput.map
+      .get(treatmentUnitsKey)
+      .map((el) => el.value);
+
+    setSelectedTreatmentUnits(newUnit);
+  };
+
+  // Props
   const indicatorParams: IndicatorLinechartParams = {
-    unitNames: [validated_treatment_units[0]],
+    unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
     width: 800,
@@ -97,7 +131,7 @@ export const Skde = (): JSX.Element => {
   };
 
   const medfieldTableProps: MedfieldTableProps = {
-    unitNames: [validated_treatment_units[0]],
+    unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
     width: 800,
@@ -105,14 +139,14 @@ export const Skde = (): JSX.Element => {
   };
 
   const medfieldTablePropsDG: MedfieldTableProps = {
-    unitNames: [validated_treatment_units[0]],
+    unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "dg",
     width: 800,
     treatmentYear: 2022,
   };
 
-  //State logic for normalising the lien plot
+  // State logic for normalising the line plot
   const [normalise, setNormalise] = React.useState(indicatorParams.normalise);
 
   indicatorParams.normalise = normalise;
@@ -130,6 +164,49 @@ export const Skde = (): JSX.Element => {
   return (
     <ThemeProvider theme={skdeTheme}>
       <Header />
+      <StyledToolbarMiddle className="header-middle">
+        <Grid container spacing={2} rowSpacing={6}>
+          <Grid xs={12}>
+            <Typography variant="h1">Sykehusprofil</Typography>
+          </Grid>
+          <Grid xs={12}>
+            <Typography variant="h6">Resultater fra sykehus</Typography>
+          </Grid>
+          <Grid xs={6}>
+            <FilterMenu
+              refreshState={shouldRefreshInitialState}
+              onSelectionChanged={handleChange}
+              onFilterInitialized={() => {
+                return null;
+              }}
+            >
+              <SelectedFiltersSection
+                accordion="false"
+                filterkey="selectedfilters"
+                sectionid="selectedfilters"
+                sectiontitle="Valgte filtre"
+              />
+              <TreeViewFilterSection
+                refreshState={shouldRefreshInitialState}
+                treedata={treatmentUnits.treedata}
+                defaultvalues={treatmentUnits.defaults}
+                initialselections={
+                  selectedTreatmentUnits.map((value) => ({
+                    value: value,
+                    valueLabel: value,
+                  })) as FilterSettingsValue[]
+                }
+                sectionid={treatmentUnitsKey}
+                sectiontitle={"Behandlingsenheter"}
+                filterkey={treatmentUnitsKey}
+                searchbox={true}
+                multiselect={false}
+              />
+            </FilterMenu>
+          </Grid>
+        </Grid>
+      </StyledToolbarMiddle>
+
       <div>
         <Text
           x={"10%"}
@@ -138,22 +215,8 @@ export const Skde = (): JSX.Element => {
           verticalAnchor="start"
           style={{ fontWeight: 700, fontSize: 24 }}
         >
-          {validated_treatment_units[0]}
+          {selectedTreatmentUnits[0]}
         </Text>
-      </div>
-      <div>
-        <SelectTreatmentUnits
-          opts={optstu}
-          update_tu={update_treatment_units}
-          treatment_unit={validated_treatment_units}
-          placeholder={placeholder}
-        />
-        <UnitNameList
-          nestedUnitNames={nestedUnitNames}
-          treatment_units={validated_treatment_units}
-          update_treatment_units={update_treatment_units}
-          multiple_choice={false}
-        />
       </div>
       <div>
         <Text
@@ -205,7 +268,7 @@ export const Skde = (): JSX.Element => {
         <LowLevelIndicatorList
           context={"caregiver"}
           type={"ind"}
-          unitNames={[validated_treatment_units[0] || "Nasjonalt"]}
+          unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
         />
       </div>
       <Footer />
