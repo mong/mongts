@@ -44,7 +44,7 @@ type LinechartProps<
 const Lines = ({ hoverRef, values, colorScale, isBohf }) => {
   return values.map((lineData, i) => {
     const colorAccessor = () => {
-      if (lineData.isSelected || hoverRef.current === lineData.labelText)
+      if (lineData.isSelected || hoverRef.current?.key === lineData.labelText)
         return colorScale(lineData.labelText);
       else return "rgb(239, 238, 236)";
     };
@@ -52,13 +52,7 @@ const Lines = ({ hoverRef, values, colorScale, isBohf }) => {
     return (
       <LineSeries
         colorAccessor={colorAccessor}
-        strokeWidth={
-          isBohf && lineData.isSelected
-            ? 5
-            : isBohf && hoverRef.current === lineData.labelText
-              ? 20
-              : 2
-        }
+        strokeWidth={isBohf && lineData.isSelected ? 5 : 2}
         dataKey={lineData.labelText}
         data={lineData.points}
         xAccessor={(d) => d.x}
@@ -82,29 +76,30 @@ const MyTooltip = ({ hoverRef, mousePosRef, render }) => {
   });
 
   const findClosest = (best, datum) => {
-    const x = xScale(datum.x);
-    const y = yScale(datum.y);
+    const graphX = xScale(datum.x);
+    const graphY = yScale(datum.y);
     const dist = Math.sqrt(
-      (mousePosRef.current.x - x) ** 2 + (mousePosRef.current.y - y) ** 2,
+      (mousePosRef.current.x - graphX) ** 2 +
+        (mousePosRef.current.y - graphY) ** 2,
     );
     // ^ Pythagorean theorem
-
-    return best.dist < dist ? best : { x: x, y: y, dist: dist, key: datum.key };
+    return best.dist < dist
+      ? best
+      : { ...datum, graphX: graphX, graphY: graphY, dist: dist };
   };
 
-  const closest = dataPoints.reduce(findClosest);
-  hoverRef.current = closest.key;
+  hoverRef.current = dataPoints.reduce(findClosest);
 
   return (
     <>
       {render()}
-      <rect
-        x={closest.x - 5}
-        fill={"red"}
-        y={closest.y - 5}
+      <circle
+        cx={hoverRef.current.graphX}
+        fill={linechartColors[0]}
+        cy={hoverRef.current.graphY}
         width="10"
         height="10"
-        rx="1"
+        r="5"
       />
     </>
   );
@@ -138,15 +133,6 @@ export const Linechart = <
   const { containerRef, TooltipInPortal } = useTooltipInPortal({
     scroll: true,
   });
-
-  const handleMouseOver = (event, datum) => {
-    const coords = localPoint(event.target.ownerSVGElement, event);
-    showTooltip({
-      tooltipLeft: coords.x,
-      tooltipTop: coords.y,
-      tooltipData: datum,
-    });
-  };
 
   const [selectedBohfs, toggleBohf] = useBohfQueryParam(national);
   const isBohf = label === "bohf";
@@ -198,7 +184,7 @@ export const Linechart = <
     <div ref={containerRef} style={{ width: "auto", margin: "auto" }}>
       <XYChart
         height={500}
-        xScale={{ type: "point" }}
+        xScale={{ type: "point", padding: 0.02 }}
         yScale={{ type: "linear" }}
         margin={{
           top: 50,
@@ -207,14 +193,19 @@ export const Linechart = <
           left: 18 + yvaluesMaxTextLength * 8,
         }}
         onPointerMove={(e) => {
-          handleMouseOver(e.event, e.svgPoint);
+          const coords = localPoint(e.event.target.ownerSVGElement, e.event);
+          showTooltip({
+            tooltipLeft: coords.x,
+            tooltipTop: coords.y,
+            tooltipData: e.svgPoint,
+          });
           mousePosRef.current = e.svgPoint;
         }}
         onPointerOut={() => {
           hoverRef.current = null;
           hideTooltip();
         }}
-        onPointerDown={() => isBohf && toggleBohf(hoverRef.current)}
+        onPointerDown={() => isBohf && toggleBohf(hoverRef.current.key)}
       >
         <Axis
           orientation="bottom"
@@ -275,10 +266,18 @@ export const Linechart = <
                 top={tooltipTop}
                 left={tooltipLeft}
               >
-                Data value{" "}
+                Bohf: <strong>{hoverRef.current?.key}</strong>
+                <br />
+                Closest:{" "}
                 <strong>
-                  {Math.round(tooltipData.x)}, {Math.round(tooltipData.y)},{" "}
-                  {hoverRef.current}
+                  ({Math.round(hoverRef.current?.graphX)},{" "}
+                  {Math.round(hoverRef.current?.graphY)})
+                </strong>{" "}
+                Distance: <strong>{Math.round(hoverRef.current?.dist)}</strong>
+                <br />
+                Mouse{" "}
+                <strong>
+                  ({Math.round(tooltipData.x)}, {Math.round(tooltipData.y)})
                 </strong>
               </TooltipInPortal>
             )}
