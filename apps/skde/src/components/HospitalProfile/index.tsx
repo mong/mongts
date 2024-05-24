@@ -60,32 +60,10 @@ const HeaderTop = () => {
   );
 };
 
-const StyledToolbarMiddle = styled(Toolbar)(({ theme }) => ({
-  backgroundColor: theme.palette.hospitalProfileHeader.light,
-  paddingTop: theme.spacing(12),
-  paddingBottom: theme.spacing(8),
-}));
-
-const HeaderMiddle = () => {
-  return (
-    <StyledToolbarMiddle className="header-middle">
-      <Grid container spacing={2} rowSpacing={6}>
-        <Grid xs={12}>
-          <Typography variant="h1">Sykehusprofil</Typography>
-        </Grid>
-        <Grid xs={12}>
-          <Typography variant="h6">Resultater fra sykehus</Typography>
-        </Grid>
-      </Grid>
-    </StyledToolbarMiddle>
-  );
-};
-
 export const Header = () => {
   return (
     <React.Fragment>
       <HeaderTop />
-      <HeaderMiddle />
     </React.Fragment>
   );
 };
