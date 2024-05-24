@@ -65,6 +65,7 @@ const buildTreeLevel = (
   handleCheckboxChange: (checked: boolean, value: string) => void,
   toggleExpand: (value: string) => void,
   autoUncheckId?: string,
+  multiselect?: boolean,
 ) => {
   return treeData.map((node) => {
     return (
@@ -76,6 +77,7 @@ const buildTreeLevel = (
         autoUncheckId={autoUncheckId}
         handleCheckboxChange={handleCheckboxChange}
         toggleExpand={toggleExpand}
+        multiselect={multiselect}
       >
         {node.children &&
           buildTreeLevel(
@@ -85,6 +87,7 @@ const buildTreeLevel = (
             handleCheckboxChange,
             toggleExpand,
             autoUncheckId,
+            multiselect,
           )}
       </TreeViewFilterSectionItem>
     );
@@ -114,6 +117,7 @@ export const buildTreeView = (
         handleCheckboxChange,
         toggleExpand,
         props.autouncheckid,
+        props.multiselect,
       )}
     </>
   );
