@@ -46,7 +46,7 @@ const Lines = ({ hoverRef, values, colorScale, isBohf }) => {
     const colorAccessor = () => {
       if (lineData.isSelected || hoverRef.current?.key === lineData.labelText)
         return colorScale(lineData.labelText);
-      else return "rgb(239, 238, 236)";
+      else return "rgb(239, 239, 239)";
     };
 
     return (
@@ -97,9 +97,8 @@ const MyTooltip = ({ hoverRef, mousePosRef, render }) => {
         cx={hoverRef.current.graphX}
         fill={linechartColors[0]}
         cy={hoverRef.current.graphY}
-        width="10"
-        height="10"
-        r="5"
+        stroke={"white"}
+        r="4"
       />
     </>
   );
@@ -267,6 +266,11 @@ export const Linechart = <
                 left={tooltipLeft}
               >
                 Bohf: <strong>{hoverRef.current?.key}</strong>
+                <br />
+                Datalocation{" "}
+                <strong>
+                  ({Math.round(hoverRef.current?.x)}, {hoverRef.current?.y})
+                </strong>
                 <br />
                 Closest:{" "}
                 <strong>
