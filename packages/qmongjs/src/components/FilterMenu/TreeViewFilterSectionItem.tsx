@@ -2,6 +2,12 @@ import { PropsWithChildren } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { TreeItem } from "@mui/x-tree-view/TreeItem";
 import { FilterSettingsValue } from "./FilterSettingsContext";
+import {
+  RadioButtonCheckedRounded,
+  RadioButtonUncheckedRounded,
+  CheckBox,
+  CheckBoxOutlineBlank,
+} from "@mui/icons-material";
 
 /**
  * Props for the TreeViewFilterSectionItem component, which extends the
@@ -20,6 +26,7 @@ type TreeViewFilterSectionItemProps = PropsWithChildren<{
   ) => void;
   toggleExpand: (value: string) => void;
   autoUncheckId?: string;
+  multiselect?: boolean;
 }>;
 
 /**
@@ -41,8 +48,10 @@ export const TreeViewFilterSectionItem = (
     handleCheckboxChange,
     toggleExpand,
     autoUncheckId,
+    multiselect,
   } = props;
   const isSelected = selectedIds.includes(labeledValue.value);
+  const singleselect = !(multiselect || multiselect === undefined);
 
   return (
     <TreeItem
@@ -56,9 +65,19 @@ export const TreeViewFilterSectionItem = (
             key={`checkbox-${filterKey}-${labeledValue.value}`}
             data-testid={`checkbox-${filterKey}-${labeledValue.value}`}
             checked={isSelected}
+            checkedIcon={
+              singleselect ? <RadioButtonCheckedRounded /> : <CheckBox />
+            }
+            icon={
+              singleselect ? (
+                <RadioButtonUncheckedRounded />
+              ) : (
+                <CheckBoxOutlineBlank />
+              )
+            }
             onClick={(event) => {
               handleCheckboxChange(
-                !isSelected,
+                singleselect || !isSelected, // do not change back to default if singleselect
                 labeledValue.value,
                 autoUncheckId,
               );
