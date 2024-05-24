@@ -51,6 +51,7 @@ export const TreeViewFilterSectionItem = (
     multiselect,
   } = props;
   const isSelected = selectedIds.includes(labeledValue.value);
+  const singleselect = !(multiselect || multiselect === undefined);
 
   return (
     <TreeItem
@@ -65,22 +66,18 @@ export const TreeViewFilterSectionItem = (
             data-testid={`checkbox-${filterKey}-${labeledValue.value}`}
             checked={isSelected}
             checkedIcon={
-              multiselect || multiselect === undefined ? (
-                <CheckBox />
-              ) : (
-                <RadioButtonCheckedRounded />
-              )
+              singleselect ? <RadioButtonCheckedRounded /> : <CheckBox />
             }
             icon={
-              multiselect || multiselect === undefined ? (
-                <CheckBoxOutlineBlank />
-              ) : (
+              singleselect ? (
                 <RadioButtonUncheckedRounded />
+              ) : (
+                <CheckBoxOutlineBlank />
               )
             }
             onClick={(event) => {
               handleCheckboxChange(
-                !isSelected,
+                singleselect || !isSelected, // do not change back to default if singleselect
                 labeledValue.value,
                 autoUncheckId,
               );
