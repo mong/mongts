@@ -5,7 +5,6 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
 import { Indicator, RegisterData } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams, useIndicatorQuery } from "../../helpers/hooks";
@@ -235,9 +234,6 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
 
   return (
     <div>
-      <div>
-        <h1>Indikatorliste</h1>
-      </div>
       <Box>
         <Button
           id="demo-customized-button"
@@ -279,7 +275,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
         </Menu>
       </Box>
       <div>
-        <TableContainer component={Paper}>
+        <TableContainer>
           <Table>
             <TableHead>
               <TableRow>
