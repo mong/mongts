@@ -2,7 +2,7 @@ import type {} from "@mui/x-tree-view/themeAugmentation";
 import { useContext, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import { ExpandMoreRounded, ChevronRightRounded } from "@mui/icons-material";
-import { TreeView } from "@mui/x-tree-view/TreeView";
+import { SimpleTreeView } from "@mui/x-tree-view";
 import { FilterMenuSectionProps } from ".";
 import {
   FilterSettingsContext,
@@ -323,10 +323,10 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
    *
    * @param searchText The text entered in the search box
    */
-  const handleSearch = (nodeIds: string[]) => {
-    handleCheckboxClick(true, nodeIds, autoUncheckId);
+  const handleSearch = (itemId: string[]) => {
+    handleCheckboxClick(true, itemId, autoUncheckId);
     const nodeAndAnchestorIds = buildExpandedNodeList(
-      nodeIds,
+      itemId,
       filterSettingsValuesMap,
     );
     const newExpanded = Array.from(
@@ -359,17 +359,19 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
           onSearch={handleSearch}
         />
       )}
-      <TreeView
+      <SimpleTreeView
         key={treeViewKey}
         aria-label={`${props.sectiontitle} (TreeView)}`}
         data-testid={`tree-view-section-${props.sectionid}`}
-        defaultCollapseIcon={<ExpandMoreRounded />}
-        defaultExpandIcon={<ChevronRightRounded />}
-        defaultExpanded={expanded}
-        expanded={expanded}
-        onNodeFocus={(event, nodeId) => {
+        slots={{
+          expandIcon: ChevronRightRounded,
+          collapseIcon: ExpandMoreRounded,
+        }}
+        defaultExpandedItems={expanded}
+        expandedItems={expanded}
+        onItemFocus={(event, itemId) => {
           const checkbox = document.getElementById(
-            `checkbox-${filterKey}-${nodeId}`,
+            `checkbox-${filterKey}-${itemId}`,
           );
           if (checkbox) {
             // Focus the checkbox if the node is not the first node in the tree.
@@ -377,19 +379,19 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
             // navigation and disabling parallel navigation with the arrow keys.
             // Focus on the first node in the tree is allowed because of Shift+Tab
             // navigation, which otherwise gets stuck on the checkbox.
-            if (nodeId !== props.treedata[0].nodeValue.value) {
+            if (itemId !== props.treedata[0].nodeValue.value) {
               checkbox.focus();
             }
           }
         }}
-        onNodeSelect={(event, nodeId) => {
-          if (typeof nodeId == "string") {
-            toggleExpanded(nodeId);
+        onSelectedItemsChange={(event, itemId) => {
+          if (typeof itemId == "string") {
+            toggleExpanded(itemId);
           }
         }}
       >
         {buildTreeView(props, selectedIds, handleCheckboxClick, toggleExpanded)}
-      </TreeView>
+      </SimpleTreeView>
     </Box>
   );
 }

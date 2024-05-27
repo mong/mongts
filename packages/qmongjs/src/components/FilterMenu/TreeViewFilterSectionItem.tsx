@@ -57,7 +57,7 @@ export const TreeViewFilterSectionItem = (
     <TreeItem
       key={`tree-view-item-${filterKey}-${labeledValue.value}`}
       data-testid={`tree-view-item-${labeledValue.value}`}
-      nodeId={labeledValue.value}
+      itemId={labeledValue.value}
       label={
         <>
           <Checkbox
