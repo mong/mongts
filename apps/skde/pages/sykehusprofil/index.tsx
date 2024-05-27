@@ -110,14 +110,14 @@ export const Skde = (): JSX.Element => {
     setSelectedTreatmentUnits(newUnit);
   };
 
-  const { width, height } = useScreenSize({ debounceTime: 150 });
+  const width = useScreenSize({ debounceTime: 150 })[0];
 
   // Props
   const indicatorParams: IndicatorLinechartParams = {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    width: width*0.9,
+    width: width * 0.9,
     height: 600,
     lineStyles: new LineStyles(
       [
