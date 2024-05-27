@@ -76,8 +76,8 @@ const MyTooltip = ({ hoverRef, mousePosRef, render }) => {
   });
 
   const findClosest = (best, datum) => {
-    const graphX = xScale(datum.x);
-    const graphY = yScale(datum.y);
+    const graphX = Number(xScale(datum.x));
+    const graphY = Number(yScale(datum.y));
     const dist = Math.sqrt(
       (mousePosRef.current.x - graphX) ** 2 +
         (mousePosRef.current.y - graphY) ** 2,
@@ -194,8 +194,8 @@ export const Linechart = <
         onPointerMove={(e) => {
           const coords = localPoint(e.event.target.ownerSVGElement, e.event);
           showTooltip({
-            tooltipLeft: coords.x,
-            tooltipTop: coords.y,
+            tooltipLeft: coords.x + 25,
+            tooltipTop: coords.y - 15,
             tooltipData: e.svgPoint,
           });
           mousePosRef.current = e.svgPoint;
