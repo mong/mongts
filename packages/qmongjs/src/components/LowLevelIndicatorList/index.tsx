@@ -235,9 +235,6 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
 
   return (
     <div>
-      <div>
-        <h1>Indikatorliste</h1>
-      </div>
       <Box>
         <Button
           id="demo-customized-button"
@@ -279,7 +276,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
         </Menu>
       </Box>
       <div>
-        <TableContainer component={Paper}>
+        <TableContainer>
           <Table>
             <TableHead>
               <TableRow>

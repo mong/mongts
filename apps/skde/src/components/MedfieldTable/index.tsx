@@ -192,7 +192,7 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
   const rowData: RowData[] = createMedfieldTableData(indicatorQuery.data);
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer>
       <Table
         aria-label="collapsible table"
         style={{ width: medfieldTableParams.width }}
