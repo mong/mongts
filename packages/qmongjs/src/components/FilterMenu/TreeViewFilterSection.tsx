@@ -282,6 +282,7 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
         }
       } else {
         updatedSelectedIds = nodeIds;
+        setExpanded([]);
       }
 
       const selectedFilterSettingValues = updatedSelectedIds
