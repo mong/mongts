@@ -41,6 +41,20 @@ type LinechartProps<
   national?: string;
 };
 
+const Circles = ({ points, color }) => {
+  const { xScale, yScale } = React.useContext(DataContext);
+  return points.map(({ x, y }) => (
+    <circle
+      cx={xScale ? xScale(x) : 0}
+      fill={color}
+      //strokeWidth={2}
+      cy={yScale ? yScale(y) : 0}
+      //fill={"white"}
+      r="5"
+    />
+  ));
+};
+
 const Lines = ({ hoverRef, values, colorScale, isBohf }) => {
   return values.map((lineData, i) => {
     const colorAccessor = () => {
@@ -48,17 +62,24 @@ const Lines = ({ hoverRef, values, colorScale, isBohf }) => {
         return colorScale(lineData.labelText);
       else return "rgb(239, 239, 239)";
     };
-
     return (
-      <LineSeries
-        colorAccessor={colorAccessor}
-        strokeWidth={isBohf && lineData.isSelected ? 5 : 2}
-        dataKey={lineData.labelText}
-        data={lineData.points}
-        xAccessor={(d) => d.x}
-        yAccessor={(d) => d.y}
-        key={i}
-      />
+      <>
+        <LineSeries
+          colorAccessor={colorAccessor}
+          strokeWidth={isBohf && lineData.isSelected ? 5 : 2}
+          dataKey={lineData.labelText}
+          data={lineData.points}
+          xAccessor={(d) => d.x}
+          yAccessor={(d) => d.y}
+          key={i}
+        />
+        {isBohf && lineData.isSelected && (
+          <Circles
+            points={lineData.points}
+            color={colorScale(lineData.labelText)}
+          />
+        )}
+      </>
     );
   });
 };
@@ -204,7 +225,9 @@ export const Linechart = <
           hoverRef.current = null;
           hideTooltip();
         }}
-        onPointerDown={() => isBohf && toggleBohf(hoverRef.current.key)}
+        onPointerDown={() =>
+          isBohf && hoverRef.current && toggleBohf(hoverRef.current.key)
+        }
       >
         <Axis
           orientation="bottom"
