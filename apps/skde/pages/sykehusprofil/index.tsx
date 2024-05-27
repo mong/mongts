@@ -117,7 +117,7 @@ export const Skde = (): JSX.Element => {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    width: width,
+    width: width*0.9,
     height: 600,
     lineStyles: new LineStyles(
       [
@@ -125,10 +125,10 @@ export const Skde = (): JSX.Element => {
         { text: "Moderat måloppnåelse", strokeDash: "1 3", colour: "#FD9C00" },
         { text: "Lav måloppnåelse", strokeDash: "8 8", colour: "#E30713" },
       ],
-      { fontSize: 11, fontFamily: "Plus Jakarta Sans", fontWeight: 500 },
+      { fontSize: 24, fontFamily: "Plus Jakarta Sans", fontWeight: 500 },
     ),
     font: {
-      fontSize: 12,
+      fontSize: 24,
       fontWeight: 700,
       fontFamily: "Plus Jakarta Sans",
     },
