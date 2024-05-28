@@ -1,4 +1,10 @@
-import { ReactElement, PropsWithChildren, useReducer, useEffect } from "react";
+import {
+  ReactElement,
+  PropsWithChildren,
+  useReducer,
+  useEffect,
+  useState,
+} from "react";
 import Stack from "@mui/material/Container";
 import {
   Accordion,
@@ -21,6 +27,8 @@ import {
 } from "./FilterSettingsReducer";
 import { filterSettingsReducer } from "./FilterSettingsReducer";
 import { FilterSettingsAction } from "./FilterSettingsReducer";
+
+import { ClickAwayListener } from "@mui/base/ClickAwayListener";
 
 /**
  * The type/signature of the handler function to call when the selection changes. It is called with the new
@@ -84,6 +92,10 @@ const FilterMenuSection = ({
   accordion,
   children,
 }: FilterMenuSectionProps) => {
+  const [expanded, setExpanded] = useState(true);
+  const handleClickAway = () => {
+    setExpanded(false);
+  };
   if (accordion === "false") {
     return (
       <Card key={`fms-box-${sectionid}`}>
@@ -92,17 +104,25 @@ const FilterMenuSection = ({
     );
   } else {
     return (
-      <Accordion key={`fms-accordion-${sectionid}`}>
-        <AccordionSummary
-          expandIcon={<CustomAccordionExpandIcon />}
-          sx={{ flexDirection: "row-reverse" }}
+      <ClickAwayListener onClickAway={handleClickAway}>
+        <Accordion
+          key={`fms-accordion-${sectionid}`}
+          expanded={expanded}
+          onChange={(e, expanded) => {
+            setExpanded(expanded);
+          }}
         >
-          <Typography variant="body1" sx={{ margin: 1 }}>
-            {sectiontitle}
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>{children}</AccordionDetails>
-      </Accordion>
+          <AccordionSummary
+            expandIcon={<CustomAccordionExpandIcon />}
+            sx={{ flexDirection: "row-reverse" }}
+          >
+            <Typography variant="body1" sx={{ margin: 1 }}>
+              {sectiontitle}
+            </Typography>
+          </AccordionSummary>
+          <AccordionDetails>{children}</AccordionDetails>
+        </Accordion>
+      </ClickAwayListener>
     );
   }
 };
