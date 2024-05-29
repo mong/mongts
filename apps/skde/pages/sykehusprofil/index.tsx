@@ -11,7 +11,6 @@ import {
   skdeTheme,
   FilterSettingsValue,
   FilterMenu,
-  SelectedFiltersSection,
   useUnitNamesQuery,
   LowLevelIndicatorList,
   LineStyles,
@@ -27,6 +26,9 @@ import {
   FormControlLabel,
   ThemeProvider,
   Box,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
@@ -39,6 +41,8 @@ import {
   MedfieldTableProps,
 } from "../../src/components/MedfieldTable";
 import { useScreenSize } from "@visx/responsive";
+import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
+import { ClickAwayListener } from "@mui/base";
 
 const lineChartTheme = {
   lineChartBackground: {
@@ -60,6 +64,8 @@ const ItemBox = styled(Box)(() => ({
 }));
 
 export const Skde = (): JSX.Element => {
+  const [expanded, setExpanded] = useState(false);
+
   const treatmentUnitsKey = "selected_treatment_units";
 
   // Need this to get filter options from the URL
@@ -107,6 +113,7 @@ export const Skde = (): JSX.Element => {
       .get(treatmentUnitsKey)
       .map((el) => el.value);
 
+    setExpanded(false);
     setSelectedTreatmentUnits(newUnit);
   };
 
@@ -170,6 +177,12 @@ export const Skde = (): JSX.Element => {
     indicatorParams.yAxisText = "Antall indikatorer";
   }
 
+  const handleClickAway = () => {
+    if (expanded === true) {
+      setExpanded(false);
+    }
+  };
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <Header />
@@ -183,36 +196,51 @@ export const Skde = (): JSX.Element => {
               <Typography variant="h6">Resultater fra sykehus</Typography>
             </Grid>
             <Grid xs={6}>
-              <FilterMenu
-                refreshState={shouldRefreshInitialState}
-                onSelectionChanged={handleChange}
-                onFilterInitialized={() => {
-                  return null;
-                }}
-              >
-                <SelectedFiltersSection
-                  accordion="false"
-                  filterkey="selectedfilters"
-                  sectionid="selectedfilters"
-                  sectiontitle="Valgte filtre"
-                />
-                <TreeViewFilterSection
-                  refreshState={shouldRefreshInitialState}
-                  treedata={treatmentUnits.treedata}
-                  defaultvalues={treatmentUnits.defaults}
-                  initialselections={
-                    selectedTreatmentUnits.map((value) => ({
-                      value: value,
-                      valueLabel: value,
-                    })) as FilterSettingsValue[]
-                  }
-                  sectionid={treatmentUnitsKey}
-                  sectiontitle={"Behandlingsenheter"}
-                  filterkey={treatmentUnitsKey}
-                  searchbox={true}
-                  multiselect={false}
-                />
-              </FilterMenu>
+              <ClickAwayListener onClickAway={handleClickAway}>
+                <Accordion
+                  expanded={expanded}
+                  onChange={(e, expanded) => {
+                    setExpanded(expanded);
+                  }}
+                >
+                  <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
+                    <h3>
+                      {selectedTreatmentUnits[0] === "Nasjonalt"
+                        ? "Velg enhet"
+                        : selectedTreatmentUnits[0]}
+                    </h3>
+                  </AccordionSummary>
+
+                  <AccordionDetails>
+                    <FilterMenu
+                      refreshState={shouldRefreshInitialState}
+                      onSelectionChanged={handleChange}
+                      onFilterInitialized={() => {
+                        return null;
+                      }}
+                    >
+                      <TreeViewFilterSection
+                        refreshState={shouldRefreshInitialState}
+                        treedata={treatmentUnits.treedata}
+                        defaultvalues={treatmentUnits.defaults}
+                        initialselections={
+                          selectedTreatmentUnits.map((value) => ({
+                            value: value,
+                            valueLabel: value,
+                          })) as FilterSettingsValue[]
+                        }
+                        sectionid={treatmentUnitsKey}
+                        sectiontitle={"Behandlingsenheter"}
+                        filterkey={treatmentUnitsKey}
+                        searchbox={true}
+                        multiselect={false}
+                        accordion={false}
+                        noShadow={true}
+                      />
+                    </FilterMenu>
+                  </AccordionDetails>
+                </Accordion>
+              </ClickAwayListener>
             </Grid>
           </Grid>
         </StyledToolbarMiddle>
@@ -268,7 +296,7 @@ export const Skde = (): JSX.Element => {
               </ItemBox>
             </Grid>
 
-            <Grid xs={6}>
+            <Grid xs={12}>
               <ItemBox>
                 <Text
                   x={"10%"}
@@ -283,7 +311,7 @@ export const Skde = (): JSX.Element => {
               </ItemBox>
             </Grid>
 
-            <Grid xs={6}>
+            <Grid xs={12}>
               <ItemBox>
                 <Text
                   x={"10%"}

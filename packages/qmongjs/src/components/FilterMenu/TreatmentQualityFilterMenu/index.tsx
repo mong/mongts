@@ -355,7 +355,7 @@ export function TreatmentQualityFilterMenu({
         onFilterInitialized={onFilterInitialized}
       >
         <SelectedFiltersSection
-          accordion="false"
+          accordion={false}
           filterkey="selectedfilters"
           sectionid="selectedfilters"
           sectiontitle="Valgte filtre"

@@ -6,7 +6,7 @@ import {
   AccordionSummary,
   Typography,
 } from "@mui/material";
-import { Card, CardContent } from "@mui/material";
+import { Card, CardContent, Box } from "@mui/material";
 import CustomAccordionExpandIcon from "./CustomAccordionExpandIcon";
 
 import {
@@ -68,7 +68,8 @@ export type FilterMenuSectionProps = PropsWithChildren<{
   sectionid: string;
   sectiontitle: string;
   filterkey: string;
-  accordion?: string;
+  accordion?: boolean;
+  noShadow?: boolean;
   defaultvalues?: FilterSettingsValue[];
   initialselections?: FilterSettingsValue[];
   refreshState?: boolean;
@@ -82,14 +83,23 @@ const FilterMenuSection = ({
   sectionid,
   sectiontitle,
   accordion,
+  noShadow,
   children,
 }: FilterMenuSectionProps) => {
-  if (accordion === "false") {
-    return (
-      <Card key={`fms-box-${sectionid}`}>
-        <CardContent>{children}</CardContent>
-      </Card>
-    );
+  if (accordion === false) {
+    if (noShadow === true) {
+      return (
+        <Box key={`fms-box-${sectionid}`}>
+          <CardContent>{children}</CardContent>
+        </Box>
+      );
+    } else {
+      return (
+        <Card key={`fms-box-${sectionid}`}>
+          <CardContent>{children}</CardContent>
+        </Card>
+      );
+    }
   } else {
     return (
       <Accordion key={`fms-accordion-${sectionid}`}>
@@ -265,6 +275,7 @@ const buildFilterMenuSection = (elmt: ReactElement<FilterMenuSectionProps>) => {
     sectionid,
     sectiontitle,
     accordion,
+    noShadow,
     defaultvalues,
     initialselections,
   } = elmt.props;
@@ -275,6 +286,7 @@ const buildFilterMenuSection = (elmt: ReactElement<FilterMenuSectionProps>) => {
       sectionid={sectionid}
       sectiontitle={sectiontitle}
       accordion={accordion}
+      noShadow={noShadow}
       key={`fms-${sectionid}`}
       defaultvalues={defaultvalues}
       initialselections={initialselections}
