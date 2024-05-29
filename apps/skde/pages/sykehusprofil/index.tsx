@@ -234,7 +234,7 @@ export const Skde = (): JSX.Element => {
                         filterkey={treatmentUnitsKey}
                         searchbox={true}
                         multiselect={false}
-                        accordion={"false"}
+                        accordion={false}
                         noShadow={true}
                       />
                     </FilterMenu>

@@ -68,7 +68,7 @@ export type FilterMenuSectionProps = PropsWithChildren<{
   sectionid: string;
   sectiontitle: string;
   filterkey: string;
-  accordion?: string;
+  accordion?: boolean;
   noShadow?: boolean;
   defaultvalues?: FilterSettingsValue[];
   initialselections?: FilterSettingsValue[];
@@ -86,7 +86,7 @@ const FilterMenuSection = ({
   noShadow,
   children,
 }: FilterMenuSectionProps) => {
-  if (accordion === "false") {
+  if (accordion === false) {
     if (noShadow === true) {
       return (
         <Box key={`fms-box-${sectionid}`}>
