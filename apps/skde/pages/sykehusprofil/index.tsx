@@ -11,7 +11,6 @@ import {
   skdeTheme,
   FilterSettingsValue,
   FilterMenu,
-  SelectedFiltersSection,
   useUnitNamesQuery,
   LowLevelIndicatorList,
   LineStyles,
@@ -205,7 +204,11 @@ export const Skde = (): JSX.Element => {
                   }}
                 >
                   <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
-                    <h3>Velg enhet</h3>
+                    <h3>
+                      {selectedTreatmentUnits[0] === "Nasjonalt"
+                        ? "Velg enhet"
+                        : selectedTreatmentUnits[0]}
+                    </h3>
                   </AccordionSummary>
 
                   <AccordionDetails>
@@ -216,12 +219,6 @@ export const Skde = (): JSX.Element => {
                         return null;
                       }}
                     >
-                      <SelectedFiltersSection
-                        accordion="false"
-                        filterkey="selectedfilters"
-                        sectionid="selectedfilters"
-                        sectiontitle="Valgte filtre"
-                      />
                       <TreeViewFilterSection
                         refreshState={shouldRefreshInitialState}
                         treedata={treatmentUnits.treedata}
