@@ -46,7 +46,7 @@ export const RadioGroupFilterSection = (
 
   return (
     <FormControl>
-      {accordion === "false" && (
+      {accordion === false && (
         <FormLabel id={`filter-section-radio-group-label-${props.sectionid}`}>
           {props.sectiontitle}
         </FormLabel>
