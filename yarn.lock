@@ -1936,7 +1936,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.24.5":
+"@babel/runtime@npm:^7.24.5, @babel/runtime@npm:^7.24.6":
   version: 7.24.6
   resolution: "@babel/runtime@npm:7.24.6"
   dependencies:
@@ -3719,7 +3719,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/system@npm:^5.15.14, @mui/system@npm:^5.15.15":
+"@mui/system@npm:^5.15.15":
   version: 5.15.15
   resolution: "@mui/system@npm:5.15.15"
   dependencies:
@@ -3795,13 +3795,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/x-tree-view@npm:7.5.1":
-  version: 7.5.1
-  resolution: "@mui/x-tree-view@npm:7.5.1"
+"@mui/x-tree-view@npm:7.6.0":
+  version: 7.6.0
+  resolution: "@mui/x-tree-view@npm:7.6.0"
   dependencies:
-    "@babel/runtime": "npm:^7.24.5"
+    "@babel/runtime": "npm:^7.24.6"
     "@mui/base": "npm:^5.0.0-beta.40"
-    "@mui/system": "npm:^5.15.14"
+    "@mui/system": "npm:^5.15.15"
     "@mui/utils": "npm:^5.15.14"
     "@types/react-transition-group": "npm:^4.4.10"
     clsx: "npm:^2.1.1"
@@ -3813,7 +3813,7 @@ __metadata:
     "@mui/material": ^5.15.14
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
-  checksum: 10/4abcd8bbe8d08cfa5c0a18cc2587fca1df3381a0bde312c9ef874c3d9a787946ffd65a3d2a488e3189501e1c9a8f5aa5833cc2f58b2957870f7ee59809c30282
+  checksum: 10/fdef3e3c989bbb2c159fc53b9b5494c837b0102fde0c4d20297ecfe8d18cb7fcccad8c15fbfd4d2b7dd2e54f448c541c0d88df992bc3f2d22ae5ba52a48009bc
   languageName: node
   linkType: hard
 
@@ -19736,7 +19736,7 @@ __metadata:
   dependencies:
     "@mui/icons-material": "npm:5.15.19"
     "@mui/material": "npm:5.15.19"
-    "@mui/x-tree-view": "npm:7.5.1"
+    "@mui/x-tree-view": "npm:7.6.0"
     "@tanstack/react-query": "npm:5.40.0"
     "@testing-library/jest-dom": "npm:6.4.5"
     "@testing-library/react": "npm:15.0.7"
