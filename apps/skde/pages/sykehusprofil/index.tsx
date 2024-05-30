@@ -43,6 +43,7 @@ import {
 import { useScreenSize } from "@visx/responsive";
 import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
+import infoboxImage from "./harold-04.jpg";
 
 const lineChartTheme = {
   lineChartBackground: {
@@ -249,17 +250,40 @@ export const Skde = (): JSX.Element => {
           <Grid container spacing={2}>
             <Grid xs={6}>
               <ItemBox>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
-                  {selectedTreatmentUnits[0]}
-                </Text>
+                <Grid container spacing={2}>
+                  <Grid xs={5} margin={2}>
+                    <img
+                      src={infoboxImage.src}
+                      alt={"Harold"}
+                      width={"100%"}
+                      height={"100%"}
+                      style={{ borderRadius: "50%" }}
+                    />
+                  </Grid>
+                  <Grid xs={6}>
+                    <Text
+                      x={"10%"}
+                      y={"20%"}
+                      width={500}
+                      verticalAnchor="start"
+                      style={{ fontWeight: 700, fontSize: 10 }}
+                    >
+                      Oppdatert: xx.xx.xx
+                    </Text>
+                    <Text
+                      x={"10%"}
+                      y={"-50%"}
+                      width={500}
+                      verticalAnchor="start"
+                      style={{ fontWeight: 700, fontSize: 24 }}
+                    >
+                      {selectedTreatmentUnits[0]}
+                    </Text>
+                  </Grid>
+                </Grid>
               </ItemBox>
             </Grid>
+
             <Grid xs={6}>
               <ItemBox>
                 <Text
