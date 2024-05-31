@@ -9,12 +9,17 @@ export const nestedData = (
   const allIndicators = indicators.reduce((acc, cur) => {
     const currentDatapoints = aggdata
       .filter((x) => x.indicatorID === cur.indicatorID)
-      .filter(
-        (x) =>
-          cur.minDenominator === null ||
-          x.denominator >= cur.minDenominator ||
-          cur.indType === "dg_andel",
-      );
+      .map((point) => {
+        if (
+          cur.minDenominator != null &&
+          point.denominator < cur.minDenominator &&
+          cur.indType != "dg_andel"
+        ) {
+          return { ...point, var: null };
+        } else {
+          return point;
+        }
+      });
 
     if (currentDatapoints.length > 0) {
       const entry = {

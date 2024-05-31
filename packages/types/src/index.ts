@@ -97,7 +97,7 @@ export type DataPoint = {
   id: number;
   unitName: string;
   year: number;
-  var: number;
+  var: number | null;
   denominator: number;
   dg: number | null;
   context: "caregiver" | "resident";

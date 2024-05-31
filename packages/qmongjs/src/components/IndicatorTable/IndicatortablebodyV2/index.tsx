@@ -131,7 +131,7 @@ const IndicatorRow = (props: {
   const rowData = indData.data.map((row) => {
     return {
       unitName: row.unitName,
-      result: customFormat(format)(row.var),
+      result: row.var !== null ? customFormat(format)(row.var) : undefined,
       symbol: newLevelSymbols(level2(indData, row)),
       showCell:
         levels === ""
@@ -139,7 +139,8 @@ const IndicatorRow = (props: {
           : level2(indData, row) == null
             ? true
             : level2(indData, row) === levels,
-      numerator: Math.round(row.var * row.denominator),
+      numerator:
+        row.var !== null ? Math.round(row.var * row.denominator) : undefined,
       denominator: row.denominator,
       minDenominator: indData.minDenominator,
       dg: row.dg,
@@ -283,9 +284,11 @@ const IndicatorRow = (props: {
           let patientCounts;
           lowDG
             ? (patientCounts = "Lav dekning")
-            : noData || lowN
+            : lowN
               ? (patientCounts = "Lite data")
-              : (patientCounts = row?.numerator + " av " + row?.denominator);
+              : noData
+                ? (patientCounts = "Ingen data")
+                : (patientCounts = row?.numerator + " av " + row?.denominator);
 
           return (
             <StyledTableCell
