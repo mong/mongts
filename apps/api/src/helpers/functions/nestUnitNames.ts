@@ -14,20 +14,22 @@ export const nestTuNames = (
     return a.hospital > b.hospital ? 1 : a.hospital < b.hospital ? -1 : 0;
   });
   tu_names.sort((a, b) => {
-    return a.hf_full > b.hf_full ? 1 : a.hf_full < b.hf_full ? -1 : 0;
+    return a.hf_sort > b.hf_sort ? 1 : a.hf_sort < b.hf_sort ? -1 : 0;
   });
   tu_names.sort((a, b) => {
-    return a.rhf > b.rhf ? 1 : a.rhf < b.rhf ? -1 : 0;
+    return a.rhf_sort > b.rhf_sort ? 1 : a.rhf_sort < b.rhf_sort ? -1 : 0;
   });
 
   const nested_tu_names = tu_names.reduce((acc, cur) => {
     if (acc.length === 0 || acc.every((tu_entry) => tu_entry.rhf !== cur.rhf)) {
       const entry = {
         rhf: cur.rhf,
+        rhf_sort: cur.rhf_sort,
         hf: [
           {
             hf: cur.hf,
             hf_full: cur.hf_full,
+            hf_sort: cur.hf_sort,
             hospital: [cur.hospital],
           },
         ],
@@ -44,6 +46,7 @@ export const nestTuNames = (
         const hf_entry = {
           hf: cur.hf,
           hf_full: cur.hf_full,
+          hf_sort: cur.hf_sort,
           hospital: [cur.hospital],
         };
         acc.filter((acc_data) => acc_data.rhf === cur.rhf)[0].hf.push(hf_entry);
