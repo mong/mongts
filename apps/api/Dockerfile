@@ -1,7 +1,7 @@
 FROM node:20.14.0-alpine
 WORKDIR /app
 COPY package*.json ./
-RUN yarn install --only=production && yarn cache clean
+RUN corepack enable && yarn install && yarn cache clean
 COPY build ./build
 EXPOSE 80
 ARG version="none"
