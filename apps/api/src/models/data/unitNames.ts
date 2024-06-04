@@ -65,7 +65,9 @@ export const unitNamesAllLevels = (): Promise<TuName[]> =>
       "hospital.short_name as hospital",
       "hf.short_name as hf",
       "hf.full_name as hf_full",
+      "hf.sorting as hf_sort",
       "rhf.short_name as rhf",
+      "rhf.sorting as rhf_sort",
     )
     .from("hospital")
     .leftJoin("hf", "hospital.hf_orgnr", "hf.orgnr")
