@@ -1,5 +1,11 @@
 import React, { useContext } from "react";
-import { FormControlLabel, FormGroup, Switch } from "@mui/material";
+import {
+  FormControlLabel,
+  FormGroup,
+  Switch,
+  FormHelperText,
+  FormControl,
+} from "@mui/material";
 import { FilterMenuSectionProps } from ".";
 import {
   FilterSettingsContext,
@@ -41,20 +47,26 @@ export function SwitchFilterSection(props: SwitchFilterSectionProps) {
   };
 
   return (
-    <FormGroup aria-label={props.label} row>
-      <FormControlLabel
-        labelPlacement="start"
-        label={labelText}
-        control={
-          <Switch
-            checked={!disabled && isChecked}
-            onChange={handleChange}
-            color="primary"
-            disabled={disabled}
-          />
-        }
-      />
-    </FormGroup>
+    <FormControl>
+      <FormHelperText sx={{ fontSize: 16 }}>
+        Bytter visning av kvalitetsindikatorer til indikatorer for dekningsgrad.
+        Dekningsgrad sier noe om datakvalitet for kvalitetsindikatoren.
+      </FormHelperText>
+      <FormGroup aria-label={props.label} row>
+        <FormControlLabel
+          labelPlacement="start"
+          label={labelText}
+          control={
+            <Switch
+              checked={!disabled && isChecked}
+              onChange={handleChange}
+              color="primary"
+              disabled={disabled}
+            />
+          }
+        />
+      </FormGroup>
+    </FormControl>
   );
 }
 
