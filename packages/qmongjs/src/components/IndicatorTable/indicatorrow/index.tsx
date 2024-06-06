@@ -184,9 +184,9 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
           );
         });
 
-  const lastCompleteYear = getLastCompleteYear(indicatorData, treatmentYear);
-
   const lastCompleteDate = indicatorData[0].delivery_latest_affirm;
+
+  const lastCompleteYear = getLastCompleteYear(lastCompleteDate, treatmentYear);
 
   const lastCompleteDateString = lastCompleteDate
     ? new Date(lastCompleteDate).toLocaleString("no-NB", {

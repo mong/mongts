@@ -156,7 +156,9 @@ const GetLineChart = (props: ChartProps) => {
     .sort((a: Indicator, b: Indicator) => b.year - a.year);
 
   // get the last year with complete data
-  const lastCompleteYear = getLastCompleteYear(data, 0, true);
+  const lastCompleteDate = data[0].delivery_latest_affirm;
+
+  const lastCompleteYear = getLastCompleteYear(lastCompleteDate, 0, true);
 
   return (
     <LineChart {...props} data={data} lastCompleteYear={lastCompleteYear} />
