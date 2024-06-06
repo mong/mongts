@@ -1,5 +1,13 @@
 import { Indicator } from "types";
 
+/**
+ * Calculates the last complete year based on the delivery_latest_affirm date in the indicatorData array.
+ *
+ * @param {Indicator[]} indicatorData - An array of Indicator objects containing the delivery_latest_affirm date.
+ * @param {number} treatmentYear - The treatment year to compare against.
+ * @param {boolean} [alwaysReturnYear=false] - If true, always returns the last complete year even if it is after the treatment year.
+ * @returns {number | undefined} - The last complete year, or undefined if the delivery_latest_affirm date is not available or if the last complete year is after the treatment year and alwaysReturnYear is false.
+ */
 export function getLastCompleteYear(
   indicatorData: Indicator[],
   treatmentYear: number,
