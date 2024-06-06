@@ -4,6 +4,7 @@ import BarChart, { Bar, BarStyle } from "../../Charts/BarChart";
 import LineChart from "../../Charts/LineChart";
 import { Level } from "../../Charts/types";
 import { useIndicatorQuery } from "../../../helpers/hooks";
+import { getLastCompleteYear } from "../../../helpers/functions";
 
 export interface ChartProps {
   context: { context: string; type: string };
@@ -155,11 +156,7 @@ const GetLineChart = (props: ChartProps) => {
     .sort((a: Indicator, b: Indicator) => b.year - a.year);
 
   // get the last year with complete data
-  const lastCompleteYear: number | undefined = data
-    ? data[0].delivery_latest_affirm
-      ? new Date(data[0].delivery_latest_affirm).getFullYear() - 1
-      : undefined
-    : undefined;
+  const lastCompleteYear = getLastCompleteYear(data, 0, true);
 
   return (
     <LineChart {...props} data={data} lastCompleteYear={lastCompleteYear} />
