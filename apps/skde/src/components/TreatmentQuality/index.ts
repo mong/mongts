@@ -121,6 +121,7 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
   },
   "& td": {
     paddingLeft: 0,
+    borderRadius: "14px",
     verticalAlign: "top",
     "& div.barchart-wrapper": {
       [theme.breakpoints.up("xl")]: {
