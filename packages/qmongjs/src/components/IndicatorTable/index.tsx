@@ -4,6 +4,7 @@ import { RegisterName } from "types";
 
 export interface IndicatorTableProps {
   context: string;
+  dataQuality: boolean;
   tableType: "allRegistries" | "singleRegister";
   colspan: number;
   descriptionHeader?: string;
@@ -21,6 +22,7 @@ export interface IndicatorTableProps {
 export const IndicatorTable = (props: IndicatorTableProps) => {
   const {
     context,
+    dataQuality,
     tableType,
     unitNames = ["Nasjonalt"],
     treatmentYear = 2019,
@@ -45,6 +47,7 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
       />
       <IndicatorTableBody
         context={context}
+        dataQuality={dataQuality}
         tableType={tableType}
         colspan={colspan}
         registerNames={registerNames}
