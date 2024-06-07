@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import { getOrderComparator } from "../../helpers/functions/dataTransformation";
 import { customFormat } from "qmongjs";
-import { useRouter } from "next/router";
+import { useBohfQueryParam } from "../../helpers/hooks";
 import { Markdown } from "../../components/Markdown";
 
 type DataTableProps<Data, Headers extends string & Partial<keyof Data>> = {
@@ -36,8 +36,7 @@ export const DataTable = <
   national,
 }: DataTableProps<Data, TableHeaders>) => {
   // Pick out bohf query from the url
-  const router = useRouter();
-  const selected_bohf = [router.query.bohf].flat().filter(Boolean);
+  const [selectedBohfs, toggleBohf] = useBohfQueryParam(national);
 
   const [order, setOrder] = React.useState<"asc" | "desc">("desc");
   const [orderBy, setOrderBy] = React.useState(headers[1].id);
@@ -89,30 +88,12 @@ export const DataTable = <
               <TableRow
                 hover
                 key={`${row.bohf}${i}`}
-                selected={selected_bohf.includes(String(row.bohf))}
+                selected={selectedBohfs.has(String(row.bohf))}
                 data-testid={`tablerow_${row.bohf}`}
                 style={{
                   cursor: row.bohf != national ? "pointer" : "auto",
                 }}
-                onClick={() => {
-                  // Add HF to query param if clicked on.
-                  // Remove HF from query param if it already is selected.
-                  // Only possible to click on HF, and not on national data
-                  if (row.bohf != national) {
-                    router.replace(
-                      {
-                        query: {
-                          ...router.query,
-                          bohf: selected_bohf.includes(String(row.bohf))
-                            ? selected_bohf.filter((d) => d != row.bohf)
-                            : selected_bohf.concat(String(row.bohf)),
-                        },
-                      },
-                      undefined,
-                      { shallow: true },
-                    );
-                  }
-                }}
+                onClick={() => toggleBohf(String(row.bohf))}
               >
                 {headers.map((cell, ind) => (
                   <TableCell

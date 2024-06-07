@@ -4,7 +4,7 @@ import { Group } from "@visx/group";
 import { max } from "d3-array";
 import classNames from "../Barchart/ChartLegend.module.css";
 import { customFormat } from "qmongjs";
-import { useRouter } from "next/router";
+import { useBohfQueryParam } from "../../helpers/hooks";
 import { abacusColors } from "../colors";
 
 type AbacusData<Data, X extends keyof Data> = {
@@ -65,8 +65,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
   national,
 }: AbacusProps<Data, X>) => {
   // Pick out bohf query from the url
-  const router = useRouter();
-  const selected_bohf = [router.query.bohf].flat().filter(Boolean);
+  const [selectedBohfs, toggleBohf] = useBohfQueryParam(national);
 
   // Move Norge to the end of data to plot,
   // so they will be on top of the other circles.
@@ -74,12 +73,12 @@ export const Abacus = <Data, X extends string & keyof Data>({
     .filter((d) => d["bohf"] != national)
     .concat(data.filter((d) => d["bohf"] === national)[0]);
 
-  if (selected_bohf) {
+  if (selectedBohfs) {
     // Move selected bohf to the end of data to plot (if it exists in the data),
     // so they will be on top of the other circles.
     figData = figData
-      .filter((d) => !selected_bohf.includes(String(d["bohf"])))
-      .concat(figData.filter((d) => selected_bohf.includes(String(d["bohf"]))));
+      .filter((d) => !selectedBohfs.has(d["bohf"]))
+      .concat(figData.filter((d) => selectedBohfs.has(d["bohf"])));
   }
 
   const values = [...figData.flatMap((dt) => parseFloat(dt[x.toString()]))];
@@ -146,14 +145,14 @@ export const Abacus = <Data, X extends string & keyof Data>({
               r={circleRadiusDefalt}
               cx={xScale(d[x])}
               fill={
-                selected_bohf.includes(String(d["bohf"]))
+                selectedBohfs.has(d["bohf"])
                   ? colors[2]
                   : d["bohf"] === national
                     ? colors[1]
                     : colors[0]
               }
               data-testid={
-                selected_bohf.includes(String(d["bohf"]))
+                selectedBohfs.has(d["bohf"])
                   ? `circle_${d["bohf"]}_selected`
                   : `circle_${d["bohf"]}_unselected`
               }
@@ -161,20 +160,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
                 // Add HF to query param if clicked on.
                 // Remove HF from query param if it already is selected.
                 // Only possible to click on HF, and not on national data
-                if (d["bohf"] != national) {
-                  router.replace(
-                    {
-                      query: {
-                        ...router.query,
-                        bohf: selected_bohf.includes(d["bohf"])
-                          ? selected_bohf.filter((f) => f != d["bohf"])
-                          : selected_bohf.concat(d["bohf"]),
-                      },
-                    },
-                    undefined,
-                    { shallow: true },
-                  );
-                }
+                toggleBohf(d["bohf"]);
                 event.stopPropagation();
               }}
             />
@@ -199,7 +185,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
             </div>
             {nationalLabel[lang]}
           </li>
-          {selected_bohf.length > 0 && (
+          {selectedBohfs.size > 0 && (
             <li key={"selected_bohf"} className={classNames.legendLI}>
               <>
                 <div className={classNames.legendAnnualVar}>
@@ -207,8 +193,8 @@ export const Abacus = <Data, X extends string & keyof Data>({
                     <circle r={7} cx={10} cy={10} fill={colors[2]} />
                   </svg>
                 </div>
-                {selected_bohf.length === 1
-                  ? selected_bohf[0]
+                {selectedBohfs.size === 1
+                  ? Array.from(selectedBohfs)[0]
                   : `${selectedText[lang]} ${valuesLabel[lang].toLowerCase()}`}
               </>
             </li>

@@ -3,7 +3,7 @@ import { AxisBottom, AxisLeft } from "@visx/axis";
 import { scaleLinear, scaleOrdinal, scaleBand } from "@visx/scale";
 import { Group } from "@visx/group";
 import { max, sum, min } from "d3-array";
-import { useRouter } from "next/router";
+import { useBohfQueryParam } from "../../helpers/hooks";
 
 import { ColorLegend } from "./ColorLegend";
 import { AnnualVarLegend } from "./AnnualVarLegend";
@@ -128,8 +128,7 @@ export const Barchart = <
   );
 
   // Pick out bohf query from the url
-  const router = useRouter();
-  const selected_bohf = [router.query.bohf].flat().filter(Boolean);
+  const [selectedBohfs, toggleBohf] = useBohfQueryParam(national);
 
   // Find max values
   const annualValues = annualVar
@@ -259,7 +258,7 @@ export const Barchart = <
                       width={xScale(Math.abs(barData[0] - barData[1]))}
                       height={yScale.bandwidth()}
                       fill={
-                        selected_bohf.includes(bohfName)
+                        selectedBohfs.has(bohfName)
                           ? x.length === 1
                             ? selectedColors[0]
                             : selectedColorScale(d["key"])
@@ -272,32 +271,14 @@ export const Barchart = <
                               : colorScale(d["key"])
                       }
                       data-testid={
-                        selected_bohf.includes(bohfName)
+                        selectedBohfs.has(bohfName)
                           ? `rect_${bohfName}_selected`
                           : `rect_${bohfName}_unselected`
                       }
                       style={{
                         cursor: bohfName != national ? "pointer" : "auto",
                       }}
-                      onClick={() => {
-                        // Add HF to query param if clicked on.
-                        // Remove HF from query param if it already is selected.
-                        // Only possible to click on HF, and not on national data
-                        if (bohfName != national) {
-                          router.replace(
-                            {
-                              query: {
-                                ...router.query,
-                                bohf: selected_bohf.includes(bohfName)
-                                  ? selected_bohf.filter((d) => d != bohfName)
-                                  : selected_bohf.concat(bohfName),
-                              },
-                            },
-                            undefined,
-                            { shallow: true },
-                          );
-                        }
-                      }}
+                      onClick={() => toggleBohf(bohfName)}
                     />
                   );
                 })}
