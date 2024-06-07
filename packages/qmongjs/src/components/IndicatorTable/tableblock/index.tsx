@@ -40,8 +40,6 @@ export const TableBlock = (props: TableBlockProps) => {
     ? { context, type: "dg" }
     : { context, type: "ind" };
 
-  console.log(queryContext);
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const indicatorDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
     registerShortName: registerName.rname,
