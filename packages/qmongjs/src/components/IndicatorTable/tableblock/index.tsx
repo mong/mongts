@@ -116,12 +116,12 @@ export const TableBlock = (props: TableBlockProps) => {
   });
 
   const tabName =
-    context === "caregiver" && registerName.caregiver_data
-      ? "sykehus"
-      : context === "resident" && registerName.resident_data
-        ? "opptaksomraade"
-        : context === "coverage" && registerName.dg_data
-          ? "datakvalitet"
+    dataQuality && registerName.dg_data
+      ? "datakvalitet"
+      : context === "caregiver" && registerName.caregiver_data
+        ? "sykehus"
+        : context === "resident" && registerName.resident_data
+          ? "opptaksomraade"
           : "sykehus";
 
   return (
