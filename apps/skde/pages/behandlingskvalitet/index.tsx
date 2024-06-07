@@ -314,7 +314,8 @@ export default function TreatmentQualityPage() {
                 <IndicatorTableWrapper className="table-wrapper">
                   <IndicatorTable
                     key="indicator-table"
-                    context={dataQualitySelected ? "coverage" : tableContext}
+                    context={tableContext}
+                    dataQuality={dataQualitySelected}
                     tableType="allRegistries"
                     registerNames={registers}
                     unitNames={selectedTreatmentUnits}

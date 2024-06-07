@@ -4,6 +4,7 @@ import { NoDataAvailible } from "../ContenForEmptyTable";
 
 export interface IndicatorTableBodyProps {
   context: string;
+  dataQuality: boolean;
   tableType: "allRegistries" | "singleRegister";
   colspan: number;
   registerNames: RegisterName[];
@@ -17,6 +18,7 @@ export interface IndicatorTableBodyProps {
 export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
   const {
     context,
+    dataQuality,
     tableType,
     colspan,
     registerNames,
@@ -35,6 +37,7 @@ export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
       return (
         <TableBlock
           context={context}
+          dataQuality={dataQuality}
           tableType={tableType}
           key={`${register.rname}`}
           registerName={register}
