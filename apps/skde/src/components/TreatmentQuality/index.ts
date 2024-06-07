@@ -53,7 +53,8 @@ export const FilterDrawer = styled(Drawer)(({ theme }) => ({
 export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
   "& table": {
     fontFamily: theme.typography.fontFamily,
-    borderSpacing: "0 7px",
+    borderSpacing: "0 4px",
+    borderRadius: "14px",
     wordBreak: "break-word",
     "& th:nth-last-of-type(n+3):first-of-type ~ th, & th:nth-last-of-type(n+3):first-of-type":
       {
@@ -121,8 +122,7 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
   },
   "& td": {
     paddingLeft: 0,
-    borderRadius: "14px",
-    verticalAlign: "top",
+    verticalAlign: "center",
     "& div.barchart-wrapper": {
       [theme.breakpoints.up("xl")]: {
         width: `${breakpoints.xl}px !important`,
