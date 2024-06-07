@@ -116,6 +116,9 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
       pointerEvents: "none",
     },
   },
+  "& tr": {
+    backgroundColor: "white",
+  },
   "& td": {
     paddingLeft: 0,
     verticalAlign: "top",
