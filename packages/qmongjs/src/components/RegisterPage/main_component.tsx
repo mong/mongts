@@ -120,7 +120,8 @@ const Main = (props: Props) => {
         </div>
         <div className={styles.mainTableContainer}>
           <IndicatorTable
-            context={context}
+            context={context === "coverage" ? "caregiver" : context}
+            dataQuality={context === "coverage"}
             tableType="allRegistries"
             registerNames={orderedRegisterList}
             unitNames={[...treatment_units, "Nasjonalt"]}

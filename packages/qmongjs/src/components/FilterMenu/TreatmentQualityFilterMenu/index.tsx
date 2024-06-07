@@ -426,7 +426,6 @@ export function TreatmentQualityFilterMenu({
               : undefined
           }
           activatedswitchvalue={dataQualitySelectedValue}
-          disabled={context === "resident"}
         />
       </FilterMenu>
     </>
