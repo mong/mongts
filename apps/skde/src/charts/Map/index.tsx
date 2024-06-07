@@ -2,7 +2,7 @@ import { geoMercator, geoPath } from "d3-geo";
 import { scaleThreshold } from "d3-scale";
 import { customFormat } from "qmongjs";
 import { mapColors, abacusColors } from "../colors";
-import { useRouter } from "next/router";
+import { useBohfQueryParam } from "../../helpers/hooks";
 
 type FeatureShape = {
   type: "Feature";
@@ -78,8 +78,7 @@ export const Map = ({
   lang,
 }: MapProps) => {
   // Pick out bohf query from the url
-  const router = useRouter();
-  const selected_bohf = [router.query.bohf].flat().filter(Boolean);
+  const [selectedBohfs, toggleBohf] = useBohfQueryParam();
 
   const color = mapColors;
   const width = 1000;
@@ -137,7 +136,7 @@ export const Map = ({
                 key={`map-feature-${i}`}
                 d={pathGenerator(d.geometry)}
                 fill={
-                  selected_bohf.includes(String(hf))
+                  selectedBohfs.has(hf)
                     ? abacusColors[2]
                     : val
                       ? colorScale(val)
@@ -150,22 +149,7 @@ export const Map = ({
                 style={{
                   cursor: "pointer",
                 }}
-                onClick={() => {
-                  // Add HF to query param if clicked on.
-                  // Remove HF from query param if it already is selected.
-                  router.replace(
-                    {
-                      query: {
-                        ...router.query,
-                        bohf: selected_bohf.includes(hf)
-                          ? selected_bohf.filter((d) => d != hf)
-                          : selected_bohf.concat(hf),
-                      },
-                    },
-                    undefined,
-                    { shallow: true },
-                  );
-                }}
+                onClick={() => toggleBohf(hf)}
               />
             );
           })}
