@@ -54,7 +54,6 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
   "& table": {
     fontFamily: theme.typography.fontFamily,
     borderSpacing: "0 4px",
-    borderRadius: "14px",
     wordBreak: "break-word",
     "& th:nth-last-of-type(n+3):first-of-type ~ th, & th:nth-last-of-type(n+3):first-of-type":
       {
