@@ -89,7 +89,7 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
   "& th": {
     position: "sticky",
     verticalAlign: "top",
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.background.paper,
     paddingLeft: 0,
     paddingRight: theme.spacing(1),
     paddingBottom: theme.spacing(2),
