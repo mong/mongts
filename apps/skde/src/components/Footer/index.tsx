@@ -23,8 +23,8 @@ const FooterGridBottom = styled(Grid)(() => ({
 }));
 
 export const Footer = () => {
-  const leftMargin = 5;
-  const topMargin = 5;
+  const leftMargin = 0;
+  const topMargin = 2;
 
   return (
     <FooterWrapper>
@@ -44,12 +44,19 @@ export const Footer = () => {
           lg={3}
           marginTop={topMargin}
           marginLeft={leftMargin}
+          marginBottom={2}
         >
           <Stack spacing={3}>
             <h4>OM NETTSTEDET</h4>
             <Link href={"/"}>Personvern</Link>
             <Link href={"/"}>Informasjonskapsler</Link>
-            <Link href={"/"}>Tilgjengelighetserklæring</Link>
+            <Link
+              href={
+                "https://uustatus.no/nb/erklaringer/publisert/589a8d23-4993-446e-b7eb-ef310bfe1dd7"
+              }
+            >
+              Tilgjengelighetserklæring
+            </Link>
           </Stack>
         </Grid>
 
@@ -80,7 +87,7 @@ export const Footer = () => {
         marginTop={0}
         spacing={4}
       >
-        <Grid item xs={2} sm={2} md={2} lg={2} marginLeft={2}>
+        <Grid item xs={4} sm={8} md={12} lg={12}>
           <Link href={"/"}>
             <Image
               className="footer-logo"
@@ -93,27 +100,26 @@ export const Footer = () => {
             />
           </Link>
         </Grid>
-        <Grid item xs={0} sm={4} md={8} lg={8}></Grid>
-        <Grid item xs={4} sm={4} md={4} lg={2} marginLeft={2}>
+        <Grid item xs={4} sm={8} md={12} lg={12}>
           Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i
           Helse Nord.
         </Grid>
-        <Grid item xs={0} sm={4} md={8} lg={8}></Grid>
 
-        <Grid item xs={4} sm={4} md={3} lg={3} marginLeft={2}>
+        <Grid item xs={4} sm={4} md={4} lg={4}>
           <Stack>
-            <h4>TELEFON</h4>
+            <b>TELEFON</b>
             <Link href={"tel:77755800"}>77 75 58 00</Link>
-            <h4>EPOST</h4>
+            <br />
+            <b>EPOST</b>
             <Link href={"mailto:postmottak@helse-nord.no"}>
               postmottak@helse-nord.no
             </Link>
           </Stack>
         </Grid>
 
-        <Grid item xs={4} sm={4} md={3} lg={3}>
+        <Grid item xs={4} sm={4} md={4} lg={4}>
           <Stack>
-            <h4>BESØKSADRESSE</h4>
+            <b>BESØKSADRESSE</b>
             <text>Sykehusvegen 23</text>
             <text> 9019 TROMSØ</text>
 
@@ -123,24 +129,26 @@ export const Footer = () => {
           </Stack>
         </Grid>
 
-        <Grid item xs={4} sm={4} md={3} lg={3}>
+        <Grid item xs={4} sm={4} md={4} lg={4}>
           <Stack>
-            <h4>ORGANISASJONSNUMMER</h4>
+            <b>ORGANISASJONSNUMMER</b>
             <text>990803765{"\n"}</text>
             <Box marginTop={6}>
-              <Image
-                className="footer-logo"
-                id="helse-nord-logo"
-                loader={imgLoader}
-                src={"/img/logos/logo-helse-nord-neg.svg"}
-                alt="Helse Nord logo"
-                width={220}
-                height={76}
-              />
+              <Link href={"https://www.helse-nord.no/"}>
+                <Image
+                  className="footer-logo"
+                  id="helse-nord-logo"
+                  loader={imgLoader}
+                  src={"/img/logos/logo-helse-nord-neg.svg"}
+                  alt="Helse Nord logo"
+                  width={220}
+                  height={76}
+                />
+              </Link>
             </Box>
           </Stack>
         </Grid>
-        <Grid item xs={4} sm={8} md={12} lg={12}></Grid>
+        <Grid item xs={4} sm={4} md={0} lg={0}></Grid>
       </FooterGridBottom>
     </FooterWrapper>
   );
