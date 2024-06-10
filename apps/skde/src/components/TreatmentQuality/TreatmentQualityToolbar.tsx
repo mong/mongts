@@ -14,7 +14,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 const StyledTabs = styled(Tabs)(({ theme }) => ({
   "& .Mui-selected": {
-    backgroundColor: theme.palette.background.default,
+    backgroundColor: theme.palette.background.paper,
   },
   "& .MuiTabs-indicator": {
     display: "none",

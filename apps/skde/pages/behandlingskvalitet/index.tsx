@@ -66,6 +66,7 @@ const PageWrapper = styled(Box)(({ theme }) => ({
         paddingRight: theme.spacing(16),
       },
     },
+  backgroundColor: theme.palette.background.paper,
 }));
 
 export default function TreatmentQualityPage() {
