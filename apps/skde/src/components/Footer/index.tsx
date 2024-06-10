@@ -86,10 +86,10 @@ export const Footer = () => {
               className="footer-logo"
               id="skde-footer-logo"
               loader={imgLoader}
-              src={"/img/logos/SKDE_hvit_lys.png"}
+              src={"/img/logos/logo-skde-neg.svg"}
               alt="SKDE logo"
-              width={99}
-              height={40}
+              width={129}
+              height={52}
             />
           </Link>
         </Grid>
@@ -132,10 +132,10 @@ export const Footer = () => {
                 className="footer-logo"
                 id="helse-nord-logo"
                 loader={imgLoader}
-                src={"/img/logos/hf_nord-white.svg"}
+                src={"/img/logos/logo-helse-nord-neg.svg"}
                 alt="Helse Nord logo"
-                width={180}
-                height={40}
+                width={220}
+                height={76}
               />
             </Box>
           </Stack>
