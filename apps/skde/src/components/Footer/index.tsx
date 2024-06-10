@@ -22,6 +22,11 @@ const FooterGridBottom = styled(Grid)(() => ({
   background: "#1A1A1A",
 }));
 
+const StyledLink = styled(Link)(() => ({
+  color: "#c4dbf3",
+  textDecoration: "underline",
+}));
+
 export const Footer = () => {
   const leftMargin = 0;
   const topMargin = 2;
@@ -108,12 +113,12 @@ export const Footer = () => {
         <Grid item xs={4} sm={4} md={4} lg={4}>
           <Stack>
             <b>TELEFON</b>
-            <Link href={"tel:77755800"}>77 75 58 00</Link>
+            <StyledLink href={"tel:77755800"}>77 75 58 00</StyledLink>
             <br />
             <b>EPOST</b>
-            <Link href={"mailto:postmottak@helse-nord.no"}>
+            <StyledLink href={"mailto:postmottak@helse-nord.no"}>
               postmottak@helse-nord.no
-            </Link>
+            </StyledLink>
           </Stack>
         </Grid>
 
@@ -123,9 +128,9 @@ export const Footer = () => {
             <text>Sykehusvegen 23</text>
             <text> 9019 TROMSØ</text>
 
-            <Link href={"https://maps.app.goo.gl/ohLzsYb8v6YvEDfL9"}>
+            <StyledLink href={"https://maps.app.goo.gl/ohLzsYb8v6YvEDfL9"}>
               Vis kart
-            </Link>
+            </StyledLink>
           </Stack>
         </Grid>
 
