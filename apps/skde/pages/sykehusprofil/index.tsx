@@ -43,7 +43,6 @@ import {
 import { useScreenSize } from "@visx/responsive";
 import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
-import { FooterV2 } from "../../src/components/FooterV2";
 
 const lineChartTheme = {
   lineChartBackground: {
@@ -350,7 +349,6 @@ export const Skde = (): JSX.Element => {
           </Grid>
         </Box>
         <Footer />
-        <FooterV2 />
       </Box>
     </ThemeProvider>
   );
