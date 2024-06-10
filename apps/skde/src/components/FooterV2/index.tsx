@@ -21,12 +21,12 @@ const FooterWrapper = styled(Paper)(() => ({
 
 const FooterGridTop = styled(Grid)(() => ({
   justifyContent: "space-around",
-  backgroundColor: "#333333",
+  background: "#333333",
 }));
 
 const FooterGridBottom = styled(Grid)(() => ({
   justifyContent: "space-around",
-  backgroundColor: "#1A1A1A",
+  background: "#1A1A1A",
 }));
 
 const FooterItem = styled(Grid)(({ theme }) => ({
@@ -48,15 +48,29 @@ const FooterListItemText = styled(ListItemText)(() => ({
 }));
 
 export const FooterV2 = () => {
+  const leftMargin = 5;
+  const topMargin = 5;
+
   return (
     <FooterWrapper>
       <FooterGridTop
         container
         columns={{ xs: 4, sm: 8, md: 12, lg: 12 }}
         className="footer"
+        marginTop={0}
+        marginBottom={0}
+        spacing={4}
       >
-        <Grid item xs={4} sm={8} md={3} lg={3}>
-          <Stack>
+        <Grid
+          item
+          xs={4}
+          sm={8}
+          md={3}
+          lg={3}
+          marginTop={topMargin}
+          marginLeft={leftMargin}
+        >
+          <Stack spacing={3}>
             <h4>OM NETTSTEDET</h4>
             <Link href={"/"}>Personvern</Link>
             <Link href={"/"}>Informasjonskapsler</Link>
@@ -64,8 +78,16 @@ export const FooterV2 = () => {
           </Stack>
         </Grid>
 
-        <Grid item xs={4} sm={8} md={3} lg={3}>
-          <Stack>
+        <Grid
+          item
+          xs={4}
+          sm={8}
+          md={3}
+          lg={3}
+          marginTop={topMargin}
+          marginLeft={leftMargin}
+        >
+          <Stack spacing={3}>
             <h4>KONTAKT</h4>
             <Link href={"/"}>Kontakt SKDE</Link>
           </Stack>
@@ -73,62 +95,77 @@ export const FooterV2 = () => {
 
         <Grid item xs={0} sm={0} md={3} lg={3}></Grid>
         <Grid item xs={0} sm={0} md={3} lg={3}></Grid>
+        <Grid item xs={4} sm={8} md={12} lg={12}></Grid>
       </FooterGridTop>
 
       <FooterGridBottom
         container
         columns={{ xs: 4, sm: 8, md: 12, lg: 12 }}
         className="footer"
+        marginTop={0}
+        spacing={4}
       >
-        <Grid item xs={2} sm={2} md={2} lg={2}>
-          <Image
-            className="footer-logo"
-            id="skde-footer-logo"
-            loader={imgLoader}
-            src={"/img/logos/SKDE_hvit_lys.png"}
-            alt="SKDE logo"
-            width={99}
-            height={40}
-          />
+        <Grid item xs={2} sm={2} md={2} lg={2} marginLeft={2}>
+          <Link href={"/"}>
+            <Image
+              className="footer-logo"
+              id="skde-footer-logo"
+              loader={imgLoader}
+              src={"/img/logos/SKDE_hvit_lys.png"}
+              alt="SKDE logo"
+              width={99}
+              height={40}
+            />
+          </Link>
         </Grid>
-        <Grid item xs={2} sm={6} md={10} lg={10}></Grid>
-        <Grid item xs={4} sm={8} md={12} lg={12}>
+        <Grid item xs={0} sm={4} md={8} lg={8}></Grid>
+        <Grid item xs={4} sm={4} md={4} lg={2} marginLeft={2}>
           Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i
           Helse Nord.
         </Grid>
+        <Grid item xs={0} sm={4} md={8} lg={8}></Grid>
 
-        <Grid item xs={4} sm={4} md={3} lg={3}>
+        <Grid item xs={4} sm={4} md={3} lg={3} marginLeft={2}>
           <Stack>
             <h4>TELEFON</h4>
-            <Link href={"/"}>77 75 58 00</Link>
+            <Link href={"tel:77755800"}>77 75 58 00</Link>
             <h4>EPOST</h4>
-            <Link href={"/"}>postmottak@helse-nord.no</Link>
+            <Link href={"mailto:postmottak@helse-nord.no"}>
+              postmottak@helse-nord.no
+            </Link>
           </Stack>
         </Grid>
 
         <Grid item xs={4} sm={4} md={3} lg={3}>
           <Stack>
             <h4>BESØKSADRESSE</h4>
-            Sykehusvegen 23 9019 TROMSØ
-            <Link href={"/"}>Vis kart</Link>
+            <text>Sykehusvegen 23</text>
+            <text> 9019 TROMSØ</text>
+
+            <Link href={"https://maps.app.goo.gl/ohLzsYb8v6YvEDfL9"}>
+              Vis kart
+            </Link>
           </Stack>
         </Grid>
 
         <Grid item xs={4} sm={4} md={3} lg={3}>
           <Stack>
             <h4>ORGANISASJONSNUMMER</h4>
-            990803765
-            <Image
-              className="footer-logo"
-              id="helse-nord-logo"
-              loader={imgLoader}
-              src={"/img/logos/hf_nord-white.svg"}
-              alt="Helse Nord logo"
-              width={180}
-              height={40}
-            />
+            <text>990803765{"\n"}</text>
+            <Box marginTop={6}>
+              <Image
+                className="footer-logo"
+                id="helse-nord-logo"
+                loader={imgLoader}
+                src={"/img/logos/hf_nord-white.svg"}
+                alt="Helse Nord logo"
+                width={180}
+                height={40}
+              />
+            </Box>
           </Stack>
         </Grid>
+        <Grid item xs={4} sm={8} md={12} lg={12}></Grid>
       </FooterGridBottom>
     </FooterWrapper>
   );

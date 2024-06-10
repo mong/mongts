@@ -13,17 +13,17 @@ import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 
-export const FooterWrapper = styled(Paper)(() => ({
+const FooterWrapper = styled(Paper)(() => ({
   marginTop: "calc(100vh)",
   color: "white",
 }));
 
-export const FooterGrid = styled(Grid)(() => ({
+const FooterGrid = styled(Grid)(() => ({
   justifyContent: "space-around",
   backgroundColor: "#00263d",
 }));
 
-export const FooterItem = styled(Grid)(({ theme }) => ({
+const FooterItem = styled(Grid)(({ theme }) => ({
   textAlign: "center",
   "& .footer-logo": {
     verticalAlign: "middle",
@@ -32,18 +32,18 @@ export const FooterItem = styled(Grid)(({ theme }) => ({
   },
 }));
 
-export const FooterListItemIcon = styled(ListItemIcon)(() => ({
+const FooterListItemIcon = styled(ListItemIcon)(() => ({
   color: "white",
 }));
 
-export const FooterListItemText = styled(ListItemText)(() => ({
+const FooterListItemText = styled(ListItemText)(() => ({
   lineHeight: 1,
   margin: 0,
 }));
 
-export const FooterDividerBox = styled(Box)(() => ({}));
+const FooterDividerBox = styled(Box)(() => ({}));
 
-export const FooterDivider = styled(Divider)(({ theme }) => ({
+const FooterDivider = styled(Divider)(({ theme }) => ({
   backgroundColor: theme.palette.secondary.dark,
 }));
 
