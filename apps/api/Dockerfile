@@ -1,11 +1,11 @@
-FROM node:20.13.1-alpine
+FROM node:20.14.0-alpine
 WORKDIR /app
+ENV NODE_ENV=production
 COPY package*.json ./
-RUN yarn install --only=production && yarn cache clean
+RUN corepack enable && yarn install && yarn cache clean
 COPY build ./build
 EXPOSE 80
 ARG version="none"
-ENV NODE_ENV=production
 ENV PORT=80
 ENV VERSION=${version}
 CMD ["node", "build"]
