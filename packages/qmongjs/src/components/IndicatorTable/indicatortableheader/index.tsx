@@ -7,6 +7,7 @@ export interface IndicatorTableHeaderProps {
   national?: string;
   selection_bar_height: number | null;
   legend_height: number | null;
+  treatmentYear?: number | undefined;
 }
 
 export const IndicatorTableHeader = (props: IndicatorTableHeaderProps) => {
@@ -16,6 +17,7 @@ export const IndicatorTableHeader = (props: IndicatorTableHeaderProps) => {
     unitNames = [],
     selection_bar_height,
     legend_height,
+    treatmentYear,
   } = props;
 
   const offset_top = `${
@@ -45,7 +47,9 @@ export const IndicatorTableHeader = (props: IndicatorTableHeaderProps) => {
           className={style.quality_indicator}
           style={style_ind_desc}
         >
-          {descriptionHeader}
+          {treatmentYear
+            ? descriptionHeader + " for " + treatmentYear.toString()
+            : descriptionHeader}
         </th>
         {treatment_unit_th}
       </tr>
