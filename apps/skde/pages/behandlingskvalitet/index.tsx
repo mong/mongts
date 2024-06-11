@@ -308,7 +308,6 @@ export default function TreatmentQualityPage() {
                     levels={selectedLevel}
                     medfields={selectedMedicalFields}
                   />
-                  <Footer />
                 </IndicatorTableV2Wrapper>
               ) : (
                 <IndicatorTableWrapper className="table-wrapper">
@@ -329,11 +328,11 @@ export default function TreatmentQualityPage() {
                       (register: { full_name: string }) => register.full_name,
                     )}
                   />
-                  <Footer />
                 </IndicatorTableWrapper>
               ))}
           </Grid>
         </Grid>
+        <Footer />
       </PageWrapper>
       <FilterDrawer
         ModalProps={{
