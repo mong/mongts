@@ -328,6 +328,7 @@ export default function TreatmentQualityPage() {
                     blockTitle={registers.map(
                       (register: { full_name: string }) => register.full_name,
                     )}
+                    showTreatmentYear={true}
                   />
                   <Footer />
                 </IndicatorTableWrapper>
