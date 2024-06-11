@@ -20,17 +20,13 @@ export const HeaderMiddleToolbar = () => {
             Resultater fra nasjonale medisinske kvalitetsregistre
           </Typography>
         </Grid>
-        <Grid container xs={4} sm={8} md={12} lg={12} justifyContent="flex-end">
-          <Grid xs={4} sm={4} md={4} lg={4}>
-            <Button
-              href="https://www.kvalitetsregistre.no/"
-              target="_blank"
-              variant="contained"
-            >
-              Mer om kvalitetsregistre
-            </Button>
-          </Grid>
-        </Grid>
+        <Button
+          href="https://www.kvalitetsregistre.no/"
+          target="_blank"
+          variant="contained"
+        >
+          Om kvalitetsregistre
+        </Button>
       </Grid>
     </StyledToolbar>
   );
