@@ -189,6 +189,26 @@ export const ResultBox = ({
   ).x;
 
   const figData: AtlasData[] = boxData.find((o) => o.type === "data")["data"];
+
+  const handleClick = () => {
+    const elemCoords = height_ref.current.offsetParent.getBoundingClientRect();
+
+    if (expandedResultBox) {
+      window.scrollTo({
+        top: window.scrollY - height_ref.current.offsetHeight,
+        behavior: "smooth",
+      });
+    } else {
+      if (elemCoords.y < 0) {
+        window.scrollTo({
+          top: window.scrollY - elemCoords.height - elemCoords.y,
+          behavior: "smooth",
+        });
+      }
+    }
+    setExpandedResultBox(!expandedResultBox);
+  };
+
   return (
     <div
       id={id}
@@ -214,6 +234,7 @@ export const ResultBox = ({
               transition: "200ms ease-in",
             },
           }}
+          onClick={handleClick}
         >
           <div
             className={classNames.resultBoxTitleWrapper}
@@ -261,21 +282,7 @@ export const ResultBox = ({
         className={classNames.crossWrapper}
         role="button"
         aria-label="Open"
-        onClick={() => {
-          console.log(expandedResultBox)
-          if (expandedResultBox) {
-            window.scrollTo({
-              top: window.scrollY - height_ref.current.offsetHeight,
-              behavior: "smooth",
-            });
-          } else {
-            window.scrollTo({
-              top: window.scrollY - height_ref.current.offsetTop,
-              behavior: "smooth",
-            });
-          }
-          setExpandedResultBox(!expandedResultBox);
-        }}
+        onClick={handleClick}
         data-testid="resultbox_expandButton"
       >
         <span className={classNames.horizontal}></span>
