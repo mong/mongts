@@ -6,9 +6,10 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Stack } from "@mui/material";
+import { ArrowLink } from "../ArrowLink";
 
 const FooterWrapper = styled(Paper)(() => ({
-  marginTop: "calc(20vh)",
+  marginTop: 20,
   color: "white",
 }));
 
@@ -53,15 +54,15 @@ export const Footer = () => {
         >
           <Stack spacing={3}>
             <h4>OM NETTSTEDET</h4>
-            <Link href={"/"}>Personvern</Link>
-            <Link href={"/"}>Informasjonskapsler</Link>
-            <Link
+            <ArrowLink href={"/"} text="Personvern" />
+            <ArrowLink href={"/"} text="Informasjonskapsler" />
+            <ArrowLink
               href={
                 "https://uustatus.no/nb/erklaringer/publisert/589a8d23-4993-446e-b7eb-ef310bfe1dd7"
               }
-            >
-              Tilgjengelighetserklæring
-            </Link>
+              text="Tilgjengelighetserklæring"
+              diagonalArrow={true}
+            />
           </Stack>
         </Grid>
 
@@ -76,7 +77,12 @@ export const Footer = () => {
         >
           <Stack spacing={3}>
             <h4>KONTAKT</h4>
-            <Link href={"/"}>Kontakt SKDE</Link>
+            <ArrowLink
+              href={"/"}
+              text="Kontakt SKDE"
+              diagonalArrow={false}
+              button={false}
+            />
           </Stack>
         </Grid>
 

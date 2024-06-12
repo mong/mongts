@@ -166,7 +166,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
     return null;
   }
   const ind_id = description.id;
-  const tr_indicator_class = `${description.id}  ${description.rname}`;
+  const tr_indicator_class = `${description.id}`;
 
   const indPerUnit =
     unitNames.length === 0

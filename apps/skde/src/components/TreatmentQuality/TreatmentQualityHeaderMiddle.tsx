@@ -1,5 +1,6 @@
 import { Toolbar, Typography, styled } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
+import { ArrowLink } from "../ArrowLink";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
@@ -19,6 +20,12 @@ export const HeaderMiddleToolbar = () => {
             Resultater fra nasjonale medisinske kvalitetsregistre
           </Typography>
         </Grid>
+        <ArrowLink
+          href={"https://www.kvalitetsregistre.no/"}
+          text={"Om kvalitetsregistre"}
+          diagonalArrow={true}
+          button={true}
+        />
       </Grid>
     </StyledToolbar>
   );
