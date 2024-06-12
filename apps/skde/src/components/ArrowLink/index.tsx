@@ -7,7 +7,7 @@ type ArrowLinkProps = {
   text: string;
   diagonalArrow?: boolean;
   button?: boolean;
-  fontSize: "small" | "inherit" | "large" | "medium";
+  fontSize?: "small" | "inherit" | "large" | "medium";
 };
 
 /**
@@ -21,7 +21,13 @@ type ArrowLinkProps = {
  * @return {JSX.Element} The rendered link with arrow icon.
  */
 export const ArrowLink = (props: ArrowLinkProps) => {
-  const { href, text, diagonalArrow, button, fontSize = "inherit" } = props;
+  const {
+    href,
+    text,
+    diagonalArrow = false,
+    button = false,
+    fontSize = "inherit",
+  } = props;
 
   let arrow: JSX.Element;
 

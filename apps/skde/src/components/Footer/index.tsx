@@ -54,25 +54,14 @@ export const Footer = () => {
         >
           <Stack spacing={3}>
             <h4>OM NETTSTEDET</h4>
-            <ArrowLink
-              href={"/"}
-              text="Personvern"
-              diagonalArrow={false}
-              button={false}
-            />
-            <ArrowLink
-              href={"/"}
-              text="Informasjonskapsler"
-              diagonalArrow={false}
-              button={false}
-            />
+            <ArrowLink href={"/"} text="Personvern" />
+            <ArrowLink href={"/"} text="Informasjonskapsler" />
             <ArrowLink
               href={
                 "https://uustatus.no/nb/erklaringer/publisert/589a8d23-4993-446e-b7eb-ef310bfe1dd7"
               }
               text="Tilgjengelighetserklæring"
               diagonalArrow={true}
-              button={false}
             />
           </Stack>
         </Grid>
