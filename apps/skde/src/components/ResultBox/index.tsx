@@ -191,7 +191,8 @@ export const ResultBox = ({
   const figData: AtlasData[] = boxData.find((o) => o.type === "data")["data"];
 
   const handleClick = () => {
-    // The coordinates of the whole result box
+    // The coordinates of the whole result box relative to the viewport
+    // elemCoords.y is the number of pixels scrolled past the top edge
     const elemCoords = height_ref.current.offsetParent.getBoundingClientRect();
 
     const topMargin = 50;
