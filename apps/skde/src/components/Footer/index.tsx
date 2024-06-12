@@ -9,7 +9,7 @@ import { Stack } from "@mui/material";
 import { ArrowLink } from "../ArrowLink";
 
 const FooterWrapper = styled(Paper)(() => ({
-  marginTop: "calc(20vh)",
+  marginTop: 20,
   color: "white",
 }));
 
