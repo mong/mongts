@@ -262,9 +262,15 @@ export const ResultBox = ({
         role="button"
         aria-label="Open"
         onClick={() => {
+          console.log(expandedResultBox)
           if (expandedResultBox) {
             window.scrollTo({
               top: window.scrollY - height_ref.current.offsetHeight,
+              behavior: "smooth",
+            });
+          } else {
+            window.scrollTo({
+              top: window.scrollY - height_ref.current.offsetTop,
               behavior: "smooth",
             });
           }
