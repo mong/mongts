@@ -71,7 +71,7 @@ export const Footer = () => {
                 "https://uustatus.no/nb/erklaringer/publisert/589a8d23-4993-446e-b7eb-ef310bfe1dd7"
               }
               text="Tilgjengelighetserklæring"
-              diagonalArrow={false}
+              diagonalArrow={true}
               button={false}
             />
           </Stack>
