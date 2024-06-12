@@ -24,6 +24,7 @@ export const HeaderMiddleToolbar = () => {
           href={"https://www.kvalitetsregistre.no/"}
           text={"Om kvalitetsregistre"}
           diagonalArrow={true}
+          button={true}
         />
       </Grid>
     </StyledToolbar>
