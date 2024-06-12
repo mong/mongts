@@ -293,9 +293,16 @@ export default function TreatmentQualityPage() {
 
   useEffect(() => {
     const element = document.getElementById(selectedRow);
+    const headerOffset = 140;
 
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
     }
   });
 
