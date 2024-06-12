@@ -190,36 +190,26 @@ export const ResultBox = ({
 
   const figData: AtlasData[] = boxData.find((o) => o.type === "data")["data"];
 
-  const handleClickOnButton = () => {
+  const handleClick = () => {
     // The coordinates of the whole result box
     const elemCoords = height_ref.current.offsetParent.getBoundingClientRect();
+    console.log(elemCoords.y);
 
-    if (expandedResultBox) {
+    const topMargin = 50;
+
+    if (expandedResultBox && elemCoords.y <= 0) {
       window.scrollTo({
-        top: scrollY + elemCoords.y,
+        top: scrollY + elemCoords.y - topMargin,
         behavior: "smooth",
       });
     } else {
       if (elemCoords.y < 0) {
         window.scrollTo({
-          top: window.scrollY + elemCoords.y,
+          top: window.scrollY + elemCoords.y - topMargin,
           behavior: "smooth",
         });
       }
     }
-    setExpandedResultBox(!expandedResultBox);
-  };
-
-  const handleClickOnDescription = () => {
-    const elemCoords = height_ref.current.offsetParent.getBoundingClientRect();
-
-    if (!expandedResultBox && elemCoords.y < 0) {
-      window.scrollTo({
-        top: window.scrollY - elemCoords.height - elemCoords.y,
-        behavior: "smooth",
-      });
-    }
-
     setExpandedResultBox(!expandedResultBox);
   };
 
@@ -248,7 +238,7 @@ export const ResultBox = ({
               transition: "200ms ease-in",
             },
           }}
-          onClick={handleClickOnDescription}
+          onClick={handleClick}
         >
           <div
             className={classNames.resultBoxTitleWrapper}
@@ -296,7 +286,7 @@ export const ResultBox = ({
         className={classNames.crossWrapper}
         role="button"
         aria-label="Open"
-        onClick={handleClickOnButton}
+        onClick={handleClick}
         data-testid="resultbox_expandButton"
       >
         <span className={classNames.horizontal}></span>
