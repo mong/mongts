@@ -66,6 +66,7 @@ const PageWrapper = styled(Box)(({ theme }) => ({
         paddingRight: theme.spacing(16),
       },
     },
+  backgroundColor: theme.palette.background.paper,
 }));
 
 export default function TreatmentQualityPage() {
@@ -307,7 +308,6 @@ export default function TreatmentQualityPage() {
                     levels={selectedLevel}
                     medfields={selectedMedicalFields}
                   />
-                  <Footer />
                 </IndicatorTableV2Wrapper>
               ) : (
                 <IndicatorTableWrapper className="table-wrapper">
@@ -327,12 +327,13 @@ export default function TreatmentQualityPage() {
                     blockTitle={registers.map(
                       (register: { full_name: string }) => register.full_name,
                     )}
+                    showTreatmentYear={true}
                   />
-                  <Footer />
                 </IndicatorTableWrapper>
               ))}
           </Grid>
         </Grid>
+        <Footer />
       </PageWrapper>
       <FilterDrawer
         ModalProps={{
