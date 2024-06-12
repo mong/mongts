@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Box,
   CssBaseline,
@@ -40,6 +40,7 @@ import {
   IndicatorTableV2Wrapper,
 } from "../../src/components/TreatmentQuality";
 import { Footer } from "../../src/components/Footer";
+import { mainQueryParamsConfig } from "qmongjs";
 
 const dataQualityKey = "dg";
 
@@ -101,6 +102,11 @@ export default function TreatmentQualityPage() {
   ]);
   const [dataQualitySelected, setDataQualitySelected] =
     useState<boolean>(false);
+
+  const selectedRow = useQueryParam(
+    "selected_row",
+    mainQueryParamsConfig.selected_row,
+  )[0];
 
   // Load register names and medical fields
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -284,6 +290,21 @@ export default function TreatmentQualityPage() {
       setAllSelected(newFilterSettings);
     }
   };
+
+  useEffect(() => {
+    const element = document.getElementById(selectedRow);
+    const headerOffset = 140;
+
+    if (element) {
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition =
+        elementPosition + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  });
 
   return (
     <ThemeProvider theme={skdeTheme}>
