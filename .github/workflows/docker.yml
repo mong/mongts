@@ -66,6 +66,7 @@ jobs:
         run: |
           docker build -t test --file apps/api/Dockerfile ./apps/api
           docker run -e ORIGIN="skde.no" -d test
+          sleep 5 # wait for it to die, if not working
           docker kill $(docker ps --filter ancestor=test -q)
       - name: Build and push to Docker Hub
         uses: docker/build-push-action@v5.4.0
