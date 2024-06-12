@@ -8,7 +8,7 @@ import Grid from "@mui/material/Grid";
 import { Stack } from "@mui/material";
 
 const FooterWrapper = styled(Paper)(() => ({
-  marginTop: "calc(20vh)",
+  marginTop: 20,
   color: "white",
 }));
 
