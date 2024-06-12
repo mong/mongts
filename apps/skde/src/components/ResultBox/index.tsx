@@ -193,7 +193,6 @@ export const ResultBox = ({
   const handleClick = () => {
     // The coordinates of the whole result box
     const elemCoords = height_ref.current.offsetParent.getBoundingClientRect();
-    console.log(elemCoords.y);
 
     const topMargin = 50;
 
