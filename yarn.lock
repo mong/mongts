@@ -1936,12 +1936,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.24.5, @babel/runtime@npm:^7.24.6":
+"@babel/runtime@npm:^7.24.5":
   version: 7.24.6
   resolution: "@babel/runtime@npm:7.24.6"
   dependencies:
     regenerator-runtime: "npm:^0.14.0"
   checksum: 10/6c4e12731cd9206a883c19d48fa04f6aaaf7ee83f049b22631e6521b866edc20832b4d5db30aa86d8ae799c4dcf57761fe8a4af2bf7e233245c079c1dafb5668
+  languageName: node
+  linkType: hard
+
+"@babel/runtime@npm:^7.24.7":
+  version: 7.24.7
+  resolution: "@babel/runtime@npm:7.24.7"
+  dependencies:
+    regenerator-runtime: "npm:^0.14.0"
+  checksum: 10/7b77f566165dee62db3db0296e71d08cafda3f34e1b0dcefcd68427272e17c1704f4e4369bff76651b07b6e49d3ea5a0ce344818af9116e9292e4381e0918c76
   languageName: node
   linkType: hard
 
@@ -3858,11 +3867,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/x-tree-view@npm:7.6.2":
-  version: 7.6.2
-  resolution: "@mui/x-tree-view@npm:7.6.2"
+"@mui/x-tree-view@npm:7.7.0":
+  version: 7.7.0
+  resolution: "@mui/x-tree-view@npm:7.7.0"
   dependencies:
-    "@babel/runtime": "npm:^7.24.6"
+    "@babel/runtime": "npm:^7.24.7"
     "@mui/base": "npm:^5.0.0-beta.40"
     "@mui/system": "npm:^5.15.15"
     "@mui/utils": "npm:^5.15.14"
@@ -3876,7 +3885,7 @@ __metadata:
     "@mui/material": ^5.15.14
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
-  checksum: 10/4636fa17b47c24d4b65f5612a258aa9c26dae474ad77229449ea785d78d10d4efb3f4d5365a48d608ff9fa668628018b881413f7fcf65152a0647db512e3e7ab
+  checksum: 10/9b7aea8546a085e437083d7754b2b631c2223b513e53954e2dd45ebeba74c3ddd058d97ca5a65a3b3ee00a995e8f9c5ccd41180481f0c999924c9d7fa12486c2
   languageName: node
   linkType: hard
 
@@ -19795,7 +19804,7 @@ __metadata:
   dependencies:
     "@mui/icons-material": "npm:5.15.20"
     "@mui/material": "npm:5.15.20"
-    "@mui/x-tree-view": "npm:7.6.2"
+    "@mui/x-tree-view": "npm:7.7.0"
     "@tanstack/react-query": "npm:5.45.0"
     "@testing-library/dom": "npm:^10.1.0"
     "@testing-library/jest-dom": "npm:6.4.6"
