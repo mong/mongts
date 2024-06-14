@@ -197,13 +197,13 @@ export const ResultBox = ({
 
     const topMargin = 50;
 
-    if (expandedResultBox && elemCoords.y < 0) {
+    if (expandedResultBox && elemCoords.y < topMargin) {
       window.scrollTo({
         top: scrollY + elemCoords.y - topMargin,
         behavior: "smooth",
       });
     } else {
-      if (elemCoords.y < 0) {
+      if (elemCoords.y < topMargin) {
         window.scrollTo({
           top: window.scrollY + elemCoords.y - topMargin,
           behavior: "smooth",
