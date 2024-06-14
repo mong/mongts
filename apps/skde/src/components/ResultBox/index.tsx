@@ -45,9 +45,10 @@ export const ResultBox = ({
   // Keep track of current screen width
   const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth);
 
-  function handleWindowSizeChange() {
+  const handleWindowSizeChange = () => {
     setScreenWidth(window.innerWidth);
-  }
+  };
+
   useEffect(() => {
     window.addEventListener("resize", handleWindowSizeChange);
     return () => {
