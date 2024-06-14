@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { Button, Tab, Tabs, Toolbar, styled } from "@mui/material";
-import { TuneRounded } from "@mui/icons-material";
+import { Margin, TuneRounded } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
+<<<<<<< Updated upstream
+=======
+import Chip from "@mui/material/Chip";
+import Box from "@mui/material/Box";
+>>>>>>> Stashed changes
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
@@ -93,6 +98,16 @@ export const TreatmentQualityToolbar = ({
             <StyledTab label="Opptaksområder" value={"resident"} />
           </StyledTabs>
         </Grid>
+<<<<<<< Updated upstream
+=======
+      </Grid>
+
+      <Grid container justifyItems={"flex-end"} spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
+      <Grid item xs={4} sm={8} md={8}>
+      <Box justifyContent="center"> {selectedYear} </Box>
+      </Grid>
+      
+>>>>>>> Stashed changes
       </Grid>
     </StyledToolbar>
   );

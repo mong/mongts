@@ -315,92 +315,87 @@ export default function TreatmentQualityPage() {
           context={tableContext}
           onTabChanged={setTableContext}
         />
-        <Grid container spacing={2} disableEqualOverflow>
-          <Grid xs={12}>
-            {queriesReady &&
-              (newIndicatorTableActivated || newTableOnly ? (
-                <IndicatorTableV2Wrapper className="table-wrapper">
-                  <IndicatorTableBodyV2
-                    key="indicator-table"
-                    context={tableContext}
-                    unitNames={selectedTreatmentUnits}
-                    year={selectedYear}
-                    type={dataQualitySelected ? "dg" : "ind"}
-                    levels={selectedLevel}
-                    medfields={selectedMedicalFields}
-                  />
-                </IndicatorTableV2Wrapper>
-              ) : (
-                <IndicatorTableWrapper className="table-wrapper">
-                  <IndicatorTable
-                    key="indicator-table"
-                    context={tableContext}
-                    dataQuality={dataQualitySelected}
-                    tableType="allRegistries"
-                    registerNames={registers}
-                    unitNames={selectedTreatmentUnits}
-                    treatmentYear={selectedYear}
-                    colspan={selectedTreatmentUnits.length + 1}
-                    medicalFieldFilter={selectedMedicalFields}
-                    showLevelFilter={selectedLevel}
-                    selection_bar_height={0}
-                    legend_height={0}
-                    blockTitle={registers.map(
-                      (register: { full_name: string }) => register.full_name,
-                    )}
-                    showTreatmentYear={true}
-                  />
-                </IndicatorTableWrapper>
-              ))}
+        <Grid container xs={4} sm={8} md={12} lg={12}>
+          <Grid xs={2} sm={3} md={4} lg={4}>
+            <Box
+              sx={{ display: "flex", m: 2, justifyContent: "space-between" }}
+            >
+              <Typography variant="h3">Filtermeny</Typography>
+            </Box>
+            <Divider />
+            {queriesReady && (
+              <Box sx={{ mt: 4 }}>
+                <TreatmentQualityFilterMenu
+                  onSelectionChanged={handleFilterChanged}
+                  onFilterInitialized={handleFilterInitialized}
+                  registryNameData={registers}
+                  medicalFieldData={medicalFields}
+                  context={tableContext}
+                />
+                {showNewTableSwitch && !newTableOnly && (
+                  <FormGroup sx={{ paddingRight: "1.5rem" }}>
+                    <FormControlLabel
+                      label="Prøv ny tabellversjon"
+                      labelPlacement="start"
+                      control={
+                        <Switch
+                          checked={newIndicatorTableActivated}
+                          onChange={(event) =>
+                            setNewIndicatorTableActivated(event.target.checked)
+                          }
+                        />
+                      }
+                    />
+                  </FormGroup>
+                )}
+              </Box>
+            )}
+          </Grid>
+          <Grid xs={2} sm={5} md={8} lg={8}>
+            <Grid container spacing={2} disableEqualOverflow>
+              <Grid xs={12}>
+                {queriesReady &&
+                  (newIndicatorTableActivated || newTableOnly ? (
+                    <IndicatorTableV2Wrapper className="table-wrapper">
+                      <IndicatorTableBodyV2
+                        key="indicator-table"
+                        context={tableContext}
+                        unitNames={selectedTreatmentUnits}
+                        year={selectedYear}
+                        type={dataQualitySelected ? "dg" : "ind"}
+                        levels={selectedLevel}
+                        medfields={selectedMedicalFields}
+                      />
+                    </IndicatorTableV2Wrapper>
+                  ) : (
+                    <IndicatorTableWrapper className="table-wrapper">
+                      <IndicatorTable
+                        key="indicator-table"
+                        context={tableContext}
+                        dataQuality={dataQualitySelected}
+                        tableType="allRegistries"
+                        registerNames={registers}
+                        unitNames={selectedTreatmentUnits}
+                        treatmentYear={selectedYear}
+                        colspan={selectedTreatmentUnits.length + 1}
+                        medicalFieldFilter={selectedMedicalFields}
+                        showLevelFilter={selectedLevel}
+                        selection_bar_height={0}
+                        legend_height={0}
+                        blockTitle={registers.map(
+                          (register: { full_name: string }) =>
+                            register.full_name,
+                        )}
+                        showTreatmentYear={true}
+                      />
+                    </IndicatorTableWrapper>
+                  ))}
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
         <Footer />
       </PageWrapper>
-      <FilterDrawer
-        ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
-        }}
-        open={drawerOpen}
-        onClose={() => toggleDrawer(false)}
-      >
-        <Box sx={{ display: "flex", m: 2, justifyContent: "space-between" }}>
-          <Typography variant="h3">Filtermeny</Typography>
-          <IconButton
-            aria-label="Lukk sidemeny"
-            onClick={() => toggleDrawer(false)}
-          >
-            <ChevronLeftRounded fontSize="large" />
-          </IconButton>
-        </Box>
-        <Divider />
-        {queriesReady && (
-          <Box sx={{ mt: 4 }}>
-            <TreatmentQualityFilterMenu
-              onSelectionChanged={handleFilterChanged}
-              onFilterInitialized={handleFilterInitialized}
-              registryNameData={registers}
-              medicalFieldData={medicalFields}
-              context={tableContext}
-            />
-            {showNewTableSwitch && !newTableOnly && (
-              <FormGroup sx={{ paddingRight: "1.5rem" }}>
-                <FormControlLabel
-                  label="Prøv ny tabellversjon"
-                  labelPlacement="start"
-                  control={
-                    <Switch
-                      checked={newIndicatorTableActivated}
-                      onChange={(event) =>
-                        setNewIndicatorTableActivated(event.target.checked)
-                      }
-                    />
-                  }
-                />
-              </FormGroup>
-            )}
-          </Box>
-        )}
-      </FilterDrawer>
     </ThemeProvider>
   );
 }
