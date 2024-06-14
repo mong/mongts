@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -42,6 +42,19 @@ export const ResultBox = ({
   updated,
   map,
 }: ResultBoxProps) => {
+  // Keep track of current screen width
+  const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth);
+
+  function handleWindowSizeChange() {
+    setScreenWidth(window.innerWidth);
+  }
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
   /* Define dates as days from 1. jan. 1970 */
   const minute = 1000 * 60;
   const hour = minute * 60;
@@ -195,7 +208,20 @@ export const ResultBox = ({
     // elemCoords.y is the number of pixels scrolled past the top edge
     const elemCoords = height_ref.current.offsetParent.getBoundingClientRect();
 
-    const topMargin = 50;
+    // The table of contents moves to the top of the screen if the screen width is less than 943 pixels
+    const screenWidthCutoff = 943;
+
+    // Height of the table of contents bar
+    const tocHeight = 70;
+
+    // Add a bit of space between the top of the box and the screen
+    const topSpacing = 20;
+
+    let topMargin: number;
+
+    screenWidth < screenWidthCutoff
+      ? (topMargin = tocHeight + topSpacing)
+      : (topMargin = topSpacing);
 
     if (expandedResultBox && elemCoords.y < topMargin) {
       window.scrollTo({
