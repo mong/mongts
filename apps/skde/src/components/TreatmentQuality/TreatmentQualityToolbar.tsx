@@ -4,6 +4,8 @@ import { TuneRounded } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
+import Tooltip from "@mui/material/Tooltip";
+import Box from "@mui/material/Box";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
@@ -89,8 +91,22 @@ export const TreatmentQualityToolbar = ({
             orientation={isNarrowScreen ? "vertical" : "horizontal"}
             variant="fullWidth"
           >
-            <StyledTab label="Behandlingsenheter" value={"caregiver"} />
-            <StyledTab label="Opptaksområder" value={"resident"} />
+            <StyledTab
+              label={
+                <Tooltip title="Med behandlingsenheter menes med sykehus, helseforetak og regionale helseforetak.">
+                  <Box>Behandlingsenheter</Box>
+                </Tooltip>
+              }
+              value={"caregiver"}
+            />
+            <StyledTab
+              label={
+                <Tooltip title="Definert geografisk område og befolkning som behandlingsenheter skal gi helsetjenester til.">
+                  <Box>Opptaksområder</Box>
+                </Tooltip>
+              }
+              value={"resident"}
+            />
           </StyledTabs>
         </Grid>
       </Grid>
