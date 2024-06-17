@@ -43,7 +43,7 @@ export const ResultBox = ({
   map,
 }: ResultBoxProps) => {
   // Keep track of current screen width
-  const [screenWidth, setScreenWidth] = useState<number>(window.innerWidth);
+  const [screenWidth, setScreenWidth] = useState<number>();
 
   const handleWindowSizeChange = () => {
     setScreenWidth(window.innerWidth);
