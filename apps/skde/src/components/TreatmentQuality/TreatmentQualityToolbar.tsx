@@ -4,7 +4,7 @@ import { TuneRounded } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
-import Tooltip from "@mui/material/Tooltip";
+import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 import Box from "@mui/material/Box";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -57,6 +57,19 @@ export const TreatmentQualityToolbar = ({
     }, 0);
   };
 
+  const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: "#f5f5f9",
+      color: "rgba(0, 0, 0, 0.87)",
+      maxWidth: 220,
+      fontSize: theme.typography.pxToRem(14),
+      border: "1px solid #dadde9",
+      borderRadius: "12px",
+    },
+  }));
+
   return (
     <StyledToolbar className="main-toolbar">
       <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
@@ -93,17 +106,23 @@ export const TreatmentQualityToolbar = ({
           >
             <StyledTab
               label={
-                <Tooltip title="Med behandlingsenheter menes med sykehus, helseforetak og regionale helseforetak.">
+                <HtmlTooltip
+                  title="Med behandlingsenheter menes sykehus, helseforetak og regionale helseforetak."
+                  placement="top"
+                >
                   <Box>Behandlingsenheter</Box>
-                </Tooltip>
+                </HtmlTooltip>
               }
               value={"caregiver"}
             />
             <StyledTab
               label={
-                <Tooltip title="Definert geografisk område og befolkning som behandlingsenheter skal gi helsetjenester til.">
+                <HtmlTooltip
+                  title="Definert geografisk område og befolkning som behandlingsenheter skal gi helsetjenester til."
+                  placement="top"
+                >
                   <Box>Opptaksområder</Box>
-                </Tooltip>
+                </HtmlTooltip>
               }
               value={"resident"}
             />
