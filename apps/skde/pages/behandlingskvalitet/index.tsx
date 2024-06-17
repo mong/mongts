@@ -7,7 +7,9 @@ import {
   ThemeProvider,
   Typography,
   styled,
+  useMediaQuery,
 } from "@mui/material";
+
 import { ChevronLeftRounded } from "@mui/icons-material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useQueryParam, withDefault, StringParam } from "use-query-params";
@@ -47,26 +49,55 @@ const dataQualityKey = "dg";
 // Set to true to display the switch for activating the new table
 const showNewTableSwitch = false;
 
+//const theme = useTheme();
+//const isNarrowScreen = useMediaQuery(theme.breakpoints.down("sm"));
+
 const PageWrapper = styled(Box)(({ theme }) => ({
-  "& .header-top, & .header-middle, & .main-toolbar, & .footer, & .table-wrapper table, & .table-wrapper .MuiTable-root":
-    {
-      [theme.breakpoints.down("sm")]: {
-        paddingLeft: theme.spacing(2),
-        paddingRight: theme.spacing(2),
-      },
-      [theme.breakpoints.up("sm")]: {
-        paddingLeft: theme.spacing(4),
-        paddingRight: theme.spacing(4),
-      },
-      [theme.breakpoints.up("lg")]: {
-        paddingLeft: theme.spacing(6),
-        paddingRight: theme.spacing(6),
-      },
-      [theme.breakpoints.up("xl")]: {
-        paddingLeft: theme.spacing(16),
-        paddingRight: theme.spacing(16),
-      },
+  "& .header-top, & .header-middle, & .main-toolbar, & .footer": {
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
     },
+    [theme.breakpoints.up("sm")]: {
+      paddingLeft: theme.spacing(4),
+      paddingRight: theme.spacing(4),
+    },
+    [theme.breakpoints.up("lg")]: {
+      paddingLeft: theme.spacing(6),
+      paddingRight: theme.spacing(6),
+    },
+    [theme.breakpoints.up("xl")]: {
+      paddingLeft: theme.spacing(16),
+      paddingRight: theme.spacing(16),
+    },
+  },
+  "& .menu-wrapper": {
+    [theme.breakpoints.up("xxl")]: {
+      paddingLeft: theme.spacing(16),
+    },
+  },
+  "& .table-wrapper table, & .table-wrapper .MuiTable-root": {
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+    },
+    [theme.breakpoints.up("sm")]: {
+      paddingLeft: theme.spacing(4),
+      paddingRight: theme.spacing(4),
+    },
+    [theme.breakpoints.up("lg")]: {
+      paddingLeft: theme.spacing(6),
+      paddingRight: theme.spacing(6),
+    },
+    [theme.breakpoints.up("xl")]: {
+      paddingLeft: theme.spacing(16),
+      paddingRight: theme.spacing(16),
+    },
+    [theme.breakpoints.up("xxl")]: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(16),
+    },
+  },
   backgroundColor: theme.palette.background.paper,
 }));
 
@@ -315,43 +346,23 @@ export default function TreatmentQualityPage() {
           context={tableContext}
           onTabChanged={setTableContext}
         />
-        <Grid container xs={4} sm={8} md={12} lg={12}>
-          <Grid xs={2} sm={3} md={4} lg={4}>
-            <Box
-              sx={{ display: "flex", m: 2, justifyContent: "space-between" }}
-            >
-              <Typography variant="h3">Filtermeny</Typography>
-            </Box>
-            <Divider />
-            {queriesReady && (
-              <Box sx={{ mt: 4 }}>
-                <TreatmentQualityFilterMenu
-                  onSelectionChanged={handleFilterChanged}
-                  onFilterInitialized={handleFilterInitialized}
-                  registryNameData={registers}
-                  medicalFieldData={medicalFields}
-                  context={tableContext}
-                />
-                {showNewTableSwitch && !newTableOnly && (
-                  <FormGroup sx={{ paddingRight: "1.5rem" }}>
-                    <FormControlLabel
-                      label="Prøv ny tabellversjon"
-                      labelPlacement="start"
-                      control={
-                        <Switch
-                          checked={newIndicatorTableActivated}
-                          onChange={(event) =>
-                            setNewIndicatorTableActivated(event.target.checked)
-                          }
-                        />
-                      }
-                    />
-                  </FormGroup>
-                )}
-              </Box>
-            )}
-          </Grid>
-          <Grid xs={2} sm={5} md={8} lg={8}>
+        <Grid container xs={12}>
+          {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? (
+            <Grid xxl={3} className="menu-wrapper">
+              {queriesReady && (
+                <Box sx={{ mt: 4, position: "sticky", top: 100 }}>
+                  <TreatmentQualityFilterMenu
+                    onSelectionChanged={handleFilterChanged}
+                    onFilterInitialized={handleFilterInitialized}
+                    registryNameData={registers}
+                    medicalFieldData={medicalFields}
+                    context={tableContext}
+                  />
+                </Box>
+              )}
+            </Grid>
+          ) : null}
+          <Grid xs={12} xxl={9}>
             <Grid container spacing={2} disableEqualOverflow>
               <Grid xs={12}>
                 {queriesReady &&
@@ -396,6 +407,51 @@ export default function TreatmentQualityPage() {
         </Grid>
         <Footer />
       </PageWrapper>
+      <FilterDrawer
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile.
+        }}
+        open={drawerOpen}
+        onClose={() => toggleDrawer(false)}
+      >
+        <Box sx={{ display: "flex", m: 2, justifyContent: "space-between" }}>
+          <Typography variant="h3">Filtermeny</Typography>
+          <IconButton
+            aria-label="Lukk sidemeny"
+            onClick={() => toggleDrawer(false)}
+          >
+            <ChevronLeftRounded fontSize="large" />
+          </IconButton>
+        </Box>
+        <Divider />
+        {queriesReady && (
+          <Box sx={{ mt: 4 }}>
+            <TreatmentQualityFilterMenu
+              onSelectionChanged={handleFilterChanged}
+              onFilterInitialized={handleFilterInitialized}
+              registryNameData={registers}
+              medicalFieldData={medicalFields}
+              context={tableContext}
+            />
+            {showNewTableSwitch && !newTableOnly && (
+              <FormGroup sx={{ paddingRight: "1.5rem" }}>
+                <FormControlLabel
+                  label="Prøv ny tabellversjon"
+                  labelPlacement="start"
+                  control={
+                    <Switch
+                      checked={newIndicatorTableActivated}
+                      onChange={(event) =>
+                        setNewIndicatorTableActivated(event.target.checked)
+                      }
+                    />
+                  }
+                />
+              </FormGroup>
+            )}
+          </Box>
+        )}
+      </FilterDrawer>
     </ThemeProvider>
   );
 }
