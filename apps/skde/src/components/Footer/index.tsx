@@ -120,8 +120,8 @@ export const Footer = () => {
               loader={imgLoader}
               src={"/img/logos/logo-nsm-hvit.png"}
               alt="NSM-logo"
-              width={566 * 0.6}
-              height={63 * 0.6}
+              width={(566 * 52) / 63}
+              height={52}
             />
           </Link>
         </Grid>
