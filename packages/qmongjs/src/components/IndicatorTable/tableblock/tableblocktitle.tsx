@@ -27,9 +27,22 @@ export const TableBlockTitle = (props: BlockTitleProps) => {
     </Link>
   );
 
+  console.log(`/${link}/${tabName}`);
+  const registryShortName = link.split("/")[1];
+
   const registryButtonRow = [
     title,
-    <Button variant="outlined" sx={{ marginLeft: "20px" }}>
+    <Button
+      variant="outlined"
+      sx={{ marginLeft: "20px" }}
+      onClick={() => {
+        window.open(
+          "/behandlingskvalitet/?context=caregiver&indicator=reg-" +
+            registryShortName,
+          "_self",
+        );
+      }}
+    >
       Register
     </Button>,
   ];
