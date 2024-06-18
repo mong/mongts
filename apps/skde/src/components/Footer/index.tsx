@@ -113,7 +113,7 @@ export const Footer = () => {
         </Grid>
 
         <Grid item xs={1} sm={2} md={4} lg={4} marginTop={"5px"}>
-          <Link href={"/"}>
+          <Link href={"https://www.kvalitetsregistre.no/"}>
             <Image
               className="footer-logo"
               id="nsm-footer-logo"
