@@ -28,6 +28,7 @@ declare module "@mui/material/styles" {
     lg: true;
     xl: true;
     xxl: true;
+    xxxl: true;
     desktop: true;
   }
 }
@@ -115,6 +116,7 @@ export const breakpoints = {
   lg: 992,
   xl: 1080,
   xxl: 1408,
+  xxxl: 2560,
 };
 
 // const spacingScale = {
@@ -233,6 +235,7 @@ export const skdeTheme = responsiveFontSizes(
         lg: breakpoints.lg,
         xl: breakpoints.xl,
         xxl: breakpoints.xxl,
+        xxxl: breakpoints.xxxl,
         desktop: 1300,
       },
     },
