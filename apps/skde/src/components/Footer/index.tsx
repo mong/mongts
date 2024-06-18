@@ -98,19 +98,34 @@ export const Footer = () => {
         marginTop={0}
         spacing={4}
       >
-        <Grid item xs={4} sm={8} md={12} lg={12}>
+        <Grid item xs={3} sm={6} md={8} lg={8}>
           <Link href={"/"}>
             <Image
               className="footer-logo"
               id="skde-footer-logo"
               loader={imgLoader}
               src={"/img/logos/logo-skde-neg.svg"}
-              alt="SKDE logo"
+              alt="SKDE-logo"
               width={129}
               height={52}
             />
           </Link>
         </Grid>
+
+        <Grid item xs={1} sm={2} md={4} lg={4} marginTop={"5px"}>
+          <Link href={"https://www.kvalitetsregistre.no/"}>
+            <Image
+              className="footer-logo"
+              id="nsm-footer-logo"
+              loader={imgLoader}
+              src={"/img/logos/logo-nsm-hvit.png"}
+              alt="NSM-logo"
+              width={(566 * 52) / 63}
+              height={52}
+            />
+          </Link>
+        </Grid>
+
         <Grid item xs={4} sm={8} md={12} lg={12}>
           Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i
           Helse Nord.
