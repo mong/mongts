@@ -136,6 +136,7 @@ export const TableBlock = (props: TableBlockProps) => {
           colspan={colspan}
           tr_register_name_class={`${trRegisterNameClass} ${registerName.rname} ${medicalFieldClass}`}
           registryButton={registryButton}
+          registerName={registerName}
         />
       ) : null}
       {indicatorRows}

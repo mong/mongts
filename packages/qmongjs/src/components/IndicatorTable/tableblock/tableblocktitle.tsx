@@ -1,6 +1,7 @@
 import Link from "next/link";
 import style from "./tableblocktitle.module.css";
 import { Button } from "@mui/material";
+import { RegisterName } from "types";
 
 interface BlockTitleProps {
   tabName: string;
@@ -9,6 +10,7 @@ interface BlockTitleProps {
   colspan: number;
   tr_register_name_class: string;
   registryButton?: boolean;
+  registerName: RegisterName;
 }
 
 export const TableBlockTitle = (props: BlockTitleProps) => {
@@ -19,6 +21,7 @@ export const TableBlockTitle = (props: BlockTitleProps) => {
     colspan = 2,
     tr_register_name_class = "register-row",
     registryButton,
+    registerName,
   } = props;
 
   const registryLink = (
@@ -27,23 +30,18 @@ export const TableBlockTitle = (props: BlockTitleProps) => {
     </Link>
   );
 
-  console.log(`/${link}/${tabName}`);
-  const registryShortName = link.split("/")[1];
-
   const registryButtonRow = [
     title,
     <Button
       variant="outlined"
       sx={{ marginLeft: "20px" }}
       onClick={() => {
-        window.open(
-          "/behandlingskvalitet/?context=caregiver&indicator=reg-" +
-            registryShortName,
-          "_self",
-        );
+        if (registerName.url) {
+          window.open(registerName.url, "_blank");
+        }
       }}
     >
-      Register
+      Mer om registeret
     </Button>,
   ];
 
