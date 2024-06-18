@@ -349,6 +349,7 @@ export default function TreatmentQualityPage() {
                       (register: { full_name: string }) => register.full_name,
                     )}
                     showTreatmentYear={true}
+                    registryButton={true}
                   />
                 </IndicatorTableWrapper>
               ))}
