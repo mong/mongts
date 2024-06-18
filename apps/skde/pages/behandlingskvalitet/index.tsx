@@ -49,9 +49,6 @@ const dataQualityKey = "dg";
 // Set to true to display the switch for activating the new table
 const showNewTableSwitch = false;
 
-//const theme = useTheme();
-//const isNarrowScreen = useMediaQuery(theme.breakpoints.down("sm"));
-
 const PageWrapper = styled(Box)(({ theme }) => ({
   "& .header-top, & .header-middle, & .main-toolbar, & .footer": {
     [theme.breakpoints.down("sm")]: {
