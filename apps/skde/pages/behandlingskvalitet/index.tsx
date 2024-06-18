@@ -344,8 +344,8 @@ export default function TreatmentQualityPage() {
           onTabChanged={setTableContext}
         />
         <Grid container xs={12}>
-          {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? (
-            <Grid xxl={3} className="menu-wrapper">
+          {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? ( // Permanent menu on large screens
+            <Grid xxl={3} xxxl={2} className="menu-wrapper">
               {queriesReady && (
                 <Box sx={{ mt: 4, position: "sticky", top: 100 }}>
                   <TreatmentQualityFilterMenu
@@ -359,7 +359,7 @@ export default function TreatmentQualityPage() {
               )}
             </Grid>
           ) : null}
-          <Grid xs={12} xxl={9}>
+          <Grid xs={12} xxl={9} xxxl={10}>
             <Grid container spacing={2} disableEqualOverflow>
               <Grid xs={12}>
                 {queriesReady &&
