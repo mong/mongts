@@ -118,7 +118,7 @@ export const TreatmentQualityToolbar = ({
             <StyledTab
               label={
                 <HtmlTooltip
-                  title="Definert geografisk område og befolkning som behandlingsenheter skal gi helsetjenester til."
+                  title="Med opptaksområde menes de geografiske områdene som helseforetakene og sykehusene har ansvar for å betjene. Resultatene er basert på pasientens bosted og uavhengig av behandlingssted."
                   placement="top"
                 >
                   <Box>Opptaksområder</Box>
