@@ -13,7 +13,6 @@ export interface IndicatorTableBodyProps {
   medicalFieldFilter: string[];
   showLevelFilter: string;
   blockTitle?: string[];
-  registryButton?: boolean;
 }
 
 export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
@@ -28,7 +27,6 @@ export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
     medicalFieldFilter,
     showLevelFilter,
     blockTitle,
-    registryButton,
   } = props;
 
   const done: string[] = [];
@@ -49,7 +47,6 @@ export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
           medicalFieldFilter={medicalFieldFilter}
           showLevelFilter={showLevelFilter}
           blockTitle={blockTitle ? blockTitle[i] : undefined}
-          registryButton={registryButton}
         />
       );
     } else {
