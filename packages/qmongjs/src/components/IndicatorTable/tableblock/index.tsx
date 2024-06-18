@@ -20,6 +20,7 @@ export interface TableBlockProps {
   medicalFieldFilter: string[];
   showLevelFilter: string;
   colspan: number;
+  registryButton?: boolean;
 }
 
 export const TableBlock = (props: TableBlockProps) => {
@@ -35,6 +36,7 @@ export const TableBlock = (props: TableBlockProps) => {
     showLevelFilter,
     blockTitle,
     unitNames,
+    registryButton,
   } = props;
   const queryContext = dataQuality
     ? { context, type: "dg" }
@@ -133,6 +135,7 @@ export const TableBlock = (props: TableBlockProps) => {
           title={blockTitle}
           colspan={colspan}
           tr_register_name_class={`${trRegisterNameClass} ${registerName.rname} ${medicalFieldClass}`}
+          registryButton={registryButton}
         />
       ) : null}
       {indicatorRows}
