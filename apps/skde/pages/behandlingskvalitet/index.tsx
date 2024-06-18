@@ -7,7 +7,9 @@ import {
   ThemeProvider,
   Typography,
   styled,
+  useMediaQuery,
 } from "@mui/material";
+
 import { ChevronLeftRounded } from "@mui/icons-material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useQueryParam, withDefault, StringParam } from "use-query-params";
@@ -48,25 +50,51 @@ const dataQualityKey = "dg";
 const showNewTableSwitch = false;
 
 const PageWrapper = styled(Box)(({ theme }) => ({
-  "& .header-top, & .header-middle, & .main-toolbar, & .footer, & .table-wrapper table, & .table-wrapper .MuiTable-root":
-    {
-      [theme.breakpoints.down("sm")]: {
-        paddingLeft: theme.spacing(2),
-        paddingRight: theme.spacing(2),
-      },
-      [theme.breakpoints.up("sm")]: {
-        paddingLeft: theme.spacing(4),
-        paddingRight: theme.spacing(4),
-      },
-      [theme.breakpoints.up("lg")]: {
-        paddingLeft: theme.spacing(6),
-        paddingRight: theme.spacing(6),
-      },
-      [theme.breakpoints.up("xl")]: {
-        paddingLeft: theme.spacing(16),
-        paddingRight: theme.spacing(16),
-      },
+  "& .header-top, & .header-middle, & .main-toolbar, & .footer": {
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
     },
+    [theme.breakpoints.up("sm")]: {
+      paddingLeft: theme.spacing(4),
+      paddingRight: theme.spacing(4),
+    },
+    [theme.breakpoints.up("lg")]: {
+      paddingLeft: theme.spacing(6),
+      paddingRight: theme.spacing(6),
+    },
+    [theme.breakpoints.up("xl")]: {
+      paddingLeft: theme.spacing(16),
+      paddingRight: theme.spacing(16),
+    },
+  },
+  "& .menu-wrapper": {
+    [theme.breakpoints.up("xxl")]: {
+      paddingLeft: theme.spacing(16),
+    },
+  },
+  "& .table-wrapper table, & .table-wrapper .MuiTable-root": {
+    [theme.breakpoints.down("sm")]: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(2),
+    },
+    [theme.breakpoints.up("sm")]: {
+      paddingLeft: theme.spacing(4),
+      paddingRight: theme.spacing(4),
+    },
+    [theme.breakpoints.up("lg")]: {
+      paddingLeft: theme.spacing(6),
+      paddingRight: theme.spacing(6),
+    },
+    [theme.breakpoints.up("xl")]: {
+      paddingLeft: theme.spacing(16),
+      paddingRight: theme.spacing(16),
+    },
+    [theme.breakpoints.up("xxl")]: {
+      paddingLeft: theme.spacing(2),
+      paddingRight: theme.spacing(16),
+    },
+  },
   backgroundColor: theme.palette.background.paper,
 }));
 
@@ -315,43 +343,63 @@ export default function TreatmentQualityPage() {
           context={tableContext}
           onTabChanged={setTableContext}
         />
-        <Grid container spacing={2} disableEqualOverflow>
-          <Grid xs={12}>
-            {queriesReady &&
-              (newIndicatorTableActivated || newTableOnly ? (
-                <IndicatorTableV2Wrapper className="table-wrapper">
-                  <IndicatorTableBodyV2
-                    key="indicator-table"
+        <Grid container xs={12}>
+          {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? (
+            <Grid xxl={3} className="menu-wrapper">
+              {queriesReady && (
+                <Box sx={{ mt: 4, position: "sticky", top: 100 }}>
+                  <TreatmentQualityFilterMenu
+                    onSelectionChanged={handleFilterChanged}
+                    onFilterInitialized={handleFilterInitialized}
+                    registryNameData={registers}
+                    medicalFieldData={medicalFields}
                     context={tableContext}
-                    unitNames={selectedTreatmentUnits}
-                    year={selectedYear}
-                    type={dataQualitySelected ? "dg" : "ind"}
-                    levels={selectedLevel}
-                    medfields={selectedMedicalFields}
                   />
-                </IndicatorTableV2Wrapper>
-              ) : (
-                <IndicatorTableWrapper className="table-wrapper">
-                  <IndicatorTable
-                    key="indicator-table"
-                    context={tableContext}
-                    dataQuality={dataQualitySelected}
-                    tableType="allRegistries"
-                    registerNames={registers}
-                    unitNames={selectedTreatmentUnits}
-                    treatmentYear={selectedYear}
-                    colspan={selectedTreatmentUnits.length + 1}
-                    medicalFieldFilter={selectedMedicalFields}
-                    showLevelFilter={selectedLevel}
-                    selection_bar_height={0}
-                    legend_height={0}
-                    blockTitle={registers.map(
-                      (register: { full_name: string }) => register.full_name,
-                    )}
-                    showTreatmentYear={true}
-                  />
-                </IndicatorTableWrapper>
-              ))}
+                </Box>
+              )}
+            </Grid>
+          ) : null}
+          <Grid xs={12} xxl={9}>
+            <Grid container spacing={2} disableEqualOverflow>
+              <Grid xs={12}>
+                {queriesReady &&
+                  (newIndicatorTableActivated || newTableOnly ? (
+                    <IndicatorTableV2Wrapper className="table-wrapper">
+                      <IndicatorTableBodyV2
+                        key="indicator-table"
+                        context={tableContext}
+                        unitNames={selectedTreatmentUnits}
+                        year={selectedYear}
+                        type={dataQualitySelected ? "dg" : "ind"}
+                        levels={selectedLevel}
+                        medfields={selectedMedicalFields}
+                      />
+                    </IndicatorTableV2Wrapper>
+                  ) : (
+                    <IndicatorTableWrapper className="table-wrapper">
+                      <IndicatorTable
+                        key="indicator-table"
+                        context={tableContext}
+                        dataQuality={dataQualitySelected}
+                        tableType="allRegistries"
+                        registerNames={registers}
+                        unitNames={selectedTreatmentUnits}
+                        treatmentYear={selectedYear}
+                        colspan={selectedTreatmentUnits.length + 1}
+                        medicalFieldFilter={selectedMedicalFields}
+                        showLevelFilter={selectedLevel}
+                        selection_bar_height={0}
+                        legend_height={0}
+                        blockTitle={registers.map(
+                          (register: { full_name: string }) =>
+                            register.full_name,
+                        )}
+                        showTreatmentYear={true}
+                      />
+                    </IndicatorTableWrapper>
+                  ))}
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
         <Footer />

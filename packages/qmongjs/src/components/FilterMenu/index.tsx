@@ -344,7 +344,7 @@ export const FilterMenu = ({
   return (
     <FilterSettingsContext.Provider value={filterSettings}>
       <FilterSettingsDispatchContext.Provider value={dispatch}>
-        <Stack>{sections}</Stack>
+        <Stack disableGutters>{sections}</Stack>
       </FilterSettingsDispatchContext.Provider>
     </FilterSettingsContext.Provider>
   );
