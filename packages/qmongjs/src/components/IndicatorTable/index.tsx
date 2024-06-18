@@ -18,7 +18,6 @@ export interface IndicatorTableProps {
   showLevelFilter?: string;
   blockTitle?: string[];
   showTreatmentYear?: boolean;
-  registryButton?: boolean;
 }
 
 export const IndicatorTable = (props: IndicatorTableProps) => {
@@ -37,7 +36,6 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
     descriptionHeader,
     blockTitle,
     showTreatmentYear,
-    registryButton,
   } = props;
 
   return (
@@ -61,7 +59,6 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
         medicalFieldFilter={medicalFieldFilter}
         showLevelFilter={showLevelFilter ?? ""}
         blockTitle={blockTitle}
-        registryButton={registryButton}
       />
     </table>
   );
