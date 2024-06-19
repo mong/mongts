@@ -347,7 +347,15 @@ export default function TreatmentQualityPage() {
           {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? ( // Permanent menu on large screens
             <Grid xxl={3} xxxl={2} className="menu-wrapper">
               {queriesReady && (
-                <Box sx={{ mt: 4 }}>
+                <Box
+                  sx={{
+                    mt: 4,
+                    position: "sticky",
+                    top: 100,
+                    overflow: "auto",
+                    maxHeight: window.innerHeight - 150,
+                  }}
+                >
                   <TreatmentQualityFilterMenu
                     onSelectionChanged={handleFilterChanged}
                     onFilterInitialized={handleFilterInitialized}
