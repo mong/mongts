@@ -99,6 +99,7 @@ export const Footer = () => {
         spacing={4}
         sx={{ overflow: "clip" }}
       >
+        
         <Grid item xs={4} sm={8} md={4} lg={6} xl={6} xxl={8}>
           <Link href={"/"}>
             <Image
@@ -119,7 +120,7 @@ export const Footer = () => {
               className="footer-logo"
               id="nsm-footer-logo"
               loader={imgLoader}
-              src={"/img/logos/logo-nsm-hvit.png"}
+              src={"/img/logos/nsm-hvit.svg"}
               alt="NSM-logo"
               width={(566 * 52) / 63}
               height={52}
