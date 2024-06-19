@@ -99,7 +99,7 @@ export const Footer = () => {
         spacing={4}
         sx={{ overflow: "clip" }}
       >
-        <Grid item xs={4} sm={8} md={5} lg={6} xl={6} xxl={8}>
+        <Grid item xs={4} sm={8} md={4} lg={6} xl={6} xxl={8}>
           <Link href={"/"}>
             <Image
               className="footer-logo"
@@ -113,7 +113,7 @@ export const Footer = () => {
           </Link>
         </Grid>
 
-        <Grid item xs={4} sm={8} md={7} lg={6} xl={6} xxl={4} marginTop={"5px"}>
+        <Grid item xs={4} sm={8} md={8} lg={6} xl={6} xxl={4} marginTop={"5px"}>
           <Link href={"https://www.kvalitetsregistre.no/"}>
             <Image
               className="footer-logo"
