@@ -351,9 +351,9 @@ export default function TreatmentQualityPage() {
                   sx={{
                     mt: 4,
                     position: "sticky",
-                    top: "100px",
-                    overflow: "scroll",
-                    maxHeight: window.innerHeight,
+                    top: 100,
+                    overflow: "auto",
+                    maxHeight: window.innerHeight - 150,
                   }}
                 >
                   <TreatmentQualityFilterMenu
