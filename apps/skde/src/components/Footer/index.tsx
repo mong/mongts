@@ -93,12 +93,13 @@ export const Footer = () => {
 
       <FooterGridBottom
         container
-        columns={{ xs: 4, sm: 8, md: 12, lg: 12 }}
+        columns={{ xs: 4, sm: 8, md: 12, lg: 12, xl: 12, xxl: 12 }}
         className="footer"
         marginTop={0}
         spacing={4}
+        sx={{ overflow: "clip" }}
       >
-        <Grid item xs={3} sm={6} md={8} lg={8}>
+        <Grid item xs={4} sm={8} md={5} lg={6} xl={6} xxl={8}>
           <Link href={"/"}>
             <Image
               className="footer-logo"
@@ -112,7 +113,7 @@ export const Footer = () => {
           </Link>
         </Grid>
 
-        <Grid item xs={1} sm={2} md={4} lg={4} marginTop={"5px"}>
+        <Grid item xs={4} sm={8} md={7} lg={6} xl={6} xxl={4} marginTop={"5px"}>
           <Link href={"https://www.kvalitetsregistre.no/"}>
             <Image
               className="footer-logo"
