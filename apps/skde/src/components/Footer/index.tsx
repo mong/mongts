@@ -28,7 +28,13 @@ const StyledLink = styled(Link)(() => ({
   textDecoration: "underline",
 }));
 
-export const Footer = () => {
+export type FooterProps = {
+  page: "behandlingskvalitet" | "helseatlas";
+};
+
+export const Footer = (props: FooterProps) => {
+  const { page } = props;
+
   const leftMargin = 0;
   const topMargin = 2;
 
@@ -111,7 +117,32 @@ export const Footer = () => {
             />
           </Link>
         </Grid>
-
+        {page === "helseatlas" ? (
+          <>
+            <Grid item xs={4} sm={4} md={8} lg={8}>
+              <Link href="https://helse-forde.no/" title="Link til Helse Førde">
+                <Image
+                  loader={imgLoader}
+                  src={`/helseatlas/img/logos/helse-forde-hvit.svg`}
+                  height={52}
+                  width={(180 * 52) / 40}
+                  alt="Helse Førde logo"
+                />
+              </Link>
+            </Grid>
+            <Grid item xs={4} sm={4} md={4} lg={4}>
+              <Link href="https://helse-vest.no/" title="Link til Helse Vest">
+                <Image
+                  loader={imgLoader}
+                  src={`/helseatlas/img/logos/helse-vest-hvit.svg`}
+                  height={52}
+                  width={(180 * 52) / 40}
+                  alt="Helse Vest logo"
+                />
+              </Link>
+            </Grid>
+          </>
+        ) : null}
         <Grid item xs={4} sm={8} md={12} lg={12}>
           Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i
           Helse Nord.
