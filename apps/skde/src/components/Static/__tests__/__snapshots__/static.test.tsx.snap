@@ -2,195 +2,255 @@
 
 exports[`Bokmål render 1`] = `
 <div>
-  <header
-    class="_headerContainer_d17b29"
+  <div
+    class="MuiBox-root css-zsbhx5"
   >
-    <div
-      class="_headerLogo_d17b29"
-    >
-      <a
-        href="/helseatlas"
-        rel="home"
-      >
-        <img
-          alt="Hjem"
-          data-nimg="1"
-          decoding="async"
-          height="47"
-          loading="lazy"
-          src="/helseatlas/img/logos/helseatlas.svg?w=384&q=75"
-          srcset="/helseatlas/img/logos/helseatlas.svg?w=256&q=75 1x, /helseatlas/img/logos/helseatlas.svg?w=384&q=75 2x"
-          style="color: transparent;"
-          width="186"
-        />
-      </a>
-    </div>
-    <nav
-      class="_headerNavContainer_d17b29"
+    <header
+      class="_headerContainer_d17b29"
     >
       <div
-        class="_navButtons_d17b29"
+        class="_headerLogo_d17b29"
+      >
+        <a
+          href="/helseatlas"
+          rel="home"
+        >
+          <img
+            alt="Hjem"
+            data-nimg="1"
+            decoding="async"
+            height="47"
+            loading="lazy"
+            src="/helseatlas/img/logos/helseatlas.svg?w=384&q=75"
+            srcset="/helseatlas/img/logos/helseatlas.svg?w=256&q=75 1x, /helseatlas/img/logos/helseatlas.svg?w=384&q=75 2x"
+            style="color: transparent;"
+            width="186"
+          />
+        </a>
+      </div>
+      <nav
+        class="_headerNavContainer_d17b29"
       >
         <div
-          class="_lang_d17b29"
+          class="_navButtons_d17b29"
         >
           <div
-            class="_no_d17b29 _active_d17b29"
-            data-testid="buttonNo"
+            class="_lang_d17b29"
           >
-            <a
-              href="/helseatlas"
-            >
-              NO
-            </a>
-          </div>
-          <div
-            class="_eng_d17b29 undefined"
-            data-testid="buttonEng"
-          >
-            <a
-              href="/helseatlas/en"
-            >
-              ENG
-            </a>
-          </div>
-        </div>
-        <div
-          class="_menuButton_d17b29"
-        >
-          <div>
             <div
-              class="_popUpBtn_d1cb5c"
+              class="_no_d17b29 _active_d17b29"
+              data-testid="buttonNo"
             >
-              <button
-                class="_button_4123ea"
-                data-testid="menuButton"
+              <a
+                href="/helseatlas"
               >
-                <span
-                  class="_buttonBurgerIcon_4123ea"
+                NO
+              </a>
+            </div>
+            <div
+              class="_eng_d17b29 undefined"
+              data-testid="buttonEng"
+            >
+              <a
+                href="/helseatlas/en"
+              >
+                ENG
+              </a>
+            </div>
+          </div>
+          <div
+            class="_menuButton_d17b29"
+          >
+            <div>
+              <div
+                class="_popUpBtn_d1cb5c"
+              >
+                <button
+                  class="_button_4123ea"
+                  data-testid="menuButton"
                 >
                   <span
-                    class="top"
-                  />
+                    class="_buttonBurgerIcon_4123ea"
+                  >
+                    <span
+                      class="top"
+                    />
+                    <span
+                      class="middle"
+                    />
+                    <span
+                      class="bottom"
+                    />
+                  </span>
                   <span
-                    class="middle"
-                  />
-                  <span
-                    class="bottom"
-                  />
-                </span>
-                <span
-                  class="_buttonText_4123ea"
-                >
-                  MENY
-                </span>
-              </button>
+                    class="_buttonText_4123ea"
+                  >
+                    MENY
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
-  </header>
-  <div
-    class="_container_6b07e8"
-  >
+      </nav>
+    </header>
     <div
-      class="_article__title_6b07e8"
-    >
-      <h1>
-        Dette er en tittel
-      </h1>
-    </div>
-    <div
-      class="_article_6b07e8"
+      class="_container_6b07e8"
     >
       <div
-        class="_article__content_6b07e8"
+        class="_article__title_6b07e8"
+      >
+        <h1>
+          Dette er en tittel
+        </h1>
+      </div>
+      <div
+        class="_article_6b07e8"
       >
         <div
-          class="_ingress_e666a6"
+          class="_article__content_6b07e8"
         >
+          <div
+            class="_ingress_e666a6"
+          >
+            <p>
+              Dette er et sammendrag
+            </p>
+          </div>
           <p>
-            Dette er et sammendrag
+            Dette er en kort tekst
           </p>
         </div>
-        <p>
-          Dette er en kort tekst
-        </p>
       </div>
     </div>
-  </div>
-  <footer
-    class="_footerContainer_2cbb36"
-  >
     <div
-      class="_footerContent_2cbb36"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1utwk74-MuiPaper-root"
     >
       <div
-        class="_footerTop_2cbb36"
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 footer css-17ran83-MuiGrid-root"
       >
-        <strong>
-          Senter for klinisk dokumentasjon og evaluering (SKDE)
-        </strong>
-        <br />
-        Postboks 6
-        <br />
-        9038 Tromsø
-        <br />
-        <br />
-        <strong>
-          Helse Førde
-        </strong>
-        <br />
-        Postboks 1000
-        <br />
-        6807 Førde
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-5irjj1-MuiGrid-root"
+        >
+          <div
+            class="MuiStack-root css-v2woy3-MuiStack-root"
+          >
+            <h4>
+              OM NETTSTEDET
+            </h4>
+            <div
+              class="MuiStack-root css-1rlitzi-MuiStack-root"
+            >
+              Personvern
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                data-testid="ArrowForwardIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiStack-root css-1rlitzi-MuiStack-root"
+            >
+              Informasjonskapsler
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                data-testid="ArrowForwardIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiStack-root css-1rlitzi-MuiStack-root"
+            >
+              Tilgjengelighetserklæring
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                data-testid="ArrowOutwardIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M6 6v2h8.59L5 17.59 6.41 19 16 9.41V18h2V6z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-cxirnq-MuiGrid-root"
+        >
+          <div
+            class="MuiStack-root css-v2woy3-MuiStack-root"
+          >
+            <h4>
+              KONTAKT
+            </h4>
+            <div
+              class="MuiStack-root css-1rlitzi-MuiStack-root"
+            >
+              Kontakt SKDE
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                data-testid="ArrowForwardIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-1tx075d-MuiGrid-root"
+        />
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-1tx075d-MuiGrid-root"
+        />
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 css-jp7hjq-MuiGrid-root"
+        />
       </div>
       <div
-        class="_footerBottom_2cbb36"
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 footer css-1dwca7h-MuiGrid-root"
       >
         <div
-          class="_logo_2cbb36"
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 css-jp7hjq-MuiGrid-root"
         >
           <a
-            href="https://helse-nord.no/"
-            title="Link til Helse Nord"
+            href="/"
           >
             <img
-              alt="Helse Nord logo"
+              alt="SKDE-logo"
+              class="footer-logo"
               data-nimg="1"
               decoding="async"
-              height="40"
+              height="52"
+              id="skde-footer-logo"
               loading="lazy"
-              src="/helseatlas/img/logos/helse-nord-hvit.svg?w=384&q=75"
-              srcset="/helseatlas/img/logos/helse-nord-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-nord-hvit.svg?w=384&q=75 2x"
+              src="/img/logos/logo-skde-neg.svg?w=384&q=75"
+              srcset="/img/logos/logo-skde-neg.svg?w=256&q=75 1x, /img/logos/logo-skde-neg.svg?w=384&q=75 2x"
               style="color: transparent;"
-              width="180"
+              width="129"
             />
           </a>
         </div>
         <div
-          class="_logo_2cbb36"
-        >
-          <a
-            href="https://www.skde.no/"
-            title="Link til SKDE"
-          >
-            <img
-              alt="SKDE logo"
-              data-nimg="1"
-              decoding="async"
-              height="40"
-              loading="lazy"
-              src="/helseatlas/img/logos/skde-hvit.svg?w=384&q=75"
-              srcset="/helseatlas/img/logos/skde-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/skde-hvit.svg?w=384&q=75 2x"
-              style="color: transparent;"
-              width="180"
-            />
-          </a>
-        </div>
-        <div
-          class="_logo_2cbb36"
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-8 MuiGrid-grid-lg-8 css-1urkk6o-MuiGrid-root"
         >
           <a
             href="https://helse-forde.no/"
@@ -200,17 +260,17 @@ exports[`Bokmål render 1`] = `
               alt="Helse Førde logo"
               data-nimg="1"
               decoding="async"
-              height="40"
+              height="52"
               loading="lazy"
-              src="/helseatlas/img/logos/helse-forde-hvit.svg?w=384&q=75"
-              srcset="/helseatlas/img/logos/helse-forde-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-forde-hvit.svg?w=384&q=75 2x"
+              src="/helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75"
+              srcset="/helseatlas/img/logos/helse-forde-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75 2x"
               style="color: transparent;"
-              width="180"
+              width="234"
             />
           </a>
         </div>
         <div
-          class="_logo_2cbb36"
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-1c6ycwg-MuiGrid-root"
         >
           <a
             href="https://helse-vest.no/"
@@ -220,256 +280,411 @@ exports[`Bokmål render 1`] = `
               alt="Helse Vest logo"
               data-nimg="1"
               decoding="async"
-              height="40"
+              height="52"
               loading="lazy"
-              src="/helseatlas/img/logos/helse-vest-hvit.svg?w=384&q=75"
-              srcset="/helseatlas/img/logos/helse-vest-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-vest-hvit.svg?w=384&q=75 2x"
+              src="/helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75"
+              srcset="/helseatlas/img/logos/helse-vest-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75 2x"
               style="color: transparent;"
-              width="180"
+              width="234"
             />
           </a>
         </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 css-jp7hjq-MuiGrid-root"
+        >
+          Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i Helse Nord.
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-1c6ycwg-MuiGrid-root"
+        >
+          <div
+            class="MuiStack-root css-nen11g-MuiStack-root"
+          >
+            <b>
+              TELEFON
+            </b>
+            <a
+              class="css-abunt4"
+              href="tel:77755800"
+            >
+              77 75 58 00
+            </a>
+            <br />
+            <b>
+              EPOST
+            </b>
+            <a
+              class="css-abunt4"
+              href="mailto:postmottak@helse-nord.no"
+            >
+              postmottak@helse-nord.no
+            </a>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-1c6ycwg-MuiGrid-root"
+        >
+          <div
+            class="MuiStack-root css-nen11g-MuiStack-root"
+          >
+            <b>
+              BESØKSADRESSE
+            </b>
+            <text>
+              Sykehusvegen 23
+            </text>
+            <text>
+               9019 TROMSØ
+            </text>
+            <a
+              class="css-abunt4"
+              href="https://maps.app.goo.gl/ohLzsYb8v6YvEDfL9"
+            >
+              Vis kart
+            </a>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-1c6ycwg-MuiGrid-root"
+        >
+          <div
+            class="MuiStack-root css-nen11g-MuiStack-root"
+          >
+            <b>
+              ORGANISASJONSNUMMER
+            </b>
+            <text>
+              990803765
+              
+
+            </text>
+            <div
+              class="MuiBox-root css-1hnm6b6"
+            >
+              <a
+                href="https://www.helse-nord.no/"
+              >
+                <img
+                  alt="Helse Nord logo"
+                  class="footer-logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="76"
+                  id="helse-nord-logo"
+                  loading="lazy"
+                  src="/img/logos/logo-helse-nord-neg.svg?w=640&q=75"
+                  srcset="/img/logos/logo-helse-nord-neg.svg?w=256&q=75 1x, /img/logos/logo-helse-nord-neg.svg?w=640&q=75 2x"
+                  style="color: transparent;"
+                  width="220"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 css-1c6ycwg-MuiGrid-root"
+        />
       </div>
     </div>
-  </footer>
+  </div>
 </div>
 `;
 
 exports[`English render 1`] = `
 <div>
-  <header
-    class="_headerContainer_d17b29"
+  <div
+    class="MuiBox-root css-zsbhx5"
   >
-    <div
-      class="_headerLogo_d17b29"
-    >
-      <a
-        href="/helseatlas/en"
-        rel="home"
-      >
-        <img
-          alt="Hjem"
-          data-nimg="1"
-          decoding="async"
-          height="47"
-          loading="lazy"
-          src="/helseatlas/img/logos/helseatlas.svg?w=384&q=75"
-          srcset="/helseatlas/img/logos/helseatlas.svg?w=256&q=75 1x, /helseatlas/img/logos/helseatlas.svg?w=384&q=75 2x"
-          style="color: transparent;"
-          width="186"
-        />
-      </a>
-    </div>
-    <nav
-      class="_headerNavContainer_d17b29"
+    <header
+      class="_headerContainer_d17b29"
     >
       <div
-        class="_navButtons_d17b29"
+        class="_headerLogo_d17b29"
+      >
+        <a
+          href="/helseatlas/en"
+          rel="home"
+        >
+          <img
+            alt="Hjem"
+            data-nimg="1"
+            decoding="async"
+            height="47"
+            loading="lazy"
+            src="/helseatlas/img/logos/helseatlas.svg?w=384&q=75"
+            srcset="/helseatlas/img/logos/helseatlas.svg?w=256&q=75 1x, /helseatlas/img/logos/helseatlas.svg?w=384&q=75 2x"
+            style="color: transparent;"
+            width="186"
+          />
+        </a>
+      </div>
+      <nav
+        class="_headerNavContainer_d17b29"
       >
         <div
-          class="_lang_d17b29"
+          class="_navButtons_d17b29"
         >
           <div
-            class="_no_d17b29 undefined"
-            data-testid="buttonNo"
+            class="_lang_d17b29"
           >
-            <a
-              href="/helseatlas"
-            >
-              NO
-            </a>
-          </div>
-          <div
-            class="_eng_d17b29 _active_d17b29"
-            data-testid="buttonEng"
-          >
-            <a
-              href="/helseatlas/en"
-            >
-              ENG
-            </a>
-          </div>
-        </div>
-        <div
-          class="_menuButton_d17b29"
-        >
-          <div>
             <div
-              class="_popUpBtn_d1cb5c"
+              class="_no_d17b29 undefined"
+              data-testid="buttonNo"
             >
-              <button
-                class="_button_4123ea"
-                data-testid="menuButton"
+              <a
+                href="/helseatlas"
               >
-                <span
-                  class="_buttonBurgerIcon_4123ea"
+                NO
+              </a>
+            </div>
+            <div
+              class="_eng_d17b29 _active_d17b29"
+              data-testid="buttonEng"
+            >
+              <a
+                href="/helseatlas/en"
+              >
+                ENG
+              </a>
+            </div>
+          </div>
+          <div
+            class="_menuButton_d17b29"
+          >
+            <div>
+              <div
+                class="_popUpBtn_d1cb5c"
+              >
+                <button
+                  class="_button_4123ea"
+                  data-testid="menuButton"
                 >
                   <span
-                    class="top"
-                  />
+                    class="_buttonBurgerIcon_4123ea"
+                  >
+                    <span
+                      class="top"
+                    />
+                    <span
+                      class="middle"
+                    />
+                    <span
+                      class="bottom"
+                    />
+                  </span>
                   <span
-                    class="middle"
-                  />
-                  <span
-                    class="bottom"
-                  />
-                </span>
-                <span
-                  class="_buttonText_4123ea"
-                >
-                  MENU
-                </span>
-              </button>
+                    class="_buttonText_4123ea"
+                  >
+                    MENU
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
-  </header>
-  <div
-    class="_container_6b07e8"
-  >
+      </nav>
+    </header>
     <div
-      class="_article__title_6b07e8"
-    >
-      <h1>
-        This is the title
-      </h1>
-    </div>
-    <div
-      class="_article_6b07e8"
+      class="_container_6b07e8"
     >
       <div
-        class="_article__content_6b07e8"
+        class="_article__title_6b07e8"
+      >
+        <h1>
+          This is the title
+        </h1>
+      </div>
+      <div
+        class="_article_6b07e8"
       >
         <div
-          class="_ingress_e666a6"
+          class="_article__content_6b07e8"
         >
-          <p>
-            This is a summary
-          </p>
-        </div>
-        <p>
-          Dette er en test
-        </p>
-        
-
-        <h1
-          id="hovedoverskrift"
-        >
-          Hovedoverskrift
-        </h1>
-        
-
-        <p>
-          Litt mer tekst
-        </p>
-        
-
-        <h2
-          id="underoverskrift"
-        >
-          Underoverskrift
-        </h2>
-        
-
-        <h3
-          id="dette-er-en-overskrift"
-        >
-          Dette er en overskrift!
-        </h3>
-        
-
-        <pre>
-          <code
-            class="language-sas"
+          <div
+            class="_ingress_e666a6"
           >
-            data test;
+            <p>
+              This is a summary
+            </p>
+          </div>
+          <p>
+            Dette er en test
+          </p>
+          
+
+          <h1
+            id="hovedoverskrift"
+          >
+            Hovedoverskrift
+          </h1>
+          
+
+          <p>
+            Litt mer tekst
+          </p>
+          
+
+          <h2
+            id="underoverskrift"
+          >
+            Underoverskrift
+          </h2>
+          
+
+          <h3
+            id="dette-er-en-overskrift"
+          >
+            Dette er en overskrift!
+          </h3>
+          
+
+          <pre>
+            <code
+              class="language-sas"
+            >
+              data test;
 set test2;
 var = 0;
 run;
 
-          </code>
-        </pre>
-        
+            </code>
+          </pre>
+          
 
-        <p>
-          Og litt tekst her
-        </p>
+          <p>
+            Og litt tekst her
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-  <footer
-    class="_footerContainer_2cbb36"
-  >
     <div
-      class="_footerContent_2cbb36"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1utwk74-MuiPaper-root"
     >
       <div
-        class="_footerTop_2cbb36"
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 footer css-17ran83-MuiGrid-root"
       >
-        <strong>
-          Senter for klinisk dokumentasjon og evaluering (SKDE)
-        </strong>
-        <br />
-        Postboks 6
-        <br />
-        9038 Tromsø
-        <br />
-        <br />
-        <strong>
-          Helse Førde
-        </strong>
-        <br />
-        Postboks 1000
-        <br />
-        6807 Førde
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-5irjj1-MuiGrid-root"
+        >
+          <div
+            class="MuiStack-root css-v2woy3-MuiStack-root"
+          >
+            <h4>
+              OM NETTSTEDET
+            </h4>
+            <div
+              class="MuiStack-root css-1rlitzi-MuiStack-root"
+            >
+              Personvern
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                data-testid="ArrowForwardIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiStack-root css-1rlitzi-MuiStack-root"
+            >
+              Informasjonskapsler
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                data-testid="ArrowForwardIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiStack-root css-1rlitzi-MuiStack-root"
+            >
+              Tilgjengelighetserklæring
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                data-testid="ArrowOutwardIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M6 6v2h8.59L5 17.59 6.41 19 16 9.41V18h2V6z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-cxirnq-MuiGrid-root"
+        >
+          <div
+            class="MuiStack-root css-v2woy3-MuiStack-root"
+          >
+            <h4>
+              KONTAKT
+            </h4>
+            <div
+              class="MuiStack-root css-1rlitzi-MuiStack-root"
+            >
+              Kontakt SKDE
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                data-testid="ArrowForwardIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-1tx075d-MuiGrid-root"
+        />
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-1tx075d-MuiGrid-root"
+        />
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 css-jp7hjq-MuiGrid-root"
+        />
       </div>
       <div
-        class="_footerBottom_2cbb36"
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 footer css-1dwca7h-MuiGrid-root"
       >
         <div
-          class="_logo_2cbb36"
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 css-jp7hjq-MuiGrid-root"
         >
           <a
-            href="https://helse-nord.no/"
-            title="Link til Helse Nord"
+            href="/"
           >
             <img
-              alt="Helse Nord logo"
+              alt="SKDE-logo"
+              class="footer-logo"
               data-nimg="1"
               decoding="async"
-              height="40"
+              height="52"
+              id="skde-footer-logo"
               loading="lazy"
-              src="/helseatlas/img/logos/helse-nord-hvit.svg?w=384&q=75"
-              srcset="/helseatlas/img/logos/helse-nord-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-nord-hvit.svg?w=384&q=75 2x"
+              src="/img/logos/logo-skde-neg.svg?w=384&q=75"
+              srcset="/img/logos/logo-skde-neg.svg?w=256&q=75 1x, /img/logos/logo-skde-neg.svg?w=384&q=75 2x"
               style="color: transparent;"
-              width="180"
+              width="129"
             />
           </a>
         </div>
         <div
-          class="_logo_2cbb36"
-        >
-          <a
-            href="https://www.skde.no/"
-            title="Link til SKDE"
-          >
-            <img
-              alt="SKDE logo"
-              data-nimg="1"
-              decoding="async"
-              height="40"
-              loading="lazy"
-              src="/helseatlas/img/logos/skde-hvit.svg?w=384&q=75"
-              srcset="/helseatlas/img/logos/skde-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/skde-hvit.svg?w=384&q=75 2x"
-              style="color: transparent;"
-              width="180"
-            />
-          </a>
-        </div>
-        <div
-          class="_logo_2cbb36"
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-8 MuiGrid-grid-lg-8 css-1urkk6o-MuiGrid-root"
         >
           <a
             href="https://helse-forde.no/"
@@ -479,17 +694,17 @@ run;
               alt="Helse Førde logo"
               data-nimg="1"
               decoding="async"
-              height="40"
+              height="52"
               loading="lazy"
-              src="/helseatlas/img/logos/helse-forde-hvit.svg?w=384&q=75"
-              srcset="/helseatlas/img/logos/helse-forde-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-forde-hvit.svg?w=384&q=75 2x"
+              src="/helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75"
+              srcset="/helseatlas/img/logos/helse-forde-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75 2x"
               style="color: transparent;"
-              width="180"
+              width="234"
             />
           </a>
         </div>
         <div
-          class="_logo_2cbb36"
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-1c6ycwg-MuiGrid-root"
         >
           <a
             href="https://helse-vest.no/"
@@ -499,212 +714,367 @@ run;
               alt="Helse Vest logo"
               data-nimg="1"
               decoding="async"
-              height="40"
+              height="52"
               loading="lazy"
-              src="/helseatlas/img/logos/helse-vest-hvit.svg?w=384&q=75"
-              srcset="/helseatlas/img/logos/helse-vest-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-vest-hvit.svg?w=384&q=75 2x"
+              src="/helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75"
+              srcset="/helseatlas/img/logos/helse-vest-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75 2x"
               style="color: transparent;"
-              width="180"
+              width="234"
             />
           </a>
         </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 css-jp7hjq-MuiGrid-root"
+        >
+          Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i Helse Nord.
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-1c6ycwg-MuiGrid-root"
+        >
+          <div
+            class="MuiStack-root css-nen11g-MuiStack-root"
+          >
+            <b>
+              TELEFON
+            </b>
+            <a
+              class="css-abunt4"
+              href="tel:77755800"
+            >
+              77 75 58 00
+            </a>
+            <br />
+            <b>
+              EPOST
+            </b>
+            <a
+              class="css-abunt4"
+              href="mailto:postmottak@helse-nord.no"
+            >
+              postmottak@helse-nord.no
+            </a>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-1c6ycwg-MuiGrid-root"
+        >
+          <div
+            class="MuiStack-root css-nen11g-MuiStack-root"
+          >
+            <b>
+              BESØKSADRESSE
+            </b>
+            <text>
+              Sykehusvegen 23
+            </text>
+            <text>
+               9019 TROMSØ
+            </text>
+            <a
+              class="css-abunt4"
+              href="https://maps.app.goo.gl/ohLzsYb8v6YvEDfL9"
+            >
+              Vis kart
+            </a>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-1c6ycwg-MuiGrid-root"
+        >
+          <div
+            class="MuiStack-root css-nen11g-MuiStack-root"
+          >
+            <b>
+              ORGANISASJONSNUMMER
+            </b>
+            <text>
+              990803765
+              
+
+            </text>
+            <div
+              class="MuiBox-root css-1hnm6b6"
+            >
+              <a
+                href="https://www.helse-nord.no/"
+              >
+                <img
+                  alt="Helse Nord logo"
+                  class="footer-logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="76"
+                  id="helse-nord-logo"
+                  loading="lazy"
+                  src="/img/logos/logo-helse-nord-neg.svg?w=640&q=75"
+                  srcset="/img/logos/logo-helse-nord-neg.svg?w=256&q=75 1x, /img/logos/logo-helse-nord-neg.svg?w=640&q=75 2x"
+                  style="color: transparent;"
+                  width="220"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 css-1c6ycwg-MuiGrid-root"
+        />
       </div>
     </div>
-  </footer>
+  </div>
 </div>
 `;
 
 exports[`Nynorsk render 1`] = `
 <div>
-  <header
-    class="_headerContainer_d17b29"
+  <div
+    class="MuiBox-root css-zsbhx5"
   >
-    <div
-      class="_headerLogo_d17b29"
-    >
-      <a
-        href="/helseatlas"
-        rel="home"
-      >
-        <img
-          alt="Hjem"
-          data-nimg="1"
-          decoding="async"
-          height="47"
-          loading="lazy"
-          src="/helseatlas/img/logos/helseatlas.svg?w=384&q=75"
-          srcset="/helseatlas/img/logos/helseatlas.svg?w=256&q=75 1x, /helseatlas/img/logos/helseatlas.svg?w=384&q=75 2x"
-          style="color: transparent;"
-          width="186"
-        />
-      </a>
-    </div>
-    <nav
-      class="_headerNavContainer_d17b29"
+    <header
+      class="_headerContainer_d17b29"
     >
       <div
-        class="_navButtons_d17b29"
+        class="_headerLogo_d17b29"
+      >
+        <a
+          href="/helseatlas"
+          rel="home"
+        >
+          <img
+            alt="Hjem"
+            data-nimg="1"
+            decoding="async"
+            height="47"
+            loading="lazy"
+            src="/helseatlas/img/logos/helseatlas.svg?w=384&q=75"
+            srcset="/helseatlas/img/logos/helseatlas.svg?w=256&q=75 1x, /helseatlas/img/logos/helseatlas.svg?w=384&q=75 2x"
+            style="color: transparent;"
+            width="186"
+          />
+        </a>
+      </div>
+      <nav
+        class="_headerNavContainer_d17b29"
       >
         <div
-          class="_lang_d17b29"
+          class="_navButtons_d17b29"
         >
           <div
-            class="_no_d17b29 _active_d17b29"
-            data-testid="buttonNo"
+            class="_lang_d17b29"
           >
-            <a
-              href="/helseatlas"
-            >
-              NO
-            </a>
-          </div>
-          <div
-            class="_eng_d17b29 undefined"
-            data-testid="buttonEng"
-          >
-            <a
-              href="/helseatlas/en"
-            >
-              ENG
-            </a>
-          </div>
-        </div>
-        <div
-          class="_menuButton_d17b29"
-        >
-          <div>
             <div
-              class="_popUpBtn_d1cb5c"
+              class="_no_d17b29 _active_d17b29"
+              data-testid="buttonNo"
             >
-              <button
-                class="_button_4123ea"
-                data-testid="menuButton"
+              <a
+                href="/helseatlas"
               >
-                <span
-                  class="_buttonBurgerIcon_4123ea"
+                NO
+              </a>
+            </div>
+            <div
+              class="_eng_d17b29 undefined"
+              data-testid="buttonEng"
+            >
+              <a
+                href="/helseatlas/en"
+              >
+                ENG
+              </a>
+            </div>
+          </div>
+          <div
+            class="_menuButton_d17b29"
+          >
+            <div>
+              <div
+                class="_popUpBtn_d1cb5c"
+              >
+                <button
+                  class="_button_4123ea"
+                  data-testid="menuButton"
                 >
                   <span
-                    class="top"
-                  />
+                    class="_buttonBurgerIcon_4123ea"
+                  >
+                    <span
+                      class="top"
+                    />
+                    <span
+                      class="middle"
+                    />
+                    <span
+                      class="bottom"
+                    />
+                  </span>
                   <span
-                    class="middle"
-                  />
-                  <span
-                    class="bottom"
-                  />
-                </span>
-                <span
-                  class="_buttonText_4123ea"
-                >
-                  MENY
-                </span>
-              </button>
+                    class="_buttonText_4123ea"
+                  >
+                    MENY
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
-  </header>
-  <div
-    class="_container_6b07e8"
-  >
+      </nav>
+    </header>
     <div
-      class="_article__title_6b07e8"
-    >
-      <h1>
-        Dette er ein tittel
-      </h1>
-    </div>
-    <div
-      class="_article_6b07e8"
+      class="_container_6b07e8"
     >
       <div
-        class="_article__content_6b07e8"
+        class="_article__title_6b07e8"
+      >
+        <h1>
+          Dette er ein tittel
+        </h1>
+      </div>
+      <div
+        class="_article_6b07e8"
       >
         <div
-          class="_ingress_e666a6"
+          class="_article__content_6b07e8"
         >
+          <div
+            class="_ingress_e666a6"
+          >
+            <p>
+              Dette er eit samandrag
+            </p>
+          </div>
           <p>
-            Dette er eit samandrag
+            Dette er ein kort tekst
           </p>
         </div>
-        <p>
-          Dette er ein kort tekst
-        </p>
       </div>
     </div>
-  </div>
-  <footer
-    class="_footerContainer_2cbb36"
-  >
     <div
-      class="_footerContent_2cbb36"
+      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1utwk74-MuiPaper-root"
     >
       <div
-        class="_footerTop_2cbb36"
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 footer css-17ran83-MuiGrid-root"
       >
-        <strong>
-          Senter for klinisk dokumentasjon og evaluering (SKDE)
-        </strong>
-        <br />
-        Postboks 6
-        <br />
-        9038 Tromsø
-        <br />
-        <br />
-        <strong>
-          Helse Førde
-        </strong>
-        <br />
-        Postboks 1000
-        <br />
-        6807 Førde
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-5irjj1-MuiGrid-root"
+        >
+          <div
+            class="MuiStack-root css-v2woy3-MuiStack-root"
+          >
+            <h4>
+              OM NETTSTEDET
+            </h4>
+            <div
+              class="MuiStack-root css-1rlitzi-MuiStack-root"
+            >
+              Personvern
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                data-testid="ArrowForwardIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiStack-root css-1rlitzi-MuiStack-root"
+            >
+              Informasjonskapsler
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                data-testid="ArrowForwardIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                />
+              </svg>
+            </div>
+            <div
+              class="MuiStack-root css-1rlitzi-MuiStack-root"
+            >
+              Tilgjengelighetserklæring
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                data-testid="ArrowOutwardIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M6 6v2h8.59L5 17.59 6.41 19 16 9.41V18h2V6z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-cxirnq-MuiGrid-root"
+        >
+          <div
+            class="MuiStack-root css-v2woy3-MuiStack-root"
+          >
+            <h4>
+              KONTAKT
+            </h4>
+            <div
+              class="MuiStack-root css-1rlitzi-MuiStack-root"
+            >
+              Kontakt SKDE
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
+                data-testid="ArrowForwardIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-1tx075d-MuiGrid-root"
+        />
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-1tx075d-MuiGrid-root"
+        />
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 css-jp7hjq-MuiGrid-root"
+        />
       </div>
       <div
-        class="_footerBottom_2cbb36"
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 footer css-1dwca7h-MuiGrid-root"
       >
         <div
-          class="_logo_2cbb36"
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 css-jp7hjq-MuiGrid-root"
         >
           <a
-            href="https://helse-nord.no/"
-            title="Link til Helse Nord"
+            href="/"
           >
             <img
-              alt="Helse Nord logo"
+              alt="SKDE-logo"
+              class="footer-logo"
               data-nimg="1"
               decoding="async"
-              height="40"
+              height="52"
+              id="skde-footer-logo"
               loading="lazy"
-              src="/helseatlas/img/logos/helse-nord-hvit.svg?w=384&q=75"
-              srcset="/helseatlas/img/logos/helse-nord-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-nord-hvit.svg?w=384&q=75 2x"
+              src="/img/logos/logo-skde-neg.svg?w=384&q=75"
+              srcset="/img/logos/logo-skde-neg.svg?w=256&q=75 1x, /img/logos/logo-skde-neg.svg?w=384&q=75 2x"
               style="color: transparent;"
-              width="180"
+              width="129"
             />
           </a>
         </div>
         <div
-          class="_logo_2cbb36"
-        >
-          <a
-            href="https://www.skde.no/"
-            title="Link til SKDE"
-          >
-            <img
-              alt="SKDE logo"
-              data-nimg="1"
-              decoding="async"
-              height="40"
-              loading="lazy"
-              src="/helseatlas/img/logos/skde-hvit.svg?w=384&q=75"
-              srcset="/helseatlas/img/logos/skde-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/skde-hvit.svg?w=384&q=75 2x"
-              style="color: transparent;"
-              width="180"
-            />
-          </a>
-        </div>
-        <div
-          class="_logo_2cbb36"
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-8 MuiGrid-grid-lg-8 css-1urkk6o-MuiGrid-root"
         >
           <a
             href="https://helse-forde.no/"
@@ -714,17 +1084,17 @@ exports[`Nynorsk render 1`] = `
               alt="Helse Førde logo"
               data-nimg="1"
               decoding="async"
-              height="40"
+              height="52"
               loading="lazy"
-              src="/helseatlas/img/logos/helse-forde-hvit.svg?w=384&q=75"
-              srcset="/helseatlas/img/logos/helse-forde-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-forde-hvit.svg?w=384&q=75 2x"
+              src="/helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75"
+              srcset="/helseatlas/img/logos/helse-forde-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75 2x"
               style="color: transparent;"
-              width="180"
+              width="234"
             />
           </a>
         </div>
         <div
-          class="_logo_2cbb36"
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-1c6ycwg-MuiGrid-root"
         >
           <a
             href="https://helse-vest.no/"
@@ -734,17 +1104,112 @@ exports[`Nynorsk render 1`] = `
               alt="Helse Vest logo"
               data-nimg="1"
               decoding="async"
-              height="40"
+              height="52"
               loading="lazy"
-              src="/helseatlas/img/logos/helse-vest-hvit.svg?w=384&q=75"
-              srcset="/helseatlas/img/logos/helse-vest-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-vest-hvit.svg?w=384&q=75 2x"
+              src="/helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75"
+              srcset="/helseatlas/img/logos/helse-vest-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75 2x"
               style="color: transparent;"
-              width="180"
+              width="234"
             />
           </a>
         </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 css-jp7hjq-MuiGrid-root"
+        >
+          Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i Helse Nord.
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-1c6ycwg-MuiGrid-root"
+        >
+          <div
+            class="MuiStack-root css-nen11g-MuiStack-root"
+          >
+            <b>
+              TELEFON
+            </b>
+            <a
+              class="css-abunt4"
+              href="tel:77755800"
+            >
+              77 75 58 00
+            </a>
+            <br />
+            <b>
+              EPOST
+            </b>
+            <a
+              class="css-abunt4"
+              href="mailto:postmottak@helse-nord.no"
+            >
+              postmottak@helse-nord.no
+            </a>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-1c6ycwg-MuiGrid-root"
+        >
+          <div
+            class="MuiStack-root css-nen11g-MuiStack-root"
+          >
+            <b>
+              BESØKSADRESSE
+            </b>
+            <text>
+              Sykehusvegen 23
+            </text>
+            <text>
+               9019 TROMSØ
+            </text>
+            <a
+              class="css-abunt4"
+              href="https://maps.app.goo.gl/ohLzsYb8v6YvEDfL9"
+            >
+              Vis kart
+            </a>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-1c6ycwg-MuiGrid-root"
+        >
+          <div
+            class="MuiStack-root css-nen11g-MuiStack-root"
+          >
+            <b>
+              ORGANISASJONSNUMMER
+            </b>
+            <text>
+              990803765
+              
+
+            </text>
+            <div
+              class="MuiBox-root css-1hnm6b6"
+            >
+              <a
+                href="https://www.helse-nord.no/"
+              >
+                <img
+                  alt="Helse Nord logo"
+                  class="footer-logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="76"
+                  id="helse-nord-logo"
+                  loading="lazy"
+                  src="/img/logos/logo-helse-nord-neg.svg?w=640&q=75"
+                  srcset="/img/logos/logo-helse-nord-neg.svg?w=256&q=75 1x, /img/logos/logo-helse-nord-neg.svg?w=640&q=75 2x"
+                  style="color: transparent;"
+                  width="220"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 css-1c6ycwg-MuiGrid-root"
+        />
       </div>
     </div>
-  </footer>
+  </div>
 </div>
 `;
