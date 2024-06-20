@@ -57,10 +57,12 @@ export const Footer = () => {
             <ArrowLink
               href={"https://www.skde.no/om-skde/personvern/"}
               text="Personvern"
+              diagonalArrow={true}
             />
             <ArrowLink
               href={"https://www.skde.no/om-skde/informasjonskapsler/"}
               text="Informasjonskapsler"
+              diagonalArrow={true}
             />
             <ArrowLink
               href={
@@ -86,7 +88,7 @@ export const Footer = () => {
             <ArrowLink
               href={"https://www.skde.no/om-skde/kontaktinformasjon/"}
               text="Kontakt SKDE"
-              diagonalArrow={false}
+              diagonalArrow={true}
               button={false}
             />
           </Stack>

@@ -1,6 +1,7 @@
 import Button from "@mui/material/Button";
 import { ArrowForward, ArrowOutward } from "@mui/icons-material";
 import { Stack } from "@mui/material";
+import Link from "next/link";
 
 type ArrowLinkProps = {
   href: string;
@@ -43,9 +44,11 @@ export const ArrowLink = (props: ArrowLinkProps) => {
       </Stack>
     </Button>
   ) : (
-    <Stack alignItems="center" direction="row" gap={1}>
-      {text}
-      {arrow}
-    </Stack>
+    <Link href={href}>
+      <Stack alignItems="center" direction="row" gap={1}>
+        {text}
+        {arrow}
+      </Stack>
+    </Link>
   );
 };
