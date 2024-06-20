@@ -6,7 +6,7 @@ import Link from "next/link";
 type ArrowLinkProps = {
   href: string;
   text: string;
-  diagonalArrow?: boolean;
+  externalLink?: boolean;
   button?: boolean;
   fontSize?: "small" | "inherit" | "large" | "medium";
 };
@@ -17,7 +17,7 @@ type ArrowLinkProps = {
  * @param {ArrowLinkProps} props - The properties for the ArrowLink component.
  * @param {string} props.href - The URL the link should navigate to.
  * @param {string} props.text - The text to display as the link content.
- * @param {boolean} [props.diagonalArrow] - Whether to use a diagonal arrow icon.
+ * @param {boolean} [props.externalLink] - Whether it is an external or internal link. If externalLink is true, the link will open in a new tab and the arrow will be an arrow_outward.
  * @param {boolean} [props.button] - Whether to render the link as a button.
  * @return {JSX.Element} The rendered link with arrow icon.
  */
@@ -25,26 +25,31 @@ export const ArrowLink = (props: ArrowLinkProps) => {
   const {
     href,
     text,
-    diagonalArrow = false,
+    externalLink = false,
     button = false,
     fontSize = "inherit",
   } = props;
 
   let arrow: JSX.Element;
+  let target: string;
 
-  diagonalArrow
-    ? (arrow = <ArrowOutward fontSize={fontSize} />)
-    : (arrow = <ArrowForward fontSize={fontSize} />);
+  if (externalLink) {
+    arrow = <ArrowOutward fontSize={fontSize} />;
+    target = "_blank";
+  } else {
+    arrow = <ArrowForward fontSize={fontSize} />;
+    target = "_self";
+  }
 
   return button ? (
-    <Button href={href} target="_blank" variant="text">
+    <Button href={href} target={target} variant="text">
       <Stack alignItems="center" direction="row" gap={1}>
         {text}
         {arrow}
       </Stack>
     </Button>
   ) : (
-    <Link href={href}>
+    <Link href={href} target={target}>
       <Stack alignItems="center" direction="row" gap={1}>
         {text}
         {arrow}
