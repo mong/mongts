@@ -2,6 +2,7 @@ import Link from "next/link";
 import style from "./tableblocktitle.module.css";
 import { Button } from "@mui/material";
 import { RegisterName } from "types";
+import { ArrowOutward } from "@mui/icons-material";
 
 interface BlockTitleProps {
   tabName: string;
@@ -33,15 +34,15 @@ export const TableBlockTitle = (props: BlockTitleProps) => {
   const registryButtonRow = [
     title,
     <Button
-      variant="outlined"
-      sx={{ marginLeft: "20px" }}
+      variant="text"
+      sx={{ marginLeft: "20px", fontSize: "small" }}
       onClick={() => {
         if (registerName.url) {
           window.open(registerName.url, "_blank");
         }
       }}
     >
-      Mer om registeret
+      {["Mer om registeret", <ArrowOutward fontSize="inherit" />]}
     </Button>,
   ];
 
