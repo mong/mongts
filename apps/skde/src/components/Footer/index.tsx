@@ -54,8 +54,14 @@ export const Footer = () => {
         >
           <Stack spacing={3}>
             <h4>OM NETTSTEDET</h4>
-            <ArrowLink href={"/"} text="Personvern" />
-            <ArrowLink href={"/"} text="Informasjonskapsler" />
+            <ArrowLink
+              href={"https://www.skde.no/om-skde/personvern/"}
+              text="Personvern"
+            />
+            <ArrowLink
+              href={"https://www.skde.no/om-skde/informasjonskapsler/"}
+              text="Informasjonskapsler"
+            />
             <ArrowLink
               href={
                 "https://uustatus.no/nb/erklaringer/publisert/589a8d23-4993-446e-b7eb-ef310bfe1dd7"
@@ -78,7 +84,7 @@ export const Footer = () => {
           <Stack spacing={3}>
             <h4>KONTAKT</h4>
             <ArrowLink
-              href={"/"}
+              href={"https://www.skde.no/om-skde/kontaktinformasjon/"}
               text="Kontakt SKDE"
               diagonalArrow={false}
               button={false}
@@ -99,8 +105,9 @@ export const Footer = () => {
         spacing={4}
         sx={{ overflow: "clip" }}
       >
+        
         <Grid item xs={4} sm={8} md={4} lg={6} xl={6} xxl={8}>
-          <Link href={"/"}>
+          <Link href={"https://www.skde.no/"}>
             <Image
               className="footer-logo"
               id="skde-footer-logo"
