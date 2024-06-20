@@ -89,7 +89,6 @@ export const Footer = () => {
               href={"https://www.skde.no/om-skde/kontaktinformasjon/"}
               text="Kontakt SKDE"
               diagonalArrow={true}
-              button={false}
             />
           </Stack>
         </Grid>
