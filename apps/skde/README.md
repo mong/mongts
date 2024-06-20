@@ -1,3 +1,3 @@
 # skde
 
-A nextjs-app and the code behind https://www.skde.no/.
+A nextjs-app and the code behind https://apps.skde.no/.

@@ -30,7 +30,7 @@ export function FrontPageLayout({
       <div className={styles.grid_wrapper}>
         <header className={`${styles.header_container}`}>
           <div className={styles.header_logo}>
-            <Link href="/" rel="home">
+            <Link href="https://www.skde.no/" rel="home">
               <Image
                 loader={imgLoader}
                 src="/img/logos/SKDE_sort.png"
@@ -48,7 +48,7 @@ export function FrontPageLayout({
           <div className={styles.breadcrumb}>
             <ol>
               <li>
-                <Link href="/">SKDE</Link>
+                <Link href="https://www.skde.no/">SKDE</Link>
               </li>
               <li>{page}</li>
             </ol>

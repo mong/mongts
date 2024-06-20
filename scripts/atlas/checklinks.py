@@ -46,7 +46,7 @@ def check_link(url):
     status_code = -1
     with requests.Session() as s:
         try:
-            headers = {'User-Agent': 'Mozilla/5.0', 'Referer': 'https://www.skde.no'}
+            headers = {'User-Agent': 'Mozilla/5.0', 'Referer': 'https://apps.skde.no'}
             response = s.head(url, headers=headers, timeout=5, allow_redirects=True)
             status_code = response.status_code
         except requests.exceptions.RequestException as e:

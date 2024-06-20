@@ -14,7 +14,7 @@ export const Footer: React.FC = () => {
     <footer className={style.footer}>
       <div className={style.footerTop}>
         <div>
-          <Link href="/">
+          <Link href="https://www.skde.no/">
             <>
               <Image
                 loader={imgLoader}
