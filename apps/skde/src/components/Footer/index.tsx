@@ -29,7 +29,7 @@ const StyledLink = styled(Link)(() => ({
 }));
 
 export type FooterProps = {
-  page: "behandlingskvalitet" | "helseatlas";
+  page: "behandlingskvalitet" | "helseatlas" | "sykehusprofil";
 };
 
 export const Footer = (props: FooterProps) => {

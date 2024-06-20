@@ -348,7 +348,7 @@ export const Skde = (): JSX.Element => {
             </Grid>
           </Grid>
         </Box>
-        <Footer />
+        <Footer page="sykehusprofil" />
       </Box>
     </ThemeProvider>
   );
