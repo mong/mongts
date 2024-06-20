@@ -67,7 +67,7 @@ export const Footer = () => {
                 "https://uustatus.no/nb/erklaringer/publisert/589a8d23-4993-446e-b7eb-ef310bfe1dd7"
               }
               text="Tilgjengelighetserklæring"
-              diagonalArrow={true}
+              externalLink={true}
             />
           </Stack>
         </Grid>
@@ -86,8 +86,6 @@ export const Footer = () => {
             <ArrowLink
               href={"https://www.skde.no/om-skde/kontaktinformasjon/"}
               text="Kontakt SKDE"
-              diagonalArrow={false}
-              button={false}
             />
           </Stack>
         </Grid>
