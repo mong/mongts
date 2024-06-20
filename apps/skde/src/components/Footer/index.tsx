@@ -105,7 +105,6 @@ export const Footer = () => {
         spacing={4}
         sx={{ overflow: "clip" }}
       >
-        
         <Grid item xs={4} sm={8} md={4} lg={6} xl={6} xxl={8}>
           <Link href={"https://www.skde.no/"}>
             <Image
