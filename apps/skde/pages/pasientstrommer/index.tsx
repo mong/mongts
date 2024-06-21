@@ -1,5 +1,5 @@
 import { FrontPageLayout } from "../../src/components/Layout";
-import IframeResizer from "iframe-resizer-react";
+import IframeResizer from "@iframe-resizer/react";
 import styles from "../../src/styles/Pages.module.css";
 
 const Pasient = () => {
@@ -13,9 +13,9 @@ const Pasient = () => {
         </div>
       </div>
       <IframeResizer
-        log
         src="https://prod-tabellverk.skde.org/"
         style={{ width: "1px", minWidth: "100%", border: "none" }}
+        license="LGPL-3.0"
       />
     </FrontPageLayout>
   );
