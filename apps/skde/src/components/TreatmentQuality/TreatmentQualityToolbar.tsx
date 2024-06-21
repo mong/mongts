@@ -109,7 +109,7 @@ export const TreatmentQualityToolbar = ({
             <StyledTab
               label={
                 <HtmlTooltip
-                  title="Med behandlingsenheter menes sykehus, helseforetak og regionale helseforetak."
+                  title="Med behandlingsenheter menes sykehus hvor pasienten har blitt behandlet uavhengig av pasientens bosted."
                   placement="top"
                 >
                   <Box>Behandlingsenheter</Box>
