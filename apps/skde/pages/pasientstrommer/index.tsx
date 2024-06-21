@@ -14,7 +14,12 @@ const Pasient = () => {
       </div>
       <IframeResizer
         src="https://prod-tabellverk.skde.org/"
-        style={{ width: "1px", minWidth: "100%", border: "none" }}
+        style={{
+          width: "1px",
+          minWidth: "100%",
+          height: "100vh",
+          border: "none",
+        }}
         license="LGPL-3.0"
       />
     </FrontPageLayout>
