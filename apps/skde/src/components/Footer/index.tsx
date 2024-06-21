@@ -54,14 +54,20 @@ export const Footer = () => {
         >
           <Stack spacing={3}>
             <h4>OM NETTSTEDET</h4>
-            <ArrowLink href={"/"} text="Personvern" />
-            <ArrowLink href={"/"} text="Informasjonskapsler" />
+            <ArrowLink
+              href={"https://www.skde.no/om-skde/personvern/"}
+              text="Personvern"
+            />
+            <ArrowLink
+              href={"https://www.skde.no/om-skde/informasjonskapsler/"}
+              text="Informasjonskapsler"
+            />
             <ArrowLink
               href={
                 "https://uustatus.no/nb/erklaringer/publisert/589a8d23-4993-446e-b7eb-ef310bfe1dd7"
               }
               text="Tilgjengelighetserklæring"
-              diagonalArrow={true}
+              externalLink={true}
             />
           </Stack>
         </Grid>
@@ -78,10 +84,8 @@ export const Footer = () => {
           <Stack spacing={3}>
             <h4>KONTAKT</h4>
             <ArrowLink
-              href={"/"}
+              href={"https://www.skde.no/om-skde/kontaktinformasjon/"}
               text="Kontakt SKDE"
-              diagonalArrow={false}
-              button={false}
             />
           </Stack>
         </Grid>
@@ -93,24 +97,40 @@ export const Footer = () => {
 
       <FooterGridBottom
         container
-        columns={{ xs: 4, sm: 8, md: 12, lg: 12 }}
+        columns={{ xs: 4, sm: 8, md: 12, lg: 12, xl: 12, xxl: 12 }}
         className="footer"
         marginTop={0}
         spacing={4}
+        sx={{ overflow: "clip" }}
       >
-        <Grid item xs={4} sm={8} md={12} lg={12}>
-          <Link href={"/"}>
+        <Grid item xs={4} sm={8} md={4} lg={6} xl={6} xxl={8}>
+          <Link href={"https://www.skde.no/"}>
             <Image
               className="footer-logo"
               id="skde-footer-logo"
               loader={imgLoader}
               src={"/img/logos/logo-skde-neg.svg"}
-              alt="SKDE logo"
+              alt="SKDE-logo"
               width={129}
               height={52}
             />
           </Link>
         </Grid>
+
+        <Grid item xs={4} sm={8} md={8} lg={6} xl={6} xxl={4} marginTop={"5px"}>
+          <Link href={"https://www.kvalitetsregistre.no/"}>
+            <Image
+              className="footer-logo"
+              id="nsm-footer-logo"
+              loader={imgLoader}
+              src={"/img/logos/nsm-hvit.svg"}
+              alt="NSM-logo"
+              width={(566 * 52) / 63}
+              height={52}
+            />
+          </Link>
+        </Grid>
+
         <Grid item xs={4} sm={8} md={12} lg={12}>
           Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i
           Helse Nord.

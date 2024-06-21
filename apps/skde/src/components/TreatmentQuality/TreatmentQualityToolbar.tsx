@@ -73,28 +73,30 @@ export const TreatmentQualityToolbar = ({
   return (
     <StyledToolbar className="main-toolbar">
       <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
-        <Grid
-          xs={1}
-          sm={1}
-          md={2}
-          sx={{
-            alignContent: "center",
-          }}
-        >
-          <Button
-            variant="contained"
-            aria-label="Åpne sidemeny"
-            color="primary"
+        {useMediaQuery(theme.breakpoints.down("xxl")) ? (
+          <Grid
+            xs={1}
+            sm={1}
+            md={2}
             sx={{
-              borderRadius: 4,
-            }}
-            onClick={() => {
-              openDrawer();
+              alignContent: "center",
             }}
           >
-            <TuneRounded fontSize="medium" />
-          </Button>
-        </Grid>
+            <Button
+              variant="contained"
+              aria-label="Åpne sidemeny"
+              color="primary"
+              sx={{
+                borderRadius: 4,
+              }}
+              onClick={() => {
+                openDrawer();
+              }}
+            >
+              <TuneRounded fontSize="medium" />
+            </Button>
+          </Grid>
+        ) : null}
         <Grid xs={3} sm={7} md={10}>
           <StyledTabs
             indicatorColor="secondary"
