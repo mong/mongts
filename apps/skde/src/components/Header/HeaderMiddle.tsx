@@ -8,7 +8,13 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   paddingBottom: theme.spacing(8),
 }));
 
-export const HeaderMiddleToolbar = () => {
+type HeaderMiddleProps = {
+  page: "behandlingskvalitet" | "pasientstrømmer";
+};
+
+export const HeaderMiddle = (props: HeaderMiddleProps) => {
+  const { page } = props;
+
   return (
     <StyledToolbar className="header-middle">
       <Grid container spacing={2} rowSpacing={6}>
@@ -20,12 +26,14 @@ export const HeaderMiddleToolbar = () => {
             Resultater fra nasjonale medisinske kvalitetsregistre
           </Typography>
         </Grid>
-        <ArrowLink
-          href={"https://www.kvalitetsregistre.no/"}
-          text={"Om kvalitetsregistre"}
-          externalLink={true}
-          button={true}
-        />
+        {page === "behandlingskvalitet" ? (
+          <ArrowLink
+            href={"https://www.kvalitetsregistre.no/"}
+            text={"Om kvalitetsregistre"}
+            externalLink={true}
+            button={true}
+          />
+        ) : null}
       </Grid>
     </StyledToolbar>
   );
