@@ -109,34 +109,60 @@ export const Footer = (props: FooterProps) => {
         spacing={4}
         sx={{ overflow: "clip" }}
       >
-        <Grid item xs={4} sm={8} md={4} lg={6} xl={6} xxl={8}>
-          <Link href={"https://www.skde.no/"}>
-            <Image
-              className="footer-logo"
-              id="skde-footer-logo"
-              loader={imgLoader}
-              src={"/img/logos/logo-skde-neg.svg"}
-              alt="SKDE-logo"
-              width={129}
-              height={52}
-            />
-          </Link>
-        </Grid>
+        {page === "helseatlas" ? (
+          <Grid item xs={4} sm={8} md={12} lg={12} xl={12} xxl={12}>
+            <Link href={"https://www.skde.no/"}>
+              <Image
+                className="footer-logo"
+                id="skde-footer-logo"
+                loader={imgLoader}
+                src={"/img/logos/logo-skde-neg.svg"}
+                alt="SKDE-logo"
+                width={129}
+                height={52}
+              />
+            </Link>
+          </Grid>
+        ) : (
+          <>
+            <Grid item xs={4} sm={8} md={4} lg={6} xl={6} xxl={8}>
+              <Link href={"https://www.skde.no/"}>
+                <Image
+                  className="footer-logo"
+                  id="skde-footer-logo"
+                  loader={imgLoader}
+                  src={"/img/logos/logo-skde-neg.svg"}
+                  alt="SKDE-logo"
+                  width={129}
+                  height={52}
+                />
+              </Link>
+            </Grid>
 
-        <Grid item xs={4} sm={8} md={8} lg={6} xl={6} xxl={4} marginTop={"5px"}>
-          <Link href={"https://www.kvalitetsregistre.no/"}>
-            <Image
-              className="footer-logo"
-              id="nsm-footer-logo"
-              loader={imgLoader}
-              src={"/img/logos/nsm-hvit.svg"}
-              alt="NSM-logo"
-              width={(566 * 52) / 63}
-              height={52}
-            />
-          </Link>
-        </Grid>
-
+            <Grid
+              item
+              xs={4}
+              sm={8}
+              md={8}
+              lg={6}
+              xl={6}
+              xxl={4}
+              marginTop={"5px"}
+            >
+              <Link href={"https://www.kvalitetsregistre.no/"}>
+                <Image
+                  className="footer-logo"
+                  id="nsm-footer-logo"
+                  loader={imgLoader}
+                  src={"/img/logos/nsm-hvit.svg"}
+                  alt="NSM-logo"
+                  width={(566 * 52) / 63}
+                  height={52}
+                />
+              </Link>
+            </Grid>
+          </>
+        )}
         <Grid item xs={4} sm={8} md={12} lg={12}>
           Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i
           Helse Nord.
@@ -166,7 +192,7 @@ export const Footer = (props: FooterProps) => {
           </Stack>
         </Grid>
 
-        <Grid item xs={4} sm={4} md={4} lg={4}>
+        <Grid item xs={4} sm={8} md={4} lg={4}>
           <Stack>
             <b>ORGANISASJONSNUMMER</b>
             <text>990803765{"\n"}</text>
