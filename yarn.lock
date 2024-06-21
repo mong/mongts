@@ -3690,23 +3690,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/private-theming@npm:^5.15.14":
-  version: 5.15.14
-  resolution: "@mui/private-theming@npm:5.15.14"
-  dependencies:
-    "@babel/runtime": "npm:^7.23.9"
-    "@mui/utils": "npm:^5.15.14"
-    prop-types: "npm:^15.8.1"
-  peerDependencies:
-    "@types/react": ^17.0.0 || ^18.0.0
-    react: ^17.0.0 || ^18.0.0
-  peerDependenciesMeta:
-    "@types/react":
-      optional: true
-  checksum: 10/6a14311ed53ee4adccfe0ba93275b43773d22fdd10c0d4ba680b9368fc0616a5e0f38f29d2080bcd7e4ed79123047e5f245c403d3fd822e960a97762be65218d
-  languageName: node
-  linkType: hard
-
 "@mui/private-theming@npm:^5.15.20":
   version: 5.15.20
   resolution: "@mui/private-theming@npm:5.15.20"
@@ -3742,34 +3725,6 @@ __metadata:
     "@emotion/styled":
       optional: true
   checksum: 10/2a5e03bb20502aef94cfb908898c50abb769192deb32d7f4237039683ce5266104cdc4055a7f0a8342aa62447d52b7439a4f2d0dda0fa6709c227c3621468cab
-  languageName: node
-  linkType: hard
-
-"@mui/system@npm:^5.15.15":
-  version: 5.15.15
-  resolution: "@mui/system@npm:5.15.15"
-  dependencies:
-    "@babel/runtime": "npm:^7.23.9"
-    "@mui/private-theming": "npm:^5.15.14"
-    "@mui/styled-engine": "npm:^5.15.14"
-    "@mui/types": "npm:^7.2.14"
-    "@mui/utils": "npm:^5.15.14"
-    clsx: "npm:^2.1.0"
-    csstype: "npm:^3.1.3"
-    prop-types: "npm:^15.8.1"
-  peerDependencies:
-    "@emotion/react": ^11.5.0
-    "@emotion/styled": ^11.3.0
-    "@types/react": ^17.0.0 || ^18.0.0
-    react: ^17.0.0 || ^18.0.0
-  peerDependenciesMeta:
-    "@emotion/react":
-      optional: true
-    "@emotion/styled":
-      optional: true
-    "@types/react":
-      optional: true
-  checksum: 10/90a84ad0bc1b401b6e53b13fe9cfe8a34668e84885d391abf5ab80b3cd0f37370be25cb40af253cdd468746386282fed24964315933fcb28d2d6e62de0db7bf1
   languageName: node
   linkType: hard
 
@@ -3867,14 +3822,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/x-tree-view@npm:7.7.0":
-  version: 7.7.0
-  resolution: "@mui/x-tree-view@npm:7.7.0"
+"@mui/x-tree-view@npm:7.7.1":
+  version: 7.7.1
+  resolution: "@mui/x-tree-view@npm:7.7.1"
   dependencies:
     "@babel/runtime": "npm:^7.24.7"
     "@mui/base": "npm:^5.0.0-beta.40"
-    "@mui/system": "npm:^5.15.15"
-    "@mui/utils": "npm:^5.15.14"
+    "@mui/system": "npm:^5.15.20"
+    "@mui/utils": "npm:^5.15.20"
     "@types/react-transition-group": "npm:^4.4.10"
     clsx: "npm:^2.1.1"
     prop-types: "npm:^15.8.1"
@@ -3885,7 +3840,7 @@ __metadata:
     "@mui/material": ^5.15.14
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
-  checksum: 10/9b7aea8546a085e437083d7754b2b631c2223b513e53954e2dd45ebeba74c3ddd058d97ca5a65a3b3ee00a995e8f9c5ccd41180481f0c999924c9d7fa12486c2
+  checksum: 10/26932c667c34647f7b87ba58861f2081d3edb9d74320970a4592fcfaf2bee518b3ec02499a1475d14d65bad39b11a0ad2812e1e6103533381e48d2f025a98e21
   languageName: node
   linkType: hard
 
@@ -19804,7 +19759,7 @@ __metadata:
   dependencies:
     "@mui/icons-material": "npm:5.15.20"
     "@mui/material": "npm:5.15.20"
-    "@mui/x-tree-view": "npm:7.7.0"
+    "@mui/x-tree-view": "npm:7.7.1"
     "@tanstack/react-query": "npm:5.45.1"
     "@testing-library/dom": "npm:^10.1.0"
     "@testing-library/jest-dom": "npm:6.4.6"
