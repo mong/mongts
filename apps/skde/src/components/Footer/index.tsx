@@ -28,7 +28,13 @@ const StyledLink = styled(Link)(() => ({
   textDecoration: "underline",
 }));
 
-export const Footer = () => {
+export type FooterProps = {
+  page: "behandlingskvalitet" | "helseatlas" | "sykehusprofil";
+};
+
+export const Footer = (props: FooterProps) => {
+  const { page } = props;
+
   const leftMargin = 0;
   const topMargin = 2;
 
@@ -54,14 +60,20 @@ export const Footer = () => {
         >
           <Stack spacing={3}>
             <h4>OM NETTSTEDET</h4>
-            <ArrowLink href={"/"} text="Personvern" />
-            <ArrowLink href={"/"} text="Informasjonskapsler" />
+            <ArrowLink
+              href={"https://www.skde.no/om-skde/personvern/"}
+              text="Personvern"
+            />
+            <ArrowLink
+              href={"https://www.skde.no/om-skde/informasjonskapsler/"}
+              text="Informasjonskapsler"
+            />
             <ArrowLink
               href={
                 "https://uustatus.no/nb/erklaringer/publisert/589a8d23-4993-446e-b7eb-ef310bfe1dd7"
               }
               text="Tilgjengelighetserklæring"
-              diagonalArrow={true}
+              externalLink={true}
             />
           </Stack>
         </Grid>
@@ -78,10 +90,8 @@ export const Footer = () => {
           <Stack spacing={3}>
             <h4>KONTAKT</h4>
             <ArrowLink
-              href={"/"}
+              href={"https://www.skde.no/om-skde/kontaktinformasjon/"}
               text="Kontakt SKDE"
-              diagonalArrow={false}
-              button={false}
             />
           </Stack>
         </Grid>
@@ -93,39 +103,66 @@ export const Footer = () => {
 
       <FooterGridBottom
         container
-        columns={{ xs: 4, sm: 8, md: 12, lg: 12 }}
+        columns={{ xs: 4, sm: 8, md: 12, lg: 12, xl: 12, xxl: 12 }}
         className="footer"
         marginTop={0}
         spacing={4}
+        sx={{ overflow: "clip" }}
       >
-        <Grid item xs={3} sm={6} md={8} lg={8}>
-          <Link href={"/"}>
-            <Image
-              className="footer-logo"
-              id="skde-footer-logo"
-              loader={imgLoader}
-              src={"/img/logos/logo-skde-neg.svg"}
-              alt="SKDE-logo"
-              width={129}
-              height={52}
-            />
-          </Link>
-        </Grid>
+        {page === "helseatlas" ? (
+          <Grid item xs={4} sm={8} md={12} lg={12} xl={12} xxl={12}>
+            <Link href={"https://www.skde.no/"}>
+              <Image
+                className="footer-logo"
+                id="skde-footer-logo"
+                loader={imgLoader}
+                src={"/img/logos/logo-skde-neg.svg"}
+                alt="SKDE-logo"
+                width={129}
+                height={52}
+              />
+            </Link>
+          </Grid>
+        ) : (
+          <>
+            <Grid item xs={4} sm={8} md={4} lg={6} xl={6} xxl={8}>
+              <Link href={"https://www.skde.no/"}>
+                <Image
+                  className="footer-logo"
+                  id="skde-footer-logo"
+                  loader={imgLoader}
+                  src={"/img/logos/logo-skde-neg.svg"}
+                  alt="SKDE-logo"
+                  width={129}
+                  height={52}
+                />
+              </Link>
+            </Grid>
 
-        <Grid item xs={1} sm={2} md={4} lg={4} marginTop={"5px"}>
-          <Link href={"https://www.kvalitetsregistre.no/"}>
-            <Image
-              className="footer-logo"
-              id="nsm-footer-logo"
-              loader={imgLoader}
-              src={"/img/logos/logo-nsm-hvit.png"}
-              alt="NSM-logo"
-              width={(566 * 52) / 63}
-              height={52}
-            />
-          </Link>
-        </Grid>
-
+            <Grid
+              item
+              xs={4}
+              sm={8}
+              md={8}
+              lg={6}
+              xl={6}
+              xxl={4}
+              marginTop={"5px"}
+            >
+              <Link href={"https://www.kvalitetsregistre.no/"}>
+                <Image
+                  className="footer-logo"
+                  id="nsm-footer-logo"
+                  loader={imgLoader}
+                  src={"/img/logos/nsm-hvit.svg"}
+                  alt="NSM-logo"
+                  width={(566 * 52) / 63}
+                  height={52}
+                />
+              </Link>
+            </Grid>
+          </>
+        )}
         <Grid item xs={4} sm={8} md={12} lg={12}>
           Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i
           Helse Nord.
@@ -155,7 +192,7 @@ export const Footer = () => {
           </Stack>
         </Grid>
 
-        <Grid item xs={4} sm={4} md={4} lg={4}>
+        <Grid item xs={4} sm={8} md={4} lg={4}>
           <Stack>
             <b>ORGANISASJONSNUMMER</b>
             <text>990803765{"\n"}</text>
@@ -174,6 +211,32 @@ export const Footer = () => {
             </Box>
           </Stack>
         </Grid>
+        {page === "helseatlas" ? (
+          <>
+            <Grid item xs={4} sm={4} md={8} lg={8}>
+              <Link href="https://helse-forde.no/" title="Link til Helse Førde">
+                <Image
+                  loader={imgLoader}
+                  src={`/helseatlas/img/logos/helse-forde-hvit.svg`}
+                  height={52}
+                  width={(180 * 52) / 40}
+                  alt="Helse Førde logo"
+                />
+              </Link>
+            </Grid>
+            <Grid item xs={4} sm={4} md={4} lg={4}>
+              <Link href="https://helse-vest.no/" title="Link til Helse Vest">
+                <Image
+                  loader={imgLoader}
+                  src={`/helseatlas/img/logos/helse-vest-hvit.svg`}
+                  height={52}
+                  width={(180 * 52) / 40}
+                  alt="Helse Vest logo"
+                />
+              </Link>
+            </Grid>
+          </>
+        ) : null}
         <Grid item xs={4} sm={4} md={0} lg={0}></Grid>
       </FooterGridBottom>
     </FooterWrapper>

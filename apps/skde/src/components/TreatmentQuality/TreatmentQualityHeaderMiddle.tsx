@@ -23,7 +23,7 @@ export const HeaderMiddleToolbar = () => {
         <ArrowLink
           href={"https://www.kvalitetsregistre.no/"}
           text={"Om kvalitetsregistre"}
-          diagonalArrow={true}
+          externalLink={true}
           button={true}
         />
       </Grid>

@@ -1,6 +1,6 @@
 # api
 
-The API used by [www.skde.no/kvalitetsregistre](https://www.skde.no/kvalitetsregistre/alle/sykehus/) to get data.
+The API used by [apps.skde.no/kvalitetsregistre](https://apps.skde.no/kvalitetsregistre/alle/sykehus/) to get data.
 
 ## Kjøre lokalt
 
