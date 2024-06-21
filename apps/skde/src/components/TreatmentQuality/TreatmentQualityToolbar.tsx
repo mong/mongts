@@ -70,6 +70,21 @@ export const TreatmentQualityToolbar = ({
     },
   }));
 
+  const tooltipPlacement = "top";
+
+  const tooltipSlotProps = {
+    popper: {
+      modifiers: [
+        {
+          name: "offset",
+          options: {
+            offset: [50, 20],
+          },
+        },
+      ],
+    },
+  };
+
   return (
     <StyledToolbar className="main-toolbar">
       <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
@@ -112,7 +127,8 @@ export const TreatmentQualityToolbar = ({
                   Behandlingsenheter
                   <HtmlTooltip
                     title="Med behandlingsenheter menes sykehus hvor pasienten har blitt behandlet uavhengig av pasientens bosted."
-                    placement="top"
+                    placement={tooltipPlacement}
+                    slotProps={tooltipSlotProps}
                   >
                     <QuestionMark />
                   </HtmlTooltip>
@@ -126,7 +142,8 @@ export const TreatmentQualityToolbar = ({
                   Opptaksområder
                   <HtmlTooltip
                     title="Med opptaksområde menes de geografiske områdene som helseforetakene og sykehusene har ansvar for å betjene. Resultatene er basert på pasientens bosted og uavhengig av behandlingssted."
-                    placement="top"
+                    placement={tooltipPlacement}
+                    slotProps={tooltipSlotProps}
                   >
                     <QuestionMark />
                   </HtmlTooltip>
