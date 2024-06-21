@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { Button, Tab, Tabs, Toolbar, styled } from "@mui/material";
+import { Button, Tab, Tabs, Toolbar, styled, Stack } from "@mui/material";
 import { TuneRounded } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
 import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
-import Box from "@mui/material/Box";
+import { QuestionMark } from "@mui/icons-material";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
@@ -108,23 +108,29 @@ export const TreatmentQualityToolbar = ({
           >
             <StyledTab
               label={
-                <HtmlTooltip
-                  title="Med behandlingsenheter menes sykehus hvor pasienten har blitt behandlet uavhengig av pasientens bosted."
-                  placement="top"
-                >
-                  <Box>Behandlingsenheter</Box>
-                </HtmlTooltip>
+                <Stack direction="row">
+                  Behandlingsenheter
+                  <HtmlTooltip
+                    title="Med behandlingsenheter menes sykehus hvor pasienten har blitt behandlet uavhengig av pasientens bosted."
+                    placement="top"
+                  >
+                    <QuestionMark />
+                  </HtmlTooltip>
+                </Stack>
               }
               value={"caregiver"}
             />
             <StyledTab
               label={
-                <HtmlTooltip
-                  title="Med opptaksområde menes de geografiske områdene som helseforetakene og sykehusene har ansvar for å betjene. Resultatene er basert på pasientens bosted og uavhengig av behandlingssted."
-                  placement="top"
-                >
-                  <Box>Opptaksområder</Box>
-                </HtmlTooltip>
+                <Stack direction="row">
+                  Opptaksområder
+                  <HtmlTooltip
+                    title="Med opptaksområde menes de geografiske områdene som helseforetakene og sykehusene har ansvar for å betjene. Resultatene er basert på pasientens bosted og uavhengig av behandlingssted."
+                    placement="top"
+                  >
+                    <QuestionMark />
+                  </HtmlTooltip>
+                </Stack>
               }
               value={"resident"}
             />
