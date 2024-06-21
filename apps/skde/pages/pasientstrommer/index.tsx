@@ -20,7 +20,7 @@ const Pasient = () => {
           height: "100vh",
           border: "none",
         }}
-        license="LGPL-3.0"
+        license="GPLv3"
       />
     </FrontPageLayout>
   );
