@@ -4,7 +4,7 @@ import * as Sentry from "@sentry/react";
 import { browserTracingIntegration } from "@sentry/browser";
 import { ThemeProvider, styled, Toolbar } from "@mui/material";
 import { skdeTheme } from "qmongjs";
-import { PageWrapper } from "./behandlingskvalitet";
+import { PageWrapper } from "../src/components/StyledComponents/PageWrapper";
 import Image from "next/image";
 import { imgLoader } from "qmongjs";
 
