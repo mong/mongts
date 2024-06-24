@@ -125,14 +125,16 @@ export const TreatmentQualityToolbar = ({
           >
             <StyledTab
               label={
-                <Stack direction="row">
+                <Stack direction="row" alignItems="center">
                   Behandlingsenheter
                   <HtmlTooltip
                     title="Med behandlingsenheter menes sykehus hvor pasienten har blitt behandlet uavhengig av pasientens bosted."
                     placement={tooltipPlacement}
                     slotProps={tooltipSlotProps}
                   >
-                    <HelpOutline sx={{ fontSize: tooltipSymbolSize }} />
+                    <HelpOutline
+                      sx={{ fontSize: tooltipSymbolSize, marginLeft: 1 }}
+                    />
                   </HtmlTooltip>
                 </Stack>
               }
@@ -140,14 +142,16 @@ export const TreatmentQualityToolbar = ({
             />
             <StyledTab
               label={
-                <Stack direction="row">
+                <Stack direction="row" alignItems="center">
                   Opptaksområder
                   <HtmlTooltip
                     title="Med opptaksområde menes de geografiske områdene som helseforetakene og sykehusene har ansvar for å betjene. Resultatene er basert på pasientens bosted og uavhengig av behandlingssted."
                     placement={tooltipPlacement}
                     slotProps={tooltipSlotProps}
                   >
-                    <HelpOutline sx={{ fontSize: tooltipSymbolSize }} />
+                    <HelpOutline
+                      sx={{ fontSize: tooltipSymbolSize, marginLeft: 1 }}
+                    />
                   </HtmlTooltip>
                 </Stack>
               }
