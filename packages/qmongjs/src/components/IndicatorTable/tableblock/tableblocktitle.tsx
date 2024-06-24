@@ -35,7 +35,7 @@ export const TableBlockTitle = (props: BlockTitleProps) => {
     title,
     <Button
       variant="text"
-      sx={{ marginLeft: "20px", fontSize: "small" }}
+      sx={{ marginLeft: "20px", fontSize: "small", zIndex: 0 }}
       onClick={() => {
         if (registerName.url) {
           window.open(registerName.url, "_blank");
