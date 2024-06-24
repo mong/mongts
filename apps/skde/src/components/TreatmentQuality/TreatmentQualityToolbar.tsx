@@ -5,7 +5,7 @@ import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
 import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
-import { QuestionMark } from "@mui/icons-material";
+import { HelpOutline } from "@mui/icons-material";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
@@ -85,6 +85,8 @@ export const TreatmentQualityToolbar = ({
     },
   };
 
+  const tooltipSymbolSize = "18px";
+
   return (
     <StyledToolbar className="main-toolbar">
       <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
@@ -130,7 +132,7 @@ export const TreatmentQualityToolbar = ({
                     placement={tooltipPlacement}
                     slotProps={tooltipSlotProps}
                   >
-                    <QuestionMark />
+                    <HelpOutline sx={{ fontSize: tooltipSymbolSize }} />
                   </HtmlTooltip>
                 </Stack>
               }
@@ -145,7 +147,7 @@ export const TreatmentQualityToolbar = ({
                     placement={tooltipPlacement}
                     slotProps={tooltipSlotProps}
                   >
-                    <QuestionMark />
+                    <HelpOutline sx={{ fontSize: tooltipSymbolSize }} />
                   </HtmlTooltip>
                 </Stack>
               }
