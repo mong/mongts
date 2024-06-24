@@ -92,7 +92,9 @@ export const HeaderTop = (props: HeaderTopProps) => {
     <StyledToolbar className="header-top">
       <Grid container spacing={2}>
         <Grid xs={12}>
-          <LogoImage src="/img/logos/skde-blue.png" alt="SKDE logo" />
+          <Link href={"https://www.skde.no/"}>
+            <LogoImage src="/img/logos/skde-blue.png" alt="SKDE logo" />
+          </Link>
         </Grid>
         <Grid xs={12}>
           {page === "behandlingskvalitet" ? (
