@@ -1,7 +1,6 @@
 import { AppBar, styled } from "@mui/material";
-import { TreatmentQualityHeaderTop } from "./TreatmentQualityHeaderTop";
-import { HeaderMiddleToolbar } from "./TreatmentQualityHeaderMiddle";
 import { TreatmentQualityToolbar } from "./TreatmentQualityToolbar";
+import { Header } from "../Header";
 
 const StyledAppBar = styled(AppBar)(() => ({
   elevation: 0,
@@ -20,8 +19,7 @@ export const TreatmentQualityAppBar = ({
 }: AppBarProps) => {
   return (
     <>
-      <TreatmentQualityHeaderTop />
-      <HeaderMiddleToolbar />
+      <Header page="behandlingskvalitet" />
       <StyledAppBar position="sticky" elevation={0}>
         <TreatmentQualityToolbar
           openDrawer={openDrawer}
