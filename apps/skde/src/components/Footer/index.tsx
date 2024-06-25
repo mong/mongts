@@ -29,7 +29,11 @@ const StyledLink = styled(Link)(() => ({
 }));
 
 export type FooterProps = {
-  page: "behandlingskvalitet" | "helseatlas" | "sykehusprofil";
+  page:
+    | "behandlingskvalitet"
+    | "helseatlas"
+    | "sykehusprofil"
+    | "pasientstrømmer";
 };
 
 export const Footer = (props: FooterProps) => {
@@ -109,7 +113,7 @@ export const Footer = (props: FooterProps) => {
         spacing={4}
         sx={{ overflow: "clip" }}
       >
-        {page === "helseatlas" ? (
+        {page === "helseatlas" || page === "pasientstrømmer" ? (
           <Grid item xs={4} sm={8} md={12} lg={12} xl={12} xxl={12}>
             <Link href={"https://www.skde.no/"}>
               <Image
