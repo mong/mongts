@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, PropsWithChildren } from "react";
 import { Text } from "@visx/text";
 import {
   useQueryParam,
@@ -43,7 +43,7 @@ import {
 import { useScreenSize } from "@visx/responsive";
 import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
-import { Button } from "@mui/material"
+import { Button } from "@mui/material";
 
 const lineChartTheme = {
   lineChartBackground: {
@@ -62,30 +62,48 @@ const StyledToolbarMiddle = styled(Toolbar)(({ theme }) => ({
 const ItemBox = styled(Box)(() => ({
   backgroundColor: "white",
   borderRadius: "24px",
-  height: "auto"
+  height: "auto",
 }));
 
-const ExpandableItemBox = (props) => {
+const ExpandableItemBox = (props: PropsWithChildren) => {
   const maxHeight = 800;
-  const [expanded, setExpanded] = useState<boolean>(false); 
+  const [expanded, setExpanded] = useState<boolean>(false);
   const [height, setHeight] = useState<number | string>(maxHeight);
   const [buttonText, setButtonText] = useState<string>("Se mer");
 
   const handleClick = () => {
     expanded ? setHeight(maxHeight) : setHeight("auto");
     expanded ? setButtonText("Se mer") : setButtonText("Se mindre");
-    setExpanded(!expanded)
-  }
+    setExpanded(!expanded);
+  };
 
-  return(
-    <Box textAlign="center">
-    <Box sx={{backgroundColor: "white", borderTopLeftRadius: "24px", borderTopRightRadius: "24px", height: height, overflow: "clip"}}>
-      {props.children}
+  return (
+    <Box>
+      <Box
+        sx={{
+          backgroundColor: "white",
+          borderTopLeftRadius: "24px",
+          borderTopRightRadius: "24px",
+          height: height,
+          overflow: "clip",
+        }}
+      >
+        {props.children}
+      </Box>
+      <Button
+        sx={{
+          backgroundColor: "white",
+          borderBottomLeftRadius: "24px",
+          borderBottomRightRadius: "24px",
+        }}
+        fullWidth
+        onClick={handleClick}
+      >
+        {buttonText}
+      </Button>
     </Box>
-    <Button sx={{backgroundColor: "white", borderBottomLeftRadius: "24px", borderBottomRightRadius: "24px"}} fullWidth onClick={handleClick}>{buttonText}</Button>
-    </Box>
-  )
-}
+  );
+};
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
@@ -336,7 +354,7 @@ export const Skde = (): JSX.Element => {
             </Grid>
 
             <Grid xs={12}>
-              <ItemBox>
+              <ExpandableItemBox>
                 <Text
                   x={"10%"}
                   y={50}
@@ -347,28 +365,26 @@ export const Skde = (): JSX.Element => {
                   Fagområder (dekningsgrad)
                 </Text>
                 <MedfieldTable {...medfieldTablePropsDG} />
-              </ItemBox>
+              </ExpandableItemBox>
             </Grid>
 
             <Grid xs={12}>
-              <ItemBox>
-                <Box margin={2}>
-                  <Text
-                    x={"10%"}
-                    y={50}
-                    width={500}
-                    verticalAnchor="start"
-                    style={{ fontWeight: 700, fontSize: 24 }}
-                  >
-                    Indikatorer med lavt målnivå
-                  </Text>
-                  <LowLevelIndicatorList
-                    context={"caregiver"}
-                    type={"ind"}
-                    unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
-                  />
-                </Box>
-              </ItemBox>
+              <ExpandableItemBox>
+                <Text
+                  x={"10%"}
+                  y={50}
+                  width={500}
+                  verticalAnchor="start"
+                  style={{ fontWeight: 700, fontSize: 24 }}
+                >
+                  Indikatorer med lavt målnivå
+                </Text>
+                <LowLevelIndicatorList
+                  context={"caregiver"}
+                  type={"ind"}
+                  unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
+                />
+              </ExpandableItemBox>
             </Grid>
           </Grid>
         </Box>
