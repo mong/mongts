@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Button, Tab, Tabs, Toolbar, styled } from "@mui/material";
+import { Button, Tab, Tabs, Toolbar, styled, Stack } from "@mui/material";
 import { TuneRounded } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
+import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
+import { HelpOutline } from "@mui/icons-material";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
@@ -55,6 +57,36 @@ export const TreatmentQualityToolbar = ({
     }, 0);
   };
 
+  const HtmlTooltip = styled(({ className, ...props }: TooltipProps) => (
+    <Tooltip {...props} classes={{ popper: className }} />
+  ))(({ theme }) => ({
+    [`& .${tooltipClasses.tooltip}`]: {
+      backgroundColor: "#f5f5f9",
+      color: "rgba(0, 0, 0, 0.87)",
+      maxWidth: 220,
+      fontSize: theme.typography.pxToRem(14),
+      border: "1px solid #dadde9",
+      borderRadius: "12px",
+    },
+  }));
+
+  const tooltipPlacement = "top";
+
+  const tooltipSlotProps = {
+    popper: {
+      modifiers: [
+        {
+          name: "offset",
+          options: {
+            offset: [50, 20],
+          },
+        },
+      ],
+    },
+  };
+
+  const tooltipSymbolSize = "18px";
+
   return (
     <StyledToolbar className="main-toolbar">
       <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
@@ -91,8 +123,40 @@ export const TreatmentQualityToolbar = ({
             orientation={isNarrowScreen ? "vertical" : "horizontal"}
             variant="fullWidth"
           >
-            <StyledTab label="Behandlingsenheter" value={"caregiver"} />
-            <StyledTab label="Opptaksområder" value={"resident"} />
+            <StyledTab
+              label={
+                <Stack direction="row" alignItems="center">
+                  Behandlingsenheter
+                  <HtmlTooltip
+                    title="Med behandlingsenheter menes sykehus hvor pasienten har blitt behandlet uavhengig av pasientens bosted."
+                    placement={tooltipPlacement}
+                    slotProps={tooltipSlotProps}
+                  >
+                    <HelpOutline
+                      sx={{ fontSize: tooltipSymbolSize, marginLeft: 1 }}
+                    />
+                  </HtmlTooltip>
+                </Stack>
+              }
+              value={"caregiver"}
+            />
+            <StyledTab
+              label={
+                <Stack direction="row" alignItems="center">
+                  Opptaksområder
+                  <HtmlTooltip
+                    title="Med opptaksområde menes de geografiske områdene som helseforetakene og sykehusene har ansvar for å betjene. Resultatene er basert på pasientens bosted og uavhengig av behandlingssted."
+                    placement={tooltipPlacement}
+                    slotProps={tooltipSlotProps}
+                  >
+                    <HelpOutline
+                      sx={{ fontSize: tooltipSymbolSize, marginLeft: 1 }}
+                    />
+                  </HtmlTooltip>
+                </Stack>
+              }
+              value={"resident"}
+            />
           </StyledTabs>
         </Grid>
       </Grid>
