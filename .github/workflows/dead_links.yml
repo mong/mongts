@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v4.1.6
+        uses: actions/checkout@v4.1.7
         with:
           ref: main
       - name: Enable Corepack before setting up Node
@@ -26,7 +26,7 @@ jobs:
         run: |
           yarn run export
       - name: Find dead links
-        run: scripts/atlas/checklinks.py apps/skde/out/ apps/skde/out/ https://www.skde.no/
+        run: scripts/atlas/checklinks.py apps/skde/out/ apps/skde/out/ https://apps.skde.no/
       - name: Send email
         uses: dawidd6/action-send-mail@v3
         if: failure()

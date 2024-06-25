@@ -6,8 +6,9 @@ import {
   IconButton,
   ThemeProvider,
   Typography,
-  styled,
+  useMediaQuery,
 } from "@mui/material";
+
 import { ChevronLeftRounded } from "@mui/icons-material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useQueryParam, withDefault, StringParam } from "use-query-params";
@@ -41,34 +42,12 @@ import {
 } from "../../src/components/TreatmentQuality";
 import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
+import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 
 const dataQualityKey = "dg";
 
 // Set to true to display the switch for activating the new table
 const showNewTableSwitch = false;
-
-const PageWrapper = styled(Box)(({ theme }) => ({
-  "& .header-top, & .header-middle, & .main-toolbar, & .footer, & .table-wrapper table, & .table-wrapper .MuiTable-root":
-    {
-      [theme.breakpoints.down("sm")]: {
-        paddingLeft: theme.spacing(2),
-        paddingRight: theme.spacing(2),
-      },
-      [theme.breakpoints.up("sm")]: {
-        paddingLeft: theme.spacing(4),
-        paddingRight: theme.spacing(4),
-      },
-      [theme.breakpoints.up("lg")]: {
-        paddingLeft: theme.spacing(6),
-        paddingRight: theme.spacing(6),
-      },
-      [theme.breakpoints.up("xl")]: {
-        paddingLeft: theme.spacing(16),
-        paddingRight: theme.spacing(16),
-      },
-    },
-  backgroundColor: theme.palette.background.paper,
-}));
 
 export default function TreatmentQualityPage() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -315,46 +294,74 @@ export default function TreatmentQualityPage() {
           context={tableContext}
           onTabChanged={setTableContext}
         />
-        <Grid container spacing={2} disableEqualOverflow>
-          <Grid xs={12}>
-            {queriesReady &&
-              (newIndicatorTableActivated || newTableOnly ? (
-                <IndicatorTableV2Wrapper className="table-wrapper">
-                  <IndicatorTableBodyV2
-                    key="indicator-table"
+        <Grid container xs={12}>
+          {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? ( // Permanent menu on large screens
+            <Grid xxl={3} xxxl={2} className="menu-wrapper">
+              {queriesReady && (
+                <Box
+                  sx={{
+                    mt: 4,
+                    position: "sticky",
+                    top: 100,
+                    overflow: "auto",
+                    maxHeight: window.innerHeight - 150,
+                  }}
+                >
+                  <TreatmentQualityFilterMenu
+                    onSelectionChanged={handleFilterChanged}
+                    onFilterInitialized={handleFilterInitialized}
+                    registryNameData={registers}
+                    medicalFieldData={medicalFields}
                     context={tableContext}
-                    unitNames={selectedTreatmentUnits}
-                    year={selectedYear}
-                    type={dataQualitySelected ? "dg" : "ind"}
-                    levels={selectedLevel}
-                    medfields={selectedMedicalFields}
                   />
-                </IndicatorTableV2Wrapper>
-              ) : (
-                <IndicatorTableWrapper className="table-wrapper">
-                  <IndicatorTable
-                    key="indicator-table"
-                    context={tableContext}
-                    dataQuality={dataQualitySelected}
-                    tableType="allRegistries"
-                    registerNames={registers}
-                    unitNames={selectedTreatmentUnits}
-                    treatmentYear={selectedYear}
-                    colspan={selectedTreatmentUnits.length + 1}
-                    medicalFieldFilter={selectedMedicalFields}
-                    showLevelFilter={selectedLevel}
-                    selection_bar_height={0}
-                    legend_height={0}
-                    blockTitle={registers.map(
-                      (register: { full_name: string }) => register.full_name,
-                    )}
-                    showTreatmentYear={true}
-                  />
-                </IndicatorTableWrapper>
-              ))}
+                </Box>
+              )}
+            </Grid>
+          ) : null}
+          <Grid xs={12} xxl={9} xxxl={10}>
+            <Grid container spacing={2} disableEqualOverflow>
+              <Grid xs={12}>
+                {queriesReady &&
+                  (newIndicatorTableActivated || newTableOnly ? (
+                    <IndicatorTableV2Wrapper className="table-wrapper">
+                      <IndicatorTableBodyV2
+                        key="indicator-table"
+                        context={tableContext}
+                        unitNames={selectedTreatmentUnits}
+                        year={selectedYear}
+                        type={dataQualitySelected ? "dg" : "ind"}
+                        levels={selectedLevel}
+                        medfields={selectedMedicalFields}
+                      />
+                    </IndicatorTableV2Wrapper>
+                  ) : (
+                    <IndicatorTableWrapper className="table-wrapper">
+                      <IndicatorTable
+                        key="indicator-table"
+                        context={tableContext}
+                        dataQuality={dataQualitySelected}
+                        tableType="allRegistries"
+                        registerNames={registers}
+                        unitNames={selectedTreatmentUnits}
+                        treatmentYear={selectedYear}
+                        colspan={selectedTreatmentUnits.length + 1}
+                        medicalFieldFilter={selectedMedicalFields}
+                        showLevelFilter={selectedLevel}
+                        selection_bar_height={0}
+                        legend_height={0}
+                        blockTitle={registers.map(
+                          (register: { full_name: string }) =>
+                            register.full_name,
+                        )}
+                        showTreatmentYear={true}
+                      />
+                    </IndicatorTableWrapper>
+                  ))}
+              </Grid>
+            </Grid>
           </Grid>
         </Grid>
-        <Footer />
+        <Footer page="behandlingskvalitet" />
       </PageWrapper>
       <FilterDrawer
         ModalProps={{

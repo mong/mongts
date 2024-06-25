@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
     <div style={{}}>
       <header className={style.header}>
         <div className={style.logo}>
-          <Link href="/">
+          <Link href="https://www.skde.no/">
             <>
               <Image
                 loader={imgLoader}

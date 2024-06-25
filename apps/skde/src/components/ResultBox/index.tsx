@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -42,6 +42,20 @@ export const ResultBox = ({
   updated,
   map,
 }: ResultBoxProps) => {
+  // Keep track of current screen width
+  const [screenWidth, setScreenWidth] = useState<number>();
+
+  const handleWindowSizeChange = () => {
+    setScreenWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleWindowSizeChange);
+    return () => {
+      window.removeEventListener("resize", handleWindowSizeChange);
+    };
+  }, []);
+
   /* Define dates as days from 1. jan. 1970 */
   const minute = 1000 * 60;
   const hour = minute * 60;
@@ -189,6 +203,43 @@ export const ResultBox = ({
   ).x;
 
   const figData: AtlasData[] = boxData.find((o) => o.type === "data")["data"];
+
+  const handleClick = () => {
+    // The coordinates of the whole result box relative to the viewport
+    // elemCoords.y is the number of pixels scrolled past the top edge
+    const elemCoords = height_ref.current.offsetParent.getBoundingClientRect();
+
+    // The table of contents moves to the top of the screen if the screen width is less than 943 pixels
+    const screenWidthCutoff = 943;
+
+    // Height of the table of contents bar
+    const tocHeight = 70;
+
+    // Add a bit of space between the top of the box and the screen
+    const topSpacing = 20;
+
+    let topMargin: number;
+
+    screenWidth < screenWidthCutoff
+      ? (topMargin = tocHeight + topSpacing)
+      : (topMargin = topSpacing);
+
+    if (expandedResultBox && elemCoords.y < topMargin) {
+      window.scrollTo({
+        top: scrollY + elemCoords.y - topMargin,
+        behavior: "smooth",
+      });
+    } else {
+      if (elemCoords.y < topMargin) {
+        window.scrollTo({
+          top: window.scrollY + elemCoords.y - topMargin,
+          behavior: "smooth",
+        });
+      }
+    }
+    setExpandedResultBox(!expandedResultBox);
+  };
+
   return (
     <div
       id={id}
@@ -214,6 +265,7 @@ export const ResultBox = ({
               transition: "200ms ease-in",
             },
           }}
+          onClick={handleClick}
         >
           <div
             className={classNames.resultBoxTitleWrapper}
@@ -261,15 +313,7 @@ export const ResultBox = ({
         className={classNames.crossWrapper}
         role="button"
         aria-label="Open"
-        onClick={() => {
-          if (expandedResultBox) {
-            window.scrollTo({
-              top: window.scrollY - height_ref.current.offsetHeight,
-              behavior: "smooth",
-            });
-          }
-          setExpandedResultBox(!expandedResultBox);
-        }}
+        onClick={handleClick}
         data-testid="resultbox_expandButton"
       >
         <span className={classNames.horizontal}></span>

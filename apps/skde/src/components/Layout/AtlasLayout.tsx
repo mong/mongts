@@ -1,6 +1,7 @@
 import { LayoutHead } from "./LayoutHead";
 import { Header } from "./Header";
-import { Footer } from "./Footer";
+import { Footer } from "../Footer";
+import { PageWrapper } from "../StyledComponents/PageWrapper";
 
 interface Props {
   children: React.ReactNode;
@@ -11,10 +12,12 @@ interface Props {
 export function AtlasLayout({ children, lang }: Props) {
   return (
     <>
-      <LayoutHead />
-      <Header lang={lang} />
-      {children}
-      <Footer />
+      <PageWrapper>
+        <LayoutHead />
+        <Header lang={lang} />
+        {children}
+        <Footer page="helseatlas" />
+      </PageWrapper>
     </>
   );
 }
