@@ -2969,6 +2969,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@iframe-resizer/core@npm:5.1.2":
+  version: 5.1.2
+  resolution: "@iframe-resizer/core@npm:5.1.2"
+  checksum: 10/2549a722c0875a4999365204625d84bedfd53db75d38546f47b1d2a103418e8f9437b5abac33c4ade9045e3a60ae6686e9d313ca128dff4d72d2af2886fd2274
+  languageName: node
+  linkType: hard
+
+"@iframe-resizer/react@npm:5.1.2":
+  version: 5.1.2
+  resolution: "@iframe-resizer/react@npm:5.1.2"
+  dependencies:
+    "@iframe-resizer/core": "npm:5.1.2"
+    warning: "npm:^4.0.3"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 10/fa1b25d361332f994225b88de087bd296b5a145261adee52a27881596c16490f3e06e978ae8d50083f61bf4daeb3a94cacc2929f2f947f379216cce51623f085
+  languageName: node
+  linkType: hard
+
 "@img/sharp-darwin-arm64@npm:0.33.4":
   version: 0.33.4
   resolution: "@img/sharp-darwin-arm64@npm:0.33.4"
@@ -4736,8 +4756,8 @@ __metadata:
   linkType: hard
 
 "@testing-library/dom@npm:^10.1.0":
-  version: 10.2.0
-  resolution: "@testing-library/dom@npm:10.2.0"
+  version: 10.1.0
+  resolution: "@testing-library/dom@npm:10.1.0"
   dependencies:
     "@babel/code-frame": "npm:^7.10.4"
     "@babel/runtime": "npm:^7.12.5"
@@ -4747,7 +4767,7 @@ __metadata:
     dom-accessibility-api: "npm:^0.5.9"
     lz-string: "npm:^1.5.0"
     pretty-format: "npm:^27.0.2"
-  checksum: 10/15635e1497de08152de5336860a2cdaee05d3eb4574e283dcf0ac5326eede83fc13f4ac5b01c11df5ca4653ad1017d26a75dd832a2a76ad261c342d40d741f2c
+  checksum: 10/6d6ef942deedf547180c76d4cc2c43fe8e52a98ef68be6ba7382a43d3b1e1e5696d9c32ae0b2df12c92ea50023187d132ad2542fc118ba4b900f149e97d019e0
   languageName: node
   linkType: hard
 
@@ -13911,27 +13931,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"iframe-resizer-react@npm:1.1.0":
-  version: 1.1.0
-  resolution: "iframe-resizer-react@npm:1.1.0"
-  dependencies:
-    iframe-resizer: "npm:^4.3.0"
-    warning: "npm:^4.0.3"
-  peerDependencies:
-    prop-types: ">=15.7.2"
-    react: ">=16.8.0"
-    react-dom: ">=16.8.0"
-  checksum: 10/bb6bb2640c8078208f00a73c7f3ea4ce87967d7a1542cfa00d3d8d62d4851ff3391bed2c823a3ae8ea60cb5f60665bb91d91c53754879c13fdca02a6e1959b36
-  languageName: node
-  linkType: hard
-
-"iframe-resizer@npm:^4.3.0":
-  version: 4.3.7
-  resolution: "iframe-resizer@npm:4.3.7"
-  checksum: 10/bad3f5ce5007a23c380dbeafafb80808bfbf8e0fd9a76213dae23558f481d66ae63b743c226e80cc18b9349f06d22a3e3ab1b4fe3cd83c72255744d56b0805a3
-  languageName: node
-  linkType: hard
-
 "ignore@npm:^5.2.0, ignore@npm:^5.3.1":
   version: 5.3.1
   resolution: "ignore@npm:5.3.1"
@@ -22059,6 +22058,7 @@ __metadata:
   resolution: "skde@workspace:apps/skde"
   dependencies:
     "@cypress/code-coverage": "npm:3.12.39"
+    "@iframe-resizer/react": "npm:5.1.2"
     "@mui/icons-material": "npm:5.15.20"
     "@mui/material": "npm:5.15.20"
     "@sentry/browser": "npm:8.11.0"
@@ -22095,7 +22095,6 @@ __metadata:
     eslint-config-next: "npm:14.2.4"
     gray-matter: "npm:4.0.3"
     husky: "npm:9.0.11"
-    iframe-resizer-react: "npm:1.1.0"
     lodash: "npm:4.17.21"
     next: "npm:14.2.4"
     next-query-params: "npm:5.0.0"

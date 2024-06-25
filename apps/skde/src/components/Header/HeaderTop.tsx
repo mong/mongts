@@ -23,7 +23,7 @@ const StyledBreadcrumbSeparator = styled(NavigateNextRounded)(({ theme }) => ({
   color: theme.palette.primary.light,
 }));
 
-const SkdeBreadcrumbs = () => {
+const TreatmentQualityBreadcrumbs = () => {
   return (
     <Breadcrumbs
       separator={<StyledBreadcrumbSeparator fontSize="large" />}
@@ -52,19 +52,60 @@ const SkdeBreadcrumbs = () => {
   );
 };
 
-export const TreatmentQualityHeaderTop = () => {
+const PasientstrommerBreadcrumbs = () => {
+  return (
+    <Breadcrumbs
+      separator={<StyledBreadcrumbSeparator fontSize="large" />}
+      aria-label="breadcrumb"
+    >
+      <Link
+        underline="hover"
+        key="1"
+        color="inherit"
+        href="https://www.skde.no"
+      >
+        Forside
+      </Link>
+      <Link
+        underline="hover"
+        key="2"
+        color="inherit"
+        href="https://www.skde.no/om-skde/analyseseksjonen/"
+      >
+        Analyseseksjonen
+      </Link>
+      <Typography key="3" color="text.primary">
+        Pasientstrømmer
+      </Typography>
+    </Breadcrumbs>
+  );
+};
+
+type HeaderTopProps = {
+  page: "behandlingskvalitet" | "pasientstrømmer";
+};
+
+export const HeaderTop = (props: HeaderTopProps) => {
+  const { page } = props;
+
   return (
     <StyledToolbar className="header-top">
       <Grid container spacing={2}>
         <Grid xs={12}>
-          <LogoImage src="/img/logos/skde-blue.png" alt="SKDE logo" />
+          <Link href={"https://www.skde.no/"}>
+            <LogoImage src="/img/logos/skde-blue.png" alt="SKDE logo" />
+          </Link>
         </Grid>
         <Grid xs={12}>
-          <SkdeBreadcrumbs />
+          {page === "behandlingskvalitet" ? (
+            <TreatmentQualityBreadcrumbs />
+          ) : page === "pasientstrømmer" ? (
+            <PasientstrommerBreadcrumbs />
+          ) : null}
         </Grid>
       </Grid>
     </StyledToolbar>
   );
 };
 
-export default TreatmentQualityHeaderTop;
+export default HeaderTop;
