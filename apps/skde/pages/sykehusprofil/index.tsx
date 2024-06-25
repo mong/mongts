@@ -43,6 +43,7 @@ import {
 import { useScreenSize } from "@visx/responsive";
 import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
+import { Button } from "@mui/material"
 
 const lineChartTheme = {
   lineChartBackground: {
@@ -60,8 +61,31 @@ const StyledToolbarMiddle = styled(Toolbar)(({ theme }) => ({
 
 const ItemBox = styled(Box)(() => ({
   backgroundColor: "white",
-  borderRadius: 24,
+  borderRadius: "24px",
+  height: "auto"
 }));
+
+const ExpandableItemBox = (props) => {
+  const maxHeight = 800;
+  const [expanded, setExpanded] = useState<boolean>(false); 
+  const [height, setHeight] = useState<number | string>(maxHeight);
+  const [buttonText, setButtonText] = useState<string>("Se mer");
+
+  const handleClick = () => {
+    expanded ? setHeight(maxHeight) : setHeight("auto");
+    expanded ? setButtonText("Se mer") : setButtonText("Se mindre");
+    setExpanded(!expanded)
+  }
+
+  return(
+    <Box textAlign="center">
+    <Box sx={{backgroundColor: "white", borderTopLeftRadius: "24px", borderTopRightRadius: "24px", height: height, overflow: "clip"}}>
+      {props.children}
+    </Box>
+    <Button sx={{backgroundColor: "white", borderBottomLeftRadius: "24px", borderBottomRightRadius: "24px"}} fullWidth onClick={handleClick}>{buttonText}</Button>
+    </Box>
+  )
+}
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
@@ -150,7 +174,7 @@ export const Skde = (): JSX.Element => {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    width: 800,
+    width: screenSize.width - 100,
     treatmentYear: 2022,
   };
 
@@ -297,7 +321,7 @@ export const Skde = (): JSX.Element => {
             </Grid>
 
             <Grid xs={12}>
-              <ItemBox>
+              <ExpandableItemBox>
                 <Text
                   x={"10%"}
                   y={50}
@@ -308,7 +332,7 @@ export const Skde = (): JSX.Element => {
                   Fagområder
                 </Text>
                 <MedfieldTable {...medfieldTableProps} />
-              </ItemBox>
+              </ExpandableItemBox>
             </Grid>
 
             <Grid xs={12}>
