@@ -1,4 +1,4 @@
-import React, { useEffect, useState, PropsWithChildren } from "react";
+import React, { useEffect, useState, useRef, PropsWithChildren } from "react";
 import { Text } from "@visx/text";
 import {
   useQueryParam,
@@ -70,15 +70,35 @@ const ExpandableItemBox = (props: PropsWithChildren) => {
   const [expanded, setExpanded] = useState<boolean>(false);
   const [height, setHeight] = useState<number | string>(maxHeight);
   const [buttonText, setButtonText] = useState<string>("Se mer");
+  const ref = useRef(null);
+
+  const topMargin = 10;
 
   const handleClick = () => {
+    // Scroll the top of the box into view
+    const elemCoords = ref.current.getBoundingClientRect();
+
+    if (expanded && elemCoords.y < topMargin) {
+      window.scrollTo({
+        top: scrollY + elemCoords.y - topMargin,
+        behavior: "smooth",
+      });
+    } else {
+      if (elemCoords.y < topMargin) {
+        window.scrollTo({
+          top: window.scrollY + elemCoords.y - topMargin,
+          behavior: "smooth",
+        });
+      }
+    }
+
     expanded ? setHeight(maxHeight) : setHeight("auto");
     expanded ? setButtonText("Se mer") : setButtonText("Se mindre");
     setExpanded(!expanded);
   };
 
   return (
-    <Box>
+    <Box ref={ref}>
       <Box
         sx={{
           backgroundColor: "white",
