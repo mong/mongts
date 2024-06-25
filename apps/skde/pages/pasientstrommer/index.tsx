@@ -1,22 +1,15 @@
-import { FrontPageLayout } from "../../src/components/Layout";
 import IframeResizer from "@iframe-resizer/react";
-import styles from "../../src/styles/Pages.module.css";
 import { Footer } from "../../src/components/Footer";
 import { ThemeProvider } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
+import { Header } from "../../src/components/Header";
 
 const Pasient = () => {
   return (
     <ThemeProvider theme={skdeTheme}>
-      <FrontPageLayout page="Pasientstrømmer">
-        <div className={styles.container_mod}>
-          <div className={styles.article}>
-            <div className={styles.article__title}>
-              <h2>Pasientstrømmer, Helse Nord RHF</h2>
-            </div>
-          </div>
-        </div>
+      <PageWrapper>
+        <Header page="pasientstrømmer" />
         <IframeResizer
           src="https://prod-tabellverk.skde.org/"
           style={{
@@ -27,8 +20,6 @@ const Pasient = () => {
           }}
           license="GPLv3"
         />
-      </FrontPageLayout>
-      <PageWrapper>
         <Footer page="pasientstrømmer" />
       </PageWrapper>
     </ThemeProvider>
