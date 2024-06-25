@@ -243,10 +243,10 @@ export const config: CmsConfig = {
     base_url:
       process.env.NEXT_PUBLIC_API_HOST ?? "https://prod-mong-api.skde.org",
   },
-  logo_url: "https://www.skde.no/helseatlas/img/logos/helseatlas.svg",
+  logo_url: "https://apps.skde.no/helseatlas/img/logos/helseatlas.svg",
   media_folder: "/apps/skde/public/helseatlas/img",
   public_folder: "/helseatlas/img",
-  site_url: "https://www.skde.no/helseatlas/",
+  site_url: "https://apps.skde.no/helseatlas/",
   locale: "nb_no",
   collections: [atlas("no"), staticPages("no"), atlas("en"), staticPages("en")],
 };
