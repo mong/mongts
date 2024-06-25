@@ -36,7 +36,8 @@ export const HeaderMiddle = (props: HeaderMiddleProps) => {
     linkButton = null;
 
     headerTitle = "Pasientstrømmer";
-    headerSubtitle = "Resultater fra pasientstrømmer";
+    headerSubtitle =
+      "Det interaktive tabellverket inneholder overordnet anonymisert informasjon om aktivitet og pasientstrømmer innad i, til og ut av helseregion Nord.";
   }
   return (
     <StyledToolbar className="header-middle">
