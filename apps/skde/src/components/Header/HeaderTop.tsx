@@ -66,7 +66,7 @@ const PasientstrommerBreadcrumbs = () => {
       >
         Forside
       </Link>
-      <Typography key="3" color="text.primary">
+      <Typography key="2" color="text.primary">
         Pasientstrømmer
       </Typography>
     </Breadcrumbs>
