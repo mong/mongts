@@ -142,3 +142,8 @@ export type Registry = {
 export type RegisterData = Registry & {
   indicatorData: IndicatorData[];
 };
+
+export type URLs = {
+  shortName: string;
+  url: string;
+};
