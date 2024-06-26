@@ -56,14 +56,14 @@
       ],
       "annualVarLabels": {
         "nb": [
+          "2020",
           "2021",
-          "2022",
-          "2023"
+          "2022"
         ],
         "en": [
+          "2020",
           "2021",
-          "2022",
-          "2023"
+          "2022"
         ]
       },
       "format": ",.0%"
@@ -95,56 +95,56 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "\tbohf",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
           "format": ""
         },
         {
-          "id": "totsnitt",
+          "id": "\ttotsnitt",
           "label_no": "Rate*",
           "label_en": "Rate*",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
-          "id": "tot_events",
+          "id": "\ttot_events",
           "label_no": "Prøver",
           "label_en": "Tests",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
-          "id": "tot_pop",
+          "id": "\ttot_pop",
           "label_no": "Innbyggere",
           "label_en": "Inhabitants",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
-          "id": "prove_pr_pas",
+          "id": "\tprove_pr_pas",
           "label_no": "Prøver pr. pas.",
           "label_en": "Tests per patient",
           "typeVar": "number",
           "format": ",.2f"
         },
         {
-          "id": "andel_priv",
+          "id": "\tandel_priv",
           "label_no": "Andel** privat",
           "label_en": "Proportion** in private",
           "typeVar": "number",
           "format": ",.0%"
         },
         {
-          "id": "ratesnitt_andel_int",
+          "id": "\tratesnitt_andel_int",
           "label_no": "Andel** gjentatte***",
           "label_en": "Proportion** of tests repeated***",
           "typeVar": "number",
           "format": ",.1%"
         },
         {
-          "id": "antsnitt_i_int",
+          "id": "\tantsnitt_i_int",
           "label_no": "Antall gjentatte***",
           "label_en": "Number of tests repeated***",
           "typeVar": "number",
