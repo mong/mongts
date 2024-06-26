@@ -3,7 +3,7 @@ import bs4
 import json
 import urllib
 
-with urllib.request.urlopen("http://localhost:4000/info/url") as url: 
+with urllib.request.urlopen("https://prod-mong-api.skde.org//info/url") as url: 
   data = json.load(url)
 
 for unit in data: 
