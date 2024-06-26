@@ -459,6 +459,7 @@ export const medfieldTableData: Indicator[] = [
     medfield_id: 1,
     medfield_name: "hjerte",
     medfield_full_name: "Hjerte- og karsykdommer",
+    ind_title: "Tittel til indikator nr. 1 for hjerte- og karsykdommer",
   },
   {
     // Red
@@ -484,6 +485,7 @@ export const medfieldTableData: Indicator[] = [
     medfield_id: 1,
     medfield_name: "hjerte",
     medfield_full_name: "Hjerte- og karsykdommer",
+    ind_title: "Tittel til indikator nr. 2 for hjerte- og karsykdommer",
   },
   {
     // Yellow
@@ -509,6 +511,7 @@ export const medfieldTableData: Indicator[] = [
     medfield_id: 3,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
+    ind_title: "Tittel til indikator nr. 1 for diabetes",
   },
   {
     // Green
@@ -534,6 +537,7 @@ export const medfieldTableData: Indicator[] = [
     medfield_id: 3,
     medfield_name: "diabetes",
     medfield_full_name: "Diabetes",
+    ind_title: "Tittel til indikator nr. 2 for diabetes",
   },
   {
     // Green
@@ -559,6 +563,7 @@ export const medfieldTableData: Indicator[] = [
     medfield_id: 5,
     medfield_name: "barn",
     medfield_full_name: "Barn",
+    ind_title: "Tittel til indikator nr. 1 for barn",
   },
   {
     // Green
@@ -584,6 +589,7 @@ export const medfieldTableData: Indicator[] = [
     medfield_id: 5,
     medfield_name: "barn",
     medfield_full_name: "Barn",
+    ind_title: "Tittel til indikator nr. 2 for barn",
   },
   {
     // Green
@@ -609,5 +615,6 @@ export const medfieldTableData: Indicator[] = [
     medfield_id: 5,
     medfield_name: "barn",
     medfield_full_name: "Barn",
+    ind_title: "Tittel til indikator nr. 3 for barn",
   },
 ];
