@@ -7,7 +7,7 @@ with urllib.request.urlopen("https://prod-mong-api.skde.org/info/url") as url:
   data = json.load(url)
 
 for unit in data: 
-  unit_name = unit["short_name"]
+  unit_name = unit["shortName"]
   unit_url = unit["url"]
 
   request = requests.get(unit_url)
