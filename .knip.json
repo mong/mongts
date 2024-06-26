@@ -4,5 +4,10 @@
     "eslint.config.mjs",
     "apps/skde/public/helseatlas/**"
   ],
-  "ignoreDependencies": ["mysql", "sharp", "typescript-eslint"]
+  "ignoreDependencies": [
+    "mysql",
+    "sharp",
+    "typescript-eslint",
+    "@vitest/coverage-v8"
+  ]
 }
