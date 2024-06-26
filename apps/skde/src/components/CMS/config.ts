@@ -60,6 +60,7 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
         name: "image",
         widget: "file",
         required: true,
+        hint: "Må ha oppløsning på 609x406 pixler. Ikke bilde av stor størrelse.",
       },
       {
         label: "Forsidetekst",
