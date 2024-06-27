@@ -5,11 +5,10 @@ import { NavigateNext } from "@mui/icons-material";
 
 interface TopBannerProps {
   mainTitle: string;
-  ia: boolean;
   lang: string;
 }
 
-export const TopBanner = ({ mainTitle, ia, lang }: TopBannerProps) => {
+export const TopBanner = ({ mainTitle, lang }: TopBannerProps) => {
   return (
     <div className={style.atlasTopBanner}>
       <div className={style.bannerWrapper}>
@@ -26,13 +25,6 @@ export const TopBanner = ({ mainTitle, ia, lang }: TopBannerProps) => {
           </Link>
           <div className={style.breadcrumb_text}>{mainTitle}</div>
         </Breadcrumbs>
-        <div className={style.rightbanner}>
-          {ia && (
-            <div className={style.map_button}>
-              <a href="ia">{lang === "en" ? "Map" : "Kart"}</a>
-            </div>
-          )}
-        </div>
       </div>
     </div>
   );
