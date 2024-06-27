@@ -47,10 +47,7 @@ export interface Indicator {
   medfield_id: number;
   medfield_name: string;
   medfield_full_name: string;
-  ind_short_description: string | null;
-  ind_long_description: string | null;
   ind_title: string | null;
-  ind_name: string | null;
 }
 
 export interface TuName {
@@ -141,4 +138,9 @@ export type Registry = {
 
 export type RegisterData = Registry & {
   indicatorData: IndicatorData[];
+};
+
+export type URLs = {
+  shortName: string;
+  url: string;
 };

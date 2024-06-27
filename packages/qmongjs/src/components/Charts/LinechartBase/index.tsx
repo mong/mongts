@@ -65,10 +65,7 @@ export class LineStyles {
   };
 }
 
-export const background = "#3b6978";
-export const background2 = "#204051";
-export const accentColor = "#edffea";
-export const accentColorDark = "#75daad";
+const background = "#3b6978";
 const tooltipStyles = {
   ...defaultStyles,
   background,
@@ -76,7 +73,7 @@ const tooltipStyles = {
   color: "white",
 };
 
-export type LinechartBaseProps = {
+type LinechartBaseProps = {
   data: LinechartData[][];
   width: number;
   height: number;

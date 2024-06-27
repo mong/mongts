@@ -1,5 +1,4 @@
-module.exports = (on, config) => {
-  require("@cypress/code-coverage/task")(on, config);
+module.exports = (config) => {
   return config;
 };
 

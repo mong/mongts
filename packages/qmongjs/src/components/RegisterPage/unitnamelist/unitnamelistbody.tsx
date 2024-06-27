@@ -134,5 +134,3 @@ export const UnitNameListBody = (props: Props) => {
     </>
   );
 };
-
-export default UnitNameListBody;
