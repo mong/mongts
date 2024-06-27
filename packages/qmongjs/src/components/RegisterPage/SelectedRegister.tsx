@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { useQueryParam } from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
 
-import SelectTreatmentUnits from "../SelectTreatmentUnits";
+import { SelectTreatmentUnits } from "../SelectTreatmentUnits";
 import SelectYear from "../SelectYear";
 
 import { Header } from "./header";

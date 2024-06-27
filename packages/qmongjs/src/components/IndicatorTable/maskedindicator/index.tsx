@@ -1,6 +1,6 @@
 import style from "./maskedindicator.module.css";
 
-export interface MaskedIndicatorProps {
+interface MaskedIndicatorProps {
   text: "Lav dg" | "Lav N" | "Ingen Data";
 }
 

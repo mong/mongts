@@ -73,7 +73,7 @@ const tooltipStyles = {
   color: "white",
 };
 
-export type LinechartBaseProps = {
+type LinechartBaseProps = {
   data: LinechartData[][];
   width: number;
   height: number;

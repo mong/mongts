@@ -1,6 +1,6 @@
 import style from "./indicatortableheader.module.css";
 
-export interface IndicatorTableHeaderProps {
+interface IndicatorTableHeaderProps {
   colspan: number;
   descriptionHeader?: string;
   unitNames: string[];

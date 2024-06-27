@@ -4,7 +4,7 @@ import style from "./indicatorvalue.module.css";
 import { customFormat, level } from "../../../helpers/functions";
 import { levelSymbols } from "../../../helpers/functions";
 
-export interface IndicatorValueProps {
+interface IndicatorValueProps {
   td_class?: string;
   indicatorData: Indicator;
   level_class?: "filtered_level" | "";

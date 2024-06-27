@@ -13,7 +13,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import { getDefaultValue, getSelectedValue } from "./utils";
 
-export type RadioGroupFilterSectionProps = FilterMenuSectionProps & {
+type RadioGroupFilterSectionProps = FilterMenuSectionProps & {
   radios: FilterSettingsValue[];
 };
 

@@ -41,7 +41,7 @@ export type TreeViewFilterSettingsValue = FilterSettingsValue & {
  * the component will automatically uncheck this node when another node is
  * checked.
  */
-export type TreeViewSectionProps = FilterMenuSectionProps & {
+type TreeViewSectionProps = FilterMenuSectionProps & {
   multiselect?: boolean;
   maxselections?: number;
   treedata: TreeViewFilterSectionNode[];

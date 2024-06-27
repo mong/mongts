@@ -7,7 +7,7 @@ import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
 import { FilterSettingsAction } from "./FilterSettingsReducer";
 import { FilterSettingsActionType } from "./FilterSettingsReducer";
 
-export type SelectedFiltersSectionProps = FilterMenuSectionProps;
+type SelectedFiltersSectionProps = FilterMenuSectionProps;
 
 const StyledChip = styled(Chip)(({ theme }) => ({
   fontFamily: theme.typography.button.fontFamily,

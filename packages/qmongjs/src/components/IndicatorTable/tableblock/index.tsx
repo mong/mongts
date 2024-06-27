@@ -8,7 +8,7 @@ import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
 import { Description, Indicator, RegisterName } from "types";
 
-export interface TableBlockProps {
+interface TableBlockProps {
   context: string;
   dataQuality: boolean;
   tableType: "allRegistries" | "singleRegister";

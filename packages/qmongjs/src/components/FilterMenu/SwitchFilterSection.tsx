@@ -15,7 +15,7 @@ import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
 import { FilterSettingsActionType } from "./FilterSettingsReducer";
 import { getSelectedValue } from "./utils";
 
-export type SwitchFilterSectionProps = FilterMenuSectionProps & {
+type SwitchFilterSectionProps = FilterMenuSectionProps & {
   label: string;
   activatedswitchvalue: FilterSettingsValue;
 };

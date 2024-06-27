@@ -9,7 +9,7 @@ import { mainQueryParamsConfig } from "../../../app_config";
 import { Description, Indicator } from "types";
 import styles from "./chartrow.module.css";
 
-export interface Props {
+interface Props {
   context: { context: string; type: string };
   treatmentYear: number;
   colspan?: number;

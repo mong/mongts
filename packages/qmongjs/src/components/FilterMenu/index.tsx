@@ -45,7 +45,7 @@ export type FilterMenuFilterInitializedHandler = (
  * selection changes. The initialSelections are used to initialize the filter settings. The
  * defaultValues are used to reset the filter settings. The children are the filter sections.
  */
-export type FilterMenuProps = PropsWithChildren<{
+type FilterMenuProps = PropsWithChildren<{
   onSelectionChanged?: FilterMenuSelectionChangedHandler;
   onFilterInitialized?: FilterMenuFilterInitializedHandler;
   initialSelections?: Map<string, FilterSettingsValue[]>;
@@ -174,7 +174,7 @@ const mergeWithSectionInitialSelections = (
  * @property defaultValues Default key-value pairs of filter settings
  * @property sections Child elements that can have initial and default values
  */
-export type CreateInitialFilterSettingsArgs = {
+type CreateInitialFilterSettingsArgs = {
   initialFilterSelections?: Map<string, FilterSettingsValue[]>;
   defaultValues?: Map<string, FilterSettingsValue[]>;
   sections?: ReactElement<FilterMenuSectionProps>[];

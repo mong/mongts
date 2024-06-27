@@ -2,7 +2,7 @@ import { Description } from "types";
 import style from "./indicatordescription.module.css";
 import { customFormat } from "../../../helpers/functions/localFormater";
 
-export interface DescriptionProps {
+interface DescriptionProps {
   description: Description;
   lastCompleteYear?: number;
   lastCompleteDateString?: string;
