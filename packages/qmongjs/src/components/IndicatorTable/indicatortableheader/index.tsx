@@ -1,6 +1,6 @@
 import style from "./indicatortableheader.module.css";
 
-export interface IndicatorTableHeaderProps {
+interface IndicatorTableHeaderProps {
   colspan: number;
   descriptionHeader?: string;
   unitNames: string[];
@@ -56,5 +56,3 @@ export const IndicatorTableHeader = (props: IndicatorTableHeaderProps) => {
     </thead>
   );
 };
-
-export default IndicatorTableHeader;

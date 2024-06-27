@@ -5,7 +5,7 @@ import { scaleBand, scaleLinear } from "@visx/scale";
 import { IndicatorData } from "types";
 import { customFormat } from "../../../helpers/functions";
 
-export type BarchartProps = {
+type BarchartProps = {
   indicatorData: IndicatorData;
   width: number;
   height: number;

@@ -43,6 +43,7 @@ import {
 import { useScreenSize } from "@visx/responsive";
 import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
+import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 
 const lineChartTheme = {
   lineChartBackground: {
@@ -186,7 +187,7 @@ export const Skde = (): JSX.Element => {
   return (
     <ThemeProvider theme={skdeTheme}>
       <Header />
-      <Box sx={{ bgcolor: skdeTheme.palette.background.paper }}>
+      <PageWrapper>
         <StyledToolbarMiddle className="header-middle">
           <Grid container spacing={2} rowSpacing={6}>
             <Grid xs={12}>
@@ -349,7 +350,7 @@ export const Skde = (): JSX.Element => {
           </Grid>
         </Box>
         <Footer page="sykehusprofil" />
-      </Box>
+      </PageWrapper>
     </ThemeProvider>
   );
 };

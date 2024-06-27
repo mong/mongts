@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 
 import style from "./headertabs.module.css";
 
-export interface HeaderTabProps {
+interface HeaderTabProps {
   tabNames: { label: string; value: string }[];
   activeTab: string;
 }

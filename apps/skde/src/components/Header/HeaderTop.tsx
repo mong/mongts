@@ -66,15 +66,7 @@ const PasientstrommerBreadcrumbs = () => {
       >
         Forside
       </Link>
-      <Link
-        underline="hover"
-        key="2"
-        color="inherit"
-        href="https://www.skde.no/om-skde/analyseseksjonen/"
-      >
-        Analyseseksjonen
-      </Link>
-      <Typography key="3" color="text.primary">
+      <Typography key="2" color="text.primary">
         Pasientstrømmer
       </Typography>
     </Breadcrumbs>
@@ -85,7 +77,7 @@ type HeaderTopProps = {
   page: "behandlingskvalitet" | "pasientstrømmer";
 };
 
-export const HeaderTop = (props: HeaderTopProps) => {
+const HeaderTop = (props: HeaderTopProps) => {
   const { page } = props;
 
   return (
