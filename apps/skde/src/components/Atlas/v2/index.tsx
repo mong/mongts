@@ -20,7 +20,6 @@ type AtlasJson = {
   shortTitle: string;
   ingress: string;
   kapittel: ChapterProps[];
-  ia?: boolean;
   publisert: boolean;
 };
 
@@ -54,7 +53,7 @@ const AtlasPage = ({ content, atlasData }: AtlasPageProps) => {
     <DataContext.Provider value={{ atlasData }}>
       <AtlasLayout lang={obj.lang === "en" ? "en" : "no"}>
         <main data-testid="v2atlas">
-          <TopBanner mainTitle={obj.shortTitle} lang={obj.lang} ia={obj.ia} />
+          <TopBanner mainTitle={obj.shortTitle} lang={obj.lang} />
           <div className={`${styles.atlasContent}`}>
             <TableOfContents tocData={tocData} />
             <div className={styles.main_content}>

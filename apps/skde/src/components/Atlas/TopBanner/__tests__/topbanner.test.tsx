@@ -12,48 +12,24 @@ import { test, expect } from "vitest";
 
 test("Bokmål render", async () => {
   const title = "Dette er en tittel";
-  const { container } = render(
-    <TopBanner mainTitle={title} ia={false} lang="nb" />,
-  );
+  const { container } = render(<TopBanner mainTitle={title} lang="nb" />);
   expect(container).toMatchSnapshot();
 });
 
 test("Nynorsk render", async () => {
   const title = "Dette er ein tittel";
-  const { container } = render(
-    <TopBanner mainTitle={title} ia={false} lang="nn" />,
-  );
+  const { container } = render(<TopBanner mainTitle={title} lang="nn" />);
   expect(container).toMatchSnapshot();
 });
 
 test("English render", async () => {
   const title = "This is a title";
-  const { container } = render(
-    <TopBanner mainTitle={title} ia={false} lang="en" />,
-  );
+  const { container } = render(<TopBanner mainTitle={title} lang="en" />);
   expect(container).toMatchSnapshot();
 });
 
 test("Random lang render", async () => {
   const title = "Dette er ein tittel";
-  const { container } = render(
-    <TopBanner mainTitle={title} ia={false} lang="qwerty" />,
-  );
-  expect(container).toMatchSnapshot();
-});
-
-test("IA render", async () => {
-  const title = "Dette er en tittel";
-  const { container } = render(
-    <TopBanner mainTitle={title} ia={true} lang="nb" />,
-  );
-  expect(container).toMatchSnapshot();
-});
-
-test("IA english render", async () => {
-  const title = "Dette er en tittel";
-  const { container } = render(
-    <TopBanner mainTitle={title} ia={true} lang="en" />,
-  );
+  const { container } = render(<TopBanner mainTitle={title} lang="qwerty" />);
   expect(container).toMatchSnapshot();
 });
