@@ -132,6 +132,8 @@ export function TreatmentQualityFilterMenu({
     dg: StringParam,
   });
 
+  const selectedSpecificRegistry = useQueryParam("registry");
+
   // Year selection
   const yearOptions = getYearOptions();
   const [selectedYear, setSelectedYear] = useQueryParam<string>(
