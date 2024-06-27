@@ -1,4 +1,4 @@
-import Chart, { ChartProps } from "../Chart";
+import { Chart, ChartProps } from "../Chart";
 import { render } from "@testing-library/react";
 import { useRef } from "react";
 import * as hooks from "../../../../helpers/hooks";
