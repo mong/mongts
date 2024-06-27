@@ -2,7 +2,7 @@ import { Dispatch, useState } from "react";
 
 import { UnitNameListHeader } from "./unitnamelistheader";
 import { UnitNameListBody } from "./unitnamelistbody";
-import useEventListener from "../../../helpers/hooks/useEventListener";
+import { useEventListener } from "../../../helpers/hooks/useEventListener";
 import styles from "./index.module.css";
 import { FaRegTimesCircle } from "react-icons/fa";
 
@@ -87,5 +87,3 @@ export const UnitNameList = (props: Props) => {
     </>
   );
 };
-
-export default UnitNameList;

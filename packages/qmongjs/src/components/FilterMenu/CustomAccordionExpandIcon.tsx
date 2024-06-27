@@ -4,7 +4,7 @@ import {
   RemoveCircleOutlineRounded,
 } from "@mui/icons-material";
 
-export const CustomAccordionExpandIcon = () => {
+const CustomAccordionExpandIcon = () => {
   return (
     <Box
       sx={{

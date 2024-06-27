@@ -12,7 +12,7 @@ export interface PageContentProps {
   };
 }
 
-export const PageContent = ({ content, frontMatter }: PageContentProps) => {
+const PageContent = ({ content, frontMatter }: PageContentProps) => {
   return (
     <>
       <AtlasLayout lang={frontMatter.lang === "en" ? "en" : "no"}>

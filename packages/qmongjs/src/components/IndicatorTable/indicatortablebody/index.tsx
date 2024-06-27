@@ -2,7 +2,7 @@ import { RegisterName } from "types";
 import TableBlock from "../tableblock";
 import { NoDataAvailible } from "../ContenForEmptyTable";
 
-export interface IndicatorTableBodyProps {
+interface IndicatorTableBodyProps {
   context: string;
   dataQuality: boolean;
   tableType: "allRegistries" | "singleRegister";

@@ -28,7 +28,7 @@ const StyledLink = styled(Link)(() => ({
   textDecoration: "underline",
 }));
 
-export type FooterProps = {
+type FooterProps = {
   page:
     | "behandlingskvalitet"
     | "helseatlas"

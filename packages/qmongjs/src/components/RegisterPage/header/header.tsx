@@ -4,7 +4,7 @@ import SelectRegister from "../../SelectRegister";
 import { RegisterName } from "types";
 
 import style from "./header.module.css";
-export interface HeaderProps {
+interface HeaderProps {
   registerNames: RegisterName[];
   tabNames?: { label: string; value: string }[];
   dataFrom?: string;

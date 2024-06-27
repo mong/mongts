@@ -23,12 +23,6 @@ export type MedfieldTableProps = {
   width: number;
 };
 
-export type IndicatorLevels = {
-  ind_id: string;
-  year: number;
-  level: "H" | "M" | "L";
-};
-
 const createSymbols = (green: number, yellow: number, red: number) => {
   const symbols = [];
 

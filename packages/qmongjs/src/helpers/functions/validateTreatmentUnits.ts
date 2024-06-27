@@ -39,5 +39,3 @@ export const validateTreatmentUnits = function (
 
   return unitsOut;
 };
-
-export default validateTreatmentUnits;

@@ -6,7 +6,7 @@ import { Indicator } from "types";
 import { level } from "qmongjs";
 import { HeatMapColumn } from "../Charts/HeatMap";
 
-export type QualityAtlasFigureProps = {
+type QualityAtlasFigureProps = {
   width: number;
   maxBoxWidth?: number;
   gap: number;

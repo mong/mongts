@@ -1,0 +1,13 @@
+{
+  "ignore": [
+    "apps/skde/test/cypress/plugins/index.ts",
+    "eslint.config.mjs",
+    "apps/skde/public/helseatlas/**"
+  ],
+  "ignoreDependencies": [
+    "mysql",
+    "sharp",
+    "@vitest/coverage-v8",
+    "express-serve-static-core"
+  ]
+}

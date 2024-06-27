@@ -12,16 +12,23 @@
     "check-types": "turbo run check-types",
     "check-format": "turbo run check-format",
     "cms": "npx decap-server",
-    "prepare": "husky"
+    "prepare": "husky",
+    "knip": "knip"
   },
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "devDependencies": {
+    "@types/node": "20.14.9",
+    "decap-server": "3.0.4",
+    "eslint": "9.5.0",
     "husky": "9.0.11",
+    "knip": "5.23.0",
     "lint-staged": "15.2.7",
     "prettier": "3.3.2",
-    "turbo": "1.13.4"
+    "turbo": "1.13.4",
+    "typescript": "5.5.2",
+    "typescript-eslint": "7.14.1"
   }
 }

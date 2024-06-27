@@ -7,9 +7,9 @@ import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
 import { FilterSettingsAction } from "./FilterSettingsReducer";
 import { FilterSettingsActionType } from "./FilterSettingsReducer";
 
-export type SelectedFiltersSectionProps = FilterMenuSectionProps;
+type SelectedFiltersSectionProps = FilterMenuSectionProps;
 
-export const StyledChip = styled(Chip)(({ theme }) => ({
+const StyledChip = styled(Chip)(({ theme }) => ({
   fontFamily: theme.typography.button.fontFamily,
   padding: "1rem",
 }));
@@ -20,7 +20,7 @@ export const StyledChip = styled(Chip)(({ theme }) => ({
  * @param chipId Element id for the chip to delete
  * @param filterSettingsDispatch The dispatch function for updating the filter settings
  */
-export const handleDelete = (
+const handleDelete = (
   chipId: string,
   filterSettingsDispatch: React.Dispatch<FilterSettingsAction>,
 ) => {
@@ -44,7 +44,7 @@ export const handleDelete = (
  *
  * @param filterSettingsDispatch The dispatch function for updating the filter settings
  */
-export const handleReset = (
+const handleReset = (
   filterSettingsDispatch: React.Dispatch<FilterSettingsAction>,
 ) => {
   filterSettingsDispatch({
@@ -107,5 +107,3 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
     </>
   );
 }
-
-export default SelectedFiltersSection;

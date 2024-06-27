@@ -1,7 +1,12 @@
 import { countLevels, setMissingToZero, IndicatorLevels } from "..";
-import { LinechartData } from "../../LinechartBase";
 import { levelData } from "../../../../test/test_data/data";
-import { vi } from "vitest";
+import { vi, test, expect } from "vitest";
+
+type LinechartData = {
+  id?: number;
+  x: Date;
+  y: number;
+};
 
 vi.mock("next/font/google", () => ({
   Plus_Jakarta_Sans: () => ({

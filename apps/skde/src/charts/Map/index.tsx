@@ -21,7 +21,7 @@ type FeatureShape = {
   };
 };
 
-export type MapData = {
+type MapData = {
   type: "FeatureCollection";
   features: FeatureShape[];
 };
