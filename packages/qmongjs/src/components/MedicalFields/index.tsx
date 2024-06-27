@@ -60,5 +60,3 @@ export const MedicalFields = (props: MedicalFieldProps) => {
     </ul>
   );
 };
-
-export default MedicalFields;

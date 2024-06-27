@@ -1,5 +1,6 @@
-import ChartRowDescription from "../chartrowdescription";
+import { ChartRowDescription } from "../chartrowdescription";
 import { render } from "@testing-library/react";
+import { test, expect } from "vitest";
 
 test("ChartRowDescription where date will change with time zone", () => {
   const delivery_time = new Date("1999-12-31T23:59:59.999Z");
