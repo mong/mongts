@@ -85,5 +85,3 @@ export function SelectTreatmentUnits(props: Props) {
     </form>
   );
 }
-
-export default SelectTreatmentUnits;

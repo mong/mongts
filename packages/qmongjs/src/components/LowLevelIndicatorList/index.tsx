@@ -131,7 +131,7 @@ const IndicatorRow = (props: {
   );
 };
 
-export type LowLevelIndicatorListProps = {
+type LowLevelIndicatorListProps = {
   context: string;
   unitNames: string[];
   type: string;
