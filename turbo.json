@@ -18,7 +18,8 @@
       "dependsOn": ["build"]
     },
     "dev": {
-      "cache": false
+      "cache": false,
+      "env": ["DB_PORT"]
     }
   }
 }
