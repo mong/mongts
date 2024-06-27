@@ -97,5 +97,3 @@ export const TreeViewFilterSectionItem = (
     </TreeItem>
   );
 };
-
-export default TreeViewFilterSectionItem;

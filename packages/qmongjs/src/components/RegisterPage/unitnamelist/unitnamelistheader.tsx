@@ -9,5 +9,3 @@ export const UnitNameListHeader: React.FC = () => {
     </h2>
   );
 };
-
-export default UnitNameListHeader;

@@ -12,7 +12,7 @@ type AppBarProps = {
   onTabChanged;
 };
 
-export const TreatmentQualityAppBar = ({
+const TreatmentQualityAppBar = ({
   openDrawer,
   context,
   onTabChanged,

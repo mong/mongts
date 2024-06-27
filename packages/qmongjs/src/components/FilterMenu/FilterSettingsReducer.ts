@@ -6,7 +6,6 @@ import { FilterSettingsValue } from "./FilterSettingsContext";
  * The types of actions that can be performed on the filter settings
  */
 export enum FilterSettingsActionType {
-  NOT_SET,
   SET_SECTION_SELECTIONS,
   DEL_SECTION_SELECTIONS,
   SET_ALL_SELECTIONS,

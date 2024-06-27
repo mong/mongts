@@ -6,7 +6,7 @@ import { level } from "qmongjs";
 import { AxisLeft, AxisTop } from "@visx/axis";
 import { scaleOrdinal, scaleBand } from "@visx/scale";
 
-export type Box = {
+type Box = {
   bin: number;
   name: string;
   count: number;
@@ -17,7 +17,7 @@ export type HeatMapColumn = {
   bins: Box[];
 };
 
-export type HeatMapData = {
+type HeatMapData = {
   data: HeatMapColumn[];
   xTicks: string[];
 };
@@ -64,7 +64,7 @@ const rectColorScale = scaleOrdinal<
   domain: [0, 1, 2, -1],
 });
 
-export type HeatmapProps = {
+type HeatmapProps = {
   heatmapData: HeatMapData;
   width: number;
   maxBoxWidth?: number;

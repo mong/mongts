@@ -77,7 +77,7 @@ type HeaderTopProps = {
   page: "behandlingskvalitet" | "pasientstrømmer";
 };
 
-export const HeaderTop = (props: HeaderTopProps) => {
+const HeaderTop = (props: HeaderTopProps) => {
   const { page } = props;
 
   return (

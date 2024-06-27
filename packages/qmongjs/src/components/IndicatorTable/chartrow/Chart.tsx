@@ -31,8 +31,6 @@ export function Chart(props: ChartProps) {
   }
 }
 
-export default Chart;
-
 const GetBarChart = (props: ChartProps) => {
   const { description, indicatorData, treatmentYear }: ChartProps = props;
   const registerShortName = description.rname ?? "";

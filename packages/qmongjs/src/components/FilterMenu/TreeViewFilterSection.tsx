@@ -41,7 +41,7 @@ export type TreeViewFilterSettingsValue = FilterSettingsValue & {
  * the component will automatically uncheck this node when another node is
  * checked.
  */
-export type TreeViewSectionProps = FilterMenuSectionProps & {
+type TreeViewSectionProps = FilterMenuSectionProps & {
   multiselect?: boolean;
   maxselections?: number;
   treedata: TreeViewFilterSectionNode[];
@@ -102,7 +102,7 @@ const buildTreeLevel = (
  * @param handleCheckboxChange The function to handle the checkbox click events
  * @returns The TreeItem components for the TreeView
  */
-export const buildTreeView = (
+const buildTreeView = (
   props: TreeViewSectionProps,
   selectedIds: string[],
   handleCheckboxChange: (checked: boolean, value: string) => void,
@@ -129,9 +129,7 @@ export const buildTreeView = (
  * @param values The FilterSettingsValue array for the section
  * @returns The selected values from the filter settings state or undefined
  */
-export const getSelectedNodeIds = (
-  values: FilterSettingsValue[] | undefined,
-) => {
+const getSelectedNodeIds = (values: FilterSettingsValue[] | undefined) => {
   return values ? values.map((value) => value.value) : [];
 };
 
@@ -142,7 +140,7 @@ export const getSelectedNodeIds = (
  * @param treeData The tree data with the TreeViewFilterSectionNode structure
  * @returns A flat array of the tree's FilterSettingsValue objects
  */
-export const flattenTreeValues = (
+const flattenTreeValues = (
   parentIds: string[],
   treeData: TreeViewFilterSectionNode[],
 ) => {
@@ -193,7 +191,7 @@ export const initFilterSettingsValuesMap = (
  * @param filterSettingsValuesMap The map used for looking up FilterSettingValues by node ids
  * @returns A list of node ids that should be expanded
  */
-export const buildExpandedNodeList = (
+const buildExpandedNodeList = (
   selectedIds: string[],
   filterSettingsValuesMap: Map<string, TreeViewFilterSettingsValue>,
 ) => {
@@ -395,5 +393,3 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
     </Box>
   );
 }
-
-export default TreeViewFilterSection;
