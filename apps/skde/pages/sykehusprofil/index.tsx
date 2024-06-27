@@ -43,8 +43,8 @@ import {
 import { useScreenSize } from "@visx/responsive";
 import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
-import infoboxImage from "./harold-04.jpg";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
+import logo from "./Logo.png";
 
 const lineChartTheme = {
   lineChartBackground: {
@@ -254,10 +254,10 @@ export const Skde = (): JSX.Element => {
                 <Grid container spacing={2}>
                   <Grid xs={5} margin={2}>
                     <img
-                      src={infoboxImage.src}
-                      alt={"Harold"}
-                      width={"100%"}
+                      src={logo.src}
+                      alt={"Logo"}
                       height={"100%"}
+                      width={"100%"}
                       style={{ borderRadius: "50%" }}
                     />
                   </Grid>
