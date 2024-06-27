@@ -14,7 +14,7 @@ import { AnnualVariation } from "./AnnualVariation";
 import { ErrorBars } from "./errorBars";
 import { mainBarColors, nationBarColors, selectedBarColors } from "../colors";
 
-export type BarchartData<
+type BarchartData<
   Data,
   X extends (string & keyof Data)[],
   Y extends keyof Data,

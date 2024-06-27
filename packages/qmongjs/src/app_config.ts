@@ -6,7 +6,7 @@ import {
   withDefault,
 } from "use-query-params";
 
-export interface appTextTypes {
+interface appTextTypes {
   menus: { unit: string; year: string };
   indicators: {
     high: { text: string };

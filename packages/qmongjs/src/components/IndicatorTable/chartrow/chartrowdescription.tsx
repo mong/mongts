@@ -68,5 +68,3 @@ export const ChartRowDescription = ({
     </div>
   );
 };
-
-export default ChartRowDescription;
