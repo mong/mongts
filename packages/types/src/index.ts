@@ -47,24 +47,25 @@ export interface Indicator {
   medfield_id: number;
   medfield_name: string;
   medfield_full_name: string;
-  ind_short_description: string | null;
-  ind_long_description: string | null;
   ind_title: string | null;
-  ind_name: string | null;
 }
 
 export interface TuName {
   hospital: string;
   hf: string;
   hf_full: string;
+  hf_sort: number;
   rhf: string;
+  rhf_sort: number;
 }
 
 export interface NestedTreatmentUnitName {
   rhf: string;
+  rhf_sort: number;
   hf: {
     hf: string;
     hf_full: string;
+    hf_sort: number;
     hospital: string[];
   }[];
 }
@@ -93,7 +94,7 @@ export type DataPoint = {
   id: number;
   unitName: string;
   year: number;
-  var: number;
+  var: number | null;
   denominator: number;
   dg: number | null;
   context: "caregiver" | "resident";
@@ -137,4 +138,9 @@ export type Registry = {
 
 export type RegisterData = Registry & {
   indicatorData: IndicatorData[];
+};
+
+export type URLs = {
+  shortName: string;
+  url: string;
 };

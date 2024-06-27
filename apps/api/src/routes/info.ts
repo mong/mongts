@@ -1,5 +1,5 @@
 import express from "express";
-import { medicalFields, registerNames } from "../controllers/info";
+import { medicalFields, registerNames, unitURLs } from "../controllers/info";
 
 const Router = express.Router();
 
@@ -8,5 +8,8 @@ Router.get("/names", registerNames);
 
 // the medical fields and the registers within them
 Router.get("/medicalFields", medicalFields);
+
+// the urls to the unit web sites
+Router.get("/url", unitURLs);
 
 export default Router;

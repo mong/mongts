@@ -236,7 +236,8 @@ export const SelectedRegister = ({ registerNames }: SelectedRegisterProps) => {
         <div className={styles.contentContainer}>
           <div className={styles.mainTableContainer}>
             <IndicatorTable
-              context={context}
+              context={context === "coverage" ? "caregiver" : context}
+              dataQuality={context === "coverage"}
               tableType={"singleRegister"}
               registerNames={registerInfo}
               unitNames={[...validated_treatment_units, "Nasjonalt"]}

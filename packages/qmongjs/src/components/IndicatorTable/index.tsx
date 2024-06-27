@@ -4,6 +4,7 @@ import { RegisterName } from "types";
 
 export interface IndicatorTableProps {
   context: string;
+  dataQuality: boolean;
   tableType: "allRegistries" | "singleRegister";
   colspan: number;
   descriptionHeader?: string;
@@ -16,11 +17,13 @@ export interface IndicatorTableProps {
   medicalFieldFilter: string[];
   showLevelFilter?: string;
   blockTitle?: string[];
+  showTreatmentYear?: boolean;
 }
 
 export const IndicatorTable = (props: IndicatorTableProps) => {
   const {
     context,
+    dataQuality,
     tableType,
     unitNames = ["Nasjonalt"],
     treatmentYear = 2019,
@@ -32,6 +35,7 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
     registerNames,
     descriptionHeader,
     blockTitle,
+    showTreatmentYear,
   } = props;
 
   return (
@@ -42,9 +46,11 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
         selection_bar_height={selection_bar_height}
         legend_height={legend_height}
         descriptionHeader={descriptionHeader}
+        treatmentYear={showTreatmentYear ? treatmentYear : undefined}
       />
       <IndicatorTableBody
         context={context}
+        dataQuality={dataQuality}
         tableType={tableType}
         colspan={colspan}
         registerNames={registerNames}

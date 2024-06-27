@@ -1,3 +1,3 @@
 # qmongjs
 
-The code behind https://www.skde.no/kvalitetsregistre/alle/sykehus/.
+The code behind https://apps.skde.no/kvalitetsregistre/alle/sykehus/.

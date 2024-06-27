@@ -9,11 +9,11 @@
 
 <!-- badges: end -->
 
-This is the [Next.js](https://nextjs.org/) app behind [www.skde.no](https://www.skde.no/) and the API.
+This is the [Next.js](https://nextjs.org/) app behind [apps.skde.no](https://apps.skde.no/) and the API.
 
 ## Development
 
-There is two long-lived branches in this repository: `main` and `develop`. All changes to `main` will update [www.skde.no](https://www.skde.no/) and [verify.skde.no](https://verify.skde.no/). All changes to `develop` will update [test.skde.no](https://test.skde.no/).
+There is two long-lived branches in this repository: `main` and `develop`. All changes to `main` will update [apps.skde.no](https://apps.skde.no/) and [verify.skde.no](https://verify.skde.no/). All changes to `develop` will update [test.skde.no](https://test.skde.no/).
 
 New features and changes goes into the `develop` branch through a _Pull Request_ (PR). Before these changes go into the `main` branch, the webpage [test.skde.no](https://test.skde.no/) has to be checked for errors.
 

@@ -3,9 +3,15 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import fs from "fs";
 import matter from "gray-matter";
 import AtlasPage, { AtlasPageProps } from "../../../../src/components/Atlas/v2";
+import { ThemeProvider } from "@mui/material";
+import { skdeTheme } from "qmongjs";
 
 const Page = ({ content, atlasData }: AtlasPageProps) => {
-  return <AtlasPage content={content} atlasData={atlasData} />;
+  return (
+    <ThemeProvider theme={skdeTheme}>
+      <AtlasPage content={content} atlasData={atlasData} />
+    </ThemeProvider>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {

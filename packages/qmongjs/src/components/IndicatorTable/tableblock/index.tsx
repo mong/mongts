@@ -10,6 +10,7 @@ import { Description, Indicator, RegisterName } from "types";
 
 export interface TableBlockProps {
   context: string;
+  dataQuality: boolean;
   tableType: "allRegistries" | "singleRegister";
   registerName: RegisterName;
   blockTitle?: string;
@@ -24,6 +25,7 @@ export interface TableBlockProps {
 export const TableBlock = (props: TableBlockProps) => {
   const {
     context,
+    dataQuality,
     tableType,
     registerName,
     colspan,
@@ -34,10 +36,9 @@ export const TableBlock = (props: TableBlockProps) => {
     blockTitle,
     unitNames,
   } = props;
-  const queryContext =
-    context === "coverage"
-      ? { context: "caregiver", type: "dg" }
-      : { context, type: "ind" };
+  const queryContext = dataQuality
+    ? { context, type: "dg" }
+    : { context, type: "ind" };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const indicatorDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
@@ -115,12 +116,12 @@ export const TableBlock = (props: TableBlockProps) => {
   });
 
   const tabName =
-    context === "caregiver" && registerName.caregiver_data
-      ? "sykehus"
-      : context === "resident" && registerName.resident_data
-        ? "opptaksomraade"
-        : context === "coverage" && registerName.dg_data
-          ? "datakvalitet"
+    dataQuality && registerName.dg_data
+      ? "datakvalitet"
+      : context === "caregiver" && registerName.caregiver_data
+        ? "sykehus"
+        : context === "resident" && registerName.resident_data
+          ? "opptaksomraade"
           : "sykehus";
 
   return (
