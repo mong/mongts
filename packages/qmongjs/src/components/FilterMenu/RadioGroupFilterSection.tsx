@@ -70,5 +70,3 @@ export const RadioGroupFilterSection = (
     </FormControl>
   );
 };
-
-export default RadioGroupFilterSection;

@@ -234,5 +234,3 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
     </>
   );
 };
-
-export default IndicatorRow;

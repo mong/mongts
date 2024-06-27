@@ -66,5 +66,3 @@ export function SwitchFilterSection(props: SwitchFilterSectionProps) {
     </FormControl>
   );
 }
-
-export default SwitchFilterSection;

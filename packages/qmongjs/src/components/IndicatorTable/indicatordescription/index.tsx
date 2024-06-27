@@ -49,5 +49,3 @@ export const IndicatorDescription = (props: DescriptionProps) => {
     </td>
   );
 };
-
-export default IndicatorDescription;

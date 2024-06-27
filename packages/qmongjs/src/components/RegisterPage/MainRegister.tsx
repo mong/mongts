@@ -175,5 +175,3 @@ export const MainRegister = ({ registerNames }: MainRegisterProps) => {
     </div>
   );
 };
-
-export default MainRegister;

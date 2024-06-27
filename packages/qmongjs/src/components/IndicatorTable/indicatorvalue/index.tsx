@@ -63,5 +63,3 @@ export const IndicatorData = ({
     </>
   );
 };
-
-export default IndicatorValue;

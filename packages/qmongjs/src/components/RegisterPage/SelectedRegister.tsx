@@ -254,5 +254,3 @@ export const SelectedRegister = ({ registerNames }: SelectedRegisterProps) => {
     </div>
   );
 };
-
-export default SelectedRegister;

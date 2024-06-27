@@ -191,7 +191,7 @@ export type CreateInitialFilterSettingsArgs = {
  *
  * @returns A FilterSettings instance with the merged initial and default values
  */
-export const createInitialFilterSettings = ({
+const createInitialFilterSettings = ({
   initialFilterSelections,
   defaultValues,
   sections,
@@ -244,7 +244,7 @@ export const createInitialFilterSettings = ({
  * @param onSelectionChanged The handler to call when the selection changes
  * @returns The updated filter settings
  */
-export const wrapReducer = (
+const wrapReducer = (
   reducer: FilterSettingsReducerType,
   onSelectionChanged?: FilterMenuSelectionChangedHandler,
 ) => {
@@ -349,5 +349,3 @@ export const FilterMenu = ({
     </FilterSettingsContext.Provider>
   );
 };
-
-export default FilterMenu;

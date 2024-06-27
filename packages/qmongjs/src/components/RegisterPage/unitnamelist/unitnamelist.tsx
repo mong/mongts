@@ -87,5 +87,3 @@ export const UnitNameList = (props: Props) => {
     </>
   );
 };
-
-export default UnitNameList;

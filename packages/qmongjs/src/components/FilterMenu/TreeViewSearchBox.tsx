@@ -12,7 +12,7 @@ interface AutocompleteOption {
   value: string;
 }
 
-export function TreeViewSearchBox(props: TreeViewSearchBoxProps) {
+function TreeViewSearchBox(props: TreeViewSearchBoxProps) {
   const hintText = props.hintText || "Søk...";
   const options: AutocompleteOption[] = props.options.map((option) => ({
     label: option.valueLabel,

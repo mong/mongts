@@ -22,7 +22,7 @@ export interface TableBlockProps {
   colspan: number;
 }
 
-export const TableBlock = (props: TableBlockProps) => {
+const TableBlock = (props: TableBlockProps) => {
   const {
     context,
     dataQuality,

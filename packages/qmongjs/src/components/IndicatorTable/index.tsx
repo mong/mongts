@@ -63,5 +63,3 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
     </table>
   );
 };
-
-export default IndicatorTable;

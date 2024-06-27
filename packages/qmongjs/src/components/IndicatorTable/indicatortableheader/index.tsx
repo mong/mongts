@@ -56,5 +56,3 @@ export const IndicatorTableHeader = (props: IndicatorTableHeaderProps) => {
     </thead>
   );
 };
-
-export default IndicatorTableHeader;

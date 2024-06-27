@@ -27,5 +27,3 @@ export const TableBlockTitle = (props: BlockTitleProps) => {
     </tr>
   );
 };
-
-export default TableBlockTitle;
