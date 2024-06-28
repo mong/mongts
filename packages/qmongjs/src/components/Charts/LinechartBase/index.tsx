@@ -406,7 +406,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
               onMouseMove={handleToolTip}
               onMouseLeave={() => hideTooltip()}
             />
-            {tooltipData && (
+            {useTooltip && tooltipData && (
               <circle
                 cx={tooltipLeft}
                 cy={tooltipTop}
