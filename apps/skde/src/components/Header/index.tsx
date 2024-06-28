@@ -1,14 +1,16 @@
 import React from "react";
-import HeaderTop from "./HeaderTop";
+import SkdeHeader from "./SkdeHeader";
 import { HeaderMiddle } from "./HeaderMiddle";
 
 export const Header = ({ path }: { path: string[] }) => {
   return (
-    <React.Fragment>
-      <HeaderTop path={path} />
-      <HeaderMiddle page={path.at(-1)} />
-    </React.Fragment>
+    <>
+      <SkdeHeader path={path} />
+      <HeaderMiddle
+        page={path.at(-1) as "behandlingskvalitet" | "pasientstrømmer"}
+      />
+    </>
   );
 };
 
-export { HeaderTop } from "./HeaderTop";
+export { SkdeHeader } from "./SkdeHeader";

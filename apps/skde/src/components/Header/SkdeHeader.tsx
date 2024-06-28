@@ -33,11 +33,11 @@ const breadcrumbsMapping = {
     text: "Behandlingskvalitet",
   },
   forside: {
-    link: "/",
+    link: "https://www.skde.no",
     text: "Forside",
   },
   resultater: {
-    link: "/resultater/",
+    link: "https://www.skde.no/resultater",
     text: "Tall om helsetjenesten",
   },
 };
@@ -65,7 +65,7 @@ const SkdeBreadcrumbs = ({ path }: { path: string[] }) => {
   );
 };
 
-export const HeaderTop = ({ path }: { path: string[] }) => {
+export const SkdeHeader = ({ path }: { path: string[] }) => {
   return (
     <StyledToolbar className="header-top">
       <Grid container spacing={2}>
@@ -82,4 +82,4 @@ export const HeaderTop = ({ path }: { path: string[] }) => {
   );
 };
 
-export default HeaderTop;
+export default SkdeHeader;
