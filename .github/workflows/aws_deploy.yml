@@ -47,7 +47,7 @@ jobs:
         run: |
           yarn run export
           aws s3 sync apps/skde/out s3://skde.org \
-            --exclude "helseatlas/ia/*" --exclude "helseatlas/files/*" \
+            --exclude "helseatlas/files/*" \
             --delete \
             --cache-control "public, max-age=1, s-maxage=1"
       - name: Build and sync develop to S3 bucket qa.skde.org
@@ -57,7 +57,7 @@ jobs:
         run: |
           yarn run export
           aws s3 sync apps/skde/out s3://qa.skde.org \
-            --exclude "helseatlas/ia/*" --exclude "helseatlas/files/*" \
+            --exclude "helseatlas/files/*" \
             --delete \
             --cache-control "public, max-age=1, s-maxage=1"
       - name: Build and sync to verify page
@@ -67,6 +67,6 @@ jobs:
         run: |
           yarn run export
           aws s3 sync apps/skde/out s3://verify.skde.org \
-            --exclude "helseatlas/ia/*" --exclude "helseatlas/files/*" \
+            --exclude "helseatlas/files/*" \
             --delete \
             --cache-control "public, max-age=1, s-maxage=1"
