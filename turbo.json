@@ -1,6 +1,6 @@
 {
   "$schema": "https://turborepo.org/schema.json",
-  "pipeline": {
+  "tasks": {
     "build": {
       "dependsOn": ["^build"]
     },
@@ -18,7 +18,8 @@
       "dependsOn": ["build"]
     },
     "dev": {
-      "cache": false
+      "cache": false,
+      "env": ["DB_PORT"]
     }
   }
 }
