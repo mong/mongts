@@ -1,4 +1,4 @@
-FROM node:20.13.1-alpine
+FROM node:20.15.0-alpine
 WORKDIR /app
 COPY package*.json ./
 RUN yarn install --only=production && yarn cache clean
