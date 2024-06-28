@@ -249,15 +249,14 @@ export const Skde = (): JSX.Element => {
 
         <Box margin={4}>
           <Grid container spacing={2}>
-            <Grid xs={6}>
-              <ItemBox>
-                <Grid container spacing={2}>
+            <Grid sm={6}>
+              <ItemBox sx={{ objectFit: "scale-down" }}>
+                <Grid container spacing={2} sx={{ overflow: "clip" }}>
                   <Grid xs={5} margin={2}>
                     <img
                       src={logo.src}
                       alt={"Logo"}
-                      height={"100%"}
-                      width={"100%"}
+                      width="100%"
                       style={{ borderRadius: "50%" }}
                     />
                   </Grid>
@@ -285,7 +284,7 @@ export const Skde = (): JSX.Element => {
               </ItemBox>
             </Grid>
 
-            <Grid xs={6}>
+            <Grid sm={6}>
               <ItemBox>
                 <Text
                   x={"10%"}
