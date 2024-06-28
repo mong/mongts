@@ -9,7 +9,7 @@ const Pasient = () => {
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
-        <Header page="pasientstrømmer" />
+        <Header path={["pasientstrømmer"]} />
         <IframeResizer
           src="https://prod-tabellverk.skde.org/"
           style={{
