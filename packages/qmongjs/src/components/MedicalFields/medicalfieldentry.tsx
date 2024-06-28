@@ -38,5 +38,3 @@ export const MedicalFieldEntry = (props: Props) => {
     </li>
   );
 };
-
-export default MedicalFieldEntry;

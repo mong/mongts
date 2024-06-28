@@ -1,4 +1,3 @@
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import { styled } from "@mui/material/styles";
@@ -8,17 +7,6 @@ const narrowDrawerWidth = 320;
 const smDrawerWidth = 544;
 const mdDrawerWidth = 768;
 const lgDrawerWidth = 992;
-
-export const TreatmentQualityAppBar = styled(AppBar)(({ theme }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  backgroundColor: theme.palette.primary.light,
-  color: theme.palette.text.primary,
-}));
-
-export const TabsRow = styled(Box)(({ theme }) => ({
-  display: "flex",
-  paddingLeft: theme.typography.body1.fontSize,
-}));
 
 export const FilterDrawer = styled(Drawer)(({ theme }) => ({
   display: "block",

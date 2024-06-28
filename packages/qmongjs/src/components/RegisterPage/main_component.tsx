@@ -1,6 +1,6 @@
 import { UseQueryResult } from "@tanstack/react-query";
 import { useQueryParam } from "use-query-params";
-import { Description, RegisterName, Indicator, OptsTu } from "types";
+import { RegisterName, OptsTu } from "types";
 import { mainQueryParamsConfig } from "../../app_config";
 
 import LEGEND from "../TargetLevels";
@@ -9,28 +9,7 @@ import { IndicatorTable } from "../IndicatorTable";
 import { useMedicalFieldsQuery } from "../../helpers/hooks";
 import styles from "./registerPage.module.css";
 
-interface AggData {
-  nation: {
-    filtered_by_unit: Indicator[];
-    filtered_by_year: Indicator[];
-  };
-  filtered_by_unit: Indicator[];
-  filtered_by_year: Indicator[];
-  all_filtered_by_year: Indicator[];
-}
-
-export interface GraphData {
-  agg_data: AggData;
-  description: Description[];
-}
-
-export interface IndPerReg {
-  registry_name: string;
-  number_ind: number;
-  indicators: Description[];
-}
-
-export interface Props {
+interface Props {
   context: string;
   optstu: OptsTu[] | [];
   registerNames: RegisterName[];

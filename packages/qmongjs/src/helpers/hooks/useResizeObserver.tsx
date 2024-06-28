@@ -30,5 +30,3 @@ export const useResizeObserver = function (
   }, [ref]);
   return dimensions;
 };
-
-export default useResizeObserver;

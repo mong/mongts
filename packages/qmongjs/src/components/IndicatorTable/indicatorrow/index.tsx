@@ -135,7 +135,7 @@ const formatIndicatorValues = (
   }
 };
 
-export interface IndicatorRowProps {
+interface IndicatorRowProps {
   context: { context: string; type: string };
   treatmentYear: number;
   description: Description;
@@ -234,5 +234,3 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
     </>
   );
 };
-
-export default IndicatorRow;

@@ -5,7 +5,7 @@ import { customFormat } from "qmongjs";
 import { ColorLegend } from "./ColorLegend";
 import { linechartColors } from "../colors";
 
-export type LinechartData<
+type LinechartData<
   Data,
   X extends keyof Data,
   Y extends keyof Data,

@@ -181,5 +181,3 @@ export const FigureButtons = (props: Props) => {
     });
   return <div className={style["btn-container"]}>{buttons}</div>;
 };
-
-export default FigureButtons;

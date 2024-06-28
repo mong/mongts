@@ -1,6 +1,6 @@
 import db from "../../db";
 
-export interface MedFieldInterface {
+interface MedFieldInterface {
   shortName: string;
   name: string;
   registers: string;

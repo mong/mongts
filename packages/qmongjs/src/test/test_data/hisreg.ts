@@ -130,51 +130,6 @@ export const hisreg_data: Indicator[] = [
   }),
 ];
 
-export const hisreg_dg: Indicator[] = [
-  buildIndicator({
-    id: 3098494,
-    ind_id: "hisreg_dg",
-    unit_level: "hospital",
-    unit_name: "Haukeland",
-    context: "caregiver",
-    year: 2019,
-    denominator: 147,
-    var: 0.34694,
-    dg: null,
-    delivery_time: new Date("2022-09-07T15:26:10.000Z"),
-    delivery_latest_update: new Date("2022-09-07T00:00:00.000Z"),
-    delivery_latest_affirm: new Date("2022-01-01T00:00:00.000Z"),
-    type: "dg_andel",
-    include: 1,
-    min_denominator: null,
-    level_direction: 1,
-    level_green: null,
-    level_yellow: null,
-    sformat: ",.0%",
-  }),
-  buildIndicator({
-    id: 3098501,
-    ind_id: "hisreg_dg",
-    unit_level: "nation",
-    unit_name: "Nasjonalt",
-    context: "caregiver",
-    year: 2019,
-    denominator: 1745,
-    var: 0.33754,
-    dg: null,
-    delivery_time: new Date("2022-09-07T15:26:10.000Z"),
-    delivery_latest_update: new Date("2022-09-07T00:00:00.000Z"),
-    delivery_latest_affirm: new Date("2022-01-01T00:00:00.000Z"),
-    type: "dg_andel",
-    include: 1,
-    min_denominator: null,
-    level_direction: 1,
-    level_green: null,
-    level_yellow: null,
-    sformat: ",.0%",
-  }),
-];
-
 export const hisreg_descr: Description[] = [
   buildDescription({
     id: "hisreg_dg",

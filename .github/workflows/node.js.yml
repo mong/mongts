@@ -35,6 +35,7 @@ jobs:
       - run: yarn run check-types
       - run: yarn run check-format
       - run: yarn lint
+      - run: yarn knip
       - run: yarn run test
       - name: Code coverage
         if: matrix.node-version == '20.x'
