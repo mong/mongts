@@ -244,6 +244,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
           disableElevation
           onClick={handleClick}
           endIcon={<KeyboardArrowDown />}
+          sx={{ marginLeft: 4 }}
         >
           Alternativer
         </Button>

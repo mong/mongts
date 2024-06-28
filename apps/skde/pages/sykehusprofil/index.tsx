@@ -299,7 +299,7 @@ export const Skde = (): JSX.Element => {
             </Grid>
 
             <Grid xs={12}>
-              <ItemBox>
+              <ItemBox sx={{ overflow: "auto" }}>
                 <Text
                   x={"10%"}
                   y={50}
@@ -351,23 +351,21 @@ export const Skde = (): JSX.Element => {
             </Grid>
 
             <Grid xs={12}>
-              <ItemBox>
-                <Box margin={2}>
-                  <Text
-                    x={"10%"}
-                    y={50}
-                    width={500}
-                    verticalAnchor="start"
-                    style={{ fontWeight: 700, fontSize: 24 }}
-                  >
-                    Indikatorer med lavt målnivå
-                  </Text>
-                  <LowLevelIndicatorList
-                    context={"caregiver"}
-                    type={"ind"}
-                    unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
-                  />
-                </Box>
+              <ItemBox sx={{ overflow: "auto" }}>
+                <Text
+                  x={"10%"}
+                  y={50}
+                  width={500}
+                  verticalAnchor="start"
+                  style={{ fontWeight: 700, fontSize: 24 }}
+                >
+                  Indikatorer med lavt målnivå
+                </Text>
+                <LowLevelIndicatorList
+                  context={"caregiver"}
+                  type={"ind"}
+                  unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
+                />
               </ItemBox>
             </Grid>
           </Grid>
