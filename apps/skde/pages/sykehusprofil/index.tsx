@@ -6,7 +6,7 @@ import {
   withDefault,
 } from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
-import { Header } from "../../src/components/HospitalProfile";
+import { SkdeHeader } from "../../src/components/Header";
 import {
   skdeTheme,
   FilterSettingsValue,
@@ -186,7 +186,7 @@ export const Skde = (): JSX.Element => {
 
   return (
     <ThemeProvider theme={skdeTheme}>
-      <Header />
+      <SkdeHeader path={["sykehusprofil"]} />
       <PageWrapper>
         <StyledToolbarMiddle className="header-middle">
           <Grid container spacing={2} rowSpacing={6}>
