@@ -1,5 +1,5 @@
 import React from "react";
-import SkdeHeader from "./SkdeHeader";
+import { SkdeHeader } from "./SkdeHeader";
 import { HeaderMiddle } from "./HeaderMiddle";
 
 export const Header = ({ path }: { path: string[] }) => {

@@ -85,5 +85,3 @@ export const SkdeHeader = ({ path }: { path: string[] }) => {
     </StyledToolbar>
   );
 };
-
-export default SkdeHeader;
