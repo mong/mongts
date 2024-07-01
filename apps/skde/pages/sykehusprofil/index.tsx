@@ -47,6 +47,8 @@ import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import logo from "./Logo.png";
 import { URLs } from "types";
+import { ArrowLink } from "../../src/components/ArrowLink";
+import Divider from "@mui/material/Divider";
 
 const lineChartTheme = {
   lineChartBackground: {
@@ -88,6 +90,8 @@ export const Skde = (): JSX.Element => {
     withDefault(DelimitedArrayParam, ["Nasjonalt"]),
   );
 
+  const [unitUrl, setUnitUrl] = useState<string | null>(null);
+
   // Get unit names
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -124,6 +128,18 @@ export const Skde = (): JSX.Element => {
 
     setExpanded(false);
     setSelectedTreatmentUnits(newUnit);
+
+    let unitUrl: URLs | undefined;
+
+    if (unitUrlsQuery.data) {
+      unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
+        return row.shortName === newUnit[0];
+      });
+    }
+
+    if (unitUrl[0]) {
+      setUnitUrl(unitUrl[0].url);
+    }
   };
 
   const screenSize = useScreenSize({ debounceTime: 150 });
@@ -191,8 +207,6 @@ export const Skde = (): JSX.Element => {
       setExpanded(false);
     }
   };
-
-  console.log();
 
   return (
     <ThemeProvider theme={skdeTheme}>
@@ -288,11 +302,16 @@ export const Skde = (): JSX.Element => {
                     >
                       {selectedTreatmentUnits[0]}
                     </Text>
-                    {
-                      unitUrlsQuery.data.filter((row: URLs) => {
-                        return row.shortName === selectedTreatmentUnits[0];
-                      })[0].url
-                    }
+                    <Divider />
+                    <Box sx={{ marginLeft: 10, marginBottom: 0 }}>
+                      {unitUrl ? (
+                        <ArrowLink
+                          href={unitUrl}
+                          text="Nettside"
+                          externalLink={true}
+                        />
+                      ) : null}
+                    </Box>
                   </Grid>
                 </Grid>
               </ItemBox>
