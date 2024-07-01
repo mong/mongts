@@ -329,7 +329,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
                     data={indicatorQuery.data}
                     row={row}
                     currentYear={currentYear}
-                    key={"tbody" + row.ind_id}
+                    key={row.ind_id}
                   />
                 );
               })}
