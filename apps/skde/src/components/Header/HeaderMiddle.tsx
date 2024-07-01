@@ -9,13 +9,11 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   paddingBottom: theme.spacing(8),
 }));
 
-type HeaderMiddleProps = {
+export const HeaderMiddle = ({
+  page,
+}: {
   page: "behandlingskvalitet" | "pasientstrømmer";
-};
-
-export const HeaderMiddle = (props: HeaderMiddleProps) => {
-  const { page } = props;
-
+}) => {
   let linkButton;
   let headerTitle: string;
   let headerSubtitle: string;

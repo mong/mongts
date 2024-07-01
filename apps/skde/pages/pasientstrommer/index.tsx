@@ -3,13 +3,13 @@ import { Footer } from "../../src/components/Footer";
 import { ThemeProvider } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
-import { Header } from "../../src/components/Header";
+import { SkdeHeader } from "../../src/components/Header";
 
 const Pasient = () => {
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
-        <Header page="pasientstrømmer" />
+        <SkdeHeader path={["pasientstrømmer"]} />
         <IframeResizer
           src="https://prod-tabellverk.skde.org/"
           style={{

@@ -19,7 +19,7 @@ const TreatmentQualityAppBar = ({
 }: AppBarProps) => {
   return (
     <>
-      <Header page="behandlingskvalitet" />
+      <Header path={["behandlingskvalitet"]} />
       <StyledAppBar position="sticky" elevation={0}>
         <TreatmentQualityToolbar
           openDrawer={openDrawer}
