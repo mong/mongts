@@ -137,9 +137,7 @@ export const Skde = (): JSX.Element => {
       });
     }
 
-    if (unitUrl[0]) {
-      setUnitUrl(unitUrl[0].url);
-    }
+    unitUrl[0] ? setUnitUrl(unitUrl[0].url) : setUnitUrl(null);
   };
 
   const screenSize = useScreenSize({ debounceTime: 150 });
