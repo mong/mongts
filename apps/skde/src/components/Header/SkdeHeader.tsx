@@ -51,11 +51,11 @@ const SkdeBreadcrumbs = (props: BreadCrumbPath) => {
 };
 
 type SkdeHeaderProps = {
-  path: BreadCrumbPath;
+  breadcrumbs: BreadCrumbPath;
 };
 
 export const SkdeHeader = (props: SkdeHeaderProps) => {
-  const { path } = props;
+  const { breadcrumbs } = props;
 
   return (
     <StyledToolbar className="header-top">
@@ -66,7 +66,7 @@ export const SkdeHeader = (props: SkdeHeaderProps) => {
           </Link>
         </Grid>
         <Grid xs={12}>
-          <SkdeBreadcrumbs path={path.path} />
+          <SkdeBreadcrumbs path={breadcrumbs.path} />
         </Grid>
       </Grid>
     </StyledToolbar>

@@ -17,7 +17,7 @@ export const Header = (props: HeaderProps) => {
 
   return (
     <>
-      <SkdeHeader path={breadcrumbs} />
+      <SkdeHeader breadcrumbs={breadcrumbs} />
       <HeaderMiddle page={page} />
     </>
   );
