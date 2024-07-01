@@ -157,7 +157,6 @@ const IndicatorRow = (props: {
           data={data}
           indID={row.ind_id}
           currentYear={currentYear}
-          key={"collapsed" + row.ind_id}
         />
       </TableRow>
     </React.Fragment>
