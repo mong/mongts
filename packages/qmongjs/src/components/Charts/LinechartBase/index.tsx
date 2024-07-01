@@ -351,7 +351,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
             />
             {data.map((lineData, i) => {
               return (
-                <Group>
+                <Group key={"group" + i.toString()}>
                   {lineData.map((d, j) => (
                     <circle
                       key={i + j}
