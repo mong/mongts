@@ -15,7 +15,7 @@ import { Box, Button } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
-const getVar = (data: Indicator[], year: number) => {
+const getVar = (data: Indicator[], year: number, key: string) => {
   const row = data.find((row: Indicator) => {
     return row.year === year;
   });
@@ -24,7 +24,7 @@ const getVar = (data: Indicator[], year: number) => {
     return [
       row?.sformat ? customFormat(row.sformat)(row.var) : row.var,
       "   ",
-      newLevelSymbols(level(row)),
+      newLevelSymbols(level(row), key),
     ];
   } else {
     return "NA";
@@ -57,18 +57,50 @@ const CollapsedRow = (props: {
         <TableBody>
           <TableRow>
             <TableCell>
-              {filteredData ? getVar(filteredData, currentYear - 5) : null}
+              {filteredData
+                ? getVar(
+                    filteredData,
+                    currentYear - 5,
+                    "collapsed-row-symbol" +
+                      indID +
+                      (currentYear - 5).toString(),
+                  )
+                : null}
             </TableCell>
             <TableCell>
-              {filteredData ? getVar(filteredData, currentYear - 4) : null}
+              {filteredData
+                ? getVar(
+                    filteredData,
+                    currentYear - 4,
+                    "collapsed-row-symbol" +
+                      indID +
+                      (currentYear - 4).toString(),
+                  )
+                : null}
             </TableCell>
 
             <TableCell>
-              {filteredData ? getVar(filteredData, currentYear - 3) : null}
+              {filteredData
+                ? getVar(
+                    filteredData,
+                    currentYear - 3,
+                    "collapsed-row-symbol" +
+                      indID +
+                      (currentYear - 3).toString(),
+                  )
+                : null}
             </TableCell>
 
             <TableCell>
-              {filteredData ? getVar(filteredData, currentYear - 2) : null}
+              {filteredData
+                ? getVar(
+                    filteredData,
+                    currentYear - 2,
+                    "collapsed-row-symbol" +
+                      indID +
+                      (currentYear - 2).toString(),
+                  )
+                : null}
             </TableCell>
           </TableRow>
         </TableBody>
@@ -111,7 +143,7 @@ const IndicatorRow = (props: {
           {[
             customFormat(row.sformat!)(row.var),
             "  ",
-            newLevelSymbols(level(row)),
+            newLevelSymbols(level(row), "indicator-row-symbol" + row.id),
           ]}
         </TableCell>
         <TableCell>{row.dg ? customFormat(",.0%")(row.dg) : "Ingen"}</TableCell>
@@ -125,6 +157,7 @@ const IndicatorRow = (props: {
           data={data}
           indID={row.ind_id}
           currentYear={currentYear}
+          key={"collapsed" + row.ind_id}
         />
       </TableRow>
     </React.Fragment>
@@ -296,7 +329,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
                     data={indicatorQuery.data}
                     row={row}
                     currentYear={currentYear}
-                    key={row.ind_id}
+                    key={"tbody" + row.ind_id}
                   />
                 );
               })}
