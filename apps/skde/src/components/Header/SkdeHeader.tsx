@@ -23,53 +23,40 @@ const StyledBreadcrumbSeparator = styled(NavigateNextRounded)(({ theme }) => ({
   color: theme.palette.primary.light,
 }));
 
-const breadcrumbsMapping = {
-  forside: {
-    link: "https://www.skde.no",
-    text: "Forside",
-  },
-  resultater: {
-    link: "https://www.skde.no/resultater",
-    text: "Tall om helsetjenesten",
-  },
-  pasientstrømmer: {
-    link: "/pasientstrommer/",
-    text: "Pasientstrømmer",
-  },
-  behandlingskvalitet: {
-    link: "/behandlingskvalitet/",
-    text: "Behandlingskvalitet",
-  },
-  sykehusprofil: {
-    link: "/sykehusprofil/",
-    text: "Sykehusprofil",
-  },
+type BreadCrumbStop = {
+  link: string;
+  text: string;
 };
 
-const SkdeBreadcrumbs = ({ path }: { path: string[] }) => {
+export type BreadCrumbPath = {
+  path: BreadCrumbStop[];
+};
+
+const SkdeBreadcrumbs = (props: BreadCrumbPath) => {
+  const { path } = props;
+
   return (
     <Breadcrumbs
       separator={<StyledBreadcrumbSeparator fontSize="large" />}
       aria-label="breadcrumb"
     >
-      {["forside", ...path].slice(0, -1).map((id, index) => (
-        <Link
-          underline="hover"
-          key={index}
-          color="inherit"
-          href={breadcrumbsMapping[id].link}
-        >
-          {breadcrumbsMapping[id].text}
+      {path.slice(0, -1).map((row, index) => (
+        <Link underline="hover" key={index} color="inherit" href={row.link}>
+          {row.text}
         </Link>
       ))}
-      <Typography color="text.primary">
-        {breadcrumbsMapping[path.at(-1)].text}
-      </Typography>
+      <Typography color="text.primary">{path.at(-1).text}</Typography>
     </Breadcrumbs>
   );
 };
 
-export const SkdeHeader = ({ path }: { path: string[] }) => {
+type SkdeHeaderProps = {
+  path: BreadCrumbPath;
+};
+
+export const SkdeHeader = (props: SkdeHeaderProps) => {
+  const { path } = props;
+
   return (
     <StyledToolbar className="header-top">
       <Grid container spacing={2}>
@@ -79,7 +66,7 @@ export const SkdeHeader = ({ path }: { path: string[] }) => {
           </Link>
         </Grid>
         <Grid xs={12}>
-          <SkdeBreadcrumbs path={path} />
+          <SkdeBreadcrumbs path={path.path} />
         </Grid>
       </Grid>
     </StyledToolbar>
