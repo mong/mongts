@@ -12,6 +12,7 @@ import {
   FilterSettingsValue,
   FilterMenu,
   useUnitNamesQuery,
+  useUnitUrlsQuery,
   LowLevelIndicatorList,
   LineStyles,
 } from "qmongjs";
@@ -45,6 +46,7 @@ import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomA
 import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import logo from "./Logo.png";
+import { URLs } from "types";
 
 const lineChartTheme = {
   lineChartBackground: {
@@ -101,8 +103,13 @@ export const Skde = (): JSX.Element => {
   const [prevApiQueryLoading, setPrevApiQueryLoading] = useState(
     unitNamesQuery.isLoading,
   );
-  const apiQueriesCompleted = prevApiQueryLoading && !unitNamesQuery.isLoading;
 
+  const unitUrlsQuery = useUnitUrlsQuery();
+
+  const apiQueriesCompleted =
+    prevApiQueryLoading &&
+    !unitNamesQuery.isLoading &&
+    !unitUrlsQuery.isLoading;
   const shouldRefreshInitialState = prerenderFinished || apiQueriesCompleted;
 
   useEffect(() => {
@@ -184,6 +191,8 @@ export const Skde = (): JSX.Element => {
       setExpanded(false);
     }
   };
+
+  console.log();
 
   return (
     <ThemeProvider theme={skdeTheme}>
@@ -279,6 +288,11 @@ export const Skde = (): JSX.Element => {
                     >
                       {selectedTreatmentUnits[0]}
                     </Text>
+                    {
+                      unitUrlsQuery.data.filter((row: URLs) => {
+                        return row.shortName === selectedTreatmentUnits[0];
+                      })[0].url
+                    }
                   </Grid>
                 </Grid>
               </ItemBox>

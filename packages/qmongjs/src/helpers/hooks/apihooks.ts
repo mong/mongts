@@ -181,6 +181,25 @@ export const useRegisterNamesQuery = () => {
   });
 };
 
+export const fetchUnitUrls = async () => {
+  const response = await fetch(`${API_HOST}/info/url`);
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json();
+};
+
+export const useUnitUrlsQuery = () => {
+  return useQuery({
+    queryKey: ["unitUrls"],
+    queryFn: () => fetchUnitUrls(),
+    staleTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    gcTime: 1000 * 60 * 60,
+  });
+};
+
 const fetchMedicalFields = async () => {
   const response = await fetch(`${API_HOST}/info/medicalfields`);
   if (!response.ok) {
