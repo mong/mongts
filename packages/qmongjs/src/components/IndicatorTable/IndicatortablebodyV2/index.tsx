@@ -199,6 +199,7 @@ const IndicatorRow = (props: {
             levelGreen={indData.levelGreen!}
             levelYellow={indData.levelYellow!}
             levelDirection={indData.levelDirection!}
+            useTooltip={true}
           />
         ));
 
