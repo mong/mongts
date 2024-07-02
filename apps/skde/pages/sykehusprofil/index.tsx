@@ -44,6 +44,7 @@ import { useScreenSize } from "@visx/responsive";
 import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
+import { ExpandableItemBox } from "../../src/components/ExpandableItemBox";
 
 const lineChartTheme = {
   lineChartBackground: {
@@ -61,7 +62,8 @@ const StyledToolbarMiddle = styled(Toolbar)(({ theme }) => ({
 
 const ItemBox = styled(Box)(() => ({
   backgroundColor: "white",
-  borderRadius: 24,
+  borderRadius: "24px",
+  height: "auto",
 }));
 
 export const Skde = (): JSX.Element => {
@@ -151,7 +153,7 @@ export const Skde = (): JSX.Element => {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    width: 800,
+    width: screenSize.width - 100,
     treatmentYear: 2022,
   };
 
@@ -298,7 +300,7 @@ export const Skde = (): JSX.Element => {
             </Grid>
 
             <Grid xs={12}>
-              <ItemBox>
+              <ExpandableItemBox>
                 <Text
                   x={"10%"}
                   y={50}
@@ -309,11 +311,11 @@ export const Skde = (): JSX.Element => {
                   Fagområder
                 </Text>
                 <MedfieldTable {...medfieldTableProps} />
-              </ItemBox>
+              </ExpandableItemBox>
             </Grid>
 
             <Grid xs={12}>
-              <ItemBox>
+              <ExpandableItemBox>
                 <Text
                   x={"10%"}
                   y={50}
@@ -324,28 +326,26 @@ export const Skde = (): JSX.Element => {
                   Fagområder (dekningsgrad)
                 </Text>
                 <MedfieldTable {...medfieldTablePropsDG} />
-              </ItemBox>
+              </ExpandableItemBox>
             </Grid>
 
             <Grid xs={12}>
-              <ItemBox>
-                <Box margin={2}>
-                  <Text
-                    x={"10%"}
-                    y={50}
-                    width={500}
-                    verticalAnchor="start"
-                    style={{ fontWeight: 700, fontSize: 24 }}
-                  >
-                    Indikatorer med lavt målnivå
-                  </Text>
-                  <LowLevelIndicatorList
-                    context={"caregiver"}
-                    type={"ind"}
-                    unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
-                  />
-                </Box>
-              </ItemBox>
+              <ExpandableItemBox>
+                <Text
+                  x={"10%"}
+                  y={50}
+                  width={500}
+                  verticalAnchor="start"
+                  style={{ fontWeight: 700, fontSize: 24 }}
+                >
+                  Indikatorer med lavt målnivå
+                </Text>
+                <LowLevelIndicatorList
+                  context={"caregiver"}
+                  type={"ind"}
+                  unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
+                />
+              </ExpandableItemBox>
             </Grid>
           </Grid>
         </Box>
