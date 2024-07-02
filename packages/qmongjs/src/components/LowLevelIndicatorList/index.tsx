@@ -47,61 +47,33 @@ const CollapsedRow = (props: {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell>{currentYear - 5}</TableCell>
-            <TableCell>{currentYear - 4}</TableCell>
-            <TableCell>{currentYear - 3}</TableCell>
-            <TableCell>{currentYear - 2}</TableCell>
+            {Array.from([5, 4, 3, 2]).map((i) => {
+              return (
+                <TableCell key={"tablehead" + indID + currentYear + "-" + i}>
+                  {currentYear - i}
+                </TableCell>
+              );
+            })}
           </TableRow>
         </TableHead>
 
         <TableBody>
           <TableRow>
-            <TableCell>
-              {filteredData
-                ? getVar(
-                    filteredData,
-                    currentYear - 5,
-                    "collapsed-row-symbol" +
-                      indID +
-                      (currentYear - 5).toString(),
-                  )
-                : null}
-            </TableCell>
-            <TableCell>
-              {filteredData
-                ? getVar(
-                    filteredData,
-                    currentYear - 4,
-                    "collapsed-row-symbol" +
-                      indID +
-                      (currentYear - 4).toString(),
-                  )
-                : null}
-            </TableCell>
-
-            <TableCell>
-              {filteredData
-                ? getVar(
-                    filteredData,
-                    currentYear - 3,
-                    "collapsed-row-symbol" +
-                      indID +
-                      (currentYear - 3).toString(),
-                  )
-                : null}
-            </TableCell>
-
-            <TableCell>
-              {filteredData
-                ? getVar(
-                    filteredData,
-                    currentYear - 2,
-                    "collapsed-row-symbol" +
-                      indID +
-                      (currentYear - 2).toString(),
-                  )
-                : null}
-            </TableCell>
+            {Array.from([5, 4, 3, 2]).map((i) => {
+              return (
+                <TableCell key={"tablecell" + indID + currentYear + "-" + i}>
+                  {filteredData
+                    ? getVar(
+                        filteredData,
+                        currentYear - i,
+                        "collapsed-row-symbol" +
+                          indID +
+                          (currentYear - 5).toString(),
+                      )
+                    : null}
+                </TableCell>
+              );
+            })}
           </TableRow>
         </TableBody>
       </Table>
