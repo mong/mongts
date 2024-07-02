@@ -181,7 +181,7 @@ export const useRegisterNamesQuery = () => {
   });
 };
 
-export const fetchUnitUrls = async () => {
+const fetchUnitUrls = async () => {
   const response = await fetch(`${API_HOST}/info/url`);
   if (!response.ok) {
     throw new Error(response.statusText);
