@@ -14,6 +14,29 @@ import IconButton from "@mui/material/IconButton";
 import { Box, Button } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { ArrowLink } from "../ArrowLink";
+import Stack from "@mui/material/Stack";
+
+const result = (data: IndicatorData, point: DataPoint, dg?: boolean) => {
+  let pointVar: number | null;
+
+  if (dg) {
+    point && point.dg ? (pointVar = point.dg) : (pointVar = null);
+  } else {
+    point && point.var ? (pointVar = point.var) : (pointVar = null);
+  }
+
+  return pointVar
+    ? [
+        customFormat(data.format!)(pointVar),
+        "  ",
+        newLevelSymbols(
+          level2(data, point),
+          "indicator-row-symbol" + data.indicatorID,
+        ),
+      ]
+    : null;
+};
 
 const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
   const { row, currentYear } = props;
@@ -23,11 +46,6 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
   const lastYear = row.data!.filter((el: DataPoint) => {
     return el.year === currentYear - 1;
   })[0];
-
-  let lastYearVar: number | null;
-  lastYear && lastYear.var
-    ? (lastYearVar = lastYear.var)
-    : (lastYearVar = null);
 
   return (
     <React.Fragment>
@@ -46,24 +64,37 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
           </IconButton>
         </TableCell>
         <TableCell>{row.indicatorTitle}</TableCell>
-        <TableCell>
-          {lastYearVar
-            ? [
-                customFormat(row.format!)(lastYearVar),
-                "  ",
-                newLevelSymbols(
-                  level2(row, lastYear),
-                  "indicator-row-symbol" + row.indicatorID,
-                ),
-              ]
-            : "NA"}
-        </TableCell>
+        <TableCell>{result(row, lastYear)}</TableCell>
       </TableRow>
 
       <TableRow
         key={row.indicatorID + "-collapse"}
         sx={{ visibility: open ? "visible" : "collapse" }}
-      ></TableRow>
+      >
+        <TableCell />
+        <TableCell>
+          {lastYear ? (
+            <Stack direction="row">
+              {"Dekningsgrad: "}
+              {result(row, lastYear, true)}
+            </Stack>
+          ) : null}
+        </TableCell>
+        <TableCell>
+          {lastYear ? (
+            <ArrowLink
+              href={
+                "https://apps.skde.no/behandlingskvalitet/?selected_treatment_units=" +
+                lastYear.unitName +
+                "&selected_row=" +
+                lastYear.indicatorID
+              }
+              externalLink={true}
+              text="Mer om indikatoren"
+            />
+          ) : null}
+        </TableCell>
+      </TableRow>
     </React.Fragment>
   );
 };
@@ -199,7 +230,13 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
             </TableHead>
             <TableBody>
               {dataSubset.map((row: IndicatorData) => {
-                return <IndicatorRow row={row} currentYear={currentYear} />;
+                return (
+                  <IndicatorRow
+                    row={row}
+                    currentYear={currentYear}
+                    key={"indicator-row-" + row.indicatorID}
+                  />
+                );
               })}
             </TableBody>
           </Table>

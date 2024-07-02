@@ -6,7 +6,7 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Stack } from "@mui/material";
-import { ArrowLink } from "../ArrowLink";
+import { ArrowLink } from "qmongjs/src/components/ArrowLink";
 
 const FooterWrapper = styled(Paper)(() => ({
   marginTop: 20,
