@@ -30,6 +30,7 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Stack,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
@@ -270,7 +271,7 @@ export const Skde = (): JSX.Element => {
 
         <Box margin={4}>
           <Grid container spacing={2}>
-            <Grid sm={6}>
+            <Grid xs={12} sm={6} lg={6} xl={6} xxl={6}>
               <ItemBox sx={{ objectFit: "scale-down" }}>
                 <Grid container spacing={2} sx={{ overflow: "clip" }}>
                   <Grid xs={5} margin={2}>
@@ -278,44 +279,53 @@ export const Skde = (): JSX.Element => {
                       src={logo.src}
                       alt={"Logo"}
                       width="100%"
-                      style={{ borderRadius: "50%" }}
+                      style={{ borderRadius: "50%", maxWidth: 300 }}
                     />
                   </Grid>
-                  <Grid xs={6}>
-                    <Text
-                      x={"10%"}
-                      y={"20%"}
-                      width={500}
-                      verticalAnchor="start"
-                      style={{ fontWeight: 700, fontSize: 10 }}
-                    >
-                      Oppdatert: xx.xx.xx
-                    </Text>
-                    <Text
-                      x={"10%"}
-                      y={"-50%"}
-                      width={500}
-                      verticalAnchor="start"
-                      style={{ fontWeight: 700, fontSize: 24 }}
-                    >
-                      {selectedTreatmentUnits[0]}
-                    </Text>
-                    <Divider />
-                    <Box sx={{ marginLeft: 10, marginBottom: 0 }}>
-                      {unitUrl ? (
-                        <ArrowLink
-                          href={unitUrl}
-                          text="Nettside"
-                          externalLink={true}
-                        />
-                      ) : null}
-                    </Box>
+                  <Grid xs={12} sm={12} lg={6} xl={6} xxl={6}>
+                    <Stack>
+                      <Text
+                        x={"10%"}
+                        y={"20%"}
+                        width={500}
+                        verticalAnchor="start"
+                        style={{ fontWeight: 700, fontSize: 10 }}
+                      >
+                        Oppdatert: xx.xx.xx
+                      </Text>
+                      <Text
+                        x={"10%"}
+                        y={"0%"}
+                        width={500}
+                        verticalAnchor="start"
+                        style={{ fontWeight: 700, fontSize: 24 }}
+                      >
+                        {selectedTreatmentUnits[0]}
+                      </Text>
+                      <Divider />
+                      <Box
+                        sx={{
+                          marginRight: "20%",
+                          marginBottom: 0,
+                          display: "flex",
+                          justifyContent: "right",
+                        }}
+                      >
+                        {unitUrl ? (
+                          <ArrowLink
+                            href={unitUrl}
+                            text="Nettside"
+                            externalLink={true}
+                          />
+                        ) : null}
+                      </Box>
+                    </Stack>
                   </Grid>
                 </Grid>
               </ItemBox>
             </Grid>
 
-            <Grid sm={6}>
+            <Grid xs={12} sm={6}>
               <ItemBox>
                 <Text
                   x={"10%"}
