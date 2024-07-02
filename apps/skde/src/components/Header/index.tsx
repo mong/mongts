@@ -3,7 +3,7 @@ import { SkdeHeader } from "./SkdeHeader";
 import { HeaderMiddle } from "./HeaderMiddle";
 import { BreadCrumbPath } from "./SkdeHeader";
 
-export type HeaderProps = {
+type HeaderProps = {
   page:
     | "behandlingskvalitet"
     | "sykehusprofil"
