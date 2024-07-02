@@ -73,9 +73,14 @@ export const Footer = ({ page }: FooterProps) => {
         </Grid>
       </Grid>
 
-      <Grid
-        xs={12}
+        <Grid item xs={0} md={3}></Grid>
+        <Grid item xs={0} md={3}></Grid>
+        <Grid item xs={4} sm={8} md={12}></Grid>
+      </FooterGridTop>
+
+      <FooterGridBottom
         container
+        columns={{ xs: 4, sm: 8, md: 12 }}
         className="footer"
         style={{ background: "#1A1A1A" }}
         marginTop={0}
@@ -84,17 +89,23 @@ export const Footer = ({ page }: FooterProps) => {
         spacing={4}
         sx={{ overflow: "clip" }}
       >
-        <Grid container xs={12} alignItems="center">
-          <Grid
-            container
-            display="flex"
-            justifyContent={helseatlas ? "space-around" : "flex-start"}
-            spacing={4}
-            xs={12}
-            lg={kvalitet ? 6 : 12}
-            alignItems="center"
-          >
-            <Grid>
+        {page === "helseatlas" || page === "pasientstrømmer" ? (
+          <Grid item xs={4} sm={8} md={12} lg={12} xl={12} xxl={12}>
+            <Link href={"https://www.skde.no/"}>
+              <Image
+                className="footer-logo"
+                id="skde-footer-logo"
+                loader={imgLoader}
+                src={"/img/logos/logo-skde-neg.svg"}
+                alt="SKDE-logo"
+                width={129}
+                height={52}
+              />
+            </Link>
+          </Grid>
+        ) : (
+          <>
+            <Grid item xs={4} sm={8} lg={6}>
               <Link href={"https://www.skde.no/"}>
                 <Image
                   className="footer-logo"
@@ -167,15 +178,14 @@ export const Footer = ({ page }: FooterProps) => {
                 />
               </Link>
             </Grid>
-          )}
-        </Grid>
-
-        <Grid xs={12}>
+          </>
+        )}
+        <Grid item xs={4} sm={8} md={12}>
           Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i
           Helse Nord.
         </Grid>
 
-        <Grid xs={12} sm={6} md={4}>
+        <Grid item xs={4}>
           <Stack>
             <b>TELEFON</b>
             <StyledLink href={"tel:77755800"}>77 75 58 00</StyledLink>
@@ -187,7 +197,7 @@ export const Footer = ({ page }: FooterProps) => {
           </Stack>
         </Grid>
 
-        <Grid xs={12} sm={6} md={4}>
+        <Grid item xs={4}>
           <Stack>
             <b>BESØKSADRESSE</b>
             <text>Sykehusvegen 23</text>
@@ -199,13 +209,40 @@ export const Footer = ({ page }: FooterProps) => {
           </Stack>
         </Grid>
 
-        <Grid xs={12} md={4}>
+        <Grid item xs={4}>
           <Stack>
             <b>ORGANISASJONSNUMMER</b>
             <text>990803765</text>
           </Stack>
         </Grid>
-      </Grid>
-    </Grid>
+        {page === "helseatlas" ? (
+          <>
+            <Grid item xs={4} md={8}>
+              <Link href="https://helse-forde.no/" title="Link til Helse Førde">
+                <Image
+                  loader={imgLoader}
+                  src={`/helseatlas/img/logos/helse-forde-hvit.svg`}
+                  height={52}
+                  width={234}
+                  alt="Helse Førde logo"
+                />
+              </Link>
+            </Grid>
+            <Grid item xs={4}>
+              <Link href="https://helse-vest.no/" title="Link til Helse Vest">
+                <Image
+                  loader={imgLoader}
+                  src={`/helseatlas/img/logos/helse-vest-hvit.svg`}
+                  height={52}
+                  width={234}
+                  alt="Helse Vest logo"
+                />
+              </Link>
+            </Grid>
+          </>
+        ) : null}
+        <Grid item xs={4} md={0}></Grid>
+      </FooterGridBottom>
+    </FooterWrapper>
   );
 };
