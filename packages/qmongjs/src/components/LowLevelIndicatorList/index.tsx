@@ -26,16 +26,17 @@ const result = (data: IndicatorData, point: DataPoint, dg?: boolean) => {
     point && point.var ? (pointVar = point.var) : (pointVar = null);
   }
 
-  return pointVar
-    ? [
-        customFormat(data.format!)(pointVar),
-        "  ",
-        newLevelSymbols(
-          level2(data, point),
-          "indicator-row-symbol" + data.indicatorID,
-        ),
-      ]
-    : null;
+  return pointVar ? (
+    <Stack direction="row">
+      {customFormat(data.format!)(pointVar)}
+      {newLevelSymbols(
+        level2(data, point),
+        "indicator-row-symbol" + data.indicatorID,
+      )}
+    </Stack>
+  ) : (
+    "NA"
+  );
 };
 
 const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
@@ -72,27 +73,28 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
         sx={{ visibility: open ? "visible" : "collapse" }}
       >
         <TableCell />
-        <TableCell>
-          {lastYear ? (
-            <Stack direction="row">
-              {"Dekningsgrad: "}
-              {result(row, lastYear, true)}
-            </Stack>
-          ) : null}
-        </TableCell>
-        <TableCell>
-          {lastYear ? (
-            <ArrowLink
-              href={
-                "https://apps.skde.no/behandlingskvalitet/?selected_treatment_units=" +
-                lastYear.unitName +
-                "&selected_row=" +
-                lastYear.indicatorID
-              }
-              externalLink={true}
-              text="Mer om indikatoren"
-            />
-          ) : null}
+        <TableCell colSpan={2}>
+          <Stack direction="row" justifyContent="space-evenly">
+            {lastYear ? (
+              <Stack direction="row">
+                <Box sx={{ marginRight: 1 }}>Dekningsgrad:</Box>
+                {result(row, lastYear, true)}
+              </Stack>
+            ) : null}
+
+            {lastYear ? (
+              <ArrowLink
+                href={
+                  "https://apps.skde.no/behandlingskvalitet/?selected_treatment_units=" +
+                  lastYear.unitName +
+                  "&selected_row=" +
+                  lastYear.indicatorID
+                }
+                externalLink={true}
+                text="Mer om indikatoren"
+              />
+            ) : null}
+          </Stack>
         </TableCell>
       </TableRow>
     </React.Fragment>
