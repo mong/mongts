@@ -250,30 +250,17 @@ export const Skde = (): JSX.Element => {
     subtitle: "Resultater fra sykehus",
   };
 
-  const boxMaxHeight = 800;
-
-  const titleStyle = { marginTop: 20, marginLeft: 20 };
-  const textMargin = 20;
-
-  const Legend = (props: { itemSpacing: number; symbolSpacing: number }) => {
-    const { itemSpacing, symbolSpacing } = props;
-
-    return (
-      <Stack direction="row" spacing={itemSpacing} alignItems="center">
-        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
-          {newLevelSymbols("H")}
-          <Typography>Høy måloppnåelse</Typography>
-        </Stack>
-        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
-          {newLevelSymbols("M")}
-          <Typography>Moderat måloppnåelse</Typography>
-        </Stack>
-        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
-          {newLevelSymbols("L")}
-          <Typography>Lav måloppnåelse</Typography>
-        </Stack>
-      </Stack>
-    );
+  const breadcrumbs = {
+    path: [
+      {
+        link: "https://www.skde.no",
+        text: "Forside",
+      },
+      {
+        link: "/sykehusprofil/",
+        text: "Sykehusprofil",
+      },
+    ],
   };
 
   return (
