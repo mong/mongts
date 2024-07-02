@@ -42,12 +42,20 @@ const CollapsedRow = (props: {
     return row.ind_id === indID;
   });
 
+  const nYears = 5;
+
+  const arr = [];
+
+  for (let i = nYears; i > 1; i--) {
+    arr.push(i);
+  }
+
   return (
     <TableCell colSpan={6}>
       <Table>
         <TableHead>
           <TableRow>
-            {Array.from([5, 4, 3, 2]).map((i) => {
+            {Array.from(arr).map((i) => {
               return (
                 <TableCell key={"tablehead" + indID + currentYear + "-" + i}>
                   {currentYear - i}
@@ -59,7 +67,7 @@ const CollapsedRow = (props: {
 
         <TableBody>
           <TableRow>
-            {Array.from([5, 4, 3, 2]).map((i) => {
+            {Array.from(arr).map((i) => {
               return (
                 <TableCell key={"tablecell" + indID + currentYear + "-" + i}>
                   {filteredData
@@ -68,7 +76,7 @@ const CollapsedRow = (props: {
                         currentYear - i,
                         "collapsed-row-symbol" +
                           indID +
-                          (currentYear - 5).toString(),
+                          (currentYear - i).toString(),
                       )
                     : null}
                 </TableCell>
