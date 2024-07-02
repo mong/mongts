@@ -295,8 +295,8 @@ export const Skde = (): JSX.Element => {
                       </Text>
                       <Text
                         x={"10%"}
-                        y={"0%"}
-                        width={500}
+                        y={"-50%"}
+                        width={200}
                         verticalAnchor="start"
                         style={{ fontWeight: 700, fontSize: 24 }}
                       >
