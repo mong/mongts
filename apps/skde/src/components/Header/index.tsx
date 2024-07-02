@@ -1,14 +1,24 @@
 import React from "react";
 import { SkdeHeader } from "./SkdeHeader";
 import { HeaderMiddle } from "./HeaderMiddle";
+import { BreadCrumbPath } from "./SkdeHeader";
 
-export const Header = ({ path }: { path: string[] }) => {
+export type HeaderProps = {
+  page:
+    | "behandlingskvalitet"
+    | "sykehusprofil"
+    | "helseatlas"
+    | "pasientstrømmer";
+  breadcrumbs: BreadCrumbPath;
+};
+
+export const Header = (props: HeaderProps) => {
+  const { page, breadcrumbs } = props;
+
   return (
     <>
-      <SkdeHeader path={path} />
-      <HeaderMiddle
-        page={path.at(-1) as "behandlingskvalitet" | "pasientstrømmer"}
-      />
+      <SkdeHeader breadcrumbs={breadcrumbs} />
+      <HeaderMiddle page={page} />
     </>
   );
 };

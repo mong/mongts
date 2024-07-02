@@ -184,9 +184,22 @@ export const Skde = (): JSX.Element => {
     }
   };
 
+  const breadcrumbs = {
+    path: [
+      {
+        link: "https://www.skde.no",
+        text: "Forside",
+      },
+      {
+        link: "/sykehusprofil/",
+        text: "Sykehusprofil",
+      },
+    ],
+  };
+
   return (
     <ThemeProvider theme={skdeTheme}>
-      <SkdeHeader path={["sykehusprofil"]} />
+      <SkdeHeader breadcrumbs={breadcrumbs} />
       <PageWrapper>
         <StyledToolbarMiddle className="header-middle">
           <Grid container spacing={2} rowSpacing={6}>

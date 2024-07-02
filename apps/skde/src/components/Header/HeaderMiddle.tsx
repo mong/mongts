@@ -12,7 +12,11 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 export const HeaderMiddle = ({
   page,
 }: {
-  page: "behandlingskvalitet" | "pasientstrømmer";
+  page:
+    | "behandlingskvalitet"
+    | "sykehusprofil"
+    | "helseatlas"
+    | "pasientstrømmer";
 }) => {
   let linkButton;
   let headerTitle: string;

@@ -12,6 +12,13 @@ type AppBarProps = {
   onTabChanged;
 };
 
+const breadcrumbs = {
+  path: [
+    { link: "https://www.skde.no", text: "Forside" },
+    { link: "/behandlingskvalitet/", text: "Behandlingskvalitet" },
+  ],
+};
+
 const TreatmentQualityAppBar = ({
   openDrawer,
   context,
@@ -19,7 +26,7 @@ const TreatmentQualityAppBar = ({
 }: AppBarProps) => {
   return (
     <>
-      <Header path={["behandlingskvalitet"]} />
+      <Header page="behandlingskvalitet" breadcrumbs={breadcrumbs} />
       <StyledAppBar position="sticky" elevation={0}>
         <TreatmentQualityToolbar
           openDrawer={openDrawer}
