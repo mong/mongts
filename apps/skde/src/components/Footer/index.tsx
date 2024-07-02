@@ -100,14 +100,14 @@ export const Footer = (props: FooterProps) => {
           </Stack>
         </Grid>
 
-        <Grid item xs={0} sm={0} md={3} lg={3}></Grid>
-        <Grid item xs={0} sm={0} md={3} lg={3}></Grid>
-        <Grid item xs={4} sm={8} md={12} lg={12}></Grid>
+        <Grid item xs={0} md={3}></Grid>
+        <Grid item xs={0} md={3}></Grid>
+        <Grid item xs={4} sm={8} md={12}></Grid>
       </FooterGridTop>
 
       <FooterGridBottom
         container
-        columns={{ xs: 4, sm: 8, md: 12, lg: 12, xl: 12, xxl: 12 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
         className="footer"
         marginTop={0}
         spacing={4}
@@ -129,7 +129,7 @@ export const Footer = (props: FooterProps) => {
           </Grid>
         ) : (
           <>
-            <Grid item xs={4} sm={8} md={4} lg={6} xl={6} xxl={8}>
+            <Grid item xs={4} sm={8} lg={6}>
               <Link href={"https://www.skde.no/"}>
                 <Image
                   className="footer-logo"
@@ -167,12 +167,12 @@ export const Footer = (props: FooterProps) => {
             </Grid>
           </>
         )}
-        <Grid item xs={4} sm={8} md={12} lg={12}>
+        <Grid item xs={4} sm={8} md={12}>
           Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i
           Helse Nord.
         </Grid>
 
-        <Grid item xs={4} sm={4} md={4} lg={4}>
+        <Grid item xs={4}>
           <Stack>
             <b>TELEFON</b>
             <StyledLink href={"tel:77755800"}>77 75 58 00</StyledLink>
@@ -184,7 +184,7 @@ export const Footer = (props: FooterProps) => {
           </Stack>
         </Grid>
 
-        <Grid item xs={4} sm={4} md={4} lg={4}>
+        <Grid item xs={4}>
           <Stack>
             <b>BESØKSADRESSE</b>
             <text>Sykehusvegen 23</text>
@@ -196,7 +196,7 @@ export const Footer = (props: FooterProps) => {
           </Stack>
         </Grid>
 
-        <Grid item xs={4} sm={8} md={4} lg={4}>
+        <Grid item xs={4}>
           <Stack>
             <b>ORGANISASJONSNUMMER</b>
             <text>990803765{"\n"}</text>
@@ -217,7 +217,7 @@ export const Footer = (props: FooterProps) => {
         </Grid>
         {page === "helseatlas" ? (
           <>
-            <Grid item xs={4} sm={4} md={8} lg={8}>
+            <Grid item xs={4} md={8}>
               <Link href="https://helse-forde.no/" title="Link til Helse Førde">
                 <Image
                   loader={imgLoader}
@@ -228,7 +228,7 @@ export const Footer = (props: FooterProps) => {
                 />
               </Link>
             </Grid>
-            <Grid item xs={4} sm={4} md={4} lg={4}>
+            <Grid item xs={4}>
               <Link href="https://helse-vest.no/" title="Link til Helse Vest">
                 <Image
                   loader={imgLoader}
@@ -241,7 +241,7 @@ export const Footer = (props: FooterProps) => {
             </Grid>
           </>
         ) : null}
-        <Grid item xs={4} sm={4} md={0} lg={0}></Grid>
+        <Grid item xs={4} md={0}></Grid>
       </FooterGridBottom>
     </FooterWrapper>
   );

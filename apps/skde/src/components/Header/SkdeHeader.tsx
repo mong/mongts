@@ -23,6 +23,11 @@ const StyledBreadcrumbSeparator = styled(NavigateNextRounded)(({ theme }) => ({
   color: theme.palette.primary.light,
 }));
 
+export type BreadcrumbData = string | {
+  link: string;
+  text: string;
+};
+
 const breadcrumbsMapping = {
   pasientstrømmer: {
     link: "/pasientstrommer/",
@@ -42,30 +47,31 @@ const breadcrumbsMapping = {
   },
 };
 
-const SkdeBreadcrumbs = ({ path }: { path: string[] }) => {
+const SkdeBreadcrumbs = ({ path }: { path: BreadcrumbData[] }) => {
+  let path_objects = path.map((b) => typeof b === "string" ? breadcrumbsMapping[b] : b);
   return (
     <Breadcrumbs
       separator={<StyledBreadcrumbSeparator fontSize="large" />}
       aria-label="breadcrumb"
     >
-      {["forside", ...path].slice(0, -1).map((id, index) => (
+      {[breadcrumbsMapping["forside"], ...path_objects].slice(0, -1).map((data, index) => (
         <Link
           underline="hover"
           key={index}
           color="inherit"
-          href={breadcrumbsMapping[id].link}
+          href={data.link}
         >
-          {breadcrumbsMapping[id].text}
+          {data.text}
         </Link>
       ))}
       <Typography color="text.primary">
-        {breadcrumbsMapping[path.at(-1)].text}
+        {path_objects.at(-1).text}
       </Typography>
     </Breadcrumbs>
   );
 };
 
-export const SkdeHeader = ({ path }: { path: string[] }) => {
+export const SkdeHeader = ({ path }: { path: BreadcrumbData[] }) => {
   return (
     <StyledToolbar className="header-top">
       <Grid container spacing={2}>
