@@ -6,7 +6,7 @@ import {
   withDefault,
 } from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
-import { Header } from "../../src/components/HospitalProfile";
+import { SkdeHeader } from "../../src/components/Header";
 import {
   skdeTheme,
   FilterSettingsValue,
@@ -184,9 +184,22 @@ export const Skde = (): JSX.Element => {
     }
   };
 
+  const breadcrumbs = {
+    path: [
+      {
+        link: "https://www.skde.no",
+        text: "Forside",
+      },
+      {
+        link: "/sykehusprofil/",
+        text: "Sykehusprofil",
+      },
+    ],
+  };
+
   return (
     <ThemeProvider theme={skdeTheme}>
-      <Header />
+      <SkdeHeader breadcrumbs={breadcrumbs} />
       <PageWrapper>
         <StyledToolbarMiddle className="header-middle">
           <Grid container spacing={2} rowSpacing={6}>

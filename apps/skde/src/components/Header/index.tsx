@@ -1,18 +1,26 @@
 import React from "react";
-import HeaderTop from "./HeaderTop";
+import { SkdeHeader } from "./SkdeHeader";
 import { HeaderMiddle } from "./HeaderMiddle";
+import { BreadCrumbPath } from "./SkdeHeader";
 
 type HeaderProps = {
-  page: "behandlingskvalitet" | "pasientstrømmer";
+  page:
+    | "behandlingskvalitet"
+    | "sykehusprofil"
+    | "helseatlas"
+    | "pasientstrømmer";
+  breadcrumbs: BreadCrumbPath;
 };
 
 export const Header = (props: HeaderProps) => {
-  const { page } = props;
+  const { page, breadcrumbs } = props;
 
   return (
-    <React.Fragment>
-      <HeaderTop page={page} />
+    <>
+      <SkdeHeader breadcrumbs={breadcrumbs} />
       <HeaderMiddle page={page} />
-    </React.Fragment>
+    </>
   );
 };
+
+export { SkdeHeader } from "./SkdeHeader";

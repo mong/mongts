@@ -5,11 +5,24 @@ import { skdeTheme } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { Header } from "../../src/components/Header";
 
+const breadcrumbs = {
+  path: [
+    {
+      link: "https://www.skde.no",
+      text: "Forside",
+    },
+    {
+      link: "/pasientstrommer/",
+      text: "Pasientstrømmer",
+    },
+  ],
+};
+
 const Pasient = () => {
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
-        <Header page="pasientstrømmer" />
+        <Header page="pasientstrømmer" breadcrumbs={breadcrumbs} />
         <IframeResizer
           src="https://prod-tabellverk.skde.org/"
           style={{
