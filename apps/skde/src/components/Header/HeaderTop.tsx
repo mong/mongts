@@ -74,7 +74,7 @@ const PasientstrommerBreadcrumbs = () => {
 };
 
 type HeaderTopProps = {
-  page: "behandlingskvalitet" | "pasientstrømmer";
+  page: "behandlingskvalitet" | "pasientstrømmer" | "sykehusprofil";
 };
 
 const HeaderTop = (props: HeaderTopProps) => {

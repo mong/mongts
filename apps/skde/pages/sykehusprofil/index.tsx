@@ -6,7 +6,7 @@ import {
   withDefault,
 } from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
-import { Header } from "../../src/components/HospitalProfile";
+import HeaderTop from "../../src/components/Header/HeaderTop";
 import {
   skdeTheme,
   FilterSettingsValue,
@@ -19,8 +19,6 @@ import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import {
-  Toolbar,
-  styled,
   Typography,
   Checkbox,
   FormControlLabel,
@@ -44,25 +42,12 @@ import { useScreenSize } from "@visx/responsive";
 import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
-
-const lineChartTheme = {
-  lineChartBackground: {
-    fill: "#FFFFFF",
-    rx: 25,
-    ry: 25,
-  },
-};
-
-const StyledToolbarMiddle = styled(Toolbar)(({ theme }) => ({
-  backgroundColor: theme.palette.hospitalProfileHeader.light,
-  paddingTop: theme.spacing(12),
-  paddingBottom: theme.spacing(8),
-}));
-
-const ItemBox = styled(Box)(() => ({
-  backgroundColor: "white",
-  borderRadius: 24,
-}));
+import { SubUnits } from "../../src/components/SubUnits";
+import {
+  lineChartTheme,
+  StyledToolbarMiddle,
+  ItemBox,
+} from "../../src/components/HospitalProfileStyles";
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
@@ -94,6 +79,7 @@ export const Skde = (): JSX.Element => {
     "ind",
   );
 
+  console.log(unitNamesQuery.data);
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
   // Make sure everything is good to go
@@ -186,7 +172,7 @@ export const Skde = (): JSX.Element => {
 
   return (
     <ThemeProvider theme={skdeTheme}>
-      <Header />
+      <HeaderTop page="sykehusprofil" />
       <PageWrapper>
         <StyledToolbarMiddle className="header-middle">
           <Grid container spacing={2} rowSpacing={6}>
@@ -262,17 +248,12 @@ export const Skde = (): JSX.Element => {
               </ItemBox>
             </Grid>
             <Grid xs={6}>
-              <ItemBox>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
-                  Utvalgte indikatorer
-                </Text>
-              </ItemBox>
+              {unitNamesQuery.data ? (
+                <SubUnits
+                  nestedUnitNames={unitNamesQuery.data.nestedUnitNames}
+                  selectedUnit={selectedTreatmentUnits[0]}
+                />
+              ) : null}
             </Grid>
 
             <Grid xs={12}>
