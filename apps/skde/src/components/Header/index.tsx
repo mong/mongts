@@ -1,7 +1,6 @@
 import React from "react";
-import { SkdeHeader } from "./SkdeHeader";
+import { HeaderTop, BreadCrumbPath } from "./HeaderTop";
 import { HeaderMiddle } from "./HeaderMiddle";
-import { BreadCrumbPath } from "./SkdeHeader";
 
 type HeaderProps = {
   page:
@@ -17,10 +16,10 @@ export const Header = (props: HeaderProps) => {
 
   return (
     <>
-      <SkdeHeader breadcrumbs={breadcrumbs} />
+      <HeaderTop breadcrumbs={breadcrumbs} />
       <HeaderMiddle page={page} />
     </>
   );
 };
 
-export { SkdeHeader } from "./SkdeHeader";
+export { HeaderTop } from "./HeaderTop";

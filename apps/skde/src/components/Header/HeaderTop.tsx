@@ -50,11 +50,11 @@ const SkdeBreadcrumbs = (props: BreadCrumbPath) => {
   );
 };
 
-type SkdeHeaderProps = {
+type HeaderTopProps = {
   breadcrumbs: BreadCrumbPath;
 };
 
-export const SkdeHeader = (props: SkdeHeaderProps) => {
+export const HeaderTop = (props: HeaderTopProps) => {
   const { breadcrumbs } = props;
 
   return (
