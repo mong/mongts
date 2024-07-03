@@ -312,7 +312,7 @@ export const Skde = (): JSX.Element => {
               </ItemBox>
             </Grid>
 
-            <Grid xs={12}>
+            <Grid xs={6}>
               <ItemBox>
                 <Text
                   x={"10%"}
@@ -327,7 +327,7 @@ export const Skde = (): JSX.Element => {
               </ItemBox>
             </Grid>
 
-            <Grid xs={12}>
+            <Grid xs={6}>
               <ItemBox>
                 <Box margin={2}>
                   <Text
