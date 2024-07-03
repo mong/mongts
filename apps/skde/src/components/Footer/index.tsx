@@ -67,7 +67,7 @@ export const Footer = ({ page }: FooterProps) => {
           </Stack>
         </Grid>
       </Grid>
-      
+
       <Grid
         xs={12}
         container
