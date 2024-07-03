@@ -6,7 +6,7 @@ import {
   withDefault,
 } from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
-import { SkdeHeader } from "../../src/components/Header";
+import { HeaderTop } from "../../src/components/Header";
 import {
   skdeTheme,
   FilterSettingsValue,
@@ -199,7 +199,7 @@ export const Skde = (): JSX.Element => {
 
   return (
     <ThemeProvider theme={skdeTheme}>
-      <SkdeHeader breadcrumbs={breadcrumbs} />
+      <HeaderTop breadcrumbs={breadcrumbs} />
       <PageWrapper>
         <StyledToolbarMiddle className="header-middle">
           <Grid container spacing={2} rowSpacing={6}>
