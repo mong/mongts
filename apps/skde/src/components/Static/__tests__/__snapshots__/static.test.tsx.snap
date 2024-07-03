@@ -124,13 +124,15 @@ exports[`Bokmål render 1`] = `
       </div>
     </div>
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1utwk74-MuiPaper-root"
+      class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row css-1pi8xg4-MuiGrid2-root"
+      style="color: white; margin-top: 20px;"
     >
       <div
-        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 footer css-17ran83-MuiGrid-root"
+        class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-spacing-xs-4 footer css-10zgimb-MuiGrid2-root"
+        style="background: rgb(51, 51, 51);"
       >
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-5irjj1-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-md-6 css-1xi2lnn-MuiGrid2-root"
         >
           <div
             class="MuiStack-root css-v2woy3-MuiStack-root"
@@ -204,7 +206,7 @@ exports[`Bokmål render 1`] = `
           </div>
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-cxirnq-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-md-6 css-oh14zr-MuiGrid2-root"
         >
           <div
             class="MuiStack-root css-v2woy3-MuiStack-root"
@@ -235,48 +237,108 @@ exports[`Bokmål render 1`] = `
             </a>
           </div>
         </div>
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-1tx075d-MuiGrid-root"
-        />
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-1tx075d-MuiGrid-root"
-        />
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 css-jp7hjq-MuiGrid-root"
-        />
       </div>
       <div
-        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 footer css-15o24yo-MuiGrid-root"
+        class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row MuiGrid2-spacing-xs-4 footer css-3f423t-MuiGrid2-root"
+        style="background: rgb(26, 26, 26);"
       >
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 MuiGrid-grid-xl-12 css-1idn90j-MuiGrid-root"
-          xxl="12"
+          class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 css-7qfjq0-MuiGrid2-root"
         >
-          <a
-            href="https://www.skde.no/"
+          <div
+            class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-lg-12 MuiGrid2-spacing-xs-4 css-1t0aiyi-MuiGrid2-root"
           >
-            <img
-              alt="SKDE-logo"
-              class="footer-logo"
-              data-nimg="1"
-              decoding="async"
-              height="52"
-              id="skde-footer-logo"
-              loading="lazy"
-              src="/img/logos/logo-skde-neg.svg?w=384&q=75"
-              srcset="/img/logos/logo-skde-neg.svg?w=256&q=75 1x, /img/logos/logo-skde-neg.svg?w=384&q=75 2x"
-              style="color: transparent;"
-              width="129"
-            />
-          </a>
+            <div
+              class="MuiGrid2-root MuiGrid2-direction-xs-row css-3r3v0f-MuiGrid2-root"
+            >
+              <a
+                href="https://www.skde.no/"
+              >
+                <img
+                  alt="SKDE-logo"
+                  class="footer-logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="52"
+                  id="skde-footer-logo"
+                  loading="lazy"
+                  src="/img/logos/logo-skde-neg.svg?w=384&q=75"
+                  srcset="/img/logos/logo-skde-neg.svg?w=256&q=75 1x, /img/logos/logo-skde-neg.svg?w=384&q=75 2x"
+                  style="color: transparent;"
+                  width="129"
+                />
+              </a>
+            </div>
+            <div
+              class="MuiGrid2-root MuiGrid2-direction-xs-row css-3r3v0f-MuiGrid2-root"
+            >
+              <a
+                href="https://www.helse-nord.no/"
+              >
+                <img
+                  alt="Helse Nord logo"
+                  class="footer-logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="76"
+                  id="helse-nord-logo"
+                  loading="lazy"
+                  src="/img/logos/logo-helse-nord-neg.svg?w=640&q=75"
+                  srcset="/img/logos/logo-helse-nord-neg.svg?w=256&q=75 1x, /img/logos/logo-helse-nord-neg.svg?w=640&q=75 2x"
+                  style="color: transparent;"
+                  width="220"
+                />
+              </a>
+            </div>
+            <div
+              class="MuiGrid2-root MuiGrid2-direction-xs-row css-27y2fm-MuiGrid2-root"
+            >
+              <a
+                href="https://helse-forde.no/"
+                title="Link til Helse Førde"
+              >
+                <img
+                  alt="Helse Førde logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="52"
+                  loading="lazy"
+                  src="/helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75"
+                  srcset="/helseatlas/img/logos/helse-forde-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75 2x"
+                  style="color: transparent;"
+                  width="234"
+                />
+              </a>
+            </div>
+            <div
+              class="MuiGrid2-root MuiGrid2-direction-xs-row css-27y2fm-MuiGrid2-root"
+            >
+              <a
+                href="https://helse-vest.no/"
+                title="Link til Helse Vest"
+              >
+                <img
+                  alt="Helse Vest logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="52"
+                  loading="lazy"
+                  src="/helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75"
+                  srcset="/helseatlas/img/logos/helse-vest-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75 2x"
+                  style="color: transparent;"
+                  width="234"
+                />
+              </a>
+            </div>
+          </div>
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 css-1idn90j-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 css-tz4e07-MuiGrid2-root"
         >
           Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i Helse Nord.
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-11l5t4l-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-sm-6 MuiGrid2-grid-md-4 css-1f51kvz-MuiGrid2-root"
         >
           <div
             class="MuiStack-root css-nen11g-MuiStack-root"
@@ -303,7 +365,7 @@ exports[`Bokmål render 1`] = `
           </div>
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-11l5t4l-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-sm-6 MuiGrid2-grid-md-4 css-1f51kvz-MuiGrid2-root"
         >
           <div
             class="MuiStack-root css-nen11g-MuiStack-root"
@@ -315,7 +377,7 @@ exports[`Bokmål render 1`] = `
               Sykehusvegen 23
             </text>
             <text>
-               9019 TROMSØ
+              9019 TROMSØ
             </text>
             <a
               class="css-abunt4"
@@ -326,7 +388,7 @@ exports[`Bokmål render 1`] = `
           </div>
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-1lj5egr-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-md-4 css-g18sbi-MuiGrid2-root"
         >
           <div
             class="MuiStack-root css-nen11g-MuiStack-root"
@@ -336,75 +398,9 @@ exports[`Bokmål render 1`] = `
             </b>
             <text>
               990803765
-              
-
             </text>
-            <div
-              class="MuiBox-root css-1hnm6b6"
-            >
-              <a
-                href="https://www.helse-nord.no/"
-              >
-                <img
-                  alt="Helse Nord logo"
-                  class="footer-logo"
-                  data-nimg="1"
-                  decoding="async"
-                  height="76"
-                  id="helse-nord-logo"
-                  loading="lazy"
-                  src="/img/logos/logo-helse-nord-neg.svg?w=640&q=75"
-                  srcset="/img/logos/logo-helse-nord-neg.svg?w=256&q=75 1x, /img/logos/logo-helse-nord-neg.svg?w=640&q=75 2x"
-                  style="color: transparent;"
-                  width="220"
-                />
-              </a>
-            </div>
           </div>
         </div>
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-8 MuiGrid-grid-lg-8 css-so71yv-MuiGrid-root"
-        >
-          <a
-            href="https://helse-forde.no/"
-            title="Link til Helse Førde"
-          >
-            <img
-              alt="Helse Førde logo"
-              data-nimg="1"
-              decoding="async"
-              height="52"
-              loading="lazy"
-              src="/helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75"
-              srcset="/helseatlas/img/logos/helse-forde-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75 2x"
-              style="color: transparent;"
-              width="234"
-            />
-          </a>
-        </div>
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-11l5t4l-MuiGrid-root"
-        >
-          <a
-            href="https://helse-vest.no/"
-            title="Link til Helse Vest"
-          >
-            <img
-              alt="Helse Vest logo"
-              data-nimg="1"
-              decoding="async"
-              height="52"
-              loading="lazy"
-              src="/helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75"
-              srcset="/helseatlas/img/logos/helse-vest-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75 2x"
-              style="color: transparent;"
-              width="234"
-            />
-          </a>
-        </div>
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 css-11l5t4l-MuiGrid-root"
-        />
       </div>
     </div>
   </div>
@@ -579,13 +575,15 @@ run;
       </div>
     </div>
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1utwk74-MuiPaper-root"
+      class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row css-1pi8xg4-MuiGrid2-root"
+      style="color: white; margin-top: 20px;"
     >
       <div
-        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 footer css-17ran83-MuiGrid-root"
+        class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-spacing-xs-4 footer css-10zgimb-MuiGrid2-root"
+        style="background: rgb(51, 51, 51);"
       >
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-5irjj1-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-md-6 css-1xi2lnn-MuiGrid2-root"
         >
           <div
             class="MuiStack-root css-v2woy3-MuiStack-root"
@@ -659,7 +657,7 @@ run;
           </div>
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-cxirnq-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-md-6 css-oh14zr-MuiGrid2-root"
         >
           <div
             class="MuiStack-root css-v2woy3-MuiStack-root"
@@ -690,48 +688,108 @@ run;
             </a>
           </div>
         </div>
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-1tx075d-MuiGrid-root"
-        />
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-1tx075d-MuiGrid-root"
-        />
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 css-jp7hjq-MuiGrid-root"
-        />
       </div>
       <div
-        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 footer css-15o24yo-MuiGrid-root"
+        class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row MuiGrid2-spacing-xs-4 footer css-3f423t-MuiGrid2-root"
+        style="background: rgb(26, 26, 26);"
       >
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 MuiGrid-grid-xl-12 css-1idn90j-MuiGrid-root"
-          xxl="12"
+          class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 css-7qfjq0-MuiGrid2-root"
         >
-          <a
-            href="https://www.skde.no/"
+          <div
+            class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-lg-12 MuiGrid2-spacing-xs-4 css-1t0aiyi-MuiGrid2-root"
           >
-            <img
-              alt="SKDE-logo"
-              class="footer-logo"
-              data-nimg="1"
-              decoding="async"
-              height="52"
-              id="skde-footer-logo"
-              loading="lazy"
-              src="/img/logos/logo-skde-neg.svg?w=384&q=75"
-              srcset="/img/logos/logo-skde-neg.svg?w=256&q=75 1x, /img/logos/logo-skde-neg.svg?w=384&q=75 2x"
-              style="color: transparent;"
-              width="129"
-            />
-          </a>
+            <div
+              class="MuiGrid2-root MuiGrid2-direction-xs-row css-3r3v0f-MuiGrid2-root"
+            >
+              <a
+                href="https://www.skde.no/"
+              >
+                <img
+                  alt="SKDE-logo"
+                  class="footer-logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="52"
+                  id="skde-footer-logo"
+                  loading="lazy"
+                  src="/img/logos/logo-skde-neg.svg?w=384&q=75"
+                  srcset="/img/logos/logo-skde-neg.svg?w=256&q=75 1x, /img/logos/logo-skde-neg.svg?w=384&q=75 2x"
+                  style="color: transparent;"
+                  width="129"
+                />
+              </a>
+            </div>
+            <div
+              class="MuiGrid2-root MuiGrid2-direction-xs-row css-3r3v0f-MuiGrid2-root"
+            >
+              <a
+                href="https://www.helse-nord.no/"
+              >
+                <img
+                  alt="Helse Nord logo"
+                  class="footer-logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="76"
+                  id="helse-nord-logo"
+                  loading="lazy"
+                  src="/img/logos/logo-helse-nord-neg.svg?w=640&q=75"
+                  srcset="/img/logos/logo-helse-nord-neg.svg?w=256&q=75 1x, /img/logos/logo-helse-nord-neg.svg?w=640&q=75 2x"
+                  style="color: transparent;"
+                  width="220"
+                />
+              </a>
+            </div>
+            <div
+              class="MuiGrid2-root MuiGrid2-direction-xs-row css-27y2fm-MuiGrid2-root"
+            >
+              <a
+                href="https://helse-forde.no/"
+                title="Link til Helse Førde"
+              >
+                <img
+                  alt="Helse Førde logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="52"
+                  loading="lazy"
+                  src="/helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75"
+                  srcset="/helseatlas/img/logos/helse-forde-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75 2x"
+                  style="color: transparent;"
+                  width="234"
+                />
+              </a>
+            </div>
+            <div
+              class="MuiGrid2-root MuiGrid2-direction-xs-row css-27y2fm-MuiGrid2-root"
+            >
+              <a
+                href="https://helse-vest.no/"
+                title="Link til Helse Vest"
+              >
+                <img
+                  alt="Helse Vest logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="52"
+                  loading="lazy"
+                  src="/helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75"
+                  srcset="/helseatlas/img/logos/helse-vest-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75 2x"
+                  style="color: transparent;"
+                  width="234"
+                />
+              </a>
+            </div>
+          </div>
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 css-1idn90j-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 css-tz4e07-MuiGrid2-root"
         >
           Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i Helse Nord.
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-11l5t4l-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-sm-6 MuiGrid2-grid-md-4 css-1f51kvz-MuiGrid2-root"
         >
           <div
             class="MuiStack-root css-nen11g-MuiStack-root"
@@ -758,7 +816,7 @@ run;
           </div>
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-11l5t4l-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-sm-6 MuiGrid2-grid-md-4 css-1f51kvz-MuiGrid2-root"
         >
           <div
             class="MuiStack-root css-nen11g-MuiStack-root"
@@ -770,7 +828,7 @@ run;
               Sykehusvegen 23
             </text>
             <text>
-               9019 TROMSØ
+              9019 TROMSØ
             </text>
             <a
               class="css-abunt4"
@@ -781,7 +839,7 @@ run;
           </div>
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-1lj5egr-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-md-4 css-g18sbi-MuiGrid2-root"
         >
           <div
             class="MuiStack-root css-nen11g-MuiStack-root"
@@ -791,75 +849,9 @@ run;
             </b>
             <text>
               990803765
-              
-
             </text>
-            <div
-              class="MuiBox-root css-1hnm6b6"
-            >
-              <a
-                href="https://www.helse-nord.no/"
-              >
-                <img
-                  alt="Helse Nord logo"
-                  class="footer-logo"
-                  data-nimg="1"
-                  decoding="async"
-                  height="76"
-                  id="helse-nord-logo"
-                  loading="lazy"
-                  src="/img/logos/logo-helse-nord-neg.svg?w=640&q=75"
-                  srcset="/img/logos/logo-helse-nord-neg.svg?w=256&q=75 1x, /img/logos/logo-helse-nord-neg.svg?w=640&q=75 2x"
-                  style="color: transparent;"
-                  width="220"
-                />
-              </a>
-            </div>
           </div>
         </div>
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-8 MuiGrid-grid-lg-8 css-so71yv-MuiGrid-root"
-        >
-          <a
-            href="https://helse-forde.no/"
-            title="Link til Helse Førde"
-          >
-            <img
-              alt="Helse Førde logo"
-              data-nimg="1"
-              decoding="async"
-              height="52"
-              loading="lazy"
-              src="/helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75"
-              srcset="/helseatlas/img/logos/helse-forde-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75 2x"
-              style="color: transparent;"
-              width="234"
-            />
-          </a>
-        </div>
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-11l5t4l-MuiGrid-root"
-        >
-          <a
-            href="https://helse-vest.no/"
-            title="Link til Helse Vest"
-          >
-            <img
-              alt="Helse Vest logo"
-              data-nimg="1"
-              decoding="async"
-              height="52"
-              loading="lazy"
-              src="/helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75"
-              srcset="/helseatlas/img/logos/helse-vest-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75 2x"
-              style="color: transparent;"
-              width="234"
-            />
-          </a>
-        </div>
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 css-11l5t4l-MuiGrid-root"
-        />
       </div>
     </div>
   </div>
@@ -990,13 +982,15 @@ exports[`Nynorsk render 1`] = `
       </div>
     </div>
     <div
-      class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation1 css-1utwk74-MuiPaper-root"
+      class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row css-1pi8xg4-MuiGrid2-root"
+      style="color: white; margin-top: 20px;"
     >
       <div
-        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 footer css-17ran83-MuiGrid-root"
+        class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-spacing-xs-4 footer css-10zgimb-MuiGrid2-root"
+        style="background: rgb(51, 51, 51);"
       >
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-5irjj1-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-md-6 css-1xi2lnn-MuiGrid2-root"
         >
           <div
             class="MuiStack-root css-v2woy3-MuiStack-root"
@@ -1070,7 +1064,7 @@ exports[`Nynorsk render 1`] = `
           </div>
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-cxirnq-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-md-6 css-oh14zr-MuiGrid2-root"
         >
           <div
             class="MuiStack-root css-v2woy3-MuiStack-root"
@@ -1101,48 +1095,108 @@ exports[`Nynorsk render 1`] = `
             </a>
           </div>
         </div>
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-1tx075d-MuiGrid-root"
-        />
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-md-3 MuiGrid-grid-lg-3 css-1tx075d-MuiGrid-root"
-        />
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 css-jp7hjq-MuiGrid-root"
-        />
       </div>
       <div
-        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-4 footer css-15o24yo-MuiGrid-root"
+        class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row MuiGrid2-spacing-xs-4 footer css-3f423t-MuiGrid2-root"
+        style="background: rgb(26, 26, 26);"
       >
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 MuiGrid-grid-xl-12 css-1idn90j-MuiGrid-root"
-          xxl="12"
+          class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 css-7qfjq0-MuiGrid2-root"
         >
-          <a
-            href="https://www.skde.no/"
+          <div
+            class="MuiGrid2-root MuiGrid2-container MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-lg-12 MuiGrid2-spacing-xs-4 css-1t0aiyi-MuiGrid2-root"
           >
-            <img
-              alt="SKDE-logo"
-              class="footer-logo"
-              data-nimg="1"
-              decoding="async"
-              height="52"
-              id="skde-footer-logo"
-              loading="lazy"
-              src="/img/logos/logo-skde-neg.svg?w=384&q=75"
-              srcset="/img/logos/logo-skde-neg.svg?w=256&q=75 1x, /img/logos/logo-skde-neg.svg?w=384&q=75 2x"
-              style="color: transparent;"
-              width="129"
-            />
-          </a>
+            <div
+              class="MuiGrid2-root MuiGrid2-direction-xs-row css-3r3v0f-MuiGrid2-root"
+            >
+              <a
+                href="https://www.skde.no/"
+              >
+                <img
+                  alt="SKDE-logo"
+                  class="footer-logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="52"
+                  id="skde-footer-logo"
+                  loading="lazy"
+                  src="/img/logos/logo-skde-neg.svg?w=384&q=75"
+                  srcset="/img/logos/logo-skde-neg.svg?w=256&q=75 1x, /img/logos/logo-skde-neg.svg?w=384&q=75 2x"
+                  style="color: transparent;"
+                  width="129"
+                />
+              </a>
+            </div>
+            <div
+              class="MuiGrid2-root MuiGrid2-direction-xs-row css-3r3v0f-MuiGrid2-root"
+            >
+              <a
+                href="https://www.helse-nord.no/"
+              >
+                <img
+                  alt="Helse Nord logo"
+                  class="footer-logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="76"
+                  id="helse-nord-logo"
+                  loading="lazy"
+                  src="/img/logos/logo-helse-nord-neg.svg?w=640&q=75"
+                  srcset="/img/logos/logo-helse-nord-neg.svg?w=256&q=75 1x, /img/logos/logo-helse-nord-neg.svg?w=640&q=75 2x"
+                  style="color: transparent;"
+                  width="220"
+                />
+              </a>
+            </div>
+            <div
+              class="MuiGrid2-root MuiGrid2-direction-xs-row css-27y2fm-MuiGrid2-root"
+            >
+              <a
+                href="https://helse-forde.no/"
+                title="Link til Helse Førde"
+              >
+                <img
+                  alt="Helse Førde logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="52"
+                  loading="lazy"
+                  src="/helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75"
+                  srcset="/helseatlas/img/logos/helse-forde-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75 2x"
+                  style="color: transparent;"
+                  width="234"
+                />
+              </a>
+            </div>
+            <div
+              class="MuiGrid2-root MuiGrid2-direction-xs-row css-27y2fm-MuiGrid2-root"
+            >
+              <a
+                href="https://helse-vest.no/"
+                title="Link til Helse Vest"
+              >
+                <img
+                  alt="Helse Vest logo"
+                  data-nimg="1"
+                  decoding="async"
+                  height="52"
+                  loading="lazy"
+                  src="/helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75"
+                  srcset="/helseatlas/img/logos/helse-vest-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75 2x"
+                  style="color: transparent;"
+                  width="234"
+                />
+              </a>
+            </div>
+          </div>
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-12 MuiGrid-grid-lg-12 css-1idn90j-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 css-tz4e07-MuiGrid2-root"
         >
           Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i Helse Nord.
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-11l5t4l-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-sm-6 MuiGrid2-grid-md-4 css-1f51kvz-MuiGrid2-root"
         >
           <div
             class="MuiStack-root css-nen11g-MuiStack-root"
@@ -1169,7 +1223,7 @@ exports[`Nynorsk render 1`] = `
           </div>
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-11l5t4l-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-sm-6 MuiGrid2-grid-md-4 css-1f51kvz-MuiGrid2-root"
         >
           <div
             class="MuiStack-root css-nen11g-MuiStack-root"
@@ -1181,7 +1235,7 @@ exports[`Nynorsk render 1`] = `
               Sykehusvegen 23
             </text>
             <text>
-               9019 TROMSØ
+              9019 TROMSØ
             </text>
             <a
               class="css-abunt4"
@@ -1192,7 +1246,7 @@ exports[`Nynorsk render 1`] = `
           </div>
         </div>
         <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-8 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-1lj5egr-MuiGrid-root"
+          class="MuiGrid2-root MuiGrid2-direction-xs-row MuiGrid2-grid-xs-12 MuiGrid2-grid-md-4 css-g18sbi-MuiGrid2-root"
         >
           <div
             class="MuiStack-root css-nen11g-MuiStack-root"
@@ -1202,75 +1256,9 @@ exports[`Nynorsk render 1`] = `
             </b>
             <text>
               990803765
-              
-
             </text>
-            <div
-              class="MuiBox-root css-1hnm6b6"
-            >
-              <a
-                href="https://www.helse-nord.no/"
-              >
-                <img
-                  alt="Helse Nord logo"
-                  class="footer-logo"
-                  data-nimg="1"
-                  decoding="async"
-                  height="76"
-                  id="helse-nord-logo"
-                  loading="lazy"
-                  src="/img/logos/logo-helse-nord-neg.svg?w=640&q=75"
-                  srcset="/img/logos/logo-helse-nord-neg.svg?w=256&q=75 1x, /img/logos/logo-helse-nord-neg.svg?w=640&q=75 2x"
-                  style="color: transparent;"
-                  width="220"
-                />
-              </a>
-            </div>
           </div>
         </div>
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-8 MuiGrid-grid-lg-8 css-so71yv-MuiGrid-root"
-        >
-          <a
-            href="https://helse-forde.no/"
-            title="Link til Helse Førde"
-          >
-            <img
-              alt="Helse Førde logo"
-              data-nimg="1"
-              decoding="async"
-              height="52"
-              loading="lazy"
-              src="/helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75"
-              srcset="/helseatlas/img/logos/helse-forde-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-forde-hvit.svg?w=640&q=75 2x"
-              style="color: transparent;"
-              width="234"
-            />
-          </a>
-        </div>
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 MuiGrid-grid-md-4 MuiGrid-grid-lg-4 css-11l5t4l-MuiGrid-root"
-        >
-          <a
-            href="https://helse-vest.no/"
-            title="Link til Helse Vest"
-          >
-            <img
-              alt="Helse Vest logo"
-              data-nimg="1"
-              decoding="async"
-              height="52"
-              loading="lazy"
-              src="/helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75"
-              srcset="/helseatlas/img/logos/helse-vest-hvit.svg?w=256&q=75 1x, /helseatlas/img/logos/helse-vest-hvit.svg?w=640&q=75 2x"
-              style="color: transparent;"
-              width="234"
-            />
-          </a>
-        </div>
-        <div
-          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4 MuiGrid-grid-sm-4 css-11l5t4l-MuiGrid-root"
-        />
       </div>
     </div>
   </div>
