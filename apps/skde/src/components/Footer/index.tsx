@@ -67,8 +67,9 @@ export const Footer = ({ page }: FooterProps) => {
           </Stack>
         </Grid>
       </Grid>
-
+      
       <Grid
+        xs={12}
         container
         className="footer"
         style={{ background: "#1A1A1A" }}
