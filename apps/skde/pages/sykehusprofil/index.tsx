@@ -217,19 +217,6 @@ export const Skde = (): JSX.Element => {
     subtitle: "Resultater fra sykehus",
   };
 
-  const breadcrumbs = {
-    path: [
-      {
-        link: "https://www.skde.no",
-        text: "Forside",
-      },
-      {
-        link: "/sykehusprofil/",
-        text: "Sykehusprofil",
-      },
-    ],
-  };
-
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
