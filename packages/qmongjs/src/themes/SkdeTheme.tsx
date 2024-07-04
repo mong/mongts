@@ -186,14 +186,7 @@ export const skdeTheme = responsiveFontSizes(
     typography: fonts,
     palette: {
       mode: "light",
-      primary: colorTokens.primary,
-      secondary: colorTokens.secondary,
-      error: colorTokens.error,
-      warning: colorTokens.warning,
-      success: colorTokens.success,
-      info: colorTokens.info,
-      text: colorTokens.text,
-      hospitalProfileHeader: colorTokens.surface2,
+      ...colorTokens,
       background: {
         paper: colorTokens.background.light,
       },
