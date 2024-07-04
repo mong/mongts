@@ -222,7 +222,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
         </Menu>
       </Box>
       <div>
-        <TableContainer>
+        <TableContainer sx={{ overflowX: "clip" }}>
           <Table>
             <TableHead>
               <TableRow>
