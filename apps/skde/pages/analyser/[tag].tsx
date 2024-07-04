@@ -5,18 +5,33 @@ import matter from "gray-matter";
 
 
 //import { AnalyseData, Tag } from "../../src/types";
-import { SkdeHeader } from "../../src/components/Header";
+import { HeaderTop } from "../../src/components/Header";
 import { Footer } from "../../src/components/Footer";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 
 import { ThemeProvider, Typography } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 
+
 const Page = (params) => {
+
+  const breadcrumbs = {
+    path: [
+      {
+        link: "https://www.skde.no",
+        text: "Forside",
+      },
+      {
+        link: `/${params.name}/`,
+        text: params.fullname,
+      },
+    ],
+  };
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
-        <SkdeHeader path={[{ text: params.fullname, link: `/analyser/${params.name}/` }]} />
+        <HeaderTop breadcrumbs={breadcrumbs} />
         <div className="footer" style={{backgroundColor: "wheat"}}>
           <Typography variant="h1">{params.fullname}</Typography>
           <Typography variant="body1">
