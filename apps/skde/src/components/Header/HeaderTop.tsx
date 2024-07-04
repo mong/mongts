@@ -69,7 +69,7 @@ const SkdeBreadcrumbs = ({ path }: { path: string[] }) => {
   );
 };
 
-export const SkdeHeader = ({ path }: { path: string[] }) => {
+export const HeaderTop = ({ path }: { path: string[] }) => {
   return (
     <StyledToolbar className="header-top">
       <Grid container spacing={2}>
@@ -85,5 +85,3 @@ export const SkdeHeader = ({ path }: { path: string[] }) => {
     </StyledToolbar>
   );
 };
-
-export default SkdeHeader;

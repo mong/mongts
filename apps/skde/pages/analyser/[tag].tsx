@@ -4,7 +4,7 @@ import fs from "fs";
 import matter from "gray-matter";
 
 //import { AnalyseData, Tag } from "../../src/types";
-import { SkdeHeader } from "../../src/components/Header";
+import { HeaderTop } from "../../src/components/Header";
 
 import { ThemeProvider, Typography } from "@mui/material";
 import { skdeTheme } from "qmongjs";
@@ -12,7 +12,7 @@ import { skdeTheme } from "qmongjs";
 const Page = (params) => {
   return (
     <ThemeProvider theme={skdeTheme}>
-      <SkdeHeader path={["pasientstrømmer", "resultater"]} />
+      <HeaderTop path={["pasientstrømmer", "resultater"]} />
       <Typography variant="h1">{params.fullname}</Typography>
       <Typography variant="body1">
         {params.introduction} <br />
