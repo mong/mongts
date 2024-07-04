@@ -1,5 +1,6 @@
 import { NestedTreatmentUnitName } from "types";
-import { List, ListItem, ListItemText } from "@mui/material";
+import { List, ListItem } from "@mui/material";
+import { StyledLink } from "../HospitalProfileStyles";
 
 type SubUnitsProps = {
   RHFs: NestedTreatmentUnitName[];
@@ -33,39 +34,53 @@ export const SubUnits = (props: SubUnitsProps) => {
   const HFs = RHFs.map((row) => row.hf).flat();
   const unitLevel = getUnitLevel(RHFs, selectedUnit);
 
-  return unitLevel === "RHF" ? (
+  return unitLevel === "Nasjonalt" ? (
     <List>
-      {RHFs.sort((a, b) => a.rhf_sort - b.rhf_sort).map((row) => {
+      {RHFs.sort((a, b) => a.rhf_sort - b.rhf_sort)
+        .map((row) => row.rhf)
+        .map((rhf) => {
+          return (
+            <ListItem key={rhf}>
+              <StyledLink
+                href={"/sykehusprofil/?selected_treatment_units=" + rhf}
+              >
+                {"subunits-" + rhf}
+              </StyledLink>
+            </ListItem>
+          );
+        })}
+    </List>
+  ) : unitLevel === "RHF" ? (
+    <List>
+      {RHFs.filter((row) => row.rhf === selectedUnit)[0].hf.map((row) => {
         return (
           <>
-            <ListItem>
-              <ListItemText primary={row.rhf} />
+            <ListItem key={"subunits-" + row.hf}>
+              <StyledLink
+                href={"/sykehusprofil/?selected_treatment_units=" + row.hf}
+              >
+                {row.hf}
+              </StyledLink>
             </ListItem>
-
-            <List sx={{ marginLeft: 10 }}>
-              {row.hf
-                .sort((a, b) => a.hf_sort - b.hf_sort)
-                .map((row) => {
-                  return (
-                    <ListItem>
-                      <ListItemText primary={row.hf} />
-                    </ListItem>
-                  );
-                })}
-            </List>
           </>
         );
       })}
     </List>
   ) : unitLevel === "HF" ? (
     <List>
-      {HFs.sort((a, b) => a.hf_sort - b.hf_sort).map((row) => {
-        return (
-          <ListItem>
-            <ListItemText primary={row.hf} />
-          </ListItem>
-        );
-      })}
+      {HFs.filter((row) => row.hf === selectedUnit)[0].hospital.map(
+        (hospital) => {
+          return (
+            <ListItem key={"subunits-" + hospital}>
+              <StyledLink
+                href={"/sykehusprofil/?selected_treatment_units=" + hospital}
+              >
+                {hospital}
+              </StyledLink>
+            </ListItem>
+          );
+        },
+      )}
     </List>
   ) : null;
 };

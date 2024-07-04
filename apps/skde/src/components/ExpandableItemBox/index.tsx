@@ -1,8 +1,15 @@
 import { useState, useRef, PropsWithChildren } from "react";
 import { Button, Box } from "@mui/material";
 
-export const ExpandableItemBox = (props: PropsWithChildren) => {
-  const maxHeight = 800;
+type ExpandableItemBoxProps = {
+  maxHeight: number;
+};
+
+export const ExpandableItemBox = (
+  props: PropsWithChildren<ExpandableItemBoxProps>,
+) => {
+  const { maxHeight } = props;
+
   const [expanded, setExpanded] = useState<boolean>(false);
   const ref = useRef(null);
 
