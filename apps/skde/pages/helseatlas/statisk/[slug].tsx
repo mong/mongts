@@ -4,7 +4,6 @@ import { join } from "path";
 import matter from "gray-matter";
 
 import Page, { PageContentProps } from "../../../src/components/Static";
-
 const CONTENT_DIR = join(process.cwd(), "_posts/helseatlas/statisk");
 
 const Content = ({ content, frontMatter }: PageContentProps) => {

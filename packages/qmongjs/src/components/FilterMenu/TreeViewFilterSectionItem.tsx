@@ -55,6 +55,8 @@ export const TreeViewFilterSectionItem = (
   const isSelected = selectedIds.includes(labeledValue.value);
   const singleselect = !(multiselect || multiselect === undefined);
 
+  console.log("labeledValue.value", labeledValue.value);
+
   return (
     <TreeItem
       key={`tree-view-item-${filterKey}-${labeledValue.value}`}
