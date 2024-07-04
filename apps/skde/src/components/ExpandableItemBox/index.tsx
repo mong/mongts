@@ -4,8 +4,6 @@ import { Button, Box } from "@mui/material";
 export const ExpandableItemBox = (props: PropsWithChildren) => {
   const maxHeight = 800;
   const [expanded, setExpanded] = useState<boolean>(false);
-  const [height, setHeight] = useState<number | string>(maxHeight);
-  const [buttonText, setButtonText] = useState<string>("Se mer");
   const ref = useRef(null);
 
   const topMargin = 10;
@@ -28,8 +26,6 @@ export const ExpandableItemBox = (props: PropsWithChildren) => {
       }
     }
 
-    expanded ? setHeight(maxHeight) : setHeight("auto");
-    expanded ? setButtonText("Se mer") : setButtonText("Se mindre");
     setExpanded(!expanded);
   };
 
@@ -40,7 +36,7 @@ export const ExpandableItemBox = (props: PropsWithChildren) => {
           backgroundColor: "white",
           borderTopLeftRadius: "24px",
           borderTopRightRadius: "24px",
-          height: height,
+          height: expanded ? "auto" : maxHeight,
           overflow: "clip",
         }}
       >
@@ -55,7 +51,7 @@ export const ExpandableItemBox = (props: PropsWithChildren) => {
         fullWidth
         onClick={handleClick}
       >
-        {buttonText}
+        {expanded ? "Se mindre" : "Se mer"}
       </Button>
     </Box>
   );
