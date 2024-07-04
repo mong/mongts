@@ -7,20 +7,25 @@ import matter from "gray-matter";
 //import { AnalyseData, Tag } from "../../src/types";
 import { SkdeHeader } from "../../src/components/Header";
 import { Footer } from "../../src/components/Footer";
+import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 
-import { ThemeProvider, Typography } from "@mui/material";
+import { ThemeProvider, Typography, Box } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 
 const Page = (params) => {
   return (
     <ThemeProvider theme={skdeTheme}>
-      <SkdeHeader path={[{text: params.fullname, link: `/analyser/${params.name}/`}]} />
-      <Typography variant="h1">{params.fullname}</Typography>
-      <Typography variant="body1">
-        {params.introduction} <br />
-        {skdeTheme.breakpoints.only("md")}
-      </Typography>
-      <Footer page="helseatlas" />
+      <PageWrapper>
+        <SkdeHeader path={[{ text: params.fullname, link: `/analyser/${params.name}/` }]} />
+        <div className="footer" style={{backgroundColor: "blue"}}>
+          <Typography variant="h1">{params.fullname}</Typography>
+          <Typography variant="body1">
+            {params.introduction} <br />
+            {skdeTheme.breakpoints.only("md")}
+          </Typography>
+        </div>
+        <Footer page="helseatlas" />
+      </PageWrapper>
     </ThemeProvider>
   );
 };
