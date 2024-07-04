@@ -38,11 +38,12 @@ export const Footer = ({ page }: FooterProps) => {
         className="footer"
         marginTop={0}
         marginLeft={{ md: 0 }}
+        marginRight={0}
         paddingTop={2}
         paddingBottom={4}
         spacing={4}
       >
-        <Grid xs={12} md={6} marginBottom={2} marginTop={2}>
+        <Grid xs={12} sm={6} marginBottom={2} marginTop={2}>
           <Stack spacing={3}>
             <h4>OM NETTSTEDET</h4>
             <ArrowLink
@@ -66,7 +67,7 @@ export const Footer = ({ page }: FooterProps) => {
           </Stack>
         </Grid>
 
-        <Grid xs={12} md={6} marginTop={2}>
+        <Grid xs={12} sm={6} marginTop={2}>
           <Stack spacing={3}>
             <h4>KONTAKT</h4>
             <ArrowLink
@@ -85,6 +86,7 @@ export const Footer = ({ page }: FooterProps) => {
         style={{ background: "#1A1A1A" }}
         style={{ background: "#1A1A1A" }}
         marginTop={0}
+        marginRight={0}
         paddingBottom={10}
         spacing={4}
         sx={{ overflow: "clip" }}
