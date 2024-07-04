@@ -36,7 +36,7 @@ export const Footer = ({ page }: FooterProps) => {
         paddingBottom={4}
         spacing={4}
       >
-        <Grid xs={12} md={6} marginBottom={2} marginTop={2}>
+        <Grid xs={12} sm={6} marginBottom={2} marginTop={2}>
           <Stack spacing={3}>
             <h4>OM NETTSTEDET</h4>
             <ArrowLink
@@ -57,7 +57,7 @@ export const Footer = ({ page }: FooterProps) => {
           </Stack>
         </Grid>
 
-        <Grid xs={12} md={6} marginTop={2}>
+        <Grid xs={12} sm={6} marginTop={2}>
           <Stack spacing={3}>
             <h4>KONTAKT</h4>
             <ArrowLink
