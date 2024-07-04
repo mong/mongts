@@ -1,9 +1,8 @@
 import { NestedTreatmentUnitName } from "types";
-import { ItemBox } from "../HospitalProfileStyles";
-import { Text } from "@visx/text";
+import { List, ListItem, ListItemText } from "@mui/material";
 
 type SubUnitsProps = {
-  nestedUnitNames: NestedTreatmentUnitName[];
+  RHFs: NestedTreatmentUnitName[];
   selectedUnit: string;
 };
 
@@ -29,29 +28,44 @@ const getUnitLevel = (
 };
 
 export const SubUnits = (props: SubUnitsProps) => {
-  const { nestedUnitNames, selectedUnit } = props;
+  const { RHFs, selectedUnit } = props;
 
-  const unitLevel = getUnitLevel(nestedUnitNames, selectedUnit);
+  const HFs = RHFs.map((row) => row.hf).flat();
+  const unitLevel = getUnitLevel(RHFs, selectedUnit);
 
-  return (
-    <ItemBox>
-      <Text
-        x={"10%"}
-        y={50}
-        width={500}
-        verticalAnchor="start"
-        style={{ fontWeight: 700, fontSize: 24 }}
-      >
-        Utvalgte indikatorer
-      </Text>
-      <Text
-        x={"10%"}
-        width={500}
-        verticalAnchor="start"
-        style={{ fontWeight: 500, fontSize: 18 }}
-      >
-        {unitLevel}
-      </Text>
-    </ItemBox>
-  );
+  return unitLevel === "RHF" ? (
+    <List>
+      {RHFs.sort((a, b) => a.rhf_sort - b.rhf_sort).map((row) => {
+        return (
+          <>
+            <ListItem>
+              <ListItemText primary={row.rhf} />
+            </ListItem>
+
+            <List sx={{ marginLeft: 10 }}>
+              {row.hf
+                .sort((a, b) => a.hf_sort - b.hf_sort)
+                .map((row) => {
+                  return (
+                    <ListItem>
+                      <ListItemText primary={row.hf} />
+                    </ListItem>
+                  );
+                })}
+            </List>
+          </>
+        );
+      })}
+    </List>
+  ) : unitLevel === "HF" ? (
+    <List>
+      {HFs.sort((a, b) => a.hf_sort - b.hf_sort).map((row) => {
+        return (
+          <ListItem>
+            <ListItemText primary={row.hf} />
+          </ListItem>
+        );
+      })}
+    </List>
+  ) : null;
 };

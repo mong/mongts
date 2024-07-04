@@ -88,7 +88,6 @@ export const Skde = (): JSX.Element => {
     "ind",
   );
 
-  console.log(unitNamesQuery.data);
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
   // Make sure everything is good to go
@@ -102,6 +101,7 @@ export const Skde = (): JSX.Element => {
     prevApiQueryLoading &&
     !unitNamesQuery.isLoading &&
     !unitUrlsQuery.isLoading;
+
   const shouldRefreshInitialState = prerenderFinished || apiQueriesCompleted;
 
   useEffect(() => {
@@ -125,7 +125,7 @@ export const Skde = (): JSX.Element => {
       });
     }
 
-    unitUrl[0] ? setUnitUrl(unitUrl[0].url) : setUnitUrl(null);
+    unitUrl && unitUrl[0] ? setUnitUrl(unitUrl[0].url) : setUnitUrl(null);
   };
 
   const screenSize = useScreenSize({ debounceTime: 150 });
@@ -313,7 +313,7 @@ export const Skde = (): JSX.Element => {
             </Grid>
 
             <Grid xs={12} sm={6}>
-              <ItemBox>
+              <ExpandableItemBox>
                 <Text
                   x={"10%"}
                   y={50}
@@ -323,7 +323,13 @@ export const Skde = (): JSX.Element => {
                 >
                   Utvalgte indikatorer
                 </Text>
-              </ItemBox>
+                {unitNamesQuery.data ? (
+                  <SubUnits
+                    RHFs={unitNamesQuery.data.nestedUnitNames}
+                    selectedUnit={selectedTreatmentUnits[0]}
+                  />
+                ) : null}
+              </ExpandableItemBox>
             </Grid>
 
             <Grid xs={12}>
