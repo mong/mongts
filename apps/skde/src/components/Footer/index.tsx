@@ -5,7 +5,7 @@ import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
 import Grid from "@mui/material/Unstable_Grid2";
 import { Stack } from "@mui/material";
-import { ArrowLink } from "../ArrowLink";
+import { ArrowLink } from "qmongjs/src/components/ArrowLink";
 
 const StyledLink = styled(Link)(() => ({
   color: "#c4dbf3",
