@@ -23,40 +23,49 @@ const StyledBreadcrumbSeparator = styled(NavigateNextRounded)(({ theme }) => ({
   color: theme.palette.primary.light,
 }));
 
-type BreadCrumbStop = {
-  link: string;
-  text: string;
+const breadcrumbsMapping = {
+  pasientstrømmer: {
+    link: "/pasientstrommer/",
+    text: "Pasientstrømmer",
+  },
+  behandlingskvalitet: {
+    link: "/behandlingskvalitet/",
+    text: "Behandlingskvalitet",
+  },
+  forside: {
+    link: "/",
+    text: "Forside",
+  },
+  resultater: {
+    link: "/resultater/",
+    text: "Tall om helsetjenesten",
+  },
 };
 
-export type BreadCrumbPath = {
-  path: BreadCrumbStop[];
-};
-
-const SkdeBreadcrumbs = (props: BreadCrumbPath) => {
-  const { path } = props;
-
+const SkdeBreadcrumbs = ({ path }: { path: string[] }) => {
   return (
     <Breadcrumbs
       separator={<StyledBreadcrumbSeparator fontSize="large" />}
       aria-label="breadcrumb"
     >
-      {path.slice(0, -1).map((row, index) => (
-        <Link underline="hover" key={index} color="inherit" href={row.link}>
-          {row.text}
+      {["forside", ...path].slice(0, -1).map((id, index) => (
+        <Link
+          underline="hover"
+          key={index}
+          color="inherit"
+          href={breadcrumbsMapping[id].link}
+        >
+          {breadcrumbsMapping[id].text}
         </Link>
       ))}
-      <Typography color="text.primary">{path.at(-1).text}</Typography>
+      <Typography color="text.primary">
+        {breadcrumbsMapping[path.at(-1)].text}
+      </Typography>
     </Breadcrumbs>
   );
 };
 
-type HeaderTopProps = {
-  breadcrumbs: BreadCrumbPath;
-};
-
-export const HeaderTop = (props: HeaderTopProps) => {
-  const { breadcrumbs } = props;
-
+export const HeaderTop = ({ path }: { path: string[] }) => {
   return (
     <StyledToolbar className="header-top">
       <Grid container spacing={2}>
@@ -66,7 +75,11 @@ export const HeaderTop = (props: HeaderTopProps) => {
           </Link>
         </Grid>
         <Grid xs={12}>
+<<<<<<< HEAD
           <SkdeBreadcrumbs path={breadcrumbs.path} />
+=======
+          <SkdeBreadcrumbs path={path} />
+>>>>>>> 3e2d0461 (Lagrer endringer)
         </Grid>
       </Grid>
     </StyledToolbar>
