@@ -32,6 +32,7 @@ export const Footer = ({ page }: FooterProps) => {
         className="footer"
         marginTop={0}
         marginLeft={{ md: 0 }}
+        marginRight={0}
         paddingTop={2}
         paddingBottom={4}
         spacing={4}
@@ -74,6 +75,7 @@ export const Footer = ({ page }: FooterProps) => {
         className="footer"
         style={{ background: "#1A1A1A" }}
         marginTop={0}
+        marginRight={0}
         paddingBottom={10}
         spacing={4}
         sx={{ overflow: "clip" }}
