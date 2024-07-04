@@ -9,7 +9,7 @@ import { SkdeHeader } from "../../src/components/Header";
 import { Footer } from "../../src/components/Footer";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 
-import { ThemeProvider, Typography, Box } from "@mui/material";
+import { ThemeProvider, Typography } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 
 const Page = (params) => {
@@ -17,7 +17,7 @@ const Page = (params) => {
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
         <SkdeHeader path={[{ text: params.fullname, link: `/analyser/${params.name}/` }]} />
-        <div className="footer" style={{backgroundColor: "blue"}}>
+        <div className="footer" style={{backgroundColor: "wheat"}}>
           <Typography variant="h1">{params.fullname}</Typography>
           <Typography variant="body1">
             {params.introduction} <br />
