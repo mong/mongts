@@ -24,6 +24,14 @@ const StyledBreadcrumbSeparator = styled(NavigateNextRounded)(({ theme }) => ({
 }));
 
 const breadcrumbsMapping = {
+  forside: {
+    link: "https://www.skde.no",
+    text: "Forside",
+  },
+  resultater: {
+    link: "https://www.skde.no/resultater",
+    text: "Tall om helsetjenesten",
+  },
   pasientstrømmer: {
     link: "/pasientstrommer/",
     text: "Pasientstrømmer",
@@ -32,13 +40,9 @@ const breadcrumbsMapping = {
     link: "/behandlingskvalitet/",
     text: "Behandlingskvalitet",
   },
-  forside: {
-    link: "https://www.skde.no",
-    text: "Forside",
-  },
-  resultater: {
-    link: "https://www.skde.no/resultater",
-    text: "Tall om helsetjenesten",
+  sykehusprofil: {
+    link: "/sykehusprofil/",
+    text: "Sykehusprofil",
   },
 };
 
