@@ -40,11 +40,11 @@ export const SubUnits = (props: SubUnitsProps) => {
         .map((row) => row.rhf)
         .map((rhf) => {
           return (
-            <ListItem key={rhf}>
+            <ListItem key={"subunit-link-" + rhf}>
               <StyledLink
                 href={"/sykehusprofil/?selected_treatment_units=" + rhf}
               >
-                {"subunits-" + rhf}
+                {rhf}
               </StyledLink>
             </ListItem>
           );
@@ -54,15 +54,13 @@ export const SubUnits = (props: SubUnitsProps) => {
     <List>
       {RHFs.filter((row) => row.rhf === selectedUnit)[0].hf.map((row) => {
         return (
-          <>
-            <ListItem key={"subunits-" + row.hf}>
-              <StyledLink
-                href={"/sykehusprofil/?selected_treatment_units=" + row.hf}
-              >
-                {row.hf}
-              </StyledLink>
-            </ListItem>
-          </>
+          <ListItem key={"subunit-link-" + row.hf}>
+            <StyledLink
+              href={"/sykehusprofil/?selected_treatment_units=" + row.hf}
+            >
+              {row.hf}
+            </StyledLink>
+          </ListItem>
         );
       })}
     </List>
@@ -71,7 +69,7 @@ export const SubUnits = (props: SubUnitsProps) => {
       {HFs.filter((row) => row.hf === selectedUnit)[0].hospital.map(
         (hospital) => {
           return (
-            <ListItem key={"subunits-" + hospital}>
+            <ListItem key={"subunit-link-" + hospital}>
               <StyledLink
                 href={"/sykehusprofil/?selected_treatment_units=" + hospital}
               >
