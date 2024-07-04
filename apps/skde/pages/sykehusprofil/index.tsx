@@ -48,7 +48,7 @@ import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import logo from "./Logo.png";
 import { URLs } from "types";
-import { ArrowLink } from "../../src/components/ArrowLink";
+import { ArrowLink } from "qmongjs";
 import Divider from "@mui/material/Divider";
 
 const lineChartTheme = {
@@ -376,7 +376,7 @@ export const Skde = (): JSX.Element => {
               </ItemBox>
             </Grid>
 
-            <Grid xs={12}>
+            <Grid xs={6}>
               <ItemBox>
                 <Text
                   x={"10%"}
@@ -391,22 +391,24 @@ export const Skde = (): JSX.Element => {
               </ItemBox>
             </Grid>
 
-            <Grid xs={12}>
-              <ItemBox sx={{ overflow: "auto" }}>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
-                  Indikatorer med lavt målnivå
-                </Text>
-                <LowLevelIndicatorList
-                  context={"caregiver"}
-                  type={"ind"}
-                  unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
-                />
+            <Grid xs={6}>
+              <ItemBox>
+                <Box margin={2}>
+                  <Text
+                    x={"10%"}
+                    y={50}
+                    width={500}
+                    verticalAnchor="start"
+                    style={{ fontWeight: 700, fontSize: 24 }}
+                  >
+                    Indikatorer med lavt målnivå
+                  </Text>
+                  <LowLevelIndicatorList
+                    context={"caregiver"}
+                    type={"ind"}
+                    unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
+                  />
+                </Box>
               </ItemBox>
             </Grid>
           </Grid>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Toolbar, Typography, styled } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import { ArrowLink } from "../ArrowLink";
+import { ArrowLink } from "qmongjs/src/components/ArrowLink";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
