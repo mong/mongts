@@ -161,7 +161,7 @@ export const Skde = (): JSX.Element => {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "dg",
-    width: 800,
+    width: Math.round(screenSize.width / 2) - 100,
     treatmentYear: 2022,
   };
 
@@ -314,7 +314,7 @@ export const Skde = (): JSX.Element => {
               </ExpandableItemBox>
             </Grid>
 
-            <Grid xs={12}>
+            <Grid xs={6}>
               <ExpandableItemBox>
                 <Text
                   x={"10%"}
@@ -329,7 +329,7 @@ export const Skde = (): JSX.Element => {
               </ExpandableItemBox>
             </Grid>
 
-            <Grid xs={12}>
+            <Grid xs={6}>
               <ExpandableItemBox>
                 <Text
                   x={"10%"}
