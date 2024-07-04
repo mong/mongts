@@ -12,6 +12,7 @@ import {
   FilterSettingsValue,
   FilterMenu,
   useUnitNamesQuery,
+  useUnitUrlsQuery,
   LowLevelIndicatorList,
   LineStyles,
 } from "qmongjs";
@@ -29,6 +30,7 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Stack,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
@@ -45,6 +47,10 @@ import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomA
 import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { ExpandableItemBox } from "../../src/components/ExpandableItemBox";
+import logo from "./Logo.png";
+import { URLs } from "types";
+import { ArrowLink } from "qmongjs";
+import Divider from "@mui/material/Divider";
 
 const lineChartTheme = {
   lineChartBackground: {
@@ -87,6 +93,8 @@ export const Skde = (): JSX.Element => {
     withDefault(DelimitedArrayParam, ["Nasjonalt"]),
   );
 
+  const [unitUrl, setUnitUrl] = useState<string | null>(null);
+
   // Get unit names
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -102,8 +110,13 @@ export const Skde = (): JSX.Element => {
   const [prevApiQueryLoading, setPrevApiQueryLoading] = useState(
     unitNamesQuery.isLoading,
   );
-  const apiQueriesCompleted = prevApiQueryLoading && !unitNamesQuery.isLoading;
 
+  const unitUrlsQuery = useUnitUrlsQuery();
+
+  const apiQueriesCompleted =
+    prevApiQueryLoading &&
+    !unitNamesQuery.isLoading &&
+    !unitUrlsQuery.isLoading;
   const shouldRefreshInitialState = prerenderFinished || apiQueriesCompleted;
 
   useEffect(() => {
@@ -118,6 +131,16 @@ export const Skde = (): JSX.Element => {
 
     setExpanded(false);
     setSelectedTreatmentUnits(newUnit);
+
+    let unitUrl: URLs | undefined;
+
+    if (unitUrlsQuery.data) {
+      unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
+        return row.shortName === newUnit[0];
+      });
+    }
+
+    unitUrl[0] ? setUnitUrl(unitUrl[0].url) : setUnitUrl(null);
   };
 
   const screenSize = useScreenSize({ debounceTime: 150 });
@@ -250,20 +273,61 @@ export const Skde = (): JSX.Element => {
 
         <Box margin={4}>
           <Grid container spacing={2}>
-            <Grid xs={6}>
-              <ItemBox>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
-                  {selectedTreatmentUnits[0]}
-                </Text>
+            <Grid xs={12} sm={6} lg={6} xl={6} xxl={6}>
+              <ItemBox sx={{ objectFit: "scale-down" }}>
+                <Grid container spacing={2} sx={{ overflow: "clip" }}>
+                  <Grid xs={5} margin={2}>
+                    <img
+                      src={logo.src}
+                      alt={"Logo"}
+                      width="100%"
+                      style={{ borderRadius: "50%", maxWidth: 300 }}
+                    />
+                  </Grid>
+                  <Grid xs={12} sm={12} lg={6} xl={6} xxl={6}>
+                    <Stack>
+                      <Text
+                        x={"10%"}
+                        y={"20%"}
+                        width={500}
+                        verticalAnchor="start"
+                        style={{ fontWeight: 700, fontSize: 10 }}
+                      >
+                        Oppdatert: xx.xx.xx
+                      </Text>
+                      <Text
+                        x={"10%"}
+                        y={"-50%"}
+                        width={200}
+                        verticalAnchor="start"
+                        style={{ fontWeight: 700, fontSize: 24 }}
+                      >
+                        {selectedTreatmentUnits[0]}
+                      </Text>
+                      <Divider />
+                      <Box
+                        sx={{
+                          marginRight: "20%",
+                          marginBottom: 0,
+                          display: "flex",
+                          justifyContent: "right",
+                        }}
+                      >
+                        {unitUrl ? (
+                          <ArrowLink
+                            href={unitUrl}
+                            text="Nettside"
+                            externalLink={true}
+                          />
+                        ) : null}
+                      </Box>
+                    </Stack>
+                  </Grid>
+                </Grid>
               </ItemBox>
             </Grid>
-            <Grid xs={6}>
+
+            <Grid xs={12} sm={6}>
               <ItemBox>
                 <Text
                   x={"10%"}
@@ -278,7 +342,7 @@ export const Skde = (): JSX.Element => {
             </Grid>
 
             <Grid xs={12}>
-              <ItemBox>
+              <ItemBox sx={{ overflow: "auto" }}>
                 <Text
                   x={"10%"}
                   y={50}
