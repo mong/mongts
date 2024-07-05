@@ -1,17 +1,17 @@
 .linkOuterWrapper {
-  max-width: 47%;
-  min-width: 350px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  max-width: min(100%, 610px);
+  min-width: 300px;
   background: #e3f3ef;
   transition: 100ms ease-in;
-  flex: 1 1 45%;
+  flex: 1 1 250px;
   overflow: hidden;
+  border-radius: 24px;
 }
 
 .linkOuterWrapper:hover,
 .linkOuterWrapper:focus {
-  background-color: #c6e6df;
+  box-shadow:2px 2px 16px rgba(0,0,0,.24);
+  transition:box-shadow .1s ease-out
 }
 
 .linkOuterWrapper:hover .linkTitle,
@@ -30,11 +30,6 @@
   z-index: 2;
 }
 
-.linkOuterWrapper:hover .linkImageWrapper::before,
-.linkOuterWrapper:focus .linkImageWrapper::before {
-  background-color: #c6e6df;
-  opacity: 0.3;
-}
 
 .linkInnerWrapper {
   display: flex;
@@ -100,7 +95,7 @@
 .linkTitle {
   font-style: normal;
   font-weight: 700;
-  font-size: 36px;
+  font-size: 26px;
   line-height: 49px;
   letter-spacing: 0.01em;
   padding-top: 20px;
@@ -114,6 +109,14 @@
 }
 
 @media screen and (min-width: 943px) {
+  .linkOuterWrapper {
+    flex-basis: 400px;
+  }
+
+  .linkTitle {
+    font-size: 36px;
+  }
+
   .linkOuterWrapper.wide {
     max-width: 100%;
     margin-top: 20px;
@@ -137,16 +140,5 @@
   .linkOuterWrapper.wide .linkText {
     flex: 1;
     height: 350px;
-  }
-
-  .wide.linkOuterWrapper:hover,
-  .wide.linkOuterWrapper:focus {
-    background-color: rgba(0, 48, 135, 0.2);
-  }
-
-  .wide.linkOuterWrapper:hover .linkImageWrapper::before,
-  .wide.linkOuterWrapper:focus .linkImageWrapper::before {
-    background-color: rgba(0, 48, 135, 0.5);
-    opacity: 0.3;
   }
 }
