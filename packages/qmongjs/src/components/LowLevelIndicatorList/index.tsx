@@ -190,6 +190,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
           disableElevation
           onClick={handleClick}
           endIcon={<KeyboardArrowDown />}
+          sx={{ marginLeft: 4 }}
         >
           Alternativer
         </Button>
@@ -221,7 +222,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
         </Menu>
       </Box>
       <div>
-        <TableContainer>
+        <TableContainer sx={{ overflowX: "clip" }}>
           <Table>
             <TableHead>
               <TableRow>

@@ -5,6 +5,7 @@ export {
   fetchRegisterNames,
   useIndicatorQuery,
   useMedicalFieldsQuery,
+  useUnitUrlsQuery,
 } from "./helpers/hooks";
 export { API_HOST } from "./components/RegisterPage";
 export { Layout } from "./components/Layout";
