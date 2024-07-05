@@ -10,8 +10,8 @@
 
 .linkOuterWrapper:hover,
 .linkOuterWrapper:focus {
-  box-shadow:2px 2px 16px rgba(0,0,0,.24);
-  transition:box-shadow .1s ease-out
+  box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.24);
+  transition: box-shadow 0.1s ease-out;
 }
 
 .linkOuterWrapper:hover .linkTitle,
@@ -29,7 +29,6 @@
   transition: 100ms ease-in;
   z-index: 2;
 }
-
 
 .linkInnerWrapper {
   display: flex;
