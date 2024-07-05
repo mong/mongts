@@ -2,7 +2,7 @@ import React from "react";
 import { HeaderTop, BreadCrumbPath } from "./HeaderTop";
 import { HeaderMiddle, HeaderData } from "./HeaderMiddle";
 
-export type HeaderProps = {
+type HeaderProps = {
   headerData: HeaderData;
   breadcrumbs: BreadCrumbPath;
   children?: React.ReactNode;
