@@ -23,7 +23,7 @@ const breadcrumbs: BreadCrumbPath = {
 const headerData: HeaderData = {
   title: "Behandlingskvalitet",
   subtitle: "Resultater fra nasjonale medisinske kvalitetsregistre",
-}
+};
 
 const TreatmentQualityAppBar = ({
   openDrawer,

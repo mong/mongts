@@ -3,7 +3,11 @@ import { Footer } from "../../src/components/Footer";
 import { ThemeProvider } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
-import { Header, HeaderData, BreadCrumbPath } from "../../src/components/Header";
+import {
+  Header,
+  HeaderData,
+  BreadCrumbPath,
+} from "../../src/components/Header";
 
 const breadcrumbs: BreadCrumbPath = {
   path: [
@@ -20,8 +24,9 @@ const breadcrumbs: BreadCrumbPath = {
 
 const headerData: HeaderData = {
   title: "Pasientstrømmer",
-  subtitle: "Det interaktive tabellverket inneholder overordnet anonymisert informasjon om aktivitet og pasientstrømmer innad i, til og ut av helseregion Nord.",
-}
+  subtitle:
+    "Det interaktive tabellverket inneholder overordnet anonymisert informasjon om aktivitet og pasientstrømmer innad i, til og ut av helseregion Nord.",
+};
 
 const Pasient = () => {
   return (

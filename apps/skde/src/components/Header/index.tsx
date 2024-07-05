@@ -13,7 +13,11 @@ export const Header = (props: HeaderProps) => {
   return (
     <>
       <HeaderTop breadcrumbs={props.breadcrumbs} />
-      <HeaderMiddle children={props.children} bgcolor={props.bgcolor} headerData={props.headerData} />
+      <HeaderMiddle
+        children={props.children}
+        bgcolor={props.bgcolor}
+        headerData={props.headerData}
+      />
     </>
   );
 };

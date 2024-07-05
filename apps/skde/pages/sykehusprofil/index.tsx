@@ -6,7 +6,11 @@ import {
   withDefault,
 } from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
-import { Header, HeaderData, BreadCrumbPath } from "../../src/components/Header";
+import {
+  Header,
+  HeaderData,
+  BreadCrumbPath,
+} from "../../src/components/Header";
 import {
   skdeTheme,
   FilterSettingsValue,
@@ -172,7 +176,6 @@ export const Skde = (): JSX.Element => {
     indicatorParams.yAxisText = "Antall indikatorer";
   }
 
-
   const breadcrumbs: BreadCrumbPath = {
     path: [
       {
@@ -189,12 +192,16 @@ export const Skde = (): JSX.Element => {
   const headerData: HeaderData = {
     title: "Sykehusprofil",
     subtitle: "Resultater fra sykehus",
-  }
+  };
 
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
-        <Header bgcolor="surface2.light" headerData={headerData} breadcrumbs={breadcrumbs}>
+        <Header
+          bgcolor="surface2.light"
+          headerData={headerData}
+          breadcrumbs={breadcrumbs}
+        >
           <ClickAwayListener onClickAway={() => setExpanded(false)}>
             <Accordion
               expanded={expanded}
@@ -240,7 +247,6 @@ export const Skde = (): JSX.Element => {
               </AccordionDetails>
             </Accordion>
           </ClickAwayListener>
-
         </Header>
 
         <Box margin={4}>

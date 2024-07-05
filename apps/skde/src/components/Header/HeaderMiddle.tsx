@@ -10,17 +10,20 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 export type HeaderData = {
   title: string;
   subtitle: string;
-}
+};
 
 type HeaderMiddleProps = {
   headerData: HeaderData;
   children?: React.ReactNode;
   bgcolor?: string;
-}
+};
 
 export const HeaderMiddle = (props: HeaderMiddleProps) => {
   return (
-    <StyledToolbar sx={{bgcolor: props.bgcolor || 'primary.light'}} className="header-middle">
+    <StyledToolbar
+      sx={{ bgcolor: props.bgcolor || "primary.light" }}
+      className="header-middle"
+    >
       <Grid container spacing={2} rowSpacing={6}>
         <Grid xs={12}>
           <Typography variant="h1">{props.headerData.title}</Typography>
