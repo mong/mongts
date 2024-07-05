@@ -23,9 +23,7 @@ import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import {
-  Toolbar,
   styled,
-  Typography,
   Checkbox,
   FormControlLabel,
   ThemeProvider,
