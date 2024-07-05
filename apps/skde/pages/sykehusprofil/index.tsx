@@ -6,7 +6,11 @@ import {
   withDefault,
 } from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
-import HeaderTop from "../../src/components/Header/HeaderTop";
+import {
+  Header,
+  HeaderData,
+  BreadCrumbPath,
+} from "../../src/components/Header";
 import {
   skdeTheme,
   FilterSettingsValue,
@@ -20,7 +24,6 @@ import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import {
-  Typography,
   Checkbox,
   FormControlLabel,
   ThemeProvider,
@@ -46,7 +49,6 @@ import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { SubUnits } from "../../src/components/SubUnits";
 import {
   lineChartTheme,
-  StyledToolbarMiddle,
   ItemBox,
 } from "../../src/components/HospitalProfileStyles";
 import { ExpandableItemBox } from "../../src/components/ExpandableItemBox";
@@ -163,75 +165,80 @@ export const Skde = (): JSX.Element => {
     indicatorParams.yAxisText = "Antall indikatorer";
   }
 
-  const handleClickAway = () => {
-    if (expanded === true) {
-      setExpanded(false);
-    }
+  const breadcrumbs: BreadCrumbPath = {
+    path: [
+      {
+        link: "https://www.skde.no",
+        text: "Forside",
+      },
+      {
+        link: "/sykehusprofil/",
+        text: "Sykehusprofil",
+      },
+    ],
+  };
+
+  const headerData: HeaderData = {
+    title: "Sykehusprofil",
+    subtitle: "Resultater fra sykehus",
   };
 
   const boxMaxHeight = 800;
 
   return (
     <ThemeProvider theme={skdeTheme}>
-      <HeaderTop page="sykehusprofil" />
       <PageWrapper>
-        <StyledToolbarMiddle className="header-middle">
-          <Grid container spacing={2} rowSpacing={6}>
-            <Grid xs={12}>
-              <Typography variant="h1">Sykehusprofil</Typography>
-            </Grid>
-            <Grid xs={12}>
-              <Typography variant="h6">Resultater fra sykehus</Typography>
-            </Grid>
-            <Grid xs={6}>
-              <ClickAwayListener onClickAway={handleClickAway}>
-                <Accordion
-                  expanded={expanded}
-                  onChange={(e, expanded) => {
-                    setExpanded(expanded);
+        <Header
+          bgcolor="surface2.light"
+          headerData={headerData}
+          breadcrumbs={breadcrumbs}
+        >
+          <ClickAwayListener onClickAway={() => setExpanded(false)}>
+            <Accordion
+              expanded={expanded}
+              onChange={(e, expanded) => {
+                setExpanded(expanded);
+              }}
+            >
+              <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
+                <h3>
+                  {selectedTreatmentUnits[0] === "Nasjonalt"
+                    ? "Velg enhet"
+                    : selectedTreatmentUnits[0]}
+                </h3>
+              </AccordionSummary>
+
+              <AccordionDetails>
+                <FilterMenu
+                  refreshState={shouldRefreshInitialState}
+                  onSelectionChanged={handleChange}
+                  onFilterInitialized={() => {
+                    return null;
                   }}
                 >
-                  <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
-                    <h3>
-                      {selectedTreatmentUnits[0] === "Nasjonalt"
-                        ? "Velg enhet"
-                        : selectedTreatmentUnits[0]}
-                    </h3>
-                  </AccordionSummary>
-
-                  <AccordionDetails>
-                    <FilterMenu
-                      refreshState={shouldRefreshInitialState}
-                      onSelectionChanged={handleChange}
-                      onFilterInitialized={() => {
-                        return null;
-                      }}
-                    >
-                      <TreeViewFilterSection
-                        refreshState={shouldRefreshInitialState}
-                        treedata={treatmentUnits.treedata}
-                        defaultvalues={treatmentUnits.defaults}
-                        initialselections={
-                          selectedTreatmentUnits.map((value) => ({
-                            value: value,
-                            valueLabel: value,
-                          })) as FilterSettingsValue[]
-                        }
-                        sectionid={treatmentUnitsKey}
-                        sectiontitle={"Behandlingsenheter"}
-                        filterkey={treatmentUnitsKey}
-                        searchbox={true}
-                        multiselect={false}
-                        accordion={false}
-                        noShadow={true}
-                      />
-                    </FilterMenu>
-                  </AccordionDetails>
-                </Accordion>
-              </ClickAwayListener>
-            </Grid>
-          </Grid>
-        </StyledToolbarMiddle>
+                  <TreeViewFilterSection
+                    refreshState={shouldRefreshInitialState}
+                    treedata={treatmentUnits.treedata}
+                    defaultvalues={treatmentUnits.defaults}
+                    initialselections={
+                      selectedTreatmentUnits.map((value) => ({
+                        value: value,
+                        valueLabel: value,
+                      })) as FilterSettingsValue[]
+                    }
+                    sectionid={treatmentUnitsKey}
+                    sectiontitle={"Behandlingsenheter"}
+                    filterkey={treatmentUnitsKey}
+                    searchbox={true}
+                    multiselect={false}
+                    accordion={false}
+                    noShadow={true}
+                  />
+                </FilterMenu>
+              </AccordionDetails>
+            </Accordion>
+          </ClickAwayListener>
+        </Header>
 
         <Box margin={4}>
           <Grid container spacing={2}>
