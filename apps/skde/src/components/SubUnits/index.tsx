@@ -52,17 +52,23 @@ export const SubUnits = (props: SubUnitsProps) => {
     </List>
   ) : unitLevel === "RHF" ? (
     <List>
-      {RHFs.filter((row) => row.rhf === selectedUnit)[0].hf.map((row) => {
-        return (
-          <ListItem key={"subunit-link-" + row.hf}>
-            <StyledLink
-              href={"/sykehusprofil/?selected_treatment_units=" + row.hf}
-            >
-              {row.hf}
-            </StyledLink>
-          </ListItem>
-        );
-      })}
+      {RHFs.filter((row) => row.rhf === selectedUnit)[0]
+        .hf.filter(
+          (row) =>
+            !row.hf.includes("Private") &&
+            !row.hf.includes("Avtalespesialister"),
+        )
+        .map((row) => {
+          return (
+            <ListItem key={"subunit-link-" + row.hf}>
+              <StyledLink
+                href={"/sykehusprofil/?selected_treatment_units=" + row.hf}
+              >
+                {row.hf}
+              </StyledLink>
+            </ListItem>
+          );
+        })}
     </List>
   ) : unitLevel === "HF" ? (
     <List>
