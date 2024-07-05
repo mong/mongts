@@ -23,62 +23,39 @@ const StyledBreadcrumbSeparator = styled(NavigateNextRounded)(({ theme }) => ({
   color: theme.palette.primary.light,
 }));
 
-const TreatmentQualityBreadcrumbs = () => {
-  return (
-    <Breadcrumbs
-      separator={<StyledBreadcrumbSeparator fontSize="large" />}
-      aria-label="breadcrumb"
-    >
-      <Link
-        underline="hover"
-        key="1"
-        color="inherit"
-        href="https://www.skde.no"
-      >
-        Forside
-      </Link>
-      <Link
-        underline="hover"
-        key="2"
-        color="inherit"
-        href="https://www.skde.no/resultater"
-      >
-        Tall om helsetjenesten
-      </Link>
-      <Typography key="3" color="text.primary">
-        Behandlingskvalitet
-      </Typography>
-    </Breadcrumbs>
-  );
+type BreadCrumbStop = {
+  link: string;
+  text: string;
 };
 
-const PasientstrommerBreadcrumbs = () => {
+export type BreadCrumbPath = {
+  path: BreadCrumbStop[];
+};
+
+const SkdeBreadcrumbs = (props: BreadCrumbPath) => {
+  const { path } = props;
+
   return (
     <Breadcrumbs
       separator={<StyledBreadcrumbSeparator fontSize="large" />}
       aria-label="breadcrumb"
     >
-      <Link
-        underline="hover"
-        key="1"
-        color="inherit"
-        href="https://www.skde.no"
-      >
-        Forside
-      </Link>
-      <Typography key="2" color="text.primary">
-        Pasientstrømmer
-      </Typography>
+      {path.slice(0, -1).map((row, index) => (
+        <Link underline="hover" key={index} color="inherit" href={row.link}>
+          {row.text}
+        </Link>
+      ))}
+      <Typography color="text.primary">{path.at(-1).text}</Typography>
     </Breadcrumbs>
   );
 };
 
 type HeaderTopProps = {
-  page: "behandlingskvalitet" | "pasientstrømmer";
+  breadcrumbs: BreadCrumbPath;
 };
 
-const HeaderTop = (props: HeaderTopProps) => {
-  const { page } = props;
+export const HeaderTop = (props: HeaderTopProps) => {
+  const { breadcrumbs } = props;
 
   return (
     <StyledToolbar className="header-top">
@@ -89,15 +66,9 @@ const HeaderTop = (props: HeaderTopProps) => {
           </Link>
         </Grid>
         <Grid xs={12}>
-          {page === "behandlingskvalitet" ? (
-            <TreatmentQualityBreadcrumbs />
-          ) : page === "pasientstrømmer" ? (
-            <PasientstrommerBreadcrumbs />
-          ) : null}
+          <SkdeBreadcrumbs path={breadcrumbs.path} />
         </Grid>
       </Grid>
     </StyledToolbar>
   );
 };
-
-export default HeaderTop;
