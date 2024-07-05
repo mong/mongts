@@ -290,7 +290,7 @@ export const Skde = (): JSX.Element => {
             </Grid>
 
             <Grid xs={12} sm={6}>
-              <ExpandableItemBox maxHeight={400}>
+              <ExpandableItemBox collapsedHeight={400}>
                 <Text
                   x={"10%"}
                   y={50}
@@ -332,7 +332,7 @@ export const Skde = (): JSX.Element => {
             </Grid>
 
             <Grid xs={12}>
-              <ExpandableItemBox maxHeight={boxMaxHeight}>
+              <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <Text
                   x={"10%"}
                   y={50}
@@ -347,7 +347,7 @@ export const Skde = (): JSX.Element => {
             </Grid>
 
             <Grid xs={6}>
-              <ExpandableItemBox maxHeight={boxMaxHeight}>
+              <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <Text
                   x={"10%"}
                   y={50}
@@ -362,7 +362,7 @@ export const Skde = (): JSX.Element => {
             </Grid>
 
             <Grid xs={6}>
-              <ExpandableItemBox maxHeight={boxMaxHeight}>
+              <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <Text
                   x={"10%"}
                   y={50}

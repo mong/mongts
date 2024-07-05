@@ -2,13 +2,13 @@ import { useState, useRef, PropsWithChildren } from "react";
 import { Button, Box } from "@mui/material";
 
 type ExpandableItemBoxProps = {
-  maxHeight: number;
+  collapsedHeight: number;
 };
 
 export const ExpandableItemBox = (
   props: PropsWithChildren<ExpandableItemBoxProps>,
 ) => {
-  const { maxHeight } = props;
+  const { collapsedHeight } = props;
 
   const [expanded, setExpanded] = useState<boolean>(false);
   const ref = useRef(null);
@@ -43,8 +43,9 @@ export const ExpandableItemBox = (
           backgroundColor: "white",
           borderTopLeftRadius: "24px",
           borderTopRightRadius: "24px",
-          height: expanded ? "auto" : maxHeight,
+          height: expanded ? "auto" : collapsedHeight,
           overflow: "clip",
+          minHeight: collapsedHeight,
         }}
       >
         {props.children}
