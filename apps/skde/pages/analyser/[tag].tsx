@@ -5,7 +5,7 @@ import matter from "gray-matter";
 
 
 //import { AnalyseData, Tag } from "../../src/types";
-import { HeaderTop } from "../../src/components/Header";
+import { Header, BreadCrumbPath, HeaderData } from "../../src/components/Header";
 import { Footer } from "../../src/components/Footer";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 
@@ -13,9 +13,11 @@ import { ThemeProvider, Typography } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 
 
+
+
 const Page = (params) => {
 
-  const breadcrumbs = {
+  const breadcrumbs: BreadCrumbPath = {
     path: [
       {
         link: "https://www.skde.no",
@@ -28,17 +30,17 @@ const Page = (params) => {
     ],
   };
 
+  const headerData: HeaderData = {
+    title: params.fullname,
+    subtitle: params.introduction,
+  };
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
-        <HeaderTop breadcrumbs={breadcrumbs} />
-        <div className="footer" style={{backgroundColor: "wheat"}}>
-          <Typography variant="h1">{params.fullname}</Typography>
-          <Typography variant="body1">
-            {params.introduction} <br />
-            {skdeTheme.breakpoints.only("md")}
-          </Typography>
-        </div>
+        <Header headerData={headerData} breadcrumbs={breadcrumbs}>
+          <p>Testing</p>
+        </Header>
         <Footer page="helseatlas" />
       </PageWrapper>
     </ThemeProvider>
