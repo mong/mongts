@@ -5,6 +5,7 @@ export type NorwegianOrEnglishText = {
 
 export type AnalyseData = {
   tags: string[];
+  published: number;
   graphs: {
     type: string;
     category: string;

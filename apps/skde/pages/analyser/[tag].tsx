@@ -4,7 +4,7 @@ import fs from "fs";
 import matter from "gray-matter";
 
 
-//import { AnalyseData, Tag } from "../../src/types";
+import { AnalyseData, Tag } from "../../src/types";
 import { Header, BreadCrumbPath, HeaderData } from "../../src/components/Header";
 import { Footer } from "../../src/components/Footer";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
@@ -14,8 +14,12 @@ import { skdeTheme } from "qmongjs";
 
 
 
+type PageParams = {
+  tag: Tag;
+  analyser: AnalyseData[];
+}
 
-const Page = (params) => {
+const Page = ({ tag, analyser }: PageParams) => {
 
   const breadcrumbs: BreadCrumbPath = {
     path: [
@@ -24,22 +28,22 @@ const Page = (params) => {
         text: "Forside",
       },
       {
-        link: `/${params.name}/`,
-        text: params.fullname,
+        link: `/${tag.name}/`,
+        text: tag.fullname,
       },
     ],
   };
 
   const headerData: HeaderData = {
-    title: params.fullname,
-    subtitle: params.introduction,
+    title: tag.fullname,
+    subtitle: tag.introduction,
   };
 
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
         <Header headerData={headerData} breadcrumbs={breadcrumbs}>
-          <p>Testing</p>
+          <p>{new Date(analyser[0].published).toString()}</p>
         </Header>
         <Footer page="helseatlas" />
       </PageWrapper>
@@ -50,31 +54,26 @@ const Page = (params) => {
 export const getStaticProps: GetStaticProps = (context) => {
   const analyserDir = path.join(process.cwd(), "analyser/data");
 
-  const analyser = fs
+  const analyser: AnalyseData[] = fs
     .readdirSync(analyserDir)
     .map((fname) => {
       const fpath = path.join(analyserDir, fname);
-      const analyseData = JSON.parse(matter(fs.readFileSync(fpath)).content);
-
-      return analyseData;
+      return JSON.parse(matter(fs.readFileSync(fpath)).content);
     })
     .filter((analyse) => {
       console.log(analyse.tags);
       return analyse.tags.includes(context.params.tag);
     });
 
-  console.log("Tilgjengelige analyser: ", analyser);
-
   const tagFile = path.join(
     process.cwd(),
     "analyser/tags",
     `${context.params.tag}.json`,
   );
-  const file = fs.readFileSync(tagFile);
-  const content = JSON.parse(matter(file).content);
+  const content: Tag = JSON.parse(matter(fs.readFileSync(tagFile)).content);
 
   return {
-    props: { ...content },
+    props: { tag: content, analyser: analyser },
   };
 };
 
@@ -83,7 +82,7 @@ export const getStaticPaths: GetStaticPaths = () => {
 
   const paths = fs.readdirSync(tagDir).flatMap((fname) => {
     const fpath = path.join(tagDir, fname);
-    const tagData = JSON.parse(matter(fs.readFileSync(fpath)).content);
+    const tagData: Tag = JSON.parse(matter(fs.readFileSync(fpath)).content);
 
     return tagData.introduction
       ? {
