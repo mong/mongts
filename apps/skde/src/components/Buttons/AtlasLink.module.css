@@ -8,16 +8,19 @@
   border-radius: 24px;
 }
 
+.linkOuterWrapper,
+.linkOuterWrapper img {
+  transition: 0.1s ease-out;
+}
+
 .linkOuterWrapper:hover,
 .linkOuterWrapper:focus {
   box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.24);
-  transition: box-shadow 0.1s ease-out;
 }
 
 .linkOuterWrapper:hover .linkImageWrapper img,
 .linkOuterWrapper:focus .linkImageWrapper img {
   background-color: #c6e6df;
-  transition: opacity 0.1s ease-in;
   opacity: 0.8;
 }
 
@@ -116,7 +119,6 @@
     margin-top: 20px;
     margin-bottom: 20px;
     background: #e6eef8;
-    transition: 100ms ease-in;
     flex: 1 1 100%;
   }
 
