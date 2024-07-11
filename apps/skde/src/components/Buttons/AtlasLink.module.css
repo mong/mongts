@@ -14,6 +14,13 @@
   transition: box-shadow 0.1s ease-out;
 }
 
+.linkOuterWrapper:hover .linkImageWrapper img,
+.linkOuterWrapper:focus .linkImageWrapper img {
+  background-color: #c6e6df;
+  transition: opacity 0.1s ease-in;
+  opacity: 0.8;
+}
+
 .linkOuterWrapper:hover .linkTitle,
 .linkOuterWrapper:focus .linkTitle {
   text-decoration: underline;
