@@ -27,7 +27,7 @@ export const useBohfQueryParam = (
 
   function toggleBohf(bohf: string) {
     if (bohf && bohf != national) {
-      let newSelection = new Set(selectedBohfs);
+      const newSelection = new Set(selectedBohfs);
 
       if (newSelection.has(bohf)) {
         newSelection.delete(bohf);
