@@ -1,10 +1,21 @@
 import { useRouter } from "next/router";
 
 const borhf = {
-  "Helse Sør-Øst": ["Akershus", "OUS", "Vestfold", "Vestre Viken", "Sørlandet", "Telemark", "Innlandet", "Østfold", "Diakonhjemmet", "Lovisenberg"],
+  "Helse Sør-Øst": [
+    "Akershus",
+    "OUS",
+    "Vestfold",
+    "Vestre Viken",
+    "Sørlandet",
+    "Telemark",
+    "Innlandet",
+    "Østfold",
+    "Diakonhjemmet",
+    "Lovisenberg",
+  ],
   "Helse Vest": ["Førde", "Bergen", "Fonna", "Stavanger"],
   "Helse Midt-Norge": ["St. Olav", "Møre og Romsdal", "Nord-Trøndelag"],
-  "Helse Nord": ["Finnmark", "UNN", "Nordland", "Helgeland"]
+  "Helse Nord": ["Finnmark", "UNN", "Nordland", "Helgeland"],
 };
 const borhfSet = new Set(Object.keys(borhf));
 
@@ -16,7 +27,6 @@ export const useBohfQueryParam = (
 
   function toggleBohf(bohf: string) {
     if (bohf && bohf != national) {
-
       let newSelection = new Set(selectedBohfs);
 
       if (newSelection.has(bohf)) {
@@ -26,9 +36,8 @@ export const useBohfQueryParam = (
             newSelection.delete(b);
           }
         }
-      }
-      else {
-        newSelection.add(bohf)
+      } else {
+        newSelection.add(bohf);
         if (borhfSet.has(bohf)) {
           for (const b of borhf[bohf]) {
             newSelection.add(b);
@@ -38,7 +47,7 @@ export const useBohfQueryParam = (
 
       for (const [rhf, bohfs] of Object.entries(borhf)) {
         newSelection.delete(rhf);
-        if (bohfs.every(bohf => newSelection.has(bohf)))
+        if (bohfs.every((bohf) => newSelection.has(bohf)))
           newSelection.add(rhf);
       }
 
@@ -46,7 +55,7 @@ export const useBohfQueryParam = (
         {
           query: {
             ...router.query,
-            bohf: Array.from(newSelection)
+            bohf: Array.from(newSelection),
           },
         },
         undefined,

@@ -249,7 +249,9 @@ export const Barchart = <
             const bars = (
               <Group fill={colorScale(d["key"])} key={`${i}`}>
                 {d.map((barData, i) => {
-                  const bohfName = (barData.data.bohf || barData.data.borhf).toString();
+                  const bohfName = (
+                    barData.data.bohf || barData.data.borhf
+                  ).toString();
                   return (
                     <rect
                       key={`${i}`}
