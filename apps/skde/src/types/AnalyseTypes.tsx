@@ -5,18 +5,21 @@ export type NorwegianOrEnglishText = {
 
 export type AnalyseData = {
   tags: string[];
+  name: string;
   published: number;
-  graphs: {
-    type: string;
-    category: string;
-    description: NorwegianOrEnglishText;
-    variables: string[];
-    data_id: string;
-  }[];
+  description: NorwegianOrEnglishText;
+  variables: string[];
   data: {
-    [dsname: string]: {
-      [varname: string]: string | number;
-    }[];
+    sykehus: {
+      [sykehus_num: string]: {
+        [year: string]: number[];
+      };
+    };
+    region: {
+      [region_num: string]: {
+        [year: string]: number[];
+      };
+    };
   };
 };
 

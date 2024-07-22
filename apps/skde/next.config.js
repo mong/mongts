@@ -5,5 +5,5 @@ module.exports = {
   },
   trailingSlash: true,
   reactStrictMode: true,
-  transpilePackages: ["qmongjs"],
+  transpilePackages: ["qmongjs", "@mui/x-charts"],
 };

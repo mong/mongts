@@ -5,6 +5,7 @@ import matter from "gray-matter";
 
 
 import { AnalyseData, Tag } from "../../src/types";
+import { AnalyseBox } from "../../src/components/AnalyseBox";
 import { Header, BreadCrumbPath, HeaderData } from "../../src/components/Header";
 import { Footer } from "../../src/components/Footer";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
@@ -43,8 +44,13 @@ const Page = ({ tag, analyser }: PageParams) => {
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
         <Header headerData={headerData} breadcrumbs={breadcrumbs}>
-          <p>{new Date(analyser[0].published).toString()}</p>
+        <p>{new Date(analyser[0].published).toString()}</p>
         </Header>
+        <div className="footer">
+          {analyser.map((a) => (
+             <AnalyseBox analyse={a} key={a.name} />
+          ))}
+        </div>
         <Footer page="helseatlas" />
       </PageWrapper>
     </ThemeProvider>
