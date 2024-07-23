@@ -153,7 +153,7 @@ const colorTokens = {
   text: {
     primary: "#000000",
     secondary: "#003087",
-    disabled: "#f5f5f5",
+    disabled: "#777",
   },
 
   info: {

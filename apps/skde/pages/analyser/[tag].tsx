@@ -10,10 +10,11 @@ import { Header, BreadCrumbPath, HeaderData } from "../../src/components/Header"
 import { Footer } from "../../src/components/Footer";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 
-import { ThemeProvider, Typography } from "@mui/material";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { createTheme } from "@mui/material/styles";
 import { skdeTheme } from "qmongjs";
 
-
+let analyseTheme = createTheme(skdeTheme, {});
 
 type PageParams = {
   tag: Tag;
@@ -41,7 +42,8 @@ const Page = ({ tag, analyser }: PageParams) => {
   };
 
   return (
-    <ThemeProvider theme={skdeTheme}>
+    <ThemeProvider theme={analyseTheme}>
+      <CssBaseline />
       <PageWrapper>
         <Header headerData={headerData} breadcrumbs={breadcrumbs}>
         <p>{new Date(analyser[0].published).toString()}</p>
