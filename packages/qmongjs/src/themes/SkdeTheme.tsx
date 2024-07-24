@@ -136,6 +136,7 @@ const colorTokens = {
     main: "#dedede",
     light: "#f4f4f4",
     dark: "#9b9b9b",
+    paper: "#f4f4f4"
   },
 
   surface: {
@@ -186,10 +187,7 @@ export const skdeTheme = responsiveFontSizes(
     typography: fonts,
     palette: {
       mode: "light",
-      ...colorTokens,
-      background: {
-        paper: colorTokens.background.light,
-      },
+      ...colorTokens
     },
     breakpoints: {
       values: {
