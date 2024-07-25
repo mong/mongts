@@ -9,6 +9,7 @@ import { useTheme } from '@mui/material/styles';
 
 import { AnalyseData } from "../../types";
 import { AnalyseBarChart } from "./AnalyseBarChart";
+import { AnalysePieChart } from "./AnalysePieChart";
 import { AnalyseLineChart } from "./AnalyseLineChart";
 
 export const AnalyseBox = ({ analyse }: { analyse: AnalyseData }) => {
@@ -19,7 +20,7 @@ export const AnalyseBox = ({ analyse }: { analyse: AnalyseData }) => {
 
   const [year, setYear] = React.useState(Math.max(...years));
   const [level, setLevel] = React.useState<"region" | "sykehus">("sykehus");
-  const [view, setView] = React.useState<"barchart" | "tidstrend">("barchart");
+  const [view, setView] = React.useState<"barchart" | "tidstrend" | "kake">("barchart");
   const [expanded, setExpanded] = React.useState(false);
 
   const tags = (
@@ -82,10 +83,11 @@ export const AnalyseBox = ({ analyse }: { analyse: AnalyseData }) => {
                 id="select-view"
                 value={view}
                 label="Visning"
-                onChange={(e) => setView(e.target.value as "barchart" | "tidstrend")}
+                onChange={(e) => setView(e.target.value as "barchart" | "tidstrend" | "kake" )}
               >
                 <MenuItem value={"barchart"}>Enkleltår</MenuItem>
                 <MenuItem value={"tidstrend"}>Tidstrend</MenuItem>
+                <MenuItem value={"kake"}>Kake</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -116,10 +118,15 @@ export const AnalyseBox = ({ analyse }: { analyse: AnalyseData }) => {
               year={year}
               level={level}
             />)
-            : (
+            : view === "tidstrend" ?(
               <AnalyseLineChart
                 analyse={analyse}
                 years={years}
+                level={level}
+              />)
+              : (<AnalysePieChart
+                analyse={analyse}
+                year={year}
                 level={level}
               />)
           }
