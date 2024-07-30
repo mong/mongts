@@ -2,7 +2,7 @@ import { IndicatorTableHeader } from "./indicatortableheader";
 import { IndicatorTableBody } from "./indicatortablebody";
 import { RegisterName } from "types";
 
-export interface IndicatorTableProps {
+interface IndicatorTableProps {
   context: string;
   dataQuality: boolean;
   tableType: "allRegistries" | "singleRegister";
@@ -63,5 +63,3 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
     </table>
   );
 };
-
-export default IndicatorTable;

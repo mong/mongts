@@ -65,10 +65,7 @@ export class LineStyles {
   };
 }
 
-export const background = "#3b6978";
-export const background2 = "#204051";
-export const accentColor = "#edffea";
-export const accentColorDark = "#75daad";
+const background = "#3b6978";
 const tooltipStyles = {
   ...defaultStyles,
   background,
@@ -76,7 +73,7 @@ const tooltipStyles = {
   color: "white",
 };
 
-export type LinechartBaseProps = {
+type LinechartBaseProps = {
   data: LinechartData[][];
   width: number;
   height: number;
@@ -90,6 +87,7 @@ export type LinechartBaseProps = {
   levelDirection?: number;
   format_y?: string;
   lang?: "en" | "nb" | "nn";
+  useTooltip?: boolean;
 };
 
 type ToolTipBoxProps = {
@@ -101,6 +99,10 @@ type ToolTipBoxProps = {
 
 const ToolTipBox = (props: ToolTipBoxProps) => {
   const { id, y, lang } = props;
+
+  if (id === undefined) {
+    return null;
+  }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const indicatorQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
@@ -152,6 +154,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
     levelDirection,
     format_y,
     lang = "nb",
+    useTooltip,
     showTooltip,
     hideTooltip,
     tooltipData,
@@ -348,7 +351,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
             />
             {data.map((lineData, i) => {
               return (
-                <Group>
+                <Group key={"group" + i.toString()}>
                   {lineData.map((d, j) => (
                     <circle
                       key={i + j}
@@ -403,7 +406,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
               onMouseMove={handleToolTip}
               onMouseLeave={() => hideTooltip()}
             />
-            {tooltipData && (
+            {useTooltip && tooltipData && (
               <circle
                 cx={tooltipLeft}
                 cy={tooltipTop}
@@ -416,7 +419,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
             )}
           </Group>
         </svg>
-        {tooltipData && (
+        {useTooltip && tooltipData && (
           <TooltipWithBounds
             key={Math.random()}
             top={tooltipTop - 50}

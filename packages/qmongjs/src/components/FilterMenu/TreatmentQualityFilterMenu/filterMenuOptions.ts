@@ -3,11 +3,6 @@ import { maxYear, minYear, defaultYear, app_text } from "../../../app_config";
 import { UseQueryResult } from "@tanstack/react-query";
 import { TreeViewFilterSectionNode } from "../TreeViewFilterSection";
 
-/** Maximum allowed number of selected treatment units */
-export const maxSelectedTreatmentUnits = () => {
-  return app_text.tu_list.max_nr_tu;
-};
-
 /**
  * Gets the years available for selection
  *
@@ -109,7 +104,7 @@ export const getTreatmentUnitsTree = (
 };
 
 /** The prefix used in the query params for the register names */
-export const registerQueryParamPrefix = "reg-";
+const registerQueryParamPrefix = "reg-";
 
 /**
  * Formats a register name for use in query parameters, i.e., adding a prefix.

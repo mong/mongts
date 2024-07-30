@@ -27,6 +27,7 @@ type TreeViewFilterSectionItemProps = PropsWithChildren<{
   toggleExpand: (value: string) => void;
   autoUncheckId?: string;
   multiselect?: boolean;
+  parentKey?: string;
 }>;
 
 /**
@@ -43,6 +44,7 @@ export const TreeViewFilterSectionItem = (
 ) => {
   const {
     filterKey,
+    parentKey,
     labeledValue,
     selectedIds,
     handleCheckboxChange,
@@ -57,7 +59,7 @@ export const TreeViewFilterSectionItem = (
     <TreeItem
       key={`tree-view-item-${filterKey}-${labeledValue.value}`}
       data-testid={`tree-view-item-${labeledValue.value}`}
-      itemId={labeledValue.value}
+      itemId={`${parentKey}-${labeledValue.value}`}
       label={
         <>
           <Checkbox
@@ -97,5 +99,3 @@ export const TreeViewFilterSectionItem = (
     </TreeItem>
   );
 };
-
-export default TreeViewFilterSectionItem;

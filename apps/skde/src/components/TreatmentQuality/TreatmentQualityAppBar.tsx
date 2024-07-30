@@ -1,6 +1,7 @@
 import { AppBar, styled } from "@mui/material";
 import { TreatmentQualityToolbar } from "./TreatmentQualityToolbar";
-import { Header } from "../Header";
+import { Header, HeaderData, BreadCrumbPath } from "../Header";
+import { ArrowLink } from "qmongjs";
 
 const StyledAppBar = styled(AppBar)(() => ({
   elevation: 0,
@@ -12,14 +13,33 @@ type AppBarProps = {
   onTabChanged;
 };
 
-export const TreatmentQualityAppBar = ({
+const breadcrumbs: BreadCrumbPath = {
+  path: [
+    { link: "https://www.skde.no", text: "Forside" },
+    { link: "/behandlingskvalitet/", text: "Behandlingskvalitet" },
+  ],
+};
+
+const headerData: HeaderData = {
+  title: "Behandlingskvalitet",
+  subtitle: "Resultater fra nasjonale medisinske kvalitetsregistre",
+};
+
+const TreatmentQualityAppBar = ({
   openDrawer,
   context,
   onTabChanged,
 }: AppBarProps) => {
   return (
     <>
-      <Header page="behandlingskvalitet" />
+      <Header headerData={headerData} breadcrumbs={breadcrumbs}>
+        <ArrowLink
+          href={"https://www.kvalitetsregistre.no/"}
+          text={"Om kvalitetsregistre"}
+          externalLink={true}
+          button={true}
+        />
+      </Header>
       <StyledAppBar position="sticky" elevation={0}>
         <TreatmentQualityToolbar
           openDrawer={openDrawer}

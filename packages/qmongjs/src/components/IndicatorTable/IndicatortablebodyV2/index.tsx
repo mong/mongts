@@ -34,7 +34,7 @@ const remarkPlugins: PluggableList = [remarkGfm];
 // ########## Types ##########
 // ###########################
 
-export type IndicatorTableBodyV2Props = {
+type IndicatorTableBodyV2Props = {
   context: string;
   type: string;
   year: number;
@@ -199,6 +199,7 @@ const IndicatorRow = (props: {
             levelGreen={indData.levelGreen!}
             levelYellow={indData.levelYellow!}
             levelDirection={indData.levelDirection!}
+            useTooltip={true}
           />
         ));
 

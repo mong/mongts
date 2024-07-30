@@ -6,7 +6,7 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { Stack } from "@mui/material";
-import { ArrowLink } from "../ArrowLink";
+import { ArrowLink } from "qmongjs/src/components/ArrowLink";
 
 const FooterWrapper = styled(Paper)(() => ({
   marginTop: 20,
@@ -28,7 +28,7 @@ const StyledLink = styled(Link)(() => ({
   textDecoration: "underline",
 }));
 
-export type FooterProps = {
+type FooterProps = {
   page:
     | "behandlingskvalitet"
     | "helseatlas"
@@ -160,7 +160,7 @@ export const Footer = (props: FooterProps) => {
                   loader={imgLoader}
                   src={"/img/logos/nsm-hvit.svg"}
                   alt="NSM-logo"
-                  width={(566 * 52) / 63}
+                  width={467}
                   height={52}
                 />
               </Link>
@@ -223,7 +223,7 @@ export const Footer = (props: FooterProps) => {
                   loader={imgLoader}
                   src={`/helseatlas/img/logos/helse-forde-hvit.svg`}
                   height={52}
-                  width={(180 * 52) / 40}
+                  width={234}
                   alt="Helse Førde logo"
                 />
               </Link>
@@ -234,7 +234,7 @@ export const Footer = (props: FooterProps) => {
                   loader={imgLoader}
                   src={`/helseatlas/img/logos/helse-vest-hvit.svg`}
                   height={52}
-                  width={(180 * 52) / 40}
+                  width={234}
                   alt="Helse Vest logo"
                 />
               </Link>

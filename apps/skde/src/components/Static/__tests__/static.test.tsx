@@ -7,8 +7,8 @@
  */
 
 import { render } from "@testing-library/react";
-import { PageContent } from "..";
-import { vi } from "vitest";
+import PageContent from "..";
+import { vi, test, expect } from "vitest";
 
 vi.mock("next/font/google", () => ({
   Plus_Jakarta_Sans: () => ({

@@ -42,7 +42,7 @@ export const yearKey = "year";
 export const levelKey = "level";
 export const medicalFieldKey = "indicator";
 export const treatmentUnitsKey = "selected_treatment_units";
-export const dataQualityKey = "dg";
+const dataQualityKey = "dg";
 
 /**
  * The properties for the TreatmentQualityFilterMenu component.
@@ -433,5 +433,3 @@ export function TreatmentQualityFilterMenu({
     </>
   );
 }
-
-export default TreatmentQualityFilterMenu;
