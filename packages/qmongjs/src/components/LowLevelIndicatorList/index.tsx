@@ -1,21 +1,26 @@
-import React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import React, { useState } from "react";
 import { DataPoint, IndicatorData, RegisterData } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams, useIndicatorQuery } from "../../helpers/hooks";
-import { customFormat, newLevelSymbols, level2 } from "qmongjs";
+import { customFormat, newLevelSymbols, level2, skdeTheme } from "qmongjs";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
-import { Box, Button } from "@mui/material";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import {
+  Box,
+  List,
+  ListItemButton,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Stack,
+  TableContainer,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@mui/material";
 import { ArrowLink } from "../ArrowLink";
-import Stack from "@mui/material/Stack";
 
 const result = (data: IndicatorData, point: DataPoint, dg?: boolean) => {
   let pointVar: number | null;
@@ -29,20 +34,54 @@ const result = (data: IndicatorData, point: DataPoint, dg?: boolean) => {
   return pointVar ? (
     <Stack direction="row">
       {customFormat(data.format!)(pointVar)}
-      {newLevelSymbols(
-        level2(data, point),
-        "indicator-row-symbol" + data.indicatorID,
-      )}
+      {!dg
+        ? newLevelSymbols(
+            level2(data, point),
+            "indicator-row-symbol" + data.indicatorID,
+          )
+        : null}
     </Stack>
   ) : (
     "NA"
   );
 };
 
+const getDataSubset = (
+  indData: IndicatorData[],
+  currentYear: number,
+  index: number,
+) => {
+  let selectedLevel: "H" | "M" | "L" | undefined;
+
+  index === 0
+    ? (selectedLevel = "H")
+    : index === 1
+      ? (selectedLevel = "M")
+      : index === 2
+        ? (selectedLevel = "L")
+        : (selectedLevel = undefined);
+
+  const dataSubset = indData.filter((indDataRow) => {
+    if (indDataRow.data === undefined) {
+      return false;
+    }
+
+    const lastYear = indDataRow.data.find((p) => {
+      return p.year === currentYear - 1;
+    });
+
+    if (lastYear) {
+      return level2(indDataRow, lastYear) === selectedLevel;
+    } else return false;
+  });
+
+  return dataSubset;
+};
+
 const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
   const { row, currentYear } = props;
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const lastYear = row.data!.filter((el: DataPoint) => {
     return el.year === currentYear - 1;
@@ -109,17 +148,28 @@ type LowLevelIndicatorListProps = {
 
 export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
   // UI stuff
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [setting, setSetting] = React.useState("last-year");
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+
+  const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuItemClick = (
+    event: React.MouseEvent<HTMLElement>,
+    index: number,
+  ) => {
+    setSelectedIndex(index);
+    setAnchorEl(null);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const options = ["Høy", "Middels", "Lav"];
 
   // Years for filtering
   const currentYear = new Date().getFullYear();
@@ -145,80 +195,54 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
 
   const indData = data.map((row) => row.indicatorData).flat();
 
-  let dataSubset: IndicatorData[];
-
-  setting === "last-year"
-    ? // Find the indicators that were red last year
-      (dataSubset = indData.filter((indDataRow) => {
-        if (indDataRow.data === undefined) {
-          return false;
-        }
-
-        const lastYear = indDataRow.data.find((p) => {
-          return p.year === currentYear - 1;
-        });
-
-        if (lastYear) {
-          return level2(indDataRow, lastYear) === "L";
-        } else return false;
-      }))
-    : // Find the indicators that have been red the last 5 years
-      (dataSubset = indData
-        .filter((indDataRow) => {
-          return indDataRow.data !== undefined;
-        })
-        .filter((indDataRow) => {
-          return indDataRow
-            .data!.map((dataPoint) => {
-              return (
-                level2(indDataRow, dataPoint) === "L" &&
-                dataPoint.year >= currentYear - 5
-              );
-            })
-            .every((v) => v == true);
-        }));
+  const dataSubset = getDataSubset(indData, currentYear, selectedIndex);
 
   return (
     <div>
       <Box>
-        <Button
-          id="demo-customized-button"
-          aria-controls={open ? "demo-customized-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-          variant="contained"
-          disableElevation
-          onClick={handleClick}
-          endIcon={<KeyboardArrowDown />}
-          sx={{ marginLeft: 4 }}
-        >
-          Alternativer
-        </Button>
+        <List component="nav" aria-label="Device settings">
+          <ListItemButton
+            id="lock-button"
+            aria-haspopup="listbox"
+            aria-controls="lock-menu"
+            aria-label="when device is locked"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClickListItem}
+            sx={{
+              backgroundColor: skdeTheme.palette.primary.light,
+              width: 200,
+              marginLeft: 2,
+              borderRadius: "24px",
+              ":hover": {
+                backgroundColor: skdeTheme.palette.secondary.light,
+              },
+            }}
+          >
+            <ListItemText
+              primary="Velg måloppnåelse"
+              secondary={options[selectedIndex]}
+            />
+          </ListItemButton>
+        </List>
         <Menu
-          id="basic-menu"
+          id="lock-menu"
           anchorEl={anchorEl}
           open={open}
           onClose={handleClose}
           MenuListProps={{
-            "aria-labelledby": "basic-button",
+            "aria-labelledby": "lock-button",
+            role: "listbox",
           }}
         >
-          <MenuItem
-            onClick={() => {
-              setSetting("last-year");
-              setAnchorEl(null);
-            }}
-          >
-            Lav måloppnåelse siste år
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              setSetting("last-5-years");
-              setAnchorEl(null);
-            }}
-          >
-            Lav måloppnåelse siste 5 år
-          </MenuItem>
+          {options.map((option, index) => (
+            <MenuItem
+              key={option}
+              selected={index === selectedIndex}
+              onClick={(event) => handleMenuItemClick(event, index)}
+            >
+              {option}
+            </MenuItem>
+          ))}
         </Menu>
       </Box>
       <div>
