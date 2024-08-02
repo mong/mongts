@@ -26,6 +26,7 @@ type lineStyle = {
   text: string;
   strokeDash: string;
   colour: string;
+  marker?: "circle" | "square" | "triangle";
 };
 
 export type font = {
@@ -339,6 +340,35 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
         </Legend>
 
         <svg className="linechartbase" width={width} height={height}>
+          <defs>
+            <marker
+              id="circle"
+              markerWidth="8"
+              markerHeight="8"
+              refX="4"
+              refY="4"
+            >
+              <circle cx="4" cy="4" r="4" fill="#3BAA34" />
+            </marker>
+            <marker
+              id="square"
+              markerWidth="8"
+              markerHeight="8"
+              refX="4"
+              refY="4"
+            >
+              <path d="M0 0 L8 0 L8 8 L0 8 z" fill="#FD9C00" />
+            </marker>
+            <marker
+              id="triangle"
+              markerWidth="8"
+              markerHeight="8"
+              refX="4"
+              refY="4"
+            >
+              <path d="M4 0 L8 8 L0 8 z" fill="#E30713" />
+            </marker>
+          </defs>
           {background}
           <Group>
             <GridRows
@@ -374,6 +404,18 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
                     strokeWidth={"2px"}
                     strokeLinejoin={"round"}
                     strokeLinecap={"square"}
+                    markerStart={
+                      lineStyles.styles[i].marker &&
+                      "url(#" + lineStyles.styles[i].marker + ")"
+                    }
+                    markerMid={
+                      lineStyles.styles[i].marker &&
+                      "url(#" + lineStyles.styles[i].marker + ")"
+                    }
+                    markerEnd={
+                      lineStyles.styles[i].marker &&
+                      "url(#" + lineStyles.styles[i].marker + ")"
+                    }
                   />
                 </Group>
               );
