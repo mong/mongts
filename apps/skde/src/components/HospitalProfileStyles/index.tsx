@@ -1,4 +1,4 @@
-import { Toolbar, styled, Box, Link } from "@mui/material";
+import { styled, Box, Link } from "@mui/material";
 
 export const lineChartTheme = {
   lineChartBackground: {
@@ -7,12 +7,6 @@ export const lineChartTheme = {
     ry: 25,
   },
 };
-
-export const StyledToolbarMiddle = styled(Toolbar)(({ theme }) => ({
-  backgroundColor: theme.palette.hospitalProfileHeader.light,
-  paddingTop: theme.spacing(12),
-  paddingBottom: theme.spacing(8),
-}));
 
 export const ItemBox = styled(Box)(() => ({
   backgroundColor: "white",
