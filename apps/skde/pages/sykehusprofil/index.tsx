@@ -25,7 +25,7 @@ import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/Treatme
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import {
   styled,
-  Checkbox,
+  Switch,
   FormControlLabel,
   ThemeProvider,
   Box,
@@ -165,7 +165,7 @@ export const Skde = (): JSX.Element => {
     startYear: 2017,
     endYear: 2022,
     yMin: 0,
-    normalise: false,
+    normalise: true,
   };
 
   const medfieldTableProps: MedfieldTableProps = {
@@ -357,7 +357,7 @@ export const Skde = (): JSX.Element => {
                   <IndicatorLinechart {...indicatorParams} />
                 </ThemeProvider>
                 <FormControlLabel
-                  control={<Checkbox onChange={checkNormalise} />}
+                  control={<Switch defaultChecked onChange={checkNormalise} />}
                   label="Vis andel"
                   sx={{ margin: 2 }}
                 />
