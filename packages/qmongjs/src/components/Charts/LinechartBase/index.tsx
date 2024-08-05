@@ -80,6 +80,8 @@ type LinechartBaseProps = {
   lineStyles: LineStyles;
   font: font;
   yAxisText: string;
+  xAxisStyle?: font;
+  yAxisStyle?: font;
   yMin?: number;
   yMax?: number;
   levelGreen?: number;
@@ -147,6 +149,8 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
     lineStyles,
     font,
     yAxisText,
+    xAxisStyle,
+    yAxisStyle,
     yMin,
     yMax,
     levelGreen,
@@ -195,12 +199,6 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
     const yLabelProps = {
       fontSize: font.fontSize,
       x: -height * yAxisLabelDisplacementFactor,
-      fontFamily: font.fontFamily,
-      fontWeight: font.fontWeight,
-    };
-
-    const xTicksProps = {
-      fontSize: font.fontSize,
       fontFamily: font.fontFamily,
       fontWeight: font.fontWeight,
     };
@@ -383,7 +381,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
               scale={xScale}
               top={yScale.range()[0]}
               numTicks={nXTicks}
-              tickLabelProps={xTicksProps}
+              tickLabelProps={xAxisStyle}
             />
             <AxisLeft
               scale={yScale}
@@ -393,6 +391,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
               tickFormat={(val) =>
                 format_y ? customFormat(format_y, lang)(val) : val.toString()
               }
+              tickLabelProps={yAxisStyle}
             />
             <Bar
               x={0}

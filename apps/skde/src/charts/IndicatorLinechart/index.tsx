@@ -20,6 +20,8 @@ export type IndicatorLinechartParams = {
   lineStyles: LineStyles;
   font: font;
   yAxisText: string;
+  xAxisStyle?: font;
+  yAxisStyle?: font;
   normalise: boolean;
   yMin?: number;
   yMax?: number;
@@ -189,6 +191,8 @@ const IndicatorLinechart = (indicatorParams: IndicatorLinechartParams) => {
       lineStyles={indicatorParams.lineStyles}
       font={indicatorParams.font}
       yAxisText={indicatorParams.yAxisText}
+      xAxisStyle={indicatorParams.xAxisStyle}
+      yAxisStyle={indicatorParams.yAxisStyle}
       yMin={indicatorParams.yMin}
       yMax={indicatorParams.yMax}
       format_y={normalise ? ",.0%" : ",.0f"}
