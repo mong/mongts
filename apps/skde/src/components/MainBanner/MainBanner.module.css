@@ -51,14 +51,14 @@
   font-size: 24px;
   margin: auto;
   text-align: center;
-  line-height: 35px;
+  line-height: 1.4em;
 }
 
 .pageIngress {
   background: none;
   margin: auto;
   width: min(1216px, 95%);
-  padding: 50px 100px 50px 100px;
+  padding: min(5%, 50px);
 }
 
 @media screen and (max-width: 700px) {

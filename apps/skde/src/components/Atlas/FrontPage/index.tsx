@@ -2,6 +2,7 @@ import { AtlasLayout } from "../../Layout";
 import { MainBanner } from "../../MainBanner";
 import { AtlasLink } from "../../Buttons";
 import classNames from "./FrontPage.module.css";
+import linkClassNames from "../../Buttons/AtlasLink.module.css";
 
 export interface HomeProps {
   atlasInfo: {
@@ -43,7 +44,13 @@ const FrontPage = ({ atlasInfo, lang }: HomeProps) => {
     <AtlasLayout lang={lang}>
       <main>
         <MainBanner lang={lang} />
-        <div className={classNames.atlasLinksWrapper}>{Links}</div>
+        <div className={classNames.atlasLinksWrapper}>
+          {Links}
+          <div /* Dummy link to make the last link align correctly with CSS flex */
+            className={`${linkClassNames.linkOuterWrapper}`}
+            style={{ height: "0px" }}
+          ></div>
+        </div>
       </main>
     </AtlasLayout>
   );
