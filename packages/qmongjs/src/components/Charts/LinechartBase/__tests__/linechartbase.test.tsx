@@ -56,10 +56,9 @@ test("Standard render", () => {
       width={800}
       height={400}
       lineStyles={lineStyles}
-      font={font}
       yMin={0}
       yMax={25}
-      yAxisText={"Andel"}
+      yAxisText={{ text: "Andel", font: font }}
     />,
   );
   // container.children[0].children[0] is the legend
@@ -92,12 +91,11 @@ test("Render with format and lang = en", () => {
       width={800}
       height={400}
       lineStyles={lineStyles}
-      font={font}
       yMin={0}
       yMax={25}
       lang="en"
       format_y=",.2%"
-      yAxisText={"Andel"}
+      yAxisText={{ text: "Andel", font: font }}
     />,
   );
 
@@ -127,12 +125,11 @@ test("Render with format and lang = nb", () => {
       width={800}
       height={400}
       lineStyles={lineStyles}
-      font={font}
       yMin={0}
       yMax={25}
       lang="nb"
       format_y=",.0%"
-      yAxisText={"Andel"}
+      yAxisText={{ text: "Andel", font: font }}
     />,
   );
 
@@ -162,11 +159,10 @@ test("Render with other format", () => {
       width={800}
       height={400}
       lineStyles={lineStyles}
-      font={font}
       yMin={0}
       yMax={25}
       format_y=",.4f"
-      yAxisText={"Andel"}
+      yAxisText={{ text: "Andel", font: font }}
     />,
   );
 
@@ -197,14 +193,13 @@ test("Render with background levelDirection one", () => {
       width={800}
       height={400}
       lineStyles={lineStyles}
-      font={font}
       yMin={0}
       yMax={25}
       format_y=",.2f"
       levelGreen={15}
       levelYellow={10}
       levelDirection={1}
-      yAxisText={"Andel"}
+      yAxisText={{ text: "Andel", font: font }}
     />,
   );
 
@@ -229,14 +224,13 @@ test("Render with background levelDirection zero", () => {
       width={800}
       height={400}
       lineStyles={lineStyles}
-      font={font}
       yMin={0}
       yMax={25}
       format_y=",.2f"
       levelGreen={10}
       levelYellow={15}
       levelDirection={0}
-      yAxisText={"Andel"}
+      yAxisText={{ text: "Andel", font: font }}
     />,
   );
 
