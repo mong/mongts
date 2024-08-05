@@ -403,7 +403,7 @@ export const Skde = (): JSX.Element => {
                   verticalAnchor="start"
                   style={{ fontWeight: 700, fontSize: 24 }}
                 >
-                  Indikatorer med lavt målnivå
+                  Siste års måloppnåelse
                 </Text>
                 <LowLevelIndicatorList
                   context={"caregiver"}
