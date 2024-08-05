@@ -16,10 +16,7 @@ import { newLevelSymbols } from "qmongjs";
 import { Indicator } from "types";
 
 export type MedfieldTableProps = {
-  unitNames: string[];
-  treatmentYear: number;
-  context: string;
-  type: string;
+  data: Indicator[];
   width: number;
 };
 
@@ -55,6 +52,10 @@ type RowData = {
 };
 
 export const createMedfieldTableData = (data: Indicator[]) => {
+  if (!data) {
+    return null;
+  }
+
   // Set indicator colour from value and colour limits
   const levels = data.map((row) => {
     const indicatorLevel = level(row);
@@ -173,16 +174,8 @@ const Row = (props: { row: RowData }) => {
 };
 
 export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
-  // Fetch aggregated data
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const indicatorQuery: UseQueryResult<any, unknown> =
-    useIndicatorQuery(medfieldTableParams);
 
-  if (indicatorQuery.isFetching) {
-    return null;
-  }
-
-  const rowData: RowData[] = createMedfieldTableData(indicatorQuery.data);
+  const rowData: RowData[] = createMedfieldTableData(medfieldTableParams.data);
 
   return (
     <TableContainer>
@@ -198,7 +191,7 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rowData.map((row) => (
+          {rowData && rowData.map((row) => (
             <Row key={row.name} row={row} />
           ))}
         </TableBody>

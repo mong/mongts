@@ -19,6 +19,7 @@ import {
   useUnitUrlsQuery,
   LowLevelIndicatorList,
   LineStyles,
+  useIndicatorQuery,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
@@ -53,6 +54,7 @@ import logo from "./Logo.png";
 import { URLs } from "types";
 import { ArrowLink } from "qmongjs";
 import Divider from "@mui/material/Divider";
+import { Indicator } from "types";
 
 const lineChartTheme = {
   lineChartBackground: {
@@ -169,19 +171,17 @@ export const Skde = (): JSX.Element => {
   };
 
   const medfieldTableProps: MedfieldTableProps = {
-    unitNames: [selectedTreatmentUnits[0]],
-    context: "caregiver",
-    type: "ind",
+    data: useIndicatorQuery({unitNames: [selectedTreatmentUnits[0]],
+      context: "caregiver",
+      type: "ind",}).data as Indicator[],
     width: screenSize.width - 100,
-    treatmentYear: 2022,
   };
 
   const medfieldTablePropsDG: MedfieldTableProps = {
-    unitNames: [selectedTreatmentUnits[0]],
-    context: "caregiver",
-    type: "dg",
+    data: useIndicatorQuery({unitNames: [selectedTreatmentUnits[0]],
+      context: "caregiver",
+      type: "dg",}).data as Indicator[],
     width: Math.round(screenSize.width / 2) - 100,
-    treatmentYear: 2022,
   };
 
   // State logic for normalising the line plot
