@@ -3,6 +3,19 @@ import { LineChart } from "@mui/x-charts/LineChart";
 import { names } from "./nameMapping";
 import React from "react";
 
+import { Box } from "@mui/material";
+
+
+const CustomTooltip = (props: any) => {
+  const {itemData, series, sx, classes } = props;
+  console.log(props);
+  return (
+  <Box sx={{ background: "white", padding: "10px", border: "dashed blue"}}>
+    {series.label}
+  </Box>
+  );
+}
+
 type AnalyseLineChartProps = {
   analyse: AnalyseData;
   years: number[];
@@ -69,6 +82,9 @@ export const AnalyseLineChart = ({ analyse, years, level }: AnalyseLineChartProp
       }))}
       onLineClick={(a, b) => console.log("Info: ", a, b)}
       tooltip={{ trigger: "axis" }}
+      axisHighlight={{
+        x: 'none'
+      }}      
       slotProps={{
         legend: {
           direction: 'row',
@@ -79,12 +95,16 @@ export const AnalyseLineChart = ({ analyse, years, level }: AnalyseLineChartProp
             bottom: 20,
             right: 20
           },
-          itemMarkHeight: 2,
+          itemMarkHeight: 5,
           itemMarkWidth: 5 + Math.round(15 * smallFactor),
           labelStyle: {
             fontSize: 6 + Math.round(12 * smallFactor),
           },
         },
+      }}
+      slots={{
+        axisContent: CustomTooltip,
+        lineHighlight: () => (<></>)
       }}
       sx={{
         '& .MuiLineElement-root:hover': {
