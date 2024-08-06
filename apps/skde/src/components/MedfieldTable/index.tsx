@@ -27,15 +27,15 @@ const createSymbols = (green: number, yellow: number, red: number) => {
   const symbols = [];
 
   for (let i = 0; i < green; i++) {
-    symbols.push(newLevelSymbols("H"));
+    symbols.push(newLevelSymbols("H", "green" + i.toString()));
   }
 
   for (let i = 0; i < yellow; i++) {
-    symbols.push(newLevelSymbols("M"));
+    symbols.push(newLevelSymbols("M", "yellow" + i.toString()));
   }
 
   for (let i = 0; i < red; i++) {
-    symbols.push(newLevelSymbols("L"));
+    symbols.push(newLevelSymbols("L", "red" + i.toString()));
   }
 
   return symbols;
