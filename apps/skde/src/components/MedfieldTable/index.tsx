@@ -20,7 +20,6 @@ export type MedfieldTableProps = {
   treatmentYear: number;
   context: string;
   type: string;
-  width: number;
 };
 
 const createSymbols = (green: number, yellow: number, red: number) => {
@@ -186,10 +185,7 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
 
   return (
     <TableContainer>
-      <Table
-        aria-label="collapsible table"
-        style={{ width: medfieldTableParams.width }}
-      >
+      <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
             <TableCell />
