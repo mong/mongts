@@ -2276,14 +2276,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/code-coverage@npm:3.12.39":
-  version: 3.12.39
-  resolution: "@cypress/code-coverage@npm:3.12.39"
+"@cypress/code-coverage@npm:3.12.44":
+  version: 3.12.44
+  resolution: "@cypress/code-coverage@npm:3.12.44"
   dependencies:
     "@cypress/webpack-preprocessor": "npm:^6.0.0"
     chalk: "npm:4.1.2"
-    dayjs: "npm:1.11.10"
-    debug: "npm:4.3.4"
+    dayjs: "npm:1.11.12"
+    debug: "npm:4.3.5"
     execa: "npm:4.1.0"
     globby: "npm:11.1.0"
     istanbul-lib-coverage: "npm:^3.0.0"
@@ -2295,7 +2295,7 @@ __metadata:
     babel-loader: ^8.3 || ^9
     cypress: "*"
     webpack: ^4 || ^5
-  checksum: 10/f045265ab942aa6f48d9ecedc4626f85f8db863b7e52edc699f07276c4acf89eb619fbf2472ef2e12028dba21b743f8984bf41568cdc0ad1eff75387ba9afe65
+  checksum: 10/154a7002ac5ffa2dd1341789b619c9206b15bf66fbfcb7099b578b160b97989540263d985f3e8c93a5bb6ad0fc352cad0a4299fd38bd7c861ebe031a12d9104d
   languageName: node
   linkType: hard
 
@@ -9955,7 +9955,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dayjs@npm:1.11.10, dayjs@npm:^1.10.4, dayjs@npm:^1.11.10":
+"dayjs@npm:1.11.12":
+  version: 1.11.12
+  resolution: "dayjs@npm:1.11.12"
+  checksum: 10/8ee7c1e14961fd08d40b788d0c0e930dc6288b3d32911bb911b2fb31bb703c262788164fbe678ee9e50e2a35268d667b8c8ba43fd1806771c1f404c300a2b428
+  languageName: node
+  linkType: hard
+
+"dayjs@npm:^1.10.4, dayjs@npm:^1.11.10":
   version: 1.11.10
   resolution: "dayjs@npm:1.11.10"
   checksum: 10/27e8f5bc01c0a76f36c656e62ab7f08c2e7b040b09e613cd4844abf03fb258e0350f0a83b02c887b84d771c1f11e092deda0beef8c6df2a1afbc3f6c1fade279
@@ -22355,7 +22362,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "skde@workspace:apps/skde"
   dependencies:
-    "@cypress/code-coverage": "npm:3.12.39"
+    "@cypress/code-coverage": "npm:3.12.44"
     "@iframe-resizer/react": "npm:5.1.4"
     "@mui/base": "npm:5.0.0-beta.40"
     "@mui/icons-material": "npm:5.15.21"
