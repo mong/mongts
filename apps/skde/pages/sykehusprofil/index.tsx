@@ -174,7 +174,6 @@ export const Skde = (): JSX.Element => {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    width: screenSize.width - 100,
     treatmentYear: 2022,
   };
 
@@ -182,7 +181,6 @@ export const Skde = (): JSX.Element => {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "dg",
-    width: Math.round(screenSize.width / 2) - 100,
     treatmentYear: 2022,
   };
 
