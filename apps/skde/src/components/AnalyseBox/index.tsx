@@ -31,8 +31,6 @@ export const AnalyseBox = ({ analyse }: { analyse: AnalyseData }) => {
     </Box>
   );
 
-  console.log("Themecolor: ", theme.palette.background.paper)
-
   return (
     <Accordion
       disableGutters

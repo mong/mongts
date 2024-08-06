@@ -5,13 +5,15 @@ import matter from "gray-matter";
 
 
 import { AnalyseData, Tag } from "../../src/types";
-import { AnalyseBox } from "../../src/components/AnalyseBox";
+import { AnalyseBoxFilter } from "../../src/components/AnalyseBoxFilter";
+import { AnalyseBoxList } from "../../src/components/AnalyseBoxList";
 import { Header, BreadCrumbPath, HeaderData } from "../../src/components/Header";
 import { Footer } from "../../src/components/Footer";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 
 import { ThemeProvider, CssBaseline, Box } from "@mui/material";
 import { skdeTheme } from "qmongjs";
+
 
 
 type PageParams = {
@@ -44,12 +46,10 @@ const Page = ({ tag, analyser }: PageParams) => {
       <CssBaseline />
       <PageWrapper>
         <Header headerData={headerData} breadcrumbs={breadcrumbs}>
-        <p>{new Date(analyser[0].published).toString()}</p>
+          Filter: <AnalyseBoxFilter kompendium={tag.name} analyser={analyser}/>
         </Header>
         <Box className="footer" sx={{ paddingTop: "40px" }}>
-          {analyser.map((a) => (
-             <AnalyseBox analyse={a} key={a.name} />
-          ))}
+          <AnalyseBoxList analyser={analyser} />
         </Box>
         <Footer page="helseatlas" />
       </PageWrapper>
