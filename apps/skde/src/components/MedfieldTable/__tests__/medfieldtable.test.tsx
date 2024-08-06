@@ -36,7 +36,6 @@ test("Table renders correctly", async () => {
       treatmentYear={2022}
       context={"caregiver"}
       type={"ind"}
-      width={800}
     />,
   );
 
