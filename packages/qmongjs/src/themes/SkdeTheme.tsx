@@ -71,25 +71,25 @@ const fonts = {
     fontSize: "24px",
     letterSpacing: "0.15px",
   },
-  s1: {
+  subtitle1: {
     fontFamily: `${jakartaStyle.fontFamily}`,
     fontWeight: "400",
     fontSize: "20px",
     letterSpacing: "0.15px",
   },
-  s2: {
+  subtitle2: {
     fontFamily: `${jakartaStyle.fontFamily}`,
     fontWeight: "500",
     fontSize: "20px",
     letterSpacing: "0.1px",
   },
-  b1: {
+  body1: {
     fontFamily: `${jakartaStyle.fontFamily}`,
     fontWeight: "400",
     fontSize: "18px",
     letterSpacing: "0.5px",
   },
-  b2: {
+  body2: {
     fontFamily: `${jakartaStyle.fontFamily}`,
     fontWeight: "400",
     fontSize: "14px",
@@ -101,7 +101,7 @@ const fonts = {
     fontSize: "16px",
     letterSpacing: "1.25px",
   },
-  over: {
+  overline: {
     fontFamily: `${jakartaStyle.fontFamily}`,
     fontWeight: "500",
     fontSize: "14px",
@@ -118,22 +118,6 @@ export const breakpoints = {
   xxl: 1408,
   xxxl: 2560,
 };
-
-// const spacingScale = {
-//   XXXS: "2px",
-//   XXS: "4px",
-//   XS: "8px",
-//   SM: "12px",
-//   MD: "16px",
-//   LG: "24px",
-//   XL: "32px",
-//   XXL: "48px",
-//   XXXL: "64px",
-//   XXXXL: "80px",
-//   XXXXXL: "96px",
-//   XXXXXXL: "112px",
-//   XXXXXXXL: "128px",
-// };
 
 const colorTokens = {
   primary: {
@@ -199,43 +183,17 @@ const colorTokens = {
 
 export const skdeTheme = responsiveFontSizes(
   createTheme({
-    typography: {
-      h1: fonts.h1,
-      h2: fonts.h2,
-      h3: fonts.h3,
-      h4: fonts.h4,
-      h5: fonts.h5,
-      h6: fonts.h6,
-      body1: fonts.b1,
-      body2: fonts.b2,
-      subtitle1: fonts.s1,
-      subtitle2: fonts.s2,
-      button: fonts.button,
-      overline: fonts.over,
-    },
+    typography: fonts,
     palette: {
       mode: "light",
-      primary: colorTokens.primary,
-      secondary: colorTokens.secondary,
-      error: colorTokens.error,
-      warning: colorTokens.warning,
-      success: colorTokens.success,
-      info: colorTokens.info,
-      text: colorTokens.text,
-      hospitalProfileHeader: colorTokens.surface2,
+      ...colorTokens,
       background: {
         paper: colorTokens.background.light,
       },
     },
     breakpoints: {
       values: {
-        xs: breakpoints.xs,
-        sm: breakpoints.sm,
-        md: breakpoints.md,
-        lg: breakpoints.lg,
-        xl: breakpoints.xl,
-        xxl: breakpoints.xxl,
-        xxxl: breakpoints.xxxl,
+        ...breakpoints,
         desktop: 1300,
       },
     },
