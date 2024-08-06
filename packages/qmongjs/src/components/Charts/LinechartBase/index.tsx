@@ -27,6 +27,9 @@ type lineStyle = {
   strokeDash: string;
   colour: string;
   marker?: "circle" | "square" | "triangle";
+  markStart?: boolean;
+  markMiddle?: boolean;
+  markEnd?: boolean;
 };
 
 export type font = {
@@ -405,16 +408,22 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
                     strokeLinejoin={"round"}
                     strokeLinecap={"square"}
                     markerStart={
-                      lineStyles.styles[i].marker &&
-                      "url(#" + lineStyles.styles[i].marker + ")"
+                      lineStyles.styles[i].markStart
+                        ? lineStyles.styles[i].marker &&
+                          "url(#" + lineStyles.styles[i].marker + ")"
+                        : undefined
                     }
                     markerMid={
-                      lineStyles.styles[i].marker &&
-                      "url(#" + lineStyles.styles[i].marker + ")"
+                      lineStyles.styles[i].markMiddle
+                        ? lineStyles.styles[i].marker &&
+                          "url(#" + lineStyles.styles[i].marker + ")"
+                        : undefined
                     }
                     markerEnd={
-                      lineStyles.styles[i].marker &&
-                      "url(#" + lineStyles.styles[i].marker + ")"
+                      lineStyles.styles[i].markEnd
+                        ? lineStyles.styles[i].marker &&
+                          "url(#" + lineStyles.styles[i].marker + ")"
+                        : undefined
                     }
                   />
                 </Group>
