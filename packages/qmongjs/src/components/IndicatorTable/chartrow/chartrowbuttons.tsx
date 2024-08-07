@@ -68,7 +68,7 @@ export const FigureButtons = (props: Props) => {
       const canvasHeight = height + 100;
       const figTitle =
         chartType === "line"
-          ? description.title ?? ""
+          ? (description.title ?? "")
           : `${description.title ?? ""} (${treatmentYear ?? ""})`;
       const canvas = select("body")
         .append("canvas")
