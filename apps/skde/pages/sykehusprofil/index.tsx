@@ -25,7 +25,7 @@ import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/Treatme
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import {
   styled,
-  Checkbox,
+  Switch,
   FormControlLabel,
   ThemeProvider,
   Box,
@@ -183,7 +183,7 @@ export const Skde = (): JSX.Element => {
     startYear: 2017,
     endYear: 2022,
     yMin: 0,
-    normalise: false,
+    normalise: true,
     useToolTip: true,
   };
 
@@ -374,8 +374,10 @@ export const Skde = (): JSX.Element => {
                   <IndicatorLinechart {...indicatorParams} />
                 </ThemeProvider>
                 <FormControlLabel
-                  control={<Checkbox onChange={checkNormalise} />}
-                  label="Vis andel"
+                  control={
+                    <Switch checked={!normalise} onChange={checkNormalise} />
+                  }
+                  label="Vis antall"
                   sx={{ margin: 2 }}
                 />
               </ItemBox>
