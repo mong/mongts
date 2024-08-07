@@ -1,6 +1,49 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`Render with background levelDirection one 1`] = `
+<defs>
+  <marker
+    id="circle"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <circle
+      cx="4"
+      cy="4"
+      fill="#3BAA34"
+      r="4"
+    />
+  </marker>
+  <marker
+    id="square"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <path
+      d="M0 0 L8 0 L8 8 L0 8 z"
+      fill="#FD9C00"
+    />
+  </marker>
+  <marker
+    id="triangle"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <path
+      d="M4 0 L8 8 L0 8 z"
+      fill="#E30713"
+    />
+  </marker>
+</defs>
+`;
+
+exports[`Render with background levelDirection one 2`] = `
 <rect
   fill="#EAF6EB"
   height="80"
@@ -11,7 +54,7 @@ exports[`Render with background levelDirection one 1`] = `
 />
 `;
 
-exports[`Render with background levelDirection one 2`] = `
+exports[`Render with background levelDirection one 3`] = `
 <rect
   fill="#FFEFC7"
   height="40"
@@ -22,7 +65,7 @@ exports[`Render with background levelDirection one 2`] = `
 />
 `;
 
-exports[`Render with background levelDirection one 3`] = `
+exports[`Render with background levelDirection one 4`] = `
 <rect
   fill="#FFE5E2"
   height="80"
@@ -34,6 +77,49 @@ exports[`Render with background levelDirection one 3`] = `
 `;
 
 exports[`Render with background levelDirection zero 1`] = `
+<defs>
+  <marker
+    id="circle"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <circle
+      cx="4"
+      cy="4"
+      fill="#3BAA34"
+      r="4"
+    />
+  </marker>
+  <marker
+    id="square"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <path
+      d="M0 0 L8 0 L8 8 L0 8 z"
+      fill="#FD9C00"
+    />
+  </marker>
+  <marker
+    id="triangle"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <path
+      d="M4 0 L8 8 L0 8 z"
+      fill="#E30713"
+    />
+  </marker>
+</defs>
+`;
+
+exports[`Render with background levelDirection zero 2`] = `
 <rect
   fill="#FFE5E2"
   height="80"
@@ -44,7 +130,7 @@ exports[`Render with background levelDirection zero 1`] = `
 />
 `;
 
-exports[`Render with background levelDirection zero 2`] = `
+exports[`Render with background levelDirection zero 3`] = `
 <rect
   fill="#FFEFC7"
   height="40"
@@ -55,7 +141,7 @@ exports[`Render with background levelDirection zero 2`] = `
 />
 `;
 
-exports[`Render with background levelDirection zero 3`] = `
+exports[`Render with background levelDirection zero 4`] = `
 <rect
   fill="#EAF6EB"
   height="80"
@@ -67,181 +153,173 @@ exports[`Render with background levelDirection zero 3`] = `
 `;
 
 exports[`Render with format and lang = en 1`] = `
-<line
-  class="visx-line"
-  fill="transparent"
-  height="25"
-  shape-rendering="crispEdges"
-  stroke="#989898"
-  stroke-width="1"
-  x1="0"
-  x2="600"
-  y1="300"
-  y2="300"
-/>
-`;
-
-exports[`Render with format and lang = en 2`] = `
-<line
-  class="visx-line"
-  fill="transparent"
-  height="25"
-  shape-rendering="crispEdges"
-  stroke="#989898"
-  stroke-width="1"
-  x1="0"
-  x2="600"
-  y1="140"
-  y2="140"
-/>
-`;
-
-exports[`Render with format and lang = en 3`] = `
-<line
-  class="visx-line"
-  fill="transparent"
-  height="25"
-  shape-rendering="crispEdges"
-  stroke="#989898"
-  stroke-width="1"
-  x1="0"
-  x2="600"
-  y1="100"
-  y2="100"
-/>
+<defs>
+  <marker
+    id="circle"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <circle
+      cx="4"
+      cy="4"
+      fill="#3BAA34"
+      r="4"
+    />
+  </marker>
+  <marker
+    id="square"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <path
+      d="M0 0 L8 0 L8 8 L0 8 z"
+      fill="#FD9C00"
+    />
+  </marker>
+  <marker
+    id="triangle"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <path
+      d="M4 0 L8 8 L0 8 z"
+      fill="#E30713"
+    />
+  </marker>
+</defs>
 `;
 
 exports[`Render with format and lang = nb 1`] = `
-<line
-  class="visx-line"
-  fill="transparent"
-  height="25"
-  shape-rendering="crispEdges"
-  stroke="#989898"
-  stroke-width="1"
-  x1="0"
-  x2="600"
-  y1="300"
-  y2="300"
-/>
-`;
-
-exports[`Render with format and lang = nb 2`] = `
-<line
-  class="visx-line"
-  fill="transparent"
-  height="25"
-  shape-rendering="crispEdges"
-  stroke="#989898"
-  stroke-width="1"
-  x1="0"
-  x2="600"
-  y1="140"
-  y2="140"
-/>
-`;
-
-exports[`Render with format and lang = nb 3`] = `
-<line
-  class="visx-line"
-  fill="transparent"
-  height="25"
-  shape-rendering="crispEdges"
-  stroke="#989898"
-  stroke-width="1"
-  x1="0"
-  x2="600"
-  y1="100"
-  y2="100"
-/>
+<defs>
+  <marker
+    id="circle"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <circle
+      cx="4"
+      cy="4"
+      fill="#3BAA34"
+      r="4"
+    />
+  </marker>
+  <marker
+    id="square"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <path
+      d="M0 0 L8 0 L8 8 L0 8 z"
+      fill="#FD9C00"
+    />
+  </marker>
+  <marker
+    id="triangle"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <path
+      d="M4 0 L8 8 L0 8 z"
+      fill="#E30713"
+    />
+  </marker>
+</defs>
 `;
 
 exports[`Render with other format 1`] = `
-<line
-  class="visx-line"
-  fill="transparent"
-  height="25"
-  shape-rendering="crispEdges"
-  stroke="#989898"
-  stroke-width="1"
-  x1="0"
-  x2="600"
-  y1="300"
-  y2="300"
-/>
-`;
-
-exports[`Render with other format 2`] = `
-<line
-  class="visx-line"
-  fill="transparent"
-  height="25"
-  shape-rendering="crispEdges"
-  stroke="#989898"
-  stroke-width="1"
-  x1="0"
-  x2="600"
-  y1="140"
-  y2="140"
-/>
-`;
-
-exports[`Render with other format 3`] = `
-<line
-  class="visx-line"
-  fill="transparent"
-  height="25"
-  shape-rendering="crispEdges"
-  stroke="#989898"
-  stroke-width="1"
-  x1="0"
-  x2="600"
-  y1="100"
-  y2="100"
-/>
+<defs>
+  <marker
+    id="circle"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <circle
+      cx="4"
+      cy="4"
+      fill="#3BAA34"
+      r="4"
+    />
+  </marker>
+  <marker
+    id="square"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <path
+      d="M0 0 L8 0 L8 8 L0 8 z"
+      fill="#FD9C00"
+    />
+  </marker>
+  <marker
+    id="triangle"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <path
+      d="M4 0 L8 8 L0 8 z"
+      fill="#E30713"
+    />
+  </marker>
+</defs>
 `;
 
 exports[`Standard render 1`] = `
-<line
-  class="visx-line"
-  fill="transparent"
-  height="25"
-  shape-rendering="crispEdges"
-  stroke="#989898"
-  stroke-width="1"
-  x1="0"
-  x2="600"
-  y1="300"
-  y2="300"
-/>
-`;
-
-exports[`Standard render 2`] = `
-<line
-  class="visx-line"
-  fill="transparent"
-  height="25"
-  shape-rendering="crispEdges"
-  stroke="#989898"
-  stroke-width="1"
-  x1="0"
-  x2="600"
-  y1="140"
-  y2="140"
-/>
-`;
-
-exports[`Standard render 3`] = `
-<line
-  class="visx-line"
-  fill="transparent"
-  height="25"
-  shape-rendering="crispEdges"
-  stroke="#989898"
-  stroke-width="1"
-  x1="0"
-  x2="600"
-  y1="100"
-  y2="100"
-/>
+<defs>
+  <marker
+    id="circle"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <circle
+      cx="4"
+      cy="4"
+      fill="#3BAA34"
+      r="4"
+    />
+  </marker>
+  <marker
+    id="square"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <path
+      d="M0 0 L8 0 L8 8 L0 8 z"
+      fill="#FD9C00"
+    />
+  </marker>
+  <marker
+    id="triangle"
+    markerHeight="8"
+    markerWidth="8"
+    refX="4"
+    refY="4"
+  >
+    <path
+      d="M4 0 L8 8 L0 8 z"
+      fill="#E30713"
+    />
+  </marker>
+</defs>
 `;
