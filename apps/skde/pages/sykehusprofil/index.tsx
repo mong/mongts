@@ -151,8 +151,8 @@ export const Skde = (): JSX.Element => {
     lineStyles: new LineStyles(
       [
         { text: "Høy måloppnåelse", strokeDash: "0", colour: "#3BAA34" },
-        { text: "Moderat måloppnåelse", strokeDash: "1 3", colour: "#FD9C00" },
-        { text: "Lav måloppnåelse", strokeDash: "8 8", colour: "#E30713" },
+        { text: "Moderat måloppnåelse", strokeDash: "0", colour: "#FD9C00" },
+        { text: "Lav måloppnåelse", strokeDash: "0", colour: "#E30713" },
       ],
       { fontSize: 24, fontFamily: "Plus Jakarta Sans", fontWeight: 500 },
     ),
@@ -166,6 +166,7 @@ export const Skde = (): JSX.Element => {
     endYear: 2022,
     yMin: 0,
     normalise: false,
+    useToolTip: true,
   };
 
   const medfieldTableProps: MedfieldTableProps = {
