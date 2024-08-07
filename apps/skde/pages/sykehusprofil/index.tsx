@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Text } from "@visx/text";
 import {
   useQueryParam,
@@ -24,7 +24,6 @@ import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import {
-  styled,
   Switch,
   FormControlLabel,
   ThemeProvider,
@@ -36,7 +35,6 @@ import {
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
-import { useRouter } from "next/router";
 import IndicatorLinechart, {
   IndicatorLinechartParams,
 } from "../../src/charts/IndicatorLinechart";
@@ -48,40 +46,21 @@ import { useScreenSize } from "@visx/responsive";
 import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
+import { SubUnits } from "../../src/components/SubUnits";
+import {
+  lineChartTheme,
+  ItemBox,
+} from "../../src/components/HospitalProfileStyles";
 import { ExpandableItemBox } from "../../src/components/ExpandableItemBox";
 import logo from "./Logo.png";
 import { URLs } from "types";
 import { ArrowLink } from "qmongjs";
 import Divider from "@mui/material/Divider";
 
-const lineChartTheme = {
-  lineChartBackground: {
-    fill: "#FFFFFF",
-    rx: 25,
-    ry: 25,
-  },
-};
-
-const ItemBox = styled(Box)(() => ({
-  backgroundColor: "white",
-  borderRadius: "24px",
-  height: "auto",
-}));
-
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
   const treatmentUnitsKey = "selected_treatment_units";
-
-  // Need this to get filter options from the URL
-  const router = useRouter();
-
-  const [prevReady, setPrevReady] = useState(router.isReady);
-  const prerenderFinished = prevReady !== router.isReady;
-
-  useEffect(() => {
-    setPrevReady(router.isReady);
-  }, [router.isReady]);
 
   // Current unit name and its setter function
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useQueryParam(
@@ -102,22 +81,9 @@ export const Skde = (): JSX.Element => {
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
-  // Make sure everything is good to go
-  const [prevApiQueryLoading, setPrevApiQueryLoading] = useState(
-    unitNamesQuery.isLoading,
-  );
-
   const unitUrlsQuery = useUnitUrlsQuery();
 
-  const apiQueriesCompleted =
-    prevApiQueryLoading &&
-    !unitNamesQuery.isLoading &&
-    !unitUrlsQuery.isLoading;
-  const shouldRefreshInitialState = prerenderFinished || apiQueriesCompleted;
-
-  useEffect(() => {
-    setPrevApiQueryLoading(unitNamesQuery.isLoading);
-  }, [unitNamesQuery.isLoading]);
+  const shouldRefreshInitialState = false;
 
   // Callback function for updating the filter menu
   const handleChange = (filterInput: FilterSettings) => {
@@ -136,7 +102,7 @@ export const Skde = (): JSX.Element => {
       });
     }
 
-    unitUrl[0] ? setUnitUrl(unitUrl[0].url) : setUnitUrl(null);
+    unitUrl && unitUrl[0] ? setUnitUrl(unitUrl[0].url) : setUnitUrl(null);
   };
 
   const screenSize = useScreenSize({ debounceTime: 150 });
@@ -236,6 +202,8 @@ export const Skde = (): JSX.Element => {
     subtitle: "Resultater fra sykehus",
   };
 
+  const boxMaxHeight = 800;
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
@@ -294,7 +262,7 @@ export const Skde = (): JSX.Element => {
         <Box margin={4}>
           <Grid container spacing={2}>
             <Grid xs={12} sm={6} lg={6} xl={6} xxl={6}>
-              <ItemBox sx={{ objectFit: "scale-down" }}>
+              <ItemBox height={440}>
                 <Grid container spacing={2} sx={{ overflow: "clip" }}>
                   <Grid xs={5} margin={2}>
                     <img
@@ -348,7 +316,7 @@ export const Skde = (): JSX.Element => {
             </Grid>
 
             <Grid xs={12} sm={6}>
-              <ItemBox>
+              <ExpandableItemBox collapsedHeight={400}>
                 <Text
                   x={"10%"}
                   y={50}
@@ -356,9 +324,15 @@ export const Skde = (): JSX.Element => {
                   verticalAnchor="start"
                   style={{ fontWeight: 700, fontSize: 24 }}
                 >
-                  Utvalgte indikatorer
+                  Tilknyttede enheter
                 </Text>
-              </ItemBox>
+                {unitNamesQuery.data ? (
+                  <SubUnits
+                    RHFs={unitNamesQuery.data.nestedUnitNames}
+                    selectedUnit={selectedTreatmentUnits[0]}
+                  />
+                ) : null}
+              </ExpandableItemBox>
             </Grid>
 
             <Grid xs={12}>
@@ -386,7 +360,7 @@ export const Skde = (): JSX.Element => {
             </Grid>
 
             <Grid xs={12}>
-              <ExpandableItemBox>
+              <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <Text
                   x={"10%"}
                   y={50}
@@ -401,7 +375,7 @@ export const Skde = (): JSX.Element => {
             </Grid>
 
             <Grid xs={6}>
-              <ExpandableItemBox>
+              <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <Text
                   x={"10%"}
                   y={50}
@@ -416,7 +390,7 @@ export const Skde = (): JSX.Element => {
             </Grid>
 
             <Grid xs={6}>
-              <ExpandableItemBox>
+              <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <Text
                   x={"10%"}
                   y={50}
