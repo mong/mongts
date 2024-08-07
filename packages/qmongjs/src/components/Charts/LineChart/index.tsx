@@ -113,7 +113,11 @@ const LineChart = (props: Props) => {
   const allUnits = Array.from(new Set(data.map((d) => d.unit_name)));
   const pathLabels = allUnits
     .filter((name) => name === "Nasjonalt")
-    .concat(allUnits.filter((name) => name != "Nasjonalt"));
+    .concat(
+      allUnits.filter((name) => name !== "Nasjonalt") as
+        | "Nasjonalt"
+        | ConcatArray<"Nasjonalt">,
+    );
 
   const lineColorScale = scaleOrdinal<string>()
     .domain(pathLabels)
