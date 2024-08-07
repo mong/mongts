@@ -25,6 +25,8 @@ import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/Treatme
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import {
   Checkbox,
+  styled,
+  Switch,
   FormControlLabel,
   ThemeProvider,
   Box,
@@ -117,8 +119,8 @@ export const Skde = (): JSX.Element => {
     lineStyles: new LineStyles(
       [
         { text: "Høy måloppnåelse", strokeDash: "0", colour: "#3BAA34" },
-        { text: "Moderat måloppnåelse", strokeDash: "1 3", colour: "#FD9C00" },
-        { text: "Lav måloppnåelse", strokeDash: "8 8", colour: "#E30713" },
+        { text: "Moderat måloppnåelse", strokeDash: "0", colour: "#FD9C00" },
+        { text: "Lav måloppnåelse", strokeDash: "0", colour: "#E30713" },
       ],
       { fontSize: 24, fontFamily: "Plus Jakarta Sans", fontWeight: 500 },
     ),
@@ -131,7 +133,8 @@ export const Skde = (): JSX.Element => {
     startYear: 2017,
     endYear: 2022,
     yMin: 0,
-    normalise: false,
+    normalise: true,
+    useToolTip: true,
   };
 
   const medfieldTableProps: MedfieldTableProps = {
@@ -329,8 +332,10 @@ export const Skde = (): JSX.Element => {
                   <IndicatorLinechart {...indicatorParams} />
                 </ThemeProvider>
                 <FormControlLabel
-                  control={<Checkbox onChange={checkNormalise} />}
-                  label="Vis andel"
+                  control={
+                    <Switch checked={!normalise} onChange={checkNormalise} />
+                  }
+                  label="Vis antall"
                   sx={{ margin: 2 }}
                 />
               </ItemBox>
