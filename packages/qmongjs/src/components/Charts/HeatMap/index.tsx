@@ -67,6 +67,7 @@ const rectColorScale = scaleOrdinal<
 type HeatmapProps = {
   heatmapData: HeatMapData;
   width: number;
+  minBoxWidth?: number;
   maxBoxWidth?: number;
   margin?: { top: number; right: number; bottom: number; left: number };
   separation?: number;
@@ -78,6 +79,7 @@ const defaultMargin = { top: 50, left: 200, right: 0, bottom: 0 };
 export const HeatMap = ({
   heatmapData,
   width,
+  minBoxWidth,
   maxBoxWidth,
   events = true,
   margin = defaultMargin,
@@ -91,6 +93,11 @@ export const HeatMap = ({
   const nCols = data.length;
 
   let binWidth = width / nCols;
+
+  if (minBoxWidth && binWidth < minBoxWidth) {
+    binWidth = minBoxWidth;
+    width = binWidth * nCols;
+  }
 
   if (maxBoxWidth && binWidth > maxBoxWidth) {
     binWidth = maxBoxWidth;

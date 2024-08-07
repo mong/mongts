@@ -20,11 +20,14 @@ export type IndicatorLinechartParams = {
   lineStyles: LineStyles;
   font: font;
   yAxisText: string;
+  xTicksFont?: font;
+  yTicksFont?: font;
   normalise: boolean;
   yMin?: number;
   yMax?: number;
   startYear?: number;
   endYear?: number;
+  useToolTip?: boolean;
 };
 
 export type IndicatorLevels = {
@@ -187,11 +190,16 @@ const IndicatorLinechart = (indicatorParams: IndicatorLinechartParams) => {
       height={indicatorParams.height}
       width={indicatorParams.width}
       lineStyles={indicatorParams.lineStyles}
-      font={indicatorParams.font}
-      yAxisText={indicatorParams.yAxisText}
+      yAxisText={{
+        text: indicatorParams.yAxisText,
+        font: indicatorParams.font,
+      }}
+      xTicksFont={indicatorParams.xTicksFont}
+      yTicksFont={indicatorParams.yTicksFont}
       yMin={indicatorParams.yMin}
       yMax={indicatorParams.yMax}
       format_y={normalise ? ",.0%" : ",.0f"}
+      useTooltip={indicatorParams.useToolTip}
     />
   );
 };
