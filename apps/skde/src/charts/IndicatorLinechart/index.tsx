@@ -27,6 +27,7 @@ export type IndicatorLinechartParams = {
   yMax?: number;
   startYear?: number;
   endYear?: number;
+  useToolTip?: boolean;
 };
 
 export type IndicatorLevels = {
@@ -198,6 +199,7 @@ const IndicatorLinechart = (indicatorParams: IndicatorLinechartParams) => {
       yMin={indicatorParams.yMin}
       yMax={indicatorParams.yMax}
       format_y={normalise ? ",.0%" : ",.0f"}
+      useTooltip={indicatorParams.useToolTip}
     />
   );
 };

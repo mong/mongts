@@ -94,16 +94,25 @@ type LinechartBaseProps = {
 
 type ToolTipBoxProps = {
   id?: number;
+  x: Date;
   y: number;
   format_y?: string;
   lang: "en" | "nb" | "nn";
 };
 
 const ToolTipBox = (props: ToolTipBoxProps) => {
-  const { id, y, lang } = props;
+  const { id, x, y, lang, format_y } = props;
 
   if (id === undefined) {
-    return null;
+    const y_formatted = format_y
+      ? customFormat(format_y, lang)(y)
+      : y.toPrecision(2);
+
+    return (
+      <div style={{ textAlign: "center" }}>
+        {x.getFullYear() + " : " + y_formatted}
+      </div>
+    );
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -427,14 +436,16 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
           <TooltipWithBounds
             key={Math.random()}
             top={tooltipTop - 50}
-            left={tooltipLeft + 400}
+            left={tooltipLeft}
             style={tooltipStyles}
           >
             {
               <ToolTipBox
                 id={tooltipData.id}
+                x={tooltipData.x}
                 y={tooltipData.y}
                 lang={lang}
+                format_y={format_y}
               ></ToolTipBox>
             }
           </TooltipWithBounds>
