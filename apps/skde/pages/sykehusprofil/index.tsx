@@ -184,6 +184,7 @@ export const Skde = (): JSX.Element => {
     endYear: 2022,
     yMin: 0,
     normalise: false,
+    useToolTip: true,
   };
 
   const medfieldTableProps: MedfieldTableProps = {

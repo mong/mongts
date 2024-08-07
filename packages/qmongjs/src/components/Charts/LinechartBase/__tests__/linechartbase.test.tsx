@@ -60,6 +60,7 @@ test("Standard render", () => {
       yMin={0}
       yMax={25}
       yAxisText={"Andel"}
+      showLegend={true}
     />,
   );
 
@@ -86,6 +87,7 @@ test("Render with format and lang = en", () => {
       lang="en"
       format_y=",.2%"
       yAxisText={"Andel"}
+      showLegend={true}
     />,
   );
 
@@ -112,6 +114,7 @@ test("Render with format and lang = nb", () => {
       lang="nb"
       format_y=",.0%"
       yAxisText={"Andel"}
+      showLegend={true}
     />,
   );
 
@@ -137,6 +140,7 @@ test("Render with other format", () => {
       yMax={25}
       format_y=",.4f"
       yAxisText={"Andel"}
+      showLegend={true}
     />,
   );
 
@@ -166,6 +170,7 @@ test("Render with background levelDirection one", () => {
       levelYellow={10}
       levelDirection={1}
       yAxisText={"Andel"}
+      showLegend={true}
     />,
   );
 
@@ -206,6 +211,7 @@ test("Render with background levelDirection zero", () => {
       levelYellow={15}
       levelDirection={0}
       yAxisText={"Andel"}
+      showLegend={true}
     />,
   );
 
