@@ -355,7 +355,9 @@ export const Skde = (): JSX.Element => {
                   <IndicatorLinechart {...indicatorParams} />
                 </ThemeProvider>
                 <FormControlLabel
-                  control={<Switch defaultChecked onChange={checkNormalise} />}
+                  control={
+                    <Switch checked={normalise} onChange={checkNormalise} />
+                  }
                   label="Vis andel"
                   sx={{ margin: 2 }}
                 />
