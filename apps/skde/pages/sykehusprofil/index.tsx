@@ -150,9 +150,27 @@ export const Skde = (): JSX.Element => {
     height: 600,
     lineStyles: new LineStyles(
       [
-        { text: "Høy måloppnåelse", strokeDash: "0", colour: "#3BAA34" },
-        { text: "Moderat måloppnåelse", strokeDash: "0", colour: "#FD9C00" },
-        { text: "Lav måloppnåelse", strokeDash: "0", colour: "#E30713" },
+        {
+          text: "Høy måloppnåelse",
+          strokeDash: "0",
+          colour: "#3BAA34",
+          marker: "circle",
+          markEnd: true,
+        },
+        {
+          text: "Moderat måloppnåelse",
+          strokeDash: "1 3",
+          colour: "#FD9C00",
+          marker: "square",
+          markEnd: true,
+        },
+        {
+          text: "Lav måloppnåelse",
+          strokeDash: "8 8",
+          colour: "#E30713",
+          marker: "triangle",
+          markEnd: true,
+        },
       ],
       { fontSize: 16, fontFamily: "Arial", fontWeight: 500 },
     ),
