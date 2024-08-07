@@ -356,9 +356,9 @@ export const Skde = (): JSX.Element => {
                 </ThemeProvider>
                 <FormControlLabel
                   control={
-                    <Switch checked={normalise} onChange={checkNormalise} />
+                    <Switch checked={!normalise} onChange={checkNormalise} />
                   }
-                  label="Vis andel"
+                  label="Vis antall"
                   sx={{ margin: 2 }}
                 />
               </ItemBox>
