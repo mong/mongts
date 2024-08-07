@@ -82,8 +82,9 @@ type LinechartBaseProps = {
   width: number;
   height: number;
   lineStyles: LineStyles;
-  font: font;
-  yAxisText: string;
+  yAxisText: { text: string; font: font };
+  xTicksFont?: font;
+  yTicksFont?: font;
   yMin?: number;
   yMax?: number;
   levelGreen?: number;
@@ -159,8 +160,9 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
     width,
     height,
     lineStyles,
-    font,
     yAxisText,
+    xTicksFont,
+    yTicksFont,
     yMin,
     yMax,
     levelGreen,
@@ -208,16 +210,10 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
     const yAxisLabelDisplacementFactor = 0.5;
 
     const yLabelProps = {
-      fontSize: font.fontSize,
+      fontSize: yAxisText.font.fontSize,
       x: -height * yAxisLabelDisplacementFactor,
-      fontFamily: font.fontFamily,
-      fontWeight: font.fontWeight,
-    };
-
-    const xTicksProps = {
-      fontSize: font.fontSize,
-      fontFamily: font.fontFamily,
-      fontWeight: font.fontWeight,
+      fontFamily: yAxisText.font.fontFamily,
+      fontWeight: yAxisText.font.fontWeight,
     };
 
     const legendScale = scaleOrdinal<string, React.JSX.Element>({
@@ -450,16 +446,17 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
               scale={xScale}
               top={yScale.range()[0]}
               numTicks={nXTicks}
-              tickLabelProps={xTicksProps}
+              tickLabelProps={xTicksFont}
             />
             <AxisLeft
               scale={yScale}
               left={borderWidth}
-              label={yAxisText}
+              label={yAxisText.text}
               labelProps={yLabelProps}
               tickFormat={(val) =>
                 format_y ? customFormat(format_y, lang)(val) : val.toString()
               }
+              tickLabelProps={yTicksFont}
             />
             <Bar
               x={0}
