@@ -8,6 +8,7 @@ import { HeatMapColumn } from "../Charts/HeatMap";
 
 type QualityAtlasFigureProps = {
   width: number;
+  minBoxWidth?: number;
   maxBoxWidth?: number;
   gap: number;
   context: string;
@@ -20,6 +21,7 @@ type QualityAtlasFigureProps = {
 export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
   const {
     width,
+    minBoxWidth,
     maxBoxWidth,
     gap,
     context,
@@ -160,6 +162,7 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
         <HeatMap
           heatmapData={heatmapData}
           width={width}
+          minBoxWidth={minBoxWidth}
           maxBoxWidth={maxBoxWidth}
           separation={gap}
         ></HeatMap>

@@ -8,6 +8,7 @@ import { InputLabel } from "@mui/material";
 import Box from "@mui/material/Box";
 
 const width = 1000;
+const minBoxWidth = 40;
 const maxBoxWidth = 100;
 const gap = 2;
 const context = "caregiver";
@@ -194,6 +195,7 @@ export const Skde = (): JSX.Element => {
       <div>
         <QualityAtlasFigure
           width={width}
+          minBoxWidth={minBoxWidth}
           maxBoxWidth={maxBoxWidth}
           gap={gap}
           context={context}
