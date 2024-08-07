@@ -193,13 +193,13 @@ const IndicatorRow = (props: {
             yMin={0}
             yMax={1}
             lineStyles={lineStyles}
-            font={font}
-            yAxisText={"Andel"}
+            yAxisText={{ text: "Andel", font: font }}
             format_y=",.0%"
             levelGreen={indData.levelGreen!}
             levelYellow={indData.levelYellow!}
             levelDirection={indData.levelDirection!}
             useTooltip={true}
+            showLegend={true}
           />
         ));
 
