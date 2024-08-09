@@ -3906,9 +3906,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/x-tree-view@npm:7.12.0":
-  version: 7.12.0
-  resolution: "@mui/x-tree-view@npm:7.12.0"
+"@mui/x-tree-view@npm:7.12.1":
+  version: 7.12.1
+  resolution: "@mui/x-tree-view@npm:7.12.1"
   dependencies:
     "@babel/runtime": "npm:^7.25.0"
     "@mui/system": "npm:^5.16.5"
@@ -3924,7 +3924,12 @@ __metadata:
     "@mui/material": ^5.15.14
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
-  checksum: 10/4a000860ab98555230649f6d187c0bb625498ce67d01174608b93a43266d07a9e3941185d4b8b8b65b429eb8c9c596a18ce6b1796efcc41aac198c9a981912d1
+  peerDependenciesMeta:
+    "@emotion/react":
+      optional: true
+    "@emotion/styled":
+      optional: true
+  checksum: 10/fe96d7e7e7d12ee5e7e430c1c8887f645ae5e9d1b575d1a9ec813bb1de4e194445e9ee59a9d10c47305b11a7abe8cc1c0d1bf8acda2b8042057b609f81769d5b
   languageName: node
   linkType: hard
 
@@ -19973,7 +19978,7 @@ __metadata:
   dependencies:
     "@mui/icons-material": "npm:5.16.7"
     "@mui/material": "npm:5.16.7"
-    "@mui/x-tree-view": "npm:7.12.0"
+    "@mui/x-tree-view": "npm:7.12.1"
     "@tanstack/react-query": "npm:5.51.21"
     "@testing-library/dom": "npm:10.4.0"
     "@testing-library/jest-dom": "npm:6.4.8"
