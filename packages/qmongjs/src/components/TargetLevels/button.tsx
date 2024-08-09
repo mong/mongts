@@ -22,9 +22,11 @@ function LEGEND_BTN(props: Props) {
     current_state: string | undefined,
     update_state: string,
   ) => {
-    current_state === update_state
-      ? update_show_level_filter(undefined)
-      : update_show_level_filter(update_state);
+    if (current_state === update_state) {
+      update_show_level_filter(undefined);
+    } else {
+      update_show_level_filter(update_state);
+    }
   };
 
   return (

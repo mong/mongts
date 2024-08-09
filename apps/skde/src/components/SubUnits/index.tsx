@@ -11,19 +11,18 @@ const getUnitLevel = (
   RHFs: NestedTreatmentUnitName[],
   selectedUnit: string,
 ) => {
-  let unitLevel: string;
-
   const RHFNames = RHFs.map((row) => row.rhf);
   const HFs = RHFs.map((row) => row.hf).flat();
   const HFNames = HFs.map((row) => row.hf);
 
-  selectedUnit === "Nasjonalt"
-    ? (unitLevel = "Nasjonalt")
-    : RHFNames.includes(selectedUnit)
-      ? (unitLevel = "RHF")
-      : HFNames.includes(selectedUnit)
-        ? (unitLevel = "HF")
-        : (unitLevel = "Hospital");
+  const unitLevel =
+    selectedUnit === "Nasjonalt"
+      ? "Nasjonalt"
+      : RHFNames.includes(selectedUnit)
+        ? "RHF"
+        : HFNames.includes(selectedUnit)
+          ? "HF"
+          : "Hospital";
 
   return unitLevel;
 };

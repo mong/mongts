@@ -26,9 +26,9 @@ const result = (data: IndicatorData, point: DataPoint, dg?: boolean) => {
   let pointVar: number | null;
 
   if (dg) {
-    point && point.dg ? (pointVar = point.dg) : (pointVar = null);
+    pointVar = point && point.dg ? point.dg : null;
   } else {
-    point && point.var ? (pointVar = point.var) : (pointVar = null);
+    pointVar = point && point.var ? point.var : null;
   }
 
   return pointVar ? (
@@ -51,15 +51,8 @@ const getDataSubset = (
   currentYear: number,
   index: number,
 ) => {
-  let selectedLevel: "H" | "M" | "L" | undefined;
-
-  index === 0
-    ? (selectedLevel = "H")
-    : index === 1
-      ? (selectedLevel = "M")
-      : index === 2
-        ? (selectedLevel = "L")
-        : (selectedLevel = undefined);
+  const selectedLevel: "H" | "M" | "L" | undefined =
+    index === 0 ? "H" : index === 1 ? "M" : index === 2 ? "L" : undefined;
 
   const dataSubset = indData.filter((indDataRow) => {
     if (indDataRow.data === undefined) {
