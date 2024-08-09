@@ -11,17 +11,18 @@ import { Header, BreadCrumbPath, HeaderData } from "../../src/components/Header"
 import { Footer } from "../../src/components/Footer";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 
-import { ThemeProvider, CssBaseline, Box } from "@mui/material";
+import { ThemeProvider, CssBaseline, Box, Typography } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 
 
 
 type PageParams = {
   tag: Tag;
+  tagsMetadata: { [k: string]: Tag };
   analyser: AnalyseData[];
 }
 
-const Page = ({ tag, analyser }: PageParams) => {
+const Page = ({ tag, tagsMetadata, analyser }: PageParams) => {
 
   const breadcrumbs: BreadCrumbPath = {
     path: [
@@ -46,10 +47,11 @@ const Page = ({ tag, analyser }: PageParams) => {
       <CssBaseline />
       <PageWrapper>
         <Header headerData={headerData} breadcrumbs={breadcrumbs}>
-          Filter: <AnalyseBoxFilter kompendium={tag.name} analyser={analyser}/>
+          <Typography variant="body1" sx={{marginRight: "1em"}}>Filtrer analyser: </Typography>
+          <AnalyseBoxFilter kompendium={tag.name} tagsMetadata={tagsMetadata} analyser={analyser}/>
         </Header>
         <Box className="footer" sx={{ paddingTop: "40px" }}>
-          <AnalyseBoxList analyser={analyser} />
+          <AnalyseBoxList analyser={analyser} tagsMetadata={tagsMetadata}/>
         </Box>
         <Footer page="helseatlas" />
       </PageWrapper>
@@ -71,15 +73,16 @@ export const getStaticProps: GetStaticProps = (context) => {
       return analyse.tags.includes(context.params.tag);
     });
 
-  const tagFile = path.join(
-    process.cwd(),
-    "analyser/tags",
-    `${context.params.tag}.json`,
-  );
-  const content: Tag = JSON.parse(matter(fs.readFileSync(tagFile)).content);
+  const tagDir = path.join(process.cwd(), "analyser/tags");
+  const tagsMetadata = Object.fromEntries(fs.readdirSync(tagDir).map((fname) => {
+    const fpath = path.join(tagDir, fname);
+    const tagData: Tag = JSON.parse(matter(fs.readFileSync(fpath)).content);
+
+    return [tagData.name, tagData];
+  }));
 
   return {
-    props: { tag: content, analyser: analyser },
+    props: { tag: tagsMetadata[`${context.params.tag}`], analyser: analyser, tagsMetadata: tagsMetadata },
   };
 };
 

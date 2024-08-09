@@ -2,17 +2,24 @@ import React from "react";
 import classNames from "./AnalyseBox.module.css";
 import {
   Select, FormControl, MenuItem, InputLabel, Typography, Paper, Box,
-  Accordion, AccordionSummary, AccordionDetails
+  Accordion, AccordionSummary, AccordionDetails, Chip
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { useTheme } from '@mui/material/styles';
 
-import { AnalyseData } from "../../types";
+import { AnalyseData, Tag } from "../../types";
 import { AnalyseBarChart } from "./AnalyseBarChart";
 import { AnalysePieChart } from "./AnalysePieChart";
 import { AnalyseLineChart } from "./AnalyseLineChart";
 
-export const AnalyseBox = ({ analyse }: { analyse: AnalyseData }) => {
+const capitalize = (s: string) => s[0].toUpperCase() + s.slice(1);
+
+export type AnalyseBoxProps = {
+  analyse: AnalyseData,
+  tagsMetadata: { [k: string]: Tag }
+};
+
+export const AnalyseBox = ({ analyse, tagsMetadata }: AnalyseBoxProps) => {
   const years = Object.keys(analyse.data.region["1"]).map(Number);
   years.sort((a, b) => b - a);
 
@@ -26,7 +33,8 @@ export const AnalyseBox = ({ analyse }: { analyse: AnalyseData }) => {
   const tags = (
     <Box className={classNames['tag-container']}>
       {analyse.tags.map((tag) => (
-        <Typography variant="body1" key={tag} className={classNames['tag']}>{tag}</Typography>
+        <Chip label={tagsMetadata[tag]?.fullname || capitalize(tag)} color="primary" key={tag}
+        sx={{marginRight: "1em"}} />
       ))}
     </Box>
   );
