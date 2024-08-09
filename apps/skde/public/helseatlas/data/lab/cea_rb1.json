@@ -3,46 +3,50 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "totsnitt"
-      ],
+      "x": ["totsnitt"],
       "y": "bohf",
       "xLabel": {
-        "nb": "Antall CEA prøver pr. 10 000 innbyggere",
+        "nb": "Antall CEAprøver pr. 10 000 innbyggere",
         "en": "tmp"
       },
       "yLabel": {
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "tot2021",
-        "tot2022",
-        "tot2023"
-      ],
+      "annualVar": ["tot2021", "tot2022", "tot2023"],
       "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_2",
+      "x": ["totsnitt"],
+      "y": "borhf",
+      "xLabel": {
+        "nb": "Antall CEAprøver pr. 10 000 innbyggere",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Helseregioner",
+        "en": "Health regions"
+      },
+      "annualVar": ["tot2021", "tot2022", "tot2023"],
+      "annualVarLabels": {
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "ratesnitt_andel_int"
-      ],
+      "x": ["ratesnitt_andel_int"],
       "y": "bohf",
       "xLabel": {
-        "nb": "Andel gjentatte CEA prøver innen anbefalt tid",
+        "nb": "Andel gjentatte CEAprøver innen anbefalt tid",
         "en": "tmp"
       },
       "yLabel": {
@@ -55,16 +59,8 @@
         "rate2022_andel_int"
       ],
       "annualVarLabels": {
-        "nb": [
-          "2020",
-          "2021",
-          "2022"
-        ],
-        "en": [
-          "2020",
-          "2021",
-          "2022"
-        ]
+        "nb": ["2020", "2021", "2022"],
+        "en": ["2020", "2021", "2022"]
       },
       "format": ",.0%"
     },
@@ -72,9 +68,7 @@
       "type": "linechart",
       "data": "datasett_3",
       "label": "gender",
-      "x": [
-        "alder"
-      ],
+      "x": ["alder"],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
@@ -90,9 +84,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "test",
-        "table": "en",
-        "test": "table"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2021–2023. <br>* Antall pr. 10  000 innbyggere. Ratene er kjønns- og aldersjusterte. <br>** Andelene er basert på kjønns- og aldersjusterte rater. <br>*** Prøver tatt med kortere intervall enn anbefalt.",
+        "en": "Årlige gjennomsnittsverdier for perioden 2021–2023. <br>* Antall pr. 10  000 innbyggere. Ratene er kjønns- og aldersjusterte. <br>** Andelene er basert på kjønns- og aldersjusterte rater. <br>*** Prøver tatt med kortere intervall enn anbefalt."
       },
       "columns": [
         {
@@ -158,7 +151,7 @@
       "data": "datasett_1",
       "x": "totsnitt",
       "caption": {
-        "nb": "Antall CEA prøver pr. 10 000 innbyggere",
+        "nb": "Antall CEAprøver pr. 10 000 innbyggere",
         "en": "tmp"
       },
       "jenks": [
@@ -592,13 +585,90 @@
     },
     {
       "type": "data",
+      "label": "datasett_2",
+      "description": "Ekstradatasettet for gitt resultatboks",
+      "data": [
+        {
+          "borhf": "Helse Nord",
+          "tot2021": 155.347264293,
+          "tot2022": 146.922060457,
+          "tot2023": 138.560046402,
+          "totsnitt": 146.881189289,
+          "andel_priv": 0.0462993039719,
+          "tot_events": 7716.66666667,
+          "tot_pas": 4988.66666667,
+          "tot_pop": 482658.333333,
+          "prove_pr_pas": 1.54683950287,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "borhf": "Helse Midt-Norge",
+          "tot2021": 188.835040766,
+          "tot2022": 189.698655721,
+          "tot2023": 176.024593269,
+          "totsnitt": 184.764499455,
+          "andel_priv": 0.180151307908,
+          "tot_events": 14089.3333333,
+          "tot_pas": 9293.66666667,
+          "tot_pop": 741160.666667,
+          "prove_pr_pas": 1.51601449015,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "borhf": "Helse Vest",
+          "tot2021": 292.492908983,
+          "tot2022": 262.608569215,
+          "tot2023": 248.317743614,
+          "totsnitt": 267.450951424,
+          "andel_priv": 0.0900674055431,
+          "tot_events": 28679,
+          "tot_pas": 18397.3333333,
+          "tot_pop": 1129036.66667,
+          "prove_pr_pas": 1.55886722713,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "borhf": "Helse Sør-Øst",
+          "tot2021": 277.603780104,
+          "tot2022": 269.253857067,
+          "tot2023": 257.304777232,
+          "totsnitt": 267.798954989,
+          "andel_priv": 0.374094836648,
+          "tot_events": 82382.6666667,
+          "tot_pas": 53306.6666667,
+          "tot_pop": 3082352,
+          "prove_pr_pas": 1.54544772386,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "borhf": "Norge",
+          "tot2021": 256.503804617,
+          "tot2022": 245.342628109,
+          "tot2023": 233.122493972,
+          "totsnitt": 244.768558131,
+          "andel_priv": 0.273816634938,
+          "tot_events": 132867.666667,
+          "tot_pas": 85964.6666667,
+          "tot_pop": 5435207.66667,
+          "prove_pr_pas": 1.54560788541,
+          "bohf": null,
+          "ermann": null
+        }
+      ]
+    },
+    {
+      "type": "data",
       "label": "datasett_3",
       "description": "Ekstradatasettet for gitt resultatboks",
       "data": [
         {
           "alder": 0,
           "ermann": 0,
-          "pctandel": 3.7130826755e-05,
+          "pctandel": 3.7130826755e-5,
           "gender": "Kvinner",
           "bohf": null,
           "borhf": null
@@ -606,7 +676,7 @@
         {
           "alder": 0,
           "ermann": 1,
-          "pctandel": 1.40730107799e-05,
+          "pctandel": 1.40730107799e-5,
           "gender": "Menn",
           "bohf": null,
           "borhf": null
@@ -614,7 +684,7 @@
         {
           "alder": 1,
           "ermann": 0,
-          "pctandel": 4.37308222123e-05,
+          "pctandel": 4.37308222123e-5,
           "gender": "Kvinner",
           "bohf": null,
           "borhf": null
@@ -622,7 +692,7 @@
         {
           "alder": 1,
           "ermann": 1,
-          "pctandel": 3.44056425254e-05,
+          "pctandel": 3.44056425254e-5,
           "gender": "Menn",
           "bohf": null,
           "borhf": null
@@ -630,7 +700,7 @@
         {
           "alder": 2,
           "ermann": 0,
-          "pctandel": 2.84151452724e-05,
+          "pctandel": 2.84151452724e-5,
           "gender": "Kvinner",
           "bohf": null,
           "borhf": null
@@ -638,7 +708,7 @@
         {
           "alder": 2,
           "ermann": 1,
-          "pctandel": 2.67322497861e-05,
+          "pctandel": 2.67322497861e-5,
           "gender": "Menn",
           "bohf": null,
           "borhf": null
@@ -646,7 +716,7 @@
         {
           "alder": 3,
           "ermann": 0,
-          "pctandel": 2.78295717029e-05,
+          "pctandel": 2.78295717029e-5,
           "gender": "Kvinner",
           "bohf": null,
           "borhf": null
@@ -654,7 +724,7 @@
         {
           "alder": 3,
           "ermann": 1,
-          "pctandel": 6.55582944354e-05,
+          "pctandel": 6.55582944354e-5,
           "gender": "Menn",
           "bohf": null,
           "borhf": null
@@ -662,7 +732,7 @@
         {
           "alder": 4,
           "ermann": 0,
-          "pctandel": 5.45810562799e-05,
+          "pctandel": 5.45810562799e-5,
           "gender": "Kvinner",
           "bohf": null,
           "borhf": null
@@ -670,7 +740,7 @@
         {
           "alder": 4,
           "ermann": 1,
-          "pctandel": 7.74388394499e-05,
+          "pctandel": 7.74388394499e-5,
           "gender": "Menn",
           "bohf": null,
           "borhf": null
@@ -678,7 +748,7 @@
         {
           "alder": 5,
           "ermann": 0,
-          "pctandel": 6.0290196814e-05,
+          "pctandel": 6.0290196814e-5,
           "gender": "Kvinner",
           "bohf": null,
           "borhf": null
@@ -686,7 +756,7 @@
         {
           "alder": 5,
           "ermann": 1,
-          "pctandel": 7.61551788695e-05,
+          "pctandel": 7.61551788695e-5,
           "gender": "Menn",
           "bohf": null,
           "borhf": null
@@ -694,7 +764,7 @@
         {
           "alder": 6,
           "ermann": 0,
-          "pctandel": 7.95028422266e-05,
+          "pctandel": 7.95028422266e-5,
           "gender": "Kvinner",
           "bohf": null,
           "borhf": null
@@ -702,7 +772,7 @@
         {
           "alder": 6,
           "ermann": 1,
-          "pctandel": 5.03397936068e-05,
+          "pctandel": 5.03397936068e-5,
           "gender": "Menn",
           "bohf": null,
           "borhf": null
@@ -734,7 +804,7 @@
         {
           "alder": 8,
           "ermann": 1,
-          "pctandel": 6.69490700166e-05,
+          "pctandel": 6.69490700166e-5,
           "gender": "Menn",
           "bohf": null,
           "borhf": null
