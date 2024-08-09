@@ -37,8 +37,7 @@ export const createHeatmapData = (
         return row.ind_id === indID && row.unit_name === unitName;
       });
 
-      let count: string | undefined;
-      indRow ? (count = level(indRow)) : (count = undefined);
+      const count: string | undefined = indRow ? level(indRow) : undefined;
 
       return {
         bin: unitBin,

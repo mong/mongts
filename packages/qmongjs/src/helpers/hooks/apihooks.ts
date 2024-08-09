@@ -65,8 +65,7 @@ const indicatorUrl = (params: FetchIndicatorParams): string => {
   const idQuery: string = params.id ? `id=${params.id}&` : "";
   const typeQuery: string = params.type ? `type=${params.type}` : "";
 
-  let structure: string;
-  params.nested ? (structure = "/nestedData?") : (structure = "/indicators?");
+  const structure: string = params.nested ? "/nestedData?" : "/indicators?";
 
   return `${API_HOST}/data/${registerShortNameQuery}${structure}${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}${typeQuery}${idQuery}`;
 };
