@@ -3,7 +3,9 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["totsnitt"],
+      "x": [
+        "totsnitt"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall laktoseintoleranseprøver pr. 10 000 innbyggere",
@@ -13,37 +15,31 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": ["tot2021", "tot2022", "tot2023"],
+      "annualVar": [
+        "tot2021",
+        "tot2022",
+        "tot2023"
+      ],
       "annualVarLabels": {
-        "nb": ["2021", "2022", "2023"],
-        "en": ["2021", "2022", "2023"]
-      },
-      "format": ",.0f"
-    },
-    {
-      "type": "barchart",
-      "data": "datasett_2",
-      "x": ["totsnitt"],
-      "y": "borhf",
-      "xLabel": {
-        "nb": "Antall laktoseintoleranseprøver pr. 10 000 innbyggere",
-        "en": "tmp"
-      },
-      "yLabel": {
-        "nb": "Helseregioner",
-        "en": "Health regions"
-      },
-      "annualVar": ["tot2021", "tot2022", "tot2023"],
-      "annualVarLabels": {
-        "nb": ["2021", "2022", "2023"],
-        "en": ["2021", "2022", "2023"]
+        "nb": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2021",
+          "2022",
+          "2023"
+        ]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["ratesnitt_andel_int"],
+      "x": [
+        "ratesnitt_andel_int"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Andel gjentatte laktoseintoleranseprøver innen perioden",
@@ -59,7 +55,9 @@
       "type": "linechart",
       "data": "datasett_3",
       "label": "gender",
-      "x": ["alder"],
+      "x": [
+        "alder"
+      ],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
@@ -527,83 +525,6 @@
           "antsnitt_prove": 58643,
           "ratesnitt_andel_int": 0.149634227444,
           "borhf": null
-        }
-      ]
-    },
-    {
-      "type": "data",
-      "label": "datasett_2",
-      "description": "Ekstradatasettet for gitt resultatboks",
-      "data": [
-        {
-          "borhf": "Helse Nord",
-          "tot2021": 87.2109770112,
-          "tot2022": 73.2424142117,
-          "tot2023": 89.2697375558,
-          "totsnitt": 83.2354636525,
-          "andel_priv": 0.122098826228,
-          "tot_events": 3903,
-          "tot_pas": 3842.66666667,
-          "tot_pop": 482658.333333,
-          "prove_pr_pas": 1.01570090215,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "borhf": "Helse Midt-Norge",
-          "tot2021": 80.2241771379,
-          "tot2022": 78.4521248293,
-          "tot2023": 80.2427690202,
-          "totsnitt": 79.6258020198,
-          "andel_priv": 0.936247521477,
-          "tot_events": 5889.66666667,
-          "tot_pas": 5807.66666667,
-          "tot_pop": 741160.666667,
-          "prove_pr_pas": 1.01411926763,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "borhf": "Helse Vest",
-          "tot2021": 82.5953600707,
-          "tot2022": 84.1328541553,
-          "tot2023": 84.7358326515,
-          "totsnitt": 83.8090390175,
-          "andel_priv": 0.283326642054,
-          "tot_events": 9658,
-          "tot_pas": 9555.33333333,
-          "tot_pop": 1129036.66667,
-          "prove_pr_pas": 1.01074443592,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "borhf": "Helse Sør-Øst",
-          "tot2021": 156.368621853,
-          "tot2022": 150.193052974,
-          "tot2023": 150.013532279,
-          "totsnitt": 152.139094223,
-          "andel_priv": 0.796273181855,
-          "tot_events": 46905.3333333,
-          "tot_pas": 45857.6666667,
-          "tot_pop": 3082352,
-          "prove_pr_pas": 1.02284605264,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "borhf": "Norge",
-          "tot2021": 124.493379342,
-          "tot2022": 119.936887934,
-          "tot2023": 121.684252551,
-          "totsnitt": 122.010087103,
-          "andel_priv": 0.694705180347,
-          "tot_events": 66356,
-          "tot_pas": 65058,
-          "tot_pop": 5435207.66667,
-          "prove_pr_pas": 1.01995142796,
-          "bohf": null,
-          "ermann": null
         }
       ]
     },

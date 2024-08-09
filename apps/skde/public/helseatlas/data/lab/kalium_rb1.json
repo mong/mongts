@@ -3,7 +3,9 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["totsnitt"],
+      "x": [
+        "totsnitt"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall kaliumprøver pr. 10 000 innbyggere",
@@ -13,30 +15,22 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": ["tot2021", "tot2022", "tot2023"],
+      "annualVar": [
+        "tot2021",
+        "tot2022",
+        "tot2023"
+      ],
       "annualVarLabels": {
-        "nb": ["2021", "2022", "2023"],
-        "en": ["2021", "2022", "2023"]
-      },
-      "format": ",.0f"
-    },
-    {
-      "type": "barchart",
-      "data": "datasett_2",
-      "x": ["totsnitt"],
-      "y": "borhf",
-      "xLabel": {
-        "nb": "Antall kaliumprøver pr. 10 000 innbyggere",
-        "en": "tmp"
-      },
-      "yLabel": {
-        "nb": "Helseregioner",
-        "en": "Health regions"
-      },
-      "annualVar": ["tot2021", "tot2022", "tot2023"],
-      "annualVarLabels": {
-        "nb": ["2021", "2022", "2023"],
-        "en": ["2021", "2022", "2023"]
+        "nb": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2021",
+          "2022",
+          "2023"
+        ]
       },
       "format": ",.0f"
     },
@@ -44,7 +38,9 @@
       "type": "linechart",
       "data": "datasett_3",
       "label": "gender",
-      "x": ["alder"],
+      "x": [
+        "alder"
+      ],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
@@ -432,83 +428,6 @@
           "tot_pop": 5435207.66667,
           "prove_pr_pas": 1.57495102575,
           "borhf": null
-        }
-      ]
-    },
-    {
-      "type": "data",
-      "label": "datasett_2",
-      "description": "Ekstradatasettet for gitt resultatboks",
-      "data": [
-        {
-          "borhf": "Helse Nord",
-          "tot2021": 4084.62443524,
-          "tot2022": 4214.28033351,
-          "tot2023": 4276.54020887,
-          "totsnitt": 4191.56383296,
-          "andel_priv": 0.0662865805691,
-          "tot_events": 212990,
-          "tot_pas": 138231,
-          "tot_pop": 482658.333333,
-          "prove_pr_pas": 1.54082658738,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "borhf": "Helse Midt-Norge",
-          "tot2021": 4303.91613209,
-          "tot2022": 4316.90154094,
-          "tot2023": 4425.55625116,
-          "totsnitt": 4348.87082738,
-          "andel_priv": 0.378002113134,
-          "tot_events": 327672,
-          "tot_pas": 219261.333333,
-          "tot_pop": 741160.666667,
-          "prove_pr_pas": 1.49443586344,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "borhf": "Helse Vest",
-          "tot2021": 4572.2245621,
-          "tot2022": 4507.19198271,
-          "tot2023": 4469.98847165,
-          "totsnitt": 4515.07280644,
-          "andel_priv": 0.13930398922,
-          "tot_events": 491843,
-          "tot_pas": 300159,
-          "tot_pop": 1129036.66667,
-          "prove_pr_pas": 1.63860820432,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "borhf": "Helse Sør-Øst",
-          "tot2021": 4919.70845172,
-          "tot2022": 4971.29331169,
-          "tot2023": 5044.71611261,
-          "totsnitt": 4978.21215925,
-          "andel_priv": 0.469252940776,
-          "tot_events": 1531352,
-          "tot_pas": 967125.666667,
-          "tot_pop": 3082352,
-          "prove_pr_pas": 1.58340539682,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "borhf": "Norge",
-          "tot2021": 4682.73394514,
-          "tot2022": 4713.03179381,
-          "tot2023": 4769.02603935,
-          "totsnitt": 4721.1710441,
-          "andel_priv": 0.361102170188,
-          "tot_events": 2563857,
-          "tot_pas": 1623568,
-          "tot_pop": 5435207.66667,
-          "prove_pr_pas": 1.57914974919,
-          "bohf": null,
-          "ermann": null
         }
       ]
     },

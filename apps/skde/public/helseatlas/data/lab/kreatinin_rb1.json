@@ -3,7 +3,9 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["totsnitt"],
+      "x": [
+        "totsnitt"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall kreatininprøver pr. 10 000 innbyggere",
@@ -13,30 +15,22 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": ["tot2021", "tot2022", "tot2023"],
+      "annualVar": [
+        "tot2021",
+        "tot2022",
+        "tot2023"
+      ],
       "annualVarLabels": {
-        "nb": ["2021", "2022", "2023"],
-        "en": ["2021", "2022", "2023"]
-      },
-      "format": ",.0f"
-    },
-    {
-      "type": "barchart",
-      "data": "datasett_2",
-      "x": ["totsnitt"],
-      "y": "borhf",
-      "xLabel": {
-        "nb": "Antall kreatininprøver pr. 10 000 innbyggere",
-        "en": "tmp"
-      },
-      "yLabel": {
-        "nb": "Helseregioner",
-        "en": "Health regions"
-      },
-      "annualVar": ["tot2021", "tot2022", "tot2023"],
-      "annualVarLabels": {
-        "nb": ["2021", "2022", "2023"],
-        "en": ["2021", "2022", "2023"]
+        "nb": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2021",
+          "2022",
+          "2023"
+        ]
       },
       "format": ",.0f"
     },
@@ -44,7 +38,9 @@
       "type": "linechart",
       "data": "datasett_3",
       "label": "gender",
-      "x": ["alder"],
+      "x": [
+        "alder"
+      ],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
@@ -432,83 +428,6 @@
           "tot_pop": 5435207.66667,
           "prove_pr_pas": 1.66452268001,
           "borhf": null
-        }
-      ]
-    },
-    {
-      "type": "data",
-      "label": "datasett_2",
-      "description": "Ekstradatasettet for gitt resultatboks",
-      "data": [
-        {
-          "borhf": "Helse Nord",
-          "tot2021": 5250.73884953,
-          "tot2022": 5373.35071019,
-          "tot2023": 5440.02766945,
-          "totsnitt": 5354.17437591,
-          "andel_priv": 0.0688250670531,
-          "tot_events": 271697.333333,
-          "tot_pas": 165629.666667,
-          "tot_pop": 482658.333333,
-          "prove_pr_pas": 1.64039050975,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "borhf": "Helse Midt-Norge",
-          "tot2021": 5544.69789511,
-          "tot2022": 5598.33815587,
-          "tot2023": 5758.42455001,
-          "totsnitt": 5633.91486698,
-          "andel_priv": 0.37390837345,
-          "tot_events": 423953.333333,
-          "tot_pas": 265730.666667,
-          "tot_pop": 741160.666667,
-          "prove_pr_pas": 1.59542494154,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "borhf": "Helse Vest",
-          "tot2021": 6366.70189857,
-          "tot2022": 6415.05300877,
-          "tot2023": 6414.23764451,
-          "totsnitt": 6397.72525042,
-          "andel_priv": 0.124498578328,
-          "tot_events": 698759.333333,
-          "tot_pas": 404159.333333,
-          "tot_pop": 1129036.66667,
-          "prove_pr_pas": 1.72892044227,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "borhf": "Helse Sør-Øst",
-          "tot2021": 6441.89554083,
-          "tot2022": 6532.72041665,
-          "tot2023": 6608.77113542,
-          "totsnitt": 6527.21790296,
-          "andel_priv": 0.489720327213,
-          "tot_events": 2009273.66667,
-          "tot_pas": 1204409,
-          "tot_pop": 3082352,
-          "prove_pr_pas": 1.66826523769,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "borhf": "Norge",
-          "tot2021": 6189.49241427,
-          "tot2022": 6270.06766484,
-          "tot2023": 6342.81924073,
-          "totsnitt": 6266.98293153,
-          "andel_priv": 0.367025198437,
-          "tot_events": 3403683.66667,
-          "tot_pas": 2037979,
-          "tot_pop": 5435207.66667,
-          "prove_pr_pas": 1.67012695747,
-          "bohf": null,
-          "ermann": null
         }
       ]
     },

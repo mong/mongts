@@ -3,7 +3,9 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["totsnitt"],
+      "x": [
+        "totsnitt"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall CRP-prøver pr. 10 000 innbyggere",
@@ -13,30 +15,22 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": ["tot2021", "tot2022", "tot2023"],
+      "annualVar": [
+        "tot2021",
+        "tot2022",
+        "tot2023"
+      ],
       "annualVarLabels": {
-        "nb": ["2021", "2022", "2023"],
-        "en": ["2021", "2022", "2023"]
-      },
-      "format": ",.0f"
-    },
-    {
-      "type": "barchart",
-      "data": "datasett_2",
-      "x": ["totsnitt"],
-      "y": "borhf",
-      "xLabel": {
-        "nb": "Antall CRP-prøver pr. 10 000 innbyggere",
-        "en": "tmp"
-      },
-      "yLabel": {
-        "nb": "Helseregioner",
-        "en": "Health regions"
-      },
-      "annualVar": ["tot2021", "tot2022", "tot2023"],
-      "annualVarLabels": {
-        "nb": ["2021", "2022", "2023"],
-        "en": ["2021", "2022", "2023"]
+        "nb": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2021",
+          "2022",
+          "2023"
+        ]
       },
       "format": ",.0f"
     },
@@ -44,7 +38,9 @@
       "type": "linechart",
       "data": "datasett_3",
       "label": "gender",
-      "x": ["alder"],
+      "x": [
+        "alder"
+      ],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
@@ -432,83 +428,6 @@
           "tot_pop": 5435207.66667,
           "prove_pr_pas": 1.83537088822,
           "borhf": null
-        }
-      ]
-    },
-    {
-      "type": "data",
-      "label": "datasett_2",
-      "description": "Ekstradatasettet for gitt resultatboks",
-      "data": [
-        {
-          "borhf": "Helse Nord",
-          "tot2021": 6903.93917593,
-          "tot2022": 7929.48990118,
-          "tot2023": 7929.88417591,
-          "totsnitt": 7587.75791782,
-          "andel_priv": 0.0131206522136,
-          "tot_events": 378548.666667,
-          "tot_pas": 201394.666667,
-          "tot_pop": 482658.333333,
-          "prove_pr_pas": 1.87963600493,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "borhf": "Helse Midt-Norge",
-          "tot2021": 6384.09328336,
-          "tot2022": 7586.24493061,
-          "tot2023": 7985.28021965,
-          "totsnitt": 7322.50969704,
-          "andel_priv": 0.0787843200692,
-          "tot_events": 547714.333333,
-          "tot_pas": 301910.333333,
-          "tot_pop": 741160.666667,
-          "prove_pr_pas": 1.81416226231,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "borhf": "Helse Vest",
-          "tot2021": 7025.71133574,
-          "tot2022": 8081.82656089,
-          "tot2023": 8087.57247904,
-          "totsnitt": 7734.126186,
-          "andel_priv": 0.0424654389787,
-          "tot_events": 854078,
-          "tot_pas": 468183.333333,
-          "tot_pop": 1129036.66667,
-          "prove_pr_pas": 1.82423836816,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "borhf": "Helse Sør-Øst",
-          "tot2021": 7381.06188919,
-          "tot2022": 8555.46505561,
-          "tot2023": 8809.93197921,
-          "totsnitt": 8252.92356961,
-          "andel_priv": 0.122895057272,
-          "tot_events": 2540959,
-          "tot_pas": 1377344.33333,
-          "tot_pop": 3082352,
-          "prove_pr_pas": 1.84482481142,
-          "bohf": null,
-          "ermann": null
-        },
-        {
-          "borhf": "Norge",
-          "tot2021": 7123.17959793,
-          "tot2022": 8264.0163531,
-          "tot2023": 8466.50231634,
-          "totsnitt": 7954.59782708,
-          "andel_priv": 0.0918577803281,
-          "tot_events": 4321300,
-          "tot_pas": 2346519.33333,
-          "tot_pop": 5435207.66667,
-          "prove_pr_pas": 1.84157869003,
-          "bohf": null,
-          "ermann": null
         }
       ]
     },
