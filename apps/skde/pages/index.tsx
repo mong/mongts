@@ -19,7 +19,10 @@ if (process.env.NEXT_PUBLIC_SENTRY) {
     });
   } catch (error) {
     console.log(
-      "Sentry not working with dsn=" + process.env.NEXT_PUBLIC_SENTRY,
+      "Sentry not working with dsn=" +
+        process.env.NEXT_PUBLIC_SENTRY +
+        " error=" +
+        error,
     );
   }
 }

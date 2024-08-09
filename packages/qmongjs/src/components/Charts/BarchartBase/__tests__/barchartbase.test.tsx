@@ -7,6 +7,7 @@ import {
   DataPoint,
 } from "../../../IndicatorTable/IndicatortablebodyV2";
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 vi.mock("next/router", () => require("next-router-mock"));
 vi.mock("next/font/google", () => ({
   Plus_Jakarta_Sans: () => ({
