@@ -184,7 +184,7 @@ export const Barchart = <
     .range(["black", "white"]);
   const sizeScale = scaleLinear<number>()
     .domain([min(varLabels ?? [0]), max(varLabels ?? [0])])
-    .range([2, yScale.bandwidth() / 2]);
+    .range([2, 7]);
 
   return (
     <div style={{ width: "auto", margin: "auto" }}>
@@ -249,7 +249,9 @@ export const Barchart = <
             const bars = (
               <Group fill={colorScale(d["key"])} key={`${i}`}>
                 {d.map((barData, i) => {
-                  const bohfName = barData.data["bohf"].toString();
+                  const bohfName = (
+                    barData.data.bohf || barData.data.borhf
+                  ).toString();
                   return (
                     <rect
                       key={`${i}`}
@@ -298,7 +300,7 @@ export const Barchart = <
                   sizeScale={sizeScale}
                   y={y}
                   labels={varLabels}
-                  key={`${d["bohf"]}${i}`}
+                  key={`${d["bohf"] || d["borhf"]}${i}`}
                 />
               );
             })}
@@ -311,7 +313,7 @@ export const Barchart = <
                   yScale={yScale}
                   errorBars={errorBars}
                   y={y}
-                  key={`${d["bohf"]}_errorbar`}
+                  key={`${d["bohf"] || d["borhf"]}_errorbar`}
                 />
               );
             })}
