@@ -220,9 +220,11 @@ export const ResultBox = ({
 
     let topMargin: number;
 
-    screenWidth < screenWidthCutoff
-      ? (topMargin = tocHeight + topSpacing)
-      : (topMargin = topSpacing);
+    if (screenWidth < screenWidthCutoff) {
+      topMargin = tocHeight + topSpacing;
+    } else {
+      topMargin = topSpacing;
+    }
 
     if (expandedResultBox && elemCoords.y < topMargin) {
       window.scrollTo({
