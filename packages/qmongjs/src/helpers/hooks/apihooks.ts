@@ -65,8 +65,7 @@ const indicatorUrl = (params: FetchIndicatorParams): string => {
   const idQuery: string = params.id ? `id=${params.id}&` : "";
   const typeQuery: string = params.type ? `type=${params.type}` : "";
 
-  let structure: string;
-  params.nested ? (structure = "/nestedData?") : (structure = "/indicators?");
+  const structure: string = params.nested ? "/nestedData?" : "/indicators?";
 
   return `${API_HOST}/data/${registerShortNameQuery}${structure}${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}${typeQuery}${idQuery}`;
 };
@@ -175,6 +174,25 @@ export const useRegisterNamesQuery = () => {
   return useQuery({
     queryKey: [`registerNames`],
     queryFn: () => fetchRegisterNames(),
+    staleTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    gcTime: 1000 * 60 * 60,
+  });
+};
+
+const fetchUnitUrls = async () => {
+  const response = await fetch(`${API_HOST}/info/url`);
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json();
+};
+
+export const useUnitUrlsQuery = () => {
+  return useQuery({
+    queryKey: ["unitUrls"],
+    queryFn: () => fetchUnitUrls(),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
     gcTime: 1000 * 60 * 60,

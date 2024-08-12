@@ -15,6 +15,7 @@ export const useIntersectionByID = (elementID: string, rootMargin: string) => {
       { rootMargin, threshold: 0.1 },
     );
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     element && observer.observe(element);
 
     return () => observer.unobserve(element);

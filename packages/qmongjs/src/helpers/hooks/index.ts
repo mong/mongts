@@ -8,6 +8,7 @@ export {
   fetchRegisterNames,
   useRegisterNamesQuery,
   useMedicalFieldsQuery,
+  useUnitUrlsQuery,
   type FetchIndicatorParams,
 } from "./apihooks";
 export {
