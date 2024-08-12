@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text } from "@visx/text";
 import {
   useQueryParam,
@@ -56,6 +56,7 @@ import logo from "./Logo.png";
 import { URLs } from "types";
 import { ArrowLink } from "qmongjs";
 import Divider from "@mui/material/Divider";
+import { useRouter } from "next/router";
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
@@ -81,9 +82,21 @@ export const Skde = (): JSX.Element => {
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
+  // The following code ensures that the page renders correctly
   const unitUrlsQuery = useUnitUrlsQuery();
 
-  const shouldRefreshInitialState = false;
+  const router = useRouter();
+
+  const [prevReady, setPrevReady] = useState(router.isReady);
+
+  const prerenderFinished =
+    prevReady !== router.isReady && !unitUrlsQuery.isFetching;
+
+  useEffect(() => {
+    setPrevReady(router.isReady);
+  }, [router.isReady]);
+
+  const shouldRefreshInitialState = prerenderFinished;
 
   // Callback function for updating the filter menu
   const handleChange = (filterInput: FilterSettings) => {
