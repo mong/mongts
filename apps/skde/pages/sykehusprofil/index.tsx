@@ -208,6 +208,7 @@ export const Skde = (): JSX.Element => {
   const boxMaxHeight = 800;
 
   const titleStyle = { marginTop: 20, marginLeft: 20 };
+  const textMargin = 20;
 
   return (
     <ThemeProvider theme={skdeTheme}>
@@ -306,6 +307,9 @@ export const Skde = (): JSX.Element => {
             <Grid xs={12} sm={6}>
               <ExpandableItemBox collapsedHeight={400}>
                 <h2 style={titleStyle}>Tilknyttede enheter</h2>
+                <div style={{ margin: textMargin }}>
+                  Følgende helseforetak/sykehus hører til under valgt enhet:
+                </div>
                 {unitNamesQuery.data ? (
                   <SubUnits
                     RHFs={unitNamesQuery.data.nestedUnitNames}
@@ -318,6 +322,10 @@ export const Skde = (): JSX.Element => {
             <Grid xs={12}>
               <ItemBox sx={{ overflow: "auto" }}>
                 <h2 style={titleStyle}>Utvikling over tid</h2>
+                <div style={{ margin: textMargin }}>
+                  Grafen viser andel/antall kvalitetsindikatorer som har hatt
+                  høy, middels eller lav måloppnåelse per år.
+                </div>
                 <ThemeProvider theme={lineChartTheme}>
                   <IndicatorLinechart {...indicatorParams} />
                 </ThemeProvider>
@@ -334,6 +342,10 @@ export const Skde = (): JSX.Element => {
             <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <h2 style={titleStyle}>Fagområder</h2>
+                <div style={{ margin: textMargin }}>
+                  Oversikt over måloppnåelsen på alle indikatorer under hvert
+                  fagområde.
+                </div>
                 <MedfieldTable {...medfieldTableProps} />
               </ExpandableItemBox>
             </Grid>
@@ -341,6 +353,10 @@ export const Skde = (): JSX.Element => {
             <Grid xs={6}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <h2 style={titleStyle}>Fagområder (dekningsgrad)</h2>
+                <div style={{ margin: textMargin }}>
+                  Oversikt over måloppnåelsen på datakvalitet under hvert
+                  fagområde.
+                </div>
                 <MedfieldTable {...medfieldTablePropsDG} />
               </ExpandableItemBox>
             </Grid>
@@ -348,6 +364,11 @@ export const Skde = (): JSX.Element => {
             <Grid xs={6}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <h2 style={titleStyle}>Siste års måloppnåelse</h2>
+                <h2 style={titleStyle}>Fagområder</h2>
+                <div style={{ margin: textMargin }}>
+                  Oversikt over indikatorer med høy, middels eller lav
+                  måloppnåelse det forrige år.
+                </div>
                 <LowLevelIndicatorList
                   context={"caregiver"}
                   type={"ind"}
