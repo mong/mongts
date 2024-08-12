@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Text } from "@visx/text";
 import {
   useQueryParam,
   DelimitedArrayParam,
@@ -208,6 +207,8 @@ export const Skde = (): JSX.Element => {
 
   const boxMaxHeight = 800;
 
+  const titleStyle = { marginTop: 20, marginLeft: 20 };
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
@@ -263,7 +264,7 @@ export const Skde = (): JSX.Element => {
           </ClickAwayListener>
         </Header>
 
-        <Box margin={4}>
+        <Box margin={2}>
           <Grid container spacing={2}>
             <Grid xs={12} sm={6} lg={6} xl={6} xxl={6}>
               <ItemBox height={440}>
@@ -278,24 +279,7 @@ export const Skde = (): JSX.Element => {
                   </Grid>
                   <Grid xs={12} sm={12} lg={6} xl={6} xxl={6}>
                     <Stack>
-                      <Text
-                        x={"10%"}
-                        y={"20%"}
-                        width={500}
-                        verticalAnchor="start"
-                        style={{ fontWeight: 700, fontSize: 10 }}
-                      >
-                        Oppdatert: xx.xx.xx
-                      </Text>
-                      <Text
-                        x={"10%"}
-                        y={"-50%"}
-                        width={200}
-                        verticalAnchor="start"
-                        style={{ fontWeight: 700, fontSize: 24 }}
-                      >
-                        {selectedTreatmentUnits[0]}
-                      </Text>
+                      <h2 style={titleStyle}>{selectedTreatmentUnits[0]}</h2>
                       <Divider />
                       <Box
                         sx={{
@@ -321,15 +305,7 @@ export const Skde = (): JSX.Element => {
 
             <Grid xs={12} sm={6}>
               <ExpandableItemBox collapsedHeight={400}>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
-                  Tilknyttede enheter
-                </Text>
+                <h2 style={titleStyle}>Tilknyttede enheter</h2>
                 {unitNamesQuery.data ? (
                   <SubUnits
                     RHFs={unitNamesQuery.data.nestedUnitNames}
@@ -341,15 +317,7 @@ export const Skde = (): JSX.Element => {
 
             <Grid xs={12}>
               <ItemBox sx={{ overflow: "auto" }}>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
-                  Utvikling over tid
-                </Text>
+                <h2 style={titleStyle}>Utvikling over tid</h2>
                 <ThemeProvider theme={lineChartTheme}>
                   <IndicatorLinechart {...indicatorParams} />
                 </ThemeProvider>
@@ -365,45 +333,21 @@ export const Skde = (): JSX.Element => {
 
             <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
-                  Fagområder
-                </Text>
+                <h2 style={titleStyle}>Fagområder</h2>
                 <MedfieldTable {...medfieldTableProps} />
               </ExpandableItemBox>
             </Grid>
 
             <Grid xs={6}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
-                  Fagområder (dekningsgrad)
-                </Text>
+                <h2 style={titleStyle}>Fagområder (dekningsgrad)</h2>
                 <MedfieldTable {...medfieldTablePropsDG} />
               </ExpandableItemBox>
             </Grid>
 
             <Grid xs={6}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
-                  Siste års måloppnåelse
-                </Text>
+                <h2 style={titleStyle}>Siste års måloppnåelse</h2>
                 <LowLevelIndicatorList
                   context={"caregiver"}
                   type={"ind"}
