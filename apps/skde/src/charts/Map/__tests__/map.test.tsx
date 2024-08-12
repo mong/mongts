@@ -14,6 +14,7 @@ import { Map } from "..";
 
 import { atlasData } from "../../../../test/test_data/data";
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 vi.mock("next/router", () => require("next-router-mock"));
 vi.mock("next/font/google", () => ({
   Plus_Jakarta_Sans: () => ({

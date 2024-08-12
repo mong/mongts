@@ -3,9 +3,7 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "totsnitt"
-      ],
+      "x": ["totsnitt"],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall HbA1c-prøver pr. 10 000 innbyggere",
@@ -15,31 +13,37 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "tot2021",
-        "tot2022",
-        "tot2023"
-      ],
+      "annualVar": ["tot2021", "tot2022", "tot2023"],
       "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_2",
+      "x": ["totsnitt"],
+      "y": "borhf",
+      "xLabel": {
+        "nb": "Antall HbA1c-prøver pr. 10 000 innbyggere",
+        "en": "tmp"
+      },
+      "yLabel": {
+        "nb": "Helseregioner",
+        "en": "Health regions"
+      },
+      "annualVar": ["tot2021", "tot2022", "tot2023"],
+      "annualVarLabels": {
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "ratesnitt_andel_int"
-      ],
+      "x": ["ratesnitt_andel_int"],
       "y": "bohf",
       "xLabel": {
         "nb": "Andel gjentatte HbA1c-prøver innen anbefalt tid",
@@ -55,16 +59,8 @@
         "rate2022_andel_int"
       ],
       "annualVarLabels": {
-        "nb": [
-          "2020",
-          "2021",
-          "2022"
-        ],
-        "en": [
-          "2020",
-          "2021",
-          "2022"
-        ]
+        "nb": ["2020", "2021", "2022"],
+        "en": ["2020", "2021", "2022"]
       },
       "format": ",.0%"
     },
@@ -72,9 +68,7 @@
       "type": "linechart",
       "data": "datasett_3",
       "label": "gender",
-      "x": [
-        "alder"
-      ],
+      "x": ["alder"],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
@@ -586,6 +580,83 @@
           "tot_pop": 5435207.66667,
           "prove_pr_pas": 1.467678813,
           "borhf": null
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "datasett_2",
+      "description": "Ekstradatasettet for gitt resultatboks",
+      "data": [
+        {
+          "borhf": "Helse Nord",
+          "tot2021": 4066.41955956,
+          "tot2022": 4243.98523515,
+          "tot2023": 4349.38911346,
+          "totsnitt": 4220.10886355,
+          "andel_priv": 0.0501567252492,
+          "tot_events": 213698.333333,
+          "tot_pas": 151816.666667,
+          "tot_pop": 482658.333333,
+          "prove_pr_pas": 1.40760786036,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "borhf": "Helse Midt-Norge",
+          "tot2021": 4377.5078444,
+          "tot2022": 4471.94676919,
+          "tot2023": 4639.77543235,
+          "totsnitt": 4496.88375822,
+          "andel_priv": 0.250049720069,
+          "tot_events": 337722.333333,
+          "tot_pas": 237436,
+          "tot_pop": 741160.666667,
+          "prove_pr_pas": 1.42237206377,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "borhf": "Helse Vest",
+          "tot2021": 4479.87284491,
+          "tot2022": 4621.50002614,
+          "tot2023": 4653.20344868,
+          "totsnitt": 4584.96068605,
+          "andel_priv": 0.0907893278244,
+          "tot_events": 500840.666667,
+          "tot_pas": 346849.333333,
+          "tot_pop": 1129036.66667,
+          "prove_pr_pas": 1.44397183023,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "borhf": "Helse Sør-Øst",
+          "tot2021": 5161.16467487,
+          "tot2022": 5353.98483589,
+          "tot2023": 5545.03628792,
+          "totsnitt": 5354.17887291,
+          "andel_priv": 0.297875125741,
+          "tot_events": 1649888,
+          "tot_pas": 1101578.66667,
+          "tot_pop": 3082352,
+          "prove_pr_pas": 1.49774868552,
+          "bohf": null,
+          "ermann": null
+        },
+        {
+          "borhf": "Norge",
+          "tot2021": 4812.58565936,
+          "tot2022": 4980.89127361,
+          "tot2023": 5130.11517511,
+          "totsnitt": 4975.13229581,
+          "andel_priv": 0.234293039353,
+          "tot_events": 2702149.33333,
+          "tot_pas": 1836535.66667,
+          "tot_pop": 5435207.66667,
+          "prove_pr_pas": 1.47132962478,
+          "bohf": null,
+          "ermann": null
         }
       ]
     },
