@@ -3,9 +3,7 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "andel_priv"
-      ],
+      "x": ["andel_priv"],
       "y": "bohf",
       "xLabel": {
         "nb": "Andel av undersøkelsene utført ved private røntgeninstitutt",
@@ -20,19 +18,10 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "privsnitt",
-        "offsnitt"
-      ],
+      "x": ["privsnitt", "offsnitt"],
       "xLegend": {
-        "nb": [
-          "Private røntgeninstitutt",
-          "Offentlig"
-        ],
-        "en": [
-          "Private clinics",
-          "Public"
-        ]
+        "nb": ["Private røntgeninstitutt", "Offentlig"],
+        "en": ["Private clinics", "Public"]
       },
       "y": "bohf",
       "xLabel": {
@@ -126,7 +115,7 @@
     {
       "type": "data",
       "label": "datasett_1",
-      "national": "Norge",
+      "national": "Norway",
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {

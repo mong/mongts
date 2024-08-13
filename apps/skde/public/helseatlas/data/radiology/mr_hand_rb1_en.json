@@ -3,9 +3,7 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "totAverage"
-      ],
+      "x": ["totAverage"],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall (rate) MR hånd pr. 10 000 innbyggere",
@@ -15,28 +13,10 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "tot2018",
-        "tot2019",
-        "tot2020",
-        "tot2021",
-        "tot2022"
-      ],
+      "annualVar": ["tot2018", "tot2019", "tot2020", "tot2021", "tot2022"],
       "annualVarLabels": {
-        "nb": [
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022"
-        ],
-        "en": [
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022"
-        ]
+        "nb": ["2018", "2019", "2020", "2021", "2022"],
+        "en": ["2018", "2019", "2020", "2021", "2022"]
       },
       "format": ",.0f"
     },
@@ -44,9 +24,7 @@
       "type": "linechart",
       "data": "datasett_2",
       "label": "gender",
-      "x": [
-        "alder"
-      ],
+      "x": ["alder"],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
@@ -62,9 +40,7 @@
       "type": "linechart",
       "data": "datasett_3",
       "label": "tid",
-      "x": [
-        "mnd"
-      ],
+      "x": ["mnd"],
       "y": "antall",
       "xLabel": {
         "nb": "Måned",
@@ -165,7 +141,7 @@
     {
       "type": "data",
       "label": "datasett_1",
-      "national": "Norge",
+      "national": "Norway",
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
@@ -442,7 +418,7 @@
           "tot_pr_pas": 1.05774165954
         },
         {
-          "bohf": "Norge",
+          "bohf": "Norway",
           "tot2018": 35.6805162026,
           "tot2019": 35.8056323585,
           "tot2020": 34.6002573682,
@@ -464,14 +440,14 @@
         {
           "alder": 0,
           "ermann": "Kvinner",
-          "pctandel": 7.426165351e-06,
+          "pctandel": 7.426165351e-6,
           "gender": "Women",
           "bohf": null
         },
         {
           "alder": 0,
           "ermann": "Menn",
-          "pctandel": 7.03650538996e-06,
+          "pctandel": 7.03650538996e-6,
           "gender": "Men",
           "bohf": null
         },
@@ -485,77 +461,77 @@
         {
           "alder": 1,
           "ermann": "Menn",
-          "pctandel": 6.88112850507e-06,
+          "pctandel": 6.88112850507e-6,
           "gender": "Men",
           "bohf": null
         },
         {
           "alder": 2,
           "ermann": "Kvinner",
-          "pctandel": 7.10378631811e-06,
+          "pctandel": 7.10378631811e-6,
           "gender": "Women",
           "bohf": null
         },
         {
           "alder": 2,
           "ermann": "Menn",
-          "pctandel": 1.33661248931e-05,
+          "pctandel": 1.33661248931e-5,
           "gender": "Men",
           "bohf": null
         },
         {
           "alder": 3,
           "ermann": "Kvinner",
-          "pctandel": 6.95739292572e-06,
+          "pctandel": 6.95739292572e-6,
           "gender": "Women",
           "bohf": null
         },
         {
           "alder": 3,
           "ermann": "Menn",
-          "pctandel": 1.31116588871e-05,
+          "pctandel": 1.31116588871e-5,
           "gender": "Men",
           "bohf": null
         },
         {
           "alder": 4,
           "ermann": "Kvinner",
-          "pctandel": 1.364526407e-05,
+          "pctandel": 1.364526407e-5,
           "gender": "Women",
           "bohf": null
         },
         {
           "alder": 4,
           "ermann": "Menn",
-          "pctandel": 6.45323662083e-06,
+          "pctandel": 6.45323662083e-6,
           "gender": "Men",
           "bohf": null
         },
         {
           "alder": 5,
           "ermann": "Kvinner",
-          "pctandel": 6.69891075711e-05,
+          "pctandel": 6.69891075711e-5,
           "gender": "Women",
           "bohf": null
         },
         {
           "alder": 5,
           "ermann": "Menn",
-          "pctandel": 3.17313245289e-05,
+          "pctandel": 3.17313245289e-5,
           "gender": "Men",
           "bohf": null
         },
         {
           "alder": 6,
           "ermann": "Kvinner",
-          "pctandel": 8.61280790788e-05,
+          "pctandel": 8.61280790788e-5,
           "gender": "Women",
           "bohf": null
         },
         {
           "alder": 6,
           "ermann": "Menn",
-          "pctandel": 5.66322678077e-05,
+          "pctandel": 5.66322678077e-5,
           "gender": "Men",
           "bohf": null
         },
@@ -569,7 +545,7 @@
         {
           "alder": 7,
           "ermann": "Menn",
-          "pctandel": 9.91682265002e-05,
+          "pctandel": 9.91682265002e-5,
           "gender": "Men",
           "bohf": null
         },
