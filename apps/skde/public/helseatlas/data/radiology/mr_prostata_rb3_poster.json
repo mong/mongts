@@ -3,9 +3,7 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "k_f_us_andel"
-      ],
+      "x": ["k_f_us_andel"],
       "y": "bohf",
       "xLabel": {
         "nb": "Andel av MR prostata utført på pasienter med kreftdiagnose",
@@ -20,19 +18,10 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "pfsnitt",
-        "npfsnitt"
-      ],
+      "x": ["pfsnitt", "npfsnitt"],
       "xLegend": {
-        "nb": [
-          "Pakkeforløp",
-          "Ikke pakkeforløp"
-        ],
-        "en": [
-          "Pakkeforløp",
-          "Ikke pakkeforløp"
-        ]
+        "nb": ["Pakkeforløp", "Ikke pakkeforløp"],
+        "en": ["Pakkeforløp", "Ikke pakkeforløp"]
       },
       "y": "bohf",
       "xLabel": {
@@ -48,23 +37,11 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "pfsnitt",
-        "k_f_us_rate",
-        "restrate"
-      ],
+      "x": ["pfsnitt", "k_f_us_rate", "restrate"],
       "y": "bohf",
       "xLegend": {
-        "nb": [
-          "I Pakkeforløp",
-          "Med kreftdiagnose",
-          "Uten"
-        ],
-        "en": [
-          "I Pakkeforløp",
-          "Med kreftdiagnose",
-          "Uten"
-        ]
+        "nb": ["I Pakkeforløp", "Med kreftdiagnose", "Uten"],
+        "en": ["I Pakkeforløp", "Med kreftdiagnose", "Uten"]
       },
       "xLabel": {
         "nb": "Status ved MR-undersøkelsen, antall (rate) pr. 10 000 menn",
@@ -79,9 +56,7 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "psasnitt"
-      ],
+      "x": ["psasnitt"],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall (rate) PSA-tester pr. 10 000 menn",
@@ -188,7 +163,7 @@
     {
       "type": "data",
       "label": "datasett_1",
-      "national": "Norge",
+      "national": "Norway",
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
@@ -549,7 +524,7 @@
           "andel_ikke_pf_k": 0.369294141929
         },
         {
-          "bohf": "Norge",
+          "bohf": "Norway",
           "k_f_us_rate": 13.7269936016,
           "k_f_us_ant": 2097,
           "npfsnitt": 57.3071566872,
