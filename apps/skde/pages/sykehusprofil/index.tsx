@@ -268,7 +268,7 @@ export const Skde = (): JSX.Element => {
           <Grid container spacing={2}>
             <Grid>
               <ItemBox height={440} sx={{ overflow: "auto" }}>
-                <Grid container spacing={2}>
+                <Grid container>
                   <Grid xs={12} sm={4} lg={4} xl={4} xxl={4}>
                     <img
                       src={logo.src}
@@ -314,8 +314,9 @@ export const Skde = (): JSX.Element => {
                     >
                       <h2 style={titleStyle}>Tilknyttede enheter</h2>
                       <div style={{ margin: textMargin }}>
-                        Følgende helseforetak/sykehus hører til under valgt
-                        enhet:
+                        Her vises behandlingssteder som er tilhørende til valgt
+                        helseforetak. Du kan trykke på behandlingsstedet for å
+                        enkelt kunne velge det i Sykehusprofil
                       </div>
                       {unitNamesQuery.data ? (
                         <SubUnits
@@ -333,8 +334,10 @@ export const Skde = (): JSX.Element => {
               <ItemBox sx={{ overflow: "auto" }}>
                 <h2 style={titleStyle}>Utvikling over tid</h2>
                 <div style={{ margin: textMargin }}>
-                  Grafen viser andel/antall kvalitetsindikatorer som har hatt
-                  høy, middels eller lav måloppnåelse per år.
+                  Grafen viser andel eller antall av alle kvalitetsindikatorer
+                  fra de nasjonale medisinske kvalitetsregistre. Grafen viser
+                  hvilke som har hatt høy, middels eller lav måloppnåelse de
+                  siste årene.
                 </div>
                 <ThemeProvider theme={lineChartTheme}>
                   <IndicatorLinechart {...indicatorParams} />
@@ -353,8 +356,10 @@ export const Skde = (): JSX.Element => {
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <h2 style={titleStyle}>Fagområder</h2>
                 <div style={{ margin: textMargin }}>
-                  Oversikt over måloppnåelsen på alle indikatorer under hvert
-                  fagområde.
+                  Alle kvalitetsindikatorene vist med symbol for høy, middels
+                  eller lav måloppnåelse bare fordelt på fagområder. Du kan
+                  trykke på fagområde for å vise hvilke registre som er i
+                  fagområdet.
                 </div>
                 <MedfieldTable {...medfieldTableProps} />
               </ExpandableItemBox>
@@ -364,8 +369,9 @@ export const Skde = (): JSX.Element => {
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <h2 style={titleStyle}>Fagområder (dekningsgrad)</h2>
                 <div style={{ margin: textMargin }}>
-                  Oversikt over måloppnåelsen på datakvalitet under hvert
-                  fagområde.
+                  Her vises dekningsgraden eller datakvaliteten fordelt på
+                  fagområder som forteller om datagrunnlaget fra registeret med
+                  det valgte helseforetak eller sykehuset
                 </div>
                 <MedfieldTable {...medfieldTablePropsDG} />
               </ExpandableItemBox>
@@ -376,8 +382,10 @@ export const Skde = (): JSX.Element => {
                 <h2 style={titleStyle}>Siste års måloppnåelse</h2>
                 <h2 style={titleStyle}>Fagområder</h2>
                 <div style={{ margin: textMargin }}>
-                  Oversikt over indikatorer med høy, middels eller lav
-                  måloppnåelse det forrige år.
+                  Liste over kvalitetsindikatorer med beskrivelse som er fordelt
+                  på høy, middels eller lav måloppnåelse. Du kan trykke på
+                  indikatorene for å se datakvaliteten og mer beskrivelse av
+                  indikatorene.
                 </div>
                 <LowLevelIndicatorList
                   context={"caregiver"}
