@@ -276,6 +276,7 @@ export const Skde = (): JSX.Element => {
                     xl={4}
                     xxl={4}
                     alignContent="center"
+                    style={{ textAlign: "center" }}
                   >
                     <img
                       src={logo.src}
@@ -323,7 +324,7 @@ export const Skde = (): JSX.Element => {
                       <div style={{ margin: textMargin }}>
                         Her vises behandlingssteder som er tilhørende til valgt
                         helseforetak. Du kan trykke på behandlingsstedet for å
-                        enkelt kunne velge det i Sykehusprofil
+                        enkelt kunne velge det i Sykehusprofil.
                       </div>
                       {unitNamesQuery.data ? (
                         <SubUnits
@@ -378,7 +379,7 @@ export const Skde = (): JSX.Element => {
                 <div style={{ margin: textMargin }}>
                   Her vises dekningsgraden eller datakvaliteten fordelt på
                   fagområder som forteller om datagrunnlaget fra registeret med
-                  det valgte helseforetak eller sykehuset
+                  det valgte helseforetak eller sykehuset.
                 </div>
                 <MedfieldTable {...medfieldTablePropsDG} />
               </ExpandableItemBox>
@@ -387,7 +388,6 @@ export const Skde = (): JSX.Element => {
             <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <h2 style={titleStyle}>Siste års måloppnåelse</h2>
-                <h2 style={titleStyle}>Fagområder</h2>
                 <div style={{ margin: textMargin }}>
                   Liste over kvalitetsindikatorer med beskrivelse som er fordelt
                   på høy, middels eller lav måloppnåelse. Du kan trykke på
