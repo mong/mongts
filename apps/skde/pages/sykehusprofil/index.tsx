@@ -266,10 +266,10 @@ export const Skde = (): JSX.Element => {
 
         <Box margin={2}>
           <Grid container spacing={2}>
-            <Grid xs={12} sm={12} lg={12} xl={12} xxl={12}>
-              <ItemBox height={440}>
+            <Grid>
+              <ItemBox height={440} sx={{ overflow: "auto" }}>
                 <Grid container spacing={2}>
-                  <Grid xs={4} sm={4} lg={4} xl={4} xxl={4}>
+                  <Grid xs={12} sm={4} lg={4} xl={4} xxl={4}>
                     <img
                       src={logo.src}
                       alt={"Logo"}
@@ -278,7 +278,7 @@ export const Skde = (): JSX.Element => {
                     />
                   </Grid>
 
-                  <Grid xs={4} sm={4} lg={4} xl={4} xxl={4}>
+                  <Grid xs={6} sm={4} lg={4} xl={4} xxl={4}>
                     <div
                       style={{
                         display: "flex",
@@ -307,7 +307,7 @@ export const Skde = (): JSX.Element => {
                     </div>
                   </Grid>
 
-                  <Grid xs={4} sm={4} lg={4} xl={4} xxl={4}>
+                  <Grid xs={6} sm={4} lg={4} xl={4} xxl={4}>
                     <ItemBox
                       height={440}
                       sx={{ overflow: "auto", marginRight: 2 }}
@@ -360,7 +360,7 @@ export const Skde = (): JSX.Element => {
               </ExpandableItemBox>
             </Grid>
 
-            <Grid xs={6}>
+            <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <h2 style={titleStyle}>Fagområder (dekningsgrad)</h2>
                 <div style={{ margin: textMargin }}>
@@ -371,7 +371,7 @@ export const Skde = (): JSX.Element => {
               </ExpandableItemBox>
             </Grid>
 
-            <Grid xs={6}>
+            <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <h2 style={titleStyle}>Siste års måloppnåelse</h2>
                 <h2 style={titleStyle}>Fagområder</h2>
