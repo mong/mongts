@@ -36,35 +36,35 @@
     },
     {
       "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "ref_innb_snitt"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Refusjon pr. innbyggere",
+        "en": "Reimbursement per population"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
       "data": "datasett_2",
       "x": [
-        "totsnitt"
+        "ref_innb_snitt"
       ],
       "y": "borhf",
       "xLabel": {
-        "nb": "Antall biokjemiskeprøver pr. 10 000 innbyggere",
-        "en": "Number of biochemistry tests pr. 10 000 population"
+        "nb": "Refusjon pr. innbyggere",
+        "en": "Reimbursement per population"
       },
       "yLabel": {
         "nb": "Helseregioner",
         "en": "Health regions"
-      },
-      "annualVar": [
-        "tot2021",
-        "tot2022",
-        "tot2023"
-      ],
-      "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
       },
       "format": ",.0f"
     },
@@ -90,8 +90,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2021–2023. <br>* Antall pr. 10  000 innbyggere. Ratene er kjønns- og aldersjusterte. <br>** Andelene er basert på kjønns- og aldersjusterte rater.",
-        "en": "Annual average during 2021–2023. <br>* Rate per 10,000 population. Rates are gender- and age-adjusted. <br>** Proportions are based on adjusted rates."
+        "nb": "Årlige gjennomsnittsverdier for perioden 2021–2023. <br>* Antall pr. 10  000 innbyggere. Ratene er kjønns- og aldersjusterte. <br>** Andelene er basert på kjønns- og aldersjusterte rater. <br>*** Kjønns- og aldersjusterte årlige refusjon for perioden 2021–2023.",
+        "en": "Annual average during 2021–2023. <br>* Rate per 10,000 population. Rates are gender- and age-adjusted. <br>** Proportions are based on adjusted rates. <br>*** Gender- and age-adjusted annual reimbursement during 2021–2023."
       },
       "columns": [
         {
@@ -142,6 +142,13 @@
           "label_en": "Proportion** at GP",
           "typeVar": "number",
           "format": ",.0%"
+        },
+        {
+          "id": "ref_innb_snitt",
+          "label_no": "refusjon*** pr. innb.",
+          "label_en": "reimbursement*** per inhabitant",
+          "typeVar": "number",
+          "format": ",.0f"
         }
       ]
     },
@@ -196,6 +203,7 @@
           "tot_pas": 59684.6666667,
           "tot_pop": 74308.3333333,
           "prove_pr_pas": 2.74296022429,
+          "ref_innb_snitt": 256.347837288,
           "borhf": null
         },
         {
@@ -210,6 +218,7 @@
           "tot_pas": 146981.333333,
           "tot_pop": 192689.666667,
           "prove_pr_pas": 2.57155783954,
+          "ref_innb_snitt": 248.519665329,
           "borhf": null
         },
         {
@@ -224,6 +233,7 @@
           "tot_pas": 104257.666667,
           "tot_pop": 138332.666667,
           "prove_pr_pas": 2.74083440706,
+          "ref_innb_snitt": 251.281311297,
           "borhf": null
         },
         {
@@ -238,6 +248,7 @@
           "tot_pas": 57551.3333333,
           "tot_pop": 77327.6666667,
           "prove_pr_pas": 2.83603623432,
+          "ref_innb_snitt": 280.982787926,
           "borhf": null
         },
         {
@@ -252,6 +263,7 @@
           "tot_pas": 105092.666667,
           "tot_pop": 134761.666667,
           "prove_pr_pas": 2.59332715889,
+          "ref_innb_snitt": 255.21188764,
           "borhf": null
         },
         {
@@ -266,6 +278,7 @@
           "tot_pas": 255204,
           "tot_pop": 339813.333333,
           "prove_pr_pas": 2.60769293062,
+          "ref_innb_snitt": 244.270694943,
           "borhf": null
         },
         {
@@ -280,6 +293,7 @@
           "tot_pas": 214426,
           "tot_pop": 266585.666667,
           "prove_pr_pas": 2.77732644362,
+          "ref_innb_snitt": 274.021296813,
           "borhf": null
         },
         {
@@ -294,6 +308,7 @@
           "tot_pas": 87007,
           "tot_pop": 108538.333333,
           "prove_pr_pas": 2.56454078407,
+          "ref_innb_snitt": 252.014636039,
           "borhf": null
         },
         {
@@ -308,6 +323,7 @@
           "tot_pas": 340878,
           "tot_pop": 461698.666667,
           "prove_pr_pas": 2.48458783886,
+          "ref_innb_snitt": 276.910193601,
           "borhf": null
         },
         {
@@ -322,6 +338,7 @@
           "tot_pas": 142478,
           "tot_pop": 181471.666667,
           "prove_pr_pas": 2.53477729895,
+          "ref_innb_snitt": 268.120140209,
           "borhf": null
         },
         {
@@ -336,6 +353,7 @@
           "tot_pas": 283710.666667,
           "tot_pop": 377328,
           "prove_pr_pas": 2.34466569228,
+          "ref_innb_snitt": 256.298156129,
           "borhf": null
         },
         {
@@ -350,6 +368,7 @@
           "tot_pas": 275575.666667,
           "tot_pop": 323951.333333,
           "prove_pr_pas": 2.41611922678,
+          "ref_innb_snitt": 340.743756775,
           "borhf": null
         },
         {
@@ -364,6 +383,7 @@
           "tot_pas": 487445,
           "tot_pop": 594405.333333,
           "prove_pr_pas": 2.37545706011,
+          "ref_innb_snitt": 319.718256999,
           "borhf": null
         },
         {
@@ -378,6 +398,7 @@
           "tot_pas": 217518.666667,
           "tot_pop": 282430.333333,
           "prove_pr_pas": 2.28470659989,
+          "ref_innb_snitt": 309.039670255,
           "borhf": null
         },
         {
@@ -392,6 +413,7 @@
           "tot_pas": 113036,
           "tot_pop": 163625,
           "prove_pr_pas": 2.17251141229,
+          "ref_innb_snitt": 264.204004745,
           "borhf": null
         },
         {
@@ -406,6 +428,7 @@
           "tot_pas": 105584.666667,
           "tot_pop": 145340.333333,
           "prove_pr_pas": 2.32060526465,
+          "ref_innb_snitt": 291.379417469,
           "borhf": null
         },
         {
@@ -420,6 +443,7 @@
           "tot_pas": 285803.333333,
           "tot_pop": 339460.666667,
           "prove_pr_pas": 2.56244270536,
+          "ref_innb_snitt": 298.238026978,
           "borhf": null
         },
         {
@@ -434,6 +458,7 @@
           "tot_pas": 417766.666667,
           "tot_pop": 495858,
           "prove_pr_pas": 2.41252533312,
+          "ref_innb_snitt": 344.745983593,
           "borhf": null
         },
         {
@@ -448,6 +473,7 @@
           "tot_pas": 216156.666667,
           "tot_pop": 250921.666667,
           "prove_pr_pas": 2.43678813206,
+          "ref_innb_snitt": 354.916572041,
           "borhf": null
         },
         {
@@ -462,6 +488,7 @@
           "tot_pas": 140185.333333,
           "tot_pop": 174350,
           "prove_pr_pas": 2.43424419102,
+          "ref_innb_snitt": 285.679525483,
           "borhf": null
         },
         {
@@ -476,6 +503,7 @@
           "tot_pas": 260712.333333,
           "tot_pop": 312009.333333,
           "prove_pr_pas": 2.44128969733,
+          "ref_innb_snitt": 290.619089827,
           "borhf": null
         },
         {
@@ -490,6 +518,7 @@
           "tot_pas": 4293725.66667,
           "tot_pop": 5435207.66667,
           "prove_pr_pas": 2.48662633857,
+          "ref_innb_snitt": 292.854539395,
           "borhf": null
         }
       ]
@@ -501,76 +530,31 @@
       "data": [
         {
           "borhf": "Helse Nord",
-          "tot2021": 19361.245073,
-          "tot2022": 20137.350927,
-          "tot2023": 19926.8527734,
-          "totsnitt": 19805.6541872,
-          "andel_lege": 0.277871792756,
-          "andel_priv": 0.0292528144041,
-          "tot_events": 990654.333333,
-          "tot_pas": 368050.333333,
-          "tot_pop": 482658.333333,
-          "prove_pr_pas": 2.69162732271,
+          "ref_innb_snitt": 255.718413538,
           "bohf": null,
           "ermann": null
         },
         {
           "borhf": "Helse Midt-Norge",
-          "tot2021": 19648.3963251,
-          "tot2022": 20716.3639108,
-          "tot2023": 21074.9199264,
-          "totsnitt": 20480.7729466,
-          "andel_lege": 0.282094977663,
-          "andel_priv": 0.154858783834,
-          "tot_events": 1533564.33333,
-          "tot_pas": 574104,
-          "tot_pop": 741160.666667,
-          "prove_pr_pas": 2.67123088035,
+          "ref_innb_snitt": 256.963972989,
           "bohf": null,
           "ermann": null
         },
         {
           "borhf": "Helse Vest",
-          "tot2021": 18384.0139851,
-          "tot2022": 19192.0855775,
-          "tot2023": 19574.6636529,
-          "totsnitt": 19051.3300815,
-          "andel_lege": 0.289055396027,
-          "andel_priv": 0.0655047267566,
-          "tot_events": 2096431,
-          "tot_pas": 853147,
-          "tot_pop": 1129036.66667,
-          "prove_pr_pas": 2.45729165079,
+          "ref_innb_snitt": 266.217219582,
           "bohf": null,
           "ermann": null
         },
         {
           "borhf": "Helse Sør-Øst",
-          "tot2021": 18731.4916808,
-          "tot2022": 19945.2834304,
-          "tot2023": 20279.5118358,
-          "totsnitt": 19653.8844992,
-          "andel_lege": 0.316605461954,
-          "andel_priv": 0.242699388721,
-          "tot_events": 6055962,
-          "tot_pas": 2505028.66667,
-          "tot_pop": 3082352,
-          "prove_pr_pas": 2.41752203501,
+          "ref_innb_snitt": 316.327153244,
           "bohf": null,
           "ermann": null
         },
         {
           "borhf": "Norge",
-          "tot2021": 18839.5347134,
-          "tot2022": 19910.3473191,
-          "tot2023": 20208.3489611,
-          "totsnitt": 19653.6837898,
-          "andel_lege": 0.302644328146,
-          "andel_priv": 0.175744875201,
-          "tot_events": 10676611.6667,
-          "tot_pas": 4293586,
-          "tot_pop": 5435207.66667,
-          "prove_pr_pas": 2.48664209047,
+          "ref_innb_snitt": 292.854539395,
           "bohf": null,
           "ermann": null
         }
@@ -586,6 +570,7 @@
           "ermann": 0,
           "pctandel": 0.183233203871,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -594,6 +579,7 @@
           "ermann": 1,
           "pctandel": 0.218863463649,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -602,6 +588,7 @@
           "ermann": 0,
           "pctandel": 0.31963586802,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -610,6 +597,7 @@
           "ermann": 1,
           "pctandel": 0.355410287287,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -618,6 +606,7 @@
           "ermann": 0,
           "pctandel": 0.295631171414,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -626,6 +615,7 @@
           "ermann": 1,
           "pctandel": 0.322123609923,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -634,6 +624,7 @@
           "ermann": 0,
           "pctandel": 0.25625469624,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -642,6 +633,7 @@
           "ermann": 1,
           "pctandel": 0.275856191325,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -650,6 +642,7 @@
           "ermann": 0,
           "pctandel": 0.234241425657,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -658,6 +651,7 @@
           "ermann": 1,
           "pctandel": 0.250927652764,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -666,6 +660,7 @@
           "ermann": 0,
           "pctandel": 0.219489810957,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -674,6 +669,7 @@
           "ermann": 1,
           "pctandel": 0.230229798252,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -682,6 +678,7 @@
           "ermann": 0,
           "pctandel": 0.210861413296,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -690,6 +687,7 @@
           "ermann": 1,
           "pctandel": 0.214699219733,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -698,6 +696,7 @@
           "ermann": 0,
           "pctandel": 0.201315875187,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -706,6 +705,7 @@
           "ermann": 1,
           "pctandel": 0.204199774392,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -714,6 +714,7 @@
           "ermann": 0,
           "pctandel": 0.197923530127,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -722,6 +723,7 @@
           "ermann": 1,
           "pctandel": 0.1967572305,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -730,6 +732,7 @@
           "ermann": 0,
           "pctandel": 0.19948402762,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -738,6 +741,7 @@
           "ermann": 1,
           "pctandel": 0.195919272035,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -746,6 +750,7 @@
           "ermann": 0,
           "pctandel": 0.204573236047,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -754,6 +759,7 @@
           "ermann": 1,
           "pctandel": 0.202151359681,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -762,6 +768,7 @@
           "ermann": 0,
           "pctandel": 0.213464159856,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -770,6 +777,7 @@
           "ermann": 1,
           "pctandel": 0.206722659021,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -778,6 +786,7 @@
           "ermann": 0,
           "pctandel": 0.232735326689,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -786,6 +795,7 @@
           "ermann": 1,
           "pctandel": 0.208021872371,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -794,6 +804,7 @@
           "ermann": 0,
           "pctandel": 0.272221973767,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -802,6 +813,7 @@
           "ermann": 1,
           "pctandel": 0.221715472532,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -810,6 +822,7 @@
           "ermann": 0,
           "pctandel": 0.336567096832,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -818,6 +831,7 @@
           "ermann": 1,
           "pctandel": 0.253454665947,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -826,6 +840,7 @@
           "ermann": 0,
           "pctandel": 0.388612367535,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -834,6 +849,7 @@
           "ermann": 1,
           "pctandel": 0.273948197042,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -842,6 +858,7 @@
           "ermann": 0,
           "pctandel": 0.441213258286,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -850,6 +867,7 @@
           "ermann": 1,
           "pctandel": 0.290181727966,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -858,6 +876,7 @@
           "ermann": 0,
           "pctandel": 0.478970739369,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -866,6 +885,7 @@
           "ermann": 1,
           "pctandel": 0.305532456097,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -874,6 +894,7 @@
           "ermann": 0,
           "pctandel": 0.499983996415,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -882,6 +903,7 @@
           "ermann": 1,
           "pctandel": 0.307026154615,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -890,6 +912,7 @@
           "ermann": 0,
           "pctandel": 0.490580083605,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -898,6 +921,7 @@
           "ermann": 1,
           "pctandel": 0.299111132294,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -906,6 +930,7 @@
           "ermann": 0,
           "pctandel": 0.461680951932,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -914,6 +939,7 @@
           "ermann": 1,
           "pctandel": 0.262261911028,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -922,6 +948,7 @@
           "ermann": 0,
           "pctandel": 0.463737783458,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -930,6 +957,7 @@
           "ermann": 1,
           "pctandel": 0.261249152795,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -938,6 +966,7 @@
           "ermann": 0,
           "pctandel": 0.469605151317,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -946,6 +975,7 @@
           "ermann": 1,
           "pctandel": 0.264510543284,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -954,6 +984,7 @@
           "ermann": 0,
           "pctandel": 0.474181151245,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -962,6 +993,7 @@
           "ermann": 1,
           "pctandel": 0.267120777251,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -970,6 +1002,7 @@
           "ermann": 0,
           "pctandel": 0.480278216434,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -978,6 +1011,7 @@
           "ermann": 1,
           "pctandel": 0.268907143254,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -986,6 +1020,7 @@
           "ermann": 0,
           "pctandel": 0.498825054696,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -994,6 +1029,7 @@
           "ermann": 1,
           "pctandel": 0.275421048039,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1002,6 +1038,7 @@
           "ermann": 0,
           "pctandel": 0.513235852747,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1010,6 +1047,7 @@
           "ermann": 1,
           "pctandel": 0.281013120316,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1018,6 +1056,7 @@
           "ermann": 0,
           "pctandel": 0.520470130573,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1026,6 +1065,7 @@
           "ermann": 1,
           "pctandel": 0.284977212596,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1034,6 +1074,7 @@
           "ermann": 0,
           "pctandel": 0.528285012764,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1042,6 +1083,7 @@
           "ermann": 1,
           "pctandel": 0.289326456121,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1050,6 +1092,7 @@
           "ermann": 0,
           "pctandel": 0.538196153106,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1058,6 +1101,7 @@
           "ermann": 1,
           "pctandel": 0.294561039736,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1066,6 +1110,7 @@
           "ermann": 0,
           "pctandel": 0.557332337007,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1074,6 +1119,7 @@
           "ermann": 1,
           "pctandel": 0.306895732885,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1082,6 +1128,7 @@
           "ermann": 0,
           "pctandel": 0.585040674902,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1090,6 +1137,7 @@
           "ermann": 1,
           "pctandel": 0.318546902627,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1098,6 +1146,7 @@
           "ermann": 0,
           "pctandel": 0.597053318301,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1106,6 +1155,7 @@
           "ermann": 1,
           "pctandel": 0.325285096343,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1114,6 +1164,7 @@
           "ermann": 0,
           "pctandel": 0.597526815984,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1122,6 +1173,7 @@
           "ermann": 1,
           "pctandel": 0.330244653187,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1130,6 +1182,7 @@
           "ermann": 0,
           "pctandel": 0.593662454087,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1138,6 +1191,7 @@
           "ermann": 1,
           "pctandel": 0.329225815108,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1146,6 +1200,7 @@
           "ermann": 0,
           "pctandel": 0.579577710131,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1154,6 +1209,7 @@
           "ermann": 1,
           "pctandel": 0.329117672395,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1162,6 +1218,7 @@
           "ermann": 0,
           "pctandel": 0.559917903306,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1170,6 +1227,7 @@
           "ermann": 1,
           "pctandel": 0.328737308333,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1178,6 +1236,7 @@
           "ermann": 0,
           "pctandel": 0.547640285436,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1186,6 +1245,7 @@
           "ermann": 1,
           "pctandel": 0.333739561929,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1194,6 +1254,7 @@
           "ermann": 0,
           "pctandel": 0.533266528396,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1202,6 +1263,7 @@
           "ermann": 1,
           "pctandel": 0.332167045984,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1210,6 +1272,7 @@
           "ermann": 0,
           "pctandel": 0.525753897452,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1218,6 +1281,7 @@
           "ermann": 1,
           "pctandel": 0.33838550974,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1226,6 +1290,7 @@
           "ermann": 0,
           "pctandel": 0.525284719184,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1234,6 +1299,7 @@
           "ermann": 1,
           "pctandel": 0.3466538599,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1242,6 +1308,7 @@
           "ermann": 0,
           "pctandel": 0.520178919356,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1250,6 +1317,7 @@
           "ermann": 1,
           "pctandel": 0.345380223566,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1258,6 +1326,7 @@
           "ermann": 0,
           "pctandel": 0.51477328653,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1266,6 +1335,7 @@
           "ermann": 1,
           "pctandel": 0.348440941881,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1274,6 +1344,7 @@
           "ermann": 0,
           "pctandel": 0.501956540812,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1282,6 +1353,7 @@
           "ermann": 1,
           "pctandel": 0.346931979019,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1290,6 +1362,7 @@
           "ermann": 0,
           "pctandel": 0.493802929105,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1298,6 +1371,7 @@
           "ermann": 1,
           "pctandel": 0.346068043916,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1306,6 +1380,7 @@
           "ermann": 0,
           "pctandel": 0.484818081898,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1314,6 +1389,7 @@
           "ermann": 1,
           "pctandel": 0.344223188545,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1322,6 +1398,7 @@
           "ermann": 0,
           "pctandel": 0.48512305485,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1330,6 +1407,7 @@
           "ermann": 1,
           "pctandel": 0.347429867294,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1338,6 +1416,7 @@
           "ermann": 0,
           "pctandel": 0.499694573221,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1346,6 +1425,7 @@
           "ermann": 1,
           "pctandel": 0.363331206193,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1354,6 +1434,7 @@
           "ermann": 0,
           "pctandel": 0.515294461715,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1362,6 +1443,7 @@
           "ermann": 1,
           "pctandel": 0.376774518988,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1370,6 +1452,7 @@
           "ermann": 0,
           "pctandel": 0.530186820817,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1378,6 +1461,7 @@
           "ermann": 1,
           "pctandel": 0.39711393054,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1386,6 +1470,7 @@
           "ermann": 0,
           "pctandel": 0.545944834824,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1394,6 +1479,7 @@
           "ermann": 1,
           "pctandel": 0.421250548826,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1402,6 +1488,7 @@
           "ermann": 0,
           "pctandel": 0.564046674752,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1410,6 +1497,7 @@
           "ermann": 1,
           "pctandel": 0.43824827536,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1418,6 +1506,7 @@
           "ermann": 0,
           "pctandel": 0.579375765669,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1426,6 +1515,7 @@
           "ermann": 1,
           "pctandel": 0.454545931126,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1434,6 +1524,7 @@
           "ermann": 0,
           "pctandel": 0.591391267724,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1442,6 +1533,7 @@
           "ermann": 1,
           "pctandel": 0.471743437873,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1450,6 +1542,7 @@
           "ermann": 0,
           "pctandel": 0.603238215537,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1458,6 +1551,7 @@
           "ermann": 1,
           "pctandel": 0.494166821272,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1466,6 +1560,7 @@
           "ermann": 0,
           "pctandel": 0.610127847171,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1474,6 +1569,7 @@
           "ermann": 1,
           "pctandel": 0.51432495199,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1482,6 +1578,7 @@
           "ermann": 0,
           "pctandel": 0.618250923131,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1490,6 +1587,7 @@
           "ermann": 1,
           "pctandel": 0.534377439949,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1498,6 +1596,7 @@
           "ermann": 0,
           "pctandel": 0.625339979078,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1506,6 +1605,7 @@
           "ermann": 1,
           "pctandel": 0.557336905211,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1514,6 +1614,7 @@
           "ermann": 0,
           "pctandel": 0.628622209941,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1522,6 +1623,7 @@
           "ermann": 1,
           "pctandel": 0.565995106775,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1530,6 +1632,7 @@
           "ermann": 0,
           "pctandel": 0.630242410729,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1538,6 +1641,7 @@
           "ermann": 1,
           "pctandel": 0.572629833236,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1546,6 +1650,7 @@
           "ermann": 0,
           "pctandel": 0.631035482935,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1554,6 +1659,7 @@
           "ermann": 1,
           "pctandel": 0.587465974156,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1562,6 +1668,7 @@
           "ermann": 0,
           "pctandel": 0.632761506819,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1570,6 +1677,7 @@
           "ermann": 1,
           "pctandel": 0.595597843324,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1578,6 +1686,7 @@
           "ermann": 0,
           "pctandel": 0.63378961308,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1586,6 +1695,7 @@
           "ermann": 1,
           "pctandel": 0.60815107677,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1594,6 +1704,7 @@
           "ermann": 0,
           "pctandel": 0.642009375312,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1602,6 +1713,7 @@
           "ermann": 1,
           "pctandel": 0.625189851685,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1610,6 +1722,7 @@
           "ermann": 0,
           "pctandel": 0.656088052269,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1618,6 +1731,7 @@
           "ermann": 1,
           "pctandel": 0.64127664465,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1626,6 +1740,7 @@
           "ermann": 0,
           "pctandel": 0.667962552116,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1634,6 +1749,7 @@
           "ermann": 1,
           "pctandel": 0.662032882839,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1642,6 +1758,7 @@
           "ermann": 0,
           "pctandel": 0.69244384031,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1650,6 +1767,7 @@
           "ermann": 1,
           "pctandel": 0.681120941853,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1658,6 +1776,7 @@
           "ermann": 0,
           "pctandel": 0.7032974983,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1666,6 +1785,7 @@
           "ermann": 1,
           "pctandel": 0.694381202569,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1674,6 +1794,7 @@
           "ermann": 0,
           "pctandel": 0.711657525675,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1682,6 +1803,7 @@
           "ermann": 1,
           "pctandel": 0.703353517921,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1690,6 +1812,7 @@
           "ermann": 0,
           "pctandel": 0.720310550188,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1698,6 +1821,7 @@
           "ermann": 1,
           "pctandel": 0.708002715342,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1706,6 +1830,7 @@
           "ermann": 0,
           "pctandel": 0.711430417017,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1714,6 +1839,7 @@
           "ermann": 1,
           "pctandel": 0.715014877546,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1722,6 +1848,7 @@
           "ermann": 0,
           "pctandel": 0.700889206108,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1730,6 +1857,7 @@
           "ermann": 1,
           "pctandel": 0.707615396926,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1738,6 +1866,7 @@
           "ermann": 0,
           "pctandel": 0.713541193912,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1746,6 +1875,7 @@
           "ermann": 1,
           "pctandel": 0.728062683643,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1754,6 +1884,7 @@
           "ermann": 0,
           "pctandel": 0.751227368568,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1762,6 +1893,7 @@
           "ermann": 1,
           "pctandel": 0.762316742964,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1770,6 +1902,7 @@
           "ermann": 0,
           "pctandel": 0.801394556151,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1778,6 +1911,7 @@
           "ermann": 1,
           "pctandel": 0.827759676789,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1786,6 +1920,7 @@
           "ermann": 0,
           "pctandel": 0.878228261349,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1794,6 +1929,7 @@
           "ermann": 1,
           "pctandel": 0.914709294585,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1802,6 +1938,7 @@
           "ermann": 0,
           "pctandel": 0.96186770428,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1810,6 +1947,7 @@
           "ermann": 1,
           "pctandel": 1.00139785878,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1818,6 +1956,7 @@
           "ermann": 0,
           "pctandel": 1.00295552737,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1826,6 +1965,7 @@
           "ermann": 1,
           "pctandel": 1.05056896095,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1834,6 +1974,7 @@
           "ermann": 0,
           "pctandel": 0.982209287315,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1842,6 +1983,7 @@
           "ermann": 1,
           "pctandel": 1.04381081081,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1850,6 +1992,7 @@
           "ermann": 0,
           "pctandel": 0.968222693746,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1858,6 +2001,7 @@
           "ermann": 1,
           "pctandel": 1.05377053111,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1866,6 +2010,7 @@
           "ermann": 0,
           "pctandel": 0.902852328473,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1874,6 +2019,7 @@
           "ermann": 1,
           "pctandel": 0.97351224043,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1882,6 +2028,7 @@
           "ermann": 0,
           "pctandel": 0.893676713905,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1890,6 +2037,7 @@
           "ermann": 1,
           "pctandel": 0.954720320769,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1898,6 +2046,7 @@
           "ermann": 0,
           "pctandel": 0.90386318095,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1906,6 +2055,7 @@
           "ermann": 1,
           "pctandel": 0.970795691101,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1914,6 +2064,7 @@
           "ermann": 0,
           "pctandel": 0.937028301887,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1922,6 +2073,7 @@
           "ermann": 1,
           "pctandel": 1.00197579088,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1930,6 +2082,7 @@
           "ermann": 0,
           "pctandel": 0.931312130883,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1938,6 +2091,7 @@
           "ermann": 1,
           "pctandel": 1.01822463397,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1946,6 +2100,7 @@
           "ermann": 0,
           "pctandel": 0.900103671537,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1954,6 +2109,7 @@
           "ermann": 1,
           "pctandel": 0.989662972826,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1962,6 +2118,7 @@
           "ermann": 0,
           "pctandel": 0.865199765965,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1970,6 +2127,7 @@
           "ermann": 1,
           "pctandel": 0.963978807262,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1978,6 +2136,7 @@
           "ermann": 0,
           "pctandel": 0.82999395554,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -1986,6 +2145,7 @@
           "ermann": 1,
           "pctandel": 0.923783921241,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -1994,6 +2154,7 @@
           "ermann": 0,
           "pctandel": 0.821867201644,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -2002,6 +2163,7 @@
           "ermann": 1,
           "pctandel": 0.925978707352,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -2010,6 +2172,7 @@
           "ermann": 0,
           "pctandel": 0.826797650943,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -2018,6 +2181,7 @@
           "ermann": 1,
           "pctandel": 0.958399053628,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -2026,6 +2190,7 @@
           "ermann": 0,
           "pctandel": 0.847643881542,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -2034,6 +2199,7 @@
           "ermann": 1,
           "pctandel": 0.969845003317,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -2042,6 +2208,7 @@
           "ermann": 0,
           "pctandel": 0.861530733073,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -2050,6 +2217,7 @@
           "ermann": 1,
           "pctandel": 0.992558208075,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -2058,6 +2226,7 @@
           "ermann": 0,
           "pctandel": 0.862751807023,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -2066,6 +2235,7 @@
           "ermann": 1,
           "pctandel": 0.987079861436,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -2074,6 +2244,7 @@
           "ermann": 0,
           "pctandel": 0.82185943837,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -2082,6 +2253,7 @@
           "ermann": 1,
           "pctandel": 0.982392228294,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -2090,6 +2262,7 @@
           "ermann": 0,
           "pctandel": 0.819081678268,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -2098,6 +2271,7 @@
           "ermann": 1,
           "pctandel": 0.998852647107,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         },
@@ -2106,6 +2280,7 @@
           "ermann": 0,
           "pctandel": 0.794127190136,
           "gender": "Kvinner",
+          "gender_en": "Wom",
           "bohf": null,
           "borhf": null
         },
@@ -2114,6 +2289,7 @@
           "ermann": 1,
           "pctandel": 0.973206377325,
           "gender": "Menn",
+          "gender_en": "Men",
           "bohf": null,
           "borhf": null
         }
