@@ -30,7 +30,6 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Stack,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
@@ -267,29 +266,36 @@ export const Skde = (): JSX.Element => {
 
         <Box margin={2}>
           <Grid container spacing={2}>
-            <Grid xs={12} sm={6} lg={6} xl={6} xxl={6}>
+            <Grid xs={12} sm={12} lg={12} xl={12} xxl={12}>
               <ItemBox height={440}>
-                <Grid container spacing={2} sx={{ overflow: "clip" }}>
-                  <Grid xs={5} margin={2}>
+                <Grid container spacing={2}>
+                  <Grid xs={4} sm={4} lg={4} xl={4} xxl={4}>
                     <img
                       src={logo.src}
                       alt={"Logo"}
                       width="100%"
-                      style={{ borderRadius: "50%", maxWidth: 300 }}
+                      style={{ borderRadius: "50%", maxWidth: 400 }}
                     />
                   </Grid>
-                  <Grid xs={12} sm={12} lg={6} xl={6} xxl={6}>
-                    <Stack>
-                      <h2 style={titleStyle}>{selectedTreatmentUnits[0]}</h2>
-                      <Divider />
-                      <Box
-                        sx={{
-                          marginRight: "20%",
-                          marginBottom: 0,
-                          display: "flex",
-                          justifyContent: "right",
-                        }}
-                      >
+
+                  <Grid xs={4} sm={4} lg={4} xl={4} xxl={4}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        height: "400px",
+                      }}
+                    >
+                      <h2 style={{ marginTop: 20, marginLeft: 20 }}>
+                        {selectedTreatmentUnits[0]}
+                      </h2>
+
+                      <div style={{ marginLeft: 8 }}>
+                        Her skal det stå noe om enheten. <br />
+                      </div>
+
+                      <div style={{ marginTop: "auto" }}>
+                        <Divider />
                         {unitUrl ? (
                           <ArrowLink
                             href={unitUrl}
@@ -297,26 +303,30 @@ export const Skde = (): JSX.Element => {
                             externalLink={true}
                           />
                         ) : null}
-                      </Box>
-                    </Stack>
+                      </div>
+                    </div>
+                  </Grid>
+
+                  <Grid xs={4} sm={4} lg={4} xl={4} xxl={4}>
+                    <ItemBox
+                      height={440}
+                      sx={{ overflow: "auto", marginRight: 2 }}
+                    >
+                      <h2 style={titleStyle}>Tilknyttede enheter</h2>
+                      <div style={{ margin: textMargin }}>
+                        Følgende helseforetak/sykehus hører til under valgt
+                        enhet:
+                      </div>
+                      {unitNamesQuery.data ? (
+                        <SubUnits
+                          RHFs={unitNamesQuery.data.nestedUnitNames}
+                          selectedUnit={selectedTreatmentUnits[0]}
+                        />
+                      ) : null}
+                    </ItemBox>
                   </Grid>
                 </Grid>
               </ItemBox>
-            </Grid>
-
-            <Grid xs={12} sm={6}>
-              <ExpandableItemBox collapsedHeight={400}>
-                <h2 style={titleStyle}>Tilknyttede enheter</h2>
-                <div style={{ margin: textMargin }}>
-                  Følgende helseforetak/sykehus hører til under valgt enhet:
-                </div>
-                {unitNamesQuery.data ? (
-                  <SubUnits
-                    RHFs={unitNamesQuery.data.nestedUnitNames}
-                    selectedUnit={selectedTreatmentUnits[0]}
-                  />
-                ) : null}
-              </ExpandableItemBox>
             </Grid>
 
             <Grid xs={12}>
