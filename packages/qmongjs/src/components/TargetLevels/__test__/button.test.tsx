@@ -2,7 +2,7 @@ import LEGEND_BTN from "../button";
 import { render } from "@testing-library/react";
 
 const dummy_function = (n: string) => {
-  n;
+  return n;
 };
 
 it("Button renders", async () => {

@@ -3,9 +3,7 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "andel_priv"
-      ],
+      "x": ["andel_priv"],
       "y": "bohf",
       "xLabel": {
         "nb": "Andel av undersøkelsene utført ved private røntgeninstitutt",
@@ -20,19 +18,10 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "privsnitt",
-        "offsnitt"
-      ],
+      "x": ["privsnitt", "offsnitt"],
       "xLegend": {
-        "nb": [
-          "Private røntgeninstitutt",
-          "Offentlig"
-        ],
-        "en": [
-          "Private clinics",
-          "Public"
-        ]
+        "nb": ["Private røntgeninstitutt", "Offentlig"],
+        "en": ["Private clinics", "Public"]
       },
       "y": "bohf",
       "xLabel": {
@@ -48,20 +37,11 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "hand_bltsnitt",
-        "hand_iblt"
-      ],
+      "x": ["hand_bltsnitt", "hand_iblt"],
       "y": "bohf",
       "xLegend": {
-        "nb": [
-          "Bilateralt",
-          "Unilateralt"
-        ],
-        "en": [
-          "Bilateral",
-          "Unilateral"
-        ]
+        "nb": ["Bilateralt", "Unilateralt"],
+        "en": ["Bilateral", "Unilateral"]
       },
       "xLabel": {
         "nb": "Antall (rate) bilateralt/unilateralt, pr. 10 000 innbyggere",
@@ -161,7 +141,7 @@
     {
       "type": "data",
       "label": "datasett_1",
-      "national": "Norge",
+      "national": "Norway",
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
@@ -396,7 +376,7 @@
           "andel_priv": 0.836190644201
         },
         {
-          "bohf": "Norge",
+          "bohf": "Norway",
           "hand_bltsnitt": 3.4218178247,
           "mr_hand_rate": 37.7873741978,
           "andel_blt": 0.0905545277317,
