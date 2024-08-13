@@ -269,12 +269,19 @@ export const Skde = (): JSX.Element => {
             <Grid>
               <ItemBox height={440} sx={{ overflow: "auto" }}>
                 <Grid container>
-                  <Grid xs={12} sm={4} lg={4} xl={4} xxl={4}>
+                  <Grid
+                    xs={12}
+                    sm={4}
+                    lg={4}
+                    xl={4}
+                    xxl={4}
+                    alignContent="center"
+                  >
                     <img
                       src={logo.src}
                       alt={"Logo"}
                       width="100%"
-                      style={{ borderRadius: "50%", maxWidth: 400 }}
+                      style={{ borderRadius: "50%", maxWidth: 300 }}
                     />
                   </Grid>
 
