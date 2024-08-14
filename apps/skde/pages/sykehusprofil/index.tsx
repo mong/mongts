@@ -265,7 +265,7 @@ export const Skde = (): JSX.Element => {
           </ClickAwayListener>
         </Header>
 
-        <Box margin={2}>
+        <Box marginTop={2} className="hospital-profile-box">
           <Grid container spacing={2}>
             <Grid xs={12}>
               <ItemBox height={440} sx={{ overflow: "auto" }}>
