@@ -30,6 +30,7 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
@@ -294,12 +295,17 @@ export const Skde = (): JSX.Element => {
                         height: "400px",
                       }}
                     >
-                      <h2 style={{ marginTop: 20, marginLeft: 20 }}>
+                      <Typography
+                        variant="h5"
+                        style={{ marginTop: 20, marginLeft: 20 }}
+                      >
                         {selectedTreatmentUnits[0]}
-                      </h2>
+                      </Typography>
 
                       <div style={{ marginLeft: 8 }}>
-                        Her skal det stå noe om enheten. <br />
+                        <Typography variant="body1">
+                          Her skal det stå noe om enheten. <br />
+                        </Typography>
                       </div>
 
                       <div style={{ marginTop: "auto" }}>
@@ -320,11 +326,15 @@ export const Skde = (): JSX.Element => {
                       height={440}
                       sx={{ overflow: "auto", marginRight: 2 }}
                     >
-                      <h2 style={titleStyle}>Tilknyttede enheter</h2>
+                      <Typography variant="h5" style={titleStyle}>
+                        Tilknyttede enheter
+                      </Typography>
                       <div style={{ margin: textMargin }}>
-                        Her vises behandlingssteder som er tilhørende til valgt
-                        helseforetak. Du kan trykke på behandlingsstedet for å
-                        enkelt kunne velge det i Sykehusprofil.
+                        <Typography variant="body1">
+                          Her vises behandlingssteder som er tilhørende til
+                          valgt helseforetak. Du kan trykke på behandlingsstedet
+                          for å enkelt kunne velge det i Sykehusprofil.
+                        </Typography>
                       </div>
                       {unitNamesQuery.data ? (
                         <SubUnits
@@ -340,12 +350,16 @@ export const Skde = (): JSX.Element => {
 
             <Grid xs={12}>
               <ItemBox sx={{ overflow: "auto" }}>
-                <h2 style={titleStyle}>Utvikling over tid</h2>
+                <Typography variant="h5" style={titleStyle}>
+                  Utvikling over tid
+                </Typography>
                 <div style={{ margin: textMargin }}>
-                  Grafen viser andel eller antall av alle kvalitetsindikatorer
-                  fra de nasjonale medisinske kvalitetsregistre. Grafen viser
-                  hvilke som har hatt høy, middels eller lav måloppnåelse de
-                  siste årene.
+                  <Typography variant="body1">
+                    Grafen viser andel eller antall av alle kvalitetsindikatorer
+                    fra de nasjonale medisinske kvalitetsregistre. Grafen viser
+                    hvilke som har hatt høy, middels eller lav måloppnåelse de
+                    siste årene.
+                  </Typography>
                 </div>
                 <ThemeProvider theme={lineChartTheme}>
                   <IndicatorLinechart {...indicatorParams} />
@@ -362,12 +376,16 @@ export const Skde = (): JSX.Element => {
 
             <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                <h2 style={titleStyle}>Fagområder</h2>
+                <Typography variant="h5" style={titleStyle}>
+                  Fagområder
+                </Typography>
                 <div style={{ margin: textMargin }}>
-                  Alle kvalitetsindikatorene vist med symbol for høy, middels
-                  eller lav måloppnåelse bare fordelt på fagområder. Du kan
-                  trykke på fagområde for å vise hvilke registre som er i
-                  fagområdet.
+                  <Typography variant="body1">
+                    Alle kvalitetsindikatorene vist med symbol for høy, middels
+                    eller lav måloppnåelse bare fordelt på fagområder. Du kan
+                    trykke på fagområde for å vise hvilke registre som er i
+                    fagområdet.
+                  </Typography>
                 </div>
                 <MedfieldTable {...medfieldTableProps} />
               </ExpandableItemBox>
@@ -375,11 +393,15 @@ export const Skde = (): JSX.Element => {
 
             <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                <h2 style={titleStyle}>Fagområder (dekningsgrad)</h2>
+                <Typography variant="h5" style={titleStyle}>
+                  Fagområder (dekningsgrad)
+                </Typography>
                 <div style={{ margin: textMargin }}>
-                  Her vises dekningsgraden eller datakvaliteten fordelt på
-                  fagområder som forteller om datagrunnlaget fra registeret med
-                  det valgte helseforetak eller sykehuset.
+                  <Typography variant="body1">
+                    Her vises dekningsgraden eller datakvaliteten fordelt på
+                    fagområder som forteller om datagrunnlaget fra registeret
+                    med det valgte helseforetak eller sykehuset.
+                  </Typography>
                 </div>
                 <MedfieldTable {...medfieldTablePropsDG} />
               </ExpandableItemBox>
@@ -387,12 +409,16 @@ export const Skde = (): JSX.Element => {
 
             <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                <h2 style={titleStyle}>Siste års måloppnåelse</h2>
+                <Typography variant="h5" style={titleStyle}>
+                  Siste års måloppnåelse
+                </Typography>
                 <div style={{ margin: textMargin }}>
-                  Liste over kvalitetsindikatorer med beskrivelse som er fordelt
-                  på høy, middels eller lav måloppnåelse. Du kan trykke på
-                  indikatorene for å se datakvaliteten og mer beskrivelse av
-                  indikatorene.
+                  <Typography variant="body1">
+                    Liste over kvalitetsindikatorer med beskrivelse som er
+                    fordelt på høy, middels eller lav måloppnåelse. Du kan
+                    trykke på indikatorene for å se datakvaliteten og mer
+                    beskrivelse av indikatorene.
+                  </Typography>
                 </div>
                 <LowLevelIndicatorList
                   context={"caregiver"}
