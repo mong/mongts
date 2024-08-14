@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import { ArrowForward, ArrowOutward } from "@mui/icons-material";
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import Link from "next/link";
 
 type ArrowLinkProps = {
@@ -44,14 +44,14 @@ export const ArrowLink = (props: ArrowLinkProps) => {
   return button ? (
     <Button href={href} target={target} variant="text">
       <Stack alignItems="center" direction="row" gap={1}>
-        {text}
+        <Typography variant="button">{text}</Typography>
         {arrow}
       </Stack>
     </Button>
   ) : (
     <Link href={href} target={target}>
       <Stack alignItems="center" direction="row" gap={1}>
-        {text}
+        <Typography variant="subtitle2">{text}</Typography>
         {arrow}
       </Stack>
     </Link>
