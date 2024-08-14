@@ -73,14 +73,14 @@ const fonts = {
   },
   subtitle1: {
     fontFamily: `${jakartaStyle.fontFamily}`,
-    fontWeight: "400",
-    fontSize: "20px",
+    fontWeight: "600",
+    fontSize: "14px",
     letterSpacing: "0.15px",
   },
   subtitle2: {
     fontFamily: `${jakartaStyle.fontFamily}`,
-    fontWeight: "500",
-    fontSize: "20px",
+    fontWeight: "400",
+    fontSize: "13px",
     letterSpacing: "0.1px",
   },
   body1: {
