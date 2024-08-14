@@ -11,6 +11,7 @@ export const lineChartTheme = {
 export const ItemBox = styled(Box)(() => ({
   backgroundColor: "white",
   borderRadius: 24,
+  overflow: "hidden",
 }));
 
 export const StyledLink = styled(Link)(() => ({
