@@ -24,12 +24,12 @@ import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/Treatme
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import {
   Switch,
-  FormControlLabel,
   ThemeProvider,
   Box,
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Stack,
   Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
@@ -377,13 +377,16 @@ export const Skde = (): JSX.Element => {
                 <ThemeProvider theme={lineChartTheme}>
                   <IndicatorLinechart {...indicatorParams} />
                 </ThemeProvider>
-                <FormControlLabel
-                  control={
-                    <Switch checked={!normalise} onChange={checkNormalise} />
-                  }
-                  label="Vis antall"
-                  sx={{ margin: 2 }}
-                />
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  alignItems="center"
+                  margin={4}
+                >
+                  <Typography>Vis andel</Typography>
+                  <Switch checked={!normalise} onChange={checkNormalise} />
+                  <Typography>Vis antall</Typography>
+                </Stack>
               </ItemBox>
             </Grid>
 
