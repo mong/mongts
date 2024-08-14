@@ -71,6 +71,29 @@ const getDataSubset = (
   return dataSubset;
 };
 
+const RegistrySection = (props: {data: RegisterData, currentYear: number, selectedIndex: number}) => {
+  const {data, currentYear, selectedIndex} = props;
+
+  const indData = data.indicatorData.flat();
+
+  const registryName = data.registerName;
+  const dataFlat = getDataSubset(indData, currentYear, selectedIndex);
+
+  return(
+    <TableBody>
+      {dataFlat.map((row: IndicatorData) => {
+        return (
+          <IndicatorRow
+            row={row}
+            currentYear={currentYear}
+            key={"indicator-row-" + row.indicatorID}
+          />
+        );
+      })}
+    </TableBody>
+  )
+}
+
 const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
   const { row, currentYear } = props;
 
