@@ -41,7 +41,6 @@ import {
   MedfieldTable,
   MedfieldTableProps,
 } from "../../src/components/MedfieldTable";
-import { useScreenSize } from "@visx/responsive";
 import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
@@ -119,14 +118,23 @@ export const Skde = (): JSX.Element => {
     }
   };
 
-  const screenSize = useScreenSize({ debounceTime: 150 });
+  // Set the line plot width to fill the available space
+  const [width, setWidth] = useState(null);
+
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver((event) => {
+      setWidth(event[0].contentBoxSize[0].inlineSize);
+    });
+
+    resizeObserver.observe(document.getElementById("plot-window"));
+  });
 
   // Props
   const indicatorParams: IndicatorLinechartParams = {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    width: screenSize.width * 0.9,
+    width: width,
     height: 600,
     lineStyles: new LineStyles(
       [
@@ -376,7 +384,9 @@ export const Skde = (): JSX.Element => {
                   </Typography>
                 </div>
                 <ThemeProvider theme={lineChartTheme}>
-                  <IndicatorLinechart {...indicatorParams} />
+                  <div id="plot-window">
+                    <IndicatorLinechart {...indicatorParams} />
+                  </div>
                 </ThemeProvider>
                 <Stack
                   direction="row"
