@@ -324,6 +324,7 @@ export const Skde = (): JSX.Element => {
                             text="Nettside"
                             externalLink={true}
                             button={true}
+                            textVariant="subtitle1"
                           />
                         ) : null}
                       </div>

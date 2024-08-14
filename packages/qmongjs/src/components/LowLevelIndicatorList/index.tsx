@@ -131,6 +131,7 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
                 }
                 externalLink={true}
                 text="Mer om indikatoren"
+                textVariant="subtitle2"
               />
             ) : null}
           </Stack>

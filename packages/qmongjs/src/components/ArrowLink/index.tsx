@@ -9,7 +9,7 @@ type ArrowLinkProps = {
   externalLink?: boolean;
   button?: boolean;
   fontSize?: "small" | "inherit" | "large" | "medium";
-  textVariant?: "subtitle1" | "subtitle2";
+  textVariant?: "subtitle1" | "subtitle2" | "body1" | "body2" | "button";
 };
 
 /**
