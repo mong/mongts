@@ -332,8 +332,7 @@ export const Skde = (): JSX.Element => {
                       <div style={{ margin: textMargin }}>
                         <Typography variant="body1">
                           Her vises behandlingssteder som er tilhørende til
-                          valgt helseforetak. Du kan trykke på behandlingsstedet
-                          for å enkelt kunne velge det i Sykehusprofil.
+                          valgt helseforetak.
                         </Typography>
                       </div>
                       {unitNamesQuery.data ? (
