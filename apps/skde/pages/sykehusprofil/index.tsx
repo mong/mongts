@@ -388,14 +388,13 @@ export const Skde = (): JSX.Element => {
             <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <Typography variant="h5" style={titleStyle}>
-                  Fagområder
+                  Kvalitetsindikatorer fordelt på fagområder
                 </Typography>
                 <div style={{ margin: textMargin }}>
                   <Typography variant="body1">
-                    Alle kvalitetsindikatorene vist med symbol for høy, middels
-                    eller lav måloppnåelse bare fordelt på fagområder. Du kan
-                    trykke på fagområde for å vise hvilke registre som er i
-                    fagområdet.
+                    {"Her vises alle kvalitetsindikatorene fra " +
+                      selectedTreatmentUnits[0] +
+                      " fordelt på fagområder. Hver indikator er vist som et symbol for høy, middels eller lav måloppnåelse."}
                   </Typography>
                 </div>
                 <MedfieldTable {...medfieldTableProps} />
@@ -405,13 +404,13 @@ export const Skde = (): JSX.Element => {
             <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <Typography variant="h5" style={titleStyle}>
-                  Fagområder (dekningsgrad)
+                  Datakvalitet fordelt på fagområder
                 </Typography>
                 <div style={{ margin: textMargin }}>
                   <Typography variant="body1">
-                    Her vises dekningsgraden eller datakvaliteten fordelt på
-                    fagområder som forteller om datagrunnlaget fra registeret
-                    med det valgte helseforetak eller sykehuset.
+                    {"Her vises dekningsgraden eller datakvaliteten til " +
+                      selectedTreatmentUnits[0] +
+                      " fordelt på fagområder som forteller om datagrunnlaget fra registrene."}
                   </Typography>
                 </div>
                 <MedfieldTable {...medfieldTablePropsDG} />
