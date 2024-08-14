@@ -9,6 +9,7 @@ type ArrowLinkProps = {
   externalLink?: boolean;
   button?: boolean;
   fontSize?: "small" | "inherit" | "large" | "medium";
+  textVariant?: "subtitle1" | "subtitle2";
 };
 
 /**
@@ -28,6 +29,7 @@ export const ArrowLink = (props: ArrowLinkProps) => {
     externalLink = false,
     button = false,
     fontSize = "inherit",
+    textVariant,
   } = props;
 
   let arrow: JSX.Element;
@@ -44,14 +46,14 @@ export const ArrowLink = (props: ArrowLinkProps) => {
   return button ? (
     <Button href={href} target={target} variant="text">
       <Stack alignItems="center" direction="row" gap={1}>
-        <Typography variant="button">{text}</Typography>
+        <Typography variant={textVariant}>{text}</Typography>
         {arrow}
       </Stack>
     </Button>
   ) : (
     <Link href={href} target={target}>
       <Stack alignItems="center" direction="row" gap={1}>
-        <Typography variant="subtitle2">{text}</Typography>
+        <Typography variant={textVariant}>{text}</Typography>
         {arrow}
       </Stack>
     </Link>
