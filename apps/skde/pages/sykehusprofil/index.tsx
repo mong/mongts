@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Text } from "@visx/text";
 import {
   useQueryParam,
   DelimitedArrayParam,
@@ -31,7 +30,7 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Stack,
+  Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
@@ -208,6 +207,9 @@ export const Skde = (): JSX.Element => {
 
   const boxMaxHeight = 800;
 
+  const titleStyle = { marginTop: 20, marginLeft: 20 };
+  const textMargin = 20;
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
@@ -263,12 +265,20 @@ export const Skde = (): JSX.Element => {
           </ClickAwayListener>
         </Header>
 
-        <Box margin={4}>
+        <Box margin={2}>
           <Grid container spacing={2}>
-            <Grid xs={12} sm={6} lg={6} xl={6} xxl={6}>
-              <ItemBox height={440}>
-                <Grid container spacing={2} sx={{ overflow: "clip" }}>
-                  <Grid xs={5} margin={2}>
+            <Grid xs={12}>
+              <ItemBox height={440} sx={{ overflow: "auto" }}>
+                <Grid container>
+                  <Grid
+                    xs={12}
+                    sm={4}
+                    lg={4}
+                    xl={4}
+                    xxl={4}
+                    alignContent="center"
+                    style={{ textAlign: "center" }}
+                  >
                     <img
                       src={logo.src}
                       alt={"Logo"}
@@ -276,35 +286,30 @@ export const Skde = (): JSX.Element => {
                       style={{ borderRadius: "50%", maxWidth: 300 }}
                     />
                   </Grid>
-                  <Grid xs={12} sm={12} lg={6} xl={6} xxl={6}>
-                    <Stack>
-                      <Text
-                        x={"10%"}
-                        y={"20%"}
-                        width={500}
-                        verticalAnchor="start"
-                        style={{ fontWeight: 700, fontSize: 10 }}
-                      >
-                        Oppdatert: xx.xx.xx
-                      </Text>
-                      <Text
-                        x={"10%"}
-                        y={"-50%"}
-                        width={200}
-                        verticalAnchor="start"
-                        style={{ fontWeight: 700, fontSize: 24 }}
+
+                  <Grid xs={6} sm={4} lg={4} xl={4} xxl={4}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        height: "400px",
+                      }}
+                    >
+                      <Typography
+                        variant="h5"
+                        style={{ marginTop: 20, marginLeft: 20 }}
                       >
                         {selectedTreatmentUnits[0]}
-                      </Text>
-                      <Divider />
-                      <Box
-                        sx={{
-                          marginRight: "20%",
-                          marginBottom: 0,
-                          display: "flex",
-                          justifyContent: "right",
-                        }}
-                      >
+                      </Typography>
+
+                      <div style={{ marginLeft: 8 }}>
+                        <Typography variant="body1">
+                          Her skal det stå noe om enheten. <br />
+                        </Typography>
+                      </div>
+
+                      <div style={{ marginTop: "auto" }}>
+                        <Divider />
                         {unitUrl ? (
                           <ArrowLink
                             href={unitUrl}
@@ -312,44 +317,50 @@ export const Skde = (): JSX.Element => {
                             externalLink={true}
                           />
                         ) : null}
-                      </Box>
-                    </Stack>
+                      </div>
+                    </div>
+                  </Grid>
+
+                  <Grid xs={6} sm={4} lg={4} xl={4} xxl={4}>
+                    <ItemBox
+                      height={440}
+                      sx={{ overflow: "auto", marginRight: 2 }}
+                    >
+                      <Typography variant="h5" style={titleStyle}>
+                        Tilknyttede enheter
+                      </Typography>
+                      <div style={{ margin: textMargin }}>
+                        <Typography variant="body1">
+                          Her vises behandlingssteder som er tilhørende til
+                          valgt helseforetak. Du kan trykke på behandlingsstedet
+                          for å enkelt kunne velge det i Sykehusprofil.
+                        </Typography>
+                      </div>
+                      {unitNamesQuery.data ? (
+                        <SubUnits
+                          RHFs={unitNamesQuery.data.nestedUnitNames}
+                          selectedUnit={selectedTreatmentUnits[0]}
+                        />
+                      ) : null}
+                    </ItemBox>
                   </Grid>
                 </Grid>
               </ItemBox>
             </Grid>
 
-            <Grid xs={12} sm={6}>
-              <ExpandableItemBox collapsedHeight={400}>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
-                  Tilknyttede enheter
-                </Text>
-                {unitNamesQuery.data ? (
-                  <SubUnits
-                    RHFs={unitNamesQuery.data.nestedUnitNames}
-                    selectedUnit={selectedTreatmentUnits[0]}
-                  />
-                ) : null}
-              </ExpandableItemBox>
-            </Grid>
-
             <Grid xs={12}>
               <ItemBox sx={{ overflow: "auto" }}>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
+                <Typography variant="h5" style={titleStyle}>
                   Utvikling over tid
-                </Text>
+                </Typography>
+                <div style={{ margin: textMargin }}>
+                  <Typography variant="body1">
+                    Grafen viser andel eller antall av alle kvalitetsindikatorer
+                    fra de nasjonale medisinske kvalitetsregistre. Grafen viser
+                    hvilke som har hatt høy, middels eller lav måloppnåelse de
+                    siste årene.
+                  </Typography>
+                </div>
                 <ThemeProvider theme={lineChartTheme}>
                   <IndicatorLinechart {...indicatorParams} />
                 </ThemeProvider>
@@ -365,45 +376,50 @@ export const Skde = (): JSX.Element => {
 
             <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
+                <Typography variant="h5" style={titleStyle}>
                   Fagområder
-                </Text>
+                </Typography>
+                <div style={{ margin: textMargin }}>
+                  <Typography variant="body1">
+                    Alle kvalitetsindikatorene vist med symbol for høy, middels
+                    eller lav måloppnåelse bare fordelt på fagområder. Du kan
+                    trykke på fagområde for å vise hvilke registre som er i
+                    fagområdet.
+                  </Typography>
+                </div>
                 <MedfieldTable {...medfieldTableProps} />
               </ExpandableItemBox>
             </Grid>
 
-            <Grid xs={6}>
+            <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
+                <Typography variant="h5" style={titleStyle}>
                   Fagområder (dekningsgrad)
-                </Text>
+                </Typography>
+                <div style={{ margin: textMargin }}>
+                  <Typography variant="body1">
+                    Her vises dekningsgraden eller datakvaliteten fordelt på
+                    fagområder som forteller om datagrunnlaget fra registeret
+                    med det valgte helseforetak eller sykehuset.
+                  </Typography>
+                </div>
                 <MedfieldTable {...medfieldTablePropsDG} />
               </ExpandableItemBox>
             </Grid>
 
-            <Grid xs={6}>
+            <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
+                <Typography variant="h5" style={titleStyle}>
                   Siste års måloppnåelse
-                </Text>
+                </Typography>
+                <div style={{ margin: textMargin }}>
+                  <Typography variant="body1">
+                    Liste over kvalitetsindikatorer med beskrivelse som er
+                    fordelt på høy, middels eller lav måloppnåelse. Du kan
+                    trykke på indikatorene for å se datakvaliteten og mer
+                    beskrivelse av indikatorene.
+                  </Typography>
+                </div>
                 <LowLevelIndicatorList
                   context={"caregiver"}
                   type={"ind"}

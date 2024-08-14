@@ -44,7 +44,7 @@ export const ExpandableItemBox = (
           borderTopLeftRadius: "24px",
           borderTopRightRadius: "24px",
           height: expanded ? "auto" : collapsedHeight,
-          overflow: "clip",
+          overflow: "hidden",
           minHeight: collapsedHeight,
         }}
       >
