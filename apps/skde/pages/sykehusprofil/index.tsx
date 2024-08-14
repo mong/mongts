@@ -267,7 +267,7 @@ export const Skde = (): JSX.Element => {
 
         <Box margin={2}>
           <Grid container spacing={2}>
-            <Grid>
+            <Grid xs={12}>
               <ItemBox height={440} sx={{ overflow: "auto" }}>
                 <Grid container>
                   <Grid
