@@ -4,8 +4,24 @@
   "publisert": false,
   "lang": "nb",
   "date": "2024-06-24T15:49:00.000Z",
-  "ingress": "ingress ny ...",
+  "ingress": "Medisinsk biokjemi omfatter læren om biokjemiske, fysiologiske og cellulære prosesser i den menneskelige organismen. Biokjemiske analyser kan måle komponenter i ulike materialer som blant annet blod (serum, plasma og fullblod). \n\nNoen prøver kan påvise forekomst av en spesifikk sykdom med stor nøyaktighet, men mange prøver er svært lite spesifikke, og unormale verdier sier derfor ikke noe konkret om hvilken sykdom som foreligger, eller årsak til eventuell sykdom. Det ofte gjøres flere analyser samtidig for å gjøre diagnostiseringen av pasientens tilstand mer treffsikker.",
   "kapittel": [
+    {
+      "overskrift": "Medisinsk biokjemi",
+      "innhold": [
+        {
+          "utvalg": "MB",
+          "data": "mb_rb1.json",
+          "publisert": "2024-08-13T16:02:00.000Z",
+          "resultat": "Nasjonalt ble 30 % av biokjemiske prøvene analysert på fastlegekontor, mens andel prøver analysert på  privat og offentlig laboratorium var henholdsvis 18 % og 52 %. Andel prøver analysert på fastlegekontor varierte fra 22 % i opptaksområdet Helgeland til 34 % i opptaksområdet Vestfold og Finnmark. Andel prøver analysert på privat laboratorium varierte fra 1 % i opptaksområdet Finnmark til 47 % i opptaksområdet Diakonhjemmet. \n\n**Alder og kjønn**\nAndel av befolkningen som får utført biokjemiske prøver øker med stigende alder. Størst forskjell mellom kjønnene var det i alderen 20-50 år, hvor halvparten av den kvinnelige befolkningen fikk utført minst en prøve årlig, mot 30 prosent av den mannlige befolkningen. Det var liten forskjell mellom kjønnene når vi ser på de yngste og eldste i befolkningen.\n\n**Refusjon**\n\n1,5 milliard kroner ble årlig utbetalt fra Helfo i refusjon for biokjemiske prøver.\n\nDet var stor variasjon i årlig refusjon pr. innbygger mellom opptaksområdene. Årlig refusjon pr. innbygger var høyest i Helse Sør-Øst med 314 kroner og lavest i Helse Nord med 247 kroner. Det betyr at utbetalt refusjon var 27% høyere for befolkningen i Helse Sør-Øst enn for befolkningen i Helse Nord. \n\nDet var 40% forskjell når vi sammenlignet opptaksområdene på helseforetaksnivå. Befolkningen i Vestfold og Vestre Viken hadde høyest refusjon pr. innbygger med 339 kroner og befolkningen i Nordland hadde  lavest refusjon pr. innbygger med 241 kroner. Hvis alle opptaksområdene hadde hatt tilsvarende aktivitetsnivå og dermed lik utbetalt refusjon pr. innbygger som Vestfold og Vestre Viken, ville det nasjonalt ført til en økning på om lag 265 millioner kroner årlig.  I motsatt ende, ville årlig refusjon blitt redusert med 270 millioner kroner hadde alle opptaksområdene hatt samme aktivitetsnivå som Nordland.",
+          "overskrift": "Medisinsk biokjemi",
+          "ingress": "I våre data finner vi at det ble tatt over 10,5 millioner biokjemiske prøver på 4,3 millioner pasienter. Antall prøver pr. 10 000 innbyggere (rate) varierte betydelig mellom opptaksområdene. Det ble tatt 29 % flere prøver på bosatte i opptaksområdet Finnmark og Møre og Romsdal sammenlignet med opptaksområdet Diakonhjemmet.",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-08-13T15:59:00.000Z"
+        }
+      ]
+    },
     {
       "overskrift": "Kvinnehelse",
       "innhold": [
@@ -25,15 +41,6 @@
     {
       "overskrift": "Tumormarkører",
       "innhold": [
-        {
-          "type": "tekst",
-          "tekst": "tekst"
-        },
-        {
-          "type": "faktaboks",
-          "tekst": "faktaboks",
-          "overskrift": "fakta"
-        },
         {
           "utvalg": "NPU08669,\n\nNPU12534, \n\nNOR25702\n\nIntervall 12 uker",
           "data": "psa_rb1.json",
@@ -100,10 +107,6 @@
       "overskrift": "Vitaminer/sporstoffer​",
       "innhold": [
         {
-          "type": "tekst",
-          "tekst": "Noe overordne om kapittelet hvis vi vil..."
-        },
-        {
           "utvalg": "NPU10267 P-Vitamin D (25-OH) (D2+D3)    \n\nNPU26810 P-25-OH Vitamin D2      \n\nNPU01435 P-25-OH Vitamin D3",
           "data": "dvit_rb1.json",
           "publisert": "2024-06-24T16:01:00.000Z",
@@ -163,16 +166,6 @@
     {
       "overskrift": "Hjerte/kar",
       "innhold": [
-        {
-          "type": "tekst",
-          "beskrivelse": "tekst boks",
-          "tekst": "tekstboks ..."
-        },
-        {
-          "type": "faktaboks",
-          "overskrift": "fakta",
-          "tekst": "faktaboks..."
-        },
         {
           "utvalg": "NPU01566\n\nIntervall 4 uker m",
           "data": "kol_rb1.json",
@@ -442,7 +435,7 @@
         {
           "type": "tekst",
           "beskrivelse": "",
-          "tekst": "I 2023 mottok HELFO nesten 9 millioner refusjonskrav knyttet til laboratorieundersøkelser. 22 prosent av disse kom fra private laboratorier, resten fra laboratorier knyttet til sykehusene. \n\nKunnskap på befolkningsnivå om årsaker til at en prøve blir rekvirert er viktig for å vurdere eventuell geografisk variasjon i bruk av laboratorietjenester. Informasjon om hvorfor en prøve er rekvirert, for eksempel i form av tilstandskoder (ICD-10 eller ICPC-2), inngår ikke i rapporteringen til HELFO.\n\nFor å kunne sette i verk målrettede og effektive tiltak for å redusere geografisk variasjon er det svært nyttig å kjenne til hvor stor andel av prøvene som er rekvirert av henholdsvis sykehusleger, fastleger eller andre grupper av helsepersonell. Den informasjonen er frivillig å oppgi ved innsending av refusjonskrav. \n\nVi har undersøkt opplysningene laboratoriene har rapportert om rekvirent og finner stor variasjon i rapporteringspraksis, både mellom private laboratorier på den ene siden og sykehuslaboratorier på den andre siden, men også mellom de ulike offentlige sykehuslaboratoriene. \n\nPå grunn av stor variasjon i rapporteringspraksis er ikke informasjon om rekvirent anvendt i de øvrige analysene i atlaset.\n\n**Private laboratorier**\n\nFor analyser som er rekvirert fra private laboratorier, er opplysningene om rekvirent komplette. Figuren nedenfor viser at det i hovedsak er fastleger eller legevaktsleger som bestiller, og at disse står for 95,6 prosent av de totale bestillingene fra private laboratorier i 2023.\n\n![Antall rekvirerte analyser fra private laboratorier fordelt etter bestiller.](/helseatlas/img/no/lab/blaa_antall-rekvirerte-analyser-fra-private-laboratorier-fordelt-etter-bestiller.png)\n\nFordelt etter helseforetakenes opptaksområde varierer andelen prøver rekvirert av fastlege/legevaktslege i 2023 fra 99,7 prosent (Nord-Trøndelag) til 78,3 prosent (Bergen).\n\n![Andel av rekvirerte analyser fra private laboratorier 2023 rekvirert av fastlege/legevaktslege. Fordelt etter pasientens bosted gruppert etter helseforetakenes opptaksområde.](/helseatlas/img/no/lab/blaa_andel-av-rekvirerte-analyser-fra-private-laboratorier-2023-rekvirert-av-fastlege-legevaktslege.png)\n\n**Laboratorier på sykehusene**\n\nNår det gjelder analyser som er bestilt fra laboratoriene på sykehusene, er det store mangler i opplysningene om hvem som har rekvirert prøvene. Av de 7 millioner analysene som førte til refusjonskrav fra HELFO i 2023, var nesten 50 prosent uten opplysninger om hvem som hadde rekvirert prøven. Videre var 30 prosent (av prøvene) rapportert som rekvirert av fastlege/legevaktslege eller spesialisthelsetjenesten, og resten fordelte seg på ulike andre kategorier.\n\n![Andel rekvirerte analyser fra offentlige laboratorier 2023 fordelt etter hvem som er rekvirent og pasientens bosted. Gruppert etter helseforetakenes opptaksområde](/helseatlas/img/no/lab/blaa_andel-rekvirerte-analyser-fra-offentlige-laboratorier-2023-fordelt-etter-rekvirent.png)\n\nVariasjonen i registrering av rekvirent fordelt etter helseforetakenes opptaksområder er stor.   For alle opptaksområdene er andelen prøver rekvirert av fastlege/legevaktslege større enn andelen fra spesialisthelsetjenesten. For helseforetakene i Helse Nord er det en lav andel prøver som mangler opplysninger om rekvirent. Det store flertallet av prøver for bosatte i Helse Nord er rekvirert av fastlege/legevaktslege eller spesialisthelsetjenesten og en liten andel faller inn under kategorien “andre tjenester”. For foretakene i Helse Nord har SKDE fått opplyst at kategorien “andre tjenester” blant annet omfatter sykehjem, helsestasjoner og rus- og psykiatritjenester. I opptaksområdene Bergen og Østfold faller flertallet av prøvene inn under denne kategorien, noe som tilsier at registreringspraksis er annerledes her enn i foretakene i Helse Nord.  I enkelte opptaksområder er også en vesentlig andel prøver oppgitt å være bestilt av “pasienten selv”. Dette er sannsynligvis et resultat av feilregistreringer. Omfanget av prøver rapportert som rekvirert av “pasienten selv” var vesentlig høyere frem til og med 2022. SKDE har fått opplyst at dette til dels skyldtes en feil i labsystemet som var i bruk i flere av foretakene."
+          "tekst": "### Datagrunnlag\n\nData over offentlig finansierte polikliniske laboratorieundersøkelser er utlevert fra Kontroll og utbetaling av helserefusjoner (KUHR) databasen. KUHR håndterer refusjonskrav fra behandlere og helseinstitusjoner innsendt til staten v/Helfo. Kun refusjonskrav i kategorien medisinsk biokjemi er inkludert.\n\nLaboratorieanalyser som blir tatt og analysert på kontoret hos fastleger eller legevakt, det vil si ikke innsendt til laboratorium, er hentet fra kommunalt pasient- og brukerregister (KPR). Innholdet i KPR som gjelder fastleger og legevakt bygger på refusjonskrav hentet fra KUHR.\n\nAntall fødende i ulike aldre er hentet fra NPR.\n\nInnbyggertall er hentet fra statistikkbanken til SSB."
         }
       ]
     },
@@ -452,12 +445,17 @@
         {
           "type": "tekst",
           "beskrivelse": "Datagrunnlag",
-          "tekst": "### Datagrunnlag\n\nKildene for dette helseatlaset er data fra HELFO, KPR, SSB og NPR. \n\nDette helseatlaset omfatter laboratorieundersøkelser innen fagområdet medisinsk biokjemi som HELFO gir refusjon for, altså polikliniske prøver og prøver tatt på fastlegekontor som blir sendt til et laboratorium for analyse. Noen prøver tatt hos fastlege sendes ikke til et laboratorium for analyse, men analyseres på fastlegekontoret. Der slike prøver har en egen takst, slik at denne aktiviteten kan identifiseres i KPR, og omfanget av aktiviteten er av betydning, er analyser gjort på fastlegekontor tatt med i analysene. Det fremgår av figurene hvis slik aktivitet er inkludert. \n\nPrøver tatt på inneliggende pasienter er ikke inkludert i dette materialet. Dette skyldes at laboratorieanalyser for innlagte pasienter ikke omfattes av refusjonsordningen fra HELFO.\n\nEnkle laboratorieanalyser innen medisinsk biokjemi som utføres poliklinisk som en del av konsultasjoner i spesialisthelsetjenesten, gir ikke grunnlag for refusjon fra HELFO. Disse er markert med stjerne, såkalt stjernemerkede analyser. Finansieringen av slike analyser er inkludert i ISF-ordningen for poliklinikk. Dette innebærer at noen analyser (for eksempel ALAT og ASAT) ikke vil fremgå av HELFO-data hvis prøven utføres poliklinisk som en del av konsultasjoner i spesialisthelsetjenesten. Hvis prøven derimot er tatt hos fastlege, vil prøven fremgå av HELFO-data. \n\nInnbyggertall i opptaksområdene er hentet fra SSB, og antall fødende i ulike aldre er hentet fra NPR."
+          "tekst": "### Datagrunnlag\n\nData over offentlig finansierte polikliniske laboratorieundersøkelser er utlevert fra Kontroll og utbetaling av helserefusjoner (KUHR) databasen. KUHR håndterer refusjonskrav fra behandlere og helseinstitusjoner innsendt til staten v/Helfo. Kun refusjonskrav i kategorien medisinsk biokjemi er inkludert.\n\nLaboratorieanalyser som blir tatt og analysert på kontoret hos fastleger eller legevakt, det vil si ikke innsendt til laboratorium, er hentet fra kommunalt pasient- og brukerregister (KPR). Innholdet i KPR som gjelder fastleger og legevakt bygger på refusjonskrav hentet fra KUHR.\n\nAntall fødende i ulike aldre er hentet fra NPR.\n\nInnbyggertall er hentet fra statistikkbanken til SSB."
         },
         {
           "type": "tekst",
-          "tekst": "### Refusjonssystemet\n\nEn laboratorieundersøkelse kan omfatte én eller flere analyser. Det betyr at det i samme prøve kan måles både for eksempel D-vitamin, Ferritin og TSH. Laboratoriet har anledning til å vurdere om de rekvirerte analysene svarer på den kliniske problemstillingen i rekvisisjonen, og kan altså besvare flere eller færre analyser enn det som er spesifikt rekvirert. \n\nAnalysene blir registrert med hver sin kode fra NLK (Norsk laboratoriekodeverk). Hovedregelen er at enhver utført laboratorieanalyse med NLK-kode tilhører en bestemt refusjonskategori. For medisinsk biokjemi er det 16 refusjonskategorier (MB0-MB15). Til hver refusjonskategori er det knyttet én refusjonssats. For utførte laboratorieanalyser sendes refusjonskrav til Helfo. Refusjon etter denne ordning utbetales fra staten v/Helfo til det regionale helseforetaket som eier eller har driftsavtale med den helseinstitusjonen der den polikliniske helsehjelpen ytes, eller direkte til privat laboratorium hvis analysene er utført ved et privat laboratorium. \n\nEnkle laboratorieanalyser innen medisinsk biokjemi som utføres poliklinisk som en del av konsultasjoner i spesialisthelsetjenesten, gir ikke grunnlag for refusjon fra HELFO. Disse er markert med stjerne, såkalt stjernemerkede analyser. Finansieringen av slike analyser er inkludert i ISF-ordningen for poliklinikk.\n\nLaboratorieanalyser for innlagte pasienter omfattes ikke av denne refusjonsordningen.",
-          "beskrivelse": "Refusjonssystemet"
+          "tekst": "### Refusjonsordningen\n\nFinansieringen av polikliniske laboratorieundersøkelser skjer ved bruk av Norsk laboriatoriekodeverk (NLK) som forvaltes av direktoratet for e-helse. \n\nLaboratorieanalysene blir registrert med hver sin NLK-kode, og hovedregelen er at enhver utført analyse med NLK-kode tilhører en bestemt refusjonskategori. For medisinsk biokjemi er det 16 refusjonskategorier, MB0-MB15. Til hver refusjonskategori er det knyttet én refusjonssats. Laboratoriet har anledning til å vurdere om de rekvirerte analysene svarer på den kliniske problemstillingen i rekvisisjonen, og kan altså besvare flere eller færre analyser enn det som er spesifikt rekvirert. Refusjonskravet sendes til Helfo.\n\nRefusjon til offentlige laboratorier utbetales til det regionale helseforetaket som eier institusjonen. Hvis helseinstitusjonen ikke er eid av et regionalt helseforetak, eller det er et privat laboratorium, så utbetales det direkte til aktuell institusjon. \n\nLaboratorieanalyser som finansieres gjennom innsatsstyrt finansiering (ISF) inngår ikke i denne ordningen. Det betyr at de ikke gjenfinnes i KUHR-databasen med innsendte refusjonskrav. Det gjelder:\n\n1) pasienter som er innlagt i sykehus, og \n\n2) et utvalg analyser utført for pasienter som mottar poliklinisk helsehjelp på sykehus. \n\nDe utvalgte analysene er merket med en stjerne i NLK-kodeverket, noe som betyr at oppgitt refusjonskategori og refusjonsbeløp ikke er gjeldende når analysen er utført i tilknytning til poliklinisk helsehjelp. \n\nLaboratorieundersøkelsene som blir tatt og analysert på kontoret til fastleger og legevakt er finansiert gjennom normaltariffen. I normaltariffen er det oppgitt egne takster for de laboratorieanalyser som oftest tas og analyseres på kontoret. Refusjonskravene sendes inn til staten v/Helfo.",
+          "beskrivelse": "Refusjonsordningen"
+        },
+        {
+          "type": "tekst",
+          "beskrivelse": "Definisjoner",
+          "tekst": "### Definisjoner\n\nOrdene “prøve” og “undersøkelse” definerer vi som at det er tatt en prøve av en pasient. En prøve kan bestå av flere analyser. Det betyr at det i samme prøve kan måles både D-vitamin, Ferritin og TSH. \n\nOrdene “analyse” og “test” definerer vi som at det er analysert med henblikk på en spesifikk problemstilling, f.eks Vitamin D eller TSH. En analyse eller test kan være definert med flere ulike NLK-koder avhengig av hvordan den gjennomføres, f.eks analyse av plasma, serum eller blod. \n\nMed NLK-kode forstår vi den enkelte NLK-kode fra kodeverket."
         },
         {
           "type": "tekst",

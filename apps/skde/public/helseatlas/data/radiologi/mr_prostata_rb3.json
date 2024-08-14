@@ -3,13 +3,11 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "andel_pf"
-      ],
+      "x": ["andel_pf"],
       "y": "bohf",
       "xLabel": {
         "nb": "Andel av MR prostata utført på pasienter i pakkeforløp",
-        "en": "tmp"
+        "en": "Proportion of prostate MRI performed on patients in treatment pathway"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -20,24 +18,15 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "pfsnitt",
-        "npfsnitt"
-      ],
+      "x": ["pfsnitt", "npfsnitt"],
       "xLegend": {
-        "nb": [
-          "Pakkeforløp",
-          "Ikke pakkeforløp"
-        ],
-        "en": [
-          "Pakkeforløp",
-          "Ikke pakkeforløp"
-        ]
+        "nb": ["Pakkeforløp", "Ikke pakkeforløp"],
+        "en": ["Treatment pathway", "Not treatment pathway"]
       },
       "y": "bohf",
       "xLabel": {
         "nb": "Antall (rate) pakkeforløp/ikke pakkeforløp pr. 10 000 menn",
-        "en": "tmp"
+        "en": "Number of prostate MRI examination per 10,000 men, split by treatment pathway or not"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -48,27 +37,19 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "pfsnitt",
-        "k_f_us_rate",
-        "restrate"
-      ],
+      "x": ["pfsnitt", "k_f_us_rate", "restrate"],
       "y": "bohf",
       "xLegend": {
-        "nb": [
-          "I Pakkeforløp",
-          "Med kreftdiagnose",
-          "Uten"
-        ],
+        "nb": ["I Pakkeforløp", "Med kreftdiagnose", "Uten"],
         "en": [
-          "I Pakkeforløp",
-          "Med kreftdiagnose",
-          "Uten"
+          "In treatment pathway",
+          "With cancer diagnosis",
+          "Without either"
         ]
       },
       "xLabel": {
         "nb": "Status ved MR-undersøkelsen, antall (rate) pr. 10 000 menn",
-        "en": "tmp"
+        "en": "Number of prostate MRI per 10,000 men split by status at the time of MRI"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -79,13 +60,11 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "psasnitt"
-      ],
+      "x": ["psasnitt"],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall (rate) PSA-tester pr. 10 000 menn",
-        "en": "tmp"
+        "en": "Number of PSA tests per 10,000 men"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -98,7 +77,7 @@
       "data": "datasett_1",
       "caption": {
         "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 menn. Andel uten er andel som ikke er i pakkeforløp eller har kreftdiagnose før eller ved tidspunktet for MR undersøkelsen.",
-        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Rate pr. 10 000 menn. Andel uten er andel som ikke er i pakkeforløp eller har kreftdiagnose før eller ved tidspunktet for MR undersøkelsen."
+        "en": "Annual average during 2018–2022. <br>* Rate per 10,000 men. <br>** Proportion of prostate MRI for patients in treatment pathway. <br>*** Proportion of prostate MRI for patients with cancer diagnosis. <br>**** Proportion of prostate MRI for patients not in treatment pathway and have no cancer diagnosis."
       },
       "columns": [
         {
@@ -111,35 +90,35 @@
         {
           "id": "totsnitt",
           "label_no": "MR Rate",
-          "label_en": "Rate",
+          "label_en": "MRI Rate",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
           "id": "andel_pf",
           "label_no": "Andel pakkeforløp",
-          "label_en": "Percent PF",
+          "label_en": "% pathway**",
           "typeVar": "number",
           "format": ",.0%"
         },
         {
           "id": "k_f_us_andel",
           "label_no": "Andel kreft før MR",
-          "label_en": "Kreft før MR",
+          "label_en": "% cancer***",
           "typeVar": "number",
           "format": ",.0%"
         },
         {
           "id": "andel_ikke_pf_k",
           "label_no": "Andel uten",
-          "label_en": "Andel uten",
+          "label_en": "% without****",
           "typeVar": "number",
           "format": ",.0%"
         },
         {
           "id": "psasnitt",
           "label_no": "PSA rate",
-          "label_en": "PSA rate",
+          "label_en": "PSA rate*",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -158,7 +137,7 @@
       "x": "andel_pf",
       "caption": {
         "nb": "Andel av MR prostata utført på pasienter i pakkeforløp",
-        "en": "tmp"
+        "en": "Proportion of prostate MRI performed on patients in treatment pathway"
       },
       "jenks": [
         {
