@@ -107,7 +107,6 @@ export const Skde = (): JSX.Element => {
     setSelectedTreatmentUnits(newUnit);
 
     let unitUrl: URLs | undefined;
-
     if (unitUrlsQuery.data) {
       unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
         return row.shortName === newUnit[0];
@@ -178,13 +177,6 @@ export const Skde = (): JSX.Element => {
     treatmentYear: 2022,
   };
 
-  const medfieldTablePropsDG: MedfieldTableProps = {
-    unitNames: [selectedTreatmentUnits[0]],
-    context: "caregiver",
-    type: "dg",
-    treatmentYear: 2022,
-  };
-
   // State logic for normalising the line plot
   const [normalise, setNormalise] = React.useState(indicatorParams.normalise);
 
@@ -199,6 +191,19 @@ export const Skde = (): JSX.Element => {
   } else {
     indicatorParams.yAxisText = "Antall indikatorer";
   }
+
+  // State logic for ind or dg in medfieldtable
+  const [dataQuality, setDataQuality] = React.useState(false);
+
+  if (dataQuality) {
+    medfieldTableProps.type = "dg";
+  } else {
+    medfieldTableProps.type = "ind";
+  }
+
+  const checkDataQuality = () => {
+    setDataQuality(!dataQuality);
+  };
 
   const breadcrumbs: BreadCrumbPath = {
     path: [
@@ -397,29 +402,26 @@ export const Skde = (): JSX.Element => {
                 </Typography>
                 <div style={{ margin: textMargin }}>
                   <Typography variant="body1">
-                    Alle kvalitetsindikatorene vist med symbol for høy, middels
-                    eller lav måloppnåelse bare fordelt på fagområder. Du kan
-                    trykke på fagområde for å vise hvilke registre som er i
-                    fagområdet.
+                    {dataQuality
+                      ? "Her vises dekningsgraden eller datakvaliteten til " +
+                        selectedTreatmentUnits[0] +
+                        " fordelt på fagområder som forteller om datagrunnlaget fra registrene."
+                      : "Her vises alle kvalitetsindikatorene fra " +
+                        selectedTreatmentUnits[0] +
+                        " fordelt på fagområder. Hver indikator er vist som et symbol for høy, middels eller lav måloppnåelse."}
                   </Typography>
                 </div>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  alignItems="center"
+                  margin={4}
+                >
+                  <Typography>Vis kvalitetsindikatorer</Typography>
+                  <Switch checked={dataQuality} onChange={checkDataQuality} />
+                  <Typography>Vis datakvalitet</Typography>
+                </Stack>
                 <MedfieldTable {...medfieldTableProps} />
-              </ExpandableItemBox>
-            </Grid>
-
-            <Grid xs={12}>
-              <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                <Typography variant="h5" style={titleStyle}>
-                  Fagområder (dekningsgrad)
-                </Typography>
-                <div style={{ margin: textMargin }}>
-                  <Typography variant="body1">
-                    Her vises dekningsgraden eller datakvaliteten fordelt på
-                    fagområder som forteller om datagrunnlaget fra registeret
-                    med det valgte helseforetak eller sykehuset.
-                  </Typography>
-                </div>
-                <MedfieldTable {...medfieldTablePropsDG} />
               </ExpandableItemBox>
             </Grid>
 
