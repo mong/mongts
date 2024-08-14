@@ -54,7 +54,6 @@ import { ExpandableItemBox } from "../../src/components/ExpandableItemBox";
 import logo from "./Logo.png";
 import { URLs } from "types";
 import { ArrowLink } from "qmongjs";
-import Divider from "@mui/material/Divider";
 import { useRouter } from "next/router";
 
 export const Skde = (): JSX.Element => {
@@ -308,26 +307,23 @@ export const Skde = (): JSX.Element => {
                         height: "400px",
                       }}
                     >
-                      <Typography
-                        variant="h5"
-                        style={{ marginTop: 20, marginLeft: 20 }}
-                      >
+                      <Typography variant="h5" style={{ marginTop: 20 }}>
                         {selectedTreatmentUnits[0]}
                       </Typography>
 
-                      <div style={{ marginLeft: 8 }}>
+                      <div style={{ marginLeft: 0 }}>
                         <Typography variant="body1">
                           Her skal det stå noe om enheten. <br />
                         </Typography>
                       </div>
 
                       <div style={{ marginTop: "auto" }}>
-                        <Divider />
                         {unitUrl ? (
                           <ArrowLink
                             href={unitUrl}
                             text="Nettside"
                             externalLink={true}
+                            button={true}
                           />
                         ) : null}
                       </div>
