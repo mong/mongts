@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   useQueryParam,
   DelimitedArrayParam,
@@ -24,12 +24,12 @@ import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/Treatme
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import {
   Switch,
-  FormControlLabel,
   ThemeProvider,
   Box,
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Stack,
   Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
@@ -55,6 +55,7 @@ import logo from "./Logo.png";
 import { URLs } from "types";
 import { ArrowLink } from "qmongjs";
 import Divider from "@mui/material/Divider";
+import { useRouter } from "next/router";
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
@@ -80,9 +81,21 @@ export const Skde = (): JSX.Element => {
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
+  // The following code ensures that the page renders correctly
   const unitUrlsQuery = useUnitUrlsQuery();
 
-  const shouldRefreshInitialState = false;
+  const router = useRouter();
+
+  const [prevReady, setPrevReady] = useState(router.isReady);
+
+  const prerenderFinished =
+    prevReady !== router.isReady && !unitUrlsQuery.isFetching;
+
+  useEffect(() => {
+    setPrevReady(router.isReady);
+  }, [router.isReady]);
+
+  const shouldRefreshInitialState = prerenderFinished;
 
   // Callback function for updating the filter menu
   const handleChange = (filterInput: FilterSettings) => {
@@ -363,13 +376,16 @@ export const Skde = (): JSX.Element => {
                 <ThemeProvider theme={lineChartTheme}>
                   <IndicatorLinechart {...indicatorParams} />
                 </ThemeProvider>
-                <FormControlLabel
-                  control={
-                    <Switch checked={!normalise} onChange={checkNormalise} />
-                  }
-                  label="Vis antall"
-                  sx={{ margin: 2 }}
-                />
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  alignItems="center"
+                  margin={4}
+                >
+                  <Typography>Vis andel</Typography>
+                  <Switch checked={!normalise} onChange={checkNormalise} />
+                  <Typography>Vis antall</Typography>
+                </Stack>
               </ItemBox>
             </Grid>
 
