@@ -4,7 +4,7 @@ FROM base AS builder
 
 WORKDIR /app
 
-RUN yarn global add turbo@^2
+RUN corepack enable && yarn global add turbo@^2
 
 COPY . .
 
@@ -16,17 +16,17 @@ WORKDIR /app
  
 # First install the dependencies (as they change less often)
 COPY --from=builder /app/out/json/ .
-RUN yarn install
+RUN corepack enable && yarn install
  
 # Build the project
 COPY --from=builder /app/out/full/ .
-RUN yarn turbo run build --filter=api...
- 
+RUN corepack enable && yarn turbo run build
+
 FROM base AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
-COPY --from=installer /app/api/build ./build
+COPY --from=installer /app/apps/api/build ./build
 EXPOSE 80
 ARG version="none"
 ENV PORT=80
