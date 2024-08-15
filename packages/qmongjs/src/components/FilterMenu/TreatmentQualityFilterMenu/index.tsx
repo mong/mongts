@@ -76,7 +76,7 @@ type OptionsMapEntry = {
   multiselect: boolean;
   selected: StringNullOrUndefined | UndefinedOrArrayOfStringOrNull;
   setSelected: (
-    newValue: string | string[] | undefined | undefined[],
+    newValue: string | (string | undefined)[] | undefined,
     updateType?: UrlUpdateType | undefined,
   ) => void;
 };
@@ -407,7 +407,11 @@ export function TreatmentQualityFilterMenu({
         />
         <RadioGroupFilterSection
           radios={achievementLevelOptions.values}
-          defaultvalues={[achievementLevelOptions.default]}
+          defaultvalues={
+            achievementLevelOptions.default
+              ? [achievementLevelOptions.default]
+              : []
+          }
           initialselections={getFilterSettingsValue(
             levelKey,
             selectedAchievementLevel,
