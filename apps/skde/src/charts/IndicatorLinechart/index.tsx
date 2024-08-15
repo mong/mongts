@@ -131,9 +131,16 @@ const normaliseChartData = (data: LinechartData[][]) => {
 
   for (let i = 0; i < data[0].length; i++) {
     const sumAll = sum0[i] + sum1[i] + sum2[i];
-    data[0][i].y = data[0][i].y / sumAll;
-    data[1][i].y = data[1][i].y / sumAll;
-    data[2][i].y = data[2][i].y / sumAll;
+
+    if (sumAll != 0) {
+      data[0][i].y = data[0][i].y / sumAll;
+      data[1][i].y = data[1][i].y / sumAll;
+      data[2][i].y = data[2][i].y / sumAll;
+    } else {
+      data[0][i].y = 0;
+      data[1][i].y = 0;
+      data[2][i].y = 0;
+    }
   }
 
   return data;
