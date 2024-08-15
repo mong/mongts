@@ -144,7 +144,7 @@ const normaliseChartData = (data: LinechartData[][]) => {
       data[0][i].y = data[0][i].y / sumAll;
       data[1][i].y = data[1][i].y / sumAll;
       data[2][i].y = data[2][i].y / sumAll;
-    }
+    } // Otherwise all the y values are zero
   }
 
   return data;
