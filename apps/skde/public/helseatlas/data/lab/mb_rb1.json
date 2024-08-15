@@ -42,8 +42,8 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Refusjon pr. innbyggere",
-        "en": "Reimbursement per population"
+        "nb": "Refusjon pr. innbygger",
+        "en": "Reimbursement per inhabitant"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -59,8 +59,8 @@
       ],
       "y": "borhf",
       "xLabel": {
-        "nb": "Refusjon pr. innbyggere",
-        "en": "Reimbursement per population"
+        "nb": "Refusjon pr. innbygger",
+        "en": "Reimbursement per inhabitant"
       },
       "yLabel": {
         "nb": "Helseregioner",
@@ -116,18 +116,11 @@
           "format": ",.0f"
         },
         {
-          "id": "tot_pop",
-          "label_no": "Innbyggere",
-          "label_en": "Inhabitants",
+          "id": "tot_pas",
+          "label_no": "Pasienter",
+          "label_en": "Patients",
           "typeVar": "number",
           "format": ",.0f"
-        },
-        {
-          "id": "prove_pr_pas",
-          "label_no": "Prøver pr. pas.",
-          "label_en": "Tests per patient",
-          "typeVar": "number",
-          "format": ",.2f"
         },
         {
           "id": "andel_priv",
