@@ -125,6 +125,7 @@ export const Skde = (): JSX.Element => {
   // Year for filtering
   const currentYear = new Date().getFullYear();
   const lastYear = currentYear - 1;
+  const pastYears = 5;
 
   // Props
   const indicatorParams: IndicatorLinechartParams = {
@@ -167,7 +168,7 @@ export const Skde = (): JSX.Element => {
     yAxisText: "Antall indikatorer",
     xTicksFont: { fontFamily: "Arial", fontSize: 16, fontWeight: 500 },
     yTicksFont: { fontFamily: "Arial", fontSize: 14, fontWeight: 500 },
-    startYear: lastYear - 5,
+    startYear: lastYear - pastYears,
     endYear: lastYear,
     yMin: 0,
     normalise: true,
