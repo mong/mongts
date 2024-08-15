@@ -132,7 +132,7 @@ const Row = (props: { row: RowData }) => {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          <Typography variant="subtitle2">{row.name}</Typography>
+          <Typography variant="body1">{row.name}</Typography>
         </TableCell>
         <TableCell>{createSymbols(row.green, row.yellow, row.red)}</TableCell>
       </TableRow>
@@ -144,10 +144,10 @@ const Row = (props: { row: RowData }) => {
                 <TableHead>
                   <TableRow>
                     <TableCell>
-                      <Typography variant="subtitle1">Register</Typography>
+                      <Typography variant="overline">Register</Typography>
                     </TableCell>
                     <TableCell>
-                      <Typography variant="subtitle1">Resultat</Typography>
+                      <Typography variant="overline">Resultat</Typography>
                     </TableCell>
                   </TableRow>
                 </TableHead>
@@ -155,7 +155,7 @@ const Row = (props: { row: RowData }) => {
                   {row.registers.map((registerRow) => (
                     <TableRow key={registerRow.name}>
                       <TableCell component="th" scope="row">
-                        <Typography variant="subtitle2">
+                        <Typography variant="body2">
                           {registerRow.name}
                         </Typography>
                       </TableCell>

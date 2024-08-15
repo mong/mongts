@@ -1,5 +1,4 @@
 import style from "./indicatortableheader.module.css";
-import { Typography } from "@mui/material";
 
 interface IndicatorTableHeaderProps {
   colspan: number;
@@ -48,13 +47,9 @@ export const IndicatorTableHeader = (props: IndicatorTableHeaderProps) => {
           className={style.quality_indicator}
           style={style_ind_desc}
         >
-          {treatmentYear ? (
-            <Typography variant="h6">
-              {descriptionHeader + " for " + treatmentYear.toString()}
-            </Typography>
-          ) : (
-            <Typography variant="h6">{descriptionHeader}</Typography>
-          )}
+          {treatmentYear
+            ? descriptionHeader + " for " + treatmentYear.toString()
+            : descriptionHeader}
         </th>
         {treatment_unit_th}
       </tr>

@@ -98,7 +98,7 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
           </IconButton>
         </TableCell>
         <TableCell>
-          <Typography variant="subtitle2">{row.indicatorTitle}</Typography>
+          <Typography variant="body1">{row.indicatorTitle}</Typography>
         </TableCell>
         <TableCell>{result(row, lastYear)}</TableCell>
       </TableRow>
@@ -113,9 +113,9 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
             {lastYear ? (
               <Stack direction="row">
                 <Box sx={{ marginRight: 1 }}>
-                  <Typography variant="subtitle2">Dekningsgrad:</Typography>
+                  <Typography variant="overline">Dekningsgrad:</Typography>
                 </Box>
-                <Typography variant="subtitle2">
+                <Typography variant="overline">
                   {result(row, lastYear, true)}
                 </Typography>
               </Stack>
@@ -131,7 +131,7 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
                 }
                 externalLink={true}
                 text="Mer om indikatoren"
-                textVariant="subtitle2"
+                textVariant="overline"
               />
             ) : null}
           </Stack>
