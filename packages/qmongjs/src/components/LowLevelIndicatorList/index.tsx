@@ -48,7 +48,7 @@ const result = (data: IndicatorData, point: DataPoint, dg?: boolean) => {
 
 const getDataSubset = (
   indData: IndicatorData[],
-  currentYear: number,
+  year: number,
   index: number,
 ) => {
   const selectedLevel: "H" | "M" | "L" | undefined =
@@ -60,7 +60,7 @@ const getDataSubset = (
     }
 
     const lastYear = indDataRow.data.find((p) => {
-      return p.year === currentYear;
+      return p.year === year;
     });
 
     if (lastYear) {
@@ -71,13 +71,13 @@ const getDataSubset = (
   return dataSubset;
 };
 
-const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
-  const { row, currentYear } = props;
+const IndicatorRow = (props: { row: IndicatorData; year: number }) => {
+  const { row, year } = props;
 
   const [open, setOpen] = useState(false);
 
   const lastYear = row.data!.filter((el: DataPoint) => {
-    return el.year === currentYear;
+    return el.year === year;
   })[0];
 
   return (
@@ -253,7 +253,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
                 return (
                   <IndicatorRow
                     row={row}
-                    currentYear={year}
+                    year={year}
                     key={"indicator-row-" + row.indicatorID}
                   />
                 );
