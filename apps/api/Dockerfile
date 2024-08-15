@@ -4,11 +4,12 @@ FROM base AS builder
 
 WORKDIR /app
 
-RUN yarn global add turbo@^2
-
 COPY . .
 
-RUN turbo prune api --docker
+RUN corepack enable && \
+    yarn install && \
+    npx turbo --version && \
+    npx turbo prune api --docker
 
 # Add lockfile and package.json's of isolated subworkspace
 FROM base AS installer

@@ -19,9 +19,9 @@ yarn start # start opp api på http://localhost:4000, som qmongjs kan bruke
 
 ## Kjøre Dockerfile lokalt
 
+Dette gjøres på roten av repoet.
+
 ```sh
-yarn install
-yarn build
-docker build -t api .
+docker build -t api -f apps/api/Dockerfile .
 docker run -e ORIGIN="somestring" -p 3030:80 api # Kjører ikke hvis ORIGIN ikke defineres som en miljøvariabel
 ```
