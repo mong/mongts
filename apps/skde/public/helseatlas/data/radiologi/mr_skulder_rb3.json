@@ -3,13 +3,11 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "andel_rtg"
-      ],
+      "x": ["andel_rtg"],
       "y": "bohf",
       "xLabel": {
         "nb": "Andel av MR skulder med røntgen i forkant",
-        "en": "tmp"
+        "en": "Proportion of shoulder MRI with X-ray before MRI"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -20,24 +18,15 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "rtg50_snitt",
-        "irtg50_snitt"
-      ],
+      "x": ["rtg50_snitt", "irtg50_snitt"],
       "xLegend": {
-        "nb": [
-          "Røntgen",
-          "Ikke røntgen"
-        ],
-        "en": [
-          "Røntgen",
-          "Ikke røntgen"
-        ]
+        "nb": ["Røntgen", "Ikke røntgen"],
+        "en": ["X-ray", "No X-ray"]
       },
       "y": "bohf",
       "xLabel": {
         "nb": "Antall (rate) med/uten røntgen i forkant, pr. 10 000 innbyggere",
-        "en": "tmp"
+        "en": "Number of examinations with/without X-ray before MRI"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -48,27 +37,15 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "art_kir50_snitt",
-        "a_kir50_snitt",
-        "i_kir50_snitt"
-      ],
+      "x": ["art_kir50_snitt", "a_kir50_snitt", "i_kir50_snitt"],
       "y": "bohf",
       "xLegend": {
-        "nb": [
-          "Artrose",
-          "Annen",
-          "Ikke"
-        ],
-        "en": [
-          "Artrose",
-          "Annen",
-          "Ikke"
-        ]
+        "nb": ["Artrose", "Annen", "Ikke"],
+        "en": ["Osteoarthritis", "Other ", "None"]
       },
       "xLabel": {
         "nb": "Antall (rate), fordelt på type kirurgi, pr. 10 000 innbyggere",
-        "en": "tmp"
+        "en": "Number of examinations followed by surgery "
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -81,7 +58,7 @@
       "data": "datasett_1",
       "caption": {
         "nb": "Årlige gjennomsnittsverdier for perioden 2019–2022 for røntgen, 2018-2021 ellers. Rate pr. 10  000 innbyggere. Andel røntgen er andelen som har utført røntgen skulder i tidsperioden ett år i forkant av MR undersøkelsen. Andel kirurgi er andelen som har fått utført kirurgi innen et år i etterkant av MR undersøkelsen.",
-        "en": "Årlige gjennomsnittsverdier for perioden 2019–2022 for røntgen, 2018-2021 ellers. Rate pr. 10  000 innbyggere. Andel røntgen er andelen som har utført røntgen skulder i tidsperioden ett år i forkant av MR undersøkelsen. Andel kirurgi er andelen som har fått utført kirurgi innen et år i etterkant av MR undersøkelsen."
+        "en": "*Annual average number of outpatient shoulder MRI per 10,000 population over 50 years old during 2018-2022. The rates are gender and age adjusted.<br> ** Proportions of exams with X-ray before MRI during 2019-2022. The proportions are based on gender and age adjusted rates."
       },
       "columns": [
         {
@@ -94,14 +71,14 @@
         {
           "id": "sum50mr",
           "label_no": "Rate",
-          "label_en": "Rate",
+          "label_en": "Rate*",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
           "id": "andel_rtg",
           "label_no": "Andel røntgen",
-          "label_en": "Andel røntgen",
+          "label_en": "Proportion X-ray**",
           "typeVar": "number",
           "format": ",.0%"
         },

@@ -1,27 +1,10 @@
 import Image from "next/image";
 import { imgLoader } from "qmongjs";
 import Link from "next/link";
-import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Grid from "@mui/material/Grid";
+import Grid from "@mui/material/Unstable_Grid2";
 import { Stack } from "@mui/material";
-import { ArrowLink } from "../ArrowLink";
-
-const FooterWrapper = styled(Paper)(() => ({
-  marginTop: 20,
-  color: "white",
-}));
-
-const FooterGridTop = styled(Grid)(() => ({
-  justifyContent: "space-around",
-  background: "#333333",
-}));
-
-const FooterGridBottom = styled(Grid)(() => ({
-  justifyContent: "space-around",
-  background: "#1A1A1A",
-}));
+import { ArrowLink } from "qmongjs/src/components/ArrowLink";
 
 const StyledLink = styled(Link)(() => ({
   color: "#c4dbf3",
@@ -36,32 +19,25 @@ type FooterProps = {
     | "pasientstrømmer";
 };
 
-export const Footer = (props: FooterProps) => {
-  const { page } = props;
-
-  const leftMargin = 0;
-  const topMargin = 2;
+export const Footer = ({ page }: FooterProps) => {
+  const kvalitet = ["behandlingskvalitet", "sykehusprofil"].includes(page);
+  const helseatlas = page === "helseatlas";
 
   return (
-    <FooterWrapper>
-      <FooterGridTop
+    <Grid container style={{ color: "white", marginTop: 20 }}>
+      <Grid
+        xs={12}
         container
-        columns={{ xs: 4, sm: 8, md: 12, lg: 12 }}
+        style={{ background: "#333" }}
         className="footer"
         marginTop={0}
-        marginBottom={0}
+        marginLeft={{ md: 0 }}
+        marginRight={0}
+        paddingTop={2}
+        paddingBottom={4}
         spacing={4}
       >
-        <Grid
-          item
-          xs={4}
-          sm={8}
-          md={3}
-          lg={3}
-          marginTop={topMargin}
-          marginLeft={leftMargin}
-          marginBottom={2}
-        >
+        <Grid xs={12} sm={6} marginBottom={2} marginTop={2}>
           <Stack spacing={3}>
             <h4>OM NETTSTEDET</h4>
             <ArrowLink
@@ -82,15 +58,7 @@ export const Footer = (props: FooterProps) => {
           </Stack>
         </Grid>
 
-        <Grid
-          item
-          xs={4}
-          sm={8}
-          md={3}
-          lg={3}
-          marginTop={topMargin}
-          marginLeft={leftMargin}
-        >
+        <Grid xs={12} sm={6} marginTop={2}>
           <Stack spacing={3}>
             <h4>KONTAKT</h4>
             <ArrowLink
@@ -99,37 +67,30 @@ export const Footer = (props: FooterProps) => {
             />
           </Stack>
         </Grid>
+      </Grid>
 
-        <Grid item xs={0} sm={0} md={3} lg={3}></Grid>
-        <Grid item xs={0} sm={0} md={3} lg={3}></Grid>
-        <Grid item xs={4} sm={8} md={12} lg={12}></Grid>
-      </FooterGridTop>
-
-      <FooterGridBottom
+      <Grid
+        xs={12}
         container
-        columns={{ xs: 4, sm: 8, md: 12, lg: 12, xl: 12, xxl: 12 }}
         className="footer"
+        style={{ background: "#1A1A1A" }}
         marginTop={0}
+        marginRight={0}
+        paddingBottom={10}
         spacing={4}
         sx={{ overflow: "clip" }}
       >
-        {page === "helseatlas" || page === "pasientstrømmer" ? (
-          <Grid item xs={4} sm={8} md={12} lg={12} xl={12} xxl={12}>
-            <Link href={"https://www.skde.no/"}>
-              <Image
-                className="footer-logo"
-                id="skde-footer-logo"
-                loader={imgLoader}
-                src={"/img/logos/logo-skde-neg.svg"}
-                alt="SKDE-logo"
-                width={129}
-                height={52}
-              />
-            </Link>
-          </Grid>
-        ) : (
-          <>
-            <Grid item xs={4} sm={8} md={4} lg={6} xl={6} xxl={8}>
+        <Grid container xs={12} alignItems="center">
+          <Grid
+            container
+            display="flex"
+            justifyContent={helseatlas ? "space-around" : "flex-start"}
+            spacing={4}
+            xs={12}
+            lg={kvalitet ? 6 : 12}
+            alignItems="center"
+          >
+            <Grid>
               <Link href={"https://www.skde.no/"}>
                 <Image
                   className="footer-logo"
@@ -142,65 +103,7 @@ export const Footer = (props: FooterProps) => {
                 />
               </Link>
             </Grid>
-
-            <Grid
-              item
-              xs={4}
-              sm={8}
-              md={8}
-              lg={6}
-              xl={6}
-              xxl={4}
-              marginTop={"5px"}
-            >
-              <Link href={"https://www.kvalitetsregistre.no/"}>
-                <Image
-                  className="footer-logo"
-                  id="nsm-footer-logo"
-                  loader={imgLoader}
-                  src={"/img/logos/nsm-hvit.svg"}
-                  alt="NSM-logo"
-                  width={(566 * 52) / 63}
-                  height={52}
-                />
-              </Link>
-            </Grid>
-          </>
-        )}
-        <Grid item xs={4} sm={8} md={12} lg={12}>
-          Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i
-          Helse Nord.
-        </Grid>
-
-        <Grid item xs={4} sm={4} md={4} lg={4}>
-          <Stack>
-            <b>TELEFON</b>
-            <StyledLink href={"tel:77755800"}>77 75 58 00</StyledLink>
-            <br />
-            <b>EPOST</b>
-            <StyledLink href={"mailto:postmottak@helse-nord.no"}>
-              postmottak@helse-nord.no
-            </StyledLink>
-          </Stack>
-        </Grid>
-
-        <Grid item xs={4} sm={4} md={4} lg={4}>
-          <Stack>
-            <b>BESØKSADRESSE</b>
-            <text>Sykehusvegen 23</text>
-            <text> 9019 TROMSØ</text>
-
-            <StyledLink href={"https://maps.app.goo.gl/ohLzsYb8v6YvEDfL9"}>
-              Vis kart
-            </StyledLink>
-          </Stack>
-        </Grid>
-
-        <Grid item xs={4} sm={8} md={4} lg={4}>
-          <Stack>
-            <b>ORGANISASJONSNUMMER</b>
-            <text>990803765{"\n"}</text>
-            <Box marginTop={6}>
+            <Grid>
               <Link href={"https://www.helse-nord.no/"}>
                 <Image
                   className="footer-logo"
@@ -212,37 +115,93 @@ export const Footer = (props: FooterProps) => {
                   height={76}
                 />
               </Link>
-            </Box>
+            </Grid>
+            {helseatlas && (
+              <>
+                <Grid>
+                  <Link
+                    href="https://helse-forde.no/"
+                    title="Link til Helse Førde"
+                  >
+                    <Image
+                      loader={imgLoader}
+                      src={`/helseatlas/img/logos/helse-forde-hvit.svg`}
+                      height={52}
+                      width={234}
+                      alt="Helse Førde logo"
+                    />
+                  </Link>
+                </Grid>
+                <Grid>
+                  <Link
+                    href="https://helse-vest.no/"
+                    title="Link til Helse Vest"
+                  >
+                    <Image
+                      loader={imgLoader}
+                      src={`/helseatlas/img/logos/helse-vest-hvit.svg`}
+                      height={52}
+                      width={234}
+                      alt="Helse Vest logo"
+                    />
+                  </Link>
+                </Grid>
+              </>
+            )}
+          </Grid>
+          {kvalitet && (
+            <Grid xs={6}>
+              <Link href={"https://www.kvalitetsregistre.no/"}>
+                <Image
+                  className="footer-logo"
+                  id="nsm-footer-logo"
+                  loader={imgLoader}
+                  src={"/img/logos/nsm-hvit.svg"}
+                  alt="NSM-logo"
+                  width={467}
+                  height={52}
+                />
+              </Link>
+            </Grid>
+          )}
+        </Grid>
+
+        <Grid xs={12}>
+          Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet i
+          Helse Nord.
+        </Grid>
+
+        <Grid xs={12} sm={6} md={4}>
+          <Stack>
+            <b>TELEFON</b>
+            <StyledLink href={"tel:77755800"}>77 75 58 00</StyledLink>
+            <br />
+            <b>EPOST</b>
+            <StyledLink href={"mailto:postmottak@helse-nord.no"}>
+              postmottak@helse-nord.no
+            </StyledLink>
           </Stack>
         </Grid>
-        {page === "helseatlas" ? (
-          <>
-            <Grid item xs={4} sm={4} md={8} lg={8}>
-              <Link href="https://helse-forde.no/" title="Link til Helse Førde">
-                <Image
-                  loader={imgLoader}
-                  src={`/helseatlas/img/logos/helse-forde-hvit.svg`}
-                  height={52}
-                  width={(180 * 52) / 40}
-                  alt="Helse Førde logo"
-                />
-              </Link>
-            </Grid>
-            <Grid item xs={4} sm={4} md={4} lg={4}>
-              <Link href="https://helse-vest.no/" title="Link til Helse Vest">
-                <Image
-                  loader={imgLoader}
-                  src={`/helseatlas/img/logos/helse-vest-hvit.svg`}
-                  height={52}
-                  width={(180 * 52) / 40}
-                  alt="Helse Vest logo"
-                />
-              </Link>
-            </Grid>
-          </>
-        ) : null}
-        <Grid item xs={4} sm={4} md={0} lg={0}></Grid>
-      </FooterGridBottom>
-    </FooterWrapper>
+
+        <Grid xs={12} sm={6} md={4}>
+          <Stack>
+            <b>BESØKSADRESSE</b>
+            <text>Sykehusvegen 23</text>
+            <text>9019 TROMSØ</text>
+
+            <StyledLink href={"https://maps.app.goo.gl/ohLzsYb8v6YvEDfL9"}>
+              Vis kart
+            </StyledLink>
+          </Stack>
+        </Grid>
+
+        <Grid xs={12} md={4}>
+          <Stack>
+            <b>ORGANISASJONSNUMMER</b>
+            <text>990803765</text>
+          </Stack>
+        </Grid>
+      </Grid>
+    </Grid>
   );
 };

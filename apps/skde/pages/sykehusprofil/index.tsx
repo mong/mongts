@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { Text } from "@visx/text";
+import React, { useState, useEffect } from "react";
 import {
   useQueryParam,
   DelimitedArrayParam,
   withDefault,
 } from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
-import { Header } from "../../src/components/HospitalProfile";
+import {
+  Header,
+  HeaderData,
+  BreadCrumbPath,
+} from "../../src/components/Header";
 import {
   skdeTheme,
   FilterSettingsValue,
   FilterMenu,
   useUnitNamesQuery,
+  useUnitUrlsQuery,
   LowLevelIndicatorList,
   LineStyles,
 } from "qmongjs";
@@ -19,20 +23,17 @@ import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import {
-  Toolbar,
-  styled,
-  Typography,
-  Checkbox,
-  FormControlLabel,
+  Switch,
   ThemeProvider,
   Box,
   Accordion,
   AccordionSummary,
   AccordionDetails,
+  Stack,
+  Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
-import { useRouter } from "next/router";
 import IndicatorLinechart, {
   IndicatorLinechartParams,
 } from "../../src/charts/IndicatorLinechart";
@@ -44,46 +45,30 @@ import { useScreenSize } from "@visx/responsive";
 import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
-
-const lineChartTheme = {
-  lineChartBackground: {
-    fill: "#FFFFFF",
-    rx: 25,
-    ry: 25,
-  },
-};
-
-const StyledToolbarMiddle = styled(Toolbar)(({ theme }) => ({
-  backgroundColor: theme.palette.hospitalProfileHeader.light,
-  paddingTop: theme.spacing(12),
-  paddingBottom: theme.spacing(8),
-}));
-
-const ItemBox = styled(Box)(() => ({
-  backgroundColor: "white",
-  borderRadius: 24,
-}));
+import { SubUnits } from "../../src/components/SubUnits";
+import {
+  lineChartTheme,
+  ItemBox,
+} from "../../src/components/HospitalProfileStyles";
+import { ExpandableItemBox } from "../../src/components/ExpandableItemBox";
+import logo from "./Logo.png";
+import { URLs } from "types";
+import { ArrowLink } from "qmongjs";
+import Divider from "@mui/material/Divider";
+import { useRouter } from "next/router";
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
   const treatmentUnitsKey = "selected_treatment_units";
 
-  // Need this to get filter options from the URL
-  const router = useRouter();
-
-  const [prevReady, setPrevReady] = useState(router.isReady);
-  const prerenderFinished = prevReady !== router.isReady;
-
-  useEffect(() => {
-    setPrevReady(router.isReady);
-  }, [router.isReady]);
-
   // Current unit name and its setter function
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useQueryParam(
     treatmentUnitsKey,
     withDefault(DelimitedArrayParam, ["Nasjonalt"]),
   );
+
+  const [unitUrl, setUnitUrl] = useState<string | null>(null);
 
   // Get unit names
 
@@ -96,17 +81,21 @@ export const Skde = (): JSX.Element => {
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
-  // Make sure everything is good to go
-  const [prevApiQueryLoading, setPrevApiQueryLoading] = useState(
-    unitNamesQuery.isLoading,
-  );
-  const apiQueriesCompleted = prevApiQueryLoading && !unitNamesQuery.isLoading;
+  // The following code ensures that the page renders correctly
+  const unitUrlsQuery = useUnitUrlsQuery();
 
-  const shouldRefreshInitialState = prerenderFinished || apiQueriesCompleted;
+  const router = useRouter();
+
+  const [prevReady, setPrevReady] = useState(router.isReady);
+
+  const prerenderFinished =
+    prevReady !== router.isReady && !unitUrlsQuery.isFetching;
 
   useEffect(() => {
-    setPrevApiQueryLoading(unitNamesQuery.isLoading);
-  }, [unitNamesQuery.isLoading]);
+    setPrevReady(router.isReady);
+  }, [router.isReady]);
+
+  const shouldRefreshInitialState = prerenderFinished;
 
   // Callback function for updating the filter menu
   const handleChange = (filterInput: FilterSettings) => {
@@ -116,6 +105,19 @@ export const Skde = (): JSX.Element => {
 
     setExpanded(false);
     setSelectedTreatmentUnits(newUnit);
+
+    let unitUrl: URLs | undefined;
+    if (unitUrlsQuery.data) {
+      unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
+        return row.shortName === newUnit[0];
+      });
+    }
+
+    if (unitUrl && unitUrl[0]) {
+      setUnitUrl(unitUrl[0].url);
+    } else {
+      setUnitUrl(null);
+    }
   };
 
   const screenSize = useScreenSize({ debounceTime: 150 });
@@ -129,37 +131,49 @@ export const Skde = (): JSX.Element => {
     height: 600,
     lineStyles: new LineStyles(
       [
-        { text: "Høy måloppnåelse", strokeDash: "0", colour: "#3BAA34" },
-        { text: "Moderat måloppnåelse", strokeDash: "1 3", colour: "#FD9C00" },
-        { text: "Lav måloppnåelse", strokeDash: "8 8", colour: "#E30713" },
+        {
+          text: "Høy måloppnåelse",
+          strokeDash: "0",
+          colour: "#3BAA34",
+          marker: "circle",
+          markEnd: true,
+        },
+        {
+          text: "Moderat måloppnåelse",
+          strokeDash: "1 3",
+          colour: "#FD9C00",
+          marker: "square",
+          markEnd: true,
+        },
+        {
+          text: "Lav måloppnåelse",
+          strokeDash: "8 8",
+          colour: "#E30713",
+          marker: "triangle",
+          markEnd: true,
+        },
       ],
-      { fontSize: 24, fontFamily: "Plus Jakarta Sans", fontWeight: 500 },
+      { fontSize: 16, fontFamily: "Arial", fontWeight: 500 },
     ),
     font: {
-      fontSize: 24,
-      fontWeight: 700,
-      fontFamily: "Plus Jakarta Sans",
+      fontSize: 18,
+      fontWeight: 500,
+      fontFamily: "Arial",
     },
     yAxisText: "Antall indikatorer",
+    xTicksFont: { fontFamily: "Arial", fontSize: 16, fontWeight: 500 },
+    yTicksFont: { fontFamily: "Arial", fontSize: 14, fontWeight: 500 },
     startYear: 2017,
     endYear: 2022,
     yMin: 0,
-    normalise: false,
+    normalise: true,
+    useToolTip: true,
   };
 
   const medfieldTableProps: MedfieldTableProps = {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    width: 800,
-    treatmentYear: 2022,
-  };
-
-  const medfieldTablePropsDG: MedfieldTableProps = {
-    unitNames: [selectedTreatmentUnits[0]],
-    context: "caregiver",
-    type: "dg",
-    width: 800,
     treatmentYear: 2022,
   };
 
@@ -178,174 +192,258 @@ export const Skde = (): JSX.Element => {
     indicatorParams.yAxisText = "Antall indikatorer";
   }
 
-  const handleClickAway = () => {
-    if (expanded === true) {
-      setExpanded(false);
-    }
+  // State logic for ind or dg in medfieldtable
+  const [dataQuality, setDataQuality] = React.useState(false);
+
+  if (dataQuality) {
+    medfieldTableProps.type = "dg";
+  } else {
+    medfieldTableProps.type = "ind";
+  }
+
+  const checkDataQuality = () => {
+    setDataQuality(!dataQuality);
   };
+
+  const breadcrumbs: BreadCrumbPath = {
+    path: [
+      {
+        link: "https://www.skde.no",
+        text: "Forside",
+      },
+      {
+        link: "/sykehusprofil/",
+        text: "Sykehusprofil",
+      },
+    ],
+  };
+
+  const headerData: HeaderData = {
+    title: "Sykehusprofil",
+    subtitle: "Resultater fra sykehus",
+  };
+
+  const boxMaxHeight = 800;
+
+  const titleStyle = { marginTop: 20, marginLeft: 20 };
+  const textMargin = 20;
 
   return (
     <ThemeProvider theme={skdeTheme}>
-      <Header />
       <PageWrapper>
-        <StyledToolbarMiddle className="header-middle">
-          <Grid container spacing={2} rowSpacing={6}>
-            <Grid xs={12}>
-              <Typography variant="h1">Sykehusprofil</Typography>
-            </Grid>
-            <Grid xs={12}>
-              <Typography variant="h6">Resultater fra sykehus</Typography>
-            </Grid>
-            <Grid xs={6}>
-              <ClickAwayListener onClickAway={handleClickAway}>
-                <Accordion
-                  expanded={expanded}
-                  onChange={(e, expanded) => {
-                    setExpanded(expanded);
+        <Header
+          bgcolor="surface2.light"
+          headerData={headerData}
+          breadcrumbs={breadcrumbs}
+        >
+          <ClickAwayListener onClickAway={() => setExpanded(false)}>
+            <Accordion
+              expanded={expanded}
+              onChange={(e, expanded) => {
+                setExpanded(expanded);
+              }}
+            >
+              <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
+                <h3>
+                  {selectedTreatmentUnits[0] === "Nasjonalt"
+                    ? "Velg enhet"
+                    : selectedTreatmentUnits[0]}
+                </h3>
+              </AccordionSummary>
+
+              <AccordionDetails>
+                <FilterMenu
+                  refreshState={shouldRefreshInitialState}
+                  onSelectionChanged={handleChange}
+                  onFilterInitialized={() => {
+                    return null;
                   }}
                 >
-                  <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
-                    <h3>
-                      {selectedTreatmentUnits[0] === "Nasjonalt"
-                        ? "Velg enhet"
-                        : selectedTreatmentUnits[0]}
-                    </h3>
-                  </AccordionSummary>
+                  <TreeViewFilterSection
+                    refreshState={shouldRefreshInitialState}
+                    treedata={treatmentUnits.treedata}
+                    defaultvalues={treatmentUnits.defaults}
+                    initialselections={
+                      selectedTreatmentUnits.map((value) => ({
+                        value: value,
+                        valueLabel: value,
+                      })) as FilterSettingsValue[]
+                    }
+                    sectionid={treatmentUnitsKey}
+                    sectiontitle={"Behandlingsenheter"}
+                    filterkey={treatmentUnitsKey}
+                    searchbox={true}
+                    multiselect={false}
+                    accordion={false}
+                    noShadow={true}
+                  />
+                </FilterMenu>
+              </AccordionDetails>
+            </Accordion>
+          </ClickAwayListener>
+        </Header>
 
-                  <AccordionDetails>
-                    <FilterMenu
-                      refreshState={shouldRefreshInitialState}
-                      onSelectionChanged={handleChange}
-                      onFilterInitialized={() => {
-                        return null;
+        <Box margin={2}>
+          <Grid container spacing={2}>
+            <Grid xs={12}>
+              <ItemBox height={440} sx={{ overflow: "auto" }}>
+                <Grid container>
+                  <Grid
+                    xs={12}
+                    sm={4}
+                    lg={4}
+                    xl={4}
+                    xxl={4}
+                    alignContent="center"
+                    style={{ textAlign: "center" }}
+                  >
+                    <img
+                      src={logo.src}
+                      alt={"Logo"}
+                      width="100%"
+                      style={{ borderRadius: "50%", maxWidth: 300 }}
+                    />
+                  </Grid>
+
+                  <Grid xs={6} sm={4} lg={4} xl={4} xxl={4}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        height: "400px",
                       }}
                     >
-                      <TreeViewFilterSection
-                        refreshState={shouldRefreshInitialState}
-                        treedata={treatmentUnits.treedata}
-                        defaultvalues={treatmentUnits.defaults}
-                        initialselections={
-                          selectedTreatmentUnits.map((value) => ({
-                            value: value,
-                            valueLabel: value,
-                          })) as FilterSettingsValue[]
-                        }
-                        sectionid={treatmentUnitsKey}
-                        sectiontitle={"Behandlingsenheter"}
-                        filterkey={treatmentUnitsKey}
-                        searchbox={true}
-                        multiselect={false}
-                        accordion={false}
-                        noShadow={true}
-                      />
-                    </FilterMenu>
-                  </AccordionDetails>
-                </Accordion>
-              </ClickAwayListener>
-            </Grid>
-          </Grid>
-        </StyledToolbarMiddle>
+                      <Typography
+                        variant="h5"
+                        style={{ marginTop: 20, marginLeft: 20 }}
+                      >
+                        {selectedTreatmentUnits[0]}
+                      </Typography>
 
-        <Box margin={4}>
-          <Grid container spacing={2}>
-            <Grid xs={6}>
-              <ItemBox>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
-                  {selectedTreatmentUnits[0]}
-                </Text>
-              </ItemBox>
-            </Grid>
-            <Grid xs={6}>
-              <ItemBox>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
-                  Utvalgte indikatorer
-                </Text>
+                      <div style={{ marginLeft: 8 }}>
+                        <Typography variant="body1">
+                          Her skal det stå noe om enheten. <br />
+                        </Typography>
+                      </div>
+
+                      <div style={{ marginTop: "auto" }}>
+                        <Divider />
+                        {unitUrl ? (
+                          <ArrowLink
+                            href={unitUrl}
+                            text="Nettside"
+                            externalLink={true}
+                          />
+                        ) : null}
+                      </div>
+                    </div>
+                  </Grid>
+
+                  <Grid xs={6} sm={4} lg={4} xl={4} xxl={4}>
+                    <ItemBox
+                      height={440}
+                      sx={{ overflow: "auto", marginRight: 2 }}
+                    >
+                      <Typography variant="h5" style={titleStyle}>
+                        Tilknyttede enheter
+                      </Typography>
+                      <div style={{ margin: textMargin }}>
+                        <Typography variant="body1">
+                          Her vises behandlingssteder som er tilhørende til
+                          valgt helseforetak. Du kan trykke på behandlingsstedet
+                          for å enkelt kunne velge det i Sykehusprofil.
+                        </Typography>
+                      </div>
+                      {unitNamesQuery.data ? (
+                        <SubUnits
+                          RHFs={unitNamesQuery.data.nestedUnitNames}
+                          selectedUnit={selectedTreatmentUnits[0]}
+                        />
+                      ) : null}
+                    </ItemBox>
+                  </Grid>
+                </Grid>
               </ItemBox>
             </Grid>
 
             <Grid xs={12}>
-              <ItemBox>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
+              <ItemBox sx={{ overflow: "auto" }}>
+                <Typography variant="h5" style={titleStyle}>
                   Utvikling over tid
-                </Text>
+                </Typography>
+                <div style={{ margin: textMargin }}>
+                  <Typography variant="body1">
+                    Grafen viser andel eller antall av alle kvalitetsindikatorer
+                    fra de nasjonale medisinske kvalitetsregistre. Grafen viser
+                    hvilke som har hatt høy, middels eller lav måloppnåelse de
+                    siste årene.
+                  </Typography>
+                </div>
                 <ThemeProvider theme={lineChartTheme}>
                   <IndicatorLinechart {...indicatorParams} />
                 </ThemeProvider>
-                <FormControlLabel
-                  control={<Checkbox onChange={checkNormalise} />}
-                  label="Vis andel"
-                  sx={{ margin: 2 }}
-                />
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  alignItems="center"
+                  margin={4}
+                >
+                  <Typography>Vis andel</Typography>
+                  <Switch checked={!normalise} onChange={checkNormalise} />
+                  <Typography>Vis antall</Typography>
+                </Stack>
               </ItemBox>
             </Grid>
 
             <Grid xs={12}>
-              <ItemBox>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
+              <ExpandableItemBox collapsedHeight={boxMaxHeight}>
+                <Typography variant="h5" style={titleStyle}>
                   Fagområder
-                </Text>
-                <MedfieldTable {...medfieldTableProps} />
-              </ItemBox>
-            </Grid>
-
-            <Grid xs={12}>
-              <ItemBox>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
+                </Typography>
+                <div style={{ margin: textMargin }}>
+                  <Typography variant="body1">
+                    {dataQuality
+                      ? "Her vises dekningsgraden eller datakvaliteten til " +
+                        selectedTreatmentUnits[0] +
+                        " fordelt på fagområder som forteller om datagrunnlaget fra registrene."
+                      : "Her vises alle kvalitetsindikatorene fra " +
+                        selectedTreatmentUnits[0] +
+                        " fordelt på fagområder. Hver indikator er vist som et symbol for høy, middels eller lav måloppnåelse."}
+                  </Typography>
+                </div>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  alignItems="center"
+                  margin={4}
                 >
-                  Fagområder (dekningsgrad)
-                </Text>
-                <MedfieldTable {...medfieldTablePropsDG} />
-              </ItemBox>
+                  <Typography>Vis kvalitetsindikatorer</Typography>
+                  <Switch checked={dataQuality} onChange={checkDataQuality} />
+                  <Typography>Vis datakvalitet</Typography>
+                </Stack>
+                <MedfieldTable {...medfieldTableProps} />
+              </ExpandableItemBox>
             </Grid>
 
             <Grid xs={12}>
-              <ItemBox>
-                <Box margin={2}>
-                  <Text
-                    x={"10%"}
-                    y={50}
-                    width={500}
-                    verticalAnchor="start"
-                    style={{ fontWeight: 700, fontSize: 24 }}
-                  >
-                    Indikatorer med lavt målnivå
-                  </Text>
-                  <LowLevelIndicatorList
-                    context={"caregiver"}
-                    type={"ind"}
-                    unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
-                  />
-                </Box>
-              </ItemBox>
+              <ExpandableItemBox collapsedHeight={boxMaxHeight}>
+                <Typography variant="h5" style={titleStyle}>
+                  Siste års måloppnåelse
+                </Typography>
+                <div style={{ margin: textMargin }}>
+                  <Typography variant="body1">
+                    Liste over kvalitetsindikatorer med beskrivelse som er
+                    fordelt på høy, middels eller lav måloppnåelse. Du kan
+                    trykke på indikatorene for å se datakvaliteten og mer
+                    beskrivelse av indikatorene.
+                  </Typography>
+                </div>
+                <LowLevelIndicatorList
+                  context={"caregiver"}
+                  type={"ind"}
+                  unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
+                />
+              </ExpandableItemBox>
             </Grid>
           </Grid>
         </Box>

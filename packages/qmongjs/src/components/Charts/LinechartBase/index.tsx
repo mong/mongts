@@ -26,6 +26,10 @@ type lineStyle = {
   text: string;
   strokeDash: string;
   colour: string;
+  marker?: "circle" | "square" | "triangle";
+  markStart?: boolean;
+  markMiddle?: boolean;
+  markEnd?: boolean;
 };
 
 export type font = {
@@ -78,8 +82,9 @@ type LinechartBaseProps = {
   width: number;
   height: number;
   lineStyles: LineStyles;
-  font: font;
-  yAxisText: string;
+  yAxisText: { text: string; font: font };
+  xTicksFont?: font;
+  yTicksFont?: font;
   yMin?: number;
   yMax?: number;
   levelGreen?: number;
@@ -87,17 +92,32 @@ type LinechartBaseProps = {
   levelDirection?: number;
   format_y?: string;
   lang?: "en" | "nb" | "nn";
+  useTooltip?: boolean;
+  showLegend?: boolean;
 };
 
 type ToolTipBoxProps = {
   id?: number;
+  x: Date;
   y: number;
   format_y?: string;
   lang: "en" | "nb" | "nn";
 };
 
 const ToolTipBox = (props: ToolTipBoxProps) => {
-  const { id, y, lang } = props;
+  const { id, x, y, lang, format_y } = props;
+
+  if (id === undefined) {
+    const y_formatted = format_y
+      ? customFormat(format_y, lang)(y)
+      : y.toPrecision(2);
+
+    return (
+      <div style={{ textAlign: "center" }}>
+        {x.getFullYear() + " : " + y_formatted}
+      </div>
+    );
+  }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const indicatorQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
@@ -140,8 +160,9 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
     width,
     height,
     lineStyles,
-    font,
     yAxisText,
+    xTicksFont,
+    yTicksFont,
     yMin,
     yMax,
     levelGreen,
@@ -149,6 +170,8 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
     levelDirection,
     format_y,
     lang = "nb",
+    useTooltip,
+    showLegend,
     showTooltip,
     hideTooltip,
     tooltipData,
@@ -187,16 +210,10 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
     const yAxisLabelDisplacementFactor = 0.5;
 
     const yLabelProps = {
-      fontSize: font.fontSize,
+      fontSize: yAxisText.font.fontSize,
       x: -height * yAxisLabelDisplacementFactor,
-      fontFamily: font.fontFamily,
-      fontWeight: font.fontWeight,
-    };
-
-    const xTicksProps = {
-      fontSize: font.fontSize,
-      fontFamily: font.fontFamily,
-      fontWeight: font.fontWeight,
+      fontFamily: yAxisText.font.fontFamily,
+      fontWeight: yAxisText.font.fontWeight,
     };
 
     const legendScale = scaleOrdinal<string, React.JSX.Element>({
@@ -299,40 +316,74 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
 
     return (
       <div className="visx-linechartbase">
-        <Legend scale={legendScale}>
-          {(labels) => (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                marginLeft: "10%",
-              }}
-            >
-              {labels.map((label, i) => {
-                return (
-                  <div style={{ padding: "10px" }} key={`legend-div-${i}`}>
-                    <LegendItem key={`legend-${i}`}>
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="70"
-                        height="6"
-                        viewBox="0 0 40 1"
-                        fill="none"
-                      >
-                        {label.value}
-                      </svg>
-                      <LegendLabel align="left" style={{ ...lineStyles.font }}>
-                        {label.text}
-                      </LegendLabel>
-                    </LegendItem>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </Legend>
+        {showLegend ? (
+          <Legend scale={legendScale}>
+            {(labels) => (
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  marginLeft: "10%",
+                }}
+              >
+                {labels.map((label, i) => {
+                  return (
+                    <div style={{ padding: "10px" }} key={`legend-div-${i}`}>
+                      <LegendItem key={`legend-${i}`}>
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="70"
+                          height="6"
+                          viewBox="0 0 40 1"
+                          fill="none"
+                        >
+                          {label.value}
+                        </svg>
+                        <LegendLabel
+                          align="left"
+                          style={{ ...lineStyles.font }}
+                        >
+                          {label.text}
+                        </LegendLabel>
+                      </LegendItem>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </Legend>
+        ) : null}
 
         <svg className="linechartbase" width={width} height={height}>
+          <defs>
+            <marker
+              id="circle"
+              markerWidth="8"
+              markerHeight="8"
+              refX="4"
+              refY="4"
+            >
+              <circle cx="4" cy="4" r="4" fill="#3BAA34" />
+            </marker>
+            <marker
+              id="square"
+              markerWidth="8"
+              markerHeight="8"
+              refX="4"
+              refY="4"
+            >
+              <path d="M0 0 L8 0 L8 8 L0 8 z" fill="#FD9C00" />
+            </marker>
+            <marker
+              id="triangle"
+              markerWidth="8"
+              markerHeight="8"
+              refX="4"
+              refY="4"
+            >
+              <path d="M4 0 L8 8 L0 8 z" fill="#E30713" />
+            </marker>
+          </defs>
           {background}
           <Group>
             <GridRows
@@ -345,7 +396,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
             />
             {data.map((lineData, i) => {
               return (
-                <Group>
+                <Group key={"group" + i.toString()}>
                   {lineData.map((d, j) => (
                     <circle
                       key={i + j}
@@ -368,6 +419,24 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
                     strokeWidth={"2px"}
                     strokeLinejoin={"round"}
                     strokeLinecap={"square"}
+                    markerStart={
+                      lineStyles.styles[i].markStart
+                        ? lineStyles.styles[i].marker &&
+                          "url(#" + lineStyles.styles[i].marker + ")"
+                        : undefined
+                    }
+                    markerMid={
+                      lineStyles.styles[i].markMiddle
+                        ? lineStyles.styles[i].marker &&
+                          "url(#" + lineStyles.styles[i].marker + ")"
+                        : undefined
+                    }
+                    markerEnd={
+                      lineStyles.styles[i].markEnd
+                        ? lineStyles.styles[i].marker &&
+                          "url(#" + lineStyles.styles[i].marker + ")"
+                        : undefined
+                    }
                   />
                 </Group>
               );
@@ -377,16 +446,17 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
               scale={xScale}
               top={yScale.range()[0]}
               numTicks={nXTicks}
-              tickLabelProps={xTicksProps}
+              tickLabelProps={xTicksFont}
             />
             <AxisLeft
               scale={yScale}
               left={borderWidth}
-              label={yAxisText}
+              label={yAxisText.text}
               labelProps={yLabelProps}
               tickFormat={(val) =>
                 format_y ? customFormat(format_y, lang)(val) : val.toString()
               }
+              tickLabelProps={yTicksFont}
             />
             <Bar
               x={0}
@@ -400,7 +470,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
               onMouseMove={handleToolTip}
               onMouseLeave={() => hideTooltip()}
             />
-            {tooltipData && (
+            {useTooltip && tooltipData && (
               <circle
                 cx={tooltipLeft}
                 cy={tooltipTop}
@@ -413,18 +483,20 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
             )}
           </Group>
         </svg>
-        {tooltipData && (
+        {useTooltip && tooltipData && (
           <TooltipWithBounds
             key={Math.random()}
             top={tooltipTop - 50}
-            left={tooltipLeft + 400}
+            left={tooltipLeft}
             style={tooltipStyles}
           >
             {
               <ToolTipBox
                 id={tooltipData.id}
+                x={tooltipData.x}
                 y={tooltipData.y}
                 lang={lang}
+                format_y={format_y}
               ></ToolTipBox>
             }
           </TooltipWithBounds>

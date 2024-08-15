@@ -173,38 +173,32 @@ const IndicatorRow = (props: {
 
     const sizeFactor = 0.5;
 
-    let figure;
-    let buttonText;
+    const figure = showBars ? (
+      <BarchartBase
+        indicatorData={indData}
+        width={sizeFactor * width * 0.7}
+        height={sizeFactor * height}
+        xTickFormat=",.0%"
+      />
+    ) : (
+      <LinechartBase
+        data={chartDataFiltered}
+        width={sizeFactor * width}
+        height={sizeFactor * height}
+        yMin={0}
+        yMax={1}
+        lineStyles={lineStyles}
+        yAxisText={{ text: "Andel", font: font }}
+        format_y=",.0%"
+        levelGreen={indData.levelGreen!}
+        levelYellow={indData.levelYellow!}
+        levelDirection={indData.levelDirection!}
+        useTooltip={true}
+        showLegend={true}
+      />
+    );
 
-    showBars
-      ? (figure = (
-          <BarchartBase
-            indicatorData={indData}
-            width={sizeFactor * width * 0.7}
-            height={sizeFactor * height}
-            xTickFormat=",.0%"
-          />
-        ))
-      : (figure = (
-          <LinechartBase
-            data={chartDataFiltered}
-            width={sizeFactor * width}
-            height={sizeFactor * height}
-            yMin={0}
-            yMax={1}
-            lineStyles={lineStyles}
-            font={font}
-            yAxisText={"Andel"}
-            format_y=",.0%"
-            levelGreen={indData.levelGreen!}
-            levelYellow={indData.levelYellow!}
-            levelDirection={indData.levelDirection!}
-          />
-        ));
-
-    showBars
-      ? (buttonText = "Vis tidstrend")
-      : (buttonText = "Vis alle sykehus");
+    const buttonText = showBars ? "Vis tidstrend" : "Vis alle sykehus";
 
     return (
       <div>
@@ -224,9 +218,7 @@ const IndicatorRow = (props: {
     );
   };
 
-  let responsiveChart;
-
-  open ? (responsiveChart = <ResponsiveChart />) : (responsiveChart = null);
+  const responsiveChart = open ? <ResponsiveChart /> : null;
 
   return (
     <React.Fragment key={indData.indicatorTitle + "-indicatorSection"}>
@@ -276,19 +268,19 @@ const IndicatorRow = (props: {
                   ? 1
                   : cellAlpha;
 
-          let cellData;
-          Array.from([lowDG, noData, lowN]).every((x) => x == false)
-            ? (cellData = [row?.result, row?.symbol])
-            : (cellData = "N/A");
+          const cellData = Array.from([lowDG, noData, lowN]).every(
+            (x) => x == false,
+          )
+            ? [row?.result, row?.symbol]
+            : "N/A";
 
-          let patientCounts;
-          lowDG
-            ? (patientCounts = "Lav dekning")
+          const patientCounts = lowDG
+            ? "Lav dekning"
             : lowN
-              ? (patientCounts = "Lite data")
+              ? "Lite data"
               : noData
-                ? (patientCounts = "Ingen data")
-                : (patientCounts = row?.numerator + " av " + row?.denominator);
+                ? "Ingen data"
+                : row?.numerator + " av " + row?.denominator;
 
           return (
             <StyledTableCell
@@ -387,16 +379,17 @@ const IndicatorSection = (props: {
   // Map indicators to rows and show only rows where there is at least
   // one indicator not removed by the filter
   return data.map((indDataRow) => {
-    let showRow;
-
-    levels === ""
-      ? (showRow = true)
-      : indDataRow.data &&
-          indDataRow.data
-            .map((dataPointRow) => level2(indDataRow, dataPointRow) === levels)
-            .every((x) => x === false)
-        ? (showRow = false)
-        : (showRow = true);
+    const showRow =
+      levels === ""
+        ? true
+        : indDataRow.data &&
+            indDataRow.data
+              .map(
+                (dataPointRow) => level2(indDataRow, dataPointRow) === levels,
+              )
+              .every((x) => x === false)
+          ? false
+          : true;
 
     const returnVal = showRow ? (
       <IndicatorRow

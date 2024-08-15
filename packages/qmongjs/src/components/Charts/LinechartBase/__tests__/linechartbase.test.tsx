@@ -4,6 +4,7 @@ import { LinechartBase } from "..";
 import { LineStyles } from "..";
 import { vi, test, expect } from "vitest";
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 vi.mock("next/router", () => require("next-router-mock"));
 vi.mock("next/font/google", () => ({
   Plus_Jakarta_Sans: () => ({
@@ -56,33 +57,21 @@ test("Standard render", () => {
       width={800}
       height={400}
       lineStyles={lineStyles}
-      font={font}
       yMin={0}
       yMax={25}
-      yAxisText={"Andel"}
+      yAxisText={{ text: "Andel", font: font }}
+      showLegend={true}
     />,
   );
-  // container.children[0].children[0] is the legend
-  // container.children[0].children[1].children[0] are the three line plots
-  // It consists of 6 SVG elements: rect, path, path, path, g and g
-  // These are the background, three lines, the x axis and the y axis.
-  expect(
-    container.children[0].children[0].children[1].children[0].children[0]
-      .children[0],
-  ).toMatchSnapshot();
-  expect(
-    container.children[0].children[0].children[1].children[0].children[0]
-      .children[4],
-  ).toMatchSnapshot();
-  expect(
-    container.children[0].children[0].children[1].children[0].children[0]
-      .children[5],
-  ).toMatchSnapshot();
 
+  // Markers
   expect(
-    container.children[0].children[0].children[1].children[0].children[0]
-      .childElementCount,
-  ).toEqual(6);
+    container.children[0].children[0].children[1].children[0],
+  ).toMatchSnapshot();
+  // The plot itself: grid, 3 graphs, two axes and the background.
+  expect(
+    container.children[0].children[0].children[1].children[1].childElementCount,
+  ).toEqual(7);
 });
 
 test("Render with format and lang = en", () => {
@@ -92,32 +81,23 @@ test("Render with format and lang = en", () => {
       width={800}
       height={400}
       lineStyles={lineStyles}
-      font={font}
       yMin={0}
       yMax={25}
       lang="en"
       format_y=",.2%"
-      yAxisText={"Andel"}
+      yAxisText={{ text: "Andel", font: font }}
+      showLegend={true}
     />,
   );
 
+  // Markers
   expect(
-    container.children[0].children[0].children[1].children[0].children[0]
-      .children[0],
+    container.children[0].children[0].children[1].children[0],
   ).toMatchSnapshot();
+  // The plot itself: grid, 3 graphs, two axes and the background.
   expect(
-    container.children[0].children[0].children[1].children[0].children[0]
-      .children[4],
-  ).toMatchSnapshot();
-  expect(
-    container.children[0].children[0].children[1].children[0].children[0]
-      .children[5],
-  ).toMatchSnapshot();
-
-  expect(
-    container.children[0].children[0].children[1].children[0].children[0]
-      .childElementCount,
-  ).toEqual(6);
+    container.children[0].children[0].children[1].children[1].childElementCount,
+  ).toEqual(7);
 });
 
 test("Render with format and lang = nb", () => {
@@ -127,32 +107,23 @@ test("Render with format and lang = nb", () => {
       width={800}
       height={400}
       lineStyles={lineStyles}
-      font={font}
       yMin={0}
       yMax={25}
       lang="nb"
       format_y=",.0%"
-      yAxisText={"Andel"}
+      yAxisText={{ text: "Andel", font: font }}
+      showLegend={true}
     />,
   );
 
+  // Markers
   expect(
-    container.children[0].children[0].children[1].children[0].children[0]
-      .children[0],
+    container.children[0].children[0].children[1].children[0],
   ).toMatchSnapshot();
+  // The plot itself: grid, 3 graphs, two axes and the background.
   expect(
-    container.children[0].children[0].children[1].children[0].children[0]
-      .children[4],
-  ).toMatchSnapshot();
-  expect(
-    container.children[0].children[0].children[1].children[0].children[0]
-      .children[5],
-  ).toMatchSnapshot();
-
-  expect(
-    container.children[0].children[0].children[1].children[0].children[0]
-      .childElementCount,
-  ).toEqual(6);
+    container.children[0].children[0].children[1].children[1].childElementCount,
+  ).toEqual(7);
 });
 
 test("Render with other format", () => {
@@ -162,31 +133,22 @@ test("Render with other format", () => {
       width={800}
       height={400}
       lineStyles={lineStyles}
-      font={font}
       yMin={0}
       yMax={25}
       format_y=",.4f"
-      yAxisText={"Andel"}
+      yAxisText={{ text: "Andel", font: font }}
+      showLegend={true}
     />,
   );
 
+  // Markers
   expect(
-    container.children[0].children[0].children[1].children[0].children[0]
-      .children[0],
+    container.children[0].children[0].children[1].children[0],
   ).toMatchSnapshot();
+  // The plot itself: grid, 3 graphs, two axes and the background.
   expect(
-    container.children[0].children[0].children[1].children[0].children[0]
-      .children[4],
-  ).toMatchSnapshot();
-  expect(
-    container.children[0].children[0].children[1].children[0].children[0]
-      .children[5],
-  ).toMatchSnapshot();
-
-  expect(
-    container.children[0].children[0].children[1].children[0].children[0]
-      .childElementCount,
-  ).toEqual(6);
+    container.children[0].children[0].children[1].children[1].childElementCount,
+  ).toEqual(7);
 });
 
 // Children[0].children[1] should 3 rects and one Visx group
@@ -197,29 +159,37 @@ test("Render with background levelDirection one", () => {
       width={800}
       height={400}
       lineStyles={lineStyles}
-      font={font}
       yMin={0}
       yMax={25}
       format_y=",.2f"
       levelGreen={15}
       levelYellow={10}
       levelDirection={1}
-      yAxisText={"Andel"}
+      yAxisText={{ text: "Andel", font: font }}
+      showLegend={true}
     />,
   );
 
+  // Markers
   expect(
     container.children[0].children[0].children[1].children[0],
   ).toMatchSnapshot();
+  // Rect 1
   expect(
     container.children[0].children[0].children[1].children[1],
   ).toMatchSnapshot();
+  // Rect 2
   expect(
     container.children[0].children[0].children[1].children[2],
   ).toMatchSnapshot();
+  // Rect 3
   expect(
-    container.children[0].children[0].children[1].childElementCount,
-  ).toEqual(4);
+    container.children[0].children[0].children[1].children[3],
+  ).toMatchSnapshot();
+  // The plot itself: grid, 3 graphs, two axes and the background.
+  expect(
+    container.children[0].children[0].children[1].children[4].childElementCount,
+  ).toEqual(7);
 });
 
 test("Render with background levelDirection zero", () => {
@@ -229,27 +199,35 @@ test("Render with background levelDirection zero", () => {
       width={800}
       height={400}
       lineStyles={lineStyles}
-      font={font}
       yMin={0}
       yMax={25}
       format_y=",.2f"
       levelGreen={10}
       levelYellow={15}
       levelDirection={0}
-      yAxisText={"Andel"}
+      yAxisText={{ text: "Andel", font: font }}
+      showLegend={true}
     />,
   );
 
+  // Markers
   expect(
     container.children[0].children[0].children[1].children[0],
   ).toMatchSnapshot();
+  // Rect 1
   expect(
     container.children[0].children[0].children[1].children[1],
   ).toMatchSnapshot();
+  // Rect 2
   expect(
     container.children[0].children[0].children[1].children[2],
   ).toMatchSnapshot();
+  // Rect 3
   expect(
-    container.children[0].children[0].children[1].childElementCount,
-  ).toEqual(4);
+    container.children[0].children[0].children[1].children[3],
+  ).toMatchSnapshot();
+  // The plot itself: grid, 3 graphs, two axes and the background.
+  expect(
+    container.children[0].children[0].children[1].children[4].childElementCount,
+  ).toEqual(7);
 });
