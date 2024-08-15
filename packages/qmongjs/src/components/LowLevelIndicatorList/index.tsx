@@ -80,14 +80,16 @@ const RegistrySection = (props: {
 
   const indData = data.indicatorData.flat();
 
-  const registryName = data.registerName;
+  const registryName = data.registerFullName;
   const dataFlat = getDataSubset(indData, currentYear, selectedIndex);
 
   return (
     <React.Fragment>
       <TableHead>
         <TableRow>
-          <TableCell colSpan={2}>{registryName}</TableCell>
+          <TableCell colSpan={3} align="center">
+            {registryName}
+          </TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
