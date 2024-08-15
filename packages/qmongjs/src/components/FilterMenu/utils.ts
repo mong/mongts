@@ -4,7 +4,7 @@ export const getDefaultValue = (defaultValues?: FilterSettingsValue[]) => {
   if (defaultValues == null || defaultValues.length === 0) {
     return undefined;
   }
-  return defaultValues[0].value;
+  return defaultValues[0]?.value;
 };
 
 export const getSelectedValue = (
@@ -12,7 +12,7 @@ export const getSelectedValue = (
   filterSettings: FilterSettings,
 ) => {
   return (
-    filterSettings.map.get(filterkey)?.[0].value ||
+    filterSettings.map.get(filterkey)?.[0]?.value ||
     getDefaultValue(filterSettings.defaults.get(filterkey))
   );
 };
