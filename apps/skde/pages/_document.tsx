@@ -15,25 +15,17 @@ class MyDocument extends Document<{ lang: string; pathname: string }> {
     return (
       <Html lang={lang}>
         <Head>
-          {pathname === "/" ? (
-            <meta
-              http-equiv="refresh"
-              content="0; url=https://www.skde.no/"
-            ></meta>
-          ) : (
-            <meta
-              name="google-site-verification"
-              content="XnhRhaBwfeuAccfCFysPPpe1f49t46JAfInHBDfK6HE"
-            />
+          {pathname === "/" && (
+            <meta httpEquiv="refresh" content="0; url=https://www.skde.no/" />
           )}
+          <meta
+            name="google-site-verification"
+            content="XnhRhaBwfeuAccfCFysPPpe1f49t46JAfInHBDfK6HE"
+          />
         </Head>
         <body>
-          {pathname !== "/" && (
-            <>
-              <Main />
-              <NextScript />
-            </>
-          )}
+          <Main />
+          <NextScript />
         </body>
       </Html>
     );
