@@ -16,12 +16,9 @@ class MyDocument extends Document<{ lang: string; pathname: string }> {
       <Html lang={lang}>
         <Head>
           {pathname === "/" && (
-            <meta
-              httpEquiv="refresh"
-              content="0; url=https://www.skde.no/"
-            />
-          )} 
-          <meta 
+            <meta httpEquiv="refresh" content="0; url=https://www.skde.no/" />
+          )}
+          <meta
             name="google-site-verification"
             content="XnhRhaBwfeuAccfCFysPPpe1f49t46JAfInHBDfK6HE"
           />
