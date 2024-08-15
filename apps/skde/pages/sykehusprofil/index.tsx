@@ -122,6 +122,10 @@ export const Skde = (): JSX.Element => {
 
   const screenSize = useScreenSize({ debounceTime: 150 });
 
+  // Year for filtering
+  const currentYear = new Date().getFullYear();
+  const lastYear = currentYear - 1;
+
   // Props
   const indicatorParams: IndicatorLinechartParams = {
     unitNames: [selectedTreatmentUnits[0]],
@@ -163,8 +167,8 @@ export const Skde = (): JSX.Element => {
     yAxisText: "Antall indikatorer",
     xTicksFont: { fontFamily: "Arial", fontSize: 16, fontWeight: 500 },
     yTicksFont: { fontFamily: "Arial", fontSize: 14, fontWeight: 500 },
-    startYear: 2017,
-    endYear: 2022,
+    startYear: lastYear - 5,
+    endYear: lastYear,
     yMin: 0,
     normalise: true,
     useToolTip: true,
@@ -174,7 +178,7 @@ export const Skde = (): JSX.Element => {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    treatmentYear: 2022,
+    treatmentYear: lastYear,
   };
 
   // State logic for normalising the line plot
@@ -442,6 +446,7 @@ export const Skde = (): JSX.Element => {
                   context={"caregiver"}
                   type={"ind"}
                   unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
+                  year={lastYear}
                 />
               </ExpandableItemBox>
             </Grid>

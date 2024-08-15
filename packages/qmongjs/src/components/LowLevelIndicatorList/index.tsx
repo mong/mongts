@@ -60,7 +60,7 @@ const getDataSubset = (
     }
 
     const lastYear = indDataRow.data.find((p) => {
-      return p.year === currentYear - 1;
+      return p.year === currentYear;
     });
 
     if (lastYear) {
@@ -77,7 +77,7 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
   const [open, setOpen] = useState(false);
 
   const lastYear = row.data!.filter((el: DataPoint) => {
-    return el.year === currentYear - 1;
+    return el.year === currentYear;
   })[0];
 
   return (
@@ -137,9 +137,12 @@ type LowLevelIndicatorListProps = {
   context: string;
   unitNames: string[];
   type: string;
+  year: number;
 };
 
 export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
+  const { context, unitNames, type, year } = props;
+
   // UI stuff
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -164,14 +167,11 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
 
   const options = ["Høy", "Middels", "Lav"];
 
-  // Years for filtering
-  const currentYear = new Date().getFullYear();
-
   // Get data
   const queryParams: FetchIndicatorParams = {
-    context: props.context,
-    unitNames: props.unitNames,
-    type: props.type,
+    context: context,
+    unitNames: unitNames,
+    type: type,
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -188,7 +188,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
 
   const indData = data.map((row) => row.indicatorData).flat();
 
-  const dataSubset = getDataSubset(indData, currentYear, selectedIndex);
+  const dataSubset = getDataSubset(indData, year, selectedIndex);
 
   return (
     <div>
@@ -253,7 +253,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
                 return (
                   <IndicatorRow
                     row={row}
-                    currentYear={currentYear}
+                    currentYear={year}
                     key={"indicator-row-" + row.indicatorID}
                   />
                 );
