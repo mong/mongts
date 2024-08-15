@@ -149,11 +149,11 @@ export default function TreatmentQualityPage() {
     setSelectedYear(
       parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString()),
     );
-    setSelectedLevel(filterSettings.get(levelKey)[0].value ?? undefined);
+    setSelectedLevel(filterSettings.get(levelKey)[0]?.value ?? undefined);
 
     const medicalFieldFilter = filterSettings
       .get(medicalFieldKey)
-      .map((value) => value.value);
+      ?.map((value) => value.value);
     const registerFilter = getMedicalFieldFilterRegisters(medicalFieldFilter);
     setSelectedMedicalFields(registerFilter);
 
@@ -177,12 +177,12 @@ export default function TreatmentQualityPage() {
         );
       }
       case levelKey: {
-        return filterSettings.map.get(levelKey)[0].value ?? undefined;
+        return filterSettings.map.get(levelKey)[0]?.value ?? undefined;
       }
       case medicalFieldKey: {
         const medicalFieldFilter = filterSettings.map
           .get(medicalFieldKey)
-          .map((value) => value.value);
+          ?.map((value) => value.value);
         const registerFilter =
           getMedicalFieldFilterRegisters(medicalFieldFilter);
         return registerFilter;

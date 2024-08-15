@@ -54,7 +54,7 @@ export const RadioGroupFilterSection = (
       <RadioGroup
         name={`radio-buttons-group-${props.sectionid}`}
         aria-labelledby={`filter-section-radio-group-label-${props.sectionid}`}
-        value={getSelectedValue(props.filterkey, filterSettings)}
+        value={getSelectedValue(props.filterkey, filterSettings) ?? null}
         onChange={handleChange}
       >
         {props.radios.map((radio) => (
