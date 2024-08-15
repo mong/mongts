@@ -34,17 +34,19 @@ export const getYearOptions = (): {
  */
 export const getAchievementLevelOptions = (): {
   values: FilterSettingsValue[];
-  default: FilterSettingsValue;
+  // default: FilterSettingsValue;
+  default: FilterSettingsValue | null;
 } => {
   const goalAchievementValues = [
-    { value: "", valueLabel: "Alle måloppnåelser" },
+    // { value: "", valueLabel: "Alle måloppnåelser" },
     { value: "H", valueLabel: app_text.indicators.high.text },
     { value: "M", valueLabel: app_text.indicators.moderate.text },
     { value: "L", valueLabel: app_text.indicators.low.text },
   ];
   return {
     values: goalAchievementValues,
-    default: goalAchievementValues[0],
+    // default: goalAchievementValues[0],
+    default: null,
   };
 };
 
@@ -163,13 +165,15 @@ export const getMedicalFields = (medicalFieldData: any, registryData: any) => {
     medicalFields = [];
   }
 
-  medicalFields.unshift({
-    nodeValue: { value: "all", valueLabel: "Alle fagområder" },
-  });
+  // Add the option "Alle fagområder" to the top of the selection tree
+  // medicalFields.unshift({
+  //   nodeValue: { value: "all", valueLabel: "Alle fagområder" },
+  // });
 
   const medicalFieldOptions = {
     treedata: medicalFields,
-    defaults: [medicalFields[0].nodeValue],
+    // defaults: [medicalFields[0].nodeValue], "Alle fagområder" as default value
+    defaults: [],
   };
 
   return medicalFieldOptions;
