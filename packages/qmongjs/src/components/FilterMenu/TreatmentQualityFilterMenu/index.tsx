@@ -60,7 +60,7 @@ export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
 
 // Types used due to the use of useQueryParam
 type SetSelectedType = (
-  newVal: string | string[],
+  newValue: string | (string | undefined)[] | undefined,
   updateType?: UrlUpdateType,
 ) => void;
 type StringNullOrUndefined = string | null | undefined;
