@@ -1,4 +1,4 @@
-import { styled, Box, Link } from "@mui/material";
+import { styled, Box } from "@mui/material";
 
 export const lineChartTheme = {
   lineChartBackground: {
@@ -11,9 +11,5 @@ export const lineChartTheme = {
 export const ItemBox = styled(Box)(() => ({
   backgroundColor: "white",
   borderRadius: 24,
-}));
-
-export const StyledLink = styled(Link)(() => ({
-  color: "#0000ee",
-  textDecoration: "underline",
+  overflow: "hidden",
 }));

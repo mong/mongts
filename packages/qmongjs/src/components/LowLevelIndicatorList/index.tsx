@@ -19,6 +19,7 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  Typography,
 } from "@mui/material";
 import { ArrowLink } from "../ArrowLink";
 
@@ -71,6 +72,42 @@ const getDataSubset = (
   return dataSubset;
 };
 
+const RegistrySection = (props: {
+  data: RegisterData;
+  currentYear: number;
+  selectedIndex: number;
+}) => {
+  const { data, currentYear, selectedIndex } = props;
+
+  const indData = data.indicatorData.flat();
+
+  const registryName = data.registerFullName;
+  const dataFlat = getDataSubset(indData, currentYear, selectedIndex);
+
+  return (
+    <React.Fragment>
+      <TableHead>
+        <TableRow>
+          <TableCell colSpan={3} align="center">
+            {registryName}
+          </TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {dataFlat.map((row: IndicatorData) => {
+          return (
+            <IndicatorRow
+              row={row}
+              currentYear={currentYear}
+              key={"indicator-row-" + row.indicatorID}
+            />
+          );
+        })}
+      </TableBody>
+    </React.Fragment>
+  );
+};
+
 const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
   const { row, currentYear } = props;
 
@@ -96,7 +133,9 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
             {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
           </IconButton>
         </TableCell>
-        <TableCell>{row.indicatorTitle}</TableCell>
+        <TableCell>
+          <Typography variant="body1">{row.indicatorTitle}</Typography>
+        </TableCell>
         <TableCell>{result(row, lastYear)}</TableCell>
       </TableRow>
 
@@ -109,8 +148,12 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
           <Stack direction="row" justifyContent="space-evenly">
             {lastYear ? (
               <Stack direction="row">
-                <Box sx={{ marginRight: 1 }}>Dekningsgrad:</Box>
-                {result(row, lastYear, true)}
+                <Box sx={{ marginRight: 1 }}>
+                  <Typography variant="overline">Dekningsgrad:</Typography>
+                </Box>
+                <Typography variant="overline">
+                  {result(row, lastYear, true)}
+                </Typography>
               </Stack>
             ) : null}
 
@@ -124,6 +167,7 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
                 }
                 externalLink={true}
                 text="Mer om indikatoren"
+                textVariant="overline"
               />
             ) : null}
           </Stack>
@@ -186,10 +230,6 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
 
   const data = nestedIndicatorQuery.data as RegisterData[];
 
-  const indData = data.map((row) => row.indicatorData).flat();
-
-  const dataSubset = getDataSubset(indData, currentYear, selectedIndex);
-
   return (
     <div>
       <Box>
@@ -244,21 +284,23 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
             <TableHead>
               <TableRow>
                 <TableCell></TableCell>
-                <TableCell>Indikator</TableCell>
-                <TableCell>Resultat</TableCell>
+                <TableCell>
+                  <Typography variant="subtitle1">Indikator</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant="subtitle1">Resultat</Typography>
+                </TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
-              {dataSubset.map((row: IndicatorData) => {
-                return (
-                  <IndicatorRow
-                    row={row}
-                    currentYear={currentYear}
-                    key={"indicator-row-" + row.indicatorID}
-                  />
-                );
-              })}
-            </TableBody>
+            {data.map((row) => {
+              return (
+                <RegistrySection
+                  data={row}
+                  currentYear={currentYear}
+                  selectedIndex={selectedIndex}
+                />
+              );
+            })}
           </Table>
         </TableContainer>
       </div>

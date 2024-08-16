@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Text } from "@visx/text";
+import React, { useState, useEffect } from "react";
 import {
   useQueryParam,
   DelimitedArrayParam,
@@ -25,13 +24,13 @@ import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/Treatme
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import {
   Switch,
-  FormControlLabel,
   ThemeProvider,
   Box,
   Accordion,
   AccordionSummary,
   AccordionDetails,
   Stack,
+  Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
@@ -42,7 +41,6 @@ import {
   MedfieldTable,
   MedfieldTableProps,
 } from "../../src/components/MedfieldTable";
-import { useScreenSize } from "@visx/responsive";
 import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
@@ -55,7 +53,7 @@ import { ExpandableItemBox } from "../../src/components/ExpandableItemBox";
 import logo from "./Logo.png";
 import { URLs } from "types";
 import { ArrowLink } from "qmongjs";
-import Divider from "@mui/material/Divider";
+import { useRouter } from "next/router";
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
@@ -81,9 +79,21 @@ export const Skde = (): JSX.Element => {
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
+  // The following code ensures that the page renders correctly
   const unitUrlsQuery = useUnitUrlsQuery();
 
-  const shouldRefreshInitialState = false;
+  const router = useRouter();
+
+  const [prevReady, setPrevReady] = useState(router.isReady);
+
+  const prerenderFinished =
+    prevReady !== router.isReady && !unitUrlsQuery.isFetching;
+
+  useEffect(() => {
+    setPrevReady(router.isReady);
+  }, [router.isReady]);
+
+  const shouldRefreshInitialState = prerenderFinished;
 
   // Callback function for updating the filter menu
   const handleChange = (filterInput: FilterSettings) => {
@@ -95,7 +105,6 @@ export const Skde = (): JSX.Element => {
     setSelectedTreatmentUnits(newUnit);
 
     let unitUrl: URLs | undefined;
-
     if (unitUrlsQuery.data) {
       unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
         return row.shortName === newUnit[0];
@@ -109,14 +118,23 @@ export const Skde = (): JSX.Element => {
     }
   };
 
-  const screenSize = useScreenSize({ debounceTime: 150 });
+  // Set the line plot width to fill the available space
+  const [width, setWidth] = useState(null);
+
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver((event) => {
+      setWidth(event[0].contentBoxSize[0].inlineSize);
+    });
+
+    resizeObserver.observe(document.getElementById("plot-window"));
+  });
 
   // Props
   const indicatorParams: IndicatorLinechartParams = {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    width: screenSize.width * 0.9,
+    width: width,
     height: 600,
     lineStyles: new LineStyles(
       [
@@ -166,13 +184,6 @@ export const Skde = (): JSX.Element => {
     treatmentYear: 2022,
   };
 
-  const medfieldTablePropsDG: MedfieldTableProps = {
-    unitNames: [selectedTreatmentUnits[0]],
-    context: "caregiver",
-    type: "dg",
-    treatmentYear: 2022,
-  };
-
   // State logic for normalising the line plot
   const [normalise, setNormalise] = React.useState(indicatorParams.normalise);
 
@@ -187,6 +198,19 @@ export const Skde = (): JSX.Element => {
   } else {
     indicatorParams.yAxisText = "Antall indikatorer";
   }
+
+  // State logic for ind or dg in medfieldtable
+  const [dataQuality, setDataQuality] = React.useState(false);
+
+  if (dataQuality) {
+    medfieldTableProps.type = "dg";
+  } else {
+    medfieldTableProps.type = "ind";
+  }
+
+  const checkDataQuality = () => {
+    setDataQuality(!dataQuality);
+  };
 
   const breadcrumbs: BreadCrumbPath = {
     path: [
@@ -207,6 +231,9 @@ export const Skde = (): JSX.Element => {
   };
 
   const boxMaxHeight = 800;
+
+  const titleStyle = { marginTop: 20, marginLeft: 20 };
+  const textMargin = 20;
 
   return (
     <ThemeProvider theme={skdeTheme}>
@@ -263,12 +290,20 @@ export const Skde = (): JSX.Element => {
           </ClickAwayListener>
         </Header>
 
-        <Box margin={4}>
+        <Box marginTop={2} className="hospital-profile-box">
           <Grid container spacing={2}>
-            <Grid xs={12} sm={6} lg={6} xl={6} xxl={6}>
-              <ItemBox height={440}>
-                <Grid container spacing={2} sx={{ overflow: "clip" }}>
-                  <Grid xs={5} margin={2}>
+            <Grid xs={12}>
+              <ItemBox height={440} sx={{ overflow: "auto" }}>
+                <Grid container>
+                  <Grid
+                    xs={12}
+                    sm={4}
+                    lg={4}
+                    xl={4}
+                    xxl={4}
+                    alignContent="center"
+                    style={{ textAlign: "center" }}
+                  >
                     <img
                       src={logo.src}
                       alt={"Logo"}
@@ -276,134 +311,139 @@ export const Skde = (): JSX.Element => {
                       style={{ borderRadius: "50%", maxWidth: 300 }}
                     />
                   </Grid>
-                  <Grid xs={12} sm={12} lg={6} xl={6} xxl={6}>
-                    <Stack>
-                      <Text
-                        x={"10%"}
-                        y={"20%"}
-                        width={500}
-                        verticalAnchor="start"
-                        style={{ fontWeight: 700, fontSize: 10 }}
-                      >
-                        Oppdatert: xx.xx.xx
-                      </Text>
-                      <Text
-                        x={"10%"}
-                        y={"-50%"}
-                        width={200}
-                        verticalAnchor="start"
-                        style={{ fontWeight: 700, fontSize: 24 }}
-                      >
+
+                  <Grid xs={6} sm={4} lg={4} xl={4} xxl={4}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        height: "400px",
+                      }}
+                    >
+                      <Typography variant="h5" style={{ marginTop: 20 }}>
                         {selectedTreatmentUnits[0]}
-                      </Text>
-                      <Divider />
-                      <Box
-                        sx={{
-                          marginRight: "20%",
-                          marginBottom: 0,
-                          display: "flex",
-                          justifyContent: "right",
-                        }}
-                      >
+                      </Typography>
+
+                      <div style={{ marginLeft: 0 }}>
+                        <Typography variant="body1">
+                          Her skal det stå noe om enheten. <br />
+                        </Typography>
+                      </div>
+
+                      <div style={{ marginTop: "auto" }}>
                         {unitUrl ? (
                           <ArrowLink
                             href={unitUrl}
                             text="Nettside"
                             externalLink={true}
+                            button={true}
+                            textVariant="subtitle1"
                           />
                         ) : null}
-                      </Box>
-                    </Stack>
+                      </div>
+                    </div>
+                  </Grid>
+
+                  <Grid xs={6} sm={4} lg={4} xl={4} xxl={4}>
+                    <ItemBox
+                      height={440}
+                      sx={{ overflow: "auto", marginRight: 2 }}
+                    >
+                      <Typography variant="h5" style={titleStyle}>
+                        Tilknyttede enheter
+                      </Typography>
+                      <div style={{ margin: textMargin }}>
+                        <Typography variant="body1">
+                          Her vises behandlingssteder som er tilhørende til
+                          valgt helseforetak.
+                        </Typography>
+                      </div>
+                      {unitNamesQuery.data ? (
+                        <SubUnits
+                          RHFs={unitNamesQuery.data.nestedUnitNames}
+                          selectedUnit={selectedTreatmentUnits[0]}
+                        />
+                      ) : null}
+                    </ItemBox>
                   </Grid>
                 </Grid>
               </ItemBox>
             </Grid>
 
-            <Grid xs={12} sm={6}>
-              <ExpandableItemBox collapsedHeight={400}>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
-                  Tilknyttede enheter
-                </Text>
-                {unitNamesQuery.data ? (
-                  <SubUnits
-                    RHFs={unitNamesQuery.data.nestedUnitNames}
-                    selectedUnit={selectedTreatmentUnits[0]}
-                  />
-                ) : null}
-              </ExpandableItemBox>
-            </Grid>
-
             <Grid xs={12}>
               <ItemBox sx={{ overflow: "auto" }}>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
+                <Typography variant="h5" style={titleStyle}>
                   Utvikling over tid
-                </Text>
+                </Typography>
+                <div style={{ margin: textMargin }}>
+                  <Typography variant="body1">
+                    Grafen viser andel eller antall av alle kvalitetsindikatorer
+                    fra de nasjonale medisinske kvalitetsregistre. Grafen viser
+                    hvilke som har hatt høy, middels eller lav måloppnåelse de
+                    siste årene.
+                  </Typography>
+                </div>
                 <ThemeProvider theme={lineChartTheme}>
-                  <IndicatorLinechart {...indicatorParams} />
+                  <div id="plot-window">
+                    <IndicatorLinechart {...indicatorParams} />
+                  </div>
                 </ThemeProvider>
-                <FormControlLabel
-                  control={
-                    <Switch checked={!normalise} onChange={checkNormalise} />
-                  }
-                  label="Vis antall"
-                  sx={{ margin: 2 }}
-                />
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  alignItems="center"
+                  margin={4}
+                >
+                  <Typography>Vis andel</Typography>
+                  <Switch checked={!normalise} onChange={checkNormalise} />
+                  <Typography>Vis antall</Typography>
+                </Stack>
               </ItemBox>
             </Grid>
 
             <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
+                <Typography variant="h5" style={titleStyle}>
+                  Kvalitetsindikatorer fordelt på fagområder
+                </Typography>
+                <div style={{ margin: textMargin }}>
+                  <Typography variant="body1">
+                    {dataQuality
+                      ? "Her vises dekningsgraden eller datakvaliteten til " +
+                        selectedTreatmentUnits[0] +
+                        " fordelt på fagområder som forteller om datagrunnlaget fra registrene."
+                      : "Her vises alle kvalitetsindikatorene fra " +
+                        selectedTreatmentUnits[0] +
+                        " fordelt på fagområder. Hver indikator er vist som et symbol for høy, middels eller lav måloppnåelse."}
+                  </Typography>
+                </div>
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  alignItems="center"
+                  margin={4}
                 >
-                  Fagområder
-                </Text>
+                  <Typography>Vis kvalitetsindikatorer</Typography>
+                  <Switch checked={dataQuality} onChange={checkDataQuality} />
+                  <Typography>Vis datakvalitet</Typography>
+                </Stack>
                 <MedfieldTable {...medfieldTableProps} />
               </ExpandableItemBox>
             </Grid>
 
-            <Grid xs={6}>
+            <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
-                  Fagområder (dekningsgrad)
-                </Text>
-                <MedfieldTable {...medfieldTablePropsDG} />
-              </ExpandableItemBox>
-            </Grid>
-
-            <Grid xs={6}>
-              <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                <Text
-                  x={"10%"}
-                  y={50}
-                  width={500}
-                  verticalAnchor="start"
-                  style={{ fontWeight: 700, fontSize: 24 }}
-                >
+                <Typography variant="h5" style={titleStyle}>
                   Siste års måloppnåelse
-                </Text>
+                </Typography>
+                <div style={{ margin: textMargin }}>
+                  <Typography variant="body1">
+                    Liste over kvalitetsindikatorer med beskrivelse som er
+                    fordelt på høy, middels eller lav måloppnåelse. Du kan
+                    trykke på indikatorene for å se datakvaliteten og mer
+                    beskrivelse av indikatorene.
+                  </Typography>
+                </div>
                 <LowLevelIndicatorList
                   context={"caregiver"}
                   type={"ind"}
