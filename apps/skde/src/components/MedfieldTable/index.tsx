@@ -172,7 +172,7 @@ const Row = (props: { row: RowData; unitNames: string[]; type: string }) => {
                       <TableCell component="th" scope="row">
                         <ArrowLink
                           href={
-                            "https://apps.skde.no/behandlingskvalitet/?selected_treatment_units=" +
+                            "/behandlingskvalitet/?selected_treatment_units=" +
                             unitNames.join("_") +
                             "&indicator=reg-" +
                             registerRow.name +
@@ -180,7 +180,7 @@ const Row = (props: { row: RowData; unitNames: string[]; type: string }) => {
                             typeString
                           }
                           text={registerRow.full_name}
-                          externalLink={true}
+                          externalLink={false}
                           button={true}
                           textVariant="overline"
                         ></ArrowLink>
