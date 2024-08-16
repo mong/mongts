@@ -295,6 +295,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
             {data.map((row) => {
               return (
                 <RegistrySection
+                  key={row.registerName}
                   data={row}
                   currentYear={currentYear}
                   selectedIndex={selectedIndex}
