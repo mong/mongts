@@ -54,17 +54,21 @@ export interface TuName {
   hospital: string;
   hf: string;
   hf_full: string;
+  hf_shortest: string;
   hf_sort: number;
   rhf: string;
+  rhf_shortest: string;
   rhf_sort: number;
 }
 
 export interface NestedTreatmentUnitName {
   rhf: string;
   rhf_sort: number;
+  rhf_shortest: string;
   hf: {
     hf: string;
     hf_full: string;
+    hf_shortest: string;
     hf_sort: number;
     hospital: string[];
   }[];
