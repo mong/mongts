@@ -92,6 +92,8 @@ export const countLevels = (levels: IndicatorLevels[]) => {
     );
 };
 
+// GroupedLevels only contains datapoint for the years where there is data.
+// This function adds years without data in the range [minYear, maxYear] and sets the value to 0.
 export const setMissingToZero = (
   groupedLevels: GroupedLevels,
   minYear: number,
@@ -99,12 +101,17 @@ export const setMissingToZero = (
 ) => {
   const dataAllLevels = [[], [], []];
 
+  // i is the index of the year.
+  // i = 0 corresponds to minYear.
   let i = 0;
+
   for (let year = minYear; year <= maxYear; year++) {
     for (let level = 0; level < 3; level++) {
+      // Initialise the array for the current level and year
       dataAllLevels[level][i] = { year: year, number: 0 };
 
       for (let j = 0; j < groupedLevels[level].length; j++) {
+        // Iterate over groupedLevels and copy the value to the current level and year
         if (dataAllLevels[level][i].year === groupedLevels[level][j].year) {
           dataAllLevels[level][i].number = groupedLevels[level][j].number;
         }
@@ -130,10 +137,14 @@ const normaliseChartData = (data: LinechartData[][]) => {
   const sum2 = data[2].map((point: LinechartData) => point.y);
 
   for (let i = 0; i < data[0].length; i++) {
+    // Sum of the number of indicators or year at index i
     const sumAll = sum0[i] + sum1[i] + sum2[i];
-    data[0][i].y = data[0][i].y / sumAll;
-    data[1][i].y = data[1][i].y / sumAll;
-    data[2][i].y = data[2][i].y / sumAll;
+
+    if (sumAll != 0) {
+      data[0][i].y = data[0][i].y / sumAll;
+      data[1][i].y = data[1][i].y / sumAll;
+      data[2][i].y = data[2][i].y / sumAll;
+    } // Otherwise all the y values are zero
   }
 
   return data;
