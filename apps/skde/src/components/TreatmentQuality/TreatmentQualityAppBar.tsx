@@ -38,6 +38,7 @@ const TreatmentQualityAppBar = ({
           text={"Om kvalitetsregistre"}
           externalLink={true}
           button={true}
+          textVariant="button"
         />
       </Header>
       <StyledAppBar position="sticky" elevation={0}>

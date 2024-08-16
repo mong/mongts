@@ -212,6 +212,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
     const yLabelProps = {
       fontSize: yAxisText.font.fontSize,
       x: -height * yAxisLabelDisplacementFactor,
+      y: -60,
       fontFamily: yAxisText.font.fontFamily,
       fontWeight: yAxisText.font.fontWeight,
     };
