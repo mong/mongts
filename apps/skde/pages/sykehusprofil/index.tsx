@@ -18,6 +18,7 @@ import {
   useUnitUrlsQuery,
   LowLevelIndicatorList,
   LineStyles,
+  defaultYear,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
@@ -129,6 +130,10 @@ export const Skde = (): JSX.Element => {
     resizeObserver.observe(document.getElementById("plot-window"));
   });
 
+  // Year for filtering
+  const lastYear = defaultYear;
+  const pastYears = 5;
+
   // Props
   const indicatorParams: IndicatorLinechartParams = {
     unitNames: [selectedTreatmentUnits[0]],
@@ -170,8 +175,8 @@ export const Skde = (): JSX.Element => {
     yAxisText: "Antall indikatorer",
     xTicksFont: { fontFamily: "Arial", fontSize: 16, fontWeight: 500 },
     yTicksFont: { fontFamily: "Arial", fontSize: 14, fontWeight: 500 },
-    startYear: 2017,
-    endYear: 2022,
+    startYear: lastYear - pastYears,
+    endYear: lastYear,
     yMin: 0,
     normalise: true,
     useToolTip: true,
@@ -181,7 +186,7 @@ export const Skde = (): JSX.Element => {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    treatmentYear: 2022,
+    treatmentYear: lastYear,
   };
 
   // State logic for normalising the line plot
@@ -448,6 +453,7 @@ export const Skde = (): JSX.Element => {
                   context={"caregiver"}
                   type={"ind"}
                   unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
+                  year={lastYear}
                 />
               </ExpandableItemBox>
             </Grid>
