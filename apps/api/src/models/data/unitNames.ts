@@ -65,8 +65,10 @@ export const unitNamesAllLevels = (): Promise<TuName[]> =>
       "hospital.short_name as hospital",
       "hf.short_name as hf",
       "hf.full_name as hf_full",
+      "hf.shortest_name as hf_shortest",
       "hf.sorting as hf_sort",
       "rhf.short_name as rhf",
+      "rhf.shortest_name as rhf_shortest",
       "rhf.sorting as rhf_sort",
     )
     .from("hospital")
