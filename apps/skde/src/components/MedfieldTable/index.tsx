@@ -8,6 +8,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import { Typography } from "@mui/material";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
@@ -131,7 +132,7 @@ const Row = (props: { row: RowData }) => {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          {row.name}
+          <Typography variant="body1">{row.name}</Typography>
         </TableCell>
         <TableCell>{createSymbols(row.green, row.yellow, row.red)}</TableCell>
       </TableRow>
@@ -142,15 +143,21 @@ const Row = (props: { row: RowData }) => {
               <Table size="small" aria-label="registries">
                 <TableHead>
                   <TableRow>
-                    <TableCell>Register</TableCell>
-                    <TableCell>Resultat</TableCell>
+                    <TableCell>
+                      <Typography variant="overline">Register</Typography>
+                    </TableCell>
+                    <TableCell>
+                      <Typography variant="overline">Resultat</Typography>
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   {row.registers.map((registerRow) => (
                     <TableRow key={registerRow.name}>
                       <TableCell component="th" scope="row">
-                        {registerRow.name}
+                        <Typography variant="body2">
+                          {registerRow.name}
+                        </Typography>
                       </TableCell>
                       <TableCell>
                         {createSymbols(
@@ -189,8 +196,13 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
         <TableHead>
           <TableRow>
             <TableCell />
-            <TableCell>Fagområde</TableCell>
-            <TableCell>Resultat</TableCell>
+            <TableCell>
+              <Typography variant="subtitle1">Fagområde</Typography>
+            </TableCell>
+
+            <TableCell>
+              <Typography variant="subtitle1">Resultat</Typography>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

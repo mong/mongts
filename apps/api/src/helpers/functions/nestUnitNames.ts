@@ -25,11 +25,13 @@ export const nestTuNames = (
       const entry = {
         rhf: cur.rhf,
         rhf_sort: cur.rhf_sort,
+        rhf_shortest: cur.rhf_shortest,
         hf: [
           {
             hf: cur.hf,
             hf_full: cur.hf_full,
             hf_sort: cur.hf_sort,
+            hf_shortest: cur.hf_shortest,
             hospital: [cur.hospital],
           },
         ],
@@ -47,6 +49,7 @@ export const nestTuNames = (
           hf: cur.hf,
           hf_full: cur.hf_full,
           hf_sort: cur.hf_sort,
+          hf_shortest: cur.hf_shortest,
           hospital: [cur.hospital],
         };
         acc.filter((acc_data) => acc_data.rhf === cur.rhf)[0].hf.push(hf_entry);

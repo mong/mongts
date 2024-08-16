@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Stack, Chip, Link, Box, styled } from "@mui/material";
 import { ClearRounded } from "@mui/icons-material";
+import _ from "lodash";
 import { FilterMenuSectionProps } from ".";
 import { FilterSettingsContext } from "./FilterSettingsContext";
 import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
@@ -76,7 +77,7 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
           onClick={() => handleReset(filterSettingsDispatch)}
           sx={{ cursor: "pointer", fontWeight: "600" }}
         >
-          Tøm filter
+          Tilbakestill filter
         </Link>
       </Box>
       <Stack
@@ -88,20 +89,31 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
         flexWrap="wrap"
       >
         {Array.from(filterSettings.map.keys()).map((key) => {
-          return filterSettings.map.get(key)?.map((filterSetting) => {
-            const chipId = `${key}${sep}${filterSetting.value}`;
-            return (
-              <StyledChip
-                key={chipId}
-                data-testid={chipId}
-                label={filterSetting.valueLabel}
-                size={"small"}
-                color="primary"
-                deleteIcon={<ClearRounded />}
-                onDelete={() => handleDelete(chipId, filterSettingsDispatch)}
-              />
-            );
-          });
+          const defaultSet = new Set(filterSettings.defaults.get(key));
+          const selectedSet = new Set(filterSettings.map.get(key));
+          const enableDelete = !_.isEqual(selectedSet, defaultSet);
+
+          return filterSettings.map
+            .get(key)
+            ?.filter((filterSetting) => !!filterSetting)
+            .map((filterSetting) => {
+              const chipId = `${key}${sep}${filterSetting.value}`;
+              return (
+                <StyledChip
+                  key={chipId}
+                  data-testid={chipId}
+                  label={filterSetting.valueLabel}
+                  size={"small"}
+                  color="primary"
+                  deleteIcon={<ClearRounded />}
+                  onDelete={
+                    enableDelete
+                      ? () => handleDelete(chipId, filterSettingsDispatch)
+                      : undefined
+                  }
+                />
+              );
+            });
         })}
       </Stack>
     </>

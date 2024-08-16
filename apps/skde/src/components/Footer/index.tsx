@@ -43,16 +43,19 @@ export const Footer = ({ page }: FooterProps) => {
             <ArrowLink
               href={"https://www.skde.no/om-skde/personvern/"}
               text="Personvern"
+              textVariant="body2"
             />
             <ArrowLink
               href={"https://www.skde.no/om-skde/informasjonskapsler/"}
               text="Informasjonskapsler"
+              textVariant="body2"
             />
             <ArrowLink
               href={
                 "https://uustatus.no/nb/erklaringer/publisert/589a8d23-4993-446e-b7eb-ef310bfe1dd7"
               }
               text="Tilgjengelighetserklæring"
+              textVariant="body2"
               externalLink={true}
             />
           </Stack>
@@ -64,6 +67,7 @@ export const Footer = ({ page }: FooterProps) => {
             <ArrowLink
               href={"https://www.skde.no/om-skde/kontaktinformasjon/"}
               text="Kontakt SKDE"
+              textVariant="body2"
             />
           </Stack>
         </Grid>

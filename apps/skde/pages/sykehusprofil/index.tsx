@@ -42,7 +42,6 @@ import {
   MedfieldTable,
   MedfieldTableProps,
 } from "../../src/components/MedfieldTable";
-import { useScreenSize } from "@visx/responsive";
 import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
@@ -55,7 +54,6 @@ import { ExpandableItemBox } from "../../src/components/ExpandableItemBox";
 import logo from "./Logo.png";
 import { URLs } from "types";
 import { ArrowLink } from "qmongjs";
-import Divider from "@mui/material/Divider";
 import { useRouter } from "next/router";
 
 export const Skde = (): JSX.Element => {
@@ -121,7 +119,16 @@ export const Skde = (): JSX.Element => {
     }
   };
 
-  const screenSize = useScreenSize({ debounceTime: 150 });
+  // Set the line plot width to fill the available space
+  const [width, setWidth] = useState(null);
+
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver((event) => {
+      setWidth(event[0].contentBoxSize[0].inlineSize);
+    });
+
+    resizeObserver.observe(document.getElementById("plot-window"));
+  });
 
   // Year for filtering
   const lastYear = defaultYear;
@@ -132,7 +139,7 @@ export const Skde = (): JSX.Element => {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    width: screenSize.width * 0.9,
+    width: width,
     height: 600,
     lineStyles: new LineStyles(
       [
@@ -288,7 +295,7 @@ export const Skde = (): JSX.Element => {
           </ClickAwayListener>
         </Header>
 
-        <Box margin={2}>
+        <Box marginTop={2} className="hospital-profile-box">
           <Grid container spacing={2}>
             <Grid xs={12}>
               <ItemBox height={440} sx={{ overflow: "auto" }}>
@@ -318,26 +325,24 @@ export const Skde = (): JSX.Element => {
                         height: "400px",
                       }}
                     >
-                      <Typography
-                        variant="h5"
-                        style={{ marginTop: 20, marginLeft: 20 }}
-                      >
+                      <Typography variant="h5" style={{ marginTop: 20 }}>
                         {selectedTreatmentUnits[0]}
                       </Typography>
 
-                      <div style={{ marginLeft: 8 }}>
+                      <div style={{ marginLeft: 0 }}>
                         <Typography variant="body1">
                           Her skal det stå noe om enheten. <br />
                         </Typography>
                       </div>
 
                       <div style={{ marginTop: "auto" }}>
-                        <Divider />
                         {unitUrl ? (
                           <ArrowLink
                             href={unitUrl}
                             text="Nettside"
                             externalLink={true}
+                            button={true}
+                            textVariant="subtitle1"
                           />
                         ) : null}
                       </div>
@@ -355,8 +360,7 @@ export const Skde = (): JSX.Element => {
                       <div style={{ margin: textMargin }}>
                         <Typography variant="body1">
                           Her vises behandlingssteder som er tilhørende til
-                          valgt helseforetak. Du kan trykke på behandlingsstedet
-                          for å enkelt kunne velge det i Sykehusprofil.
+                          valgt helseforetak.
                         </Typography>
                       </div>
                       {unitNamesQuery.data ? (
@@ -385,7 +389,9 @@ export const Skde = (): JSX.Element => {
                   </Typography>
                 </div>
                 <ThemeProvider theme={lineChartTheme}>
-                  <IndicatorLinechart {...indicatorParams} />
+                  <div id="plot-window">
+                    <IndicatorLinechart {...indicatorParams} />
+                  </div>
                 </ThemeProvider>
                 <Stack
                   direction="row"
@@ -403,7 +409,7 @@ export const Skde = (): JSX.Element => {
             <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <Typography variant="h5" style={titleStyle}>
-                  Fagområder
+                  Kvalitetsindikatorer fordelt på fagområder
                 </Typography>
                 <div style={{ margin: textMargin }}>
                   <Typography variant="body1">
