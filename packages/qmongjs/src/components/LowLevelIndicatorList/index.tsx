@@ -72,6 +72,42 @@ const getDataSubset = (
   return dataSubset;
 };
 
+const RegistrySection = (props: {
+  data: RegisterData;
+  currentYear: number;
+  selectedIndex: number;
+}) => {
+  const { data, currentYear, selectedIndex } = props;
+
+  const indData = data.indicatorData.flat();
+
+  const registryName = data.registerFullName;
+  const dataFlat = getDataSubset(indData, currentYear, selectedIndex);
+
+  return (
+    <React.Fragment>
+      <TableHead>
+        <TableRow>
+          <TableCell colSpan={3} align="center">
+            {registryName}
+          </TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {dataFlat.map((row: IndicatorData) => {
+          return (
+            <IndicatorRow
+              row={row}
+              currentYear={currentYear}
+              key={"indicator-row-" + row.indicatorID}
+            />
+          );
+        })}
+      </TableBody>
+    </React.Fragment>
+  );
+};
+
 const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
   const { row, currentYear } = props;
 
@@ -194,10 +230,6 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
 
   const data = nestedIndicatorQuery.data as RegisterData[];
 
-  const indData = data.map((row) => row.indicatorData).flat();
-
-  const dataSubset = getDataSubset(indData, currentYear, selectedIndex);
-
   return (
     <div>
       <Box>
@@ -260,17 +292,15 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
                 </TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
-              {dataSubset.map((row: IndicatorData) => {
-                return (
-                  <IndicatorRow
-                    row={row}
-                    currentYear={currentYear}
-                    key={"indicator-row-" + row.indicatorID}
-                  />
-                );
-              })}
-            </TableBody>
+            {data.map((row) => {
+              return (
+                <RegistrySection
+                  data={row}
+                  currentYear={currentYear}
+                  selectedIndex={selectedIndex}
+                />
+              );
+            })}
           </Table>
         </TableContainer>
       </div>
