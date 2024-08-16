@@ -19,6 +19,7 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  Typography,
 } from "@mui/material";
 import { ArrowLink } from "../ArrowLink";
 
@@ -96,7 +97,9 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
             {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
           </IconButton>
         </TableCell>
-        <TableCell>{row.indicatorTitle}</TableCell>
+        <TableCell>
+          <Typography variant="body1">{row.indicatorTitle}</Typography>
+        </TableCell>
         <TableCell>{result(row, lastYear)}</TableCell>
       </TableRow>
 
@@ -109,8 +112,12 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
           <Stack direction="row" justifyContent="space-evenly">
             {lastYear ? (
               <Stack direction="row">
-                <Box sx={{ marginRight: 1 }}>Dekningsgrad:</Box>
-                {result(row, lastYear, true)}
+                <Box sx={{ marginRight: 1 }}>
+                  <Typography variant="overline">Dekningsgrad:</Typography>
+                </Box>
+                <Typography variant="overline">
+                  {result(row, lastYear, true)}
+                </Typography>
               </Stack>
             ) : null}
 
@@ -124,6 +131,7 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
                 }
                 externalLink={true}
                 text="Mer om indikatoren"
+                textVariant="overline"
               />
             ) : null}
           </Stack>
@@ -244,8 +252,12 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
             <TableHead>
               <TableRow>
                 <TableCell></TableCell>
-                <TableCell>Indikator</TableCell>
-                <TableCell>Resultat</TableCell>
+                <TableCell>
+                  <Typography variant="subtitle1">Indikator</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant="subtitle1">Resultat</Typography>
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

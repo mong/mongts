@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import { ArrowForward, ArrowOutward } from "@mui/icons-material";
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import Link from "next/link";
 
 type ArrowLinkProps = {
@@ -9,6 +9,13 @@ type ArrowLinkProps = {
   externalLink?: boolean;
   button?: boolean;
   fontSize?: "small" | "inherit" | "large" | "medium";
+  textVariant?:
+    | "subtitle1"
+    | "subtitle2"
+    | "body1"
+    | "body2"
+    | "button"
+    | "overline";
 };
 
 /**
@@ -28,6 +35,7 @@ export const ArrowLink = (props: ArrowLinkProps) => {
     externalLink = false,
     button = false,
     fontSize = "inherit",
+    textVariant,
   } = props;
 
   let arrow: JSX.Element;
@@ -44,14 +52,14 @@ export const ArrowLink = (props: ArrowLinkProps) => {
   return button ? (
     <Button href={href} target={target} variant="text">
       <Stack alignItems="center" direction="row" gap={1}>
-        {text}
+        <Typography variant={textVariant}>{text}</Typography>
         {arrow}
       </Stack>
     </Button>
   ) : (
     <Link href={href} target={target}>
       <Stack alignItems="center" direction="row" gap={1}>
-        {text}
+        <Typography variant={textVariant}>{text}</Typography>
         {arrow}
       </Stack>
     </Link>

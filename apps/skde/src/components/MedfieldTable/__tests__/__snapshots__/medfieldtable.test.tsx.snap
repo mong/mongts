@@ -93,13 +93,21 @@ exports[`Table renders correctly 1`] = `
             class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
             scope="col"
           >
-            Fagområde
+            <h6
+              class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+            >
+              Fagområde
+            </h6>
           </th>
           <th
             class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
             scope="col"
           >
-            Resultat
+            <h6
+              class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+            >
+              Resultat
+            </h6>
           </th>
         </tr>
       </thead>
@@ -139,7 +147,11 @@ exports[`Table renders correctly 1`] = `
             class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
             scope="row"
           >
-            Hjerte- og karsykdommer
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+            >
+              Hjerte- og karsykdommer
+            </p>
           </th>
           <td
             class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
@@ -216,7 +228,11 @@ exports[`Table renders correctly 1`] = `
             class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
             scope="row"
           >
-            Diabetes
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+            >
+              Diabetes
+            </p>
           </th>
           <td
             class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
@@ -293,7 +309,11 @@ exports[`Table renders correctly 1`] = `
             class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
             scope="row"
           >
-            Barn
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+            >
+              Barn
+            </p>
           </th>
           <td
             class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"

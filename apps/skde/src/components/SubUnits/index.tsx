@@ -1,6 +1,7 @@
 import { NestedTreatmentUnitName } from "types";
-import { List, ListItem } from "@mui/material";
-import { StyledLink } from "../HospitalProfileStyles";
+import { Button, List, ListItem, Stack, Typography, Box } from "@mui/material";
+import { LocalHospital } from "@mui/icons-material";
+import { skdeTheme } from "qmongjs";
 
 type SubUnitsProps = {
   RHFs: NestedTreatmentUnitName[];
@@ -27,11 +28,37 @@ const getUnitLevel = (
   return unitLevel;
 };
 
+const UnitButton = (props: {
+  unitName: string;
+  buttonVariant: "outlined" | "text" | "contained";
+}) => {
+  const { unitName, buttonVariant } = props;
+
+  return (
+    <Button
+      href={"/sykehusprofil/?selected_treatment_units=" + unitName}
+      variant={buttonVariant}
+    >
+      <Stack
+        spacing={0.5}
+        direction="row"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <LocalHospital />
+        <Typography variant="button">{unitName}</Typography>
+      </Stack>
+    </Button>
+  );
+};
+
 export const SubUnits = (props: SubUnitsProps) => {
   const { RHFs, selectedUnit } = props;
 
   const HFs = RHFs.map((row) => row.hf).flat();
   const unitLevel = getUnitLevel(RHFs, selectedUnit);
+
+  const buttonVariant = "outlined";
 
   return unitLevel === "Nasjonalt" ? (
     <List>
@@ -40,11 +67,7 @@ export const SubUnits = (props: SubUnitsProps) => {
         .map((rhf) => {
           return (
             <ListItem key={"subunit-link-" + rhf}>
-              <StyledLink
-                href={"/sykehusprofil/?selected_treatment_units=" + rhf}
-              >
-                {rhf}
-              </StyledLink>
+              <UnitButton unitName={rhf} buttonVariant={buttonVariant} />
             </ListItem>
           );
         })}
@@ -60,11 +83,7 @@ export const SubUnits = (props: SubUnitsProps) => {
         .map((row) => {
           return (
             <ListItem key={"subunit-link-" + row.hf}>
-              <StyledLink
-                href={"/sykehusprofil/?selected_treatment_units=" + row.hf}
-              >
-                {row.hf}
-              </StyledLink>
+              <UnitButton unitName={row.hf} buttonVariant={buttonVariant} />
             </ListItem>
           );
         })}
@@ -75,15 +94,23 @@ export const SubUnits = (props: SubUnitsProps) => {
         (hospital) => {
           return (
             <ListItem key={"subunit-link-" + hospital}>
-              <StyledLink
-                href={"/sykehusprofil/?selected_treatment_units=" + hospital}
-              >
-                {hospital}
-              </StyledLink>
+              <UnitButton unitName={hospital} buttonVariant={buttonVariant} />
             </ListItem>
           );
         },
       )}
     </List>
-  ) : null;
+  ) : (
+    <Box
+      sx={{
+        backgroundColor: skdeTheme.palette.warning.main,
+        marginLeft: 2,
+        marginTop: 5,
+      }}
+    >
+      <Typography variant="body1">
+        Denne enheten har ingen underliggende enheter.
+      </Typography>
+    </Box>
+  );
 };
