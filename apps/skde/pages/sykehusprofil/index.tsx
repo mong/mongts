@@ -18,6 +18,7 @@ import {
   useUnitUrlsQuery,
   LowLevelIndicatorList,
   LineStyles,
+  defaultYear,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
@@ -123,8 +124,7 @@ export const Skde = (): JSX.Element => {
   const screenSize = useScreenSize({ debounceTime: 150 });
 
   // Year for filtering
-  const currentYear = new Date().getFullYear();
-  const lastYear = currentYear - 1;
+  const lastYear = defaultYear;
   const pastYears = 5;
 
   // Props
