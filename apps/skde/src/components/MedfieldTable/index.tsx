@@ -11,7 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import { Typography } from "@mui/material";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { UseQueryResult } from "@tanstack/react-query";
-import { useIndicatorQuery } from "qmongjs";
+import { ArrowLink, useIndicatorQuery } from "qmongjs";
 import { level } from "qmongjs";
 import { newLevelSymbols } from "qmongjs";
 import { Indicator } from "types";
@@ -48,10 +48,13 @@ type RowData = {
   red: number;
   registers: {
     name: string;
+    full_name: string;
+    id: string;
     green: number;
     yellow: number;
     red: number;
   }[];
+  unitNames: string[];
 };
 
 export const createMedfieldTableData = (data: Indicator[]) => {
@@ -61,6 +64,7 @@ export const createMedfieldTableData = (data: Indicator[]) => {
     return {
       ind_id: row.ind_id,
       registry_id: row.registry_id,
+      registry_name: row.registry_name,
       registry_full_name: row.registry_full_name,
       medfield_id: row.medfield_id,
       medfield_full_name: row.medfield_full_name,
@@ -81,7 +85,8 @@ export const createMedfieldTableData = (data: Indicator[]) => {
     }
 
     result[value.medfield_id].registers[value.registry_id] = {
-      name: value.registry_full_name,
+      name: value.registry_name,
+      full_name: value.registry_full_name,
       green: 0,
       yellow: 0,
       red: 0,
@@ -115,9 +120,19 @@ export const createMedfieldTableData = (data: Indicator[]) => {
   return rowData;
 };
 
-const Row = (props: { row: RowData }) => {
-  const { row } = props;
+const Row = (props: { row: RowData; unitNames: string[]; type: string }) => {
+  const { row, unitNames, type } = props;
+  const { name, green, yellow, red, registers } = row;
+
   const [open, setOpen] = React.useState(false);
+
+  let typeString: string;
+
+  if (type === "dg") {
+    typeString = "true";
+  } else {
+    typeString = "";
+  }
 
   return (
     <React.Fragment>
@@ -132,9 +147,9 @@ const Row = (props: { row: RowData }) => {
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
-          <Typography variant="body1">{row.name}</Typography>
+          <Typography variant="body1">{name}</Typography>
         </TableCell>
-        <TableCell>{createSymbols(row.green, row.yellow, row.red)}</TableCell>
+        <TableCell>{createSymbols(green, yellow, red)}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -152,12 +167,23 @@ const Row = (props: { row: RowData }) => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {row.registers.map((registerRow) => (
+                  {registers.map((registerRow) => (
                     <TableRow key={registerRow.name}>
                       <TableCell component="th" scope="row">
-                        <Typography variant="body2">
-                          {registerRow.name}
-                        </Typography>
+                        <ArrowLink
+                          href={
+                            "/behandlingskvalitet/?selected_treatment_units=" +
+                            unitNames.join("_") +
+                            "&indicator=reg-" +
+                            registerRow.name +
+                            "&dg=" +
+                            typeString
+                          }
+                          text={registerRow.full_name}
+                          externalLink={false}
+                          button={true}
+                          textVariant="overline"
+                        ></ArrowLink>
                       </TableCell>
                       <TableCell>
                         {createSymbols(
@@ -207,7 +233,12 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
         </TableHead>
         <TableBody>
           {rowData.map((row) => (
-            <Row key={row.name} row={row} />
+            <Row
+              key={row.name}
+              row={row}
+              unitNames={medfieldTableParams.unitNames}
+              type={medfieldTableParams.type}
+            />
           ))}
         </TableBody>
       </Table>
