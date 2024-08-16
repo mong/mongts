@@ -79,6 +79,15 @@ export const Skde = (): JSX.Element => {
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
+  // Find the index of "Private" and remove the children. The sub units should not be shown.
+  // TreetmentUnits.treedata starts with one element "Nasjonalt". Need to wait for it to build up the rest.
+  if (treatmentUnits.treedata.length > 1) {
+    const indPrivate = treatmentUnits.treedata.findIndex(
+      (x) => x.nodeValue.value === "Private",
+    );
+    treatmentUnits.treedata[indPrivate].children = [];
+  }
+
   // The following code ensures that the page renders correctly
   const unitUrlsQuery = useUnitUrlsQuery();
 
