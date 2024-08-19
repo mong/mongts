@@ -462,9 +462,6 @@ export const Skde = (): JSX.Element => {
                                   stroke={"black"}
                                   strokeWidth={0.4}
                                   className={i + ""}
-                                  style={{
-                                    cursor: "pointer",
-                                  }}
                                 />
                               );
                             })}
