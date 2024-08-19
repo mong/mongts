@@ -59,9 +59,12 @@ import { FetchMap } from "../../src/helpers/hooks";
 import { mapColors } from "../../src/charts/colors";
 import { geoMercator, geoPath } from "d3-geo";
 import { scaleThreshold } from "d3-scale";
+import { mapUnitName2BohfNames } from "./unitName2BohfMap";
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
+
+  const [objectIDList, setObjectIDList] = useState([18, 19, 20]);
 
   const treatmentUnitsKey = "selected_treatment_units";
 
@@ -130,6 +133,8 @@ export const Skde = (): JSX.Element => {
         return row.shortName === newUnit[0];
       });
     }
+
+    setObjectIDList(mapUnitName2BohfNames(newUnit[0]));
 
     if (unitUrl && unitUrl[0]) {
       setUnitUrl(unitUrl[0].url);
@@ -310,6 +315,7 @@ export const Skde = (): JSX.Element => {
     .scale(scale)
     .center(initCenter)
     .translate(offset);
+
   const pathGenerator = geoPath().projection(projection);
 
   return (
@@ -438,11 +444,16 @@ export const Skde = (): JSX.Element => {
                         >
                           {mapData &&
                             mapData.features.map((d, i) => {
+                              console.log(d.properties);
                               return (
                                 <path
                                   key={`map-feature-${i}`}
                                   d={pathGenerator(d.geometry)}
-                                  fill={"blue"}
+                                  fill={
+                                    objectIDList.includes(d.properties.BoHF_num)
+                                      ? "blue"
+                                      : "red"
+                                  }
                                   stroke={"black"}
                                   strokeWidth={0.4}
                                   className={i + ""}
