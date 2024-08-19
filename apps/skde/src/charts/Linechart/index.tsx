@@ -1,35 +1,20 @@
 import { Grid, Axis, LineSeries, XYChart, Tooltip } from "@visx/xychart";
 import { scaleOrdinal } from "@visx/scale";
-import { useRouter } from "next/router";
 import { customFormat } from "qmongjs";
 import { ColorLegend } from "./ColorLegend";
 import { linechartColors } from "../colors";
 
-type LinechartData<
-  Data,
-  X extends keyof Data,
-  Y extends keyof Data,
-  Label extends keyof Data,
-> = {
+type LinechartData<Data, X extends keyof Data> = {
   [k in keyof Data & keyof X]: number;
 } & {
-  [k in Y]: number;
-} & {
   [k in keyof Data]?: number | string;
-} & {
-  [k in keyof Data & keyof Label]?: string;
 };
 
-type LinechartProps<
-  Data,
-  X extends string & keyof Data,
-  Y extends string & keyof Data,
-  Label extends string & keyof Data,
-> = {
-  data: LinechartData<Data, X, Y, Label>[];
+type LinechartProps<Data, X extends string & keyof Data> = {
+  data: LinechartData<Data, X>[];
   x: X;
-  y: Y;
-  label: Label;
+  linevars: string[];
+  linevarsLabels: { en: string[]; nb: string[]; nn: string[] };
   lang: "en" | "nb" | "nn";
   xLabel?: { en: string; nb: string; nn: string };
   yLabel?: { en: string; nb: string; nn: string };
@@ -38,62 +23,29 @@ type LinechartProps<
   national?: string;
 };
 
-export const Linechart = <
-  Data,
-  X extends string & keyof Data,
-  Y extends string & keyof Data,
-  Label extends string & keyof Data,
->({
+export const Linechart = <Data, X extends string & keyof Data>({
   data,
   x,
-  y,
-  label,
+  linevars,
+  linevarsLabels,
   lang,
   xLabel,
   yLabel,
   format_x,
   format_y,
-  national,
-}: LinechartProps<Data, X, Y, Label>) => {
-  const router = useRouter();
-  const selected_bohf = [router.query.bohf].flat();
+}: LinechartProps<Data, X>) => {
+  const getLinevarLabel = (linevar) =>
+    linevarsLabels[lang][linevars.findIndex((v) => v === linevar)];
 
-  let uniqueLabels: string[] = Array.from(new Set(data.map((d) => d[label])));
-  let allNonSelectedHF = [];
-
-  if (label === "bohf") {
-    allNonSelectedHF = uniqueLabels.filter(
-      (item) => ![national].concat(selected_bohf).includes(item),
-    );
-    uniqueLabels = [national].concat(
-      uniqueLabels.filter((item) => selected_bohf.includes(item)),
-    );
-  }
-
-  const plotableData = (
-    uniqueLabels: string[],
-    data: LinechartData<Data, X, Y, Label>[],
-  ) => {
-    // put data in a plotable format
-    const values = uniqueLabels.map((l) => {
-      return {
-        label: l,
-        points: data
-          .flatMap((d) => {
-            if (d[label] === l) {
-              return { x: d[x], y: d[y] };
-            } else {
-              return [];
-            }
-          })
-          .sort((a, b) => a.x - b.x),
-      };
-    });
-    return values;
-  };
-
-  const values = plotableData(uniqueLabels, data);
-  const greyValues = plotableData(allNonSelectedHF, data);
+  const values = linevars.map((linevar) => {
+    return {
+      linevar: linevar,
+      linevarLabel: getLinevarLabel(linevar),
+      points: data
+        .map((d) => ({ x: d[x], y: d[linevar] }))
+        .sort((a, b) => a.x - b.x),
+    };
+  });
 
   const accessors = {
     xAccessor: (d) =>
@@ -102,16 +54,21 @@ export const Linechart = <
         : d.x,
     yAccessor: (d) => (format_y ? customFormat(format_y, lang)(d.y) : d.y),
   };
+
   const yvaluesMaxTextLength = Math.max(
-    ...data.map(
-      (d) =>
-        (format_y ? customFormat(format_y, lang)(d[y]) : d[y]).toString()
-          .length,
+    ...data.flatMap((d) =>
+      linevars.map(
+        (linevar) =>
+          (format_y
+            ? customFormat(format_y, lang)(d[linevar])
+            : d[linevar]
+          ).toString().length,
+      ),
     ),
   );
 
   const colorScale = scaleOrdinal({
-    domain: values.map((s) => s.label),
+    domain: values.map((s) => s.linevar),
     range: [...linechartColors],
   });
 
@@ -119,25 +76,15 @@ export const Linechart = <
     <div style={{ width: "auto", margin: "auto" }}>
       <XYChart
         height={500}
-        xScale={{ type: "band", paddingOuter: label === "bohf" ? -0.3 : 0 }}
+        xScale={{ type: "band", paddingOuter: 0 }}
         yScale={{ type: "linear" }}
         margin={{
           top: 50,
           right: 50,
           bottom: 50,
-          left: 50 + yvaluesMaxTextLength,
+          left: 55 + yvaluesMaxTextLength,
         }}
       >
-        {greyValues.map((plots, i) => (
-          <LineSeries
-            stroke="rgb(229, 228, 226)"
-            dataKey={plots.label}
-            data={plots.points}
-            xAccessor={(d) => d.x}
-            yAccessor={(d) => d.y}
-            key={i}
-          />
-        ))}
         <Axis
           orientation="bottom"
           label={xLabel[lang]}
@@ -182,8 +129,8 @@ export const Linechart = <
         <Grid columns={false} numTicks={4} />
         {values.map((plots, i) => (
           <LineSeries
-            strokeWidth={label === "bohf" ? 5 : 2}
-            dataKey={plots.label}
+            strokeWidth={2}
+            dataKey={plots.linevar}
             data={plots.points}
             xAccessor={(d) => d.x}
             yAccessor={(d) => d.y}
@@ -194,9 +141,8 @@ export const Linechart = <
         <Tooltip
           snapTooltipToDatumX
           snapTooltipToDatumY
-          showDatumGlyph={label === "bohf"}
-          showVerticalCrosshair={label !== "bohf"}
-          showSeriesGlyphs={label !== "bohf"}
+          showVerticalCrosshair
+          showSeriesGlyphs
           glyphStyle={{ fill: linechartColors[0] }}
           renderTooltip={({ tooltipData }) => (
             <div>
@@ -205,36 +151,30 @@ export const Linechart = <
                 {": "}
                 {accessors.xAccessor(tooltipData.nearestDatum.datum)}
               </div>
-              {label === "bohf" ? (
-                <div>
-                  <div>
-                    {tooltipData.nearestDatum.key}
-                    {": "}
-                    {accessors.yAccessor(tooltipData.nearestDatum.datum)}
-                  </div>
-                </div>
-              ) : (
-                Object.keys(tooltipData.datumByKey)
-                  .filter(function (value) {
-                    return uniqueLabels.includes(value);
-                  })
-                  .map((d: LinechartData<Data, X, Y, Label>[Label]) => {
-                    return (
-                      <div key={d}>
-                        <div style={{ color: colorScale(d) }}>
-                          {d}
-                          {": "}
-                          {accessors.yAccessor(tooltipData.datumByKey[d].datum)}
-                        </div>
+              {Object.keys(tooltipData.datumByKey)
+                .filter(function (value) {
+                  return linevars.includes(value);
+                })
+                .map((d) => {
+                  return (
+                    <div key={d}>
+                      <div style={{ color: colorScale(d) }}>
+                        {getLinevarLabel(d)}
+                        {": "}
+                        {accessors.yAccessor(tooltipData.datumByKey[d].datum)}
                       </div>
-                    );
-                  })
-              )}
+                    </div>
+                  );
+                })}
             </div>
           )}
         />
       </XYChart>
-      <ColorLegend colorScale={colorScale} values={uniqueLabels} />
+      <ColorLegend
+        colorScale={colorScale}
+        values={linevars}
+        getLabel={getLinevarLabel}
+      />
     </div>
   );
 };
