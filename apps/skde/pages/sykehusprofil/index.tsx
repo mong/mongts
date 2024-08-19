@@ -442,7 +442,7 @@ export const Skde = (): JSX.Element => {
                         }}
                       >
                         <svg
-                          width={"100%"}
+                          width={"400px"}
                           height={"100%"}
                           viewBox={`0 0 ${mapWidth} ${mapHeight}`}
                           style={{ backgroundColor: "none" }}
@@ -484,7 +484,7 @@ export const Skde = (): JSX.Element => {
 
                   <Grid xs={6} sm={6} lg={4} xl={4} xxl={4}>
                     <ItemBox
-                      height={440}
+                      height={450}
                       sx={{ overflow: "auto", marginRight: 2 }}
                     >
                       <Typography variant="h5" style={titleStyle}>
