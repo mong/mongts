@@ -94,6 +94,7 @@ const hospital2HF = (
   return targetHF[0] ? targetHF[0].hfName : "NA";
 };
 
+// Map short_name to bohf name
 export const mapUnitName2BohfNames = (
   treedata: TreeViewFilterSectionNode[],
   unitName: string,
@@ -102,6 +103,7 @@ export const mapUnitName2BohfNames = (
     return obj.unitName === unitName;
   })[0];
 
+  // Could be a hospital
   if (!filteredMap) {
     const hfName = hospital2HF(treedata, unitName);
 
@@ -110,6 +112,7 @@ export const mapUnitName2BohfNames = (
     })[0];
   }
 
+  // Could be a HF or RHF
   if (!filteredMap) {
     return null;
   }
