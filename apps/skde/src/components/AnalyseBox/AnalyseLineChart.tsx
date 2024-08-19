@@ -71,9 +71,6 @@ export const AnalyseLineChart = ({
       }))}
       onLineClick={(a, b) => console.log("Info: ", a, b)}
       tooltip={{ trigger: "axis" }}
-      axisHighlight={{
-        x: "none",
-      }}
       slotProps={{
         legend: {
           direction: "row",
