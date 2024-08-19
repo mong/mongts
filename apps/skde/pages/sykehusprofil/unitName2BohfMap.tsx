@@ -1,4 +1,5 @@
 import { ObjectIDToBoHF } from "../../src/charts/Map";
+import { TreeViewFilterSectionNode } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 
 type UnitName2BohfMapping = { unitName: string; bohfNames: string[] }[];
 
@@ -33,20 +34,76 @@ const unitName2BohfNames: UnitName2BohfMapping = [
   },
   { unitName: "Finnmark HF", bohfNames: ["Finnmark"] },
   { unitName: "UNN HF", bohfNames: ["UNN"] },
+  { unitName: "Nordland HF", bohfNames: ["Nordland"] },
+  { unitName: "Helgeland HF", bohfNames: ["Helgeland"] },
+  { unitName: "Sunnaas HF", bohfNames: [""] },
+  { unitName: "St. Olavs HF", bohfNames: ["St. Olav"] },
+  { unitName: "Vestre Viken HF", bohfNames: ["Vestre Viken"] },
+  { unitName: "Lovisenberg Diakonale sykehus AS", bohfNames: ["Lovisenberg"] },
+  { unitName: "Diakonhjemmet sykehus AS", bohfNames: ["Diakonhjemmet"] },
+  { unitName: "Akershus HF", bohfNames: ["Akershus"] },
+  { unitName: "Innlandet HF", bohfNames: ["Innlandet"] },
+  { unitName: "Østfold HF", bohfNames: ["Østfold"] },
+  { unitName: "Stavanger HF", bohfNames: ["Stavanger"] },
+  { unitName: "Fonna HF", bohfNames: ["Fonna"] },
+  { unitName: "Bergen HF", bohfNames: ["Bergen"] },
+  { unitName: "Førde HF", bohfNames: ["Førde"] },
+  { unitName: "Nord-Trøndelag HF", bohfNames: ["Nord-Trøndelag"] },
+  { unitName: "Sørlandet HF", bohfNames: ["Sørlandet"] },
+  { unitName: "Vestfold HF", bohfNames: ["Vestfold"] },
+  { unitName: "Telemark HF", bohfNames: ["Telemark"] },
+  { unitName: "Haraldsplass diakonale sykehus AS", bohfNames: [""] },
+  { unitName: "OUS HF", bohfNames: ["OUS"] },
+  { unitName: "Møre og Romsdal HF", bohfNames: ["Møre og Romsdal"] },
 ];
 
-export const mapUnitName2BohfNames = (unitName: string) => {
-  const filteredMap = unitName2BohfNames.filter((obj) => {
+const hospital2HF = (
+  treedata: TreeViewFilterSectionNode[],
+  hospitalName: string,
+) => {
+  if (treedata.length === 1) {
+    return "Nasjonalt";
+  }
+
+  const treatmentUnitsFlat = treedata
+    .map((row) => row.children)
+    .flat()
+    .filter((row) => row);
+  const searchTree = treatmentUnitsFlat.map((hf) => {
+    const targetFound = hf.children.some((hospital) => {
+      return hospital.nodeValue.value === hospitalName;
+    });
+
+    return { hfName: hf.nodeValue.value, targetFound: targetFound };
+  });
+
+  const targetHF = searchTree.filter((row) => {
+    return row.targetFound === true;
+  });
+
+  return targetHF[0] ? targetHF[0].hfName : "NA";
+};
+
+export const mapUnitName2BohfNames = (treedata, unitName: string) => {
+  let filteredMap = unitName2BohfNames.filter((obj) => {
     return obj.unitName === unitName;
   })[0];
 
-  if (filteredMap) {
-    return filteredMap.bohfNames.map((bohfName) => {
-      return ObjectIDToBoHF.filter((obj) => {
-        return obj.bohf === bohfName;
-      })[0].BoHF_num;
-    });
-  } else {
+  if (!filteredMap) {
+    const hfName = hospital2HF(treedata, unitName);
+
+    filteredMap = unitName2BohfNames.filter((obj) => {
+      return obj.unitName === hfName;
+    })[0];
+  }
+
+  if (!filteredMap) {
     return null;
   }
+
+  return filteredMap.bohfNames.map((bohfName) => {
+    return ObjectIDToBoHF.filter((obj) => {
+      return obj.bohf === bohfName;
+    })[0].BoHF_num;
+  });
 };

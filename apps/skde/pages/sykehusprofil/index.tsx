@@ -134,7 +134,7 @@ export const Skde = (): JSX.Element => {
       });
     }
 
-    setObjectIDList(mapUnitName2BohfNames(newUnit[0]));
+    setObjectIDList(mapUnitName2BohfNames(treatmentUnits.treedata, newUnit[0]));
 
     if (unitUrl && unitUrl[0]) {
       setUnitUrl(unitUrl[0].url);
