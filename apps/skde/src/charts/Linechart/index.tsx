@@ -4,22 +4,15 @@ import { customFormat } from "qmongjs";
 import { ColorLegend } from "./ColorLegend";
 import { linechartColors } from "../colors";
 
-type LinechartData<Data, X extends keyof Data, Y extends keyof Data> = {
+type LinechartData<Data, X extends keyof Data> = {
   [k in keyof Data & keyof X]: number;
-} & {
-  [k in Y]: number;
 } & {
   [k in keyof Data]?: number | string;
 };
 
-type LinechartProps<
-  Data,
-  X extends string & keyof Data,
-  Y extends string & keyof Data,
-> = {
-  data: LinechartData<Data, X, Y>[];
+type LinechartProps<Data, X extends string & keyof Data> = {
+  data: LinechartData<Data, X>[];
   x: X;
-  y: Y;
   linevars: string[];
   linevarsLabels: { en: string[]; nb: string[]; nn: string[] };
   lang: "en" | "nb" | "nn";
@@ -30,14 +23,9 @@ type LinechartProps<
   national?: string;
 };
 
-export const Linechart = <
-  Data,
-  X extends string & keyof Data,
-  Y extends string & keyof Data,
->({
+export const Linechart = <Data, X extends string & keyof Data>({
   data,
   x,
-  y,
   linevars,
   linevarsLabels,
   lang,
@@ -45,7 +33,7 @@ export const Linechart = <
   yLabel,
   format_x,
   format_y,
-}: LinechartProps<Data, X, Y>) => {
+}: LinechartProps<Data, X>) => {
   const getLinevarLabel = (linevar) =>
     linevarsLabels[lang][linevars.findIndex((v) => v === linevar)];
 
@@ -66,11 +54,16 @@ export const Linechart = <
         : d.x,
     yAccessor: (d) => (format_y ? customFormat(format_y, lang)(d.y) : d.y),
   };
+
   const yvaluesMaxTextLength = Math.max(
-    ...data.map(
-      (d) =>
-        (format_y ? customFormat(format_y, lang)(d[y]) : d[y]).toString()
-          .length,
+    ...data.flatMap((d) =>
+      linevars.map(
+        (linevar) =>
+          (format_y
+            ? customFormat(format_y, lang)(d[linevar])
+            : d[linevar]
+          ).toString().length,
+      ),
     ),
   );
 
@@ -89,7 +82,7 @@ export const Linechart = <
           top: 50,
           right: 50,
           bottom: 50,
-          left: 50 + yvaluesMaxTextLength,
+          left: 55 + yvaluesMaxTextLength,
         }}
       >
         <Axis
