@@ -66,6 +66,10 @@ export const Skde = (): JSX.Element => {
     withDefault(DelimitedArrayParam, ["Nasjonalt"]),
   );
 
+  // Set infobox image
+  const [imgSrc, setImgSrc] = useState("/img/forsidebilder/Nasjonalt.jpg");
+
+  // Infobox URL
   const [unitUrl, setUnitUrl] = useState<string | null>(null);
 
   // Get unit names
@@ -112,6 +116,8 @@ export const Skde = (): JSX.Element => {
 
     setExpanded(false);
     setSelectedTreatmentUnits(newUnit);
+
+    setImgSrc("/img/forsidebilder/" + newUnit[0] + ".jpg");
 
     let unitUrl: URLs | undefined;
     if (unitUrlsQuery.data) {
@@ -327,12 +333,9 @@ export const Skde = (): JSX.Element => {
                         }}
                       >
                         <img
-                          src={
-                            selectedTreatmentUnits[0] === "Nasjonalt"
-                              ? "/img/forsidebilder/Nasjonalt.png"
-                              : "/img/forsidebilder/" +
-                                selectedTreatmentUnits[0] +
-                                ".jpg"
+                          src={imgSrc}
+                          onError={() =>
+                            setImgSrc("/img/forsidebilder/Sykehus.jpg")
                           }
                           alt={"Logo"}
                           width="100%"
