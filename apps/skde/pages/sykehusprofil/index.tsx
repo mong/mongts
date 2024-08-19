@@ -52,7 +52,6 @@ import {
   ItemBox,
 } from "../../src/components/HospitalProfileStyles";
 import { ExpandableItemBox } from "../../src/components/ExpandableItemBox";
-import logo from "./Logo.png";
 import { URLs } from "types";
 import { ArrowLink } from "qmongjs";
 import { useRouter } from "next/router";
@@ -68,6 +67,10 @@ export const Skde = (): JSX.Element => {
     withDefault(DelimitedArrayParam, ["Nasjonalt"]),
   );
 
+  // Set infobox image
+  const [imgSrc, setImgSrc] = useState("/img/forsidebilder/Nasjonalt.jpg");
+
+  // Infobox URL
   const [unitUrl, setUnitUrl] = useState<string | null>(null);
 
   // Get unit names
@@ -114,6 +117,8 @@ export const Skde = (): JSX.Element => {
 
     setExpanded(false);
     setSelectedTreatmentUnits(newUnit);
+
+    setImgSrc("/img/forsidebilder/" + newUnit[0] + ".jpg");
 
     let unitUrl: URLs | undefined;
     if (unitUrlsQuery.data) {
@@ -333,22 +338,41 @@ export const Skde = (): JSX.Element => {
                 <Grid container>
                   <Grid
                     xs={12}
-                    sm={4}
+                    sm={12}
                     lg={4}
                     xl={4}
                     xxl={4}
                     alignContent="center"
                     style={{ textAlign: "center" }}
                   >
-                    <img
-                      src={logo.src}
-                      alt={"Logo"}
-                      width="100%"
-                      style={{ borderRadius: "50%", maxWidth: 300 }}
-                    />
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          width: 300,
+                          height: 300,
+                          justifyContent: "center",
+                        }}
+                      >
+                        <img
+                          src={imgSrc}
+                          onError={() =>
+                            setImgSrc("/img/forsidebilder/Sykehus.jpg")
+                          }
+                          alt={"Logo"}
+                          width="100%"
+                          height="100%"
+                          style={{
+                            borderRadius: "100%",
+                            maxWidth: "100%",
+                            objectFit: "cover",
+                          }}
+                        />
+                      </div>
+                    </div>
                   </Grid>
 
-                  <Grid xs={6} sm={4} lg={4} xl={4} xxl={4}>
+                  <Grid xs={6} sm={6} lg={4} xl={4} xxl={4}>
                     <div
                       style={{
                         display: "flex",
@@ -356,11 +380,14 @@ export const Skde = (): JSX.Element => {
                         height: "400px",
                       }}
                     >
-                      <Typography variant="h5" style={{ marginTop: 20 }}>
+                      <Typography
+                        variant="h5"
+                        style={{ marginTop: 20, marginLeft: 20 }}
+                      >
                         {selectedTreatmentUnits[0]}
                       </Typography>
 
-                      <div style={{ marginLeft: 0 }}>
+                      <div style={{ marginLeft: 20 }}>
                         <Typography variant="body1">
                           Her skal det stå noe om enheten. <br />
                         </Typography>
@@ -380,7 +407,7 @@ export const Skde = (): JSX.Element => {
                     </div>
                   </Grid>
 
-                  <Grid xs={6} sm={4} lg={4} xl={4} xxl={4}>
+                  <Grid xs={6} sm={6} lg={4} xl={4} xxl={4}>
                     <ItemBox
                       height={440}
                       sx={{ overflow: "auto", marginRight: 2 }}
