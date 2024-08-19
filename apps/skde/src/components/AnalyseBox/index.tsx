@@ -73,9 +73,25 @@ export const AnalyseBox = ({ analyse, tagsMetadata }: AnalyseBoxProps) => {
         onClick={() => setExpanded(!expanded)}
       >
         <Box sx={{ padding: "10px" }}>
-          <Typography>Hello. This is an analysis box!</Typography>
-          <Typography>{new Date(analyse.published).toUTCString()}</Typography>
-          <Typography>{analyse.description.no}</Typography>
+          <Typography variant="h3">{analyse.name}</Typography>
+          <Typography variant="body2">
+            Oppdatert: {new Date(analyse.published).toUTCString()}
+          </Typography>
+          <ul>
+            <li>
+              <Typography>{analyse.description.no}</Typography>
+            </li>
+            <li>
+              <Typography>Dette er en konklusjon, dataene viser at.</Typography>
+            </li>
+            <li>
+              <Typography>
+                En normativ oppfordring til å gjøre mer eller mindre av et eller
+                annet?
+              </Typography>
+            </li>
+          </ul>
+
           {!expanded && tags}
         </Box>
       </AccordionSummary>
@@ -167,7 +183,31 @@ export const AnalyseBox = ({ analyse, tagsMetadata }: AnalyseBoxProps) => {
           )}
         </Paper>
         <br />
-        <Typography>Dis bist ze end of de analywse boks</Typography>
+        <Typography>
+          {" "}
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. In sit amet
+          ultricies enim. Nulla suscipit sit amet velit vitae pulvinar. In
+          feugiat sodales lacus. Mauris porttitor accumsan eros, nec porttitor
+          tellus. Quisque non justo fermentum, efficitur erat sit amet, gravida
+          ligula. Suspendisse consequat dictum condimentum. Vestibulum ante
+          ipsum primis in faucibus orci luctus et ultrices posuere cubilia
+          curae; Praesent quis eleifend nisi. Proin at interdum ligula, et
+          venenatis libero. Ut semper condimentum urna, vel tincidunt orci
+          aliquam vitae.{" "}
+        </Typography>
+        <br />
+        <Typography>
+          {" "}
+          Integer ornare odio odio, vitae efficitur purus dignissim eget. Aenean
+          elementum neque sed ultrices hendrerit. In quam justo, bibendum sed
+          metus non, vestibulum vestibulum odio. Maecenas ultricies bibendum
+          vehicula. Pellentesque vitae orci vehicula dolor pulvinar sodales.
+          Nunc rhoncus ultricies mi eu faucibus. Duis elit neque, sodales quis
+          imperdiet eget, lacinia ut turpis. Praesent iaculis ante mi, id
+          pellentesque dolor mollis at. Morbi placerat tristique odio ac
+          convallis. Donec a ullamcorper nisi. Cras libero tellus, sodales id
+          tellus sit amet, cursus imperdiet nibh.{" "}
+        </Typography>
         {tags}
       </AccordionDetails>
     </Accordion>
