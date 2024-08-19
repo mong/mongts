@@ -55,6 +55,10 @@ import { ExpandableItemBox } from "../../src/components/ExpandableItemBox";
 import { URLs } from "types";
 import { ArrowLink } from "qmongjs";
 import { useRouter } from "next/router";
+import { FetchMap } from "../../src/helpers/hooks";
+import { mapColors } from "../../src/charts/colors";
+import { geoMercator, geoPath } from "d3-geo";
+import { scaleThreshold } from "d3-scale";
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
@@ -276,6 +280,38 @@ export const Skde = (): JSX.Element => {
     );
   };
 
+  const mapData = FetchMap("/helseatlas/kart/indre_oslo.geojson").data;
+
+  const color = mapColors;
+  const height = 1000;
+  const initCenter = geoPath().centroid(mapData);
+  const initOffset: [number, number] = [width / 2, height / 2 - height * 0.11];
+  const initScale = 150;
+  const initialProjection = geoMercator()
+    .scale(initScale)
+    .center(initCenter)
+    .translate(initOffset);
+  const initPath = geoPath().projection(initialProjection);
+
+  const bounds = initPath.bounds(mapData);
+  const hscale = (initScale * width) / (bounds[1][0] - bounds[0][0]);
+  const vscale = (initScale * height) / (bounds[1][1] - bounds[0][1]);
+  const scale = hscale < vscale ? 0.98 * hscale : 0.98 * vscale;
+  const offset: [number, number] = [
+    width - (bounds[0][0] + bounds[1][0]) / 2,
+    height - (bounds[0][1] + bounds[1][1]) / 2,
+  ];
+
+  const colorScale = scaleThreshold<number, string>()
+    .domain([])
+    .range(color ? color : []);
+
+  const projection = geoMercator()
+    .scale(scale)
+    .center(initCenter)
+    .translate(offset);
+  const pathGenerator = geoPath().projection(projection);
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
@@ -387,10 +423,36 @@ export const Skde = (): JSX.Element => {
                         {selectedTreatmentUnits[0]}
                       </Typography>
 
-                      <div style={{ marginLeft: 20 }}>
-                        <Typography variant="body1">
-                          Her skal det stå noe om enheten. <br />
-                        </Typography>
+                      <div
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          margin: "auto",
+                        }}
+                      >
+                        <svg
+                          width={"100%"}
+                          height={"100%"}
+                          viewBox={`0 0 ${width} ${height}`}
+                          style={{ backgroundColor: "none" }}
+                        >
+                          {mapData &&
+                            mapData.features.map((d, i) => {
+                              return (
+                                <path
+                                  key={`map-feature-${i}`}
+                                  d={pathGenerator(d.geometry)}
+                                  fill={"blue"}
+                                  stroke={"black"}
+                                  strokeWidth={0.4}
+                                  className={i + ""}
+                                  style={{
+                                    cursor: "pointer",
+                                  }}
+                                />
+                              );
+                            })}
+                        </svg>
                       </div>
 
                       <div style={{ marginTop: "auto" }}>

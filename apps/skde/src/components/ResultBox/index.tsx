@@ -159,6 +159,7 @@ export const ResultBox = ({
             );
           }
           if (bd.type === "map") {
+            console.log(bd.jenks);
             const jenks = bd.jenks
               ? bd.jenks.map((j) => parseFloat(j.grense))
               : undefined;
