@@ -31,6 +31,8 @@ const unitName2BohfNames: UnitName2BohfMapping = [
       "Indre Oslo",
     ],
   },
+  { unitName: "Finnmark HF", bohfNames: ["Finnmark"] },
+  { unitName: "UNN HF", bohfNames: ["UNN"] },
 ];
 
 export const mapUnitName2BohfNames = (unitName: string) => {
@@ -38,9 +40,13 @@ export const mapUnitName2BohfNames = (unitName: string) => {
     return obj.unitName === unitName;
   })[0];
 
-  return filteredMap.bohfNames.map((bohfName) => {
-    return ObjectIDToBoHF.filter((obj) => {
-      return obj.bohf === bohfName;
-    })[0].BoHF_num;
-  });
+  if (filteredMap) {
+    return filteredMap.bohfNames.map((bohfName) => {
+      return ObjectIDToBoHF.filter((obj) => {
+        return obj.bohf === bohfName;
+      })[0].BoHF_num;
+    });
+  } else {
+    return null;
+  }
 };

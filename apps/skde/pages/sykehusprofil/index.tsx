@@ -56,7 +56,7 @@ import { URLs } from "types";
 import { ArrowLink } from "qmongjs";
 import { useRouter } from "next/router";
 import { FetchMap } from "../../src/helpers/hooks";
-import { mapColors } from "../../src/charts/colors";
+import { mapColors, abacusColors } from "../../src/charts/colors";
 import { geoMercator, geoPath } from "d3-geo";
 import { scaleThreshold } from "d3-scale";
 import { mapUnitName2BohfNames } from "./unitName2BohfMap";
@@ -308,8 +308,8 @@ export const Skde = (): JSX.Element => {
   ];
 
   const colorScale = scaleThreshold<number, string>()
-    .domain([])
-    .range(color ? color : []);
+    .domain([3, 12, 20])
+    .range(color);
 
   const projection = geoMercator()
     .scale(scale)
@@ -444,15 +444,15 @@ export const Skde = (): JSX.Element => {
                         >
                           {mapData &&
                             mapData.features.map((d, i) => {
-                              console.log(d.properties);
                               return (
                                 <path
                                   key={`map-feature-${i}`}
                                   d={pathGenerator(d.geometry)}
                                   fill={
+                                    objectIDList &&
                                     objectIDList.includes(d.properties.BoHF_num)
-                                      ? "blue"
-                                      : "red"
+                                      ? abacusColors[2]
+                                      : colorScale(d.properties.BoHF_num)
                                   }
                                   stroke={"black"}
                                   strokeWidth={0.4}
