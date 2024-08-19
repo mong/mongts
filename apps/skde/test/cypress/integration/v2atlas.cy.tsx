@@ -8,7 +8,7 @@ context("v2 atlas", () => {
   it("Simple start", () => {
     cy.visit("/helseatlas/v2/test_atlas");
     cy.get("h1").contains("Testatlas (ikke publiser)");
-    cy.get('[data-testid="tocItem"]:visible').click(5, 5); // Click ToC element
+    cy.get('[data-testid="tocItem"]:visible').click(5, 5, { multiple: true }); // Click ToC element
     cy.url().should("include", "ms-syke-barn-under"); // Check url change
   });
 
