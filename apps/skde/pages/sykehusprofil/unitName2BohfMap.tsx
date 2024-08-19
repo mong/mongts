@@ -3,6 +3,7 @@ import { TreeViewFilterSectionNode } from "qmongjs/src/components/FilterMenu/Tre
 
 type UnitName2BohfMapping = { unitName: string; bohfNames: string[] }[];
 
+// Map from short_name to bohf names
 const unitName2BohfNames: UnitName2BohfMapping = [
   {
     unitName: "Helse Nord RHF",
@@ -57,18 +58,25 @@ const unitName2BohfNames: UnitName2BohfMapping = [
   { unitName: "Møre og Romsdal HF", bohfNames: ["Møre og Romsdal"] },
 ];
 
+// Hospitals must be mapped back to HF
 const hospital2HF = (
   treedata: TreeViewFilterSectionNode[],
   hospitalName: string,
 ) => {
+  // Treedata initially has only "Nasjonalt"
   if (treedata.length === 1) {
     return "Nasjonalt";
   }
 
+  // Flatten the tree and remove the rows that are undefined
+  // "Nasjonalt" has no children and will be undefined
   const treatmentUnitsFlat = treedata
     .map((row) => row.children)
     .flat()
     .filter((row) => row);
+
+  // Search the tree and locate the HF under which the hospital belongs
+  // Return an array of objects with true/false values
   const searchTree = treatmentUnitsFlat.map((hf) => {
     const targetFound = hf.children.some((hospital) => {
       return hospital.nodeValue.value === hospitalName;
@@ -77,14 +85,19 @@ const hospital2HF = (
     return { hfName: hf.nodeValue.value, targetFound: targetFound };
   });
 
+  // Filter out the object with the true value
   const targetHF = searchTree.filter((row) => {
     return row.targetFound === true;
   });
 
+  // If the unit passed to this function is not a hospital, return
   return targetHF[0] ? targetHF[0].hfName : "NA";
 };
 
-export const mapUnitName2BohfNames = (treedata, unitName: string) => {
+export const mapUnitName2BohfNames = (
+  treedata: TreeViewFilterSectionNode[],
+  unitName: string,
+) => {
   let filteredMap = unitName2BohfNames.filter((obj) => {
     return obj.unitName === unitName;
   })[0];
