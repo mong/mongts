@@ -18,6 +18,7 @@ import {
   useUnitUrlsQuery,
   LowLevelIndicatorList,
   LineStyles,
+  newLevelSymbols,
   defaultYear,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
@@ -166,14 +167,14 @@ export const Skde = (): JSX.Element => {
         },
         {
           text: "Moderat måloppnåelse",
-          strokeDash: "1 3",
+          strokeDash: "0",
           colour: "#FD9C00",
           marker: "square",
           markEnd: true,
         },
         {
           text: "Lav måloppnåelse",
-          strokeDash: "8 8",
+          strokeDash: "0",
           colour: "#E30713",
           marker: "triangle",
           markEnd: true,
@@ -253,6 +254,27 @@ export const Skde = (): JSX.Element => {
 
   const titleStyle = { marginTop: 20, marginLeft: 20 };
   const textMargin = 20;
+
+  const Legend = (props: { itemSpacing: number; symbolSpacing: number }) => {
+    const { itemSpacing, symbolSpacing } = props;
+
+    return (
+      <Stack direction="row" spacing={itemSpacing} alignItems="center">
+        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
+          {newLevelSymbols("H")}
+          <Typography>Høy måloppnåelse</Typography>
+        </Stack>
+        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
+          {newLevelSymbols("M")}
+          <Typography>Moderat måloppnåelse</Typography>
+        </Stack>
+        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
+          {newLevelSymbols("L")}
+          <Typography>Lav måloppnåelse</Typography>
+        </Stack>
+      </Stack>
+    );
+  };
 
   return (
     <ThemeProvider theme={skdeTheme}>
@@ -423,6 +445,17 @@ export const Skde = (): JSX.Element => {
                     hvilke som har hatt høy, middels eller lav måloppnåelse de
                     siste årene.
                   </Typography>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "right",
+                      marginRight: 20,
+                      marginTop: 40,
+                    }}
+                  >
+                    <Legend itemSpacing={8} symbolSpacing={2} />
+                  </div>
                 </div>
                 <ThemeProvider theme={lineChartTheme}>
                   <div id="plot-window">
