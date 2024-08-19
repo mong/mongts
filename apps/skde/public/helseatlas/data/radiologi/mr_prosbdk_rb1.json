@@ -3,86 +3,68 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "totsnitt"
-      ],
+      "x": ["totsnitt"],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall (rate) MR prostata pr. 10 000 menn",
-        "en": "tmp"
+        "en": "Number of prostate MRI per 10,000 men"
       },
       "yLabel": {
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "tot2018",
-        "tot2019",
-        "tot2020",
-        "tot2021",
-        "tot2022"
-      ],
+      "annualVar": ["tot2018", "tot2019", "tot2020", "tot2021", "tot2022"],
       "annualVarLabels": {
-        "nb": [
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022"
-        ],
-        "en": [
-          "2018",
-          "2019",
-          "2020",
-          "2021",
-          "2022"
-        ]
+        "nb": ["2018", "2019", "2020", "2021", "2022"],
+        "en": ["2018", "2019", "2020", "2021", "2022"]
       },
       "format": ",.0f"
     },
     {
       "type": "linechart",
       "data": "datasett_2",
-      "label": "gender",
-      "x": [
-        "alder"
-      ],
-      "y": "pctandel",
+      "x": ["alder"],
       "xLabel": {
         "nb": "Alder",
-        "en": "Alder"
+        "en": "Age"
       },
       "yLabel": {
         "nb": "Andel av befolkningen med MR prostata undersøkelse",
-        "en": "Andel"
+        "en": "Proportion of population with prostate MRI examinations"
       },
-      "format_y": ",.1%"
+      "format_y": ",.1%",
+      "linevars": ["Menn"],
+      "linevarsLabels": {
+        "nb": ["Menn"],
+        "en": ["Men"]
+      }
     },
     {
       "type": "linechart",
       "data": "datasett_3",
-      "label": "tid",
-      "x": [
-        "mnd"
-      ],
-      "y": "antall",
+      "x": ["mnd"],
       "xLabel": {
         "nb": "Måned",
-        "en": "Måned"
+        "en": "Month"
       },
       "yLabel": {
         "nb": "Tidstrend, antall MR prostata undersøkelser",
-        "en": "Antall undersøkelser"
+        "en": "Historical trend, number of prostate MRI examinations"
       },
       "format_x": "month",
-      "format_y": ",.0f"
+      "format_y": ",.0f",
+      "linevars": ["Snitt 2018-2019", "Pandemi: 2020", "Snitt 2021-2022"],
+      "linevarsLabels": {
+        "nb": ["Snitt 2018-2019", "Pandemi: 2020", "Snitt 2021-2022"],
+        "en": ["Average 2018-2019", "Pandemic: 2020", "Average 2021-2022"]
+      }
     },
     {
       "type": "table",
       "data": "datasett_1",
       "caption": {
         "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall (rate) pr. 10  000 menn",
-        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall (rate) pr. 10  000 menn"
+        "en": "Annual average during 2018–2022. <br> * Number of outpatient hand MRI per 10,000 population. The rates are age adjusted."
       },
       "columns": [
         {
@@ -95,7 +77,7 @@
         {
           "id": "totsnitt",
           "label_no": "Rate",
-          "label_en": "Rate",
+          "label_en": "Rate*",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -116,7 +98,7 @@
         {
           "id": "tot_pop",
           "label_no": "Innbyggere",
-          "label_en": "Inhabitants",
+          "label_en": "Population",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -135,7 +117,7 @@
       "x": "totsnitt",
       "caption": {
         "nb": "Antall (rate) MR prostata pr. 10 000 menn",
-        "en": "tmp"
+        "en": "Number of prostate MRI per 10,000 men"
       },
       "jenks": [
         {
@@ -463,500 +445,287 @@
       "data": [
         {
           "alder": 35,
-          "ermann": "Menn",
-          "pctandel": 0.000118447689193,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.000118447689193
         },
         {
           "alder": 36,
-          "ermann": "Menn",
-          "pctandel": 0.000157795649193,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.000157795649193
         },
         {
           "alder": 37,
-          "ermann": "Menn",
-          "pctandel": 0.000163948760547,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.000163948760547
         },
         {
           "alder": 38,
-          "ermann": "Menn",
-          "pctandel": 0.000142586854589,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.000142586854589
         },
         {
           "alder": 39,
-          "ermann": "Menn",
-          "pctandel": 0.000170979769232,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.000170979769232
         },
         {
           "alder": 40,
-          "ermann": "Menn",
-          "pctandel": 0.000295970335954,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.000295970335954
         },
         {
           "alder": 41,
-          "ermann": "Menn",
-          "pctandel": 0.000329924117453,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.000329924117453
         },
         {
           "alder": 42,
-          "ermann": "Menn",
-          "pctandel": 0.000341911002248,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.000341911002248
         },
         {
           "alder": 43,
-          "ermann": "Menn",
-          "pctandel": 0.000438486942525,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.000438486942525
         },
         {
           "alder": 44,
-          "ermann": "Menn",
-          "pctandel": 0.000537159958562,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.000537159958562
         },
         {
           "alder": 45,
-          "ermann": "Menn",
-          "pctandel": 0.000620443617186,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.000620443617186
         },
         {
           "alder": 46,
-          "ermann": "Menn",
-          "pctandel": 0.00078216865446,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00078216865446
         },
         {
           "alder": 47,
-          "ermann": "Menn",
-          "pctandel": 0.00102725334246,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00102725334246
         },
         {
           "alder": 48,
-          "ermann": "Menn",
-          "pctandel": 0.00145667548564,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00145667548564
         },
         {
           "alder": 49,
-          "ermann": "Menn",
-          "pctandel": 0.00170703575548,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00170703575548
         },
         {
           "alder": 50,
-          "ermann": "Menn",
-          "pctandel": 0.00207133448694,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00207133448694
         },
         {
           "alder": 51,
-          "ermann": "Menn",
-          "pctandel": 0.00242775227569,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00242775227569
         },
         {
           "alder": 52,
-          "ermann": "Menn",
-          "pctandel": 0.00305106603828,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00305106603828
         },
         {
           "alder": 53,
-          "ermann": "Menn",
-          "pctandel": 0.00378707175729,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00378707175729
         },
         {
           "alder": 54,
-          "ermann": "Menn",
-          "pctandel": 0.00468727832284,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00468727832284
         },
         {
           "alder": 55,
-          "ermann": "Menn",
-          "pctandel": 0.00554910455094,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00554910455094
         },
         {
           "alder": 56,
-          "ermann": "Menn",
-          "pctandel": 0.00678592752492,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00678592752492
         },
         {
           "alder": 57,
-          "ermann": "Menn",
-          "pctandel": 0.00790101019637,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00790101019637
         },
         {
           "alder": 58,
-          "ermann": "Menn",
-          "pctandel": 0.00926692240312,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00926692240312
         },
         {
           "alder": 59,
-          "ermann": "Menn",
-          "pctandel": 0.0106016399988,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0106016399988
         },
         {
           "alder": 60,
-          "ermann": "Menn",
-          "pctandel": 0.010431463346,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.010431463346
         },
         {
           "alder": 61,
-          "ermann": "Menn",
-          "pctandel": 0.0125340945132,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0125340945132
         },
         {
           "alder": 62,
-          "ermann": "Menn",
-          "pctandel": 0.0140860513264,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0140860513264
         },
         {
           "alder": 63,
-          "ermann": "Menn",
-          "pctandel": 0.015914523819,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.015914523819
         },
         {
           "alder": 64,
-          "ermann": "Menn",
-          "pctandel": 0.0172256437645,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0172256437645
         },
         {
           "alder": 65,
-          "ermann": "Menn",
-          "pctandel": 0.0185052250859,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0185052250859
         },
         {
           "alder": 66,
-          "ermann": "Menn",
-          "pctandel": 0.0199161500189,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0199161500189
         },
         {
           "alder": 67,
-          "ermann": "Menn",
-          "pctandel": 0.0218330414478,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0218330414478
         },
         {
           "alder": 68,
-          "ermann": "Menn",
-          "pctandel": 0.023209795724,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.023209795724
         },
         {
           "alder": 69,
-          "ermann": "Menn",
-          "pctandel": 0.0233368532207,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0233368532207
         },
         {
           "alder": 70,
-          "ermann": "Menn",
-          "pctandel": 0.021858548867,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.021858548867
         },
         {
           "alder": 71,
-          "ermann": "Menn",
-          "pctandel": 0.0216733602091,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0216733602091
         },
         {
           "alder": 72,
-          "ermann": "Menn",
-          "pctandel": 0.0227698334966,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0227698334966
         },
         {
           "alder": 73,
-          "ermann": "Menn",
-          "pctandel": 0.0238813494548,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0238813494548
         },
         {
           "alder": 74,
-          "ermann": "Menn",
-          "pctandel": 0.0227985577132,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0227985577132
         },
         {
           "alder": 75,
-          "ermann": "Menn",
-          "pctandel": 0.0231271039769,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0231271039769
         },
         {
           "alder": 76,
-          "ermann": "Menn",
-          "pctandel": 0.022094837675,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.022094837675
         },
         {
           "alder": 77,
-          "ermann": "Menn",
-          "pctandel": 0.0205090576659,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0205090576659
         },
         {
           "alder": 78,
-          "ermann": "Menn",
-          "pctandel": 0.0199324324324,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0199324324324
         },
         {
           "alder": 79,
-          "ermann": "Menn",
-          "pctandel": 0.0167695719938,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0167695719938
         },
         {
           "alder": 80,
-          "ermann": "Menn",
-          "pctandel": 0.0127877662045,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0127877662045
         },
         {
           "alder": 81,
-          "ermann": "Menn",
-          "pctandel": 0.011721783734,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.011721783734
         },
         {
           "alder": 82,
-          "ermann": "Menn",
-          "pctandel": 0.00968087471453,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00968087471453
         },
         {
           "alder": 83,
-          "ermann": "Menn",
-          "pctandel": 0.00838007857743,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00838007857743
         },
         {
           "alder": 84,
-          "ermann": "Menn",
-          "pctandel": 0.00611753865056,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00611753865056
         },
         {
           "alder": 85,
-          "ermann": "Menn",
-          "pctandel": 0.00458150788878,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00458150788878
         },
         {
           "alder": 86,
-          "ermann": "Menn",
-          "pctandel": 0.00423208632164,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00423208632164
         },
         {
           "alder": 87,
-          "ermann": "Menn",
-          "pctandel": 0.00323318923239,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00323318923239
         },
         {
           "alder": 88,
-          "ermann": "Menn",
-          "pctandel": 0.0031855142929,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0031855142929
         },
         {
           "alder": 89,
-          "ermann": "Menn",
-          "pctandel": 0.00152799684543,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00152799684543
         },
         {
           "alder": 90,
-          "ermann": "Menn",
-          "pctandel": 0.00199022978107,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.00199022978107
         },
         {
           "alder": 91,
-          "ermann": "Menn",
-          "pctandel": 0.000736811081639,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.000736811081639
         },
         {
           "alder": 92,
-          "ermann": "Menn",
-          "pctandel": 0.000468120962457,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.000468120962457
         },
         {
           "alder": 93,
-          "ermann": "Menn",
-          "pctandel": 0.000485731633273,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.000485731633273
         },
         {
           "alder": 94,
-          "ermann": "Menn",
-          "pctandel": 0.000327815112277,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.000327815112277
         },
         {
           "alder": 95,
-          "ermann": "Menn",
-          "pctandel": 0.0011071744907,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0.0011071744907
         },
         {
           "alder": 96,
-          "ermann": "Menn",
-          "pctandel": 0,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0
         },
         {
           "alder": 97,
-          "ermann": "Menn",
-          "pctandel": 0,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0
         },
         {
           "alder": 98,
-          "ermann": "Menn",
-          "pctandel": 0,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0
         },
         {
           "alder": 99,
-          "ermann": "Menn",
-          "pctandel": 0,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0
         },
         {
           "alder": 100,
-          "ermann": "Menn",
-          "pctandel": 0,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0
         },
         {
           "alder": 101,
-          "ermann": "Menn",
-          "pctandel": 0,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0
         },
         {
           "alder": 102,
-          "ermann": "Menn",
-          "pctandel": 0,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0
         },
         {
           "alder": 103,
-          "ermann": "Menn",
-          "pctandel": 0,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0
         },
         {
           "alder": 104,
-          "ermann": "Menn",
-          "pctandel": 0,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0
         },
         {
           "alder": 105,
-          "ermann": "Menn",
-          "pctandel": 0,
-          "gender": "Menn",
-          "bohf": null
+          "Menn": 0
         }
       ]
     },
@@ -967,219 +736,75 @@
       "data": [
         {
           "mnd": 1,
-          "antall": 1308.5,
-          "tid": "Snitt 2018-2019",
-          "nr": 1
-        },
-        {
-          "mnd": 1,
-          "antall": 1408,
-          "tid": "Pandemi: 2020",
-          "nr": 2
-        },
-        {
-          "mnd": 1,
-          "antall": 1215.5,
-          "tid": "Snitt 2021-2022",
-          "nr": 3
+          "Snitt 2018-2019": 1308.5,
+          "Pandemi: 2020": 1408,
+          "Snitt 2021-2022": 1215.5
         },
         {
           "mnd": 2,
-          "antall": 1171.5,
-          "tid": "Snitt 2018-2019",
-          "nr": 1
-        },
-        {
-          "mnd": 2,
-          "antall": 1179,
-          "tid": "Pandemi: 2020",
-          "nr": 2
-        },
-        {
-          "mnd": 2,
-          "antall": 1149,
-          "tid": "Snitt 2021-2022",
-          "nr": 3
+          "Snitt 2018-2019": 1171.5,
+          "Pandemi: 2020": 1179,
+          "Snitt 2021-2022": 1149
         },
         {
           "mnd": 3,
-          "antall": 1083,
-          "tid": "Snitt 2018-2019",
-          "nr": 1
-        },
-        {
-          "mnd": 3,
-          "antall": 1110,
-          "tid": "Pandemi: 2020",
-          "nr": 2
-        },
-        {
-          "mnd": 3,
-          "antall": 1306,
-          "tid": "Snitt 2021-2022",
-          "nr": 3
+          "Snitt 2018-2019": 1083,
+          "Pandemi: 2020": 1110,
+          "Snitt 2021-2022": 1306
         },
         {
           "mnd": 4,
-          "antall": 1091.5,
-          "tid": "Snitt 2018-2019",
-          "nr": 1
-        },
-        {
-          "mnd": 4,
-          "antall": 937,
-          "tid": "Pandemi: 2020",
-          "nr": 2
-        },
-        {
-          "mnd": 4,
-          "antall": 1061.5,
-          "tid": "Snitt 2021-2022",
-          "nr": 3
+          "Snitt 2018-2019": 1091.5,
+          "Pandemi: 2020": 937,
+          "Snitt 2021-2022": 1061.5
         },
         {
           "mnd": 5,
-          "antall": 1053.5,
-          "tid": "Snitt 2018-2019",
-          "nr": 1
-        },
-        {
-          "mnd": 5,
-          "antall": 1017,
-          "tid": "Pandemi: 2020",
-          "nr": 2
-        },
-        {
-          "mnd": 5,
-          "antall": 1180,
-          "tid": "Snitt 2021-2022",
-          "nr": 3
+          "Snitt 2018-2019": 1053.5,
+          "Pandemi: 2020": 1017,
+          "Snitt 2021-2022": 1180
         },
         {
           "mnd": 6,
-          "antall": 1060,
-          "tid": "Snitt 2018-2019",
-          "nr": 1
-        },
-        {
-          "mnd": 6,
-          "antall": 1092,
-          "tid": "Pandemi: 2020",
-          "nr": 2
-        },
-        {
-          "mnd": 6,
-          "antall": 1266.5,
-          "tid": "Snitt 2021-2022",
-          "nr": 3
+          "Snitt 2018-2019": 1060,
+          "Pandemi: 2020": 1092,
+          "Snitt 2021-2022": 1266.5
         },
         {
           "mnd": 7,
-          "antall": 803.5,
-          "tid": "Snitt 2018-2019",
-          "nr": 1
-        },
-        {
-          "mnd": 7,
-          "antall": 757,
-          "tid": "Pandemi: 2020",
-          "nr": 2
-        },
-        {
-          "mnd": 7,
-          "antall": 781.5,
-          "tid": "Snitt 2021-2022",
-          "nr": 3
+          "Snitt 2018-2019": 803.5,
+          "Pandemi: 2020": 757,
+          "Snitt 2021-2022": 781.5
         },
         {
           "mnd": 8,
-          "antall": 1001,
-          "tid": "Snitt 2018-2019",
-          "nr": 1
-        },
-        {
-          "mnd": 8,
-          "antall": 871,
-          "tid": "Pandemi: 2020",
-          "nr": 2
-        },
-        {
-          "mnd": 8,
-          "antall": 1045.5,
-          "tid": "Snitt 2021-2022",
-          "nr": 3
+          "Snitt 2018-2019": 1001,
+          "Pandemi: 2020": 871,
+          "Snitt 2021-2022": 1045.5
         },
         {
           "mnd": 9,
-          "antall": 1103.5,
-          "tid": "Snitt 2018-2019",
-          "nr": 1
-        },
-        {
-          "mnd": 9,
-          "antall": 1133,
-          "tid": "Pandemi: 2020",
-          "nr": 2
-        },
-        {
-          "mnd": 9,
-          "antall": 1258,
-          "tid": "Snitt 2021-2022",
-          "nr": 3
+          "Snitt 2018-2019": 1103.5,
+          "Pandemi: 2020": 1133,
+          "Snitt 2021-2022": 1258
         },
         {
           "mnd": 10,
-          "antall": 1256,
-          "tid": "Snitt 2018-2019",
-          "nr": 1
-        },
-        {
-          "mnd": 10,
-          "antall": 1177,
-          "tid": "Pandemi: 2020",
-          "nr": 2
-        },
-        {
-          "mnd": 10,
-          "antall": 1203.5,
-          "tid": "Snitt 2021-2022",
-          "nr": 3
+          "Snitt 2018-2019": 1256,
+          "Pandemi: 2020": 1177,
+          "Snitt 2021-2022": 1203.5
         },
         {
           "mnd": 11,
-          "antall": 1175,
-          "tid": "Snitt 2018-2019",
-          "nr": 1
-        },
-        {
-          "mnd": 11,
-          "antall": 1264,
-          "tid": "Pandemi: 2020",
-          "nr": 2
-        },
-        {
-          "mnd": 11,
-          "antall": 1321,
-          "tid": "Snitt 2021-2022",
-          "nr": 3
+          "Snitt 2018-2019": 1175,
+          "Pandemi: 2020": 1264,
+          "Snitt 2021-2022": 1321
         },
         {
           "mnd": 12,
-          "antall": 1014,
-          "tid": "Snitt 2018-2019",
-          "nr": 1
-        },
-        {
-          "mnd": 12,
-          "antall": 1115,
-          "tid": "Pandemi: 2020",
-          "nr": 2
-        },
-        {
-          "mnd": 12,
-          "antall": 1190.5,
-          "tid": "Snitt 2021-2022",
-          "nr": 3
+          "Snitt 2018-2019": 1014,
+          "Pandemi: 2020": 1115,
+          "Snitt 2021-2022": 1190.5
         }
       ]
     }
