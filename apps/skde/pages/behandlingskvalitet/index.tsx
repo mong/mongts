@@ -52,10 +52,10 @@ const showNewTableSwitch = false;
 
 const scrollToSelectedRow = (selectedRow: string): boolean => {
   const element = document.getElementById(selectedRow);
-  const headerOffset = 140;
+  const headerOffset = 160;
 
   if (element) {
-    console.log("Found element, attempting to scroll");
+    console.debug("Found element, attempting to scroll");
     const elementPosition = element.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
     window.scrollTo({
@@ -65,7 +65,7 @@ const scrollToSelectedRow = (selectedRow: string): boolean => {
 
     return true;
   } else {
-    console.log("Didn't find element");
+    console.debug("Didn't find element");
     return false;
   }
 };

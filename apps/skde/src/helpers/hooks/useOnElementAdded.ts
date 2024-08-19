@@ -13,7 +13,7 @@ function useOnElementAdded(
 
       if (!foundTarget) {
         // The element didn't exist, observe if it shows up and trigger callback
-        console.log(
+        console.debug(
           `Didn't find the element with id "${targetId}" in the DOM, setting up observer`,
         );
 
@@ -30,7 +30,7 @@ function useOnElementAdded(
                 }
               });
             } else {
-              console.log(
+              console.debug(
                 `The element with id "${targetId}" was already present in the DOM, no need for observer`,
               );
             }
@@ -42,7 +42,7 @@ function useOnElementAdded(
         return () => observer.disconnect();
       }
     } else {
-      console.log(
+      console.debug(
         `Not scrolling. Target ID was ${targetId}. Queries ${queriesReady ? "" : "not "}ready.`,
       );
     }
