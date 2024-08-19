@@ -289,9 +289,13 @@ export const Skde = (): JSX.Element => {
   const mapData = FetchMap("/helseatlas/kart/indre_oslo.geojson").data;
 
   const color = mapColors;
-  const height = 1000;
+  const mapHeight = 1000;
+  const mapWidth = 1000;
   const initCenter = geoPath().centroid(mapData);
-  const initOffset: [number, number] = [width / 2, height / 2 - height * 0.11];
+  const initOffset: [number, number] = [
+    mapWidth / 2,
+    mapHeight / 2 - mapHeight * 0.11,
+  ];
   const initScale = 150;
   const initialProjection = geoMercator()
     .scale(initScale)
@@ -300,12 +304,12 @@ export const Skde = (): JSX.Element => {
   const initPath = geoPath().projection(initialProjection);
 
   const bounds = initPath.bounds(mapData);
-  const hscale = (initScale * width) / (bounds[1][0] - bounds[0][0]);
-  const vscale = (initScale * height) / (bounds[1][1] - bounds[0][1]);
+  const hscale = (initScale * mapWidth) / (bounds[1][0] - bounds[0][0]);
+  const vscale = (initScale * mapHeight) / (bounds[1][1] - bounds[0][1]);
   const scale = hscale < vscale ? 0.98 * hscale : 0.98 * vscale;
   const offset: [number, number] = [
-    width - (bounds[0][0] + bounds[1][0]) / 2,
-    height - (bounds[0][1] + bounds[1][1]) / 2,
+    mapWidth - (bounds[0][0] + bounds[1][0]) / 2,
+    mapHeight - (bounds[0][1] + bounds[1][1]) / 2,
   ];
 
   const colorScale = scaleThreshold<number, string>()
@@ -377,7 +381,7 @@ export const Skde = (): JSX.Element => {
         <Box marginTop={2} className="hospital-profile-box">
           <Grid container spacing={2}>
             <Grid xs={12}>
-              <ItemBox height={440} sx={{ overflow: "auto" }}>
+              <ItemBox height={550} sx={{ overflow: "auto" }}>
                 <Grid container>
                   <Grid
                     xs={12}
@@ -440,7 +444,7 @@ export const Skde = (): JSX.Element => {
                         <svg
                           width={"100%"}
                           height={"100%"}
-                          viewBox={`0 0 ${width} ${height}`}
+                          viewBox={`0 0 ${mapWidth} ${mapHeight}`}
                           style={{ backgroundColor: "none" }}
                         >
                           {mapData &&
