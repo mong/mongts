@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Box,
   CssBaseline,
@@ -43,11 +43,32 @@ import {
 import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
+import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
 
 const dataQualityKey = "dg";
 
 // Set to true to display the switch for activating the new table
 const showNewTableSwitch = false;
+
+const scrollToSelectedRow = (selectedRow: string): boolean => {
+  const element = document.getElementById(selectedRow);
+  const headerOffset = 140;
+
+  if (element) {
+    console.log("Found element, attempting to scroll");
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+
+    return true;
+  } else {
+    console.log("Didn't find element");
+    return false;
+  }
+};
 
 export default function TreatmentQualityPage() {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -270,20 +291,9 @@ export default function TreatmentQualityPage() {
     }
   };
 
-  useEffect(() => {
-    const element = document.getElementById(selectedRow);
-    const headerOffset = 140;
-
-    if (element) {
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition =
-        elementPosition + window.pageYOffset - headerOffset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    }
-  });
+  // Use the custom hook to observe the addition of the selected row element, if
+  // not already available.
+  useOnElementAdded(selectedRow, queriesReady, scrollToSelectedRow);
 
   return (
     <ThemeProvider theme={skdeTheme}>
