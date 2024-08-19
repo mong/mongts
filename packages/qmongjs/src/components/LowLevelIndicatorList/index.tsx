@@ -49,7 +49,7 @@ const result = (data: IndicatorData, point: DataPoint, dg?: boolean) => {
 
 const getDataSubset = (
   indData: IndicatorData[],
-  currentYear: number,
+  year: number,
   index: number,
 ) => {
   const selectedLevel: "H" | "M" | "L" | undefined =
@@ -61,7 +61,7 @@ const getDataSubset = (
     }
 
     const lastYear = indDataRow.data.find((p) => {
-      return p.year === currentYear - 1;
+      return p.year === year;
     });
 
     if (lastYear) {
@@ -74,15 +74,15 @@ const getDataSubset = (
 
 const RegistrySection = (props: {
   data: RegisterData;
-  currentYear: number;
+  year: number;
   selectedIndex: number;
 }) => {
-  const { data, currentYear, selectedIndex } = props;
+  const { data, year, selectedIndex } = props;
 
   const indData = data.indicatorData.flat();
 
   const registryName = data.registerFullName;
-  const dataFlat = getDataSubset(indData, currentYear, selectedIndex);
+  const dataFlat = getDataSubset(indData, year, selectedIndex);
 
   return (
     <React.Fragment>
@@ -98,7 +98,7 @@ const RegistrySection = (props: {
           return (
             <IndicatorRow
               row={row}
-              currentYear={currentYear}
+              year={year}
               key={"indicator-row-" + row.indicatorID}
             />
           );
@@ -108,13 +108,13 @@ const RegistrySection = (props: {
   );
 };
 
-const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
-  const { row, currentYear } = props;
+const IndicatorRow = (props: { row: IndicatorData; year: number }) => {
+  const { row, year } = props;
 
   const [open, setOpen] = useState(false);
 
   const lastYear = row.data!.filter((el: DataPoint) => {
-    return el.year === currentYear - 1;
+    return el.year === year;
   })[0];
 
   return (
@@ -181,9 +181,12 @@ type LowLevelIndicatorListProps = {
   context: string;
   unitNames: string[];
   type: string;
+  year: number;
 };
 
 export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
+  const { context, unitNames, type, year } = props;
+
   // UI stuff
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -208,14 +211,11 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
 
   const options = ["Høy", "Middels", "Lav"];
 
-  // Years for filtering
-  const currentYear = new Date().getFullYear();
-
   // Get data
   const queryParams: FetchIndicatorParams = {
-    context: props.context,
-    unitNames: props.unitNames,
-    type: props.type,
+    context: context,
+    unitNames: unitNames,
+    type: type,
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -295,8 +295,9 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
             {data.map((row) => {
               return (
                 <RegistrySection
+                  key={row.registerName}
                   data={row}
-                  currentYear={currentYear}
+                  year={year}
                   selectedIndex={selectedIndex}
                 />
               );

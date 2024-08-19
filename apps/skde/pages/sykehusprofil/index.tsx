@@ -18,6 +18,8 @@ import {
   useUnitUrlsQuery,
   LowLevelIndicatorList,
   LineStyles,
+  newLevelSymbols,
+  defaultYear,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
@@ -79,6 +81,15 @@ export const Skde = (): JSX.Element => {
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
+  // Find the index of "Private" and remove the children. The sub units should not be shown.
+  // TreetmentUnits.treedata starts with one element "Nasjonalt". Need to wait for it to build up the rest.
+  if (treatmentUnits.treedata.length > 1) {
+    const indPrivate = treatmentUnits.treedata.findIndex(
+      (x) => x.nodeValue.value === "Private",
+    );
+    treatmentUnits.treedata[indPrivate].children = [];
+  }
+
   // The following code ensures that the page renders correctly
   const unitUrlsQuery = useUnitUrlsQuery();
 
@@ -129,6 +140,10 @@ export const Skde = (): JSX.Element => {
     resizeObserver.observe(document.getElementById("plot-window"));
   });
 
+  // Year for filtering
+  const lastYear = defaultYear;
+  const pastYears = 5;
+
   // Props
   const indicatorParams: IndicatorLinechartParams = {
     unitNames: [selectedTreatmentUnits[0]],
@@ -147,14 +162,14 @@ export const Skde = (): JSX.Element => {
         },
         {
           text: "Moderat måloppnåelse",
-          strokeDash: "1 3",
+          strokeDash: "0",
           colour: "#FD9C00",
           marker: "square",
           markEnd: true,
         },
         {
           text: "Lav måloppnåelse",
-          strokeDash: "8 8",
+          strokeDash: "0",
           colour: "#E30713",
           marker: "triangle",
           markEnd: true,
@@ -170,8 +185,8 @@ export const Skde = (): JSX.Element => {
     yAxisText: "Antall indikatorer",
     xTicksFont: { fontFamily: "Arial", fontSize: 16, fontWeight: 500 },
     yTicksFont: { fontFamily: "Arial", fontSize: 14, fontWeight: 500 },
-    startYear: 2017,
-    endYear: 2022,
+    startYear: lastYear - pastYears,
+    endYear: lastYear,
     yMin: 0,
     normalise: true,
     useToolTip: true,
@@ -181,7 +196,7 @@ export const Skde = (): JSX.Element => {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    treatmentYear: 2022,
+    treatmentYear: lastYear,
   };
 
   // State logic for normalising the line plot
@@ -234,6 +249,27 @@ export const Skde = (): JSX.Element => {
 
   const titleStyle = { marginTop: 20, marginLeft: 20 };
   const textMargin = 20;
+
+  const Legend = (props: { itemSpacing: number; symbolSpacing: number }) => {
+    const { itemSpacing, symbolSpacing } = props;
+
+    return (
+      <Stack direction="row" spacing={itemSpacing} alignItems="center">
+        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
+          {newLevelSymbols("H")}
+          <Typography>Høy måloppnåelse</Typography>
+        </Stack>
+        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
+          {newLevelSymbols("M")}
+          <Typography>Moderat måloppnåelse</Typography>
+        </Stack>
+        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
+          {newLevelSymbols("L")}
+          <Typography>Lav måloppnåelse</Typography>
+        </Stack>
+      </Stack>
+    );
+  };
 
   return (
     <ThemeProvider theme={skdeTheme}>
@@ -382,6 +418,17 @@ export const Skde = (): JSX.Element => {
                     hvilke som har hatt høy, middels eller lav måloppnåelse de
                     siste årene.
                   </Typography>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "right",
+                      marginRight: 20,
+                      marginTop: 40,
+                    }}
+                  >
+                    <Legend itemSpacing={8} symbolSpacing={2} />
+                  </div>
                 </div>
                 <ThemeProvider theme={lineChartTheme}>
                   <div id="plot-window">
@@ -448,6 +495,7 @@ export const Skde = (): JSX.Element => {
                   context={"caregiver"}
                   type={"ind"}
                   unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
+                  year={lastYear}
                 />
               </ExpandableItemBox>
             </Grid>
