@@ -18,6 +18,8 @@ import {
   useUnitUrlsQuery,
   LowLevelIndicatorList,
   LineStyles,
+  newLevelSymbols,
+  defaultYear,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
@@ -41,7 +43,6 @@ import {
   MedfieldTable,
   MedfieldTableProps,
 } from "../../src/components/MedfieldTable";
-import { useScreenSize } from "@visx/responsive";
 import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
@@ -54,7 +55,6 @@ import { ExpandableItemBox } from "../../src/components/ExpandableItemBox";
 import logo from "./Logo.png";
 import { URLs } from "types";
 import { ArrowLink } from "qmongjs";
-import Divider from "@mui/material/Divider";
 import { useRouter } from "next/router";
 
 export const Skde = (): JSX.Element => {
@@ -80,6 +80,15 @@ export const Skde = (): JSX.Element => {
   );
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
+
+  // Find the index of "Private" and remove the children. The sub units should not be shown.
+  // TreetmentUnits.treedata starts with one element "Nasjonalt". Need to wait for it to build up the rest.
+  if (treatmentUnits.treedata.length > 1) {
+    const indPrivate = treatmentUnits.treedata.findIndex(
+      (x) => x.nodeValue.value === "Private",
+    );
+    treatmentUnits.treedata[indPrivate].children = [];
+  }
 
   // The following code ensures that the page renders correctly
   const unitUrlsQuery = useUnitUrlsQuery();
@@ -120,14 +129,27 @@ export const Skde = (): JSX.Element => {
     }
   };
 
-  const screenSize = useScreenSize({ debounceTime: 150 });
+  // Set the line plot width to fill the available space
+  const [width, setWidth] = useState(null);
+
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver((event) => {
+      setWidth(event[0].contentBoxSize[0].inlineSize);
+    });
+
+    resizeObserver.observe(document.getElementById("plot-window"));
+  });
+
+  // Year for filtering
+  const lastYear = defaultYear;
+  const pastYears = 5;
 
   // Props
   const indicatorParams: IndicatorLinechartParams = {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    width: screenSize.width * 0.9,
+    width: width,
     height: 600,
     lineStyles: new LineStyles(
       [
@@ -140,14 +162,14 @@ export const Skde = (): JSX.Element => {
         },
         {
           text: "Moderat måloppnåelse",
-          strokeDash: "1 3",
+          strokeDash: "0",
           colour: "#FD9C00",
           marker: "square",
           markEnd: true,
         },
         {
           text: "Lav måloppnåelse",
-          strokeDash: "8 8",
+          strokeDash: "0",
           colour: "#E30713",
           marker: "triangle",
           markEnd: true,
@@ -163,8 +185,8 @@ export const Skde = (): JSX.Element => {
     yAxisText: "Antall indikatorer",
     xTicksFont: { fontFamily: "Arial", fontSize: 16, fontWeight: 500 },
     yTicksFont: { fontFamily: "Arial", fontSize: 14, fontWeight: 500 },
-    startYear: 2017,
-    endYear: 2022,
+    startYear: lastYear - pastYears,
+    endYear: lastYear,
     yMin: 0,
     normalise: true,
     useToolTip: true,
@@ -174,7 +196,7 @@ export const Skde = (): JSX.Element => {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    treatmentYear: 2022,
+    treatmentYear: lastYear,
   };
 
   // State logic for normalising the line plot
@@ -227,6 +249,27 @@ export const Skde = (): JSX.Element => {
 
   const titleStyle = { marginTop: 20, marginLeft: 20 };
   const textMargin = 20;
+
+  const Legend = (props: { itemSpacing: number; symbolSpacing: number }) => {
+    const { itemSpacing, symbolSpacing } = props;
+
+    return (
+      <Stack direction="row" spacing={itemSpacing} alignItems="center">
+        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
+          {newLevelSymbols("H")}
+          <Typography>Høy måloppnåelse</Typography>
+        </Stack>
+        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
+          {newLevelSymbols("M")}
+          <Typography>Moderat måloppnåelse</Typography>
+        </Stack>
+        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
+          {newLevelSymbols("L")}
+          <Typography>Lav måloppnåelse</Typography>
+        </Stack>
+      </Stack>
+    );
+  };
 
   return (
     <ThemeProvider theme={skdeTheme}>
@@ -283,7 +326,7 @@ export const Skde = (): JSX.Element => {
           </ClickAwayListener>
         </Header>
 
-        <Box margin={2}>
+        <Box marginTop={2} className="hospital-profile-box">
           <Grid container spacing={2}>
             <Grid xs={12}>
               <ItemBox height={440} sx={{ overflow: "auto" }}>
@@ -313,26 +356,24 @@ export const Skde = (): JSX.Element => {
                         height: "400px",
                       }}
                     >
-                      <Typography
-                        variant="h5"
-                        style={{ marginTop: 20, marginLeft: 20 }}
-                      >
+                      <Typography variant="h5" style={{ marginTop: 20 }}>
                         {selectedTreatmentUnits[0]}
                       </Typography>
 
-                      <div style={{ marginLeft: 8 }}>
+                      <div style={{ marginLeft: 0 }}>
                         <Typography variant="body1">
                           Her skal det stå noe om enheten. <br />
                         </Typography>
                       </div>
 
                       <div style={{ marginTop: "auto" }}>
-                        <Divider />
                         {unitUrl ? (
                           <ArrowLink
                             href={unitUrl}
                             text="Nettside"
                             externalLink={true}
+                            button={true}
+                            textVariant="subtitle1"
                           />
                         ) : null}
                       </div>
@@ -350,8 +391,7 @@ export const Skde = (): JSX.Element => {
                       <div style={{ margin: textMargin }}>
                         <Typography variant="body1">
                           Her vises behandlingssteder som er tilhørende til
-                          valgt helseforetak. Du kan trykke på behandlingsstedet
-                          for å enkelt kunne velge det i Sykehusprofil.
+                          valgt helseforetak.
                         </Typography>
                       </div>
                       {unitNamesQuery.data ? (
@@ -378,9 +418,22 @@ export const Skde = (): JSX.Element => {
                     hvilke som har hatt høy, middels eller lav måloppnåelse de
                     siste årene.
                   </Typography>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "right",
+                      marginRight: 20,
+                      marginTop: 40,
+                    }}
+                  >
+                    <Legend itemSpacing={8} symbolSpacing={2} />
+                  </div>
                 </div>
                 <ThemeProvider theme={lineChartTheme}>
-                  <IndicatorLinechart {...indicatorParams} />
+                  <div id="plot-window">
+                    <IndicatorLinechart {...indicatorParams} />
+                  </div>
                 </ThemeProvider>
                 <Stack
                   direction="row"
@@ -398,7 +451,7 @@ export const Skde = (): JSX.Element => {
             <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <Typography variant="h5" style={titleStyle}>
-                  Fagområder
+                  Kvalitetsindikatorer fordelt på fagområder
                 </Typography>
                 <div style={{ margin: textMargin }}>
                   <Typography variant="body1">
@@ -442,6 +495,7 @@ export const Skde = (): JSX.Element => {
                   context={"caregiver"}
                   type={"ind"}
                   unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
+                  year={lastYear}
                 />
               </ExpandableItemBox>
             </Grid>
