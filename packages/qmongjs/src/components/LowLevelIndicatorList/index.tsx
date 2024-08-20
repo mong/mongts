@@ -93,18 +93,51 @@ const RegistrySection = (props: {
           </TableCell>
         </TableRow>
       </TableHead>
+
       <TableBody>
-        {dataFlat.map((row: IndicatorData) => {
-          return (
-            <IndicatorRow
-              row={row}
-              year={year}
-              key={"indicator-row-" + row.indicatorID}
-            />
-          );
-        })}
+        {dataFlat.length > 0
+          ? dataFlat.map((row: IndicatorData) => {
+              return (
+                <IndicatorRow
+                  row={row}
+                  year={year}
+                  key={"indicator-row-" + row.indicatorID}
+                />
+              );
+            })
+          : indData.map((row) => {
+              return <EmptyIndicatorRow indTitle={row.indicatorTitle} />;
+            })}
       </TableBody>
     </React.Fragment>
+  );
+};
+
+const EmptyIndicatorRow = (props: { indTitle: string | null }) => {
+  const { indTitle } = props;
+
+  const [open, setOpen] = useState(false);
+
+  return (
+    <TableRow key={indTitle}>
+      <TableCell>
+        <IconButton
+          onClick={() => setOpen(!open)}
+          aria-label="expand"
+          size="small"
+        >
+          {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+        </IconButton>
+      </TableCell>
+      <TableCell>
+        <Typography variant="body1">{indTitle}</Typography>
+      </TableCell>
+      <TableCell>
+        <Typography variant="body1">
+          Denne indikatoren har data som ikke kan vises.
+        </Typography>
+      </TableCell>
+    </TableRow>
   );
 };
 
