@@ -41,7 +41,7 @@ type MapProps = {
   lang: "en" | "nb" | "nn";
 };
 
-const ObjectIDToBoHF = [
+export const ObjectIDToBoHF = [
   { BoHF_num: 1, bohf: "Finnmark" },
   { BoHF_num: 2, bohf: "UNN" },
   { BoHF_num: 3, bohf: "Nordland" },

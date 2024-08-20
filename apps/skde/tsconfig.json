@@ -27,7 +27,8 @@
     "**/*.ts",
     "**/*.tsx",
     "vitest.config.mts",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "src/helpers/functions/unitName2BohfMap.ts"
   ],
   "exclude": ["./cypress.config.ts", "node_modules", "**/*.test.tsx"]
 }
