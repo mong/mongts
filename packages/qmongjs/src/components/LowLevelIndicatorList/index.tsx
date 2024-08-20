@@ -19,6 +19,7 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  Typography,
 } from "@mui/material";
 import { ArrowLink } from "../ArrowLink";
 
@@ -48,7 +49,7 @@ const result = (data: IndicatorData, point: DataPoint, dg?: boolean) => {
 
 const getDataSubset = (
   indData: IndicatorData[],
-  currentYear: number,
+  year: number,
   index: number,
 ) => {
   const selectedLevel: "H" | "M" | "L" | undefined =
@@ -60,7 +61,7 @@ const getDataSubset = (
     }
 
     const lastYear = indDataRow.data.find((p) => {
-      return p.year === currentYear - 1;
+      return p.year === year;
     });
 
     if (lastYear) {
@@ -71,13 +72,49 @@ const getDataSubset = (
   return dataSubset;
 };
 
-const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
-  const { row, currentYear } = props;
+const RegistrySection = (props: {
+  data: RegisterData;
+  year: number;
+  selectedIndex: number;
+}) => {
+  const { data, year, selectedIndex } = props;
+
+  const indData = data.indicatorData.flat();
+
+  const registryName = data.registerFullName;
+  const dataFlat = getDataSubset(indData, year, selectedIndex);
+
+  return (
+    <React.Fragment>
+      <TableHead>
+        <TableRow>
+          <TableCell colSpan={3} align="center">
+            {registryName}
+          </TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {dataFlat.map((row: IndicatorData) => {
+          return (
+            <IndicatorRow
+              row={row}
+              year={year}
+              key={"indicator-row-" + row.indicatorID}
+            />
+          );
+        })}
+      </TableBody>
+    </React.Fragment>
+  );
+};
+
+const IndicatorRow = (props: { row: IndicatorData; year: number }) => {
+  const { row, year } = props;
 
   const [open, setOpen] = useState(false);
 
   const lastYear = row.data!.filter((el: DataPoint) => {
-    return el.year === currentYear - 1;
+    return el.year === year;
   })[0];
 
   return (
@@ -96,7 +133,9 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
             {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
           </IconButton>
         </TableCell>
-        <TableCell>{row.indicatorTitle}</TableCell>
+        <TableCell>
+          <Typography variant="body1">{row.indicatorTitle}</Typography>
+        </TableCell>
         <TableCell>{result(row, lastYear)}</TableCell>
       </TableRow>
 
@@ -109,8 +148,12 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
           <Stack direction="row" justifyContent="space-evenly">
             {lastYear ? (
               <Stack direction="row">
-                <Box sx={{ marginRight: 1 }}>Dekningsgrad:</Box>
-                {result(row, lastYear, true)}
+                <Box sx={{ marginRight: 1 }}>
+                  <Typography variant="overline">Dekningsgrad:</Typography>
+                </Box>
+                <Typography variant="overline">
+                  {result(row, lastYear, true)}
+                </Typography>
               </Stack>
             ) : null}
 
@@ -124,6 +167,7 @@ const IndicatorRow = (props: { row: IndicatorData; currentYear: number }) => {
                 }
                 externalLink={true}
                 text="Mer om indikatoren"
+                textVariant="overline"
               />
             ) : null}
           </Stack>
@@ -137,9 +181,12 @@ type LowLevelIndicatorListProps = {
   context: string;
   unitNames: string[];
   type: string;
+  year: number;
 };
 
 export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
+  const { context, unitNames, type, year } = props;
+
   // UI stuff
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -164,14 +211,11 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
 
   const options = ["Høy", "Middels", "Lav"];
 
-  // Years for filtering
-  const currentYear = new Date().getFullYear();
-
   // Get data
   const queryParams: FetchIndicatorParams = {
-    context: props.context,
-    unitNames: props.unitNames,
-    type: props.type,
+    context: context,
+    unitNames: unitNames,
+    type: type,
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -185,10 +229,6 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
   }
 
   const data = nestedIndicatorQuery.data as RegisterData[];
-
-  const indData = data.map((row) => row.indicatorData).flat();
-
-  const dataSubset = getDataSubset(indData, currentYear, selectedIndex);
 
   return (
     <div>
@@ -244,21 +284,24 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
             <TableHead>
               <TableRow>
                 <TableCell></TableCell>
-                <TableCell>Indikator</TableCell>
-                <TableCell>Resultat</TableCell>
+                <TableCell>
+                  <Typography variant="subtitle1">Indikator</Typography>
+                </TableCell>
+                <TableCell>
+                  <Typography variant="subtitle1">Resultat</Typography>
+                </TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
-              {dataSubset.map((row: IndicatorData) => {
-                return (
-                  <IndicatorRow
-                    row={row}
-                    currentYear={currentYear}
-                    key={"indicator-row-" + row.indicatorID}
-                  />
-                );
-              })}
-            </TableBody>
+            {data.map((row) => {
+              return (
+                <RegistrySection
+                  key={row.registerName}
+                  data={row}
+                  year={year}
+                  selectedIndex={selectedIndex}
+                />
+              );
+            })}
           </Table>
         </TableContainer>
       </div>

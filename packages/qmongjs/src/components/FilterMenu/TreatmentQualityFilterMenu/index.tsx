@@ -60,7 +60,7 @@ export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
 
 // Types used due to the use of useQueryParam
 type SetSelectedType = (
-  newVal: string | string[],
+  newValue: string | (string | undefined)[] | undefined,
   updateType?: UrlUpdateType,
 ) => void;
 type StringNullOrUndefined = string | null | undefined;
@@ -72,11 +72,11 @@ type UndefinedOrArrayOfStringOrNull = (string | null)[] | undefined;
  */
 type OptionsMapEntry = {
   options: FilterSettingsValue[] | TreeViewFilterSectionNode[];
-  default: FilterSettingsValue;
+  default: FilterSettingsValue | null;
   multiselect: boolean;
   selected: StringNullOrUndefined | UndefinedOrArrayOfStringOrNull;
   setSelected: (
-    newValue: string | string[],
+    newValue: string | (string | undefined)[] | undefined,
     updateType?: UrlUpdateType | undefined,
   ) => void;
 };
@@ -151,11 +151,11 @@ export function TreatmentQualityFilterMenu({
   const [selectedAchievementLevel, setSelectedAchievementLevel] =
     useQueryParam<string>(
       levelKey,
-      withDefault(StringParam, achievementLevelOptions.default.value),
+      // withDefault(StringParam, achievementLevelOptions.default.value),
     );
   optionsMap.set(levelKey, {
     options: achievementLevelOptions.values,
-    default: achievementLevelOptions.default,
+    default: null, // achievementLevelOptions.default,
     multiselect: false,
     selected: selectedAchievementLevel,
     setSelected: setSelectedAchievementLevel as SetSelectedType,
@@ -167,7 +167,8 @@ export function TreatmentQualityFilterMenu({
 
   const [selectedMedicalFields, setSelectedMedicalFields] = useQueryParam(
     medicalFieldKey,
-    withDefault(ArrayParam, [medicalFields.defaults[0].value]),
+    // withDefault(ArrayParam, [medicalFields.defaults[0].value]), "Alle fagområder" as default value
+    ArrayParam,
   );
 
   optionsMap.set(medicalFieldKey, {
@@ -243,12 +244,12 @@ export function TreatmentQualityFilterMenu({
       const multiselect = options.multiselect;
 
       if (!multiselect) {
-        const selectedValue = newSelections?.[0].value ?? defaultOption.value;
+        const selectedValue = newSelections?.[0]?.value ?? defaultOption?.value;
         setSelected(selectedValue);
       } else {
         const selectedValues = newSelections?.map(
           (filterSettingsValue) => filterSettingsValue.value,
-        ) ?? [defaultOption.value];
+        ) ?? [defaultOption?.value];
         setSelected(selectedValues);
       }
     }
@@ -274,12 +275,11 @@ export function TreatmentQualityFilterMenu({
           year:
             newFilterSettings.map.get(yearKey)?.[0].value ??
             yearOptions.default.value,
-          level:
-            newFilterSettings.map.get(levelKey)?.[0].value ??
-            achievementLevelOptions.default.value,
+          level: newFilterSettings.map.get(levelKey)?.[0]?.value, //??
+          //achievementLevelOptions.default.value,
           indicator: [
-            newFilterSettings.map.get(medicalFieldKey)?.[0].value ??
-              medicalFields.defaults[0].value,
+            newFilterSettings.map.get(medicalFieldKey)?.[0].value ?? null,
+            // medicalFields.defaults[0].value, "Alle fagområder" som default
           ],
           selected_treatment_units: [
             newFilterSettings.map.get(treatmentUnitsKey)?.[0].value ??
@@ -382,9 +382,10 @@ export function TreatmentQualityFilterMenu({
           refreshState={shouldRefreshInitialState}
           treedata={medicalFields.treedata}
           defaultvalues={medicalFields.defaults}
-          autouncheckid={medicalFields.defaults[0].value}
+          // Automatic clearing selections when "Alle fagområder" is clicked
+          // autouncheckid={medicalFields.defaults[0].value}
           initialselections={
-            selectedMedicalFields.map((value) => ({
+            selectedMedicalFields?.map((value) => ({
               value: value,
               valueLabel: getValueLabel(value, medicalFieldsMap),
             })) as FilterSettingsValue[]
@@ -406,7 +407,11 @@ export function TreatmentQualityFilterMenu({
         />
         <RadioGroupFilterSection
           radios={achievementLevelOptions.values}
-          defaultvalues={[achievementLevelOptions.default]}
+          defaultvalues={
+            achievementLevelOptions.default
+              ? [achievementLevelOptions.default]
+              : []
+          }
           initialselections={getFilterSettingsValue(
             levelKey,
             selectedAchievementLevel,
