@@ -52,9 +52,38 @@ import {
   ItemBox,
 } from "../../src/components/HospitalProfileStyles";
 import { ExpandableItemBox } from "../../src/components/ExpandableItemBox";
-import { URLs } from "types";
+import { NestedTreatmentUnitName, URLs } from "types";
 import { ArrowLink } from "qmongjs";
 import { useRouter } from "next/router";
+
+const getUnitFullName = (
+  nestedUnitNames: NestedTreatmentUnitName[],
+  unitShortName: string,
+) => {
+  if (!nestedUnitNames || !unitShortName) {
+    return null;
+  }
+
+  // Check if unit is a RHF
+  const isRHF = nestedUnitNames.map((row) => row.rhf).includes(unitShortName);
+
+  if (isRHF) {
+    return unitShortName;
+  }
+
+  // Check if unit is a HF
+  const HFs = nestedUnitNames.map((row) => row.hf).flat();
+  const isHF = HFs.map((row) => row.hf).includes(unitShortName);
+
+  if (isHF) {
+    return HFs.filter((row) => {
+      return row.hf === unitShortName;
+    })[0].hf_full;
+  }
+
+  // Check if unit is a hospital?
+  return unitShortName;
+};
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
@@ -384,7 +413,11 @@ export const Skde = (): JSX.Element => {
                         variant="h5"
                         style={{ marginTop: 20, marginLeft: 20 }}
                       >
-                        {selectedTreatmentUnits[0]}
+                        {unitNamesQuery.data &&
+                          getUnitFullName(
+                            unitNamesQuery.data.nestedUnitNames,
+                            selectedTreatmentUnits[0],
+                          )}
                       </Typography>
 
                       <div style={{ marginLeft: 20 }}>
