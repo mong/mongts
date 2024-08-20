@@ -18,6 +18,8 @@ import {
   useUnitUrlsQuery,
   LowLevelIndicatorList,
   LineStyles,
+  newLevelSymbols,
+  defaultYear,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
@@ -41,7 +43,6 @@ import {
   MedfieldTable,
   MedfieldTableProps,
 } from "../../src/components/MedfieldTable";
-import { useScreenSize } from "@visx/responsive";
 import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
@@ -51,14 +52,47 @@ import {
   ItemBox,
 } from "../../src/components/HospitalProfileStyles";
 import { ExpandableItemBox } from "../../src/components/ExpandableItemBox";
-import logo from "./Logo.png";
-import { URLs } from "types";
+import { NestedTreatmentUnitName, URLs } from "types";
 import { ArrowLink } from "qmongjs";
-import Divider from "@mui/material/Divider";
 import { useRouter } from "next/router";
+import { FetchMap } from "../../src/helpers/hooks";
+import { mapColors, abacusColors } from "../../src/charts/colors";
+import { geoMercator, geoPath } from "d3-geo";
+import { mapUnitName2BohfNames } from "../../src/helpers/functions/unitName2BohfMap";
+
+const getUnitFullName = (
+  nestedUnitNames: NestedTreatmentUnitName[],
+  unitShortName: string,
+) => {
+  if (!nestedUnitNames || !unitShortName) {
+    return null;
+  }
+
+  // Check if unit is a RHF
+  const isRHF = nestedUnitNames.map((row) => row.rhf).includes(unitShortName);
+
+  if (isRHF) {
+    return unitShortName;
+  }
+
+  // Check if unit is a HF
+  const HFs = nestedUnitNames.map((row) => row.hf).flat();
+  const isHF = HFs.map((row) => row.hf).includes(unitShortName);
+
+  if (isHF) {
+    return HFs.filter((row) => {
+      return row.hf === unitShortName;
+    })[0].hf_full;
+  }
+
+  // Check if unit is a hospital?
+  return unitShortName;
+};
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
+
+  const [objectIDList, setObjectIDList] = useState([]);
 
   const treatmentUnitsKey = "selected_treatment_units";
 
@@ -68,6 +102,10 @@ export const Skde = (): JSX.Element => {
     withDefault(DelimitedArrayParam, ["Nasjonalt"]),
   );
 
+  // Set infobox image
+  const [imgSrc, setImgSrc] = useState("/img/forsidebilder/Nasjonalt.jpg");
+
+  // Infobox URL
   const [unitUrl, setUnitUrl] = useState<string | null>(null);
 
   // Get unit names
@@ -80,6 +118,15 @@ export const Skde = (): JSX.Element => {
   );
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
+
+  // Find the index of "Private" and remove the children. The sub units should not be shown.
+  // TreetmentUnits.treedata starts with one element "Nasjonalt". Need to wait for it to build up the rest.
+  if (treatmentUnits.treedata.length > 1) {
+    const indPrivate = treatmentUnits.treedata.findIndex(
+      (x) => x.nodeValue.value === "Private",
+    );
+    treatmentUnits.treedata[indPrivate].children = [];
+  }
 
   // The following code ensures that the page renders correctly
   const unitUrlsQuery = useUnitUrlsQuery();
@@ -106,12 +153,16 @@ export const Skde = (): JSX.Element => {
     setExpanded(false);
     setSelectedTreatmentUnits(newUnit);
 
+    setImgSrc("/img/forsidebilder/" + newUnit[0] + ".jpg");
+
     let unitUrl: URLs | undefined;
     if (unitUrlsQuery.data) {
       unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
         return row.shortName === newUnit[0];
       });
     }
+
+    setObjectIDList(mapUnitName2BohfNames(treatmentUnits.treedata, newUnit[0]));
 
     if (unitUrl && unitUrl[0]) {
       setUnitUrl(unitUrl[0].url);
@@ -120,14 +171,27 @@ export const Skde = (): JSX.Element => {
     }
   };
 
-  const screenSize = useScreenSize({ debounceTime: 150 });
+  // Set the line plot width to fill the available space
+  const [width, setWidth] = useState(null);
+
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver((event) => {
+      setWidth(event[0].contentBoxSize[0].inlineSize);
+    });
+
+    resizeObserver.observe(document.getElementById("plot-window"));
+  });
+
+  // Year for filtering
+  const lastYear = defaultYear;
+  const pastYears = 5;
 
   // Props
   const indicatorParams: IndicatorLinechartParams = {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    width: screenSize.width * 0.9,
+    width: width,
     height: 600,
     lineStyles: new LineStyles(
       [
@@ -140,14 +204,14 @@ export const Skde = (): JSX.Element => {
         },
         {
           text: "Moderat måloppnåelse",
-          strokeDash: "1 3",
+          strokeDash: "0",
           colour: "#FD9C00",
           marker: "square",
           markEnd: true,
         },
         {
           text: "Lav måloppnåelse",
-          strokeDash: "8 8",
+          strokeDash: "0",
           colour: "#E30713",
           marker: "triangle",
           markEnd: true,
@@ -163,8 +227,8 @@ export const Skde = (): JSX.Element => {
     yAxisText: "Antall indikatorer",
     xTicksFont: { fontFamily: "Arial", fontSize: 16, fontWeight: 500 },
     yTicksFont: { fontFamily: "Arial", fontSize: 14, fontWeight: 500 },
-    startYear: 2017,
-    endYear: 2022,
+    startYear: lastYear - pastYears,
+    endYear: lastYear,
     yMin: 0,
     normalise: true,
     useToolTip: true,
@@ -174,7 +238,7 @@ export const Skde = (): JSX.Element => {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    treatmentYear: 2022,
+    treatmentYear: lastYear,
   };
 
   // State logic for normalising the line plot
@@ -227,6 +291,60 @@ export const Skde = (): JSX.Element => {
 
   const titleStyle = { marginTop: 20, marginLeft: 20 };
   const textMargin = 20;
+
+  const Legend = (props: { itemSpacing: number; symbolSpacing: number }) => {
+    const { itemSpacing, symbolSpacing } = props;
+
+    return (
+      <Stack direction="row" spacing={itemSpacing} alignItems="center">
+        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
+          {newLevelSymbols("H")}
+          <Typography>Høy måloppnåelse</Typography>
+        </Stack>
+        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
+          {newLevelSymbols("M")}
+          <Typography>Moderat måloppnåelse</Typography>
+        </Stack>
+        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
+          {newLevelSymbols("L")}
+          <Typography>Lav måloppnåelse</Typography>
+        </Stack>
+      </Stack>
+    );
+  };
+
+  // Copy-paste from helseatlas
+  const mapData = FetchMap("/helseatlas/kart/kronikere.geojson").data;
+
+  const mapHeight = 1000;
+  const mapWidth = 1000;
+  const initCenter = geoPath().centroid(mapData);
+  const initOffset: [number, number] = [
+    mapWidth / 2,
+    mapHeight / 2 - mapHeight * 0.11,
+  ];
+  const initScale = 150;
+  const initialProjection = geoMercator()
+    .scale(initScale)
+    .center(initCenter)
+    .translate(initOffset);
+  const initPath = geoPath().projection(initialProjection);
+
+  const bounds = initPath.bounds(mapData);
+  const hscale = (initScale * mapWidth) / (bounds[1][0] - bounds[0][0]);
+  const vscale = (initScale * mapHeight) / (bounds[1][1] - bounds[0][1]);
+  const scale = hscale < vscale ? 0.98 * hscale : 0.98 * vscale;
+  const offset: [number, number] = [
+    mapWidth - (bounds[0][0] + bounds[1][0]) / 2,
+    mapHeight - (bounds[0][1] + bounds[1][1]) / 2,
+  ];
+
+  const projection = geoMercator()
+    .scale(scale)
+    .center(initCenter)
+    .translate(offset);
+
+  const pathGenerator = geoPath().projection(projection);
 
   return (
     <ThemeProvider theme={skdeTheme}>
@@ -283,29 +401,48 @@ export const Skde = (): JSX.Element => {
           </ClickAwayListener>
         </Header>
 
-        <Box margin={2}>
+        <Box marginTop={2} className="hospital-profile-box">
           <Grid container spacing={2}>
             <Grid xs={12}>
-              <ItemBox height={440} sx={{ overflow: "auto" }}>
+              <ItemBox height={550} sx={{ overflow: "auto" }}>
                 <Grid container>
                   <Grid
                     xs={12}
-                    sm={4}
+                    sm={12}
                     lg={4}
                     xl={4}
                     xxl={4}
                     alignContent="center"
                     style={{ textAlign: "center" }}
                   >
-                    <img
-                      src={logo.src}
-                      alt={"Logo"}
-                      width="100%"
-                      style={{ borderRadius: "50%", maxWidth: 300 }}
-                    />
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          width: 300,
+                          height: 300,
+                          justifyContent: "center",
+                        }}
+                      >
+                        <img
+                          src={imgSrc}
+                          onError={() =>
+                            setImgSrc("/img/forsidebilder/Sykehus.jpg")
+                          }
+                          alt={"Logo"}
+                          width="100%"
+                          height="100%"
+                          style={{
+                            borderRadius: "100%",
+                            maxWidth: "100%",
+                            objectFit: "cover",
+                          }}
+                        />
+                      </div>
+                    </div>
                   </Grid>
 
-                  <Grid xs={6} sm={4} lg={4} xl={4} xxl={4}>
+                  <Grid xs={6} sm={6} lg={4} xl={4} xxl={4}>
                     <div
                       style={{
                         display: "flex",
@@ -317,31 +454,64 @@ export const Skde = (): JSX.Element => {
                         variant="h5"
                         style={{ marginTop: 20, marginLeft: 20 }}
                       >
-                        {selectedTreatmentUnits[0]}
+                        {unitNamesQuery.data &&
+                          getUnitFullName(
+                            unitNamesQuery.data.nestedUnitNames,
+                            selectedTreatmentUnits[0],
+                          )}
                       </Typography>
 
-                      <div style={{ marginLeft: 8 }}>
-                        <Typography variant="body1">
-                          Her skal det stå noe om enheten. <br />
-                        </Typography>
+                      <div
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          margin: "auto",
+                        }}
+                      >
+                        <svg
+                          width={"400px"}
+                          height={"100%"}
+                          viewBox={`0 0 ${mapWidth} ${mapHeight}`}
+                          style={{ backgroundColor: "none" }}
+                        >
+                          {mapData &&
+                            mapData.features.map((d, i) => {
+                              return (
+                                <path
+                                  key={`map-feature-${i}`}
+                                  d={pathGenerator(d.geometry)}
+                                  fill={
+                                    objectIDList &&
+                                    objectIDList.includes(d.properties.BoHF_num)
+                                      ? abacusColors[2]
+                                      : mapColors[1]
+                                  }
+                                  stroke={"black"}
+                                  strokeWidth={0.4}
+                                  className={i + ""}
+                                />
+                              );
+                            })}
+                        </svg>
                       </div>
 
                       <div style={{ marginTop: "auto" }}>
-                        <Divider />
                         {unitUrl ? (
                           <ArrowLink
                             href={unitUrl}
                             text="Nettside"
                             externalLink={true}
+                            button={true}
+                            textVariant="subtitle1"
                           />
                         ) : null}
                       </div>
                     </div>
                   </Grid>
 
-                  <Grid xs={6} sm={4} lg={4} xl={4} xxl={4}>
+                  <Grid xs={6} sm={6} lg={4} xl={4} xxl={4}>
                     <ItemBox
-                      height={440}
+                      height={450}
                       sx={{ overflow: "auto", marginRight: 2 }}
                     >
                       <Typography variant="h5" style={titleStyle}>
@@ -350,8 +520,7 @@ export const Skde = (): JSX.Element => {
                       <div style={{ margin: textMargin }}>
                         <Typography variant="body1">
                           Her vises behandlingssteder som er tilhørende til
-                          valgt helseforetak. Du kan trykke på behandlingsstedet
-                          for å enkelt kunne velge det i Sykehusprofil.
+                          valgt helseforetak.
                         </Typography>
                       </div>
                       {unitNamesQuery.data ? (
@@ -378,9 +547,22 @@ export const Skde = (): JSX.Element => {
                     hvilke som har hatt høy, middels eller lav måloppnåelse de
                     siste årene.
                   </Typography>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      justifyContent: "right",
+                      marginRight: 20,
+                      marginTop: 40,
+                    }}
+                  >
+                    <Legend itemSpacing={8} symbolSpacing={2} />
+                  </div>
                 </div>
                 <ThemeProvider theme={lineChartTheme}>
-                  <IndicatorLinechart {...indicatorParams} />
+                  <div id="plot-window">
+                    <IndicatorLinechart {...indicatorParams} />
+                  </div>
                 </ThemeProvider>
                 <Stack
                   direction="row"
@@ -398,7 +580,7 @@ export const Skde = (): JSX.Element => {
             <Grid xs={12}>
               <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                 <Typography variant="h5" style={titleStyle}>
-                  Fagområder
+                  Kvalitetsindikatorer fordelt på fagområder
                 </Typography>
                 <div style={{ margin: textMargin }}>
                   <Typography variant="body1">
@@ -442,6 +624,7 @@ export const Skde = (): JSX.Element => {
                   context={"caregiver"}
                   type={"ind"}
                   unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
+                  year={lastYear}
                 />
               </ExpandableItemBox>
             </Grid>

@@ -10,14 +10,16 @@ exports[`Levels counts are correct 1`] = `
     "registers": [
       ,
       {
+        "full_name": "Hjerteregister nummer 1",
         "green": 1,
-        "name": "Hjerteregister nummer 1",
+        "name": "hjertereg1",
         "red": 0,
         "yellow": 0,
       },
       {
+        "full_name": "Hjerteregister nummer 2",
         "green": 0,
-        "name": "Hjerteregister nummer 2",
+        "name": "hjertereg2",
         "red": 1,
         "yellow": 0,
       },
@@ -34,8 +36,9 @@ exports[`Levels counts are correct 1`] = `
       ,
       ,
       {
+        "full_name": "Diabetesregister nummer 1",
         "green": 1,
-        "name": "Diabetesregister nummer 1",
+        "name": "diabetesreg1",
         "red": 0,
         "yellow": 1,
       },
@@ -53,14 +56,16 @@ exports[`Levels counts are correct 1`] = `
       ,
       ,
       {
+        "full_name": "Barneregister nummer 1",
         "green": 1,
-        "name": "Barneregister nummer 1",
+        "name": "barnereg1",
         "red": 0,
         "yellow": 0,
       },
       {
+        "full_name": "Barneregister nummer 2",
         "green": 2,
-        "name": "Barneregister nummer 2",
+        "name": "barnereg2",
         "red": 0,
         "yellow": 0,
       },
@@ -93,13 +98,21 @@ exports[`Table renders correctly 1`] = `
             class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
             scope="col"
           >
-            Fagområde
+            <h6
+              class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+            >
+              Fagområde
+            </h6>
           </th>
           <th
             class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
             scope="col"
           >
-            Resultat
+            <h6
+              class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
+            >
+              Resultat
+            </h6>
           </th>
         </tr>
       </thead>
@@ -139,7 +152,11 @@ exports[`Table renders correctly 1`] = `
             class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
             scope="row"
           >
-            Hjerte- og karsykdommer
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+            >
+              Hjerte- og karsykdommer
+            </p>
           </th>
           <td
             class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
@@ -216,7 +233,11 @@ exports[`Table renders correctly 1`] = `
             class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
             scope="row"
           >
-            Diabetes
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+            >
+              Diabetes
+            </p>
           </th>
           <td
             class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
@@ -293,7 +314,11 @@ exports[`Table renders correctly 1`] = `
             class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
             scope="row"
           >
-            Barn
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-ahj2mt-MuiTypography-root"
+            >
+              Barn
+            </p>
           </th>
           <td
             class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"

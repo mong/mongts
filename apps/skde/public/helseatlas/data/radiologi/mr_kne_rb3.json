@@ -3,9 +3,7 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "andel_rtg"
-      ],
+      "x": ["andel_rtg"],
       "y": "bohf",
       "xLabel": {
         "nb": "Andel av MR kne med røntgen i forkant",
@@ -20,19 +18,10 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "rtg50_snitt",
-        "irtg50_snitt"
-      ],
+      "x": ["rtg50_snitt", "irtg50_snitt"],
       "xLegend": {
-        "nb": [
-          "Røntgen",
-          "Ikke røntgen"
-        ],
-        "en": [
-          "Røntgen",
-          "Ikke røntgen"
-        ]
+        "nb": ["Røntgen", "Ikke røntgen"],
+        "en": ["Røntgen", "Ikke røntgen"]
       },
       "y": "bohf",
       "xLabel": {
@@ -48,23 +37,11 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "art_kir50_snitt",
-        "a_kir50_snitt",
-        "i_kir50_snitt"
-      ],
+      "x": ["art_kir50_snitt", "a_kir50_snitt", "i_kir50_snitt"],
       "y": "bohf",
       "xLegend": {
-        "nb": [
-          "Artrose",
-          "Annen",
-          "Ikke"
-        ],
-        "en": [
-          "Artrose",
-          "Annen",
-          "Ikke"
-        ]
+        "nb": ["Artrose", "Annen", "Ikke"],
+        "en": ["Artrose", "Annen", "Ikke"]
       },
       "xLabel": {
         "nb": "Antall (rate), fordelt på type kirurgi, pr. 10 000 innbyggere",

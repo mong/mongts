@@ -49,7 +49,7 @@ export type { LinechartData, font } from "./components/Charts/LinechartBase";
 export { customFormat, imgLoader } from "./helpers/functions";
 export { IndicatorTableBodyV2 } from "./components/IndicatorTable/IndicatortablebodyV2";
 export { IndicatorTable } from "./components/IndicatorTable";
-export { defaultYear } from "./app_config";
+export { defaultYear, mainHospitals } from "./app_config";
 export { SelectTreatmentUnits } from "./components/SelectTreatmentUnits";
 export { useUnitNamesQuery } from "./helpers/hooks";
 export type { NestedTreatmentUnitName } from "./components/RegisterPage/unitnamelist/unitnamelistbody";
