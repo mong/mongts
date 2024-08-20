@@ -2,10 +2,15 @@ import classNames from "../Barchart/ChartLegend.module.css";
 
 type ColorLegendProps = {
   colorScale: (args: string) => void;
+  getLabel: (args: string) => string;
   values: string[];
 };
 
-export const ColorLegend = ({ colorScale, values }: ColorLegendProps) => {
+export const ColorLegend = ({
+  colorScale,
+  values,
+  getLabel,
+}: ColorLegendProps) => {
   return (
     <div className={classNames.legendContainer}>
       <ul className={classNames.legendUL}>
@@ -16,7 +21,7 @@ export const ColorLegend = ({ colorScale, values }: ColorLegendProps) => {
                 borderBottom: `4px solid ${colorScale(val)}`,
               }}
             >
-              {val}
+              {getLabel(val)}
             </div>
           </li>
         ))}
