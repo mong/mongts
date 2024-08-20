@@ -26,14 +26,7 @@ export const nestedData = (
         ...cur,
         data: currentDatapoints,
       };
-
-      if (
-        entry.data.filter((dataPoint) => {
-          return dataPoint.var != null;
-        }).length > 0
-      ) {
-        acc = [...acc, entry];
-      }
+      acc = [...acc, entry];
     }
     return acc;
   }, [] as IndicatorData[]);
