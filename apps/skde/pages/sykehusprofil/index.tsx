@@ -286,7 +286,7 @@ export const Skde = (): JSX.Element => {
   };
 
   // Copy-paste from helseatlas
-  const mapData = FetchMap("/helseatlas/kart/indre_oslo.geojson").data;
+  const mapData = FetchMap("/helseatlas/kart/kronikere.geojson").data;
 
   const color = mapColors;
   const mapHeight = 1000;
