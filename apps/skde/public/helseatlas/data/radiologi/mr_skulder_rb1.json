@@ -7,7 +7,7 @@
       "y": "bohf",
       "xLabel": {
         "nb": "Antall (rate) MR skulder pr. 10 000 innbyggere",
-        "en": "tmp"
+        "en": "Number of shoulder MRI per 10,000 population"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -26,11 +26,11 @@
       "x": ["alder"],
       "xLabel": {
         "nb": "Alder",
-        "en": "Alder"
+        "en": "Age"
       },
       "yLabel": {
         "nb": "Andel av befolkningen med MR skulder undersøkelse",
-        "en": "Andel"
+        "en": "Proportion of population within the age group with brain MRI"
       },
       "format_y": ",.1%",
       "linevars": ["Kvinner", "Menn"],
@@ -45,11 +45,11 @@
       "x": ["mnd"],
       "xLabel": {
         "nb": "Måned",
-        "en": "Måned"
+        "en": "Month"
       },
       "yLabel": {
         "nb": "Tidstrend, antall MR skulder undersøkelser",
-        "en": "Antall undersøkelser"
+        "en": "Historical trend, number of shoulder MRI examinations"
       },
       "format_x": "month",
       "format_y": ",.0f",
@@ -64,7 +64,7 @@
       "data": "datasett_1",
       "caption": {
         "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall (rate) pr. 10  000 innbyggere",
-        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall (rate) pr. 10  000 innbyggere"
+        "en": "Annual average during 2018–2022. <br> * Number of outpatient MRI per 10,000 population. The rates are gender and age adjusted."
       },
       "columns": [
         {
@@ -77,7 +77,7 @@
         {
           "id": "totsnitt",
           "label_no": "Rate",
-          "label_en": "Rate",
+          "label_en": "Rate*",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -117,7 +117,7 @@
       "x": "totsnitt",
       "caption": {
         "nb": "Antall (rate) MR skulder pr. 10 000 innbyggere",
-        "en": "tmp"
+        "en": "Number of shoulder MRI per 10,000 population"
       },
       "jenks": [
         {
