@@ -58,7 +58,6 @@ import { useRouter } from "next/router";
 import { FetchMap } from "../../src/helpers/hooks";
 import { mapColors, abacusColors } from "../../src/charts/colors";
 import { geoMercator, geoPath } from "d3-geo";
-import { scaleThreshold } from "d3-scale";
 import { mapUnitName2BohfNames } from "../../src/helpers/functions/unitName2BohfMap";
 
 export const Skde = (): JSX.Element => {
@@ -288,7 +287,6 @@ export const Skde = (): JSX.Element => {
   // Copy-paste from helseatlas
   const mapData = FetchMap("/helseatlas/kart/kronikere.geojson").data;
 
-  const color = mapColors;
   const mapHeight = 1000;
   const mapWidth = 1000;
   const initCenter = geoPath().centroid(mapData);
@@ -311,10 +309,6 @@ export const Skde = (): JSX.Element => {
     mapWidth - (bounds[0][0] + bounds[1][0]) / 2,
     mapHeight - (bounds[0][1] + bounds[1][1]) / 2,
   ];
-
-  const colorScale = scaleThreshold<number, string>()
-    .domain([3, 12, 20])
-    .range(color);
 
   const projection = geoMercator()
     .scale(scale)
@@ -457,7 +451,7 @@ export const Skde = (): JSX.Element => {
                                     objectIDList &&
                                     objectIDList.includes(d.properties.BoHF_num)
                                       ? abacusColors[2]
-                                      : colorScale(d.properties.BoHF_num)
+                                      : mapColors[1]
                                   }
                                   stroke={"black"}
                                   strokeWidth={0.4}
