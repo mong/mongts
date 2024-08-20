@@ -189,7 +189,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
 
   // UI stuff
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(2);
 
   const open = Boolean(anchorEl);
 
