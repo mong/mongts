@@ -134,7 +134,7 @@ const EmptyIndicatorRow = (props: { indTitle: string | null }) => {
       </TableCell>
       <TableCell>
         <Typography variant="body1">
-          Denne indikatoren har for lite data.
+          Denne indikatoren har for lite data
         </Typography>
       </TableCell>
     </TableRow>
