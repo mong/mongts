@@ -59,12 +59,12 @@ import { FetchMap } from "../../src/helpers/hooks";
 import { mapColors, abacusColors } from "../../src/charts/colors";
 import { geoMercator, geoPath } from "d3-geo";
 import { scaleThreshold } from "d3-scale";
-import { mapUnitName2BohfNames } from "./unitName2BohfMap";
+import { mapUnitName2BohfNames } from "../../src/helpers/functions/unitName2BohfMap";
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
-  const [objectIDList, setObjectIDList] = useState([18, 19, 20]);
+  const [objectIDList, setObjectIDList] = useState([]);
 
   const treatmentUnitsKey = "selected_treatment_units";
 

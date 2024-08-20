@@ -1,4 +1,4 @@
-import { ObjectIDToBoHF } from "../../src/charts/Map";
+import { ObjectIDToBoHF } from "../../charts/Map";
 import { TreeViewFilterSectionNode } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 
 type UnitName2BohfMapping = { unitName: string; bohfNames: string[] }[];
