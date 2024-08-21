@@ -3,7 +3,6 @@ import { imgLoader } from "qmongjs";
 import Link from "next/link";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
-import Grid from "@mui/material/Unstable_Grid2";
 import { Stack } from "@mui/material";
 import { ArrowLink } from "qmongjs/src/components/ArrowLink";
 
@@ -14,14 +13,13 @@ const StyledLink = styled(Link)(() => ({
 
 type FooterProps = {
   page:
-  | "behandlingskvalitet"
-  | "helseatlas"
-  | "sykehusprofil"
-  | "pasientstrømmer";
+    | "behandlingskvalitet"
+    | "helseatlas"
+    | "sykehusprofil"
+    | "pasientstrømmer";
 };
 
 export const Footer = ({ page }: FooterProps) => {
-
   const kvalitet = ["behandlingskvalitet", "sykehusprofil"].includes(page);
   const helseatlas = page === "helseatlas";
 
@@ -29,11 +27,7 @@ export const Footer = ({ page }: FooterProps) => {
     <Grid container style={{ color: "white", marginTop: 20 }}>
       <Grid
         xs={12}
-    <Grid container style={{ color: "white", marginTop: 20 }}>
-      <Grid
-        xs={12}
         container
-        style={{ background: "#333" }}
         style={{ background: "#333" }}
         className="footer"
         marginTop={0}
@@ -78,12 +72,11 @@ export const Footer = ({ page }: FooterProps) => {
           </Stack>
         </Grid>
       </Grid>
-      
+
       <Grid
         xs={12}
         container
         className="footer"
-        style={{ background: "#1A1A1A" }}
         style={{ background: "#1A1A1A" }}
         marginTop={0}
         marginRight={0}
@@ -92,13 +85,15 @@ export const Footer = ({ page }: FooterProps) => {
         sx={{ overflow: "clip" }}
       >
         <Grid container xs={12} alignItems="center">
-          <Grid container
+          <Grid
+            container
             display="flex"
             justifyContent={helseatlas ? "space-around" : "flex-start"}
             spacing={4}
             xs={12}
             lg={kvalitet ? 6 : 12}
-            alignItems="center">
+            alignItems="center"
+          >
             <Grid>
               <Link href={"https://www.skde.no/"}>
                 <Image
@@ -128,7 +123,10 @@ export const Footer = ({ page }: FooterProps) => {
             {helseatlas && (
               <>
                 <Grid>
-                  <Link href="https://helse-forde.no/" title="Link til Helse Førde">
+                  <Link
+                    href="https://helse-forde.no/"
+                    title="Link til Helse Førde"
+                  >
                     <Image
                       loader={imgLoader}
                       src={`/helseatlas/img/logos/helse-forde-hvit.svg`}
@@ -139,7 +137,10 @@ export const Footer = ({ page }: FooterProps) => {
                   </Link>
                 </Grid>
                 <Grid>
-                  <Link href="https://helse-vest.no/" title="Link til Helse Vest">
+                  <Link
+                    href="https://helse-vest.no/"
+                    title="Link til Helse Vest"
+                  >
                     <Image
                       loader={imgLoader}
                       src={`/helseatlas/img/logos/helse-vest-hvit.svg`}
@@ -149,11 +150,12 @@ export const Footer = ({ page }: FooterProps) => {
                     />
                   </Link>
                 </Grid>
-              </>)}
+              </>
+            )}
           </Grid>
           {kvalitet && (
             <Grid xs={6}>
-              <Link href={"https://www.kvalitetsregistre.no/"} >
+              <Link href={"https://www.kvalitetsregistre.no/"}>
                 <Image
                   className="footer-logo"
                   id="nsm-footer-logo"
@@ -163,8 +165,9 @@ export const Footer = ({ page }: FooterProps) => {
                   width={467}
                   height={52}
                 />
-              </Link >
-            </Grid>)}
+              </Link>
+            </Grid>
+          )}
         </Grid>
 
         <Grid xs={12}>
