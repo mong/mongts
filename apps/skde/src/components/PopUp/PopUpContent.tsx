@@ -42,7 +42,7 @@ export const PopUpContent = ({
   useKeys(["Escape", "Esc"], "keydown", handleKeyDown);
   useRouterEvent("routeChangeStart", () => setActive(false));
   return (
-    <div>
+    <>
       {transitions(
         (styles, item) =>
           item && (
@@ -75,6 +75,6 @@ export const PopUpContent = ({
             </animated.div>
           ),
       )}
-    </div>
+    </>
   );
 };

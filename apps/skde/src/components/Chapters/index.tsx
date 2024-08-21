@@ -51,49 +51,47 @@ const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
   return (
     <div id={mainID} style={{ paddingTop: "10px" }}>
       {overskrift && <h2>{overskrift}</h2>}
-      <div>
-        {innhold &&
-          innhold.map((box, index) => {
-            switch (box.type) {
-              case "faktaboks":
-                return (
-                  <FactBox
-                    boxContent={box.tekst}
-                    boxTitle={box.overskrift}
-                    id={
-                      mainID +
-                      "-fact-" +
-                      box.overskrift.toLowerCase().replace(/\s/g, "-")
-                    }
-                    lang={lang}
-                    key={index}
-                  />
-                );
-              case "resultatboks":
-                return (
-                  <ResultBox
-                    result={box.resultat}
-                    title={box.overskrift}
-                    intro={box.ingress}
-                    selection={box.utvalg}
-                    id={
-                      mainID +
-                      "_" +
-                      box.overskrift.toLowerCase().replace(/\s/g, "-")
-                    }
-                    lang={lang}
-                    carousel={box.data}
-                    published={box.publisert}
-                    updated={box.oppdatert}
-                    map={box.kart}
-                    key={index}
-                  />
-                );
-              default:
-                return <TextBox children={box.tekst} lang={lang} key={index} />;
-            }
-          })}
-      </div>
+      {innhold &&
+        innhold.map((box, index) => {
+          switch (box.type) {
+            case "faktaboks":
+              return (
+                <FactBox
+                  boxContent={box.tekst}
+                  boxTitle={box.overskrift}
+                  id={
+                    mainID +
+                    "-fact-" +
+                    box.overskrift.toLowerCase().replace(/\s/g, "-")
+                  }
+                  lang={lang}
+                  key={index}
+                />
+              );
+            case "resultatboks":
+              return (
+                <ResultBox
+                  result={box.resultat}
+                  title={box.overskrift}
+                  intro={box.ingress}
+                  selection={box.utvalg}
+                  id={
+                    mainID +
+                    "_" +
+                    box.overskrift.toLowerCase().replace(/\s/g, "-")
+                  }
+                  lang={lang}
+                  carousel={box.data}
+                  published={box.publisert}
+                  updated={box.oppdatert}
+                  map={box.kart}
+                  key={index}
+                />
+              );
+            default:
+              return <TextBox children={box.tekst} lang={lang} key={index} />;
+          }
+        })}
     </div>
   );
 };
