@@ -3,88 +3,130 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["totsnitt_35"],
+      "x": [
+        "totsnitt_35"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Andel fødende 35-50 år som fikk utført NIPT",
-        "en": "tmp"
+        "en": "Proportion of pregnant women ages 35-50 that took NIPT test"
       },
       "yLabel": {
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": ["tot2022_35", "tot2023_35"],
+      "annualVar": [
+        "tot2022_35",
+        "tot2023_35"
+      ],
       "annualVarLabels": {
-        "nb": ["2022", "2023"],
-        "en": ["2022", "2023"]
+        "nb": [
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2022",
+          "2023"
+        ]
       },
       "format": ",.0%"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["totsnitt_18"],
+      "x": [
+        "totsnitt_18"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Andel fødende 18-34 år som fikk utført NIPT",
-        "en": "tmp"
+        "en": "Proportion of pregnant women ages 18-34 that took NIPT test"
       },
       "yLabel": {
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": ["tot2022_18", "tot2023_18"],
+      "annualVar": [
+        "tot2022_18",
+        "tot2023_18"
+      ],
       "annualVarLabels": {
-        "nb": ["2022", "2023"],
-        "en": ["2022", "2023"]
+        "nb": [
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2022",
+          "2023"
+        ]
       },
       "format": ",.0%"
     },
     {
       "type": "barchart",
       "data": "datasett_2",
-      "x": ["totsnitt"],
+      "x": [
+        "totsnitt"
+      ],
       "y": "borhf",
       "xLabel": {
         "nb": "Andel fødende 18-34 år som fikk utført NIPT",
-        "en": "tmp"
+        "en": "Proportion of pregnant women ages 18-34 that took NIPT test"
       },
       "yLabel": {
-        "nb": "Helseregioner",
-        "en": "Health regions"
+        "nb": "Regionale helseforetak (RHF)",
+        "en": "Regional health authorities"
       },
-      "annualVar": ["tot2022", "tot2023"],
+      "annualVar": [
+        "tot2022",
+        "tot2023"
+      ],
       "annualVarLabels": {
-        "nb": ["2022", "2023"],
-        "en": ["2022", "2023"]
+        "nb": [
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2022",
+          "2023"
+        ]
       },
       "format": ",.0f"
     },
     {
       "type": "linechart",
       "data": "datasett_3",
-      "x": ["alder"],
+      "linevars": [
+        "kvinner"
+      ],
+      "linevarsLabels": {
+        "nb": [
+          "Kvinner"
+        ],
+        "en": [
+          "Women"
+        ]
+      },
+      "x": [
+        "alder"
+      ],
+      "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
-        "en": "Alder"
+        "en": "Age"
       },
       "yLabel": {
         "nb": "Andel av fødende i alderen med NIPT prøve",
-        "en": "Andel"
+        "en": "Proportion of pregnant women in the age group that took NIPT test"
       },
-      "format_y": ",.1%",
-      "linevars": ["Kvinner"],
-      "linevarsLabels": {
-        "nb": ["Kvinner"],
-        "en": ["Women"]
-      }
+      "format_y": ",.0"
     },
     {
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2022–2023, kjønns- og aldersjustert. <br>* Andelene er basert på kjønns- og aldersjusterte rater.",
-        "en": "Årlige gjennomsnittsverdier for perioden 2022–2023, kjønns- og aldersjustert. <br>* Andelene er basert på kjønns- og aldersjusterte rater."
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022–2023. <br>* Andelene er basert på aldersjusterte rater.",
+        "en": "Annual average during 2022–2023. <br>* Proportions are based on adjusted rates."
       },
       "columns": [
         {
@@ -143,8 +185,8 @@
       "data": "datasett_1",
       "x": "totsnitt_35",
       "caption": {
-        "nb": "Andel fødende 35-50 år fikk utført NIPT",
-        "en": "tmp"
+        "nb": "Andel fødende 35-50 år som fikk utført NIPT",
+        "en": "Proportion of pregnant women ages 35-50 that took NIPT test"
       },
       "jenks": [
         {
@@ -550,132 +592,580 @@
       "description": "Ekstradatasettet for gitt resultatboks",
       "data": [
         {
+          "alder": 0,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 1,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 2,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 3,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 4,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 5,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 6,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 7,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 8,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 9,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 10,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 11,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 12,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 13,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 14,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 15,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 16,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 17,
+          "kvinner": 6.46358095312e-06,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 18,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
           "alder": 19,
-          "Kvinner": 0.0588235294118
+          "kvinner": 7.63519059345e-05,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 20,
-          "Kvinner": 0.0349462365591
+          "kvinner": 9.41885655081e-05,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 21,
-          "Kvinner": 0.0289389067524
+          "kvinner": 0.000129651238169,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 22,
-          "Kvinner": 0.0477975632615
+          "kvinner": 0.00033632766876,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 23,
-          "Kvinner": 0.0340694006309
+          "kvinner": 0.000368021912387,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 24,
-          "Kvinner": 0.0344827586207
+          "kvinner": 0.000496815060594,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 25,
-          "Kvinner": 0.0354293009895
+          "kvinner": 0.000711912672046,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 26,
-          "Kvinner": 0.0368433563109
+          "kvinner": 0.00100353220658,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 27,
-          "Kvinner": 0.0343744224727
+          "kvinner": 0.00116593266324,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 28,
-          "Kvinner": 0.0381218038122
+          "kvinner": 0.00146885857223,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 29,
-          "Kvinner": 0.0439472632841
+          "kvinner": 0.0019576798819,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 30,
-          "Kvinner": 0.0372625426206
+          "kvinner": 0.00186811133944,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 31,
-          "Kvinner": 0.0398814949863
+          "kvinner": 0.00219515344553,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 32,
-          "Kvinner": 0.0448065173116
+          "kvinner": 0.00236982387775,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 33,
-          "Kvinner": 0.0489443378119
+          "kvinner": 0.00255099205246,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 34,
-          "Kvinner": 0.324496145002
+          "kvinner": 0.0140186651424,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 35,
-          "Kvinner": 0.745406415447
+          "kvinner": 0.0279337266481,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 36,
-          "Kvinner": 0.754536950421
+          "kvinner": 0.0239314169751,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 37,
-          "Kvinner": 0.747510668563
+          "kvinner": 0.0199075575738,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 38,
-          "Kvinner": 0.7456404089
+          "kvinner": 0.0165517000303,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 39,
-          "Kvinner": 0.760938743039
+          "kvinner": 0.0128286875896,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 40,
-          "Kvinner": 0.71811023622
+          "kvinner": 0.00949655262131,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 41,
-          "Kvinner": 0.704105344694
+          "kvinner": 0.00622534809675,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 42,
-          "Kvinner": 0.661627906977
+          "kvinner": 0.00399053655818,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 43,
-          "Kvinner": 0.672473867596
+          "kvinner": 0.00248003977422,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 44,
-          "Kvinner": 0.61858974359
+          "kvinner": 0.00131041927644,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 45,
-          "Kvinner": 0.854304635762
+          "kvinner": 0.000811656286109,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 46,
-          "Kvinner": 0.684210526316
+          "kvinner": 0.000491115770886,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 47,
-          "Kvinner": 0.590909090909
+          "kvinner": 0.000245432233433,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 48,
-          "Kvinner": 0.459459459459
+          "kvinner": 0.000113733603406,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 49,
-          "Kvinner": 0.454545454545
+          "kvinner": 6.45880092361e-05,
+          "bohf": null,
+          "borhf": null
         },
         {
           "alder": 50,
-          "Kvinner": 0.727272727273
+          "kvinner": 4.32752903502e-05,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 51,
+          "kvinner": 3.27772132813e-05,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 52,
+          "kvinner": 1.10366748706e-05,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 53,
+          "kvinner": 5.61561139969e-06,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 54,
+          "kvinner": 5.74151690877e-06,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 55,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 56,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 57,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 58,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 59,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 60,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 61,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 62,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 63,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 64,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 65,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 66,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 67,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 68,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 69,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 70,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 71,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 72,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 73,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 74,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 75,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 76,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 77,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 78,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 79,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 80,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 81,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 82,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 83,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 84,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 85,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 86,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 87,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 88,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 89,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 90,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 91,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 92,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 93,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 94,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
+        },
+        {
+          "alder": 95,
+          "kvinner": 0,
+          "bohf": null,
+          "borhf": null
         }
       ]
     }
