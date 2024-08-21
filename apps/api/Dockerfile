@@ -20,7 +20,8 @@ RUN corepack enable
 
 # First install the dependencies (as they change less often)
 COPY --from=builder /app/out/json/ .
-RUN yarn install
+RUN yarn workspaces focus --production
+# RUN yarn install
  
 # Build the project
 COPY --from=builder /app/out/full/ .
