@@ -25,3 +25,5 @@ Dette gjøres på roten av repoet.
 docker build -t api -f apps/api/Dockerfile .
 docker run -e ORIGIN="somestring" -p 3030:80 api # Kjører ikke hvis ORIGIN ikke defineres som en miljøvariabel
 ```
+
+Hvis man ønsker å teste spørring mot lokal database kan man enkelt gjøre det ved å bruke docker-compose-fila til imongr.
