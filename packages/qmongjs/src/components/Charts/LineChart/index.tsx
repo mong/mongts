@@ -383,7 +383,7 @@ const LineChart = (props: Props) => {
   ]);
 
   return (
-    <div>
+    <>
       <div
         ref={svgContainerRef}
         style={{ width: "90%", margin: "auto", position: "relative" }}
@@ -442,7 +442,7 @@ const LineChart = (props: Props) => {
           format={tickformat}
         />
       </div>
-    </div>
+    </>
   );
 };
 

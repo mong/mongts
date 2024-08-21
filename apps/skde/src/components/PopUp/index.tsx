@@ -25,7 +25,7 @@ export const PopUp = ({
     }
   }, [active]);
   return (
-    <div>
+    <>
       <PopUpButton
         btnComponent={btnComponent}
         active={active}
@@ -40,6 +40,6 @@ export const PopUp = ({
           {children}
         </PopUpContent>
       )}
-    </div>
+    </>
   );
 };

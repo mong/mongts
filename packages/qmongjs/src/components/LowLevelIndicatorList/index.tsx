@@ -84,7 +84,7 @@ const RegistrySection = (props: {
   const registryName = data.registerFullName;
   const dataFlat = getDataSubset(indData, year, selectedIndex);
 
-  return (
+  return dataFlat.length > 0 ? (
     <React.Fragment>
       <TableHead>
         <TableRow>
@@ -105,7 +105,7 @@ const RegistrySection = (props: {
         })}
       </TableBody>
     </React.Fragment>
-  );
+  ) : null;
 };
 
 const IndicatorRow = (props: { row: IndicatorData; year: number }) => {
@@ -213,7 +213,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
   const data = nestedIndicatorQuery.data as RegisterData[];
 
   return (
-    <div>
+    <>
       <Box sx={{ marginLeft: 3 }}>
         <FormControl sx={{ minWidth: 140 }}>
           <InputLabel>Målnivå</InputLabel>
@@ -228,7 +228,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
           </Select>
         </FormControl>
       </Box>
-      <div>
+      <>
         <TableContainer sx={{ overflowX: "clip" }}>
           <Table>
             <TableHead>
@@ -254,7 +254,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
             })}
           </Table>
         </TableContainer>
-      </div>
-    </div>
+      </>
+    </>
   );
 };
