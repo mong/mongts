@@ -166,8 +166,19 @@ const IndicatorLinechart = (indicatorParams: IndicatorLinechartParams) => {
     return { ind_id: row.ind_id, year: row.year, level: indicatorLevel };
   });
 
+  // Remove duplicates due to registries under multiple medfields
+  const uniqueLevels = levels.filter(
+    (obj1, i, arr) =>
+      arr.findIndex(
+        (obj2) =>
+          obj2.ind_id == obj1.ind_id &&
+          obj2.year === obj1.year &&
+          obj2.level === obj1.level,
+      ) === i,
+  );
+
   // Count indicators per level per year
-  const groupedLevels = countLevels(levels);
+  const groupedLevels = countLevels(uniqueLevels);
 
   // Time series bounds
   const minYear =
