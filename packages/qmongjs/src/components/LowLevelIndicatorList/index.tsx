@@ -84,7 +84,7 @@ const RegistrySection = (props: {
   const registryName = data.registerFullName;
   const dataFlat = getDataSubset(indData, year, selectedIndex);
 
-  return (
+  return dataFlat.length > 0 ? (
     <React.Fragment>
       <TableHead>
         <TableRow>
@@ -105,7 +105,7 @@ const RegistrySection = (props: {
         })}
       </TableBody>
     </React.Fragment>
-  );
+  ) : null;
 };
 
 const IndicatorRow = (props: { row: IndicatorData; year: number }) => {
