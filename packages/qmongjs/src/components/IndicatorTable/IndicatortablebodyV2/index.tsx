@@ -201,20 +201,18 @@ const IndicatorRow = (props: {
     const buttonText = showBars ? "Vis tidstrend" : "Vis alle sykehus";
 
     return (
-      <div>
-        <div>
-          <Button
-            variant="outlined"
-            onClick={() => {
-              setShowBars(!showBars);
-            }}
-          >
-            {buttonText}
-          </Button>
-        </div>
-
-        <div>{figure}</div>
-      </div>
+      <>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            setShowBars(!showBars);
+          }}
+        >
+          {buttonText}
+        </Button>
+        <br />
+        {figure}
+      </>
     );
   };
 
@@ -288,8 +286,9 @@ const IndicatorRow = (props: {
               align={"center"}
               key={indData.indicatorID + index}
             >
-              <div>{cellData}</div>
-              <div>{patientCounts}</div>
+              {cellData}
+              <br />
+              {patientCounts}
             </StyledTableCell>
           );
         })}
