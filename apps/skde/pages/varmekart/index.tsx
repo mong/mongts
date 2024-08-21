@@ -117,7 +117,7 @@ export const Skde = (): JSX.Element => {
   ];
 
   return (
-    <div>
+    <>
       <div style={{ margin: 40, display: "flex", flexDirection: "row" }}>
         <Box width={100}>
           <FormControl fullWidth>
@@ -192,20 +192,18 @@ export const Skde = (): JSX.Element => {
         </Box>
       </div>
 
-      <div>
-        <QualityAtlasFigure
-          width={width}
-          minBoxWidth={minBoxWidth}
-          maxBoxWidth={maxBoxWidth}
-          gap={gap}
-          context={context}
-          year={Number(year)}
-          indicatorIDs={indicatorIDs}
-          medField={medField}
-          unitNames={unitNames}
-        />
-      </div>
-    </div>
+      <QualityAtlasFigure
+        width={width}
+        minBoxWidth={minBoxWidth}
+        maxBoxWidth={maxBoxWidth}
+        gap={gap}
+        context={context}
+        year={Number(year)}
+        indicatorIDs={indicatorIDs}
+        medField={medField}
+        unitNames={unitNames}
+      />
+    </>
   );
 };
 
