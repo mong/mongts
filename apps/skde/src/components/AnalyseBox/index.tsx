@@ -105,12 +105,12 @@ export const AnalyseBox = ({ analyse, tagsMetadata }: AnalyseBoxProps) => {
             alignItems="center"
           >
             <FormControl fullWidth>
-              <InputLabel id="select-level-label">Nivå</InputLabel>
+              <InputLabel id="select-level-label">Geografisk område</InputLabel>
               <Select
                 labelId="select-level-label"
                 id="select-level"
                 value={level}
-                label="Nivå"
+                label="Geografisk område"
                 onChange={(e) =>
                   setLevel(e.target.value as "sykehus" | "region")
                 }
