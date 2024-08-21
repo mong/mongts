@@ -1267,326 +1267,324 @@ exports[`Bar, fetch with error 1`] = `
 
 exports[`Line 1`] = `
 <div>
-  <div>
-    <div
-      class="linechart-wrapper"
-      style="width: 90%; margin: auto; position: relative;"
+  <div
+    class="linechart-wrapper"
+    style="width: 90%; margin: auto; position: relative;"
+  >
+    <svg
+      class="_lineChart_e63f4d"
+      height="322"
+      style="background-color: white;"
+      width="500"
     >
-      <svg
-        class="_lineChart_e63f4d"
-        height="322"
-        style="background-color: white;"
-        width="500"
+      <g
+        transform="translate(25, 8)"
       >
         <g
-          transform="translate(25, 8)"
+          class="_legendItem_e3a0a2 Nasjonalt"
+          opacity="1"
+          transform="translate(0,0)"
+        >
+          <text
+            dy="0.35em"
+            fill="#2D3034"
+            font-size="0.9rem"
+            text-anchor="start"
+            x="0"
+            y="0"
+          >
+             
+            Nasjonalt
+          </text>
+          <line
+            stroke="#00263d"
+            stroke-linecap="round"
+            stroke-width="4"
+            x1="0"
+            y1="15"
+            y2="15"
+          />
+        </g>
+      </g>
+      <g
+        transform="translate(25, 38)"
+      >
+        <g
+          class="x-axis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          text-anchor="middle"
+          transform="translate(0, 208)"
         >
           <g
-            class="_legendItem_e3a0a2 Nasjonalt"
+            class="tick"
             opacity="1"
-            transform="translate(0,0)"
+            transform="translate(0.5,0)"
           >
             <text
-              dy="0.35em"
-              fill="#2D3034"
-              font-size="0.9rem"
-              text-anchor="start"
-              x="0"
-              y="0"
+              dy="0.71em"
+              fill="#828586"
+              style="font-size: 16.075px;"
+              y="21.64"
             >
-               
-              Nasjonalt
+              2016
             </text>
-            <line
-              stroke="#00263d"
-              stroke-linecap="round"
-              stroke-width="4"
-              x1="0"
-              y1="15"
-              y2="15"
-            />
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(135.5,0)"
+          >
+            <text
+              dy="0.71em"
+              fill="#828586"
+              style="font-size: 16.075px;"
+              y="21.64"
+            >
+              2017
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(270.5,0)"
+          >
+            <text
+              dy="0.71em"
+              fill="#828586"
+              style="font-size: 16.075px;"
+              y="21.64"
+            >
+              2018
+            </text>
+          </g>
+          <g
+            class="tick"
+            opacity="1"
+            transform="translate(405.5,0)"
+          >
+            <text
+              dy="0.71em"
+              fill="#828586"
+              style="font-size: 16.075px;"
+              y="21.64"
+            >
+              2019
+            </text>
           </g>
         </g>
         <g
-          transform="translate(25, 38)"
+          class="y-axis"
+          fill="none"
+          font-family="sans-serif"
+          font-size="10"
+          text-anchor="start"
         >
-          <g
-            class="x-axis"
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            text-anchor="middle"
-            transform="translate(0, 208)"
+          <text
+            fill="#2D3034"
+            style="font-size: 15.1px;"
+            transform="rotate(-90)"
+            x="-138.66666666666666"
+            y="465.74999999999994"
           >
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0.5,0)"
-            >
-              <text
-                dy="0.71em"
-                fill="#828586"
-                style="font-size: 16.075px;"
-                y="21.64"
-              >
-                2016
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(135.5,0)"
-            >
-              <text
-                dy="0.71em"
-                fill="#828586"
-                style="font-size: 16.075px;"
-                y="21.64"
-              >
-                2017
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(270.5,0)"
-            >
-              <text
-                dy="0.71em"
-                fill="#828586"
-                style="font-size: 16.075px;"
-                y="21.64"
-              >
-                2018
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(405.5,0)"
-            >
-              <text
-                dy="0.71em"
-                fill="#828586"
-                style="font-size: 16.075px;"
-                y="21.64"
-              >
-                2019
-              </text>
-            </g>
-          </g>
+            Antall
+          </text>
           <g
-            class="y-axis"
-            fill="none"
-            font-family="sans-serif"
-            font-size="10"
-            text-anchor="start"
+            class="tick"
+            opacity="1"
+            transform="translate(0,170.29591836734693)"
           >
+            <line
+              stroke="#D2D3D4"
+              x2="405"
+            />
             <text
-              fill="#2D3034"
-              style="font-size: 15.1px;"
-              transform="rotate(-90)"
-              x="-138.66666666666666"
-              y="465.74999999999994"
+              dy="0.32em"
+              fill="#828586"
+              style="font-size: 12.16px;"
+              x="408"
             >
-              Antall
+              0,1
             </text>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,170.29591836734693)"
-            >
-              <line
-                stroke="#D2D3D4"
-                x2="405"
-              />
-              <text
-                dy="0.32em"
-                fill="#828586"
-                style="font-size: 12.16px;"
-                x="408"
-              >
-                0,1
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,127.84693877551021)"
-            >
-              <line
-                stroke="#D2D3D4"
-                x2="405"
-              />
-              <text
-                dy="0.32em"
-                fill="#828586"
-                style="font-size: 12.16px;"
-                x="408"
-              >
-                0,2
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,85.39795918367346)"
-            >
-              <line
-                stroke="#D2D3D4"
-                x2="405"
-              />
-              <text
-                dy="0.32em"
-                fill="#828586"
-                style="font-size: 12.16px;"
-                x="408"
-              >
-                0,3
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,42.94897959183673)"
-            >
-              <line
-                stroke="#D2D3D4"
-                x2="405"
-              />
-              <text
-                dy="0.32em"
-                fill="#828586"
-                style="font-size: 12.16px;"
-                x="408"
-              >
-                0,4
-              </text>
-            </g>
-            <g
-              class="tick"
-              opacity="1"
-              transform="translate(0,0.5)"
-            >
-              <line
-                stroke="#D2D3D4"
-                x2="405"
-              />
-              <text
-                dy="0.32em"
-                fill="#828586"
-                style="font-size: 12.16px;"
-                x="408"
-              >
-                0,5
-              </text>
-            </g>
           </g>
           <g
-            class="levels"
+            class="tick"
+            opacity="1"
+            transform="translate(0,127.84693877551021)"
           >
-            <rect
-              class="level"
-              data-testid="level-high"
-              fill="#3baa34"
-              height="80.65306122448979"
-              opacity="0.2"
-              width="405"
-              x="0"
-              y="127.34693877551021"
+            <line
+              stroke="#D2D3D4"
+              x2="405"
             />
-            <rect
-              class="level"
-              data-testid="level-mid"
-              fill="#fd9c00"
-              height="42.448979591836746"
-              opacity="0.2"
-              width="405"
-              x="0"
-              y="84.89795918367346"
-            />
-            <rect
-              class="level"
-              data-testid="level-low"
-              fill="#e30713"
-              height="84.89795918367346"
-              opacity="0.2"
-              width="405"
-              x="0"
-              y="0"
-            />
+            <text
+              dy="0.32em"
+              fill="#828586"
+              style="font-size: 12.16px;"
+              x="408"
+            >
+              0,2
+            </text>
           </g>
           <g
-            class="linesComplete"
+            class="tick"
+            opacity="1"
+            transform="translate(0,85.39795918367346)"
           >
-            <path
-              class="line"
-              d="M270,123.909L135,39.011L0,177.861"
-              fill="none"
-              opacity="1"
-              stroke="#00263d"
-              style="stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
+            <line
+              stroke="#D2D3D4"
+              x2="405"
             />
+            <text
+              dy="0.32em"
+              fill="#828586"
+              style="font-size: 12.16px;"
+              x="408"
+            >
+              0,3
+            </text>
           </g>
           <g
-            class="linesIncomplete"
+            class="tick"
+            opacity="1"
+            transform="translate(0,42.94897959183673)"
           >
-            <path
-              class="line"
-              d="M405,166.358L270,123.909"
-              fill="none"
-              opacity="1"
-              stroke="#00263d"
-              style="stroke-width: 3; stroke-dasharray: 10, 10; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
+            <line
+              stroke="#D2D3D4"
+              x2="405"
             />
+            <text
+              dy="0.32em"
+              fill="#828586"
+              style="font-size: 12.16px;"
+              x="408"
+            >
+              0,4
+            </text>
           </g>
           <g
-            class="dots"
+            class="tick"
+            opacity="1"
+            transform="translate(0,0.5)"
           >
-            <circle
-              class="dot"
-              cx="405"
-              cy="166.35755102040815"
-              fill="#00263d"
-              opacity="1"
-              r="4"
-              stroke="#00263d"
-              style="mix-blend-mode: multiply;"
+            <line
+              stroke="#D2D3D4"
+              x2="405"
             />
-            <circle
-              class="dot"
-              cx="270"
-              cy="123.9085714285714"
-              fill="#00263d"
-              opacity="1"
-              r="4"
-              stroke="#00263d"
-              style="mix-blend-mode: multiply;"
-            />
-            <circle
-              class="dot"
-              cx="135"
-              cy="39.01061224489794"
-              fill="#00263d"
-              opacity="1"
-              r="4"
-              stroke="#00263d"
-              style="mix-blend-mode: multiply;"
-            />
-            <circle
-              class="dot"
-              cx="0"
-              cy="177.86122448979592"
-              fill="#00263d"
-              opacity="1"
-              r="4"
-              stroke="#00263d"
-              style="mix-blend-mode: multiply;"
-            />
+            <text
+              dy="0.32em"
+              fill="#828586"
+              style="font-size: 12.16px;"
+              x="408"
+            >
+              0,5
+            </text>
           </g>
         </g>
-      </svg>
-    </div>
+        <g
+          class="levels"
+        >
+          <rect
+            class="level"
+            data-testid="level-high"
+            fill="#3baa34"
+            height="80.65306122448979"
+            opacity="0.2"
+            width="405"
+            x="0"
+            y="127.34693877551021"
+          />
+          <rect
+            class="level"
+            data-testid="level-mid"
+            fill="#fd9c00"
+            height="42.448979591836746"
+            opacity="0.2"
+            width="405"
+            x="0"
+            y="84.89795918367346"
+          />
+          <rect
+            class="level"
+            data-testid="level-low"
+            fill="#e30713"
+            height="84.89795918367346"
+            opacity="0.2"
+            width="405"
+            x="0"
+            y="0"
+          />
+        </g>
+        <g
+          class="linesComplete"
+        >
+          <path
+            class="line"
+            d="M270,123.909L135,39.011L0,177.861"
+            fill="none"
+            opacity="1"
+            stroke="#00263d"
+            style="stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
+          />
+        </g>
+        <g
+          class="linesIncomplete"
+        >
+          <path
+            class="line"
+            d="M405,166.358L270,123.909"
+            fill="none"
+            opacity="1"
+            stroke="#00263d"
+            style="stroke-width: 3; stroke-dasharray: 10, 10; stroke-linejoin: round; stroke-linecap: round; mix-blend-mode: multiply;"
+          />
+        </g>
+        <g
+          class="dots"
+        >
+          <circle
+            class="dot"
+            cx="405"
+            cy="166.35755102040815"
+            fill="#00263d"
+            opacity="1"
+            r="4"
+            stroke="#00263d"
+            style="mix-blend-mode: multiply;"
+          />
+          <circle
+            class="dot"
+            cx="270"
+            cy="123.9085714285714"
+            fill="#00263d"
+            opacity="1"
+            r="4"
+            stroke="#00263d"
+            style="mix-blend-mode: multiply;"
+          />
+          <circle
+            class="dot"
+            cx="135"
+            cy="39.01061224489794"
+            fill="#00263d"
+            opacity="1"
+            r="4"
+            stroke="#00263d"
+            style="mix-blend-mode: multiply;"
+          />
+          <circle
+            class="dot"
+            cx="0"
+            cy="177.86122448979592"
+            fill="#00263d"
+            opacity="1"
+            r="4"
+            stroke="#00263d"
+            style="mix-blend-mode: multiply;"
+          />
+        </g>
+      </g>
+    </svg>
   </div>
 </div>
 `;

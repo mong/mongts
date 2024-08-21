@@ -158,7 +158,7 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
 
   return (
     <div style={{ margin: 40 }}>
-      <div>
+      <>
         <HeatMap
           heatmapData={heatmapData}
           width={width}
@@ -166,8 +166,8 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
           maxBoxWidth={maxBoxWidth}
           separation={gap}
         ></HeatMap>
-      </div>
-      <div>
+      </>
+      <>
         <h3>Indikatorer</h3>
         <ol>
           {sortedIndIDs.map((indIDRow, index) => {
@@ -181,7 +181,7 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
             ) : null;
           })}
         </ol>
-      </div>
+      </>
     </div>
   );
 };

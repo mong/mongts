@@ -131,26 +131,26 @@ const ToolTipBox = (props: ToolTipBoxProps) => {
   const dataPointInfo = indicatorQuery.data[0] as Indicator;
 
   return (
-    <div>
-      <div>{dataPointInfo.unit_name}</div>
-      <div>{dataPointInfo.year}</div>
-      <div>
-        {[
-          dataPointInfo.sformat
-            ? customFormat(dataPointInfo.sformat, lang)(y)
-            : y.toString(),
-          " ",
-          newLevelSymbols(level(dataPointInfo)),
-        ]}
-      </div>
-      <div>
-        {dataPointInfo.type === "andel"
-          ? Math.round(dataPointInfo.var * dataPointInfo.denominator) +
-            " av " +
-            dataPointInfo.denominator
-          : null}
-      </div>
-    </div>
+    <>
+      {dataPointInfo.unit_name}
+      <br />
+      {dataPointInfo.year}
+      <br />
+
+      {[
+        dataPointInfo.sformat
+          ? customFormat(dataPointInfo.sformat, lang)(y)
+          : y.toString(),
+        " ",
+        newLevelSymbols(level(dataPointInfo)),
+      ]}
+      <br />
+      {dataPointInfo.type === "andel"
+        ? Math.round(dataPointInfo.var * dataPointInfo.denominator) +
+          " av " +
+          dataPointInfo.denominator
+        : null}
+    </>
   );
 };
 

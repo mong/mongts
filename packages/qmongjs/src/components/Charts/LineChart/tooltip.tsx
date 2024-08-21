@@ -45,7 +45,7 @@ export const LineChartTooltip = ({
           >
             {tooltipData.unit_name}
           </div>
-          <div>{tooltipData.year}</div>
+          {tooltipData.year}
           <IndicatorData
             headerStyle={{ fontSize: "1rem" }}
             indicatorData={tooltipData}

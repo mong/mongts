@@ -15,13 +15,13 @@ export const Layout = ({ children }: Props) => {
   }, [setOrigin]);
 
   return (
-    <div>
+    <>
       <Head>
         <title>SKDE - Kvalitetsregistre</title>
       </Head>
       <Header />
       {children}
       <Footer />
-    </div>
+    </>
   );
 };

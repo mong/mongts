@@ -183,13 +183,13 @@ export const SelectedRegister = ({ registerNames }: SelectedRegisterProps) => {
 
   const placeholder =
     tab === "opptaksomraade" ? (
-      <div>
+      <>
         <i className="fas fa-search" /> Søk etter opptaksområder
-      </div>
+      </>
     ) : (
-      <div>
+      <>
         <i className="fas fa-search" /> Søk etter behandlingsenheter
-      </div>
+      </>
     );
 
   return (
