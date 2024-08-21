@@ -1,5 +1,7 @@
 FROM node:20.14.0-alpine AS base
 
+ENV NODE_ENV=production
+
 FROM base AS builder
 
 WORKDIR /app
@@ -20,17 +22,15 @@ RUN corepack enable
 
 # First install the dependencies (as they change less often)
 COPY --from=builder /app/out/json/ .
-RUN yarn workspaces focus --production
-# RUN yarn install
+RUN yarn install
  
 # Build the project
 COPY --from=builder /app/out/full/ .
-RUN yarn turbo run build --filter=api...
+RUN yarn workspace api build && yarn workspaces focus api --production
 
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV=production
 COPY --from=installer /app/apps/api/build ./build
 COPY --from=installer /app/node_modules ./node_modules
 EXPOSE 80
