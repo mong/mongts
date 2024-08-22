@@ -18,7 +18,7 @@ type FooterProps = {
     | "helseatlas"
     | "sykehusprofil"
     | "pasientstrømmer";
-  maxWidth: false | Breakpoint;
+  maxWidth?: false | Breakpoint;
 };
 
 export const Footer = ({ page, maxWidth }: FooterProps) => {
