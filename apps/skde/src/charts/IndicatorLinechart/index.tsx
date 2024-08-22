@@ -206,6 +206,16 @@ const IndicatorLinechart = (indicatorParams: IndicatorLinechartParams) => {
     chartData = normaliseChartData(chartData);
   }
 
+  // Visx defaults to 10 ticks on the y axis.
+  // If the maximum count is less than 10, specify the number of ticks.
+  let maxYTicks: number;
+
+  if (!normalise) {
+    maxYTicks = Math.max(...chartData.flat().map((row) => row.y));
+  } else {
+    maxYTicks = undefined;
+  }
+
   return (
     <LinechartBase
       data={chartData}
@@ -222,6 +232,7 @@ const IndicatorLinechart = (indicatorParams: IndicatorLinechartParams) => {
       yMax={indicatorParams.yMax}
       format_y={normalise ? ",.0%" : ",.0f"}
       useTooltip={indicatorParams.useToolTip}
+      numYTicks={maxYTicks < 10 ? maxYTicks : undefined}
     />
   );
 };
