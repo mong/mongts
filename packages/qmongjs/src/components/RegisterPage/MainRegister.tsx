@@ -119,13 +119,13 @@ export const MainRegister = ({ registerNames }: MainRegisterProps) => {
   }
   const placeholder =
     tab === "opptaksomraade" ? (
-      <div>
+      <>
         <i className="fas fa-search" /> Søk etter opptaksområder
-      </div>
+      </>
     ) : (
-      <div>
+      <>
         <i className="fas fa-search" /> Søk etter behandlingsenheter
-      </div>
+      </>
     );
   return (
     <div className={styles.appContainer} style={{ minHeight: "100vh" }}>

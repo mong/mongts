@@ -415,40 +415,48 @@ export const Skde = (): JSX.Element => {
                     alignContent="center"
                     style={{ textAlign: "center" }}
                   >
-                    <div style={{ display: "flex", justifyContent: "center" }}>
-                      <div
-                        style={{
-                          display: "flex",
-                          width: 300,
-                          height: 300,
-                          justifyContent: "center",
-                        }}
-                      >
-                        <img
-                          src={imgSrc}
-                          onError={() =>
-                            setImgSrc("/img/forsidebilder/Sykehus.jpg")
-                          }
-                          alt={"Logo"}
-                          width="100%"
-                          height="100%"
-                          style={{
-                            borderRadius: "100%",
-                            maxWidth: "100%",
-                            objectFit: "cover",
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </Grid>
-
-                  <Grid xs={6} sm={6} lg={4} xl={4} xxl={4}>
                     <div
                       style={{
                         display: "flex",
-                        flexDirection: "column",
-                        height: "400px",
+                        width: "100%",
+                        height: "100%",
+                        alignItems: "center",
                       }}
+                    >
+                      <svg
+                        width={"100%"}
+                        height={"100%"}
+                        viewBox={`0 0 ${mapWidth} ${mapHeight}`}
+                        style={{ backgroundColor: "none", maxHeight: "400px" }}
+                      >
+                        {mapData &&
+                          mapData.features.map((d, i) => {
+                            return (
+                              <path
+                                key={`map-feature-${i}`}
+                                d={pathGenerator(d.geometry)}
+                                fill={
+                                  objectIDList &&
+                                  objectIDList.includes(d.properties.BoHF_num)
+                                    ? abacusColors[2]
+                                    : mapColors[1]
+                                }
+                                stroke={"black"}
+                                strokeWidth={0.4}
+                                className={i + ""}
+                              />
+                            );
+                          })}
+                      </svg>
+                    </div>
+                  </Grid>
+
+                  <Grid xs={12} sm={6} lg={4} xl={4} xxl={4}>
+                    <Stack
+                      direction="column"
+                      alignItems="center"
+                      justifyContent="space-between"
+                      height={550}
                     >
                       <Typography
                         variant="h5"
@@ -460,42 +468,35 @@ export const Skde = (): JSX.Element => {
                             selectedTreatmentUnits[0],
                           )}
                       </Typography>
-
                       <div
-                        style={{
-                          width: "100%",
-                          height: "100%",
-                          margin: "auto",
-                        }}
+                        style={{ display: "flex", justifyContent: "center" }}
                       >
-                        <svg
-                          width={"400px"}
-                          height={"100%"}
-                          viewBox={`0 0 ${mapWidth} ${mapHeight}`}
-                          style={{ backgroundColor: "none" }}
+                        <div
+                          style={{
+                            display: "flex",
+                            width: 300,
+                            height: 300,
+                            justifyContent: "center",
+                          }}
                         >
-                          {mapData &&
-                            mapData.features.map((d, i) => {
-                              return (
-                                <path
-                                  key={`map-feature-${i}`}
-                                  d={pathGenerator(d.geometry)}
-                                  fill={
-                                    objectIDList &&
-                                    objectIDList.includes(d.properties.BoHF_num)
-                                      ? abacusColors[2]
-                                      : mapColors[1]
-                                  }
-                                  stroke={"black"}
-                                  strokeWidth={0.4}
-                                  className={i + ""}
-                                />
-                              );
-                            })}
-                        </svg>
+                          <img
+                            src={imgSrc}
+                            onError={() =>
+                              setImgSrc("/img/forsidebilder/Sykehus.jpg")
+                            }
+                            alt={"Logo"}
+                            width="100%"
+                            height="100%"
+                            style={{
+                              borderRadius: "100%",
+                              maxWidth: "100%",
+                              objectFit: "cover",
+                            }}
+                          />
+                        </div>
                       </div>
 
-                      <div style={{ marginTop: "auto" }}>
+                      <div>
                         {unitUrl ? (
                           <ArrowLink
                             href={unitUrl}
@@ -506,10 +507,10 @@ export const Skde = (): JSX.Element => {
                           />
                         ) : null}
                       </div>
-                    </div>
+                    </Stack>
                   </Grid>
 
-                  <Grid xs={6} sm={6} lg={4} xl={4} xxl={4}>
+                  <Grid xs={12} sm={6} lg={4} xl={4} xxl={4}>
                     <ItemBox
                       height={450}
                       sx={{ overflow: "auto", marginRight: 2 }}
