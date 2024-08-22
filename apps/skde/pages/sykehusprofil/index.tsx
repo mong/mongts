@@ -145,6 +145,30 @@ export const Skde = (): JSX.Element => {
 
   const shouldRefreshInitialState = prerenderFinished;
 
+  // Callback function for initialising the filter meny
+  const initialiseFilter = (
+    filterInput: Map<string, FilterSettingsValue[]>,
+  ) => {
+    const newUnit = filterInput.get(treatmentUnitsKey).map((el) => el.value);
+
+    setImgSrc("/img/forsidebilder/" + newUnit[0] + ".jpg");
+
+    let unitUrl: URLs | undefined;
+    if (unitUrlsQuery.data) {
+      unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
+        return row.shortName === newUnit[0];
+      });
+    }
+
+    setObjectIDList(mapUnitName2BohfNames(treatmentUnits.treedata, newUnit[0]));
+
+    if (unitUrl && unitUrl[0]) {
+      setUnitUrl(unitUrl[0].url);
+    } else {
+      setUnitUrl(null);
+    }
+  };
+
   // Callback function for updating the filter menu
   const handleChange = (filterInput: FilterSettings) => {
     const newUnit = filterInput.map
@@ -377,9 +401,7 @@ export const Skde = (): JSX.Element => {
                 <FilterMenu
                   refreshState={shouldRefreshInitialState}
                   onSelectionChanged={handleChange}
-                  onFilterInitialized={() => {
-                    return null;
-                  }}
+                  onFilterInitialized={initialiseFilter}
                 >
                   <TreeViewFilterSection
                     refreshState={shouldRefreshInitialState}
