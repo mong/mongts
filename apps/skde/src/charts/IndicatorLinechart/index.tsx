@@ -212,8 +212,6 @@ const IndicatorLinechart = (indicatorParams: IndicatorLinechartParams) => {
 
   if (!normalise) {
     maxYTicks = Math.max(...chartData.flat().map((row) => row.y));
-  } else {
-    maxYTicks = undefined;
   }
 
   return (
