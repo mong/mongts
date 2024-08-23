@@ -566,12 +566,12 @@ export const Skde = (): JSX.Element => {
                 <div style={{ margin: textMargin }}>
                   <Typography variant="body1">
                     {"Grafen viser andel eller antall av alle kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistre for " +
-                      unitNamesQuery.data &&
-                      getUnitFullName(
-                        unitNamesQuery.data.nestedUnitNames,
-                        selectedTreatmentUnits[0],
-                      ) +
-                        ". Grafen viser hvilke som har hatt høy, middels eller lav måloppnåelse de siste årene."}
+                      (unitNamesQuery.data &&
+                        getUnitFullName(
+                          unitNamesQuery.data.nestedUnitNames,
+                          selectedTreatmentUnits[0],
+                        )) +
+                      ". Grafen viser hvilke som har hatt høy, middels eller lav måloppnåelse de siste årene."}
                   </Typography>
                   <div
                     style={{
