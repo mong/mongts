@@ -539,14 +539,8 @@ export const Skde = (): JSX.Element => {
                       sx={{ overflow: "auto", marginRight: 2 }}
                     >
                       <Typography variant="h5" style={titleStyle}>
-                        Tilknyttede enheter
+                        Tilknyttede behandlingssteder
                       </Typography>
-                      <div style={{ margin: textMargin }}>
-                        <Typography variant="body1">
-                          Her vises behandlingssteder som er tilhørende til
-                          valgt helseforetak.
-                        </Typography>
-                      </div>
                       {unitNamesQuery.data ? (
                         <SubUnits
                           RHFs={unitNamesQuery.data.nestedUnitNames}
