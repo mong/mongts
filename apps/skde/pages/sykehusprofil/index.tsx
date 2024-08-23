@@ -308,7 +308,8 @@ export const Skde = (): JSX.Element => {
 
   const headerData: HeaderData = {
     title: "Sykehusprofil",
-    subtitle: "Resultater fra sykehus",
+    subtitle:
+      "Her vises alle kvalitetsindikatorer fra nasjonale medisinske kvalitetsregistre i form av sykehusprofiler",
   };
 
   const boxMaxHeight = 800;
