@@ -16,3 +16,14 @@ Starte opp `api`:
 yarn install
 yarn start # start opp api på http://localhost:4000, som qmongjs kan bruke
 ```
+
+## Kjøre Dockerfile lokalt
+
+Dette gjøres på roten av repoet.
+
+```sh
+docker build -t api -f apps/api/Dockerfile .
+docker run -e ORIGIN="somestring" -p 3030:80 api # Kjører ikke hvis ORIGIN ikke defineres som en miljøvariabel
+```
+
+Hvis man ønsker å teste spørring mot lokal database kan man enkelt gjøre det ved å bruke docker-compose-fila til imongr.
