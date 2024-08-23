@@ -308,7 +308,8 @@ export const Skde = (): JSX.Element => {
 
   const headerData: HeaderData = {
     title: "Sykehusprofil",
-    subtitle: "Resultater fra sykehus",
+    subtitle:
+      "Her vises alle kvalitetsindikatorer fra nasjonale medisinske kvalitetsregistre i form av sykehusprofiler",
   };
 
   const boxMaxHeight = 800;
@@ -388,7 +389,7 @@ export const Skde = (): JSX.Element => {
               <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
                 <h3>
                   {selectedTreatmentUnits[0] === "Nasjonalt"
-                    ? "Velg enhet"
+                    ? "Velg behandlingssted"
                     : selectedTreatmentUnits[0]}
                 </h3>
               </AccordionSummary>
@@ -538,14 +539,8 @@ export const Skde = (): JSX.Element => {
                       sx={{ overflow: "auto", marginRight: 2 }}
                     >
                       <Typography variant="h5" style={titleStyle}>
-                        Tilknyttede enheter
+                        Tilknyttede behandlingssteder
                       </Typography>
-                      <div style={{ margin: textMargin }}>
-                        <Typography variant="body1">
-                          Her vises behandlingssteder som er tilhørende til
-                          valgt helseforetak.
-                        </Typography>
-                      </div>
                       {unitNamesQuery.data ? (
                         <SubUnits
                           RHFs={unitNamesQuery.data.nestedUnitNames}
@@ -565,10 +560,13 @@ export const Skde = (): JSX.Element => {
                 </Typography>
                 <div style={{ margin: textMargin }}>
                   <Typography variant="body1">
-                    Grafen viser andel eller antall av alle kvalitetsindikatorer
-                    fra de nasjonale medisinske kvalitetsregistre. Grafen viser
-                    hvilke som har hatt høy, middels eller lav måloppnåelse de
-                    siste årene.
+                    {"Grafen viser andel eller antall av alle kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistre for " +
+                      (unitNamesQuery.data &&
+                        getUnitFullName(
+                          unitNamesQuery.data.nestedUnitNames,
+                          selectedTreatmentUnits[0],
+                        )) +
+                      ". Grafen viser hvilke som har hatt høy, middels eller lav måloppnåelse de siste årene."}
                   </Typography>
                   <div
                     style={{
@@ -637,10 +635,13 @@ export const Skde = (): JSX.Element => {
                 </Typography>
                 <div style={{ margin: textMargin }}>
                   <Typography variant="body1">
-                    Liste over kvalitetsindikatorer med beskrivelse som er
-                    fordelt på høy, middels eller lav måloppnåelse. Du kan
-                    trykke på indikatorene for å se datakvaliteten og mer
-                    beskrivelse av indikatorene.
+                    {"Liste over kvalitetsindikatorer med beskrivelse for " +
+                      (unitNamesQuery.data &&
+                        getUnitFullName(
+                          unitNamesQuery.data.nestedUnitNames,
+                          selectedTreatmentUnits[0],
+                        )) +
+                      " fordelt på høy, middels eller lav måloppnåelse."}
                   </Typography>
                 </div>
                 <LowLevelIndicatorList
