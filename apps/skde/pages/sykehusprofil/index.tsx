@@ -566,11 +566,12 @@ export const Skde = (): JSX.Element => {
                 <div style={{ margin: textMargin }}>
                   <Typography variant="body1">
                     {"Grafen viser andel eller antall av alle kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistre for " +
+                      unitNamesQuery.data &&
                       getUnitFullName(
                         unitNamesQuery.data.nestedUnitNames,
                         selectedTreatmentUnits[0],
                       ) +
-                      ". Grafen viser hvilke som har hatt høy, middels eller lav måloppnåelse de siste årene."}
+                        ". Grafen viser hvilke som har hatt høy, middels eller lav måloppnåelse de siste årene."}
                   </Typography>
                   <div
                     style={{
@@ -639,12 +640,13 @@ export const Skde = (): JSX.Element => {
                 </Typography>
                 <div style={{ margin: textMargin }}>
                   <Typography variant="body1">
-                    {"Liste over kvalitetsindikatorer med beskrivelse som er fordelt på høy, middels eller lav måloppnåelse for " +
-                      getUnitFullName(
-                        unitNamesQuery.data.nestedUnitNames,
-                        selectedTreatmentUnits[0],
-                      ) +
-                      " ."}
+                    {"Liste over kvalitetsindikatorer med beskrivelse for " +
+                      (unitNamesQuery.data &&
+                        getUnitFullName(
+                          unitNamesQuery.data.nestedUnitNames,
+                          selectedTreatmentUnits[0],
+                        )) +
+                      " fordelt på høy, middels eller lav måloppnåelse."}
                   </Typography>
                 </div>
                 <LowLevelIndicatorList
