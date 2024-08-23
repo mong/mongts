@@ -195,9 +195,8 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
             <Grid xs={12} sm={6} md={4}>
               <Stack>
                 <b>BESØKSADRESSE</b>
-                <text>Sykehusvegen 23</text>
-                <text>9019 TROMSØ</text>
-
+                Sykehusvegen 23 <br />
+                9019 TROMSØ
                 <StyledLink href={"https://maps.app.goo.gl/ohLzsYb8v6YvEDfL9"}>
                   Vis kart
                 </StyledLink>
@@ -207,7 +206,7 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
             <Grid xs={12} md={4}>
               <Stack>
                 <b>ORGANISASJONSNUMMER</b>
-                <text>990803765</text>
+                990803765
               </Stack>
             </Grid>
           </Grid>
