@@ -14,7 +14,7 @@ type HeaderProps = {
 export const Header = (props: HeaderProps) => {
   return (
     <>
-      <HeaderTop breadcrumbs={props.breadcrumbs} />
+      <HeaderTop breadcrumbs={props.breadcrumbs} maxWidth={props.maxWidth} />
       <HeaderMiddle
         children={props.children}
         bgcolor={props.bgcolor}

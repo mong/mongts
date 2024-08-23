@@ -32,7 +32,7 @@ export const Footer = ({ page, maxWidth }: FooterProps) => {
   return (
     <Grid container style={{ color: "white", marginTop: 20 }}>
       <div style={{ backgroundColor: "#333", width: "100%" }}>
-        <Container maxWidth={maxWidth}>
+        <Container maxWidth={maxWidth} disableGutters={true}>
           <Grid
             xs={12}
             container
@@ -79,7 +79,7 @@ export const Footer = ({ page, maxWidth }: FooterProps) => {
       </div>
 
       <div style={{ backgroundColor: "#1A1A1A", width: "100%" }}>
-        <Container maxWidth={maxWidth}>
+        <Container maxWidth={maxWidth} disableGutters={true}>
           <Grid
             xs={12}
             container

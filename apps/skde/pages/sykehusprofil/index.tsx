@@ -427,7 +427,7 @@ export const Skde = (): JSX.Element => {
           </ClickAwayListener>
         </Header>
 
-        <Container maxWidth={maxWidth}>
+        <Container maxWidth={maxWidth} disableGutters={true}>
           <Box marginTop={2} className="hospital-profile-box">
             <Grid container spacing={2}>
               <Grid xs={12}>

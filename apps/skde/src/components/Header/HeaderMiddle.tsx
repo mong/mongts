@@ -26,7 +26,7 @@ export const HeaderMiddle = (props: HeaderMiddleProps) => {
       sx={{ bgcolor: props.bgcolor || "primary.light" }}
       className="header-middle"
     >
-      <Container maxWidth={props.maxWidth}>
+      <Container maxWidth={props.maxWidth} disableGutters={true}>
         <Grid container spacing={2} rowSpacing={6}>
           <Grid xs={12}>
             <Typography variant="h1">{props.headerData.title}</Typography>

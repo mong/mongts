@@ -1,7 +1,7 @@
-import { AppBar, styled } from "@mui/material";
+import { AppBar, Breakpoint, styled, Container } from "@mui/material";
 import { TreatmentQualityToolbar } from "./TreatmentQualityToolbar";
 import { Header, HeaderData, BreadCrumbPath } from "../Header";
-import { ArrowLink } from "qmongjs";
+import { ArrowLink, skdeTheme } from "qmongjs";
 
 const StyledAppBar = styled(AppBar)(() => ({
   elevation: 0,
@@ -11,6 +11,7 @@ type AppBarProps = {
   openDrawer: () => void;
   context;
   onTabChanged;
+  maxWidth: false | Breakpoint;
 };
 
 const breadcrumbs: BreadCrumbPath = {
@@ -29,10 +30,15 @@ const TreatmentQualityAppBar = ({
   openDrawer,
   context,
   onTabChanged,
+  maxWidth,
 }: AppBarProps) => {
   return (
     <>
-      <Header headerData={headerData} breadcrumbs={breadcrumbs}>
+      <Header
+        headerData={headerData}
+        breadcrumbs={breadcrumbs}
+        maxWidth={maxWidth}
+      >
         <ArrowLink
           href={"https://www.kvalitetsregistre.no/"}
           text={"Om kvalitetsregistre"}
@@ -41,13 +47,17 @@ const TreatmentQualityAppBar = ({
           textVariant="button"
         />
       </Header>
-      <StyledAppBar position="sticky" elevation={0}>
-        <TreatmentQualityToolbar
-          openDrawer={openDrawer}
-          onTabChanged={onTabChanged}
-          context={context}
-        />
-      </StyledAppBar>
+      <div style={{ backgroundColor: skdeTheme.palette.primary.light }}>
+        <Container maxWidth={maxWidth} disableGutters={true}>
+          <StyledAppBar position="sticky" elevation={0}>
+            <TreatmentQualityToolbar
+              openDrawer={openDrawer}
+              onTabChanged={onTabChanged}
+              context={context}
+            />
+          </StyledAppBar>
+        </Container>
+      </div>
     </>
   );
 };
