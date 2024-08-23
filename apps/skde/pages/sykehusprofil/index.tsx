@@ -565,10 +565,12 @@ export const Skde = (): JSX.Element => {
                 </Typography>
                 <div style={{ margin: textMargin }}>
                   <Typography variant="body1">
-                    Grafen viser andel eller antall av alle kvalitetsindikatorer
-                    fra de nasjonale medisinske kvalitetsregistre. Grafen viser
-                    hvilke som har hatt høy, middels eller lav måloppnåelse de
-                    siste årene.
+                    {"Grafen viser andel eller antall av alle kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistre for " +
+                      getUnitFullName(
+                        unitNamesQuery.data.nestedUnitNames,
+                        selectedTreatmentUnits[0],
+                      ) +
+                      ". Grafen viser hvilke som har hatt høy, middels eller lav måloppnåelse de siste årene."}
                   </Typography>
                   <div
                     style={{
@@ -637,10 +639,12 @@ export const Skde = (): JSX.Element => {
                 </Typography>
                 <div style={{ margin: textMargin }}>
                   <Typography variant="body1">
-                    Liste over kvalitetsindikatorer med beskrivelse som er
-                    fordelt på høy, middels eller lav måloppnåelse. Du kan
-                    trykke på indikatorene for å se datakvaliteten og mer
-                    beskrivelse av indikatorene.
+                    {"Liste over kvalitetsindikatorer med beskrivelse som er fordelt på høy, middels eller lav måloppnåelse for " +
+                      getUnitFullName(
+                        unitNamesQuery.data.nestedUnitNames,
+                        selectedTreatmentUnits[0],
+                      ) +
+                      " ."}
                   </Typography>
                 </div>
                 <LowLevelIndicatorList
