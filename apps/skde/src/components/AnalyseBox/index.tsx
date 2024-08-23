@@ -18,7 +18,6 @@ import { useTheme } from "@mui/material/styles";
 
 import { AnalyseData, Tag } from "../../types";
 import { AnalyseBarChart } from "./AnalyseBarChart";
-import { AnalysePieChart } from "./AnalysePieChart";
 import { AnalyseLineChart } from "./AnalyseLineChart";
 
 const capitalize = (s: string) => s[0].toUpperCase() + s.slice(1);
@@ -36,9 +35,7 @@ export const AnalyseBox = ({ analyse, tagsMetadata }: AnalyseBoxProps) => {
 
   const [year, setYear] = React.useState(Math.max(...years));
   const [level, setLevel] = React.useState<"region" | "sykehus">("sykehus");
-  const [view, setView] = React.useState<"barchart" | "tidstrend" | "kake">(
-    "barchart",
-  );
+  const [view, setView] = React.useState<"barchart" | "tidstrend">("barchart");
   const [expanded, setExpanded] = React.useState(false);
 
   const tags = (
@@ -135,12 +132,11 @@ export const AnalyseBox = ({ analyse, tagsMetadata }: AnalyseBoxProps) => {
                 value={view}
                 label="Visning"
                 onChange={(e) =>
-                  setView(e.target.value as "barchart" | "tidstrend" | "kake")
+                  setView(e.target.value as "barchart" | "tidstrend")
                 }
               >
-                <MenuItem value={"barchart"}>Enkleltår</MenuItem>
+                <MenuItem value={"barchart"}>Enkeltår</MenuItem>
                 <MenuItem value={"tidstrend"}>Tidstrend</MenuItem>
-                <MenuItem value={"kake"}>Folkelig</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -176,10 +172,8 @@ export const AnalyseBox = ({ analyse, tagsMetadata }: AnalyseBoxProps) => {
         <Paper elevation={0} className={classNames["chart-container"]}>
           {view === "barchart" ? (
             <AnalyseBarChart analyse={analyse} year={year} level={level} />
-          ) : view === "tidstrend" ? (
-            <AnalyseLineChart analyse={analyse} years={years} level={level} />
           ) : (
-            <AnalysePieChart analyse={analyse} year={year} level={level} />
+            <AnalyseLineChart analyse={analyse} years={years} level={level} />
           )}
         </Paper>
         <br />
