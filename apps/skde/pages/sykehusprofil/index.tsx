@@ -308,7 +308,8 @@ export const Skde = (): JSX.Element => {
 
   const headerData: HeaderData = {
     title: "Sykehusprofil",
-    subtitle: "Resultater fra sykehus",
+    subtitle:
+      "Her vises alle kvalitetsindikatorer fra nasjonale medisinske kvalitetsregistre i form av sykehusprofiler",
   };
 
   const boxMaxHeight = 800;
@@ -388,7 +389,7 @@ export const Skde = (): JSX.Element => {
               <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
                 <h3>
                   {selectedTreatmentUnits[0] === "Nasjonalt"
-                    ? "Velg enhet"
+                    ? "Velg behandlingssted"
                     : selectedTreatmentUnits[0]}
                 </h3>
               </AccordionSummary>
