@@ -389,7 +389,7 @@ export const Skde = (): JSX.Element => {
               <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
                 <h3>
                   {selectedTreatmentUnits[0] === "Nasjonalt"
-                    ? "Velg enhet"
+                    ? "Velg behandlingssted"
                     : selectedTreatmentUnits[0]}
                 </h3>
               </AccordionSummary>
