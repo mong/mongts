@@ -10,6 +10,7 @@ import { getOrderComparator } from "../../helpers/functions/dataTransformation";
 import { customFormat } from "qmongjs";
 import { useBohfQueryParam } from "../../helpers/hooks";
 import { Markdown } from "../../components/Markdown";
+import { nationalLabel } from "../colors";
 
 type DataTableProps<Data, Headers extends string & Partial<keyof Data>> = {
   caption: string;
@@ -109,7 +110,9 @@ export const DataTable = <
                   >
                     {cell.format
                       ? customFormat(cell.format, lang)(Number(row[cell.id]))
-                      : row[cell.id]}
+                      : row[cell.id] === national
+                        ? nationalLabel[lang]
+                        : row[cell.id]}
                   </TableCell>
                 ))}
               </TableRow>
