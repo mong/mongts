@@ -88,6 +88,7 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
             style={{ background: "#1A1A1A" }}
             paddingBottom={10}
             sx={{ overflow: "clip" }}
+            rowGap={4}
           >
             <Grid container xs={12} alignItems="center">
               <Grid
