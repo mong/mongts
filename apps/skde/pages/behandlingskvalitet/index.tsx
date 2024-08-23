@@ -6,7 +6,7 @@ import {
   IconButton,
   ThemeProvider,
   Typography,
-  Container,
+  useMediaQuery,
 } from "@mui/material";
 
 import { ChevronLeftRounded } from "@mui/icons-material";
@@ -295,7 +295,6 @@ export default function TreatmentQualityPage() {
   // not already available.
   useOnElementAdded(selectedRow, queriesReady, scrollToSelectedRow);
 
-  const maxWidth = "xxl";
   return (
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
@@ -304,57 +303,76 @@ export default function TreatmentQualityPage() {
           openDrawer={() => toggleDrawer(true)}
           context={tableContext}
           onTabChanged={setTableContext}
-          maxWidth={maxWidth}
         />
         <Grid container xs={12}>
-          <Container maxWidth={maxWidth} disableGutters={true}>
-            <Grid xs={12} xxl={9} xxxl={10}>
-              <Grid container spacing={2} disableEqualOverflow>
-                <Grid xs={12}>
-                  {queriesReady &&
-                    (newIndicatorTableActivated || newTableOnly ? (
-                      <IndicatorTableV2Wrapper className="table-wrapper">
-                        <IndicatorTableBodyV2
-                          key="indicator-table"
-                          context={tableContext}
-                          unitNames={selectedTreatmentUnits}
-                          year={selectedYear}
-                          type={dataQualitySelected ? "dg" : "ind"}
-                          levels={selectedLevel}
-                          medfields={selectedMedicalFields}
-                        />
-                      </IndicatorTableV2Wrapper>
-                    ) : (
-                      <IndicatorTableWrapper className="table-wrapper">
-                        <IndicatorTable
-                          key="indicator-table"
-                          context={tableContext}
-                          dataQuality={dataQualitySelected}
-                          tableType="allRegistries"
-                          registerNames={registers}
-                          unitNames={selectedTreatmentUnits}
-                          treatmentYear={selectedYear}
-                          colspan={selectedTreatmentUnits.length + 1}
-                          medicalFieldFilter={selectedMedicalFields}
-                          showLevelFilter={selectedLevel}
-                          selection_bar_height={0}
-                          legend_height={0}
-                          blockTitle={registers.map(
-                            (register: { full_name: string }) =>
-                              register.full_name,
-                          )}
-                          showTreatmentYear={true}
-                        />
-                      </IndicatorTableWrapper>
-                    ))}
-                </Grid>
+          {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? ( // Permanent menu on large screens
+            <Grid xxl={3} xxxl={2} className="menu-wrapper">
+              {queriesReady && (
+                <Box
+                  sx={{
+                    mt: 4,
+                    position: "sticky",
+                    top: 100,
+                    overflow: "auto",
+                    maxHeight: window.innerHeight - 150,
+                  }}
+                >
+                  <TreatmentQualityFilterMenu
+                    onSelectionChanged={handleFilterChanged}
+                    onFilterInitialized={handleFilterInitialized}
+                    registryNameData={registers}
+                    medicalFieldData={medicalFields}
+                    context={tableContext}
+                  />
+                </Box>
+              )}
+            </Grid>
+          ) : null}
+          <Grid xs={12} xxl={9} xxxl={10}>
+            <Grid container spacing={2} disableEqualOverflow>
+              <Grid xs={12}>
+                {queriesReady &&
+                  (newIndicatorTableActivated || newTableOnly ? (
+                    <IndicatorTableV2Wrapper className="table-wrapper">
+                      <IndicatorTableBodyV2
+                        key="indicator-table"
+                        context={tableContext}
+                        unitNames={selectedTreatmentUnits}
+                        year={selectedYear}
+                        type={dataQualitySelected ? "dg" : "ind"}
+                        levels={selectedLevel}
+                        medfields={selectedMedicalFields}
+                      />
+                    </IndicatorTableV2Wrapper>
+                  ) : (
+                    <IndicatorTableWrapper className="table-wrapper">
+                      <IndicatorTable
+                        key="indicator-table"
+                        context={tableContext}
+                        dataQuality={dataQualitySelected}
+                        tableType="allRegistries"
+                        registerNames={registers}
+                        unitNames={selectedTreatmentUnits}
+                        treatmentYear={selectedYear}
+                        colspan={selectedTreatmentUnits.length + 1}
+                        medicalFieldFilter={selectedMedicalFields}
+                        showLevelFilter={selectedLevel}
+                        selection_bar_height={0}
+                        legend_height={0}
+                        blockTitle={registers.map(
+                          (register: { full_name: string }) =>
+                            register.full_name,
+                        )}
+                        showTreatmentYear={true}
+                      />
+                    </IndicatorTableWrapper>
+                  ))}
               </Grid>
             </Grid>
-          </Container>
+          </Grid>
         </Grid>
-        <Footer page="behandlingskvalitet" maxWidth={maxWidth} />
+        <Footer page="behandlingskvalitet" />
       </PageWrapper>
-
       <FilterDrawer
         ModalProps={{
           keepMounted: true, // Better open performance on mobile.

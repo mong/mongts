@@ -19,9 +19,10 @@ type FooterProps = {
     | "sykehusprofil"
     | "pasientstrømmer";
   maxWidth?: false | Breakpoint;
+  className?: string;
 };
 
-export const Footer = ({ page, maxWidth }: FooterProps) => {
+export const Footer = ({ page, maxWidth, className }: FooterProps) => {
   const kvalitet = ["behandlingskvalitet", "sykehusprofil"].includes(page);
   const helseatlas = page === "helseatlas";
 
@@ -36,7 +37,7 @@ export const Footer = ({ page, maxWidth }: FooterProps) => {
           <Grid
             xs={12}
             container
-            className="footer"
+            className={className ? className : "footer"}
             paddingTop={2}
             paddingBottom={4}
           >
@@ -83,7 +84,7 @@ export const Footer = ({ page, maxWidth }: FooterProps) => {
           <Grid
             xs={12}
             container
-            className="footer"
+            className={className ? className : "footer"}
             style={{ background: "#1A1A1A" }}
             paddingBottom={10}
             sx={{ overflow: "clip" }}
