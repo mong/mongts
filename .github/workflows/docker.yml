@@ -64,14 +64,14 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Test docker image
         run: |
-          docker build -t test --file apps/api/Dockerfile ./apps/api
+          docker build -t test --file apps/api/Dockerfile .
           docker run -e ORIGIN="skde.no" -d test
           sleep 5 # wait for it to die, if not working
           docker kill $(docker ps --filter ancestor=test -q)
       - name: Build and push to Docker Hub
         uses: docker/build-push-action@v6.7.0
         with:
-          context: ./apps/api
+          context: .
           file: ./apps/api/Dockerfile
           build-args: version=${{ env.version_label }}
           push: ${{ github.event_name != 'pull_request' }}
