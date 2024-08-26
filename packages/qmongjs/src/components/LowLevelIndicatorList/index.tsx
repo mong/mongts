@@ -6,7 +6,7 @@ import {
   useIndicatorQuery,
   useMedicalFieldsQuery,
 } from "../../helpers/hooks";
-import { customFormat, newLevelSymbols, level2 } from "qmongjs";
+import { customFormat, newLevelSymbols, level2, skdeTheme } from "qmongjs";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import {
@@ -91,9 +91,9 @@ const RegistrySection = (props: {
   return dataFlat.length > 0 ? (
     <React.Fragment>
       <TableHead>
-        <TableRow>
+        <TableRow sx={{ backgroundColor: skdeTheme.palette.grey[300] }}>
           <TableCell colSpan={3} align="left">
-            <Typography variant="subtitle1">{registryName}</Typography>
+            <Typography variant="subtitle2">{registryName}</Typography>
           </TableCell>
         </TableRow>
       </TableHead>
@@ -243,7 +243,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
   return (
     <>
       <Box sx={{ marginLeft: 3 }}>
-        <FormControl sx={{ minWidth: 140 }}>
+        <FormControl sx={{ minWidth: 140, marginRight: 2 }}>
           <InputLabel>Målnivå</InputLabel>
           <Select
             value={selectedLevel}
