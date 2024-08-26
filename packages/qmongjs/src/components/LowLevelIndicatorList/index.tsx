@@ -92,8 +92,8 @@ const RegistrySection = (props: {
     <React.Fragment>
       <TableHead>
         <TableRow>
-          <TableCell colSpan={3} align="center">
-            {registryName}
+          <TableCell colSpan={3} align="left">
+            <Typography variant="subtitle1">{registryName}</Typography>
           </TableCell>
         </TableRow>
       </TableHead>
