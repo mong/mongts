@@ -265,7 +265,14 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
           >
             <MenuItem value={"all"}>Alle fagområder</MenuItem>
             {medfieldsQuery.data.map((row: Medfield) => {
-              return <MenuItem value={row.shortName}>{row.name}</MenuItem>;
+              return (
+                <MenuItem
+                  value={row.shortName}
+                  key={"lowlevellist-" + row.shortName}
+                >
+                  {row.name}
+                </MenuItem>
+              );
             })}
           </Select>
         </FormControl>
