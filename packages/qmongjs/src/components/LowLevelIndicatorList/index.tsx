@@ -91,7 +91,7 @@ const RegistrySection = (props: {
   return dataFlat.length > 0 ? (
     <React.Fragment>
       <TableHead>
-        <TableRow sx={{ backgroundColor: skdeTheme.palette.grey[300] }}>
+        <TableRow sx={{ backgroundColor: skdeTheme.palette.info.light }}>
           <TableCell colSpan={3} align="left">
             <Typography variant="subtitle2">{registryName}</Typography>
           </TableCell>
