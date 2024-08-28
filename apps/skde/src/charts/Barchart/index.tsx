@@ -12,7 +12,12 @@ import { customFormat } from "qmongjs";
 
 import { AnnualVariation } from "./AnnualVariation";
 import { ErrorBars } from "./errorBars";
-import { mainBarColors, nationBarColors, selectedBarColors } from "../colors";
+import {
+  mainBarColors,
+  nationBarColors,
+  selectedBarColors,
+  nationalLabel,
+} from "../colors";
 
 type BarchartData<
   Data,
@@ -202,6 +207,9 @@ export const Barchart = <
             strokeWidth={yAxisLineStrokeWidth}
             stroke={yAxisLineStroke}
             tickValues={data.map((s) => s[y])}
+            tickFormat={(name) =>
+              name === national ? nationalLabel[lang] : name
+            }
             tickStroke={yAxisTickStroke}
             tickLabelProps={() => ({
               fontSize: 14,
