@@ -33,6 +33,7 @@ import {
   AccordionDetails,
   Stack,
   Typography,
+  Container,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
@@ -371,6 +372,7 @@ export const Skde = (): JSX.Element => {
 
   const pathGenerator = geoPath().projection(projection);
 
+  const maxWidth = "xxl";
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
@@ -378,6 +380,7 @@ export const Skde = (): JSX.Element => {
           bgcolor="surface2.light"
           headerData={headerData}
           breadcrumbs={breadcrumbs}
+          maxWidth={maxWidth}
         >
           <ClickAwayListener onClickAway={() => setExpanded(false)}>
             <Accordion
@@ -424,237 +427,246 @@ export const Skde = (): JSX.Element => {
           </ClickAwayListener>
         </Header>
 
-        <Box marginTop={2} className="hospital-profile-box">
-          <Grid container spacing={2}>
-            <Grid xs={12}>
-              <ItemBox height={550} sx={{ overflow: "auto" }}>
-                <Grid container>
-                  <Grid
-                    xs={12}
-                    sm={12}
-                    lg={4}
-                    xl={4}
-                    xxl={4}
-                    alignContent="center"
-                    style={{ textAlign: "center" }}
-                  >
-                    <div
-                      style={{
-                        display: "flex",
-                        width: "100%",
-                        height: "100%",
-                        alignItems: "center",
-                      }}
+        <Container maxWidth={maxWidth} disableGutters={true}>
+          <Box marginTop={2} className="hospital-profile-box">
+            <Grid container spacing={2}>
+              <Grid xs={12}>
+                <ItemBox height={550} sx={{ overflow: "auto" }}>
+                  <Grid container>
+                    <Grid
+                      xs={12}
+                      sm={12}
+                      lg={4}
+                      xl={4}
+                      xxl={4}
+                      alignContent="center"
+                      style={{ textAlign: "center" }}
                     >
-                      <svg
-                        width={"100%"}
-                        height={"100%"}
-                        viewBox={`0 0 ${mapWidth} ${mapHeight}`}
-                        style={{ backgroundColor: "none", maxHeight: "400px" }}
+                      <div
+                        style={{
+                          display: "flex",
+                          width: "100%",
+                          height: "100%",
+                          alignItems: "center",
+                        }}
                       >
-                        {mapData &&
-                          mapData.features.map((d, i) => {
-                            return (
-                              <path
-                                key={`map-feature-${i}`}
-                                d={pathGenerator(d.geometry)}
-                                fill={
-                                  objectIDList &&
-                                  objectIDList.includes(d.properties.BoHF_num)
-                                    ? abacusColors[2]
-                                    : mapColors[1]
-                                }
-                                stroke={"black"}
-                                strokeWidth={0.4}
-                                className={i + ""}
-                              />
-                            );
-                          })}
-                      </svg>
-                    </div>
-                  </Grid>
+                        <svg
+                          width={"100%"}
+                          height={"100%"}
+                          viewBox={`0 0 ${mapWidth} ${mapHeight}`}
+                          style={{
+                            backgroundColor: "none",
+                            maxHeight: "400px",
+                          }}
+                        >
+                          {mapData &&
+                            mapData.features.map((d, i) => {
+                              return (
+                                <path
+                                  key={`map-feature-${i}`}
+                                  d={pathGenerator(d.geometry)}
+                                  fill={
+                                    objectIDList &&
+                                    objectIDList.includes(d.properties.BoHF_num)
+                                      ? abacusColors[2]
+                                      : mapColors[1]
+                                  }
+                                  stroke={"black"}
+                                  strokeWidth={0.4}
+                                  className={i + ""}
+                                />
+                              );
+                            })}
+                        </svg>
+                      </div>
+                    </Grid>
 
-                  <Grid xs={12} sm={6} lg={4} xl={4} xxl={4}>
-                    <Stack
-                      direction="column"
-                      alignItems="center"
-                      justifyContent="space-between"
-                      height={550}
-                    >
-                      <Typography
-                        variant="h5"
-                        style={{ marginTop: 20, marginLeft: 20 }}
+                    <Grid xs={12} sm={6} lg={4} xl={4} xxl={4}>
+                      <Stack
+                        direction="column"
+                        alignItems="center"
+                        justifyContent="space-between"
+                        height={550}
                       >
-                        {unitNamesQuery.data &&
+                        <Typography
+                          variant="h5"
+                          style={{ marginTop: 20, marginLeft: 20 }}
+                        >
+                          {unitNamesQuery.data &&
+                            getUnitFullName(
+                              unitNamesQuery.data.nestedUnitNames,
+                              selectedTreatmentUnits[0],
+                            )}
+                        </Typography>
+                        <div
+                          style={{ display: "flex", justifyContent: "center" }}
+                        >
+                          <div
+                            style={{
+                              display: "flex",
+                              width: 300,
+                              height: 300,
+                              justifyContent: "center",
+                            }}
+                          >
+                            <img
+                              src={imgSrc}
+                              onError={() =>
+                                setImgSrc("/img/forsidebilder/Sykehus.jpg")
+                              }
+                              alt={"Logo"}
+                              width="100%"
+                              height="100%"
+                              style={{
+                                borderRadius: "100%",
+                                maxWidth: "100%",
+                                objectFit: "cover",
+                              }}
+                            />
+                          </div>
+                        </div>
+
+                        <div>
+                          {unitUrl ? (
+                            <ArrowLink
+                              href={unitUrl}
+                              text="Nettside"
+                              externalLink={true}
+                              button={true}
+                              textVariant="subtitle1"
+                            />
+                          ) : null}
+                        </div>
+                      </Stack>
+                    </Grid>
+
+                    <Grid xs={12} sm={6} lg={4} xl={4} xxl={4}>
+                      <ItemBox
+                        height={450}
+                        sx={{ overflow: "auto", marginRight: 2 }}
+                      >
+                        <Typography variant="h5" style={titleStyle}>
+                          Tilknyttede behandlingssteder
+                        </Typography>
+                        {unitNamesQuery.data ? (
+                          <SubUnits
+                            RHFs={unitNamesQuery.data.nestedUnitNames}
+                            selectedUnit={selectedTreatmentUnits[0]}
+                          />
+                        ) : null}
+                      </ItemBox>
+                    </Grid>
+                  </Grid>
+                </ItemBox>
+              </Grid>
+
+              <Grid xs={12}>
+                <ItemBox sx={{ overflow: "auto" }}>
+                  <Typography variant="h5" style={titleStyle}>
+                    Utvikling over tid
+                  </Typography>
+                  <div style={{ margin: textMargin }}>
+                    <Typography variant="body1">
+                      {"Grafen gir en oversikt over kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistrene for " +
+                        (unitNamesQuery.data &&
                           getUnitFullName(
                             unitNamesQuery.data.nestedUnitNames,
                             selectedTreatmentUnits[0],
-                          )}
-                      </Typography>
-                      <div
-                        style={{ display: "flex", justifyContent: "center" }}
-                      >
-                        <div
-                          style={{
-                            display: "flex",
-                            width: 300,
-                            height: 300,
-                            justifyContent: "center",
-                          }}
-                        >
-                          <img
-                            src={imgSrc}
-                            onError={() =>
-                              setImgSrc("/img/forsidebilder/Sykehus.jpg")
-                            }
-                            alt={"Logo"}
-                            width="100%"
-                            height="100%"
-                            style={{
-                              borderRadius: "100%",
-                              maxWidth: "100%",
-                              objectFit: "cover",
-                            }}
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        {unitUrl ? (
-                          <ArrowLink
-                            href={unitUrl}
-                            text="Nettside"
-                            externalLink={true}
-                            button={true}
-                            textVariant="subtitle1"
-                          />
-                        ) : null}
-                      </div>
-                    </Stack>
-                  </Grid>
-
-                  <Grid xs={12} sm={6} lg={4} xl={4} xxl={4}>
-                    <ItemBox
-                      height={450}
-                      sx={{ overflow: "auto", marginRight: 2 }}
+                          )) +
+                        ". Her vises andel eller antall av kvalitetsindikatorer som har hatt høy, middels eller lav måloppnåelse de siste årene."}
+                    </Typography>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "right",
+                        marginRight: 20,
+                        marginTop: 40,
+                      }}
                     >
-                      <Typography variant="h5" style={titleStyle}>
-                        Tilknyttede behandlingssteder
-                      </Typography>
-                      {unitNamesQuery.data ? (
-                        <SubUnits
-                          RHFs={unitNamesQuery.data.nestedUnitNames}
-                          selectedUnit={selectedTreatmentUnits[0]}
-                        />
-                      ) : null}
-                    </ItemBox>
-                  </Grid>
-                </Grid>
-              </ItemBox>
-            </Grid>
-
-            <Grid xs={12}>
-              <ItemBox sx={{ overflow: "auto" }}>
-                <Typography variant="h5" style={titleStyle}>
-                  Utvikling over tid
-                </Typography>
-                <div style={{ margin: textMargin }}>
-                  <Typography variant="body1">
-                    {"Grafen gir en oversikt over kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistrene for " +
-                      (unitNamesQuery.data &&
-                        getUnitFullName(
-                          unitNamesQuery.data.nestedUnitNames,
-                          selectedTreatmentUnits[0],
-                        )) +
-                      ". Her vises andel eller antall av kvalitetsindikatorer som har hatt høy, middels eller lav måloppnåelse de siste årene."}
-                  </Typography>
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "right",
-                      marginRight: 20,
-                      marginTop: 40,
-                    }}
+                      <Legend itemSpacing={8} symbolSpacing={2} />
+                    </div>
+                  </div>
+                  <ThemeProvider theme={lineChartTheme}>
+                    <div id="plot-window">
+                      <IndicatorLinechart {...indicatorParams} />
+                    </div>
+                  </ThemeProvider>
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    alignItems="center"
+                    margin={4}
                   >
-                    <Legend itemSpacing={8} symbolSpacing={2} />
-                  </div>
-                </div>
-                <ThemeProvider theme={lineChartTheme}>
-                  <div id="plot-window">
-                    <IndicatorLinechart {...indicatorParams} />
-                  </div>
-                </ThemeProvider>
-                <Stack
-                  direction="row"
-                  spacing={1}
-                  alignItems="center"
-                  margin={4}
-                >
-                  <Typography>Vis andel</Typography>
-                  <Switch checked={!normalise} onChange={checkNormalise} />
-                  <Typography>Vis antall</Typography>
-                </Stack>
-              </ItemBox>
-            </Grid>
+                    <Typography>Vis andel</Typography>
+                    <Switch checked={!normalise} onChange={checkNormalise} />
+                    <Typography>Vis antall</Typography>
+                  </Stack>
+                </ItemBox>
+              </Grid>
 
-            <Grid xs={12}>
-              <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                <Typography variant="h5" style={titleStyle}>
-                  Kvalitetsindikatorer fordelt på fagområder
-                </Typography>
-                <div style={{ margin: textMargin }}>
-                  <Typography variant="body1">
-                    {dataQuality
-                      ? "Her vises dekningsgraden eller datakvaliteten til " +
-                        selectedTreatmentUnits[0] +
-                        " fordelt på fagområder som forteller om datagrunnlaget fra registrene."
-                      : "Her vises alle kvalitetsindikatorene fra " +
-                        selectedTreatmentUnits[0] +
-                        " fordelt på fagområder. Hver indikator er vist som et symbol for høy, middels eller lav måloppnåelse."}
+              <Grid xs={12}>
+                <ExpandableItemBox collapsedHeight={boxMaxHeight}>
+                  <Typography variant="h5" style={titleStyle}>
+                    Kvalitetsindikatorer fordelt på fagområder
                   </Typography>
-                </div>
-                <Stack
-                  direction="row"
-                  spacing={1}
-                  alignItems="center"
-                  margin={4}
-                >
-                  <Typography>Vis kvalitetsindikatorer</Typography>
-                  <Switch checked={dataQuality} onChange={checkDataQuality} />
-                  <Typography>Vis datakvalitet</Typography>
-                </Stack>
-                <MedfieldTable {...medfieldTableProps} />
-              </ExpandableItemBox>
-            </Grid>
+                  <div style={{ margin: textMargin }}>
+                    <Typography variant="body1">
+                      {dataQuality
+                        ? "Her vises dekningsgraden eller datakvaliteten til " +
+                          selectedTreatmentUnits[0] +
+                          " fordelt på fagområder som forteller om datagrunnlaget fra registrene."
+                        : "Her vises alle kvalitetsindikatorene fra " +
+                          selectedTreatmentUnits[0] +
+                          " fordelt på fagområder. Hver indikator er vist som et symbol for høy, middels eller lav måloppnåelse."}
+                    </Typography>
+                  </div>
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    alignItems="center"
+                    margin={4}
+                  >
+                    <Typography>Vis kvalitetsindikatorer</Typography>
+                    <Switch checked={dataQuality} onChange={checkDataQuality} />
+                    <Typography>Vis datakvalitet</Typography>
+                  </Stack>
+                  <MedfieldTable {...medfieldTableProps} />
+                </ExpandableItemBox>
+              </Grid>
 
-            <Grid xs={12}>
-              <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                <Typography variant="h5" style={titleStyle}>
-                  Siste års måloppnåelse
-                </Typography>
-                <div style={{ margin: textMargin }}>
-                  <Typography variant="body1">
-                    {"Her er en interaktiv liste som gir oversikt over kvalitetsindikatorene ut fra siste års måloppnåelse for " +
-                      (unitNamesQuery.data &&
-                        getUnitFullName(
-                          unitNamesQuery.data.nestedUnitNames,
-                          selectedTreatmentUnits[0],
-                        )) +
-                      ". Du kan trykke på indikatorene for å se mer informasjon om indikatoren og følge oppgitt lenke til mer detaljert beskrivelse av indikatoren."}
+              <Grid xs={12}>
+                <ExpandableItemBox collapsedHeight={boxMaxHeight}>
+                  <Typography variant="h5" style={titleStyle}>
+                    Siste års måloppnåelse
                   </Typography>
-                </div>
-                <LowLevelIndicatorList
-                  context={"caregiver"}
-                  type={"ind"}
-                  unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
-                  year={lastYear}
-                />
-              </ExpandableItemBox>
+                  <div style={{ margin: textMargin }}>
+                    <Typography variant="body1">
+                      {"Her er en interaktiv liste som gir oversikt over kvalitetsindikatorene ut fra siste års måloppnåelse for " +
+                        (unitNamesQuery.data &&
+                          getUnitFullName(
+                            unitNamesQuery.data.nestedUnitNames,
+                            selectedTreatmentUnits[0],
+                          )) +
+                        ". Du kan trykke på indikatorene for å se mer informasjon om indikatoren og følge oppgitt lenke til mer detaljert beskrivelse av indikatoren."}
+                    </Typography>
+                  </div>
+                  <LowLevelIndicatorList
+                    context={"caregiver"}
+                    type={"ind"}
+                    unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
+                    year={lastYear}
+                  />
+                </ExpandableItemBox>
+              </Grid>
             </Grid>
-          </Grid>
-        </Box>
-        <Footer page="sykehusprofil" />
+          </Box>
+        </Container>
+        <Footer
+          page="sykehusprofil"
+          maxWidth={maxWidth}
+          className="hospital-profile-footer"
+        />
       </PageWrapper>
     </ThemeProvider>
   );

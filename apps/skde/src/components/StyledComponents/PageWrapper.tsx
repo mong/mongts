@@ -19,6 +19,7 @@ export const PageWrapper = styled(Box)(({ theme }) => ({
       paddingRight: theme.spacing(16),
     },
   },
+
   "& .menu-wrapper": {
     [theme.breakpoints.up("xxl")]: {
       paddingLeft: theme.spacing(16),
@@ -46,7 +47,7 @@ export const PageWrapper = styled(Box)(({ theme }) => ({
       paddingRight: theme.spacing(16),
     },
   },
-  "& .hospital-profile-box": {
+  "& .hospital-profile-box, & .hospital-profile-footer": {
     [theme.breakpoints.down("sm")]: {
       paddingLeft: theme.spacing(2),
       paddingRight: theme.spacing(2),
@@ -64,8 +65,8 @@ export const PageWrapper = styled(Box)(({ theme }) => ({
       paddingRight: theme.spacing(16),
     },
     [theme.breakpoints.up("xxl")]: {
-      paddingLeft: theme.spacing(16),
-      paddingRight: theme.spacing(16),
+      paddingLeft: theme.spacing(0),
+      paddingRight: theme.spacing(0),
     },
   },
   backgroundColor: theme.palette.background.paper,
