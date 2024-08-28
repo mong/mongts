@@ -2,15 +2,11 @@ import React, { useState } from "react";
 import { DataPoint, IndicatorData, RegisterData } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams, useIndicatorQuery } from "../../helpers/hooks";
-import { customFormat, newLevelSymbols, level2, skdeTheme } from "qmongjs";
+import { customFormat, newLevelSymbols, level2 } from "qmongjs";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import {
   Box,
-  List,
-  ListItemButton,
-  ListItemText,
-  Menu,
   MenuItem,
   Stack,
   TableContainer,
@@ -20,6 +16,10 @@ import {
   TableRow,
   TableCell,
   Typography,
+  FormControl,
+  InputLabel,
+  Select,
+  SelectChangeEvent,
 } from "@mui/material";
 import { ArrowLink } from "../ArrowLink";
 
@@ -84,7 +84,7 @@ const RegistrySection = (props: {
   const registryName = data.registerFullName;
   const dataFlat = getDataSubset(indData, year, selectedIndex);
 
-  return (
+  return dataFlat.length > 0 ? (
     <React.Fragment>
       <TableHead>
         <TableRow>
@@ -105,7 +105,7 @@ const RegistrySection = (props: {
         })}
       </TableBody>
     </React.Fragment>
-  );
+  ) : null;
 };
 
 const IndicatorRow = (props: { row: IndicatorData; year: number }) => {
@@ -187,29 +187,11 @@ type LowLevelIndicatorListProps = {
 export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
   const { context, unitNames, type, year } = props;
 
-  // UI stuff
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedLevel, setSelectedLevel] = useState<string>("2");
 
-  const open = Boolean(anchorEl);
-
-  const handleClickListItem = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+  const handleChangeLevel = (event: SelectChangeEvent) => {
+    setSelectedLevel(event.target.value);
   };
-
-  const handleMenuItemClick = (
-    event: React.MouseEvent<HTMLElement>,
-    index: number,
-  ) => {
-    setSelectedIndex(index);
-    setAnchorEl(null);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const options = ["Høy", "Middels", "Lav"];
 
   // Get data
   const queryParams: FetchIndicatorParams = {
@@ -231,54 +213,22 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
   const data = nestedIndicatorQuery.data as RegisterData[];
 
   return (
-    <div>
-      <Box>
-        <List component="nav" aria-label="Device settings">
-          <ListItemButton
-            id="lock-button"
-            aria-haspopup="listbox"
-            aria-controls="lock-menu"
-            aria-label="when device is locked"
-            aria-expanded={open ? "true" : undefined}
-            onClick={handleClickListItem}
-            sx={{
-              backgroundColor: skdeTheme.palette.primary.light,
-              width: 200,
-              marginLeft: 2,
-              borderRadius: "24px",
-              ":hover": {
-                backgroundColor: skdeTheme.palette.secondary.light,
-              },
-            }}
+    <>
+      <Box sx={{ marginLeft: 3 }}>
+        <FormControl sx={{ minWidth: 140 }}>
+          <InputLabel>Målnivå</InputLabel>
+          <Select
+            value={selectedLevel}
+            label="Målnivå"
+            onChange={handleChangeLevel}
           >
-            <ListItemText
-              primary="Velg måloppnåelse"
-              secondary={options[selectedIndex]}
-            />
-          </ListItemButton>
-        </List>
-        <Menu
-          id="lock-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          MenuListProps={{
-            "aria-labelledby": "lock-button",
-            role: "listbox",
-          }}
-        >
-          {options.map((option, index) => (
-            <MenuItem
-              key={option}
-              selected={index === selectedIndex}
-              onClick={(event) => handleMenuItemClick(event, index)}
-            >
-              {option}
-            </MenuItem>
-          ))}
-        </Menu>
+            <MenuItem value="0">Høy</MenuItem>
+            <MenuItem value="1">Middels</MenuItem>
+            <MenuItem value="2">Lav</MenuItem>
+          </Select>
+        </FormControl>
       </Box>
-      <div>
+      <>
         <TableContainer sx={{ overflowX: "clip" }}>
           <Table>
             <TableHead>
@@ -298,13 +248,13 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
                   key={row.registerName}
                   data={row}
                   year={year}
-                  selectedIndex={selectedIndex}
+                  selectedIndex={Number(selectedLevel)}
                 />
               );
             })}
           </Table>
         </TableContainer>
-      </div>
-    </div>
+      </>
+    </>
   );
 };

@@ -147,12 +147,10 @@ export const Linechart = <Data, X extends string & keyof Data>({
           showSeriesGlyphs
           glyphStyle={{ fill: linechartColors[0] }}
           renderTooltip={({ tooltipData }) => (
-            <div>
-              <div>
-                {xLabel[lang].split(/[^A-Za-zæøåÆØÅ]/)[0]}
-                {": "}
-                {accessors.xAccessor(tooltipData.nearestDatum.datum)}
-              </div>
+            <>
+              {xLabel[lang].split(/[^A-Za-zæøåÆØÅ]/)[0]}
+              {": "}
+              {accessors.xAccessor(tooltipData.nearestDatum.datum)}
               {Object.keys(tooltipData.datumByKey)
                 .filter(function (value) {
                   return linevars.includes(value);
@@ -168,7 +166,7 @@ export const Linechart = <Data, X extends string & keyof Data>({
                     </div>
                   );
                 })}
-            </div>
+            </>
           )}
         />
       </XYChart>

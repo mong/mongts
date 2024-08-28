@@ -52,12 +52,47 @@ import {
   ItemBox,
 } from "../../src/components/HospitalProfileStyles";
 import { ExpandableItemBox } from "../../src/components/ExpandableItemBox";
-import { URLs } from "types";
+import { NestedTreatmentUnitName, URLs } from "types";
 import { ArrowLink } from "qmongjs";
 import { useRouter } from "next/router";
+import { FetchMap } from "../../src/helpers/hooks";
+import { mapColors, abacusColors } from "../../src/charts/colors";
+import { geoMercator, geoPath } from "d3-geo";
+import { mapUnitName2BohfNames } from "../../src/helpers/functions/unitName2BohfMap";
+
+const getUnitFullName = (
+  nestedUnitNames: NestedTreatmentUnitName[],
+  unitShortName: string,
+) => {
+  if (!nestedUnitNames || !unitShortName) {
+    return null;
+  }
+
+  // Check if unit is a RHF
+  const isRHF = nestedUnitNames.map((row) => row.rhf).includes(unitShortName);
+
+  if (isRHF) {
+    return unitShortName;
+  }
+
+  // Check if unit is a HF
+  const HFs = nestedUnitNames.map((row) => row.hf).flat();
+  const isHF = HFs.map((row) => row.hf).includes(unitShortName);
+
+  if (isHF) {
+    return HFs.filter((row) => {
+      return row.hf === unitShortName;
+    })[0].hf_full;
+  }
+
+  // Check if unit is a hospital?
+  return unitShortName;
+};
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
+
+  const [objectIDList, setObjectIDList] = useState([]);
 
   const treatmentUnitsKey = "selected_treatment_units";
 
@@ -109,6 +144,30 @@ export const Skde = (): JSX.Element => {
 
   const shouldRefreshInitialState = prerenderFinished;
 
+  // Callback function for initialising the filter meny
+  const initialiseFilter = (
+    filterInput: Map<string, FilterSettingsValue[]>,
+  ) => {
+    const newUnit = filterInput.get(treatmentUnitsKey).map((el) => el.value);
+
+    setImgSrc("/img/forsidebilder/" + newUnit[0] + ".jpg");
+
+    let unitUrl: URLs | undefined;
+    if (unitUrlsQuery.data) {
+      unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
+        return row.shortName === newUnit[0];
+      });
+    }
+
+    setObjectIDList(mapUnitName2BohfNames(treatmentUnits.treedata, newUnit[0]));
+
+    if (unitUrl && unitUrl[0]) {
+      setUnitUrl(unitUrl[0].url);
+    } else {
+      setUnitUrl(null);
+    }
+  };
+
   // Callback function for updating the filter menu
   const handleChange = (filterInput: FilterSettings) => {
     const newUnit = filterInput.map
@@ -126,6 +185,8 @@ export const Skde = (): JSX.Element => {
         return row.shortName === newUnit[0];
       });
     }
+
+    setObjectIDList(mapUnitName2BohfNames(treatmentUnits.treedata, newUnit[0]));
 
     if (unitUrl && unitUrl[0]) {
       setUnitUrl(unitUrl[0].url);
@@ -247,7 +308,8 @@ export const Skde = (): JSX.Element => {
 
   const headerData: HeaderData = {
     title: "Sykehusprofil",
-    subtitle: "Resultater fra sykehus",
+    subtitle:
+      "Her vises alle kvalitetsindikatorer fra nasjonale medisinske kvalitetsregistre i form av sykehusprofiler",
   };
 
   const boxMaxHeight = 800;
@@ -276,6 +338,39 @@ export const Skde = (): JSX.Element => {
     );
   };
 
+  // Copy-paste from helseatlas
+  const mapData = FetchMap("/helseatlas/kart/kronikere.geojson").data;
+
+  const mapHeight = 1000;
+  const mapWidth = 1000;
+  const initCenter = geoPath().centroid(mapData);
+  const initOffset: [number, number] = [
+    mapWidth / 2,
+    mapHeight / 2 - mapHeight * 0.11,
+  ];
+  const initScale = 150;
+  const initialProjection = geoMercator()
+    .scale(initScale)
+    .center(initCenter)
+    .translate(initOffset);
+  const initPath = geoPath().projection(initialProjection);
+
+  const bounds = initPath.bounds(mapData);
+  const hscale = (initScale * mapWidth) / (bounds[1][0] - bounds[0][0]);
+  const vscale = (initScale * mapHeight) / (bounds[1][1] - bounds[0][1]);
+  const scale = hscale < vscale ? 0.98 * hscale : 0.98 * vscale;
+  const offset: [number, number] = [
+    mapWidth - (bounds[0][0] + bounds[1][0]) / 2,
+    mapHeight - (bounds[0][1] + bounds[1][1]) / 2,
+  ];
+
+  const projection = geoMercator()
+    .scale(scale)
+    .center(initCenter)
+    .translate(offset);
+
+  const pathGenerator = geoPath().projection(projection);
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
@@ -294,7 +389,7 @@ export const Skde = (): JSX.Element => {
               <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
                 <h3>
                   {selectedTreatmentUnits[0] === "Nasjonalt"
-                    ? "Velg enhet"
+                    ? "Velg behandlingssted"
                     : selectedTreatmentUnits[0]}
                 </h3>
               </AccordionSummary>
@@ -303,9 +398,7 @@ export const Skde = (): JSX.Element => {
                 <FilterMenu
                   refreshState={shouldRefreshInitialState}
                   onSelectionChanged={handleChange}
-                  onFilterInitialized={() => {
-                    return null;
-                  }}
+                  onFilterInitialized={initialiseFilter}
                 >
                   <TreeViewFilterSection
                     refreshState={shouldRefreshInitialState}
@@ -334,7 +427,7 @@ export const Skde = (): JSX.Element => {
         <Box marginTop={2} className="hospital-profile-box">
           <Grid container spacing={2}>
             <Grid xs={12}>
-              <ItemBox height={440} sx={{ overflow: "auto" }}>
+              <ItemBox height={550} sx={{ overflow: "auto" }}>
                 <Grid container>
                   <Grid
                     xs={12}
@@ -345,55 +438,88 @@ export const Skde = (): JSX.Element => {
                     alignContent="center"
                     style={{ textAlign: "center" }}
                   >
-                    <div style={{ display: "flex", justifyContent: "center" }}>
-                      <div
-                        style={{
-                          display: "flex",
-                          width: 300,
-                          height: 300,
-                          justifyContent: "center",
-                        }}
-                      >
-                        <img
-                          src={imgSrc}
-                          onError={() =>
-                            setImgSrc("/img/forsidebilder/Sykehus.jpg")
-                          }
-                          alt={"Logo"}
-                          width="100%"
-                          height="100%"
-                          style={{
-                            borderRadius: "100%",
-                            maxWidth: "100%",
-                            objectFit: "cover",
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </Grid>
-
-                  <Grid xs={6} sm={6} lg={4} xl={4} xxl={4}>
                     <div
                       style={{
                         display: "flex",
-                        flexDirection: "column",
-                        height: "400px",
+                        width: "100%",
+                        height: "100%",
+                        alignItems: "center",
                       }}
+                    >
+                      <svg
+                        width={"100%"}
+                        height={"100%"}
+                        viewBox={`0 0 ${mapWidth} ${mapHeight}`}
+                        style={{ backgroundColor: "none", maxHeight: "400px" }}
+                      >
+                        {mapData &&
+                          mapData.features.map((d, i) => {
+                            return (
+                              <path
+                                key={`map-feature-${i}`}
+                                d={pathGenerator(d.geometry)}
+                                fill={
+                                  objectIDList &&
+                                  objectIDList.includes(d.properties.BoHF_num)
+                                    ? abacusColors[2]
+                                    : mapColors[1]
+                                }
+                                stroke={"black"}
+                                strokeWidth={0.4}
+                                className={i + ""}
+                              />
+                            );
+                          })}
+                      </svg>
+                    </div>
+                  </Grid>
+
+                  <Grid xs={12} sm={6} lg={4} xl={4} xxl={4}>
+                    <Stack
+                      direction="column"
+                      alignItems="center"
+                      justifyContent="space-between"
+                      height={550}
                     >
                       <Typography
                         variant="h5"
                         style={{ marginTop: 20, marginLeft: 20 }}
                       >
-                        {selectedTreatmentUnits[0]}
+                        {unitNamesQuery.data &&
+                          getUnitFullName(
+                            unitNamesQuery.data.nestedUnitNames,
+                            selectedTreatmentUnits[0],
+                          )}
                       </Typography>
-
-                      <div style={{ marginLeft: 20 }}>
-                        <Typography variant="body1">
-                          Her skal det stå noe om enheten. <br />
-                        </Typography>
+                      <div
+                        style={{ display: "flex", justifyContent: "center" }}
+                      >
+                        <div
+                          style={{
+                            display: "flex",
+                            width: 300,
+                            height: 300,
+                            justifyContent: "center",
+                          }}
+                        >
+                          <img
+                            src={imgSrc}
+                            onError={() =>
+                              setImgSrc("/img/forsidebilder/Sykehus.jpg")
+                            }
+                            alt={"Logo"}
+                            width="100%"
+                            height="100%"
+                            style={{
+                              borderRadius: "100%",
+                              maxWidth: "100%",
+                              objectFit: "cover",
+                            }}
+                          />
+                        </div>
                       </div>
 
-                      <div style={{ marginTop: "auto" }}>
+                      <div>
                         {unitUrl ? (
                           <ArrowLink
                             href={unitUrl}
@@ -404,23 +530,17 @@ export const Skde = (): JSX.Element => {
                           />
                         ) : null}
                       </div>
-                    </div>
+                    </Stack>
                   </Grid>
 
-                  <Grid xs={6} sm={6} lg={4} xl={4} xxl={4}>
+                  <Grid xs={12} sm={6} lg={4} xl={4} xxl={4}>
                     <ItemBox
-                      height={440}
+                      height={450}
                       sx={{ overflow: "auto", marginRight: 2 }}
                     >
                       <Typography variant="h5" style={titleStyle}>
-                        Tilknyttede enheter
+                        Tilknyttede behandlingssteder
                       </Typography>
-                      <div style={{ margin: textMargin }}>
-                        <Typography variant="body1">
-                          Her vises behandlingssteder som er tilhørende til
-                          valgt helseforetak.
-                        </Typography>
-                      </div>
                       {unitNamesQuery.data ? (
                         <SubUnits
                           RHFs={unitNamesQuery.data.nestedUnitNames}
@@ -440,10 +560,13 @@ export const Skde = (): JSX.Element => {
                 </Typography>
                 <div style={{ margin: textMargin }}>
                   <Typography variant="body1">
-                    Grafen viser andel eller antall av alle kvalitetsindikatorer
-                    fra de nasjonale medisinske kvalitetsregistre. Grafen viser
-                    hvilke som har hatt høy, middels eller lav måloppnåelse de
-                    siste årene.
+                    {"Grafen gir en oversikt over kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistrene for " +
+                      (unitNamesQuery.data &&
+                        getUnitFullName(
+                          unitNamesQuery.data.nestedUnitNames,
+                          selectedTreatmentUnits[0],
+                        )) +
+                      ". Her vises andel eller antall av kvalitetsindikatorer som har hatt høy, middels eller lav måloppnåelse de siste årene."}
                   </Typography>
                   <div
                     style={{
@@ -512,10 +635,13 @@ export const Skde = (): JSX.Element => {
                 </Typography>
                 <div style={{ margin: textMargin }}>
                   <Typography variant="body1">
-                    Liste over kvalitetsindikatorer med beskrivelse som er
-                    fordelt på høy, middels eller lav måloppnåelse. Du kan
-                    trykke på indikatorene for å se datakvaliteten og mer
-                    beskrivelse av indikatorene.
+                    {"Her er en interaktiv liste som gir oversikt over kvalitetsindikatorene ut fra siste års måloppnåelse for " +
+                      (unitNamesQuery.data &&
+                        getUnitFullName(
+                          unitNamesQuery.data.nestedUnitNames,
+                          selectedTreatmentUnits[0],
+                        )) +
+                      ". Du kan trykke på indikatorene for å se mer informasjon om indikatoren og følge oppgitt lenke til mer detaljert beskrivelse av indikatoren."}
                   </Typography>
                 </div>
                 <LowLevelIndicatorList
