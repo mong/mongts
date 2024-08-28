@@ -198,20 +198,20 @@ const buildExpandedNodeList = (
   selectedIds: string[],
   filterSettingsValuesMap: Map<string, TreeViewFilterSettingsValue>,
 ) => {
-  const defaultExpanded: string[] = [];
+  const expanded: string[] = [];
 
   selectedIds.forEach((id) => {
     const value = filterSettingsValuesMap.get(id);
-    if (value && value.parentIds) {
+    if (value && value.parentIds && value.parentIds.length > 0) {
       value.parentIds.forEach((parentId) => {
-        if (!defaultExpanded.includes(parentId)) {
-          defaultExpanded.push(parentId);
+        if (!expanded.includes(parentId)) {
+          expanded.push(parentId);
         }
       });
     }
   });
 
-  return defaultExpanded;
+  return expanded;
 };
 
 /**
