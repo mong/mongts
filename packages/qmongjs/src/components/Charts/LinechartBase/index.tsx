@@ -85,6 +85,7 @@ type LinechartBaseProps = {
   yAxisText: { text: string; font: font };
   xTicksFont?: font;
   yTicksFont?: font;
+  numYTicks?: number;
   yMin?: number;
   yMax?: number;
   levelGreen?: number;
@@ -163,6 +164,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
     yAxisText,
     xTicksFont,
     yTicksFont,
+    numYTicks,
     yMin,
     yMax,
     levelGreen,
@@ -458,6 +460,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
                 format_y ? customFormat(format_y, lang)(val) : val.toString()
               }
               tickLabelProps={yTicksFont}
+              numTicks={numYTicks}
             />
             <Bar
               x={0}

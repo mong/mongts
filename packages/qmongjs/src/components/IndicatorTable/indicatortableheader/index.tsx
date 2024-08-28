@@ -40,7 +40,7 @@ export const IndicatorTableHeader = (props: IndicatorTableHeaderProps) => {
   ));
 
   return (
-    <thead>
+    <thead style={{ position: "sticky", zIndex: 1 }}>
       <tr>
         <th
           key="kvind_header"
