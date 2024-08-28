@@ -20,6 +20,7 @@ type LinechartProps<Data, X extends string & keyof Data> = {
   yLabel?: { en: string; nb: string; nn: string };
   format_x?: string;
   format_y?: string;
+  linecolors?: string[];
   national?: string;
 };
 
@@ -33,6 +34,7 @@ export const Linechart = <Data, X extends string & keyof Data>({
   yLabel,
   format_x,
   format_y,
+  linecolors,
 }: LinechartProps<Data, X>) => {
   const getLinevarLabel = (linevar) =>
     linevarsLabels[lang][linevars.findIndex((v) => v === linevar)];
@@ -69,7 +71,7 @@ export const Linechart = <Data, X extends string & keyof Data>({
 
   const colorScale = scaleOrdinal({
     domain: values.map((s) => s.linevar),
-    range: [...linechartColors],
+    range: [...(linecolors || []), ...linechartColors],
   });
 
   return (
