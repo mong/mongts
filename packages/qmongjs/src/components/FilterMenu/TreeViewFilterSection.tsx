@@ -90,7 +90,7 @@ const buildTreeLevel = (
             toggleExpand,
             autoUncheckId,
             multiselect,
-            (parent = node.nodeValue.value),
+            node.nodeValue.value,
           )}
       </TreeViewFilterSectionItem>
     );
@@ -203,11 +203,26 @@ const buildExpandedNodeList = (
   selectedIds.forEach((id) => {
     const value = filterSettingsValuesMap.get(id);
     if (value && value.parentIds && value.parentIds.length > 0) {
-      value.parentIds.forEach((parentId) => {
-        if (!expanded.includes(parentId)) {
-          expanded.push(parentId);
+      // A classic for-loop, which constructs an itemId by taking the 
+      // current ID and prepending it with its parent ID (if any). See
+      // the variable uniqueItemId in the component TreeViewFilterSectionItem.
+      // The IDs in values.parentIds has to be ordered from root toward 
+      // leaf item. The IDs are added to the list of items that should be
+      // expanded in the tree. Leaf nodes are not included. 
+      for (let i = 0; i < value.parentIds.length; i++) {
+        let itemId;
+
+        if (i === 0) {
+          itemId = value.parentIds[i];
+        } else {
+          itemId = `${value.parentIds[i-1]}-${value.parentIds[i]}`;
         }
-      });
+
+        // Add if not already present in the list
+        if (!expanded.includes(itemId)) {
+          expanded.push(itemId);
+        }
+      }
     }
   });
 

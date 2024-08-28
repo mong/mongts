@@ -55,7 +55,7 @@ export const TreeViewFilterSectionItem = (
   const isSelected = selectedIds.includes(labeledValue.value);
   const singleselect = !(multiselect || multiselect === undefined);
 
-  const uniqueItemId = `${parentKey}-${labeledValue.value}`;
+  const uniqueItemId = parentKey ? `${parentKey}-${labeledValue.value}` : labeledValue.value;
 
   return (
     <TreeItem
