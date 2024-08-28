@@ -44,3 +44,5 @@ export const linechartColors: string[] = [
   "#ADB8B3",
   "#B6D7A5",
 ];
+
+export const nationalLabel = { en: "Norway", nb: "Norge", nn: "Noreg" };
