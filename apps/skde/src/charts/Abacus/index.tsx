@@ -5,7 +5,7 @@ import { max } from "d3-array";
 import classNames from "../Barchart/ChartLegend.module.css";
 import { customFormat } from "qmongjs";
 import { useBohfQueryParam } from "../../helpers/hooks";
-import { abacusColors } from "../colors";
+import { abacusColors, nationalLabel } from "../colors";
 
 type AbacusData<Data, X extends keyof Data> = {
   [k in X]: number;
@@ -96,8 +96,6 @@ export const Abacus = <Data, X extends string & keyof Data>({
     nb: "Valgte",
     nn: "Valde",
   };
-
-  const nationalLabel = { en: "Norway", nb: "Norge", nn: "Noreg" };
 
   const xScale = scaleLinear<number>({
     domain: [xMin, xMaxVal],
