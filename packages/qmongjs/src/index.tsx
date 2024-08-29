@@ -63,3 +63,4 @@ export { BarchartBase } from "./components/Charts/BarchartBase";
 export { HeatMap, createHeatmapData } from "./components/Charts/HeatMap";
 export { QualityAtlasFigure } from "./components/QualityAtlasFigure";
 export { ArrowLink } from "./components/ArrowLink";
+export type { FetchIndicatorParams } from "./helpers/hooks/apihooks";

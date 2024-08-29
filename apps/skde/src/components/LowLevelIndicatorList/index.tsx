@@ -5,7 +5,8 @@ import {
   FetchIndicatorParams,
   useIndicatorQuery,
   useMedicalFieldsQuery,
-} from "qmongjs/src/helpers/hooks";
+  ArrowLink,
+} from "qmongjs";
 import { customFormat, newLevelSymbols, level2, skdeTheme } from "qmongjs";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
@@ -25,7 +26,6 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { ArrowLink } from "qmongjs/src/components/ArrowLink";
 
 const result = (data: IndicatorData, point: DataPoint, dg?: boolean) => {
   let pointVar: number | null;
