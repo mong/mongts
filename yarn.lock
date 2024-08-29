@@ -1946,15 +1946,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.25.0":
-  version: 7.25.0
-  resolution: "@babel/runtime@npm:7.25.0"
-  dependencies:
-    regenerator-runtime: "npm:^0.14.0"
-  checksum: 10/6870e9e0e9125075b3aeba49a266f442b10820bfc693019eb6c1785c5a0edbe927e98b8238662cdcdba17842107c040386c3b69f39a0a3b217f9d00ffe685b27
-  languageName: node
-  linkType: hard
-
 "@babel/runtime@npm:^7.25.4":
   version: 7.25.4
   resolution: "@babel/runtime@npm:7.25.4"
@@ -3875,26 +3866,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/x-internals@npm:7.14.0":
-  version: 7.14.0
-  resolution: "@mui/x-internals@npm:7.14.0"
+"@mui/x-internals@npm:7.15.0":
+  version: 7.15.0
+  resolution: "@mui/x-internals@npm:7.15.0"
   dependencies:
-    "@babel/runtime": "npm:^7.25.0"
+    "@babel/runtime": "npm:^7.25.4"
     "@mui/utils": "npm:^5.16.6"
   peerDependencies:
     react: ^17.0.0 || ^18.0.0
-  checksum: 10/63a793de708b84a46956e42705421d7ff05978993100338e91fb378cdcafe03782a9ec23434bda870fde4b530cead5f91f6c135d9b129c9a9e39c9ce559e5e14
+  checksum: 10/c99bf019d9dfab9b9a0c7a9d344bc621b8e94dda9898d39629fc17dff59cd081bd657e5647026db5fea475fbbd68f079830313cc0661d9e993d5d4171803213e
   languageName: node
   linkType: hard
 
-"@mui/x-tree-view@npm:7.14.0":
-  version: 7.14.0
-  resolution: "@mui/x-tree-view@npm:7.14.0"
+"@mui/x-tree-view@npm:7.15.0":
+  version: 7.15.0
+  resolution: "@mui/x-tree-view@npm:7.15.0"
   dependencies:
-    "@babel/runtime": "npm:^7.25.0"
-    "@mui/system": "npm:^5.16.7"
+    "@babel/runtime": "npm:^7.25.4"
     "@mui/utils": "npm:^5.16.6"
-    "@mui/x-internals": "npm:7.14.0"
+    "@mui/x-internals": "npm:7.15.0"
     "@types/react-transition-group": "npm:^4.4.11"
     clsx: "npm:^2.1.1"
     prop-types: "npm:^15.8.1"
@@ -3902,7 +3892,8 @@ __metadata:
   peerDependencies:
     "@emotion/react": ^11.9.0
     "@emotion/styled": ^11.8.1
-    "@mui/material": ^5.15.14
+    "@mui/material": ^5.15.14 || ^6.0.0
+    "@mui/system": ^5.15.14 || ^6.0.0
     react: ^17.0.0 || ^18.0.0
     react-dom: ^17.0.0 || ^18.0.0
   peerDependenciesMeta:
@@ -3910,7 +3901,7 @@ __metadata:
       optional: true
     "@emotion/styled":
       optional: true
-  checksum: 10/804ba8854cf4834bba0a79fa2fee2345bfdf7c189346bc3f54d4d101c6836776b54b2804bf1b501027c1f0e26d17951fbe3d51e14d6b217723e90b1b3638748a
+  checksum: 10/7ff782e7f6c7b52142a9206e0896657635b932c8743eef9bc26e55125c9ef6100cd52b30f68ea4907cd62175d0de73d1e0c399772baceceb096041554d068431
   languageName: node
   linkType: hard
 
@@ -19961,7 +19952,7 @@ __metadata:
   dependencies:
     "@mui/icons-material": "npm:5.16.7"
     "@mui/material": "npm:5.16.7"
-    "@mui/x-tree-view": "npm:7.14.0"
+    "@mui/x-tree-view": "npm:7.15.0"
     "@tanstack/react-query": "npm:5.52.2"
     "@testing-library/dom": "npm:10.4.0"
     "@testing-library/jest-dom": "npm:6.5.0"
