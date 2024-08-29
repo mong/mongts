@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import TableBody from "@mui/material/TableBody";
 import TableHead from "@mui/material/TableHead";
@@ -117,10 +117,39 @@ const IndicatorRow = (props: {
   levels: string;
   indData: IndicatorData;
   chartData: Indicator[];
+  rowID: string;
+  openRowID: string;
+  setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  const { unitNames, levels, indData, chartData } = props;
+  const {
+    unitNames,
+    levels,
+    indData,
+    chartData,
+    rowID,
+    openRowID,
+    setOpenRowID,
+  } = props;
 
-  const [open, setOpen] = React.useState(false);
+  let open: boolean;
+
+  if (openRowID === "") {
+    open = false;
+  } else if (openRowID === rowID) {
+    open = true;
+  } else {
+    open = false;
+  }
+
+  const onClick = () => {
+    if (!open) {
+      open = true;
+      setOpenRowID(rowID);
+    } else {
+      open = false;
+      setOpenRowID("");
+    }
+  };
 
   const format = indData.format === null ? ",.0%" : indData.format;
 
@@ -222,7 +251,7 @@ const IndicatorRow = (props: {
     <React.Fragment key={indData.indicatorTitle + "-indicatorSection"}>
       <StyledTableRow
         key={indData.indicatorTitle + "-mainrow"}
-        onClick={() => setOpen(!open)}
+        onClick={onClick}
         style={{ cursor: "pointer" }}
       >
         <StyledTableCell key={indData.indicatorID}>
@@ -231,7 +260,7 @@ const IndicatorRow = (props: {
               <tr>
                 <td>
                   <IconButton
-                    onClick={() => setOpen(!open)}
+                    onClick={onClick}
                     aria-label="expand"
                     size="small"
                   >
@@ -372,8 +401,10 @@ const IndicatorSection = (props: {
   levels: string;
   data: IndicatorData[];
   chartData: Indicator[];
+  openRowID: string;
+  setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  const { unitNames, levels, data, chartData } = props;
+  const { unitNames, levels, data, chartData, openRowID, setOpenRowID } = props;
 
   // Map indicators to rows and show only rows where there is at least
   // one indicator not removed by the filter
@@ -397,6 +428,9 @@ const IndicatorSection = (props: {
         levels={levels}
         indData={indDataRow}
         chartData={chartData}
+        rowID={indDataRow.indicatorID}
+        openRowID={openRowID}
+        setOpenRowID={setOpenRowID}
       />
     ) : null;
 
@@ -413,8 +447,11 @@ const RegistrySection = (props: {
   levels: string;
   regData: RegisterData;
   chartData: Indicator[];
+  openRowID: string;
+  setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  const { unitNames, levels, regData, chartData } = props;
+  const { unitNames, levels, regData, chartData, openRowID, setOpenRowID } =
+    props;
 
   regData.indicatorData.sort((a: IndicatorData, b: IndicatorData) => {
     return a.sortingName === b.sortingName
@@ -475,6 +512,8 @@ const RegistrySection = (props: {
             levels={levels}
             data={regData.indicatorData}
             chartData={chartData}
+            openRowID={openRowID}
+            setOpenRowID={setOpenRowID}
           />
         </TableBody>
       </React.Fragment>
@@ -490,6 +529,8 @@ const RegistrySection = (props: {
 
 export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
   const { context, type, year, unitNames, levels, medfields } = props;
+
+  const [openRowID, setOpenRowID] = useState<string>("");
 
   const queryParams: FetchIndicatorParams = {
     context: context,
@@ -541,6 +582,8 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
           chartData={chartData.filter((chartDataRow: Indicator) => {
             return chartDataRow.registry_name === row.registerName;
           })}
+          openRowID={openRowID}
+          setOpenRowID={setOpenRowID}
         />
       ))}
     </StyledTable>
