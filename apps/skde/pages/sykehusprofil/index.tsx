@@ -16,11 +16,11 @@ import {
   FilterMenu,
   useUnitNamesQuery,
   useUnitUrlsQuery,
-  LowLevelIndicatorList,
   LineStyles,
   newLevelSymbols,
   defaultYear,
 } from "qmongjs";
+import { LowLevelIndicatorList } from "../../src/components/LowLevelIndicatorList";
 import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
