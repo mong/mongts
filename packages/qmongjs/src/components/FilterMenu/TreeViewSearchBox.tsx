@@ -3,7 +3,7 @@ import { TreeViewFilterSettingsValue } from "./TreeViewFilterSection";
 
 type TreeViewSearchBoxProps = {
   hintText?: string;
-  options: TreeViewFilterSettingsValue[];
+  options: TreeViewFilterSettingsValue[][];
   onSearch: (nodeValues: string[]) => void;
 };
 
