@@ -14,10 +14,21 @@ interface AutocompleteOption {
 
 function TreeViewSearchBox(props: TreeViewSearchBoxProps) {
   const hintText = props.hintText || "Søk...";
-  const options: AutocompleteOption[] = props.options.map((option) => ({
-    label: option.valueLabel,
-    value: option.value,
-  }));
+  const options: AutocompleteOption[] = props.options
+    .map((optionArray) => {
+      if (Array.isArray(optionArray) && optionArray.length > 0) {
+        return {
+          label: optionArray[0].valueLabel,
+          value: optionArray[0].value,
+        };
+      } else {
+        console.debug(
+          `Invalid non-array value found when mapping options in TreeViewSearchBox. Value: ${optionArray}`,
+        );
+        return null;
+      }
+    })
+    .filter((value) => value !== null);
 
   return (
     <>
