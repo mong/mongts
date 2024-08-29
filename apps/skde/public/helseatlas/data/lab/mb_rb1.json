@@ -3,9 +3,7 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "totsnitt"
-      ],
+      "x": ["totsnitt"],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall biokjemiske-prøver pr. 1000 innbyggere",
@@ -15,31 +13,17 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "tot2021",
-        "tot2022",
-        "tot2023"
-      ],
+      "annualVar": ["tot2021", "tot2022", "tot2023"],
       "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "ref_pr_innb_adj"
-      ],
+      "x": ["ref_pr_innb_adj"],
       "y": "bohf",
       "xLabel": {
         "nb": "Refusjon pr. innbygger",
@@ -54,9 +38,7 @@
     {
       "type": "barchart",
       "data": "datasett_2",
-      "x": [
-        "ref_pr_innb_adj"
-      ],
+      "x": ["ref_pr_innb_adj"],
       "y": "borhf",
       "xLabel": {
         "nb": "Refusjon pr. innbygger",
@@ -71,23 +53,12 @@
     {
       "type": "linechart",
       "data": "datasett_3",
-      "linevars": [
-        "kvinner_s",
-        "menn_s"
-      ],
+      "linevars": ["kvinner_s", "menn_s"],
       "linevarsLabels": {
-        "nb": [
-          "Kvinner",
-          "Menn"
-        ],
-        "en": [
-          "Women",
-          "Men"
-        ]
+        "nb": ["Kvinner", "Menn"],
+        "en": ["Women", "Men"]
       },
-      "x": [
-        "alder"
-      ],
+      "x": ["alder"],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
@@ -102,23 +73,12 @@
     {
       "type": "linechart",
       "data": "datasett_3",
-      "linevars": [
-        "kvinner_l",
-        "menn_l"
-      ],
+      "linevars": ["kvinner_l", "menn_l"],
       "linevarsLabels": {
-        "nb": [
-          "Kvinner",
-          "Menn"
-        ],
-        "en": [
-          "Women",
-          "Men"
-        ]
+        "nb": ["Kvinner", "Menn"],
+        "en": ["Women", "Men"]
       },
-      "x": [
-        "alder"
-      ],
+      "x": ["alder"],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
