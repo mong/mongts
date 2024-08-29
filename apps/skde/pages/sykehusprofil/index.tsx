@@ -60,6 +60,8 @@ import { FetchMap } from "../../src/helpers/hooks";
 import { mapColors, abacusColors } from "../../src/charts/colors";
 import { geoMercator, geoPath } from "d3-geo";
 import { mapUnitName2BohfNames } from "../../src/helpers/functions/unitName2BohfMap";
+import { Hoverbox } from "../../src/components/Hoverbox";
+import { HelpOutline } from "@mui/icons-material";
 
 const getUnitFullName = (
   nestedUnitNames: NestedTreatmentUnitName[],
@@ -322,20 +324,40 @@ export const Skde = (): JSX.Element => {
     const { itemSpacing, symbolSpacing } = props;
 
     return (
-      <Stack direction="row" spacing={itemSpacing} alignItems="center">
-        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
-          {newLevelSymbols("H")}
-          <Typography>Høy måloppnåelse</Typography>
+      <>
+        <Stack direction="row" spacing={itemSpacing} alignItems="center">
+          <Hoverbox
+            title="Viser andel eller antall kvalitetsindikatorer som har oppnådd høy måloppnåelse i kvalitetsregisteret"
+            placement="top"
+            offset={[20, 20]}
+          >
+            <Stack direction="row" spacing={symbolSpacing} alignItems="center">
+              {newLevelSymbols("H")}
+              <Typography>Høy måloppnåelse</Typography>
+            </Stack>
+          </Hoverbox>
+          <Hoverbox
+            title="Viser andel eller antall kvalitetsindikatorer som har oppnådd middels måloppnåelse i kvalitetsregisteret"
+            placement="top"
+            offset={[20, 20]}
+          >
+            <Stack direction="row" spacing={symbolSpacing} alignItems="center">
+              {newLevelSymbols("M")}
+              <Typography>Moderat måloppnåelse</Typography>
+            </Stack>
+          </Hoverbox>
+          <Hoverbox
+            title="Viser andel eller antall kvalitetsindikatorer som har oppnådd lav måloppnåelse i kvalitetsregisteret"
+            placement="top"
+            offset={[20, 20]}
+          >
+            <Stack direction="row" spacing={symbolSpacing} alignItems="center">
+              {newLevelSymbols("L")}
+              <Typography>Lav måloppnåelse</Typography>
+            </Stack>
+          </Hoverbox>
         </Stack>
-        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
-          {newLevelSymbols("M")}
-          <Typography>Moderat måloppnåelse</Typography>
-        </Stack>
-        <Stack direction="row" spacing={symbolSpacing} alignItems="center">
-          {newLevelSymbols("L")}
-          <Typography>Lav måloppnåelse</Typography>
-        </Stack>
-      </Stack>
+      </>
     );
   };
 
@@ -628,8 +650,24 @@ export const Skde = (): JSX.Element => {
                     margin={4}
                   >
                     <Typography>Vis kvalitetsindikatorer</Typography>
+                    <Hoverbox
+                      title="Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register kvalitetsindikatorene kommer fra."
+                      placement="top"
+                      offset={[20, 20]}
+                      maxWidth={400}
+                    >
+                      <HelpOutline sx={{ fontSize: "18px", marginLeft: 1 }} />
+                    </Hoverbox>
                     <Switch checked={dataQuality} onChange={checkDataQuality} />
                     <Typography>Vis datakvalitet</Typography>
+                    <Hoverbox
+                      title="Datakvalitet representerer for eksempel dekningsgrad som angir andel pasienter eller hendelser som registreres, i forhold til antall som skal registreres i registeret fra behandlingsstedet. Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register datakvaliteten er rapportert fra."
+                      placement="top"
+                      offset={[20, 20]}
+                      maxWidth={400}
+                    >
+                      <HelpOutline sx={{ fontSize: "18px", marginLeft: 1 }} />
+                    </Hoverbox>
                   </Stack>
                   <MedfieldTable {...medfieldTableProps} />
                 </ExpandableItemBox>

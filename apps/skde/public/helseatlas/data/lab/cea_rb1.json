@@ -3,9 +3,7 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "totsnitt"
-      ],
+      "x": ["totsnitt"],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall CEA-prøver pr. 1000 innbyggere",
@@ -15,31 +13,17 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "tot2021",
-        "tot2022",
-        "tot2023"
-      ],
+      "annualVar": ["tot2021", "tot2022", "tot2023"],
       "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_2",
-      "x": [
-        "totsnitt"
-      ],
+      "x": ["totsnitt"],
       "y": "borhf",
       "xLabel": {
         "nb": "Antall CEA-prøver pr. 1000 innbyggere",
@@ -49,31 +33,17 @@
         "nb": "Regionale helseforetak (RHF)",
         "en": "Regional health authorities"
       },
-      "annualVar": [
-        "tot2021",
-        "tot2022",
-        "tot2023"
-      ],
+      "annualVar": ["tot2021", "tot2022", "tot2023"],
       "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "ratesnitt_andel_int"
-      ],
+      "x": ["ratesnitt_andel_int"],
       "y": "bohf",
       "xLabel": {
         "nb": "Andel CEA-prøver tatt med kortere intervall enn anbefalt",
@@ -89,39 +59,20 @@
         "rate2022_andel_int"
       ],
       "annualVarLabels": {
-        "nb": [
-          "2020",
-          "2021",
-          "2022"
-        ],
-        "en": [
-          "2020",
-          "2021",
-          "2022"
-        ]
+        "nb": ["2020", "2021", "2022"],
+        "en": ["2020", "2021", "2022"]
       },
       "format": ",.0%"
     },
     {
       "type": "linechart",
       "data": "datasett_3",
-      "linevars": [
-        "kvinner",
-        "menn"
-      ],
+      "linevars": ["kvinner", "menn"],
       "linevarsLabels": {
-        "nb": [
-          "Kvinner",
-          "Menn"
-        ],
-        "en": [
-          "Women",
-          "Men"
-        ]
+        "nb": ["Kvinner", "Menn"],
+        "en": ["Women", "Men"]
       },
-      "x": [
-        "alder"
-      ],
+      "x": ["alder"],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
@@ -688,38 +639,38 @@
       "data": [
         {
           "alder": 0,
-          "kvinner": 3.7130826755e-05,
-          "menn": 1.40730107799e-05
+          "kvinner": 3.7130826755e-5,
+          "menn": 1.40730107799e-5
         },
         {
           "alder": 1,
-          "kvinner": 4.37308222123e-05,
-          "menn": 3.44056425254e-05
+          "kvinner": 4.37308222123e-5,
+          "menn": 3.44056425254e-5
         },
         {
           "alder": 2,
-          "kvinner": 2.84151452724e-05,
-          "menn": 2.67322497861e-05
+          "kvinner": 2.84151452724e-5,
+          "menn": 2.67322497861e-5
         },
         {
           "alder": 3,
-          "kvinner": 2.78295717029e-05,
-          "menn": 6.55582944354e-05
+          "kvinner": 2.78295717029e-5,
+          "menn": 6.55582944354e-5
         },
         {
           "alder": 4,
-          "kvinner": 5.45810562799e-05,
-          "menn": 7.74388394499e-05
+          "kvinner": 5.45810562799e-5,
+          "menn": 7.74388394499e-5
         },
         {
           "alder": 5,
-          "kvinner": 6.0290196814e-05,
-          "menn": 7.61551788695e-05
+          "kvinner": 6.0290196814e-5,
+          "menn": 7.61551788695e-5
         },
         {
           "alder": 6,
-          "kvinner": 7.95028422266e-05,
-          "menn": 5.03397936068e-05
+          "kvinner": 7.95028422266e-5,
+          "menn": 5.03397936068e-5
         },
         {
           "alder": 7,
@@ -729,7 +680,7 @@
         {
           "alder": 8,
           "kvinner": 0.00017271930554,
-          "menn": 6.69490700166e-05
+          "menn": 6.69490700166e-5
         },
         {
           "alder": 9,

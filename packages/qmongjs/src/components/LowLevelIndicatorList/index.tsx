@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { DataPoint, IndicatorData, RegisterData } from "types";
+import { DataPoint, IndicatorData, Medfield, RegisterData } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
-import { FetchIndicatorParams, useIndicatorQuery } from "../../helpers/hooks";
-import { customFormat, newLevelSymbols, level2 } from "qmongjs";
+import {
+  FetchIndicatorParams,
+  useIndicatorQuery,
+  useMedicalFieldsQuery,
+} from "../../helpers/hooks";
+import { customFormat, newLevelSymbols, level2, skdeTheme } from "qmongjs";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import {
@@ -87,9 +91,9 @@ const RegistrySection = (props: {
   return dataFlat.length > 0 ? (
     <React.Fragment>
       <TableHead>
-        <TableRow>
-          <TableCell colSpan={3} align="center">
-            {registryName}
+        <TableRow sx={{ backgroundColor: skdeTheme.palette.info.light }}>
+          <TableCell colSpan={3} align="left">
+            <Typography variant="subtitle2">{registryName}</Typography>
           </TableCell>
         </TableRow>
       </TableHead>
@@ -184,13 +188,35 @@ type LowLevelIndicatorListProps = {
   year: number;
 };
 
+// Filter out indicators from the registries belonging to the selected medical field
+const filterData = (
+  data: RegisterData[],
+  medfields: Medfield[],
+  selectedMedfield: string,
+) => {
+  if (selectedMedfield === "all") {
+    return data;
+  }
+
+  const selectedRegisters = medfields.filter(
+    (row) => row.shortName === selectedMedfield,
+  )[0].registers;
+
+  return data.filter((row) => selectedRegisters.includes(row.registerName));
+};
+
 export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
   const { context, unitNames, type, year } = props;
 
   const [selectedLevel, setSelectedLevel] = useState<string>("2");
+  const [selectedMedfield, setSelectedMedfield] = useState<string>("all");
 
   const handleChangeLevel = (event: SelectChangeEvent) => {
     setSelectedLevel(event.target.value);
+  };
+
+  const handleChangeMedfield = (event: SelectChangeEvent) => {
+    setSelectedMedfield(event.target.value);
   };
 
   // Get data
@@ -206,7 +232,9 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
     nested: true,
   });
 
-  if (nestedIndicatorQuery.isFetching) {
+  const medfieldsQuery = useMedicalFieldsQuery();
+
+  if (nestedIndicatorQuery.isFetching || medfieldsQuery.isFetching) {
     return null;
   }
 
@@ -215,7 +243,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
   return (
     <>
       <Box sx={{ marginLeft: 3 }}>
-        <FormControl sx={{ minWidth: 140 }}>
+        <FormControl sx={{ minWidth: 140, marginRight: 2 }}>
           <InputLabel>Målnivå</InputLabel>
           <Select
             value={selectedLevel}
@@ -225,6 +253,27 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
             <MenuItem value="0">Høy</MenuItem>
             <MenuItem value="1">Middels</MenuItem>
             <MenuItem value="2">Lav</MenuItem>
+          </Select>
+        </FormControl>
+
+        <FormControl sx={{ minWidth: 140 }}>
+          <InputLabel>Fagområde</InputLabel>
+          <Select
+            value={selectedMedfield}
+            label="Fagområde"
+            onChange={handleChangeMedfield}
+          >
+            <MenuItem value={"all"}>Alle fagområder</MenuItem>
+            {medfieldsQuery.data.map((row: Medfield) => {
+              return (
+                <MenuItem
+                  value={row.shortName}
+                  key={"lowlevellist-" + row.shortName}
+                >
+                  {row.name}
+                </MenuItem>
+              );
+            })}
           </Select>
         </FormControl>
       </Box>
@@ -242,16 +291,18 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
                 </TableCell>
               </TableRow>
             </TableHead>
-            {data.map((row) => {
-              return (
-                <RegistrySection
-                  key={row.registerName}
-                  data={row}
-                  year={year}
-                  selectedIndex={Number(selectedLevel)}
-                />
-              );
-            })}
+            {filterData(data, medfieldsQuery.data, selectedMedfield).map(
+              (row) => {
+                return (
+                  <RegistrySection
+                    key={row.registerName}
+                    data={row}
+                    year={year}
+                    selectedIndex={Number(selectedLevel)}
+                  />
+                );
+              },
+            )}
           </Table>
         </TableContainer>
       </>
