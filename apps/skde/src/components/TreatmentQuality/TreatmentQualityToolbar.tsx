@@ -3,7 +3,7 @@ import { Button, Tab, Tabs, Toolbar, styled, Stack } from "@mui/material";
 import { TuneRounded } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid2";
 import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 import { HelpOutline } from "@mui/icons-material";
 
@@ -91,14 +91,7 @@ export const TreatmentQualityToolbar = ({
     <StyledToolbar className="main-toolbar">
       <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
         {useMediaQuery(theme.breakpoints.down("xxl")) ? (
-          <Grid
-            xs={1}
-            sm={1}
-            md={2}
-            sx={{
-              alignContent: "center",
-            }}
-          >
+          <Grid size={{ xs: 1, sm: 1, md: 2 }} sx={{ alignContent: "center" }}>
             <Button
               variant="contained"
               aria-label="Åpne sidemeny"
@@ -114,7 +107,7 @@ export const TreatmentQualityToolbar = ({
             </Button>
           </Grid>
         ) : null}
-        <Grid xs={3} sm={7} md={10}>
+        <Grid size={{ xs: 3, sm: 7, md: 10 }}>
           <StyledTabs
             indicatorColor="secondary"
             aria-label="Arkfaner for behandlingskvalitet og opptaksområde"

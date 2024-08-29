@@ -35,7 +35,7 @@ import {
   Typography,
   Container,
 } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid2";
 import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
 import IndicatorLinechart, {
   IndicatorLinechartParams,
@@ -430,15 +430,11 @@ export const Skde = (): JSX.Element => {
         <Container maxWidth={maxWidth} disableGutters={true}>
           <Box marginTop={2} className="hospital-profile-box">
             <Grid container spacing={2}>
-              <Grid xs={12}>
+              <Grid size={{ xs: 12 }}>
                 <ItemBox height={550} sx={{ overflow: "auto" }}>
                   <Grid container>
                     <Grid
-                      xs={12}
-                      sm={12}
-                      lg={4}
-                      xl={4}
-                      xxl={4}
+                      size={{ xs: 12, sm: 12, lg: 4, xl: 4, xxl: 4 }}
                       alignContent="center"
                       style={{ textAlign: "center" }}
                     >
@@ -481,7 +477,7 @@ export const Skde = (): JSX.Element => {
                       </div>
                     </Grid>
 
-                    <Grid xs={12} sm={6} lg={4} xl={4} xxl={4}>
+                    <Grid size={{ xs: 12, sm: 6, lg: 4, xl: 4, xxl: 4 }}>
                       <Stack
                         direction="column"
                         alignItems="center"
@@ -540,7 +536,7 @@ export const Skde = (): JSX.Element => {
                       </Stack>
                     </Grid>
 
-                    <Grid xs={12} sm={6} lg={4} xl={4} xxl={4}>
+                    <Grid size={{ xs: 12, sm: 6, lg: 4, xl: 4, xxl: 4 }}>
                       <ItemBox
                         height={450}
                         sx={{ overflow: "auto", marginRight: 2 }}
@@ -560,7 +556,7 @@ export const Skde = (): JSX.Element => {
                 </ItemBox>
               </Grid>
 
-              <Grid xs={12}>
+              <Grid size={{ xs: 12 }}>
                 <ItemBox sx={{ overflow: "auto" }}>
                   <Typography variant="h5" style={titleStyle}>
                     Utvikling over tid
@@ -605,7 +601,7 @@ export const Skde = (): JSX.Element => {
                 </ItemBox>
               </Grid>
 
-              <Grid xs={12}>
+              <Grid size={{ xs: 12 }}>
                 <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                   <Typography variant="h5" style={titleStyle}>
                     Kvalitetsindikatorer fordelt på fagområder
@@ -635,7 +631,7 @@ export const Skde = (): JSX.Element => {
                 </ExpandableItemBox>
               </Grid>
 
-              <Grid xs={12}>
+              <Grid size={{ xs: 12 }}>
                 <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                   <Typography variant="h5" style={titleStyle}>
                     Siste års måloppnåelse
