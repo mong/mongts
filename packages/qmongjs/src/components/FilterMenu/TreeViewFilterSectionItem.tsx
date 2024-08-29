@@ -55,17 +55,21 @@ export const TreeViewFilterSectionItem = (
   const isSelected = selectedIds.includes(labeledValue.value);
   const singleselect = !(multiselect || multiselect === undefined);
 
+  const uniqueItemId = parentKey
+    ? `${parentKey}-${labeledValue.value}`
+    : labeledValue.value;
+
   return (
     <TreeItem
       key={`tree-view-item-${filterKey}-${labeledValue.value}`}
       data-testid={`tree-view-item-${labeledValue.value}`}
-      itemId={`${parentKey}-${labeledValue.value}`}
+      itemId={uniqueItemId}
       label={
         <>
           <Checkbox
-            id={`checkbox-${filterKey}-${labeledValue.value}`}
-            key={`checkbox-${filterKey}-${labeledValue.value}`}
-            data-testid={`checkbox-${filterKey}-${labeledValue.value}`}
+            id={`checkbox-${filterKey}-${uniqueItemId}`}
+            key={`checkbox-${filterKey}-${uniqueItemId}`}
+            data-testid={`checkbox-${filterKey}-${uniqueItemId}`}
             checked={isSelected}
             checkedIcon={
               singleselect ? <RadioButtonCheckedRounded /> : <CheckBox />
