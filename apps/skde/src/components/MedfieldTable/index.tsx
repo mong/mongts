@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -120,11 +120,16 @@ export const createMedfieldTableData = (data: Indicator[]) => {
   return rowData;
 };
 
-const Row = (props: { row: RowData; unitNames: string[]; type: string }) => {
-  const { row, unitNames, type } = props;
+const Row = (props: {
+  row: RowData;
+  unitNames: string[];
+  type: string;
+  rowID: string;
+  openRowID: string;
+  setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
+}) => {
+  const { row, unitNames, type, rowID, openRowID, setOpenRowID } = props;
   const { name, green, yellow, red, registers } = row;
-
-  const [open, setOpen] = React.useState(false);
 
   let typeString: string;
 
@@ -134,16 +139,36 @@ const Row = (props: { row: RowData; unitNames: string[]; type: string }) => {
     typeString = "";
   }
 
+  let open: boolean;
+
+  if (openRowID === "") {
+    open = false;
+  } else if (openRowID === rowID) {
+    open = true;
+  } else {
+    open = false;
+  }
+
+  const onClick = () => {
+    if (!open) {
+      open = true;
+      setOpenRowID(rowID);
+    } else {
+      open = false;
+      setOpenRowID("");
+    }
+  };
+
   return (
     <React.Fragment>
       <TableRow
         sx={{ "& > *": { borderBottom: "unset" } }}
-        onClick={() => setOpen(!open)}
+        onClick={onClick}
         style={{ cursor: "pointer" }}
       >
         <TableCell>
           <IconButton aria-label="expand row" size="small">
-            {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+            {rowID === openRowID ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
@@ -153,7 +178,7 @@ const Row = (props: { row: RowData; unitNames: string[]; type: string }) => {
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={open} timeout="auto" unmountOnExit>
+          <Collapse in={rowID === openRowID} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Table size="small" aria-label="registries">
                 <TableHead>
@@ -205,6 +230,8 @@ const Row = (props: { row: RowData; unitNames: string[]; type: string }) => {
 };
 
 export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
+  const [openRowID, setOpenRowID] = useState<string>("");
+
   // Fetch aggregated data
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const indicatorQuery: UseQueryResult<any, unknown> =
@@ -238,6 +265,9 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
               row={row}
               unitNames={medfieldTableParams.unitNames}
               type={medfieldTableParams.type}
+              rowID={row.name}
+              openRowID={openRowID}
+              setOpenRowID={setOpenRowID}
             />
           ))}
         </TableBody>
