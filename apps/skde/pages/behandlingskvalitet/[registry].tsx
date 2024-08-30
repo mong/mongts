@@ -73,7 +73,7 @@ const scrollToSelectedRow = (selectedRow: string): boolean => {
   }
 };
 
-export default function TreatmentQualityPage({ content }) {
+export default function TreatmentQualityPage({ registry }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (newOpen: boolean) => {
@@ -135,7 +135,9 @@ export default function TreatmentQualityPage({ content }) {
   const getMedicalFieldFilterRegisters = (medicalFieldFilter: string[]) => {
     let registerFilter: string[];
 
-    if (!medicalFieldFilter || medicalFieldFilter[0] === "all") {
+    if (registry) {
+      registerFilter = [registry];
+    } else if (!medicalFieldFilter || medicalFieldFilter[0] === "all") {
       registerFilter = registers.map((register) => register.rname);
     } else {
       const selectedMedicalFields = medicalFields.filter((field) =>
@@ -326,7 +328,7 @@ export default function TreatmentQualityPage({ content }) {
                     registryNameData={registers}
                     medicalFieldData={medicalFields}
                     context={tableContext}
-                    register={content}
+                    register={registry}
                   />
                 </Box>
               )}
@@ -402,6 +404,7 @@ export default function TreatmentQualityPage({ content }) {
               registryNameData={registers}
               medicalFieldData={medicalFields}
               context={tableContext}
+              register={registry}
             />
             {showNewTableSwitch && !newTableOnly && (
               <FormGroup sx={{ paddingRight: "1.5rem" }}>
@@ -428,7 +431,7 @@ export default function TreatmentQualityPage({ content }) {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   return {
-    props: { content: context.params?.registry },
+    props: { registry: context.params?.registry },
   };
 };
 
