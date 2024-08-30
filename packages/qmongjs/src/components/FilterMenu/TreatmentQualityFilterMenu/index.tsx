@@ -27,7 +27,10 @@ import {
   getTreatmentUnitsTree,
   getYearOptions,
 } from "./filterMenuOptions";
-import { useUnitNamesQuery } from "../../../helpers/hooks";
+import {
+  useUnitNamesQuery,
+  useSelectionYearsQuery,
+} from "../../../helpers/hooks";
 import Alert from "@mui/material/Alert";
 import { UseQueryResult } from "@tanstack/react-query";
 import {
@@ -134,8 +137,24 @@ export function TreatmentQualityFilterMenu({
     dg: StringParam,
   });
 
+  // Get list of all years with data from given register
+  let listOfYears: [number] | undefined = undefined;
+  if (register) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const selectionYearQuery: UseQueryResult<any, unknown> =
+      useSelectionYearsQuery(
+        register as string,
+        queryContext.context,
+        queryContext.type,
+      );
+
+    listOfYears = selectionYearQuery.data as [number];
+  }
   // Year selection
-  const yearOptions = getYearOptions();
+  const yearOptions = listOfYears
+    ? getYearOptions(Math.min(...listOfYears), Math.max(...listOfYears))
+    : getYearOptions();
+
   const [selectedYear, setSelectedYear] = useQueryParam<string>(
     yearKey,
     withDefault(StringParam, yearOptions.default.value),
