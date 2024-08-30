@@ -5,7 +5,7 @@
 import { Chip, Stack } from "@mui/material";
 import { Hoverbox } from "../Hoverbox";
 
-export type ChipSelectionProps = {
+type ChipSelectionProps = {
   leftChipLabel: string;
   rightChipLabel: string;
   leftChipHelpText: string;
