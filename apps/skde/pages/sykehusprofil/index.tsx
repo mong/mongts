@@ -33,7 +33,6 @@ import {
   Stack,
   Typography,
   Container,
-  Chip,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
@@ -61,6 +60,7 @@ import { mapColors, abacusColors } from "../../src/charts/colors";
 import { geoMercator, geoPath } from "d3-geo";
 import { mapUnitName2BohfNames } from "../../src/helpers/functions/unitName2BohfMap";
 import { Hoverbox } from "../../src/components/Hoverbox";
+import { ChipSelection } from "../../src/components/ChipSelection";
 
 const getUnitFullName = (
   nestedUnitNames: NestedTreatmentUnitName[],
@@ -89,88 +89,6 @@ const getUnitFullName = (
 
   // Check if unit is a hospital?
   return unitShortName;
-};
-
-// Component for two chips with mutually exclusive choices.
-// The component accepts a boolean state variable and a state setter.
-// If the left chip is selected when the state is true, set trueChip=left, and vice versa.
-type ChipSelectionProps = {
-  leftChipLabel: string;
-  rightChipLabel: string;
-  leftChipHelpText: string;
-  rightChipHelpText: string;
-  state: boolean;
-  stateSetter: React.Dispatch<React.SetStateAction<boolean>>;
-  trueChip: "left" | "right";
-  hoverBoxOffset: number[];
-  hoverBoxPlacement:
-    | "top"
-    | "right"
-    | "bottom"
-    | "left"
-    | "bottom-end"
-    | "bottom-start"
-    | "left-end"
-    | "left-start"
-    | "right-end"
-    | "right-start"
-    | "top-end"
-    | "top-start";
-  hoverBoxMaxWidth: number;
-};
-
-const ChipSelection = (props: ChipSelectionProps) => {
-  const {
-    leftChipLabel,
-    rightChipLabel,
-    leftChipHelpText,
-    rightChipHelpText,
-    state,
-    stateSetter,
-    trueChip,
-    hoverBoxOffset,
-    hoverBoxPlacement,
-    hoverBoxMaxWidth,
-  } = props;
-
-  let correctedState: boolean;
-
-  if (trueChip === "left") {
-    correctedState = !state;
-  } else {
-    correctedState = state;
-  }
-
-  return (
-    <Stack direction="row" spacing={1} alignItems="center" margin={4}>
-      <Hoverbox
-        title={leftChipHelpText}
-        placement={hoverBoxPlacement}
-        offset={hoverBoxOffset}
-        maxWidth={hoverBoxMaxWidth}
-      >
-        <Chip
-          label={leftChipLabel}
-          color="primary"
-          variant={correctedState ? "outlined" : "filled"}
-          onClick={() => stateSetter(trueChip === "left" ? true : false)}
-        />
-      </Hoverbox>
-      <Hoverbox
-        title={rightChipHelpText}
-        placement={hoverBoxPlacement}
-        offset={hoverBoxOffset}
-        maxWidth={hoverBoxMaxWidth}
-      >
-        <Chip
-          label={rightChipLabel}
-          color="primary"
-          variant={correctedState ? "filled" : "outlined"}
-          onClick={() => stateSetter(trueChip === "right" ? true : false)}
-        />
-      </Hoverbox>
-    </Stack>
-  );
 };
 
 export const Skde = (): JSX.Element => {
