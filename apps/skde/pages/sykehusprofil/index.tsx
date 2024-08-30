@@ -25,7 +25,6 @@ import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import {
-  Switch,
   ThemeProvider,
   Box,
   Accordion,
@@ -354,10 +353,6 @@ export const Skde = (): JSX.Element => {
   const [normalise, setNormalise] = React.useState(indicatorParams.normalise);
 
   indicatorParams.normalise = normalise;
-
-  const checkNormalise = () => {
-    setNormalise(!normalise);
-  };
 
   if (normalise) {
     indicatorParams.yAxisText = "Andel";
@@ -688,21 +683,6 @@ export const Skde = (): JSX.Element => {
                     >
                       <Legend itemSpacing={8} symbolSpacing={2} />
                     </div>
-                  </div>
-                  <ThemeProvider theme={lineChartTheme}>
-                    <div id="plot-window">
-                      <IndicatorLinechart {...indicatorParams} />
-                    </div>
-                  </ThemeProvider>
-                  <Stack
-                    direction="row"
-                    spacing={1}
-                    alignItems="center"
-                    margin={4}
-                  >
-                    <Typography>Vis andel</Typography>
-                    <Switch checked={!normalise} onChange={checkNormalise} />
-                    <Typography>Vis antall</Typography>
                     <ChipSelection
                       leftChipLabel="Vis andel"
                       rightChipLabel="Vis Antall"
@@ -715,7 +695,12 @@ export const Skde = (): JSX.Element => {
                       stateSetter={setNormalise}
                       trueChip="left"
                     />
-                  </Stack>
+                  </div>
+                  <ThemeProvider theme={lineChartTheme}>
+                    <div id="plot-window">
+                      <IndicatorLinechart {...indicatorParams} />
+                    </div>
+                  </ThemeProvider>
                 </ItemBox>
               </Grid>
 
