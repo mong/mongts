@@ -517,11 +517,13 @@ export const Skde = (): JSX.Element => {
                           variant="h5"
                           style={{ marginTop: 20, marginLeft: 20 }}
                         >
-                          {unitNamesQuery.data &&
-                            getUnitFullName(
-                              unitNamesQuery.data.nestedUnitNames,
-                              selectedTreatmentUnits[0],
-                            )}
+                          <b>
+                            {unitNamesQuery.data &&
+                              getUnitFullName(
+                                unitNamesQuery.data.nestedUnitNames,
+                                selectedTreatmentUnits[0],
+                              )}
+                          </b>
                         </Typography>
                         <div
                           style={{ display: "flex", justifyContent: "center" }}
@@ -571,7 +573,7 @@ export const Skde = (): JSX.Element => {
                         sx={{ overflow: "auto", marginRight: 2 }}
                       >
                         <Typography variant="h5" style={titleStyle}>
-                          Tilknyttede behandlingssteder
+                          <b>Tilknyttede behandlingssteder</b>
                         </Typography>
                         {unitNamesQuery.data ? (
                           <SubUnits
