@@ -250,11 +250,15 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
           <TableRow>
             <TableCell />
             <TableCell>
-              <Typography variant="subtitle1">Fagområde</Typography>
+              <Typography variant="subtitle1">
+                <b>Fagområde</b>
+              </Typography>
             </TableCell>
 
             <TableCell>
-              <Typography variant="subtitle1">Resultat</Typography>
+              <Typography variant="subtitle1">
+                <b>Resultat</b>
+              </Typography>
             </TableCell>
           </TableRow>
         </TableHead>

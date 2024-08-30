@@ -312,10 +312,14 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
               <TableRow>
                 <TableCell></TableCell>
                 <TableCell>
-                  <Typography variant="subtitle1">Indikator</Typography>
+                  <Typography variant="subtitle1">
+                    <b>Indikator</b>
+                  </Typography>
                 </TableCell>
                 <TableCell>
-                  <Typography variant="subtitle1">Resultat</Typography>
+                  <Typography variant="subtitle1">
+                    <b>Resultat</b>
+                  </Typography>
                 </TableCell>
               </TableRow>
             </TableHead>
