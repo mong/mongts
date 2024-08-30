@@ -514,11 +514,13 @@ export const Skde = (): JSX.Element => {
                           variant="h5"
                           style={{ marginTop: 20, marginLeft: 20 }}
                         >
-                          {unitNamesQuery.data &&
-                            getUnitFullName(
-                              unitNamesQuery.data.nestedUnitNames,
-                              selectedTreatmentUnits[0],
-                            )}
+                          <b>
+                            {unitNamesQuery.data &&
+                              getUnitFullName(
+                                unitNamesQuery.data.nestedUnitNames,
+                                selectedTreatmentUnits[0],
+                              )}
+                          </b>
                         </Typography>
                         <div
                           style={{ display: "flex", justifyContent: "center" }}
@@ -568,7 +570,7 @@ export const Skde = (): JSX.Element => {
                         sx={{ overflow: "auto", marginRight: 2 }}
                       >
                         <Typography variant="h5" style={titleStyle}>
-                          Tilknyttede behandlingssteder
+                          <b>Tilknyttede behandlingssteder</b>
                         </Typography>
                         {unitNamesQuery.data ? (
                           <SubUnits
@@ -585,7 +587,7 @@ export const Skde = (): JSX.Element => {
               <Grid xs={12}>
                 <ItemBox sx={{ overflow: "auto" }}>
                   <Typography variant="h5" style={titleStyle}>
-                    Utvikling over tid
+                    <b>Utvikling over tid</b>
                   </Typography>
                   <div style={{ margin: textMargin }}>
                     <Typography variant="body1">
@@ -630,7 +632,7 @@ export const Skde = (): JSX.Element => {
               <Grid xs={12}>
                 <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                   <Typography variant="h5" style={titleStyle}>
-                    Kvalitetsindikatorer fordelt på fagområder
+                    <b>Kvalitetsindikatorer fordelt på fagområder</b>
                   </Typography>
                   <div style={{ margin: textMargin }}>
                     <Typography variant="body1">
@@ -676,7 +678,7 @@ export const Skde = (): JSX.Element => {
               <Grid xs={12}>
                 <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                   <Typography variant="h5" style={titleStyle}>
-                    Siste års måloppnåelse
+                    <b>Siste års måloppnåelse</b>
                   </Typography>
                   <div style={{ margin: textMargin }}>
                     <Typography variant="body1">
