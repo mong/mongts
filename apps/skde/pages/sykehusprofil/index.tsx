@@ -590,29 +590,25 @@ export const Skde = (): JSX.Element => {
                           )) +
                         ". Her vises andel eller antall av kvalitetsindikatorer som har hatt høy, middels eller lav måloppnåelse de siste årene."}
                     </Typography>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "right",
-                        marginRight: 20,
-                        marginTop: 40,
-                      }}
+                    <Stack
+                      direction="row"
+                      alignItems="center"
+                      justifyContent="space-between"
                     >
+                      <ChipSelection
+                        leftChipLabel="Vis andel"
+                        rightChipLabel="Vis Antall"
+                        leftChipHelpText=""
+                        rightChipHelpText=""
+                        hoverBoxOffset={[20, 20]}
+                        hoverBoxPlacement="top"
+                        hoverBoxMaxWidth={400}
+                        state={normalise}
+                        stateSetter={setNormalise}
+                        trueChip="left"
+                      />
                       <Legend itemSpacing={8} symbolSpacing={2} />
-                    </div>
-                    <ChipSelection
-                      leftChipLabel="Vis andel"
-                      rightChipLabel="Vis Antall"
-                      leftChipHelpText=""
-                      rightChipHelpText=""
-                      hoverBoxOffset={[20, 20]}
-                      hoverBoxPlacement="top"
-                      hoverBoxMaxWidth={400}
-                      state={normalise}
-                      stateSetter={setNormalise}
-                      trueChip="left"
-                    />
+                    </Stack>
                   </div>
                   <ThemeProvider theme={lineChartTheme}>
                     <div id="plot-window">
