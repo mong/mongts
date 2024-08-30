@@ -591,7 +591,7 @@ export const Skde = (): JSX.Element => {
                 <ItemBox sx={{ overflow: "auto" }}>
                   <Box padding={titlePadding}>
                     <Typography variant="h5" style={titleStyle}>
-                      Utvikling over tid
+                      <b>Utvikling over tid</b>
                     </Typography>
                     <div style={{ margin: textMargin }}>
                       <Typography variant="body1">
@@ -640,7 +640,7 @@ export const Skde = (): JSX.Element => {
                 <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                   <Box padding={titlePadding}>
                     <Typography variant="h5" style={titleStyle}>
-                      Kvalitetsindikatorer fordelt på fagområder
+                      <b>Kvalitetsindikatorer fordelt på fagområder</b>
                     </Typography>
                     <div style={{ margin: textMargin }}>
                       <Typography variant="body1">
@@ -692,7 +692,7 @@ export const Skde = (): JSX.Element => {
                 <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                   <Box padding={titlePadding}>
                     <Typography variant="h5" style={titleStyle}>
-                      Siste års måloppnåelse
+                      <b>Siste års måloppnåelse</b>
                     </Typography>
                     <div style={{ margin: textMargin }}>
                       <Typography variant="body1">
