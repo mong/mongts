@@ -18,7 +18,6 @@ import {
   useUnitUrlsQuery,
   LowLevelIndicatorList,
   LineStyles,
-  newLevelSymbols,
   defaultYear,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
@@ -47,55 +46,24 @@ import {
 import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
-import { SubUnits } from "../../src/components/SubUnits";
 import {
   lineChartTheme,
   ItemBox,
-} from "../../src/components/HospitalProfileStyles";
-import { ExpandableItemBox } from "../../src/components/ExpandableItemBox";
-import { NestedTreatmentUnitName, URLs } from "types";
-import { ArrowLink } from "qmongjs";
+} from "../../src/components/HospitalProfile/HospitalProfileStyles";
+import { ExpandableItemBox } from "../../src/components/HospitalProfile/ExpandableItemBox";
+import { URLs } from "types";
 import { useRouter } from "next/router";
-import { FetchMap } from "../../src/helpers/hooks";
-import { mapColors, abacusColors } from "../../src/charts/colors";
-import { geoMercator, geoPath } from "d3-geo";
 import { mapUnitName2BohfNames } from "../../src/helpers/functions/unitName2BohfMap";
 import { Hoverbox } from "../../src/components/Hoverbox";
 import { HelpOutline } from "@mui/icons-material";
-
-const getUnitFullName = (
-  nestedUnitNames: NestedTreatmentUnitName[],
-  unitShortName: string,
-) => {
-  if (!nestedUnitNames || !unitShortName) {
-    return null;
-  }
-
-  // Check if unit is a RHF
-  const isRHF = nestedUnitNames.map((row) => row.rhf).includes(unitShortName);
-
-  if (isRHF) {
-    return unitShortName;
-  }
-
-  // Check if unit is a HF
-  const HFs = nestedUnitNames.map((row) => row.hf).flat();
-  const isHF = HFs.map((row) => row.hf).includes(unitShortName);
-
-  if (isHF) {
-    return HFs.filter((row) => {
-      return row.hf === unitShortName;
-    })[0].hf_full;
-  }
-
-  // Check if unit is a hospital?
-  return unitShortName;
-};
+import { HospitalInfoBox } from "../../src/components/HospitalProfile/HospitalInfoBox";
+import { getUnitFullName } from "../../src/helpers/functions/getUnitFullName";
+import { LinePlotLegend } from "../../src/components/HospitalProfile/LinePlotLegend";
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
-  const [objectIDList, setObjectIDList] = useState([]);
+  const [objectIDList, setObjectIDList] = useState<number[]>([]);
 
   const treatmentUnitsKey = "selected_treatment_units";
 
@@ -320,81 +288,8 @@ export const Skde = (): JSX.Element => {
   const titleStyle = { marginTop: 20, marginLeft: 20 };
   const textMargin = 20;
 
-  const Legend = (props: { itemSpacing: number; symbolSpacing: number }) => {
-    const { itemSpacing, symbolSpacing } = props;
-
-    return (
-      <>
-        <Stack direction="row" spacing={itemSpacing} alignItems="center">
-          <Hoverbox
-            title="Viser andel eller antall kvalitetsindikatorer som har oppnådd høy måloppnåelse i kvalitetsregisteret"
-            placement="top"
-            offset={[20, 20]}
-          >
-            <Stack direction="row" spacing={symbolSpacing} alignItems="center">
-              {newLevelSymbols("H")}
-              <Typography>Høy måloppnåelse</Typography>
-            </Stack>
-          </Hoverbox>
-          <Hoverbox
-            title="Viser andel eller antall kvalitetsindikatorer som har oppnådd middels måloppnåelse i kvalitetsregisteret"
-            placement="top"
-            offset={[20, 20]}
-          >
-            <Stack direction="row" spacing={symbolSpacing} alignItems="center">
-              {newLevelSymbols("M")}
-              <Typography>Moderat måloppnåelse</Typography>
-            </Stack>
-          </Hoverbox>
-          <Hoverbox
-            title="Viser andel eller antall kvalitetsindikatorer som har oppnådd lav måloppnåelse i kvalitetsregisteret"
-            placement="top"
-            offset={[20, 20]}
-          >
-            <Stack direction="row" spacing={symbolSpacing} alignItems="center">
-              {newLevelSymbols("L")}
-              <Typography>Lav måloppnåelse</Typography>
-            </Stack>
-          </Hoverbox>
-        </Stack>
-      </>
-    );
-  };
-
-  // Copy-paste from helseatlas
-  const mapData = FetchMap("/helseatlas/kart/kronikere.geojson").data;
-
-  const mapHeight = 1000;
-  const mapWidth = 1000;
-  const initCenter = geoPath().centroid(mapData);
-  const initOffset: [number, number] = [
-    mapWidth / 2,
-    mapHeight / 2 - mapHeight * 0.11,
-  ];
-  const initScale = 150;
-  const initialProjection = geoMercator()
-    .scale(initScale)
-    .center(initCenter)
-    .translate(initOffset);
-  const initPath = geoPath().projection(initialProjection);
-
-  const bounds = initPath.bounds(mapData);
-  const hscale = (initScale * mapWidth) / (bounds[1][0] - bounds[0][0]);
-  const vscale = (initScale * mapHeight) / (bounds[1][1] - bounds[0][1]);
-  const scale = hscale < vscale ? 0.98 * hscale : 0.98 * vscale;
-  const offset: [number, number] = [
-    mapWidth - (bounds[0][0] + bounds[1][0]) / 2,
-    mapHeight - (bounds[0][1] + bounds[1][1]) / 2,
-  ];
-
-  const projection = geoMercator()
-    .scale(scale)
-    .center(initCenter)
-    .translate(offset);
-
-  const pathGenerator = geoPath().projection(projection);
-
   const maxWidth = "xxl";
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
@@ -453,137 +348,16 @@ export const Skde = (): JSX.Element => {
           <Box marginTop={2} className="hospital-profile-box">
             <Grid container spacing={2}>
               <Grid xs={12}>
-                <ItemBox height={550} sx={{ overflow: "auto" }}>
-                  <Grid container>
-                    <Grid
-                      xs={12}
-                      sm={12}
-                      lg={4}
-                      xl={4}
-                      xxl={4}
-                      alignContent="center"
-                      style={{ textAlign: "center" }}
-                    >
-                      <div
-                        style={{
-                          display: "flex",
-                          width: "100%",
-                          height: "100%",
-                          alignItems: "center",
-                        }}
-                      >
-                        <svg
-                          width={"100%"}
-                          height={"100%"}
-                          viewBox={`0 0 ${mapWidth} ${mapHeight}`}
-                          style={{
-                            backgroundColor: "none",
-                            maxHeight: "400px",
-                          }}
-                        >
-                          {mapData &&
-                            mapData.features.map((d, i) => {
-                              return (
-                                <path
-                                  key={`map-feature-${i}`}
-                                  d={pathGenerator(d.geometry)}
-                                  fill={
-                                    objectIDList &&
-                                    objectIDList.includes(d.properties.BoHF_num)
-                                      ? abacusColors[2]
-                                      : mapColors[1]
-                                  }
-                                  stroke={"black"}
-                                  strokeWidth={0.4}
-                                  className={i + ""}
-                                />
-                              );
-                            })}
-                        </svg>
-                      </div>
-                    </Grid>
-
-                    <Grid xs={12} sm={6} lg={4} xl={4} xxl={4}>
-                      <Stack
-                        direction="column"
-                        alignItems="center"
-                        justifyContent="space-between"
-                        height={550}
-                      >
-                        <Typography
-                          variant="h5"
-                          style={{ marginTop: 20, marginLeft: 20 }}
-                        >
-                          <b>
-                            {unitNamesQuery.data &&
-                              getUnitFullName(
-                                unitNamesQuery.data.nestedUnitNames,
-                                selectedTreatmentUnits[0],
-                              )}
-                          </b>
-                        </Typography>
-                        <div
-                          style={{ display: "flex", justifyContent: "center" }}
-                        >
-                          <div
-                            style={{
-                              display: "flex",
-                              width: 300,
-                              height: 300,
-                              justifyContent: "center",
-                            }}
-                          >
-                            <img
-                              src={imgSrc}
-                              onError={() =>
-                                setImgSrc("/img/forsidebilder/Sykehus.jpg")
-                              }
-                              alt={"Logo"}
-                              width="100%"
-                              height="100%"
-                              style={{
-                                borderRadius: "100%",
-                                maxWidth: "100%",
-                                objectFit: "cover",
-                              }}
-                            />
-                          </div>
-                        </div>
-
-                        <div>
-                          {unitUrl ? (
-                            <ArrowLink
-                              href={unitUrl}
-                              text="Nettside"
-                              externalLink={true}
-                              button={true}
-                              textVariant="subtitle1"
-                            />
-                          ) : null}
-                        </div>
-                      </Stack>
-                    </Grid>
-
-                    <Grid xs={12} sm={6} lg={4} xl={4} xxl={4}>
-                      <ItemBox
-                        height={450}
-                        sx={{ overflow: "auto", marginRight: 2 }}
-                      >
-                        <Typography variant="h5" style={titleStyle}>
-                          <b>Tilknyttede behandlingssteder</b>
-                        </Typography>
-                        {unitNamesQuery.data ? (
-                          <SubUnits
-                            RHFs={unitNamesQuery.data.nestedUnitNames}
-                            selectedUnit={selectedTreatmentUnits[0]}
-                          />
-                        ) : null}
-                      </ItemBox>
-                    </Grid>
-                  </Grid>
-                </ItemBox>
+                <HospitalInfoBox
+                  unitNames={unitNamesQuery.data}
+                  selectedTreatmentUnit={selectedTreatmentUnits[0]}
+                  objectIDList={objectIDList}
+                  unitUrl={unitUrl}
+                  imgSrc={imgSrc}
+                  setImgSrc={setImgSrc}
+                  titleStyle={titleStyle}
+                />
               </Grid>
-
               <Grid xs={12}>
                 <ItemBox sx={{ overflow: "auto" }}>
                   <Typography variant="h5" style={titleStyle}>
@@ -608,7 +382,7 @@ export const Skde = (): JSX.Element => {
                         marginTop: 40,
                       }}
                     >
-                      <Legend itemSpacing={8} symbolSpacing={2} />
+                      <LinePlotLegend itemSpacing={8} symbolSpacing={2} />
                     </div>
                   </div>
                   <ThemeProvider theme={lineChartTheme}>
