@@ -46,6 +46,7 @@ import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
+import { RegisterName } from "types";
 
 const dataQualityKey = "dg";
 
@@ -433,7 +434,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const registries = await fetchRegisterNames();
-  const paths = registries.flatMap((registry: any) => {
+  const paths = registries.flatMap((registry: RegisterName) => {
     return [{ params: { registry: registry.rname } }];
   });
   return { paths, fallback: false };
