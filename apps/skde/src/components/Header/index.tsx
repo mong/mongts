@@ -1,22 +1,25 @@
 import React from "react";
 import { HeaderTop, BreadCrumbPath } from "./HeaderTop";
 import { HeaderMiddle, HeaderData } from "./HeaderMiddle";
+import { Breakpoint } from "@mui/material";
 
 type HeaderProps = {
   headerData: HeaderData;
   breadcrumbs: BreadCrumbPath;
   children?: React.ReactNode;
   bgcolor?: string;
+  maxWidth?: false | Breakpoint;
 };
 
 export const Header = (props: HeaderProps) => {
   return (
     <>
-      <HeaderTop breadcrumbs={props.breadcrumbs} />
+      <HeaderTop breadcrumbs={props.breadcrumbs} maxWidth={props.maxWidth} />
       <HeaderMiddle
         children={props.children}
         bgcolor={props.bgcolor}
         headerData={props.headerData}
+        maxWidth={props.maxWidth ? props.maxWidth : false}
       />
     </>
   );

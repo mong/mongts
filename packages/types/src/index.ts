@@ -140,6 +140,12 @@ export type Registry = {
   medfieldID: number[];
 };
 
+export type Medfield = {
+  name: string;
+  registers: string[];
+  shortName: string;
+};
+
 export type RegisterData = Registry & {
   indicatorData: IndicatorData[];
 };
