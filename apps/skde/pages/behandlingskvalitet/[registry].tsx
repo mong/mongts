@@ -17,7 +17,6 @@ import {
   FilterSettingsAction,
   FilterSettingsValue,
   TreatmentQualityFilterMenu,
-  decodeRegisterQueryParam,
   useRegisterNamesQuery,
   defaultYear,
   levelKey,
@@ -127,42 +126,6 @@ export default function TreatmentQualityPage({ registry }) {
   const medicalFields = medicalFieldsQuery?.data;
 
   /**
-   * Get the register names for the selected medical fields and registers
-   *
-   * @param medicalFieldFilter Array of medical field and register names
-   * @returns Array of register names
-   */
-  const getMedicalFieldFilterRegisters = (medicalFieldFilter: string[]) => {
-    let registerFilter: string[];
-
-    if (registry) {
-      registerFilter = [registry];
-    } else if (!medicalFieldFilter || medicalFieldFilter[0] === "all") {
-      registerFilter = registers.map((register) => register.rname);
-    } else {
-      const selectedMedicalFields = medicalFields.filter((field) =>
-        medicalFieldFilter.includes(field.shortName),
-      );
-      const selectedMedicalFieldNames = selectedMedicalFields.map(
-        (field) => field.shortName,
-      );
-      const selectedRegisters = medicalFieldFilter.filter(
-        (name) => !selectedMedicalFieldNames.includes(name),
-      );
-      registerFilter = Array.from(
-        new Set<string>([
-          ...selectedMedicalFields.flatMap((field) => field.registers),
-          ...selectedRegisters.map((register) =>
-            decodeRegisterQueryParam(register),
-          ),
-        ]),
-      );
-    }
-
-    return registerFilter;
-  };
-
-  /**
    * Handle that the initial filter settings are loaded, which can happen
    * more than once due to Next's pre-rendering and hydration behaviour combined
    * with reading of query params.
@@ -177,10 +140,7 @@ export default function TreatmentQualityPage({ registry }) {
     );
     setSelectedLevel(filterSettings.get(levelKey)?.[0]?.value ?? undefined);
 
-    const medicalFieldFilter = filterSettings
-      .get(medicalFieldKey)
-      ?.map((value) => value.value);
-    const registerFilter = getMedicalFieldFilterRegisters(medicalFieldFilter);
+    const registerFilter = [registry];
     setSelectedMedicalFields(registerFilter);
 
     setSelectedTreatmentUnits(
@@ -206,12 +166,7 @@ export default function TreatmentQualityPage({ registry }) {
         return filterSettings.map.get(levelKey)?.[0]?.value ?? undefined;
       }
       case medicalFieldKey: {
-        const medicalFieldFilter = filterSettings.map
-          .get(medicalFieldKey)
-          ?.map((value) => value.value);
-        const registerFilter =
-          getMedicalFieldFilterRegisters(medicalFieldFilter);
-        return registerFilter;
+        return [registry];
       }
       case treatmentUnitsKey: {
         return filterSettings.map
