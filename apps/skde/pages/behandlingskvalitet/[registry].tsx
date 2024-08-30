@@ -72,10 +72,7 @@ const scrollToSelectedRow = (selectedRow: string): boolean => {
   }
 };
 
-export default function TreatmentQualityPage(paths: string) {
-  console.log(paths);
-
-  
+export default function TreatmentQualityPage({ content }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (newOpen: boolean) => {
@@ -98,6 +95,9 @@ export default function TreatmentQualityPage(paths: string) {
   const [selectedYear, setSelectedYear] = useState(defaultYear);
   const [selectedLevel, setSelectedLevel] = useState<string | undefined>(
     undefined,
+  );
+  const [selectedMedicalFields, setSelectedMedicalFields] = useState<string[]>(
+    [],
   );
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState([
     "Nasjonalt",
@@ -124,7 +124,7 @@ export default function TreatmentQualityPage(paths: string) {
 
   const registers = registryNameQuery?.data;
   const medicalFields = medicalFieldsQuery?.data;
-  
+
   /**
    * Get the register names for the selected medical fields and registers
    *
@@ -173,6 +173,12 @@ export default function TreatmentQualityPage(paths: string) {
       parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString()),
     );
     setSelectedLevel(filterSettings.get(levelKey)?.[0]?.value ?? undefined);
+
+    const medicalFieldFilter = filterSettings
+      .get(medicalFieldKey)
+      ?.map((value) => value.value);
+    const registerFilter = getMedicalFieldFilterRegisters(medicalFieldFilter);
+    setSelectedMedicalFields(registerFilter);
 
     setSelectedTreatmentUnits(
       filterSettings.get(treatmentUnitsKey).map((value) => value.value),
@@ -228,6 +234,9 @@ export default function TreatmentQualityPage(paths: string) {
     setSelectedLevel(
       valueOrDefault(levelKey, newFilterSettings) as string | undefined,
     );
+    setSelectedMedicalFields(
+      valueOrDefault(medicalFieldKey, newFilterSettings) as string[],
+    );
     setSelectedTreatmentUnits(
       valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
     );
@@ -254,6 +263,12 @@ export default function TreatmentQualityPage(paths: string) {
       case levelKey: {
         setSelectedLevel(
           valueOrDefault(levelKey, newFilterSettings) as string | undefined,
+        );
+        break;
+      }
+      case medicalFieldKey: {
+        setSelectedMedicalFields(
+          valueOrDefault(medicalFieldKey, newFilterSettings) as string[],
         );
         break;
       }
@@ -308,8 +323,9 @@ export default function TreatmentQualityPage(paths: string) {
                     onSelectionChanged={handleFilterChanged}
                     onFilterInitialized={handleFilterInitialized}
                     registryNameData={registers}
-                    medicalFieldData={[]}
+                    medicalFieldData={medicalFields}
                     context={tableContext}
+                    register={content}
                   />
                 </Box>
               )}
@@ -328,7 +344,7 @@ export default function TreatmentQualityPage(paths: string) {
                         year={selectedYear}
                         type={dataQualitySelected ? "dg" : "ind"}
                         levels={selectedLevel}
-                        medfields={[]}
+                        medfields={selectedMedicalFields}
                       />
                     </IndicatorTableV2Wrapper>
                   ) : (
@@ -342,7 +358,7 @@ export default function TreatmentQualityPage(paths: string) {
                         unitNames={selectedTreatmentUnits}
                         treatmentYear={selectedYear}
                         colspan={selectedTreatmentUnits.length + 1}
-                        medicalFieldFilter={[]}
+                        medicalFieldFilter={selectedMedicalFields}
                         showLevelFilter={selectedLevel}
                         selection_bar_height={0}
                         legend_height={0}
@@ -418,7 +434,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const registries = await fetchRegisterNames();
   const paths = registries.flatMap((registry: any) => {
-    return [{ params: { registry: registry.rname } }]
+    return [{ params: { registry: registry.rname } }];
   });
   return { paths, fallback: false };
 };

@@ -56,6 +56,7 @@ export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   registryNameData: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   medicalFieldData: any;
+  register?: string;
 }>;
 
 // Types used due to the use of useQueryParam
@@ -92,8 +93,9 @@ export function TreatmentQualityFilterMenu({
   registryNameData: registryNameData,
   medicalFieldData: medicalFieldData,
   context: context,
+  register,
 }: TreatmentQualityFilterMenuProps) {
-  const selectedRegister = "all";
+  const selectedRegister = register ?? "all";
   const queryContext = { context: context, type: "ind" }; // TODO: Variable for "ind"/"dg"?
 
   // Restrict max number of treatment units for small view sizes
