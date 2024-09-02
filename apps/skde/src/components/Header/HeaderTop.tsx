@@ -72,7 +72,7 @@ export const HeaderTop = (props: HeaderTopProps) => {
         <Grid container spacing={2}>
           <Grid size={{ xs: 12 }}>
             <Link href={"https://www.skde.no/"}>
-              <LogoImage src="/img/logos/skde-blue.png" alt="SKDE logo" />
+              <LogoImage src="/img/logos/logo-skde.svg" alt="SKDE logo" />
             </Link>
           </Grid>
           <Grid size={{ xs: 12 }}>

@@ -80,8 +80,10 @@ const RegistrySection = (props: {
   data: RegisterData;
   year: number;
   selectedIndex: number;
+  openRowID: string;
+  setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  const { data, year, selectedIndex } = props;
+  const { data, year, selectedIndex, openRowID, setOpenRowID } = props;
 
   const indData = data.indicatorData.flat();
 
@@ -104,6 +106,9 @@ const RegistrySection = (props: {
               row={row}
               year={year}
               key={"indicator-row-" + row.indicatorID}
+              rowID={row.indicatorID}
+              openRowID={openRowID}
+              setOpenRowID={setOpenRowID}
             />
           );
         })}
@@ -112,28 +117,50 @@ const RegistrySection = (props: {
   ) : null;
 };
 
-const IndicatorRow = (props: { row: IndicatorData; year: number }) => {
-  const { row, year } = props;
+type IndicatorRowProps = {
+  row: IndicatorData;
+  year: number;
+  rowID: string;
+  openRowID: string;
+  setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
+};
 
-  const [open, setOpen] = useState(false);
+const IndicatorRow = (props: IndicatorRowProps) => {
+  const { row, year, rowID, openRowID, setOpenRowID } = props;
 
   const lastYear = row.data!.filter((el: DataPoint) => {
     return el.year === year;
   })[0];
 
+  let open: boolean;
+
+  if (openRowID === "") {
+    open = false;
+  } else if (openRowID === rowID) {
+    open = true;
+  } else {
+    open = false;
+  }
+
+  const onClick = () => {
+    if (!open) {
+      open = true;
+      setOpenRowID(rowID);
+    } else {
+      open = false;
+      setOpenRowID("");
+    }
+  };
+
   return (
     <React.Fragment>
       <TableRow
         key={row.indicatorID}
-        onClick={() => setOpen(!open)}
+        onClick={onClick}
         style={{ cursor: "pointer" }}
       >
         <TableCell>
-          <IconButton
-            onClick={() => setOpen(!open)}
-            aria-label="expand"
-            size="small"
-          >
+          <IconButton onClick={onClick} aria-label="expand" size="small">
             {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
           </IconButton>
         </TableCell>
@@ -210,6 +237,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
 
   const [selectedLevel, setSelectedLevel] = useState<string>("2");
   const [selectedMedfield, setSelectedMedfield] = useState<string>("all");
+  const [openRowID, setOpenRowID] = useState<string>("");
 
   const handleChangeLevel = (event: SelectChangeEvent) => {
     setSelectedLevel(event.target.value);
@@ -284,10 +312,14 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
               <TableRow>
                 <TableCell></TableCell>
                 <TableCell>
-                  <Typography variant="subtitle1">Indikator</Typography>
+                  <Typography variant="subtitle1">
+                    <b>Indikator</b>
+                  </Typography>
                 </TableCell>
                 <TableCell>
-                  <Typography variant="subtitle1">Resultat</Typography>
+                  <Typography variant="subtitle1">
+                    <b>Resultat</b>
+                  </Typography>
                 </TableCell>
               </TableRow>
             </TableHead>
@@ -299,6 +331,8 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
                     data={row}
                     year={year}
                     selectedIndex={Number(selectedLevel)}
+                    openRowID={openRowID}
+                    setOpenRowID={setOpenRowID}
                   />
                 );
               },

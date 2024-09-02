@@ -90,7 +90,7 @@ const buildTreeLevel = (
             toggleExpand,
             autoUncheckId,
             multiselect,
-            (parent = node.nodeValue.value),
+            node.nodeValue.value,
           )}
       </TreeViewFilterSectionItem>
     );
@@ -172,16 +172,23 @@ const flattenTreeValues = (
  * @param treeData The TreeViewFilterSectionNode structure
  * @returns A map with the string values as keys and TreeViewFilterSettingsValue-objects as values
  */
-export const initFilterSettingsValuesMap = (
+export const getFilterSettingsValuesMap = (
   treeData: TreeViewFilterSectionNode[],
 ) => {
   const filterSettingsValuesMap = new Map<
     string,
-    TreeViewFilterSettingsValue
+    TreeViewFilterSettingsValue[]
   >();
   const treeValues = flattenTreeValues([], treeData);
   treeValues.forEach((value) => {
-    filterSettingsValuesMap.set(value.value, value);
+    const mapEntry: TreeViewFilterSettingsValue[] = filterSettingsValuesMap.has(
+      value.value,
+    )
+      ? (filterSettingsValuesMap.get(value.value) ?? [])
+      : [];
+
+    mapEntry.push(value);
+    filterSettingsValuesMap.set(value.value, mapEntry);
   });
   return filterSettingsValuesMap;
 };
@@ -196,22 +203,40 @@ export const initFilterSettingsValuesMap = (
  */
 const buildExpandedNodeList = (
   selectedIds: string[],
-  filterSettingsValuesMap: Map<string, TreeViewFilterSettingsValue>,
+  filterSettingsValuesMap: Map<string, TreeViewFilterSettingsValue[]>,
 ) => {
-  const defaultExpanded: string[] = [];
+  const expanded: string[] = [];
 
   selectedIds.forEach((id) => {
-    const value = filterSettingsValuesMap.get(id);
-    if (value && value.parentIds) {
-      value.parentIds.forEach((parentId) => {
-        if (!defaultExpanded.includes(parentId)) {
-          defaultExpanded.push(parentId);
+    const valueArray = filterSettingsValuesMap.get(id);
+
+    valueArray?.forEach((value) => {
+      if (value && value.parentIds && value.parentIds.length > 0) {
+        // A classic for-loop, which constructs an itemId by taking the
+        // current ID and prepending it with its parent ID (if any). See
+        // the variable uniqueItemId in the component TreeViewFilterSectionItem.
+        // The IDs in values.parentIds has to be ordered from root toward
+        // leaf item. The IDs are added to the list of items that should be
+        // expanded in the tree. Leaf nodes are not included.
+        for (let i = 0; i < value.parentIds.length; i++) {
+          let itemId;
+
+          if (i === 0) {
+            itemId = value.parentIds[i];
+          } else {
+            itemId = `${value.parentIds[i - 1]}-${value.parentIds[i]}`;
+          }
+
+          // Add if not already present in the list
+          if (!expanded.includes(itemId)) {
+            expanded.push(itemId);
+          }
         }
-      });
-    }
+      }
+    });
   });
 
-  return defaultExpanded;
+  return expanded;
 };
 
 /**
@@ -233,7 +258,7 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
   const filterKey = props.filterkey;
   const treeData = props.treedata;
   const selectedIds = getSelectedNodeIds(filterSettings.map.get(filterKey));
-  const filterSettingsValuesMap = initFilterSettingsValuesMap(treeData);
+  const filterSettingsValuesMap = getFilterSettingsValuesMap(treeData);
   const [showMaxSelectionAlert, setMaxSelectionAlert] = useState(false);
   const [expanded, setExpanded] = useState(
     buildExpandedNodeList(selectedIds, filterSettingsValuesMap),
@@ -286,8 +311,13 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
       }
 
       const selectedFilterSettingValues = updatedSelectedIds
-        .map((nodeId) => filterSettingsValuesMap.get(nodeId))
-        .filter((value) => value !== undefined)
+        .map((nodeId) => {
+          const valueArray = filterSettingsValuesMap.get(nodeId);
+          if (Array.isArray(valueArray) && valueArray.length > 0)
+            return valueArray[0];
+          else return null;
+        })
+        .filter(Boolean)
         .flat() as TreeViewFilterSettingsValue[];
 
       filterSettingsDispatch({
