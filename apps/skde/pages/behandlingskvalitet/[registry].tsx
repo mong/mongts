@@ -17,7 +17,6 @@ import {
   FilterSettingsAction,
   FilterSettingsValue,
   TreatmentQualityFilterMenu,
-  useRegisterNamesQuery,
   defaultYear,
   levelKey,
   treatmentUnitsKey,
@@ -72,7 +71,8 @@ const scrollToSelectedRow = (selectedRow: string): boolean => {
   }
 };
 
-export default function TreatmentQualityPage({ registry }) {
+export default function TreatmentQualityPage({ registry_info }) {
+  const registry_name = registry_info[0].rname;
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (newOpen: boolean) => {
@@ -110,19 +110,12 @@ export default function TreatmentQualityPage({ registry }) {
     mainQueryParamsConfig.selected_row,
   )[0];
 
-  // Load register names and medical fields
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const registryNameQuery: UseQueryResult<any, unknown> =
-    useRegisterNamesQuery();
+  // Load medical fields
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
 
-  const queriesReady = !(
-    registryNameQuery.isLoading || medicalFieldsQuery.isLoading
-  );
-
-  const registers = registryNameQuery?.data;
+  const queriesReady = !medicalFieldsQuery.isLoading;
   const medicalFields = medicalFieldsQuery?.data;
 
   /**
@@ -140,8 +133,7 @@ export default function TreatmentQualityPage({ registry }) {
     );
     setSelectedLevel(filterSettings.get(levelKey)?.[0]?.value ?? undefined);
 
-    const registerFilter = [registry];
-    setSelectedMedicalFields(registerFilter);
+    setSelectedMedicalFields([registry_name]);
 
     setSelectedTreatmentUnits(
       filterSettings.get(treatmentUnitsKey).map((value) => value.value),
@@ -166,7 +158,7 @@ export default function TreatmentQualityPage({ registry }) {
         return filterSettings.map.get(levelKey)?.[0]?.value ?? undefined;
       }
       case medicalFieldKey: {
-        return [registry];
+        return [registry_name];
       }
       case treatmentUnitsKey: {
         return filterSettings.map
@@ -280,10 +272,10 @@ export default function TreatmentQualityPage({ registry }) {
                   <TreatmentQualityFilterMenu
                     onSelectionChanged={handleFilterChanged}
                     onFilterInitialized={handleFilterInitialized}
-                    registryNameData={registers}
+                    registryNameData={registry_info}
                     medicalFieldData={medicalFields}
                     context={tableContext}
-                    register={registry}
+                    register={registry_name}
                   />
                 </Box>
               )}
@@ -312,7 +304,7 @@ export default function TreatmentQualityPage({ registry }) {
                         context={tableContext}
                         dataQuality={dataQualitySelected}
                         tableType="allRegistries"
-                        registerNames={registers}
+                        registerNames={registry_info}
                         unitNames={selectedTreatmentUnits}
                         treatmentYear={selectedYear}
                         colspan={selectedTreatmentUnits.length + 1}
@@ -320,7 +312,7 @@ export default function TreatmentQualityPage({ registry }) {
                         showLevelFilter={selectedLevel}
                         selection_bar_height={0}
                         legend_height={0}
-                        blockTitle={registers.map(
+                        blockTitle={registry_info.map(
                           (register: { full_name: string }) =>
                             register.full_name,
                         )}
@@ -356,10 +348,10 @@ export default function TreatmentQualityPage({ registry }) {
             <TreatmentQualityFilterMenu
               onSelectionChanged={handleFilterChanged}
               onFilterInitialized={handleFilterInitialized}
-              registryNameData={registers}
+              registryNameData={registry_info}
               medicalFieldData={medicalFields}
               context={tableContext}
-              register={registry}
+              register={registry_name}
             />
             {showNewTableSwitch && !newTableOnly && (
               <FormGroup sx={{ paddingRight: "1.5rem" }}>
@@ -385,8 +377,14 @@ export default function TreatmentQualityPage({ registry }) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  const registries = await fetchRegisterNames();
+
+  const registry_info: RegisterName = registries.filter(
+    (register) => register.rname === context.params?.registry,
+  );
+
   return {
-    props: { registry: context.params?.registry },
+    props: { registry_info: registry_info },
   };
 };
 
