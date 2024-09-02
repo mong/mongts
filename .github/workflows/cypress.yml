@@ -34,7 +34,7 @@ jobs:
       - run: corepack enable && yarn install
       - run: yarn workspace skde run build
       - name: Cypress run
-        uses: cypress-io/github-action@v6.7.2
+        uses: cypress-io/github-action@v6.7.5
         with:
           working-directory: ./apps/skde
           build: yarn export
@@ -42,7 +42,7 @@ jobs:
           browser: chrome
       - name: Archive production artifacts
         if: failure()
-        uses: actions/upload-artifact@v4.3.6
+        uses: actions/upload-artifact@v4.4.0
         with:
           name: cypress videos
           path: apps/skde/cypress/videos
