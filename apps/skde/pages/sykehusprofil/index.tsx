@@ -24,7 +24,6 @@ import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import {
-  Switch,
   ThemeProvider,
   Box,
   Accordion,
@@ -54,11 +53,10 @@ import { ExpandableItemBox } from "../../src/components/HospitalProfile/Expandab
 import { URLs } from "types";
 import { useRouter } from "next/router";
 import { mapUnitName2BohfNames } from "../../src/helpers/functions/unitName2BohfMap";
-import { Hoverbox } from "../../src/components/Hoverbox";
-import { HelpOutline } from "@mui/icons-material";
 import { HospitalInfoBox } from "../../src/components/HospitalProfile/HospitalInfoBox";
 import { getUnitFullName } from "../../src/helpers/functions/getUnitFullName";
 import { LinePlotLegend } from "../../src/components/HospitalProfile/LinePlotLegend";
+import { ChipSelection } from "../../src/components/ChipSelection";
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
@@ -241,10 +239,6 @@ export const Skde = (): JSX.Element => {
 
   indicatorParams.normalise = normalise;
 
-  const checkNormalise = () => {
-    setNormalise(!normalise);
-  };
-
   if (normalise) {
     indicatorParams.yAxisText = "Andel";
   } else {
@@ -259,10 +253,6 @@ export const Skde = (): JSX.Element => {
   } else {
     medfieldTableProps.type = "ind";
   }
-
-  const checkDataQuality = () => {
-    setDataQuality(!dataQuality);
-  };
 
   const breadcrumbs: BreadCrumbPath = {
     path: [
@@ -289,6 +279,7 @@ export const Skde = (): JSX.Element => {
   const textMargin = 20;
 
   const maxWidth = "xxl";
+  const titlePadding = 2;
 
   return (
     <ThemeProvider theme={skdeTheme}>
@@ -360,111 +351,104 @@ export const Skde = (): JSX.Element => {
               </Grid>
               <Grid xs={12}>
                 <ItemBox sx={{ overflow: "auto" }}>
-                  <Typography variant="h5" style={titleStyle}>
-                    <b>Utvikling over tid</b>
-                  </Typography>
-                  <div style={{ margin: textMargin }}>
-                    <Typography variant="body1">
-                      {"Grafen gir en oversikt over kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistrene for " +
-                        (unitNamesQuery.data &&
-                          getUnitFullName(
-                            unitNamesQuery.data.nestedUnitNames,
-                            selectedTreatmentUnits[0],
-                          )) +
-                        ". Her vises andel eller antall av kvalitetsindikatorer som har hatt høy, middels eller lav måloppnåelse de siste årene."}
+                  <Box padding={titlePadding}>
+                    <Typography variant="h5" style={titleStyle}>
+                      <b>Utvikling over tid</b>
                     </Typography>
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "right",
-                        marginRight: 20,
-                        marginTop: 40,
-                      }}
+                    <Stack
+                      direction="row"
+                      alignItems="center"
+                      justifyContent="space-between"
                     >
+                      <ChipSelection
+                        leftChipLabel="Vis andel"
+                        rightChipLabel="Vis Antall"
+                        leftChipHelpText=""
+                        rightChipHelpText=""
+                        hoverBoxOffset={[20, 20]}
+                        hoverBoxPlacement="top"
+                        hoverBoxMaxWidth={400}
+                        state={normalise}
+                        stateSetter={setNormalise}
+                        trueChip="left"
+                      />
                       <LinePlotLegend itemSpacing={8} symbolSpacing={2} />
+                    </Stack>
+                    <div style={{ margin: textMargin }}>
+                      <Typography variant="body1">
+                        {"Grafen gir en oversikt over kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistrene for " +
+                          (unitNamesQuery.data &&
+                            getUnitFullName(
+                              unitNamesQuery.data.nestedUnitNames,
+                              selectedTreatmentUnits[0],
+                            )) +
+                          ". Her vises andel eller antall av kvalitetsindikatorer som har hatt høy, middels eller lav måloppnåelse de siste årene."}
+                      </Typography>
                     </div>
-                  </div>
+                  </Box>
+
                   <ThemeProvider theme={lineChartTheme}>
                     <div id="plot-window">
                       <IndicatorLinechart {...indicatorParams} />
                     </div>
                   </ThemeProvider>
-                  <Stack
-                    direction="row"
-                    spacing={1}
-                    alignItems="center"
-                    margin={4}
-                  >
-                    <Typography>Vis andel</Typography>
-                    <Switch checked={!normalise} onChange={checkNormalise} />
-                    <Typography>Vis antall</Typography>
-                  </Stack>
                 </ItemBox>
               </Grid>
 
               <Grid xs={12}>
                 <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                  <Typography variant="h5" style={titleStyle}>
-                    <b>Kvalitetsindikatorer fordelt på fagområder</b>
-                  </Typography>
-                  <div style={{ margin: textMargin }}>
-                    <Typography variant="body1">
-                      {dataQuality
-                        ? "Her vises dekningsgraden eller datakvaliteten til " +
-                          selectedTreatmentUnits[0] +
-                          " fordelt på fagområder som forteller om datagrunnlaget fra registrene."
-                        : "Her vises alle kvalitetsindikatorene fra " +
-                          selectedTreatmentUnits[0] +
-                          " fordelt på fagområder. Hver indikator er vist som et symbol for høy, middels eller lav måloppnåelse."}
+                  <Box padding={titlePadding}>
+                    <Typography variant="h5" style={titleStyle}>
+                      <b>Kvalitetsindikatorer fordelt på fagområder</b>
                     </Typography>
-                  </div>
-                  <Stack
-                    direction="row"
-                    spacing={1}
-                    alignItems="center"
-                    margin={4}
-                  >
-                    <Typography>Vis kvalitetsindikatorer</Typography>
-                    <Hoverbox
-                      title="Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register kvalitetsindikatorene kommer fra."
-                      placement="top"
-                      offset={[20, 20]}
-                      maxWidth={400}
-                    >
-                      <HelpOutline sx={{ fontSize: "18px", marginLeft: 1 }} />
-                    </Hoverbox>
-                    <Switch checked={dataQuality} onChange={checkDataQuality} />
-                    <Typography>Vis datakvalitet</Typography>
-                    <Hoverbox
-                      title="Datakvalitet representerer for eksempel dekningsgrad som angir andel pasienter eller hendelser som registreres, i forhold til antall som skal registreres i registeret fra behandlingsstedet. Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register datakvaliteten er rapportert fra."
-                      placement="top"
-                      offset={[20, 20]}
-                      maxWidth={400}
-                    >
-                      <HelpOutline sx={{ fontSize: "18px", marginLeft: 1 }} />
-                    </Hoverbox>
-                  </Stack>
+                    <ChipSelection
+                      leftChipLabel="Vis kvalitetsindikatorer"
+                      rightChipLabel="Vis datakvalitet"
+                      leftChipHelpText="Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register kvalitetsindikatorene kommer fra."
+                      rightChipHelpText="Datakvalitet representerer for eksempel dekningsgrad som angir andel pasienter eller hendelser som registreres, i forhold til antall som skal registreres i registeret fra behandlingsstedet. Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register datakvaliteten er rapportert fra."
+                      hoverBoxOffset={[20, 20]}
+                      hoverBoxPlacement="top"
+                      hoverBoxMaxWidth={400}
+                      state={dataQuality}
+                      stateSetter={setDataQuality}
+                      trueChip="right"
+                    />
+                    <div style={{ margin: textMargin }}>
+                      <Typography variant="body1">
+                        {dataQuality
+                          ? "Her vises dekningsgraden eller datakvaliteten til " +
+                            selectedTreatmentUnits[0] +
+                            " fordelt på fagområder som forteller om datagrunnlaget fra registrene."
+                          : "Her vises alle kvalitetsindikatorene fra " +
+                            selectedTreatmentUnits[0] +
+                            " fordelt på fagområder. Hver indikator er vist som et symbol for høy, middels eller lav måloppnåelse."}
+                      </Typography>
+                    </div>
+                  </Box>
+
                   <MedfieldTable {...medfieldTableProps} />
                 </ExpandableItemBox>
               </Grid>
 
               <Grid xs={12}>
                 <ExpandableItemBox collapsedHeight={boxMaxHeight}>
-                  <Typography variant="h5" style={titleStyle}>
-                    <b>Siste års måloppnåelse</b>
-                  </Typography>
-                  <div style={{ margin: textMargin }}>
-                    <Typography variant="body1">
-                      {"Her er en interaktiv liste som gir oversikt over kvalitetsindikatorene ut fra siste års måloppnåelse for " +
-                        (unitNamesQuery.data &&
-                          getUnitFullName(
-                            unitNamesQuery.data.nestedUnitNames,
-                            selectedTreatmentUnits[0],
-                          )) +
-                        ". Du kan trykke på indikatorene for å se mer informasjon om indikatoren og følge oppgitt lenke til mer detaljert beskrivelse av indikatoren."}
+                  <Box padding={titlePadding}>
+                    <Typography variant="h5" style={titleStyle}>
+                      <b>Siste års måloppnåelse</b>
                     </Typography>
-                  </div>
+                    <div style={{ margin: textMargin }}>
+                      <Typography variant="body1">
+                        {"Her er en interaktiv liste som gir oversikt over kvalitetsindikatorene ut fra siste års måloppnåelse for " +
+                          (unitNamesQuery.data &&
+                            getUnitFullName(
+                              unitNamesQuery.data.nestedUnitNames,
+                              selectedTreatmentUnits[0],
+                            )) +
+                          ". Du kan trykke på indikatorene for å se mer informasjon om indikatoren og følge oppgitt lenke til mer detaljert beskrivelse av indikatoren."}
+                      </Typography>
+                    </div>
+                  </Box>
+
                   <LowLevelIndicatorList
                     context={"caregiver"}
                     type={"ind"}

@@ -41,7 +41,7 @@ export default function Home() {
           <div style={{ paddingLeft: 50 }}>
             <Image
               loader={imgLoader}
-              src="/img/logos/skde-blue.png"
+              src="/img/logos/logo-skde.svg"
               alt="SKDE logo"
               width={1.5 * 96}
               height={1.5 * 39}
