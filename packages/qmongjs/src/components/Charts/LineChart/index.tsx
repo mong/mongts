@@ -441,6 +441,9 @@ const LineChart = (props: Props) => {
           tooltipTop={tooltipTop}
           format={tickformat}
         />
+        <div style={{ position: "relative", left: "78%", top: -75 }}>
+          <img src="../img/logos/logo-skde.svg" width={"8%"} />
+        </div>
       </div>
     </>
   );
