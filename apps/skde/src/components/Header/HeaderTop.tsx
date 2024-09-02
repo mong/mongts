@@ -1,5 +1,13 @@
 import { NavigateNextRounded } from "@mui/icons-material";
-import { Breadcrumbs, Link, Toolbar, Typography, styled } from "@mui/material";
+import {
+  Breadcrumbs,
+  Breakpoint,
+  Link,
+  Toolbar,
+  Typography,
+  styled,
+  Container,
+} from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -52,23 +60,26 @@ const SkdeBreadcrumbs = (props: BreadCrumbPath) => {
 
 type HeaderTopProps = {
   breadcrumbs: BreadCrumbPath;
+  maxWidth?: false | Breakpoint;
 };
 
 export const HeaderTop = (props: HeaderTopProps) => {
-  const { breadcrumbs } = props;
+  const { breadcrumbs, maxWidth } = props;
 
   return (
     <StyledToolbar className="header-top">
-      <Grid container spacing={2}>
-        <Grid xs={12}>
-          <Link href={"https://www.skde.no/"}>
-            <LogoImage src="/img/logos/skde-blue.png" alt="SKDE logo" />
-          </Link>
+      <Container maxWidth={maxWidth ? maxWidth : false} disableGutters={true}>
+        <Grid container spacing={2}>
+          <Grid xs={12}>
+            <Link href={"https://www.skde.no/"}>
+              <LogoImage src="/img/logos/logo-skde.svg" alt="SKDE logo" />
+            </Link>
+          </Grid>
+          <Grid xs={12}>
+            <SkdeBreadcrumbs path={breadcrumbs.path} />
+          </Grid>
         </Grid>
-        <Grid xs={12}>
-          <SkdeBreadcrumbs path={breadcrumbs.path} />
-        </Grid>
-      </Grid>
+      </Container>
     </StyledToolbar>
   );
 };

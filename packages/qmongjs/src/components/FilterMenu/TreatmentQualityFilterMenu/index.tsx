@@ -33,7 +33,7 @@ import { UseQueryResult } from "@tanstack/react-query";
 import {
   TreeViewFilterSectionNode,
   TreeViewFilterSettingsValue,
-  initFilterSettingsValuesMap as getFilterSettingsValuesMap,
+  getFilterSettingsValuesMap,
 } from "../TreeViewFilterSection";
 import { useMediaQuery, useTheme } from "@mui/material";
 
@@ -331,13 +331,20 @@ export function TreatmentQualityFilterMenu({
 
   const getValueLabel = (
     value: string | null,
-    medicalFieldsMap: Map<string, TreeViewFilterSettingsValue>,
+    medicalFieldsMap: Map<string, TreeViewFilterSettingsValue[]>,
   ): string | null => {
     if (value === null) {
       return null;
     }
-    const filterSettingsValue = medicalFieldsMap.get(value);
-    return filterSettingsValue?.valueLabel ?? null;
+    const filterSettingsValueArray = medicalFieldsMap.get(value);
+
+    const valueLabel =
+      Array.isArray(filterSettingsValueArray) &&
+      filterSettingsValueArray.length > 0
+        ? filterSettingsValueArray[0].valueLabel
+        : null;
+
+    return valueLabel;
   };
 
   const shouldRefreshInitialState = prerenderFinished || apiQueriesCompleted;
