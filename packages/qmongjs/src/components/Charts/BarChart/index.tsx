@@ -191,7 +191,7 @@ function BarChart(props: Props) {
   return (
     <div
       ref={wrapperRef}
-      style={{ width: "90%", margin: "auto" }}
+      style={{ width: "90%", margin: "auto", position: "relative" }}
       className="barchart-wrapper"
     >
       <svg
@@ -233,6 +233,9 @@ function BarChart(props: Props) {
           </>
         )}
       </svg>
+      <div style={{ position: "relative", left: "84%", top: -32 }}>
+        <img src="../img/logos/logo-skde.svg" width={"8%"} />
+      </div>
     </div>
   );
 }
