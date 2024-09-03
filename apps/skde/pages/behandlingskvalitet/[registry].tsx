@@ -27,9 +27,6 @@ import {
   skdeTheme,
   fetchRegisterNames,
 } from "qmongjs";
-import Switch from "@mui/material/Switch";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import { useSearchParams } from "next/navigation";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import {
@@ -44,9 +41,6 @@ import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
 import { RegisterName } from "types";
 
 const dataQualityKey = "dg";
-
-// Set to true to display the switch for activating the new table
-const showNewTableSwitch = false;
 
 const scrollToSelectedRow = (selectedRow: string): boolean => {
   const element = document.getElementById(selectedRow);
@@ -75,9 +69,6 @@ export default function TreatmentQualityPage({ registry_info }) {
   const toggleDrawer = (newOpen: boolean) => {
     setDrawerOpen(newOpen);
   };
-
-  const [newIndicatorTableActivated, setNewIndicatorTableActivated] =
-    useState(false);
 
   const searchParams = useSearchParams();
   const newTableOnly = searchParams.get("newtable") === "true";
@@ -241,7 +232,7 @@ export default function TreatmentQualityPage({ registry_info }) {
         />
         <Grid container xs={12}>
           {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? ( // Permanent menu on large screens
-            <Grid xxl={3} xxxl={2} className="menu-wrapper">
+            <Grid xxl={4} xxxl={3} className="menu-wrapper">
               <Box
                 sx={{
                   mt: 4,
@@ -262,10 +253,10 @@ export default function TreatmentQualityPage({ registry_info }) {
               </Box>
             </Grid>
           ) : null}
-          <Grid xs={12} xxl={9} xxxl={10}>
+          <Grid xs={12} xxl={8} xxxl={9}>
             <Grid container spacing={2} disableEqualOverflow>
               <Grid xs={12}>
-                {newIndicatorTableActivated || newTableOnly ? (
+                {newTableOnly ? (
                   <IndicatorTableV2Wrapper className="table-wrapper">
                     <IndicatorTableBodyV2
                       key="indicator-table"
@@ -331,22 +322,6 @@ export default function TreatmentQualityPage({ registry_info }) {
             context={tableContext}
             register={registry_name}
           />
-          {showNewTableSwitch && !newTableOnly && (
-            <FormGroup sx={{ paddingRight: "1.5rem" }}>
-              <FormControlLabel
-                label="Prøv ny tabellversjon"
-                labelPlacement="start"
-                control={
-                  <Switch
-                    checked={newIndicatorTableActivated}
-                    onChange={(event) =>
-                      setNewIndicatorTableActivated(event.target.checked)
-                    }
-                  />
-                }
-              />
-            </FormGroup>
-          )}
         </Box>
       </FilterDrawer>
     </ThemeProvider>
