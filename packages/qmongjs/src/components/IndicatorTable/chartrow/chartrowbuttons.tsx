@@ -96,7 +96,7 @@ export const FigureButtons = (props: Props) => {
       ctx.imageSmoothingEnabled = false;
 
       ctx.drawImage(image, 50 / 2, 50);
-      ctx.drawImage(logo, 25, 75);
+      ctx.drawImage(logo, 25, 65);
 
       const url = canvas.toDataURL("image/png");
 
