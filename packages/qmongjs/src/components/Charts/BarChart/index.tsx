@@ -238,7 +238,7 @@ function BarChart(props: Props) {
         )}
       </svg>
       <div style={{ position: "relative", left: "88%", top: 5 }}>
-        <img src="../img/logos/SKDE_sort.png" width={"7%"} />
+        <img src="/img/logos/logo-skde-graa.svg" width={"7%"} />
       </div>
       <div style={{ position: "relative", left: "13%", top: -32 }}>
         <Typography variant="subtitle1">

@@ -62,7 +62,7 @@ export const FigureButtons = (props: Props) => {
     logo.width = 76;
     logo.height = 31;
 
-    logo.src = "../../../img/logos/logo-skde.svg";
+    logo.src = "/img/logos/logo-skde-graa.svg";
 
     if (!image) return;
     if (!logo) return;

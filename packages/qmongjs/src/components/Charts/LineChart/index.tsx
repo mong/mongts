@@ -445,7 +445,7 @@ const LineChart = (props: Props) => {
           format={tickformat}
         />
         <div style={{ position: "relative", left: "78%", top: -620 }}>
-          <img src="../img/logos/SKDE_sort.png" width={"7%"} />
+          <img src="/img/logos/logo-skde-graa.svg" width={"7%"} />
         </div>
         <div style={{ position: "relative", left: "3%", top: -30 }}>
           <Typography variant="subtitle1">
