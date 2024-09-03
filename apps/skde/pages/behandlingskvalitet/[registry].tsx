@@ -21,15 +21,12 @@ import {
   levelKey,
   treatmentUnitsKey,
   yearKey,
-  medicalFieldKey,
-  useMedicalFieldsQuery,
   FilterSettingsActionType,
   IndicatorTable,
   IndicatorTableBodyV2,
   skdeTheme,
   fetchRegisterNames,
 } from "qmongjs";
-import { UseQueryResult } from "@tanstack/react-query";
 import Switch from "@mui/material/Switch";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -110,14 +107,6 @@ export default function TreatmentQualityPage({ registry_info }) {
     mainQueryParamsConfig.selected_row,
   )[0];
 
-  // Load medical fields
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const medicalFieldsQuery: UseQueryResult<any, unknown> =
-    useMedicalFieldsQuery();
-
-  const queriesReady = !medicalFieldsQuery.isLoading;
-  const medicalFields = medicalFieldsQuery?.data;
-
   /**
    * Handle that the initial filter settings are loaded, which can happen
    * more than once due to Next's pre-rendering and hydration behaviour combined
@@ -157,9 +146,6 @@ export default function TreatmentQualityPage({ registry_info }) {
       case levelKey: {
         return filterSettings.map.get(levelKey)?.[0]?.value ?? undefined;
       }
-      case medicalFieldKey: {
-        return [registry_name];
-      }
       case treatmentUnitsKey: {
         return filterSettings.map
           .get(treatmentUnitsKey)
@@ -183,9 +169,6 @@ export default function TreatmentQualityPage({ registry_info }) {
     );
     setSelectedLevel(
       valueOrDefault(levelKey, newFilterSettings) as string | undefined,
-    );
-    setSelectedMedicalFields(
-      valueOrDefault(medicalFieldKey, newFilterSettings) as string[],
     );
     setSelectedTreatmentUnits(
       valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
@@ -216,12 +199,6 @@ export default function TreatmentQualityPage({ registry_info }) {
         );
         break;
       }
-      case medicalFieldKey: {
-        setSelectedMedicalFields(
-          valueOrDefault(medicalFieldKey, newFilterSettings) as string[],
-        );
-        break;
-      }
       case treatmentUnitsKey: {
         setSelectedTreatmentUnits(
           valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
@@ -245,7 +222,7 @@ export default function TreatmentQualityPage({ registry_info }) {
 
   // Use the custom hook to observe the addition of the selected row element, if
   // not already available.
-  useOnElementAdded(selectedRow, queriesReady, scrollToSelectedRow);
+  useOnElementAdded(selectedRow, true, scrollToSelectedRow);
 
   return (
     <ThemeProvider theme={skdeTheme}>
@@ -259,67 +236,63 @@ export default function TreatmentQualityPage({ registry_info }) {
         <Grid container xs={12}>
           {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? ( // Permanent menu on large screens
             <Grid xxl={3} xxxl={2} className="menu-wrapper">
-              {queriesReady && (
-                <Box
-                  sx={{
-                    mt: 4,
-                    position: "sticky",
-                    top: 100,
-                    overflow: "auto",
-                    maxHeight: window.innerHeight - 150,
-                  }}
-                >
-                  <TreatmentQualityFilterMenu
-                    onSelectionChanged={handleFilterChanged}
-                    onFilterInitialized={handleFilterInitialized}
-                    registryNameData={registry_info}
-                    medicalFieldData={medicalFields}
-                    context={tableContext}
-                    register={registry_name}
-                  />
-                </Box>
-              )}
+              <Box
+                sx={{
+                  mt: 4,
+                  position: "sticky",
+                  top: 100,
+                  overflow: "auto",
+                  maxHeight: window.innerHeight - 150,
+                }}
+              >
+                <TreatmentQualityFilterMenu
+                  onSelectionChanged={handleFilterChanged}
+                  onFilterInitialized={handleFilterInitialized}
+                  registryNameData={registry_info}
+                  medicalFieldData={[]}
+                  context={tableContext}
+                  register={registry_name}
+                />
+              </Box>
             </Grid>
           ) : null}
           <Grid xs={12} xxl={9} xxxl={10}>
             <Grid container spacing={2} disableEqualOverflow>
               <Grid xs={12}>
-                {queriesReady &&
-                  (newIndicatorTableActivated || newTableOnly ? (
-                    <IndicatorTableV2Wrapper className="table-wrapper">
-                      <IndicatorTableBodyV2
-                        key="indicator-table"
-                        context={tableContext}
-                        unitNames={selectedTreatmentUnits}
-                        year={selectedYear}
-                        type={dataQualitySelected ? "dg" : "ind"}
-                        levels={selectedLevel}
-                        medfields={selectedMedicalFields}
-                      />
-                    </IndicatorTableV2Wrapper>
-                  ) : (
-                    <IndicatorTableWrapper className="table-wrapper">
-                      <IndicatorTable
-                        key="indicator-table"
-                        context={tableContext}
-                        dataQuality={dataQualitySelected}
-                        tableType="allRegistries"
-                        registerNames={registry_info}
-                        unitNames={selectedTreatmentUnits}
-                        treatmentYear={selectedYear}
-                        colspan={selectedTreatmentUnits.length + 1}
-                        medicalFieldFilter={selectedMedicalFields}
-                        showLevelFilter={selectedLevel}
-                        selection_bar_height={0}
-                        legend_height={0}
-                        blockTitle={registry_info.map(
-                          (register: { full_name: string }) =>
-                            register.full_name,
-                        )}
-                        showTreatmentYear={true}
-                      />
-                    </IndicatorTableWrapper>
-                  ))}
+                {newIndicatorTableActivated || newTableOnly ? (
+                  <IndicatorTableV2Wrapper className="table-wrapper">
+                    <IndicatorTableBodyV2
+                      key="indicator-table"
+                      context={tableContext}
+                      unitNames={selectedTreatmentUnits}
+                      year={selectedYear}
+                      type={dataQualitySelected ? "dg" : "ind"}
+                      levels={selectedLevel}
+                      medfields={selectedMedicalFields}
+                    />
+                  </IndicatorTableV2Wrapper>
+                ) : (
+                  <IndicatorTableWrapper className="table-wrapper">
+                    <IndicatorTable
+                      key="indicator-table"
+                      context={tableContext}
+                      dataQuality={dataQualitySelected}
+                      tableType="allRegistries"
+                      registerNames={registry_info}
+                      unitNames={selectedTreatmentUnits}
+                      treatmentYear={selectedYear}
+                      colspan={selectedTreatmentUnits.length + 1}
+                      medicalFieldFilter={selectedMedicalFields}
+                      showLevelFilter={selectedLevel}
+                      selection_bar_height={0}
+                      legend_height={0}
+                      blockTitle={registry_info.map(
+                        (register: { full_name: string }) => register.full_name,
+                      )}
+                      showTreatmentYear={true}
+                    />
+                  </IndicatorTableWrapper>
+                )}
               </Grid>
             </Grid>
           </Grid>
@@ -343,34 +316,32 @@ export default function TreatmentQualityPage({ registry_info }) {
           </IconButton>
         </Box>
         <Divider />
-        {queriesReady && (
-          <Box sx={{ mt: 4 }}>
-            <TreatmentQualityFilterMenu
-              onSelectionChanged={handleFilterChanged}
-              onFilterInitialized={handleFilterInitialized}
-              registryNameData={registry_info}
-              medicalFieldData={medicalFields}
-              context={tableContext}
-              register={registry_name}
-            />
-            {showNewTableSwitch && !newTableOnly && (
-              <FormGroup sx={{ paddingRight: "1.5rem" }}>
-                <FormControlLabel
-                  label="Prøv ny tabellversjon"
-                  labelPlacement="start"
-                  control={
-                    <Switch
-                      checked={newIndicatorTableActivated}
-                      onChange={(event) =>
-                        setNewIndicatorTableActivated(event.target.checked)
-                      }
-                    />
-                  }
-                />
-              </FormGroup>
-            )}
-          </Box>
-        )}
+        <Box sx={{ mt: 4 }}>
+          <TreatmentQualityFilterMenu
+            onSelectionChanged={handleFilterChanged}
+            onFilterInitialized={handleFilterInitialized}
+            registryNameData={registry_info}
+            medicalFieldData={[]}
+            context={tableContext}
+            register={registry_name}
+          />
+          {showNewTableSwitch && !newTableOnly && (
+            <FormGroup sx={{ paddingRight: "1.5rem" }}>
+              <FormControlLabel
+                label="Prøv ny tabellversjon"
+                labelPlacement="start"
+                control={
+                  <Switch
+                    checked={newIndicatorTableActivated}
+                    onChange={(event) =>
+                      setNewIndicatorTableActivated(event.target.checked)
+                    }
+                  />
+                }
+              />
+            </FormGroup>
+          )}
+        </Box>
       </FilterDrawer>
     </ThemeProvider>
   );
