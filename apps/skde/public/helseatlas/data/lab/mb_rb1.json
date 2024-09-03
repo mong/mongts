@@ -115,8 +115,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2021–2023. <br>* Antall analyser pr. 1000 innbyggere. Ratene er kjønns- og aldersjusterte. <br>** Andel av prøve analysert på privat lab eller på fastlegekontor. Andelene er basert på kjønns- og aldersjusterte rater. <br>*** Kjønns- og aldersjusterte årlige refusjon for perioden 2021–2023.",
-        "en": "Annual average during 2021–2023. <br>* Number of analysis per 1000 population. Rates are gender- and age-adjusted. <br>** Proportion of the tests analysed at a private lab or at GP's office. Proportions are based on adjusted rates. <br>*** Gender- and age-adjusted annual reimbursement during 2021–2023."
+        "nb": "Årlige gjennomsnittsverdier for perioden 2021–2023. <br>* Antall analyser pr. 1000 innbyggere. Ratene er kjønns- og aldersjusterte. <br>** Andel av analyser som var analysert på privat lab eller på fastlegekontor. Andelene er basert på kjønns- og aldersjusterte rater. <br>*** Kjønns- og aldersjusterte årlige refusjon for perioden 2021–2023.",
+        "en": "Annual average during 2021–2023. <br>* Number of analysis per 1000 population. Rates are gender- and age-adjusted. <br>** Proportion of anlysis that are analysed at a private lab or at GP's office. Proportions are based on adjusted rates. <br>*** Gender- and age-adjusted annual reimbursement during 2021–2023."
       },
       "columns": [
         {
@@ -169,14 +169,14 @@
           "format": ",.1f"
         },
         {
-          "id": "andel_prove_priv",
+          "id": "andel_nlk_priv",
           "label_no": "Andel** privat",
           "label_en": "Proportion** in private",
           "typeVar": "number",
           "format": ",.0%"
         },
         {
-          "id": "andel_prove_lege",
+          "id": "andel_nlk_lege",
           "label_no": "Andel** lege",
           "label_en": "Proportion** at GP",
           "typeVar": "number",
