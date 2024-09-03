@@ -11,6 +11,7 @@ type AppBarProps = {
   openDrawer: () => void;
   context;
   onTabChanged;
+  tabs?: boolean;
 };
 
 const breadcrumbs: BreadCrumbPath = {
@@ -29,6 +30,7 @@ const TreatmentQualityAppBar = ({
   openDrawer,
   context,
   onTabChanged,
+  tabs,
 }: AppBarProps) => {
   return (
     <>
@@ -41,13 +43,15 @@ const TreatmentQualityAppBar = ({
           textVariant="button"
         />
       </Header>
-      <StyledAppBar position="sticky" elevation={0}>
-        <TreatmentQualityToolbar
-          openDrawer={openDrawer}
-          onTabChanged={onTabChanged}
-          context={context}
-        />
-      </StyledAppBar>
+      {(tabs || tabs === undefined) && (
+        <StyledAppBar position="sticky" elevation={0}>
+          <TreatmentQualityToolbar
+            openDrawer={openDrawer}
+            onTabChanged={onTabChanged}
+            context={context}
+          />
+        </StyledAppBar>
+      )}
     </>
   );
 };

@@ -83,9 +83,11 @@ export default function TreatmentQualityPage({ registry_info }) {
   const newTableOnly = searchParams.get("newtable") === "true";
 
   // Context (caregiver or resident)
+  const default_context =
+    registry_info[0].caregiver_data === 0 ? "resident" : "caregiver";
   const [tableContext, setTableContext] = useQueryParam<string>(
     "context",
-    withDefault(StringParam, "caregiver"),
+    withDefault(StringParam, default_context),
   );
 
   // Used by indicator table
@@ -232,6 +234,10 @@ export default function TreatmentQualityPage({ registry_info }) {
           openDrawer={() => toggleDrawer(true)}
           context={tableContext}
           onTabChanged={setTableContext}
+          tabs={
+            registry_info[0].resident_data + registry_info[0].caregiver_data ==
+            2
+          }
         />
         <Grid container xs={12}>
           {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? ( // Permanent menu on large screens
