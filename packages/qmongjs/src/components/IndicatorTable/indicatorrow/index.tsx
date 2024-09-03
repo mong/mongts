@@ -206,7 +206,6 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
         figure_class={medicalFieldClass}
         selectedTreatmentUnits={unitNames}
         indicatorData={indicatorData}
-        update_selected_row={update_selected_row}
         lastCompleteYear={lastCompleteYear}
       />
     ) : null;

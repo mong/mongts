@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-
 import { FigureButtons } from "./chartrowbuttons";
 import { ChartRowDescription } from "./chartrowdescription";
 import { Chart } from "./Chart";
@@ -17,7 +16,6 @@ interface Props {
   indicatorData: Indicator[];
   figure_class?: string;
   selectedTreatmentUnits: string[];
-  update_selected_row(row: string): void;
   lastCompleteYear?: number;
 }
 
@@ -28,7 +26,6 @@ export function ChartRow(props: Props) {
     colspan = 3,
     description,
     figure_class,
-    update_selected_row,
     selectedTreatmentUnits,
     indicatorData,
     lastCompleteYear,
@@ -61,15 +58,12 @@ export function ChartRow(props: Props) {
         <div className={styles.tr_figure}>
           <div className={styles.tr_buttons_container}>
             <FigureButtons
-              svgContainer={svgContainerRef}
               show_level={chart_show_level}
               update_show_level={update_chart_show_level}
               zoom={zoom}
               update_zoom={update_zoom}
-              update_selected_row={update_selected_row}
               description={description}
               chartType={chart_type}
-              treatmentYear={treatmentYear}
               updateChartType={update_chart_type}
             />
           </div>
