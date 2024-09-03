@@ -1,0 +1,696 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "totsnitt_35"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Andel fødende 35-50 år som fikk utført NIPT",
+        "en": "Proportion of pregnant women ages 35-50 that took NIPT test"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "tot2022_35",
+        "tot2023_35"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2022",
+          "2023"
+        ]
+      },
+      "format": ",.0%"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "totsnitt_18"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Andel fødende 18-33 år som fikk utført NIPT",
+        "en": "Proportion of pregnant women ages 18-33 that took NIPT test"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "tot2022_18",
+        "tot2023_18"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2022",
+          "2023"
+        ]
+      },
+      "format": ",.0%"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_2",
+      "x": [
+        "totsnitt"
+      ],
+      "y": "borhf",
+      "xLabel": {
+        "nb": "Andel fødende 18-33 år som fikk utført NIPT",
+        "en": "Proportion of pregnant women ages 18-33 that took NIPT test"
+      },
+      "yLabel": {
+        "nb": "Regionale helseforetak (RHF)",
+        "en": "Regional health authorities"
+      },
+      "annualVar": [
+        "tot2022",
+        "tot2023"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2022",
+          "2023"
+        ]
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "linechart",
+      "data": "datasett_3",
+      "linevars": [
+        "kvinner"
+      ],
+      "linecolors": [
+        "#253776"
+      ],
+      "linevarsLabels": {
+        "nb": [
+          "Kvinner"
+        ],
+        "en": [
+          "Women"
+        ]
+      },
+      "x": [
+        "alder"
+      ],
+      "y": "pctandel",
+      "xLabel": {
+        "nb": "Alder",
+        "en": "Age"
+      },
+      "yLabel": {
+        "nb": "Andel av fødende som fikk tatt NIPT prøve",
+        "en": "Proportion of pregnant women that took NIPT test"
+      },
+      "format_y": ",.0%"
+    },
+    {
+      "type": "table",
+      "data": "datasett_1",
+      "caption": {
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022–2023. <br>* Andelene er basert på aldersjusterte rater.",
+        "en": "Annual average during 2022–2023. <br>* Proportions are based on adjusted rates."
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområder",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "totsnitt_35",
+          "label_no": "35-50år Andel*",
+          "label_en": "Proportion* 35-50",
+          "typeVar": "number",
+          "format": ",.0%"
+        },
+        {
+          "id": "tot_events_35",
+          "label_no": "35-50år NIPT",
+          "label_en": "NIPT 35-50",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "tot_pop_35",
+          "label_no": "35-50år Fødende",
+          "label_en": "Pregnant women ages 35-50",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "totsnitt_18",
+          "label_no": "18-34år Andel*",
+          "label_en": "Proportion* 18-34",
+          "typeVar": "number",
+          "format": ",.0%"
+        },
+        {
+          "id": "tot_events_18",
+          "label_no": "18-34år NIPT",
+          "label_en": "NIPT 18-34",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "tot_pop_18",
+          "label_no": "18-34år Fødende",
+          "label_en": "Pregnant women ages 18-24",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "datasett_1",
+      "x": "totsnitt_35",
+      "caption": {
+        "nb": "Andel fødende 35-50 år som fikk utført NIPT",
+        "en": "Proportion of pregnant women ages 35-50 that took NIPT test"
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": 0.412323387445,
+          "min": 0.412323387445,
+          "lag_min": 0.617978806551,
+          "grense": 0.515151096998
+        },
+        {
+          "cluster": 2,
+          "max": 0.678692376132,
+          "min": 0.617978806551,
+          "lag_min": 0.696695363614,
+          "grense": 0.687693869873
+        },
+        {
+          "cluster": 3,
+          "max": 0.728754143904,
+          "min": 0.696695363614,
+          "lag_min": 0.769552113051,
+          "grense": 0.749153128477
+        }
+      ],
+      "format": ",.0%"
+    },
+    {
+      "type": "data",
+      "label": "datasett_1",
+      "national": "Norge",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "data": [
+        {
+          "bohf": "Finnmark",
+          "tot2022_18": 0.0269741878275,
+          "tot2023_18": 0.0397879264145,
+          "totsnitt_18": 0.0336302183357,
+          "tot2022_35": 0.588450117277,
+          "tot2023_35": 0.672189422035,
+          "totsnitt_35": 0.62920018459,
+          "tot_events_18": 15.5,
+          "tot_pop_18": 464.5,
+          "tot_events_35": 86.5,
+          "tot_pop_35": 137.5
+        },
+        {
+          "bohf": "UNN",
+          "tot2022_18": 0.0301816498665,
+          "tot2023_18": 0.0593355303039,
+          "totsnitt_18": 0.0448611451742,
+          "tot2022_35": 0.783835851987,
+          "tot2023_35": 0.776054347557,
+          "totsnitt_35": 0.779755261543,
+          "tot_events_18": 53.5,
+          "tot_pop_18": 1203,
+          "tot_events_35": 304.5,
+          "tot_pop_35": 390.5
+        },
+        {
+          "bohf": "Nordland",
+          "tot2022_18": 0.0286616137073,
+          "tot2023_18": 0.033935927068,
+          "totsnitt_18": 0.031396115664,
+          "tot2022_35": 0.778346778423,
+          "tot2023_35": 0.85930951028,
+          "totsnitt_35": 0.820253085879,
+          "tot_events_18": 27,
+          "tot_pop_18": 858.5,
+          "tot_events_35": 230,
+          "tot_pop_35": 280.5
+        },
+        {
+          "bohf": "Helgeland",
+          "tot2022_18": 0.024325405931,
+          "tot2023_18": 0.0387217061423,
+          "totsnitt_18": 0.0317214030229,
+          "tot2022_35": 0.770751070884,
+          "tot2023_35": 0.783001020158,
+          "totsnitt_35": 0.778077654638,
+          "tot_events_18": 16,
+          "tot_pop_18": 505,
+          "tot_events_35": 92.5,
+          "tot_pop_35": 119
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "tot2022_18": 0.0192311292972,
+          "tot2023_18": 0.0166506773367,
+          "totsnitt_18": 0.0179283940323,
+          "tot2022_35": 0.403028023728,
+          "tot2023_35": 0.420920130638,
+          "totsnitt_35": 0.412323387445,
+          "tot_events_18": 16,
+          "tot_pop_18": 896.5,
+          "tot_events_35": 89.5,
+          "tot_pop_35": 217
+        },
+        {
+          "bohf": "St. Olav",
+          "tot2022_18": 0.0181586985518,
+          "tot2023_18": 0.0413252504207,
+          "totsnitt_18": 0.0292890258379,
+          "tot2022_35": 0.494164691216,
+          "tot2023_35": 0.804347794233,
+          "totsnitt_35": 0.653839169996,
+          "tot_events_18": 65.5,
+          "tot_pop_18": 2245,
+          "tot_events_35": 543,
+          "tot_pop_35": 830
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "tot2022_18": 0.0104799234068,
+          "tot2023_18": 0.0220181699755,
+          "totsnitt_18": 0.0161775157722,
+          "tot2022_35": 0.622902605056,
+          "tot2023_35": 0.733310954811,
+          "totsnitt_35": 0.678692376132,
+          "tot_events_18": 26,
+          "tot_pop_18": 1605.5,
+          "tot_events_35": 365.5,
+          "tot_pop_35": 538.5
+        },
+        {
+          "bohf": "Førde",
+          "tot2022_18": 0.0482324590054,
+          "tot2023_18": 0.053819838483,
+          "totsnitt_18": 0.0511506193585,
+          "tot2022_35": 0.715773656141,
+          "tot2023_35": 0.859383101642,
+          "totsnitt_35": 0.78746357043,
+          "tot_events_18": 32.5,
+          "tot_pop_18": 637,
+          "tot_events_35": 174,
+          "tot_pop_35": 221
+        },
+        {
+          "bohf": "Bergen",
+          "tot2022_18": 0.0495947519379,
+          "tot2023_18": 0.0594571671259,
+          "totsnitt_18": 0.0544470761015,
+          "tot2022_35": 0.728737944998,
+          "tot2023_35": 0.851257595257,
+          "totsnitt_35": 0.790546310844,
+          "tot_events_18": 162,
+          "tot_pop_18": 2973,
+          "tot_events_35": 923.5,
+          "tot_pop_35": 1168
+        },
+        {
+          "bohf": "Fonna",
+          "tot2022_18": 0.032453984507,
+          "tot2023_18": 0.0403939386824,
+          "totsnitt_18": 0.0365288662416,
+          "tot2022_35": 0.617171282554,
+          "tot2023_35": 0.739420813425,
+          "totsnitt_35": 0.67814714473,
+          "tot_events_18": 46,
+          "tot_pop_18": 1258.5,
+          "tot_events_35": 219,
+          "tot_pop_35": 323
+        },
+        {
+          "bohf": "Stavanger",
+          "tot2022_18": 0.0276716043442,
+          "tot2023_18": 0.0460319367948,
+          "totsnitt_18": 0.0368127328969,
+          "tot2022_35": 0.673507119046,
+          "tot2023_35": 0.766947187163,
+          "totsnitt_35": 0.721272570827,
+          "tot_events_18": 98,
+          "tot_pop_18": 2659,
+          "tot_events_35": 712.5,
+          "tot_pop_35": 987
+        },
+        {
+          "bohf": "Østfold",
+          "tot2022_18": 0.0303505816096,
+          "tot2023_18": 0.043795430933,
+          "totsnitt_18": 0.037261748889,
+          "tot2022_35": 0.651644293273,
+          "tot2023_35": 0.740755434221,
+          "totsnitt_35": 0.696695363614,
+          "tot_events_18": 69.5,
+          "tot_pop_18": 1859,
+          "tot_events_35": 455,
+          "tot_pop_35": 654
+        },
+        {
+          "bohf": "Akershus",
+          "tot2022_18": 0.0279928200952,
+          "tot2023_18": 0.0554148208264,
+          "totsnitt_18": 0.0416634752506,
+          "tot2022_35": 0.691566972943,
+          "tot2023_35": 0.761902011611,
+          "totsnitt_35": 0.728754143904,
+          "tot_events_18": 151,
+          "tot_pop_18": 3609,
+          "tot_events_35": 1173,
+          "tot_pop_35": 1610
+        },
+        {
+          "bohf": "OUS",
+          "tot2022_18": 0.0346429105855,
+          "tot2023_18": 0.0708930378802,
+          "totsnitt_18": 0.0520107689114,
+          "tot2022_35": 0.751846858524,
+          "tot2023_35": 0.825062294472,
+          "totsnitt_35": 0.789124133271,
+          "tot_events_18": 91,
+          "tot_pop_18": 1749.5,
+          "tot_events_35": 973,
+          "tot_pop_35": 1232.5
+        },
+        {
+          "bohf": "Lovisenberg",
+          "tot2022_18": 0.0327459814596,
+          "tot2023_18": 0.0635623958079,
+          "totsnitt_18": 0.0482058366038,
+          "tot2022_35": 0.832794750088,
+          "tot2023_35": 0.846834156198,
+          "totsnitt_35": 0.840251867428,
+          "tot_events_18": 63,
+          "tot_pop_18": 1285,
+          "tot_events_35": 763.5,
+          "tot_pop_35": 900
+        },
+        {
+          "bohf": "Diakonhjemmet",
+          "tot2022_18": 0.038640254774,
+          "tot2023_18": 0.0799907451619,
+          "totsnitt_18": 0.0590853908638,
+          "tot2022_35": 0.727685886843,
+          "tot2023_35": 0.887448283912,
+          "totsnitt_35": 0.80552565962,
+          "tot_events_18": 42.5,
+          "tot_pop_18": 717,
+          "tot_events_35": 501.5,
+          "tot_pop_35": 622
+        },
+        {
+          "bohf": "Innlandet",
+          "tot2022_18": 0.0470764649349,
+          "tot2023_18": 0.0694194872709,
+          "totsnitt_18": 0.0581692919184,
+          "tot2022_35": 0.756679519092,
+          "tot2023_35": 0.783225418008,
+          "totsnitt_35": 0.769552113051,
+          "tot_events_18": 110.5,
+          "tot_pop_18": 1902.5,
+          "tot_events_35": 455.5,
+          "tot_pop_35": 592
+        },
+        {
+          "bohf": "Vestre Viken",
+          "tot2022_18": 0.0461082015662,
+          "tot2023_18": 0.0577736491498,
+          "totsnitt_18": 0.0517590592363,
+          "tot2022_35": 0.724318557921,
+          "tot2023_35": 0.816934593949,
+          "totsnitt_35": 0.771561924481,
+          "tot_events_18": 135,
+          "tot_pop_18": 2604,
+          "tot_events_35": 1035.5,
+          "tot_pop_35": 1343
+        },
+        {
+          "bohf": "Vestfold",
+          "tot2022_18": 0.0374865455846,
+          "tot2023_18": 0.0410705256049,
+          "totsnitt_18": 0.0392857499227,
+          "tot2022_35": 0.654802370231,
+          "tot2023_35": 0.769297243736,
+          "totsnitt_35": 0.712589928373,
+          "tot_events_18": 53,
+          "tot_pop_18": 1348,
+          "tot_events_35": 354,
+          "tot_pop_35": 497
+        },
+        {
+          "bohf": "Telemark",
+          "tot2022_18": 0.0255797071561,
+          "tot2023_18": 0.0330952827585,
+          "totsnitt_18": 0.029315376628,
+          "tot2022_35": 0.703620329258,
+          "tot2023_35": 0.634741920891,
+          "totsnitt_35": 0.667869740595,
+          "tot_events_18": 30.5,
+          "tot_pop_18": 1031.5,
+          "tot_events_35": 203.5,
+          "tot_pop_35": 305
+        },
+        {
+          "bohf": "Sørlandet",
+          "tot2022_18": 0.0294823712891,
+          "tot2023_18": 0.0707873918166,
+          "totsnitt_18": 0.0496521297088,
+          "tot2022_35": 0.627618705636,
+          "tot2023_35": 0.609090560665,
+          "totsnitt_35": 0.617978806551,
+          "tot_events_18": 102.5,
+          "tot_pop_18": 2061.5,
+          "tot_events_35": 381,
+          "tot_pop_35": 616.5
+        },
+        {
+          "bohf": "Norge",
+          "tot2022_18": 0.0324748371818,
+          "tot2023_18": 0.051425001937,
+          "totsnitt_18": 0.0418912427521,
+          "tot2022_35": 0.691602135178,
+          "tot2023_35": 0.77950093159,
+          "totsnitt_35": 0.736624811175,
+          "tot_events_18": 1406.5,
+          "tot_pop_18": 33571.5,
+          "tot_events_35": 10038,
+          "tot_pop_35": 13626.5
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "datasett_2",
+      "description": "Ekstradatasettet for gitt resultatboks",
+      "data": [
+        {
+          "borhf": "Helse Nord",
+          "tot2022": 0.0282597142028,
+          "tot2023": 0.0454722780458,
+          "totsnitt": 0.0370487317614,
+          "tot_events": 112,
+          "tot_pop": 3031
+        },
+        {
+          "borhf": "Helse Midt-Norge",
+          "tot2022": 0.0157345444323,
+          "tot2023": 0.0298917831622,
+          "totsnitt": 0.0226772755936,
+          "tot_events": 107.5,
+          "tot_pop": 4747
+        },
+        {
+          "borhf": "Helse Vest",
+          "tot2022": 0.038927100417,
+          "tot2023": 0.050987736297,
+          "totsnitt": 0.0449553367013,
+          "tot_events": 338.5,
+          "tot_pop": 7527.5
+        },
+        {
+          "borhf": "Helse Sør-Øst",
+          "tot2022": 0.0350522578795,
+          "tot2023": 0.0585362110196,
+          "totsnitt": 0.0466828267016,
+          "tot_events": 848.5,
+          "tot_pop": 18167
+        },
+        {
+          "borhf": "Norge",
+          "tot2022": 0.0325702918559,
+          "tot2023": 0.0515783768187,
+          "totsnitt": 0.0420152568518,
+          "tot_events": 1406.5,
+          "tot_pop": 33472.5
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "datasett_3",
+      "description": "Ekstradatasettet for gitt resultatboks",
+      "data": [
+        {
+          "alder": 19,
+          "kvinner": 0.0588235294118
+        },
+        {
+          "alder": 20,
+          "kvinner": 0.0349462365591
+        },
+        {
+          "alder": 21,
+          "kvinner": 0.0289389067524
+        },
+        {
+          "alder": 22,
+          "kvinner": 0.0477975632615
+        },
+        {
+          "alder": 23,
+          "kvinner": 0.0340694006309
+        },
+        {
+          "alder": 24,
+          "kvinner": 0.0344827586207
+        },
+        {
+          "alder": 25,
+          "kvinner": 0.0354293009895
+        },
+        {
+          "alder": 26,
+          "kvinner": 0.0368433563109
+        },
+        {
+          "alder": 27,
+          "kvinner": 0.0343744224727
+        },
+        {
+          "alder": 28,
+          "kvinner": 0.0381218038122
+        },
+        {
+          "alder": 29,
+          "kvinner": 0.0439472632841
+        },
+        {
+          "alder": 30,
+          "kvinner": 0.0372625426206
+        },
+        {
+          "alder": 31,
+          "kvinner": 0.0398814949863
+        },
+        {
+          "alder": 32,
+          "kvinner": 0.0448065173116
+        },
+        {
+          "alder": 33,
+          "kvinner": 0.0489443378119
+        },
+        {
+          "alder": 34,
+          "kvinner": 0.324496145002
+        },
+        {
+          "alder": 35,
+          "kvinner": 0.745406415447
+        },
+        {
+          "alder": 36,
+          "kvinner": 0.754536950421
+        },
+        {
+          "alder": 37,
+          "kvinner": 0.747510668563
+        },
+        {
+          "alder": 38,
+          "kvinner": 0.7456404089
+        },
+        {
+          "alder": 39,
+          "kvinner": 0.760938743039
+        },
+        {
+          "alder": 40,
+          "kvinner": 0.71811023622
+        },
+        {
+          "alder": 41,
+          "kvinner": 0.704105344694
+        },
+        {
+          "alder": 42,
+          "kvinner": 0.661627906977
+        },
+        {
+          "alder": 43,
+          "kvinner": 0.672473867596
+        },
+        {
+          "alder": 44,
+          "kvinner": 0.61858974359
+        },
+        {
+          "alder": 45,
+          "kvinner": 0.854304635762
+        },
+        {
+          "alder": 46,
+          "kvinner": 0.684210526316
+        },
+        {
+          "alder": 47,
+          "kvinner": 0.590909090909
+        },
+        {
+          "alder": 48,
+          "kvinner": 0.459459459459
+        },
+        {
+          "alder": 49,
+          "kvinner": 0.454545454545
+        },
+        {
+          "alder": 50,
+          "kvinner": 0.727272727273
+        }
+      ]
+    }
+  ]
+}
