@@ -96,7 +96,7 @@ export function TreatmentQualityFilterMenu({
   registryNameData: registryNameData,
   medicalFieldData: medicalFieldData,
   context: context,
-  register,
+  register: register,
 }: TreatmentQualityFilterMenuProps) {
   const selectedRegister = register ?? "all";
   const queryContext = { context: context, type: "ind" }; // TODO: Variable for "ind"/"dg"?
