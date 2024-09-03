@@ -432,7 +432,7 @@ exports[`Bar 1`] = `
       <h6
         class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
       >
-        Kilde: register
+        Kilde: Norsk medisinsk kvalitetsregister for test
       </h6>
     </div>
   </div>
@@ -858,7 +858,7 @@ exports[`Bar select treatment unit 1`] = `
       <h6
         class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
       >
-        Kilde: register
+        Kilde: Norsk medisinsk kvalitetsregister for test
       </h6>
     </div>
   </div>
@@ -1033,7 +1033,7 @@ exports[`Bar with level_direction eq 0 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 3
+              Sykehus 5
             </text>
           </g>
           <g
@@ -1047,7 +1047,7 @@ exports[`Bar with level_direction eq 0 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 1
+              Sykehus 2
             </text>
           </g>
           <g
@@ -1061,7 +1061,7 @@ exports[`Bar with level_direction eq 0 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 4
+              Nasjonalt
             </text>
           </g>
           <g
@@ -1075,7 +1075,7 @@ exports[`Bar with level_direction eq 0 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Nasjonalt
+              Sykehus 4
             </text>
           </g>
           <g
@@ -1089,7 +1089,7 @@ exports[`Bar with level_direction eq 0 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 2
+              Sykehus 1
             </text>
           </g>
           <g
@@ -1103,7 +1103,7 @@ exports[`Bar with level_direction eq 0 1`] = `
               font-size="1.2rem"
               x="-9"
             >
-              Sykehus 5
+              Sykehus 3
             </text>
           </g>
         </g>
@@ -1146,43 +1146,13 @@ exports[`Bar with level_direction eq 0 1`] = `
         >
           <rect
             class="bar"
-            data-testid="bar-Sykehus 3"
+            data-testid="bar-Sykehus 5"
             fill="#7EBEC7"
             height="18.88333333333333"
             opacity="1"
-            width="61.024193548387096"
+            width="286.8306451612903"
             x="0"
             y="8.092857142857142"
-          />
-          <rect
-            class="bar"
-            data-testid="bar-Sykehus 1"
-            fill="#7EBEC7"
-            height="18.88333333333333"
-            opacity="1"
-            width="117.4758064516129"
-            x="0"
-            y="35.069047619047616"
-          />
-          <rect
-            class="bar"
-            data-testid="bar-Sykehus 4"
-            fill="#7EBEC7"
-            height="18.88333333333333"
-            opacity="1"
-            width="173.9274193548387"
-            x="0"
-            y="62.04523809523809"
-          />
-          <rect
-            class="bar"
-            data-testid="bar-Nasjonalt"
-            fill="#00263D"
-            height="18.88333333333333"
-            opacity="1"
-            width="190.86290322580643"
-            x="0"
-            y="89.02142857142856"
           />
           <rect
             class="bar"
@@ -1192,15 +1162,45 @@ exports[`Bar with level_direction eq 0 1`] = `
             opacity="1"
             width="230.3790322580645"
             x="0"
+            y="35.069047619047616"
+          />
+          <rect
+            class="bar"
+            data-testid="bar-Nasjonalt"
+            fill="#00263D"
+            height="18.88333333333333"
+            opacity="1"
+            width="190.86290322580643"
+            x="0"
+            y="62.04523809523809"
+          />
+          <rect
+            class="bar"
+            data-testid="bar-Sykehus 4"
+            fill="#7EBEC7"
+            height="18.88333333333333"
+            opacity="1"
+            width="173.9274193548387"
+            x="0"
+            y="89.02142857142856"
+          />
+          <rect
+            class="bar"
+            data-testid="bar-Sykehus 1"
+            fill="#7EBEC7"
+            height="18.88333333333333"
+            opacity="1"
+            width="117.4758064516129"
+            x="0"
             y="115.99761904761904"
           />
           <rect
             class="bar"
-            data-testid="bar-Sykehus 5"
+            data-testid="bar-Sykehus 3"
             fill="#7EBEC7"
             height="18.88333333333333"
             opacity="1"
-            width="286.8306451612903"
+            width="61.024193548387096"
             x="0"
             y="142.9738095238095"
           />
@@ -1210,37 +1210,25 @@ exports[`Bar with level_direction eq 0 1`] = `
         >
           <text
             class="label"
-            data-testid="bar-label-Sykehus 3"
+            data-testid="bar-label-Sykehus 5"
             fill="rgb(0, 0, 0)"
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="77.0241935483871"
+            x="302.8306451612903"
             y="20.534523809523805"
           >
-            0
+            1
           </text>
           <text
             class="label"
-            data-testid="bar-label-Sykehus 1"
+            data-testid="bar-label-Sykehus 2"
             fill="rgb(0, 0, 0)"
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="133.4758064516129"
+            x="246.3790322580645"
             y="47.51071428571428"
-          >
-            0
-          </text>
-          <text
-            class="label"
-            data-testid="bar-label-Sykehus 4"
-            fill="rgb(0, 0, 0)"
-            font-size="0.7em"
-            opacity="0.9"
-            text-anchor="middle"
-            x="189.9274193548387"
-            y="74.48690476190475"
           >
             0
           </text>
@@ -1252,33 +1240,45 @@ exports[`Bar with level_direction eq 0 1`] = `
             opacity="0.9"
             text-anchor="middle"
             x="206.86290322580643"
+            y="74.48690476190475"
+          >
+            0
+          </text>
+          <text
+            class="label"
+            data-testid="bar-label-Sykehus 4"
+            fill="rgb(0, 0, 0)"
+            font-size="0.7em"
+            opacity="0.9"
+            text-anchor="middle"
+            x="189.9274193548387"
             y="101.46309523809522"
           >
             0
           </text>
           <text
             class="label"
-            data-testid="bar-label-Sykehus 2"
+            data-testid="bar-label-Sykehus 1"
             fill="rgb(0, 0, 0)"
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="246.3790322580645"
+            x="133.4758064516129"
             y="128.4392857142857"
           >
             0
           </text>
           <text
             class="label"
-            data-testid="bar-label-Sykehus 5"
+            data-testid="bar-label-Sykehus 3"
             fill="rgb(0, 0, 0)"
             font-size="0.7em"
             opacity="0.9"
             text-anchor="middle"
-            x="302.8306451612903"
+            x="77.0241935483871"
             y="155.41547619047617"
           >
-            1
+            0
           </text>
         </g>
       </g>
@@ -1297,7 +1297,7 @@ exports[`Bar with level_direction eq 0 1`] = `
       <h6
         class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
       >
-        Kilde: register
+        Kilde: Norsk medisinsk kvalitetsregister for test
       </h6>
     </div>
   </div>
@@ -1650,7 +1650,7 @@ exports[`Line 1`] = `
       <h6
         class="MuiTypography-root MuiTypography-subtitle1 css-10wpov9-MuiTypography-root"
       >
-        Kilde: register
+        Kilde: Norsk medisinsk kvalitetsregister for test
       </h6>
     </div>
   </div>
