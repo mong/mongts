@@ -85,11 +85,11 @@ export const FigureButtons = (props: Props) => {
       ctx.fillStyle = "#fafafa";
       ctx.fillRect(0, 0, canvasWidth, canvasHeight);
       ctx.fillStyle = "black";
-      ctx.font = "20px";
+      ctx.font = "bold 24px jakarta sans";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(figTitle, canvasWidth / 2, 25);
-      ctx.font = "22px";
+      ctx.font = "20px jakarta sans";
       ctx.textAlign = "start";
       ctx.fillText(`Kilde: ${description.full_name}`, 25, 75 + height);
 
@@ -100,7 +100,7 @@ export const FigureButtons = (props: Props) => {
 
       const url = canvas.toDataURL("image/png");
 
-      selectAll([canvas, image]).remove();
+      selectAll([canvas, image, logo]).remove();
 
       const element = document.createElement("a");
       element.download = `${description.id}_${
