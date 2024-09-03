@@ -59,13 +59,22 @@ export const FigureButtons = (props: Props) => {
     image.src = "data:image/svg+xml," + encodeURIComponent(src.outerHTML);
 
     const logo = new Image();
+    logo.width = 76;
+    logo.height = 31;
+
     logo.src = "../../../img/logos/logo-skde.svg";
 
     if (!image) return;
+    if (!logo) return;
 
     image.onerror = function (e) {
       console.log(e);
     };
+
+    logo.onerror = function (e) {
+      console.log(e);
+    };
+
     image.onload = function () {
       const canvasWidth = width + 50;
       const canvasHeight = height + 100;
@@ -96,7 +105,18 @@ export const FigureButtons = (props: Props) => {
       ctx.imageSmoothingEnabled = false;
 
       ctx.drawImage(image, 50 / 2, 50);
-      ctx.drawImage(logo, 25, 65);
+
+      if (chartType === "bar") {
+        ctx.drawImage(
+          logo,
+          canvasWidth - 150,
+          height + 60,
+          logo.width,
+          logo.height,
+        );
+      } else {
+        ctx.drawImage(logo, canvasWidth - 250, 70, logo.width, logo.height);
+      }
 
       const url = canvas.toDataURL("image/png");
 
