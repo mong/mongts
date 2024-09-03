@@ -5,6 +5,7 @@ import styles from "./BarChart.module.css";
 import { levelColor } from "../utils";
 import { Level, Margin } from "../types";
 import { customFormat } from "../../../helpers/functions/localFormater";
+import { Typography } from "@mui/material";
 
 export interface BarStyle {
   opacity?: number;
@@ -233,8 +234,11 @@ function BarChart(props: Props) {
           </>
         )}
       </svg>
-      <div style={{ position: "relative", left: "84%", top: -32 }}>
+      <div style={{ position: "relative", left: "13%", top: -32 }}>
         <img src="../img/logos/logo-skde.svg" width={"8%"} />
+      </div>
+      <div style={{ position: "relative", left: "13%", top: -32 }}>
+        <Typography variant="subtitle1">Kilde: register</Typography>
       </div>
     </div>
   );

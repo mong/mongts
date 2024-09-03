@@ -22,6 +22,7 @@ import { Legend } from "./legend";
 import { customFormat } from "../../../helpers/functions/localFormater";
 import { LineChartTooltip } from "./tooltip";
 import { Indicator } from "types";
+import { Typography } from "@mui/material";
 
 const chart_colors = [
   "#00263d",
@@ -441,8 +442,11 @@ const LineChart = (props: Props) => {
           tooltipTop={tooltipTop}
           format={tickformat}
         />
-        <div style={{ position: "relative", left: "78%", top: -75 }}>
+        <div style={{ position: "relative", left: "78%", top: -620 }}>
           <img src="../img/logos/logo-skde.svg" width={"8%"} />
+        </div>
+        <div style={{ position: "relative", left: "3%", top: -30 }}>
+          <Typography variant="subtitle1">Kilde: register</Typography>
         </div>
       </div>
     </>

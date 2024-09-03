@@ -58,6 +58,9 @@ export const FigureButtons = (props: Props) => {
 
     image.src = "data:image/svg+xml," + encodeURIComponent(src.outerHTML);
 
+    const logo = new Image();
+    logo.src = "../../../img/logos/logo-skde.svg";
+
     if (!image) return;
 
     image.onerror = function (e) {
@@ -86,13 +89,14 @@ export const FigureButtons = (props: Props) => {
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(figTitle, canvasWidth / 2, 25);
-      ctx.font = "12px";
+      ctx.font = "22px";
       ctx.textAlign = "start";
       ctx.fillText(`Kilde: ${description.full_name}`, 25, 75 + height);
 
       ctx.imageSmoothingEnabled = false;
 
       ctx.drawImage(image, 50 / 2, 50);
+      ctx.drawImage(logo, 25, 75);
 
       const url = canvas.toDataURL("image/png");
 
