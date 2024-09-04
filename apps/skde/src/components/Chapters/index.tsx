@@ -2,6 +2,7 @@ import React from "react";
 import { TextBox } from "../TextBox";
 import { FactBox } from "../Factbox";
 import { ResultBox } from "../ResultBox";
+import classNames from "./Chapters.module.css";
 
 type Tekst = {
   type: "tekst";
@@ -49,7 +50,11 @@ export const Chapters = ({ innhold, lang }: ChaptersProps) => {
 const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
   const mainID = overskrift?.toLowerCase().replace(/\s/g, "-") || "qwerty";
   return (
-    <div id={mainID} style={{ paddingTop: "10px" }}>
+    <div
+      id={mainID}
+      style={{ paddingTop: "10px" }}
+      className={classNames.chapters}
+    >
       {overskrift && <h2>{overskrift}</h2>}
       {innhold &&
         innhold.map((box, index) => {
