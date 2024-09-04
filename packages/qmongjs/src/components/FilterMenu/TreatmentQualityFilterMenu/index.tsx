@@ -142,11 +142,7 @@ export function TreatmentQualityFilterMenu({
   if (register) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const selectionYearQuery: UseQueryResult<any, unknown> =
-      useSelectionYearsQuery(
-        register as string,
-        queryContext.context,
-        queryContext.type,
-      );
+      useSelectionYearsQuery(register as string, queryContext.context, "");
 
     listOfYears = selectionYearQuery.data as [number];
   }
