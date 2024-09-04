@@ -411,7 +411,7 @@ export const Skde = (): JSX.Element => {
                 square={true}
                 sx={{
                   width: 400,
-                  borderRadius: expanded ? 15 : 48,
+                  borderRadius: 15,
                   border: 3,
                   borderColor: skdeTheme.palette.primary.main,
                 }}
