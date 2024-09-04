@@ -63,6 +63,41 @@ export const FigureButtons = (props: Props) => {
     image.onerror = function (e) {
       console.log(e);
     };
+
+    logo.onerror = function (e) {
+      console.log(e);
+    };
+
+    logo.onload = function () {
+      const canvasWidth = width + 50;
+      const canvasHeight = height + 100;
+
+      const canvas = select("body")
+        .append("canvas")
+        .attr("width", canvasWidth)
+        .attr("height", canvasHeight)
+        .attr("z-index", 1)
+        .node();
+
+      if (canvas === null) return;
+
+      const ctx = canvas.getContext("2d");
+
+      if (ctx === null) return;
+
+      if (chartType === "bar") {
+        ctx.drawImage(
+          logo,
+          canvasWidth - 150,
+          height + 60,
+          logo.width,
+          logo.height,
+        );
+      } else {
+        ctx.drawImage(logo, canvasWidth - 250, 70, logo.width, logo.height);
+      }
+    };
+
     image.onload = function () {
       const canvasWidth = width + 50;
       const canvasHeight = height + 100;
@@ -74,6 +109,7 @@ export const FigureButtons = (props: Props) => {
         .append("canvas")
         .attr("width", canvasWidth)
         .attr("height", canvasHeight)
+        .attr("z-index", 1)
         .node();
 
       if (canvas === null) return;
