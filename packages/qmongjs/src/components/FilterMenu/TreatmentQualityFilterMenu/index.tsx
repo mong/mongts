@@ -370,6 +370,67 @@ export function TreatmentQualityFilterMenu({
 
   const shouldRefreshInitialState = prerenderFinished || apiQueriesCompleted;
 
+  if (register) {
+    return (
+      <>
+        <FilterMenu
+          refreshState={shouldRefreshInitialState}
+          onSelectionChanged={handleFilterChanged}
+          onFilterInitialized={onFilterInitialized}
+        >
+          <SelectedFiltersSection
+            accordion={false}
+            filterkey="selectedfilters"
+            sectionid="selectedfilters"
+            sectiontitle="Valgte filtre"
+          />
+          <TreeViewFilterSection
+            refreshState={shouldRefreshInitialState}
+            treedata={treatmentUnits.treedata}
+            defaultvalues={treatmentUnits.defaults}
+            initialselections={
+              selectedTreatmentUnits.map((value) => ({
+                value: value,
+                valueLabel: value,
+              })) as FilterSettingsValue[]
+            }
+            sectionid={treatmentUnitsKey}
+            sectiontitle={
+              context === "resident" ? "Opptaksområder" : "Behandlingsenheter"
+            }
+            filterkey={treatmentUnitsKey}
+            searchbox={true}
+            maxselections={maxSelectedTreatmentUnits}
+          />
+          <RadioGroupFilterSection
+            radios={yearOptions.values}
+            defaultvalues={[yearOptions.default]}
+            initialselections={[
+              { value: selectedYear, valueLabel: selectedYear },
+            ]}
+            sectiontitle={"År"}
+            sectionid={yearKey}
+            filterkey={yearKey}
+          />
+          <RadioGroupFilterSection
+            radios={achievementLevelOptions.values}
+            defaultvalues={
+              achievementLevelOptions.default
+                ? [achievementLevelOptions.default]
+                : []
+            }
+            initialselections={getFilterSettingsValue(
+              levelKey,
+              selectedAchievementLevel,
+            )}
+            sectiontitle={"Måloppnåelse"}
+            sectionid={levelKey}
+            filterkey={levelKey}
+          />
+        </FilterMenu>
+      </>
+    );
+  }
   return (
     <>
       {!(medicalFieldData || registryNameData) && (
