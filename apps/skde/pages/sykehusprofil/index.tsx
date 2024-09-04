@@ -19,10 +19,12 @@ import {
   LowLevelIndicatorList,
   LineStyles,
   defaultYear,
+  TreeViewFilterSection,
+  getTreatmentUnitsTree,
+  FilterSettings,
+  CustomAccordionExpandIcon,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
-import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
-import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import {
   ThemeProvider,
   Box,
@@ -35,7 +37,6 @@ import {
   styled,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
 import IndicatorLinechart, {
   IndicatorLinechartParams,
 } from "../../src/charts/IndicatorLinechart";
@@ -43,20 +44,19 @@ import {
   MedfieldTable,
   MedfieldTableProps,
 } from "../../src/components/MedfieldTable";
-import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import {
-  lineChartTheme,
+  ExpandableItemBox,
+  HospitalInfoBox,
+  LinePlotLegend,
   ItemBox,
-} from "../../src/components/HospitalProfile/HospitalProfileStyles";
-import { ExpandableItemBox } from "../../src/components/HospitalProfile/ExpandableItemBox";
+  lineChartTheme,
+} from "../../src/components/HospitalProfile";
 import { URLs } from "types";
 import { useRouter } from "next/router";
 import { mapUnitName2BohfNames } from "../../src/helpers/functions/unitName2BohfMap";
-import { HospitalInfoBox } from "../../src/components/HospitalProfile/HospitalInfoBox";
 import { getUnitFullName } from "../../src/helpers/functions/getUnitFullName";
-import { LinePlotLegend } from "../../src/components/HospitalProfile/LinePlotLegend";
 import { ChipSelection } from "../../src/components/ChipSelection";
 
 const AccordionWrapper = styled(Box)(() => ({
