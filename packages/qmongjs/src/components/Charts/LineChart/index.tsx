@@ -21,7 +21,8 @@ import { levelColor } from "../utils";
 import { Legend } from "./legend";
 import { customFormat } from "../../../helpers/functions/localFormater";
 import { LineChartTooltip } from "./tooltip";
-import { Indicator } from "types";
+import { Description, Indicator } from "types";
+import { Typography } from "@mui/material";
 
 const chart_colors = [
   "#00263d",
@@ -51,6 +52,7 @@ export interface Props {
   zoom?: boolean;
   margin?: Margin;
   lastCompleteYear?: number;
+  description: Description;
 }
 
 const MARGIN = { top: 8, bottom: 34, right: 0.14, left: 0.05 };
@@ -65,6 +67,7 @@ const LineChart = (props: Props) => {
     zoom = false,
     margin = {},
     lastCompleteYear,
+    description,
   } = props;
   //tooltip boundary detector
 
@@ -441,6 +444,14 @@ const LineChart = (props: Props) => {
           tooltipTop={tooltipTop}
           format={tickformat}
         />
+        <div style={{ position: "relative", left: "78%", top: -620 }}>
+          <img src="/img/logos/logo-skde-graa.svg" width={"7%"} />
+        </div>
+        <div style={{ position: "relative", left: "3%", top: -30 }}>
+          <Typography variant="subtitle1">
+            {"Kilde: " + description.full_name}
+          </Typography>
+        </div>
       </div>
     </>
   );

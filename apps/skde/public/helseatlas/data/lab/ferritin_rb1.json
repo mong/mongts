@@ -3,7 +3,9 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["totsnitt"],
+      "x": [
+        "totsnitt"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall ferritin-prøver pr. 1000 innbyggere",
@@ -13,17 +15,31 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": ["tot2021", "tot2022", "tot2023"],
+      "annualVar": [
+        "tot2021",
+        "tot2022",
+        "tot2023"
+      ],
       "annualVarLabels": {
-        "nb": ["2021", "2022", "2023"],
-        "en": ["2021", "2022", "2023"]
+        "nb": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2021",
+          "2022",
+          "2023"
+        ]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_2",
-      "x": ["totsnitt"],
+      "x": [
+        "totsnitt"
+      ],
       "y": "borhf",
       "xLabel": {
         "nb": "Antall ferritin-prøver pr. 1000 innbyggere",
@@ -33,30 +49,57 @@
         "nb": "Regionale helseforetak (RHF)",
         "en": "Regional health authorities"
       },
-      "annualVar": ["tot2021", "tot2022", "tot2023"],
+      "annualVar": [
+        "tot2021",
+        "tot2022",
+        "tot2023"
+      ],
       "annualVarLabels": {
-        "nb": ["2021", "2022", "2023"],
-        "en": ["2021", "2022", "2023"]
+        "nb": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2021",
+          "2022",
+          "2023"
+        ]
       },
       "format": ",.0f"
     },
     {
       "type": "linechart",
       "data": "datasett_3",
-      "linevars": ["kvinner", "menn"],
+      "linevars": [
+        "kvinner",
+        "menn"
+      ],
+      "linecolors": [
+        "#253776",
+        "#74A5CD"
+      ],
       "linevarsLabels": {
-        "nb": ["Kvinner", "Menn"],
-        "en": ["Women", "Men"]
+        "nb": [
+          "Kvinner",
+          "Menn"
+        ],
+        "en": [
+          "Women",
+          "Men"
+        ]
       },
-      "x": ["alder"],
+      "x": [
+        "alder"
+      ],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
         "en": "Age"
       },
       "yLabel": {
-        "nb": "Andel av befolkningen i alderen med ferritin-prøve",
-        "en": "Proportion of population in the age group with ferritin test"
+        "nb": "Andel av befolkningen som fikk tatt ferritin-prøve",
+        "en": "Proportion of population that received ferritin test"
       },
       "format_y": ",.0%"
     },

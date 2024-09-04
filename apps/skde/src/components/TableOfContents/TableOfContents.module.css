@@ -36,7 +36,8 @@
   .toc_small_wrapper {
     width: 100%;
     top: 0;
-    background-color: white;
+    background-color: #f4f4f4;
+    box-shadow: 0 15px 15px #f4f4f4;
     position: sticky;
     z-index: 998;
     margin: auto;
@@ -50,5 +51,12 @@
 @media screen and (min-width: 942px) {
   .toc {
     flex: 0 0 auto;
+  }
+}
+
+@media print {
+  .toc_small_wrapper,
+  .toc_large {
+    display: none;
   }
 }

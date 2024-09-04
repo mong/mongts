@@ -18,12 +18,13 @@ import {
   useUnitUrlsQuery,
   LowLevelIndicatorList,
   LineStyles,
-  newLevelSymbols,
   defaultYear,
+  TreeViewFilterSection,
+  getTreatmentUnitsTree,
+  FilterSettings,
+  CustomAccordionExpandIcon,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
-import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
-import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import {
   ThemeProvider,
   Box,
@@ -33,9 +34,9 @@ import {
   Stack,
   Typography,
   Container,
+  styled,
 } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2";
-import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
+import Grid from "@mui/material/Grid2";
 import IndicatorLinechart, {
   IndicatorLinechartParams,
 } from "../../src/charts/IndicatorLinechart";
@@ -43,58 +44,31 @@ import {
   MedfieldTable,
   MedfieldTableProps,
 } from "../../src/components/MedfieldTable";
-import CustomAccordionExpandIcon from "qmongjs/src/components/FilterMenu/CustomAccordionExpandIcon";
 import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
-import { SubUnits } from "../../src/components/SubUnits";
 import {
-  lineChartTheme,
+  ExpandableItemBox,
+  HospitalInfoBox,
+  LinePlotLegend,
   ItemBox,
-} from "../../src/components/HospitalProfileStyles";
-import { ExpandableItemBox } from "../../src/components/ExpandableItemBox";
-import { NestedTreatmentUnitName, URLs } from "types";
-import { ArrowLink } from "qmongjs";
+  lineChartTheme,
+} from "../../src/components/HospitalProfile";
+import { URLs } from "types";
 import { useRouter } from "next/router";
-import { FetchMap } from "../../src/helpers/hooks";
-import { mapColors, abacusColors } from "../../src/charts/colors";
-import { geoMercator, geoPath } from "d3-geo";
 import { mapUnitName2BohfNames } from "../../src/helpers/functions/unitName2BohfMap";
-import { Hoverbox } from "../../src/components/Hoverbox";
+import { getUnitFullName } from "../../src/helpers/functions/getUnitFullName";
 import { ChipSelection } from "../../src/components/ChipSelection";
 
-const getUnitFullName = (
-  nestedUnitNames: NestedTreatmentUnitName[],
-  unitShortName: string,
-) => {
-  if (!nestedUnitNames || !unitShortName) {
-    return null;
-  }
-
-  // Check if unit is a RHF
-  const isRHF = nestedUnitNames.map((row) => row.rhf).includes(unitShortName);
-
-  if (isRHF) {
-    return unitShortName;
-  }
-
-  // Check if unit is a HF
-  const HFs = nestedUnitNames.map((row) => row.hf).flat();
-  const isHF = HFs.map((row) => row.hf).includes(unitShortName);
-
-  if (isHF) {
-    return HFs.filter((row) => {
-      return row.hf === unitShortName;
-    })[0].hf_full;
-  }
-
-  // Check if unit is a hospital?
-  return unitShortName;
-};
+const AccordionWrapper = styled(Box)(() => ({
+  "& MuiAccordion-root:before": {
+    backgroundColor: "white",
+  },
+}));
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
-  const [objectIDList, setObjectIDList] = useState([]);
+  const [objectIDList, setObjectIDList] = useState<number[]>([]);
 
   const treatmentUnitsKey = "selected_treatment_units";
 
@@ -311,81 +285,6 @@ export const Skde = (): JSX.Element => {
   const titleStyle = { marginTop: 20, marginLeft: 20 };
   const textMargin = 20;
 
-  const Legend = (props: { itemSpacing: number; symbolSpacing: number }) => {
-    const { itemSpacing, symbolSpacing } = props;
-
-    return (
-      <>
-        <Stack direction="row" spacing={itemSpacing} alignItems="center">
-          <Hoverbox
-            title="Viser andel eller antall kvalitetsindikatorer som har oppnådd høy måloppnåelse i kvalitetsregisteret"
-            placement="top"
-            offset={[20, 20]}
-          >
-            <Stack direction="row" spacing={symbolSpacing} alignItems="center">
-              {newLevelSymbols("H")}
-              <Typography>Høy måloppnåelse</Typography>
-            </Stack>
-          </Hoverbox>
-          <Hoverbox
-            title="Viser andel eller antall kvalitetsindikatorer som har oppnådd middels måloppnåelse i kvalitetsregisteret"
-            placement="top"
-            offset={[20, 20]}
-          >
-            <Stack direction="row" spacing={symbolSpacing} alignItems="center">
-              {newLevelSymbols("M")}
-              <Typography>Moderat måloppnåelse</Typography>
-            </Stack>
-          </Hoverbox>
-          <Hoverbox
-            title="Viser andel eller antall kvalitetsindikatorer som har oppnådd lav måloppnåelse i kvalitetsregisteret"
-            placement="top"
-            offset={[20, 20]}
-          >
-            <Stack direction="row" spacing={symbolSpacing} alignItems="center">
-              {newLevelSymbols("L")}
-              <Typography>Lav måloppnåelse</Typography>
-            </Stack>
-          </Hoverbox>
-        </Stack>
-      </>
-    );
-  };
-
-  // Copy-paste from helseatlas
-  const mapData = FetchMap("/helseatlas/kart/kronikere.geojson").data;
-
-  const mapHeight = 1000;
-  const mapWidth = 1000;
-  const initCenter = geoPath().centroid(mapData);
-  const initOffset: [number, number] = [
-    mapWidth / 2,
-    mapHeight / 2 - mapHeight * 0.11,
-  ];
-  const initScale = 150;
-  const initialProjection = geoMercator()
-    .scale(initScale)
-    .center(initCenter)
-    .translate(initOffset);
-  const initPath = geoPath().projection(initialProjection);
-
-  const bounds = initPath.bounds(mapData);
-  const hscale = (initScale * mapWidth) / (bounds[1][0] - bounds[0][0]);
-  const vscale = (initScale * mapHeight) / (bounds[1][1] - bounds[0][1]);
-  const scale = hscale < vscale ? 0.98 * hscale : 0.98 * vscale;
-  const offset: [number, number] = [
-    mapWidth - (bounds[0][0] + bounds[1][0]) / 2,
-    mapHeight - (bounds[0][1] + bounds[1][1]) / 2,
-  ];
-
-  const projection = geoMercator()
-    .scale(scale)
-    .center(initCenter)
-    .translate(offset);
-
-  const pathGenerator = geoPath().projection(projection);
-
-  // Latout parameters
   const maxWidth = "xxl";
   const titlePadding = 2;
 
@@ -399,186 +298,76 @@ export const Skde = (): JSX.Element => {
           maxWidth={maxWidth}
         >
           <ClickAwayListener onClickAway={() => setExpanded(false)}>
-            <Accordion
-              expanded={expanded}
-              onChange={(e, expanded) => {
-                setExpanded(expanded);
-              }}
-            >
-              <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
-                <h3>
-                  {selectedTreatmentUnits[0] === "Nasjonalt"
-                    ? "Velg behandlingssted"
-                    : selectedTreatmentUnits[0]}
-                </h3>
-              </AccordionSummary>
+            <AccordionWrapper>
+              <Accordion
+                square={true}
+                sx={{
+                  width: 400,
+                  borderRadius: 11,
+                  border: 1,
+                  borderColor: skdeTheme.palette.primary.main,
+                  backgroundColor: "white",
+                  color: skdeTheme.palette.primary.main,
+                }}
+                expanded={expanded}
+                onChange={(e, expanded) => {
+                  setExpanded(expanded);
+                }}
+              >
+                <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
+                  <h3>
+                    {selectedTreatmentUnits[0] === "Nasjonalt"
+                      ? "Velg behandlingssted"
+                      : selectedTreatmentUnits[0]}
+                  </h3>
+                </AccordionSummary>
 
-              <AccordionDetails>
-                <FilterMenu
-                  refreshState={shouldRefreshInitialState}
-                  onSelectionChanged={handleChange}
-                  onFilterInitialized={initialiseFilter}
-                >
-                  <TreeViewFilterSection
+                <AccordionDetails>
+                  <FilterMenu
                     refreshState={shouldRefreshInitialState}
-                    treedata={treatmentUnits.treedata}
-                    defaultvalues={treatmentUnits.defaults}
-                    initialselections={
-                      selectedTreatmentUnits.map((value) => ({
-                        value: value,
-                        valueLabel: value,
-                      })) as FilterSettingsValue[]
-                    }
-                    sectionid={treatmentUnitsKey}
-                    sectiontitle={"Behandlingsenheter"}
-                    filterkey={treatmentUnitsKey}
-                    searchbox={true}
-                    multiselect={false}
-                    accordion={false}
-                    noShadow={true}
-                  />
-                </FilterMenu>
-              </AccordionDetails>
-            </Accordion>
+                    onSelectionChanged={handleChange}
+                    onFilterInitialized={initialiseFilter}
+                  >
+                    <TreeViewFilterSection
+                      refreshState={shouldRefreshInitialState}
+                      treedata={treatmentUnits.treedata}
+                      defaultvalues={treatmentUnits.defaults}
+                      initialselections={
+                        selectedTreatmentUnits.map((value) => ({
+                          value: value,
+                          valueLabel: value,
+                        })) as FilterSettingsValue[]
+                      }
+                      sectionid={treatmentUnitsKey}
+                      sectiontitle={"Behandlingsenheter"}
+                      filterkey={treatmentUnitsKey}
+                      searchbox={true}
+                      multiselect={false}
+                      accordion={false}
+                      noShadow={true}
+                    />
+                  </FilterMenu>
+                </AccordionDetails>
+              </Accordion>
+            </AccordionWrapper>
           </ClickAwayListener>
         </Header>
 
         <Container maxWidth={maxWidth} disableGutters={true}>
           <Box marginTop={2} className="hospital-profile-box">
             <Grid container spacing={2}>
-              <Grid xs={12}>
-                <ItemBox height={550} sx={{ overflow: "auto" }}>
-                  <Grid container>
-                    <Grid
-                      xs={12}
-                      sm={12}
-                      lg={4}
-                      xl={4}
-                      xxl={4}
-                      alignContent="center"
-                      style={{ textAlign: "center" }}
-                    >
-                      <div
-                        style={{
-                          display: "flex",
-                          width: "100%",
-                          height: "100%",
-                          alignItems: "center",
-                        }}
-                      >
-                        <svg
-                          width={"100%"}
-                          height={"100%"}
-                          viewBox={`0 0 ${mapWidth} ${mapHeight}`}
-                          style={{
-                            backgroundColor: "none",
-                            maxHeight: "400px",
-                          }}
-                        >
-                          {mapData &&
-                            mapData.features.map((d, i) => {
-                              return (
-                                <path
-                                  key={`map-feature-${i}`}
-                                  d={pathGenerator(d.geometry)}
-                                  fill={
-                                    objectIDList &&
-                                    objectIDList.includes(d.properties.BoHF_num)
-                                      ? abacusColors[2]
-                                      : mapColors[1]
-                                  }
-                                  stroke={"black"}
-                                  strokeWidth={0.4}
-                                  className={i + ""}
-                                />
-                              );
-                            })}
-                        </svg>
-                      </div>
-                    </Grid>
-
-                    <Grid xs={12} sm={6} lg={4} xl={4} xxl={4}>
-                      <Stack
-                        direction="column"
-                        alignItems="center"
-                        justifyContent="space-between"
-                        height={550}
-                      >
-                        <Typography
-                          variant="h5"
-                          style={{ marginTop: 20, marginLeft: 20 }}
-                        >
-                          <b>
-                            {unitNamesQuery.data &&
-                              getUnitFullName(
-                                unitNamesQuery.data.nestedUnitNames,
-                                selectedTreatmentUnits[0],
-                              )}
-                          </b>
-                        </Typography>
-                        <div
-                          style={{ display: "flex", justifyContent: "center" }}
-                        >
-                          <div
-                            style={{
-                              display: "flex",
-                              width: 300,
-                              height: 300,
-                              justifyContent: "center",
-                            }}
-                          >
-                            <img
-                              src={imgSrc}
-                              onError={() =>
-                                setImgSrc("/img/forsidebilder/Sykehus.jpg")
-                              }
-                              alt={"Logo"}
-                              width="100%"
-                              height="100%"
-                              style={{
-                                borderRadius: "100%",
-                                maxWidth: "100%",
-                                objectFit: "cover",
-                              }}
-                            />
-                          </div>
-                        </div>
-
-                        <div>
-                          {unitUrl ? (
-                            <ArrowLink
-                              href={unitUrl}
-                              text="Nettside"
-                              externalLink={true}
-                              button={true}
-                              textVariant="subtitle1"
-                            />
-                          ) : null}
-                        </div>
-                      </Stack>
-                    </Grid>
-
-                    <Grid xs={12} sm={6} lg={4} xl={4} xxl={4}>
-                      <ItemBox
-                        height={450}
-                        sx={{ overflow: "auto", marginRight: 2 }}
-                      >
-                        <Typography variant="h5" style={titleStyle}>
-                          <b>Tilknyttede behandlingssteder</b>
-                        </Typography>
-                        {unitNamesQuery.data ? (
-                          <SubUnits
-                            RHFs={unitNamesQuery.data.nestedUnitNames}
-                            selectedUnit={selectedTreatmentUnits[0]}
-                          />
-                        ) : null}
-                      </ItemBox>
-                    </Grid>
-                  </Grid>
-                </ItemBox>
+              <Grid size={{ xs: 12 }}>
+                <HospitalInfoBox
+                  unitNames={unitNamesQuery.data}
+                  selectedTreatmentUnit={selectedTreatmentUnits[0]}
+                  objectIDList={objectIDList}
+                  unitUrl={unitUrl}
+                  imgSrc={imgSrc}
+                  setImgSrc={setImgSrc}
+                  titleStyle={titleStyle}
+                />
               </Grid>
-
-              <Grid xs={12}>
+              <Grid size={{ xs: 12 }}>
                 <ItemBox sx={{ overflow: "auto" }}>
                   <Box padding={titlePadding}>
                     <Typography variant="h5" style={titleStyle}>
@@ -601,7 +390,7 @@ export const Skde = (): JSX.Element => {
                         stateSetter={setNormalise}
                         trueChip="left"
                       />
-                      <Legend itemSpacing={8} symbolSpacing={2} />
+                      <LinePlotLegend itemSpacing={8} symbolSpacing={2} />
                     </Stack>
                     <div style={{ margin: textMargin }}>
                       <Typography variant="body1">
@@ -624,7 +413,7 @@ export const Skde = (): JSX.Element => {
                 </ItemBox>
               </Grid>
 
-              <Grid xs={12}>
+              <Grid size={{ xs: 12 }}>
                 <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                   <Box padding={titlePadding}>
                     <Typography variant="h5" style={titleStyle}>
@@ -659,7 +448,7 @@ export const Skde = (): JSX.Element => {
                 </ExpandableItemBox>
               </Grid>
 
-              <Grid xs={12}>
+              <Grid size={{ xs: 12 }}>
                 <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                   <Box padding={titlePadding}>
                     <Typography variant="h5" style={titleStyle}>

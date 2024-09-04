@@ -41,9 +41,34 @@
       "format": ",.0f"
     },
     {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": ["ratesnitt_andel_int"],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Andel folat-prøver tatt med kortere intervall enn anbefalt",
+        "en": "Proportion of folate tests repeated earlier than recommended interval"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "rate2020_andel_int",
+        "rate2021_andel_int",
+        "rate2022_andel_int"
+      ],
+      "annualVarLabels": {
+        "nb": ["2020", "2021", "2022"],
+        "en": ["2020", "2021", "2022"]
+      },
+      "format": ",.0%"
+    },
+    {
       "type": "linechart",
       "data": "datasett_3",
       "linevars": ["kvinner", "menn"],
+      "linecolors": ["#253776", "#74A5CD"],
       "linevarsLabels": {
         "nb": ["Kvinner", "Menn"],
         "en": ["Women", "Men"]
@@ -55,8 +80,8 @@
         "en": "Age"
       },
       "yLabel": {
-        "nb": "Andel av befolkningen i alderen med folat-prøve",
-        "en": "Proportion of population in the age group with folate test"
+        "nb": "Andel av befolkningen som fikk tatt folat-prøve",
+        "en": "Proportion of population that received folate test"
       },
       "format_y": ",.0%"
     },
@@ -64,8 +89,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2021–2023. <br>* Antall pr. 1000 innbyggere. Ratene er kjønns- og aldersjusterte. <br>** Andelene er basert på kjønns- og aldersjusterte rater.",
-        "en": "Annual average during 2021–2023. <br>* Rate per 1000 population. Rates are gender- and age-adjusted. <br>** Proportions are based on adjusted rates."
+        "nb": "Årlige gjennomsnittsverdier for perioden 2021–2023. <br>* Antall pr. 1000 innbyggere. Ratene er kjønns- og aldersjusterte. <br>** Andelene er basert på kjønns- og aldersjusterte rater. <br>*** Prøver tatt med kortere intervall mellom prøver enn anbefalt.",
+        "en": "Annual average during 2021–2023. <br>* Rate per 1000 population. Rates are gender- and age-adjusted. <br>** Proportions are based on adjusted rates.<br>*** Tests repeated with shorter duration than the recommended interval."
       },
       "columns": [
         {
@@ -109,6 +134,20 @@
           "label_en": "Proportion** in private",
           "typeVar": "number",
           "format": ",.0%"
+        },
+        {
+          "id": "ratesnitt_andel_int",
+          "label_no": "Andel** gjentatte***",
+          "label_en": "Proportion** of tests repeated***",
+          "typeVar": "number",
+          "format": ",.1%"
+        },
+        {
+          "id": "antsnitt_i_int",
+          "label_no": "Antall gjentatte***",
+          "label_en": "Number of tests repeated***",
+          "typeVar": "number",
+          "format": ",.0f"
         }
       ]
     },
@@ -154,6 +193,11 @@
         {
           "bohf": "Finnmark",
           "andel_priv": 0.0177816093465,
+          "antsnitt_i_int": 1826.33333333,
+          "ratesnitt_andel_int": 0.103924552797,
+          "rate2020_andel_int": 0.101395253939,
+          "rate2021_andel_int": 0.104398971303,
+          "rate2022_andel_int": 0.105729235537,
           "tot2021": 237.059483607,
           "tot2022": 253.678549732,
           "tot2023": 262.975825138,
@@ -166,6 +210,11 @@
         {
           "bohf": "UNN",
           "andel_priv": 0.0679168031542,
+          "antsnitt_i_int": 5496.66666667,
+          "ratesnitt_andel_int": 0.108892457474,
+          "rate2020_andel_int": 0.111958565275,
+          "rate2021_andel_int": 0.108525884075,
+          "rate2022_andel_int": 0.106576580241,
           "tot2021": 256.878114595,
           "tot2022": 275.989910295,
           "tot2023": 285.816790119,
@@ -178,6 +227,11 @@
         {
           "bohf": "Nordland",
           "andel_priv": 0.0881737021545,
+          "antsnitt_i_int": 3784,
+          "ratesnitt_andel_int": 0.102464253499,
+          "rate2020_andel_int": 0.0959546791247,
+          "rate2021_andel_int": 0.100299539256,
+          "rate2022_andel_int": 0.110343641187,
           "tot2021": 259.367531163,
           "tot2022": 270.946590229,
           "tot2023": 263.562162292,
@@ -190,6 +244,11 @@
         {
           "bohf": "Helgeland",
           "andel_priv": 0.0491903678397,
+          "antsnitt_i_int": 3418.66666667,
+          "ratesnitt_andel_int": 0.129899731255,
+          "rate2020_andel_int": 0.126773803208,
+          "rate2021_andel_int": 0.129831650378,
+          "rate2022_andel_int": 0.132785772026,
           "tot2021": 324.01712288,
           "tot2022": 320.365481979,
           "tot2023": 305.656850602,
@@ -202,6 +261,11 @@
         {
           "bohf": "Nord-Trøndelag",
           "andel_priv": 0.478366687063,
+          "antsnitt_i_int": 4611,
+          "ratesnitt_andel_int": 0.116238003151,
+          "rate2020_andel_int": 0.113439335095,
+          "rate2021_andel_int": 0.116811130939,
+          "rate2022_andel_int": 0.118222213101,
           "tot2021": 296.259405398,
           "tot2022": 291.991546021,
           "tot2023": 303.230034489,
@@ -214,6 +278,11 @@
         {
           "bohf": "St. Olav",
           "andel_priv": 0.501195972562,
+          "antsnitt_i_int": 7693,
+          "ratesnitt_andel_int": 0.0907837576497,
+          "rate2020_andel_int": 0.0904562409112,
+          "rate2021_andel_int": 0.0895863164374,
+          "rate2022_andel_int": 0.092214259395,
           "tot2021": 262.308852187,
           "tot2022": 270.082991279,
           "tot2023": 279.255714995,
@@ -226,6 +295,11 @@
         {
           "bohf": "Møre og Romsdal",
           "andel_priv": 0.0950187388962,
+          "antsnitt_i_int": 9275,
+          "ratesnitt_andel_int": 0.103042972124,
+          "rate2020_andel_int": 0.104449362548,
+          "rate2021_andel_int": 0.101129750221,
+          "rate2022_andel_int": 0.10367440125,
           "tot2021": 338.827577018,
           "tot2022": 354.36575165,
           "tot2023": 356.712870291,
@@ -238,6 +312,11 @@
         {
           "bohf": "Førde",
           "andel_priv": 0.0261573541292,
+          "antsnitt_i_int": 4221.33333333,
+          "ratesnitt_andel_int": 0.122970316,
+          "rate2020_andel_int": 0.117951691625,
+          "rate2021_andel_int": 0.123243084881,
+          "rate2022_andel_int": 0.126556913744,
           "tot2021": 302.835350201,
           "tot2022": 337.065136955,
           "tot2023": 376.960115727,
@@ -250,6 +329,11 @@
         {
           "bohf": "Bergen",
           "andel_priv": 0.0891334364845,
+          "antsnitt_i_int": 31187.6666667,
+          "ratesnitt_andel_int": 0.156011592112,
+          "rate2020_andel_int": 0.148691326927,
+          "rate2021_andel_int": 0.155464401843,
+          "rate2022_andel_int": 0.162515594537,
           "tot2021": 455.622474764,
           "tot2022": 483.385801173,
           "tot2023": 500.541605653,
@@ -262,6 +346,11 @@
         {
           "bohf": "Fonna",
           "andel_priv": 0.110933072707,
+          "antsnitt_i_int": 8346.33333333,
+          "ratesnitt_andel_int": 0.126730079657,
+          "rate2020_andel_int": 0.130913438685,
+          "rate2021_andel_int": 0.128776468963,
+          "rate2022_andel_int": 0.120896587763,
           "tot2021": 375.216487613,
           "tot2022": 376.522982079,
           "tot2023": 382.2287518,
@@ -274,6 +363,11 @@
         {
           "bohf": "Stavanger",
           "andel_priv": 0.162743347607,
+          "antsnitt_i_int": 11092.6666667,
+          "ratesnitt_andel_int": 0.100678187951,
+          "rate2020_andel_int": 0.100845027461,
+          "rate2021_andel_int": 0.103921866505,
+          "rate2022_andel_int": 0.0972477465291,
           "tot2021": 333.08220245,
           "tot2022": 325.526457266,
           "tot2023": 328.338839168,
@@ -286,6 +380,11 @@
         {
           "bohf": "Østfold",
           "andel_priv": 0.278693099603,
+          "antsnitt_i_int": 12120.6666667,
+          "ratesnitt_andel_int": 0.103192954009,
+          "rate2020_andel_int": 0.104442866509,
+          "rate2021_andel_int": 0.104368620555,
+          "rate2022_andel_int": 0.101016362221,
           "tot2021": 361.458431544,
           "tot2022": 377.785309056,
           "tot2023": 288.88411833,
@@ -298,6 +397,11 @@
         {
           "bohf": "Akershus",
           "andel_priv": 0.660030876245,
+          "antsnitt_i_int": 17936.3333333,
+          "ratesnitt_andel_int": 0.104608894827,
+          "rate2020_andel_int": 0.103310998359,
+          "rate2021_andel_int": 0.10639442314,
+          "rate2022_andel_int": 0.104008400495,
           "tot2021": 314.968422588,
           "tot2022": 320.456659355,
           "tot2023": 330.251024288,
@@ -310,6 +414,11 @@
         {
           "bohf": "OUS",
           "andel_priv": 0.861010665775,
+          "antsnitt_i_int": 7548,
+          "ratesnitt_andel_int": 0.110876672321,
+          "rate2020_andel_int": 0.110241148318,
+          "rate2021_andel_int": 0.11336051417,
+          "rate2022_andel_int": 0.109043330646,
           "tot2021": 273.594662382,
           "tot2022": 293.707828853,
           "tot2023": 294.120745315,
@@ -322,6 +431,11 @@
         {
           "bohf": "Lovisenberg",
           "andel_priv": 0.813980394156,
+          "antsnitt_i_int": 3098,
+          "ratesnitt_andel_int": 0.10494305152,
+          "rate2020_andel_int": 0.102425247729,
+          "rate2021_andel_int": 0.109420024042,
+          "rate2022_andel_int": 0.102538591333,
           "tot2021": 244.456841817,
           "tot2022": 249.643426359,
           "tot2023": 256.315392201,
@@ -334,6 +448,11 @@
         {
           "bohf": "Diakonhjemmet",
           "andel_priv": 0.804540837269,
+          "antsnitt_i_int": 4275.66666667,
+          "ratesnitt_andel_int": 0.12577674415,
+          "rate2020_andel_int": 0.128400278152,
+          "rate2021_andel_int": 0.126389102994,
+          "rate2022_andel_int": 0.122869126813,
           "tot2021": 247.99180946,
           "tot2022": 243.855988262,
           "tot2023": 258.352662238,
@@ -346,6 +465,11 @@
         {
           "bohf": "Innlandet",
           "andel_priv": 0.226157505218,
+          "antsnitt_i_int": 17997,
+          "ratesnitt_andel_int": 0.138269186119,
+          "rate2020_andel_int": 0.142718354465,
+          "rate2021_andel_int": 0.139315427739,
+          "rate2022_andel_int": 0.133142428669,
           "tot2021": 371.884562485,
           "tot2022": 371.224968903,
           "tot2023": 384.124509989,
@@ -358,6 +482,11 @@
         {
           "bohf": "Vestre Viken",
           "andel_priv": 0.426212603096,
+          "antsnitt_i_int": 15659,
+          "ratesnitt_andel_int": 0.105640146073,
+          "rate2020_andel_int": 0.104212221513,
+          "rate2021_andel_int": 0.108386579809,
+          "rate2022_andel_int": 0.104235087579,
           "tot2021": 305.063956919,
           "tot2022": 316.215564852,
           "tot2023": 315.007711049,
@@ -370,6 +499,11 @@
         {
           "bohf": "Vestfold",
           "andel_priv": 0.423817449016,
+          "antsnitt_i_int": 13436,
+          "ratesnitt_andel_int": 0.137345374342,
+          "rate2020_andel_int": 0.135018144526,
+          "rate2021_andel_int": 0.145423064448,
+          "rate2022_andel_int": 0.131617669941,
           "tot2021": 391.649523161,
           "tot2022": 396.883318245,
           "tot2023": 412.654406197,
@@ -382,6 +516,11 @@
         {
           "bohf": "Telemark",
           "andel_priv": 0.0984302675066,
+          "antsnitt_i_int": 6973,
+          "ratesnitt_andel_int": 0.113560592141,
+          "rate2020_andel_int": 0.110326642061,
+          "rate2021_andel_int": 0.116896623784,
+          "rate2022_andel_int": 0.113025313007,
           "tot2021": 345.188102331,
           "tot2022": 357.291255635,
           "tot2023": 368.274781373,
@@ -394,6 +533,11 @@
         {
           "bohf": "Sørlandet",
           "andel_priv": 0.100066228523,
+          "antsnitt_i_int": 14953.6666667,
+          "ratesnitt_andel_int": 0.139222403915,
+          "rate2020_andel_int": 0.132717705631,
+          "rate2021_andel_int": 0.144365309245,
+          "rate2022_andel_int": 0.139817095246,
           "tot2021": 361.207208172,
           "tot2022": 368.901601778,
           "tot2023": 374.014465322,
@@ -406,6 +550,11 @@
         {
           "bohf": "Norge",
           "andel_priv": 0.311124331843,
+          "antsnitt_i_int": 204951,
+          "ratesnitt_andel_int": 0.118723491207,
+          "rate2020_andel_int": 0.117279461727,
+          "rate2021_andel_int": 0.1204291158,
+          "rate2022_andel_int": 0.118297547046,
           "tot2021": 329.247229323,
           "tot2022": 339.015754055,
           "tot2023": 340.924705747,
