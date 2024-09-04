@@ -28,15 +28,15 @@
   background-color: #033f85;
   overflow: hidden;
   cursor: pointer;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
 }
 
 .horizontal {
   position: relative;
   left: 1px;
-  min-width: 16px;
-  max-width: 16px;
-  min-height: 2px;
-  max-height: 2px;
+  width: 16px;
+  height: 2px;
   background-color: #fff;
 }
 
@@ -44,9 +44,7 @@
   position: relative;
   left: -8px;
   top: 0px;
-  min-width: 2px;
-  max-width: 2px;
-  min-height: 16px;
-  max-height: 16px;
+  width: 2px;
+  height: 16px;
   background-color: #fff;
 }

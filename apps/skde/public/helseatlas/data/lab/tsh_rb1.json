@@ -88,6 +88,7 @@
       "type": "linechart",
       "data": "datasett_3",
       "linevars": ["kvinner", "menn"],
+      "linecolors": ["#253776", "#74A5CD"],
       "linevarsLabels": {
         "nb": ["Kvinner", "Menn"],
         "en": ["Women", "Men"]
@@ -99,8 +100,8 @@
         "en": "Age"
       },
       "yLabel": {
-        "nb": "Andel av befolkningen i alderen med TSH-prøve",
-        "en": "Proportion of population in the age group with TSH test"
+        "nb": "Andel av befolkningen som fikk tatt TSH-prøve",
+        "en": "Proportion of population that received TSH test"
       },
       "format_y": ",.0%"
     },
@@ -108,8 +109,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2021–2023. <br>* Antall pr. 1000 innbyggere. Ratene er kjønns- og aldersjusterte. <br>** Andelene er basert på kjønns- og aldersjusterte rater. <br>*** Prøver tatt med kortere intervall enn anbefalt.",
-        "en": "Annual average during 2021–2023. <br>* Rate per 1000 population. Rates are gender- and age-adjusted. <br>** Proportions are based on adjusted rates.<br>*** Tests repeated earlier than recommended interval."
+        "nb": "Årlige gjennomsnittsverdier for perioden 2021–2023. <br>* Antall pr. 1000 innbyggere. Ratene er kjønns- og aldersjusterte. <br>** Andelene er basert på kjønns- og aldersjusterte rater. <br>*** Prøver tatt med kortere intervall mellom prøver enn anbefalt.",
+        "en": "Annual average during 2021–2023. <br>* Rate per 1000 population. Rates are gender- and age-adjusted. <br>** Proportions are based on adjusted rates.<br>*** Tests repeated with shorter duration than the recommended interval."
       },
       "columns": [
         {
