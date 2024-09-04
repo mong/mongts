@@ -25,7 +25,6 @@ import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { TreeViewFilterSection } from "qmongjs/src/components/FilterMenu/TreeViewFilterSection";
 import {
-  Switch,
   ThemeProvider,
   Box,
   Accordion,
@@ -34,6 +33,7 @@ import {
   Stack,
   Typography,
   Container,
+  styled,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
@@ -61,7 +61,13 @@ import { mapColors, abacusColors } from "../../src/charts/colors";
 import { geoMercator, geoPath } from "d3-geo";
 import { mapUnitName2BohfNames } from "../../src/helpers/functions/unitName2BohfMap";
 import { Hoverbox } from "../../src/components/Hoverbox";
-import { HelpOutline } from "@mui/icons-material";
+import { ChipSelection } from "../../src/components/ChipSelection";
+
+const AccordionWrapper = styled(Box)(() => ({
+  "& MuiAccordion-root:before": {
+    backgroundColor: "white",
+  },
+}));
 
 const getUnitFullName = (
   nestedUnitNames: NestedTreatmentUnitName[],
@@ -273,10 +279,6 @@ export const Skde = (): JSX.Element => {
 
   indicatorParams.normalise = normalise;
 
-  const checkNormalise = () => {
-    setNormalise(!normalise);
-  };
-
   if (normalise) {
     indicatorParams.yAxisText = "Andel";
   } else {
@@ -291,10 +293,6 @@ export const Skde = (): JSX.Element => {
   } else {
     medfieldTableProps.type = "ind";
   }
-
-  const checkDataQuality = () => {
-    setDataQuality(!dataQuality);
-  };
 
   const breadcrumbs: BreadCrumbPath = {
     path: [
@@ -408,47 +406,58 @@ export const Skde = (): JSX.Element => {
           maxWidth={maxWidth}
         >
           <ClickAwayListener onClickAway={() => setExpanded(false)}>
-            <Accordion
-              expanded={expanded}
-              onChange={(e, expanded) => {
-                setExpanded(expanded);
-              }}
-            >
-              <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
-                <h3>
-                  {selectedTreatmentUnits[0] === "Nasjonalt"
-                    ? "Velg behandlingssted"
-                    : selectedTreatmentUnits[0]}
-                </h3>
-              </AccordionSummary>
+            <AccordionWrapper>
+              <Accordion
+                square={true}
+                sx={{
+                  width: 400,
+                  borderRadius: 15,
+                  border: 1,
+                  borderColor: skdeTheme.palette.primary.main,
+                  backgroundColor: "white",
+                  color: skdeTheme.palette.primary.main,
+                }}
+                expanded={expanded}
+                onChange={(e, expanded) => {
+                  setExpanded(expanded);
+                }}
+              >
+                <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
+                  <h3>
+                    {selectedTreatmentUnits[0] === "Nasjonalt"
+                      ? "Velg behandlingssted"
+                      : selectedTreatmentUnits[0]}
+                  </h3>
+                </AccordionSummary>
 
-              <AccordionDetails>
-                <FilterMenu
-                  refreshState={shouldRefreshInitialState}
-                  onSelectionChanged={handleChange}
-                  onFilterInitialized={initialiseFilter}
-                >
-                  <TreeViewFilterSection
+                <AccordionDetails>
+                  <FilterMenu
                     refreshState={shouldRefreshInitialState}
-                    treedata={treatmentUnits.treedata}
-                    defaultvalues={treatmentUnits.defaults}
-                    initialselections={
-                      selectedTreatmentUnits.map((value) => ({
-                        value: value,
-                        valueLabel: value,
-                      })) as FilterSettingsValue[]
-                    }
-                    sectionid={treatmentUnitsKey}
-                    sectiontitle={"Behandlingsenheter"}
-                    filterkey={treatmentUnitsKey}
-                    searchbox={true}
-                    multiselect={false}
-                    accordion={false}
-                    noShadow={true}
-                  />
-                </FilterMenu>
-              </AccordionDetails>
-            </Accordion>
+                    onSelectionChanged={handleChange}
+                    onFilterInitialized={initialiseFilter}
+                  >
+                    <TreeViewFilterSection
+                      refreshState={shouldRefreshInitialState}
+                      treedata={treatmentUnits.treedata}
+                      defaultvalues={treatmentUnits.defaults}
+                      initialselections={
+                        selectedTreatmentUnits.map((value) => ({
+                          value: value,
+                          valueLabel: value,
+                        })) as FilterSettingsValue[]
+                      }
+                      sectionid={treatmentUnitsKey}
+                      sectiontitle={"Behandlingsenheter"}
+                      filterkey={treatmentUnitsKey}
+                      searchbox={true}
+                      multiselect={false}
+                      accordion={false}
+                      noShadow={true}
+                    />
+                  </FilterMenu>
+                </AccordionDetails>
+              </Accordion>
+            </AccordionWrapper>
           </ClickAwayListener>
         </Header>
 
@@ -589,6 +598,25 @@ export const Skde = (): JSX.Element => {
                     <Typography variant="h5" style={titleStyle}>
                       <b>Utvikling over tid</b>
                     </Typography>
+                    <Stack
+                      direction="row"
+                      alignItems="center"
+                      justifyContent="space-between"
+                    >
+                      <ChipSelection
+                        leftChipLabel="Vis andel"
+                        rightChipLabel="Vis Antall"
+                        leftChipHelpText=""
+                        rightChipHelpText=""
+                        hoverBoxOffset={[20, 20]}
+                        hoverBoxPlacement="top"
+                        hoverBoxMaxWidth={400}
+                        state={normalise}
+                        stateSetter={setNormalise}
+                        trueChip="left"
+                      />
+                      <Legend itemSpacing={8} symbolSpacing={2} />
+                    </Stack>
                     <div style={{ margin: textMargin }}>
                       <Typography variant="body1">
                         {"Grafen gir en oversikt over kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistrene for " +
@@ -599,18 +627,6 @@ export const Skde = (): JSX.Element => {
                             )) +
                           ". Her vises andel eller antall av kvalitetsindikatorer som har hatt høy, middels eller lav måloppnåelse de siste årene."}
                       </Typography>
-
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "row",
-                          justifyContent: "right",
-                          marginRight: 20,
-                          marginTop: 40,
-                        }}
-                      >
-                        <Legend itemSpacing={8} symbolSpacing={2} />
-                      </div>
                     </div>
                   </Box>
 
@@ -619,16 +635,6 @@ export const Skde = (): JSX.Element => {
                       <IndicatorLinechart {...indicatorParams} />
                     </div>
                   </ThemeProvider>
-                  <Stack
-                    direction="row"
-                    spacing={1}
-                    alignItems="center"
-                    margin={4}
-                  >
-                    <Typography>Vis andel</Typography>
-                    <Switch checked={!normalise} onChange={checkNormalise} />
-                    <Typography>Vis antall</Typography>
-                  </Stack>
                 </ItemBox>
               </Grid>
 
@@ -638,6 +644,18 @@ export const Skde = (): JSX.Element => {
                     <Typography variant="h5" style={titleStyle}>
                       <b>Kvalitetsindikatorer fordelt på fagområder</b>
                     </Typography>
+                    <ChipSelection
+                      leftChipLabel="Vis kvalitetsindikatorer"
+                      rightChipLabel="Vis datakvalitet"
+                      leftChipHelpText="Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register kvalitetsindikatorene kommer fra."
+                      rightChipHelpText="Datakvalitet representerer for eksempel dekningsgrad som angir andel pasienter eller hendelser som registreres, i forhold til antall som skal registreres i registeret fra behandlingsstedet. Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register datakvaliteten er rapportert fra."
+                      hoverBoxOffset={[20, 20]}
+                      hoverBoxPlacement="top"
+                      hoverBoxMaxWidth={400}
+                      state={dataQuality}
+                      stateSetter={setDataQuality}
+                      trueChip="right"
+                    />
                     <div style={{ margin: textMargin }}>
                       <Typography variant="body1">
                         {dataQuality
@@ -649,35 +667,6 @@ export const Skde = (): JSX.Element => {
                             " fordelt på fagområder. Hver indikator er vist som et symbol for høy, middels eller lav måloppnåelse."}
                       </Typography>
                     </div>
-                    <Stack
-                      direction="row"
-                      spacing={1}
-                      alignItems="center"
-                      margin={4}
-                    >
-                      <Typography>Vis kvalitetsindikatorer</Typography>
-                      <Hoverbox
-                        title="Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register kvalitetsindikatorene kommer fra."
-                        placement="top"
-                        offset={[20, 20]}
-                        maxWidth={400}
-                      >
-                        <HelpOutline sx={{ fontSize: "18px", marginLeft: 1 }} />
-                      </Hoverbox>
-                      <Switch
-                        checked={dataQuality}
-                        onChange={checkDataQuality}
-                      />
-                      <Typography>Vis datakvalitet</Typography>
-                      <Hoverbox
-                        title="Datakvalitet representerer for eksempel dekningsgrad som angir andel pasienter eller hendelser som registreres, i forhold til antall som skal registreres i registeret fra behandlingsstedet. Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register datakvaliteten er rapportert fra."
-                        placement="top"
-                        offset={[20, 20]}
-                        maxWidth={400}
-                      >
-                        <HelpOutline sx={{ fontSize: "18px", marginLeft: 1 }} />
-                      </Hoverbox>
-                    </Stack>
                   </Box>
 
                   <MedfieldTable {...medfieldTableProps} />
