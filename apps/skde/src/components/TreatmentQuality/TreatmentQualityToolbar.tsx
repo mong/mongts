@@ -4,7 +4,7 @@ import { TuneRounded } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Hoverbox } from "../Hoverbox";
+import { Hoverbox } from "qmongjs";
 import { HelpOutline } from "@mui/icons-material";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
