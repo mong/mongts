@@ -295,6 +295,7 @@ function ChartWithRef(
       context={context}
       levels={levels}
       treatmentYear={1999}
+      description={descr}
     />
   );
 }
@@ -326,7 +327,7 @@ function buildDataPoint(overrides: Partial<Indicator>): Indicator {
   };
 }
 
-function buildDescription(overrides: Partial<Description>): Description {
+export function buildDescription(overrides: Partial<Description>): Description {
   return {
     id: "testdata",
     dg_id: null,
