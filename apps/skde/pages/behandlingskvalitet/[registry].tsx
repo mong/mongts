@@ -249,6 +249,15 @@ export default function TreatmentQualityPage({ registry_info }) {
                       levels={selectedLevel}
                       medfields={selectedMedicalFields}
                     />
+                    <IndicatorTableBodyV2
+                      key="dataquality-table"
+                      context={tableContext}
+                      unitNames={selectedTreatmentUnits}
+                      year={selectedYear}
+                      type="dg"
+                      levels={selectedLevel}
+                      medfields={selectedMedicalFields}
+                    />
                   </IndicatorTableV2Wrapper>
                 ) : (
                   <IndicatorTableWrapper className="table-wrapper">
@@ -267,28 +276,8 @@ export default function TreatmentQualityPage({ registry_info }) {
                       legend_height={0}
                       showTreatmentYear={true}
                     />
-                  </IndicatorTableWrapper>
-                )}
-              </Grid>
-            </Grid>
-            <Grid container spacing={2} disableEqualOverflow>
-              <Grid xs={12}>
-                {newTableOnly ? (
-                  <IndicatorTableV2Wrapper className="table-wrapper">
-                    <IndicatorTableBodyV2
-                      key="indicator-table"
-                      context={tableContext}
-                      unitNames={selectedTreatmentUnits}
-                      year={selectedYear}
-                      type="dg"
-                      levels={selectedLevel}
-                      medfields={selectedMedicalFields}
-                    />
-                  </IndicatorTableV2Wrapper>
-                ) : (
-                  <IndicatorTableWrapper className="table-wrapper">
                     <IndicatorTable
-                      key="indicator-table"
+                      key="dataquality-table"
                       context={tableContext}
                       dataQuality={true}
                       tableType="allRegistries"
