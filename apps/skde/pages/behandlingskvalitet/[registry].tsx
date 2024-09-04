@@ -229,6 +229,10 @@ export default function TreatmentQualityPage({ registry_info }) {
             registry_info[0].resident_data + registry_info[0].caregiver_data ==
             2
           }
+          extraBreadcrumbs={[
+            { link: registry_name, text: registry_info[0].short_name },
+          ]}
+          subtitle={"Resultater fra " + registry_info[0].full_name}
         />
         <Grid container xs={12}>
           {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? ( // Permanent menu on large screens
