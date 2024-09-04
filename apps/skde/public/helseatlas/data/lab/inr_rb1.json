@@ -43,20 +43,16 @@
     {
       "type": "linechart",
       "data": "datasett_3",
-      "linevars": ["kvinner_s", "menn_s", "kvinner_l", "menn_l"],
+      "linevars": ["kvinner_l", "menn_l", "kvinner_s", "menn_s"],
+      "linecolors": ["#FF671F", "#FFC845", "#253776", "#74A5CD"],
       "linevarsLabels": {
         "nb": [
-          "Kvinner i spes",
-          "Menn i spes",
-          "Kvinner hos lege",
-          "Menn hos lege"
+          "Kvinner(fastlege)",
+          "Menn(fastlege)",
+          "Kvinner(lab)",
+          "Menn(lab)"
         ],
-        "en": [
-          "Women at specialist",
-          "Men at specialist",
-          "Women at GP",
-          "Men at GP"
-        ]
+        "en": ["Women(GP)", "Men(GP)", "Women(lab)", "Men(lab)"]
       },
       "x": ["alder"],
       "y": "pctandel",
@@ -65,8 +61,8 @@
         "en": "Age"
       },
       "yLabel": {
-        "nb": "Andel av befolkningen i alderen med INR-prøve",
-        "en": "Proportion of population in the age group with INR test"
+        "nb": "Andel av befolkningen som fikk tatt INR-prøve hvor prøven ble analysert på lab eller på fastlegekontor",
+        "en": "Proportion of population that received INR test where the test was analysed at a lab or at a GP's office"
       },
       "format_y": ",.0%"
     },
