@@ -44,6 +44,7 @@
       "type": "linechart",
       "data": "datasett_3",
       "linevars": ["kvinner", "menn"],
+      "linecolors": ["#253776", "#74A5CD"],
       "linevarsLabels": {
         "nb": ["Kvinner", "Menn"],
         "en": ["Women", "Men"]
@@ -55,8 +56,8 @@
         "en": "Age"
       },
       "yLabel": {
-        "nb": "Andel av befolkningen i alderen med homocystein-prøve",
-        "en": "Proportion of population in the age group with homocysteine test"
+        "nb": "Andel av befolkningen som fikk tatt homocystein-prøve",
+        "en": "Proportion of population that received homocysteine test"
       },
       "format_y": ",.0%"
     },
