@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 
 import { ChevronLeftRounded } from "@mui/icons-material";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid2";
 import { useQueryParam, withDefault, StringParam } from "use-query-params";
 import {
   FilterSettingsAction,
@@ -212,9 +212,9 @@ export default function TreatmentQualityPage({ registry_info }) {
           ]}
           subtitle={"Resultater fra " + registry_info[0].full_name}
         />
-        <Grid container xs={12}>
+        <Grid container size={{ xs: 12 }}>
           {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? ( // Permanent menu on large screens
-            <Grid xxl={4} xxxl={3} className="menu-wrapper">
+            <Grid size={{ xxl: 3, xxxl: 2 }} className="menu-wrapper">
               <Box
                 sx={{
                   mt: 4,
@@ -235,9 +235,9 @@ export default function TreatmentQualityPage({ registry_info }) {
               </Box>
             </Grid>
           ) : null}
-          <Grid xs={12} xxl={8} xxxl={9}>
-            <Grid container spacing={2} disableEqualOverflow>
-              <Grid xs={12}>
+          <Grid size={{ xs: 12, xxl: 9, xxxl: 10 }}>
+            <Grid container spacing={2}>
+              <Grid size={{ xs: 12 }}>
                 {newTableOnly ? (
                   <IndicatorTableV2Wrapper className="table-wrapper">
                     <IndicatorTableBodyV2
