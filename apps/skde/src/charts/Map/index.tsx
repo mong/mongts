@@ -175,7 +175,7 @@ export const Map = ({
                           x={i * w}
                           y={60}
                           textAnchor="middle"
-                          fontSize={30}
+                          fontSize={Math.max(...classes) > 9999 ? 25 : 30}
                         >
                           {customFormat(
                             format ? format : ".1f",

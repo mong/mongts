@@ -32,6 +32,7 @@ import {
   Stack,
   Typography,
   Container,
+  styled,
 } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import { FilterSettings } from "qmongjs/src/components/FilterMenu/FilterSettingsContext";
@@ -57,6 +58,12 @@ import { HospitalInfoBox } from "../../src/components/HospitalProfile/HospitalIn
 import { getUnitFullName } from "../../src/helpers/functions/getUnitFullName";
 import { LinePlotLegend } from "../../src/components/HospitalProfile/LinePlotLegend";
 import { ChipSelection } from "../../src/components/ChipSelection";
+
+const AccordionWrapper = styled(Box)(() => ({
+  "& MuiAccordion-root:before": {
+    backgroundColor: "white",
+  },
+}));
 
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
@@ -291,47 +298,58 @@ export const Skde = (): JSX.Element => {
           maxWidth={maxWidth}
         >
           <ClickAwayListener onClickAway={() => setExpanded(false)}>
-            <Accordion
-              expanded={expanded}
-              onChange={(e, expanded) => {
-                setExpanded(expanded);
-              }}
-            >
-              <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
-                <h3>
-                  {selectedTreatmentUnits[0] === "Nasjonalt"
-                    ? "Velg behandlingssted"
-                    : selectedTreatmentUnits[0]}
-                </h3>
-              </AccordionSummary>
+            <AccordionWrapper>
+              <Accordion
+                square={true}
+                sx={{
+                  width: 400,
+                  borderRadius: 15,
+                  border: 1,
+                  borderColor: skdeTheme.palette.primary.main,
+                  backgroundColor: "white",
+                  color: skdeTheme.palette.primary.main,
+                }}
+                expanded={expanded}
+                onChange={(e, expanded) => {
+                  setExpanded(expanded);
+                }}
+              >
+                <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
+                  <h3>
+                    {selectedTreatmentUnits[0] === "Nasjonalt"
+                      ? "Velg behandlingssted"
+                      : selectedTreatmentUnits[0]}
+                  </h3>
+                </AccordionSummary>
 
-              <AccordionDetails>
-                <FilterMenu
-                  refreshState={shouldRefreshInitialState}
-                  onSelectionChanged={handleChange}
-                  onFilterInitialized={initialiseFilter}
-                >
-                  <TreeViewFilterSection
+                <AccordionDetails>
+                  <FilterMenu
                     refreshState={shouldRefreshInitialState}
-                    treedata={treatmentUnits.treedata}
-                    defaultvalues={treatmentUnits.defaults}
-                    initialselections={
-                      selectedTreatmentUnits.map((value) => ({
-                        value: value,
-                        valueLabel: value,
-                      })) as FilterSettingsValue[]
-                    }
-                    sectionid={treatmentUnitsKey}
-                    sectiontitle={"Behandlingsenheter"}
-                    filterkey={treatmentUnitsKey}
-                    searchbox={true}
-                    multiselect={false}
-                    accordion={false}
-                    noShadow={true}
-                  />
-                </FilterMenu>
-              </AccordionDetails>
-            </Accordion>
+                    onSelectionChanged={handleChange}
+                    onFilterInitialized={initialiseFilter}
+                  >
+                    <TreeViewFilterSection
+                      refreshState={shouldRefreshInitialState}
+                      treedata={treatmentUnits.treedata}
+                      defaultvalues={treatmentUnits.defaults}
+                      initialselections={
+                        selectedTreatmentUnits.map((value) => ({
+                          value: value,
+                          valueLabel: value,
+                        })) as FilterSettingsValue[]
+                      }
+                      sectionid={treatmentUnitsKey}
+                      sectiontitle={"Behandlingsenheter"}
+                      filterkey={treatmentUnitsKey}
+                      searchbox={true}
+                      multiselect={false}
+                      accordion={false}
+                      noShadow={true}
+                    />
+                  </FilterMenu>
+                </AccordionDetails>
+              </Accordion>
+            </AccordionWrapper>
           </ClickAwayListener>
         </Header>
 
