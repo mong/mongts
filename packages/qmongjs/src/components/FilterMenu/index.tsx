@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Card, CardContent, Box } from "@mui/material";
-import CustomAccordionExpandIcon from "./CustomAccordionExpandIcon";
+import { CustomAccordionExpandIcon } from "./CustomAccordionExpandIcon";
 
 import {
   FilterSettingsContext,
