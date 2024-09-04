@@ -412,8 +412,10 @@ export const Skde = (): JSX.Element => {
                 sx={{
                   width: 400,
                   borderRadius: 15,
-                  border: 3,
+                  border: 1,
                   borderColor: skdeTheme.palette.primary.main,
+                  backgroundColor: "white",
+                  color: skdeTheme.palette.primary.main,
                 }}
                 expanded={expanded}
                 onChange={(e, expanded) => {
