@@ -28,5 +28,3 @@ export const CustomAccordionExpandIcon = () => {
     </Box>
   );
 };
-
-export default CustomAccordionExpandIcon;
