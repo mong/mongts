@@ -20,6 +20,7 @@ import {
   LineStyles,
   newLevelSymbols,
   defaultYear,
+  Hoverbox,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
 import { getTreatmentUnitsTree } from "qmongjs/src/components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
@@ -60,7 +61,6 @@ import { FetchMap } from "../../src/helpers/hooks";
 import { mapColors, abacusColors } from "../../src/charts/colors";
 import { geoMercator, geoPath } from "d3-geo";
 import { mapUnitName2BohfNames } from "../../src/helpers/functions/unitName2BohfMap";
-import { Hoverbox } from "../../src/components/Hoverbox";
 import { ChipSelection } from "../../src/components/ChipSelection";
 
 const AccordionWrapper = styled(Box)(() => ({

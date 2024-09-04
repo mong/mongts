@@ -64,3 +64,4 @@ export { LowLevelIndicatorList } from "./components/LowLevelIndicatorList";
 export { HeatMap, createHeatmapData } from "./components/Charts/HeatMap";
 export { QualityAtlasFigure } from "./components/QualityAtlasFigure";
 export { ArrowLink } from "./components/ArrowLink";
+export { Hoverbox } from "./components/Hoverbox";
