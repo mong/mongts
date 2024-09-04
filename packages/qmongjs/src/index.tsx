@@ -21,7 +21,10 @@ export type {
   FilterMenuFilterInitializedHandler,
 } from "./components/FilterMenu";
 export { FilterSettingsContext } from "./components/FilterMenu/FilterSettingsContext";
-export type { FilterSettingsValue } from "./components/FilterMenu/FilterSettingsContext";
+export type {
+  FilterSettings,
+  FilterSettingsValue,
+} from "./components/FilterMenu/FilterSettingsContext";
 export {
   FilterSettingsDispatchContext,
   filterSettingsReducer,
@@ -32,6 +35,7 @@ export { RadioGroupFilterSection } from "./components/FilterMenu/RadioGroupFilte
 export { SelectedFiltersSection } from "./components/FilterMenu/SelectedFiltersSection";
 export { SwitchFilterSection } from "./components/FilterMenu/SwitchFilterSection";
 export { TreeViewFilterSection } from "./components/FilterMenu/TreeViewFilterSection";
+export { getTreatmentUnitsTree } from "./components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 export {
   TreatmentQualityFilterMenu,
   levelKey,
@@ -65,3 +69,4 @@ export { HeatMap, createHeatmapData } from "./components/Charts/HeatMap";
 export { QualityAtlasFigure } from "./components/QualityAtlasFigure";
 export { ArrowLink } from "./components/ArrowLink";
 export { Hoverbox } from "./components/Hoverbox";
+export { CustomAccordionExpandIcon } from "./components/FilterMenu/CustomAccordionExpandIcon";
