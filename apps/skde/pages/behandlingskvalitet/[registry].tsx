@@ -283,9 +283,42 @@ export default function TreatmentQualityPage({ registry_info }) {
                       showLevelFilter={selectedLevel}
                       selection_bar_height={0}
                       legend_height={0}
-                      blockTitle={registry_info.map(
-                        (register: { full_name: string }) => register.full_name,
-                      )}
+                      showTreatmentYear={true}
+                    />
+                  </IndicatorTableWrapper>
+                )}
+              </Grid>
+            </Grid>
+            <Grid container spacing={2} disableEqualOverflow>
+              <Grid xs={12}>
+                {newTableOnly ? (
+                  <IndicatorTableV2Wrapper className="table-wrapper">
+                    <IndicatorTableBodyV2
+                      key="indicator-table"
+                      context={tableContext}
+                      unitNames={selectedTreatmentUnits}
+                      year={selectedYear}
+                      type="dg"
+                      levels={selectedLevel}
+                      medfields={selectedMedicalFields}
+                    />
+                  </IndicatorTableV2Wrapper>
+                ) : (
+                  <IndicatorTableWrapper className="table-wrapper">
+                    <IndicatorTable
+                      key="indicator-table"
+                      context={tableContext}
+                      dataQuality={true}
+                      tableType="allRegistries"
+                      registerNames={registry_info}
+                      unitNames={selectedTreatmentUnits}
+                      treatmentYear={selectedYear}
+                      colspan={selectedTreatmentUnits.length + 1}
+                      medicalFieldFilter={selectedMedicalFields}
+                      showLevelFilter={selectedLevel}
+                      selection_bar_height={0}
+                      legend_height={0}
+                      descriptionHeader="Datakvalitet"
                       showTreatmentYear={true}
                     />
                   </IndicatorTableWrapper>
