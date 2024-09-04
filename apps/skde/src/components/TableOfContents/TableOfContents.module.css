@@ -52,3 +52,9 @@
     flex: 0 0 auto;
   }
 }
+
+@media print {
+  .toc_whole_wrapper {
+    display: none;
+  }
+}

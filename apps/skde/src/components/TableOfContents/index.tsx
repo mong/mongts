@@ -64,7 +64,7 @@ export const TableOfContents = ({
   const TOCOrderedList = <TocDataToList tocData={tocData} parentID={null} />;
 
   return (
-    <>
+    <div className={styles.toc_whole_wrapper}>
       <div className={styles.toc_large}>
         <div className={styles.tocWrapper}>
           <nav className={`${styles.toc}`}>{TOCOrderedList}</nav>
@@ -101,6 +101,6 @@ export const TableOfContents = ({
           </Accordion>
         </div>
       </div>
-    </>
+    </div>
   );
 };
