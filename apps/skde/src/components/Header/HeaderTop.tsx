@@ -8,7 +8,7 @@ import {
   styled,
   Container,
 } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid2";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -70,12 +70,12 @@ export const HeaderTop = (props: HeaderTopProps) => {
     <StyledToolbar className="header-top">
       <Container maxWidth={maxWidth ? maxWidth : false} disableGutters={true}>
         <Grid container spacing={2}>
-          <Grid xs={12}>
+          <Grid size={{ xs: 12 }}>
             <Link href={"https://www.skde.no/"}>
               <LogoImage src="/img/logos/logo-skde.svg" alt="SKDE logo" />
             </Link>
           </Grid>
-          <Grid xs={12}>
+          <Grid size={{ xs: 12 }}>
             <SkdeBreadcrumbs path={breadcrumbs.path} />
           </Grid>
         </Grid>

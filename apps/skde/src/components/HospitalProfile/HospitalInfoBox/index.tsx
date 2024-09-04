@@ -1,5 +1,5 @@
 import { ItemBox } from "../HospitalProfileStyles";
-import Grid from "@mui/material/Unstable_Grid2/Grid2";
+import Grid from "@mui/material/Grid2";
 import { Stack, Typography } from "@mui/material";
 import { ArrowLink } from "qmongjs";
 import { FetchMap } from "../../../helpers/hooks";
@@ -77,11 +77,7 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
     <ItemBox height={550} sx={{ overflow: "auto" }}>
       <Grid container>
         <Grid
-          xs={12}
-          sm={12}
-          lg={4}
-          xl={4}
-          xxl={4}
+          size={{ xs: 12, sm: 12, lg: 4, xl: 4, xxl: 4 }}
           alignContent="center"
           style={{ textAlign: "center" }}
         >
@@ -124,7 +120,7 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
           </div>
         </Grid>
 
-        <Grid xs={12} sm={6} lg={4} xl={4} xxl={4}>
+        <Grid size={{ xs: 12, sm: 6, lg: 4, xl: 4, xxl: 4 }}>
           <Stack
             direction="column"
             alignItems="center"
@@ -178,7 +174,7 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
           </Stack>
         </Grid>
 
-        <Grid xs={12} sm={6} lg={4} xl={4} xxl={4}>
+        <Grid size={{ xs: 12, sm: 6, lg: 4, xl: 4, xxl: 4 }}>
           <ItemBox height={450} sx={{ overflow: "auto", marginRight: 2 }}>
             <Typography variant="h5" style={titleStyle}>
               <b>Tilknyttede behandlingssteder</b>
