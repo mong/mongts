@@ -40,8 +40,6 @@ import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
 import { RegisterName } from "types";
 
-const dataQualityKey = "dg";
-
 const scrollToSelectedRow = (selectedRow: string): boolean => {
   const element = document.getElementById(selectedRow);
   const headerOffset = 160;
@@ -92,8 +90,6 @@ export default function TreatmentQualityPage({ registry_info }) {
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState([
     "Nasjonalt",
   ]);
-  const [dataQualitySelected, setDataQualitySelected] =
-    useState<boolean>(false);
 
   const selectedRow = useQueryParam(
     "selected_row",
@@ -120,10 +116,6 @@ export default function TreatmentQualityPage({ registry_info }) {
     setSelectedTreatmentUnits(
       filterSettings.get(treatmentUnitsKey).map((value) => value.value),
     );
-
-    setDataQualitySelected(
-      filterSettings.get(dataQualityKey)?.[0].value === "true" ? true : false,
-    );
   };
 
   const valueOrDefault = (
@@ -144,11 +136,6 @@ export default function TreatmentQualityPage({ registry_info }) {
           .get(treatmentUnitsKey)
           .map((value) => value.value);
       }
-      case dataQualityKey: {
-        return filterSettings.map.get(dataQualityKey)?.[0].value === "true"
-          ? true
-          : false;
-      }
       default:
         break;
     }
@@ -165,9 +152,6 @@ export default function TreatmentQualityPage({ registry_info }) {
     );
     setSelectedTreatmentUnits(
       valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
-    );
-    setDataQualitySelected(
-      valueOrDefault(dataQualityKey, newFilterSettings) as boolean,
     );
   };
 
@@ -195,12 +179,6 @@ export default function TreatmentQualityPage({ registry_info }) {
       case treatmentUnitsKey: {
         setSelectedTreatmentUnits(
           valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
-        );
-        break;
-      }
-      case dataQualityKey: {
-        setDataQualitySelected(
-          valueOrDefault(dataQualityKey, newFilterSettings) as boolean,
         );
         break;
       }
@@ -267,7 +245,7 @@ export default function TreatmentQualityPage({ registry_info }) {
                       context={tableContext}
                       unitNames={selectedTreatmentUnits}
                       year={selectedYear}
-                      type={dataQualitySelected ? "dg" : "ind"}
+                      type="ind"
                       levels={selectedLevel}
                       medfields={selectedMedicalFields}
                     />
@@ -277,7 +255,7 @@ export default function TreatmentQualityPage({ registry_info }) {
                     <IndicatorTable
                       key="indicator-table"
                       context={tableContext}
-                      dataQuality={dataQualitySelected}
+                      dataQuality={false}
                       tableType="allRegistries"
                       registerNames={registry_info}
                       unitNames={selectedTreatmentUnits}
