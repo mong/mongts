@@ -36,7 +36,7 @@ import {
   Container,
   styled,
 } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid2";
 import IndicatorLinechart, {
   IndicatorLinechartParams,
 } from "../../src/charts/IndicatorLinechart";
@@ -361,7 +361,7 @@ export const Skde = (): JSX.Element => {
         <Container maxWidth={maxWidth} disableGutters={true}>
           <Box marginTop={2} className="hospital-profile-box">
             <Grid container spacing={2}>
-              <Grid xs={12}>
+              <Grid size={{ xs: 12 }}>
                 <HospitalInfoBox
                   unitNames={unitNamesQuery.data}
                   selectedTreatmentUnit={selectedTreatmentUnits[0]}
@@ -372,7 +372,7 @@ export const Skde = (): JSX.Element => {
                   titleStyle={titleStyle}
                 />
               </Grid>
-              <Grid xs={12}>
+              <Grid size={{ xs: 12 }}>
                 <ItemBox sx={{ overflow: "auto" }}>
                   <Box padding={titlePadding}>
                     <Typography variant="h5" style={titleStyle}>
@@ -418,7 +418,7 @@ export const Skde = (): JSX.Element => {
                 </ItemBox>
               </Grid>
 
-              <Grid xs={12}>
+              <Grid size={{ xs: 12 }}>
                 <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                   <Box padding={titlePadding}>
                     <Typography variant="h5" style={titleStyle}>
@@ -453,7 +453,7 @@ export const Skde = (): JSX.Element => {
                 </ExpandableItemBox>
               </Grid>
 
-              <Grid xs={12}>
+              <Grid size={{ xs: 12 }}>
                 <ExpandableItemBox collapsedHeight={boxMaxHeight}>
                   <Box padding={titlePadding}>
                     <Typography variant="h5" style={titleStyle}>
