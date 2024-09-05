@@ -253,9 +253,14 @@ export const Skde = (): JSX.Element => {
   }
 
   // State logic for ind or dg in medfieldtable
-  const [dataQuality, setDataQuality] = React.useState(false);
+  const [dataQualityMedfieldtable, setDataQualityMedfieldtable] =
+    React.useState(false);
+  const [
+    dataQualityLowlevelIndicatorlist,
+    setDataQualityLowlevelIndicatorList,
+  ] = React.useState(false);
 
-  if (dataQuality) {
+  if (dataQualityMedfieldtable) {
     medfieldTableProps.type = "dg";
   } else {
     medfieldTableProps.type = "ind";
@@ -427,13 +432,13 @@ export const Skde = (): JSX.Element => {
                       hoverBoxOffset={[20, 20]}
                       hoverBoxPlacement="top"
                       hoverBoxMaxWidth={400}
-                      state={dataQuality}
-                      stateSetter={setDataQuality}
+                      state={dataQualityMedfieldtable}
+                      stateSetter={setDataQualityMedfieldtable}
                       trueChip="right"
                     />
                     <div style={{ margin: textMargin }}>
                       <Typography variant="body1">
-                        {dataQuality
+                        {dataQualityMedfieldtable
                           ? "Her vises dekningsgraden eller datakvaliteten til " +
                             selectedTreatmentUnits[0] +
                             " fordelt på fagområder som forteller om datagrunnlaget fra registrene."
@@ -473,15 +478,15 @@ export const Skde = (): JSX.Element => {
                       hoverBoxOffset={[20, 20]}
                       hoverBoxPlacement="top"
                       hoverBoxMaxWidth={400}
-                      state={dataQuality}
-                      stateSetter={setDataQuality}
+                      state={dataQualityLowlevelIndicatorlist}
+                      stateSetter={setDataQualityLowlevelIndicatorList}
                       trueChip="right"
                     />
                   </Box>
 
                   <LowLevelIndicatorList
                     context={"caregiver"}
-                    type={"ind"}
+                    type={dataQualityLowlevelIndicatorlist ? "dg" : "ind"}
                     unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
                     year={lastYear}
                   />
