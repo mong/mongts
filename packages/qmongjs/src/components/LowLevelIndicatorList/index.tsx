@@ -6,7 +6,13 @@ import {
   useIndicatorQuery,
   useMedicalFieldsQuery,
 } from "../../helpers/hooks";
-import { customFormat, newLevelSymbols, level2, skdeTheme } from "qmongjs";
+import {
+  customFormat,
+  newLevelSymbols,
+  level2,
+  skdeTheme,
+  Hoverbox,
+} from "qmongjs";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import {
@@ -26,6 +32,7 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { ArrowLink } from "../ArrowLink";
+import { HelpOutline } from "@mui/icons-material";
 
 const result = (data: IndicatorData, point: DataPoint, dg?: boolean) => {
   let pointVar: number | null;
@@ -318,7 +325,21 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
                 </TableCell>
                 <TableCell>
                   <Typography variant="subtitle1">
-                    <b>Resultat</b>
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                      <b>Resultat</b>
+                      <Hoverbox
+                        title="Indikatorer viser med prosent og et symbol for måloppnåelse. Som regel er indikatoren beregnet med andel av pasienter som oppfyller kriteriet fra kvalitetsregisteret. Du kan trykke på indikatoren for å få detaljert beskrivelse av indikatoren."
+                        placement="top"
+                        offset={[20, 20]}
+                      >
+                        <HelpOutline
+                          sx={{
+                            color: skdeTheme.palette.primary.main,
+                            fontSize: "24px",
+                          }}
+                        />
+                      </Hoverbox>
+                    </Stack>
                   </Typography>
                 </TableCell>
               </TableRow>
