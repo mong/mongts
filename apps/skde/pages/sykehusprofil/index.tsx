@@ -23,6 +23,7 @@ import {
   getTreatmentUnitsTree,
   FilterSettings,
   CustomAccordionExpandIcon,
+  ChipSelection,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
 import {
@@ -57,7 +58,6 @@ import { URLs } from "types";
 import { useRouter } from "next/router";
 import { mapUnitName2BohfNames } from "../../src/helpers/functions/unitName2BohfMap";
 import { getUnitFullName } from "../../src/helpers/functions/getUnitFullName";
-import { ChipSelection } from "../../src/components/ChipSelection";
 
 const AccordionWrapper = styled(Box)(() => ({
   "& MuiAccordion-root:before": {
