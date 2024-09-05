@@ -99,7 +99,6 @@ export const SubUnits = (props: SubUnitsProps) => {
   let buttonList: ReactElement;
 
   const parentUnit = getParentUnit(RHFs, selectedUnit);
-  console.log(parentUnit);
 
   if (unitLevel === "Nasjonalt") {
     buttonList = (
