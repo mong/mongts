@@ -23,7 +23,6 @@ import {
   getTreatmentUnitsTree,
   FilterSettings,
   CustomAccordionExpandIcon,
-  ChipSelection,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
 import {
@@ -58,6 +57,7 @@ import { URLs } from "types";
 import { useRouter } from "next/router";
 import { mapUnitName2BohfNames } from "../../src/helpers/functions/unitName2BohfMap";
 import { getUnitFullName } from "../../src/helpers/functions/getUnitFullName";
+import { ChipSelection } from "../../src/components/ChipSelection";
 
 const AccordionWrapper = styled(Box)(() => ({
   "& MuiAccordion-root:before": {
@@ -465,23 +465,11 @@ export const Skde = (): JSX.Element => {
                           ". Du kan trykke på indikatorene for å se mer informasjon om indikatoren og følge oppgitt lenke til mer detaljert beskrivelse av indikatoren."}
                       </Typography>
                     </div>
-                    <ChipSelection
-                      leftChipLabel="Vis kvalitetsindikatorer"
-                      rightChipLabel="Vis datakvalitet"
-                      leftChipHelpText="Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register kvalitetsindikatorene kommer fra."
-                      rightChipHelpText="Datakvalitet representerer for eksempel dekningsgrad som angir andel pasienter eller hendelser som registreres, i forhold til antall som skal registreres i registeret fra behandlingsstedet. Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register datakvaliteten er rapportert fra."
-                      hoverBoxOffset={[20, 20]}
-                      hoverBoxPlacement="top"
-                      hoverBoxMaxWidth={400}
-                      state={dataQuality}
-                      stateSetter={setDataQuality}
-                      trueChip="right"
-                    />
                   </Box>
 
                   <LowLevelIndicatorList
                     context={"caregiver"}
-                    type={dataQuality ? "dg" : "ind"}
+                    type={"ind"}
                     unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
                     year={lastYear}
                   />

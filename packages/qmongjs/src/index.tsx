@@ -70,4 +70,3 @@ export { QualityAtlasFigure } from "./components/QualityAtlasFigure";
 export { ArrowLink } from "./components/ArrowLink";
 export { Hoverbox } from "./components/Hoverbox";
 export { CustomAccordionExpandIcon } from "./components/FilterMenu/CustomAccordionExpandIcon";
-export { ChipSelection } from "./components/ChipSelection";
