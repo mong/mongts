@@ -465,6 +465,18 @@ export const Skde = (): JSX.Element => {
                           ". Du kan trykke på indikatorene for å se mer informasjon om indikatoren og følge oppgitt lenke til mer detaljert beskrivelse av indikatoren."}
                       </Typography>
                     </div>
+                    <ChipSelection
+                      leftChipLabel="Vis kvalitetsindikatorer"
+                      rightChipLabel="Vis datakvalitet"
+                      leftChipHelpText="Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register kvalitetsindikatorene kommer fra."
+                      rightChipHelpText="Datakvalitet representerer for eksempel dekningsgrad som angir andel pasienter eller hendelser som registreres, i forhold til antall som skal registreres i registeret fra behandlingsstedet. Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register datakvaliteten er rapportert fra."
+                      hoverBoxOffset={[20, 20]}
+                      hoverBoxPlacement="top"
+                      hoverBoxMaxWidth={400}
+                      state={dataQuality}
+                      stateSetter={setDataQuality}
+                      trueChip="right"
+                    />
                   </Box>
 
                   <LowLevelIndicatorList
