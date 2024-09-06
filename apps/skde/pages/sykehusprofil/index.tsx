@@ -96,8 +96,8 @@ export const Skde = (): JSX.Element => {
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
-  // Only keep the "real" hospitals
-  if (treatmentUnits.treedata.length > 0) {
+  if (treatmentUnits.treedata.length > 1) {
+    // Only keep the "real" hospitals
     treatmentUnits.treedata.map((x) => {
       if (x.children) {
         x.children.map((y) => {
@@ -107,11 +107,9 @@ export const Skde = (): JSX.Element => {
         });
       }
     });
-  }
 
-  // Find the index of "Private" and remove the children. The sub units should not be shown.
-  // TreetmentUnits.treedata starts with one element "Nasjonalt". Need to wait for it to build up the rest.
-  if (treatmentUnits.treedata.length > 1) {
+    // Find the index of "Private" and remove the children. The sub units should not be shown.
+    // TreetmentUnits.treedata starts with one element "Nasjonalt". Need to wait for it to build up the rest.
     const indPrivate = treatmentUnits.treedata.findIndex(
       (x) => x.nodeValue.value === "Private",
     );
