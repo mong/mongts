@@ -3,7 +3,9 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["totsnitt"],
+      "x": [
+        "totsnitt"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall INR-prøver pr. 1000 innbyggere",
@@ -13,17 +15,31 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": ["tot2021", "tot2022", "tot2023"],
+      "annualVar": [
+        "tot2021",
+        "tot2022",
+        "tot2023"
+      ],
       "annualVarLabels": {
-        "nb": ["2021", "2022", "2023"],
-        "en": ["2021", "2022", "2023"]
+        "nb": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2021",
+          "2022",
+          "2023"
+        ]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_2",
-      "x": ["totsnitt"],
+      "x": [
+        "totsnitt"
+      ],
       "y": "borhf",
       "xLabel": {
         "nb": "Antall INR-prøver pr. 1000 innbyggere",
@@ -33,18 +49,40 @@
         "nb": "Regionale helseforetak (RHF)",
         "en": "Regional health authorities"
       },
-      "annualVar": ["tot2021", "tot2022", "tot2023"],
+      "annualVar": [
+        "tot2021",
+        "tot2022",
+        "tot2023"
+      ],
       "annualVarLabels": {
-        "nb": ["2021", "2022", "2023"],
-        "en": ["2021", "2022", "2023"]
+        "nb": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2021",
+          "2022",
+          "2023"
+        ]
       },
       "format": ",.0f"
     },
     {
       "type": "linechart",
       "data": "datasett_3",
-      "linevars": ["kvinner_l", "menn_l", "kvinner_s", "menn_s"],
-      "linecolors": ["#FF671F", "#FFC845", "#253776", "#74A5CD"],
+      "linevars": [
+        "kvinner_l",
+        "menn_l",
+        "kvinner_s",
+        "menn_s"
+      ],
+      "linecolors": [
+        "#FF671F",
+        "#FFC845",
+        "#253776",
+        "#74A5CD"
+      ],
       "linevarsLabels": {
         "nb": [
           "Kvinner(fastlege)",
@@ -52,9 +90,16 @@
           "Kvinner(lab)",
           "Menn(lab)"
         ],
-        "en": ["Women(GP)", "Men(GP)", "Women(lab)", "Men(lab)"]
+        "en": [
+          "Women(GP)",
+          "Men(GP)",
+          "Women(lab)",
+          "Men(lab)"
+        ]
       },
-      "x": ["alder"],
+      "x": [
+        "alder"
+      ],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
@@ -499,14 +544,14 @@
           "alder": 0,
           "kvinner_s": 0.000380290795695,
           "menn_s": 0.000665086582181,
-          "kvinner_l": 2.5352719713e-5,
-          "menn_l": 8.46473831866e-5
+          "kvinner_l": 2.5352719713e-05,
+          "menn_l": 8.46473831866e-05
         },
         {
           "alder": 1,
           "kvinner_s": 0.000566949319661,
           "menn_s": 0.00068092699993,
-          "kvinner_l": 6.16249260501e-5,
+          "kvinner_l": 6.16249260501e-05,
           "menn_l": 0.000199582051703
         },
         {
@@ -563,7 +608,7 @@
           "kvinner_s": 0.000809725341164,
           "menn_s": 0.00104854129402,
           "kvinner_l": 0.000237519433408,
-          "menn_l": 9.25183494726e-5
+          "menn_l": 9.25183494726e-05
         },
         {
           "alder": 10,

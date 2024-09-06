@@ -3,7 +3,9 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["totsnitt"],
+      "x": [
+        "totsnitt"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall TSH-prøver pr. 1000 innbyggere",
@@ -13,17 +15,31 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": ["tot2021", "tot2022", "tot2023"],
+      "annualVar": [
+        "tot2021",
+        "tot2022",
+        "tot2023"
+      ],
       "annualVarLabels": {
-        "nb": ["2021", "2022", "2023"],
-        "en": ["2021", "2022", "2023"]
+        "nb": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2021",
+          "2022",
+          "2023"
+        ]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_2",
-      "x": ["totsnitt"],
+      "x": [
+        "totsnitt"
+      ],
       "y": "borhf",
       "xLabel": {
         "nb": "Antall TSH-prøver pr. 1000 innbyggere",
@@ -33,17 +49,31 @@
         "nb": "Regionale helseforetak (RHF)",
         "en": "Regional health authorities"
       },
-      "annualVar": ["tot2021", "tot2022", "tot2023"],
+      "annualVar": [
+        "tot2021",
+        "tot2022",
+        "tot2023"
+      ],
       "annualVarLabels": {
-        "nb": ["2021", "2022", "2023"],
-        "en": ["2021", "2022", "2023"]
+        "nb": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2021",
+          "2022",
+          "2023"
+        ]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["ratesnitt_andel_int"],
+      "x": [
+        "ratesnitt_andel_int"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Andel TSH-prøver tatt med kortere intervall enn anbefalt",
@@ -59,15 +89,25 @@
         "rate2022_andel_int"
       ],
       "annualVarLabels": {
-        "nb": ["2020", "2021", "2022"],
-        "en": ["2020", "2021", "2022"]
+        "nb": [
+          "2020",
+          "2021",
+          "2022"
+        ],
+        "en": [
+          "2020",
+          "2021",
+          "2022"
+        ]
       },
       "format": ",.0%"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["andel_kun_TSH"],
+      "x": [
+        "andel_kun_TSH"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Andel TSH-prøver uten T4",
@@ -77,23 +117,49 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": ["andel_kun_TSH_21", "andel_kun_TSH_22", "andel_kun_TSH_23"],
+      "annualVar": [
+        "andel_kun_TSH_21",
+        "andel_kun_TSH_22",
+        "andel_kun_TSH_23"
+      ],
       "annualVarLabels": {
-        "nb": ["2021", "2022", "2023"],
-        "en": ["2021", "2022", "2023"]
+        "nb": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2021",
+          "2022",
+          "2023"
+        ]
       },
       "format": ",.0%"
     },
     {
       "type": "linechart",
       "data": "datasett_3",
-      "linevars": ["kvinner", "menn"],
-      "linecolors": ["#253776", "#74A5CD"],
+      "linevars": [
+        "kvinner",
+        "menn"
+      ],
+      "linecolors": [
+        "#253776",
+        "#74A5CD"
+      ],
       "linevarsLabels": {
-        "nb": ["Kvinner", "Menn"],
-        "en": ["Women", "Men"]
+        "nb": [
+          "Kvinner",
+          "Menn"
+        ],
+        "en": [
+          "Women",
+          "Men"
+        ]
       },
-      "x": ["alder"],
+      "x": [
+        "alder"
+      ],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
