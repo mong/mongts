@@ -20,6 +20,7 @@ interface TableBlockProps {
   medicalFieldFilter: string[];
   showLevelFilter: string;
   colspan: number;
+  onEmptyBlock?: () => void;
 }
 
 const TableBlock = (props: TableBlockProps) => {
@@ -35,6 +36,7 @@ const TableBlock = (props: TableBlockProps) => {
     showLevelFilter,
     blockTitle,
     unitNames,
+    onEmptyBlock,
   } = props;
   const queryContext = dataQuality
     ? { context, type: "dg" }
@@ -86,6 +88,7 @@ const TableBlock = (props: TableBlockProps) => {
     descriptionQuery.data.length === 0 ||
     indicatorDataQuery.data.length === 0
   ) {
+    onEmptyBlock?.();
     return null;
   }
 
