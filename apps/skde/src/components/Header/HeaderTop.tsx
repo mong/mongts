@@ -42,12 +42,24 @@ export type BreadCrumbPath = {
   path: BreadCrumbStop[];
 };
 
+/**
+ * A component that displays breadcrumbs based on the provided path.
+ *
+ * @param {BreadCrumbPath} props - An object containing the breadcrumb path.
+ * @return {JSX.Element} A JSX element representing the breadcrumbs.
+ */
+
 const SkdeBreadcrumbs = (props: BreadCrumbPath) => {
   const { path } = props;
 
   const theme = useTheme();
   const onMobile = useMediaQuery(theme.breakpoints.down("md"));
 
+  /**
+   * On small screens, only second to last element is displayed.
+   * The first element is empty.
+   * The separator is a left arrow.
+   */
   if (onMobile && path.length > 1) {
     const secondToLastElement = path.at(-2);
     return (
