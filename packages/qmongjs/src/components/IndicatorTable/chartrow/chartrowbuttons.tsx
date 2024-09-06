@@ -58,23 +58,11 @@ export const FigureButtons = (props: Props) => {
 
     image.src = "data:image/svg+xml," + encodeURIComponent(src.outerHTML);
 
-    const logo = new Image();
-    logo.width = 76;
-    logo.height = 31;
-
-    logo.src = "/img/logos/logo-skde-graa.svg";
-
     if (!image) return;
-    if (!logo) return;
 
     image.onerror = function (e) {
       console.log(e);
     };
-
-    logo.onerror = function (e) {
-      console.log(e);
-    };
-
     image.onload = function () {
       const canvasWidth = width + 50;
       const canvasHeight = height + 100;
@@ -94,11 +82,11 @@ export const FigureButtons = (props: Props) => {
       ctx.fillStyle = "#fafafa";
       ctx.fillRect(0, 0, canvasWidth, canvasHeight);
       ctx.fillStyle = "black";
-      ctx.font = "bold 24px jakarta sans";
+      ctx.font = "20px";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(figTitle, canvasWidth / 2, 25);
-      ctx.font = "20px jakarta sans";
+      ctx.font = "12px";
       ctx.textAlign = "start";
       ctx.fillText(`Kilde: ${description.full_name}`, 25, 75 + height);
 
@@ -106,21 +94,9 @@ export const FigureButtons = (props: Props) => {
 
       ctx.drawImage(image, 50 / 2, 50);
 
-      if (chartType === "bar") {
-        ctx.drawImage(
-          logo,
-          canvasWidth - 150,
-          height + 60,
-          logo.width,
-          logo.height,
-        );
-      } else {
-        ctx.drawImage(logo, canvasWidth - 250, 70, logo.width, logo.height);
-      }
-
       const url = canvas.toDataURL("image/png");
 
-      selectAll([canvas, image, logo]).remove();
+      selectAll([canvas, image]).remove();
 
       const element = document.createElement("a");
       element.download = `${description.id}_${

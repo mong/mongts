@@ -5,8 +5,6 @@ import styles from "./BarChart.module.css";
 import { levelColor } from "../utils";
 import { Level, Margin } from "../types";
 import { customFormat } from "../../../helpers/functions/localFormater";
-import { Typography } from "@mui/material";
-import { Description } from "types";
 
 export interface BarStyle {
   opacity?: number;
@@ -28,7 +26,6 @@ export interface Props {
   margin?: Margin;
   max_value?: number;
   lastCompleteYear?: number;
-  description: Description;
 }
 
 const MARGIN = { top: 0.05, bottom: 10, right: 0.05, left: 0.25 };
@@ -44,7 +41,6 @@ function BarChart(props: Props) {
     margin = {},
     max_value,
     lastCompleteYear,
-    description,
   } = props;
   const svgRef = useRef<SVGSVGElement>(null);
   const entry = useResizeObserver(wrapperRef);
@@ -195,7 +191,7 @@ function BarChart(props: Props) {
   return (
     <div
       ref={wrapperRef}
-      style={{ width: "90%", margin: "auto", position: "relative" }}
+      style={{ width: "90%", margin: "auto" }}
       className="barchart-wrapper"
     >
       <svg
@@ -237,14 +233,6 @@ function BarChart(props: Props) {
           </>
         )}
       </svg>
-      <div style={{ position: "relative", left: "88%", top: 5 }}>
-        <img src="/img/logos/logo-skde-graa.svg" width={"7%"} />
-      </div>
-      <div style={{ position: "relative", left: "13%", top: -32 }}>
-        <Typography variant="subtitle1">
-          {"Kilde: " + description.full_name}
-        </Typography>
-      </div>
     </div>
   );
 }

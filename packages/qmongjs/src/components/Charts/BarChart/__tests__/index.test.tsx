@@ -11,13 +11,10 @@ import BarChart, { Props, Bar } from "..";
 import * as hooks from "../../../../helpers/hooks";
 import { buildLevels } from "../../../../test/builders";
 import { clockTick } from "../../../../test/clockTick";
-import { buildDescription } from "../../../IndicatorTable/chartrow/__tests__/chart.test";
 
 import { vi } from "vitest";
 
 vi.mock("../../../../helpers/hooks");
-
-const descr = buildDescription({});
 
 test("Bar have labels with value in %", async () => {
   const WIDTH = 500;
@@ -44,7 +41,6 @@ test("Bar have labels with value in %", async () => {
       tickformat=".0%"
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-      description={descr}
     />,
   );
 
@@ -80,7 +76,6 @@ test("Bar have labels with value as number", async () => {
       tickformat=".0f"
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-      description={descr}
     />,
   );
 
@@ -107,7 +102,6 @@ test("Level widths are correct", async () => {
       showLevel={true}
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-      description={descr}
     />,
   );
 
@@ -144,7 +138,6 @@ test("Can set color and opacity for bars", async () => {
       {...props}
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-      description={descr}
     />,
   );
 
@@ -195,7 +188,6 @@ test("Render without levels @250px", async () => {
       tickformat=".1%"
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-      description={descr}
     />,
   );
 
@@ -229,7 +221,6 @@ test("Render without zoom @750px", async () => {
       tickformat=".3%"
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-      description={descr}
     />,
   );
 
@@ -263,7 +254,6 @@ test("Render with zoom @750px", async () => {
       tickformat=".2%"
       zoom={true}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-      description={descr}
     />,
   );
 
@@ -297,7 +287,6 @@ test("Render with levels @250px", async () => {
       tickformat=".0%"
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-      description={descr}
     />,
   );
 
@@ -331,7 +320,6 @@ test("Render without levels @500px", async () => {
       tickformat=".2f"
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-      description={descr}
     />,
   );
 
@@ -365,7 +353,6 @@ test("Render with levels @500px", async () => {
       tickformat={undefined} // test with default format
       zoom={false}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-      description={descr}
     />,
   );
 
@@ -399,7 +386,6 @@ test("Render with levels reversed @500px", async () => {
       tickformat=".0%"
       zoom={true}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
-      description={descr}
     />,
   );
 
@@ -434,7 +420,6 @@ test("Render zoomed with levels @500px and gray overlay (not complete data)", as
       zoom={true}
       margin={{ top: 0, right: 0, bottom: 0, left: 0 }}
       lastCompleteYear={1979}
-      description={descr}
     />,
   );
 
@@ -446,7 +431,7 @@ test("Render zoomed with levels @500px and gray overlay (not complete data)", as
 // Helpers
 function BarChartWithRef(props: Omit<Props, "svgContainerRef">) {
   const ref = useRef<HTMLDivElement>(null);
-  return <BarChart {...props} svgContainerRef={ref} description={descr} />;
+  return <BarChart {...props} svgContainerRef={ref} />;
 }
 
 // Builders
