@@ -1,4 +1,4 @@
-import { NavigateNextRounded } from "@mui/icons-material";
+import { NavigateNextRounded, ArrowBack } from "@mui/icons-material";
 import {
   Breadcrumbs,
   Breakpoint,
@@ -9,6 +9,8 @@ import {
   Container,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
+import { useTheme } from "@mui/material/styles";
+import { useMediaQuery } from "@mui/material";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -43,6 +45,28 @@ export type BreadCrumbPath = {
 const SkdeBreadcrumbs = (props: BreadCrumbPath) => {
   const { path } = props;
 
+  const theme = useTheme();
+  const onMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  if (onMobile && path.length > 1) {
+    const secondToLastElement = path.at(-2);
+    return (
+      <Breadcrumbs
+        separator={<ArrowBack fontSize="medium" />}
+        aria-label="breadcrumb"
+      >
+        <div></div>
+        <Link
+          underline="hover"
+          key="mobile_breadcrumb"
+          href={secondToLastElement.link}
+          variant="h6"
+        >
+          {secondToLastElement.text}
+        </Link>
+      </Breadcrumbs>
+    );
+  }
   return (
     <Breadcrumbs
       separator={<StyledBreadcrumbSeparator fontSize="large" />}
