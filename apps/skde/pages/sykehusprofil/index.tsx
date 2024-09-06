@@ -253,9 +253,14 @@ export const Skde = (): JSX.Element => {
   }
 
   // State logic for ind or dg in medfieldtable
-  const [dataQuality, setDataQuality] = React.useState(false);
+  const [dataQualityMedfieldtable, setDataQualityMedfieldtable] =
+    React.useState(false);
+  const [
+    dataQualityLowlevelIndicatorlist,
+    setDataQualityLowlevelIndicatorList,
+  ] = React.useState(false);
 
-  if (dataQuality) {
+  if (dataQualityMedfieldtable) {
     medfieldTableProps.type = "dg";
   } else {
     medfieldTableProps.type = "ind";
@@ -427,13 +432,13 @@ export const Skde = (): JSX.Element => {
                       hoverBoxOffset={[20, 20]}
                       hoverBoxPlacement="top"
                       hoverBoxMaxWidth={400}
-                      state={dataQuality}
-                      stateSetter={setDataQuality}
+                      state={dataQualityMedfieldtable}
+                      stateSetter={setDataQualityMedfieldtable}
                       trueChip="right"
                     />
                     <div style={{ margin: textMargin }}>
                       <Typography variant="body1">
-                        {dataQuality
+                        {dataQualityMedfieldtable
                           ? "Her vises dekningsgraden eller datakvaliteten til " +
                             selectedTreatmentUnits[0] +
                             " fordelt på fagområder som forteller om datagrunnlaget fra registrene."
@@ -465,11 +470,23 @@ export const Skde = (): JSX.Element => {
                           ". Du kan trykke på indikatorene for å se mer informasjon om indikatoren og følge oppgitt lenke til mer detaljert beskrivelse av indikatoren."}
                       </Typography>
                     </div>
+                    <ChipSelection
+                      leftChipLabel="Vis kvalitetsindikatorer"
+                      rightChipLabel="Vis datakvalitet"
+                      leftChipHelpText="Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register kvalitetsindikatorene kommer fra."
+                      rightChipHelpText="Datakvalitet representerer for eksempel dekningsgrad som angir andel pasienter eller hendelser som registreres, i forhold til antall som skal registreres i registeret fra behandlingsstedet. Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register datakvaliteten er rapportert fra."
+                      hoverBoxOffset={[20, 20]}
+                      hoverBoxPlacement="top"
+                      hoverBoxMaxWidth={400}
+                      state={dataQualityLowlevelIndicatorlist}
+                      stateSetter={setDataQualityLowlevelIndicatorList}
+                      trueChip="right"
+                    />
                   </Box>
 
                   <LowLevelIndicatorList
                     context={"caregiver"}
-                    type={"ind"}
+                    type={dataQualityLowlevelIndicatorlist ? "dg" : "ind"}
                     unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
                     year={lastYear}
                   />

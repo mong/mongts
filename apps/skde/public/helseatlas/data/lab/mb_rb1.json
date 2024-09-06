@@ -3,7 +3,9 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["totsnitt"],
+      "x": [
+        "totsnitt"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Antall biokjemiske analyser pr. 1000 innbyggere",
@@ -13,48 +15,40 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": ["tot2021", "tot2022", "tot2023"],
+      "annualVar": [
+        "tot2021",
+        "tot2022",
+        "tot2023"
+      ],
       "annualVarLabels": {
-        "nb": ["2021", "2022", "2023"],
-        "en": ["2021", "2022", "2023"]
-      },
-      "format": ",.0f"
-    },
-    {
-      "type": "barchart",
-      "data": "datasett_1",
-      "x": ["ref_pr_innb_adj"],
-      "y": "bohf",
-      "xLabel": {
-        "nb": "Refusjon pr. innbygger",
-        "en": "Reimbursement per inhabitant"
-      },
-      "yLabel": {
-        "nb": "Opptaksområder",
-        "en": "Referral areas"
-      },
-      "format": ",.0f"
-    },
-    {
-      "type": "barchart",
-      "data": "datasett_2",
-      "x": ["ref_pr_innb_adj"],
-      "y": "borhf",
-      "xLabel": {
-        "nb": "Refusjon pr. innbygger",
-        "en": "Reimbursement per inhabitant"
-      },
-      "yLabel": {
-        "nb": "Regionale helseforetak (RHF)",
-        "en": "Regional health authorities"
+        "nb": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2021",
+          "2022",
+          "2023"
+        ]
       },
       "format": ",.0f"
     },
     {
       "type": "linechart",
       "data": "datasett_3",
-      "linevars": ["kvinner_l", "menn_l", "kvinner_s", "menn_s"],
-      "linecolors": ["#FF671F", "#FFC845", "#253776", "#74A5CD"],
+      "linevars": [
+        "kvinner_l",
+        "menn_l",
+        "kvinner_s",
+        "menn_s"
+      ],
+      "linecolors": [
+        "#FF671F",
+        "#FFC845",
+        "#253776",
+        "#74A5CD"
+      ],
       "linevarsLabels": {
         "nb": [
           "Kvinner(fastlege)",
@@ -62,9 +56,16 @@
           "Kvinner(lab)",
           "Menn(lab)"
         ],
-        "en": ["Women(GP)", "Men(GP)", "Women(lab)", "Men(lab)"]
+        "en": [
+          "Women(GP)",
+          "Men(GP)",
+          "Women(lab)",
+          "Men(lab)"
+        ]
       },
-      "x": ["alder"],
+      "x": [
+        "alder"
+      ],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
@@ -80,8 +81,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2021–2023. <br>* Antall analyser pr. 1000 innbyggere. Ratene er kjønns- og aldersjusterte. <br>** Kjønns- og aldersjusterte årlige refusjon for perioden 2021–2023. <br>*** Andel av analyser som var analysert på privat lab eller på fastlegekontor. Andelene er basert på kjønns- og aldersjusterte rater.",
-        "en": "Annual average during 2021–2023. <br>* Number of analysis per 1000 population. Rates are gender- and age-adjusted. <br>** Gender- and age-adjusted annual reimbursement during 2021–2023.  <br>*** Proportion of anlysis that are analysed at a private lab or at GP's office. Proportions are based on adjusted rates."
+        "nb": "Årlige gjennomsnittsverdier for perioden 2021–2023. <br>* Antall analyser pr. 1000 innbyggere. Ratene er kjønns- og aldersjusterte. <br>** Andel av analyser som var analysert på privat lab eller på fastlegekontor. Andelene er basert på kjønns- og aldersjusterte rater.",
+        "en": "Annual average during 2021–2023. <br>* Number of analysis per 1000 population. Rates are gender- and age-adjusted. <br>** Proportion of anlysis that are analysed at a private lab or at GP's office. Proportions are based on adjusted rates."
       },
       "columns": [
         {
@@ -127,23 +128,16 @@
           "format": ",.1f"
         },
         {
-          "id": "ref_pr_innb_adj",
-          "label_no": "refusjon** pr. innb.",
-          "label_en": "reimbursement** per inhabitant",
-          "typeVar": "number",
-          "format": ",.0f"
-        },
-        {
           "id": "andel_nlk_priv",
-          "label_no": "Andel*** privat",
-          "label_en": "Proportion*** in private",
+          "label_no": "Andel** privat",
+          "label_en": "Proportion** in private",
           "typeVar": "number",
           "format": ",.0%"
         },
         {
           "id": "andel_nlk_lege",
-          "label_no": "Andel*** lege",
-          "label_en": "Proportion*** at GP",
+          "label_no": "Andel** lege",
+          "label_en": "Proportion** at GP",
           "typeVar": "number",
           "format": ",.0%"
         }
@@ -583,33 +577,6 @@
           "tot_pas": 4293725.66667,
           "tot_pop": 5435207.66667,
           "nlk_pr_prove": 9.43766184512
-        }
-      ]
-    },
-    {
-      "type": "data",
-      "label": "datasett_2",
-      "description": "Ekstradatasettet for gitt resultatboks",
-      "data": [
-        {
-          "borhf": "Helse Sør-Øst",
-          "ref_pr_innb_adj": 313.894067663
-        },
-        {
-          "borhf": "Norge",
-          "ref_pr_innb_adj": 290.551751307
-        },
-        {
-          "borhf": "Helse Midt-Norge",
-          "ref_pr_innb_adj": 252.911439912
-        },
-        {
-          "borhf": "Helse Vest",
-          "ref_pr_innb_adj": 271.03295185
-        },
-        {
-          "borhf": "Helse Nord",
-          "ref_pr_innb_adj": 246.517308473
         }
       ]
     },
