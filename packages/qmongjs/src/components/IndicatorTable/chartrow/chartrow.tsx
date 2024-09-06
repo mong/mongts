@@ -55,6 +55,12 @@ export function ChartRow(props: Props) {
       ? new Date(indicatorData[0].delivery_time)
       : undefined;
 
+  const logo = new Image();
+  logo.width = 76;
+  logo.height = 31;
+
+  logo.src = "/img/logos/logo-skde-graa.svg";
+
   return (
     <tr className={figure_class}>
       <td colSpan={colspan}>
@@ -71,6 +77,7 @@ export function ChartRow(props: Props) {
               chartType={chart_type}
               treatmentYear={treatmentYear}
               updateChartType={update_chart_type}
+              logo={logo}
             />
           </div>
           <Chart
