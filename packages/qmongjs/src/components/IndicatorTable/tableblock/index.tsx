@@ -20,7 +20,7 @@ interface TableBlockProps {
   medicalFieldFilter: string[];
   showLevelFilter: string;
   colspan: number;
-  onEmptyStatusChanged?: (isEmpty: boolean) => void;
+  onEmptyStatusChanged?: (registerName: string, isEmpty: boolean) => void;
 }
 
 const TableBlock = (props: TableBlockProps) => {
