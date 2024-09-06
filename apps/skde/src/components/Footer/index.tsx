@@ -98,6 +98,7 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
                 spacing={4}
                 size={{ xs: 12, lg: kvalitet ? 6 : 12 }}
                 alignItems="center"
+                paddingTop="3rem"
               >
                 <Grid>
                   <Link href={"https://www.skde.no/"}>
@@ -109,19 +110,6 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
                       alt="SKDE-logo"
                       width={129}
                       height={52}
-                    />
-                  </Link>
-                </Grid>
-                <Grid>
-                  <Link href={"https://www.helse-nord.no/"}>
-                    <Image
-                      className="footer-logo"
-                      id="helse-nord-logo"
-                      loader={imgLoader}
-                      src={"/img/logos/logo-helse-nord-neg.svg"}
-                      alt="Helse Nord logo"
-                      width={220}
-                      height={76}
                     />
                   </Link>
                 </Grid>
@@ -204,10 +192,25 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
             </Grid>
 
             <Grid size={{ xs: 12, md: 4 }}>
-              <Stack>
-                <b>ORGANISASJONSNUMMER</b>
-                990803765
-              </Stack>
+              <Grid>
+                <Stack>
+                  <b>ORGANISASJONSNUMMER</b>
+                  990803765
+                </Stack>
+              </Grid>
+              <Grid paddingTop="3.5rem">
+                <Link href={"https://www.helse-nord.no/"}>
+                  <Image
+                    className="footer-logo"
+                    id="helse-nord-logo"
+                    loader={imgLoader}
+                    src={"/img/logos/logo-helse-nord-neg.svg"}
+                    alt="Helse Nord logo"
+                    width={220}
+                    height={52}
+                  />
+                </Link>
+              </Grid>
             </Grid>
           </Grid>
         </Container>
