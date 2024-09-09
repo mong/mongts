@@ -33,6 +33,10 @@ const TreatmentQualityAppBar = ({
   const breadcrumbs: BreadCrumbPath = {
     path: [
       { link: "https://www.skde.no", text: "Forside" },
+      {
+        link: "https://www.skde.no/resultater/",
+        text: "Tall om helsetjenesten",
+      },
       { link: "/behandlingskvalitet/", text: "Behandlingskvalitet" },
     ],
   };
