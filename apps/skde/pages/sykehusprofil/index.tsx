@@ -71,11 +71,6 @@ const AccordionWrapper = styled(Box)(() => ({
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
-  // The infobox image flicker from "Nasjonalt" to the chosen unit due to
-  // the filter initialisation.
-  // Do not set the image source on the first render to fix this.
-  const [firstRender, setFirstRender] = useState(true);
-
   const treatmentUnitsKey = "selected_treatment_units";
 
   const { width } = useScreenSize();
@@ -87,7 +82,7 @@ export const Skde = (): JSX.Element => {
   );
 
   // Set infobox image
-  const [imgSrc, setImgSrc] = useState<string | null>(null);
+  const [imgSrc, setImgSrc] = useState(null);
 
   // Infobox URL
   const [unitUrl, setUnitUrl] = useState<string | null>(null);
@@ -145,9 +140,7 @@ export const Skde = (): JSX.Element => {
   ) => {
     const newUnit = filterInput.get(treatmentUnitsKey).map((el) => el.value);
 
-    if (!firstRender) {
-      setImgSrc("/img/forsidebilder/" + newUnit[0] + ".jpg");
-    }
+    setImgSrc("/img/forsidebilder/" + newUnit[0] + ".jpg");
 
     let unitUrl: URLs | undefined;
     if (unitUrlsQuery.data) {
@@ -161,8 +154,6 @@ export const Skde = (): JSX.Element => {
     } else {
       setUnitUrl(null);
     }
-
-    setFirstRender(true);
   };
 
   // Callback function for updating the filter menu
