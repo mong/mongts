@@ -7,7 +7,7 @@
       "y": "bohf",
       "xLabel": {
         "nb": "Andel av undersøkelsene utført ved private røntgeninstitutt",
-        "en": "tmp"
+        "en": "Proportion of examinations performed at private imaging clinics"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -21,12 +21,12 @@
       "x": ["privsnitt", "offsnitt"],
       "xLegend": {
         "nb": ["Private røntgeninstitutt", "Offentlig"],
-        "en": ["Private røntgeninstitutt", "Offentlig"]
+        "en": ["Private imaging clinics", "Public radiology department"]
       },
       "y": "bohf",
       "xLabel": {
         "nb": "Antall (rate) offentlig/privat pr. 10 000 innbyggere",
-        "en": "tmp"
+        "en": "Number of public/private brain MRI per 10,000 population"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -41,11 +41,11 @@
       "y": "bohf",
       "xLegend": {
         "nb": ["Bilateralt", "Unilateralt"],
-        "en": ["Bilateralt", "Unilateralt"]
+        "en": ["Bilateral", "Unilateral"]
       },
       "xLabel": {
         "nb": "Rate bilateralt/unilateralt, pr. 10 000 innbyggere",
-        "en": "tmp"
+        "en": "Number of bilateral/unilateral knee MRI per 10,000 population"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -58,7 +58,7 @@
       "data": "datasett_1",
       "caption": {
         "nb": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall (rate) pr. 10  000 innbyggere",
-        "en": "Årlige gjennomsnittsverdier for perioden 2018–2022. Antall (rate) pr. 10  000 innbyggere"
+        "en": "Annual average during 2018–2022. Number of outpatient knee MRI per 10,000 population. The rates are gender and age adjusted."
       },
       "columns": [
         {
@@ -99,7 +99,7 @@
         {
           "id": "andel_blt",
           "label_no": "Andel bilateralt",
-          "label_en": "Percent bilateralt",
+          "label_en": "Percent bilateral",
           "typeVar": "number",
           "format": ",.0%"
         }
@@ -111,7 +111,7 @@
       "x": "andel_priv",
       "caption": {
         "nb": "Andel av undersøkelsene utført ved private røntgeninstitutt",
-        "en": "tmp"
+        "en": "Proportion of examinations performed at private imaging clinics"
       },
       "jenks": [
         {
