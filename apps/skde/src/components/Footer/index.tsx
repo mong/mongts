@@ -195,7 +195,7 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
               <Grid>
                 <Stack>
                   <b>ORGANISASJONSNUMMER</b>
-                  990803765
+                  883658752
                 </Stack>
               </Grid>
               <Grid paddingTop="3.5rem">
