@@ -98,9 +98,11 @@ export function TreatmentQualityFilterMenu({
 
   // Restrict max number of treatment units for small view sizes
   const theme = useTheme();
-  const maxSelectedTreatmentUnits = useMediaQuery(theme.breakpoints.down("md"))
+  const maxSelectedTreatmentUnits = useMediaQuery(theme.breakpoints.down("xxl"))
     ? 5
-    : 10;
+    : useMediaQuery(theme.breakpoints.down("xxxl"))
+      ? 10
+      : 15;
 
   // When the user navigates to the page, it may contain query parameters for
   // filtering indicators. Use NextRouter to get the current path containing the
