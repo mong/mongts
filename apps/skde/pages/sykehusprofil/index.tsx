@@ -82,7 +82,7 @@ export const Skde = (): JSX.Element => {
   );
 
   // Set infobox image
-  const [imgSrc, setImgSrc] = useState<string | null>(null);
+  const [imgSrc, setImgSrc] = useState("/img/forsidebilder/Nasjonalt.jpg");
 
   // Infobox URL
   const [unitUrl, setUnitUrl] = useState<string | null>(null);
@@ -140,11 +140,7 @@ export const Skde = (): JSX.Element => {
   ) => {
     const newUnit = filterInput.get(treatmentUnitsKey).map((el) => el.value);
 
-    if (selectedTreatmentUnits[0]) {
-      setImgSrc("/img/forsidebilder/" + newUnit[0] + ".jpg");
-    } else {
-      setImgSrc("/img/forsidebilder/Nasjonalt.jpg");
-    }
+    setImgSrc("/img/forsidebilder/" + newUnit[0] + ".jpg");
 
     let unitUrl: URLs | undefined;
     if (unitUrlsQuery.data) {
