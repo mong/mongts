@@ -78,7 +78,7 @@ export const Skde = (): JSX.Element => {
   // Current unit name and its setter function
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useQueryParam(
     treatmentUnitsKey,
-    withDefault(DelimitedArrayParam, [""]),
+    withDefault(DelimitedArrayParam, ["Nasjonalt"]),
   );
 
   // Set infobox image
@@ -130,9 +130,6 @@ export const Skde = (): JSX.Element => {
 
   useEffect(() => {
     setPrevReady(router.isReady);
-    if (!selectedTreatmentUnits[0]) {
-      setSelectedTreatmentUnits(["Nasjonalt"]);
-    }
   }, [router.isReady]);
 
   const shouldRefreshInitialState = prerenderFinished;
