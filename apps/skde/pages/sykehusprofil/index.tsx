@@ -23,6 +23,7 @@ import {
   getTreatmentUnitsTree,
   FilterSettings,
   CustomAccordionExpandIcon,
+  mainHospitals,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
 import {
@@ -95,9 +96,20 @@ export const Skde = (): JSX.Element => {
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
-  // Find the index of "Private" and remove the children. The sub units should not be shown.
-  // TreetmentUnits.treedata starts with one element "Nasjonalt". Need to wait for it to build up the rest.
   if (treatmentUnits.treedata.length > 1) {
+    // Only keep the "real" hospitals
+    treatmentUnits.treedata.map((x) => {
+      if (x.children) {
+        x.children.map((y) => {
+          y.children = y.children.filter((z) =>
+            mainHospitals.includes(z.nodeValue.value),
+          );
+        });
+      }
+    });
+
+    // Find the index of "Private" and remove the children. The sub units should not be shown.
+    // TreetmentUnits.treedata starts with one element "Nasjonalt". Need to wait for it to build up the rest.
     const indPrivate = treatmentUnits.treedata.findIndex(
       (x) => x.nodeValue.value === "Private",
     );
