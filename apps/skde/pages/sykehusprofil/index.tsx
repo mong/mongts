@@ -431,7 +431,11 @@ export const Skde = (): JSX.Element => {
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <ExpandableItemBox collapsedHeight={boxMaxHeight}>
+                <ExpandableItemBox
+                  collapsedHeight={boxMaxHeight}
+                  collapsedText="Vis flere"
+                  expandedText="Vis færre"
+                >
                   <Box padding={titlePadding}>
                     <Typography variant="h5" style={titleStyle}>
                       <b>Kvalitetsindikatorer fordelt på fagområder</b>
@@ -466,7 +470,11 @@ export const Skde = (): JSX.Element => {
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <ExpandableItemBox collapsedHeight={boxMaxHeight}>
+                <ExpandableItemBox
+                  collapsedHeight={boxMaxHeight}
+                  collapsedText="Vis flere"
+                  expandedText="Vis færre"
+                >
                   <Box padding={titlePadding}>
                     <Typography variant="h5" style={titleStyle}>
                       <b>Siste års måloppnåelse</b>
