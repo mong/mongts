@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useEffect, useRef } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 
 import style from "./tableblock.module.css";
@@ -20,6 +20,7 @@ interface TableBlockProps {
   medicalFieldFilter: string[];
   showLevelFilter: string;
   colspan: number;
+  onEmptyStatusChanged?: (registerName: string, isEmpty: boolean) => void;
 }
 
 const TableBlock = (props: TableBlockProps) => {
@@ -35,6 +36,7 @@ const TableBlock = (props: TableBlockProps) => {
     showLevelFilter,
     blockTitle,
     unitNames,
+    onEmptyStatusChanged,
   } = props;
   const queryContext = dataQuality
     ? { context, type: "dg" }
@@ -75,6 +77,35 @@ const TableBlock = (props: TableBlockProps) => {
     ],
   );
 
+  const isEmptyRef = useRef(false);
+
+  useEffect(() => {
+    if (
+      !descriptionQuery.isLoading &&
+      !indicatorDataQuery.isLoading &&
+      !descriptionQuery.isError &&
+      !indicatorDataQuery.isError
+    ) {
+      const isEmpty =
+        descriptionQuery.data.length === 0 ||
+        indicatorDataQuery.data.length === 0;
+
+      if (isEmpty !== isEmptyRef.current) {
+        isEmptyRef.current = isEmpty;
+        onEmptyStatusChanged?.(registerName.rname, isEmpty);
+      }
+    }
+  }, [
+    descriptionQuery.isLoading,
+    indicatorDataQuery.isLoading,
+    descriptionQuery.isError,
+    indicatorDataQuery.isError,
+    descriptionQuery.data,
+    indicatorDataQuery.data,
+    onEmptyStatusChanged,
+    registerName.rname,
+  ]);
+
   if (descriptionQuery.isLoading || indicatorDataQuery.isLoading) {
     return null;
   }
@@ -82,10 +113,8 @@ const TableBlock = (props: TableBlockProps) => {
   if (descriptionQuery.isError || indicatorDataQuery.isError) {
     return null;
   }
-  if (
-    descriptionQuery.data.length === 0 ||
-    indicatorDataQuery.data.length === 0
-  ) {
+
+  if (isEmptyRef.current) {
     return null;
   }
 

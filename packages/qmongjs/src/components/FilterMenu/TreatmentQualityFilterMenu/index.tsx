@@ -27,7 +27,10 @@ import {
   getTreatmentUnitsTree,
   getYearOptions,
 } from "./filterMenuOptions";
-import { useUnitNamesQuery } from "../../../helpers/hooks";
+import {
+  useUnitNamesQuery,
+  useSelectionYearsQuery,
+} from "../../../helpers/hooks";
 import Alert from "@mui/material/Alert";
 import { UseQueryResult } from "@tanstack/react-query";
 import {
@@ -56,6 +59,7 @@ export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   registryNameData: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   medicalFieldData: any;
+  register?: string;
 }>;
 
 // Types used due to the use of useQueryParam
@@ -92,8 +96,9 @@ export function TreatmentQualityFilterMenu({
   registryNameData: registryNameData,
   medicalFieldData: medicalFieldData,
   context: context,
+  register: register,
 }: TreatmentQualityFilterMenuProps) {
-  const selectedRegister = "all";
+  const selectedRegister = register ?? "all";
   const queryContext = { context: context, type: "ind" }; // TODO: Variable for "ind"/"dg"?
 
   // Restrict max number of treatment units for small view sizes
@@ -132,8 +137,20 @@ export function TreatmentQualityFilterMenu({
     dg: StringParam,
   });
 
+  // Get list of all years with data from given register
+  let listOfYears: [number] | undefined = undefined;
+  if (register) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const selectionYearQuery: UseQueryResult<any, unknown> =
+      useSelectionYearsQuery(register as string, queryContext.context, "");
+
+    listOfYears = selectionYearQuery.data as [number];
+  }
   // Year selection
-  const yearOptions = getYearOptions();
+  const yearOptions = listOfYears
+    ? getYearOptions(Math.min(...listOfYears), Math.max(...listOfYears))
+    : getYearOptions();
+
   const [selectedYear, setSelectedYear] = useQueryParam<string>(
     yearKey,
     withDefault(StringParam, yearOptions.default.value),
@@ -349,6 +366,67 @@ export function TreatmentQualityFilterMenu({
 
   const shouldRefreshInitialState = prerenderFinished || apiQueriesCompleted;
 
+  if (register) {
+    return (
+      <>
+        <FilterMenu
+          refreshState={shouldRefreshInitialState}
+          onSelectionChanged={handleFilterChanged}
+          onFilterInitialized={onFilterInitialized}
+        >
+          <SelectedFiltersSection
+            accordion={false}
+            filterkey="selectedfilters"
+            sectionid="selectedfilters"
+            sectiontitle="Valgte filtre"
+          />
+          <TreeViewFilterSection
+            refreshState={shouldRefreshInitialState}
+            treedata={treatmentUnits.treedata}
+            defaultvalues={treatmentUnits.defaults}
+            initialselections={
+              selectedTreatmentUnits.map((value) => ({
+                value: value,
+                valueLabel: value,
+              })) as FilterSettingsValue[]
+            }
+            sectionid={treatmentUnitsKey}
+            sectiontitle={
+              context === "resident" ? "Opptaksområder" : "Behandlingsenheter"
+            }
+            filterkey={treatmentUnitsKey}
+            searchbox={true}
+            maxselections={maxSelectedTreatmentUnits}
+          />
+          <RadioGroupFilterSection
+            radios={yearOptions.values}
+            defaultvalues={[yearOptions.default]}
+            initialselections={[
+              { value: selectedYear, valueLabel: selectedYear },
+            ]}
+            sectiontitle={"År"}
+            sectionid={yearKey}
+            filterkey={yearKey}
+          />
+          <RadioGroupFilterSection
+            radios={achievementLevelOptions.values}
+            defaultvalues={
+              achievementLevelOptions.default
+                ? [achievementLevelOptions.default]
+                : []
+            }
+            initialselections={getFilterSettingsValue(
+              levelKey,
+              selectedAchievementLevel,
+            )}
+            sectiontitle={"Måloppnåelse"}
+            sectionid={levelKey}
+            filterkey={levelKey}
+          />
+        </FilterMenu>
+      </>
+    );
+  }
   return (
     <>
       {!(medicalFieldData || registryNameData) && (

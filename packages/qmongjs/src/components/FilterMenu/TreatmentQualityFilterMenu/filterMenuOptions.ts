@@ -8,15 +8,18 @@ import { TreeViewFilterSectionNode } from "../TreeViewFilterSection";
  *
  * @returns An object with year values and the default year
  */
-export const getYearOptions = (): {
+export const getYearOptions = (
+  min?: number,
+  max?: number,
+): {
   values: FilterSettingsValue[];
   default: FilterSettingsValue;
 } => {
-  const defaultYearString = defaultYear.toString();
+  const defaultYearString = max?.toString() ?? defaultYear.toString();
   const yearValues: FilterSettingsValue[] = [];
   let yearString: string;
 
-  for (let year = minYear; year <= maxYear; year++) {
+  for (let year = min ?? minYear; year <= (max ?? maxYear); year++) {
     yearString = year.toString();
     yearValues.push({ value: yearString, valueLabel: yearString });
   }
