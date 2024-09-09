@@ -7,6 +7,7 @@ import {
   ThemeProvider,
   Typography,
   useMediaQuery,
+  Skeleton,
 } from "@mui/material";
 
 import { ChevronLeftRounded } from "@mui/icons-material";
@@ -331,8 +332,8 @@ export default function TreatmentQualityPage() {
           <Grid size={{ xs: 12, xxl: 9, xxxl: 10 }}>
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
-                {queriesReady &&
-                  (newIndicatorTableActivated || newTableOnly ? (
+                {queriesReady ? (
+                  newIndicatorTableActivated || newTableOnly ? (
                     <IndicatorTableV2Wrapper className="table-wrapper">
                       <IndicatorTableBodyV2
                         key="indicator-table"
@@ -366,7 +367,14 @@ export default function TreatmentQualityPage() {
                         showTreatmentYear={true}
                       />
                     </IndicatorTableWrapper>
-                  ))}
+                  )
+                ) : (
+                  <Skeleton
+                    variant="rectangular"
+                    width={"100%"}
+                    height={2000}
+                  />
+                )}
               </Grid>
             </Grid>
           </Grid>
