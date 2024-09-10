@@ -32,7 +32,7 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
   return (
     <ItemBox height={boxHeight} sx={{ overflow: "auto" }}>
       <Grid container>
-        <Grid size={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12, xxl: 6 }}>
+        <Grid size={{ xs: 12, xxl: 6 }}>
           <div
             style={{
               display: "flex",
@@ -64,7 +64,7 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
             </div>
           </div>
         </Grid>
-        <Grid size={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12, xxl: 6 }}>
+        <Grid size={{ xs: 12, xxl: 6 }}>
           <Stack
             direction="column"
             alignItems={width > breakpoints.xxl ? "left" : "center"}
