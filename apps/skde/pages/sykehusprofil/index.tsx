@@ -56,9 +56,11 @@ import {
 } from "../../src/components/HospitalProfile";
 import { URLs } from "types";
 import { useRouter } from "next/router";
-import { mapUnitName2BohfNames } from "../../src/helpers/functions/unitName2BohfMap";
 import { getUnitFullName } from "../../src/helpers/functions/getUnitFullName";
 import { ChipSelection } from "../../src/components/ChipSelection";
+import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
+import { useScreenSize } from "@visx/responsive";
+import { breakpoints } from "qmongjs";
 
 const AccordionWrapper = styled(Box)(() => ({
   "& MuiAccordion-root:before": {
@@ -69,9 +71,9 @@ const AccordionWrapper = styled(Box)(() => ({
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
-  const [objectIDList, setObjectIDList] = useState<number[]>([]);
-
   const treatmentUnitsKey = "selected_treatment_units";
+
+  const { width } = useScreenSize();
 
   // Current unit name and its setter function
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useQueryParam(
@@ -80,7 +82,7 @@ export const Skde = (): JSX.Element => {
   );
 
   // Set infobox image
-  const [imgSrc, setImgSrc] = useState("/img/forsidebilder/Nasjonalt.jpg");
+  const [imgSrc, setImgSrc] = useState(null);
 
   // Infobox URL
   const [unitUrl, setUnitUrl] = useState<string | null>(null);
@@ -147,8 +149,6 @@ export const Skde = (): JSX.Element => {
       });
     }
 
-    setObjectIDList(mapUnitName2BohfNames(treatmentUnits.treedata, newUnit[0]));
-
     if (unitUrl && unitUrl[0]) {
       setUnitUrl(unitUrl[0].url);
     } else {
@@ -174,8 +174,6 @@ export const Skde = (): JSX.Element => {
       });
     }
 
-    setObjectIDList(mapUnitName2BohfNames(treatmentUnits.treedata, newUnit[0]));
-
     if (unitUrl && unitUrl[0]) {
       setUnitUrl(unitUrl[0].url);
     } else {
@@ -184,11 +182,11 @@ export const Skde = (): JSX.Element => {
   };
 
   // Set the line plot width to fill the available space
-  const [width, setWidth] = useState(null);
+  const [plotWidth, setPlotWidth] = useState(null);
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver((event) => {
-      setWidth(event[0].contentBoxSize[0].inlineSize);
+      setPlotWidth(event[0].contentBoxSize[0].inlineSize);
     });
 
     resizeObserver.observe(document.getElementById("plot-window"));
@@ -203,7 +201,7 @@ export const Skde = (): JSX.Element => {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    width: width,
+    width: plotWidth,
     height: 600,
     lineStyles: new LineStyles(
       [
@@ -373,15 +371,22 @@ export const Skde = (): JSX.Element => {
         <Container maxWidth={maxWidth} disableGutters={true}>
           <Box marginTop={2} className="hospital-profile-box">
             <Grid container spacing={2}>
-              <Grid size={{ xs: 12 }}>
+              <Grid size={{ xs: 12, sm: 7 }}>
                 <HospitalInfoBox
+                  boxHeight={width > breakpoints.xxl ? 350 : 450}
                   unitNames={unitNamesQuery.data}
                   selectedTreatmentUnit={selectedTreatmentUnits[0]}
-                  objectIDList={objectIDList}
                   unitUrl={unitUrl}
                   imgSrc={imgSrc}
                   setImgSrc={setImgSrc}
+                />
+              </Grid>
+              <Grid size={{ xs: 12, sm: 5 }}>
+                <AffiliatedHospitals
+                  boxHeight={width > breakpoints.xxl ? 350 : 450}
                   titleStyle={titleStyle}
+                  unitNames={unitNamesQuery.data}
+                  selectedTreatmentUnit={selectedTreatmentUnits[0]}
                 />
               </Grid>
               <Grid size={{ xs: 12 }}>
