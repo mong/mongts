@@ -8,13 +8,18 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import { styled } from "@mui/system";
 import { Typography } from "@mui/material";
-import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
+import { ExpandCircleDownOutlined } from "@mui/icons-material";
 import { UseQueryResult } from "@tanstack/react-query";
 import { ArrowLink, useIndicatorQuery } from "qmongjs";
 import { level } from "qmongjs";
 import { newLevelSymbols } from "qmongjs";
 import { Indicator } from "types";
+
+const ExpandCircleUpOutlined = styled(ExpandCircleDownOutlined)({
+  transform: "rotate(180deg)",
+});
 
 export type MedfieldTableProps = {
   unitNames: string[];
@@ -168,7 +173,7 @@ const Row = (props: {
       >
         <TableCell>
           <IconButton aria-label="expand row" size="small">
-            {rowID === openRowID ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+            {open ? <ExpandCircleUpOutlined /> : <ExpandCircleDownOutlined />}
           </IconButton>
         </TableCell>
         <TableCell component="th" scope="row">
@@ -178,7 +183,7 @@ const Row = (props: {
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-          <Collapse in={rowID === openRowID} timeout="auto" unmountOnExit>
+          <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
               <Table size="small" aria-label="registries">
                 <TableHead>
