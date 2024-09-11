@@ -181,6 +181,7 @@ const IndicatorRow = (props: IndicatorRowProps) => {
         </TableCell>
         <TableCell>{result(row, lastYear)}</TableCell>
       </TableRow>
+
       <TableRow
         key={row.indicatorID + "-collapse"}
         sx={{ visibility: open ? "visible" : "collapse" }}
