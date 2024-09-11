@@ -14,6 +14,7 @@ exports[`Levels counts are correct 1`] = `
         "green": 1,
         "name": "hjertereg1",
         "red": 0,
+        "short_name": "Hjerteregister 1",
         "yellow": 0,
       },
       {
@@ -21,6 +22,7 @@ exports[`Levels counts are correct 1`] = `
         "green": 0,
         "name": "hjertereg2",
         "red": 1,
+        "short_name": "Hjerteregister 2",
         "yellow": 0,
       },
     ],
@@ -40,6 +42,7 @@ exports[`Levels counts are correct 1`] = `
         "green": 1,
         "name": "diabetesreg1",
         "red": 0,
+        "short_name": "Diabetesregister 1",
         "yellow": 1,
       },
     ],
@@ -60,6 +63,7 @@ exports[`Levels counts are correct 1`] = `
         "green": 1,
         "name": "barnereg1",
         "red": 0,
+        "short_name": "Barneregister 1",
         "yellow": 0,
       },
       {
@@ -67,6 +71,7 @@ exports[`Levels counts are correct 1`] = `
         "green": 2,
         "name": "barnereg2",
         "red": 0,
+        "short_name": "Barneregister 2",
         "yellow": 0,
       },
     ],
@@ -235,7 +240,7 @@ exports[`Table renders correctly 1`] = `
                 <span
                   class="MuiTypography-root MuiTypography-overline css-140vwic-MuiTypography-root"
                 >
-                  Hjerteregister nummer 1
+                  Hjerteregister 1
                 </span>
                 <svg
                   aria-hidden="true"
@@ -291,7 +296,7 @@ exports[`Table renders correctly 1`] = `
                 <span
                   class="MuiTypography-root MuiTypography-overline css-140vwic-MuiTypography-root"
                 >
-                  Hjerteregister nummer 2
+                  Hjerteregister 2
                 </span>
                 <svg
                   aria-hidden="true"
@@ -439,7 +444,7 @@ exports[`Table renders correctly 1`] = `
                 <span
                   class="MuiTypography-root MuiTypography-overline css-140vwic-MuiTypography-root"
                 >
-                  Diabetesregister nummer 1
+                  Diabetesregister 1
                 </span>
                 <svg
                   aria-hidden="true"
@@ -615,7 +620,7 @@ exports[`Table renders correctly 1`] = `
                 <span
                   class="MuiTypography-root MuiTypography-overline css-140vwic-MuiTypography-root"
                 >
-                  Barneregister nummer 1
+                  Barneregister 1
                 </span>
                 <svg
                   aria-hidden="true"
@@ -671,7 +676,7 @@ exports[`Table renders correctly 1`] = `
                 <span
                   class="MuiTypography-root MuiTypography-overline css-140vwic-MuiTypography-root"
                 >
-                  Barneregister nummer 2
+                  Barneregister 2
                 </span>
                 <svg
                   aria-hidden="true"
