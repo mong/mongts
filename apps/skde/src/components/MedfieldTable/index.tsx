@@ -47,6 +47,7 @@ type RowData = {
   registers: {
     name: string;
     full_name: string;
+    short_name: string;
     id: string;
     green: number;
     yellow: number;
@@ -64,6 +65,7 @@ export const createMedfieldTableData = (data: Indicator[]) => {
       registry_id: row.registry_id,
       registry_name: row.registry_name,
       registry_full_name: row.registry_full_name,
+      registry_short_name: row.registry_short_name,
       medfield_id: row.medfield_id,
       medfield_full_name: row.medfield_full_name,
       level: indicatorLevel,
@@ -85,6 +87,7 @@ export const createMedfieldTableData = (data: Indicator[]) => {
     result[value.medfield_id].registers[value.registry_id] = {
       name: value.registry_name,
       full_name: value.registry_full_name,
+      short_name: value.registry_short_name,
       green: 0,
       yellow: 0,
       red: 0,
@@ -203,7 +206,7 @@ const Row = (props: {
                 "&dg=" +
                 typeString
               }
-              text={registerRow.full_name}
+              text={registerRow.short_name}
               externalLink={false}
               button={true}
               textVariant="overline"
