@@ -389,51 +389,6 @@ export const Skde = (): JSX.Element => {
                   selectedTreatmentUnit={selectedTreatmentUnits[0]}
                 />
               </Grid>
-              <Grid size={{ xs: 12 }}>
-                <ItemBox sx={{ overflow: "auto" }}>
-                  <Box padding={titlePadding}>
-                    <Typography variant="h5" style={titleStyle}>
-                      <b>Utvikling over tid</b>
-                    </Typography>
-                    <Stack
-                      direction="row"
-                      alignItems="center"
-                      justifyContent="space-between"
-                    >
-                      <ChipSelection
-                        leftChipLabel="Vis andel"
-                        rightChipLabel="Vis Antall"
-                        leftChipHelpText=""
-                        rightChipHelpText=""
-                        hoverBoxOffset={[20, 20]}
-                        hoverBoxPlacement="top"
-                        hoverBoxMaxWidth={400}
-                        state={normalise}
-                        stateSetter={setNormalise}
-                        trueChip="left"
-                      />
-                      <LinePlotLegend itemSpacing={8} symbolSpacing={2} />
-                    </Stack>
-                    <div style={{ margin: textMargin }}>
-                      <Typography variant="body1">
-                        {"Grafen gir en oversikt over kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistrene for " +
-                          (unitNamesQuery.data &&
-                            getUnitFullName(
-                              unitNamesQuery.data.nestedUnitNames,
-                              selectedTreatmentUnits[0],
-                            )) +
-                          ". Her vises andel eller antall av kvalitetsindikatorer som har hatt høy, middels eller lav måloppnåelse de siste årene."}
-                      </Typography>
-                    </div>
-                  </Box>
-
-                  <ThemeProvider theme={lineChartTheme}>
-                    <div id="plot-window">
-                      <IndicatorLinechart {...indicatorParams} />
-                    </div>
-                  </ThemeProvider>
-                </ItemBox>
-              </Grid>
 
               <Grid size={{ xs: 12 }}>
                 <ExpandableItemBox collapsedHeight={boxMaxHeight}>
@@ -508,6 +463,52 @@ export const Skde = (): JSX.Element => {
                     year={lastYear}
                   />
                 </ExpandableItemBox>
+              </Grid>
+
+              <Grid size={{ xs: 12 }}>
+                <ItemBox sx={{ overflow: "auto" }}>
+                  <Box padding={titlePadding}>
+                    <Typography variant="h5" style={titleStyle}>
+                      <b>Utvikling over tid</b>
+                    </Typography>
+                    <Stack
+                      direction="row"
+                      alignItems="center"
+                      justifyContent="space-between"
+                    >
+                      <ChipSelection
+                        leftChipLabel="Vis andel"
+                        rightChipLabel="Vis Antall"
+                        leftChipHelpText=""
+                        rightChipHelpText=""
+                        hoverBoxOffset={[20, 20]}
+                        hoverBoxPlacement="top"
+                        hoverBoxMaxWidth={400}
+                        state={normalise}
+                        stateSetter={setNormalise}
+                        trueChip="left"
+                      />
+                      <LinePlotLegend itemSpacing={8} symbolSpacing={2} />
+                    </Stack>
+                    <div style={{ margin: textMargin }}>
+                      <Typography variant="body1">
+                        {"Grafen gir en oversikt over kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistrene for " +
+                          (unitNamesQuery.data &&
+                            getUnitFullName(
+                              unitNamesQuery.data.nestedUnitNames,
+                              selectedTreatmentUnits[0],
+                            )) +
+                          ". Her vises andel eller antall av kvalitetsindikatorer som har hatt høy, middels eller lav måloppnåelse de siste årene."}
+                      </Typography>
+                    </div>
+                  </Box>
+
+                  <ThemeProvider theme={lineChartTheme}>
+                    <div id="plot-window">
+                      <IndicatorLinechart {...indicatorParams} />
+                    </div>
+                  </ThemeProvider>
+                </ItemBox>
               </Grid>
             </Grid>
           </Box>
