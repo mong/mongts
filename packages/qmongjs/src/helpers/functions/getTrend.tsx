@@ -1,6 +1,8 @@
 import { DataPoint } from "types";
 
 // Return 1 if the result is better, -1 if it is worse and 0 if it is unchanged.
+// numberOfDecimals is the format of the number in the results table.
+// The tolerance is 1 / 10^x, where x is the number of decimals so that the change is visible in the table.
 export const getTrend = (
   point1: DataPoint | null,
   point2: DataPoint | null,
