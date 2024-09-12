@@ -13,7 +13,8 @@ import {
   skdeTheme,
   Hoverbox,
 } from "qmongjs";
-import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
+import { styled } from "@mui/system";
+import { ExpandCircleDownOutlined } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import {
   Box,
@@ -34,6 +35,10 @@ import {
 import { ArrowLink } from "../ArrowLink";
 import { HelpOutline } from "@mui/icons-material";
 
+const ExpandCircleUpOutlined = styled(ExpandCircleDownOutlined)({
+  transform: "rotate(180deg)",
+});
+
 const result = (data: IndicatorData, point: DataPoint, dg?: boolean) => {
   let pointVar: number | null;
 
@@ -44,8 +49,10 @@ const result = (data: IndicatorData, point: DataPoint, dg?: boolean) => {
   }
 
   return pointVar ? (
-    <Stack direction="row">
-      {customFormat(data.format!)(pointVar)}
+    <Stack direction="row" alignItems="center" spacing={1}>
+      <Typography variant="subtitle2">
+        <b>{customFormat(data.format!)(pointVar)}</b>
+      </Typography>
       {!dg
         ? newLevelSymbols(
             level2(data, point),
@@ -167,8 +174,8 @@ const IndicatorRow = (props: IndicatorRowProps) => {
         style={{ cursor: "pointer" }}
       >
         <TableCell>
-          <IconButton onClick={onClick} aria-label="expand" size="small">
-            {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+          <IconButton size="small">
+            {open ? <ExpandCircleUpOutlined /> : <ExpandCircleDownOutlined />}
           </IconButton>
         </TableCell>
         <TableCell>
