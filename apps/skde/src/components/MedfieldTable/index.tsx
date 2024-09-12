@@ -173,7 +173,7 @@ const Row = (props: {
         style={{ cursor: "pointer" }}
       >
         <TableCell>
-          <IconButton aria-label="expand row" size="small">
+          <IconButton size="small">
             {open ? <ExpandCircleUpOutlined /> : <ExpandCircleDownOutlined />}
           </IconButton>
         </TableCell>

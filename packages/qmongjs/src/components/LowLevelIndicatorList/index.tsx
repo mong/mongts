@@ -172,7 +172,7 @@ const IndicatorRow = (props: IndicatorRowProps) => {
         style={{ cursor: "pointer" }}
       >
         <TableCell>
-          <IconButton aria-label="expand" size="small">
+          <IconButton size="small">
             {open ? <ExpandCircleUpOutlined /> : <ExpandCircleDownOutlined />}
           </IconButton>
         </TableCell>
