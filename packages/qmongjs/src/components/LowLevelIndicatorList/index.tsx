@@ -82,7 +82,7 @@ const result = (
     </Stack>
   ) : (
     <Typography variant="subtitle2">
-      <b>"NA"</b>
+      <b>NA</b>
     </Typography>
   );
 };
