@@ -9,10 +9,15 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
+import { styled } from "@mui/system";
+import { ExpandCircleDownOutlined } from "@mui/icons-material";
 import { UseQueryResult } from "@tanstack/react-query";
 import { ArrowLink, useIndicatorQuery, level, newLevelSymbols } from "qmongjs";
 import { Indicator } from "types";
+
+const ExpandCircleUpOutlined = styled(ExpandCircleDownOutlined)({
+  transform: "rotate(180deg)",
+});
 
 export type MedfieldTableProps = {
   unitNames: string[];
@@ -169,7 +174,7 @@ const Row = (props: {
       >
         <TableCell>
           <IconButton size="small">
-            {rowID === openRowID ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+            {open ? <ExpandCircleUpOutlined /> : <ExpandCircleDownOutlined />}
           </IconButton>
         </TableCell>
         <TableCell>
