@@ -100,6 +100,7 @@ export const TreatmentQualityToolbar = ({
                 </Stack>
               }
               value={"caregiver"}
+              data-testid="tab_caregiver"
             />
             <StyledTab
               label={
@@ -115,6 +116,7 @@ export const TreatmentQualityToolbar = ({
                 </Stack>
               }
               value={"resident"}
+              data-testid="tab_resident"
             />
           </StyledTabs>
         </Grid>
