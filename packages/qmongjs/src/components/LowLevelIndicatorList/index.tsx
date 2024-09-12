@@ -178,6 +178,7 @@ const IndicatorRow = (props: IndicatorRowProps) => {
     yearBeforeDataPoint,
     yearDataPoint,
     row.levelDirection,
+    Number(row.format?.substring(2, 3)),
   );
 
   let open: boolean;
