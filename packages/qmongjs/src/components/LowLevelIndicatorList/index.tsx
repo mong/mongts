@@ -44,8 +44,10 @@ const result = (data: IndicatorData, point: DataPoint, dg?: boolean) => {
   }
 
   return pointVar ? (
-    <Stack direction="row">
-      {customFormat(data.format!)(pointVar)}
+    <Stack direction="row" alignItems="center" spacing={1}>
+      <Typography variant="subtitle2">
+        <b>{customFormat(data.format!)(pointVar)}</b>
+      </Typography>
       {!dg
         ? newLevelSymbols(
             level2(data, point),
