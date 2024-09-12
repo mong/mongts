@@ -116,9 +116,8 @@ export default function TreatmentQualityPage() {
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
 
-  const queriesReady = !(
-    registryNameQuery.isLoading || medicalFieldsQuery.isLoading
-  );
+  const queriesReady =
+    registryNameQuery.isFetched && medicalFieldsQuery.isFetched;
 
   const registers = registryNameQuery?.data;
   const medicalFields = medicalFieldsQuery?.data;

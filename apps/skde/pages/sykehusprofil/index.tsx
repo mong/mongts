@@ -55,7 +55,6 @@ import {
   lineChartTheme,
 } from "../../src/components/HospitalProfile";
 import { URLs } from "types";
-import { useRouter } from "next/router";
 import { getUnitFullName } from "../../src/helpers/functions/getUnitFullName";
 import { ChipSelection } from "../../src/components/ChipSelection";
 import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
@@ -121,18 +120,13 @@ export const Skde = (): JSX.Element => {
   // The following code ensures that the page renders correctly
   const unitUrlsQuery = useUnitUrlsQuery();
 
-  const router = useRouter();
-
-  const [prevReady, setPrevReady] = useState(router.isReady);
-
-  const prerenderFinished =
-    prevReady !== router.isReady && !unitUrlsQuery.isFetching;
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setPrevReady(router.isReady);
-  }, [router.isReady]);
+    setMounted(true);
+  }, []);
 
-  const shouldRefreshInitialState = prerenderFinished;
+  const shouldRefreshInitialState = mounted && unitUrlsQuery.isFetched;
 
   // Callback function for initialising the filter meny
   const initialiseFilter = (
