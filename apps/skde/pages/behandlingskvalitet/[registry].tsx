@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import {
   Box,
@@ -45,9 +45,8 @@ const scrollToSelectedRow = (selectedRow: string): boolean => {
   const headerOffset = 160;
 
   if (element) {
-    console.debug("Found element, attempting to scroll");
     const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    const offsetPosition = elementPosition + window.scrollY - headerOffset;
     window.scrollTo({
       top: offsetPosition,
       behavior: "smooth",
@@ -55,14 +54,20 @@ const scrollToSelectedRow = (selectedRow: string): boolean => {
 
     return true;
   } else {
-    console.debug("Didn't find element");
     return false;
   }
 };
 
-export default function TreatmentQualityPage({ registry_info }) {
-  const registry_name = registry_info[0].rname;
+export default function TreatmentQualityRegistryPage({ registryInfo }) {
+  const registryName = registryInfo[0].rname;
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  const isLargeScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const toggleDrawer = (newOpen: boolean) => {
     setDrawerOpen(newOpen);
@@ -73,7 +78,7 @@ export default function TreatmentQualityPage({ registry_info }) {
 
   // Context (caregiver or resident)
   const default_context =
-    registry_info[0].caregiver_data === 0 ? "resident" : "caregiver";
+    registryInfo[0].caregiver_data === 0 ? "resident" : "caregiver";
   const [tableContext, setTableContext] = useQueryParam<string>(
     "context",
     withDefault(StringParam, default_context),
@@ -111,7 +116,7 @@ export default function TreatmentQualityPage({ registry_info }) {
     );
     setSelectedLevel(filterSettings.get(levelKey)?.[0]?.value ?? undefined);
 
-    setSelectedMedicalFields([registry_name]);
+    setSelectedMedicalFields([registryName]);
 
     setSelectedTreatmentUnits(
       filterSettings.get(treatmentUnitsKey).map((value) => value.value),
@@ -195,6 +200,10 @@ export default function TreatmentQualityPage({ registry_info }) {
   // not already available.
   useOnElementAdded(selectedRow, true, scrollToSelectedRow);
 
+  if (!mounted) {
+    return null;
+  }
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
@@ -204,16 +213,15 @@ export default function TreatmentQualityPage({ registry_info }) {
           context={tableContext}
           onTabChanged={setTableContext}
           tabs={
-            registry_info[0].resident_data + registry_info[0].caregiver_data ==
-            2
+            registryInfo[0].resident_data + registryInfo[0].caregiver_data == 2
           }
           extraBreadcrumbs={[
-            { link: registry_name, text: registry_info[0].short_name },
+            { link: registryName, text: registryInfo[0].short_name },
           ]}
-          subtitle={"Resultater fra " + registry_info[0].full_name}
+          subtitle={"Resultater fra " + registryInfo[0].full_name}
         />
         <Grid container size={{ xs: 12 }}>
-          {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? ( // Permanent menu on large screens
+          {isLargeScreen ? ( // Permanent menu on large screens
             <Grid size={{ xxl: 3, xxxl: 2 }} className="menu-wrapper">
               <Box
                 sx={{
@@ -227,10 +235,10 @@ export default function TreatmentQualityPage({ registry_info }) {
                 <TreatmentQualityFilterMenu
                   onSelectionChanged={handleFilterChanged}
                   onFilterInitialized={handleFilterInitialized}
-                  registryNameData={registry_info}
+                  registryNameData={registryInfo}
                   medicalFieldData={[]}
                   context={tableContext}
-                  register={registry_name}
+                  register={registryName}
                 />
               </Box>
             </Grid>
@@ -241,7 +249,7 @@ export default function TreatmentQualityPage({ registry_info }) {
                 {newTableOnly ? (
                   <IndicatorTableV2Wrapper className="table-wrapper">
                     <IndicatorTableBodyV2
-                      key="indicator-table"
+                      key={`indicator-table2-${tableContext}`}
                       context={tableContext}
                       unitNames={selectedTreatmentUnits}
                       year={selectedYear}
@@ -250,7 +258,7 @@ export default function TreatmentQualityPage({ registry_info }) {
                       medfields={selectedMedicalFields}
                     />
                     <IndicatorTableBodyV2
-                      key="dataquality-table"
+                      key={`dataquality-table2-${tableContext}`}
                       context={tableContext}
                       unitNames={selectedTreatmentUnits}
                       year={selectedYear}
@@ -262,11 +270,11 @@ export default function TreatmentQualityPage({ registry_info }) {
                 ) : (
                   <IndicatorTableWrapper className="table-wrapper">
                     <IndicatorTable
-                      key="indicator-table"
+                      key={`indicator-table-${tableContext}`}
                       context={tableContext}
                       dataQuality={false}
                       tableType="allRegistries"
-                      registerNames={registry_info}
+                      registerNames={registryInfo}
                       unitNames={selectedTreatmentUnits}
                       treatmentYear={selectedYear}
                       colspan={selectedTreatmentUnits.length + 1}
@@ -277,11 +285,11 @@ export default function TreatmentQualityPage({ registry_info }) {
                       showTreatmentYear={true}
                     />
                     <IndicatorTable
-                      key="dataquality-table"
+                      key={`dataquality-table-${tableContext}`}
                       context={tableContext}
                       dataQuality={true}
                       tableType="allRegistries"
-                      registerNames={registry_info}
+                      registerNames={registryInfo}
                       unitNames={selectedTreatmentUnits}
                       treatmentYear={selectedYear}
                       colspan={selectedTreatmentUnits.length + 1}
@@ -321,10 +329,10 @@ export default function TreatmentQualityPage({ registry_info }) {
           <TreatmentQualityFilterMenu
             onSelectionChanged={handleFilterChanged}
             onFilterInitialized={handleFilterInitialized}
-            registryNameData={registry_info}
+            registryNameData={registryInfo}
             medicalFieldData={[]}
             context={tableContext}
-            register={registry_name}
+            register={registryName}
           />
         </Box>
       </FilterDrawer>
@@ -335,12 +343,12 @@ export default function TreatmentQualityPage({ registry_info }) {
 export const getStaticProps: GetStaticProps = async (context) => {
   const registries = await fetchRegisterNames();
 
-  const registry_info: RegisterName = registries.filter(
+  const registryInfo: RegisterName = registries.filter(
     (register) => register.rname === context.params?.registry,
   );
 
   return {
-    props: { registry_info: registry_info },
+    props: { registryInfo: registryInfo },
   };
 };
 
