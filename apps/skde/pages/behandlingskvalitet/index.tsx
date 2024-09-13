@@ -55,9 +55,8 @@ const scrollToSelectedRow = (selectedRow: string): boolean => {
   const headerOffset = 160;
 
   if (element) {
-    console.debug("Found element, attempting to scroll");
     const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    const offsetPosition = elementPosition + window.scrollY - headerOffset;
     window.scrollTo({
       top: offsetPosition,
       behavior: "smooth",
@@ -65,7 +64,6 @@ const scrollToSelectedRow = (selectedRow: string): boolean => {
 
     return true;
   } else {
-    console.debug("Didn't find element");
     return false;
   }
 };
