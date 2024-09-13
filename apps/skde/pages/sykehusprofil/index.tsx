@@ -500,6 +500,16 @@ export const Skde = (): JSX.Element => {
                   <ThemeProvider theme={lineChartTheme}>
                     <div id="plot-window">
                       <IndicatorLinechart {...indicatorParams} />
+                      <img
+                        src="/img/logos/logo-skde-graa.svg"
+                        height={width / 30}
+                        style={{
+                          position: "relative",
+                          left: "85%",
+                          width: "auto",
+                          bottom: 50,
+                        }}
+                      />
                     </div>
                   </ThemeProvider>
                 </ItemBox>
