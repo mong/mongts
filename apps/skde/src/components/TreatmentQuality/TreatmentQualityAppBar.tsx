@@ -30,6 +30,7 @@ const TreatmentQualityAppBar = ({
     title: title,
     subtitle: subtitle,
   };
+
   const breadcrumbs: BreadCrumbPath = {
     path: [
       { link: "https://www.skde.no", text: "Forside" },
@@ -56,15 +57,14 @@ const TreatmentQualityAppBar = ({
           textVariant="button"
         />
       </Header>
-      {(tabs || tabs === undefined) && (
-        <StyledAppBar position="sticky" elevation={0}>
-          <TreatmentQualityToolbar
-            openDrawer={openDrawer}
-            onTabChanged={onTabChanged}
-            context={context}
-          />
-        </StyledAppBar>
-      )}
+      <StyledAppBar position="sticky" elevation={0}>
+        <TreatmentQualityToolbar
+          openDrawer={openDrawer}
+          onTabChanged={onTabChanged}
+          context={context}
+          tabs={tabs}
+        />
+      </StyledAppBar>
     </>
   );
 };
