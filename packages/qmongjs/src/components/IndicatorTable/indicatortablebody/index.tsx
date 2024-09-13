@@ -13,6 +13,7 @@ interface IndicatorTableBodyProps {
   medicalFieldFilter: string[];
   showLevelFilter: string;
   blockTitle?: string[];
+  onEmptyStatusChanged?: (registerName: string, isEmpty: boolean) => void;
 }
 
 export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
@@ -27,6 +28,7 @@ export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
     medicalFieldFilter,
     showLevelFilter,
     blockTitle,
+    onEmptyStatusChanged,
   } = props;
 
   const done: string[] = [];
@@ -47,6 +49,7 @@ export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
           medicalFieldFilter={medicalFieldFilter}
           showLevelFilter={showLevelFilter}
           blockTitle={blockTitle ? blockTitle[i] : undefined}
+          onEmptyStatusChanged={onEmptyStatusChanged}
         />
       );
     } else {

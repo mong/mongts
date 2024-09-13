@@ -55,10 +55,11 @@ import {
   lineChartTheme,
 } from "../../src/components/HospitalProfile";
 import { URLs } from "types";
-import { useRouter } from "next/router";
-import { mapUnitName2BohfNames } from "../../src/helpers/functions/unitName2BohfMap";
 import { getUnitFullName } from "../../src/helpers/functions/getUnitFullName";
 import { ChipSelection } from "../../src/components/ChipSelection";
+import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
+import { useScreenSize } from "@visx/responsive";
+import { breakpoints } from "qmongjs";
 
 const AccordionWrapper = styled(Box)(() => ({
   "& MuiAccordion-root:before": {
@@ -69,9 +70,9 @@ const AccordionWrapper = styled(Box)(() => ({
 export const Skde = (): JSX.Element => {
   const [expanded, setExpanded] = useState(false);
 
-  const [objectIDList, setObjectIDList] = useState<number[]>([]);
-
   const treatmentUnitsKey = "selected_treatment_units";
+
+  const { width } = useScreenSize();
 
   // Current unit name and its setter function
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useQueryParam(
@@ -80,7 +81,7 @@ export const Skde = (): JSX.Element => {
   );
 
   // Set infobox image
-  const [imgSrc, setImgSrc] = useState("/img/forsidebilder/Nasjonalt.jpg");
+  const [imgSrc, setImgSrc] = useState(null);
 
   // Infobox URL
   const [unitUrl, setUnitUrl] = useState<string | null>(null);
@@ -94,20 +95,20 @@ export const Skde = (): JSX.Element => {
     "ind",
   );
 
+  if (unitNamesQuery.data) {
+    // Only keep the "real" hospitals
+    unitNamesQuery.data.nestedUnitNames.map((rhf) => {
+      rhf.hf.map((hf) => {
+        hf.hospital = hf.hospital.filter((unit) =>
+          mainHospitals.includes(unit),
+        );
+      });
+    });
+  }
+
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
   if (treatmentUnits.treedata.length > 1) {
-    // Only keep the "real" hospitals
-    treatmentUnits.treedata.map((x) => {
-      if (x.children) {
-        x.children.map((y) => {
-          y.children = y.children.filter((z) =>
-            mainHospitals.includes(z.nodeValue.value),
-          );
-        });
-      }
-    });
-
     // Find the index of "Private" and remove the children. The sub units should not be shown.
     // TreetmentUnits.treedata starts with one element "Nasjonalt". Need to wait for it to build up the rest.
     const indPrivate = treatmentUnits.treedata.findIndex(
@@ -119,18 +120,13 @@ export const Skde = (): JSX.Element => {
   // The following code ensures that the page renders correctly
   const unitUrlsQuery = useUnitUrlsQuery();
 
-  const router = useRouter();
-
-  const [prevReady, setPrevReady] = useState(router.isReady);
-
-  const prerenderFinished =
-    prevReady !== router.isReady && !unitUrlsQuery.isFetching;
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setPrevReady(router.isReady);
-  }, [router.isReady]);
+    setMounted(true);
+  }, []);
 
-  const shouldRefreshInitialState = prerenderFinished;
+  const shouldRefreshInitialState = mounted && unitUrlsQuery.isFetched;
 
   // Callback function for initialising the filter meny
   const initialiseFilter = (
@@ -146,8 +142,6 @@ export const Skde = (): JSX.Element => {
         return row.shortName === newUnit[0];
       });
     }
-
-    setObjectIDList(mapUnitName2BohfNames(treatmentUnits.treedata, newUnit[0]));
 
     if (unitUrl && unitUrl[0]) {
       setUnitUrl(unitUrl[0].url);
@@ -174,8 +168,6 @@ export const Skde = (): JSX.Element => {
       });
     }
 
-    setObjectIDList(mapUnitName2BohfNames(treatmentUnits.treedata, newUnit[0]));
-
     if (unitUrl && unitUrl[0]) {
       setUnitUrl(unitUrl[0].url);
     } else {
@@ -184,11 +176,11 @@ export const Skde = (): JSX.Element => {
   };
 
   // Set the line plot width to fill the available space
-  const [width, setWidth] = useState(null);
+  const [plotWidth, setPlotWidth] = useState(null);
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver((event) => {
-      setWidth(event[0].contentBoxSize[0].inlineSize);
+      setPlotWidth(event[0].contentBoxSize[0].inlineSize);
     });
 
     resizeObserver.observe(document.getElementById("plot-window"));
@@ -203,7 +195,7 @@ export const Skde = (): JSX.Element => {
     unitNames: [selectedTreatmentUnits[0]],
     context: "caregiver",
     type: "ind",
-    width: width,
+    width: plotWidth,
     height: 600,
     lineStyles: new LineStyles(
       [
@@ -373,61 +365,23 @@ export const Skde = (): JSX.Element => {
         <Container maxWidth={maxWidth} disableGutters={true}>
           <Box marginTop={2} className="hospital-profile-box">
             <Grid container spacing={2}>
-              <Grid size={{ xs: 12 }}>
+              <Grid size={{ xs: 12, sm: 7 }}>
                 <HospitalInfoBox
+                  boxHeight={width > breakpoints.xxl ? 350 : 450}
                   unitNames={unitNamesQuery.data}
                   selectedTreatmentUnit={selectedTreatmentUnits[0]}
-                  objectIDList={objectIDList}
                   unitUrl={unitUrl}
                   imgSrc={imgSrc}
                   setImgSrc={setImgSrc}
-                  titleStyle={titleStyle}
                 />
               </Grid>
-              <Grid size={{ xs: 12 }}>
-                <ItemBox sx={{ overflow: "auto" }}>
-                  <Box padding={titlePadding}>
-                    <Typography variant="h5" style={titleStyle}>
-                      <b>Utvikling over tid</b>
-                    </Typography>
-                    <Stack
-                      direction="row"
-                      alignItems="center"
-                      justifyContent="space-between"
-                    >
-                      <ChipSelection
-                        leftChipLabel="Vis andel"
-                        rightChipLabel="Vis Antall"
-                        leftChipHelpText=""
-                        rightChipHelpText=""
-                        hoverBoxOffset={[20, 20]}
-                        hoverBoxPlacement="top"
-                        hoverBoxMaxWidth={400}
-                        state={normalise}
-                        stateSetter={setNormalise}
-                        trueChip="left"
-                      />
-                      <LinePlotLegend itemSpacing={8} symbolSpacing={2} />
-                    </Stack>
-                    <div style={{ margin: textMargin }}>
-                      <Typography variant="body1">
-                        {"Grafen gir en oversikt over kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistrene for " +
-                          (unitNamesQuery.data &&
-                            getUnitFullName(
-                              unitNamesQuery.data.nestedUnitNames,
-                              selectedTreatmentUnits[0],
-                            )) +
-                          ". Her vises andel eller antall av kvalitetsindikatorer som har hatt høy, middels eller lav måloppnåelse de siste årene."}
-                      </Typography>
-                    </div>
-                  </Box>
-
-                  <ThemeProvider theme={lineChartTheme}>
-                    <div id="plot-window">
-                      <IndicatorLinechart {...indicatorParams} />
-                    </div>
-                  </ThemeProvider>
-                </ItemBox>
+              <Grid size={{ xs: 12, sm: 5 }}>
+                <AffiliatedHospitals
+                  boxHeight={width > breakpoints.xxl ? 350 : 450}
+                  titleStyle={titleStyle}
+                  unitNames={unitNamesQuery.data}
+                  selectedTreatmentUnit={selectedTreatmentUnits[0]}
+                />
               </Grid>
 
               <Grid size={{ xs: 12 }}>
@@ -511,6 +465,52 @@ export const Skde = (): JSX.Element => {
                     year={lastYear}
                   />
                 </ExpandableItemBox>
+              </Grid>
+
+              <Grid size={{ xs: 12 }}>
+                <ItemBox sx={{ overflow: "auto" }}>
+                  <Box padding={titlePadding}>
+                    <Typography variant="h5" style={titleStyle}>
+                      <b>Utvikling over tid</b>
+                    </Typography>
+                    <Stack
+                      direction="row"
+                      alignItems="center"
+                      justifyContent="space-between"
+                    >
+                      <ChipSelection
+                        leftChipLabel="Vis andel"
+                        rightChipLabel="Vis Antall"
+                        leftChipHelpText=""
+                        rightChipHelpText=""
+                        hoverBoxOffset={[20, 20]}
+                        hoverBoxPlacement="top"
+                        hoverBoxMaxWidth={400}
+                        state={normalise}
+                        stateSetter={setNormalise}
+                        trueChip="left"
+                      />
+                      <LinePlotLegend itemSpacing={8} symbolSpacing={2} />
+                    </Stack>
+                    <div style={{ margin: textMargin }}>
+                      <Typography variant="body1">
+                        {"Grafen gir en oversikt over kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistrene for " +
+                          (unitNamesQuery.data &&
+                            getUnitFullName(
+                              unitNamesQuery.data.nestedUnitNames,
+                              selectedTreatmentUnits[0],
+                            )) +
+                          ". Her vises andel eller antall av kvalitetsindikatorer som har hatt høy, middels eller lav måloppnåelse de siste årene."}
+                      </Typography>
+                    </div>
+                  </Box>
+
+                  <ThemeProvider theme={lineChartTheme}>
+                    <div id="plot-window">
+                      <IndicatorLinechart {...indicatorParams} />
+                    </div>
+                  </ThemeProvider>
+                </ItemBox>
               </Grid>
             </Grid>
           </Box>
