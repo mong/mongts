@@ -1,7 +1,7 @@
 import { IndicatorTableHeader } from "./indicatortableheader";
 import { IndicatorTableBody } from "./indicatortablebody";
 import { RegisterName } from "types";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 interface IndicatorTableProps {
   context: string;
@@ -59,8 +59,8 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
 
   return (
     <>
-      {!isTableEmpty && (
         <table>
+        {!isTableEmpty && (
           <IndicatorTableHeader
             colspan={colspan}
             unitNames={unitNames}
@@ -69,21 +69,21 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
             descriptionHeader={descriptionHeader}
             treatmentYear={showTreatmentYear ? treatmentYear : undefined}
           />
-          <IndicatorTableBody
-            context={context}
-            dataQuality={dataQuality}
-            tableType={tableType}
-            colspan={colspan}
-            registerNames={registerNames}
-            unitNames={unitNames}
-            treatmentYear={treatmentYear}
-            medicalFieldFilter={medicalFieldFilter}
-            showLevelFilter={showLevelFilter ?? ""}
-            blockTitle={blockTitle}
-            onEmptyStatusChanged={handleEmptyStatusChanged}
-          />
-        </table>
-      )}
+        )}
+        <IndicatorTableBody
+          context={context}
+          dataQuality={dataQuality}
+          tableType={tableType}
+          colspan={colspan}
+          registerNames={registerNames}
+          unitNames={unitNames}
+          treatmentYear={treatmentYear}
+          medicalFieldFilter={medicalFieldFilter}
+          showLevelFilter={showLevelFilter ?? ""}
+          blockTitle={blockTitle}
+          onEmptyStatusChanged={handleEmptyStatusChanged}
+        />
+      </table>
     </>
   );
 };
