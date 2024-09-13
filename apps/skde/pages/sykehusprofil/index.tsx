@@ -502,7 +502,7 @@ export const Skde = (): JSX.Element => {
                       <IndicatorLinechart {...indicatorParams} />
                       <img
                         src="/img/logos/logo-skde-graa.svg"
-                        height={width / 30}
+                        height={Math.min(width / 30, 50)}
                         style={{
                           position: "relative",
                           left: "85%",
