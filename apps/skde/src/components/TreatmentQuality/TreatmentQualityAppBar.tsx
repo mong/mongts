@@ -30,6 +30,7 @@ const TreatmentQualityAppBar = ({
     title: title,
     subtitle: subtitle,
   };
+
   const breadcrumbs: BreadCrumbPath = {
     path: [
       { link: "https://www.skde.no", text: "Forside" },

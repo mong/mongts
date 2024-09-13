@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button, Tab, Tabs, Toolbar, styled, Stack } from "@mui/material";
 import { TuneRounded } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
@@ -45,24 +45,33 @@ export const TreatmentQualityToolbar = ({
   onTabChanged,
   tabs = true,
 }: StickyToolbarProps) => {
+  const [mounted, setMounted] = useState(false);
+
   const theme = useTheme();
   const isNarrowScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const notLargeScreen = useMediaQuery(theme.breakpoints.down("xxl"));
 
-  const [value, setValue] = useState(
-    context === "resident" ? "resident" : "caregiver",
+  const handleChange = useCallback(
+    (event: React.SyntheticEvent, newValue: string) => {
+      onTabChanged(newValue);
+    },
+    [onTabChanged],
   );
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
-    setTimeout(() => {
-      onTabChanged(newValue);
-    }, 0);
-  };
+  const tabValue = context === "resident" ? "resident" : "caregiver";
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <StyledToolbar className="main-toolbar">
       <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
-        {useMediaQuery(theme.breakpoints.down("xxl")) ? (
+        {notLargeScreen ? (
           <Grid size={{ xs: 1, sm: 1, md: 2 }} sx={{ alignContent: "center" }}>
             <Button
               variant="contained"
@@ -84,7 +93,7 @@ export const TreatmentQualityToolbar = ({
             <StyledTabs
               indicatorColor="secondary"
               aria-label="Arkfaner for behandlingskvalitet og opptaksområde"
-              value={value}
+              value={tabValue}
               onChange={handleChange}
               orientation={isNarrowScreen ? "vertical" : "horizontal"}
               variant="fullWidth"
