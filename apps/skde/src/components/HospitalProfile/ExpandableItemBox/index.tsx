@@ -46,6 +46,10 @@ export const ExpandableItemBox = (
           height: expanded ? "auto" : collapsedHeight,
           overflow: "hidden",
           minHeight: collapsedHeight,
+          maskImage: !expanded
+            ? "linear-gradient(black, 90%,  transparent)"
+            : undefined,
+          maskMode: "alpha",
         }}
       >
         {props.children}
