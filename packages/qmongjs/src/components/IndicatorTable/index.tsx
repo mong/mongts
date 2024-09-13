@@ -27,7 +27,7 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
     dataQuality,
     tableType,
     unitNames = ["Nasjonalt"],
-    treatmentYear = 2019,
+    treatmentYear = 2023,
     colspan,
     medicalFieldFilter,
     showLevelFilter,
@@ -38,7 +38,6 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
     blockTitle,
     showTreatmentYear,
   } = props;
-
   const [emptyBlocks, setEmptyBlocks] = useState<Set<string>>(new Set());
 
   const handleEmptyStatusChanged = useCallback(
