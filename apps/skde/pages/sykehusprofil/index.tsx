@@ -311,7 +311,7 @@ export const Skde = (): JSX.Element => {
               <Accordion
                 square={true}
                 sx={{
-                  width: 400,
+                  width: Math.min(400, 0.8 * width),
                   borderRadius: 11,
                   border: 1,
                   borderColor: skdeTheme.palette.primary.main,
