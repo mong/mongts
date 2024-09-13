@@ -36,12 +36,14 @@ type StickyToolbarProps = {
   openDrawer: () => void;
   context;
   onTabChanged;
+  tabs?: boolean;
 };
 
 export const TreatmentQualityToolbar = ({
   openDrawer,
   context,
   onTabChanged,
+  tabs = true,
 }: StickyToolbarProps) => {
   const theme = useTheme();
   const isNarrowScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -77,49 +79,51 @@ export const TreatmentQualityToolbar = ({
             </Button>
           </Grid>
         ) : null}
-        <Grid size={{ xs: 3, sm: 7, md: 10 }}>
-          <StyledTabs
-            indicatorColor="secondary"
-            aria-label="Arkfaner for behandlingskvalitet og opptaksområde"
-            value={value}
-            onChange={handleChange}
-            orientation={isNarrowScreen ? "vertical" : "horizontal"}
-            variant="fullWidth"
-          >
-            <StyledTab
-              label={
-                <Stack direction="row" alignItems="center">
-                  Behandlingsenheter
-                  <Hoverbox
-                    title="Med behandlingsenheter menes sykehus hvor pasienten har blitt behandlet uavhengig av pasientens bosted."
-                    placement="top"
-                    offset={[50, 20]}
-                  >
-                    <HelpOutline sx={{ fontSize: "18px", marginLeft: 1 }} />
-                  </Hoverbox>
-                </Stack>
-              }
-              value={"caregiver"}
-              data-testid="tab_caregiver"
-            />
-            <StyledTab
-              label={
-                <Stack direction="row" alignItems="center">
-                  Opptaksområder
-                  <Hoverbox
-                    title="Med opptaksområde menes de geografiske områdene som helseforetakene og sykehusene har ansvar for å betjene. Resultatene er basert på pasientens bosted og uavhengig av behandlingssted."
-                    placement="top"
-                    offset={[50, 20]}
-                  >
-                    <HelpOutline sx={{ fontSize: "18px", marginLeft: 1 }} />
-                  </Hoverbox>
-                </Stack>
-              }
-              value={"resident"}
-              data-testid="tab_resident"
-            />
-          </StyledTabs>
-        </Grid>
+        {(tabs || tabs === undefined) && (
+          <Grid size={{ xs: 3, sm: 7, md: 10 }}>
+            <StyledTabs
+              indicatorColor="secondary"
+              aria-label="Arkfaner for behandlingskvalitet og opptaksområde"
+              value={value}
+              onChange={handleChange}
+              orientation={isNarrowScreen ? "vertical" : "horizontal"}
+              variant="fullWidth"
+            >
+              <StyledTab
+                label={
+                  <Stack direction="row" alignItems="center">
+                    Behandlingsenheter
+                    <Hoverbox
+                      title="Med behandlingsenheter menes sykehus hvor pasienten har blitt behandlet uavhengig av pasientens bosted."
+                      placement="top"
+                      offset={[50, 20]}
+                    >
+                      <HelpOutline sx={{ fontSize: "18px", marginLeft: 1 }} />
+                    </Hoverbox>
+                  </Stack>
+                }
+                value={"caregiver"}
+                data-testid="tab_caregiver"
+              />
+              <StyledTab
+                label={
+                  <Stack direction="row" alignItems="center">
+                    Opptaksområder
+                    <Hoverbox
+                      title="Med opptaksområde menes de geografiske områdene som helseforetakene og sykehusene har ansvar for å betjene. Resultatene er basert på pasientens bosted og uavhengig av behandlingssted."
+                      placement="top"
+                      offset={[50, 20]}
+                    >
+                      <HelpOutline sx={{ fontSize: "18px", marginLeft: 1 }} />
+                    </Hoverbox>
+                  </Stack>
+                }
+                value={"resident"}
+                data-testid="tab_resident"
+              />
+            </StyledTabs>
+          </Grid>
+        )}
       </Grid>
     </StyledToolbar>
   );
