@@ -394,7 +394,7 @@ export function TreatmentQualityFilterMenu({
             radios={yearOptions.values}
             defaultvalues={[yearOptions.default]}
             initialselections={[
-              { value: validSelectedYear, valueLabel: validSelectedYear },
+              { value: selectedYear, valueLabel: selectedYear },
             ]}
             sectiontitle={"År"}
             sectionid={yearKey}
