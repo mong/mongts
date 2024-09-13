@@ -3,12 +3,14 @@ import { Button, Box } from "@mui/material";
 
 type ExpandableItemBoxProps = {
   collapsedHeight: number;
+  expandedText: string;
+  collapsedText: string;
 };
 
 export const ExpandableItemBox = (
   props: PropsWithChildren<ExpandableItemBoxProps>,
 ) => {
-  const { collapsedHeight } = props;
+  const { collapsedHeight, expandedText, collapsedText } = props;
 
   const [expanded, setExpanded] = useState<boolean>(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -78,7 +80,7 @@ export const ExpandableItemBox = (
           fullWidth
           onClick={handleClick}
         >
-          {expanded ? "Se mindre" : "Se mer"}
+          {expanded ? expandedText : collapsedText}
         </Button>
       ) : null}
     </Box>
