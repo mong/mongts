@@ -59,7 +59,7 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
 
   return (
     <>
-        <table>
+      <table>
         {!isTableEmpty && (
           <IndicatorTableHeader
             colspan={colspan}
