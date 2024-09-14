@@ -1,7 +1,7 @@
 import { IndicatorTableHeader } from "./indicatortableheader";
 import { IndicatorTableBody } from "./indicatortablebody";
 import { RegisterName } from "types";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 
 interface IndicatorTableProps {
   context: string;
