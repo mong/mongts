@@ -6,28 +6,26 @@ import { getUnitFullName } from "../../../helpers/functions/getUnitFullName";
 import { NestedTreatmentUnitName, OptsTu } from "types";
 import { useScreenSize } from "@visx/responsive";
 import { breakpoints } from "qmongjs";
+import { useEffect, useState } from "react";
 
 type HospitalInfoBoxProps = {
   boxHeight: number;
   unitNames: { nestedUnitNames: NestedTreatmentUnitName[]; opts_tu: OptsTu[] };
   selectedTreatmentUnit: string;
   unitUrl: string;
-  imgSrc: string;
-  setImgSrc: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
-  const {
-    boxHeight,
-    unitNames,
-    selectedTreatmentUnit,
-    unitUrl,
-    imgSrc,
-    setImgSrc,
-  } = props;
+  const { boxHeight, unitNames, selectedTreatmentUnit, unitUrl } = props;
 
   const imgSize = 270;
   const { width } = useScreenSize({ debounceTime: 150 });
+
+  const [imgSrc, setImgSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    setImgSrc(`/img/forsidebilder/${selectedTreatmentUnit}.jpg`);
+  }, [selectedTreatmentUnit]);
 
   return (
     <ItemBox height={boxHeight} sx={{ overflow: "auto" }}>
@@ -49,18 +47,20 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
                 paddingLeft: width > breakpoints.xxl ? 40 : 0,
               }}
             >
-              <img
-                src={imgSrc}
-                onError={() => setImgSrc("/img/forsidebilder/Sykehus.jpg")}
-                alt={"Logo"}
-                width={imgSize}
-                height={imgSize}
-                style={{
-                  borderRadius: "100%",
-                  maxWidth: "100%",
-                  objectFit: "cover",
-                }}
-              />
+              {unitNames && (
+                <img
+                  src={imgSrc}
+                  onError={() => setImgSrc("/img/forsidebilder/Sykehus.jpg")}
+                  alt={"Logo"}
+                  width={imgSize}
+                  height={imgSize}
+                  style={{
+                    borderRadius: "100%",
+                    maxWidth: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              )}
             </div>
           </div>
         </Grid>
