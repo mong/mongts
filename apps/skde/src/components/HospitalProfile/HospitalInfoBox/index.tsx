@@ -13,7 +13,6 @@ type HospitalInfoBoxProps = {
   unitNames: { nestedUnitNames: NestedTreatmentUnitName[]; opts_tu: OptsTu[] };
   selectedTreatmentUnit: string;
   unitUrl: string;
-  setImgSrc: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
