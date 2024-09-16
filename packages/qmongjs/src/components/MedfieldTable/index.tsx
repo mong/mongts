@@ -78,7 +78,8 @@ export const createMedfieldTableData = (data: Indicator[]) => {
   });
 
   // Group by medfield and registry and initialise counts
-  const rowData: RowData[] = levels.reduce((result, value) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const rowData: RowData[] = levels.reduce((result: any[], value) => {
     if (!result[value.medfield_id]) {
       result[value.medfield_id] = {
         name: value.medfield_full_name,
