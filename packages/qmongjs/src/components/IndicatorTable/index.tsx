@@ -27,7 +27,7 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
     dataQuality,
     tableType,
     unitNames = ["Nasjonalt"],
-    treatmentYear = 2019,
+    treatmentYear = 2023,
     colspan,
     medicalFieldFilter,
     showLevelFilter,
@@ -38,7 +38,6 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
     blockTitle,
     showTreatmentYear,
   } = props;
-
   const [emptyBlocks, setEmptyBlocks] = useState<Set<string>>(new Set());
 
   const handleEmptyStatusChanged = useCallback(
@@ -60,8 +59,8 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
 
   return (
     <>
-      {!isTableEmpty && (
-        <table>
+      <table>
+        {!isTableEmpty && (
           <IndicatorTableHeader
             colspan={colspan}
             unitNames={unitNames}
@@ -70,21 +69,21 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
             descriptionHeader={descriptionHeader}
             treatmentYear={showTreatmentYear ? treatmentYear : undefined}
           />
-          <IndicatorTableBody
-            context={context}
-            dataQuality={dataQuality}
-            tableType={tableType}
-            colspan={colspan}
-            registerNames={registerNames}
-            unitNames={unitNames}
-            treatmentYear={treatmentYear}
-            medicalFieldFilter={medicalFieldFilter}
-            showLevelFilter={showLevelFilter ?? ""}
-            blockTitle={blockTitle}
-            onEmptyStatusChanged={handleEmptyStatusChanged}
-          />
-        </table>
-      )}
+        )}
+        <IndicatorTableBody
+          context={context}
+          dataQuality={dataQuality}
+          tableType={tableType}
+          colspan={colspan}
+          registerNames={registerNames}
+          unitNames={unitNames}
+          treatmentYear={treatmentYear}
+          medicalFieldFilter={medicalFieldFilter}
+          showLevelFilter={showLevelFilter ?? ""}
+          blockTitle={blockTitle}
+          onEmptyStatusChanged={handleEmptyStatusChanged}
+        />
+      </table>
     </>
   );
 };

@@ -12,11 +12,6 @@ function useOnElementAdded(
       const foundTarget = callback(targetId);
 
       if (!foundTarget) {
-        // The element didn't exist, observe if it shows up and trigger callback
-        console.debug(
-          `Didn't find the element with id "${targetId}" in the DOM, setting up observer`,
-        );
-
         const observerCallback: MutationCallback = (mutationsList) => {
           for (const mutation of mutationsList) {
             if (mutation.type === "childList") {
@@ -29,10 +24,6 @@ function useOnElementAdded(
                   callback(targetId);
                 }
               });
-            } else {
-              console.debug(
-                `The element with id "${targetId}" was already present in the DOM, no need for observer`,
-              );
             }
           }
         };
@@ -41,10 +32,6 @@ function useOnElementAdded(
         observer.observe(document.body, { childList: true, subtree: true });
         return () => observer.disconnect();
       }
-    } else {
-      console.debug(
-        `Not scrolling. Target ID was ${targetId}. Queries ${queriesReady ? "" : "not "}ready.`,
-      );
     }
   });
 }

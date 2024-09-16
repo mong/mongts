@@ -225,7 +225,7 @@ const createInitialFilterSettings = ({
     );
 
   if (onFilterInitialized) {
-    // Call after the current compoennt has finished rendering, because an error
+    // Call after the current component has finished rendering, because an error
     // will be thrown if the other component's state is updated during the current
     // render phase.
     setTimeout(() => {
@@ -253,7 +253,7 @@ const wrapReducer = (
     const newFilterSettings = reducer(filterSettings, action);
 
     if (onSelectionChanged) {
-      // Call after the current compoennt has finished rendering, because an error
+      // Call after the current component has finished rendering, because an error
       // will be thrown if the other component's state is updated during the current
       // render phase.
       setTimeout(() => {
