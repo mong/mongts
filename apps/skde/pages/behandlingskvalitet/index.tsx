@@ -332,7 +332,7 @@ export default function TreatmentQualityPage() {
                   (newIndicatorTableActivated || newTableOnly ? (
                     <IndicatorTableV2Wrapper className="table-wrapper">
                       <IndicatorTableBodyV2
-                        key="indicator-table"
+                        key={"indicator-table2"}
                         context={tableContext}
                         unitNames={selectedTreatmentUnits}
                         year={selectedYear}
@@ -344,7 +344,7 @@ export default function TreatmentQualityPage() {
                   ) : (
                     <IndicatorTableWrapper className="table-wrapper">
                       <IndicatorTable
-                        key="indicator-table"
+                        key={"indicator-table"}
                         context={tableContext}
                         dataQuality={dataQualitySelected}
                         tableType="allRegistries"

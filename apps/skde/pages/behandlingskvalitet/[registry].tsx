@@ -114,6 +114,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     setSelectedYear(
       parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString()),
     );
+
     setSelectedLevel(filterSettings.get(levelKey)?.[0]?.value ?? undefined);
 
     setSelectedMedicalFields([registryName]);
