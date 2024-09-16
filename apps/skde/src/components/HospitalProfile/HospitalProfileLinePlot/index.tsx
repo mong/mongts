@@ -141,6 +141,16 @@ export const HospitalProfileLinePlot = (
       <ThemeProvider theme={lineChartTheme}>
         <div id="plot-window">
           <IndicatorLinechart {...indicatorParams} />
+          <img
+            src="/img/logos/logo-skde-graa.svg"
+            height={plotWidth / 30}
+            style={{
+              position: "relative",
+              left: "85%",
+              width: "auto",
+              bottom: 50,
+            }}
+          />
         </div>
       </ThemeProvider>
     </ItemBox>
