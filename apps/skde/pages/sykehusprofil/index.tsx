@@ -16,8 +16,6 @@ import {
   FilterMenu,
   useUnitNamesQuery,
   useUnitUrlsQuery,
-  LowLevelIndicatorList,
-  LineStyles,
   defaultYear,
   TreeViewFilterSection,
   getTreatmentUnitsTree,
@@ -32,15 +30,11 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Stack,
   Typography,
   Container,
   styled,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import IndicatorLinechart, {
-  IndicatorLinechartParams,
-} from "../../src/charts/IndicatorLinechart";
 import {
   MedfieldTable,
   MedfieldTableProps,
@@ -50,9 +44,6 @@ import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import {
   ExpandableItemBox,
   HospitalInfoBox,
-  LinePlotLegend,
-  ItemBox,
-  lineChartTheme,
 } from "../../src/components/HospitalProfile";
 import { URLs } from "types";
 import { getUnitFullName } from "../../src/helpers/functions/getUnitFullName";
@@ -60,6 +51,8 @@ import { ChipSelection } from "../../src/components/ChipSelection";
 import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
 import { useScreenSize } from "@visx/responsive";
 import { breakpoints } from "qmongjs";
+import { HospitalProfileLowLevelTable } from "../../src/components/HospitalProfile/HospitalProfileLowLevelTable";
+import { HospitalProfileLinePlot } from "../../src/components/HospitalProfile/HospitalProfileLinePlot";
 
 const AccordionWrapper = styled(Box)(() => ({
   "& MuiAccordion-root:before": {
@@ -95,6 +88,8 @@ export const Skde = (): JSX.Element => {
     "ind",
   );
 
+  let unitFullName: string;
+
   if (unitNamesQuery.data) {
     // Only keep the "real" hospitals
     unitNamesQuery.data.nestedUnitNames.map((rhf) => {
@@ -104,6 +99,13 @@ export const Skde = (): JSX.Element => {
         );
       });
     });
+
+    unitFullName =
+      unitNamesQuery.data &&
+      getUnitFullName(
+        unitNamesQuery.data.nestedUnitNames,
+        selectedTreatmentUnits[0],
+      );
   }
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
@@ -175,68 +177,9 @@ export const Skde = (): JSX.Element => {
     }
   };
 
-  // Set the line plot width to fill the available space
-  const [plotWidth, setPlotWidth] = useState(null);
-
-  useEffect(() => {
-    const resizeObserver = new ResizeObserver((event) => {
-      setPlotWidth(event[0].contentBoxSize[0].inlineSize);
-    });
-
-    resizeObserver.observe(document.getElementById("plot-window"));
-  });
-
   // Year for filtering
   const lastYear = defaultYear;
   const pastYears = 5;
-
-  // Props
-  const indicatorParams: IndicatorLinechartParams = {
-    unitNames: [selectedTreatmentUnits[0]],
-    context: "caregiver",
-    type: "ind",
-    width: plotWidth,
-    height: 600,
-    lineStyles: new LineStyles(
-      [
-        {
-          text: "Høy måloppnåelse",
-          strokeDash: "0",
-          colour: "#3BAA34",
-          marker: "circle",
-          markEnd: true,
-        },
-        {
-          text: "Moderat måloppnåelse",
-          strokeDash: "0",
-          colour: "#FD9C00",
-          marker: "square",
-          markEnd: true,
-        },
-        {
-          text: "Lav måloppnåelse",
-          strokeDash: "0",
-          colour: "#E30713",
-          marker: "triangle",
-          markEnd: true,
-        },
-      ],
-      { fontSize: 16, fontFamily: "Arial", fontWeight: 500 },
-    ),
-    font: {
-      fontSize: 18,
-      fontWeight: 500,
-      fontFamily: "Arial",
-    },
-    yAxisText: "Antall indikatorer",
-    xTicksFont: { fontFamily: "Arial", fontSize: 16, fontWeight: 500 },
-    yTicksFont: { fontFamily: "Arial", fontSize: 14, fontWeight: 500 },
-    startYear: lastYear - pastYears,
-    endYear: lastYear,
-    yMin: 0,
-    normalise: true,
-    useToolTip: true,
-  };
 
   const medfieldTableProps: MedfieldTableProps = {
     unitNames: [selectedTreatmentUnits[0]],
@@ -245,24 +188,9 @@ export const Skde = (): JSX.Element => {
     treatmentYear: lastYear,
   };
 
-  // State logic for normalising the line plot
-  const [normalise, setNormalise] = React.useState(indicatorParams.normalise);
-
-  indicatorParams.normalise = normalise;
-
-  if (normalise) {
-    indicatorParams.yAxisText = "Andel";
-  } else {
-    indicatorParams.yAxisText = "Antall indikatorer";
-  }
-
   // State logic for ind or dg in medfieldtable
   const [dataQualityMedfieldtable, setDataQualityMedfieldtable] =
     React.useState(false);
-  const [
-    dataQualityLowlevelIndicatorlist,
-    setDataQualityLowlevelIndicatorList,
-  ] = React.useState(false);
 
   if (dataQualityMedfieldtable) {
     medfieldTableProps.type = "dg";
@@ -311,7 +239,7 @@ export const Skde = (): JSX.Element => {
               <Accordion
                 square={true}
                 sx={{
-                  width: 400,
+                  width: Math.min(400, 0.8 * width),
                   borderRadius: 11,
                   border: 1,
                   borderColor: skdeTheme.palette.primary.main,
@@ -424,93 +352,27 @@ export const Skde = (): JSX.Element => {
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <ExpandableItemBox
-                  collapsedHeight={boxMaxHeight}
-                  collapsedText="Vis flere"
-                  expandedText="Vis færre"
-                >
-                  <Box padding={titlePadding}>
-                    <Typography variant="h5" style={titleStyle}>
-                      <b>Siste års måloppnåelse</b>
-                    </Typography>
-                    <div style={{ margin: textMargin }}>
-                      <Typography variant="body1">
-                        {"Her er en interaktiv liste som gir oversikt over kvalitetsindikatorene ut fra siste års måloppnåelse for " +
-                          (unitNamesQuery.data &&
-                            getUnitFullName(
-                              unitNamesQuery.data.nestedUnitNames,
-                              selectedTreatmentUnits[0],
-                            )) +
-                          ". Du kan trykke på indikatorene for å se mer informasjon om indikatoren og følge oppgitt lenke til mer detaljert beskrivelse av indikatoren."}
-                      </Typography>
-                    </div>
-                    <ChipSelection
-                      leftChipLabel="Vis kvalitetsindikatorer"
-                      rightChipLabel="Vis datakvalitet"
-                      leftChipHelpText="Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register kvalitetsindikatorene kommer fra."
-                      rightChipHelpText="Datakvalitet representerer for eksempel dekningsgrad som angir andel pasienter eller hendelser som registreres, i forhold til antall som skal registreres i registeret fra behandlingsstedet. Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register datakvaliteten er rapportert fra."
-                      hoverBoxOffset={[20, 20]}
-                      hoverBoxPlacement="top"
-                      hoverBoxMaxWidth={400}
-                      state={dataQualityLowlevelIndicatorlist}
-                      stateSetter={setDataQualityLowlevelIndicatorList}
-                      trueChip="right"
-                    />
-                  </Box>
-
-                  <LowLevelIndicatorList
-                    context={"caregiver"}
-                    type={dataQualityLowlevelIndicatorlist ? "dg" : "ind"}
-                    unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
-                    year={lastYear}
-                  />
-                </ExpandableItemBox>
+                <HospitalProfileLowLevelTable
+                  unitName={selectedTreatmentUnits[0]}
+                  boxMaxHeight={boxMaxHeight}
+                  titlePadding={titlePadding}
+                  titleStyle={titleStyle}
+                  textMargin={textMargin}
+                  unitFullName={unitFullName}
+                  lastYear={lastYear}
+                />
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <ItemBox sx={{ overflow: "auto" }}>
-                  <Box padding={titlePadding}>
-                    <Typography variant="h5" style={titleStyle}>
-                      <b>Utvikling over tid</b>
-                    </Typography>
-                    <Stack
-                      direction="row"
-                      alignItems="center"
-                      justifyContent="space-between"
-                    >
-                      <ChipSelection
-                        leftChipLabel="Vis andel"
-                        rightChipLabel="Vis Antall"
-                        leftChipHelpText=""
-                        rightChipHelpText=""
-                        hoverBoxOffset={[20, 20]}
-                        hoverBoxPlacement="top"
-                        hoverBoxMaxWidth={400}
-                        state={normalise}
-                        stateSetter={setNormalise}
-                        trueChip="left"
-                      />
-                      <LinePlotLegend itemSpacing={8} symbolSpacing={2} />
-                    </Stack>
-                    <div style={{ margin: textMargin }}>
-                      <Typography variant="body1">
-                        {"Grafen gir en oversikt over kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistrene for " +
-                          (unitNamesQuery.data &&
-                            getUnitFullName(
-                              unitNamesQuery.data.nestedUnitNames,
-                              selectedTreatmentUnits[0],
-                            )) +
-                          ". Her vises andel eller antall av kvalitetsindikatorer som har hatt høy, middels eller lav måloppnåelse de siste årene."}
-                      </Typography>
-                    </div>
-                  </Box>
-
-                  <ThemeProvider theme={lineChartTheme}>
-                    <div id="plot-window">
-                      <IndicatorLinechart {...indicatorParams} />
-                    </div>
-                  </ThemeProvider>
-                </ItemBox>
+                <HospitalProfileLinePlot
+                  unitFullName={unitFullName}
+                  unitNames={selectedTreatmentUnits[0]}
+                  lastYear={lastYear}
+                  pastYears={pastYears}
+                  titlePadding={titlePadding}
+                  titleStyle={titleStyle}
+                  textMargin={textMargin}
+                />
               </Grid>
             </Grid>
           </Box>
