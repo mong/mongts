@@ -38,7 +38,7 @@ import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { HospitalInfoBox } from "../../src/components/HospitalProfile";
 import { URLs } from "types";
-import { getUnitFullName } from "../../src/helpers/functions/getUnitFullName";
+import { getUnitFullName } from "qmongjs";
 import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
 import { useScreenSize } from "@visx/responsive";
 import { breakpoints } from "qmongjs";

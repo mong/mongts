@@ -28,6 +28,7 @@ import {
   IndicatorTable,
   IndicatorTableBodyV2,
   skdeTheme,
+  useUnitNamesQuery,
 } from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
 import Switch from "@mui/material/Switch";
@@ -106,6 +107,13 @@ export default function TreatmentQualityPage() {
     mainQueryParamsConfig.selected_row,
   )[0];
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
+    "all",
+    tableContext,
+    dataQualitySelected ? "dg" : "ind",
+  );
+
   // Load register names and medical fields
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const registryNameQuery: UseQueryResult<any, unknown> =
@@ -115,10 +123,13 @@ export default function TreatmentQualityPage() {
     useMedicalFieldsQuery();
 
   const queriesReady =
-    registryNameQuery.isFetched && medicalFieldsQuery.isFetched;
+    registryNameQuery.isFetched &&
+    medicalFieldsQuery.isFetched &&
+    unitNamesQuery.isFetched;
 
   const registers = registryNameQuery?.data;
   const medicalFields = medicalFieldsQuery?.data;
+  const nestedUnitNames = unitNamesQuery?.data?.nestedUnitNames;
 
   /**
    * Get the register names for the selected medical fields and registers
@@ -361,6 +372,7 @@ export default function TreatmentQualityPage() {
                             register.full_name,
                         )}
                         showTreatmentYear={true}
+                        nestedUnitNames={nestedUnitNames}
                       />
                     </IndicatorTableWrapper>
                   ))}

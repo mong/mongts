@@ -28,7 +28,8 @@
     "**/*.tsx",
     "vitest.config.mts",
     ".next/types/**/*.ts",
-    "src/helpers/functions/unitName2BohfMap.ts"
+    "src/helpers/functions/unitName2BohfMap.ts",
+    "../../packages/qmongjs/src/helpers/functions/getUnitName.tsx"
   ],
   "exclude": ["./cypress.config.ts", "node_modules", "**/*.test.tsx"]
 }
