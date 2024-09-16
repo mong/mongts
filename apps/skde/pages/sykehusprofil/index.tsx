@@ -65,9 +65,6 @@ export const Skde = (): JSX.Element => {
     withDefault(DelimitedArrayParam, ["Nasjonalt"]),
   );
 
-  // Set infobox image
-  const [imgSrc, setImgSrc] = useState(null);
-
   // Infobox URL
   const [unitUrl, setUnitUrl] = useState<string | null>(null);
 
@@ -128,8 +125,6 @@ export const Skde = (): JSX.Element => {
   ) => {
     const newUnit = filterInput.get(treatmentUnitsKey).map((el) => el.value);
 
-    setImgSrc("/img/forsidebilder/" + newUnit[0] + ".jpg");
-
     let unitUrl: URLs | undefined;
     if (unitUrlsQuery.data) {
       unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
@@ -152,8 +147,6 @@ export const Skde = (): JSX.Element => {
 
     setExpanded(false);
     setSelectedTreatmentUnits(newUnit);
-
-    setImgSrc("/img/forsidebilder/" + newUnit[0] + ".jpg");
 
     let unitUrl: URLs | undefined;
     if (unitUrlsQuery.data) {
@@ -274,8 +267,6 @@ export const Skde = (): JSX.Element => {
                   unitNames={unitNamesQuery.data}
                   selectedTreatmentUnit={selectedTreatmentUnits[0]}
                   unitUrl={unitUrl}
-                  imgSrc={imgSrc}
-                  setImgSrc={setImgSrc}
                 />
               </Grid>
               <Grid size={{ xs: 12, sm: 5 }}>
