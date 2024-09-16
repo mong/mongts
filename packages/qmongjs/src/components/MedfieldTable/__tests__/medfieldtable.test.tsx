@@ -3,7 +3,6 @@ import { MedfieldTable, createMedfieldTableData } from "..";
 import { vi, test, expect } from "vitest";
 import * as hooks from "../../../helpers/hooks";
 import { render } from "@testing-library/react";
-import { vi } from "vitest";
 import { Indicator } from "types";
 
 const medfieldTableData: Indicator[] = [
