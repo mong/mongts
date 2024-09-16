@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MedfieldTable, MedfieldTableProps } from "../../MedfieldTable";
+import { MedfieldTable, MedfieldTableProps } from "qmongjs";
 import { ExpandableItemBox } from "../ExpandableItemBox";
 import { ChipSelection } from "../../ChipSelection";
 import { Box, Typography } from "@mui/material";

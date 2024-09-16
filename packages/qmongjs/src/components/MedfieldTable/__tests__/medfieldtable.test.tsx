@@ -1,8 +1,8 @@
 import React from "react";
 import { MedfieldTable, createMedfieldTableData } from "..";
-import { medfieldTableData } from "../../../../test/test_data/data";
+import { medfieldTableData } from "../../../../../../apps/skde/test/test_data/data";
 import { vi, test, expect } from "vitest";
-import * as hooks from "../../../../../../packages/qmongjs/src/helpers/hooks";
+import * as hooks from "../../../helpers/hooks";
 import { render } from "@testing-library/react";
 import { vi } from "vitest";
 
