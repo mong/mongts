@@ -398,7 +398,6 @@ export const Skde = (): JSX.Element => {
               <Grid size={{ xs: 12 }}>
                 <HospitalProfileLinePlot
                   unitFullName={unitFullName}
-                  width={width}
                   unitNames={selectedTreatmentUnits[0]}
                   lastYear={lastYear}
                   pastYears={pastYears}
