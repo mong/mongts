@@ -150,7 +150,9 @@ const normaliseChartData = (data: LinechartData[][]) => {
   return data;
 };
 
-const IndicatorLinechart = (indicatorParams: IndicatorLinechartParams) => {
+export const IndicatorLinechart = (
+  indicatorParams: IndicatorLinechartParams,
+) => {
   // Fetch aggregated data
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const indicatorQuery: UseQueryResult<any, unknown> =
@@ -234,5 +236,3 @@ const IndicatorLinechart = (indicatorParams: IndicatorLinechartParams) => {
     />
   );
 };
-
-export default IndicatorLinechart;
