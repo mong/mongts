@@ -30,27 +30,19 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Typography,
   Container,
   styled,
 } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import {
-  MedfieldTable,
-  MedfieldTableProps,
-} from "../../src/components/MedfieldTable";
 import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
-import {
-  ExpandableItemBox,
-  HospitalInfoBox,
-} from "../../src/components/HospitalProfile";
+import { HospitalInfoBox } from "../../src/components/HospitalProfile";
 import { URLs } from "types";
 import { getUnitFullName } from "../../src/helpers/functions/getUnitFullName";
-import { ChipSelection } from "../../src/components/ChipSelection";
 import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
 import { useScreenSize } from "@visx/responsive";
 import { breakpoints } from "qmongjs";
+import { HospitalProfileMedfieldTable } from "../../src/components/HospitalProfile/HospitalProfileMedfieldTable";
 import { HospitalProfileLowLevelTable } from "../../src/components/HospitalProfile/HospitalProfileLowLevelTable";
 import { HospitalProfileLinePlot } from "../../src/components/HospitalProfile/HospitalProfileLinePlot";
 
@@ -181,23 +173,6 @@ export const Skde = (): JSX.Element => {
   const lastYear = defaultYear;
   const pastYears = 5;
 
-  const medfieldTableProps: MedfieldTableProps = {
-    unitNames: [selectedTreatmentUnits[0]],
-    context: "caregiver",
-    type: "ind",
-    treatmentYear: lastYear,
-  };
-
-  // State logic for ind or dg in medfieldtable
-  const [dataQualityMedfieldtable, setDataQualityMedfieldtable] =
-    React.useState(false);
-
-  if (dataQualityMedfieldtable) {
-    medfieldTableProps.type = "dg";
-  } else {
-    medfieldTableProps.type = "ind";
-  }
-
   const breadcrumbs: BreadCrumbPath = {
     path: [
       {
@@ -313,42 +288,14 @@ export const Skde = (): JSX.Element => {
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <ExpandableItemBox
-                  collapsedHeight={boxMaxHeight}
-                  collapsedText="Vis flere"
-                  expandedText="Vis færre"
-                >
-                  <Box padding={titlePadding}>
-                    <Typography variant="h5" style={titleStyle}>
-                      <b>Kvalitetsindikatorer fordelt på fagområder</b>
-                    </Typography>
-                    <ChipSelection
-                      leftChipLabel="Vis kvalitetsindikatorer"
-                      rightChipLabel="Vis datakvalitet"
-                      leftChipHelpText="Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register kvalitetsindikatorene kommer fra."
-                      rightChipHelpText="Datakvalitet representerer for eksempel dekningsgrad som angir andel pasienter eller hendelser som registreres, i forhold til antall som skal registreres i registeret fra behandlingsstedet. Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register datakvaliteten er rapportert fra."
-                      hoverBoxOffset={[20, 20]}
-                      hoverBoxPlacement="top"
-                      hoverBoxMaxWidth={400}
-                      state={dataQualityMedfieldtable}
-                      stateSetter={setDataQualityMedfieldtable}
-                      trueChip="right"
-                    />
-                    <div style={{ margin: textMargin }}>
-                      <Typography variant="body1">
-                        {dataQualityMedfieldtable
-                          ? "Her vises dekningsgraden eller datakvaliteten til " +
-                            selectedTreatmentUnits[0] +
-                            " fordelt på fagområder som forteller om datagrunnlaget fra registrene."
-                          : "Her vises alle kvalitetsindikatorene fra " +
-                            selectedTreatmentUnits[0] +
-                            " fordelt på fagområder. Hver indikator er vist som et symbol for høy, middels eller lav måloppnåelse."}
-                      </Typography>
-                    </div>
-                  </Box>
-
-                  <MedfieldTable {...medfieldTableProps} />
-                </ExpandableItemBox>
+                <HospitalProfileMedfieldTable
+                  boxMaxHeight={boxMaxHeight}
+                  titlePadding={titlePadding}
+                  titleStyle={titleStyle}
+                  textMargin={textMargin}
+                  unitName={selectedTreatmentUnits[0]}
+                  lastYear={lastYear}
+                />
               </Grid>
 
               <Grid size={{ xs: 12 }}>
