@@ -3,12 +3,14 @@ import { Button, Box } from "@mui/material";
 
 type ExpandableItemBoxProps = {
   collapsedHeight: number;
+  expandedText: string;
+  collapsedText: string;
 };
 
 export const ExpandableItemBox = (
   props: PropsWithChildren<ExpandableItemBoxProps>,
 ) => {
-  const { collapsedHeight } = props;
+  const { collapsedHeight, expandedText, collapsedText } = props;
 
   const [expanded, setExpanded] = useState<boolean>(false);
   const ref = useRef(null);
@@ -46,6 +48,10 @@ export const ExpandableItemBox = (
           height: expanded ? "auto" : collapsedHeight,
           overflow: "hidden",
           minHeight: collapsedHeight,
+          maskImage: !expanded
+            ? "linear-gradient(black, 90%,  transparent)"
+            : undefined,
+          maskMode: "alpha",
         }}
       >
         {props.children}
@@ -59,7 +65,7 @@ export const ExpandableItemBox = (
         fullWidth
         onClick={handleClick}
       >
-        {expanded ? "Se mindre" : "Se mer"}
+        {expanded ? expandedText : collapsedText}
       </Button>
     </Box>
   );

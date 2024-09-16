@@ -1,5 +1,4 @@
 import { PropsWithChildren, useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import {
   ArrayParam,
   DelimitedArrayParam,
@@ -27,7 +26,10 @@ import {
   getTreatmentUnitsTree,
   getYearOptions,
 } from "./filterMenuOptions";
-import { useUnitNamesQuery } from "../../../helpers/hooks";
+import {
+  useUnitNamesQuery,
+  useSelectionYearsQuery,
+} from "../../../helpers/hooks";
 import Alert from "@mui/material/Alert";
 import { UseQueryResult } from "@tanstack/react-query";
 import {
@@ -56,6 +58,7 @@ export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   registryNameData: any;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   medicalFieldData: any;
+  register?: string;
 }>;
 
 // Types used due to the use of useQueryParam
@@ -92,8 +95,9 @@ export function TreatmentQualityFilterMenu({
   registryNameData: registryNameData,
   medicalFieldData: medicalFieldData,
   context: context,
+  register: register,
 }: TreatmentQualityFilterMenuProps) {
-  const selectedRegister = "all";
+  const selectedRegister = register ?? "all";
   const queryContext = { context: context, type: "ind" }; // TODO: Variable for "ind"/"dg"?
 
   // Restrict max number of treatment units for small view sizes
@@ -104,23 +108,10 @@ export function TreatmentQualityFilterMenu({
       ? 10
       : 15;
 
-  // When the user navigates to the page, it may contain query parameters for
-  // filtering indicators. Use NextRouter to get the current path containing the
-  // initial query parameters.
-
-  const router = useRouter();
-
-  // Next's prerender stage causes problems for the initial values given to
-  // useReducer, because they are only set once by the reducer and are missing
-  // during Next's prerender stage. Tell FilterMenu to refresh its state during
-  // the first call after the prerender is done.
-
-  const [prevReady, setPrevReady] = useState(router.isReady);
-  const prerenderFinished = prevReady !== router.isReady;
-
+  const [mounted, setMounted] = useState(false);
   useEffect(() => {
-    setPrevReady(router.isReady);
-  }, [router.isReady]);
+    setMounted(true);
+  }, []);
 
   // Map for filter options, defaults, and query parameter values and setters
   const optionsMap = new Map<string, OptionsMapEntry>();
@@ -134,12 +125,25 @@ export function TreatmentQualityFilterMenu({
     dg: StringParam,
   });
 
+  // Get list of all years with data from given register
+  let listOfYears: [number] | undefined = undefined;
+  if (register) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const selectionYearQuery: UseQueryResult<any, unknown> =
+      useSelectionYearsQuery(register as string, queryContext.context, "");
+
+    listOfYears = selectionYearQuery.data as [number];
+  }
   // Year selection
-  const yearOptions = getYearOptions();
+  const yearOptions = listOfYears
+    ? getYearOptions(Math.min(...listOfYears), Math.max(...listOfYears))
+    : getYearOptions();
+
   const [selectedYear, setSelectedYear] = useQueryParam<string>(
     yearKey,
     withDefault(StringParam, yearOptions.default.value),
   );
+
   optionsMap.set(yearKey, {
     options: yearOptions.values,
     default: yearOptions.default,
@@ -194,14 +198,17 @@ export function TreatmentQualityFilterMenu({
     queryContext.type,
   );
 
-  const [prevApiQueryLoading, setPrevApiQueryLoading] = useState(
-    unitNamesQuery.isLoading,
+  const [previouslyNotFetched, setPreviouslyNotFetched] = useState(
+    !unitNamesQuery.isFetched,
   );
-  const apiQueriesCompleted = prevApiQueryLoading && !unitNamesQuery.isLoading;
+
+  // Refresh initial state if query is fetched and was previously not fetched
+  const shouldRefreshInitialState =
+    unitNamesQuery.isFetched && previouslyNotFetched;
 
   useEffect(() => {
-    setPrevApiQueryLoading(unitNamesQuery.isLoading);
-  }, [unitNamesQuery.isLoading]);
+    setPreviouslyNotFetched(!unitNamesQuery.isFetched);
+  }, [unitNamesQuery.isFetched]);
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
@@ -349,7 +356,71 @@ export function TreatmentQualityFilterMenu({
     return valueLabel;
   };
 
-  const shouldRefreshInitialState = prerenderFinished || apiQueriesCompleted;
+  if (!mounted) {
+    return null;
+  }
+
+  if (register) {
+    return (
+      <>
+        <FilterMenu
+          refreshState={shouldRefreshInitialState}
+          onSelectionChanged={handleFilterChanged}
+          onFilterInitialized={onFilterInitialized}
+        >
+          <SelectedFiltersSection
+            accordion={false}
+            filterkey="selectedfilters"
+            sectionid="selectedfilters"
+            sectiontitle="Valgte filtre"
+          />
+          <TreeViewFilterSection
+            refreshState={shouldRefreshInitialState}
+            treedata={treatmentUnits.treedata}
+            defaultvalues={treatmentUnits.defaults}
+            initialselections={
+              selectedTreatmentUnits.map((value) => ({
+                value: value,
+                valueLabel: value,
+              })) as FilterSettingsValue[]
+            }
+            sectionid={treatmentUnitsKey}
+            sectiontitle={
+              context === "resident" ? "Opptaksområder" : "Behandlingsenheter"
+            }
+            filterkey={treatmentUnitsKey}
+            searchbox={true}
+            maxselections={maxSelectedTreatmentUnits}
+          />
+          <RadioGroupFilterSection
+            radios={yearOptions.values}
+            defaultvalues={[yearOptions.default]}
+            initialselections={[
+              { value: selectedYear, valueLabel: selectedYear },
+            ]}
+            sectiontitle={"År"}
+            sectionid={yearKey}
+            filterkey={yearKey}
+          />
+          <RadioGroupFilterSection
+            radios={achievementLevelOptions.values}
+            defaultvalues={
+              achievementLevelOptions.default
+                ? [achievementLevelOptions.default]
+                : []
+            }
+            initialselections={getFilterSettingsValue(
+              levelKey,
+              selectedAchievementLevel,
+            )}
+            sectiontitle={"Måloppnåelse"}
+            sectionid={levelKey}
+            filterkey={levelKey}
+          />
+        </FilterMenu>
+      </>
+    );
+  }
 
   return (
     <>

@@ -1,0 +1,732 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Levels counts are correct 1`] = `
+[
+  ,
+  {
+    "green": 1,
+    "name": "Hjerte- og karsykdommer",
+    "red": 1,
+    "registers": [
+      ,
+      {
+        "full_name": "Hjerteregister nummer 1",
+        "green": 1,
+        "name": "hjertereg1",
+        "red": 0,
+        "short_name": "Hjerteregister 1",
+        "yellow": 0,
+      },
+      {
+        "full_name": "Hjerteregister nummer 2",
+        "green": 0,
+        "name": "hjertereg2",
+        "red": 1,
+        "short_name": "Hjerteregister 2",
+        "yellow": 0,
+      },
+    ],
+    "yellow": 0,
+  },
+  ,
+  {
+    "green": 1,
+    "name": "Diabetes",
+    "red": 0,
+    "registers": [
+      ,
+      ,
+      ,
+      {
+        "full_name": "Diabetesregister nummer 1",
+        "green": 1,
+        "name": "diabetesreg1",
+        "red": 0,
+        "short_name": "Diabetesregister 1",
+        "yellow": 1,
+      },
+    ],
+    "yellow": 1,
+  },
+  ,
+  {
+    "green": 3,
+    "name": "Barn",
+    "red": 0,
+    "registers": [
+      ,
+      ,
+      ,
+      ,
+      {
+        "full_name": "Barneregister nummer 1",
+        "green": 1,
+        "name": "barnereg1",
+        "red": 0,
+        "short_name": "Barneregister 1",
+        "yellow": 0,
+      },
+      {
+        "full_name": "Barneregister nummer 2",
+        "green": 2,
+        "name": "barnereg2",
+        "red": 0,
+        "short_name": "Barneregister 2",
+        "yellow": 0,
+      },
+    ],
+    "yellow": 0,
+  },
+]
+`;
+
+exports[`Table renders correctly 1`] = `
+<div>
+  <div
+    class="MuiTableContainer-root css-rorn0c-MuiTableContainer-root"
+  >
+    <table
+      class="MuiTable-root css-rqglhn-MuiTable-root"
+    >
+      <thead
+        class="MuiTableHead-root css-15wwp11-MuiTableHead-root"
+      >
+        <tr
+          class="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+        >
+          <th
+            class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1t7lzbz-MuiTableCell-root"
+            scope="col"
+          />
+          <th
+            class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1t7lzbz-MuiTableCell-root"
+            scope="col"
+          >
+            <h6
+              class="MuiTypography-root MuiTypography-subtitle1 css-1ixrkmk-MuiTypography-root"
+            >
+              <b>
+                Fagområde
+              </b>
+            </h6>
+          </th>
+          <th
+            class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1t7lzbz-MuiTableCell-root"
+            scope="col"
+          >
+            <h6
+              class="MuiTypography-root MuiTypography-subtitle1 css-1ixrkmk-MuiTypography-root"
+            >
+              <b>
+                Resultat
+              </b>
+            </h6>
+          </th>
+        </tr>
+      </thead>
+      <tbody
+        class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+      >
+        <tr
+          class="MuiTableRow-root css-2blr9s-MuiTableRow-root"
+          style="cursor: pointer;"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <button
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-hizwh9-MuiButtonBase-root-MuiIconButton-root"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-20bmp1-MuiSvgIcon-root"
+                data-testid="ExpandCircleDownOutlinedIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M15.08 9.59 12 12.67 8.92 9.59 7.5 11l4.5 4.5 4.5-4.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8"
+                />
+              </svg>
+            </button>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1edfpdg-MuiTypography-root"
+            >
+              Hjerte- og karsykdommer
+            </p>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              style="color: rgb(88, 165, 92); font-size: 1.2rem;"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              style="color: rgb(216, 81, 64); font-size: 1.2rem;"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M464 464H48a16 16 0 0 1-14.07-23.62l208-384a16 16 0 0 1 28.14 0l208 384A16 16 0 0 1 464 464z"
+              />
+            </svg>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root css-pibo8m-MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          />
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-overline css-140vwic-MuiTypography-root"
+            >
+              Register
+            </span>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-overline css-140vwic-MuiTypography-root"
+            >
+              Resultat
+            </span>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root css-pibo8m-MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          />
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <a
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1apkmlw-MuiButtonBase-root-MuiButton-root"
+              href="/behandlingskvalitet/?selected_treatment_units=Tromsø&indicator=reg-hjertereg1&dg="
+              tabindex="0"
+              target="_self"
+            >
+              <div
+                class="MuiStack-root css-1rlitzi-MuiStack-root"
+              >
+                <span
+                  class="MuiTypography-root MuiTypography-overline css-140vwic-MuiTypography-root"
+                >
+                  Hjerteregister 1
+                </span>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1lzspe0-MuiSvgIcon-root"
+                  data-testid="ArrowForwardIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                  />
+                </svg>
+              </div>
+            </a>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              style="color: rgb(88, 165, 92); font-size: 1.2rem;"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
+              />
+            </svg>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root css-pibo8m-MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          />
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <a
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1apkmlw-MuiButtonBase-root-MuiButton-root"
+              href="/behandlingskvalitet/?selected_treatment_units=Tromsø&indicator=reg-hjertereg2&dg="
+              tabindex="0"
+              target="_self"
+            >
+              <div
+                class="MuiStack-root css-1rlitzi-MuiStack-root"
+              >
+                <span
+                  class="MuiTypography-root MuiTypography-overline css-140vwic-MuiTypography-root"
+                >
+                  Hjerteregister 2
+                </span>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1lzspe0-MuiSvgIcon-root"
+                  data-testid="ArrowForwardIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                  />
+                </svg>
+              </div>
+            </a>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              style="color: rgb(216, 81, 64); font-size: 1.2rem;"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M464 464H48a16 16 0 0 1-14.07-23.62l208-384a16 16 0 0 1 28.14 0l208 384A16 16 0 0 1 464 464z"
+              />
+            </svg>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root css-2blr9s-MuiTableRow-root"
+          style="cursor: pointer;"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <button
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-hizwh9-MuiButtonBase-root-MuiIconButton-root"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-20bmp1-MuiSvgIcon-root"
+                data-testid="ExpandCircleDownOutlinedIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M15.08 9.59 12 12.67 8.92 9.59 7.5 11l4.5 4.5 4.5-4.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8"
+                />
+              </svg>
+            </button>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1edfpdg-MuiTypography-root"
+            >
+              Diabetes
+            </p>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              style="color: rgb(88, 165, 92); font-size: 1.2rem;"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              style="color: rgb(253, 156, 0); font-size: 1.2rem;"
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z"
+              />
+            </svg>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root css-pibo8m-MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          />
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-overline css-140vwic-MuiTypography-root"
+            >
+              Register
+            </span>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-overline css-140vwic-MuiTypography-root"
+            >
+              Resultat
+            </span>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root css-pibo8m-MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          />
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <a
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1apkmlw-MuiButtonBase-root-MuiButton-root"
+              href="/behandlingskvalitet/?selected_treatment_units=Tromsø&indicator=reg-diabetesreg1&dg="
+              tabindex="0"
+              target="_self"
+            >
+              <div
+                class="MuiStack-root css-1rlitzi-MuiStack-root"
+              >
+                <span
+                  class="MuiTypography-root MuiTypography-overline css-140vwic-MuiTypography-root"
+                >
+                  Diabetesregister 1
+                </span>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1lzspe0-MuiSvgIcon-root"
+                  data-testid="ArrowForwardIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                  />
+                </svg>
+              </div>
+            </a>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              style="color: rgb(88, 165, 92); font-size: 1.2rem;"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              style="color: rgb(253, 156, 0); font-size: 1.2rem;"
+              viewBox="0 0 448 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z"
+              />
+            </svg>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root css-2blr9s-MuiTableRow-root"
+          style="cursor: pointer;"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <button
+              class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeSmall css-hizwh9-MuiButtonBase-root-MuiIconButton-root"
+              tabindex="0"
+              type="button"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-20bmp1-MuiSvgIcon-root"
+                data-testid="ExpandCircleDownOutlinedIcon"
+                focusable="false"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M15.08 9.59 12 12.67 8.92 9.59 7.5 11l4.5 4.5 4.5-4.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8"
+                />
+              </svg>
+            </button>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <p
+              class="MuiTypography-root MuiTypography-body1 css-1edfpdg-MuiTypography-root"
+            >
+              Barn
+            </p>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              style="color: rgb(88, 165, 92); font-size: 1.2rem;"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              style="color: rgb(88, 165, 92); font-size: 1.2rem;"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              style="color: rgb(88, 165, 92); font-size: 1.2rem;"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
+              />
+            </svg>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root css-pibo8m-MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          />
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-overline css-140vwic-MuiTypography-root"
+            >
+              Register
+            </span>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <span
+              class="MuiTypography-root MuiTypography-overline css-140vwic-MuiTypography-root"
+            >
+              Resultat
+            </span>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root css-pibo8m-MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          />
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <a
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1apkmlw-MuiButtonBase-root-MuiButton-root"
+              href="/behandlingskvalitet/?selected_treatment_units=Tromsø&indicator=reg-barnereg1&dg="
+              tabindex="0"
+              target="_self"
+            >
+              <div
+                class="MuiStack-root css-1rlitzi-MuiStack-root"
+              >
+                <span
+                  class="MuiTypography-root MuiTypography-overline css-140vwic-MuiTypography-root"
+                >
+                  Barneregister 1
+                </span>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1lzspe0-MuiSvgIcon-root"
+                  data-testid="ArrowForwardIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                  />
+                </svg>
+              </div>
+            </a>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              style="color: rgb(88, 165, 92); font-size: 1.2rem;"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
+              />
+            </svg>
+          </td>
+        </tr>
+        <tr
+          class="MuiTableRow-root css-pibo8m-MuiTableRow-root"
+        >
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          />
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <a
+              class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButton-colorPrimary css-1apkmlw-MuiButtonBase-root-MuiButton-root"
+              href="/behandlingskvalitet/?selected_treatment_units=Tromsø&indicator=reg-barnereg2&dg="
+              tabindex="0"
+              target="_self"
+            >
+              <div
+                class="MuiStack-root css-1rlitzi-MuiStack-root"
+              >
+                <span
+                  class="MuiTypography-root MuiTypography-overline css-140vwic-MuiTypography-root"
+                >
+                  Barneregister 2
+                </span>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1lzspe0-MuiSvgIcon-root"
+                  data-testid="ArrowForwardIcon"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+                  />
+                </svg>
+              </div>
+            </a>
+          </td>
+          <td
+            class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-10ukr6t-MuiTableCell-root"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              style="color: rgb(88, 165, 92); font-size: 1.2rem;"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              stroke-width="0"
+              style="color: rgb(88, 165, 92); font-size: 1.2rem;"
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"
+              />
+            </svg>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
