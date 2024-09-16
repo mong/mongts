@@ -16,7 +16,6 @@ import {
   FilterMenu,
   useUnitNamesQuery,
   useUnitUrlsQuery,
-  LowLevelIndicatorList,
   LineStyles,
   defaultYear,
   TreeViewFilterSection,
@@ -60,6 +59,7 @@ import { ChipSelection } from "../../src/components/ChipSelection";
 import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
 import { useScreenSize } from "@visx/responsive";
 import { breakpoints } from "qmongjs";
+import { HospitalProfileLowLevelTable } from "../../src/components/HospitalProfile/HospitalProfileLowLevelTable";
 
 const AccordionWrapper = styled(Box)(() => ({
   "& MuiAccordion-root:before": {
@@ -259,10 +259,6 @@ export const Skde = (): JSX.Element => {
   // State logic for ind or dg in medfieldtable
   const [dataQualityMedfieldtable, setDataQualityMedfieldtable] =
     React.useState(false);
-  const [
-    dataQualityLowlevelIndicatorlist,
-    setDataQualityLowlevelIndicatorList,
-  ] = React.useState(false);
 
   if (dataQualityMedfieldtable) {
     medfieldTableProps.type = "dg";
@@ -424,47 +420,15 @@ export const Skde = (): JSX.Element => {
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <ExpandableItemBox
-                  collapsedHeight={boxMaxHeight}
-                  collapsedText="Vis flere"
-                  expandedText="Vis færre"
-                >
-                  <Box padding={titlePadding}>
-                    <Typography variant="h5" style={titleStyle}>
-                      <b>Siste års måloppnåelse</b>
-                    </Typography>
-                    <div style={{ margin: textMargin }}>
-                      <Typography variant="body1">
-                        {"Her er en interaktiv liste som gir oversikt over kvalitetsindikatorene ut fra siste års måloppnåelse for " +
-                          (unitNamesQuery.data &&
-                            getUnitFullName(
-                              unitNamesQuery.data.nestedUnitNames,
-                              selectedTreatmentUnits[0],
-                            )) +
-                          ". Du kan trykke på indikatorene for å se mer informasjon om indikatoren og følge oppgitt lenke til mer detaljert beskrivelse av indikatoren."}
-                      </Typography>
-                    </div>
-                    <ChipSelection
-                      leftChipLabel="Vis kvalitetsindikatorer"
-                      rightChipLabel="Vis datakvalitet"
-                      leftChipHelpText="Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register kvalitetsindikatorene kommer fra."
-                      rightChipHelpText="Datakvalitet representerer for eksempel dekningsgrad som angir andel pasienter eller hendelser som registreres, i forhold til antall som skal registreres i registeret fra behandlingsstedet. Hver indikator er fremstilt som et symbol som viser om indikatoren er høy, middels eller lav måloppnåelse. Du kan også trykke på fagområde for å se hvilke register datakvaliteten er rapportert fra."
-                      hoverBoxOffset={[20, 20]}
-                      hoverBoxPlacement="top"
-                      hoverBoxMaxWidth={400}
-                      state={dataQualityLowlevelIndicatorlist}
-                      stateSetter={setDataQualityLowlevelIndicatorList}
-                      trueChip="right"
-                    />
-                  </Box>
-
-                  <LowLevelIndicatorList
-                    context={"caregiver"}
-                    type={dataQualityLowlevelIndicatorlist ? "dg" : "ind"}
-                    unitNames={[selectedTreatmentUnits[0] || "Nasjonalt"]}
-                    year={lastYear}
-                  />
-                </ExpandableItemBox>
+                <HospitalProfileLowLevelTable
+                  unitName={selectedTreatmentUnits[0]}
+                  boxMaxHeight={boxMaxHeight}
+                  titlePadding={titlePadding}
+                  titleStyle={titleStyle}
+                  textMargin={textMargin}
+                  unitFullName={selectedTreatmentUnits[0]}
+                  lastYear={lastYear}
+                />
               </Grid>
 
               <Grid size={{ xs: 12 }}>
