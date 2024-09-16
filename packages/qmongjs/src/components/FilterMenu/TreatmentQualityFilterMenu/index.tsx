@@ -102,11 +102,9 @@ export function TreatmentQualityFilterMenu({
 
   // Restrict max number of treatment units for small view sizes
   const theme = useTheme();
-  const maxSelectedTreatmentUnits = useMediaQuery(theme.breakpoints.down("xxl"))
+  const maxSelectedTreatmentUnits = useMediaQuery(theme.breakpoints.down("md"))
     ? 5
-    : useMediaQuery(theme.breakpoints.down("xxxl"))
-      ? 10
-      : 15;
+    : 10;
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
