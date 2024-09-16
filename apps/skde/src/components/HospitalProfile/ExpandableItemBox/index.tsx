@@ -66,10 +66,13 @@ export const ExpandableItemBox = (
           height: expanded ? "auto" : collapsedHeight,
           overflow: "hidden",
           minHeight: collapsedHeight,
-          maskImage: !expanded
-            ? "linear-gradient(black, 90%,  transparent)"
-            : undefined,
+          maskImage:
+            !expanded && overflow
+              ? "linear-gradient(black, 98%,  transparent)"
+              : undefined,
           maskMode: "alpha",
+          borderBottomLeftRadius: !expanded && !overflow ? "24px" : "0px",
+          borderBottomRightRadius: !expanded && !overflow ? "24px" : "0px",
         }}
       >
         {<div ref={contentRef}>{props.children}</div>}
