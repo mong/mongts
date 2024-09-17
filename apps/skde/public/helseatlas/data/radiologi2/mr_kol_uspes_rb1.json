@@ -7,7 +7,7 @@
       "y": "bohf",
       "xLabel": {
         "nb": "Andel MR kolumna uten sykdomsdiagnoser",
-        "en": "tmp"
+        "en": "Proportion of vertebral column MRI without disease diagnosis"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -25,7 +25,7 @@
       "data": "datasett_1",
       "caption": {
         "nb": "Årlige gjennomsnittsverdier for perioden 2018–2021. <br>* Andelene er basert på kjønns- og aldersjusterte rater.",
-        "en": "Årlige gjennomsnittsverdier for perioden 2018–2021. <br>* Andelene er basert på kjønns- og aldersjusterte rater."
+        "en": "Annual average during 2018–2022. <br>* Proportions are based on age and gender adjusted rates."
       },
       "columns": [
         {
@@ -45,14 +45,14 @@
         {
           "id": "tot_events",
           "label_no": "Uten sykdomsdiagnoser",
-          "label_en": "Examinations",
+          "label_en": "Without disease diagnosis",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
           "id": "tot_pop",
           "label_no": "MR kolumna",
-          "label_en": "Inhabitants",
+          "label_en": "Vertebral column MRI",
           "typeVar": "number",
           "format": ",.0f"
         }
@@ -64,7 +64,7 @@
       "x": "totsnitt",
       "caption": {
         "nb": "Andel MR kolumna uten sykdomsdiagnoser",
-        "en": "tmp"
+        "en": "Proportions of vertebral column MRI without disease diagnosis"
       },
       "jenks": [
         {
