@@ -6,8 +6,16 @@ import {
   useIndicatorQuery,
   useMedicalFieldsQuery,
 } from "../../helpers/hooks";
-import { customFormat, newLevelSymbols, level2, skdeTheme } from "qmongjs";
-import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
+import { getTrend } from "../../helpers/functions";
+import {
+  customFormat,
+  newLevelSymbols,
+  level2,
+  skdeTheme,
+  Hoverbox,
+} from "qmongjs";
+import { styled } from "@mui/system";
+import { ExpandCircleDownOutlined } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import {
   Box,
@@ -26,31 +34,60 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { ArrowLink } from "../ArrowLink";
+import {
+  HelpOutline,
+  TrendingDown,
+  TrendingFlat,
+  TrendingUp,
+} from "@mui/icons-material";
 
-const result = (data: IndicatorData, point: DataPoint, dg?: boolean) => {
+const ExpandCircleUpOutlined = styled(ExpandCircleDownOutlined)({
+  transform: "rotate(180deg)",
+});
+
+const result = (
+  data: IndicatorData,
+  point: DataPoint,
+  trend: number | null,
+  dg?: boolean,
+) => {
   let pointVar: number | null;
 
   if (dg) {
-    pointVar = point && point.dg ? point.dg : null;
+    pointVar = point && point.dg !== null ? point.dg : null;
   } else {
-    pointVar = point && point.var ? point.var : null;
+    pointVar = point && point.var !== null ? point.var : null;
   }
 
-  return pointVar ? (
-    <Stack direction="row">
-      {customFormat(data.format!)(pointVar)}
+  return pointVar !== null ? (
+    <Stack direction="row" alignItems="center" spacing={1}>
+      <Typography variant="subtitle2">
+        <b>{customFormat(data.format!)(pointVar)}</b>
+      </Typography>
       {!dg
         ? newLevelSymbols(
             level2(data, point),
             "indicator-row-symbol" + data.indicatorID,
           )
         : null}
+      {!dg ? (
+        trend === -1 ? (
+          <TrendingDown />
+        ) : trend === 1 ? (
+          <TrendingUp />
+        ) : (
+          <TrendingFlat />
+        )
+      ) : null}
     </Stack>
   ) : (
-    "NA"
+    <Typography variant="subtitle2">
+      <b>NA</b>
+    </Typography>
   );
 };
 
+// Returns a subset of the data with the level corresponding to the index.
 const getDataSubset = (
   indData: IndicatorData[],
   year: number,
@@ -64,12 +101,13 @@ const getDataSubset = (
       return false;
     }
 
-    const lastYear = indDataRow.data.find((p) => {
+    // Check if data exists for the selected year
+    const yearDataPoint = indDataRow.data.find((p) => {
       return p.year === year;
     });
 
-    if (lastYear) {
-      return level2(indDataRow, lastYear) === selectedLevel;
+    if (yearDataPoint) {
+      return level2(indDataRow, yearDataPoint) === selectedLevel;
     } else return false;
   });
 
@@ -128,9 +166,20 @@ type IndicatorRowProps = {
 const IndicatorRow = (props: IndicatorRowProps) => {
   const { row, year, rowID, openRowID, setOpenRowID } = props;
 
-  const lastYear = row.data!.filter((el: DataPoint) => {
+  const yearDataPoint = row.data!.filter((el: DataPoint) => {
     return el.year === year;
   })[0];
+
+  const yearBeforeDataPoint = row.data!.filter((el: DataPoint) => {
+    return el.year === year - 1;
+  })[0];
+
+  const trend = getTrend(
+    yearBeforeDataPoint,
+    yearDataPoint,
+    row.levelDirection,
+    Number(row.format?.substring(2, 3)),
+  );
 
   let open: boolean;
 
@@ -160,14 +209,14 @@ const IndicatorRow = (props: IndicatorRowProps) => {
         style={{ cursor: "pointer" }}
       >
         <TableCell>
-          <IconButton onClick={onClick} aria-label="expand" size="small">
-            {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+          <IconButton size="small">
+            {open ? <ExpandCircleUpOutlined /> : <ExpandCircleDownOutlined />}
           </IconButton>
         </TableCell>
         <TableCell>
           <Typography variant="body1">{row.indicatorTitle}</Typography>
         </TableCell>
-        <TableCell>{result(row, lastYear)}</TableCell>
+        <TableCell>{result(row, yearDataPoint, trend)}</TableCell>
       </TableRow>
 
       <TableRow
@@ -177,24 +226,24 @@ const IndicatorRow = (props: IndicatorRowProps) => {
         <TableCell />
         <TableCell colSpan={2}>
           <Stack direction="row" justifyContent="space-evenly">
-            {lastYear ? (
+            {yearDataPoint ? (
               <Stack direction="row">
                 <Box sx={{ marginRight: 1 }}>
                   <Typography variant="overline">Dekningsgrad:</Typography>
                 </Box>
                 <Typography variant="overline">
-                  {result(row, lastYear, true)}
+                  {result(row, yearDataPoint, trend, true)}
                 </Typography>
               </Stack>
             ) : null}
 
-            {lastYear ? (
+            {yearDataPoint ? (
               <ArrowLink
                 href={
                   "https://apps.skde.no/behandlingskvalitet/?selected_treatment_units=" +
-                  lastYear.unitName +
+                  yearDataPoint.unitName +
                   "&selected_row=" +
-                  lastYear.indicatorID
+                  yearDataPoint.indicatorID
                 }
                 externalLink={true}
                 text="Mer om indikatoren"
@@ -318,7 +367,21 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
                 </TableCell>
                 <TableCell>
                   <Typography variant="subtitle1">
-                    <b>Resultat</b>
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                      <b>Resultat</b>
+                      <Hoverbox
+                        title="Indikatorer viser med prosent og et symbol for måloppnåelse. Som regel er indikatoren beregnet med andel av pasienter som oppfyller kriteriet fra kvalitetsregisteret. Du kan trykke på indikatoren for å få detaljert beskrivelse av indikatoren."
+                        placement="top"
+                        offset={[20, 20]}
+                      >
+                        <HelpOutline
+                          sx={{
+                            color: skdeTheme.palette.primary.main,
+                            fontSize: "24px",
+                          }}
+                        />
+                      </Hoverbox>
+                    </Stack>
                   </Typography>
                 </TableCell>
               </TableRow>

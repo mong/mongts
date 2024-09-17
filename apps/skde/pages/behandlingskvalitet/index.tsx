@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 
 import { ChevronLeftRounded } from "@mui/icons-material";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid2";
 import { useQueryParam, withDefault, StringParam } from "use-query-params";
 import {
   FilterSettingsAction,
@@ -55,9 +55,8 @@ const scrollToSelectedRow = (selectedRow: string): boolean => {
   const headerOffset = 160;
 
   if (element) {
-    console.debug("Found element, attempting to scroll");
     const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    const offsetPosition = elementPosition + window.scrollY - headerOffset;
     window.scrollTo({
       top: offsetPosition,
       behavior: "smooth",
@@ -65,7 +64,6 @@ const scrollToSelectedRow = (selectedRow: string): boolean => {
 
     return true;
   } else {
-    console.debug("Didn't find element");
     return false;
   }
 };
@@ -116,9 +114,8 @@ export default function TreatmentQualityPage() {
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
 
-  const queriesReady = !(
-    registryNameQuery.isLoading || medicalFieldsQuery.isLoading
-  );
+  const queriesReady =
+    registryNameQuery.isFetched && medicalFieldsQuery.isFetched;
 
   const registers = registryNameQuery?.data;
   const medicalFields = medicalFieldsQuery?.data;
@@ -304,9 +301,9 @@ export default function TreatmentQualityPage() {
           context={tableContext}
           onTabChanged={setTableContext}
         />
-        <Grid container xs={12}>
+        <Grid container size={{ xs: 12 }}>
           {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? ( // Permanent menu on large screens
-            <Grid xxl={3} xxxl={2} className="menu-wrapper">
+            <Grid size={{ xxl: 4, xxml: 3, xxxl: 2 }} className="menu-wrapper">
               {queriesReady && (
                 <Box
                   sx={{
@@ -328,14 +325,14 @@ export default function TreatmentQualityPage() {
               )}
             </Grid>
           ) : null}
-          <Grid xs={12} xxl={9} xxxl={10}>
-            <Grid container spacing={2} disableEqualOverflow>
-              <Grid xs={12}>
+          <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
+            <Grid container spacing={2}>
+              <Grid size={{ xs: 12 }}>
                 {queriesReady &&
                   (newIndicatorTableActivated || newTableOnly ? (
                     <IndicatorTableV2Wrapper className="table-wrapper">
                       <IndicatorTableBodyV2
-                        key="indicator-table"
+                        key={"indicator-table2"}
                         context={tableContext}
                         unitNames={selectedTreatmentUnits}
                         year={selectedYear}
@@ -347,7 +344,7 @@ export default function TreatmentQualityPage() {
                   ) : (
                     <IndicatorTableWrapper className="table-wrapper">
                       <IndicatorTable
-                        key="indicator-table"
+                        key={"indicator-table"}
                         context={tableContext}
                         dataQuality={dataQualitySelected}
                         tableType="allRegistries"

@@ -444,14 +444,27 @@ const LineChart = (props: Props) => {
           tooltipTop={tooltipTop}
           format={tickformat}
         />
-        <div style={{ position: "relative", left: "78%", top: -620 }}>
-          <img src="/img/logos/logo-skde-graa.svg" width={"7%"} />
-        </div>
-        <div style={{ position: "relative", left: "3%", top: -30 }}>
-          <Typography variant="subtitle1">
-            {"Kilde: " + description.full_name}
-          </Typography>
-        </div>
+        <img
+          src="/img/logos/logo-skde-graa.svg"
+          height={width / 27}
+          style={{
+            position: "relative",
+            left: "77%",
+            width: "auto",
+            bottom: height + 85,
+          }}
+        />
+        <Typography
+          variant="subtitle1"
+          style={{
+            position: "relative",
+            left: "3%",
+            top: -30,
+            width: "fit-content",
+          }}
+        >
+          {"Kilde: " + description.full_name}
+        </Typography>
       </div>
     </>
   );

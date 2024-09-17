@@ -1,4 +1,4 @@
-import { NavigateNextRounded } from "@mui/icons-material";
+import { NavigateNextRounded, ArrowBack } from "@mui/icons-material";
 import {
   Breadcrumbs,
   Breakpoint,
@@ -8,7 +8,9 @@ import {
   styled,
   Container,
 } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid2";
+import { useTheme } from "@mui/material/styles";
+import { useMediaQuery } from "@mui/material";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -40,9 +42,43 @@ export type BreadCrumbPath = {
   path: BreadCrumbStop[];
 };
 
+/**
+ * A component that displays breadcrumbs based on the provided path.
+ *
+ * @param {BreadCrumbPath} props - An object containing the breadcrumb path.
+ * @return {JSX.Element} A JSX element representing the breadcrumbs.
+ */
+
 const SkdeBreadcrumbs = (props: BreadCrumbPath) => {
   const { path } = props;
 
+  const theme = useTheme();
+  const onMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  /**
+   * On small screens, only second to last element is displayed.
+   * The first element is empty.
+   * The separator is a left arrow.
+   */
+  if (onMobile && path.length > 1) {
+    const secondToLastElement = path.at(-2);
+    return (
+      <Breadcrumbs
+        separator={<ArrowBack fontSize="medium" />}
+        aria-label="breadcrumb"
+      >
+        <div></div>
+        <Link
+          underline="hover"
+          key="mobile_breadcrumb"
+          href={secondToLastElement.link}
+          variant="h6"
+        >
+          {secondToLastElement.text}
+        </Link>
+      </Breadcrumbs>
+    );
+  }
   return (
     <Breadcrumbs
       separator={<StyledBreadcrumbSeparator fontSize="large" />}
@@ -70,12 +106,12 @@ export const HeaderTop = (props: HeaderTopProps) => {
     <StyledToolbar className="header-top">
       <Container maxWidth={maxWidth ? maxWidth : false} disableGutters={true}>
         <Grid container spacing={2}>
-          <Grid xs={12}>
+          <Grid size={{ xs: 12 }}>
             <Link href={"https://www.skde.no/"}>
               <LogoImage src="/img/logos/logo-skde.svg" alt="SKDE logo" />
             </Link>
           </Grid>
-          <Grid xs={12}>
+          <Grid size={{ xs: 12 }}>
             <SkdeBreadcrumbs path={breadcrumbs.path} />
           </Grid>
         </Grid>

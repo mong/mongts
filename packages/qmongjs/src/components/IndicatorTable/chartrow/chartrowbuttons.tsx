@@ -25,6 +25,7 @@ interface Props {
     newValue: "line" | "bar",
     updateType?: UrlUpdateType | undefined,
   ) => void;
+  logo: HTMLImageElement;
 }
 
 export const FigureButtons = (props: Props) => {
@@ -39,6 +40,7 @@ export const FigureButtons = (props: Props) => {
     chartType,
     treatmentYear,
     updateChartType,
+    logo,
   } = props;
 
   function getDownloadURL(svgContainer: React.RefObject<HTMLDivElement>) {
@@ -58,20 +60,10 @@ export const FigureButtons = (props: Props) => {
 
     image.src = "data:image/svg+xml," + encodeURIComponent(src.outerHTML);
 
-    const logo = new Image();
-    logo.width = 76;
-    logo.height = 31;
-
-    logo.src = "/img/logos/logo-skde-graa.svg";
-
     if (!image) return;
     if (!logo) return;
 
     image.onerror = function (e) {
-      console.log(e);
-    };
-
-    logo.onerror = function (e) {
       console.log(e);
     };
 

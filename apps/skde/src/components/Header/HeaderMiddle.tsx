@@ -1,7 +1,8 @@
 import React from "react";
 import { Toolbar, Typography, styled, Container } from "@mui/material";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid2";
 import { Breakpoint } from "@mui/material";
+import { useRouter } from "next/router";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   paddingTop: theme.spacing(12),
@@ -21,17 +22,36 @@ type HeaderMiddleProps = {
 };
 
 export const HeaderMiddle = (props: HeaderMiddleProps) => {
+  const router = useRouter();
+  const mainUrl = "https://apps.skde.no" + router.asPath;
+
   return (
     <StyledToolbar
-      sx={{ bgcolor: props.bgcolor || "primary.light" }}
+      sx={{
+        bgcolor: process.env.NEXT_PUBLIC_VERIFY
+          ? "error.main"
+          : props.bgcolor || "primary.light",
+      }}
       className="header-middle"
     >
       <Container maxWidth={props.maxWidth} disableGutters={true}>
         <Grid container spacing={2} rowSpacing={6}>
-          <Grid xs={12}>
+          <Grid size={{ xs: 12 }}>
+            {process.env.NEXT_PUBLIC_VERIFY && (
+              <>
+                <Typography variant="h6">
+                  OBS! Dette er en verifiseringsside for testdata. Hvis du
+                  ønsker å se offisielle tall må du gå til{" "}
+                  <a href={mainUrl} target="_self">
+                    www.skde.no.
+                  </a>
+                </Typography>
+                <br />
+              </>
+            )}
             <Typography variant="h1">{props.headerData.title}</Typography>
           </Grid>
-          <Grid xs={12}>
+          <Grid size={{ xs: 12 }}>
             <Typography variant="h6">{props.headerData.subtitle}</Typography>
           </Grid>
           {props.children !== undefined && props.children}

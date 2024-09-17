@@ -2,7 +2,7 @@ import Image from "next/image";
 import { imgLoader } from "qmongjs";
 import Link from "next/link";
 import { styled } from "@mui/material/styles";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid2";
 import { Stack, Container } from "@mui/material";
 import { ArrowLink } from "qmongjs/src/components/ArrowLink";
 import { Breakpoint } from "@mui/material/styles";
@@ -35,13 +35,13 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
       <div style={{ backgroundColor: "#333", width: "100%" }}>
         <Container maxWidth={maxWidth} disableGutters={true}>
           <Grid
-            xs={12}
+            size={{ xs: 12 }}
             container
             className={className ? className : "footer"}
             paddingTop={2}
             paddingBottom={4}
           >
-            <Grid xs={12} sm={6} marginBottom={2} marginTop={2}>
+            <Grid size={{ xs: 12, sm: 6 }} marginBottom={2} marginTop={2}>
               <Stack spacing={3}>
                 <h4>OM NETTSTEDET</h4>
                 <ArrowLink
@@ -65,7 +65,7 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
               </Stack>
             </Grid>
 
-            <Grid xs={12} sm={6} marginTop={2}>
+            <Grid size={{ xs: 12, sm: 6 }} marginTop={2}>
               <Stack spacing={3}>
                 <h4>KONTAKT</h4>
                 <ArrowLink
@@ -82,7 +82,7 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
       <div style={{ backgroundColor: "#1A1A1A", width: "100%" }}>
         <Container maxWidth={maxWidth} disableGutters={true}>
           <Grid
-            xs={12}
+            size={{ xs: 12 }}
             container
             className={className ? className : "footer"}
             style={{ background: "#1A1A1A" }}
@@ -90,17 +90,15 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
             sx={{ overflow: "clip" }}
             rowGap={4}
           >
-            <Grid container xs={12} alignItems="center">
+            <Grid container size={{ xs: 12 }} alignItems="center">
               <Grid
                 container
                 display="flex"
-                justifyContent={helseatlas ? "space-around" : "flex-start"}
-                spacing={4}
-                xs={12}
-                lg={kvalitet ? 6 : 12}
+                size={{ xs: 12 }}
                 alignItems="center"
+                paddingTop="3rem"
               >
-                <Grid>
+                <Grid size={{ xs: kvalitet ? 8 : 4 }}>
                   <Link href={"https://www.skde.no/"}>
                     <Image
                       className="footer-logo"
@@ -113,22 +111,9 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
                     />
                   </Link>
                 </Grid>
-                <Grid>
-                  <Link href={"https://www.helse-nord.no/"}>
-                    <Image
-                      className="footer-logo"
-                      id="helse-nord-logo"
-                      loader={imgLoader}
-                      src={"/img/logos/logo-helse-nord-neg.svg"}
-                      alt="Helse Nord logo"
-                      width={220}
-                      height={76}
-                    />
-                  </Link>
-                </Grid>
                 {helseatlas && (
                   <>
-                    <Grid>
+                    <Grid size={{ xs: 4 }}>
                       <Link
                         href="https://helse-forde.no/"
                         title="Link til Helse Førde"
@@ -142,7 +127,7 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
                         />
                       </Link>
                     </Grid>
-                    <Grid>
+                    <Grid size={{ xs: 4 }}>
                       <Link
                         href="https://helse-vest.no/"
                         title="Link til Helse Vest"
@@ -158,30 +143,30 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
                     </Grid>
                   </>
                 )}
+                {kvalitet && (
+                  <Grid size={{ xs: 4 }}>
+                    <Link href={"https://www.kvalitetsregistre.no/"}>
+                      <Image
+                        className="footer-logo"
+                        id="nsm-footer-logo"
+                        loader={imgLoader}
+                        src={"/img/logos/nsm-hvit.svg"}
+                        alt="NSM-logo"
+                        width={467}
+                        height={52}
+                      />
+                    </Link>
+                  </Grid>
+                )}
               </Grid>
-              {kvalitet && (
-                <Grid xs={6}>
-                  <Link href={"https://www.kvalitetsregistre.no/"}>
-                    <Image
-                      className="footer-logo"
-                      id="nsm-footer-logo"
-                      loader={imgLoader}
-                      src={"/img/logos/nsm-hvit.svg"}
-                      alt="NSM-logo"
-                      width={467}
-                      height={52}
-                    />
-                  </Link>
-                </Grid>
-              )}
             </Grid>
 
-            <Grid xs={12}>
+            <Grid size={{ xs: 12 }}>
               Senter for klinisk dokumentasjon og evaluering (SKDE) er en enhet
               i Helse Nord.
             </Grid>
 
-            <Grid xs={12} sm={6} md={4}>
+            <Grid size={{ xs: 12, sm: 6, md: 4 }}>
               <Stack>
                 <b>TELEFON</b>
                 <StyledLink href={"tel:77755800"}>77 75 58 00</StyledLink>
@@ -193,7 +178,7 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
               </Stack>
             </Grid>
 
-            <Grid xs={12} sm={6} md={4}>
+            <Grid size={{ xs: 12, sm: 6, md: 4 }}>
               <Stack>
                 <b>BESØKSADRESSE</b>
                 Sykehusvegen 23 <br />
@@ -204,11 +189,26 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
               </Stack>
             </Grid>
 
-            <Grid xs={12} md={4}>
-              <Stack>
-                <b>ORGANISASJONSNUMMER</b>
-                990803765
-              </Stack>
+            <Grid size={{ xs: 12, md: 4 }}>
+              <Grid>
+                <Stack>
+                  <b>ORGANISASJONSNUMMER</b>
+                  883658752
+                </Stack>
+              </Grid>
+              <Grid paddingTop="3.5rem">
+                <Link href={"https://www.helse-nord.no/"}>
+                  <Image
+                    className="footer-logo"
+                    id="helse-nord-logo"
+                    loader={imgLoader}
+                    src={"/img/logos/logo-helse-nord-neg.svg"}
+                    alt="Helse Nord logo"
+                    width={220}
+                    height={52}
+                  />
+                </Link>
+              </Grid>
             </Grid>
           </Grid>
         </Container>
