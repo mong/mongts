@@ -1,23 +1,43 @@
-import { useState, useRef, PropsWithChildren } from "react";
+import { useState, useRef, PropsWithChildren, useEffect } from "react";
 import { Button, Box } from "@mui/material";
 
 type ExpandableItemBoxProps = {
   collapsedHeight: number;
+  expandedText: string;
+  collapsedText: string;
 };
 
 export const ExpandableItemBox = (
   props: PropsWithChildren<ExpandableItemBoxProps>,
 ) => {
-  const { collapsedHeight } = props;
+  const { collapsedHeight, expandedText, collapsedText } = props;
 
   const [expanded, setExpanded] = useState<boolean>(false);
-  const ref = useRef(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const outerRef = useRef<HTMLDivElement>(null);
+  const [overflow, setOverflow] = useState(false);
 
   const topMargin = 10;
 
+  useEffect(() => {
+    if (!contentRef.current || !outerRef.current) {
+      return;
+    }
+
+    const obs = new ResizeObserver(() => {
+      const hasOverflow =
+        (outerRef.current?.offsetHeight ?? 0) <
+        (contentRef.current?.offsetHeight ?? 0);
+      setOverflow(hasOverflow);
+    });
+
+    obs.observe(contentRef.current);
+    return () => obs.disconnect();
+  });
+
   const handleClick = () => {
     // Scroll the top of the box into view
-    const elemCoords = ref.current.getBoundingClientRect();
+    const elemCoords = outerRef.current.getBoundingClientRect();
 
     if (expanded && elemCoords.y < topMargin) {
       window.scrollTo({
@@ -37,7 +57,7 @@ export const ExpandableItemBox = (
   };
 
   return (
-    <Box ref={ref}>
+    <Box ref={outerRef}>
       <Box
         sx={{
           backgroundColor: "white",
@@ -46,21 +66,30 @@ export const ExpandableItemBox = (
           height: expanded ? "auto" : collapsedHeight,
           overflow: "hidden",
           minHeight: collapsedHeight,
+          maskImage:
+            !expanded && overflow
+              ? "linear-gradient(black, 98%,  transparent)"
+              : undefined,
+          maskMode: "alpha",
+          borderBottomLeftRadius: !expanded && !overflow ? "24px" : "0px",
+          borderBottomRightRadius: !expanded && !overflow ? "24px" : "0px",
         }}
       >
-        {props.children}
+        {<div ref={contentRef}>{props.children}</div>}
       </Box>
-      <Button
-        sx={{
-          backgroundColor: "white",
-          borderBottomLeftRadius: "24px",
-          borderBottomRightRadius: "24px",
-        }}
-        fullWidth
-        onClick={handleClick}
-      >
-        {expanded ? "Se mindre" : "Se mer"}
-      </Button>
+      {overflow || expanded ? (
+        <Button
+          sx={{
+            backgroundColor: "white",
+            borderBottomLeftRadius: "24px",
+            borderBottomRightRadius: "24px",
+          }}
+          fullWidth
+          onClick={handleClick}
+        >
+          {expanded ? expandedText : collapsedText}
+        </Button>
+      ) : null}
     </Box>
   );
 };
