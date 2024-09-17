@@ -314,7 +314,7 @@ export default function TreatmentQualityPage() {
         />
         <Grid container size={{ xs: 12 }}>
           {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? ( // Permanent menu on large screens
-            <Grid size={{ xxl: 3, xxxl: 2 }} className="menu-wrapper">
+            <Grid size={{ xxl: 4, xxml: 3, xxxl: 2 }} className="menu-wrapper">
               {queriesReady && (
                 <Box
                   sx={{
@@ -336,7 +336,7 @@ export default function TreatmentQualityPage() {
               )}
             </Grid>
           ) : null}
-          <Grid size={{ xs: 12, xxl: 9, xxxl: 10 }}>
+          <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
                 {queriesReady &&
