@@ -107,6 +107,12 @@ const fonts = {
     fontSize: "14px",
     letterSpacing: "1.5px",
   },
+  Breadcrumbs: {
+    fontFamily: `${jakartaStyle.fontFamily}`,
+    fontWeight: "400",
+    fontSize: "14px",
+    letterSpacing: "0.25px",
+  },
 };
 
 export const breakpoints = {

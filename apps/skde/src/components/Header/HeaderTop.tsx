@@ -14,18 +14,18 @@ import { useMediaQuery } from "@mui/material";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
-  paddingTop: theme.spacing(5),
-  paddingBottom: theme.spacing(5),
+  paddingTop: theme.spacing(3.5),
+  paddingBottom: theme.spacing(3.5),
 }));
 
 const LogoImage = styled("img")(({ theme }) => ({
-  [theme.breakpoints.down("lg")]: {
-    height: 40,
-    width: 100,
+  [theme.breakpoints.down("md")]: {
+    height: 46,
+    width: 114,
   },
-  [theme.breakpoints.up("lg")]: {
-    height: 50,
-    width: 125,
+  [theme.breakpoints.up("md")]: {
+    height: 52,
+    width: 129,
   },
 }));
 
@@ -81,7 +81,9 @@ const SkdeBreadcrumbs = (props: BreadCrumbPath) => {
   }
   return (
     <Breadcrumbs
-      separator={<StyledBreadcrumbSeparator fontSize="large" />}
+      separator={
+        <StyledBreadcrumbSeparator fontSize="medium" fontWeight="bold" />
+      }
       aria-label="breadcrumb"
     >
       {path.slice(0, -1).map((row, index) => (
