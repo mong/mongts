@@ -261,7 +261,10 @@ export const Skde = (): JSX.Element => {
         <Container maxWidth={maxWidth} disableGutters={true}>
           <Box marginTop={2} className="hospital-profile-box">
             <Grid container spacing={2}>
-              <Grid size={{ xs: 12, sm: 7 }}>
+              <Grid
+                size={{ xs: 12, sm: 7 }}
+                data-testid={`hospital_profile_box_${selectedTreatmentUnits[0]}`}
+              >
                 <HospitalInfoBox
                   boxHeight={width > breakpoints.xxl ? 350 : 450}
                   unitNames={unitNamesQuery.data}
