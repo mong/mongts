@@ -73,7 +73,6 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
       setUnitUrl(null);
     }
 
-    setSelectedTreatmentUnits(newUnit);
     setUnitName(selectedTreatmentUnits[0]);
   };
 
