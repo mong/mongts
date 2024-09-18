@@ -26,7 +26,7 @@
       "x": ["privsnitt", "offsnitt"],
       "xLegend": {
         "nb": ["Private røntgeninstitutt", "Offentlig"],
-        "en": ["Private imaging clincis", "Public"]
+        "en": ["Private imaging clinics", "Public"]
       },
       "y": "bohf",
       "xLabel": {
@@ -71,7 +71,7 @@
         "nb": "Andel av befolkningen i aldersgruppen med MR kolumna undersøkelse",
         "en": "Proportion of population underwent MRI of vertebral column"
       },
-      "format_y": ",.1%",
+      "format_y": ",.0%",
       "linevars": ["Kvinner", "Menn"],
       "linevarsLabels": {
         "nb": ["Kvinner", "Menn"],
@@ -124,7 +124,7 @@
         {
           "id": "andel_priv",
           "label_no": "Andel** privat",
-          "label_en": "Proportion** in private",
+          "label_en": "Proportion** in private clinics",
           "typeVar": "number",
           "format": ",.0%"
         },
