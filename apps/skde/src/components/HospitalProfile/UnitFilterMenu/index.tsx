@@ -46,6 +46,8 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
 
   const [mounted, setMounted] = useState(false);
 
+  const [firstRender, setFirstRender] = useState(true)
+
   const treatmentUnitsKey = "selected_treatment_units";
 
   // Current unit name and its setter function
@@ -91,27 +93,32 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
 
   // Callback function for updating the filter menu
   const handleChange = (filterInput: FilterSettings) => {
-    const newUnit = filterInput.map
-      .get(treatmentUnitsKey)
-      .map((el) => el.value);
+    
+    if (!firstRender) {
+      const newUnit = filterInput.map
+        .get(treatmentUnitsKey)
+        .map((el) => el.value);
 
-    setExpanded(false);
-    setSelectedTreatmentUnits(newUnit);
+      setExpanded(false);
+      setSelectedTreatmentUnits(newUnit);
 
-    setUnitName(selectedTreatmentUnits[0]);
+      setUnitName(selectedTreatmentUnits[0]);
 
-    let unitUrl: URLs | undefined;
-    if (unitUrlsQuery.data) {
-      unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
-        return row.shortName === selectedTreatmentUnits[0];
-      });
-    }
+      let unitUrl: URLs | undefined;
+      if (unitUrlsQuery.data) {
+        unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
+          return row.shortName === selectedTreatmentUnits[0];
+        });
+      }
 
-    if (unitUrl && unitUrl[0]) {
-      setUnitUrl(unitUrl[0].url);
-    } else {
-      setUnitUrl(null);
-    }
+      if (unitUrl && unitUrl[0]) {
+        setUnitUrl(unitUrl[0].url);
+      } else {
+        setUnitUrl(null);
+      }
+  } else {
+    setFirstRender(false)
+  }
   };
 
   useEffect(() => {
