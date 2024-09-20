@@ -46,7 +46,6 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
 
   // States
   const [expanded, setExpanded] = useState(false);
-  const [firstRender, setFirstRender] = useState(true);
 
   // URL query parameter key
   const treatmentUnitsKey = "selected_treatment_units";
@@ -98,30 +97,26 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
   // Callback function for updating the filter menu
   const handleChange = (filterInput: FilterSettings) => {
     // firstRender is a guard to ensure that handleChange does not trigger at the same time as initaliseFilter
-    if (!firstRender) {
-      const newUnit = filterInput.map
-        .get(treatmentUnitsKey)
-        .map((el) => el.value);
+    const newUnit = filterInput.map
+      .get(treatmentUnitsKey)
+      .map((el) => el.value);
 
-      setExpanded(false);
-      setSelectedTreatmentUnits(newUnit);
+    setExpanded(false);
+    setSelectedTreatmentUnits(newUnit);
 
-      setUnitName(newUnit[0]);
+    setUnitName(newUnit[0]);
 
-      let unitUrl: URLs | undefined;
-      if (unitUrlsQuery.data) {
-        unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
-          return row.shortName === newUnit[0];
-        });
-      }
+    let unitUrl: URLs | undefined;
+    if (unitUrlsQuery.data) {
+      unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
+        return row.shortName === newUnit[0];
+      });
+    }
 
-      if (unitUrl && unitUrl[0]) {
-        setUnitUrl(unitUrl[0].url);
-      } else {
-        setUnitUrl(null);
-      }
+    if (unitUrl && unitUrl[0]) {
+      setUnitUrl(unitUrl[0].url);
     } else {
-      setFirstRender(false);
+      setUnitUrl(null);
     }
   };
 
