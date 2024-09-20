@@ -74,6 +74,7 @@ const UnitButton = (props: {
     <Button
       href={"/sykehusprofil/?selected_treatment_units=" + unitName}
       variant={buttonVariant}
+      data-testid={`subunit_button_${unitName}`}
     >
       <Stack
         spacing={0.5}
