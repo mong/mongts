@@ -7,8 +7,8 @@ const queriesLoading = (queries: UseQueryResult<any, unknown>[]) => {
   return queries.some((query) => query.isLoading);
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function useShouldReinitialize(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   queries: UseQueryResult<any, unknown>[],
 ) {
   const router = useRouter();
