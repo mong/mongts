@@ -28,14 +28,51 @@ import { HospitalProfileLinePlot } from "../../src/components/HospitalProfile/Ho
 import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterMenu";
 
 export const Skde = (): JSX.Element => {
+  // States
   const [unitName, setUnitName] = useState<string>();
-
-  const { width } = useScreenSize();
-
-  // Infobox URL
   const [unitUrl, setUnitUrl] = useState<string | null>(null);
 
-  // Get unit names
+  // ############### //
+  // Page parameters //
+  // ############### //
+
+  // Styling
+  const boxMaxHeight = 800;
+  const titleStyle = { marginTop: 20, marginLeft: 20 };
+  const textMargin = 20;
+  const maxWidth = "xxl";
+  const titlePadding = 2;
+
+  // On screen resize
+  const { width } = useScreenSize();
+
+  // Years for filtering
+  const lastYear = defaultYear;
+  const pastYears = 5;
+
+  // Header settings
+  const breadcrumbs: BreadCrumbPath = {
+    path: [
+      {
+        link: "https://www.skde.no",
+        text: "Forside",
+      },
+      {
+        link: "/sykehusprofil/",
+        text: "Sykehusprofil",
+      },
+    ],
+  };
+
+  const headerData: HeaderData = {
+    title: "Sykehusprofil",
+    subtitle:
+      "Her vises alle kvalitetsindikatorer fra nasjonale medisinske kvalitetsregistre i form av sykehusprofiler",
+  };
+
+  // ######## //
+  // Queries //
+  // ####### //
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
@@ -60,39 +97,6 @@ export const Skde = (): JSX.Element => {
       unitNamesQuery.data &&
       getUnitFullName(unitNamesQuery.data.nestedUnitNames, unitName);
   }
-
-  // The following code ensures that the page renders correctly
-
-  // Year for filtering
-  const lastYear = defaultYear;
-  const pastYears = 5;
-
-  const breadcrumbs: BreadCrumbPath = {
-    path: [
-      {
-        link: "https://www.skde.no",
-        text: "Forside",
-      },
-      {
-        link: "/sykehusprofil/",
-        text: "Sykehusprofil",
-      },
-    ],
-  };
-
-  const headerData: HeaderData = {
-    title: "Sykehusprofil",
-    subtitle:
-      "Her vises alle kvalitetsindikatorer fra nasjonale medisinske kvalitetsregistre i form av sykehusprofiler",
-  };
-
-  const boxMaxHeight = 800;
-
-  const titleStyle = { marginTop: 20, marginLeft: 20 };
-  const textMargin = 20;
-
-  const maxWidth = "xxl";
-  const titlePadding = 2;
 
   return (
     <ThemeProvider theme={skdeTheme}>

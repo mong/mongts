@@ -42,12 +42,12 @@ const AccordionWrapper = styled(Box)(() => ({
 export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
   const { width, setUnitName, setUnitUrl, unitNamesQuery } = props;
 
+  // States
   const [expanded, setExpanded] = useState(false);
-
   const [mounted, setMounted] = useState(false);
-
   const [firstRender, setFirstRender] = useState(true);
 
+  // URL query parameter key
   const treatmentUnitsKey = "selected_treatment_units";
 
   // Current unit name and its setter function
@@ -55,6 +55,32 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
     treatmentUnitsKey,
     withDefault(DelimitedArrayParam, ["Nasjonalt"]),
   );
+
+  // Get thre treatment unit structure and trim it
+  const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
+
+  if (treatmentUnits.treedata.length > 1) {
+    // Find the index of "Private" and remove the children. The sub units should not be shown.
+    // TreetmentUnits.treedata starts with one element "Nasjonalt". Need to wait for it to build up the rest.
+    const indPrivate = treatmentUnits.treedata.findIndex(
+      (x) => x.nodeValue.value === "Private",
+    );
+    treatmentUnits.treedata[indPrivate].children = [];
+  }
+
+  // URLs for the web pages to the different treatment units
+  const unitUrlsQuery = useUnitUrlsQuery();
+
+  // Condition for regreshing the filter menu
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const shouldRefreshInitialState = mounted && unitUrlsQuery.isFetched;
+
+  // ###################################### //
+  // Callback functions for the filter menu //
+  // ###################################### //
 
   // Callback function for initialising the filter meny
   const initialiseFilter = (
@@ -78,21 +104,9 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
     setUnitName(newUnit[0]);
   };
 
-  const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
-
-  if (treatmentUnits.treedata.length > 1) {
-    // Find the index of "Private" and remove the children. The sub units should not be shown.
-    // TreetmentUnits.treedata starts with one element "Nasjonalt". Need to wait for it to build up the rest.
-    const indPrivate = treatmentUnits.treedata.findIndex(
-      (x) => x.nodeValue.value === "Private",
-    );
-    treatmentUnits.treedata[indPrivate].children = [];
-  }
-
-  const unitUrlsQuery = useUnitUrlsQuery();
-
   // Callback function for updating the filter menu
   const handleChange = (filterInput: FilterSettings) => {
+    // firstRender is a guard to ensure that handleChange does not trigger at the same time as initaliseFilter
     if (!firstRender) {
       const newUnit = filterInput.map
         .get(treatmentUnitsKey)
@@ -119,12 +133,6 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
       setFirstRender(false);
     }
   };
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const shouldRefreshInitialState = mounted && unitUrlsQuery.isFetched;
 
   return (
     <ClickAwayListener onClickAway={() => setExpanded(false)}>
