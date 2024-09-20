@@ -21,7 +21,7 @@ export default function useShouldReinitialize(
 
   const [prevReady, setPrevReady] = useState(router.isReady);
 
-  const prerenderFinished = prevReady !== router.isReady;
+  const unfinishedToFinishedPrerendering = prevReady !== router.isReady;
 
   useEffect(() => {
     setPrevReady(router.isReady);
@@ -37,5 +37,5 @@ export default function useShouldReinitialize(
     setPrevApiQueriesLoading(queriesLoading(queries));
   }, [queriesLoading(queries)]);
 
-  return prerenderFinished || apiQueriesCompleted;
+  return unfinishedToFinishedPrerendering || apiQueriesCompleted;
 }
