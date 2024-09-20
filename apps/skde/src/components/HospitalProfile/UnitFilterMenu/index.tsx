@@ -46,7 +46,7 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
 
   const [mounted, setMounted] = useState(false);
 
-  const [firstRender, setFirstRender] = useState(true)
+  const [firstRender, setFirstRender] = useState(true);
 
   const treatmentUnitsKey = "selected_treatment_units";
 
@@ -75,7 +75,7 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
       setUnitUrl(null);
     }
 
-    setUnitName(selectedTreatmentUnits[0]);
+    setUnitName(newUnit[0]);
   };
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
@@ -93,7 +93,6 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
 
   // Callback function for updating the filter menu
   const handleChange = (filterInput: FilterSettings) => {
-    
     if (!firstRender) {
       const newUnit = filterInput.map
         .get(treatmentUnitsKey)
@@ -116,9 +115,9 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
       } else {
         setUnitUrl(null);
       }
-  } else {
-    setFirstRender(false)
-  }
+    } else {
+      setFirstRender(false);
+    }
   };
 
   useEffect(() => {
