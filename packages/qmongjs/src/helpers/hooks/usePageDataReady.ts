@@ -10,7 +10,7 @@ const queriesLoading = (queries: UseQueryResult<any, unknown>[]) => {
 /**
  *
  * @param queries An array of tanstack queries of type UseQueryResults
- * @returns True when the page is hydrated and all queries have finished loading, but 
+ * @returns True when the page is hydrated and all queries have finished loading, but
  * only if the page and calls were pending when the hook first was called
  */
 export default function useShouldReinitialize(
