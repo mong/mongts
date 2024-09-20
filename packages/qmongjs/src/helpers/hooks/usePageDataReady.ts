@@ -7,6 +7,11 @@ const queriesLoading = (queries: UseQueryResult<any, unknown>[]) => {
   return queries.some((query) => query.isLoading);
 };
 
+/**
+ *
+ * @param queries An array of tanstack queries of type UseQueryResults
+ * @returns True if the page was not initially hydrated as well as finished loading api-data
+ */
 export default function useShouldReinitialize(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   queries: UseQueryResult<any, unknown>[],
