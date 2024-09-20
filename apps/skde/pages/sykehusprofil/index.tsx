@@ -128,7 +128,7 @@ export const Skde = (): JSX.Element => {
             <Grid container spacing={2}>
               <Grid
                 size={{ xs: 12, sm: 7 }}
-                data-testid={`hospital_profile_box_${selectedTreatmentUnits[0]}`}
+                data-testid={`hospital_profile_box_${unitName}`}
               >
                 <HospitalInfoBox
                   boxHeight={width > breakpoints.xxl ? 350 : 450}
