@@ -10,7 +10,8 @@ const queriesLoading = (queries: UseQueryResult<any, unknown>[]) => {
 /**
  *
  * @param queries An array of tanstack queries of type UseQueryResults
- * @returns True if the page was not initially hydrated as well as finished loading api-data
+ * @returns True when the page is hydrated and all queries have finished loading, but 
+ * only if the page and calls were pending when the hook first was called
  */
 export default function useShouldReinitialize(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
