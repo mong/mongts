@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const queriesLoading = (queries: UseQueryResult<any, unknown>[]) => {
+const anyQueriesLoading = (queries: UseQueryResult<any, unknown>[]) => {
   return queries.some((query) => query.isLoading);
 };
 
@@ -27,13 +27,13 @@ export default function useShouldReinitialize(
     setPreviousPrerenderingStatus(router.isReady);
   }, [router.isReady]);
 
-  const areQueriesStillLoading = queriesLoading(queries);
+  const areQueriesStillLoading = anyQueriesLoading(queries);
 
   const [previousQueryLoadingStatus, setPreviousQueryLoadingStatus] = useState(
     areQueriesStillLoading,
   );
 
-  const queriesJustCompleted = previousQueryLoadingStatus && !queriesLoading(queries);
+  const queriesJustCompleted = previousQueryLoadingStatus && !anyQueriesLoading(queries);
 
   useEffect(() => {
     setPreviousQueryLoadingStatus(areQueriesStillLoading);
