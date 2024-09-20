@@ -39,5 +39,5 @@ export default function useShouldReinitialize(
     setPreviousQueryLoadingStatus(areQueriesStillLoading);
   }, [areQueriesStillLoading]);
 
-  return prerenderingJustCompleted || queriesJustCompleted;
+  return (prerenderingJustCompleted && !areQueriesStillLoading) || queriesJustCompleted;
 }
