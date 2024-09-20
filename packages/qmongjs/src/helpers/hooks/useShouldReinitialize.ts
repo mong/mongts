@@ -9,9 +9,12 @@ const anyQueriesLoading = (queries: UseQueryResult<any, unknown>[]) => {
 
 /**
  *
+ * The variable from useShouldReinitialize becomes true either:
+ * 1) The first time the page has finished "pre-rendering" and the API calls have already finished loading. At this point, the query/get parameters from the URL are also ready.
+ * 2) The first time the API calls finish loading and the page is already "pre-rendered". That is, pre-rendering finishes first and then the API calls. At this point, the query/get parameters from the URL are also ready.
+ * 
  * @param queries An array of tanstack queries of type UseQueryResults
- * @returns True when the page is hydrated and all queries have finished loading, but
- * only if the page and calls were pending when the hook first was called
+ * @returns True the first time the page is finished hydrated and all queries have finished loading
  */
 export default function useShouldReinitialize(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
