@@ -1,4 +1,5 @@
 import { PropsWithChildren, useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import {
   ArrayParam,
   DelimitedArrayParam,
@@ -106,10 +107,19 @@ export function TreatmentQualityFilterMenu({
     ? 5
     : 10;
 
-  const [mounted, setMounted] = useState(false);
+  // When the user navigates to the page, it may contain query parameters for
+  // filtering indicators. Use NextRouter to get the current path containing the
+  // initial query parameters.
+  const router = useRouter();
+  // Next's prerender stage causes problems for the initial values given to
+  // useReducer, because they are only set once by the reducer and are missing
+  // during Next's prerender stage. Tell FilterMenu to refresh its state during
+  // the first call after the prerender is done.
+  const [prevReady, setPrevReady] = useState(router.isReady);
+  const prerenderFinished = prevReady !== router.isReady;
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    setPrevReady(router.isReady);
+  }, [router.isReady]);
 
   // Map for filter options, defaults, and query parameter values and setters
   const optionsMap = new Map<string, OptionsMapEntry>();
@@ -196,17 +206,14 @@ export function TreatmentQualityFilterMenu({
     queryContext.type,
   );
 
-  const [previouslyNotFetched, setPreviouslyNotFetched] = useState(
-    !unitNamesQuery.isFetched,
+  const [prevApiQueryLoading, setPrevApiQueryLoading] = useState(
+    unitNamesQuery.isLoading,
   );
-
-  // Refresh initial state if query is fetched and was previously not fetched
-  const shouldRefreshInitialState =
-    unitNamesQuery.isFetched && previouslyNotFetched;
+  const apiQueriesCompleted = prevApiQueryLoading && !unitNamesQuery.isLoading;
 
   useEffect(() => {
-    setPreviouslyNotFetched(!unitNamesQuery.isFetched);
-  }, [unitNamesQuery.isFetched]);
+    setPrevApiQueryLoading(unitNamesQuery.isLoading);
+  }, [unitNamesQuery.isLoading]);
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
@@ -354,9 +361,7 @@ export function TreatmentQualityFilterMenu({
     return valueLabel;
   };
 
-  if (!mounted) {
-    return null;
-  }
+  const shouldRefreshInitialState = prerenderFinished || apiQueriesCompleted;
 
   if (register) {
     return (
