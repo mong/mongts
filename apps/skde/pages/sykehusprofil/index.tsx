@@ -10,6 +10,7 @@ import {
   useUnitNamesQuery,
   defaultYear,
   mainHospitals,
+  useUnitUrlsQuery,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
 import { ThemeProvider, Box, Container } from "@mui/material";
@@ -75,11 +76,19 @@ export const Skde = (): JSX.Element => {
   // ####### //
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
+  const unitNamesQuery: UseQueryResult<any, Error> = useUnitNamesQuery(
     "all",
     "caregiver",
     "ind",
   );
+
+  // URLs for the web pages to the different treatment units
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const unitUrlsQuery: UseQueryResult<any, Error> = useUnitUrlsQuery();
+
+  if (unitNamesQuery.isFetching || unitUrlsQuery.isFetching) {
+    return null;
+  }
 
   let unitFullName: string;
 
@@ -112,6 +121,7 @@ export const Skde = (): JSX.Element => {
             setUnitName={setUnitName}
             setUnitUrl={setUnitUrl}
             unitNamesQuery={unitNamesQuery}
+            unitUrlsQuery={unitUrlsQuery}
           />
         </Header>
 

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   skdeTheme,
   FilterSettingsValue,
@@ -6,7 +6,6 @@ import {
   TreeViewFilterSection,
   FilterSettings,
   CustomAccordionExpandIcon,
-  useUnitUrlsQuery,
   getTreatmentUnitsTree,
 } from "qmongjs";
 import {
@@ -30,7 +29,9 @@ type UnitFilterMenuProps = {
   setUnitName: React.Dispatch<React.SetStateAction<string>>;
   setUnitUrl: React.Dispatch<React.SetStateAction<string>>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  unitNamesQuery: UseQueryResult<any, unknown>;
+  unitNamesQuery: UseQueryResult<any, Error>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  unitUrlsQuery: UseQueryResult<any, Error>;
 };
 
 const AccordionWrapper = styled(Box)(() => ({
@@ -40,11 +41,11 @@ const AccordionWrapper = styled(Box)(() => ({
 }));
 
 export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
-  const { width, setUnitName, setUnitUrl, unitNamesQuery } = props;
+  const { width, setUnitName, setUnitUrl, unitNamesQuery, unitUrlsQuery } =
+    props;
 
   // States
   const [expanded, setExpanded] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const [firstRender, setFirstRender] = useState(true);
 
   // URL query parameter key
@@ -67,16 +68,6 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
     );
     treatmentUnits.treedata[indPrivate].children = [];
   }
-
-  // URLs for the web pages to the different treatment units
-  const unitUrlsQuery = useUnitUrlsQuery();
-
-  // Condition for regreshing the filter menu
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const shouldRefreshInitialState = mounted && unitUrlsQuery.isFetched;
 
   // ###################################### //
   // Callback functions for the filter menu //
@@ -115,12 +106,12 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
       setExpanded(false);
       setSelectedTreatmentUnits(newUnit);
 
-      setUnitName(selectedTreatmentUnits[0]);
+      setUnitName(newUnit[0]);
 
       let unitUrl: URLs | undefined;
       if (unitUrlsQuery.data) {
         unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
-          return row.shortName === selectedTreatmentUnits[0];
+          return row.shortName === newUnit[0];
         });
       }
 
@@ -162,12 +153,12 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
 
           <AccordionDetails>
             <FilterMenu
-              refreshState={shouldRefreshInitialState}
+              refreshState={true}
               onSelectionChanged={handleChange}
               onFilterInitialized={initialiseFilter}
             >
               <TreeViewFilterSection
-                refreshState={shouldRefreshInitialState}
+                refreshState={true}
                 treedata={treatmentUnits.treedata}
                 defaultvalues={treatmentUnits.defaults}
                 initialselections={
