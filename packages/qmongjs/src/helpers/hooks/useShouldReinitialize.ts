@@ -19,23 +19,25 @@ export default function useShouldReinitialize(
 ) {
   const router = useRouter();
 
-  const [prevReady, setPrevReady] = useState(router.isReady);
+  const [previousPrerenderingStatus, setPreviousPrerenderingStatus] = useState(router.isReady);
 
-  const unfinishedToFinishedPrerendering = prevReady !== router.isReady;
+  const prerenderingJustCompleted = previousPrerenderingStatus !== router.isReady;
 
   useEffect(() => {
-    setPrevReady(router.isReady);
+    setPreviousPrerenderingStatus(router.isReady);
   }, [router.isReady]);
 
-  const [prevApiQueriesLoading, setPrevApiQueriesLoading] = useState(
-    queriesLoading(queries),
+  const areQueriesStillLoading = queriesLoading(queries);
+
+  const [previousQueryLoadingStatus, setPreviousQueryLoadingStatus] = useState(
+    areQueriesStillLoading,
   );
 
-  const apiQueriesCompleted = prevApiQueriesLoading && !queriesLoading(queries);
+  const queriesJustCompleted = previousQueryLoadingStatus && !queriesLoading(queries);
 
   useEffect(() => {
-    setPrevApiQueriesLoading(queriesLoading(queries));
-  }, [queriesLoading(queries)]);
+    setPreviousQueryLoadingStatus(areQueriesStillLoading);
+  }, [areQueriesStillLoading]);
 
-  return unfinishedToFinishedPrerendering || apiQueriesCompleted;
+  return prerenderingJustCompleted || queriesJustCompleted;
 }
