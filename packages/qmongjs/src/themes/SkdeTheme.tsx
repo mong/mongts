@@ -28,6 +28,7 @@ declare module "@mui/material/styles" {
     lg: true;
     xl: true;
     xxl: true;
+    xxml: true;
     xxxl: true;
     desktop: true;
   }
@@ -122,6 +123,7 @@ export const breakpoints = {
   lg: 992,
   xl: 1080,
   xxl: 1408,
+  xxml: 1920,
   xxxl: 2560,
 };
 
