@@ -23,7 +23,7 @@ jobs:
         node-version: [20.x]
 
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v4.2.0
       - name: Enable Corepack before setting up Node
         run: corepack enable
       - name: Use Node.js ${{ matrix.node-version }}
