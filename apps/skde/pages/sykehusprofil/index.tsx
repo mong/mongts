@@ -25,6 +25,7 @@ import { HospitalProfileMedfieldTable } from "../../src/components/HospitalProfi
 import { HospitalProfileLowLevelTable } from "../../src/components/HospitalProfile/HospitalProfileLowLevelTable";
 import { HospitalProfileLinePlot } from "../../src/components/HospitalProfile/HospitalProfileLinePlot";
 import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterMenu";
+import { TurnDeviceBox } from "../../src/components/HospitalProfile/TurnDeviceBox";
 
 export const Skde = (): JSX.Element => {
   // States
@@ -41,6 +42,8 @@ export const Skde = (): JSX.Element => {
   const textMargin = 20;
   const maxWidth = "xxl";
   const titlePadding = 2;
+  const boxWidthLimit = 640;
+  const rotateDeviceBoxHeight = 400;
 
   // On screen resize
   const { width } = useScreenSize();
@@ -147,38 +150,50 @@ export const Skde = (): JSX.Element => {
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <HospitalProfileMedfieldTable
-                  boxMaxHeight={boxMaxHeight}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                  unitName={unitName}
-                  lastYear={lastYear}
-                />
+                {width > boxWidthLimit ? (
+                  <HospitalProfileMedfieldTable
+                    boxMaxHeight={boxMaxHeight}
+                    titlePadding={titlePadding}
+                    titleStyle={titleStyle}
+                    textMargin={textMargin}
+                    unitName={unitName}
+                    lastYear={lastYear}
+                  />
+                ) : (
+                  <TurnDeviceBox height={rotateDeviceBoxHeight} />
+                )}
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <HospitalProfileLowLevelTable
-                  unitName={unitName}
-                  boxMaxHeight={boxMaxHeight}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                  unitFullName={unitFullName}
-                  lastYear={lastYear}
-                />
+                {width > boxWidthLimit ? (
+                  <HospitalProfileLowLevelTable
+                    unitName={unitName}
+                    boxMaxHeight={boxMaxHeight}
+                    titlePadding={titlePadding}
+                    titleStyle={titleStyle}
+                    textMargin={textMargin}
+                    unitFullName={unitFullName}
+                    lastYear={lastYear}
+                  />
+                ) : (
+                  <TurnDeviceBox height={rotateDeviceBoxHeight} />
+                )}
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <HospitalProfileLinePlot
-                  unitFullName={unitFullName}
-                  unitNames={unitName}
-                  lastYear={lastYear}
-                  pastYears={pastYears}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                />
+                {width > boxWidthLimit ? (
+                  <HospitalProfileLinePlot
+                    unitFullName={unitFullName}
+                    unitNames={unitName}
+                    lastYear={lastYear}
+                    pastYears={pastYears}
+                    titlePadding={titlePadding}
+                    titleStyle={titleStyle}
+                    textMargin={textMargin}
+                  />
+                ) : (
+                  <TurnDeviceBox height={rotateDeviceBoxHeight} />
+                )}
               </Grid>
             </Grid>
           </Box>
