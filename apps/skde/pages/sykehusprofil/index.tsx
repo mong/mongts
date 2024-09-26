@@ -160,7 +160,10 @@ export const Skde = (): JSX.Element => {
                     lastYear={lastYear}
                   />
                 ) : (
-                  <TurnDeviceBox height={rotateDeviceBoxHeight} />
+                  <TurnDeviceBox
+                    height={rotateDeviceBoxHeight}
+                    padding={titlePadding}
+                  />
                 )}
               </Grid>
 
@@ -176,7 +179,10 @@ export const Skde = (): JSX.Element => {
                     lastYear={lastYear}
                   />
                 ) : (
-                  <TurnDeviceBox height={rotateDeviceBoxHeight} />
+                  <TurnDeviceBox
+                    height={rotateDeviceBoxHeight}
+                    padding={titlePadding}
+                  />
                 )}
               </Grid>
 
@@ -192,7 +198,10 @@ export const Skde = (): JSX.Element => {
                     textMargin={textMargin}
                   />
                 ) : (
-                  <TurnDeviceBox height={rotateDeviceBoxHeight} />
+                  <TurnDeviceBox
+                    height={rotateDeviceBoxHeight}
+                    padding={titlePadding}
+                  />
                 )}
               </Grid>
             </Grid>
