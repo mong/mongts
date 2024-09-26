@@ -241,6 +241,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                   context={tableContext}
                   register={registryName}
                 />
+                <Divider />
               </Box>
             </Grid>
           ) : null}
@@ -335,6 +336,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
             context={tableContext}
             register={registryName}
           />
+          <Divider />
         </Box>
       </FilterDrawer>
     </ThemeProvider>
