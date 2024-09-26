@@ -48,6 +48,10 @@ export const Skde = (): JSX.Element => {
   // On screen resize
   const { width } = useScreenSize();
 
+  const TurnDeviceMessage = (
+    <TurnDeviceBox height={rotateDeviceBoxHeight} padding={titlePadding} />
+  );
+
   // Years for filtering
   const lastYear = defaultYear;
   const pastYears = 5;
@@ -160,10 +164,7 @@ export const Skde = (): JSX.Element => {
                     lastYear={lastYear}
                   />
                 ) : (
-                  <TurnDeviceBox
-                    height={rotateDeviceBoxHeight}
-                    padding={titlePadding}
-                  />
+                  TurnDeviceMessage
                 )}
               </Grid>
 
@@ -179,10 +180,7 @@ export const Skde = (): JSX.Element => {
                     lastYear={lastYear}
                   />
                 ) : (
-                  <TurnDeviceBox
-                    height={rotateDeviceBoxHeight}
-                    padding={titlePadding}
-                  />
+                  TurnDeviceMessage
                 )}
               </Grid>
 
@@ -198,10 +196,7 @@ export const Skde = (): JSX.Element => {
                     textMargin={textMargin}
                   />
                 ) : (
-                  <TurnDeviceBox
-                    height={rotateDeviceBoxHeight}
-                    padding={titlePadding}
-                  />
+                  TurnDeviceMessage
                 )}
               </Grid>
             </Grid>
