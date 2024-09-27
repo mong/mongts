@@ -321,6 +321,7 @@ export default function TreatmentQualityPage() {
                     medicalFieldData={medicalFields}
                     context={tableContext}
                   />
+                  <Divider />
                 </Box>
               )}
             </Grid>
@@ -396,6 +397,7 @@ export default function TreatmentQualityPage() {
               medicalFieldData={medicalFields}
               context={tableContext}
             />
+            <Divider />
             {showNewTableSwitch && !newTableOnly && (
               <FormGroup sx={{ paddingRight: "1.5rem" }}>
                 <FormControlLabel
