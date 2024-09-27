@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import {
   Header,
@@ -31,6 +31,7 @@ export const Skde = (): JSX.Element => {
   // States
   const [unitName, setUnitName] = useState<string>();
   const [unitUrl, setUnitUrl] = useState<string | null>(null);
+  const [isMobileAndVertical, setIsMobileAndVertical] = useState<boolean>();
 
   // ############### //
   // Page parameters //
@@ -47,6 +48,12 @@ export const Skde = (): JSX.Element => {
 
   // On screen resize
   const { width } = useScreenSize();
+
+  useEffect(() => {
+    setIsMobileAndVertical(screen.orientation.type === "portrait-primary");
+  });
+
+  const showRotateMessage = isMobileAndVertical && width < boxWidthLimit;
 
   const TurnDeviceMessage = (
     <TurnDeviceBox height={rotateDeviceBoxHeight} padding={titlePadding} />
@@ -154,7 +161,9 @@ export const Skde = (): JSX.Element => {
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                {width > boxWidthLimit ? (
+                {showRotateMessage ? (
+                  TurnDeviceMessage
+                ) : (
                   <HospitalProfileMedfieldTable
                     boxMaxHeight={boxMaxHeight}
                     titlePadding={titlePadding}
@@ -163,13 +172,13 @@ export const Skde = (): JSX.Element => {
                     unitName={unitName}
                     lastYear={lastYear}
                   />
-                ) : (
-                  TurnDeviceMessage
                 )}
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                {width > boxWidthLimit ? (
+                {showRotateMessage ? (
+                  TurnDeviceMessage
+                ) : (
                   <HospitalProfileLowLevelTable
                     unitName={unitName}
                     boxMaxHeight={boxMaxHeight}
@@ -179,13 +188,13 @@ export const Skde = (): JSX.Element => {
                     unitFullName={unitFullName}
                     lastYear={lastYear}
                   />
-                ) : (
-                  TurnDeviceMessage
                 )}
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                {width > boxWidthLimit ? (
+                {showRotateMessage ? (
+                  TurnDeviceMessage
+                ) : (
                   <HospitalProfileLinePlot
                     unitFullName={unitFullName}
                     unitNames={unitName}
@@ -195,8 +204,6 @@ export const Skde = (): JSX.Element => {
                     titleStyle={titleStyle}
                     textMargin={textMargin}
                   />
-                ) : (
-                  TurnDeviceMessage
                 )}
               </Grid>
             </Grid>
