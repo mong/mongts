@@ -2,7 +2,7 @@ import { ItemBox } from "../HospitalProfileStyles";
 import Grid from "@mui/material/Grid2";
 import { Stack, Typography } from "@mui/material";
 import { ArrowLink } from "qmongjs";
-import { getUnitFullName } from "../../../helpers/functions/getUnitFullName";
+import { getUnitFullName } from "qmongjs";
 import { NestedTreatmentUnitName, OptsTu } from "types";
 import { useScreenSize } from "@visx/responsive";
 import { breakpoints } from "qmongjs";

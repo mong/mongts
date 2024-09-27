@@ -17,7 +17,7 @@ import { ThemeProvider, Box, Container } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { HospitalInfoBox } from "../../src/components/HospitalProfile";
-import { getUnitFullName } from "../../src/helpers/functions/getUnitFullName";
+import { getUnitFullName } from "qmongjs";
 import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
 import { useScreenSize } from "@visx/responsive";
 import { breakpoints } from "qmongjs";

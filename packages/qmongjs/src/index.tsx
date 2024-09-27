@@ -72,3 +72,7 @@ export { Hoverbox } from "./components/Hoverbox";
 export { CustomAccordionExpandIcon } from "./components/FilterMenu/CustomAccordionExpandIcon";
 export { MedfieldTable } from "./components/MedfieldTable";
 export type { MedfieldTableProps } from "./components/MedfieldTable";
+export {
+  getUnitFullName,
+  getUnitShortestName,
+} from "./helpers/functions/getUnitName";
