@@ -3,6 +3,7 @@ import { MedfieldTable, MedfieldTableProps } from "qmongjs";
 import { ExpandableItemBox } from "../ExpandableItemBox";
 import { ChipSelection } from "../../ChipSelection";
 import { Box, Typography } from "@mui/material";
+import { formatUnitNameIfNational } from "../../../helpers/functions/formatUnitNameIfNational";
 
 type HospitalProfileMedfieldTableProps = {
   boxMaxHeight: number;
@@ -66,10 +67,10 @@ export const HospitalProfileMedfieldTable = (
           <Typography variant="body1">
             {showDataQuality
               ? "Her vises dekningsgraden eller datakvaliteten til " +
-                unitName +
+                formatUnitNameIfNational(unitName, false) +
                 " fordelt på fagområder som forteller om datagrunnlaget fra registrene."
               : "Her vises alle kvalitetsindikatorene fra " +
-                unitName +
+                formatUnitNameIfNational(unitName, false) +
                 " fordelt på fagområder. Hver indikator er vist som et symbol for høy, middels eller lav måloppnåelse."}
           </Typography>
         </div>
