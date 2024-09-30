@@ -242,7 +242,7 @@ const IndicatorRow = (props: IndicatorRowProps) => {
             {yearDataPoint ? (
               <ArrowLink
                 href={
-                  "https://apps.skde.no/behandlingskvalitet/" +
+                  "/behandlingskvalitet/" +
                   registry +
                   "/?selected_treatment_units=" +
                   yearDataPoint.unitName +
