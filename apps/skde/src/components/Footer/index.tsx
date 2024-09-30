@@ -25,6 +25,7 @@ type FooterProps = {
 export const Footer = ({ page, maxWidth, className }: FooterProps) => {
   const kvalitet = ["behandlingskvalitet", "sykehusprofil"].includes(page);
   const helseatlas = page === "helseatlas";
+  const pasientstrom = page === "pasientstrømmer";
 
   if (!maxWidth) {
     maxWidth = false;
@@ -99,6 +100,8 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
     </>
   );
 
+  const pasientstromGrid = <Grid>{skdeLogo}</Grid>;
+
   return (
     <Grid container style={{ color: "white", marginTop: 20 }}>
       <div style={{ backgroundColor: "#333", width: "100%" }}>
@@ -171,7 +174,9 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
                   ? atlasLogoGrid
                   : kvalitet
                     ? kvalitetLogoGrid
-                    : null}
+                    : pasientstrom
+                      ? pasientstromGrid
+                      : null}
               </Grid>
             </Grid>
 
