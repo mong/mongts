@@ -143,21 +143,12 @@ export const createMedfieldTableData = (data: Indicator[]) => {
 const Row = (props: {
   row: RowData;
   unitNames: string[];
-  type: string;
   rowID: string;
   openRowID: string;
   setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  const { row, unitNames, type, rowID, openRowID, setOpenRowID } = props;
+  const { row, unitNames, rowID, openRowID, setOpenRowID } = props;
   const { name, green, yellow, red, registers } = row;
-
-  let typeString: string;
-
-  if (type === "dg") {
-    typeString = "true";
-  } else {
-    typeString = "";
-  }
 
   let open: boolean;
 
@@ -218,15 +209,13 @@ const Row = (props: {
           <TableCell>
             <ArrowLink
               href={
-                "/behandlingskvalitet/?selected_treatment_units=" +
-                unitNames.join("_") +
-                "&indicator=reg-" +
+                "/behandlingskvalitet/" +
                 registerRow.name +
-                "&dg=" +
-                typeString
+                "/?selected_treatment_units=" +
+                unitNames.join("_")
               }
               text={registerRow.short_name}
-              externalLink={false}
+              externalLink={true}
               button={true}
               textVariant="overline"
             ></ArrowLink>
@@ -246,7 +235,7 @@ const Row = (props: {
 };
 
 export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
-  const { unitNames, type } = medfieldTableParams;
+  const { unitNames } = medfieldTableParams;
 
   const [openRowID, setOpenRowID] = useState<string>("");
 
@@ -286,7 +275,6 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
               key={row.name}
               row={row}
               unitNames={unitNames}
-              type={type}
               rowID={row.name}
               openRowID={openRowID}
               setOpenRowID={setOpenRowID}
