@@ -109,7 +109,12 @@ export const HospitalProfileLinePlot = (
     <ItemBox sx={{ overflow: "auto" }}>
       <Box padding={titlePadding}>
         <Typography variant="h5" style={titleStyle}>
-          <b>Utvikling over tid</b>
+          <b>
+            {"Utvikling over tid fra " +
+              (lastYear - pastYears) +
+              " til " +
+              lastYear}
+          </b>
         </Typography>
         <Stack
           direction="row"
