@@ -3,6 +3,7 @@ import { MedfieldTable, MedfieldTableProps } from "qmongjs";
 import { ExpandableItemBox } from "../ExpandableItemBox";
 import { ChipSelection } from "../../ChipSelection";
 import { Box, Typography } from "@mui/material";
+import { LinePlotLegend } from "../LinePlotLegend";
 import { formatUnitNameIfNational } from "../../../helpers/functions/formatUnitNameIfNational";
 
 type HospitalProfileMedfieldTableProps = {
@@ -73,6 +74,9 @@ export const HospitalProfileMedfieldTable = (
                 formatUnitNameIfNational(unitName, false) +
                 " fordelt på fagområder. Hver indikator er vist som et symbol for høy, middels eller lav måloppnåelse."}
           </Typography>
+        </div>
+        <div style={{ margin: textMargin }}>
+          <LinePlotLegend itemSpacing={6} symbolSpacing={2} />
         </div>
       </Box>
 
