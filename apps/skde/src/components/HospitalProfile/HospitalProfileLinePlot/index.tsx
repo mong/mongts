@@ -4,7 +4,7 @@ import {
   IndicatorLinechartParams,
 } from "../../../charts/IndicatorLinechart";
 import { LineStyles } from "qmongjs";
-import { Stack, ThemeProvider, Box, Typography } from "@mui/material";
+import { ThemeProvider, Box, Typography } from "@mui/material";
 import { ChipSelection } from "../../ChipSelection";
 import {
   LinePlotLegend,
@@ -110,31 +110,27 @@ export const HospitalProfileLinePlot = (
         <Typography variant="h5" style={titleStyle}>
           <b>Utvikling over tid</b>
         </Typography>
-        <Stack
-          direction="row"
-          alignItems="center"
-          justifyContent="space-between"
-        >
-          <ChipSelection
-            leftChipLabel="Vis andel"
-            rightChipLabel="Vis Antall"
-            leftChipHelpText=""
-            rightChipHelpText=""
-            hoverBoxOffset={[20, 20]}
-            hoverBoxPlacement="top"
-            hoverBoxMaxWidth={400}
-            state={normalise}
-            stateSetter={setNormalise}
-            trueChip="left"
-          />
-          <LinePlotLegend itemSpacing={8} symbolSpacing={2} />
-        </Stack>
+        <ChipSelection
+          leftChipLabel="Vis andel"
+          rightChipLabel="Vis Antall"
+          leftChipHelpText=""
+          rightChipHelpText=""
+          hoverBoxOffset={[20, 20]}
+          hoverBoxPlacement="top"
+          hoverBoxMaxWidth={400}
+          state={normalise}
+          stateSetter={setNormalise}
+          trueChip="left"
+        />
         <div style={{ margin: textMargin }}>
           <Typography variant="body1">
             {"Grafen gir en oversikt over kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistrene for " +
               unitFullName +
               ". Her vises andel eller antall av kvalitetsindikatorer som har hatt høy, middels eller lav måloppnåelse de siste årene."}
           </Typography>
+        </div>
+        <div style={{ margin: textMargin }}>
+          <LinePlotLegend itemSpacing={6} symbolSpacing={2} />
         </div>
       </Box>
 
