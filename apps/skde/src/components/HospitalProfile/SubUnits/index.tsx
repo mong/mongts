@@ -3,6 +3,7 @@ import { NestedTreatmentUnitName } from "types";
 import { Button, List, ListItem, Stack, Typography, Box } from "@mui/material";
 import { LocalHospital, Undo } from "@mui/icons-material";
 import { skdeTheme } from "qmongjs";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 const getParentUnit = (
   nestedUnitNames: NestedTreatmentUnitName[],
@@ -69,12 +70,26 @@ const UnitButton = (props: {
   unitName: string;
   buttonVariant: "outlined" | "text" | "contained";
   setUnitName: React.Dispatch<React.SetStateAction<string>>;
+  returnButton?: boolean;
 }) => {
-  const { unitName, buttonVariant, setUnitName } = props;
+  const { unitName, buttonVariant, setUnitName, returnButton } = props;
+
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const params = new URLSearchParams(searchParams.toString());
+  params.set("selected_treatment_units", unitName);
+
+  const symbol = returnButton ? <Undo /> : <LocalHospital />;
+  const text = returnButton ? "Opp et nivå" : unitName;
 
   return (
     <Button
-      onClick={() => setUnitName(unitName)}
+      onClick={() => {
+        router.push(pathname + "?" + params.toString());
+        setUnitName(unitName);
+      }}
       variant={buttonVariant}
       data-testid={`subunit_button_${unitName}`}
     >
@@ -84,8 +99,8 @@ const UnitButton = (props: {
         alignItems="center"
         justifyContent="center"
       >
-        <LocalHospital />
-        <Typography variant="button">{unitName}</Typography>
+        {symbol}
+        <Typography variant="button">{text}</Typography>
       </Stack>
     </Button>
   );
@@ -182,14 +197,12 @@ export const SubUnits = (props: SubUnitsProps) => {
       {buttonList}
       <Box marginLeft={2} marginTop={4}>
         {parentUnit && (
-          <Button
-            variant="contained"
-            onClick={() => {
-              setUnitName(parentUnit);
-            }}
-          >
-            <Undo /> <Typography variant="button">Opp et nivå</Typography>{" "}
-          </Button>
+          <UnitButton
+            buttonVariant="contained"
+            unitName={parentUnit}
+            setUnitName={setUnitName}
+            returnButton={true}
+          ></UnitButton>
         )}
       </Box>
     </>
