@@ -30,6 +30,75 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
     maxWidth = false;
   }
 
+  // Logo components
+  const skdeLogo = (
+    <Link href={"https://www.skde.no/"}>
+      <Image
+        className="footer-logo"
+        id="skde-footer-logo"
+        loader={imgLoader}
+        src={"/img/logos/logo-skde-neg.svg"}
+        alt="SKDE-logo"
+        width={129}
+        height={52}
+      />
+    </Link>
+  );
+
+  const helseFordeLogo = (
+    <Link href="https://helse-forde.no/" title="Link til Helse Førde">
+      <Image
+        loader={imgLoader}
+        src={`/helseatlas/img/logos/helse-forde-hvit.svg`}
+        height={52}
+        width={234}
+        alt="Helse Førde logo"
+      />
+    </Link>
+  );
+
+  const nsmLogo = (
+    <Link href={"https://www.kvalitetsregistre.no/"}>
+      <Image
+        className="footer-logo"
+        id="nsm-footer-logo"
+        loader={imgLoader}
+        src={"/img/logos/nsm-hvit.svg"}
+        alt="NSM-logo"
+        width={467}
+        height={52}
+      />
+    </Link>
+  );
+
+  const helseVestLogo = (
+    <Link href="https://helse-vest.no/" title="Link til Helse Vest">
+      <Image
+        loader={imgLoader}
+        src={`/helseatlas/img/logos/helse-vest-hvit.svg`}
+        height={52}
+        width={234}
+        alt="Helse Vest logo"
+      />
+    </Link>
+  );
+
+  // Logo grids
+  const atlasLogoGrid = (
+    <>
+      <Grid size={{ xs: 4, md: 3, lg: 4 }}>{skdeLogo}</Grid>
+      <Grid size={{ xs: 8, md: 5, lg: 4 }}>{helseFordeLogo}</Grid>
+      <Grid size={{ xs: 12, md: 4, lg: 4 }}>{helseVestLogo}</Grid>
+    </>
+  );
+
+  const kvalitetLogoGrid = (
+    <>
+      <Grid size={{ xs: 12, md: 4, lg: 6, xl: 7, xxl: 8 }}>{skdeLogo}</Grid>
+      <Grid size={{ xs: 12, sm: 8, lg: 6, xl: 5, xxl: 4 }}>{nsmLogo}</Grid>
+    </>
+  );
+
   return (
     <Grid container style={{ color: "white", marginTop: 20 }}>
       <div style={{ backgroundColor: "#333", width: "100%" }}>
@@ -98,66 +167,11 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
                 alignItems="center"
                 paddingTop="3rem"
               >
-                <Grid size={{ xs: kvalitet ? 8 : 4 }}>
-                  <Link href={"https://www.skde.no/"}>
-                    <Image
-                      className="footer-logo"
-                      id="skde-footer-logo"
-                      loader={imgLoader}
-                      src={"/img/logos/logo-skde-neg.svg"}
-                      alt="SKDE-logo"
-                      width={129}
-                      height={52}
-                    />
-                  </Link>
-                </Grid>
-                {helseatlas && (
-                  <>
-                    <Grid size={{ xs: 4 }}>
-                      <Link
-                        href="https://helse-forde.no/"
-                        title="Link til Helse Førde"
-                      >
-                        <Image
-                          loader={imgLoader}
-                          src={`/helseatlas/img/logos/helse-forde-hvit.svg`}
-                          height={52}
-                          width={234}
-                          alt="Helse Førde logo"
-                        />
-                      </Link>
-                    </Grid>
-                    <Grid size={{ xs: 4 }}>
-                      <Link
-                        href="https://helse-vest.no/"
-                        title="Link til Helse Vest"
-                      >
-                        <Image
-                          loader={imgLoader}
-                          src={`/helseatlas/img/logos/helse-vest-hvit.svg`}
-                          height={52}
-                          width={234}
-                          alt="Helse Vest logo"
-                        />
-                      </Link>
-                    </Grid>
-                  </>
-                )}
-                {kvalitet && (
-                  <Grid size={{ xs: 4 }}>
-                    <Link href={"https://www.kvalitetsregistre.no/"}>
-                      <Image
-                        className="footer-logo"
-                        id="nsm-footer-logo"
-                        loader={imgLoader}
-                        src={"/img/logos/nsm-hvit.svg"}
-                        alt="NSM-logo"
-                        width={467}
-                        height={52}
-                      />
-                    </Link>
-                  </Grid>
-                )}
+                {helseatlas
+                  ? atlasLogoGrid
+                  : kvalitet
+                    ? kvalitetLogoGrid
+                    : null}
               </Grid>
             </Grid>
 
