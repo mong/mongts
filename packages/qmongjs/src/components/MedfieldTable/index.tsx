@@ -26,15 +26,28 @@ export type MedfieldTableProps = {
   type: string;
 };
 
-const createSymbols = (green: number, yellow: number, red: number) => {
+const createSymbols = (
+  green: number,
+  yellow: number,
+  red: number,
+  lineBreak: boolean,
+) => {
   const symbols = [];
 
   for (let i = 0; i < green; i++) {
     symbols.push(newLevelSymbols("H", "green" + i.toString()));
   }
 
+  if (lineBreak && green > 0 && yellow > 0) {
+    symbols.push(<br />);
+  }
+
   for (let i = 0; i < yellow; i++) {
     symbols.push(newLevelSymbols("M", "yellow" + i.toString()));
+  }
+
+  if (lineBreak && (green > 0 || yellow > 0) && red > 0) {
+    symbols.push(<br />);
   }
 
   for (let i = 0; i < red; i++) {
@@ -181,7 +194,7 @@ const Row = (props: {
         <TableCell>
           <Typography variant="body1">{name}</Typography>
         </TableCell>
-        <TableCell>{createSymbols(green, yellow, red)}</TableCell>
+        <TableCell>{createSymbols(green, yellow, red, true)}</TableCell>
       </TableRow>
       <TableRow
         key={row.name + "-collapse"}
@@ -223,6 +236,7 @@ const Row = (props: {
               registerRow.green,
               registerRow.yellow,
               registerRow.red,
+              false,
             )}
           </TableCell>
         </TableRow>
@@ -232,6 +246,8 @@ const Row = (props: {
 };
 
 export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
+  const { unitNames, type } = medfieldTableParams;
+
   const [openRowID, setOpenRowID] = useState<string>("");
 
   // Fetch aggregated data
@@ -269,8 +285,8 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
             <Row
               key={row.name}
               row={row}
-              unitNames={medfieldTableParams.unitNames}
-              type={medfieldTableParams.type}
+              unitNames={unitNames}
+              type={type}
               rowID={row.name}
               openRowID={openRowID}
               setOpenRowID={setOpenRowID}
