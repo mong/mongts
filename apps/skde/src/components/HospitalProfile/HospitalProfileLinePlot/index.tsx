@@ -11,6 +11,7 @@ import {
   ItemBox,
   lineChartTheme,
 } from "../..//HospitalProfile";
+import { formatUnitNameIfNational } from "../../../helpers/functions/formatUnitNameIfNational";
 
 type HospitalProfileLinePlotProps = {
   unitFullName: string;
@@ -137,7 +138,7 @@ export const HospitalProfileLinePlot = (
         <div style={{ margin: textMargin }}>
           <Typography variant="body1">
             {"Grafen gir en oversikt over kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistrene for " +
-              unitFullName +
+              formatUnitNameIfNational(unitFullName, false) +
               ". Her vises andel eller antall av kvalitetsindikatorer som har hatt høy, middels eller lav måloppnåelse de siste årene."}
           </Typography>
         </div>
