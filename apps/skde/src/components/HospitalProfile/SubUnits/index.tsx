@@ -76,7 +76,7 @@ const UnitButton = (props: {
 }) => {
   const { unitName, buttonVariant, setUnitName, returnButton } = props;
 
-  // Router for updateing the query parameter
+  // Router for updating the query parameter
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
