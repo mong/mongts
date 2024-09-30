@@ -48,7 +48,7 @@ export const HospitalProfileMedfieldTable = (
     >
       <Box padding={titlePadding}>
         <Typography variant="h5" style={titleStyle}>
-          <b>Kvalitetsindikatorer fordelt på fagområder</b>
+          <b>{"Kvalitetsindikatorer fordelt på fagområder for " + lastYear}</b>
         </Typography>
         <ChipSelection
           leftChipLabel="Vis kvalitetsindikatorer"
