@@ -86,7 +86,6 @@ const UnitButton = (props: {
 
   // Symbol and text for the button
   const symbol = returnButton ? <Undo /> : <LocalHospital />;
-  const text = returnButton ? "Opp et nivå" : unitName;
 
   return (
     <Button
@@ -104,7 +103,7 @@ const UnitButton = (props: {
         justifyContent="center"
       >
         {symbol}
-        <Typography variant="button">{text}</Typography>
+        <Typography variant="button">{unitName}</Typography>
       </Stack>
     </Button>
   );
