@@ -5,6 +5,7 @@ import { LocalHospital, Undo } from "@mui/icons-material";
 import { skdeTheme } from "qmongjs";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
+// Find the unit one level above the given unit
 const getParentUnit = (
   nestedUnitNames: NestedTreatmentUnitName[],
   unitShortName: string,
@@ -66,6 +67,7 @@ const getUnitLevel = (
   return unitLevel;
 };
 
+// This button sets the new unit name and updates the URL query parameter "selected_treatment_unit"
 const UnitButton = (props: {
   unitName: string;
   buttonVariant: "outlined" | "text" | "contained";
@@ -74,6 +76,7 @@ const UnitButton = (props: {
 }) => {
   const { unitName, buttonVariant, setUnitName, returnButton } = props;
 
+  // Router for updateing the query parameter
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -81,6 +84,7 @@ const UnitButton = (props: {
   const params = new URLSearchParams(searchParams.toString());
   params.set("selected_treatment_units", unitName);
 
+  // Symbol and text for the button
   const symbol = returnButton ? <Undo /> : <LocalHospital />;
   const text = returnButton ? "Opp et nivå" : unitName;
 
@@ -118,6 +122,8 @@ export const SubUnits = (props: SubUnitsProps) => {
 
   const parentUnit = getParentUnit(RHFs, selectedUnit);
 
+  // Logic for handling the four different unit levels
+  // Nasjonalt, RHF, HF and sykehus
   if (unitLevel === "Nasjonalt") {
     buttonList = (
       <List>
