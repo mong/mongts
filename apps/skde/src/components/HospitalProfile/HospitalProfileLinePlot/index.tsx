@@ -11,6 +11,7 @@ import {
   ItemBox,
   lineChartTheme,
 } from "../..//HospitalProfile";
+import { formatUnitNameIfNational } from "../../../helpers/functions/formatUnitNameIfNational";
 
 type HospitalProfileLinePlotProps = {
   unitFullName: string;
@@ -108,7 +109,12 @@ export const HospitalProfileLinePlot = (
     <ItemBox sx={{ overflow: "auto" }}>
       <Box padding={titlePadding}>
         <Typography variant="h5" style={titleStyle}>
-          <b>Utvikling over tid</b>
+          <b>
+            {"Utvikling over tid fra " +
+              (lastYear - pastYears) +
+              " til " +
+              lastYear}
+          </b>
         </Typography>
         <ChipSelection
           leftChipLabel="Vis andel"
@@ -125,7 +131,7 @@ export const HospitalProfileLinePlot = (
         <div style={{ margin: textMargin }}>
           <Typography variant="body1">
             {"Grafen gir en oversikt over kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistrene for " +
-              unitFullName +
+              formatUnitNameIfNational(unitFullName, false) +
               ". Her vises andel eller antall av kvalitetsindikatorer som har hatt høy, middels eller lav måloppnåelse de siste årene."}
           </Typography>
         </div>
