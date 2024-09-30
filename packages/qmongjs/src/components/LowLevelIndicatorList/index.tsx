@@ -143,6 +143,7 @@ const RegistrySection = (props: {
             <IndicatorRow
               row={row}
               year={year}
+              registry={data.registerName}
               key={"indicator-row-" + row.indicatorID}
               rowID={row.indicatorID}
               openRowID={openRowID}
@@ -158,13 +159,14 @@ const RegistrySection = (props: {
 type IndicatorRowProps = {
   row: IndicatorData;
   year: number;
+  registry: string;
   rowID: string;
   openRowID: string;
   setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const IndicatorRow = (props: IndicatorRowProps) => {
-  const { row, year, rowID, openRowID, setOpenRowID } = props;
+  const { row, year, registry, rowID, openRowID, setOpenRowID } = props;
 
   const yearDataPoint = row.data!.filter((el: DataPoint) => {
     return el.year === year;
@@ -240,7 +242,9 @@ const IndicatorRow = (props: IndicatorRowProps) => {
             {yearDataPoint ? (
               <ArrowLink
                 href={
-                  "https://apps.skde.no/behandlingskvalitet/?selected_treatment_units=" +
+                  "https://apps.skde.no/behandlingskvalitet/" +
+                  registry +
+                  "/?selected_treatment_units=" +
                   yearDataPoint.unitName +
                   "&selected_row=" +
                   yearDataPoint.indicatorID
