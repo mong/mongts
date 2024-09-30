@@ -42,6 +42,7 @@ const getParentUnit = (
 type SubUnitsProps = {
   RHFs: NestedTreatmentUnitName[];
   selectedUnit: string;
+  setUnitName: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const getUnitLevel = (
@@ -67,12 +68,13 @@ const getUnitLevel = (
 const UnitButton = (props: {
   unitName: string;
   buttonVariant: "outlined" | "text" | "contained";
+  setUnitName: React.Dispatch<React.SetStateAction<string>>;
 }) => {
-  const { unitName, buttonVariant } = props;
+  const { unitName, buttonVariant, setUnitName } = props;
 
   return (
     <Button
-      href={"/sykehusprofil/?selected_treatment_units=" + unitName}
+      onClick={() => setUnitName(unitName)}
       variant={buttonVariant}
       data-testid={`subunit_button_${unitName}`}
     >
@@ -90,7 +92,7 @@ const UnitButton = (props: {
 };
 
 export const SubUnits = (props: SubUnitsProps) => {
-  const { RHFs, selectedUnit } = props;
+  const { RHFs, selectedUnit, setUnitName } = props;
 
   const HFs = RHFs.map((row) => row.hf).flat();
   const unitLevel = getUnitLevel(RHFs, selectedUnit);
@@ -109,7 +111,11 @@ export const SubUnits = (props: SubUnitsProps) => {
           .map((rhf) => {
             return (
               <ListItem key={"subunit-link-" + rhf}>
-                <UnitButton unitName={rhf} buttonVariant={buttonVariant} />
+                <UnitButton
+                  unitName={rhf}
+                  buttonVariant={buttonVariant}
+                  setUnitName={setUnitName}
+                />
               </ListItem>
             );
           })}
@@ -127,7 +133,11 @@ export const SubUnits = (props: SubUnitsProps) => {
           .map((row) => {
             return (
               <ListItem key={"subunit-link-" + row.hf}>
-                <UnitButton unitName={row.hf} buttonVariant={buttonVariant} />
+                <UnitButton
+                  unitName={row.hf}
+                  buttonVariant={buttonVariant}
+                  setUnitName={setUnitName}
+                />
               </ListItem>
             );
           })}
@@ -140,7 +150,11 @@ export const SubUnits = (props: SubUnitsProps) => {
           (hospital) => {
             return (
               <ListItem key={"subunit-link-" + hospital}>
-                <UnitButton unitName={hospital} buttonVariant={buttonVariant} />
+                <UnitButton
+                  unitName={hospital}
+                  buttonVariant={buttonVariant}
+                  setUnitName={setUnitName}
+                />
               </ListItem>
             );
           },
@@ -170,7 +184,9 @@ export const SubUnits = (props: SubUnitsProps) => {
         {parentUnit && (
           <Button
             variant="contained"
-            href={"/sykehusprofil/?selected_treatment_units=" + parentUnit}
+            onClick={() => {
+              setUnitName(parentUnit);
+            }}
           >
             <Undo /> <Typography variant="button">Opp et nivå</Typography>{" "}
           </Button>

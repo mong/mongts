@@ -157,6 +157,7 @@ export const Skde = (): JSX.Element => {
                   titleStyle={titleStyle}
                   unitNames={unitNamesQuery.data}
                   selectedTreatmentUnit={unitName}
+                  setUnitName={setUnitName}
                 />
               </Grid>
 
