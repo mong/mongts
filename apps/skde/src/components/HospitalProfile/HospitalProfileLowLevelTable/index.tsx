@@ -37,7 +37,7 @@ export const HospitalProfileLowLevelTable = (
     >
       <Box padding={titlePadding}>
         <Typography variant="h5" style={titleStyle}>
-          <b>Siste års måloppnåelse</b>
+          <b>{"Siste års måloppnåelse for " + lastYear}</b>
         </Typography>
         <div style={{ margin: textMargin }}>
           <Typography variant="body1">
