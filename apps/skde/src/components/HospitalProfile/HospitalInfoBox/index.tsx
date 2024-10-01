@@ -24,7 +24,9 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
   const [imgSrc, setImgSrc] = useState<string | null>(null);
 
   useEffect(() => {
-    setImgSrc(`/img/forsidebilder/${selectedTreatmentUnit}.jpg`);
+    if (selectedTreatmentUnit) {
+      setImgSrc(`/img/forsidebilder/${selectedTreatmentUnit}.jpg`);
+    }
   }, [selectedTreatmentUnit]);
 
   return (
