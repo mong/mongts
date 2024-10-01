@@ -39,7 +39,7 @@ const createSymbols = (
   }
 
   if (lineBreak && green > 0 && yellow > 0) {
-    symbols.push(<br />);
+    symbols.push(<br key="break 1" />);
   }
 
   for (let i = 0; i < yellow; i++) {
@@ -47,7 +47,7 @@ const createSymbols = (
   }
 
   if (lineBreak && (green > 0 || yellow > 0) && red > 0) {
-    symbols.push(<br />);
+    symbols.push(<br key="break 2" />);
   }
 
   for (let i = 0; i < red; i++) {
