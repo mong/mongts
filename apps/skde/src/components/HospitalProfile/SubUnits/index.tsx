@@ -90,7 +90,7 @@ const UnitButton = (props: {
   return (
     <Button
       onClick={() => {
-        router.push(pathname + "?" + params.toString(), { scroll: false });
+        router.replace(pathname + "?" + params.toString(), { scroll: false });
         setUnitName(unitName);
       }}
       variant={buttonVariant}
