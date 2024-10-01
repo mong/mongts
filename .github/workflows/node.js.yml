@@ -39,4 +39,4 @@ jobs:
       - run: yarn run test
       - name: Code coverage
         if: matrix.node-version == '20.x'
-        uses: codecov/codecov-action@v4.5.0
+        uses: codecov/codecov-action@v4.6.0
