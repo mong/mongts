@@ -93,7 +93,7 @@ const fonts = {
   body2: {
     fontFamily: `${jakartaStyle.fontFamily}`,
     fontWeight: "400",
-    fontSize: "14px",
+    fontSize: "16px",
     letterSpacing: "0.25px",
   },
   button: {
