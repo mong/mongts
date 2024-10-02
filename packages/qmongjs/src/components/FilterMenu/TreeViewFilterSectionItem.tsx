@@ -9,6 +9,7 @@ import {
   CheckBoxOutlineBlank,
 } from "@mui/icons-material";
 import Box from "@mui/system/Box";
+import { Typography } from "@mui/material";
 
 /**
  * Props for the TreeViewFilterSectionItem component, which extends the
@@ -99,7 +100,7 @@ export const TreeViewFilterSectionItem = (
             />
           </Box>
           <Box flexGrow={1} ml={1}>
-            {labeledValue.valueLabel}
+            <Typography variant="body2">{labeledValue.valueLabel}</Typography>
           </Box>
         </Box>
       }

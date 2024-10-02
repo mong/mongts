@@ -103,11 +103,9 @@ const FilterMenuSection = ({
   } else {
     return (
       <Accordion key={`fms-accordion-${sectionid}`}>
-        <AccordionSummary
-          expandIcon={<CustomAccordionExpandIcon />}
-          sx={{ flexDirection: "row-reverse" }}
-        >
-          <Typography variant="body1" sx={{ margin: 1 }}>
+        <AccordionSummary>
+          <CustomAccordionExpandIcon />
+          <Typography variant="subtitle2" color="primary">
             {sectiontitle}
           </Typography>
         </AccordionSummary>

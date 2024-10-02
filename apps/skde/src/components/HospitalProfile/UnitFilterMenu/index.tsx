@@ -14,6 +14,7 @@ import {
   AccordionSummary,
   AccordionDetails,
   styled,
+  Typography,
 } from "@mui/material";
 import { ClickAwayListener } from "@mui/base";
 import {
@@ -107,12 +108,14 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
             setExpanded(expanded);
           }}
         >
-          <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
-            <h3>
+          <AccordionSummary sx={{ padding: 2 }}>
+            <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
               {selectedTreatmentUnits[0] === "Nasjonalt"
                 ? "Velg behandlingssted"
                 : selectedTreatmentUnits[0]}
-            </h3>
+            </Typography>
+            <Box sx={{ flexGrow: 1 }} />
+            <CustomAccordionExpandIcon />
           </AccordionSummary>
 
           <AccordionDetails>
