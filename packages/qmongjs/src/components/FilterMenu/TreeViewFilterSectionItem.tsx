@@ -100,9 +100,7 @@ export const TreeViewFilterSectionItem = (
             />
           </Box>
           <Box flexGrow={1} ml={1}>
-            <Typography variant="body1" color="primary.dark">
-              {labeledValue.valueLabel}
-            </Typography>
+            <Typography variant="body2">{labeledValue.valueLabel}</Typography>
           </Box>
         </Box>
       }
