@@ -3,7 +3,9 @@ import { NestedTreatmentUnitName } from "types";
 import { Button, List, ListItem, Stack, Typography, Box } from "@mui/material";
 import { LocalHospital, Undo } from "@mui/icons-material";
 import { skdeTheme } from "qmongjs";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
+// Find the unit one level above the given unit
 const getParentUnit = (
   nestedUnitNames: NestedTreatmentUnitName[],
   unitShortName: string,
@@ -42,6 +44,7 @@ const getParentUnit = (
 type SubUnitsProps = {
   RHFs: NestedTreatmentUnitName[];
   selectedUnit: string;
+  setUnitName: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const getUnitLevel = (
@@ -64,15 +67,32 @@ const getUnitLevel = (
   return unitLevel;
 };
 
+// This button sets the new unit name and updates the URL query parameter "selected_treatment_unit"
 const UnitButton = (props: {
   unitName: string;
   buttonVariant: "outlined" | "text" | "contained";
+  setUnitName: React.Dispatch<React.SetStateAction<string>>;
+  returnButton?: boolean;
 }) => {
-  const { unitName, buttonVariant } = props;
+  const { unitName, buttonVariant, setUnitName, returnButton } = props;
+
+  // Router for updating the query parameter
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const params = new URLSearchParams(searchParams.toString());
+  params.set("selected_treatment_units", unitName);
+
+  // Symbol and text for the button
+  const symbol = returnButton ? <Undo /> : <LocalHospital />;
 
   return (
     <Button
-      href={"/sykehusprofil/?selected_treatment_units=" + unitName}
+      onClick={() => {
+        router.replace(pathname + "?" + params.toString(), { scroll: false });
+        setUnitName(unitName);
+      }}
       variant={buttonVariant}
       data-testid={`subunit_button_${unitName}`}
     >
@@ -82,7 +102,7 @@ const UnitButton = (props: {
         alignItems="center"
         justifyContent="center"
       >
-        <LocalHospital />
+        {symbol}
         <Typography variant="button">{unitName}</Typography>
       </Stack>
     </Button>
@@ -90,7 +110,7 @@ const UnitButton = (props: {
 };
 
 export const SubUnits = (props: SubUnitsProps) => {
-  const { RHFs, selectedUnit } = props;
+  const { RHFs, selectedUnit, setUnitName } = props;
 
   const HFs = RHFs.map((row) => row.hf).flat();
   const unitLevel = getUnitLevel(RHFs, selectedUnit);
@@ -101,6 +121,8 @@ export const SubUnits = (props: SubUnitsProps) => {
 
   const parentUnit = getParentUnit(RHFs, selectedUnit);
 
+  // Logic for handling the four different unit levels
+  // Nasjonalt, RHF, HF and sykehus
   if (unitLevel === "Nasjonalt") {
     buttonList = (
       <List>
@@ -109,7 +131,11 @@ export const SubUnits = (props: SubUnitsProps) => {
           .map((rhf) => {
             return (
               <ListItem key={"subunit-link-" + rhf}>
-                <UnitButton unitName={rhf} buttonVariant={buttonVariant} />
+                <UnitButton
+                  unitName={rhf}
+                  buttonVariant={buttonVariant}
+                  setUnitName={setUnitName}
+                />
               </ListItem>
             );
           })}
@@ -127,7 +153,11 @@ export const SubUnits = (props: SubUnitsProps) => {
           .map((row) => {
             return (
               <ListItem key={"subunit-link-" + row.hf}>
-                <UnitButton unitName={row.hf} buttonVariant={buttonVariant} />
+                <UnitButton
+                  unitName={row.hf}
+                  buttonVariant={buttonVariant}
+                  setUnitName={setUnitName}
+                />
               </ListItem>
             );
           })}
@@ -140,7 +170,11 @@ export const SubUnits = (props: SubUnitsProps) => {
           (hospital) => {
             return (
               <ListItem key={"subunit-link-" + hospital}>
-                <UnitButton unitName={hospital} buttonVariant={buttonVariant} />
+                <UnitButton
+                  unitName={hospital}
+                  buttonVariant={buttonVariant}
+                  setUnitName={setUnitName}
+                />
               </ListItem>
             );
           },
@@ -168,12 +202,12 @@ export const SubUnits = (props: SubUnitsProps) => {
       {buttonList}
       <Box marginLeft={2} marginTop={4}>
         {parentUnit && (
-          <Button
-            variant="contained"
-            href={"/sykehusprofil/?selected_treatment_units=" + parentUnit}
-          >
-            <Undo /> <Typography variant="button">Opp et nivå</Typography>{" "}
-          </Button>
+          <UnitButton
+            buttonVariant="contained"
+            unitName={parentUnit}
+            setUnitName={setUnitName}
+            returnButton={true}
+          ></UnitButton>
         )}
       </Box>
     </>

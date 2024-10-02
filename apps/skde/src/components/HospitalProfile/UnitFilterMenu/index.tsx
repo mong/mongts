@@ -21,17 +21,13 @@ import {
   DelimitedArrayParam,
   withDefault,
 } from "use-query-params";
-import { URLs } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 
 type UnitFilterMenuProps = {
   width: number;
   setUnitName: React.Dispatch<React.SetStateAction<string>>;
-  setUnitUrl: React.Dispatch<React.SetStateAction<string>>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   unitNamesQuery: UseQueryResult<any, Error>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  unitUrlsQuery: UseQueryResult<any, Error>;
 };
 
 const AccordionWrapper = styled(Box)(() => ({
@@ -41,8 +37,7 @@ const AccordionWrapper = styled(Box)(() => ({
 }));
 
 export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
-  const { width, setUnitName, setUnitUrl, unitNamesQuery, unitUrlsQuery } =
-    props;
+  const { width, setUnitName, unitNamesQuery } = props;
 
   // States
   const [expanded, setExpanded] = useState(false);
@@ -78,19 +73,6 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
   ) => {
     const newUnit = filterInput.get(treatmentUnitsKey).map((el) => el.value);
 
-    let unitUrl: URLs | undefined;
-    if (unitUrlsQuery.data) {
-      unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
-        return row.shortName === selectedTreatmentUnits[0];
-      });
-    }
-
-    if (unitUrl && unitUrl[0]) {
-      setUnitUrl(unitUrl[0].url);
-    } else {
-      setUnitUrl(null);
-    }
-
     setUnitName(newUnit[0]);
   };
 
@@ -105,19 +87,6 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
     setSelectedTreatmentUnits(newUnit);
 
     setUnitName(newUnit[0]);
-
-    let unitUrl: URLs | undefined;
-    if (unitUrlsQuery.data) {
-      unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
-        return row.shortName === newUnit[0];
-      });
-    }
-
-    if (unitUrl && unitUrl[0]) {
-      setUnitUrl(unitUrl[0].url);
-    } else {
-      setUnitUrl(null);
-    }
   };
 
   return (
