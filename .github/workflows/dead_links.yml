@@ -1,7 +1,7 @@
 name: Find dead links
 on:
   schedule:
-    - cron: "0 5 * * 1-5"
+    - cron: "0 5 * * 1"
 
 jobs:
   find_dead_links:
@@ -15,7 +15,7 @@ jobs:
       - name: Enable Corepack before setting up Node
         run: corepack enable
       - name: Set up Node.js
-        uses: actions/setup-node@v4.0.3
+        uses: actions/setup-node@v4.0.4
         with:
           node-version: "20.x"
           cache: "yarn"

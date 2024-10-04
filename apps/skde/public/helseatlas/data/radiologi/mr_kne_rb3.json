@@ -7,7 +7,7 @@
       "y": "bohf",
       "xLabel": {
         "nb": "Andel av MR kne med røntgen i forkant",
-        "en": "tmp"
+        "en": "Proportions of knee MRI preceded by X-ray"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -21,12 +21,12 @@
       "x": ["rtg50_snitt", "irtg50_snitt"],
       "xLegend": {
         "nb": ["Røntgen", "Ikke røntgen"],
-        "en": ["Røntgen", "Ikke røntgen"]
+        "en": ["X-ray", "without X-ray"]
       },
       "y": "bohf",
       "xLabel": {
-        "nb": "Antall (rate) med/uten røntgen i forkant, pr. 10 000 innbyggere",
-        "en": "tmp"
+        "nb": "Antall (rate) med/uten røntgen i forkant, pr. 10 000 innbyggere over 50",
+        "en": "Number of knee MRI (per 10,000 population) preceded by X-ray or without X-ray"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -41,11 +41,11 @@
       "y": "bohf",
       "xLegend": {
         "nb": ["Artrose", "Annen", "Ikke"],
-        "en": ["Artrose", "Annen", "Ikke"]
+        "en": ["Osteoarthritis surgery", "Other surgery", "Without surgery"]
       },
       "xLabel": {
         "nb": "Antall (rate), fordelt på type kirurgi, pr. 10 000 innbyggere",
-        "en": "tmp"
+        "en": "Number of knee MRI (per 10,000 population) followed by different types of surgery"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -57,8 +57,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2019–2022 for røntgen, 2018-2021 ellers. Rate pr. 10  000 innbyggere. Andel røntgen er andelen som har utført røntgen kne i tidsperioden ett år i forkant av MR undersøkelsen. Andel kirurgi er andelen som har fått utført kirurgi innen et år i etterkant av MR undersøkelsen.",
-        "en": "Årlige gjennomsnittsverdier for perioden 2019–2022 for røntgen, 2018-2021 ellers. Rate pr. 10  000 innbyggere. Andel røntgen er andelen som har utført røntgen kne i tidsperioden ett år i forkant av MR undersøkelsen. Andel kirurgi er andelen som har fått utført kirurgi innen et år i etterkant av MR undersøkelsen."
+        "nb": "Årlige gjennomsnittsverdier for perioden 2019–2022 for røntgen, 2018-2021 ellers. Rate pr. 10  000 innbyggere over 50 år. Andel røntgen er andelen som har utført røntgen kne i tidsperioden ett år i forkant av MR undersøkelsen. Andel kirurgi er andelen som har fått utført kirurgi innen et år i etterkant av MR undersøkelsen.",
+        "en": "Annual average during 2019–2022 for X-ray, and 2018–2021 for all others. The rates are per 10,000 population over 50, and are gender and age adjusted."
       },
       "columns": [
         {
@@ -78,28 +78,28 @@
         {
           "id": "andel_rtg",
           "label_no": "Andel røntgen",
-          "label_en": "Andel røntgen",
+          "label_en": "% X-ray",
           "typeVar": "number",
           "format": ",.0%"
         },
         {
           "id": "andel_artkir",
           "label_no": "Andel artrosekirurgi",
-          "label_en": "Artrosekirurgi",
+          "label_en": "% Osteoarthritis surgery",
           "typeVar": "number",
           "format": ",.0%"
         },
         {
           "id": "andel_akir",
           "label_no": "Andel annen kirurgi",
-          "label_en": "Annen kirurgi",
+          "label_en": "% other surgery",
           "typeVar": "number",
           "format": ",.0%"
         },
         {
           "id": "andel_ikir",
           "label_no": "Andel ikke kirurgi",
-          "label_en": "Ikke kirurgi",
+          "label_en": "% without surgery",
           "typeVar": "number",
           "format": ",.0%"
         }
@@ -111,7 +111,7 @@
       "x": "andel_rtg",
       "caption": {
         "nb": "Andel av MR kne med røntgen i forkant",
-        "en": "tmp"
+        "en": "Proportions of knee MRI preceded by X-ray"
       },
       "jenks": [
         {

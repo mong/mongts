@@ -29,6 +29,7 @@ import {
   IndicatorTable,
   IndicatorTableBodyV2,
   skdeTheme,
+  useUnitNamesQuery,
 } from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
 import Switch from "@mui/material/Switch";
@@ -56,9 +57,8 @@ const scrollToSelectedRow = (selectedRow: string): boolean => {
   const headerOffset = 160;
 
   if (element) {
-    console.debug("Found element, attempting to scroll");
     const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    const offsetPosition = elementPosition + window.scrollY - headerOffset;
     window.scrollTo({
       top: offsetPosition,
       behavior: "smooth",
@@ -66,7 +66,6 @@ const scrollToSelectedRow = (selectedRow: string): boolean => {
 
     return true;
   } else {
-    console.debug("Didn't find element");
     return false;
   }
 };
@@ -109,6 +108,13 @@ export default function TreatmentQualityPage() {
     mainQueryParamsConfig.selected_row,
   )[0];
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
+    "all",
+    tableContext,
+    dataQualitySelected ? "dg" : "ind",
+  );
+
   // Load register names and medical fields
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const registryNameQuery: UseQueryResult<any, unknown> =
@@ -117,12 +123,14 @@ export default function TreatmentQualityPage() {
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
 
-  const queriesReady = !(
-    registryNameQuery.isLoading || medicalFieldsQuery.isLoading
-  );
+  const queriesReady =
+    registryNameQuery.isFetched &&
+    medicalFieldsQuery.isFetched &&
+    unitNamesQuery.isFetched;
 
   const registers = registryNameQuery?.data;
   const medicalFields = medicalFieldsQuery?.data;
+  const nestedUnitNames = unitNamesQuery?.data?.nestedUnitNames;
 
   /**
    * Get the register names for the selected medical fields and registers
@@ -307,7 +315,7 @@ export default function TreatmentQualityPage() {
         />
         <Grid container size={{ xs: 12 }}>
           {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? ( // Permanent menu on large screens
-            <Grid size={{ xxl: 3, xxxl: 2 }} className="menu-wrapper">
+            <Grid size={{ xxl: 4, xxml: 3, xxxl: 2 }} className="menu-wrapper">
               {queriesReady && (
                 <Box
                   sx={{
@@ -325,18 +333,19 @@ export default function TreatmentQualityPage() {
                     medicalFieldData={medicalFields}
                     context={tableContext}
                   />
+                  <Divider />
                 </Box>
               )}
             </Grid>
           ) : null}
-          <Grid size={{ xs: 12, xxl: 9, xxxl: 10 }}>
+          <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
                 {queriesReady ? (
                   newIndicatorTableActivated || newTableOnly ? (
                     <IndicatorTableV2Wrapper className="table-wrapper">
                       <IndicatorTableBodyV2
-                        key="indicator-table"
+                        key={"indicator-table2"}
                         context={tableContext}
                         unitNames={selectedTreatmentUnits}
                         year={selectedYear}
@@ -348,7 +357,7 @@ export default function TreatmentQualityPage() {
                   ) : (
                     <IndicatorTableWrapper className="table-wrapper">
                       <IndicatorTable
-                        key="indicator-table"
+                        key={"indicator-table"}
                         context={tableContext}
                         dataQuality={dataQualitySelected}
                         tableType="allRegistries"
@@ -365,6 +374,7 @@ export default function TreatmentQualityPage() {
                             register.full_name,
                         )}
                         showTreatmentYear={true}
+                        nestedUnitNames={nestedUnitNames}
                       />
                     </IndicatorTableWrapper>
                   )
@@ -407,6 +417,7 @@ export default function TreatmentQualityPage() {
               medicalFieldData={medicalFields}
               context={tableContext}
             />
+            <Divider />
             {showNewTableSwitch && !newTableOnly && (
               <FormGroup sx={{ paddingRight: "1.5rem" }}>
                 <FormControlLabel

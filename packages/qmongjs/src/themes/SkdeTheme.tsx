@@ -28,6 +28,7 @@ declare module "@mui/material/styles" {
     lg: true;
     xl: true;
     xxl: true;
+    xxml: true;
     xxxl: true;
     desktop: true;
   }
@@ -92,7 +93,7 @@ const fonts = {
   body2: {
     fontFamily: `${jakartaStyle.fontFamily}`,
     fontWeight: "400",
-    fontSize: "14px",
+    fontSize: "16px",
     letterSpacing: "0.25px",
   },
   button: {
@@ -116,6 +117,7 @@ export const breakpoints = {
   lg: 992,
   xl: 1080,
   xxl: 1408,
+  xxml: 1920,
   xxxl: 2560,
 };
 

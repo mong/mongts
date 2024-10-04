@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button, Tab, Tabs, Toolbar, styled, Stack } from "@mui/material";
 import { TuneRounded } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
@@ -36,31 +36,42 @@ type StickyToolbarProps = {
   openDrawer: () => void;
   context;
   onTabChanged;
+  tabs?: boolean;
 };
 
 export const TreatmentQualityToolbar = ({
   openDrawer,
   context,
   onTabChanged,
+  tabs = true,
 }: StickyToolbarProps) => {
+  const [mounted, setMounted] = useState(false);
+
   const theme = useTheme();
   const isNarrowScreen = useMediaQuery(theme.breakpoints.down("sm"));
+  const notLargeScreen = useMediaQuery(theme.breakpoints.down("xxl"));
 
-  const [value, setValue] = useState(
-    context === "resident" ? "resident" : "caregiver",
+  const handleChange = useCallback(
+    (event: React.SyntheticEvent, newValue: string) => {
+      onTabChanged(newValue);
+    },
+    [onTabChanged],
   );
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
-    setTimeout(() => {
-      onTabChanged(newValue);
-    }, 0);
-  };
+  const tabValue = context === "resident" ? "resident" : "caregiver";
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <StyledToolbar className="main-toolbar">
       <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
-        {useMediaQuery(theme.breakpoints.down("xxl")) ? (
+        {notLargeScreen ? (
           <Grid size={{ xs: 1, sm: 1, md: 2 }} sx={{ alignContent: "center" }}>
             <Button
               variant="contained"
@@ -77,47 +88,51 @@ export const TreatmentQualityToolbar = ({
             </Button>
           </Grid>
         ) : null}
-        <Grid size={{ xs: 3, sm: 7, md: 10 }}>
-          <StyledTabs
-            indicatorColor="secondary"
-            aria-label="Arkfaner for behandlingskvalitet og opptaksområde"
-            value={value}
-            onChange={handleChange}
-            orientation={isNarrowScreen ? "vertical" : "horizontal"}
-            variant="fullWidth"
-          >
-            <StyledTab
-              label={
-                <Stack direction="row" alignItems="center">
-                  Behandlingsenheter
-                  <Hoverbox
-                    title="Med behandlingsenheter menes sykehus hvor pasienten har blitt behandlet uavhengig av pasientens bosted."
-                    placement="top"
-                    offset={[50, 20]}
-                  >
-                    <HelpOutline sx={{ fontSize: "18px", marginLeft: 1 }} />
-                  </Hoverbox>
-                </Stack>
-              }
-              value={"caregiver"}
-            />
-            <StyledTab
-              label={
-                <Stack direction="row" alignItems="center">
-                  Opptaksområder
-                  <Hoverbox
-                    title="Med opptaksområde menes de geografiske områdene som helseforetakene og sykehusene har ansvar for å betjene. Resultatene er basert på pasientens bosted og uavhengig av behandlingssted."
-                    placement="top"
-                    offset={[50, 20]}
-                  >
-                    <HelpOutline sx={{ fontSize: "18px", marginLeft: 1 }} />
-                  </Hoverbox>
-                </Stack>
-              }
-              value={"resident"}
-            />
-          </StyledTabs>
-        </Grid>
+        {(tabs || tabs === undefined) && (
+          <Grid size={{ xs: 3, sm: 7, md: 10 }}>
+            <StyledTabs
+              indicatorColor="secondary"
+              aria-label="Arkfaner for behandlingskvalitet og opptaksområde"
+              value={tabValue}
+              onChange={handleChange}
+              orientation={isNarrowScreen ? "vertical" : "horizontal"}
+              variant="fullWidth"
+            >
+              <StyledTab
+                label={
+                  <Stack direction="row" alignItems="center">
+                    Behandlingsenheter
+                    <Hoverbox
+                      title="Med behandlingsenheter menes sykehus hvor pasienten har blitt behandlet uavhengig av pasientens bosted."
+                      placement="top"
+                      offset={[50, 20]}
+                    >
+                      <HelpOutline sx={{ fontSize: "18px", marginLeft: 1 }} />
+                    </Hoverbox>
+                  </Stack>
+                }
+                value={"caregiver"}
+                data-testid="tab_caregiver"
+              />
+              <StyledTab
+                label={
+                  <Stack direction="row" alignItems="center">
+                    Opptaksområder
+                    <Hoverbox
+                      title="Med opptaksområde menes de geografiske områdene som helseforetakene og sykehusene har ansvar for å betjene. Resultatene er basert på pasientens bosted og uavhengig av behandlingssted."
+                      placement="top"
+                      offset={[50, 20]}
+                    >
+                      <HelpOutline sx={{ fontSize: "18px", marginLeft: 1 }} />
+                    </Hoverbox>
+                  </Stack>
+                }
+                value={"resident"}
+                data-testid="tab_resident"
+              />
+            </StyledTabs>
+          </Grid>
+        )}
       </Grid>
     </StyledToolbar>
   );

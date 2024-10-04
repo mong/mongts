@@ -60,7 +60,7 @@ export type { NestedTreatmentUnitName } from "./components/RegisterPage/unitname
 export { mainQueryParamsConfig } from "./app_config";
 export { validateTreatmentUnits } from "./helpers/functions";
 export { UnitNameList } from "./components/RegisterPage/unitnamelist";
-export { skdeTheme } from "./themes/SkdeTheme";
+export { skdeTheme, breakpoints } from "./themes/SkdeTheme";
 export { indicatorTableTheme } from "./components/IndicatorTable/IndicatortablebodyV2/IndicatorTableBodyV2Styles";
 export { LinechartGrid } from "./components/Charts/LinechartGrid";
 export { BarchartBase } from "./components/Charts/BarchartBase";
@@ -70,3 +70,9 @@ export { QualityAtlasFigure } from "./components/QualityAtlasFigure";
 export { ArrowLink } from "./components/ArrowLink";
 export { Hoverbox } from "./components/Hoverbox";
 export { CustomAccordionExpandIcon } from "./components/FilterMenu/CustomAccordionExpandIcon";
+export { MedfieldTable } from "./components/MedfieldTable";
+export type { MedfieldTableProps } from "./components/MedfieldTable";
+export {
+  getUnitFullName,
+  getUnitShortestName,
+} from "./helpers/functions/getUnitName";

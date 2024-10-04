@@ -1,5 +1,4 @@
-import { PropsWithChildren, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { PropsWithChildren } from "react";
 import {
   ArrayParam,
   DelimitedArrayParam,
@@ -39,6 +38,7 @@ import {
   getFilterSettingsValuesMap,
 } from "../TreeViewFilterSection";
 import { useMediaQuery, useTheme } from "@mui/material";
+import useShouldReinitialize from "../../../helpers/hooks/useShouldReinitialize";
 
 // The keys used for the different filter sections
 export const yearKey = "year";
@@ -107,24 +107,6 @@ export function TreatmentQualityFilterMenu({
     ? 5
     : 10;
 
-  // When the user navigates to the page, it may contain query parameters for
-  // filtering indicators. Use NextRouter to get the current path containing the
-  // initial query parameters.
-
-  const router = useRouter();
-
-  // Next's prerender stage causes problems for the initial values given to
-  // useReducer, because they are only set once by the reducer and are missing
-  // during Next's prerender stage. Tell FilterMenu to refresh its state during
-  // the first call after the prerender is done.
-
-  const [prevReady, setPrevReady] = useState(router.isReady);
-  const prerenderFinished = prevReady !== router.isReady;
-
-  useEffect(() => {
-    setPrevReady(router.isReady);
-  }, [router.isReady]);
-
   // Map for filter options, defaults, and query parameter values and setters
   const optionsMap = new Map<string, OptionsMapEntry>();
 
@@ -155,6 +137,7 @@ export function TreatmentQualityFilterMenu({
     yearKey,
     withDefault(StringParam, yearOptions.default.value),
   );
+
   optionsMap.set(yearKey, {
     options: yearOptions.values,
     default: yearOptions.default,
@@ -209,14 +192,7 @@ export function TreatmentQualityFilterMenu({
     queryContext.type,
   );
 
-  const [prevApiQueryLoading, setPrevApiQueryLoading] = useState(
-    unitNamesQuery.isLoading,
-  );
-  const apiQueriesCompleted = prevApiQueryLoading && !unitNamesQuery.isLoading;
-
-  useEffect(() => {
-    setPrevApiQueryLoading(unitNamesQuery.isLoading);
-  }, [unitNamesQuery.isLoading]);
+  const shouldRefreshInitialState = useShouldReinitialize([unitNamesQuery]);
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
@@ -364,8 +340,6 @@ export function TreatmentQualityFilterMenu({
     return valueLabel;
   };
 
-  const shouldRefreshInitialState = prerenderFinished || apiQueriesCompleted;
-
   if (register) {
     return (
       <>
@@ -427,6 +401,7 @@ export function TreatmentQualityFilterMenu({
       </>
     );
   }
+
   return (
     <>
       {!(medicalFieldData || registryNameData) && (

@@ -27,14 +27,14 @@ jobs:
       - name: Enable Corepack before setting up Node
         run: corepack enable
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4.0.3
+        uses: actions/setup-node@v4.0.4
         with:
           node-version: ${{ matrix.node-version }}
           cache: "yarn"
       - run: corepack enable && yarn install
       - run: yarn workspace skde run build
       - name: Cypress run
-        uses: cypress-io/github-action@v6.7.5
+        uses: cypress-io/github-action@v6.7.6
         with:
           working-directory: ./apps/skde
           build: yarn export
