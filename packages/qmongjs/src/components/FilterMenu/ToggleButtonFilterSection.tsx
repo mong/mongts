@@ -1,10 +1,11 @@
-import * as React from 'react';
-import FormatAlignLeftIcon from '@mui/icons-material/FormatAlignLeft';
-import FormatAlignCenterIcon from '@mui/icons-material/FormatAlignCenter';
+import { useContext } from 'react';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { FilterMenuSectionProps } from ".";
-import { FilterSettingsValue } from './FilterSettingsContext';
+import { FilterSettingsContext, FilterSettingsValue } from './FilterSettingsContext';
+import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
+import { FilterSettingsActionType } from "./FilterSettingsReducer";
+import { getSelectedValue } from './utils';
 
 type ToggleButtonFilterSectionProps = FilterMenuSectionProps & {
   options: FilterSettingsValue[];
@@ -12,20 +13,41 @@ type ToggleButtonFilterSectionProps = FilterMenuSectionProps & {
 
 export const ToggleButtonFilterSection = (
   {
-    options
+    options,
+    filterkey,
+    sectionid,
   }: ToggleButtonFilterSectionProps
 ) => {
-  const [selectedOption, setSelectedOption] = React.useState<FilterSettingsValue | null>();
+  const filterSettings = useContext(FilterSettingsContext);
+  const filterSettingsDispatch = useContext(FilterSettingsDispatchContext);
+
+  const handleSelection = (newValue: string) => {
+    const newFilterSettingsValue = options.find(
+      (option) => option.value === newValue,
+    );
+    if (filterSettings) {
+      filterSettingsDispatch({
+        type: FilterSettingsActionType.SET_SECTION_SELECTIONS,
+        sectionSetting: {
+          key: filterkey,
+          values: [{ valueLabel: newFilterSettingsValue?.valueLabel ?? "", value: newValue ?? "" }],
+        },
+      });
+    }
+  };  
 
   return (
     <ToggleButtonGroup
-      value={selectedOption}
       exclusive
-      onChange={(_, newOption) => setSelectedOption(newOption as FilterSettingsValue | null)}
-      aria-label="text alignment"
+      value={
+        getSelectedValue(filterkey, filterSettings) ??
+        null /* Allow nulls */
+      }
+      onChange={(_, newValue) => handleSelection(newValue) }
+      aria-label="Valg av tabellkontekst"
     >
       {options.map((option) => (
-        <ToggleButton key={option.value} value={option.value} aria-label={option.valueLabel}>
+        <ToggleButton key={`${sectionid}-toggle-${option.value}`} value={option.value} aria-label={option.valueLabel}>
           {option.valueLabel}
         </ToggleButton>
       ))}

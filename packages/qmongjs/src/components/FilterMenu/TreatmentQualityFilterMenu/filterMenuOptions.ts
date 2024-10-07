@@ -53,6 +53,26 @@ export const getAchievementLevelOptions = (): {
   };
 };
 
+
+/**
+ * Gets the options for table context
+ *
+ * @returns An object with values and the default value
+ */
+export const getTableContextOptions = (): {
+  values: FilterSettingsValue[];
+  default: FilterSettingsValue;
+} => {
+  const tableContextValues = [
+    { value: "caregiver", valueLabel: "Behandlingsenheter" },
+    { value: "resident", valueLabel: "Opptaksområder" },
+  ];
+  return {
+    values: tableContextValues,
+    default: tableContextValues[0],
+  };
+};
+
 /**
  * Builds tree data for the treatment units filter section from
  * unitNamesQuery.nestedUnitNames.

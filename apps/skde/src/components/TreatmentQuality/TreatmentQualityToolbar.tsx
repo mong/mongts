@@ -88,7 +88,7 @@ export const TreatmentQualityToolbar = ({
             </Button>
           </Grid>
         ) : null}
-        {(tabs || tabs === undefined) && (
+        {/* {(tabs || tabs === undefined) && (
           <Grid size={{ xs: 3, sm: 7, md: 10 }}>
             <StyledTabs
               indicatorColor="secondary"
@@ -132,7 +132,7 @@ export const TreatmentQualityToolbar = ({
               />
             </StyledTabs>
           </Grid>
-        )}
+        )} */}
       </Grid>
     </StyledToolbar>
   );

@@ -4,7 +4,6 @@ import {
   CssBaseline,
   Divider,
   IconButton,
-  Tabs,
   ThemeProvider,
   Typography,
   useMediaQuery,
@@ -12,7 +11,7 @@ import {
 
 import { ChevronLeftRounded } from "@mui/icons-material";
 import Grid from "@mui/material/Grid2";
-import { useQueryParam, withDefault, StringParam } from "use-query-params";
+import { useQueryParam } from "use-query-params";
 import {
   FilterSettingsAction,
   FilterSettingsValue,
@@ -21,6 +20,7 @@ import {
   useRegisterNamesQuery,
   defaultYear,
   levelKey,
+  tableContextKey,
   treatmentUnitsKey,
   yearKey,
   medicalFieldKey,
@@ -83,13 +83,10 @@ export default function TreatmentQualityPage() {
   const searchParams = useSearchParams();
   const newTableOnly = searchParams.get("newtable") === "true";
 
-  // Context (caregiver or resident)
-  const [tableContext, setTableContext] = useQueryParam<string>(
-    "context",
-    withDefault(StringParam, "caregiver"),
-  );
+  const defaultTableContextValue = "caregiver";
 
   // Used by indicator table
+  const [selectedTableContext, setSelectedTableContext] = useState(defaultTableContextValue);
   const [selectedYear, setSelectedYear] = useState(defaultYear);
   const [selectedLevel, setSelectedLevel] = useState<string | undefined>(
     undefined,
@@ -111,7 +108,7 @@ export default function TreatmentQualityPage() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     "all",
-    tableContext,
+    selectedTableContext,
     dataQualitySelected ? "dg" : "ind",
   );
 
@@ -176,6 +173,8 @@ export default function TreatmentQualityPage() {
   const handleFilterInitialized = (
     filterSettings: Map<string, FilterSettingsValue[]>,
   ): void => {
+    setSelectedTableContext(filterSettings.get(tableContextKey)?.[0].value ?? defaultTableContextValue);
+
     setSelectedYear(
       parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString()),
     );
@@ -201,6 +200,9 @@ export default function TreatmentQualityPage() {
     filterSettings: { map: Map<string, FilterSettingsValue[]> },
   ) => {
     switch (key) {
+      case tableContextKey: {
+        return filterSettings.map.get(tableContextKey)?.[0].value ?? defaultTableContextValue;
+      }
       case yearKey: {
         return (
           filterSettings.map.get(yearKey)[0].value ?? defaultYear.toString()
@@ -235,6 +237,9 @@ export default function TreatmentQualityPage() {
   const setAllSelected = (newFilterSettings: {
     map: Map<string, FilterSettingsValue[]>;
   }) => {
+    setSelectedTableContext(
+      valueOrDefault(tableContextKey, newFilterSettings) as string,
+    );
     setSelectedYear(
       parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
     );
@@ -261,6 +266,12 @@ export default function TreatmentQualityPage() {
     action: FilterSettingsAction,
   ): void => {
     switch (action.sectionSetting.key) {
+      case tableContextKey: {
+        setSelectedTableContext(
+          valueOrDefault(tableContextKey, newFilterSettings) as string,
+        );
+        break;
+      }
       case yearKey: {
         setSelectedYear(
           parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
@@ -310,8 +321,8 @@ export default function TreatmentQualityPage() {
       <PageWrapper>
         <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
-          context={tableContext}
-          onTabChanged={setTableContext}
+          context={selectedTableContext}
+          onTabChanged={setSelectedTableContext}
         />
         <Grid container size={{ xs: 12 }}>
           {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? ( // Permanent menu on large screens
@@ -331,7 +342,6 @@ export default function TreatmentQualityPage() {
                     onFilterInitialized={handleFilterInitialized}
                     registryNameData={registers}
                     medicalFieldData={medicalFields}
-                    context={tableContext}
                   />
                   <Divider />
                 </Box>
@@ -346,7 +356,7 @@ export default function TreatmentQualityPage() {
                     <IndicatorTableV2Wrapper className="table-wrapper">
                       <IndicatorTableBodyV2
                         key={"indicator-table2"}
-                        context={tableContext}
+                        context={selectedTableContext}
                         unitNames={selectedTreatmentUnits}
                         year={selectedYear}
                         type={dataQualitySelected ? "dg" : "ind"}
@@ -358,7 +368,7 @@ export default function TreatmentQualityPage() {
                     <IndicatorTableWrapper className="table-wrapper">
                       <IndicatorTable
                         key={"indicator-table"}
-                        context={tableContext}
+                        context={selectedTableContext}
                         dataQuality={dataQualitySelected}
                         tableType="allRegistries"
                         registerNames={registers}
@@ -408,7 +418,6 @@ export default function TreatmentQualityPage() {
               onFilterInitialized={handleFilterInitialized}
               registryNameData={registers}
               medicalFieldData={medicalFields}
-              context={tableContext}
             />
             <Divider />
             {showNewTableSwitch && !newTableOnly && (

@@ -41,6 +41,7 @@ export {
   TreatmentQualityFilterMenu,
   levelKey,
   treatmentUnitsKey,
+  tableContextKey,
   yearKey,
   medicalFieldKey,
 } from "./components/FilterMenu/TreatmentQualityFilterMenu";
