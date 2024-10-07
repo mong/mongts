@@ -31,6 +31,7 @@ export {
   FilterSettingsActionType,
 } from "./components/FilterMenu/FilterSettingsReducer";
 export type { FilterSettingsAction } from "./components/FilterMenu/FilterSettingsReducer";
+export { ToggleButtonFilterSection } from "./components/FilterMenu/ToggleButtonFilterSection";
 export { RadioGroupFilterSection } from "./components/FilterMenu/RadioGroupFilterSection";
 export { SelectedFiltersSection } from "./components/FilterMenu/SelectedFiltersSection";
 export { SwitchFilterSection } from "./components/FilterMenu/SwitchFilterSection";

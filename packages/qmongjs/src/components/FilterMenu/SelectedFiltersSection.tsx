@@ -75,7 +75,7 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
           type="button"
           variant="body2"
           onClick={() => handleReset(filterSettingsDispatch)}
-          sx={{ cursor: "pointer", fontWeight: "600" }}
+          sx={{ cursor: "pointer", fontWeight: "600"  }}
         >
           Tilbakestill filter
         </Link>

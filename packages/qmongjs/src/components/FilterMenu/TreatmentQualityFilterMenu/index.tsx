@@ -10,6 +10,7 @@ import {
 } from "use-query-params";
 import {
   FilterMenu,
+  ToggleButtonFilterSection,
   SelectedFiltersSection,
   TreeViewFilterSection,
   RadioGroupFilterSection,
@@ -342,63 +343,61 @@ export function TreatmentQualityFilterMenu({
 
   if (register) {
     return (
-      <>
-        <FilterMenu
+      <FilterMenu
+        refreshState={shouldRefreshInitialState}
+        onSelectionChanged={handleFilterChanged}
+        onFilterInitialized={onFilterInitialized}
+      >
+        <SelectedFiltersSection
+          accordion={false}
+          filterkey="selectedfilters"
+          sectionid="selectedfilters"
+          sectiontitle="Valgte filtre"
+        />
+        <TreeViewFilterSection
           refreshState={shouldRefreshInitialState}
-          onSelectionChanged={handleFilterChanged}
-          onFilterInitialized={onFilterInitialized}
-        >
-          <SelectedFiltersSection
-            accordion={false}
-            filterkey="selectedfilters"
-            sectionid="selectedfilters"
-            sectiontitle="Valgte filtre"
-          />
-          <TreeViewFilterSection
-            refreshState={shouldRefreshInitialState}
-            treedata={treatmentUnits.treedata}
-            defaultvalues={treatmentUnits.defaults}
-            initialselections={
-              selectedTreatmentUnits.map((value) => ({
-                value: value,
-                valueLabel: value,
-              })) as FilterSettingsValue[]
-            }
-            sectionid={treatmentUnitsKey}
-            sectiontitle={
-              context === "resident" ? "Opptaksområder" : "Behandlingsenheter"
-            }
-            filterkey={treatmentUnitsKey}
-            searchbox={true}
-            maxselections={maxSelectedTreatmentUnits}
-          />
-          <RadioGroupFilterSection
-            radios={yearOptions.values}
-            defaultvalues={[yearOptions.default]}
-            initialselections={[
-              { value: selectedYear, valueLabel: selectedYear },
-            ]}
-            sectiontitle={"År"}
-            sectionid={yearKey}
-            filterkey={yearKey}
-          />
-          <RadioGroupFilterSection
-            radios={achievementLevelOptions.values}
-            defaultvalues={
-              achievementLevelOptions.default
-                ? [achievementLevelOptions.default]
-                : []
-            }
-            initialselections={getFilterSettingsValue(
-              levelKey,
-              selectedAchievementLevel,
-            )}
-            sectiontitle={"Måloppnåelse"}
-            sectionid={levelKey}
-            filterkey={levelKey}
-          />
-        </FilterMenu>
-      </>
+          treedata={treatmentUnits.treedata}
+          defaultvalues={treatmentUnits.defaults}
+          initialselections={
+            selectedTreatmentUnits.map((value) => ({
+              value: value,
+              valueLabel: value,
+            })) as FilterSettingsValue[]
+          }
+          sectionid={treatmentUnitsKey}
+          sectiontitle={
+            context === "resident" ? "Opptaksområder" : "Behandlingsenheter"
+          }
+          filterkey={treatmentUnitsKey}
+          searchbox={true}
+          maxselections={maxSelectedTreatmentUnits}
+        />
+        <RadioGroupFilterSection
+          radios={yearOptions.values}
+          defaultvalues={[yearOptions.default]}
+          initialselections={[
+            { value: selectedYear, valueLabel: selectedYear },
+          ]}
+          sectiontitle={"År"}
+          sectionid={yearKey}
+          filterkey={yearKey}
+        />
+        <RadioGroupFilterSection
+          radios={achievementLevelOptions.values}
+          defaultvalues={
+            achievementLevelOptions.default
+              ? [achievementLevelOptions.default]
+              : []
+          }
+          initialselections={getFilterSettingsValue(
+            levelKey,
+            selectedAchievementLevel,
+          )}
+          sectiontitle={"Måloppnåelse"}
+          sectionid={levelKey}
+          filterkey={levelKey}
+        />
+      </FilterMenu>
     );
   }
 
@@ -414,6 +413,13 @@ export function TreatmentQualityFilterMenu({
         onSelectionChanged={handleFilterChanged}
         onFilterInitialized={onFilterInitialized}
       >
+        <ToggleButtonFilterSection
+          accordion={false}
+          filterkey="context"
+          sectionid="context"
+          sectiontitle="Tabellkontekst"
+          options={[]}
+        />
         <SelectedFiltersSection
           accordion={false}
           filterkey="selectedfilters"

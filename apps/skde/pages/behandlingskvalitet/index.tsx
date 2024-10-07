@@ -4,6 +4,7 @@ import {
   CssBaseline,
   Divider,
   IconButton,
+  Tabs,
   ThemeProvider,
   Typography,
   useMediaQuery,
