@@ -497,6 +497,9 @@ export function TreatmentQualityFilterMenu({
               : undefined
           }
           activatedswitchvalue={dataQualitySelectedValue}
+          helperText={
+            "Bytter visning av kvalitetsindikatorer til indikatorer for dekningsgrad. Dekningsgrad sier noe om datakvalitet for kvalitetsindikatoren."
+          }
         />
       </FilterMenu>
     </>

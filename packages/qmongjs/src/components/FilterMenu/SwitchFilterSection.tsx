@@ -5,6 +5,7 @@ import {
   Switch,
   FormHelperText,
   FormControl,
+  Typography,
 } from "@mui/material";
 import { FilterMenuSectionProps } from ".";
 import {
@@ -18,6 +19,7 @@ import { getSelectedValue } from "./utils";
 type SwitchFilterSectionProps = FilterMenuSectionProps & {
   label: string;
   activatedswitchvalue: FilterSettingsValue;
+  helperText?: string;
 };
 
 export function SwitchFilterSection(props: SwitchFilterSectionProps) {
@@ -46,10 +48,13 @@ export function SwitchFilterSection(props: SwitchFilterSectionProps) {
 
   return (
     <FormControl>
-      <FormHelperText sx={{ fontSize: 16 }}>
-        Bytter visning av kvalitetsindikatorer til indikatorer for dekningsgrad.
-        Dekningsgrad sier noe om datakvalitet for kvalitetsindikatoren.
-      </FormHelperText>
+      {props.helperText && ( 
+        <FormHelperText>
+          <Typography variant="body2">
+            {props.helperText}
+          </Typography>
+        </FormHelperText>
+      )}
       <FormGroup aria-label={props.label} row>
         <FormControlLabel
           labelPlacement="start"
