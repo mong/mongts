@@ -7,9 +7,7 @@ import {
   ThemeProvider,
   Typography,
   useMediaQuery,
-  Skeleton,
 } from "@mui/material";
-
 import { ChevronLeftRounded } from "@mui/icons-material";
 import Grid from "@mui/material/Grid2";
 import { useQueryParam, withDefault, StringParam } from "use-query-params";
@@ -46,6 +44,7 @@ import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
+import { IndicatorTableSkeleton } from "qmongjs";
 
 const dataQualityKey = "dg";
 
@@ -379,11 +378,7 @@ export default function TreatmentQualityPage() {
                     </IndicatorTableWrapper>
                   )
                 ) : (
-                  <Skeleton
-                    variant="rectangular"
-                    width={"100%"}
-                    height={2000}
-                  />
+                  <IndicatorTableSkeleton />
                 )}
               </Grid>
             </Grid>
