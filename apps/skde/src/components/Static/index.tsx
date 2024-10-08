@@ -1,6 +1,6 @@
 import { Markdown } from "../Markdown";
 import { Ingress } from "../Ingress";
-import { AtlasLayout } from "../Atlas/AtlasLayout";
+import { AtlasLayout } from "../AtlasLayout";
 import styles from "./Static.module.css";
 
 export interface PageContentProps {

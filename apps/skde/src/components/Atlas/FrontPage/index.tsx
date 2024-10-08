@@ -1,4 +1,4 @@
-import { AtlasLayout } from "../AtlasLayout";
+import { AtlasLayout } from "../../AtlasLayout";
 import { MainBanner } from "../../MainBanner";
 import { AtlasLink } from "../../Buttons";
 import classNames from "./FrontPage.module.css";
