@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import {
   Header,
@@ -25,11 +25,13 @@ import { HospitalProfileMedfieldTable } from "../../src/components/HospitalProfi
 import { HospitalProfileLowLevelTable } from "../../src/components/HospitalProfile/HospitalProfileLowLevelTable";
 import { HospitalProfileLinePlot } from "../../src/components/HospitalProfile/HospitalProfileLinePlot";
 import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterMenu";
+import { TurnDeviceBox } from "../../src/components/HospitalProfile/TurnDeviceBox";
+import { URLs } from "types";
 
 export const Skde = (): JSX.Element => {
   // States
   const [unitName, setUnitName] = useState<string>();
-  const [unitUrl, setUnitUrl] = useState<string | null>(null);
+  const [isMobileAndVertical, setIsMobileAndVertical] = useState<boolean>();
 
   // ############### //
   // Page parameters //
@@ -41,9 +43,21 @@ export const Skde = (): JSX.Element => {
   const textMargin = 20;
   const maxWidth = "xxl";
   const titlePadding = 2;
+  const boxWidthLimit = 640;
+  const rotateDeviceBoxHeight = 400;
 
   // On screen resize
   const { width } = useScreenSize();
+
+  useEffect(() => {
+    setIsMobileAndVertical(screen.orientation.type === "portrait-primary");
+  });
+
+  const showRotateMessage = isMobileAndVertical && width < boxWidthLimit;
+
+  const TurnDeviceMessage = (
+    <TurnDeviceBox height={rotateDeviceBoxHeight} padding={titlePadding} />
+  );
 
   // Years for filtering
   const lastYear = defaultYear;
@@ -69,7 +83,7 @@ export const Skde = (): JSX.Element => {
       "Her vises alle kvalitetsindikatorer fra nasjonale medisinske kvalitetsregistre i form av sykehusprofiler",
   };
 
-  // ######## //
+  // ####### //
   // Queries //
   // ####### //
 
@@ -105,6 +119,23 @@ export const Skde = (): JSX.Element => {
       getUnitFullName(unitNamesQuery.data.nestedUnitNames, unitName);
   }
 
+  // ############ //
+  // Set unit URL //
+  // ############ //
+
+  let newUnitUrl: URLs | undefined;
+  let unitUrl = "";
+
+  if (unitUrlsQuery.data) {
+    newUnitUrl = unitUrlsQuery.data.filter((row: URLs) => {
+      return row.shortName === unitName;
+    });
+  }
+
+  if (newUnitUrl && newUnitUrl[0]) {
+    unitUrl = newUnitUrl[0].url;
+  }
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
@@ -117,9 +148,7 @@ export const Skde = (): JSX.Element => {
           <UnitFilterMenu
             width={Math.min(400, 0.8 * width)}
             setUnitName={setUnitName}
-            setUnitUrl={setUnitUrl}
             unitNamesQuery={unitNamesQuery}
-            unitUrlsQuery={unitUrlsQuery}
           />
         </Header>
 
@@ -143,42 +172,55 @@ export const Skde = (): JSX.Element => {
                   titleStyle={titleStyle}
                   unitNames={unitNamesQuery.data}
                   selectedTreatmentUnit={unitName}
+                  setUnitName={setUnitName}
                 />
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <HospitalProfileMedfieldTable
-                  boxMaxHeight={boxMaxHeight}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                  unitName={unitName}
-                  lastYear={lastYear}
-                />
+                {showRotateMessage ? (
+                  TurnDeviceMessage
+                ) : (
+                  <HospitalProfileMedfieldTable
+                    boxMaxHeight={boxMaxHeight}
+                    titlePadding={titlePadding}
+                    titleStyle={titleStyle}
+                    textMargin={textMargin}
+                    unitName={unitName}
+                    lastYear={lastYear}
+                  />
+                )}
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <HospitalProfileLowLevelTable
-                  unitName={unitName}
-                  boxMaxHeight={boxMaxHeight}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                  unitFullName={unitFullName}
-                  lastYear={lastYear}
-                />
+                {showRotateMessage ? (
+                  TurnDeviceMessage
+                ) : (
+                  <HospitalProfileLowLevelTable
+                    unitName={unitName}
+                    boxMaxHeight={boxMaxHeight}
+                    titlePadding={titlePadding}
+                    titleStyle={titleStyle}
+                    textMargin={textMargin}
+                    unitFullName={unitFullName}
+                    lastYear={lastYear}
+                  />
+                )}
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <HospitalProfileLinePlot
-                  unitFullName={unitFullName}
-                  unitNames={unitName}
-                  lastYear={lastYear}
-                  pastYears={pastYears}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                />
+                {showRotateMessage ? (
+                  TurnDeviceMessage
+                ) : (
+                  <HospitalProfileLinePlot
+                    unitFullName={unitFullName}
+                    unitNames={unitName}
+                    lastYear={lastYear}
+                    pastYears={pastYears}
+                    titlePadding={titlePadding}
+                    titleStyle={titleStyle}
+                    textMargin={textMargin}
+                  />
+                )}
               </Grid>
             </Grid>
           </Box>

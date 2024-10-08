@@ -3,6 +3,7 @@ import { LowLevelIndicatorList } from "qmongjs";
 import { ExpandableItemBox } from "../ExpandableItemBox";
 import { ChipSelection } from "../../ChipSelection";
 import { Box, Typography } from "@mui/material";
+import { formatUnitNameIfNational } from "../../../helpers/functions/formatUnitNameIfNational";
 
 type HospitalProfileLowLevelTableProps = {
   unitName: string;
@@ -36,12 +37,12 @@ export const HospitalProfileLowLevelTable = (
     >
       <Box padding={titlePadding}>
         <Typography variant="h5" style={titleStyle}>
-          <b>Siste års måloppnåelse</b>
+          <b>{"Siste års måloppnåelse for " + lastYear}</b>
         </Typography>
         <div style={{ margin: textMargin }}>
           <Typography variant="body1">
             {"Her er en interaktiv liste som gir oversikt over kvalitetsindikatorene ut fra siste års måloppnåelse for " +
-              unitFullName +
+              formatUnitNameIfNational(unitFullName, false) +
               ". Du kan trykke på indikatorene for å se mer informasjon om indikatoren og følge oppgitt lenke til mer detaljert beskrivelse av indikatoren."}
           </Typography>
         </div>

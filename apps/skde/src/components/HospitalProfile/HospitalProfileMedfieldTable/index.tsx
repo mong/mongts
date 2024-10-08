@@ -3,6 +3,8 @@ import { MedfieldTable, MedfieldTableProps } from "qmongjs";
 import { ExpandableItemBox } from "../ExpandableItemBox";
 import { ChipSelection } from "../../ChipSelection";
 import { Box, Typography } from "@mui/material";
+import { LinePlotLegend } from "../LinePlotLegend";
+import { formatUnitNameIfNational } from "../../../helpers/functions/formatUnitNameIfNational";
 
 type HospitalProfileMedfieldTableProps = {
   boxMaxHeight: number;
@@ -48,7 +50,7 @@ export const HospitalProfileMedfieldTable = (
     >
       <Box padding={titlePadding}>
         <Typography variant="h5" style={titleStyle}>
-          <b>Kvalitetsindikatorer fordelt på fagområder</b>
+          <b>{"Kvalitetsindikatorer fordelt på fagområder for " + lastYear}</b>
         </Typography>
         <ChipSelection
           leftChipLabel="Vis kvalitetsindikatorer"
@@ -66,12 +68,15 @@ export const HospitalProfileMedfieldTable = (
           <Typography variant="body1">
             {showDataQuality
               ? "Her vises dekningsgraden eller datakvaliteten til " +
-                unitName +
+                formatUnitNameIfNational(unitName, false) +
                 " fordelt på fagområder som forteller om datagrunnlaget fra registrene."
               : "Her vises alle kvalitetsindikatorene fra " +
-                unitName +
+                formatUnitNameIfNational(unitName, false) +
                 " fordelt på fagområder. Hver indikator er vist som et symbol for høy, middels eller lav måloppnåelse."}
           </Typography>
+        </div>
+        <div style={{ margin: textMargin }}>
+          <LinePlotLegend itemSpacing={6} symbolSpacing={2} />
         </div>
       </Box>
 
