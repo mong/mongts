@@ -45,6 +45,7 @@ import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
+import { LayoutHead } from "../../src/components/TreatmentQualityLayout/LayoutHead";
 
 const dataQualityKey = "dg";
 
@@ -307,6 +308,7 @@ export default function TreatmentQualityPage() {
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
       <PageWrapper>
+        <LayoutHead />
         <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
           context={tableContext}

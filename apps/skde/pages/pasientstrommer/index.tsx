@@ -8,6 +8,7 @@ import {
   HeaderData,
   BreadCrumbPath,
 } from "../../src/components/Header";
+import { LayoutHead } from "../../src/components/PatientStreamLayout/LayoutHead";
 
 const breadcrumbs: BreadCrumbPath = {
   path: [
@@ -32,6 +33,7 @@ const Pasient = () => {
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
+        <LayoutHead />
         <Header headerData={headerData} breadcrumbs={breadcrumbs} />
         <IframeResizer
           src="https://prod-tabellverk.skde.org/"

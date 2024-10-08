@@ -27,6 +27,7 @@ import { HospitalProfileLinePlot } from "../../src/components/HospitalProfile/Ho
 import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterMenu";
 import { TurnDeviceBox } from "../../src/components/HospitalProfile/TurnDeviceBox";
 import { URLs } from "types";
+import { LayoutHead } from "../../src/components/HospitalProfile/HospitalProfileLayout/LayoutHead";
 
 export const Skde = (): JSX.Element => {
   // States
@@ -139,6 +140,7 @@ export const Skde = (): JSX.Element => {
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
+        <LayoutHead />
         <Header
           bgcolor="surface2.light"
           headerData={headerData}
