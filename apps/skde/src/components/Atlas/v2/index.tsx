@@ -1,4 +1,4 @@
-import { AtlasLayout } from "../../AtlasLayout";
+import { AtlasLayout } from "../AtlasLayout";
 import { TopBanner } from "../TopBanner";
 import styles from "./atlas.module.css";
 import { ChapterProps, Chapters } from "../../Chapters";

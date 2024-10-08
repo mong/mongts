@@ -1,7 +1,7 @@
-import { LayoutHead } from "../LayoutHead";
+import { LayoutHead } from "../../LayoutHead";
 import { Header } from "./Header";
-import { Footer } from "../Footer";
-import { PageWrapper } from "../StyledComponents/PageWrapper";
+import { Footer } from "../../Footer";
+import { PageWrapper } from "../../StyledComponents/PageWrapper";
 
 interface Props {
   children: React.ReactNode;
