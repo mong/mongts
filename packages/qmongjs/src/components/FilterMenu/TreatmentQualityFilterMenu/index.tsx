@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect, useState } from "react";
+import { PropsWithChildren } from "react";
 import {
   ArrayParam,
   DelimitedArrayParam,
@@ -38,6 +38,7 @@ import {
   getFilterSettingsValuesMap,
 } from "../TreeViewFilterSection";
 import { useMediaQuery, useTheme } from "@mui/material";
+import useShouldReinitialize from "../../../helpers/hooks/useShouldReinitialize";
 
 // The keys used for the different filter sections
 export const yearKey = "year";
@@ -105,11 +106,6 @@ export function TreatmentQualityFilterMenu({
   const maxSelectedTreatmentUnits = useMediaQuery(theme.breakpoints.down("md"))
     ? 5
     : 10;
-
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   // Map for filter options, defaults, and query parameter values and setters
   const optionsMap = new Map<string, OptionsMapEntry>();
@@ -196,17 +192,7 @@ export function TreatmentQualityFilterMenu({
     queryContext.type,
   );
 
-  const [previouslyNotFetched, setPreviouslyNotFetched] = useState(
-    !unitNamesQuery.isFetched,
-  );
-
-  // Refresh initial state if query is fetched and was previously not fetched
-  const shouldRefreshInitialState =
-    unitNamesQuery.isFetched && previouslyNotFetched;
-
-  useEffect(() => {
-    setPreviouslyNotFetched(!unitNamesQuery.isFetched);
-  }, [unitNamesQuery.isFetched]);
+  const shouldRefreshInitialState = useShouldReinitialize([unitNamesQuery]);
 
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
@@ -353,10 +339,6 @@ export function TreatmentQualityFilterMenu({
 
     return valueLabel;
   };
-
-  if (!mounted) {
-    return null;
-  }
 
   if (register) {
     return (

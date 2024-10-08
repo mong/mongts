@@ -2,6 +2,7 @@ import { IndicatorTableHeader } from "./indicatortableheader";
 import { IndicatorTableBody } from "./indicatortablebody";
 import { RegisterName } from "types";
 import { useState, useCallback } from "react";
+import { NestedTreatmentUnitName } from "types";
 
 interface IndicatorTableProps {
   context: string;
@@ -19,6 +20,7 @@ interface IndicatorTableProps {
   showLevelFilter?: string;
   blockTitle?: string[];
   showTreatmentYear?: boolean;
+  nestedUnitNames?: NestedTreatmentUnitName[];
 }
 
 export const IndicatorTable = (props: IndicatorTableProps) => {
@@ -37,6 +39,7 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
     descriptionHeader,
     blockTitle,
     showTreatmentYear,
+    nestedUnitNames,
   } = props;
   const [emptyBlocks, setEmptyBlocks] = useState<Set<string>>(new Set());
 
@@ -68,6 +71,7 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
             legend_height={legend_height}
             descriptionHeader={descriptionHeader}
             treatmentYear={showTreatmentYear ? treatmentYear : undefined}
+            nestedUnitNames={nestedUnitNames}
           />
         )}
         <IndicatorTableBody

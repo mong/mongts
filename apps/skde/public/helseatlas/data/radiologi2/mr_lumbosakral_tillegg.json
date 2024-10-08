@@ -7,7 +7,7 @@
       "y": "bohf",
       "xLabel": {
         "nb": "Andel MR lumbosakralkolumna med gjentatt undersøkelse",
-        "en": "tmp"
+        "en": "Proportion of lumbar spine MRI with repeated exams"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -27,7 +27,7 @@
       "y": "bohf",
       "xLabel": {
         "nb": "Andel MR lumbosakralkolumna med røntgen i forkant",
-        "en": "tmp"
+        "en": "Proportion of lumbar spine MRI preceded by X-ray"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -45,7 +45,7 @@
       "data": "datasett_1",
       "caption": {
         "nb": "Årlige gjennomsnittsverdier for perioden 2019–2021. <br>* Andelene er basert på kjønns- og aldersjusterte rater.",
-        "en": "Årlige gjennomsnittsverdier for perioden 2019–2021. <br>* Andelene er basert på kjønns- og aldersjusterte rater."
+        "en": "Annual average during 2019–2021. <br>* Proportions are based on age and gender adjusted rates."
       },
       "columns": [
         {
@@ -58,7 +58,7 @@
         {
           "id": "totsnitt",
           "label_no": "Andel* gjentatte",
-          "label_en": "Repeats %*",
+          "label_en": "%* repeats",
           "typeVar": "number",
           "format": ",.0%"
         },
@@ -72,7 +72,7 @@
         {
           "id": "rg_andel",
           "label_no": "Andel* røntgen",
-          "label_en": "X-ray %*",
+          "label_en": "%* X-ray",
           "typeVar": "number",
           "format": ",.0%"
         },
@@ -98,7 +98,7 @@
       "x": "totsnitt",
       "caption": {
         "nb": "Andel MR lumbosakralkolumna med gjentatt undersøkelse",
-        "en": "tmp"
+        "en": "Proportion of lumbar spine MRI with repeated exams"
       },
       "jenks": [
         {

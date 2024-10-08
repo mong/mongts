@@ -1,9 +1,4 @@
 import React, { useState, useEffect } from "react";
-import {
-  useQueryParam,
-  DelimitedArrayParam,
-  withDefault,
-} from "use-query-params";
 import { UseQueryResult } from "@tanstack/react-query";
 import {
   Header,
@@ -12,160 +7,63 @@ import {
 } from "../../src/components/Header";
 import {
   skdeTheme,
-  FilterSettingsValue,
-  FilterMenu,
   useUnitNamesQuery,
-  useUnitUrlsQuery,
   defaultYear,
-  TreeViewFilterSection,
-  getTreatmentUnitsTree,
-  FilterSettings,
-  CustomAccordionExpandIcon,
   mainHospitals,
+  useUnitUrlsQuery,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
-import {
-  ThemeProvider,
-  Box,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Container,
-  styled,
-} from "@mui/material";
+import { ThemeProvider, Box, Container } from "@mui/material";
 import Grid from "@mui/material/Grid2";
-import { ClickAwayListener } from "@mui/base";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { HospitalInfoBox } from "../../src/components/HospitalProfile";
-import { URLs } from "types";
-import { getUnitFullName } from "../../src/helpers/functions/getUnitFullName";
+import { getUnitFullName } from "qmongjs";
 import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
 import { useScreenSize } from "@visx/responsive";
 import { breakpoints } from "qmongjs";
 import { HospitalProfileMedfieldTable } from "../../src/components/HospitalProfile/HospitalProfileMedfieldTable";
 import { HospitalProfileLowLevelTable } from "../../src/components/HospitalProfile/HospitalProfileLowLevelTable";
 import { HospitalProfileLinePlot } from "../../src/components/HospitalProfile/HospitalProfileLinePlot";
-
-const AccordionWrapper = styled(Box)(() => ({
-  "& MuiAccordion-root:before": {
-    backgroundColor: "white",
-  },
-}));
+import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterMenu";
+import { TurnDeviceBox } from "../../src/components/HospitalProfile/TurnDeviceBox";
+import { URLs } from "types";
 
 export const Skde = (): JSX.Element => {
-  const [expanded, setExpanded] = useState(false);
+  // States
+  const [unitName, setUnitName] = useState<string>();
+  const [isMobileAndVertical, setIsMobileAndVertical] = useState<boolean>();
 
-  const treatmentUnitsKey = "selected_treatment_units";
+  // ############### //
+  // Page parameters //
+  // ############### //
 
+  // Styling
+  const boxMaxHeight = 800;
+  const titleStyle = { marginTop: 20, marginLeft: 20 };
+  const textMargin = 20;
+  const maxWidth = "xxl";
+  const titlePadding = 2;
+  const boxWidthLimit = 640;
+  const rotateDeviceBoxHeight = 400;
+
+  // On screen resize
   const { width } = useScreenSize();
 
-  // Current unit name and its setter function
-  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useQueryParam(
-    treatmentUnitsKey,
-    withDefault(DelimitedArrayParam, ["Nasjonalt"]),
-  );
-
-  // Infobox URL
-  const [unitUrl, setUnitUrl] = useState<string | null>(null);
-
-  // Get unit names
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
-    "all",
-    "caregiver",
-    "ind",
-  );
-
-  let unitFullName: string;
-
-  if (unitNamesQuery.data) {
-    // Only keep the "real" hospitals
-    unitNamesQuery.data.nestedUnitNames.map((rhf) => {
-      rhf.hf.map((hf) => {
-        hf.hospital = hf.hospital.filter((unit) =>
-          mainHospitals.includes(unit),
-        );
-      });
-    });
-
-    unitFullName =
-      unitNamesQuery.data &&
-      getUnitFullName(
-        unitNamesQuery.data.nestedUnitNames,
-        selectedTreatmentUnits[0],
-      );
-  }
-
-  const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
-
-  if (treatmentUnits.treedata.length > 1) {
-    // Find the index of "Private" and remove the children. The sub units should not be shown.
-    // TreetmentUnits.treedata starts with one element "Nasjonalt". Need to wait for it to build up the rest.
-    const indPrivate = treatmentUnits.treedata.findIndex(
-      (x) => x.nodeValue.value === "Private",
-    );
-    treatmentUnits.treedata[indPrivate].children = [];
-  }
-
-  // The following code ensures that the page renders correctly
-  const unitUrlsQuery = useUnitUrlsQuery();
-
-  const [mounted, setMounted] = useState(false);
-
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    setIsMobileAndVertical(screen.orientation.type === "portrait-primary");
+  });
 
-  const shouldRefreshInitialState = mounted && unitUrlsQuery.isFetched;
+  const showRotateMessage = isMobileAndVertical && width < boxWidthLimit;
 
-  // Callback function for initialising the filter meny
-  const initialiseFilter = (
-    filterInput: Map<string, FilterSettingsValue[]>,
-  ) => {
-    const newUnit = filterInput.get(treatmentUnitsKey).map((el) => el.value);
+  const TurnDeviceMessage = (
+    <TurnDeviceBox height={rotateDeviceBoxHeight} padding={titlePadding} />
+  );
 
-    let unitUrl: URLs | undefined;
-    if (unitUrlsQuery.data) {
-      unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
-        return row.shortName === newUnit[0];
-      });
-    }
-
-    if (unitUrl && unitUrl[0]) {
-      setUnitUrl(unitUrl[0].url);
-    } else {
-      setUnitUrl(null);
-    }
-  };
-
-  // Callback function for updating the filter menu
-  const handleChange = (filterInput: FilterSettings) => {
-    const newUnit = filterInput.map
-      .get(treatmentUnitsKey)
-      .map((el) => el.value);
-
-    setExpanded(false);
-    setSelectedTreatmentUnits(newUnit);
-
-    let unitUrl: URLs | undefined;
-    if (unitUrlsQuery.data) {
-      unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
-        return row.shortName === newUnit[0];
-      });
-    }
-
-    if (unitUrl && unitUrl[0]) {
-      setUnitUrl(unitUrl[0].url);
-    } else {
-      setUnitUrl(null);
-    }
-  };
-
-  // Year for filtering
+  // Years for filtering
   const lastYear = defaultYear;
   const pastYears = 5;
 
+  // Header settings
   const breadcrumbs: BreadCrumbPath = {
     path: [
       {
@@ -185,13 +83,58 @@ export const Skde = (): JSX.Element => {
       "Her vises alle kvalitetsindikatorer fra nasjonale medisinske kvalitetsregistre i form av sykehusprofiler",
   };
 
-  const boxMaxHeight = 800;
+  // ####### //
+  // Queries //
+  // ####### //
 
-  const titleStyle = { marginTop: 20, marginLeft: 20 };
-  const textMargin = 20;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const unitNamesQuery: UseQueryResult<any, Error> = useUnitNamesQuery(
+    "all",
+    "caregiver",
+    "ind",
+  );
 
-  const maxWidth = "xxl";
-  const titlePadding = 2;
+  // URLs for the web pages to the different treatment units
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const unitUrlsQuery: UseQueryResult<any, Error> = useUnitUrlsQuery();
+
+  if (unitNamesQuery.isFetching || unitUrlsQuery.isFetching) {
+    return null;
+  }
+
+  let unitFullName: string;
+
+  if (unitNamesQuery.data) {
+    // Only keep the "real" hospitals
+    unitNamesQuery.data.nestedUnitNames.map((rhf) => {
+      rhf.hf.map((hf) => {
+        hf.hospital = hf.hospital.filter((unit) =>
+          mainHospitals.includes(unit),
+        );
+      });
+    });
+
+    unitFullName =
+      unitNamesQuery.data &&
+      getUnitFullName(unitNamesQuery.data.nestedUnitNames, unitName);
+  }
+
+  // ############ //
+  // Set unit URL //
+  // ############ //
+
+  let newUnitUrl: URLs | undefined;
+  let unitUrl = "";
+
+  if (unitUrlsQuery.data) {
+    newUnitUrl = unitUrlsQuery.data.filter((row: URLs) => {
+      return row.shortName === unitName;
+    });
+  }
+
+  if (newUnitUrl && newUnitUrl[0]) {
+    unitUrl = newUnitUrl[0].url;
+  }
 
   return (
     <ThemeProvider theme={skdeTheme}>
@@ -202,70 +145,24 @@ export const Skde = (): JSX.Element => {
           breadcrumbs={breadcrumbs}
           maxWidth={maxWidth}
         >
-          <ClickAwayListener onClickAway={() => setExpanded(false)}>
-            <AccordionWrapper>
-              <Accordion
-                square={true}
-                sx={{
-                  width: Math.min(400, 0.8 * width),
-                  borderRadius: 11,
-                  border: 1,
-                  borderColor: skdeTheme.palette.primary.main,
-                  backgroundColor: "white",
-                  color: skdeTheme.palette.primary.main,
-                }}
-                expanded={expanded}
-                onChange={(e, expanded) => {
-                  setExpanded(expanded);
-                }}
-              >
-                <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
-                  <h3>
-                    {selectedTreatmentUnits[0] === "Nasjonalt"
-                      ? "Velg behandlingssted"
-                      : selectedTreatmentUnits[0]}
-                  </h3>
-                </AccordionSummary>
-
-                <AccordionDetails>
-                  <FilterMenu
-                    refreshState={shouldRefreshInitialState}
-                    onSelectionChanged={handleChange}
-                    onFilterInitialized={initialiseFilter}
-                  >
-                    <TreeViewFilterSection
-                      refreshState={shouldRefreshInitialState}
-                      treedata={treatmentUnits.treedata}
-                      defaultvalues={treatmentUnits.defaults}
-                      initialselections={
-                        selectedTreatmentUnits.map((value) => ({
-                          value: value,
-                          valueLabel: value,
-                        })) as FilterSettingsValue[]
-                      }
-                      sectionid={treatmentUnitsKey}
-                      sectiontitle={"Behandlingsenheter"}
-                      filterkey={treatmentUnitsKey}
-                      searchbox={true}
-                      multiselect={false}
-                      accordion={false}
-                      noShadow={true}
-                    />
-                  </FilterMenu>
-                </AccordionDetails>
-              </Accordion>
-            </AccordionWrapper>
-          </ClickAwayListener>
+          <UnitFilterMenu
+            width={Math.min(400, 0.8 * width)}
+            setUnitName={setUnitName}
+            unitNamesQuery={unitNamesQuery}
+          />
         </Header>
 
         <Container maxWidth={maxWidth} disableGutters={true}>
           <Box marginTop={2} className="hospital-profile-box">
             <Grid container spacing={2}>
-              <Grid size={{ xs: 12, sm: 7 }}>
+              <Grid
+                size={{ xs: 12, sm: 7 }}
+                data-testid={`hospital_profile_box_${unitName}`}
+              >
                 <HospitalInfoBox
                   boxHeight={width > breakpoints.xxl ? 350 : 450}
                   unitNames={unitNamesQuery.data}
-                  selectedTreatmentUnit={selectedTreatmentUnits[0]}
+                  selectedTreatmentUnit={unitName}
                   unitUrl={unitUrl}
                 />
               </Grid>
@@ -274,43 +171,56 @@ export const Skde = (): JSX.Element => {
                   boxHeight={width > breakpoints.xxl ? 350 : 450}
                   titleStyle={titleStyle}
                   unitNames={unitNamesQuery.data}
-                  selectedTreatmentUnit={selectedTreatmentUnits[0]}
+                  selectedTreatmentUnit={unitName}
+                  setUnitName={setUnitName}
                 />
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <HospitalProfileMedfieldTable
-                  boxMaxHeight={boxMaxHeight}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                  unitName={selectedTreatmentUnits[0]}
-                  lastYear={lastYear}
-                />
+                {showRotateMessage ? (
+                  TurnDeviceMessage
+                ) : (
+                  <HospitalProfileMedfieldTable
+                    boxMaxHeight={boxMaxHeight}
+                    titlePadding={titlePadding}
+                    titleStyle={titleStyle}
+                    textMargin={textMargin}
+                    unitName={unitName}
+                    lastYear={lastYear}
+                  />
+                )}
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <HospitalProfileLowLevelTable
-                  unitName={selectedTreatmentUnits[0]}
-                  boxMaxHeight={boxMaxHeight}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                  unitFullName={unitFullName}
-                  lastYear={lastYear}
-                />
+                {showRotateMessage ? (
+                  TurnDeviceMessage
+                ) : (
+                  <HospitalProfileLowLevelTable
+                    unitName={unitName}
+                    boxMaxHeight={boxMaxHeight}
+                    titlePadding={titlePadding}
+                    titleStyle={titleStyle}
+                    textMargin={textMargin}
+                    unitFullName={unitFullName}
+                    lastYear={lastYear}
+                  />
+                )}
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <HospitalProfileLinePlot
-                  unitFullName={unitFullName}
-                  unitNames={selectedTreatmentUnits[0]}
-                  lastYear={lastYear}
-                  pastYears={pastYears}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                />
+                {showRotateMessage ? (
+                  TurnDeviceMessage
+                ) : (
+                  <HospitalProfileLinePlot
+                    unitFullName={unitFullName}
+                    unitNames={unitName}
+                    lastYear={lastYear}
+                    pastYears={pastYears}
+                    titlePadding={titlePadding}
+                    titleStyle={titleStyle}
+                    textMargin={textMargin}
+                  />
+                )}
               </Grid>
             </Grid>
           </Box>
