@@ -16,7 +16,6 @@ import {
   FilterSettingsAction,
   FilterSettingsValue,
   TreatmentQualityFilterMenu,
-  decodeRegisterQueryParam,
   useRegisterNamesQuery,
   defaultYear,
   levelKey,
@@ -32,9 +31,6 @@ import {
   useUnitNamesQuery,
 } from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
-import Switch from "@mui/material/Switch";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import { useSearchParams } from "next/navigation";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import {
@@ -46,48 +42,28 @@ import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
+import scrollToSelectedRow from "./utils/scrollToSelectedRow";
+import getMedicalFieldFilterRegisters from "./utils/getMedicalFieldFilterRegisters";
 
 const dataQualityKey = "dg";
 
-// Set to true to display the switch for activating the new table
-const showNewTableSwitch = false;
-
-const scrollToSelectedRow = (selectedRow: string): boolean => {
-  const element = document.getElementById(selectedRow);
-  const headerOffset = 160;
-
-  if (element) {
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.scrollY - headerOffset;
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
-
-    return true;
-  } else {
-    return false;
-  }
-};
-
 export default function TreatmentQualityPage() {
+  const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
+  
   const [drawerOpen, setDrawerOpen] = useState(false);
-
   const toggleDrawer = (newOpen: boolean) => {
     setDrawerOpen(newOpen);
   };
 
-  const [newIndicatorTableActivated, setNewIndicatorTableActivated] =
-    useState(false);
-
+  
   const searchParams = useSearchParams();
-  const newTableOnly = searchParams.get("newtable") === "true";
-
-  const defaultTableContextValue = "caregiver";
+  const displayV2Table = searchParams.get("newtable") === "true";
+  
+  const defaultTableContext = "caregiver";
 
   // Used by indicator table
-  const [selectedTableContext, setSelectedTableContext] = useState(defaultTableContextValue);
   const [selectedYear, setSelectedYear] = useState(defaultYear);
+  const [selectedTableContext, setSelectedTableContext] = useState(defaultTableContext);
   const [selectedLevel, setSelectedLevel] = useState<string | undefined>(
     undefined,
   );
@@ -121,47 +97,13 @@ export default function TreatmentQualityPage() {
     useMedicalFieldsQuery();
 
   const queriesReady =
+    unitNamesQuery.isFetched &&
     registryNameQuery.isFetched &&
-    medicalFieldsQuery.isFetched &&
-    unitNamesQuery.isFetched;
+    medicalFieldsQuery.isFetched;
 
   const registers = registryNameQuery?.data;
   const medicalFields = medicalFieldsQuery?.data;
   const nestedUnitNames = unitNamesQuery?.data?.nestedUnitNames;
-
-  /**
-   * Get the register names for the selected medical fields and registers
-   *
-   * @param medicalFieldFilter Array of medical field and register names
-   * @returns Array of register names
-   */
-  const getMedicalFieldFilterRegisters = (medicalFieldFilter: string[]) => {
-    let registerFilter: string[];
-
-    if (!medicalFieldFilter || medicalFieldFilter[0] === "all") {
-      registerFilter = registers.map((register) => register.rname);
-    } else {
-      const selectedMedicalFields = medicalFields.filter((field) =>
-        medicalFieldFilter.includes(field.shortName),
-      );
-      const selectedMedicalFieldNames = selectedMedicalFields.map(
-        (field) => field.shortName,
-      );
-      const selectedRegisters = medicalFieldFilter.filter(
-        (name) => !selectedMedicalFieldNames.includes(name),
-      );
-      registerFilter = Array.from(
-        new Set<string>([
-          ...selectedMedicalFields.flatMap((field) => field.registers),
-          ...selectedRegisters.map((register) =>
-            decodeRegisterQueryParam(register),
-          ),
-        ]),
-      );
-    }
-
-    return registerFilter;
-  };
 
   /**
    * Handle that the initial filter settings are loaded, which can happen
@@ -173,17 +115,18 @@ export default function TreatmentQualityPage() {
   const handleFilterInitialized = (
     filterSettings: Map<string, FilterSettingsValue[]>,
   ): void => {
-    setSelectedTableContext(filterSettings.get(tableContextKey)?.[0].value ?? defaultTableContextValue);
+    setSelectedTableContext(filterSettings.get(tableContextKey)?.[0].value ?? defaultTableContext);
 
     setSelectedYear(
       parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString()),
     );
+
     setSelectedLevel(filterSettings.get(levelKey)?.[0]?.value ?? undefined);
 
     const medicalFieldFilter = filterSettings
       .get(medicalFieldKey)
       ?.map((value) => value.value);
-    const registerFilter = getMedicalFieldFilterRegisters(medicalFieldFilter);
+    const registerFilter = getMedicalFieldFilterRegisters(medicalFieldFilter, registers, medicalFields);
     setSelectedMedicalFields(registerFilter);
 
     setSelectedTreatmentUnits(
@@ -201,7 +144,7 @@ export default function TreatmentQualityPage() {
   ) => {
     switch (key) {
       case tableContextKey: {
-        return filterSettings.map.get(tableContextKey)?.[0].value ?? defaultTableContextValue;
+        return filterSettings.map.get(tableContextKey)?.[0].value ?? defaultTableContext;
       }
       case yearKey: {
         return (
@@ -216,7 +159,7 @@ export default function TreatmentQualityPage() {
           .get(medicalFieldKey)
           ?.map((value) => value.value);
         const registerFilter =
-          getMedicalFieldFilterRegisters(medicalFieldFilter);
+          getMedicalFieldFilterRegisters(medicalFieldFilter, registers, medicalFields);
         return registerFilter;
       }
       case treatmentUnitsKey: {
@@ -321,11 +264,9 @@ export default function TreatmentQualityPage() {
       <PageWrapper>
         <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
-          context={selectedTableContext}
-          onTabChanged={setSelectedTableContext}
         />
         <Grid container size={{ xs: 12 }}>
-          {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? ( // Permanent menu on large screens
+          {isXxlScreen ? ( // Permanent menu on large screens
             <Grid size={{ xxl: 4, xxml: 3, xxxl: 2 }} className="menu-wrapper">
               {queriesReady && (
                 <Box
@@ -352,7 +293,7 @@ export default function TreatmentQualityPage() {
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
                 {queriesReady &&
-                  (newIndicatorTableActivated || newTableOnly ? (
+                  (displayV2Table ? (
                     <IndicatorTableV2Wrapper className="table-wrapper">
                       <IndicatorTableBodyV2
                         key={"indicator-table2"}
@@ -420,22 +361,6 @@ export default function TreatmentQualityPage() {
               medicalFieldData={medicalFields}
             />
             <Divider />
-            {showNewTableSwitch && !newTableOnly && (
-              <FormGroup sx={{ paddingRight: "1.5rem" }}>
-                <FormControlLabel
-                  label="Prøv ny tabellversjon"
-                  labelPlacement="start"
-                  control={
-                    <Switch
-                      checked={newIndicatorTableActivated}
-                      onChange={(event) =>
-                        setNewIndicatorTableActivated(event.target.checked)
-                      }
-                    />
-                  }
-                />
-              </FormGroup>
-            )}
           </Box>
         )}
       </FilterDrawer>

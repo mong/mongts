@@ -47,27 +47,27 @@ export function SwitchFilterSection(props: SwitchFilterSectionProps) {
   };
 
   return (
-    <FormControl>
-      {props.helperText && ( 
-        <FormHelperText>
-          <Typography variant="body2">
+    <>
+      <FormControl>
+        {props.helperText && (
+          <FormHelperText sx={{ fontSize: "body1.fontSize" }}>
             {props.helperText}
-          </Typography>
-        </FormHelperText>
-      )}
-      <FormGroup aria-label={props.label} row>
-        <FormControlLabel
-          labelPlacement="start"
-          label={labelText}
-          control={
-            <Switch
-              checked={isChecked}
-              onChange={handleChange}
-              color="primary"
-            />
-          }
-        />
-      </FormGroup>
-    </FormControl>
+          </FormHelperText>
+        )}
+        <FormGroup aria-label={props.label} row>
+          <FormControlLabel
+            labelPlacement="start"
+            label={labelText}
+            control={
+              <Switch
+                checked={isChecked}
+                onChange={handleChange}
+                color="primary"
+              />
+            }
+          />
+        </FormGroup>
+      </FormControl>
+    </>
   );
 }

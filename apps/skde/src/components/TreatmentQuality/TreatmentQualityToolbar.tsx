@@ -1,11 +1,8 @@
-import { useCallback, useEffect, useState } from "react";
-import { Button, Tab, Tabs, Toolbar, styled, Stack } from "@mui/material";
+import { Button, Toolbar, styled } from "@mui/material";
 import { TuneRounded } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Grid2";
-import { Hoverbox } from "qmongjs";
-import { HelpOutline } from "@mui/icons-material";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
@@ -14,59 +11,13 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   paddingBottom: 0,
 }));
 
-const StyledTabs = styled(Tabs)(({ theme }) => ({
-  "& .Mui-selected": {
-    backgroundColor: theme.palette.background.paper,
-  },
-  "& .MuiTabs-indicator": {
-    display: "none",
-  },
-}));
-
-const StyledTab = styled(Tab)(({ theme }) => ({
-  borderTopLeftRadius: 12,
-  borderTopRightRadius: 12,
-  paddingLeft: theme.spacing(4),
-  paddingRight: theme.spacing(4),
-  ...theme.typography.button,
-  textTransform: "none",
-}));
-
 type StickyToolbarProps = {
   openDrawer: () => void;
-  context;
-  onTabChanged;
-  tabs?: boolean;
 };
 
-export const TreatmentQualityToolbar = ({
-  openDrawer,
-  context,
-  onTabChanged,
-  tabs = true,
-}: StickyToolbarProps) => {
-  const [mounted, setMounted] = useState(false);
-
+export const TreatmentQualityToolbar = ({ openDrawer }: StickyToolbarProps) => {
   const theme = useTheme();
-  const isNarrowScreen = useMediaQuery(theme.breakpoints.down("sm"));
   const notLargeScreen = useMediaQuery(theme.breakpoints.down("xxl"));
-
-  const handleChange = useCallback(
-    (event: React.SyntheticEvent, newValue: string) => {
-      onTabChanged(newValue);
-    },
-    [onTabChanged],
-  );
-
-  const tabValue = context === "resident" ? "resident" : "caregiver";
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   return (
     <StyledToolbar className="main-toolbar">
@@ -88,51 +39,6 @@ export const TreatmentQualityToolbar = ({
             </Button>
           </Grid>
         ) : null}
-        {/* {(tabs || tabs === undefined) && (
-          <Grid size={{ xs: 3, sm: 7, md: 10 }}>
-            <StyledTabs
-              indicatorColor="secondary"
-              aria-label="Arkfaner for behandlingskvalitet og opptaksområde"
-              value={tabValue}
-              onChange={handleChange}
-              orientation={isNarrowScreen ? "vertical" : "horizontal"}
-              variant="fullWidth"
-            >
-              <StyledTab
-                label={
-                  <Stack direction="row" alignItems="center">
-                    Behandlingsenheter
-                    <Hoverbox
-                      title="Med behandlingsenheter menes sykehus hvor pasienten har blitt behandlet uavhengig av pasientens bosted."
-                      placement="top"
-                      offset={[50, 20]}
-                    >
-                      <HelpOutline sx={{ fontSize: "18px", marginLeft: 1 }} />
-                    </Hoverbox>
-                  </Stack>
-                }
-                value={"caregiver"}
-                data-testid="tab_caregiver"
-              />
-              <StyledTab
-                label={
-                  <Stack direction="row" alignItems="center">
-                    Opptaksområder
-                    <Hoverbox
-                      title="Med opptaksområde menes de geografiske områdene som helseforetakene og sykehusene har ansvar for å betjene. Resultatene er basert på pasientens bosted og uavhengig av behandlingssted."
-                      placement="top"
-                      offset={[50, 20]}
-                    >
-                      <HelpOutline sx={{ fontSize: "18px", marginLeft: 1 }} />
-                    </Hoverbox>
-                  </Stack>
-                }
-                value={"resident"}
-                data-testid="tab_resident"
-              />
-            </StyledTabs>
-          </Grid>
-        )} */}
       </Grid>
     </StyledToolbar>
   );

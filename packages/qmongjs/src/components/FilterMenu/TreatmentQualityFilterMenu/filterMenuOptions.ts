@@ -53,7 +53,6 @@ export const getAchievementLevelOptions = (): {
   };
 };
 
-
 /**
  * Gets the options for table context
  *

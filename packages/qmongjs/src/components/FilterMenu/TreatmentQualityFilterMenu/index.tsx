@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useEffect, useState } from "react";
 import {
   ArrayParam,
   DelimitedArrayParam,
@@ -48,7 +48,7 @@ export const yearKey = "year";
 export const levelKey = "level";
 export const medicalFieldKey = "indicator";
 export const treatmentUnitsKey = "selected_treatment_units";
-const dataQualityKey = "dg";
+export const dataQualityKey = "dg";
 
 /**
  * The properties for the TreatmentQualityFilterMenu component.
@@ -102,6 +102,10 @@ export function TreatmentQualityFilterMenu({
   const selectedRegister = register ?? "all";
   const queryContextType = "ind";
 
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
   // Restrict max number of treatment units for small view sizes
   const theme = useTheme();
   const maxSelectedTreatmentUnits = useMediaQuery(theme.breakpoints.down("md"))
@@ -113,12 +117,12 @@ export function TreatmentQualityFilterMenu({
 
   // All params
   const [, setAllQueries] = useQueryParams({
-    context: StringParam,
     year: StringParam,
     level: StringParam,
     indicator: ArrayParam,
     selected_treatment_units: DelimitedArrayParam,
     dg: StringParam,
+    context: StringParam,
   });
 
   // Table context options
@@ -166,9 +170,7 @@ export function TreatmentQualityFilterMenu({
   // Achievement level selection
   const achievementLevelOptions = getAchievementLevelOptions();
   const [selectedAchievementLevel, setSelectedAchievementLevel] =
-    useQueryParam<string>(
-      levelKey,
-    );
+    useQueryParam<string>(levelKey);
   optionsMap.set(levelKey, {
     options: achievementLevelOptions.values,
     default: null,
@@ -207,9 +209,11 @@ export function TreatmentQualityFilterMenu({
     queryContextType,
   );
 
-  
+  // Hook for deciding if the initial state should be refreshed
+  const shouldRefreshInitialState = useShouldReinitialize([unitNamesQuery]);
+
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
-  
+
   optionsMap.set(treatmentUnitsKey, {
     options: treatmentUnits.treedata,
     default: treatmentUnits.defaults[0],
@@ -217,7 +221,7 @@ export function TreatmentQualityFilterMenu({
     selected: selectedTreatmentUnits,
     setSelected: setSelectedTreatmentUnits as SetSelectedType,
   });
-  
+
   // Data quality selection
   const [dataQualitySelected, setDataQualitySelected] = useQueryParam<string>(
     dataQualityKey,
@@ -235,7 +239,7 @@ export function TreatmentQualityFilterMenu({
     selected: dataQualitySelected,
     setSelected: setDataQualitySelected as SetSelectedType,
   });
-  
+
   /**
    * Handler function for setting section selections,
    * called by handleFilterChanged
@@ -295,7 +299,8 @@ export function TreatmentQualityFilterMenu({
           dg:
             newFilterSettings.map.get(dataQualityKey)?.[0].value ??
             dataQualityEmptyValue.value,
-          context: newFilterSettings.map.get(tableContextKey)?.[0].value ??
+          context:
+            newFilterSettings.map.get(tableContextKey)?.[0].value ??
             tableContextOptions.default.value,
         });
         break;
@@ -356,8 +361,9 @@ export function TreatmentQualityFilterMenu({
     return valueLabel;
   };
 
-  // Hook for deciding if the initial state should be refreshed
-  const shouldRefreshInitialState = useShouldReinitialize([unitNamesQuery]);
+  if (!mounted) {
+    return <></>;
+  }
 
   if (register) {
     return (
@@ -384,7 +390,9 @@ export function TreatmentQualityFilterMenu({
           }
           sectionid={treatmentUnitsKey}
           sectiontitle={
-            selectedTableContext === "resident" ? "Opptaksområder" : "Behandlingsenheter"
+            selectedTableContext === "resident"
+              ? "Opptaksområder"
+              : "Behandlingsenheter"
           }
           filterkey={treatmentUnitsKey}
           searchbox={true}
@@ -438,10 +446,15 @@ export function TreatmentQualityFilterMenu({
           sectiontitle="Tabellkontekst"
           options={tableContextOptions.values}
           defaultvalues={[tableContextOptions.default]}
-          initialselections={getFilterSettingsValue(
-            tableContextKey,
-            selectedTableContext,
-          )}
+          initialselections={[
+            {
+              value: selectedTableContext,
+              valueLabel:
+                selectedTableContext === "resident"
+                  ? "Opptaksområder"
+                  : "Behandlingsenheter",
+            },
+          ]}
         />
         <SelectedFiltersSection
           accordion={false}
@@ -461,7 +474,9 @@ export function TreatmentQualityFilterMenu({
           }
           sectionid={treatmentUnitsKey}
           sectiontitle={
-            selectedTableContext === "resident" ? "Opptaksområder" : "Behandlingsenheter"
+            selectedTableContext === "resident"
+              ? "Opptaksområder"
+              : "Behandlingsenheter"
           }
           filterkey={treatmentUnitsKey}
           searchbox={true}

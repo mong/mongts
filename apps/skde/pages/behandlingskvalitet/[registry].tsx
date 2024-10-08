@@ -38,25 +38,8 @@ import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
+import scrollToSelectedRow from "./utils/scrollToSelectedRow";
 import { RegisterName } from "types";
-
-const scrollToSelectedRow = (selectedRow: string): boolean => {
-  const element = document.getElementById(selectedRow);
-  const headerOffset = 160;
-
-  if (element) {
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.scrollY - headerOffset;
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
-
-    return true;
-  } else {
-    return false;
-  }
-};
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const registryName = registryInfo[0].rname;
@@ -211,11 +194,6 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
       <PageWrapper>
         <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
-          context={tableContext}
-          onTabChanged={setTableContext}
-          tabs={
-            registryInfo[0].resident_data + registryInfo[0].caregiver_data == 2
-          }
           extraBreadcrumbs={[
             { link: registryName, text: registryInfo[0].short_name },
           ]}
@@ -238,7 +216,6 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                   onFilterInitialized={handleFilterInitialized}
                   registryNameData={registryInfo}
                   medicalFieldData={[]}
-                  context={tableContext}
                   register={registryName}
                 />
                 <Divider />
