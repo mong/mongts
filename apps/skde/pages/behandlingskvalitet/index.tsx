@@ -45,7 +45,7 @@ import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
-import { LayoutHead } from "../../src/components/TreatmentQualityLayout/LayoutHead";
+import { LayoutHead } from "../../src/components/LayoutHead";
 
 const dataQualityKey = "dg";
 
@@ -308,7 +308,11 @@ export default function TreatmentQualityPage() {
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
       <PageWrapper>
-        <LayoutHead />
+        <LayoutHead
+          title="Behandlingskvalitet"
+          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
+          href="/favicon.ico"
+        />
         <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
           context={tableContext}
