@@ -378,7 +378,7 @@ export default function TreatmentQualityPage() {
                     </IndicatorTableWrapper>
                   )
                 ) : (
-                  <IndicatorTableSkeleton />
+                  <IndicatorTableSkeleton nRows={10} />
                 )}
               </Grid>
             </Grid>
