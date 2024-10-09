@@ -44,26 +44,27 @@ import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
 import scrollToSelectedRow from "./utils/scrollToSelectedRow";
 import getMedicalFieldFilterRegisters from "./utils/getMedicalFieldFilterRegisters";
+import { LayoutHead } from "../../src/components/LayoutHead";
 
 const dataQualityKey = "dg";
 
 export default function TreatmentQualityPage() {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
-  
+
   const [drawerOpen, setDrawerOpen] = useState(false);
   const toggleDrawer = (newOpen: boolean) => {
     setDrawerOpen(newOpen);
   };
 
-  
   const searchParams = useSearchParams();
   const displayV2Table = searchParams.get("newtable") === "true";
-  
+
   const defaultTableContext = "caregiver";
 
   // Used by indicator table
   const [selectedYear, setSelectedYear] = useState(defaultYear);
-  const [selectedTableContext, setSelectedTableContext] = useState(defaultTableContext);
+  const [selectedTableContext, setSelectedTableContext] =
+    useState(defaultTableContext);
   const [selectedLevel, setSelectedLevel] = useState<string | undefined>(
     undefined,
   );
@@ -115,7 +116,9 @@ export default function TreatmentQualityPage() {
   const handleFilterInitialized = (
     filterSettings: Map<string, FilterSettingsValue[]>,
   ): void => {
-    setSelectedTableContext(filterSettings.get(tableContextKey)?.[0].value ?? defaultTableContext);
+    setSelectedTableContext(
+      filterSettings.get(tableContextKey)?.[0].value ?? defaultTableContext,
+    );
 
     setSelectedYear(
       parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString()),
@@ -126,7 +129,11 @@ export default function TreatmentQualityPage() {
     const medicalFieldFilter = filterSettings
       .get(medicalFieldKey)
       ?.map((value) => value.value);
-    const registerFilter = getMedicalFieldFilterRegisters(medicalFieldFilter, registers, medicalFields);
+    const registerFilter = getMedicalFieldFilterRegisters(
+      medicalFieldFilter,
+      registers,
+      medicalFields,
+    );
     setSelectedMedicalFields(registerFilter);
 
     setSelectedTreatmentUnits(
@@ -144,7 +151,10 @@ export default function TreatmentQualityPage() {
   ) => {
     switch (key) {
       case tableContextKey: {
-        return filterSettings.map.get(tableContextKey)?.[0].value ?? defaultTableContext;
+        return (
+          filterSettings.map.get(tableContextKey)?.[0].value ??
+          defaultTableContext
+        );
       }
       case yearKey: {
         return (
@@ -158,8 +168,11 @@ export default function TreatmentQualityPage() {
         const medicalFieldFilter = filterSettings.map
           .get(medicalFieldKey)
           ?.map((value) => value.value);
-        const registerFilter =
-          getMedicalFieldFilterRegisters(medicalFieldFilter, registers, medicalFields);
+        const registerFilter = getMedicalFieldFilterRegisters(
+          medicalFieldFilter,
+          registers,
+          medicalFields,
+        );
         return registerFilter;
       }
       case treatmentUnitsKey: {
@@ -262,9 +275,12 @@ export default function TreatmentQualityPage() {
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
       <PageWrapper>
-        <TreatmentQualityAppBar
-          openDrawer={() => toggleDrawer(true)}
+        <LayoutHead
+          title="Behandlingskvalitet"
+          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
+          href="/favicon.ico"
         />
+        <TreatmentQualityAppBar openDrawer={() => toggleDrawer(true)} />
         <Grid container size={{ xs: 12 }}>
           {isXxlScreen ? ( // Permanent menu on large screens
             <Grid size={{ xxl: 4, xxml: 3, xxxl: 2 }} className="menu-wrapper">
