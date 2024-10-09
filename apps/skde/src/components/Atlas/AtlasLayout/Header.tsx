@@ -5,9 +5,9 @@ import Image from "next/image";
 import { imgLoader } from "qmongjs";
 import classNames from "./Header.module.css";
 
-import { MenuButton } from "../Buttons";
-import { Menu } from "../Menu";
-import { PopUp } from "../PopUp";
+import { MenuButton } from "../../Buttons";
+import { Menu } from "../../Menu";
+import { PopUp } from "../../PopUp";
 
 export const Header = ({ lang }: { lang: "no" | "en" }) => {
   return (
