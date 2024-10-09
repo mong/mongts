@@ -234,6 +234,11 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                   registryNameData={registryInfo}
                   medicalFieldData={[]}
                   register={registryName}
+                  enableTableContextSection={
+                    registryInfo[0].resident_data +
+                      registryInfo[0].caregiver_data ==
+                    2
+                  }
                 />
                 <Divider />
               </Box>

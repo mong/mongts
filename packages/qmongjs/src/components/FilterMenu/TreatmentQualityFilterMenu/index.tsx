@@ -62,6 +62,7 @@ export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   medicalFieldData: any;
   register?: string;
+  enableTableContextSection?: boolean;
 }>;
 
 // Types defined because of useQueryParam
@@ -94,10 +95,11 @@ type OptionsMapEntry = {
  */
 export function TreatmentQualityFilterMenu({
   onSelectionChanged,
-  onFilterInitialized: onFilterInitialized,
-  registryNameData: registryNameData,
-  medicalFieldData: medicalFieldData,
-  register: register,
+  onFilterInitialized,
+  registryNameData,
+  medicalFieldData,
+  register,
+  enableTableContextSection = true,
 }: TreatmentQualityFilterMenuProps) {
   const selectedRegister = register ?? "all";
   const queryContextType = "ind";
@@ -365,71 +367,9 @@ export function TreatmentQualityFilterMenu({
     return <></>;
   }
 
-  if (register) {
-    return (
-      <FilterMenu
-        refreshState={shouldRefreshInitialState}
-        onSelectionChanged={handleFilterChanged}
-        onFilterInitialized={onFilterInitialized}
-      >
-        <SelectedFiltersSection
-          accordion={false}
-          filterkey="selectedfilters"
-          sectionid="selectedfilters"
-          sectiontitle="Valgte filtre"
-        />
-        <TreeViewFilterSection
-          refreshState={shouldRefreshInitialState}
-          treedata={treatmentUnits.treedata}
-          defaultvalues={treatmentUnits.defaults}
-          initialselections={
-            selectedTreatmentUnits.map((value) => ({
-              value: value,
-              valueLabel: value,
-            })) as FilterSettingsValue[]
-          }
-          sectionid={treatmentUnitsKey}
-          sectiontitle={
-            selectedTableContext === "resident"
-              ? "Opptaksområder"
-              : "Behandlingsenheter"
-          }
-          filterkey={treatmentUnitsKey}
-          searchbox={true}
-          maxselections={maxSelectedTreatmentUnits}
-        />
-        <RadioGroupFilterSection
-          radios={yearOptions.values}
-          defaultvalues={[yearOptions.default]}
-          initialselections={[
-            { value: selectedYear, valueLabel: selectedYear },
-          ]}
-          sectiontitle={"År"}
-          sectionid={yearKey}
-          filterkey={yearKey}
-        />
-        <RadioGroupFilterSection
-          radios={achievementLevelOptions.values}
-          defaultvalues={
-            achievementLevelOptions.default
-              ? [achievementLevelOptions.default]
-              : []
-          }
-          initialselections={getFilterSettingsValue(
-            levelKey,
-            selectedAchievementLevel,
-          )}
-          sectiontitle={"Måloppnåelse"}
-          sectionid={levelKey}
-          filterkey={levelKey}
-        />
-      </FilterMenu>
-    );
-  }
-
   return (
     <>
-      {!(medicalFieldData || registryNameData) && (
+      {(register || !(medicalFieldData && registryNameData)) && (
         <Alert severity="error">
           Det oppstod en feil ved henting av fagområder og registre!
         </Alert>
@@ -439,23 +379,27 @@ export function TreatmentQualityFilterMenu({
         onSelectionChanged={handleFilterChanged}
         onFilterInitialized={onFilterInitialized}
       >
-        <ToggleButtonFilterSection
-          accordion={false}
-          filterkey={tableContextKey}
-          sectionid={tableContextKey}
-          sectiontitle="Tabellkontekst"
-          options={tableContextOptions.values}
-          defaultvalues={[tableContextOptions.default]}
-          initialselections={[
-            {
-              value: selectedTableContext,
-              valueLabel:
-                selectedTableContext === "resident"
-                  ? "Opptaksområder"
-                  : "Behandlingsenheter",
-            },
-          ]}
-        />
+        {enableTableContextSection ? (
+          <ToggleButtonFilterSection
+            accordion={false}
+            filterkey={tableContextKey}
+            sectionid={tableContextKey}
+            sectiontitle="Tabellkontekst"
+            options={tableContextOptions.values}
+            defaultvalues={[tableContextOptions.default]}
+            initialselections={[
+              {
+                value: selectedTableContext,
+                valueLabel:
+                  selectedTableContext === "resident"
+                    ? "Opptaksområder"
+                    : "Behandlingsenheter",
+              },
+            ]}
+          />
+        ) : (
+          <></>
+        )}
         <SelectedFiltersSection
           accordion={false}
           filterkey="selectedfilters"
@@ -482,23 +426,27 @@ export function TreatmentQualityFilterMenu({
           searchbox={true}
           maxselections={maxSelectedTreatmentUnits}
         />
-        <TreeViewFilterSection
-          refreshState={shouldRefreshInitialState}
-          treedata={medicalFields.treedata}
-          defaultvalues={medicalFields.defaults}
-          // Automatic clearing selections when "Alle fagområder" is clicked
-          // autouncheckid={medicalFields.defaults[0].value}
-          initialselections={
-            selectedMedicalFields?.map((value) => ({
-              value: value,
-              valueLabel: getValueLabel(value, medicalFieldsMap),
-            })) as FilterSettingsValue[]
-          }
-          sectionid={medicalFieldKey}
-          sectiontitle="Fagområder"
-          filterkey={medicalFieldKey}
-          searchbox={true}
-        />
+        {register ? (
+          <></>
+        ) : (
+          <TreeViewFilterSection
+            refreshState={shouldRefreshInitialState}
+            treedata={medicalFields.treedata}
+            defaultvalues={medicalFields.defaults}
+            // Automatic clearing selections when "Alle fagområder" is clicked
+            // autouncheckid={medicalFields.defaults[0].value}
+            initialselections={
+              selectedMedicalFields?.map((value) => ({
+                value: value,
+                valueLabel: getValueLabel(value, medicalFieldsMap),
+              })) as FilterSettingsValue[]
+            }
+            sectionid={medicalFieldKey}
+            sectiontitle="Fagområder"
+            filterkey={medicalFieldKey}
+            searchbox={true}
+          />
+        )}
         <RadioGroupFilterSection
           radios={yearOptions.values}
           defaultvalues={[yearOptions.default]}
@@ -524,21 +472,25 @@ export function TreatmentQualityFilterMenu({
           sectionid={levelKey}
           filterkey={levelKey}
         />
-        <SwitchFilterSection
-          sectionid={dataQualityKey}
-          filterkey={dataQualityKey}
-          sectiontitle={"Datakvalitet"}
-          label={dataQualitySelectedValue.valueLabel}
-          initialselections={
-            dataQualitySelected === "true"
-              ? [dataQualitySelectedValue]
-              : undefined
-          }
-          activatedswitchvalue={dataQualitySelectedValue}
-          helperText={
-            "Bytter visning av kvalitetsindikatorer til indikatorer for dekningsgrad. Dekningsgrad sier noe om datakvalitet for kvalitetsindikatoren."
-          }
-        />
+        {register ? (
+          <></>
+        ) : (
+          <SwitchFilterSection
+            sectionid={dataQualityKey}
+            filterkey={dataQualityKey}
+            sectiontitle={"Datakvalitet"}
+            label={dataQualitySelectedValue.valueLabel}
+            initialselections={
+              dataQualitySelected === "true"
+                ? [dataQualitySelectedValue]
+                : undefined
+            }
+            activatedswitchvalue={dataQualitySelectedValue}
+            helperText={
+              "Bytter visning av kvalitetsindikatorer til indikatorer for dekningsgrad. Dekningsgrad sier noe om datakvalitet for kvalitetsindikatoren."
+            }
+          />
+        )}
       </FilterMenu>
     </>
   );
