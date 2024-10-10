@@ -1,14 +1,11 @@
-export { MainRegister } from "./components/RegisterPage/MainRegister";
-export { SelectedRegister } from "./components/RegisterPage/SelectedRegister";
 export {
   useRegisterNamesQuery,
   fetchRegisterNames,
   useIndicatorQuery,
   useMedicalFieldsQuery,
   useUnitUrlsQuery,
+  useUnitNamesQuery,
 } from "./helpers/hooks";
-export { API_HOST } from "./components/RegisterPage";
-export { Layout } from "./components/Layout";
 export {
   level,
   level2,
@@ -50,16 +47,19 @@ export {
 } from "./components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 export { LinechartBase, LineStyles } from "./components/Charts/LinechartBase";
 export type { LinechartData, font } from "./components/Charts/LinechartBase";
-export { customFormat, imgLoader } from "./helpers/functions";
+export {
+  customFormat,
+  imgLoader,
+  validateTreatmentUnits,
+} from "./helpers/functions";
 export { IndicatorTableBodyV2 } from "./components/IndicatorTable/IndicatortablebodyV2";
 export { IndicatorTable } from "./components/IndicatorTable";
-export { defaultYear, mainHospitals } from "./app_config";
+export {
+  defaultYear,
+  mainHospitals,
+  mainQueryParamsConfig,
+} from "./app_config";
 export { SelectTreatmentUnits } from "./components/SelectTreatmentUnits";
-export { useUnitNamesQuery } from "./helpers/hooks";
-export type { NestedTreatmentUnitName } from "./components/RegisterPage/unitnamelist/unitnamelistbody";
-export { mainQueryParamsConfig } from "./app_config";
-export { validateTreatmentUnits } from "./helpers/functions";
-export { UnitNameList } from "./components/RegisterPage/unitnamelist";
 export { skdeTheme, breakpoints } from "./themes/SkdeTheme";
 export { indicatorTableTheme } from "./components/IndicatorTable/IndicatortablebodyV2/IndicatorTableBodyV2Styles";
 export { LinechartGrid } from "./components/Charts/LinechartGrid";
