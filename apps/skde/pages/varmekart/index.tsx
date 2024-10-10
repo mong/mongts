@@ -9,10 +9,20 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { InputLabel } from "@mui/material";
-import { Box, Typography, Divider, IconButton, Button } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Divider,
+  IconButton,
+  Button,
+  ThemeProvider,
+} from "@mui/material";
 import { FilterDrawer } from "../../src/components/TreatmentQuality";
 import { ChevronLeftRounded } from "@mui/icons-material";
 import { TreatmentQualityFilterMenu } from "qmongjs";
+import { skdeTheme } from "qmongjs";
+import { BreadCrumbPath } from "../../src/components/Header";
+import { Header, HeaderData } from "../../src/components/Header";
 
 const width = 1000;
 const minBoxWidth = 40;
@@ -25,6 +35,30 @@ const selectYearOptions = Array.from(
   { length: numberOfYears },
   (_, i) => i + currentYear - numberOfYears,
 );
+
+// Header settings
+const breadcrumbs: BreadCrumbPath = {
+  path: [
+    {
+      link: "https://www.skde.no",
+      text: "Forside",
+    },
+    {
+      link: "https://www.skde.no/resultater",
+      text: "Tall om helsetjenesten",
+    },
+    {
+      link: "/varmekart/",
+      text: "Varmekart",
+    },
+  ],
+};
+
+const headerData: HeaderData = {
+  title: "Varmekart",
+  subtitle:
+    "Her vises alle kvalitetsindikatorer fra nasjonale medisinske kvalitetsregistre i et varmekart",
+};
 
 export const Skde = (): JSX.Element => {
   const [year, setYear] = useState((currentYear - 1).toString());
@@ -134,7 +168,13 @@ export const Skde = (): JSX.Element => {
   ];
 
   return (
-    <>
+    <ThemeProvider theme={skdeTheme}>
+      <Header
+        bgcolor="surface2.light"
+        headerData={headerData}
+        breadcrumbs={breadcrumbs}
+        maxWidth={false}
+      />
       <div style={{ margin: 40, display: "flex", flexDirection: "row" }}>
         <Button
           variant="contained"
@@ -254,7 +294,7 @@ export const Skde = (): JSX.Element => {
           page={"heatmap"}
         />
       </FilterDrawer>
-    </>
+    </ThemeProvider>
   );
 };
 
