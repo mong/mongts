@@ -384,6 +384,7 @@ export function TreatmentQualityFilterMenu({
         {enableTableContextSection ? (
           <ToggleButtonFilterSection
             accordion={false}
+            noShadow={true}
             filterkey={tableContextKey}
             sectionid={tableContextKey}
             sectiontitle="Tabellkontekst"
@@ -404,6 +405,7 @@ export function TreatmentQualityFilterMenu({
         )}
         <SelectedFiltersSection
           accordion={false}
+          noShadow={true}
           filterkey="selectedfilters"
           sectionid="selectedfilters"
           sectiontitle="Valgte filtre"

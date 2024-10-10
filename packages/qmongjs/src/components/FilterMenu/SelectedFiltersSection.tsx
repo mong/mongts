@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Stack, Chip, Link, Box, styled } from "@mui/material";
+import { Stack, Chip, Link, Box, styled, Typography } from "@mui/material";
 import { ClearRounded } from "@mui/icons-material";
 import _ from "lodash";
 import { FilterMenuSectionProps } from ".";
@@ -68,17 +68,25 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
 
   return (
     <>
-      <Box
-        sx={{ display: "flex", flexDirection: "row-reverse", marginBottom: 1 }}
-      >
-        <Link
-          type="button"
-          variant="body2"
-          onClick={() => handleReset(filterSettingsDispatch)}
-          sx={{ cursor: "pointer", fontWeight: "600" }}
+      <Box sx={{ display: "flex", marginBottom: 1 }}>
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="baseline"
+          sx={{ width: "100%", marginBottom: 2 }}
         >
-          Tilbakestill filter
-        </Link>
+          <Typography variant="subtitle2" color="primary">
+            Valgte filter
+          </Typography>
+          <Link
+            type="button"
+            variant="body2"
+            onClick={() => handleReset(filterSettingsDispatch)}
+            sx={{ cursor: "pointer", fontWeight: "600" }}
+          >
+            Tilbakestill
+          </Link>
+        </Stack>
       </Box>
       <Stack
         direction="row"

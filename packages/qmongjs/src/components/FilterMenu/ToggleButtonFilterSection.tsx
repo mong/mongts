@@ -13,8 +13,6 @@ import { getSelectedValue } from "./utils";
 
 const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
   borderRadius: 30,
-  paddingLeft: "1rem",
-  paddingRight: "1rem",
   height: "2rem",
   fontSize: theme.typography.button.fontFamily,
   textTransform: "none",
@@ -67,6 +65,16 @@ export const ToggleButtonFilterSection = ({
       aria-label={`${sectiontitle}-valg`}
       color="primary"
       size="small"
+      fullWidth={true}
+      sx={{
+        ".MuiToggleButtonGroup-grouped": {
+          borderRadius: 30,
+          height: "2rem",
+          fontSize: "theme.typography.button.fontFamily",
+          textTransform: "none",
+          mr: 1,
+        },
+      }}
     >
       {options.map((option) => (
         <StyledToggleButton
