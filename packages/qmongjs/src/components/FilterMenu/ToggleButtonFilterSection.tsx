@@ -22,12 +22,12 @@ type ToggleButtonFilterSectionProps = FilterMenuSectionProps & {
   options: FilterSettingsValue[];
 };
 
-export const ToggleButtonFilterSection = ({
+export function ToggleButtonFilterSection({
   options,
   filterkey,
   sectionid,
   sectiontitle,
-}: ToggleButtonFilterSectionProps) => {
+}: ToggleButtonFilterSectionProps) {
   const filterSettings = useContext(FilterSettingsContext);
   const filterSettingsDispatch = useContext(FilterSettingsDispatchContext);
 
@@ -87,6 +87,4 @@ export const ToggleButtonFilterSection = ({
       ))}
     </ToggleButtonGroup>
   );
-};
-
-export default ToggleButtonFilterSection;
+}
