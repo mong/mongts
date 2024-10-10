@@ -3,8 +3,7 @@ filename: kontakt
 title: Kontaktinformasjon
 lang: nb
 ---
-
-Har du spørsmål eller ønsker å komme i kontakt med oss kan du sende en e-post til
+Har du spørsmål eller ønsker å komme i kontakt med oss kan du sende en e-post til 
 
 **helseatlas@skde.no**
 
@@ -16,6 +15,8 @@ For henvendelser fra media, ta gjerne kontakt med
 Kommunikasjonsrådgiver\
 Telefon: 90 57 09 57\
 randi.merete.solhaug@helse-nord.no
+
+
 
 ## SKDE
 
