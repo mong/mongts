@@ -5,7 +5,6 @@ import {
   Switch,
   FormHelperText,
   FormControl,
-  Typography,
 } from "@mui/material";
 import { FilterMenuSectionProps } from ".";
 import {

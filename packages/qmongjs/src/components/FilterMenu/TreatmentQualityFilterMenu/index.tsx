@@ -20,6 +20,7 @@ import {
   FilterMenuSelectionChangedHandler,
   FilterMenuFilterInitializedHandler,
   SwitchFilterSection,
+  NullFilterSection,
 } from "qmongjs";
 import {
   getAchievementLevelOptions,
@@ -101,6 +102,7 @@ export function TreatmentQualityFilterMenu({
   register,
   enableTableContextSection = true,
 }: TreatmentQualityFilterMenuProps) {
+  const isRegisterPage = !!register;
   const selectedRegister = register ?? "all";
   const queryContextType = "ind";
 
@@ -144,7 +146,7 @@ export function TreatmentQualityFilterMenu({
 
   // Get list of all years with data from given register
   let listOfYears: [number] | undefined = undefined;
-  if (register) {
+  if (isRegisterPage) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const selectionYearQuery: UseQueryResult<any, unknown> =
       useSelectionYearsQuery(register as string, selectedTableContext, "");
@@ -369,7 +371,7 @@ export function TreatmentQualityFilterMenu({
 
   return (
     <>
-      {(register || !(medicalFieldData && registryNameData)) && (
+      {!isRegisterPage && (!medicalFieldData || !registryNameData) && (
         <Alert severity="error">
           Det oppstod en feil ved henting av fagområder og registre!
         </Alert>
@@ -426,27 +428,24 @@ export function TreatmentQualityFilterMenu({
           searchbox={true}
           maxselections={maxSelectedTreatmentUnits}
         />
-        {register ? (
-          <></>
-        ) : (
-          <TreeViewFilterSection
-            refreshState={shouldRefreshInitialState}
-            treedata={medicalFields.treedata}
-            defaultvalues={medicalFields.defaults}
-            // Automatic clearing selections when "Alle fagområder" is clicked
-            // autouncheckid={medicalFields.defaults[0].value}
-            initialselections={
-              selectedMedicalFields?.map((value) => ({
-                value: value,
-                valueLabel: getValueLabel(value, medicalFieldsMap),
-              })) as FilterSettingsValue[]
-            }
-            sectionid={medicalFieldKey}
-            sectiontitle="Fagområder"
-            filterkey={medicalFieldKey}
-            searchbox={true}
-          />
-        )}
+        <TreeViewFilterSection
+          skip={isRegisterPage}
+          refreshState={shouldRefreshInitialState}
+          treedata={medicalFields.treedata}
+          defaultvalues={medicalFields.defaults}
+          // Automatic clearing selections when "Alle fagområder" is clicked
+          // autouncheckid={medicalFields.defaults[0].value}
+          initialselections={
+            selectedMedicalFields?.map((value) => ({
+              value: value,
+              valueLabel: getValueLabel(value, medicalFieldsMap),
+            })) as FilterSettingsValue[]
+          }
+          sectionid={medicalFieldKey}
+          sectiontitle="Fagområder"
+          filterkey={medicalFieldKey}
+          searchbox={true}
+        />
         <RadioGroupFilterSection
           radios={yearOptions.values}
           defaultvalues={[yearOptions.default]}
@@ -472,25 +471,22 @@ export function TreatmentQualityFilterMenu({
           sectionid={levelKey}
           filterkey={levelKey}
         />
-        {register ? (
-          <></>
-        ) : (
-          <SwitchFilterSection
-            sectionid={dataQualityKey}
-            filterkey={dataQualityKey}
-            sectiontitle={"Datakvalitet"}
-            label={dataQualitySelectedValue.valueLabel}
-            initialselections={
-              dataQualitySelected === "true"
-                ? [dataQualitySelectedValue]
-                : undefined
-            }
-            activatedswitchvalue={dataQualitySelectedValue}
-            helperText={
-              "Bytter visning av kvalitetsindikatorer til indikatorer for dekningsgrad. Dekningsgrad sier noe om datakvalitet for kvalitetsindikatoren."
-            }
-          />
-        )}
+        <SwitchFilterSection
+          skip={isRegisterPage}
+          sectionid={dataQualityKey}
+          filterkey={dataQualityKey}
+          sectiontitle={"Datakvalitet"}
+          label={dataQualitySelectedValue.valueLabel}
+          initialselections={
+            dataQualitySelected === "true"
+              ? [dataQualitySelectedValue]
+              : undefined
+          }
+          activatedswitchvalue={dataQualitySelectedValue}
+          helperText={
+            "Bytter visning av kvalitetsindikatorer til indikatorer for dekningsgrad. Dekningsgrad sier noe om datakvalitet for kvalitetsindikatoren."
+          }
+        />
       </FilterMenu>
     </>
   );

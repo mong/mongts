@@ -24,6 +24,7 @@ import {
   yearKey,
   medicalFieldKey,
   useMedicalFieldsQuery,
+  dataQualityKey,
   FilterSettingsActionType,
   IndicatorTable,
   IndicatorTableBodyV2,
@@ -45,8 +46,7 @@ import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
 import scrollToSelectedRow from "./utils/scrollToSelectedRow";
 import getMedicalFieldFilterRegisters from "./utils/getMedicalFieldFilterRegisters";
 import { LayoutHead } from "../../src/components/LayoutHead";
-
-const dataQualityKey = "dg";
+import { valueOrDefault, defaultTableContext } from "./utils/valueOrDefault";
 
 export default function TreatmentQualityPage() {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
@@ -58,8 +58,6 @@ export default function TreatmentQualityPage() {
 
   const searchParams = useSearchParams();
   const displayV2Table = searchParams.get("newtable") === "true";
-
-  const defaultTableContext = "caregiver";
 
   // Used by indicator table
   const [selectedYear, setSelectedYear] = useState(defaultYear);
@@ -145,51 +143,6 @@ export default function TreatmentQualityPage() {
     );
   };
 
-  const valueOrDefault = (
-    key: string,
-    filterSettings: { map: Map<string, FilterSettingsValue[]> },
-  ) => {
-    switch (key) {
-      case tableContextKey: {
-        return (
-          filterSettings.map.get(tableContextKey)?.[0].value ??
-          defaultTableContext
-        );
-      }
-      case yearKey: {
-        return (
-          filterSettings.map.get(yearKey)[0].value ?? defaultYear.toString()
-        );
-      }
-      case levelKey: {
-        return filterSettings.map.get(levelKey)?.[0]?.value ?? undefined;
-      }
-      case medicalFieldKey: {
-        const medicalFieldFilter = filterSettings.map
-          .get(medicalFieldKey)
-          ?.map((value) => value.value);
-        const registerFilter = getMedicalFieldFilterRegisters(
-          medicalFieldFilter,
-          registers,
-          medicalFields,
-        );
-        return registerFilter;
-      }
-      case treatmentUnitsKey: {
-        return filterSettings.map
-          .get(treatmentUnitsKey)
-          .map((value) => value.value);
-      }
-      case dataQualityKey: {
-        return filterSettings.map.get(dataQualityKey)?.[0].value === "true"
-          ? true
-          : false;
-      }
-      default:
-        break;
-    }
-  };
-
   const setAllSelected = (newFilterSettings: {
     map: Map<string, FilterSettingsValue[]>;
   }) => {
@@ -203,7 +156,12 @@ export default function TreatmentQualityPage() {
       valueOrDefault(levelKey, newFilterSettings) as string | undefined,
     );
     setSelectedMedicalFields(
-      valueOrDefault(medicalFieldKey, newFilterSettings) as string[],
+      valueOrDefault(
+        medicalFieldKey,
+        newFilterSettings,
+        registers,
+        medicalFields,
+      ) as string[],
     );
     setSelectedTreatmentUnits(
       valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
@@ -242,7 +200,12 @@ export default function TreatmentQualityPage() {
       }
       case medicalFieldKey: {
         setSelectedMedicalFields(
-          valueOrDefault(medicalFieldKey, newFilterSettings) as string[],
+          valueOrDefault(
+            medicalFieldKey,
+            newFilterSettings,
+            registers,
+            medicalFields,
+          ) as string[],
         );
         break;
       }

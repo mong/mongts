@@ -41,6 +41,7 @@ import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
 import scrollToSelectedRow from "./utils/scrollToSelectedRow";
 import { RegisterName } from "types";
+import valueOrDefault from "./utils/valueOrDefault";
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
@@ -107,35 +108,6 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     setSelectedTreatmentUnits(
       filterSettings.get(treatmentUnitsKey).map((value) => value.value),
     );
-  };
-
-  const valueOrDefault = (
-    key: string,
-    filterSettings: { map: Map<string, FilterSettingsValue[]> },
-  ) => {
-    switch (key) {
-      case tableContextKey: {
-        return (
-          filterSettings.map.get(tableContextKey)?.[0].value ??
-          defaultTableContext
-        );
-      }
-      case yearKey: {
-        return (
-          filterSettings.map.get(yearKey)[0].value ?? defaultYear.toString()
-        );
-      }
-      case levelKey: {
-        return filterSettings.map.get(levelKey)?.[0]?.value ?? undefined;
-      }
-      case treatmentUnitsKey: {
-        return filterSettings.map
-          .get(treatmentUnitsKey)
-          .map((value) => value.value);
-      }
-      default:
-        break;
-    }
   };
 
   const setAllSelected = (newFilterSettings: {

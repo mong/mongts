@@ -44,6 +44,7 @@ export {
   tableContextKey,
   yearKey,
   medicalFieldKey,
+  dataQualityKey,
 } from "./components/FilterMenu/TreatmentQualityFilterMenu";
 export type { TreatmentQualityFilterMenuProps } from "./components/FilterMenu/TreatmentQualityFilterMenu";
 export {
