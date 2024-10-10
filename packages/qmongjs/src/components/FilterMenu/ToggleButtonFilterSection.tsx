@@ -79,6 +79,7 @@ export function ToggleButtonFilterSection({
       {options.map((option) => (
         <StyledToggleButton
           key={`${sectionid}-toggle-${option.value}`}
+          data-testid={`${sectionid}-toggle-${option.value}`}
           value={option.value}
           aria-label={option.valueLabel}
         >
