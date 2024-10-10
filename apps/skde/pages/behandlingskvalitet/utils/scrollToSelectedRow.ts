@@ -1,4 +1,9 @@
 export default function scrollToSelectedRow(selectedRow: string): boolean {
+  if (!document) 
+  {
+    return false;
+  }
+
   const element = document.getElementById(selectedRow);
   const headerOffset = 160;
 

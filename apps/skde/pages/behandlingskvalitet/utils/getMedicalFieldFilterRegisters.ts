@@ -15,7 +15,7 @@ export default function getMedicalFieldFilterRegisters(
 ) {
   let registerFilter: string[];
 
-  if (!medicalFieldFilter || medicalFieldFilter[0] === "all") {
+  if (!Array.isArray(medicalFieldFilter) || medicalFieldFilter[0] === "all") {
     registerFilter = registers.map((register) => register.rname);
   } else {
     const selectedMedicalFields = medicalFields.filter((field) =>
