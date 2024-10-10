@@ -232,7 +232,9 @@ export default function TreatmentQualityPage() {
 
   // Use the custom hook to observe the addition of the selected row element, if
   // not already available.
-  useOnElementAdded(selectedRow, queriesReady, scrollToSelectedRow);
+  if (typeof document !== "undefined") {
+    useOnElementAdded(selectedRow, queriesReady, scrollToSelectedRow);
+  }
 
   return (
     <ThemeProvider theme={skdeTheme}>

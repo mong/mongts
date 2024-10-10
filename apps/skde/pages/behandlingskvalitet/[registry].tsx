@@ -171,7 +171,9 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
 
   // Use the custom hook to observe the addition of the selected row element, if
   // not already available.
-  useOnElementAdded(selectedRow, true, scrollToSelectedRow);
+  if (typeof document !== "undefined") {
+    useOnElementAdded(selectedRow, true, scrollToSelectedRow);
+  }
 
   if (!mounted) {
     return null;
