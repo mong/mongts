@@ -45,6 +45,7 @@ import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
 import { IndicatorTableSkeleton } from "qmongjs";
+import { LayoutHead } from "../../src/components/LayoutHead";
 
 const dataQualityKey = "dg";
 
@@ -307,6 +308,11 @@ export default function TreatmentQualityPage() {
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
       <PageWrapper>
+        <LayoutHead
+          title="Behandlingskvalitet"
+          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
+          href="/favicon.ico"
+        />
         <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
           context={tableContext}
