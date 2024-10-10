@@ -60,6 +60,7 @@ export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   medicalFieldData: any;
   register?: string;
+  page?: string;
 }>;
 
 // Types used due to the use of useQueryParam
@@ -97,6 +98,7 @@ export function TreatmentQualityFilterMenu({
   medicalFieldData: medicalFieldData,
   context: context,
   register: register,
+  page: page,
 }: TreatmentQualityFilterMenuProps) {
   const selectedRegister = register ?? "all";
   const queryContext = { context: context, type: "ind" }; // TODO: Variable for "ind"/"dg"?
@@ -396,6 +398,70 @@ export function TreatmentQualityFilterMenu({
             sectiontitle={"Måloppnåelse"}
             sectionid={levelKey}
             filterkey={levelKey}
+          />
+        </FilterMenu>
+      </>
+    );
+  }
+
+  if (page === "heatmap") {
+    return (
+      <>
+        <FilterMenu
+          refreshState={shouldRefreshInitialState}
+          onSelectionChanged={handleFilterChanged}
+          onFilterInitialized={onFilterInitialized}
+        >
+          <SelectedFiltersSection
+            accordion={false}
+            filterkey="selectedfilters"
+            sectionid="selectedfilters"
+            sectiontitle="Valgte filtre"
+          />
+          <TreeViewFilterSection
+            refreshState={shouldRefreshInitialState}
+            treedata={treatmentUnits.treedata}
+            defaultvalues={treatmentUnits.defaults}
+            initialselections={
+              selectedTreatmentUnits.map((value) => ({
+                value: value,
+                valueLabel: value,
+              })) as FilterSettingsValue[]
+            }
+            sectionid={treatmentUnitsKey}
+            sectiontitle={
+              context === "resident" ? "Opptaksområder" : "Behandlingsenheter"
+            }
+            filterkey={treatmentUnitsKey}
+            searchbox={true}
+            maxselections={maxSelectedTreatmentUnits}
+          />
+          <TreeViewFilterSection
+            refreshState={shouldRefreshInitialState}
+            treedata={medicalFields.treedata}
+            defaultvalues={medicalFields.defaults}
+            // Automatic clearing selections when "Alle fagområder" is clicked
+            // autouncheckid={medicalFields.defaults[0].value}
+            initialselections={
+              selectedMedicalFields?.map((value) => ({
+                value: value,
+                valueLabel: getValueLabel(value, medicalFieldsMap),
+              })) as FilterSettingsValue[]
+            }
+            sectionid={medicalFieldKey}
+            sectiontitle="Fagområder"
+            filterkey={medicalFieldKey}
+            searchbox={true}
+          />
+          <RadioGroupFilterSection
+            radios={yearOptions.values}
+            defaultvalues={[yearOptions.default]}
+            initialselections={[
+              { value: selectedYear, valueLabel: selectedYear },
+            ]}
+            sectiontitle={"År"}
+            sectionid={yearKey}
+            filterkey={yearKey}
           />
         </FilterMenu>
       </>

@@ -1,13 +1,18 @@
 import React, { useState } from "react";
-import { QualityAtlasFigure, useMedicalFieldsQuery, useUnitNamesQuery } from "qmongjs";
+import {
+  QualityAtlasFigure,
+  useMedicalFieldsQuery,
+  useUnitNamesQuery,
+  useRegisterNamesQuery,
+} from "qmongjs";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { InputLabel } from "@mui/material";
-import { Box, Typography, Divider, IconButton, Button } from "@mui/material"
+import { Box, Typography, Divider, IconButton, Button } from "@mui/material";
 import { FilterDrawer } from "../../src/components/TreatmentQuality";
 import { ChevronLeftRounded } from "@mui/icons-material";
-import { HeatMapFilterMenu } from "../../src/components/HeatMap";
+import { TreatmentQualityFilterMenu } from "qmongjs";
 
 const width = 1000;
 const minBoxWidth = 40;
@@ -45,8 +50,13 @@ export const Skde = (): JSX.Element => {
 
   const medfieldsQuery = useMedicalFieldsQuery();
   const unitNamesQuery = useUnitNamesQuery("all", "caregiver", "ind");
+  const registryNameQuery = useRegisterNamesQuery();
 
-  if (unitNamesQuery.isFetching || medfieldsQuery.isFetching) {
+  if (
+    unitNamesQuery.isFetching ||
+    medfieldsQuery.isFetching ||
+    registryNameQuery.isFetching
+  ) {
     return null;
   }
 
@@ -126,7 +136,13 @@ export const Skde = (): JSX.Element => {
   return (
     <>
       <div style={{ margin: 40, display: "flex", flexDirection: "row" }}>
-        <Button variant="contained" onClick={() => setDrawerOpen(true)} sx={{marginRight: 10}}>Åpne filtermeny </Button>
+        <Button
+          variant="contained"
+          onClick={() => setDrawerOpen(true)}
+          sx={{ marginRight: 10 }}
+        >
+          Åpne filtermeny{" "}
+        </Button>
         <Box width={100}>
           <FormControl fullWidth>
             <InputLabel id="year-input-label">År</InputLabel>
@@ -212,7 +228,7 @@ export const Skde = (): JSX.Element => {
         unitNames={unitNames}
       />
 
-  <FilterDrawer
+      <FilterDrawer
         ModalProps={{
           keepMounted: true, // Better open performance on mobile.
         }}
@@ -229,8 +245,15 @@ export const Skde = (): JSX.Element => {
           </IconButton>
         </Box>
         <Divider />
-        <HeatMapFilterMenu unitNamesQuery={unitNamesQuery}/>
-  </FilterDrawer>
+        <TreatmentQualityFilterMenu
+          onSelectionChanged={() => {}}
+          onFilterInitialized={() => {}}
+          registryNameData={registryNameQuery.data}
+          medicalFieldData={medfieldsQuery.data}
+          context={"caregiver"}
+          page={"heatmap"}
+        />
+      </FilterDrawer>
     </>
   );
 };
