@@ -20,7 +20,6 @@ import {
   FilterMenuSelectionChangedHandler,
   FilterMenuFilterInitializedHandler,
   SwitchFilterSection,
-  NullFilterSection,
 } from "qmongjs";
 import {
   getAchievementLevelOptions,
