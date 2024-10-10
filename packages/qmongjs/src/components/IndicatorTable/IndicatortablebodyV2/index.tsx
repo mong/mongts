@@ -13,6 +13,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
 import { useScreenSize } from "@visx/responsive";
+import { Skeleton } from "@mui/material";
 import {
   StyledTable,
   StyledTableRow,
@@ -550,7 +551,7 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
   });
 
   if (indicatorQuery.isFetching || nestedDataQuery.isFetching) {
-    return null;
+    return <Skeleton variant="rectangular" width={"100%"} height={2000} />;
   }
 
   const chartData = indicatorQuery.data as Indicator[];
