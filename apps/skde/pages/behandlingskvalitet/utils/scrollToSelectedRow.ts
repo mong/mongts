@@ -1,6 +1,5 @@
 export default function scrollToSelectedRow(selectedRow: string): boolean {
-  if (!document) 
-  {
+  if (!document) {
     return false;
   }
 
