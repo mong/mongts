@@ -13,6 +13,10 @@ export default function getMedicalFieldFilterRegisters(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   medicalFields: any,
 ) {
+  if (!Array.isArray(medicalFields) || !Array.isArray(registers)) {
+    return [];
+  }
+
   let registerFilter: string[];
 
   if (!Array.isArray(medicalFieldFilter) || medicalFieldFilter[0] === "all") {
