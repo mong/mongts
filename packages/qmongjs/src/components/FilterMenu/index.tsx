@@ -73,6 +73,7 @@ export type FilterMenuSectionProps = PropsWithChildren<{
   defaultvalues?: FilterSettingsValue[];
   initialselections?: FilterSettingsValue[];
   refreshState?: boolean;
+  skip?: boolean;
 }>;
 
 /**
@@ -308,9 +309,10 @@ export const FilterMenu = ({
   refreshState,
   children,
 }: FilterMenuProps) => {
-  const sections = Array.isArray(children)
-    ? children.map(buildFilterMenuSection)
-    : [buildFilterMenuSection(children)];
+  const childrenArray = Array.isArray(children) ? children : [children];
+  const sections = childrenArray
+    .filter((child) => !child.props.skip)
+    .map(buildFilterMenuSection);
 
   const [filterSettings, dispatch] = useReducer(
     wrapReducer(filterSettingsReducer, onSelectionChanged),
