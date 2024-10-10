@@ -1,6 +1,6 @@
 export default function scrollToSelectedRow(selectedRow: string): boolean {
   if (!document) {
-    return false;
+    return true;
   }
 
   const element = document.getElementById(selectedRow);
