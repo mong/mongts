@@ -1,10 +1,4 @@
 import React, { useState } from "react";
-import {
-  QualityAtlasFigure,
-  useMedicalFieldsQuery,
-  useUnitNamesQuery,
-  useRegisterNamesQuery,
-} from "qmongjs";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
@@ -19,8 +13,22 @@ import {
 } from "@mui/material";
 import { FilterDrawer } from "../../src/components/TreatmentQuality";
 import { ChevronLeftRounded } from "@mui/icons-material";
-import { TreatmentQualityFilterMenu } from "qmongjs";
-import { skdeTheme } from "qmongjs";
+import {
+  QualityAtlasFigure,
+  FilterSettingsAction,
+  FilterSettingsValue,
+  TreatmentQualityFilterMenu,
+  decodeRegisterQueryParam,
+  useRegisterNamesQuery,
+  defaultYear,
+  treatmentUnitsKey,
+  yearKey,
+  medicalFieldKey,
+  useMedicalFieldsQuery,
+  FilterSettingsActionType,
+  skdeTheme,
+  useUnitNamesQuery,
+} from "qmongjs";
 import { BreadCrumbPath } from "../../src/components/Header";
 import { Header, HeaderData } from "../../src/components/Header";
 
@@ -61,25 +69,18 @@ const headerData: HeaderData = {
 };
 
 export const Skde = (): JSX.Element => {
-  const [year, setYear] = useState((currentYear - 1).toString());
   const [unitLevel, setUnitLevel] = useState("RHF");
-  const [medField, setMedField] = useState("");
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [selectedYear, setSelectedYear] = useState(defaultYear);
+  const [selectedMedicalFields, setSelectedMedicalFields] = useState<string[]>(
+    [],
+  );
+  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState([
+    "Nasjonalt",
+  ]);
 
   const toggleDrawer = (newOpen: boolean) => {
     setDrawerOpen(newOpen);
-  };
-
-  const handleChangeYear = (event: SelectChangeEvent) => {
-    setYear(event.target.value as string);
-  };
-
-  const handleChangeUnitLevel = (event: SelectChangeEvent) => {
-    setUnitLevel(event.target.value as string);
-  };
-
-  const handleChangeMedField = (event: SelectChangeEvent) => {
-    setMedField(event.target.value as string);
   };
 
   const medfieldsQuery = useMedicalFieldsQuery();
@@ -94,7 +95,9 @@ export const Skde = (): JSX.Element => {
     return null;
   }
 
-  const nestedUnitNames = unitNamesQuery.data.nestedUnitNames;
+  const registers = registryNameQuery.data;
+  const medicalFields = medfieldsQuery.data;
+  const nestedUnitNames = unitNamesQuery.data?.nestedUnitNames;
 
   const RHFs = nestedUnitNames
     .map((row) => row.rhf)
@@ -167,6 +170,148 @@ export const Skde = (): JSX.Element => {
     "nyre_transplant_bt",
   ];
 
+  // ######################################## //
+  // ##### Copy-paste filter meny stuff ##### //
+  // ######################################## //
+
+  /**
+   * Get the register names for the selected medical fields and registers
+   *
+   * @param medicalFieldFilter Array of medical field and register names
+   * @returns Array of register names
+   */
+  const getMedicalFieldFilterRegisters = (medicalFieldFilter: string[]) => {
+    let registerFilter: string[];
+
+    if (!medicalFieldFilter || medicalFieldFilter[0] === "all") {
+      registerFilter = registers.map((register) => register.rname);
+    } else {
+      const selectedMedicalFields = medicalFields.filter((field) =>
+        medicalFieldFilter.includes(field.shortName),
+      );
+      const selectedMedicalFieldNames = selectedMedicalFields.map(
+        (field) => field.shortName,
+      );
+      const selectedRegisters = medicalFieldFilter.filter(
+        (name) => !selectedMedicalFieldNames.includes(name),
+      );
+      registerFilter = Array.from(
+        new Set<string>([
+          ...selectedMedicalFields.flatMap((field) => field.registers),
+          ...selectedRegisters.map((register) =>
+            decodeRegisterQueryParam(register),
+          ),
+        ]),
+      );
+    }
+
+    return registerFilter;
+  };
+
+  /**
+   * Handle that the initial filter settings are loaded, which can happen
+   * more than once due to Next's pre-rendering and hydration behaviour combined
+   * with reading of query params.
+   *
+   * @param filterSettings Initial values for the filter settings
+   */
+  const handleFilterInitialized = (
+    filterSettings: Map<string, FilterSettingsValue[]>,
+  ): void => {
+    setSelectedYear(
+      parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString()),
+    );
+
+    const medicalFieldFilter = filterSettings
+      .get(medicalFieldKey)
+      ?.map((value) => value.value);
+
+    const registerFilter = getMedicalFieldFilterRegisters(medicalFieldFilter);
+    setSelectedMedicalFields(registerFilter);
+
+    setSelectedTreatmentUnits(
+      filterSettings.get(treatmentUnitsKey).map((value) => value.value),
+    );
+  };
+
+  const valueOrDefault = (
+    key: string,
+    filterSettings: { map: Map<string, FilterSettingsValue[]> },
+  ) => {
+    switch (key) {
+      case yearKey: {
+        return (
+          filterSettings.map.get(yearKey)[0].value ?? defaultYear.toString()
+        );
+      }
+      case medicalFieldKey: {
+        const medicalFieldFilter = filterSettings.map
+          .get(medicalFieldKey)
+          ?.map((value) => value.value);
+        const registerFilter =
+          getMedicalFieldFilterRegisters(medicalFieldFilter);
+        return registerFilter;
+      }
+      case treatmentUnitsKey: {
+        return filterSettings.map
+          .get(treatmentUnitsKey)
+          .map((value) => value.value);
+      }
+      default:
+        break;
+    }
+  };
+
+  const setAllSelected = (newFilterSettings: {
+    map: Map<string, FilterSettingsValue[]>;
+  }) => {
+    setSelectedYear(
+      parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
+    );
+    setSelectedMedicalFields(
+      valueOrDefault(medicalFieldKey, newFilterSettings) as string[],
+    );
+    setSelectedTreatmentUnits(
+      valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+    );
+  };
+
+  /**
+   * Handle filter changes
+   */
+  const handleFilterChanged = (
+    newFilterSettings: { map: Map<string, FilterSettingsValue[]> },
+    oldFilterSettings: { map: Map<string, FilterSettingsValue[]> },
+    action: FilterSettingsAction,
+  ): void => {
+    switch (action.sectionSetting.key) {
+      case yearKey: {
+        setSelectedYear(
+          parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
+        );
+        break;
+      }
+      case medicalFieldKey: {
+        setSelectedMedicalFields(
+          valueOrDefault(medicalFieldKey, newFilterSettings) as string[],
+        );
+        break;
+      }
+      case treatmentUnitsKey: {
+        setSelectedTreatmentUnits(
+          valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+        );
+        break;
+      }
+      default:
+        break;
+    }
+
+    if (action.type === FilterSettingsActionType.RESET_SELECTIONS) {
+      setAllSelected(newFilterSettings);
+    }
+  };
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <Header
@@ -183,77 +328,6 @@ export const Skde = (): JSX.Element => {
         >
           Åpne filtermeny{" "}
         </Button>
-        <Box width={100}>
-          <FormControl fullWidth>
-            <InputLabel id="year-input-label">År</InputLabel>
-            <Select
-              labelId="year-input-label"
-              id="year-input"
-              value={year}
-              label="Year"
-              onChange={handleChangeYear}
-            >
-              {selectYearOptions.map((year) => {
-                return (
-                  <MenuItem key={year.toString()} value={year}>
-                    {year.toString()}
-                  </MenuItem>
-                );
-              })}
-            </Select>
-          </FormControl>
-        </Box>
-
-        <Box width={50} />
-
-        <Box width={250}>
-          <FormControl fullWidth>
-            <InputLabel id="unitlevel-input-label">Enhetsnivå</InputLabel>
-            <Select
-              labelId="unitlevel-input-label"
-              id="unitlevel-input"
-              value={unitLevel}
-              label="Unit level"
-              onChange={handleChangeUnitLevel}
-            >
-              <MenuItem key={"RHF"} value={"RHF"}>
-                Regionale helseforetak
-              </MenuItem>
-              <MenuItem key={"HF"} value={"HF"}>
-                Helseforetak
-              </MenuItem>
-              <MenuItem key={"Sykehus"} value={"Sykehus"}>
-                Sykehus
-              </MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
-
-        <Box width={50} />
-
-        <Box width={250}>
-          <FormControl fullWidth>
-            <InputLabel id="medfield-input-label">Fagområder</InputLabel>
-            <Select
-              labelId="medfield-input-label"
-              id="medifield-input"
-              value={medField}
-              label="Medical field"
-              onChange={handleChangeMedField}
-            >
-              <MenuItem key="custom" value={""}>
-                Egendefinerte indikatorer
-              </MenuItem>
-              {medfieldsQuery.data.map((row) => {
-                return (
-                  <MenuItem key={row.shortName} value={row.shortName}>
-                    {row.name}
-                  </MenuItem>
-                );
-              })}
-            </Select>
-          </FormControl>
-        </Box>
       </div>
 
       <QualityAtlasFigure
@@ -262,10 +336,10 @@ export const Skde = (): JSX.Element => {
         maxBoxWidth={maxBoxWidth}
         gap={gap}
         context={context}
-        year={Number(year)}
+        year={Number(selectedYear)}
         indicatorIDs={indicatorIDs}
-        medField={medField}
-        unitNames={unitNames}
+        medField={selectedMedicalFields}
+        unitNames={selectedTreatmentUnits}
       />
 
       <FilterDrawer
@@ -286,8 +360,8 @@ export const Skde = (): JSX.Element => {
         </Box>
         <Divider />
         <TreatmentQualityFilterMenu
-          onSelectionChanged={() => {}}
-          onFilterInitialized={() => {}}
+          onSelectionChanged={handleFilterChanged}
+          onFilterInitialized={handleFilterInitialized}
           registryNameData={registryNameQuery.data}
           medicalFieldData={medfieldsQuery.data}
           context={"caregiver"}
