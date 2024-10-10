@@ -1,11 +1,13 @@
-import React from "react";
-import { QualityAtlasFigure, useMedicalFieldsQuery } from "qmongjs";
-import { useUnitNamesQuery } from "qmongjs";
+import React, { useState } from "react";
+import { QualityAtlasFigure, useMedicalFieldsQuery, useUnitNamesQuery } from "qmongjs";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { InputLabel } from "@mui/material";
-import Box from "@mui/material/Box";
+import { Box, Typography, Divider, IconButton, Button } from "@mui/material"
+import { FilterDrawer } from "../../src/components/TreatmentQuality";
+import { ChevronLeftRounded } from "@mui/icons-material";
+import { HeatMapFilterMenu } from "../../src/components/HeatMap";
 
 const width = 1000;
 const minBoxWidth = 40;
@@ -20,9 +22,14 @@ const selectYearOptions = Array.from(
 );
 
 export const Skde = (): JSX.Element => {
-  const [year, setYear] = React.useState((currentYear - 1).toString());
-  const [unitLevel, setUnitLevel] = React.useState("RHF");
-  const [medField, setMedField] = React.useState("");
+  const [year, setYear] = useState((currentYear - 1).toString());
+  const [unitLevel, setUnitLevel] = useState("RHF");
+  const [medField, setMedField] = useState("");
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const toggleDrawer = (newOpen: boolean) => {
+    setDrawerOpen(newOpen);
+  };
 
   const handleChangeYear = (event: SelectChangeEvent) => {
     setYear(event.target.value as string);
@@ -119,6 +126,7 @@ export const Skde = (): JSX.Element => {
   return (
     <>
       <div style={{ margin: 40, display: "flex", flexDirection: "row" }}>
+        <Button variant="contained" onClick={() => setDrawerOpen(true)} sx={{marginRight: 10}}>Åpne filtermeny </Button>
         <Box width={100}>
           <FormControl fullWidth>
             <InputLabel id="year-input-label">År</InputLabel>
@@ -203,6 +211,26 @@ export const Skde = (): JSX.Element => {
         medField={medField}
         unitNames={unitNames}
       />
+
+  <FilterDrawer
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile.
+        }}
+        open={drawerOpen}
+        onClose={() => toggleDrawer(false)}
+      >
+        <Box sx={{ display: "flex", m: 2, justifyContent: "space-between" }}>
+          <Typography variant="h3">Filtermeny</Typography>
+          <IconButton
+            aria-label="Lukk sidemeny"
+            onClick={() => toggleDrawer(false)}
+          >
+            <ChevronLeftRounded fontSize="large" />
+          </IconButton>
+        </Box>
+        <Divider />
+        <HeatMapFilterMenu unitNamesQuery={unitNamesQuery}/>
+  </FilterDrawer>
     </>
   );
 };
