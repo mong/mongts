@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Typography, Button, ThemeProvider } from "@mui/material";
+import { Typography, Button, ThemeProvider, Stack } from "@mui/material";
 import {
   QualityAtlasFigure,
   useRegisterNamesQuery,
@@ -13,33 +13,6 @@ import { Header, HeaderData } from "../../src/components/Header";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { HeatMapFilterMenu } from "../../src/components/HeatMap/HeatMapFilterMenu";
 import { RegisterName, Medfield, NestedTreatmentUnitName } from "types";
-
-const indicatorIDs = [
-  "colon_relsurv_fra_opr",
-  "hjerneslag_beh_tromb",
-  "breast_bct_invasiv_0_30mm",
-  "Lungekreft_AndelLobektomiThorakoskopisk",
-  "NDV_andel_HbA1C_mindre_eller_lik_53",
-  "rectum_laparoskopi",
-  "prostata_utfoert_lymfadenektomi",
-  "hoftebrudd_stammefiks",
-  "prostata_fri_reseksjonsmargin",
-  "norkar_forsnev_hals_14d",
-  "rectum_lokalt_tilbakefall",
-  "NDV_andel_HbA1C_mindre_eller_lik_75",
-  "breast_bct_dcis_0_20mm",
-  "nyre_hemodia_ktv",
-  "colon_laparoskopi",
-  "hjerteinfarkt_invasivt_nstemi_72t",
-  "barnediabetes_hba1c_lt_7",
-  "hoftebrudd_ventetid48",
-  "lungekreft_postoperativmortalitet30dager",
-  "barnediabetes_hba1c_ge_9",
-  "hjerteinfarkt_reper_stemi",
-  "nyre_dialyse_hjemme",
-  "noric_trykkmaaling",
-  "nyre_transplant_bt",
-];
 
 export const Skde = (): JSX.Element => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -136,29 +109,40 @@ export const Skde = (): JSX.Element => {
 
   // Button
   // This button sets the new unit name and updates the URL query parameter "selected_treatment_unit"
-  const SelectRHFButton = (props: {
+  const SelectUnitLevelButton = (props: {
     buttonVariant: "outlined" | "text" | "contained";
     setSelectedTreatmentUnits: React.Dispatch<React.SetStateAction<string[]>>;
+    unitLevel: "RHF" | "HF" | "sykehus";
   }) => {
-    const { buttonVariant, setSelectedTreatmentUnits } = props;
+    const { buttonVariant, setSelectedTreatmentUnits, unitLevel } = props;
 
     // Router for updating the query parameter
     const router = useRouter();
     const pathname = usePathname();
     const searchParams = useSearchParams();
-
     const params = new URLSearchParams(searchParams.toString());
-    params.set("selected_treatment_units", RHFs.join("_"));
+
+    let unitData = [] as string[];
+
+    if (unitLevel === "RHF") {
+      unitData = RHFs;
+    } else if (unitLevel === "HF") {
+      unitData = HFs;
+    } else if (unitLevel === "sykehus") {
+      unitData = hospitals;
+    }
+
+    params.set("selected_treatment_units", unitData.join("_"));
 
     return (
       <Button
         onClick={() => {
           router.replace(pathname + "?" + params.toString(), { scroll: false });
-          setSelectedTreatmentUnits(RHFs);
+          setSelectedTreatmentUnits(unitData);
         }}
         variant={buttonVariant}
       >
-        <Typography variant="button">Velg alle RHF</Typography>
+        <Typography variant="button">{"Velg alle " + unitLevel}</Typography>
       </Button>
     );
   };
@@ -171,19 +155,30 @@ export const Skde = (): JSX.Element => {
         breadcrumbs={breadcrumbs}
         maxWidth={false}
       />
-      <div style={{ margin: 40, display: "flex", flexDirection: "row" }}>
-        <Button
-          variant="contained"
-          onClick={() => setDrawerOpen(true)}
-          sx={{ marginRight: 10 }}
-        >
+
+      <Stack direction="row" spacing={2} sx={{ marginLeft: 2, marginTop: 2 }}>
+        <Button variant="contained" onClick={() => setDrawerOpen(true)}>
           Åpne filtermeny
         </Button>
-        <SelectRHFButton
+
+        <SelectUnitLevelButton
           buttonVariant="outlined"
           setSelectedTreatmentUnits={setSelectedTreatmentUnits}
+          unitLevel="RHF"
         />
-      </div>
+
+        <SelectUnitLevelButton
+          buttonVariant="outlined"
+          setSelectedTreatmentUnits={setSelectedTreatmentUnits}
+          unitLevel="HF"
+        />
+
+        <SelectUnitLevelButton
+          buttonVariant="outlined"
+          setSelectedTreatmentUnits={setSelectedTreatmentUnits}
+          unitLevel="sykehus"
+        />
+      </Stack>
 
       <QualityAtlasFigure
         width={width}
@@ -192,7 +187,6 @@ export const Skde = (): JSX.Element => {
         gap={gap}
         context={context}
         year={selectedYear}
-        indicatorIDs={indicatorIDs}
         medField={selectedMedicalFields}
         unitNames={selectedTreatmentUnits}
       />
