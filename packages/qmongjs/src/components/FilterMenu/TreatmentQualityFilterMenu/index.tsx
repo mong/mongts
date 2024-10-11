@@ -380,6 +380,29 @@ export function TreatmentQualityFilterMenu({
           onSelectionChanged={handleFilterChanged}
           onFilterInitialized={onFilterInitialized}
         >
+          {enableTableContextSection ? (
+            <ToggleButtonFilterSection
+              accordion={false}
+              noShadow={true}
+              filterkey={tableContextKey}
+              sectionid={tableContextKey}
+              testIdPrefix={testIdPrefix}
+              sectiontitle="Tabellkontekst"
+              options={tableContextOptions.values}
+              defaultvalues={[tableContextOptions.default]}
+              initialselections={[
+                {
+                  value: selectedTableContext,
+                  valueLabel:
+                    selectedTableContext === "resident"
+                      ? "Opptaksområder"
+                      : "Behandlingsenheter",
+                },
+              ]}
+            />
+          ) : (
+            <></>
+          )}
           <SelectedFiltersSection
             accordion={false}
             filterkey="selectedfilters"
@@ -398,7 +421,9 @@ export function TreatmentQualityFilterMenu({
             }
             sectionid={treatmentUnitsKey}
             sectiontitle={
-              context === "resident" ? "Opptaksområder" : "Behandlingsenheter"
+              selectedTableContext === "resident"
+                ? "Opptaksområder"
+                : "Behandlingsenheter"
             }
             filterkey={treatmentUnitsKey}
             searchbox={true}

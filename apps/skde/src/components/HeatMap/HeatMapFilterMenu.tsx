@@ -9,10 +9,12 @@ import {
   yearKey,
   medicalFieldKey,
   FilterSettingsActionType,
+  tableContextKey,
 } from "qmongjs";
 import { Box, Typography, Divider, IconButton } from "@mui/material";
 import { ChevronLeftRounded } from "@mui/icons-material";
 import { RegisterName, Medfield } from "types";
+import { defaultTableContext } from "../../../pages/behandlingskvalitet/utils/valueOrDefault";
 
 type HeatMapFilterMenuProps = {
   registryNameData: RegisterName[];
@@ -23,6 +25,7 @@ type HeatMapFilterMenuProps = {
   setSelectedYear: React.Dispatch<React.SetStateAction<number>>;
   setSelectedMedicalFields: React.Dispatch<React.SetStateAction<string[]>>;
   setSelectedTreatmentUnits: React.Dispatch<React.SetStateAction<string[]>>;
+  setSelectedTableContext: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const HeatMapFilterMenu = (props: HeatMapFilterMenuProps) => {
@@ -35,6 +38,7 @@ export const HeatMapFilterMenu = (props: HeatMapFilterMenuProps) => {
     setSelectedYear,
     setSelectedMedicalFields,
     setSelectedTreatmentUnits,
+    setSelectedTableContext,
   } = props;
 
   // ######################################## //
@@ -85,6 +89,9 @@ export const HeatMapFilterMenu = (props: HeatMapFilterMenuProps) => {
   const handleFilterInitialized = (
     filterSettings: Map<string, FilterSettingsValue[]>,
   ): void => {
+    setSelectedTableContext(
+      filterSettings.get(tableContextKey)?.[0].value ?? defaultTableContext,
+    );
     setSelectedYear(
       parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString()),
     );
@@ -152,6 +159,12 @@ export const HeatMapFilterMenu = (props: HeatMapFilterMenuProps) => {
     action: FilterSettingsAction,
   ): void => {
     switch (action.sectionSetting.key) {
+      case tableContextKey: {
+        setSelectedTableContext(
+          valueOrDefault(tableContextKey, newFilterSettings) as string,
+        );
+        break;
+      }
       case yearKey: {
         setSelectedYear(
           parseInt(valueOrDefault(yearKey, newFilterSettings) as string),

@@ -13,6 +13,7 @@ import { Header, HeaderData } from "../../src/components/Header";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { HeatMapFilterMenu } from "../../src/components/HeatMap/HeatMapFilterMenu";
 import { RegisterName, Medfield, NestedTreatmentUnitName } from "types";
+import { defaultTableContext } from "../behandlingskvalitet/utils/valueOrDefault";
 
 export const Skde = (): JSX.Element => {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -23,6 +24,8 @@ export const Skde = (): JSX.Element => {
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState([
     "Nasjonalt",
   ]);
+  const [selectedTableContext, setSelectedTableContext] =
+    useState(defaultTableContext);
 
   const toggleDrawer = (newOpen: boolean) => {
     setDrawerOpen(newOpen);
@@ -36,7 +39,6 @@ export const Skde = (): JSX.Element => {
   const minBoxWidth = 30;
   const maxBoxWidth = 75;
   const gap = 2;
-  const context = "caregiver";
 
   // Header settings
   const breadcrumbs: BreadCrumbPath = {
@@ -185,7 +187,7 @@ export const Skde = (): JSX.Element => {
         minBoxWidth={minBoxWidth}
         maxBoxWidth={maxBoxWidth}
         gap={gap}
-        context={context}
+        context={selectedTableContext}
         year={selectedYear}
         medField={selectedMedicalFields}
         unitNames={selectedTreatmentUnits}
@@ -200,6 +202,7 @@ export const Skde = (): JSX.Element => {
         setSelectedYear={setSelectedYear}
         setSelectedMedicalFields={setSelectedMedicalFields}
         setSelectedTreatmentUnits={setSelectedTreatmentUnits}
+        setSelectedTableContext={setSelectedTableContext}
       />
     </ThemeProvider>
   );
