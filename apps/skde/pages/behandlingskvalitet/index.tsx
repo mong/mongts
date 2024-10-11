@@ -274,8 +274,8 @@ export default function TreatmentQualityPage() {
           <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
-                {queriesReady ?
-                  (displayV2Table ? (
+                {queriesReady ? (
+                  displayV2Table ? (
                     <IndicatorTableV2Wrapper className="table-wrapper">
                       <IndicatorTableBodyV2
                         key={"indicator-table2"}
