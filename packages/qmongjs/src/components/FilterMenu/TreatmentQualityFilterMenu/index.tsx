@@ -63,6 +63,7 @@ export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   medicalFieldData: any;
   register?: string;
   enableTableContextSection?: boolean;
+  testIdPrefix?: string;
 }>;
 
 // Types defined because of useQueryParam
@@ -100,6 +101,7 @@ export function TreatmentQualityFilterMenu({
   medicalFieldData,
   register,
   enableTableContextSection = true,
+  testIdPrefix,
 }: TreatmentQualityFilterMenuProps) {
   const isRegisterPage = !!register;
   const selectedRegister = register ?? "all";
@@ -386,6 +388,7 @@ export function TreatmentQualityFilterMenu({
             noShadow={true}
             filterkey={tableContextKey}
             sectionid={tableContextKey}
+            testIdPrefix={testIdPrefix}
             sectiontitle="Tabellkontekst"
             options={tableContextOptions.values}
             defaultvalues={[tableContextOptions.default]}

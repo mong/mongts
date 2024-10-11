@@ -8,9 +8,15 @@ context("Testing of behandlingskvalitet page", () => {
     cy.viewport(1550, 1750);
     cy.get('[data-testid="tu_header_Nasjonalt"]').should("exist"); // main page
     cy.get('[data-testid="indicatorrow_hjerneslag_inn_enhet"]').should("exist"); // indicator row
-    cy.get('[data-testid="context-toggle-caregiver"]').should("exist");
-    cy.get('[data-testid="context-toggle-resident"]').should("exist");
-    cy.get('[data-testid="context-toggle-resident"]').click();
+    cy.get(
+      '[data-testid="permanentFilterMenu-context-toggle-caregiver"]',
+    ).should("exist");
+    cy.get(
+      '[data-testid="permanentFilterMenu-context-toggle-resident"]',
+    ).should("exist");
+    cy.get(
+      '[data-testid="permanentFilterMenu-context-toggle-resident"]',
+    ).click();
     cy.get('[data-testid="indicatorrow_hjerneslag_inn_enhet"]').should(
       "not.exist",
     ); // indicator row
@@ -28,8 +34,12 @@ context("Testing of behandlingskvalitet page", () => {
     cy.get('[data-testid="indicatorrow_hjerneslag_inn_enhet"]').should(
       "not.exist",
     ); // indicator row
-    cy.get('[data-testid="context-toggle-caregiver"]').should("not.exist"); // tab does not exist
-    cy.get('[data-testid="context-toggle-resident"]').should("not.exist");
+    cy.get(
+      '[data-testid="permanentFilterMenu-context-toggle-caregiver"]',
+    ).should("not.exist"); // tab does not exist
+    cy.get(
+      '[data-testid="permanentFilterMenu-context-toggle-resident"]',
+    ).should("not.exist");
     cy.get('[data-testid="selected-filters-section-id-selectedfilters"]', {
       timeout: 60000,
     }).should("exist"); // Special menu exist

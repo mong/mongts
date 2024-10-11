@@ -22,11 +22,21 @@ type ToggleButtonFilterSectionProps = FilterMenuSectionProps & {
   options: FilterSettingsValue[];
 };
 
+const getTestIdString = (
+  sectionId: string,
+  value: string,
+  testIdPrefix?: string,
+) => {
+  const formattedPrefix = testIdPrefix ? `${testIdPrefix}-` : "";
+  return `${formattedPrefix}${sectionId}-toggle-${value}`;
+};
+
 export function ToggleButtonFilterSection({
   options,
   filterkey,
   sectionid,
   sectiontitle,
+  testIdPrefix,
 }: ToggleButtonFilterSectionProps) {
   const filterSettings = useContext(FilterSettingsContext);
   const filterSettingsDispatch = useContext(FilterSettingsDispatchContext);
@@ -79,7 +89,7 @@ export function ToggleButtonFilterSection({
       {options.map((option) => (
         <StyledToggleButton
           key={`${sectionid}-toggle-${option.value}`}
-          data-testid={`${sectionid}-toggle-${option.value}`}
+          data-testid={getTestIdString(sectionid, option.value, testIdPrefix)}
           value={option.value}
           aria-label={option.valueLabel}
         >

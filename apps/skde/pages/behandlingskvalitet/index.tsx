@@ -264,6 +264,7 @@ export default function TreatmentQualityPage() {
                     onFilterInitialized={handleFilterInitialized}
                     registryNameData={registers}
                     medicalFieldData={medicalFields}
+                    testIdPrefix="permanentFilterMenu"
                   />
                   <Divider />
                 </Box>
@@ -340,6 +341,7 @@ export default function TreatmentQualityPage() {
               onFilterInitialized={handleFilterInitialized}
               registryNameData={registers}
               medicalFieldData={medicalFields}
+              testIdPrefix="drawerFilterMenu"
             />
             <Divider />
           </Box>

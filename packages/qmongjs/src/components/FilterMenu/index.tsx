@@ -68,6 +68,7 @@ export type FilterMenuSectionProps = PropsWithChildren<{
   sectionid: string;
   sectiontitle: string;
   filterkey: string;
+  testIdPrefix?: string;
   accordion?: boolean;
   noShadow?: boolean;
   defaultvalues?: FilterSettingsValue[];

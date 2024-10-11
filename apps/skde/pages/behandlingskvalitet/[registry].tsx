@@ -205,6 +205,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                 <TreatmentQualityFilterMenu
                   onSelectionChanged={handleFilterChanged}
                   onFilterInitialized={handleFilterInitialized}
+                  testIdPrefix="permanentFilterMenu"
                   registryNameData={registryInfo}
                   medicalFieldData={[]}
                   register={registryName}
@@ -304,6 +305,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
           <TreatmentQualityFilterMenu
             onSelectionChanged={handleFilterChanged}
             onFilterInitialized={handleFilterInitialized}
+            testIdPrefix="drawerFilterMenu"
             registryNameData={registryInfo}
             medicalFieldData={[]}
             register={registryName}
