@@ -68,11 +68,13 @@ export type FilterMenuSectionProps = PropsWithChildren<{
   sectionid: string;
   sectiontitle: string;
   filterkey: string;
+  testIdPrefix?: string;
   accordion?: boolean;
   noShadow?: boolean;
   defaultvalues?: FilterSettingsValue[];
   initialselections?: FilterSettingsValue[];
   refreshState?: boolean;
+  skip?: boolean;
 }>;
 
 /**
@@ -103,11 +105,9 @@ const FilterMenuSection = ({
   } else {
     return (
       <Accordion key={`fms-accordion-${sectionid}`}>
-        <AccordionSummary
-          expandIcon={<CustomAccordionExpandIcon />}
-          sx={{ flexDirection: "row-reverse" }}
-        >
-          <Typography variant="body1" sx={{ margin: 1 }}>
+        <AccordionSummary>
+          <CustomAccordionExpandIcon />
+          <Typography variant="subtitle2" color="primary">
             {sectiontitle}
           </Typography>
         </AccordionSummary>
@@ -310,9 +310,10 @@ export const FilterMenu = ({
   refreshState,
   children,
 }: FilterMenuProps) => {
-  const sections = Array.isArray(children)
-    ? children.map(buildFilterMenuSection)
-    : [buildFilterMenuSection(children)];
+  const childrenArray = Array.isArray(children) ? children : [children];
+  const sections = childrenArray
+    .filter((child) => !child.props.skip)
+    .map(buildFilterMenuSection);
 
   const [filterSettings, dispatch] = useReducer(
     wrapReducer(filterSettingsReducer, onSelectionChanged),

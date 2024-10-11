@@ -18,6 +18,7 @@ import { getSelectedValue } from "./utils";
 type SwitchFilterSectionProps = FilterMenuSectionProps & {
   label: string;
   activatedswitchvalue: FilterSettingsValue;
+  helperText?: string;
 };
 
 export function SwitchFilterSection(props: SwitchFilterSectionProps) {
@@ -45,24 +46,27 @@ export function SwitchFilterSection(props: SwitchFilterSectionProps) {
   };
 
   return (
-    <FormControl>
-      <FormHelperText sx={{ fontSize: 16 }}>
-        Bytter visning av kvalitetsindikatorer til indikatorer for dekningsgrad.
-        Dekningsgrad sier noe om datakvalitet for kvalitetsindikatoren.
-      </FormHelperText>
-      <FormGroup aria-label={props.label} row>
-        <FormControlLabel
-          labelPlacement="start"
-          label={labelText}
-          control={
-            <Switch
-              checked={isChecked}
-              onChange={handleChange}
-              color="primary"
-            />
-          }
-        />
-      </FormGroup>
-    </FormControl>
+    <>
+      <FormControl>
+        {props.helperText && (
+          <FormHelperText sx={{ fontSize: "body1.fontSize" }}>
+            {props.helperText}
+          </FormHelperText>
+        )}
+        <FormGroup aria-label={props.label} row>
+          <FormControlLabel
+            labelPlacement="start"
+            label={labelText}
+            control={
+              <Switch
+                checked={isChecked}
+                onChange={handleChange}
+                color="primary"
+              />
+            }
+          />
+        </FormGroup>
+      </FormControl>
+    </>
   );
 }
