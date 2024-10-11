@@ -76,3 +76,4 @@ export {
   getUnitFullName,
   getUnitShortestName,
 } from "./helpers/functions/getUnitName";
+export { IndicatorTableSkeleton } from "./components/IndicatorTable/IndicatorTableSkeleton";

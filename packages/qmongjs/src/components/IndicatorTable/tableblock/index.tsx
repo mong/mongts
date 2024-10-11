@@ -7,6 +7,7 @@ import { filterOrderIndID } from "../../../helpers/functions";
 import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
 import { Description, Indicator, RegisterName } from "types";
+import { IndicatorTableSkeleton } from "../IndicatorTableSkeleton";
 
 interface TableBlockProps {
   context: string;
@@ -22,6 +23,8 @@ interface TableBlockProps {
   colspan: number;
   onEmptyStatusChanged?: (registerName: string, isEmpty: boolean) => void;
 }
+
+const SkeletonRow = <IndicatorTableSkeleton nRows={1} />;
 
 const TableBlock = (props: TableBlockProps) => {
   const {
@@ -107,7 +110,7 @@ const TableBlock = (props: TableBlockProps) => {
   ]);
 
   if (descriptionQuery.isLoading || indicatorDataQuery.isLoading) {
-    return null;
+    return SkeletonRow;
   }
 
   if (descriptionQuery.isError || indicatorDataQuery.isError) {
