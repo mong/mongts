@@ -8,7 +8,6 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-
 import { ChevronLeftRounded } from "@mui/icons-material";
 import Grid from "@mui/material/Grid2";
 import { useQueryParam } from "use-query-params";
@@ -45,6 +44,7 @@ import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
 import scrollToSelectedRow from "./utils/scrollToSelectedRow";
 import getMedicalFieldFilterRegisters from "./utils/getMedicalFieldFilterRegisters";
+import { IndicatorTableSkeleton } from "qmongjs";
 import { LayoutHead } from "../../src/components/LayoutHead";
 import { valueOrDefault, defaultTableContext } from "./utils/valueOrDefault";
 
@@ -274,7 +274,7 @@ export default function TreatmentQualityPage() {
           <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
-                {queriesReady &&
+                {queriesReady ?
                   (displayV2Table ? (
                     <IndicatorTableV2Wrapper className="table-wrapper">
                       <IndicatorTableBodyV2
@@ -310,7 +310,10 @@ export default function TreatmentQualityPage() {
                         nestedUnitNames={nestedUnitNames}
                       />
                     </IndicatorTableWrapper>
-                  ))}
+                  )
+                ) : (
+                  <IndicatorTableSkeleton nRows={10} />
+                )}
               </Grid>
             </Grid>
           </Grid>
