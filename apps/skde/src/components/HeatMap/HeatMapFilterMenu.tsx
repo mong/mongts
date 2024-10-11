@@ -17,7 +17,6 @@ import { RegisterName, Medfield } from "types";
 type HeatMapFilterMenuProps = {
   registryNameData: RegisterName[];
   medicalFieldData: Medfield[];
-  context: string;
   page: string;
   drawerOpen: boolean;
   toggleDrawer: (newOpen: boolean) => void;
@@ -32,7 +31,6 @@ export const HeatMapFilterMenu = (props: HeatMapFilterMenuProps) => {
     drawerOpen,
     registryNameData,
     medicalFieldData,
-    context,
     page,
     setSelectedYear,
     setSelectedMedicalFields,
@@ -204,7 +202,6 @@ export const HeatMapFilterMenu = (props: HeatMapFilterMenuProps) => {
         onFilterInitialized={handleFilterInitialized}
         registryNameData={registryNameData}
         medicalFieldData={medicalFieldData}
-        context={context}
         page={page}
       />
     </FilterDrawer>

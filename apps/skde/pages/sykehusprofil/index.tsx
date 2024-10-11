@@ -27,6 +27,7 @@ import { HospitalProfileLinePlot } from "../../src/components/HospitalProfile/Ho
 import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterMenu";
 import { TurnDeviceBox } from "../../src/components/HospitalProfile/TurnDeviceBox";
 import { URLs } from "types";
+import { LayoutHead } from "../../src/components/LayoutHead";
 
 export const Skde = (): JSX.Element => {
   // States
@@ -69,6 +70,10 @@ export const Skde = (): JSX.Element => {
       {
         link: "https://www.skde.no",
         text: "Forside",
+      },
+      {
+        link: "https://www.skde.no/resultater/",
+        text: "Tall om helsetjenesten",
       },
       {
         link: "/sykehusprofil/",
@@ -139,6 +144,11 @@ export const Skde = (): JSX.Element => {
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
+        <LayoutHead
+          title="Sykehusprofil"
+          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service for individual treatment units."
+          href="/favicon.ico"
+        />
         <Header
           bgcolor="surface2.light"
           headerData={headerData}
