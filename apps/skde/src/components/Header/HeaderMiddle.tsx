@@ -11,12 +11,11 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 export type HeaderData = {
   title: string;
-  subtitle: string;
+  subtitle: string | undefined;
 };
 
 type HeaderMiddleProps = {
   headerData: HeaderData;
-  children?: React.ReactNode;
   bgcolor?: string;
   maxWidth?: false | Breakpoint;
 };
@@ -52,9 +51,17 @@ export const HeaderMiddle = (props: HeaderMiddleProps) => {
             <Typography variant="h1">{props.headerData.title}</Typography>
           </Grid>
           <Grid size={{ xs: 12 }}>
-            <Typography variant="h6">{props.headerData.subtitle}</Typography>
+            {props.headerData.subtitle ? (
+              <Typography variant="h6">{props.headerData.subtitle}</Typography>
+            ) : (
+              <Typography variant="h6">
+                Resultater fra{" "}
+                <a href="https://www.kvalitetsregistre.no/">
+                  nasjonale medisinske kvalitetsregistre
+                </a>{" "}
+              </Typography>
+            )}
           </Grid>
-          {props.children !== undefined && props.children}
         </Grid>
       </Container>
     </StyledToolbar>
