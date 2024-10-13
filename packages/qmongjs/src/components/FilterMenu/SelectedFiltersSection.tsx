@@ -76,7 +76,7 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
           sx={{ width: "100%", marginBottom: 2 }}
         >
           <Typography variant="subtitle2" color="primary">
-            Valgte filter
+            Valgte filtre
           </Typography>
           <Link
             type="button"

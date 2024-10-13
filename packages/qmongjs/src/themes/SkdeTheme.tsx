@@ -126,6 +126,7 @@ const colorTokens = {
     main: "#003087",
     light: "#e3ebf2",
     dark: "#001b52",
+    contrastText: "#ffff",
   },
 
   secondary: {

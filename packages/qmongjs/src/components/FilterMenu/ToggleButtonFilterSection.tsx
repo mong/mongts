@@ -1,7 +1,9 @@
 import { useContext } from "react";
-import { styled } from "@mui/material";
+import { Stack, styled, Typography } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { FilterMenuSectionProps } from ".";
 import {
   FilterSettingsContext,
@@ -10,12 +12,23 @@ import {
 import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
 import { FilterSettingsActionType } from "./FilterSettingsReducer";
 import { getSelectedValue } from "./utils";
+import { useElementWidth } from "../../hooks/useElementWidth";
 
 const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
   borderRadius: 30,
   height: "2rem",
   fontSize: theme.typography.button.fontFamily,
   textTransform: "none",
+  border: "1px solid #003087 !important",
+  justifyContent: "flex-start",
+  paddingLeft: theme.spacing(1),
+  "&.Mui-selected": {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+    "&:hover": {
+      backgroundColor: theme.palette.primary.main,
+    },
+  },
 }));
 
 type ToggleButtonFilterSectionProps = FilterMenuSectionProps & {
@@ -40,6 +53,17 @@ export function ToggleButtonFilterSection({
 }: ToggleButtonFilterSectionProps) {
   const filterSettings = useContext(FilterSettingsContext);
   const filterSettingsDispatch = useContext(FilterSettingsDispatchContext);
+  const selectedValue = getSelectedValue(filterkey, filterSettings) ?? null;
+  const { ref, width } = useElementWidth();
+
+  // Calculate the total width of all buttons
+  const totalButtonWidth = options.reduce((total, option) => {
+    // Estimate button width based on text length (adjust multiplier as needed)
+    return total + option.valueLabel.length * 10 + 30; // 60px for padding and icons
+  }, 0);
+
+  // Determine if vertical orientation is needed
+  const useVerticalOrientation = width > 0 && totalButtonWidth > width;
 
   const handleSelection = (
     _event: React.MouseEvent<HTMLElement, MouseEvent>,
@@ -68,34 +92,68 @@ export function ToggleButtonFilterSection({
   };
 
   return (
-    <ToggleButtonGroup
-      exclusive
-      value={getSelectedValue(filterkey, filterSettings) ?? null}
-      onChange={handleSelection}
-      aria-label={`${sectiontitle}-valg`}
-      color="primary"
-      size="small"
-      fullWidth={true}
-      sx={{
-        ".MuiToggleButtonGroup-grouped": {
-          borderRadius: 30,
-          height: "2rem",
-          fontSize: "theme.typography.button.fontFamily",
-          textTransform: "none",
-          mr: 1,
-        },
-      }}
-    >
-      {options.map((option) => (
-        <StyledToggleButton
-          key={`${sectionid}-toggle-${option.value}`}
-          data-testid={getTestIdString(sectionid, option.value, testIdPrefix)}
-          value={option.value}
-          aria-label={option.valueLabel}
-        >
-          {option.valueLabel}
-        </StyledToggleButton>
-      ))}
-    </ToggleButtonGroup>
+    <div ref={ref}>
+      <ToggleButtonGroup
+        exclusive
+        value={selectedValue}
+        onChange={handleSelection}
+        aria-label={`${sectiontitle}-valg`}
+        orientation={useVerticalOrientation ? "vertical" : "horizontal"}
+        fullWidth={useVerticalOrientation}
+        sx={{
+          ".MuiToggleButtonGroup-grouped": {
+            borderRadius: 30,
+            height: "2rem",
+            textTransform: "none",
+            mr: useVerticalOrientation ? 0 : 1,
+            mb: 1,
+            pl: 1,
+            pr: 1,
+            color: "primary.main",
+            justifyContent: "flex-start",
+            width: useVerticalOrientation ? "100%" : "auto",
+            "&.Mui-selected": {
+              backgroundColor: "primary.main",
+              color: "primary.contrastText",
+              "&:hover": {
+                backgroundColor: "primary.main",
+              },
+            },
+          },
+        }}
+      >
+        {options.map((option) => (
+          <StyledToggleButton
+            key={`${sectionid}-toggle-${option.value}`}
+            data-testid={getTestIdString(sectionid, option.value, testIdPrefix)}
+            value={option.value}
+            aria-label={option.valueLabel}
+            color="primary"
+            size="small"
+            sx={{
+              width: useVerticalOrientation ? "100%" : "auto",
+              "&.Mui-selected svg": {
+                color: "primary.contrastText",
+              },
+            }}
+          >
+            <Stack
+              direction="row"
+              spacing={1}
+              alignItems="center"
+              justifyContent="flex-start"
+              sx={{ width: "100%" }}
+            >
+              {option.value === selectedValue ? (
+                <RadioButtonCheckedIcon fontSize="small" />
+              ) : (
+                <RadioButtonUncheckedIcon fontSize="small" />
+              )}
+              <Typography variant="body2">{option.valueLabel}</Typography>
+            </Stack>
+          </StyledToggleButton>
+        ))}
+      </ToggleButtonGroup>
+    </div>
   );
 }
