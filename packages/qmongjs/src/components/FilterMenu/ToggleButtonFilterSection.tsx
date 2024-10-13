@@ -2,8 +2,8 @@ import { useContext } from "react";
 import { Stack, styled, Typography } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
-import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { FilterMenuSectionProps } from ".";
 import {
   FilterSettingsContext,
@@ -22,10 +22,10 @@ const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
   border: "1px solid #003087 !important",
   justifyContent: "flex-start",
   paddingLeft: theme.spacing(1),
-  '&.Mui-selected': {
+  "&.Mui-selected": {
     backgroundColor: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,
-    '&:hover': {
+    "&:hover": {
       backgroundColor: theme.palette.primary.main,
     },
   },
@@ -112,10 +112,10 @@ export function ToggleButtonFilterSection({
             color: "primary.main",
             justifyContent: "flex-start",
             width: useVerticalOrientation ? "100%" : "auto",
-            '&.Mui-selected': {
+            "&.Mui-selected": {
               backgroundColor: "primary.main",
               color: "primary.contrastText",
-              '&:hover': {
+              "&:hover": {
                 backgroundColor: "primary.main",
               },
             },
@@ -130,10 +130,10 @@ export function ToggleButtonFilterSection({
             aria-label={option.valueLabel}
             color="primary"
             size="small"
-            sx={{ 
+            sx={{
               width: useVerticalOrientation ? "100%" : "auto",
-              '&.Mui-selected svg': {
-                color: 'primary.contrastText',
+              "&.Mui-selected svg": {
+                color: "primary.contrastText",
               },
             }}
           >
@@ -142,7 +142,7 @@ export function ToggleButtonFilterSection({
               spacing={1}
               alignItems="center"
               justifyContent="flex-start"
-              sx={{ width: '100%' }}
+              sx={{ width: "100%" }}
             >
               {option.value === selectedValue ? (
                 <RadioButtonCheckedIcon fontSize="small" />
