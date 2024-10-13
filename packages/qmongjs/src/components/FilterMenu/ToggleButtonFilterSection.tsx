@@ -13,6 +13,7 @@ import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
 import { FilterSettingsActionType } from "./FilterSettingsReducer";
 import { getSelectedValue } from "./utils";
 import { skdeTheme } from "../../themes/SkdeTheme";
+import { useElementWidth } from "../../hooks/useElementWidth";
 
 const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
   borderRadius: 30,
@@ -47,7 +48,16 @@ export function ToggleButtonFilterSection({
   const filterSettings = useContext(FilterSettingsContext);
   const filterSettingsDispatch = useContext(FilterSettingsDispatchContext);
   const selectedValue = getSelectedValue(filterkey, filterSettings) ?? null;
-  const isSmallScreen = useMediaQuery(skdeTheme.breakpoints.down("sm"));
+  const { ref, width } = useElementWidth();
+
+  // Calculate the total width of all buttons
+  const totalButtonWidth = options.reduce((total, option) => {
+    // Estimate button width based on text length (adjust multiplier as needed)
+    return total + option.valueLabel.length * 10 + 30; // 60px for padding and icons
+  }, 0);
+
+  // Determine if vertical orientation is needed
+  const useVerticalOrientation = width > 0 && totalButtonWidth > width;
 
   const handleSelection = (
     _event: React.MouseEvent<HTMLElement, MouseEvent>,
@@ -76,51 +86,55 @@ export function ToggleButtonFilterSection({
   };
 
   return (
-    <ToggleButtonGroup
-      exclusive
-      value={selectedValue}
-      onChange={handleSelection}
-      aria-label={`${sectiontitle}-valg`}
-      orientation={isSmallScreen ? "vertical" : "horizontal"}
-      sx={{
-        ".MuiToggleButtonGroup-grouped": {
-          borderRadius: 30,
-          height: "2rem",
-          textTransform: "none",
-          mr: 1,
-          mb: 1,
-          pl: 1,
-          pr: 1,
-          color: "primary.main",
-          justifyContent: "flex-start",
-        },
-      }}
-    >
-      {options.map((option) => (
-        <StyledToggleButton
-          key={`${sectionid}-toggle-${option.value}`}
-          data-testid={getTestIdString(sectionid, option.value, testIdPrefix)}
-          value={option.value}
-          aria-label={option.valueLabel}
-          color="primary"
-          size="small"
-        >
-          <Stack
-            direction="row"
-            spacing={1}
-            alignItems="center"
-            justifyContent="flex-start"
-            sx={{ width: '100%' }}
+    <div ref={ref}>
+      <ToggleButtonGroup
+        exclusive
+        value={selectedValue}
+        onChange={handleSelection}
+        aria-label={`${sectiontitle}-valg`}
+        orientation={useVerticalOrientation ? "vertical" : "horizontal"}
+        sx={{
+          ".MuiToggleButtonGroup-grouped": {
+            borderRadius: 30,
+            height: "2rem",
+            textTransform: "none",
+            mr: useVerticalOrientation ? 0 : 1,
+            mb: 1,
+            pl: 1,
+            pr: 1,
+            color: "primary.main",
+            justifyContent: "flex-start",
+            width: useVerticalOrientation ? "100%" : "auto",
+          },
+        }}
+      >
+        {options.map((option) => (
+          <StyledToggleButton
+            key={`${sectionid}-toggle-${option.value}`}
+            data-testid={getTestIdString(sectionid, option.value, testIdPrefix)}
+            value={option.value}
+            aria-label={option.valueLabel}
+            color="primary"
+            size="small"
+            sx={{ width: useVerticalOrientation ? "100%" : "auto" }}
           >
-            {option.value === selectedValue ? (
-              <RadioButtonCheckedIcon fontSize="small" />
-            ) : (
-              <RadioButtonUncheckedIcon fontSize="small" />
-            )}
-            <Typography variant="body2">{option.valueLabel}</Typography>
-          </Stack>
-        </StyledToggleButton>
-      ))}
-    </ToggleButtonGroup>
+            <Stack
+              direction="row"
+              spacing={1}
+              alignItems="center"
+              justifyContent="flex-start"
+              sx={{ width: '100%' }}
+            >
+              {option.value === selectedValue ? (
+                <RadioButtonCheckedIcon fontSize="small" />
+              ) : (
+                <RadioButtonUncheckedIcon fontSize="small" />
+              )}
+              <Typography variant="body2">{option.valueLabel}</Typography>
+            </Stack>
+          </StyledToggleButton>
+        ))}
+      </ToggleButtonGroup>
+    </div>
   );
 }
