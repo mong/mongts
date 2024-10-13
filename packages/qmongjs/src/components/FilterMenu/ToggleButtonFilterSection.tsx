@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Stack, styled, Typography } from "@mui/material";
+import { Divider, Stack, styled, Typography } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
@@ -154,6 +154,7 @@ export function ToggleButtonFilterSection({
           </StyledToggleButton>
         ))}
       </ToggleButtonGroup>
+      <Divider sx={{ mt: 1 }} />
     </div>
   );
 }
