@@ -1,7 +1,9 @@
 import { useContext } from "react";
-import { styled } from "@mui/material";
+import { Stack, styled, Typography } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import { FilterMenuSectionProps } from ".";
 import {
   FilterSettingsContext,
@@ -16,6 +18,7 @@ const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
   height: "2rem",
   fontSize: theme.typography.button.fontFamily,
   textTransform: "none",
+  border: "1px solid #003087 !important",
 }));
 
 type ToggleButtonFilterSectionProps = FilterMenuSectionProps & {
@@ -40,6 +43,7 @@ export function ToggleButtonFilterSection({
 }: ToggleButtonFilterSectionProps) {
   const filterSettings = useContext(FilterSettingsContext);
   const filterSettingsDispatch = useContext(FilterSettingsDispatchContext);
+  const selectedValue = getSelectedValue(filterkey, filterSettings) ?? null;
 
   const handleSelection = (
     _event: React.MouseEvent<HTMLElement, MouseEvent>,
@@ -70,30 +74,43 @@ export function ToggleButtonFilterSection({
   return (
     <ToggleButtonGroup
       exclusive
-      value={getSelectedValue(filterkey, filterSettings) ?? null}
+      value={selectedValue}
       onChange={handleSelection}
       aria-label={`${sectiontitle}-valg`}
-      color="primary"
-      size="small"
       fullWidth={true}
       sx={{
         ".MuiToggleButtonGroup-grouped": {
           borderRadius: 30,
           height: "2rem",
-          fontSize: "theme.typography.button.fontFamily",
           textTransform: "none",
           mr: 1,
+          color: "primary.main"
         },
+        "& .Mui-selected": {
+          backgroundColor: "primary.main",
+          color: "primary.contrastText",
+          ":hover": {
+            backgroundColor: "primary.main",
+          }
+        },        
       }}
-    >
+      >
       {options.map((option) => (
         <StyledToggleButton
           key={`${sectionid}-toggle-${option.value}`}
           data-testid={getTestIdString(sectionid, option.value, testIdPrefix)}
           value={option.value}
           aria-label={option.valueLabel}
+          color="primary"
         >
-          {option.valueLabel}
+          <Stack direction="row" spacing={1} alignItems="center">
+            { option.value === selectedValue ? (
+              <RadioButtonCheckedIcon fontSize="small" />
+            ) : (
+              <RadioButtonUncheckedIcon fontSize="small" />
+            )} 
+            <Typography variant="body2">{option.valueLabel}</Typography>
+          </Stack>
         </StyledToggleButton>
       ))}
     </ToggleButtonGroup>
