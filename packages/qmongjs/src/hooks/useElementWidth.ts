@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from "react";
 
 export function useElementWidth() {
   const ref = useRef<HTMLDivElement>(null);
@@ -12,10 +12,10 @@ export function useElementWidth() {
     };
 
     updateWidth();
-    window.addEventListener('resize', updateWidth);
+    window.addEventListener("resize", updateWidth);
 
     return () => {
-      window.removeEventListener('resize', updateWidth);
+      window.removeEventListener("resize", updateWidth);
     };
   }, []);
 
