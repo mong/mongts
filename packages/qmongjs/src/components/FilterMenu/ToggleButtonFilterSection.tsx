@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Stack, styled, Typography } from "@mui/material";
+import { Stack, styled, Typography, useMediaQuery } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
@@ -12,6 +12,7 @@ import {
 import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
 import { FilterSettingsActionType } from "./FilterSettingsReducer";
 import { getSelectedValue } from "./utils";
+import { skdeTheme } from "../../themes/SkdeTheme";
 
 const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
   borderRadius: 30,
@@ -19,6 +20,8 @@ const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
   fontSize: theme.typography.button.fontFamily,
   textTransform: "none",
   border: "1px solid #003087 !important",
+  justifyContent: "flex-start",
+  paddingLeft: theme.spacing(1),
 }));
 
 type ToggleButtonFilterSectionProps = FilterMenuSectionProps & {
@@ -44,6 +47,7 @@ export function ToggleButtonFilterSection({
   const filterSettings = useContext(FilterSettingsContext);
   const filterSettingsDispatch = useContext(FilterSettingsDispatchContext);
   const selectedValue = getSelectedValue(filterkey, filterSettings) ?? null;
+  const isSmallScreen = useMediaQuery(skdeTheme.breakpoints.down("sm"));
 
   const handleSelection = (
     _event: React.MouseEvent<HTMLElement, MouseEvent>,
@@ -77,24 +81,21 @@ export function ToggleButtonFilterSection({
       value={selectedValue}
       onChange={handleSelection}
       aria-label={`${sectiontitle}-valg`}
-      fullWidth={true}
+      orientation={isSmallScreen ? "vertical" : "horizontal"}
       sx={{
         ".MuiToggleButtonGroup-grouped": {
           borderRadius: 30,
           height: "2rem",
           textTransform: "none",
           mr: 1,
-          color: "primary.main"
+          mb: 1,
+          pl: 1,
+          pr: 1,
+          color: "primary.main",
+          justifyContent: "flex-start",
         },
-        "& .Mui-selected": {
-          backgroundColor: "primary.main",
-          color: "primary.contrastText",
-          ":hover": {
-            backgroundColor: "primary.main",
-          }
-        },        
       }}
-      >
+    >
       {options.map((option) => (
         <StyledToggleButton
           key={`${sectionid}-toggle-${option.value}`}
@@ -102,13 +103,20 @@ export function ToggleButtonFilterSection({
           value={option.value}
           aria-label={option.valueLabel}
           color="primary"
+          size="small"
         >
-          <Stack direction="row" spacing={1} alignItems="center">
-            { option.value === selectedValue ? (
+          <Stack
+            direction="row"
+            spacing={1}
+            alignItems="center"
+            justifyContent="flex-start"
+            sx={{ width: '100%' }}
+          >
+            {option.value === selectedValue ? (
               <RadioButtonCheckedIcon fontSize="small" />
             ) : (
               <RadioButtonUncheckedIcon fontSize="small" />
-            )} 
+            )}
             <Typography variant="body2">{option.valueLabel}</Typography>
           </Stack>
         </StyledToggleButton>
