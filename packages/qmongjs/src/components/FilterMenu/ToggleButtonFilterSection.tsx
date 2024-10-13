@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Stack, styled, Typography, useMediaQuery } from "@mui/material";
+import { Stack, styled, Typography } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
@@ -12,7 +12,6 @@ import {
 import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
 import { FilterSettingsActionType } from "./FilterSettingsReducer";
 import { getSelectedValue } from "./utils";
-import { skdeTheme } from "../../themes/SkdeTheme";
 import { useElementWidth } from "../../hooks/useElementWidth";
 
 const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
@@ -23,6 +22,13 @@ const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
   border: "1px solid #003087 !important",
   justifyContent: "flex-start",
   paddingLeft: theme.spacing(1),
+  '&.Mui-selected': {
+    backgroundColor: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+    '&:hover': {
+      backgroundColor: theme.palette.primary.main,
+    },
+  },
 }));
 
 type ToggleButtonFilterSectionProps = FilterMenuSectionProps & {
@@ -93,6 +99,7 @@ export function ToggleButtonFilterSection({
         onChange={handleSelection}
         aria-label={`${sectiontitle}-valg`}
         orientation={useVerticalOrientation ? "vertical" : "horizontal"}
+        fullWidth={useVerticalOrientation}
         sx={{
           ".MuiToggleButtonGroup-grouped": {
             borderRadius: 30,
@@ -105,6 +112,13 @@ export function ToggleButtonFilterSection({
             color: "primary.main",
             justifyContent: "flex-start",
             width: useVerticalOrientation ? "100%" : "auto",
+            '&.Mui-selected': {
+              backgroundColor: "primary.main",
+              color: "primary.contrastText",
+              '&:hover': {
+                backgroundColor: "primary.main",
+              },
+            },
           },
         }}
       >
@@ -116,7 +130,12 @@ export function ToggleButtonFilterSection({
             aria-label={option.valueLabel}
             color="primary"
             size="small"
-            sx={{ width: useVerticalOrientation ? "100%" : "auto" }}
+            sx={{ 
+              width: useVerticalOrientation ? "100%" : "auto",
+              '&.Mui-selected svg': {
+                color: 'primary.contrastText',
+              },
+            }}
           >
             <Stack
               direction="row"
