@@ -75,7 +75,7 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
           alignItems="baseline"
           sx={{ width: "100%", marginBottom: 2 }}
         >
-          <Typography variant="subtitle2" color="primary">
+          <Typography variant="body2" color="primary">
             Valgte filtre
           </Typography>
           <Link
