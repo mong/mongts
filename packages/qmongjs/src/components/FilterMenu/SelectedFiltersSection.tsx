@@ -11,8 +11,12 @@ import { FilterSettingsActionType } from "./FilterSettingsReducer";
 type SelectedFiltersSectionProps = FilterMenuSectionProps;
 
 const StyledChip = styled(Chip)(({ theme }) => ({
-  fontFamily: theme.typography.button.fontFamily,
-  padding: "1rem",
+  ...theme.typography.body2,
+  height: "2rem",
+  mr: 1,
+  mb: 1,
+  paddingLeft: 4,
+  paddingRight: 4,
 }));
 
 /**

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Divider, Stack, styled, Typography } from "@mui/material";
+import { Box, Stack, styled, Typography } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
@@ -58,7 +58,7 @@ export function ToggleButtonFilterSection({
   // Calculate the total width of all buttons
   const totalButtonWidth = options.reduce((total, option) => {
     // Estimate button width based on text length and average large sized chars (adjust multiplier as needed)
-    return total + option.valueLabel.length * 12.5 + 56; // 56px for padding, margins, and icon
+    return total + option.valueLabel.length * 10 + 56; // 56px for padding, margins, and icon
   }, 0);
 
   // Determine if vertical orientation is needed
@@ -91,7 +91,7 @@ export function ToggleButtonFilterSection({
   };
 
   return (
-    <div ref={ref}>
+    <Box ref={ref}>
       <ToggleButtonGroup
         exclusive
         value={selectedValue}
@@ -103,7 +103,6 @@ export function ToggleButtonFilterSection({
           ".MuiToggleButtonGroup-grouped": {
             borderRadius: 30,
             height: "2rem",
-            textTransform: "none",
             mr: useVerticalOrientation ? 0 : 1,
             mb: 1,
             pl: 1,
@@ -148,12 +147,11 @@ export function ToggleButtonFilterSection({
               ) : (
                 <RadioButtonUncheckedIcon fontSize="small" />
               )}
-              <Typography variant="subtitle2">{option.valueLabel}</Typography>
+              <Typography variant="body2">{option.valueLabel}</Typography>
             </Stack>
           </StyledToggleButton>
         ))}
       </ToggleButtonGroup>
-      <Divider sx={{ mt: 1 }} />
-    </div>
+    </Box>
   );
 }
