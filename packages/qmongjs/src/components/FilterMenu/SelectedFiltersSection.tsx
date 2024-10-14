@@ -75,14 +75,20 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
           alignItems="baseline"
           sx={{ width: "100%", marginBottom: 2 }}
         >
-          <Typography variant="body2" color="primary">
+          <Typography
+            variant="body2"
+            color="primary"
+            sx={{
+              fontWeight: "600",
+            }}
+          >
             Valgte filtre
           </Typography>
           <Link
             type="button"
             variant="body2"
             onClick={() => handleReset(filterSettingsDispatch)}
-            sx={{ cursor: "pointer", fontWeight: "600" }}
+            sx={{ cursor: "pointer" }}
           >
             Tilbakestill
           </Link>
