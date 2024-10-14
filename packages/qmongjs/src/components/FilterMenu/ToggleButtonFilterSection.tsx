@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Divider, Stack, styled, Typography } from "@mui/material";
+import { Box, Stack, styled, Typography } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
@@ -17,7 +17,6 @@ import { useElementWidth } from "../../hooks/useElementWidth";
 const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
   borderRadius: 30,
   height: "2rem",
-  fontSize: theme.typography.button.fontFamily,
   textTransform: "none",
   border: "1px solid #003087 !important",
   justifyContent: "flex-start",
@@ -58,8 +57,8 @@ export function ToggleButtonFilterSection({
 
   // Calculate the total width of all buttons
   const totalButtonWidth = options.reduce((total, option) => {
-    // Estimate button width based on text length (adjust multiplier as needed)
-    return total + option.valueLabel.length * 10 + 30; // 60px for padding and icons
+    // Estimate button width based on text length and average large sized chars (adjust multiplier as needed)
+    return total + option.valueLabel.length * 10 + 56; // 56px for padding, margins, and icon
   }, 0);
 
   // Determine if vertical orientation is needed
@@ -92,7 +91,7 @@ export function ToggleButtonFilterSection({
   };
 
   return (
-    <div ref={ref}>
+    <Box ref={ref}>
       <ToggleButtonGroup
         exclusive
         value={selectedValue}
@@ -104,11 +103,10 @@ export function ToggleButtonFilterSection({
           ".MuiToggleButtonGroup-grouped": {
             borderRadius: 30,
             height: "2rem",
-            textTransform: "none",
             mr: useVerticalOrientation ? 0 : 1,
             mb: 1,
             pl: 1,
-            pr: 1,
+            pr: 3,
             color: "primary.main",
             justifyContent: "flex-start",
             width: useVerticalOrientation ? "100%" : "auto",
@@ -154,7 +152,6 @@ export function ToggleButtonFilterSection({
           </StyledToggleButton>
         ))}
       </ToggleButtonGroup>
-      <Divider sx={{ mt: 1 }} />
-    </div>
+    </Box>
   );
 }

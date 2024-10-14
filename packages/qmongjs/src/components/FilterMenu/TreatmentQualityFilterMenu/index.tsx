@@ -404,7 +404,7 @@ export function TreatmentQualityFilterMenu({
         />
         <SelectedFiltersSection
           accordion={false}
-          noShadow={true}
+          noShadow={false}
           filterkey="selectedfilters"
           sectionid="selectedfilters"
           sectiontitle="Valgte filtre"
