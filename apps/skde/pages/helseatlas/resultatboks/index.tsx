@@ -9,6 +9,9 @@ import { useState } from "react";
 import { FetchMap } from "../../../src/helpers/hooks";
 import { Box } from "@mui/material";
 import { useSearchParams } from "next/navigation";
+import getFetchMapUrl from "../utils/getFetchMapUrl";
+import ensureValidLang from "../utils/ensureValidLang";
+import fetchMapPendingOrFailed from "../utils/fetchMapPendingOrFailed";
 
 const skeleton = (
   <div style={{ display: "flex", justifyContent: "center" }}>
@@ -22,21 +25,6 @@ const skeleton = (
     </Box>
   </div>
 );
-
-const ensureValidLang = (
-  langString: string | null | undefined,
-): "nb" | "nn" | "en" => {
-  if (langString === "nn" || langString === "en") {
-    return langString;
-  }
-  return "nb"; // Default to Norwegian Bokmål if not "nn" or "en"
-};
-
-const getDataUrl = (atlasParam: string | null, dataParam: string | null) => {
-  return dataParam && atlasParam
-    ? `/helseatlas/data/${atlasParam}/${dataParam}.json`
-    : null;
-};
 
 export default function ResultBoxPage() {
   const [selection] = useState("");
@@ -52,16 +40,11 @@ export default function ResultBoxPage() {
 
   const { data: mapData } = FetchMap(`/helseatlas/kart/${mapFileName}`);
 
-  const dataUrl = getDataUrl(atlasParam, dataParam);
+  const dataUrl = getFetchMapUrl(atlasParam, dataParam);
 
   const dataFetchResult = FetchMap(dataUrl);
 
-  if (
-    dataFetchResult === null ||
-    !dataFetchResult.isFetched ||
-    !dataUrl ||
-    dataFetchResult.isError
-  ) {
+  if (fetchMapPendingOrFailed(dataFetchResult)) {
     return skeleton;
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
