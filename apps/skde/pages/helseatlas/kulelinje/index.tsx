@@ -5,7 +5,7 @@ import { FetchMap } from "../../../src/helpers/hooks";
 import { Box } from "@mui/material";
 import getDataUrl from "../../../src/helpers/functions/getDataUrl";
 import ensureValidLang from "../../../src/helpers/functions/ensureValidLang";
-import fetchMapPendingOrFailed from "../../../src/helpers/functions/fetchMapPendingOrFailed";
+import queryResultPendingOrFailed from "../../../src/helpers/functions/queryResultPendingOrFailed";
 
 const skeleton = (
   <div style={{ display: "flex", justifyContent: "center" }}>
@@ -31,7 +31,7 @@ export default function Kulelinje() {
 
   const dataFetchResult = FetchMap(dataUrl);
 
-  if (fetchMapPendingOrFailed(dataFetchResult)) {
+  if (queryResultPendingOrFailed(dataFetchResult)) {
     return skeleton;
   }
 

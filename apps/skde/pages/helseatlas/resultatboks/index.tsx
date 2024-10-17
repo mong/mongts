@@ -12,7 +12,7 @@ import { DataTable } from "../../../src/charts/Table";
 import { FetchMap } from "../../../src/helpers/hooks";
 import getDataUrl from "../../../src/helpers/functions/getDataUrl";
 import ensureValidLang from "../../../src/helpers/functions/ensureValidLang";
-import fetchMapPendingOrFailed from "../../../src/helpers/functions/fetchMapPendingOrFailed";
+import queryResultPendingOrFailed from "../../../src/helpers/functions/queryResultPendingOrFailed";
 import usePostMessageHandler from "../../../src/helpers/hooks/usePostMessageHandler";
 import useSiblingFrames from "../../../src/helpers/hooks/useSiblingFrames";
 
@@ -59,7 +59,7 @@ export default function ResultBoxPage() {
     }
   }, [message]);
 
-  if (fetchMapPendingOrFailed(dataFetchResult)) {
+  if (queryResultPendingOrFailed(dataFetchResult)) {
     return <>{skeleton}</>;
   }
 
