@@ -9,9 +9,9 @@ import { useState } from "react";
 import { FetchMap } from "../../../src/helpers/hooks";
 import { Box } from "@mui/material";
 import { useSearchParams } from "next/navigation";
-import getDataUrl from "../utils/getDataUrl";
-import ensureValidLang from "../utils/ensureValidLang";
-import fetchMapPendingOrFailed from "../utils/fetchMapPendingOrFailed";
+import getDataUrl from "../../../src/helpers/functions/getDataUrl";
+import ensureValidLang from "../../../src/helpers/functions/ensureValidLang";
+import fetchMapPendingOrFailed from "../../../src/helpers/functions/fetchMapPendingOrFailed";
 
 const skeleton = (
   <div style={{ display: "flex", justifyContent: "center" }}>
