@@ -1,3 +1,7 @@
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { useQueryParam, ArrayParam } from "use-query-params";
+import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
 import { Carousel, CarouselItem } from "../../../src/components/Carousel";
 import { Map } from "../../../src/charts/Map";
@@ -5,13 +9,12 @@ import { AtlasData } from "../../../src/types/AtlasData";
 import { Barchart } from "../../../src/charts/Barchart";
 import { Linechart } from "../../../src/charts/Linechart";
 import { DataTable } from "../../../src/charts/Table";
-import { useState } from "react";
 import { FetchMap } from "../../../src/helpers/hooks";
-import { Box } from "@mui/material";
-import { useSearchParams } from "next/navigation";
 import getDataUrl from "../../../src/helpers/functions/getDataUrl";
 import ensureValidLang from "../../../src/helpers/functions/ensureValidLang";
 import fetchMapPendingOrFailed from "../../../src/helpers/functions/fetchMapPendingOrFailed";
+import usePostMessageHandler from "../../../src/helpers/hooks/usePostMessageHandler";
+import useSiblingFrames from "../../../src/helpers/hooks/useSiblingFrames";
 
 const skeleton = (
   <div style={{ display: "flex", justifyContent: "center" }}>
@@ -27,6 +30,8 @@ const skeleton = (
 );
 
 export default function ResultBoxPage() {
+  const { siblingFrames, domain } = useSiblingFrames();
+  const [message, sendMessage] = usePostMessageHandler(siblingFrames, domain);
   const [selection] = useState("");
   const searchParams = useSearchParams();
 
@@ -34,19 +39,30 @@ export default function ResultBoxPage() {
   const dataParam = searchParams.get("data");
   const mapParam = searchParams.get("map");
   const langParam = searchParams.get("lang");
-
   const lang = ensureValidLang(langParam);
   const mapFileName = mapParam ? `${mapParam}.geojson` : "kronikere.geojson";
+  const dataUrl = getDataUrl(atlasParam, dataParam);
+  const [bohfs, setBohfs] = useQueryParam("bohf", ArrayParam);
 
   const { data: mapData } = FetchMap(`/helseatlas/kart/${mapFileName}`);
-
-  const dataUrl = getDataUrl(atlasParam, dataParam);
-
   const dataFetchResult = FetchMap(dataUrl);
 
+  useEffect(() => {
+    sendMessage({ type: "bohfs", data: bohfs });
+  }, [bohfs]);
+
+  useEffect(() => {
+    if (message) {
+      if (message.type === "bohfs") {
+        setBohfs(message.data);
+      }
+    }
+  }, [message]);
+
   if (fetchMapPendingOrFailed(dataFetchResult)) {
-    return skeleton;
+    return <>{skeleton}</>;
   }
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const boxData: any = Object.values(dataFetchResult.data)[0];
   const nationalName = boxData.find((o) => o.type === "data")["national"];
