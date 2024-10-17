@@ -9,7 +9,7 @@ import { useState } from "react";
 import { FetchMap } from "../../../src/helpers/hooks";
 import { Box } from "@mui/material";
 import { useSearchParams } from "next/navigation";
-import getFetchMapUrl from "../utils/getFetchMapUrl";
+import getDataUrl from "../utils/getDataUrl";
 import ensureValidLang from "../utils/ensureValidLang";
 import fetchMapPendingOrFailed from "../utils/fetchMapPendingOrFailed";
 
@@ -40,7 +40,7 @@ export default function ResultBoxPage() {
 
   const { data: mapData } = FetchMap(`/helseatlas/kart/${mapFileName}`);
 
-  const dataUrl = getFetchMapUrl(atlasParam, dataParam);
+  const dataUrl = getDataUrl(atlasParam, dataParam);
 
   const dataFetchResult = FetchMap(dataUrl);
 

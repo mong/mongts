@@ -3,7 +3,7 @@ import Skeleton from "@mui/material/Skeleton";
 import BeadLine from "../../../src/components/BeadLine";
 import { FetchMap } from "../../../src/helpers/hooks";
 import { Box } from "@mui/material";
-import getFetchMapUrl from "../utils/getFetchMapUrl";
+import getDataUrl from "../utils/getDataUrl";
 import ensureValidLang from "../utils/ensureValidLang";
 import fetchMapPendingOrFailed from "../utils/fetchMapPendingOrFailed";
 
@@ -27,7 +27,7 @@ export default function Kulelinje() {
   const langParam = searchParams.get("lang");
   const lang = ensureValidLang(langParam);
 
-  const dataUrl = getFetchMapUrl(atlasParam, dataParam);
+  const dataUrl = getDataUrl(atlasParam, dataParam);
 
   const dataFetchResult = FetchMap(dataUrl);
 
