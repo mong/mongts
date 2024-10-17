@@ -7,24 +7,65 @@ import { Linechart } from "../../../src/charts/Linechart";
 import { DataTable } from "../../../src/charts/Table";
 import { useState } from "react";
 import { FetchMap } from "../../../src/helpers/hooks";
+import { Box } from "@mui/material";
+import { useSearchParams } from "next/navigation";
+
+const skeleton = (
+  <div style={{ display: "flex", justifyContent: "center" }}>
+    <Box width="100%">
+      <Skeleton
+        variant="rectangular"
+        animation="wave"
+        width="100%"
+        height="100%"
+      />
+    </Box>
+  </div>
+);
+
+const ensureValidLang = (
+  langString: string | null | undefined,
+): "nb" | "nn" | "en" => {
+  if (langString === "nn" || langString === "en") {
+    return langString;
+  }
+  return "nb"; // Default to Norwegian Bokmål if not "nn" or "en"
+};
+
+const getDataUrl = (atlasParam: string | null, dataParam: string | null) => {
+  return dataParam && atlasParam
+    ? `/helseatlas/data/${atlasParam}/${dataParam}.json`
+    : null;
+};
 
 export default function ResultBoxPage() {
   const [selection] = useState("");
+  const searchParams = useSearchParams();
 
-  const lang = "nb";
+  const atlasParam = searchParams.get("atlas");
+  const dataParam = searchParams.get("data");
+  const mapParam = searchParams.get("map");
+  const langParam = searchParams.get("lang");
 
-  // const mapFile = map ? map : "kronikere.geojson";
-  const mapFile = "kronikere.geojson";
-  const { data: mapData } = FetchMap(`/helseatlas/kart/${mapFile}`);
+  const lang = ensureValidLang(langParam);
+  const mapFileName = mapParam ? `${mapParam}.geojson` : "kronikere.geojson";
 
-  const res = FetchMap(`/helseatlas/data/lab/mb_rb2.json`);
+  const { data: mapData } = FetchMap(`/helseatlas/kart/${mapFileName}`);
 
-  if (!res.isFetched) {
-    return <Skeleton></Skeleton>;
+  const dataUrl = getDataUrl(atlasParam, dataParam);
+
+  const dataFetchResult = FetchMap(dataUrl);
+
+  if (
+    dataFetchResult === null ||
+    !dataFetchResult.isFetched ||
+    !dataUrl ||
+    dataFetchResult.isError
+  ) {
+    return skeleton;
   }
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const boxData: any = Object.values(res.data)[0];
+  const boxData: any = Object.values(dataFetchResult.data)[0];
   const nationalName = boxData.find((o) => o.type === "data")["national"];
 
   const dataCarousel = (
