@@ -1,0 +1,25 @@
+export default function IframeTester() {
+  return (
+    <>
+      <h1>IframeTester</h1>
+      <div>
+        <iframe
+          id="iframe-child-1"
+          src="/helseatlas/resultatboks/?atlas=lab&data=b12_rb1"
+          title="iframe-child-1"
+          width="500"
+          height="600"
+        />
+      </div>
+      <div>
+        <iframe
+          id="iframe-child-2"
+          src="/helseatlas/resultatboks/?atlas=lab&data=b12_rb1"
+          title="iframe-child-2"
+          width="500"
+          height="600"
+        />
+      </div>
+    </>
+  );
+}
