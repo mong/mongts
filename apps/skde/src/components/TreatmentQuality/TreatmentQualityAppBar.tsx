@@ -16,7 +16,7 @@ type AppBarProps = {
 const TreatmentQualityAppBar = ({
   openDrawer,
   title = "Behandlingskvalitet",
-  subtitle = `Resultater fra nasjonale medisinske kvalitetsregistre. For mer informasjon, se <a href="https://www.kvalitetsregistre.no/">kvalitetsregistre.no</a>`,
+  subtitle = 'Resultater fra nasjonale medisinske kvalitetsregistre. Se <a href="https://www.kvalitetsregistre.no/">kvalitetsregistre.no</a> for mer informasjon.',
   extraBreadcrumbs,
 }: AppBarProps) => {
   const headerData: HeaderData = {
