@@ -8,9 +8,6 @@ const StyledAppBar = styled(AppBar)(() => ({
 
 type AppBarProps = {
   openDrawer: () => void;
-  context;
-  onTabChanged;
-  tabs?: boolean;
   title?: string;
   subtitle?: string;
   extraBreadcrumbs?: { link: string; text: string }[];
@@ -18,9 +15,6 @@ type AppBarProps = {
 
 const TreatmentQualityAppBar = ({
   openDrawer,
-  context,
-  onTabChanged,
-  tabs = true,
   title = "Behandlingskvalitet",
   subtitle,
   extraBreadcrumbs,
@@ -49,12 +43,7 @@ const TreatmentQualityAppBar = ({
     <>
       <Header headerData={headerData} breadcrumbs={breadcrumbs} />
       <StyledAppBar position="sticky" elevation={0}>
-        <TreatmentQualityToolbar
-          openDrawer={openDrawer}
-          onTabChanged={onTabChanged}
-          context={context}
-          tabs={tabs}
-        />
+        <TreatmentQualityToolbar openDrawer={openDrawer} />
       </StyledAppBar>
     </>
   );

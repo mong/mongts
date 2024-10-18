@@ -8,10 +8,17 @@ type AffiliatedHospitalProps = {
   titleStyle: { marginLeft: number; marginTop: number };
   unitNames: { nestedUnitNames: NestedTreatmentUnitName[]; opts_tu: OptsTu[] };
   selectedTreatmentUnit: string;
+  setUnitName: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const AffiliatedHospitals = (props: AffiliatedHospitalProps) => {
-  const { boxHeight, titleStyle, unitNames, selectedTreatmentUnit } = props;
+  const {
+    boxHeight,
+    titleStyle,
+    unitNames,
+    selectedTreatmentUnit,
+    setUnitName,
+  } = props;
 
   return (
     <ItemBox height={boxHeight} sx={{ overflow: "auto" }}>
@@ -22,6 +29,7 @@ export const AffiliatedHospitals = (props: AffiliatedHospitalProps) => {
         <SubUnits
           RHFs={unitNames.nestedUnitNames}
           selectedUnit={selectedTreatmentUnit}
+          setUnitName={setUnitName}
         />
       ) : null}
     </ItemBox>

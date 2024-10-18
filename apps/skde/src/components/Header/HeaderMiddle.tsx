@@ -51,16 +51,10 @@ export const HeaderMiddle = (props: HeaderMiddleProps) => {
             <Typography variant="h1">{props.headerData.title}</Typography>
           </Grid>
           <Grid size={{ xs: 12 }}>
-            {props.headerData.subtitle ? (
-              <Typography variant="h6">{props.headerData.subtitle}</Typography>
-            ) : (
-              <Typography variant="h6">
-                Resultater fra{" "}
-                <a href="https://www.kvalitetsregistre.no/">
-                  nasjonale medisinske kvalitetsregistre
-                </a>{" "}
-              </Typography>
-            )}
+            <Typography
+              variant="h6"
+              dangerouslySetInnerHTML={{ __html: props.headerData.subtitle }}
+            />
           </Grid>
         </Grid>
       </Container>

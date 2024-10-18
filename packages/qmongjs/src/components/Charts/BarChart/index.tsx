@@ -222,17 +222,12 @@ function BarChart(props: Props) {
             ></rect>
             <text
               textAnchor="middle"
-              y={height / 4}
+              y={height / 2}
               x={width / 2 + 10}
               fill="#e30713"
               fontSize="2rem"
             >
-              <tspan x={width / 2 + 10} dy="1.2em">
-                Data er ikke komplett.{" "}
-              </tspan>
-              <tspan x={width / 2 + 10} dy="1.2em">
-                Siste komplette år er {lastCompleteYear}
-              </tspan>
+              <tspan>Siste komplette år er {lastCompleteYear}</tspan>
             </text>
           </>
         )}
