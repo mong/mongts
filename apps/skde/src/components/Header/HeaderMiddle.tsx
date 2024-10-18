@@ -11,7 +11,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 export type HeaderData = {
   title: string;
-  subtitle: string | undefined;
+  subtitle: string;
 };
 
 type HeaderMiddleProps = {
