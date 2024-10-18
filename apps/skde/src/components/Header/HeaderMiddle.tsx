@@ -16,6 +16,7 @@ export type HeaderData = {
 
 type HeaderMiddleProps = {
   headerData: HeaderData;
+  children?: React.ReactNode;
   bgcolor?: string;
   maxWidth?: false | Breakpoint;
 };
@@ -56,6 +57,7 @@ export const HeaderMiddle = (props: HeaderMiddleProps) => {
               dangerouslySetInnerHTML={{ __html: props.headerData.subtitle }}
             />
           </Grid>
+          {props.children !== undefined && props.children}
         </Grid>
       </Container>
     </StyledToolbar>
