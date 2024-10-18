@@ -192,7 +192,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
         />
         <Grid container size={{ xs: 12 }}>
           {isXxlScreen ? ( // Permanent menu on large screens
-            <Grid size={{ xxl: 3, xxxl: 2 }} className="menu-wrapper">
+            <Grid size={{ xxl: 4, xxml: 3, xxxl: 2 }} className="menu-wrapper">
               <Box
                 sx={{
                   mt: 4,
@@ -219,7 +219,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
               </Box>
             </Grid>
           ) : null}
-          <Grid size={{ xs: 12, xxl: 9, xxxl: 10 }}>
+          <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
                 {displayV2Table ? (
