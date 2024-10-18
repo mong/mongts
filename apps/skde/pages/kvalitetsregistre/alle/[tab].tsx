@@ -29,7 +29,7 @@ const MainRegisterPage = () => {
 
   const headerData: HeaderData = {
     title: "Kvalitetsregistre",
-    subtitle: `Siden er flyttet til <a href="/behandlingskvalitet/">/behandlingskvalitet</a>.`,
+    subtitle: `Siden er flyttet til <em><a href="/behandlingskvalitet/">behandlingskvalitet</a></em>.`,
   };
 
   return (

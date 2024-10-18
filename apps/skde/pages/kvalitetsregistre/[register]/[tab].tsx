@@ -38,7 +38,7 @@ const SelectedRegisterPage = ({ register }: { register: string }) => {
 
   const headerData: HeaderData = {
     title: "Kvalitetsregistre",
-    subtitle: `Siden er flyttet til <a href="/behandlingskvalitet/${register}">/behandlingskvalitet/${register}</a>.`,
+    subtitle: `Siden er flyttet til <em><a href="/behandlingskvalitet/${register}">behandlingskvalitet/${register}</a></em>.`,
   };
 
   return (
