@@ -188,7 +188,13 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
           extraBreadcrumbs={[
             { link: registryName, text: registryInfo[0].short_name },
           ]}
-          subtitle={"Resultater fra " + registryInfo[0].full_name}
+          subtitle={
+            "Resultater fra " +
+            registryInfo[0].full_name +
+            '. Se <a href="' +
+            registryInfo[0].url +
+            '" target="_blank">kvalitetsregistre.no</a> for mer informasjon.'
+          }
         />
         <Grid container size={{ xs: 12 }}>
           {isXxlScreen ? ( // Permanent menu on large screens
