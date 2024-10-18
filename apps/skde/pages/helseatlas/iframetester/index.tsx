@@ -4,6 +4,15 @@ export default function IframeTester() {
       <h1>IframeTester</h1>
       <div>
         <iframe
+          id="iframe-child-3"
+          src="/helseatlas/kulelinje/?atlas=lab&data=b12_rb1"
+          title="iframe-child-3"
+          width="500"
+          height="200"
+        />
+      </div>
+      <div>
+        <iframe
           id="iframe-child-1"
           src="/helseatlas/resultatboks/?atlas=lab&data=b12_rb1"
           title="iframe-child-1"

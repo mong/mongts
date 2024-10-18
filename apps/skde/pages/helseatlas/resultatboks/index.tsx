@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { useQueryParam, ArrayParam } from "use-query-params";
-import Box from "@mui/material/Box";
-import Skeleton from "@mui/material/Skeleton";
 import { Carousel, CarouselItem } from "../../../src/components/Carousel";
 import { Map } from "../../../src/charts/Map";
 import { AtlasData } from "../../../src/types/AtlasData";
@@ -13,25 +10,12 @@ import { FetchMap } from "../../../src/helpers/hooks";
 import getDataUrl from "../../../src/helpers/functions/getDataUrl";
 import ensureValidLang from "../../../src/helpers/functions/ensureValidLang";
 import queryResultPendingOrFailed from "../../../src/helpers/functions/queryResultPendingOrFailed";
-import usePostMessageHandler from "../../../src/helpers/hooks/usePostMessageHandler";
-import useSiblingFrames from "../../../src/helpers/hooks/useSiblingFrames";
-
-const skeleton = (
-  <div style={{ display: "flex", justifyContent: "center" }}>
-    <Box width="100%">
-      <Skeleton
-        variant="rectangular"
-        animation="wave"
-        width="100%"
-        height="100%"
-      />
-    </Box>
-  </div>
-);
+import ResultBoxSkeleton from "./resultBoxSkeleton";
+import { useBohfSync } from "../../../src/helpers/hooks/useBohfSync";
 
 export default function ResultBoxPage() {
-  const { siblingFrames, domain } = useSiblingFrames();
-  const [message, sendMessage] = usePostMessageHandler(siblingFrames, domain);
+  useBohfSync();
+
   const [selection] = useState("");
   const searchParams = useSearchParams();
 
@@ -42,25 +26,12 @@ export default function ResultBoxPage() {
   const lang = ensureValidLang(langParam);
   const mapFileName = mapParam ? `${mapParam}.geojson` : "kronikere.geojson";
   const dataUrl = getDataUrl(atlasParam, dataParam);
-  const [bohfs, setBohfs] = useQueryParam("bohf", ArrayParam);
 
   const { data: mapData } = FetchMap(`/helseatlas/kart/${mapFileName}`);
   const dataFetchResult = FetchMap(dataUrl);
 
-  useEffect(() => {
-    sendMessage({ type: "bohfs", data: bohfs });
-  }, [bohfs]);
-
-  useEffect(() => {
-    if (message) {
-      if (message.type === "bohfs") {
-        setBohfs(message.data);
-      }
-    }
-  }, [message]);
-
   if (queryResultPendingOrFailed(dataFetchResult)) {
-    return <>{skeleton}</>;
+    return <ResultBoxSkeleton />;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
