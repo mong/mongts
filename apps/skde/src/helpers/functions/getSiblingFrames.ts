@@ -1,11 +1,20 @@
 export default function getSiblingFrames(window: Window | undefined) {
-  if (!window || !window.parent || !window.parent.frames) {
-    return [];
+  const siblings: Window[] = [];
+
+  if (
+    !window ||
+    !window.parent ||
+    !window.parent.frames ||
+    window === window.top
+  ) {
+    return siblings;
   }
 
-  const domain = window.location.origin;
+  for (let i = 0; i < window.parent.frames.length; i++) {
+    if (window.parent.frames[i] !== window) {
+      siblings.push(window.parent.frames[i]);
+    }
+  }
 
-  return Array.from(window.parent.frames).filter((frame) => {
-    return frame.location.origin === domain && frame !== window;
-  });
+  return siblings;
 }
