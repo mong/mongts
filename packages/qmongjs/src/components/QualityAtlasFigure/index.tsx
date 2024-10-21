@@ -147,7 +147,7 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
 
   heatmapData.data = combinedList.map((x) => x.column);
   const sortedIndIDs = combinedList.map((x) => x.indID);
-  console.log(context);
+
   return (
     <div style={{ margin: 40 }}>
       <>
