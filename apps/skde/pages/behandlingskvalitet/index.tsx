@@ -179,7 +179,6 @@ export default function TreatmentQualityPage() {
     oldFilterSettings: { map: Map<string, FilterSettingsValue[]> },
     action: FilterSettingsAction,
   ): void => {
-    console.log(newFilterSettings);
     switch (action.sectionSetting.key) {
       case tableContextKey: {
         setSelectedTableContext(
