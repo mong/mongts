@@ -14,7 +14,10 @@ import {
 import { Box, Typography, Divider, IconButton } from "@mui/material";
 import { ChevronLeftRounded } from "@mui/icons-material";
 import { RegisterName, Medfield } from "types";
-import { defaultTableContext } from "../../../pages/behandlingskvalitet/utils/valueOrDefault";
+import {
+  valueOrDefault,
+  defaultTableContext,
+} from "../../../pages/behandlingskvalitet/utils/valueOrDefault";
 
 type HeatMapFilterMenuProps = {
   registryNameData: RegisterName[];
@@ -106,34 +109,6 @@ export const HeatMapFilterMenu = (props: HeatMapFilterMenuProps) => {
     setSelectedTreatmentUnits(
       filterSettings.get(treatmentUnitsKey).map((value) => value.value),
     );
-  };
-
-  const valueOrDefault = (
-    key: string,
-    filterSettings: { map: Map<string, FilterSettingsValue[]> },
-  ) => {
-    switch (key) {
-      case yearKey: {
-        return (
-          filterSettings.map.get(yearKey)[0].value ?? defaultYear.toString()
-        );
-      }
-      case medicalFieldKey: {
-        const medicalFieldFilter = filterSettings.map
-          .get(medicalFieldKey)
-          ?.map((value) => value.value);
-        const registerFilter =
-          getMedicalFieldFilterRegisters(medicalFieldFilter);
-        return registerFilter;
-      }
-      case treatmentUnitsKey: {
-        return filterSettings.map
-          .get(treatmentUnitsKey)
-          .map((value) => value.value);
-      }
-      default:
-        break;
-    }
   };
 
   const setAllSelected = (newFilterSettings: {
