@@ -118,10 +118,18 @@ export const HeatMapFilterMenu = (props: HeatMapFilterMenuProps) => {
       parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
     );
     setSelectedMedicalFields(
-      valueOrDefault(medicalFieldKey, newFilterSettings) as string[],
+      valueOrDefault(
+        medicalFieldKey,
+        newFilterSettings,
+        registryNameData,
+        medicalFieldData,
+      ) as string[],
     );
     setSelectedTreatmentUnits(
       valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+    );
+    setSelectedTableContext(
+      valueOrDefault(tableContextKey, newFilterSettings) as string,
     );
   };
 
@@ -148,7 +156,12 @@ export const HeatMapFilterMenu = (props: HeatMapFilterMenuProps) => {
       }
       case medicalFieldKey: {
         setSelectedMedicalFields(
-          valueOrDefault(medicalFieldKey, newFilterSettings) as string[],
+          valueOrDefault(
+            medicalFieldKey,
+            newFilterSettings,
+            registryNameData,
+            medicalFieldData,
+          ) as string[],
         );
         break;
       }
