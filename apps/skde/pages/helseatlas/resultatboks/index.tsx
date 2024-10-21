@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
+import { ThemeProvider } from "@mui/material";
+import { skdeTheme } from "qmongjs";
 import { Carousel, CarouselItem } from "../../../src/components/Carousel";
 import { Map } from "../../../src/charts/Map";
 import { AtlasData } from "../../../src/types/AtlasData";
@@ -28,7 +30,7 @@ export default function ResultBoxPage() {
   const dataUrl = getDataUrl(atlasParam, dataParam);
 
   const { data: mapData } = FetchMap(`/helseatlas/kart/${mapFileName}`);
-  const dataFetchResult = FetchMap(dataUrl);
+  const dataFetchResult = FetchMap(dataUrl || "");
 
   if (queryResultPendingOrFailed(dataFetchResult)) {
     return <ResultBoxSkeleton />;
@@ -137,5 +139,5 @@ export default function ResultBoxPage() {
     </Carousel>
   );
 
-  return <>{dataCarousel}</>;
+  return <ThemeProvider theme={skdeTheme}>{dataCarousel}</ThemeProvider>;
 }
