@@ -1,4 +1,6 @@
 import { useSearchParams } from "next/navigation";
+import { ThemeProvider } from "@mui/material";
+import { skdeTheme } from "qmongjs";
 import BeadLine from "../../../src/components/BeadLine";
 import { FetchMap } from "../../../src/helpers/hooks";
 import BeadLineSkeleton from "./beadLineSkeleton";
@@ -15,17 +17,20 @@ export default function BeadLinePage() {
   const dataParam = searchParams.get("data");
   const langParam = searchParams.get("lang");
   const lang = ensureValidLang(langParam);
-
   const dataUrl = getDataUrl(atlasParam, dataParam);
 
-  const dataFetchResult = FetchMap(dataUrl);
+  const dataFetchResult = FetchMap(dataUrl || "");
 
-  if (queryResultPendingOrFailed(dataFetchResult)) {
+  if (!dataUrl || queryResultPendingOrFailed(dataFetchResult)) {
     return <BeadLineSkeleton />;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const boxData: any = Object.values(dataFetchResult.data)[0];
 
-  return <BeadLine boxData={boxData} lang={lang} />;
+  return (
+    <ThemeProvider theme={skdeTheme}>
+      <BeadLine boxData={boxData} lang={lang} />
+    </ThemeProvider>
+  );
 }
