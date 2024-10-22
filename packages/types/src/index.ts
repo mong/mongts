@@ -154,3 +154,11 @@ export type URLs = {
   shortName: string;
   url: string;
 };
+
+export type RegistryRank = {
+ id: number;
+ name: string;
+ full_name: string;
+ short_name: string;
+ verdict: string; 
+}

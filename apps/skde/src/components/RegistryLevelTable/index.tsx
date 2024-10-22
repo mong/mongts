@@ -1,5 +1,7 @@
-type RegistryLevelTableProps = {};
+type RegistryLevelTableProps = {
+  prop?: string;
+};
 
 export const RegistryLevelTable = (props: RegistryLevelTableProps) => {
-  return null;
+  return <div>New component</div>;
 };
