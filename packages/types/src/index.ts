@@ -160,5 +160,6 @@ export type RegistryRank = {
  name: string;
  full_name: string;
  short_name: string;
- verdict: string; 
+ verdict: string;
+ year: number;
 }

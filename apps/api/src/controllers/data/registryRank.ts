@@ -1,9 +1,12 @@
 import { RequestHandler } from "express";
 import { registryRankModel } from "../../models/data";
+import { parseQuery } from "./indicators";
 
 export const registryRankController: RequestHandler = async (req, res) => {
+  const query = parseQuery(req);
+
   try {
-    const rows = await registryRankModel();
+    const rows = await registryRankModel(query.filter);
     res.json(rows);
   } catch (error) {
     const error_message =
