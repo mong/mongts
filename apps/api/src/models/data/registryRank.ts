@@ -1,6 +1,5 @@
 import db from "../../db";
 import { RegistryRank } from "types";
-import { Knex } from "knex";
 import { Filter } from ".";
 
 export const registryRankModel = (filter?: Filter): Promise<RegistryRank[]> =>

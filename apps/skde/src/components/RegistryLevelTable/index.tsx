@@ -1,7 +1,26 @@
+import { useRegistryRankQuery } from "qmongjs";
+import { Table, TableRow, TableCell } from "@mui/material";
+import { RegistryRank } from "types";
+
 type RegistryLevelTableProps = {
-  prop?: string;
+  year: number;
 };
 
 export const RegistryLevelTable = (props: RegistryLevelTableProps) => {
-  return <div>New component</div>;
+  const { year } = props;
+
+  const rankQuery = useRegistryRankQuery(year);
+
+  return (
+    <Table>
+      {rankQuery.data.map((row: RegistryRank) => {
+        return (
+          <TableRow key={"Rank-" + row.id}>
+            <TableCell>{row.short_name}</TableCell>
+            <TableCell>{row.verdict}</TableCell>
+          </TableRow>
+        );
+      })}
+    </Table>
+  );
 };
