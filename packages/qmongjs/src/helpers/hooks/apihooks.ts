@@ -219,3 +219,25 @@ export const useMedicalFieldsQuery = () => {
     gcTime: 1000 * 60 * 60,
   });
 };
+
+const fetchRegistryRanks = async (year?: number) => {
+  const yearQuery: string = year ? `year=${year}&` : "";
+
+  const response = await fetch(`${API_HOST}/data/registryRank?${yearQuery}`);
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json();
+};
+
+export const useRegistryRankQuery = (year?: number) => {
+  return useQuery({
+    queryKey: ["registryRank", year],
+    queryFn: () => fetchRegistryRanks(year),
+    staleTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    gcTime: 1000 * 60 * 60,
+  });
+};

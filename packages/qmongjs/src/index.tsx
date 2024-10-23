@@ -5,6 +5,7 @@ export {
   useMedicalFieldsQuery,
   useUnitUrlsQuery,
   useUnitNamesQuery,
+  useRegistryRankQuery,
 } from "./helpers/hooks";
 export {
   level,
