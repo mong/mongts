@@ -12,13 +12,14 @@ import {
 
 import { ChevronLeftRounded } from "@mui/icons-material";
 import Grid from "@mui/material/Grid2";
-import { useQueryParam, withDefault, StringParam } from "use-query-params";
+import { useQueryParam } from "use-query-params";
 import {
   FilterSettingsAction,
   FilterSettingsValue,
   TreatmentQualityFilterMenu,
   defaultYear,
   levelKey,
+  tableContextKey,
   treatmentUnitsKey,
   yearKey,
   FilterSettingsActionType,
@@ -38,32 +39,15 @@ import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
+import scrollToSelectedRow from "./utils/scrollToSelectedRow";
 import { RegisterName } from "types";
-
-const scrollToSelectedRow = (selectedRow: string): boolean => {
-  const element = document.getElementById(selectedRow);
-  const headerOffset = 160;
-
-  if (element) {
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.scrollY - headerOffset;
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
-
-    return true;
-  } else {
-    return false;
-  }
-};
+import valueOrDefault from "./utils/valueOrDefault";
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
+  const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
   const registryName = registryInfo[0].rname;
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-
-  const isLargeScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
 
   useEffect(() => {
     setMounted(true);
@@ -74,15 +58,13 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
   };
 
   const searchParams = useSearchParams();
-  const newTableOnly = searchParams.get("newtable") === "true";
+  const displayV2Table = searchParams.get("newtable") === "true";
 
   // Context (caregiver or resident)
-  const default_context =
+  const defaultTableContext =
     registryInfo[0].caregiver_data === 0 ? "resident" : "caregiver";
-  const [tableContext, setTableContext] = useQueryParam<string>(
-    "context",
-    withDefault(StringParam, default_context),
-  );
+  const [selectedTableContext, setSelectedTableContext] =
+    useState(defaultTableContext);
 
   // Used by indicator table
   const [selectedYear, setSelectedYear] = useState(defaultYear);
@@ -111,6 +93,10 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const handleFilterInitialized = (
     filterSettings: Map<string, FilterSettingsValue[]>,
   ): void => {
+    setSelectedTableContext(
+      filterSettings.get(tableContextKey)?.[0].value ?? defaultTableContext,
+    );
+
     setSelectedYear(
       parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString()),
     );
@@ -124,32 +110,12 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     );
   };
 
-  const valueOrDefault = (
-    key: string,
-    filterSettings: { map: Map<string, FilterSettingsValue[]> },
-  ) => {
-    switch (key) {
-      case yearKey: {
-        return (
-          filterSettings.map.get(yearKey)[0].value ?? defaultYear.toString()
-        );
-      }
-      case levelKey: {
-        return filterSettings.map.get(levelKey)?.[0]?.value ?? undefined;
-      }
-      case treatmentUnitsKey: {
-        return filterSettings.map
-          .get(treatmentUnitsKey)
-          .map((value) => value.value);
-      }
-      default:
-        break;
-    }
-  };
-
   const setAllSelected = (newFilterSettings: {
     map: Map<string, FilterSettingsValue[]>;
   }) => {
+    setSelectedTableContext(
+      valueOrDefault(tableContextKey, newFilterSettings) as string,
+    );
     setSelectedYear(
       parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
     );
@@ -170,6 +136,12 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     action: FilterSettingsAction,
   ): void => {
     switch (action.sectionSetting.key) {
+      case tableContextKey: {
+        setSelectedTableContext(
+          valueOrDefault(tableContextKey, newFilterSettings) as string,
+        );
+        break;
+      }
       case yearKey: {
         setSelectedYear(
           parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
@@ -199,7 +171,9 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
 
   // Use the custom hook to observe the addition of the selected row element, if
   // not already available.
-  useOnElementAdded(selectedRow, true, scrollToSelectedRow);
+  if (typeof document !== "undefined") {
+    useOnElementAdded(selectedRow, true, scrollToSelectedRow);
+  }
 
   if (!mounted) {
     return null;
@@ -211,19 +185,14 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
       <PageWrapper>
         <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
-          context={tableContext}
-          onTabChanged={setTableContext}
-          tabs={
-            registryInfo[0].resident_data + registryInfo[0].caregiver_data == 2
-          }
           extraBreadcrumbs={[
             { link: registryName, text: registryInfo[0].short_name },
           ]}
           subtitle={"Resultater fra " + registryInfo[0].full_name}
         />
         <Grid container size={{ xs: 12 }}>
-          {isLargeScreen ? ( // Permanent menu on large screens
-            <Grid size={{ xxl: 3, xxxl: 2 }} className="menu-wrapper">
+          {isXxlScreen ? ( // Permanent menu on large screens
+            <Grid size={{ xxl: 4, xxml: 3, xxxl: 2 }} className="menu-wrapper">
               <Box
                 sx={{
                   mt: 4,
@@ -236,23 +205,28 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                 <TreatmentQualityFilterMenu
                   onSelectionChanged={handleFilterChanged}
                   onFilterInitialized={handleFilterInitialized}
+                  testIdPrefix="permanentFilterMenu"
                   registryNameData={registryInfo}
                   medicalFieldData={[]}
-                  context={tableContext}
                   register={registryName}
+                  enableTableContextSection={
+                    registryInfo[0].resident_data +
+                      registryInfo[0].caregiver_data ==
+                    2
+                  }
                 />
                 <Divider />
               </Box>
             </Grid>
           ) : null}
-          <Grid size={{ xs: 12, xxl: 9, xxxl: 10 }}>
+          <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
-                {newTableOnly ? (
+                {displayV2Table ? (
                   <IndicatorTableV2Wrapper className="table-wrapper">
                     <IndicatorTableBodyV2
-                      key={`indicator-table2-${tableContext}`}
-                      context={tableContext}
+                      key={`indicator-table2-${selectedTableContext}`}
+                      context={selectedTableContext}
                       unitNames={selectedTreatmentUnits}
                       year={selectedYear}
                       type="ind"
@@ -260,8 +234,8 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                       medfields={selectedMedicalFields}
                     />
                     <IndicatorTableBodyV2
-                      key={`dataquality-table2-${tableContext}`}
-                      context={tableContext}
+                      key={`dataquality-table2-${selectedTableContext}`}
+                      context={selectedTableContext}
                       unitNames={selectedTreatmentUnits}
                       year={selectedYear}
                       type="dg"
@@ -272,8 +246,8 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                 ) : (
                   <IndicatorTableWrapper className="table-wrapper">
                     <IndicatorTable
-                      key={`indicator-table-${tableContext}`}
-                      context={tableContext}
+                      key={`indicator-table-${selectedTableContext}`}
+                      context={selectedTableContext}
                       dataQuality={false}
                       tableType="allRegistries"
                       registerNames={registryInfo}
@@ -287,8 +261,8 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                       showTreatmentYear={true}
                     />
                     <IndicatorTable
-                      key={`dataquality-table-${tableContext}`}
-                      context={tableContext}
+                      key={`dataquality-table-${selectedTableContext}`}
+                      context={selectedTableContext}
                       dataQuality={true}
                       tableType="allRegistries"
                       registerNames={registryInfo}
@@ -331,9 +305,9 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
           <TreatmentQualityFilterMenu
             onSelectionChanged={handleFilterChanged}
             onFilterInitialized={handleFilterInitialized}
+            testIdPrefix="drawerFilterMenu"
             registryNameData={registryInfo}
             medicalFieldData={[]}
-            context={tableContext}
             register={registryName}
           />
           <Divider />

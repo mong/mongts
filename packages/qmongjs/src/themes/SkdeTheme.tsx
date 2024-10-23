@@ -93,7 +93,7 @@ const fonts = {
   body2: {
     fontFamily: `${jakartaStyle.fontFamily}`,
     fontWeight: "400",
-    fontSize: "14px",
+    fontSize: "16px",
     letterSpacing: "0.25px",
   },
   button: {
@@ -126,6 +126,7 @@ const colorTokens = {
     main: "#003087",
     light: "#e3ebf2",
     dark: "#001b52",
+    contrastText: "#ffff",
   },
 
   secondary: {

@@ -26,11 +26,12 @@ import { HospitalProfileLowLevelTable } from "../../src/components/HospitalProfi
 import { HospitalProfileLinePlot } from "../../src/components/HospitalProfile/HospitalProfileLinePlot";
 import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterMenu";
 import { TurnDeviceBox } from "../../src/components/HospitalProfile/TurnDeviceBox";
+import { URLs } from "types";
+import { LayoutHead } from "../../src/components/LayoutHead";
 
 export const Skde = (): JSX.Element => {
   // States
   const [unitName, setUnitName] = useState<string>();
-  const [unitUrl, setUnitUrl] = useState<string | null>(null);
   const [isMobileAndVertical, setIsMobileAndVertical] = useState<boolean>();
 
   // ############### //
@@ -71,6 +72,10 @@ export const Skde = (): JSX.Element => {
         text: "Forside",
       },
       {
+        link: "https://www.skde.no/resultater/",
+        text: "Tall om helsetjenesten",
+      },
+      {
         link: "/sykehusprofil/",
         text: "Sykehusprofil",
       },
@@ -83,7 +88,7 @@ export const Skde = (): JSX.Element => {
       "Her vises alle kvalitetsindikatorer fra nasjonale medisinske kvalitetsregistre i form av sykehusprofiler",
   };
 
-  // ######## //
+  // ####### //
   // Queries //
   // ####### //
 
@@ -119,9 +124,31 @@ export const Skde = (): JSX.Element => {
       getUnitFullName(unitNamesQuery.data.nestedUnitNames, unitName);
   }
 
+  // ############ //
+  // Set unit URL //
+  // ############ //
+
+  let newUnitUrl: URLs | undefined;
+  let unitUrl = "";
+
+  if (unitUrlsQuery.data) {
+    newUnitUrl = unitUrlsQuery.data.filter((row: URLs) => {
+      return row.shortName === unitName;
+    });
+  }
+
+  if (newUnitUrl && newUnitUrl[0]) {
+    unitUrl = newUnitUrl[0].url;
+  }
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
+        <LayoutHead
+          title="Sykehusprofil"
+          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service for individual treatment units."
+          href="/favicon.ico"
+        />
         <Header
           bgcolor="surface2.light"
           headerData={headerData}
@@ -131,9 +158,7 @@ export const Skde = (): JSX.Element => {
           <UnitFilterMenu
             width={Math.min(400, 0.8 * width)}
             setUnitName={setUnitName}
-            setUnitUrl={setUnitUrl}
             unitNamesQuery={unitNamesQuery}
-            unitUrlsQuery={unitUrlsQuery}
           />
         </Header>
 
@@ -157,6 +182,7 @@ export const Skde = (): JSX.Element => {
                   titleStyle={titleStyle}
                   unitNames={unitNamesQuery.data}
                   selectedTreatmentUnit={unitName}
+                  setUnitName={setUnitName}
                 />
               </Grid>
 

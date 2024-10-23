@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Stack, Chip, Link, Box, styled } from "@mui/material";
+import { Stack, Chip, Link, Box, styled, Typography } from "@mui/material";
 import { ClearRounded } from "@mui/icons-material";
 import _ from "lodash";
 import { FilterMenuSectionProps } from ".";
@@ -11,8 +11,12 @@ import { FilterSettingsActionType } from "./FilterSettingsReducer";
 type SelectedFiltersSectionProps = FilterMenuSectionProps;
 
 const StyledChip = styled(Chip)(({ theme }) => ({
-  fontFamily: theme.typography.button.fontFamily,
-  padding: "1rem",
+  ...theme.typography.body2,
+  height: "2rem",
+  mr: 1,
+  mb: 1,
+  paddingLeft: 4,
+  paddingRight: 4,
 }));
 
 /**
@@ -68,17 +72,31 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
 
   return (
     <>
-      <Box
-        sx={{ display: "flex", flexDirection: "row-reverse", marginBottom: 1 }}
-      >
-        <Link
-          type="button"
-          variant="body2"
-          onClick={() => handleReset(filterSettingsDispatch)}
-          sx={{ cursor: "pointer", fontWeight: "600" }}
+      <Box sx={{ display: "flex", marginBottom: 1 }}>
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="baseline"
+          sx={{ width: "100%", marginBottom: 2 }}
         >
-          Tilbakestill filter
-        </Link>
+          <Typography
+            variant="body2"
+            color="primary"
+            sx={{
+              fontWeight: "600",
+            }}
+          >
+            Valgte filtre
+          </Typography>
+          <Link
+            type="button"
+            variant="body2"
+            onClick={() => handleReset(filterSettingsDispatch)}
+            sx={{ cursor: "pointer" }}
+          >
+            Tilbakestill
+          </Link>
+        </Stack>
       </Box>
       <Stack
         direction="row"
@@ -103,7 +121,6 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
                   key={chipId}
                   data-testid={chipId}
                   label={filterSetting.valueLabel}
-                  size={"small"}
                   color="primary"
                   deleteIcon={<ClearRounded />}
                   onDelete={

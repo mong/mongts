@@ -52,7 +52,10 @@ export const HeaderMiddle = (props: HeaderMiddleProps) => {
             <Typography variant="h1">{props.headerData.title}</Typography>
           </Grid>
           <Grid size={{ xs: 12 }}>
-            <Typography variant="h6">{props.headerData.subtitle}</Typography>
+            <Typography
+              variant="h6"
+              dangerouslySetInnerHTML={{ __html: props.headerData.subtitle }}
+            />
           </Grid>
           {props.children !== undefined && props.children}
         </Grid>
