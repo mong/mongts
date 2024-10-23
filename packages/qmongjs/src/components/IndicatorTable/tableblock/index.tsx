@@ -1,6 +1,5 @@
 import { useMemo, useEffect, useRef } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
-
 import style from "./tableblock.module.css";
 import { useDescriptionQuery, useIndicatorQuery } from "../../../helpers/hooks";
 import { filterOrderIndID } from "../../../helpers/functions";
@@ -8,6 +7,7 @@ import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
 import { Description, Indicator, RegisterName } from "types";
 import { IndicatorTableSkeleton } from "../IndicatorTableSkeleton";
+import { TableRow } from "@mui/material";
 
 interface TableBlockProps {
   context: string;
@@ -24,7 +24,11 @@ interface TableBlockProps {
   onEmptyStatusChanged?: (registerName: string, isEmpty: boolean) => void;
 }
 
-const SkeletonRow = <IndicatorTableSkeleton nRows={1} />;
+const SkeletonRow = (
+  <TableRow>
+    <IndicatorTableSkeleton nRows={1} />
+  </TableRow>
+);
 
 const TableBlock = (props: TableBlockProps) => {
   const {
