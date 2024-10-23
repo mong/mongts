@@ -9,6 +9,7 @@ export const registryRankModel = (filter?: Filter): Promise<RegistryRank[]> =>
       "registry.name",
       "registry.full_name",
       "registry.short_name",
+      "registry.url",
       "evaluation.verdict",
       "evaluation.year",
     )
