@@ -42,6 +42,7 @@ import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
 import scrollToSelectedRow from "./utils/scrollToSelectedRow";
 import { RegisterName } from "types";
 import valueOrDefault from "./utils/valueOrDefault";
+import { LayoutHead } from "../../src/components/LayoutHead";
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
@@ -183,6 +184,11 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
       <PageWrapper>
+        <LayoutHead
+          title="Behandlingskvalitet"
+          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
+          href="/favicon.ico"
+        />
         <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
           extraBreadcrumbs={[
