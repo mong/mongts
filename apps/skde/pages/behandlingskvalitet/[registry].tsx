@@ -85,15 +85,21 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
   )[0];
 
   const registryRankQuery = useRegistryRankQuery(defaultYear);
-  if (registryRankQuery.isFetching) {
-    return null;
-  }
 
-  // Fetch the registry's stage and level
-  const registryRankData = registryRankQuery.data as RegistryRank[];
-  const registryRank = registryRankData.filter(
-    (row: RegistryRank) => row.name === registryName,
-  );
+  let registryRank = "NA";
+
+  if (registryRankQuery.isFetched) {
+    // Fetch the registry's stage and level
+    const registryRankData = registryRankQuery.data as RegistryRank[];
+
+    const filteredRegistryRank = registryRankData.filter(
+      (row: RegistryRank) => row.name === registryName,
+    );
+
+    if (filteredRegistryRank[0]) {
+      registryRank = filteredRegistryRank[0].verdict;
+    }
+  }
 
   /**
    * Handle that the initial filter settings are loaded, which can happen
@@ -203,8 +209,10 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
           subtitle={
             "Resultater fra " +
             registryInfo[0].full_name +
-            " (stadium/nivå: " +
-            (registryRank[0] ? registryRank[0].verdict : "NA") +
+            " (stadium/nivå for " +
+            defaultYear +
+            ": " +
+            registryRank +
             ")"
           }
         />
