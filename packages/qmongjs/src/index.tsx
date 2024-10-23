@@ -6,7 +6,6 @@ export {
   useIndicatorQuery,
   useMedicalFieldsQuery,
   useUnitUrlsQuery,
-  useRegistryRankQuery,
 } from "./helpers/hooks";
 export { API_HOST } from "./components/RegisterPage";
 export { Layout } from "./components/Layout";

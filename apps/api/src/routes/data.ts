@@ -5,7 +5,6 @@ import {
   unitNamesContoller,
   selectionYearsContoller,
   dataController,
-  registryRankController,
 } from "../controllers/data";
 
 const Router = express.Router();
@@ -23,8 +22,5 @@ Router.get("/:register/years", selectionYearsContoller);
 
 // Nested data output
 Router.get("/:register/nestedData", dataController);
-
-// Registry rank output
-Router.get("/registryRank", registryRankController);
 
 export default Router;
