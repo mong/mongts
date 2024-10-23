@@ -209,11 +209,13 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
           subtitle={
             "Resultater fra " +
             registryInfo[0].full_name +
-            " (stadium/nivå for " +
+            "<br/>" +
+            `<a href="https://www.kvalitetsregistre.no/stadieinndeling">Stadium og nivå </a> for ` +
             defaultYear +
             ": " +
+            "<b>" +
             registryRank +
-            ")"
+            "</b>"
           }
         />
         <Grid container size={{ xs: 12 }}>
