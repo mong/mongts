@@ -11,6 +11,10 @@ export const RegistryLevelTable = (props: RegistryLevelTableProps) => {
 
   const rankQuery = useRegistryRankQuery(year);
 
+  if (rankQuery.isFetching) {
+    return null;
+  }
+
   return (
     <Table>
       {rankQuery.data.map((row: RegistryRank) => {
