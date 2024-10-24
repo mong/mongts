@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { API_HOST } from "../../components/RegisterPage";
+
+const API_HOST = process.env.NEXT_PUBLIC_API_HOST ?? "http://localhost:4000"; //"https://qa-mong-api.skde.org";
+
 interface FetchDescriptionParams {
   registerShortName: string;
   type?: "ind" | "dg";
