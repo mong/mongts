@@ -165,6 +165,7 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
           minBoxWidth={minBoxWidth}
           maxBoxWidth={maxBoxWidth}
           separation={gap}
+          year={year}
         ></HeatMap>
       </>
       <>
