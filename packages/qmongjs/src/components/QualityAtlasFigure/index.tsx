@@ -13,8 +13,7 @@ type QualityAtlasFigureProps = {
   gap: number;
   context: string;
   year: number;
-  indicatorIDs: string[];
-  medField: string;
+  medField: string[];
   unitNames: string[];
 };
 
@@ -26,7 +25,6 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
     gap,
     context,
     year,
-    indicatorIDs,
     medField,
     unitNames,
   } = props;
@@ -49,26 +47,20 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
   const indicatorData = indicatorQuery.data as Indicator[];
 
   let filteredData: Indicator[];
-  let indIDs: string[];
 
-  // If the medfield argument is set, filter out the correct indicators and ignore the indicatorID argument
-  if (medField.length === 0) {
-    filteredData = indicatorData.filter((row) => {
-      return indicatorIDs.includes(row.ind_id);
+  // Filter out the selected medical fields
+  filteredData = indicatorData.filter((row) => {
+    return medField.includes(row.registry_name);
+  });
+
+  const indIDs = filteredData
+    .map((row) => {
+      return row.ind_id;
+    })
+    // Remove duplicates
+    .filter((val, ind, array) => {
+      return array.indexOf(val) === ind;
     });
-    indIDs = indicatorIDs;
-  } else {
-    filteredData = indicatorData.filter((row) => {
-      return row.medfield_name === medField;
-    });
-    indIDs = filteredData
-      .map((row) => {
-        return row.ind_id;
-      })
-      .filter((val, ind, array) => {
-        return array.indexOf(val) === ind;
-      });
-  }
 
   if (filteredData.length === 0) {
     return null;
