@@ -1,3 +1,4 @@
+import React, { useCallback } from "react";
 import { scaleLinear } from "@visx/scale";
 import { HeatmapRect } from "@visx/heatmap";
 import { Group } from "@visx/group";
@@ -5,8 +6,13 @@ import { Indicator } from "types";
 import { level } from "qmongjs";
 import { AxisLeft, AxisTop } from "@visx/axis";
 import { scaleOrdinal, scaleBand } from "@visx/scale";
+import { withTooltip, TooltipWithBounds, defaultStyles } from "@visx/tooltip";
+import { WithTooltipProvidedProps } from "@visx/tooltip/lib/enhancers/withTooltip";
+import { Box } from "@mui/material";
+import { localPoint } from "@visx/event";
+import { RectCell } from "@visx/heatmap/lib/heatmaps/HeatmapRect";
 
-type Box = {
+type HeatMapBox = {
   bin: number;
   name: string;
   count: number;
@@ -14,7 +20,7 @@ type Box = {
 
 export type HeatMapColumn = {
   bin: number;
-  bins: Box[];
+  bins: HeatMapBox[];
 };
 
 type HeatMapData = {
@@ -43,7 +49,7 @@ export const createHeatmapData = (
         bin: unitBin,
         name: indID + " " + unitName,
         count: count === "L" ? 0 : count === "M" ? 1 : count === "H" ? 2 : -1,
-      } as Box;
+      } as HeatMapBox;
     });
 
     return { bin: indBin, bins: bins } as HeatMapColumn;
@@ -75,7 +81,8 @@ type HeatmapProps = {
 
 const defaultMargin = { top: 50, left: 200, right: 0, bottom: 0 };
 
-export const HeatMap = ({
+export const HeatMap = withTooltip<HeatmapProps, HeatMapBox>(
+  ({
   heatmapData,
   width,
   minBoxWidth,
@@ -83,7 +90,12 @@ export const HeatMap = ({
   events = true,
   margin = defaultMargin,
   separation = 3,
-}: HeatmapProps) => {
+  showTooltip,
+  hideTooltip,
+  tooltipData,
+  tooltipTop = 0,
+  tooltipLeft = 0,
+}: HeatmapProps & WithTooltipProvidedProps<HeatMapBox>) => {
   const data = heatmapData.data;
   const xTicks = heatmapData.xTicks;
 
@@ -126,7 +138,40 @@ export const HeatMap = ({
     range: [0, width],
   });
 
+  const handleToolTip = (bin: RectCell<HeatMapColumn, unknown>) => {
+    
+    return(useCallback
+      (
+    (
+      event:
+        | React.TouchEvent<SVGRectElement>
+        | React.MouseEvent<SVGRectElement>,
+    ) => {
+
+        // eslint-disable-next-line prefer-const
+        let { x, y } = localPoint(event) || { x: 0 }; // SVG cordinates
+        y = y ? y : 0;
+
+        const data = bin.bin as HeatMapBox
+
+        const selectedBox = {
+          bin: 2,
+        name: data.name,
+        count: 10,
+        }
+
+      showTooltip({
+        tooltipData: selectedBox,
+        tooltipLeft: x,
+        tooltipTop: y,
+      });
+    },
+    [showTooltip, xScale, yScale],
+  )
+)}
+
   return (
+    <>
     <svg
       width={width + margin.left + margin.right + separation}
       height={height + margin.top + margin.bottom + separation}
@@ -156,6 +201,10 @@ export const HeatMap = ({
                     if (!events) return;
                     alert(JSON.stringify(bin.bin));
                   }}
+                  onTouchStart={handleToolTip(bin)}
+                  onTouchMove={handleToolTip(bin)}
+                  onMouseMove={handleToolTip(bin)}
+                  onMouseLeave={() => hideTooltip()}
                 />
               )),
             )
@@ -166,5 +215,21 @@ export const HeatMap = ({
         <AxisTop scale={xAxisScale} hideAxisLine={true} numTicks={nCols} />
       </Group>
     </svg>
+    {tooltipData && (
+      <TooltipWithBounds
+      key={Math.random()}
+      top={tooltipTop - 50}
+      left={tooltipLeft}
+
+    >
+      <Box width={100} height={100} sx={{backgroundColour: "blue"}}>
+            {
+            tooltipData.count.toString() + " " +
+            tooltipData.name.toString()}
+            </Box>
+          </TooltipWithBounds>
+)}
+    </>
   );
-};
+},
+)
