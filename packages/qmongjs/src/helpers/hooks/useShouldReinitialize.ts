@@ -51,5 +51,3 @@ export function useShouldReinitialize(
     queriesJustCompleted
   );
 }
-
-export default useShouldReinitialize;
