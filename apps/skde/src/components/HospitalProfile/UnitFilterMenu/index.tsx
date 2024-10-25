@@ -58,7 +58,7 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
   );
 
   useEffect(() => {
-    if (unitName !== selectedTreatmentUnits[0]) {
+    if (unitName && unitName !== selectedTreatmentUnits[0]) {
       setParentChangedUnit(true);
       parentChangedUnitRef.current = true;
     }
@@ -85,7 +85,6 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
     filterInput: Map<string, FilterSettingsValue[]>,
   ) => {
     const newUnit = filterInput.get(treatmentUnitsKey).map((el) => el.value);
-
     setUnitName(newUnit[0]);
   };
 
@@ -105,6 +104,10 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
       parentChangedUnitRef.current = false;
     }
   };
+
+  const currentUnitSelection = parentChangedUnit
+    ? [unitName]
+    : selectedTreatmentUnits;
 
   return (
     <ClickAwayListener onClickAway={() => setExpanded(false)}>
@@ -126,9 +129,9 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
         >
           <AccordionSummary sx={{ padding: 2 }}>
             <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
-              {selectedTreatmentUnits[0] === "Nasjonalt"
+              {currentUnitSelection[0] === "Nasjonalt"
                 ? "Velg behandlingssted"
-                : selectedTreatmentUnits[0]}
+                : currentUnitSelection[0]}
             </Typography>
             <Box sx={{ flexGrow: 1 }} />
             <CustomAccordionExpandIcon />
@@ -139,14 +142,13 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
               refreshState={shouldRefreshInitialState || parentChangedUnit}
               onSelectionChanged={handleChange}
               onFilterInitialized={initialiseFilter}
-              // shouldResetFilter={shouldResetFilter}
             >
               <TreeViewFilterSection
                 refreshState={shouldRefreshInitialState || parentChangedUnit}
                 treedata={treatmentUnits.treedata}
                 defaultvalues={treatmentUnits.defaults}
                 initialselections={
-                  selectedTreatmentUnits.map((value) => ({
+                  currentUnitSelection.map((value) => ({
                     value: value,
                     valueLabel: value,
                   })) as FilterSettingsValue[]
