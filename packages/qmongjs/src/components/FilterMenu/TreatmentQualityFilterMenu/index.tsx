@@ -40,7 +40,7 @@ import {
   getFilterSettingsValuesMap,
 } from "../TreeViewFilterSection";
 import { useMediaQuery, useTheme } from "@mui/material";
-import useShouldReinitialize from "../../../helpers/hooks/useShouldReinitialize";
+import { useShouldReinitialize } from "../../../helpers/hooks/useShouldReinitialize";
 
 // The keys used for the different filter sections
 export const tableContextKey = "context";
