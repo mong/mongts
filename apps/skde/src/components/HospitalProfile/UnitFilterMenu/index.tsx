@@ -58,11 +58,7 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
   );
 
   useEffect(() => {
-    console.log(
-      `unitName: ${unitName}, selectedTreatmentUnits[0]: ${selectedTreatmentUnits}`,
-    );
     if (unitName && unitName !== selectedTreatmentUnits[0]) {
-      console.log(`Setting selected treatment unit`);
       setParentChangedUnit(true);
       parentChangedUnitRef.current = true;
     }
