@@ -1,5 +1,6 @@
 export { useResizeObserver } from "./useResizeObserver";
 export { useEventListener } from "./useEventListener";
+export { useShouldReinitialize } from "./useShouldReinitialize";
 export {
   useDescriptionQuery,
   useIndicatorQuery,
@@ -9,6 +10,7 @@ export {
   useRegisterNamesQuery,
   useMedicalFieldsQuery,
   useUnitUrlsQuery,
+  useRegistryRankQuery,
   type FetchIndicatorParams,
 } from "./apihooks";
 export {
