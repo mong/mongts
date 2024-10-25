@@ -31,7 +31,7 @@ import { LayoutHead } from "../../src/components/LayoutHead";
 
 export const Skde = (): JSX.Element => {
   // States
-  const [unitName, setUnitName] = useState<string>();
+  const [unitName, setUnitName] = useState<string>("Nasjonalt");
   const [isMobileAndVertical, setIsMobileAndVertical] = useState<boolean>();
 
   // ############### //
