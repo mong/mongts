@@ -372,95 +372,6 @@ export function TreatmentQualityFilterMenu({
     return <></>;
   }
 
-  if (page === "heatmap") {
-    return (
-      <>
-        <FilterMenu
-          refreshState={shouldRefreshInitialState}
-          onSelectionChanged={handleFilterChanged}
-          onFilterInitialized={onFilterInitialized}
-        >
-          {enableTableContextSection ? (
-            <ToggleButtonFilterSection
-              accordion={false}
-              noShadow={true}
-              filterkey={tableContextKey}
-              sectionid={tableContextKey}
-              testIdPrefix={testIdPrefix}
-              sectiontitle="Tabellkontekst"
-              options={tableContextOptions.values}
-              defaultvalues={[tableContextOptions.default]}
-              initialselections={[
-                {
-                  value: selectedTableContext,
-                  valueLabel:
-                    selectedTableContext === "resident"
-                      ? "Opptaksområder"
-                      : "Behandlingsenheter",
-                },
-              ]}
-            />
-          ) : (
-            <></>
-          )}
-          <SelectedFiltersSection
-            accordion={false}
-            filterkey="selectedfilters"
-            sectionid="selectedfilters"
-            sectiontitle="Valgte filtre"
-          />
-          <TreeViewFilterSection
-            refreshState={shouldRefreshInitialState}
-            treedata={treatmentUnits.treedata}
-            defaultvalues={treatmentUnits.defaults}
-            initialselections={
-              selectedTreatmentUnits.map((value) => ({
-                value: value,
-                valueLabel: value,
-              })) as FilterSettingsValue[]
-            }
-            sectionid={treatmentUnitsKey}
-            sectiontitle={
-              selectedTableContext === "resident"
-                ? "Opptaksområder"
-                : "Behandlingsenheter"
-            }
-            filterkey={treatmentUnitsKey}
-            searchbox={true}
-            maxselections={maxSelectedTreatmentUnits}
-          />
-          <TreeViewFilterSection
-            refreshState={shouldRefreshInitialState}
-            treedata={medicalFields.treedata}
-            defaultvalues={medicalFields.defaults}
-            // Automatic clearing selections when "Alle fagområder" is clicked
-            // autouncheckid={medicalFields.defaults[0].value}
-            initialselections={
-              selectedMedicalFields?.map((value) => ({
-                value: value,
-                valueLabel: getValueLabel(value, medicalFieldsMap),
-              })) as FilterSettingsValue[]
-            }
-            sectionid={medicalFieldKey}
-            sectiontitle="Fagområder"
-            filterkey={medicalFieldKey}
-            searchbox={true}
-          />
-          <RadioGroupFilterSection
-            radios={yearOptions.values}
-            defaultvalues={[yearOptions.default]}
-            initialselections={[
-              { value: selectedYear, valueLabel: selectedYear },
-            ]}
-            sectiontitle={"År"}
-            sectionid={yearKey}
-            filterkey={yearKey}
-          />
-        </FilterMenu>
-      </>
-    );
-  }
-
   return (
     <>
       {!isRegisterPage && (!medicalFieldData || !registryNameData) && (
@@ -562,9 +473,10 @@ export function TreatmentQualityFilterMenu({
           sectiontitle={"Måloppnåelse"}
           sectionid={levelKey}
           filterkey={levelKey}
+          skip={page === "heatmap"}
         />
         <SwitchFilterSection
-          skip={isRegisterPage}
+          skip={isRegisterPage || page === "heatmap"}
           sectionid={dataQualityKey}
           filterkey={dataQualityKey}
           sectiontitle={"Datakvalitet"}
