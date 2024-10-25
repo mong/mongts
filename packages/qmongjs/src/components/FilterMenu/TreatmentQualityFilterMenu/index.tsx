@@ -62,6 +62,7 @@ export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   medicalFieldData: any;
   register?: string;
+  page?: string;
   enableTableContextSection?: boolean;
   testIdPrefix?: string;
 }>;
@@ -102,6 +103,7 @@ export function TreatmentQualityFilterMenu({
   register,
   enableTableContextSection = true,
   testIdPrefix,
+  page: page,
 }: TreatmentQualityFilterMenuProps) {
   const isRegisterPage = !!register;
   const selectedRegister = register ?? "all";
@@ -471,9 +473,10 @@ export function TreatmentQualityFilterMenu({
           sectiontitle={"Måloppnåelse"}
           sectionid={levelKey}
           filterkey={levelKey}
+          skip={page === "heatmap"}
         />
         <SwitchFilterSection
-          skip={isRegisterPage}
+          skip={isRegisterPage || page === "heatmap"}
           sectionid={dataQualityKey}
           filterkey={dataQualityKey}
           sectiontitle={"Datakvalitet"}
