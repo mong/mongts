@@ -6,6 +6,7 @@ export {
   useUnitUrlsQuery,
   useUnitNamesQuery,
   useRegistryRankQuery,
+  useShouldReinitialize,
 } from "./helpers/hooks";
 export {
   level,
