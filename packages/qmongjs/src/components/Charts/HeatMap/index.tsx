@@ -10,7 +10,6 @@ import { withTooltip, TooltipWithBounds } from "@visx/tooltip";
 import { WithTooltipProvidedProps } from "@visx/tooltip/lib/enhancers/withTooltip";
 import { Stack, Typography } from "@mui/material";
 import { localPoint } from "@visx/event";
-import { RectCell } from "@visx/heatmap/lib/heatmaps/HeatmapRect";
 
 type HeatMapBox = {
   bin: number;
@@ -148,38 +147,52 @@ export const HeatMap = withTooltip<HeatmapProps, HeatMapBox>(
       range: [0, width],
     });
 
-    const handleToolTip = (bin: RectCell<HeatMapColumn, unknown>) => {
-      return useCallback(
-        (
-          event:
-            | React.TouchEvent<SVGRectElement>
-            | React.MouseEvent<SVGRectElement>,
-        ) => {
-          // eslint-disable-next-line prefer-const
-          let { x, y } = localPoint(event) || { x: 0 }; // SVG cordinates
-          y = y ? y : 0;
+    const handleToolTip = useCallback(
+      (
+        event:
+          | React.TouchEvent<SVGRectElement>
+          | React.MouseEvent<SVGRectElement>,
+      ) => {
+        // eslint-disable-next-line prefer-const
+        let { x, y } = localPoint(event) || { x: 0, y: 0 }; // SVG cordinates
 
-          const data = bin.bin as HeatMapBox;
+        // Find the bin number from x and y coordinates.
+        let xStep = margin.left + binWidth;
+        let xInd = 0;
 
-          const selectedBox = {
-            bin: data.bin,
-            registry: data.registry,
-            registryShortName: data.registryShortName,
-            unitName: data.unitName,
-            indID: data.indID,
-            indTitle: data.indTitle,
-            count: data.count,
-          };
+        while (xStep < x) {
+          xStep += separation + binWidth;
+          xInd += 1;
+        }
 
-          showTooltip({
-            tooltipData: selectedBox,
-            tooltipLeft: x,
-            tooltipTop: y,
-          });
-        },
-        [showTooltip, xScale, yScale],
-      );
-    };
+        let yStep = margin.top + binWidth;
+        let yInd = 0;
+
+        while (yStep < y) {
+          yStep += separation + binWidth;
+          yInd += 1;
+        }
+
+        const data = heatmapData.data[xInd].bins[yInd];
+
+        const selectedBox = {
+          bin: data.bin,
+          registry: data.registry,
+          registryShortName: data.registryShortName,
+          unitName: data.unitName,
+          indID: data.indID,
+          indTitle: data.indTitle,
+          count: data.count,
+        };
+
+        showTooltip({
+          tooltipData: selectedBox,
+          tooltipLeft: x,
+          tooltipTop: y,
+        });
+      },
+      [showTooltip, xScale, yScale],
+    );
 
     return (
       <>
@@ -223,9 +236,9 @@ export const HeatMap = withTooltip<HeatmapProps, HeatMapBox>(
                           "_blank",
                         );
                       }}
-                      onTouchStart={handleToolTip(bin)}
-                      onTouchMove={handleToolTip(bin)}
-                      onMouseMove={handleToolTip(bin)}
+                      onTouchStart={handleToolTip}
+                      onTouchMove={handleToolTip}
+                      onMouseMove={handleToolTip}
                       onMouseLeave={() => hideTooltip()}
                       style={{
                         cursor: bin.count! >= 0 ? "pointer" : "default",
