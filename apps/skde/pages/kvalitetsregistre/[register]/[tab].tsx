@@ -1,35 +1,65 @@
 import { UseQueryResult } from "@tanstack/react-query";
-import { SelectedRegister } from "qmongjs";
-import { Layout } from "qmongjs";
 import { useRegisterNamesQuery, fetchRegisterNames } from "qmongjs";
 import { GetStaticProps, GetStaticPaths } from "next";
-import classNames from "../../../src/styles/Kvalitetsregistre.module.css";
+import { ThemeProvider } from "@mui/material";
+import { skdeTheme } from "qmongjs";
+import { PageWrapper } from "../../../src/components/StyledComponents/PageWrapper";
+import {
+  Header,
+  HeaderData,
+  BreadCrumbPath,
+} from "../../../src/components/Header";
 
-const SelectedRegisterPage = () => {
+const SelectedRegisterPage = ({ register }: { register: string }) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const registryNameQuery: UseQueryResult<any, unknown> =
     useRegisterNamesQuery();
   if (registryNameQuery.isLoading) {
     return null;
   }
-  const registerNames = registryNameQuery.data;
+
+  // Header settings
+  const breadcrumbs: BreadCrumbPath = {
+    path: [
+      {
+        link: "https://www.skde.no",
+        text: "Forside",
+      },
+      {
+        link: "https://www.skde.no/resultater/",
+        text: "Tall om helsetjenesten",
+      },
+      {
+        link: `/kvalitetsregistre/${register}`,
+        text: `Kvalitetsregistre/${register}`,
+      },
+    ],
+  };
+
+  const headerData: HeaderData = {
+    title: "Kvalitetsregistre",
+    subtitle: `Siden er flyttet til <em><a href="/behandlingskvalitet/${register}">behandlingskvalitet/${register}</a></em>.`,
+  };
+
   return (
-    <Layout>
-      <div
-        className={classNames.kvalitetsregister}
-        data-testid="SelectedRegister"
-      >
-        <SelectedRegister registerNames={registerNames || []} />
-      </div>
-    </Layout>
+    <ThemeProvider theme={skdeTheme}>
+      <PageWrapper>
+        <Header
+          bgcolor="surface2.light"
+          headerData={headerData}
+          breadcrumbs={breadcrumbs}
+        ></Header>
+      </PageWrapper>
+    </ThemeProvider>
   );
 };
 
 export default SelectedRegisterPage;
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (context) => {
+  const register = context.params?.register;
   return {
-    props: { content: [] },
+    props: { register },
   };
 };
 
