@@ -105,7 +105,7 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
     }
   };
 
-  const unitNamesForRefresh = parentChangedUnit
+  const currentUnitSelection = parentChangedUnit
     ? [unitName]
     : selectedTreatmentUnits;
 
@@ -129,9 +129,9 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
         >
           <AccordionSummary sx={{ padding: 2 }}>
             <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
-              {unitNamesForRefresh[0] === "Nasjonalt"
+              {currentUnitSelection[0] === "Nasjonalt"
                 ? "Velg behandlingssted"
-                : unitNamesForRefresh[0]}
+                : currentUnitSelection[0]}
             </Typography>
             <Box sx={{ flexGrow: 1 }} />
             <CustomAccordionExpandIcon />
@@ -148,7 +148,7 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
                 treedata={treatmentUnits.treedata}
                 defaultvalues={treatmentUnits.defaults}
                 initialselections={
-                  unitNamesForRefresh.map((value) => ({
+                  currentUnitSelection.map((value) => ({
                     value: value,
                     valueLabel: value,
                   })) as FilterSettingsValue[]
