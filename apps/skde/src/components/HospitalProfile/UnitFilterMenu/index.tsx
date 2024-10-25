@@ -58,7 +58,7 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
   );
 
   useEffect(() => {
-    if (unitName && unitName !== selectedTreatmentUnits[0]) {
+    if (unitName !== selectedTreatmentUnits[0]) {
       setParentChangedUnit(true);
       parentChangedUnitRef.current = true;
     }
