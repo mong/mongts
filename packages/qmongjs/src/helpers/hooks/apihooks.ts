@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { API_HOST } from "../../components/RegisterPage";
+
+const API_HOST = process.env.NEXT_PUBLIC_API_HOST ?? "http://localhost:4000"; //"https://qa-mong-api.skde.org";
+
 interface FetchDescriptionParams {
   registerShortName: string;
   type?: "ind" | "dg";
@@ -212,6 +214,28 @@ export const useMedicalFieldsQuery = () => {
   return useQuery({
     queryKey: [`medicalFields`],
     queryFn: () => fetchMedicalFields(),
+    staleTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    gcTime: 1000 * 60 * 60,
+  });
+};
+
+const fetchRegistryRanks = async (year?: number) => {
+  const yearQuery: string = year ? `year=${year}&` : "";
+
+  const response = await fetch(`${API_HOST}/data/registryRank?${yearQuery}`);
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json();
+};
+
+export const useRegistryRankQuery = (year?: number) => {
+  return useQuery({
+    queryKey: ["registryRank", year],
+    queryFn: () => fetchRegistryRanks(year),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
     gcTime: 1000 * 60 * 60,

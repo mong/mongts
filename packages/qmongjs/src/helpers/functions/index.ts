@@ -1,4 +1,3 @@
-export { mathClamp } from "./mathClamp";
 export { validateTreatmentUnits } from "./validateTreatmentUnits";
 export { filterOrderIndID } from "./filterorderindid";
 export { imgLoader } from "./imgLoader";

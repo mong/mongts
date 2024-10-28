@@ -16,7 +16,7 @@ const anyQueriesLoading = (queries: UseQueryResult<any, unknown>[]) => {
  * @param queries An array of tanstack queries of type UseQueryResults
  * @returns True the first time the page is finished hydrated and all queries have finished loading
  */
-export default function useShouldReinitialize(
+export function useShouldReinitialize(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   queries: UseQueryResult<any, unknown>[],
 ) {
