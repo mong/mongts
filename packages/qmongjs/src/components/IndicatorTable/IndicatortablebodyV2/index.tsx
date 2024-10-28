@@ -164,7 +164,7 @@ const IndicatorRow = (props: {
       result: row.var !== null ? customFormat(format)(row.var) : undefined,
       symbol: newLevelSymbols(level2(indData, row)),
       showCell:
-        levels === ""
+        levels === undefined
           ? true
           : level2(indData, row) == null
             ? true
@@ -288,9 +288,9 @@ const IndicatorRow = (props: {
 
           const cellAlpha = 0.3;
           const cellOpacity =
-            levels === ""
+            levels === undefined
               ? 1
-              : levels !== "" && lowDG
+              : levels !== undefined && lowDG
                 ? cellAlpha
                 : row?.showCell && !lowDG
                   ? 1
@@ -411,7 +411,7 @@ const IndicatorSection = (props: {
   // one indicator not removed by the filter
   return data.map((indDataRow) => {
     const showRow =
-      levels === ""
+      levels === undefined
         ? true
         : indDataRow.data &&
             indDataRow.data
@@ -468,7 +468,7 @@ const RegistrySection = (props: {
 
   let showSection;
 
-  if (levels === "") {
+  if (levels === undefined) {
     showSection = true;
   } else {
     showSection = !regData.indicatorData
