@@ -65,7 +65,18 @@ export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   page?: string;
   enableTableContextSection?: boolean;
   testIdPrefix?: string;
+  skipSections?: SkipSections;
 }>;
+
+export interface SkipSections {
+  selectedFilters?: boolean;
+  context?: boolean;
+  years?: boolean;
+  achievmentLevels?: boolean;
+  medicalFields?: boolean;
+  treatmentUnits?: boolean;
+  dataQuality?: boolean;
+}
 
 // Types defined because of useQueryParam
 type SetSelectedType = (
@@ -103,7 +114,8 @@ export function TreatmentQualityFilterMenu({
   register,
   enableTableContextSection = true,
   testIdPrefix,
-  page: page,
+  page,
+  skipSections,
 }: TreatmentQualityFilterMenuProps) {
   const isRegisterPage = !!register;
   const selectedRegister = register ?? "all";
@@ -387,7 +399,7 @@ export function TreatmentQualityFilterMenu({
         <ToggleButtonFilterSection
           accordion={false}
           noShadow={true}
-          skip={!enableTableContextSection}
+          skip={!enableTableContextSection || skipSections?.context}
           filterkey={tableContextKey}
           sectionid={tableContextKey}
           testIdPrefix={testIdPrefix}
@@ -410,6 +422,7 @@ export function TreatmentQualityFilterMenu({
           filterkey="selectedfilters"
           sectionid="selectedfilters"
           sectiontitle="Valgte filtre"
+          skip={skipSections?.selectedFilters}
         />
         <TreeViewFilterSection
           refreshState={shouldRefreshInitialState}
@@ -430,9 +443,10 @@ export function TreatmentQualityFilterMenu({
           filterkey={treatmentUnitsKey}
           searchbox={true}
           maxselections={maxSelectedTreatmentUnits}
+          skip={skipSections?.treatmentUnits}
         />
         <TreeViewFilterSection
-          skip={isRegisterPage}
+          skip={isRegisterPage || skipSections?.medicalFields}
           refreshState={shouldRefreshInitialState}
           treedata={medicalFields.treedata}
           defaultvalues={medicalFields.defaults}
@@ -458,6 +472,7 @@ export function TreatmentQualityFilterMenu({
           sectiontitle={"År"}
           sectionid={yearKey}
           filterkey={yearKey}
+          skip={skipSections?.years}
         />
         <RadioGroupFilterSection
           radios={achievementLevelOptions.values}
@@ -473,10 +488,12 @@ export function TreatmentQualityFilterMenu({
           sectiontitle={"Måloppnåelse"}
           sectionid={levelKey}
           filterkey={levelKey}
-          skip={page === "heatmap"}
+          skip={page === "heatmap" || skipSections?.achievmentLevels}
         />
         <SwitchFilterSection
-          skip={isRegisterPage || page === "heatmap"}
+          skip={
+            isRegisterPage || page === "heatmap" || skipSections?.dataQuality
+          }
           sectionid={dataQualityKey}
           filterkey={dataQualityKey}
           sectiontitle={"Datakvalitet"}
