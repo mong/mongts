@@ -159,6 +159,7 @@ export const Skde = (): JSX.Element => {
             width={Math.min(400, 0.8 * width)}
             setUnitName={setUnitName}
             unitNamesQuery={unitNamesQuery}
+            unitName={unitName}
           />
         </Header>
 
