@@ -45,9 +45,11 @@ import valueOrDefault from "./utils/valueOrDefault";
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
-  const registryName = registryInfo[0].rname;
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const registryName = registryInfo[0].rname;
+  const skipTableContextSection =
+    registryInfo[0].resident_data + registryInfo[0].caregiver_data !== 2;
 
   useEffect(() => {
     setMounted(true);
@@ -209,11 +211,9 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                   registryNameData={registryInfo}
                   medicalFieldData={[]}
                   register={registryName}
-                  enableTableContextSection={
-                    registryInfo[0].resident_data +
-                      registryInfo[0].caregiver_data ==
-                    2
-                  }
+                  skipSections={{
+                    context: skipTableContextSection,
+                  }}
                 />
                 <Divider />
               </Box>

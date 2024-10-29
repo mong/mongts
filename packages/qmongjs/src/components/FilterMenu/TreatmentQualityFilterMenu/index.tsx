@@ -62,10 +62,9 @@ export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   medicalFieldData: any;
   register?: string;
-  page?: string;
-  enableTableContextSection?: boolean;
   testIdPrefix?: string;
   skipSections?: SkipSections;
+  treatmentUnitSelectionLimit?: number;
 }>;
 
 export interface SkipSections {
@@ -112,10 +111,9 @@ export function TreatmentQualityFilterMenu({
   registryNameData,
   medicalFieldData,
   register,
-  enableTableContextSection = true,
   testIdPrefix,
-  page,
   skipSections,
+  treatmentUnitSelectionLimit,
 }: TreatmentQualityFilterMenuProps) {
   const isRegisterPage = !!register;
   const selectedRegister = register ?? "all";
@@ -125,11 +123,11 @@ export function TreatmentQualityFilterMenu({
 
   useEffect(() => setMounted(true), []);
 
-  // Restrict max number of treatment units for small view sizes
+  // Restrict max number of treatment units
   const theme = useTheme();
-  const maxSelectedTreatmentUnits = useMediaQuery(theme.breakpoints.down("md"))
-    ? 5
-    : 10;
+  const maxSelectedTreatmentUnits =
+    treatmentUnitSelectionLimit ??
+    (useMediaQuery(theme.breakpoints.down("md")) ? 5 : 10);
 
   // Map for filter options, defaults, and query parameter values and setters
   const optionsMap = new Map<string, OptionsMapEntry>();
@@ -168,6 +166,7 @@ export function TreatmentQualityFilterMenu({
 
     listOfYears = selectionYearQuery.data as [number];
   }
+
   // Year selection
   const yearOptions = listOfYears
     ? getYearOptions(Math.min(...listOfYears), Math.max(...listOfYears))
@@ -386,11 +385,6 @@ export function TreatmentQualityFilterMenu({
 
   return (
     <>
-      {!isRegisterPage && (!medicalFieldData || !registryNameData) && (
-        <Alert severity="error">
-          Det oppstod en feil ved henting av fagområder og registre!
-        </Alert>
-      )}
       <FilterMenu
         refreshState={shouldRefreshInitialState}
         onSelectionChanged={handleFilterChanged}
@@ -399,7 +393,7 @@ export function TreatmentQualityFilterMenu({
         <ToggleButtonFilterSection
           accordion={false}
           noShadow={true}
-          skip={!enableTableContextSection || skipSections?.context}
+          skip={skipSections?.context}
           filterkey={tableContextKey}
           sectionid={tableContextKey}
           testIdPrefix={testIdPrefix}
@@ -488,12 +482,10 @@ export function TreatmentQualityFilterMenu({
           sectiontitle={"Måloppnåelse"}
           sectionid={levelKey}
           filterkey={levelKey}
-          skip={page === "heatmap" || skipSections?.achievmentLevels}
+          skip={skipSections?.achievmentLevels}
         />
         <SwitchFilterSection
-          skip={
-            isRegisterPage || page === "heatmap" || skipSections?.dataQuality
-          }
+          skip={isRegisterPage || skipSections?.dataQuality}
           sectionid={dataQualityKey}
           filterkey={dataQualityKey}
           sectiontitle={"Datakvalitet"}
