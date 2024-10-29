@@ -22,7 +22,7 @@ export type LinechartData = {
   y: number;
 };
 
-type lineStyle = {
+export type lineStyle = {
   text: string;
   strokeDash: string;
   colour: string;
@@ -77,7 +77,7 @@ const tooltipStyles = {
   color: "white",
 };
 
-type LinechartBaseProps = {
+export type LinechartBaseProps = {
   data: LinechartData[][];
   width: number;
   height: number;
