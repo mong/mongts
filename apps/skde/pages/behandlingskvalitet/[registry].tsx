@@ -85,20 +85,22 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     mainQueryParamsConfig.selected_row,
   )[0];
 
-  const registryRankQuery = useRegistryRankQuery(defaultYear);
-
   let registryRank = "NA";
-
-  if (registryRankQuery.isFetched) {
+  if (!process.env.NEXT_PUBLIC_VERIFY) {
     // Fetch the registry's stage and level
-    const registryRankData = registryRankQuery.data as RegistryRank[];
+    const registryRankQuery = useRegistryRankQuery(defaultYear);
 
-    const filteredRegistryRank = registryRankData.filter(
-      (row: RegistryRank) => row.name === registryName,
-    );
+    if (registryRankQuery.isFetched) {
+      // Fetch the registry's stage and level
+      const registryRankData = registryRankQuery.data as RegistryRank[];
 
-    if (filteredRegistryRank[0]) {
-      registryRank = filteredRegistryRank[0].verdict;
+      const filteredRegistryRank = registryRankData.filter(
+        (row: RegistryRank) => row.name === registryName,
+      );
+
+      if (filteredRegistryRank[0]) {
+        registryRank = filteredRegistryRank[0].verdict;
+      }
     }
   }
 
@@ -198,6 +200,18 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     return null;
   }
 
+  const subtitle = process.env.NEXT_PUBLIC_VERIFY
+    ? "Resultater fra " + registryInfo[0].full_name
+    : "Resultater fra " +
+      registryInfo[0].full_name +
+      "<br/>" +
+      `<a href="https://www.kvalitetsregistre.no/stadieinndeling">Stadium og nivå </a> for ` +
+      defaultYear +
+      ": " +
+      "<b>" +
+      registryRank +
+      "</b>";
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
@@ -212,17 +226,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
           extraBreadcrumbs={[
             { link: registryName, text: registryInfo[0].short_name },
           ]}
-          subtitle={
-            "Resultater fra " +
-            registryInfo[0].full_name +
-            "<br/>" +
-            `<a href="https://www.kvalitetsregistre.no/stadieinndeling">Stadium og nivå </a> for ` +
-            defaultYear +
-            ": " +
-            "<b>" +
-            registryRank +
-            "</b>"
-          }
+          subtitle={subtitle}
         />
         <Grid container size={{ xs: 12 }}>
           {isXxlScreen ? ( // Permanent menu on large screens
