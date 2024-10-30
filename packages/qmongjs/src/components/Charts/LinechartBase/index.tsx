@@ -98,7 +98,7 @@ export type LinechartBaseProps = {
   showLegend?: boolean;
   circleRadius?: number;
   individualPointColour?: boolean;
-  nGridLines: number;
+  nGridLines?: number;
 };
 
 type ToolTipBoxProps = {
