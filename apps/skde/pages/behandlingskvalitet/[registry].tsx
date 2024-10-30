@@ -206,6 +206,9 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     ? "Resultater fra " + registryInfo[0].full_name
     : "Resultater fra " +
       registryInfo[0].full_name +
+      '. Se <a href="' +
+      registryInfo[0].url +
+      '" target="_blank">kvalitetsregistre.no</a> for mer informasjon.' +
       "<br/>" +
       `<a href="https://www.kvalitetsregistre.no/stadieinndeling">Stadium og nivå </a> for ` +
       defaultYear +
@@ -228,20 +231,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
           extraBreadcrumbs={[
             { link: registryName, text: registryInfo[0].short_name },
           ]}
-          subtitle={
-            "Resultater fra " +
-            registryInfo[0].full_name +
-            '. Se <a href="' +
-            registryInfo[0].url +
-            '" target="_blank">kvalitetsregistre.no</a> for mer informasjon.' +
-            "<br/>" +
-            `<a href="https://www.kvalitetsregistre.no/stadieinndeling">Stadium og nivå </a> for ` +
-            defaultYear +
-            ": " +
-            "<b>" +
-            registryRank +
-            "</b>"
-          }
+          subtitle={subtitle}
         />
         <Grid container size={{ xs: 12 }}>
           {isXxlScreen ? ( // Permanent menu on large screens
