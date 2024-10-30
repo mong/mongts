@@ -76,8 +76,8 @@ const Stadiumfigur = () => {
   const linechartProps = {
     data: [plotData],
     lineStyles: lineStyles,
-    width: 1000,
-    height: 1000,
+    width: 800,
+    height: 600,
     yAxisText: yAxisText,
     yMin: 1,
     yMax: 4,
