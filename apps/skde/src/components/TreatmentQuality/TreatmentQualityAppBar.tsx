@@ -1,29 +1,24 @@
 import { AppBar, styled } from "@mui/material";
 import { TreatmentQualityToolbar } from "./TreatmentQualityToolbar";
-import { Header, HeaderData, BreadCrumbPath } from "../Header";
+import { Header, BreadCrumbPath } from "../Header";
+import { PropsWithChildren } from "react";
 
 const StyledAppBar = styled(AppBar)(() => ({
   elevation: 0,
 }));
 
-type AppBarProps = {
+type AppBarProps = PropsWithChildren<{
   openDrawer: () => void;
   title?: string;
-  subtitle?: string;
   extraBreadcrumbs?: { link: string; text: string }[];
-};
+}>;
 
 const TreatmentQualityAppBar = ({
   openDrawer,
   title = "Behandlingskvalitet",
-  subtitle = 'Resultater fra nasjonale medisinske kvalitetsregistre. Se <a href="https://www.kvalitetsregistre.no/" target="_blank">kvalitetsregistre.no</a> for mer informasjon.',
   extraBreadcrumbs,
+  children,
 }: AppBarProps) => {
-  const headerData: HeaderData = {
-    title: title,
-    subtitle: subtitle,
-  };
-
   const breadcrumbs: BreadCrumbPath = {
     path: [
       { link: "https://www.skde.no", text: "Forside" },
@@ -41,7 +36,7 @@ const TreatmentQualityAppBar = ({
 
   return (
     <>
-      <Header headerData={headerData} breadcrumbs={breadcrumbs} />
+      <Header title={title} breadcrumbs={breadcrumbs} children={children} />
       <StyledAppBar position="sticky" elevation={0}>
         <TreatmentQualityToolbar openDrawer={openDrawer} />
       </StyledAppBar>

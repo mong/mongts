@@ -9,7 +9,7 @@ import {
   useUnitNamesQuery,
 } from "qmongjs";
 import { BreadCrumbPath } from "../../src/components/Header";
-import { Header, HeaderData } from "../../src/components/Header";
+import { Header } from "../../src/components/Header";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { HeatMapFilterMenu } from "../../src/components/HeatMap/HeatMapFilterMenu";
 import { RegisterName, Medfield, NestedTreatmentUnitName } from "types";
@@ -56,12 +56,6 @@ export const Skde = (): JSX.Element => {
         text: "Varmekart",
       },
     ],
-  };
-
-  const headerData: HeaderData = {
-    title: "Varmekart",
-    subtitle:
-      "Her vises alle kvalitetsindikatorer fra nasjonale medisinske kvalitetsregistre i et varmekart",
   };
 
   // ################### //
@@ -153,10 +147,13 @@ export const Skde = (): JSX.Element => {
     <ThemeProvider theme={skdeTheme}>
       <Header
         bgcolor="surface2.light"
-        headerData={headerData}
+        title={"Varmekart"}
         breadcrumbs={breadcrumbs}
         maxWidth={false}
-      />
+      >
+        Her vises alle kvalitetsindikatorer fra nasjonale medisinske
+        kvalitetsregistre i et varmekart.
+      </Header>
 
       <Stack direction="row" spacing={2} sx={{ marginLeft: 2, marginTop: 2 }}>
         <Button variant="contained" onClick={() => setDrawerOpen(true)}>

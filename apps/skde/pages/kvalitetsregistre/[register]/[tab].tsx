@@ -4,11 +4,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import { ThemeProvider } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 import { PageWrapper } from "../../../src/components/StyledComponents/PageWrapper";
-import {
-  Header,
-  HeaderData,
-  BreadCrumbPath,
-} from "../../../src/components/Header";
+import { Header, BreadCrumbPath } from "../../../src/components/Header";
 
 const SelectedRegisterPage = ({ register }: { register: string }) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -36,19 +32,22 @@ const SelectedRegisterPage = ({ register }: { register: string }) => {
     ],
   };
 
-  const headerData: HeaderData = {
-    title: "Kvalitetsregistre",
-    subtitle: `Siden er flyttet til <em><a href="/behandlingskvalitet/${register}">behandlingskvalitet/${register}</a></em>.`,
-  };
-
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
         <Header
           bgcolor="surface2.light"
-          headerData={headerData}
+          title={"Kvalitetsregistre"}
           breadcrumbs={breadcrumbs}
-        ></Header>
+        >
+          Siden er flyttet til{" "}
+          <em>
+            <a href="/behandlingskvalitet/${register}">
+              behandlingskvalitet/${register}
+            </a>
+          </em>
+          .
+        </Header>
       </PageWrapper>
     </ThemeProvider>
   );
