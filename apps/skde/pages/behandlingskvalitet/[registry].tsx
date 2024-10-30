@@ -27,6 +27,7 @@ import {
   IndicatorTableBodyV2,
   skdeTheme,
   fetchRegisterNames,
+  useRegistryRankQuery,
 } from "qmongjs";
 import { useSearchParams } from "next/navigation";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
@@ -40,8 +41,9 @@ import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
 import scrollToSelectedRow from "./utils/scrollToSelectedRow";
-import { RegisterName } from "types";
+import { RegisterName, RegistryRank } from "types";
 import valueOrDefault from "./utils/valueOrDefault";
+import { LayoutHead } from "../../src/components/LayoutHead";
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
@@ -82,6 +84,23 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     "selected_row",
     mainQueryParamsConfig.selected_row,
   )[0];
+
+  const registryRankQuery = useRegistryRankQuery(defaultYear);
+
+  let registryRank = "NA";
+
+  if (registryRankQuery.isFetched) {
+    // Fetch the registry's stage and level
+    const registryRankData = registryRankQuery.data as RegistryRank[];
+
+    const filteredRegistryRank = registryRankData.filter(
+      (row: RegistryRank) => row.name === registryName,
+    );
+
+    if (filteredRegistryRank[0]) {
+      registryRank = filteredRegistryRank[0].verdict;
+    }
+  }
 
   /**
    * Handle that the initial filter settings are loaded, which can happen
@@ -183,6 +202,11 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
       <PageWrapper>
+        <LayoutHead
+          title="Behandlingskvalitet"
+          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
+          href="/favicon.ico"
+        />
         <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
           extraBreadcrumbs={[
@@ -193,7 +217,14 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
             registryInfo[0].full_name +
             '. Se <a href="' +
             registryInfo[0].url +
-            '" target="_blank">kvalitetsregistre.no</a> for mer informasjon.'
+            '" target="_blank">kvalitetsregistre.no</a> for mer informasjon.' +
+            "<br/>" +
+            `<a href="https://www.kvalitetsregistre.no/stadieinndeling">Stadium og nivå </a> for ` +
+            defaultYear +
+            ": " +
+            "<b>" +
+            registryRank +
+            "</b>"
           }
         />
         <Grid container size={{ xs: 12 }}>
