@@ -196,7 +196,6 @@ export const Skde = (): JSX.Element => {
       <HeatMapFilterMenu
         registryNameData={registers}
         medicalFieldData={medicalFields}
-        page="heatmap"
         drawerOpen={drawerOpen}
         toggleDrawer={toggleDrawer}
         setSelectedYear={setSelectedYear}
