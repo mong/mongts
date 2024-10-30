@@ -204,8 +204,8 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
   }
 
   const subtitle = (
-    <Box>
-      Resultater fra {registryInfo[0].full_name}. &nbsp;
+    <>
+      Resultater fra {registryInfo[0].full_name}.{" "}
       {!process.env.NEXT_PUBLIC_VERIFY && (
         <>
           Se{" "}
@@ -223,7 +223,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
           for {defaultYear}: <b>{registryRank}</b>
         </>
       )}
-    </Box>
+    </>
   );
 
   return (
@@ -241,7 +241,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
             { link: registryName, text: registryInfo[0].short_name },
           ]}
         >
-          <Box>{subtitle}</Box>
+          {subtitle}
         </TreatmentQualityAppBar>
         <Grid container size={{ xs: 12 }}>
           {isXxlScreen ? ( // Permanent menu on large screens
