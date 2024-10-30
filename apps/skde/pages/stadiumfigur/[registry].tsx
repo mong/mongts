@@ -84,6 +84,7 @@ const Stadiumfigur = () => {
     numYTicks: 4,
     circleRadius: 7,
     individualPointColour: true,
+    nGridLines: 3,
   } as LinechartBaseProps;
 
   return (

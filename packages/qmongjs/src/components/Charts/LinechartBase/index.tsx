@@ -98,6 +98,7 @@ export type LinechartBaseProps = {
   showLegend?: boolean;
   circleRadius?: number;
   individualPointColour?: boolean;
+  nGridLines: number;
 };
 
 type ToolTipBoxProps = {
@@ -184,6 +185,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
     tooltipLeft = 0,
     circleRadius = 3,
     individualPointColour,
+    nGridLines = 5,
   }: LinechartBaseProps & WithTooltipProvidedProps<LinechartData>) => {
     // data accessors
     const getX = (d: LinechartData) => d.x;
@@ -396,14 +398,13 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
           {background}
           <Group>
             <GridRows
-              numTicks={5}
+              numTicks={nGridLines}
               scale={yScale}
               left={xScale(xMin)}
               width={xScale(xMax) - xScale(xMin)}
               height={yMax}
               stroke="#989898"
             />
-
             <AxisBottom
               scale={xScale}
               top={yScale.range()[0]}
