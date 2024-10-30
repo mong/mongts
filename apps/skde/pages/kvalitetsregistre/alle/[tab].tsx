@@ -1,12 +1,8 @@
 import { GetStaticProps, GetStaticPaths } from "next";
-import { ThemeProvider } from "@mui/material";
+import { Link, ThemeProvider } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 import { PageWrapper } from "../../../src/components/StyledComponents/PageWrapper";
-import {
-  Header,
-  HeaderData,
-  BreadCrumbPath,
-} from "../../../src/components/Header";
+import { Header, BreadCrumbPath } from "../../../src/components/Header";
 
 const MainRegisterPage = () => {
   // Header settings
@@ -27,19 +23,17 @@ const MainRegisterPage = () => {
     ],
   };
 
-  const headerData: HeaderData = {
-    title: "Kvalitetsregistre",
-    subtitle: `Siden er flyttet til <em><a href="/behandlingskvalitet/">behandlingskvalitet</a></em>.`,
-  };
-
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
         <Header
           bgcolor="surface2.light"
-          headerData={headerData}
+          title={"Kvalitetsregistre"}
           breadcrumbs={breadcrumbs}
-        ></Header>
+        >
+          Siden er flyttet til{" "}
+          <Link href="/behandlingskvalitet/">behandlingskvalitet</Link>.
+        </Header>
       </PageWrapper>
     </ThemeProvider>
   );

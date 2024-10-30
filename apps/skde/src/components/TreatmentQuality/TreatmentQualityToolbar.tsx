@@ -7,8 +7,6 @@ import Grid from "@mui/material/Grid2";
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
   color: theme.palette.primary.dark,
-  paddingTop: theme.spacing(2),
-  paddingBottom: 0,
 }));
 
 type StickyToolbarProps = {

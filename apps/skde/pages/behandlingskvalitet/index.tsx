@@ -4,6 +4,7 @@ import {
   CssBaseline,
   Divider,
   IconButton,
+  Link,
   ThemeProvider,
   Typography,
   useMediaQuery,
@@ -245,7 +246,17 @@ export default function TreatmentQualityPage() {
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
           href="/favicon.ico"
         />
-        <TreatmentQualityAppBar openDrawer={() => toggleDrawer(true)} />
+        <TreatmentQualityAppBar openDrawer={() => toggleDrawer(true)}>
+          Resultater fra nasjonale medisinske kvalitetsregistre. Se{" "}
+          <Link
+            href="https://www.kvalitetsregistre.no/"
+            target="_blank"
+            rel="noopener"
+          >
+            kvalitetsregistre.no
+          </Link>{" "}
+          for mer informasjon.
+        </TreatmentQualityAppBar>
         <Grid container size={{ xs: 12 }}>
           {isXxlScreen ? ( // Permanent menu on large screens
             <Grid size={{ xxl: 4, xxml: 3, xxxl: 2 }} className="menu-wrapper">
