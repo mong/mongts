@@ -1,7 +1,7 @@
 import { UseQueryResult } from "@tanstack/react-query";
 import { useRegisterNamesQuery, fetchRegisterNames } from "qmongjs";
 import { GetStaticProps, GetStaticPaths } from "next";
-import { ThemeProvider } from "@mui/material";
+import { Link, ThemeProvider } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 import { PageWrapper } from "../../../src/components/StyledComponents/PageWrapper";
 import { Header, BreadCrumbPath } from "../../../src/components/Header";
@@ -41,11 +41,9 @@ const SelectedRegisterPage = ({ register }: { register: string }) => {
           breadcrumbs={breadcrumbs}
         >
           Siden er flyttet til{" "}
-          <em>
-            <a href="/behandlingskvalitet/${register}">
-              behandlingskvalitet/${register}
-            </a>
-          </em>
+          <Link href={`/behandlingskvalitet/${register}`}>
+            behandlingskvalitet/{register}
+          </Link>
           .
         </Header>
       </PageWrapper>

@@ -1,5 +1,5 @@
 import { GetStaticProps, GetStaticPaths } from "next";
-import { ThemeProvider, Typography } from "@mui/material";
+import { Link, ThemeProvider } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 import { PageWrapper } from "../../../src/components/StyledComponents/PageWrapper";
 import { Header, BreadCrumbPath } from "../../../src/components/Header";
@@ -31,13 +31,8 @@ const MainRegisterPage = () => {
           title={"Kvalitetsregistre"}
           breadcrumbs={breadcrumbs}
         >
-          <Typography>
-            Siden er flyttet til{" "}
-            <em>
-              <a href="/behandlingskvalitet/">behandlingskvalitet</a>
-            </em>
-            .
-          </Typography>
+          Siden er flyttet til{" "}
+          <Link href="/behandlingskvalitet/">behandlingskvalitet</Link>.
         </Header>
       </PageWrapper>
     </ThemeProvider>
