@@ -27,6 +27,7 @@ import {
   IndicatorTableBodyV2,
   skdeTheme,
   fetchRegisterNames,
+  useRegistryRankQuery,
 } from "qmongjs";
 import { useSearchParams } from "next/navigation";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
@@ -40,14 +41,17 @@ import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
 import scrollToSelectedRow from "./utils/scrollToSelectedRow";
-import { RegisterName } from "types";
+import { RegisterName, RegistryRank } from "types";
 import valueOrDefault from "./utils/valueOrDefault";
+import { LayoutHead } from "../../src/components/LayoutHead";
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
-  const registryName = registryInfo[0].rname;
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const registryName = registryInfo[0].rname;
+  const skipTableContextSection =
+    registryInfo[0].resident_data + registryInfo[0].caregiver_data !== 2;
 
   useEffect(() => {
     setMounted(true);
@@ -82,6 +86,25 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     "selected_row",
     mainQueryParamsConfig.selected_row,
   )[0];
+
+  let registryRank = "NA";
+  if (!process.env.NEXT_PUBLIC_VERIFY) {
+    // Fetch the registry's stage and level
+    const registryRankQuery = useRegistryRankQuery(defaultYear);
+
+    if (registryRankQuery.isFetched) {
+      // Fetch the registry's stage and level
+      const registryRankData = registryRankQuery.data as RegistryRank[];
+
+      const filteredRegistryRank = registryRankData.filter(
+        (row: RegistryRank) => row.name === registryName,
+      );
+
+      if (filteredRegistryRank[0]) {
+        registryRank = filteredRegistryRank[0].verdict;
+      }
+    }
+  }
 
   /**
    * Handle that the initial filter settings are loaded, which can happen
@@ -179,16 +202,33 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     return null;
   }
 
+  const subtitle = process.env.NEXT_PUBLIC_VERIFY
+    ? "Resultater fra " + registryInfo[0].full_name
+    : "Resultater fra " +
+      registryInfo[0].full_name +
+      "<br/>" +
+      `<a href="https://www.kvalitetsregistre.no/stadieinndeling">Stadium og nivå </a> for ` +
+      defaultYear +
+      ": " +
+      "<b>" +
+      registryRank +
+      "</b>";
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
       <PageWrapper>
+        <LayoutHead
+          title="Behandlingskvalitet"
+          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
+          href="/favicon.ico"
+        />
         <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
           extraBreadcrumbs={[
             { link: registryName, text: registryInfo[0].short_name },
           ]}
-          subtitle={"Resultater fra " + registryInfo[0].full_name}
+          subtitle={subtitle}
         />
         <Grid container size={{ xs: 12 }}>
           {isXxlScreen ? ( // Permanent menu on large screens
@@ -209,11 +249,9 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                   registryNameData={registryInfo}
                   medicalFieldData={[]}
                   register={registryName}
-                  enableTableContextSection={
-                    registryInfo[0].resident_data +
-                      registryInfo[0].caregiver_data ==
-                    2
-                  }
+                  skipSections={{
+                    context: skipTableContextSection,
+                  }}
                 />
                 <Divider />
               </Box>

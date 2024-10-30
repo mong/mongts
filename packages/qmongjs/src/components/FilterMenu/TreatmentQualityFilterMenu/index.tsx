@@ -32,7 +32,6 @@ import {
   useUnitNamesQuery,
   useSelectionYearsQuery,
 } from "../../../helpers/hooks";
-import Alert from "@mui/material/Alert";
 import { UseQueryResult } from "@tanstack/react-query";
 import {
   TreeViewFilterSectionNode,
@@ -40,7 +39,7 @@ import {
   getFilterSettingsValuesMap,
 } from "../TreeViewFilterSection";
 import { useMediaQuery, useTheme } from "@mui/material";
-import useShouldReinitialize from "../../../helpers/hooks/useShouldReinitialize";
+import { useShouldReinitialize } from "../../../helpers/hooks/useShouldReinitialize";
 
 // The keys used for the different filter sections
 export const tableContextKey = "context";
@@ -62,9 +61,20 @@ export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   medicalFieldData: any;
   register?: string;
-  enableTableContextSection?: boolean;
   testIdPrefix?: string;
+  skipSections?: SkipSections;
+  treatmentUnitSelectionLimit?: number;
 }>;
+
+export interface SkipSections {
+  selectedFilters?: boolean;
+  context?: boolean;
+  years?: boolean;
+  achievmentLevels?: boolean;
+  medicalFields?: boolean;
+  treatmentUnits?: boolean;
+  dataQuality?: boolean;
+}
 
 // Types defined because of useQueryParam
 type SetSelectedType = (
@@ -100,8 +110,9 @@ export function TreatmentQualityFilterMenu({
   registryNameData,
   medicalFieldData,
   register,
-  enableTableContextSection = true,
   testIdPrefix,
+  skipSections,
+  treatmentUnitSelectionLimit,
 }: TreatmentQualityFilterMenuProps) {
   const isRegisterPage = !!register;
   const selectedRegister = register ?? "all";
@@ -111,11 +122,11 @@ export function TreatmentQualityFilterMenu({
 
   useEffect(() => setMounted(true), []);
 
-  // Restrict max number of treatment units for small view sizes
+  // Restrict max number of treatment units
   const theme = useTheme();
-  const maxSelectedTreatmentUnits = useMediaQuery(theme.breakpoints.down("md"))
-    ? 5
-    : 10;
+  const maxSelectedTreatmentUnits =
+    treatmentUnitSelectionLimit ??
+    (useMediaQuery(theme.breakpoints.down("md")) ? 5 : 10);
 
   // Map for filter options, defaults, and query parameter values and setters
   const optionsMap = new Map<string, OptionsMapEntry>();
@@ -154,6 +165,7 @@ export function TreatmentQualityFilterMenu({
 
     listOfYears = selectionYearQuery.data as [number];
   }
+
   // Year selection
   const yearOptions = listOfYears
     ? getYearOptions(Math.min(...listOfYears), Math.max(...listOfYears))
@@ -372,11 +384,6 @@ export function TreatmentQualityFilterMenu({
 
   return (
     <>
-      {!isRegisterPage && (!medicalFieldData || !registryNameData) && (
-        <Alert severity="error">
-          Det oppstod en feil ved henting av fagområder og registre!
-        </Alert>
-      )}
       <FilterMenu
         refreshState={shouldRefreshInitialState}
         onSelectionChanged={handleFilterChanged}
@@ -385,7 +392,7 @@ export function TreatmentQualityFilterMenu({
         <ToggleButtonFilterSection
           accordion={false}
           noShadow={true}
-          skip={!enableTableContextSection}
+          skip={skipSections?.context}
           filterkey={tableContextKey}
           sectionid={tableContextKey}
           testIdPrefix={testIdPrefix}
@@ -408,6 +415,7 @@ export function TreatmentQualityFilterMenu({
           filterkey="selectedfilters"
           sectionid="selectedfilters"
           sectiontitle="Valgte filtre"
+          skip={skipSections?.selectedFilters}
         />
         <TreeViewFilterSection
           refreshState={shouldRefreshInitialState}
@@ -428,9 +436,10 @@ export function TreatmentQualityFilterMenu({
           filterkey={treatmentUnitsKey}
           searchbox={true}
           maxselections={maxSelectedTreatmentUnits}
+          skip={skipSections?.treatmentUnits}
         />
         <TreeViewFilterSection
-          skip={isRegisterPage}
+          skip={isRegisterPage || skipSections?.medicalFields}
           refreshState={shouldRefreshInitialState}
           treedata={medicalFields.treedata}
           defaultvalues={medicalFields.defaults}
@@ -456,6 +465,7 @@ export function TreatmentQualityFilterMenu({
           sectiontitle={"År"}
           sectionid={yearKey}
           filterkey={yearKey}
+          skip={skipSections?.years}
         />
         <RadioGroupFilterSection
           radios={achievementLevelOptions.values}
@@ -471,9 +481,10 @@ export function TreatmentQualityFilterMenu({
           sectiontitle={"Måloppnåelse"}
           sectionid={levelKey}
           filterkey={levelKey}
+          skip={skipSections?.achievmentLevels}
         />
         <SwitchFilterSection
-          skip={isRegisterPage}
+          skip={isRegisterPage || skipSections?.dataQuality}
           sectionid={dataQualityKey}
           filterkey={dataQualityKey}
           sectiontitle={"Datakvalitet"}
