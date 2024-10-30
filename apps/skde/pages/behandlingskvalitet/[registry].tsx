@@ -47,9 +47,11 @@ import { LayoutHead } from "../../src/components/LayoutHead";
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
-  const registryName = registryInfo[0].rname;
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const registryName = registryInfo[0].rname;
+  const skipTableContextSection =
+    registryInfo[0].resident_data + registryInfo[0].caregiver_data !== 2;
 
   useEffect(() => {
     setMounted(true);
@@ -85,20 +87,22 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     mainQueryParamsConfig.selected_row,
   )[0];
 
-  const registryRankQuery = useRegistryRankQuery(defaultYear);
-
   let registryRank = "NA";
-
-  if (registryRankQuery.isFetched) {
+  if (!process.env.NEXT_PUBLIC_VERIFY) {
     // Fetch the registry's stage and level
-    const registryRankData = registryRankQuery.data as RegistryRank[];
+    const registryRankQuery = useRegistryRankQuery(defaultYear);
 
-    const filteredRegistryRank = registryRankData.filter(
-      (row: RegistryRank) => row.name === registryName,
-    );
+    if (registryRankQuery.isFetched) {
+      // Fetch the registry's stage and level
+      const registryRankData = registryRankQuery.data as RegistryRank[];
 
-    if (filteredRegistryRank[0]) {
-      registryRank = filteredRegistryRank[0].verdict;
+      const filteredRegistryRank = registryRankData.filter(
+        (row: RegistryRank) => row.name === registryName,
+      );
+
+      if (filteredRegistryRank[0]) {
+        registryRank = filteredRegistryRank[0].verdict;
+      }
     }
   }
 
@@ -198,6 +202,18 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     return null;
   }
 
+  const subtitle = process.env.NEXT_PUBLIC_VERIFY
+    ? "Resultater fra " + registryInfo[0].full_name
+    : "Resultater fra " +
+      registryInfo[0].full_name +
+      "<br/>" +
+      `<a href="https://www.kvalitetsregistre.no/stadieinndeling">Stadium og nivå </a> for ` +
+      defaultYear +
+      ": " +
+      "<b>" +
+      registryRank +
+      "</b>";
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
@@ -246,11 +262,9 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                   registryNameData={registryInfo}
                   medicalFieldData={[]}
                   register={registryName}
-                  enableTableContextSection={
-                    registryInfo[0].resident_data +
-                      registryInfo[0].caregiver_data ==
-                    2
-                  }
+                  skipSections={{
+                    context: skipTableContextSection,
+                  }}
                 />
                 <Divider />
               </Box>

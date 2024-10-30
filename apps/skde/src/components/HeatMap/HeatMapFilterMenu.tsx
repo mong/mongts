@@ -22,7 +22,6 @@ import {
 type HeatMapFilterMenuProps = {
   registryNameData: RegisterName[];
   medicalFieldData: Medfield[];
-  page: string;
   drawerOpen: boolean;
   toggleDrawer: (newOpen: boolean) => void;
   setSelectedYear: React.Dispatch<React.SetStateAction<number>>;
@@ -37,7 +36,6 @@ export const HeatMapFilterMenu = (props: HeatMapFilterMenuProps) => {
     drawerOpen,
     registryNameData,
     medicalFieldData,
-    page,
     setSelectedYear,
     setSelectedMedicalFields,
     setSelectedTreatmentUnits,
@@ -203,7 +201,11 @@ export const HeatMapFilterMenu = (props: HeatMapFilterMenuProps) => {
         onFilterInitialized={handleFilterInitialized}
         registryNameData={registryNameData}
         medicalFieldData={medicalFieldData}
-        page={page}
+        treatmentUnitSelectionLimit={Number.MAX_VALUE}
+        skipSections={{
+          achievmentLevels: true,
+          dataQuality: true,
+        }}
       />
     </FilterDrawer>
   );

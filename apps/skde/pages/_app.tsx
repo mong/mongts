@@ -28,7 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       g = d.createElement("script"),
       s = d.getElementsByTagName("script")[0];
     g.async = true;
-    g.src = "https://matomo.skde.org/js/container_PKGSpuF8.js";
+    g.src = "https://statistikk.fnsp.no/js/container_wcHdDuAW.js";
     s.parentNode.insertBefore(g, s);
   }, []);
 
