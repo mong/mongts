@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { GetStaticProps, GetStaticPaths } from "next";
 import {
   LinechartBase,
   LinechartData,
@@ -11,16 +11,15 @@ import { useRegistryRankQuery } from "qmongjs";
 import { RegistryRank } from "types";
 import { Stack, Typography } from "@mui/material";
 import { FaCircle } from "react-icons/fa";
+import { fetchRegisterNames } from "qmongjs";
+import { RegisterName } from "types";
 
 const levelAColour = "#58A55C";
 const levelBColour = "#FD9C00";
 const levelCColour = "#D85140";
 const noLevelColour = "#777777";
 
-const Stadiumfigur = () => {
-  const router = useRouter();
-  const { registry } = router.query;
-
+const Stadiumfigur = ({ registry }) => {
   const rankQuery = useRegistryRankQuery();
 
   if (rankQuery.isFetching) {
@@ -107,6 +106,28 @@ const Stadiumfigur = () => {
       <LinechartBase {...linechartProps} />
     </div>
   );
+};
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const registries: RegisterName[] = await fetchRegisterNames();
+
+  const filteredRegistries = registries.filter(
+    (register) => register.rname === context.params?.registry,
+  );
+
+  return {
+    props: { registry: filteredRegistries[0].rname },
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const registries: RegisterName[] = await fetchRegisterNames();
+
+  const paths = registries.flatMap((registry: RegisterName) => {
+    return [{ params: { registry: registry.rname } }];
+  });
+
+  return { paths, fallback: false };
 };
 
 export default Stadiumfigur;
