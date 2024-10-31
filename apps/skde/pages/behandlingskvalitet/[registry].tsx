@@ -369,9 +369,9 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const registries = await fetchRegisterNames();
+  const registries: RegisterName[] = await fetchRegisterNames();
 
-  const registryInfo: RegisterName = registries.filter(
+  const registryInfo = registries.filter(
     (register) => register.rname === context.params?.registry,
   );
 
