@@ -12,6 +12,11 @@ import { RegistryRank } from "types";
 import { Stack, Typography } from "@mui/material";
 import { FaCircle } from "react-icons/fa";
 
+const levelAColour = "#58A55C";
+const levelBColour = "#FD9C00";
+const levelCColour = "#D85140";
+const noLevelColour = "#777777";
+
 const Stadiumfigur = () => {
   const router = useRouter();
   const { registry } = router.query;
@@ -34,12 +39,12 @@ const Stadiumfigur = () => {
 
   const levelToColour = (level: string) => {
     return level === "A"
-      ? "#3BAA34"
+      ? levelAColour
       : level === "B"
-        ? "#FD9C00"
+        ? levelBColour
         : level === "C"
-          ? "#E30713"
-          : "#777777";
+          ? levelCColour
+          : noLevelColour;
   };
 
   const plotData = rankData
@@ -90,13 +95,13 @@ const Stadiumfigur = () => {
   return (
     <div>
       <Stack direction="row" spacing={2} sx={{ marginLeft: 10, marginTop: 10 }}>
-        <FaCircle style={{ color: "#58A55C", fontSize: "1.2rem" }} />
+        <FaCircle style={{ color: levelAColour, fontSize: "1.2rem" }} />
         <Typography>A</Typography>
-        <FaCircle style={{ color: "#FD9C00", fontSize: "1.2rem" }} />
+        <FaCircle style={{ color: levelBColour, fontSize: "1.2rem" }} />
         <Typography>B</Typography>
-        <FaCircle style={{ color: "#D85140", fontSize: "1.2rem" }} />
+        <FaCircle style={{ color: levelCColour, fontSize: "1.2rem" }} />
         <Typography>C</Typography>
-        <FaCircle style={{ color: "#777777", fontSize: "1.2rem" }} />
+        <FaCircle style={{ color: noLevelColour, fontSize: "1.2rem" }} />
         <Typography>Ingen nivå</Typography>
       </Stack>
       <LinechartBase {...linechartProps} />
