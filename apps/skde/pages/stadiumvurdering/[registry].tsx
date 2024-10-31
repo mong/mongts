@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import { GetStaticProps, GetStaticPaths } from "next";
 import {
   LinechartBase,
@@ -20,10 +19,7 @@ const levelBColour = "#FD9C00";
 const levelCColour = "#D85140";
 const noLevelColour = "#777777";
 
-const Stadiumfigur = () => {
-  const router = useRouter();
-  const { registry } = router.query;
-
+const Stadiumfigur = ({ registry }) => {
   const rankQuery = useRegistryRankQuery();
 
   if (rankQuery.isFetching) {
@@ -113,14 +109,14 @@ const Stadiumfigur = () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const registries = (await fetchRegisterNames()) as RegisterName[];
+  const registries: RegisterName[] = await fetchRegisterNames();
 
-  const registryInfo = registries.filter(
-    (register: RegisterName) => register.rname === context.params?.registry,
+  const filteredRegistries = registries.filter(
+    (register) => register.rname === context.params?.registry,
   );
 
   return {
-    props: { registryInfo: registryInfo },
+    props: { registry: filteredRegistries[0].rname },
   };
 };
 
