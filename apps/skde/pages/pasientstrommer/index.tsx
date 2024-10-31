@@ -3,11 +3,7 @@ import { Footer } from "../../src/components/Footer";
 import { ThemeProvider } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
-import {
-  Header,
-  HeaderData,
-  BreadCrumbPath,
-} from "../../src/components/Header";
+import { Header, BreadCrumbPath } from "../../src/components/Header";
 import { LayoutHead } from "../../src/components/LayoutHead";
 
 const breadcrumbs: BreadCrumbPath = {
@@ -23,12 +19,6 @@ const breadcrumbs: BreadCrumbPath = {
   ],
 };
 
-const headerData: HeaderData = {
-  title: "Pasientstrømmer",
-  subtitle:
-    "Det interaktive tabellverket inneholder overordnet anonymisert informasjon om aktivitet og pasientstrømmer innad i, til og ut av helseregion Nord.",
-};
-
 const Pasient = () => {
   return (
     <ThemeProvider theme={skdeTheme}>
@@ -38,7 +28,11 @@ const Pasient = () => {
           content="This page shows the transfer of patients between treatment units in Helse Nord RHF."
           href="/favicon.ico"
         />
-        <Header headerData={headerData} breadcrumbs={breadcrumbs} />
+        <Header title={"Pasientstrømmer"} breadcrumbs={breadcrumbs}>
+          Det interaktive tabellverket inneholder overordnet anonymisert
+          informasjon om aktivitet og pasientstrømmer innad i, til og ut av
+          helseregion Nord.
+        </Header>
         <IframeResizer
           src="https://prod-tabellverk.skde.org/"
           style={{
