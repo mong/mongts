@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
-import {
-  Header,
-  HeaderData,
-  BreadCrumbPath,
-} from "../../src/components/Header";
+import { Header, BreadCrumbPath } from "../../src/components/Header";
 import {
   skdeTheme,
   useUnitNamesQuery,
@@ -13,7 +9,7 @@ import {
   useUnitUrlsQuery,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
-import { ThemeProvider, Box, Container } from "@mui/material";
+import { ThemeProvider, Box, Container, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { HospitalInfoBox } from "../../src/components/HospitalProfile";
@@ -82,12 +78,6 @@ export const Skde = (): JSX.Element => {
     ],
   };
 
-  const headerData: HeaderData = {
-    title: "Sykehusprofil",
-    subtitle:
-      "Her vises alle kvalitetsindikatorer fra nasjonale medisinske kvalitetsregistre i form av sykehusprofiler",
-  };
-
   // ####### //
   // Queries //
   // ####### //
@@ -151,16 +141,22 @@ export const Skde = (): JSX.Element => {
         />
         <Header
           bgcolor="surface2.light"
-          headerData={headerData}
+          title={"Sykehusprofil"}
           breadcrumbs={breadcrumbs}
           maxWidth={maxWidth}
         >
-          <UnitFilterMenu
-            width={Math.min(400, 0.8 * width)}
-            setUnitName={setUnitName}
-            unitNamesQuery={unitNamesQuery}
-            unitName={unitName}
-          />
+          <Box sx={{ mb: 6 }}>
+            Her vises alle kvalitetsindikatorer fra nasjonale medisinske
+            kvalitetsregistre i form av sykehusprofiler.
+          </Box>
+          <Typography>
+            <UnitFilterMenu
+              width={Math.min(400, 0.8 * width)}
+              setUnitName={setUnitName}
+              unitNamesQuery={unitNamesQuery}
+              unitName={unitName}
+            />
+          </Typography>
         </Header>
 
         <Container maxWidth={maxWidth} disableGutters={true}>
