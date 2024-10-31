@@ -51,7 +51,12 @@ export {
   decodeRegisterQueryParam,
 } from "./components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 export { LinechartBase, LineStyles } from "./components/Charts/LinechartBase";
-export type { LinechartData, font } from "./components/Charts/LinechartBase";
+export type {
+  LinechartData,
+  font,
+  lineStyle,
+  LinechartBaseProps,
+} from "./components/Charts/LinechartBase";
 export {
   customFormat,
   imgLoader,
