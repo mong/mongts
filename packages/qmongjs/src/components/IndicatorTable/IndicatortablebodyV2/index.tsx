@@ -18,6 +18,9 @@ import {
   StyledTable,
   StyledTableRow,
   StyledTableCell,
+  StyledTableCellStart,
+  StyledTableCellMiddle,
+  StyledTableCellEnd,
 } from "./IndicatorTableBodyV2Styles";
 import {
   LinechartBase,
@@ -255,7 +258,7 @@ const IndicatorRow = (props: {
         onClick={onClick}
         style={{ cursor: "pointer" }}
       >
-        <StyledTableCell key={indData.indicatorID}>
+        <StyledTableCellStart key={indData.indicatorID}>
           <table>
             <tbody>
               <tr>
@@ -268,9 +271,9 @@ const IndicatorRow = (props: {
               </tr>
             </tbody>
           </table>
-        </StyledTableCell>
+        </StyledTableCellStart>
 
-        {rowDataSorted.map((row, index) => {
+        {rowDataSorted.map((row, index, arr) => {
           const lowDG = row?.dg == null ? false : row?.dg < 0.6 ? true : false;
           const noData = row?.denominator == null ? true : false;
           const lowN =
@@ -306,8 +309,14 @@ const IndicatorRow = (props: {
                 ? "Ingen data"
                 : row?.numerator + " av " + row?.denominator;
 
+          let CellType;
+
+          index === arr.length - 1
+            ? (CellType = StyledTableCellEnd)
+            : (CellType = StyledTableCellMiddle);
+
           return (
-            <StyledTableCell
+            <CellType
               sx={{ opacity: cellOpacity }}
               align={"center"}
               key={indData.indicatorID + index}
@@ -315,14 +324,19 @@ const IndicatorRow = (props: {
               {cellData}
               <br />
               {patientCounts}
-            </StyledTableCell>
+            </CellType>
           );
         })}
       </StyledTableRow>
 
       <TableRow key={indData.indicatorID + "-collapse"}>
         <StyledTableCell
-          style={{ paddingBottom: 0, paddingTop: 0 }}
+          style={{
+            paddingBottom: 0,
+            paddingTop: 0,
+            paddingLeft: 0,
+            paddingRight: 0,
+          }}
           colSpan={unitNames.length + 1}
         >
           <Collapse in={open} timeout="auto" unmountOnExit>
@@ -483,18 +497,20 @@ const RegistrySection = (props: {
       <React.Fragment>
         <TableHead>
           <TableRow key={regData.registerName + "-row"}>
-            <StyledTableCell key={regData.registerName}>
+            <StyledTableCellStart key={regData.registerName}>
               {regData.registerFullName}
-            </StyledTableCell>
+            </StyledTableCellStart>
 
-            {unitNames.map((row, index) => {
+            {unitNames.map((row, index, arr) => {
+              let CellType;
+              index === arr.length - 1
+                ? (CellType = StyledTableCellEnd)
+                : (CellType = StyledTableCellMiddle);
+
               return (
-                <StyledTableCell
-                  align="center"
-                  key={regData.registerName + index}
-                >
+                <CellType align="center" key={regData.registerName + index}>
                   {row}
-                </StyledTableCell>
+                </CellType>
               );
             })}
           </TableRow>
