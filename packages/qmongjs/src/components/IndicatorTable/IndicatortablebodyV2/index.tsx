@@ -320,12 +320,12 @@ const IndicatorRow = (props: {
         })}
       </StyledTableRow>
 
-      <StyledTableCell
-        style={{ paddingBottom: 0, paddingTop: 0 }}
-        colSpan={unitNames.length + 1}
-      >
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          <TableRow key={indData.indicatorID + "-collapse"}>
+      <TableRow key={indData.indicatorID + "-collapse"}>
+        <StyledTableCell
+          style={{ paddingBottom: 0, paddingTop: 0 }}
+          colSpan={unitNames.length + 1}
+        >
+          <Collapse in={open} timeout="auto" unmountOnExit>
             <StyledTableCell key={indData.indicatorID + "-shortDescription"}>
               {indData.shortDescription}
             </StyledTableCell>
@@ -340,49 +340,49 @@ const IndicatorRow = (props: {
                   ? ""
                   : customFormat(",.0%")(indData.levelGreen))}
             </StyledTableCell>
-          </TableRow>
 
-          <TableRow key={indData.indicatorID + "-charts"}>
-            <StyledTableCell
-              key={indData.indicatorID + "-charts"}
-              colSpan={unitNames.length + 1}
-              align="center"
-            >
-              {responsiveChart}
-            </StyledTableCell>
-          </TableRow>
-
-          <StyledTableRow key={indData.indicatorTitle + "-description"}>
-            <StyledTableCell
-              key={indData.indicatorTitle + "-decription"}
-              colSpan={unitNames.length + 1}
-            >
-              <ReactMarkdown
-                remarkPlugins={remarkPlugins}
-                components={{
-                  p({ children }) {
-                    return <p style={{ margin: 0 }}>{children}</p>;
-                  },
-                  a({ href, children }) {
-                    return (
-                      <a
-                        href={href}
-                        target={href?.startsWith("#") ? "_self" : "_blank"}
-                        rel="noreferrer"
-                        style={{ color: "#006492" }}
-                      >
-                        {children}
-                      </a>
-                    );
-                  },
-                }}
+            <TableRow key={indData.indicatorID + "-charts"}>
+              <StyledTableCell
+                key={indData.indicatorID + "-charts"}
+                colSpan={unitNames.length + 1}
+                align="center"
               >
-                {indData.longDescription}
-              </ReactMarkdown>
-            </StyledTableCell>
-          </StyledTableRow>
-        </Collapse>
-      </StyledTableCell>
+                {responsiveChart}
+              </StyledTableCell>
+            </TableRow>
+
+            <StyledTableRow key={indData.indicatorTitle + "-description"}>
+              <StyledTableCell
+                key={indData.indicatorTitle + "-decription"}
+                colSpan={unitNames.length + 1}
+              >
+                <ReactMarkdown
+                  remarkPlugins={remarkPlugins}
+                  components={{
+                    p({ children }) {
+                      return <p style={{ margin: 0 }}>{children}</p>;
+                    },
+                    a({ href, children }) {
+                      return (
+                        <a
+                          href={href}
+                          target={href?.startsWith("#") ? "_self" : "_blank"}
+                          rel="noreferrer"
+                          style={{ color: "#006492" }}
+                        >
+                          {children}
+                        </a>
+                      );
+                    },
+                  }}
+                >
+                  {indData.longDescription}
+                </ReactMarkdown>
+              </StyledTableCell>
+            </StyledTableRow>
+          </Collapse>
+        </StyledTableCell>
+      </TableRow>
     </React.Fragment>
   );
 };
