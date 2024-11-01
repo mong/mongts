@@ -260,11 +260,7 @@ const IndicatorRow = (props: {
             <tbody>
               <tr>
                 <td>
-                  <IconButton
-                    onClick={onClick}
-                    aria-label="expand"
-                    size="small"
-                  >
+                  <IconButton aria-label="expand" size="small">
                     {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
                   </IconButton>
                 </td>
