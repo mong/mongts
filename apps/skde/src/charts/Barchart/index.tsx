@@ -18,6 +18,7 @@ import {
   selectedBarColors,
   nationalLabel,
 } from "../colors";
+import { Box } from "@mui/material";
 
 type BarchartData<
   Data,
@@ -56,7 +57,6 @@ type BarchartProps<
   xMin?: number;
   xMax?: number;
   xLegend?: { en: string[]; nb: string[]; nn: string[] };
-  backgroundColor?: string;
   xAxisLineStroke?: string;
   xAxisTickStroke?: string;
   xAxisLineStrokeWidth?: number;
@@ -96,7 +96,6 @@ export const Barchart = <
   y,
   xMin = 0,
   xMax,
-  backgroundColor = "white",
   xAxisLineStroke = "black",
   xAxisLineStrokeWidth = 2,
   xAxisTickStroke = "black",
@@ -192,141 +191,155 @@ export const Barchart = <
     .range([2, 7]);
 
   return (
-    <div style={{ width: "auto", margin: "auto" }}>
-      <svg
-        style={{ backgroundColor, display: "block", margin: "auto" }}
-        width="100%"
-        height="100%"
-        viewBox={`0 0 ${width} ${height}`}
+    <Box
+      sx={{
+        width: "auto",
+        margin: "auto",
+      }}
+    >
+      <Box
+        sx={{
+          backgroundImage: "url('/img/logos/logo-skde-graa.svg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "max(50px, 10%)",
+          backgroundPosition: "bottom min(13%, 75px) right 5%",
+        }}
       >
-        <Group left={margin.left} top={margin.top}>
-          <AxisLeft
-            top={5}
-            left={-10}
-            scale={yScale}
-            strokeWidth={yAxisLineStrokeWidth}
-            stroke={yAxisLineStroke}
-            tickValues={data.map((s) => s[y])}
-            tickFormat={(name) =>
-              name === national ? nationalLabel[lang] : name
-            }
-            tickStroke={yAxisTickStroke}
-            tickLabelProps={() => ({
-              fontSize: 14,
-              fill: "black",
-              textAnchor: "end",
-            })}
-            label={yLabel[lang]}
-            labelProps={{
-              fontSize: 14,
-              x: -127,
-              y: -15,
-              transform: "",
-              fontWeight: "bold",
-              textAnchor: "start",
-              fill: "",
-              fontFamily: "",
-            }}
-          />
-        </Group>
-        <Group left={margin.left} top={margin.top + innerHeight}>
-          <AxisBottom
-            top={0}
-            scale={xScale}
-            strokeWidth={xAxisLineStrokeWidth}
-            stroke={xAxisLineStroke}
-            numTicks={4}
-            tickFormat={(val) =>
-              format ? customFormat(format, lang)(val) : val.toString()
-            }
-            tickLength={tickLength}
-            tickStroke={xAxisTickStroke}
-            tickTransform={`translate(0,0)`}
-            label={xLabel[lang]}
-            labelProps={{
-              fontSize: 14,
-              textAnchor: "middle",
-              fontWeight: "bold",
-              fill: "",
-              fontFamily: "",
-            }}
-          />
-        </Group>
-        <Group left={margin.left} top={margin.top}>
-          {series.map((d, i) => {
-            const bars = (
-              <Group fill={colorScale(d["key"])} key={`${i}`}>
-                {d.map((barData, i) => {
-                  const bohfName = (
-                    barData.data.bohf || barData.data.borhf
-                  ).toString();
-                  return (
-                    <rect
-                      key={`${i}`}
-                      x={xScale(barData[0])}
-                      y={yScale(barData.data[y].toString())}
-                      width={xScale(Math.abs(barData[0] - barData[1]))}
-                      height={yScale.bandwidth()}
-                      fill={
-                        selectedBohfs.has(bohfName)
-                          ? x.length === 1
-                            ? selectedColors[0]
-                            : selectedColorScale(d["key"])
-                          : bohfName === national
+        <svg
+          style={{ display: "block", margin: "auto" }}
+          width="100%"
+          height="100%"
+          viewBox={`0 0 ${width} ${height}`}
+        >
+          <Group left={margin.left} top={margin.top}>
+            <AxisLeft
+              top={5}
+              left={-10}
+              scale={yScale}
+              strokeWidth={yAxisLineStrokeWidth}
+              stroke={yAxisLineStroke}
+              tickValues={data.map((s) => s[y])}
+              tickFormat={(name) =>
+                name === national ? nationalLabel[lang] : name
+              }
+              tickStroke={yAxisTickStroke}
+              tickLabelProps={() => ({
+                fontSize: 14,
+                fill: "black",
+                textAnchor: "end",
+              })}
+              label={yLabel[lang]}
+              labelProps={{
+                fontSize: 14,
+                x: -127,
+                y: -15,
+                transform: "",
+                fontWeight: "bold",
+                textAnchor: "start",
+                fill: "",
+                fontFamily: "",
+              }}
+            />
+          </Group>
+          <Group left={margin.left} top={margin.top + innerHeight}>
+            <AxisBottom
+              top={0}
+              scale={xScale}
+              strokeWidth={xAxisLineStrokeWidth}
+              stroke={xAxisLineStroke}
+              numTicks={4}
+              tickFormat={(val) =>
+                format ? customFormat(format, lang)(val) : val.toString()
+              }
+              tickLength={tickLength}
+              tickStroke={xAxisTickStroke}
+              tickTransform={`translate(0,0)`}
+              label={xLabel[lang]}
+              labelProps={{
+                fontSize: 14,
+                textAnchor: "middle",
+                fontWeight: "bold",
+                fill: "",
+                fontFamily: "",
+              }}
+            />
+          </Group>
+          <Group left={margin.left} top={margin.top}>
+            {series.map((d, i) => {
+              const bars = (
+                <Group fill={colorScale(d["key"])} key={`${i}`}>
+                  {d.map((barData, i) => {
+                    const bohfName = (
+                      barData.data.bohf || barData.data.borhf
+                    ).toString();
+                    return (
+                      <rect
+                        key={`${i}`}
+                        x={xScale(barData[0])}
+                        y={yScale(barData.data[y].toString())}
+                        width={xScale(Math.abs(barData[0] - barData[1]))}
+                        height={yScale.bandwidth()}
+                        fill={
+                          selectedBohfs.has(bohfName)
                             ? x.length === 1
-                              ? nationColors[0]
-                              : nationColorScale(d["key"])
-                            : x.length === 1
-                              ? colors[0]
-                              : colorScale(d["key"])
-                      }
-                      data-testid={
-                        selectedBohfs.has(bohfName)
-                          ? `rect_${bohfName}_selected`
-                          : `rect_${bohfName}_unselected`
-                      }
-                      style={{
-                        cursor: bohfName != national ? "pointer" : "auto",
-                      }}
-                      onClick={() => toggleBohf(bohfName)}
-                    />
-                  );
-                })}
-              </Group>
-            );
-            return bars;
-          })}
-          {annualVar &&
-            data.map((d, i) => {
-              return (
-                <AnnualVariation
-                  data={d}
-                  xScale={xScale}
-                  yScale={yScale}
-                  annualVar={annualVar}
-                  colorFillScale={colorFillScale}
-                  sizeScale={sizeScale}
-                  y={y}
-                  labels={varLabels}
-                  key={`${d["bohf"] || d["borhf"]}${i}`}
-                />
+                              ? selectedColors[0]
+                              : selectedColorScale(d["key"])
+                            : bohfName === national
+                              ? x.length === 1
+                                ? nationColors[0]
+                                : nationColorScale(d["key"])
+                              : x.length === 1
+                                ? colors[0]
+                                : colorScale(d["key"])
+                        }
+                        data-testid={
+                          selectedBohfs.has(bohfName)
+                            ? `rect_${bohfName}_selected`
+                            : `rect_${bohfName}_unselected`
+                        }
+                        style={{
+                          cursor: bohfName != national ? "pointer" : "auto",
+                        }}
+                        onClick={() => toggleBohf(bohfName)}
+                      />
+                    );
+                  })}
+                </Group>
               );
+              return bars;
             })}
-          {errorBars &&
-            data.map((d) => {
-              return (
-                <ErrorBars
-                  data={d}
-                  xScale={xScale}
-                  yScale={yScale}
-                  errorBars={errorBars}
-                  y={y}
-                  key={`${d["bohf"] || d["borhf"]}_errorbar`}
-                />
-              );
-            })}
-        </Group>
-      </svg>
+            {annualVar &&
+              data.map((d, i) => {
+                return (
+                  <AnnualVariation
+                    data={d}
+                    xScale={xScale}
+                    yScale={yScale}
+                    annualVar={annualVar}
+                    colorFillScale={colorFillScale}
+                    sizeScale={sizeScale}
+                    y={y}
+                    labels={varLabels}
+                    key={`${d["bohf"] || d["borhf"]}${i}`}
+                  />
+                );
+              })}
+            {errorBars &&
+              data.map((d) => {
+                return (
+                  <ErrorBars
+                    data={d}
+                    xScale={xScale}
+                    yScale={yScale}
+                    errorBars={errorBars}
+                    y={y}
+                    key={`${d["bohf"] || d["borhf"]}_errorbar`}
+                  />
+                );
+              })}
+          </Group>
+        </svg>
+      </Box>
       {annualVar && (
         <AnnualVarLegend
           colorFillScale={colorFillScale}
@@ -342,6 +355,6 @@ export const Barchart = <
           values={x}
         />
       )}
-    </div>
+    </Box>
   );
 };
