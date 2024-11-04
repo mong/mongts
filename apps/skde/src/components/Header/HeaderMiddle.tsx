@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { Toolbar, Typography, styled, Container } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { Breakpoint } from "@mui/material";
@@ -9,17 +9,12 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   paddingBottom: theme.spacing(8),
 }));
 
-export type HeaderData = {
+type HeaderMiddleProps = PropsWithChildren<{
   title: string;
-  subtitle: string;
-};
-
-type HeaderMiddleProps = {
-  headerData: HeaderData;
   children?: React.ReactNode;
   bgcolor?: string;
   maxWidth?: false | Breakpoint;
-};
+}>;
 
 export const HeaderMiddle = (props: HeaderMiddleProps) => {
   const router = useRouter();
@@ -49,12 +44,13 @@ export const HeaderMiddle = (props: HeaderMiddleProps) => {
                 <br />
               </>
             )}
-            <Typography variant="h1">{props.headerData.title}</Typography>
+            <Typography variant="h1">{props.title}</Typography>
           </Grid>
           <Grid size={{ xs: 12 }}>
-            <Typography variant="h6">{props.headerData.subtitle}</Typography>
+            <Typography variant="h6">
+              {props.children !== undefined && props.children}
+            </Typography>
           </Grid>
-          {props.children !== undefined && props.children}
         </Grid>
       </Container>
     </StyledToolbar>

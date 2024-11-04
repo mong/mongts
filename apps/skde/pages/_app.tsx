@@ -5,10 +5,10 @@ import { QueryParamProvider } from "use-query-params";
 import { NextAdapter } from "next-query-params";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
-import { Open_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { useRouter } from "next/router";
 
-const open_sans = Open_Sans({
+const plus_jakarta_sans = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
 
@@ -28,12 +28,12 @@ function MyApp({ Component, pageProps }: AppProps) {
       g = d.createElement("script"),
       s = d.getElementsByTagName("script")[0];
     g.async = true;
-    g.src = "https://matomo.skde.org/js/container_PKGSpuF8.js";
+    g.src = "https://statistikk.fnsp.no/js/container_wcHdDuAW.js";
     s.parentNode.insertBefore(g, s);
   }, []);
 
   return (
-    <main className={open_sans.className}>
+    <main className={plus_jakarta_sans.className}>
       <QueryParamProvider adapter={NextAdapter}>
         <QueryClientProvider client={queryClient}>
           <Component {...pageProps} />

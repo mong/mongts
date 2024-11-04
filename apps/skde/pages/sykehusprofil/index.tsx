@@ -1,10 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
-import {
-  Header,
-  HeaderData,
-  BreadCrumbPath,
-} from "../../src/components/Header";
+import { Header, BreadCrumbPath } from "../../src/components/Header";
 import {
   skdeTheme,
   useUnitNamesQuery,
@@ -13,11 +9,11 @@ import {
   useUnitUrlsQuery,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
-import { ThemeProvider, Box, Container } from "@mui/material";
+import { ThemeProvider, Box, Container, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { HospitalInfoBox } from "../../src/components/HospitalProfile";
-import { getUnitFullName } from "../../src/helpers/functions/getUnitFullName";
+import { getUnitFullName } from "qmongjs";
 import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
 import { useScreenSize } from "@visx/responsive";
 import { breakpoints } from "qmongjs";
@@ -25,11 +21,14 @@ import { HospitalProfileMedfieldTable } from "../../src/components/HospitalProfi
 import { HospitalProfileLowLevelTable } from "../../src/components/HospitalProfile/HospitalProfileLowLevelTable";
 import { HospitalProfileLinePlot } from "../../src/components/HospitalProfile/HospitalProfileLinePlot";
 import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterMenu";
+import { TurnDeviceBox } from "../../src/components/HospitalProfile/TurnDeviceBox";
+import { URLs } from "types";
+import { LayoutHead } from "../../src/components/LayoutHead";
 
 export const Skde = (): JSX.Element => {
   // States
   const [unitName, setUnitName] = useState<string>();
-  const [unitUrl, setUnitUrl] = useState<string | null>(null);
+  const [isMobileAndVertical, setIsMobileAndVertical] = useState<boolean>();
 
   // ############### //
   // Page parameters //
@@ -41,9 +40,21 @@ export const Skde = (): JSX.Element => {
   const textMargin = 20;
   const maxWidth = "xxl";
   const titlePadding = 2;
+  const boxWidthLimit = 640;
+  const rotateDeviceBoxHeight = 400;
 
   // On screen resize
   const { width } = useScreenSize();
+
+  useEffect(() => {
+    setIsMobileAndVertical(screen.orientation.type === "portrait-primary");
+  });
+
+  const showRotateMessage = isMobileAndVertical && width < boxWidthLimit;
+
+  const TurnDeviceMessage = (
+    <TurnDeviceBox height={rotateDeviceBoxHeight} padding={titlePadding} />
+  );
 
   // Years for filtering
   const lastYear = defaultYear;
@@ -57,19 +68,17 @@ export const Skde = (): JSX.Element => {
         text: "Forside",
       },
       {
+        link: "https://www.skde.no/resultater/",
+        text: "Tall om helsetjenesten",
+      },
+      {
         link: "/sykehusprofil/",
         text: "Sykehusprofil",
       },
     ],
   };
 
-  const headerData: HeaderData = {
-    title: "Sykehusprofil",
-    subtitle:
-      "Her vises alle kvalitetsindikatorer fra nasjonale medisinske kvalitetsregistre i form av sykehusprofiler",
-  };
-
-  // ######## //
+  // ####### //
   // Queries //
   // ####### //
 
@@ -105,22 +114,49 @@ export const Skde = (): JSX.Element => {
       getUnitFullName(unitNamesQuery.data.nestedUnitNames, unitName);
   }
 
+  // ############ //
+  // Set unit URL //
+  // ############ //
+
+  let newUnitUrl: URLs | undefined;
+  let unitUrl = "";
+
+  if (unitUrlsQuery.data) {
+    newUnitUrl = unitUrlsQuery.data.filter((row: URLs) => {
+      return row.shortName === unitName;
+    });
+  }
+
+  if (newUnitUrl && newUnitUrl[0]) {
+    unitUrl = newUnitUrl[0].url;
+  }
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <PageWrapper>
+        <LayoutHead
+          title="Sykehusprofil"
+          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service for individual treatment units."
+          href="/favicon.ico"
+        />
         <Header
           bgcolor="surface2.light"
-          headerData={headerData}
+          title={"Sykehusprofil"}
           breadcrumbs={breadcrumbs}
           maxWidth={maxWidth}
         >
-          <UnitFilterMenu
-            width={Math.min(400, 0.8 * width)}
-            setUnitName={setUnitName}
-            setUnitUrl={setUnitUrl}
-            unitNamesQuery={unitNamesQuery}
-            unitUrlsQuery={unitUrlsQuery}
-          />
+          <Box sx={{ mb: 6 }}>
+            Her vises alle kvalitetsindikatorer fra nasjonale medisinske
+            kvalitetsregistre i form av sykehusprofiler.
+          </Box>
+          <Typography>
+            <UnitFilterMenu
+              width={Math.min(400, 0.8 * width)}
+              setUnitName={setUnitName}
+              unitNamesQuery={unitNamesQuery}
+              unitName={unitName}
+            />
+          </Typography>
         </Header>
 
         <Container maxWidth={maxWidth} disableGutters={true}>
@@ -143,42 +179,55 @@ export const Skde = (): JSX.Element => {
                   titleStyle={titleStyle}
                   unitNames={unitNamesQuery.data}
                   selectedTreatmentUnit={unitName}
+                  setUnitName={setUnitName}
                 />
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <HospitalProfileMedfieldTable
-                  boxMaxHeight={boxMaxHeight}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                  unitName={unitName}
-                  lastYear={lastYear}
-                />
+                {showRotateMessage ? (
+                  TurnDeviceMessage
+                ) : (
+                  <HospitalProfileMedfieldTable
+                    boxMaxHeight={boxMaxHeight}
+                    titlePadding={titlePadding}
+                    titleStyle={titleStyle}
+                    textMargin={textMargin}
+                    unitName={unitName}
+                    lastYear={lastYear}
+                  />
+                )}
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <HospitalProfileLowLevelTable
-                  unitName={unitName}
-                  boxMaxHeight={boxMaxHeight}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                  unitFullName={unitFullName}
-                  lastYear={lastYear}
-                />
+                {showRotateMessage ? (
+                  TurnDeviceMessage
+                ) : (
+                  <HospitalProfileLowLevelTable
+                    unitName={unitName}
+                    boxMaxHeight={boxMaxHeight}
+                    titlePadding={titlePadding}
+                    titleStyle={titleStyle}
+                    textMargin={textMargin}
+                    unitFullName={unitFullName}
+                    lastYear={lastYear}
+                  />
+                )}
               </Grid>
 
               <Grid size={{ xs: 12 }}>
-                <HospitalProfileLinePlot
-                  unitFullName={unitFullName}
-                  unitNames={unitName}
-                  lastYear={lastYear}
-                  pastYears={pastYears}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                />
+                {showRotateMessage ? (
+                  TurnDeviceMessage
+                ) : (
+                  <HospitalProfileLinePlot
+                    unitFullName={unitFullName}
+                    unitNames={unitName}
+                    lastYear={lastYear}
+                    pastYears={pastYears}
+                    titlePadding={titlePadding}
+                    titleStyle={titleStyle}
+                    textMargin={textMargin}
+                  />
+                )}
               </Grid>
             </Grid>
           </Box>

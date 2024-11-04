@@ -4,35 +4,34 @@ import {
   CssBaseline,
   Divider,
   IconButton,
+  Link,
   ThemeProvider,
   Typography,
   useMediaQuery,
 } from "@mui/material";
-
 import { ChevronLeftRounded } from "@mui/icons-material";
 import Grid from "@mui/material/Grid2";
-import { useQueryParam, withDefault, StringParam } from "use-query-params";
+import { useQueryParam } from "use-query-params";
 import {
   FilterSettingsAction,
   FilterSettingsValue,
   TreatmentQualityFilterMenu,
-  decodeRegisterQueryParam,
   useRegisterNamesQuery,
   defaultYear,
   levelKey,
+  tableContextKey,
   treatmentUnitsKey,
   yearKey,
   medicalFieldKey,
   useMedicalFieldsQuery,
+  dataQualityKey,
   FilterSettingsActionType,
   IndicatorTable,
   IndicatorTableBodyV2,
   skdeTheme,
+  useUnitNamesQuery,
 } from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
-import Switch from "@mui/material/Switch";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import { useSearchParams } from "next/navigation";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import {
@@ -44,51 +43,27 @@ import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
-
-const dataQualityKey = "dg";
-
-// Set to true to display the switch for activating the new table
-const showNewTableSwitch = false;
-
-const scrollToSelectedRow = (selectedRow: string): boolean => {
-  const element = document.getElementById(selectedRow);
-  const headerOffset = 160;
-
-  if (element) {
-    const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.scrollY - headerOffset;
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
-
-    return true;
-  } else {
-    return false;
-  }
-};
+import scrollToSelectedRow from "./utils/scrollToSelectedRow";
+import getMedicalFieldFilterRegisters from "./utils/getMedicalFieldFilterRegisters";
+import { IndicatorTableSkeleton } from "qmongjs";
+import { LayoutHead } from "../../src/components/LayoutHead";
+import { valueOrDefault, defaultTableContext } from "./utils/valueOrDefault";
 
 export default function TreatmentQualityPage() {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
 
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const toggleDrawer = (newOpen: boolean) => {
     setDrawerOpen(newOpen);
   };
 
-  const [newIndicatorTableActivated, setNewIndicatorTableActivated] =
-    useState(false);
-
   const searchParams = useSearchParams();
-  const newTableOnly = searchParams.get("newtable") === "true";
-
-  // Context (caregiver or resident)
-  const [tableContext, setTableContext] = useQueryParam<string>(
-    "context",
-    withDefault(StringParam, "caregiver"),
-  );
+  const displayV2Table = searchParams.get("newtable") === "true";
 
   // Used by indicator table
   const [selectedYear, setSelectedYear] = useState(defaultYear);
+  const [selectedTableContext, setSelectedTableContext] =
+    useState(defaultTableContext);
   const [selectedLevel, setSelectedLevel] = useState<string | undefined>(
     undefined,
   );
@@ -106,6 +81,13 @@ export default function TreatmentQualityPage() {
     mainQueryParamsConfig.selected_row,
   )[0];
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
+    "all",
+    selectedTableContext,
+    dataQualitySelected ? "dg" : "ind",
+  );
+
   // Load register names and medical fields
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const registryNameQuery: UseQueryResult<any, unknown> =
@@ -115,44 +97,13 @@ export default function TreatmentQualityPage() {
     useMedicalFieldsQuery();
 
   const queriesReady =
-    registryNameQuery.isFetched && medicalFieldsQuery.isFetched;
+    unitNamesQuery.isFetched &&
+    registryNameQuery.isFetched &&
+    medicalFieldsQuery.isFetched;
 
   const registers = registryNameQuery?.data;
   const medicalFields = medicalFieldsQuery?.data;
-
-  /**
-   * Get the register names for the selected medical fields and registers
-   *
-   * @param medicalFieldFilter Array of medical field and register names
-   * @returns Array of register names
-   */
-  const getMedicalFieldFilterRegisters = (medicalFieldFilter: string[]) => {
-    let registerFilter: string[];
-
-    if (!medicalFieldFilter || medicalFieldFilter[0] === "all") {
-      registerFilter = registers.map((register) => register.rname);
-    } else {
-      const selectedMedicalFields = medicalFields.filter((field) =>
-        medicalFieldFilter.includes(field.shortName),
-      );
-      const selectedMedicalFieldNames = selectedMedicalFields.map(
-        (field) => field.shortName,
-      );
-      const selectedRegisters = medicalFieldFilter.filter(
-        (name) => !selectedMedicalFieldNames.includes(name),
-      );
-      registerFilter = Array.from(
-        new Set<string>([
-          ...selectedMedicalFields.flatMap((field) => field.registers),
-          ...selectedRegisters.map((register) =>
-            decodeRegisterQueryParam(register),
-          ),
-        ]),
-      );
-    }
-
-    return registerFilter;
-  };
+  const nestedUnitNames = unitNamesQuery?.data?.nestedUnitNames;
 
   /**
    * Handle that the initial filter settings are loaded, which can happen
@@ -164,15 +115,24 @@ export default function TreatmentQualityPage() {
   const handleFilterInitialized = (
     filterSettings: Map<string, FilterSettingsValue[]>,
   ): void => {
+    setSelectedTableContext(
+      filterSettings.get(tableContextKey)?.[0].value ?? defaultTableContext,
+    );
+
     setSelectedYear(
       parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString()),
     );
+
     setSelectedLevel(filterSettings.get(levelKey)?.[0]?.value ?? undefined);
 
     const medicalFieldFilter = filterSettings
       .get(medicalFieldKey)
       ?.map((value) => value.value);
-    const registerFilter = getMedicalFieldFilterRegisters(medicalFieldFilter);
+    const registerFilter = getMedicalFieldFilterRegisters(
+      medicalFieldFilter,
+      registers,
+      medicalFields,
+    );
     setSelectedMedicalFields(registerFilter);
 
     setSelectedTreatmentUnits(
@@ -184,45 +144,12 @@ export default function TreatmentQualityPage() {
     );
   };
 
-  const valueOrDefault = (
-    key: string,
-    filterSettings: { map: Map<string, FilterSettingsValue[]> },
-  ) => {
-    switch (key) {
-      case yearKey: {
-        return (
-          filterSettings.map.get(yearKey)[0].value ?? defaultYear.toString()
-        );
-      }
-      case levelKey: {
-        return filterSettings.map.get(levelKey)?.[0]?.value ?? undefined;
-      }
-      case medicalFieldKey: {
-        const medicalFieldFilter = filterSettings.map
-          .get(medicalFieldKey)
-          ?.map((value) => value.value);
-        const registerFilter =
-          getMedicalFieldFilterRegisters(medicalFieldFilter);
-        return registerFilter;
-      }
-      case treatmentUnitsKey: {
-        return filterSettings.map
-          .get(treatmentUnitsKey)
-          .map((value) => value.value);
-      }
-      case dataQualityKey: {
-        return filterSettings.map.get(dataQualityKey)?.[0].value === "true"
-          ? true
-          : false;
-      }
-      default:
-        break;
-    }
-  };
-
   const setAllSelected = (newFilterSettings: {
     map: Map<string, FilterSettingsValue[]>;
   }) => {
+    setSelectedTableContext(
+      valueOrDefault(tableContextKey, newFilterSettings) as string,
+    );
     setSelectedYear(
       parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
     );
@@ -230,7 +157,12 @@ export default function TreatmentQualityPage() {
       valueOrDefault(levelKey, newFilterSettings) as string | undefined,
     );
     setSelectedMedicalFields(
-      valueOrDefault(medicalFieldKey, newFilterSettings) as string[],
+      valueOrDefault(
+        medicalFieldKey,
+        newFilterSettings,
+        registers,
+        medicalFields,
+      ) as string[],
     );
     setSelectedTreatmentUnits(
       valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
@@ -249,6 +181,12 @@ export default function TreatmentQualityPage() {
     action: FilterSettingsAction,
   ): void => {
     switch (action.sectionSetting.key) {
+      case tableContextKey: {
+        setSelectedTableContext(
+          valueOrDefault(tableContextKey, newFilterSettings) as string,
+        );
+        break;
+      }
       case yearKey: {
         setSelectedYear(
           parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
@@ -263,7 +201,12 @@ export default function TreatmentQualityPage() {
       }
       case medicalFieldKey: {
         setSelectedMedicalFields(
-          valueOrDefault(medicalFieldKey, newFilterSettings) as string[],
+          valueOrDefault(
+            medicalFieldKey,
+            newFilterSettings,
+            registers,
+            medicalFields,
+          ) as string[],
         );
         break;
       }
@@ -290,19 +233,32 @@ export default function TreatmentQualityPage() {
 
   // Use the custom hook to observe the addition of the selected row element, if
   // not already available.
-  useOnElementAdded(selectedRow, queriesReady, scrollToSelectedRow);
+  if (typeof document !== "undefined") {
+    useOnElementAdded(selectedRow, queriesReady, scrollToSelectedRow);
+  }
 
   return (
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
       <PageWrapper>
-        <TreatmentQualityAppBar
-          openDrawer={() => toggleDrawer(true)}
-          context={tableContext}
-          onTabChanged={setTableContext}
+        <LayoutHead
+          title="Behandlingskvalitet"
+          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
+          href="/favicon.ico"
         />
+        <TreatmentQualityAppBar openDrawer={() => toggleDrawer(true)}>
+          Resultater fra nasjonale medisinske kvalitetsregistre. Se{" "}
+          <Link
+            href="https://www.kvalitetsregistre.no/"
+            target="_blank"
+            rel="noopener"
+          >
+            kvalitetsregistre.no
+          </Link>{" "}
+          for mer informasjon.
+        </TreatmentQualityAppBar>
         <Grid container size={{ xs: 12 }}>
-          {useMediaQuery(skdeTheme.breakpoints.up("xxl")) ? ( // Permanent menu on large screens
+          {isXxlScreen ? ( // Permanent menu on large screens
             <Grid size={{ xxl: 4, xxml: 3, xxxl: 2 }} className="menu-wrapper">
               {queriesReady && (
                 <Box
@@ -319,8 +275,9 @@ export default function TreatmentQualityPage() {
                     onFilterInitialized={handleFilterInitialized}
                     registryNameData={registers}
                     medicalFieldData={medicalFields}
-                    context={tableContext}
+                    testIdPrefix="permanentFilterMenu"
                   />
+                  <Divider />
                 </Box>
               )}
             </Grid>
@@ -328,12 +285,12 @@ export default function TreatmentQualityPage() {
           <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
-                {queriesReady &&
-                  (newIndicatorTableActivated || newTableOnly ? (
+                {queriesReady ? (
+                  displayV2Table ? (
                     <IndicatorTableV2Wrapper className="table-wrapper">
                       <IndicatorTableBodyV2
                         key={"indicator-table2"}
-                        context={tableContext}
+                        context={selectedTableContext}
                         unitNames={selectedTreatmentUnits}
                         year={selectedYear}
                         type={dataQualitySelected ? "dg" : "ind"}
@@ -345,7 +302,7 @@ export default function TreatmentQualityPage() {
                     <IndicatorTableWrapper className="table-wrapper">
                       <IndicatorTable
                         key={"indicator-table"}
-                        context={tableContext}
+                        context={selectedTableContext}
                         dataQuality={dataQualitySelected}
                         tableType="allRegistries"
                         registerNames={registers}
@@ -361,9 +318,13 @@ export default function TreatmentQualityPage() {
                             register.full_name,
                         )}
                         showTreatmentYear={true}
+                        nestedUnitNames={nestedUnitNames}
                       />
                     </IndicatorTableWrapper>
-                  ))}
+                  )
+                ) : (
+                  <IndicatorTableSkeleton nRows={10} />
+                )}
               </Grid>
             </Grid>
           </Grid>
@@ -394,24 +355,9 @@ export default function TreatmentQualityPage() {
               onFilterInitialized={handleFilterInitialized}
               registryNameData={registers}
               medicalFieldData={medicalFields}
-              context={tableContext}
+              testIdPrefix="drawerFilterMenu"
             />
-            {showNewTableSwitch && !newTableOnly && (
-              <FormGroup sx={{ paddingRight: "1.5rem" }}>
-                <FormControlLabel
-                  label="Prøv ny tabellversjon"
-                  labelPlacement="start"
-                  control={
-                    <Switch
-                      checked={newIndicatorTableActivated}
-                      onChange={(event) =>
-                        setNewIndicatorTableActivated(event.target.checked)
-                      }
-                    />
-                  }
-                />
-              </FormGroup>
-            )}
+            <Divider />
           </Box>
         )}
       </FilterDrawer>

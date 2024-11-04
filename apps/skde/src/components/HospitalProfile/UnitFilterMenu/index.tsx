@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   skdeTheme,
   FilterSettingsValue,
@@ -7,6 +7,7 @@ import {
   FilterSettings,
   CustomAccordionExpandIcon,
   getTreatmentUnitsTree,
+  useShouldReinitialize,
 } from "qmongjs";
 import {
   Box,
@@ -14,6 +15,7 @@ import {
   AccordionSummary,
   AccordionDetails,
   styled,
+  Typography,
 } from "@mui/material";
 import { ClickAwayListener } from "@mui/base";
 import {
@@ -21,17 +23,14 @@ import {
   DelimitedArrayParam,
   withDefault,
 } from "use-query-params";
-import { URLs } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 
 type UnitFilterMenuProps = {
   width: number;
   setUnitName: React.Dispatch<React.SetStateAction<string>>;
-  setUnitUrl: React.Dispatch<React.SetStateAction<string>>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   unitNamesQuery: UseQueryResult<any, Error>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  unitUrlsQuery: UseQueryResult<any, Error>;
+  unitName: string;
 };
 
 const AccordionWrapper = styled(Box)(() => ({
@@ -41,11 +40,13 @@ const AccordionWrapper = styled(Box)(() => ({
 }));
 
 export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
-  const { width, setUnitName, setUnitUrl, unitNamesQuery, unitUrlsQuery } =
-    props;
+  const { width, setUnitName, unitNamesQuery, unitName } = props;
+  const shouldRefreshInitialState = useShouldReinitialize([unitNamesQuery]);
 
   // States
   const [expanded, setExpanded] = useState(false);
+  const [parentChangedUnit, setParentChangedUnit] = useState(false);
+  const parentChangedUnitRef = useRef(false);
 
   // URL query parameter key
   const treatmentUnitsKey = "selected_treatment_units";
@@ -55,6 +56,13 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
     treatmentUnitsKey,
     withDefault(DelimitedArrayParam, ["Nasjonalt"]),
   );
+
+  useEffect(() => {
+    if (unitName && unitName !== selectedTreatmentUnits[0]) {
+      setParentChangedUnit(true);
+      parentChangedUnitRef.current = true;
+    }
+  }, [unitName, selectedTreatmentUnits]);
 
   // Get thre treatment unit structure and trim it
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
@@ -77,20 +85,6 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
     filterInput: Map<string, FilterSettingsValue[]>,
   ) => {
     const newUnit = filterInput.get(treatmentUnitsKey).map((el) => el.value);
-
-    let unitUrl: URLs | undefined;
-    if (unitUrlsQuery.data) {
-      unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
-        return row.shortName === selectedTreatmentUnits[0];
-      });
-    }
-
-    if (unitUrl && unitUrl[0]) {
-      setUnitUrl(unitUrl[0].url);
-    } else {
-      setUnitUrl(null);
-    }
-
     setUnitName(newUnit[0]);
   };
 
@@ -103,22 +97,17 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
 
     setExpanded(false);
     setSelectedTreatmentUnits(newUnit);
-
     setUnitName(newUnit[0]);
 
-    let unitUrl: URLs | undefined;
-    if (unitUrlsQuery.data) {
-      unitUrl = unitUrlsQuery.data.filter((row: URLs) => {
-        return row.shortName === newUnit[0];
-      });
-    }
-
-    if (unitUrl && unitUrl[0]) {
-      setUnitUrl(unitUrl[0].url);
-    } else {
-      setUnitUrl(null);
+    if (parentChangedUnitRef.current) {
+      setParentChangedUnit(false);
+      parentChangedUnitRef.current = false;
     }
   };
+
+  const currentUnitSelection = parentChangedUnit
+    ? [unitName]
+    : selectedTreatmentUnits;
 
   return (
     <ClickAwayListener onClickAway={() => setExpanded(false)}>
@@ -138,26 +127,28 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
             setExpanded(expanded);
           }}
         >
-          <AccordionSummary expandIcon={<CustomAccordionExpandIcon />}>
-            <h3>
-              {selectedTreatmentUnits[0] === "Nasjonalt"
+          <AccordionSummary sx={{ padding: 2 }}>
+            <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
+              {currentUnitSelection[0] === "Nasjonalt"
                 ? "Velg behandlingssted"
-                : selectedTreatmentUnits[0]}
-            </h3>
+                : currentUnitSelection[0]}
+            </Typography>
+            <Box sx={{ flexGrow: 1 }} />
+            <CustomAccordionExpandIcon />
           </AccordionSummary>
 
           <AccordionDetails>
             <FilterMenu
-              refreshState={true}
+              refreshState={shouldRefreshInitialState || parentChangedUnit}
               onSelectionChanged={handleChange}
               onFilterInitialized={initialiseFilter}
             >
               <TreeViewFilterSection
-                refreshState={true}
+                refreshState={shouldRefreshInitialState || parentChangedUnit}
                 treedata={treatmentUnits.treedata}
                 defaultvalues={treatmentUnits.defaults}
                 initialselections={
-                  selectedTreatmentUnits.map((value) => ({
+                  currentUnitSelection.map((value) => ({
                     value: value,
                     valueLabel: value,
                   })) as FilterSettingsValue[]

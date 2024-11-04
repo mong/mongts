@@ -8,6 +8,8 @@ import {
   CheckBox,
   CheckBoxOutlineBlank,
 } from "@mui/icons-material";
+import Box from "@mui/system/Box";
+import { Typography } from "@mui/material";
 
 /**
  * Props for the TreeViewFilterSectionItem component, which extends the
@@ -65,38 +67,42 @@ export const TreeViewFilterSectionItem = (
       data-testid={`tree-view-item-${labeledValue.value}`}
       itemId={uniqueItemId}
       label={
-        <>
-          <Checkbox
-            id={`checkbox-${filterKey}-${uniqueItemId}`}
-            key={`checkbox-${filterKey}-${uniqueItemId}`}
-            data-testid={`checkbox-${filterKey}-${uniqueItemId}`}
-            checked={isSelected}
-            checkedIcon={
-              singleselect ? <RadioButtonCheckedRounded /> : <CheckBox />
-            }
-            icon={
-              singleselect ? (
-                <RadioButtonUncheckedRounded />
-              ) : (
-                <CheckBoxOutlineBlank />
-              )
-            }
-            onClick={(event) => {
-              handleCheckboxChange(
-                singleselect || !isSelected, // do not change back to default if singleselect
-                labeledValue.value,
-                autoUncheckId,
-              );
-              event.stopPropagation();
-            }}
-            onKeyUp={(event) => {
-              if (event.key === "Enter") {
-                toggleExpand(labeledValue.value);
+        <Box display="flex" alignItems="center">
+          <Box flexShrink={0}>
+            <Checkbox
+              id={`checkbox-${filterKey}-${uniqueItemId}`}
+              key={`checkbox-${filterKey}-${uniqueItemId}`}
+              data-testid={`checkbox-${filterKey}-${uniqueItemId}`}
+              checked={isSelected}
+              checkedIcon={
+                singleselect ? <RadioButtonCheckedRounded /> : <CheckBox />
               }
-            }}
-          />
-          {labeledValue.valueLabel}
-        </>
+              icon={
+                singleselect ? (
+                  <RadioButtonUncheckedRounded />
+                ) : (
+                  <CheckBoxOutlineBlank />
+                )
+              }
+              onClick={(event) => {
+                handleCheckboxChange(
+                  singleselect || !isSelected,
+                  labeledValue.value,
+                  autoUncheckId,
+                );
+                event.stopPropagation();
+              }}
+              onKeyUp={(event) => {
+                if (event.key === "Enter") {
+                  toggleExpand(labeledValue.value);
+                }
+              }}
+            />
+          </Box>
+          <Box flexGrow={1} ml={1}>
+            <Typography variant="body2">{labeledValue.valueLabel}</Typography>
+          </Box>
+        </Box>
       }
     >
       {props.children}

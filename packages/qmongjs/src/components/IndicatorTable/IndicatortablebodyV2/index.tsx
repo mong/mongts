@@ -13,6 +13,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
 import { useScreenSize } from "@visx/responsive";
+import { Skeleton, Collapse } from "@mui/material";
 import {
   StyledTable,
   StyledTableRow,
@@ -163,7 +164,7 @@ const IndicatorRow = (props: {
       result: row.var !== null ? customFormat(format)(row.var) : undefined,
       symbol: newLevelSymbols(level2(indData, row)),
       showCell:
-        levels === ""
+        levels === undefined
           ? true
           : level2(indData, row) == null
             ? true
@@ -259,11 +260,7 @@ const IndicatorRow = (props: {
             <tbody>
               <tr>
                 <td>
-                  <IconButton
-                    onClick={onClick}
-                    aria-label="expand"
-                    size="small"
-                  >
+                  <IconButton aria-label="expand" size="small">
                     {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
                   </IconButton>
                 </td>
@@ -287,9 +284,9 @@ const IndicatorRow = (props: {
 
           const cellAlpha = 0.3;
           const cellOpacity =
-            levels === ""
+            levels === undefined
               ? 1
-              : levels !== "" && lowDG
+              : levels !== undefined && lowDG
                 ? cellAlpha
                 : row?.showCell && !lowDG
                   ? 1
@@ -323,71 +320,69 @@ const IndicatorRow = (props: {
         })}
       </StyledTableRow>
 
-      <TableRow
-        key={indData.indicatorID + "-collapse"}
-        sx={{ visibility: open ? "visible" : "collapse" }}
+      <StyledTableCell
+        style={{ paddingBottom: 0, paddingTop: 0 }}
+        colSpan={unitNames.length + 1}
       >
-        <StyledTableCell key={indData.indicatorID + "-shortDescription"}>
-          {indData.shortDescription}
-        </StyledTableCell>
-        <StyledTableCell
-          key={indData.indicatorTitle + "-targetLevel"}
-          colSpan={unitNames.length}
-          align="center"
-          style={{ backgroundColor: "#E0E7EB" }}
-        >
-          {"Ønsket målnivå: " +
-            (indData.levelGreen === null
-              ? ""
-              : customFormat(",.0%")(indData.levelGreen))}
-        </StyledTableCell>
-      </TableRow>
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <TableRow key={indData.indicatorID + "-collapse"}>
+            <StyledTableCell key={indData.indicatorID + "-shortDescription"}>
+              {indData.shortDescription}
+            </StyledTableCell>
+            <StyledTableCell
+              key={indData.indicatorTitle + "-targetLevel"}
+              colSpan={unitNames.length}
+              align="center"
+              style={{ backgroundColor: "#E0E7EB" }}
+            >
+              {"Ønsket målnivå: " +
+                (indData.levelGreen === null
+                  ? ""
+                  : customFormat(",.0%")(indData.levelGreen))}
+            </StyledTableCell>
+          </TableRow>
 
-      <TableRow
-        key={indData.indicatorID + "-charts"}
-        sx={{ visibility: open ? "visible" : "collapse" }}
-      >
-        <StyledTableCell
-          key={indData.indicatorID + "-charts"}
-          colSpan={unitNames.length + 1}
-          align="center"
-        >
-          {responsiveChart}
-        </StyledTableCell>
-      </TableRow>
+          <TableRow key={indData.indicatorID + "-charts"}>
+            <StyledTableCell
+              key={indData.indicatorID + "-charts"}
+              colSpan={unitNames.length + 1}
+              align="center"
+            >
+              {responsiveChart}
+            </StyledTableCell>
+          </TableRow>
 
-      <StyledTableRow
-        key={indData.indicatorTitle + "-description"}
-        sx={{ visibility: open ? "visible" : "collapse" }}
-      >
-        <StyledTableCell
-          key={indData.indicatorTitle + "-decription"}
-          colSpan={unitNames.length + 1}
-        >
-          <ReactMarkdown
-            remarkPlugins={remarkPlugins}
-            components={{
-              p({ children }) {
-                return <p style={{ margin: 0 }}>{children}</p>;
-              },
-              a({ href, children }) {
-                return (
-                  <a
-                    href={href}
-                    target={href?.startsWith("#") ? "_self" : "_blank"}
-                    rel="noreferrer"
-                    style={{ color: "#006492" }}
-                  >
-                    {children}
-                  </a>
-                );
-              },
-            }}
-          >
-            {indData.longDescription}
-          </ReactMarkdown>
-        </StyledTableCell>
-      </StyledTableRow>
+          <StyledTableRow key={indData.indicatorTitle + "-description"}>
+            <StyledTableCell
+              key={indData.indicatorTitle + "-decription"}
+              colSpan={unitNames.length + 1}
+            >
+              <ReactMarkdown
+                remarkPlugins={remarkPlugins}
+                components={{
+                  p({ children }) {
+                    return <p style={{ margin: 0 }}>{children}</p>;
+                  },
+                  a({ href, children }) {
+                    return (
+                      <a
+                        href={href}
+                        target={href?.startsWith("#") ? "_self" : "_blank"}
+                        rel="noreferrer"
+                        style={{ color: "#006492" }}
+                      >
+                        {children}
+                      </a>
+                    );
+                  },
+                }}
+              >
+                {indData.longDescription}
+              </ReactMarkdown>
+            </StyledTableCell>
+          </StyledTableRow>
+        </Collapse>
+      </StyledTableCell>
     </React.Fragment>
   );
 };
@@ -410,7 +405,7 @@ const IndicatorSection = (props: {
   // one indicator not removed by the filter
   return data.map((indDataRow) => {
     const showRow =
-      levels === ""
+      levels === undefined
         ? true
         : indDataRow.data &&
             indDataRow.data
@@ -467,7 +462,7 @@ const RegistrySection = (props: {
 
   let showSection;
 
-  if (levels === "") {
+  if (levels === undefined) {
     showSection = true;
   } else {
     showSection = !regData.indicatorData
@@ -550,7 +545,7 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
   });
 
   if (indicatorQuery.isFetching || nestedDataQuery.isFetching) {
-    return null;
+    return <Skeleton variant="rectangular" width={"100%"} height={2000} />;
   }
 
   const chartData = indicatorQuery.data as Indicator[];

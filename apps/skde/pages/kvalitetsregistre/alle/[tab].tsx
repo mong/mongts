@@ -1,24 +1,41 @@
-import { UseQueryResult } from "@tanstack/react-query";
-import { MainRegister } from "qmongjs";
-import { useRegisterNamesQuery } from "qmongjs";
 import { GetStaticProps, GetStaticPaths } from "next";
-import { Layout } from "qmongjs";
-import classNames from "../../../src/styles/Kvalitetsregistre.module.css";
+import { Link, ThemeProvider } from "@mui/material";
+import { skdeTheme } from "qmongjs";
+import { PageWrapper } from "../../../src/components/StyledComponents/PageWrapper";
+import { Header, BreadCrumbPath } from "../../../src/components/Header";
 
 const MainRegisterPage = () => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const registryNameQuery: UseQueryResult<any, unknown> =
-    useRegisterNamesQuery();
-  if (registryNameQuery.isLoading) {
-    return null;
-  }
-  const registerNames = registryNameQuery.data;
+  // Header settings
+  const breadcrumbs: BreadCrumbPath = {
+    path: [
+      {
+        link: "https://www.skde.no",
+        text: "Forside",
+      },
+      {
+        link: "https://www.skde.no/resultater/",
+        text: "Tall om helsetjenesten",
+      },
+      {
+        link: `/kvalitetsregistre/`,
+        text: `Kvalitetsregistre/`,
+      },
+    ],
+  };
+
   return (
-    <Layout>
-      <div className={classNames.kvalitetsregister} data-testid="MainRegister">
-        <MainRegister registerNames={registerNames || []} />
-      </div>
-    </Layout>
+    <ThemeProvider theme={skdeTheme}>
+      <PageWrapper>
+        <Header
+          bgcolor="surface2.light"
+          title={"Kvalitetsregistre"}
+          breadcrumbs={breadcrumbs}
+        >
+          Siden er flyttet til{" "}
+          <Link href="/behandlingskvalitet/">behandlingskvalitet</Link>.
+        </Header>
+      </PageWrapper>
+    </ThemeProvider>
   );
 };
 
