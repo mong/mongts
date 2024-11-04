@@ -7385,7 +7385,6 @@ __metadata:
     "@types/simple-oauth2": "npm:5.0.7"
     compression: "npm:1.7.5"
     cors: "npm:2.8.5"
-    dotenv: "npm:16.4.5"
     eslint: "npm:9.14.0"
     express: "npm:4.21.1"
     express-rate-limit: "npm:7.4.1"
@@ -11390,13 +11389,6 @@ __metadata:
   version: 5.1.0
   resolution: "dotenv-expand@npm:5.1.0"
   checksum: 10/d52af2a6e4642979ae4221408f1b75102508dbe4f5bac1c0613f92a3cf3880d5c31f86b2f5cff3273f7c23e10421e75028546e8b6cd0376fcd20e3803b374e15
-  languageName: node
-  linkType: hard
-
-"dotenv@npm:16.4.5":
-  version: 16.4.5
-  resolution: "dotenv@npm:16.4.5"
-  checksum: 10/55a3134601115194ae0f924e54473459ed0d9fc340ae610b676e248cca45aa7c680d86365318ea964e6da4e2ea80c4514c1adab5adb43d6867fb57ff068f95c8
   languageName: node
   linkType: hard
 
@@ -15918,12 +15910,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jiti@npm:^2.3.3":
-  version: 2.3.3
-  resolution: "jiti@npm:2.3.3"
+"jiti@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "jiti@npm:2.4.0"
   bin:
     jiti: lib/jiti-cli.mjs
-  checksum: 10/21d1e89d909101c702769537e75ad87b433f980bc6938a6f64a90d1fbe7cb1510a0d4b82d4020b3093b47cebff5568af5e39d883e26aa4413564ced43b8cfd84
+  checksum: 10/10aa999a4f9bccc82b1dab9ebaf4484a8770450883c1bf7fafc07f8fca1e417fd8e7731e651337d1060c9e2ff3f97362dcdfd27e86d1f385db97f4adf7b5a21d
   languageName: node
   linkType: hard
 
@@ -16303,19 +16295,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:5.33.3":
-  version: 5.33.3
-  resolution: "knip@npm:5.33.3"
+"knip@npm:5.36.2":
+  version: 5.36.2
+  resolution: "knip@npm:5.36.2"
   dependencies:
     "@nodelib/fs.walk": "npm:1.2.8"
     "@snyk/github-codeowners": "npm:1.1.0"
     easy-table: "npm:1.2.0"
     enhanced-resolve: "npm:^5.17.1"
     fast-glob: "npm:^3.3.2"
-    jiti: "npm:^2.3.3"
+    jiti: "npm:^2.4.0"
     js-yaml: "npm:^4.1.0"
     minimist: "npm:^1.2.8"
-    picocolors: "npm:^1.0.0"
+    picocolors: "npm:^1.1.0"
     picomatch: "npm:^4.0.1"
     pretty-ms: "npm:^9.0.0"
     smol-toml: "npm:^1.3.0"
@@ -16329,7 +16321,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10/d6227a43666ce9732fe6b797a0c348bc46f59603826766c2049f44682ce96c23f0fb85b659d243dd36f98098a83a4e500d1044f3114a32564a39cf92dce8e853
+  checksum: 10/2ccd4d808e40edeb5d22155019ad762133f19c9ff6d38b44088ff30958ecd4162d76d3be666ec81690235196e46b238dd5cf4210ae676eedca39ee3fc59657f7
   languageName: node
   linkType: hard
 
@@ -18128,7 +18120,7 @@ __metadata:
     decap-server: "npm:3.1.2"
     eslint: "npm:9.14.0"
     husky: "npm:9.1.6"
-    knip: "npm:5.33.3"
+    knip: "npm:5.36.2"
     lint-staged: "npm:15.2.10"
     prettier: "npm:3.3.3"
     turbo: "npm:2.2.3"
