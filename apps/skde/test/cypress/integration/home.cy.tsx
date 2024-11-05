@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-// The tests are commented out because the new front page is published on FNSP
+// The tests are commented out because the front page now just redirects to FNSP
 
 // context("Push some front page buttons", () => {
 //   beforeEach(() => {
