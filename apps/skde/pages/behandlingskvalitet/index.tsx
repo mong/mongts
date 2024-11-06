@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Dispatch, SetStateAction } from "react";
 import {
   Box,
   CssBaseline,
@@ -68,6 +68,24 @@ const chartColours = [
   "#78909C",
 ];
 
+type ColourMap = { unitName: string; colour: string };
+
+const updateColourMap = (
+  colourMap: ColourMap[],
+  setColourMap: Dispatch<SetStateAction<ColourMap[]>>,
+  newUnits: string[],
+) => {
+  newUnits.map((unit) => {
+    if (!colourMap.map((row) => row.unitName).includes(unit)) {
+      colourMap.push({
+        unitName: unit,
+        colour: chartColours[colourMap.length],
+      });
+      setColourMap(colourMap);
+    }
+  });
+};
+
 export default function TreatmentQualityPage() {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
 
@@ -94,6 +112,8 @@ export default function TreatmentQualityPage() {
   ]);
   const [dataQualitySelected, setDataQualitySelected] =
     useState<boolean>(false);
+
+  const [colourMap, setColourMap] = useState<ColourMap[]>([]);
 
   const selectedRow = useQueryParam(
     "selected_row",
@@ -160,6 +180,12 @@ export default function TreatmentQualityPage() {
 
     setDataQualitySelected(
       filterSettings.get(dataQualityKey)?.[0].value === "true" ? true : false,
+    );
+
+    updateColourMap(
+      colourMap,
+      setColourMap,
+      filterSettings.get(treatmentUnitsKey).map((value) => value.value),
     );
   };
 
@@ -248,6 +274,12 @@ export default function TreatmentQualityPage() {
     if (action.type === FilterSettingsActionType.RESET_SELECTIONS) {
       setAllSelected(newFilterSettings);
     }
+
+    updateColourMap(
+      colourMap,
+      setColourMap,
+      valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+    );
   };
 
   // Use the custom hook to observe the addition of the selected row element, if
@@ -255,7 +287,7 @@ export default function TreatmentQualityPage() {
   if (typeof document !== "undefined") {
     useOnElementAdded(selectedRow, queriesReady, scrollToSelectedRow);
   }
-
+  console.log(colourMap);
   return (
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
@@ -325,7 +357,16 @@ export default function TreatmentQualityPage() {
                         dataQuality={dataQualitySelected}
                         tableType="allRegistries"
                         registerNames={registers}
-                        unitNames={selectedTreatmentUnits}
+                        unitNames={colourMap
+                          .filter((el) =>
+                            selectedTreatmentUnits.includes(el.unitName),
+                          )
+                          .sort(
+                            (a: ColourMap, b: ColourMap) =>
+                              selectedTreatmentUnits.indexOf(a.unitName) -
+                              selectedTreatmentUnits.indexOf(b.unitName),
+                          )
+                          .map((el) => el.unitName)}
                         treatmentYear={selectedYear}
                         colspan={selectedTreatmentUnits.length + 1}
                         medicalFieldFilter={selectedMedicalFields}
@@ -338,7 +379,16 @@ export default function TreatmentQualityPage() {
                         )}
                         showTreatmentYear={true}
                         nestedUnitNames={nestedUnitNames}
-                        chartColours={chartColours}
+                        chartColours={colourMap
+                          .filter((el) =>
+                            selectedTreatmentUnits.includes(el.unitName),
+                          )
+                          .sort(
+                            (a: ColourMap, b: ColourMap) =>
+                              selectedTreatmentUnits.indexOf(a.unitName) -
+                              selectedTreatmentUnits.indexOf(b.unitName),
+                          )
+                          .map((el) => el.colour)}
                       />
                     </IndicatorTableWrapper>
                   )
