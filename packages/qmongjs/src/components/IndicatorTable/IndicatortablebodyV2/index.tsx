@@ -500,7 +500,10 @@ const RegistrySection = (props: {
       <React.Fragment>
         <TableHead>
           <TableRow key={regData.registerName + "-row"}>
-            <StyledTableCellStart key={regData.registerName}>
+            <StyledTableCellStart
+              key={regData.registerName}
+              sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
+            >
               {regData.registerFullName}
             </StyledTableCellStart>
 
@@ -514,7 +517,11 @@ const RegistrySection = (props: {
               }
 
               return (
-                <CellType align="center" key={regData.registerName + index}>
+                <CellType
+                  align="center"
+                  key={regData.registerName + index}
+                  sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
+                >
                   {row}
                 </CellType>
               );
@@ -589,7 +596,7 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
   });
 
   return (
-    <StyledTable>
+    <StyledTable sx={{ marginTop: "10px" }}>
       {rowDataFiltered.map((row) => (
         <RegistrySection
           key={row.registerName}
