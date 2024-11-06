@@ -311,9 +311,11 @@ const IndicatorRow = (props: {
 
           let CellType;
 
-          index === arr.length - 1
-            ? (CellType = StyledTableCellEnd)
-            : (CellType = StyledTableCellMiddle);
+          if (index === arr.length - 1) {
+            CellType = StyledTableCellEnd;
+          } else {
+            CellType = StyledTableCellMiddle;
+          }
 
           return (
             <CellType
@@ -503,9 +505,12 @@ const RegistrySection = (props: {
 
             {unitNames.map((row, index, arr) => {
               let CellType;
-              index === arr.length - 1
-                ? (CellType = StyledTableCellEnd)
-                : (CellType = StyledTableCellMiddle);
+
+              if (index === arr.length - 1) {
+                CellType = StyledTableCellEnd;
+              } else {
+                CellType = StyledTableCellMiddle;
+              }
 
               return (
                 <CellType align="center" key={regData.registerName + index}>
