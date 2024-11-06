@@ -8,16 +8,19 @@ import { Indicator, RegisterData, IndicatorData } from "types";
 import Button from "@mui/material/Button";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
-import { newLevelSymbols, level2 } from "qmongjs";
+import { newLevelSymbols, level2, skdeTheme } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
 import { useScreenSize } from "@visx/responsive";
-import { Skeleton, Collapse } from "@mui/material";
+import { Skeleton, Collapse, Stack, Typography } from "@mui/material";
 import {
   StyledTable,
   StyledTableRow,
   StyledTableCell,
+  StyledTableCellStart,
+  StyledTableCellMiddle,
+  StyledTableCellEnd,
 } from "./IndicatorTableBodyV2Styles";
 import {
   LinechartBase,
@@ -231,9 +234,10 @@ const IndicatorRow = (props: {
     const buttonText = showBars ? "Vis tidstrend" : "Vis alle sykehus";
 
     return (
-      <>
+      <Stack>
         <Button
           variant="outlined"
+          sx={{ maxWidth: "300px" }}
           onClick={() => {
             setShowBars(!showBars);
           }}
@@ -242,11 +246,26 @@ const IndicatorRow = (props: {
         </Button>
         <br />
         {figure}
-      </>
+      </Stack>
     );
   };
 
   const responsiveChart = open ? <ResponsiveChart /> : null;
+
+  const emptyRow = (
+    <TableRow key={indData.indicatorID + "-collapse"}>
+      <StyledTableCell
+        style={{
+          paddingBottom: "4px",
+          paddingTop: 0,
+          paddingLeft: 0,
+          paddingRight: 0,
+          backgroundColor: skdeTheme.palette.background.paper,
+        }}
+        colSpan={unitNames.length + 1}
+      ></StyledTableCell>
+    </TableRow>
+  );
 
   return (
     <React.Fragment key={indData.indicatorTitle + "-indicatorSection"}>
@@ -255,7 +274,7 @@ const IndicatorRow = (props: {
         onClick={onClick}
         style={{ cursor: "pointer" }}
       >
-        <StyledTableCell key={indData.indicatorID}>
+        <StyledTableCellStart key={indData.indicatorID}>
           <table>
             <tbody>
               <tr>
@@ -268,9 +287,9 @@ const IndicatorRow = (props: {
               </tr>
             </tbody>
           </table>
-        </StyledTableCell>
+        </StyledTableCellStart>
 
-        {rowDataSorted.map((row, index) => {
+        {rowDataSorted.map((row, index, arr) => {
           const lowDG = row?.dg == null ? false : row?.dg < 0.6 ? true : false;
           const noData = row?.denominator == null ? true : false;
           const lowN =
@@ -306,8 +325,16 @@ const IndicatorRow = (props: {
                 ? "Ingen data"
                 : row?.numerator + " av " + row?.denominator;
 
+          let CellType;
+
+          if (index === arr.length - 1) {
+            CellType = StyledTableCellEnd;
+          } else {
+            CellType = StyledTableCellMiddle;
+          }
+
           return (
-            <StyledTableCell
+            <CellType
               sx={{ opacity: cellOpacity }}
               align={"center"}
               key={indData.indicatorID + index}
@@ -315,48 +342,42 @@ const IndicatorRow = (props: {
               {cellData}
               <br />
               {patientCounts}
-            </StyledTableCell>
+            </CellType>
           );
         })}
       </StyledTableRow>
 
-      <StyledTableCell
-        style={{ paddingBottom: 0, paddingTop: 0 }}
-        colSpan={unitNames.length + 1}
-      >
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          <TableRow key={indData.indicatorID + "-collapse"}>
-            <StyledTableCell key={indData.indicatorID + "-shortDescription"}>
+      {!open ? emptyRow : null}
+
+      <TableRow>
+        <StyledTableCell
+          style={{
+            paddingBottom: 0,
+            paddingTop: 0,
+            paddingLeft: 0,
+            paddingRight: 0,
+            backgroundColor: "white",
+          }}
+          colSpan={unitNames.length + 1}
+        >
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <Typography variant="body2" sx={{ margin: "10px" }}>
               {indData.shortDescription}
-            </StyledTableCell>
-            <StyledTableCell
-              key={indData.indicatorTitle + "-targetLevel"}
-              colSpan={unitNames.length}
-              align="center"
-              style={{ backgroundColor: "#E0E7EB" }}
-            >
+            </Typography>
+
+            <Typography variant="body2" sx={{ margin: "10px" }}>
               {"Ønsket målnivå: " +
                 (indData.levelGreen === null
                   ? ""
                   : customFormat(",.0%")(indData.levelGreen))}
-            </StyledTableCell>
-          </TableRow>
+            </Typography>
 
-          <TableRow key={indData.indicatorID + "-charts"}>
-            <StyledTableCell
-              key={indData.indicatorID + "-charts"}
-              colSpan={unitNames.length + 1}
-              align="center"
-            >
+            <div style={{ display: "flex", justifyContent: "center" }}>
               {responsiveChart}
-            </StyledTableCell>
-          </TableRow>
+            </div>
 
-          <StyledTableRow key={indData.indicatorTitle + "-description"}>
-            <StyledTableCell
-              key={indData.indicatorTitle + "-decription"}
-              colSpan={unitNames.length + 1}
-            >
+            <Typography variant="body2" sx={{ margin: "10px" }}>
+              <b>Om kvalitetsindikatoren</b>
               <ReactMarkdown
                 remarkPlugins={remarkPlugins}
                 components={{
@@ -379,10 +400,12 @@ const IndicatorRow = (props: {
               >
                 {indData.longDescription}
               </ReactMarkdown>
-            </StyledTableCell>
-          </StyledTableRow>
-        </Collapse>
-      </StyledTableCell>
+            </Typography>
+          </Collapse>
+        </StyledTableCell>
+      </TableRow>
+
+      {open ? emptyRow : null}
     </React.Fragment>
   );
 };
@@ -483,18 +506,30 @@ const RegistrySection = (props: {
       <React.Fragment>
         <TableHead>
           <TableRow key={regData.registerName + "-row"}>
-            <StyledTableCell key={regData.registerName}>
+            <StyledTableCellStart
+              key={regData.registerName}
+              sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
+            >
               {regData.registerFullName}
-            </StyledTableCell>
+            </StyledTableCellStart>
 
-            {unitNames.map((row, index) => {
+            {unitNames.map((row, index, arr) => {
+              let CellType;
+
+              if (index === arr.length - 1) {
+                CellType = StyledTableCellEnd;
+              } else {
+                CellType = StyledTableCellMiddle;
+              }
+
               return (
-                <StyledTableCell
+                <CellType
                   align="center"
                   key={regData.registerName + index}
+                  sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
                 >
                   {row}
-                </StyledTableCell>
+                </CellType>
               );
             })}
           </TableRow>
@@ -567,7 +602,7 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
   });
 
   return (
-    <StyledTable>
+    <StyledTable sx={{ marginTop: "10px" }}>
       {rowDataFiltered.map((row) => (
         <RegistrySection
           key={row.registerName}

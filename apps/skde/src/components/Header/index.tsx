@@ -11,6 +11,19 @@ type HeaderProps = PropsWithChildren<{
   maxWidth?: false | Breakpoint;
 }>;
 
+/**
+ * A composite header component that includes the top and middle sections
+ * of the page. It displays breadcrumbs and a title, and can optionally
+ * include custom children content and specify background color and
+ * maximum width.
+ *
+ * @param {HeaderProps} props - The properties for the Header component.
+ * @param {string} props.title - The title to be displayed in the header.
+ * @param {BreadCrumbPath} props.breadcrumbs - The breadcrumb path for navigation.
+ * @param {React.ReactNode} [props.children] - Optional children content to be displayed below the title.
+ * @param {string} [props.bgcolor] - Optional background color for the middle section of the header.
+ * @param {false | Breakpoint} [props.maxWidth] - Optional maximum width for the header sections.
+ */
 export const Header = (props: HeaderProps) => {
   return (
     <>
