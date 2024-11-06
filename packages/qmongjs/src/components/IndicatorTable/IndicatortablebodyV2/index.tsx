@@ -8,7 +8,7 @@ import { Indicator, RegisterData, IndicatorData } from "types";
 import Button from "@mui/material/Button";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
-import { newLevelSymbols, level2, skdeTheme } from "qmongjs";
+import { newLevelSymbols, level2, skdeTheme, treatmentUnitsKey } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
@@ -31,6 +31,7 @@ import {
   customFormat,
   useIndicatorQuery,
 } from "qmongjs";
+import { ChartRow } from "../chartrow";
 
 const remarkPlugins: PluggableList = [remarkGfm];
 
@@ -123,7 +124,11 @@ const IndicatorRow = (props: {
   chartData: Indicator[];
   rowID: string;
   openRowID: string;
+  registryName: string;
   setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
+  context: string,
+  type: string,
+  year: number,
 }) => {
   const {
     unitNames,
@@ -133,6 +138,10 @@ const IndicatorRow = (props: {
     rowID,
     openRowID,
     setOpenRowID,
+    registryName,
+    context,
+    type,
+    year
   } = props;
 
   let open: boolean;
@@ -267,6 +276,28 @@ const IndicatorRow = (props: {
     </TableRow>
   );
 
+  const description = {
+    id: indData.indicatorID,
+    dg_id: null,
+    include: null,
+    title: null,
+    name: null,
+    type: indData.indType,
+    sformat: indData.format ? indData.format : "",
+    measure_unit: null,
+    min_denominator: null,
+    min_value: null,
+    max_value: null,
+    level_green: indData.levelGreen,
+    level_yellow: indData.levelYellow,
+    level_direction: indData.levelDirection,
+    short_description: indData.shortDescription,
+    long_description: indData.longDescription,
+    registry_id: indData.registerID,
+    rname: null,
+    full_name: registryName,
+  }
+
   return (
     <React.Fragment key={indData.indicatorTitle + "-indicatorSection"}>
       <StyledTableRow
@@ -373,7 +404,17 @@ const IndicatorRow = (props: {
             </Typography>
 
             <div style={{ display: "flex", justifyContent: "center" }}>
-              {responsiveChart}
+              <table width={2000}>
+              <ChartRow 
+              context={{context: context, type: type}}
+              colspan={1}
+              treatmentYear={year}
+              indicatorData={chartData}
+              selectedTreatmentUnits={unitNames}
+              update_selected_row={(onClick)}
+              description={description}
+              showDescription={false}></ChartRow>
+              </table>
             </div>
 
             <Typography variant="body2" sx={{ margin: "10px" }}>
@@ -420,9 +461,13 @@ const IndicatorSection = (props: {
   data: IndicatorData[];
   chartData: Indicator[];
   openRowID: string;
+  registryName: string;
   setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
+  context: string,
+  type: string,
+  year: number,
 }) => {
-  const { unitNames, levels, data, chartData, openRowID, setOpenRowID } = props;
+  const { unitNames, levels, data, chartData, openRowID, setOpenRowID, registryName, context, type, year } = props;
 
   // Map indicators to rows and show only rows where there is at least
   // one indicator not removed by the filter
@@ -449,6 +494,10 @@ const IndicatorSection = (props: {
         rowID={indDataRow.indicatorID}
         openRowID={openRowID}
         setOpenRowID={setOpenRowID}
+        registryName={registryName}
+        context={context}
+        type={type}
+        year={year}
       />
     ) : null;
 
@@ -467,8 +516,11 @@ const RegistrySection = (props: {
   chartData: Indicator[];
   openRowID: string;
   setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
+  context: string,
+  type: string,
+  year: number,
 }) => {
-  const { unitNames, levels, regData, chartData, openRowID, setOpenRowID } =
+  const { unitNames, levels, regData, chartData, openRowID, setOpenRowID, context, type, year } =
     props;
 
   regData.indicatorData.sort((a: IndicatorData, b: IndicatorData) => {
@@ -544,6 +596,10 @@ const RegistrySection = (props: {
             chartData={chartData}
             openRowID={openRowID}
             setOpenRowID={setOpenRowID}
+            registryName={regData.registerFullName}
+            context={context}
+            type={type}
+            year={year}
           />
         </TableBody>
       </React.Fragment>
@@ -614,6 +670,9 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
           })}
           openRowID={openRowID}
           setOpenRowID={setOpenRowID}
+          context={context}
+          type={type}
+          year={year}
         />
       ))}
     </StyledTable>
