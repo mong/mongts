@@ -7,6 +7,17 @@ type BeadLineProps = {
   lang: "nb" | "nn" | "en";
 };
 
+/**
+ * A component for rendering a BeadLine visualization.
+ *
+ * @param boxData A list of objects, where the first element is the map data and the second element is the abacus data.
+ * @param lang The language of the visualization. May be "nb", "nn", or "en".
+ *
+ * The component renders an {@link Abacus} component with the given data and language.
+ *
+ * @example
+ * <BeadLine boxData={boxData} lang="nb" />
+ */
 export default function BeadLine({ boxData, lang }: BeadLineProps) {
   const abacusX: Exclude<keyof AtlasData, "year" | "bohf"> = boxData.find(
     (boxd) => boxd.type === "map",

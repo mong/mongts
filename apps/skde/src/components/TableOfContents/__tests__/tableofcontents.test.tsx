@@ -8,6 +8,9 @@
 
 import { render, fireEvent } from "@testing-library/react";
 import { TableOfContents } from "..";
+import React from "react";
+import { test, expect } from "vitest";
+import "@testing-library/jest-dom";
 
 const resultatbox1 = {
   overskrift: "Kirurgiske inngrep for endometriose",
@@ -67,4 +70,36 @@ test("English menu", async () => {
 test("Norwegian menu", async () => {
   const { container } = render(<TableOfContents lang="no" tocData={tocData} />);
   expect(container).toMatchSnapshot();
+});
+
+test("Another tocData", async () => {
+  const tocData = [
+    {
+      level: 1,
+      elemID: "test",
+      children: [
+        {
+          level: 2,
+          elemID: "test-child",
+          children: [],
+        },
+      ],
+    },
+  ];
+  const { container, getByTestId } = render(
+    <TableOfContents tocData={tocData} />,
+  );
+  expect(container).toMatchSnapshot();
+  const accordionSummary = getByTestId("toc-header");
+  const accordionDetails = getByTestId("toc-content");
+
+  expect(accordionDetails).not.toBeVisible();
+
+  fireEvent.click(accordionSummary);
+
+  expect(accordionDetails).toBeVisible();
+
+  fireEvent.click(accordionSummary);
+  /** Should probably not be visible... */
+  expect(accordionDetails).toBeVisible();
 });

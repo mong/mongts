@@ -30,6 +30,29 @@ type ChipSelectionProps = {
   hoverBoxMaxWidth: number;
 };
 
+/**
+ * Component for two chips with mutually exclusive choices.
+ *
+ * The component accepts a boolean state variable and a state setter.
+ * If the left chip is selected when the state is true, set trueChip=left, and vice versa.
+ *
+ * The component wraps each chip in a Hoverbox, which displays
+ * the corresponding help text when hovered over.
+ *
+ * @param props ChipSelectionProps, with the following properties:
+ *   - leftChipLabel: The label for the left chip.
+ *   - rightChipLabel: The label for the right chip.
+ *   - leftChipHelpText: The help text for the left chip.
+ *   - rightChipHelpText: The help text for the right chip.
+ *   - state: The boolean state variable.
+ *   - stateSetter: The state setter.
+ *   - trueChip: A string indicating whether the left chip is selected
+ *     when the state is true.
+ *   - hoverBoxOffset: An array of two numbers indicating the x and y offset
+ *     of the hoverbox.
+ *   - hoverBoxPlacement: A string indicating the placement of the hoverbox.
+ *   - hoverBoxMaxWidth: The maximum width of the hoverbox.
+ */
 export const ChipSelection = (props: ChipSelectionProps) => {
   const {
     leftChipLabel,

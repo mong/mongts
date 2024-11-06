@@ -18,6 +18,14 @@ export const toBarchart = <Data, Keys extends (string & keyof Data)[]>(
   return stackData;
 };
 
+/**
+ * Returns a comparator function for sorting an array of objects based on a specified key.
+ *
+ * @param order - The order of sorting: "asc" for ascending or "desc" for descending.
+ * @param orderBy - The key of the object by which to sort.
+ * @param varType - The type of the variable used for comparison, either string or number.
+ * @returns A comparator function that can be used to sort an array of objects.
+ */
 export function getOrderComparator<
   D extends { [n: string]: string | number },
   K extends string & keyof D,

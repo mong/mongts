@@ -16,6 +16,22 @@ type HeaderMiddleProps = PropsWithChildren<{
   maxWidth?: false | Breakpoint;
 }>;
 
+/**
+ * A component for displaying a title and subtitle in the middle section of the page.
+ *
+ * If the `NEXT_PUBLIC_VERIFY` environment variable is set, the component will display a warning
+ * message indicating that the data is for testing purposes only, and provide a link to the
+ * official website.
+ *
+ * The component takes the following props:
+ *
+ * - `title`: The title to be displayed.
+ * - `children`: The subtitle to be displayed.
+ * - `bgcolor`: The background color of the component. If not specified, the background color will
+ *              be set to "primary.light".
+ * - `maxWidth`: The maximum width of the component. If not specified, the component will take up
+ *              the full width of the page.
+ */
 export const HeaderMiddle = (props: HeaderMiddleProps) => {
   const router = useRouter();
   const mainUrl = "https://apps.skde.no" + router.asPath;

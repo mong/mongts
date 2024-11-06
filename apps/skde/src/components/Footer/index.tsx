@@ -22,6 +22,12 @@ type FooterProps = {
   className?: string;
 };
 
+/**
+ * Footer component that renders the footer of the page.
+ * @param page - The current page.
+ * @param maxWidth - The maximum width of the footer.
+ * @param className - The class name of the footer.
+ */
 export const Footer = ({ page, maxWidth, className }: FooterProps) => {
   const kvalitet = ["behandlingskvalitet", "sykehusprofil"].includes(page);
   const helseatlas = page === "helseatlas";

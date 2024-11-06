@@ -1,5 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 
+/**
+ * Fetches a map from a json file.
+ *
+ * @param filename The filename of the json file containing the map.
+ * @returns A useQuery hook that fetches the map from the given filename.
+ *
+ * The map is cached for a year, and refetched on window focus.
+ */
 export const FetchMap = (filename: string) => {
   const fetching = async (filename) => {
     const response = await fetch(filename);
