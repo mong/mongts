@@ -20,6 +20,7 @@ interface Props {
   update_selected_row(row: string): void;
   lastCompleteYear?: number;
   chartColours: string[];
+  showDescription?: boolean;
 }
 
 export function ChartRow(props: Props) {
@@ -34,6 +35,7 @@ export function ChartRow(props: Props) {
     indicatorData,
     lastCompleteYear,
     chartColours,
+    showDescription = true,
   } = props;
 
   const svgContainerRef = useRef<HTMLDivElement>(null);
@@ -98,10 +100,12 @@ export function ChartRow(props: Props) {
             lastCompleteYear={lastCompleteYear}
             chartColours={chartColours}
           />
-          <ChartRowDescription
-            description_text={description.long_description ?? ""}
-            delivery_time={delivery_time}
-          />
+          {showDescription && (
+            <ChartRowDescription
+              description_text={description.long_description ?? ""}
+              delivery_time={delivery_time}
+            />
+          )}
         </div>
       </td>
     </tr>
