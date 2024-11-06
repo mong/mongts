@@ -139,6 +139,16 @@ const IndicatorRow = (props: {
     </TableRow>
   );
 
+  let levelSign = "";
+
+  if (indData.levelGreen != null) {
+    if (indData.levelDirection === 1 && indData.levelGreen < 1) {
+      levelSign = "≥";
+    } else if (indData.levelDirection === 0 && indData.levelGreen > 0) {
+      levelSign = "≤";
+    }
+  }
+
   const description = {
     id: indData.indicatorID,
     dg_id: null,
@@ -260,10 +270,12 @@ const IndicatorRow = (props: {
             </Typography>
 
             <Typography variant="body2" sx={{ margin: "10px" }}>
-              {"Ønsket målnivå: " +
-                (indData.levelGreen === null
-                  ? ""
-                  : customFormat(",.0%")(indData.levelGreen))}
+              {"Ønsket målnivå: "}
+              {indData.levelGreen === null ? (
+                <b>{"Ikke oppgitt"}</b>
+              ) : (
+                <b>{levelSign + customFormat(",.0%")(indData.levelGreen)}</b>
+              )}
             </Typography>
 
             <div style={{ display: "flex", justifyContent: "center" }}>
