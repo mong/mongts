@@ -5,6 +5,12 @@ import fs from "fs";
 import FrontPage, { HomeProps } from "../../src/components/Atlas/FrontPage";
 
 const Home = ({ atlasInfo }: HomeProps) => {
+  const host = typeof window !== "undefined" ? window.location.host : "";
+  if (host.endsWith("helseatlas.no")) {
+    window.location.href = "https://www.skde.no/helseatlas/";
+    return null;
+  }
+
   return <FrontPage atlasInfo={atlasInfo} lang="no" />;
 };
 
