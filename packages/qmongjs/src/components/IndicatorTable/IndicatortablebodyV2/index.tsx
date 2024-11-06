@@ -8,7 +8,7 @@ import { Indicator, RegisterData, IndicatorData } from "types";
 import Button from "@mui/material/Button";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
-import { newLevelSymbols, level2 } from "qmongjs";
+import { newLevelSymbols, level2, skdeTheme } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
@@ -334,10 +334,11 @@ const IndicatorRow = (props: {
       <TableRow key={indData.indicatorID + "-collapse"}>
         <StyledTableCell
           style={{
-            paddingBottom: 0,
+            paddingBottom: "4px",
             paddingTop: 0,
             paddingLeft: 0,
             paddingRight: 0,
+            backgroundColor: skdeTheme.palette.background.paper,
           }}
           colSpan={unitNames.length + 1}
         >
