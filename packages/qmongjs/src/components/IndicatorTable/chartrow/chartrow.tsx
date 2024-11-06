@@ -33,7 +33,7 @@ export function ChartRow(props: Props) {
     selectedTreatmentUnits,
     indicatorData,
     lastCompleteYear,
-    showDescription=true,
+    showDescription = true,
   } = props;
 
   const svgContainerRef = useRef<HTMLDivElement>(null);
@@ -97,10 +97,12 @@ export function ChartRow(props: Props) {
             max_value={max_value}
             lastCompleteYear={lastCompleteYear}
           />
-          {showDescription && <ChartRowDescription
-            description_text={description.long_description ?? ""}
-            delivery_time={delivery_time}
-          />}
+          {showDescription && (
+            <ChartRowDescription
+              description_text={description.long_description ?? ""}
+              delivery_time={delivery_time}
+            />
+          )}
         </div>
       </td>
     </tr>
