@@ -24,25 +24,6 @@ import { LineChartTooltip } from "./tooltip";
 import { Description, Indicator } from "types";
 import { Typography } from "@mui/material";
 
-const chart_colors = [
-  "#00263d",
-  "#4F9A94",
-  "#90CAF9",
-  "#B0BEC5",
-  "#FFE082",
-  "#2962FF",
-  "#CE93D8",
-  "#9C786C",
-  "#BCAAA4",
-  "#F8BBD0",
-  "#9FA8DA",
-  "#80DEEA",
-  "#A5D6A7",
-  "#E6EE9C",
-  "#FFAB91",
-  "#78909C",
-];
-
 export interface Props {
   svgContainerRef: React.RefObject<HTMLDivElement>;
   showLevel: boolean;
@@ -53,6 +34,7 @@ export interface Props {
   margin?: Margin;
   lastCompleteYear?: number;
   description: Description;
+  chartColours: string[];
 }
 
 const MARGIN = { top: 8, bottom: 34, right: 0.14, left: 0.05 };
@@ -68,6 +50,7 @@ const LineChart = (props: Props) => {
     margin = {},
     lastCompleteYear,
     description,
+    chartColours,
   } = props;
   //tooltip boundary detector
 
@@ -121,7 +104,7 @@ const LineChart = (props: Props) => {
 
   const lineColorScale = scaleOrdinal<string>()
     .domain(pathLabels)
-    .range(chart_colors);
+    .range(chartColours);
 
   const percentage: boolean =
     typeof tickformat === "string"

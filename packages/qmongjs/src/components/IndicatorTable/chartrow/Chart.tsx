@@ -20,6 +20,7 @@ export interface ChartProps {
   selectedTreatmentUnits: string[];
   max_value?: number;
   lastCompleteYear?: number;
+  chartColours: string[];
 }
 
 export function Chart(props: ChartProps) {
@@ -127,7 +128,7 @@ const GetBarChart = (props: ChartProps) => {
 };
 
 const GetLineChart = (props: ChartProps) => {
-  const { description, selectedTreatmentUnits } = props;
+  const { description, selectedTreatmentUnits, chartColours } = props;
 
   const {
     isLoading,
@@ -160,7 +161,12 @@ const GetLineChart = (props: ChartProps) => {
     const lastCompleteYear = getLastCompleteYear(lastCompleteDate, 0, true);
 
     return (
-      <LineChart {...props} data={data} lastCompleteYear={lastCompleteYear} />
+      <LineChart
+        {...props}
+        data={data}
+        lastCompleteYear={lastCompleteYear}
+        chartColours={chartColours}
+      />
     );
   } else {
     return null;

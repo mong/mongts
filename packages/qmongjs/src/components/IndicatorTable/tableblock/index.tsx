@@ -22,6 +22,7 @@ interface TableBlockProps {
   showLevelFilter: string;
   colspan: number;
   onEmptyStatusChanged?: (registerName: string, isEmpty: boolean) => void;
+  chartColours: string[];
 }
 
 const SkeletonRow = (
@@ -44,6 +45,7 @@ const TableBlock = (props: TableBlockProps) => {
     blockTitle,
     unitNames,
     onEmptyStatusChanged,
+    chartColours,
   } = props;
   const queryContext = dataQuality
     ? { context, type: "dg" }
@@ -147,6 +149,7 @@ const TableBlock = (props: TableBlockProps) => {
         showLevelFilter={showLevelFilter}
         colspan={colspan}
         treatmentYear={treatmentYear}
+        chartColours={chartColours}
       />
     );
   });

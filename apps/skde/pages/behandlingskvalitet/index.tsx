@@ -49,6 +49,25 @@ import { IndicatorTableSkeleton } from "qmongjs";
 import { LayoutHead } from "../../src/components/LayoutHead";
 import { valueOrDefault, defaultTableContext } from "./utils/valueOrDefault";
 
+const chartColours = [
+  "#00263d",
+  "#4F9A94",
+  "#90CAF9",
+  "#B0BEC5",
+  "#FFE082",
+  "#2962FF",
+  "#CE93D8",
+  "#9C786C",
+  "#BCAAA4",
+  "#F8BBD0",
+  "#9FA8DA",
+  "#80DEEA",
+  "#A5D6A7",
+  "#E6EE9C",
+  "#FFAB91",
+  "#78909C",
+];
+
 export default function TreatmentQualityPage() {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
 
@@ -319,6 +338,7 @@ export default function TreatmentQualityPage() {
                         )}
                         showTreatmentYear={true}
                         nestedUnitNames={nestedUnitNames}
+                        chartColours={chartColours}
                       />
                     </IndicatorTableWrapper>
                   )

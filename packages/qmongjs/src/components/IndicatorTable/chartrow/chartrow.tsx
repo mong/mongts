@@ -19,6 +19,7 @@ interface Props {
   selectedTreatmentUnits: string[];
   update_selected_row(row: string): void;
   lastCompleteYear?: number;
+  chartColours: string[];
 }
 
 export function ChartRow(props: Props) {
@@ -32,6 +33,7 @@ export function ChartRow(props: Props) {
     selectedTreatmentUnits,
     indicatorData,
     lastCompleteYear,
+    chartColours,
   } = props;
 
   const svgContainerRef = useRef<HTMLDivElement>(null);
@@ -94,6 +96,7 @@ export function ChartRow(props: Props) {
             indicatorData={indicatorData}
             max_value={max_value}
             lastCompleteYear={lastCompleteYear}
+            chartColours={chartColours}
           />
           <ChartRowDescription
             description_text={description.long_description ?? ""}
