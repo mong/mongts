@@ -13,7 +13,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
 import { useScreenSize } from "@visx/responsive";
-import { Skeleton, Collapse } from "@mui/material";
+import { Skeleton, Collapse, Stack, Typography } from "@mui/material";
 import {
   StyledTable,
   StyledTableRow,
@@ -234,9 +234,10 @@ const IndicatorRow = (props: {
     const buttonText = showBars ? "Vis tidstrend" : "Vis alle sykehus";
 
     return (
-      <>
+      <Stack>
         <Button
           variant="outlined"
+          sx={{ maxWidth: "300px" }}
           onClick={() => {
             setShowBars(!showBars);
           }}
@@ -245,11 +246,26 @@ const IndicatorRow = (props: {
         </Button>
         <br />
         {figure}
-      </>
+      </Stack>
     );
   };
 
   const responsiveChart = open ? <ResponsiveChart /> : null;
+
+  const emptyRow = (
+    <TableRow key={indData.indicatorID + "-collapse"}>
+      <StyledTableCell
+        style={{
+          paddingBottom: "4px",
+          paddingTop: 0,
+          paddingLeft: 0,
+          paddingRight: 0,
+          backgroundColor: skdeTheme.palette.background.paper,
+        }}
+        colSpan={unitNames.length + 1}
+      ></StyledTableCell>
+    </TableRow>
+  );
 
   return (
     <React.Fragment key={indData.indicatorTitle + "-indicatorSection"}>
@@ -331,75 +347,65 @@ const IndicatorRow = (props: {
         })}
       </StyledTableRow>
 
-      <TableRow key={indData.indicatorID + "-collapse"}>
+      {!open ? emptyRow : null}
+
+      <TableRow>
         <StyledTableCell
           style={{
-            paddingBottom: "4px",
+            paddingBottom: 0,
             paddingTop: 0,
             paddingLeft: 0,
             paddingRight: 0,
-            backgroundColor: skdeTheme.palette.background.paper,
+            backgroundColor: "white",
           }}
           colSpan={unitNames.length + 1}
         >
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <StyledTableCell key={indData.indicatorID + "-shortDescription"}>
+            <Typography variant="body2" sx={{ margin: "10px" }}>
               {indData.shortDescription}
-            </StyledTableCell>
-            <StyledTableCell
-              key={indData.indicatorTitle + "-targetLevel"}
-              colSpan={unitNames.length}
-              align="center"
-              style={{ backgroundColor: "#E0E7EB" }}
-            >
+            </Typography>
+
+            <Typography variant="body2" sx={{ margin: "10px" }}>
               {"Ønsket målnivå: " +
                 (indData.levelGreen === null
                   ? ""
                   : customFormat(",.0%")(indData.levelGreen))}
-            </StyledTableCell>
+            </Typography>
 
-            <TableRow key={indData.indicatorID + "-charts"}>
-              <StyledTableCell
-                key={indData.indicatorID + "-charts"}
-                colSpan={unitNames.length + 1}
-                align="center"
-              >
-                {responsiveChart}
-              </StyledTableCell>
-            </TableRow>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              {responsiveChart}
+            </div>
 
-            <StyledTableRow key={indData.indicatorTitle + "-description"}>
-              <StyledTableCell
-                key={indData.indicatorTitle + "-decription"}
-                colSpan={unitNames.length + 1}
+            <Typography variant="body2" sx={{ margin: "10px" }}>
+              <b>Om kvalitetsindikatoren</b>
+              <ReactMarkdown
+                remarkPlugins={remarkPlugins}
+                components={{
+                  p({ children }) {
+                    return <p style={{ margin: 0 }}>{children}</p>;
+                  },
+                  a({ href, children }) {
+                    return (
+                      <a
+                        href={href}
+                        target={href?.startsWith("#") ? "_self" : "_blank"}
+                        rel="noreferrer"
+                        style={{ color: "#006492" }}
+                      >
+                        {children}
+                      </a>
+                    );
+                  },
+                }}
               >
-                <ReactMarkdown
-                  remarkPlugins={remarkPlugins}
-                  components={{
-                    p({ children }) {
-                      return <p style={{ margin: 0 }}>{children}</p>;
-                    },
-                    a({ href, children }) {
-                      return (
-                        <a
-                          href={href}
-                          target={href?.startsWith("#") ? "_self" : "_blank"}
-                          rel="noreferrer"
-                          style={{ color: "#006492" }}
-                        >
-                          {children}
-                        </a>
-                      );
-                    },
-                  }}
-                >
-                  {indData.longDescription}
-                </ReactMarkdown>
-              </StyledTableCell>
-            </StyledTableRow>
+                {indData.longDescription}
+              </ReactMarkdown>
+            </Typography>
           </Collapse>
         </StyledTableCell>
       </TableRow>
+
+      {open ? emptyRow : null}
     </React.Fragment>
   );
 };
