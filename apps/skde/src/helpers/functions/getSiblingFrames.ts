@@ -1,3 +1,9 @@
+/**
+ * Given a window, returns an array of its sibling frames.
+ *
+ * @param window - The window to get siblings for. If no window is given, returns an empty array.
+ * @returns An array of sibling frames.
+ */
 export default function getSiblingFrames(window: Window | undefined) {
   const siblings: Window[] = [];
 
