@@ -291,7 +291,7 @@ const IndicatorRow = (props: {
             </Typography>
 
             <div style={{ display: "flex", justifyContent: "center" }}>
-              <table width={2000}>
+              <table width={1500}>
                 <tbody>
                   <ChartRow
                     context={{ context: context, type: type }}
