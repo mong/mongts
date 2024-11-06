@@ -152,7 +152,12 @@ const GetLineChart = (props: ChartProps) => {
         ((data.dg ?? 1) >= 0.6 || data.unit_name === "Nasjonalt") &&
         data.denominator >= (description.min_denominator ?? 5),
     )
-    .sort((a: Indicator, b: Indicator) => b.year - a.year);
+    .sort((a: Indicator, b: Indicator) => b.year - a.year)
+    .sort(
+      (a: Indicator, b: Indicator) =>
+        selectedTreatmentUnits.indexOf(a.unit_name) -
+        selectedTreatmentUnits.indexOf(b.unit_name),
+    );
 
   // Get the last year with complete data.
   // If DG or N is too low data could be an empty array.
