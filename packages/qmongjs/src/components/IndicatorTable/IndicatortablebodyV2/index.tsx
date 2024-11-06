@@ -267,15 +267,27 @@ const IndicatorRow = (props: {
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Typography variant="body2" sx={{ margin: "10px" }}>
               {indData.shortDescription}
-            </Typography>
-
-            <Typography variant="body2" sx={{ margin: "10px" }}>
+              <br />
               {"Ønsket målnivå: "}
               {indData.levelGreen === null ? (
                 <b>{"Ikke oppgitt"}</b>
               ) : (
                 <b>{levelSign + customFormat(",.0%")(indData.levelGreen)}</b>
               )}
+              <br />
+              <br />
+              {"Siste levering av data: " +
+                (indData.data[0].deliveryTime === null
+                  ? "Ikke oppgitt"
+                  : new Date(indData.data[0].deliveryTime).toLocaleString(
+                      "no-NO",
+                      {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                        timeZone: "CET",
+                      },
+                    ))}
             </Typography>
 
             <div style={{ display: "flex", justifyContent: "center" }}>
