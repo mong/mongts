@@ -22,6 +22,7 @@ import {
 } from "./IndicatorTableBodyV2Styles";
 import { customFormat, useIndicatorQuery } from "qmongjs";
 import { ChartRow } from "../chartrow";
+import { getLastCompleteYear } from "../../../helpers/functions";
 
 const remarkPlugins: PluggableList = [remarkGfm];
 
@@ -281,6 +282,10 @@ const IndicatorRow = (props: {
                     update_selected_row={onClick}
                     description={description}
                     showDescription={false}
+                    lastCompleteYear={getLastCompleteYear(
+                      indData.data[0].affirmTime,
+                      year,
+                    )}
                   ></ChartRow>
                 </tbody>
               </table>
