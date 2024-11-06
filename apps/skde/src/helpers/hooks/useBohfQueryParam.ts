@@ -19,6 +19,29 @@ const borhf = {
 };
 const borhfSet = new Set(Object.keys(borhf));
 
+/**
+ * Returns a hook that toggles the given bohf in the query param `bohf` in the current router location.
+ * The hook returns a tuple where the first element is the current set of selected bohfs and
+ * the second element is a function to toggle a given bohf.
+ *
+ * The hook also handles the special case of the borhf parameter, which is a set of bohf
+ * that are grouped together. If a borhf is selected, all the bohf in the group are selected.
+ * If a bohf is deselected, all the bohf in the group are deselected.
+ *
+ * The hook also handles the special case of the national parameter, which is a bohf that is
+ * not in any group. If the national parameter is set, the hook will not toggle any other bohf.
+ *
+ * The hook uses the `useRouter` hook from next/router to get the current router location.
+ * The hook uses the `replace` method of the router to update the query param in the current
+ * location.
+ *
+ * The hook is shallow, meaning it will not trigger a full page reload when the query param is
+ * updated.
+ *
+ * @param {string} [national] - The national parameter, which is a bohf that is not in any group.
+ * @returns {[Set<string>, (bohf: string) => void]} - A tuple where the first element is the current
+ * set of selected bohfs and the second element is a function to toggle a given bohf.
+ */
 export const useBohfQueryParam = (
   national: string = "",
 ): [Set<string>, (bohf: string) => void] => {

@@ -11,6 +11,18 @@ type ListItemProps = {
   i?: string;
 };
 
+/**
+ * A list item for the table of contents component.
+ *
+ * @param {ListItemProps} props The props for the list item.
+ * @prop {React.ReactNode} [children] The children of the list item.
+ * @prop {string} href The href of the link.
+ * @prop {string} linkTitle The title of the link.
+ * @prop {string} expanded The expanded state of the list item.
+ * @prop {React.Dispatch<React.SetStateAction<string>>} setExpanded The function to set the expanded state.
+ *
+ * @returns The list item component.
+ */
 export const ListItem = ({
   children,
   href,
