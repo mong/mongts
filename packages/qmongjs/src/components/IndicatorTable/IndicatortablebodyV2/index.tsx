@@ -5,15 +5,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { Indicator, RegisterData, IndicatorData } from "types";
-import Button from "@mui/material/Button";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
-import { newLevelSymbols, level2, skdeTheme, treatmentUnitsKey } from "qmongjs";
+import { newLevelSymbols, level2, skdeTheme } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
-import { useScreenSize } from "@visx/responsive";
-import { Skeleton, Collapse, Stack, Typography } from "@mui/material";
+import { Skeleton, Collapse, Typography } from "@mui/material";
 import {
   StyledTable,
   StyledTableRow,
@@ -22,15 +20,7 @@ import {
   StyledTableCellMiddle,
   StyledTableCellEnd,
 } from "./IndicatorTableBodyV2Styles";
-import {
-  LinechartBase,
-  BarchartBase,
-  font,
-  LinechartData,
-  LineStyles,
-  customFormat,
-  useIndicatorQuery,
-} from "qmongjs";
+import { customFormat, useIndicatorQuery } from "qmongjs";
 import { ChartRow } from "../chartrow";
 
 const remarkPlugins: PluggableList = [remarkGfm];
@@ -46,67 +36,6 @@ type IndicatorTableBodyV2Props = {
   unitNames: string[];
   levels: string;
   medfields: string[];
-};
-
-// ###############################
-// ########## Functions ##########
-// ###############################
-
-const createChartData = (
-  data: Indicator[],
-  indID: string,
-  unitNames: string[],
-) => {
-  const indData = data.filter((row) => {
-    return row.ind_id === indID;
-  });
-
-  const chartData = unitNames.map((unitNamesRow) => {
-    const unitIndData = indData.filter((indDataRow) => {
-      return indDataRow.unit_name === unitNamesRow;
-    });
-    return unitIndData.map((row) => {
-      return {
-        id: row.id,
-        x: new Date(row.year, 0),
-        y: row.var,
-      } as LinechartData;
-    });
-  });
-
-  // The same indicator can appear twice if it belongs to two different medfields
-  const chartDataUnique = chartData.map((array) => {
-    return array.filter((value, index) => {
-      const _value = JSON.stringify(value);
-      return (
-        index ===
-        array.findIndex((obj) => {
-          return JSON.stringify(obj) === _value;
-        })
-      );
-    });
-  });
-
-  return chartDataUnique;
-};
-
-const randomHexColorCode = () => {
-  const n = (Math.random() * 0xfffff * 1000000).toString(16);
-  return "#" + n.slice(0, 6);
-};
-
-const createChartStyles = (unitNames: string[], font: font) => {
-  const lineStyles = unitNames.map((unitNameRow) => {
-    const lineStyle = {
-      text: unitNameRow,
-      strokeDash: "0",
-      colour: randomHexColorCode(),
-    };
-
-    return lineStyle;
-  });
-
-  return new LineStyles(lineStyles, font);
 };
 
 // ################################
@@ -126,9 +55,9 @@ const IndicatorRow = (props: {
   openRowID: string;
   registryName: string;
   setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
-  context: string,
-  type: string,
-  year: number,
+  context: string;
+  type: string;
+  year: number;
 }) => {
   const {
     unitNames,
@@ -141,7 +70,7 @@ const IndicatorRow = (props: {
     registryName,
     context,
     type,
-    year
+    year,
   } = props;
 
   let open: boolean;
@@ -174,7 +103,7 @@ const IndicatorRow = (props: {
     return {
       unitName: row.unitName,
       result: row.var !== null ? customFormat(format)(row.var) : undefined,
-      symbol: newLevelSymbols(level2(indData, row)),
+      symbol: newLevelSymbols(level2(indData, row), Math.random().toString()),
       showCell:
         levels === undefined
           ? true
@@ -194,74 +123,7 @@ const IndicatorRow = (props: {
     return rowData.find((item) => item.unitName === row);
   });
 
-  const chartDataFiltered = createChartData(
-    chartData,
-    indData.indicatorID,
-    unitNames,
-  );
-
-  const font = {
-    fontSize: 20,
-    fontWeight: 700,
-    fontFamily: "Plus Jakarta Sans",
-  };
-
-  const lineStyles = createChartStyles(unitNames, font);
-
-  const ResponsiveChart = () => {
-    const [showBars, setShowBars] = React.useState(false);
-
-    const { width, height } = useScreenSize({ debounceTime: 150 });
-
-    const sizeFactor = 0.5;
-
-    const figure = showBars ? (
-      <BarchartBase
-        indicatorData={indData}
-        width={sizeFactor * width * 0.7}
-        height={sizeFactor * height}
-        xTickFormat=",.0%"
-      />
-    ) : (
-      <LinechartBase
-        data={chartDataFiltered}
-        width={sizeFactor * width}
-        height={sizeFactor * height}
-        yMin={0}
-        yMax={1}
-        lineStyles={lineStyles}
-        yAxisText={{ text: "Andel", font: font }}
-        format_y=",.0%"
-        levelGreen={indData.levelGreen!}
-        levelYellow={indData.levelYellow!}
-        levelDirection={indData.levelDirection!}
-        useTooltip={true}
-        showLegend={true}
-      />
-    );
-
-    const buttonText = showBars ? "Vis tidstrend" : "Vis alle sykehus";
-
-    return (
-      <Stack>
-        <Button
-          variant="outlined"
-          sx={{ maxWidth: "300px" }}
-          onClick={() => {
-            setShowBars(!showBars);
-          }}
-        >
-          {buttonText}
-        </Button>
-        <br />
-        {figure}
-      </Stack>
-    );
-  };
-
-  const responsiveChart = open ? <ResponsiveChart /> : null;
-
-  const emptyRow = (
+  const EmptyRow = (
     <TableRow key={indData.indicatorID + "-collapse"}>
       <StyledTableCell
         style={{
@@ -296,7 +158,7 @@ const IndicatorRow = (props: {
     registry_id: indData.registerID,
     rname: null,
     full_name: registryName,
-  }
+  };
 
   return (
     <React.Fragment key={indData.indicatorTitle + "-indicatorSection"}>
@@ -378,7 +240,7 @@ const IndicatorRow = (props: {
         })}
       </StyledTableRow>
 
-      {!open ? emptyRow : null}
+      {!open ? EmptyRow : null}
 
       <TableRow>
         <StyledTableCell
@@ -405,15 +267,22 @@ const IndicatorRow = (props: {
 
             <div style={{ display: "flex", justifyContent: "center" }}>
               <table width={2000}>
-              <ChartRow 
-              context={{context: context, type: type}}
-              colspan={1}
-              treatmentYear={year}
-              indicatorData={chartData}
-              selectedTreatmentUnits={unitNames}
-              update_selected_row={(onClick)}
-              description={description}
-              showDescription={false}></ChartRow>
+                <tbody>
+                  <ChartRow
+                    context={{ context: context, type: type }}
+                    colspan={1}
+                    treatmentYear={year}
+                    indicatorData={chartData.filter(
+                      (chartDataRow: Indicator) => {
+                        return chartDataRow.year === year;
+                      },
+                    )}
+                    selectedTreatmentUnits={unitNames}
+                    update_selected_row={onClick}
+                    description={description}
+                    showDescription={false}
+                  ></ChartRow>
+                </tbody>
               </table>
             </div>
 
@@ -446,7 +315,7 @@ const IndicatorRow = (props: {
         </StyledTableCell>
       </TableRow>
 
-      {open ? emptyRow : null}
+      {open ? EmptyRow : null}
     </React.Fragment>
   );
 };
@@ -463,11 +332,22 @@ const IndicatorSection = (props: {
   openRowID: string;
   registryName: string;
   setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
-  context: string,
-  type: string,
-  year: number,
+  context: string;
+  type: string;
+  year: number;
 }) => {
-  const { unitNames, levels, data, chartData, openRowID, setOpenRowID, registryName, context, type, year } = props;
+  const {
+    unitNames,
+    levels,
+    data,
+    chartData,
+    openRowID,
+    setOpenRowID,
+    registryName,
+    context,
+    type,
+    year,
+  } = props;
 
   // Map indicators to rows and show only rows where there is at least
   // one indicator not removed by the filter
@@ -490,7 +370,9 @@ const IndicatorSection = (props: {
         unitNames={unitNames}
         levels={levels}
         indData={indDataRow}
-        chartData={chartData}
+        chartData={chartData.filter((chartDataRow: Indicator) => {
+          return chartDataRow.ind_id === indDataRow.indicatorID;
+        })}
         rowID={indDataRow.indicatorID}
         openRowID={openRowID}
         setOpenRowID={setOpenRowID}
@@ -516,12 +398,21 @@ const RegistrySection = (props: {
   chartData: Indicator[];
   openRowID: string;
   setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
-  context: string,
-  type: string,
-  year: number,
+  context: string;
+  type: string;
+  year: number;
 }) => {
-  const { unitNames, levels, regData, chartData, openRowID, setOpenRowID, context, type, year } =
-    props;
+  const {
+    unitNames,
+    levels,
+    regData,
+    chartData,
+    openRowID,
+    setOpenRowID,
+    context,
+    type,
+    year,
+  } = props;
 
   regData.indicatorData.sort((a: IndicatorData, b: IndicatorData) => {
     return a.sortingName === b.sortingName
