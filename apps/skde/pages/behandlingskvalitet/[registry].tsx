@@ -49,7 +49,7 @@ import {
   ColourMap,
   updateColourMap,
   getSortedList,
-} from "./utils/chartColours";
+} from "../../src/helpers/functions/chartColours";
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
