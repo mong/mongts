@@ -297,20 +297,38 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                     <IndicatorTableBodyV2
                       key={`indicator-table2-${selectedTableContext}`}
                       context={selectedTableContext}
-                      unitNames={selectedTreatmentUnits}
+                      unitNames={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "units",
+                      )}
                       year={selectedYear}
                       type="ind"
                       levels={selectedLevel}
                       medfields={selectedMedicalFields}
+                      chartColours={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "colours",
+                      )}
                     />
                     <IndicatorTableBodyV2
                       key={`dataquality-table2-${selectedTableContext}`}
                       context={selectedTableContext}
-                      unitNames={selectedTreatmentUnits}
+                      unitNames={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "units",
+                      )}
                       year={selectedYear}
                       type="dg"
                       levels={selectedLevel}
                       medfields={selectedMedicalFields}
+                      chartColours={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "colours",
+                      )}
                     />
                   </IndicatorTableV2Wrapper>
                 ) : (
@@ -321,16 +339,11 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                       dataQuality={false}
                       tableType="allRegistries"
                       registerNames={registryInfo}
-                      unitNames={colourMap
-                        .filter((el) =>
-                          selectedTreatmentUnits.includes(el.unitName),
-                        )
-                        .sort(
-                          (a: ColourMap, b: ColourMap) =>
-                            selectedTreatmentUnits.indexOf(a.unitName) -
-                            selectedTreatmentUnits.indexOf(b.unitName),
-                        )
-                        .map((el) => el.unitName)}
+                      unitNames={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "units",
+                      )}
                       treatmentYear={selectedYear}
                       colspan={selectedTreatmentUnits.length + 1}
                       medicalFieldFilter={selectedMedicalFields}
@@ -338,16 +351,11 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                       selection_bar_height={0}
                       legend_height={0}
                       showTreatmentYear={true}
-                      chartColours={colourMap
-                        .filter((el) =>
-                          selectedTreatmentUnits.includes(el.unitName),
-                        )
-                        .sort(
-                          (a: ColourMap, b: ColourMap) =>
-                            selectedTreatmentUnits.indexOf(a.unitName) -
-                            selectedTreatmentUnits.indexOf(b.unitName),
-                        )
-                        .map((el) => el.colour)}
+                      chartColours={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "colours",
+                      )}
                     />
                     <IndicatorTable
                       key={`dataquality-table-${selectedTableContext}`}
