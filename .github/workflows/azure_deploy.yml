@@ -47,7 +47,7 @@ jobs:
           az storage blob sync \
           --account-name $AZURE_STORAGE_ACCOUNT \
           --account-key $AZURE_STORAGE_KEY \
-          --destination '$web' \
+          --container '$web' \
           --source ./apps/skde/out \
           --exclude-path helseatlas/files \
           --content-cache "public, max-age=1, s-maxage=1"
