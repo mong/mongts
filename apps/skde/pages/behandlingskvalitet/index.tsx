@@ -310,11 +310,20 @@ export default function TreatmentQualityPage() {
                       <IndicatorTableBodyV2
                         key={"indicator-table2"}
                         context={selectedTableContext}
-                        unitNames={selectedTreatmentUnits}
+                        unitNames={getSortedList(
+                          colourMap,
+                          selectedTreatmentUnits,
+                          "units",
+                        )}
                         year={selectedYear}
                         type={dataQualitySelected ? "dg" : "ind"}
                         levels={selectedLevel}
                         medfields={selectedMedicalFields}
+                        chartColours={getSortedList(
+                          colourMap,
+                          selectedTreatmentUnits,
+                          "colours",
+                        )}
                       />
                     </IndicatorTableV2Wrapper>
                   ) : (
