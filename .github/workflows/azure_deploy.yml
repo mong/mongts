@@ -44,7 +44,7 @@ jobs:
         env:
           NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
         run: |
-          az storage blob upload-batch \
+          az storage blob sync \
           --account-name $AZURE_STORAGE_ACCOUNT \
           --account-key $AZURE_STORAGE_KEY \
           --destination '$web' \
