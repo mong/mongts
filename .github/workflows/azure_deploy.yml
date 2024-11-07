@@ -49,5 +49,4 @@ jobs:
           --account-key $AZURE_STORAGE_KEY \
           --container '$web' \
           --source ./apps/skde/out \
-          --exclude-path helseatlas/files \
-          --content-cache "public, max-age=1, s-maxage=1"
+          --exclude-path helseatlas/files
