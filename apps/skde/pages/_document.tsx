@@ -18,12 +18,6 @@ class MyDocument extends Document<{ lang: string; pathname: string }> {
           {pathname === "/" && (
             <meta httpEquiv="refresh" content="0; url=https://www.skde.no/" />
           )}
-          {pathname === "/helseatlas" && (
-            <meta
-              httpEquiv="refresh"
-              content="0; url=https://www.skde.no/helseatlas"
-            />
-          )}
           <meta
             name="google-site-verification"
             content="XnhRhaBwfeuAccfCFysPPpe1f49t46JAfInHBDfK6HE"
