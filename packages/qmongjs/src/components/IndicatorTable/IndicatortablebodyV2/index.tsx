@@ -5,29 +5,24 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import { Indicator, RegisterData, IndicatorData } from "types";
-import Button from "@mui/material/Button";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
-import { newLevelSymbols, level2 } from "qmongjs";
+import { newLevelSymbols, level2, skdeTheme } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
-import { useScreenSize } from "@visx/responsive";
-import { Skeleton, Collapse } from "@mui/material";
+import { Skeleton, Collapse, Typography } from "@mui/material";
 import {
   StyledTable,
   StyledTableRow,
   StyledTableCell,
+  StyledTableCellStart,
+  StyledTableCellMiddle,
+  StyledTableCellEnd,
 } from "./IndicatorTableBodyV2Styles";
-import {
-  LinechartBase,
-  BarchartBase,
-  font,
-  LinechartData,
-  LineStyles,
-  customFormat,
-  useIndicatorQuery,
-} from "qmongjs";
+import { customFormat, useIndicatorQuery } from "qmongjs";
+import { ChartRow } from "../chartrow";
+import { getLastCompleteYear } from "../../../helpers/functions";
 
 const remarkPlugins: PluggableList = [remarkGfm];
 
@@ -42,67 +37,6 @@ type IndicatorTableBodyV2Props = {
   unitNames: string[];
   levels: string;
   medfields: string[];
-};
-
-// ###############################
-// ########## Functions ##########
-// ###############################
-
-const createChartData = (
-  data: Indicator[],
-  indID: string,
-  unitNames: string[],
-) => {
-  const indData = data.filter((row) => {
-    return row.ind_id === indID;
-  });
-
-  const chartData = unitNames.map((unitNamesRow) => {
-    const unitIndData = indData.filter((indDataRow) => {
-      return indDataRow.unit_name === unitNamesRow;
-    });
-    return unitIndData.map((row) => {
-      return {
-        id: row.id,
-        x: new Date(row.year, 0),
-        y: row.var,
-      } as LinechartData;
-    });
-  });
-
-  // The same indicator can appear twice if it belongs to two different medfields
-  const chartDataUnique = chartData.map((array) => {
-    return array.filter((value, index) => {
-      const _value = JSON.stringify(value);
-      return (
-        index ===
-        array.findIndex((obj) => {
-          return JSON.stringify(obj) === _value;
-        })
-      );
-    });
-  });
-
-  return chartDataUnique;
-};
-
-const randomHexColorCode = () => {
-  const n = (Math.random() * 0xfffff * 1000000).toString(16);
-  return "#" + n.slice(0, 6);
-};
-
-const createChartStyles = (unitNames: string[], font: font) => {
-  const lineStyles = unitNames.map((unitNameRow) => {
-    const lineStyle = {
-      text: unitNameRow,
-      strokeDash: "0",
-      colour: randomHexColorCode(),
-    };
-
-    return lineStyle;
-  });
-
-  return new LineStyles(lineStyles, font);
 };
 
 // ################################
@@ -120,7 +54,11 @@ const IndicatorRow = (props: {
   chartData: Indicator[];
   rowID: string;
   openRowID: string;
+  registryName: string;
   setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
+  context: string;
+  type: string;
+  year: number;
 }) => {
   const {
     unitNames,
@@ -130,6 +68,10 @@ const IndicatorRow = (props: {
     rowID,
     openRowID,
     setOpenRowID,
+    registryName,
+    context,
+    type,
+    year,
   } = props;
 
   let open: boolean;
@@ -162,7 +104,7 @@ const IndicatorRow = (props: {
     return {
       unitName: row.unitName,
       result: row.var !== null ? customFormat(format)(row.var) : undefined,
-      symbol: newLevelSymbols(level2(indData, row)),
+      symbol: newLevelSymbols(level2(indData, row), Math.random().toString()),
       showCell:
         levels === undefined
           ? true
@@ -182,71 +124,52 @@ const IndicatorRow = (props: {
     return rowData.find((item) => item.unitName === row);
   });
 
-  const chartDataFiltered = createChartData(
-    chartData,
-    indData.indicatorID,
-    unitNames,
+  const EmptyRow = (
+    <TableRow key={indData.indicatorID + "-collapse"}>
+      <StyledTableCell
+        style={{
+          paddingBottom: "4px",
+          paddingTop: 0,
+          paddingLeft: 0,
+          paddingRight: 0,
+          backgroundColor: skdeTheme.palette.background.paper,
+        }}
+        colSpan={unitNames.length + 1}
+      ></StyledTableCell>
+    </TableRow>
   );
 
-  const font = {
-    fontSize: 20,
-    fontWeight: 700,
-    fontFamily: "Plus Jakarta Sans",
+  let levelSign = "";
+
+  if (indData.levelGreen != null) {
+    if (indData.levelDirection === 1 && indData.levelGreen < 1) {
+      levelSign = "≥";
+    } else if (indData.levelDirection === 0 && indData.levelGreen > 0) {
+      levelSign = "≤";
+    }
+  }
+
+  const description = {
+    id: indData.indicatorID,
+    dg_id: null,
+    include: null,
+    title: null,
+    name: null,
+    type: indData.indType,
+    sformat: indData.format ? indData.format : "",
+    measure_unit: null,
+    min_denominator: null,
+    min_value: null,
+    max_value: null,
+    level_green: indData.levelGreen,
+    level_yellow: indData.levelYellow,
+    level_direction: indData.levelDirection,
+    short_description: indData.shortDescription,
+    long_description: indData.longDescription,
+    registry_id: indData.registerID,
+    rname: null,
+    full_name: registryName,
   };
-
-  const lineStyles = createChartStyles(unitNames, font);
-
-  const ResponsiveChart = () => {
-    const [showBars, setShowBars] = React.useState(false);
-
-    const { width, height } = useScreenSize({ debounceTime: 150 });
-
-    const sizeFactor = 0.5;
-
-    const figure = showBars ? (
-      <BarchartBase
-        indicatorData={indData}
-        width={sizeFactor * width * 0.7}
-        height={sizeFactor * height}
-        xTickFormat=",.0%"
-      />
-    ) : (
-      <LinechartBase
-        data={chartDataFiltered}
-        width={sizeFactor * width}
-        height={sizeFactor * height}
-        yMin={0}
-        yMax={1}
-        lineStyles={lineStyles}
-        yAxisText={{ text: "Andel", font: font }}
-        format_y=",.0%"
-        levelGreen={indData.levelGreen!}
-        levelYellow={indData.levelYellow!}
-        levelDirection={indData.levelDirection!}
-        useTooltip={true}
-        showLegend={true}
-      />
-    );
-
-    const buttonText = showBars ? "Vis tidstrend" : "Vis alle sykehus";
-
-    return (
-      <>
-        <Button
-          variant="outlined"
-          onClick={() => {
-            setShowBars(!showBars);
-          }}
-        >
-          {buttonText}
-        </Button>
-        <br />
-        {figure}
-      </>
-    );
-  };
-
-  const responsiveChart = open ? <ResponsiveChart /> : null;
 
   return (
     <React.Fragment key={indData.indicatorTitle + "-indicatorSection"}>
@@ -255,7 +178,7 @@ const IndicatorRow = (props: {
         onClick={onClick}
         style={{ cursor: "pointer" }}
       >
-        <StyledTableCell key={indData.indicatorID}>
+        <StyledTableCellStart key={indData.indicatorID}>
           <table>
             <tbody>
               <tr>
@@ -268,9 +191,9 @@ const IndicatorRow = (props: {
               </tr>
             </tbody>
           </table>
-        </StyledTableCell>
+        </StyledTableCellStart>
 
-        {rowDataSorted.map((row, index) => {
+        {rowDataSorted.map((row, index, arr) => {
           const lowDG = row?.dg == null ? false : row?.dg < 0.6 ? true : false;
           const noData = row?.denominator == null ? true : false;
           const lowN =
@@ -306,8 +229,16 @@ const IndicatorRow = (props: {
                 ? "Ingen data"
                 : row?.numerator + " av " + row?.denominator;
 
+          let CellType;
+
+          if (index === arr.length - 1) {
+            CellType = StyledTableCellEnd;
+          } else {
+            CellType = StyledTableCellMiddle;
+          }
+
           return (
-            <StyledTableCell
+            <CellType
               sx={{ opacity: cellOpacity }}
               align={"center"}
               key={indData.indicatorID + index}
@@ -315,48 +246,77 @@ const IndicatorRow = (props: {
               {cellData}
               <br />
               {patientCounts}
-            </StyledTableCell>
+            </CellType>
           );
         })}
       </StyledTableRow>
 
-      <StyledTableCell
-        style={{ paddingBottom: 0, paddingTop: 0 }}
-        colSpan={unitNames.length + 1}
-      >
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          <TableRow key={indData.indicatorID + "-collapse"}>
-            <StyledTableCell key={indData.indicatorID + "-shortDescription"}>
+      {!open ? EmptyRow : null}
+
+      <TableRow>
+        <StyledTableCell
+          style={{
+            paddingBottom: 0,
+            paddingTop: 0,
+            paddingLeft: 0,
+            paddingRight: 0,
+            backgroundColor: "white",
+          }}
+          colSpan={unitNames.length + 1}
+        >
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <Typography variant="body2" sx={{ margin: "10px" }}>
               {indData.shortDescription}
-            </StyledTableCell>
-            <StyledTableCell
-              key={indData.indicatorTitle + "-targetLevel"}
-              colSpan={unitNames.length}
-              align="center"
-              style={{ backgroundColor: "#E0E7EB" }}
-            >
-              {"Ønsket målnivå: " +
-                (indData.levelGreen === null
-                  ? ""
-                  : customFormat(",.0%")(indData.levelGreen))}
-            </StyledTableCell>
-          </TableRow>
+              <br />
+              {"Ønsket målnivå: "}
+              {indData.levelGreen === null ? (
+                <b>{"Ikke oppgitt"}</b>
+              ) : (
+                <b>{levelSign + customFormat(",.0%")(indData.levelGreen)}</b>
+              )}
+              <br />
+              <br />
+              {"Siste levering av data: " +
+                (indData.data[0].deliveryTime === null
+                  ? "Ikke oppgitt"
+                  : new Date(indData.data[0].deliveryTime).toLocaleString(
+                      "no-NO",
+                      {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                        timeZone: "CET",
+                      },
+                    ))}
+            </Typography>
 
-          <TableRow key={indData.indicatorID + "-charts"}>
-            <StyledTableCell
-              key={indData.indicatorID + "-charts"}
-              colSpan={unitNames.length + 1}
-              align="center"
-            >
-              {responsiveChart}
-            </StyledTableCell>
-          </TableRow>
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <table width={1500}>
+                <tbody>
+                  <ChartRow
+                    context={{ context: context, type: type }}
+                    colspan={1}
+                    treatmentYear={year}
+                    indicatorData={chartData.filter(
+                      (chartDataRow: Indicator) => {
+                        return chartDataRow.year === year;
+                      },
+                    )}
+                    selectedTreatmentUnits={unitNames}
+                    update_selected_row={onClick}
+                    description={description}
+                    showDescription={false}
+                    lastCompleteYear={getLastCompleteYear(
+                      indData.data[0].affirmTime,
+                      year,
+                    )}
+                  ></ChartRow>
+                </tbody>
+              </table>
+            </div>
 
-          <StyledTableRow key={indData.indicatorTitle + "-description"}>
-            <StyledTableCell
-              key={indData.indicatorTitle + "-decription"}
-              colSpan={unitNames.length + 1}
-            >
+            <Typography variant="body2" sx={{ margin: "10px" }}>
+              <b>Om kvalitetsindikatoren</b>
               <ReactMarkdown
                 remarkPlugins={remarkPlugins}
                 components={{
@@ -379,10 +339,12 @@ const IndicatorRow = (props: {
               >
                 {indData.longDescription}
               </ReactMarkdown>
-            </StyledTableCell>
-          </StyledTableRow>
-        </Collapse>
-      </StyledTableCell>
+            </Typography>
+          </Collapse>
+        </StyledTableCell>
+      </TableRow>
+
+      {open ? EmptyRow : null}
     </React.Fragment>
   );
 };
@@ -397,9 +359,24 @@ const IndicatorSection = (props: {
   data: IndicatorData[];
   chartData: Indicator[];
   openRowID: string;
+  registryName: string;
   setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
+  context: string;
+  type: string;
+  year: number;
 }) => {
-  const { unitNames, levels, data, chartData, openRowID, setOpenRowID } = props;
+  const {
+    unitNames,
+    levels,
+    data,
+    chartData,
+    openRowID,
+    setOpenRowID,
+    registryName,
+    context,
+    type,
+    year,
+  } = props;
 
   // Map indicators to rows and show only rows where there is at least
   // one indicator not removed by the filter
@@ -422,10 +399,16 @@ const IndicatorSection = (props: {
         unitNames={unitNames}
         levels={levels}
         indData={indDataRow}
-        chartData={chartData}
+        chartData={chartData.filter((chartDataRow: Indicator) => {
+          return chartDataRow.ind_id === indDataRow.indicatorID;
+        })}
         rowID={indDataRow.indicatorID}
         openRowID={openRowID}
         setOpenRowID={setOpenRowID}
+        registryName={registryName}
+        context={context}
+        type={type}
+        year={year}
       />
     ) : null;
 
@@ -444,9 +427,21 @@ const RegistrySection = (props: {
   chartData: Indicator[];
   openRowID: string;
   setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
+  context: string;
+  type: string;
+  year: number;
 }) => {
-  const { unitNames, levels, regData, chartData, openRowID, setOpenRowID } =
-    props;
+  const {
+    unitNames,
+    levels,
+    regData,
+    chartData,
+    openRowID,
+    setOpenRowID,
+    context,
+    type,
+    year,
+  } = props;
 
   regData.indicatorData.sort((a: IndicatorData, b: IndicatorData) => {
     return a.sortingName === b.sortingName
@@ -483,18 +478,30 @@ const RegistrySection = (props: {
       <React.Fragment>
         <TableHead>
           <TableRow key={regData.registerName + "-row"}>
-            <StyledTableCell key={regData.registerName}>
+            <StyledTableCellStart
+              key={regData.registerName}
+              sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
+            >
               {regData.registerFullName}
-            </StyledTableCell>
+            </StyledTableCellStart>
 
-            {unitNames.map((row, index) => {
+            {unitNames.map((row, index, arr) => {
+              let CellType;
+
+              if (index === arr.length - 1) {
+                CellType = StyledTableCellEnd;
+              } else {
+                CellType = StyledTableCellMiddle;
+              }
+
               return (
-                <StyledTableCell
+                <CellType
                   align="center"
                   key={regData.registerName + index}
+                  sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
                 >
                   {row}
-                </StyledTableCell>
+                </CellType>
               );
             })}
           </TableRow>
@@ -509,6 +516,10 @@ const RegistrySection = (props: {
             chartData={chartData}
             openRowID={openRowID}
             setOpenRowID={setOpenRowID}
+            registryName={regData.registerFullName}
+            context={context}
+            type={type}
+            year={year}
           />
         </TableBody>
       </React.Fragment>
@@ -567,7 +578,7 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
   });
 
   return (
-    <StyledTable>
+    <StyledTable sx={{ marginTop: "10px" }}>
       {rowDataFiltered.map((row) => (
         <RegistrySection
           key={row.registerName}
@@ -579,6 +590,9 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
           })}
           openRowID={openRowID}
           setOpenRowID={setOpenRowID}
+          context={context}
+          type={type}
+          year={year}
         />
       ))}
     </StyledTable>

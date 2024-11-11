@@ -101,6 +101,17 @@ type HeaderTopProps = {
   maxWidth?: false | Breakpoint;
 };
 
+/**
+ * A component for displaying the top section of the header.
+ *
+ * The component takes in a list of breadcrumbs and a maximum width.
+ * If `maxWidth` is not specified, the component will not have a maximum width.
+ *
+ * @param {HeaderTopProps} props - The properties of the HeaderTop component.
+ * @param {BreadCrumbPath} props.breadcrumbs - The list of breadcrumbs to be displayed.
+ * @param {false | Breakpoint} [props.maxWidth] - The maximum width of the component.
+ * @returns {JSX.Element} A JSX element representing the HeaderTop component.
+ */
 export const HeaderTop = (props: HeaderTopProps) => {
   const { breadcrumbs, maxWidth } = props;
 

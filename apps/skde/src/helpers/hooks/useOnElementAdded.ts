@@ -1,5 +1,20 @@
 import { useEffect } from "react";
 
+/**
+ * A hook that waits for an element with the given targetId to be added to the
+ * DOM, and then calls the callback with the targetId as an argument.
+ *
+ * If the queriesReady argument is true, then the hook will try to find the
+ * element immediately and call the callback if it is found. Otherwise, it will
+ * wait for the element to be added to the DOM and call the callback then.
+ *
+ * The callback will only be called once, either immediately if the element is
+ * already available, or when the element is added to the DOM.
+ *
+ * @param targetId The ID of the element to wait for
+ * @param queriesReady Whether the hook should try to find the element immediately
+ * @param callback The function to call when the element is added
+ */
 function useOnElementAdded(
   targetId: string,
   queriesReady: boolean,
