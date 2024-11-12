@@ -38,14 +38,14 @@ const fonts = {
   h1: {
     fontFamily: `${jakartaStyle.fontFamily}`,
     fontWeight: "300",
-    fontSize: `${64 / 16}rem`,
+    fontSize: "4rem",
     letterSpacing: `-${1.5 / 16}rem`,
     color: "#001b52",
   },
   h2: {
     fontFamily: `${jakartaStyle.fontFamily}`,
     fontWeight: "300",
-    fontSize: `${48 / 16}rem`,
+    fontSize: "3rem",
     letterSpacing: `-${0.5 / 16}rem`,
   },
   h3: {
@@ -69,19 +69,19 @@ const fonts = {
   h6: {
     fontFamily: `${jakartaStyle.fontFamily}`,
     fontWeight: "500",
-    fontSize: `${24 / 16}rem`,
+    fontSize: "1.5rem",
     letterSpacing: `${0.15 / 16}rem`,
   },
   subtitle1: {
     fontFamily: `${jakartaStyle.fontFamily}`,
     fontWeight: "400",
-    fontSize: `${20 / 16}rem`,
+    fontSize: "1.25rem",
     letterSpacing: `${0.15 / 16}rem`,
   },
   subtitle2: {
     fontFamily: `${jakartaStyle.fontFamily}`,
     fontWeight: "500",
-    fontSize: `${20 / 16}rem`,
+    fontSize: "1.25rem",
     letterSpacing: `${0.1 / 16}rem`,
   },
   body1: {
@@ -93,13 +93,13 @@ const fonts = {
   body2: {
     fontFamily: `${jakartaStyle.fontFamily}`,
     fontWeight: "400",
-    fontSize: `${16 / 16}rem`,
+    fontSize: "1rem",
     letterSpacing: `${0.25 / 16}rem`,
   },
   button: {
     fontFamily: `${jakartaStyle.fontFamily}`,
     fontWeight: "500",
-    fontSize: `${16 / 16}rem`,
+    fontSize: "1rem",
     letterSpacing: `${1.25 / 16}rem`,
   },
   overline: {
