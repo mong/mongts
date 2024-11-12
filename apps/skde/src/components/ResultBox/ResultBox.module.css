@@ -1,17 +1,17 @@
 .resultBoxWrapper {
   position: relative;
-  border-radius: 10px;
-  padding: 30px 0px 20px 0px;
+  border-radius: calc(10rem / 16);
+  padding: calc(30rem / 16) 0 calc(20rem / 16) 0;
 }
 
 .resultBoxTitleWrapper {
-  padding: 30px 20px 30px 20px;
+  padding: calc(30rem / 16) calc(20rem / 16) calc(30rem / 16) calc(20rem / 16);
   text-align: left;
 }
 
 .resultBoxSelectionContent {
   width: auto;
-  padding: 30px 20px 30px 20px;
+  padding: calc(30rem / 16) calc(20rem / 16) calc(30rem / 16) calc(20rem / 16);
   text-align: left;
 }
 
@@ -22,8 +22,8 @@
   align-items: center;
   bottom: 21px;
   margin: auto;
-  width: 40px;
-  height: 40px;
+  width: calc(40rem / 16);
+  height: calc(40rem / 16);
   border-radius: 100%;
   background-color: #033f85;
   overflow: hidden;
@@ -34,17 +34,17 @@
 
 .horizontal {
   position: relative;
-  left: 1px;
-  width: 16px;
-  height: 2px;
+  left: calc(1rem / 16);
+  width: 1rem;
+  height: calc(2rem / 16);
   background-color: #fff;
 }
 
 .vertical {
   position: relative;
-  left: -8px;
-  top: 0px;
-  width: 2px;
-  height: 16px;
+  left: calc(-8rem / 16);
+  top: 0;
+  width: calc(2rem / 16);
+  height: 1rem;
   background-color: #fff;
 }

@@ -33,17 +33,17 @@
 
 .buttonBurgerIcon span {
   display: block;
-  width: 20px;
+  width: calc(20rem / 16);
   background-color: #034584;
-  height: 1px;
-  margin: 4px 0 3px;
+  height: calc(1rem / 16);
+  margin: calc(4rem / 16) 0 calc(3rem / 16);
 }
 
 .buttonText {
   letter-spacing: 0.03125rem;
   display: block;
   text-align: center;
-  margin-right: 6px;
+  margin-right: calc(6rem / 16);
   order: 1;
   font-size: 1.125rem;
   color: #034584;

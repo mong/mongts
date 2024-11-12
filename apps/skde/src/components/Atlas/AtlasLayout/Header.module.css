@@ -2,7 +2,7 @@
   display: flex;
   max-width: min(1216px, 95%);
   height: fit-content;
-  padding: 24px 16px 24px 16px;
+  padding: 1.5rem 1rem 1.5rem 1rem;
   margin: auto;
   justify-content: space-between;
 }
@@ -27,8 +27,8 @@
 }
 .no {
   color: #034584;
-  border-right: 1px solid #034584;
-  padding-right: 10px;
+  border-right: calc(1rem / 16) solid #034584;
+  padding-right: calc(10rem / 16);
   font-weight: normal;
   text-decoration: underline;
   transition: 200ms ease-in;
@@ -36,7 +36,7 @@
 
 .eng {
   color: #034584;
-  padding-left: 10px;
+  padding-left: calc(10rem / 16);
   font-weight: normal;
   text-decoration: underline;
   transition: 200ms ease-in;
@@ -49,7 +49,7 @@
 
 .searchBar {
   margin: auto;
-  margin-top: 4rem;
+  margin-top: calc(4rem / 16);
   width: min(600px, 80%);
   z-index: auto;
 }
@@ -62,17 +62,17 @@
   display: flex;
   align-items: flex-end;
   font-size: 1.25rem;
-  padding-bottom: 1px;
-  border-bottom: 1px solid #000;
+  padding-bottom: calc(1rem / 16);
+  border-bottom: calc(1rem / 16) solid #000;
 }
 
 .searchBar label {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: calc(1rem / 16);
+  height: calc(1rem / 16);
   overflow: hidden;
   padding: 0%;
-  margin: -1px;
+  margin: calc(-1rem / 16);
 }
 .searchBar input {
   position: relative;
@@ -111,7 +111,7 @@
 
   .headerNavContainer {
     width: 100%;
-    margin-top: 20px;
+    margin-top: calc(20rem / 16);
   }
   .navButtons {
     justify-content: space-between;

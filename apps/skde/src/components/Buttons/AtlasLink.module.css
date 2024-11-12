@@ -3,9 +3,9 @@
   min-width: 300px;
   background: #e3f3ef;
   transition: 100ms ease-in;
-  flex: 1 1 250px;
+  flex: 1 1 calc(250rem / 16);
   overflow: hidden;
-  border-radius: 24px;
+  border-radius: calc(24rem / 16);
 }
 
 .linkOuterWrapper,
@@ -15,7 +15,7 @@
 
 .linkOuterWrapper:hover,
 .linkOuterWrapper:focus {
-  box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.24);
+  box-shadow: calc(2rem / 16) calc(2rem / 16) 1rem rgba(0, 0, 0, 0.24);
 }
 
 .linkOuterWrapper:hover .linkImageWrapper img,
@@ -46,17 +46,17 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 20px 25px 20px 25px;
+  padding: calc(20rem / 16) calc(25rem / 16) calc(20rem / 16) calc(25rem / 16);
 }
 
 .linkDateContainer {
   display: flex;
   align-items: center;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .date {
-  margin-left: 3px;
+  margin-left: calc(3rem / 16);
 }
 
 .newlyUpdated {
@@ -64,8 +64,8 @@
 }
 
 .innerDot {
-  width: 8px !important;
-  height: 8px !important;
+  width: calc(8rem / 16) !important;
+  height: calc(8rem / 16) !important;
   background-color: #000;
   border-radius: 100%;
 }
@@ -82,7 +82,7 @@
   width: 16px !important;
   height: 16px !important;
   border: none;
-  margin-right: 5px;
+  margin-right: calc(5rem / 16);
 }
 
 .newlyUpdated .outerCircle {
@@ -92,32 +92,32 @@
 .linkTitle {
   font-style: normal;
   font-weight: 700;
-  font-size: 26px;
-  line-height: 49px;
+  font-size: calc(26rem / 16);
+  line-height: calc(49rem / 16);
   letter-spacing: 0.01em;
-  padding-top: 20px;
+  padding-top: calc(20rem / 16);
 }
 
 .linkIngress {
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1rem;
   text-decoration: none !important;
 }
 
 @media screen and (min-width: 943px) {
   .linkOuterWrapper {
-    flex-basis: 400px;
+    flex-basis: calc(400rem / 16);
   }
 
   .linkTitle {
-    font-size: 36px;
+    font-size: calc(36rem / 16);
   }
 
   .linkOuterWrapper.wide {
     max-width: 100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: calc(20rem / 16);
+    margin-bottom: calc(20rem / 16);
     background: #e6eef8;
     flex: 1 1 100%;
   }
@@ -129,12 +129,12 @@
 
   .linkOuterWrapper.wide .linkImageWrapper {
     display: flex;
-    height: 350px;
+    height: calc(350rem / 16);
     flex: 1;
   }
 
   .linkOuterWrapper.wide .linkText {
     flex: 1;
-    height: 350px;
+    height: calc(350rem / 16);
   }
 }

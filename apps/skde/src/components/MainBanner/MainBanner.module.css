@@ -18,8 +18,8 @@
 
 .pageImage {
   width: min(1216px, 95%);
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 1rem;
+  padding-right: 1rem;
   margin: auto;
   background: none;
   position: relative;
@@ -38,9 +38,9 @@
 .pageTitle {
   width: 100%;
   padding-bottom: 0;
-  font-size: 48px;
+  font-size: calc(48rem / 16);
   font-weight: 600;
-  line-height: 65px;
+  line-height: calc(65rem / 16);
   text-align: center;
   background: none;
 }
@@ -48,7 +48,7 @@
 .pageIngressContent {
   width: 100%;
   background-color: #fdf6e4;
-  font-size: 24px;
+  font-size: calc(24rem / 16);
   margin: auto;
   text-align: center;
   line-height: 1.4em;
@@ -58,7 +58,7 @@
   background: none;
   margin: auto;
   width: min(1216px, 95%);
-  padding: min(5%, 50px);
+  padding: min(5%, calc(50rem / 16));
 }
 
 @media screen and (max-width: 700px) {
@@ -67,18 +67,18 @@
     position: absolute;
     top: 0;
     width: 100%;
-    min-height: 185px;
+    min-height: calc(185rem / 16);
     background-color: #fff;
   }
   .pageTitle {
     width: 100%;
     padding-bottom: 0;
-    font-size: 28px;
+    font-size: calc(28rem / 16);
     font-weight: 600;
-    line-height: 40px;
+    line-height: calc(40rem / 16);
   }
   .pageIngressContent {
-    font-size: 16px;
-    line-height: 25px;
+    font-size: 1rem;
+    line-height: calc(25rem / 16);
   }
 }

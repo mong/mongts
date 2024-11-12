@@ -4,17 +4,17 @@
   justify-content: space-evenly;
   align-items: center;
   overflow: hidden;
-  margin: 20px;
+  margin: calc(20rem / 16);
   background-color: #ffffff;
-  border: 1px solid #d9d9d9;
-  border-radius: 3px;
-  padding: 30px 20px;
+  border: calc(1rem / 16) solid #d9d9d9;
+  border-radius: calc(3rem / 16);
+  padding: calc(30rem / 16) calc(20rem / 16);
 }
 
 .carousel {
   display: flex;
   flex-direction: column;
-  margin: 0px 10px 20px 10px;
+  margin: 0rem calc(10rem / 16) calc(20rem / 16) calc(10rem / 16);
   width: 95%;
   overflow: auto;
 }
@@ -27,13 +27,13 @@
   border: none;
   background: none;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 24px;
+  font-size: calc(18rem / 16);
+  line-height: calc(24rem / 16);
   text-decoration-line: underline;
   cursor: pointer;
-  padding-left: 38px;
+  padding-left: calc(38rem / 16);
 }
 
 .selectionBtn span {
-  margin-left: 5px;
+  margin-left: calc(5rem / 16);
 }

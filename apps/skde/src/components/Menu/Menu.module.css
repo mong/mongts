@@ -17,7 +17,7 @@
 
 .body ul ul li {
   position: relative;
-  border-bottom: 1px solid #999;
+  border-bottom: calc(1rem / 16) solid #999;
   margin: 0;
   padding: 0.75rem 0;
 }
@@ -48,7 +48,7 @@
 }
 
 .container {
-  width: 608px;
+  width: min(calc(608rem / 16), 85%);
   padding-left: 0;
   padding-right: 0;
 }
@@ -62,5 +62,5 @@
 }
 
 .inner_nav_group {
-  margin-top: 40px;
+  margin-top: calc(40rem / 16);
 }

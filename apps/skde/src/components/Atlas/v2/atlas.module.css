@@ -8,7 +8,7 @@
 }
 
 .atlasContent h1 {
-  line-height: 65px;
+  line-height: calc(65rem / 16);
 }
 
 .atlasContent p a,
@@ -20,7 +20,7 @@
   .atlasContent {
     width: min(95%, 1216px);
     margin: auto;
-    padding: 16px;
+    padding: 1rem;
     display: flex;
     max-width: 1216px;
   }
@@ -40,7 +40,7 @@
   .main_content {
     width: 95%;
     margin: auto;
-    padding: 16px;
+    padding: 1rem;
   }
 
   .atlasLinksWrapper {
