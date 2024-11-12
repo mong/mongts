@@ -83,9 +83,9 @@ export const ResultBox = ({
 
   const transitions = useTransition(expandedResultBox, {
     initial: { transform: "translate(0,0)" },
-    from: { transform: "translate(0,-40px)" },
+    from: { transform: "translate(0,-2.5rem)" },
     enter: { transform: "translate(0,0)" },
-    leave: { transform: "translate(0,-40px)" },
+    leave: { transform: "translate(0,-2.5rem)" },
 
     config: () => ({
       easing: easings.easeInQuad, // : easings.easeOutQuad,
@@ -173,7 +173,7 @@ export const ResultBox = ({
                   <div
                     style={{
                       width: "100%",
-                      maxWidth: "500px",
+                      maxWidth: "32rem",
                       margin: "auto",
                     }}
                   >
@@ -252,7 +252,7 @@ export const ResultBox = ({
         disableGutters
         sx={{
           boxShadow: 6,
-          borderBottom: "3px solid #033F85",
+          borderBottom: "calc(3rem / 16) solid #033F85",
         }}
         expanded={expandedResultBox}
         onChange={() => setExpandedResultBox(!expandedResultBox)}

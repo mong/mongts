@@ -1,6 +1,6 @@
 .linkOuterWrapper {
-  max-width: min(100%, 610px);
-  min-width: 300px;
+  max-width: min(100%, 37.5rem);
+  min-width: 18.75rem;
   background: #e3f3ef;
   transition: 100ms ease-in;
   flex: 1 1 calc(250rem / 16);
@@ -79,14 +79,14 @@
   justify-content: center;
   align-items: center;
   border-radius: 100%;
-  width: 16px !important;
-  height: 16px !important;
+  width: 1rem !important;
+  height: 1rem !important;
   border: none;
   margin-right: calc(5rem / 16);
 }
 
 .newlyUpdated .outerCircle {
-  border: 2px solid #033f85;
+  border: calc(2rem / 16) solid #033f85;
 }
 
 .linkTitle {
@@ -105,7 +105,7 @@
   text-decoration: none !important;
 }
 
-@media screen and (min-width: 943px) {
+@media screen and (min-width: 60rem) {
   .linkOuterWrapper {
     flex-basis: calc(400rem / 16);
   }

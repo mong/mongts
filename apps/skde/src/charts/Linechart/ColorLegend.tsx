@@ -18,7 +18,7 @@ export const ColorLegend = ({
           <li key={val + i} className={classNames.legendLI}>
             <div
               style={{
-                borderBottom: `4px solid ${colorScale(val)}`,
+                borderBottom: `calc(4rem / 16) solid ${colorScale(val)}`,
               }}
             >
               {getLabel(val)}

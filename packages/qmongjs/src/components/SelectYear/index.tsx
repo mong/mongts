@@ -32,7 +32,9 @@ function SelectYear(props: Props) {
       backgroundColor: "white",
       boxShadow: "none",
       fontSize: "1.1rem",
-      border: state.isFocused ? "3px solid #7ebec7" : "3px solid #EEF6F7",
+      border: state.isFocused
+        ? "calc(3rem / 16) solid #7ebec7"
+        : "calc(3rem / 16) solid #EEF6F7",
       minHeight: "2rem",
       cursor: "pointer",
     }),

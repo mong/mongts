@@ -21,7 +21,7 @@ export const AnnualVarLegend = ({
         {values.map((val, i) => (
           <li key={val.toString() + i} className={classNames.legendLI}>
             <div className={classNames.legendAnnualVar}>
-              <svg width="20px" height="20px">
+              <svg width="1.25rem" height="1.25rem">
                 <circle
                   r={sizeScale(labels[i]) ?? 7}
                   cx={10}

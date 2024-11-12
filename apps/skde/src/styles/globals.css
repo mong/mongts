@@ -49,7 +49,7 @@ li.MuiBreadcrumbs-li:last-child {
   font-weight: 700;
 }
 
-@media screen and (min-width: 0) and (max-width: 942px) {
+@media screen and (min-width: 0) and (max-width: 60rem) {
   .main-content {
     max-width: 95%;
     padding: calc(16rem / 16);
@@ -80,12 +80,12 @@ li.MuiBreadcrumbs-li:last-child {
   overflow: hidden;
 }
 .qi_long_description p {
-  margin: 5px 5px 10px 0.5rem;
+  margin: calc(5rem / 16) calc(5rem / 16) calc(10rem / 16) 0.5rem;
   color: #7d8588;
   font-size: 0.9em;
 }
 .desired_target_level h4 {
-  margin: 5px 5px 10px 0.5rem;
+  margin: calc(5rem / 16) calc(5rem / 16) calc(10rem / 16) 0.5rem;
   color: #7ebec7;
   font-size: 1rem;
   font-weight: 600;

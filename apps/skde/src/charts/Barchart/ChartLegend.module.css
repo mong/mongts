@@ -12,7 +12,7 @@
 
 .legendLI {
   display: flex;
-  margin-right: 25px;
+  margin-right: calc(25rem / 16);
   list-style: none;
   justify-content: center;
   align-items: center;
@@ -20,23 +20,23 @@
 
 .legendAnnualVar {
   display: flex;
-  margin-right: 3px;
+  margin-right: calc(3rem / 16);
   justify-content: center;
   align-items: center;
 }
 
 .legendColorOuter {
-  width: 15px;
-  height: 15px;
-  border-radius: 3px;
+  width: calc(15rem / 16);
+  height: calc(15rem / 16);
+  border-radius: calc(3rem / 16);
   display: flex;
-  margin-right: 5px;
+  margin-right: calc(5rem / 16);
   justify-content: center;
   align-items: center;
 }
 
 .legendColorInner {
-  width: 9px;
-  height: 9px;
-  border-radius: 2px;
+  width: calc(9rem / 16);
+  height: calc(9rem / 16);
+  border-radius: calc(2rem / 16);
 }

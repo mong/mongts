@@ -17,23 +17,23 @@
 .tocListItem::before {
   content: "";
   position: absolute;
-  left: -14px;
+  left: calc(-14rem / 16);
   height: 100%;
-  border-left: 1px solid #034584;
-  width: 1px;
+  border-left: calc(1rem / 16) solid #034584;
+  width: calc(1rem / 16);
   box-sizing: border-box;
-  top: 13px;
+  top: calc(13rem / 16);
 }
 
 .tocListItem:last-child::before {
-  height: 0px;
+  height: 0rem;
 }
 
 .tocListItem::after {
   content: "";
   position: absolute;
-  left: -14px;
-  top: 13px;
-  border-top: 1px solid #034584;
-  width: 7px;
+  left: calc(-14rem / 16);
+  top: calc(13rem / 16);
+  border-top: calc(1rem / 16) solid #034584;
+  width: calc(7rem / 16);
 }

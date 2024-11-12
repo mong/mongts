@@ -1,6 +1,6 @@
 .headerContainer {
   display: flex;
-  max-width: min(1216px, 95%);
+  max-width: min(76rem, 95%);
   height: fit-content;
   padding: 1.5rem 1rem 1.5rem 1rem;
   margin: auto;
@@ -50,7 +50,7 @@
 .searchBar {
   margin: auto;
   margin-top: calc(4rem / 16);
-  width: min(600px, 80%);
+  width: min(37.5rem, 80%);
   z-index: auto;
 }
 .searchBar h1 {
@@ -100,7 +100,7 @@
   margin-left: 3rem;
 }
 
-@media screen and (min-width: 0) and (max-width: 942px) {
+@media screen and (min-width: 0) and (max-width: 60rem) {
   .headerContainer {
     flex-direction: column;
     align-items: flex-start;

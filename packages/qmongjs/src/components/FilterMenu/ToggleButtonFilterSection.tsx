@@ -18,7 +18,7 @@ const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
   borderRadius: 30,
   height: "2rem",
   textTransform: "none",
-  border: "1px solid #003087 !important",
+  border: "calc(1rem / 16) solid #003087 !important",
   justifyContent: "flex-start",
   paddingLeft: theme.spacing(1),
   "&.Mui-selected": {
@@ -28,7 +28,7 @@ const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
       backgroundColor: theme.palette.primary.main,
     },
   },
-  boxShadow: "0px 1px 2px rgba(0, 0, 0, 0.1)",
+  boxShadow: "0 calc(1rem / 16) calc(2rem / 16) rgba(0, 0, 0, 0.1)",
 }));
 
 type ToggleButtonFilterSectionProps = FilterMenuSectionProps & {

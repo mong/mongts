@@ -128,7 +128,7 @@ const IndicatorRow = (props: {
     <TableRow key={indData.indicatorID + "-collapse"}>
       <StyledTableCell
         style={{
-          paddingBottom: "4px",
+          paddingBottom: "calc(4rem / 16)",
           paddingTop: 0,
           paddingLeft: 0,
           paddingRight: 0,
@@ -265,7 +265,7 @@ const IndicatorRow = (props: {
           colSpan={unitNames.length + 1}
         >
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <Typography variant="body2" sx={{ margin: "10px" }}>
+            <Typography variant="body2" sx={{ margin: "calc(10rem / 16)" }}>
               {indData.shortDescription}
               <br />
               {"Ønsket målnivå: "}
@@ -315,7 +315,7 @@ const IndicatorRow = (props: {
               </table>
             </div>
 
-            <Typography variant="body2" sx={{ margin: "10px" }}>
+            <Typography variant="body2" sx={{ margin: "calc(10rem / 16)" }}>
               <b>Om kvalitetsindikatoren</b>
               <ReactMarkdown
                 remarkPlugins={remarkPlugins}
@@ -578,7 +578,7 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
   });
 
   return (
-    <StyledTable sx={{ marginTop: "10px" }}>
+    <StyledTable sx={{ marginTop: "calc(10rem / 16)" }}>
       {rowDataFiltered.map((row) => (
         <RegistrySection
           key={row.registerName}

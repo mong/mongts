@@ -16,27 +16,27 @@
   color: #034584;
 }
 
-@media screen and (min-width: 943px) {
+@media screen and (min-width: 60rem) {
   .atlasContent {
-    width: min(95%, 1216px);
+    width: min(95%, 76rem);
     margin: auto;
     padding: 1rem;
     display: flex;
-    max-width: 1216px;
+    max-width: 76rem;
   }
   .main_content {
     flex: 1 1 auto;
-    width: 0px;
+    width: 0rem;
   }
 }
 
-@media screen and (min-width: 0) and (max-width: 942px) {
+@media screen and (min-width: 0) and (max-width: 60rem) {
   .atlasContent {
     flex-direction: column;
   }
 }
 
-@media screen and (min-width: 0) and (max-width: 840px) {
+@media screen and (min-width: 0) and (max-width: 52rem) {
   .main_content {
     width: 95%;
     margin: auto;

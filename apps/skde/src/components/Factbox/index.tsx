@@ -15,11 +15,11 @@ type FactBoxProps = {
 
 export const FactBox = ({ boxTitle, boxContent, id, lang }: FactBoxProps) => {
   return (
-    <div style={{ marginBottom: "10px" }} data-testid="factbox">
+    <div style={{ marginBottom: "calc(10rem / 16)" }} data-testid="factbox">
       <Accordion
         sx={{
           boxShadow: 1,
-          borderBottom: "2px solid #033F85",
+          borderBottom: "calc(2rem / 16) solid #033F85",
         }}
       >
         <AccordionSummary

@@ -64,7 +64,7 @@ export const PopUpContent = ({
                   onClick={() => setActive(false)}
                 >
                   <AiOutlineClose
-                    strokeWidth={"1px"}
+                    strokeWidth={"calc(1rem / 16)"}
                     color="#034584"
                     style={{ alignSelf: "end" }}
                     size={30}

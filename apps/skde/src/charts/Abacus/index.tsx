@@ -169,7 +169,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
         <ul className={classNames.legendUL}>
           <li key={"hf"} className={classNames.legendLI}>
             <div className={classNames.legendAnnualVar}>
-              <svg width="20px" height="20px">
+              <svg width="1.25rem" height="1.25rem">
                 <circle r={7} cx={10} cy={10} fill={colors[0]} />
               </svg>
             </div>
@@ -177,7 +177,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
           </li>
           <li key={"national"} className={classNames.legendLI}>
             <div className={classNames.legendAnnualVar}>
-              <svg width="20px" height="20px">
+              <svg width="1.25rem" height="1.25rem">
                 <circle r={7} cx={10} cy={10} fill={colors[1]} />
               </svg>
             </div>
@@ -187,7 +187,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
             <li key={"selected_bohf"} className={classNames.legendLI}>
               <>
                 <div className={classNames.legendAnnualVar}>
-                  <svg width="20px" height="20px">
+                  <svg width="1.25rem" height="1.25rem">
                     <circle r={7} cx={10} cy={10} fill={colors[2]} />
                   </svg>
                 </div>

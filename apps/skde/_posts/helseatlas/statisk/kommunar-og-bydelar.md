@@ -3,10 +3,11 @@ filename: Kommunar og bydelar
 title: Kommunar og bydelar
 lang: nn
 ---
+
 <html>
 <style>
 table, th, td {
-  border:1px solid black;
+  border:calc(1rem / 16) solid black;
 }
 </style>
 <body>

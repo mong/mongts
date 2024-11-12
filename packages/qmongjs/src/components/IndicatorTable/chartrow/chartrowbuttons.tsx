@@ -86,11 +86,11 @@ export const FigureButtons = (props: Props) => {
       ctx.fillStyle = "#fafafa";
       ctx.fillRect(0, 0, canvasWidth, canvasHeight);
       ctx.fillStyle = "black";
-      ctx.font = "bold 24px jakarta sans";
+      ctx.font = "bold 1.5rem jakarta sans";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(figTitle, canvasWidth / 2, 25);
-      ctx.font = "20px jakarta sans";
+      ctx.font = "1.25rem jakarta sans";
       ctx.textAlign = "start";
       ctx.fillText(`Kilde: ${description.full_name}`, 25, 75 + height);
 
@@ -142,14 +142,14 @@ export const FigureButtons = (props: Props) => {
         ),
       click: () => updateChartType(chartType === "line" ? "bar" : "line"),
       class: "btn-charttype",
-      //style: { border: "2px solid rgba(0, 0, 0, 0.1)" },
+      //style: { border: "calc(2rem / 16) solid rgba(0, 0, 0, 0.1)" },
       title: chartType === "line" ? "Søyle" : "Linje",
     },
     {
       label: show_level ? "Skjul målnivå" : "Vis målnivå",
       click: () => update_show_level(show_level === true ? false : true),
       class: "btn-level",
-      //style: { border: "2px solid rgba(0, 0, 0, 0.1)" },
+      //style: { border: "calc(2rem / 16) solid rgba(0, 0, 0, 0.1)" },
       title: show_level ? "Skjul målnivå" : "Vis målnivå",
     },
     {
