@@ -13,6 +13,7 @@ import { Stack, Typography } from "@mui/material";
 import { FaCircle } from "react-icons/fa";
 import { fetchRegisterNames } from "qmongjs";
 import { RegisterName } from "types";
+import { styled } from "@mui/material";
 
 const levelAColour = "#58A55C";
 const levelBColour = "#FD9C00";
@@ -68,7 +69,7 @@ const Stadiumfigur = ({ registry }) => {
   } as lineStyle;
 
   const font = {
-    fontSize: 18,
+    fontSize: 26,
     fontWeight: 500,
     fontFamily: "Arial",
   } as font;
@@ -80,8 +81,8 @@ const Stadiumfigur = ({ registry }) => {
   const linechartProps = {
     data: [plotData],
     lineStyles: lineStyles,
-    width: 800,
-    height: 600,
+    width: 1000,
+    height: 700,
     yAxisText: yAxisText,
     yMin: 1,
     yMax: 4,
@@ -89,19 +90,30 @@ const Stadiumfigur = ({ registry }) => {
     circleRadius: 7,
     individualPointColour: true,
     nGridLines: 3,
+    xTicksFont: font,
+    yTicksFont: font,
   } as LinechartBaseProps;
+
+  const StyledTypography = styled(Typography)(() => ({
+    ...font,
+  }));
 
   return (
     <div>
-      <Stack direction="row" spacing={2} sx={{ marginLeft: 10, marginTop: 10 }}>
+      <Stack
+        direction="row"
+        spacing={2}
+        sx={{ marginLeft: 10, marginTop: 10 }}
+        alignItems="center"
+      >
         <FaCircle style={{ color: levelAColour, fontSize: "1.2rem" }} />
-        <Typography>A</Typography>
+        <StyledTypography>A</StyledTypography>
         <FaCircle style={{ color: levelBColour, fontSize: "1.2rem" }} />
-        <Typography>B</Typography>
+        <StyledTypography>B</StyledTypography>
         <FaCircle style={{ color: levelCColour, fontSize: "1.2rem" }} />
-        <Typography>C</Typography>
+        <StyledTypography>C</StyledTypography>
         <FaCircle style={{ color: noLevelColour, fontSize: "1.2rem" }} />
-        <Typography>Ingen nivå</Typography>
+        <StyledTypography>Ingen nivå</StyledTypography>
       </Stack>
       <LinechartBase {...linechartProps} />
     </div>
