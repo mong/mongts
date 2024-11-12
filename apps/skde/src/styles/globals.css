@@ -1,10 +1,10 @@
 html,
 body {
   color: #000000;
-  line-height: 24px;
+  line-height: calc(24rem / 16);
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
+  font-size: calc(16rem / 16);
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -21,28 +21,28 @@ a {
 
 h1 {
   font-weight: 300;
-  font-size: 48px;
+  font-size: calc(48rem / 16);
 }
 
 h2 {
   font-weight: 600;
-  font-size: 24px;
-  line-height: 24px;
+  font-size: calc(24rem / 16);
+  line-height: calc(24rem / 16);
   text-transform: uppercase;
-  border-bottom: 2px solid #cddbe8;
-  padding-bottom: 15px;
+  border-bottom: calc(2rem / 16) solid #cddbe8;
+  padding-bottom: calc(15rem / 16);
 }
 
 h3 {
   font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: calc(20rem / 16);
+  line-height: calc(24rem / 16);
 }
 
 /* breadcrumbs */
 
 .breadcrum {
-  height: 46px;
+  height: calc(46rem / 16);
 }
 
 li.MuiBreadcrumbs-li:last-child {
@@ -52,7 +52,7 @@ li.MuiBreadcrumbs-li:last-child {
 @media screen and (min-width: 0) and (max-width: 942px) {
   .main-content {
     max-width: 95%;
-    padding: 16px;
+    padding: calc(16rem / 16);
     margin: auto;
   }
 }
@@ -121,7 +121,7 @@ li.MuiBreadcrumbs-li:last-child {
 
 @media All and (max-width: 768px) {
   html {
-    font-size: 13px;
+    font-size: calc(13rem / 16);
   }
 }
 
@@ -129,6 +129,6 @@ li.MuiBreadcrumbs-li:last-child {
 
 @media All and (min-width: 769px) and (max-width: 992px) {
   html {
-    font-size: 14px;
+    font-size: calc(14rem / 16);
   }
 }
