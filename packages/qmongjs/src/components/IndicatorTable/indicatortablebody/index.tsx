@@ -14,6 +14,7 @@ interface IndicatorTableBodyProps {
   showLevelFilter: string;
   blockTitle?: string[];
   onEmptyStatusChanged?: (registerName: string, isEmpty: boolean) => void;
+  chartColours: string[];
 }
 
 export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
@@ -29,6 +30,7 @@ export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
     showLevelFilter,
     blockTitle,
     onEmptyStatusChanged,
+    chartColours,
   } = props;
 
   const done: string[] = [];
@@ -50,6 +52,7 @@ export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
           showLevelFilter={showLevelFilter}
           blockTitle={blockTitle ? blockTitle[i] : undefined}
           onEmptyStatusChanged={onEmptyStatusChanged}
+          chartColours={chartColours}
         />
       );
     } else {

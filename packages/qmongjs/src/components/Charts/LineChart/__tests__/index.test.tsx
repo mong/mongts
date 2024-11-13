@@ -33,7 +33,11 @@ beforeEach(() => {
 test("shows legend", async () => {
   const d1 = buildDataPoint({ unit_name: "Nasjonalt" });
   const d2 = buildDataPoint({ unit_name: "Ahus" });
-  const props = buildProps({ data: [d1, d2], description: descr });
+  const props = buildProps({
+    data: [d1, d2],
+    description: descr,
+    chartColours: ["#00263d", "#4F9A94"],
+  });
 
   render(<LineChartWithRef {...props} />);
 
@@ -46,7 +50,11 @@ test("shows legend", async () => {
 test("shows only one legend item per unit_name", async () => {
   const d1 = buildDataPoint({ unit_name: "Nasjonalt" });
   const d2 = buildDataPoint({ unit_name: "Nasjonalt" });
-  const props = buildProps({ data: [d1, d2], description: descr });
+  const props = buildProps({
+    data: [d1, d2],
+    description: descr,
+    chartColours: ["#00263d"],
+  });
 
   render(<LineChartWithRef {...props} />);
 
@@ -94,6 +102,7 @@ test("Render without levels @250px", async () => {
         }),
       ]}
       description={descr}
+      chartColours={["#00263d"]}
     />,
   );
 
@@ -142,6 +151,7 @@ test("Render with levels @500px", async () => {
         }),
       ]}
       description={descr}
+      chartColours={["#00263d"]}
     />,
   );
 
@@ -210,6 +220,7 @@ test("Render with levels reversed @500px", async () => {
         }),
       ]}
       description={descr}
+      chartColours={["#00263d", "#4F9A94"]}
     />,
   );
 
@@ -298,6 +309,7 @@ test("Render with nasjonalt", async () => {
         }),
       ]}
       description={descr}
+      chartColours={["#00263d", "#4F9A94", "#90CAF9"]}
     />,
   );
 
@@ -335,6 +347,7 @@ test("Render with many years", async () => {
         buildDataPoint({ unit_name: "Nasjonalt", var: 0.39, year: 2023 }),
       ]}
       description={descr}
+      chartColours={["#00263d"]}
     />,
   );
 
@@ -373,6 +386,7 @@ test("Render with many years, ending with even", async () => {
         buildDataPoint({ unit_name: "Nasjonalt", var: 0.38, year: 2022 }),
       ]}
       description={descr}
+      chartColours={["#00263d"]}
     />,
   );
 
@@ -408,6 +422,7 @@ test("Render with many years, including missing years", async () => {
         buildDataPoint({ unit_name: "Nasjonalt", var: 0.37, year: 2023 }),
       ]}
       description={descr}
+      chartColours={["#00263d"]}
     />,
   );
 
@@ -443,6 +458,7 @@ test("Render with many years, including missing years", async () => {
         buildDataPoint({ unit_name: "Nasjonalt", var: 0.37, year: 2023 }),
       ]}
       description={descr}
+      chartColours={["#00263d"]}
     />,
   );
 
