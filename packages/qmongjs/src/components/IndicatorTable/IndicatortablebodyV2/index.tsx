@@ -218,9 +218,17 @@ const IndicatorRow = (props: {
 
           const cellData = Array.from([lowDG, noData, lowN]).every(
             (x) => x == false,
-          )
-            ? [row?.result, row?.symbol]
-            : "N/A";
+          ) ? (
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              spacing="0.25rem"
+            >
+              <b>{row?.result}</b>
+              {row?.symbol}
+            </Stack>
+          ) : null;
 
           const patientCounts = lowDG
             ? "Lav dekning"
@@ -244,9 +252,14 @@ const IndicatorRow = (props: {
               align={"center"}
               key={indData.indicatorID + index}
             >
-              {cellData}
-              <br />
-              {patientCounts}
+              <Stack
+                direction="column"
+                alignItems="center"
+                justifyContent="center"
+              >
+                {cellData}
+                {patientCounts}
+              </Stack>
             </CellType>
           );
         })}
@@ -266,7 +279,7 @@ const IndicatorRow = (props: {
           colSpan={unitNames.length + 1}
         >
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <Typography variant="body2" sx={{ margin: "10px" }}>
+            <Typography variant="body2" sx={{ margin: "2rem" }}>
               {indData.shortDescription}
               <br />
               {"Ønsket målnivå: "}
@@ -317,7 +330,7 @@ const IndicatorRow = (props: {
               </table>
             </div>
 
-            <Typography variant="body2" sx={{ margin: "10px" }}>
+            <Typography variant="body2" sx={{ margin: "2rem" }}>
               <b>Om kvalitetsindikatoren</b>
               <ReactMarkdown
                 remarkPlugins={remarkPlugins}
@@ -487,7 +500,10 @@ const RegistrySection = (props: {
           <TableRow key={regData.registerName + "-row"}>
             <StyledTableCellStart
               key={regData.registerName}
-              sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
+              sx={{
+                backgroundColor: skdeTheme.palette.secondary.light,
+                width: "12rem",
+              }}
             >
               {regData.registerFullName}
             </StyledTableCellStart>
