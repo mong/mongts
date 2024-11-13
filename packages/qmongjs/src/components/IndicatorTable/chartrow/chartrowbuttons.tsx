@@ -142,14 +142,14 @@ export const FigureButtons = (props: Props) => {
         ),
       click: () => updateChartType(chartType === "line" ? "bar" : "line"),
       class: "btn-charttype",
-      //style: { border: "calc(2rem / 16) solid rgba(0, 0, 0, 0.1)" },
+      //style: { border: "0.125rem solid rgba(0, 0, 0, 0.1)" },
       title: chartType === "line" ? "Søyle" : "Linje",
     },
     {
       label: show_level ? "Skjul målnivå" : "Vis målnivå",
       click: () => update_show_level(show_level === true ? false : true),
       class: "btn-level",
-      //style: { border: "calc(2rem / 16) solid rgba(0, 0, 0, 0.1)" },
+      //style: { border: "0.125rem solid rgba(0, 0, 0, 0.1)" },
       title: show_level ? "Skjul målnivå" : "Vis målnivå",
     },
     {

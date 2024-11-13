@@ -101,7 +101,7 @@ export const DataTable = <
                     key={`${row.bohf}${i}${ind}`}
                     component={ind === 0 ? "th" : "td"}
                     scope="row"
-                    sx={{ paddingTop: "calc(2rem / 16)" }}
+                    sx={{ paddingTop: "0.125rem" }}
                     padding="none"
                     align={cell.typeVar === "number" ? "right" : "left"}
                     style={{

@@ -28,7 +28,7 @@ const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
       backgroundColor: theme.palette.primary.main,
     },
   },
-  boxShadow: "0 calc(1rem / 16) calc(2rem / 16) rgba(0, 0, 0, 0.1)",
+  boxShadow: "0 calc(1rem / 16) 0.125rem rgba(0, 0, 0, 0.1)",
 }));
 
 type ToggleButtonFilterSectionProps = FilterMenuSectionProps & {

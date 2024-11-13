@@ -19,7 +19,7 @@ export const FactBox = ({ boxTitle, boxContent, id, lang }: FactBoxProps) => {
       <Accordion
         sx={{
           boxShadow: 1,
-          borderBottom: "calc(2rem / 16) solid #033F85",
+          borderBottom: "0.125rem solid #033F85",
         }}
       >
         <AccordionSummary

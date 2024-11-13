@@ -64,8 +64,8 @@ export const Markdown = ({ children, lang }: MarkdownProp) => {
           style={{
             borderCollapse: "collapse",
             margin: "auto",
-            borderTop: "calc(2rem / 16) solid black",
-            borderBottom: "calc(2rem / 16) solid black",
+            borderTop: "0.125rem solid black",
+            borderBottom: "0.125rem solid black",
           }}
         >
           {children}
@@ -78,7 +78,7 @@ export const Markdown = ({ children, lang }: MarkdownProp) => {
           style={{
             borderBottom: "calc(1rem / 16) solid black",
             margin: 0,
-            padding: "calc(2rem / 16) calc(10rem / 16)",
+            padding: "0.125rem calc(10rem / 16)",
             textAlign: "left",
             ...style,
           }}
@@ -89,7 +89,7 @@ export const Markdown = ({ children, lang }: MarkdownProp) => {
     },
     td({ children, style }) {
       return (
-        <td style={{ padding: "calc(2rem / 16) calc(10rem / 16)", ...style }}>
+        <td style={{ padding: "0.125rem calc(10rem / 16)", ...style }}>
           {children}
         </td>
       );
