@@ -38,7 +38,6 @@ import {
   TreeViewFilterSettingsValue,
   getFilterSettingsValuesMap,
 } from "../TreeViewFilterSection";
-import { useMediaQuery, useTheme } from "@mui/material";
 import { useShouldReinitialize } from "../../../helpers/hooks/useShouldReinitialize";
 
 // The keys used for the different filter sections
@@ -119,14 +118,19 @@ export function TreatmentQualityFilterMenu({
   const queryContextType = "ind";
 
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean>();
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setIsMobile(
+      screen.orientation.type === "portrait-primary" ||
+        screen.orientation.angle === 90,
+    );
+    setMounted(true);
+  }, []);
 
   // Restrict max number of treatment units
-  const theme = useTheme();
   const maxSelectedTreatmentUnits =
-    treatmentUnitSelectionLimit ??
-    (useMediaQuery(theme.breakpoints.down("md")) ? 5 : 10);
+    treatmentUnitSelectionLimit ?? (isMobile ? 5 : 10);
 
   // Map for filter options, defaults, and query parameter values and setters
   const optionsMap = new Map<string, OptionsMapEntry>();
