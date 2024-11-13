@@ -123,7 +123,7 @@ export function TreatmentQualityFilterMenu({
   useEffect(() => {
     setIsMobile(
       screen.orientation.type === "portrait-primary" ||
-        screen.orientation.angle === 90,
+        screen.orientation.angle != 0,
     );
     setMounted(true);
   }, []);
