@@ -340,7 +340,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
                 {labels.map((label, i) => {
                   return (
                     <div
-                      style={{ padding: "calc(10rem / 16)" }}
+                      style={{ padding: "0.625rem" }}
                       key={`legend-div-${i}`}
                     >
                       <LegendItem key={`legend-${i}`}>

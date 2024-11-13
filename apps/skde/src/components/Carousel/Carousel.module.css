@@ -4,17 +4,17 @@
   justify-content: space-evenly;
   align-items: center;
   overflow: hidden;
-  margin: calc(20rem / 16);
+  margin: 1.25rem;
   background-color: #ffffff;
   border: calc(1rem / 16) solid #d9d9d9;
   border-radius: calc(3rem / 16);
-  padding: calc(30rem / 16) calc(20rem / 16);
+  padding: 1.875rem 1.25rem;
 }
 
 .carousel {
   display: flex;
   flex-direction: column;
-  margin: 0rem calc(10rem / 16) calc(20rem / 16) calc(10rem / 16);
+  margin: 0rem 0.625rem 1.25rem 0.625rem;
   width: 95%;
   overflow: auto;
 }
@@ -28,12 +28,12 @@
   background: none;
   font-weight: 400;
   font-size: calc(18rem / 16);
-  line-height: calc(24rem / 16);
+  line-height: 1.5rem;
   text-decoration-line: underline;
   cursor: pointer;
   padding-left: calc(38rem / 16);
 }
 
 .selectionBtn span {
-  margin-left: calc(5rem / 16);
+  margin-left: 0.3125rem;
 }

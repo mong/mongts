@@ -1,10 +1,10 @@
 html,
 body {
   color: #000000;
-  line-height: calc(24rem / 16);
+  line-height: 1.5rem;
   font-style: normal;
   font-weight: normal;
-  font-size: calc(16rem / 16);
+  font-size: 1rem;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -21,22 +21,22 @@ a {
 
 h1 {
   font-weight: 300;
-  font-size: calc(48rem / 16);
+  font-size: 3rem;
 }
 
 h2 {
   font-weight: 600;
-  font-size: calc(24rem / 16);
-  line-height: calc(24rem / 16);
+  font-size: 1.5rem;
+  line-height: 1.5rem;
   text-transform: uppercase;
   border-bottom: calc(2rem / 16) solid #cddbe8;
-  padding-bottom: calc(15rem / 16);
+  padding-bottom: 1rem;
 }
 
 h3 {
   font-weight: 600;
-  font-size: calc(20rem / 16);
-  line-height: calc(24rem / 16);
+  font-size: 1.25rem;
+  line-height: 1.5rem;
 }
 
 /* breadcrumbs */
@@ -52,7 +52,7 @@ li.MuiBreadcrumbs-li:last-child {
 @media screen and (min-width: 0) and (max-width: 60rem) {
   .main-content {
     max-width: 95%;
-    padding: calc(16rem / 16);
+    padding: 1rem;
     margin: auto;
   }
 }
@@ -80,12 +80,12 @@ li.MuiBreadcrumbs-li:last-child {
   overflow: hidden;
 }
 .qi_long_description p {
-  margin: calc(5rem / 16) calc(5rem / 16) calc(10rem / 16) 0.5rem;
+  margin: 0.3125rem 0.3125rem 0.625rem 0.5rem;
   color: #7d8588;
   font-size: 0.9em;
 }
 .desired_target_level h4 {
-  margin: calc(5rem / 16) calc(5rem / 16) calc(10rem / 16) 0.5rem;
+  margin: 0.3125rem 0.3125rem 0.625rem 0.5rem;
   color: #7ebec7;
   font-size: 1rem;
   font-weight: 600;

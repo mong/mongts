@@ -11,7 +11,7 @@ const tooltipStyles: React.CSSProperties = {
   justifyContent: "space-between",
   alignItems: "center",
   minWidth: 60,
-  padding: "calc(10rem / 16)",
+  padding: "0.625rem",
   backgroundColor: "white",
   opacity: 0.8,
   color: "black",
@@ -38,7 +38,7 @@ export const LineChartTooltip = ({
         <Tooltip top={tooltipTop} left={tooltipLeft} style={tooltipStyles}>
           <div
             style={{
-              marginBottom: "calc(10rem / 16)",
+              marginBottom: "0.625rem",
               fontSize: "1rem",
               fontWeight: 500,
             }}

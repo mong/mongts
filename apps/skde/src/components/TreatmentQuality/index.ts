@@ -41,7 +41,7 @@ export const FilterDrawer = styled(Drawer)(({ theme }) => ({
 export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
   "& table": {
     fontFamily: theme.typography.fontFamily,
-    borderSpacing: "0 calc(4rem / 16)",
+    borderSpacing: "0 0.25rem",
     wordBreak: "break-word",
     "& th:nth-last-of-type(n+3):first-of-type ~ th, & th:nth-last-of-type(n+3):first-of-type":
       {
@@ -117,7 +117,7 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
       [theme.breakpoints.down("sm")]: {
         width: "100% !important",
         "& text": {
-          fontSize: `calc(10rem / 16) !important`,
+          fontSize: `0.625rem !important`,
         },
       },
       ...theme.typography.body2,
@@ -129,7 +129,7 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
       [theme.breakpoints.down("sm")]: {
         width: "100% !important",
         "& text": {
-          fontSize: `calc(10rem / 16) !important`,
+          fontSize: `0.625rem !important`,
         },
       },
       ...theme.typography.body2,

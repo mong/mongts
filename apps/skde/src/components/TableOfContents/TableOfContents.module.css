@@ -1,7 +1,7 @@
 .tocWrapper {
   position: -webkit-sticky; /* Required for Safari */
   position: sticky;
-  top: calc(10rem / 16);
+  top: 0.625rem;
 }
 
 .tocList {
@@ -43,7 +43,7 @@
     margin: auto;
   }
   .toc_small_content {
-    margin: calc(10rem / 16) auto;
+    margin: 0.625rem auto;
     width: 95%;
     box-sizing: content-box;
   }

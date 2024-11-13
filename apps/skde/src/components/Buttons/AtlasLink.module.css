@@ -5,7 +5,7 @@
   transition: 100ms ease-in;
   flex: 1 1 calc(250rem / 16);
   overflow: hidden;
-  border-radius: calc(24rem / 16);
+  border-radius: 1.5rem;
 }
 
 .linkOuterWrapper,
@@ -46,7 +46,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: calc(20rem / 16) calc(25rem / 16) calc(20rem / 16) calc(25rem / 16);
+  padding: 1.25rem calc(25rem / 16) 1.25rem calc(25rem / 16);
 }
 
 .linkDateContainer {
@@ -64,8 +64,8 @@
 }
 
 .innerDot {
-  width: calc(8rem / 16) !important;
-  height: calc(8rem / 16) !important;
+  width: 0.5rem !important;
+  height: 0.5rem !important;
   background-color: #000;
   border-radius: 100%;
 }
@@ -82,7 +82,7 @@
   width: 1rem !important;
   height: 1rem !important;
   border: none;
-  margin-right: calc(5rem / 16);
+  margin-right: 0.3125rem;
 }
 
 .newlyUpdated .outerCircle {
@@ -92,10 +92,10 @@
 .linkTitle {
   font-style: normal;
   font-weight: 700;
-  font-size: calc(26rem / 16);
-  line-height: calc(49rem / 16);
-  letter-spacing: 0.01em;
-  padding-top: calc(20rem / 16);
+  font-size: 1.625rem;
+  line-height: 3rem;
+  letter-spacing: 0.01rem;
+  padding-top: 1.25rem;
 }
 
 .linkIngress {
@@ -107,17 +107,17 @@
 
 @media screen and (min-width: 60rem) {
   .linkOuterWrapper {
-    flex-basis: calc(400rem / 16);
+    flex-basis: 25rem;
   }
 
   .linkTitle {
-    font-size: calc(36rem / 16);
+    font-size: 2.25rem;
   }
 
   .linkOuterWrapper.wide {
     max-width: 100%;
-    margin-top: calc(20rem / 16);
-    margin-bottom: calc(20rem / 16);
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
     background: #e6eef8;
     flex: 1 1 100%;
   }

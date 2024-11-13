@@ -28,7 +28,7 @@
 .no {
   color: #034584;
   border-right: calc(1rem / 16) solid #034584;
-  padding-right: calc(10rem / 16);
+  padding-right: 0.625rem;
   font-weight: normal;
   text-decoration: underline;
   transition: 200ms ease-in;
@@ -36,7 +36,7 @@
 
 .eng {
   color: #034584;
-  padding-left: calc(10rem / 16);
+  padding-left: 0.625rem;
   font-weight: normal;
   text-decoration: underline;
   transition: 200ms ease-in;
@@ -49,7 +49,7 @@
 
 .searchBar {
   margin: auto;
-  margin-top: calc(4rem / 16);
+  margin-top: 0.25rem;
   width: min(37.5rem, 80%);
   z-index: auto;
 }
@@ -111,7 +111,7 @@
 
   .headerNavContainer {
     width: 100%;
-    margin-top: calc(20rem / 16);
+    margin-top: 1.25rem;
   }
   .navButtons {
     justify-content: space-between;

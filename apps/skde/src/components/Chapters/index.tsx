@@ -52,7 +52,7 @@ const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
   return (
     <div
       id={mainID}
-      style={{ paddingTop: "calc(10rem / 16)" }}
+      style={{ paddingTop: "0.625rem" }}
       className={classNames.chapters}
     >
       {overskrift && <h2>{overskrift}</h2>}

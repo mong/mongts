@@ -1,6 +1,6 @@
 .btn-container {
   display: flex;
-  margin: calc(10rem / 16);
+  margin: 0.625rem;
 }
 
 .btn-container button {
@@ -8,12 +8,12 @@
   align-items: center;
   justify-content: center;
   outline: none;
-  margin: calc(5rem / 16);
+  margin: 0.3125rem;
   border-style: none;
   background-color: white;
   font-size: 1.2rem;
   cursor: pointer;
-  padding: calc(5rem / 16);
+  padding: 0.3125rem;
   vertical-align: middle;
   box-shadow:
     0rem calc(2rem / 16) calc(1rem / 16) calc(-1rem / 16) rgba(0, 0, 0, 0.2),

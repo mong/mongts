@@ -1,17 +1,17 @@
 .resultBoxWrapper {
   position: relative;
-  border-radius: calc(10rem / 16);
-  padding: calc(30rem / 16) 0 calc(20rem / 16) 0;
+  border-radius: 0.625rem;
+  padding: 1.875rem 0 1.25rem 0;
 }
 
 .resultBoxTitleWrapper {
-  padding: calc(30rem / 16) calc(20rem / 16) calc(30rem / 16) calc(20rem / 16);
+  padding: 1.875rem 1.25rem 1.875rem 1.25rem;
   text-align: left;
 }
 
 .resultBoxSelectionContent {
   width: auto;
-  padding: calc(30rem / 16) calc(20rem / 16) calc(30rem / 16) calc(20rem / 16);
+  padding: 1.875rem 1.25rem 1.875rem 1.25rem;
   text-align: left;
 }
 
@@ -22,8 +22,8 @@
   align-items: center;
   bottom: calc(21rem / 16);
   margin: auto;
-  width: calc(40rem / 16);
-  height: calc(40rem / 16);
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 100%;
   background-color: #033f85;
   overflow: hidden;
@@ -42,7 +42,7 @@
 
 .vertical {
   position: relative;
-  left: calc(-8rem / 16);
+  left: -0.5rem;
   top: 0;
   width: calc(2rem / 16);
   height: 1rem;
