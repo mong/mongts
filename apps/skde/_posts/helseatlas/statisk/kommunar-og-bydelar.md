@@ -7,7 +7,7 @@ lang: nn
 <html>
 <style>
 table, th, td {
-  border:calc(1rem / 16) solid black;
+  border:0.0625rem solid black;
 }
 </style>
 <body>

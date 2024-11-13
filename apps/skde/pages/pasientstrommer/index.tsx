@@ -36,7 +36,7 @@ const Pasient = () => {
         <IframeResizer
           src="https://prod-tabellverk.skde.org/"
           style={{
-            width: "calc(1rem / 16)",
+            width: "0.0625rem",
             minWidth: "100%",
             height: "100vh",
             border: "none",

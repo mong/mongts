@@ -85,7 +85,7 @@ export const TableOfContents = ({
           <Accordion
             sx={{
               boxShadow: 0,
-              border: "calc(1rem / 16) solid #034584",
+              border: "0.0625rem solid #034584",
             }}
             expanded={expanded}
             onChange={() => handleChange()}

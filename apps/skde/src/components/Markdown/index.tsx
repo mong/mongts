@@ -76,7 +76,7 @@ export const Markdown = ({ children, lang }: MarkdownProp) => {
       return (
         <th
           style={{
-            borderBottom: "calc(1rem / 16) solid black",
+            borderBottom: "0.0625rem solid black",
             margin: 0,
             padding: "0.125rem calc(10rem / 16)",
             textAlign: "left",

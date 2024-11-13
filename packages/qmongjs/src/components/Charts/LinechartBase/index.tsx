@@ -74,7 +74,7 @@ const background = "#3b6978";
 const tooltipStyles = {
   ...defaultStyles,
   background,
-  border: "calc(1rem / 16) solid white",
+  border: "0.0625rem solid white",
   color: "white",
 };
 

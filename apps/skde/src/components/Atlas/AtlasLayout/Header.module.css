@@ -27,7 +27,7 @@
 }
 .no {
   color: #034584;
-  border-right: calc(1rem / 16) solid #034584;
+  border-right: 0.0625rem solid #034584;
   padding-right: 0.625rem;
   font-weight: normal;
   text-decoration: underline;
@@ -62,17 +62,17 @@
   display: flex;
   align-items: flex-end;
   font-size: 1.25rem;
-  padding-bottom: calc(1rem / 16);
-  border-bottom: calc(1rem / 16) solid #000;
+  padding-bottom: 0.0625rem;
+  border-bottom: 0.0625rem solid #000;
 }
 
 .searchBar label {
   position: absolute;
-  width: calc(1rem / 16);
-  height: calc(1rem / 16);
+  width: 0.0625rem;
+  height: 0.0625rem;
   overflow: hidden;
   padding: 0%;
-  margin: calc(-1rem / 16);
+  margin: -0.0625rem;
 }
 .searchBar input {
   position: relative;
