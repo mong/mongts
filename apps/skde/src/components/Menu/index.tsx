@@ -37,6 +37,16 @@ const EnglishMenu = () => {
           <span className={classNames.title}>Our Helseatlas</span>
           <ul>
             <li>
+              <Link href="/helseatlas/en/v2/radiologi2">
+                Health atlas radiology - part 2
+              </Link>
+            </li>
+            <li>
+              <Link href="/helseatlas/en/v2/radiologi">
+                Health Atlas Radiology - MRI part 1
+              </Link>
+            </li>
+            <li>
               <Link href="/helseatlas/en/v2/kronikere">
                 Health atlas for chronic diseases
               </Link>
@@ -127,6 +137,11 @@ const NorskMeny = () => {
         <ul>
           <span className={classNames.title}>Våre helseatlas</span>
           <ul>
+            <li>
+              <Link href="/helseatlas/v2/lab">
+                Helseatlas medisinsk biokjemi
+              </Link>
+            </li>
             <li data-testid="menuAtlasLink2">
               <Link href="/helseatlas/v2/radiologi2">
                 Helseatlas radiologi andre del, MR

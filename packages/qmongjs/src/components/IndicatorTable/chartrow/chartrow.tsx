@@ -19,6 +19,7 @@ interface Props {
   selectedTreatmentUnits: string[];
   update_selected_row(row: string): void;
   lastCompleteYear?: number;
+  chartColours: string[];
   showDescription?: boolean;
 }
 
@@ -33,6 +34,7 @@ export function ChartRow(props: Props) {
     selectedTreatmentUnits,
     indicatorData,
     lastCompleteYear,
+    chartColours,
     showDescription = true,
   } = props;
 
@@ -96,6 +98,7 @@ export function ChartRow(props: Props) {
             indicatorData={indicatorData}
             max_value={max_value}
             lastCompleteYear={lastCompleteYear}
+            chartColours={chartColours}
           />
           {showDescription && (
             <ChartRowDescription
