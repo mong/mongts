@@ -25,6 +25,9 @@ export const indicatorTableTheme = createTheme({
 
 export const StyledTable = styled(Table)(() => ({
   margin: 0,
+  tableLayout: "fixed",
+  width: "95%",
+  wordBreak: "break-word",
 }));
 
 export const StyledTableRow = styled(TableRow)(() => ({

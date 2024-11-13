@@ -11,7 +11,7 @@ import { newLevelSymbols, level2, skdeTheme } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
-import { Skeleton, Collapse, Typography } from "@mui/material";
+import { Skeleton, Collapse, Typography, Stack } from "@mui/material";
 import {
   StyledTable,
   StyledTableRow,
@@ -182,18 +182,16 @@ const IndicatorRow = (props: {
         style={{ cursor: "pointer" }}
       >
         <StyledTableCellStart key={indData.indicatorID}>
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <IconButton aria-label="expand" size="small">
-                    {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-                  </IconButton>
-                </td>
-                <td>{indData.indicatorTitle}</td>
-              </tr>
-            </tbody>
-          </table>
+          <Stack direction="row" alignItems="center">
+            <IconButton
+              aria-label="expand"
+              size="small"
+              sx={{ width: "2.5em", height: "2.5em" }}
+            >
+              {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+            </IconButton>
+            {indData.indicatorTitle}
+          </Stack>
         </StyledTableCellStart>
 
         {rowDataSorted.map((row, index, arr) => {
