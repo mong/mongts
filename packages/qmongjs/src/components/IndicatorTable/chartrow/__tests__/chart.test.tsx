@@ -91,6 +91,7 @@ test("Bar", async () => {
       showLevel={true}
       selectedTreatmentUnits={["Nasjonalt"]}
       indicatorData={inddata}
+      chartColours={["#00263d"]}
     />,
   );
 
@@ -115,6 +116,7 @@ test("Bar with level_direction eq 0", async () => {
       showLevel={true}
       selectedTreatmentUnits={["Nasjonalt"]}
       indicatorData={inddata}
+      chartColours={["#00263d"]}
     />,
   );
 
@@ -143,6 +145,7 @@ test("Bar select treatment unit", async () => {
       selectedTreatmentUnits={["Nasjonalt", "Sykehus 1", "RHF 1"]}
       indicatorData={inddata}
       tickformat=".%"
+      chartColours={["#00263d", "#4F9A94", "#90CAF9"]}
     />,
   );
 
@@ -166,6 +169,7 @@ test("Line", async () => {
       showLevel={true}
       selectedTreatmentUnits={[]}
       indicatorData={[]}
+      chartColours={[]}
     />,
   );
 
@@ -189,6 +193,7 @@ test("Line, fetch with error", async () => {
       showLevel={true}
       selectedTreatmentUnits={[]}
       indicatorData={[]}
+      chartColours={[]}
     />,
   );
 
@@ -235,6 +240,7 @@ test("Line, fetch is loading", async () => {
       showLevel={true}
       selectedTreatmentUnits={[]}
       indicatorData={[]}
+      chartColours={[]}
     />,
   );
 
@@ -258,6 +264,7 @@ test("Bar, fetch is loading", async () => {
       showLevel={true}
       selectedTreatmentUnits={[]}
       indicatorData={[]}
+      chartColours={[]}
     />,
   );
 

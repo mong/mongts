@@ -37,6 +37,7 @@ type IndicatorTableBodyV2Props = {
   unitNames: string[];
   levels: string;
   medfields: string[];
+  chartColours: string[];
 };
 
 // ################################
@@ -59,6 +60,7 @@ const IndicatorRow = (props: {
   context: string;
   type: string;
   year: number;
+  chartColours: string[];
 }) => {
   const {
     unitNames,
@@ -72,6 +74,7 @@ const IndicatorRow = (props: {
     context,
     type,
     year,
+    chartColours,
   } = props;
 
   let open: boolean;
@@ -310,6 +313,7 @@ const IndicatorRow = (props: {
                       indData.data[0].affirmTime,
                       year,
                     )}
+                    chartColours={chartColours}
                   ></ChartRow>
                 </tbody>
               </table>
@@ -364,6 +368,7 @@ const IndicatorSection = (props: {
   context: string;
   type: string;
   year: number;
+  chartColours: string[];
 }) => {
   const {
     unitNames,
@@ -376,6 +381,7 @@ const IndicatorSection = (props: {
     context,
     type,
     year,
+    chartColours,
   } = props;
 
   // Map indicators to rows and show only rows where there is at least
@@ -409,6 +415,7 @@ const IndicatorSection = (props: {
         context={context}
         type={type}
         year={year}
+        chartColours={chartColours}
       />
     ) : null;
 
@@ -430,6 +437,7 @@ const RegistrySection = (props: {
   context: string;
   type: string;
   year: number;
+  chartColours: string[];
 }) => {
   const {
     unitNames,
@@ -441,6 +449,7 @@ const RegistrySection = (props: {
     context,
     type,
     year,
+    chartColours,
   } = props;
 
   regData.indicatorData.sort((a: IndicatorData, b: IndicatorData) => {
@@ -520,6 +529,7 @@ const RegistrySection = (props: {
             context={context}
             type={type}
             year={year}
+            chartColours={chartColours}
           />
         </TableBody>
       </React.Fragment>
@@ -534,7 +544,8 @@ const RegistrySection = (props: {
 // #################################
 
 export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
-  const { context, type, year, unitNames, levels, medfields } = props;
+  const { context, type, year, unitNames, levels, medfields, chartColours } =
+    props;
 
   const [openRowID, setOpenRowID] = useState<string>("");
 
@@ -593,6 +604,7 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
           context={context}
           type={type}
           year={year}
+          chartColours={chartColours}
         />
       ))}
     </StyledTable>
