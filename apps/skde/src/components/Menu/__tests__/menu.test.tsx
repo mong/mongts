@@ -7,7 +7,8 @@
  */
 
 import { render } from "@testing-library/react";
-import { Menu } from "..";
+import { Menu } from "../.";
+import { test, expect } from "vitest";
 
 test("English menu", async () => {
   const { container } = render(<Menu lang="en" />);
