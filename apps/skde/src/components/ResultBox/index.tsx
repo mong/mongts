@@ -252,7 +252,7 @@ export const ResultBox = ({
         disableGutters
         sx={{
           boxShadow: 6,
-          borderBottom: "calc(3rem / 16) solid #033F85",
+          borderBottom: "0.1875rem solid #033F85",
         }}
         expanded={expandedResultBox}
         onChange={() => setExpandedResultBox(!expandedResultBox)}
