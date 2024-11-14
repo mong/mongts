@@ -12,6 +12,7 @@ import * as hooks from "../../../../helpers/hooks";
 import { buildLevels } from "../../../../test/builders";
 import { clockTick } from "../../../../test/clockTick";
 import { buildDescription } from "../../../IndicatorTable/chartrow/__tests__/chart.test";
+import { getLabel } from "..";
 
 import { vi } from "vitest";
 
@@ -27,10 +28,10 @@ test("Bar have labels with value in %", async () => {
     },
   });
   const data = [
-    { label: "a", value: 1 },
-    { label: "b", value: 0.15 },
-    { label: "c", value: 0.3 },
-    { label: "d", value: 0.1 },
+    { label: "a", value: 1, denominator: 10 },
+    { label: "b", value: 0.15, denominator: 5 },
+    { label: "c", value: 0.3, denominator: 11 },
+    { label: "d", value: 0.1, denominator: 9 },
   ];
   render(
     <BarChartWithRef
@@ -49,7 +50,7 @@ test("Bar have labels with value in %", async () => {
   );
 
   for (const dataPoint of data) {
-    const bar = screen.getByTestId(`bar-label-${dataPoint.label}`);
+    const bar = screen.getByTestId(`bar-label-${getLabel(dataPoint)}`);
     const valueInPct = Math.round((dataPoint.value * 100 * 100) / 100) + " %";
     expect(bar.textContent).toBe(valueInPct);
   }
@@ -63,10 +64,10 @@ test("Bar have labels with value as number", async () => {
     },
   });
   const data = [
-    { label: "a", value: 100 },
-    { label: "b", value: 150 },
-    { label: "c", value: 300 },
-    { label: "d", value: 100 },
+    { label: "a", value: 100, denominator: 20 },
+    { label: "b", value: 150, denominator: 30 },
+    { label: "c", value: 300, denominator: 15 },
+    { label: "d", value: 100, denominator: 67 },
   ];
   render(
     <BarChartWithRef
@@ -85,7 +86,7 @@ test("Bar have labels with value as number", async () => {
   );
 
   for (const dataPoint of data) {
-    const bar = screen.getByTestId(`bar-label-${dataPoint.label}`);
+    const bar = screen.getByTestId(`bar-label-${getLabel(dataPoint)}`);
     const valueInNum = dataPoint.value.toString();
     expect(bar.textContent).toBe(valueInNum);
   }
@@ -148,23 +149,23 @@ test("Can set color and opacity for bars", async () => {
     />,
   );
 
-  expect(screen.getByTestId(`bar-${dataPoint1.label}`)).toHaveAttribute(
+  expect(screen.getByTestId(`bar-${getLabel(dataPoint1)}`)).toHaveAttribute(
     "fill",
     "#7EBEC7",
   );
-  expect(screen.getByTestId(`bar-${dataPoint2.label}`)).toHaveAttribute(
+  expect(screen.getByTestId(`bar-${getLabel(dataPoint2)}`)).toHaveAttribute(
     "fill",
     dataPoint2.style?.color,
   );
-  expect(screen.getByTestId(`bar-${dataPoint3.label}`)).toHaveAttribute(
+  expect(screen.getByTestId(`bar-${getLabel(dataPoint3)}`)).toHaveAttribute(
     "fill",
     "#7EBEC7",
   );
-  expect(screen.getByTestId(`bar-${dataPoint4.label}`)).toHaveAttribute(
+  expect(screen.getByTestId(`bar-${getLabel(dataPoint4)}`)).toHaveAttribute(
     "fill",
     dataPoint4.style?.color,
   );
-  expect(screen.getByTestId(`bar-${dataPoint4.label}`)).toHaveAttribute(
+  expect(screen.getByTestId(`bar-${getLabel(dataPoint4)}`)).toHaveAttribute(
     "opacity",
     `${dataPoint4.style?.opacity}`,
   );
@@ -182,10 +183,10 @@ test("Render without levels @250px", async () => {
     <BarChartWithRef
       showLevel={false}
       data={[
-        { label: "a", value: 1 },
-        { label: "b", value: 0.15 },
-        { label: "c", value: 0.3 },
-        { label: "d", value: 0.1 },
+        { label: "a", value: 1, denominator: 9 },
+        { label: "b", value: 0.15, denominator: 11 },
+        { label: "c", value: 0.3, denominator: 7 },
+        { label: "d", value: 0.1, denominator: 14 },
       ]}
       levels={[
         { level: "high", start: 1, end: 0.9 },
@@ -216,10 +217,10 @@ test("Render without zoom @750px", async () => {
     <BarChartWithRef
       showLevel={true}
       data={[
-        { label: "a", value: 0.28965411 },
-        { label: "b", value: 0.111515 },
-        { label: "c", value: 0.3178612 },
-        { label: "d", value: 0.194212 },
+        { label: "a", value: 0.28965411, denominator: 1 },
+        { label: "b", value: 0.111515, denominator: 5 },
+        { label: "c", value: 0.3178612, denominator: 7 },
+        { label: "d", value: 0.194212, denominator: 11 },
       ]}
       levels={[
         { level: "high", start: 1, end: 0.9 },
@@ -250,10 +251,10 @@ test("Render with zoom @750px", async () => {
     <BarChartWithRef
       showLevel={true}
       data={[
-        { label: "a", value: 0.28965411 },
-        { label: "b", value: 0.111515 },
-        { label: "c", value: 0.3178612 },
-        { label: "d", value: 0.194212 },
+        { label: "a", value: 0.28965411, denominator: 1 },
+        { label: "b", value: 0.111515, denominator: 5 },
+        { label: "c", value: 0.3178612, denominator: 7 },
+        { label: "d", value: 0.194212, denominator: 11 },
       ]}
       levels={[
         { level: "high", start: 1, end: 0.9 },
@@ -284,10 +285,10 @@ test("Render with levels @250px", async () => {
     <BarChartWithRef
       showLevel={true}
       data={[
-        { label: "a", value: 1 },
-        { label: "b", value: 0.15 },
-        { label: "c", value: 0.3 },
-        { label: "d", value: 0.1 },
+        { label: "a", value: 1, denominator: 9 },
+        { label: "b", value: 0.15, denominator: 11 },
+        { label: "c", value: 0.3, denominator: 7 },
+        { label: "d", value: 0.1, denominator: 14 },
       ]}
       levels={[
         { level: "high", start: 1, end: 0.9 },
@@ -318,10 +319,10 @@ test("Render without levels @500px", async () => {
     <BarChartWithRef
       showLevel={false}
       data={[
-        { label: "a", value: 1 },
-        { label: "b", value: 0.15 },
-        { label: "c", value: 0.3 },
-        { label: "d", value: 0.1 },
+        { label: "a", value: 1, denominator: 9 },
+        { label: "b", value: 0.15, denominator: 11 },
+        { label: "c", value: 0.3, denominator: 7 },
+        { label: "d", value: 0.1, denominator: 14 },
       ]}
       levels={[
         { level: "high", start: 1, end: 0.9 },
@@ -352,10 +353,10 @@ test("Render with levels @500px", async () => {
     <BarChartWithRef
       showLevel={true}
       data={[
-        { label: "a", value: 1 },
-        { label: "b", value: 0.15 },
-        { label: "c", value: 0.3 },
-        { label: "d", value: 0.1 },
+        { label: "a", value: 1, denominator: 9 },
+        { label: "b", value: 0.15, denominator: 11 },
+        { label: "c", value: 0.3, denominator: 7 },
+        { label: "d", value: 0.1, denominator: 14 },
       ]}
       levels={[
         { level: "high", start: 1, end: 0.9 },
@@ -386,10 +387,10 @@ test("Render with levels reversed @500px", async () => {
     <BarChartWithRef
       showLevel={true}
       data={[
-        { label: "a", value: 1 },
-        { label: "b", value: 0.15 },
-        { label: "c", value: 0.3 },
-        { label: "d", value: 0.1 },
+        { label: "a", value: 1, denominator: 9 },
+        { label: "b", value: 0.15, denominator: 11 },
+        { label: "c", value: 0.3, denominator: 7 },
+        { label: "d", value: 0.1, denominator: 14 },
       ]}
       levels={[
         { level: "high", start: 0.5, end: 0 },
@@ -420,10 +421,10 @@ test("Render zoomed with levels @500px and gray overlay (not complete data)", as
     <BarChartWithRef
       showLevel={true}
       data={[
-        { label: "a", value: 168 },
-        { label: "b", value: 155 },
-        { label: "c", value: 389 },
-        { label: "d", value: 561 },
+        { label: "a", value: 168, denominator: 10 },
+        { label: "b", value: 155, denominator: 20 },
+        { label: "c", value: 389, denominator: 30 },
+        { label: "d", value: 561, denominator: 40 },
       ]}
       levels={[
         { level: "high", start: 1000, end: 400 },

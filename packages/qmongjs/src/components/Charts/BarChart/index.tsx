@@ -32,7 +32,7 @@ export interface Props {
   description: Description;
 }
 
-const getLabel = (d: Bar) => {
+export const getLabel = (d: Bar) => {
   return d.label + " (n=" + d.denominator + ")";
 };
 
