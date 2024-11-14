@@ -37,7 +37,6 @@ import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/Treatm
 import {
   FilterDrawer,
   IndicatorTableWrapper,
-  IndicatorTableV2Wrapper,
 } from "../../src/components/TreatmentQuality";
 import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
@@ -306,26 +305,24 @@ export default function TreatmentQualityPage() {
               <Grid size={{ xs: 12 }}>
                 {queriesReady ? (
                   displayV2Table ? (
-                    <IndicatorTableV2Wrapper className="table-wrapper">
-                      <IndicatorTableBodyV2
-                        key={"indicator-table2"}
-                        context={selectedTableContext}
-                        unitNames={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "units",
-                        )}
-                        year={selectedYear}
-                        type={dataQualitySelected ? "dg" : "ind"}
-                        levels={selectedLevel}
-                        medfields={selectedMedicalFields}
-                        chartColours={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "colours",
-                        )}
-                      />
-                    </IndicatorTableV2Wrapper>
+                    <IndicatorTableBodyV2
+                      key={"indicator-table2"}
+                      context={selectedTableContext}
+                      unitNames={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "units",
+                      )}
+                      year={selectedYear}
+                      type={dataQualitySelected ? "dg" : "ind"}
+                      levels={selectedLevel}
+                      medfields={selectedMedicalFields}
+                      chartColours={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "colours",
+                      )}
+                    />
                   ) : (
                     <IndicatorTableWrapper className="table-wrapper">
                       <IndicatorTable
