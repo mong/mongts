@@ -12,7 +12,6 @@ import * as hooks from "../../../../helpers/hooks";
 import { buildLevels } from "../../../../test/builders";
 import { clockTick } from "../../../../test/clockTick";
 import { buildDescription } from "../../../IndicatorTable/chartrow/__tests__/chart.test";
-import { getLabel } from "..";
 
 import { vi } from "vitest";
 
@@ -50,7 +49,7 @@ test("Bar have labels with value in %", async () => {
   );
 
   for (const dataPoint of data) {
-    const bar = screen.getByTestId(`bar-label-${getLabel(dataPoint)}`);
+    const bar = screen.getByTestId(`bar-label-${dataPoint.label}`);
     const valueInPct = Math.round((dataPoint.value * 100 * 100) / 100) + " %";
     expect(bar.textContent).toBe(valueInPct);
   }
@@ -86,7 +85,7 @@ test("Bar have labels with value as number", async () => {
   );
 
   for (const dataPoint of data) {
-    const bar = screen.getByTestId(`bar-label-${getLabel(dataPoint)}`);
+    const bar = screen.getByTestId(`bar-label-${dataPoint.label}`);
     const valueInNum = dataPoint.value.toString();
     expect(bar.textContent).toBe(valueInNum);
   }
@@ -149,23 +148,23 @@ test("Can set color and opacity for bars", async () => {
     />,
   );
 
-  expect(screen.getByTestId(`bar-${getLabel(dataPoint1)}`)).toHaveAttribute(
+  expect(screen.getByTestId(`bar-${dataPoint1.label}`)).toHaveAttribute(
     "fill",
     "#7EBEC7",
   );
-  expect(screen.getByTestId(`bar-${getLabel(dataPoint2)}`)).toHaveAttribute(
+  expect(screen.getByTestId(`bar-${dataPoint2.label}`)).toHaveAttribute(
     "fill",
     dataPoint2.style?.color,
   );
-  expect(screen.getByTestId(`bar-${getLabel(dataPoint3)}`)).toHaveAttribute(
+  expect(screen.getByTestId(`bar-${dataPoint3.label}`)).toHaveAttribute(
     "fill",
     "#7EBEC7",
   );
-  expect(screen.getByTestId(`bar-${getLabel(dataPoint4)}`)).toHaveAttribute(
+  expect(screen.getByTestId(`bar-${dataPoint4.label}`)).toHaveAttribute(
     "fill",
     dataPoint4.style?.color,
   );
-  expect(screen.getByTestId(`bar-${getLabel(dataPoint4)}`)).toHaveAttribute(
+  expect(screen.getByTestId(`bar-${dataPoint4.label}`)).toHaveAttribute(
     "opacity",
     `${dataPoint4.style?.opacity}`,
   );

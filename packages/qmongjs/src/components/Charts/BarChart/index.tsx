@@ -32,7 +32,7 @@ export interface Props {
   description: Description;
 }
 
-export const getLabel = (d: Bar) => {
+const getLabel = (d: Bar) => {
   return d.label + " (N=" + d.denominator + ")";
 };
 
@@ -155,7 +155,7 @@ function BarChart(props: Props) {
       .data(data)
       .join("rect")
       .attr("class", "bar")
-      .attr("data-testid", (d) => `bar-${getLabel(d)}`)
+      .attr("data-testid", (d) => `bar-${d.label}`)
       .attr("x", 0)
       .attr("y", (d) => yScale(getLabel(d)) ?? 0)
       .attr("height", yScale.bandwidth())
@@ -171,7 +171,7 @@ function BarChart(props: Props) {
       .data(data)
       .join("text")
       .attr("class", "label")
-      .attr("data-testid", (d) => `bar-label-${getLabel(d)}`)
+      .attr("data-testid", (d) => `bar-label-${d.label}`)
       .attr("opacity", 0.3)
       .attr("x", 0)
       .attr("y", (d) => yScale(getLabel(d))! + yScale.bandwidth() / 2 + 3)
