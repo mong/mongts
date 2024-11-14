@@ -33,7 +33,7 @@ export interface Props {
 }
 
 export const getLabel = (d: Bar) => {
-  return d.label + " (n=" + d.denominator + ")";
+  return d.label + " (N=" + d.denominator + ")";
 };
 
 const MARGIN = { top: 0.05, bottom: 10, right: 0.05, left: 0.25 };
