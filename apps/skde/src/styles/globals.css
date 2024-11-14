@@ -1,10 +1,10 @@
 html,
 body {
   color: #000000;
-  line-height: 24px;
+  line-height: 1.5rem;
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 1rem;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -21,38 +21,38 @@ a {
 
 h1 {
   font-weight: 300;
-  font-size: 48px;
+  font-size: 3rem;
 }
 
 h2 {
   font-weight: 600;
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
   text-transform: uppercase;
-  border-bottom: 2px solid #cddbe8;
-  padding-bottom: 15px;
+  border-bottom: 0.125rem solid #cddbe8;
+  padding-bottom: 1rem;
 }
 
 h3 {
   font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
 }
 
 /* breadcrumbs */
 
 .breadcrum {
-  height: 46px;
+  height: 2.875rem;
 }
 
 li.MuiBreadcrumbs-li:last-child {
   font-weight: 700;
 }
 
-@media screen and (min-width: 0) and (max-width: 942px) {
+@media screen and (min-width: 0) and (max-width: 60rem) {
   .main-content {
     max-width: 95%;
-    padding: 16px;
+    padding: 1rem;
     margin: auto;
   }
 }
@@ -80,12 +80,12 @@ li.MuiBreadcrumbs-li:last-child {
   overflow: hidden;
 }
 .qi_long_description p {
-  margin: 5px 5px 10px 0.5rem;
+  margin: 0.3125rem 0.3125rem 0.625rem 0.5rem;
   color: #7d8588;
   font-size: 0.9em;
 }
 .desired_target_level h4 {
-  margin: 5px 5px 10px 0.5rem;
+  margin: 0.3125rem 0.3125rem 0.625rem 0.5rem;
   color: #7ebec7;
   font-size: 1rem;
   font-weight: 600;
@@ -121,7 +121,7 @@ li.MuiBreadcrumbs-li:last-child {
 
 @media All and (max-width: 768px) {
   html {
-    font-size: 13px;
+    font-size: 0.8125rem;
   }
 }
 
@@ -129,6 +129,6 @@ li.MuiBreadcrumbs-li:last-child {
 
 @media All and (min-width: 769px) and (max-width: 992px) {
   html {
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 }

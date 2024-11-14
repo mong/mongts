@@ -1,31 +1,31 @@
 .tocWrapper {
   position: -webkit-sticky; /* Required for Safari */
   position: sticky;
-  top: 10px;
+  top: 0.625rem;
 }
 
 .tocList {
   list-style: none;
-  padding-left: 14px;
+  padding-left: 0.875rem;
 }
 
-@media screen and (min-width: 943px) {
+@media screen and (min-width: 60rem) {
   .toc_small_wrapper {
     display: none;
   }
   .toc {
     text-align: left;
-    margin-right: 40px;
-    max-width: 200px;
-    min-width: 200px;
+    margin-right: 2.5rem;
+    max-width: 12.5rem;
+    min-width: 12.5rem;
     overflow: hidden;
-    margin-top: 180px;
+    margin-top: 11.25rem;
     height: 100vh;
     overflow-y: auto;
   }
 }
 
-@media screen and (min-width: 0) and (max-width: 942px) {
+@media screen and (min-width: 0) and (max-width: 60rem) {
   .toc {
     max-height: 100vh;
     overflow-y: auto;
@@ -37,18 +37,18 @@
     width: 100%;
     top: 0;
     background-color: #f4f4f4;
-    box-shadow: 0 15px 15px #f4f4f4;
+    box-shadow: 0 1rem 1rem #f4f4f4;
     position: sticky;
     z-index: 998;
     margin: auto;
   }
   .toc_small_content {
-    margin: 10px auto;
+    margin: 0.625rem auto;
     width: 95%;
     box-sizing: content-box;
   }
 }
-@media screen and (min-width: 942px) {
+@media screen and (min-width: 60rem) {
   .toc {
     flex: 0 0 auto;
   }

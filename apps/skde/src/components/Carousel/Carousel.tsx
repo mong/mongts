@@ -21,10 +21,10 @@ type CarouselProps = {
 };
 
 const chartIcons = {
-  barchart: <BiBarChart color="white" size="28px" />,
-  linechart: <BiLineChart color="white" size="28px" />,
-  table: <VscTable color="white" size="28px" />,
-  map: <BiMapPin color="white" size="28px" />,
+  barchart: <BiBarChart color="white" size="1.75rem" />,
+  linechart: <BiLineChart color="white" size="1.75rem" />,
+  table: <VscTable color="white" size="1.75rem" />,
+  map: <BiMapPin color="white" size="1.75rem" />,
 };
 
 const SelectionBtn = ({ lang }: { lang?: "nb" | "en" | "nn" }) => {
@@ -83,8 +83,8 @@ export const Carousel = ({
             innerContentStyle={{
               position: "relative",
               width: "95%",
-              maxWidth: "1216px",
-              padding: "30px 30px 100px 30px",
+              maxWidth: "76rem",
+              padding: "1.875rem 1.875rem 6.25rem 1.875rem",
               margin: "auto",
             }}
             popupState={popupState}

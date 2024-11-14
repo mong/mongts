@@ -20,7 +20,7 @@ export const ColorLegend = ({
             <div
               className={classNames.legendColorOuter}
               style={{
-                border: `2px solid ${colorScale(val)}`,
+                border: `0.125rem solid ${colorScale(val)}`,
               }}
             >
               <div

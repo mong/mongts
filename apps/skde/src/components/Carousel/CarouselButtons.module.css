@@ -3,7 +3,7 @@
   list-style: none;
   align-self: end;
   padding: 0;
-  margin-right: 20px;
+  margin-right: 1.25rem;
 }
 
 .bullet {
@@ -14,17 +14,17 @@
   border: none;
   background-color: #7da3c8;
   outline: unset;
-  width: 40px;
-  height: 40px;
-  border-radius: 4px;
-  margin: 3px;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.25rem;
+  margin: 0.1875rem;
   cursor: pointer;
   transition: ease-out 200ms;
   offset: unset;
 }
 .bullet:hover,
 .bullet:focus {
-  border: 1px solid #033f85;
+  border: 0.0625rem solid #033f85;
 }
 
 .active {
@@ -32,5 +32,5 @@
 }
 .active:hover,
 .active:focus {
-  border: 1px solid #033f85;
+  border: 0.0625rem solid #033f85;
 }

@@ -1,8 +1,8 @@
 .headerContainer {
   display: flex;
-  max-width: min(1216px, 95%);
+  max-width: min(76rem, 95%);
   height: fit-content;
-  padding: 24px 16px 24px 16px;
+  padding: 1.5rem 1rem 1.5rem 1rem;
   margin: auto;
   justify-content: space-between;
 }
@@ -27,8 +27,8 @@
 }
 .no {
   color: #034584;
-  border-right: 1px solid #034584;
-  padding-right: 10px;
+  border-right: 0.0625rem solid #034584;
+  padding-right: 0.625rem;
   font-weight: normal;
   text-decoration: underline;
   transition: 200ms ease-in;
@@ -36,7 +36,7 @@
 
 .eng {
   color: #034584;
-  padding-left: 10px;
+  padding-left: 0.625rem;
   font-weight: normal;
   text-decoration: underline;
   transition: 200ms ease-in;
@@ -49,8 +49,8 @@
 
 .searchBar {
   margin: auto;
-  margin-top: 4rem;
-  width: min(600px, 80%);
+  margin-top: 0.25rem;
+  width: min(37.5rem, 80%);
   z-index: auto;
 }
 .searchBar h1 {
@@ -62,17 +62,17 @@
   display: flex;
   align-items: flex-end;
   font-size: 1.25rem;
-  padding-bottom: 1px;
-  border-bottom: 1px solid #000;
+  padding-bottom: 0.0625rem;
+  border-bottom: 0.0625rem solid #000;
 }
 
 .searchBar label {
   position: absolute;
-  width: 1px;
-  height: 1px;
+  width: 0.0625rem;
+  height: 0.0625rem;
   overflow: hidden;
   padding: 0%;
-  margin: -1px;
+  margin: -0.0625rem;
 }
 .searchBar input {
   position: relative;
@@ -100,7 +100,7 @@
   margin-left: 3rem;
 }
 
-@media screen and (min-width: 0) and (max-width: 942px) {
+@media screen and (min-width: 0) and (max-width: 60rem) {
   .headerContainer {
     flex-direction: column;
     align-items: flex-start;
@@ -111,7 +111,7 @@
 
   .headerNavContainer {
     width: 100%;
-    margin-top: 20px;
+    margin-top: 1.25rem;
   }
   .navButtons {
     justify-content: space-between;

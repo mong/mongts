@@ -74,7 +74,7 @@ const background = "#3b6978";
 const tooltipStyles = {
   ...defaultStyles,
   background,
-  border: "1px solid white",
+  border: "0.0625rem solid white",
   color: "white",
 };
 
@@ -339,7 +339,10 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
               >
                 {labels.map((label, i) => {
                   return (
-                    <div style={{ padding: "10px" }} key={`legend-div-${i}`}>
+                    <div
+                      style={{ padding: "0.625rem" }}
+                      key={`legend-div-${i}`}
+                    >
                       <LegendItem key={`legend-${i}`}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -434,7 +437,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
                     stroke={lineStyles.styles[i].colour}
                     strokeDasharray={lineStyles.styles[i].strokeDash}
                     shapeRendering="geometricPrecision"
-                    strokeWidth={"2px"}
+                    strokeWidth={"0.125rem"}
                     strokeLinejoin={"round"}
                     strokeLinecap={"square"}
                     markerStart={

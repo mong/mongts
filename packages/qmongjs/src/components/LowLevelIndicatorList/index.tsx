@@ -381,7 +381,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
                         <HelpOutline
                           sx={{
                             color: skdeTheme.palette.primary.main,
-                            fontSize: "24px",
+                            fontSize: "1.5rem",
                           }}
                         />
                       </Hoverbox>

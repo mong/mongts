@@ -114,7 +114,7 @@ export default function ResultBoxPage() {
                   <div
                     style={{
                       width: "100%",
-                      maxWidth: "500px",
+                      maxWidth: "30rem",
                       margin: "auto",
                     }}
                   >

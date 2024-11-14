@@ -20,8 +20,8 @@ export const Hoverbox = (props: HoverboxProps) => {
       color: "rgba(0, 0, 0, 0.87)",
       maxWidth: maxWidth ? maxWidth : 220,
       fontSize: theme.typography.pxToRem(14),
-      border: "1px solid #dadde9",
-      borderRadius: "12px",
+      border: "0.0625rem solid #dadde9",
+      borderRadius: "0.75rem",
     },
   }));
 
