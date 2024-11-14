@@ -15,6 +15,7 @@ export interface ChartProps {
   indicatorData: Indicator[];
   zoom: boolean;
   showLevel: boolean;
+  showN: boolean;
   levels: Level[];
   tickformat?: string;
   selectedTreatmentUnits: string[];
