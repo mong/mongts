@@ -97,6 +97,7 @@ const GetBarChart = (props: ChartProps) => {
         return {
           label: data.unit_name,
           value: data.var,
+          denominator: data.denominator,
           style,
         };
       })

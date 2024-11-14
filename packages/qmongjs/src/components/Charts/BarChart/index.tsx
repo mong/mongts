@@ -16,6 +16,7 @@ export interface BarStyle {
 export interface Bar {
   label: string;
   value: number;
+  denominator: number;
   style?: BarStyle;
 }
 export interface Props {
@@ -30,6 +31,10 @@ export interface Props {
   lastCompleteYear?: number;
   description: Description;
 }
+
+const getLabel = (d: Bar) => {
+  return d.label + " (n=" + d.denominator + ")";
+};
 
 const MARGIN = { top: 0.05, bottom: 10, right: 0.05, left: 0.25 };
 
@@ -67,7 +72,7 @@ function BarChart(props: Props) {
     const svg = select(svgRef.current).selectChild<SVGGElement>();
     // Scales
     const yScale = scaleBand()
-      .domain(data.map((d) => d.label))
+      .domain(data.map((d) => getLabel(d)))
       .range([0, innerHeight])
       .padding(0.3);
 
@@ -150,9 +155,9 @@ function BarChart(props: Props) {
       .data(data)
       .join("rect")
       .attr("class", "bar")
-      .attr("data-testid", (d) => `bar-${d.label}`)
+      .attr("data-testid", (d) => `bar-${getLabel(d)}`)
       .attr("x", 0)
-      .attr("y", (d) => yScale(d.label) ?? 0)
+      .attr("y", (d) => yScale(getLabel(d)) ?? 0)
       .attr("height", yScale.bandwidth())
       .attr("fill", (d) => d.style?.color ?? "#7EBEC7")
       .attr("opacity", (d) => d.style?.opacity ?? 1)
@@ -166,10 +171,10 @@ function BarChart(props: Props) {
       .data(data)
       .join("text")
       .attr("class", "label")
-      .attr("data-testid", (d) => `bar-label-${d.label}`)
+      .attr("data-testid", (d) => `bar-label-${getLabel(d)}`)
       .attr("opacity", 0.3)
       .attr("x", 0)
-      .attr("y", (d) => yScale(d.label)! + yScale.bandwidth() / 2 + 3)
+      .attr("y", (d) => yScale(getLabel(d))! + yScale.bandwidth() / 2 + 3)
       .text((d) => customFormat(barLabelFormat)(d.value))
       .attr("text-anchor", "middle")
       .attr("font-size", "0.7em")
