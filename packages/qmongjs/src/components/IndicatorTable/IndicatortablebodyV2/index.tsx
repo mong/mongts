@@ -131,7 +131,7 @@ const IndicatorRow = (props: {
     <TableRow key={indData.indicatorID + "-collapse"}>
       <StyledTableCell
         style={{
-          paddingBottom: "4px",
+          paddingBottom: "0.25rem",
           paddingTop: 0,
           paddingLeft: 0,
           paddingRight: 0,
@@ -603,7 +603,7 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
   });
 
   return (
-    <StyledTable sx={{ marginTop: "10px" }}>
+    <StyledTable sx={{ marginTop: "0.625rem" }}>
       {rowDataFiltered.map((row) => (
         <RegistrySection
           key={row.registerName}

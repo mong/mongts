@@ -35,26 +35,26 @@ export const StyledTableRow = styled(TableRow)(() => ({
 }));
 
 export const StyledTableCell = styled(TableCell)(() => ({
-  borderTopRightRadius: "8px",
-  borderBottomRightRadius: "8px",
-  borderTopLeftRadius: "8px",
-  borderBottomLeftRadius: "8px",
+  borderTopRightRadius: "0.5rem",
+  borderBottomRightRadius: "0.5rem",
+  borderTopLeftRadius: "0.5rem",
+  borderBottomLeftRadius: "0.5rem",
   backgroundColor: "#FFFFFF",
   borderColor: skdeTheme.palette.background.paper,
   fontSize: "1rem",
 }));
 
 export const StyledTableCellStart = styled(TableCell)(() => ({
-  borderTopLeftRadius: "8px",
-  borderBottomLeftRadius: "8px",
+  borderTopLeftRadius: "0.5rem",
+  borderBottomLeftRadius: "0.5rem",
   backgroundColor: "#FFFFFF",
   borderColor: skdeTheme.palette.background.paper,
   fontSize: "1rem",
 }));
 
 export const StyledTableCellEnd = styled(TableCell)(() => ({
-  borderTopRightRadius: "8px",
-  borderBottomRightRadius: "8px",
+  borderTopRightRadius: "0.5rem",
+  borderBottomRightRadius: "0.5rem",
   backgroundColor: "#FFFFFF",
   borderColor: skdeTheme.palette.background.paper,
   fontSize: "1rem",
