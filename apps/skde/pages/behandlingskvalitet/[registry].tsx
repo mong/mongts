@@ -35,7 +35,6 @@ import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/Treatm
 import {
   FilterDrawer,
   IndicatorTableWrapper,
-  IndicatorTableV2Wrapper,
 } from "../../src/components/TreatmentQuality";
 import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
@@ -293,7 +292,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
                 {displayV2Table ? (
-                  <IndicatorTableV2Wrapper className="table-wrapper">
+                  <>
                     <IndicatorTableBodyV2
                       key={`indicator-table2-${selectedTableContext}`}
                       context={selectedTableContext}
@@ -330,7 +329,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                         "colours",
                       )}
                     />
-                  </IndicatorTableV2Wrapper>
+                  </>
                 ) : (
                   <IndicatorTableWrapper className="table-wrapper">
                     <IndicatorTable
