@@ -26,22 +26,26 @@ type AtlasJson = {
 const AtlasPage = ({ content, atlasData }: AtlasPageProps) => {
   const obj: AtlasJson = JSON.parse(content);
 
+  console.log(obj.kapittel);
+
   const tocData = obj.kapittel
-    .filter((chapter) => chapter.overskrift)
-    .map((chapter) => {
-      const level = 1;
-      const elemID = chapter.overskrift;
-      const children = chapter.innhold
-        ? chapter.innhold
-            .filter((subChapter) => subChapter.type === "resultatboks")
-            .map((subChapter) => ({
-              level: 2,
-              elemID: subChapter["overskrift"],
-              children: [],
-            }))
-        : [];
-      return { level, elemID, children };
-    });
+    ? obj.kapittel
+        .filter((chapter) => chapter.overskrift)
+        .map((chapter) => {
+          const level = 1;
+          const elemID = chapter.overskrift;
+          const children = chapter.innhold
+            ? chapter.innhold
+                .filter((subChapter) => subChapter.type === "resultatboks")
+                .map((subChapter) => ({
+                  level: 2,
+                  elemID: subChapter["overskrift"],
+                  children: [],
+                }))
+            : [];
+          return { level, elemID, children };
+        })
+    : [];
 
   const unpublished_warning =
     obj.lang === "nn"
@@ -53,7 +57,10 @@ const AtlasPage = ({ content, atlasData }: AtlasPageProps) => {
     <DataContext.Provider value={{ atlasData }}>
       <AtlasLayout lang={obj.lang === "en" ? "en" : "no"}>
         <main data-testid="v2atlas">
-          <TopBanner mainTitle={obj.shortTitle} lang={obj.lang} />
+          <TopBanner
+            mainTitle={obj.shortTitle ?? "Tittel mangler"}
+            lang={obj.lang ?? "nb"}
+          />
           <div className={`${styles.atlasContent}`}>
             <TableOfContents tocData={tocData} />
             <div className={styles.main_content}>
@@ -61,8 +68,12 @@ const AtlasPage = ({ content, atlasData }: AtlasPageProps) => {
                 <b style={{ color: "red" }}>{unpublished_warning}</b>
               )}
               <h1>{obj.mainTitle}</h1>
-              <Ingress>{obj.ingress}</Ingress>
-              <Chapters innhold={obj.kapittel} lang={obj.lang} />
+              <Ingress>{obj.ingress ?? "Ingress mangler"}</Ingress>
+              {obj.kapittel ? (
+                <Chapters innhold={obj.kapittel} lang={obj.lang} />
+              ) : (
+                <div> Innhold mangler </div>
+              )}
             </div>
           </div>
         </main>
