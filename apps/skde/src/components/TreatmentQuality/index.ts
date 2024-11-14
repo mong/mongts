@@ -41,7 +41,7 @@ export const FilterDrawer = styled(Drawer)(({ theme }) => ({
 export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
   "& table": {
     fontFamily: theme.typography.fontFamily,
-    borderSpacing: "0 4px",
+    borderSpacing: "0 0.25rem",
     wordBreak: "break-word",
     "& th:nth-last-of-type(n+3):first-of-type ~ th, & th:nth-last-of-type(n+3):first-of-type":
       {
@@ -82,15 +82,15 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
     paddingRight: theme.spacing(1),
     paddingBottom: theme.spacing(2),
     ...theme.typography.subtitle2,
-    borderBottom: "0px",
+    borderBottom: "0rem",
     borderColor: theme.palette.primary.light,
     [theme.breakpoints.down("sm")]: {
       paddingTop: theme.spacing(2),
-      top: `calc(${theme.mixins.toolbar.minHeight}px) !important`,
+      top: `calc(${theme.mixins.toolbar.minHeight}rem/16) !important`,
     },
     [theme.breakpoints.up("sm")]: {
       paddingTop: theme.spacing(4),
-      top: `calc(${theme.mixins.toolbar.minHeight}px) !important`,
+      top: `calc(${theme.mixins.toolbar.minHeight}rem/16) !important`,
     },
   },
   ".register-row": {
@@ -117,7 +117,7 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
       [theme.breakpoints.down("sm")]: {
         width: "100% !important",
         "& text": {
-          fontSize: `10px !important`,
+          fontSize: `0.625rem !important`,
         },
       },
       ...theme.typography.body2,
@@ -129,7 +129,7 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
       [theme.breakpoints.down("sm")]: {
         width: "100% !important",
         "& text": {
-          fontSize: `10px !important`,
+          fontSize: `0.625rem !important`,
         },
       },
       ...theme.typography.body2,
@@ -140,12 +140,5 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
         fontSize: "0.8em",
       },
     },
-  },
-}));
-
-export const IndicatorTableV2Wrapper = styled(Box)((/*{ theme }*/) => ({
-  "& .MuiTable-root": {
-    tableLayout: "fixed",
-    width: "95%",
   },
 }));

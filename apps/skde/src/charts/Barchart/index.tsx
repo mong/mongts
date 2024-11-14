@@ -201,8 +201,8 @@ export const Barchart = <
         sx={{
           backgroundImage: "url('/img/logos/logo-skde-graa.svg')",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "max(50px, 10%)",
-          backgroundPosition: "bottom min(13%, 75px) right 5%",
+          backgroundSize: "max(3rem, 10%)",
+          backgroundPosition: "bottom min(13%, 5rem) right 5%",
         }}
       >
         <svg

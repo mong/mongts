@@ -11,7 +11,7 @@ import { newLevelSymbols, level2, skdeTheme } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
-import { Skeleton, Collapse, Typography } from "@mui/material";
+import { Skeleton, Collapse, Typography, Stack } from "@mui/material";
 import {
   StyledTable,
   StyledTableRow,
@@ -131,7 +131,7 @@ const IndicatorRow = (props: {
     <TableRow key={indData.indicatorID + "-collapse"}>
       <StyledTableCell
         style={{
-          paddingBottom: "4px",
+          paddingBottom: "0.25rem",
           paddingTop: 0,
           paddingLeft: 0,
           paddingRight: 0,
@@ -182,18 +182,16 @@ const IndicatorRow = (props: {
         style={{ cursor: "pointer" }}
       >
         <StyledTableCellStart key={indData.indicatorID}>
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <IconButton aria-label="expand" size="small">
-                    {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-                  </IconButton>
-                </td>
-                <td>{indData.indicatorTitle}</td>
-              </tr>
-            </tbody>
-          </table>
+          <Stack direction="row" alignItems="center">
+            <IconButton
+              aria-label="expand"
+              size="small"
+              sx={{ width: "2.5em", height: "2.5em" }}
+            >
+              {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+            </IconButton>
+            {indData.indicatorTitle}
+          </Stack>
         </StyledTableCellStart>
 
         {rowDataSorted.map((row, index, arr) => {
@@ -220,9 +218,17 @@ const IndicatorRow = (props: {
 
           const cellData = Array.from([lowDG, noData, lowN]).every(
             (x) => x == false,
-          )
-            ? [row?.result, row?.symbol]
-            : "N/A";
+          ) ? (
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              spacing="0.25rem"
+            >
+              <b>{row?.result}</b>
+              {row?.symbol}
+            </Stack>
+          ) : null;
 
           const patientCounts = lowDG
             ? "Lav dekning"
@@ -246,9 +252,14 @@ const IndicatorRow = (props: {
               align={"center"}
               key={indData.indicatorID + index}
             >
-              {cellData}
-              <br />
-              {patientCounts}
+              <Stack
+                direction="column"
+                alignItems="center"
+                justifyContent="center"
+              >
+                {cellData}
+                {patientCounts}
+              </Stack>
             </CellType>
           );
         })}
@@ -268,7 +279,7 @@ const IndicatorRow = (props: {
           colSpan={unitNames.length + 1}
         >
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <Typography variant="body2" sx={{ margin: "10px" }}>
+            <Typography variant="body2" sx={{ margin: "2rem" }}>
               {indData.shortDescription}
               <br />
               {"Ønsket målnivå: "}
@@ -319,7 +330,7 @@ const IndicatorRow = (props: {
               </table>
             </div>
 
-            <Typography variant="body2" sx={{ margin: "10px" }}>
+            <Typography variant="body2" sx={{ margin: "2rem" }}>
               <b>Om kvalitetsindikatoren</b>
               <ReactMarkdown
                 remarkPlugins={remarkPlugins}
@@ -489,7 +500,10 @@ const RegistrySection = (props: {
           <TableRow key={regData.registerName + "-row"}>
             <StyledTableCellStart
               key={regData.registerName}
-              sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
+              sx={{
+                backgroundColor: skdeTheme.palette.secondary.light,
+                width: "12rem",
+              }}
             >
               {regData.registerFullName}
             </StyledTableCellStart>
@@ -589,7 +603,7 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
   });
 
   return (
-    <StyledTable sx={{ marginTop: "10px" }}>
+    <StyledTable sx={{ marginTop: "0.625rem" }}>
       {rowDataFiltered.map((row) => (
         <RegistrySection
           key={row.registerName}
