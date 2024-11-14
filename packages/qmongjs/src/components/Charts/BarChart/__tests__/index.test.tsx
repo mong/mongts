@@ -12,12 +12,39 @@ import * as hooks from "../../../../helpers/hooks";
 import { buildLevels } from "../../../../test/builders";
 import { clockTick } from "../../../../test/clockTick";
 import { buildDescription } from "../../../IndicatorTable/chartrow/__tests__/chart.test";
-
 import { vi } from "vitest";
 
 vi.mock("../../../../helpers/hooks");
 
 const descr = buildDescription({});
+
+const testData1 = [
+  { label: "a", value: 1, denominator: 10 },
+  { label: "b", value: 0.15, denominator: 5 },
+  { label: "c", value: 0.3, denominator: 11 },
+  { label: "d", value: 0.1, denominator: 9 },
+];
+
+const testData2 = [
+  { label: "a", value: 0.28965411, denominator: 1 },
+  { label: "b", value: 0.111515, denominator: 5 },
+  { label: "c", value: 0.3178612, denominator: 7 },
+  { label: "d", value: 0.194212, denominator: 11 },
+];
+
+const testData3 = [
+  { label: "a", value: 100, denominator: 20 },
+  { label: "b", value: 150, denominator: 30 },
+  { label: "c", value: 300, denominator: 15 },
+  { label: "d", value: 100, denominator: 67 },
+];
+
+const testData4 = [
+  { label: "a", value: 168, denominator: 10 },
+  { label: "b", value: 155, denominator: 20 },
+  { label: "c", value: 389, denominator: 30 },
+  { label: "d", value: 561, denominator: 40 },
+];
 
 test("Bar have labels with value in %", async () => {
   const WIDTH = 500;
@@ -26,12 +53,8 @@ test("Bar have labels with value in %", async () => {
       width: WIDTH,
     },
   });
-  const data = [
-    { label: "a", value: 1, denominator: 10 },
-    { label: "b", value: 0.15, denominator: 5 },
-    { label: "c", value: 0.3, denominator: 11 },
-    { label: "d", value: 0.1, denominator: 9 },
-  ];
+  const data = testData1;
+
   render(
     <BarChartWithRef
       showLevel={true}
@@ -62,12 +85,7 @@ test("Bar have labels with value as number", async () => {
       width: WIDTH,
     },
   });
-  const data = [
-    { label: "a", value: 100, denominator: 20 },
-    { label: "b", value: 150, denominator: 30 },
-    { label: "c", value: 300, denominator: 15 },
-    { label: "d", value: 100, denominator: 67 },
-  ];
+  const data = testData3;
   render(
     <BarChartWithRef
       showLevel={true}
@@ -181,12 +199,7 @@ test("Render without levels @250px", async () => {
   const { container } = render(
     <BarChartWithRef
       showLevel={false}
-      data={[
-        { label: "a", value: 1, denominator: 9 },
-        { label: "b", value: 0.15, denominator: 11 },
-        { label: "c", value: 0.3, denominator: 7 },
-        { label: "d", value: 0.1, denominator: 14 },
-      ]}
+      data={testData1}
       levels={[
         { level: "high", start: 1, end: 0.9 },
         { level: "mid", start: 0.9, end: 0.5 },
@@ -215,12 +228,7 @@ test("Render without zoom @750px", async () => {
   const { container } = render(
     <BarChartWithRef
       showLevel={true}
-      data={[
-        { label: "a", value: 0.28965411, denominator: 1 },
-        { label: "b", value: 0.111515, denominator: 5 },
-        { label: "c", value: 0.3178612, denominator: 7 },
-        { label: "d", value: 0.194212, denominator: 11 },
-      ]}
+      data={testData2}
       levels={[
         { level: "high", start: 1, end: 0.9 },
         { level: "mid", start: 0.9, end: 0.5 },
@@ -249,12 +257,7 @@ test("Render with zoom @750px", async () => {
   const { container } = render(
     <BarChartWithRef
       showLevel={true}
-      data={[
-        { label: "a", value: 0.28965411, denominator: 1 },
-        { label: "b", value: 0.111515, denominator: 5 },
-        { label: "c", value: 0.3178612, denominator: 7 },
-        { label: "d", value: 0.194212, denominator: 11 },
-      ]}
+      data={testData2}
       levels={[
         { level: "high", start: 1, end: 0.9 },
         { level: "mid", start: 0.9, end: 0.5 },
@@ -283,12 +286,7 @@ test("Render with levels @250px", async () => {
   const { container } = render(
     <BarChartWithRef
       showLevel={true}
-      data={[
-        { label: "a", value: 1, denominator: 9 },
-        { label: "b", value: 0.15, denominator: 11 },
-        { label: "c", value: 0.3, denominator: 7 },
-        { label: "d", value: 0.1, denominator: 14 },
-      ]}
+      data={testData1}
       levels={[
         { level: "high", start: 1, end: 0.9 },
         { level: "mid", start: 0.9, end: 0.5 },
@@ -317,12 +315,7 @@ test("Render without levels @500px", async () => {
   const { container } = render(
     <BarChartWithRef
       showLevel={false}
-      data={[
-        { label: "a", value: 1, denominator: 9 },
-        { label: "b", value: 0.15, denominator: 11 },
-        { label: "c", value: 0.3, denominator: 7 },
-        { label: "d", value: 0.1, denominator: 14 },
-      ]}
+      data={testData1}
       levels={[
         { level: "high", start: 1, end: 0.9 },
         { level: "mid", start: 0.9, end: 0.5 },
@@ -351,12 +344,7 @@ test("Render with levels @500px", async () => {
   const { container } = render(
     <BarChartWithRef
       showLevel={true}
-      data={[
-        { label: "a", value: 1, denominator: 9 },
-        { label: "b", value: 0.15, denominator: 11 },
-        { label: "c", value: 0.3, denominator: 7 },
-        { label: "d", value: 0.1, denominator: 14 },
-      ]}
+      data={testData1}
       levels={[
         { level: "high", start: 1, end: 0.9 },
         { level: "mid", start: 0.9, end: 0.5 },
@@ -385,12 +373,7 @@ test("Render with levels reversed @500px", async () => {
   const { container } = render(
     <BarChartWithRef
       showLevel={true}
-      data={[
-        { label: "a", value: 1, denominator: 9 },
-        { label: "b", value: 0.15, denominator: 11 },
-        { label: "c", value: 0.3, denominator: 7 },
-        { label: "d", value: 0.1, denominator: 14 },
-      ]}
+      data={testData1}
       levels={[
         { level: "high", start: 0.5, end: 0 },
         { level: "mid", start: 0.9, end: 0.5 },
@@ -419,12 +402,7 @@ test("Render zoomed with levels @500px and gray overlay (not complete data)", as
   const { container } = render(
     <BarChartWithRef
       showLevel={true}
-      data={[
-        { label: "a", value: 168, denominator: 10 },
-        { label: "b", value: 155, denominator: 20 },
-        { label: "c", value: 389, denominator: 30 },
-        { label: "d", value: 561, denominator: 40 },
-      ]}
+      data={testData4}
       levels={[
         { level: "high", start: 1000, end: 400 },
         { level: "mid", start: 400, end: 200 },
