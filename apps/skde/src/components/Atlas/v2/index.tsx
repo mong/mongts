@@ -26,8 +26,6 @@ type AtlasJson = {
 const AtlasPage = ({ content, atlasData }: AtlasPageProps) => {
   const obj: AtlasJson = JSON.parse(content);
 
-  console.log(obj.kapittel);
-
   const tocData = obj.kapittel
     ? obj.kapittel
         .filter((chapter) => chapter.overskrift)
