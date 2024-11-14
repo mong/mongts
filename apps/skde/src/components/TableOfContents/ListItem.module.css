@@ -17,12 +17,12 @@
 .tocListItem::before {
   content: "";
   position: absolute;
-  left: calc(-14rem / 16);
+  left: -0.875rem;
   height: 100%;
   border-left: 0.0625rem solid #034584;
   width: 0.0625rem;
   box-sizing: border-box;
-  top: calc(13rem / 16);
+  top: 0.8125rem;
 }
 
 .tocListItem:last-child::before {
@@ -32,8 +32,8 @@
 .tocListItem::after {
   content: "";
   position: absolute;
-  left: calc(-14rem / 16);
-  top: calc(13rem / 16);
+  left: -0.875rem;
+  top: 0.8125rem;
   border-top: 0.0625rem solid #034584;
-  width: calc(7rem / 16);
+  width: 0.4375rem;
 }

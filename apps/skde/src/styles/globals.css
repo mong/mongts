@@ -42,7 +42,7 @@ h3 {
 /* breadcrumbs */
 
 .breadcrum {
-  height: calc(46rem / 16);
+  height: 2.875rem;
 }
 
 li.MuiBreadcrumbs-li:last-child {
@@ -121,7 +121,7 @@ li.MuiBreadcrumbs-li:last-child {
 
 @media All and (max-width: 768px) {
   html {
-    font-size: calc(13rem / 16);
+    font-size: 0.8125rem;
   }
 }
 
@@ -129,6 +129,6 @@ li.MuiBreadcrumbs-li:last-child {
 
 @media All and (min-width: 769px) and (max-width: 992px) {
   html {
-    font-size: calc(14rem / 16);
+    font-size: 0.875rem;
   }
 }

@@ -86,11 +86,11 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
     borderColor: theme.palette.primary.light,
     [theme.breakpoints.down("sm")]: {
       paddingTop: theme.spacing(2),
-      top: `calc(${theme.mixins.toolbar.minHeight}px) !important`,
+      top: `calc(${theme.mixins.toolbar.minHeight}rem/16) !important`,
     },
     [theme.breakpoints.up("sm")]: {
       paddingTop: theme.spacing(4),
-      top: `calc(${theme.mixins.toolbar.minHeight}px) !important`,
+      top: `calc(${theme.mixins.toolbar.minHeight}rem/16) !important`,
     },
   },
   ".register-row": {

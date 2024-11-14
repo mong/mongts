@@ -40,7 +40,7 @@
   padding-bottom: 0;
   font-size: 3rem;
   font-weight: 600;
-  line-height: calc(65rem / 16);
+  line-height: 4rem;
   text-align: center;
   background: none;
 }
@@ -58,7 +58,7 @@
   background: none;
   margin: auto;
   width: min(76rem, 95%);
-  padding: min(5%, calc(50rem / 16));
+  padding: min(5%, 3rem);
 }
 
 @media screen and (max-width: 700px) {
@@ -67,13 +67,13 @@
     position: absolute;
     top: 0;
     width: 100%;
-    min-height: calc(185rem / 16);
+    min-height: 16rem;
     background-color: #fff;
   }
   .pageTitle {
     width: 100%;
     padding-bottom: 0;
-    font-size: calc(28rem / 16);
+    font-size: 1.75rem;
     font-weight: 600;
     line-height: 2.5rem;
   }

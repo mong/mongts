@@ -3,7 +3,7 @@
   min-width: 18.75rem;
   background: #e3f3ef;
   transition: 100ms ease-in;
-  flex: 1 1 calc(250rem / 16);
+  flex: 1 1 15.625rem;
   overflow: hidden;
   border-radius: 1.5rem;
 }
@@ -129,12 +129,12 @@
 
   .linkOuterWrapper.wide .linkImageWrapper {
     display: flex;
-    height: calc(350rem / 16);
+    height: 21.875rem;
     flex: 1;
   }
 
   .linkOuterWrapper.wide .linkText {
     flex: 1;
-    height: calc(350rem / 16);
+    height: 21.875rem;
   }
 }
