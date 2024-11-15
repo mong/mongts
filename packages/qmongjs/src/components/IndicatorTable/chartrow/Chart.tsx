@@ -15,6 +15,7 @@ export interface ChartProps {
   indicatorData: Indicator[];
   zoom: boolean;
   showLevel: boolean;
+  showN: boolean;
   levels: Level[];
   tickformat?: string;
   selectedTreatmentUnits: string[];
@@ -97,6 +98,7 @@ const GetBarChart = (props: ChartProps) => {
         return {
           label: data.unit_name,
           value: data.var,
+          denominator: data.denominator,
           style,
         };
       })
