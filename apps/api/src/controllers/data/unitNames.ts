@@ -14,7 +14,7 @@ export const unitNamesContoller: RequestHandler = async (req, res) => {
   const query = parseQuery(req);
 
   try {
-    const distinctUnitNames = await distinctUnitNamesRegister(query.filter);
+    const distinctUnitNames = query.filter.register === "all" ? null : await distinctUnitNamesRegister(query.filter);
     const allUnitNames = await unitNamesAllLevels();
     const opts_tu = createOptsTu(distinctUnitNames, allUnitNames);
     const nestedUnitNames = nestTuNames(allUnitNames, opts_tu);
