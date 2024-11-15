@@ -16,11 +16,13 @@ export interface BarStyle {
 export interface Bar {
   label: string;
   value: number;
+  denominator: number;
   style?: BarStyle;
 }
 export interface Props {
   svgContainerRef: React.RefObject<HTMLDivElement>;
   showLevel: boolean;
+  showN: boolean;
   data: Bar[];
   levels: Level[];
   tickformat?: string;
@@ -31,6 +33,14 @@ export interface Props {
   description: Description;
 }
 
+const getLabel = (d: Bar, showN: boolean) => {
+  if (showN) {
+    return d.label + " (N = " + d.denominator + ")";
+  } else {
+    return d.label;
+  }
+};
+
 const MARGIN = { top: 0.05, bottom: 10, right: 0.05, left: 0.25 };
 
 function BarChart(props: Props) {
@@ -38,6 +48,7 @@ function BarChart(props: Props) {
     svgContainerRef: wrapperRef,
     data,
     showLevel: displayLevels,
+    showN,
     levels,
     tickformat,
     zoom = false,
@@ -67,7 +78,7 @@ function BarChart(props: Props) {
     const svg = select(svgRef.current).selectChild<SVGGElement>();
     // Scales
     const yScale = scaleBand()
-      .domain(data.map((d) => d.label))
+      .domain(data.map((d) => getLabel(d, showN)))
       .range([0, innerHeight])
       .padding(0.3);
 
@@ -152,7 +163,7 @@ function BarChart(props: Props) {
       .attr("class", "bar")
       .attr("data-testid", (d) => `bar-${d.label}`)
       .attr("x", 0)
-      .attr("y", (d) => yScale(d.label) ?? 0)
+      .attr("y", (d) => yScale(getLabel(d, showN)) ?? 0)
       .attr("height", yScale.bandwidth())
       .attr("fill", (d) => d.style?.color ?? "#7EBEC7")
       .attr("opacity", (d) => d.style?.opacity ?? 1)
@@ -169,7 +180,10 @@ function BarChart(props: Props) {
       .attr("data-testid", (d) => `bar-label-${d.label}`)
       .attr("opacity", 0.3)
       .attr("x", 0)
-      .attr("y", (d) => yScale(d.label)! + yScale.bandwidth() / 2 + 3)
+      .attr(
+        "y",
+        (d) => yScale(getLabel(d, showN))! + yScale.bandwidth() / 2 + 3,
+      )
       .text((d) => customFormat(barLabelFormat)(d.value))
       .attr("text-anchor", "middle")
       .attr("font-size", "0.7em")
