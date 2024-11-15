@@ -11,10 +11,15 @@ import { Description } from "types";
 interface Props {
   svgContainer: React.RefObject<HTMLDivElement>;
   show_level: boolean;
+  show_N: boolean;
   zoom: boolean;
   update_zoom: React.Dispatch<React.SetStateAction<boolean>>;
   update_show_level: (
     newValue: true | false,
+    updateType?: UrlUpdateType | undefined,
+  ) => void;
+  update_show_N: (
+    newValue: false | true,
     updateType?: UrlUpdateType | undefined,
   ) => void;
   update_selected_row(row: string | undefined): void;
@@ -32,6 +37,8 @@ export const FigureButtons = (props: Props) => {
   const {
     show_level,
     update_show_level,
+    show_N,
+    update_show_N,
     zoom,
     update_zoom,
     update_selected_row,
@@ -153,6 +160,12 @@ export const FigureButtons = (props: Props) => {
       title: show_level ? "Skjul målnivå" : "Vis målnivå",
     },
     {
+      label: show_N ? "Skjul N" : "Vis N",
+      click: () => update_show_N(show_N === true ? false : true),
+      class: "btn-level",
+      title: show_N ? "Skjul N" : "Vis N",
+    },
+    {
       label: zoom ? <VscZoomOut /> : <VscZoomIn />,
       click: () => update_zoom((zoom) => !zoom),
       class: "btn-zoom",
@@ -174,6 +187,11 @@ export const FigureButtons = (props: Props) => {
       title: "Lukk",
     },
   ];
+
+  /** remove show N button if chart type is line */
+  if (chartType === "line") {
+    delete buttonValues[2];
+  }
 
   const buttons = buttonValues
     .filter(
