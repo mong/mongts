@@ -38,20 +38,16 @@ type BreadCrumbStop = {
   text: string;
 };
 
-export type BreadCrumbPath = {
-  path: BreadCrumbStop[];
-};
+export type BreadCrumbPath = BreadCrumbStop[];
 
 /**
  * A component that displays breadcrumbs based on the provided path.
  *
- * @param {BreadCrumbPath} props - An object containing the breadcrumb path.
+ * @param {BreadCrumbPath} path - An array containing the breadcrumb path.
  * @return {JSX.Element} A JSX element representing the breadcrumbs.
  */
 
-const SkdeBreadcrumbs = (props: BreadCrumbPath) => {
-  const { path } = props;
-
+const SkdeBreadcrumbs = ({ path }: { path: BreadCrumbPath }) => {
   const theme = useTheme();
   const onMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -125,7 +121,7 @@ export const HeaderTop = (props: HeaderTopProps) => {
             </Link>
           </Grid>
           <Grid size={{ xs: 12 }}>
-            <SkdeBreadcrumbs path={breadcrumbs.path} />
+            <SkdeBreadcrumbs path={breadcrumbs} />
           </Grid>
         </Grid>
       </Container>

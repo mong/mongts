@@ -41,22 +41,20 @@ export const Skde = (): JSX.Element => {
   const gap = 2;
 
   // Header settings
-  const breadcrumbs: BreadCrumbPath = {
-    path: [
-      {
-        link: "https://www.skde.no",
-        text: "Forside",
-      },
-      {
-        link: "https://www.skde.no/resultater",
-        text: "Tall om helsetjenesten",
-      },
-      {
-        link: "/varmekart/",
-        text: "Varmekart",
-      },
-    ],
-  };
+  const breadcrumbs: BreadCrumbPath = [
+    {
+      link: "https://www.skde.no",
+      text: "Forside",
+    },
+    {
+      link: "https://www.skde.no/resultater",
+      text: "Tall om helsetjenesten",
+    },
+    {
+      link: "/varmekart/",
+      text: "Varmekart",
+    },
+  ];
 
   // ################### //
   // ##### Queries ##### //
