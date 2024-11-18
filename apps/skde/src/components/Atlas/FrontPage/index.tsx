@@ -48,7 +48,7 @@ const FrontPage = ({ atlasInfo, lang }: HomeProps) => {
           {Links}
           <div /* Dummy link to make the last link align correctly with CSS flex */
             className={`${linkClassNames.linkOuterWrapper}`}
-            style={{ height: "0px" }}
+            style={{ height: "0rem" }}
           ></div>
         </div>
       </main>

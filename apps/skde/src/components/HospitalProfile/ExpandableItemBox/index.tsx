@@ -61,8 +61,8 @@ export const ExpandableItemBox = (
       <Box
         sx={{
           backgroundColor: "white",
-          borderTopLeftRadius: "24px",
-          borderTopRightRadius: "24px",
+          borderTopLeftRadius: "1.5rem",
+          borderTopRightRadius: "1.5rem",
           height: expanded ? "auto" : collapsedHeight,
           overflow: "hidden",
           minHeight: collapsedHeight,
@@ -71,8 +71,8 @@ export const ExpandableItemBox = (
               ? "linear-gradient(black, 98%,  transparent)"
               : undefined,
           maskMode: "alpha",
-          borderBottomLeftRadius: !expanded && !overflow ? "24px" : "0px",
-          borderBottomRightRadius: !expanded && !overflow ? "24px" : "0px",
+          borderBottomLeftRadius: !expanded && !overflow ? "1.5rem" : "0%",
+          borderBottomRightRadius: !expanded && !overflow ? "1.5rem" : "0%",
         }}
       >
         {<div ref={contentRef}>{props.children}</div>}
@@ -81,8 +81,8 @@ export const ExpandableItemBox = (
         <Button
           sx={{
             backgroundColor: "white",
-            borderBottomLeftRadius: "24px",
-            borderBottomRightRadius: "24px",
+            borderBottomLeftRadius: "1.5rem",
+            borderBottomRightRadius: "1.5rem",
           }}
           fullWidth
           onClick={handleClick}

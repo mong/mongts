@@ -11,7 +11,7 @@ import { newLevelSymbols, level2, skdeTheme } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { PluggableList } from "react-markdown/lib";
-import { Skeleton, Collapse, Typography } from "@mui/material";
+import { Skeleton, Collapse, Typography, Stack } from "@mui/material";
 import {
   StyledTable,
   StyledTableRow,
@@ -37,6 +37,7 @@ type IndicatorTableBodyV2Props = {
   unitNames: string[];
   levels: string;
   medfields: string[];
+  chartColours: string[];
 };
 
 // ################################
@@ -59,6 +60,7 @@ const IndicatorRow = (props: {
   context: string;
   type: string;
   year: number;
+  chartColours: string[];
 }) => {
   const {
     unitNames,
@@ -72,6 +74,7 @@ const IndicatorRow = (props: {
     context,
     type,
     year,
+    chartColours,
   } = props;
 
   let open: boolean;
@@ -128,7 +131,7 @@ const IndicatorRow = (props: {
     <TableRow key={indData.indicatorID + "-collapse"}>
       <StyledTableCell
         style={{
-          paddingBottom: "4px",
+          paddingBottom: "0.25rem",
           paddingTop: 0,
           paddingLeft: 0,
           paddingRight: 0,
@@ -179,18 +182,16 @@ const IndicatorRow = (props: {
         style={{ cursor: "pointer" }}
       >
         <StyledTableCellStart key={indData.indicatorID}>
-          <table>
-            <tbody>
-              <tr>
-                <td>
-                  <IconButton aria-label="expand" size="small">
-                    {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-                  </IconButton>
-                </td>
-                <td>{indData.indicatorTitle}</td>
-              </tr>
-            </tbody>
-          </table>
+          <Stack direction="row" alignItems="center">
+            <IconButton
+              aria-label="expand"
+              size="small"
+              sx={{ width: "2.5em", height: "2.5em" }}
+            >
+              {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
+            </IconButton>
+            {indData.indicatorTitle}
+          </Stack>
         </StyledTableCellStart>
 
         {rowDataSorted.map((row, index, arr) => {
@@ -217,9 +218,17 @@ const IndicatorRow = (props: {
 
           const cellData = Array.from([lowDG, noData, lowN]).every(
             (x) => x == false,
-          )
-            ? [row?.result, row?.symbol]
-            : "N/A";
+          ) ? (
+            <Stack
+              direction="row"
+              alignItems="center"
+              justifyContent="center"
+              spacing="0.25rem"
+            >
+              <b>{row?.result}</b>
+              {row?.symbol}
+            </Stack>
+          ) : null;
 
           const patientCounts = lowDG
             ? "Lav dekning"
@@ -243,9 +252,14 @@ const IndicatorRow = (props: {
               align={"center"}
               key={indData.indicatorID + index}
             >
-              {cellData}
-              <br />
-              {patientCounts}
+              <Stack
+                direction="column"
+                alignItems="center"
+                justifyContent="center"
+              >
+                {cellData}
+                {patientCounts}
+              </Stack>
             </CellType>
           );
         })}
@@ -265,7 +279,7 @@ const IndicatorRow = (props: {
           colSpan={unitNames.length + 1}
         >
           <Collapse in={open} timeout="auto" unmountOnExit>
-            <Typography variant="body2" sx={{ margin: "10px" }}>
+            <Typography variant="body2" sx={{ margin: "2rem" }}>
               {indData.shortDescription}
               <br />
               {"Ønsket målnivå: "}
@@ -310,12 +324,13 @@ const IndicatorRow = (props: {
                       indData.data[0].affirmTime,
                       year,
                     )}
+                    chartColours={chartColours}
                   ></ChartRow>
                 </tbody>
               </table>
             </div>
 
-            <Typography variant="body2" sx={{ margin: "10px" }}>
+            <Typography variant="body2" sx={{ margin: "2rem" }}>
               <b>Om kvalitetsindikatoren</b>
               <ReactMarkdown
                 remarkPlugins={remarkPlugins}
@@ -364,6 +379,7 @@ const IndicatorSection = (props: {
   context: string;
   type: string;
   year: number;
+  chartColours: string[];
 }) => {
   const {
     unitNames,
@@ -376,6 +392,7 @@ const IndicatorSection = (props: {
     context,
     type,
     year,
+    chartColours,
   } = props;
 
   // Map indicators to rows and show only rows where there is at least
@@ -409,6 +426,7 @@ const IndicatorSection = (props: {
         context={context}
         type={type}
         year={year}
+        chartColours={chartColours}
       />
     ) : null;
 
@@ -430,6 +448,7 @@ const RegistrySection = (props: {
   context: string;
   type: string;
   year: number;
+  chartColours: string[];
 }) => {
   const {
     unitNames,
@@ -441,6 +460,7 @@ const RegistrySection = (props: {
     context,
     type,
     year,
+    chartColours,
   } = props;
 
   regData.indicatorData.sort((a: IndicatorData, b: IndicatorData) => {
@@ -480,7 +500,10 @@ const RegistrySection = (props: {
           <TableRow key={regData.registerName + "-row"}>
             <StyledTableCellStart
               key={regData.registerName}
-              sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
+              sx={{
+                backgroundColor: skdeTheme.palette.secondary.light,
+                width: "12rem",
+              }}
             >
               {regData.registerFullName}
             </StyledTableCellStart>
@@ -499,6 +522,7 @@ const RegistrySection = (props: {
                   align="center"
                   key={regData.registerName + index}
                   sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
+                  width={"12rem"}
                 >
                   {row}
                 </CellType>
@@ -520,6 +544,7 @@ const RegistrySection = (props: {
             context={context}
             type={type}
             year={year}
+            chartColours={chartColours}
           />
         </TableBody>
       </React.Fragment>
@@ -534,7 +559,8 @@ const RegistrySection = (props: {
 // #################################
 
 export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
-  const { context, type, year, unitNames, levels, medfields } = props;
+  const { context, type, year, unitNames, levels, medfields, chartColours } =
+    props;
 
   const [openRowID, setOpenRowID] = useState<string>("");
 
@@ -578,7 +604,7 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
   });
 
   return (
-    <StyledTable sx={{ marginTop: "10px" }}>
+    <StyledTable sx={{ marginTop: "0.625rem" }}>
       {rowDataFiltered.map((row) => (
         <RegistrySection
           key={row.registerName}
@@ -593,6 +619,7 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
           context={context}
           type={type}
           year={year}
+          chartColours={chartColours}
         />
       ))}
     </StyledTable>

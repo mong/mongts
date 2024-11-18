@@ -144,6 +144,7 @@ interface IndicatorRowProps {
   medicalFieldClass?: string;
   showLevelFilter?: string;
   colspan?: number;
+  chartColours: string[];
 }
 
 export const IndicatorRow = (props: IndicatorRowProps) => {
@@ -156,6 +157,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
     medicalFieldClass = "",
     showLevelFilter = "",
     colspan,
+    chartColours,
   } = props;
   const [selected_row, update_selected_row] = useQueryParam(
     "selected_row",
@@ -208,6 +210,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
         indicatorData={indicatorData}
         update_selected_row={update_selected_row}
         lastCompleteYear={lastCompleteYear}
+        chartColours={chartColours}
       />
     ) : null;
 

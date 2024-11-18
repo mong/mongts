@@ -26,7 +26,9 @@ export function SelectTreatmentUnits(props: Props) {
       fontSize: "1rem",
       border: "none",
       borderRadius: state.isFocused ? 0 : 0,
-      borderBottom: state.isFocused ? "3px solid #7ebec7" : "3px solid #EEF6F7",
+      borderBottom: state.isFocused
+        ? "0.1875rem solid #7ebec7"
+        : "0.1875rem solid #EEF6F7",
       cursor: "text",
     }),
     input: (provided) => ({

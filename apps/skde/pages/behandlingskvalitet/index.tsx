@@ -37,7 +37,6 @@ import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/Treatm
 import {
   FilterDrawer,
   IndicatorTableWrapper,
-  IndicatorTableV2Wrapper,
 } from "../../src/components/TreatmentQuality";
 import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
@@ -48,6 +47,11 @@ import getMedicalFieldFilterRegisters from "./utils/getMedicalFieldFilterRegiste
 import { IndicatorTableSkeleton } from "qmongjs";
 import { LayoutHead } from "../../src/components/LayoutHead";
 import { valueOrDefault, defaultTableContext } from "./utils/valueOrDefault";
+import {
+  ColourMap,
+  updateColourMap,
+  getSortedList,
+} from "../../src/helpers/functions/chartColours";
 
 export default function TreatmentQualityPage() {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
@@ -75,6 +79,8 @@ export default function TreatmentQualityPage() {
   ]);
   const [dataQualitySelected, setDataQualitySelected] =
     useState<boolean>(false);
+
+  const [colourMap, setColourMap] = useState<ColourMap[]>([]);
 
   const selectedRow = useQueryParam(
     "selected_row",
@@ -141,6 +147,12 @@ export default function TreatmentQualityPage() {
 
     setDataQualitySelected(
       filterSettings.get(dataQualityKey)?.[0].value === "true" ? true : false,
+    );
+
+    updateColourMap(
+      colourMap,
+      setColourMap,
+      filterSettings.get(treatmentUnitsKey).map((value) => value.value),
     );
   };
 
@@ -229,6 +241,12 @@ export default function TreatmentQualityPage() {
     if (action.type === FilterSettingsActionType.RESET_SELECTIONS) {
       setAllSelected(newFilterSettings);
     }
+
+    updateColourMap(
+      colourMap,
+      setColourMap,
+      valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+    );
   };
 
   // Use the custom hook to observe the addition of the selected row element, if
@@ -287,17 +305,24 @@ export default function TreatmentQualityPage() {
               <Grid size={{ xs: 12 }}>
                 {queriesReady ? (
                   displayV2Table ? (
-                    <IndicatorTableV2Wrapper className="table-wrapper">
-                      <IndicatorTableBodyV2
-                        key={"indicator-table2"}
-                        context={selectedTableContext}
-                        unitNames={selectedTreatmentUnits}
-                        year={selectedYear}
-                        type={dataQualitySelected ? "dg" : "ind"}
-                        levels={selectedLevel}
-                        medfields={selectedMedicalFields}
-                      />
-                    </IndicatorTableV2Wrapper>
+                    <IndicatorTableBodyV2
+                      key={"indicator-table2"}
+                      context={selectedTableContext}
+                      unitNames={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "units",
+                      )}
+                      year={selectedYear}
+                      type={dataQualitySelected ? "dg" : "ind"}
+                      levels={selectedLevel}
+                      medfields={selectedMedicalFields}
+                      chartColours={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "colours",
+                      )}
+                    />
                   ) : (
                     <IndicatorTableWrapper className="table-wrapper">
                       <IndicatorTable
@@ -306,7 +331,11 @@ export default function TreatmentQualityPage() {
                         dataQuality={dataQualitySelected}
                         tableType="allRegistries"
                         registerNames={registers}
-                        unitNames={selectedTreatmentUnits}
+                        unitNames={getSortedList(
+                          colourMap,
+                          selectedTreatmentUnits,
+                          "units",
+                        )}
                         treatmentYear={selectedYear}
                         colspan={selectedTreatmentUnits.length + 1}
                         medicalFieldFilter={selectedMedicalFields}
@@ -319,6 +348,11 @@ export default function TreatmentQualityPage() {
                         )}
                         showTreatmentYear={true}
                         nestedUnitNames={nestedUnitNames}
+                        chartColours={getSortedList(
+                          colourMap,
+                          selectedTreatmentUnits,
+                          "colours",
+                        )}
                       />
                     </IndicatorTableWrapper>
                   )
