@@ -12,14 +12,14 @@
   position: absolute;
   top: 0;
   width: 100%;
-  min-height: 385px;
+  min-height: 24rem;
   background-color: #fff;
 }
 
 .pageImage {
-  width: min(1216px, 95%);
-  padding-left: 16px;
-  padding-right: 16px;
+  width: min(76rem, 95%);
+  padding-left: 1rem;
+  padding-right: 1rem;
   margin: auto;
   background: none;
   position: relative;
@@ -38,9 +38,9 @@
 .pageTitle {
   width: 100%;
   padding-bottom: 0;
-  font-size: 48px;
+  font-size: 3rem;
   font-weight: 600;
-  line-height: 65px;
+  line-height: 4rem;
   text-align: center;
   background: none;
 }
@@ -48,7 +48,7 @@
 .pageIngressContent {
   width: 100%;
   background-color: #fdf6e4;
-  font-size: 24px;
+  font-size: 1.5rem;
   margin: auto;
   text-align: center;
   line-height: 1.4em;
@@ -57,8 +57,8 @@
 .pageIngress {
   background: none;
   margin: auto;
-  width: min(1216px, 95%);
-  padding: min(5%, 50px);
+  width: min(76rem, 95%);
+  padding: min(5%, 3rem);
 }
 
 @media screen and (max-width: 700px) {
@@ -67,18 +67,18 @@
     position: absolute;
     top: 0;
     width: 100%;
-    min-height: 185px;
+    min-height: 16rem;
     background-color: #fff;
   }
   .pageTitle {
     width: 100%;
     padding-bottom: 0;
-    font-size: 28px;
+    font-size: 1.75rem;
     font-weight: 600;
-    line-height: 40px;
+    line-height: 2.5rem;
   }
   .pageIngressContent {
-    font-size: 16px;
-    line-height: 25px;
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 }

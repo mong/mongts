@@ -81,8 +81,8 @@ export const Linechart = <Data, X extends string & keyof Data>({
         style={{
           backgroundImage: "url('/img/logos/logo-skde-graa.svg')",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "max(50px, 10%)",
-          backgroundPosition: "top 35px right 5%",
+          backgroundSize: "max(3rem, 10%)",
+          backgroundPosition: "top 2.25rem right 5%",
         }}
       >
         <XYChart

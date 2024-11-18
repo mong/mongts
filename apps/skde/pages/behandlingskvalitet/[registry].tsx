@@ -35,7 +35,6 @@ import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/Treatm
 import {
   FilterDrawer,
   IndicatorTableWrapper,
-  IndicatorTableV2Wrapper,
 } from "../../src/components/TreatmentQuality";
 import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
@@ -45,11 +44,18 @@ import scrollToSelectedRow from "./utils/scrollToSelectedRow";
 import { RegisterName, RegistryRank } from "types";
 import valueOrDefault from "./utils/valueOrDefault";
 import { LayoutHead } from "../../src/components/LayoutHead";
+import {
+  ColourMap,
+  updateColourMap,
+  getSortedList,
+} from "../../src/helpers/functions/chartColours";
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [colourMap, setColourMap] = useState<ColourMap[]>([]);
+
   const registryName = registryInfo[0].rname;
   const skipTableContextSection =
     registryInfo[0].resident_data + registryInfo[0].caregiver_data !== 2;
@@ -132,6 +138,12 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     setSelectedTreatmentUnits(
       filterSettings.get(treatmentUnitsKey).map((value) => value.value),
     );
+
+    updateColourMap(
+      colourMap,
+      setColourMap,
+      filterSettings.get(treatmentUnitsKey).map((value) => value.value),
+    );
   };
 
   const setAllSelected = (newFilterSettings: {
@@ -191,6 +203,12 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     if (action.type === FilterSettingsActionType.RESET_SELECTIONS) {
       setAllSelected(newFilterSettings);
     }
+
+    updateColourMap(
+      colourMap,
+      setColourMap,
+      valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+    );
   };
 
   // Use the custom hook to observe the addition of the selected row element, if
@@ -274,26 +292,44 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
                 {displayV2Table ? (
-                  <IndicatorTableV2Wrapper className="table-wrapper">
+                  <>
                     <IndicatorTableBodyV2
                       key={`indicator-table2-${selectedTableContext}`}
                       context={selectedTableContext}
-                      unitNames={selectedTreatmentUnits}
+                      unitNames={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "units",
+                      )}
                       year={selectedYear}
                       type="ind"
                       levels={selectedLevel}
                       medfields={selectedMedicalFields}
+                      chartColours={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "colours",
+                      )}
                     />
                     <IndicatorTableBodyV2
                       key={`dataquality-table2-${selectedTableContext}`}
                       context={selectedTableContext}
-                      unitNames={selectedTreatmentUnits}
+                      unitNames={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "units",
+                      )}
                       year={selectedYear}
                       type="dg"
                       levels={selectedLevel}
                       medfields={selectedMedicalFields}
+                      chartColours={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "colours",
+                      )}
                     />
-                  </IndicatorTableV2Wrapper>
+                  </>
                 ) : (
                   <IndicatorTableWrapper className="table-wrapper">
                     <IndicatorTable
@@ -302,7 +338,11 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                       dataQuality={false}
                       tableType="allRegistries"
                       registerNames={registryInfo}
-                      unitNames={selectedTreatmentUnits}
+                      unitNames={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "units",
+                      )}
                       treatmentYear={selectedYear}
                       colspan={selectedTreatmentUnits.length + 1}
                       medicalFieldFilter={selectedMedicalFields}
@@ -310,6 +350,11 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                       selection_bar_height={0}
                       legend_height={0}
                       showTreatmentYear={true}
+                      chartColours={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "colours",
+                      )}
                     />
                     <IndicatorTable
                       key={`dataquality-table-${selectedTableContext}`}
@@ -317,7 +362,11 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                       dataQuality={true}
                       tableType="allRegistries"
                       registerNames={registryInfo}
-                      unitNames={selectedTreatmentUnits}
+                      unitNames={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "units",
+                      )}
                       treatmentYear={selectedYear}
                       colspan={selectedTreatmentUnits.length + 1}
                       medicalFieldFilter={selectedMedicalFields}
@@ -326,6 +375,11 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                       legend_height={0}
                       descriptionHeader="Datakvalitet"
                       showTreatmentYear={true}
+                      chartColours={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "colours",
+                      )}
                     />
                   </IndicatorTableWrapper>
                 )}

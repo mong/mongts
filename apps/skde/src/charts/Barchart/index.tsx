@@ -112,13 +112,14 @@ export const Barchart = <
   format,
   national,
 }: BarchartProps<Data, X, Y, AnnualVar, ErrorBar>) => {
-  //missing
-  //tooltip
-  //animation
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
 
-  const varLabels = annualVarLabels ? annualVarLabels[lang] : undefined;
+  const varLabels = annualVarLabels
+    ? annualVarLabels[lang]
+      ? annualVarLabels[lang]
+      : annualVarLabels["en"]
+    : undefined;
 
   const sorted = [...data].sort((first, second) => {
     const firstVal = sum(x.map((xVal) => parseFloat(first[xVal])));
@@ -201,8 +202,8 @@ export const Barchart = <
         sx={{
           backgroundImage: "url('/img/logos/logo-skde-graa.svg')",
           backgroundRepeat: "no-repeat",
-          backgroundSize: "max(50px, 10%)",
-          backgroundPosition: "bottom min(13%, 75px) right 5%",
+          backgroundSize: "max(3rem, 10%)",
+          backgroundPosition: "bottom min(13%, 5rem) right 5%",
         }}
       >
         <svg

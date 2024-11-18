@@ -15,11 +15,13 @@ export interface ChartProps {
   indicatorData: Indicator[];
   zoom: boolean;
   showLevel: boolean;
+  showN: boolean;
   levels: Level[];
   tickformat?: string;
   selectedTreatmentUnits: string[];
   max_value?: number;
   lastCompleteYear?: number;
+  chartColours: string[];
 }
 
 export function Chart(props: ChartProps) {
@@ -96,6 +98,7 @@ const GetBarChart = (props: ChartProps) => {
         return {
           label: data.unit_name,
           value: data.var,
+          denominator: data.denominator,
           style,
         };
       })
@@ -127,7 +130,7 @@ const GetBarChart = (props: ChartProps) => {
 };
 
 const GetLineChart = (props: ChartProps) => {
-  const { description, selectedTreatmentUnits } = props;
+  const { description, selectedTreatmentUnits, chartColours } = props;
 
   const {
     isLoading,
@@ -151,7 +154,12 @@ const GetLineChart = (props: ChartProps) => {
         ((data.dg ?? 1) >= 0.6 || data.unit_name === "Nasjonalt") &&
         data.denominator >= (description.min_denominator ?? 5),
     )
-    .sort((a: Indicator, b: Indicator) => b.year - a.year);
+    .sort((a: Indicator, b: Indicator) => b.year - a.year)
+    .sort(
+      (a: Indicator, b: Indicator) =>
+        selectedTreatmentUnits.indexOf(a.unit_name) -
+        selectedTreatmentUnits.indexOf(b.unit_name),
+    );
 
   // Get the last year with complete data.
   // If DG or N is too low data could be an empty array.
@@ -160,7 +168,12 @@ const GetLineChart = (props: ChartProps) => {
     const lastCompleteYear = getLastCompleteYear(lastCompleteDate, 0, true);
 
     return (
-      <LineChart {...props} data={data} lastCompleteYear={lastCompleteYear} />
+      <LineChart
+        {...props}
+        data={data}
+        lastCompleteYear={lastCompleteYear}
+        chartColours={chartColours}
+      />
     );
   } else {
     return null;
