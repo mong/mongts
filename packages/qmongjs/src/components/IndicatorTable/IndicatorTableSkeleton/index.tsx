@@ -1,6 +1,4 @@
 import { Box, Stack, Skeleton } from "@mui/material";
-import { useScreenSize } from "@visx/responsive";
-import { breakpoints } from "../../../themes/SkdeTheme";
 
 const SkeletonRow = () => {
   return (
@@ -25,7 +23,6 @@ const SkeletonRow = () => {
 
 export const IndicatorTableSkeleton = (props: { nRows: number }) => {
   const { nRows } = props;
-  const { width } = useScreenSize();
 
   const numArr = [];
 
@@ -33,17 +30,9 @@ export const IndicatorTableSkeleton = (props: { nRows: number }) => {
     numArr.push(i);
   }
 
-  const drawer = width >= breakpoints.xxl;
-
-  return !drawer ? (
+  return (
     <Stack spacing={1} marginTop={2} marginLeft={2}>
       {Array.from(numArr).map((el) => (
-        <SkeletonRow key={el} />
-      ))}
-    </Stack>
-  ) : (
-    <Stack spacing={1} marginTop={2} marginLeft={2}>
-      {Array.from([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]).map((el) => (
         <SkeletonRow key={el} />
       ))}
     </Stack>
