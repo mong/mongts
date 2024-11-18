@@ -30,6 +30,8 @@ export const AnnualVariation = function <
 }: AnnualVariaionProps<D, AnnualVar>) {
   const annualRates = annualVar.map((v) => Number(data[v]));
 
+  if (annualVar.length != labels?.length) return null;
+
   return (
     <>
       <Group top={yScale.bandwidth() / 2}>

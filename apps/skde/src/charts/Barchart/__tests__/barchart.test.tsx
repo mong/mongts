@@ -8,6 +8,7 @@
 
 import { render, fireEvent } from "@testing-library/react";
 import mockRouter from "next-router-mock";
+import { vi, test, expect } from "vitest";
 
 import { Barchart } from "..";
 import { atlasData } from "../../../../test/test_data/data";
@@ -319,4 +320,62 @@ test("Render with error bars outside bars", async () => {
     />,
   );
   expect(container).toMatchSnapshot();
+});
+
+test("Render with wrong language", async () => {
+  const barchartinfo = {
+    type: "barchart",
+    data: "qwerty",
+    x: ["spes_rate"],
+    y: "bohf",
+    yLabel: { en: "qwerty", nn: "Referral areas" },
+    xLabel: { en: "qwerty", nn: "Referral areas" },
+    annualVar: ["rate2019", "rate2020", "rate2021"],
+    annualVarLabels: {
+      en: ["2019", "2020", "2021"],
+    },
+  };
+  mockRouter.push("");
+  const { container: cont1 } = render(
+    <Barchart
+      {...barchartinfo}
+      data={atlasData}
+      lang="nb"
+      national="Norge"
+      format=",.0f"
+    />,
+  );
+  expect(cont1).toMatchSnapshot();
+
+  const { container: cont2 } = render(
+    <Barchart
+      {...barchartinfo}
+      data={atlasData}
+      lang="en"
+      national="Norge"
+      format=",.0f"
+    />,
+  );
+  expect(cont2).toMatchSnapshot();
+
+  /** Missing labels */
+  const barchartinfo2 = {
+    type: "barchart",
+    data: "qwerty",
+    x: ["spes_rate"],
+    y: "bohf",
+    yLabel: { en: "qwerty", nn: "Referral areas" },
+    xLabel: { en: "qwerty", nn: "Referral areas" },
+    annualVar: ["rate2019", "rate2020", "rate2021"],
+  };
+  const { container: cont3 } = render(
+    <Barchart
+      {...barchartinfo2}
+      data={atlasData}
+      lang="nb"
+      national="Norge"
+      format=",.0f"
+    />,
+  );
+  expect(cont3).toMatchSnapshot();
 });

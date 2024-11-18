@@ -112,13 +112,14 @@ export const Barchart = <
   format,
   national,
 }: BarchartProps<Data, X, Y, AnnualVar, ErrorBar>) => {
-  //missing
-  //tooltip
-  //animation
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
 
-  const varLabels = annualVarLabels ? annualVarLabels[lang] : undefined;
+  const varLabels = annualVarLabels
+    ? annualVarLabels[lang]
+      ? annualVarLabels[lang]
+      : annualVarLabels["en"]
+    : undefined;
 
   const sorted = [...data].sort((first, second) => {
     const firstVal = sum(x.map((xVal) => parseFloat(first[xVal])));

@@ -15,6 +15,7 @@ export const AnnualVarLegend = ({
   labels,
   values,
 }: AnnualVarLegendPops) => {
+  if (values.length != labels?.length) return null;
   return (
     <div className={classNames.legendContainer}>
       <ul className={classNames.legendUL}>
