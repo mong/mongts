@@ -11,17 +11,15 @@ interface Props {
 
 export function AtlasLayout({ children, lang }: Props) {
   return (
-    <>
-      <PageWrapper>
-        <LayoutHead
-          title="Helseatlas"
-          content="The healthcare atlases on Helseatlas.no are a tool for comparing the population's use of health services in different geographical areas, regardless of where the patients actually receive treatment."
-          href="/helseatlas/img/logos/favicon.ico"
-        />
-        <Header lang={lang} />
-        {children}
-        <Footer page="helseatlas" />
-      </PageWrapper>
-    </>
+    <PageWrapper>
+      <LayoutHead
+        title="Helseatlas"
+        content="The healthcare atlases on Helseatlas.no are a tool for comparing the population's use of health services in different geographical areas, regardless of where the patients actually receive treatment."
+        href="/helseatlas/img/logos/favicon.ico"
+      />
+      <Header lang={lang} />
+      {children}
+      <Footer page="helseatlas" maxWidth={"xxl"} />
+    </PageWrapper>
   );
 }
