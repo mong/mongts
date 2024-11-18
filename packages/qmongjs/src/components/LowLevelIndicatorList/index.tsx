@@ -228,7 +228,7 @@ const IndicatorRow = (props: IndicatorRowProps) => {
           paddingTop: 0,
           paddingLeft: 0,
           paddingRight: 0,
-          border: 0,
+          borderBottom: !open ? 0 : `1px solid rgba(224, 224, 224, 1)`,
         }}
         colSpan={3}
       >
