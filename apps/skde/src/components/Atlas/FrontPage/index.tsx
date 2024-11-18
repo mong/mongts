@@ -44,6 +44,10 @@ const FrontPage = ({ atlasInfo, lang }: HomeProps) => {
     />
   ));
 
+  const title = { no: "Tematisk Helseatlas", en: "Thematic Health Atlases" }[
+    lang
+  ];
+
   const breadcrumbs: BreadCrumbPath = {
     path: [
       {
@@ -56,9 +60,7 @@ const FrontPage = ({ atlasInfo, lang }: HomeProps) => {
       },
       {
         link: "/helseatlas/",
-        text: { no: "Tematisk Helseatlas", en: "Thematic Health Atlases" }[
-          lang
-        ],
+        text: title,
       },
     ],
   };
@@ -75,15 +77,15 @@ const FrontPage = ({ atlasInfo, lang }: HomeProps) => {
           <main>
             <Header
               bgcolor="surface2.light"
-              title={"Tematiske Helseatlas"}
+              title={title}
               breadcrumbs={breadcrumbs}
               maxWidth={"xl"}
               menu={<LangButton lang={lang} />}
             >
               {
                 {
-                  no: "Liste over publiserte Helseatlas",
-                  en: "List of published Health Atlases",
+                  no: "Her finner du tematiske Helseatlas som tar for seg utvalgte tjenester på ett fagområde eller til én pasientgruppe, i en periode på tre til fem år.",
+                  en: "Here you find thematic Health Atlases concering selected health services or patient groups, in a period from three to five years.",
                 }[lang]
               }
             </Header>
