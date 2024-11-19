@@ -19,6 +19,10 @@ const chartColours = [
   "#78909C",
 ];
 
+const getChartColour = (i: number) => {
+  return chartColours[i % chartColours.length];
+};
+
 export type ColourMap = { unitName: string; colour: string };
 
 export const updateColourMap = (
@@ -30,7 +34,7 @@ export const updateColourMap = (
     if (!colourMap.map((row) => row.unitName).includes(unit)) {
       colourMap.push({
         unitName: unit,
-        colour: chartColours[colourMap.length],
+        colour: getChartColour(colourMap.length),
       });
       setColourMap(colourMap);
     }
