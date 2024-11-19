@@ -30,7 +30,7 @@
       "data": "qwerty",
       "caption": {
         "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Rate pr. 1 000 innbyggarar i alderen under 18 år.",
-        "en": "Average per year for the period 2019–2023. Rate per 1,000 inhabitants aged 18 years and older."
+        "en": "Average per year for the period 2019–2023. Rate per 1,000 inhabitants under age of 18 years."
       },
       "columns": [
         {
@@ -45,7 +45,7 @@
           "label_no": "Poliklinisk kontaktrate",
           "label_en": "Outpatient contacts",
           "typeVar": "number",
-          "format": ",.0f"
+          "format": ",.1f"
         },
         {
           "id": "Snitt_innlagde",
@@ -59,7 +59,7 @@
           "label_no": "Tal kontaktar per pasient",
           "label_en": "Contacts per patients",
           "typeVar": "number",
-          "format": ",.1f"
+          "format": ",.0f"
         }
       ]
     },
@@ -68,8 +68,8 @@
       "data": "qwerty",
       "x": "Snittrate",
       "caption": {
-        "nn": "Tal polikliniske kontaktar pr. 10 000 innbyggarar (18 år og eldre)",
-        "en": "Number of outpatient contacts per 10,000 inhabitants (18 years and older)"
+        "nn": "Tal polikliniske kontaktar pr. 1 000 innbyggarar (under 18 år )",
+        "en": "Number of outpatient contacts per 1,000 inhabitants (under 18 years of age)"
       },
       "jenks": [
         {
@@ -333,4 +333,5 @@
   }
 ]
     }
-  ]}
+  ]
+}
