@@ -69,7 +69,6 @@ export const Linechart = <Data, X extends string & keyof Data>({
       ),
     ),
   );
-
   const colorScale = scaleOrdinal({
     domain: values.map((s) => s.linevar),
     range: [...(linecolors || []), ...linechartColors],
@@ -78,10 +77,10 @@ export const Linechart = <Data, X extends string & keyof Data>({
   return (
     <Box style={{ width: "auto", margin: "auto" }}>
       <Box
-        style={{
-          backgroundImage: "url('/img/logos/logo-skde-graa.svg')",
+        sx={{
+          backgroundImage: `url(${lang !== "nn" ? "/helseatlas/img/logos/helse-forde-graa.svg" : "/img/logos/logo-skde-graa.svg"})`,
           backgroundRepeat: "no-repeat",
-          backgroundSize: "max(3rem, 10%)",
+          backgroundSize: lang !== "nn" ? "max(5rem, 20%)" : "max(3rem, 10%)",
           backgroundPosition: "top 2.25rem right 5%",
         }}
       >

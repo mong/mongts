@@ -200,9 +200,9 @@ export const Barchart = <
     >
       <Box
         sx={{
-          backgroundImage: "url('/img/logos/logo-skde-graa.svg')",
+          backgroundImage: `url(${lang === "nn" ? "/helseatlas/img/logos/helse-forde-graa.svg" : "/img/logos/logo-skde-graa.svg"})`,
           backgroundRepeat: "no-repeat",
-          backgroundSize: "max(3rem, 10%)",
+          backgroundSize: lang === "nn" ? "max(5rem, 20%)" : "max(3rem, 10%)",
           backgroundPosition: "bottom min(13%, 5rem) right 5%",
         }}
       >
