@@ -522,6 +522,7 @@ const RegistrySection = (props: {
                   align="center"
                   key={regData.registerName + index}
                   sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
+                  width={"12rem"}
                 >
                   {row}
                 </CellType>

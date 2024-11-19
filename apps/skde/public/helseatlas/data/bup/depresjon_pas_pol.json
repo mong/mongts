@@ -1,0 +1,269 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": [
+        "snitt.rate"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Tal pasientar med depresjon i poliklinikk pr. 1 000 (under 18 år)",
+        "en": "Number of patients with depression in outpatient pr. 1,000 inhabitants (under 18 years old)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "errorBars": [
+       "lowercl",
+       "uppercl"
+      ],
+    "format": ",.1f"
+  },
+  {
+    "type": "table",
+    "data": "qwerty",
+    "caption": {
+      "nb": "Årlige gjennomsnittsverdier for perioden 2019–2023, Pasientrate pr. 1 000 innbyggarar i alderen under 18 år",
+      "en": "Average annual values for the period 2019–2023, patient rate pr. 1 000 population under 18 years of age"
+    },
+    "columns": [
+      {
+        "id": "bohf",
+        "label_no": "Opptaksområde",
+        "label_en": "Referral areas",
+        "typeVar": "string",
+        "format": ""
+      },
+      {
+        "id": "snitt.rate",
+        "label_no": "Rate",
+        "label_en": "Rate",
+        "typeVar": "number",
+        "format": ",.1f"
+      },
+      {
+        "id": "Tal_pas",
+        "label_no": "Tal pasientar",
+        "label_en": "Number of patients",
+        "typeVar": "number",
+        "format": ",.0f"
+      },
+      {
+        "id":  "Folktal",
+        "label_no": "Innbygarrar (under 18 år)",
+        "label_en": "Averege population (under 18)",
+        "typeVar": "number",
+        "format": ",.0f"
+      }
+    ]
+  },
+  {
+    "type": "map",
+    "data": "qwerty",
+    "x": "snitt.rate",
+    "caption": {
+      "nb": "Tal pasientar med depresjon i poliklinikk pr. 1 000 innbyggarar i alderen under 18 år",
+      "en": "Number of patients with depression in outpatient pr. 1 000 population under 18 years of age"
+    },
+    "jenks": [
+      {
+        "grense": 4.2
+      },
+      {
+        "grense": 5.7
+      },
+      {
+        "grense": 6.7
+      }
+    ],
+    "format": ",.1f"
+  },
+  {
+    "type": "data",
+    "label": "qwerty",
+    "description": "Hoveddatasettet for gitt resultatboks",
+    "national": "Noreg",
+    "data":
+[
+  {
+    "bohf": "Akershus",
+    "Tal_pas": 400.2,
+    "Folktal": 128646.8,
+    "snitt.rate": 4.2268,
+    "lowercl": 4.0425,
+    "uppercl": 4.4173
+  },
+  {
+    "bohf": "Bergen",
+    "Tal_pas": 409.8,
+    "Folktal": 96697.2,
+    "snitt.rate": 5.9365,
+    "lowercl": 5.6808,
+    "uppercl": 6.2007
+  },
+  {
+    "bohf": "Diakonhjemmet",
+    "Tal_pas": 110.2,
+    "Folktal": 25931,
+    "snitt.rate": 6.1603,
+    "lowercl": 5.6498,
+    "uppercl": 6.7042
+  },
+  {
+    "bohf": "Finnmark",
+    "Tal_pas": 86.2,
+    "Folktal": 14386.2,
+    "snitt.rate": 7.834,
+    "lowercl": 7.1056,
+    "uppercl": 8.6163
+  },
+  {
+    "bohf": "Fonna",
+    "Tal_pas": 101.8,
+    "Folktal": 39994,
+    "snitt.rate": 3.4194,
+    "lowercl": 3.1272,
+    "uppercl": 3.7314
+  },
+  {
+    "bohf": "Førde",
+    "Tal_pas": 51.8,
+    "Folktal": 23040.4,
+    "snitt.rate": 2.8839,
+    "lowercl": 2.5418,
+    "uppercl": 3.2591
+  },
+  {
+    "bohf": "Helgeland",
+    "Tal_pas": 76,
+    "Folktal": 15107.6,
+    "snitt.rate": 6.6471,
+    "lowercl": 5.9924,
+    "uppercl": 7.3537
+  },
+  {
+    "bohf": "Innlandet",
+    "Tal_pas": 181.2,
+    "Folktal": 63506.8,
+    "snitt.rate": 3.6998,
+    "lowercl": 3.4617,
+    "uppercl": 3.9499
+  },
+  {
+    "bohf": "Lovisenberg",
+    "Tal_pas": 83.6,
+    "Folktal": 22897,
+    "snitt.rate": 7.4749,
+    "lowercl": 6.766,
+    "uppercl": 8.2372
+  },
+  {
+    "bohf": "Møre og Romsdal",
+    "Tal_pas": 151.4,
+    "Folktal": 55257.6,
+    "snitt.rate": 3.5835,
+    "lowercl": 3.3311,
+    "uppercl": 3.8499
+  },
+  {
+    "bohf": "Nord-Trøndelag",
+    "Tal_pas": 84.4,
+    "Folktal": 28257.4,
+    "snitt.rate": 3.8486,
+    "lowercl": 3.4872,
+    "uppercl": 4.2372
+  },
+  {
+    "bohf": "Nordland",
+    "Tal_pas": 101.4,
+    "Folktal": 27085.6,
+    "snitt.rate": 5.0398,
+    "lowercl": 4.6093,
+    "uppercl": 5.4996
+  },
+  {
+    "bohf": "Noreg",
+    "Tal_pas": 3489.4,
+    "Folktal": 1114704,
+    "snitt.rate": 4.2781,
+    "lowercl": 4.2145,
+    "uppercl": 4.3425
+  },
+  {
+    "bohf": "OUS",
+    "Tal_pas": 180.8,
+    "Folktal": 59446.4,
+    "snitt.rate": 4.5997,
+    "lowercl": 4.3017,
+    "uppercl": 4.9127
+  },
+  {
+    "bohf": "St. Olav",
+    "Tal_pas": 156.6,
+    "Folktal": 67721,
+    "snitt.rate": 3.1992,
+    "lowercl": 2.9765,
+    "uppercl": 3.434
+  },
+  {
+    "bohf": "Stavanger",
+    "Tal_pas": 407.2,
+    "Folktal": 87767,
+    "snitt.rate": 6.5784,
+    "lowercl": 6.2926,
+    "uppercl": 6.8736
+  },
+  {
+    "bohf": "Sørlandet",
+    "Tal_pas": 127.8,
+    "Folktal": 67155.8,
+    "snitt.rate": 2.5819,
+    "lowercl": 2.3846,
+    "uppercl": 2.7911
+  },
+  {
+    "bohf": "Telemark",
+    "Tal_pas": 86.4,
+    "Folktal": 33769,
+    "snitt.rate": 3.3195,
+    "lowercl": 3.0123,
+    "uppercl": 3.6495
+  },
+  {
+    "bohf": "UNN",
+    "Tal_pas": 126.6,
+    "Folktal": 37118.6,
+    "snitt.rate": 4.5627,
+    "lowercl": 4.2128,
+    "uppercl": 4.9339
+  },
+  {
+    "bohf": "Vestfold",
+    "Tal_pas": 112,
+    "Folktal": 49969.8,
+    "snitt.rate": 3.0002,
+    "lowercl": 2.7559,
+    "uppercl": 3.2603
+  },
+  {
+    "bohf": "Vestre Viken",
+    "Tal_pas": 324.4,
+    "Folktal": 105821.2,
+    "snitt.rate": 4.1381,
+    "lowercl": 3.9384,
+    "uppercl": 4.3453
+  },
+  {
+    "bohf": "Østfold",
+    "Tal_pas": 158.4,
+    "Folktal": 65127.6,
+    "snitt.rate": 3.2117,
+    "lowercl": 2.9909,
+    "uppercl": 3.4445
+  }
+]
+}
+]
+}

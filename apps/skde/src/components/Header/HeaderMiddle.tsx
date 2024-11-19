@@ -11,7 +11,6 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 type HeaderMiddleProps = PropsWithChildren<{
   title: string;
-  children?: React.ReactNode;
   bgcolor?: string;
   maxWidth?: false | Breakpoint;
 }>;
@@ -63,9 +62,7 @@ export const HeaderMiddle = (props: HeaderMiddleProps) => {
             <Typography variant="h1">{props.title}</Typography>
           </Grid>
           <Grid size={{ xs: 12 }}>
-            <Typography variant="h6">
-              {props.children !== undefined && props.children}
-            </Typography>
+            <Typography variant="h6">{props.children}</Typography>
           </Grid>
         </Grid>
       </Container>
