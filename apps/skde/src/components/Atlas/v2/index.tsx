@@ -6,6 +6,8 @@ import { AtlasData } from "../../../types";
 import { TableOfContents } from "../../TableOfContents";
 import { DataContext } from "../../Context";
 import { Ingress } from "../../Ingress";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { skdeTheme } from "qmongjs";
 
 export interface AtlasPageProps {
   content: string;
@@ -52,31 +54,34 @@ const AtlasPage = ({ content, atlasData }: AtlasPageProps) => {
         ? "Dette atlaset er kun et utkast og er ikke publisert! Resultatene og analysene kan være mangelfulle."
         : "This is a draft!";
   return (
-    <DataContext.Provider value={{ atlasData }}>
-      <AtlasLayout lang={obj.lang === "en" ? "en" : "no"}>
-        <main data-testid="v2atlas">
-          <TopBanner
-            mainTitle={obj.shortTitle ?? "Tittel mangler"}
-            lang={obj.lang ?? "nb"}
-          />
-          <div className={`${styles.atlasContent}`}>
-            <TableOfContents tocData={tocData} />
-            <div className={styles.main_content}>
-              {!obj.publisert && (
-                <b style={{ color: "red" }}>{unpublished_warning}</b>
-              )}
-              <h1>{obj.mainTitle}</h1>
-              <Ingress>{obj.ingress ?? "Ingress mangler"}</Ingress>
-              {obj.kapittel ? (
-                <Chapters innhold={obj.kapittel} lang={obj.lang} />
-              ) : (
-                <div> Innhold mangler </div>
-              )}
+    <ThemeProvider theme={skdeTheme}>
+      <CssBaseline />
+      <DataContext.Provider value={{ atlasData }}>
+        <AtlasLayout lang={obj.lang === "en" ? "en" : "no"}>
+          <main data-testid="v2atlas">
+            <TopBanner
+              mainTitle={obj.shortTitle ?? "Tittel mangler"}
+              lang={obj.lang ?? "nb"}
+            />
+            <div className={`${styles.atlasContent}`}>
+              <TableOfContents tocData={tocData} />
+              <div className={styles.main_content}>
+                {!obj.publisert && (
+                  <b style={{ color: "red" }}>{unpublished_warning}</b>
+                )}
+                <h1>{obj.mainTitle}</h1>
+                <Ingress>{obj.ingress ?? "Ingress mangler"}</Ingress>
+                {obj.kapittel ? (
+                  <Chapters innhold={obj.kapittel} lang={obj.lang} />
+                ) : (
+                  <div> Innhold mangler </div>
+                )}
+              </div>
             </div>
-          </div>
-        </main>
-      </AtlasLayout>
-    </DataContext.Provider>
+          </main>
+        </AtlasLayout>
+      </DataContext.Provider>
+    </ThemeProvider>
   );
 };
 

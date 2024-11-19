@@ -17,11 +17,6 @@ export const CarouselButtons = ({
   onClick,
   activeCarousel,
 }: CarouselButtonsProps) => {
-  const clickHandler = (index) => {
-    if (onClick) {
-      onClick(index);
-    }
-  };
   return (
     <ul className={styles.buttonscontainer}>
       {options.map((optn, i) => {
@@ -32,7 +27,7 @@ export const CarouselButtons = ({
               className={`${styles.bullet} ${
                 i === activeCarousel ? styles.active : ""
               }`}
-              onClick={() => clickHandler(i)}
+              onClick={() => onClick && onClick(i)}
               data-testid={"carouselbutton_" + i}
             >
               {optn.icon}
