@@ -78,9 +78,9 @@ export const Linechart = <Data, X extends string & keyof Data>({
     <Box style={{ width: "auto", margin: "auto" }}>
       <Box
         sx={{
-          backgroundImage: `url(${lang !== "nn" ? "/helseatlas/img/logos/helse-forde-graa.svg" : "/img/logos/logo-skde-graa.svg"})`,
+          backgroundImage: `url(${lang === "nn" ? "/helseatlas/img/logos/helse-forde-graa.svg" : "/img/logos/logo-skde-graa.svg"})`,
           backgroundRepeat: "no-repeat",
-          backgroundSize: lang !== "nn" ? "max(5rem, 20%)" : "max(3rem, 10%)",
+          backgroundSize: lang === "nn" ? "max(5rem, 20%)" : "max(3rem, 10%)",
           backgroundPosition: "top 2.25rem right 5%",
         }}
       >
