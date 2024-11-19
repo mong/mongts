@@ -65,9 +65,9 @@
       "innhold": [
         {
           "utvalg": "Alle opphold  som har hoved diagnose  og eller Akse1 som startar på ein av desse kodane : 'F32%' , 'F33%', 'F920%'",
-          "data": "depresjon_pas.json",
+          "data": "depresjon_pas_polnew.json",
           "publisert": "2024-12-31T00:06:00.000Z",
-          "resultat": "Det var ikkje stor variasjon i perioden\n\nstor",
+          "resultat": "Det var ikkje stor variasjon i perioden",
           "overskrift": "Pasientar med depresjon i poliklinikk behandling",
           "ingress": "Depresjon blant unge",
           "kart": "kronikere.geojson",
@@ -84,6 +84,22 @@
           "kart": "kronikere.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-19T00:10:00.000Z"
+        }
+      ]
+    },
+    {
+      "overskrift": "Poliklinikk behandling",
+      "innhold": [
+        {
+          "utvalg": "Sektor 1,2,3,7.",
+          "data": "pasient_poly.json",
+          "publisert": "2024-12-31T13:06:00.000Z",
+          "resultat": "variasjon i pasient rate ikke stor.",
+          "overskrift": "Barn og unge i poliklinikk behandling",
+          "ingress": "Paientrate",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-19T13:06:00.000Z"
         }
       ]
     }
