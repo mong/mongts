@@ -2,13 +2,19 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
+import { skdeTheme } from "qmongjs";
 
 import Page, { PageContentProps } from "../../../src/components/Static";
+import { ThemeProvider } from "@mui/material";
 
 const CONTENT_DIR = join(process.cwd(), "_posts/helseatlas/statisk");
 
 const Content = ({ content, frontMatter }: PageContentProps) => {
-  return <Page content={content} frontMatter={frontMatter} />;
+  return (
+    <ThemeProvider theme={skdeTheme}>
+      <Page content={content} frontMatter={frontMatter} />
+    </ThemeProvider>
+  );
 };
 
 export default Content;
