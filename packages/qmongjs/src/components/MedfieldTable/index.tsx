@@ -8,12 +8,16 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Collapse,
 } from "@mui/material";
 import { styled } from "@mui/system";
 import { ExpandCircleDownOutlined } from "@mui/icons-material";
 import { UseQueryResult } from "@tanstack/react-query";
 import { ArrowLink, useIndicatorQuery, level, newLevelSymbols } from "qmongjs";
 import { Indicator } from "types";
+
+const colWidth1 = "5%";
+const colWidt2 = "20%";
 
 const ExpandCircleUpOutlined = styled(ExpandCircleDownOutlined)({
   transform: "rotate(180deg)",
@@ -177,59 +181,81 @@ const Row = (props: {
         onClick={onClick}
         style={{ cursor: "pointer" }}
       >
-        <TableCell>
+        <TableCell sx={{ border: 0 }}>
           <IconButton size="small">
             {open ? <ExpandCircleUpOutlined /> : <ExpandCircleDownOutlined />}
           </IconButton>
         </TableCell>
-        <TableCell>
+        <TableCell sx={{ border: 0 }}>
           <Typography variant="body1">{name}</Typography>
         </TableCell>
-        <TableCell>{createSymbols(green, yellow, red, true)}</TableCell>
-      </TableRow>
-      <TableRow
-        key={row.name + "-collapse"}
-        sx={{ visibility: open ? "visible" : "collapse" }}
-      >
-        <TableCell />
-        <TableCell>
-          <Typography variant="overline">Register</Typography>
-        </TableCell>
-        <TableCell>
-          <Typography variant="overline">Resultat</Typography>
+        <TableCell sx={{ border: 0 }}>
+          {createSymbols(green, yellow, red, true)}
         </TableCell>
       </TableRow>
-
-      {registers.map((registerRow) => (
-        <TableRow
-          key={registerRow.name}
-          sx={{ visibility: open ? "visible" : "collapse" }}
+      <TableRow key={row.name + "-collapse"}>
+        <TableCell
+          sx={{
+            paddingBottom: 0,
+            paddingTop: 0,
+            paddingLeft: 0,
+            paddingRight: 0,
+          }}
+          colSpan={3}
         >
-          <TableCell />
-          <TableCell>
-            <ArrowLink
-              href={
-                "/behandlingskvalitet/" +
-                registerRow.name +
-                "/?selected_treatment_units=" +
-                unitNames.join("_")
-              }
-              text={registerRow.short_name}
-              externalLink={true}
-              button={true}
-              textVariant="overline"
-            ></ArrowLink>
-          </TableCell>
-          <TableCell>
-            {createSymbols(
-              registerRow.green,
-              registerRow.yellow,
-              registerRow.red,
-              false,
-            )}
-          </TableCell>
-        </TableRow>
-      ))}
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <Table>
+              <TableBody>
+                <TableRow>
+                  <TableCell width={colWidth1} sx={{ marginBottom: 0 }} />
+                  <TableCell width={colWidt2}>
+                    <Typography variant="overline">Register</Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="overline">Resultat</Typography>
+                  </TableCell>
+                </TableRow>
+
+                {registers.map((registerRow) => (
+                  <TableRow
+                    key={registerRow.name}
+                    sx={{
+                      paddingBottom: 0,
+                      paddingTop: 0,
+                      paddingLeft: 0,
+                      paddingRight: 0,
+                    }}
+                  >
+                    <TableCell />
+                    <TableCell>
+                      <ArrowLink
+                        href={
+                          "/behandlingskvalitet/" +
+                          registerRow.name +
+                          "/?selected_treatment_units=" +
+                          unitNames.join("_")
+                        }
+                        text={registerRow.short_name}
+                        externalLink={true}
+                        button={true}
+                        textVariant="overline"
+                      ></ArrowLink>
+                    </TableCell>
+                    <TableCell>
+                      {createSymbols(
+                        registerRow.green,
+                        registerRow.yellow,
+                        registerRow.red,
+                        false,
+                      )}
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Collapse>
+        </TableCell>
+      </TableRow>
     </React.Fragment>
   );
 };
@@ -255,8 +281,8 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
       <Table>
         <TableHead>
           <TableRow>
-            <TableCell />
-            <TableCell>
+            <TableCell width={colWidth1} />
+            <TableCell width={colWidt2}>
               <Typography variant="subtitle1">
                 <b>Fagområde</b>
               </Typography>
