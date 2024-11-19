@@ -19,7 +19,7 @@ export const distinctUnitNamesRegister = (
     .whereNot("unit_name", "LIKE", "Udefinerte%")
     .where("context", filter.context ?? "")
     .modify(withFilter, filter);
-  };
+};
 
 function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
   if (filter?.register && filter?.register !== "all") {
