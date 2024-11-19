@@ -3,7 +3,7 @@ import { imgLoader } from "qmongjs";
 import Link from "next/link";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid2";
-import { Stack, Container } from "@mui/material";
+import { Stack, Container, Box } from "@mui/material";
 import { ArrowLink } from "qmongjs/src/components/ArrowLink";
 import { Breakpoint } from "@mui/material/styles";
 
@@ -28,13 +28,13 @@ type FooterProps = {
  * @param maxWidth - The maximum width of the footer.
  * @param className - The class name of the footer.
  */
-export const Footer = ({ page, maxWidth, className }: FooterProps) => {
+export const Footer = ({
+  page,
+  maxWidth = false,
+  className = "footer",
+}: FooterProps) => {
   const kvalitet = ["behandlingskvalitet", "sykehusprofil"].includes(page);
   const helseatlas = page === "helseatlas";
-
-  if (!maxWidth) {
-    maxWidth = false;
-  }
 
   // Logo components
   const skdeLogo = (
@@ -91,11 +91,18 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
 
   // Logo grids
   const atlasLogoGrid = (
-    <>
-      <Grid size={{ xs: 4, md: 3, lg: 4 }}>{skdeLogo}</Grid>
-      <Grid size={{ xs: 8, md: 5, lg: 4 }}>{helseFordeLogo}</Grid>
-      <Grid size={{ xs: 12, md: 4, lg: 4 }}>{helseVestLogo}</Grid>
-    </>
+    <Grid
+      size={12}
+      gap={1}
+      container
+      display="flex"
+      justifyContent="space-between"
+      alignItems="center"
+    >
+      <Grid>{skdeLogo}</Grid>
+      <Grid>{helseFordeLogo}</Grid>
+      <Grid>{helseVestLogo}</Grid>
+    </Grid>
   );
 
   const kvalitetLogoGrid = (
@@ -107,15 +114,12 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
 
   return (
     <Grid container style={{ color: "white", marginTop: 20 }}>
-      <div style={{ backgroundColor: "#333", width: "100%" }}>
+      <Box
+        style={{ backgroundColor: "#333", width: "100%" }}
+        className={className}
+      >
         <Container maxWidth={maxWidth} disableGutters={true}>
-          <Grid
-            size={{ xs: 12 }}
-            container
-            className={className ? className : "footer"}
-            paddingTop={2}
-            paddingBottom={4}
-          >
+          <Grid size={{ xs: 12 }} container paddingTop={2} paddingBottom={4}>
             <Grid size={{ xs: 12, sm: 6 }} marginBottom={2} marginTop={2}>
               <Stack spacing={3}>
                 <h4>OM NETTSTEDET</h4>
@@ -152,17 +156,18 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
             </Grid>
           </Grid>
         </Container>
-      </div>
+      </Box>
 
-      <div style={{ backgroundColor: "#1A1A1A", width: "100%" }}>
+      <Box
+        style={{ backgroundColor: "#1A1A1A", width: "100%" }}
+        className={className}
+      >
         <Container maxWidth={maxWidth} disableGutters={true}>
           <Grid
             size={{ xs: 12 }}
             container
-            className={className ? className : "footer"}
             style={{ background: "#1A1A1A" }}
             paddingBottom={10}
-            sx={{ overflow: "clip" }}
             rowGap={4}
           >
             <Grid container size={{ xs: 12 }} alignItems="center">
@@ -234,7 +239,7 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
             </Grid>
           </Grid>
         </Container>
-      </div>
+      </Box>
     </Grid>
   );
 };

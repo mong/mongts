@@ -105,19 +105,18 @@
   text-decoration: none !important;
 }
 
-@media screen and (min-width: 60rem) {
+@media screen and (min-width: 1408px) {
   .linkOuterWrapper {
     flex-basis: 25rem;
   }
-
+}
+@media screen and (min-width: 1080px) {
   .linkTitle {
     font-size: 2.25rem;
   }
 
   .linkOuterWrapper.wide {
     max-width: 100%;
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
     background: #e6eef8;
     flex: 1 1 100%;
   }

@@ -6,7 +6,7 @@ import { Breakpoint } from "@mui/material";
 type HeaderProps = PropsWithChildren<{
   title: string;
   breadcrumbs: BreadCrumbPath;
-  children?: React.ReactNode;
+  menu?: React.ReactNode;
   bgcolor?: string;
   maxWidth?: false | Breakpoint;
 }>;
@@ -27,7 +27,11 @@ type HeaderProps = PropsWithChildren<{
 export const Header = (props: HeaderProps) => {
   return (
     <>
-      <HeaderTop breadcrumbs={props.breadcrumbs} maxWidth={props.maxWidth} />
+      <HeaderTop
+        breadcrumbs={props.breadcrumbs}
+        maxWidth={props.maxWidth}
+        menu={props.menu}
+      />
       <HeaderMiddle
         bgcolor={props.bgcolor}
         title={props.title}
