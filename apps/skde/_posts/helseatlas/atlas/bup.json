@@ -65,9 +65,9 @@
       "innhold": [
         {
           "utvalg": "Alle opphold  som har hoved diagnose  og eller Akse1 som startar på ein av desse kodane : 'F32%' , 'F33%', 'F920%'",
-          "data": "depresjon_pas_polnew.json",
+          "data": "depresjon_pas1.json",
           "publisert": "2024-12-31T00:06:00.000Z",
-          "resultat": "Det var ikkje stor variasjon i perioden",
+          "resultat": "Det var ikkje stor variasjon i perioden\n\nstor",
           "overskrift": "Pasientar med depresjon i poliklinikk behandling",
           "ingress": "Depresjon blant unge",
           "kart": "kronikere.geojson",
@@ -84,22 +84,11 @@
           "kart": "kronikere.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-19T00:10:00.000Z"
-        }
-      ]
-    },
-    {
-      "overskrift": "Poliklinikk behandling",
-      "innhold": [
+        },
         {
-          "utvalg": "Sektor 1,2,3,7.",
-          "data": "pasient_polyklinikk.json",
-          "publisert": "2024-12-31T13:06:00.000Z",
-          "resultat": "variasjon i pasient rate ikke stor.",
-          "overskrift": "Barn og unge i poliklinikk behandling",
-          "ingress": "Paientrate",
-          "kart": "kronikere.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2024-11-19T13:06:00.000Z"
+          "type": "faktaboks",
+          "overskrift": "Kjønns- og alders  fordeling av pasientar med depresjon",
+          "tekst": "Meir enn 70% av unge med depresjon er jenter.\n\n![Det var mest jenter som var registerert med depresjon i perioden](/helseatlas/img/no/bup/depresjon_kjonn_alder.png \"Kjønn og alders fordeling av pasientar med depresjon\")"
         }
       ]
     }
