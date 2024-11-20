@@ -48,22 +48,20 @@ const FrontPage = ({ atlasInfo, lang }: HomeProps) => {
     lang
   ];
 
-  const breadcrumbs: BreadCrumbPath = {
-    path: [
-      {
-        link: "https://www.skde.no",
-        text: { no: "Forside", en: "Homepage" }[lang],
-      },
-      {
-        link: "https://www.skde.no/helseatlas/",
-        text: { no: "Helseatlas", en: "Health Atlas" }[lang],
-      },
-      {
-        link: "/helseatlas/",
-        text: title,
-      },
-    ],
-  };
+  const breadcrumbs: BreadCrumbPath = [
+    {
+      link: "https://www.skde.no",
+      text: { no: "Forside", en: "Homepage" }[lang],
+    },
+    {
+      link: "https://www.skde.no/helseatlas/",
+      text: { no: "Helseatlas", en: "Health Atlas" }[lang],
+    },
+    {
+      link: "/helseatlas/",
+      text: title,
+    },
+  ];
 
   return (
     <ThemeProvider theme={skdeTheme}>
