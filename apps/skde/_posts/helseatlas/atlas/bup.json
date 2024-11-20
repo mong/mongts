@@ -7,6 +7,22 @@
   "ingress": "Helseatlas bup",
   "kapittel": [
     {
+      "overskrift": "Oppdatering: Poliklinikk behandling",
+      "innhold": [
+        {
+          "utvalg": "Barn og unge mellom 0 og 17 år som i 2014--2018 hadde minst ein poliklinisk kontakt i psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern, er inkludert.\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Direkte og indirekte kontakt er slå sammen.\n\nPasienter var valgt med hoved- eller bitilstand F, R og Z-kode i sektor 1,2,3, og 7.\n\nRatane er justerte for alder og kjønn.",
+          "data": "pasient_polyklinikk.json",
+          "publisert": "2024-12-31T15:55:00.000Z",
+          "resultat": "Ikke stor variasjon",
+          "overskrift": "pasienter i poliklinisk behandling",
+          "ingress": "poliklinikk pasient rate",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-20T08:32:00.000Z"
+        }
+      ]
+    },
+    {
       "overskrift": "poliklinikk behandling for pasienter med autisme diagnoser",
       "innhold": [
         {
@@ -89,22 +105,6 @@
           "type": "faktaboks",
           "overskrift": "Kjønns- og alders  fordeling av pasientar med depresjon",
           "tekst": "Meir enn 70% av unge med depresjon er jenter.\n\n![Det var mest jenter som var registerert med depresjon i perioden](/helseatlas/img/no/bup/depresjon_kjonn_alder.png \"Kjønn og alders fordeling av pasientar med depresjon\")"
-        }
-      ]
-    },
-    {
-      "overskrift": "Oppdatering: Poliklinikk behandling",
-      "innhold": [
-        {
-          "utvalg": "sektor 1,2,3,7",
-          "data": "ny_pasient_polyklinikk.json",
-          "publisert": "2024-12-31T15:55:00.000Z",
-          "resultat": "Ikke stor variasjon",
-          "overskrift": "pasienter i poliklinisk behandling",
-          "ingress": "poliklinikk pasient rate",
-          "kart": "kronikere.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2024-11-20T08:32:00.000Z"
         }
       ]
     }
