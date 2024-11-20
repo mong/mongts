@@ -6,12 +6,11 @@ import { describe, it, expect } from "vitest";
 
 describe("HeaderTop component", () => {
   it("renders with breadcrumbs", () => {
-    const breadcrumbs: BreadCrumbPath = {
-      path: [
-        { text: "Home", link: "/" },
-        { text: "About", link: "/about" },
-      ],
-    };
+    const breadcrumbs: BreadCrumbPath = [
+      { text: "Home", link: "/" },
+      { text: "About", link: "/about" },
+    ];
+
     const { container } = render(<HeaderTop breadcrumbs={breadcrumbs} />);
     expect(container).toMatchSnapshot();
   });
@@ -21,7 +20,7 @@ describe("HeaderTop component", () => {
     const { container } = render(
       <HeaderTop
         maxWidth={maxWidth}
-        breadcrumbs={{ path: [{ text: "Home", link: "/" }] }}
+        breadcrumbs={[{ text: "Home", link: "/" }]}
       />,
     );
     expect(container).toMatchSnapshot();

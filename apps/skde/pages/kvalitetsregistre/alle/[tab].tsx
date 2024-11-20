@@ -6,22 +6,20 @@ import { Header, BreadCrumbPath } from "../../../src/components/Header";
 
 const MainRegisterPage = () => {
   // Header settings
-  const breadcrumbs: BreadCrumbPath = {
-    path: [
-      {
-        link: "https://www.skde.no",
-        text: "Forside",
-      },
-      {
-        link: "https://www.skde.no/resultater/",
-        text: "Tall om helsetjenesten",
-      },
-      {
-        link: `/kvalitetsregistre/`,
-        text: `Kvalitetsregistre/`,
-      },
-    ],
-  };
+  const breadcrumbs: BreadCrumbPath = [
+    {
+      link: "https://www.skde.no",
+      text: "Forside",
+    },
+    {
+      link: "https://www.skde.no/resultater/",
+      text: "Tall om helsetjenesten",
+    },
+    {
+      link: `/kvalitetsregistre/`,
+      text: `Kvalitetsregistre/`,
+    },
+  ];
 
   return (
     <ThemeProvider theme={skdeTheme}>
