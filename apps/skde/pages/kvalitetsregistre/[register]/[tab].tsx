@@ -15,22 +15,20 @@ const SelectedRegisterPage = ({ register }: { register: string }) => {
   }
 
   // Header settings
-  const breadcrumbs: BreadCrumbPath = {
-    path: [
-      {
-        link: "https://www.skde.no",
-        text: "Forside",
-      },
-      {
-        link: "https://www.skde.no/resultater/",
-        text: "Tall om helsetjenesten",
-      },
-      {
-        link: `/kvalitetsregistre/${register}`,
-        text: `Kvalitetsregistre/${register}`,
-      },
-    ],
-  };
+  const breadcrumbs: BreadCrumbPath = [
+    {
+      link: "https://www.skde.no",
+      text: "Forside",
+    },
+    {
+      link: "https://www.skde.no/resultater/",
+      text: "Tall om helsetjenesten",
+    },
+    {
+      link: `/kvalitetsregistre/${register}`,
+      text: `Kvalitetsregistre/${register}`,
+    },
+  ];
 
   return (
     <ThemeProvider theme={skdeTheme}>

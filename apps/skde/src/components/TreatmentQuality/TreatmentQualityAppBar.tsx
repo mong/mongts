@@ -19,19 +19,17 @@ const TreatmentQualityAppBar = ({
   extraBreadcrumbs,
   children,
 }: AppBarProps) => {
-  const breadcrumbs: BreadCrumbPath = {
-    path: [
-      { link: "https://www.skde.no", text: "Forside" },
-      {
-        link: "https://www.skde.no/resultater/",
-        text: "Tall om helsetjenesten",
-      },
-      { link: "/behandlingskvalitet/", text: "Behandlingskvalitet" },
-    ],
-  };
+  let breadcrumbs: BreadCrumbPath = [
+    { link: "https://www.skde.no", text: "Forside" },
+    {
+      link: "https://www.skde.no/resultater/",
+      text: "Tall om helsetjenesten",
+    },
+    { link: "/behandlingskvalitet/", text: "Behandlingskvalitet" },
+  ];
 
   if (extraBreadcrumbs) {
-    breadcrumbs.path = [...breadcrumbs.path, ...extraBreadcrumbs];
+    breadcrumbs = [...breadcrumbs, ...extraBreadcrumbs];
   }
 
   return (
