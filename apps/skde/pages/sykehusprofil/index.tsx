@@ -61,22 +61,20 @@ export const Skde = (): JSX.Element => {
   const pastYears = 5;
 
   // Header settings
-  const breadcrumbs: BreadCrumbPath = {
-    path: [
-      {
-        link: "https://www.skde.no",
-        text: "Forside",
-      },
-      {
-        link: "https://www.skde.no/resultater/",
-        text: "Tall om helsetjenesten",
-      },
-      {
-        link: "/sykehusprofil/",
-        text: "Sykehusprofil",
-      },
-    ],
-  };
+  const breadcrumbs: BreadCrumbPath = [
+    {
+      link: "https://www.skde.no",
+      text: "Forside",
+    },
+    {
+      link: "https://www.skde.no/resultater/",
+      text: "Tall om helsetjenesten",
+    },
+    {
+      link: "/sykehusprofil/",
+      text: "Sykehusprofil",
+    },
+  ];
 
   // ####### //
   // Queries //
