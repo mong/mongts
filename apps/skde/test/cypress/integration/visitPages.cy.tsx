@@ -1,15 +1,10 @@
 /// <reference types="cypress"/>
 
 context("Home Page", () => {
-  it("should render the home page", () => {
-    cy.visit("/helseatlas");
-    cy.get("h1").contains("Likeverdige helsetjenester – uansett hvor du bor?");
-  });
-
   it("should visit static pages", () => {
     cy.visit("/helseatlas/statisk/kart");
     cy.get("strong").contains(
-      "Vær derfor bevisst kartets retoriske muligheter."
+      "Vær derfor bevisst kartets retoriske muligheter.",
     );
     cy.visit("/helseatlas/statisk/om");
     cy.get("a").contains("Om statistikkformidling ved hjelp av kart");

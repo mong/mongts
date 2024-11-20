@@ -1,24 +1,89 @@
 {
-  "frontpagetext": ".",
+  "frontpagetext": "psykisk helsevern til barn er en viktig satsing område",
   "filename": "bup",
   "publisert": false,
-  "lang": "nb",
-  "date": "2015-05-29T12:00:00.000Z",
+  "lang": "nn",
+  "date": "2024-12-31T12:00:00.000Z",
   "ingress": "Helseatlas bup",
   "kapittel": [
     {
-      "overskrift": "Poliklinikk behandling for autisme diagnoser",
+      "overskrift": "poliklinikk behandling for pasienter med autisme diagnoser",
       "innhold": [
         {
-          "utvalg": "F84, alle sektorar, en kontakt per pasient på same dag",
-          "data": "autismekontakttest.json",
-          "publisert": "2024-12-31T14:33:00.000Z",
-          "resultat": "stor variasjon",
-          "overskrift": "Poliklinikk kontaktrate",
-          "ingress": "organisert ulikt",
+          "utvalg": "ICD-10 kode F84",
+          "data": "autisme_pasientratenew.json",
+          "publisert": "2024-12-31T15:26:00.000Z",
+          "resultat": "pasienter med autisme diagnoser i poliklinikk behandling",
+          "overskrift": "Pasientar med autisme diagnoser",
+          "ingress": "behandling for unge med autisme organisert under ulike sektorar.",
           "kart": "kronikere.geojson",
           "type": "resultatboks",
-          "oppdatert": "2024-11-18T14:33:00.000Z"
+          "oppdatert": "2024-11-18T15:26:00.000Z"
+        },
+        {
+          "utvalg": "ICD-10 F84,\n\nen kontakt per pasient",
+          "data": "autismekontakt_rate.json",
+          "publisert": "2024-12-31T20:50:00.000Z",
+          "resultat": "det er ulikt organisering for autisme behandling",
+          "overskrift": "poliklinikk kontaktarrate for autisme diagnoser",
+          "ingress": "poliklinikk kontaktar",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-18T20:50:00.000Z"
+        }
+      ]
+    },
+    {
+      "overskrift": "poliklinikk behandling for pasienter med angst",
+      "innhold": [
+        {
+          "utvalg": "ICD-10 koder",
+          "data": "angst_pas_pol.json",
+          "publisert": "2024-12-31T21:46:00.000Z",
+          "resultat": "stor variasjon i pasient rate",
+          "overskrift": "Pasientar med angst i poliklinikk behandling",
+          "ingress": "pasientrate",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-18T21:46:00.000Z"
+        },
+        {
+          "utvalg": "Alle opphold  som har hoved diagnose  og eller Akse1 som startar på ein av desse kodane F40, F41, F92.8, F93.0, F93.1, F93.2\n\n\n\nfor pasientar som hadde fleire kontaktar i samme dag, inkluderte vi kun en kontakt.",
+          "data": "angst_pol_kontakt1.json",
+          "publisert": "2024-12-31T22:02:00.000Z",
+          "resultat": "i perioden 2019-2023 var det stor variasjon i poliklinikk kontaktrate for angst",
+          "overskrift": "Poliklinikk kontaktar",
+          "ingress": "kontaktrate for angst",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-18T22:03:00.000Z"
+        }
+      ]
+    },
+    {
+      "overskrift": "poliklinikk behandling for pasienter med depresjon",
+      "innhold": [
+        {
+          "utvalg": "Alle opphold  som har hoved diagnose  og eller Akse1 som startar på ein av desse kodane : 'F32%' , 'F33%', 'F920%'",
+          "data": "depresjon_pas_pol1.json",
+          "publisert": "2024-12-31T00:06:00.000Z",
+          "resultat": "Det var ikkje stor variasjon i perioden",
+          "overskrift": "Pasientar med depresjon i poliklinikk behandling",
+          "ingress": "Depresjon blant unge",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-19T00:06:00.000Z"
+        },
+        {
+          "utvalg": "Alle opphold  som har hoved diagnose  og eller Akse1 som startar på ein av desse kodane : 'F32%' , 'F33%', 'F920%'",
+          "data": "depr_pol_kontaktrate.json",
+          "publisert": "2024-12-31T00:10:00.000Z",
+          "resultat": "i perioden poliklinikk kontaktrate  for perioden 2019-2023",
+          "overskrift": "Kontaktrate for pasientar med depresjon",
+          "ingress": "kontaktrate for depresjon",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-19T00:10:00.000Z"
         }
       ]
     }

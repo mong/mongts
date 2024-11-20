@@ -95,6 +95,7 @@ const SkdeBreadcrumbs = ({ path }: { path: BreadCrumbPath }) => {
 type HeaderTopProps = {
   breadcrumbs: BreadCrumbPath;
   maxWidth?: false | Breakpoint;
+  menu?: React.ReactNode;
 };
 
 /**
@@ -115,10 +116,16 @@ export const HeaderTop = (props: HeaderTopProps) => {
     <StyledToolbar className="header-top">
       <Container maxWidth={maxWidth ? maxWidth : false} disableGutters={true}>
         <Grid container spacing={2}>
-          <Grid size={{ xs: 12 }}>
+          <Grid
+            size={{ xs: 12 }}
+            display="flex"
+            justifyContent="space-between"
+            alignItems="center"
+          >
             <Link href={"https://www.skde.no/"}>
               <LogoImage src="/img/logos/logo-skde.svg" alt="SKDE logo" />
             </Link>
+            {props.menu}
           </Grid>
           <Grid size={{ xs: 12 }}>
             <SkdeBreadcrumbs path={breadcrumbs} />
