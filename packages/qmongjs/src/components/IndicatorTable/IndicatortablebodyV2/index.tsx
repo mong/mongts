@@ -142,13 +142,23 @@ const IndicatorRow = (props: {
     </TableRow>
   );
 
-  let levelSign = "";
+  let levelSignHigh = "";
 
   if (indData.levelGreen != null) {
     if (indData.levelDirection === 1 && indData.levelGreen < 1) {
-      levelSign = "≥";
+      levelSignHigh = "≥";
     } else if (indData.levelDirection === 0 && indData.levelGreen > 0) {
-      levelSign = "≤";
+      levelSignHigh = "≤";
+    }
+  }
+
+  let levelSignLow = "";
+
+  if (indData.levelYellow != null) {
+    if (indData.levelDirection === 1 && indData.levelYellow > 0) {
+      levelSignLow = "<";
+    } else if (indData.levelDirection === 0 && indData.levelYellow < 1) {
+      levelSignLow = ">";
     }
   }
 
@@ -280,28 +290,40 @@ const IndicatorRow = (props: {
         >
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Typography variant="body2" sx={{ margin: "2rem" }}>
-              {indData.shortDescription}
-              <br />
-              {"Ønsket målnivå: "}
-              {indData.levelGreen === null ? (
-                <b>{"Ikke oppgitt"}</b>
-              ) : (
-                <b>{levelSign + customFormat(",.0%")(indData.levelGreen)}</b>
-              )}
-              <br />
-              <br />
-              {"Siste levering av data: " +
-                (indData.data[0].deliveryTime === null
-                  ? "Ikke oppgitt"
-                  : new Date(indData.data[0].deliveryTime).toLocaleString(
-                      "no-NO",
-                      {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                        timeZone: "CET",
-                      },
-                    ))}
+              <p>{indData.shortDescription}</p>
+              <p>
+                {"Ønsket målnivå: "}
+                {indData.levelGreen === null ? (
+                  <b>{"Ikke oppgitt"}</b>
+                ) : (
+                  <b>
+                    {levelSignHigh + customFormat(",.0%")(indData.levelGreen)}
+                  </b>
+                )}
+                <br />
+                {"Lavt målnivå: "}
+                {indData.levelYellow === null ? (
+                  <b>{"Ikke oppgitt"}</b>
+                ) : (
+                  <b>
+                    {levelSignLow + customFormat(",.0%")(indData.levelYellow)}
+                  </b>
+                )}
+              </p>
+              <p>
+                {"Siste levering av data: " +
+                  (indData.data[0].deliveryTime === null
+                    ? "Ikke oppgitt"
+                    : new Date(indData.data[0].deliveryTime).toLocaleString(
+                        "no-NO",
+                        {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                          timeZone: "CET",
+                        },
+                      ))}
+              </p>
             </Typography>
 
             <div style={{ display: "flex", justifyContent: "center" }}>
