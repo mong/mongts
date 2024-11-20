@@ -8,7 +8,7 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Tal barn og unge pasientar i poliklinikk pr. 1 000 (under 18 år)",
+        "nn": "Tal barn og unge pasientar i poliklinikk pr. 1 000 (under 18 år)",
         "en": "Number of child and adolescents for mentalhealthcare in outpatient pr. 1,000 inhabitants (under 18 years old)"
       },
       "yLabel": {
@@ -27,7 +27,7 @@
       "x": ["Snitt_rate"],
       "y": "bohf",
       "xLabel": {
-        "nb": "Tal barn og unge pasientar i poliklinikk pr. 1 000 (under 18 år)",
+        "nn": "Tal barn og unge pasientar i poliklinikk pr. 1 000 (under 18 år)",
         "en": "Number of child and adolescents for mentalhealthcare in outpatient pr. 1,000 inhabitants (under 18 years old)"
       },
       "yLabel": {
@@ -42,7 +42,7 @@
         "Rate.2023"
       ],
       "annualVarLabels": {
-        "nb": [ "2019", "2020", "2021", "2022", "2023"],
+        "nn": [ "2019", "2020", "2021", "2022", "2023"],
         "en": [ "2019", "2020", "2021", "2022", "2023"]
       }
     },
@@ -51,7 +51,7 @@
     "type": "table",
     "data": "qwerty",
     "caption": {
-      "nb": "Årlige gjennomsnittsverdier for perioden 2019–2023, Pasientrate pr. 1 000 innbyggarar i alderen under 18 år",
+      "nn": "Årlige gjennomsnittsverdier for perioden 2019–2023, Pasientrate pr. 1 000 innbyggarar i alderen under 18 år",
       "en": "Average annual values for the period 2019–2023, patient rate pr. 1 000 population under 18 years of age"
     },
     "columns": [
@@ -77,7 +77,7 @@
         "format": ",.0f"
       },
       {
-        "id":  "Folktal",
+        "id":  "Innbyggarar",
         "label_no": "Innbygarrar (under 18 år)",
         "label_en": "Averege population (under 18)",
         "typeVar": "number",
@@ -90,7 +90,7 @@
     "data": "qwerty",
     "x": "Snitt_rate",
     "caption": {
-      "nb": "Tal barn og unge pasientar i poliklinikk pr. 1 000 (under 18 år)",
+      "nn": "Tal barn og unge pasientar i poliklinikk pr. 1 000 (under 18 år)",
       "en": "Number of child and adolescents for mentalhealthcare in outpatient pr. 1,000 inhabitants (under 18 years old)"
     },
     "jenks": [
@@ -112,7 +112,6 @@
     "description": "Hoveddatasettet for gitt resultatboks",
     "national": "Noreg",
     "data":
-
 [
   {
     "bohf": "Vestre Viken",
