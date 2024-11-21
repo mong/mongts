@@ -52,6 +52,7 @@ import {
   updateColourMap,
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
+import checkParamsReady from "./utils/checkParamsReady";
 
 export default function TreatmentQualityPage() {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
@@ -64,19 +65,19 @@ export default function TreatmentQualityPage() {
   const searchParams = useSearchParams();
   const displayV2Table = searchParams.get("newtable") === "true";
 
+  const defaultTreatmentUnits = ["Nasjonalt"];
+
   // Used by indicator table
   const [selectedYear, setSelectedYear] = useState(defaultYear);
   const [selectedTableContext, setSelectedTableContext] =
     useState(defaultTableContext);
-  const [selectedLevel, setSelectedLevel] = useState<string | undefined>(
-    undefined,
-  );
+  const [selectedLevel, setSelectedLevel] = useState<string | undefined>();
   const [selectedMedicalFields, setSelectedMedicalFields] = useState<string[]>(
     [],
   );
-  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState([
-    "Nasjonalt",
-  ]);
+  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState(
+    defaultTreatmentUnits,
+  );
   const [dataQualitySelected, setDataQualitySelected] =
     useState<boolean>(false);
 
@@ -106,6 +107,16 @@ export default function TreatmentQualityPage() {
     unitNamesQuery.isFetched &&
     registryNameQuery.isFetched &&
     medicalFieldsQuery.isFetched;
+
+  const paramsReady = checkParamsReady({
+    treatmentUnits: selectedTreatmentUnits,
+    treatmentUnitsKey: treatmentUnitsKey,
+    defaultTreatmentUnits: defaultTreatmentUnits,
+    year: selectedYear,
+    yearKey: yearKey,
+    defaultYear: defaultYear,
+    medicalFields: selectedMedicalFields,
+  });
 
   const registers = registryNameQuery?.data;
   const medicalFields = medicalFieldsQuery?.data;
@@ -303,7 +314,7 @@ export default function TreatmentQualityPage() {
           <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
-                {queriesReady ? (
+                {queriesReady && paramsReady ? (
                   displayV2Table ? (
                     <IndicatorTableBodyV2
                       key={"indicator-table2"}
