@@ -65,15 +65,16 @@ export const Footer = ({
 
   const nsmLogo = (
     <Link href={"https://www.kvalitetsregistre.no/"}>
-      <Image
-        className="footer-logo"
-        id="nsm-footer-logo"
-        loader={imgLoader}
-        src={"/img/logos/nsm-hvit.svg"}
-        alt="NSM-logo"
-        width={467}
-        height={52}
-      />
+      <Box sx={{ width: "min(467px, 85vw)", height: 52, position: "relative" }}>
+        <Image
+          className="footer-logo"
+          id="nsm-footer-logo"
+          loader={imgLoader}
+          src={"/img/logos/nsm-hvit.svg"}
+          alt="NSM-logo"
+          layout="fill"
+        />
+      </Box>
     </Link>
   );
 
@@ -91,34 +92,39 @@ export const Footer = ({
 
   // Logo grids
   const atlasLogoGrid = (
-    <Grid
-      size={12}
-      gap={1}
-      container
-      display="flex"
-      justifyContent="space-between"
-      alignItems="center"
-    >
+    <>
       <Grid>{skdeLogo}</Grid>
       <Grid>{helseFordeLogo}</Grid>
       <Grid>{helseVestLogo}</Grid>
-    </Grid>
+    </>
   );
 
   const kvalitetLogoGrid = (
     <>
-      <Grid size={{ xs: 12, md: 4, lg: 6, xl: 7, xxl: 8 }}>{skdeLogo}</Grid>
-      <Grid size={{ xs: 12, sm: 8, lg: 6, xl: 5, xxl: 4 }}>{nsmLogo}</Grid>
+      <Grid>{skdeLogo}</Grid>
+      <Grid>{nsmLogo}</Grid>
     </>
   );
 
   return (
-    <Grid container style={{ color: "white", marginTop: 20 }}>
+    <Grid
+      container
+      sx={{ color: "white", marginTop: "20px", fontSize: "1rem" }}
+    >
       <Box
-        style={{ backgroundColor: "#333", width: "100%" }}
+        sx={{ backgroundColor: "#333", width: "100%" }}
         className={className}
       >
-        <Container maxWidth={maxWidth} disableGutters={true}>
+        <Container
+          maxWidth={maxWidth}
+          disableGutters={true}
+          sx={{
+            a: {
+              color: "inherit",
+              textDecoration: "none",
+            },
+          }}
+        >
           <Grid size={{ xs: 12 }} container paddingTop={2} paddingBottom={4}>
             <Grid size={{ xs: 12, sm: 6 }} marginBottom={2} marginTop={2}>
               <Stack spacing={3}>
@@ -159,7 +165,7 @@ export const Footer = ({
       </Box>
 
       <Box
-        style={{ backgroundColor: "#1A1A1A", width: "100%" }}
+        sx={{ backgroundColor: "#1A1A1A", width: "100%" }}
         className={className}
       >
         <Container maxWidth={maxWidth} disableGutters={true}>
@@ -170,22 +176,22 @@ export const Footer = ({
             paddingBottom={10}
             rowGap={4}
           >
-            <Grid container size={{ xs: 12 }} alignItems="center">
-              <Grid
-                container
-                display="flex"
-                size={{ xs: 12 }}
-                alignItems="center"
-                paddingTop="3rem"
-              >
-                {helseatlas ? (
-                  atlasLogoGrid
-                ) : kvalitet ? (
-                  kvalitetLogoGrid
-                ) : (
-                  <Grid>{skdeLogo}</Grid>
-                )}
-              </Grid>
+            <Grid
+              container
+              display="flex"
+              size={{ xs: 12 }}
+              alignItems="center"
+              paddingTop="3rem"
+              gap={1}
+              justifyContent="space-between"
+            >
+              {helseatlas ? (
+                atlasLogoGrid
+              ) : kvalitet ? (
+                kvalitetLogoGrid
+              ) : (
+                <Grid>{skdeLogo}</Grid>
+              )}
             </Grid>
 
             <Grid size={{ xs: 12 }}>

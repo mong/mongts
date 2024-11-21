@@ -6,9 +6,9 @@ import AtlasPage, {
   AtlasPageProps,
 } from "../../../../../src/components/Atlas/v2";
 
-const Page = ({ content, atlasData }: AtlasPageProps) => {
-  return <AtlasPage content={content} atlasData={atlasData} />;
-};
+const Page = ({ content, atlasData }: AtlasPageProps) => (
+  <AtlasPage content={content} atlasData={atlasData} />
+);
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const fullPath = path.join(

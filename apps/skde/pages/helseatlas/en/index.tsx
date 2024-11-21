@@ -4,9 +4,9 @@ import fs from "fs";
 
 import FrontPage, { HomeProps } from "../../../src/components/Atlas/FrontPage";
 
-const Home = ({ atlasInfo }: HomeProps) => {
-  return <FrontPage atlasInfo={atlasInfo} lang="en" />;
-};
+const Home = ({ atlasInfo }: HomeProps) => (
+  <FrontPage atlasInfo={atlasInfo} lang="en" />
+);
 
 export const getStaticProps: GetStaticProps = async () => {
   const atlasDir = path.join(process.cwd(), "_posts/helseatlas/en/atlas");
