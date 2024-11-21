@@ -18,7 +18,7 @@ export default function checkParamsReady(
   const searchParams = useSearchParams();
 
   const urlTreatmentUnits = searchParams.get(treatmentUnitsKey);
-  let areAligned =
+  let areAligned: boolean =
     (areArraysEqual(selectedFilters.treatmentUnits, defaultTreatmentUnits) &&
       !urlTreatmentUnits) ||
     areArraysEqual(
@@ -30,7 +30,9 @@ export default function checkParamsReady(
     // Simple sanity check, at least one selected medical field is selected,
     // which doesn't happen until the parameters are correctly loaded.
     // Partly because no explicit selections means that all are selected.
-    areAligned = selectedFilters.medicalFields?.length > 0;
+    areAligned =
+      !!selectedFilters.medicalFields &&
+      selectedFilters.medicalFields.length > 0;
   }
 
   if (areAligned) {
