@@ -8,14 +8,14 @@ interface SelectedFiltersParam {
   defaultYear: number;
 }
 
-const defaultTreatmentUnits = ["Nasjonalt"];
-const treatmentUnitsKey = "selected_treatment_units";
-const yearKey = "year";
-
 export default function hasAlignedParams(
   selectedFilters: SelectedFiltersParam,
   searchParams: ReadonlyURLSearchParams,
 ) {
+  const defaultTreatmentUnits = ["Nasjonalt"];
+  const treatmentUnitsKey = "selected_treatment_units";
+  const yearKey = "year";
+
   const urlTreatmentUnits = searchParams.get(treatmentUnitsKey);
   let areAligned =
     (areArraysEqual(selectedFilters.treatmentUnits, defaultTreatmentUnits) &&
