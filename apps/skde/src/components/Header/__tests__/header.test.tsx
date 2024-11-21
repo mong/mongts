@@ -15,7 +15,7 @@ describe("Header component", () => {
     const { container } = render(
       <Header
         title="Default Title"
-        breadcrumbs={{ path: [{ text: "Home", link: "/" }] }}
+        breadcrumbs={[{ text: "Home", link: "/" }]}
       />,
     );
     expect(container).toMatchSnapshot();
@@ -25,19 +25,18 @@ describe("Header component", () => {
     const { container } = render(
       <Header
         title="Custom Title"
-        breadcrumbs={{ path: [{ text: "Home", link: "/" }] }}
+        breadcrumbs={[{ text: "Home", link: "/" }]}
       />,
     );
     expect(container).toMatchSnapshot();
   });
 
   it("renders with custom breadcrumbs", () => {
-    const breadcrumbs: BreadCrumbPath = {
-      path: [
-        { text: "Home", link: "/" },
-        { text: "About", link: "/about" },
-      ],
-    };
+    const breadcrumbs: BreadCrumbPath = [
+      { text: "Home", link: "/" },
+      { text: "About", link: "/about" },
+    ];
+
     const { container } = render(
       <Header title="Default Title" breadcrumbs={breadcrumbs} />,
     );
@@ -49,7 +48,7 @@ describe("Header component", () => {
     const { container } = render(
       <Header
         title="Default Title"
-        breadcrumbs={{ path: [{ text: "Home", link: "/" }] }}
+        breadcrumbs={[{ text: "Home", link: "/" }]}
         children={children}
       />,
     );
@@ -61,7 +60,7 @@ describe("Header component", () => {
     const { container } = render(
       <Header
         title="Default Title"
-        breadcrumbs={{ path: [{ text: "Home", link: "/" }] }}
+        breadcrumbs={[{ text: "Home", link: "/" }]}
         bgcolor={bgcolor}
       />,
     );
@@ -73,7 +72,7 @@ describe("Header component", () => {
     const { container } = render(
       <Header
         title="Default Title"
-        breadcrumbs={{ path: [{ text: "Home", link: "/" }] }}
+        breadcrumbs={[{ text: "Home", link: "/" }]}
         maxWidth={maxWidth}
       />,
     );

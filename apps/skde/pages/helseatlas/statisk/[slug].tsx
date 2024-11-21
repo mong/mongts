@@ -7,9 +7,9 @@ import Page, { PageContentProps } from "../../../src/components/Static";
 
 const CONTENT_DIR = join(process.cwd(), "_posts/helseatlas/statisk");
 
-const Content = ({ content, frontMatter }: PageContentProps) => {
-  return <Page content={content} frontMatter={frontMatter} />;
-};
+const Content = ({ content, frontMatter }: PageContentProps) => (
+  <Page content={content} frontMatter={frontMatter} />
+);
 
 export default Content;
 
