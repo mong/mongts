@@ -65,7 +65,7 @@ export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   treatmentUnitSelectionLimit?: number;
 }>;
 
-export interface SkipSections {
+interface SkipSections {
   selectedFilters?: boolean;
   context?: boolean;
   years?: boolean;
