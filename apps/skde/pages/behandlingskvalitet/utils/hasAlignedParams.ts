@@ -12,7 +12,7 @@ const defaultTreatmentUnits = ["Nasjonalt"];
 const treatmentUnitsKey = "selected_treatment_units";
 const yearKey = "year";
 
-export function hasAlignedParams(
+export default function hasAlignedParams(
   selectedFilters: SelectedFiltersParam,
   searchParams: ReadonlyURLSearchParams,
 ) {
