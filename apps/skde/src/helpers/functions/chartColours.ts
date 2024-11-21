@@ -1,23 +1,39 @@
 import { Dispatch, SetStateAction } from "react";
 
+// Generated with https://medialab.github.io/iwanthue/ except for chartColours[0].
+// Settings:
+//  H: [0, 360]
+//  C: [40, 70]
+//  L: [15, 85]
+//  20 colours with k-Means
+//  Colourblind friendly
 const chartColours = [
   "#00263d",
-  "#4F9A94",
-  "#90CAF9",
-  "#B0BEC5",
-  "#FFE082",
-  "#2962FF",
-  "#CE93D8",
-  "#9C786C",
-  "#BCAAA4",
-  "#F8BBD0",
-  "#9FA8DA",
-  "#80DEEA",
-  "#A5D6A7",
-  "#E6EE9C",
-  "#FFAB91",
-  "#78909C",
+  "#d38241",
+  "#6971d7",
+  "#92b540",
+  "#583788",
+  "#57c26a",
+  "#bf72ca",
+  "#507f30",
+  "#d56cad",
+  "#60b878",
+  "#8a2962",
+  "#43c8ac",
+  "#de595a",
+  "#628ed6",
+  "#cd9c2e",
+  "#d4557f",
+  "#989743",
+  "#ac424f",
+  "#be9248",
+  "#c1542e",
+  "#99472b",
 ];
+
+const getChartColour = (i: number) => {
+  return chartColours[i % chartColours.length];
+};
 
 export type ColourMap = { unitName: string; colour: string };
 
@@ -30,7 +46,7 @@ export const updateColourMap = (
     if (!colourMap.map((row) => row.unitName).includes(unit)) {
       colourMap.push({
         unitName: unit,
-        colour: chartColours[colourMap.length],
+        colour: getChartColour(colourMap.length),
       });
       setColourMap(colourMap);
     }
