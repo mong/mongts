@@ -7,7 +7,7 @@ import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
 import { Description, Indicator, RegisterName } from "types";
 import { IndicatorTableSkeleton } from "../IndicatorTableSkeleton";
-import { TableRow } from "@mui/material";
+import { TableRow, TableCell } from "@mui/material";
 
 interface TableBlockProps {
   context: string;
@@ -25,11 +25,15 @@ interface TableBlockProps {
   chartColours: string[];
 }
 
-const SkeletonRow = (
-  <TableRow>
-    <IndicatorTableSkeleton nRows={1} />
-  </TableRow>
-);
+const SkeletonRow = (colSpan: number) => {
+  return (
+    <TableRow>
+      <TableCell colSpan={colSpan}>
+        <IndicatorTableSkeleton nRows={1} />
+      </TableCell>
+    </TableRow>
+  );
+};
 
 const TableBlock = (props: TableBlockProps) => {
   const {
@@ -116,7 +120,7 @@ const TableBlock = (props: TableBlockProps) => {
   ]);
 
   if (descriptionQuery.isLoading || indicatorDataQuery.isLoading) {
-    return SkeletonRow;
+    return SkeletonRow(colspan);
   }
 
   if (descriptionQuery.isError || indicatorDataQuery.isError) {
