@@ -52,7 +52,7 @@ import {
   updateColourMap,
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
-import { useSearchParamsEquals } from "../../src/helpers/hooks/useSearchParamsEquals";
+import { hasAlignedParams } from "./utils/hasAlignedParams";
 
 export default function TreatmentQualityPage() {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
@@ -65,19 +65,19 @@ export default function TreatmentQualityPage() {
   const searchParams = useSearchParams();
   const displayV2Table = searchParams.get("newtable") === "true";
 
+  const defaultTreatmentUnits = ["Nasjonalt"];
+
   // Used by indicator table
   const [selectedYear, setSelectedYear] = useState(defaultYear);
   const [selectedTableContext, setSelectedTableContext] =
     useState(defaultTableContext);
-  const [selectedLevel, setSelectedLevel] = useState<string | undefined>(
-    undefined
-  );
+  const [selectedLevel, setSelectedLevel] = useState<string | undefined>();
   const [selectedMedicalFields, setSelectedMedicalFields] = useState<string[]>(
-    []
+    [],
   );
-  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState([
-    "Nasjonalt",
-  ]);
+  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState(
+    defaultTreatmentUnits,
+  );
   const [dataQualitySelected, setDataQualitySelected] =
     useState<boolean>(false);
 
@@ -85,14 +85,14 @@ export default function TreatmentQualityPage() {
 
   const selectedRow = useQueryParam(
     "selected_row",
-    mainQueryParamsConfig.selected_row
+    mainQueryParamsConfig.selected_row,
   )[0];
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     "all",
     selectedTableContext,
-    dataQualitySelected ? "dg" : "ind"
+    dataQualitySelected ? "dg" : "ind",
   );
 
   // Load register names and medical fields
@@ -120,14 +120,14 @@ export default function TreatmentQualityPage() {
    * @param filterSettings Initial values for the filter settings
    */
   const handleFilterInitialized = (
-    filterSettings: Map<string, FilterSettingsValue[]>
+    filterSettings: Map<string, FilterSettingsValue[]>,
   ): void => {
     setSelectedTableContext(
-      filterSettings.get(tableContextKey)?.[0].value ?? defaultTableContext
+      filterSettings.get(tableContextKey)?.[0].value ?? defaultTableContext,
     );
 
     setSelectedYear(
-      parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString())
+      parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString()),
     );
 
     setSelectedLevel(filterSettings.get(levelKey)?.[0]?.value ?? undefined);
@@ -138,22 +138,22 @@ export default function TreatmentQualityPage() {
     const registerFilter = getMedicalFieldFilterRegisters(
       medicalFieldFilter,
       registers,
-      medicalFields
+      medicalFields,
     );
     setSelectedMedicalFields(registerFilter);
 
     setSelectedTreatmentUnits(
-      filterSettings.get(treatmentUnitsKey).map((value) => value.value)
+      filterSettings.get(treatmentUnitsKey).map((value) => value.value),
     );
 
     setDataQualitySelected(
-      filterSettings.get(dataQualityKey)?.[0].value === "true" ? true : false
+      filterSettings.get(dataQualityKey)?.[0].value === "true" ? true : false,
     );
 
     updateColourMap(
       colourMap,
       setColourMap,
-      filterSettings.get(treatmentUnitsKey).map((value) => value.value)
+      filterSettings.get(treatmentUnitsKey).map((value) => value.value),
     );
   };
 
@@ -161,27 +161,27 @@ export default function TreatmentQualityPage() {
     map: Map<string, FilterSettingsValue[]>;
   }) => {
     setSelectedTableContext(
-      valueOrDefault(tableContextKey, newFilterSettings) as string
+      valueOrDefault(tableContextKey, newFilterSettings) as string,
     );
     setSelectedYear(
-      parseInt(valueOrDefault(yearKey, newFilterSettings) as string)
+      parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
     );
     setSelectedLevel(
-      valueOrDefault(levelKey, newFilterSettings) as string | undefined
+      valueOrDefault(levelKey, newFilterSettings) as string | undefined,
     );
     setSelectedMedicalFields(
       valueOrDefault(
         medicalFieldKey,
         newFilterSettings,
         registers,
-        medicalFields
-      ) as string[]
+        medicalFields,
+      ) as string[],
     );
     setSelectedTreatmentUnits(
-      valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[]
+      valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
     );
     setDataQualitySelected(
-      valueOrDefault(dataQualityKey, newFilterSettings) as boolean
+      valueOrDefault(dataQualityKey, newFilterSettings) as boolean,
     );
   };
 
@@ -191,24 +191,24 @@ export default function TreatmentQualityPage() {
   const handleFilterChanged = (
     newFilterSettings: { map: Map<string, FilterSettingsValue[]> },
     oldFilterSettings: { map: Map<string, FilterSettingsValue[]> },
-    action: FilterSettingsAction
+    action: FilterSettingsAction,
   ): void => {
     switch (action.sectionSetting.key) {
       case tableContextKey: {
         setSelectedTableContext(
-          valueOrDefault(tableContextKey, newFilterSettings) as string
+          valueOrDefault(tableContextKey, newFilterSettings) as string,
         );
         break;
       }
       case yearKey: {
         setSelectedYear(
-          parseInt(valueOrDefault(yearKey, newFilterSettings) as string)
+          parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
         );
         break;
       }
       case levelKey: {
         setSelectedLevel(
-          valueOrDefault(levelKey, newFilterSettings) as string | undefined
+          valueOrDefault(levelKey, newFilterSettings) as string | undefined,
         );
         break;
       }
@@ -218,20 +218,20 @@ export default function TreatmentQualityPage() {
             medicalFieldKey,
             newFilterSettings,
             registers,
-            medicalFields
-          ) as string[]
+            medicalFields,
+          ) as string[],
         );
         break;
       }
       case treatmentUnitsKey: {
         setSelectedTreatmentUnits(
-          valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[]
+          valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
         );
         break;
       }
       case dataQualityKey: {
         setDataQualitySelected(
-          valueOrDefault(dataQualityKey, newFilterSettings) as boolean
+          valueOrDefault(dataQualityKey, newFilterSettings) as boolean,
         );
         break;
       }
@@ -246,7 +246,7 @@ export default function TreatmentQualityPage() {
     updateColourMap(
       colourMap,
       setColourMap,
-      valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[]
+      valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
     );
   };
 
@@ -256,23 +256,15 @@ export default function TreatmentQualityPage() {
     useOnElementAdded(selectedRow, queriesReady, scrollToSelectedRow);
   }
 
-  const searchParamsSanityCheck = useSearchParamsEquals({
-    [tableContextKey]: selectedTableContext,
-    [yearKey]: selectedYear,
-    // [levelKey]: selectedLevel,
-    // [medicalFieldKey]: selectedMedicalFields,
-    // [treatmentUnitsKey]: selectedTreatmentUnits,
-    // [dataQualityKey]: dataQualitySelected,
-  },
+  const paramsReady = hasAlignedParams(
     {
-      // [tableContextKey]: defaultTableContext,
-      [yearKey]: defaultYear,
-      [treatmentUnitsKey]: ["Nasjonalt"],
-      // [dataQualityKey]: false,
-    }
+      treatmentUnits: selectedTreatmentUnits,
+      medicalFields: selectedMedicalFields,
+      year: selectedYear,
+      defaultYear: defaultYear,
+    },
+    searchParams,
   );
-
-  console.log(`searchParamsSanityCheck: ${searchParamsSanityCheck}`);
 
   return (
     <ThemeProvider theme={skdeTheme}>
@@ -322,7 +314,7 @@ export default function TreatmentQualityPage() {
           <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
-                {queriesReady ? (
+                {queriesReady && paramsReady ? (
                   displayV2Table ? (
                     <IndicatorTableBodyV2
                       key={"indicator-table2"}
@@ -330,7 +322,7 @@ export default function TreatmentQualityPage() {
                       unitNames={getSortedList(
                         colourMap,
                         selectedTreatmentUnits,
-                        "units"
+                        "units",
                       )}
                       year={selectedYear}
                       type={dataQualitySelected ? "dg" : "ind"}
@@ -339,7 +331,7 @@ export default function TreatmentQualityPage() {
                       chartColours={getSortedList(
                         colourMap,
                         selectedTreatmentUnits,
-                        "colours"
+                        "colours",
                       )}
                     />
                   ) : (
@@ -353,7 +345,7 @@ export default function TreatmentQualityPage() {
                         unitNames={getSortedList(
                           colourMap,
                           selectedTreatmentUnits,
-                          "units"
+                          "units",
                         )}
                         treatmentYear={selectedYear}
                         colspan={selectedTreatmentUnits.length + 1}
@@ -363,14 +355,14 @@ export default function TreatmentQualityPage() {
                         legend_height={0}
                         blockTitle={registers.map(
                           (register: { full_name: string }) =>
-                            register.full_name
+                            register.full_name,
                         )}
                         showTreatmentYear={true}
                         nestedUnitNames={nestedUnitNames}
                         chartColours={getSortedList(
                           colourMap,
                           selectedTreatmentUnits,
-                          "colours"
+                          "colours",
                         )}
                       />
                     </IndicatorTableWrapper>
