@@ -107,12 +107,24 @@ export const Footer = ({
   );
 
   return (
-    <Grid container style={{ color: "white", marginTop: 20 }}>
+    <Grid
+      container
+      sx={{ color: "white", marginTop: "20px", fontSize: "1rem" }}
+    >
       <Box
-        style={{ backgroundColor: "#333", width: "100%" }}
+        sx={{ backgroundColor: "#333", width: "100%" }}
         className={className}
       >
-        <Container maxWidth={maxWidth} disableGutters={true}>
+        <Container
+          maxWidth={maxWidth}
+          disableGutters={true}
+          sx={{
+            a: {
+              color: "inherit",
+              textDecoration: "none",
+            },
+          }}
+        >
           <Grid size={{ xs: 12 }} container paddingTop={2} paddingBottom={4}>
             <Grid size={{ xs: 12, sm: 6 }} marginBottom={2} marginTop={2}>
               <Stack spacing={3}>
@@ -153,7 +165,7 @@ export const Footer = ({
       </Box>
 
       <Box
-        style={{ backgroundColor: "#1A1A1A", width: "100%" }}
+        sx={{ backgroundColor: "#1A1A1A", width: "100%" }}
         className={className}
       >
         <Container maxWidth={maxWidth} disableGutters={true}>
