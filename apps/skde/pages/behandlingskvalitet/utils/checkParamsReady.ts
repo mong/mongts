@@ -35,10 +35,6 @@ export default function checkParamsReady(
       urlTreatmentUnits?.split("_"),
     );
 
-  console.log(
-    `areAligned: ${areAligned}, urlTreatmentUnits: ${urlTreatmentUnits}, selectedFilters.treatmentUnits: ${selectedFilters.treatmentUnits}, defaultTreatmentUnits ${defaultTreatmentUnits}`,
-  );
-
   if (areAligned) {
     // Simple sanity check, at least one selected medical field is selected,
     // which doesn't happen until the parameters are correctly loaded.
