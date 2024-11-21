@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Box,
   CssBaseline,
@@ -110,9 +110,12 @@ export default function TreatmentQualityPage() {
 
   const paramsReady = checkParamsReady({
     treatmentUnits: selectedTreatmentUnits,
-    medicalFields: selectedMedicalFields,
+    treatmentUnitsKey: treatmentUnitsKey,
+    defaultTreatmentUnits: defaultTreatmentUnits,
     year: selectedYear,
+    yearKey: yearKey,
     defaultYear: defaultYear,
+    medicalFields: selectedMedicalFields,
   });
 
   const registers = registryNameQuery?.data;

@@ -3,14 +3,13 @@ import { useEffect, useState } from "react";
 
 export interface SelectedFiltersParam {
   treatmentUnits: string[];
-  medicalFields: string[];
+  treatmentUnitsKey: string;
+  defaultTreatmentUnits: string[];
   year: number;
+  yearKey: string;
   defaultYear: number;
+  medicalFields: string[];
 }
-
-const defaultTreatmentUnits = ["Nasjonalt"];
-const treatmentUnitsKey = "selected_treatment_units";
-const yearKey = "year";
 
 export default function checkParamsReady(
   selectedFilters: SelectedFiltersParam,
@@ -27,11 +26,14 @@ export default function checkParamsReady(
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const urlTreatmentUnits = urlParams.get(treatmentUnitsKey);
-  const urlYear = urlParams.get(yearKey);
+  const urlTreatmentUnits = urlParams.get(selectedFilters.treatmentUnitsKey);
+  const urlYear = urlParams.get(selectedFilters.yearKey);
 
   let areAligned: boolean =
-    (areArraysEqual(selectedFilters.treatmentUnits, defaultTreatmentUnits) &&
+    (areArraysEqual(
+      selectedFilters.treatmentUnits,
+      selectedFilters.defaultTreatmentUnits,
+    ) &&
       !urlTreatmentUnits) ||
     areArraysEqual(
       selectedFilters.treatmentUnits,
