@@ -52,7 +52,7 @@ import {
   updateColourMap,
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
-import { hasAlignedParams } from "./utils/hasAlignedParams";
+import hasAlignedParams from "./utils/hasAlignedParams";
 
 export default function TreatmentQualityPage() {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
