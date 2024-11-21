@@ -9,7 +9,13 @@ import {
   useUnitUrlsQuery,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
-import { ThemeProvider, Box, Container, Typography } from "@mui/material";
+import {
+  ThemeProvider,
+  Box,
+  Container,
+  Typography,
+  CssBaseline,
+} from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { HospitalInfoBox } from "../../src/components/HospitalProfile";
@@ -131,6 +137,7 @@ export const Skde = (): JSX.Element => {
 
   return (
     <ThemeProvider theme={skdeTheme}>
+      <CssBaseline />
       <PageWrapper>
         <LayoutHead
           title="Sykehusprofil"

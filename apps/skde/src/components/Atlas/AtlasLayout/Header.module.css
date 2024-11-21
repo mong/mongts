@@ -35,6 +35,11 @@
   transition: 200ms ease-in;
 }
 
+.no a,
+.eng a {
+  color: inherit;
+}
+
 .no.active,
 .eng.active {
   font-weight: 700;
