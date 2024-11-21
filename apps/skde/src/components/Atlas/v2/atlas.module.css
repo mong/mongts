@@ -1,6 +1,21 @@
 .atlasContent {
   margin: auto;
   display: flex;
+  font-size: 1rem;
+}
+
+.atlasContent h1 {
+  font-weight: 300;
+  font-size: 3rem;
+}
+
+.atlasContent h2 {
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  text-transform: uppercase;
+  border-bottom: 0.125rem solid #cddbe8;
+  padding-bottom: 1rem;
 }
 
 .atlasContent img {
@@ -11,9 +26,9 @@
   line-height: 4rem;
 }
 
-.atlasContent p a,
 .atlasContent a {
   color: #034584;
+  text-decoration: none;
 }
 
 @media screen and (min-width: 60rem) {
@@ -30,24 +45,16 @@
   }
 }
 
-@media screen and (min-width: 0) and (max-width: 60rem) {
+@media screen and (max-width: 60rem) {
   .atlasContent {
     flex-direction: column;
   }
 }
 
-@media screen and (min-width: 0) and (max-width: 52rem) {
+@media screen and (max-width: 60rem) {
   .main_content {
     width: 95%;
     margin: auto;
     padding: 1rem;
-  }
-
-  .atlasLinksWrapper {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin: auto;
   }
 }

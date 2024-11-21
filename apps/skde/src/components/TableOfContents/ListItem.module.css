@@ -8,6 +8,10 @@
   overflow-wrap: break-word;
 }
 
+.tocListItem a {
+  text-decoration: none;
+}
+
 .tocListItem.active > a {
   position: relative;
   color: #034584;

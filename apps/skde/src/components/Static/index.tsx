@@ -2,6 +2,8 @@ import { Markdown } from "../Markdown";
 import { Ingress } from "../Ingress";
 import { AtlasLayout } from "../Atlas/AtlasLayout";
 import styles from "./Static.module.css";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { skdeTheme } from "qmongjs";
 
 export interface PageContentProps {
   content: string;
@@ -14,7 +16,8 @@ export interface PageContentProps {
 
 const PageContent = ({ content, frontMatter }: PageContentProps) => {
   return (
-    <>
+    <ThemeProvider theme={skdeTheme}>
+      <CssBaseline />
       <AtlasLayout lang={frontMatter.lang === "en" ? "en" : "no"}>
         <div className={styles.container}>
           <div className={styles.article__title}>
@@ -28,7 +31,7 @@ const PageContent = ({ content, frontMatter }: PageContentProps) => {
           </div>
         </div>
       </AtlasLayout>
-    </>
+    </ThemeProvider>
   );
 };
 
