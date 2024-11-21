@@ -9,7 +9,13 @@ import {
   useUnitUrlsQuery,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
-import { ThemeProvider, Box, Container, Typography } from "@mui/material";
+import {
+  ThemeProvider,
+  Box,
+  Container,
+  Typography,
+  CssBaseline,
+} from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { HospitalInfoBox } from "../../src/components/HospitalProfile";
@@ -61,22 +67,20 @@ export const Skde = (): JSX.Element => {
   const pastYears = 5;
 
   // Header settings
-  const breadcrumbs: BreadCrumbPath = {
-    path: [
-      {
-        link: "https://www.skde.no",
-        text: "Forside",
-      },
-      {
-        link: "https://www.skde.no/resultater/",
-        text: "Tall om helsetjenesten",
-      },
-      {
-        link: "/sykehusprofil/",
-        text: "Sykehusprofil",
-      },
-    ],
-  };
+  const breadcrumbs: BreadCrumbPath = [
+    {
+      link: "https://www.skde.no",
+      text: "Forside",
+    },
+    {
+      link: "https://www.skde.no/resultater/",
+      text: "Tall om helsetjenesten",
+    },
+    {
+      link: "/sykehusprofil/",
+      text: "Sykehusprofil",
+    },
+  ];
 
   // ####### //
   // Queries //
@@ -133,6 +137,7 @@ export const Skde = (): JSX.Element => {
 
   return (
     <ThemeProvider theme={skdeTheme}>
+      <CssBaseline />
       <PageWrapper>
         <LayoutHead
           title="Sykehusprofil"

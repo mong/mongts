@@ -20,10 +20,15 @@ export const IndicatorDescription = (props: DescriptionProps) => {
   const level_direction = description.level_direction;
   const level_green = description.level_green;
 
-  const level_sign =
-    level_direction === 1
-      ? String.fromCodePoint(parseInt("2265", 16))
-      : String.fromCodePoint(parseInt("2264", 16));
+  let level_sign = "";
+
+  if (level_green != null) {
+    if (level_direction === 1 && level_green < 1) {
+      level_sign = "≥";
+    } else if (level_direction === 0 && level_green > 0) {
+      level_sign = "≤";
+    }
+  }
 
   return (
     <td className={style.quality_indicator}>

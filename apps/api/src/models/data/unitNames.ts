@@ -5,8 +5,8 @@ import { TuName } from "types";
 
 export const distinctUnitNamesRegister = (
   filter: Filter,
-): Promise<{ unit_name: string }[]> => {
-  return db
+): Promise<{ unit_name: string }[]> =>
+  db
     .distinct({ unit_name: "agg_data.unit_name" })
     .from("agg_data")
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
@@ -19,7 +19,6 @@ export const distinctUnitNamesRegister = (
     .whereNot("unit_name", "LIKE", "Udefinerte%")
     .where("context", filter.context ?? "")
     .modify(withFilter, filter);
-};
 
 function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
   if (filter?.register && filter?.register !== "all") {
