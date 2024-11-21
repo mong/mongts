@@ -256,14 +256,12 @@ export default function TreatmentQualityPage() {
     useOnElementAdded(selectedRow, queriesReady, scrollToSelectedRow);
   }
 
-  const paramsReady = checkParamsReady(
-    {
-      treatmentUnits: selectedTreatmentUnits,
-      medicalFields: selectedMedicalFields,
-      year: selectedYear,
-      defaultYear: defaultYear,
-    },
-  );
+  const paramsReady = checkParamsReady({
+    treatmentUnits: selectedTreatmentUnits,
+    medicalFields: selectedMedicalFields,
+    year: selectedYear,
+    defaultYear: defaultYear,
+  });
 
   return (
     <ThemeProvider theme={skdeTheme}>

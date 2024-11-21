@@ -1,5 +1,6 @@
 import { useSearchParams } from "next/navigation";
 import { areArraysEqual } from "../../../src/helpers/functions/areArraysEqual";
+import { useEffect, useState } from "react";
 
 export interface SelectedFiltersParam {
   treatmentUnits: string[];
@@ -17,7 +18,15 @@ export default function checkParamsReady(
 
   const searchParams = useSearchParams();
 
+  const [isMounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  if (!isMounted) {
+    return false;
+  }
+
   const urlTreatmentUnits = searchParams.get(treatmentUnitsKey);
+
   let areAligned: boolean =
     (areArraysEqual(selectedFilters.treatmentUnits, defaultTreatmentUnits) &&
       !urlTreatmentUnits) ||
@@ -25,6 +34,10 @@ export default function checkParamsReady(
       selectedFilters.treatmentUnits,
       urlTreatmentUnits?.split("_"),
     );
+
+  console.log(
+    `areAligned: ${areAligned}, urlTreatmentUnits: ${urlTreatmentUnits}, selectedFilters.treatmentUnits: ${selectedFilters.treatmentUnits}, defaultTreatmentUnits ${defaultTreatmentUnits}`,
+  );
 
   if (areAligned) {
     // Simple sanity check, at least one selected medical field is selected,
