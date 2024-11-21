@@ -3,6 +3,7 @@ import { TextBox } from "../TextBox";
 import { FactBox } from "../Factbox";
 import { ResultBox } from "../ResultBox";
 import classNames from "./Chapters.module.css";
+import { Box } from "@mui/material";
 
 type Tekst = {
   type: "tekst";
@@ -43,7 +44,9 @@ type ChaptersProps = {
 
 export const Chapters = ({ innhold, lang }: ChaptersProps) => {
   return innhold.map((chapter, i) => (
-    <Chapter {...chapter} key={`${i}_${chapter.overskrift}`} lang={lang} />
+    <Box sx={{ fontSize: ".95rem" }}>
+      <Chapter {...chapter} key={`${i}_${chapter.overskrift}`} lang={lang} />
+    </Box>
   ));
 };
 
@@ -52,7 +55,7 @@ const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
   return (
     <div
       id={mainID}
-      style={{ paddingTop: "0.625rem" }}
+      style={{ paddingTop: "0.5rem" }}
       className={classNames.chapters}
     >
       {overskrift && <h2>{overskrift}</h2>}
