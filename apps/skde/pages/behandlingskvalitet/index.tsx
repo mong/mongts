@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Box,
   CssBaseline,
@@ -107,6 +107,13 @@ export default function TreatmentQualityPage() {
     unitNamesQuery.isFetched &&
     registryNameQuery.isFetched &&
     medicalFieldsQuery.isFetched;
+
+  const paramsReady = checkParamsReady({
+    treatmentUnits: selectedTreatmentUnits,
+    medicalFields: selectedMedicalFields,
+    year: selectedYear,
+    defaultYear: defaultYear,
+  });
 
   const registers = registryNameQuery?.data;
   const medicalFields = medicalFieldsQuery?.data;
@@ -255,13 +262,6 @@ export default function TreatmentQualityPage() {
   if (typeof document !== "undefined") {
     useOnElementAdded(selectedRow, queriesReady, scrollToSelectedRow);
   }
-
-  const paramsReady = checkParamsReady({
-    treatmentUnits: selectedTreatmentUnits,
-    medicalFields: selectedMedicalFields,
-    year: selectedYear,
-    defaultYear: defaultYear,
-  });
 
   return (
     <ThemeProvider theme={skdeTheme}>
