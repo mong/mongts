@@ -6,18 +6,16 @@ import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { Header, BreadCrumbPath } from "../../src/components/Header";
 import { LayoutHead } from "../../src/components/LayoutHead";
 
-const breadcrumbs: BreadCrumbPath = {
-  path: [
-    {
-      link: "https://www.skde.no",
-      text: "Forside",
-    },
-    {
-      link: "/pasientstrommer/",
-      text: "Pasientstrømmer",
-    },
-  ],
-};
+const breadcrumbs: BreadCrumbPath = [
+  {
+    link: "https://www.skde.no",
+    text: "Forside",
+  },
+  {
+    link: "/pasientstrommer/",
+    text: "Pasientstrømmer",
+  },
+];
 
 const Pasient = () => {
   return (
