@@ -52,7 +52,7 @@ import {
   updateColourMap,
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
-import hasAlignedParams from "./utils/hasAlignedParams";
+import checkParamsReady from "./utils/checkParamsReady";
 
 export default function TreatmentQualityPage() {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
@@ -256,14 +256,13 @@ export default function TreatmentQualityPage() {
     useOnElementAdded(selectedRow, queriesReady, scrollToSelectedRow);
   }
 
-  const paramsReady = hasAlignedParams(
+  const paramsReady = checkParamsReady(
     {
       treatmentUnits: selectedTreatmentUnits,
       medicalFields: selectedMedicalFields,
       year: selectedYear,
       defaultYear: defaultYear,
     },
-    searchParams,
   );
 
   return (

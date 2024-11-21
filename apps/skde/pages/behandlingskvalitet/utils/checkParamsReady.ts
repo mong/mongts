@@ -1,20 +1,21 @@
-import { ReadonlyURLSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { areArraysEqual } from "../../../src/helpers/functions/areArraysEqual";
 
-interface SelectedFiltersParam {
+export interface SelectedFiltersParam {
   treatmentUnits: string[];
   medicalFields: string[];
   year: number;
   defaultYear: number;
 }
 
-export default function hasAlignedParams(
+export default function checkParamsReady(
   selectedFilters: SelectedFiltersParam,
-  searchParams: ReadonlyURLSearchParams,
 ) {
   const defaultTreatmentUnits = ["Nasjonalt"];
   const treatmentUnitsKey = "selected_treatment_units";
   const yearKey = "year";
+
+  const searchParams = useSearchParams();
 
   const urlTreatmentUnits = searchParams.get(treatmentUnitsKey);
   let areAligned =
@@ -29,7 +30,7 @@ export default function hasAlignedParams(
     // Simple sanity check, at least one selected medical field is selected,
     // which doesn't happen until the parameters are correctly loaded.
     // Partly because no explicit selections means that all are selected.
-    areAligned = selectedFilters.medicalFields.length > 0;
+    areAligned = selectedFilters.medicalFields?.length > 0;
   }
 
   if (areAligned) {
