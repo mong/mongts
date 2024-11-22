@@ -1,0 +1,402 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": [
+        "Snitt_rate"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Tal pasientar med utviklingsforstyrring i poliklinikk pr. 1 000 (under 18 år)",
+        "en": "Number of patients with developmental disorder in outpatient pr. 1,000 inhabitants (under 18 years old)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "errorBars": [
+       "lowercl",
+       "uppercl"
+      ],
+    "format": ",.1f"
+  },
+{
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snitt_rate"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Tal pasientar med utviklingsforstyrring in poliklinikk behandling pr. 1 000 innbyggarar (under 18 år)",
+        "en": "Number of patients with developmental disorder in outpatient treatment per 1,000 inhabitants (under 18 years of age"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "Rate.2019",
+        "Rate.2020",
+        "Rate.2021",
+        "Rate.2022",
+        "Rate.2023"
+      ],
+      "annualVarLabels": {
+        "nn": [ "2019", "2020", "2021", "2022", "2023"],
+        "en": [ "2019", "2020", "2021", "2022", "2023"]
+      }
+    },
+
+  {
+    "type": "table",
+    "data": "qwerty",
+    "caption": {
+      "nn": "Årlige gjennomsnittsverdier for perioden 2019–2023, Pasientrate for utviklingsforstyrring pr. 1 000 innbyggarar i alderen under 18 år",
+      "en": "Average annual values for the period 2019–2023, patient rate for developmental disorder pr. 1 000 population under 18 years of age"
+    },
+    "columns": [
+      {
+        "id": "bohf",
+        "label_no": "Opptaksområde",
+        "label_en": "Referral areas",
+        "typeVar": "string",
+        "format": ""
+      },
+      {
+        "id": "Snitt_rate",
+        "label_no": "Rate",
+        "label_en": "Rate",
+        "typeVar": "number",
+        "format": ",.1f"
+      },
+      {
+        "id": "Tal_pas",
+        "label_no": "Tal pasientar",
+        "label_en": "Number of patients",
+        "typeVar": "number",
+        "format": ",.0f"
+      },
+      {
+        "id":  "Innbyggarar",
+        "label_no": "Innbygarrar (under 18 år)",
+        "label_en": "Averege population (under 18)",
+        "typeVar": "number",
+        "format": ",.0f"
+      }
+    ]
+  },
+  {
+    "type": "map",
+    "data": "qwerty",
+    "x": "Snitt_rate",
+    "caption": {
+      "nn": "Tal pasientar med utviklingsforstyrring i poliklinikk pr. 1 000 innbyggarar i alderen under 18 år",
+      "en": "Number of patients with developmental disorders in outpatient pr. 1 000 population under 18 years of age"
+    },
+    "jenks": [
+      {
+        "grense": 3.7
+      },
+      {
+        "grense": 5.0
+      },
+      {
+        "grense": 6.6
+      }
+    ],
+    "format": ",.1f"
+  },
+  {
+    "type": "data",
+    "label": "qwerty",
+    "description": "Hoveddatasettet for gitt resultatboks",
+    "national": "Noreg",
+    "data":
+[
+  {
+    "bohf": "Akershus",
+    "Tal_pas": 749.4,
+    "Innbyggarar": 128646.8,
+    "Snitt_rate": 6.1664,
+    "lowercl": 5.9616,
+    "uppercl": 6.3762,
+    "Rate.2019": 5.1722,
+    "Rate.2020": 4.8201,
+    "Rate.2021": 6.1147,
+    "Rate.2022": 6.6728,
+    "Rate.2023": 8.0524
+  },
+  {
+    "bohf": "Bergen",
+    "Tal_pas": 844.6,
+    "Innbyggarar": 96697.2,
+    "Snitt_rate": 9.5308,
+    "lowercl": 9.2313,
+    "uppercl": 9.8372,
+    "Rate.2019": 7.4523,
+    "Rate.2020": 6.9345,
+    "Rate.2021": 9.5958,
+    "Rate.2022": 10.8087,
+    "Rate.2023": 12.8626
+  },
+  {
+    "bohf": "Diakonhjemmet",
+    "Tal_pas": 93.2,
+    "Innbyggarar": 25931,
+    "Snitt_rate": 3.8039,
+    "lowercl": 3.4453,
+    "uppercl": 4.1879,
+    "Rate.2019": 3.7846,
+    "Rate.2020": 2.8771,
+    "Rate.2021": 3.1173,
+    "Rate.2022": 4.1993,
+    "Rate.2023": 5.0409
+  },
+  {
+    "bohf": "Finnmark",
+    "Tal_pas": 130.8,
+    "Innbyggarar": 14386.2,
+    "Snitt_rate": 9.49,
+    "lowercl": 8.7483,
+    "uppercl": 10.2759,
+    "Rate.2019": 8.7839,
+    "Rate.2020": 7.6762,
+    "Rate.2021": 9.1874,
+    "Rate.2022": 10.4553,
+    "Rate.2023": 11.3472
+  },
+  {
+    "bohf": "Fonna",
+    "Tal_pas": 324.6,
+    "Innbyggarar": 39994,
+    "Snitt_rate": 8.5131,
+    "lowercl": 8.0852,
+    "uppercl": 8.957,
+    "Rate.2019": 6.8835,
+    "Rate.2020": 7.0795,
+    "Rate.2021": 7.8385,
+    "Rate.2022": 9.5904,
+    "Rate.2023": 11.1735
+  },
+  {
+    "bohf": "Førde",
+    "Tal_pas": 199.2,
+    "Innbyggarar": 23040.4,
+    "Snitt_rate": 9.0447,
+    "lowercl": 8.4714,
+    "uppercl": 9.6455,
+    "Rate.2019": 7.668,
+    "Rate.2020": 7.723,
+    "Rate.2021": 9.3882,
+    "Rate.2022": 9.8953,
+    "Rate.2023": 10.549
+  },
+  {
+    "bohf": "Helgeland",
+    "Tal_pas": 134.6,
+    "Innbyggarar": 15107.6,
+    "Snitt_rate": 9.4505,
+    "lowercl": 8.7224,
+    "uppercl": 10.2214,
+    "Rate.2019": 8.4638,
+    "Rate.2020": 8.4225,
+    "Rate.2021": 10.4137,
+    "Rate.2022": 8.6741,
+    "Rate.2023": 11.2784
+  },
+  {
+    "bohf": "Innlandet",
+    "Tal_pas": 440.4,
+    "Innbyggarar": 63506.8,
+    "Snitt_rate": 7.2716,
+    "lowercl": 6.9598,
+    "uppercl": 7.5934,
+    "Rate.2019": 5.9721,
+    "Rate.2020": 6.2849,
+    "Rate.2021": 6.5224,
+    "Rate.2022": 8.3571,
+    "Rate.2023": 9.2215
+  },
+  {
+    "bohf": "Lovisenberg",
+    "Tal_pas": 106.2,
+    "Innbyggarar": 22897,
+    "Snitt_rate": 5.7176,
+    "lowercl": 5.1806,
+    "uppercl": 6.2902,
+    "Rate.2019": 5.3323,
+    "Rate.2020": 4.9065,
+    "Rate.2021": 4.8499,
+    "Rate.2022": 6.7198,
+    "Rate.2023": 6.7795
+  },
+  {
+    "bohf": "Møre og Romsdal",
+    "Tal_pas": 381.4,
+    "Innbyggarar": 55257.6,
+    "Snitt_rate": 6.9726,
+    "lowercl": 6.6501,
+    "uppercl": 7.3062,
+    "Rate.2019": 5.8932,
+    "Rate.2020": 6.3484,
+    "Rate.2021": 7.7357,
+    "Rate.2022": 7.1848,
+    "Rate.2023": 7.701
+  },
+  {
+    "bohf": "Nord-Trøndelag",
+    "Tal_pas": 153.4,
+    "Innbyggarar": 28257.4,
+    "Snitt_rate": 5.7189,
+    "lowercl": 5.3049,
+    "uppercl": 6.1557,
+    "Rate.2019": 5.61,
+    "Rate.2020": 5.2361,
+    "Rate.2021": 5.1014,
+    "Rate.2022": 5.93,
+    "Rate.2023": 6.717
+  },
+  {
+    "bohf": "Nordland",
+    "Tal_pas": 343.4,
+    "Innbyggarar": 27085.6,
+    "Snitt_rate": 13.3055,
+    "lowercl": 12.6581,
+    "uppercl": 13.9764,
+    "Rate.2019": 12.4544,
+    "Rate.2020": 11.7941,
+    "Rate.2021": 13.1188,
+    "Rate.2022": 14.0687,
+    "Rate.2023": 15.0912
+  },
+  {
+    "bohf": "Noreg",
+    "Tal_pas": 7364,
+    "Innbyggarar": 1114704,
+    "Snitt_rate": 7.0078,
+    "lowercl": 6.9331,
+    "uppercl": 7.0831,
+    "Rate.2019": 6.1526,
+    "Rate.2020": 6.0577,
+    "Rate.2021": 6.971,
+    "Rate.2022": 7.5819,
+    "Rate.2023": 8.2758
+  },
+  {
+    "bohf": "OUS",
+    "Tal_pas": 286,
+    "Innbyggarar": 59446.4,
+    "Snitt_rate": 5.3607,
+    "lowercl": 5.0692,
+    "uppercl": 5.6639,
+    "Rate.2019": 5.2639,
+    "Rate.2020": 5.1051,
+    "Rate.2021": 4.8476,
+    "Rate.2022": 5.5689,
+    "Rate.2023": 6.0182
+  },
+  {
+    "bohf": "St. Olav",
+    "Tal_pas": 365.4,
+    "Innbyggarar": 67721,
+    "Snitt_rate": 5.7896,
+    "lowercl": 5.5141,
+    "uppercl": 6.0747,
+    "Rate.2019": 6.5488,
+    "Rate.2020": 6.0559,
+    "Rate.2021": 6.8381,
+    "Rate.2022": 6.6915,
+    "Rate.2023": 2.8135
+  },
+  {
+    "bohf": "Stavanger",
+    "Tal_pas": 526.2,
+    "Innbyggarar": 87767,
+    "Snitt_rate": 6.2276,
+    "lowercl": 5.9786,
+    "uppercl": 6.4839,
+    "Rate.2019": 6.3216,
+    "Rate.2020": 5.9299,
+    "Rate.2021": 6.3771,
+    "Rate.2022": 5.938,
+    "Rate.2023": 6.5714
+  },
+  {
+    "bohf": "Sørlandet",
+    "Tal_pas": 495.2,
+    "Innbyggarar": 67155.8,
+    "Snitt_rate": 7.7083,
+    "lowercl": 7.3939,
+    "uppercl": 8.0322,
+    "Rate.2019": 6.8434,
+    "Rate.2020": 6.5142,
+    "Rate.2021": 7.2138,
+    "Rate.2022": 8.6676,
+    "Rate.2023": 9.3024
+  },
+  {
+    "bohf": "Telemark",
+    "Tal_pas": 188.4,
+    "Innbyggarar": 33769,
+    "Snitt_rate": 5.8958,
+    "lowercl": 5.5113,
+    "uppercl": 6.2993,
+    "Rate.2019": 4.0824,
+    "Rate.2020": 5.0894,
+    "Rate.2021": 6.2512,
+    "Rate.2022": 6.9921,
+    "Rate.2023": 7.0638
+  },
+  {
+    "bohf": "UNN",
+    "Tal_pas": 357.2,
+    "Innbyggarar": 37118.6,
+    "Snitt_rate": 10.0292,
+    "lowercl": 9.5503,
+    "uppercl": 10.5252,
+    "Rate.2019": 8.2293,
+    "Rate.2020": 8.4765,
+    "Rate.2021": 10.0145,
+    "Rate.2022": 11.1281,
+    "Rate.2023": 12.2977
+  },
+  {
+    "bohf": "Vestfold",
+    "Tal_pas": 405.8,
+    "Innbyggarar": 49969.8,
+    "Snitt_rate": 8.4086,
+    "lowercl": 8.0312,
+    "uppercl": 8.7985,
+    "Rate.2019": 6.5446,
+    "Rate.2020": 8.0991,
+    "Rate.2021": 8.6472,
+    "Rate.2022": 8.893,
+    "Rate.2023": 9.859
+  },
+  {
+    "bohf": "Vestre Viken",
+    "Tal_pas": 569.4,
+    "Innbyggarar": 105821.2,
+    "Snitt_rate": 5.6465,
+    "lowercl": 5.4321,
+    "uppercl": 5.8669,
+    "Rate.2019": 4.5813,
+    "Rate.2020": 4.72,
+    "Rate.2021": 5.5407,
+    "Rate.2022": 6.0065,
+    "Rate.2023": 7.3839
+  },
+  {
+    "bohf": "Østfold",
+    "Tal_pas": 307,
+    "Innbyggarar": 65127.6,
+    "Snitt_rate": 4.974,
+    "lowercl": 4.7186,
+    "uppercl": 5.2393,
+    "Rate.2019": 4.7347,
+    "Rate.2020": 4.4862,
+    "Rate.2021": 4.9418,
+    "Rate.2022": 5.0765,
+    "Rate.2023": 5.6308
+  }
+]
