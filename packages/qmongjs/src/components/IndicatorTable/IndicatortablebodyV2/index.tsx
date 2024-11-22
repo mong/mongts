@@ -605,7 +605,13 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
   const { context, type, year, unitNames, levels, medfields, chartColours } =
     props;
 
-  const [openRowID, setOpenRowID] = useState<string>("");
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
+  const openRowParam = params.get("selected_row");
+
+  const [openRowID, setOpenRowID] = useState<string>(
+    openRowParam ? openRowParam : "",
+  );
 
   const queryParams: FetchIndicatorParams = {
     context: context,
