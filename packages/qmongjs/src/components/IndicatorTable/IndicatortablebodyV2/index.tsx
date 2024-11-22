@@ -200,7 +200,9 @@ const IndicatorRow = (props: {
             >
               {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
             </IconButton>
-            {indData.indicatorTitle}
+            <div lang="no" style={{ wordWrap: "break-word", hyphens: "auto" }}>
+              {indData.indicatorTitle}
+            </div>
           </Stack>
         </StyledTableCellStart>
 
@@ -527,7 +529,12 @@ const RegistrySection = (props: {
                 width: "12rem",
               }}
             >
-              {regData.registerFullName}
+              <div
+                lang="no"
+                style={{ wordWrap: "break-word", hyphens: "auto" }}
+              >
+                {regData.registerFullName}
+              </div>
             </StyledTableCellStart>
 
             {unitNames.map((row, index, arr) => {
@@ -546,7 +553,12 @@ const RegistrySection = (props: {
                   sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
                   width={"12rem"}
                 >
-                  {row}
+                  <div
+                    lang="no"
+                    style={{ wordWrap: "break-word", hyphens: "auto" }}
+                  >
+                    {row}
+                  </div>
                 </CellType>
               );
             })}
