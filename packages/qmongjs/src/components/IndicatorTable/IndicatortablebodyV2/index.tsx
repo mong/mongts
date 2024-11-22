@@ -292,40 +292,40 @@ const IndicatorRow = (props: {
         >
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Typography variant="body2" sx={{ margin: "2rem" }}>
-              {indData.shortDescription}
-              <br />
-              <br />
-              {"Ønsket målnivå: "}
-              {indData.levelGreen === null ? (
-                <b>{"Ikke oppgitt"}</b>
-              ) : (
-                <b>
-                  {levelSignHigh + customFormat(",.0%")(indData.levelGreen)}
-                </b>
-              )}
-              <br />
-              {"Lavt målnivå: "}
-              {indData.levelYellow === null ? (
-                <b>{"Ikke oppgitt"}</b>
-              ) : (
-                <b>
-                  {levelSignLow + customFormat(",.0%")(indData.levelYellow)}
-                </b>
-              )}
-              <br />
-              <br />
-              {"Siste levering av data: " +
-                (indData.data[0].deliveryTime === null
-                  ? "Ikke oppgitt"
-                  : new Date(indData.data[0].deliveryTime).toLocaleString(
-                      "no-NO",
-                      {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                        timeZone: "CET",
-                      },
-                    ))}
+              <p>{indData.shortDescription}</p>
+              <p>
+                {"Ønsket målnivå: "}
+                {indData.levelGreen === null ? (
+                  <b>{"Ikke oppgitt"}</b>
+                ) : (
+                  <b>
+                    {levelSignHigh + customFormat(",.0%")(indData.levelGreen)}
+                  </b>
+                )}
+                <br />
+                {"Lavt målnivå: "}
+                {indData.levelYellow === null ? (
+                  <b>{"Ikke oppgitt"}</b>
+                ) : (
+                  <b>
+                    {levelSignLow + customFormat(",.0%")(indData.levelYellow)}
+                  </b>
+                )}
+              </p>
+              <p>
+                {"Siste levering av data: " +
+                  (indData.data[0].deliveryTime === null
+                    ? "Ikke oppgitt"
+                    : new Date(indData.data[0].deliveryTime).toLocaleString(
+                        "no-NO",
+                        {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                          timeZone: "CET",
+                        },
+                      ))}
+              </p>
             </Typography>
 
             <div style={{ display: "flex", justifyContent: "center" }}>
@@ -356,33 +356,29 @@ const IndicatorRow = (props: {
 
             <Typography variant="body2" sx={{ margin: "2rem" }}>
               <b>Om kvalitetsindikatoren</b>
+              <ReactMarkdown
+                remarkPlugins={remarkPlugins}
+                components={{
+                  p({ children }) {
+                    return <p style={{ margin: 0 }}>{children}</p>;
+                  },
+                  a({ href, children }) {
+                    return (
+                      <a
+                        href={href}
+                        target={href?.startsWith("#") ? "_self" : "_blank"}
+                        rel="noreferrer"
+                        style={{ color: "#006492" }}
+                      >
+                        {children}
+                      </a>
+                    );
+                  },
+                }}
+              >
+                {indData.longDescription}
+              </ReactMarkdown>
             </Typography>
-            <ReactMarkdown
-              remarkPlugins={remarkPlugins}
-              components={{
-                p({ children }) {
-                  return (
-                    <Typography variant="body2" sx={{ margin: "2rem" }}>
-                      {children}
-                    </Typography>
-                  );
-                },
-                a({ href, children }) {
-                  return (
-                    <a
-                      href={href}
-                      target={href?.startsWith("#") ? "_self" : "_blank"}
-                      rel="noreferrer"
-                      style={{ color: "#006492" }}
-                    >
-                      {children}
-                    </a>
-                  );
-                },
-              }}
-            >
-              {indData.longDescription}
-            </ReactMarkdown>
           </Collapse>
         </StyledTableCell>
       </TableRow>
