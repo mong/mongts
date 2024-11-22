@@ -23,6 +23,7 @@ import {
 import { customFormat, useIndicatorQuery } from "qmongjs";
 import { ChartRow } from "../chartrow";
 import { getLastCompleteYear } from "../../../helpers/functions";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 const remarkPlugins: PluggableList = [remarkGfm];
 
@@ -77,6 +78,11 @@ const IndicatorRow = (props: {
     chartColours,
   } = props;
 
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
+
   let open: boolean;
 
   if (openRowID === "") {
@@ -90,11 +96,14 @@ const IndicatorRow = (props: {
   const onClick = () => {
     if (!open) {
       open = true;
+      params.set("selected_row", rowID);
       setOpenRowID(rowID);
     } else {
       open = false;
+      params.delete("selected_row");
       setOpenRowID("");
     }
+    router.replace(pathname + "?" + params.toString(), { scroll: false });
   };
 
   const format = indData.format === null ? ",.0%" : indData.format;
