@@ -77,26 +77,10 @@
           "ingress": "Poliklinikk kontaktarrate (13-17 år)",
           "kart": "kronikere.geojson",
           "type": "resultatboks",
-          "oppdatert": "2024-11-22T14:40:00.000Z"
+          "oppdatert": "2024-11-22T09:35:00.000Z"
         }
       ],
       "overskrift": "Poliklinikk behandling"
-    },
-    {
-      "overskrift": "Døgnbehandling",
-      "innhold": [
-        {
-          "utvalg": "\nBarn og unge mellom 0 og 17 år som i 2019-2023 hadde minst et døgnopphold i psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern med hoved eller bi-tilstand F, R og Z kode, er inkludert (sektor 1, 2, 3, 7). Også somatik sektor (4,5,6) med hoved F kode er inkludert.\n\nPasientar i døgnbehandling er definerte etter følgande kriterium:\n\nDøgnopphold er definert som opphold på mer enn null dag.\n\nRatane er justerte for alder og kjønn.",
-          "data": "pasient_døgn_all.json",
-          "publisert": "2024-12-31T14:51:00.000Z",
-          "resultat": "Stor variasjon.",
-          "overskrift": "Pasienter i døgnbehandling",
-          "ingress": "Pasientrate for døgnbehandling",
-          "kart": "kronikere.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2024-11-22T14:51:00.000Z"
-        }
-      ]
     },
     {
       "overskrift": "Autisme diagnoser",
@@ -186,10 +170,33 @@
     },
     {
       "overskrift": "ADHD",
-      "innhold": []
+      "innhold": [
+        {
+          "utvalg": "F90",
+          "data": "adhd_pas.json",
+          "publisert": "2024-12-31T15:00:00.000Z",
+          "resultat": "stor volume",
+          "overskrift": "Pasientar med ADHD",
+          "ingress": "ADHD",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-22T15:00:00.000Z"
+        },
+        {
+          "utvalg": "F90\n\nKun en kontakt",
+          "data": "adhd_pol_kon.json",
+          "publisert": "2024-12-31T15:02:00.000Z",
+          "resultat": "stor variasjon",
+          "overskrift": "polikliniske kontaktar for ADHD",
+          "ingress": "ADHD",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-22T15:02:00.000Z"
+        }
+      ]
     },
     {
-      "overskrift": "ADHD"
+      "overskrift": "Utviklingsforstyrring"
     }
   ],
   "image": "/helseatlas/img/no/barn/frontpage.jpg",
