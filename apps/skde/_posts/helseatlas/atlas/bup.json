@@ -7,11 +7,76 @@
   "ingress": "Helseatlas bup",
   "kapittel": [
     {
-      "overskrift": "poliklinikk behandling for pasienter med autisme diagnoser",
+      "overskrift": "Oppdatering: Poliklinikk behandling",
+      "innhold": [
+        {
+          "utvalg": "Barn og unge mellom 0 og 17 år som i 2019-2023 hadde minst en poliklinisk kontakt i psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern med F, R og Z kode, er inkludert (sektor 1, 2, 3, 7).\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Direkte og indirekte kontakt er slå sammen.\n\nRatane er justerte for alder og kjønn.",
+          "data": "pasient_polyklinikk.json",
+          "publisert": "2024-12-31T15:55:00.000Z",
+          "resultat": "Ikke stor variasjon",
+          "overskrift": "pasienter i poliklinisk behandling",
+          "ingress": "poliklinikk pasient rate",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-20T08:32:00.000Z"
+        }
+      ]
+    },
+    {
+      "innhold": [
+        {
+          "utvalg": "Barn og unge mellom 0 og 17 år som i 2019-2023 hadde minst en poliklinisk kontakt i psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern med hoved eller bi-tilstand F, R og Z kode, er inkludert (sektor 1, 2, 3, 7). Også somatik sektor (4,5,6) med hoved F kode er inkludert.\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Direkte og indirekte kontakt er slå sammen.\n\n\n\nRatane er justerte for alder og kjønn.",
+          "data": "pasient_polyklinikk_all.json",
+          "publisert": "2024-12-31T10:42:00.000Z",
+          "resultat": "Ikke stor variasjon.",
+          "overskrift": "Pasienter i poliklinikk behandling",
+          "ingress": "Poliklinikk pasient rate",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-20T10:42:00.000Z"
+        },
+        {
+          "utvalg": "Barn og unge mellom 0 og 17 år som i 2019-2023 hadde minst en poliklinisk kontakt i psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern med hoved eller bi-tilstand F, R og Z kode, er inkludert (sektor 1, 2, 3, 7). Også somatik sektor (4,5,6) med hoved F kode er inkludert.\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Direkte og indirekte kontakt er slå sammen. Bare en kontakt per dag er brukt.\n\nRatane er justerte for alder og kjønn.",
+          "data": "polyklinikk_kontakt.json",
+          "publisert": "2024-12-31T12:19:00.000Z",
+          "resultat": "Ikke stor variasjon.",
+          "overskrift": "Poliklinikk kontaktarrate",
+          "ingress": "Poliklinikk kontaktarrate",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-20T12:19:00.000Z"
+        },
+        {
+          "utvalg": "Barn og unge mellom 0-5 år som i 2019-2023 hadde minst en poliklinisk kontakt i psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern med hoved eller bi-tilstand F, R og Z kode, er inkludert (sektor 1, 2, 3, 7). Også somatik sektor (4,5,6) med hoved F kode er inkludert.\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Direkte og indirekte kontakt er slå sammen. Bare en kontakt per dag er brukt.\n\nRatane er justerte for alder og kjønn.",
+          "data": "polyklinikk_kontakt_5.json",
+          "publisert": "2024-12-31T09:28:00.000Z",
+          "resultat": "Ikke stor variasjon",
+          "overskrift": "Poliklinikk kontaktarrate (0-5 år)",
+          "ingress": "Poliklinikk kontaktarrate (0-5 år)",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-21T11:30:00.000Z"
+        },
+        {
+          "utvalg": "Barn og unge mellom 6-12 år som i 2019-2023 hadde minst en poliklinisk kontakt i psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern med hoved eller bi-tilstand F, R og Z kode, er inkludert (sektor 1, 2, 3, 7). Også somatik sektor (4,5,6) med hoved F kode er inkludert.\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Direkte og indirekte kontakt er slå sammen. Bare en kontakt per dag er brukt.\n\nRatane er justerte for alder og kjønn.",
+          "data": "polyklinikk_kontakt_12.json",
+          "publisert": "2024-12-31T08:45:00.000Z",
+          "resultat": "Ikke stor variasjon",
+          "overskrift": "Poliklinikk kontaktarrate (6-12 år)",
+          "ingress": "Poliklinikk kontaktarrate (6-12 år)",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-22T08:45:00.000Z"
+        }
+      ],
+      "overskrift": "Poliklinikk behandling"
+    },
+    {
+      "overskrift": "Autisme diagnoser",
       "innhold": [
         {
           "utvalg": "ICD-10 kode F84",
-          "data": "autisme_pasientratenew.json",
+          "data": "autisme_pas.json",
           "publisert": "2024-12-31T15:26:00.000Z",
           "resultat": "pasienter med autisme diagnoser i poliklinikk behandling",
           "overskrift": "Pasientar med autisme diagnoser",
@@ -22,7 +87,7 @@
         },
         {
           "utvalg": "ICD-10 F84,\n\nen kontakt per pasient",
-          "data": "autismekontakt_rate.json",
+          "data": "autisme_pol_kon.json",
           "publisert": "2024-12-31T20:50:00.000Z",
           "resultat": "det er ulikt organisering for autisme behandling",
           "overskrift": "poliklinikk kontaktarrate for autisme diagnoser",
@@ -34,11 +99,11 @@
       ]
     },
     {
-      "overskrift": "poliklinikk behandling for pasienter med angst",
+      "overskrift": "Angst",
       "innhold": [
         {
           "utvalg": "ICD-10 koder",
-          "data": "angst_pas_pol.json",
+          "data": "angst_pas.json",
           "publisert": "2024-12-31T21:46:00.000Z",
           "resultat": "stor variasjon i pasient rate",
           "overskrift": "Pasientar med angst i poliklinikk behandling",
@@ -49,7 +114,7 @@
         },
         {
           "utvalg": "Alle opphold  som har hoved diagnose  og eller Akse1 som startar på ein av desse kodane F40, F41, F92.8, F93.0, F93.1, F93.2\n\n\n\nfor pasientar som hadde fleire kontaktar i samme dag, inkluderte vi kun en kontakt.",
-          "data": "angst_pol_kontakt1.json",
+          "data": "angst_pol_kon.json",
           "publisert": "2024-12-31T22:02:00.000Z",
           "resultat": "i perioden 2019-2023 var det stor variasjon i poliklinikk kontaktrate for angst",
           "overskrift": "Poliklinikk kontaktar",
@@ -61,18 +126,18 @@
       ]
     },
     {
-      "overskrift": "poliklinikk behandling for pasienter med depresjon",
+      "overskrift": "Depresjon",
       "innhold": [
         {
           "utvalg": "Alle opphold  som har hoved diagnose  og eller Akse1 som startar på ein av desse kodane : 'F32%' , 'F33%', 'F920%'",
-          "data": "depresjon_pas_pol1.json",
+          "data": "depresjon_pas1.json",
           "publisert": "2024-12-31T00:06:00.000Z",
-          "resultat": "Det var ikkje stor variasjon i perioden",
+          "resultat": "Det var ikkje stor variasjon i perioden\n\nstor",
           "overskrift": "Pasientar med depresjon i poliklinikk behandling",
           "ingress": "Depresjon blant unge",
           "kart": "kronikere.geojson",
           "type": "resultatboks",
-          "oppdatert": "2024-11-19T00:06:00.000Z"
+          "oppdatert": "2024-11-20T08:08:00.000Z"
         },
         {
           "utvalg": "Alle opphold  som har hoved diagnose  og eller Akse1 som startar på ein av desse kodane : 'F32%' , 'F33%', 'F920%'",
@@ -84,6 +149,11 @@
           "kart": "kronikere.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-19T00:10:00.000Z"
+        },
+        {
+          "type": "faktaboks",
+          "overskrift": "Kjønns- og alders  fordeling av pasientar med depresjon",
+          "tekst": "Meir enn 70% av unge med depresjon er jenter.\n\n![Det var mest jenter som var registerert med depresjon i perioden](/helseatlas/img/no/bup/depresjon_kjonn_alder.png \"Kjønn og alders fordeling av pasientar med depresjon\")"
         }
       ]
     }
