@@ -199,6 +199,7 @@ const IndicatorRow = (props: {
         key={indData.indicatorTitle + "-mainrow"}
         onClick={onClick}
         style={{ cursor: "pointer" }}
+        id={rowID}
       >
         <StyledTableCellStart key={indData.indicatorID}>
           <Stack direction="row" alignItems="center">
