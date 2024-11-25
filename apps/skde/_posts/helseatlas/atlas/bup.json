@@ -10,7 +10,7 @@
       "overskrift": "Oppdatering: Poliklinikk behandling",
       "innhold": [
         {
-          "utvalg": "Barn og unge mellom 0 og 17 år som i 2019-2023 hadde minst en poliklinisk kontakt i psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern med F, R og Z kode, er inkludert (sektor 1, 2, 3, 7).\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Direkte og indirekte kontakt er slå sammen.\n\nRatane er justerte for alder og kjønn.",
+          "utvalg": "Barn og unge under 18 år som i 2019-2023 hadde minst ein poliklinisk kontakt i \n- psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern\n- somatikk, rehabilitering eller avtalespesialistar i somatikk med F-diagnose som hovudtilstand\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Raten inkluderer både direkte og indirekte kontaktar.\n\nRatane er justerte for alder og kjønn.",
           "data": "pasient_polyklinikk.json",
           "publisert": "2024-12-31T15:55:00.000Z",
           "resultat": "Kvart år var i gjennomsnitt 60 000 barn og unge i poliklinisk behandling for psykiske lidingar. Medan tal pasientar behandla i psykiatrien var stabilt i åra 2014-2018 (ref.), har talet auka i åra etter. Somatisk sektor står for om lag 17% av den polikliniske aktiviteten på landsbasis, men andelen varierer frå 9 til 25 prosent mellom opptaksområda.\n\nDet er låg geografisk variasjon i pasientraten. Pasientar busette i Helgeland og Finnmark opptaksområde skil seg ut med ein betydeleg høgare rate i 2023 enn øvrige opptaksområde, medan forskjellane er mindre i dei to føregåande åra. I 2021 og 2022 var forskjellane noko lågare enn dei føregåande åra.\n\nMedan den geografiske variasjonen er liten, er utviklinga over tid meir betydeleg. I løpet av perioden frå 2018 til 2023 auka talet pasientar med rundt 20 prosent på landsbasis. Med unntak av i Vestfold, auka pasientraten i alle opptaksområda, og var størst for pasientar i opptaksområda Ahus, Østfold, Bergen og Finnmark. ",
@@ -29,7 +29,7 @@
           "data": "pasient_polyklinikk_all.json",
           "publisert": "2024-12-31T10:42:00.000Z",
           "resultat": "Kvart år var i gjennomsnitt 60 000 barn og unge i poliklinisk behandling for psykiske lidingar. Medan tal pasientar behandla i psykiatrien var stabilt i åra 2014-2018 (ref.), har talet auka i åra etter. Somatisk sektor står for om lag 17% av den polikliniske aktiviteten på landsbasis, men andelen varierer frå 9 til 25 prosent mellom opptaksområda.\n\nDet er låg geografisk variasjon i pasientraten. Pasientar busette i Helgeland og Finnmark opptaksområde skil seg ut med ein betydeleg høgare rate i 2023 enn øvrige opptaksområde, medan forskjellane er mindre i dei to føregåande åra. I 2021 og 2022 var forskjellane noko lågare enn dei føregåande åra.\n\nMedan den geografiske variasjonen er liten, er utviklinga over tid meir betydeleg. I løpet av perioden frå 2018 til 2023 auka talet pasientar med rundt 20 prosent på landsbasis. Med unntak av i Vestfold, auka pasientraten i alle opptaksområda, og var størst for pasientar i opptaksområda Ahus, Østfold, Bergen og Finnmark. ",
-          "overskrift": "Pasienter i poliklinisk behandling",
+          "overskrift": "Pasienter i poliklinikk behandling",
           "ingress": "Behandling av barn og unge sine psykiske lidingar skjer i hovudsak poliklinsk. Rundt 60 000 barn og unge mottek poliklinisk behandling kvart år. Det er liten geografisk variasjon i den polikliniske raten.",
           "kart": "kronikere.geojson",
           "type": "resultatboks",
@@ -50,9 +50,9 @@
           "utvalg": "Barn og unge mellom 0-5 år som i 2019-2023 hadde minst en poliklinisk kontakt i psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern med hoved eller bi-tilstand F, R og Z kode, er inkludert (sektor 1, 2, 3, 7). Også somatik sektor (4,5,6) med hoved F kode er inkludert.\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Direkte og indirekte kontakt er slå sammen. Bare en kontakt per dag er brukt.\n\nRatane er justerte for alder og kjønn.",
           "data": "polyklinikk_kontakt_5.json",
           "publisert": "2024-12-31T09:28:00.000Z",
-          "resultat": "Barn mellom 0-5 år er ei lita gruppe pasientar innan barne- og ungdomspsykiatrien. I løpet av perioden 2019-2023 har tal kontaktdagar auka betydeleg på landsbasis, men ikkje alle helseføretaka har ein auke i femårsperioden. \n\nSlik det var i perioden 2014-2018, skil Vestfold og Telemark seg ut med høgare ratar enn dei andre opptaksområda. Vestfold har rundt 300 kontaktdagar per 1000 innbyggarar, og har såleis rundt fem gonger så høg rate som St. Olavs, som har lågast.\n\nVestfold og Telemark har òg høgast tal kontaktdagar per pasient, med høvesvis 13,1 og 11,5, medan Østfold og St. Olavs har lågast, med 4,8 og 5. Det er såleis kontaktdagar per pasient som gir utslag i ekstremverdiar i ratane. Forskjellen er stor, men kan vere eit uttrykk for ulik organisering av tenestene. ",
-          "overskrift": "Kontaktdagar i poliklinikk (0-5 år)",
-          "ingress": "Det er stor variasjon i behandlingsrater for barn mellom 0-5 år.",
+          "resultat": "Stor variasjon",
+          "overskrift": "Poliklinikk kontaktarrate (0-5 år)",
+          "ingress": "Poliklinikk kontaktarrate (0-5 år)",
           "kart": "kronikere.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-21T11:30:00.000Z"
@@ -62,8 +62,8 @@
           "data": "polyklinikk_kontakt_12.json",
           "publisert": "2024-12-31T08:45:00.000Z",
           "resultat": "Ikke stor variasjon",
-          "overskrift": "Kontaktdagar i poliklinikk (6-12 år)",
-          "ingress": "Kontaktdagar i poliklinikk (6-12 år)",
+          "overskrift": "Poliklinikk kontaktarrate (6-12 år)",
+          "ingress": "Poliklinikk kontaktarrate (6-12 år)",
           "kart": "kronikere.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-22T08:45:00.000Z"
@@ -95,6 +95,17 @@
           "kart": "kronikere.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-25T08:28:00.000Z"
+        },
+        {
+          "utvalg": "Barn og unge under 18 år som i 2019-2023 hadde minst ein døgnopphold i \n\n* psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern\n* somatikk, rehabilitering eller avtalespesialistar i somatikk med F-diagnose som hovudtilstand\n\nPasientar i døgnopphold er definerte etter følgande kriterium:\nDøgnopphold er definerte som opphold på mer enn null døgn\n\nRatane er justerte for alder og kjønn.",
+          "data": "døgn_kontakt.json",
+          "publisert": "2024-12-31T09:36:00.000Z",
+          "resultat": "\nStor variasjon",
+          "overskrift": "Kontaktrate for døgnbehandling",
+          "ingress": "Kontaktrate for døgnbehandling",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-25T09:53:00.000Z"
         }
       ]
     },
@@ -102,7 +113,7 @@
       "overskrift": "Autisme diagnoser",
       "innhold": [
         {
-          "utvalg": "ICD-10 kode F84",
+          "utvalg": "\npersonar med opphald som startet og sluttet same dag\nPersoner som har  hoved diagnose   og eller Akse1 som startar på 'F84%' minst ein gong i sektorar 1,2,3,7\nPersoner som har  hoved diagnose  som startar på 'F84%' minst ein gong i sektorar 4,5,6\nAlder: 0-17 år \n\nRatane er justerte for alder og kjønn.",
           "data": "autisme_pas.json",
           "publisert": "2024-12-31T15:26:00.000Z",
           "resultat": "pasienter med autisme diagnoser i poliklinikk behandling",
@@ -129,7 +140,7 @@
       "overskrift": "Angst",
       "innhold": [
         {
-          "utvalg": "ICD-10 koder",
+          "utvalg": "personar med opphald som startet og sluttet same dag\nPersoner som har  hoved diagnose   og eller Akse1 som startar på ein av disse ICD-10 kodane \n 'F40%', 'F41%', 'F928%', 'F930%', 'F931%', 'F932%'.  minst ein gong i sektorar 1,2,3,7\nPersoner som har  hoved diagnose  som startar på ein av disse ICD-10 kodane \n 'F40%', 'F41%', 'F928%', 'F930%', 'F931%', 'F932%'. minst ein gong i sektorar 4,5,6\nAlder: 0-17 år \n\nRatane er justerte for alder og kjønn.",
           "data": "angst_pas.json",
           "publisert": "2024-12-31T21:46:00.000Z",
           "resultat": "stor variasjon i pasient rate",
@@ -156,7 +167,7 @@
       "overskrift": "Depresjon",
       "innhold": [
         {
-          "utvalg": "Alle opphold  som har hoved diagnose  og eller Akse1 som startar på ein av desse kodane : 'F32%' , 'F33%', 'F920%'",
+          "utvalg": "Personar med opphald som startet og sluttet same dag\nPersoner som har  hoved diagnose   og eller Akse1 som startar på  ein av desse ICD-10 kodane : 'F32%' , 'F33%', 'F920%'   minst ein gong i sektorar 1,2,3,7\nPersoner som har  hoved diagnose  som \nstartar på \n ein av desse ICD-10 kodane : 'F32%' , 'F33%', 'F920%'   minst ein gong i sektorar 4,5,6\nAlder: 0-17 år \n\nRatane er justerte for alder og kjønn.",
           "data": "depresjon_pas1.json",
           "publisert": "2024-12-31T00:06:00.000Z",
           "resultat": "Det var ikkje stor variasjon i perioden\n\nstor",
@@ -188,7 +199,7 @@
       "overskrift": "ADHD",
       "innhold": [
         {
-          "utvalg": "F90",
+          "utvalg": "personar med opphald som startet og sluttet same dag\nPersoner som har  hoved diagnose   og eller Akse1 som startar på 'F90%' minst ein gong i sektorar 1,2,3,7\nPersoner som har  hoved diagnose  som startar på 'F90%' minst ein gong i sektorar 4,5,6\nAlder: 0-17 år \n\nRatane er justerte for alder og kjønn.",
           "data": "adhd_pas2.json",
           "publisert": "2024-12-31T18:26:00.000Z",
           "resultat": "ADHD",
@@ -215,7 +226,7 @@
       "overskrift": "Utviklingsforstyrring",
       "innhold": [
         {
-          "utvalg": "utviklingsforstyrring",
+          "utvalg": "Personar med opphald som startet og sluttet same dag\nPersoner som har  hoved diagnose   og eller Akse1 som startar på ein av desse ICD-10  kodane : 'F80', 'F81', 'F82', 'F83', 'F88', 'F89'   minst ein gong i sektorar 1,2,3,7\n\nPersoner som har  hoved diagnose  som startar på ein av desse ICD-10  kodane : 'F80', 'F81', 'F82', 'F83', 'F88', 'F89'  minst ein gong i sektorar 4,5,6\nAlder: 0-17 år\n\nRatane er justerte for alder og kjønn.",
           "data": "utviklingforstyring_pas2.json",
           "publisert": "2024-12-31T19:28:00.000Z",
           "resultat": "utviklingsforstyrring",
@@ -242,11 +253,11 @@
       "overskrift": "Eteforstyrring",
       "innhold": [
         {
-          "utvalg": "F50",
+          "utvalg": "Personar med opphald som startet og sluttet same dag\nPersoner som har  hoved diagnose   og eller Akse1 som startar på 'F50%' minst ein gong i sektorar 1,2,3,7\nPersoner som har  hoved diagnose  som startar på 'F50%' minst ein gong i sektorar 4,5,6\nAlder: 0-17 år \n\nRatane er justerte for alder og kjønn.",
           "data": "eteforstyring_pas.json",
           "publisert": "2024-12-31T21:08:00.000Z",
           "resultat": "Eteforstyrring",
-          "overskrift": "pasientar med eteforstyrring",
+          "overskrift": "Pasientar med eteforstyrring",
           "ingress": "Eteforstyrring\n[](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&ved=2ahUKEwj8gfWC3vCJAxWg8LsIHSS2G_AQFnoECBoQAQ&url=https%3A%2F%2Fwww.sula.kommune.no%2F_f%2Fp1%2Fi7615016a-9cfb-4fdf-a8da-ae34e89f167a%2Feteforstyrringar.pdf&usg=AOvVaw3pFVzc_Wo7mBlxgys9btw5&opi=89978449)",
           "kart": "kronikere.geojson",
           "type": "resultatboks",
@@ -269,7 +280,7 @@
       "overskrift": "Tilpasningsforstyrr",
       "innhold": [
         {
-          "utvalg": "tilpas",
+          "utvalg": "Personar med opphald som startet og sluttet same dag\n\n\nPersoner som har  hoved diagnose   og eller Akse1 som \nstartar på ein av desse ICD-10  kodane : 'F430%', 'F432%', 'F438%' , 'F439%'\n minst ein gong i sektorar 1,2,3,7\n\n\nPersoner som har  hoved diagnose  som \nstartar på ein av desse ICD-10 kodane : 'F430%', 'F432%', 'F438%' , 'F439%'\n minst ein gong i sektorar 4,5,6\n\n\nAlder: 0-17 år \n\nRatane er justerte for alder og kjønn.",
           "data": "tilpasningstyring_pas.json",
           "publisert": "2024-12-31T22:32:00.000Z",
           "resultat": "tilpas",
@@ -296,7 +307,7 @@
       "overskrift": "Rusliding",
       "innhold": [
         {
-          "utvalg": "F10-F19 utan F17",
+          "utvalg": "personar med opphald som startet og sluttet same dag\nPersoner som har  hoved diagnose   og eller Akse1 som \n  som startar på ein av desse: ICD-kodane :F10,  F11, F12 ,F13, F14, F15 ,F16 ,  F18,F19\n\n minst ein gong i sektorar 1,2,3,7\nPersoner som har  hoved diagnose  som startar på 'F84%' minst ein gong i sektorar 4,5,6\nAlder: 0-17 år eller meir.\n\nRatane er justerte for alder og kjønn.",
           "data": "rusunder18_pas.json",
           "publisert": "2024-12-31T21:03:00.000Z",
           "resultat": "liten del av befolkning i denne aldersgruppe",
@@ -318,7 +329,7 @@
           "oppdatert": "2024-11-24T21:08:00.000Z"
         },
         {
-          "utvalg": "Pasientar med ICD 10 kodane F10-F19, minst ein gong",
+          "utvalg": "personar med opphald som startet og sluttet same dag\nPersoner som har  hoved diagnose   og eller Akse1 som \n  som startar på ein av desse: ICD-kodane :F10,  F11, F12 ,F13, F14, F15 ,F16 ,  F18, F19\n\n minst ein gong i sektorar 1,2,3,7\nPersoner som har  hoved diagnose  som startar på 'F84%' minst ein gong i sektorar 4,5,6\nAlder: 18-24 år \n\nRatane er justerte for alder og kjønn.",
           "data": "rus18plus_pas.json",
           "publisert": "2024-12-31T21:14:00.000Z",
           "resultat": "denne alderen er utsatt til rusliding",
