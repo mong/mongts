@@ -39,7 +39,6 @@ import {
   getFilterSettingsValuesMap,
 } from "../TreeViewFilterSection";
 import { useShouldReinitialize } from "../../../helpers/hooks/useShouldReinitialize";
-import { DefaultContext } from "react-icons";
 
 // The keys used for the different filter sections
 export const tableContextKey = "context";
@@ -64,7 +63,7 @@ export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   testIdPrefix?: string;
   skipSections?: SkipSections;
   treatmentUnitSelectionLimit?: number;
-  defaultContext?: "caregiver" | "resident";
+  initialContext?: "caregiver" | "resident";
 }>;
 
 interface SkipSections {
@@ -114,7 +113,7 @@ export function TreatmentQualityFilterMenu({
   testIdPrefix,
   skipSections,
   treatmentUnitSelectionLimit,
-  defaultContext,
+  initialContext: initialContext,
 }: TreatmentQualityFilterMenuProps) {
   const isRegisterPage = !!register;
   const selectedRegister = register ?? "all";
@@ -154,7 +153,7 @@ export function TreatmentQualityFilterMenu({
     tableContextKey,
     withDefault(
       StringParam,
-      defaultContext ?? tableContextOptions.default.value,
+      initialContext ?? tableContextOptions.default.value,
     ),
   );
 
