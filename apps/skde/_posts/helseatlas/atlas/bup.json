@@ -10,7 +10,7 @@
       "overskrift": "Oppdatering: Poliklinikk behandling",
       "innhold": [
         {
-          "utvalg": "Barn og unge mellom 0 og 17 år som i 2019-2023 hadde minst en poliklinisk kontakt i psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern med F, R og Z kode, er inkludert (sektor 1, 2, 3, 7).\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Direkte og indirekte kontakt er slå sammen.\n\nRatane er justerte for alder og kjønn.",
+          "utvalg": "Barn og unge mellom 0 og 17 år som i 2019-2023 hadde minst en poliklinisk kontakt i psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern (sektor 1, 2, 3, 7).\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Inkluderer alle direkte og indirekte kontakter.\n\nRatane er justerte for alder og kjønn.",
           "data": "pasient_polyklinikk.json",
           "publisert": "2024-12-31T15:55:00.000Z",
           "resultat": "Kvart år var i gjennomsnitt 60 000 barn og unge i poliklinisk behandling for psykiske lidingar. Medan tal pasientar behandla i psykiatrien var stabilt i åra 2014-2018 (ref.), har talet auka i åra etter. Somatisk sektor står for om lag 17% av den polikliniske aktiviteten på landsbasis, men andelen varierer frå 9 til 25 prosent mellom opptaksområda.\n\nDet er låg geografisk variasjon i pasientraten. Pasientar busette i Helgeland og Finnmark opptaksområde skil seg ut med ein betydeleg høgare rate i 2023 enn øvrige opptaksområde, medan forskjellane er mindre i dei to føregåande åra. I 2021 og 2022 var forskjellane noko lågare enn dei føregåande åra.\n\nMedan den geografiske variasjonen er liten, er utviklinga over tid meir betydeleg. I løpet av perioden frå 2018 til 2023 auka talet pasientar med rundt 20 prosent på landsbasis. Med unntak av i Vestfold, auka pasientraten i alle opptaksområda, og var størst for pasientar i opptaksområda Ahus, Østfold, Bergen og Finnmark. ",
@@ -25,7 +25,7 @@
     {
       "innhold": [
         {
-          "utvalg": "Barn og unge under 18 år som i 2019-2023 hadde minst ein poliklinisk kontakt i \n- psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern\n- somatikk, rehabilitering eller avtalespesialistar i somatikk med F-diagnose som hovudtilstand\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Raten inkluderer både direkte og indirekte kontaktar.\n\nRatane er justerte for alder og kjønn.",
+          "utvalg": "Barn og unge under 18 år som i 2019-2023 hadde minst ein poliklinisk kontakt i \n\n* psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern (sektor 1,2,3,7)\n* somatikk, rehabilitering eller avtalespesialistar i somatikk med F-diagnose som hovudtilstand (sektor 4,5,6)\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Raten inkluderer både direkte og indirekte kontaktar.\n\nRatane er justerte for alder og kjønn.",
           "data": "pasient_polyklinikk_all.json",
           "publisert": "2024-12-31T10:42:00.000Z",
           "resultat": "Kvart år var i gjennomsnitt 60 000 barn og unge i poliklinisk behandling for psykiske lidingar. Medan tal pasientar behandla i psykiatrien var stabilt i åra 2014-2018 (ref.), har talet auka i åra etter. Somatisk sektor står for om lag 17% av den polikliniske aktiviteten på landsbasis, men andelen varierer frå 9 til 25 prosent mellom opptaksområda.\n\nDet er låg geografisk variasjon i pasientraten. Pasientar busette i Helgeland og Finnmark opptaksområde skil seg ut med ein betydeleg høgare rate i 2023 enn øvrige opptaksområde, medan forskjellane er mindre i dei to føregåande åra. I 2021 og 2022 var forskjellane noko lågare enn dei føregåande åra.\n\nMedan den geografiske variasjonen er liten, er utviklinga over tid meir betydeleg. I løpet av perioden frå 2018 til 2023 auka talet pasientar med rundt 20 prosent på landsbasis. Med unntak av i Vestfold, auka pasientraten i alle opptaksområda, og var størst for pasientar i opptaksområda Ahus, Østfold, Bergen og Finnmark. ",
@@ -36,7 +36,7 @@
           "oppdatert": "2024-11-20T10:42:00.000Z"
         },
         {
-          "utvalg": "Barn og unge under 18 år som i 2019-2023 hadde minst ein poliklinisk kontakt i \n- psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern\n- somatikk, rehabilitering eller avtalespesialistar i somatikk med F-diagnose som hovudtilstand\n\nRaten inkluderer berre ein kontakt per dag, per pasient. \n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\nPolikliniske kontaktar er definerte som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Raten inkluderer både direkte og indirekte kontaktar. \n\nRatane er justerte for alder og kjønn.",
+          "utvalg": "Barn og unge under 18 år som i 2019-2023 hadde minst ein poliklinisk kontakt i \n\n* psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern (sektor 1,2,3,7)\n* somatikk, rehabilitering eller avtalespesialistar i somatikk med F-diagnose som hovudtilstand (sektor 4,5,6)\n\nRaten inkluderer berre ein kontakt per dag, per pasient. \n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\nPolikliniske kontaktar er definerte som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Raten inkluderer både direkte og indirekte kontaktar. \n\nRatane er justerte for alder og kjønn.",
           "data": "polyklinikk_kontakt.json",
           "publisert": "2024-12-31T12:19:00.000Z",
           "resultat": "Det er låg geografisk variasjon i tal kontaktdagar i poliklinikk. Pasientar i Telemark og Helgeland opptaksområde har høgast tal polikliniske kontaktdagar, medan raten er lågast i Møre og Romsdal.\n\nRaten for kontaktdagar har auka i same storleik som pasientraten, på landsbasis. Dette gjeld for mange av opptaksområda òg, men Sørlandet, Ahus og Stavanger har ikkje denne tendensen. Når det gjeld tal kontaktdagar per pasient, ser vi større forskjellar. Medan OUS, Vestre Viken, Telemark og Bergen har rundt 13 kontaktdagar per pasient, er talet rundt 10 for Nord-Trøndelag, Førde, St. Olav og Finnmark.  \n\nForskjellane i tal kontaktdagar per pasient er betydelege og heng blant anna saman med ulike måtar å organisere tenesta på. \n\nSamtidig vil bruk av *kontaktdagar* skjule ulik praksis mellom opptaksområda når det gjeld behandlingsintensitet i løpet av den same dagen: For det første kan pasienten vere i kontakt med fleire behandlarar i løpet av den same dagen. Dessutan er det vanleg praksis i barne- og ungdomspsykiatri å ha samtalar med pårørande om pasienten føregå samtidig som ein behandlar har samtale med pasienten.",
@@ -47,7 +47,7 @@
           "oppdatert": "2024-11-20T12:19:00.000Z"
         },
         {
-          "utvalg": "Barn og unge mellom 0-5 år som i 2019-2023 hadde minst en poliklinisk kontakt i psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern med hoved eller bi-tilstand F, R og Z kode, er inkludert (sektor 1, 2, 3, 7). Også somatik sektor (4,5,6) med hoved F kode er inkludert.\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Direkte og indirekte kontakt er slå sammen. Bare en kontakt per dag er brukt.\n\nRatane er justerte for alder og kjønn.",
+          "utvalg": "Barn og unge mellom 0-5 år som i 2019-2023 hadde minst ein poliklinisk kontakt i \n\n* psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern (sektor 1,2,3,7)\n* somatikk, rehabilitering eller avtalespesialistar i somatikk med F-diagnose som hovudtilstand (sektor 4,5,6)\n\nRaten inkluderer berre ein kontakt per dag, per pasient. \n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\nPolikliniske kontaktar er definerte som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Raten inkluderer både direkte og indirekte kontaktar. \n\nRatane er justerte for alder og kjønn.",
           "data": "polyklinikk_kontakt_5.json",
           "publisert": "2024-12-31T09:28:00.000Z",
           "resultat": "Barn mellom 0-5 år er ei lita gruppe pasientar innan barne- og ungdomspsykiatrien. I løpet av perioden 2019-2023 har tal kontaktdagar auka betydeleg på landsbasis, men ikkje alle helseføretaka har ein auke i femårsperioden. \n\nSlik det var i perioden 2014-2018, skil Vestfold og Telemark seg ut med høgare ratar enn dei andre opptaksområda. Vestfold har rundt 300 kontaktdagar per 1000 innbyggarar, og har såleis rundt fem gonger så høg rate som St. Olavs, som har lågast.\n\nVestfold og Telemark har òg høgast tal kontaktdagar per pasient, med høvesvis 13,1 og 11,5, medan Østfold og St. Olavs har lågast, med 4,8 og 5. Det er såleis kontaktdagar per pasient som gir utslag i ekstremverdiar i ratane. Forskjellen er stor, men kan vere eit uttrykk for ulik organisering av tenestene. ",
@@ -58,7 +58,7 @@
           "oppdatert": "2024-11-21T11:30:00.000Z"
         },
         {
-          "utvalg": "Barn og unge mellom 6-12 år som i 2019-2023 hadde minst en poliklinisk kontakt i psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern med hoved eller bi-tilstand F, R og Z kode, er inkludert (sektor 1, 2, 3, 7). Også somatik sektor (4,5,6) med hoved F kode er inkludert.\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Direkte og indirekte kontakt er slå sammen. Bare en kontakt per dag er brukt.\n\nRatane er justerte for alder og kjønn.",
+          "utvalg": "Barn og unge mellom 6-12 år som i 2019-2023 hadde minst ein poliklinisk kontakt i \n\n* psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern (sektor 1,2,3,7)\n* somatikk, rehabilitering eller avtalespesialistar i somatikk med F-diagnose som hovudtilstand (sektor 4,5,6)\n\nRaten inkluderer berre ein kontakt per dag, per pasient. \n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\nPolikliniske kontaktar er definerte som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Raten inkluderer både direkte og indirekte kontaktar. \n\nRatane er justerte for alder og kjønn.",
           "data": "polyklinikk_kontakt_12.json",
           "publisert": "2024-12-31T08:45:00.000Z",
           "resultat": "I perioden 2019-2023 har det vore ein liten auke i rate for kontaktdagar for barn i alderen 6-12 år. Som for dei yngste barna, gjeld ikkje dette systematisk i alle opptaksområda - ein del av opptaksområda har ein nedgang. Finnmark og UNN har hatt ein stor aktivitetsauke for aldersgruppa.\n\nDet er liten geografisk variasjon i ratane for tal kontaktdagar. Telemark og Helgeland opptaksområde har høgast rate, med høvesvis 891 og 857 kontaktdagar per 1000 innbyggarar, medan mange opptaksområde har jamnt lågaste rater. \n\nDet er ikkje ein tydeleg tendens mot at opptaksområda med høgast og lågaste rater, òg har høgast og lågast tal kontaktdagar per pasient. Medan Telemark òg har høgt tal kontaktdagar per pasient, har Helgeland forholdsvis lågt tal, noko som er eit uttrykk for at Helgeland har eit høgt tal pasientar i aldersgruppa. OUS har klart høgast tal kontaktar per pasient, sjølv om kontaktraten ikkje er blant dei tre høgaste. Det uttrykker at pasientar ved OUS har betydeleg fleire kontaktdagar gjennom året enn dei øvrige opptaksområda med høge kontaktratar.",
@@ -69,7 +69,7 @@
           "oppdatert": "2024-11-26T22:18:00.000Z"
         },
         {
-          "utvalg": "Barn og unge mellom 13-17 år som i 2019-2023 hadde minst en poliklinisk kontakt i psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern med hoved eller bi-tilstand F, R og Z kode, er inkludert (sektor 1, 2, 3, 7). Også somatik sektor (4,5,6) med hoved F kode er inkludert.\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Direkte og indirekte kontakt er slå sammen. Bare en kontakt per dag er brukt.\n\nRatane er justerte for alder og kjønn.",
+          "utvalg": "Barn og unge mellom13-17 år som i 2019-2023 hadde minst ein poliklinisk kontakt i \n\n* psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern (sektor 1,2,3,7)\n* somatikk, rehabilitering eller avtalespesialistar i somatikk med F-diagnose som hovudtilstand (sektor 4,5,6)\n\nRaten inkluderer berre ein kontakt per dag, per pasient. \n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\nPolikliniske kontaktar er definerte som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Raten inkluderer både direkte og indirekte kontaktar. \n\nRatane er justerte for alder og kjønn.",
           "data": "polyklinikk_kontakt_17.json",
           "publisert": "2024-12-31T09:35:00.000Z",
           "resultat": "Ikke stor variasjon.",
@@ -86,7 +86,7 @@
       "overskrift": "Døgnbehandling",
       "innhold": [
         {
-          "utvalg": "Barn og unge under 18 år som i 2019-2023 hadde minst ein døgnopphold i \n\n* psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern\n* somatikk, rehabilitering eller avtalespesialistar i somatikk med F-diagnose som hovudtilstand\n\nPasientar i døgnopphold er definerte etter følgande kriterium:\nDøgnopphold er definerte som opphold på mer enn null døgn\n\nRatane er justerte for alder og kjønn.",
+          "utvalg": "Barn og unge under 18 år som i 2019-2023 hadde minst ein døgnopphold i \n\n* psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern (sektor 1,2,3,7)\n* somatikk, rehabilitering eller avtalespesialistar i somatikk med F-diagnose som hovudtilstand (sektor 4,5,6)\n\nPasientar i døgnopphold er definerte etter følgande kriterium:\nDøgnopphold er definerte som opphold på mer enn null døgn\n\nRatane er justerte for alder og kjønn.",
           "data": "pasient_døgn_all.json",
           "publisert": "2024-12-31T08:24:00.000Z",
           "resultat": "Stor variasjon.",
@@ -97,7 +97,7 @@
           "oppdatert": "2024-11-26T23:41:00.000Z"
         },
         {
-          "utvalg": "Barn og unge under 18 år som i 2019-2023 hadde minst ein døgnopphold i \n\n* psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern\n* somatikk, rehabilitering eller avtalespesialistar i somatikk med F-diagnose som hovudtilstand\n\nPasientar i døgnopphold er definerte etter følgande kriterium:\nDøgnopphold er definerte som opphold på mer enn null døgn\n\nRatane er justerte for alder og kjønn.",
+          "utvalg": "Barn og unge under 18 år som i 2019-2023 hadde minst ein døgnopphold i \n\n* psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern (sektor 1,2,3,7)\n* somatikk, rehabilitering eller avtalespesialistar i somatikk med F-diagnose som hovudtilstand (sektor 4,5,6)\n\nPasientar i døgnopphold er definerte etter følgande kriterium:\nDøgnopphold er definerte som opphold på mer enn null døgn\n\nRatane er justerte for alder og kjønn.",
           "data": "døgn_kontakt.json",
           "publisert": "2024-12-31T23:25:00.000Z",
           "resultat": "stor variasjon",
@@ -105,7 +105,7 @@
           "ingress": "Oppholdsrate",
           "kart": "kronikere.geojson",
           "type": "resultatboks",
-          "oppdatert": "2024-11-26T23:39:00.000Z"
+          "oppdatert": "2024-11-27T10:01:00.000Z"
         }
       ]
     },
@@ -113,7 +113,7 @@
       "overskrift": "Autisme",
       "innhold": [
         {
-          "utvalg": "ICD-10 kode F84",
+          "utvalg": "Pasientar i poliklinikk behandling for autisme er definert etter følgende kriterium \n\n* Personar som hadde tilstand som startar på F84 i akse1 (alle kode nummer) i sektor 3 eller  hovud tilstand som startar på F84 i sektorar 1,2,4,5,6,7\n* poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå Både direkte og indierekte kontaktar er inkludert.\n\n\n  Alder 0-17\n  Ratane er justert for kjønn og alder",
           "data": "autisme_pas.json",
           "publisert": "2024-12-31T15:26:00.000Z",
           "resultat": "I gjennomsnitt mottek 6500 personar behandling for autisme i spesialisthelsetenesta årleg. Talet på personar som mottek behandling har auka kraftig i åra 2019-2023, med ein auke på rundt 30 prosent på landsbasis. Med unntak av Stavanger, har alle opptaksområde ein auke. Den største auken finn vi i Finnmark, Førde, Innlandet og Sørlandet, som har nær ei dobling. Dette er i takt med den auka diagnostiseringa dei siste åra, som  følgjer av auka merksemd og betre diagnostiske verktøy (NHI).\n\nBehandling av autisme i spesialisthelsetenestar skjer både i psykiatri og i somatikk. Spesielt Sørlandet og Nord-Trøndeleg har ein stor andel behandla i somatikken, med andelar på høvesvis 82 og 55 prosent. Men fleire andre helseføretak har òg høge andelar på 20 til 30 prosent. \n\nDen geografiske variasjonen i pasientrate er moderat. Lovisenberg, som har høgast pasientrate, har omtrent dobbelt så høg rate i femårsperioden som Sørlandet, som har den lågaste raten. Variasjonen har imidlertid blitt noko lågare i løpet av desse åra. ",
@@ -124,7 +124,7 @@
           "oppdatert": "2024-11-18T15:26:00.000Z"
         },
         {
-          "utvalg": "ICD-10 F84,\n\nen kontakt per pasient",
+          "utvalg": "* Inklusjon for polikliniske kontaktrate for autisme er:\n  Episodar som hadde tilstand som staartar på F84 i akse1 (alle kode nummer) i sektor 3 eller episodar som hadde hovud tilstand som startar på F84  i sektorar 1,2,4,5,6,7 \n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå Både direkte og indierekte kontaktar er inkludert.\n* Dersom pasientar hadde fleire kontaktar på same dag kun en kontakt per dag er inkluderte i analyse.\n\n  Alder 0-17\n\n  Ratane er justert for kjønn og alder",
           "data": "autisme_pol_kon.json",
           "publisert": "2024-12-31T20:50:00.000Z",
           "resultat": "6500 barn og unge med autisme mottok i gjennomsnitt 60 000 kontaktdagar i poliklinikk kvart år.\n\nFor autisme har ratane for behandling endra seg stort i løpet av åra 2019-2023. På landsbasis har raten auka med rundt 30 prosent. Medan Stavanger, Vestfold og St. Olavs har hatt ein nedgang, har Lovisenberg, Vestre Viken, Finnmark og Sørlandet stor auke i raten for polikliniske kontaktdagar. Tal kontaktdagar per pasient varierte frå 5,2 for Sørlandet til 14,5 for Telemark. \n\nDen geografiske variasjonen i kontaktdagratane for autisme er stor. Det er ikkje kjent at førekomsten av autisme i Noreg er betydeleg. Tal personar i behandling er moderat, men eit firedobbelt tal kontaktdagar heng ikkje godt ihop med førekomst. Variasjonen i tal kontaktdagar for autisme må difor reknast som uønska. \n",
@@ -202,9 +202,9 @@
           "utvalg": "F90",
           "data": "adhd_pas2.json",
           "publisert": "2024-12-31T18:26:00.000Z",
-          "resultat": "I gjennomsnitt var rundt 16 000 barn og unge i poliklinisk behandling for ADHD i perioden 2019-2023. Med unntak av for Vestfold og Stavanger, hadde alle opptaksområde ein stor auke i pasientrate. Mest auka raten for UNN, Finnmark, Lovisenberg og Diakonhjemmet, som alle hadde rundt ei dobling i tal pasientar i poliklinisk behandling.\n\nDet var moderat geografisk variasjon i rate for tal pasientar i poliklinisk behandling. Pasientar heimehøyrande i Sørlandet, Lovisenberg og Diakonhjemmet hadde ein pasientrate på rundt 10 per 1000 innbyggarar, medan Bergen, St. Olav, Fonna, UNN, Nordland og Finnmark hadden ein rate på omtrent det dobbelte. Opptaksområda i Helse Nord, saman med dei fleste av opptaksområda i Helse Vest, hadde rater godt over landssnittet. ",
+          "resultat": "ADHD",
           "overskrift": "pasientar med ADHD",
-          "ingress": "I løpet av åra 2019-2023 var det ein stor auke i poliklinisk behandling for ADHD.",
+          "ingress": "ADHD",
           "kart": "kronikere.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-22T18:27:00.000Z"
