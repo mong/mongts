@@ -212,7 +212,9 @@ const Row = (props: {
                     <Typography variant="overline">Register</Typography>
                   </TableCell>
                   <TableCell>
-                    <Typography variant="overline">Resultat</Typography>
+                    <Typography variant="overline">
+                      Kvalitetsindikatorer
+                    </Typography>
                   </TableCell>
                 </TableRow>
 
