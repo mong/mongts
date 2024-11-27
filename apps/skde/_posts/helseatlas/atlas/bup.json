@@ -86,7 +86,7 @@
       "overskrift": "Behandling hos fastlege/legevakt",
       "innhold": [
         {
-          "utvalg": "Pasientar i kommunehelsetjenester er definerte etter følgande kriterium:\n\n* Barn og unge under 18 år som i 2019-2023 hadde minst ein kontakt hos fastlege/legevakt\n* Pasienter med ICPC koder P01-P29  (symptomer og plager) og P70-P99 (Diagnoser/sykdommer)​\n* Takstkode: 2AD, 2AE, 2AK, 2ED, 2FK",
+          "utvalg": "Pasientar i kommunehelsetjenester er definerte etter følgande kriterium:\n\n* Barn og unge under 18 år som i 2019-2023 hadde minst ein kontakt hos fastlege/legevakt\n* Pasienter med ICPC koder P01-P29  (symptomer og plager) og P70-P99 (Diagnoser/sykdommer)​\n* Takstkode: 2AD, 2AE, 2AK, 2ED, 2FK\n\n\nRatane er justerte for alder og kjønn.",
           "data": "kpr_pasient_all.json",
           "publisert": "2024-12-31T21:49:00.000Z",
           "resultat": "Ikke variasjon",
@@ -95,6 +95,28 @@
           "kart": "kronikere.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-27T21:49:00.000Z"
+        },
+        {
+          "utvalg": "Pasientar i kommunehelsetjenester er definerte etter følgande kriterium:\n\n* Barn og unge under 18 år som i 2019-2023 hadde minst ein kontakt hos fastlege/legevakt\n* Pasienter med ICPC koder P01-P29  (symptomer og plager) og P70-P99 (Diagnoser/sykdommer)​\n* Takstkode: 2AD, 2AE, 2AK, 2ED, 2FK\n\n\n\n\nRatane er justerte for alder og kjønn.",
+          "data": "kpr_kontakt.json",
+          "publisert": "2024-12-31T21:52:00.000Z",
+          "resultat": "ikke variasjon",
+          "overskrift": "Kontaktdagar hos fastlege/legevakt",
+          "ingress": "Kontaktdagar hos fastlege/legevakt",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-27T21:52:00.000Z"
+        },
+        {
+          "utvalg": "Pasientar i kommunehelsetjenester er definerte etter følgande kriterium:\n\n* Barn og unge under 18 år som i 2019-2023 hadde minst ein kontakt hos fastlege/legevakt\n* Pasienter med ICPC koder P01-P29  (symptomer og plager) og P70-P99 (Diagnoser/sykdommer)​\n* Takstkode: 2AD, 2AE, 2AK, 2ED, 2FK\n\n\n\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\n\n\n* Barn og unge under 18 år som i 2019-2023 hadde minst ein poliklinisk kontakt i \n\n  * psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern\n  * somatikk, rehabilitering eller avtalespesialistar i somatikk med F-diagnose som hovudtilstand\n* Kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Raten inkluderer både direkte og indirekte kontaktar.\n\nRatane er justerte for alder og kjønn.",
+          "data": "kpr_npr_pasient.json",
+          "publisert": "2024-12-31T21:54:00.000Z",
+          "resultat": "Ikke stor variasjon",
+          "overskrift": "Pasienter hos fastlege/legevakt og poliklinikk",
+          "ingress": "Pasienter hos fastlege/legevakt og poliklinikk",
+          "kart": "kronikere.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2024-11-27T21:54:00.000Z"
         }
       ]
     },
