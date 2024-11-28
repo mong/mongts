@@ -158,21 +158,11 @@ const TableBlock = (props: TableBlockProps) => {
     );
   });
 
-  const tabName =
-    dataQuality && registerName.dg_data
-      ? "datakvalitet"
-      : context === "caregiver" && registerName.caregiver_data
-        ? "sykehus"
-        : context === "resident" && registerName.resident_data
-          ? "opptaksomraade"
-          : "sykehus";
-
   return (
     <>
       {blockTitle && uniqueOrderedInd.length !== 0 ? (
         <TableBlockTitle
-          tabName={tabName}
-          link={`kvalitetsregistre/${registerName.rname}`}
+          link={`behandlingskvalitet/${registerName.rname}`}
           title={blockTitle}
           colspan={colspan}
           tr_register_name_class={`${trRegisterNameClass} ${registerName.rname} ${medicalFieldClass}`}
