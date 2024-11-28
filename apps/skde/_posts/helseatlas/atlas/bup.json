@@ -148,16 +148,6 @@
       ]
     },
     {
-      "overskrift": "Ventetider og forløp",
-      "innhold": [
-        {
-          "type": "faktaboks",
-          "tekst": "Under og i etterkant av pandemien har tal henviste pasientar til spesialisthelsetenesta, auka kraftig. Pågangen av pasientar kan bli større enn kva kapasiteten i spesialisthelsetenesta er dimensjonert for, og pasientane står på ventelister over tid før dei slepp til. Tabellen nedanfor viser median tal dagar frå ei henvising blir sendt til første kontakt (1), samt median tal dagar fram til høvesvis 2, 3, 4 og 5 kontakt. Median er den midste ventetida når ein sorterer alle henvisingsperiodane i stigande rekkefølgje, og vert føretrekt framfor gjennomsnitt i dei tilfella då ekstremverdiar trekker mykje opp gjennomsnittet.\n\nMedian gir såleis eit bilete av normal intensitet  - hyppigheita av behandling - er for pasientar busette i ulike opptaksområde. \n\n![](/helseatlas/img/no/bup/median_intensitet_kontakt5.png \"Mediantid til neste kontakt per henvising\")\n\nDet er store forskjellar i ventetider. Møre og Romsdal, Innlandet, Nordland og Finnmark hadde ei median ventetid på over 70 dagar i 2022. St. Olavs hadde lågare tid i 2022, men langt høgare i 2021. Pasientar i Vestfold og Bergen venta rundt halvparten så mange dagar som pasientar i Møre og Romsdal. Tala på kolonnene mot høgre viser at Førde, Fonna, og Finnmark har lengre intervall mellom kontaktane enn øvrige opptaksområde. UNN og Nord-Trøndelag har langt høgare tal dagar, og Finnmark, St. Olav og Førde har noko høgare tal til andre kontakt.",
-          "overskrift": "Ventetider og forløp"
-        }
-      ]
-    },
-    {
       "overskrift": "Autisme",
       "innhold": [
         {
@@ -259,7 +249,7 @@
         },
         {
           "utvalg": "Inklusjon i polikliniske \n\n•\tEpisodar med tilstand som startar på F90 i Akse1 (alle tilstand kode nummer ) i sektor 3 eller med  hoved diagnose ICD-10 kode  som startar på  F90 i sektorar 1,2,4,5,6,7\n\n•\tPoliklinisk behandling er definert som  kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå inkluderer både direkte og indirekte kontaktar\n\n•\tDersom pasientar hadde fleire kontaktar same dag, inkluderte vi kun ein kontakt per dag per pasient\n\n\n\n\\    Alder: 0-17 år\n\n\\    Ratane er justerte for alder og kjønn.",
-          "data": "utviklingforstyrring_pol_kon3.json",
+          "data": "adhd_polkon.json",
           "publisert": "2024-12-31T18:38:00.000Z",
           "resultat": "ADHD",
           "overskrift": "Polikliniske kontakter for ADHD",
@@ -397,6 +387,16 @@
           "kart": "kronikere.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-24T21:19:00.000Z"
+        }
+      ]
+    },
+    {
+      "overskrift": "Tidleg forløp",
+      "innhold": [
+        {
+          "type": "faktaboks",
+          "tekst": "Under og i etterkant av pandemien har tal henviste pasientar til spesialisthelsetenesta, auka kraftig. Pågangen av pasientar kan bli større enn kva kapasiteten i spesialisthelsetenesta er dimensjonert for, og pasientane står på ventelister over tid før dei slepp til. Tabellen nedanfor viser median tal dagar frå ei henvising blir sendt til første kontakt (1), samt median tal dagar fram til høvesvis 2, 3, 4 og 5 kontakt. Den gir såleis eit bilete av kor høg intensiteten  - hyppigheita av behandling - er for pasientar busette i ulike opptaksområde. \n\n![](/helseatlas/img/no/bup/median_intensitet_kontakt5.png \"Mediantid til neste kontakt per henvising\")",
+          "overskrift": "Ventetider og tidleg forløp"
         }
       ]
     }
