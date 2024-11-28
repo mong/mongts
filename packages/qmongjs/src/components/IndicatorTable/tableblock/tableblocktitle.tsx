@@ -2,7 +2,6 @@ import Link from "next/link";
 import style from "./tableblocktitle.module.css";
 
 interface BlockTitleProps {
-  tabName: string;
   link?: string;
   title: string;
   colspan: number;
@@ -11,7 +10,6 @@ interface BlockTitleProps {
 
 export const TableBlockTitle = (props: BlockTitleProps) => {
   const {
-    tabName,
     link = "",
     title = "Nasjonalt hoftebruddregister",
     colspan = 2,
@@ -20,7 +18,7 @@ export const TableBlockTitle = (props: BlockTitleProps) => {
   return (
     <tr className={`${style.titleRow} ${tr_register_name_class}`}>
       <td colSpan={colspan}>
-        <Link href={`/${link}/${tabName}`} passHref>
+        <Link href={`/${link}`} passHref>
           <h3 className={style.title}>{title}</h3>
         </Link>
       </td>
