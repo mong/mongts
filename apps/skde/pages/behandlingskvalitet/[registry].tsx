@@ -232,7 +232,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
           </Link>{" "}
           for mer informasjon.{" "}
           <Link
-            href="https://www.kvalitetsregistre.no/stadieinndeling"
+            href="https://www.kvalitetsregistre.no/registerdrift/stadieinndeling"
             target="_blank"
             rel="noopener"
           >
