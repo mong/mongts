@@ -345,7 +345,7 @@
       "overskrift": "Rusliding",
       "innhold": [
         {
-          "utvalg": "F10-F19 utan F17",
+          "utvalg": "Pasientar i poliklinisk behandling for med rusliding er definerte etter følgande kriterium:\n\nPersoner som tilstand som startar på F10 ,F11,F12 ,F13 ,F14 ,F15 ,F16  ,F18,F19 i Akse1 (alle tilstand kode nummer ) i  sektorar 3 eller hadde hoved diagnose med ICD-10 kode  som startar på   F10 ,F11,F12 ,F13 ,F14 ,F15 ,F16  ,F18, F19  i sektorar 1,2,4,5,6,7\n\n•\tPoliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, inkluderer både direkte og indirekte kontaktar\n\n\\    Alder: 0-17 år\n\n\\    Ratane er justerte for alder og kjønn.",
           "data": "rusunder18_pas.json",
           "publisert": "2024-12-31T21:03:00.000Z",
           "resultat": "liten del av befolkning i denne aldersgruppe",
@@ -356,7 +356,7 @@
           "oppdatert": "2024-11-24T21:03:00.000Z"
         },
         {
-          "utvalg": "Alle kontaktat med ICD 10 kodar F10-F19\n\nalle sektorar\n\nalder 0-17\n\nkontaktar i sektorar 4, 5, 6 er inkluderet kun om det var hoved tilstand\n\ndersom pasientar hadde fleire kontaktar på same dag , kun en kontakt var talt",
+          "utvalg": "Inklusjon i polikliniske \n\n•\tEpisodar med tilstand som startar på F10 ,F11,F12 ,F13 ,F14 ,F15 ,F16  ,F18,F19 i Akse1 (alle tilstand kode nummer ) i sektor 3 eller med  hoved diagnose ICD-10 kode  som startar på  F10 ,F11,F12 ,F13 ,F14 ,F15 ,F16  ,F18,F19 i sektorar 1,2,4,5,6,7\n\n•\tPoliklinisk behandling er definert som  kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå inkluderer både direkte og indirekte kontaktar\n\n•\tDersom pasientar hadde fleire kontaktar same dag, inkluderte vi kun ein kontakt per dag per pasient\n\n\\    Alder: 0-17 år\n\n\\    Ratane er justerte for alder og kjønn.",
           "data": "rusunder18_pol_kon3.json",
           "publisert": "2024-12-31T21:07:00.000Z",
           "resultat": "stor variasjon , men liten volum",
