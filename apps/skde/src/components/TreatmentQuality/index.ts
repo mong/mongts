@@ -100,9 +100,6 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
       wordBreak: "break-word",
       ...theme.typography.body1,
     },
-    "& a": {
-      pointerEvents: "none",
-    },
   },
   "& tr": {
     backgroundColor: "white",
