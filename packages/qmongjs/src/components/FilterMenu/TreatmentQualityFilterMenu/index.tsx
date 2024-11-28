@@ -63,9 +63,10 @@ export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   testIdPrefix?: string;
   skipSections?: SkipSections;
   treatmentUnitSelectionLimit?: number;
+  initialContext?: "caregiver" | "resident";
 }>;
 
-export interface SkipSections {
+interface SkipSections {
   selectedFilters?: boolean;
   context?: boolean;
   years?: boolean;
@@ -112,6 +113,7 @@ export function TreatmentQualityFilterMenu({
   testIdPrefix,
   skipSections,
   treatmentUnitSelectionLimit,
+  initialContext: initialContext,
 }: TreatmentQualityFilterMenuProps) {
   const isRegisterPage = !!register;
   const selectedRegister = register ?? "all";
@@ -149,7 +151,10 @@ export function TreatmentQualityFilterMenu({
   const tableContextOptions = getTableContextOptions();
   const [selectedTableContext, setSelectedTableContext] = useQueryParam<string>(
     tableContextKey,
-    withDefault(StringParam, tableContextOptions.default.value),
+    withDefault(
+      StringParam,
+      initialContext ?? tableContextOptions.default.value,
+    ),
   );
 
   optionsMap.set(tableContextKey, {

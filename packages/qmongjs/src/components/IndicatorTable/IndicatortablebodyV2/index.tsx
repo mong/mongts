@@ -23,6 +23,7 @@ import {
 import { customFormat, useIndicatorQuery } from "qmongjs";
 import { ChartRow } from "../chartrow";
 import { getLastCompleteYear } from "../../../helpers/functions";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
 const remarkPlugins: PluggableList = [remarkGfm];
 
@@ -77,6 +78,11 @@ const IndicatorRow = (props: {
     chartColours,
   } = props;
 
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
+
   let open: boolean;
 
   if (openRowID === "") {
@@ -90,11 +96,14 @@ const IndicatorRow = (props: {
   const onClick = () => {
     if (!open) {
       open = true;
+      params.set("selected_row", rowID);
       setOpenRowID(rowID);
     } else {
       open = false;
+      params.delete("selected_row");
       setOpenRowID("");
     }
+    router.replace(pathname + "?" + params.toString(), { scroll: false });
   };
 
   const format = indData.format === null ? ",.0%" : indData.format;
@@ -142,13 +151,23 @@ const IndicatorRow = (props: {
     </TableRow>
   );
 
-  let levelSign = "";
+  let levelSignHigh = "";
 
   if (indData.levelGreen != null) {
     if (indData.levelDirection === 1 && indData.levelGreen < 1) {
-      levelSign = "≥";
+      levelSignHigh = "≥";
     } else if (indData.levelDirection === 0 && indData.levelGreen > 0) {
-      levelSign = "≤";
+      levelSignHigh = "≤";
+    }
+  }
+
+  let levelSignLow = "";
+
+  if (indData.levelYellow != null) {
+    if (indData.levelDirection === 1 && indData.levelYellow > 0) {
+      levelSignLow = "<";
+    } else if (indData.levelDirection === 0 && indData.levelYellow < 1) {
+      levelSignLow = ">";
     }
   }
 
@@ -180,6 +199,7 @@ const IndicatorRow = (props: {
         key={indData.indicatorTitle + "-mainrow"}
         onClick={onClick}
         style={{ cursor: "pointer" }}
+        id={rowID}
       >
         <StyledTableCellStart key={indData.indicatorID}>
           <Stack direction="row" alignItems="center">
@@ -190,7 +210,9 @@ const IndicatorRow = (props: {
             >
               {open ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
             </IconButton>
-            {indData.indicatorTitle}
+            <div lang="no" style={{ wordWrap: "break-word", hyphens: "auto" }}>
+              {indData.indicatorTitle}
+            </div>
           </Stack>
         </StyledTableCellStart>
 
@@ -282,11 +304,23 @@ const IndicatorRow = (props: {
             <Typography variant="body2" sx={{ margin: "2rem" }}>
               {indData.shortDescription}
               <br />
+              <br />
               {"Ønsket målnivå: "}
               {indData.levelGreen === null ? (
                 <b>{"Ikke oppgitt"}</b>
               ) : (
-                <b>{levelSign + customFormat(",.0%")(indData.levelGreen)}</b>
+                <b>
+                  {levelSignHigh + customFormat(",.0%")(indData.levelGreen)}
+                </b>
+              )}
+              <br />
+              {"Lavt målnivå: "}
+              {indData.levelYellow === null ? (
+                <b>{"Ikke oppgitt"}</b>
+              ) : (
+                <b>
+                  {levelSignLow + customFormat(",.0%")(indData.levelYellow)}
+                </b>
               )}
               <br />
               <br />
@@ -332,29 +366,33 @@ const IndicatorRow = (props: {
 
             <Typography variant="body2" sx={{ margin: "2rem" }}>
               <b>Om kvalitetsindikatoren</b>
-              <ReactMarkdown
-                remarkPlugins={remarkPlugins}
-                components={{
-                  p({ children }) {
-                    return <p style={{ margin: 0 }}>{children}</p>;
-                  },
-                  a({ href, children }) {
-                    return (
-                      <a
-                        href={href}
-                        target={href?.startsWith("#") ? "_self" : "_blank"}
-                        rel="noreferrer"
-                        style={{ color: "#006492" }}
-                      >
-                        {children}
-                      </a>
-                    );
-                  },
-                }}
-              >
-                {indData.longDescription}
-              </ReactMarkdown>
             </Typography>
+            <ReactMarkdown
+              remarkPlugins={remarkPlugins}
+              components={{
+                p({ children }) {
+                  return (
+                    <Typography variant="body2" sx={{ margin: "2rem" }}>
+                      {children}
+                    </Typography>
+                  );
+                },
+                a({ href, children }) {
+                  return (
+                    <a
+                      href={href}
+                      target={href?.startsWith("#") ? "_self" : "_blank"}
+                      rel="noreferrer"
+                      style={{ color: "#006492" }}
+                    >
+                      {children}
+                    </a>
+                  );
+                },
+              }}
+            >
+              {indData.longDescription}
+            </ReactMarkdown>
           </Collapse>
         </StyledTableCell>
       </TableRow>
@@ -505,7 +543,12 @@ const RegistrySection = (props: {
                 width: "12rem",
               }}
             >
-              {regData.registerFullName}
+              <div
+                lang="no"
+                style={{ wordWrap: "break-word", hyphens: "auto" }}
+              >
+                {regData.registerFullName}
+              </div>
             </StyledTableCellStart>
 
             {unitNames.map((row, index, arr) => {
@@ -524,7 +567,12 @@ const RegistrySection = (props: {
                   sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
                   width={"12rem"}
                 >
-                  {row}
+                  <div
+                    lang="no"
+                    style={{ wordWrap: "break-word", hyphens: "auto" }}
+                  >
+                    {row}
+                  </div>
                 </CellType>
               );
             })}
@@ -562,7 +610,13 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
   const { context, type, year, unitNames, levels, medfields, chartColours } =
     props;
 
-  const [openRowID, setOpenRowID] = useState<string>("");
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
+  const openRowParam = params.get("selected_row");
+
+  const [openRowID, setOpenRowID] = useState<string>(
+    openRowParam ? openRowParam : "",
+  );
 
   const queryParams: FetchIndicatorParams = {
     context: context,
