@@ -6,11 +6,11 @@
       "x": ["Snittrate"],
       "y": "bohf",
       "xLabel": {
-        "nn": "Tal kontaktar for depresjon pr. 1 000 innbyggarar (under 18 år)",
-        "en": "Number of contacts for depression per 1,000 inhabitants (under 18 years of age"
+        "nn": "Tal kontaktar for rusliding behandlig pr. 1 000 innbyggarar (18-24 år)",
+        "en": "Number of contacts for substance use disorder tratment per 1,000 inhabitants (18-24 years of age"
       },
       "yLabel": {
-        "nb": "Opptaksområde",
+        "nn": "Opptaksområde",
         "en": "Referral areas"
       },
       "annualVar": [
@@ -21,16 +21,16 @@
         "Rate.2023"
       ],
       "annualVarLabels": {
-        "nb": [ "2019", "2020", "2021", "2022", "2023"],
+        "nn": [ "2019", "2020", "2021", "2022", "2023"],
         "en": [ "2019", "2020", "2021", "2022", "2023"]
       }
     },
-   {
+    {
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Kontakt rate for depresjon behandling pr. 1 000 innbyggarar i alderen under 18 år.",
-        "en": "Average per year for the period 2019–2023. Contact rate for depression treatment per 1,000 inhabitants under age of 18 years."
+        "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Kontakt rate for rusliding behandling pr. 1 000 innbyggarar i alderen 18-24 år.",
+        "en": "Average per year for the period 2019–2023. Contact rate for substance use disorder treatment per 1,000 inhabitants age of 18-24 years."
       },
       "columns": [
         {
@@ -42,8 +42,8 @@
         },
         {
           "id": "Snittrate",
-          "label_no": "kontaktrate",
-          "label_en": "contact rate",
+          "label_no": "Poliklinisk kontaktrate",
+          "label_en": "Outpatient contacts",
           "typeVar": "number",
           "format": ",.1f"
         },
@@ -56,8 +56,8 @@
         },
         {
           "id": "Snitt_innbyggarar",
-          "label_no": "Innbyggarar (under 18 år)",
-          "label_en": "Inhabitants (under 18 years)",
+          "label_no": "Innbyggarar (18-24 år)",
+          "label_en": "Inhabitants (18-24 years)",
           "typeVar": "number",
           "format": ",.0f"
         }
@@ -67,8 +67,8 @@
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Tal kontaktar per pasient for depresjon behandling.",
-        "en": "Average per year for the period 2019–2023. Number of contacts per patient for depression treatment."
+        "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Tal kontaktar per pasient for rusliding behandling.",
+        "en": "Average per year for the period 2019–2023. Number of contacts per patient for substance use disorder treatment."
       },
       "columns": [
         {
@@ -88,7 +88,7 @@
         {
           "id": "Snitt_kontaktar",
           "label_no": "Tal kontaktar",
-          "label_en": "Number of contacts",
+          "label_en": "Number of outpatient contacts",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -101,24 +101,23 @@
         }
       ]
     },
-
-    {
+{
       "type": "map",
       "data": "qwerty",
       "x": "Snittrate",
       "caption": {
-        "nn": "Tal polikliniske kontaktar for depresjon pr. 1 000 innbyggarar (under 18 år )",
-        "en": "Number of outpatient contacts for depression per 1,000 inhabitants (under 18 years of age)"
+        "nn": "Tal kontaktar for rusliding behandling pr. 1 000 innbyggarar (18-24 år )",
+        "en": "Number of outpatient contacts for substance use disorder treatment per 1,000 inhabitants (18-24 years of age)"
       },
       "jenks": [
         {
-          "grense": 40.0
+          "grense": 68.8
         },
         {
-          "grense": 50.5
+          "grense": 103.7
         },
         {
-          "grense": 77.5
+          "grense": 132.3
         }
       ]
     },
