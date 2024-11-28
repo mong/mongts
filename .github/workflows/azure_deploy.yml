@@ -1,11 +1,11 @@
 name: Deploy app to Azure
 on:
   push:
-    branches: [azure-deploy]
+    branches: [develop]
     paths-ignore:
       - "apps/api/**"
   pull_request:
-    branches: [azure-deploy]
+    branches: [develop]
     paths-ignore:
       - "apps/api/**"
 
@@ -39,8 +39,8 @@ jobs:
           NEXT_PUBLIC_API_HOST: https://azure-mong-api.skde.org
         run: |
           yarn run export
-      - name: Build and sync azure-deploy to Azure
-        if: github.ref == 'refs/heads/azure-deploy'
+      - name: Build and sync develop to Azure
+        if: github.ref == 'refs/heads/develop'
         env:
           NEXT_PUBLIC_API_HOST: https://azure-mong-api.skde.org
         run: |

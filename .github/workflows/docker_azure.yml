@@ -1,11 +1,11 @@
 name: Publish Docker image
 on:
   push:
-    branches: [azure-deploy]
+    branches: [develop]
     paths-ignore:
       - "apps/skde/**"
   pull_request:
-    branches: [azure-deploy]
+    branches: [develop]
     paths-ignore:
       - "apps/skde/**"
 
@@ -23,13 +23,12 @@ jobs:
       AWS_DEFAULT_REGION: "eu-west-1"
     steps:
       - name: Set release variables
-        if: github.ref == 'refs/heads/azure-deploy'
+        if: github.ref == 'refs/heads/develop'
         run: |
           echo "S3Key='prod-mong-api.json'" >> $GITHUB_ENV
           echo "env_name=prod-mong-api" >> $GITHUB_ENV
           echo "version_label=${GITHUB_SHA:0:7}_prod_${RANDOM}" >> $GITHUB_ENV
           echo "descr='Release tag deploy'" >> $GITHUB_ENV
-          echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_PROD }}" >> $GITHUB_ENV
       - name: Check out the repo
         uses: actions/checkout@v4.2.2
       - run: corepack enable && yarn install
@@ -71,4 +70,3 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-
