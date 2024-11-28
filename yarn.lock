@@ -7565,8 +7565,7 @@ __metadata:
     express-rate-limit: "npm:7.4.1"
     helmet: "npm:8.0.0"
     knex: "npm:3.1.0"
-    mysql: "npm:^2.18.1"
-    mysql2: "npm:^3.11.4"
+    mysql2: "npm:3.11.4"
     prettier: "npm:3.3.3"
     simple-oauth2: "npm:5.1.0"
     ts-node-dev: "npm:2.0.0"
@@ -8304,13 +8303,6 @@ __metadata:
   version: 5.2.2
   resolution: "big.js@npm:5.2.2"
   checksum: 10/c04416aeb084f4aa1c5857722439c327cc0ada9bd99ab80b650e3f30e2e4f1b92a04527ed1e7df8ffcd7c0ea311745a04af12d53e2f091bf09a06f1292003827
-  languageName: node
-  linkType: hard
-
-"bignumber.js@npm:9.0.0":
-  version: 9.0.0
-  resolution: "bignumber.js@npm:9.0.0"
-  checksum: 10/7406d0d11dfdd2183e19be745f0d5913e3773ded5fbca2a310221e719f15fd8ec6b8d7991031a6081a6276a8e12e27d58ead60f73dcbb9d697ebe9e2dd0ad7e0
   languageName: node
   linkType: hard
 
@@ -18497,7 +18489,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mysql2@npm:^3.11.4":
+"mysql2@npm:3.11.4":
   version: 3.11.4
   resolution: "mysql2@npm:3.11.4"
   dependencies:
@@ -18511,18 +18503,6 @@ __metadata:
     seq-queue: "npm:^0.0.5"
     sqlstring: "npm:^2.3.2"
   checksum: 10/821de98f65dbb6145165831180a2f234fa3dd0bb03717a53002af44be645131dcb34804dbc351e4e68b088f5dc684d5286b4b21b23d240a63e879f089ddad45e
-  languageName: node
-  linkType: hard
-
-"mysql@npm:^2.18.1":
-  version: 2.18.1
-  resolution: "mysql@npm:2.18.1"
-  dependencies:
-    bignumber.js: "npm:9.0.0"
-    readable-stream: "npm:2.3.7"
-    safe-buffer: "npm:5.1.2"
-    sqlstring: "npm:2.3.1"
-  checksum: 10/87d80e374717d7767d3e609f7f5e09987fa4dee208ba346ff269fffd2500719dcf2f65ac86c8e77649c3d52b86811a88e33cfd06e7e4a48cec53ecd4ac85c08d
   languageName: node
   linkType: hard
 
@@ -21633,21 +21613,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"readable-stream@npm:2.3.7":
-  version: 2.3.7
-  resolution: "readable-stream@npm:2.3.7"
-  dependencies:
-    core-util-is: "npm:~1.0.0"
-    inherits: "npm:~2.0.3"
-    isarray: "npm:~1.0.0"
-    process-nextick-args: "npm:~2.0.0"
-    safe-buffer: "npm:~5.1.1"
-    string_decoder: "npm:~1.1.1"
-    util-deprecate: "npm:~1.0.1"
-  checksum: 10/d04c677c1705e3fc6283d45859a23f4c05243d0c0f1fc08cb8f995b4d69f0eb7f38ec0ec102f0ee20535c5d999ee27449f40aa2edf6bf30c24d0cc8f8efeb6d7
-  languageName: node
-  linkType: hard
-
 "readable-stream@npm:^2.0.1":
   version: 2.3.8
   resolution: "readable-stream@npm:2.3.8"
@@ -23397,9 +23362,9 @@ __metadata:
   linkType: hard
 
 "smol-toml@npm:^1.3.0":
-  version: 1.3.0
-  resolution: "smol-toml@npm:1.3.0"
-  checksum: 10/dc3e49a9202abca4a60c352ff48c8088a0c48886924b81a0fbab8c66d4575aaa1867f4eac783acea00dcfa34047ccd22634040d2282f9ccb05dc73511c1b0e4e
+  version: 1.3.1
+  resolution: "smol-toml@npm:1.3.1"
+  checksum: 10/b999828ea46cf44ae90b6293884d6a139dfb4545ac6f86cbd1002568a943a43d8895ad82413855d095eec0c0bc21d23413c0a25a26c7fad6395c2ce42c2fdbd0
   languageName: node
   linkType: hard
 
@@ -23608,13 +23573,6 @@ __metadata:
   version: 1.0.3
   resolution: "sprintf-js@npm:1.0.3"
   checksum: 10/c34828732ab8509c2741e5fd1af6b767c3daf2c642f267788f933a65b1614943c282e74c4284f4fa749c264b18ee016a0d37a3e5b73aee446da46277d3a85daa
-  languageName: node
-  linkType: hard
-
-"sqlstring@npm:2.3.1":
-  version: 2.3.1
-  resolution: "sqlstring@npm:2.3.1"
-  checksum: 10/bc09237002da7e1172098e7d47401ea0ae45c1e4b224619f7ee2905dc921321f5ccc8c5e076994890df01b4a3363b2b5ea295b7a10d32a35181ef25bad158093
   languageName: node
   linkType: hard
 

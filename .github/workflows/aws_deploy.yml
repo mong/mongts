@@ -1,11 +1,11 @@
 name: Deploy app to AWS
 on:
   push:
-    branches: [main]
+    branches: [main, develop]
     paths-ignore:
       - "apps/api/**"
   pull_request:
-    branches: [main, dependency_updates]
+    branches: [main, develop, dependency_updates]
     paths-ignore:
       - "apps/api/**"
 
@@ -47,6 +47,16 @@ jobs:
         run: |
           yarn run export
           aws s3 sync apps/skde/out s3://skde.org \
+            --exclude "helseatlas/files/*" \
+            --delete \
+            --cache-control "public, max-age=1, s-maxage=1"
+      - name: Build and sync develop to S3 bucket qa.skde.org
+        if: github.ref == 'refs/heads/develop'
+        env:
+          NEXT_PUBLIC_API_HOST: https://qa-mong-api.skde.org
+        run: |
+          yarn run export
+          aws s3 sync apps/skde/out s3://qa.skde.org \
             --exclude "helseatlas/files/*" \
             --delete \
             --cache-control "public, max-age=1, s-maxage=1"
