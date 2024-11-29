@@ -7,6 +7,14 @@
   "ingress": "Helseatlas bup",
   "kapittel": [
     {
+      "innhold": [
+        {
+          "type": "tekst",
+          "tekst": "Hovudfunn\n\n\\- Det er stor auke i aktivitet for autisme. Mykje behandling skjer i somatikken\n\n\\- Det er stor geografisk variasjon i behandling av deresjon\n\n\\- For adhd er det ein stor auke over femaarserioden\n\n\\- Stor variasjon i behandling av tilassingsforstyrring\n\n\\- Store ventetider i behandling innan psykisk helsevern for barn og unge"
+        }
+      ]
+    },
+    {
       "overskrift": "Oppdatering: Poliklinikk behandling",
       "innhold": [
         {
@@ -131,6 +139,16 @@
       ]
     },
     {
+      "overskrift": "Ventetider",
+      "innhold": [
+        {
+          "type": "faktaboks",
+          "tekst": "Under og i etterkant av pandemien har tal henviste pasientar til spesialisthelsetenesta, auka kraftig. Pågangen av pasientar kan bli større enn kva kapasiteten i spesialisthelsetenesta er dimensjonert for, og pasientane står på ventelister over tid før dei slepp til. Tabellen nedanfor viser median tal dagar frå ei henvising blir sendt til første kontakt (1), samt median tal dagar fram til høvesvis 2, 3, 4 og 5 kontakt. Median er den midste ventetida når ein sorterer alle henvisingsperiodane i stigande rekkefølgje, og vert føretrekt framfor gjennomsnitt i dei tilfella då ekstremverdiar trekker mykje opp gjennomsnittet. Median gir såleis eit bilete av normal intensitet - hyppigheita av behandling - er for pasientar busette i ulike opptaksområde. \n\n![](/helseatlas/img/no/bup/median_intensitet_kontakt5.png \"Mediantid til neste kontakt per henvising\")\n\n\n\n\nDet er store forskjellar i ventetider. Møre og\nRomsdal, Innlandet, Nordland og Finnmark hadde ei median ventetid på over 70\ndagar i 2022. St. Olavs\nhadde lågare tid i 2022, men langt høgare i 2021. Pasientar i Vestfold og\nBergen venta rundt halvparten så mange dagar som pasientar i Møre og Romsdal.\nTala på kolonnene mot høgre viser at Førde, Fonna, og Finnmark har lengre\nintervall mellom kontaktane enn øvrige opptaksområde. UNN og Nord-Trøndelag har\nlangt høgare tal dagar, og Finnmark, St. Olav og Førde har noko høgare tal til\nandre kontakt.",
+          "overskrift": "Ventetider"
+        }
+      ]
+    },
+    {
       "overskrift": "Døgnbehandling",
       "innhold": [
         {
@@ -229,7 +247,7 @@
           "utvalg": "Inklusjon i polikliniske \n\n•\tEpisodar med tilstand som startar på F32% , F33%, F920%    i Akse1 (alle tilstand kode nummer ) i sektor 3 eller med  hoved diagnose ICD-10 kode  som startar på F32% , F33%, F920%   i sektorar 1,2,4,5,6,7\n\n•\tPoliklinisk behandling er definert som  kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå inkluderer både direkte og indirekte kontaktar\n\n•\tDersom pasientar hadde fleire kontaktar same dag, inkluderte vi kun ein kontakt per dag per pasient\n\n\\    Alder: 0-17 år\n\n\\    Ratane er justerte for alder og kjønn.",
           "data": "depr_pol_kontaktrate.json",
           "publisert": "2024-12-31T00:10:00.000Z",
-          "resultat": "I perioden 2019-2023 mottok 3500 pasientar rundt 55 000 polikliniske kontaktdagar som behandling for depressiv liding. Det var ikkje ei klar endring i landsraten over tid, medan enkelte av opptaksområda hadde stor auke: Lovisenberg og Diakonhjemmet i Oslo-området, saman med Bergen og Nord-Trøndelag hadde stor auke i tal kontaktdagar for depresjon.\n\nVariasjonen mellom opptaksområda i rate for kontaktdagar var stor. Medan Forholdstal 2 er på rundt 3, er Forholdstal 1 på rundt 4, ved at Lovisenberg har fire gonger så høg rate som Sørlandet. Forskjellen kan ikkje grunngjevast ut frå høgare behov og må reknast som uønska.",
+          "resultat": "I perioden 2019-2023 mottok 3500 pasientar rundt 55 000 polikliniske kontaktdagar som behandling for depressiv liding. Det var ikkje ei klar endring i landsraten over tid, medan\nenkelte av opptaksområda hadde stor auke: Lovisenberg og Diakonhjemmet i Oslo-området,\nsaman med Bergen og Nord-Trøndelag hadde stor auke i tal kontaktdagar for\ndepresjon. I 2023 var det ein stor reduksjon i raten frå føregåande år, på landsbasis. Auken ein såg i ratar i pandemien har såleis gått ned att i ettertid.\n\nVariasjonen mellom opptaksområda i rate for kontaktdagar var stor. Medan Forholdstal 2 er på rundt 3, er Forholdstal 1 på rundt 4, ved at Lovisenberg har fire gonger så høg rate\nsom Sørlandet.",
           "overskrift": "Kontaktrate for pasientar med depresjon",
           "ingress": "Det var stor variasjon i rate for kontaktdagar i løpet av perioden 2019-2023.",
           "kart": "kronikere.geojson",
@@ -397,16 +415,6 @@
           "kart": "kronikere.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-24T21:19:00.000Z"
-        }
-      ]
-    },
-    {
-      "overskrift": "Tidleg forløp",
-      "innhold": [
-        {
-          "type": "faktaboks",
-          "tekst": "Under og i etterkant av pandemien har tal henviste pasientar til spesialisthelsetenesta, auka kraftig. Pågangen av pasientar kan bli større enn kva kapasiteten i spesialisthelsetenesta er dimensjonert for, og pasientane står på ventelister over tid før dei slepp til. Tabellen nedanfor viser median tal dagar frå ei henvising blir sendt til første kontakt (1), samt median tal dagar fram til høvesvis 2, 3, 4 og 5 kontakt. Median er den midste ventetida når ein sorterer alle henvisingsperiodane i stigande rekkefølgje, og vert føretrekt framfor gjennomsnitt i dei tilfella då ekstremverdiar trekker mykje opp gjennomsnittet. Median gir såleis eit bilete av normal intensitet - hyppigheita av behandling - er for pasientar busette i ulike opptaksområde. \n\n![](/helseatlas/img/no/bup/median_intensitet_kontakt5.png \"Mediantid til neste kontakt per henvising\")\n\n\n\n\nDet er store forskjellar i ventetider. Møre og\nRomsdal, Innlandet, Nordland og Finnmark hadde ei median ventetid på over 70\ndagar i 2022. St. Olavs\nhadde lågare tid i 2022, men langt høgare i 2021. Pasientar i Vestfold og\nBergen venta rundt halvparten så mange dagar som pasientar i Møre og Romsdal.\nTala på kolonnene mot høgre viser at Førde, Fonna, og Finnmark har lengre\nintervall mellom kontaktane enn øvrige opptaksområde. UNN og Nord-Trøndelag har\nlangt høgare tal dagar, og Finnmark, St. Olav og Førde har noko høgare tal til\nandre kontakt.",
-          "overskrift": "Ventetider og tidleg forløp"
         }
       ]
     }
