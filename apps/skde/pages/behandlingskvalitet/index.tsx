@@ -125,6 +125,20 @@ export default function TreatmentQualityPage({ registryInfo }) {
   const medicalFields = medicalFieldsQuery?.data;
   const nestedUnitNames = unitNamesQuery?.data?.nestedUnitNames;
 
+  // Chech where the registries have data
+  const registryHasData = {
+    caregiver: registryInfo
+      .filter((row: RegisterName) => {
+        return row.caregiver_data === 1;
+      })
+      .map((row: RegisterName) => row.rname),
+    resident: registryInfo
+      .filter((row: RegisterName) => {
+        return row.resident_data === 1;
+      })
+      .map((row: RegisterName) => row.rname),
+  };
+
   /**
    * Handle that the initial filter settings are loaded, which can happen
    * more than once due to Next's pre-rendering and hydration behaviour combined
@@ -367,6 +381,7 @@ export default function TreatmentQualityPage({ registryInfo }) {
                           selectedTreatmentUnits,
                           "colours",
                         )}
+                        registryHasData={registryHasData}
                       />
                     </IndicatorTableWrapper>
                   )

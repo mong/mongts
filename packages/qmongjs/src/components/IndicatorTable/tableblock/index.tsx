@@ -23,6 +23,7 @@ interface TableBlockProps {
   colspan: number;
   onEmptyStatusChanged?: (registerName: string, isEmpty: boolean) => void;
   chartColours: string[];
+  hasResidentData: boolean;
 }
 
 const SkeletonRow = (colSpan: number) => {
@@ -50,6 +51,7 @@ const TableBlock = (props: TableBlockProps) => {
     unitNames,
     onEmptyStatusChanged,
     chartColours,
+    hasResidentData,
   } = props;
   const queryContext = dataQuality
     ? { context, type: "dg" }
@@ -127,10 +129,6 @@ const TableBlock = (props: TableBlockProps) => {
     return null;
   }
 
-  if (isEmptyRef.current) {
-    return null;
-  }
-
   const medicalFieldClass = medicalFieldFilter.includes(registerName.rname)
     ? ""
     : style.filterMedField;
@@ -158,9 +156,22 @@ const TableBlock = (props: TableBlockProps) => {
     );
   });
 
+  const showTitle = uniqueOrderedInd.length !== 0;
+
+  let showTitleAnyway = false;
+
+  if (
+    context === "caregiver" &&
+    !showTitle &&
+    hasResidentData &&
+    medicalFieldFilter.includes(registerName.rname)
+  ) {
+    showTitleAnyway = true;
+  }
+
   return (
     <>
-      {blockTitle && uniqueOrderedInd.length !== 0 ? (
+      {blockTitle && (showTitle || showTitleAnyway) ? (
         <TableBlockTitle
           link={`behandlingskvalitet/${registerName.rname}`}
           title={blockTitle}
@@ -169,6 +180,13 @@ const TableBlock = (props: TableBlockProps) => {
         />
       ) : null}
       {indicatorRows}
+      {showTitleAnyway && (
+        <TableRow>
+          <TableCell colSpan={colspan}>
+            {"Registeret har data på opptaksområde. "}
+          </TableCell>
+        </TableRow>
+      )}
     </>
   );
 };

@@ -22,6 +22,7 @@ interface IndicatorTableProps {
   showTreatmentYear?: boolean;
   nestedUnitNames?: NestedTreatmentUnitName[];
   chartColours: string[];
+  registryHasData: { caregiver: string[]; resident: string[] };
 }
 
 export const IndicatorTable = (props: IndicatorTableProps) => {
@@ -42,6 +43,7 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
     showTreatmentYear,
     nestedUnitNames,
     chartColours,
+    registryHasData,
   } = props;
   const [emptyBlocks, setEmptyBlocks] = useState<Set<string>>(new Set());
 
@@ -89,6 +91,7 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
           blockTitle={blockTitle}
           onEmptyStatusChanged={handleEmptyStatusChanged}
           chartColours={chartColours}
+          registryHasData={registryHasData}
         />
       </table>
     </>
