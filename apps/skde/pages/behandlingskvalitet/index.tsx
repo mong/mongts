@@ -53,8 +53,11 @@ import {
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
 import checkParamsReady from "./utils/checkParamsReady";
+import { RegisterName } from "types";
+import { fetchRegisterNames } from "qmongjs";
+import { GetStaticProps } from "next";
 
-export default function TreatmentQualityPage() {
+export default function TreatmentQualityPage({ registries }) {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
 
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -409,3 +412,11 @@ export default function TreatmentQualityPage() {
     </ThemeProvider>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const registries: RegisterName[] = await fetchRegisterNames();
+
+  return {
+    props: { registries: registries },
+  };
+};
