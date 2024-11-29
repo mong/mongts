@@ -57,7 +57,7 @@ import { RegisterName } from "types";
 import { fetchRegisterNames } from "qmongjs";
 import { GetStaticProps } from "next";
 
-export default function TreatmentQualityPage({ registries }) {
+export default function TreatmentQualityPage({ registryInfo }) {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
 
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -414,9 +414,9 @@ export default function TreatmentQualityPage({ registries }) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const registries: RegisterName[] = await fetchRegisterNames();
+  const registryInfo: RegisterName[] = await fetchRegisterNames();
 
   return {
-    props: { registries: registries },
+    props: { registryInfo: registryInfo },
   };
 };
