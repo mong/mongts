@@ -101,13 +101,13 @@
       "overskrift": "Poliklinikk behandling"
     },
     {
-      "overskrift": "Behandling hos fastlege/legevakt",
+      "overskrift": "Henvising og oppfølging hjå allmennlege",
       "innhold": [
         {
           "utvalg": "Pasientar i kommunehelsetjenester er definerte etter følgande kriterium:\n\n* Barn og unge under 18 år som i 2019-2023 hadde minst ein kontakt hos fastlege/legevakt\n* Pasienter med ICPC koder P01-P29  (symptomer og plager) og P70-P99 (Diagnoser/sykdommer)​\n* Takstkode: 2AD, 2AE, 2AK, 2ED, 2FK\n\n\nRatane er justerte for alder og kjønn.",
           "data": "kpr_pasient_all.json",
           "publisert": "2024-12-31T21:49:00.000Z",
-          "resultat": "Rundt 71 000 barn og unge var årleg i kontakt med fastlege for psykiske sjukdommar, symptom eller plager. Pasientraten auka med rundt 25 prosent på landsbasis i løpet av femårsperioden, og auka klart i alle opptaksområda. Auken er større enn auken i bruk av poliklinikk i løpet av den same perioden. Helgeland opptaksområde hadde mindre endring enn øvrige opptaksområde.\n\nUtgreiing og behandling innanfor psykisk helsevern skjer i hovudregelen i spesialisthelsetenesta. Mange pasientar mottek behandling hjå allmennlege eller oppsøker allmennlege ved tilbakefall. Rundt ein tredjedel av pasientane er behandling for diagnose, og to tredjedelar gjeld kontakt for symptom eller plager.\n\nDen geografiske variasjonen i pasientratane var liten. Stavanger har omtrent 60 prosent høgare rate enn Førde, som har lågast rate. \n",
+          "resultat": "Rundt 71 000 barn og unge var årleg i kontakt med fastlege for psykiske sjukdommar, symptom eller plager. Pasientraten auka med rundt 25 prosent på landsbasis i løpet av femårsperioden, og auka klart i alle opptaksområda. Auken er større enn auken i bruk av poliklinikk i løpet av den same perioden. Helgeland opptaksområde hadde mindre endring enn øvrige opptaksområde.\n\nPsykisk helsearbeid i kommunane krev god koordinering mellom helsestasjon, allmennlegetenesta, barnevern og barne- og ungdomspsykiatrien, og kommunane vel å organisere dette ulikt etter mellom anna kommunestørrelse, demografi og sjukelegheit. Utgreiing og behandling innanfor psykisk helsevern skjer i spesialisthelsetenesta, med\nunntak av for eteforstyrringar, som òg vert utgreidd og behandla i primærhelsetenesta. Barne- og ungdomspsykiatrien rettleiar kommunehelsetenesta i oppfølging av enkeltpasientar. Behandling i primærhelsetenesta skjer ved mildare psykisk liding. Rundt ein tredjedel av pasientane er behandling for diagnose, og to tredjedelar gjeld kontakt for symptom eller plager.\n\nDen geografiske variasjonen i pasientratane var liten. Stavanger har omtrent 60 prosent høgare rate enn Førde, som har lågast rate.",
           "overskrift": "Henvising og oppfølgjing hjå allmennlege",
           "ingress": "Tal pasientar med kontakt med fastlege har auka mykje dei siste åra.",
           "kart": "kronikere.geojson",
@@ -119,8 +119,8 @@
           "data": "kpr_kontakt.json",
           "publisert": "2024-12-31T21:52:00.000Z",
           "resultat": "Rundt 71 000 barn og unge mottok i perioden 2019-2023 rundt 142 000 kontaktdagar i allmennlegetenesta, noko som gir rundt 2 kontaktdagar per pasient på landsbasis.\n\nPasientar får hovudsak utgreiing og behandling for psykiske lidingar i spesialisthelsetenesta, og sjeldan i primærhelsetenesta. Behandling i primærhelsetenesta skjer for psykisk liding som anten hovud- eller bitilstandar, for mildare psykisk liding og tilbakefall.\n\nDet var liten geografisk variasjon i rate for kontaktdagar hjå allmennlege, men over tid auka den sterkt. Ettersom tal kontaktdagar per pasient er lågt, er utviklinga liknande den for utviklinga i pasientraten. Førde hadde betydeleg lågare gjennomsnittsrate i perode enn dei øvrige, men elles var det mindre forskjellar. Helgeland hadde ei mindre endring over tid.",
-          "overskrift": "Kontaktdagar hos fastlege/legevakt",
-          "ingress": "Det var liten geografisk variasjon i tal kontaktdagar hjå fastlege.",
+          "overskrift": "Kontaktdagar hos allmennlege",
+          "ingress": "Det var liten geografisk variasjon i tal kontaktdagar hjå almennlege.",
           "kart": "kronikere.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-28T20:53:00.000Z"
@@ -130,7 +130,7 @@
           "data": "kpr_npr_pasient.json",
           "publisert": "2024-12-31T21:54:00.000Z",
           "resultat": "Andelen av barn og unge som får behandling for psykiske plager, er ganske lik mellom opptaksområda. Finnmark har høgst rate av pasientar som er i kontakt med primær- eller spesialisthelsetenesta, men Helgeland og UNN har i nærleiken av den same raten. Vestfold har lågare rate i spesialisthelsetenesta, men høgare rate i primærhelsetenesta gjer totalraten blant dei høgste. Mange opptaksområde har ein rate på rundt 80.\n\nFiguren viser òg at det er ein svak tendens mot at opptaksområde med lågare rater for poliklinikk har høgare rater for kontaktdagar hjå fastlege eller legevakt.",
-          "overskrift": "Pasienter hos fastlege/legevakt og poliklinikk",
+          "overskrift": "Pasienter hos almennlege og poliklinikk",
           "ingress": "Det er lite geografisk variasjon i andelen av barn og unge som mottek behandling for psykiske plager i anten primær- eller spesialisthelsetenesta.",
           "kart": "kronikere.geojson",
           "type": "resultatboks",
