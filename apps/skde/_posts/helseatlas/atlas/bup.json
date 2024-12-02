@@ -29,7 +29,7 @@
       "overskrift": "Oppdatering: Poliklinikk behandling",
       "innhold": [
         {
-          "utvalg": "Barn og unge mellom 0 og 17 år som i 2019-2023 hadde minst en poliklinisk kontakt i psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern med F, R og Z kode, er inkludert (sektor 1, 2, 3, 7).\n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Direkte og indirekte kontakt er slå sammen.\n\nRatane er justerte for alder og kjønn.",
+          "utvalg": "Barn og unge mellom 0 og 17 år som i 2019-2023 hadde minst en poliklinisk kontakt i psykisk helsevern, tverrfagleg spesialisert behandling av ruslidingar eller hos avtalespesialistar i psykisk helsevern \n\nPasientar i poliklinisk behandling er definerte etter følgande kriterium:\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Direkte og indirekte kontakt er slå sammen.\n\nRatane er justerte for alder og kjønn.",
           "data": "pasient_polyklinikk.json",
           "publisert": "2024-12-31T15:55:00.000Z",
           "resultat": "Kvart år var i gjennomsnitt 60 000 barn og unge i poliklinisk behandling for psykiske lidingar. Medan tal pasientar behandla i psykiatrien var stabilt i åra 2014-2018 (ref.), har talet auka i åra etter. Somatisk sektor står for om lag 17% av den polikliniske aktiviteten på landsbasis, men andelen varierer frå 9 til 25 prosent mellom opptaksområda.\n\nDet er låg geografisk variasjon i pasientraten. Pasientar busette i Helgeland og Finnmark opptaksområde skil seg ut med ein betydeleg høgare rate i 2023 enn øvrige opptaksområde, medan forskjellane er mindre i dei to føregåande åra. I 2021 og 2022 var forskjellane noko lågare enn dei føregåande åra.\n\nMedan den geografiske variasjonen er liten, er utviklinga over tid meir betydeleg. I løpet av perioden frå 2018 til 2023 auka talet pasientar med rundt 20 prosent på landsbasis. Med unntak av i Vestfold, auka pasientraten i alle opptaksområda, og var størst for pasientar i opptaksområda Ahus, Østfold, Bergen og Finnmark. ",
@@ -291,8 +291,8 @@
           "data": "adhd_polkon.json",
           "publisert": "2024-12-31T18:38:00.000Z",
           "resultat": "ADHD",
-          "overskrift": "Polikliniske kontaktdagar for ADHD",
-          "ingress": "Tal kontaktdagar for ADHD auka mykje i løpet av perioden 2019-2023.",
+          "overskrift": "Polikliniske kontakter for ADHD",
+          "ingress": "Feil figur ligg inne her - er den for utviklingsforstyrring",
           "kart": "kronikere.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-22T18:38:00.000Z"
@@ -372,8 +372,8 @@
           "data": "tilpasningforstyr_pol_kon.json",
           "publisert": "2024-12-31T22:34:00.000Z",
           "resultat": "4200 pasientar mottek årleg i gjennomsnitt rundt 47 500 polikliniske kontaktdagar for tilpassingsforstyrringar. Det gir eit årleg gjennomsnitt på 11,3 kontaktdagar på landsbasis. Variasjonen på mellom 8,3 og 13,5 kontaktdagar per pasient er forholdsvis låg, samanlikna med dei andre tilstandsgruppene. Variasjonen i kontaktdagar er imidlertid meir framtredande: I Sørlandet opptaksområde mottek barn og unge nær fire gonger så mange polikliniske kontaktdagar som i Møre og Romsdal. ",
-          "overskrift": "Polikliniske kontaktdagar for tilpasningsforstyrring",
-          "ingress": "Det var stor variasjon i tal kontaktdagar for tilpassingsforstyrring.",
+          "overskrift": "polikliniske kontaktar for tilpasningsforstyrring",
+          "ingress": "titt",
           "kart": "kronikere.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-22T22:34:00.000Z"
@@ -426,6 +426,16 @@
           "kart": "kronikere.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-24T21:19:00.000Z"
+        }
+      ]
+    },
+    {
+      "overskrift": "Om atlaset",
+      "innhold": [
+        {
+          "type": "faktaboks",
+          "overskrift": "Inndeling i opptaksområde",
+          "tekst": "![](/helseatlas/img/no/bup/innbyggarar.png \"Inndeling i opptaksområde, tal innbyggarar og median-alder på innbyggarane (2020)\")"
         }
       ]
     }
