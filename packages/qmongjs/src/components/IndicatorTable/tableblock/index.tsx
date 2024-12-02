@@ -7,7 +7,7 @@ import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
 import { Description, Indicator, RegisterName } from "types";
 import { IndicatorTableSkeleton } from "../IndicatorTableSkeleton";
-import { TableRow, TableCell, Box, Typography, Stack } from "@mui/material";
+import { TableRow, TableCell, Box, Stack } from "@mui/material";
 import Link from "next/link";
 
 interface TableBlockProps {
@@ -186,21 +186,21 @@ const TableBlock = (props: TableBlockProps) => {
       {indicatorRows}
       {showTitleAnyway && (
         <TableRow>
-          <TableCell colSpan={colspan}>
+          <TableCell colSpan={colspan} sx={{ padding: 0 }}>
             <Box margin="0.5rem">
-              <Stack spacing={"1rem"}>
-                <Typography variant="subtitle1">
+              <Stack spacing={"0.5rem"}>
+                <div style={{ fontSize: "1.2rem", fontWeight: "normal" }}>
                   Registeret har data på opptaksområde
-                </Typography>
-                <Typography variant="body1">
+                </div>
+                <div style={{ fontSize: "0.9rem", color: "#7d8588" }}>
                   Det kan hende at det ikke finnes data for valgt år eller
                   valgte behandlingsenheter.
-                </Typography>
-                <Typography variant="body1">
+                </div>
+                <div style={{ fontSize: "0.9rem" }}>
                   <Link href={"/behandlingskvalitet/" + registerName.rname}>
                     År og opptaksområder med data vises her.
                   </Link>
-                </Typography>
+                </div>
               </Stack>
             </Box>
           </TableCell>
