@@ -1,0 +1,485 @@
+{
+"innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snittrate"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Oppholdsrate for døgnbehandling pr. 1 000 (under 18 år)",
+        "en": "Admission rate for inpatient treatment of children and adolescents for mentalhealthcare pr. 1,000 inhabitants (under 18 years old)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "Rate.2019",
+        "Rate.2020",
+        "Rate.2021",
+        "Rate.2022",
+        "Rate.2023"
+      ],
+      "annualVarLabels": {
+        "nn": [ "2019", "2020", "2021", "2022", "2023"],
+        "en": [ "2019", "2020", "2021", "2022", "2023"]
+      }
+    },
+   {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Som", "psyk"],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Oppholdsrate for døgnbehandling pr. 1 000 (under 18 år).",
+        "en": "Admission rate for inpatient treatment of children and adolescents for mentalhealthcare pr. 1,000 inhabitants (under 18 years old)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "xLegend": {
+        "nn": ["Somatik sektorar", "Psykisk helsevern sektorar"],
+        "en": ["Somatic sectors", "Mental healthcare sectors"]
+      },
+      "format": ",.0f"
+    },
+ {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Oppholdsrate for døgnbehandling pr. 1 000 innbyggarar (under 18 år).",
+        "en": "Average per year for the period 2019–2023. Admission rate for inpatient treatment of children and adolescents for mentalhealthcare per 1,000 inhabitants under age of 18 years."
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "Snittrate",
+          "label_no": "oppholdsrate",
+          "label_en": "admission rate",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Snitt_kontaktar",
+          "label_no": "Tal opphold",
+          "label_en": "Number of admission",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Snitt_innbyggarar",
+          "label_no": "Innbyggarar (under 18 år)",
+          "label_en": "Inhabitants (under 18 years)",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+  {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Oppholdsrate per pasient for døgnbehandling.",
+        "en": "Average per year for the period 2019–2023. Admission rate for inpatient treatment per patient for mentalhealthcare."
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "kontakt_p_pas",
+          "label_no": "Opphold per pasient",
+          "label_en": "Contacts per patient",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Snitt_kontaktar",
+          "label_no": "Tal opphold",
+          "label_en": "Number of admission",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Tal_pas",
+          "label_no": "Tal pasientar",
+          "label_en": "Number of pasients",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+{
+      "type": "map",
+      "data": "qwerty",
+      "x": "Snittrate",
+      "caption": {
+        "nn": "Oppholdsrate for døgnbehandling pr. 1 000 innbyggarar (under 18 år)",
+        "en": "Admission rate for inpatient treatment of children and adolescents for mentalhealthcare pr. 1,000 inhabitants (under 18 years old)"
+      },
+      "jenks": [
+        {
+          "grense": 3.8
+        },
+        {
+          "grense": 5.4
+        },
+        {
+          "grense": 7.5
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data":
+
+
+[
+  {
+    "bohf": "Vestfold",
+    "Snitt_kontaktar": 142,
+    "Snitt_innbyggarar": 49969.8,
+    "Snittrate": 2.78,
+    "Rate.2019": 2.76,
+    "Rate.2020": 2.6,
+    "Rate.2021": 2.69,
+    "Rate.2022": 2.91,
+    "Rate.2023": 2.94,
+    "Tal_pas": 95.4,
+    "Som": 1.03,
+    "psyk": 1.74,
+    "kontakt_p_pas": 1.4885
+  },
+  {
+    "bohf": "Akershus",
+    "Snitt_kontaktar": 366.4,
+    "Snitt_innbyggarar": 128646.8,
+    "Snittrate": 2.83,
+    "Rate.2019": 1.77,
+    "Rate.2020": 1.89,
+    "Rate.2021": 3.59,
+    "Rate.2022": 3.32,
+    "Rate.2023": 3.57,
+    "Tal_pas": 194.2,
+    "Som": 0.75,
+    "psyk": 2.08,
+    "kontakt_p_pas": 1.8867
+  },
+  {
+    "bohf": "Diakonhjemmet",
+    "Snitt_kontaktar": 75.4,
+    "Snitt_innbyggarar": 25931,
+    "Snittrate": 3.12,
+    "Rate.2019": 2.3,
+    "Rate.2020": 2.86,
+    "Rate.2021": 4.14,
+    "Rate.2022": 3.87,
+    "Rate.2023": 2.44,
+    "Tal_pas": 44.6,
+    "Som": 0.64,
+    "psyk": 2.48,
+    "kontakt_p_pas": 1.6906
+  },
+  {
+    "bohf": "Vestre Viken",
+    "Snitt_kontaktar": 341.8,
+    "Snitt_innbyggarar": 105821.2,
+    "Snittrate": 3.17,
+    "Rate.2019": 3.2,
+    "Rate.2020": 3.66,
+    "Rate.2021": 3.3,
+    "Rate.2022": 3.02,
+    "Rate.2023": 2.67,
+    "Tal_pas": 214.2,
+    "Som": 0.96,
+    "psyk": 2.21,
+    "kontakt_p_pas": 1.5957
+  },
+  {
+    "bohf": "St. Olav",
+    "Snitt_kontaktar": 217.2,
+    "Snitt_innbyggarar": 67721,
+    "Snittrate": 3.27,
+    "Rate.2019": 2.57,
+    "Rate.2020": 2.85,
+    "Rate.2021": 3.92,
+    "Rate.2022": 3.48,
+    "Rate.2023": 3.53,
+    "Tal_pas": 136,
+    "Som": 0.86,
+    "psyk": 2.41,
+    "kontakt_p_pas": 1.5971
+  },
+  {
+    "bohf": "S rlandet",
+    "Snitt_kontaktar": 237.4,
+    "Snitt_innbyggarar": 67155.8,
+    "Snittrate": 3.48,
+    "Rate.2019": 4.16,
+    "Rate.2020": 3.12,
+    "Rate.2021": 3.35,
+    "Rate.2022": 3.18,
+    "Rate.2023": 3.6,
+    "Tal_pas": 136.6,
+    "Som": 1.53,
+    "psyk": 1.95,
+    "kontakt_p_pas": 1.7379
+  },
+  {
+    "bohf": "Lovisenberg",
+    "Snitt_kontaktar": 56.4,
+    "Snitt_innbyggarar": 22897,
+    "Snittrate": 3.53,
+    "Rate.2019": 3.61,
+    "Rate.2020": 4.02,
+    "Rate.2021": 3.77,
+    "Rate.2022": 3.3,
+    "Rate.2023": 2.96,
+    "Tal_pas": 32.8,
+    "Som": 0.63,
+    "psyk": 2.91,
+    "kontakt_p_pas": 1.7195
+  },
+  {
+    "bohf": "OUS",
+    "Snitt_kontaktar": 207.4,
+    "Snitt_innbyggarar": 59446.4,
+    "Snittrate": 3.79,
+    "Rate.2019": 3.47,
+    "Rate.2020": 3.31,
+    "Rate.2021": 4.92,
+    "Rate.2022": 3.94,
+    "Rate.2023": 3.32,
+    "Tal_pas": 112.6,
+    "Som": 0.9,
+    "psyk": 2.89,
+    "kontakt_p_pas": 1.8419
+  },
+  {
+    "bohf": "F rde",
+    "Snitt_kontaktar": 99.6,
+    "Snitt_innbyggarar": 23040.4,
+    "Snittrate": 4.08,
+    "Rate.2019": 3.05,
+    "Rate.2020": 4.03,
+    "Rate.2021": 4.24,
+    "Rate.2022": 4.81,
+    "Rate.2023": 4.25,
+    "Tal_pas": 64.6,
+    "Som": 0.9,
+    "psyk": 3.18,
+    "kontakt_p_pas": 1.5418
+  },
+  {
+    "bohf": "Fonna",
+    "Snitt_kontaktar": 173.2,
+    "Snitt_innbyggarar": 39994,
+    "Snittrate": 4.26,
+    "Rate.2019": 4.03,
+    "Rate.2020": 4.35,
+    "Rate.2021": 4.81,
+    "Rate.2022": 4.23,
+    "Rate.2023": 3.87,
+    "Tal_pas": 109.4,
+    "Som": 1.19,
+    "psyk": 3.06,
+    "kontakt_p_pas": 1.5832
+  },
+  {
+    "bohf": "Noreg",
+    "Snitt_kontaktar": 4762.8,
+    "Snitt_innbyggarar": 1114704,
+    "Snittrate": 4.27,
+    "Rate.2019": 3.86,
+    "Rate.2020": 3.99,
+    "Rate.2021": 4.75,
+    "Rate.2022": 4.46,
+    "Rate.2023": 4.27,
+    "Tal_pas": 2790,
+    "Som": 1.11,
+    "psyk": 3.15,
+    "kontakt_p_pas": 1.7071
+  },
+  {
+    "bohf": "Stavanger",
+    "Snitt_kontaktar": 372.8,
+    "Snitt_innbyggarar": 87767,
+    "Snittrate": 4.38,
+    "Rate.2019": 3.53,
+    "Rate.2020": 3.9,
+    "Rate.2021": 5.12,
+    "Rate.2022": 5.16,
+    "Rate.2023": 4.18,
+    "Tal_pas": 196.4,
+    "Som": 1.12,
+    "psyk": 3.26,
+    "kontakt_p_pas": 1.8982
+  },
+  {
+    "bohf": "UNN",
+    "Snitt_kontaktar": 171.6,
+    "Snitt_innbyggarar": 37118.6,
+    "Snittrate": 4.5,
+    "Rate.2019": 4.81,
+    "Rate.2020": 4.52,
+    "Rate.2021": 4.99,
+    "Rate.2022": 4.37,
+    "Rate.2023": 3.8,
+    "Tal_pas": 110.6,
+    "Som": 1.05,
+    "psyk": 3.45,
+    "kontakt_p_pas": 1.5515
+  },
+  {
+    "bohf": "Nord-Tr ndelag",
+    "Snitt_kontaktar": 140.4,
+    "Snitt_innbyggarar": 28257.4,
+    "Snittrate": 4.8,
+    "Rate.2019": 4.01,
+    "Rate.2020": 4.59,
+    "Rate.2021": 4.69,
+    "Rate.2022": 5.79,
+    "Rate.2023": 4.89,
+    "Tal_pas": 106.6,
+    "Som": 1.26,
+    "psyk": 3.54,
+    "kontakt_p_pas": 1.3171
+  },
+  {
+    "bohf": "Telemark",
+    "Snitt_kontaktar": 172.8,
+    "Snitt_innbyggarar": 33769,
+    "Snittrate": 4.88,
+    "Rate.2019": 4.4,
+    "Rate.2020": 4.86,
+    "Rate.2021": 5.41,
+    "Rate.2022": 5.26,
+    "Rate.2023": 4.48,
+    "Tal_pas": 94,
+    "Som": 1.17,
+    "psyk": 3.71,
+    "kontakt_p_pas": 1.8383
+  },
+  {
+    "bohf": "Innlandet",
+    "Snitt_kontaktar": 331.8,
+    "Snitt_innbyggarar": 63506.8,
+    "Snittrate": 5.03,
+    "Rate.2019": 4.75,
+    "Rate.2020": 4.76,
+    "Rate.2021": 5.61,
+    "Rate.2022": 4.61,
+    "Rate.2023": 5.41,
+    "Tal_pas": 218.8,
+    "Som": 1.39,
+    "psyk": 3.64,
+    "kontakt_p_pas": 1.5165
+  },
+  {
+    "bohf": " stfold",
+    "Snitt_kontaktar": 344.4,
+    "Snitt_innbyggarar": 65127.6,
+    "Snittrate": 5.14,
+    "Rate.2019": 5.7,
+    "Rate.2020": 4.46,
+    "Rate.2021": 5.71,
+    "Rate.2022": 5.1,
+    "Rate.2023": 4.71,
+    "Tal_pas": 180.8,
+    "Som": 1.31,
+    "psyk": 3.82,
+    "kontakt_p_pas": 1.9049
+  },
+  {
+    "bohf": "Bergen",
+    "Snitt_kontaktar": 501.8,
+    "Snitt_innbyggarar": 96697.2,
+    "Snittrate": 5.29,
+    "Rate.2019": 4.84,
+    "Rate.2020": 5.56,
+    "Rate.2021": 5.73,
+    "Rate.2022": 5.11,
+    "Rate.2023": 5.21,
+    "Tal_pas": 273.2,
+    "Som": 0.95,
+    "psyk": 4.34,
+    "kontakt_p_pas": 1.8367
+  },
+  {
+    "bohf": "M re og Romsdal",
+    "Snitt_kontaktar": 307.6,
+    "Snitt_innbyggarar": 55257.6,
+    "Snittrate": 5.39,
+    "Rate.2019": 4.33,
+    "Rate.2020": 5.05,
+    "Rate.2021": 5.57,
+    "Rate.2022": 6.43,
+    "Rate.2023": 5.59,
+    "Tal_pas": 190.4,
+    "Som": 1.07,
+    "psyk": 4.33,
+    "kontakt_p_pas": 1.6155
+  },
+  {
+    "bohf": "Helgeland",
+    "Snitt_kontaktar": 116.2,
+    "Snitt_innbyggarar": 15107.6,
+    "Snittrate": 7.45,
+    "Rate.2019": 7.18,
+    "Rate.2020": 6.7,
+    "Rate.2021": 7.69,
+    "Rate.2022": 7.52,
+    "Rate.2023": 8.16,
+    "Tal_pas": 74,
+    "Som": 2.11,
+    "psyk": 5.35,
+    "kontakt_p_pas": 1.5703
+  },
+  {
+    "bohf": "Finnmark",
+    "Snitt_kontaktar": 110.6,
+    "Snitt_innbyggarar": 14386.2,
+    "Snittrate": 7.53,
+    "Rate.2019": 7.42,
+    "Rate.2020": 6.59,
+    "Rate.2021": 8.65,
+    "Rate.2022": 6.51,
+    "Rate.2023": 8.47,
+    "Tal_pas": 74,
+    "Som": 1.07,
+    "psyk": 6.46,
+    "kontakt_p_pas": 1.4946
+  },
+  {
+    "bohf": "Nordland",
+    "Snitt_kontaktar": 272,
+    "Snitt_innbyggarar": 27085.6,
+    "Snittrate": 9.8,
+    "Rate.2019": 7.36,
+    "Rate.2020": 8.47,
+    "Rate.2021": 11.28,
+    "Rate.2022": 10.8,
+    "Rate.2023": 11.09,
+    "Tal_pas": 151.2,
+    "Som": 3.38,
+    "psyk": 6.42,
+    "kontakt_p_pas": 1.7989
+  }
+]
+}
+  ]
+}
