@@ -30,7 +30,7 @@ import {
   fetchRegisterNames,
   useRegistryRankQuery,
 } from "qmongjs";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import {
   FilterDrawer,
@@ -68,7 +68,13 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     setDrawerOpen(newOpen);
   };
 
+  // Router for updating the query parameter
+  const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  const params = new URLSearchParams(searchParams.toString());
+
   const displayV2Table = searchParams.get("newtable") === "true";
 
   // Context (caregiver or resident)
@@ -76,6 +82,9 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     registryInfo[0].caregiver_data === 0 ? "resident" : "caregiver";
   const [selectedTableContext, setSelectedTableContext] =
     useState(defaultTableContext);
+
+  params.set("context", selectedTableContext || "caregiver");
+  params.set("year", defaultYear.toString());
 
   // Used by indicator table
   const [selectedYear, setSelectedYear] = useState(defaultYear);
@@ -144,6 +153,8 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
       setColourMap,
       filterSettings.get(treatmentUnitsKey).map((value) => value.value),
     );
+
+    router.replace(pathname + "?" + params.toString(), { scroll: false });
   };
 
   const setAllSelected = (newFilterSettings: {
@@ -414,6 +425,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
             registryNameData={registryInfo}
             medicalFieldData={[]}
             register={registryName}
+            initialContext={selectedTableContext as "caregiver" | "resident"}
           />
           <Divider />
         </Box>
