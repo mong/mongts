@@ -7,7 +7,8 @@ import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
 import { Description, Indicator, RegisterName } from "types";
 import { IndicatorTableSkeleton } from "../IndicatorTableSkeleton";
-import { TableRow, TableCell } from "@mui/material";
+import { TableRow, TableCell, Box, Typography, Stack } from "@mui/material";
+import Link from "next/link";
 
 interface TableBlockProps {
   context: string;
@@ -156,8 +157,11 @@ const TableBlock = (props: TableBlockProps) => {
     );
   });
 
+  // Check if the registry has data. The table block is not shown in the absence of data.
   const showTitle = uniqueOrderedInd.length !== 0;
 
+  // If the page shows caregivers and the registry has data for residents,
+  // then the table block should be shown with a message.
   let showTitleAnyway = false;
 
   if (
@@ -183,7 +187,22 @@ const TableBlock = (props: TableBlockProps) => {
       {showTitleAnyway && (
         <TableRow>
           <TableCell colSpan={colspan}>
-            {"Registeret har data på opptaksområde. "}
+            <Box margin="0.5rem">
+              <Stack spacing={"1rem"}>
+                <Typography variant="subtitle1">
+                  Registeret har data på opptaksområde
+                </Typography>
+                <Typography variant="body1">
+                  Det kan hende at det ikke finnes data for valgt år eller
+                  valgte behandlingsenheter.
+                </Typography>
+                <Typography variant="body1">
+                  <Link href={"/behandlingskvalitet/" + registerName.rname}>
+                    År og opptaksområder med data vises her.
+                  </Link>
+                </Typography>
+              </Stack>
+            </Box>
           </TableCell>
         </TableRow>
       )}
