@@ -22,7 +22,7 @@ interface IndicatorTableProps {
   showTreatmentYear?: boolean;
   nestedUnitNames?: NestedTreatmentUnitName[];
   chartColours: string[];
-  registriesWithResidentData: string[];
+  registriesWithResidentData?: string[];
 }
 
 export const IndicatorTable = (props: IndicatorTableProps) => {

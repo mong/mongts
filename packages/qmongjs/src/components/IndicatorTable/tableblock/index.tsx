@@ -24,7 +24,7 @@ interface TableBlockProps {
   colspan: number;
   onEmptyStatusChanged?: (registerName: string, isEmpty: boolean) => void;
   chartColours: string[];
-  hasResidentData: boolean;
+  hasResidentData?: boolean;
 }
 
 const SkeletonRow = (colSpan: number) => {
