@@ -96,6 +96,7 @@ export const createMedfieldTableData = (data: Indicator[]) => {
       registry_short_name: row.registry_short_name,
       medfield_id: row.medfield_id,
       medfield_full_name: row.medfield_full_name,
+      // TODO: Do not allow null to go through
       level: row.dg === null || row.dg > minDG ? indicatorLevel : undefined,
     };
   });

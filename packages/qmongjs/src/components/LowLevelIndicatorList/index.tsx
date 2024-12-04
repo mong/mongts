@@ -111,6 +111,7 @@ const getDataSubset = (
     // Filter out low DG
     if (
       yearDataPoint &&
+      // TODO: Do not allow null to go through
       (yearDataPoint === null || yearDataPoint.dg! > minDG)
     ) {
       return level2(indDataRow, yearDataPoint) === selectedLevel;

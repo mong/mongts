@@ -168,6 +168,7 @@ export const IndicatorLinechart = (
   const levels: IndicatorLevels[] = indicatorQuery.data.map(
     (row: Indicator) => {
       const indicatorLevel =
+        // TODO: Do not allow null to go through
         row.dg === null || row.dg > minDG ? mapLevel(level(row)) : -1;
       return { ind_id: row.ind_id, year: row.year, level: indicatorLevel };
     },
