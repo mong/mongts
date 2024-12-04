@@ -7,7 +7,9 @@ import {
   level,
   LinechartBase,
   LinechartData,
+  minDG,
 } from "qmongjs";
+import { Indicator } from "types";
 
 export type IndicatorLinechartParams = {
   registerShortName?: string;
@@ -163,10 +165,13 @@ export const IndicatorLinechart = (
   }
 
   // Set indicator colour from value and colour limits
-  const levels: IndicatorLevels[] = indicatorQuery.data.map((row) => {
-    const indicatorLevel = mapLevel(level(row));
-    return { ind_id: row.ind_id, year: row.year, level: indicatorLevel };
-  });
+  const levels: IndicatorLevels[] = indicatorQuery.data.map(
+    (row: Indicator) => {
+      const indicatorLevel =
+        row.dg === null || row.dg > minDG ? mapLevel(level(row)) : -1;
+      return { ind_id: row.ind_id, year: row.year, level: indicatorLevel };
+    },
+  );
 
   // Remove duplicates due to registries under multiple medfields
   const uniqueLevels = levels.filter(

@@ -41,6 +41,7 @@ import {
   TrendingFlat,
   TrendingUp,
 } from "@mui/icons-material";
+import { minDG } from "qmongjs";
 
 const ExpandCircleUpOutlined = styled(ExpandCircleDownOutlined)({
   transform: "rotate(180deg)",
@@ -107,7 +108,10 @@ const getDataSubset = (
       return p.year === year;
     });
 
-    if (yearDataPoint) {
+    if (
+      yearDataPoint &&
+      (yearDataPoint === null || yearDataPoint.dg! > minDG)
+    ) {
       return level2(indDataRow, yearDataPoint) === selectedLevel;
     } else return false;
   });
