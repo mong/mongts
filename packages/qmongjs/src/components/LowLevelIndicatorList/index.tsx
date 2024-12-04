@@ -13,6 +13,7 @@ import {
   level2,
   skdeTheme,
   Hoverbox,
+  minDG,
 } from "qmongjs";
 import { styled } from "@mui/system";
 import { ExpandCircleDownOutlined } from "@mui/icons-material";
@@ -107,7 +108,12 @@ const getDataSubset = (
       return p.year === year;
     });
 
-    if (yearDataPoint) {
+    // Filter out low DG
+    if (
+      yearDataPoint &&
+      // TODO: Do not allow null to go through
+      (yearDataPoint === null || yearDataPoint.dg! >= minDG)
+    ) {
       return level2(indDataRow, yearDataPoint) === selectedLevel;
     } else return false;
   });
