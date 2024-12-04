@@ -112,7 +112,7 @@ const getDataSubset = (
     if (
       yearDataPoint &&
       // TODO: Do not allow null to go through
-      (yearDataPoint === null || yearDataPoint.dg! > minDG)
+      (yearDataPoint === null || yearDataPoint.dg! >= minDG)
     ) {
       return level2(indDataRow, yearDataPoint) === selectedLevel;
     } else return false;
