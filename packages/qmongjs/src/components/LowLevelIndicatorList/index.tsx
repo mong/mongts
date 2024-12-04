@@ -108,6 +108,7 @@ const getDataSubset = (
       return p.year === year;
     });
 
+    // Filter out low DG
     if (
       yearDataPoint &&
       (yearDataPoint === null || yearDataPoint.dg! > minDG)

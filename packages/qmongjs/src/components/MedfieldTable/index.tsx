@@ -13,7 +13,13 @@ import {
 import { styled } from "@mui/system";
 import { ExpandCircleDownOutlined } from "@mui/icons-material";
 import { UseQueryResult } from "@tanstack/react-query";
-import { ArrowLink, useIndicatorQuery, level, newLevelSymbols } from "qmongjs";
+import {
+  ArrowLink,
+  useIndicatorQuery,
+  level,
+  newLevelSymbols,
+  minDG,
+} from "qmongjs";
 import { Indicator } from "types";
 
 const colWidth1 = "5%";
@@ -90,7 +96,7 @@ export const createMedfieldTableData = (data: Indicator[]) => {
       registry_short_name: row.registry_short_name,
       medfield_id: row.medfield_id,
       medfield_full_name: row.medfield_full_name,
-      level: indicatorLevel,
+      level: row.dg === null || row.dg > minDG ? indicatorLevel : undefined,
     };
   });
 
