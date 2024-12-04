@@ -10,7 +10,7 @@ const connections: { [env: string]: Knex.Config } = {
     },
   },
   development: {
-    client: "mysql",
+    client: "mysql2",
     connection: {
       host: "127.0.0.1",
       port: Number(process.env.DB_PORT) || 3306,
@@ -20,7 +20,7 @@ const connections: { [env: string]: Knex.Config } = {
     },
   },
   production: {
-    client: "mysql",
+    client: "mysql2",
     connection: {
       host: process.env.DB_HOST,
       database: process.env.DB_NAME,
