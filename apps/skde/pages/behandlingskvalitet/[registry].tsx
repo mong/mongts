@@ -89,7 +89,9 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const [selectedMedicalFields, setSelectedMedicalFields] = useState<string[]>(
     [],
   );
-  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState(defaultTreatmentUnits);
+  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState(
+    defaultTreatmentUnits,
+  );
 
   const selectedRow = useQueryParam(
     "selected_row",
@@ -292,7 +294,9 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                   registryNameData={registryInfo}
                   medicalFieldData={[]}
                   register={registryName}
-                  initialContext={selectedTableContext as "caregiver" | "resident"}
+                  initialContext={
+                    selectedTableContext as "caregiver" | "resident"
+                  }
                   skipSections={{
                     context: skipTableContextSection,
                   }}
@@ -304,7 +308,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
           <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
-                { paramsReady ? (
+                {paramsReady ? (
                   displayV2Table ? (
                     <>
                       <IndicatorTableBodyV2
@@ -396,10 +400,10 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                         )}
                       />
                     </IndicatorTableWrapper>
-                  )) : (
-                    <></>
                   )
-                }
+                ) : (
+                  <></>
+                )}
               </Grid>
             </Grid>
           </Grid>
