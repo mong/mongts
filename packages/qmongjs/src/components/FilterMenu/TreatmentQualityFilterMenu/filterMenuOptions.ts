@@ -15,14 +15,18 @@ export const getYearOptions = (
   values: FilterSettingsValue[];
   default: FilterSettingsValue;
 } => {
-  const defaultYearString = max?.toString() ?? defaultYear.toString();
   const yearValues: FilterSettingsValue[] = [];
   let yearString: string;
 
-  for (let year = min ?? minYear; year <= (max ?? maxYear); year++) {
+  const startYear = min ?? minYear;
+  const endYear = max ?? maxYear;
+
+  for (let year = startYear; year <= endYear; year++) {
     yearString = year.toString();
     yearValues.push({ value: yearString, valueLabel: yearString });
   }
+
+  const defaultYearString = defaultYear.toString();
 
   return {
     values: yearValues,
