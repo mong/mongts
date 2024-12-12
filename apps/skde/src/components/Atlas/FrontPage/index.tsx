@@ -44,7 +44,7 @@ const FrontPage = ({ atlasInfo, lang }: HomeProps) => {
     />
   ));
 
-  const title = { no: "Tematisk Helseatlas", en: "Thematic Health Atlases" }[
+  const title = { no: "Tematiske helseatlas", en: "Thematic Health Atlases" }[
     lang
   ];
 
@@ -83,7 +83,7 @@ const FrontPage = ({ atlasInfo, lang }: HomeProps) => {
             >
               {
                 {
-                  no: "Her finner du tematiske Helseatlas som tar for seg utvalgte tjenester på ett fagområde eller til én pasientgruppe, i en periode på tre til fem år.",
+                  no: "Her finner du tematiske helseatlas som tar for seg utvalgte tjenester på ett fagområde eller til én pasientgruppe, i en periode på tre til fem år.",
                   en: "Here you find thematic Health Atlases concering selected health services or patient groups, in a period from three to five years.",
                 }[lang]
               }
