@@ -2,11 +2,9 @@ import RSS from "rss";
 import { Description, RegisterName } from "types";
 
 export async function GET() {
-  const siteUrl =
-    process.env.NODE_ENV === "production"
-      ? "https://apps.skde.no"
-      : "http://localhost:3000";
+  const siteUrl = "https://apps.skde.no";
 
+  // RSS top header
   const feedOptions = {
     title: "RSS Behandlingskvalitet",
     description: "Beskrivelse av kvalitetsindikatorer",
@@ -15,19 +13,22 @@ export async function GET() {
     ttl: 60,
   };
 
+  // Fetch registry names
   const namesUrl = "https://prod-mong-api.skde.org/info/names";
-
   const namesQuery = await fetch(namesUrl);
   const namesResponse = await namesQuery.json();
   const names = namesResponse.map((row: RegisterName) => row.rname);
 
+  // Use the registry names to make the description URLs
   const dataUrls = names.map(
     (name: string) =>
       "https://prod-mong-api.skde.org/data/" + name + "/descriptions",
   );
 
+  // Set up the RSS feed
   const feed = new RSS(feedOptions);
 
+  // Add item to the RSS feed
   async function getData(url: string) {
     const response = await fetch(url);
     const data = await response.json();
