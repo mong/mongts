@@ -20,7 +20,7 @@ export async function GET() {
   const names = namesResponse.map((row: RegisterName) => row.rname);
 
   // Use the registry names to make the description URLs
-  const dataUrls = names.map(
+  const descriptionUrls = names.map(
     (name: string) =>
       "https://prod-mong-api.skde.org/data/" + name + "/descriptions",
   );
@@ -48,7 +48,7 @@ export async function GET() {
     );
   }
 
-  await Promise.all(dataUrls.map(getData));
+  await Promise.all(descriptionUrls.map(getData));
 
   return new Response(feed.xml({ indent: true }), {
     headers: {
