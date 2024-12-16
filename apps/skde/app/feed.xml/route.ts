@@ -28,7 +28,7 @@ export async function GET() {
       })
   }
   
-  Promise.all(
+  await Promise.all(
     dataUrls.map(getData)
   )
   .then(
@@ -39,7 +39,6 @@ export async function GET() {
         url: ind.url,
         date: "16.12.2024"
       })
-      console.log(feed)
     }))
 
 
