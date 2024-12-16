@@ -13,34 +13,39 @@ export async function GET() {
     ttl: 60,
   };
 
-
-  const data = [
-    {title: "title1",
-      description: "test1",
-      url: "www.vg.no",
-      date: "13.12.2024"
-    },
-    {title: "title2",
-      description: "test2",
-      url: "www.vg.no",
-      date: "14.12.2024"
-    }
-  ];
+  const dataUrls = ["https://prod-mong-api.skde.org/data/hjerneslag/descriptions", "https://prod-mong-api.skde.org/data/hjerteinfarkt/descriptions", "https://prod-mong-api.skde.org/data/ms/descriptions"]
 
   const feed = new RSS(feedOptions);
 
-  data.map((row) => {
-    feed.item({
-      title: row.title,
-      description: row.description,
-      url: row.url,
-      date: row.date,
-    })
-  })
+  function getData(url: string) {
+    return fetch(url)
+      .then(response=>{
+        return response.json()
+      })
+      .then(data => {
+        const indInfo = data.map(row => {return {title: row.title, shortDescription: row.short_description, longDescription: row.long_description, url: url}}); 
+        return Promise.resolve(indInfo);
+      })
+  }
+  
+  Promise.all(
+    dataUrls.map(getData)
+  )
+  .then(
+    data => data.flat().map(ind => {
+      feed.item({
+        title: ind.title,
+        description: ind.shortDescription,
+        url: ind.url,
+        date: "16.12.2024"
+      })
+      console.log(feed)
+    }))
+
 
   return new Response(feed.xml({ indent: true }), {
     headers: {
         'Content-Type': 'application/xml; charset=utf-8',
     },
-});
+  });
 }
