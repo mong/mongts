@@ -1,4 +1,5 @@
 import RSS from "rss";
+import { Description } from "types";
 
 
 export async function GET() {
@@ -17,30 +18,20 @@ export async function GET() {
 
   const feed = new RSS(feedOptions);
 
-  function getData(url: string) {
-    return fetch(url)
-      .then(response=>{
-        return response.json()
-      })
-      .then(data => {
-        const indInfo = data.map(row => {return {title: row.title, shortDescription: row.short_description, longDescription: row.long_description, url: url}}); 
-        return Promise.resolve(indInfo);
-      })
+  async function getData(url: string) {
+    const response = await fetch(url);
+    const data = await response.json();
+    data.map((row: Description) => feed.item({
+      title: row.title,
+      description: row.short_description + row.long_description,
+      url: "www.vg.no",
+      date: "16.12.2024"
+    }));
   }
   
   await Promise.all(
     dataUrls.map(getData)
   )
-  .then(
-    data => data.flat().map(ind => {
-      feed.item({
-        title: ind.title,
-        description: ind.shortDescription,
-        url: ind.url,
-        date: "16.12.2024"
-      })
-    }))
-
 
   return new Response(feed.xml({ indent: true }), {
     headers: {
