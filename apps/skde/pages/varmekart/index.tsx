@@ -47,10 +47,6 @@ export const Skde = (): JSX.Element => {
       text: "Forside",
     },
     {
-      link: "https://www.skde.no/resultater",
-      text: "Tall om helsetjenesten",
-    },
-    {
       link: "/varmekart/",
       text: "Varmekart",
     },
