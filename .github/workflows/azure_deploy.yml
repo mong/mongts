@@ -36,13 +36,13 @@ jobs:
       - run: yarn run check-format
       - name: Test build
         env:
-          NEXT_PUBLIC_API_HOST: https://azure-mong-api.skde.org
+          NEXT_PUBLIC_API_HOST: https://test-api.skde.org
         run: |
           yarn run export
       - name: Build and sync develop to Azure
         if: github.ref == 'refs/heads/develop'
         env:
-          NEXT_PUBLIC_API_HOST: https://azure-mong-api.skde.org
+          NEXT_PUBLIC_API_HOST: https://test-api.skde.org
         run: |
           az storage blob sync \
           --account-name $AZURE_STORAGE_ACCOUNT \
