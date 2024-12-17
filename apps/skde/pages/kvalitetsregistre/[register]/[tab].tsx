@@ -21,10 +21,6 @@ const SelectedRegisterPage = ({ register }: { register: string }) => {
       text: "Forside",
     },
     {
-      link: "https://www.skde.no/resultater/",
-      text: "Tall om helsetjenesten",
-    },
-    {
       link: `/kvalitetsregistre/${register}`,
       text: `Kvalitetsregistre/${register}`,
     },
