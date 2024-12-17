@@ -12,10 +12,6 @@ const MainRegisterPage = () => {
       text: "Forside",
     },
     {
-      link: "https://www.skde.no/resultater/",
-      text: "Tall om helsetjenesten",
-    },
-    {
       link: `/kvalitetsregistre/`,
       text: `Kvalitetsregistre/`,
     },
