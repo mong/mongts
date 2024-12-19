@@ -68,6 +68,7 @@ export {
   defaultYear,
   mainHospitals,
   mainQueryParamsConfig,
+  minDG,
 } from "./app_config";
 export { SelectTreatmentUnits } from "./components/SelectTreatmentUnits";
 export { skdeTheme, breakpoints } from "./themes/SkdeTheme";
