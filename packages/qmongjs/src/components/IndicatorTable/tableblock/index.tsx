@@ -7,7 +7,8 @@ import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
 import { Description, Indicator, RegisterName } from "types";
 import { IndicatorTableSkeleton } from "../IndicatorTableSkeleton";
-import { TableRow, TableCell } from "@mui/material";
+import { TableRow, TableCell, Box, Stack } from "@mui/material";
+import Link from "next/link";
 
 interface TableBlockProps {
   context: string;
@@ -23,6 +24,7 @@ interface TableBlockProps {
   colspan: number;
   onEmptyStatusChanged?: (registerName: string, isEmpty: boolean) => void;
   chartColours: string[];
+  hasResidentData?: boolean;
 }
 
 const SkeletonRow = (colSpan: number) => {
@@ -50,6 +52,7 @@ const TableBlock = (props: TableBlockProps) => {
     unitNames,
     onEmptyStatusChanged,
     chartColours,
+    hasResidentData,
   } = props;
   const queryContext = dataQuality
     ? { context, type: "dg" }
@@ -127,10 +130,6 @@ const TableBlock = (props: TableBlockProps) => {
     return null;
   }
 
-  if (isEmptyRef.current) {
-    return null;
-  }
-
   const medicalFieldClass = medicalFieldFilter.includes(registerName.rname)
     ? ""
     : style.filterMedField;
@@ -158,9 +157,25 @@ const TableBlock = (props: TableBlockProps) => {
     );
   });
 
+  // Check if the registry has data. The table block is not shown in the absence of data.
+  const showTitle = uniqueOrderedInd.length !== 0;
+
+  // If the page shows caregivers and the registry has data for residents,
+  // then the table block should be shown with a message.
+  let showTitleAnyway = false;
+
+  if (
+    context === "caregiver" &&
+    !showTitle &&
+    hasResidentData &&
+    medicalFieldFilter.includes(registerName.rname)
+  ) {
+    showTitleAnyway = true;
+  }
+
   return (
     <>
-      {blockTitle && uniqueOrderedInd.length !== 0 ? (
+      {blockTitle && (showTitle || showTitleAnyway) ? (
         <TableBlockTitle
           link={`behandlingskvalitet/${registerName.rname}`}
           title={blockTitle}
@@ -169,6 +184,28 @@ const TableBlock = (props: TableBlockProps) => {
         />
       ) : null}
       {indicatorRows}
+      {showTitleAnyway && (
+        <TableRow>
+          <TableCell colSpan={colspan} sx={{ padding: 0 }}>
+            <Box margin="0.5rem">
+              <Stack spacing={"0.5rem"}>
+                <div style={{ fontSize: "1.2rem", fontWeight: "normal" }}>
+                  Registeret har data på opptaksområde
+                </div>
+                <div style={{ fontSize: "0.9rem", color: "#7d8588" }}>
+                  Det kan hende at det ikke finnes data for valgt år eller
+                  valgte behandlingsenheter.
+                </div>
+                <div style={{ fontSize: "0.9rem" }}>
+                  <Link href={"/behandlingskvalitet/" + registerName.rname}>
+                    År og opptaksområder med data vises her.
+                  </Link>
+                </div>
+              </Stack>
+            </Box>
+          </TableCell>
+        </TableRow>
+      )}
     </>
   );
 };
