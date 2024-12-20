@@ -27,7 +27,7 @@ vi.mock("next/font/google", () => ({
   }),
 }));
 
-const mapDataPath = "public/helseatlas/kart/kronikere.geojson";
+const mapDataPath = "public/helseatlas/kart/kart_2024.geojson";
 const mapData = JSON.parse(fs.readFileSync(mapDataPath, "utf-8"));
 
 test("Click on HF", async () => {
