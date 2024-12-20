@@ -1,0 +1,469 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": [
+        "Snitt_rate"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nn": "Tal pasientar med eteforstyrring pr.1000 innbyggjar under 18 år.",
+        "en": "Number of patients with eating disorder pr. 1,000 inhabitants (under 18 years old)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "errorBars": [
+       "lowercl",
+       "uppercl"
+      ],
+    "format": ",.1f"
+  },
+  {
+    "type": "table",
+    "data": "qwerty",
+    "caption": {
+      "nn": "Årlege gjennomsnittsverdiar for perioden 2019-2023. Pasientar med eteforstyrring pr.1000 innbyggjarar under 18 år.",
+      "en": "Average annual values for the period 2019–2023, patient rate for eating disorder  pr. 1 000 population under 18 years of age"
+    },
+    "columns": [
+      {
+        "id": "bohf",
+        "label_no": "Opptaksområde",
+        "label_en": "Referral areas",
+        "typeVar": "string",
+        "format": ""
+      },
+      {
+        "id": "Snitt_rate",
+        "label_no": "Rate",
+        "label_en": "Rate",
+        "typeVar": "number",
+        "format": ",.1f"
+      },
+      {
+        "id": "Tal_pas",
+        "label_no": "Tal pasientar",
+        "label_en": "Number of patients",
+        "typeVar": "number",
+        "format": ",.0f"
+      },
+      {
+        "id":  "Innbyggarar",
+        "label_no": "Innbygarrar (under 18 år)",
+        "label_en": "Averege population (under 18)",
+        "typeVar": "number",
+        "format": ",.0f"
+      }
+    ]
+  },
+  {
+    "type": "table",
+    "data": "qwerty",
+    "caption": {
+      "nn": "Årlege gjennomsnittsverdiar for perioden 2019-2023. Prosentdel av kommorbiditet av ulike tilstandar i pasientar med eteforstyrring ",
+      "en": "Percent of commorbidity mith different diagnosis among patients with eating disorders"
+    },
+    "columns": [
+      {
+        "id": "bohf",
+        "label_no": "Opptaksområde",
+        "label_en": "Referral areas",
+        "typeVar": "string",
+        "format": ""
+      },
+      {
+        "id": "Angst",
+        "label_no": "Angst",
+        "label_en": "Anxiety",
+        "typeVar": "number",
+        "format": ",.1%"
+
+      },
+      {
+        "id": "Autisme",
+        "label_no": "Autisme",
+        "label_en": "Autism",
+        "typeVar": "number",
+        "format": ",.1%"
+
+      },
+     {
+        "id": "ADHD",
+        "label_no": "ADHD",
+        "label_en": "ADHD",
+        "typeVar": "number",
+        "format": ",.1%"
+
+      },
+      {
+        "id": "Depresjon",
+        "label_no": "Depresjon",
+        "label_en": "Depression",
+        "typeVar": "number",
+        "format": ",.1%"
+
+      },
+
+      {
+        "id":  "Tilpassingsforstyrring",
+        "label_no": "Tilpassingsforstyrring",
+        "label_en": "Adjustment disorder",
+        "typeVar": "number",
+        "format": ",.1%"
+
+      },
+    {
+        "id":  "Utviklingsforstyrring",
+        "label_no": "Sp. utviklingsforstyrring",
+        "label_en": "Development disorder",
+        "typeVar": "number",
+        "format": ",.1%"
+
+      }
+
+    ]
+  },
+
+{
+    "type": "map",
+    "data": "qwerty",
+    "x": "Snitt_rate",
+    "caption": {
+      "nn": "Tal pasientar med eteforstyrring pr.1000 innbyggjarar under 18 år.",
+      "en": "Number of patients with eating disorder in outpatient pr. 1 000 population under 18 years of age"
+    },
+    "jenks": [
+      {
+        "grense": 1.5 
+      },
+      {
+        "grense": 1.7
+      },
+      {
+        "grense": 1.9
+      }
+    ],
+     "format": ",.1f"
+},
+{
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data":
+[
+  {
+    "bohf": "Akershus",
+    "Tal_pas": 213.6,
+    "Innbyggarar": 128646.8,
+    "Snitt_rate": 1.64,
+    "lowercl": 1.54,
+    "uppercl": 1.74,
+    "Depresjon": 0.0535,
+    "Angst": 0.1746,
+    "ADHD": 0.0828,
+    "Autisme": 0.0459,
+    "Tilpassingsforstyrring": 0.068,
+    "Utviklingsforstyrring": 0.0547
+  },
+  {
+    "bohf": "Bergen",
+    "Tal_pas": 145.2,
+    "Innbyggarar": 96697.2,
+    "Snitt_rate": 1.53,
+    "lowercl": 1.42,
+    "uppercl": 1.64,
+    "Depresjon": 0.0609,
+    "Angst": 0.2176,
+    "ADHD": 0.1296,
+    "Autisme": 0.0486,
+    "Tilpassingsforstyrring": 0.0671,
+    "Utviklingsforstyrring": 0.0718
+  },
+  {
+    "bohf": "Diakonhjemmet",
+    "Tal_pas": 47.2,
+    "Innbyggarar": 25931,
+    "Snitt_rate": 1.92,
+    "lowercl": 1.68,
+    "uppercl": 2.17,
+    "Depresjon": 0.0702,
+    "Angst": 0.1489,
+    "ADHD": 0.0709,
+    "Autisme": 0.0851,
+    "Tilpassingsforstyrring": 0.0426,
+    "Utviklingsforstyrring": 0.0638
+  },
+  {
+    "bohf": "Finnmark",
+    "Tal_pas": 18.4,
+    "Innbyggarar": 14386.2,
+    "Snitt_rate": 1.24,
+    "lowercl": 0.99,
+    "uppercl": 1.49,
+    "Depresjon": 0.0553,
+    "Angst": 0.2909,
+    "ADHD": 0.2,
+    "Autisme": 0.0727,
+    "Tilpassingsforstyrring": 0.1273,
+    "Utviklingsforstyrring": 0.0364
+  },
+  {
+    "bohf": "Fonna",
+    "Tal_pas": 59.2,
+    "Innbyggarar": 39994,
+    "Snitt_rate": 1.45,
+    "lowercl": 1.28,
+    "uppercl": 1.61,
+    "Depresjon": 0.0303,
+    "Angst": 0.129,
+    "ADHD": 0.1129,
+    "Autisme": 0.0538,
+    "Tilpassingsforstyrring": 0.0538,
+    "Utviklingsforstyrring": 0.0591
+  },
+  {
+    "bohf": "Førde",
+    "Tal_pas": 36,
+    "Innbyggarar": 23040.4,
+    "Snitt_rate": 1.47,
+    "lowercl": 1.25,
+    "uppercl": 1.68,
+    "Depresjon": 0.0297,
+    "Angst": 0.1,
+    "ADHD": 0.0273,
+    "Autisme": 0.0545,
+    "Tilpassingsforstyrring": 0.0909,
+    "Utviklingsforstyrring": 0.0909
+  },
+  {
+    "bohf": "Helgeland",
+    "Tal_pas": 27.4,
+    "Innbyggarar": 15107.6,
+    "Snitt_rate": 1.76,
+    "lowercl": 1.47,
+    "uppercl": 2.06,
+    "Depresjon": 0.0444,
+    "Angst": 0.1481,
+    "ADHD": 0.037,
+    "Autisme": 0.0123,
+    "Tilpassingsforstyrring": 0.037,
+    "Utviklingsforstyrring": 0.1235
+  },
+  {
+    "bohf": "Innlandet",
+    "Tal_pas": 108.4,
+    "Innbyggarar": 63506.8,
+    "Snitt_rate": 1.62,
+    "lowercl": 1.48,
+    "uppercl": 1.76,
+    "Depresjon": 0.0443,
+    "Angst": 0.145,
+    "ADHD": 0.0725,
+    "Autisme": 0.0302,
+    "Tilpassingsforstyrring": 0.0725,
+    "Utviklingsforstyrring": 0.0483
+  },
+  {
+    "bohf": "Lovisenberg",
+    "Tal_pas": 36.8,
+    "Innbyggarar": 22897,
+    "Snitt_rate": 2.32,
+    "lowercl": 1.99,
+    "uppercl": 2.66,
+    "Depresjon": 0.0521,
+    "Angst": 0.3445,
+    "ADHD": 0.0672,
+    "Autisme": 0.0588,
+    "Tilpassingsforstyrring": 0.084,
+    "Utviklingsforstyrring": 0.0504
+  },
+  {
+    "bohf": "Møre og Romsdal",
+    "Tal_pas": 101,
+    "Innbyggarar": 55257.6,
+    "Snitt_rate": 1.76,
+    "lowercl": 1.61,
+    "uppercl": 1.91,
+    "Depresjon": 0.0344,
+    "Angst": 0.1495,
+    "ADHD": 0.0797,
+    "Autisme": 0.0598,
+    "Tilpassingsforstyrring": 0.0565,
+    "Utviklingsforstyrring": 0.0631
+  },
+  {
+    "bohf": "Nordland",
+    "Tal_pas": 32.4,
+    "Innbyggarar": 27085.6,
+    "Snitt_rate": 1.16,
+    "lowercl": 0.99,
+    "uppercl": 1.34,
+    "Depresjon": 0.0719,
+    "Angst": 0.1863,
+    "ADHD": 0.0686,
+    "Autisme": 0.0196,
+    "Tilpassingsforstyrring": 0.0588,
+    "Utviklingsforstyrring": 0.1078
+  },
+  {
+    "bohf": "Nord-Trøndelag",
+    "Tal_pas": 55.6,
+    "Innbyggarar": 28257.4,
+    "Snitt_rate": 1.88,
+    "lowercl": 1.66,
+    "uppercl": 2.1,
+    "Depresjon": 0.0474,
+    "Angst": 0.1695,
+    "ADHD": 0.0508,
+    "Autisme": 0.0282,
+    "Tilpassingsforstyrring": 0.1017,
+    "Utviklingsforstyrring": 0.0282
+  },
+  {
+    "bohf": "Noreg",
+    "Tal_pas": 1857.2,
+    "Innbyggarar": 1114704,
+    "Snitt_rate": 1.66,
+    "lowercl": 1.63,
+    "uppercl": 1.69,
+    "Depresjon": 0.0455,
+    "Angst": 0.1575,
+    "ADHD": 0.0789,
+    "Autisme": 0.0437,
+    "Tilpassingsforstyrring": 0.0656,
+    "Utviklingsforstyrring": 0.0539
+  },
+  {
+    "bohf": "OUS",
+    "Tal_pas": 105.4,
+    "Innbyggarar": 59446.4,
+    "Snitt_rate": 1.93,
+    "lowercl": 1.77,
+    "uppercl": 2.1,
+    "Depresjon": 0.0564,
+    "Angst": 0.1242,
+    "ADHD": 0.0515,
+    "Autisme": 0.0879,
+    "Tilpassingsforstyrring": 0.0394,
+    "Utviklingsforstyrring": 0.0394
+  },
+  {
+    "bohf": "St. Olav",
+    "Tal_pas": 103.4,
+    "Innbyggarar": 67721,
+    "Snitt_rate": 1.56,
+    "lowercl": 1.43,
+    "uppercl": 1.7,
+    "Depresjon": 0.0335,
+    "Angst": 0.1536,
+    "ADHD": 0.1285,
+    "Autisme": 0.0188,
+    "Tilpassingsforstyrring": 0.0752,
+    "Utviklingsforstyrring": 0.0188
+  },
+  {
+    "bohf": "Stavanger",
+    "Tal_pas": 119.6,
+    "Innbyggarar": 87767,
+    "Snitt_rate": 1.41,
+    "lowercl": 1.3,
+    "uppercl": 1.52,
+    "Depresjon": 0.0616,
+    "Angst": 0.1176,
+    "ADHD": 0.0868,
+    "Autisme": 0.0476,
+    "Tilpassingsforstyrring": 0.0616,
+    "Utviklingsforstyrring": 0.0504
+  },
+  {
+    "bohf": "Sørlandet",
+    "Tal_pas": 92.8,
+    "Innbyggarar": 67155.8,
+    "Snitt_rate": 1.35,
+    "lowercl": 1.23,
+    "uppercl": 1.47,
+    "Depresjon": 0.015,
+    "Angst": 0.1224,
+    "ADHD": 0.068,
+    "Autisme": 0.0136,
+    "Tilpassingsforstyrring": 0.0816,
+    "Utviklingsforstyrring": 0.0476
+  },
+  {
+    "bohf": "Telemark",
+    "Tal_pas": 48.8,
+    "Innbyggarar": 33769,
+    "Snitt_rate": 1.38,
+    "lowercl": 1.21,
+    "uppercl": 1.55,
+    "Depresjon": 0.0195,
+    "Angst": 0.2244,
+    "ADHD": 0.0256,
+    "Autisme": 0.0064,
+    "Tilpassingsforstyrring": 0.0449,
+    "Utviklingsforstyrring": 0.0192
+  },
+  {
+    "bohf": "UNN",
+    "Tal_pas": 53.6,
+    "Innbyggarar": 37118.6,
+    "Snitt_rate": 1.41,
+    "lowercl": 1.24,
+    "uppercl": 1.58,
+    "Depresjon": 0.0332,
+    "Angst": 0.1361,
+    "ADHD": 0.0414,
+    "Autisme": 0.0118,
+    "Tilpassingsforstyrring": 0.0473,
+    "Utviklingsforstyrring": 0.0473
+  },
+  {
+    "bohf": "Vestfold",
+    "Tal_pas": 144.4,
+    "Innbyggarar": 49969.8,
+    "Snitt_rate": 2.81,
+    "lowercl": 2.6,
+    "uppercl": 3.01,
+    "Depresjon": 0.0121,
+    "Angst": 0.1596,
+    "ADHD": 0.0337,
+    "Autisme": 0.027,
+    "Tilpassingsforstyrring": 0.0652,
+    "Utviklingsforstyrring": 0.0697
+  },
+  {
+    "bohf": "Vestre Viken",
+    "Tal_pas": 204.2,
+    "Innbyggarar": 105821.2,
+    "Snitt_rate": 1.89,
+    "lowercl": 1.77,
+    "uppercl": 2,
+    "Depresjon": 0.0549,
+    "Angst": 0.1546,
+    "ADHD": 0.1066,
+    "Autisme": 0.0742,
+    "Tilpassingsforstyrring": 0.0618,
+    "Utviklingsforstyrring": 0.0572
+  },
+  {
+    "bohf": "Østfold",
+    "Tal_pas": 119,
+    "Innbyggarar": 65127.6,
+    "Snitt_rate": 1.77,
+    "lowercl": 1.63,
+    "uppercl": 1.91,
+    "Depresjon": 0.0281,
+    "Angst": 0.1237,
+    "ADHD": 0.086,
+    "Autisme": 0.0349,
+    "Tilpassingsforstyrring": 0.0995,
+    "Utviklingsforstyrring": 0.0511
+  }
+]
+}
+]
+}
