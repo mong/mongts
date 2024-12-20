@@ -180,7 +180,7 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
                     media_folder: "/apps/skde/public/helseatlas/kart",
                     public_folder: "",
                     hint: "Kartgrunnlag i geojson-format",
-                    default: "kronikere.geojson",
+                    default: "kart_2024.geojson",
                     required: false,
                   },
                   {
