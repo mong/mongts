@@ -6,7 +6,7 @@
       "x": ["Snittrate"],
       "y": "bohf",
       "xLabel": {
-        "nn": "Oppholdsrate for døgnbehandling pr. 1 000 (under 18 år)",
+        "nn": "Oppholdsrate for døgnbehandling pr. 1 000 innbyggjarar (under 18 år)",
         "en": "Admission rate for inpatient treatment of children and adolescents for mentalhealthcare pr. 1,000 inhabitants (under 18 years old)"
       },
       "yLabel": {
@@ -31,7 +31,7 @@
       "x": ["Som", "psyk"],
       "y": "bohf",
       "xLabel": {
-        "nn": "Oppholdsrate for døgnbehandling pr. 1 000 (under 18 år).",
+        "nn": "Oppholdsrate for døgnbehandling pr. 1 000 innbyggjarar (under 18 år).",
         "en": "Admission rate for inpatient treatment of children and adolescents for mentalhealthcare pr. 1,000 inhabitants (under 18 years old)"
       },
       "yLabel": {
@@ -39,7 +39,7 @@
         "en": "Referral areas"
       },
       "xLegend": {
-        "nn": ["Benadling hos somatik", "Behandling hos psykisk helsevern"],
+        "nn": ["Benadling i somatikk", "Behandling i psykisk helsevern"],
         "en": ["Somatic sectors", "Mental healthcare sectors"]
       },
       "format": ",.0f"
@@ -48,8 +48,8 @@
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Oppholdsrate for døgnbehandling pr. 1 000 innbyggarar (under 18 år).",
-        "en": "Average per year for the period 2019–2023. Admission rate for inpatient treatment of children and adolescents for mentalhealthcare per 1,000 inhabitants under age of 18 years."
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2019–2023. Oppholdsrate for døgnbehandling pr. 1 000 innbyggjarar under 18 år",
+        "en": "Average per year for the period 2019–2023. Admission rate for inpatient treatment for mentalhealthcare per 1,000 inhabitants under age of 18 years."
       },
       "columns": [
         {
@@ -61,7 +61,7 @@
         },
         {
           "id": "Snittrate",
-          "label_no": "oppholdsrate",
+          "label_no": "Oppholdsrate",
           "label_en": "admission rate",
           "typeVar": "number",
           "format": ",.1f"
@@ -75,7 +75,7 @@
         },
         {
           "id": "Snitt_innbyggarar",
-          "label_no": "Innbyggarar (under 18 år)",
+          "label_no": "Innbyggjarar (under 18 år)",
           "label_en": "Inhabitants (under 18 years)",
           "typeVar": "number",
           "format": ",.0f"
@@ -86,7 +86,7 @@
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Oppholdsrate per pasient for døgnbehandling.",
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2019–2023. Oppholdsrate per pasient for døgnbehandling.",
         "en": "Average per year for the period 2019–2023. Admission rate for inpatient treatment per patient for mentalhealthcare."
       },
       "columns": [
@@ -125,7 +125,7 @@
       "data": "qwerty",
       "x": "Snittrate",
       "caption": {
-        "nn": "Oppholdsrate for døgnbehandling pr. 1 000 innbyggarar (under 18 år)",
+        "nn": "Oppholdsrate for døgnbehandling pr. 1 000 innbyggjarar (under 18 år)",
         "en": "Admission rate for inpatient treatment of children and adolescents for mentalhealthcare pr. 1,000 inhabitants (under 18 years old)"
       },
       "jenks": [
