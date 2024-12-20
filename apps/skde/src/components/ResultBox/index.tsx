@@ -72,7 +72,7 @@ export const ResultBox = ({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const atlasData: { atlasData: any } = React.useContext(DataContext);
 
-  const mapFile = map ? map : "kronikere.geojson";
+  const mapFile = map ? map : "kart_2024.geojson";
   const { data: mapData } = FetchMap(`/helseatlas/kart/${mapFile}`);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
