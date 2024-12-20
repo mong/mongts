@@ -15,6 +15,7 @@ interface IndicatorTableBodyProps {
   blockTitle?: string[];
   onEmptyStatusChanged?: (registerName: string, isEmpty: boolean) => void;
   chartColours: string[];
+  registriesWithResidentData?: string[];
 }
 
 export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
@@ -31,12 +32,18 @@ export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
     blockTitle,
     onEmptyStatusChanged,
     chartColours,
+    registriesWithResidentData,
   } = props;
 
   const done: string[] = [];
   const register_block = registerNames.map((register, i) => {
     if (!done.includes(register.rname)) {
       done.push(register.rname);
+
+      const hasResidentData =
+        registriesWithResidentData != undefined &&
+        registriesWithResidentData.length > 0 &&
+        registriesWithResidentData.includes(register.rname);
 
       return (
         <TableBlock
@@ -53,6 +60,7 @@ export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
           blockTitle={blockTitle ? blockTitle[i] : undefined}
           onEmptyStatusChanged={onEmptyStatusChanged}
           chartColours={chartColours}
+          hasResidentData={hasResidentData}
         />
       );
     } else {
