@@ -167,6 +167,11 @@
       "overskrift": "Autisme",
       "innhold": [
         {
+          "type": "faktaboks",
+          "overskrift": "Kjønns -og aldersfordeling av pasientar med autisme i poliklinisk behandling.",
+          "tekst": "![](/helseatlas/img/no/bup/autisme.png \"Tal pasientar med autisme i poliklinisk behandling i Noreg fordelt på kjønn -og aldersgrupper. Gjennomsnitt per år for perioden 2019-2023.\")"
+        },
+        {
           "utvalg": "Pasientar i poliklinisk behandling for autisme er definerte etter følgande kriterium:\n\n• Personar med tilstand som startar på F84 i Akse1 (alle tilstandkodenummer) i psykisk helsevern for barn og unge eller hadde hovuddiagnose med ICD-10-kode som startar på F84 i tverrfagleg spesialisert behandling av ruslidingar, somatikk, rehabilitering og avtalespesialistar \n\n• Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar\n\nAlder: 0-17 år\n\nRatane er justerte for alder og kjønn",
           "data": "autisme_pas.json",
           "publisert": "2024-12-31T15:26:00.000Z",
@@ -187,17 +192,17 @@
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-18T20:50:00.000Z"
-        },
-        {
-          "type": "faktaboks",
-          "overskrift": "Kjønns -og aldersfordeling av pasientar med autisme i poliklinisk behandling.",
-          "tekst": "![](/helseatlas/img/no/bup/autisme.png \"Tal pasientar med autisme i poliklinisk behandling i Noreg fordelt på kjønn -og aldersgrupper. Gjennomsnitt per år for perioden 2019-2023.\")"
         }
       ]
     },
     {
       "overskrift": "Angst",
       "innhold": [
+        {
+          "type": "faktaboks",
+          "overskrift": "Kjønns- og aldersfordeling av pasientar med angstlidingar i poliklinisk behandling",
+          "tekst": "\nAngstlidingar rammar først og fremst unge i 13-17-årsalderen. I 6-12-årsalderen er det ikkje klar forskjell mellom gutar og jenter, medan klart flest jenter i 13-17-årsalderen mottar behandling for angstlidingar.\n\n![](/helseatlas/img/no/bup/angst.png \"Tal pasientar med angstliding i poliklinisk behandling i Noreg fordelt på kjønn -og aldersgrupper. Gjennomsnitt per år for perioden 2019-2023.\")"
+        },
         {
           "utvalg": "Pasientar i poliklinisk behandling for angst er definerte etter følgande kriterium:\n\n• Personar med tilstand som startar på F40, F41, F928, F930, F931 ,F932 i Akse1 (alle tilstandkodenummer) i psykisk helsevern for barn og unge eller hadde hovuddiagnose med ICD-10 kode som startar på F40, F41, F928, F930, F931 ,F932 i tverrfagleg spesialisert behandling av ruslidingar, somatikk, rehabilitering og avtalespesialistar \n\n• Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, inkluderer både direkte og indirekte kontaktar\n\nAlder: 0-17 år\n\nRatane er justerte for alder og kjønn.",
           "data": "angst_pas.json",
@@ -219,17 +224,17 @@
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-18T22:03:00.000Z"
-        },
-        {
-          "type": "faktaboks",
-          "overskrift": "Kjønns- og aldersfordeling av pasientar med angstlidingar i poliklinisk behandling.",
-          "tekst": "\nAngstlidingar rammar først og fremst unge i 13-17-årsalderen. I 6-12-årsalderen er det ikkje klar forskjell mellom gutar og jenter, medan klart flest jenter i 13-17-årsalderen mottar behandling for angstlidingar.\n\n![](/helseatlas/img/no/bup/angst.png \"Tal pasientar med angstliding i poliklinisk behandling i Noreg fordelt på kjønn -og aldersgrupper. Gjennomsnitt per år for perioden 2019-2023.\")"
         }
       ]
     },
     {
       "overskrift": "Depresjon",
       "innhold": [
+        {
+          "type": "faktaboks",
+          "overskrift": "Kjønns- og aldersfordeling av pasientar med depresjon i poliklinisk behandling",
+          "tekst": "Dei aller fleste barn og unge som mottek behandling for depresjon er i aldersgruppa 13-17 år. Meir enn dobbelt så mange jenter som gutar mottek behandling for depresjon. \n\n![Det var mest jenter som var registerert med depresjon i perioden](/helseatlas/img/no/bup/depresjon.png \"Tal pasientar med depresjon i poliklinisk behandling i Noreg fordelt på kjønns- og aldersgrupper. Gjennomsnitt per år for perioden 2019-2023.\")"
+        },
         {
           "utvalg": "Pasientar i poliklinisk behandling for depresjon er definerte etter følgande kriterium:\n\n• Personar med tilstand som startar på F32, F33, F920 i Akse1 (alle tilstandkodenummer) i sektorar psykisk helsevern for barn og unge eller hadde hovuddiagnose med ICD-10 kode som startar på F32, F33, F920 i i tverrfagleg spesialisert behandling av ruslidingar, somatikk, rehabilitering og avtalespesialistar\n\n• Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, inkluderer både direkte og indirekte kontaktar\n\nAlder: 0-17 år \n\nRatane er justerte for alder og kjønn.",
           "data": "depresjon_pas1.json",
@@ -251,17 +256,17 @@
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-19T00:10:00.000Z"
-        },
-        {
-          "type": "faktaboks",
-          "overskrift": "Kjønns- og aldersfordeling av pasientar med depresjon i poliklinisk behandling",
-          "tekst": "Dei aller fleste barn og unge som mottek behandling for depresjon er i aldersgruppa 13-17 år. Meir enn dobbelt så mange jenter som gutar mottek behandling for depresjon. \n\n![Det var mest jenter som var registerert med depresjon i perioden](/helseatlas/img/no/bup/depresjon.png \"Tal pasientar med depresjon i poliklinisk behandling i Noreg fordelt på kjønns- og aldersgrupper. Gjennomsnitt per år for perioden 2019-2023.\")"
         }
       ]
     },
     {
       "overskrift": "ADHD",
       "innhold": [
+        {
+          "type": "faktaboks",
+          "overskrift": "Kjønns- og aldersfordeling av pasientar med ADHD i poliklinisk behandling",
+          "tekst": "Barn og unge i aldersgruppene 6-12 og 13-17 år er begge store aldersgrupper i behandling for ADHD. Medan gutar utgjer den klart største andelen i alderen 6-12 år, er kjønnsforskjellen liten i alderen 13-17 år.\n\n![](/helseatlas/img/no/bup/adhd.png \"Tal pasientar med ADHD i poliklinisk behandling i Noreg fordelt på kjønn -og aldersgrupper. Gjennomsnitt per år for perioden 2019-2023.\")"
+        },
         {
           "utvalg": "Pasientar i poliklinisk behandling for ADHD er definerte etter følgande kriterium:\n\n• Personar med tilstand som startar på F90 i Akse1 (alle tilstandkodenummer) i psykisk helsevern for barn og unge eller hadde hovuddiagnose med ICD-10 kode som startar på F90 i tverrfagleg spesialisert behandling av ruslidingar, somatikk, rehabilitering og avtalespesialistar\n\n• Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, inkluderer både direkte og indirekte kontaktar\n\nAlder: 0-17 år\n\nRatane er justerte for alder og kjønn",
           "data": "adhd_pas2.json",
@@ -283,17 +288,17 @@
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-22T18:38:00.000Z"
-        },
-        {
-          "type": "faktaboks",
-          "overskrift": "Kjønns- og aldersfordeling av pasientar med ADHD i poliklinisk behandling.",
-          "tekst": "Barn og unge i aldersgruppene 6-12 og 13-17 år er begge store aldersgrupper i behandling for ADHD. Medan gutar utgjer den klart største andelen i alderen 6-12 år, er kjønnsforskjellen liten i alderen 13-17 år.\n\n![](/helseatlas/img/no/bup/adhd.png \"Tal pasientar med ADHD i poliklinisk behandling i Noreg fordelt på kjønn -og aldersgrupper. Gjennomsnitt per år for perioden 2019-2023.\")"
         }
       ]
     },
     {
       "overskrift": "Spesifikk utviklingsforstyrring",
       "innhold": [
+        {
+          "type": "faktaboks",
+          "overskrift": "Kjønns- og aldersfordeling av pasientar med spesifikk utviklingsforstyrring i poliklinisk behandling",
+          "tekst": "Dei aller fleste som mottek behandling for utviklingsforstyrring, er i aldersgruppene 6-12 og 13-17 år. Medan andelen gutar og jenter er ganske lik i aldersgruppa 13-17 år, mottek meir enn dobbelt så mange gutar som jenter behandling i aldersgruppa 6-12 år.\n\n![](/helseatlas/img/no/bup/utviklingsforstyrring.png \"Tal pasientar med spesifikk  utviklingsforstyrring i poliklinisk behandling i Noreg fordelt på kjønn -og aldersgrupper. Gjennomsnitt per år for perioden 2019-2023.\")"
+        },
         {
           "utvalg": "Pasientar i poliklinisk behandling for spesifikk utviklingsforstyrring er definerte etter følgjande kriterium:\n\n• Personar med tilstand som startar på F80, F81, F82, F83, F88, F89 i Akse2 (alle tilstandkodenummer) i psykisk helsevern for barn og unge eller hadde hovuddiagnose med ICD-10 kode som startar på F80, F81, F82, F83, F88, F89 i tverrfagleg spesialisert behandling av ruslidingar, somatikk, rehabilitering og avtalespesialistar\n\n• Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, inkluderer både direkte og indirekte kontaktar\n\nAlder: 0-17 år\n\nRatane er justerte for alder og kjønn.",
           "data": "utviklingforstyring_pas2.json",
@@ -315,17 +320,17 @@
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-22T20:46:00.000Z"
-        },
-        {
-          "type": "faktaboks",
-          "overskrift": "Kjønns- og aldersfordeling av pasientar med spesifikk utviklingsforstyrring i poliklinisk behandling",
-          "tekst": "Dei aller fleste som mottek behandling for utviklingsforstyrring, er i aldersgruppene 6-12 og 13-17 år. Medan andelen gutar og jenter er ganske lik i aldersgruppa 13-17 år, mottek meir enn dobbelt så mange gutar som jenter behandling i aldersgruppa 6-12 år.\n\n![](/helseatlas/img/no/bup/utviklingsforstyrring.png \"Tal pasientar med spesifikk  utviklingsforstyrring i poliklinisk behandling i Noreg fordelt på kjønn -og aldersgrupper. Gjennomsnitt per år for perioden 2019-2023.\")"
         }
       ]
     },
     {
       "overskrift": "Eteforstyrring",
       "innhold": [
+        {
+          "type": "faktaboks",
+          "overskrift": "Kjønns- og aldersfordeling av pasientar med eteforstyrring i poliklinisk behandling",
+          "tekst": "Jenter i alderen 13 til 17 år utgjer nesten alle pasientar under 18 år med eteforstyrring. Ein liten andel gutar i alderen 13 til 17 år er gutar.\n\n![](/helseatlas/img/no/bup/eteforstyrring.png \"Tal pasientar med eteforstyrring i poliklinisk behandling i Noreg fordelt på kjønn -og aldersgrupper. Gjennomsnitt per år for perioden 2019-2023\")"
+        },
         {
           "utvalg": "Pasientar i poliklinisk behandling for eteforstyrring er definerte etter følgande kriterium: \n\n• Personar med tilstand som startar på F50 i Akse1 (alle tilstandkodenummer) i psykisk helsevern for barn og unge eller hadde hovuddiagnose med ICD-10 kode som startar på F50 i tverrfagleg spesialisert behandling av ruslidingar, somatikk, rehabilitering og avtalespesialistar\n\n• Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, inkluderer både direkte og indirekte kontaktar\n\nAlder: 0-17 år\n\nRatane er justerte for alder og kjønn.",
           "data": "eteforstyring_pas.json",
@@ -347,17 +352,17 @@
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-22T21:24:00.000Z"
-        },
-        {
-          "type": "faktaboks",
-          "overskrift": "Kjønns- og aldersfordeling av pasientar med eteforstyrring i poliklinisk behandling",
-          "tekst": "Jenter i alderen 13 til 17 år utgjer nesten alle pasientar under 18 år med eteforstyrring. Ein liten andel gutar i alderen 13 til 17 år er gutar.\n\n![](/helseatlas/img/no/bup/eteforstyrring.png \"Tal pasientar med eteforstyrring i poliklinisk behandling i Noreg fordelt på kjønn -og aldersgrupper. Gjennomsnitt per år for perioden 2019-2023\")"
         }
       ]
     },
     {
       "overskrift": "Tilpassingsforstyrring",
       "innhold": [
+        {
+          "type": "faktaboks",
+          "overskrift": "Kjønns- og aldersfordeling av pasientar med tilpasningsforstyrring  i poliklinisk behandling",
+          "tekst": "I aldersgruppa 13-17 år mottek flest behandling for tilpassingsforstyrring. I denne aldersgruppa mottek dobbelt så mange jenter som gutar behandling. I aldersgruppa 6-12 år er tal gutar og jenter ganske likt.\n\n![](/helseatlas/img/no/bup/tilpassingsforstyrring.png \"Tal pasientar med tilpasningsforstyrring i poliklinisk behandling i Noreg fordelt på kjønn -og aldersgrupper. Gjennomsnitt per år for perioden 2019-2023\")"
+        },
         {
           "utvalg": "Pasientar i poliklinisk behandling for tilpassingsforstyrring er definerte etter følgjande kriterium:\n\n• Personar med tilstand som startar på F430, F432, F438 , F439 i Akse1 (alle tilstandkodenummer) i psykisk helsevern for barn og unge eller hadde hovuddiagnose med ICD-10 kode som startar på F430, F432, F438 , F439 i tverrfagleg spesialisert behandling av ruslidingar, somatikk, rehabilitering og avtalespesialistar\n\n• Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, inkluderer både direkte og indirekte kontaktar\n\nAlder: 0-17 år\n\nRatane er justerte for alder og kjønn",
           "data": "tilpasningstyring_pas.json",
@@ -379,17 +384,17 @@
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-22T22:34:00.000Z"
-        },
-        {
-          "type": "faktaboks",
-          "overskrift": "Kjønns- og aldersfordeling av pasientar med tilpasningsforstyrring  i poliklinisk behandling",
-          "tekst": "I aldersgruppa 13-17 år mottek flest behandling for tilpassingsforstyrring. I denne aldersgruppa mottek dobbelt så mange jenter som gutar behandling. I aldersgruppa 6-12 år er tal gutar og jenter ganske likt.\n\n![](/helseatlas/img/no/bup/tilpassingsforstyrring.png \"Tal pasientar med tilpasningsforstyrring i poliklinisk behandling i Noreg fordelt på kjønn -og aldersgrupper. Gjennomsnitt per år for perioden 2019-2023\")"
         }
       ]
     },
     {
       "overskrift": "Rusliding",
       "innhold": [
+        {
+          "type": "faktaboks",
+          "overskrift": "Kjønns- og aldersfordeling av pasientar med rusliding  i poliklinisk behandling.",
+          "tekst": "Tal pasientar i alderen 13-17 er lågare enn i aldersgruppene opp til 24 år. Andelen gutar og jenter er ganske lik i alderen 13-17 år, medan flest gutar har ruslidingar i aldersgruppene opp mot 24 år.\n\n![](/helseatlas/img/no/bup/rusliding.png \"Tal pasientar med rusliding i poliklinisk behandling i Noreg, fordelt på kjønn -og aldersgrupper. Gjennomsnitt per år for perioden 2019-2023.\")"
+        },
         {
           "utvalg": "Pasientar i poliklinisk behandling for  rusliding er definerte etter følgande kriterium:\n\nPersonar med tilstand som startar på F10 ,F11,F12 ,F13 ,F14 ,F15 ,F16 ,F18,F19 i Akse1 (alle tilstand kode nummer ) i psykisk helsevern for barn og unge eller hadde hoved diagnose med ICD-10 kode som startar på F10 ,F11,F12 ,F13 ,F14 ,F15 ,F16 ,F18, F19 i tverrfagleg spesialisert behandling av ruslidingar, somatikk, rehabilitering og avtalespesialistar\n\nPoliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, inkluderer både direkte og indirekte kontaktar.\n\nAlder: 0-17 år\n\nRatane er justerte for alder og kjønn.",
           "data": "rusunder18_pas.json",
@@ -433,11 +438,6 @@
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2024-11-24T21:19:00.000Z"
-        },
-        {
-          "type": "faktaboks",
-          "overskrift": "Kjønns- og aldersfordeling av pasientar med rusliding  i poliklinisk behandling.",
-          "tekst": "Tal pasientar i alderen 13-17 er lågare enn i aldersgruppene opp til 24 år. Andelen gutar og jenter er ganske lik i alderen 13-17 år, medan flest gutar har ruslidingar i aldersgruppene opp mot 24 år.\n\n![](/helseatlas/img/no/bup/rusliding.png \"Tal pasientar med rusliding i poliklinisk behandling i Noreg, fordelt på kjønn -og aldersgrupper. Gjennomsnitt per år for perioden 2019-2023.\")"
         }
       ]
     },
