@@ -15,8 +15,8 @@ table, th, td {
 
 <table style="auto">
   <tr>
-    <th>Kortnamn opptaksområda</th>
-    <th>Kommunar/bydelar</th>
+    <th>Opptaksområde</th>
+    <th>Kommunenr/bydelsnr og Namn </th>
    </tr>
 <TR><TD>Finnmark</TD> <TD> 5601 Alta, 5603 Hammerfest, 5605 Sør-Varanger, 5607 Vadsø, 5610 Karasjok, 5612 Kautokeino, 5614 Loppa, 5616 Hasvik, 5618 Måsøy, 5620 Nordkapp, 5622 Porsanger, 5624 Lebesby, 5626 Gamvik, 5628 Tana, 5630 Berlevåg, 5632 Båtsfjord, 5634 Vardø, 5636 Nesseby</TD> </TR>
 
