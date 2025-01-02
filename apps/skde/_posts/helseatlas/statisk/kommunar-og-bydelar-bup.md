@@ -1,6 +1,6 @@
 ---
-filename: Kommunar og bydelar (BUP)
-title: Kommunar og bydelar (BUP)
+filename: Kommunar og bydelar BUP
+title: Kommunar og bydelar BUP
 lang: nb
 ---
 <html>
