@@ -6,7 +6,7 @@
       "x": ["Snittrate"],
       "y": "bohf",
       "xLabel": {
-        "nn": "Tal kontaktar pr. 1 000 innbyggarar (13-17 år)",
+        "nn": "Tal kontaktdagar pr. 1 000 innbyggjarar (13-17 år)",
         "en": "Number of outpatient contact per 1,000 inhabitants (13-17 years)"
       },
       "yLabel": {
@@ -29,7 +29,7 @@
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Rate pr. 1 000 innbyggarar i alderen 13-17 år.",
+        "nn":  "Årlege gjennomsnittsverdiar for perioden 2019–2023. Rate pr. 1 000 innbyggjarar i alderen 13-17 år.",
         "en": "Average per year for the period 2019–2023. Rate per 1,000 inhabitants 13-17 years."
       },
       "columns": [
@@ -42,21 +42,21 @@
         },
         {
           "id": "Snittrate",
-          "label_no": "Poliklinisk kontaktrate",
+          "label_no": "Kontaktdagsrate",
           "label_en": "Outpatient contacts",
           "typeVar": "number",
           "format": ",.1f"
         },
         {
           "id": "Snitt_kontaktar",
-          "label_no": "Tal polikliniske kontaktar",
+          "label_no": "Tal kontaktdagar",
           "label_en": "Number of outpatient contacts",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
           "id": "Snitt_innbyggarar",
-          "label_no": "Innbyggarar (13-17 år)",
+          "label_no": "Innbyggjarar (13-17 år)",
           "label_en": "Inhabitants (13-17 years)",
           "typeVar": "number",
           "format": ",.0f"
@@ -67,7 +67,7 @@
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Tal kontaktar per pasient (13-17 år).",
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2019–2023. Tal kontaktdagar per pasient (13-17 år).",
         "en": "Average per year for the period 2019–2023. Number of outpatient contacts per patient (13-17 years)."
       },
       "columns": [
@@ -80,14 +80,14 @@
         },
         {
           "id": "kontakt_p_pas",
-          "label_no": "Kontaktar per pasient",
+          "label_no": "Kontaktdagar per pasient",
           "label_en": "Contacts per patient",
           "typeVar": "number",
           "format": ",.1f"
         },
         {
           "id": "Snitt_kontaktar",
-          "label_no": "Tal kontaktar",
+          "label_no": "Tal kontaktdagar",
           "label_en": "Number of outpatient contacts",
           "typeVar": "number",
           "format": ",.0f"
@@ -106,7 +106,7 @@
       "data": "qwerty",
       "x": "Snittrate",
       "caption": {
-        "nn": "Tal kontaktar pr. 1 000 innbyggarar (13-17 år )",
+        "nn": "Tal kontaktdagar pr. 1 000 innbyggjarar (13-17 år )",
         "en": "Number of outpatient contacts per 1,000 inhabitants (13-17 years)"
       },
       "jenks": [
