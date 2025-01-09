@@ -48,4 +48,10 @@ jobs:
           --account-name $AZURE_STORAGE_ACCOUNT \
           --account-key $AZURE_STORAGE_KEY \
           --container '$web' \
-          --source ./apps/skde/out \
+          --source ./apps/skde/out
+          az afd endpoint purge \
+          --resource-group ${ secrets.AZURE_FRONTDOOR_RG_STATICWEB } \
+          --profile-name ${ secrets.AZURE_FRONTDOOR_PROFILE_STATICWEB } \
+          --endpoint-name ${ secrets.AZURE_FRONTDOOR_ENDPOINT_STATICWEB_TEST } \
+          --domains ${ secrets.AZURE_FRONTDOOR_ENDPOINT_STATICWEB_DOMAINS } \
+          --content-paths '/*'
