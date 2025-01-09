@@ -54,8 +54,8 @@ jobs:
           --container '$web' \
           --source ./apps/skde/out
           az afd endpoint purge \
-          --resource-group ${ AZURE_FRONTDOOR_RG_STATICWEB } \
-          --profile-name ${ AZURE_FRONTDOOR_PROFILE_STATICWEB } \
-          --endpoint-name ${ AZURE_FRONTDOOR_ENDPOINT_STATICWEB } \
-          --domains ${ AZURE_FRONTDOOR_ENDPOINT_STATICWEB_DOMAINS } \
+          --resource-group $AZURE_FRONTDOOR_RG_STATICWEB \
+          --profile-name $AZURE_FRONTDOOR_PROFILE_STATICWEB \
+          --endpoint-name $AZURE_FRONTDOOR_ENDPOINT_STATICWEB \
+          --domains $AZURE_FRONTDOOR_ENDPOINT_STATICWEB_DOMAINS \
           --content-paths '/*'
