@@ -20,6 +20,10 @@ jobs:
     env:
       AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT }}
       AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
+      AZURE_FRONTDOOR_RG_STATICWEB: ${{ secrets.AZURE_FRONTDOOR_RG_STATICWEB_TEST }}
+      AZURE_FRONTDOOR_PROFILE_STATICWEB: ${{ secrets.AZURE_FRONTDOOR_PROFILE_STATICWEB_TEST }}
+      AZURE_FRONTDOOR_ENDPOINT_STATICWEB: ${{ secrets.AZURE_FRONTDOOR_ENDPOINT_STATICWEB_TEST }}
+      AZURE_FRONTDOOR_ENDPOINT_STATICWEB_DOMAINS: ${{ secrets.AZURE_FRONTDOOR_ENDPOINT_STATICWEB_TEST_DOMAINS }}
       NEXT_PUBLIC_SENTRY: "https://d48c58a239264c12bcbf8fe86d364c44@o489056.ingest.sentry.io/5799127"
     steps:
       - name: Check out the repo
@@ -50,8 +54,8 @@ jobs:
           --container '$web' \
           --source ./apps/skde/out
           az afd endpoint purge \
-          --resource-group ${ secrets.AZURE_FRONTDOOR_RG_STATICWEB } \
-          --profile-name ${ secrets.AZURE_FRONTDOOR_PROFILE_STATICWEB } \
-          --endpoint-name ${ secrets.AZURE_FRONTDOOR_ENDPOINT_STATICWEB_TEST } \
-          --domains ${ secrets.AZURE_FRONTDOOR_ENDPOINT_STATICWEB_DOMAINS } \
+          --resource-group ${ AZURE_FRONTDOOR_RG_STATICWEB } \
+          --profile-name ${ AZURE_FRONTDOOR_PROFILE_STATICWEB } \
+          --endpoint-name ${ AZURE_FRONTDOOR_ENDPOINT_STATICWEB } \
+          --domains ${ AZURE_FRONTDOOR_ENDPOINT_STATICWEB_DOMAINS } \
           --content-paths '/*'
