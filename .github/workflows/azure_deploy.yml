@@ -20,6 +20,10 @@ jobs:
     env:
       AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT }}
       AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
+      AZURE_FRONTDOOR_RG_STATICWEB: ${{ secrets.AZURE_FRONTDOOR_RG_STATICWEB_TEST }}
+      AZURE_FRONTDOOR_PROFILE_STATICWEB: ${{ secrets.AZURE_FRONTDOOR_PROFILE_STATICWEB_TEST }}
+      AZURE_FRONTDOOR_ENDPOINT_STATICWEB: ${{ secrets.AZURE_FRONTDOOR_ENDPOINT_STATICWEB_TEST }}
+      AZURE_FRONTDOOR_ENDPOINT_STATICWEB_DOMAINS: ${{ secrets.AZURE_FRONTDOOR_ENDPOINT_STATICWEB_TEST_DOMAINS }}
       NEXT_PUBLIC_SENTRY: "https://d48c58a239264c12bcbf8fe86d364c44@o489056.ingest.sentry.io/5799127"
     steps:
       - name: Check out the repo
@@ -49,3 +53,16 @@ jobs:
           --account-key $AZURE_STORAGE_KEY \
           --container '$web' \
           --source ./apps/skde/out \
+          --delete-destination true
+          for file in $(find ./apps/skde/out -name "*.html"); do
+              # Extract the blob name relative to the source folder
+              blobName="$(echo "$file" | sed 's|^./apps/skde/out/||')"
+
+              az storage blob update \
+                  --account-name "$AZURE_STORAGE_ACCOUNT" \
+                  --account-key "$AZURE_STORAGE_KEY" \
+                  --container '$web' \
+                  --name "$blobName" \
+                  --content-cache-control "no-store, must-revalidate"
+          done
+
