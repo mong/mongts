@@ -53,4 +53,10 @@ jobs:
           --account-key $AZURE_STORAGE_KEY \
           --container '$web' \
           --source ./apps/skde/out
-      
+          --delete-destination true
+        az storage blob set-properties \
+          --account-name $AZURE_STORAGE_ACCOUNT \
+          --account-key $AZURE_STORAGE_KEY \
+          --container '$web' \
+          --name "index.html" \
+          --content-cache-control "no-store, must-revalidate"
