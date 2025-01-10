@@ -49,14 +49,18 @@ jobs:
           NEXT_PUBLIC_API_HOST: https://test-api.skde.org
         run: |
           az storage blob sync \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --container '$web' \
+            --source ./apps/skde/out
+            --include-pattern "*.html" "*.txt" "*.xml" \
+            --content-cache-control "no-store, must-revalidate" \
+            --delete-destination false
+          az storage blob sync \
           --account-name $AZURE_STORAGE_ACCOUNT \
           --account-key $AZURE_STORAGE_KEY \
           --container '$web' \
           --source ./apps/skde/out
+          --exclude-pattern "*.html" "*.txt "*.xml" \
           --delete-destination true
-        az storage blob set-properties \
-          --account-name $AZURE_STORAGE_ACCOUNT \
-          --account-key $AZURE_STORAGE_KEY \
-          --container '$web' \
-          --name "index.html" \
-          --content-cache-control "no-store, must-revalidate"
+
