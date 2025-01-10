@@ -52,7 +52,7 @@ jobs:
             --account-name $AZURE_STORAGE_ACCOUNT \
             --account-key $AZURE_STORAGE_KEY \
             --container '$web' \
-            --source ./apps/skde/out
+            --source ./apps/skde/out \
             --include-pattern "*.html" "*.txt" "*.xml" \
             --content-cache-control "no-store, must-revalidate" \
             --delete-destination false
@@ -60,7 +60,7 @@ jobs:
           --account-name $AZURE_STORAGE_ACCOUNT \
           --account-key $AZURE_STORAGE_KEY \
           --container '$web' \
-          --source ./apps/skde/out
+          --source ./apps/skde/out \
           --exclude-pattern "*.html" "*.txt "*.xml" \
           --delete-destination true
 
