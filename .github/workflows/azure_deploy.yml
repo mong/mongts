@@ -49,18 +49,20 @@ jobs:
           NEXT_PUBLIC_API_HOST: https://test-api.skde.org
         run: |
           az storage blob sync \
-            --account-name $AZURE_STORAGE_ACCOUNT \
-            --account-key $AZURE_STORAGE_KEY \
-            --container '$web' \
-            --source ./apps/skde/out \
-            --include-pattern "*.html" "*.txt" "*.xml" \
-            --content-cache-control "no-store, must-revalidate" \
-            --delete-destination false
-          az storage blob sync \
           --account-name $AZURE_STORAGE_ACCOUNT \
           --account-key $AZURE_STORAGE_KEY \
           --container '$web' \
           --source ./apps/skde/out \
-          --exclude-pattern "*.html" "*.txt "*.xml" \
           --delete-destination true
+          for file in $(find ./apps/skde/out -name "*.html"); do
+              # Extract the blob name relative to the source folder
+              blobName="$(echo "$file" | sed 's|^./apps/skde/out/||')"
+
+              az storage blob update \
+                  --account-name "$AZURE_STORAGE_ACCOUNT" \
+                  --account-key "$AZURE_STORAGE_KEY" \
+                  --container '$web' \
+                  --name "$blobName" \
+                  --content-cache-control "no-store, must-revalidate"
+          done
 
