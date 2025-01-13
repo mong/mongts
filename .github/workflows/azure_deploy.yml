@@ -60,6 +60,8 @@ jobs:
             --account-key $AZURE_STORAGE_KEY \
             --destination '$web' \
             --source ./apps/skde/out \
-            --pattern '*.html;*.xml;*.txt' \
+            --pattern '*.html' \
+            --pattern '*.xml' \
+            --pattern '*.txt' \
             --content-cache-control "public, max-age=60, s-maxage=60" \
             --overwrite
