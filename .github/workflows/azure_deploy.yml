@@ -48,21 +48,18 @@ jobs:
         env:
           NEXT_PUBLIC_API_HOST: https://test-api.skde.org
         run: |
+          yarn run export
           az storage blob sync \
-          --account-name $AZURE_STORAGE_ACCOUNT \
-          --account-key $AZURE_STORAGE_KEY \
-          --container '$web' \
-          --source ./apps/skde/out \
-          --delete-destination true
-          for file in $(find ./apps/skde/out -name "*.html"); do
-              # Extract the blob name relative to the source folder
-              blobName="$(echo "$file" | sed 's|^./apps/skde/out/||')"
-
-              az storage blob update \
-                  --account-name "$AZURE_STORAGE_ACCOUNT" \
-                  --account-key "$AZURE_STORAGE_KEY" \
-                  --container '$web' \
-                  --name "$blobName" \
-                  --content-cache-control "no-store, must-revalidate"
-          done
-
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --container '$web' \
+            --source ./apps/skde/out \
+            --delete-destination true
+          az storage blob upload-batch \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --destination '$web' \
+            --source ./apps/skde/out \
+            --pattern '*.html;*.xml;*.txt' \
+            --content-cache-control "public, max-age=60, s-maxage=60" \
+            --overwrite
