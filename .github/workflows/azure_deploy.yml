@@ -61,7 +61,13 @@ jobs:
             --destination '$web' \
             --source ./apps/skde/out \
             --pattern '*.html' \
+            --content-cache-control "public, max-age=60, s-maxage=60" \
+            --overwrite
+          az storage blob upload-batch \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --destination '$web' \
+            --source ./apps/skde/out \
             --pattern '*.xml' \
-            --pattern '*.txt' \
             --content-cache-control "public, max-age=60, s-maxage=60" \
             --overwrite
