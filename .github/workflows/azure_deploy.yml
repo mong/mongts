@@ -1,11 +1,11 @@
 name: Deploy app to Azure
 on:
   push:
-    branches: [develop]
+    branches: [main, develop]
     paths-ignore:
       - "apps/api/**"
   pull_request:
-    branches: [develop]
+    branches: [main, develop, dependency_updates]
     paths-ignore:
       - "apps/api/**"
 
@@ -18,8 +18,6 @@ jobs:
     name: Deploy app to Azure
     runs-on: ubuntu-latest
     env:
-      AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT }}
-      AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY }}
       NEXT_PUBLIC_SENTRY: "https://d48c58a239264c12bcbf8fe86d364c44@o489056.ingest.sentry.io/5799127"
     steps:
       - name: Check out the repo
@@ -36,16 +34,97 @@ jobs:
       - run: yarn run check-format
       - name: Test build
         env:
-          NEXT_PUBLIC_API_HOST: https://test-api.skde.org
+          NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
         run: |
           yarn run export
-      - name: Build and sync develop to Azure
+      - name: Build and upload main branch version to Azure
+        if: github.ref == 'refs/heads/main'
+        env:
+          NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
+          AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT_PROD }}
+          AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY_PROD }}
+        run: |
+          yarn run export
+          az storage blob sync \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --container '$web' \
+            --source ./apps/skde/out \
+            --delete-destination true
+          az storage blob upload-batch \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --destination '$web' \
+            --source ./apps/skde/out \
+            --pattern '*.html' \
+            --content-cache-control "public, max-age=60, s-maxage=60" \
+            --overwrite
+          az storage blob upload-batch \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --destination '$web' \
+            --source ./apps/skde/out \
+            --pattern '*.xml' \
+            --content-cache-control "public, max-age=60, s-maxage=60" \
+            --overwrite
+      - name: Build and upload verify version to Azure
+        if: github.ref == 'refs/heads/main'
+        env:
+          NEXT_PUBLIC_VERIFY: "true"
+          NEXT_PUBLIC_API_HOST: https://verify-mong-api.skde.org
+          AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT_VERIFY }}
+          AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY_VERIFY }}
+        run: |
+          yarn run export
+          az storage blob sync \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --container '$web' \
+            --source ./apps/skde/out \
+            --delete-destination true
+          az storage blob upload-batch \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --destination '$web' \
+            --source ./apps/skde/out \
+            --pattern '*.html' \
+            --content-cache-control "public, max-age=60, s-maxage=60" \
+            --overwrite
+          az storage blob upload-batch \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --destination '$web' \
+            --source ./apps/skde/out \
+            --pattern '*.xml' \
+            --content-cache-control "public, max-age=60, s-maxage=60" \
+            --overwrite
+      - name: Upload develop version to Azure
         if: github.ref == 'refs/heads/develop'
         env:
           NEXT_PUBLIC_API_HOST: https://test-api.skde.org
+          AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT_TEST }}
+          AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY_TEST }}
         run: |
+          yarn run export
           az storage blob sync \
-          --account-name $AZURE_STORAGE_ACCOUNT \
-          --account-key $AZURE_STORAGE_KEY \
-          --container '$web' \
-          --source ./apps/skde/out \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --container '$web' \
+            --source ./apps/skde/out \
+            --delete-destination true
+          az storage blob upload-batch \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --destination '$web' \
+            --source ./apps/skde/out \
+            --pattern '*.html' \
+            --content-cache-control "public, max-age=60, s-maxage=60" \
+            --overwrite
+          az storage blob upload-batch \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --destination '$web' \
+            --source ./apps/skde/out \
+            --pattern '*.xml' \
+            --content-cache-control "public, max-age=60, s-maxage=60" \
+            --overwrite
