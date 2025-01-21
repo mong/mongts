@@ -1,5 +1,5 @@
 import db from "../../db";
-import { RegistryScores} from "types";
+import { RegistryScores } from "types";
 import { Filter } from ".";
 
 export const registryScoresModel = (

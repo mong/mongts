@@ -2,10 +2,7 @@ import { RequestHandler } from "express";
 import { registryScoresModel } from "../../models/data";
 import { parseQuery } from "./indicators";
 
-export const registryScoresController: RequestHandler = async (
-  req,
-  res,
-) => {
+export const registryScoresController: RequestHandler = async (req, res) => {
   const query = parseQuery(req);
 
   try {
