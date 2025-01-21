@@ -164,3 +164,12 @@ export type RegistryRank = {
   verdict: string;
   year: number;
 };
+
+export type RegistryEvaluation = {
+  id: number;
+  name: string;
+  full_name: string;
+  short_name: string;
+  year: number;
+  evaluation: string;
+};

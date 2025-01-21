@@ -3,6 +3,7 @@ export * from "./indicators";
 export * from "./description";
 export * from "./selectionyears";
 export { registryRankModel } from "./registryRank";
+export { registryEvaluationModel } from "./registryEvaluation";
 export { aggData, indTable, regTable, medfieldTable } from "./nestedData";
 
 export interface Filter {
