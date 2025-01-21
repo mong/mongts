@@ -9,12 +9,14 @@ import {
   LinechartBaseProps,
 } from "qmongjs";
 import { useRegistryRankQuery } from "qmongjs";
-import { RegistryRank } from "types";
+import { RegistryEvaluation, RegistryRank } from "types";
 import { Stack, Typography } from "@mui/material";
 import { FaCircle } from "react-icons/fa";
 import { fetchRegisterNames } from "qmongjs";
 import { RegisterName } from "types";
 import { styled, Box, Tabs, Tab } from "@mui/material";
+import { useRegistryEvaluationQuery } from "qmongjs/src/helpers/hooks";
+import { defaultYear } from "qmongjs";
 
 const levelAColour = "#58A55C";
 const levelBColour = "#FD9C00";
@@ -60,8 +62,9 @@ const Stadiumfigur = ({ registry }) => {
   // End copy-paste code
 
   const rankQuery = useRegistryRankQuery();
+  const evaluationQuery = useRegistryEvaluationQuery(defaultYear);
 
-  if (rankQuery.isFetching) {
+  if (rankQuery.isFetching || evaluationQuery.isFetching) {
     return null;
   }
 
@@ -69,6 +72,10 @@ const Stadiumfigur = ({ registry }) => {
     (row: RegistryRank) => row.name === registry,
   );
 
+  const evaluationData = evaluationQuery.data.filter(
+    (row: RegistryEvaluation) => row.name === registry,
+  );
+  console.log(evaluationData);
   if (rankData.length === 0) {
     return null;
   }
@@ -136,6 +143,7 @@ const Stadiumfigur = ({ registry }) => {
     ...font,
   }));
 
+  console.log(evaluationData[0].evaluation_text);
   const PlotComponent = () => {
     return (
       <div>
@@ -167,19 +175,24 @@ const Stadiumfigur = ({ registry }) => {
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Utvikling over tid" {...a11yProps(0)} />
+          <Tab label="Ekspertgruppens vurdering" {...a11yProps(1)} />
+          <Tab label="Oppnådde krav" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
         <PlotComponent />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        Item Two
+        <h2>{"Ekspertgruppens vurdering for " + defaultYear}</h2>
+        <div style={{ whiteSpace: "pre-wrap" }}>
+          {evaluationData[0]
+            ? evaluationData[0].evaluation_text
+            : "Ingen evaluering tilgjengelig"}
+        </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Item Three
+        Innhold kommer
       </CustomTabPanel>
     </Box>
   );
