@@ -5,3 +5,4 @@ export * from "./selectionyears";
 export { dataController } from "./data";
 export { registryRankController } from "./registryRank";
 export { registryEvaluationController } from "./registryEvaluation";
+export {registryScoresController } from "./registryScores";
