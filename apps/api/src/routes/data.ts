@@ -6,6 +6,7 @@ import {
   selectionYearsContoller,
   dataController,
   registryRankController,
+  registryEvaluationController,
 } from "../controllers/data";
 
 const Router = express.Router();
@@ -26,5 +27,8 @@ Router.get("/:register/nestedData", dataController);
 
 // Registry rank output
 Router.get("/registryRank", registryRankController);
+
+// Registry evaluation output
+Router.get("/registryEvaluation", registryEvaluationController);
 
 export default Router;
