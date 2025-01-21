@@ -143,7 +143,6 @@ const Stadiumfigur = ({ registry }) => {
     ...font,
   }));
 
-  console.log(evaluationData[0].evaluation_text);
   const PlotComponent = () => {
     return (
       <div>
