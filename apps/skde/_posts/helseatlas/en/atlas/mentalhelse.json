@@ -58,7 +58,7 @@
           "data": "polyklinikk_kontakt_eng.json",
           "publisert": "2025-01-31T13:35:00.000Z",
           "resultat": "\nThe number of outpatient contact days shows low geographical variation. Patients in the Telemark and Helgeland referral areas have the highest number of outpatient contact days, while Møre og Romsdal has the lowest rate. \n\nWe used the number of contact days rather than outpatient contacts as a measure of activity. This choice is based on the observation that the number of outpatient contacts per patient can vary substantially within a single day across different referral areas. Contact days serve as a more consistent measure of activity, aligning better with resource allocation models that utilize activity-based funding. \n\nWhile the number of contacts in mental healthcare, interdisciplinary specialized addiction treatment, and contracted specialists in mental healthcare remained stable from 2014 to 2018 (Bale et al., 2020) a nationwide increase in the number of contact days has been observed since then. This trend is evident in many referral areas; however, Sørlandet, Ahus, and Stavanger do not follow this pattern. There are notable differences in the number of contact days per patient. For example, referral areas such as OUS, Vestre Viken, Telemark, and Bergen average approximately 13 contact days per patient, while Nord-Trøndelag, Førde, St. Olav, and Finnmark report closer to 10. These variations are significant and are likely influenced by differences in how services are organized across regions. \n\nHowever, the use of contact days may mask variations in treatment intensity across referral areas, particularly when considering practices during a single day. For example, a patient may have contact with multiple therapists on the same day. Furthermore, it is a common practice in mental health care for children and adolescents for discussions involving the patient's relatives to occur concurrently with the therapist's session with the patient.",
-          "overskrift": "Contact Days in Outpatient Treatment ",
+          "overskrift": "Outpatient contact days",
           "ingress": "Each year, approximately 68,000 children and adolescents receive outpatient treatment, resulting in a total of around 792,000 contact days annually, referring to the days patients receive outpatient consultations. While there is minimal geographical variation in the overall number of contact days, considerable differences are observed in the number of contact days per patient across regions.",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
@@ -74,6 +74,17 @@
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-01-21T13:47:00.000Z"
+        },
+        {
+          "utvalg": "During the period 2019–2023, children and adolescents aged 6-12 years who had at least one outpatient contact in the following areas were included: \n\n* Mental healthcare services, interdisciplinary specialized addiction treatment, or private specialists under public funding contracts in mental health care. \n* Somatic care, rehabilitation, or publicly funded specialists in somatic care, with an F-diagnosis recorded as the primary condition. \n\nOutpatient contacts are defined as instances where the patient was admitted and discharged on the same date. This includes both outpatient consultations and day treatments. The rate encompasses both direct and indirect contacts, with a maximum of one contact per day per patient. \n\nThe rates have been adjusted for age and sex.",
+          "data": "polyklinikk_kontakt_12_en.json",
+          "publisert": "2025-01-31T08:25:00.000Z",
+          "resultat": "During the period from 2019 to 2023, a slight increase in the rate of contact days was observed for this age group. However, as with younger children, this trend was not uniformly observed across all referral areas, with some areas experiencing a decline. Notably, Finnmark and UNN saw a significant increase in activity for this age group. \n\nThere is little geographical variation in the rates for the number of contact days. The Telemark and Helgeland referral areas exhibit the highest rates, with 858 and 829 contact days per 1,000 population, respectively. In contrast, many referral areas report consistently low rates. \n\nThere is no consistent relationship between the referral areas with the highest and lowest rates of contact days per population and those with the highest and lowest numbers of contact days per patient. While Telemark also reports a high number of contact days per patient, Helgeland has a relatively low number, likely due to the higher number of patients in this age group. OUS reports the highest number of contact days per patient, despite not ranking among the top three areas for contact days per population, suggesting that patients in this area experience significantly more contact throughout the year compared to other referral areas with high contact rates.",
+          "overskrift": "Outpatient Contact Days (6-12 years) ",
+          "ingress": "There is minimal variation in the number of contact days for children aged 6-12 years.",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-01-22T08:25:00.000Z"
         }
       ]
     }
