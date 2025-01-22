@@ -173,3 +173,12 @@ export type RegistryEvaluation = {
   year: number;
   evaluation: string;
 };
+
+export type RegistryScores= {
+  id: number;
+  name: string;
+  full_name: string;
+  short_name: string;
+  year: number;
+  scores: number[];
+};
