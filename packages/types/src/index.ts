@@ -174,7 +174,7 @@ export type RegistryEvaluation = {
   evaluation: string;
 };
 
-export type RegistryScores= {
+export type RegistryScores = {
   id: number;
   name: string;
   full_name: string;
@@ -182,3 +182,12 @@ export type RegistryScores= {
   year: number;
   scores: number[];
 };
+
+export type RegistryRequirement = {
+  stageOrLevel: string;
+  criteria: string;
+  guide: string;
+  section: string;
+  introductionYear: number;
+  lastYear: number;
+}
