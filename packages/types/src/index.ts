@@ -180,7 +180,7 @@ export type RegistryScores = {
   full_name: string;
   short_name: string;
   year: number;
-  scores: number[];
+  scores: string;
 };
 
 export type RegistryRequirement = {
@@ -190,4 +190,4 @@ export type RegistryRequirement = {
   section: string;
   introductionYear: number;
   lastYear: number;
-}
+};

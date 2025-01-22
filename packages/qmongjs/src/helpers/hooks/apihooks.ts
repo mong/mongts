@@ -290,7 +290,7 @@ export const useRegistryEvaluationQuery = (year?: number) => {
 
 export const useRegistryScoresQuery = (year?: number) => {
   return useQuery({
-    queryKey: ["registryEvaluation", year],
+    queryKey: ["registryScores", year],
     queryFn: () => fetchRegistryScores(year),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
