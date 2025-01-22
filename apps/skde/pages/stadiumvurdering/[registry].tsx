@@ -75,7 +75,7 @@ const Stadiumfigur = ({ registry }) => {
   const evaluationData = evaluationQuery.data.filter(
     (row: RegistryEvaluation) => row.name === registry,
   );
-  console.log(evaluationData);
+
   if (rankData.length === 0) {
     return null;
   }
