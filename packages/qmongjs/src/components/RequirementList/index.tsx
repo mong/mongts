@@ -26,7 +26,12 @@ type CheckList = {
   stageOrLevel: string;
 };
 
-const mapCheckList = (row: CheckList, stageOrLevel: string) => {
+const mapCheckList = (
+  row: CheckList,
+  stageOrLevel: string,
+  prefix: string,
+  key: string,
+) => {
   if (row.stageOrLevel !== stageOrLevel) {
     return null;
   }
@@ -34,11 +39,11 @@ const mapCheckList = (row: CheckList, stageOrLevel: string) => {
   const icon =
     row.approved === 1 ? <CheckBoxIcon /> : <CheckBoxOutlineBlankIcon />;
   const line = (
-    <Stack direction="row" spacing={2}>
+    <Stack direction="row" spacing={2} key={key}>
       {icon}
       <Typography
         dangerouslySetInnerHTML={{
-          __html: row.text,
+          __html: prefix + row.text,
         }}
       />
     </Stack>
@@ -97,7 +102,9 @@ export const RequirementList = (props: RequirementListProps) => {
           Krav til stadium 2
         </AccordionSummary>
         <AccordionDetails>
-          {checkList.map((row: CheckList) => mapCheckList(row, "2"))}
+          {checkList.map((row: CheckList, ind: number) =>
+            mapCheckList(row, "2", "", "2_" + ind.toString()),
+          )}
         </AccordionDetails>
       </Accordion>
 
@@ -106,7 +113,9 @@ export const RequirementList = (props: RequirementListProps) => {
           Krav til stadium 3
         </AccordionSummary>
         <AccordionDetails>
-          {checkList.map((row: CheckList) => mapCheckList(row, "3"))}
+          {checkList.map((row: CheckList, ind: number) =>
+            mapCheckList(row, "3", "", "3_" + ind.toString()),
+          )}
         </AccordionDetails>
       </Accordion>
 
@@ -115,7 +124,9 @@ export const RequirementList = (props: RequirementListProps) => {
           Krav til stadium 4
         </AccordionSummary>
         <AccordionDetails>
-          {checkList.map((row: CheckList) => mapCheckList(row, "4"))}
+          {checkList.map((row: CheckList, ind: number) =>
+            mapCheckList(row, "4", "", "4_" + ind.toString()),
+          )}
         </AccordionDetails>
       </Accordion>
 
@@ -124,8 +135,12 @@ export const RequirementList = (props: RequirementListProps) => {
           Krav til nivå A og B
         </AccordionSummary>
         <AccordionDetails>
-          {checkList.map((row: CheckList) => mapCheckList(row, "A"))}
-          {checkList.map((row: CheckList) => mapCheckList(row, "B"))}
+          {checkList.map((row: CheckList, ind: number) =>
+            mapCheckList(row, "A", "Nivå A: ", "A_" + ind.toString()),
+          )}
+          {checkList.map((row: CheckList, ind: number) =>
+            mapCheckList(row, "B", "Nivå B: ", "B_" + ind.toString()),
+          )}
         </AccordionDetails>
       </Accordion>
     </>
