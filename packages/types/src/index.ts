@@ -184,6 +184,7 @@ export type RegistryScores = {
 };
 
 export type RegistryRequirement = {
+  id: number;
   stageOrLevel: string;
   criteria: string;
   guide: string;

@@ -63,7 +63,7 @@ const Stadiumfigur = ({ registry }) => {
   const rankQuery = useRegistryRankQuery();
   const evaluationQuery = useRegistryEvaluationQuery(defaultYear);
 
-  const ReqList = RequirementList({ registry: registry, year: defaultYear });
+  const checkList = RequirementList({ registry: registry, year: (defaultYear-1) });
 
   if (rankQuery.isFetching || evaluationQuery.isFetching) {
     return null;
@@ -192,7 +192,7 @@ const Stadiumfigur = ({ registry }) => {
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        {}
+        {checkList}
       </CustomTabPanel>
     </Box>
   );

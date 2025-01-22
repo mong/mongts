@@ -4,6 +4,7 @@ import { RegistryRequirement } from "types";
 export const registryRequirementsModel = (): Promise<RegistryRequirement[]> =>
   db
     .select(
+      "id",
       "requirements.stage_or_level",
       "requirements.criteria",
       "requirements.guide",
