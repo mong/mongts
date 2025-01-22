@@ -63,7 +63,10 @@ const Stadiumfigur = ({ registry }) => {
   const rankQuery = useRegistryRankQuery();
   const evaluationQuery = useRegistryEvaluationQuery(defaultYear);
 
-  const checkList = RequirementList({ registry: registry, year: (defaultYear-1) });
+  const checkList = RequirementList({
+    registry: registry,
+    year: defaultYear - 1,
+  });
 
   if (rankQuery.isFetching || evaluationQuery.isFetching) {
     return null;
