@@ -11,6 +11,7 @@ export {
   useMedicalFieldsQuery,
   useUnitUrlsQuery,
   useRegistryRankQuery,
+  useRegistryEvaluationQuery,
   type FetchIndicatorParams,
 } from "./apihooks";
 export {
