@@ -7,6 +7,8 @@ export {
   useUnitNamesQuery,
   useRegistryRankQuery,
   useShouldReinitialize,
+  useRegistryRequirementsQuery,
+  useRegistryEvaluationQuery,
 } from "./helpers/hooks";
 export {
   level,
@@ -88,3 +90,4 @@ export {
   getUnitShortestName,
 } from "./helpers/functions/getUnitName";
 export { IndicatorTableSkeleton } from "./components/IndicatorTable/IndicatorTableSkeleton";
+export { RequirementList } from "./components/RequirementList";
