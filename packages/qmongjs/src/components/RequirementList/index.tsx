@@ -94,7 +94,7 @@ export const RequirementList = (props: RequirementListProps) => {
       </Typography>
       <Accordion defaultExpanded={rank.verdict.includes("1")}>
         <AccordionSummary id="stadium2" expandIcon={<ExpandMoreIcon />}>
-          Stadium 2
+          Krav til stadium 2
         </AccordionSummary>
         <AccordionDetails>
           {checkList.map((row: CheckList) => mapCheckList(row, "2"))}
@@ -103,7 +103,7 @@ export const RequirementList = (props: RequirementListProps) => {
 
       <Accordion defaultExpanded={rank.verdict.includes("2")}>
         <AccordionSummary id="stadium3" expandIcon={<ExpandMoreIcon />}>
-          Stadium 3
+          Krav til stadium 3
         </AccordionSummary>
         <AccordionDetails>
           {checkList.map((row: CheckList) => mapCheckList(row, "3"))}
@@ -112,7 +112,7 @@ export const RequirementList = (props: RequirementListProps) => {
 
       <Accordion defaultExpanded={rank.verdict.includes("3")}>
         <AccordionSummary id="stadium4" expandIcon={<ExpandMoreIcon />}>
-          Stadium 4
+          Krav til stadium 4
         </AccordionSummary>
         <AccordionDetails>
           {checkList.map((row: CheckList) => mapCheckList(row, "4"))}
@@ -121,7 +121,7 @@ export const RequirementList = (props: RequirementListProps) => {
 
       <Accordion>
         <AccordionSummary id="level" expandIcon={<ExpandMoreIcon />}>
-          Nivå
+          Krav til nivå A og B
         </AccordionSummary>
         <AccordionDetails>
           {checkList.map((row: CheckList) => mapCheckList(row, "A"))}
