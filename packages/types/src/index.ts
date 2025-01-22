@@ -185,10 +185,10 @@ export type RegistryScores = {
 
 export type RegistryRequirement = {
   id: number;
-  stageOrLevel: string;
+  stage_or_level: string;
   criteria: string;
   guide: string;
   section: string;
-  introductionYear: number;
-  lastYear: number;
+  introduction_year: number;
+  last_year: number;
 };
