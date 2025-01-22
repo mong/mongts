@@ -5,6 +5,7 @@ export * from "./selectionyears";
 export { registryRankModel } from "./registryRank";
 export { registryEvaluationModel } from "./registryEvaluation";
 export { registryScoresModel } from "./registryScores";
+export { registryRequirementsModel } from "./registryRequirements";
 export { aggData, indTable, regTable, medfieldTable } from "./nestedData";
 
 export interface Filter {

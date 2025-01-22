@@ -6,3 +6,4 @@ export { dataController } from "./data";
 export { registryRankController } from "./registryRank";
 export { registryEvaluationController } from "./registryEvaluation";
 export { registryScoresController } from "./registryScores";
+export { registryRequirementsController } from "./registryRequirements";

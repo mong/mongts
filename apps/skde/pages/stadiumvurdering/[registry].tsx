@@ -7,16 +7,15 @@ import {
   LineStyles,
   lineStyle,
   LinechartBaseProps,
+  fetchRegisterNames,
+  defaultYear,
+  useRegistryRankQuery,
+  useRegistryEvaluationQuery,
+  RequirementList,
 } from "qmongjs";
-import { useRegistryRankQuery } from "qmongjs";
-import { RegistryEvaluation, RegistryRank } from "types";
-import { Stack, Typography } from "@mui/material";
+import { RegistryEvaluation, RegistryRank, RegisterName } from "types";
 import { FaCircle } from "react-icons/fa";
-import { fetchRegisterNames } from "qmongjs";
-import { RegisterName } from "types";
-import { styled, Box, Tabs, Tab } from "@mui/material";
-import { useRegistryEvaluationQuery } from "qmongjs/src/helpers/hooks";
-import { defaultYear } from "qmongjs";
+import { styled, Box, Tabs, Tab, Stack, Typography } from "@mui/material";
 
 const levelAColour = "#58A55C";
 const levelBColour = "#FD9C00";
@@ -63,6 +62,11 @@ const Stadiumfigur = ({ registry }) => {
 
   const rankQuery = useRegistryRankQuery();
   const evaluationQuery = useRegistryEvaluationQuery(defaultYear);
+
+  const checkList = RequirementList({
+    registry: registry,
+    year: defaultYear - 1,
+  });
 
   if (rankQuery.isFetching || evaluationQuery.isFetching) {
     return null;
@@ -191,7 +195,7 @@ const Stadiumfigur = ({ registry }) => {
         </div>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Innhold kommer
+        {checkList}
       </CustomTabPanel>
     </Box>
   );

@@ -12,6 +12,8 @@ export {
   useUnitUrlsQuery,
   useRegistryRankQuery,
   useRegistryEvaluationQuery,
+  useRegistryScoresQuery,
+  useRegistryRequirementsQuery,
   type FetchIndicatorParams,
 } from "./apihooks";
 export {

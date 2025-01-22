@@ -8,6 +8,7 @@ import {
   registryRankController,
   registryEvaluationController,
   registryScoresController,
+  registryRequirementsController,
 } from "../controllers/data";
 
 const Router = express.Router();
@@ -34,5 +35,8 @@ Router.get("/registryEvaluation", registryEvaluationController);
 
 // Registry scores output
 Router.get("/registryScores", registryScoresController);
+
+// Registry requirements output
+Router.get("/registryRequirements", registryRequirementsController);
 
 export default Router;
