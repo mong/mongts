@@ -8,7 +8,7 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nn": "Tal pasientar med rusliding i poliklinikk pr. 1 000 (18-24 år)",
+        "nn": "Tal pasientar med rusliding pr.1000 innbyggjarar mellom 18-24 år.",
         "en": "Number of patients with substance use disorder in outpatient pr. 1,000 inhabitants (18-24 years old)"
       },
       "yLabel": {
@@ -21,37 +21,12 @@
       ],
     "format": ",.1f"
   },
-{
-      "type": "barchart",
-      "data": "qwerty",
-      "x": ["Snitt_rate"],
-      "y": "bohf",
-      "xLabel": {
-        "nn": "Tal pasientar med rusliding in poliklinikk behandling pr. 1 000 innbyggarar (18-24 år)",
-        "en": "Number of patients with substance use disorder in outpatient treatment per 1,000 inhabitants (18-24 years of age"
-      },
-      "yLabel": {
-        "nn": "Opptaksområde",
-        "en": "Referral areas"
-      },
-      "annualVar": [
-        "Rate.2019",
-        "Rate.2020",
-        "Rate.2021",
-        "Rate.2022",
-        "Rate.2023"
-      ],
-      "annualVarLabels": {
-        "nn": [ "2019", "2020", "2021", "2022", "2023"],
-        "en": [ "2019", "2020", "2021", "2022", "2023"]
-      }
-    },
 
   {
     "type": "table",
     "data": "qwerty",
     "caption": {
-      "nn": "Årlige gjennomsnittsverdier for perioden 2019–2023, Pasientrate for rusliding pr. 1 000 innbyggarar i alderen 18-24 år",
+      "nn": "Årlege gjennomsnittsverdiar for perioden 2019-2023. Pasientrate for rusliding pr.1000 innbyggjarar mellom 18-24 år.",
       "en": "Average annual values for the period 2019–2023, patient rate for substance use disorder  pr. 1 000 population 18-24 years of age"
     },
     "columns": [
@@ -78,8 +53,8 @@
       },
       {
         "id":  "Innbyggarar",
-        "label_no": "Innbygarrar (under 18-24 år)",
-        "label_en": "Averege population (18-24 år)",
+        "label_no": "Innbyggjarar (18-24 år) ",
+        "label_en": "Population (18-24 år)",
         "typeVar": "number",
         "format": ",.0f"
       }
@@ -90,7 +65,7 @@
     "data": "qwerty",
     "x": "Snitt_rate",
     "caption": {
-      "nn": "Tal pasientar med rusliding i poliklinikk pr. 1 000 innbyggarar i alderen 18-24 år",
+      "nn": "Tal pasientar med rusliding behandling pr.1000 innbyggjarar mellom 18-24 år.",
       "en": "Number of patients with substance use disorder in outpatient pr. 1 000 population 18-24 years of age"
     },
     "jenks": [

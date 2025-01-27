@@ -6,7 +6,7 @@
       "x": ["Snittrate"],
       "y": "bohf",
       "xLabel": {
-        "nn": "Tal kontaktar for ADHD  pr. 1 000 innbyggarar (under 18 år)",
+        "nn": "Tal kontaktdagar for ADHD  pr. 1 000 innbyggjarar under 18 år",
         "en": "Number of contacts for ADHD  per 1,000 inhabitants (under 18 years of age"
       },
       "yLabel": {
@@ -29,7 +29,7 @@
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Kontakt rate for ADHD  pr. 1 000 innbyggarar i alderen under 18 år.",
+        "nn": "Årlege gjennomsnitssverdiar for perioden 2019-2023. Kontaktdagsrate for ADHD pr.1000 innbyggjarar under 18 år.",
         "en": "Average per year for the period 2019–2023. Contact rate for ADHD per 1,000 inhabitants under age of 18 years."
       },
       "columns": [
@@ -42,21 +42,21 @@
         },
         {
           "id": "Snittrate",
-          "label_no": "Poliklinisk kontaktrate",
-          "label_en": "Outpatient contacts",
+          "label_no": "Kontaktdagsrate",
+          "label_en": "contact days rate",
           "typeVar": "number",
           "format": ",.1f"
         },
         {
           "id": "Snitt_kontaktar",
-          "label_no": "Tal kontaktar",
-          "label_en": "Number of contacts",
+          "label_no": "Tal kontaktdagar",
+          "label_en": "Number of contact days",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
           "id": "Snitt_innbyggarar",
-          "label_no": "Innbyggarar (under 18 år)",
+          "label_no": "Innbyggjarar (under 18 år)",
           "label_en": "Inhabitants (under 18 years)",
           "typeVar": "number",
           "format": ",.0f"
@@ -67,7 +67,7 @@
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Tal kontaktar per pasient for ADHD .",
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2019–2023. Tal kontaktdagar per pasient for ADHD .",
         "en": "Average per year for the period 2019–2023. Number of contacts per patient for ADHD ."
       },
       "columns": [
@@ -80,14 +80,14 @@
         },
         {
           "id": "kontakt_p_pas",
-          "label_no": "Kontaktar per pasient",
+          "label_no": "Kontaktdagar per pasient",
           "label_en": "Contacts per patient",
           "typeVar": "number",
           "format": ",.1f"
         },
         {
           "id": "Snitt_kontaktar",
-          "label_no": "Tal kontaktar",
+          "label_no": "Tal kontaktdagar",
           "label_en": "Number of outpatient contacts",
           "typeVar": "number",
           "format": ",.0f"
@@ -111,13 +111,13 @@
       },
       "jenks": [
         {
-          "grense": 66.4
+          "grense": 112.8
         },
         {
-          "grense": 80.6
+          "grense": 147.5
         },
         {
-          "grense": 103.5
+          "grense": 184.7
         }
       ]
     },
