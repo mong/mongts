@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import csv
 import sys
 import os
 import fnmatch
@@ -54,8 +55,10 @@ def check_link(url):
     return status_code
 
 
-def process_file(filename, base_path, base_url, visited_links, verbose):
+def process_file(filename, base_path, base_url, visited_links, verbose, ignore_csv_path):
     link_results = {}
+    ignore = ignore_list(ignore_csv_path)
+
     with open(filename, 'r') as file:
         file_content = file.read()
         print(f'Processing file: {filename}')
@@ -78,7 +81,14 @@ def process_file(filename, base_path, base_url, visited_links, verbose):
                 if verbose:
                     print(f'Status code: {response}')
                 visited_links[url] = response
-            link_results[url] = visited_links[url]
+                if url in ignore:
+                    if ignore[url] == response:
+                        if verbose:
+                            print(f'Ignoring: {url}')
+                    else:
+                        print(f'WARNING! New response code ({response}) for otherwise ignored url: {url}')
+                else:
+                    link_results[url] = visited_links[url]
     return link_results
 
 
@@ -94,12 +104,19 @@ def failed_links(file_results):
     return errors_found
 
 
+def ignore_list(file_path):
+    with open(file_path, mode='r') as csvfile:
+        csv_reader = csv.reader(csvfile)
+        return {row[0]: int(row[1]) for row in csv_reader if len(row) > 1 and row[1].isdigit()}
+
+
 def main(search_dir, base_path, base_url, file_pattern='*.html', verbose=False):
     matching_files = get_matching_filenames(search_dir, file_pattern)
     file_results = {}
     visited_links = {}
+    ignore_csv_path = os.path.join(os.path.dirname(__file__), 'ignore.csv')
     for filename in matching_files:
-        file_results[filename] = process_file(filename, base_path, base_url, visited_links, verbose)
+        file_results[filename] = process_file(filename, base_path, base_url, visited_links, verbose, ignore_csv_path)
     num_failed = failed_links(file_results)
     print('Done.')
     return num_failed
@@ -112,7 +129,8 @@ if __name__ == '__main__':
     search_dir = sys.argv[1]
     base_path = sys.argv[2]
     base_url = sys.argv[3]
-    code_status = main(search_dir, base_path, base_url)
+    verbose = True if len(sys.argv) > 4 and sys.argv[4] == "--verbose" else False
+    code_status = main(search_dir, base_path, base_url, verbose=verbose)
     if code_status != 0:
         sys.exit("Found invalid link(s)")
-    
+
