@@ -101,7 +101,7 @@ jobs:
       - name: Upload develop version to Azure
         if: github.ref == 'refs/heads/develop'
         env:
-          NEXT_PUBLIC_API_HOST: https://test-api.skde.org
+          NEXT_PUBLIC_API_HOST: https://qa-mong-api.skde.org
           AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT_TEST }}
           AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY_TEST }}
         run: |
