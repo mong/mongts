@@ -6,7 +6,7 @@
       "x": ["Snittrate"],
       "y": "bohf",
       "xLabel": {
-        "nn": "Tal kontaktar for rusliding pr. 1 000 innbyggarar (alder 18-24 år)",
+        "nn": "Kontaktdagar for rusliding pr. 1 000 innbyggjarar 18-24 år",
         "en": "Number of contacts for substance use disorder per 1,000 inhabitants (age 18-24 years)"
       },
       "yLabel": {
@@ -29,7 +29,7 @@
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Kontakt rate for rusliding  pr. 1 000 innbyggarar i alderen alder 18-24 år.",
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2019-2023. Kontaktdagsrate for rusliding pr.1000 innbyggjarar mellom 18-24 år.",
         "en": "Average per year for the period 2019–2023. Contact rate for substance use disorder  per 1,000 inhabitants in age range 18-24 years."
       },
       "columns": [
@@ -42,21 +42,21 @@
         },
         {
           "id": "Snittrate",
-          "label_no": "Poliklinisk kontaktrate",
-          "label_en": "Outpatient contacts",
+          "label_no": "Kontaktdagsrate",
+          "label_en": "Contact days rate",
           "typeVar": "number",
           "format": ",.1f"
         },
         {
           "id": "Snitt_kontaktar",
-          "label_no": "Tal kontaktar",
-          "label_en": "Number of contacts",
+          "label_no": "Tal kontaktdagar",
+          "label_en": "Number of contact days",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
           "id": "Snitt_innbyggarar",
-          "label_no": "Innbyggarar (under 18 år)",
+          "label_no": "Innbyggjarar (18-24 år)",
           "label_en": "Inhabitants (under 18 years)",
           "typeVar": "number",
           "format": ",.0f"
@@ -67,7 +67,7 @@
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Tal kontaktar per pasient for rusliding.",
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2019–2023. Tal kontaktdagar per pasient for rusliding.",
         "en": "Average per year for the period 2019–2023. Number of contacts per patient for substance use disorder."
       },
       "columns": [
@@ -80,15 +80,15 @@
         },
         {
           "id": "kontakt_p_pas",
-          "label_no": "Kontaktar per pasient",
+          "label_no": "Kontaktdagar per pasient",
           "label_en": "Contacts per patient",
           "typeVar": "number",
           "format": ",.1f"
         },
         {
           "id": "Snitt_kontaktar",
-          "label_no": "Tal kontaktar",
-          "label_en": "Number of outpatient contacts",
+          "label_no": "Tal kontaktdagar",
+          "label_en": "Number of contact days",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -106,8 +106,8 @@
       "data": "qwerty",
       "x": "Snittrate",
       "caption": {
-        "nn": "Tal kontaktar for rusliding pr. 1 000 innbyggarar (alder 18-24 år )",
-        "en": "Number of outpatient contacts for substance use disorder per 1,000 inhabitants (age 18-24 years)"
+        "nn": "Tal kontaktdagar for rusliding pr.1000 innbyggjarar 18-24 år",
+        "en": "Number of contact days for substance use disorder per 1,000 inhabitants (age 18-24 years)"
       },
       "jenks": [
         {
