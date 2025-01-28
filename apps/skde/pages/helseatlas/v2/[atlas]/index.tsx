@@ -22,19 +22,21 @@ export const getStaticProps: GetStaticProps = async (context) => {
     `${context.params.atlas}/`,
   );
 
-  const atlasData: AtlasData = Object.fromEntries(
-    await Promise.all(
-      fs
-        .readdirSync(dataPath)
-        .filter((file) => file.endsWith(".json"))
-        .map((file) => [
-          file,
-          JSON.parse(fs.readFileSync(`${dataPath}/${file}`, "utf-8"))[
-            "innhold"
-          ],
-        ]),
-    ),
-  );
+  const atlasData: AtlasData = !fs.existsSync(dataPath)
+    ? []
+    : Object.fromEntries(
+        await Promise.all(
+          fs
+            .readdirSync(dataPath)
+            .filter((file) => file.endsWith(".json"))
+            .map((file) => [
+              file,
+              JSON.parse(fs.readFileSync(`${dataPath}/${file}`, "utf-8"))[
+                "innhold"
+              ],
+            ]),
+        ),
+      );
 
   return {
     props: { atlas, atlasData },
