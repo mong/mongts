@@ -11,31 +11,29 @@ import { customFormat } from "qmongjs";
 import { useBohfQueryParam } from "../../helpers/hooks";
 import { Markdown } from "../../components/Markdown";
 import { nationalLabel } from "../colors";
+import { DataItemPoint } from "../../types";
 
-type DataTableProps<Data, Headers extends string & Partial<keyof Data>> = {
+type DataTableProps = {
   caption: string;
-  data: Data[];
+  data: DataItemPoint[];
   headers: {
-    id: string & Partial<Headers>;
+    id: string;
     label_no: string;
     label_en: string;
-    typeVar: Data[Headers];
+    typeVar: "number" | "string";
     format?: string;
   }[];
   lang: "en" | "nb" | "nn";
   national: string;
 };
 
-export const DataTable = <
-  Data extends { [n: string]: string | number },
-  TableHeaders extends string & Partial<keyof Data>,
->({
+export const DataTable = ({
   caption,
   data,
   headers,
   lang,
   national,
-}: DataTableProps<Data, TableHeaders>) => {
+}: DataTableProps) => {
   // Pick out bohf query from the url
   const [selectedBohfs, toggleBohf] = useBohfQueryParam(national);
 

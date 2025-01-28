@@ -3,9 +3,10 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import fs from "fs";
 import matter from "gray-matter";
 import AtlasPage, { AtlasPageProps } from "../../../../src/components/Atlas/v2";
+import { Atlas, AtlasData } from "../../../../src/types";
 
-const Page = ({ content, atlasData }: AtlasPageProps) => (
-  <AtlasPage content={content} atlasData={atlasData} />
+const Page = ({ atlas, atlasData }: AtlasPageProps) => (
+  <AtlasPage atlas={atlas} atlasData={atlasData} />
 );
 
 export const getStaticProps: GetStaticProps = async (context) => {
@@ -15,33 +16,28 @@ export const getStaticProps: GetStaticProps = async (context) => {
     `${context.params.atlas}.json`,
   );
   const file = fs.readFileSync(fullPath);
-  const { content } = matter(file);
+  const atlas: Atlas = JSON.parse(matter(file).content);
   const dataPath = path.join(
     "public/helseatlas/data",
     `${context.params.atlas}/`,
   );
 
-  const fileData = fs.existsSync(dataPath)
-    ? await Promise.all(
-        await fs
-          .readdirSync(dataPath)
-          .filter((files) => files.includes(".json"))
-          .map(async (files) => {
-            const filePath = `${dataPath}/${files}`;
-            const fileContent = fs.readFileSync(filePath, "utf-8");
-            const data = {};
-            data[files] = fileContent;
-            return data;
-          }),
-      )
-    : [];
-  const atlasData = fileData.reduce((result, data) => {
-    const key: string = Object.keys(data)[0];
-    result[key] = data[key];
-    return result;
-  }, {});
+  const atlasData: AtlasData = Object.fromEntries(
+    await Promise.all(
+      fs
+        .readdirSync(dataPath)
+        .filter((file) => file.endsWith(".json"))
+        .map((file) => [
+          file,
+          JSON.parse(fs.readFileSync(`${dataPath}/${file}`, "utf-8"))[
+            "innhold"
+          ],
+        ]),
+    ),
+  );
+
   return {
-    props: { content, atlasData },
+    props: { atlas, atlasData },
   };
 };
 

@@ -4,53 +4,32 @@ import { FactBox } from "../Factbox";
 import { ResultBox } from "../ResultBox";
 import classNames from "./Chapters.module.css";
 import { Box } from "@mui/material";
-
-type Tekst = {
-  type: "tekst";
-  tekst: string;
-  lang: "nb" | "en" | "nn";
-};
-
-type Faktaboks = {
-  type: "faktaboks";
-  overskrift: string;
-  tekst: string;
-  lang: "nb" | "en" | "nn";
-};
-
-type Resultatboks = {
-  type: "resultatboks";
-  overskrift: string;
-  data: string;
-  ingress: string;
-  utvalg: string;
-  resultat: string;
-  lang: "nb" | "en" | "nn";
-  publisert: Date;
-  oppdatert: Date;
-  kart?: string;
-};
-
-export type ChapterProps = {
-  overskrift?: string;
-  innhold: (Tekst | Faktaboks | Resultatboks)[];
-  lang: "nb" | "en" | "nn";
-};
+import { AtlasData, ChapterType } from "../../types";
 
 type ChaptersProps = {
-  innhold: ChapterProps[];
+  innhold: ChapterType[];
   lang: "nb" | "en" | "nn";
+  atlasData: AtlasData;
 };
 
-export const Chapters = ({ innhold, lang }: ChaptersProps) => {
+export const Chapters = ({ innhold, lang, atlasData }: ChaptersProps) => {
   return innhold.map((chapter, i) => (
-    <Box sx={{ fontSize: ".95rem" }}>
-      <Chapter {...chapter} key={`${i}_${chapter.overskrift}`} lang={lang} />
+    <Box key={i} sx={{ fontSize: ".95rem" }}>
+      <Chapter
+        atlasData={atlasData}
+        {...chapter}
+        key={`${i}_${chapter.overskrift}`}
+        lang={lang}
+      />
     </Box>
   ));
 };
 
-const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
+type ChapterProps = ChapterType & {
+  lang: "nb" | "en" | "nn";
+  atlasData: AtlasData;
+};
+const Chapter = ({ innhold, overskrift, lang, atlasData }: ChapterProps) => {
   const mainID = overskrift?.toLowerCase().replace(/\s/g, "-") || "qwerty";
   return (
     <div
@@ -79,6 +58,7 @@ const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
             case "resultatboks":
               return (
                 <ResultBox
+                  atlasData={atlasData}
                   result={box.resultat}
                   title={box.overskrift}
                   intro={box.ingress}
@@ -89,7 +69,7 @@ const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
                     box.overskrift.toLowerCase().replace(/\s/g, "-")
                   }
                   lang={lang}
-                  carousel={box.data}
+                  data_filename={box.data}
                   published={box.publisert}
                   updated={box.oppdatert}
                   map={box.kart}
