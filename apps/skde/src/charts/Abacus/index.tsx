@@ -6,17 +6,12 @@ import classNames from "../Barchart/ChartLegend.module.css";
 import { customFormat } from "qmongjs";
 import { useBohfQueryParam } from "../../helpers/hooks";
 import { abacusColors, nationalLabel } from "../colors";
+import { DataItemPoint } from "../../types";
 
-type AbacusData<Data, X extends keyof Data> = {
-  [k in X]: number;
-} & {
-  [k in keyof Data]?: number | string;
-};
-
-type AbacusProps<Data, X extends string & keyof Data> = {
-  data: AbacusData<Data, X>[];
+type AbacusProps = {
+  data: DataItemPoint[];
   lang: "en" | "nb" | "nn";
-  x: X;
+  x: string;
   width?: number;
   height?: number;
   margin?: { top: number; bottom: number; right: number; left: number };
@@ -38,7 +33,7 @@ type AbacusProps<Data, X extends string & keyof Data> = {
   national: string;
 };
 
-export const Abacus = <Data, X extends string & keyof Data>({
+export const Abacus = ({
   width = 950,
   height = 100,
   margin = {
@@ -63,7 +58,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
   labelSize = 22,
   format,
   national,
-}: AbacusProps<Data, X>) => {
+}: AbacusProps) => {
   // Pick out bohf query from the url
   const [selectedBohfs, toggleBohf] = useBohfQueryParam(national);
 
@@ -77,11 +72,11 @@ export const Abacus = <Data, X extends string & keyof Data>({
     // Move selected bohf to the end of data to plot (if it exists in the data),
     // so they will be on top of the other circles.
     figData = figData
-      .filter((d) => !selectedBohfs.has(d["bohf"]))
-      .concat(figData.filter((d) => selectedBohfs.has(d["bohf"])));
+      .filter((d) => !selectedBohfs.has(d["bohf"] as string))
+      .concat(figData.filter((d) => selectedBohfs.has(d["bohf"] as string)));
   }
 
-  const values = [...figData.flatMap((dt) => parseFloat(dt[x.toString()]))];
+  const values = [...figData.flatMap((dt) => dt[x] as number)];
   const xMaxVal = xMax ? xMax : max(values) * 1.1;
   const innerWidth = width - margin.left - margin.right;
   const colors = abacusColors;
@@ -141,16 +136,16 @@ export const Abacus = <Data, X extends string & keyof Data>({
             <circle
               key={`${d[x]}${i}`}
               r={circleRadiusDefalt}
-              cx={xScale(d[x])}
+              cx={xScale(d[x] as number)}
               fill={
-                selectedBohfs.has(d["bohf"])
+                selectedBohfs.has(d["bohf"] as string)
                   ? colors[2]
                   : d["bohf"] === national
                     ? colors[1]
                     : colors[0]
               }
               data-testid={
-                selectedBohfs.has(d["bohf"])
+                selectedBohfs.has(d["bohf"] as string)
                   ? `circle_${d["bohf"]}_selected`
                   : `circle_${d["bohf"]}_unselected`
               }
@@ -158,7 +153,7 @@ export const Abacus = <Data, X extends string & keyof Data>({
                 // Add HF to query param if clicked on.
                 // Remove HF from query param if it already is selected.
                 // Only possible to click on HF, and not on national data
-                toggleBohf(d["bohf"]);
+                toggleBohf(d["bohf"] as string);
                 event.stopPropagation();
               }}
             />

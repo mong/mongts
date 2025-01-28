@@ -3,6 +3,7 @@ import { scaleThreshold } from "d3-scale";
 import { customFormat } from "qmongjs";
 import { mapColors, abacusColors } from "../colors";
 import { useBohfQueryParam } from "../../helpers/hooks";
+import { DataItemPoint } from "../../types";
 
 type FeatureShape = {
   type: "Feature";
@@ -28,12 +29,9 @@ type MapData = {
 
 type MapProps = {
   mapData: MapData;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  mapAttr?: any[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  dataToMap?: any[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  connection?: any;
+  mapAttr?: DataItemPoint[];
+  dataToMap?: { [k: string]: number | string }[];
+  connection?: { [k: string]: string };
   attrName?: string;
   classes?: number[];
   caption?: string;
@@ -136,10 +134,10 @@ export const Map = ({
                 key={`map-feature-${i}`}
                 d={pathGenerator(d.geometry)}
                 fill={
-                  selectedBohfs.has(hf)
+                  selectedBohfs.has(hf as string)
                     ? abacusColors[2]
                     : val
-                      ? colorScale(val)
+                      ? colorScale(val as number)
                       : "none"
                 }
                 stroke={"black"}
@@ -149,7 +147,7 @@ export const Map = ({
                 style={{
                   cursor: "pointer",
                 }}
-                onClick={() => toggleBohf(hf)}
+                onClick={() => toggleBohf(hf as string)}
               />
             );
           })}

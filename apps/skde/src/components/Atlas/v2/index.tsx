@@ -1,35 +1,21 @@
 import { AtlasLayout } from "../AtlasLayout";
 import { TopBanner } from "../TopBanner";
 import styles from "./atlas.module.css";
-import { ChapterProps, Chapters } from "../../Chapters";
-import { AtlasData } from "../../../types";
+import { Chapters } from "../../Chapters";
+import { Atlas, AtlasData } from "../../../types";
 import { TableOfContents } from "../../TableOfContents";
-import { DataContext } from "../../Context";
 import { Ingress } from "../../Ingress";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 
 export interface AtlasPageProps {
-  content: string;
-  atlasData: AtlasData[];
+  atlas: Atlas;
+  atlasData: AtlasData;
 }
 
-type AtlasJson = {
-  lang: "nb" | "en" | "nn";
-  date: Date;
-  filename: string;
-  mainTitle: string;
-  shortTitle: string;
-  ingress: string;
-  kapittel: ChapterProps[];
-  publisert: boolean;
-};
-
-const AtlasPage = ({ content, atlasData }: AtlasPageProps) => {
-  const obj: AtlasJson = JSON.parse(content);
-
-  const tocData = obj.kapittel
-    ? obj.kapittel
+const AtlasPage = ({ atlas, atlasData }: AtlasPageProps) => {
+  const tocData = atlas.kapittel
+    ? atlas.kapittel
         .filter((chapter) => chapter.overskrift)
         .map((chapter) => {
           const level = 1;
@@ -48,39 +34,41 @@ const AtlasPage = ({ content, atlasData }: AtlasPageProps) => {
     : [];
 
   const unpublished_warning =
-    obj.lang === "nn"
+    atlas.lang === "nn"
       ? "Dette atlaset er berre eit utkast og er ikkje publisert! Resultata og analysane kan vere mangelfulle."
-      : obj.lang === "nb"
+      : atlas.lang === "nb"
         ? "Dette atlaset er kun et utkast og er ikke publisert! Resultatene og analysene kan være mangelfulle."
         : "This is a draft!";
   return (
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
-      <DataContext.Provider value={{ atlasData }}>
-        <AtlasLayout lang={obj.lang === "en" ? "en" : "no"}>
-          <main data-testid="v2atlas">
-            <TopBanner
-              mainTitle={obj.shortTitle ?? "Tittel mangler"}
-              lang={obj.lang ?? "nb"}
-            />
-            <div className={`${styles.atlasContent}`}>
-              <TableOfContents tocData={tocData} />
-              <div className={styles.main_content}>
-                {!obj.publisert && (
-                  <b style={{ color: "red" }}>{unpublished_warning}</b>
-                )}
-                <h1>{obj.mainTitle}</h1>
-                <Ingress>{obj.ingress ?? "Ingress mangler"}</Ingress>
-                {obj.kapittel ? (
-                  <Chapters innhold={obj.kapittel} lang={obj.lang} />
-                ) : (
-                  <div> Innhold mangler </div>
-                )}
-              </div>
+      <AtlasLayout lang={atlas.lang === "en" ? "en" : "no"}>
+        <main data-testid="v2atlas">
+          <TopBanner
+            mainTitle={atlas.shortTitle ?? "Tittel mangler"}
+            lang={atlas.lang ?? "nb"}
+          />
+          <div className={`${styles.atlasContent}`}>
+            <TableOfContents tocData={tocData} />
+            <div className={styles.main_content}>
+              {!atlas.publisert && (
+                <b style={{ color: "red" }}>{unpublished_warning}</b>
+              )}
+              <h1>{atlas.mainTitle}</h1>
+              <Ingress>{atlas.ingress ?? "Ingress mangler"}</Ingress>
+              {atlas.kapittel ? (
+                <Chapters
+                  innhold={atlas.kapittel}
+                  lang={atlas.lang}
+                  atlasData={atlasData}
+                />
+              ) : (
+                <div> Innhold mangler </div>
+              )}
             </div>
-          </main>
-        </AtlasLayout>
-      </DataContext.Provider>
+          </div>
+        </main>
+      </AtlasLayout>
     </ThemeProvider>
   );
 };

@@ -8,6 +8,7 @@ import getDataUrl from "../../../src/helpers/functions/getDataUrl";
 import ensureValidLang from "../../../src/helpers/functions/ensureValidLang";
 import queryResultPendingOrFailed from "../../../src/helpers/functions/queryResultPendingOrFailed";
 import { useBohfSync } from "../../../src/helpers/hooks/useBohfSync";
+import { AtlasDataItem } from "../../../src/types";
 
 export default function BeadLinePage() {
   useBohfSync();
@@ -25,8 +26,7 @@ export default function BeadLinePage() {
     return <BeadLineSkeleton />;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const boxData: any = Object.values(dataFetchResult.data)[0];
+  const boxData: AtlasDataItem[] = dataFetchResult.data["innhold"];
 
   return (
     <ThemeProvider theme={skdeTheme}>

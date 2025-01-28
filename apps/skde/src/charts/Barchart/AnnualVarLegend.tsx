@@ -1,9 +1,9 @@
 import { ScaleLinear } from "d3-scale";
 
 import classNames from "./ChartLegend.module.css";
+import { DefaultOutput } from "@visx/scale";
 type AnnualVarLegendPops = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  colorFillScale: ScaleLinear<any, any, never>;
+  colorFillScale: ScaleLinear<DefaultOutput, DefaultOutput, never>;
   sizeScale: ScaleLinear<number, number, never>;
   labels?: number[];
   values: (string | number)[];
@@ -27,7 +27,7 @@ export const AnnualVarLegend = ({
                   r={sizeScale(labels[i]) ?? 7}
                   cx={10}
                   cy={10}
-                  fill={colorFillScale(labels[i])}
+                  fill={colorFillScale(labels[i]) as string}
                   stroke={"black"}
                   strokeWidth="1"
                 />
