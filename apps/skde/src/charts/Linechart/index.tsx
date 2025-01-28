@@ -4,16 +4,11 @@ import { customFormat } from "qmongjs";
 import { ColorLegend } from "./ColorLegend";
 import { linechartColors } from "../colors";
 import { Box } from "@mui/material";
+import { DataItemPoint } from "../../types";
 
-type LinechartData<Data, X extends keyof Data> = {
-  [k in keyof Data & keyof X]: number;
-} & {
-  [k in keyof Data]?: number | string;
-};
-
-type LinechartProps<Data, X extends string & keyof Data> = {
-  data: LinechartData<Data, X>[];
-  x: X;
+type LinechartProps = {
+  data: DataItemPoint[];
+  x: string[];
   linevars: string[];
   linevarsLabels: { en: string[]; nb: string[]; nn: string[] };
   lang: "en" | "nb" | "nn";
@@ -25,7 +20,7 @@ type LinechartProps<Data, X extends string & keyof Data> = {
   national?: string;
 };
 
-export const Linechart = <Data, X extends string & keyof Data>({
+export const Linechart = ({
   data,
   x,
   linevars,
@@ -36,8 +31,8 @@ export const Linechart = <Data, X extends string & keyof Data>({
   format_x,
   format_y,
   linecolors,
-}: LinechartProps<Data, X>) => {
-  const getLinevarLabel = (linevar) =>
+}: LinechartProps) => {
+  const getLinevarLabel = (linevar: string) =>
     linevarsLabels[lang][linevars.findIndex((v) => v === linevar)];
 
   const values = linevars.map((linevar) => {
@@ -45,7 +40,7 @@ export const Linechart = <Data, X extends string & keyof Data>({
       linevar: linevar,
       linevarLabel: getLinevarLabel(linevar),
       points: data
-        .map((d) => ({ x: d[x], y: d[linevar] }))
+        .map((d) => ({ x: d[x[0]] as number, y: d[linevar] as number }))
         .sort((a, b) => a.x - b.x),
     };
   });
@@ -63,7 +58,7 @@ export const Linechart = <Data, X extends string & keyof Data>({
       linevars.map(
         (linevar) =>
           (format_y
-            ? customFormat(format_y, lang)(d[linevar])
+            ? customFormat(format_y, lang)(d[linevar] as number)
             : d[linevar]
           ).toString().length,
       ),

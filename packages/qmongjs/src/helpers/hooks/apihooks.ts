@@ -232,10 +232,76 @@ const fetchRegistryRanks = async (year?: number) => {
   return await response.json();
 };
 
+const fetchRegistryScores = async (year?: number) => {
+  const yearQuery: string = year ? `year=${year}&` : "";
+
+  const response = await fetch(`${API_HOST}/data/registryScores?${yearQuery}`);
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json();
+};
+
+const fetchRegistryEvaluation = async (year?: number) => {
+  const yearQuery: string = year ? `year=${year}&` : "";
+
+  const response = await fetch(
+    `${API_HOST}/data/registryEvaluation?${yearQuery}`,
+  );
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json();
+};
+
+const fetchRegistryRequirements = async () => {
+  const response = await fetch(`${API_HOST}/data/registryRequirements`);
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json();
+};
+
 export const useRegistryRankQuery = (year?: number) => {
   return useQuery({
     queryKey: ["registryRank", year],
     queryFn: () => fetchRegistryRanks(year),
+    staleTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    gcTime: 1000 * 60 * 60,
+  });
+};
+
+export const useRegistryEvaluationQuery = (year?: number) => {
+  return useQuery({
+    queryKey: ["registryEvaluation", year],
+    queryFn: () => fetchRegistryEvaluation(year),
+    staleTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    gcTime: 1000 * 60 * 60,
+  });
+};
+
+export const useRegistryScoresQuery = (year?: number) => {
+  return useQuery({
+    queryKey: ["registryScores", year],
+    queryFn: () => fetchRegistryScores(year),
+    staleTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    gcTime: 1000 * 60 * 60,
+  });
+};
+
+export const useRegistryRequirementsQuery = () => {
+  return useQuery({
+    queryKey: ["registryRequirements"],
+    queryFn: () => fetchRegistryRequirements(),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
     gcTime: 1000 * 60 * 60,

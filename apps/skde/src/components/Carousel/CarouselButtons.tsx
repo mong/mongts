@@ -8,8 +8,7 @@ type CarouselButtonsProps = {
     icon: JSX.Element;
   }[];
   activeCarousel: number;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  onClick?: (nr: number) => any;
+  onClick?: (nr: number) => void;
 };
 
 export const CarouselButtons = ({

@@ -1,3 +1,4 @@
+import React from "react";
 import { GetStaticProps, GetStaticPaths } from "next";
 import {
   LinechartBase,
@@ -6,14 +7,15 @@ import {
   LineStyles,
   lineStyle,
   LinechartBaseProps,
+  fetchRegisterNames,
+  defaultYear,
+  useRegistryRankQuery,
+  useRegistryEvaluationQuery,
+  RequirementList,
 } from "qmongjs";
-import { useRegistryRankQuery } from "qmongjs";
-import { RegistryRank } from "types";
-import { Stack, Typography } from "@mui/material";
+import { RegistryEvaluation, RegistryRank, RegisterName } from "types";
 import { FaCircle } from "react-icons/fa";
-import { fetchRegisterNames } from "qmongjs";
-import { RegisterName } from "types";
-import { styled } from "@mui/material";
+import { styled, Box, Tabs, Tab, Stack, Typography } from "@mui/material";
 
 const levelAColour = "#58A55C";
 const levelBColour = "#FD9C00";
@@ -21,14 +23,61 @@ const levelCColour = "#D85140";
 const noLevelColour = "#777777";
 
 const Stadiumfigur = ({ registry }) => {
-  const rankQuery = useRegistryRankQuery();
+  // Copy-paste code from https://mui.com/material-ui/react-tabs/
+  const [value, setValue] = React.useState(0);
 
-  if (rankQuery.isFetching) {
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
+  interface TabPanelProps {
+    children?: React.ReactNode;
+    index: number;
+    value: number;
+  }
+
+  function CustomTabPanel(props: TabPanelProps) {
+    const { children, value, index, ...other } = props;
+
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      </div>
+    );
+  }
+
+  function a11yProps(index: number) {
+    return {
+      id: `simple-tab-${index}`,
+      "aria-controls": `simple-tabpanel-${index}`,
+    };
+  }
+  // End copy-paste code
+
+  const rankQuery = useRegistryRankQuery();
+  const evaluationQuery = useRegistryEvaluationQuery(defaultYear);
+
+  const checkList = RequirementList({
+    registry: registry,
+    year: defaultYear - 1,
+  });
+
+  if (rankQuery.isFetching || evaluationQuery.isFetching) {
     return null;
   }
 
   const rankData = rankQuery.data.filter(
     (row: RegistryRank) => row.name === registry,
+  );
+
+  const evaluationData = evaluationQuery.data.filter(
+    (row: RegistryEvaluation) => row.name === registry,
   );
 
   if (rankData.length === 0) {
@@ -98,25 +147,57 @@ const Stadiumfigur = ({ registry }) => {
     ...font,
   }));
 
+  const PlotComponent = () => {
+    return (
+      <div>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{ marginLeft: 10, marginTop: 10 }}
+          alignItems="center"
+        >
+          <FaCircle style={{ color: levelAColour, fontSize: "1.2rem" }} />
+          <StyledTypography>A</StyledTypography>
+          <FaCircle style={{ color: levelBColour, fontSize: "1.2rem" }} />
+          <StyledTypography>B</StyledTypography>
+          <FaCircle style={{ color: levelCColour, fontSize: "1.2rem" }} />
+          <StyledTypography>C</StyledTypography>
+          <FaCircle style={{ color: noLevelColour, fontSize: "1.2rem" }} />
+          <StyledTypography>Ingen nivå</StyledTypography>
+        </Stack>
+        <LinechartBase {...linechartProps} />
+      </div>
+    );
+  };
+
   return (
-    <div>
-      <Stack
-        direction="row"
-        spacing={2}
-        sx={{ marginLeft: 10, marginTop: 10 }}
-        alignItems="center"
-      >
-        <FaCircle style={{ color: levelAColour, fontSize: "1.2rem" }} />
-        <StyledTypography>A</StyledTypography>
-        <FaCircle style={{ color: levelBColour, fontSize: "1.2rem" }} />
-        <StyledTypography>B</StyledTypography>
-        <FaCircle style={{ color: levelCColour, fontSize: "1.2rem" }} />
-        <StyledTypography>C</StyledTypography>
-        <FaCircle style={{ color: noLevelColour, fontSize: "1.2rem" }} />
-        <StyledTypography>Ingen nivå</StyledTypography>
-      </Stack>
-      <LinechartBase {...linechartProps} />
-    </div>
+    <Box sx={{ width: "100%" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+        >
+          <Tab label="Utvikling over tid" {...a11yProps(0)} />
+          <Tab label="Ekspertgruppens vurdering" {...a11yProps(1)} />
+          <Tab label="Oppnådde krav" {...a11yProps(2)} />
+        </Tabs>
+      </Box>
+      <CustomTabPanel value={value} index={0}>
+        <PlotComponent />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={1}>
+        <h2>{"Ekspertgruppens vurdering for " + defaultYear}</h2>
+        <div style={{ whiteSpace: "pre-wrap" }}>
+          {evaluationData[0]
+            ? evaluationData[0].evaluation_text
+            : "Ingen evaluering tilgjengelig"}
+        </div>
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={2}>
+        {checkList}
+      </CustomTabPanel>
+    </Box>
   );
 };
 
