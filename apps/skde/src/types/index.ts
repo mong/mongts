@@ -50,7 +50,7 @@ export type AtlasDataItem =
   | MapItem
   | DataItem;
 
-export type LinechartItem = {
+type LinechartItem = {
   type: "linechart";
   data: string;
   x: string[];
@@ -69,7 +69,7 @@ export type BarchartItem = {
   yLabel?: { en: string; nb: string; nn: string };
 };
 
-export type TableItem = {
+type TableItem = {
   type: "table";
   data: string;
   caption: { [k: string]: string };
@@ -82,7 +82,7 @@ export type TableItem = {
   }[];
 };
 
-export type MapItem = {
+type MapItem = {
   type: "map";
   data: string;
   x: string;
@@ -91,7 +91,7 @@ export type MapItem = {
   format: string;
 };
 
-export type DataItem = {
+type DataItem = {
   type: "data";
   label: string;
   national: "string";
