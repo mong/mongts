@@ -63,8 +63,8 @@
     "type": "table",
     "data": "qwerty",
     "caption": {
-      "nn": "Årlege gjennomsnittsverdiar for perioden 2019-2023. Prosentdel av kommorbiditet av ulike tilstandar i autisme pasientar ",
-      "en": "Percent of commorbidity mith different diagnosis for patients with autism"
+      "nn": "Prosentdel av komorbiditet av ulike tilstandar i pasientar med autisme",
+      "en": "Percent of comorbidity mith different diagnosis for patients with autism"
     },
     "columns": [
       {
@@ -76,51 +76,51 @@
       },
       {
         "id": "Depresjon",
-        "label_no": "prosentdel epresjon",
-        "label_en": "percent depression",
+        "label_no": "Depresjon",
+        "label_en": "Depression",
         "typeVar": "number",
-        "format": ",.1%"
+        "format": ",.0%"
 
       },
       {
         "id": "Angst",
-        "label_no": "Prosentdel angst",
-        "label_en": "percent anxiety",
+        "label_no": "Angst",
+        "label_en": "Anxiety",
         "typeVar": "number",
-        "format": ",.1%"
+        "format": ",.0%"
 
       },
      {
         "id": "ADHD",
-        "label_no": "Prosentdel ADHD",
-        "label_en": "Percent ADHD",
+        "label_no": "ADHD",
+        "label_en": "ADHD",
         "typeVar": "number",
-        "format": ",.1%"
+        "format": ",.0%"
 
       },
       {
         "id": "Eteforstyrring",
-        "label_no": "Procentdel eteforstyrring",
-        "label_en": "Percent eating disorder",
+        "label_no": "Eteforstyrring",
+        "label_en": "Eating disorder",
         "typeVar": "number",
-        "format": ",.1%"
+        "format": ",.0%"
 
       },
 
       {
         "id":  "Tilpassingsforstyrring",
-        "label_no": "Prosentdel tilpassingsforstyrring",
-        "label_en": "Percent adjustment disorder",
+        "label_no": "Tilpassingsforstyrring",
+        "label_en": "Adjustment disorder",
         "typeVar": "number",
-        "format": ",.1%"
+        "format": ",.0%"
 
       },
     {
         "id":  "Utviklingsforstyrring",
-        "label_no": "Prosentdel sp. utviklingsforstyrring",
-        "label_en": "Percent development disorder",
+        "label_no": "Spesifikk utviklingsforstyrring",
+        "label_en": "Development disorder",
         "typeVar": "number",
-        "format": ",.1%"
+        "format": ",.0%"
 
       }
 
@@ -132,8 +132,8 @@
     "data": "qwerty",
     "x": "Snitt_rate",
     "caption": {
-      "nn": "Tal pasientar med autisme i poliklinikk pr. 1 000 innbyggarar i alderen under 18 år",
-      "en": "Number of patients with autism in outpatient pr. 1 000 population under 18 years of age"
+      "nn": "Tal pasientar med autisme pr. 1 000 innbyggjarar under 18 år",
+      "en": "Number of patients with autism pr. 1 000 population under 18 years of age"
     },
     "jenks": [
       {

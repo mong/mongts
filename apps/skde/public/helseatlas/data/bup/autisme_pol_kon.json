@@ -6,8 +6,8 @@
       "x": ["Snittrate"],
       "y": "bohf",
       "xLabel": {
-        "nn": "Tal kontaktar for autisme  pr. 1 000 innbyggarar (under 18 år)",
-        "en": "Number of contacts for autism  per 1,000 inhabitants (under 18 years of age"
+        "nn": "Tal kontaktdagar for autisme  pr. 1 000 innbyggjarar under 18 år",
+        "en": "Number of contact days for autism  per 1,000 inhabitants (under 18 years of age"
       },
       "yLabel": {
         "nn": "Opptaksområde",
@@ -31,15 +31,15 @@
       "x": ["Som", "psyk"],
       "y": "bohf",
       "xLabel": {
-        "nn": "Kontakt rate for autisme pr. 1 000 innbyggarar i alderen under 18 år.",
-        "en": "Contact rate for autism treatment per 1,000 inhabitants under age of 18 years."
+        "nn": "Kontaktdagsrate or autisme pr.1000 innbyggjarar under 18 år.",
+        "en": "Contact days rate for autism treatment per 1,000 inhabitants under age of 18 years."
       },
       "yLabel": {
         "nn": "Opptaksområde",
         "en": "Referral areas"
       },
       "xLegend": {
-        "nn": ["Somatik sektorar", "Psykisk helsevern sektorar"],
+        "nn": ["Behandling i Somatisk sektor", "Behandling i psykisk helsevern"],
         "en": ["Somatic sectors", "Mental healthcare sectors"]
       },
       "format": ",.0f"
@@ -48,7 +48,7 @@
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Kontakt rate for autisme behandling pr. 1 000 innbyggarar i alderen under 18 år.",
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2019-2023. Kontaktdagsrate for autismebehandling pr.1000 innbyggjarar under 18 år.",
         "en": "Average per year for the period 2019–2023. Contact rate for autism treatment per 1,000 inhabitants under age of 18 years."
       },
       "columns": [
@@ -61,21 +61,21 @@
         },
         {
           "id": "Snittrate",
-          "label_no": "kontaktrate",
+          "label_no": "kontaktdagsrate",
           "label_en": "contact rate",
           "typeVar": "number",
           "format": ",.1f"
         },
         {
           "id": "Snitt_kontaktar",
-          "label_no": "Tal kontaktar",
+          "label_no": "Tal kontaktdagar",
           "label_en": "Number of contacts",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
           "id": "Snitt_innbyggarar",
-          "label_no": "Innbyggarar (under 18 år)",
+          "label_no": "Innbyggjarar (under 18 år)",
           "label_en": "Inhabitants (under 18 years)",
           "typeVar": "number",
           "format": ",.0f"
@@ -86,7 +86,7 @@
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nn": "Årlige gjennomsnittsverdiar for perioden 2019–2023. Tal kontaktar per pasient for autisme.",
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2019–2023. Tal kontaktdagar per pasient for autisme.",
         "en": "Average per year for the period 2019–2023. Number of contacts per patient for autism ."
       },
       "columns": [
@@ -99,14 +99,14 @@
         },
         {
           "id": "kontakt_p_pas",
-          "label_no": "Kontaktar per pasient",
+          "label_no": "Kontaktdagar per pasient",
           "label_en": "Contacts per patient",
           "typeVar": "number",
           "format": ",.1f"
         },
         {
           "id": "Snitt_kontaktar",
-          "label_no": "Tal kontaktar",
+          "label_no": "Tal kontaktdagar",
           "label_en": "Number of contacts",
           "typeVar": "number",
           "format": ",.0f"
@@ -125,7 +125,7 @@
       "data": "qwerty",
       "x": "Snittrate",
       "caption": {
-        "nn": "Tal kontaktar for autisme behandling pr. 1 000 innbyggarar (under 18 år )",
+        "nn": "Tal kontaktdagar for autismebehandling pr 1000 innbyggjarar (under 18 år).",
         "en": "Number of contacts for autism treatment per 1,000 inhabitants (under 18 years of age)"
       },
       "jenks": [
