@@ -59,6 +59,7 @@ export default function ResultBoxPage() {
                   data={figData}
                   lang={lang}
                   national={nationalName}
+                  forfatter="SKDE"
                 />
               </CarouselItem>
             );
@@ -75,6 +76,7 @@ export default function ResultBoxPage() {
                   data={figData}
                   lang={lang}
                   national={nationalName}
+                  forfatter={"SKDE"}
                 />
               </CarouselItem>
             );

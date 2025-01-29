@@ -48,6 +48,7 @@ type BarchartProps = {
   errorBars?: string[];
   format: string;
   national: string;
+  forfatter: "SKDE" | "Helse Førde";
 };
 
 export const Barchart = ({
@@ -82,6 +83,7 @@ export const Barchart = ({
   errorBars,
   format,
   national,
+  forfatter,
 }: BarchartProps) => {
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
@@ -168,7 +170,12 @@ export const Barchart = ({
     >
       <Box
         sx={{
-          backgroundImage: `url(${lang === "nn" ? "/helseatlas/img/logos/helse-forde-graa.svg" : "/img/logos/logo-skde-graa.svg"})`,
+          backgroundImage: `url(${
+            {
+              "Helse Førde": "/helseatlas/img/logos/helse-forde-graa.svg",
+              SKDE: "/img/logos/logo-skde-graa.svg",
+            }[forfatter]
+          })`,
           backgroundRepeat: "no-repeat",
           backgroundSize: lang === "nn" ? "max(5rem, 20%)" : "max(3rem, 10%)",
           backgroundPosition: "bottom min(13%, 5rem) right 5%",
