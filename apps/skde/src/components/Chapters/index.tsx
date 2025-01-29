@@ -24,7 +24,7 @@ export const Chapters = ({ atlas, atlasData }: ChaptersProps) => {
   ));
 };
 
-type ChapterProps = ChapterType & {
+export type ChapterProps = ChapterType & {
   atlas: Atlas;
   atlasData: AtlasData;
 };

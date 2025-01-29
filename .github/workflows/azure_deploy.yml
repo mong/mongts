@@ -1,7 +1,7 @@
 name: Deploy app to Azure
 on:
   push:
-    branches: [main, develop, forfatter]
+    branches: [main, develop]
     paths-ignore:
       - "apps/api/**"
   pull_request:
@@ -99,7 +99,7 @@ jobs:
             --content-cache-control "public, max-age=60, s-maxage=60" \
             --overwrite
       - name: Upload develop version to Azure
-        if: github.ref == 'refs/heads/forfatter'
+        if: github.ref == 'refs/heads/develop'
         env:
           NEXT_PUBLIC_API_HOST: https://qa-mong-api.skde.org
           AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT_TEST }}

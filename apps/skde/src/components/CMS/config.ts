@@ -246,7 +246,7 @@ export const config: CmsConfig = {
   backend: {
     name: "github",
     repo: "mong/mongts",
-    branch: "forfatter",
+    branch: "main",
     base_url:
       process.env.NEXT_PUBLIC_API_HOST ?? "https://prod-mong-api.skde.org",
   },
