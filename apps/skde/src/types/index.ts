@@ -27,7 +27,7 @@ export type Faktaboks = {
   tekst: string;
 };
 
-export type Resultatboks = {
+type Resultatboks = {
   type: "resultatboks";
   overskrift: string;
   data: string;

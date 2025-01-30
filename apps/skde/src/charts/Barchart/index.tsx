@@ -21,7 +21,7 @@ import {
 import { Box } from "@mui/material";
 import { DataItemPoint } from "../../types";
 
-export type BarchartProps = {
+type BarchartProps = {
   data: DataItemPoint[];
   lang: "en" | "nb" | "nn";
   x: string[];
