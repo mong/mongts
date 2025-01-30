@@ -15,13 +15,13 @@ export type ChapterType = {
   innhold: (Tekst | Faktaboks | Resultatboks)[];
 };
 
-type Tekst = {
+export type Tekst = {
   type: "tekst";
-  beskrivelse: string;
+  beskrivelse?: string;
   tekst: string;
 };
 
-type Faktaboks = {
+export type Faktaboks = {
   type: "faktaboks";
   overskrift: string;
   tekst: string;
@@ -65,8 +65,8 @@ export type BarchartItem = {
   x: string[];
   y: string;
   format: string;
-  xLabel?: { en: string; nb: string; nn: string };
-  yLabel?: { en: string; nb: string; nn: string };
+  xLabel?: { en: string; nb: string; nn?: string };
+  yLabel?: { en: string; nb: string; nn?: string };
 };
 
 type TableItem = {
@@ -94,7 +94,7 @@ type MapItem = {
 type DataItem = {
   type: "data";
   label: string;
-  national: "string";
+  national: string;
   data: DataItemPoint[];
   jenks: { grense: number }[];
 };
