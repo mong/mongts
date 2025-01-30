@@ -1,3 +1,5 @@
+import { DataItemPoint } from "../../src/types";
+
 export const tableHeaders = [
   {
     id: "bohf",
@@ -43,7 +45,7 @@ export const tableHeaders = [
   },
 ];
 
-export const atlasData = [
+export const atlasData: DataItemPoint[] = [
   {
     bohf: "Finnmark",
     rate2019: 4.85587067464,

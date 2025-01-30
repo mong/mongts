@@ -1,11 +1,12 @@
 import React from "react";
 import { Markdown } from "../Markdown";
+import { Atlas } from "../../types";
 
 type TextBoxProps = {
+  atlas: Atlas;
   children: string;
-  lang: "nb" | "en" | "nn";
 };
 
-export const TextBox = ({ children, lang }: TextBoxProps) => {
-  return <Markdown lang={lang}>{children}</Markdown>;
+export const TextBox = ({ atlas, children }: TextBoxProps) => {
+  return <Markdown lang={atlas.lang}>{children}</Markdown>;
 };

@@ -56,6 +56,12 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
         widget: "string",
       },
       {
+        label: "Forfatter",
+        name: "forfatter",
+        widget: "select",
+        options: ["SKDE", "Helse Førde"],
+      },
+      {
         label: "Forsidebilde",
         name: "image",
         widget: "file",

@@ -8,6 +8,7 @@ import { Carousel, CarouselItem } from "../Carousel";
 import { Barchart } from "../../charts/Barchart";
 import { Abacus } from "../../charts/Abacus";
 import {
+  Atlas,
   AtlasData,
   AtlasDataItem,
   BarchartItem,
@@ -22,31 +23,31 @@ import { FetchMap } from "../../helpers/hooks";
 import { Linechart } from "../../charts/Linechart";
 
 type ResultBoxProps = {
+  atlas: Atlas;
+  atlasData: AtlasData;
   title: string;
   data_filename: string;
   intro: string;
   selection: string;
   result: string;
   id: string;
-  lang: "nb" | "en" | "nn";
   published: Date;
   updated: Date;
   map: string | undefined;
-  atlasData: AtlasData;
 };
 
 export const ResultBox = ({
+  atlas,
+  atlasData,
   title,
   intro,
   selection,
   result,
   id,
-  lang,
   data_filename,
   published,
   updated,
   map,
-  atlasData,
 }: ResultBoxProps) => {
   // Keep track of current screen width
   const [screenWidth, setScreenWidth] = useState<number>();
@@ -99,7 +100,7 @@ export const ResultBox = ({
   const nationalName = boxData.find((o) => o.type === "data")["national"];
 
   const dataCarousel = (
-    <Carousel active={0} selection={selection} lang={lang}>
+    <Carousel active={0} selection={selection} lang={atlas.lang}>
       {boxData
         .filter((dataItem) => dataItem.type !== "data")
         .map((dataItem, i) => {
@@ -116,8 +117,9 @@ export const ResultBox = ({
                 <Barchart
                   {...dataItem}
                   data={figData}
-                  lang={lang}
+                  lang={atlas.lang}
                   national={nationalName}
+                  forfatter={atlas.forfatter}
                 />
               </CarouselItem>
             );
@@ -132,8 +134,9 @@ export const ResultBox = ({
                 <Linechart
                   {...dataItem}
                   data={figData}
-                  lang={lang}
+                  lang={atlas.lang}
                   national={nationalName}
+                  forfatter={atlas.forfatter}
                 />
               </CarouselItem>
             );
@@ -148,8 +151,8 @@ export const ResultBox = ({
                 <DataTable
                   headers={dataItem.columns}
                   data={figData}
-                  caption={dataItem.caption[lang]}
-                  lang={lang}
+                  caption={dataItem.caption[atlas.lang]}
+                  lang={atlas.lang}
                   national={nationalName}
                 />
               </CarouselItem>
@@ -180,8 +183,8 @@ export const ResultBox = ({
                       attrName={dataItem.x as string}
                       mapAttr={figData}
                       format={dataItem.format}
-                      caption={dataItem.caption[lang]}
-                      lang={lang}
+                      caption={dataItem.caption[atlas.lang]}
+                      lang={atlas.lang}
                     />
                   </div>
                 )}
@@ -266,13 +269,13 @@ export const ResultBox = ({
             data-testid="resultbox_ingress"
           >
             <h3 data-testid="resultbox_title"> {title} </h3>
-            <Markdown lang={lang}>{intro}</Markdown>
+            <Markdown lang={atlas.lang}>{intro}</Markdown>
             {figData && (
               <Abacus
                 data={figData}
-                lang={lang}
+                lang={atlas.lang}
                 x={abacusX}
-                label={(boxData[0] as BarchartItem).xLabel[lang]}
+                label={(boxData[0] as BarchartItem).xLabel[atlas.lang]}
                 backgroundColor="inherit"
                 format={(boxData[0] as BarchartItem).format}
                 national={nationalName}
@@ -290,10 +293,10 @@ export const ResultBox = ({
 
           <div className={classNames.resultBoxSelectionContent}>
             {" "}
-            <Markdown lang={lang}>{result}</Markdown>
+            <Markdown lang={atlas.lang}>{result}</Markdown>
             {updated_date > published_date && (
               <p>
-                {lang === "en" ? (
+                {atlas.lang === "en" ? (
                   <em>Updated {timeFormat("%m/%d/%Y")(new Date(updated))}</em>
                 ) : (
                   <em>Oppdatert {timeFormat("%d.%m.%Y")(new Date(updated))}</em>

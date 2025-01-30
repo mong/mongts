@@ -18,6 +18,7 @@ type LinechartProps = {
   format_y?: string;
   linecolors?: string[];
   national?: string;
+  forfatter: "SKDE" | "Helse Førde";
 };
 
 export const Linechart = ({
@@ -31,6 +32,7 @@ export const Linechart = ({
   format_x,
   format_y,
   linecolors,
+  forfatter,
 }: LinechartProps) => {
   const getLinevarLabel = (linevar: string) =>
     linevarsLabels[lang][linevars.findIndex((v) => v === linevar)];
@@ -73,7 +75,12 @@ export const Linechart = ({
     <Box style={{ width: "auto", margin: "auto" }}>
       <Box
         sx={{
-          backgroundImage: `url(${lang === "nn" ? "/helseatlas/img/logos/helse-forde-graa.svg" : "/img/logos/logo-skde-graa.svg"})`,
+          backgroundImage: `url(${
+            {
+              "Helse Førde": "/helseatlas/img/logos/helse-forde-graa.svg",
+              SKDE: "/img/logos/logo-skde-graa.svg",
+            }[forfatter]
+          })`,
           backgroundRepeat: "no-repeat",
           backgroundSize: lang === "nn" ? "max(5rem, 20%)" : "max(3rem, 10%)",
           backgroundPosition: "top 2.25rem right 5%",
