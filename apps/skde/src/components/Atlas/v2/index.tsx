@@ -57,11 +57,7 @@ const AtlasPage = ({ atlas, atlasData }: AtlasPageProps) => {
               <h1>{atlas.mainTitle}</h1>
               <Ingress>{atlas.ingress ?? "Ingress mangler"}</Ingress>
               {atlas.kapittel ? (
-                <Chapters
-                  innhold={atlas.kapittel}
-                  lang={atlas.lang}
-                  atlasData={atlasData}
-                />
+                <Chapters atlas={atlas} atlasData={atlasData} />
               ) : (
                 <div> Innhold mangler </div>
               )}
