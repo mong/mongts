@@ -1,22 +1,23 @@
 import { Group } from "@visx/group";
 import { ScaleBand, ScaleLinear } from "d3-scale";
 import { max, min } from "d3-array";
+import { DataItemPoint } from "../../types";
 
-type ErrorBarProps<Data, ErrorBar> = {
-  data: Data;
-  y: keyof Data;
-  errorBars: ErrorBar;
+type ErrorBarProps = {
+  data: DataItemPoint;
+  y: string;
+  errorBars: string[];
   xScale: ScaleLinear<number, number, never>;
   yScale: ScaleBand<string>;
 };
 
-export const ErrorBars = function <D, ErrorBar extends (string & keyof D)[]>({
+export const ErrorBars = function ({
   data,
   xScale,
   yScale,
   errorBars,
   y,
-}: ErrorBarProps<D, ErrorBar>) {
+}: ErrorBarProps) {
   const allBars = errorBars.map((v) => Number(data[v]));
 
   return (

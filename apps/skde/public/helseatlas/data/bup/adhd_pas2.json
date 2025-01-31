@@ -8,8 +8,8 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nn": "Tal pasientar med ADHD i poliklinikk pr. 1 000 (under 18 år)",
-        "en": "Number of patients with ADHD in outpatient pr. 1,000 inhabitants (under 18 years old)"
+        "nn": "Tal pasientar med ADHD pr 1000. innbyggjarar under 18 år.",
+        "en": "Number of patients with ADHD pr. 1,000 inhabitants (under 18 years old)"
       },
       "yLabel": {
         "nn": "Opptaksområde",
@@ -22,36 +22,10 @@
     "format": ",.1f"
   },
 {
-      "type": "barchart",
-      "data": "qwerty",
-      "x": ["Snitt_rate"],
-      "y": "bohf",
-      "xLabel": {
-        "nn": "Tal pasientar med ADHD in poliklinikk behandling pr. 1 000 innbyggarar (under 18 år)",
-        "en": "Number of patients with ADHD in outpatient treatment per 1,000 inhabitants (under 18 years of age"
-      },
-      "yLabel": {
-        "nn": "Opptaksområde",
-        "en": "Referral areas"
-      },
-      "annualVar": [
-        "Rate.2019",
-        "Rate.2020",
-        "Rate.2021",
-        "Rate.2022",
-        "Rate.2023"
-      ],
-      "annualVarLabels": {
-        "nn": [ "2019", "2020", "2021", "2022", "2023"],
-        "en": [ "2019", "2020", "2021", "2022", "2023"]
-      }
-    },
-
-  {
     "type": "table",
     "data": "qwerty",
     "caption": {
-      "nn": "Årlige gjennomsnittsverdier for perioden 2019–2023, Pasientrate for ADHD pr. 1 000 innbyggarar i alderen under 18 år",
+      "nn": "Årlege gjennomsnittsverdiar for perioden 2019-2023. Pasientrate for ADHD pr.1000 innbyggjarar under 18 år.",
       "en": "Average annual values for the period 2019–2023, patient rate for ADHD  pr. 1 000 population under 18 years of age"
     },
     "columns": [
@@ -78,20 +52,85 @@
       },
       {
         "id":  "Innbyggarar",
-        "label_no": "Innbygarrar (under 18 år)",
+        "label_no": "Innbyggjarar  (under 18 år)",
         "label_en": "Averege population (under 18)",
         "typeVar": "number",
         "format": ",.0f"
       }
     ]
   },
+{
+    "type": "table",
+    "data": "qwerty",
+    "caption": {
+      "nn": "Prosentdel komorbiditet av ulike tilstandar i pasientar med ADHD.",
+      "en": "Percent of comorbidity mith different diagnosis among patients with ADHD"
+    },
+    "columns": [
+      {
+        "id": "bohf",
+        "label_no": "Opptaksområde",
+        "label_en": "Referral areas",
+        "typeVar": "string",
+        "format": ""
+      },
+      {
+        "id": "Depresjon",
+        "label_no": "Depresjon",
+        "label_en": "Depression",
+        "typeVar": "number",
+        "format": ",.0%"
+
+      },
+      {
+        "id": "Autisme",
+        "label_no": "Autisme",
+        "label_en": "Autism",
+        "typeVar": "number",
+        "format": ",.0%"
+      },
+     {
+        "id": "Angst",
+        "label_no": "Angst",
+        "label_en": "Anxiety",
+        "typeVar": "number",
+        "format": ",.0%"
+
+      },
+      {
+        "id": "Eteforstyrring",
+        "label_no": "Eteforstyrring",
+        "label_en": "Eating disorder",
+        "typeVar": "number",
+        "format": ",.0%"
+      },
+
+      {
+        "id":  "Tilpassingsforstyrring",
+        "label_no": "Tilpassingsforstyrring",
+        "label_en": "Adjustment disorder",
+        "typeVar": "number",
+        "format": ",.0%"
+
+      },
+    {
+        "id":  "Utviklingsforstyrring",
+        "label_no": "Spesifikk utviklingsforstyrring",
+        "label_en": "Development disorder",
+        "typeVar": "number",
+        "format": ",.0%"
+ }
+
+    ]
+  },
+  
   {
     "type": "map",
     "data": "qwerty",
     "x": "Snitt_rate",
     "caption": {
-      "nn": "Tal pasientar med ADHD i poliklinikk pr. 1 000 innbyggarar i alderen under 18 år",
-      "en": "Number of patients with ADHD in outpatient pr. 1 000 population under 18 years of age"
+      "nn": "Tal pasientar med ADHD pr.1000 innbyggjarar under 18 år",
+      "en": "Number of patients with ADHD pr. 1 000 population under 18 years of age"
     },
     "jenks": [
       {
@@ -120,11 +159,12 @@
     "Snitt_rate": 11.09,
     "lowercl": 10.84,
     "uppercl": 11.35,
-    "Rate.2019": 8.32,
-    "Rate.2020": 8.97,
-    "Rate.2021": 10.72,
-    "Rate.2022": 12.78,
-    "Rate.2023": 14.68
+    "Depresjon": 0.0389,
+    "Angst": 0.1035,
+    "Autisme": 0.0763,
+    "Eteforstyrring": 0.0135,
+    "Tilpassingsforstyrring": 0.0292,
+    "Utviklingsforstyrring": 0.214
   },
   {
     "bohf": "Bergen",
@@ -133,11 +173,12 @@
     "Snitt_rate": 19.29,
     "lowercl": 18.89,
     "uppercl": 19.68,
-    "Rate.2019": 15.14,
-    "Rate.2020": 15.5,
-    "Rate.2021": 18.74,
-    "Rate.2022": 22.4,
-    "Rate.2023": 24.65
+    "Depresjon": 0.0696,
+    "Angst": 0.1137,
+    "Autisme": 0.0976,
+    "Eteforstyrring": 0.0131,
+    "Tilpassingsforstyrring": 0.0176,
+    "Utviklingsforstyrring": 0.272
   },
   {
     "bohf": "Diakonhjemmet",
@@ -146,11 +187,12 @@
     "Snitt_rate": 8.25,
     "lowercl": 7.74,
     "uppercl": 8.76,
-    "Rate.2019": 6.1,
-    "Rate.2020": 5.68,
-    "Rate.2021": 7.05,
-    "Rate.2022": 10.08,
-    "Rate.2023": 12.34
+    "Depresjon": 0.059,
+    "Angst": 0.0851,
+    "Autisme": 0.1163,
+    "Eteforstyrring": 0.0174,
+    "Tilpassingsforstyrring": 0.0376,
+    "Utviklingsforstyrring": 0.1406
   },
   {
     "bohf": "Finnmark",
@@ -159,11 +201,12 @@
     "Snitt_rate": 18.99,
     "lowercl": 17.98,
     "uppercl": 20,
-    "Rate.2019": 13.22,
-    "Rate.2020": 12.89,
-    "Rate.2021": 18.01,
-    "Rate.2022": 24.4,
-    "Rate.2023": 26.44
+    "Depresjon": 0.0583,
+    "Angst": 0.0762,
+    "Autisme": 0.0628,
+    "Eteforstyrring": 0.0164,
+    "Tilpassingsforstyrring": 0.0352,
+    "Utviklingsforstyrring": 0.2227
   },
   {
     "bohf": "Fonna",
@@ -172,11 +215,12 @@
     "Snitt_rate": 19.98,
     "lowercl": 19.37,
     "uppercl": 20.59,
-    "Rate.2019": 16.86,
-    "Rate.2020": 18.25,
-    "Rate.2021": 19.87,
-    "Rate.2022": 22.38,
-    "Rate.2023": 22.54
+    "Depresjon": 0.0379,
+    "Angst": 0.0744,
+    "Autisme": 0.1174,
+    "Eteforstyrring": 0.0108,
+    "Tilpassingsforstyrring": 0.0415,
+    "Utviklingsforstyrring": 0.2415
   },
   {
     "bohf": "Førde",
@@ -185,11 +229,12 @@
     "Snitt_rate": 14.33,
     "lowercl": 13.65,
     "uppercl": 15.02,
-    "Rate.2019": 10.59,
-    "Rate.2020": 11.69,
-    "Rate.2021": 13.77,
-    "Rate.2022": 16.69,
-    "Rate.2023": 18.94
+    "Depresjon": 0.0204,
+    "Angst": 0.0626,
+    "Autisme": 0.1092,
+    "Eteforstyrring": 0.0044,
+    "Tilpassingsforstyrring": 0.0297,
+    "Utviklingsforstyrring": 0.2242
   },
   {
     "bohf": "Helgeland",
@@ -198,11 +243,12 @@
     "Snitt_rate": 16,
     "lowercl": 15.11,
     "uppercl": 16.89,
-    "Rate.2019": 13.91,
-    "Rate.2020": 14.07,
-    "Rate.2021": 15.63,
-    "Rate.2022": 16.62,
-    "Rate.2023": 19.77
+    "Depresjon": 0.0418,
+    "Angst": 0.0753,
+    "Autisme": 0.0602,
+    "Eteforstyrring": 0.0033,
+    "Tilpassingsforstyrring": 0.0389,
+    "Utviklingsforstyrring": 0.2542
   },
   {
     "bohf": "Innlandet",
@@ -211,11 +257,12 @@
     "Snitt_rate": 14.41,
     "lowercl": 14,
     "uppercl": 14.82,
-    "Rate.2019": 12.4,
-    "Rate.2020": 12.41,
-    "Rate.2021": 13.74,
-    "Rate.2022": 16.11,
-    "Rate.2023": 17.4
+    "Depresjon": 0.038,
+    "Angst": 0.0919,
+    "Autisme": 0.0863,
+    "Eteforstyrring": 0.0104,
+    "Tilpassingsforstyrring": 0.0344,
+    "Utviklingsforstyrring": 0.2421
   },
   {
     "bohf": "Lovisenberg",
@@ -224,11 +271,12 @@
     "Snitt_rate": 8.58,
     "lowercl": 7.95,
     "uppercl": 9.2,
-    "Rate.2019": 6.62,
-    "Rate.2020": 5.77,
-    "Rate.2021": 7.85,
-    "Rate.2022": 10.81,
-    "Rate.2023": 11.84
+    "Depresjon": 0.0802,
+    "Angst": 0.1179,
+    "Autisme": 0.1274,
+    "Eteforstyrring": 0.0189,
+    "Tilpassingsforstyrring": 0.019,
+    "Utviklingsforstyrring": 0.1816
   },
   {
     "bohf": "Møre og Romsdal",
@@ -237,24 +285,12 @@
     "Snitt_rate": 15.76,
     "lowercl": 15.29,
     "uppercl": 16.22,
-    "Rate.2019": 12.16,
-    "Rate.2020": 13.76,
-    "Rate.2021": 16.49,
-    "Rate.2022": 17.29,
-    "Rate.2023": 19.09
-  },
-  {
-    "bohf": "Nord-Trøndelag",
-    "Tal_pas": 473,
-    "Innbyggarar": 28257.4,
-    "Snitt_rate": 16.33,
-    "lowercl": 15.67,
-    "uppercl": 16.99,
-    "Rate.2019": 13.44,
-    "Rate.2020": 14.09,
-    "Rate.2021": 15.8,
-    "Rate.2022": 18.94,
-    "Rate.2023": 19.37
+    "Depresjon": 0.0283,
+    "Angst": 0.0801,
+    "Autisme": 0.1627,
+    "Eteforstyrring": 0.0103,
+    "Tilpassingsforstyrring": 0.0204,
+    "Utviklingsforstyrring": 0.212
   },
   {
     "bohf": "Nordland",
@@ -263,11 +299,26 @@
     "Snitt_rate": 19.06,
     "lowercl": 18.33,
     "uppercl": 19.79,
-    "Rate.2019": 15.6,
-    "Rate.2020": 16.3,
-    "Rate.2021": 19.31,
-    "Rate.2022": 20.03,
-    "Rate.2023": 24.06
+    "Depresjon": 0.0618,
+    "Angst": 0.1168,
+    "Autisme": 0.0885,
+    "Eteforstyrring": 0.0053,
+    "Tilpassingsforstyrring": 0.024,
+    "Utviklingsforstyrring": 0.3702
+  },
+  {
+    "bohf": "Nord-Trøndelag",
+    "Tal_pas": 473,
+    "Innbyggarar": 28257.4,
+    "Snitt_rate": 16.33,
+    "lowercl": 15.67,
+    "uppercl": 16.99,
+    "Depresjon": 0.0364,
+    "Angst": 0.1032,
+    "Autisme": 0.0755,
+    "Eteforstyrring": 0.0078,
+    "Tilpassingsforstyrring": 0.0334,
+    "Utviklingsforstyrring": 0.1778
   },
   {
     "bohf": "Noreg",
@@ -276,11 +327,12 @@
     "Snitt_rate": 14.64,
     "lowercl": 14.54,
     "uppercl": 14.74,
-    "Rate.2019": 12.08,
-    "Rate.2020": 12.69,
-    "Rate.2021": 14.47,
-    "Rate.2022": 16.61,
-    "Rate.2023": 17.34
+    "Depresjon": 0.0436,
+    "Angst": 0.0873,
+    "Autisme": 0.0978,
+    "Eteforstyrring": 0.011,
+    "Tilpassingsforstyrring": 0.0252,
+    "Utviklingsforstyrring": 0.2193
   },
   {
     "bohf": "OUS",
@@ -289,11 +341,12 @@
     "Snitt_rate": 10.31,
     "lowercl": 9.93,
     "uppercl": 10.68,
-    "Rate.2019": 8.21,
-    "Rate.2020": 7.25,
-    "Rate.2021": 9.56,
-    "Rate.2022": 12.74,
-    "Rate.2023": 13.77
+    "Depresjon": 0.0459,
+    "Angst": 0.0728,
+    "Autisme": 0.1489,
+    "Eteforstyrring": 0.0118,
+    "Tilpassingsforstyrring": 0.0143,
+    "Utviklingsforstyrring": 0.1823
   },
   {
     "bohf": "St. Olav",
@@ -302,11 +355,12 @@
     "Snitt_rate": 19.56,
     "lowercl": 19.09,
     "uppercl": 20.03,
-    "Rate.2019": 19.41,
-    "Rate.2020": 20.05,
-    "Rate.2021": 22.09,
-    "Rate.2022": 23.9,
-    "Rate.2023": 12.34
+    "Depresjon": 0.0378,
+    "Angst": 0.0898,
+    "Autisme": 0.0963,
+    "Eteforstyrring": 0.0124,
+    "Tilpassingsforstyrring": 0.0249,
+    "Utviklingsforstyrring": 0.1643
   },
   {
     "bohf": "Stavanger",
@@ -315,11 +369,12 @@
     "Snitt_rate": 17.16,
     "lowercl": 16.77,
     "uppercl": 17.55,
-    "Rate.2019": 17.97,
-    "Rate.2020": 16.99,
-    "Rate.2021": 16.85,
-    "Rate.2022": 17.27,
-    "Rate.2023": 16.73
+    "Depresjon": 0.0567,
+    "Angst": 0.0748,
+    "Autisme": 0.1147,
+    "Eteforstyrring": 0.0082,
+    "Tilpassingsforstyrring": 0.0173,
+    "Utviklingsforstyrring": 0.1864
   },
   {
     "bohf": "Sørlandet",
@@ -328,11 +383,12 @@
     "Snitt_rate": 10.03,
     "lowercl": 9.69,
     "uppercl": 10.36,
-    "Rate.2019": 7.11,
-    "Rate.2020": 8.46,
-    "Rate.2021": 10.1,
-    "Rate.2022": 11.75,
-    "Rate.2023": 12.71
+    "Depresjon": 0.0275,
+    "Angst": 0.0565,
+    "Autisme": 0.0443,
+    "Eteforstyrring": 0.0107,
+    "Tilpassingsforstyrring": 0.0367,
+    "Utviklingsforstyrring": 0.2296
   },
   {
     "bohf": "Telemark",
@@ -341,11 +397,12 @@
     "Snitt_rate": 13.21,
     "lowercl": 12.67,
     "uppercl": 13.75,
-    "Rate.2019": 10.33,
-    "Rate.2020": 11.4,
-    "Rate.2021": 12.46,
-    "Rate.2022": 15.49,
-    "Rate.2023": 16.39
+    "Depresjon": 0.0346,
+    "Angst": 0.0655,
+    "Autisme": 0.0601,
+    "Eteforstyrring": 0.0036,
+    "Tilpassingsforstyrring": 0.0139,
+    "Utviklingsforstyrring": 0.2266
   },
   {
     "bohf": "UNN",
@@ -354,11 +411,12 @@
     "Snitt_rate": 19.76,
     "lowercl": 19.13,
     "uppercl": 20.4,
-    "Rate.2019": 12.64,
-    "Rate.2020": 15.83,
-    "Rate.2021": 19.28,
-    "Rate.2022": 23.69,
-    "Rate.2023": 27.39
+    "Depresjon": 0.0259,
+    "Angst": 0.0776,
+    "Autisme": 0.0394,
+    "Eteforstyrring": 0.0049,
+    "Tilpassingsforstyrring": 0.0204,
+    "Utviklingsforstyrring": 0.2421
   },
   {
     "bohf": "Vestfold",
@@ -367,11 +425,12 @@
     "Snitt_rate": 11.53,
     "lowercl": 11.11,
     "uppercl": 11.94,
-    "Rate.2019": 11.17,
-    "Rate.2020": 11.82,
-    "Rate.2021": 11.4,
-    "Rate.2022": 11.72,
-    "Rate.2023": 11.54
+    "Depresjon": 0.0296,
+    "Angst": 0.0671,
+    "Autisme": 0.0849,
+    "Eteforstyrring": 0.0099,
+    "Tilpassingsforstyrring": 0.0225,
+    "Utviklingsforstyrring": 0.275
   },
   {
     "bohf": "Vestre Viken",
@@ -380,11 +439,12 @@
     "Snitt_rate": 14.57,
     "lowercl": 14.25,
     "uppercl": 14.9,
-    "Rate.2019": 10.7,
-    "Rate.2020": 12.3,
-    "Rate.2021": 14.27,
-    "Rate.2022": 16.83,
-    "Rate.2023": 18.77
+    "Depresjon": 0.0549,
+    "Angst": 0.0939,
+    "Autisme": 0.1233,
+    "Eteforstyrring": 0.0171,
+    "Tilpassingsforstyrring": 0.0223,
+    "Utviklingsforstyrring": 0.2085
   },
   {
     "bohf": "Østfold",
@@ -393,11 +453,12 @@
     "Snitt_rate": 13.73,
     "lowercl": 13.34,
     "uppercl": 14.13,
-    "Rate.2019": 11.56,
-    "Rate.2020": 12.08,
-    "Rate.2021": 13.49,
-    "Rate.2022": 14.35,
-    "Rate.2023": 17.18
+    "Depresjon": 0.0299,
+    "Angst": 0.0793,
+    "Autisme": 0.1068,
+    "Eteforstyrring": 0.0128,
+    "Tilpassingsforstyrring": 0.0413,
+    "Utviklingsforstyrring": 0.1714
   }
 ]
 }

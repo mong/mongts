@@ -8,6 +8,7 @@
 
 import { render, fireEvent } from "@testing-library/react";
 import { FactBox } from "..";
+import { Atlas } from "../../../types";
 
 test("Bokmål render", async () => {
   const title = "Dette er en tittel";
@@ -16,7 +17,7 @@ test("Bokmål render", async () => {
     <FactBox
       boxTitle={title}
       boxContent={markdownText}
-      lang="nb"
+      atlas={{ lang: "nb" } as Atlas}
       id="tmp_nb"
     />,
   );
@@ -31,7 +32,7 @@ test("English render", async () => {
     <FactBox
       boxTitle={title}
       boxContent={markdownText}
-      lang="en"
+      atlas={{ lang: "en" } as Atlas}
       id="tmp_en"
     />,
   );
@@ -54,7 +55,7 @@ test("Nynorsk render", async () => {
     <FactBox
       boxTitle={title}
       boxContent={markdownText}
-      lang="nn"
+      atlas={{ lang: "nn" } as Atlas}
       id="tmp_nn"
     />,
   );
