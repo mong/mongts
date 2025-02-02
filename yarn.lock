@@ -2400,14 +2400,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/code-coverage@npm:3.13.10":
-  version: 3.13.10
-  resolution: "@cypress/code-coverage@npm:3.13.10"
+"@cypress/code-coverage@npm:3.13.11":
+  version: 3.13.11
+  resolution: "@cypress/code-coverage@npm:3.13.11"
   dependencies:
     "@cypress/webpack-preprocessor": "npm:^6.0.0"
     chalk: "npm:4.1.2"
     dayjs: "npm:1.11.13"
-    debug: "npm:4.3.7"
+    debug: "npm:4.4.0"
     execa: "npm:4.1.0"
     globby: "npm:11.1.0"
     istanbul-lib-coverage: "npm:^3.0.0"
@@ -2419,7 +2419,7 @@ __metadata:
     babel-loader: ^8.3 || ^9
     cypress: "*"
     webpack: ^4 || ^5
-  checksum: 10/1eb5449e16e33531c4470b925ad1c44f49962d34b03b6275fff833e24c453b739b24ea3311f28045ae83ce9727abcac04d02e8c59b958bd54d9d425fc360b335
+  checksum: 10/519b86f8e17c242e723a17f520d9e8ac2bfd6ea08d173e56b23f6b9e65a46a96b94e2023759a2b63b1f2ab6027a8c62c8d562dc0263bab8fe4eedd009fcaccb7
   languageName: node
   linkType: hard
 
@@ -6051,12 +6051,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:22.10.10":
-  version: 22.10.10
-  resolution: "@types/node@npm:22.10.10"
+"@types/node@npm:22.13.0":
+  version: 22.13.0
+  resolution: "@types/node@npm:22.13.0"
   dependencies:
     undici-types: "npm:~6.20.0"
-  checksum: 10/61559b62bc7e62b947876e097c99472dd01317dd3b5916b538e2c40db8d68a1fc23c8de48149ef04cd2790a97bf2c005ea60cbb067e55ddbefd013d73da7a147
+  checksum: 10/a7563e57df48cb7e28f936dbabe228316dcdb4c7c3a88a6c1659fae898ffde2647a7193a9e29e0cbcb7dacc05a91fb3bc30c1a1d6fc9294694a734ff71a5f12e
   languageName: node
   linkType: hard
 
@@ -9980,9 +9980,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:14.0.0":
-  version: 14.0.0
-  resolution: "cypress@npm:14.0.0"
+"cypress@npm:14.0.1":
+  version: 14.0.1
+  resolution: "cypress@npm:14.0.1"
   dependencies:
     "@cypress/request": "npm:^3.0.6"
     "@cypress/xvfb": "npm:^1.2.4"
@@ -10029,7 +10029,7 @@ __metadata:
     yauzl: "npm:^2.10.0"
   bin:
     cypress: bin/cypress
-  checksum: 10/d9087f11fe78da5dac77f7e0c1e7a195dec3946c329ad1a30bad59e8bb86db23fde117da5965646a556509d42d3782c21c6c988e8053bbb200f8d01f426fbdde
+  checksum: 10/a14b17bbcc9c17671341dae5ce812b80e0177b5f01ade41d890f62f8f1c8d02eed22756bcb82db4867c5b281bfd87613096e57c0e38baee8e06a26696c6c77c6
   languageName: node
   linkType: hard
 
@@ -10533,18 +10533,6 @@ __metadata:
     supports-color:
       optional: true
   checksum: 10/0073c3bcbd9cb7d71dd5f6b55be8701af42df3e56e911186dfa46fac3a5b9eb7ce7f377dd1d3be6db8977221f8eb333d945216f645cf56f6b688cd484837d255
-  languageName: node
-  linkType: hard
-
-"debug@npm:4.3.7":
-  version: 4.3.7
-  resolution: "debug@npm:4.3.7"
-  dependencies:
-    ms: "npm:^2.1.3"
-  peerDependenciesMeta:
-    supports-color:
-      optional: true
-  checksum: 10/71168908b9a78227ab29d5d25fe03c5867750e31ce24bf2c44a86efc5af041758bb56569b0a3d48a9b5344c00a24a777e6f4100ed6dfd9534a42c1dde285125a
   languageName: node
   linkType: hard
 
@@ -16665,9 +16653,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:5.43.3":
-  version: 5.43.3
-  resolution: "knip@npm:5.43.3"
+"knip@npm:5.43.6":
+  version: 5.43.6
+  resolution: "knip@npm:5.43.6"
   dependencies:
     "@nodelib/fs.walk": "npm:3.0.1"
     "@snyk/github-codeowners": "npm:1.1.0"
@@ -16691,7 +16679,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10/57cdeffadfd07d9192f9b97883b9d84661492f7614c856d24b6ad6602c63086e4c35c77239c539d5044a8c91202a0e64953d3782cd9a303b402e8b93310d7f72
+  checksum: 10/d843ed0f5b56baf5c29257308b0cf1956348cfa9d2b9b627420db023a6ccdaf54450f047fe900b263dc10291f395bc3eceef221dc6050e7fd55fb1fbe4fce3a2
   languageName: node
   linkType: hard
 
@@ -18530,11 +18518,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mongts@workspace:."
   dependencies:
-    "@types/node": "npm:22.10.10"
+    "@types/node": "npm:22.13.0"
     decap-server: "npm:3.1.2"
     eslint: "npm:9.19.0"
     husky: "npm:9.1.7"
-    knip: "npm:5.43.3"
+    knip: "npm:5.43.6"
     lint-staged: "npm:15.4.3"
     prettier: "npm:3.4.2"
     turbo: "npm:2.3.4"
@@ -23352,7 +23340,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "skde@workspace:apps/skde"
   dependencies:
-    "@cypress/code-coverage": "npm:3.13.10"
+    "@cypress/code-coverage": "npm:3.13.11"
     "@iframe-resizer/react": "npm:5.3.2"
     "@mui/base": "npm:5.0.0-beta.67"
     "@mui/icons-material": "npm:6.2.1"
@@ -23368,7 +23356,7 @@ __metadata:
     "@types/d3-scale": "npm:4.0.8"
     "@types/d3-shape": "npm:3.1.7"
     "@types/d3-time-format": "npm:4.0.3"
-    "@types/node": "npm:22.10.10"
+    "@types/node": "npm:22.13.0"
     "@types/react": "npm:18.3.18"
     "@visx/axis": "npm:3.12.0"
     "@visx/group": "npm:3.12.0"
@@ -23378,7 +23366,7 @@ __metadata:
     "@vitejs/plugin-react": "npm:4.3.4"
     "@vitest/browser": "npm:3.0.2"
     "@vitest/coverage-v8": "npm:3.0.2"
-    cypress: "npm:14.0.0"
+    cypress: "npm:14.0.1"
     d3-array: "npm:3.2.4"
     d3-geo: "npm:3.1.1"
     d3-scale: "npm:4.0.2"
