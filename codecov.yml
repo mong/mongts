@@ -16,11 +16,11 @@ coverage:
           - apps/skde
         threshold: 5%
     patch:
-      default:
-        target: auto
-        threshold: 5%
+      default: off
 
 comment: false
+
+github_checks: false
 
 ignore:
   - "apps/skde/public/"

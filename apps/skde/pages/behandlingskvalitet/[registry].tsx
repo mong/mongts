@@ -5,6 +5,7 @@ import {
   CssBaseline,
   Divider,
   IconButton,
+  Link,
   ThemeProvider,
   Typography,
   useMediaQuery,
@@ -27,27 +28,38 @@ import {
   IndicatorTableBodyV2,
   skdeTheme,
   fetchRegisterNames,
+  useRegistryRankQuery,
 } from "qmongjs";
 import { useSearchParams } from "next/navigation";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import {
   FilterDrawer,
   IndicatorTableWrapper,
-  IndicatorTableV2Wrapper,
 } from "../../src/components/TreatmentQuality";
 import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
 import scrollToSelectedRow from "./utils/scrollToSelectedRow";
-import { RegisterName } from "types";
+import { RegisterName, RegistryRank } from "types";
 import valueOrDefault from "./utils/valueOrDefault";
+import { LayoutHead } from "../../src/components/LayoutHead";
+import {
+  ColourMap,
+  updateColourMap,
+  getSortedList,
+} from "../../src/helpers/functions/chartColours";
+import checkParamsReady from "./utils/checkParamsReady";
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
-  const registryName = registryInfo[0].rname;
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [colourMap, setColourMap] = useState<ColourMap[]>([]);
+
+  const registryName = registryInfo[0].rname;
+  const skipTableContextSection =
+    registryInfo[0].resident_data + registryInfo[0].caregiver_data !== 2;
 
   useEffect(() => {
     setMounted(true);
@@ -58,7 +70,10 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
   };
 
   const searchParams = useSearchParams();
+
   const displayV2Table = searchParams.get("newtable") === "true";
+
+  const defaultTreatmentUnits = ["Nasjonalt"];
 
   // Context (caregiver or resident)
   const defaultTableContext =
@@ -74,14 +89,43 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const [selectedMedicalFields, setSelectedMedicalFields] = useState<string[]>(
     [],
   );
-  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState([
-    "Nasjonalt",
-  ]);
+  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState(
+    defaultTreatmentUnits,
+  );
 
   const selectedRow = useQueryParam(
     "selected_row",
     mainQueryParamsConfig.selected_row,
   )[0];
+
+  let registryRank = "NA";
+  if (!process.env.NEXT_PUBLIC_VERIFY) {
+    // Fetch the registry's stage and level
+    const registryRankQuery = useRegistryRankQuery(defaultYear);
+
+    if (registryRankQuery.isFetched) {
+      // Fetch the registry's stage and level
+      const registryRankData = registryRankQuery.data as RegistryRank[];
+
+      const filteredRegistryRank = registryRankData.filter(
+        (row: RegistryRank) => row.name === registryName,
+      );
+
+      if (filteredRegistryRank[0]) {
+        registryRank = filteredRegistryRank[0].verdict;
+      }
+    }
+  }
+
+  const paramsReady = checkParamsReady({
+    treatmentUnits: selectedTreatmentUnits,
+    treatmentUnitsKey: treatmentUnitsKey,
+    defaultTreatmentUnits: defaultTreatmentUnits,
+    year: selectedYear,
+    yearKey: yearKey,
+    defaultYear: defaultYear,
+    medicalFields: selectedMedicalFields,
+  });
 
   /**
    * Handle that the initial filter settings are loaded, which can happen
@@ -106,6 +150,12 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     setSelectedMedicalFields([registryName]);
 
     setSelectedTreatmentUnits(
+      filterSettings.get(treatmentUnitsKey).map((value) => value.value),
+    );
+
+    updateColourMap(
+      colourMap,
+      setColourMap,
       filterSettings.get(treatmentUnitsKey).map((value) => value.value),
     );
   };
@@ -167,6 +217,12 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     if (action.type === FilterSettingsActionType.RESET_SELECTIONS) {
       setAllSelected(newFilterSettings);
     }
+
+    updateColourMap(
+      colourMap,
+      setColourMap,
+      valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+    );
   };
 
   // Use the custom hook to observe the addition of the selected row element, if
@@ -179,17 +235,46 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     return null;
   }
 
+  const subtitle = (
+    <>
+      Resultater fra {registryInfo[0].full_name}.{" "}
+      {!process.env.NEXT_PUBLIC_VERIFY && (
+        <>
+          Se{" "}
+          <Link href={registryInfo[0].url} target="_blank" rel="noopener">
+            kvalitetsregistre.no
+          </Link>{" "}
+          for mer informasjon.{" "}
+          <Link
+            href="https://www.kvalitetsregistre.no/registerdrift/stadieinndeling"
+            target="_blank"
+            rel="noopener"
+          >
+            Stadium og nivå
+          </Link>{" "}
+          for {defaultYear}: <b>{registryRank}</b>
+        </>
+      )}
+    </>
+  );
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
       <PageWrapper>
+        <LayoutHead
+          title="Behandlingskvalitet"
+          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
+          href="/favicon.ico"
+        />
         <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
           extraBreadcrumbs={[
             { link: registryName, text: registryInfo[0].short_name },
           ]}
-          subtitle={"Resultater fra " + registryInfo[0].full_name}
-        />
+        >
+          {subtitle}
+        </TreatmentQualityAppBar>
         <Grid container size={{ xs: 12 }}>
           {isXxlScreen ? ( // Permanent menu on large screens
             <Grid size={{ xxl: 4, xxml: 3, xxxl: 2 }} className="menu-wrapper">
@@ -209,11 +294,12 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                   registryNameData={registryInfo}
                   medicalFieldData={[]}
                   register={registryName}
-                  enableTableContextSection={
-                    registryInfo[0].resident_data +
-                      registryInfo[0].caregiver_data ==
-                    2
+                  initialContext={
+                    selectedTableContext as "caregiver" | "resident"
                   }
+                  skipSections={{
+                    context: skipTableContextSection,
+                  }}
                 />
                 <Divider />
               </Box>
@@ -222,61 +308,101 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
           <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
-                {displayV2Table ? (
-                  <IndicatorTableV2Wrapper className="table-wrapper">
-                    <IndicatorTableBodyV2
-                      key={`indicator-table2-${selectedTableContext}`}
-                      context={selectedTableContext}
-                      unitNames={selectedTreatmentUnits}
-                      year={selectedYear}
-                      type="ind"
-                      levels={selectedLevel}
-                      medfields={selectedMedicalFields}
-                    />
-                    <IndicatorTableBodyV2
-                      key={`dataquality-table2-${selectedTableContext}`}
-                      context={selectedTableContext}
-                      unitNames={selectedTreatmentUnits}
-                      year={selectedYear}
-                      type="dg"
-                      levels={selectedLevel}
-                      medfields={selectedMedicalFields}
-                    />
-                  </IndicatorTableV2Wrapper>
+                {paramsReady ? (
+                  displayV2Table ? (
+                    <>
+                      <IndicatorTableBodyV2
+                        key={`indicator-table2-${selectedTableContext}`}
+                        context={selectedTableContext}
+                        unitNames={getSortedList(
+                          colourMap,
+                          selectedTreatmentUnits,
+                          "units",
+                        )}
+                        year={selectedYear}
+                        type="ind"
+                        levels={selectedLevel}
+                        medfields={selectedMedicalFields}
+                        chartColours={getSortedList(
+                          colourMap,
+                          selectedTreatmentUnits,
+                          "colours",
+                        )}
+                      />
+                      <IndicatorTableBodyV2
+                        key={`dataquality-table2-${selectedTableContext}`}
+                        context={selectedTableContext}
+                        unitNames={getSortedList(
+                          colourMap,
+                          selectedTreatmentUnits,
+                          "units",
+                        )}
+                        year={selectedYear}
+                        type="dg"
+                        levels={selectedLevel}
+                        medfields={selectedMedicalFields}
+                        chartColours={getSortedList(
+                          colourMap,
+                          selectedTreatmentUnits,
+                          "colours",
+                        )}
+                      />
+                    </>
+                  ) : (
+                    <IndicatorTableWrapper className="table-wrapper">
+                      <IndicatorTable
+                        key={`indicator-table-${selectedTableContext}`}
+                        context={selectedTableContext}
+                        dataQuality={false}
+                        tableType="allRegistries"
+                        registerNames={registryInfo}
+                        unitNames={getSortedList(
+                          colourMap,
+                          selectedTreatmentUnits,
+                          "units",
+                        )}
+                        treatmentYear={selectedYear}
+                        colspan={selectedTreatmentUnits.length + 1}
+                        medicalFieldFilter={selectedMedicalFields}
+                        showLevelFilter={selectedLevel}
+                        selection_bar_height={0}
+                        legend_height={0}
+                        showTreatmentYear={true}
+                        chartColours={getSortedList(
+                          colourMap,
+                          selectedTreatmentUnits,
+                          "colours",
+                        )}
+                      />
+                      <IndicatorTable
+                        key={`dataquality-table-${selectedTableContext}`}
+                        context={selectedTableContext}
+                        dataQuality={true}
+                        tableType="allRegistries"
+                        registerNames={registryInfo}
+                        unitNames={getSortedList(
+                          colourMap,
+                          selectedTreatmentUnits,
+                          "units",
+                        )}
+                        treatmentYear={selectedYear}
+                        colspan={selectedTreatmentUnits.length + 1}
+                        medicalFieldFilter={selectedMedicalFields}
+                        showLevelFilter={selectedLevel}
+                        selection_bar_height={0}
+                        legend_height={0}
+                        descriptionHeader="Datakvalitet"
+                        showTreatmentYear={true}
+                        chartColours={getSortedList(
+                          colourMap,
+                          selectedTreatmentUnits,
+                          "colours",
+                        )}
+                      />
+                    </IndicatorTableWrapper>
+                  )
                 ) : (
-                  <IndicatorTableWrapper className="table-wrapper">
-                    <IndicatorTable
-                      key={`indicator-table-${selectedTableContext}`}
-                      context={selectedTableContext}
-                      dataQuality={false}
-                      tableType="allRegistries"
-                      registerNames={registryInfo}
-                      unitNames={selectedTreatmentUnits}
-                      treatmentYear={selectedYear}
-                      colspan={selectedTreatmentUnits.length + 1}
-                      medicalFieldFilter={selectedMedicalFields}
-                      showLevelFilter={selectedLevel}
-                      selection_bar_height={0}
-                      legend_height={0}
-                      showTreatmentYear={true}
-                    />
-                    <IndicatorTable
-                      key={`dataquality-table-${selectedTableContext}`}
-                      context={selectedTableContext}
-                      dataQuality={true}
-                      tableType="allRegistries"
-                      registerNames={registryInfo}
-                      unitNames={selectedTreatmentUnits}
-                      treatmentYear={selectedYear}
-                      colspan={selectedTreatmentUnits.length + 1}
-                      medicalFieldFilter={selectedMedicalFields}
-                      showLevelFilter={selectedLevel}
-                      selection_bar_height={0}
-                      legend_height={0}
-                      descriptionHeader="Datakvalitet"
-                      showTreatmentYear={true}
-                    />
-                  </IndicatorTableWrapper>
+                  <></>
                 )}
               </Grid>
             </Grid>
@@ -309,6 +435,10 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
             registryNameData={registryInfo}
             medicalFieldData={[]}
             register={registryName}
+            initialContext={selectedTableContext as "caregiver" | "resident"}
+            skipSections={{
+              context: skipTableContextSection,
+            }}
           />
           <Divider />
         </Box>
@@ -318,9 +448,9 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const registries = await fetchRegisterNames();
+  const registries: RegisterName[] = await fetchRegisterNames();
 
-  const registryInfo: RegisterName = registries.filter(
+  const registryInfo = registries.filter(
     (register) => register.rname === context.params?.registry,
   );
 

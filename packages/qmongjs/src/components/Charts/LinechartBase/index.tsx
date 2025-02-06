@@ -20,9 +20,10 @@ export type LinechartData = {
   id?: number;
   x: Date;
   y: number;
+  colour?: string;
 };
 
-type lineStyle = {
+export type lineStyle = {
   text: string;
   strokeDash: string;
   colour: string;
@@ -73,11 +74,11 @@ const background = "#3b6978";
 const tooltipStyles = {
   ...defaultStyles,
   background,
-  border: "1px solid white",
+  border: "0.0625rem solid white",
   color: "white",
 };
 
-type LinechartBaseProps = {
+export type LinechartBaseProps = {
   data: LinechartData[][];
   width: number;
   height: number;
@@ -95,6 +96,9 @@ type LinechartBaseProps = {
   lang?: "en" | "nb" | "nn";
   useTooltip?: boolean;
   showLegend?: boolean;
+  circleRadius?: number;
+  individualPointColour?: boolean;
+  nGridLines?: number;
 };
 
 type ToolTipBoxProps = {
@@ -179,10 +183,14 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
     tooltipData,
     tooltipTop = 0,
     tooltipLeft = 0,
+    circleRadius = 3,
+    individualPointColour,
+    nGridLines = 5,
   }: LinechartBaseProps & WithTooltipProvidedProps<LinechartData>) => {
     // data accessors
     const getX = (d: LinechartData) => d.x;
     const getY = (d: LinechartData) => d.y;
+    const getFill = (d: LinechartData) => d?.colour;
 
     const allData = data.reduce((rec, d) => rec.concat(d), []);
 
@@ -331,7 +339,10 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
               >
                 {labels.map((label, i) => {
                   return (
-                    <div style={{ padding: "10px" }} key={`legend-div-${i}`}>
+                    <div
+                      style={{ padding: "0.625rem" }}
+                      key={`legend-div-${i}`}
+                    >
                       <LegendItem key={`legend-${i}`}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -390,26 +401,33 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
           {background}
           <Group>
             <GridRows
-              numTicks={5}
+              numTicks={nGridLines}
               scale={yScale}
               left={xScale(xMin)}
               width={xScale(xMax) - xScale(xMin)}
               height={yMax}
               stroke="#989898"
             />
+            <AxisBottom
+              scale={xScale}
+              top={yScale.range()[0]}
+              numTicks={nXTicks}
+              tickLabelProps={xTicksFont}
+            />
+            <AxisLeft
+              scale={yScale}
+              left={borderWidth}
+              label={yAxisText.text}
+              labelProps={yLabelProps}
+              tickFormat={(val) =>
+                format_y ? customFormat(format_y, lang)(val) : val.toString()
+              }
+              tickLabelProps={yTicksFont}
+              numTicks={numYTicks}
+            />
             {data.map((lineData, i) => {
               return (
                 <Group key={"group" + i.toString()}>
-                  {lineData.map((d, j) => (
-                    <circle
-                      key={i + j}
-                      r={3}
-                      cx={xScale(getX(d))}
-                      cy={yScale(getY(d))}
-                      stroke={lineStyles.styles[i].colour}
-                      fill={lineStyles.styles[i].colour}
-                    />
-                  ))}
                   <LinePath<LinechartData>
                     key={`lineid-${i}`}
                     curve={curveLinear}
@@ -419,7 +437,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
                     stroke={lineStyles.styles[i].colour}
                     strokeDasharray={lineStyles.styles[i].strokeDash}
                     shapeRendering="geometricPrecision"
-                    strokeWidth={"2px"}
+                    strokeWidth={"0.125rem"}
                     strokeLinejoin={"round"}
                     strokeLinecap={"square"}
                     markerStart={
@@ -441,27 +459,28 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
                         : undefined
                     }
                   />
+                  {lineData.map((d, j) => (
+                    <circle
+                      key={i + j}
+                      r={circleRadius}
+                      cx={xScale(getX(d))}
+                      cy={yScale(getY(d))}
+                      stroke={
+                        individualPointColour
+                          ? getFill(d)
+                          : lineStyles.styles[i].colour
+                      }
+                      fill={
+                        individualPointColour
+                          ? getFill(d)
+                          : lineStyles.styles[i].colour
+                      }
+                    />
+                  ))}
                 </Group>
               );
             })}
 
-            <AxisBottom
-              scale={xScale}
-              top={yScale.range()[0]}
-              numTicks={nXTicks}
-              tickLabelProps={xTicksFont}
-            />
-            <AxisLeft
-              scale={yScale}
-              left={borderWidth}
-              label={yAxisText.text}
-              labelProps={yLabelProps}
-              tickFormat={(val) =>
-                format_y ? customFormat(format_y, lang)(val) : val.toString()
-              }
-              tickLabelProps={yTicksFont}
-              numTicks={numYTicks}
-            />
             <Bar
               x={0}
               y={0}

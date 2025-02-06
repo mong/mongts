@@ -1,5 +1,5 @@
-import { Button, Toolbar, styled } from "@mui/material";
-import { TuneRounded } from "@mui/icons-material";
+import { Button, Toolbar, Tooltip, styled } from "@mui/material";
+import { TuneRounded, KeyboardArrowUpRounded } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Grid2";
@@ -7,12 +7,16 @@ import Grid from "@mui/material/Grid2";
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
   color: theme.palette.primary.dark,
-  paddingTop: theme.spacing(2),
-  paddingBottom: 0,
 }));
 
 type StickyToolbarProps = {
   openDrawer: () => void;
+};
+
+const scrollToTop = () => {
+  if (window) {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 };
 
 export const TreatmentQualityToolbar = ({ openDrawer }: StickyToolbarProps) => {
@@ -21,24 +25,50 @@ export const TreatmentQualityToolbar = ({ openDrawer }: StickyToolbarProps) => {
 
   return (
     <StyledToolbar className="main-toolbar">
-      <Grid container spacing={2} columns={{ xs: 4, sm: 8, md: 12 }}>
-        {notLargeScreen ? (
-          <Grid size={{ xs: 1, sm: 1, md: 2 }} sx={{ alignContent: "center" }}>
+      <Grid
+        container
+        spacing={2}
+        sx={{ flexGrow: 1 }}
+        justifyContent="space-between"
+      >
+        <Grid sx={{ xs: "auto" }}>
+          {notLargeScreen ? (
+            <Tooltip title="Åpne sidemeny">
+              <Button
+                variant="contained"
+                aria-label="Åpne sidemeny"
+                color="primary"
+                sx={{
+                  borderRadius: 4,
+                }}
+                onClick={() => {
+                  openDrawer();
+                }}
+              >
+                <TuneRounded fontSize="medium" />
+              </Button>
+            </Tooltip>
+          ) : (
+            <></>
+          )}
+        </Grid>
+        <Grid sx={{ xs: "auto" }}>
+          <Tooltip title="Til toppen">
             <Button
-              variant="contained"
-              aria-label="Åpne sidemeny"
+              variant="outlined"
+              aria-label="Til toppen"
               color="primary"
               sx={{
                 borderRadius: 4,
               }}
               onClick={() => {
-                openDrawer();
+                scrollToTop();
               }}
             >
-              <TuneRounded fontSize="medium" />
+              <KeyboardArrowUpRounded fontSize="medium" />
             </Button>
-          </Grid>
-        ) : null}
+          </Tooltip>
+        </Grid>
       </Grid>
     </StyledToolbar>
   );

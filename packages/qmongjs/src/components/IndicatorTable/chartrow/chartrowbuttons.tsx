@@ -11,10 +11,15 @@ import { Description } from "types";
 interface Props {
   svgContainer: React.RefObject<HTMLDivElement>;
   show_level: boolean;
+  show_N: boolean;
   zoom: boolean;
   update_zoom: React.Dispatch<React.SetStateAction<boolean>>;
   update_show_level: (
     newValue: true | false,
+    updateType?: UrlUpdateType | undefined,
+  ) => void;
+  update_show_N: (
+    newValue: false | true,
     updateType?: UrlUpdateType | undefined,
   ) => void;
   update_selected_row(row: string | undefined): void;
@@ -32,6 +37,8 @@ export const FigureButtons = (props: Props) => {
   const {
     show_level,
     update_show_level,
+    show_N,
+    update_show_N,
     zoom,
     update_zoom,
     update_selected_row,
@@ -86,11 +93,11 @@ export const FigureButtons = (props: Props) => {
       ctx.fillStyle = "#fafafa";
       ctx.fillRect(0, 0, canvasWidth, canvasHeight);
       ctx.fillStyle = "black";
-      ctx.font = "bold 24px jakarta sans";
+      ctx.font = "bold 1.5rem jakarta sans";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(figTitle, canvasWidth / 2, 25);
-      ctx.font = "20px jakarta sans";
+      ctx.font = "1.25rem jakarta sans";
       ctx.textAlign = "start";
       ctx.fillText(`Kilde: ${description.full_name}`, 25, 75 + height);
 
@@ -142,15 +149,21 @@ export const FigureButtons = (props: Props) => {
         ),
       click: () => updateChartType(chartType === "line" ? "bar" : "line"),
       class: "btn-charttype",
-      //style: { border: "2px solid rgba(0, 0, 0, 0.1)" },
+      //style: { border: "0.125rem solid rgba(0, 0, 0, 0.1)" },
       title: chartType === "line" ? "Søyle" : "Linje",
     },
     {
       label: show_level ? "Skjul målnivå" : "Vis målnivå",
       click: () => update_show_level(show_level === true ? false : true),
       class: "btn-level",
-      //style: { border: "2px solid rgba(0, 0, 0, 0.1)" },
+      //style: { border: "0.125rem solid rgba(0, 0, 0, 0.1)" },
       title: show_level ? "Skjul målnivå" : "Vis målnivå",
+    },
+    {
+      label: show_N ? "Skjul N" : "Vis N",
+      click: () => update_show_N(show_N === true ? false : true),
+      class: "btn-level",
+      title: show_N ? "Skjul N" : "Vis N",
     },
     {
       label: zoom ? <VscZoomOut /> : <VscZoomIn />,
@@ -174,6 +187,11 @@ export const FigureButtons = (props: Props) => {
       title: "Lukk",
     },
   ];
+
+  /** remove show N button if chart type is line */
+  if (chartType === "line") {
+    delete buttonValues[2];
+  }
 
   const buttons = buttonValues
     .filter(

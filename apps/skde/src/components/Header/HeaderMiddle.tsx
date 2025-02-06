@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { Toolbar, Typography, styled, Container } from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { Breakpoint } from "@mui/material";
@@ -9,18 +9,28 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   paddingBottom: theme.spacing(8),
 }));
 
-export type HeaderData = {
+type HeaderMiddleProps = PropsWithChildren<{
   title: string;
-  subtitle: string;
-};
-
-type HeaderMiddleProps = {
-  headerData: HeaderData;
-  children?: React.ReactNode;
   bgcolor?: string;
   maxWidth?: false | Breakpoint;
-};
+}>;
 
+/**
+ * A component for displaying a title and subtitle in the middle section of the page.
+ *
+ * If the `NEXT_PUBLIC_VERIFY` environment variable is set, the component will display a warning
+ * message indicating that the data is for testing purposes only, and provide a link to the
+ * official website.
+ *
+ * The component takes the following props:
+ *
+ * - `title`: The title to be displayed.
+ * - `children`: The subtitle to be displayed.
+ * - `bgcolor`: The background color of the component. If not specified, the background color will
+ *              be set to "primary.light".
+ * - `maxWidth`: The maximum width of the component. If not specified, the component will take up
+ *              the full width of the page.
+ */
 export const HeaderMiddle = (props: HeaderMiddleProps) => {
   const router = useRouter();
   const mainUrl = "https://apps.skde.no" + router.asPath;
@@ -49,15 +59,11 @@ export const HeaderMiddle = (props: HeaderMiddleProps) => {
                 <br />
               </>
             )}
-            <Typography variant="h1">{props.headerData.title}</Typography>
+            <Typography variant="h1">{props.title}</Typography>
           </Grid>
           <Grid size={{ xs: 12 }}>
-            <Typography
-              variant="h6"
-              dangerouslySetInnerHTML={{ __html: props.headerData.subtitle }}
-            />
+            <Typography variant="h6">{props.children}</Typography>
           </Grid>
-          {props.children !== undefined && props.children}
         </Grid>
       </Container>
     </StyledToolbar>

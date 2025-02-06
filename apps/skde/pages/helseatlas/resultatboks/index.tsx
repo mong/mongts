@@ -26,7 +26,7 @@ export default function ResultBoxPage() {
   const mapParam = searchParams.get("map");
   const langParam = searchParams.get("lang");
   const lang = ensureValidLang(langParam);
-  const mapFileName = mapParam ? `${mapParam}.geojson` : "kronikere.geojson";
+  const mapFileName = mapParam ? `${mapParam}.geojson` : "kart_2024.geojson";
   const dataUrl = getDataUrl(atlasParam, dataParam);
 
   const { data: mapData } = FetchMap(`/helseatlas/kart/${mapFileName}`);
@@ -114,7 +114,7 @@ export default function ResultBoxPage() {
                   <div
                     style={{
                       width: "100%",
-                      maxWidth: "500px",
+                      maxWidth: "30rem",
                       margin: "auto",
                     }}
                   >

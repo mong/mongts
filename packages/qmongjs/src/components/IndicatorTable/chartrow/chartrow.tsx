@@ -19,6 +19,8 @@ interface Props {
   selectedTreatmentUnits: string[];
   update_selected_row(row: string): void;
   lastCompleteYear?: number;
+  chartColours: string[];
+  showDescription?: boolean;
 }
 
 export function ChartRow(props: Props) {
@@ -32,16 +34,25 @@ export function ChartRow(props: Props) {
     selectedTreatmentUnits,
     indicatorData,
     lastCompleteYear,
+    chartColours,
+    showDescription = true,
   } = props;
 
   const svgContainerRef = useRef<HTMLDivElement>(null);
   const [chart_type = "line", update_chart_type] = useQueryParam<
     string | undefined
   >("chart_type", mainQueryParamsConfig.chart_type);
+
   const [chart_show_level = true, update_chart_show_level] = useQueryParam<
     boolean | undefined
   >("chart_show_level", mainQueryParamsConfig.chart_show_level);
+
+  const [chart_show_N = false, update_chart_show_N] = useQueryParam<
+    boolean | undefined
+  >("chart_show_N", mainQueryParamsConfig.chart_show_N);
+
   const valid_chart_type = chart_type === "bar" ? "bar" : "line";
+
   const [zoom, update_zoom] = useState(false);
 
   const levels = level_boundary(description);
@@ -70,6 +81,8 @@ export function ChartRow(props: Props) {
               svgContainer={svgContainerRef}
               show_level={chart_show_level}
               update_show_level={update_chart_show_level}
+              update_show_N={update_chart_show_N}
+              show_N={chart_show_N}
               zoom={zoom}
               update_zoom={update_zoom}
               update_selected_row={update_selected_row}
@@ -87,6 +100,7 @@ export function ChartRow(props: Props) {
             chartType={valid_chart_type}
             zoom={zoom}
             showLevel={chart_show_level}
+            showN={chart_show_N}
             levels={levels}
             tickformat={format}
             treatmentYear={treatmentYear}
@@ -94,11 +108,14 @@ export function ChartRow(props: Props) {
             indicatorData={indicatorData}
             max_value={max_value}
             lastCompleteYear={lastCompleteYear}
+            chartColours={chartColours}
           />
-          <ChartRowDescription
-            description_text={description.long_description ?? ""}
-            delivery_time={delivery_time}
-          />
+          {showDescription && (
+            <ChartRowDescription
+              description_text={description.long_description ?? ""}
+              delivery_time={delivery_time}
+            />
+          )}
         </div>
       </td>
     </tr>

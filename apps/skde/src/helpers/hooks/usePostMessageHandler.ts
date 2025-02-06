@@ -1,5 +1,16 @@
 import { useState, useEffect, useCallback } from "react";
 
+/**
+ * A hook to send and receive post messages between the current window and
+ * given target windows.
+ *
+ * @param {Window[]} targetWindows The windows to send messages to
+ * @param {string | null} domain The domain to check the origin of incoming
+ *   messages against. If null, the origin of incoming messages is not checked.
+ * @returns {Array<unknown, (msg: unknown) => void>} A tuple where the first
+ *   element is the last message received and the second element is a function
+ *   to send a message to the target windows.
+ */
 export default function usePostMessageHandler(
   targetWindows: Window[],
   domain: string | null,

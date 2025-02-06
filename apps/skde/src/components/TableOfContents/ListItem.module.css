@@ -8,6 +8,10 @@
   overflow-wrap: break-word;
 }
 
+.tocListItem a {
+  text-decoration: none;
+}
+
 .tocListItem.active > a {
   position: relative;
   color: #034584;
@@ -17,23 +21,23 @@
 .tocListItem::before {
   content: "";
   position: absolute;
-  left: -14px;
+  left: -0.875rem;
   height: 100%;
-  border-left: 1px solid #034584;
-  width: 1px;
+  border-left: 0.0625rem solid #034584;
+  width: 0.0625rem;
   box-sizing: border-box;
-  top: 13px;
+  top: 0.8125rem;
 }
 
 .tocListItem:last-child::before {
-  height: 0px;
+  height: 0rem;
 }
 
 .tocListItem::after {
   content: "";
   position: absolute;
-  left: -14px;
-  top: 13px;
-  border-top: 1px solid #034584;
-  width: 7px;
+  left: -0.875rem;
+  top: 0.8125rem;
+  border-top: 0.0625rem solid #034584;
+  width: 0.4375rem;
 }

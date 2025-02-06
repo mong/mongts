@@ -3,7 +3,7 @@ import { imgLoader } from "qmongjs";
 import Link from "next/link";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid2";
-import { Stack, Container } from "@mui/material";
+import { Stack, Container, Box } from "@mui/material";
 import { ArrowLink } from "qmongjs/src/components/ArrowLink";
 import { Breakpoint } from "@mui/material/styles";
 
@@ -22,13 +22,19 @@ type FooterProps = {
   className?: string;
 };
 
-export const Footer = ({ page, maxWidth, className }: FooterProps) => {
+/**
+ * Footer component that renders the footer of the page.
+ * @param page - The current page.
+ * @param maxWidth - The maximum width of the footer.
+ * @param className - The class name of the footer.
+ */
+export const Footer = ({
+  page,
+  maxWidth = false,
+  className = "footer",
+}: FooterProps) => {
   const kvalitet = ["behandlingskvalitet", "sykehusprofil"].includes(page);
   const helseatlas = page === "helseatlas";
-
-  if (!maxWidth) {
-    maxWidth = false;
-  }
 
   // Logo components
   const skdeLogo = (
@@ -59,15 +65,16 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
 
   const nsmLogo = (
     <Link href={"https://www.kvalitetsregistre.no/"}>
-      <Image
-        className="footer-logo"
-        id="nsm-footer-logo"
-        loader={imgLoader}
-        src={"/img/logos/nsm-hvit.svg"}
-        alt="NSM-logo"
-        width={467}
-        height={52}
-      />
+      <Box sx={{ width: "min(467px, 85vw)", height: 52, position: "relative" }}>
+        <Image
+          className="footer-logo"
+          id="nsm-footer-logo"
+          loader={imgLoader}
+          src={"/img/logos/nsm-hvit.svg"}
+          alt="NSM-logo"
+          layout="fill"
+        />
+      </Box>
     </Link>
   );
 
@@ -86,30 +93,39 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
   // Logo grids
   const atlasLogoGrid = (
     <>
-      <Grid size={{ xs: 4, md: 3, lg: 4 }}>{skdeLogo}</Grid>
-      <Grid size={{ xs: 8, md: 5, lg: 4 }}>{helseFordeLogo}</Grid>
-      <Grid size={{ xs: 12, md: 4, lg: 4 }}>{helseVestLogo}</Grid>
+      <Grid>{skdeLogo}</Grid>
+      <Grid>{helseFordeLogo}</Grid>
+      <Grid>{helseVestLogo}</Grid>
     </>
   );
 
   const kvalitetLogoGrid = (
     <>
-      <Grid size={{ xs: 12, md: 4, lg: 6, xl: 7, xxl: 8 }}>{skdeLogo}</Grid>
-      <Grid size={{ xs: 12, sm: 8, lg: 6, xl: 5, xxl: 4 }}>{nsmLogo}</Grid>
+      <Grid>{skdeLogo}</Grid>
+      <Grid>{nsmLogo}</Grid>
     </>
   );
 
   return (
-    <Grid container style={{ color: "white", marginTop: 20 }}>
-      <div style={{ backgroundColor: "#333", width: "100%" }}>
-        <Container maxWidth={maxWidth} disableGutters={true}>
-          <Grid
-            size={{ xs: 12 }}
-            container
-            className={className ? className : "footer"}
-            paddingTop={2}
-            paddingBottom={4}
-          >
+    <Grid
+      container
+      sx={{ color: "white", marginTop: "20px", fontSize: "1rem" }}
+    >
+      <Box
+        sx={{ backgroundColor: "#333", width: "100%" }}
+        className={className}
+      >
+        <Container
+          maxWidth={maxWidth}
+          disableGutters={true}
+          sx={{
+            a: {
+              color: "inherit",
+              textDecoration: "none",
+            },
+          }}
+        >
+          <Grid size={{ xs: 12 }} container paddingTop={2} paddingBottom={4}>
             <Grid size={{ xs: 12, sm: 6 }} marginBottom={2} marginTop={2}>
               <Stack spacing={3}>
                 <h4>OM NETTSTEDET</h4>
@@ -146,35 +162,36 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
             </Grid>
           </Grid>
         </Container>
-      </div>
+      </Box>
 
-      <div style={{ backgroundColor: "#1A1A1A", width: "100%" }}>
+      <Box
+        sx={{ backgroundColor: "#1A1A1A", width: "100%" }}
+        className={className}
+      >
         <Container maxWidth={maxWidth} disableGutters={true}>
           <Grid
             size={{ xs: 12 }}
             container
-            className={className ? className : "footer"}
             style={{ background: "#1A1A1A" }}
             paddingBottom={10}
-            sx={{ overflow: "clip" }}
             rowGap={4}
           >
-            <Grid container size={{ xs: 12 }} alignItems="center">
-              <Grid
-                container
-                display="flex"
-                size={{ xs: 12 }}
-                alignItems="center"
-                paddingTop="3rem"
-              >
-                {helseatlas ? (
-                  atlasLogoGrid
-                ) : kvalitet ? (
-                  kvalitetLogoGrid
-                ) : (
-                  <Grid>{skdeLogo}</Grid>
-                )}
-              </Grid>
+            <Grid
+              container
+              display="flex"
+              size={{ xs: 12 }}
+              alignItems="center"
+              paddingTop="3rem"
+              gap={1}
+              justifyContent="space-between"
+            >
+              {helseatlas ? (
+                atlasLogoGrid
+              ) : kvalitet ? (
+                kvalitetLogoGrid
+              ) : (
+                <Grid>{skdeLogo}</Grid>
+              )}
             </Grid>
 
             <Grid size={{ xs: 12 }}>
@@ -228,7 +245,7 @@ export const Footer = ({ page, maxWidth, className }: FooterProps) => {
             </Grid>
           </Grid>
         </Container>
-      </div>
+      </Box>
     </Grid>
   );
 };

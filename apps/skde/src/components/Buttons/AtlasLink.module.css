@@ -1,11 +1,15 @@
 .linkOuterWrapper {
-  max-width: min(100%, 610px);
-  min-width: 300px;
+  max-width: min(100%, 37.5rem);
+  min-width: 18.75rem;
   background: #e3f3ef;
   transition: 100ms ease-in;
-  flex: 1 1 250px;
+  flex: 1 1 15.625rem;
   overflow: hidden;
-  border-radius: 24px;
+  border-radius: 1.5rem;
+}
+.linkOuterWrapper a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .linkOuterWrapper,
@@ -15,7 +19,7 @@
 
 .linkOuterWrapper:hover,
 .linkOuterWrapper:focus {
-  box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.24);
+  box-shadow: 0.125rem 0.125rem 1rem rgba(0, 0, 0, 0.24);
 }
 
 .linkOuterWrapper:hover .linkImageWrapper img,
@@ -46,17 +50,17 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 20px 25px 20px 25px;
+  padding: 1.25rem 1.5rem 1.25rem 1.5rem;
 }
 
 .linkDateContainer {
   display: flex;
   align-items: center;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .date {
-  margin-left: 3px;
+  margin-left: 0.1875rem;
 }
 
 .newlyUpdated {
@@ -64,8 +68,8 @@
 }
 
 .innerDot {
-  width: 8px !important;
-  height: 8px !important;
+  width: 0.5rem !important;
+  height: 0.5rem !important;
   background-color: #000;
   border-radius: 100%;
 }
@@ -79,45 +83,44 @@
   justify-content: center;
   align-items: center;
   border-radius: 100%;
-  width: 16px !important;
-  height: 16px !important;
+  width: 1rem !important;
+  height: 1rem !important;
   border: none;
-  margin-right: 5px;
+  margin-right: 0.3125rem;
 }
 
 .newlyUpdated .outerCircle {
-  border: 2px solid #033f85;
+  border: 0.125rem solid #033f85;
 }
 
 .linkTitle {
   font-style: normal;
   font-weight: 700;
-  font-size: 26px;
-  line-height: 49px;
-  letter-spacing: 0.01em;
-  padding-top: 20px;
+  font-size: 1.625rem;
+  line-height: 3rem;
+  letter-spacing: 0.01rem;
+  padding-top: 1.25rem;
 }
 
 .linkIngress {
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 1rem;
   text-decoration: none !important;
 }
 
-@media screen and (min-width: 943px) {
+@media screen and (min-width: 1408px) {
   .linkOuterWrapper {
-    flex-basis: 400px;
+    flex-basis: 25rem;
   }
-
+}
+@media screen and (min-width: 1080px) {
   .linkTitle {
-    font-size: 36px;
+    font-size: 2.25rem;
   }
 
   .linkOuterWrapper.wide {
     max-width: 100%;
-    margin-top: 20px;
-    margin-bottom: 20px;
     background: #e6eef8;
     flex: 1 1 100%;
   }
@@ -129,12 +132,12 @@
 
   .linkOuterWrapper.wide .linkImageWrapper {
     display: flex;
-    height: 350px;
+    height: 21.875rem;
     flex: 1;
   }
 
   .linkOuterWrapper.wide .linkText {
     flex: 1;
-    height: 350px;
+    height: 21.875rem;
   }
 }

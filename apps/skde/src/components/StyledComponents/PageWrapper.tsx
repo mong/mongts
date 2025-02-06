@@ -1,73 +1,27 @@
-import { styled, Box } from "@mui/material";
+import { Box } from "@mui/material";
+import { PropsWithChildren } from "react";
 
-export const PageWrapper = styled(Box)(({ theme }) => ({
-  "& .header-top, & .header-middle, & .main-toolbar, & .footer": {
-    [theme.breakpoints.down("sm")]: {
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2),
-    },
-    [theme.breakpoints.up("sm")]: {
-      paddingLeft: theme.spacing(4),
-      paddingRight: theme.spacing(4),
-    },
-    [theme.breakpoints.up("lg")]: {
-      paddingLeft: theme.spacing(6),
-      paddingRight: theme.spacing(6),
-    },
-    [theme.breakpoints.up("xl")]: {
-      paddingLeft: theme.spacing(16),
-      paddingRight: theme.spacing(16),
-    },
-  },
-
-  "& .menu-wrapper": {
-    [theme.breakpoints.up("xxl")]: {
-      paddingLeft: theme.spacing(16),
-    },
-  },
-  "& .table-wrapper table, & .table-wrapper .MuiTable-root": {
-    [theme.breakpoints.down("sm")]: {
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2),
-    },
-    [theme.breakpoints.up("sm")]: {
-      paddingLeft: theme.spacing(4),
-      paddingRight: theme.spacing(4),
-    },
-    [theme.breakpoints.up("lg")]: {
-      paddingLeft: theme.spacing(6),
-      paddingRight: theme.spacing(6),
-    },
-    [theme.breakpoints.up("xl")]: {
-      paddingLeft: theme.spacing(16),
-      paddingRight: theme.spacing(16),
-    },
-    [theme.breakpoints.up("xxl")]: {
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(16),
-    },
-  },
-  "& .hospital-profile-box, & .hospital-profile-footer": {
-    [theme.breakpoints.down("sm")]: {
-      paddingLeft: theme.spacing(2),
-      paddingRight: theme.spacing(2),
-    },
-    [theme.breakpoints.up("sm")]: {
-      paddingLeft: theme.spacing(4),
-      paddingRight: theme.spacing(4),
-    },
-    [theme.breakpoints.up("lg")]: {
-      paddingLeft: theme.spacing(6),
-      paddingRight: theme.spacing(6),
-    },
-    [theme.breakpoints.up("xl")]: {
-      paddingLeft: theme.spacing(16),
-      paddingRight: theme.spacing(16),
-    },
-    [theme.breakpoints.up("xxl")]: {
-      paddingLeft: theme.spacing(0),
-      paddingRight: theme.spacing(0),
-    },
-  },
-  backgroundColor: theme.palette.background.paper,
-}));
+export const PageWrapper = ({ children }: PropsWithChildren) => (
+  <Box
+    sx={{
+      backgroundColor: "background.paper",
+      "& .header-top, & .header-middle, & .main-toolbar, & .footer": {
+        paddingX: { xs: 2, sm: 4, lg: 6, xl: 16 },
+      },
+      "& .menu-wrapper": {
+        xxl: {
+          paddingLeft: 16,
+        },
+      },
+      "& .table-wrapper table, & .table-wrapper .MuiTable-root": {
+        paddingX: { xs: 2, sm: 4, lg: 6, xl: 16 },
+        paddingLeft: { xxl: 2 },
+      },
+      "& .hospital-profile-box, & .hospital-profile-footer": {
+        paddingX: { xs: 2, sm: 4, lg: 6, xl: 16, xxl: 0 },
+      },
+    }}
+  >
+    {children}
+  </Box>
+);

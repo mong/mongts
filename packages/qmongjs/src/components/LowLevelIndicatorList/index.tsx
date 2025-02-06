@@ -13,6 +13,7 @@ import {
   level2,
   skdeTheme,
   Hoverbox,
+  minDG,
 } from "qmongjs";
 import { styled } from "@mui/system";
 import { ExpandCircleDownOutlined } from "@mui/icons-material";
@@ -32,6 +33,7 @@ import {
   InputLabel,
   Select,
   SelectChangeEvent,
+  Collapse,
 } from "@mui/material";
 import { ArrowLink } from "../ArrowLink";
 import {
@@ -106,7 +108,12 @@ const getDataSubset = (
       return p.year === year;
     });
 
-    if (yearDataPoint) {
+    // Filter out low DG
+    if (
+      yearDataPoint &&
+      // TODO: Do not allow null to go through
+      (yearDataPoint === null || yearDataPoint.dg! >= minDG)
+    ) {
       return level2(indDataRow, yearDataPoint) === selectedLevel;
     } else return false;
   });
@@ -221,13 +228,22 @@ const IndicatorRow = (props: IndicatorRowProps) => {
         <TableCell>{result(row, yearDataPoint, trend)}</TableCell>
       </TableRow>
 
-      <TableRow
-        key={row.indicatorID + "-collapse"}
-        sx={{ visibility: open ? "visible" : "collapse" }}
+      <TableCell
+        sx={{
+          paddingBottom: 0,
+          paddingTop: 0,
+          paddingLeft: 0,
+          paddingRight: 0,
+          borderBottom: !open ? 0 : `1px solid rgba(224, 224, 224, 1)`,
+        }}
+        colSpan={3}
       >
-        <TableCell />
-        <TableCell colSpan={2}>
-          <Stack direction="row" justifyContent="space-evenly">
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <Stack
+            direction="row"
+            justifyContent="space-evenly"
+            sx={{ padding: "1rem" }}
+          >
             {yearDataPoint ? (
               <Stack direction="row">
                 <Box sx={{ marginRight: 1 }}>
@@ -255,8 +271,8 @@ const IndicatorRow = (props: IndicatorRowProps) => {
               />
             ) : null}
           </Stack>
-        </TableCell>
-      </TableRow>
+        </Collapse>
+      </TableCell>
     </React.Fragment>
   );
 };
@@ -381,7 +397,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
                         <HelpOutline
                           sx={{
                             color: skdeTheme.palette.primary.main,
-                            fontSize: "24px",
+                            fontSize: "1.5rem",
                           }}
                         />
                       </Hoverbox>

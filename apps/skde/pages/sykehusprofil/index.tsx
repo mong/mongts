@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
-import {
-  Header,
-  HeaderData,
-  BreadCrumbPath,
-} from "../../src/components/Header";
+import { Header, BreadCrumbPath } from "../../src/components/Header";
 import {
   skdeTheme,
   useUnitNamesQuery,
@@ -13,7 +9,13 @@ import {
   useUnitUrlsQuery,
 } from "qmongjs";
 import { Footer } from "../../src/components/Footer";
-import { ThemeProvider, Box, Container } from "@mui/material";
+import {
+  ThemeProvider,
+  Box,
+  Container,
+  Typography,
+  CssBaseline,
+} from "@mui/material";
 import Grid from "@mui/material/Grid2";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { HospitalInfoBox } from "../../src/components/HospitalProfile";
@@ -65,28 +67,16 @@ export const Skde = (): JSX.Element => {
   const pastYears = 5;
 
   // Header settings
-  const breadcrumbs: BreadCrumbPath = {
-    path: [
-      {
-        link: "https://www.skde.no",
-        text: "Forside",
-      },
-      {
-        link: "https://www.skde.no/resultater/",
-        text: "Tall om helsetjenesten",
-      },
-      {
-        link: "/sykehusprofil/",
-        text: "Sykehusprofil",
-      },
-    ],
-  };
-
-  const headerData: HeaderData = {
-    title: "Sykehusprofil",
-    subtitle:
-      "Her vises alle kvalitetsindikatorer fra nasjonale medisinske kvalitetsregistre i form av sykehusprofiler",
-  };
+  const breadcrumbs: BreadCrumbPath = [
+    {
+      link: "https://www.skde.no",
+      text: "Forside",
+    },
+    {
+      link: "/sykehusprofil/",
+      text: "Sykehusprofil",
+    },
+  ];
 
   // ####### //
   // Queries //
@@ -143,6 +133,7 @@ export const Skde = (): JSX.Element => {
 
   return (
     <ThemeProvider theme={skdeTheme}>
+      <CssBaseline />
       <PageWrapper>
         <LayoutHead
           title="Sykehusprofil"
@@ -151,15 +142,22 @@ export const Skde = (): JSX.Element => {
         />
         <Header
           bgcolor="surface2.light"
-          headerData={headerData}
+          title={"Sykehusprofil"}
           breadcrumbs={breadcrumbs}
           maxWidth={maxWidth}
         >
-          <UnitFilterMenu
-            width={Math.min(400, 0.8 * width)}
-            setUnitName={setUnitName}
-            unitNamesQuery={unitNamesQuery}
-          />
+          <Box sx={{ mb: 6 }}>
+            Her vises alle kvalitetsindikatorer fra nasjonale medisinske
+            kvalitetsregistre i form av sykehusprofiler.
+          </Box>
+          <Typography>
+            <UnitFilterMenu
+              width={Math.min(400, 0.8 * width)}
+              setUnitName={setUnitName}
+              unitNamesQuery={unitNamesQuery}
+              unitName={unitName}
+            />
+          </Typography>
         </Header>
 
         <Container maxWidth={maxWidth} disableGutters={true}>

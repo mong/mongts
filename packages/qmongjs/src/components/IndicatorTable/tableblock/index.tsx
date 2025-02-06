@@ -1,6 +1,5 @@
 import { useMemo, useEffect, useRef } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
-
 import style from "./tableblock.module.css";
 import { useDescriptionQuery, useIndicatorQuery } from "../../../helpers/hooks";
 import { filterOrderIndID } from "../../../helpers/functions";
@@ -8,6 +7,8 @@ import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
 import { Description, Indicator, RegisterName } from "types";
 import { IndicatorTableSkeleton } from "../IndicatorTableSkeleton";
+import { TableRow, TableCell, Box, Stack } from "@mui/material";
+import Link from "next/link";
 
 interface TableBlockProps {
   context: string;
@@ -22,9 +23,19 @@ interface TableBlockProps {
   showLevelFilter: string;
   colspan: number;
   onEmptyStatusChanged?: (registerName: string, isEmpty: boolean) => void;
+  chartColours: string[];
+  hasResidentData?: boolean;
 }
 
-const SkeletonRow = <IndicatorTableSkeleton nRows={1} />;
+const SkeletonRow = (colSpan: number) => {
+  return (
+    <TableRow>
+      <TableCell colSpan={colSpan}>
+        <IndicatorTableSkeleton nRows={1} />
+      </TableCell>
+    </TableRow>
+  );
+};
 
 const TableBlock = (props: TableBlockProps) => {
   const {
@@ -40,6 +51,8 @@ const TableBlock = (props: TableBlockProps) => {
     blockTitle,
     unitNames,
     onEmptyStatusChanged,
+    chartColours,
+    hasResidentData,
   } = props;
   const queryContext = dataQuality
     ? { context, type: "dg" }
@@ -110,14 +123,10 @@ const TableBlock = (props: TableBlockProps) => {
   ]);
 
   if (descriptionQuery.isLoading || indicatorDataQuery.isLoading) {
-    return SkeletonRow;
+    return SkeletonRow(colspan);
   }
 
   if (descriptionQuery.isError || indicatorDataQuery.isError) {
-    return null;
-  }
-
-  if (isEmptyRef.current) {
     return null;
   }
 
@@ -143,31 +152,60 @@ const TableBlock = (props: TableBlockProps) => {
         showLevelFilter={showLevelFilter}
         colspan={colspan}
         treatmentYear={treatmentYear}
+        chartColours={chartColours}
       />
     );
   });
 
-  const tabName =
-    dataQuality && registerName.dg_data
-      ? "datakvalitet"
-      : context === "caregiver" && registerName.caregiver_data
-        ? "sykehus"
-        : context === "resident" && registerName.resident_data
-          ? "opptaksomraade"
-          : "sykehus";
+  // Check if the registry has data. The table block is not shown in the absence of data.
+  const showTitle = uniqueOrderedInd.length !== 0;
+
+  // If the page shows caregivers and the registry has data for residents,
+  // then the table block should be shown with a message.
+  let showTitleAnyway = false;
+
+  if (
+    context === "caregiver" &&
+    !showTitle &&
+    hasResidentData &&
+    medicalFieldFilter.includes(registerName.rname)
+  ) {
+    showTitleAnyway = true;
+  }
 
   return (
     <>
-      {blockTitle && uniqueOrderedInd.length !== 0 ? (
+      {blockTitle && (showTitle || showTitleAnyway) ? (
         <TableBlockTitle
-          tabName={tabName}
-          link={`kvalitetsregistre/${registerName.rname}`}
+          link={`behandlingskvalitet/${registerName.rname}`}
           title={blockTitle}
           colspan={colspan}
           tr_register_name_class={`${trRegisterNameClass} ${registerName.rname} ${medicalFieldClass}`}
         />
       ) : null}
       {indicatorRows}
+      {showTitleAnyway && (
+        <TableRow>
+          <TableCell colSpan={colspan} sx={{ padding: 0 }}>
+            <Box margin="0.5rem">
+              <Stack spacing={"0.5rem"}>
+                <div style={{ fontSize: "1.2rem", fontWeight: "normal" }}>
+                  Registeret har data på opptaksområde
+                </div>
+                <div style={{ fontSize: "0.9rem", color: "#7d8588" }}>
+                  Det kan hende at det ikke finnes data for valgt år eller
+                  valgte behandlingsenheter.
+                </div>
+                <div style={{ fontSize: "0.9rem" }}>
+                  <Link href={"/behandlingskvalitet/" + registerName.rname}>
+                    År og opptaksområder med data vises her.
+                  </Link>
+                </div>
+              </Stack>
+            </Box>
+          </TableCell>
+        </TableRow>
+      )}
     </>
   );
 };

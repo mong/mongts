@@ -54,6 +54,15 @@ const TocDataToList = ({ tocData, parentID }) => {
   );
 };
 
+/**
+ * Renders a table of contents with support for multiple languages and responsive design.
+ *
+ * @param {Object} props - React component props.
+ * @param {string} [props.lang="no"] - Language for the table of contents title. Supports Norwegian ("no", "nb", "nn") and English ("en").
+ * @param {TocData} props.tocData - Data structure representing the table of contents hierarchy.
+ *
+ * @returns {JSX.Element} A responsive table of contents component with expandable sections for smaller screens.
+ */
 export const TableOfContents = ({
   lang = "no",
   tocData,
@@ -76,7 +85,7 @@ export const TableOfContents = ({
           <Accordion
             sx={{
               boxShadow: 0,
-              border: "1px solid #034584",
+              border: "0.0625rem solid #034584",
             }}
             expanded={expanded}
             onChange={() => handleChange()}
@@ -92,10 +101,11 @@ export const TableOfContents = ({
               expandIcon={<BsCaretDownFill color="#034584" fontSize="large" />}
               aria-controls={`toc-content`}
               id={`toc-header`}
+              data-testid={`toc-header`}
             >
               {lang === "en" ? "Table of contents" : "Innholdsoversikt"}
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails data-testid={`toc-content`}>
               <nav className={`${styles.toc}`}>{TOCOrderedList}</nav>
             </AccordionDetails>
           </Accordion>

@@ -45,6 +45,9 @@ export const app_text: appTextTypes = {
 export const maxYear = 2024;
 export const minYear = maxYear - 4;
 export const defaultYear = 2023;
+
+export const minDG = 0.6;
+
 export const mainQueryParamsConfig = {
   selected_row: withDefault(StringParam, undefined),
   indicator: withDefault(StringParam, undefined),
@@ -53,6 +56,7 @@ export const mainQueryParamsConfig = {
   selected_treatment_units: withDefault(DelimitedArrayParam, undefined),
   chart_type: withDefault(StringParam, undefined),
   chart_show_level: withDefault(BooleanParam, undefined),
+  chart_show_N: withDefault(BooleanParam, undefined),
 };
 
 /** List of hospitals shown on main page of Behandlingskvalitet and Sykehusprofil apps **/

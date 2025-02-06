@@ -7,7 +7,7 @@ context("Testing of behandlingskvalitet page", () => {
   it("Main page", () => {
     cy.viewport(1550, 1750);
     cy.get('[data-testid="tu_header_Nasjonalt"]').should("exist"); // main page
-    cy.get('[data-testid="indicatorrow_hjerneslag_inn_enhet"]').should("exist"); // indicator row
+    cy.get('[data-testid="indicatorrow_hjerneslag_beh_enhet"]').should("exist"); // indicator row
     cy.get(
       '[data-testid="permanentFilterMenu-context-toggle-caregiver"]',
     ).should("exist");
@@ -17,7 +17,7 @@ context("Testing of behandlingskvalitet page", () => {
     cy.get(
       '[data-testid="permanentFilterMenu-context-toggle-resident"]',
     ).click();
-    cy.get('[data-testid="indicatorrow_hjerneslag_inn_enhet"]').should(
+    cy.get('[data-testid="indicatorrow_hjerneslag_beh_enhet"]').should(
       "not.exist",
     ); // indicator row
     cy.get('[data-testid="selected-filters-section-id-selectedfilters"]', {
@@ -31,7 +31,7 @@ context("Testing of behandlingskvalitet page", () => {
     cy.viewport(1550, 1750);
     cy.visit("/behandlingskvalitet/ablanor/?year=2023");
     cy.get('[data-testid="tu_header_Nasjonalt"]').should("exist"); // main page
-    cy.get('[data-testid="indicatorrow_hjerneslag_inn_enhet"]').should(
+    cy.get('[data-testid="indicatorrow_hjerneslag_beh_enhet"]').should(
       "not.exist",
     ); // indicator row
     cy.get(

@@ -1,35 +1,56 @@
 import { UseQueryResult } from "@tanstack/react-query";
-import { SelectedRegister } from "qmongjs";
-import { Layout } from "qmongjs";
 import { useRegisterNamesQuery, fetchRegisterNames } from "qmongjs";
 import { GetStaticProps, GetStaticPaths } from "next";
-import classNames from "../../../src/styles/Kvalitetsregistre.module.css";
+import { Link, ThemeProvider } from "@mui/material";
+import { skdeTheme } from "qmongjs";
+import { PageWrapper } from "../../../src/components/StyledComponents/PageWrapper";
+import { Header, BreadCrumbPath } from "../../../src/components/Header";
 
-const SelectedRegisterPage = () => {
+const SelectedRegisterPage = ({ register }: { register: string }) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const registryNameQuery: UseQueryResult<any, unknown> =
     useRegisterNamesQuery();
   if (registryNameQuery.isLoading) {
     return null;
   }
-  const registerNames = registryNameQuery.data;
+
+  // Header settings
+  const breadcrumbs: BreadCrumbPath = [
+    {
+      link: "https://www.skde.no",
+      text: "Forside",
+    },
+    {
+      link: `/kvalitetsregistre/${register}`,
+      text: `Kvalitetsregistre/${register}`,
+    },
+  ];
+
   return (
-    <Layout>
-      <div
-        className={classNames.kvalitetsregister}
-        data-testid="SelectedRegister"
-      >
-        <SelectedRegister registerNames={registerNames || []} />
-      </div>
-    </Layout>
+    <ThemeProvider theme={skdeTheme}>
+      <PageWrapper>
+        <Header
+          bgcolor="surface2.light"
+          title={"Kvalitetsregistre"}
+          breadcrumbs={breadcrumbs}
+        >
+          Siden er flyttet til{" "}
+          <Link href={`/behandlingskvalitet/${register}`}>
+            behandlingskvalitet/{register}
+          </Link>
+          .
+        </Header>
+      </PageWrapper>
+    </ThemeProvider>
   );
 };
 
 export default SelectedRegisterPage;
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async (context) => {
+  const register = context.params?.register;
   return {
-    props: { content: [] },
+    props: { register },
   };
 };
 
