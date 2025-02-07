@@ -4,7 +4,7 @@ import { ThemeProvider } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 import { Carousel, CarouselItem } from "../../../src/components/Carousel";
 import { Map } from "../../../src/charts/Map";
-import { AtlasData } from "../../../src/types/AtlasData";
+import { AtlasDataItem, DataItemPoint } from "../../../src/types";
 import { Barchart } from "../../../src/charts/Barchart";
 import { Linechart } from "../../../src/charts/Linechart";
 import { DataTable } from "../../../src/charts/Table";
@@ -36,79 +36,78 @@ export default function ResultBoxPage() {
     return <ResultBoxSkeleton />;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const boxData: any = Object.values(dataFetchResult.data)[0];
+  const boxData: AtlasDataItem[] = dataFetchResult.data["innhold"];
   const nationalName = boxData.find((o) => o.type === "data")["national"];
 
   const dataCarousel = (
     <Carousel active={0} selection={selection} lang={lang}>
       {boxData
-        .map((bd, i) => {
-          const figData: AtlasData[] =
-            bd.type !== "data"
-              ? boxData.find((o) => o.type === "data" && o.label === bd.data)[
-                  "data"
-                ]
-              : undefined;
-          if (bd.type === "barchart") {
+        .filter((dataItem) => dataItem.type !== "data")
+        .map((dataItem, i) => {
+          const figData = boxData.find(
+            (item) => item.type === "data" && item.label === dataItem.data,
+          )["data"] as DataItemPoint[];
+          if (dataItem.type === "barchart") {
             return (
               <CarouselItem
                 style={{ width: "auto" }}
-                key={bd.type + i}
-                label={bd.type}
+                key={dataItem.type + i}
+                label={dataItem.type}
               >
                 <Barchart
-                  {...bd}
+                  {...dataItem}
                   data={figData}
                   lang={lang}
                   national={nationalName}
+                  forfatter="SKDE"
                 />
               </CarouselItem>
             );
           }
-          if (bd.type === "linechart") {
+          if (dataItem.type === "linechart") {
             return (
               <CarouselItem
                 style={{ width: "auto" }}
-                key={bd.type + i}
-                label={bd.type}
+                key={dataItem.type + i}
+                label={dataItem.type}
               >
                 <Linechart
-                  {...bd}
+                  {...dataItem}
                   data={figData}
                   lang={lang}
                   national={nationalName}
+                  forfatter={"SKDE"}
                 />
               </CarouselItem>
             );
           }
-          if (bd.type === "table") {
+          if (dataItem.type === "table") {
             return (
               <CarouselItem
-                key={bd.type + i}
+                key={dataItem.type + i}
                 style={{ width: "auto" }}
-                label={bd.type}
+                label={dataItem.type}
               >
                 <DataTable
-                  headers={bd.columns}
+                  headers={dataItem.columns}
                   data={figData}
-                  caption={bd.caption[lang]}
+                  caption={dataItem.caption[lang]}
                   lang={lang}
                   national={nationalName}
                 />
               </CarouselItem>
             );
           }
-          if (bd.type === "map") {
-            const jenks = bd.jenks
-              ? bd.jenks.map((j) => parseFloat(j.grense))
+          if (dataItem.type === "map") {
+            const jenks = dataItem.jenks
+              ? dataItem.jenks.map((j) => j.grense)
               : undefined;
 
             return (
               <CarouselItem
-                key={bd.type + i}
+                key={dataItem.type + i}
                 style={{ width: "auto" }}
-                label={bd.type}
+                label={dataItem.type}
               >
                 {jenks && (
                   <div
@@ -121,10 +120,10 @@ export default function ResultBoxPage() {
                     <Map
                       mapData={mapData}
                       classes={jenks}
-                      attrName={bd.x}
+                      attrName={dataItem.x}
                       mapAttr={figData}
-                      format={bd.format}
-                      caption={bd.caption[lang]}
+                      format={dataItem.format}
+                      caption={dataItem.caption[lang]}
                       lang={lang}
                     />
                   </div>
@@ -132,10 +131,7 @@ export default function ResultBoxPage() {
               </CarouselItem>
             );
           }
-
-          return false;
-        })
-        .filter(Boolean)}
+        })}
     </Carousel>
   );
 

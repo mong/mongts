@@ -19,41 +19,18 @@ import {
   nationalLabel,
 } from "../colors";
 import { Box } from "@mui/material";
+import { DataItemPoint } from "../../types";
 
-type BarchartData<
-  Data,
-  X extends (string & keyof Data)[],
-  Y extends keyof Data,
-  AnnualVar extends (keyof Data)[],
-  ErrorBar extends (keyof Data)[],
-> = {
-  [k in keyof Data & keyof X]: number;
-} & {
-  [k in Y]: string;
-} & {
-  [k in keyof Data]?: number | string;
-} & {
-  [k in keyof Data & keyof AnnualVar]?: number;
-} & {
-  [k in keyof Data & keyof ErrorBar]?: number;
-};
-
-type BarchartProps<
-  Data,
-  X extends (string & keyof Data)[],
-  Y extends string & keyof Data,
-  AnnualVar extends (string & keyof Data)[],
-  ErrorBar extends (string & keyof Data)[],
-> = {
-  data: BarchartData<Data, X, Y, AnnualVar, ErrorBar>[];
+type BarchartProps = {
+  data: DataItemPoint[];
   lang: "en" | "nb" | "nn";
-  x: X;
-  y: Y;
+  x: string[];
+  y: string;
   width?: number;
   height?: number;
   margin?: { top: number; bottom: number; right: number; left: number };
-  xLabel?: { en: string; nb: string; nn: string };
-  yLabel?: { en: string; nb: string; nn: string };
+  xLabel?: { en: string; nb: string; nn?: string };
+  yLabel?: { en: string; nb: string; nn?: string };
   xMin?: number;
   xMax?: number;
   xLegend?: { en: string[]; nb: string[]; nn: string[] };
@@ -66,20 +43,15 @@ type BarchartProps<
   tickLength?: number;
   yInnerPadding?: number;
   yOuterPadding?: number;
-  annualVar?: AnnualVar;
+  annualVar?: string[];
   annualVarLabels?: { en: number[]; nn: number[]; nb: number[] };
-  errorBars?: ErrorBar;
+  errorBars?: string[];
   format: string;
   national: string;
+  forfatter: "SKDE" | "Helse Førde";
 };
 
-export const Barchart = <
-  Data,
-  X extends (string & keyof Data)[],
-  Y extends string & keyof Data,
-  AnnualVar extends (string & keyof Data)[],
-  ErrorBar extends (string & keyof Data)[],
->({
+export const Barchart = ({
   width = 600,
   height = 500,
   margin = {
@@ -111,7 +83,8 @@ export const Barchart = <
   errorBars,
   format,
   national,
-}: BarchartProps<Data, X, Y, AnnualVar, ErrorBar>) => {
+  forfatter,
+}: BarchartProps) => {
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
 
@@ -122,15 +95,12 @@ export const Barchart = <
     : undefined;
 
   const sorted = [...data].sort((first, second) => {
-    const firstVal = sum(x.map((xVal) => parseFloat(first[xVal])));
-    const secondVal = sum(x.map((xVal) => parseFloat(second[xVal])));
+    const firstVal = sum(x.map((xVal) => first[xVal] as number));
+    const secondVal = sum(x.map((xVal) => second[xVal] as number));
     return secondVal - firstVal;
   });
 
-  const series = toBarchart<BarchartData<Data, X, Y, AnnualVar, ErrorBar>, X>(
-    sorted,
-    x,
-  );
+  const series = toBarchart(sorted, x);
 
   // Pick out bohf query from the url
   const [selectedBohfs, toggleBohf] = useBohfQueryParam(national);
@@ -138,12 +108,12 @@ export const Barchart = <
   // Find max values
   const annualValues = annualVar
     ? annualVar.flatMap((annual) =>
-        data.flatMap((dt) => parseFloat(dt[annual])),
+        data.flatMap((item) => item[annual] as number),
       )
     : [];
   const errorBarValues = errorBars
     ? errorBars.flatMap((errorBar) =>
-        data.flatMap((dt) => parseFloat(dt[errorBar])),
+        data.flatMap((item) => item[errorBar] as number),
       )
     : [];
 
@@ -177,7 +147,7 @@ export const Barchart = <
   });
 
   const yScale = scaleBand<string>({
-    domain: sorted.map((s) => s[y]),
+    domain: sorted.map((s) => s[y] as string),
     range: [0, innerHeight],
     paddingInner: yInnerPadding,
     paddingOuter: yOuterPadding,
@@ -200,7 +170,12 @@ export const Barchart = <
     >
       <Box
         sx={{
-          backgroundImage: `url(${lang === "nn" ? "/helseatlas/img/logos/helse-forde-graa.svg" : "/img/logos/logo-skde-graa.svg"})`,
+          backgroundImage: `url(${
+            {
+              "Helse Førde": "/helseatlas/img/logos/helse-forde-graa.svg",
+              SKDE: "/img/logos/logo-skde-graa.svg",
+            }[forfatter]
+          })`,
           backgroundRepeat: "no-repeat",
           backgroundSize: lang === "nn" ? "max(5rem, 20%)" : "max(3rem, 10%)",
           backgroundPosition: "bottom min(13%, 5rem) right 5%",
@@ -219,7 +194,7 @@ export const Barchart = <
               scale={yScale}
               strokeWidth={yAxisLineStrokeWidth}
               stroke={yAxisLineStroke}
-              tickValues={data.map((s) => s[y])}
+              tickValues={data.map((s) => s[y] as string)}
               tickFormat={(name) =>
                 name === national ? nationalLabel[lang] : name
               }

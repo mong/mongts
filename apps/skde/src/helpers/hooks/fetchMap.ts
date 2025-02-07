@@ -9,7 +9,7 @@ import { useQuery } from "@tanstack/react-query";
  * The map is cached for a year, and refetched on window focus.
  */
 export const FetchMap = (filename: string) => {
-  const fetching = async (filename) => {
+  const fetching = async (filename: string) => {
     const response = await fetch(filename);
     if (!response.ok) {
       throw new Error(response.statusText);
@@ -21,6 +21,6 @@ export const FetchMap = (filename: string) => {
     queryFn: () => fetching(filename),
     staleTime: 1000 * 60 * 60 * 24 * 365,
     refetchOnWindowFocus: false,
-    gcTime: 1000 * 60 * 60 * 24 * 365,
+    gcTime: 1000 * 60 * 60 * 24 * 24,
   });
 };

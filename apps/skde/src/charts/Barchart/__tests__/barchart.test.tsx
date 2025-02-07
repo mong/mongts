@@ -26,7 +26,8 @@ vi.mock("next/font/google", () => ({
   }),
 }));
 
-const barchartinfo = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const barchartinfo: any = {
   type: "barchart",
   data: "qwerty",
   x: ["rateSnitt"],
@@ -51,6 +52,7 @@ test("Standard render", async () => {
       lang="nb"
       national="Norge"
       format=".1f"
+      forfatter="SKDE"
     />,
   );
   expect(container).toMatchSnapshot();
@@ -64,6 +66,7 @@ test("English render", async () => {
       lang="en"
       national="Norge"
       format=".1f"
+      forfatter="SKDE"
     />,
   );
   expect(container).toMatchSnapshot();
@@ -77,6 +80,7 @@ test("Click in table", async () => {
       lang="nb"
       national="OUS"
       format=".1f"
+      forfatter="SKDE"
     />,
   );
   expect(mockRouter.query).toEqual({});
@@ -113,6 +117,7 @@ test("Render with picked HF", async () => {
       lang="nb"
       national="Norge"
       format=".1f"
+      forfatter="SKDE"
     />,
   );
   expect(container).toMatchSnapshot();
@@ -147,6 +152,7 @@ test("Render with split figure", async () => {
       lang="nn"
       national="Norge"
       format=".1f"
+      forfatter="SKDE"
     />,
   );
   expect(container).toMatchSnapshot();
@@ -161,6 +167,7 @@ test("Render with language not in file, picked HF and split figure", async () =>
       lang="en"
       national="Norge"
       format=".2f"
+      forfatter="SKDE"
     />,
   );
   expect(container).toMatchSnapshot();
@@ -177,6 +184,7 @@ test("Render with figure split in two", async () => {
       lang="nn"
       national="Norge"
       format=".1f"
+      forfatter="SKDE"
     />,
   );
   expect(container).toMatchSnapshot();
@@ -232,6 +240,7 @@ test("Render with very little info 2", async () => {
       lang="nb"
       national="Norge"
       format=",.0f"
+      forfatter="SKDE"
     />,
   );
   expect(container).toMatchSnapshot();
@@ -269,6 +278,7 @@ test("Render with other y (will look bad)", async () => {
       lang="nb"
       national="Norge"
       format=""
+      forfatter="SKDE"
     />,
   );
   expect(container).toMatchSnapshot();
@@ -293,6 +303,7 @@ test("Render with error bars", async () => {
       lang="nb"
       national="Norge"
       format=",.0f"
+      forfatter="SKDE"
     />,
   );
   expect(container).toMatchSnapshot();
@@ -317,6 +328,7 @@ test("Render with error bars outside bars", async () => {
       lang="nb"
       national="Norge"
       format=",.0f"
+      forfatter="SKDE"
     />,
   );
   expect(container).toMatchSnapshot();
@@ -343,6 +355,7 @@ test("Render with wrong language", async () => {
       lang="nb"
       national="Norge"
       format=",.0f"
+      forfatter="SKDE"
     />,
   );
   expect(cont1).toMatchSnapshot();
@@ -354,6 +367,7 @@ test("Render with wrong language", async () => {
       lang="en"
       national="Norge"
       format=",.0f"
+      forfatter="SKDE"
     />,
   );
   expect(cont2).toMatchSnapshot();
@@ -375,6 +389,7 @@ test("Render with wrong language", async () => {
       lang="nb"
       national="Norge"
       format=",.0f"
+      forfatter="SKDE"
     />,
   );
   expect(cont3).toMatchSnapshot();
