@@ -5,15 +5,16 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import { BsCaretDownFill } from "react-icons/bs";
 
 import { Markdown } from "../Markdown";
+import { Atlas } from "../../types";
 
 type FactBoxProps = {
+  atlas: Atlas;
   boxTitle: string;
   boxContent: string;
   id: string;
-  lang: "nb" | "en" | "nn";
 };
 
-export const FactBox = ({ boxTitle, boxContent, id, lang }: FactBoxProps) => {
+export const FactBox = ({ atlas, boxTitle, boxContent, id }: FactBoxProps) => {
   return (
     <div style={{ marginBottom: "0.625rem" }} data-testid="factbox">
       <Accordion
@@ -38,7 +39,7 @@ export const FactBox = ({ boxTitle, boxContent, id, lang }: FactBoxProps) => {
           {boxTitle}
         </AccordionSummary>
         <AccordionDetails>
-          <Markdown lang={lang}>{boxContent}</Markdown>
+          <Markdown lang={atlas.lang}>{boxContent}</Markdown>
         </AccordionDetails>
       </Accordion>
     </div>

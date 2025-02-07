@@ -4,53 +4,31 @@ import { FactBox } from "../Factbox";
 import { ResultBox } from "../ResultBox";
 import classNames from "./Chapters.module.css";
 import { Box } from "@mui/material";
-
-type Tekst = {
-  type: "tekst";
-  tekst: string;
-  lang: "nb" | "en" | "nn";
-};
-
-type Faktaboks = {
-  type: "faktaboks";
-  overskrift: string;
-  tekst: string;
-  lang: "nb" | "en" | "nn";
-};
-
-type Resultatboks = {
-  type: "resultatboks";
-  overskrift: string;
-  data: string;
-  ingress: string;
-  utvalg: string;
-  resultat: string;
-  lang: "nb" | "en" | "nn";
-  publisert: Date;
-  oppdatert: Date;
-  kart?: string;
-};
-
-export type ChapterProps = {
-  overskrift?: string;
-  innhold: (Tekst | Faktaboks | Resultatboks)[];
-  lang: "nb" | "en" | "nn";
-};
+import { Atlas, AtlasData, ChapterType } from "../../types";
 
 type ChaptersProps = {
-  innhold: ChapterProps[];
-  lang: "nb" | "en" | "nn";
+  atlas: Atlas;
+  atlasData: AtlasData;
 };
 
-export const Chapters = ({ innhold, lang }: ChaptersProps) => {
-  return innhold.map((chapter, i) => (
-    <Box sx={{ fontSize: ".95rem" }}>
-      <Chapter {...chapter} key={`${i}_${chapter.overskrift}`} lang={lang} />
+export const Chapters = ({ atlas, atlasData }: ChaptersProps) => {
+  return atlas.kapittel.map((chapter, i) => (
+    <Box key={i} sx={{ fontSize: ".95rem" }}>
+      <Chapter
+        atlas={atlas}
+        atlasData={atlasData}
+        {...chapter}
+        key={`${i}_${chapter.overskrift}`}
+      />
     </Box>
   ));
 };
 
-const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
+type ChapterProps = ChapterType & {
+  atlas: Atlas;
+  atlasData: AtlasData;
+};
+const Chapter = ({ atlas, atlasData, innhold, overskrift }: ChapterProps) => {
   const mainID = overskrift?.toLowerCase().replace(/\s/g, "-") || "qwerty";
   return (
     <div
@@ -65,6 +43,7 @@ const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
             case "faktaboks":
               return (
                 <FactBox
+                  atlas={atlas}
                   boxContent={box.tekst}
                   boxTitle={box.overskrift}
                   id={
@@ -72,13 +51,14 @@ const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
                     "-fact-" +
                     box.overskrift.toLowerCase().replace(/\s/g, "-")
                   }
-                  lang={lang}
                   key={index}
                 />
               );
             case "resultatboks":
               return (
                 <ResultBox
+                  atlas={atlas}
+                  atlasData={atlasData}
                   result={box.resultat}
                   title={box.overskrift}
                   intro={box.ingress}
@@ -88,8 +68,7 @@ const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
                     "_" +
                     box.overskrift.toLowerCase().replace(/\s/g, "-")
                   }
-                  lang={lang}
-                  carousel={box.data}
+                  data_filename={box.data}
                   published={box.publisert}
                   updated={box.oppdatert}
                   map={box.kart}
@@ -97,7 +76,7 @@ const Chapter = ({ innhold, overskrift, lang }: ChapterProps) => {
                 />
               );
             default:
-              return <TextBox children={box.tekst} lang={lang} key={index} />;
+              return <TextBox atlas={atlas} children={box.tekst} key={index} />;
           }
         })}
     </div>

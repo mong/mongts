@@ -2,23 +2,20 @@ import { Group } from "@visx/group";
 import { DefaultOutput } from "@visx/scale";
 import { ScaleBand, ScaleLinear } from "d3-scale";
 import { max, min } from "d3-array";
+import { DataItemPoint } from "../../types";
 
-type AnnualVariaionProps<Data, AnnualVar> = {
-  data: Data;
-  y: keyof Data;
-  annualVar: AnnualVar;
+type AnnualVariationProps = {
+  data: DataItemPoint;
+  y: string;
+  annualVar: string[];
   xScale: ScaleLinear<number, number, never>;
   colorFillScale: ScaleLinear<DefaultOutput, DefaultOutput, never>;
   sizeScale: ScaleLinear<number, number, never>;
   yScale: ScaleBand<string>;
-
   labels?: number[];
 };
 
-export const AnnualVariation = function <
-  D,
-  AnnualVar extends (string & keyof D)[],
->({
+export const AnnualVariation = function ({
   data,
   xScale,
   yScale,
@@ -27,7 +24,7 @@ export const AnnualVariation = function <
   colorFillScale,
   sizeScale,
   labels,
-}: AnnualVariaionProps<D, AnnualVar>) {
+}: AnnualVariationProps) {
   const annualRates = annualVar.map((v) => Number(data[v]));
 
   if (annualVar.length != labels?.length) return null;
@@ -49,7 +46,7 @@ export const AnnualVariation = function <
             <circle
               key={`annualVar${data[y]}${i}`}
               r={sizeScale(lab) ?? 7}
-              cx={xScale(data[d.toString()])}
+              cx={xScale(data[d] as number)}
               cy={yScale(data[y].toString())}
               fill={i !== 0 ? colorFillScale(lab).toString() : "none"}
               stroke={"black"}
