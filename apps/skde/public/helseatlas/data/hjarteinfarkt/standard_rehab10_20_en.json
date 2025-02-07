@@ -26,7 +26,7 @@
     "data": "qwerty",
     "caption": {
       "nn": "Gjennomsnittsverdier for perioden 2018–2021, prosentdel standard rehabilitering etter hjarteinfarkt",
-      "en": "Average per year for the period 2018–2021, patients 18 years and older"
+      "en": "Annual average values during 2018–2021, Percentage of patients who received standard cardiac rehabilitation"
     },
     "columns": [
       {
@@ -39,21 +39,21 @@
       {
         "id": "snitt_pros",
         "label_no": "prosentdel standard rehabilitering",
-        "label_en": "% with actual rehabiltation",
+        "label_en": "Percentage with standard rehabiltation",
         "typeVar": "number",
         "format": ",.1%"
       },
       {
         "id": "pas.standardrehab",
         "label_no": "Tal pasientar med standard rehabilitering",
-        "label_en": "# Heart attacks with rehabilitation",
+        "label_en": "Myocardial infarction with rehabilitation",
         "typeVar": "number",
         "format": ",.0f"
       },
       {
         "id": "total_pas",
         "label_no": "Hjarteinfarkt pasientar",
-        "label_en": "# Heart attack stays",
+        "label_en": "Myocardial infarction patients",
         "typeVar": "number",
         "format": ",.0f"
       }
