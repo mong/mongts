@@ -9,7 +9,7 @@
             "y": "bohf",
             "xLabel": {
                 "nn": "Tal kontaktdagar for rusliding pr. 1 000 innbyggjarar under 18 år.",
-                "en": "Number of contacts for substance use disorder per 1,000 inhabitants (under 18 years of age"
+                "en": "Contact days for substance use disorder per 1,000 population <18"
             },
             "yLabel": {
                 "nn": "Opptaksområde",
@@ -21,7 +21,7 @@
             "data": "qwerty",
             "caption": {
                 "nn": "Årlege gjennomsnittsverdiar for perioden 2019-2023. Kontaktdagsrate for rusliding pr.1000 innbyggjarar under 18 år.",
-                "en": "Average per year for the period 2019–2023. Contact rate for substance use disorder per 1,000 inhabitants under age of 18 years."
+                "en": "Annual average during 2019–2023. Contact days rate for substance use disorder per 1,000 population under 18 years"
             },
             "columns": [
                 {
@@ -34,7 +34,7 @@
                 {
                     "id": "Snittrate",
                     "label_no": "Kontaktdagsrate",
-                    "label_en": "contact days rate",
+                    "label_en": "Contact days rate",
                     "typeVar": "number",
                     "format": ",.1f"
                 },
@@ -48,7 +48,7 @@
                 {
                     "id": "Snitt_innbyggarar",
                     "label_no": "Innbyggjarar (under 18 år)",
-                    "label_en": "Inhabitants (under 18 years)",
+                    "label_en": "Population (under 18 years)",
                     "typeVar": "number",
                     "format": ",.0f"
                 }
@@ -59,7 +59,7 @@
             "data": "qwerty",
             "caption": {
                 "nn": "Årlege gjennomsnittsverdiar for perioden 2019-2023. Kontaktdagsrate for rusliding pr.1000 innbyggjarar under 18 år..",
-                "en": "Average per year for the period 2019–2023. Number of contacts per patient for substance use disorder."
+                "en": "Annual average during 2019–2023. Number of contact days per patient for substance use disorder"
             },
             "columns": [
                 {
@@ -72,21 +72,21 @@
                 {
                     "id": "kontakt_p_pas",
                     "label_no": "Kontaktdagar per pasient",
-                    "label_en": "Contacts days per patient",
+                    "label_en": "Contact days per patient",
                     "typeVar": "number",
                     "format": ",.1f"
                 },
                 {
                     "id": "Snitt_kontaktar",
                     "label_no": "Tal kontaktdagar",
-                    "label_en": "Number of contakt days",
+                    "label_en": "Number of contact days",
                     "typeVar": "number",
                     "format": ",.0f"
                 },
                 {
                     "id": "Tal_pas",
                     "label_no": "Tal pasientar",
-                    "label_en": "Number of pasients",
+                    "label_en": "Number of patients",
                     "typeVar": "number",
                     "format": ",.0f"
                 }
@@ -98,7 +98,7 @@
             "x": "Snittrate",
             "caption": {
                 "nn": "Tal kontaktdagar for rusliding pr. 1 000 innbyggjarar under 18 år",
-                "en": "Number of outpatient contacts for eating disorder per 1,000 inhabitants (under 18 years of age)"
+                "en": "Outpatient contact days for substance use disorder treatment per 1,000 population under 18 years"
             },
             "jenks": [
                 {

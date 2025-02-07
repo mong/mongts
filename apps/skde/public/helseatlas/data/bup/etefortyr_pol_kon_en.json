@@ -7,7 +7,7 @@
       "y": "bohf",
       "xLabel": {
         "nn": "Kontaktdagar for eteforstyrring pr. 1 000 innbyggjarar under 18 år.",
-        "en": "Number of contact days for eating disorder per 1,000 inhabitants (under 18 years)"
+        "en": "Contact days for eating disorder per 1,000 population <18"
       },
       "yLabel": {
         "nn": "Opptaksområde",
@@ -30,7 +30,7 @@
       "data": "qwerty",
       "caption": {
         "nn": "Årlege gjennomsnittsverdiar for perioden 2019-2023. Kontaktdagsrate for behandling for eteforstyrring pr.1000 innbyggjarar under 18 år.",
-        "en": "Average per year for the period 2019–2023. Contact rate for eating disorder treatment per 1,000 inhabitants under age of 18 years."
+        "en": "Annual average during 2019–2023. Contact days rate for eating disorder per 1,000 population under 18 years"
       },
       "columns": [
         {
@@ -43,7 +43,7 @@
         {
           "id": "Snittrate",
           "label_no": "Kontaktdagsrate",
-          "label_en": "contact days rates",
+          "label_en": "contact days rate",
           "typeVar": "number",
           "format": ",.1f"
         },
@@ -57,7 +57,7 @@
         {
           "id": "Snitt_innbyggarar",
           "label_no": "Innbyggarar (under 18 år)",
-          "label_en": "Inhabitants (under 18 years)",
+          "label_en": "Population (under 18 years)",
           "typeVar": "number",
           "format": ",.0f"
         }
@@ -68,7 +68,7 @@
       "data": "qwerty",
       "caption": {
         "nn": "Årlege gjennomsnittsveridar for perioden 2019-2023. Tal kontaktdagar per pasient for behandling for eteforstyrring.",
-        "en": "Average per year for the period 2019–2023. Number of contact days per patient for eating disorder treatment."
+        "en": "Annual average during 2019–2023. Number of contact days per patient for eating disorder"
       },
       "columns": [
         {
@@ -81,21 +81,21 @@
         {
           "id": "kontakt_p_pas",
           "label_no": "Kontaktar per pasient",
-          "label_en": "Contacts per patient",
+          "label_en": "Contact days per patient",
           "typeVar": "number",
           "format": ",.1f"
         },
         {
           "id": "Snitt_kontaktar",
           "label_no": "Tal kontaktar",
-          "label_en": "Number of outpatient contacts",
+          "label_en": "Number of contact days",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
           "id": "Tal_pas",
           "label_no": "Tal pasientar",
-          "label_en": "Number of pasients",
+          "label_en": "Number of patients",
           "typeVar": "number",
           "format": ",.0f"
         }
@@ -107,7 +107,7 @@
       "x": "Snittrate",
       "caption": {
         "nn": "Kontaktdagar for eteforstyrring pr. 1 000 innbyggjarar under 18 år",
-        "en": "Number of outpatient contacts for eating disorder per 1,000 inhabitants (under 18 years of age)"
+        "en": "Outpatient contact days for eating disorder treatment per 1,000 population under 18 years"
       },
       "jenks": [
         {

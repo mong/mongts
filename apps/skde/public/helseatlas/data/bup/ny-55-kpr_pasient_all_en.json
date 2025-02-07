@@ -9,7 +9,7 @@
       "y": "bohf",
       "xLabel": {
         "nn": "Tal pasientar hos allmennlege pr. 1 000 innbyggjarar (under 18 år)",
-        "en": "Number of child and adolescents for mentalhealthcare in primary care pr. 1,000 inhabitants (under 18 years old)"
+        "en": "Patients in primary care pr. 1,000 population (under 18 years)"
       },
       "yLabel": {
         "nn": "Opptaksområde",
@@ -28,7 +28,7 @@
       "y": "bohf",
       "xLabel": {
         "nn": "Tal pasientar hos allmennlege pr. 1 000 innbyggjarar (under 18 år)",
-        "en": "Number of child and adolescents for mentalhealthcare in primary care pr. 1,000 inhabitants (under 18 years old)"
+        "en": "Patients in primary care pr. 1,000 population (under 18 years)"
       },
       "yLabel": {
         "nn": "Opptaksområde",
@@ -54,7 +54,7 @@
       "y": "bohf",
       "xLabel": {
         "nn": "Prosentdel pasientar i poliklinikk og/eller allmennlege (under 18 år)",
-        "en": "Percentage of child and adolescents for mentalhealthcare in primary care and outpatient (under 18 years old)"
+        "en": "Percentage of patient in primary care and outpatient 0-18 years"
       },
       "yLabel": {
         "nn": "Opptaksområde",
@@ -62,7 +62,7 @@
       },
       "xLegend": {
         "nn": ["Pasientar hos allmennlege", "Pasientar hos både allmennlege og i poliklinikk", "Pasientar i poliklinikk"],
-        "en": ["Patient in primary care", "Patient in outpatient clinic and primary care", "Patient in outpatient clinic"]
+        "en": ["Patient in primary care", "Patient in outpatient treatment and primary care", "Patient in outpatient treatment"]
       },
       "format": ",.0f"
     },
@@ -73,7 +73,7 @@
     "data": "qwerty",
     "caption": {
       "nn": "Årlege gjennomsnittsverdiar for perioden 2019–2023. Pasientrate pr. 1 000 innbyggjarar under 18 år",
-      "en": "Average annual values for the period 2019–2023, patient rate pr. 1 000 population under 18 years of age"
+      "en": "Annual average during 2019–2023. Patient rate pr. 1 000 population under 18 years"
     },
     "columns": [
       {
@@ -100,7 +100,7 @@
       {
         "id":  "Innbyggarar",
         "label_no": "Innbyggjarar (under 18 år)",
-        "label_en": "Averege population (under 18)",
+        "label_en": "Population (under 18 years)",
         "typeVar": "number",
         "format": ",.0f"
       }
@@ -112,7 +112,7 @@
     "x": "Snitt_rate",
     "caption": {
       "nn": "Tal pasientar hos allmennlege pr. 1 000 innbyggjarar (under 18 år)",
-      "en": "Number of child and adolescents for mentalhealthcare in primary care pr. 1,000 inhabitants (under 18 years old)"
+      "en": "Number of patient in primary care pr. 1,000 population (under 18 years)"
     },
     "jenks": [
       {
