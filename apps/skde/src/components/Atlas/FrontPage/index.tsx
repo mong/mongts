@@ -44,9 +44,7 @@ const FrontPage = ({ atlasInfo, lang }: HomeProps) => {
     />
   ));
 
-  const title = { no: "Tematiske helseatlas", en: "Thematic Health Atlases" }[
-    lang
-  ];
+  const title = { no: "Rapporter", en: "Reports" }[lang];
 
   const breadcrumbs: BreadCrumbPath = [
     {
@@ -83,8 +81,8 @@ const FrontPage = ({ atlasInfo, lang }: HomeProps) => {
             >
               {
                 {
-                  no: "Her finner du tematiske helseatlas som tar for seg utvalgte tjenester på ett fagområde eller til én pasientgruppe, i en periode på tre til fem år.",
-                  en: "Here you find thematic Health Atlases concering selected health services or patient groups, in a period from three to five years.",
+                  no: "Her finner du tematiske helseatlas-rapporter som tar for seg utvalgte tjenester på ett fagområde eller til én pasientgruppe, i en periode på tre til fem år.",
+                  en: "Here you find thematic Health Atlases reports concering selected health services or patient groups, in a period from three to five years.",
                 }[lang]
               }
             </Header>
