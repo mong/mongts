@@ -84,6 +84,7 @@ export const TableOfContents = ({
         <div className={styles.toc_small_content}>
           <Accordion
             sx={{
+              backgroundColor: "white",
               boxShadow: 0,
               border: "0.0625rem solid #034584",
             }}
@@ -94,8 +95,9 @@ export const TableOfContents = ({
               sx={{
                 fontWeight: "600",
                 color: "#034584",
+                borderRadius: "4px",
                 ":hover": {
-                  backgroundColor: "rgba(3,69,132,0.05)",
+                  backgroundColor: "background.paper",
                 },
               }}
               expandIcon={<BsCaretDownFill color="#034584" fontSize="large" />}

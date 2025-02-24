@@ -36,11 +36,12 @@
   .toc_small_wrapper {
     width: 100%;
     top: 0;
-    background-color: #f4f4f4;
-    box-shadow: 0 1rem 1rem #f4f4f4;
     position: sticky;
     z-index: 998;
     margin: auto;
+  }
+  .toc_small_wrapper > div > div {
+    box-shadow: 0 0 1rem 0.2rem #fff;
   }
   .toc_small_content {
     margin: 0.625rem auto;
