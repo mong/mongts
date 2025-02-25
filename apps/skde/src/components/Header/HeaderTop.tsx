@@ -47,7 +47,7 @@ export type BreadCrumbPath = BreadCrumbStop[];
  * @return {JSX.Element} A JSX element representing the breadcrumbs.
  */
 
-const SkdeBreadcrumbs = ({ path }: { path: BreadCrumbPath }) => {
+export const SkdeBreadcrumbs = ({ path }: { path: BreadCrumbPath }) => {
   const theme = useTheme();
   const onMobile = useMediaQuery(theme.breakpoints.down("md"));
 

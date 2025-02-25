@@ -46,6 +46,7 @@ const AtlasPage = ({ atlas, atlasData }: AtlasPageProps) => {
         <main data-testid="v2atlas">
           <TopBanner
             mainTitle={atlas.shortTitle ?? "Tittel mangler"}
+            atlasName={atlas.filename}
             lang={atlas.lang ?? "nb"}
           />
           <div className={`${styles.atlasContent}`}>
