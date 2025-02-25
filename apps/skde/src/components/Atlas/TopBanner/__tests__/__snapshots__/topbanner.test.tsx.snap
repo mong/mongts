@@ -3,84 +3,107 @@
 exports[`Bokmål render 1`] = `
 <div>
   <div
-    class="_atlasTopBanner_a3e095"
+    class="MuiBox-root css-1laoe5b"
   >
-    <div
-      class="_bannerWrapper_a3e095"
+    <nav
+      aria-label="breadcrumb"
+      class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root css-5cvx94-MuiTypography-root-MuiBreadcrumbs-root"
     >
-      <nav
-        aria-label="breadcrumb"
-        class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root css-5cvx94-MuiTypography-root-MuiBreadcrumbs-root"
+      <ol
+        class="MuiBreadcrumbs-ol css-1uwp4ue-MuiBreadcrumbs-ol"
       >
-        <ol
-          class="MuiBreadcrumbs-ol css-1uwp4ue-MuiBreadcrumbs-ol"
+        <li
+          class="MuiBreadcrumbs-li"
         >
-          <li
-            class="MuiBreadcrumbs-li"
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nv1n36-MuiTypography-root-MuiLink-root"
+            href="https://www.skde.no"
           >
-            <a
-              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1eux74e-MuiTypography-root-MuiLink-root"
-              href="https://www.skde.no/"
-            >
-              Forside
-            </a>
-          </li>
-          <li
+            Forside
+          </a>
+        </li>
+        <li
+          aria-hidden="true"
+          class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+        >
+          <svg
             aria-hidden="true"
-            class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1i7gzfm-MuiSvgIcon-root"
+            data-testid="NavigateNextRoundedIcon"
+            focusable="false"
+            font-weight="bold"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
-              color="#D3D7DA"
-              data-testid="NavigateNextIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-              />
-            </svg>
-          </li>
-          <li
-            class="MuiBreadcrumbs-li"
+            <path
+              d="M9.31 6.71c-.39.39-.39 1.02 0 1.41L13.19 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01"
+            />
+          </svg>
+        </li>
+        <li
+          class="MuiBreadcrumbs-li"
+        >
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nv1n36-MuiTypography-root-MuiLink-root"
+            href="https://www.skde.no/helseatlas/"
           >
-            <a
-              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1eux74e-MuiTypography-root-MuiLink-root"
-              href="https://www.skde.no/helseatlas/"
-            >
-              Helseatlas
-            </a>
-          </li>
-          <li
+            Helseatlas
+          </a>
+        </li>
+        <li
+          aria-hidden="true"
+          class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+        >
+          <svg
             aria-hidden="true"
-            class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1i7gzfm-MuiSvgIcon-root"
+            data-testid="NavigateNextRoundedIcon"
+            focusable="false"
+            font-weight="bold"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
-              color="#D3D7DA"
-              data-testid="NavigateNextIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-              />
-            </svg>
-          </li>
-          <li
-            class="MuiBreadcrumbs-li"
+            <path
+              d="M9.31 6.71c-.39.39-.39 1.02 0 1.41L13.19 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01"
+            />
+          </svg>
+        </li>
+        <li
+          class="MuiBreadcrumbs-li"
+        >
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nv1n36-MuiTypography-root-MuiLink-root"
+            href="/helseatlas/"
           >
-            <div
-              class="_breadcrumb_text_a3e095"
-            >
-              Dette er en tittel
-            </div>
-          </li>
-        </ol>
-      </nav>
-    </div>
+            Rapporter
+          </a>
+        </li>
+        <li
+          aria-hidden="true"
+          class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1i7gzfm-MuiSvgIcon-root"
+            data-testid="NavigateNextRoundedIcon"
+            focusable="false"
+            font-weight="bold"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M9.31 6.71c-.39.39-.39 1.02 0 1.41L13.19 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01"
+            />
+          </svg>
+        </li>
+        <li
+          class="MuiBreadcrumbs-li"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-4leci6-MuiTypography-root"
+          >
+            Dette er en tittel
+          </p>
+        </li>
+      </ol>
+    </nav>
   </div>
 </div>
 `;
@@ -88,84 +111,107 @@ exports[`Bokmål render 1`] = `
 exports[`English render 1`] = `
 <div>
   <div
-    class="_atlasTopBanner_a3e095"
+    class="MuiBox-root css-1laoe5b"
   >
-    <div
-      class="_bannerWrapper_a3e095"
+    <nav
+      aria-label="breadcrumb"
+      class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root css-5cvx94-MuiTypography-root-MuiBreadcrumbs-root"
     >
-      <nav
-        aria-label="breadcrumb"
-        class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root css-5cvx94-MuiTypography-root-MuiBreadcrumbs-root"
+      <ol
+        class="MuiBreadcrumbs-ol css-1uwp4ue-MuiBreadcrumbs-ol"
       >
-        <ol
-          class="MuiBreadcrumbs-ol css-1uwp4ue-MuiBreadcrumbs-ol"
+        <li
+          class="MuiBreadcrumbs-li"
         >
-          <li
-            class="MuiBreadcrumbs-li"
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nv1n36-MuiTypography-root-MuiLink-root"
+            href="https://www.skde.no"
           >
-            <a
-              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1eux74e-MuiTypography-root-MuiLink-root"
-              href="https://www.skde.no/"
-            >
-              Homepage
-            </a>
-          </li>
-          <li
+            Homepage
+          </a>
+        </li>
+        <li
+          aria-hidden="true"
+          class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+        >
+          <svg
             aria-hidden="true"
-            class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1i7gzfm-MuiSvgIcon-root"
+            data-testid="NavigateNextRoundedIcon"
+            focusable="false"
+            font-weight="bold"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
-              color="#D3D7DA"
-              data-testid="NavigateNextIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-              />
-            </svg>
-          </li>
-          <li
-            class="MuiBreadcrumbs-li"
+            <path
+              d="M9.31 6.71c-.39.39-.39 1.02 0 1.41L13.19 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01"
+            />
+          </svg>
+        </li>
+        <li
+          class="MuiBreadcrumbs-li"
+        >
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nv1n36-MuiTypography-root-MuiLink-root"
+            href="https://www.skde.no/helseatlas/"
           >
-            <a
-              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1eux74e-MuiTypography-root-MuiLink-root"
-              href="https://www.skde.no/helseatlas/"
-            >
-              Health Atlas
-            </a>
-          </li>
-          <li
+            Health Atlas
+          </a>
+        </li>
+        <li
+          aria-hidden="true"
+          class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+        >
+          <svg
             aria-hidden="true"
-            class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1i7gzfm-MuiSvgIcon-root"
+            data-testid="NavigateNextRoundedIcon"
+            focusable="false"
+            font-weight="bold"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
-              color="#D3D7DA"
-              data-testid="NavigateNextIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-              />
-            </svg>
-          </li>
-          <li
-            class="MuiBreadcrumbs-li"
+            <path
+              d="M9.31 6.71c-.39.39-.39 1.02 0 1.41L13.19 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01"
+            />
+          </svg>
+        </li>
+        <li
+          class="MuiBreadcrumbs-li"
+        >
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nv1n36-MuiTypography-root-MuiLink-root"
+            href="/helseatlas/en/"
           >
-            <div
-              class="_breadcrumb_text_a3e095"
-            >
-              This is a title
-            </div>
-          </li>
-        </ol>
-      </nav>
-    </div>
+            Reports
+          </a>
+        </li>
+        <li
+          aria-hidden="true"
+          class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1i7gzfm-MuiSvgIcon-root"
+            data-testid="NavigateNextRoundedIcon"
+            focusable="false"
+            font-weight="bold"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M9.31 6.71c-.39.39-.39 1.02 0 1.41L13.19 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01"
+            />
+          </svg>
+        </li>
+        <li
+          class="MuiBreadcrumbs-li"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-4leci6-MuiTypography-root"
+          >
+            This is a title
+          </p>
+        </li>
+      </ol>
+    </nav>
   </div>
 </div>
 `;
@@ -173,84 +219,107 @@ exports[`English render 1`] = `
 exports[`Nynorsk render 1`] = `
 <div>
   <div
-    class="_atlasTopBanner_a3e095"
+    class="MuiBox-root css-1laoe5b"
   >
-    <div
-      class="_bannerWrapper_a3e095"
+    <nav
+      aria-label="breadcrumb"
+      class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root css-5cvx94-MuiTypography-root-MuiBreadcrumbs-root"
     >
-      <nav
-        aria-label="breadcrumb"
-        class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root css-5cvx94-MuiTypography-root-MuiBreadcrumbs-root"
+      <ol
+        class="MuiBreadcrumbs-ol css-1uwp4ue-MuiBreadcrumbs-ol"
       >
-        <ol
-          class="MuiBreadcrumbs-ol css-1uwp4ue-MuiBreadcrumbs-ol"
+        <li
+          class="MuiBreadcrumbs-li"
         >
-          <li
-            class="MuiBreadcrumbs-li"
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nv1n36-MuiTypography-root-MuiLink-root"
+            href="https://www.skde.no"
           >
-            <a
-              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1eux74e-MuiTypography-root-MuiLink-root"
-              href="https://www.skde.no/"
-            >
-              Forside
-            </a>
-          </li>
-          <li
+            Forside
+          </a>
+        </li>
+        <li
+          aria-hidden="true"
+          class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+        >
+          <svg
             aria-hidden="true"
-            class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1i7gzfm-MuiSvgIcon-root"
+            data-testid="NavigateNextRoundedIcon"
+            focusable="false"
+            font-weight="bold"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
-              color="#D3D7DA"
-              data-testid="NavigateNextIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-              />
-            </svg>
-          </li>
-          <li
-            class="MuiBreadcrumbs-li"
+            <path
+              d="M9.31 6.71c-.39.39-.39 1.02 0 1.41L13.19 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01"
+            />
+          </svg>
+        </li>
+        <li
+          class="MuiBreadcrumbs-li"
+        >
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nv1n36-MuiTypography-root-MuiLink-root"
+            href="https://www.skde.no/helseatlas/"
           >
-            <a
-              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1eux74e-MuiTypography-root-MuiLink-root"
-              href="https://www.skde.no/helseatlas/"
-            >
-              Helseatlas
-            </a>
-          </li>
-          <li
+            Helseatlas
+          </a>
+        </li>
+        <li
+          aria-hidden="true"
+          class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+        >
+          <svg
             aria-hidden="true"
-            class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1i7gzfm-MuiSvgIcon-root"
+            data-testid="NavigateNextRoundedIcon"
+            focusable="false"
+            font-weight="bold"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
-              color="#D3D7DA"
-              data-testid="NavigateNextIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-              />
-            </svg>
-          </li>
-          <li
-            class="MuiBreadcrumbs-li"
+            <path
+              d="M9.31 6.71c-.39.39-.39 1.02 0 1.41L13.19 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01"
+            />
+          </svg>
+        </li>
+        <li
+          class="MuiBreadcrumbs-li"
+        >
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nv1n36-MuiTypography-root-MuiLink-root"
+            href="/helseatlas/"
           >
-            <div
-              class="_breadcrumb_text_a3e095"
-            >
-              Dette er ein tittel
-            </div>
-          </li>
-        </ol>
-      </nav>
-    </div>
+            Rapporter
+          </a>
+        </li>
+        <li
+          aria-hidden="true"
+          class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1i7gzfm-MuiSvgIcon-root"
+            data-testid="NavigateNextRoundedIcon"
+            focusable="false"
+            font-weight="bold"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M9.31 6.71c-.39.39-.39 1.02 0 1.41L13.19 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01"
+            />
+          </svg>
+        </li>
+        <li
+          class="MuiBreadcrumbs-li"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-4leci6-MuiTypography-root"
+          >
+            Dette er ein tittel
+          </p>
+        </li>
+      </ol>
+    </nav>
   </div>
 </div>
 `;
@@ -258,84 +327,107 @@ exports[`Nynorsk render 1`] = `
 exports[`Random lang render 1`] = `
 <div>
   <div
-    class="_atlasTopBanner_a3e095"
+    class="MuiBox-root css-1laoe5b"
   >
-    <div
-      class="_bannerWrapper_a3e095"
+    <nav
+      aria-label="breadcrumb"
+      class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root css-5cvx94-MuiTypography-root-MuiBreadcrumbs-root"
     >
-      <nav
-        aria-label="breadcrumb"
-        class="MuiTypography-root MuiTypography-body1 MuiBreadcrumbs-root css-5cvx94-MuiTypography-root-MuiBreadcrumbs-root"
+      <ol
+        class="MuiBreadcrumbs-ol css-1uwp4ue-MuiBreadcrumbs-ol"
       >
-        <ol
-          class="MuiBreadcrumbs-ol css-1uwp4ue-MuiBreadcrumbs-ol"
+        <li
+          class="MuiBreadcrumbs-li"
         >
-          <li
-            class="MuiBreadcrumbs-li"
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nv1n36-MuiTypography-root-MuiLink-root"
+            href="https://www.skde.no"
           >
-            <a
-              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1eux74e-MuiTypography-root-MuiLink-root"
-              href="https://www.skde.no/"
-            >
-              Forside
-            </a>
-          </li>
-          <li
+            Forside
+          </a>
+        </li>
+        <li
+          aria-hidden="true"
+          class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+        >
+          <svg
             aria-hidden="true"
-            class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1i7gzfm-MuiSvgIcon-root"
+            data-testid="NavigateNextRoundedIcon"
+            focusable="false"
+            font-weight="bold"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
-              color="#D3D7DA"
-              data-testid="NavigateNextIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-              />
-            </svg>
-          </li>
-          <li
-            class="MuiBreadcrumbs-li"
+            <path
+              d="M9.31 6.71c-.39.39-.39 1.02 0 1.41L13.19 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01"
+            />
+          </svg>
+        </li>
+        <li
+          class="MuiBreadcrumbs-li"
+        >
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nv1n36-MuiTypography-root-MuiLink-root"
+            href="https://www.skde.no/helseatlas/"
           >
-            <a
-              class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-1eux74e-MuiTypography-root-MuiLink-root"
-              href="https://www.skde.no/helseatlas/"
-            >
-              Helseatlas
-            </a>
-          </li>
-          <li
+            Helseatlas
+          </a>
+        </li>
+        <li
+          aria-hidden="true"
+          class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+        >
+          <svg
             aria-hidden="true"
-            class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1i7gzfm-MuiSvgIcon-root"
+            data-testid="NavigateNextRoundedIcon"
+            focusable="false"
+            font-weight="bold"
+            viewBox="0 0 24 24"
           >
-            <svg
-              aria-hidden="true"
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1umw9bq-MuiSvgIcon-root"
-              color="#D3D7DA"
-              data-testid="NavigateNextIcon"
-              focusable="false"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-              />
-            </svg>
-          </li>
-          <li
-            class="MuiBreadcrumbs-li"
+            <path
+              d="M9.31 6.71c-.39.39-.39 1.02 0 1.41L13.19 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01"
+            />
+          </svg>
+        </li>
+        <li
+          class="MuiBreadcrumbs-li"
+        >
+          <a
+            class="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineHover css-nv1n36-MuiTypography-root-MuiLink-root"
+            href="/helseatlas/"
           >
-            <div
-              class="_breadcrumb_text_a3e095"
-            >
-              Dette er ein tittel
-            </div>
-          </li>
-        </ol>
-      </nav>
-    </div>
+            Rapporter
+          </a>
+        </li>
+        <li
+          aria-hidden="true"
+          class="MuiBreadcrumbs-separator css-jhr02i-MuiBreadcrumbs-separator"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1i7gzfm-MuiSvgIcon-root"
+            data-testid="NavigateNextRoundedIcon"
+            focusable="false"
+            font-weight="bold"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M9.31 6.71c-.39.39-.39 1.02 0 1.41L13.19 12l-3.88 3.88c-.39.39-.39 1.02 0 1.41s1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41L10.72 6.7c-.38-.38-1.02-.38-1.41.01"
+            />
+          </svg>
+        </li>
+        <li
+          class="MuiBreadcrumbs-li"
+        >
+          <p
+            class="MuiTypography-root MuiTypography-body1 css-4leci6-MuiTypography-root"
+          >
+            Dette er ein tittel
+          </p>
+        </li>
+      </ol>
+    </nav>
   </div>
 </div>
 `;
