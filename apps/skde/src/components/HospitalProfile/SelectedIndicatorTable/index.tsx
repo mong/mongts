@@ -1,25 +1,155 @@
 import { ItemBox } from "../HospitalProfileStyles";
-import { indicatorsPerHospital } from "./indicators";
-import { Typography, Box } from "@mui/material";
+import { indicatorsPerHospital, indicatorInfo } from "./indicators";
+import {
+  Typography,
+  Box,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@mui/material";
+import { UseQueryResult } from "@tanstack/react-query";
+import { useIndicatorQuery } from "qmongjs";
+import { Indicator } from "types";
+import { customFormat } from "qmongjs";
+import { level } from "qmongjs";
+
+const colourMap = new Map();
+colourMap.set("H", "#58A55C");
+colourMap.set("M", "#FD9C00");
+colourMap.set("L", "#D85140");
+colourMap.set(undefined, undefined);
+
+const IndicatorRow = (
+  indId: string,
+  rowNumber: number,
+  lastYear: number,
+  data: Indicator[],
+) => {
+  const indInfo = indicatorInfo.filter((row) => row.indId === indId)[0];
+
+  const point1 = data.filter((row) => {
+    return row.ind_id === indId && row.year === lastYear - 1;
+  });
+  const point2 = data.filter((row) => {
+    return row.ind_id === indId && row.year === lastYear;
+  });
+
+  const var1 = point1[0] ? point1[0].var : undefined;
+  const var2 = point2[0] ? point2[0].var : undefined;
+
+  const level1 = point1[0] ? level(point1[0]) : undefined;
+  const level2 = point2[0] ? level(point2[0]) : undefined;
+
+  return (
+    <TableRow key={rowNumber}>
+      <TableCell>{"Indikator " + rowNumber}</TableCell>
+      <TableCell>{indInfo.title}</TableCell>
+      <TableCell align="center" sx={{ background: colourMap.get(level1) }}>
+        {point1[0] && customFormat(point1[0].sformat)(var1)}
+      </TableCell>
+      <TableCell align="center" sx={{ background: colourMap.get(level2) }}>
+        {point2[0] && customFormat(point2[0].sformat)(var2)}
+      </TableCell>
+    </TableRow>
+  );
+};
 
 export type SelectedIndicatorTableProps = {
   unitName: string;
   titlePadding: number;
+  lastYear: number;
 };
 
 export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
-  const { unitName, titlePadding } = props;
+  const { unitName, titlePadding, lastYear } = props;
 
   const selectedIndicators = indicatorsPerHospital.filter(
     (row) => row.unit === unitName,
   );
-  console.log(selectedIndicators[0]);
+
+  if (selectedIndicators.length < 1) {
+    return null;
+  }
+
+  const selectedIndIds = selectedIndicators[0].commonInd.concat(
+    selectedIndicators[0].specificInd,
+  );
+  // Fetch aggregated data
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const indicatorQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
+    unitNames: [unitName],
+    context: "caregiver",
+    type: "ind",
+  });
+
+  if (indicatorQuery.isFetching) {
+    return null;
+  }
+
+  const data = indicatorQuery.data
+    .filter((row) => [lastYear - 1, lastYear].includes(row.year))
+    .filter((row) => selectedIndIds.includes(row.ind_id));
+
+  const CommonIndTable = (
+    <>
+      <TableHead>
+        <TableRow>
+          <TableCell colSpan={2}></TableCell>
+          <TableCell colSpan={2} align="center">
+            Andel
+          </TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell colSpan={2} align="center">
+            Felles indikatorer
+          </TableCell>
+          <TableCell align="center">{lastYear - 1}</TableCell>
+          <TableCell align="center">{lastYear}</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {selectedIndicators[0].commonInd.map((row, index) =>
+          IndicatorRow(row, index + 1, lastYear, data),
+        )}
+      </TableBody>
+    </>
+  );
+
+  const SpecificIndTable = (
+    <>
+      <TableHead>
+        <TableRow>
+          <TableCell colSpan={2} align="center">
+            Sykehusspesifikke indikatorer
+          </TableCell>
+          <TableCell colSpan={2}></TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {selectedIndicators[0].specificInd.map((row, index) =>
+          IndicatorRow(
+            row,
+            index + selectedIndicators[0].commonInd.length + 1,
+            lastYear,
+            data,
+          ),
+        )}
+      </TableBody>
+    </>
+  );
+
   return (
-    <ItemBox height={400}>
+    <ItemBox>
       <Box padding={titlePadding}>
         <Typography variant="h5">
           <b>Utvalgte indikatorer</b>
         </Typography>
+        <Table>
+          {CommonIndTable}
+          {selectedIndicators[0].specificInd.length > 0 && SpecificIndTable}
+        </Table>
       </Box>
     </ItemBox>
   );
