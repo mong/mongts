@@ -222,6 +222,7 @@ export const Skde = (): JSX.Element => {
                 ) : (
                   <SelectedIndicatorTable
                     unitName={unitName}
+                    titlePadding={titlePadding}
                   />
                 )}
               </Grid>
