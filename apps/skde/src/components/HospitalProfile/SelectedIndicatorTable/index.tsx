@@ -44,7 +44,9 @@ const IndicatorRow = (
 
   return (
     <TableRow key={rowNumber}>
-      <TableCell>{"Indikator " + rowNumber}</TableCell>
+      <TableCell>
+        <b>{"Indikator " + rowNumber}</b>
+      </TableCell>
       <TableCell>{indInfo.title}</TableCell>
       <TableCell align="center" sx={{ background: colourMap.get(level1) }}>
         {point1[0] && customFormat(point1[0].sformat)(var1)}
@@ -59,11 +61,12 @@ const IndicatorRow = (
 export type SelectedIndicatorTableProps = {
   unitName: string;
   titlePadding: number;
+  titleStyle: { marginTop: number; marginLeft: number };
   lastYear: number;
 };
 
 export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
-  const { unitName, titlePadding, lastYear } = props;
+  const { unitName, titlePadding, titleStyle, lastYear } = props;
 
   const selectedIndicators = indicatorsPerHospital.filter(
     (row) => row.unit === unitName,
@@ -98,15 +101,19 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
         <TableRow>
           <TableCell colSpan={2}></TableCell>
           <TableCell colSpan={2} align="center">
-            Andel
+            <b>{"Andel"}</b>
           </TableCell>
         </TableRow>
         <TableRow>
           <TableCell colSpan={2} align="center">
-            Felles indikatorer
+            <b>{"Felles indikatorer"}</b>
           </TableCell>
-          <TableCell align="center">{lastYear - 1}</TableCell>
-          <TableCell align="center">{lastYear}</TableCell>
+          <TableCell align="center">
+            <b>{lastYear - 1}</b>
+          </TableCell>
+          <TableCell align="center">
+            <b>{lastYear}</b>
+          </TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -122,7 +129,7 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
       <TableHead>
         <TableRow>
           <TableCell colSpan={2} align="center">
-            Sykehusspesifikke indikatorer
+            <b>{"Sykehusspesifikke indikatorer"}</b>
           </TableCell>
           <TableCell colSpan={2}></TableCell>
         </TableRow>
@@ -143,7 +150,7 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
   return (
     <ItemBox>
       <Box padding={titlePadding}>
-        <Typography variant="h5">
+        <Typography variant="h5" style={titleStyle}>
           <b>Utvalgte indikatorer</b>
         </Typography>
         <Table>

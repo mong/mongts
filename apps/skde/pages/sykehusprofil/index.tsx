@@ -223,6 +223,7 @@ export const Skde = (): JSX.Element => {
                   <SelectedIndicatorTable
                     unitName={unitName}
                     titlePadding={titlePadding}
+                    titleStyle={titleStyle}
                     lastYear={lastYear}
                   />
                 )}
