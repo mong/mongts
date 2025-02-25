@@ -58,7 +58,7 @@ const IndicatorRow = (
   );
 };
 
-export type SelectedIndicatorTableProps = {
+type SelectedIndicatorTableProps = {
   unitName: string;
   titlePadding: number;
   titleStyle: { marginTop: number; marginLeft: number };
