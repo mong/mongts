@@ -92,8 +92,9 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
   }
 
   const data = indicatorQuery.data
-    .filter((row) => [lastYear - 1, lastYear].includes(row.year))
-    .filter((row) => selectedIndIds.includes(row.ind_id));
+    .filter((row: Indicator) => [lastYear - 1, lastYear].includes(row.year))
+    .filter((row: Indicator) => selectedIndIds.includes(row.ind_id))
+    .filter((row: Indicator) => row.dg >= 0.6 || row.dg === null); // TODO: filter out dg = null?
 
   const CommonIndTable = (
     <>
