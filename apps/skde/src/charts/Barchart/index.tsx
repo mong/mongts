@@ -177,7 +177,8 @@ export const Barchart = ({
             }[forfatter]
           })`,
           backgroundRepeat: "no-repeat",
-          backgroundSize: lang === "nn" ? "max(5rem, 20%)" : "max(3rem, 10%)",
+          backgroundSize:
+            forfatter === "Helse Førde" ? "max(5rem, 20%)" : "max(3rem, 10%)",
           backgroundPosition: "bottom min(13%, 5rem) right 5%",
         }}
       >
