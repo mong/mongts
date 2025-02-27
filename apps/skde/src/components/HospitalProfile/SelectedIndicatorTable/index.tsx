@@ -8,9 +8,10 @@ import {
   TableBody,
   TableRow,
   TableCell,
+  Stack,
 } from "@mui/material";
 import { UseQueryResult } from "@tanstack/react-query";
-import { useIndicatorQuery } from "qmongjs";
+import { newLevelSymbols, useIndicatorQuery } from "qmongjs";
 import { Indicator } from "types";
 import { customFormat } from "qmongjs";
 import { level } from "qmongjs";
@@ -48,11 +49,35 @@ const IndicatorRow = (
         <b>{"Indikator " + rowNumber}</b>
       </TableCell>
       <TableCell>{indInfo.title}</TableCell>
-      <TableCell align="center" sx={{ background: colourMap.get(level1) }}>
-        {point1[0] && customFormat(point1[0].sformat)(var1)}
+      <TableCell>
+        {point1[0] && (
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent="flex-end"
+            spacing={1}
+          >
+            <Typography variant="body2">
+              {customFormat(point1[0].sformat)(var1)}
+            </Typography>
+            {newLevelSymbols(level1)}
+          </Stack>
+        )}
       </TableCell>
-      <TableCell align="center" sx={{ background: colourMap.get(level2) }}>
-        {point2[0] && customFormat(point2[0].sformat)(var2)}
+      <TableCell>
+        {point2[0] && (
+          <Stack
+            direction="row"
+            alignItems="center"
+            justifyContent="flex-end"
+            spacing={1}
+          >
+            <Typography variant="body2">
+              {customFormat(point1[0].sformat)(var2)}
+            </Typography>
+            {newLevelSymbols(level2)}
+          </Stack>
+        )}
       </TableCell>
     </TableRow>
   );
