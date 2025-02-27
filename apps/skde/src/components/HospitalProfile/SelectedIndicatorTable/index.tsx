@@ -15,6 +15,7 @@ import { newLevelSymbols, useIndicatorQuery } from "qmongjs";
 import { Indicator } from "types";
 import { customFormat } from "qmongjs";
 import { level } from "qmongjs";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 const colourMap = new Map();
 colourMap.set("H", "#58A55C");
@@ -49,8 +50,8 @@ const IndicatorRow = (
         <b>{"Indikator " + rowNumber}</b>
       </TableCell>
       <TableCell>{indInfo.title}</TableCell>
-      <TableCell>
-        {point1[0] && (
+      <TableCell align="right">
+        {point1[0] ? (
           <Stack
             direction="row"
             alignItems="center"
@@ -62,10 +63,12 @@ const IndicatorRow = (
             </Typography>
             {newLevelSymbols(level1)}
           </Stack>
+        ) : (
+          <ErrorOutlineIcon />
         )}
       </TableCell>
-      <TableCell>
-        {point2[0] && (
+      <TableCell align="right">
+        {point2[0] ? (
           <Stack
             direction="row"
             alignItems="center"
@@ -77,6 +80,8 @@ const IndicatorRow = (
             </Typography>
             {newLevelSymbols(level2)}
           </Stack>
+        ) : (
+          <ErrorOutlineIcon />
         )}
       </TableCell>
     </TableRow>
