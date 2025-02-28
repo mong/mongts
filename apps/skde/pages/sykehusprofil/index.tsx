@@ -30,6 +30,7 @@ import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterM
 import { TurnDeviceBox } from "../../src/components/HospitalProfile/TurnDeviceBox";
 import { URLs } from "types";
 import { LayoutHead } from "../../src/components/LayoutHead";
+import { SelectedIndicatorTable } from "../../src/components/HospitalProfile/SelectedIndicatorTable";
 
 export const Skde = (): JSX.Element => {
   // States
@@ -210,6 +211,19 @@ export const Skde = (): JSX.Element => {
                     titleStyle={titleStyle}
                     textMargin={textMargin}
                     unitFullName={unitFullName}
+                    lastYear={lastYear}
+                  />
+                )}
+              </Grid>
+
+              <Grid size={{ xs: 12 }}>
+                {showRotateMessage ? (
+                  TurnDeviceMessage
+                ) : (
+                  <SelectedIndicatorTable
+                    unitName={unitName}
+                    titlePadding={titlePadding}
+                    titleStyle={titleStyle}
                     lastYear={lastYear}
                   />
                 )}
