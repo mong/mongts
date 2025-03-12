@@ -25,16 +25,12 @@ jobs:
       - name: Set release variables
         if: github.ref == 'refs/heads/main'
         run: |
-          # echo "S3Key='prod-mong-api.json'" >> $GITHUB_ENV
-          # echo "env_name=prod-mong-api" >> $GITHUB_ENV
           echo "version_label=${GITHUB_SHA:0:7}_prod_${RANDOM}" >> $GITHUB_ENV
           echo "descr='Release tag deploy'" >> $GITHUB_ENV
           echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_PROD }}" >> $GITHUB_ENV
       - name: Set QA variables
         if: github.ref == 'refs/heads/develop'
         run: |
-          # echo "S3Key='qa-mong-api.json'" >> $GITHUB_ENV
-          # echo "env_name=qa-mong-api" >> $GITHUB_ENV
           echo "version_label=${GITHUB_SHA:0:7}_qa_${RANDOM}" >> $GITHUB_ENV
           echo "descr='Main commits deploy'" >> $GITHUB_ENV
           echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_QA }}" >> $GITHUB_ENV
