@@ -247,8 +247,7 @@ export const config: CmsConfig = {
     name: "github",
     repo: "mong/mongts",
     branch: "main",
-    base_url:
-      process.env.NEXT_PUBLIC_API_HOST ?? "https://prod-api.skde.org",
+    base_url: process.env.NEXT_PUBLIC_API_HOST ?? "https://prod-api.skde.org",
   },
   logo_url: "https://apps.skde.no/helseatlas/img/logos/helseatlas.svg",
   media_folder: "/apps/skde/public/helseatlas/img",
