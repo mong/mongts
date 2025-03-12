@@ -25,16 +25,16 @@ jobs:
       - name: Set release variables
         if: github.ref == 'refs/heads/main'
         run: |
-          echo "S3Key='prod-mong-api.json'" >> $GITHUB_ENV
-          echo "env_name=prod-mong-api" >> $GITHUB_ENV
+          # echo "S3Key='prod-mong-api.json'" >> $GITHUB_ENV
+          # echo "env_name=prod-mong-api" >> $GITHUB_ENV
           echo "version_label=${GITHUB_SHA:0:7}_prod_${RANDOM}" >> $GITHUB_ENV
           echo "descr='Release tag deploy'" >> $GITHUB_ENV
           echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_PROD }}" >> $GITHUB_ENV
       - name: Set QA variables
         if: github.ref == 'refs/heads/develop'
         run: |
-          echo "S3Key='qa-mong-api.json'" >> $GITHUB_ENV
-          echo "env_name=qa-mong-api" >> $GITHUB_ENV
+          # echo "S3Key='qa-mong-api.json'" >> $GITHUB_ENV
+          # echo "env_name=qa-mong-api" >> $GITHUB_ENV
           echo "version_label=${GITHUB_SHA:0:7}_qa_${RANDOM}" >> $GITHUB_ENV
           echo "descr='Main commits deploy'" >> $GITHUB_ENV
           echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_QA }}" >> $GITHUB_ENV
@@ -79,18 +79,18 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - name: Update elasticbeanstalk
-        if: github.event_name != 'pull_request'
-        run: |
-          aws elasticbeanstalk create-application-version --application-name mong-api --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-247247832514",S3Key=${{ env.S3Key }} --version-label ${{ env.version_label }} --description ${{ env.descr }}
-          aws elasticbeanstalk update-environment --environment-name ${{ env.env_name }} --version-label ${{ env.version_label }}
-          if [[ ${{ github.ref }} == 'refs/heads/main' ]]; then
-            aws elasticbeanstalk update-environment --environment-name verify-mong-api --version-label ${{ env.version_label }}
-          fi
-      - name: Create CloudFront invalidation
-        if: github.event_name != 'pull_request'
-        run: |
-          aws cloudfront create-invalidation \
-            --distribution-id  ${{ env.cloudfront_id }}\
-            --paths "/*"
+      # - name: Update elasticbeanstalk
+      #   if: github.event_name != 'pull_request'
+      #   run: |
+      #     aws elasticbeanstalk create-application-version --application-name mong-api --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-247247832514",S3Key=${{ env.S3Key }} --version-label ${{ env.version_label }} --description ${{ env.descr }}
+      #     aws elasticbeanstalk update-environment --environment-name ${{ env.env_name }} --version-label ${{ env.version_label }}
+      #     if [[ ${{ github.ref }} == 'refs/heads/main' ]]; then
+      #       aws elasticbeanstalk update-environment --environment-name verify-mong-api --version-label ${{ env.version_label }}
+      #     fi
+      # - name: Create CloudFront invalidation
+      #   if: github.event_name != 'pull_request'
+      #   run: |
+      #     aws cloudfront create-invalidation \
+      #       --distribution-id  ${{ env.cloudfront_id }}\
+      #       --paths "/*"
       
