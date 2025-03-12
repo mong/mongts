@@ -18521,10 +18521,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mime-db@npm:~1.25.0":
+  version: 1.25.0
+  resolution: "mime-db@npm:1.25.0"
+  checksum: 10/04c91aa98beb40ae83dc6243bc01fc19a0024ccf8c2e8635e568f33c3a50f6bbc3b50a3a71a20ab789ceec8425446d9b46f09dd8fc22d6d54505c6af22fd59a3
+  languageName: node
+  linkType: hard
+
 "mime-db@npm:~1.33.0":
   version: 1.33.0
   resolution: "mime-db@npm:1.33.0"
   checksum: 10/b3b89cff1d3569d02280f8d5b3b6e3c6df4dd340647b48228b2624293a73da0a7c784712aec8eac0aaccd353ac04b4d50309ab9f6a87d7ee79b4dca0ebb70ed8
+  languageName: node
+  linkType: hard
+
+"mime-types@npm:2.1.13":
+  version: 2.1.13
+  resolution: "mime-types@npm:2.1.13"
+  dependencies:
+    mime-db: "npm:~1.25.0"
+  checksum: 10/e76a6749e9e483eb57a90c7f081cc16b38a06c1668484a60db83841b684f3c872c2f3219117db9f312485e94ca958f24cbc1bfa5dbfe5123d213476e7ae11fbb
   languageName: node
   linkType: hard
 
@@ -22892,6 +22908,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rss@npm:^1.2.2":
+  version: 1.2.2
+  resolution: "rss@npm:1.2.2"
+  dependencies:
+    mime-types: "npm:2.1.13"
+    xml: "npm:1.0.1"
+  checksum: 10/0121e1c826a65961155efa5288d90ee592361edf0b3d1dc134bca37b7baa51027d324f5b404b37861954570110560decdc5b9397256c274e20ecb32007b39dbe
+  languageName: node
+  linkType: hard
+
 "run-parallel@npm:^1.1.9, run-parallel@npm:^1.2.0":
   version: 1.2.0
   resolution: "run-parallel@npm:1.2.0"
@@ -23629,6 +23655,7 @@ __metadata:
     rehype-raw: "npm:7.0.0"
     rehype-slug: "npm:6.0.0"
     remark-gfm: "npm:4.0.0"
+    rss: "npm:^1.2.2"
     serve: "npm:14.2.4"
     sharp: "npm:0.33.5"
     start-server-and-test: "npm:2.0.10"
@@ -27202,6 +27229,13 @@ __metadata:
   version: 1.7.0
   resolution: "xml-utils@npm:1.7.0"
   checksum: 10/cc152e7397a67c90dbbdc0145004027ef3486e8db0f243fb2937ee4454a9a5b766ed96d0d0f6fa7951c8ddce338bb436d9166b241b41208a3d6b8f1c76a6f5aa
+  languageName: node
+  linkType: hard
+
+"xml@npm:1.0.1":
+  version: 1.0.1
+  resolution: "xml@npm:1.0.1"
+  checksum: 10/6c4c31a1308e45732e5ac6b50edbca0e8f7abe5cb5de10215d8e3c688819fe7c7706e056f6fb59b1a23fdf1000c2d7a8bba0a89e94aa1796cd2376d9a5ba401e
   languageName: node
   linkType: hard
 
