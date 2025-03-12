@@ -14,7 +14,7 @@ export async function GET() {
   };
 
   // Fetch registry names
-  const namesUrl = "https://prod-mong-api.skde.org/info/names";
+  const namesUrl = "https://prod-api.skde.org/info/names";
   const namesQuery = await fetch(namesUrl);
   const namesResponse = await namesQuery.json();
   const names = namesResponse.map((row: RegisterName) => row.rname);
@@ -22,7 +22,7 @@ export async function GET() {
   // Use the registry names to make the description URLs
   const descriptionUrls = names.map(
     (name: string) =>
-      "https://prod-mong-api.skde.org/data/" + name + "/descriptions",
+      "https://prod-api.skde.org/data/" + name + "/descriptions",
   );
 
   // Set up the RSS feed
