@@ -22,7 +22,7 @@ jobs:
       - run: corepack enable && yarn install
       - name: Build page
         env:
-          NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
+          NEXT_PUBLIC_API_HOST: https://prod-api.skde.org
         run: |
           yarn run export
       - name: Find dead links

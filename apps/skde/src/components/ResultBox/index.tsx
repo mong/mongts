@@ -285,7 +285,7 @@ export const ResultBox = ({
         </AccordionSummary>
         <AccordionDetails
           sx={{
-            backgroundColor: "#F2F2F2",
+            backgroundColor: "#FAFAFA",
           }}
           ref={height_ref}
         >

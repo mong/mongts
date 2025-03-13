@@ -13,7 +13,7 @@ type ChaptersProps = {
 
 export const Chapters = ({ atlas, atlasData }: ChaptersProps) => {
   return atlas.kapittel.map((chapter, i) => (
-    <Box key={i} sx={{ fontSize: ".95rem" }}>
+    <Box key={i}>
       <Chapter
         atlas={atlas}
         atlasData={atlasData}
