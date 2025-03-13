@@ -1,34 +1,42 @@
-import style from "./TopBanner.module.css";
-import Breadcrumbs from "@mui/material/Breadcrumbs";
-import Link from "@mui/material/Link";
-import { NavigateNext } from "@mui/icons-material";
+import { BreadCrumbPath } from "../../Header";
+import { SkdeBreadcrumbs } from "../../Header/HeaderTop";
+import { Box } from "@mui/material";
 
 interface TopBannerProps {
   mainTitle: string;
+  atlasName: string;
   lang: string;
 }
 
-export const TopBanner = ({ mainTitle, lang }: TopBannerProps) => {
+export const TopBanner = ({ mainTitle, atlasName, lang }: TopBannerProps) => {
+  const breadcrumbs: BreadCrumbPath = [
+    {
+      link: "https://www.skde.no",
+      text: lang === "en" ? "Homepage" : "Forside",
+    },
+    {
+      link: "https://www.skde.no/helseatlas/",
+      text: lang === "en" ? "Health Atlas" : "Helseatlas",
+    },
+    {
+      link: `/helseatlas/${lang === "en" ? "en/" : ""}`,
+      text: lang === "en" ? "Reports" : "Rapporter",
+    },
+    {
+      link: `/helseatlas/${lang === "en" ? "en/" : ""}v2/${atlasName}/`,
+      text: mainTitle,
+    },
+  ];
+
   return (
-    <div className={style.atlasTopBanner}>
-      <div className={style.bannerWrapper}>
-        <Breadcrumbs
-          aria-label="breadcrumb"
-          separator={<NavigateNext htmlColor="#D3D7DA" />}
-        >
-          <Link underline="hover" color="#034584" href={"https://www.skde.no/"}>
-            {lang === "en" ? "Homepage" : "Forside"}
-          </Link>
-          <Link
-            underline="hover"
-            color="#034584"
-            href={"https://www.skde.no/helseatlas/"}
-          >
-            {lang === "en" ? "Health Atlas" : "Helseatlas"}
-          </Link>
-          <div className={style.breadcrumb_text}>{mainTitle}</div>
-        </Breadcrumbs>
-      </div>
-    </div>
+    <Box
+      sx={{
+        width: "min(95%, 76rem)",
+        padding: "1rem",
+        margin: "auto",
+      }}
+    >
+      <SkdeBreadcrumbs path={breadcrumbs} />
+    </Box>
   );
 };

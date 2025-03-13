@@ -4,7 +4,7 @@ import {
   IndicatorLinechartParams,
 } from "../../../charts/IndicatorLinechart";
 import { LineStyles } from "qmongjs";
-import { ThemeProvider, Box, Typography } from "@mui/material";
+import { ThemeProvider, Box, Typography, Stack, Button } from "@mui/material";
 import { ChipSelection } from "../../ChipSelection";
 import {
   LinePlotLegend,
@@ -12,6 +12,8 @@ import {
   lineChartTheme,
 } from "../..//HospitalProfile";
 import { formatUnitNameIfNational } from "../../../helpers/functions/formatUnitNameIfNational";
+import ZoomInIcon from "@mui/icons-material/ZoomIn";
+import ZoomOutIcon from "@mui/icons-material/ZoomOut";
 
 type HospitalProfileLinePlotProps = {
   unitFullName: string;
@@ -35,6 +37,10 @@ export const HospitalProfileLinePlot = (
     titleStyle,
     textMargin,
   } = props;
+
+  // States
+  const [normalise, setNormalise] = useState<boolean>(true);
+  const [zoomIn, setZoomIn] = useState<boolean>(false);
 
   // Set the line plot width to fill the available space
   const [plotWidth, setPlotWidth] = useState(null);
@@ -84,26 +90,19 @@ export const HospitalProfileLinePlot = (
       fontWeight: 500,
       fontFamily: "Arial",
     },
-    yAxisText: "Antall indikatorer",
+    yAxisText: normalise ? "Andel" : "Antall indikatorer",
     xTicksFont: { fontFamily: "Arial", fontSize: 16, fontWeight: 500 },
     yTicksFont: { fontFamily: "Arial", fontSize: 14, fontWeight: 500 },
     startYear: lastYear - pastYears,
     endYear: lastYear,
     yMin: 0,
-    normalise: true,
+    yMax: normalise && !zoomIn ? 1 : undefined,
+    normalise: normalise,
     useToolTip: true,
   };
 
-  // State logic for normalising the line plot
-  const [normalise, setNormalise] = useState(indicatorParams.normalise);
-
-  indicatorParams.normalise = normalise;
-
-  if (normalise) {
-    indicatorParams.yAxisText = "Andel";
-  } else {
-    indicatorParams.yAxisText = "Antall indikatorer";
-  }
+  const zoomButtonicon = zoomIn ? <ZoomOutIcon /> : <ZoomInIcon />;
+  const zoomButtonText = zoomIn ? "Zoom ut" : "Zoom inn";
 
   return (
     <ItemBox sx={{ overflow: "auto" }}>
@@ -116,18 +115,35 @@ export const HospitalProfileLinePlot = (
               lastYear}
           </b>
         </Typography>
-        <ChipSelection
-          leftChipLabel="Vis andel"
-          rightChipLabel="Vis Antall"
-          leftChipHelpText=""
-          rightChipHelpText=""
-          hoverBoxOffset={[20, 20]}
-          hoverBoxPlacement="top"
-          hoverBoxMaxWidth={400}
-          state={normalise}
-          stateSetter={setNormalise}
-          trueChip="left"
-        />
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <ChipSelection
+            leftChipLabel="Vis andel"
+            rightChipLabel="Vis Antall"
+            leftChipHelpText=""
+            rightChipHelpText=""
+            hoverBoxOffset={[20, 20]}
+            hoverBoxPlacement="top"
+            hoverBoxMaxWidth={400}
+            state={normalise}
+            stateSetter={setNormalise}
+            trueChip="left"
+          />
+          <Button
+            disabled={!normalise}
+            variant="outlined"
+            startIcon={zoomButtonicon}
+            sx={{ height: "3rem", marginRight: "4rem" }}
+            onClick={() => {
+              setZoomIn(!zoomIn);
+            }}
+          >
+            {zoomButtonText}
+          </Button>
+        </Stack>
         <div style={{ margin: textMargin }}>
           <Typography variant="body1">
             {"Grafen gir en oversikt over kvalitetsindikatorer fra de nasjonale medisinske kvalitetsregistrene for " +

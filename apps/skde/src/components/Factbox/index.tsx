@@ -38,7 +38,7 @@ export const FactBox = ({ atlas, boxTitle, boxContent, id }: FactBoxProps) => {
         >
           {boxTitle}
         </AccordionSummary>
-        <AccordionDetails>
+        <AccordionDetails sx={{ backgroundColor: "#FAFAFA" }}>
           <Markdown lang={atlas.lang}>{boxContent}</Markdown>
         </AccordionDetails>
       </Accordion>

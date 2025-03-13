@@ -2,7 +2,13 @@ import { AtlasLink } from "../../Buttons";
 import linkClassNames from "../../Buttons/AtlasLink.module.css";
 import { Header, BreadCrumbPath } from "../../Header";
 import { PageWrapper } from "../../StyledComponents/PageWrapper";
-import { Box, Container, CssBaseline, ThemeProvider } from "@mui/material";
+import {
+  Box,
+  Container,
+  CssBaseline,
+  Link,
+  ThemeProvider,
+} from "@mui/material";
 import { LayoutHead } from "../../LayoutHead";
 import { Footer } from "../../Footer";
 import { LangButton } from "../AtlasLayout/Header";
@@ -44,9 +50,7 @@ const FrontPage = ({ atlasInfo, lang }: HomeProps) => {
     />
   ));
 
-  const title = { no: "Tematiske helseatlas", en: "Thematic Health Atlases" }[
-    lang
-  ];
+  const title = { no: "Rapporter", en: "Reports" }[lang];
 
   const breadcrumbs: BreadCrumbPath = [
     {
@@ -71,7 +75,7 @@ const FrontPage = ({ atlasInfo, lang }: HomeProps) => {
           <LayoutHead
             title="Helseatlas"
             content="The healthcare atlases on Helseatlas.no are a tool for comparing the population's use of health services in different geographical areas, regardless of where the patients actually receive treatment."
-            href="/helseatlas/img/logos/favicon.ico"
+            href="/favicon.ico"
           />
           <main>
             <Header
@@ -83,10 +87,17 @@ const FrontPage = ({ atlasInfo, lang }: HomeProps) => {
             >
               {
                 {
-                  no: "Her finner du tematiske helseatlas som tar for seg utvalgte tjenester på ett fagområde eller til én pasientgruppe, i en periode på tre til fem år.",
-                  en: "Here you find thematic Health Atlases concering selected health services or patient groups, in a period from three to five years.",
+                  no: "Her finner du helseatlas i form av digitale rapporter som omhandler et utvalgt tema, fagområde eller en pasientgruppe. Rapportene gir et overordnet bilde av geografisk variasjon i tjenestebruk for en begrenset tidsperiode. Oppdaterte helseatlas kan du finne på ",
+                  en: "Here you will find Health Atlases in the form of digital reports that cover a selected topic, field, or patient group. The reports provide an overview of geographical variation in the use of healthcare services for a defined period. Updated Health Atlases can be found at ",
                 }[lang]
               }
+              <Link
+                href={`https://analyser.skde.no/${lang === "en" ? "en/" : ""}`}
+                target="_blank"
+              >
+                analyser.skde.no
+              </Link>
+              .
             </Header>
             <Box className="footer">
               <Container maxWidth={"xl"} disableGutters={true}>
