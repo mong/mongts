@@ -8,8 +8,8 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Antall (rate) diabetes pr. 1 000 innbyggere",
-        "en": "Number (rate) diabetes per 1,000 innbyggere"
+        "nb": "Rate: Antall konsultasjoner diabetes pr. 1 000 innbyggere",
+        "en": "Rate: Number of consultations diabetes per 1,000 children"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -42,8 +42,8 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Antall pasienter diabetes pr. 1000 barn",
-        "en": "Number of patients diabetes per 1,000 children"
+        "nb": "Rate: Antall pasienter diabetes pr. 1000 barn",
+        "en": "Rate: Number of patients diabetes per 1,000 children"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -76,8 +76,8 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Konsultasjoner pr. pasient diabetes",
-        "en": "Consultations per patients diabetes"
+        "nb": "Antall konsultasjoner pr. pasient diabetes",
+        "en": "Number of consultations per patients diabetes"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -104,7 +104,7 @@
         ]
       },
       "xLabel": {
-        "nb": "Antall (rate) offentlig/privat pr. 1 000 barn",
+        "nb": "Rate: Antall konsultasjoner offentlig/privat pr. 1 000 barn",
         "en": "Number (rate) public/private per 1,000 children"
       },
       "yLabel": {
@@ -121,7 +121,7 @@
       ],
       "linevarsLabels": {
         "nb": [
-          "Antall (rate) konsulatsjoner pr. 1 000 barn, Norge"
+          "Rate: Antall konsulatsjoner pr. 1 000 barn, Norge"
         ],
         "en": [
           "Rate Norway"
@@ -136,8 +136,8 @@
         "en": "Year"
       },
       "yLabel": {
-        "nb": "Antall (rate) konsultasjoner pr. 1 000 barn",
-        "en": "Number (rate) diabetes per 1,000 children"
+        "nb": "Rate: Antall konsultasjoner pr. 1 000 barn",
+        "en": "Rate: Number of consultations diabetes per 1,000 children"
       },
       "format_y": ",.0f"
     },
@@ -172,7 +172,7 @@
       },
       "yLabel": {
         "nb": "Antall barn med konsultasjon",
-        "en": "Number of children"
+        "en": "Number of children with consultation"
       },
       "format_y": ",.0f"
     },
@@ -180,8 +180,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2021-2023. Antall (rate) pr. 1  000 barn",
-        "en": "Årlige gjennomsnittsverdier for perioden 2021-2023. Antall (rate) pr. 1  000 barn"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2021-2023. Rate: Antall konsultasjoner pr. 1  000 barn",
+        "en": "Årlige gjennomsnittsverdier for perioden 2021-2023. Rate: Antall konsultasjoner pr. 1  000 barn"
       },
       "columns": [
         {
@@ -214,7 +214,7 @@
         },
         {
           "id": "pr_pas_justsnitt",
-          "label_no": "Antall pr. pas.",
+          "label_no": "Antall pr. pasient",
           "label_en": "Number per patient",
           "typeVar": "number",
           "format": ",.2f"
@@ -240,8 +240,8 @@
       "data": "datasett_1",
       "x": "ratesnitt",
       "caption": {
-        "nb": "Antall (rate) diabetes pr. 1 000 innbyggere",
-        "en": "Number (rate) diabetes per 1,000 innbyggere"
+        "nb": "Rate: Antall konsultasjoner diabetes pr. 1 000 innbyggere",
+        "en": "Rate: Number of consultations diabetes per 1,000 children"
       },
       "jenks": [
         {
