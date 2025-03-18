@@ -91,7 +91,7 @@ export const Linechart = ({
           xScale={{ type: "band", paddingOuter: 0 }}
           yScale={{ type: "linear" }}
           margin={{
-            top: 70,
+            top: 50,
             right: 50,
             bottom: 50,
             left: 55 + yvaluesMaxTextLength,
