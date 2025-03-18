@@ -8,8 +8,8 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Antall (rate) epilepsi pr. 1 000 innbyggere",
-        "en": "Number (rate) epilepsi per 1,000 innbyggere"
+        "nb": "Rate: Antall epilepsi konsultasjoner pr. 1 000 innbyggere",
+        "en": "Rate: Number of consultations epilepsi per 1,000 children"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -42,8 +42,8 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Antall pasienter epilepsi pr. 1000 barn",
-        "en": "Number of patients epilepsi per 1,000 children"
+        "nb": "Rate: Antall epilepsi pasienter pr. 1000 barn",
+        "en": "Rate: Number of patients epilepsi per 1,000 children"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -76,8 +76,8 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Konsultasjoner pr. pasient epilepsi",
-        "en": "Consultations per patients epilepsi"
+        "nb": "Antall epilepsi konsultasjoner pr. pasient",
+        "en": "Number of consultations per patients epilepsi"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -104,7 +104,7 @@
         ]
       },
       "xLabel": {
-        "nb": "Antall (rate) offentlig/privat pr. 1 000 barn",
+        "nb": "Rate: Antall epilepsi konsultasjoner offentlig/privat pr. 1 000 barn",
         "en": "Number (rate) public/private per 1,000 children"
       },
       "yLabel": {
@@ -121,7 +121,7 @@
       ],
       "linevarsLabels": {
         "nb": [
-          "Antall (rate) konsulatsjoner pr. 1 000 barn, Norge"
+          "Rate: Antall epilepsi konsulatsjoner pr. 1 000 barn, Norge"
         ],
         "en": [
           "Rate Norway"
@@ -136,8 +136,8 @@
         "en": "Year"
       },
       "yLabel": {
-        "nb": "Antall (rate) konsultasjoner pr. 1 000 barn",
-        "en": "Number (rate) epilepsi per 1,000 children"
+        "nb": "Rate: Antall epilepsi konsultasjoner pr. 1 000 barn",
+        "en": "Rate: Number of consultations epilepsi per 1,000 children"
       },
       "format_y": ",.0f"
     },
@@ -171,8 +171,8 @@
         "en": "Age"
       },
       "yLabel": {
-        "nb": "Antall barn med konsultasjon",
-        "en": "Number of children"
+        "nb": "Antall barn med epilepsi konsultasjon",
+        "en": "Number of children with consultation"
       },
       "format_y": ",.0f"
     },
@@ -201,7 +201,7 @@
         {
           "id": "antsnitt",
           "label_no": "Konsultasjoner",
-          "label_en": "Examinations",
+          "label_en": "Number",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -213,25 +213,25 @@
           "format": ",.0f"
         },
         {
-          "id": "popsnitt",
-          "label_no": "Innbyggere",
-          "label_en": "Inhabitants",
-          "typeVar": "number",
-          "format": ",.0f"
-        },
-        {
           "id": "pr_pas_justsnitt",
-          "label_no": "Konsultasjoner pr. pas.",
-          "label_en": "Examinations per patient",
+          "label_no": "Antall pr. pasient",
+          "label_en": "Number per patient",
           "typeVar": "number",
-          "format": ",.2f"
+          "format": ",.1f"
         },
         {
           "id": "pct_privsnitt",
           "label_no": "Andel private",
           "label_en": "Percent private",
           "typeVar": "number",
-          "format": ",.0%"
+          "format": ",.1%"
+        },
+        {
+          "id": "popsnitt",
+          "label_no": "Innbyggere (0-18 år)",
+          "label_en": "Children",
+          "typeVar": "number",
+          "format": ",.0f"
         }
       ]
     },
@@ -240,8 +240,8 @@
       "data": "datasett_1",
       "x": "ratesnitt",
       "caption": {
-        "nb": "Antall (rate) epilepsi pr. 1 000 innbyggere",
-        "en": "Number (rate) epilepsi per 1,000 innbyggere"
+        "nb": "Rate: Antall epilepsi konsultasjoner pr. 1 000 barn",
+        "en": "Rate: Number of consultations epilepsi per 1,000 children"
       },
       "jenks": [
         {
