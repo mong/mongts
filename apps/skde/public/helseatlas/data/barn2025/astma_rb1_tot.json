@@ -200,8 +200,8 @@
         },
         {
           "id": "antsnitt",
-          "label_no": "Konsultasjoner",
-          "label_en": "Examinations",
+          "label_no": "Antall",
+          "label_en": "Number",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -213,15 +213,8 @@
           "format": ",.0f"
         },
         {
-          "id": "popsnitt",
-          "label_no": "Innbyggere",
-          "label_en": "Inhabitants",
-          "typeVar": "number",
-          "format": ",.0f"
-        },
-        {
           "id": "pr_pas_justsnitt",
-          "label_no": "Konsultasjoner pr. pas.",
+          "label_no": "Antall pr. pasient",
           "label_en": "Examinations per patient",
           "typeVar": "number",
           "format": ",.2f"
@@ -232,6 +225,13 @@
           "label_en": "Percent spesialist",
           "typeVar": "number",
           "format": ",.0%"
+        },
+        {
+          "id": "popsnitt",
+          "label_no": "Innbyggere",
+          "label_en": "Inhabitants",
+          "typeVar": "number",
+          "format": ",.0f"
         }
       ]
     },
