@@ -1,5 +1,10 @@
 import express from "express";
-import { medicalFields, registerNames, unitURLs, residentData } from "../controllers/info";
+import {
+  medicalFields,
+  registerNames,
+  unitURLs,
+  residentData,
+} from "../controllers/info";
 
 const Router = express.Router();
 
@@ -13,6 +18,6 @@ Router.get("/medicalFields", medicalFields);
 Router.get("/url", unitURLs);
 
 // indicators, units and years with resident data
-Router.get("/residentData", residentData)
+Router.get("/residentData", residentData);
 
 export default Router;

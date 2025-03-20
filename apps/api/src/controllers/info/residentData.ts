@@ -30,4 +30,4 @@ const parseQuery = (req: Request) => {
   }
 
   return query;
-}
+};
