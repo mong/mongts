@@ -33,24 +33,18 @@ export const filterOrderIndID = (
     new Set(
       indData
         .filter((d: Indicator) => {
-          const nation =
-            tableType === "singleRegister" ||
-            isFetching ||
-            selectedNames.length === 1
-              ? false
-              : namesLength === 1 && isFetching
-                ? false
-                : d.unit_name === "Nasjonalt";
+          let levelFilter: boolean 
           if (level === "") {
-            return !nation;
-          }
-          const levelFilter = defineLevel(d) !== level;
+            levelFilter = false
+          } else {
+            levelFilter = defineLevel(d) !== level;
+          };
           const dg = (d.dg ?? 1) < 0.6 && d.unit_name !== "Nasjonalt";
           const minDenom = indDescription
             .filter((dDesc) => dDesc.id === d.ind_id)
             .map((d) => d.min_denominator)[0];
           const lowN = d.denominator < (minDenom ?? 5);
-          return !(nation || levelFilter || dg || lowN);
+          return !(levelFilter || dg || lowN);
         })
         .map((d: Indicator) => d.ind_id),
     ),

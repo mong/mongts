@@ -1,11 +1,11 @@
 import { useMemo, useEffect, useRef } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import style from "./tableblock.module.css";
-import { useDescriptionQuery, useIndicatorQuery } from "../../../helpers/hooks";
+import { useDescriptionQuery, useIndicatorQuery, useResidentDataQuery } from "../../../helpers/hooks";
 import { filterOrderIndID } from "../../../helpers/functions";
 import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
-import { Description, Indicator, RegisterName } from "types";
+import { Description, Indicator, RegisterName, ResidentData } from "types";
 import { IndicatorTableSkeleton } from "../IndicatorTableSkeleton";
 import { TableRow, TableCell, Box, Stack } from "@mui/material";
 import Link from "next/link";
@@ -52,7 +52,6 @@ const TableBlock = (props: TableBlockProps) => {
     unitNames,
     onEmptyStatusChanged,
     chartColours,
-    hasResidentData,
   } = props;
   const queryContext = dataQuality
     ? { context, type: "dg" }
@@ -73,6 +72,8 @@ const TableBlock = (props: TableBlockProps) => {
     registerShortName: registerName.rname,
   });
 
+  const residentDataQuery: UseQueryResult<any, unknown> = useResidentDataQuery(registerName.rname)
+
   const uniqueOrderedInd: string[] = useMemo(
     () =>
       filterOrderIndID(
@@ -92,6 +93,8 @@ const TableBlock = (props: TableBlockProps) => {
       showLevelFilter,
     ],
   );
+
+  console.log(uniqueOrderedInd)
 
   const isEmptyRef = useRef(false);
 
@@ -122,11 +125,11 @@ const TableBlock = (props: TableBlockProps) => {
     registerName.rname,
   ]);
 
-  if (descriptionQuery.isLoading || indicatorDataQuery.isLoading) {
+  if (descriptionQuery.isLoading || indicatorDataQuery.isLoading || residentDataQuery.isLoading) {
     return SkeletonRow(colspan);
   }
 
-  if (descriptionQuery.isError || indicatorDataQuery.isError) {
+  if (descriptionQuery.isError || indicatorDataQuery.isError || residentDataQuery.isError) {
     return null;
   }
 
@@ -167,10 +170,14 @@ const TableBlock = (props: TableBlockProps) => {
   if (
     context === "caregiver" &&
     !showTitle &&
-    hasResidentData &&
     medicalFieldFilter.includes(registerName.rname)
   ) {
-    showTitleAnyway = true;
+    const filteredResidentData = residentDataQuery.data.filter(
+      (row: ResidentData) => row.year === treatmentYear && unitNames.includes(row.unitName))
+
+    if (filteredResidentData.length > 0) {
+      showTitleAnyway = true;
+    }
   }
 
   return (
