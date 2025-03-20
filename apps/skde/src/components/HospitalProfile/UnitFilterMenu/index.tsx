@@ -17,7 +17,7 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import { ClickAwayListener } from "@mui/base";
+import { ClickAwayListener } from "@mui/material";
 import {
   useQueryParam,
   DelimitedArrayParam,
