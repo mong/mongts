@@ -17,8 +17,6 @@ jobs:
   deploy_to_storage:
     name: Deploy app to Azure
     runs-on: ubuntu-latest
-    env:
-      NEXT_PUBLIC_SENTRY: "https://d48c58a239264c12bcbf8fe86d364c44@o489056.ingest.sentry.io/5799127"
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4

@@ -1,31 +1,10 @@
 import Link from "next/link";
 import React from "react";
-import * as Sentry from "@sentry/react";
-import { browserTracingIntegration } from "@sentry/browser";
 import { ThemeProvider, styled, Toolbar } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 import { PageWrapper } from "../src/components/StyledComponents/PageWrapper";
 import Image from "next/image";
 import { imgLoader } from "qmongjs";
-
-/* istanbul ignore next */
-if (process.env.NEXT_PUBLIC_SENTRY) {
-  try {
-    Sentry.init({
-      dsn: process.env.NEXT_PUBLIC_SENTRY,
-      autoSessionTracking: true,
-      integrations: [browserTracingIntegration()],
-      tracesSampleRate: 1.0,
-    });
-  } catch (error) {
-    console.log(
-      "Sentry not working with dsn=" +
-        process.env.NEXT_PUBLIC_SENTRY +
-        " error=" +
-        error,
-    );
-  }
-}
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
