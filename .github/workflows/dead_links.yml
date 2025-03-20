@@ -17,12 +17,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20.x"
+          node-version: "22.x"
           cache: "yarn"
       - run: corepack enable && yarn install
       - name: Build page
         env:
-          NEXT_PUBLIC_API_HOST: https://prod-mong-api.skde.org
+          NEXT_PUBLIC_API_HOST: https://prod-api.skde.org
         run: |
           yarn run export
       - name: Find dead links
