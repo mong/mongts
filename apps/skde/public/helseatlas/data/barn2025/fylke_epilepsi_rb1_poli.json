@@ -36,7 +36,7 @@
     },
     {
       "type": "barchart",
-      "data": "datasett_4",
+      "data": "datasett_1",
       "x": [
         "snittprev"
       ],
@@ -53,7 +53,7 @@
     },
     {
       "type": "barchart",
-      "data": "datasett_4",
+      "data": "datasett_1",
       "x": [
         "pasratesnitt"
       ],
@@ -81,7 +81,7 @@
     },
     {
       "type": "barchart",
-      "data": "datasett_4",
+      "data": "datasett_1",
       "x": [
         "pasratesnitt"
       ],
@@ -109,69 +109,6 @@
         ]
       },
       "format": ",.1f"
-    },
-    {
-      "type": "linechart",
-      "data": "datasett_2",
-      "linevars": [
-        "rate"
-      ],
-      "linevarsLabels": {
-        "nb": [
-          "Rate: Antall epilepsi konsulatsjoner pr. 1 000 barn, Norge"
-        ],
-        "en": [
-          "Rate Norway"
-        ]
-      },
-      "x": [
-        "aar"
-      ],
-      "y": "rate",
-      "xLabel": {
-        "nb": "År",
-        "en": "Year"
-      },
-      "yLabel": {
-        "nb": "Rate: Antall epilepsi konsultasjoner pr. 1 000 barn",
-        "en": "Rate: Number of consultations epilepsi per 1,000 children"
-      },
-      "format_y": ",.0f"
-    },
-    {
-      "type": "linechart",
-      "data": "datasett_3",
-      "linevars": [
-        "jenter",
-        "gutter"
-      ],
-      "linecolors": [
-        "#253776",
-        "#74A5CD"
-      ],
-      "linevarsLabels": {
-        "nb": [
-          "Jenter",
-          "Gutter"
-        ],
-        "en": [
-          "Girls",
-          "Boys"
-        ]
-      },
-      "x": [
-        "alder"
-      ],
-      "y": "pasienter",
-      "xLabel": {
-        "nb": "Alder",
-        "en": "Age"
-      },
-      "yLabel": {
-        "nb": "Antall barn med epilepsi konsultasjon",
-        "en": "Number of children with consultation"
-      },
-      "format_y": ",.0f"
     },
     {
       "type": "table",
@@ -286,7 +223,9 @@
           "pr_pas_justsnitt": 2.87175438841,
           "offratesnitt": 8.82389909291,
           "privratesnitt": 0.095867146064,
-          "pct_privsnitt": 0.0107477195585
+          "pct_privsnitt": 0.0107477195585,
+          "snittprev": 2.69939022267,
+          "start": 0
         },
         {
           "bohf": "Rogaland",
@@ -304,7 +243,9 @@
           "pr_pas_justsnitt": 2.64770634761,
           "offratesnitt": 9.97069847459,
           "privratesnitt": 0,
-          "pct_privsnitt": 0
+          "pct_privsnitt": 0,
+          "snittprev": 3.45374080341,
+          "start": 0
         },
         {
           "bohf": "Møre og Romsdal",
@@ -322,7 +263,9 @@
           "pr_pas_justsnitt": 3.54260775459,
           "offratesnitt": 15.0874728061,
           "privratesnitt": 0,
-          "pct_privsnitt": 0
+          "pct_privsnitt": 0,
+          "snittprev": 4.36850146788,
+          "start": 0
         },
         {
           "bohf": "Nordland",
@@ -340,7 +283,9 @@
           "pr_pas_justsnitt": 2.57931217089,
           "offratesnitt": 9.68374810821,
           "privratesnitt": 0.178758306096,
-          "pct_privsnitt": 0.0181250382598
+          "pct_privsnitt": 0.0181250382598,
+          "snittprev": 3.98943412928,
+          "start": 0
         },
         {
           "bohf": "Østfold",
@@ -358,7 +303,9 @@
           "pr_pas_justsnitt": 2.33711125875,
           "offratesnitt": 8.26048141315,
           "privratesnitt": 0.179022096805,
-          "pct_privsnitt": 0.0212123967475
+          "pct_privsnitt": 0.0212123967475,
+          "snittprev": 3.76289422038,
+          "start": 0
         },
         {
           "bohf": "Akershus",
@@ -376,7 +323,9 @@
           "pr_pas_justsnitt": 2.54035531709,
           "offratesnitt": 8.79872139558,
           "privratesnitt": 0.108071746172,
-          "pct_privsnitt": 0.0121336315386
+          "pct_privsnitt": 0.0121336315386,
+          "snittprev": 2.99250841677,
+          "start": 0
         },
         {
           "bohf": "Buskerud",
@@ -394,7 +343,9 @@
           "pr_pas_justsnitt": 2.13806231839,
           "offratesnitt": 7.82846344218,
           "privratesnitt": 0.00604026716425,
-          "pct_privsnitt": 0.000770982743558
+          "pct_privsnitt": 0.000770982743558,
+          "snittprev": 3.21194587498,
+          "start": 0
         },
         {
           "bohf": "Innlandet",
@@ -412,7 +363,9 @@
           "pr_pas_justsnitt": 2.19043857723,
           "offratesnitt": 9.36087387735,
           "privratesnitt": 0.0090001248529,
-          "pct_privsnitt": 0.000960538514263
+          "pct_privsnitt": 0.000960538514263,
+          "snittprev": 4.17473027503,
+          "start": 0
         },
         {
           "bohf": "Vestfold",
@@ -430,7 +383,9 @@
           "pr_pas_justsnitt": 2.6456873518,
           "offratesnitt": 8.02166255882,
           "privratesnitt": 0,
-          "pct_privsnitt": 0
+          "pct_privsnitt": 0,
+          "snittprev": 3.68738884422,
+          "start": 0
         },
         {
           "bohf": "Telemark",
@@ -448,7 +403,9 @@
           "pr_pas_justsnitt": 1.86165232079,
           "offratesnitt": 5.89465163049,
           "privratesnitt": 0.17727709204,
-          "pct_privsnitt": 0.0291961747479
+          "pct_privsnitt": 0.0291961747479,
+          "snittprev": 4.3624970043,
+          "start": 0
         },
         {
           "bohf": "Agder",
@@ -466,7 +423,9 @@
           "pr_pas_justsnitt": 3.0332151599,
           "offratesnitt": 11.6521104527,
           "privratesnitt": 0.00450080915606,
-          "pct_privsnitt": 0.000386116432551
+          "pct_privsnitt": 0.000386116432551,
+          "snittprev": 4.29297894821,
+          "start": 0
         },
         {
           "bohf": "Vestland",
@@ -484,7 +443,9 @@
           "pr_pas_justsnitt": 2.11492375414,
           "offratesnitt": 8.51194395029,
           "privratesnitt": 0.00929171024297,
-          "pct_privsnitt": 0.00109041817562
+          "pct_privsnitt": 0.00109041817562,
+          "snittprev": 3.86392371287,
+          "start": 0
         },
         {
           "bohf": "Trøndelag",
@@ -502,7 +463,9 @@
           "pr_pas_justsnitt": 2.96536735554,
           "offratesnitt": 9.36211772766,
           "privratesnitt": 0.0331486969126,
-          "pct_privsnitt": 0.00352823383762
+          "pct_privsnitt": 0.00352823383762,
+          "snittprev": 3.51766319711,
+          "start": 0
         },
         {
           "bohf": "Troms",
@@ -520,7 +483,9 @@
           "pr_pas_justsnitt": 2.72573061666,
           "offratesnitt": 7.45823212642,
           "privratesnitt": 0,
-          "pct_privsnitt": 0
+          "pct_privsnitt": 0,
+          "snittprev": 4.70707894641,
+          "start": 0
         },
         {
           "bohf": "Finnmark",
@@ -538,7 +503,9 @@
           "pr_pas_justsnitt": 2.43274399056,
           "offratesnitt": 9.71959183917,
           "privratesnitt": 0.0229110264482,
-          "pct_privsnitt": 0.00235165714234
+          "pct_privsnitt": 0.00235165714234,
+          "snittprev": 3.87069568288,
+          "start": 0
         },
         {
           "bohf": "Norge",
@@ -556,291 +523,9 @@
           "pr_pas_justsnitt": 2.58377931645,
           "offratesnitt": 9.26596098846,
           "privratesnitt": 0.0537735282046,
-          "pct_privsnitt": 0.00576985622374
-        }
-      ]
-    },
-    {
-      "type": "data",
-      "label": "datasett_2",
-      "description": "Ekstradatasettet for gitt resultatboks",
-      "data": [
-        {
-          "bohf": "Norge",
-          "aar": 2017,
-          "rate": 7.26408343873
-        },
-        {
-          "bohf": "Norge",
-          "aar": 2018,
-          "rate": 6.99432450985
-        },
-        {
-          "bohf": "Norge",
-          "aar": 2019,
-          "rate": 7.29662116335
-        },
-        {
-          "bohf": "Norge",
-          "aar": 2020,
-          "rate": 8.81125120542
-        },
-        {
-          "bohf": "Norge",
-          "aar": 2021,
-          "rate": 9.07296788772
-        },
-        {
-          "bohf": "Norge",
-          "aar": 2022,
-          "rate": 9.33402893173
-        },
-        {
-          "bohf": "Norge",
-          "aar": 2023,
-          "rate": 9.54624128957
-        }
-      ]
-    },
-    {
-      "type": "data",
-      "label": "datasett_3",
-      "description": "Ekstradatasettet for gitt resultatboks",
-      "data": [
-        {
-          "alder": 0,
-          "andel": 0.000735228871677,
-          "jenter": 19.3333333333,
-          "gutter": 19.3333333333
-        },
-        {
-          "alder": 1,
-          "andel": 0.00178712285545,
-          "jenter": 48.3333333333,
-          "gutter": 39.6666666667
-        },
-        {
-          "alder": 2,
-          "andel": 0.00187642738103,
-          "jenter": 50.6666666667,
-          "gutter": 50
-        },
-        {
-          "alder": 3,
-          "andel": 0.00211263354862,
-          "jenter": 58.3333333333,
-          "gutter": 73.3333333333
-        },
-        {
-          "alder": 4,
-          "andel": 0.00219808637186,
-          "jenter": 62.3333333333,
-          "gutter": 89.3333333333
-        },
-        {
-          "alder": 5,
-          "andel": 0.0029178872208,
-          "jenter": 85,
-          "gutter": 111.333333333
-        },
-        {
-          "alder": 6,
-          "andel": 0.00301367398345,
-          "jenter": 89.3333333333,
-          "gutter": 125.666666667
-        },
-        {
-          "alder": 7,
-          "andel": 0.00304786482608,
-          "jenter": 91.3333333333,
-          "gutter": 129
-        },
-        {
-          "alder": 8,
-          "andel": 0.00346324141861,
-          "jenter": 105.333333333,
-          "gutter": 136
-        },
-        {
-          "alder": 9,
-          "andel": 0.00369234755571,
-          "jenter": 114,
-          "gutter": 155.666666667
-        },
-        {
-          "alder": 10,
-          "andel": 0.00423881101879,
-          "jenter": 133.666666667,
-          "gutter": 164.666666667
-        },
-        {
-          "alder": 11,
-          "andel": 0.00412441821809,
-          "jenter": 132.333333333,
-          "gutter": 178
-        },
-        {
-          "alder": 12,
-          "andel": 0.00464308827004,
-          "jenter": 150.666666667,
-          "gutter": 176.333333333
-        },
-        {
-          "alder": 13,
-          "andel": 0.00470790306893,
-          "jenter": 151.666666667,
-          "gutter": 163.666666667
-        },
-        {
-          "alder": 14,
-          "andel": 0.0041506356641,
-          "jenter": 132.333333333,
-          "gutter": 153
-        },
-        {
-          "alder": 15,
-          "andel": 0.00419914747787,
-          "jenter": 132.333333333,
-          "gutter": 149.666666667
-        },
-        {
-          "alder": 16,
-          "andel": 0.00414245807089,
-          "jenter": 130,
-          "gutter": 134
-        },
-        {
-          "alder": 17,
-          "andel": 0.00422880512167,
-          "jenter": 131.666666667,
-          "gutter": 124
-        },
-        {
-          "alder": 18,
-          "andel": 0.00413511626658,
-          "jenter": 128.333333333,
-          "gutter": 124.666666667
-        }
-      ]
-    },
-    {
-      "type": "data",
-      "label": "datasett_3",
-      "description": "Ekstradatasettet for gitt resultatboks",
-      "data": [
-        {
-          "alder": 0,
-          "andel": 0.000735228871677,
-          "jenter": 19.3333333333,
-          "gutter": 19.3333333333
-        },
-        {
-          "alder": 1,
-          "andel": 0.00178712285545,
-          "jenter": 48.3333333333,
-          "gutter": 39.6666666667
-        },
-        {
-          "alder": 2,
-          "andel": 0.00187642738103,
-          "jenter": 50.6666666667,
-          "gutter": 50
-        },
-        {
-          "alder": 3,
-          "andel": 0.00211263354862,
-          "jenter": 58.3333333333,
-          "gutter": 73.3333333333
-        },
-        {
-          "alder": 4,
-          "andel": 0.00219808637186,
-          "jenter": 62.3333333333,
-          "gutter": 89.3333333333
-        },
-        {
-          "alder": 5,
-          "andel": 0.0029178872208,
-          "jenter": 85,
-          "gutter": 111.333333333
-        },
-        {
-          "alder": 6,
-          "andel": 0.00301367398345,
-          "jenter": 89.3333333333,
-          "gutter": 125.666666667
-        },
-        {
-          "alder": 7,
-          "andel": 0.00304786482608,
-          "jenter": 91.3333333333,
-          "gutter": 129
-        },
-        {
-          "alder": 8,
-          "andel": 0.00346324141861,
-          "jenter": 105.333333333,
-          "gutter": 136
-        },
-        {
-          "alder": 9,
-          "andel": 0.00369234755571,
-          "jenter": 114,
-          "gutter": 155.666666667
-        },
-        {
-          "alder": 10,
-          "andel": 0.00423881101879,
-          "jenter": 133.666666667,
-          "gutter": 164.666666667
-        },
-        {
-          "alder": 11,
-          "andel": 0.00412441821809,
-          "jenter": 132.333333333,
-          "gutter": 178
-        },
-        {
-          "alder": 12,
-          "andel": 0.00464308827004,
-          "jenter": 150.666666667,
-          "gutter": 176.333333333
-        },
-        {
-          "alder": 13,
-          "andel": 0.00470790306893,
-          "jenter": 151.666666667,
-          "gutter": 163.666666667
-        },
-        {
-          "alder": 14,
-          "andel": 0.0041506356641,
-          "jenter": 132.333333333,
-          "gutter": 153
-        },
-        {
-          "alder": 15,
-          "andel": 0.00419914747787,
-          "jenter": 132.333333333,
-          "gutter": 149.666666667
-        },
-        {
-          "alder": 16,
-          "andel": 0.00414245807089,
-          "jenter": 130,
-          "gutter": 134
-        },
-        {
-          "alder": 17,
-          "andel": 0.00422880512167,
-          "jenter": 131.666666667,
-          "gutter": 124
-        },
-        {
-          "alder": 18,
-          "andel": 0.00413511626658,
-          "jenter": 128.333333333,
-          "gutter": 124.666666667
+          "pct_privsnitt": 0.00576985622374,
+          "snittprev": 3.61364137713,
+          "start": 0
         }
       ]
     }
