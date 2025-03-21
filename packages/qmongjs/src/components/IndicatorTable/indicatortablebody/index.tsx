@@ -33,36 +33,29 @@ export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
     registriesWithResidentData,
   } = props;
 
-  const done: string[] = [];
   const register_block = registerNames.map((register, i) => {
-    if (!done.includes(register.rname)) {
-      done.push(register.rname);
+    const hasResidentData =
+      registriesWithResidentData != undefined &&
+      registriesWithResidentData.length > 0 &&
+      registriesWithResidentData.includes(register.rname);
 
-      const hasResidentData =
-        registriesWithResidentData != undefined &&
-        registriesWithResidentData.length > 0 &&
-        registriesWithResidentData.includes(register.rname);
-
-      return (
-        <TableBlock
-          context={context}
-          dataQuality={dataQuality}
-          tableType={tableType}
-          key={`${register.rname}`}
-          registerName={register}
-          colspan={colspan}
-          unitNames={unitNames}
-          treatmentYear={treatmentYear}
-          medicalFieldFilter={medicalFieldFilter}
-          showLevelFilter={showLevelFilter}
-          blockTitle={blockTitle ? blockTitle[i] : undefined}
-          chartColours={chartColours}
-          hasResidentData={hasResidentData}
-        />
-      );
-    } else {
-      return null;
-    }
+    return (
+      <TableBlock
+        context={context}
+        dataQuality={dataQuality}
+        tableType={tableType}
+        key={`${register.rname}`}
+        registerName={register}
+        colspan={colspan}
+        unitNames={unitNames}
+        treatmentYear={treatmentYear}
+        medicalFieldFilter={medicalFieldFilter}
+        showLevelFilter={showLevelFilter}
+        blockTitle={blockTitle ? blockTitle[i] : undefined}
+        chartColours={chartColours}
+        hasResidentData={hasResidentData}
+      />
+    );
   });
 
   return <tbody>{register_block}</tbody>;
