@@ -48,11 +48,11 @@ export const RegistryLevelTable = (props: RegistryLevelTableProps) => {
     // Make array of verdicts
     const verdicts = years.map((year) => {
       // Filter on year
-      const dataRow = data.filter((row2) => {
+      const dataRow = data.find((row2) => {
         return row2.year === year;
       });
 
-      return dataRow[0] ? dataRow[0].verdict : "";
+      return dataRow ? dataRow.verdict : "";
     });
 
     return { registry: reg, url: url, verdicts: verdicts };

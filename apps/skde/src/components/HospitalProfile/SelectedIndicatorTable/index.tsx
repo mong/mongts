@@ -29,20 +29,20 @@ const IndicatorRow = (
   lastYear: number,
   data: Indicator[],
 ) => {
-  const indInfo = indicatorInfo.filter((row) => row.indId === indId)[0];
+  const indInfo = indicatorInfo.find((row) => row.indId === indId);
 
-  const point1 = data.filter((row) => {
+  const point1 = data.find((row) => {
     return row.ind_id === indId && row.year === lastYear - 1;
   });
-  const point2 = data.filter((row) => {
+  const point2 = data.find((row) => {
     return row.ind_id === indId && row.year === lastYear;
   });
 
-  const var1 = point1[0] ? point1[0].var : undefined;
-  const var2 = point2[0] ? point2[0].var : undefined;
+  const var1 = point1 ? point1.var : undefined;
+  const var2 = point2 ? point2.var : undefined;
 
-  const level1 = point1[0] ? level(point1[0]) : undefined;
-  const level2 = point2[0] ? level(point2[0]) : undefined;
+  const level1 = point1 ? level(point1) : undefined;
+  const level2 = point2 ? level(point2) : undefined;
 
   return (
     <TableRow key={rowNumber}>
@@ -51,7 +51,7 @@ const IndicatorRow = (
       </TableCell>
       <TableCell>{indInfo.title}</TableCell>
       <TableCell align="right">
-        {point1[0] ? (
+        {point1 ? (
           <Stack
             direction="row"
             alignItems="center"
@@ -59,7 +59,7 @@ const IndicatorRow = (
             spacing={1}
           >
             <Typography variant="body2">
-              {customFormat(point1[0].sformat)(var1)}
+              {customFormat(point1.sformat)(var1)}
             </Typography>
             {newLevelSymbols(level1)}
           </Stack>
@@ -76,7 +76,7 @@ const IndicatorRow = (
             spacing={1}
           >
             <Typography variant="body2">
-              {customFormat(point1[0].sformat)(var2)}
+              {customFormat(point1.sformat)(var2)}
             </Typography>
             {newLevelSymbols(level2)}
           </Stack>
@@ -98,16 +98,16 @@ type SelectedIndicatorTableProps = {
 export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
   const { unitName, titlePadding, titleStyle, lastYear } = props;
 
-  const selectedIndicators = indicatorsPerHospital.filter(
+  const selectedIndicator = indicatorsPerHospital.find(
     (row) => row.unit === unitName,
   );
 
-  if (selectedIndicators.length < 1) {
+  if (!selectedIndicator) {
     return null;
   }
 
-  const selectedIndIds = selectedIndicators[0].commonInd.concat(
-    selectedIndicators[0].specificInd,
+  const selectedIndIds = selectedIndicator.commonInd.concat(
+    selectedIndicator.specificInd,
   );
   // Fetch aggregated data
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -148,7 +148,7 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {selectedIndicators[0].commonInd.map((row, index) =>
+        {selectedIndicator.commonInd.map((row, index) =>
           IndicatorRow(row, index + 1, lastYear, data),
         )}
       </TableBody>
@@ -166,10 +166,10 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
         </TableRow>
       </TableHead>
       <TableBody>
-        {selectedIndicators[0].specificInd.map((row, index) =>
+        {selectedIndicator.specificInd.map((row, index) =>
           IndicatorRow(
             row,
-            index + selectedIndicators[0].commonInd.length + 1,
+            index + selectedIndicator.commonInd.length + 1,
             lastYear,
             data,
           ),
@@ -186,7 +186,7 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
         </Typography>
         <Table>
           {CommonIndTable}
-          {selectedIndicators[0].specificInd.length > 0 && SpecificIndTable}
+          {selectedIndicator.specificInd.length > 0 && SpecificIndTable}
         </Table>
       </Box>
     </ItemBox>

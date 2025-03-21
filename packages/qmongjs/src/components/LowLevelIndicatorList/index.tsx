@@ -98,7 +98,7 @@ const getDataSubset = (
   const selectedLevel: "H" | "M" | "L" | undefined =
     index === 0 ? "H" : index === 1 ? "M" : index === 2 ? "L" : undefined;
 
-  const dataSubset = indData.filter((indDataRow) => {
+  return indData.filter((indDataRow) => {
     if (indDataRow.data === undefined) {
       return false;
     }
@@ -117,8 +117,6 @@ const getDataSubset = (
       return level2(indDataRow, yearDataPoint) === selectedLevel;
     } else return false;
   });
-
-  return dataSubset;
 };
 
 const RegistrySection = (props: {
@@ -175,17 +173,17 @@ type IndicatorRowProps = {
 const IndicatorRow = (props: IndicatorRowProps) => {
   const { row, year, registry, rowID, openRowID, setOpenRowID } = props;
 
-  const yearDataPoint = row.data!.filter((el: DataPoint) => {
+  const yearDataPoint = row.data!.find((el: DataPoint) => {
     return el.year === year;
-  })[0];
+  });
 
-  const yearBeforeDataPoint = row.data!.filter((el: DataPoint) => {
+  const yearBeforeDataPoint = row.data!.find((el: DataPoint) => {
     return el.year === year - 1;
-  })[0];
+  });
 
   const trend = getTrend(
-    yearBeforeDataPoint,
-    yearDataPoint,
+    yearBeforeDataPoint!,
+    yearDataPoint!,
     row.levelDirection,
     Number(row.format?.substring(2, 3)),
   );
@@ -225,7 +223,7 @@ const IndicatorRow = (props: IndicatorRowProps) => {
         <TableCell>
           <Typography variant="body1">{row.indicatorTitle}</Typography>
         </TableCell>
-        <TableCell>{result(row, yearDataPoint, trend)}</TableCell>
+        <TableCell>{result(row, yearDataPoint!, trend)}</TableCell>
       </TableRow>
 
       <TableCell
@@ -294,9 +292,9 @@ const filterData = (
     return data;
   }
 
-  const selectedRegisters = medfields.filter(
+  const selectedRegisters = medfields.find(
     (row) => row.shortName === selectedMedfield,
-  )[0].registers;
+  )!.registers;
 
   return data.filter((row) => selectedRegisters.includes(row.registerName));
 };

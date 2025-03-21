@@ -30,15 +30,15 @@ const getParentUnit = (
   const isHF = HFs.map((row) => row.hf).includes(unitShortName);
 
   if (isHF) {
-    return nestedUnitNames.filter((row) => {
+    return nestedUnitNames.find((row) => {
       return row.hf.map((hf) => hf.hf).includes(unitShortName);
-    })[0].rhf;
+    }).rhf;
   }
 
   // Check if unit is a hospital
-  return HFs.filter((row) => {
+  return HFs.find((row) => {
     return row.hospital.includes(unitShortName);
-  })[0].hf;
+  }).hf;
 };
 
 type SubUnitsProps = {
@@ -144,7 +144,7 @@ export const SubUnits = (props: SubUnitsProps) => {
   } else if (unitLevel === "RHF") {
     buttonList = (
       <List>
-        {RHFs.filter((row) => row.rhf === selectedUnit)[0]
+        {RHFs.find((row) => row.rhf === selectedUnit)
           .hf.filter(
             (row) =>
               !row.hf.includes("Private") &&
@@ -166,19 +166,17 @@ export const SubUnits = (props: SubUnitsProps) => {
   } else if (unitLevel === "HF") {
     buttonList = (
       <List>
-        {HFs.filter((row) => row.hf === selectedUnit)[0].hospital.map(
-          (hospital) => {
-            return (
-              <ListItem key={"subunit-link-" + hospital}>
-                <UnitButton
-                  unitName={hospital}
-                  buttonVariant={buttonVariant}
-                  setUnitName={setUnitName}
-                />
-              </ListItem>
-            );
-          },
-        )}
+        {HFs.find((row) => row.hf === selectedUnit).hospital.map((hospital) => {
+          return (
+            <ListItem key={"subunit-link-" + hospital}>
+              <UnitButton
+                unitName={hospital}
+                buttonVariant={buttonVariant}
+                setUnitName={setUnitName}
+              />
+            </ListItem>
+          );
+        })}
       </List>
     );
   } else {
