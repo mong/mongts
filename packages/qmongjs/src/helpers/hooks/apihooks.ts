@@ -271,7 +271,9 @@ const fetchRegistryRequirements = async () => {
 const fetchResidentData = async (registry?: string) => {
   const registryQuery: string = registry ? `registry=${registry}&` : "";
 
-  const response = await fetch(`${API_HOST}/info/residentData?${registryQuery}`);
+  const response = await fetch(
+    `${API_HOST}/info/residentData?${registryQuery}`,
+  );
 
   if (!response.ok) {
     throw new Error(response.statusText);
@@ -328,4 +330,4 @@ export const useResidentDataQuery = (registry?: string) => {
     refetchOnWindowFocus: false,
     gcTime: 1000 * 60 * 60,
   });
-}
+};

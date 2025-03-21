@@ -1,7 +1,11 @@
 import { useMemo, useEffect, useRef } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import style from "./tableblock.module.css";
-import { useDescriptionQuery, useIndicatorQuery, useResidentDataQuery } from "../../../helpers/hooks";
+import {
+  useDescriptionQuery,
+  useIndicatorQuery,
+  useResidentDataQuery,
+} from "../../../helpers/hooks";
 import { filterOrderIndID } from "../../../helpers/functions";
 import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
@@ -72,7 +76,10 @@ const TableBlock = (props: TableBlockProps) => {
     registerShortName: registerName.rname,
   });
 
-  const residentDataQuery: UseQueryResult<any, unknown> = useResidentDataQuery(registerName.rname)
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const residentDataQuery: UseQueryResult<any, unknown> = useResidentDataQuery(
+    registerName.rname,
+  );
 
   const uniqueOrderedInd: string[] = useMemo(
     () =>
@@ -94,7 +101,7 @@ const TableBlock = (props: TableBlockProps) => {
     ],
   );
 
-  console.log(uniqueOrderedInd)
+  console.log(uniqueOrderedInd);
 
   const isEmptyRef = useRef(false);
 
@@ -125,11 +132,19 @@ const TableBlock = (props: TableBlockProps) => {
     registerName.rname,
   ]);
 
-  if (descriptionQuery.isLoading || indicatorDataQuery.isLoading || residentDataQuery.isLoading) {
+  if (
+    descriptionQuery.isLoading ||
+    indicatorDataQuery.isLoading ||
+    residentDataQuery.isLoading
+  ) {
     return SkeletonRow(colspan);
   }
 
-  if (descriptionQuery.isError || indicatorDataQuery.isError || residentDataQuery.isError) {
+  if (
+    descriptionQuery.isError ||
+    indicatorDataQuery.isError ||
+    residentDataQuery.isError
+  ) {
     return null;
   }
 
@@ -166,14 +181,27 @@ const TableBlock = (props: TableBlockProps) => {
   // If the page shows caregivers and the registry has data for residents,
   // then the table block should be shown with a message.
   let showTitleAnyway = false;
-
+  let filteredResidentData: ResidentData[];
   if (
     context === "caregiver" &&
     !showTitle &&
     medicalFieldFilter.includes(registerName.rname)
   ) {
-    const filteredResidentData = residentDataQuery.data.filter(
-      (row: ResidentData) => row.year === treatmentYear && unitNames.includes(row.unitName))
+    if (unitNames.length === 1 && unitNames[0] === "Nasjonalt") {
+      filteredResidentData = residentDataQuery.data.filter(
+        (row: ResidentData) =>
+          row.year === treatmentYear && unitNames.includes(row.unitName),
+      );
+    } else {
+      const unitNamesExceptNational = unitNames.filter(
+        (row) => row !== "Nasjonalt",
+      );
+      filteredResidentData = residentDataQuery.data.filter(
+        (row: ResidentData) =>
+          row.year === treatmentYear &&
+          unitNamesExceptNational.includes(row.unitName),
+      );
+    }
 
     if (filteredResidentData.length > 0) {
       showTitleAnyway = true;
@@ -200,8 +228,8 @@ const TableBlock = (props: TableBlockProps) => {
                   Registeret har data på opptaksområde
                 </div>
                 <div style={{ fontSize: "0.9rem", color: "#7d8588" }}>
-                  Det kan hende at det ikke finnes data for valgt år eller
-                  valgte behandlingsenheter.
+                  Velg "Opptaksområde" øverst i filtermenyen til venstre for å
+                  se disse dataene.
                 </div>
                 <div style={{ fontSize: "0.9rem" }}>
                   <Link href={"/behandlingskvalitet/" + registerName.rname}>
