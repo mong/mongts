@@ -1,6 +1,5 @@
 import { RegisterName } from "types";
 import TableBlock from "../tableblock";
-import { NoDataAvailible } from "../ContenForEmptyTable";
 
 interface IndicatorTableBodyProps {
   context: string;
@@ -30,7 +29,6 @@ export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
     medicalFieldFilter,
     showLevelFilter,
     blockTitle,
-    onEmptyStatusChanged,
     chartColours,
     registriesWithResidentData,
   } = props;
@@ -58,7 +56,6 @@ export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
           medicalFieldFilter={medicalFieldFilter}
           showLevelFilter={showLevelFilter}
           blockTitle={blockTitle ? blockTitle[i] : undefined}
-          onEmptyStatusChanged={onEmptyStatusChanged}
           chartColours={chartColours}
           hasResidentData={hasResidentData}
         />
@@ -67,12 +64,6 @@ export const IndicatorTableBody = (props: IndicatorTableBodyProps) => {
       return null;
     }
   });
-  const isEmpty = !done.length;
 
-  return (
-    <tbody>
-      {isEmpty && <NoDataAvailible colspan={colspan} />}
-      {register_block}
-    </tbody>
-  );
+  return <tbody>{register_block}</tbody>;
 };
