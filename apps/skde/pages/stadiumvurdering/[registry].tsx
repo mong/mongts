@@ -123,12 +123,12 @@ const Stadiumfigur = ({ registry }) => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const registries: RegisterName[] = await fetchRegisterNames();
 
-  const filteredRegistries = registries.filter(
+  const filteredRegistries = registries.find(
     (register) => register.rname === context.params?.registry,
   );
 
   return {
-    props: { registry: filteredRegistries[0].rname },
+    props: { registry: filteredRegistries.rname },
   };
 };
 

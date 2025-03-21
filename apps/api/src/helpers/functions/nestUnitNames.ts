@@ -4,21 +4,20 @@ export const nestTuNames = (
   tu_names: TuName[],
   opts_tu: OptsTu[],
 ): NestedTreatmentUnitName[] => {
-  const opts_rhf = opts_tu.filter((opts) => opts.label === "RHF")[0].options;
+  const opts_rhf = opts_tu.find((opts) => opts.label === "RHF")!.options;
 
-  const opts_hf = opts_tu.filter((opts) => opts.label === "HF")[0].options;
-  const opts_hosp = opts_tu.filter((opts) => opts.label === "Sykehus")[0]
-    .options;
+  const opts_hf = opts_tu.find((opts) => opts.label === "HF")!.options;
+  const opts_hosp = opts_tu.find((opts) => opts.label === "Sykehus")!.options;
 
-  tu_names.sort((a, b) => {
-    return a.hospital > b.hospital ? 1 : a.hospital < b.hospital ? -1 : 0;
-  });
-  tu_names.sort((a, b) => {
-    return a.hf_sort > b.hf_sort ? 1 : a.hf_sort < b.hf_sort ? -1 : 0;
-  });
-  tu_names.sort((a, b) => {
-    return a.rhf_sort > b.rhf_sort ? 1 : a.rhf_sort < b.rhf_sort ? -1 : 0;
-  });
+  tu_names.sort((a, b) =>
+    a.hospital > b.hospital ? 1 : a.hospital < b.hospital ? -1 : 0,
+  );
+  tu_names.sort((a, b) =>
+    a.hf_sort > b.hf_sort ? 1 : a.hf_sort < b.hf_sort ? -1 : 0,
+  );
+  tu_names.sort((a, b) =>
+    a.rhf_sort > b.rhf_sort ? 1 : a.rhf_sort < b.rhf_sort ? -1 : 0,
+  );
 
   const nested_tu_names = tu_names.reduce((acc, cur) => {
     if (acc.length === 0 || acc.every((tu_entry) => tu_entry.rhf !== cur.rhf)) {
@@ -52,11 +51,11 @@ export const nestTuNames = (
           hf_shortest: cur.hf_shortest,
           hospital: [cur.hospital],
         };
-        acc.filter((acc_data) => acc_data.rhf === cur.rhf)[0].hf.push(hf_entry);
+        acc.find((acc_data) => acc_data.rhf === cur.rhf)!.hf.push(hf_entry);
       } else {
         acc
-          .filter((acc_data) => acc_data.rhf === cur.rhf)[0]
-          .hf.filter((hf) => hf.hf === cur.hf)[0]
+          .find((acc_data) => acc_data.rhf === cur.rhf)!
+          .hf.find((hf) => hf.hf === cur.hf)!
           .hospital.push(cur.hospital);
       }
     }

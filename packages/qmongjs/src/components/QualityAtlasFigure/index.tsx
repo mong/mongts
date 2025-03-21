@@ -3,7 +3,6 @@ import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "qmongjs/src/helpers/hooks";
 import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
 import { Indicator } from "types";
-import { level } from "qmongjs";
 import { HeatMapColumn } from "../Charts/HeatMap";
 
 type QualityAtlasFigureProps = {
@@ -67,23 +66,17 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
   }
 
   // Remove units with no data
-  const validUnitNames = unitNames.filter((unitName) => {
-    return (
-      filteredData
-        .filter((row) => {
-          return row.unit_name === unitName;
-        })
-        .map((row) => level(row)).length > 0
-    );
-  });
+  const validUnitNames = unitNames.filter((unitName) =>
+    filteredData.find((row) => row.unit_name === unitName),
+  );
 
-  filteredData = filteredData.filter((row) => {
-    return validUnitNames.includes(row.unit_name);
-  });
+  filteredData = filteredData.filter((row) =>
+    validUnitNames.includes(row.unit_name),
+  );
 
-  const filteredIndIDs = indIDs.filter((indID) => {
-    return filteredData.map((row) => row.ind_id).includes(indID);
-  });
+  const filteredIndIDs = indIDs.filter((indID) =>
+    filteredData.map((row) => row.ind_id).includes(indID),
+  );
 
   // Map indicator IDs to description
   const indNameKey = filteredData.map((row) => {
@@ -105,9 +98,7 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
   heatmapData.data = heatmapData.data.filter((col) => {
     const nRows = heatmapData.data[0].bins.length;
     const counts = col.bins.map((bin) => bin.count);
-    const invalidCounts = counts.filter((bin) => {
-      return bin == -1;
-    });
+    const invalidCounts = counts.filter((bin) => bin == -1);
     return invalidCounts.length === nRows ? false : true;
   });
 

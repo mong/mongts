@@ -62,19 +62,14 @@ export const Abacus = ({
   // Pick out bohf query from the url
   const [selectedBohfs, toggleBohf] = useBohfQueryParam(national);
 
-  // Move Norge to the end of data to plot,
+  // Move Norge and selected bohf to the end of data to plot,
   // so they will be on top of the other circles.
-  let figData = data
-    .filter((d) => d["bohf"] != national)
-    .concat(data.filter((d) => d["bohf"] === national)[0]);
-
-  if (selectedBohfs) {
-    // Move selected bohf to the end of data to plot (if it exists in the data),
-    // so they will be on top of the other circles.
-    figData = figData
-      .filter((d) => !selectedBohfs.has(d["bohf"] as string))
-      .concat(figData.filter((d) => selectedBohfs.has(d["bohf"] as string)));
-  }
+  const figData = data
+    .filter(
+      (d) => d["bohf"] != national && !selectedBohfs.has(d["bohf"] as string),
+    )
+    .concat(data.find((d) => d["bohf"] === national))
+    .concat(data.filter((d) => selectedBohfs.has(d["bohf"] as string)));
 
   const values = [...figData.flatMap((dt) => dt[x] as number)];
   const xMaxVal = xMax ? xMax : max(values) * 1.1;
