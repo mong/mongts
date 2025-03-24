@@ -9,33 +9,31 @@ export const validateTreatmentUnits = function (
     return [];
   }
   const unitsHosp = treatment_units
-    .filter((unit) => {
-      const hosp = valid_treatment_units
-        .filter((opts) => opts.label === "Sykehus")
-        .map((validHosp) =>
-          validHosp.options.map((hospName) => hospName.value),
-        );
-      return hosp[0].includes(unit);
-    })
+    .filter((unit) =>
+      valid_treatment_units
+        .find((opts) => opts.label === "Sykehus")!
+        .options.map((hospName) => hospName.value)
+        .includes(unit),
+    )
     .sort();
 
   const unitsHF = treatment_units
-    .filter((unit) => {
-      const HF = valid_treatment_units
-        .filter((opts) => opts.label === "HF")
-        .map((validHF) => validHF.options.map((HFName) => HFName.value));
-      return HF[0].includes(unit);
-    })
+    .filter((unit) =>
+      valid_treatment_units
+        .find((opts) => opts.label === "HF")!
+        .options.map((HFName) => HFName.value)
+        .includes(unit),
+    )
     .sort();
-  const unitsRHF = treatment_units
-    .filter((unit) => {
-      const rhf = valid_treatment_units
-        .filter((opts) => opts.label === "RHF")
-        .map((validRHF) => validRHF.options.map((RHFName) => RHFName.value));
-      return rhf[0].includes(unit);
-    })
-    .sort();
-  const unitsOut = unitsHosp.concat(unitsHF, unitsRHF);
 
-  return unitsOut;
+  const unitsRHF = treatment_units
+    .filter((unit) =>
+      valid_treatment_units
+        .find((opts) => opts.label === "RHF")!
+        .options.map((RHFName) => RHFName.value)
+        .includes(unit),
+    )
+    .sort();
+
+  return unitsHosp.concat(unitsHF, unitsRHF);
 };
