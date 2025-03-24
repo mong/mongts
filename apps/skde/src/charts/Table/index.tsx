@@ -80,7 +80,7 @@ export const DataTable = ({
               getOrderComparator(
                 order,
                 orderBy,
-                headers.filter((header) => header.id === orderBy)[0].typeVar,
+                headers.find((header) => header.id === orderBy).typeVar,
               ),
             )
             .map((row, i) => (

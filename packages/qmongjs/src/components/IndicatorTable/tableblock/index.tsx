@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useRef } from "react";
+import { useMemo } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import style from "./tableblock.module.css";
 import {
@@ -53,7 +53,6 @@ const TableBlock = (props: TableBlockProps) => {
     showLevelFilter,
     blockTitle,
     unitNames,
-    onEmptyStatusChanged,
     chartColours,
   } = props;
   const queryContext = dataQuality
@@ -100,42 +99,7 @@ const TableBlock = (props: TableBlockProps) => {
     ],
   );
 
-  console.log(uniqueOrderedInd);
-
-  const isEmptyRef = useRef(false);
-
-  useEffect(() => {
-    if (
-      !descriptionQuery.isLoading &&
-      !indicatorDataQuery.isLoading &&
-      !descriptionQuery.isError &&
-      !indicatorDataQuery.isError
-    ) {
-      const isEmpty =
-        descriptionQuery.data.length === 0 ||
-        indicatorDataQuery.data.length === 0;
-
-      if (isEmpty !== isEmptyRef.current) {
-        isEmptyRef.current = isEmpty;
-        onEmptyStatusChanged?.(registerName.rname, isEmpty);
-      }
-    }
-  }, [
-    descriptionQuery.isLoading,
-    indicatorDataQuery.isLoading,
-    descriptionQuery.isError,
-    indicatorDataQuery.isError,
-    descriptionQuery.data,
-    indicatorDataQuery.data,
-    onEmptyStatusChanged,
-    registerName.rname,
-  ]);
-
-  if (
-    descriptionQuery.isLoading ||
-    indicatorDataQuery.isLoading ||
-    residentDataQuery.isLoading
-  ) {
+  if (descriptionQuery.isLoading || indicatorDataQuery.isLoading) {
     return SkeletonRow(colspan);
   }
 
@@ -155,14 +119,14 @@ const TableBlock = (props: TableBlockProps) => {
     const singleIndicatorData = indicatorDataQuery.data.filter(
       (data: Indicator) => data.ind_id === indicator,
     );
-    const singleIndicatorDescription = descriptionQuery.data.filter(
+    const singleIndicatorDescription = descriptionQuery.data.find(
       (data: Description) => data.id === indicator,
     );
     return (
       <IndicatorRow
         context={queryContext}
         indicatorData={singleIndicatorData}
-        description={singleIndicatorDescription[0]}
+        description={singleIndicatorDescription}
         key={indicator}
         unitNames={props.unitNames}
         medicalFieldClass={medicalFieldClass}

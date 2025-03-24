@@ -78,7 +78,6 @@ export const Map = ({
   // Pick out bohf query from the url
   const [selectedBohfs, toggleBohf] = useBohfQueryParam();
 
-  const color = mapColors;
   const width = 1000;
   const height = 1000;
   const initCenter = geoPath().centroid(mapData);
@@ -101,7 +100,7 @@ export const Map = ({
 
   const colorScale = scaleThreshold<number, string>()
     .domain(classes ? classes : [])
-    .range(color ? color : []);
+    .range(mapColors);
 
   const projection = geoMercator()
     .scale(scale)
@@ -121,13 +120,13 @@ export const Map = ({
             const mapId = connection.mapData;
             const attrID = connection.mapAttr;
 
-            const hf = dataToMap.filter(
+            const hf = dataToMap.find(
               (dtm) => dtm[mapId] === d.properties[mapId],
-            )[0][attrID];
+            )[attrID];
 
-            const attr = mapAttr.filter((attribute) => {
+            const attr = mapAttr.find((attribute) => {
               return attribute[attrID] === hf;
-            })[0];
+            });
             const val = attr ? attr[attrName] : undefined;
             return (
               <path

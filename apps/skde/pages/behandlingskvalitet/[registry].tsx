@@ -107,12 +107,12 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
       // Fetch the registry's stage and level
       const registryRankData = registryRankQuery.data as RegistryRank[];
 
-      const filteredRegistryRank = registryRankData.filter(
+      const filteredRegistryRank = registryRankData.find(
         (row: RegistryRank) => row.name === registryName,
       );
 
-      if (filteredRegistryRank[0]) {
-        registryRank = filteredRegistryRank[0].verdict;
+      if (filteredRegistryRank) {
+        registryRank = filteredRegistryRank.verdict;
       }
     }
   }

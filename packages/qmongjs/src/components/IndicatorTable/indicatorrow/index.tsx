@@ -174,12 +174,12 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
     unitNames.length === 0
       ? null
       : unitNames.map((name) => {
-          const filteredIndicator = indicatorData.filter(
+          const filteredIndicator = indicatorData.find(
             (ind) => ind.unit_name === name,
           );
           return formatIndicatorValues(
             description,
-            filteredIndicator[0],
+            filteredIndicator!,
             showLevelFilter,
             name,
             context.context,
