@@ -5,7 +5,7 @@ import { NestedTreatmentUnitName } from "types";
 import { useIndicatorQuery } from "../../helpers/hooks";
 import { UseQueryResult } from "@tanstack/react-query";
 import { Indicator } from "types";
-import { NoDataAvailible } from "./ContenForEmptyTable";
+import { NoDataAvailable } from "./ContentForEmptyTable";
 
 interface IndicatorTableProps {
   context: string;
@@ -119,7 +119,7 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
   } else {
     return (
       <table>
-        <tbody>{<NoDataAvailible colspan={colspan} />}</tbody>
+        <tbody>{<NoDataAvailable colspan={colspan} />}</tbody>
       </table>
     );
   }
