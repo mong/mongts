@@ -268,6 +268,20 @@ const fetchRegistryRequirements = async () => {
   return await response.json();
 };
 
+const fetchResidentData = async (registry?: string) => {
+  const registryQuery: string = registry ? `registry=${registry}&` : "";
+
+  const response = await fetch(
+    `${API_HOST}/info/residentData?${registryQuery}`,
+  );
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  return await response.json();
+};
+
 export const useRegistryRankQuery = (year?: number) => {
   return useQuery({
     queryKey: ["registryRank", year],
@@ -302,6 +316,16 @@ export const useRegistryRequirementsQuery = () => {
   return useQuery({
     queryKey: ["registryRequirements"],
     queryFn: () => fetchRegistryRequirements(),
+    staleTime: 1000 * 60 * 60,
+    refetchOnWindowFocus: false,
+    gcTime: 1000 * 60 * 60,
+  });
+};
+
+export const useResidentDataQuery = (registry?: string) => {
+  return useQuery({
+    queryKey: ["residentData", registry],
+    queryFn: () => fetchResidentData(registry),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
     gcTime: 1000 * 60 * 60,

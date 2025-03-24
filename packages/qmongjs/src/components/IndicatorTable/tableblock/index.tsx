@@ -1,11 +1,15 @@
 import { useMemo } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import style from "./tableblock.module.css";
-import { useDescriptionQuery, useIndicatorQuery } from "../../../helpers/hooks";
+import {
+  useDescriptionQuery,
+  useIndicatorQuery,
+  useResidentDataQuery,
+} from "../../../helpers/hooks";
 import { filterOrderIndID } from "../../../helpers/functions";
 import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
-import { Description, Indicator, RegisterName } from "types";
+import { Description, Indicator, RegisterName, ResidentData } from "types";
 import { IndicatorTableSkeleton } from "../IndicatorTableSkeleton";
 import { TableRow, TableCell, Box, Stack } from "@mui/material";
 import Link from "next/link";
@@ -24,7 +28,6 @@ interface TableBlockProps {
   colspan: number;
   onEmptyStatusChanged?: (registerName: string, isEmpty: boolean) => void;
   chartColours: string[];
-  hasResidentData?: boolean;
 }
 
 const SkeletonRow = (colSpan: number) => {
@@ -51,7 +54,6 @@ const TableBlock = (props: TableBlockProps) => {
     blockTitle,
     unitNames,
     chartColours,
-    hasResidentData,
   } = props;
   const queryContext = dataQuality
     ? { context, type: "dg" }
@@ -71,6 +73,11 @@ const TableBlock = (props: TableBlockProps) => {
   const descriptionQuery: UseQueryResult<any, unknown> = useDescriptionQuery({
     registerShortName: registerName.rname,
   });
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const residentDataQuery: UseQueryResult<any, unknown> = useResidentDataQuery(
+    registerName.rname,
+  );
 
   const uniqueOrderedInd: string[] = useMemo(
     () =>
@@ -96,7 +103,11 @@ const TableBlock = (props: TableBlockProps) => {
     return SkeletonRow(colspan);
   }
 
-  if (descriptionQuery.isError || indicatorDataQuery.isError) {
+  if (
+    descriptionQuery.isError ||
+    indicatorDataQuery.isError ||
+    residentDataQuery.isError
+  ) {
     return null;
   }
 
@@ -133,14 +144,31 @@ const TableBlock = (props: TableBlockProps) => {
   // If the page shows caregivers and the registry has data for residents,
   // then the table block should be shown with a message.
   let showTitleAnyway = false;
-
+  let filteredResidentData: ResidentData[];
   if (
     context === "caregiver" &&
     !showTitle &&
-    hasResidentData &&
     medicalFieldFilter.includes(registerName.rname)
   ) {
-    showTitleAnyway = true;
+    if (unitNames.length === 1 && unitNames[0] === "Nasjonalt") {
+      filteredResidentData = residentDataQuery.data.filter(
+        (row: ResidentData) =>
+          row.year === treatmentYear && unitNames.includes(row.unitName),
+      );
+    } else {
+      const unitNamesExceptNational = unitNames.filter(
+        (row) => row !== "Nasjonalt",
+      );
+      filteredResidentData = residentDataQuery.data.filter(
+        (row: ResidentData) =>
+          row.year === treatmentYear &&
+          unitNamesExceptNational.includes(row.unitName),
+      );
+    }
+
+    if (filteredResidentData.length > 0) {
+      showTitleAnyway = true;
+    }
   }
 
   return (
@@ -163,8 +191,8 @@ const TableBlock = (props: TableBlockProps) => {
                   Registeret har data på opptaksområde
                 </div>
                 <div style={{ fontSize: "0.9rem", color: "#7d8588" }}>
-                  Det kan hende at det ikke finnes data for valgt år eller
-                  valgte behandlingsenheter.
+                  Velg "Opptaksområder" øverst i filtermenyen til venstre for å
+                  se disse dataene.
                 </div>
                 <div style={{ fontSize: "0.9rem" }}>
                   <Link href={"/behandlingskvalitet/" + registerName.rname}>
