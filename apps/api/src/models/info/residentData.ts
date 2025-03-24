@@ -4,7 +4,7 @@ import { Filter } from ".";
 
 export const residentDataModel = (filter?: Filter): Promise<ResidentData[]> =>
   db
-    .select("ind_id", "registry", "year", "unit_name")
+    .select("ind_id AS indicatoID", "registry", "year", "unit_name AS unitName")
     .from("vw_resident_data")
     .modify((queryBuilder) => {
       if (filter?.registry) {
