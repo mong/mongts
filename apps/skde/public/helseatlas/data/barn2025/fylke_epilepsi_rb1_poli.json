@@ -3,7 +3,9 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["snittprev"],
+      "x": [
+        "snittprev"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Legemiddelrate (søyle) og pasientrate (linje) pr. 1000 barn",
@@ -13,13 +15,28 @@
         "nb": "Fylker",
         "en": "Counties"
       },
-      "errorBars": ["start", "pasratesnitt"],
+      "annualVar": [
+        "start",
+        "pasratesnitt"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "0",
+          "Pasientrate"
+        ],
+        "en": [
+          "0",
+          "Pasientrate"
+        ]
+      },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["snittprev"],
+      "x": [
+        "snittprev"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Legemiddelrate pr. 1000 barn",
@@ -34,7 +51,9 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["pasratesnitt"],
+      "x": [
+        "pasratesnitt"
+      ],
       "y": "bohf",
       "xLabel": {
         "nb": "Pasientrate: Antall pasienter pr. 1000 barn",
@@ -49,11 +68,20 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": ["pasratesnitt", "diffrate"],
+      "x": [
+        "pasratesnitt",
+        "diffrate"
+      ],
       "y": "bohf",
       "xLegend": {
-        "nb": ["Pasientrate", "Legemiddelrate (hele søylen)"],
-        "en": ["Private", "Public"]
+        "nb": [
+          "Pasientrate",
+          "Legemiddelrate (hele søylen)"
+        ],
+        "en": [
+          "Private",
+          "Public"
+        ]
       },
       "xLabel": {
         "nb": "Rate: Antall epilepsi xxx yyyy pr. 1 000 barn",
