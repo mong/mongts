@@ -257,6 +257,7 @@ export const ResultBox = ({
           id={`${id}-header`}
           sx={{
             backgroundColor: "#FAFAFA",
+            fontSize: "1.1rem",
             ":hover": {
               backgroundColor: "rgb(241, 241, 241)",
               transition: "200ms ease-in",

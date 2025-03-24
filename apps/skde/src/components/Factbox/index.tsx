@@ -27,6 +27,7 @@ export const FactBox = ({ atlas, boxTitle, boxContent, id }: FactBoxProps) => {
           sx={{
             backgroundColor: "#E6EEF8",
             fontWeight: "600",
+            fontSize: "1rem",
             color: "#033F85",
             ":hover": {
               backgroundColor: "rgba(3,69,132,0.2)",
