@@ -138,14 +138,14 @@ const TableBlock = (props: TableBlockProps) => {
     const singleIndicatorData = indicatorDataQuery.data.filter(
       (data: Indicator) => data.ind_id === indicator,
     );
-    const singleIndicatorDescription = descriptionQuery.data.filter(
+    const singleIndicatorDescription = descriptionQuery.data.find(
       (data: Description) => data.id === indicator,
     );
     return (
       <IndicatorRow
         context={queryContext}
         indicatorData={singleIndicatorData}
-        description={singleIndicatorDescription[0]}
+        description={singleIndicatorDescription}
         key={indicator}
         unitNames={props.unitNames}
         medicalFieldClass={medicalFieldClass}
