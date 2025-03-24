@@ -8,8 +8,8 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Antall (rate) astma pr. 1 000 innbyggere",
-        "en": "Number (rate) astma per 1,000 innbyggere"
+        "nb": "Rate: Antall astma konsultasjoner pr. 1 000 innbyggere",
+        "en": "Rate: Number of consultations astma per 1,000 children"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -38,12 +38,12 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": [
-        "passnitt"
+        "pasratesnitt"
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Antall pasienter astma pr. 1000 barn",
-        "en": "Number of patients astma per 1,000 children"
+        "nb": "Rate: Antall astma pasienter pr. 1000 barn",
+        "en": "Rate: Number of patients astma per 1,000 children"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -76,8 +76,8 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Konsultasjoner pr. pasient astma",
-        "en": "Consultations per patients astma"
+        "nb": "Antall astma konsultasjoner pr. pasient",
+        "en": "Number of consultations per patients astma"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -89,8 +89,8 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": [
-        "privsnitt",
-        "offsnitt"
+        "privratesnitt",
+        "offratesnitt"
       ],
       "y": "bohf",
       "xLegend": {
@@ -104,7 +104,7 @@
         ]
       },
       "xLabel": {
-        "nb": "Antall (rate) spesialist/allmennlege pr. 1 000 barn",
+        "nb": "Rate: Antall astma konsultasjoner spesialist/allmennlege pr. 1 000 barn",
         "en": "Number (rate) public/private per 1,000 children"
       },
       "yLabel": {
@@ -121,7 +121,7 @@
       ],
       "linevarsLabels": {
         "nb": [
-          "Antall (rate) konsulatsjoner pr. 1 000 barn, Norge"
+          "Rate: Antall astma konsultasjoner pr. 1 000 barn, Norge"
         ],
         "en": [
           "Rate Norway"
@@ -136,7 +136,7 @@
         "en": "Year"
       },
       "yLabel": {
-        "nb": "Antall (rate) konsultasjoner pr. 1 000 barn",
+        "nb": "Rate: Antall astma konsultasjoner pr. 1 000 barn",
         "en": "Number (rate) astma per 1,000 children"
       },
       "format_y": ",.0f"
@@ -171,7 +171,7 @@
         "en": "Age"
       },
       "yLabel": {
-        "nb": "Antall barn med konsultasjon",
+        "nb": "Antall barn med astma konsultasjon",
         "en": "Number of children"
       },
       "format_y": ",.0f"
@@ -180,8 +180,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2021-2023. Antall (rate) pr. 1  000 barn",
-        "en": "Årlige gjennomsnittsverdier for perioden 2021-2023. Antall (rate) pr. 1  000 barn"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2021-2023. Rate: Antall konsultasjoner pr. 1 000 barn",
+        "en": "Yearly average for the period 2021-2023. Rate: Number of consultations per 1 000 children"
       },
       "columns": [
         {
@@ -201,7 +201,7 @@
         {
           "id": "antsnitt",
           "label_no": "Konsultasjoner",
-          "label_en": "Examinations",
+          "label_en": "Number",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -213,25 +213,25 @@
           "format": ",.0f"
         },
         {
-          "id": "popsnitt",
-          "label_no": "Innbyggere",
-          "label_en": "Inhabitants",
-          "typeVar": "number",
-          "format": ",.0f"
-        },
-        {
           "id": "pr_pas_justsnitt",
-          "label_no": "Konsultasjoner pr. pas.",
+          "label_no": "Antall pr. pasient",
           "label_en": "Examinations per patient",
           "typeVar": "number",
-          "format": ",.2f"
+          "format": ",.1f"
         },
         {
-          "id": "pct_spessnitt",
+          "id": "pct_privsnitt",
           "label_no": "Andel poliklinikk",
           "label_en": "Percent spesialist",
           "typeVar": "number",
           "format": ",.0%"
+        },
+        {
+          "id": "popsnitt",
+          "label_no": "Innbyggere (0-18 år)",
+          "label_en": "Inhabitants",
+          "typeVar": "number",
+          "format": ",.0f"
         }
       ]
     },
@@ -240,8 +240,8 @@
       "data": "datasett_1",
       "x": "ratesnitt",
       "caption": {
-        "nb": "Antall (rate) astma pr. 1 000 innbyggere",
-        "en": "Number (rate) astma per 1,000 innbyggere"
+        "nb": "Rate: Antall astma konsultasjoner pr. 1 000 barn",
+        "en": "Rate: Number of consultations astma per 1,000 children"
       },
       "jenks": [
         {
@@ -282,9 +282,10 @@
           "pasrate2022": 51.2267516617,
           "rate2023": 88.7601192775,
           "pasrate2023": 52.0768897618,
-          "rateSnitt": 88.5740302418,
-          "antSnitt": 1305.66666667,
-          "popSnitt": 14936,
+          "ratesnitt": 88.5740302418,
+          "antsnitt": 1305.66666667,
+          "popsnitt": 14936,
+          "pasratesnitt": 49.531424765,
           "passnitt": 731.333333333,
           "pr_pas_justsnitt": 1.78823909593,
           "offratesnitt": 41.0164090675,
@@ -299,9 +300,10 @@
           "pasrate2022": 36.0306844155,
           "rate2023": 59.5198472816,
           "pasrate2023": 34.0676455811,
-          "rateSnitt": 61.4882865551,
-          "antSnitt": 2337.66666667,
-          "popSnitt": 38681.6666667,
+          "ratesnitt": 61.4882865551,
+          "antsnitt": 2337.66666667,
+          "popsnitt": 38681.6666667,
+          "pasratesnitt": 34.4873178872,
           "passnitt": 1314,
           "pr_pas_justsnitt": 1.78292457408,
           "offratesnitt": 46.4700169675,
@@ -316,9 +318,10 @@
           "pasrate2022": 29.5862861851,
           "rate2023": 46.5600933059,
           "pasrate2023": 27.4883341167,
-          "rateSnitt": 47.0112942781,
-          "antSnitt": 1316.33333333,
-          "popSnitt": 28340.6666667,
+          "ratesnitt": 47.0112942781,
+          "antsnitt": 1316.33333333,
+          "popsnitt": 28340.6666667,
+          "pasratesnitt": 28.3545909038,
           "passnitt": 795,
           "pr_pas_justsnitt": 1.65797822432,
           "offratesnitt": 36.5508835873,
@@ -333,9 +336,10 @@
           "pasrate2022": 31.415314148,
           "rate2023": 55.6850204232,
           "pasrate2023": 32.2509662736,
-          "rateSnitt": 51.9375043117,
-          "antSnitt": 794.666666667,
-          "popSnitt": 15756.3333333,
+          "ratesnitt": 51.9375043117,
+          "antsnitt": 794.666666667,
+          "popsnitt": 15756.3333333,
+          "pasratesnitt": 31.3095235119,
           "passnitt": 481,
           "pr_pas_justsnitt": 1.65884045766,
           "offratesnitt": 32.3852135094,
@@ -350,9 +354,10 @@
           "pasrate2022": 27.9180962255,
           "rate2023": 47.5424540965,
           "pasrate2023": 26.8817832346,
-          "rateSnitt": 46.9676175598,
-          "antSnitt": 1369.33333333,
-          "popSnitt": 29601.3333333,
+          "ratesnitt": 46.9676175598,
+          "antsnitt": 1369.33333333,
+          "popsnitt": 29601.3333333,
+          "pasratesnitt": 27.0388388041,
           "passnitt": 790,
           "pr_pas_justsnitt": 1.73704269995,
           "offratesnitt": 36.1539871793,
@@ -367,9 +372,10 @@
           "pasrate2022": 28.1974573499,
           "rate2023": 54.5154966071,
           "pasrate2023": 30.2630986005,
-          "rateSnitt": 52.3148233406,
-          "antSnitt": 3745.33333333,
-          "popSnitt": 71372,
+          "ratesnitt": 52.3148233406,
+          "antsnitt": 3745.33333333,
+          "popsnitt": 71372,
+          "pasratesnitt": 28.5137406733,
           "passnitt": 2040.33333333,
           "pr_pas_justsnitt": 1.83472326343,
           "offratesnitt": 19.7618558895,
@@ -384,9 +390,10 @@
           "pasrate2022": 27.9662038727,
           "rate2023": 47.1363132108,
           "pasrate2023": 26.095475317,
-          "rateSnitt": 46.1863510139,
-          "antSnitt": 2651.66666667,
-          "popSnitt": 58118.3333333,
+          "ratesnitt": 46.1863510139,
+          "antsnitt": 2651.66666667,
+          "popsnitt": 58118.3333333,
+          "pasratesnitt": 26.5232128925,
           "passnitt": 1524.33333333,
           "pr_pas_justsnitt": 1.74135581542,
           "offratesnitt": 29.177513996,
@@ -401,9 +408,10 @@
           "pasrate2022": 23.3853857223,
           "rate2023": 41.0144177739,
           "pasrate2023": 24.408261134,
-          "rateSnitt": 40.2624647254,
-          "antSnitt": 957,
-          "popSnitt": 24281.6666667,
+          "ratesnitt": 40.2624647254,
+          "antsnitt": 957,
+          "popsnitt": 24281.6666667,
+          "pasratesnitt": 23.9297846004,
           "passnitt": 570.333333333,
           "pr_pas_justsnitt": 1.68252516258,
           "offratesnitt": 30.0697481745,
@@ -418,9 +426,10 @@
           "pasrate2022": 31.137481986,
           "rate2023": 46.6864592472,
           "pasrate2023": 28.2722156314,
-          "rateSnitt": 49.5279225038,
-          "antSnitt": 5053.33333333,
-          "popSnitt": 101598.333333,
+          "ratesnitt": 49.5279225038,
+          "antsnitt": 5053.33333333,
+          "popsnitt": 101598.333333,
+          "pasratesnitt": 30.1513617785,
           "passnitt": 3075.66666667,
           "pr_pas_justsnitt": 1.6426429714,
           "offratesnitt": 34.771916371,
@@ -435,9 +444,10 @@
           "pasrate2022": 23.6853707851,
           "rate2023": 39.3650219613,
           "pasrate2023": 23.4685016391,
-          "rateSnitt": 38.6938429042,
-          "antSnitt": 1602.33333333,
-          "popSnitt": 42017,
+          "ratesnitt": 38.6938429042,
+          "antsnitt": 1602.33333333,
+          "popsnitt": 42017,
+          "pasratesnitt": 23.3632484439,
           "passnitt": 969.666666667,
           "pr_pas_justsnitt": 1.65618419874,
           "offratesnitt": 30.0059878511,
@@ -452,9 +462,10 @@
           "pasrate2022": 20.331343289,
           "rate2023": 31.8498768323,
           "pasrate2023": 18.5568253528,
-          "rateSnitt": 33.6202988858,
-          "antSnitt": 3106.33333333,
-          "popSnitt": 92562.3333333,
+          "ratesnitt": 33.6202988858,
+          "antsnitt": 3106.33333333,
+          "popsnitt": 92562.3333333,
+          "pasratesnitt": 19.4570315474,
           "passnitt": 1796.33333333,
           "pr_pas_justsnitt": 1.72792539314,
           "offratesnitt": 19.9523306882,
@@ -469,9 +480,10 @@
           "pasrate2022": 24.5826697615,
           "rate2023": 43.9458400489,
           "pasrate2023": 24.4353618794,
-          "rateSnitt": 41.0899691394,
-          "antSnitt": 2801.66666667,
-          "popSnitt": 69090.3333333,
+          "ratesnitt": 41.0899691394,
+          "antsnitt": 2801.66666667,
+          "popsnitt": 69090.3333333,
+          "pasratesnitt": 23.6068730537,
           "passnitt": 1613,
           "pr_pas_justsnitt": 1.74059347233,
           "offratesnitt": 20.7886296151,
@@ -486,9 +498,10 @@
           "pasrate2022": 40.6310174872,
           "rate2023": 56.7489600504,
           "pasrate2023": 34.3966904946,
-          "rateSnitt": 64.9736508724,
-          "antSnitt": 8844.66666667,
-          "popSnitt": 136771.333333,
+          "ratesnitt": 64.9736508724,
+          "antsnitt": 8844.66666667,
+          "popsnitt": 136771.333333,
+          "pasratesnitt": 38.224443643,
           "passnitt": 5208.33333333,
           "pr_pas_justsnitt": 1.69979323909,
           "offratesnitt": 28.9784653969,
@@ -503,9 +516,10 @@
           "pasrate2022": 25.2929036697,
           "rate2023": 50.8231585507,
           "pasrate2023": 25.7544055036,
-          "rateSnitt": 52.2722725328,
-          "antSnitt": 6020.66666667,
-          "popSnitt": 113447.333333,
+          "ratesnitt": 52.2722725328,
+          "antsnitt": 6020.66666667,
+          "popsnitt": 113447.333333,
+          "pasratesnitt": 25.3285175091,
           "passnitt": 2917.66666667,
           "pr_pas_justsnitt": 2.06377149843,
           "offratesnitt": 20.8073775456,
@@ -520,9 +534,10 @@
           "pasrate2022": 28.0886465535,
           "rate2023": 47.5574747895,
           "pasrate2023": 28.7885922387,
-          "rateSnitt": 45.4694358624,
-          "antSnitt": 2992,
-          "popSnitt": 66765,
+          "ratesnitt": 45.4694358624,
+          "antsnitt": 2992,
+          "popsnitt": 66765,
+          "pasratesnitt": 27.0503154843,
           "passnitt": 1783.66666667,
           "pr_pas_justsnitt": 1.68092072305,
           "offratesnitt": 27.9874409895,
@@ -537,9 +552,10 @@
           "pasrate2022": 35.0122093677,
           "rate2023": 58.7021954121,
           "pasrate2023": 32.4664512211,
-          "rateSnitt": 64.7971462323,
-          "antSnitt": 7201,
-          "popSnitt": 111719.666667,
+          "ratesnitt": 64.7971462323,
+          "antsnitt": 7201,
+          "popsnitt": 111719.666667,
+          "pasratesnitt": 33.9762042489,
           "passnitt": 3778.66666667,
           "pr_pas_justsnitt": 1.90713317349,
           "offratesnitt": 27.2138348341,
@@ -554,9 +570,10 @@
           "pasrate2022": 34.0017021432,
           "rate2023": 60.2535948384,
           "pasrate2023": 32.9796337801,
-          "rateSnitt": 62.4955973229,
-          "antSnitt": 3256.33333333,
-          "popSnitt": 52965.6666667,
+          "ratesnitt": 62.4955973229,
+          "antsnitt": 3256.33333333,
+          "popsnitt": 52965.6666667,
+          "pasratesnitt": 34.123943552,
           "passnitt": 1782.33333333,
           "pr_pas_justsnitt": 1.83142951305,
           "offratesnitt": 50.2794863486,
@@ -571,9 +588,10 @@
           "pasrate2022": 27.6818774345,
           "rate2023": 46.572714117,
           "pasrate2023": 29.0215606501,
-          "rateSnitt": 45.1615756837,
-          "antSnitt": 1587.33333333,
-          "popSnitt": 35599.3333333,
+          "ratesnitt": 45.1615756837,
+          "antsnitt": 1587.33333333,
+          "popsnitt": 35599.3333333,
+          "pasratesnitt": 27.310177306,
           "passnitt": 959.666666667,
           "pr_pas_justsnitt": 1.65365369759,
           "offratesnitt": 23.6158340376,
@@ -588,9 +606,10 @@
           "pasrate2022": 28.6092446661,
           "rate2023": 48.0566872806,
           "pasrate2023": 28.240901194,
-          "rateSnitt": 46.4472225956,
-          "antSnitt": 3257.33333333,
-          "popSnitt": 70800.6666667,
+          "ratesnitt": 46.4472225956,
+          "antsnitt": 3257.33333333,
+          "popsnitt": 70800.6666667,
+          "pasratesnitt": 27.7998359403,
           "passnitt": 1954.33333333,
           "pr_pas_justsnitt": 1.67077326267,
           "offratesnitt": 34.4665954917,
@@ -605,9 +624,10 @@
           "pasrate2022": 29.9668595896,
           "rate2023": 49.9237411487,
           "pasrate2023": 28.6067224373,
-          "rateSnitt": 51.3853250663,
-          "antSnitt": 60200.6666667,
-          "popSnitt": 1174425,
+          "ratesnitt": 51.3853250663,
+          "antsnitt": 60200.6666667,
+          "popsnitt": 1174425,
+          "pasratesnitt": 29.0854243566,
           "passnitt": 34085.6666667,
           "pr_pas_justsnitt": 1.76670363946,
           "offratesnitt": 28.9236438918,
@@ -665,307 +685,117 @@
       "data": [
         {
           "alder": 0,
-          "ErMann": 0,
-          "pasienter": 68.6666666667,
-          "pop": 26295.6666667,
           "andel": 0.00261133013044,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 0,
-          "ErMann": 1,
-          "pasienter": 129.666666667,
-          "pop": 27565.3333333,
-          "andel": 0.00470397600851,
-          "gender": "Gutter"
+          "jenter": 68.6666666667,
+          "gutter": 129.666666667
         },
         {
           "alder": 1,
-          "ErMann": 0,
-          "pasienter": 670.666666667,
-          "pop": 27045.3333333,
           "andel": 0.0247978702426,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 1,
-          "ErMann": 1,
-          "pasienter": 1115.33333333,
-          "pop": 28392.6666667,
-          "andel": 0.0392824438235,
-          "gender": "Gutter"
+          "jenter": 670.666666667,
+          "gutter": 1115.33333333
         },
         {
           "alder": 2,
-          "ErMann": 0,
-          "pasienter": 1364.33333333,
-          "pop": 27001.6666667,
           "andel": 0.0505277452009,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 2,
-          "ErMann": 1,
-          "pasienter": 1890.33333333,
-          "pop": 28488.3333333,
-          "andel": 0.0663546481016,
-          "gender": "Gutter"
+          "jenter": 1364.33333333,
+          "gutter": 1890.33333333
         },
         {
           "alder": 3,
-          "ErMann": 0,
-          "pasienter": 1266.33333333,
-          "pop": 27611.6666667,
           "andel": 0.0458622562926,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 3,
-          "ErMann": 1,
-          "pasienter": 1708,
-          "pop": 29282,
-          "andel": 0.0583293490882,
-          "gender": "Gutter"
+          "jenter": 1266.33333333,
+          "gutter": 1708
         },
         {
           "alder": 4,
-          "ErMann": 0,
-          "pasienter": 1108.66666667,
-          "pop": 28358,
           "andel": 0.0390953757905,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 4,
-          "ErMann": 1,
-          "pasienter": 1587.66666667,
-          "pop": 30221,
-          "andel": 0.0525352128211,
-          "gender": "Gutter"
+          "jenter": 1108.66666667,
+          "gutter": 1587.66666667
         },
         {
           "alder": 5,
-          "ErMann": 0,
-          "pasienter": 956.333333333,
-          "pop": 29130.6666667,
           "andel": 0.0328290919077,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 5,
-          "ErMann": 1,
-          "pasienter": 1412.33333333,
-          "pop": 30983.3333333,
-          "andel": 0.0455836471221,
-          "gender": "Gutter"
+          "jenter": 956.333333333,
+          "gutter": 1412.33333333
         },
         {
           "alder": 6,
-          "ErMann": 0,
-          "pasienter": 842,
-          "pop": 29642.6666667,
           "andel": 0.0284050017992,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 6,
-          "ErMann": 1,
-          "pasienter": 1270.66666667,
-          "pop": 31460,
-          "andel": 0.0403899131172,
-          "gender": "Gutter"
+          "jenter": 842,
+          "gutter": 1270.66666667
         },
         {
           "alder": 7,
-          "ErMann": 0,
-          "pasienter": 743.333333333,
-          "pop": 29966.3333333,
           "andel": 0.0248056151904,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 7,
-          "ErMann": 1,
-          "pasienter": 1098,
-          "pop": 31481.6666667,
-          "andel": 0.0348774418974,
-          "gender": "Gutter"
+          "jenter": 743.333333333,
+          "gutter": 1098
         },
         {
           "alder": 8,
-          "ErMann": 0,
-          "pasienter": 655.333333333,
-          "pop": 30414.6666667,
           "andel": 0.0215466222437,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 8,
-          "ErMann": 1,
-          "pasienter": 1048.33333333,
-          "pop": 31905,
-          "andel": 0.0328579637465,
-          "gender": "Gutter"
+          "jenter": 655.333333333,
+          "gutter": 1048.33333333
         },
         {
           "alder": 9,
-          "ErMann": 0,
-          "pasienter": 648,
-          "pop": 30874.6666667,
           "andel": 0.020988080843,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 9,
-          "ErMann": 1,
-          "pasienter": 994,
-          "pop": 32426,
-          "andel": 0.0306544131253,
-          "gender": "Gutter"
+          "jenter": 648,
+          "gutter": 994
         },
         {
           "alder": 10,
-          "ErMann": 0,
-          "pasienter": 655,
-          "pop": 31534,
           "andel": 0.0207712310522,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 10,
-          "ErMann": 1,
-          "pasienter": 997.666666667,
-          "pop": 33230.6666667,
-          "andel": 0.0300224692052,
-          "gender": "Gutter"
+          "jenter": 655,
+          "gutter": 997.666666667
         },
         {
           "alder": 11,
-          "ErMann": 0,
-          "pasienter": 661.333333333,
-          "pop": 32085.3333333,
           "andel": 0.0206117021277,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 11,
-          "ErMann": 1,
-          "pasienter": 970.666666667,
-          "pop": 33885.6666667,
-          "andel": 0.0286453466067,
-          "gender": "Gutter"
+          "jenter": 661.333333333,
+          "gutter": 970.666666667
         },
         {
           "alder": 12,
-          "ErMann": 0,
-          "pasienter": 687,
-          "pop": 32449.6666667,
           "andel": 0.0211712498331,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 12,
-          "ErMann": 1,
-          "pasienter": 956,
-          "pop": 34254.3333333,
-          "andel": 0.0279088777089,
-          "gender": "Gutter"
+          "jenter": 687,
+          "gutter": 956
         },
         {
           "alder": 13,
-          "ErMann": 0,
-          "pasienter": 755.666666667,
-          "pop": 32215.3333333,
           "andel": 0.023456739027,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 13,
-          "ErMann": 1,
-          "pasienter": 918,
-          "pop": 34072,
-          "andel": 0.0269429443531,
-          "gender": "Gutter"
+          "jenter": 755.666666667,
+          "gutter": 918
         },
         {
           "alder": 14,
-          "ErMann": 0,
-          "pasienter": 768.666666667,
-          "pop": 31882.6666667,
           "andel": 0.0241092338575,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 14,
-          "ErMann": 1,
-          "pasienter": 853.333333333,
-          "pop": 33725.3333333,
-          "andel": 0.0253024432672,
-          "gender": "Gutter"
+          "jenter": 768.666666667,
+          "gutter": 853.333333333
         },
         {
           "alder": 15,
-          "ErMann": 0,
-          "pasienter": 733.666666667,
-          "pop": 31514.3333333,
           "andel": 0.0232804120876,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 15,
-          "ErMann": 1,
-          "pasienter": 758,
-          "pop": 33147.6666667,
-          "andel": 0.0228673712579,
-          "gender": "Gutter"
+          "jenter": 733.666666667,
+          "gutter": 758
         },
         {
           "alder": 16,
-          "ErMann": 0,
-          "pasienter": 705.666666667,
-          "pop": 31382.3333333,
           "andel": 0.0224861121438,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 16,
-          "ErMann": 1,
-          "pasienter": 670,
-          "pop": 33007,
-          "andel": 0.020298724513,
-          "gender": "Gutter"
+          "jenter": 705.666666667,
+          "gutter": 670
         },
         {
           "alder": 17,
-          "ErMann": 0,
-          "pasienter": 689.666666667,
-          "pop": 31135.6666667,
           "andel": 0.022150374169,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 17,
-          "ErMann": 1,
-          "pasienter": 573.333333333,
-          "pop": 32732.6666667,
-          "andel": 0.0175156316829,
-          "gender": "Gutter"
+          "jenter": 689.666666667,
+          "gutter": 573.333333333
         },
         {
           "alder": 18,
-          "ErMann": 0,
-          "pasienter": 636,
-          "pop": 31035,
           "andel": 0.0204929917835,
-          "gender": "Jenter"
-        },
-        {
-          "alder": 18,
-          "ErMann": 1,
-          "pasienter": 518,
-          "pop": 32588.6666667,
-          "andel": 0.0158950964548,
-          "gender": "Gutter"
+          "jenter": 636,
+          "gutter": 518
         }
       ]
     }

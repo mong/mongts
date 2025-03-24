@@ -8,11 +8,109 @@
   "ingress": "\n**NB: dette atlaset er under arbeid. Tekst og resultater vil kunne endres.**\n\nBarnebefolkningen (0-18 år) i Norge har over de siste 15 årene bestått av i underkant av 1,2 millioner mennesker. Andelen barn utgjør av hele befolkningen har blitt redusert fra 24 % i 2010 til 21 % i 2024. Befolkningsframskrivinger fra Statistisk sentralbyrå anslår at denne utviklingen vil fortsette, og at barnebefolkningen vil utgjøre omkring 19 % av hele befolkningen i 2050, samtidig som andelen eldre forventes å øke betydelig. \n\nBefolkningsutviklingen i årene fremover vil medføre økt trykk på helsetjenesten, og tøffere prioriteringer (ref. helsepersonellkommisjonen). Barn tilhører den friskeste delen av befolkningen, men særlig for de yngste barna kan det være krevende å vurdere når de er alvorlig syke. Det er viktig å følge med på hvordan barn har vært fulgt opp i helsetjenesten, og hvordan de følges opp, også relatert til andre pasientgrupper med behov for helsetjenester, i årene fremover.\n\nDet er forskjellige problemstillinger som fører til kontakt med spesialisthelsetjenesten mellom de yngste barna og ungdommene. Vi har derfor delt barnebefolkningen i tre grupper i mange av analysene - barnehagebarn (0-5 år), barneskolebarn (6-12 år) og ungdom (13-18 år). \n\nI dette helseatlaset presenterer vi funn for bruk av helsetjenester blant barn i den somatiske spesialisthelsetjenesten for perioden 2017-2024. Atlaset dekker dermed nesten hele tidsperioden som er gått siden forrige barnehelseatlas som ble lansert i 2016, med data for perioden 2011-2014. Analysene i dette helseatlaset er likevel ikke direkte sammenlignbare med det første barnehelseatlaset. Aldersutvalget er bredere of definisjonene som ligger til grunn for dette nye atlaset er i tillegg av ulike årsaker, som datakvalitet og tilgang til flere datakilder, noe avvikende fra det gamle atlaset.",
   "kapittel": [
     {
+      "overskrift": "Helsetjenester til barn",
+      "innhold": [
+        {
+          "utvalg": "\nAlle barn i alderen 0-18 år som er i kontakt med somatisk spesialisthelsetjeneste eller har konsultasjon i allmennlegetjenesten (fastlege/legevakt). \n\nEkskludert: Fødselsopphold/nyfødte er ikke talt med (hoved- eller bidiagnose ICD-10 Z38), alder i dager lik null, eller kontakter i første leveuke hvor ICD-10 er Z001 rutinemessig helsekontroll.",
+          "data": "magetarm_rb1_ped.json",
+          "publisert": "2025-03-18T11:00:00.000Z",
+          "resultat": "Det var lite variasjon i andel barn som hadde kontakt med somatisk spesialisthelsetjeneste eller allmennlegetjenesten samlet. Ikke unaturlig da en veldig stor andel av barnepopulasjonen, over 70%,  har mottatt helsehjelp i nevnte tjenester. Det er imidlertid noe variasjon knyttet til hvor helsehjelpen er gitt. I noen opptaksområder er det en større andel barn som mottar helsehjelp i spesialisthelsetjenesten. Vi fant at 38 % av alle barn bosatt i opptaksområdet Nord-Trøndelag var i kontakt med somatisk spesialisthelsetjeneste, mens tilsvarende andel for barn bosatt i Stavanger var 29%. \n\nSamlet har 1,2 millioner norske barn, nærmere 1 million kontakter i spesialisthelsetjenesten, og over 2,2 millioner konsultasjoner i allmennlegetjenesten årlig. Helsepersonellkommisjonen har fastslått at Norge står overfor store utfordringer med tilgang på personell og endret befolkningssammensetning med flere eldre i årene fremover, og at helse- og omsorgstjenesten må styres inn på et mer bærekraftig spor (NOU 2023: 4). Det er grunn til å reise spørsmål ved om det omfang av helsetjenester til de yngste som dette atlaset viser, er hensiktsmessig og bærekraftig.",
+          "overskrift": "Spesialist- og allmennlegetjenesten",
+          "ingress": "Det er i underkant av 1,2 millioner barn i Norge i alderen 0–18 år, og årlig var 850 000 (72%) av dem i kontakt med somatisk spesialisthelsetjeneste eller hadde konsultasjon hos fastlege/legevakt.",
+          "kart": "barn_kart_2025.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-03-18T11:00:00.000Z"
+        },
+        {
+          "utvalg": "gdsgz",
+          "data": "astma_rb1._poli.json",
+          "publisert": "2025-03-18T11:02:00.000Z",
+          "resultat": "dgsg",
+          "overskrift": "Spesialisthelse-tjenesten (somatikk)",
+          "ingress": "Årlig hadde omtrent 365 000 barn, 32% av barnebefolkningen i alderen 0-18 år, kontakt med somatisk spesialisthelsetjeneste.",
+          "kart": "barn_kart_2025.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-03-18T11:02:00.000Z"
+        },
+        {
+          "utvalg": "hfgh",
+          "data": "astma_rb1_ped.json",
+          "publisert": "2025-03-18T11:04:00.000Z",
+          "resultat": "gfhfgh",
+          "overskrift": "Allmennlegetjenesten",
+          "ingress": "Årlig hadde omtrent 785 000 barn, 64% av barnebefolkningen i alderen 0-18 år, over 2,2 millioner konsultasjoner hos fastlege eller legevakt.",
+          "kart": "barn_kart_2025.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-03-18T11:04:00.000Z"
+        }
+      ]
+    },
+    {
+      "overskrift": "Innleggelser",
+      "innhold": [
+        {
+          "utvalg": "Innleggelser i somatisk spesialisthelsetjeneste. Barn i alderen 0-18 år.\n\nEkskludert: Fødselsopphold/nyfødte er ikke talt med (hoved- eller bidiagnose ICD-10 Z38), alder i dager lik null, eller kontakter i første leveuke hvor ICD-10 er Z001 rutinemessig helsekontroll.",
+          "data": "diabetes_rb1_ped.json",
+          "publisert": "2025-03-18T11:08:00.000Z",
+          "resultat": "fdhfdh",
+          "overskrift": "overskrift",
+          "ingress": "Årlig legges nesten 40 000 barn i alderen 0-18 år inn i sykehus. Totalt hadde disse barna 51 000 innleggelser. Gjennomsnittlig hadde barn i Norge 43 innleggelser pr. 1000 barn i alderen 0 - 18 år i perioden 2021-2023.",
+          "kart": "barn_kart_2025.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-03-18T11:08:00.000Z"
+        }
+      ]
+    },
+    {
+      "overskrift": "Poliklinikk",
+      "innhold": [
+        {
+          "utvalg": "dvzdcsz",
+          "data": "epilepsi_rb1_ped.json",
+          "publisert": "2025-03-18T11:12:00.000Z",
+          "resultat": "dvgd",
+          "overskrift": "Poliklinikk",
+          "ingress": "svcfs<dvf",
+          "kart": "barn_kart_2025.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-03-18T11:12:00.000Z"
+        }
+      ]
+    },
+    {
+      "overskrift": "Medisinsk poliklinikk",
+      "innhold": [
+        {
+          "utvalg": "Poliklinikk og dagbehandling i somatisk spesialisthelsetjeneste. Barn i alderen 0-18 år.\n\nEkskludert: Fødselsopphold/nyfødte er ikke talt med (hoved- eller bidiagnose ICD-10 Z38), alder i dager lik null, eller poliklinikk i første leveuke.",
+          "data": "astma_rb1_ped.json",
+          "publisert": "2025-03-18T11:09:00.000Z",
+          "resultat": "Gjennomsnittlig hadde barn i Norge 796 polikliniske konsultasjoner pr. 1 000 barn. \n\nHøyeste rate hadde barn bosatt i opptaksområdene Telemark og Nord-Trøndelag med 960 konsultasjonerpr. 1 000 barn. \n\nLaveste rate hadde barn bosatt i Bergen opptaksområde med 682 kontakter pr. 1 000 barn. Forskjellen mellom høyeste og laveste rate var på 41%. Noe av variasjonen skyldes at barn i enkelte opptaksområder har flere kontakter pr. barn. Barn bosatt i opptaksområdene Møre og Romsdal, St. Olav, Stavanger, Østfold, Vestfold og Sørlandet har gjennomsnittlig flere kontakter pr. barn enn det nasjonale gjennomsnittet. Det alene forklarer ikke variasjonen vi observerer, noe skyldes også at andelen barn i kontakt med spesialisthelsetjenesten er ulik.\n\nVariasjonen i antall polikliniske konsultasjoner var størst blant barnehagebarna, hvor det var 56% forskjell mellom høyeste og laveste rate. For barneskolebarn  og ungdom var forskjellene på henholdsvis 49% og 37%. \n\nNesten en fjerdedel (23%) av poliklinikk til barn utføres av private avtalespesialister.\n\nFagområdene til avtalespesialistene som var hyppigst brukt (antall polikliniske konsultasjoner i 2023 i parentes) er øre-nese-hals (60 000), øye (52 000), barn (51 000) og hud (36 000).  Også avtalespesialister innen andre fagområder tilser barn, men av betydelig mer beskjedent omfang (noen tusen konsultasjoner årlig).",
+          "overskrift": "Polikliniske konsultasjoner",
+          "ingress": "Årlig hadde barn i alderen 0 - 18 år over 930 000 polikliniske kontakter i spesialisthelsetjenesten. Omtrent 355 000 barn var årlig i kontakt med spesialisthelsetjenesten, og de hadde i gjennomsnitt 2,6 kontakter hver.",
+          "kart": "barn_kart_2025.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-03-18T11:09:00.000Z"
+        },
+        {
+          "utvalg": "cxfhfxh",
+          "data": "magetarm_rb1_ped.json",
+          "publisert": "2025-03-18T11:11:00.000Z",
+          "resultat": "Barn bosatt i opptaksområdet St. Olav hadde 54% flere av disse kontaktene enn barn bosatt i opptaksområdene Førde, Fonna og UNN. En variasjon på 54% er betydelig, spesielt gitt volumet på over 520 000 kontakter. \n\nFor å illustrere hva denne variasjonen innebærer kan man tenke at hvis alle barn skulle hatt en rate lik den høyeste, ville det blitt 671 000 kontakter årlig. Det vil si en økning på 148 000 flere polikliniske konsultasjoner.Eller, hvis alle opptaksområdene hadde rate lik den laveste, så ville det blitt utført 435 700 kontakter årlig, altså 87 000 polikliniske konsultasjoner færre.",
+          "overskrift": "Poliklinikk i barneavdelinger",
+          "ingress": "Årlig hadde 200 000 norske barn i alderen 0-18 år over 520 000 polikliniske kontakter definert som medisinske kontakter i perioden 2021-2023.",
+          "kart": "barn_2025_kart.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-03-18T11:11:00.000Z"
+        }
+      ]
+    },
+    {
       "overskrift": "Polikliniske utvalg",
       "innhold": [
         {
           "type": "tekst",
-          "tekst": "ddsgvfsdagasdgd\n\nvvbgdfvgb\n\ndsgdsg"
+          "tekst": "Her beskrives fem pasientgrupper :\n\n*",
+          "beskrivelse": "fghjfghc"
         }
       ]
     },
@@ -21,34 +119,34 @@
       "innhold": [
         {
           "utvalg": "dsgdsg",
-          "data": "atopiker_rb1._poli.json",
+          "data": "atopiker_rb1_poli.json",
           "publisert": "2025-03-13T14:45:00.000Z",
           "resultat": "gddsgds",
           "overskrift": "Poliklinikk",
           "ingress": "sgdg",
-          "kart": "kart_2024.geojson",
+          "kart": "barn_kart_2025.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-03-13T14:45:00.000Z"
         },
         {
           "utvalg": "xzfv",
-          "data": "atopiker_rb1._ped.json",
+          "data": "atopiker_rb1_ped.json",
           "publisert": "2025-03-13T14:46:00.000Z",
           "resultat": "vxc",
           "overskrift": "Barneleger",
           "ingress": "vxc",
-          "kart": "kart_2024.geojson",
+          "kart": "barn_kart_2025.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-03-13T14:46:00.000Z"
         },
         {
           "utvalg": "vdxv",
-          "data": "atopiker_rb1._tot.json",
+          "data": "atopiker_rb1_tot.json",
           "publisert": "2025-03-13T14:46:00.000Z",
           "resultat": "vxcv",
           "overskrift": "Poliklinikk og allmennleger",
           "ingress": "vv",
-          "kart": "kart_2024.geojson",
+          "kart": "barn_kart_2025.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-03-13T14:46:00.000Z"
         }
@@ -64,25 +162,144 @@
         },
         {
           "utvalg": "fcxgcxfg",
-          "data": "astma_rb1._poli.json",
+          "data": "astma_rb1_poli.json",
           "publisert": "2025-03-13T14:09:00.000Z",
           "resultat": "fgghdf",
           "overskrift": "Poliklinikk",
           "ingress": "fgdfgh",
-          "kart": "kart_2024.geojson",
+          "kart": "barn_kart_2025.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-03-13T14:09:00.000Z"
         },
         {
           "utvalg": "wd",
-          "data": "astma_rb1._ped.json",
+          "data": "astma_rb1_ped.json",
           "publisert": "2025-03-13T14:29:00.000Z",
           "resultat": "dfsfds",
           "overskrift": "Barneleger",
           "ingress": "gfdgfd",
-          "kart": "kart_2024.geojson",
+          "kart": "barn_kart_2025.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-03-13T14:29:00.000Z"
+        },
+        {
+          "utvalg": "fdhb",
+          "data": "astma_rb1_tot.json",
+          "publisert": "2025-03-14T12:06:00.000Z",
+          "resultat": "fdb",
+          "overskrift": "Poliklinikk og allmennleger",
+          "ingress": "fdb",
+          "kart": "barn_kart_2025.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-03-14T12:06:00.000Z"
+        }
+      ]
+    },
+    {
+      "overskrift": "Epilepsi",
+      "innhold": [
+        {
+          "utvalg": "gssg",
+          "data": "epilepsi_rb1_poli.json",
+          "publisert": "2025-03-14T08:00:00.000Z",
+          "resultat": "fdghfdg",
+          "overskrift": "Poliklinikk",
+          "ingress": "dsgdfg",
+          "kart": "barn_kart_2025.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-03-14T08:00:00.000Z"
+        },
+        {
+          "utvalg": "test",
+          "data": "epilepsi_rb1_ped.json",
+          "publisert": "2025-03-14T11:11:00.000Z",
+          "resultat": "test",
+          "overskrift": "Barneleger",
+          "ingress": "test",
+          "kart": "barn_kart_2025.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-03-14T11:11:00.000Z"
+        }
+      ]
+    },
+    {
+      "overskrift": "Diabetes",
+      "innhold": [
+        {
+          "utvalg": "rg",
+          "data": "diabetes_rb1_poli.json",
+          "publisert": "2025-03-14T12:02:00.000Z",
+          "resultat": "fbgd",
+          "overskrift": "Poliklinikk",
+          "ingress": "dfsdg",
+          "kart": "barn_kart_2025.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-03-14T12:02:00.000Z"
+        },
+        {
+          "utvalg": "fdhfg",
+          "data": "diabetes_rb1_ped.json",
+          "publisert": "2025-03-14T12:03:00.000Z",
+          "resultat": "fghfg",
+          "overskrift": "Barneleger",
+          "ingress": "v cx",
+          "kart": "barn_kart_2025.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-03-14T12:03:00.000Z"
+        }
+      ]
+    },
+    {
+      "overskrift": "Funksjonelle lidelser",
+      "innhold": [
+        {
+          "utvalg": "cvnb",
+          "data": "magetarm_rb1_poli.json",
+          "publisert": "2025-03-14T12:04:00.000Z",
+          "resultat": "vcn",
+          "overskrift": "Poliklinikk",
+          "ingress": "xcvzxd",
+          "kart": "barn_kart_2025.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-03-14T12:04:00.000Z"
+        },
+        {
+          "utvalg": "bfb",
+          "data": "magetarm_rb1_ped.json",
+          "publisert": "2025-03-14T12:05:00.000Z",
+          "resultat": "vcb",
+          "overskrift": "Barneleger",
+          "ingress": "bcvb",
+          "kart": "barn_kart_2025.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-03-14T12:05:00.000Z"
+        }
+      ]
+    },
+    {
+      "overskrift": "fylke",
+      "innhold": [
+        {
+          "utvalg": "fsd",
+          "data": "fylke_epilepsi_rb2_poli.json",
+          "publisert": "2025-03-20T14:26:00.000Z",
+          "resultat": "sdf",
+          "overskrift": "fylke",
+          "ingress": "fed",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-03-20T14:26:00.000Z"
+        },
+        {
+          "utvalg": "vc",
+          "data": "fylke_epilepsi_rb1_poli.json",
+          "publisert": "2025-03-21T15:19:00.000Z",
+          "resultat": "vcx",
+          "overskrift": "fylke2",
+          "ingress": "dsvv",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-03-21T15:19:00.000Z"
         }
       ]
     }
