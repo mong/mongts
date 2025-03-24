@@ -14,6 +14,7 @@ export {
   useRegistryEvaluationQuery,
   useRegistryScoresQuery,
   useRegistryRequirementsQuery,
+  useResidentDataQuery,
   type FetchIndicatorParams,
 } from "./apihooks";
 export {

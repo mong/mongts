@@ -53,11 +53,8 @@ import {
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
 import checkParamsReady from "./utils/checkParamsReady";
-import { RegisterName } from "types";
-import { fetchRegisterNames } from "qmongjs";
-import { GetStaticProps } from "next";
 
-export default function TreatmentQualityPage({ registryInfo }) {
+export default function TreatmentQualityPage() {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
 
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -124,13 +121,6 @@ export default function TreatmentQualityPage({ registryInfo }) {
   const registers = registryNameQuery?.data;
   const medicalFields = medicalFieldsQuery?.data;
   const nestedUnitNames = unitNamesQuery?.data?.nestedUnitNames;
-
-  // Chech where the registries have data
-  const registryHasResidentData = registryInfo
-    .filter((row: RegisterName) => {
-      return row.resident_data === 1;
-    })
-    .map((row: RegisterName) => row.rname);
 
   /**
    * Handle that the initial filter settings are loaded, which can happen
@@ -374,7 +364,6 @@ export default function TreatmentQualityPage({ registryInfo }) {
                           selectedTreatmentUnits,
                           "colours",
                         )}
-                        registriesWithResidentData={registryHasResidentData}
                       />
                     </IndicatorTableWrapper>
                   )
@@ -420,11 +409,3 @@ export default function TreatmentQualityPage({ registryInfo }) {
     </ThemeProvider>
   );
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-  const registryInfo: RegisterName[] = await fetchRegisterNames();
-
-  return {
-    props: { registryInfo: registryInfo },
-  };
-};

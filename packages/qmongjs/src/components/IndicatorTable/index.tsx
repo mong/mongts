@@ -25,7 +25,6 @@ interface IndicatorTableProps {
   showTreatmentYear?: boolean;
   nestedUnitNames?: NestedTreatmentUnitName[];
   chartColours: string[];
-  registriesWithResidentData?: string[];
 }
 
 export const IndicatorTable = (props: IndicatorTableProps) => {
@@ -46,7 +45,6 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
     showTreatmentYear,
     nestedUnitNames,
     chartColours,
-    registriesWithResidentData,
   } = props;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -111,7 +109,6 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
             showLevelFilter={showLevelFilter ?? ""}
             blockTitle={blockTitle}
             chartColours={chartColours}
-            registriesWithResidentData={registriesWithResidentData}
           />
         </table>
       </>
