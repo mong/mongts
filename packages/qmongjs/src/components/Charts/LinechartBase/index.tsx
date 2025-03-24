@@ -291,9 +291,9 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
 
         // Filter out the data point with the closest y value
         // The point's id will be required for the tooltip box
-        const dataPoint_nearest = valid_dataPoints.filter(
+        const dataPoint_nearest = valid_dataPoints.find(
           (dataPoint) => dataPoint?.y === v_nearest,
-        )[0];
+        );
 
         const y_nearest = yScale(v_nearest!);
 

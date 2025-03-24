@@ -66,13 +66,13 @@ export const RequirementList = (props: RequirementListProps) => {
     return null;
   }
 
-  const rank = rankQuery.data.filter(
+  const rank = rankQuery.data.find(
     (row: RegistryRank) => row.name === registry,
-  )[0];
+  );
 
-  const filteredScores = scoresQuery.data.filter(
+  const filteredScores = scoresQuery.data.find(
     (row: RegistryScores) => row.name === registry,
-  )[0];
+  );
 
   if (!filteredScores || !rank) {
     return null;

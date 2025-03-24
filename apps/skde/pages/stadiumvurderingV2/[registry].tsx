@@ -76,7 +76,7 @@ const Stadiumfigur = ({ registry }) => {
     (row: RegistryRank) => row.name === registry,
   );
 
-  const evaluationData = evaluationQuery.data.filter(
+  const evaluationData = evaluationQuery.data.find(
     (row: RegistryEvaluation) => row.name === registry,
   );
 
@@ -189,8 +189,8 @@ const Stadiumfigur = ({ registry }) => {
       <CustomTabPanel value={value} index={1}>
         <h2>{"Ekspertgruppens vurdering for " + defaultYear}</h2>
         <div style={{ whiteSpace: "pre-wrap" }}>
-          {evaluationData[0]
-            ? evaluationData[0].evaluation_text
+          {evaluationData
+            ? evaluationData.evaluation_text
             : "Ingen evaluering tilgjengelig"}
         </div>
       </CustomTabPanel>
@@ -204,12 +204,12 @@ const Stadiumfigur = ({ registry }) => {
 export const getStaticProps: GetStaticProps = async (context) => {
   const registries: RegisterName[] = await fetchRegisterNames();
 
-  const filteredRegistries = registries.filter(
+  const filteredRegistries = registries.find(
     (register) => register.rname === context.params?.registry,
   );
 
   return {
-    props: { registry: filteredRegistries[0].rname },
+    props: { registry: filteredRegistries.rname },
   };
 };
 

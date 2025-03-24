@@ -164,9 +164,7 @@ export const Linechart = ({
                 {": "}
                 {accessors.xAccessor(tooltipData.nearestDatum.datum)}
                 {Object.keys(tooltipData.datumByKey)
-                  .filter(function (value) {
-                    return linevars.includes(value);
-                  })
+                  .filter((value) => linevars.includes(value))
                   .map((d) => {
                     return (
                       <div key={d}>

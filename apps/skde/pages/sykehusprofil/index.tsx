@@ -119,18 +119,9 @@ export const Skde = (): JSX.Element => {
   // Set unit URL //
   // ############ //
 
-  let newUnitUrl: URLs | undefined;
-  let unitUrl = "";
-
-  if (unitUrlsQuery.data) {
-    newUnitUrl = unitUrlsQuery.data.filter((row: URLs) => {
-      return row.shortName === unitName;
-    });
-  }
-
-  if (newUnitUrl && newUnitUrl[0]) {
-    unitUrl = newUnitUrl[0].url;
-  }
+  const unitUrl: string =
+    unitUrlsQuery.data.find((row: URLs) => row.shortName === unitName)?.url ||
+    "";
 
   return (
     <ThemeProvider theme={skdeTheme}>
