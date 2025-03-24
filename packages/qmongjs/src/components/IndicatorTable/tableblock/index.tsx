@@ -187,14 +187,14 @@ const TableBlock = (props: TableBlockProps) => {
           <TableCell colSpan={colspan} sx={{ padding: 0 }}>
             <Box margin="0.5rem">
               <Stack spacing={"0.5rem"}>
-                <div style={{ fontSize: "1.2rem", fontWeight: "normal" }}>
+                <div style={{ fontSize: "1.25rem", fontWeight: "normal" }}>
                   Registeret har data på opptaksområde
                 </div>
-                <div style={{ fontSize: "0.9rem", color: "#7d8588" }}>
+                <div style={{ fontSize: "0.875rem", color: "#7d8588" }}>
                   Velg "Opptaksområder" øverst i filtermenyen til venstre for å
                   se disse dataene.
                 </div>
-                <div style={{ fontSize: "0.9rem" }}>
+                <div style={{ fontSize: "0.875rem" }}>
                   <Link href={"/behandlingskvalitet/" + registerName.rname}>
                     År og opptaksområder med data vises her.
                   </Link>
