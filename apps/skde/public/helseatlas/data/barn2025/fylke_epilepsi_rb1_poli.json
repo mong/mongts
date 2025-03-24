@@ -8,7 +8,7 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Rate: Legemiddelbruk og antall pasienter pr. 1000 barn",
+        "nb": "Legemiddelrate (søyle) og pasientrate (linje) pr. 1000 barn",
         "en": "Rate: Number of patients epilepsi per 1,000 children"
       },
       "yLabel": {
@@ -21,14 +21,12 @@
       ],
       "annualVarLabels": {
         "nb": [
-          "2021",
-          "2022",
-          "2023"
+          "0",
+          "Pasientrate"
         ],
         "en": [
-          "2021",
-          "2022",
-          "2023"
+          "0",
+          "Pasientrate"
         ]
       },
       "format": ",.0f"
@@ -41,7 +39,7 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Antall epilepsi legemidler pr. 1000 barn",
+        "nb": "Legemiddelrate pr. 1000 barn",
         "en": "Number of consultations per patients epilepsi"
       },
       "yLabel": {
@@ -58,7 +56,7 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Rate: Antall epilepsi pasienter pr. 1000 barn",
+        "nb": "Pasientrate: Antall pasienter pr. 1000 barn",
         "en": "Rate: Number of patients epilepsi per 1,000 children"
       },
       "yLabel": {
@@ -165,24 +163,24 @@
       "jenks": [
         {
           "cluster": 1,
-          "max": 2.99250841677,
-          "min": 2.69939022267,
-          "lag_min": 3.21194587498,
-          "grense": 3.10222714587
+          "max": 4.99250841677,
+          "min": 4.69939022267,
+          "lag_min": 5.21194587498,
+          "grense": 5.10222714587
         },
         {
           "cluster": 2,
-          "max": 3.76289422038,
-          "min": 3.21194587498,
-          "lag_min": 3.86392371287,
-          "grense": 3.81340896662
+          "max": 5.76289422038,
+          "min": 5.21194587498,
+          "lag_min": 5.86392371287,
+          "grense": 5.81340896662
         },
         {
           "cluster": 3,
-          "max": 4.36850146788,
-          "min": 3.86392371287,
-          "lag_min": 4.70707894641,
-          "grense": 4.53779020714
+          "max": 6.36850146788,
+          "min": 5.86392371287,
+          "lag_min": 6.70707894641,
+          "grense": 6.53779020714
         }
       ]
     },
@@ -209,7 +207,7 @@
           "offratesnitt": 8.82389909291,
           "privratesnitt": 0.095867146064,
           "pct_privsnitt": 0.0107477195585,
-          "snittprev": 2.69939022267,
+          "snittprev": 4.69939022267,
           "start": 0,
           "diffrate": 1.5933564076
         },
@@ -230,7 +228,7 @@
           "offratesnitt": 9.97069847459,
           "privratesnitt": 0,
           "pct_privsnitt": 0,
-          "snittprev": 3.45374080341,
+          "snittprev": 5.45374080341,
           "start": 0,
           "diffrate": 1.68795367841
         },
@@ -251,7 +249,7 @@
           "offratesnitt": 15.0874728061,
           "privratesnitt": 0,
           "pct_privsnitt": 0,
-          "snittprev": 4.36850146788,
+          "snittprev": 6.36850146788,
           "start": 0,
           "diffrate": 2.10964080612
         },
@@ -272,7 +270,7 @@
           "offratesnitt": 9.68374810821,
           "privratesnitt": 0.178758306096,
           "pct_privsnitt": 0.0181250382598,
-          "snittprev": 3.98943412928,
+          "snittprev": 5.98943412928,
           "start": 0,
           "diffrate": 2.16573782543
         },
@@ -293,7 +291,7 @@
           "offratesnitt": 8.26048141315,
           "privratesnitt": 0.179022096805,
           "pct_privsnitt": 0.0212123967475,
-          "snittprev": 3.76289422038,
+          "snittprev": 5.76289422038,
           "start": 0,
           "diffrate": 2.15181088905
         },
@@ -314,7 +312,7 @@
           "offratesnitt": 8.79872139558,
           "privratesnitt": 0.108071746172,
           "pct_privsnitt": 0.0121336315386,
-          "snittprev": 2.99250841677,
+          "snittprev": 4.99250841677,
           "start": 0,
           "diffrate": 1.48638741006
         },
@@ -335,7 +333,7 @@
           "offratesnitt": 7.82846344218,
           "privratesnitt": 0.00604026716425,
           "pct_privsnitt": 0.000770982743558,
-          "snittprev": 3.21194587498,
+          "snittprev": 5.21194587498,
           "start": 0,
           "diffrate": 1.5476449601
         },
@@ -356,7 +354,7 @@
           "offratesnitt": 9.36087387735,
           "privratesnitt": 0.0090001248529,
           "pct_privsnitt": 0.000960538514263,
-          "snittprev": 4.17473027503,
+          "snittprev": 6.17473027503,
           "start": 0,
           "diffrate": 1.89710564789
         },
@@ -377,7 +375,7 @@
           "offratesnitt": 8.02166255882,
           "privratesnitt": 0,
           "pct_privsnitt": 0,
-          "snittprev": 3.68738884422,
+          "snittprev": 5.68738884422,
           "start": 0,
           "diffrate": 2.65541208651
         },
@@ -398,7 +396,7 @@
           "offratesnitt": 5.89465163049,
           "privratesnitt": 0.17727709204,
           "pct_privsnitt": 0.0291961747479,
-          "snittprev": 4.3624970043,
+          "snittprev": 6.3624970043,
           "start": 0,
           "diffrate": 3.10091660353
         },
@@ -419,7 +417,7 @@
           "offratesnitt": 11.6521104527,
           "privratesnitt": 0.00450080915606,
           "pct_privsnitt": 0.000386116432551,
-          "snittprev": 4.29297894821,
+          "snittprev": 6.29297894821,
           "start": 0,
           "diffrate": 2.44999035448
         },
@@ -440,7 +438,7 @@
           "offratesnitt": 8.51194395029,
           "privratesnitt": 0.00929171024297,
           "pct_privsnitt": 0.00109041817562,
-          "snittprev": 3.86392371287,
+          "snittprev": 5.86392371287,
           "start": 0,
           "diffrate": 1.83482543268
         },
@@ -461,7 +459,7 @@
           "offratesnitt": 9.36211772766,
           "privratesnitt": 0.0331486969126,
           "pct_privsnitt": 0.00352823383762,
-          "snittprev": 3.51766319711,
+          "snittprev": 5.51766319711,
           "start": 0,
           "diffrate": 2.34933182427
         },
@@ -482,7 +480,7 @@
           "offratesnitt": 7.45823212642,
           "privratesnitt": 0,
           "pct_privsnitt": 0,
-          "snittprev": 4.70707894641,
+          "snittprev": 6.70707894641,
           "start": 0,
           "diffrate": 3.97084665668
         },
@@ -503,7 +501,7 @@
           "offratesnitt": 9.71959183917,
           "privratesnitt": 0.0229110264482,
           "pct_privsnitt": 0.00235165714234,
-          "snittprev": 3.87069568288,
+          "snittprev": 5.87069568288,
           "start": 0,
           "diffrate": 1.86595745171
         },
@@ -524,7 +522,7 @@
           "offratesnitt": 9.26596098846,
           "privratesnitt": 0.0537735282046,
           "pct_privsnitt": 0.00576985622374,
-          "snittprev": 3.61364137713,
+          "snittprev": 5.61364137713,
           "start": 0,
           "diffrate": 2.00662491976
         }
