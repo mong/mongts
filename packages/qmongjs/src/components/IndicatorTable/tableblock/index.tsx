@@ -227,7 +227,7 @@ const TableBlock = (props: TableBlockProps) => {
                   Registeret har data på opptaksområde
                 </div>
                 <div style={{ fontSize: "0.9rem", color: "#7d8588" }}>
-                  Velg "Opptaksområde" øverst i filtermenyen til venstre for å
+                  Velg "Opptaksområder" øverst i filtermenyen til venstre for å
                   se disse dataene.
                 </div>
                 <div style={{ fontSize: "0.9rem" }}>
