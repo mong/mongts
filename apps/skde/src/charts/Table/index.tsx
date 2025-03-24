@@ -59,6 +59,7 @@ export const DataTable = ({
                 key={`${header.id}${i}`}
                 align={header.typeVar === "number" ? "right" : "left"}
                 padding={"none"}
+                sx={{ fontSize: 14 }}
                 sortDirection={orderBy === header.id ? order : false}
               >
                 <TableSortLabel
@@ -99,10 +100,12 @@ export const DataTable = ({
                     key={`${row.bohf}${i}${ind}`}
                     component={ind === 0 ? "th" : "td"}
                     scope="row"
-                    sx={{ paddingTop: "0.125rem" }}
                     padding="none"
                     align={cell.typeVar === "number" ? "right" : "left"}
-                    style={{
+                    sx={{
+                      paddingTop: "0.125rem",
+                      fontFamily:
+                        cell.typeVar === "number" ? "Monospace" : "default",
                       fontWeight: row.bohf === national ? "bolder" : "normal",
                     }}
                   >
