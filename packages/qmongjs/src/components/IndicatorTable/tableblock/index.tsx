@@ -1,4 +1,4 @@
-import { useMemo, useEffect, useRef } from "react";
+import { useMemo } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import style from "./tableblock.module.css";
 import { useDescriptionQuery, useIndicatorQuery } from "../../../helpers/hooks";
@@ -50,7 +50,6 @@ const TableBlock = (props: TableBlockProps) => {
     showLevelFilter,
     blockTitle,
     unitNames,
-    onEmptyStatusChanged,
     chartColours,
     hasResidentData,
   } = props;
@@ -92,35 +91,6 @@ const TableBlock = (props: TableBlockProps) => {
       showLevelFilter,
     ],
   );
-
-  const isEmptyRef = useRef(false);
-
-  useEffect(() => {
-    if (
-      !descriptionQuery.isLoading &&
-      !indicatorDataQuery.isLoading &&
-      !descriptionQuery.isError &&
-      !indicatorDataQuery.isError
-    ) {
-      const isEmpty =
-        descriptionQuery.data.length === 0 ||
-        indicatorDataQuery.data.length === 0;
-
-      if (isEmpty !== isEmptyRef.current) {
-        isEmptyRef.current = isEmpty;
-        onEmptyStatusChanged?.(registerName.rname, isEmpty);
-      }
-    }
-  }, [
-    descriptionQuery.isLoading,
-    indicatorDataQuery.isLoading,
-    descriptionQuery.isError,
-    indicatorDataQuery.isError,
-    descriptionQuery.data,
-    indicatorDataQuery.data,
-    onEmptyStatusChanged,
-    registerName.rname,
-  ]);
 
   if (descriptionQuery.isLoading || indicatorDataQuery.isLoading) {
     return SkeletonRow(colspan);
