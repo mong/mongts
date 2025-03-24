@@ -21,11 +21,11 @@
       ],
       "annualVarLabels": {
         "nb": [
-          "0",
+          "",
           "Pasientrate"
         ],
         "en": [
-          "0",
+          "",
           "Pasientrate"
         ]
       },
@@ -75,8 +75,8 @@
       "y": "bohf",
       "xLegend": {
         "nb": [
-          "Pasienter",
-          "Legemiddel"
+          "Pasientrate",
+          "Legemiddelrate (hele søylen)"
         ],
         "en": [
           "Private",
@@ -109,16 +109,16 @@
           "format": ""
         },
         {
-          "id": "ratesnitt",
-          "label_no": "Rate",
-          "label_en": "Rate",
+          "id": "snittprev",
+          "label_no": "Rate legemilder",
+          "label_en": "Rate legemilder",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
-          "id": "antsnitt",
-          "label_no": "Konsultasjoner",
-          "label_en": "Number",
+          "id": "pasratesnitt",
+          "label_no": "Rate pasienter",
+          "label_en": "Rate",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -128,20 +128,6 @@
           "label_en": "Patients",
           "typeVar": "number",
           "format": ",.0f"
-        },
-        {
-          "id": "pr_pas_justsnitt",
-          "label_no": "Antall pr. pasient",
-          "label_en": "Number per patient",
-          "typeVar": "number",
-          "format": ",.1f"
-        },
-        {
-          "id": "pct_privsnitt",
-          "label_no": "Andel private",
-          "label_en": "Percent private",
-          "typeVar": "number",
-          "format": ",.1%"
         },
         {
           "id": "popsnitt",
@@ -163,24 +149,24 @@
       "jenks": [
         {
           "cluster": 1,
-          "max": 4.99250841677,
-          "min": 4.69939022267,
-          "lag_min": 5.21194587498,
-          "grense": 5.10222714587
+          "max": 9.99250841677,
+          "min": 9.69939022267,
+          "lag_min": 10.211945875,
+          "grense": 10.1022271459
         },
         {
           "cluster": 2,
-          "max": 5.76289422038,
-          "min": 5.21194587498,
-          "lag_min": 5.86392371287,
-          "grense": 5.81340896662
+          "max": 10.7628942204,
+          "min": 10.211945875,
+          "lag_min": 10.8639237129,
+          "grense": 10.8134089666
         },
         {
           "cluster": 3,
-          "max": 6.36850146788,
-          "min": 5.86392371287,
-          "lag_min": 6.70707894641,
-          "grense": 6.53779020714
+          "max": 11.3685014679,
+          "min": 10.8639237129,
+          "lag_min": 11.7070789464,
+          "grense": 11.5377902071
         }
       ]
     },
@@ -207,9 +193,9 @@
           "offratesnitt": 8.82389909291,
           "privratesnitt": 0.095867146064,
           "pct_privsnitt": 0.0107477195585,
-          "snittprev": 4.69939022267,
+          "snittprev": 9.69939022267,
           "start": 0,
-          "diffrate": 1.5933564076
+          "diffrate": 6.5933564076
         },
         {
           "bohf": "Rogaland",
@@ -228,9 +214,9 @@
           "offratesnitt": 9.97069847459,
           "privratesnitt": 0,
           "pct_privsnitt": 0,
-          "snittprev": 5.45374080341,
+          "snittprev": 10.4537408034,
           "start": 0,
-          "diffrate": 1.68795367841
+          "diffrate": 6.68795367841
         },
         {
           "bohf": "Møre og Romsdal",
@@ -249,9 +235,9 @@
           "offratesnitt": 15.0874728061,
           "privratesnitt": 0,
           "pct_privsnitt": 0,
-          "snittprev": 6.36850146788,
+          "snittprev": 11.3685014679,
           "start": 0,
-          "diffrate": 2.10964080612
+          "diffrate": 7.10964080612
         },
         {
           "bohf": "Nordland",
@@ -270,9 +256,9 @@
           "offratesnitt": 9.68374810821,
           "privratesnitt": 0.178758306096,
           "pct_privsnitt": 0.0181250382598,
-          "snittprev": 5.98943412928,
+          "snittprev": 10.9894341293,
           "start": 0,
-          "diffrate": 2.16573782543
+          "diffrate": 7.16573782543
         },
         {
           "bohf": "Østfold",
@@ -291,9 +277,9 @@
           "offratesnitt": 8.26048141315,
           "privratesnitt": 0.179022096805,
           "pct_privsnitt": 0.0212123967475,
-          "snittprev": 5.76289422038,
+          "snittprev": 10.7628942204,
           "start": 0,
-          "diffrate": 2.15181088905
+          "diffrate": 7.15181088905
         },
         {
           "bohf": "Akershus",
@@ -312,9 +298,9 @@
           "offratesnitt": 8.79872139558,
           "privratesnitt": 0.108071746172,
           "pct_privsnitt": 0.0121336315386,
-          "snittprev": 4.99250841677,
+          "snittprev": 9.99250841677,
           "start": 0,
-          "diffrate": 1.48638741006
+          "diffrate": 6.48638741006
         },
         {
           "bohf": "Buskerud",
@@ -333,9 +319,9 @@
           "offratesnitt": 7.82846344218,
           "privratesnitt": 0.00604026716425,
           "pct_privsnitt": 0.000770982743558,
-          "snittprev": 5.21194587498,
+          "snittprev": 10.211945875,
           "start": 0,
-          "diffrate": 1.5476449601
+          "diffrate": 6.5476449601
         },
         {
           "bohf": "Innlandet",
@@ -354,9 +340,9 @@
           "offratesnitt": 9.36087387735,
           "privratesnitt": 0.0090001248529,
           "pct_privsnitt": 0.000960538514263,
-          "snittprev": 6.17473027503,
+          "snittprev": 11.174730275,
           "start": 0,
-          "diffrate": 1.89710564789
+          "diffrate": 6.89710564789
         },
         {
           "bohf": "Vestfold",
@@ -375,9 +361,9 @@
           "offratesnitt": 8.02166255882,
           "privratesnitt": 0,
           "pct_privsnitt": 0,
-          "snittprev": 5.68738884422,
+          "snittprev": 10.6873888442,
           "start": 0,
-          "diffrate": 2.65541208651
+          "diffrate": 7.65541208651
         },
         {
           "bohf": "Telemark",
@@ -396,9 +382,9 @@
           "offratesnitt": 5.89465163049,
           "privratesnitt": 0.17727709204,
           "pct_privsnitt": 0.0291961747479,
-          "snittprev": 6.3624970043,
+          "snittprev": 11.3624970043,
           "start": 0,
-          "diffrate": 3.10091660353
+          "diffrate": 8.10091660353
         },
         {
           "bohf": "Agder",
@@ -417,9 +403,9 @@
           "offratesnitt": 11.6521104527,
           "privratesnitt": 0.00450080915606,
           "pct_privsnitt": 0.000386116432551,
-          "snittprev": 6.29297894821,
+          "snittprev": 11.2929789482,
           "start": 0,
-          "diffrate": 2.44999035448
+          "diffrate": 7.44999035448
         },
         {
           "bohf": "Vestland",
@@ -438,9 +424,9 @@
           "offratesnitt": 8.51194395029,
           "privratesnitt": 0.00929171024297,
           "pct_privsnitt": 0.00109041817562,
-          "snittprev": 5.86392371287,
+          "snittprev": 10.8639237129,
           "start": 0,
-          "diffrate": 1.83482543268
+          "diffrate": 6.83482543268
         },
         {
           "bohf": "Trøndelag",
@@ -459,9 +445,9 @@
           "offratesnitt": 9.36211772766,
           "privratesnitt": 0.0331486969126,
           "pct_privsnitt": 0.00352823383762,
-          "snittprev": 5.51766319711,
+          "snittprev": 10.5176631971,
           "start": 0,
-          "diffrate": 2.34933182427
+          "diffrate": 7.34933182427
         },
         {
           "bohf": "Troms",
@@ -480,9 +466,9 @@
           "offratesnitt": 7.45823212642,
           "privratesnitt": 0,
           "pct_privsnitt": 0,
-          "snittprev": 6.70707894641,
+          "snittprev": 11.7070789464,
           "start": 0,
-          "diffrate": 3.97084665668
+          "diffrate": 8.97084665668
         },
         {
           "bohf": "Finnmark",
@@ -501,9 +487,9 @@
           "offratesnitt": 9.71959183917,
           "privratesnitt": 0.0229110264482,
           "pct_privsnitt": 0.00235165714234,
-          "snittprev": 5.87069568288,
+          "snittprev": 10.8706956829,
           "start": 0,
-          "diffrate": 1.86595745171
+          "diffrate": 6.86595745171
         },
         {
           "bohf": "Norge",
@@ -522,9 +508,9 @@
           "offratesnitt": 9.26596098846,
           "privratesnitt": 0.0537735282046,
           "pct_privsnitt": 0.00576985622374,
-          "snittprev": 5.61364137713,
+          "snittprev": 10.6136413771,
           "start": 0,
-          "diffrate": 2.00662491976
+          "diffrate": 7.00662491976
         }
       ]
     }
