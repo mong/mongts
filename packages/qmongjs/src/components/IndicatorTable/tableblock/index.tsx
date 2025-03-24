@@ -79,7 +79,9 @@ const TableBlock = (props: TableBlockProps) => {
   );
 
   const isFetching =
-    indicatorDataQuery.isFetching || residentDataQuery.isFetching;
+    indicatorDataQuery.isFetching ||
+    descriptionQuery.isFetching ||
+    residentDataQuery.isFetching;
 
   const uniqueOrderedInd: string[] = useMemo(
     () =>
@@ -101,7 +103,11 @@ const TableBlock = (props: TableBlockProps) => {
     ],
   );
 
-  if (descriptionQuery.isLoading || indicatorDataQuery.isLoading) {
+  if (
+    descriptionQuery.isLoading ||
+    indicatorDataQuery.isLoading ||
+    residentDataQuery.isLoading
+  ) {
     return SkeletonRow(colspan);
   }
 
