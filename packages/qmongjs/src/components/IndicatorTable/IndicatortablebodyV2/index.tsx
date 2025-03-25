@@ -10,7 +10,6 @@ import { FetchIndicatorParams } from "../../../helpers/hooks";
 import { newLevelSymbols, level2, skdeTheme } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { PluggableList } from "react-markdown/lib";
 import { Skeleton, Collapse, Typography, Stack } from "@mui/material";
 import {
   StyledTable,
@@ -25,7 +24,7 @@ import { ChartRow } from "../chartrow";
 import { getLastCompleteYear } from "../../../helpers/functions";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
-const remarkPlugins: PluggableList = [remarkGfm];
+const remarkPlugins = [remarkGfm];
 
 // ###########################
 // ########## Types ##########
