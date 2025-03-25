@@ -1,6 +1,7 @@
 import crypto from "crypto";
 import { RequestHandler } from "express";
 import { AuthorizationCode } from "simple-oauth2";
+import { type Request, type Response } from "express";
 
 const redirect_uri =
   process.env.REDIRECT_URI ?? "http://localhost:4000/callback";
@@ -53,7 +54,10 @@ export const auth: RequestHandler = (req, res) => {
  * @param res {Express.Request}
  * @returns {Express.Response}
  */
-export const callback: RequestHandler = async (req, res) => {
+export const callback = async (
+  req: Request,
+  res: Response,
+): Promise<Response> => {
   const code = req.query.code;
 
   if (typeof code !== "string") {
