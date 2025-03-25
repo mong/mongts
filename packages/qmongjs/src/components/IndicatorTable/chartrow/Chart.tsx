@@ -8,7 +8,7 @@ import { getLastCompleteYear } from "../../../helpers/functions";
 
 export interface ChartProps {
   context: { context: string; type: string };
-  svgContainerRef: React.RefObject<HTMLDivElement>;
+  svgContainerRef: React.RefObject<HTMLDivElement | null>;
   chartType: "bar" | "line";
   description: Description;
   treatmentYear: number;

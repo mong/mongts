@@ -1,4 +1,4 @@
-import express, { RequestHandler } from "express";
+import express, { RequestHandler, type Request, type Response } from "express";
 import crypto from "crypto";
 import compression from "compression";
 import helmet from "helmet";
@@ -44,7 +44,8 @@ app.use(
   }),
 );
 app.use(cors());
-app.use(
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+(app as any).use(
   compression({
     level: 6,
   }),
@@ -64,13 +65,15 @@ const cache: RequestHandler = (req, res, next) => {
 app.use("/data", cache, registerDataRouter);
 app.use("/info", cache, registerInfoRouter);
 
-app.get("/", (_, res) =>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+app.get("/", (req: Request, res: Response): any =>
   res.json({ status: "OK", version: process.env.VERSION ?? "local" }),
 );
 
 // Auth routes for CMS
 app.get("/auth", CMS.auth);
-app.get("/callback", CMS.callback);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+(app as any).get("/callback", CMS.callback);
 
 app.listen(PORT, () => {
   console.log(`API listening at http://localhost:${PORT}`);

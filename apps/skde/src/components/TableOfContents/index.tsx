@@ -1,4 +1,4 @@
-import React from "react";
+import React, { type JSX } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -66,7 +66,7 @@ const TocDataToList = ({ tocData, parentID }) => {
 export const TableOfContents = ({
   lang = "no",
   tocData,
-}: TableOfContentsProps) => {
+}: TableOfContentsProps): JSX.Element => {
   const [expanded, setExpanded] = React.useState<boolean>(false);
   const handleChange = () => setExpanded((state) => !state);
 

@@ -25,7 +25,7 @@ import { Description, Indicator } from "types";
 import { Typography } from "@mui/material";
 
 export interface Props {
-  svgContainerRef: React.RefObject<HTMLDivElement>;
+  svgContainerRef: React.RefObject<HTMLDivElement | null>;
   showLevel: boolean;
   data: Indicator[];
   levels: Level[];

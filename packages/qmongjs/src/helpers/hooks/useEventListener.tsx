@@ -6,7 +6,7 @@ export const useEventListener = (
   targetElement = global,
 ) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const listenerRef = useRef<any>();
+  const listenerRef = useRef<any>(undefined);
 
   useEffect(() => {
     listenerRef.current = handler;

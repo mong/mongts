@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 /**
  * Registers an event listener for the given keys on the given target element.
@@ -16,7 +16,7 @@ export const useKeys = (
   handler: (event: KeyboardEvent) => void,
   targetElement = global,
 ) => {
-  const listenerRef = React.useRef<(event: KeyboardEvent) => void>();
+  const listenerRef = useRef<(event: KeyboardEvent) => void>(undefined);
 
   React.useEffect(() => {
     listenerRef.current = handler;

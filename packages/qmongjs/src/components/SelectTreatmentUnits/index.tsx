@@ -1,3 +1,4 @@
+import { type JSX } from "react";
 import Select, { StylesConfig } from "react-select";
 import { OptsTu } from "types";
 import { app_text } from "../../app_config";

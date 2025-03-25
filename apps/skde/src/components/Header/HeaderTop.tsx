@@ -1,3 +1,4 @@
+import { type JSX } from "react";
 import { NavigateNextRounded, ArrowBack } from "@mui/icons-material";
 import {
   Breadcrumbs,
@@ -47,7 +48,11 @@ export type BreadCrumbPath = BreadCrumbStop[];
  * @return {JSX.Element} A JSX element representing the breadcrumbs.
  */
 
-export const SkdeBreadcrumbs = ({ path }: { path: BreadCrumbPath }) => {
+export const SkdeBreadcrumbs = ({
+  path,
+}: {
+  path: BreadCrumbPath;
+}): JSX.Element => {
   const theme = useTheme();
   const onMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -109,7 +114,7 @@ type HeaderTopProps = {
  * @param {false | Breakpoint} [props.maxWidth] - The maximum width of the component.
  * @returns {JSX.Element} A JSX element representing the HeaderTop component.
  */
-export const HeaderTop = (props: HeaderTopProps) => {
+export const HeaderTop = (props: HeaderTopProps): JSX.Element => {
   const { breadcrumbs, maxWidth } = props;
 
   return (
