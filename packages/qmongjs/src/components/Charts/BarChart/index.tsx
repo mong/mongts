@@ -20,7 +20,7 @@ export interface Bar {
   style?: BarStyle;
 }
 export interface Props {
-  svgContainerRef: React.RefObject<HTMLDivElement>;
+  svgContainerRef: React.RefObject<HTMLDivElement | null>;
   showLevel: boolean;
   showN: boolean;
   data: Bar[];

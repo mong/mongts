@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, type JSX } from "react";
 import { extent, min, max, bisector } from "@visx/vendor/d3-array";
 import { curveLinear } from "@visx/curve";
 import { LinePath, Bar } from "@visx/shape";
@@ -227,7 +227,7 @@ export const LinechartBase = withTooltip<LinechartBaseProps, LinechartData>(
       fontWeight: yAxisText.font.fontWeight,
     };
 
-    const legendScale = scaleOrdinal<string, React.JSX.Element>({
+    const legendScale = scaleOrdinal<string, JSX.Element>({
       domain: lineStyles.getLabels(),
       range: lineStyles.getPaths(),
     });
