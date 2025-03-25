@@ -12,7 +12,7 @@ export const useOnClickOutside = <T extends Element>(
   handler: () => void,
   active: boolean,
 ) => {
-  const ref = React.useRef<T>();
+  const ref = React.useRef<T>(undefined);
 
   React.useEffect(() => {
     const clickHandler = (event) => {
