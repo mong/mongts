@@ -198,4 +198,5 @@ export type ResidentData = {
   registry: string;
   year: number;
   unitName: string;
+  level: string;
 };

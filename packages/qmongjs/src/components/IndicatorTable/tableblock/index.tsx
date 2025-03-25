@@ -67,7 +67,6 @@ const TableBlock = (props: TableBlockProps) => {
     type: queryContext.type,
     context: queryContext.context,
   });
-  const { isFetching } = indicatorDataQuery;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const descriptionQuery: UseQueryResult<any, unknown> = useDescriptionQuery({
@@ -78,6 +77,11 @@ const TableBlock = (props: TableBlockProps) => {
   const residentDataQuery: UseQueryResult<any, unknown> = useResidentDataQuery(
     registerName.rname,
   );
+
+  const isFetching =
+    indicatorDataQuery.isFetching ||
+    descriptionQuery.isFetching ||
+    residentDataQuery.isFetching;
 
   const uniqueOrderedInd: string[] = useMemo(
     () =>
@@ -99,7 +103,11 @@ const TableBlock = (props: TableBlockProps) => {
     ],
   );
 
-  if (descriptionQuery.isLoading || indicatorDataQuery.isLoading) {
+  if (
+    descriptionQuery.isLoading ||
+    indicatorDataQuery.isLoading ||
+    residentDataQuery.isLoading
+  ) {
     return SkeletonRow(colspan);
   }
 
@@ -144,22 +152,36 @@ const TableBlock = (props: TableBlockProps) => {
   // If the page shows caregivers and the registry has data for residents,
   // then the table block should be shown with a message.
   let showTitleAnyway = false;
-  let filteredResidentData: ResidentData[];
+
+  // Filter on treatment year
+  let filteredResidentData = residentDataQuery.data.filter(
+    (row: ResidentData) => row.year === treatmentYear,
+  );
+
+  // Filter on level if selected
+  if (showLevelFilter) {
+    filteredResidentData = residentDataQuery.data.filter(
+      (row: ResidentData) => row.level === showLevelFilter,
+    );
+  }
+
+  // Check if national is the only unit
   if (
     context === "caregiver" &&
     !showTitle &&
     medicalFieldFilter.includes(registerName.rname)
   ) {
     if (unitNames.length === 1 && unitNames[0] === "Nasjonalt") {
-      filteredResidentData = residentDataQuery.data.filter(
+      filteredResidentData = filteredResidentData.filter(
         (row: ResidentData) =>
           row.year === treatmentYear && unitNames.includes(row.unitName),
       );
     } else {
+      // If not, exclude national from the filter since the indicators shown are governed by the treatment units
       const unitNamesExceptNational = unitNames.filter(
         (row) => row !== "Nasjonalt",
       );
-      filteredResidentData = residentDataQuery.data.filter(
+      filteredResidentData = filteredResidentData.filter(
         (row: ResidentData) =>
           row.year === treatmentYear &&
           unitNamesExceptNational.includes(row.unitName),

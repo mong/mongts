@@ -9,6 +9,7 @@ export const residentDataModel = (filter?: Filter): Promise<ResidentData[]> =>
       "registry",
       "year",
       "unit_name AS unitName",
+      "level",
     )
     .from("vw_resident_data")
     .modify((queryBuilder) => {

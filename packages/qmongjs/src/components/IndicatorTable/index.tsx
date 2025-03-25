@@ -6,6 +6,7 @@ import { useIndicatorQuery } from "../../helpers/hooks";
 import { UseQueryResult } from "@tanstack/react-query";
 import { Indicator } from "types";
 import { NoDataAvailable } from "./ContentForEmptyTable";
+import { level } from "../../helpers/functions";
 
 interface IndicatorTableProps {
   context: string;
@@ -79,6 +80,13 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
   if (context === "resident") {
     rowCountData = rowCountData.filter(
       (row: Indicator) => row.context === context,
+    );
+  }
+
+  // Filter on level if selected
+  if (showLevelFilter) {
+    rowCountData = rowCountData.filter(
+      (row: Indicator) => level(row) === showLevelFilter,
     );
   }
 
