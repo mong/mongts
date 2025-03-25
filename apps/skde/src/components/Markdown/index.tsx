@@ -2,7 +2,6 @@ import ReactMarkdown, { Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
-import { PluggableList } from "react-markdown/lib";
 
 /**
  * ## Wrapper for markdown content
@@ -18,8 +17,8 @@ type MarkdownProp = {
 };
 
 export const Markdown = ({ children, lang }: MarkdownProp) => {
-  const rehypePlugins: PluggableList = [rehypeRaw, rehypeSlug];
-  const remarkPlugins: PluggableList = [remarkGfm];
+  const rehypePlugins = [rehypeRaw, rehypeSlug];
+  const remarkPlugins = [remarkGfm];
   const components: Components = {
     p({ children, node }) {
       if (
