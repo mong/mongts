@@ -1,6 +1,8 @@
 import { RegistryLevelTable } from "../../src/components/RegistryLevelTable";
 import { defaultYear } from "qmongjs";
 
+import type { JSX } from "react";
+
 export const Skde = (): JSX.Element => {
   return <RegistryLevelTable year={defaultYear} numberOfYears={5} />;
 };

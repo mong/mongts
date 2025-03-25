@@ -2,6 +2,8 @@ import Select, { StylesConfig } from "react-select";
 import { OptsTu } from "types";
 import { app_text } from "../../app_config";
 
+import type { JSX } from "react";
+
 interface Props {
   opts: OptsTu[];
   placeholder: JSX.Element;

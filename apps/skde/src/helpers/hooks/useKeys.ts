@@ -16,7 +16,7 @@ export const useKeys = (
   handler: (event: KeyboardEvent) => void,
   targetElement = global,
 ) => {
-  const listenerRef = React.useRef<(event: KeyboardEvent) => void>();
+  const listenerRef = React.useRef<(event: KeyboardEvent) => void>(undefined);
 
   React.useEffect(() => {
     listenerRef.current = handler;

@@ -117,7 +117,8 @@ export const SubUnits = (props: SubUnitsProps) => {
 
   const buttonVariant = "outlined";
 
-  let buttonList: ReactElement;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let buttonList: ReactElement<any>;
 
   const parentUnit = getParentUnit(RHFs, selectedUnit);
 

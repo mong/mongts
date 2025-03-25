@@ -3,6 +3,8 @@ import { ArrowForward, ArrowOutward } from "@mui/icons-material";
 import { Stack, Typography } from "@mui/material";
 import Link from "next/link";
 
+import type { JSX } from "react";
+
 type ArrowLinkProps = {
   href: string;
   text: string;
