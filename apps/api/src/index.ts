@@ -66,7 +66,7 @@ app.use("/data", cache, registerDataRouter);
 app.use("/info", cache, registerInfoRouter);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-(app as any).get("/", (_: Request, res: Response) =>
+app.get("/", (req: Request, res: Response): any =>
   res.json({ status: "OK", version: process.env.VERSION ?? "local" }),
 );
 
