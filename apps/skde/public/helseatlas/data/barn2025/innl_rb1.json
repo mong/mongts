@@ -157,6 +157,41 @@
       "format_y": ",.0f"
     },
     {
+      "type": "linechart",
+      "data": "datasett_4",
+      "linevars": [
+        "jenter",
+        "gutter"
+      ],
+      "linecolors": [
+        "#253776",
+        "#74A5CD"
+      ],
+      "linevarsLabels": {
+        "nb": [
+          "Jenter",
+          "Gutter"
+        ],
+        "en": [
+          "Girls",
+          "Boys"
+        ]
+      },
+      "x": [
+        "alder"
+      ],
+      "y": "pasienter",
+      "xLabel": {
+        "nb": "Alder",
+        "en": "Age"
+      },
+      "yLabel": {
+        "nb": "Antall barn med innleggelser konsultasjon",
+        "en": "Number of children with consultation"
+      },
+      "format_y": ",.0f"
+    },
+    {
       "type": "table",
       "data": "datasett_1",
       "caption": {
@@ -656,6 +691,317 @@
           "rate_kir_ak": 9.64799849329,
           "rate_med_el": 8.84488489691,
           "rate_kir_el": 6.06728757564
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "datasett_4",
+      "description": "Ekstradatasettet for gitt resultatboks",
+      "data": [
+        {
+          "alder": 0,
+          "ermann": 0,
+          "pasienter": 1936.33333333,
+          "pop": 26173,
+          "andel": 0.073982093506,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 0,
+          "ermann": 1,
+          "pasienter": 2542.33333333,
+          "pop": 27446,
+          "andel": 0.0926303772256,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 1,
+          "ermann": 0,
+          "pasienter": 1491.66666667,
+          "pop": 26707,
+          "andel": 0.0558530223038,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 1,
+          "ermann": 1,
+          "pasienter": 2032,
+          "pop": 27986,
+          "andel": 0.0726077324376,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 2,
+          "ermann": 0,
+          "pasienter": 1095.33333333,
+          "pop": 27393,
+          "andel": 0.0399858844717,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 2,
+          "ermann": 1,
+          "pasienter": 1538.66666667,
+          "pop": 28761.3333333,
+          "andel": 0.053497751611,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 3,
+          "ermann": 0,
+          "pasienter": 936,
+          "pop": 27284,
+          "andel": 0.034305820261,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 3,
+          "ermann": 1,
+          "pasienter": 1270,
+          "pop": 28786.3333333,
+          "andel": 0.0441181579222,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 4,
+          "ermann": 0,
+          "pasienter": 819.333333333,
+          "pop": 27844.3333333,
+          "andel": 0.0294254965104,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 4,
+          "ermann": 1,
+          "pasienter": 1121,
+          "pop": 29586,
+          "andel": 0.0378895423511,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 5,
+          "ermann": 0,
+          "pasienter": 769.666666667,
+          "pop": 28627.6666667,
+          "andel": 0.026885413877,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 5,
+          "ermann": 1,
+          "pasienter": 1001.66666667,
+          "pop": 30483,
+          "andel": 0.0328598453783,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 6,
+          "ermann": 0,
+          "pasienter": 672.333333333,
+          "pop": 29346.3333333,
+          "andel": 0.0229103011166,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 6,
+          "ermann": 1,
+          "pasienter": 924.666666667,
+          "pop": 31219.6666667,
+          "andel": 0.0296180826189,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 7,
+          "ermann": 0,
+          "pasienter": 613,
+          "pop": 29923,
+          "andel": 0.0204859138455,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 7,
+          "ermann": 1,
+          "pasienter": 854.333333333,
+          "pop": 31753,
+          "andel": 0.0269055942221,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 8,
+          "ermann": 0,
+          "pasienter": 607.333333333,
+          "pop": 30233,
+          "andel": 0.0200884243487,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 8,
+          "ermann": 1,
+          "pasienter": 787.666666667,
+          "pop": 31779.6666667,
+          "andel": 0.0247852400382,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 9,
+          "ermann": 0,
+          "pasienter": 596.666666667,
+          "pop": 30673.6666667,
+          "andel": 0.0194520815901,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 9,
+          "ermann": 1,
+          "pasienter": 738.333333333,
+          "pop": 32213,
+          "andel": 0.0229203530666,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 10,
+          "ermann": 0,
+          "pasienter": 621,
+          "pop": 31137.6666667,
+          "andel": 0.019943690921,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 10,
+          "ermann": 1,
+          "pasienter": 759.333333333,
+          "pop": 32760.3333333,
+          "andel": 0.0231784373378,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 11,
+          "ermann": 0,
+          "pasienter": 607,
+          "pop": 31825.3333333,
+          "andel": 0.0190728560057,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 11,
+          "ermann": 1,
+          "pasienter": 787.666666667,
+          "pop": 33591.3333333,
+          "andel": 0.0234485085439,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 12,
+          "ermann": 0,
+          "pasienter": 666,
+          "pop": 32370.3333333,
+          "andel": 0.0205743942499,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 12,
+          "ermann": 1,
+          "pasienter": 834.333333333,
+          "pop": 34206,
+          "andel": 0.0243914323023,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 13,
+          "ermann": 0,
+          "pasienter": 718.333333333,
+          "pop": 32737.3333333,
+          "andel": 0.0219423288397,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 13,
+          "ermann": 1,
+          "pasienter": 868.333333333,
+          "pop": 34602.6666667,
+          "andel": 0.0250944050555,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 14,
+          "ermann": 0,
+          "pasienter": 863.333333333,
+          "pop": 32503.3333333,
+          "andel": 0.0265613783202,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 14,
+          "ermann": 1,
+          "pasienter": 994,
+          "pop": 34440.6666667,
+          "andel": 0.0288612299413,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 15,
+          "ermann": 0,
+          "pasienter": 1000.33333333,
+          "pop": 32177.6666667,
+          "andel": 0.0310878145297,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 15,
+          "ermann": 1,
+          "pasienter": 997.666666667,
+          "pop": 34116.6666667,
+          "andel": 0.0292427943332,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 16,
+          "ermann": 0,
+          "pasienter": 1100,
+          "pop": 31817,
+          "andel": 0.0345727127008,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 16,
+          "ermann": 1,
+          "pasienter": 1029.33333333,
+          "pop": 33546,
+          "andel": 0.0306842345834,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 17,
+          "ermann": 0,
+          "pasienter": 1180.33333333,
+          "pop": 31680.3333333,
+          "andel": 0.0372576046127,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 17,
+          "ermann": 1,
+          "pasienter": 1067.66666667,
+          "pop": 33457.3333333,
+          "andel": 0.0319112900012,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 18,
+          "ermann": 0,
+          "pasienter": 1221.66666667,
+          "pop": 31499,
+          "andel": 0.0387843000307,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 18,
+          "ermann": 1,
+          "pasienter": 1075,
+          "pop": 33246.6666667,
+          "andel": 0.0323340685783,
+          "gender": "Gutter"
         }
       ]
     }
