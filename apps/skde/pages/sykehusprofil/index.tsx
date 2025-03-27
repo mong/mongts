@@ -16,7 +16,7 @@ import {
   Typography,
   CssBaseline,
 } from "@mui/material";
-import Grid from "@mui/material/Grid2";
+import Grid from "@mui/material/Grid";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { HospitalInfoBox } from "../../src/components/HospitalProfile";
 import { getUnitFullName } from "qmongjs";
