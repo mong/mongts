@@ -2,12 +2,10 @@ import { PropsWithChildren } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { TreeItem } from "@mui/x-tree-view/TreeItem";
 import { FilterSettingsValue } from "./FilterSettingsContext";
-import {
-  RadioButtonCheckedRounded,
-  RadioButtonUncheckedRounded,
-  CheckBox,
-  CheckBoxOutlineBlank,
-} from "@mui/icons-material";
+import RadioButtonCheckedRounded from "@mui/icons-material";
+import RadioButtonUncheckedRounded from "@mui/icons-material";
+import CheckBox from "@mui/icons-material";
+import CheckBoxOutlineBlank from "@mui/icons-material";
 import Box from "@mui/system/Box";
 import { Typography } from "@mui/material";
 

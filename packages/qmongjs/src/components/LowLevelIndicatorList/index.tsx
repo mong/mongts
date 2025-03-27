@@ -16,7 +16,7 @@ import {
   minDG,
 } from "qmongjs";
 import { styled } from "@mui/system";
-import { ExpandCircleDownOutlined } from "@mui/icons-material";
+import ExpandCircleDownOutlined from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import {
   Box,
@@ -36,12 +36,10 @@ import {
   Collapse,
 } from "@mui/material";
 import { ArrowLink } from "../ArrowLink";
-import {
-  HelpOutline,
-  TrendingDown,
-  TrendingFlat,
-  TrendingUp,
-} from "@mui/icons-material";
+import HelpOutline from "@mui/icons-material";
+import TrendingDown from "@mui/icons-material";
+import TrendingFlat from "@mui/icons-material";
+import TrendingUp from "@mui/icons-material";
 
 const ExpandCircleUpOutlined = styled(ExpandCircleDownOutlined)({
   transform: "rotate(180deg)",

@@ -2,7 +2,7 @@ import style from "./chartrowdescription.module.css";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
-import { ExpandMore } from "@mui/icons-material";
+import ExpandMore from "@mui/icons-material";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 

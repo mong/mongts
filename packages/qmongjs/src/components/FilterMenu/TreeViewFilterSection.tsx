@@ -1,7 +1,8 @@
 import type {} from "@mui/x-tree-view/themeAugmentation";
 import { useContext, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import { ExpandMoreRounded, ChevronRightRounded } from "@mui/icons-material";
+import ExpandMoreRounded from "@mui/icons-material";
+import ChevronRightRounded from "@mui/icons-material";
 import { SimpleTreeView } from "@mui/x-tree-view";
 import { FilterMenuSectionProps } from ".";
 import {

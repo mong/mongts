@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Stack, Chip, Link, Box, styled, Typography } from "@mui/material";
-import { ClearRounded } from "@mui/icons-material";
+import ClearRounded from "@mui/icons-material";
 import _ from "lodash";
 import { FilterMenuSectionProps } from ".";
 import { FilterSettingsContext } from "./FilterSettingsContext";
