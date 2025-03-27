@@ -1,6 +1,7 @@
 import { type JSX } from "react";
 import Button from "@mui/material/Button";
-import { ArrowForward, ArrowOutward } from "@mui/icons-material";
+import ArrowForward from "@mui/icons-material";
+import ArrowOutward from "@mui/icons-material";
 import { Stack, Typography } from "@mui/material";
 import Link from "next/link";
 

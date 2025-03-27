@@ -11,7 +11,7 @@ import {
   Collapse,
 } from "@mui/material";
 import { styled } from "@mui/system";
-import { ExpandCircleDownOutlined } from "@mui/icons-material";
+import ExpandCircleDownOutlined from "@mui/icons-material";
 import { UseQueryResult } from "@tanstack/react-query";
 import {
   ArrowLink,

@@ -1,8 +1,6 @@
 import { Box, styled } from "@mui/material";
-import {
-  AddCircleOutlineRounded,
-  RemoveCircleOutlineRounded,
-} from "@mui/icons-material";
+import AddCircleOutlineRounded from "@mui/icons-material";
+import RemoveCircleOutlineRounded from "@mui/icons-material";
 
 const WrapperBox = styled(Box)(({ theme }) => ({
   marginRight: 12,
