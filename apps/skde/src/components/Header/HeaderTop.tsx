@@ -1,5 +1,6 @@
 import { type JSX } from "react";
-import { NavigateNextRounded, ArrowBack } from "@mui/icons-material";
+import NavigateNextRoundedIcon from "@mui/icons-material/NavigateNextRounded";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import {
   Breadcrumbs,
   Breakpoint,
@@ -9,7 +10,7 @@ import {
   styled,
   Container,
 } from "@mui/material";
-import Grid from "@mui/material/Grid2";
+import Grid from "@mui/material/Grid";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 
@@ -30,9 +31,11 @@ const LogoImage = styled("img")(({ theme }) => ({
   },
 }));
 
-const StyledBreadcrumbSeparator = styled(NavigateNextRounded)(({ theme }) => ({
-  color: theme.palette.primary.light,
-}));
+const StyledBreadcrumbSeparator = styled(NavigateNextRoundedIcon)(
+  ({ theme }) => ({
+    color: theme.palette.primary.light,
+  }),
+);
 
 type BreadCrumbStop = {
   link: string;
@@ -65,7 +68,7 @@ export const SkdeBreadcrumbs = ({
     const secondToLastElement = path.at(-2);
     return (
       <Breadcrumbs
-        separator={<ArrowBack fontSize="medium" />}
+        separator={<ArrowBackIcon fontSize="medium" />}
         aria-label="breadcrumb"
       >
         <div></div>

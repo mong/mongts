@@ -12,7 +12,7 @@ import {
   tableContextKey,
 } from "qmongjs";
 import { Box, Typography, Divider, IconButton } from "@mui/material";
-import { ChevronLeftRounded } from "@mui/icons-material";
+import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import { RegisterName, Medfield } from "types";
 import {
   valueOrDefault,
@@ -192,7 +192,7 @@ export const HeatMapFilterMenu = (props: HeatMapFilterMenuProps) => {
           aria-label="Lukk sidemeny"
           onClick={() => toggleDrawer(false)}
         >
-          <ChevronLeftRounded fontSize="large" />
+          <ChevronLeftRoundedIcon fontSize="large" />
         </IconButton>
       </Box>
       <Divider />

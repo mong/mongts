@@ -1,7 +1,8 @@
 import type {} from "@mui/x-tree-view/themeAugmentation";
 import { useContext, useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import { ExpandMoreRounded, ChevronRightRounded } from "@mui/icons-material";
+import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
+import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import { SimpleTreeView } from "@mui/x-tree-view";
 import { FilterMenuSectionProps } from ".";
 import {
@@ -395,8 +396,8 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
         aria-label={`${props.sectiontitle} (TreeView)}`}
         data-testid={`tree-view-section-${props.sectionid}`}
         slots={{
-          expandIcon: ChevronRightRounded,
-          collapseIcon: ExpandMoreRounded,
+          expandIcon: ChevronRightRoundedIcon,
+          collapseIcon: ExpandMoreRoundedIcon,
         }}
         defaultExpandedItems={expanded}
         expandedItems={expanded}
