@@ -11,7 +11,7 @@ import {
   Collapse,
 } from "@mui/material";
 import { styled } from "@mui/system";
-import { ExpandCircleDownOutlined } from "@mui/icons-material";
+import ExpandCircleDownOutlinedIcon from "@mui/icons-material/ExpandCircleDownOutlined";
 import { UseQueryResult } from "@tanstack/react-query";
 import {
   ArrowLink,
@@ -25,7 +25,7 @@ import { Indicator } from "types";
 const colWidth1 = "5%";
 const colWidt2 = "20%";
 
-const ExpandCircleUpOutlined = styled(ExpandCircleDownOutlined)({
+const ExpandCircleUpOutlined = styled(ExpandCircleDownOutlinedIcon)({
   transform: "rotate(180deg)",
 });
 
@@ -190,7 +190,11 @@ const Row = (props: {
       >
         <TableCell sx={{ border: 0 }}>
           <IconButton size="small">
-            {open ? <ExpandCircleUpOutlined /> : <ExpandCircleDownOutlined />}
+            {open ? (
+              <ExpandCircleUpOutlined />
+            ) : (
+              <ExpandCircleDownOutlinedIcon />
+            )}
           </IconButton>
         </TableCell>
         <TableCell sx={{ border: 0 }}>
