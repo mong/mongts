@@ -2,10 +2,10 @@ import { PropsWithChildren } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import { TreeItem } from "@mui/x-tree-view/TreeItem";
 import { FilterSettingsValue } from "./FilterSettingsContext";
-import RadioButtonCheckedRounded from "@mui/icons-material";
-import RadioButtonUncheckedRounded from "@mui/icons-material";
-import CheckBox from "@mui/icons-material";
-import CheckBoxOutlineBlank from "@mui/icons-material";
+import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
+import RadioButtonUncheckedRoundedIcon from "@mui/icons-material/RadioButtonUncheckedRounded";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import Box from "@mui/system/Box";
 import { Typography } from "@mui/material";
 
@@ -73,13 +73,17 @@ export const TreeViewFilterSectionItem = (
               data-testid={`checkbox-${filterKey}-${uniqueItemId}`}
               checked={isSelected}
               checkedIcon={
-                singleselect ? <RadioButtonCheckedRounded /> : <CheckBox />
+                singleselect ? (
+                  <RadioButtonCheckedRoundedIcon />
+                ) : (
+                  <CheckBoxIcon />
+                )
               }
               icon={
                 singleselect ? (
-                  <RadioButtonUncheckedRounded />
+                  <RadioButtonUncheckedRoundedIcon />
                 ) : (
-                  <CheckBoxOutlineBlank />
+                  <CheckBoxOutlineBlankIcon />
                 )
               }
               onClick={(event) => {

@@ -16,7 +16,6 @@ import {
   minDG,
 } from "qmongjs";
 import { styled } from "@mui/system";
-import ExpandCircleDownOutlined from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import {
   Box,
@@ -36,12 +35,13 @@ import {
   Collapse,
 } from "@mui/material";
 import { ArrowLink } from "../ArrowLink";
-import HelpOutline from "@mui/icons-material";
-import TrendingDown from "@mui/icons-material";
-import TrendingFlat from "@mui/icons-material";
-import TrendingUp from "@mui/icons-material";
+import ExpandCircleDownOutlinedIcon from "@mui/icons-material/ExpandCircleDownOutlined";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import TrendingDownIcon from "@mui/icons-material/TrendingDown";
+import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
 
-const ExpandCircleUpOutlined = styled(ExpandCircleDownOutlined)({
+const ExpandCircleUpOutlined = styled(ExpandCircleDownOutlinedIcon)({
   transform: "rotate(180deg)",
 });
 
@@ -72,11 +72,11 @@ const result = (
         : null}
       {!dg ? (
         trend === -1 ? (
-          <TrendingDown />
+          <TrendingDownIcon />
         ) : trend === 1 ? (
-          <TrendingUp />
+          <TrendingUpIcon />
         ) : (
-          <TrendingFlat />
+          <TrendingFlatIcon />
         )
       ) : null}
     </Stack>
@@ -215,7 +215,11 @@ const IndicatorRow = (props: IndicatorRowProps) => {
       >
         <TableCell>
           <IconButton size="small">
-            {open ? <ExpandCircleUpOutlined /> : <ExpandCircleDownOutlined />}
+            {open ? (
+              <ExpandCircleUpOutlined />
+            ) : (
+              <ExpandCircleDownOutlinedIcon />
+            )}
           </IconButton>
         </TableCell>
         <TableCell>
@@ -390,7 +394,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
                         placement="top"
                         offset={[20, 20]}
                       >
-                        <HelpOutline
+                        <HelpOutlineIcon
                           sx={{
                             color: skdeTheme.palette.primary.main,
                             fontSize: "1.5rem",
