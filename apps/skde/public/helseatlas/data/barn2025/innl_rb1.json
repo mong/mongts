@@ -42,7 +42,7 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Rate: Antall innleggelser pasienter pr. 1000 barn",
+        "nb": "Rate: Antall pasienter med innleggelser pr. 1000 barn",
         "en": "Rate: Number of patients innleggelser per 1,000 children"
       },
       "yLabel": {
@@ -108,7 +108,7 @@
         "en": "Year"
       },
       "yLabel": {
-        "nb": "Rate: Antall innleggelser konsultasjoner pr. 1 000 barn",
+        "nb": "Rate: Antall innleggelser pr. 1 000 barn",
         "en": "Rate: Number of consultations innleggelser per 1,000 children"
       },
       "format_y": ",.0f"
@@ -125,8 +125,8 @@
       "linecolors": [
         "#253776",
         "#74A5CD",
-        "#253776",
-        "#74A5CD"
+        "##1d74d1",
+        "##74b2f4"
       ],
       "linevarsLabels": {
         "nb": [
@@ -186,7 +186,7 @@
         "en": "Age"
       },
       "yLabel": {
-        "nb": "Antall barn med innleggelser konsultasjon",
+        "nb": "Antall barn med innleggelser",
         "en": "Number of children with consultation"
       },
       "format_y": ",.0f"
@@ -208,14 +208,14 @@
         },
         {
           "id": "ratesnitt",
-          "label_no": "Test",
+          "label_no": "Rate",
           "label_en": "Rate",
           "typeVar": "number",
           "format": ",.0f"
         },
         {
           "id": "antsnitt",
-          "label_no": "Konsultasjoner",
+          "label_no": "Innleggelser",
           "label_en": "Number",
           "typeVar": "number",
           "format": ",.0f"
@@ -229,7 +229,7 @@
         },
         {
           "id": "pr_pas_justsnitt",
-          "label_no": "Antall pr. pasient",
+          "label_no": "Innleggelser pr. pasient",
           "label_en": "Number per patient",
           "typeVar": "number",
           "format": ",.1f"
@@ -248,7 +248,7 @@
       "data": "datasett_1",
       "x": "ratesnitt",
       "caption": {
-        "nb": "Rate: Antall innleggelser innleggelser pr. 1 000 barn",
+        "nb": "Rate: Antall innleggelser pr. 1 000 barn",
         "en": "Rate: Number of consultations innleggelser per 1,000 children"
       },
       "jenks": [
