@@ -1,6 +1,8 @@
 import { Box, styled } from "@mui/material";
-import AddCircleOutlineRoundedIcon from "@mui/icons-material/AddCircleOutlineRounded";
-import RemoveCircleOutlineRoundedIcon from "@mui/icons-material/RemoveCircleOutlineRounded";
+import {
+  AddCircleOutlineRounded,
+  RemoveCircleOutlineRounded,
+} from "@mui/icons-material";
 
 const WrapperBox = styled(Box)(({ theme }) => ({
   marginRight: 12,
@@ -25,10 +27,10 @@ export const CustomAccordionExpandIcon = () => {
   return (
     <WrapperBox>
       <Box className="expandIconWrapper">
-        <RemoveCircleOutlineRoundedIcon color="primary" />
+        <RemoveCircleOutlineRounded color="primary" />
       </Box>
       <Box className="collapseIconWrapper">
-        <AddCircleOutlineRoundedIcon color="primary" />
+        <AddCircleOutlineRounded color="primary" />
       </Box>
     </WrapperBox>
   );

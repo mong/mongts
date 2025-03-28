@@ -1,9 +1,8 @@
 import { Button, Toolbar, Tooltip, styled } from "@mui/material";
-import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
-import TuneRoundedIcon from "@mui/icons-material/TuneRounded";
+import { TuneRounded, KeyboardArrowUpRounded } from "@mui/icons-material";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import Grid from "@mui/material/Grid";
+import Grid from "@mui/material/Grid2";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
@@ -46,7 +45,7 @@ export const TreatmentQualityToolbar = ({ openDrawer }: StickyToolbarProps) => {
                   openDrawer();
                 }}
               >
-                <TuneRoundedIcon fontSize="medium" />
+                <TuneRounded fontSize="medium" />
               </Button>
             </Tooltip>
           ) : (
@@ -66,7 +65,7 @@ export const TreatmentQualityToolbar = ({ openDrawer }: StickyToolbarProps) => {
                 scrollToTop();
               }}
             >
-              <KeyboardArrowUpRoundedIcon fontSize="medium" />
+              <KeyboardArrowUpRounded fontSize="medium" />
             </Button>
           </Tooltip>
         </Grid>

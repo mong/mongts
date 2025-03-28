@@ -1,8 +1,7 @@
 import { ReactElement } from "react";
 import { NestedTreatmentUnitName } from "types";
 import { Button, List, ListItem, Stack, Typography, Box } from "@mui/material";
-import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
-import UndoIcon from "@mui/icons-material/Undo";
+import { LocalHospital, Undo } from "@mui/icons-material";
 import { skdeTheme } from "qmongjs";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
@@ -86,7 +85,7 @@ const UnitButton = (props: {
   params.set("selected_treatment_units", unitName);
 
   // Symbol and text for the button
-  const symbol = returnButton ? <UndoIcon /> : <LocalHospitalIcon />;
+  const symbol = returnButton ? <Undo /> : <LocalHospital />;
 
   return (
     <Button

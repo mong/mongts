@@ -1,5 +1,5 @@
 import { ItemBox } from "../HospitalProfileStyles";
-import Grid from "@mui/material/Grid";
+import Grid from "@mui/material/Grid2";
 import { Stack, Typography } from "@mui/material";
 import { ArrowLink } from "qmongjs";
 import { getUnitFullName } from "qmongjs";

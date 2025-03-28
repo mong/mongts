@@ -1,7 +1,6 @@
 import { type JSX } from "react";
 import Button from "@mui/material/Button";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
+import { ArrowForward, ArrowOutward } from "@mui/icons-material";
 import { Stack, Typography } from "@mui/material";
 import Link from "next/link";
 
@@ -44,10 +43,10 @@ export const ArrowLink = (props: ArrowLinkProps) => {
   let target: string;
 
   if (externalLink) {
-    arrow = <ArrowOutwardIcon fontSize={fontSize} />;
+    arrow = <ArrowOutward fontSize={fontSize} />;
     target = "_blank";
   } else {
-    arrow = <ArrowForwardIcon fontSize={fontSize} />;
+    arrow = <ArrowForward fontSize={fontSize} />;
     target = "_self";
   }
 

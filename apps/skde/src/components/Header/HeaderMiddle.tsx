@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import { Toolbar, Typography, styled, Container } from "@mui/material";
-import Grid from "@mui/material/Grid";
+import Grid from "@mui/material/Grid2";
 import { Breakpoint } from "@mui/material";
 import { useRouter } from "next/router";
 

@@ -16,6 +16,7 @@ import {
   minDG,
 } from "qmongjs";
 import { styled } from "@mui/system";
+import { ExpandCircleDownOutlined } from "@mui/icons-material";
 import IconButton from "@mui/material/IconButton";
 import {
   Box,
@@ -35,13 +36,14 @@ import {
   Collapse,
 } from "@mui/material";
 import { ArrowLink } from "../ArrowLink";
-import ExpandCircleDownOutlinedIcon from "@mui/icons-material/ExpandCircleDownOutlined";
-import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
-import TrendingDownIcon from "@mui/icons-material/TrendingDown";
-import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
-import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import {
+  HelpOutline,
+  TrendingDown,
+  TrendingFlat,
+  TrendingUp,
+} from "@mui/icons-material";
 
-const ExpandCircleUpOutlined = styled(ExpandCircleDownOutlinedIcon)({
+const ExpandCircleUpOutlined = styled(ExpandCircleDownOutlined)({
   transform: "rotate(180deg)",
 });
 
@@ -72,11 +74,11 @@ const result = (
         : null}
       {!dg ? (
         trend === -1 ? (
-          <TrendingDownIcon />
+          <TrendingDown />
         ) : trend === 1 ? (
-          <TrendingUpIcon />
+          <TrendingUp />
         ) : (
-          <TrendingFlatIcon />
+          <TrendingFlat />
         )
       ) : null}
     </Stack>
@@ -215,11 +217,7 @@ const IndicatorRow = (props: IndicatorRowProps) => {
       >
         <TableCell>
           <IconButton size="small">
-            {open ? (
-              <ExpandCircleUpOutlined />
-            ) : (
-              <ExpandCircleDownOutlinedIcon />
-            )}
+            {open ? <ExpandCircleUpOutlined /> : <ExpandCircleDownOutlined />}
           </IconButton>
         </TableCell>
         <TableCell>
@@ -394,7 +392,7 @@ export const LowLevelIndicatorList = (props: LowLevelIndicatorListProps) => {
                         placement="top"
                         offset={[20, 20]}
                       >
-                        <HelpOutlineIcon
+                        <HelpOutline
                           sx={{
                             color: skdeTheme.palette.primary.main,
                             fontSize: "1.5rem",

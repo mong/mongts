@@ -2,7 +2,7 @@ import Image from "next/image";
 import { imgLoader } from "qmongjs";
 import Link from "next/link";
 import { styled } from "@mui/material/styles";
-import Grid from "@mui/material/Grid";
+import Grid from "@mui/material/Grid2";
 import { Stack, Container, Box } from "@mui/material";
 import { ArrowLink } from "qmongjs/src/components/ArrowLink";
 import { Breakpoint } from "@mui/material/styles";

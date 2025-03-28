@@ -1,6 +1,6 @@
 import { ItemBox } from "../HospitalProfileStyles";
 import { Typography, Stack } from "@mui/material";
-import ScreenRotationIcon from "@mui/icons-material/ScreenRotation";
+import { ScreenRotation } from "@mui/icons-material";
 
 type TurnDeviceBoxProps = {
   height: number;
@@ -26,7 +26,7 @@ export const TurnDeviceBox = (props: TurnDeviceBoxProps) => {
         <Typography variant="h5" align="center">
           Snu enheten for å se innholdet i denne boksen
         </Typography>
-        <ScreenRotationIcon fontSize="large" sx={{ transform: `scale(2.0)` }} />
+        <ScreenRotation fontSize="large" sx={{ transform: `scale(2.0)` }} />
       </Stack>
     </ItemBox>
   );
