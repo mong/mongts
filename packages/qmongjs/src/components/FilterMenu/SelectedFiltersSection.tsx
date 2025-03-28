@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Stack, Chip, Link, Box, styled, Typography } from "@mui/material";
-import { ClearRounded } from "@mui/icons-material";
+import ClearRoundedIcon from "@mui/icons-material/ClearRounded";
 import _ from "lodash";
 import { FilterMenuSectionProps } from ".";
 import { FilterSettingsContext } from "./FilterSettingsContext";
@@ -122,7 +122,7 @@ export function SelectedFiltersSection(props: SelectedFiltersSectionProps) {
                   data-testid={chipId}
                   label={filterSetting.valueLabel}
                   color="primary"
-                  deleteIcon={<ClearRounded />}
+                  deleteIcon={<ClearRoundedIcon />}
                   onDelete={
                     enableDelete
                       ? () => handleDelete(chipId, filterSettingsDispatch)

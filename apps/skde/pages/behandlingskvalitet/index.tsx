@@ -9,8 +9,8 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { ChevronLeftRounded } from "@mui/icons-material";
-import Grid from "@mui/material/Grid2";
+import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
+import Grid from "@mui/material/Grid";
 import { useQueryParam } from "use-query-params";
 import {
   FilterSettingsAction,
@@ -389,7 +389,7 @@ export default function TreatmentQualityPage() {
             aria-label="Lukk sidemeny"
             onClick={() => toggleDrawer(false)}
           >
-            <ChevronLeftRounded fontSize="large" />
+            <ChevronLeftRoundedIcon fontSize="large" />
           </IconButton>
         </Box>
         <Divider />
