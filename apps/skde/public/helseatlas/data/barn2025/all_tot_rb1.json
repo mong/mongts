@@ -1,0 +1,828 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "pasratesnitt"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Rate: Antall pasienter pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number of consultations all per 1,000 children"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "pasrate2022",
+        "pasrate2023",
+        "pasrate2024"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2022",
+          "2023",
+          "2024"
+        ],
+        "en": [
+          "2022",
+          "2023",
+          "2024"
+        ]
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "ratesnitt"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Rate: Antall kontakter med all pr. 1000 barn",
+        "en": "Rate: Number of patients all per 1,000 children"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "rate2022",
+        "rate2023",
+        "rate2024"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2022",
+          "2023",
+          "2024"
+        ],
+        "en": [
+          "2022",
+          "2023",
+          "2024"
+        ]
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "pr_pas_justsnitt"
+      ],
+      "y": "bohf",
+      "xLabel": {
+        "nb": "Antall kontakter pr. pasient",
+        "en": "Number of consultations per patients all"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.1f"
+    },
+    {
+      "type": "linechart",
+      "data": "datasett_2",
+      "linevars": [
+        "jenter",
+        "gutter"
+      ],
+      "linecolors": [
+        "#253776",
+        "#74A5CD"
+      ],
+      "linevarsLabels": {
+        "nb": [
+          "Jenter",
+          "Gutter"
+        ],
+        "en": [
+          "Girls",
+          "Boys"
+        ]
+      },
+      "x": [
+        "alder"
+      ],
+      "y": "andel",
+      "xLabel": {
+        "nb": "Alder",
+        "en": "Age"
+      },
+      "yLabel": {
+        "nb": "Antall barn med all",
+        "en": "Number of children with consultation"
+      },
+      "format_y": ",.0%"
+    },
+    {
+      "type": "table",
+      "data": "datasett_1",
+      "caption": {
+        "nb": "Årlige gjennomsnittsverdier for perioden 2021-2023. Antall (rate) pr. 1  000 barn",
+        "en": "Årlige gjennomsnittsverdier for perioden 2021-2023. Antall (rate) pr. 1  000 barn"
+      },
+      "columns": [
+        {
+          "id": "bohf",
+          "label_no": "Opptaksområder",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "ratesnitt",
+          "label_no": "Rate",
+          "label_en": "Rate",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "antsnitt",
+          "label_no": "Innleggelser",
+          "label_en": "Number",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "passnitt",
+          "label_no": "Pasienter",
+          "label_en": "Patients",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "pr_pas_justsnitt",
+          "label_no": "Innleggelser pr. pasient",
+          "label_en": "Number per patient",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "popsnitt",
+          "label_no": "Innbyggere (0-18 år)",
+          "label_en": "Children",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "datasett_1",
+      "x": "pasratesnitt",
+      "caption": {
+        "nb": "Rate: Antall pasienter pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number of consultations all per 1,000 children"
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": 652.693230988,
+          "min": 639.131122295,
+          "lag_min": 666.922275717,
+          "grense": 659.807753353
+        },
+        {
+          "cluster": 2,
+          "max": 672.453234686,
+          "min": 666.922275717,
+          "lag_min": 681.309964128,
+          "grense": 676.881599407
+        },
+        {
+          "cluster": 3,
+          "max": 692.502202375,
+          "min": 681.309964128,
+          "lag_min": 706.748374451,
+          "grense": 699.625288413
+        }
+      ],
+      "format": ",.0f"
+    },
+    {
+      "type": "data",
+      "label": "datasett_1",
+      "national": "Norge",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "data": [
+        {
+          "bohf": "Finnmark",
+          "rate2022": 1942.3275214,
+          "pasrate2022": 672.118762339,
+          "rate2023": 1902.43664777,
+          "pasrate2023": 667.631091677,
+          "rate2024": 1950.45736056,
+          "pasrate2024": 676.342184912,
+          "ratesnitt": 1932.0522809,
+          "antsnitt": 28808.6666667,
+          "popsnitt": 14841.3333333,
+          "pasratesnitt": 672.019064581,
+          "passnitt": 9987.66666667,
+          "pr_pas_justsnitt": 2.87499623557
+        },
+        {
+          "bohf": "UNN",
+          "rate2022": 1984.35183045,
+          "pasrate2022": 676.993810578,
+          "rate2023": 1941.37847639,
+          "pasrate2023": 667.072280588,
+          "rate2024": 1948.03345517,
+          "pasrate2024": 669.241346731,
+          "ratesnitt": 1958.33652102,
+          "antsnitt": 75535.3333333,
+          "popsnitt": 38460,
+          "pasratesnitt": 671.065401969,
+          "passnitt": 25834.6666667,
+          "pr_pas_justsnitt": 2.91824986846
+        },
+        {
+          "bohf": "Nordland",
+          "rate2022": 1723.57234133,
+          "pasrate2022": 652.574488476,
+          "rate2023": 1643.84888924,
+          "pasrate2023": 628.387783742,
+          "rate2024": 1714.80702951,
+          "pasrate2024": 644.594454079,
+          "ratesnitt": 1694.13880883,
+          "antsnitt": 47978.6666667,
+          "popsnitt": 28283.6666667,
+          "pasratesnitt": 641.80551355,
+          "passnitt": 18162.6666667,
+          "pr_pas_justsnitt": 2.63964514648
+        },
+        {
+          "bohf": "Helgeland",
+          "rate2022": 1637.52659546,
+          "pasrate2022": 638.034110987,
+          "rate2023": 1624.61245144,
+          "pasrate2023": 636.644390337,
+          "rate2024": 1664.21184323,
+          "pasrate2024": 642.92930643,
+          "ratesnitt": 1641.89248713,
+          "antsnitt": 25561.6666667,
+          "popsnitt": 15642,
+          "pasratesnitt": 639.131122295,
+          "passnitt": 9978.33333333,
+          "pr_pas_justsnitt": 2.56894466544
+        },
+        {
+          "bohf": "Nord-Trøndelag",
+          "rate2022": 1910.0863177,
+          "pasrate2022": 678.864633368,
+          "rate2023": 1894.57560442,
+          "pasrate2023": 673.540291657,
+          "rate2024": 1973.85632165,
+          "pasrate2024": 691.495245126,
+          "ratesnitt": 1926.25356236,
+          "antsnitt": 56768,
+          "popsnitt": 29524,
+          "pasratesnitt": 681.309964128,
+          "passnitt": 20111.6666667,
+          "pr_pas_justsnitt": 2.82727930573
+        },
+        {
+          "bohf": "St. Olav",
+          "rate2022": 1938.09317713,
+          "pasrate2022": 687.719903295,
+          "rate2023": 1926.22457445,
+          "pasrate2023": 674.672640103,
+          "rate2024": 1949.78430782,
+          "pasrate2024": 690.322675954,
+          "ratesnitt": 1938.42021852,
+          "antsnitt": 138626.666667,
+          "popsnitt": 71498.6666667,
+          "pasratesnitt": 684.244746709,
+          "passnitt": 48929.6666667,
+          "pr_pas_justsnitt": 2.83293401644
+        },
+        {
+          "bohf": "Møre og Romsdal",
+          "rate2022": 2018.454256,
+          "pasrate2022": 693.979380526,
+          "rate2023": 1961.11319412,
+          "pasrate2023": 681.047059294,
+          "rate2024": 1978.62190581,
+          "pasrate2024": 689.507120895,
+          "ratesnitt": 1986.2991842,
+          "antsnitt": 115452.666667,
+          "popsnitt": 58081.6666667,
+          "pasratesnitt": 688.195323981,
+          "passnitt": 39989.6666667,
+          "pr_pas_justsnitt": 2.88624335997
+        },
+        {
+          "bohf": "Førde",
+          "rate2022": 1775.38828082,
+          "pasrate2022": 650.197931431,
+          "rate2023": 1703.97798368,
+          "pasrate2023": 637.528555511,
+          "rate2024": 1760.27696919,
+          "pasrate2024": 652.605003526,
+          "ratesnitt": 1746.65071645,
+          "antsnitt": 42321.3333333,
+          "popsnitt": 24149,
+          "pasratesnitt": 646.787369548,
+          "passnitt": 15634.6666667,
+          "pr_pas_justsnitt": 2.70050220318
+        },
+        {
+          "bohf": "Bergen",
+          "rate2022": 1959.00713311,
+          "pasrate2022": 668.799953532,
+          "rate2023": 1895.18854748,
+          "pasrate2023": 661.203337633,
+          "rate2024": 1863.59005248,
+          "pasrate2024": 670.67603046,
+          "ratesnitt": 1906.5081403,
+          "antsnitt": 193326.666667,
+          "popsnitt": 101317,
+          "pasratesnitt": 666.922275717,
+          "passnitt": 67590.3333333,
+          "pr_pas_justsnitt": 2.85866615904
+        },
+        {
+          "bohf": "Fonna",
+          "rate2022": 1758.10197164,
+          "pasrate2022": 649.109526025,
+          "rate2023": 1770.3234517,
+          "pasrate2023": 651.429281664,
+          "rate2024": 1766.64642493,
+          "pasrate2024": 657.555047549,
+          "ratesnitt": 1765.15755809,
+          "antsnitt": 73854,
+          "popsnitt": 41979.6666667,
+          "pasratesnitt": 652.693230988,
+          "passnitt": 27365,
+          "pr_pas_justsnitt": 2.70442142538
+        },
+        {
+          "bohf": "Stavanger",
+          "rate2022": 2020.45772888,
+          "pasrate2022": 678.584187414,
+          "rate2023": 1956.12498781,
+          "pasrate2023": 669.724971238,
+          "rate2024": 1891.54680139,
+          "pasrate2024": 669.034290052,
+          "ratesnitt": 1956.28881211,
+          "antsnitt": 181233,
+          "popsnitt": 92928.3333333,
+          "pasratesnitt": 672.453234686,
+          "passnitt": 62405.3333333,
+          "pr_pas_justsnitt": 2.90918194931
+        },
+        {
+          "bohf": "Østfold",
+          "rate2022": 1960.99640954,
+          "pasrate2022": 694.237541925,
+          "rate2023": 1933.96219402,
+          "pasrate2023": 685.206523797,
+          "rate2024": 1935.58057647,
+          "pasrate2024": 692.461897865,
+          "ratesnitt": 1943.79765904,
+          "antsnitt": 134377.333333,
+          "popsnitt": 69305.6666667,
+          "pasratesnitt": 690.651568475,
+          "passnitt": 47853.3333333,
+          "pr_pas_justsnitt": 2.81444037452
+        },
+        {
+          "bohf": "Akershus",
+          "rate2022": 2175.21659918,
+          "pasrate2022": 712.879858643,
+          "rate2023": 2130.19791586,
+          "pasrate2023": 705.477942992,
+          "rate2024": 2043.38122942,
+          "pasrate2024": 703.298367058,
+          "ratesnitt": 2116.15778203,
+          "antsnitt": 291622,
+          "popsnitt": 137894.666667,
+          "pasratesnitt": 707.206629144,
+          "passnitt": 97507.3333333,
+          "pr_pas_justsnitt": 2.99227650707
+        },
+        {
+          "bohf": "OUS",
+          "rate2022": 2004.86869554,
+          "pasrate2022": 683.604470219,
+          "rate2023": 1921.56929339,
+          "pasrate2023": 658.920725677,
+          "rate2024": 1847.02328396,
+          "pasrate2024": 662.297166267,
+          "ratesnitt": 1925.04942217,
+          "antsnitt": 220502.333333,
+          "popsnitt": 113541,
+          "pasratesnitt": 668.258319932,
+          "passnitt": 76144,
+          "pr_pas_justsnitt": 2.88069652821
+        },
+        {
+          "bohf": "Innlandet",
+          "rate2022": 1874.71017404,
+          "pasrate2022": 671.307171391,
+          "rate2023": 1854.75884265,
+          "pasrate2023": 665.793774867,
+          "rate2024": 1841.17231812,
+          "pasrate2024": 665.862333708,
+          "ratesnitt": 1856.79205389,
+          "antsnitt": 123879.333333,
+          "popsnitt": 66724.6666667,
+          "pasratesnitt": 667.627185011,
+          "passnitt": 44556,
+          "pr_pas_justsnitt": 2.78118101776
+        },
+        {
+          "bohf": "Vestre Viken",
+          "rate2022": 2063.32619938,
+          "pasrate2022": 696.472192774,
+          "rate2023": 2020.42967256,
+          "pasrate2023": 685.64061504,
+          "rate2024": 1985.53006396,
+          "pasrate2024": 692.045809664,
+          "ratesnitt": 2023.26613896,
+          "antsnitt": 226143,
+          "popsnitt": 111893.333333,
+          "pasratesnitt": 691.388847098,
+          "passnitt": 77354.6666667,
+          "pr_pas_justsnitt": 2.92637948595
+        },
+        {
+          "bohf": "Vestfold",
+          "rate2022": 2178.71026705,
+          "pasrate2022": 711.329192818,
+          "rate2023": 2118.14066731,
+          "pasrate2023": 701.103173521,
+          "rate2024": 2120.34799659,
+          "pasrate2024": 707.881497134,
+          "ratesnitt": 2139.31602129,
+          "antsnitt": 113366.666667,
+          "popsnitt": 53110.3333333,
+          "pasratesnitt": 706.748374451,
+          "passnitt": 37537.3333333,
+          "pr_pas_justsnitt": 3.02698399971
+        },
+        {
+          "bohf": "Telemark",
+          "rate2022": 1877.36246496,
+          "pasrate2022": 673.078546528,
+          "rate2023": 1808.94663729,
+          "pasrate2023": 667.215930355,
+          "rate2024": 1814.02896963,
+          "pasrate2024": 672.980032758,
+          "ratesnitt": 1833.20848485,
+          "antsnitt": 65178.6666667,
+          "popsnitt": 35651.6666667,
+          "pasratesnitt": 671.043146725,
+          "passnitt": 23910,
+          "pr_pas_justsnitt": 2.73187870825
+        },
+        {
+          "bohf": "Sørlandet",
+          "rate2022": 2045.67796857,
+          "pasrate2022": 698.724855665,
+          "rate2023": 2005.93328779,
+          "pasrate2023": 687.724265953,
+          "rate2024": 2012.17375888,
+          "pasrate2024": 691.295611382,
+          "ratesnitt": 2020.98373069,
+          "antsnitt": 143354.333333,
+          "popsnitt": 71108,
+          "pasratesnitt": 692.502202375,
+          "passnitt": 49211,
+          "pr_pas_justsnitt": 2.91837877737
+        },
+        {
+          "bohf": "Norge",
+          "rate2022": 1990.99424983,
+          "pasrate2022": 685.172419677,
+          "rate2023": 1944.12220037,
+          "pasrate2023": 674.889547491,
+          "rate2024": 1924.0430863,
+          "pasrate2024": 680.484456159,
+          "ratesnitt": 1953.28676503,
+          "antsnitt": 2297890.33333,
+          "popsnitt": 1175934.66667,
+          "pasratesnitt": 680.1938123,
+          "passnitt": 800063.333333,
+          "pr_pas_justsnitt": 2.87166206118
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "datasett_2",
+      "description": "Ekstradatasettet for gitt resultatboks",
+      "data": [
+        {
+          "alder": 0,
+          "ermann": "Kvinner",
+          "pasienter": 14102.3333333,
+          "pop": 26173,
+          "andel": 0.538812262,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 0,
+          "ermann": "Menn",
+          "pasienter": 16122.3333333,
+          "pop": 27446,
+          "andel": 0.587420146227,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 1,
+          "ermann": "Kvinner",
+          "pasienter": 21850.3333333,
+          "pop": 26707,
+          "andel": 0.818150048052,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 1,
+          "ermann": "Menn",
+          "pasienter": 23897.6666667,
+          "pop": 27986,
+          "andel": 0.853915052764,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 2,
+          "ermann": "Kvinner",
+          "pasienter": 21078.3333333,
+          "pop": 27393,
+          "andel": 0.769478820623,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 2,
+          "ermann": "Menn",
+          "pasienter": 23200.6666667,
+          "pop": 28761.3333333,
+          "andel": 0.806661721756,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 3,
+          "ermann": "Kvinner",
+          "pasienter": 20223.3333333,
+          "pop": 27284,
+          "andel": 0.741215853003,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 3,
+          "ermann": "Menn",
+          "pasienter": 22101,
+          "pop": 28786.3333333,
+          "andel": 0.767760163967,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 4,
+          "ermann": "Kvinner",
+          "pasienter": 19409.6666667,
+          "pop": 27844.3333333,
+          "andel": 0.697077801587,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 4,
+          "ermann": "Menn",
+          "pasienter": 21272,
+          "pop": 29586,
+          "andel": 0.718988710877,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 5,
+          "ermann": "Kvinner",
+          "pasienter": 19029.3333333,
+          "pop": 28627.6666667,
+          "andel": 0.66471827952,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 5,
+          "ermann": "Menn",
+          "pasienter": 20878.3333333,
+          "pop": 30483,
+          "andel": 0.684917276296,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 6,
+          "ermann": "Kvinner",
+          "pasienter": 18765.3333333,
+          "pop": 29346.3333333,
+          "andel": 0.639443882825,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 6,
+          "ermann": "Menn",
+          "pasienter": 20493.6666667,
+          "pop": 31219.6666667,
+          "andel": 0.656434512433,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 7,
+          "ermann": "Kvinner",
+          "pasienter": 18552.3333333,
+          "pop": 29923,
+          "andel": 0.620002450735,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 7,
+          "ermann": "Menn",
+          "pasienter": 20241.6666667,
+          "pop": 31753,
+          "andel": 0.63747257477,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 8,
+          "ermann": "Kvinner",
+          "pasienter": 18262.6666667,
+          "pop": 30233,
+          "andel": 0.604063991885,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 8,
+          "ermann": "Menn",
+          "pasienter": 19929.3333333,
+          "pop": 31779.6666667,
+          "andel": 0.627109577403,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 9,
+          "ermann": "Kvinner",
+          "pasienter": 18420,
+          "pop": 30673.6666667,
+          "andel": 0.600515099814,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 9,
+          "ermann": "Menn",
+          "pasienter": 19857.3333333,
+          "pop": 32213,
+          "andel": 0.616438497915,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 10,
+          "ermann": "Kvinner",
+          "pasienter": 18676,
+          "pop": 31137.6666667,
+          "andel": 0.599788038068,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 10,
+          "ermann": "Menn",
+          "pasienter": 19982.3333333,
+          "pop": 32760.3333333,
+          "andel": 0.609955128662,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 11,
+          "ermann": "Kvinner",
+          "pasienter": 19075,
+          "pop": 31825.3333333,
+          "andel": 0.599365285517,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 11,
+          "ermann": "Menn",
+          "pasienter": 20410,
+          "pop": 33591.3333333,
+          "andel": 0.60759719769,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 12,
+          "ermann": "Kvinner",
+          "pasienter": 19831.6666667,
+          "pop": 32370.3333333,
+          "andel": 0.612649442391,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 12,
+          "ermann": "Menn",
+          "pasienter": 21012,
+          "pop": 34206,
+          "andel": 0.614278196808,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 13,
+          "ermann": "Kvinner",
+          "pasienter": 20676.6666667,
+          "pop": 32737.3333333,
+          "andel": 0.631592880707,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 13,
+          "ermann": "Menn",
+          "pasienter": 21371,
+          "pop": 34602.6666667,
+          "andel": 0.617611359433,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 14,
+          "ermann": "Kvinner",
+          "pasienter": 22529.6666667,
+          "pop": 32503.3333333,
+          "andel": 0.693149420572,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 14,
+          "ermann": "Menn",
+          "pasienter": 22339.3333333,
+          "pop": 34440.6666667,
+          "andel": 0.648632430654,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 15,
+          "ermann": "Kvinner",
+          "pasienter": 23800.3333333,
+          "pop": 32177.6666667,
+          "andel": 0.739653797147,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 15,
+          "ermann": "Menn",
+          "pasienter": 22474.3333333,
+          "pop": 34116.6666667,
+          "andel": 0.65874938935,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 16,
+          "ermann": "Kvinner",
+          "pasienter": 25618.6666667,
+          "pop": 31817,
+          "andel": 0.805188002221,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 16,
+          "ermann": "Menn",
+          "pasienter": 23800.6666667,
+          "pop": 33546,
+          "andel": 0.709493431904,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 17,
+          "ermann": "Kvinner",
+          "pasienter": 26260.6666667,
+          "pop": 31680.3333333,
+          "andel": 0.828926463316,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 17,
+          "ermann": "Menn",
+          "pasienter": 23796.6666667,
+          "pop": 33457.3333333,
+          "andel": 0.711254134619,
+          "gender": "Gutter"
+        },
+        {
+          "alder": 18,
+          "ermann": "Kvinner",
+          "pasienter": 26771.3333333,
+          "pop": 31499,
+          "andel": 0.849910579172,
+          "gender": "Jenter"
+        },
+        {
+          "alder": 18,
+          "ermann": "Menn",
+          "pasienter": 23949.3333333,
+          "pop": 33246.6666667,
+          "andel": 0.720352917586,
+          "gender": "Gutter"
+        }
+      ]
+    }
+  ]
+}
