@@ -46,7 +46,10 @@ export const TreatmentQualityToolbar = ({ openDrawer }: StickyToolbarProps) => {
                   openDrawer();
                 }}
               >
-                <TuneRoundedIcon fontSize="medium" />
+                <TuneRoundedIcon
+                  fontSize="medium"
+                  data-testid="TuneRoundedIcon"
+                />
               </Button>
             </Tooltip>
           ) : (
