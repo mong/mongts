@@ -5,7 +5,6 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import { ExpandMore } from "@mui/icons-material";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { PluggableList } from "react-markdown/lib";
 
 interface Props {
   description_title?: string;
@@ -13,7 +12,7 @@ interface Props {
   delivery_time?: Date;
 }
 
-const remarkPlugins: PluggableList = [remarkGfm];
+const remarkPlugins = [remarkGfm];
 
 export const ChartRowDescription = ({
   description_text,

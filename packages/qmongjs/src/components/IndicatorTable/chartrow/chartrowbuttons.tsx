@@ -9,7 +9,7 @@ import { select, selectAll } from "d3";
 import { Description } from "types";
 
 interface Props {
-  svgContainer: React.RefObject<HTMLDivElement>;
+  svgContainer: React.RefObject<HTMLDivElement | null>;
   show_level: boolean;
   show_N: boolean;
   zoom: boolean;
@@ -50,7 +50,9 @@ export const FigureButtons = (props: Props) => {
     logo,
   } = props;
 
-  function getDownloadURL(svgContainer: React.RefObject<HTMLDivElement>) {
+  function getDownloadURL(
+    svgContainer: React.RefObject<HTMLDivElement | null>,
+  ) {
     if (!svgContainer.current) return;
     const src = svgContainer.current.getElementsByTagName("svg")[0];
 

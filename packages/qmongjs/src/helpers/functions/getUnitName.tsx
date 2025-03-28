@@ -20,9 +20,7 @@ export const getUnitFullName = (
   const isHF = HFs.map((row) => row.hf).includes(unitShortName);
 
   if (isHF) {
-    return HFs.filter((row) => {
-      return row.hf === unitShortName;
-    })[0].hf_full;
+    return HFs.find((row) => row.hf === unitShortName)!.hf_full;
   }
 
   // Check if unit is a hospital?
@@ -41,9 +39,8 @@ export const getUnitShortestName = (
   const isRHF = nestedUnitNames.map((row) => row.rhf).includes(unitShortName);
 
   if (isRHF) {
-    return nestedUnitNames.filter((row) => {
-      return row.rhf === unitShortName;
-    })[0].rhf_shortest;
+    return nestedUnitNames.find((row) => row.rhf === unitShortName)!
+      .rhf_shortest;
   }
 
   // Check if unit is a HF
@@ -51,9 +48,7 @@ export const getUnitShortestName = (
   const isHF = HFs.map((row) => row.hf).includes(unitShortName);
 
   if (isHF) {
-    return HFs.filter((row) => {
-      return row.hf === unitShortName;
-    })[0].hf_shortest;
+    return HFs.find((row) => row.hf === unitShortName)!.hf_shortest;
   }
 
   // Check if unit is a hospital?

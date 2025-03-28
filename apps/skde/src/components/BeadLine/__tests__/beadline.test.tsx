@@ -43,7 +43,7 @@ describe("BeadLine component", () => {
     const lang = "nb";
     expect(() =>
       render(<BeadLine boxData={boxData} lang={lang} />),
-    ).toThrowError("Cannot read properties of undefined (reading 'bohf')");
+    ).toThrowError("Cannot read properties of undefined (reading 'undefined')");
   });
 
   it("throws error with invalid boxData (missing national property in data)", () => {
@@ -54,6 +54,6 @@ describe("BeadLine component", () => {
     const lang = "nb";
     expect(() =>
       render(<BeadLine boxData={boxData} lang={lang} />),
-    ).toThrowError("Cannot read properties of undefined (reading 'bohf')");
+    ).toThrowError("Cannot read properties of undefined (reading 'xValue')");
   });
 });

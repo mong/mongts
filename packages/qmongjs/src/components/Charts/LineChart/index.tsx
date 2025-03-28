@@ -25,7 +25,7 @@ import { Description, Indicator } from "types";
 import { Typography } from "@mui/material";
 
 export interface Props {
-  svgContainerRef: React.RefObject<HTMLDivElement>;
+  svgContainerRef: React.RefObject<HTMLDivElement | null>;
   showLevel: boolean;
   data: Indicator[];
   levels: Level[];
@@ -226,15 +226,11 @@ const LineChart = (props: Props) => {
       .y((d) => yScale(d.var));
 
     const dataComplete = lastCompleteYear
-      ? data.filter(function (datapoint) {
-          return datapoint.year <= lastCompleteYear;
-        })
+      ? data.filter((datapoint) => datapoint.year <= lastCompleteYear)
       : data;
 
     const dataIncomplete = lastCompleteYear
-      ? data.filter(function (datapoint) {
-          return datapoint.year >= lastCompleteYear;
-        })
+      ? data.filter((datapoint) => datapoint.year >= lastCompleteYear)
       : [];
 
     container

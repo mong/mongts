@@ -10,7 +10,6 @@ import { FetchIndicatorParams } from "../../../helpers/hooks";
 import { newLevelSymbols, level2, skdeTheme } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { PluggableList } from "react-markdown/lib";
 import { Skeleton, Collapse, Typography, Stack } from "@mui/material";
 import {
   StyledTable,
@@ -25,7 +24,7 @@ import { ChartRow } from "../chartrow";
 import { getLastCompleteYear } from "../../../helpers/functions";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 
-const remarkPlugins: PluggableList = [remarkGfm];
+const remarkPlugins = [remarkGfm];
 
 // ###########################
 // ########## Types ##########
@@ -346,9 +345,7 @@ const IndicatorRow = (props: {
                     colspan={1}
                     treatmentYear={year}
                     indicatorData={chartData.filter(
-                      (chartDataRow: Indicator) => {
-                        return chartDataRow.year === year;
-                      },
+                      (chartDataRow: Indicator) => chartDataRow.year === year,
                     )}
                     selectedTreatmentUnits={unitNames}
                     update_selected_row={onClick}
@@ -454,9 +451,10 @@ const IndicatorSection = (props: {
         unitNames={unitNames}
         levels={levels}
         indData={indDataRow}
-        chartData={chartData.filter((chartDataRow: Indicator) => {
-          return chartDataRow.ind_id === indDataRow.indicatorID;
-        })}
+        chartData={chartData.filter(
+          (chartDataRow: Indicator) =>
+            chartDataRow.ind_id === indDataRow.indicatorID,
+        )}
         rowID={indDataRow.indicatorID}
         openRowID={openRowID}
         setOpenRowID={setOpenRowID}
@@ -643,9 +641,9 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
 
   const rowData = nestedDataQuery.data as RegisterData[];
 
-  const rowDataFiltered = rowData.filter((row) => {
-    return medfields.includes(row.registerName);
-  });
+  const rowDataFiltered = rowData.filter((row) =>
+    medfields.includes(row.registerName),
+  );
   rowDataFiltered.sort((a: RegisterData, b: RegisterData) => {
     return (
       Math.min(...a.medfieldID) - Math.min(...b.medfieldID) ||
@@ -665,9 +663,10 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
           levels={levels}
           unitNames={props.unitNames}
           regData={row}
-          chartData={chartData.filter((chartDataRow: Indicator) => {
-            return chartDataRow.registry_name === row.registerName;
-          })}
+          chartData={chartData.filter(
+            (chartDataRow: Indicator) =>
+              chartDataRow.registry_name === row.registerName,
+          )}
           openRowID={openRowID}
           setOpenRowID={setOpenRowID}
           context={context}

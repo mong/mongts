@@ -1,11 +1,20 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base"],
-  "baseBranches": ["dependency_updates"],
+  "extends": [
+    "config:recommended"
+  ],
+  "baseBranches": [
+    "dependency_updates"
+  ],
   "commitMessageExtra": "from v{{currentVersion}} to {{prettyNewVersion}}",
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin",
+        "digest"
+      ],
       "automerge": true
     }
   ]

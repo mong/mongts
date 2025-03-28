@@ -91,7 +91,7 @@ export const Linechart = ({
           xScale={{ type: "band", paddingOuter: 0 }}
           yScale={{ type: "linear" }}
           margin={{
-            top: 50,
+            top: 70,
             right: 50,
             bottom: 50,
             left: 55 + yvaluesMaxTextLength,
@@ -164,9 +164,7 @@ export const Linechart = ({
                 {": "}
                 {accessors.xAccessor(tooltipData.nearestDatum.datum)}
                 {Object.keys(tooltipData.datumByKey)
-                  .filter(function (value) {
-                    return linevars.includes(value);
-                  })
+                  .filter((value) => linevars.includes(value))
                   .map((d) => {
                     return (
                       <div key={d}>

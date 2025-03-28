@@ -1,11 +1,15 @@
-import { useMemo, useEffect, useRef } from "react";
+import { useMemo } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import style from "./tableblock.module.css";
-import { useDescriptionQuery, useIndicatorQuery } from "../../../helpers/hooks";
+import {
+  useDescriptionQuery,
+  useIndicatorQuery,
+  useResidentDataQuery,
+} from "../../../helpers/hooks";
 import { filterOrderIndID } from "../../../helpers/functions";
 import { IndicatorRow } from "../indicatorrow";
 import { TableBlockTitle } from "./tableblocktitle";
-import { Description, Indicator, RegisterName } from "types";
+import { Description, Indicator, RegisterName, ResidentData } from "types";
 import { IndicatorTableSkeleton } from "../IndicatorTableSkeleton";
 import { TableRow, TableCell, Box, Stack } from "@mui/material";
 import Link from "next/link";
@@ -24,7 +28,6 @@ interface TableBlockProps {
   colspan: number;
   onEmptyStatusChanged?: (registerName: string, isEmpty: boolean) => void;
   chartColours: string[];
-  hasResidentData?: boolean;
 }
 
 const SkeletonRow = (colSpan: number) => {
@@ -50,9 +53,7 @@ const TableBlock = (props: TableBlockProps) => {
     showLevelFilter,
     blockTitle,
     unitNames,
-    onEmptyStatusChanged,
     chartColours,
-    hasResidentData,
   } = props;
   const queryContext = dataQuality
     ? { context, type: "dg" }
@@ -66,12 +67,21 @@ const TableBlock = (props: TableBlockProps) => {
     type: queryContext.type,
     context: queryContext.context,
   });
-  const { isFetching } = indicatorDataQuery;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const descriptionQuery: UseQueryResult<any, unknown> = useDescriptionQuery({
     registerShortName: registerName.rname,
   });
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const residentDataQuery: UseQueryResult<any, unknown> = useResidentDataQuery(
+    registerName.rname,
+  );
+
+  const isFetching =
+    indicatorDataQuery.isFetching ||
+    descriptionQuery.isFetching ||
+    residentDataQuery.isFetching;
 
   const uniqueOrderedInd: string[] = useMemo(
     () =>
@@ -93,40 +103,19 @@ const TableBlock = (props: TableBlockProps) => {
     ],
   );
 
-  const isEmptyRef = useRef(false);
-
-  useEffect(() => {
-    if (
-      !descriptionQuery.isLoading &&
-      !indicatorDataQuery.isLoading &&
-      !descriptionQuery.isError &&
-      !indicatorDataQuery.isError
-    ) {
-      const isEmpty =
-        descriptionQuery.data.length === 0 ||
-        indicatorDataQuery.data.length === 0;
-
-      if (isEmpty !== isEmptyRef.current) {
-        isEmptyRef.current = isEmpty;
-        onEmptyStatusChanged?.(registerName.rname, isEmpty);
-      }
-    }
-  }, [
-    descriptionQuery.isLoading,
-    indicatorDataQuery.isLoading,
-    descriptionQuery.isError,
-    indicatorDataQuery.isError,
-    descriptionQuery.data,
-    indicatorDataQuery.data,
-    onEmptyStatusChanged,
-    registerName.rname,
-  ]);
-
-  if (descriptionQuery.isLoading || indicatorDataQuery.isLoading) {
+  if (
+    descriptionQuery.isLoading ||
+    indicatorDataQuery.isLoading ||
+    residentDataQuery.isLoading
+  ) {
     return SkeletonRow(colspan);
   }
 
-  if (descriptionQuery.isError || indicatorDataQuery.isError) {
+  if (
+    descriptionQuery.isError ||
+    indicatorDataQuery.isError ||
+    residentDataQuery.isError
+  ) {
     return null;
   }
 
@@ -138,14 +127,14 @@ const TableBlock = (props: TableBlockProps) => {
     const singleIndicatorData = indicatorDataQuery.data.filter(
       (data: Indicator) => data.ind_id === indicator,
     );
-    const singleIndicatorDescription = descriptionQuery.data.filter(
+    const singleIndicatorDescription = descriptionQuery.data.find(
       (data: Description) => data.id === indicator,
     );
     return (
       <IndicatorRow
         context={queryContext}
         indicatorData={singleIndicatorData}
-        description={singleIndicatorDescription[0]}
+        description={singleIndicatorDescription}
         key={indicator}
         unitNames={props.unitNames}
         medicalFieldClass={medicalFieldClass}
@@ -164,13 +153,44 @@ const TableBlock = (props: TableBlockProps) => {
   // then the table block should be shown with a message.
   let showTitleAnyway = false;
 
+  // Filter on treatment year
+  let filteredResidentData = residentDataQuery.data.filter(
+    (row: ResidentData) => row.year === treatmentYear,
+  );
+
+  // Filter on level if selected
+  if (showLevelFilter) {
+    filteredResidentData = residentDataQuery.data.filter(
+      (row: ResidentData) => row.level === showLevelFilter,
+    );
+  }
+
+  // Check if national is the only unit
   if (
     context === "caregiver" &&
     !showTitle &&
-    hasResidentData &&
     medicalFieldFilter.includes(registerName.rname)
   ) {
-    showTitleAnyway = true;
+    if (unitNames.length === 1 && unitNames[0] === "Nasjonalt") {
+      filteredResidentData = filteredResidentData.filter(
+        (row: ResidentData) =>
+          row.year === treatmentYear && unitNames.includes(row.unitName),
+      );
+    } else {
+      // If not, exclude national from the filter since the indicators shown are governed by the treatment units
+      const unitNamesExceptNational = unitNames.filter(
+        (row) => row !== "Nasjonalt",
+      );
+      filteredResidentData = filteredResidentData.filter(
+        (row: ResidentData) =>
+          row.year === treatmentYear &&
+          unitNamesExceptNational.includes(row.unitName),
+      );
+    }
+
+    if (filteredResidentData.length > 0) {
+      showTitleAnyway = true;
+    }
   }
 
   return (
@@ -189,14 +209,14 @@ const TableBlock = (props: TableBlockProps) => {
           <TableCell colSpan={colspan} sx={{ padding: 0 }}>
             <Box margin="0.5rem">
               <Stack spacing={"0.5rem"}>
-                <div style={{ fontSize: "1.2rem", fontWeight: "normal" }}>
+                <div style={{ fontSize: "1.25rem", fontWeight: "normal" }}>
                   Registeret har data på opptaksområde
                 </div>
-                <div style={{ fontSize: "0.9rem", color: "#7d8588" }}>
-                  Det kan hende at det ikke finnes data for valgt år eller
-                  valgte behandlingsenheter.
+                <div style={{ fontSize: "0.875rem", color: "#7d8588" }}>
+                  Velg "Opptaksområder" øverst i filtermenyen til venstre for å
+                  se disse dataene.
                 </div>
-                <div style={{ fontSize: "0.9rem" }}>
+                <div style={{ fontSize: "0.875rem" }}>
                   <Link href={"/behandlingskvalitet/" + registerName.rname}>
                     År og opptaksområder med data vises her.
                   </Link>

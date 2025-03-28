@@ -2,7 +2,6 @@ import React from "react";
 import { TextBox } from "../TextBox";
 import { FactBox } from "../Factbox";
 import { ResultBox } from "../ResultBox";
-import classNames from "./Chapters.module.css";
 import { Box } from "@mui/material";
 import { Atlas, AtlasData, ChapterType } from "../../types";
 
@@ -31,10 +30,12 @@ type ChapterProps = ChapterType & {
 const Chapter = ({ atlas, atlasData, innhold, overskrift }: ChapterProps) => {
   const mainID = overskrift?.toLowerCase().replace(/\s/g, "-") || "qwerty";
   return (
-    <div
+    <Box
       id={mainID}
-      style={{ paddingTop: "0.5rem" }}
-      className={classNames.chapters}
+      sx={{
+        paddingTop: "0.5rem",
+        "@media print": { padding: "0.625rem 1.25rem" },
+      }}
     >
       {overskrift && <h2>{overskrift}</h2>}
       {innhold &&
@@ -79,6 +80,6 @@ const Chapter = ({ atlas, atlasData, innhold, overskrift }: ChapterProps) => {
               return <TextBox atlas={atlas} children={box.tekst} key={index} />;
           }
         })}
-    </div>
+    </Box>
   );
 };

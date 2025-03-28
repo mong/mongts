@@ -192,3 +192,11 @@ export type RegistryRequirement = {
   introduction_year: number;
   last_year: number;
 };
+
+export type ResidentData = {
+  indicatorID: string;
+  registry: string;
+  year: number;
+  unitName: string;
+  level: string;
+};

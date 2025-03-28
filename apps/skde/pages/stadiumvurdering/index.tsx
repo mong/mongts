@@ -1,3 +1,4 @@
+import { type JSX } from "react";
 import { RegistryLevelTable } from "../../src/components/RegistryLevelTable";
 import { defaultYear } from "qmongjs";
 
