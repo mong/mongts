@@ -2,7 +2,6 @@ import React from "react";
 import { screen, render, fireEvent } from "@testing-library/react";
 import { ChipSelection } from "../.";
 import { vi, describe, test, expect } from "vitest";
-import "@testing-library/jest-dom";
 
 vi.mock("next/font/google", () => ({
   Plus_Jakarta_Sans: () => ({
@@ -29,8 +28,8 @@ describe("ChipSelection", () => {
       />,
     );
 
-    expect(getByText("Chip 1")).toBeInTheDocument();
-    expect(getByText("Chip 2")).toBeInTheDocument();
+    expect(getByText("Chip 1")).toBeTruthy();
+    expect(getByText("Chip 2")).toBeTruthy();
     const button1 = getByRole("button", { name: "Help text for Chip 1" });
     expect(button1).toBeTruthy();
     const button2 = getByRole("button", { name: "Help text for Chip 2" });
