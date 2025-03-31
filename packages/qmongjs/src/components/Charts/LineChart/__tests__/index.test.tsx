@@ -12,7 +12,7 @@ import LineChart, { Props } from "..";
 import { buildLevels } from "../../../../test/builders";
 import { clockTick } from "../../../../test/clockTick";
 import * as hooks from "../../../../helpers/hooks";
-import { vi } from "vitest";
+import { vi, test, expect } from "vitest";
 import { buildDescription } from "../../../IndicatorTable/chartrow/__tests__/chart.test";
 
 vi.mock("../../../../helpers/hooks");
@@ -43,8 +43,8 @@ test("shows legend", async () => {
 
   //  await clockTick(1500);
 
-  expect(screen.getByText("Nasjonalt")).toBeInTheDocument();
-  expect(screen.getByText("Ahus")).toBeInTheDocument();
+  expect(screen.getByText("Nasjonalt")).toBeTruthy();
+  expect(screen.getByText("Ahus")).toBeTruthy();
 });
 
 test("shows only one legend item per unit_name", async () => {
