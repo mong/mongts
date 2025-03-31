@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
   },
   output: "export",
   experimental: {
-    largePageDataBytes: 512 * 1000,
+    largePageDataBytes: 1024 * 1000,
   },
 };
 
