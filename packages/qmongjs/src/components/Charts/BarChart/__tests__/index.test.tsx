@@ -12,7 +12,7 @@ import * as hooks from "../../../../helpers/hooks";
 import { buildLevels } from "../../../../test/builders";
 import { clockTick } from "../../../../test/clockTick";
 import { buildDescription } from "../../../IndicatorTable/chartrow/__tests__/chart.test";
-import { vi } from "vitest";
+import { vi, test, expect } from "vitest";
 
 vi.mock("../../../../helpers/hooks");
 
@@ -166,26 +166,25 @@ test("Can set color and opacity for bars", async () => {
     />,
   );
 
-  expect(screen.getByTestId(`bar-${dataPoint1.label}`)).toHaveAttribute(
-    "fill",
-    "#7EBEC7",
-  );
-  expect(screen.getByTestId(`bar-${dataPoint2.label}`)).toHaveAttribute(
-    "fill",
-    dataPoint2.style?.color,
-  );
-  expect(screen.getByTestId(`bar-${dataPoint3.label}`)).toHaveAttribute(
-    "fill",
-    "#7EBEC7",
-  );
-  expect(screen.getByTestId(`bar-${dataPoint4.label}`)).toHaveAttribute(
-    "fill",
-    dataPoint4.style?.color,
-  );
-  expect(screen.getByTestId(`bar-${dataPoint4.label}`)).toHaveAttribute(
-    "opacity",
-    `${dataPoint4.style?.opacity}`,
-  );
+  expect(
+    screen.getByTestId(`bar-${dataPoint1.label}`).getAttribute("fill"),
+  ).toEqual("#7EBEC7");
+
+  expect(
+    screen.getByTestId(`bar-${dataPoint2.label}`).getAttribute("fill"),
+  ).toEqual(dataPoint2.style?.color);
+
+  expect(
+    screen.getByTestId(`bar-${dataPoint3.label}`).getAttribute("fill"),
+  ).toEqual("#7EBEC7");
+
+  expect(
+    screen.getByTestId(`bar-${dataPoint4.label}`).getAttribute("fill"),
+  ).toEqual(dataPoint4.style?.color);
+
+  expect(
+    screen.getByTestId(`bar-${dataPoint4.label}`).getAttribute("opacity"),
+  ).toEqual(`${dataPoint4.style?.opacity}`);
 });
 
 test("Render without levels @250px", async () => {
