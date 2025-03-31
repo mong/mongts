@@ -1,14 +1,16 @@
 import type { NextConfig } from "next";
 
-export const output = "export";
-export const images = {
-  loader: "custom",
-};
-export const trailingSlash = true;
-export const reactStrictMode = true;
-export const transpilePackages = ["qmongjs"];
-export const nextConfig: NextConfig = {
+const nextConfig: NextConfig = {
+  trailingSlash: true,
+  reactStrictMode: true,
+  transpilePackages: ["qmongjs"],
+  images: {
+    loader: "custom",
+  },
+  output: "export",
   experimental: {
     largePageDataBytes: 512 * 1000,
   },
 };
+
+export default nextConfig;
