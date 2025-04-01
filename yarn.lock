@@ -461,12 +461,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.20.13, @babel/runtime@npm:^7.25.7, @babel/runtime@npm:^7.26.10, @babel/runtime@npm:^7.26.7, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.0.0, @babel/runtime@npm:^7.1.2, @babel/runtime@npm:^7.12.0, @babel/runtime@npm:^7.12.13, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.15.4, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.20.13, @babel/runtime@npm:^7.25.7, @babel/runtime@npm:^7.26.10, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
   version: 7.26.10
   resolution: "@babel/runtime@npm:7.26.10"
   dependencies:
     regenerator-runtime: "npm:^0.14.0"
   checksum: 10/9d7ff8e96abe3791047c1138789c742411e3ef19c4d7ca18ce916f83cec92c06ec5dc64401759f6dd1e377cf8a01bbd2c62e033eb7550f435cf6579768d0d4a5
+  languageName: node
+  linkType: hard
+
+"@babel/runtime@npm:^7.27.0":
+  version: 7.27.0
+  resolution: "@babel/runtime@npm:7.27.0"
+  dependencies:
+    regenerator-runtime: "npm:^0.14.0"
+  checksum: 10/e6966e03b695feb4c0ac0856a4355231c2580bf9ebd0298f47739f85c0ea658679dd84409daf26378d42c86c1cbe7e33feab709b14e784254b6c441d91606465
   languageName: node
   linkType: hard
 
@@ -1494,23 +1503,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iframe-resizer/core@npm:5.3.3":
-  version: 5.3.3
-  resolution: "@iframe-resizer/core@npm:5.3.3"
-  checksum: 10/6b87e2e6ef75341f8f12db089377837e7db063de3a2b803b384d9bfa8bc474bb54c795d5a1ec5e7d6d8d52e03d422bfc31fd19993560d39f14db5497b195eb2b
+"@iframe-resizer/core@npm:5.4.2":
+  version: 5.4.2
+  resolution: "@iframe-resizer/core@npm:5.4.2"
+  dependencies:
+    auto-console-group: "npm:1.2.0"
+  checksum: 10/081b025a210a543b19f854f26317a99797091b464cc42054563b7cf32e34cda5c8c8e9b0b3c88e51df6ed4c2f1f5d13921b36428395422e81cf036121ad05a46
   languageName: node
   linkType: hard
 
-"@iframe-resizer/react@npm:5.3.3":
-  version: 5.3.3
-  resolution: "@iframe-resizer/react@npm:5.3.3"
+"@iframe-resizer/react@npm:5.4.2":
+  version: 5.4.2
+  resolution: "@iframe-resizer/react@npm:5.4.2"
   dependencies:
-    "@babel/runtime": "npm:^7.26.7"
-    "@iframe-resizer/core": "npm:5.3.3"
+    "@babel/runtime": "npm:^7.27.0"
+    "@iframe-resizer/core": "npm:5.4.2"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0  || ^19.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0  || ^19.0.0
-  checksum: 10/a579b0d435e21635b7cbc45fe19d690a5706f36e7a8d157d8cef0aeb6a3fe68d69103580ef558a84613096d5c5a1ecb8d4f37ea73e7499556b364882aa372d1a
+  checksum: 10/de0da04fc4277e8491e33745c65efe70ee24759a3683cd3120bdc6e58f01519ac3c48caf47b13ba6029b28719d199a0458e7c9e28aecd4525d5c6aef9f3204aa
   languageName: node
   linkType: hard
 
@@ -4940,6 +4951,13 @@ __metadata:
   version: 1.0.0
   resolution: "at-least-node@npm:1.0.0"
   checksum: 10/463e2f8e43384f1afb54bc68485c436d7622acec08b6fad269b421cb1d29cebb5af751426793d0961ed243146fe4dc983402f6d5a51b720b277818dbf6f2e49e
+  languageName: node
+  linkType: hard
+
+"auto-console-group@npm:1.2.0":
+  version: 1.2.0
+  resolution: "auto-console-group@npm:1.2.0"
+  checksum: 10/c0965370141729317913d864a0d8bd55480620e5a41b88aad7ce1ad6de4dbe53ce3c693194a184f11667de3ba897502da8974f8d18daaee083bc73cd8c20f9de
   languageName: node
   linkType: hard
 
@@ -15586,7 +15604,7 @@ __metadata:
   resolution: "skde@workspace:apps/skde"
   dependencies:
     "@cypress/code-coverage": "npm:3.14.0"
-    "@iframe-resizer/react": "npm:5.3.3"
+    "@iframe-resizer/react": "npm:5.4.2"
     "@mui/icons-material": "npm:7.0.1"
     "@mui/material": "npm:7.0.1"
     "@tanstack/react-query": "npm:5.71.1"
