@@ -3,7 +3,7 @@ import { AxisBottom, AxisLeft } from "@visx/axis";
 import { scaleLinear, scaleOrdinal, scaleBand } from "@visx/scale";
 import { Group } from "@visx/group";
 import { max, sum, min } from "d3-array";
-import { useBohfQueryParam } from "../../helpers/hooks";
+import { useAreaQueryParam } from "../../helpers/hooks";
 
 import { ColorLegend } from "./ColorLegend";
 import { AnnualVarLegend } from "./AnnualVarLegend";
@@ -103,7 +103,7 @@ export const Barchart = ({
   const series = toBarchart(sorted, x);
 
   // Pick out bohf query from the url
-  const [selectedBohfs, toggleBohf] = useBohfQueryParam(national);
+  const [selectedAreas, toggleArea] = useAreaQueryParam(national);
 
   // Find max values
   const annualValues = annualVar
@@ -246,9 +246,7 @@ export const Barchart = ({
               const bars = (
                 <Group fill={colorScale(d["key"])} key={`${i}`}>
                   {d.map((barData, i) => {
-                    const bohfName = (
-                      barData.data.bohf || barData.data.borhf
-                    ).toString();
+                    const areaName = barData.data[y].toString();
                     return (
                       <rect
                         key={`${i}`}
@@ -257,11 +255,11 @@ export const Barchart = ({
                         width={xScale(Math.abs(barData[0] - barData[1]))}
                         height={yScale.bandwidth()}
                         fill={
-                          selectedBohfs.has(bohfName)
+                          selectedAreas.has(areaName)
                             ? x.length === 1
                               ? selectedColors[0]
                               : selectedColorScale(d["key"])
-                            : bohfName === national
+                            : areaName === national
                               ? x.length === 1
                                 ? nationColors[0]
                                 : nationColorScale(d["key"])
@@ -270,14 +268,14 @@ export const Barchart = ({
                                 : colorScale(d["key"])
                         }
                         data-testid={
-                          selectedBohfs.has(bohfName)
-                            ? `rect_${bohfName}_selected`
-                            : `rect_${bohfName}_unselected`
+                          selectedAreas.has(areaName)
+                            ? `rect_${areaName}_selected`
+                            : `rect_${areaName}_unselected`
                         }
                         style={{
-                          cursor: bohfName != national ? "pointer" : "auto",
+                          cursor: areaName != national ? "pointer" : "auto",
                         }}
-                        onClick={() => toggleBohf(bohfName)}
+                        onClick={() => toggleArea(areaName)}
                       />
                     );
                   })}
@@ -297,7 +295,7 @@ export const Barchart = ({
                     sizeScale={sizeScale}
                     y={y}
                     labels={varLabels}
-                    key={`${d["bohf"] || d["borhf"]}${i}`}
+                    key={`${d[y]}${i}`}
                   />
                 );
               })}
@@ -310,7 +308,7 @@ export const Barchart = ({
                     yScale={yScale}
                     errorBars={errorBars}
                     y={y}
-                    key={`${d["bohf"] || d["borhf"]}_errorbar`}
+                    key={`${d[y]}_errorbar`}
                   />
                 );
               })}

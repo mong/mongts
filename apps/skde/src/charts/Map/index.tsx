@@ -2,7 +2,7 @@ import { geoMercator, geoPath } from "d3-geo";
 import { scaleThreshold } from "d3-scale";
 import { customFormat } from "qmongjs";
 import { mapColors, abacusColors } from "../colors";
-import { useBohfQueryParam } from "../../helpers/hooks";
+import { useAreaQueryParam } from "../../helpers/hooks";
 import { DataItemPoint } from "../../types";
 
 type FeatureShape = {
@@ -29,54 +29,27 @@ type MapData = {
 
 type MapProps = {
   mapData: MapData;
-  mapAttr?: DataItemPoint[];
+  data: DataItemPoint[];
   dataToMap?: { [k: string]: number | string }[];
   connection?: { [k: string]: string };
   attrName?: string;
-  classes?: number[];
+  jenks: number[];
   caption?: string;
   format?: string;
   lang: "en" | "nb" | "nn";
 };
 
-const ObjectIDToBoHF = [
-  { BoHF_num: 1, bohf: "Finnmark" },
-  { BoHF_num: 2, bohf: "UNN" },
-  { BoHF_num: 3, bohf: "Nordland" },
-  { BoHF_num: 4, bohf: "Helgeland" },
-  { BoHF_num: 6, bohf: "Nord-Trøndelag" },
-  { BoHF_num: 7, bohf: "St. Olav" },
-  { BoHF_num: 8, bohf: "Møre og Romsdal" },
-  { BoHF_num: 10, bohf: "Førde" },
-  { BoHF_num: 11, bohf: "Bergen" },
-  { BoHF_num: 12, bohf: "Fonna" },
-  { BoHF_num: 13, bohf: "Stavanger" },
-  { BoHF_num: 14, bohf: "Østfold" },
-  { BoHF_num: 15, bohf: "Akershus" },
-  { BoHF_num: 16, bohf: "OUS" },
-  { BoHF_num: 17, bohf: "Lovisenberg" },
-  { BoHF_num: 18, bohf: "Diakonhjemmet" },
-  { BoHF_num: 19, bohf: "Innlandet" },
-  { BoHF_num: 20, bohf: "Vestre Viken" },
-  { BoHF_num: 21, bohf: "Vestfold" },
-  { BoHF_num: 22, bohf: "Telemark" },
-  { BoHF_num: 23, bohf: "Sørlandet" },
-  { BoHF_num: 30, bohf: "Indre Oslo" },
-];
-
 export const Map = ({
   mapData,
-  mapAttr,
-  dataToMap = ObjectIDToBoHF,
-  connection = { mapData: "BoHF_num", mapAttr: "bohf" },
+  data,
   attrName,
-  classes,
+  jenks,
   caption,
   format,
   lang,
 }: MapProps) => {
-  // Pick out bohf query from the url
-  const [selectedBohfs, toggleBohf] = useBohfQueryParam();
+  // Pick out area query from the url
+  const [selectedAreas, toggleArea] = useAreaQueryParam();
 
   const width = 1000;
   const height = 1000;
@@ -99,7 +72,7 @@ export const Map = ({
   ];
 
   const colorScale = scaleThreshold<number, string>()
-    .domain(classes ? classes : [])
+    .domain(jenks)
     .range(mapColors);
 
   const projection = geoMercator()
@@ -117,23 +90,17 @@ export const Map = ({
           style={{ backgroundColor: "none" }}
         >
           {mapData.features.map((d, i) => {
-            const mapId = connection.mapData;
-            const attrID = connection.mapAttr;
+            const area = d.properties["area"];
+            const val = data.find((attribute) => attribute["area"] === area)?.[
+              attrName
+            ];
 
-            const hf = dataToMap.find(
-              (dtm) => dtm[mapId] === d.properties[mapId],
-            )[attrID];
-
-            const attr = mapAttr.find((attribute) => {
-              return attribute[attrID] === hf;
-            });
-            const val = attr ? attr[attrName] : undefined;
             return (
               <path
                 key={`map-feature-${i}`}
                 d={pathGenerator(d.geometry)}
                 fill={
-                  selectedBohfs.has(hf as string)
+                  selectedAreas.has(area as string)
                     ? abacusColors[2]
                     : val
                       ? colorScale(val as number)
@@ -142,50 +109,48 @@ export const Map = ({
                 stroke={"black"}
                 strokeWidth={0.4}
                 className={i + ""}
-                data-testid={`maphf_${hf}`}
+                data-testid={`maphf_${area}`}
                 style={{
                   cursor: "pointer",
                 }}
-                onClick={() => toggleBohf(hf as string)}
+                onClick={() => toggleArea(area as string)}
               />
             );
           })}
-          {classes && (
-            <g>
-              {colorScale.range().map((d, i) => {
-                const w = 90;
-                return (
-                  <g key={d + i}>
-                    {" "}
-                    <rect x={i * w} width={w} height="20" fill={d} />
-                    {i !== 0 && (
-                      <>
-                        <line
-                          x1={i * w}
-                          x2={i * w}
-                          y1={0}
-                          y2={30}
-                          strokeWidth="2"
-                          stroke="black"
-                        />
-                        <text
-                          x={i * w}
-                          y={60}
-                          textAnchor="middle"
-                          fontSize={Math.max(...classes) > 9999 ? 25 : 30}
-                        >
-                          {customFormat(
-                            format ? format : ".1f",
-                            lang,
-                          )(colorScale.invertExtent(d)[0])}
-                        </text>
-                      </>
-                    )}
-                  </g>
-                );
-              })}
-            </g>
-          )}
+          <g>
+            {colorScale.range().map((d, i) => {
+              const w = 90;
+              return (
+                <g key={d + i}>
+                  {" "}
+                  <rect x={i * w} width={w} height="20" fill={d} />
+                  {i !== 0 && (
+                    <>
+                      <line
+                        x1={i * w}
+                        x2={i * w}
+                        y1={0}
+                        y2={30}
+                        strokeWidth="2"
+                        stroke="black"
+                      />
+                      <text
+                        x={i * w}
+                        y={60}
+                        textAnchor="middle"
+                        fontSize={Math.max(...jenks) > 9999 ? 25 : 30}
+                      >
+                        {customFormat(
+                          format ? format : ".1f",
+                          lang,
+                        )(colorScale.invertExtent(d)[0])}
+                      </text>
+                    </>
+                  )}
+                </g>
+              );
+            })}
+          </g>
         </svg>
       </div>
       <div
