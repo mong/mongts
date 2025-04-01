@@ -4,7 +4,7 @@
       "type": "barchart",
       "data": "qwerty",
       "x": ["Snittrate"],
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nn": "Tal pasientar pr. 1 000 innbyggarar (18 år og eldre)",
         "en": "Number of patients per 1,000 population (18 years and older)"
@@ -34,7 +34,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområde",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -90,7 +90,7 @@
       "national": "Noreg",
       "data": [
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "Snittrate": 1.71,
           "Rate.2022": 1.5,
           "Rate.2021": 1.68,
@@ -101,7 +101,7 @@
           "Snitt_innbyggarar": 117218.6
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "Snittrate": 2.11,
           "Rate.2022": 1.84,
           "Rate.2021": 2.22,
@@ -112,7 +112,7 @@
           "Snitt_innbyggarar": 239960.6
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "Snittrate": 2.41,
           "Rate.2022": 2.14,
           "Rate.2021": 2.39,
@@ -123,7 +123,7 @@
           "Snitt_innbyggarar": 216543.6
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "Snittrate": 2.52,
           "Rate.2022": 2.06,
           "Rate.2021": 2.73,
@@ -134,7 +134,7 @@
           "Snitt_innbyggarar": 196405.4
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "Snittrate": 2.59,
           "Rate.2022": 2.22,
           "Rate.2021": 2.54,
@@ -145,7 +145,7 @@
           "Snitt_innbyggarar": 265537.8
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "Snittrate": 2.64,
           "Rate.2022": 2.31,
           "Rate.2021": 2.52,
@@ -156,7 +156,7 @@
           "Snitt_innbyggarar": 358788.8
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "Snittrate": 2.68,
           "Rate.2022": 2.45,
           "Rate.2021": 2.61,
@@ -167,7 +167,7 @@
           "Snitt_innbyggarar": 382239.6
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "Snittrate": 2.73,
           "Rate.2022": 2.38,
           "Rate.2021": 2.51,
@@ -178,7 +178,7 @@
           "Snitt_innbyggarar": 449731.4
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "Snittrate": 2.76,
           "Rate.2022": 2.67,
           "Rate.2021": 2.73,
@@ -189,7 +189,7 @@
           "Snitt_innbyggarar": 139504
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "Snittrate": 2.77,
           "Rate.2022": 2.58,
           "Rate.2021": 2.63,
@@ -200,7 +200,7 @@
           "Snitt_innbyggarar": 274482.6
         },
         {
-          "bohf": "Noreg",
+          "area": "Noreg",
           "Snittrate": 2.79,
           "Rate.2022": 2.48,
           "Rate.2021": 2.71,
@@ -211,7 +211,7 @@
           "Snitt_innbyggarar": 4243542.8
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "Snittrate": 2.82,
           "Rate.2022": 2.56,
           "Rate.2021": 2.91,
@@ -222,7 +222,7 @@
           "Snitt_innbyggarar": 155033.8
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "Snittrate": 2.84,
           "Rate.2022": 2.57,
           "Rate.2021": 2.85,
@@ -233,7 +233,7 @@
           "Snitt_innbyggarar": 85281.4
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "Snittrate": 2.89,
           "Rate.2022": 2.8,
           "Rate.2021": 2.96,
@@ -244,7 +244,7 @@
           "Snitt_innbyggarar": 209533.2
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "Snittrate": 3,
           "Rate.2022": 2.47,
           "Rate.2021": 2.46,
@@ -255,7 +255,7 @@
           "Snitt_innbyggarar": 136966.8
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "Snittrate": 3.21,
           "Rate.2022": 3.04,
           "Rate.2021": 3.08,
@@ -266,7 +266,7 @@
           "Snitt_innbyggarar": 62546.6
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "Snittrate": 3.23,
           "Rate.2022": 2.78,
           "Rate.2021": 3.01,
@@ -277,7 +277,7 @@
           "Snitt_innbyggarar": 111035.2
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "Snittrate": 3.24,
           "Rate.2022": 2.54,
           "Rate.2021": 3.06,
@@ -288,7 +288,7 @@
           "Snitt_innbyggarar": 282917.2
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "Snittrate": 3.25,
           "Rate.2022": 3.05,
           "Rate.2021": 3.42,
@@ -299,7 +299,7 @@
           "Snitt_innbyggarar": 106472.2
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "Snittrate": 3.27,
           "Rate.2022": 2.84,
           "Rate.2021": 2.98,
@@ -310,7 +310,7 @@
           "Snitt_innbyggarar": 140304.2
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "Snittrate": 3.3,
           "Rate.2022": 2.9,
           "Rate.2021": 2.97,
@@ -321,7 +321,7 @@
           "Snitt_innbyggarar": 252499.4
         },
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "Snittrate": 3.93,
           "Rate.2022": 3.83,
           "Rate.2021": 3.89,

@@ -34,7 +34,7 @@ test("Standard render", async () => {
 });
 
 test("Render with picked HF", async () => {
-  mockRouter.push("/test_atlas/?bohf=UNN");
+  mockRouter.push("/test_atlas/?area=UNN");
   const { container } = render(
     <Abacus data={atlasData} lang="nb" x="rateSnitt" national="Norge" />,
   );
@@ -50,7 +50,7 @@ test("Render with another national", async () => {
 });
 
 test("Render with many picked HF", async () => {
-  mockRouter.push("/test_atlas/?bohf=OUS&bohf=UNN&bohf=Fonna");
+  mockRouter.push("/test_atlas/?area=OUS&area=UNN&area=Fonna");
   const { container } = render(
     <Abacus
       data={atlasData}
@@ -64,7 +64,7 @@ test("Render with many picked HF", async () => {
 });
 
 test("Render english with many picked HF", async () => {
-  mockRouter.push("/test_atlas/?bohf=OUS&bohf=UNN&bohf=Fonna");
+  mockRouter.push("/test_atlas/?area=OUS&area=UNN&area=Fonna");
   const { container } = render(
     <Abacus
       data={atlasData}
@@ -90,12 +90,12 @@ test("Click on dots", async () => {
   );
   fireEvent.click(getByTestId("circle_Finnmark_unselected"));
   expect(container).toMatchSnapshot();
-  expect(mockRouter.query).toEqual({ bohf: ["Finnmark"] });
+  expect(mockRouter.query).toEqual({ area: ["Finnmark"] });
   fireEvent.click(getByTestId("circle_Finnmark_selected"));
-  expect(mockRouter.query).toEqual({ bohf: [] });
+  expect(mockRouter.query).toEqual({ area: [] });
   fireEvent.click(getByTestId("circle_OUS_unselected"));
   fireEvent.click(getByTestId("circle_UNN_unselected"));
   fireEvent.click(getByTestId("circle_Fonna_unselected"));
-  expect(mockRouter.query).toEqual({ bohf: ["OUS", "UNN", "Fonna"] });
+  expect(mockRouter.query).toEqual({ area: ["OUS", "UNN", "Fonna"] });
   expect(container).toMatchSnapshot();
 });

@@ -3,10 +3,8 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "ratesnitt"
-      ],
-      "y": "bohf",
+      "x": ["ratesnitt"],
+      "y": "area",
       "xLabel": {
         "nb": "Rate: Antall astma konsultasjoner (totalt) pr. 1 000 barn (0-18 år)",
         "en": "Rate: Number of consultations astma per 1,000 children"
@@ -15,32 +13,18 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "rate2022",
-        "rate2023",
-        "rate2024"
-      ],
+      "annualVar": ["rate2022", "rate2023", "rate2024"],
       "annualVarLabels": {
-        "nb": [
-          "2022",
-          "2023",
-          "2024"
-        ],
-        "en": [
-          "2022",
-          "2023",
-          "2024"
-        ]
+        "nb": ["2022", "2023", "2024"],
+        "en": ["2022", "2023", "2024"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "pasratesnitt"
-      ],
-      "y": "bohf",
+      "x": ["pasratesnitt"],
+      "y": "area",
       "xLabel": {
         "nb": "Rate: Antall astma pasienter (totalt) pr. 1000 barn",
         "en": "Rate: Number of patients astma per 1,000 children"
@@ -49,32 +33,18 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "pasrate2022",
-        "pasrate2023",
-        "pasrate2024"
-      ],
+      "annualVar": ["pasrate2022", "pasrate2023", "pasrate2024"],
       "annualVarLabels": {
-        "nb": [
-          "2022",
-          "2023",
-          "2024"
-        ],
-        "en": [
-          "2022",
-          "2023",
-          "2024"
-        ]
+        "nb": ["2022", "2023", "2024"],
+        "en": ["2022", "2023", "2024"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "pr_pas_justsnitt"
-      ],
-      "y": "bohf",
+      "x": ["pr_pas_justsnitt"],
+      "y": "area",
       "xLabel": {
         "nb": "Antall astma konsultasjoner (totalt) pr. pasient",
         "en": "Number of consultations per patients astma"
@@ -88,20 +58,11 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "privratesnitt",
-        "offratesnitt"
-      ],
-      "y": "bohf",
+      "x": ["privratesnitt", "offratesnitt"],
+      "y": "area",
       "xLegend": {
-        "nb": [
-          "Spesialist",
-          "Allmenn"
-        ],
-        "en": [
-          "Specialist",
-          "Public"
-        ]
+        "nb": ["Spesialist", "Allmenn"],
+        "en": ["Specialist", "Public"]
       },
       "xLabel": {
         "nb": "Rate: Antall astma konsultasjoner (totalt) spesialist/allmennlege pr. 1 000 barn",
@@ -116,20 +77,14 @@
     {
       "type": "linechart",
       "data": "datasett_2",
-      "linevars": [
-        "rate"
-      ],
+      "linevars": ["rate"],
       "linevarsLabels": {
         "nb": [
           "Rate: Antall astma konsultasjoner (totalt) pr. 1 000 barn, Norge"
         ],
-        "en": [
-          "Rate Norway"
-        ]
+        "en": ["Rate Norway"]
       },
-      "x": [
-        "aar"
-      ],
+      "x": ["aar"],
       "y": "rate",
       "xLabel": {
         "nb": "År",
@@ -144,27 +99,13 @@
     {
       "type": "linechart",
       "data": "datasett_3",
-      "linevars": [
-        "jenter",
-        "gutter"
-      ],
-      "linecolors": [
-        "#253776",
-        "#74A5CD"
-      ],
+      "linevars": ["jenter", "gutter"],
+      "linecolors": ["#253776", "#74A5CD"],
       "linevarsLabels": {
-        "nb": [
-          "Jenter",
-          "Gutter"
-        ],
-        "en": [
-          "Girls",
-          "Boys"
-        ]
+        "nb": ["Jenter", "Gutter"],
+        "en": ["Girls", "Boys"]
       },
-      "x": [
-        "alder"
-      ],
+      "x": ["alder"],
       "y": "pasienter",
       "xLabel": {
         "nb": "Alder",
@@ -185,7 +126,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -275,7 +216,7 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "rate2022": 91.4576412524,
           "pasrate2022": 51.0699807421,
           "rate2023": 89.1728124742,
@@ -293,7 +234,7 @@
           "pct_privsnitt": 0.533615780596
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "rate2022": 65.2354157742,
           "pasrate2022": 35.9441591044,
           "rate2023": 60.0375451578,
@@ -311,7 +252,7 @@
           "pct_privsnitt": 0.252884880479
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "rate2022": 49.2208244794,
           "pasrate2022": 29.5437055209,
           "rate2023": 47.3168033304,
@@ -329,7 +270,7 @@
           "pct_privsnitt": 0.243702844192
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "rate2022": 51.6700440089,
           "pasrate2022": 31.2920247542,
           "rate2023": 56.1379841108,
@@ -347,7 +288,7 @@
           "pct_privsnitt": 0.395982684121
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "rate2022": 46.9727356956,
           "pasrate2022": 27.8719042341,
           "rate2023": 48.2891681492,
@@ -365,7 +306,7 @@
           "pct_privsnitt": 0.218887532276
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "rate2022": 51.5978770211,
           "pasrate2022": 28.1294964219,
           "rate2023": 54.7765101539,
@@ -383,7 +324,7 @@
           "pct_privsnitt": 0.631127969658
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "rate2022": 48.0135787218,
           "pasrate2022": 27.9072731559,
           "rate2023": 47.3279295087,
@@ -401,7 +342,7 @@
           "pct_privsnitt": 0.386501453265
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "rate2022": 38.4315707573,
           "pasrate2022": 23.3435281178,
           "rate2023": 41.1808390662,
@@ -419,7 +360,7 @@
           "pct_privsnitt": 0.263521716444
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "rate2022": 49.7329267438,
           "pasrate2022": 31.0691791093,
           "rate2023": 47.0394121017,
@@ -437,7 +378,7 @@
           "pct_privsnitt": 0.294690429769
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "rate2022": 37.9775582248,
           "pasrate2022": 23.648270044,
           "rate2023": 39.5370809426,
@@ -455,7 +396,7 @@
           "pct_privsnitt": 0.219694961543
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "rate2022": 35.8555461146,
           "pasrate2022": 20.3601321895,
           "rate2023": 31.9920146838,
@@ -473,7 +414,7 @@
           "pct_privsnitt": 0.39441866008
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "rate2022": 42.3146930575,
           "pasrate2022": 24.5244115113,
           "rate2023": 43.9842173921,
@@ -491,7 +432,7 @@
           "pct_privsnitt": 0.492615934747
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "rate2022": 69.3174936861,
           "pasrate2022": 40.5460742376,
           "rate2023": 56.9852182596,
@@ -509,7 +450,7 @@
           "pct_privsnitt": 0.56043635929
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "rate2022": 53.0477983149,
           "pasrate2022": 25.2733481835,
           "rate2023": 50.9472636408,
@@ -527,7 +468,7 @@
           "pct_privsnitt": 0.592591876029
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "rate2022": 48.0916106742,
           "pasrate2022": 28.0249708073,
           "rate2023": 47.5186946357,
@@ -545,7 +486,7 @@
           "pct_privsnitt": 0.384891513056
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "rate2022": 69.5038663847,
           "pasrate2022": 34.9768234902,
           "rate2023": 58.8459307602,
@@ -563,7 +504,7 @@
           "pct_privsnitt": 0.601191336159
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "rate2022": 61.4098984804,
           "pasrate2022": 33.9170349004,
           "rate2023": 60.6739262718,
@@ -581,7 +522,7 @@
           "pct_privsnitt": 0.204801431779
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "rate2022": 45.9300643376,
           "pasrate2022": 27.6727540497,
           "rate2023": 46.9973872449,
@@ -599,7 +540,7 @@
           "pct_privsnitt": 0.536171933537
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "rate2022": 48.38498995,
           "pasrate2022": 28.5731339306,
           "rate2023": 48.4005437225,
@@ -617,7 +558,7 @@
           "pct_privsnitt": 0.299532226193
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "rate2022": 53.1412629891,
           "pasrate2022": 29.9170747522,
           "rate2023": 50.1699513691,
@@ -642,42 +583,42 @@
       "description": "Ekstradatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "aar": 2017,
           "rate": 58.3186483458
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "aar": 2018,
           "rate": 54.2590975012
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "aar": 2019,
           "rate": 48.6456605107
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "aar": 2020,
           "rate": 51.4076308508
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "aar": 2021,
           "rate": 50.9532309416
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "aar": 2022,
           "rate": 53.1412629891
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "aar": 2023,
           "rate": 50.1699513691
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "aar": 2024,
           "rate": 48.054162286
         }

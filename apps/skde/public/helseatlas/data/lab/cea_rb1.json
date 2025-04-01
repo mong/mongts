@@ -4,7 +4,7 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": ["totsnitt"],
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Antall CEA-prøver pr. 1000 innbyggere",
         "en": "Number of CEA tests pr. 1000 population"
@@ -44,7 +44,7 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": ["ratesnitt_andel_int"],
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Andel CEA-prøver tatt med kortere intervall enn anbefalt",
         "en": "Proportion of CEA tests repeated earlier than recommended interval"
@@ -94,7 +94,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -191,7 +191,7 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "andel_priv": 0.0117698700117,
           "antsnitt_i_int": 264.333333333,
           "ratesnitt_andel_int": 0.240216667504,
@@ -208,7 +208,7 @@
           "prove_pr_pas": 1.6474393531
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "andel_priv": 0.0788055127658,
           "antsnitt_i_int": 588,
           "ratesnitt_andel_int": 0.239978333543,
@@ -225,7 +225,7 @@
           "prove_pr_pas": 1.635509839
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "andel_priv": 0.0469501502081,
           "antsnitt_i_int": 626.333333333,
           "ratesnitt_andel_int": 0.217556083685,
@@ -242,7 +242,7 @@
           "prove_pr_pas": 1.44780962683
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "andel_priv": 0.0182163583874,
           "antsnitt_i_int": 405.666666667,
           "ratesnitt_andel_int": 0.235219750453,
@@ -259,7 +259,7 @@
           "prove_pr_pas": 1.53341943817
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "andel_priv": 0.341277371189,
           "antsnitt_i_int": 645,
           "ratesnitt_andel_int": 0.231266602732,
@@ -276,7 +276,7 @@
           "prove_pr_pas": 1.55595944136
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "andel_priv": 0.212822754634,
           "antsnitt_i_int": 1371.66666667,
           "ratesnitt_andel_int": 0.243591951529,
@@ -293,7 +293,7 @@
           "prove_pr_pas": 1.54089150857
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "andel_priv": 0.0739627787264,
           "antsnitt_i_int": 1093,
           "ratesnitt_andel_int": 0.187366233226,
@@ -310,7 +310,7 @@
           "prove_pr_pas": 1.47504025765
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "andel_priv": 0.0304369063759,
           "antsnitt_i_int": 649.666666667,
           "ratesnitt_andel_int": 0.323696095181,
@@ -327,7 +327,7 @@
           "prove_pr_pas": 1.71581073283
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "andel_priv": 0.0561865287903,
           "antsnitt_i_int": 2977.33333333,
           "ratesnitt_andel_int": 0.268530562272,
@@ -344,7 +344,7 @@
           "prove_pr_pas": 1.63127933686
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "andel_priv": 0.105934730168,
           "antsnitt_i_int": 1827.66666667,
           "ratesnitt_andel_int": 0.229257214405,
@@ -361,7 +361,7 @@
           "prove_pr_pas": 1.54367725906
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "andel_priv": 0.135357353894,
           "antsnitt_i_int": 1648.33333333,
           "ratesnitt_andel_int": 0.191324436853,
@@ -378,7 +378,7 @@
           "prove_pr_pas": 1.45006698332
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "andel_priv": 0.193129859472,
           "antsnitt_i_int": 1627.33333333,
           "ratesnitt_andel_int": 0.154873714885,
@@ -395,7 +395,7 @@
           "prove_pr_pas": 1.39275752621
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "andel_priv": 0.438117223527,
           "antsnitt_i_int": 6325.33333333,
           "ratesnitt_andel_int": 0.308257351667,
@@ -412,7 +412,7 @@
           "prove_pr_pas": 1.67227234321
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "andel_priv": 0.632189093883,
           "antsnitt_i_int": 1505,
           "ratesnitt_andel_int": 0.232372656747,
@@ -429,7 +429,7 @@
           "prove_pr_pas": 1.48004576351
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "andel_priv": 0.607356831944,
           "antsnitt_i_int": 617.333333333,
           "ratesnitt_andel_int": 0.241714090938,
@@ -446,7 +446,7 @@
           "prove_pr_pas": 1.40351399643
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "andel_priv": 0.634866398129,
           "antsnitt_i_int": 836,
           "ratesnitt_andel_int": 0.203841477741,
@@ -463,7 +463,7 @@
           "prove_pr_pas": 1.4470683101
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "andel_priv": 0.247897910972,
           "antsnitt_i_int": 1841,
           "ratesnitt_andel_int": 0.196064292935,
@@ -480,7 +480,7 @@
           "prove_pr_pas": 1.49671289163
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "andel_priv": 0.373469860451,
           "antsnitt_i_int": 2919,
           "ratesnitt_andel_int": 0.238966268159,
@@ -497,7 +497,7 @@
           "prove_pr_pas": 1.52764073371
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "andel_priv": 0.379743170738,
           "antsnitt_i_int": 1848,
           "ratesnitt_andel_int": 0.24300905557,
@@ -514,7 +514,7 @@
           "prove_pr_pas": 1.56922874441
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "andel_priv": 0.0843287740827,
           "antsnitt_i_int": 698,
           "ratesnitt_andel_int": 0.253803189332,
@@ -531,7 +531,7 @@
           "prove_pr_pas": 1.55400952032
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "andel_priv": 0.0876072311327,
           "antsnitt_i_int": 1891.66666667,
           "ratesnitt_andel_int": 0.352849943045,
@@ -548,7 +548,7 @@
           "prove_pr_pas": 1.76380153739
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "andel_priv": 0.273816634938,
           "antsnitt_i_int": 32205.6666667,
           "ratesnitt_andel_int": 0.240154671583,

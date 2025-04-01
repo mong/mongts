@@ -4,7 +4,7 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": ["andel_priv"],
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Andel av undersøkelsene utført ved private røntgeninstitutt",
         "en": "tmp"
@@ -23,7 +23,7 @@
         "nb": ["Private røntgeninstitutt", "Offentlig"],
         "en": ["Private røntgeninstitutt", "Offentlig"]
       },
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Antall (rate) offentlig/privat pr. 10 000 innbyggere",
         "en": "tmp"
@@ -43,7 +43,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -119,154 +119,154 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "offsnitt": 57.7082953084,
           "privsnitt": 15.1719476978,
           "totsnitt": 72.8802430063,
           "andel_priv": 0.208176414787
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "offsnitt": 57.0035901075,
           "privsnitt": 11.5097885207,
           "totsnitt": 68.5133786282,
           "andel_priv": 0.167993299282
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "offsnitt": 78.3156189212,
           "privsnitt": 1.42586717995,
           "totsnitt": 79.7414861012,
           "andel_priv": 0.0178811212289
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "offsnitt": 82.1029371586,
           "privsnitt": 0.747330118025,
           "totsnitt": 82.8502672767,
           "andel_priv": 0.0090202499351
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "offsnitt": 61.2448158426,
           "privsnitt": 0.781782513214,
           "totsnitt": 62.0265983558,
           "andel_priv": 0.0126039881912
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "offsnitt": 64.5349128872,
           "privsnitt": 1.46359222841,
           "totsnitt": 65.9985051156,
           "andel_priv": 0.0221761421087
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "offsnitt": 103.160692191,
           "privsnitt": 2.16892534804,
           "totsnitt": 105.329617539,
           "andel_priv": 0.0205917898377
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "offsnitt": 22.0837689955,
           "privsnitt": 34.9173492952,
           "totsnitt": 57.0011182907,
           "andel_priv": 0.612573057201
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "offsnitt": 37.8206796292,
           "privsnitt": 34.4728383866,
           "totsnitt": 72.2935180158,
           "andel_priv": 0.476845495043
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "offsnitt": 23.0975879514,
           "privsnitt": 41.5757398262,
           "totsnitt": 64.6733277777,
           "andel_priv": 0.642857592997
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "offsnitt": 119.566439154,
           "privsnitt": 11.0032864534,
           "totsnitt": 130.569725608,
           "andel_priv": 0.0842713454608
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "offsnitt": 108.666331141,
           "privsnitt": 10.5421166245,
           "totsnitt": 119.208447766,
           "andel_priv": 0.0884343083241
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "offsnitt": 63.6354055479,
           "privsnitt": 20.4975746399,
           "totsnitt": 84.1329801878,
           "andel_priv": 0.243633050846
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "offsnitt": 60.6906276938,
           "privsnitt": 24.7188716915,
           "totsnitt": 85.4094993853,
           "andel_priv": 0.28941595337
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "offsnitt": 53.1575574592,
           "privsnitt": 15.8596800961,
           "totsnitt": 69.0172375553,
           "andel_priv": 0.229793029363
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "offsnitt": 65.0180275922,
           "privsnitt": 22.272571531,
           "totsnitt": 87.2905991231,
           "andel_priv": 0.255154297882
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "offsnitt": 78.9041625671,
           "privsnitt": 1.05445236134,
           "totsnitt": 79.9586149284,
           "andel_priv": 0.013187476575
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "offsnitt": 95.664899778,
           "privsnitt": 14.6016942008,
           "totsnitt": 110.266593979,
           "andel_priv": 0.132421739658
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "offsnitt": 91.4057943346,
           "privsnitt": 2.18671088737,
           "totsnitt": 93.592505222,
           "andel_priv": 0.0233641666305
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "offsnitt": 86.5567403954,
           "privsnitt": 2.04491397154,
           "totsnitt": 88.6016543669,
           "andel_priv": 0.0230798621781
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "offsnitt": 40.8591217556,
           "privsnitt": 0.943101884108,
           "totsnitt": 41.8022236398,
           "andel_priv": 0.0225610458485
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "offsnitt": 72.7440321813,
           "privsnitt": 12.8411936609,
           "totsnitt": 85.5852258422,

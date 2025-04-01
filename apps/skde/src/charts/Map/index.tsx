@@ -109,7 +109,7 @@ export const Map = ({
                 stroke={"black"}
                 strokeWidth={0.4}
                 className={i + ""}
-                data-testid={`maphf_${area}`}
+                data-testid={`maparea_${area}`}
                 style={{
                   cursor: "pointer",
                 }}

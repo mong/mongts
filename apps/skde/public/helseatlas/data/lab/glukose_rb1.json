@@ -3,10 +3,8 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "totsnitt"
-      ],
-      "y": "bohf",
+      "x": ["totsnitt"],
+      "y": "area",
       "xLabel": {
         "nb": "Antall glukose-prøver pr. 1000 innbyggere",
         "en": "Number of glucose tests pr. 1000 population"
@@ -15,31 +13,17 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "tot2021",
-        "tot2022",
-        "tot2023"
-      ],
+      "annualVar": ["tot2021", "tot2022", "tot2023"],
       "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_2",
-      "x": [
-        "totsnitt"
-      ],
+      "x": ["totsnitt"],
       "y": "borhf",
       "xLabel": {
         "nb": "Antall glukose-prøver pr. 1000 innbyggere",
@@ -49,40 +33,18 @@
         "nb": "Regionale helseforetak (RHF)",
         "en": "Regional health authorities"
       },
-      "annualVar": [
-        "tot2021",
-        "tot2022",
-        "tot2023"
-      ],
+      "annualVar": ["tot2021", "tot2022", "tot2023"],
       "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
       },
       "format": ",.0f"
     },
     {
       "type": "linechart",
       "data": "datasett_3",
-      "linevars": [
-        "kvinner_l",
-        "menn_l",
-        "kvinner_s",
-        "menn_s"
-      ],
-      "linecolors": [
-        "#FF671F",
-        "#FFC845",
-        "#253776",
-        "#74A5CD"
-      ],
+      "linevars": ["kvinner_l", "menn_l", "kvinner_s", "menn_s"],
+      "linecolors": ["#FF671F", "#FFC845", "#253776", "#74A5CD"],
       "linevarsLabels": {
         "nb": [
           "Kvinner(fastlege)",
@@ -90,16 +52,9 @@
           "Kvinner(lab)",
           "Menn(lab)"
         ],
-        "en": [
-          "Women(GP)",
-          "Men(GP)",
-          "Women(lab)",
-          "Men(lab)"
-        ]
+        "en": ["Women(GP)", "Men(GP)", "Women(lab)", "Men(lab)"]
       },
-      "x": [
-        "alder"
-      ],
+      "x": ["alder"],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
@@ -120,7 +75,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -203,7 +158,7 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "andel_priv": 0.0053902782084,
           "tot2021": 181.558981149,
           "tot2022": 196.153560847,
@@ -215,7 +170,7 @@
           "prove_pr_pas": 1.3034634913
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "andel_priv": 0.00969075416981,
           "tot2021": 167.87188393,
           "tot2022": 168.037323912,
@@ -227,7 +182,7 @@
           "prove_pr_pas": 1.2851583139
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "andel_priv": 0.0614168178096,
           "tot2021": 108.418430275,
           "tot2022": 116.602566987,
@@ -239,7 +194,7 @@
           "prove_pr_pas": 1.23433376902
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "andel_priv": 0.00980708997385,
           "tot2021": 210.52253219,
           "tot2022": 187.09352773,
@@ -251,7 +206,7 @@
           "prove_pr_pas": 1.33340579907
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "andel_priv": 0.256679754841,
           "tot2021": 159.418510403,
           "tot2022": 150.644449858,
@@ -263,7 +218,7 @@
           "prove_pr_pas": 1.32301667001
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "andel_priv": 0.250520424145,
           "tot2021": 138.978135766,
           "tot2022": 136.106202373,
@@ -275,7 +230,7 @@
           "prove_pr_pas": 1.32347704253
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "andel_priv": 0.0455494083524,
           "tot2021": 200.641971444,
           "tot2022": 199.518618131,
@@ -287,7 +242,7 @@
           "prove_pr_pas": 1.37711820445
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "andel_priv": 0.0499084865149,
           "tot2021": 156.178101278,
           "tot2022": 150.120383028,
@@ -299,7 +254,7 @@
           "prove_pr_pas": 1.32400070881
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "andel_priv": 0.0537860497181,
           "tot2021": 227.436646014,
           "tot2022": 220.396260844,
@@ -311,7 +266,7 @@
           "prove_pr_pas": 1.41714122317
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "andel_priv": 0.0435503137634,
           "tot2021": 242.950094985,
           "tot2022": 227.134591922,
@@ -323,7 +278,7 @@
           "prove_pr_pas": 1.42635241302
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "andel_priv": 0.0788891024299,
           "tot2021": 190.076905948,
           "tot2022": 190.88033759,
@@ -335,7 +290,7 @@
           "prove_pr_pas": 1.3879435029
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "andel_priv": 0.114096877791,
           "tot2021": 284.590010193,
           "tot2022": 278.862020812,
@@ -347,7 +302,7 @@
           "prove_pr_pas": 1.41681697373
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "andel_priv": 0.338684244273,
           "tot2021": 258.314429163,
           "tot2022": 260.631377871,
@@ -359,7 +314,7 @@
           "prove_pr_pas": 1.39842456726
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "andel_priv": 0.443249634533,
           "tot2021": 264.470028276,
           "tot2022": 260.747598236,
@@ -371,7 +326,7 @@
           "prove_pr_pas": 1.37411913617
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "andel_priv": 0.436867179411,
           "tot2021": 222.560713682,
           "tot2022": 208.151482204,
@@ -383,7 +338,7 @@
           "prove_pr_pas": 1.27740023253
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "andel_priv": 0.593521765857,
           "tot2021": 187.373188291,
           "tot2022": 179.566139792,
@@ -395,7 +350,7 @@
           "prove_pr_pas": 1.28923884514
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "andel_priv": 0.0884575938374,
           "tot2021": 268.844245291,
           "tot2022": 253.303418483,
@@ -407,7 +362,7 @@
           "prove_pr_pas": 1.41969405339
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "andel_priv": 0.24062605439,
           "tot2021": 247.771167271,
           "tot2022": 235.099193779,
@@ -419,7 +374,7 @@
           "prove_pr_pas": 1.39317577994
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "andel_priv": 0.187058508699,
           "tot2021": 300.796206086,
           "tot2022": 312.90947906,
@@ -431,7 +386,7 @@
           "prove_pr_pas": 1.42154788911
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "andel_priv": 0.0436764694062,
           "tot2021": 145.141155063,
           "tot2022": 137.403479018,
@@ -443,7 +398,7 @@
           "prove_pr_pas": 1.28176890945
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "andel_priv": 0.0872533759142,
           "tot2021": 182.946819644,
           "tot2022": 173.418264493,
@@ -455,7 +410,7 @@
           "prove_pr_pas": 1.41935343855
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "andel_priv": 0.181935897385,
           "tot2021": 218.784307999,
           "tot2022": 214.007782101,

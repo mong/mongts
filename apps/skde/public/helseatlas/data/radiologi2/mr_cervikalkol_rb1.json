@@ -4,7 +4,7 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": ["totsnitt"],
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Antall MR cervikalkolumna pr. 10 000 innbyggere",
         "en": "Number of MRI of cervical spine per 10,000 population"
@@ -28,7 +28,7 @@
         "nb": ["Private røntgeninstitutt", "Offentlig"],
         "en": ["Privat imaging clincis", "Public"]
       },
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Antall offentlig/privat pr. 10 000 innbyggere",
         "en": "Number of public/private MRI exams per 10,000 population"
@@ -67,7 +67,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -150,7 +150,7 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "offsnitt": 70.6950052223,
           "privsnitt": 8.35303173368,
           "tot2018": 75.1733438425,
@@ -166,7 +166,7 @@
           "andel_priv": 0.105670324721
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "offsnitt": 10.7510317672,
           "privsnitt": 68.9179059617,
           "tot2018": 88.0872813273,
@@ -182,7 +182,7 @@
           "andel_priv": 0.865053657376
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "offsnitt": 17.2736002211,
           "privsnitt": 52.4624578528,
           "tot2018": 75.1176742145,
@@ -198,7 +198,7 @@
           "andel_priv": 0.752300306352
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "offsnitt": 76.3192077498,
           "privsnitt": 3.08866379995,
           "tot2018": 76.905390602,
@@ -214,7 +214,7 @@
           "andel_priv": 0.0388961917713
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "offsnitt": 46.5173965928,
           "privsnitt": 22.7165005767,
           "tot2018": 67.7803984082,
@@ -230,7 +230,7 @@
           "andel_priv": 0.328112405995
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "offsnitt": 7.06762866428,
           "privsnitt": 55.9898430233,
           "tot2018": 64.0166937237,
@@ -246,7 +246,7 @@
           "andel_priv": 0.887917665026
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "offsnitt": 38.4956613421,
           "privsnitt": 30.9410411078,
           "tot2018": 70.8151315181,
@@ -262,7 +262,7 @@
           "andel_priv": 0.445600669619
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "offsnitt": 37.3385927962,
           "privsnitt": 17.5704324875,
           "tot2018": 54.9982706682,
@@ -278,7 +278,7 @@
           "andel_priv": 0.319991702578
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "offsnitt": 12.797950021,
           "privsnitt": 66.2578458618,
           "tot2018": 86.609549793,
@@ -294,7 +294,7 @@
           "andel_priv": 0.83811496832
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "offsnitt": 7.96873234972,
           "privsnitt": 76.5181857383,
           "tot2018": 83.5534787672,
@@ -310,7 +310,7 @@
           "andel_priv": 0.905680873086
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "offsnitt": 5.45731889503,
           "privsnitt": 68.2018345837,
           "tot2018": 78.5447920281,
@@ -326,7 +326,7 @@
           "andel_priv": 0.92591119179
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "offsnitt": 7.60806387029,
           "privsnitt": 93.8318467425,
           "tot2018": 114.690210674,
@@ -342,7 +342,7 @@
           "andel_priv": 0.924999304275
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "offsnitt": 13.1654756575,
           "privsnitt": 81.4188093702,
           "tot2018": 100.351516273,
@@ -358,7 +358,7 @@
           "andel_priv": 0.860806944265
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "offsnitt": 6.98135793321,
           "privsnitt": 68.4763845386,
           "tot2018": 79.2665813931,
@@ -374,7 +374,7 @@
           "andel_priv": 0.907479899285
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "offsnitt": 6.27622325642,
           "privsnitt": 62.2714128994,
           "tot2018": 68.7525703382,
@@ -390,7 +390,7 @@
           "andel_priv": 0.908439975346
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "offsnitt": 7.73109122873,
           "privsnitt": 52.0753801798,
           "tot2018": 66.1530656978,
@@ -406,7 +406,7 @@
           "andel_priv": 0.870731527096
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "offsnitt": 13.2484802277,
           "privsnitt": 68.610501048,
           "tot2018": 87.7832215022,
@@ -422,7 +422,7 @@
           "andel_priv": 0.838154836266
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "offsnitt": 8.1764847962,
           "privsnitt": 64.0151128368,
           "tot2018": 80.2613794616,
@@ -438,7 +438,7 @@
           "andel_priv": 0.886739107261
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "offsnitt": 2.94181234695,
           "privsnitt": 74.3561880554,
           "tot2018": 82.9390014244,
@@ -454,7 +454,7 @@
           "andel_priv": 0.961941934699
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "offsnitt": 8.63435271115,
           "privsnitt": 74.9470199109,
           "tot2018": 97.7011095844,
@@ -470,7 +470,7 @@
           "andel_priv": 0.896695251103
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "offsnitt": 8.86806829907,
           "privsnitt": 66.9068987202,
           "tot2018": 78.5900393817,
@@ -486,7 +486,7 @@
           "andel_priv": 0.882968364779
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "offsnitt": 14.0096335914,
           "privsnitt": 63.6065144798,
           "tot2018": 82.8519262391,

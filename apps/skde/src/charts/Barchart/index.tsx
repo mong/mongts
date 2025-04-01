@@ -102,7 +102,7 @@ export const Barchart = ({
 
   const series = toBarchart(sorted, x);
 
-  // Pick out bohf query from the url
+  // Pick out area query from the url
   const [selectedAreas, toggleArea] = useAreaQueryParam(national);
 
   // Find max values

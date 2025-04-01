@@ -40,7 +40,7 @@ const borhfSet = new Set(Object.keys(borhf));
  *
  * @param {string} [national] - The national parameter, which is a area that is not in any group.
  * @returns {[Set<string>, (area: string) => void]} - A tuple where the first element is the current
- * set of selected bohfs and the second element is a function to toggle a given area.
+ * set of selected areas and the second element is a function to toggle a given area.
  */
 export const useAreaQueryParam = (
   national: string = "",
