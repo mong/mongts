@@ -3,10 +3,8 @@
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "andel_pct_sm"
-      ],
-      "y": "bohf",
+      "x": ["andel_pct_sm"],
+      "y": "area",
       "xLabel": {
         "nb": "Andel pasienter med minst en sykemelding",
         "en": "Proportion of patients with at least one sick leave"
@@ -15,22 +13,10 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "andel_pct_sm2019",
-        "andel_pct_sm2020",
-        "andel_pct_sm2021"
-      ],
+      "annualVar": ["andel_pct_sm2019", "andel_pct_sm2020", "andel_pct_sm2021"],
       "annualVarLabels": {
-        "nb": [
-          "2019",
-          "2020",
-          "2021"
-        ],
-        "en": [
-          "2019",
-          "2020",
-          "2021"
-        ]
+        "nb": ["2019", "2020", "2021"],
+        "en": ["2019", "2020", "2021"]
       },
       "format": ",.0%"
     },
@@ -43,7 +29,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -119,7 +105,7 @@
       "national": "Norge",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "innbyggere": 60664,
           "pasienter": 743.333333333,
           "rateSnitt": 21.6162374068,
@@ -134,7 +120,7 @@
           "andel_pct_sm2021": 0.217770178381
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "innbyggere": 155748.333333,
           "pasienter": 2082,
           "rateSnitt": 21.772315407,
@@ -149,7 +135,7 @@
           "andel_pct_sm2021": 0.228854925494
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "innbyggere": 110493.333333,
           "pasienter": 1520.33333333,
           "rateSnitt": 17.9407779765,
@@ -164,7 +150,7 @@
           "andel_pct_sm2021": 0.186241838967
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "innbyggere": 62532.3333333,
           "pasienter": 791.333333333,
           "rateSnitt": 19.0703941542,
@@ -179,7 +165,7 @@
           "andel_pct_sm2021": 0.220936880848
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "innbyggere": 106589,
           "pasienter": 1502,
           "rateSnitt": 19.2116307076,
@@ -194,7 +180,7 @@
           "andel_pct_sm2021": 0.182853154816
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "innbyggere": 265559.333333,
           "pasienter": 3900.33333333,
           "rateSnitt": 20.4685989329,
@@ -209,7 +195,7 @@
           "andel_pct_sm2021": 0.206807882217
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "innbyggere": 209615.666667,
           "pasienter": 2990.33333333,
           "rateSnitt": 20.1887251323,
@@ -224,7 +210,7 @@
           "andel_pct_sm2021": 0.208066717124
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "innbyggere": 85207.3333333,
           "pasienter": 1020,
           "rateSnitt": 20.359150708,
@@ -239,7 +225,7 @@
           "andel_pct_sm2021": 0.218841338302
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "innbyggere": 358888,
           "pasienter": 3893.66666667,
           "rateSnitt": 24.7774749481,
@@ -254,7 +240,7 @@
           "andel_pct_sm2021": 0.247759048713
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "innbyggere": 140218,
           "pasienter": 1658,
           "rateSnitt": 19.0556111682,
@@ -269,7 +255,7 @@
           "andel_pct_sm2021": 0.200058984732
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "innbyggere": 282988.666667,
           "pasienter": 3419,
           "rateSnitt": 20.0329390302,
@@ -284,7 +270,7 @@
           "andel_pct_sm2021": 0.198901932233
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "innbyggere": 252406.333333,
           "pasienter": 3912,
           "rateSnitt": 18.7426303797,
@@ -299,7 +285,7 @@
           "andel_pct_sm2021": 0.188622321309
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "innbyggere": 449568.666667,
           "pasienter": 6661.33333333,
           "rateSnitt": 21.1985621248,
@@ -314,7 +300,7 @@
           "andel_pct_sm2021": 0.208761226714
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "innbyggere": 218202,
           "pasienter": 3038.66666667,
           "rateSnitt": 21.5733696412,
@@ -329,7 +315,7 @@
           "andel_pct_sm2021": 0.205182401875
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "innbyggere": 136184.333333,
           "pasienter": 1802,
           "rateSnitt": 18.6005129394,
@@ -344,7 +330,7 @@
           "andel_pct_sm2021": 0.19896692681
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "innbyggere": 117501.666667,
           "pasienter": 1370,
           "rateSnitt": 18.7583417873,
@@ -359,7 +345,7 @@
           "andel_pct_sm2021": 0.202732444101
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "innbyggere": 274507.666667,
           "pasienter": 4070.33333333,
           "rateSnitt": 18.9009766141,
@@ -374,7 +360,7 @@
           "andel_pct_sm2021": 0.193302771231
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "innbyggere": 382236.333333,
           "pasienter": 5478.33333333,
           "rateSnitt": 20.199263718,
@@ -389,7 +375,7 @@
           "andel_pct_sm2021": 0.207416244523
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "innbyggere": 196326.333333,
           "pasienter": 2750,
           "rateSnitt": 18.897782913,
@@ -404,7 +390,7 @@
           "andel_pct_sm2021": 0.205814078095
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "innbyggere": 139439.333333,
           "pasienter": 1768.66666667,
           "rateSnitt": 19.523008664,
@@ -419,7 +405,7 @@
           "andel_pct_sm2021": 0.211265467945
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "innbyggere": 239908.333333,
           "pasienter": 4035.33333333,
           "rateSnitt": 17.5316751708,
@@ -434,7 +420,7 @@
           "andel_pct_sm2021": 0.177267919211
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "innbyggere": 4244785,
           "pasienter": 58407,
           "rateSnitt": 20.0622221429,

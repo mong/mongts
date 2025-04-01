@@ -3,10 +3,8 @@
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "rateSnitt"
-      ],
-      "y": "bohf",
+      "x": ["rateSnitt"],
+      "y": "area",
       "xLabel": {
         "nb": "Antall inngrep pr. 1 000 kvinner (16-55 år)",
         "en": "Number of operations per 1,000 women (16-55 years)"
@@ -15,22 +13,10 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "rate2019",
-        "rate2020",
-        "rate2021"
-      ],
+      "annualVar": ["rate2019", "rate2020", "rate2021"],
       "annualVarLabels": {
-        "nb": [
-          "2019",
-          "2020",
-          "2021"
-        ],
-        "en": [
-          "2019",
-          "2020",
-          "2021"
-        ]
+        "nb": ["2019", "2020", "2021"],
+        "en": ["2019", "2020", "2021"]
       }
     },
     {
@@ -42,7 +28,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -110,7 +96,7 @@
       "national": "Norge",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "rate2019": 1.18546311037,
           "rate2020": 1.12295069587,
           "rate2021": 1.72804737634,
@@ -119,7 +105,7 @@
           "popSnitt": 18945.6666667
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "rate2019": 0.892409130368,
           "rate2020": 1.07125109874,
           "rate2021": 0.959628407582,
@@ -128,7 +114,7 @@
           "popSnitt": 48946.3333333
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "rate2019": 0.82466881146,
           "rate2020": 1.15080011775,
           "rate2021": 1.26986282912,
@@ -137,7 +123,7 @@
           "popSnitt": 33971.3333333
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "rate2019": 1.83178753953,
           "rate2020": 1.09790530338,
           "rate2021": 1.61688034343,
@@ -146,7 +132,7 @@
           "popSnitt": 18567.6666667
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "rate2019": 0.603480918532,
           "rate2020": 0.451914109702,
           "rate2021": 0.789424843906,
@@ -155,7 +141,7 @@
           "popSnitt": 32461.3333333
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "rate2019": 0.946386357208,
           "rate2020": 0.980207649781,
           "rate2021": 0.981170635022,
@@ -164,7 +150,7 @@
           "popSnitt": 87968
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "rate2019": 1.13649330763,
           "rate2020": 1.29419474767,
           "rate2021": 1.12449764642,
@@ -173,7 +159,7 @@
           "popSnitt": 63953
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "rate2019": 0.558317906444,
           "rate2020": 0.6937791117,
           "rate2021": 0.491940033876,
@@ -182,7 +168,7 @@
           "popSnitt": 25622.3333333
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "rate2019": 0.893164551794,
           "rate2020": 1.06055911484,
           "rate2021": 1.1820197028,
@@ -191,7 +177,7 @@
           "popSnitt": 120865
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "rate2019": 1.07595307716,
           "rate2020": 1.15815939495,
           "rate2021": 0.788370649257,
@@ -200,7 +186,7 @@
           "popSnitt": 44256.3333333
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "rate2019": 1.19041506199,
           "rate2020": 1.20058011255,
           "rate2021": 1.06938571391,
@@ -209,7 +195,7 @@
           "popSnitt": 98394.6666667
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "rate2019": 1.45832507149,
           "rate2020": 1.51970217832,
           "rate2021": 1.48771331555,
@@ -218,7 +204,7 @@
           "popSnitt": 79269.6666667
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "rate2019": 1.14140280527,
           "rate2020": 1.09210129797,
           "rate2021": 0.975507454,
@@ -227,7 +213,7 @@
           "popSnitt": 152220.333333
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "rate2019": 1.57501432501,
           "rate2020": 1.58671552964,
           "rate2021": 1.62042767015,
@@ -236,7 +222,7 @@
           "popSnitt": 81358.6666667
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "rate2019": 1.46407835594,
           "rate2020": 1.60983180692,
           "rate2021": 1.66159754519,
@@ -245,7 +231,7 @@
           "popSnitt": 56474.3333333
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "rate2019": 1.45133594164,
           "rate2020": 1.41789740205,
           "rate2021": 1.39323622747,
@@ -254,7 +240,7 @@
           "popSnitt": 41250.3333333
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "rate2019": 1.13983846744,
           "rate2020": 1.11697961134,
           "rate2021": 1.65777026462,
@@ -263,7 +249,7 @@
           "popSnitt": 81568
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "rate2019": 1.50312822002,
           "rate2020": 1.61075136736,
           "rate2021": 1.30436824951,
@@ -272,7 +258,7 @@
           "popSnitt": 123614
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "rate2019": 2.68858558972,
           "rate2020": 2.40376731629,
           "rate2021": 2.64632618946,
@@ -281,7 +267,7 @@
           "popSnitt": 61170.6666667
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "rate2019": 1.65759582931,
           "rate2020": 1.46519346967,
           "rate2021": 1.57981293886,
@@ -290,7 +276,7 @@
           "popSnitt": 42364.6666667
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "rate2019": 1.12618168922,
           "rate2020": 1.15831187957,
           "rate2021": 1.23190556201,
@@ -299,7 +285,7 @@
           "popSnitt": 78185.6666667
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "rate2019": 1.26667969153,
           "rate2020": 1.29000700729,
           "rate2021": 1.29599932863,

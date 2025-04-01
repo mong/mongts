@@ -3,10 +3,8 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "totsnitt"
-      ],
-      "y": "bohf",
+      "x": ["totsnitt"],
+      "y": "area",
       "xLabel": {
         "nb": "Antall vitamin B12-prøver pr. 1000 innbyggere",
         "en": "Number of vitamin B12 tests pr. 1000 population"
@@ -15,31 +13,17 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "tot2021",
-        "tot2022",
-        "tot2023"
-      ],
+      "annualVar": ["tot2021", "tot2022", "tot2023"],
       "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_2",
-      "x": [
-        "totsnitt"
-      ],
+      "x": ["totsnitt"],
       "y": "borhf",
       "xLabel": {
         "nb": "Antall vitamin B12-prøver pr. 1000 innbyggere",
@@ -49,32 +33,18 @@
         "nb": "Regionale helseforetak (RHF)",
         "en": "Regional health authorities"
       },
-      "annualVar": [
-        "tot2021",
-        "tot2022",
-        "tot2023"
-      ],
+      "annualVar": ["tot2021", "tot2022", "tot2023"],
       "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "ratesnitt_andel_int"
-      ],
-      "y": "bohf",
+      "x": ["ratesnitt_andel_int"],
+      "y": "area",
       "xLabel": {
         "nb": "Andel vitamin B12-prøver tatt med kortere intervall enn anbefalt",
         "en": "Proportion of vitamin B12 tests repeated earlier than recommended interval"
@@ -89,43 +59,21 @@
         "rate2022_andel_int"
       ],
       "annualVarLabels": {
-        "nb": [
-          "2020",
-          "2021",
-          "2022"
-        ],
-        "en": [
-          "2020",
-          "2021",
-          "2022"
-        ]
+        "nb": ["2020", "2021", "2022"],
+        "en": ["2020", "2021", "2022"]
       },
       "format": ",.0%"
     },
     {
       "type": "linechart",
       "data": "datasett_3",
-      "linevars": [
-        "kvinner",
-        "menn"
-      ],
-      "linecolors": [
-        "#253776",
-        "#74A5CD"
-      ],
+      "linevars": ["kvinner", "menn"],
+      "linecolors": ["#253776", "#74A5CD"],
       "linevarsLabels": {
-        "nb": [
-          "Kvinner",
-          "Menn"
-        ],
-        "en": [
-          "Women",
-          "Men"
-        ]
+        "nb": ["Kvinner", "Menn"],
+        "en": ["Women", "Men"]
       },
-      "x": [
-        "alder"
-      ],
+      "x": ["alder"],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
@@ -146,7 +94,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -243,7 +191,7 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "andel_priv": 0.0202114618225,
           "antsnitt_i_int": 1470.66666667,
           "ratesnitt_andel_int": 0.0702910823851,
@@ -260,7 +208,7 @@
           "prove_pr_pas": 1.31276692055
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "andel_priv": 0.0766254414841,
           "antsnitt_i_int": 4041.66666667,
           "ratesnitt_andel_int": 0.0660591832436,
@@ -277,7 +225,7 @@
           "prove_pr_pas": 1.33740625087
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "andel_priv": 0.100685657141,
           "antsnitt_i_int": 3058.66666667,
           "ratesnitt_andel_int": 0.0658490050689,
@@ -294,7 +242,7 @@
           "prove_pr_pas": 1.31456050351
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "andel_priv": 0.050898889372,
           "antsnitt_i_int": 2672.33333333,
           "ratesnitt_andel_int": 0.0823261427354,
@@ -311,7 +259,7 @@
           "prove_pr_pas": 1.38697544386
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "andel_priv": 0.49670911106,
           "antsnitt_i_int": 3670.66666667,
           "ratesnitt_andel_int": 0.0720866917321,
@@ -328,7 +276,7 @@
           "prove_pr_pas": 1.3760721617
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "andel_priv": 0.535354628884,
           "antsnitt_i_int": 6404.33333333,
           "ratesnitt_andel_int": 0.0571035790604,
@@ -345,7 +293,7 @@
           "prove_pr_pas": 1.32570211289
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "andel_priv": 0.114947616192,
           "antsnitt_i_int": 6328.66666667,
           "ratesnitt_andel_int": 0.0585441263081,
@@ -362,7 +310,7 @@
           "prove_pr_pas": 1.34698417432
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "andel_priv": 0.0442738733157,
           "antsnitt_i_int": 3028.66666667,
           "ratesnitt_andel_int": 0.0732623132445,
@@ -379,7 +327,7 @@
           "prove_pr_pas": 1.43185870586
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "andel_priv": 0.0984926704183,
           "antsnitt_i_int": 20295.3333333,
           "ratesnitt_andel_int": 0.0943708709903,
@@ -396,7 +344,7 @@
           "prove_pr_pas": 1.50072707783
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "andel_priv": 0.117360385922,
           "antsnitt_i_int": 5474.66666667,
           "ratesnitt_andel_int": 0.0744905459485,
@@ -413,7 +361,7 @@
           "prove_pr_pas": 1.40051898889
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "andel_priv": 0.190058184008,
           "antsnitt_i_int": 8048,
           "ratesnitt_andel_int": 0.0619665153384,
@@ -430,7 +378,7 @@
           "prove_pr_pas": 1.34275891511
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "andel_priv": 0.26348904621,
           "antsnitt_i_int": 10604,
           "ratesnitt_andel_int": 0.062909611477,
@@ -447,7 +395,7 @@
           "prove_pr_pas": 1.41989513664
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "andel_priv": 0.718064974405,
           "antsnitt_i_int": 17221,
           "ratesnitt_andel_int": 0.0670126764554,
@@ -464,7 +412,7 @@
           "prove_pr_pas": 1.38946595669
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "andel_priv": 0.897748243014,
           "antsnitt_i_int": 8967.33333333,
           "ratesnitt_andel_int": 0.0767741108607,
@@ -481,7 +429,7 @@
           "prove_pr_pas": 1.38946113718
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "andel_priv": 0.847881478268,
           "antsnitt_i_int": 4079.66666667,
           "ratesnitt_andel_int": 0.0746729797113,
@@ -498,7 +446,7 @@
           "prove_pr_pas": 1.32641249489
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "andel_priv": 0.859839416129,
           "antsnitt_i_int": 5230,
           "ratesnitt_andel_int": 0.0880944605022,
@@ -515,7 +463,7 @@
           "prove_pr_pas": 1.39214348091
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "andel_priv": 0.23330597861,
           "antsnitt_i_int": 13480.3333333,
           "ratesnitt_andel_int": 0.0831642065841,
@@ -532,7 +480,7 @@
           "prove_pr_pas": 1.43973033093
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "andel_priv": 0.464096860536,
           "antsnitt_i_int": 14398.6666667,
           "ratesnitt_andel_int": 0.0645242371103,
@@ -549,7 +497,7 @@
           "prove_pr_pas": 1.4030508121
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "andel_priv": 0.476151454427,
           "antsnitt_i_int": 11034,
           "ratesnitt_andel_int": 0.0888566057325,
@@ -566,7 +514,7 @@
           "prove_pr_pas": 1.44653638735
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "andel_priv": 0.116770506967,
           "antsnitt_i_int": 5073.66666667,
           "ratesnitt_andel_int": 0.0716302171925,
@@ -583,7 +531,7 @@
           "prove_pr_pas": 1.38990328262
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "andel_priv": 0.125388579126,
           "antsnitt_i_int": 11141.3333333,
           "ratesnitt_andel_int": 0.0833682735045,
@@ -600,7 +548,7 @@
           "prove_pr_pas": 1.44031125451
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "andel_priv": 0.368101120941,
           "antsnitt_i_int": 165725,
           "ratesnitt_andel_int": 0.0730372343532,

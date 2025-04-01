@@ -179,9 +179,9 @@ export const ResultBox = ({
                   >
                     <Map
                       mapData={mapData}
-                      classes={jenks}
+                      jenks={jenks}
                       attrName={dataItem.x as string}
-                      mapAttr={figData}
+                      data={figData}
                       format={dataItem.format}
                       caption={dataItem.caption[atlas.lang]}
                       lang={atlas.lang}

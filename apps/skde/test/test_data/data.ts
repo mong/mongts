@@ -2,7 +2,7 @@ import { DataItemPoint } from "../../src/types";
 
 export const tableHeaders = [
   {
-    id: "bohf",
+    id: "area",
     label_no: "Opptaksområder",
     label_en: "Referral areas",
     typeVar: "string",
@@ -47,7 +47,7 @@ export const tableHeaders = [
 
 export const atlasData: DataItemPoint[] = [
   {
-    bohf: "Finnmark",
+    area: "Finnmark",
     rate2019: 4.85587067464,
     rate2020: 4.86702465619,
     rate2021: 4.92188268195,
@@ -64,7 +64,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 6.38669964643,
   },
   {
-    bohf: "UNN",
+    area: "UNN",
     rate2019: 5.40185994804,
     rate2020: 5.6830684459,
     rate2021: 5.60313809137,
@@ -81,7 +81,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 6.70392986222,
   },
   {
-    bohf: "Nordland",
+    area: "Nordland",
     rate2019: 5.72756883326,
     rate2020: 5.7088843518,
     rate2021: 5.58065876757,
@@ -98,7 +98,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 6.52556167416,
   },
   {
-    bohf: "Helgeland",
+    area: "Helgeland",
     rate2019: 5.06280683152,
     rate2020: 5.28560831678,
     rate2021: 5.03203106453,
@@ -115,7 +115,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 5.40549339778,
   },
   {
-    bohf: "Nord-Trøndelag",
+    area: "Nord-Trøndelag",
     rate2019: 6.08200635505,
     rate2020: 6.07907929358,
     rate2021: 5.65706070464,
@@ -132,7 +132,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 7.95768557273,
   },
   {
-    bohf: "St. Olav",
+    area: "St. Olav",
     rate2019: 5.16635233652,
     rate2020: 5.39722608003,
     rate2021: 5.04414937103,
@@ -149,7 +149,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 6.83140496451,
   },
   {
-    bohf: "Møre og Romsdal",
+    area: "Møre og Romsdal",
     rate2019: 5.34991214178,
     rate2020: 5.65255811463,
     rate2021: 5.51354212921,
@@ -166,7 +166,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 7.33331572615,
   },
   {
-    bohf: "Førde",
+    area: "Førde",
     rate2019: 5.34275119991,
     rate2020: 5.36759485245,
     rate2021: 5.18595806157,
@@ -183,7 +183,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 7.98412315219,
   },
   {
-    bohf: "Bergen",
+    area: "Bergen",
     rate2019: 4.95758368196,
     rate2020: 5.16988527776,
     rate2021: 4.84798380096,
@@ -200,7 +200,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 5.52550774783,
   },
   {
-    bohf: "Fonna",
+    area: "Fonna",
     rate2019: 5.25874170022,
     rate2020: 5.46645811496,
     rate2021: 5.32325016759,
@@ -217,7 +217,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 4.62307694522,
   },
   {
-    bohf: "Stavanger",
+    area: "Stavanger",
     rate2019: 4.94342631758,
     rate2020: 5.10537032958,
     rate2021: 4.93643716154,
@@ -234,7 +234,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 6.67586205424,
   },
   {
-    bohf: "Østfold",
+    area: "Østfold",
     rate2019: 5.30902360256,
     rate2020: 5.47151058871,
     rate2021: 5.2884386696,
@@ -251,7 +251,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 5.78718082545,
   },
   {
-    bohf: "Akershus",
+    area: "Akershus",
     rate2019: 5.3523045492,
     rate2020: 5.51920795729,
     rate2021: 5.3081737756,
@@ -268,7 +268,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 5.91429501459,
   },
   {
-    bohf: "OUS",
+    area: "OUS",
     rate2019: 5.5213222277,
     rate2020: 5.68808759691,
     rate2021: 5.53462694379,
@@ -285,7 +285,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 7.93578912005,
   },
   {
-    bohf: "Lovisenberg",
+    area: "Lovisenberg",
     rate2019: 5.53716007635,
     rate2020: 5.25250569284,
     rate2021: 4.8934417589,
@@ -302,7 +302,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 8.21637300052,
   },
   {
-    bohf: "Diakonhjemmet",
+    area: "Diakonhjemmet",
     rate2019: 4.717433341,
     rate2020: 4.61956914056,
     rate2021: 4.67331821432,
@@ -319,7 +319,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 6.26849121598,
   },
   {
-    bohf: "Innlandet",
+    area: "Innlandet",
     rate2019: 5.83877836061,
     rate2020: 5.94793786362,
     rate2021: 5.87806198522,
@@ -336,7 +336,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 5.73851061391,
   },
   {
-    bohf: "Vestre Viken",
+    area: "Vestre Viken",
     rate2019: 4.95542823906,
     rate2020: 5.04479199493,
     rate2021: 4.94874034925,
@@ -353,7 +353,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 5.50257557795,
   },
   {
-    bohf: "Vestfold",
+    area: "Vestfold",
     rate2019: 4.94704858095,
     rate2020: 5.01529510701,
     rate2021: 4.80556576456,
@@ -370,7 +370,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 5.40543250895,
   },
   {
-    bohf: "Telemark",
+    area: "Telemark",
     rate2019: 5.52426754729,
     rate2020: 5.78787127614,
     rate2021: 5.32468328367,
@@ -387,7 +387,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 5.69121571343,
   },
   {
-    bohf: "Sørlandet",
+    area: "Sørlandet",
     rate2019: 5.149235842,
     rate2020: 5.36200344867,
     rate2021: 5.23004327549,
@@ -404,7 +404,7 @@ export const atlasData: DataItemPoint[] = [
     pas_rate_eldre: 5.22384013838,
   },
   {
-    bohf: "Norge",
+    area: "Norge",
     rate2019: 5.21944679734,
     rate2020: 5.36685061052,
     rate2021: 5.17471033425,

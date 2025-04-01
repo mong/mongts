@@ -3,10 +3,8 @@
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "rateSnitt"
-      ],
-      "y": "bohf",
+      "x": ["rateSnitt"],
+      "y": "area",
       "xLabel": {
         "nb": "Antall pasienter med migrene pr. 1 000 innbyggere",
         "en": "Number of patients with migraine per 1,000 inhabitants"
@@ -15,45 +13,25 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "rate2019",
-        "rate2020",
-        "rate2021"
-      ],
+      "annualVar": ["rate2019", "rate2020", "rate2021"],
       "annualVarLabels": {
-        "nb": [
-          "2019",
-          "2020",
-          "2021"
-        ],
-        "en": [
-          "2019",
-          "2020",
-          "2021"
-        ]
+        "nb": ["2019", "2020", "2021"],
+        "en": ["2019", "2020", "2021"]
       }
     },
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "spes_rate",
-        "overlapp_rate",
-        "prim_rate"
-      ],
+      "x": ["spes_rate", "overlapp_rate", "prim_rate"],
       "xLegend": {
         "nb": [
           "Kun spes.helsetj.",
           "Spes. og allmennlegetj.",
           "Kun allmennlegetj."
         ],
-        "en": [
-          "Specialist only",
-          "GP and specialist",
-          "GP only"
-        ]
+        "en": ["Specialist only", "GP and specialist", "GP only"]
       },
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Antall pasienter med migrene pr. 1 000 innbyggere",
         "en": "Number of patients with migraine per 1,000 inhabitants"
@@ -72,7 +50,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -147,7 +125,7 @@
       "national": "Norge",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "rate2019": 11.6312621206,
           "rate2020": 12.8424330517,
           "rate2021": 13.6920623013,
@@ -162,7 +140,7 @@
           "andel3_prim": 0.69196488298
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "rate2019": 13.0318977684,
           "rate2020": 14.105873956,
           "rate2021": 14.0280108958,
@@ -177,7 +155,7 @@
           "andel3_prim": 0.740921275823
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "rate2019": 13.0887176873,
           "rate2020": 14.9200145043,
           "rate2021": 15.1518664178,
@@ -192,7 +170,7 @@
           "andel3_prim": 0.601627250987
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "rate2019": 12.7188112797,
           "rate2020": 14.0678941236,
           "rate2021": 14.246023289,
@@ -207,7 +185,7 @@
           "andel3_prim": 0.544199483305
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "rate2019": 13.6282246712,
           "rate2020": 15.3998428715,
           "rate2021": 15.8738964699,
@@ -222,7 +200,7 @@
           "andel3_prim": 0.579623557088
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "rate2019": 13.3365299976,
           "rate2020": 15.2199621589,
           "rate2021": 15.4278670369,
@@ -237,7 +215,7 @@
           "andel3_prim": 0.574209757743
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "rate2019": 14.0665942483,
           "rate2020": 15.5777921585,
           "rate2021": 15.1290830505,
@@ -252,7 +230,7 @@
           "andel3_prim": 0.582049107087
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "rate2019": 12.1112688814,
           "rate2020": 12.9715574654,
           "rate2021": 13.2229331596,
@@ -267,7 +245,7 @@
           "andel3_prim": 0.447406689989
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "rate2019": 10.1507140117,
           "rate2020": 11.0229340184,
           "rate2021": 10.988311743,
@@ -282,7 +260,7 @@
           "andel3_prim": 0.567502953583
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "rate2019": 11.6386969651,
           "rate2020": 12.5050592922,
           "rate2021": 12.2938203203,
@@ -297,7 +275,7 @@
           "andel3_prim": 0.666564936015
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "rate2019": 10.9309218428,
           "rate2020": 12.0102757638,
           "rate2021": 12.0128036466,
@@ -312,7 +290,7 @@
           "andel3_prim": 0.714979994407
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "rate2019": 15.1120052496,
           "rate2020": 16.2621948554,
           "rate2021": 16.171648427,
@@ -327,7 +305,7 @@
           "andel3_prim": 0.623495499724
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "rate2019": 13.6479558074,
           "rate2020": 14.8169148375,
           "rate2021": 14.8036657,
@@ -342,7 +320,7 @@
           "andel3_prim": 0.595799559076
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "rate2019": 12.2624267815,
           "rate2020": 13.3341532404,
           "rate2021": 13.3157501288,
@@ -357,7 +335,7 @@
           "andel3_prim": 0.571494694476
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "rate2019": 11.3660924208,
           "rate2020": 12.2190616814,
           "rate2021": 11.5750115694,
@@ -372,7 +350,7 @@
           "andel3_prim": 0.602769771215
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "rate2019": 11.2254388483,
           "rate2020": 11.4825177182,
           "rate2021": 11.5257229278,
@@ -387,7 +365,7 @@
           "andel3_prim": 0.561855638045
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "rate2019": 14.8143949694,
           "rate2020": 16.214654894,
           "rate2021": 16.2083548712,
@@ -402,7 +380,7 @@
           "andel3_prim": 0.683275963541
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "rate2019": 13.7171555799,
           "rate2020": 14.7232648859,
           "rate2021": 14.4314442133,
@@ -417,7 +395,7 @@
           "andel3_prim": 0.606209195768
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "rate2019": 13.3182227946,
           "rate2020": 14.6614617136,
           "rate2021": 14.8142713398,
@@ -432,7 +410,7 @@
           "andel3_prim": 0.639644345181
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "rate2019": 12.7493987218,
           "rate2020": 13.7058133012,
           "rate2021": 13.4670060432,
@@ -447,7 +425,7 @@
           "andel3_prim": 0.673630384355
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "rate2019": 15.9945906312,
           "rate2020": 17.2945586433,
           "rate2021": 17.5118117827,
@@ -462,7 +440,7 @@
           "andel3_prim": 0.557391008157
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "rate2019": 12.9757773843,
           "rate2020": 14.159424915,
           "rate2021": 14.1371789263,

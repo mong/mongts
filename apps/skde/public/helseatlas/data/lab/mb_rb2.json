@@ -3,10 +3,8 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "ref_pr_innb_adj"
-      ],
-      "y": "bohf",
+      "x": ["ref_pr_innb_adj"],
+      "y": "area",
       "xLabel": {
         "nb": "Refusjon pr. innbygger",
         "en": "Reimbursement per inhabitant"
@@ -20,9 +18,7 @@
     {
       "type": "barchart",
       "data": "datasett_2",
-      "x": [
-        "ref_pr_innb_adj"
-      ],
+      "x": ["ref_pr_innb_adj"],
       "y": "borhf",
       "xLabel": {
         "nb": "Refusjon pr. innbygger",
@@ -43,7 +39,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -105,7 +101,7 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "andel_prove_lege": 0.343482835884,
           "andel_prove_priv": 0.00620575351932,
           "ref_pr_innb_adj": 252.020703728,
@@ -123,7 +119,7 @@
           "nlk_pr_prove": 5.91889057695
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "andel_prove_lege": 0.304929011985,
           "andel_prove_priv": 0.0292997575656,
           "ref_pr_innb_adj": 241.647212184,
@@ -141,7 +137,7 @@
           "nlk_pr_prove": 7.01868579199
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "andel_prove_lege": 0.239837511934,
           "andel_prove_priv": 0.0416687034095,
           "ref_pr_innb_adj": 240.866144094,
@@ -159,7 +155,7 @@
           "nlk_pr_prove": 6.95023476054
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "andel_prove_lege": 0.217213240103,
           "andel_prove_priv": 0.0310067733146,
           "ref_pr_innb_adj": 262.512023025,
@@ -177,7 +173,7 @@
           "nlk_pr_prove": 8.72826096213
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "andel_prove_lege": 0.289784652605,
           "andel_prove_priv": 0.215448831132,
           "ref_pr_innb_adj": 243.454320817,
@@ -195,7 +191,7 @@
           "nlk_pr_prove": 8.23565195684
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "andel_prove_lege": 0.283951819961,
           "andel_prove_priv": 0.224086437312,
           "ref_pr_innb_adj": 246.900218346,
@@ -213,7 +209,7 @@
           "nlk_pr_prove": 7.64720467802
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "andel_prove_lege": 0.276090750531,
           "andel_prove_priv": 0.0487065246015,
           "ref_pr_innb_adj": 264.884267913,
@@ -231,7 +227,7 @@
           "nlk_pr_prove": 8.5034169469
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "andel_prove_lege": 0.312102787378,
           "andel_prove_priv": 0.0225981758648,
           "ref_pr_innb_adj": 243.207529807,
@@ -249,7 +245,7 @@
           "nlk_pr_prove": 6.82537616679
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "andel_prove_lege": 0.248422279114,
           "andel_prove_priv": 0.0564650200021,
           "ref_pr_innb_adj": 280.945086235,
@@ -267,7 +263,7 @@
           "nlk_pr_prove": 9.82305562368
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "andel_prove_lege": 0.287252325636,
           "andel_prove_priv": 0.0650236820168,
           "ref_pr_innb_adj": 265.490066931,
@@ -285,7 +281,7 @@
           "nlk_pr_prove": 9.5446376096
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "andel_prove_lege": 0.334171228372,
           "andel_prove_priv": 0.0904042582279,
           "ref_pr_innb_adj": 270.009177679,
@@ -303,7 +299,7 @@
           "nlk_pr_prove": 8.58870720885
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "andel_prove_lege": 0.319891574978,
           "andel_prove_priv": 0.132899576056,
           "ref_pr_innb_adj": 329.687461925,
@@ -321,7 +317,7 @@
           "nlk_pr_prove": 10.7234197862
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "andel_prove_lege": 0.32412924037,
           "andel_prove_priv": 0.364298693794,
           "ref_pr_innb_adj": 324.538333911,
@@ -339,7 +335,7 @@
           "nlk_pr_prove": 10.6464814821
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "andel_prove_lege": 0.286451969256,
           "andel_prove_priv": 0.457387882918,
           "ref_pr_innb_adj": 328.66435722,
@@ -357,7 +353,7 @@
           "nlk_pr_prove": 11.2419112221
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "andel_prove_lege": 0.269785657234,
           "andel_prove_priv": 0.430575714566,
           "ref_pr_innb_adj": 302.646322737,
@@ -375,7 +371,7 @@
           "nlk_pr_prove": 10.592265264
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "andel_prove_lege": 0.233323523076,
           "andel_prove_priv": 0.470914307719,
           "ref_pr_innb_adj": 288.581027024,
@@ -393,7 +389,7 @@
           "nlk_pr_prove": 11.1528608242
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "andel_prove_lege": 0.32446910518,
           "andel_prove_priv": 0.116407315571,
           "ref_pr_innb_adj": 277.307303946,
@@ -411,7 +407,7 @@
           "nlk_pr_prove": 8.82286630568
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "andel_prove_lege": 0.330497498042,
           "andel_prove_priv": 0.226053874961,
           "ref_pr_innb_adj": 339.188980668,
@@ -429,7 +425,7 @@
           "nlk_pr_prove": 10.6607388664
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "andel_prove_lege": 0.336818101478,
           "andel_prove_priv": 0.236257225284,
           "ref_pr_innb_adj": 339.315504163,
@@ -447,7 +443,7 @@
           "nlk_pr_prove": 11.1587253459
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "andel_prove_lege": 0.303771779347,
           "andel_prove_priv": 0.0862163253717,
           "ref_pr_innb_adj": 270.148458446,
@@ -465,7 +461,7 @@
           "nlk_pr_prove": 10.4887874096
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "andel_prove_lege": 0.333823232669,
           "andel_prove_priv": 0.0628631404009,
           "ref_pr_innb_adj": 291.317325272,
@@ -483,7 +479,7 @@
           "nlk_pr_prove": 8.11439528209
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "andel_prove_lege": 0.302643727804,
           "andel_prove_priv": 0.175740870822,
           "ref_pr_innb_adj": 290.558467312,

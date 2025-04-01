@@ -3,10 +3,8 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "totsnitt"
-      ],
-      "y": "bohf",
+      "x": ["totsnitt"],
+      "y": "area",
       "xLabel": {
         "nb": "Antall laktoseintoleranse-prøver pr. 1000 innbyggere",
         "en": "Number of lactose intolerance tests pr. 1000 population"
@@ -15,31 +13,17 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "tot2021",
-        "tot2022",
-        "tot2023"
-      ],
+      "annualVar": ["tot2021", "tot2022", "tot2023"],
       "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_2",
-      "x": [
-        "totsnitt"
-      ],
+      "x": ["totsnitt"],
       "y": "borhf",
       "xLabel": {
         "nb": "Antall laktoseintoleranse-prøver pr. 1000 innbyggere",
@@ -49,32 +33,18 @@
         "nb": "Regionale helseforetak (RHF)",
         "en": "Regional health authorities"
       },
-      "annualVar": [
-        "tot2021",
-        "tot2022",
-        "tot2023"
-      ],
+      "annualVar": ["tot2021", "tot2022", "tot2023"],
       "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "ratesnitt_andel_int"
-      ],
-      "y": "bohf",
+      "x": ["ratesnitt_andel_int"],
+      "y": "area",
       "xLabel": {
         "nb": "Andel gjentatte laktoseintoleranseprøver innen perioden",
         "en": "Proportion of tests repeated within the period 2018-2023"
@@ -88,27 +58,13 @@
     {
       "type": "linechart",
       "data": "datasett_3",
-      "linevars": [
-        "kvinner",
-        "menn"
-      ],
-      "linecolors": [
-        "#253776",
-        "#74A5CD"
-      ],
+      "linevars": ["kvinner", "menn"],
+      "linecolors": ["#253776", "#74A5CD"],
       "linevarsLabels": {
-        "nb": [
-          "Kvinner",
-          "Menn"
-        ],
-        "en": [
-          "Women",
-          "Men"
-        ]
+        "nb": ["Kvinner", "Menn"],
+        "en": ["Women", "Men"]
       },
-      "x": [
-        "alder"
-      ],
+      "x": ["alder"],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
@@ -129,7 +85,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -226,7 +182,7 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "andel_priv": 0.0542773949741,
           "tot2021": 8.27423334743,
           "tot2022": 9.28887168687,
@@ -241,7 +197,7 @@
           "ratesnitt_andel_int": 0.127201147267
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "andel_priv": 0.0869003457707,
           "tot2021": 10.8057407413,
           "tot2022": 11.3425008691,
@@ -256,7 +212,7 @@
           "ratesnitt_andel_int": 0.125874277609
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "andel_priv": 0.262498130939,
           "tot2021": 6.68063957688,
           "tot2022": 2.99262678453,
@@ -271,7 +227,7 @@
           "ratesnitt_andel_int": 0.0923980013054
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "andel_priv": 0.167335306643,
           "tot2021": 7.53330211093,
           "tot2022": 3.03874648065,
@@ -286,7 +242,7 @@
           "ratesnitt_andel_int": 0.0939749359616
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "andel_priv": 0.993427228397,
           "tot2021": 10.7894782948,
           "tot2022": 10.5862637034,
@@ -301,7 +257,7 @@
           "ratesnitt_andel_int": 0.190348226573
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "andel_priv": 0.913964255473,
           "tot2021": 11.1321636409,
           "tot2022": 10.8534948808,
@@ -316,7 +272,7 @@
           "ratesnitt_andel_int": 0.132071010352
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "andel_priv": 0.950305776677,
           "tot2021": 2.52715059544,
           "tot2022": 2.48667301476,
@@ -331,7 +287,7 @@
           "ratesnitt_andel_int": 0.0967991005622
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "andel_priv": 0.12639595992,
           "tot2021": 7.18904383464,
           "tot2022": 7.02869063428,
@@ -346,7 +302,7 @@
           "ratesnitt_andel_int": 0.044001565528
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "andel_priv": 0.0995832547274,
           "tot2021": 6.23115276964,
           "tot2022": 6.33100711091,
@@ -361,7 +317,7 @@
           "ratesnitt_andel_int": 0.0280683049081
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "andel_priv": 0.299608123504,
           "tot2021": 7.59583721511,
           "tot2022": 7.15871522451,
@@ -376,7 +332,7 @@
           "ratesnitt_andel_int": 0.0693030284406
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "andel_priv": 0.425735857102,
           "tot2021": 11.2974810991,
           "tot2022": 11.8461350352,
@@ -391,7 +347,7 @@
           "ratesnitt_andel_int": 0.124554322227
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "andel_priv": 0.478418867277,
           "tot2021": 12.6419115434,
           "tot2022": 12.281950058,
@@ -406,7 +362,7 @@
           "ratesnitt_andel_int": 0.148985322826
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "andel_priv": 0.940436097958,
           "tot2021": 18.5193477823,
           "tot2022": 18.217893054,
@@ -421,7 +377,7 @@
           "ratesnitt_andel_int": 0.1749939595
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "andel_priv": 0.98160740871,
           "tot2021": 23.7201519335,
           "tot2022": 24.1796486638,
@@ -436,7 +392,7 @@
           "ratesnitt_andel_int": 0.193882687846
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "andel_priv": 0.97057120689,
           "tot2021": 23.7439686944,
           "tot2022": 23.1314954611,
@@ -451,7 +407,7 @@
           "ratesnitt_andel_int": 0.185858276798
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "andel_priv": 0.981400412386,
           "tot2021": 21.358101742,
           "tot2022": 21.4821010507,
@@ -466,7 +422,7 @@
           "ratesnitt_andel_int": 0.186085872076
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "andel_priv": 0.963345137408,
           "tot2021": 5.14759138211,
           "tot2022": 5.19332340389,
@@ -481,7 +437,7 @@
           "ratesnitt_andel_int": 0.148574957161
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "andel_priv": 0.906442243145,
           "tot2021": 14.9734436723,
           "tot2022": 11.6668703953,
@@ -496,7 +452,7 @@
           "ratesnitt_andel_int": 0.169360380582
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "andel_priv": 0.599681885839,
           "tot2021": 17.1854112881,
           "tot2022": 17.3554958538,
@@ -511,7 +467,7 @@
           "ratesnitt_andel_int": 0.166218471747
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "andel_priv": 0.230680061444,
           "tot2021": 9.87956431288,
           "tot2022": 10.3835709745,
@@ -526,7 +482,7 @@
           "ratesnitt_andel_int": 0.155186636281
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "andel_priv": 0.214527879179,
           "tot2021": 12.1560421865,
           "tot2022": 11.6342686004,
@@ -541,7 +497,7 @@
           "ratesnitt_andel_int": 0.128626825045
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "andel_priv": 0.694705180347,
           "tot2021": 12.4493379342,
           "tot2022": 11.9936887934,

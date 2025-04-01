@@ -3,10 +3,8 @@
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "rateSnitt"
-      ],
-      "y": "bohf",
+      "x": ["rateSnitt"],
+      "y": "area",
       "xLabel": {
         "nb": "Antall konsultasjoner pr. 1 000 innbyggere",
         "en": "Number of consultations per 1,000 inhabitants"
@@ -15,42 +13,21 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "rate2019",
-        "rate2020",
-        "rate2021"
-      ],
+      "annualVar": ["rate2019", "rate2020", "rate2021"],
       "annualVarLabels": {
-        "nb": [
-          "2019",
-          "2020",
-          "2021"
-        ],
-        "en": [
-          "2019",
-          "2020",
-          "2021"
-        ]
+        "nb": ["2019", "2020", "2021"],
+        "en": ["2019", "2020", "2021"]
       }
     },
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "polikont_rate",
-        "primkont_rate"
-      ],
+      "x": ["polikont_rate", "primkont_rate"],
       "xLegend": {
-        "nb": [
-          "Spesialist",
-          "Fastlege/legevakt"
-        ],
-        "en": [
-          "Specialist",
-          "GP/On-call doctor"
-        ]
+        "nb": ["Spesialist", "Fastlege/legevakt"],
+        "en": ["Specialist", "GP/On-call doctor"]
       },
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Antall konsultasjoner pr. 1 000 innbyggere",
         "en": "Number of consultations per 1,000 inhabitants"
@@ -69,7 +46,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -144,7 +121,7 @@
       "national": "Norge",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "innbyggere": 60664,
           "pasienter": 128,
           "kontakter": 475,
@@ -162,7 +139,7 @@
           "andel_poli_kont": 0.301918828323
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "innbyggere": 155748.333333,
           "pasienter": 443,
           "kontakter": 2018.66666667,
@@ -180,7 +157,7 @@
           "andel_poli_kont": 0.38278356892
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "innbyggere": 110493.333333,
           "pasienter": 323.333333333,
           "kontakter": 1277.33333333,
@@ -198,7 +175,7 @@
           "andel_poli_kont": 0.413954890191
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "innbyggere": 62532.3333333,
           "pasienter": 243,
           "kontakter": 958.333333333,
@@ -216,7 +193,7 @@
           "andel_poli_kont": 0.439093134043
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "innbyggere": 106589,
           "pasienter": 377,
           "kontakter": 1690,
@@ -234,7 +211,7 @@
           "andel_poli_kont": 0.463515614205
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "innbyggere": 265559.333333,
           "pasienter": 690.333333333,
           "kontakter": 2766,
@@ -252,7 +229,7 @@
           "andel_poli_kont": 0.406960927327
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "innbyggere": 209615.666667,
           "pasienter": 707.333333333,
           "kontakter": 3005.66666667,
@@ -270,7 +247,7 @@
           "andel_poli_kont": 0.439205788851
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "innbyggere": 85207.3333333,
           "pasienter": 289.666666667,
           "kontakter": 1150.66666667,
@@ -288,7 +265,7 @@
           "andel_poli_kont": 0.344065911294
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "innbyggere": 358888,
           "pasienter": 961,
           "kontakter": 4097.33333333,
@@ -306,7 +283,7 @@
           "andel_poli_kont": 0.440995816393
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "innbyggere": 140218,
           "pasienter": 464,
           "kontakter": 1829.33333333,
@@ -324,7 +301,7 @@
           "andel_poli_kont": 0.317156677267
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "innbyggere": 282988.666667,
           "pasienter": 663.333333333,
           "kontakter": 3011.33333333,
@@ -342,7 +319,7 @@
           "andel_poli_kont": 0.42168954564
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "innbyggere": 252406.333333,
           "pasienter": 766.333333333,
           "kontakter": 3190,
@@ -360,7 +337,7 @@
           "andel_poli_kont": 0.429020054892
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "innbyggere": 449568.666667,
           "pasienter": 1021.66666667,
           "kontakter": 4359.33333333,
@@ -378,7 +355,7 @@
           "andel_poli_kont": 0.32967432132
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "innbyggere": 218202,
           "pasienter": 466.333333333,
           "kontakter": 2153.66666667,
@@ -396,7 +373,7 @@
           "andel_poli_kont": 0.396722163877
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "innbyggere": 136184.333333,
           "pasienter": 136.333333333,
           "kontakter": 551,
@@ -414,7 +391,7 @@
           "andel_poli_kont": 0.398410716974
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "innbyggere": 117501.666667,
           "pasienter": 333.333333333,
           "kontakter": 1564.66666667,
@@ -432,7 +409,7 @@
           "andel_poli_kont": 0.422755873585
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "innbyggere": 274507.666667,
           "pasienter": 846.333333333,
           "kontakter": 3863,
@@ -450,7 +427,7 @@
           "andel_poli_kont": 0.451154459446
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "innbyggere": 382236.333333,
           "pasienter": 1128.66666667,
           "kontakter": 5024.66666667,
@@ -468,7 +445,7 @@
           "andel_poli_kont": 0.361780222996
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "innbyggere": 196326.333333,
           "pasienter": 550.666666667,
           "kontakter": 2349.33333333,
@@ -486,7 +463,7 @@
           "andel_poli_kont": 0.427395805461
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "innbyggere": 139439.333333,
           "pasienter": 400,
           "kontakter": 1691.66666667,
@@ -504,7 +481,7 @@
           "andel_poli_kont": 0.54485651649
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "innbyggere": 239908.333333,
           "pasienter": 674.666666667,
           "kontakter": 3096,
@@ -522,7 +499,7 @@
           "andel_poli_kont": 0.436550988898
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "innbyggere": 4244785,
           "pasienter": 11614.3333333,
           "kontakter": 50123,

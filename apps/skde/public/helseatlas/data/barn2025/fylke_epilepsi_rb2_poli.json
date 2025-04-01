@@ -3,10 +3,8 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "snittprev"
-      ],
-      "y": "bohf",
+      "x": ["snittprev"],
+      "y": "area",
       "xLabel": {
         "nb": "Legemiddelrate (søyle) og pasientrate (linje) pr. 1000 barn",
         "en": "Rate: Number of patients epilepsi per 1,000 children"
@@ -15,29 +13,18 @@
         "nb": "Fylker",
         "en": "Counties"
       },
-      "annualVar": [
-        "start",
-        "pasratesnitt"
-      ],
+      "annualVar": ["start", "pasratesnitt"],
       "annualVarLabels": {
-        "nb": [
-          "0",
-          "Pasientrate"
-        ],
-        "en": [
-          "0",
-          "Pasientrate"
-        ]
+        "nb": ["0", "Pasientrate"],
+        "en": ["0", "Pasientrate"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "snittprev"
-      ],
-      "y": "bohf",
+      "x": ["snittprev"],
+      "y": "area",
       "xLabel": {
         "nb": "Legemiddelrate pr. 1000 barn",
         "en": "Number of consultations per patients epilepsi"
@@ -51,10 +38,8 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "pasratesnitt"
-      ],
-      "y": "bohf",
+      "x": ["pasratesnitt"],
+      "y": "area",
       "xLabel": {
         "nb": "Pasientrate: Antall pasienter pr. 1000 barn",
         "en": "Rate: Number of patients epilepsi per 1,000 children"
@@ -68,20 +53,11 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "pasratesnitt",
-        "diffrate"
-      ],
-      "y": "bohf",
+      "x": ["pasratesnitt", "diffrate"],
+      "y": "area",
       "xLegend": {
-        "nb": [
-          "Pasientrate",
-          "Legemiddelrate (hele søylen)"
-        ],
-        "en": [
-          "Private",
-          "Public"
-        ]
+        "nb": ["Pasientrate", "Legemiddelrate (hele søylen)"],
+        "en": ["Private", "Public"]
       },
       "xLabel": {
         "nb": "Rate: Antall epilepsi xxx yyyy pr. 1 000 barn",
@@ -102,7 +78,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Fylker",
           "label_en": "Counties",
           "typeVar": "string",
@@ -191,7 +167,7 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Oslo",
+          "area": "Oslo",
           "rate2021": 7.9948149952,
           "pasrate2021": 3.1131186777,
           "rate2022": 8.47531594638,
@@ -212,7 +188,7 @@
           "diffrate": 6.5933564076
         },
         {
-          "bohf": "Rogaland",
+          "area": "Rogaland",
           "rate2021": 9.30162871544,
           "pasrate2021": 3.74430536616,
           "rate2022": 10.5948524993,
@@ -233,7 +209,7 @@
           "diffrate": 6.68795367841
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "rate2021": 13.776948188,
           "pasrate2021": 4.1677996639,
           "rate2022": 14.6288604854,
@@ -254,7 +230,7 @@
           "diffrate": 7.10964080612
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "rate2021": 10.1004046525,
           "pasrate2021": 4.16503102577,
           "rate2022": 10.468618473,
@@ -275,7 +251,7 @@
           "diffrate": 7.16573782543
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "rate2021": 7.95346200594,
           "pasrate2021": 3.31939520958,
           "rate2022": 9.89502143212,
@@ -296,7 +272,7 @@
           "diffrate": 7.15181088905
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "rate2021": 8.1485087319,
           "pasrate2021": 3.29556366056,
           "rate2022": 8.53528205404,
@@ -317,7 +293,7 @@
           "diffrate": 6.48638741006
         },
         {
-          "bohf": "Buskerud",
+          "area": "Buskerud",
           "rate2021": 7.98443746879,
           "pasrate2021": 3.77761391055,
           "rate2022": 8.43692641609,
@@ -338,7 +314,7 @@
           "diffrate": 6.5476449601
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "rate2021": 9.74897828785,
           "pasrate2021": 4.44053435484,
           "rate2022": 10.5027391051,
@@ -359,7 +335,7 @@
           "diffrate": 6.89710564789
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "rate2021": 7.53265295911,
           "pasrate2021": 3.09988539341,
           "rate2022": 8.57272025036,
@@ -380,7 +356,7 @@
           "diffrate": 7.65541208651
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "rate2021": 7.18998517668,
           "pasrate2021": 3.56982068544,
           "rate2022": 5.94728560734,
@@ -401,7 +377,7 @@
           "diffrate": 8.10091660353
         },
         {
-          "bohf": "Agder",
+          "area": "Agder",
           "rate2021": 11.8540390464,
           "pasrate2021": 3.90905305768,
           "rate2022": 11.3555609193,
@@ -422,7 +398,7 @@
           "diffrate": 7.44999035448
         },
         {
-          "bohf": "Vestland",
+          "area": "Vestland",
           "rate2021": 8.79707992873,
           "pasrate2021": 4.2269993894,
           "rate2022": 8.32032666904,
@@ -443,7 +419,7 @@
           "diffrate": 6.83482543268
         },
         {
-          "bohf": "Trøndelag",
+          "area": "Trøndelag",
           "rate2021": 9.36568332909,
           "pasrate2021": 3.26420198999,
           "rate2022": 8.1834399362,
@@ -464,7 +440,7 @@
           "diffrate": 7.34933182427
         },
         {
-          "bohf": "Troms",
+          "area": "Troms",
           "rate2021": 8.26347028454,
           "pasrate2021": 2.89623547616,
           "rate2022": 7.48199478053,
@@ -485,7 +461,7 @@
           "diffrate": 8.97084665668
         },
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "rate2021": 9.4946765131,
           "pasrate2021": 3.86212473511,
           "rate2022": 10.2593095807,
@@ -506,7 +482,7 @@
           "diffrate": 6.86595745171
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "rate2021": 9.07296788772,
           "pasrate2021": 3.63872688851,
           "rate2022": 9.33402893173,

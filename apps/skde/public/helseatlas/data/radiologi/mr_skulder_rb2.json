@@ -4,7 +4,7 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": ["andel_priv"],
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Andel av undersøkelsene utført ved private røntgeninstitutt",
         "en": "Proportion of examinations performed at private imaging clinics"
@@ -23,7 +23,7 @@
         "nb": ["Private røntgeninstitutt", "Offentlig"],
         "en": ["Private imaging clinics", "Public radiology department"]
       },
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Antall (rate) offentlig/privat pr. 10 000 innbyggere",
         "en": "Number of public/private shoulder MRI per 10,000 population"
@@ -38,7 +38,7 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": ["skulder_bltsnitt", "skulder_iblt"],
-      "y": "bohf",
+      "y": "area",
       "xLegend": {
         "nb": ["Bilateralt", "Unilateralt"],
         "en": ["Bilateral", "Unilateral"]
@@ -62,7 +62,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -145,7 +145,7 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "skulder_bltsnitt": 4.85263932209,
           "mr_skulder_rate": 118.333957188,
           "andel_blt": 0.0410080034287,
@@ -156,7 +156,7 @@
           "andel_priv": 0.134336910671
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "skulder_bltsnitt": 10.5246840385,
           "mr_skulder_rate": 133.095761039,
           "andel_blt": 0.0790760273383,
@@ -167,7 +167,7 @@
           "andel_priv": 0.901809695817
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "skulder_bltsnitt": 6.36054254439,
           "mr_skulder_rate": 109.628854472,
           "andel_blt": 0.0580188726316,
@@ -178,7 +178,7 @@
           "andel_priv": 0.750441640476
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "skulder_bltsnitt": 4.94649002831,
           "mr_skulder_rate": 94.1667486803,
           "andel_blt": 0.0525290518961,
@@ -189,7 +189,7 @@
           "andel_priv": 0.06856834966
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "skulder_bltsnitt": 5.16801000999,
           "mr_skulder_rate": 105.937312304,
           "andel_blt": 0.0487836617485,
@@ -200,7 +200,7 @@
           "andel_priv": 0.373822247715
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "skulder_bltsnitt": 5.49822567239,
           "mr_skulder_rate": 100.609275219,
           "andel_blt": 0.0546492921293,
@@ -211,7 +211,7 @@
           "andel_priv": 0.892224841573
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "skulder_bltsnitt": 8.4410723514,
           "mr_skulder_rate": 131.917691359,
           "andel_blt": 0.0639874171877,
@@ -222,7 +222,7 @@
           "andel_priv": 0.437817526767
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "skulder_bltsnitt": 8.33084442445,
           "mr_skulder_rate": 102.985829114,
           "andel_blt": 0.080893114093,
@@ -233,7 +233,7 @@
           "andel_priv": 0.327195910023
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "skulder_bltsnitt": 9.61600732129,
           "mr_skulder_rate": 122.015922804,
           "andel_blt": 0.0788094463438,
@@ -244,7 +244,7 @@
           "andel_priv": 0.839225739584
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "skulder_bltsnitt": 11.7709395198,
           "mr_skulder_rate": 124.313002006,
           "andel_blt": 0.0946879194441,
@@ -255,7 +255,7 @@
           "andel_priv": 0.932319594373
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "skulder_bltsnitt": 8.7500829607,
           "mr_skulder_rate": 90.3802663121,
           "andel_blt": 0.0968140869433,
@@ -266,7 +266,7 @@
           "andel_priv": 0.886759523722
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "skulder_bltsnitt": 12.9503530501,
           "mr_skulder_rate": 135.495048102,
           "andel_blt": 0.0955780541913,
@@ -277,7 +277,7 @@
           "andel_priv": 0.913916987496
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "skulder_bltsnitt": 9.55767855137,
           "mr_skulder_rate": 119.245852962,
           "andel_blt": 0.0801510351429,
@@ -288,7 +288,7 @@
           "andel_priv": 0.87779560489
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "skulder_bltsnitt": 7.78534638541,
           "mr_skulder_rate": 103.632785807,
           "andel_blt": 0.0751243568797,
@@ -299,7 +299,7 @@
           "andel_priv": 0.88116368404
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "skulder_bltsnitt": 7.20909981933,
           "mr_skulder_rate": 93.3659451097,
           "andel_blt": 0.0772133759355,
@@ -310,7 +310,7 @@
           "andel_priv": 0.872087669252
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "skulder_bltsnitt": 5.52907392067,
           "mr_skulder_rate": 82.6927707792,
           "andel_blt": 0.0668628450657,
@@ -321,7 +321,7 @@
           "andel_priv": 0.842885267504
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "skulder_bltsnitt": 8.59680744298,
           "mr_skulder_rate": 116.879872641,
           "andel_blt": 0.0735525052241,
@@ -332,7 +332,7 @@
           "andel_priv": 0.822796133583
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "skulder_bltsnitt": 6.74557400777,
           "mr_skulder_rate": 95.9632460203,
           "andel_blt": 0.0702933079852,
@@ -343,7 +343,7 @@
           "andel_priv": 0.881819401024
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "skulder_bltsnitt": 6.35213314133,
           "mr_skulder_rate": 93.3931849908,
           "andel_blt": 0.0680149535745,
@@ -354,7 +354,7 @@
           "andel_priv": 0.940103856105
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "skulder_bltsnitt": 6.34370950006,
           "mr_skulder_rate": 73.4941023527,
           "andel_blt": 0.0863158987863,
@@ -365,7 +365,7 @@
           "andel_priv": 0.919208752994
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "skulder_bltsnitt": 5.69706717518,
           "mr_skulder_rate": 87.8866133933,
           "andel_blt": 0.0648229230279,
@@ -376,7 +376,7 @@
           "andel_priv": 0.888102531338
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "skulder_bltsnitt": 8.05793376434,
           "mr_skulder_rate": 107.769826855,
           "andel_blt": 0.0747698497759,

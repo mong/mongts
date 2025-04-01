@@ -8,7 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 import { getOrderComparator } from "../../helpers/functions/dataTransformation";
 import { customFormat } from "qmongjs";
-import { useBohfQueryParam } from "../../helpers/hooks";
+import { useAreaQueryParam } from "../../helpers/hooks";
 import { Markdown } from "../../components/Markdown";
 import { nationalLabel } from "../colors";
 import { DataItemPoint } from "../../types";
@@ -34,8 +34,8 @@ export const DataTable = ({
   lang,
   national,
 }: DataTableProps) => {
-  // Pick out bohf query from the url
-  const [selectedBohfs, toggleBohf] = useBohfQueryParam(national);
+  // Pick out area query from the url
+  const [selectedAreas, toggleArea] = useAreaQueryParam(national);
 
   const [order, setOrder] = React.useState<"asc" | "desc">("desc");
   const [orderBy, setOrderBy] = React.useState(headers[1].id);
@@ -87,17 +87,17 @@ export const DataTable = ({
             .map((row, i) => (
               <TableRow
                 hover
-                key={`${row.bohf}${i}`}
-                selected={selectedBohfs.has(String(row.bohf))}
-                data-testid={`tablerow_${row.bohf}`}
+                key={`${row.area}${i}`}
+                selected={selectedAreas.has(String(row.area))}
+                data-testid={`tablerow_${row.area}`}
                 style={{
-                  cursor: row.bohf != national ? "pointer" : "auto",
+                  cursor: row.area != national ? "pointer" : "auto",
                 }}
-                onClick={() => toggleBohf(String(row.bohf))}
+                onClick={() => toggleArea(String(row.area))}
               >
                 {headers.map((cell, ind) => (
                   <TableCell
-                    key={`${row.bohf}${i}${ind}`}
+                    key={`${row.area}${i}${ind}`}
                     component={ind === 0 ? "th" : "td"}
                     scope="row"
                     padding="none"
@@ -106,7 +106,7 @@ export const DataTable = ({
                       paddingTop: "0.125rem",
                       fontFamily:
                         cell.typeVar === "number" ? "Monospace" : "default",
-                      fontWeight: row.bohf === national ? "bolder" : "normal",
+                      fontWeight: row.area === national ? "bolder" : "normal",
                     }}
                   >
                     {cell.format

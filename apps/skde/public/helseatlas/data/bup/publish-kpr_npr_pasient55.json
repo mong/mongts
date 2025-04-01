@@ -1,10 +1,10 @@
 {
-"innhold": [
+  "innhold": [
     {
       "type": "barchart",
       "data": "qwerty",
       "x": ["Snittrate"],
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nn": "Tal pasientar i poliklinikk og/eller allmennlege pr. 1 000 (under 18 år)",
         "en": "Number of child and adolescents for mentalhealthcare in primary care and outpatient pr. 1,000 inhabitants (under 18 years old)"
@@ -13,17 +13,14 @@
         "nn": "Opptaksområde",
         "en": "Referral areas"
       },
-      "errorBars": [
-       "lowercl",
-       "uppercl"
-      ],
-    "format": ",.1f"
-  },
-   {
+      "errorBars": ["lowercl", "uppercl"],
+      "format": ",.1f"
+    },
+    {
       "type": "barchart",
       "data": "qwerty",
       "x": ["kpr", "begge", "npr"],
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nn": "Prosentdel pasientar i poliklinikk og/eller allmennlege (under 18 år)",
         "en": "Percentage of child and adolescents for mentalhealthcare in primary care and outpatient (under 18 years old)"
@@ -33,12 +30,20 @@
         "en": "Referral areas"
       },
       "xLegend": {
-        "nn": ["Pasient hos bare allmennlege", "Paienter hos begge polklinikk og allmennlege", "Pasient hos bare poliklinikk"],
-        "en": ["Patient in only primary care", "pasient in outpatient clinic and primary care", "Patient in only outpatient clinic"]
+        "nn": [
+          "Pasient hos bare allmennlege",
+          "Paienter hos begge polklinikk og allmennlege",
+          "Pasient hos bare poliklinikk"
+        ],
+        "en": [
+          "Patient in only primary care",
+          "pasient in outpatient clinic and primary care",
+          "Patient in only outpatient clinic"
+        ]
       },
       "format": ",.0f"
     },
- {
+    {
       "type": "table",
       "data": "qwerty",
       "caption": {
@@ -47,7 +52,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområde",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -76,7 +81,7 @@
         }
       ]
     },
-  {
+    {
       "type": "map",
       "data": "qwerty",
       "x": "Snittrate",
@@ -101,253 +106,250 @@
       "label": "qwerty",
       "description": "Hoveddatasettet for gitt resultatboks",
       "national": "Noreg",
-      "data":
-
-
-[
-  {
-    "bohf": "Lovisenberg",
-    "Snitt_kontaktar": 5361,
-    "Snitt_innbyggarar": 22897,
-    "Snittrate": 46.83,
-    "lowercl": 45.58,
-    "uppercl": 48.1,
-    "kpr": 36.4671,
-    "begge": 36.1873,
-    "npr": 27.3456
-  },
-  {
-    "bohf": "Fonna",
-    "Snitt_kontaktar": 9454,
-    "Snitt_innbyggarar": 39994,
-    "Snittrate": 47.28,
-    "lowercl": 46.33,
-    "uppercl": 48.24,
-    "kpr": 37.0531,
-    "begge": 46.0757,
-    "npr": 16.8712
-  },
-  {
-    "bohf": "OUS",
-    "Snitt_kontaktar": 14212,
-    "Snitt_innbyggarar": 59446.4,
-    "Snittrate": 47.81,
-    "lowercl": 47.03,
-    "uppercl": 48.61,
-    "kpr": 36.9476,
-    "begge": 39.0797,
-    "npr": 23.9727
-  },
-  {
-    "bohf": "Diakonhjemmet",
-    "Snitt_kontaktar": 6211,
-    "Snitt_innbyggarar": 25931,
-    "Snittrate": 47.9,
-    "lowercl": 46.72,
-    "uppercl": 49.11,
-    "kpr": 32.3941,
-    "begge": 39.2529,
-    "npr": 28.3529
-  },
-  {
-    "bohf": "Vestre Viken",
-    "Snitt_kontaktar": 25628,
-    "Snitt_innbyggarar": 105821.2,
-    "Snittrate": 48.44,
-    "lowercl": 47.85,
-    "uppercl": 49.03,
-    "kpr": 41.0489,
-    "begge": 43.589,
-    "npr": 15.3621
-  },
-  {
-    "bohf": "Stavanger",
-    "Snitt_kontaktar": 21272,
-    "Snitt_innbyggarar": 87767,
-    "Snittrate": 48.47,
-    "lowercl": 47.82,
-    "uppercl": 49.13,
-    "kpr": 41.2514,
-    "begge": 45.9054,
-    "npr": 12.8432
-  },
-  {
-    "bohf": "Innlandet",
-    "Snitt_kontaktar": 15406,
-    "Snitt_innbyggarar": 63506.8,
-    "Snittrate": 48.52,
-    "lowercl": 47.75,
-    "uppercl": 49.29,
-    "kpr": 33.5021,
-    "begge": 44.94,
-    "npr": 21.5579
-  },
-  {
-    "bohf": "Førde",
-    "Snitt_kontaktar": 5603,
-    "Snitt_innbyggarar": 23040.4,
-    "Snittrate": 48.64,
-    "lowercl": 47.37,
-    "uppercl": 49.93,
-    "kpr": 27.1462,
-    "begge": 44.6546,
-    "npr": 28.1992
-  },
-  {
-    "bohf": "Noreg",
-    "Snitt_kontaktar": 272858,
-    "Snitt_innbyggarar": 1114704,
-    "Snittrate": 48.96,
-    "lowercl": 48.77,
-    "uppercl": 49.14,
-    "kpr": 36.545,
-    "begge": 44.866,
-    "npr": 18.588
-  },
-  {
-    "bohf": "Bergen",
-    "Snitt_kontaktar": 23897,
-    "Snitt_innbyggarar": 96697.2,
-    "Snittrate": 49.43,
-    "lowercl": 48.8,
-    "uppercl": 50.06,
-    "kpr": 37.8416,
-    "begge": 46.9933,
-    "npr": 15.1651
-  },
-  {
-    "bohf": "Akershus",
-    "Snitt_kontaktar": 32091,
-    "Snitt_innbyggarar": 128646.8,
-    "Snittrate": 49.89,
-    "lowercl": 49.35,
-    "uppercl": 50.44,
-    "kpr": 37.2005,
-    "begge": 43.2146,
-    "npr": 19.5849
-  },
-  {
-    "bohf": "Møre og Romsdal",
-    "Snitt_kontaktar": 13849,
-    "Snitt_innbyggarar": 55257.6,
-    "Snittrate": 50.13,
-    "lowercl": 49.29,
-    "uppercl": 50.97,
-    "kpr": 38.5082,
-    "begge": 47.202,
-    "npr": 14.2898
-  },
-  {
-    "bohf": "St. Olav",
-    "Snitt_kontaktar": 17037,
-    "Snitt_innbyggarar": 67721,
-    "Snittrate": 50.32,
-    "lowercl": 49.56,
-    "uppercl": 51.08,
-    "kpr": 36.1155,
-    "begge": 47.5377,
-    "npr": 16.3468
-  },
-  {
-    "bohf": "Sørlandet",
-    "Snitt_kontaktar": 17021,
-    "Snitt_innbyggarar": 67155.8,
-    "Snittrate": 50.69,
-    "lowercl": 49.93,
-    "uppercl": 51.46,
-    "kpr": 38.1881,
-    "begge": 44.0338,
-    "npr": 17.778
-  },
-  {
-    "bohf": "Telemark",
-    "Snitt_kontaktar": 8565,
-    "Snitt_innbyggarar": 33769,
-    "Snittrate": 50.73,
-    "lowercl": 49.66,
-    "uppercl": 51.81,
-    "kpr": 28.6982,
-    "begge": 46.2347,
-    "npr": 25.0671
-  },
-  {
-    "bohf": "Nordland",
-    "Snitt_kontaktar": 7117,
-    "Snitt_innbyggarar": 27085.6,
-    "Snittrate": 52.55,
-    "lowercl": 51.34,
-    "uppercl": 53.79,
-    "kpr": 41.4922,
-    "begge": 43.4453,
-    "npr": 15.0625
-  },
-  {
-    "bohf": "Nord-Trøndelag",
-    "Snitt_kontaktar": 7498,
-    "Snitt_innbyggarar": 28257.4,
-    "Snittrate": 53.07,
-    "lowercl": 51.87,
-    "uppercl": 54.28,
-    "kpr": 31.5417,
-    "begge": 45.4254,
-    "npr": 23.0328
-  },
-  {
-    "bohf": "Østfold",
-    "Snitt_kontaktar": 17320,
-    "Snitt_innbyggarar": 65127.6,
-    "Snittrate": 53.19,
-    "lowercl": 52.4,
-    "uppercl": 53.99,
-    "kpr": 36.9111,
-    "begge": 45.6524,
-    "npr": 17.4365
-  },
-  {
-    "bohf": "Helgeland",
-    "Snitt_kontaktar": 4107,
-    "Snitt_innbyggarar": 15107.6,
-    "Snittrate": 54.37,
-    "lowercl": 52.72,
-    "uppercl": 56.06,
-    "kpr": 23.3017,
-    "begge": 50.0122,
-    "npr": 26.6861
-  },
-  {
-    "bohf": "UNN",
-    "Snitt_kontaktar": 10129,
-    "Snitt_innbyggarar": 37118.6,
-    "Snittrate": 54.58,
-    "lowercl": 53.52,
-    "uppercl": 55.65,
-    "kpr": 30.3979,
-    "begge": 48.8202,
-    "npr": 20.7819
-  },
-  {
-    "bohf": "Vestfold",
-    "Snitt_kontaktar": 13913,
-    "Snitt_innbyggarar": 49969.8,
-    "Snittrate": 55.69,
-    "lowercl": 54.76,
-    "uppercl": 56.62,
-    "kpr": 36.5414,
-    "begge": 45.152,
-    "npr": 18.3066
-  },
-  {
-    "bohf": "Finnmark",
-    "Snitt_kontaktar": 4114,
-    "Snitt_innbyggarar": 14386.2,
-    "Snittrate": 57.19,
-    "lowercl": 55.46,
-    "uppercl": 58.97,
-    "kpr": 31.6237,
-    "begge": 48.9791,
-    "npr": 19.3972
-  }
-]
-}
+      "data": [
+        {
+          "area": "Lovisenberg",
+          "Snitt_kontaktar": 5361,
+          "Snitt_innbyggarar": 22897,
+          "Snittrate": 46.83,
+          "lowercl": 45.58,
+          "uppercl": 48.1,
+          "kpr": 36.4671,
+          "begge": 36.1873,
+          "npr": 27.3456
+        },
+        {
+          "area": "Fonna",
+          "Snitt_kontaktar": 9454,
+          "Snitt_innbyggarar": 39994,
+          "Snittrate": 47.28,
+          "lowercl": 46.33,
+          "uppercl": 48.24,
+          "kpr": 37.0531,
+          "begge": 46.0757,
+          "npr": 16.8712
+        },
+        {
+          "area": "OUS",
+          "Snitt_kontaktar": 14212,
+          "Snitt_innbyggarar": 59446.4,
+          "Snittrate": 47.81,
+          "lowercl": 47.03,
+          "uppercl": 48.61,
+          "kpr": 36.9476,
+          "begge": 39.0797,
+          "npr": 23.9727
+        },
+        {
+          "area": "Diakonhjemmet",
+          "Snitt_kontaktar": 6211,
+          "Snitt_innbyggarar": 25931,
+          "Snittrate": 47.9,
+          "lowercl": 46.72,
+          "uppercl": 49.11,
+          "kpr": 32.3941,
+          "begge": 39.2529,
+          "npr": 28.3529
+        },
+        {
+          "area": "Vestre Viken",
+          "Snitt_kontaktar": 25628,
+          "Snitt_innbyggarar": 105821.2,
+          "Snittrate": 48.44,
+          "lowercl": 47.85,
+          "uppercl": 49.03,
+          "kpr": 41.0489,
+          "begge": 43.589,
+          "npr": 15.3621
+        },
+        {
+          "area": "Stavanger",
+          "Snitt_kontaktar": 21272,
+          "Snitt_innbyggarar": 87767,
+          "Snittrate": 48.47,
+          "lowercl": 47.82,
+          "uppercl": 49.13,
+          "kpr": 41.2514,
+          "begge": 45.9054,
+          "npr": 12.8432
+        },
+        {
+          "area": "Innlandet",
+          "Snitt_kontaktar": 15406,
+          "Snitt_innbyggarar": 63506.8,
+          "Snittrate": 48.52,
+          "lowercl": 47.75,
+          "uppercl": 49.29,
+          "kpr": 33.5021,
+          "begge": 44.94,
+          "npr": 21.5579
+        },
+        {
+          "area": "Førde",
+          "Snitt_kontaktar": 5603,
+          "Snitt_innbyggarar": 23040.4,
+          "Snittrate": 48.64,
+          "lowercl": 47.37,
+          "uppercl": 49.93,
+          "kpr": 27.1462,
+          "begge": 44.6546,
+          "npr": 28.1992
+        },
+        {
+          "area": "Noreg",
+          "Snitt_kontaktar": 272858,
+          "Snitt_innbyggarar": 1114704,
+          "Snittrate": 48.96,
+          "lowercl": 48.77,
+          "uppercl": 49.14,
+          "kpr": 36.545,
+          "begge": 44.866,
+          "npr": 18.588
+        },
+        {
+          "area": "Bergen",
+          "Snitt_kontaktar": 23897,
+          "Snitt_innbyggarar": 96697.2,
+          "Snittrate": 49.43,
+          "lowercl": 48.8,
+          "uppercl": 50.06,
+          "kpr": 37.8416,
+          "begge": 46.9933,
+          "npr": 15.1651
+        },
+        {
+          "area": "Akershus",
+          "Snitt_kontaktar": 32091,
+          "Snitt_innbyggarar": 128646.8,
+          "Snittrate": 49.89,
+          "lowercl": 49.35,
+          "uppercl": 50.44,
+          "kpr": 37.2005,
+          "begge": 43.2146,
+          "npr": 19.5849
+        },
+        {
+          "area": "Møre og Romsdal",
+          "Snitt_kontaktar": 13849,
+          "Snitt_innbyggarar": 55257.6,
+          "Snittrate": 50.13,
+          "lowercl": 49.29,
+          "uppercl": 50.97,
+          "kpr": 38.5082,
+          "begge": 47.202,
+          "npr": 14.2898
+        },
+        {
+          "area": "St. Olav",
+          "Snitt_kontaktar": 17037,
+          "Snitt_innbyggarar": 67721,
+          "Snittrate": 50.32,
+          "lowercl": 49.56,
+          "uppercl": 51.08,
+          "kpr": 36.1155,
+          "begge": 47.5377,
+          "npr": 16.3468
+        },
+        {
+          "area": "Sørlandet",
+          "Snitt_kontaktar": 17021,
+          "Snitt_innbyggarar": 67155.8,
+          "Snittrate": 50.69,
+          "lowercl": 49.93,
+          "uppercl": 51.46,
+          "kpr": 38.1881,
+          "begge": 44.0338,
+          "npr": 17.778
+        },
+        {
+          "area": "Telemark",
+          "Snitt_kontaktar": 8565,
+          "Snitt_innbyggarar": 33769,
+          "Snittrate": 50.73,
+          "lowercl": 49.66,
+          "uppercl": 51.81,
+          "kpr": 28.6982,
+          "begge": 46.2347,
+          "npr": 25.0671
+        },
+        {
+          "area": "Nordland",
+          "Snitt_kontaktar": 7117,
+          "Snitt_innbyggarar": 27085.6,
+          "Snittrate": 52.55,
+          "lowercl": 51.34,
+          "uppercl": 53.79,
+          "kpr": 41.4922,
+          "begge": 43.4453,
+          "npr": 15.0625
+        },
+        {
+          "area": "Nord-Trøndelag",
+          "Snitt_kontaktar": 7498,
+          "Snitt_innbyggarar": 28257.4,
+          "Snittrate": 53.07,
+          "lowercl": 51.87,
+          "uppercl": 54.28,
+          "kpr": 31.5417,
+          "begge": 45.4254,
+          "npr": 23.0328
+        },
+        {
+          "area": "Østfold",
+          "Snitt_kontaktar": 17320,
+          "Snitt_innbyggarar": 65127.6,
+          "Snittrate": 53.19,
+          "lowercl": 52.4,
+          "uppercl": 53.99,
+          "kpr": 36.9111,
+          "begge": 45.6524,
+          "npr": 17.4365
+        },
+        {
+          "area": "Helgeland",
+          "Snitt_kontaktar": 4107,
+          "Snitt_innbyggarar": 15107.6,
+          "Snittrate": 54.37,
+          "lowercl": 52.72,
+          "uppercl": 56.06,
+          "kpr": 23.3017,
+          "begge": 50.0122,
+          "npr": 26.6861
+        },
+        {
+          "area": "UNN",
+          "Snitt_kontaktar": 10129,
+          "Snitt_innbyggarar": 37118.6,
+          "Snittrate": 54.58,
+          "lowercl": 53.52,
+          "uppercl": 55.65,
+          "kpr": 30.3979,
+          "begge": 48.8202,
+          "npr": 20.7819
+        },
+        {
+          "area": "Vestfold",
+          "Snitt_kontaktar": 13913,
+          "Snitt_innbyggarar": 49969.8,
+          "Snittrate": 55.69,
+          "lowercl": 54.76,
+          "uppercl": 56.62,
+          "kpr": 36.5414,
+          "begge": 45.152,
+          "npr": 18.3066
+        },
+        {
+          "area": "Finnmark",
+          "Snitt_kontaktar": 4114,
+          "Snitt_innbyggarar": 14386.2,
+          "Snittrate": 57.19,
+          "lowercl": 55.46,
+          "uppercl": 58.97,
+          "kpr": 31.6237,
+          "begge": 48.9791,
+          "npr": 19.3972
+        }
+      ]
+    }
   ]
 }
