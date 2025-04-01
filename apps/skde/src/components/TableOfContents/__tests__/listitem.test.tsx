@@ -2,7 +2,6 @@ import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import { ListItem } from "../ListItem";
 import { vi, describe, it, expect } from "vitest";
-import "@testing-library/jest-dom";
 
 describe("ListItem component", () => {
   it("renders list item with valid props", () => {
@@ -13,8 +12,10 @@ describe("ListItem component", () => {
       setExpanded: vi.fn(),
     };
     const { getByTestId } = render(<ListItem {...props} />);
-    expect(getByTestId("tocItem")).toBeInTheDocument();
-    expect(getByTestId("toc_a_#test")).toHaveAttribute("href", "#test");
+    expect(getByTestId("tocItem")).toBeTruthy();
+
+    const href = getByTestId("toc_a_#test").getAttribute("href");
+    expect(href).toEqual("#test");
   });
 
   it("renders list item with children", () => {
@@ -26,9 +27,11 @@ describe("ListItem component", () => {
       children: <div>Test Children</div>,
     };
     const { getByTestId, getByText } = render(<ListItem {...props} />);
-    expect(getByTestId("tocItem")).toBeInTheDocument();
-    expect(getByTestId("toc_a_#test")).toHaveAttribute("href", "#test");
-    expect(getByText("Test Children")).toBeInTheDocument();
+    expect(getByTestId("tocItem")).toBeTruthy();
+    expect(getByText("Test Children")).toBeTruthy();
+
+    const href = getByTestId("toc_a_#test").getAttribute("href");
+    expect(href).toEqual("#test");
   });
 
   it("renders list item with expanded state", () => {
