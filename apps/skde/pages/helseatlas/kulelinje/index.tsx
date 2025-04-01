@@ -7,11 +7,11 @@ import BeadLineSkeleton from "./beadLineSkeleton";
 import getDataUrl from "../../../src/helpers/functions/getDataUrl";
 import ensureValidLang from "../../../src/helpers/functions/ensureValidLang";
 import queryResultPendingOrFailed from "../../../src/helpers/functions/queryResultPendingOrFailed";
-import { useBohfSync } from "../../../src/helpers/hooks/useBohfSync";
+import { useAreaSync } from "../../../src/helpers/hooks/useAreaSync";
 import { AtlasDataItem } from "../../../src/types";
 
 export default function BeadLinePage() {
-  useBohfSync();
+  useAreaSync();
 
   const searchParams = useSearchParams();
   const atlasParam = searchParams.get("atlas");

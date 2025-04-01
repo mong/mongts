@@ -4,27 +4,27 @@ import usePostMessageHandler from "./usePostMessageHandler";
 import useSiblingFrames from "./useSiblingFrames";
 
 /**
- * A hook that synchronizes the query parameter "bohf" across sibling
- * windows. It sends out the current value of "bohf" to other windows and
+ * A hook that synchronizes the query parameter "area" across sibling
+ * windows. It sends out the current value of "area" to other windows and
  * updates the local value when receiving a message from another window.
  *
- * @returns An array where the first element is the current value of "bohf"
+ * @returns An array where the first element is the current value of "area"
  *          and the second element is a setter function to update the value.
  */
-export function useBohfSync() {
+export function useAreaSync() {
   const { siblingFrames, domain } = useSiblingFrames();
   const [message, sendMessage] = usePostMessageHandler(siblingFrames, domain);
-  const [bohfs, setBohfs] = useQueryParam("bohf", ArrayParam);
+  const [areas, setAreas] = useQueryParam("area", ArrayParam);
 
   useEffect(() => {
-    sendMessage({ type: "bohfs", data: bohfs });
-  }, [bohfs, sendMessage]);
+    sendMessage({ type: "areas", data: areas });
+  }, [areas, sendMessage]);
 
   useEffect(() => {
-    if (message && message.type === "bohfs") {
-      setBohfs(message.data);
+    if (message && message.type === "areas") {
+      setAreas(message.data);
     }
-  }, [message, setBohfs]);
+  }, [message, setAreas]);
 
-  return { bohfs, setBohfs };
+  return { areas, setAreas };
 }

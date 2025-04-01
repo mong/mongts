@@ -33,70 +33,70 @@ const mapData = JSON.parse(fs.readFileSync(mapDataPath, "utf-8"));
 test("Click on HF", async () => {
   const { container, getByTestId } = render(
     <Map
-      mapAttr={atlasData}
+      data={atlasData}
       lang="nb"
       attrName="rateSnitt"
       mapData={mapData}
-      classes={[5.0, 5.2, 5.4]}
+      jenks={[5.0, 5.2, 5.4]}
     />,
   );
   expect(container).toMatchSnapshot();
   expect(mockRouter.query).toEqual({});
-  fireEvent.click(getByTestId("maphf_UNN"));
-  expect(mockRouter.query).toEqual({ bohf: ["UNN"] });
+  fireEvent.click(getByTestId("maparea_UNN"));
+  expect(mockRouter.query).toEqual({ area: ["UNN"] });
   expect(container).toMatchSnapshot();
-  fireEvent.click(getByTestId("maphf_UNN"));
-  expect(mockRouter.query).toEqual({ bohf: [] });
+  fireEvent.click(getByTestId("maparea_UNN"));
+  expect(mockRouter.query).toEqual({ area: [] });
   expect(container).toMatchSnapshot();
   // Click more HF
-  fireEvent.click(getByTestId("maphf_UNN"));
-  expect(mockRouter.query).toEqual({ bohf: ["UNN"] });
-  fireEvent.click(getByTestId("maphf_Fonna"));
-  expect(mockRouter.query).toEqual({ bohf: ["UNN", "Fonna"] });
-  fireEvent.click(getByTestId("maphf_OUS"));
-  expect(mockRouter.query).toEqual({ bohf: ["UNN", "Fonna", "OUS"] });
-  fireEvent.click(getByTestId("maphf_Fonna"));
-  expect(mockRouter.query).toEqual({ bohf: ["UNN", "OUS"] });
+  fireEvent.click(getByTestId("maparea_UNN"));
+  expect(mockRouter.query).toEqual({ area: ["UNN"] });
+  fireEvent.click(getByTestId("maparea_Fonna"));
+  expect(mockRouter.query).toEqual({ area: ["UNN", "Fonna"] });
+  fireEvent.click(getByTestId("maparea_OUS"));
+  expect(mockRouter.query).toEqual({ area: ["UNN", "Fonna", "OUS"] });
+  fireEvent.click(getByTestId("maparea_Fonna"));
+  expect(mockRouter.query).toEqual({ area: ["UNN", "OUS"] });
 });
 
 test("Standard render", async () => {
   mockRouter.push("");
   const { container } = render(
     <Map
-      mapAttr={atlasData}
+      data={atlasData}
       lang="nb"
       attrName="rateSnitt"
       mapData={mapData}
-      classes={[5.0, 5.2, 5.4]}
+      jenks={[5.0, 5.2, 5.4]}
     />,
   );
   expect(container).toMatchSnapshot();
 });
 
 test("Render with picked HF", async () => {
-  mockRouter.push("/test_atlas/?bohf=UNN");
+  mockRouter.push("/test_atlas/?area=UNN");
   const { container } = render(
     <Map
-      mapAttr={atlasData}
+      data={atlasData}
       lang="en"
       attrName="rateSnitt"
       mapData={mapData}
-      classes={[5.0, 5.2, 5.4]}
+      jenks={[5.0, 5.2, 5.4]}
     />,
   );
   expect(container).toMatchSnapshot();
 });
 
 test("Render with many picked HF", async () => {
-  mockRouter.push("/test_atlas/?bohf=OUS&bohf=UNN&bohf=Fonna");
+  mockRouter.push("/test_atlas/?area=OUS&area=UNN&area=Fonna");
   const { container } = render(
     <Map
-      mapAttr={atlasData}
+      data={atlasData}
       lang="nn"
       format=".2f"
       attrName="rateSnitt"
       mapData={mapData}
-      classes={[5.0, 5.2, 5.4]}
+      jenks={[5.0, 5.2, 5.4]}
     />,
   );
   expect(container).toMatchSnapshot();
@@ -106,13 +106,13 @@ test("Format etc.", async () => {
   mockRouter.push("");
   const { container } = render(
     <Map
-      mapAttr={atlasData}
+      data={atlasData}
       lang="nb"
       format=".0%"
       caption="Dette er en test"
       attrName="andel3_prim"
       mapData={mapData}
-      classes={[0.1, 0.13, 0.15]}
+      jenks={[0.1, 0.13, 0.15]}
     />,
   );
   expect(container).toMatchSnapshot();
@@ -120,20 +120,20 @@ test("Format etc.", async () => {
 
 test("With missing HF", async () => {
   mockRouter.push("");
-  const newData = atlasData.filter((d) => d["bohf"] != "UNN");
+  const newData = atlasData.filter((d) => d["area"] != "UNN");
   const { container, getByTestId } = render(
     <Map
-      mapAttr={newData}
+      data={newData}
       lang="nb"
       format=".0%"
       caption="Dette er en test"
       attrName="andel3_prim"
       mapData={mapData}
-      classes={[0.1, 0.13, 0.15]}
+      jenks={[0.1, 0.13, 0.15]}
     />,
   );
   expect(container).toMatchSnapshot();
-  fireEvent.click(getByTestId("maphf_UNN"));
-  expect(mockRouter.query).toEqual({ bohf: ["UNN"] });
+  fireEvent.click(getByTestId("maparea_UNN"));
+  expect(mockRouter.query).toEqual({ area: ["UNN"] });
   expect(container).toMatchSnapshot();
 });

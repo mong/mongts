@@ -13,10 +13,10 @@ import getDataUrl from "../../../src/helpers/functions/getDataUrl";
 import ensureValidLang from "../../../src/helpers/functions/ensureValidLang";
 import queryResultPendingOrFailed from "../../../src/helpers/functions/queryResultPendingOrFailed";
 import ResultBoxSkeleton from "./resultBoxSkeleton";
-import { useBohfSync } from "../../../src/helpers/hooks/useBohfSync";
+import { useAreaSync } from "../../../src/helpers/hooks/useAreaSync";
 
 export default function ResultBoxPage() {
-  useBohfSync();
+  useAreaSync();
 
   const [selection] = useState("");
   const searchParams = useSearchParams();
@@ -119,9 +119,9 @@ export default function ResultBoxPage() {
                   >
                     <Map
                       mapData={mapData}
-                      classes={jenks}
+                      jenks={jenks}
                       attrName={dataItem.x}
-                      mapAttr={figData}
+                      data={figData}
                       format={dataItem.format}
                       caption={dataItem.caption[lang]}
                       lang={lang}

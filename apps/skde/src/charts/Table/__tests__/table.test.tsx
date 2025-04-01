@@ -61,7 +61,7 @@ test("Click in table", async () => {
   expect(container).toMatchSnapshot();
   // Click UNN
   fireEvent.click(getByTestId("tablerow_UNN"));
-  expect(mockRouter.query).toEqual({ bohf: ["UNN"] });
+  expect(mockRouter.query).toEqual({ area: ["UNN"] });
   expect(container).toMatchSnapshot();
   // Ascending sort table by num of patients
   fireEvent.click(getByTestId("tablehead_pasienter"));
@@ -71,23 +71,23 @@ test("Click in table", async () => {
   expect(container).toMatchSnapshot();
   // Unclick UNN
   fireEvent.click(getByTestId("tablerow_UNN"));
-  expect(mockRouter.query).toEqual({ bohf: [] });
+  expect(mockRouter.query).toEqual({ area: [] });
   // Order by HF name
-  fireEvent.click(getByTestId("tablehead_bohf"));
+  fireEvent.click(getByTestId("tablehead_area"));
   expect(container).toMatchSnapshot();
   // Click more HF
   fireEvent.click(getByTestId("tablerow_UNN"));
-  expect(mockRouter.query).toEqual({ bohf: ["UNN"] });
+  expect(mockRouter.query).toEqual({ area: ["UNN"] });
   fireEvent.click(getByTestId("tablerow_Fonna"));
-  expect(mockRouter.query).toEqual({ bohf: ["UNN", "Fonna"] });
+  expect(mockRouter.query).toEqual({ area: ["UNN", "Fonna"] });
   fireEvent.click(getByTestId("tablerow_Norge"));
-  expect(mockRouter.query).toEqual({ bohf: ["UNN", "Fonna", "Norge"] });
+  expect(mockRouter.query).toEqual({ area: ["UNN", "Fonna", "Norge"] });
   fireEvent.click(getByTestId("tablerow_Fonna"));
-  expect(mockRouter.query).toEqual({ bohf: ["UNN", "Norge"] });
+  expect(mockRouter.query).toEqual({ area: ["UNN", "Norge"] });
 });
 
 test("Render with picked HF", async () => {
-  mockRouter.push("/test_atlas/?bohf=UNN");
+  mockRouter.push("/test_atlas/?area=UNN");
   const { container } = render(
     <DataTable
       data={atlasData}
@@ -115,7 +115,7 @@ test("Render with another national", async () => {
 });
 
 test("Render with many picked HF", async () => {
-  mockRouter.push("/test_atlas/?bohf=OUS&bohf=UNN&bohf=Fonna");
+  mockRouter.push("/test_atlas/?area=OUS&area=UNN&area=Fonna");
   const { container } = render(
     <DataTable
       data={atlasData}
@@ -129,7 +129,7 @@ test("Render with many picked HF", async () => {
 });
 
 test("Render english with many picked HF", async () => {
-  mockRouter.push("/test_atlas/?bohf=OUS&bohf=UNN&bohf=Fonna");
+  mockRouter.push("/test_atlas/?area=OUS&area=UNN&area=Fonna");
   const { container } = render(
     <DataTable
       data={atlasData}

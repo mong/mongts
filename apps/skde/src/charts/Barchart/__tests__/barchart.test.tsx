@@ -31,7 +31,7 @@ const barchartinfo: any = {
   type: "barchart",
   data: "qwerty",
   x: ["rateSnitt"],
-  y: "bohf",
+  y: "area",
   xLabel: {
     nb: "Antall med epilepsi pr. 1 000 innbyggere",
     en: "Number of epilepsy patients per 1,000 inhabitants",
@@ -90,26 +90,26 @@ test("Click in table", async () => {
   expect(container).toMatchSnapshot();
   // Click UNN
   fireEvent.click(getByTestId("rect_UNN_unselected"));
-  expect(mockRouter.query).toEqual({ bohf: ["UNN"] });
+  expect(mockRouter.query).toEqual({ area: ["UNN"] });
   expect(container).toMatchSnapshot();
   // Unclick UNN
   fireEvent.click(getByTestId("rect_UNN_selected"));
-  expect(mockRouter.query).toEqual({ bohf: [] });
+  expect(mockRouter.query).toEqual({ area: [] });
   // Click more HF
   fireEvent.click(getByTestId("rect_UNN_unselected"));
-  expect(mockRouter.query).toEqual({ bohf: ["UNN"] });
+  expect(mockRouter.query).toEqual({ area: ["UNN"] });
   fireEvent.click(getByTestId("rect_Fonna_unselected"));
-  expect(mockRouter.query).toEqual({ bohf: ["UNN", "Fonna"] });
+  expect(mockRouter.query).toEqual({ area: ["UNN", "Fonna"] });
   fireEvent.click(getByTestId("rect_Norge_unselected"));
-  expect(mockRouter.query).toEqual({ bohf: ["UNN", "Fonna", "Norge"] });
+  expect(mockRouter.query).toEqual({ area: ["UNN", "Fonna", "Norge"] });
   expect(container).toMatchSnapshot();
   fireEvent.click(getByTestId("rect_Fonna_selected"));
-  expect(mockRouter.query).toEqual({ bohf: ["UNN", "Norge"] });
+  expect(mockRouter.query).toEqual({ area: ["UNN", "Norge"] });
   expect(container).toMatchSnapshot();
 });
 
 test("Render with picked HF", async () => {
-  mockRouter.push("/test_atlas/?bohf=UNN");
+  mockRouter.push("/test_atlas/?area=UNN");
   const { container } = render(
     <Barchart
       {...barchartinfo}
@@ -127,7 +127,7 @@ const barchartinfo2 = {
   type: "barchart",
   data: "qwerty",
   x: ["spes_rate", "overlapp_rate", "prim_rate"],
-  y: "bohf",
+  y: "area",
   xLegend: {
     nb: [
       "Kun spes.helsetj.",
@@ -159,7 +159,7 @@ test("Render with split figure", async () => {
 });
 
 test("Render with language not in file, picked HF and split figure", async () => {
-  mockRouter.push("/test_atlas/?bohf=UNN");
+  mockRouter.push("/test_atlas/?area=UNN");
   const { container } = render(
     <Barchart
       {...barchartinfo2}
@@ -189,9 +189,9 @@ test("Render with figure split in two", async () => {
   );
   expect(container).toMatchSnapshot();
   fireEvent.click(getAllByTestId("rect_UNN_unselected")[1]);
-  expect(mockRouter.query).toEqual({ bohf: ["UNN"] });
+  expect(mockRouter.query).toEqual({ area: ["UNN"] });
   fireEvent.click(getAllByTestId("rect_Fonna_unselected")[0]);
-  expect(mockRouter.query).toEqual({ bohf: ["UNN", "Fonna"] });
+  expect(mockRouter.query).toEqual({ area: ["UNN", "Fonna"] });
   expect(container).toMatchSnapshot();
 });
 
@@ -199,7 +199,7 @@ const barchartinfo3 = {
   type: "barchart",
   data: "qwerty",
   x: ["andel3_prim"],
-  y: "bohf",
+  y: "area",
   yLabel: { nb: "qwerty", nn: "Referral areas" },
   xLabel: { nb: "qwerty", nn: "Referral areas" },
 };
@@ -222,7 +222,7 @@ const barchartinfo4 = {
   type: "barchart",
   data: "qwerty",
   x: ["spes_rate"],
-  y: "bohf",
+  y: "area",
   yLabel: { en: "qwerty", nn: "Referral areas" },
   xLabel: { en: "qwerty", nn: "Referral areas" },
   annualVar: ["rate2019", "rate2020", "rate2021"],
@@ -288,7 +288,7 @@ const barchartinfo6 = {
   type: "barchart",
   data: "qwerty",
   x: ["rateSnitt"],
-  y: "bohf",
+  y: "area",
   yLabel: { en: "qwerty", nn: "Referral areas" },
   xLabel: { en: "qwerty", nn: "Referral areas" },
   errorBars: ["rate2019", "rate2020", "rate2021", "rateSnitt"],
@@ -313,7 +313,7 @@ const barchartinfo7 = {
   type: "barchart",
   data: "qwerty",
   x: ["spes_rate"],
-  y: "bohf",
+  y: "area",
   yLabel: { en: "qwerty", nn: "Referral areas" },
   xLabel: { en: "qwerty", nn: "Referral areas" },
   errorBars: ["rate2019", "rate2020", "rate2021", "rateSnitt"],
@@ -339,7 +339,7 @@ test("Render with wrong language", async () => {
     type: "barchart",
     data: "qwerty",
     x: ["spes_rate"],
-    y: "bohf",
+    y: "area",
     yLabel: { en: "qwerty", nn: "Referral areas" },
     xLabel: { en: "qwerty", nn: "Referral areas" },
     annualVar: ["rate2019", "rate2020", "rate2021"],
@@ -377,7 +377,7 @@ test("Render with wrong language", async () => {
     type: "barchart",
     data: "qwerty",
     x: ["spes_rate"],
-    y: "bohf",
+    y: "area",
     yLabel: { en: "qwerty", nn: "Referral areas" },
     xLabel: { en: "qwerty", nn: "Referral areas" },
     annualVar: ["rate2019", "rate2020", "rate2021"],

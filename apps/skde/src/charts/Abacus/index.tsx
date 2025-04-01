@@ -4,7 +4,7 @@ import { Group } from "@visx/group";
 import { max } from "d3-array";
 import classNames from "../Barchart/ChartLegend.module.css";
 import { customFormat } from "qmongjs";
-import { useBohfQueryParam } from "../../helpers/hooks";
+import { useAreaQueryParam } from "../../helpers/hooks";
 import { abacusColors, nationalLabel } from "../colors";
 import { DataItemPoint } from "../../types";
 
@@ -59,17 +59,17 @@ export const Abacus = ({
   format,
   national,
 }: AbacusProps) => {
-  // Pick out bohf query from the url
-  const [selectedBohfs, toggleBohf] = useBohfQueryParam(national);
+  // Pick out area query from the url
+  const [selectedAreas, toggleArea] = useAreaQueryParam(national);
 
-  // Move Norge and selected bohf to the end of data to plot,
+  // Move Norge and selected area to the end of data to plot,
   // so they will be on top of the other circles.
   const figData = data
     .filter(
-      (d) => d["bohf"] != national && !selectedBohfs.has(d["bohf"] as string),
+      (d) => d["area"] !== national && !selectedAreas.has(d["area"] as string),
     )
-    .concat(data.find((d) => d["bohf"] === national))
-    .concat(data.filter((d) => selectedBohfs.has(d["bohf"] as string)));
+    .concat(data.find((d) => d["area"] === national))
+    .concat(data.filter((d) => selectedAreas.has(d["area"] as string)));
 
   const values = [...figData.flatMap((dt) => dt[x] as number)];
   const xMaxVal = xMax ? xMax : max(values) * 1.1;
@@ -133,22 +133,22 @@ export const Abacus = ({
               r={circleRadiusDefalt}
               cx={xScale(d[x] as number)}
               fill={
-                selectedBohfs.has(d["bohf"] as string)
+                selectedAreas.has(d["area"] as string)
                   ? colors[2]
-                  : d["bohf"] === national
+                  : d["area"] === national
                     ? colors[1]
                     : colors[0]
               }
               data-testid={
-                selectedBohfs.has(d["bohf"] as string)
-                  ? `circle_${d["bohf"]}_selected`
-                  : `circle_${d["bohf"]}_unselected`
+                selectedAreas.has(d["area"] as string)
+                  ? `circle_${d["area"]}_selected`
+                  : `circle_${d["area"]}_unselected`
               }
               onClick={(event) => {
                 // Add HF to query param if clicked on.
                 // Remove HF from query param if it already is selected.
                 // Only possible to click on HF, and not on national data
-                toggleBohf(d["bohf"] as string);
+                toggleArea(d["area"] as string);
                 event.stopPropagation();
               }}
             />
@@ -173,16 +173,16 @@ export const Abacus = ({
             </div>
             {nationalLabel[lang]}
           </li>
-          {selectedBohfs.size > 0 && (
-            <li key={"selected_bohf"} className={classNames.legendLI}>
+          {selectedAreas.size > 0 && (
+            <li key={"selected_area"} className={classNames.legendLI}>
               <>
                 <div className={classNames.legendAnnualVar}>
                   <svg width="20px" height="20px">
                     <circle r={7} cx={10} cy={10} fill={colors[2]} />
                   </svg>
                 </div>
-                {selectedBohfs.size === 1
-                  ? Array.from(selectedBohfs)[0]
+                {selectedAreas.size === 1
+                  ? Array.from(selectedAreas)[0]
                   : `${selectedText[lang]} ${valuesLabel[lang].toLowerCase()}`}
               </>
             </li>
