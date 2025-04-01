@@ -8,7 +8,7 @@
       ],
       "y": "bohf",
       "xLabel": {
-        "nb": "Andel barn (0-18 år) i kontakt med helsetjenesten",
+        "nb": "Andel barn (0-18 år) i kontakt med spesialisthelsetjenesten (somatikk)",
         "en": "Rate: Number of consultations som per 1,000 children"
       },
       "yLabel": {
@@ -115,7 +115,7 @@
         "en": "Age"
       },
       "yLabel": {
-        "nb": "Andel barn i kontakt med helsetjenesten",
+        "nb": "Andel barn i kontakt med spesialisthelsetjenesten (somatikk)",
         "en": "Number of children with consultation"
       },
       "format_y": ",.0%"
@@ -124,8 +124,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2021-2023. Antall (rate) pr. 1  000 barn",
-        "en": "Årlige gjennomsnittsverdier for perioden 2021-2023. Antall (rate) pr. 1  000 barn"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2021-2023. Andel (rate) pr. 100 barn",
+        "en": "Årlige gjennomsnittsverdier for perioden 2021-2023. Andel (rate) pr. 100 barn"
       },
       "columns": [
         {
@@ -137,10 +137,10 @@
         },
         {
           "id": "pasratesnitt",
-          "label_no": "Andel",
+          "label_no": "Andel %",
           "label_en": "Rate",
           "typeVar": "number",
-          "format": ",.0f"
+          "format": ",.1f"
         },
         {
           "id": "antsnitt",
@@ -177,7 +177,7 @@
       "data": "datasett_1",
       "x": "pasratesnitt",
       "caption": {
-        "nb": "Andel barn (0-18 år) i kontakt med helsetjenesten",
+        "nb": "Andel barn (0-18 år) i kontakt med spesialisthelsetjenesten (somatikk)",
         "en": "Rate: Number of consultations som per 1,000 children"
       },
       "jenks": [
