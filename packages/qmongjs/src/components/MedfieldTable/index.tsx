@@ -303,7 +303,7 @@ export const MedfieldTable = (medfieldTableParams: MedfieldTableProps) => {
 
             <TableCell>
               <Typography variant="subtitle1">
-                <b>Resultat</b>
+                <b>Kvalitetsindikatorer</b>
               </Typography>
             </TableCell>
           </TableRow>
