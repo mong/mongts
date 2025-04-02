@@ -70,12 +70,17 @@
       "overskrift": "Poliklinikk",
       "innhold": [
         {
-          "utvalg": "dvzdcsz",
+          "type": "tekst",
+          "beskrivelse": "Hovedfunn",
+          "tekst": "* Økt bruk av polikliniske konsultasjoner etter pandemien\n* Størst økning av polikliniske konsultasjoner til barnehagebarn\n* 41% forskjell på høyeste og laveste forbruk"
+        },
+        {
+          "utvalg": "Polikliniske konsultasjoner og dagbehandling i somatisk spesialisthelsetjeneste. Barn i alderen 0-18 år.\n\nAll aktivitet tilknyttet fødsels- og barselomsorg er ekskludert. Fødselsoppholdene er tatt ut ved å identifisere alle opphold hvor hoved- eller bitilstand er Z38\\*. Videre er alle kontakter hvor hovedtilstand starter på Z3\\* eller O* tatt ut. I tillegg er alle polikliniske konsultasjoner i første leveuke til barn tatt ut.\n\nDet viser seg også at den pliktige rapporteringen fra avtalespesialistene til NPR er ufullstendig. Det kan skyldes flere grunner, som tekniske problemer ved innsending, forsinket rapportering, eller manglende rapportering. Vi ser også at i deler av rapporteringen som er mottatt mangler det informasjon om takster/normaltariff, og det gjør at vi ikke kan skille ut spesialistkonsultasjoner, som tilsvarer poliklinske kontakter utført i sykehusene. \n\nFor å kunne si noe om det totale omfanget av poliklinisk helsehjelp til barn i somatisk spesialisthelsetjeneste har vi derfor innhentet statistikk fra KUHR-databasen som gir oss spesialistkonsultasjoner hos avtalespesialistene. Statistikken fra KUHR-databasen har også gitt oss muligheten for å se utviklingen over tid, og vi ser at differansen mellom det som rapporteres til KUHR og til NPR blir stadig større. I 2022 var differansen 46 000 spesialistkonsultasjoner, mens den i  2024 var økt til 66 000 spesialistkonsultasjoner.",
           "data": "poliklinikk_tot_rb1.json",
           "publisert": "2025-03-18T11:12:00.000Z",
           "resultat": "dvgd",
           "overskrift": "Poliklinikk",
-          "ingress": "svcfs<dvf",
+          "ingress": "Årlig hadde 360 000 barn i alderen 0 - 18 år polikliniske konsultasjoner i somatisk spesialisthelsetjeneste. Samlet hadde de 1 million konsultasjoner.",
           "kart": "barn_kart_2025.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-03-18T11:12:00.000Z"
