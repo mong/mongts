@@ -3,10 +3,8 @@
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "rateSnitt"
-      ],
-      "y": "bohf",
+      "x": ["rateSnitt"],
+      "y": "area",
       "xLabel": {
         "nb": "Antall akuttinnleggelser pr. 1 000 innbyggere",
         "en": "Number of emergency admissions per 1,000 inhabitants"
@@ -15,22 +13,10 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "rate2019",
-        "rate2020",
-        "rate2021"
-      ],
+      "annualVar": ["rate2019", "rate2020", "rate2021"],
       "annualVarLabels": {
-        "nb": [
-          "2019",
-          "2020",
-          "2021"
-        ],
-        "en": [
-          "2019",
-          "2020",
-          "2021"
-        ]
+        "nb": ["2019", "2020", "2021"],
+        "en": ["2019", "2020", "2021"]
       }
     },
     {
@@ -42,7 +28,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -117,7 +103,7 @@
       "national": "Norge",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "innbyggere": 60664,
           "pasienter": 139.333333333,
           "rate2019": 0.330307780328,
@@ -132,7 +118,7 @@
           "akutt_pr_utv_pas": 0.193939393939
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "innbyggere": 155748.333333,
           "pasienter": 479.333333333,
           "rate2019": 0.725957907344,
@@ -147,7 +133,7 @@
           "akutt_pr_utv_pas": 0.276223776224
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "innbyggere": 110493.333333,
           "pasienter": 365,
           "rate2019": 0.644725444827,
@@ -162,7 +148,7 @@
           "akutt_pr_utv_pas": 0.197518097208
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "innbyggere": 62532.3333333,
           "pasienter": 225,
           "rate2019": 0.658050928412,
@@ -177,7 +163,7 @@
           "akutt_pr_utv_pas": 0.175355450237
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "innbyggere": 106589,
           "pasienter": 409,
           "rate2019": 0.911963138434,
@@ -192,7 +178,7 @@
           "akutt_pr_utv_pas": 0.232173913043
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "innbyggere": 265559.333333,
           "pasienter": 961.333333333,
           "rate2019": 0.606746099947,
@@ -207,7 +193,7 @@
           "akutt_pr_utv_pas": 0.182252288102
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "innbyggere": 209615.666667,
           "pasienter": 923,
           "rate2019": 0.798683946484,
@@ -222,7 +208,7 @@
           "akutt_pr_utv_pas": 0.212689545092
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "innbyggere": 85207.3333333,
           "pasienter": 314.333333333,
           "rate2019": 0.4377358922,
@@ -237,7 +223,7 @@
           "akutt_pr_utv_pas": 0.143377885784
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "innbyggere": 358888,
           "pasienter": 1194,
           "rate2019": 0.797892701553,
@@ -252,7 +238,7 @@
           "akutt_pr_utv_pas": 0.210168489506
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "innbyggere": 140218,
           "pasienter": 457.333333333,
           "rate2019": 0.677502604266,
@@ -267,7 +253,7 @@
           "akutt_pr_utv_pas": 0.200617283951
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "innbyggere": 282988.666667,
           "pasienter": 876,
           "rate2019": 0.358080369583,
@@ -282,7 +268,7 @@
           "akutt_pr_utv_pas": 0.126033057851
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "innbyggere": 252406.333333,
           "pasienter": 817.333333333,
           "rate2019": 0.657358763035,
@@ -297,7 +283,7 @@
           "akutt_pr_utv_pas": 0.199902486592
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "innbyggere": 449568.666667,
           "pasienter": 1500.33333333,
           "rate2019": 0.494548344245,
@@ -312,7 +298,7 @@
           "akutt_pr_utv_pas": 0.165308201732
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "innbyggere": 218202,
           "pasienter": 590,
           "rate2019": 0.458637027747,
@@ -327,7 +313,7 @@
           "akutt_pr_utv_pas": 0.160990712074
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "innbyggere": 136184.333333,
           "pasienter": 314.333333333,
           "rate2019": 0.457710158522,
@@ -342,7 +328,7 @@
           "akutt_pr_utv_pas": 0.132222222222
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "innbyggere": 117501.666667,
           "pasienter": 282.333333333,
           "rate2019": 0.496434588119,
@@ -357,7 +343,7 @@
           "akutt_pr_utv_pas": 0.160714285714
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "innbyggere": 274507.666667,
           "pasienter": 1115.33333333,
           "rate2019": 0.656456644263,
@@ -372,7 +358,7 @@
           "akutt_pr_utv_pas": 0.180832458902
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "innbyggere": 382236.333333,
           "pasienter": 1193.66666667,
           "rate2019": 0.571953890598,
@@ -387,7 +373,7 @@
           "akutt_pr_utv_pas": 0.180700676091
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "innbyggere": 196326.333333,
           "pasienter": 651,
           "rate2019": 0.640956756408,
@@ -402,7 +388,7 @@
           "akutt_pr_utv_pas": 0.231339031339
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "innbyggere": 139439.333333,
           "pasienter": 464,
           "rate2019": 0.336385256816,
@@ -417,7 +403,7 @@
           "akutt_pr_utv_pas": 0.13667953668
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "innbyggere": 239908.333333,
           "pasienter": 880.666666667,
           "rate2019": 0.502755136192,
@@ -432,7 +418,7 @@
           "akutt_pr_utv_pas": 0.151208791209
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "innbyggere": 4244785,
           "pasienter": 14152.6666667,
           "rate2019": 0.584675176476,

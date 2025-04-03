@@ -4,7 +4,7 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": ["andel_pf"],
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Andel av MR prostata utført på pasienter i pakkeforløp",
         "en": "Proportion of prostate MRI performed on patients in treatment pathway"
@@ -23,7 +23,7 @@
         "nb": ["Pakkeforløp", "Ikke pakkeforløp"],
         "en": ["Treatment pathway", "Not treatment pathway"]
       },
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Antall (rate) pakkeforløp/ikke pakkeforløp pr. 10 000 menn",
         "en": "Number of prostate MRI examination per 10,000 men, split by treatment pathway or not"
@@ -38,7 +38,7 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": ["pfsnitt", "k_f_us_rate", "restrate"],
-      "y": "bohf",
+      "y": "area",
       "xLegend": {
         "nb": ["I Pakkeforløp", "Med kreftdiagnose", "Uten"],
         "en": [
@@ -61,7 +61,7 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": ["psasnitt"],
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Antall (rate) PSA-tester pr. 10 000 menn",
         "en": "Number of PSA tests per 10,000 men"
@@ -81,7 +81,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -171,7 +171,7 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "k_f_us_rate": 9.78252095981,
           "k_f_us_ant": 23.4,
           "npfsnitt": 36.8873501371,
@@ -188,7 +188,7 @@
           "andel_ikke_pf_k": 0.371909149301
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "k_f_us_rate": 13.4259115638,
           "k_f_us_ant": 81.6,
           "npfsnitt": 47.9589153117,
@@ -205,7 +205,7 @@
           "andel_ikke_pf_k": 0.504032999676
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "k_f_us_rate": 12.9268445369,
           "k_f_us_ant": 59,
           "npfsnitt": 53.9422885483,
@@ -222,7 +222,7 @@
           "andel_ikke_pf_k": 0.514355149582
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "k_f_us_rate": 11.5815318485,
           "k_f_us_ant": 31.6,
           "npfsnitt": 46.1010024183,
@@ -239,7 +239,7 @@
           "andel_ikke_pf_k": 0.41664887398
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "k_f_us_rate": 5.48526183242,
           "k_f_us_ant": 24.6,
           "npfsnitt": 35.1481762525,
@@ -256,7 +256,7 @@
           "andel_ikke_pf_k": 0.478228940589
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "k_f_us_rate": 7.15771385765,
           "k_f_us_ant": 65.2,
           "npfsnitt": 44.9211066361,
@@ -273,7 +273,7 @@
           "andel_ikke_pf_k": 0.572185577724
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "k_f_us_rate": 20.3710547353,
           "k_f_us_ant": 171.4,
           "npfsnitt": 75.3035372059,
@@ -290,7 +290,7 @@
           "andel_ikke_pf_k": 0.521529307276
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "k_f_us_rate": 6.07288351553,
           "k_f_us_ant": 21.4,
           "npfsnitt": 33.7671766075,
@@ -307,7 +307,7 @@
           "andel_ikke_pf_k": 0.485855259028
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "k_f_us_rate": 9.01300773456,
           "k_f_us_ant": 108,
           "npfsnitt": 47.5577803901,
@@ -324,7 +324,7 @@
           "andel_ikke_pf_k": 0.533170520864
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "k_f_us_rate": 17.7420547494,
           "k_f_us_ant": 95.4,
           "npfsnitt": 51.5232146487,
@@ -341,7 +341,7 @@
           "andel_ikke_pf_k": 0.522335266487
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "k_f_us_rate": 30.65483412,
           "k_f_us_ant": 277.4,
           "npfsnitt": 108.554565266,
@@ -358,7 +358,7 @@
           "andel_ikke_pf_k": 0.596614037317
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "k_f_us_rate": 17.9451695415,
           "k_f_us_ant": 177.2,
           "npfsnitt": 98.0104878916,
@@ -375,7 +375,7 @@
           "andel_ikke_pf_k": 0.671641312766
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "k_f_us_rate": 9.73618302313,
           "k_f_us_ant": 150.4,
           "npfsnitt": 50.3431421389,
@@ -392,7 +392,7 @@
           "andel_ikke_pf_k": 0.482652094638
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "k_f_us_rate": 9.96245647075,
           "k_f_us_ant": 57.4,
           "npfsnitt": 54.1280624243,
@@ -409,7 +409,7 @@
           "andel_ikke_pf_k": 0.517104142647
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "k_f_us_rate": 6.88279222468,
           "k_f_us_ant": 14.4,
           "npfsnitt": 40.8055476054,
@@ -426,7 +426,7 @@
           "andel_ikke_pf_k": 0.491511346764
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "k_f_us_rate": 11.1721807492,
           "k_f_us_ant": 42,
           "npfsnitt": 54.4317403743,
@@ -443,7 +443,7 @@
           "andel_ikke_pf_k": 0.495580968165
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "k_f_us_rate": 10.6443095391,
           "k_f_us_ant": 126.8,
           "npfsnitt": 55.6479859854,
@@ -460,7 +460,7 @@
           "andel_ikke_pf_k": 0.562837118759
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "k_f_us_rate": 19.0511868328,
           "k_f_us_ant": 269,
           "npfsnitt": 67.443376386,
@@ -477,7 +477,7 @@
           "andel_ikke_pf_k": 0.438865369891
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "k_f_us_rate": 15.7249935315,
           "k_f_us_ant": 121.6,
           "npfsnitt": 53.2224615263,
@@ -494,7 +494,7 @@
           "andel_ikke_pf_k": 0.400646055001
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "k_f_us_rate": 13.8354060495,
           "k_f_us_ant": 80.6,
           "npfsnitt": 44.4104030983,
@@ -511,7 +511,7 @@
           "andel_ikke_pf_k": 0.345083816631
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "k_f_us_rate": 11.2382835049,
           "k_f_us_ant": 98.6,
           "npfsnitt": 26.6755998146,
@@ -528,7 +528,7 @@
           "andel_ikke_pf_k": 0.369294141929
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "k_f_us_rate": 13.7269936016,
           "k_f_us_ant": 2097,
           "npfsnitt": 57.3071566872,

@@ -3,10 +3,8 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "ratesnitt"
-      ],
-      "y": "bohf",
+      "x": ["ratesnitt"],
+      "y": "area",
       "xLabel": {
         "nb": "Rate: Antall mage-tarm konsultasjoner pr. 1 000 innbyggere",
         "en": "Rate: Number of consultations mage-tarm per 1,000 children"
@@ -15,32 +13,18 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "rate2021",
-        "rate2022",
-        "rate2023"
-      ],
+      "annualVar": ["rate2021", "rate2022", "rate2023"],
       "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "pasratesnitt"
-      ],
-      "y": "bohf",
+      "x": ["pasratesnitt"],
+      "y": "area",
       "xLabel": {
         "nb": "Rate: Antall mage-tarm pasienter pr. 1000 barn",
         "en": "Rate: Number of patients mage-tarm per 1,000 children"
@@ -49,32 +33,18 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "pasrate2021",
-        "pasrate2022",
-        "pasrate2023"
-      ],
+      "annualVar": ["pasrate2021", "pasrate2022", "pasrate2023"],
       "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "pr_pas_justsnitt"
-      ],
-      "y": "bohf",
+      "x": ["pr_pas_justsnitt"],
+      "y": "area",
       "xLabel": {
         "nb": "Antall mage-tarm konsultasjoner pr. pasient",
         "en": "Number of consultations per patients mage-tarm"
@@ -88,20 +58,11 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "privratesnitt",
-        "offratesnitt"
-      ],
-      "y": "bohf",
+      "x": ["privratesnitt", "offratesnitt"],
+      "y": "area",
       "xLegend": {
-        "nb": [
-          "Private",
-          "Offentlig"
-        ],
-        "en": [
-          "Private",
-          "Public"
-        ]
+        "nb": ["Private", "Offentlig"],
+        "en": ["Private", "Public"]
       },
       "xLabel": {
         "nb": "Rate: Antall mage-tarm konsultasjoner offentlig/privat pr. 1 000 barn",
@@ -116,20 +77,12 @@
     {
       "type": "linechart",
       "data": "datasett_2",
-      "linevars": [
-        "rate"
-      ],
+      "linevars": ["rate"],
       "linevarsLabels": {
-        "nb": [
-          "Rate: Antall mage-tarm konsulatsjoner pr. 1 000 barn, Norge"
-        ],
-        "en": [
-          "Rate Norway"
-        ]
+        "nb": ["Rate: Antall mage-tarm konsulatsjoner pr. 1 000 barn, Norge"],
+        "en": ["Rate Norway"]
       },
-      "x": [
-        "aar"
-      ],
+      "x": ["aar"],
       "y": "rate",
       "xLabel": {
         "nb": "År",
@@ -144,27 +97,13 @@
     {
       "type": "linechart",
       "data": "datasett_3",
-      "linevars": [
-        "jenter",
-        "gutter"
-      ],
-      "linecolors": [
-        "#253776",
-        "#74A5CD"
-      ],
+      "linevars": ["jenter", "gutter"],
+      "linecolors": ["#253776", "#74A5CD"],
       "linevarsLabels": {
-        "nb": [
-          "Jenter",
-          "Gutter"
-        ],
-        "en": [
-          "Girls",
-          "Boys"
-        ]
+        "nb": ["Jenter", "Gutter"],
+        "en": ["Girls", "Boys"]
       },
-      "x": [
-        "alder"
-      ],
+      "x": ["alder"],
       "y": "pasienter",
       "xLabel": {
         "nb": "Alder",
@@ -185,7 +124,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -275,7 +214,7 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "rate2021": 10.7339038991,
           "pasrate2021": 4.1541077102,
           "rate2022": 10.2103367761,
@@ -293,7 +232,7 @@
           "pct_privsnitt": 0
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "rate2021": 10.8319103398,
           "pasrate2021": 3.06954223458,
           "rate2022": 10.3085074827,
@@ -311,7 +250,7 @@
           "pct_privsnitt": 0
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "rate2021": 6.18998939941,
           "pasrate2021": 2.78066634001,
           "rate2022": 7.96303708508,
@@ -329,7 +268,7 @@
           "pct_privsnitt": 0
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "rate2021": 7.79174841552,
           "pasrate2021": 3.60315395524,
           "rate2022": 7.97259902646,
@@ -347,7 +286,7 @@
           "pct_privsnitt": 0
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "rate2021": 6.46306887517,
           "pasrate2021": 2.76202116551,
           "rate2022": 5.81121564686,
@@ -365,7 +304,7 @@
           "pct_privsnitt": 0.00377778095332
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "rate2021": 9.76378350799,
           "pasrate2021": 3.2541863978,
           "rate2022": 9.14532488434,
@@ -383,7 +322,7 @@
           "pct_privsnitt": 0.0113017829602
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "rate2021": 13.624784251,
           "pasrate2021": 4.59632959408,
           "rate2022": 13.1293197312,
@@ -401,7 +340,7 @@
           "pct_privsnitt": 0
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "rate2021": 7.70983654166,
           "pasrate2021": 3.43236076708,
           "rate2022": 6.38583114987,
@@ -419,7 +358,7 @@
           "pct_privsnitt": 0
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "rate2021": 8.93884402627,
           "pasrate2021": 4.6037374388,
           "rate2022": 8.28457886229,
@@ -437,7 +376,7 @@
           "pct_privsnitt": 0.0022557632561
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "rate2021": 6.13597213466,
           "pasrate2021": 2.19796780789,
           "rate2022": 6.2211727004,
@@ -455,7 +394,7 @@
           "pct_privsnitt": 0
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "rate2021": 7.35916453535,
           "pasrate2021": 3.23894553341,
           "rate2022": 7.18893309283,
@@ -473,7 +412,7 @@
           "pct_privsnitt": 0
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "rate2021": 9.55454037051,
           "pasrate2021": 3.25368137551,
           "rate2022": 9.88616591313,
@@ -491,7 +430,7 @@
           "pct_privsnitt": 0.0281692166903
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "rate2021": 10.2591160955,
           "pasrate2021": 3.15175689239,
           "rate2022": 11.8097180989,
@@ -509,7 +448,7 @@
           "pct_privsnitt": 0.0369553213568
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "rate2021": 9.49529838475,
           "pasrate2021": 3.11013070005,
           "rate2022": 10.1046441211,
@@ -527,7 +466,7 @@
           "pct_privsnitt": 0.0734083988435
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "rate2021": 7.88251566857,
           "pasrate2021": 4.05003190785,
           "rate2022": 7.29092148353,
@@ -545,7 +484,7 @@
           "pct_privsnitt": 0
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "rate2021": 6.66349304119,
           "pasrate2021": 2.00741320294,
           "rate2022": 7.00776916054,
@@ -563,7 +502,7 @@
           "pct_privsnitt": 0.0636151719491
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "rate2021": 7.54033158427,
           "pasrate2021": 3.42965719587,
           "rate2022": 8.03219482355,
@@ -581,7 +520,7 @@
           "pct_privsnitt": 0.00620921823471
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "rate2021": 8.68694316899,
           "pasrate2021": 3.82326399854,
           "rate2022": 9.70484140886,
@@ -599,7 +538,7 @@
           "pct_privsnitt": 0.163204216946
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "rate2021": 6.22795312033,
           "pasrate2021": 3.00969348993,
           "rate2022": 6.98536086288,
@@ -617,7 +556,7 @@
           "pct_privsnitt": 0
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "rate2021": 8.64367988402,
           "pasrate2021": 3.30228093322,
           "rate2022": 8.84563883577,
@@ -642,37 +581,37 @@
       "description": "Ekstradatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "aar": 2017,
           "rate": 7.69053987672
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "aar": 2018,
           "rate": 8.05902630779
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "aar": 2019,
           "rate": 8.19800899703
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "aar": 2020,
           "rate": 8.31910220043
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "aar": 2021,
           "rate": 8.64367988402
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "aar": 2022,
           "rate": 8.84563883577
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "aar": 2023,
           "rate": 9.23017236142
         }
@@ -685,7 +624,7 @@
       "data": [
         {
           "alder": 0,
-          "andel": 3.62686783694e-05,
+          "andel": 3.62686783694e-5,
           "jenter": 1,
           "gutter": 1
         },

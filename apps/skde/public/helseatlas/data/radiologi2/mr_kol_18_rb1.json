@@ -4,7 +4,7 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": ["totsnitt"],
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Antall MR kolumna pr. 10 000 innbyggere",
         "en": "Number of vertebral column MRI per 10,000 population"
@@ -28,7 +28,7 @@
         "nb": ["Private røntgeninstitutt", "Offentlig"],
         "en": ["Private imaging clinics", "Public"]
       },
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Antall offentlig/privat pr. 10 000 innbyggere",
         "en": "Number of public/private MRI exams per 10,000 population"
@@ -43,7 +43,7 @@
       "type": "barchart",
       "data": "datasett_3",
       "x": ["totsnitt"],
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Andel MR kolumna med røntgen i forkant",
         "en": "Number of vertebral column MRI preceded by X-ray"
@@ -87,7 +87,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -177,7 +177,7 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "offsnitt": 320.260348124,
           "privsnitt": 40.3634289277,
           "tot2018": 342.965526249,
@@ -194,7 +194,7 @@
           "andel_rg": 0.0783196657127
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "offsnitt": 57.4988271343,
           "privsnitt": 336.796632664,
           "tot2018": 388.408398247,
@@ -211,7 +211,7 @@
           "andel_rg": 0.0461610928626
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "offsnitt": 98.6852499751,
           "privsnitt": 264.362391688,
           "tot2018": 366.211709805,
@@ -228,7 +228,7 @@
           "andel_rg": 0.0551068982042
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "offsnitt": 356.296555834,
           "privsnitt": 16.8822975345,
           "tot2018": 354.746227505,
@@ -245,7 +245,7 @@
           "andel_rg": 0.0787995564873
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "offsnitt": 225.24512998,
           "privsnitt": 92.6072267228,
           "tot2018": 314.311217187,
@@ -262,7 +262,7 @@
           "andel_rg": 0.117933861394
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "offsnitt": 49.7072198104,
           "privsnitt": 251.423246465,
           "tot2018": 308.201733313,
@@ -279,7 +279,7 @@
           "andel_rg": 0.0646514253341
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "offsnitt": 191.616403006,
           "privsnitt": 151.103709723,
           "tot2018": 332.759551928,
@@ -296,7 +296,7 @@
           "andel_rg": 0.113343125398
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "offsnitt": 200.479181682,
           "privsnitt": 91.6769796443,
           "tot2018": 295.106162799,
@@ -313,7 +313,7 @@
           "andel_rg": 0.0873203217521
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "offsnitt": 68.2604562643,
           "privsnitt": 340.315812858,
           "tot2018": 428.162027627,
@@ -330,7 +330,7 @@
           "andel_rg": 0.065547695156
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "offsnitt": 50.8114350603,
           "privsnitt": 373.26923259,
           "tot2018": 426.215209993,
@@ -347,7 +347,7 @@
           "andel_rg": 0.0793043286492
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "offsnitt": 47.6629146149,
           "privsnitt": 321.670263114,
           "tot2018": 397.235149257,
@@ -364,7 +364,7 @@
           "andel_rg": 0.0677177980094
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "offsnitt": 57.9766006799,
           "privsnitt": 416.524376938,
           "tot2018": 499.54449927,
@@ -381,7 +381,7 @@
           "andel_rg": 0.0750726338584
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "offsnitt": 59.2303769793,
           "privsnitt": 371.740370804,
           "tot2018": 431.724944776,
@@ -398,7 +398,7 @@
           "andel_rg": 0.0784711562247
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "offsnitt": 56.7463850453,
           "privsnitt": 324.384759471,
           "tot2018": 380.650541787,
@@ -415,7 +415,7 @@
           "andel_rg": 0.068689062421
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "offsnitt": 55.1770252354,
           "privsnitt": 299.530960599,
           "tot2018": 349.128384686,
@@ -432,7 +432,7 @@
           "andel_rg": 0.0649446042398
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "offsnitt": 60.009045591,
           "privsnitt": 252.842203123,
           "tot2018": 310.706776874,
@@ -449,7 +449,7 @@
           "andel_rg": 0.0753228948704
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "offsnitt": 84.570830235,
           "privsnitt": 323.767153306,
           "tot2018": 400.152176121,
@@ -466,7 +466,7 @@
           "andel_rg": 0.0825080357585
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "offsnitt": 55.0093174035,
           "privsnitt": 297.580753494,
           "tot2018": 367.544447662,
@@ -483,7 +483,7 @@
           "andel_rg": 0.164870567141
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "offsnitt": 26.2594049719,
           "privsnitt": 364.005943571,
           "tot2018": 398.716243101,
@@ -500,7 +500,7 @@
           "andel_rg": 0.0857214354409
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "offsnitt": 56.3034394365,
           "privsnitt": 345.166479836,
           "tot2018": 430.755827864,
@@ -517,7 +517,7 @@
           "andel_rg": 0.0838727515087
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "offsnitt": 47.9940512986,
           "privsnitt": 299.932198702,
           "tot2018": 344.908481123,
@@ -534,7 +534,7 @@
           "andel_rg": 0.0725910198944
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "offsnitt": 79.425727963,
           "privsnitt": 298.836426482,
           "tot2018": 384.343325351,
@@ -1005,7 +1005,7 @@
       "description": "Ekstradatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "totsnitt": 0.0783196657127,
           "tot2019": 0.0862435715293,
           "tot2020": 0.0823949145047,
@@ -1013,7 +1013,7 @@
           "tot2022": 0.0712760365134
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "totsnitt": 0.0461610928626,
           "tot2019": 0.0536920997116,
           "tot2020": 0.0497481360809,
@@ -1021,7 +1021,7 @@
           "tot2022": 0.0410819813598
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "totsnitt": 0.0551068982042,
           "tot2019": 0.0614969194207,
           "tot2020": 0.0516652894359,
@@ -1029,7 +1029,7 @@
           "tot2022": 0.0531699855663
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "totsnitt": 0.0787995564873,
           "tot2019": 0.115821830398,
           "tot2020": 0.0777408043573,
@@ -1037,7 +1037,7 @@
           "tot2022": 0.0651883964836
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "totsnitt": 0.117933861394,
           "tot2019": 0.140115832954,
           "tot2020": 0.123121526138,
@@ -1045,7 +1045,7 @@
           "tot2022": 0.109359829841
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "totsnitt": 0.0646514253341,
           "tot2019": 0.0695435743014,
           "tot2020": 0.0585392493941,
@@ -1053,7 +1053,7 @@
           "tot2022": 0.0645996355591
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "totsnitt": 0.113343125398,
           "tot2019": 0.128393863601,
           "tot2020": 0.111480253572,
@@ -1061,7 +1061,7 @@
           "tot2022": 0.105121101861
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "totsnitt": 0.0873203217521,
           "tot2019": 0.102182029105,
           "tot2020": 0.0813058946224,
@@ -1069,7 +1069,7 @@
           "tot2022": 0.0835254482524
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "totsnitt": 0.065547695156,
           "tot2019": 0.0760474693539,
           "tot2020": 0.0689625300204,
@@ -1077,7 +1077,7 @@
           "tot2022": 0.0563451326021
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "totsnitt": 0.0793043286492,
           "tot2019": 0.0910593586564,
           "tot2020": 0.0796041415673,
@@ -1085,7 +1085,7 @@
           "tot2022": 0.0760400265118
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "totsnitt": 0.0677177980094,
           "tot2019": 0.0758363503664,
           "tot2020": 0.0726584746652,
@@ -1093,7 +1093,7 @@
           "tot2022": 0.0580987297921
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "totsnitt": 0.0750726338584,
           "tot2019": 0.0945579732175,
           "tot2020": 0.0763926275438,
@@ -1101,7 +1101,7 @@
           "tot2022": 0.0610111330698
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "totsnitt": 0.0784711562247,
           "tot2019": 0.0926304542176,
           "tot2020": 0.0784070589082,
@@ -1109,7 +1109,7 @@
           "tot2022": 0.0683876571709
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "totsnitt": 0.068689062421,
           "tot2019": 0.0847930289955,
           "tot2020": 0.0734810549341,
@@ -1117,7 +1117,7 @@
           "tot2022": 0.0536784047103
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "totsnitt": 0.0649446042398,
           "tot2019": 0.0756526809891,
           "tot2020": 0.0770589372538,
@@ -1125,7 +1125,7 @@
           "tot2022": 0.0530124266813
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "totsnitt": 0.0753228948704,
           "tot2019": 0.0979048156038,
           "tot2020": 0.0752163169238,
@@ -1133,7 +1133,7 @@
           "tot2022": 0.0573693869562
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "totsnitt": 0.0825080357585,
           "tot2019": 0.0931403587367,
           "tot2020": 0.0836184022749,
@@ -1141,7 +1141,7 @@
           "tot2022": 0.075492694794
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "totsnitt": 0.164870567141,
           "tot2019": 0.176211675574,
           "tot2020": 0.171267380944,
@@ -1149,7 +1149,7 @@
           "tot2022": 0.161586034776
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "totsnitt": 0.0857214354409,
           "tot2019": 0.0952044489564,
           "tot2020": 0.0876913390923,
@@ -1157,7 +1157,7 @@
           "tot2022": 0.077997232519
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "totsnitt": 0.0838727515087,
           "tot2019": 0.097672866937,
           "tot2020": 0.0814217524995,
@@ -1165,7 +1165,7 @@
           "tot2022": 0.0785401260278
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "totsnitt": 0.0725910198944,
           "tot2019": 0.0955532197068,
           "tot2020": 0.075870699594,
@@ -1173,7 +1173,7 @@
           "tot2022": 0.0571732613729
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "totsnitt": 0.0838529973063,
           "tot2019": 0.0971188127543,
           "tot2020": 0.0858294553211,

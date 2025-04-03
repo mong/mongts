@@ -3,10 +3,8 @@
     {
       "type": "barchart",
       "data": "qwerty",
-      "x": [
-        "Snitt_rate"
-      ],
-      "y": "bohf",
+      "x": ["Snitt_rate"],
+      "y": "area",
       "xLabel": {
         "nn": "Tal pasientar med rusliding pr.1000 innbyggjarar under 18 år ",
         "en": "Patients with substance use disorder pr. 1,000 population <18"
@@ -15,255 +13,251 @@
         "nn": "Opptaksområde",
         "en": "Referral areas"
       },
-      "errorBars": [
-       "lowercl",
-       "uppercl"
+      "errorBars": ["lowercl", "uppercl"],
+      "format": ",.1f"
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2019-2023. Pasientrate for rusliding pr.1000 innbyggjarar under 18 år ",
+        "en": "Annual average during 2019–2023. Patient rate for substance use disorder pr. 1000 population under 18 years"
+      },
+      "columns": [
+        {
+          "id": "area",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "Snitt_rate",
+          "label_no": "Rate",
+          "label_en": "Rate",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Tal_pas",
+          "label_no": "Tal pasientar",
+          "label_en": "Number of patients",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Innbyggarar",
+          "label_no": "Innbyggjarar (under 18 år)",
+          "label_en": "Population (under 18 years)",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "Snitt_rate",
+      "caption": {
+        "nn": "Tal pasientar med rusliding pr.1000 innbyggjarar under 18 år.",
+        "en": "Number of patients with substance use disorder pr. 1 000 population under 18 years"
+      },
+      "jenks": [
+        {
+          "grense": 0.34
+        },
+        {
+          "grense": 0.43
+        },
+        {
+          "grense": 0.53
+        }
       ],
-    "format": ",.1f"
-  },
-  {
-    "type": "table",
-    "data": "qwerty",
-    "caption": {
-      "nn": "Årlege gjennomsnittsverdiar for perioden 2019-2023. Pasientrate for rusliding pr.1000 innbyggjarar under 18 år ",
-      "en": "Annual average during 2019–2023. Patient rate for substance use disorder pr. 1000 population under 18 years"
+      "format": ",.1f"
     },
-    "columns": [
-      {
-        "id": "bohf",
-        "label_no": "Opptaksområde",
-        "label_en": "Referral areas",
-        "typeVar": "string",
-        "format": ""
-      },
-      {
-        "id": "Snitt_rate",
-        "label_no": "Rate",
-        "label_en": "Rate",
-        "typeVar": "number",
-        "format": ",.1f"
-      },
-      {
-        "id": "Tal_pas",
-        "label_no": "Tal pasientar",
-        "label_en": "Number of patients",
-        "typeVar": "number",
-        "format": ",.0f"
-      },
-      {
-        "id":  "Innbyggarar",
-        "label_no": "Innbyggjarar (under 18 år)",
-        "label_en": "Population (under 18 years)",
-        "typeVar": "number",
-        "format": ",.0f"
-      }
-    ]
-  },
-  {
-    "type": "map",
-    "data": "qwerty",
-    "x": "Snitt_rate",
-    "caption": {
-      "nn": "Tal pasientar med rusliding pr.1000 innbyggjarar under 18 år.",
-      "en": "Number of patients with substance use disorder pr. 1 000 population under 18 years"
-    },
-    "jenks": [
-      {
-        "grense": 0.34
-      },
-      {
-        "grense": 0.43
-      },
-      {
-        "grense": 0.53
-      }
-    ],
-     "format": ",.1f"
-},
-{
+    {
       "type": "data",
       "label": "qwerty",
       "description": "Hoveddatasettet for gitt resultatboks",
       "national": "Noreg",
-      "data":
-[
-  {
-    "bohf": "Akershus",
-    "Tal_pas": 55.4,
-    "Innbyggarar": 128646.8,
-    "Snitt_rate": 0.43,
-    "lowercl": 0.38,
-    "uppercl": 0.48
-  },
-  {
-    "bohf": "Bergen",
-    "Tal_pas": 72.4,
-    "Innbyggarar": 96697.2,
-    "Snitt_rate": 0.77,
-    "lowercl": 0.69,
-    "uppercl": 0.85
-  },
-  {
-    "bohf": "Diakonhjemmet",
-    "Tal_pas": 7.4,
-    "Innbyggarar": 25931,
-    "Snitt_rate": 0.31,
-    "lowercl": 0.21,
-    "uppercl": 0.41
-  },
-  {
-    "bohf": "Finnmark",
-    "Tal_pas": 6.2,
-    "Innbyggarar": 14386.2,
-    "Snitt_rate": 0.41,
-    "lowercl": 0.27,
-    "uppercl": 0.56
-  },
-  {
-    "bohf": "Fonna",
-    "Tal_pas": 19.4,
-    "Innbyggarar": 39994,
-    "Snitt_rate": 0.47,
-    "lowercl": 0.38,
-    "uppercl": 0.57
-  },
-  {
-    "bohf": "Førde",
-    "Tal_pas": 8.4,
-    "Innbyggarar": 23040.4,
-    "Snitt_rate": 0.34,
-    "lowercl": 0.24,
-    "uppercl": 0.44
-  },
-  {
-    "bohf": "Helgeland",
-    "Tal_pas": 8.2,
-    "Innbyggarar": 15107.6,
-    "Snitt_rate": 0.52,
-    "lowercl": 0.36,
-    "uppercl": 0.67
-  },
-  {
-    "bohf": "Innlandet",
-    "Tal_pas": 18.6,
-    "Innbyggarar": 63506.8,
-    "Snitt_rate": 0.28,
-    "lowercl": 0.22,
-    "uppercl": 0.33
-  },
-  {
-    "bohf": "Lovisenberg",
-    "Tal_pas": 8.4,
-    "Innbyggarar": 22897,
-    "Snitt_rate": 0.54,
-    "lowercl": 0.38,
-    "uppercl": 0.71
-  },
-  {
-    "bohf": "Møre og Romsdal",
-    "Tal_pas": 19.4,
-    "Innbyggarar": 55257.6,
-    "Snitt_rate": 0.34,
-    "lowercl": 0.27,
-    "uppercl": 0.4
-  },
-  {
-    "bohf": "Nord-Trøndelag",
-    "Tal_pas": 12,
-    "Innbyggarar": 28257.4,
-    "Snitt_rate": 0.4,
-    "lowercl": 0.3,
-    "uppercl": 0.51
-  },
-  {
-    "bohf": "Nordland",
-    "Tal_pas": 17.6,
-    "Innbyggarar": 27085.6,
-    "Snitt_rate": 0.63,
-    "lowercl": 0.49,
-    "uppercl": 0.76
-  },
-  {
-    "bohf": "Noreg",
-    "Tal_pas": 502.2,
-    "Innbyggarar": 1114704,
-    "Snitt_rate": 0.45,
-    "lowercl": 0.43,
-    "uppercl": 0.47
-  },
-  {
-    "bohf": "OUS",
-    "Tal_pas": 15.6,
-    "Innbyggarar": 59446.4,
-    "Snitt_rate": 0.29,
-    "lowercl": 0.22,
-    "uppercl": 0.35
-  },
-  {
-    "bohf": "St. Olav",
-    "Tal_pas": 28.4,
-    "Innbyggarar": 67721,
-    "Snitt_rate": 0.43,
-    "lowercl": 0.36,
-    "uppercl": 0.5
-  },
-  {
-    "bohf": "Stavanger",
-    "Tal_pas": 52.2,
-    "Innbyggarar": 87767,
-    "Snitt_rate": 0.62,
-    "lowercl": 0.54,
-    "uppercl": 0.69
-  },
-  {
-    "bohf": "Sørlandet",
-    "Tal_pas": 34.4,
-    "Innbyggarar": 67155.8,
-    "Snitt_rate": 0.5,
-    "lowercl": 0.43,
-    "uppercl": 0.58
-  },
-  {
-    "bohf": "Telemark",
-    "Tal_pas": 16.2,
-    "Innbyggarar": 33769,
-    "Snitt_rate": 0.45,
-    "lowercl": 0.35,
-    "uppercl": 0.55
-  },
-  {
-    "bohf": "UNN",
-    "Tal_pas": 14.4,
-    "Innbyggarar": 37118.6,
-    "Snitt_rate": 0.37,
-    "lowercl": 0.29,
-    "uppercl": 0.46
-  },
-  {
-    "bohf": "Vestfold",
-    "Tal_pas": 27,
-    "Innbyggarar": 49969.8,
-    "Snitt_rate": 0.51,
-    "lowercl": 0.43,
-    "uppercl": 0.6
-  },
-  {
-    "bohf": "Vestre Viken",
-    "Tal_pas": 45.2,
-    "Innbyggarar": 105821.2,
-    "Snitt_rate": 0.42,
-    "lowercl": 0.36,
-    "uppercl": 0.47
-  },
-  {
-    "bohf": "Østfold",
-    "Tal_pas": 27.6,
-    "Innbyggarar": 65127.6,
-    "Snitt_rate": 0.4,
-    "lowercl": 0.34,
-    "uppercl": 0.47
-  }
-]
-}
-]
+      "data": [
+        {
+          "area": "Akershus",
+          "Tal_pas": 55.4,
+          "Innbyggarar": 128646.8,
+          "Snitt_rate": 0.43,
+          "lowercl": 0.38,
+          "uppercl": 0.48
+        },
+        {
+          "area": "Bergen",
+          "Tal_pas": 72.4,
+          "Innbyggarar": 96697.2,
+          "Snitt_rate": 0.77,
+          "lowercl": 0.69,
+          "uppercl": 0.85
+        },
+        {
+          "area": "Diakonhjemmet",
+          "Tal_pas": 7.4,
+          "Innbyggarar": 25931,
+          "Snitt_rate": 0.31,
+          "lowercl": 0.21,
+          "uppercl": 0.41
+        },
+        {
+          "area": "Finnmark",
+          "Tal_pas": 6.2,
+          "Innbyggarar": 14386.2,
+          "Snitt_rate": 0.41,
+          "lowercl": 0.27,
+          "uppercl": 0.56
+        },
+        {
+          "area": "Fonna",
+          "Tal_pas": 19.4,
+          "Innbyggarar": 39994,
+          "Snitt_rate": 0.47,
+          "lowercl": 0.38,
+          "uppercl": 0.57
+        },
+        {
+          "area": "Førde",
+          "Tal_pas": 8.4,
+          "Innbyggarar": 23040.4,
+          "Snitt_rate": 0.34,
+          "lowercl": 0.24,
+          "uppercl": 0.44
+        },
+        {
+          "area": "Helgeland",
+          "Tal_pas": 8.2,
+          "Innbyggarar": 15107.6,
+          "Snitt_rate": 0.52,
+          "lowercl": 0.36,
+          "uppercl": 0.67
+        },
+        {
+          "area": "Innlandet",
+          "Tal_pas": 18.6,
+          "Innbyggarar": 63506.8,
+          "Snitt_rate": 0.28,
+          "lowercl": 0.22,
+          "uppercl": 0.33
+        },
+        {
+          "area": "Lovisenberg",
+          "Tal_pas": 8.4,
+          "Innbyggarar": 22897,
+          "Snitt_rate": 0.54,
+          "lowercl": 0.38,
+          "uppercl": 0.71
+        },
+        {
+          "area": "Møre og Romsdal",
+          "Tal_pas": 19.4,
+          "Innbyggarar": 55257.6,
+          "Snitt_rate": 0.34,
+          "lowercl": 0.27,
+          "uppercl": 0.4
+        },
+        {
+          "area": "Nord-Trøndelag",
+          "Tal_pas": 12,
+          "Innbyggarar": 28257.4,
+          "Snitt_rate": 0.4,
+          "lowercl": 0.3,
+          "uppercl": 0.51
+        },
+        {
+          "area": "Nordland",
+          "Tal_pas": 17.6,
+          "Innbyggarar": 27085.6,
+          "Snitt_rate": 0.63,
+          "lowercl": 0.49,
+          "uppercl": 0.76
+        },
+        {
+          "area": "Noreg",
+          "Tal_pas": 502.2,
+          "Innbyggarar": 1114704,
+          "Snitt_rate": 0.45,
+          "lowercl": 0.43,
+          "uppercl": 0.47
+        },
+        {
+          "area": "OUS",
+          "Tal_pas": 15.6,
+          "Innbyggarar": 59446.4,
+          "Snitt_rate": 0.29,
+          "lowercl": 0.22,
+          "uppercl": 0.35
+        },
+        {
+          "area": "St. Olav",
+          "Tal_pas": 28.4,
+          "Innbyggarar": 67721,
+          "Snitt_rate": 0.43,
+          "lowercl": 0.36,
+          "uppercl": 0.5
+        },
+        {
+          "area": "Stavanger",
+          "Tal_pas": 52.2,
+          "Innbyggarar": 87767,
+          "Snitt_rate": 0.62,
+          "lowercl": 0.54,
+          "uppercl": 0.69
+        },
+        {
+          "area": "Sørlandet",
+          "Tal_pas": 34.4,
+          "Innbyggarar": 67155.8,
+          "Snitt_rate": 0.5,
+          "lowercl": 0.43,
+          "uppercl": 0.58
+        },
+        {
+          "area": "Telemark",
+          "Tal_pas": 16.2,
+          "Innbyggarar": 33769,
+          "Snitt_rate": 0.45,
+          "lowercl": 0.35,
+          "uppercl": 0.55
+        },
+        {
+          "area": "UNN",
+          "Tal_pas": 14.4,
+          "Innbyggarar": 37118.6,
+          "Snitt_rate": 0.37,
+          "lowercl": 0.29,
+          "uppercl": 0.46
+        },
+        {
+          "area": "Vestfold",
+          "Tal_pas": 27,
+          "Innbyggarar": 49969.8,
+          "Snitt_rate": 0.51,
+          "lowercl": 0.43,
+          "uppercl": 0.6
+        },
+        {
+          "area": "Vestre Viken",
+          "Tal_pas": 45.2,
+          "Innbyggarar": 105821.2,
+          "Snitt_rate": 0.42,
+          "lowercl": 0.36,
+          "uppercl": 0.47
+        },
+        {
+          "area": "Østfold",
+          "Tal_pas": 27.6,
+          "Innbyggarar": 65127.6,
+          "Snitt_rate": 0.4,
+          "lowercl": 0.34,
+          "uppercl": 0.47
+        }
+      ]
+    }
+  ]
 }

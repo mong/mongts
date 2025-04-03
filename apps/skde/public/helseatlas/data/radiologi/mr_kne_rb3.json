@@ -4,7 +4,7 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": ["andel_rtg"],
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Andel av MR kne med røntgen i forkant",
         "en": "Proportions of knee MRI preceded by X-ray"
@@ -23,7 +23,7 @@
         "nb": ["Røntgen", "Ikke røntgen"],
         "en": ["X-ray", "without X-ray"]
       },
-      "y": "bohf",
+      "y": "area",
       "xLabel": {
         "nb": "Antall (rate) med/uten røntgen i forkant, pr. 10 000 innbyggere over 50",
         "en": "Number of knee MRI (per 10,000 population) preceded by X-ray or without X-ray"
@@ -38,7 +38,7 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": ["art_kir50_snitt", "a_kir50_snitt", "i_kir50_snitt"],
-      "y": "bohf",
+      "y": "area",
       "xLegend": {
         "nb": ["Artrose", "Annen", "Ikke"],
         "en": ["Osteoarthritis surgery", "Other surgery", "Without surgery"]
@@ -62,7 +62,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -145,7 +145,7 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "andel_blt": 0.0712522177412,
           "art_kir50_snitt": 2.64643521293,
           "a_kir50_snitt": 10.9619608708,
@@ -160,7 +160,7 @@
           "andel_priv": 0.133313190328
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "andel_blt": 0.116800329639,
           "art_kir50_snitt": 4.03830709622,
           "a_kir50_snitt": 10.6115593741,
@@ -175,7 +175,7 @@
           "andel_priv": 0.894418595974
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "andel_blt": 0.097048294481,
           "art_kir50_snitt": 4.68038193499,
           "a_kir50_snitt": 12.1740442542,
@@ -190,7 +190,7 @@
           "andel_priv": 0.770410855383
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "andel_blt": 0.0719455401621,
           "art_kir50_snitt": 4.26568472523,
           "a_kir50_snitt": 11.499348168,
@@ -205,7 +205,7 @@
           "andel_priv": 0.0604627046144
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "andel_blt": 0.0637297141763,
           "art_kir50_snitt": 8.92540900858,
           "a_kir50_snitt": 14.9780558184,
@@ -220,7 +220,7 @@
           "andel_priv": 0.354813249973
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "andel_blt": 0.0777039543743,
           "art_kir50_snitt": 8.06600579426,
           "a_kir50_snitt": 13.5681949333,
@@ -235,7 +235,7 @@
           "andel_priv": 0.860777814598
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "andel_blt": 0.0889362068317,
           "art_kir50_snitt": 7.23922629804,
           "a_kir50_snitt": 24.971579044,
@@ -250,7 +250,7 @@
           "andel_priv": 0.426659346463
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "andel_blt": 0.109821421513,
           "art_kir50_snitt": 8.37708319364,
           "a_kir50_snitt": 24.1663091985,
@@ -265,7 +265,7 @@
           "andel_priv": 0.293676864346
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "andel_blt": 0.123494538617,
           "art_kir50_snitt": 7.34843896369,
           "a_kir50_snitt": 13.0376402993,
@@ -280,7 +280,7 @@
           "andel_priv": 0.840741754111
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "andel_blt": 0.130697123678,
           "art_kir50_snitt": 7.54137401287,
           "a_kir50_snitt": 12.8486522277,
@@ -295,7 +295,7 @@
           "andel_priv": 0.911210381262
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "andel_blt": 0.139745760645,
           "art_kir50_snitt": 5.79556102814,
           "a_kir50_snitt": 7.97399374643,
@@ -310,7 +310,7 @@
           "andel_priv": 0.794132045915
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "andel_blt": 0.133517560433,
           "art_kir50_snitt": 4.09058419214,
           "a_kir50_snitt": 4.34701029864,
@@ -325,7 +325,7 @@
           "andel_priv": 0.887907996831
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "andel_blt": 0.131639547647,
           "art_kir50_snitt": 6.4864503851,
           "a_kir50_snitt": 5.48745752573,
@@ -340,7 +340,7 @@
           "andel_priv": 0.889051303175
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "andel_blt": 0.143896509829,
           "art_kir50_snitt": 4.89470547549,
           "a_kir50_snitt": 5.05454553445,
@@ -355,7 +355,7 @@
           "andel_priv": 0.856254058236
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "andel_blt": 0.152972371796,
           "art_kir50_snitt": 4.09253818468,
           "a_kir50_snitt": 4.65150023622,
@@ -370,7 +370,7 @@
           "andel_priv": 0.845061694943
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "andel_blt": 0.113909357754,
           "art_kir50_snitt": 3.82850276926,
           "a_kir50_snitt": 4.94976942199,
@@ -385,7 +385,7 @@
           "andel_priv": 0.831611069091
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "andel_blt": 0.098572569148,
           "art_kir50_snitt": 6.4743283168,
           "a_kir50_snitt": 8.28133063597,
@@ -400,7 +400,7 @@
           "andel_priv": 0.784663771713
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "andel_blt": 0.10924115689,
           "art_kir50_snitt": 5.96700207495,
           "a_kir50_snitt": 7.88084237849,
@@ -415,7 +415,7 @@
           "andel_priv": 0.857760932404
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "andel_blt": 0.100330806838,
           "art_kir50_snitt": 8.74816062595,
           "a_kir50_snitt": 7.96198701327,
@@ -430,7 +430,7 @@
           "andel_priv": 0.948545796093
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "andel_blt": 0.107730297246,
           "art_kir50_snitt": 5.70463767811,
           "a_kir50_snitt": 6.68640004207,
@@ -445,7 +445,7 @@
           "andel_priv": 0.892731341227
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "andel_blt": 0.0974357008253,
           "art_kir50_snitt": 4.25293845496,
           "a_kir50_snitt": 5.79989243316,
@@ -460,7 +460,7 @@
           "andel_priv": 0.888967206375
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "andel_blt": 0.113247390355,
           "art_kir50_snitt": 6.1299608348,
           "a_kir50_snitt": 9.66760064003,

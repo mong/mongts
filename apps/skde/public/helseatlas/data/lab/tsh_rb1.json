@@ -3,10 +3,8 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "totsnitt"
-      ],
-      "y": "bohf",
+      "x": ["totsnitt"],
+      "y": "area",
       "xLabel": {
         "nb": "Antall TSH-prøver pr. 1000 innbyggere",
         "en": "Number of TSH tests pr. 1000 population"
@@ -15,31 +13,17 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "tot2021",
-        "tot2022",
-        "tot2023"
-      ],
+      "annualVar": ["tot2021", "tot2022", "tot2023"],
       "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_2",
-      "x": [
-        "totsnitt"
-      ],
+      "x": ["totsnitt"],
       "y": "borhf",
       "xLabel": {
         "nb": "Antall TSH-prøver pr. 1000 innbyggere",
@@ -49,32 +33,18 @@
         "nb": "Regionale helseforetak (RHF)",
         "en": "Regional health authorities"
       },
-      "annualVar": [
-        "tot2021",
-        "tot2022",
-        "tot2023"
-      ],
+      "annualVar": ["tot2021", "tot2022", "tot2023"],
       "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
       },
       "format": ",.0f"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "ratesnitt_andel_int"
-      ],
-      "y": "bohf",
+      "x": ["ratesnitt_andel_int"],
+      "y": "area",
       "xLabel": {
         "nb": "Andel TSH-prøver tatt med kortere intervall enn anbefalt",
         "en": "Proportion of TSH tests repeated earlier than recommended interval"
@@ -89,26 +59,16 @@
         "rate2022_andel_int"
       ],
       "annualVarLabels": {
-        "nb": [
-          "2020",
-          "2021",
-          "2022"
-        ],
-        "en": [
-          "2020",
-          "2021",
-          "2022"
-        ]
+        "nb": ["2020", "2021", "2022"],
+        "en": ["2020", "2021", "2022"]
       },
       "format": ",.0%"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "andel_kun_TSH"
-      ],
-      "y": "bohf",
+      "x": ["andel_kun_TSH"],
+      "y": "area",
       "xLabel": {
         "nb": "Andel TSH-prøver uten T4",
         "en": "Proportion of TSH tests without T4"
@@ -117,49 +77,23 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "andel_kun_TSH_21",
-        "andel_kun_TSH_22",
-        "andel_kun_TSH_23"
-      ],
+      "annualVar": ["andel_kun_TSH_21", "andel_kun_TSH_22", "andel_kun_TSH_23"],
       "annualVarLabels": {
-        "nb": [
-          "2021",
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2021",
-          "2022",
-          "2023"
-        ]
+        "nb": ["2021", "2022", "2023"],
+        "en": ["2021", "2022", "2023"]
       },
       "format": ",.0%"
     },
     {
       "type": "linechart",
       "data": "datasett_3",
-      "linevars": [
-        "kvinner",
-        "menn"
-      ],
-      "linecolors": [
-        "#253776",
-        "#74A5CD"
-      ],
+      "linevars": ["kvinner", "menn"],
+      "linecolors": ["#253776", "#74A5CD"],
       "linevarsLabels": {
-        "nb": [
-          "Kvinner",
-          "Menn"
-        ],
-        "en": [
-          "Women",
-          "Men"
-        ]
+        "nb": ["Kvinner", "Menn"],
+        "en": ["Women", "Men"]
       },
-      "x": [
-        "alder"
-      ],
+      "x": ["alder"],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
@@ -180,7 +114,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -277,7 +211,7 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "andel_priv": 0.0176740783394,
           "antsnitt_i_int": 2616.66666667,
           "ratesnitt_andel_int": 0.0954079699483,
@@ -298,7 +232,7 @@
           "andel_kun_TSH": 0.12370642488
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "andel_priv": 0.068864730905,
           "antsnitt_i_int": 6854.33333333,
           "ratesnitt_andel_int": 0.0876177646278,
@@ -319,7 +253,7 @@
           "andel_kun_TSH": 0.122467704141
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "andel_priv": 0.100228184817,
           "antsnitt_i_int": 5531.33333333,
           "ratesnitt_andel_int": 0.0953942977026,
@@ -340,7 +274,7 @@
           "andel_kun_TSH": 0.0169548354849
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "andel_priv": 0.0548318678373,
           "antsnitt_i_int": 3972.66666667,
           "ratesnitt_andel_int": 0.101260859896,
@@ -361,7 +295,7 @@
           "andel_kun_TSH": 0.00689881528273
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "andel_priv": 0.486067130601,
           "antsnitt_i_int": 6158,
           "ratesnitt_andel_int": 0.0919483645191,
@@ -382,7 +316,7 @@
           "andel_kun_TSH": 0.0967256546958
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "andel_priv": 0.502841669245,
           "antsnitt_i_int": 13395.3333333,
           "ratesnitt_andel_int": 0.0880488692333,
@@ -403,7 +337,7 @@
           "andel_kun_TSH": 0.134666528491
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "andel_priv": 0.107325656124,
           "antsnitt_i_int": 13482.6666667,
           "ratesnitt_andel_int": 0.0971664034971,
@@ -424,7 +358,7 @@
           "andel_kun_TSH": 0.133328745607
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "andel_priv": 0.0432710740562,
           "antsnitt_i_int": 4666.33333333,
           "ratesnitt_andel_int": 0.0925929003807,
@@ -445,7 +379,7 @@
           "andel_kun_TSH": 0.200705327004
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "andel_priv": 0.0985643903075,
           "antsnitt_i_int": 26657.6666667,
           "ratesnitt_andel_int": 0.1108703978,
@@ -466,7 +400,7 @@
           "andel_kun_TSH": 0.279082177986
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "andel_priv": 0.129271769989,
           "antsnitt_i_int": 8122.66666667,
           "ratesnitt_andel_int": 0.0946700974076,
@@ -487,7 +421,7 @@
           "andel_kun_TSH": 0.186694302878
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "andel_priv": 0.181386192436,
           "antsnitt_i_int": 16226.3333333,
           "ratesnitt_andel_int": 0.101253776806,
@@ -508,7 +442,7 @@
           "andel_kun_TSH": 0.216503615629
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "andel_priv": 0.249393672,
           "antsnitt_i_int": 19174,
           "ratesnitt_andel_int": 0.0923831303487,
@@ -529,7 +463,7 @@
           "andel_kun_TSH": 0.0998420875731
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "andel_priv": 0.692001957718,
           "antsnitt_i_int": 31650.6666667,
           "ratesnitt_andel_int": 0.0966684470062,
@@ -550,7 +484,7 @@
           "andel_kun_TSH": 0.16994627952
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "andel_priv": 0.845914132747,
           "antsnitt_i_int": 15368.6666667,
           "ratesnitt_andel_int": 0.102060178646,
@@ -571,7 +505,7 @@
           "andel_kun_TSH": 0.170613947882
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "andel_priv": 0.78031977081,
           "antsnitt_i_int": 8024.66666667,
           "ratesnitt_andel_int": 0.109947989135,
@@ -592,7 +526,7 @@
           "andel_kun_TSH": 0.143945576471
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "andel_priv": 0.815720408414,
           "antsnitt_i_int": 8681.66666667,
           "ratesnitt_andel_int": 0.112980337071,
@@ -613,7 +547,7 @@
           "andel_kun_TSH": 0.161282109243
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "andel_priv": 0.242893069289,
           "antsnitt_i_int": 16323,
           "ratesnitt_andel_int": 0.0859315653286,
@@ -634,7 +568,7 @@
           "andel_kun_TSH": 0.179197919706
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "andel_priv": 0.435759193076,
           "antsnitt_i_int": 25997.6666667,
           "ratesnitt_andel_int": 0.0934381415211,
@@ -655,7 +589,7 @@
           "andel_kun_TSH": 0.15529647369
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "andel_priv": 0.471015454116,
           "antsnitt_i_int": 15575,
           "ratesnitt_andel_int": 0.106168201888,
@@ -676,7 +610,7 @@
           "andel_kun_TSH": 0.350018376119
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "andel_priv": 0.122899367257,
           "antsnitt_i_int": 9868,
           "ratesnitt_andel_int": 0.110860583355,
@@ -697,7 +631,7 @@
           "andel_kun_TSH": 0.110452547638
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "andel_priv": 0.119157867434,
           "antsnitt_i_int": 20442.3333333,
           "ratesnitt_andel_int": 0.116583357591,
@@ -718,7 +652,7 @@
           "andel_kun_TSH": 0.122471486108
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "andel_priv": 0.358084567604,
           "antsnitt_i_int": 278794.333333,
           "ratesnitt_andel_int": 0.0988771135801,

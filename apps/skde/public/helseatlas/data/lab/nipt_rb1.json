@@ -3,10 +3,8 @@
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "totsnitt_35"
-      ],
-      "y": "bohf",
+      "x": ["totsnitt_35"],
+      "y": "area",
       "xLabel": {
         "nb": "Andel fødende 35-50 år som fikk utført NIPT",
         "en": "Proportion of pregnant women ages 35-50 that took NIPT test"
@@ -15,29 +13,18 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "tot2022_35",
-        "tot2023_35"
-      ],
+      "annualVar": ["tot2022_35", "tot2023_35"],
       "annualVarLabels": {
-        "nb": [
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2022",
-          "2023"
-        ]
+        "nb": ["2022", "2023"],
+        "en": ["2022", "2023"]
       },
       "format": ",.0%"
     },
     {
       "type": "barchart",
       "data": "datasett_1",
-      "x": [
-        "totsnitt_18"
-      ],
-      "y": "bohf",
+      "x": ["totsnitt_18"],
+      "y": "area",
       "xLabel": {
         "nb": "Andel fødende 18-33 år som fikk utført NIPT",
         "en": "Proportion of pregnant women ages 18-33 that took NIPT test"
@@ -46,28 +33,17 @@
         "nb": "Opptaksområder",
         "en": "Referral areas"
       },
-      "annualVar": [
-        "tot2022_18",
-        "tot2023_18"
-      ],
+      "annualVar": ["tot2022_18", "tot2023_18"],
       "annualVarLabels": {
-        "nb": [
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2022",
-          "2023"
-        ]
+        "nb": ["2022", "2023"],
+        "en": ["2022", "2023"]
       },
       "format": ",.0%"
     },
     {
       "type": "barchart",
       "data": "datasett_2",
-      "x": [
-        "totsnitt"
-      ],
+      "x": ["totsnitt"],
       "y": "borhf",
       "xLabel": {
         "nb": "Andel fødende 18-33 år som fikk utført NIPT",
@@ -77,42 +53,23 @@
         "nb": "Regionale helseforetak (RHF)",
         "en": "Regional health authorities"
       },
-      "annualVar": [
-        "tot2022",
-        "tot2023"
-      ],
+      "annualVar": ["tot2022", "tot2023"],
       "annualVarLabels": {
-        "nb": [
-          "2022",
-          "2023"
-        ],
-        "en": [
-          "2022",
-          "2023"
-        ]
+        "nb": ["2022", "2023"],
+        "en": ["2022", "2023"]
       },
       "format": ",.0%"
     },
     {
       "type": "linechart",
       "data": "datasett_3",
-      "linevars": [
-        "kvinner"
-      ],
-      "linecolors": [
-        "#253776"
-      ],
+      "linevars": ["kvinner"],
+      "linecolors": ["#253776"],
       "linevarsLabels": {
-        "nb": [
-          "Kvinner"
-        ],
-        "en": [
-          "Women"
-        ]
+        "nb": ["Kvinner"],
+        "en": ["Women"]
       },
-      "x": [
-        "alder"
-      ],
+      "x": ["alder"],
       "y": "pctandel",
       "xLabel": {
         "nb": "Alder",
@@ -133,7 +90,7 @@
       },
       "columns": [
         {
-          "id": "bohf",
+          "id": "area",
           "label_no": "Opptaksområder",
           "label_en": "Referral areas",
           "typeVar": "string",
@@ -223,7 +180,7 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "bohf": "Finnmark",
+          "area": "Finnmark",
           "tot2022_18": 0.0269741878275,
           "tot2023_18": 0.0397879264145,
           "totsnitt_18": 0.0336302183357,
@@ -236,7 +193,7 @@
           "tot_pop_35": 137.5
         },
         {
-          "bohf": "UNN",
+          "area": "UNN",
           "tot2022_18": 0.0301816498665,
           "tot2023_18": 0.0593355303039,
           "totsnitt_18": 0.0448611451742,
@@ -249,7 +206,7 @@
           "tot_pop_35": 390.5
         },
         {
-          "bohf": "Nordland",
+          "area": "Nordland",
           "tot2022_18": 0.0286616137073,
           "tot2023_18": 0.033935927068,
           "totsnitt_18": 0.031396115664,
@@ -262,7 +219,7 @@
           "tot_pop_35": 280.5
         },
         {
-          "bohf": "Helgeland",
+          "area": "Helgeland",
           "tot2022_18": 0.024325405931,
           "tot2023_18": 0.0387217061423,
           "totsnitt_18": 0.0317214030229,
@@ -275,7 +232,7 @@
           "tot_pop_35": 119
         },
         {
-          "bohf": "Nord-Trøndelag",
+          "area": "Nord-Trøndelag",
           "tot2022_18": 0.0192311292972,
           "tot2023_18": 0.0166506773367,
           "totsnitt_18": 0.0179283940323,
@@ -288,7 +245,7 @@
           "tot_pop_35": 217
         },
         {
-          "bohf": "St. Olav",
+          "area": "St. Olav",
           "tot2022_18": 0.0181586985518,
           "tot2023_18": 0.0413252504207,
           "totsnitt_18": 0.0292890258379,
@@ -301,7 +258,7 @@
           "tot_pop_35": 830
         },
         {
-          "bohf": "Møre og Romsdal",
+          "area": "Møre og Romsdal",
           "tot2022_18": 0.0104799234068,
           "tot2023_18": 0.0220181699755,
           "totsnitt_18": 0.0161775157722,
@@ -314,7 +271,7 @@
           "tot_pop_35": 538.5
         },
         {
-          "bohf": "Førde",
+          "area": "Førde",
           "tot2022_18": 0.0482324590054,
           "tot2023_18": 0.053819838483,
           "totsnitt_18": 0.0511506193585,
@@ -327,7 +284,7 @@
           "tot_pop_35": 221
         },
         {
-          "bohf": "Bergen",
+          "area": "Bergen",
           "tot2022_18": 0.0495947519379,
           "tot2023_18": 0.0594571671259,
           "totsnitt_18": 0.0544470761015,
@@ -340,7 +297,7 @@
           "tot_pop_35": 1168
         },
         {
-          "bohf": "Fonna",
+          "area": "Fonna",
           "tot2022_18": 0.032453984507,
           "tot2023_18": 0.0403939386824,
           "totsnitt_18": 0.0365288662416,
@@ -353,7 +310,7 @@
           "tot_pop_35": 323
         },
         {
-          "bohf": "Stavanger",
+          "area": "Stavanger",
           "tot2022_18": 0.0276716043442,
           "tot2023_18": 0.0460319367948,
           "totsnitt_18": 0.0368127328969,
@@ -366,7 +323,7 @@
           "tot_pop_35": 987
         },
         {
-          "bohf": "Østfold",
+          "area": "Østfold",
           "tot2022_18": 0.0303505816096,
           "tot2023_18": 0.043795430933,
           "totsnitt_18": 0.037261748889,
@@ -379,7 +336,7 @@
           "tot_pop_35": 654
         },
         {
-          "bohf": "Akershus",
+          "area": "Akershus",
           "tot2022_18": 0.0279928200952,
           "tot2023_18": 0.0554148208264,
           "totsnitt_18": 0.0416634752506,
@@ -392,7 +349,7 @@
           "tot_pop_35": 1610
         },
         {
-          "bohf": "OUS",
+          "area": "OUS",
           "tot2022_18": 0.0346429105855,
           "tot2023_18": 0.0708930378802,
           "totsnitt_18": 0.0520107689114,
@@ -405,7 +362,7 @@
           "tot_pop_35": 1232.5
         },
         {
-          "bohf": "Lovisenberg",
+          "area": "Lovisenberg",
           "tot2022_18": 0.0327459814596,
           "tot2023_18": 0.0635623958079,
           "totsnitt_18": 0.0482058366038,
@@ -418,7 +375,7 @@
           "tot_pop_35": 900
         },
         {
-          "bohf": "Diakonhjemmet",
+          "area": "Diakonhjemmet",
           "tot2022_18": 0.038640254774,
           "tot2023_18": 0.0799907451619,
           "totsnitt_18": 0.0590853908638,
@@ -431,7 +388,7 @@
           "tot_pop_35": 622
         },
         {
-          "bohf": "Innlandet",
+          "area": "Innlandet",
           "tot2022_18": 0.0470764649349,
           "tot2023_18": 0.0694194872709,
           "totsnitt_18": 0.0581692919184,
@@ -444,7 +401,7 @@
           "tot_pop_35": 592
         },
         {
-          "bohf": "Vestre Viken",
+          "area": "Vestre Viken",
           "tot2022_18": 0.0461082015662,
           "tot2023_18": 0.0577736491498,
           "totsnitt_18": 0.0517590592363,
@@ -457,7 +414,7 @@
           "tot_pop_35": 1343
         },
         {
-          "bohf": "Vestfold",
+          "area": "Vestfold",
           "tot2022_18": 0.0374865455846,
           "tot2023_18": 0.0410705256049,
           "totsnitt_18": 0.0392857499227,
@@ -470,7 +427,7 @@
           "tot_pop_35": 497
         },
         {
-          "bohf": "Telemark",
+          "area": "Telemark",
           "tot2022_18": 0.0255797071561,
           "tot2023_18": 0.0330952827585,
           "totsnitt_18": 0.029315376628,
@@ -483,7 +440,7 @@
           "tot_pop_35": 305
         },
         {
-          "bohf": "Sørlandet",
+          "area": "Sørlandet",
           "tot2022_18": 0.0294823712891,
           "tot2023_18": 0.0707873918166,
           "totsnitt_18": 0.0496521297088,
@@ -496,7 +453,7 @@
           "tot_pop_35": 616.5
         },
         {
-          "bohf": "Norge",
+          "area": "Norge",
           "tot2022_18": 0.0324748371818,
           "tot2023_18": 0.051425001937,
           "totsnitt_18": 0.0418912427521,

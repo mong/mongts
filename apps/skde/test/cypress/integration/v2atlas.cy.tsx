@@ -111,7 +111,7 @@ context("v2 atlas", () => {
     cy.visit("/helseatlas/v2/test_atlas");
     cy.get('[data-testid="circle_UNN_selected"]').should("not.exist");
     cy.get('[data-testid="rect_UNN_selected"]').should("not.exist");
-    cy.visit("/helseatlas/v2/test_atlas?bohf=UNN");
+    cy.visit("/helseatlas/v2/test_atlas?area=UNN");
     cy.get('[data-testid="circle_UNN_selected"]').should("exist");
     cy.get('[data-testid="circle_UNN_selected"]').should("be.visible");
     cy.get('[data-testid="rect_UNN_selected"]').should("exist");
@@ -146,15 +146,15 @@ context("v2 atlas", () => {
       "Mui-selected",
     );
     cy.get('[data-testid="carouselbutton_5"]').click(); // Show the map
-    cy.get('[data-testid="maphf_Telemark"]')
+    cy.get('[data-testid="maparea_Telemark"]')
       .get('[fill="rgba(171, 108, 166, 0.75)"]')
       .should("exist");
-    cy.get('[data-testid="maphf_Innlandet"]').click();
-    cy.get('[data-testid="maphf_Innlandet"]')
+    cy.get('[data-testid="maparea_Innlandet"]').click();
+    cy.get('[data-testid="maparea_Innlandet"]')
       .get('[fill="rgba(171, 108, 166, 0.75)"]')
       .should("exist");
-    cy.get('[data-testid="maphf_Telemark"]').click();
-    cy.get('[data-testid="maphf_Telemark"]')
+    cy.get('[data-testid="maparea_Telemark"]').click();
+    cy.get('[data-testid="maparea_Telemark"]')
       .get('[fill="rgba(3, 63, 133, 0.8)"]')
       .should("exist");
   });
