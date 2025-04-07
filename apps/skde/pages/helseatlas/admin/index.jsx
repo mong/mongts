@@ -254,6 +254,7 @@ const config = {
   collections: [atlas("no"), staticPages("no"), atlas("en"), staticPages("en")],
 };
 
+/* global window, process */
 export function CMS() {
   React.useEffect(() => {
     window.CMS_MANUAL_INIT = true;
