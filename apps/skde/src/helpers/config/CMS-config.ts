@@ -1,12 +1,4 @@
-import { CmsCollection, CmsConfig, CmsField } from "decap-cms-core";
-
-const filename: CmsField = {
-  label: "Filnavn",
-  name: "filename",
-  widget: "string",
-};
-
-const atlas = (lang: "no" | "en"): CmsCollection => {
+const atlas = (lang: "no" | "en") => {
   return {
     label: lang === "no" ? "Atlas" : "Engelske atlas",
     name: lang === "no" ? "atlas" : "atlas_eng",
@@ -32,7 +24,7 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
       preview: false,
     },
     fields: [
-      filename,
+      { label: "Filnavn", name: "filename", widget: "string" },
       {
         label: "Publisert på forsiden",
         name: "publisert",
@@ -209,7 +201,7 @@ const atlas = (lang: "no" | "en"): CmsCollection => {
   };
 };
 
-const staticPages = (lang: "no" | "en"): CmsCollection => {
+const staticPages = (lang: "no" | "en") => {
   return {
     label: lang === "no" ? "Statiske sider" : "Statiske engelske sider",
     name: lang === "no" ? "statiske_sider" : "statiske_sider_en",
@@ -219,7 +211,7 @@ const staticPages = (lang: "no" | "en"): CmsCollection => {
         : "apps/skde/_posts/helseatlas/en/static",
     create: true,
     fields: [
-      filename,
+      { label: "Filnavn", name: "filename", widget: "string" },
       {
         label: "Tittel",
         name: "title",
@@ -241,18 +233,18 @@ const staticPages = (lang: "no" | "en"): CmsCollection => {
   };
 };
 
-export const config: CmsConfig = {
+export const config = {
   local_backend: true,
   backend: {
     name: "github",
     repo: "mong/mongts",
     branch: "main",
-    base_url: process.env.NEXT_PUBLIC_API_HOST ?? "https://prod-api.skde.org",
   },
   logo_url: "https://apps.skde.no/helseatlas/img/logos/helseatlas.svg",
   media_folder: "/apps/skde/public/helseatlas/img",
   public_folder: "/helseatlas/img",
   site_url: "https://apps.skde.no/helseatlas/",
+  base_url: process.env.NEXT_PUBLIC_API_HOST ?? "https://prod-api.skde.org",
   locale: "nb_no",
   collections: [atlas("no"), staticPages("no"), atlas("en"), staticPages("en")],
 };
