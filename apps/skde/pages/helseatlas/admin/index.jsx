@@ -3,7 +3,7 @@
 import React from "react";
 import Script from "next/script";
 
-const atlas = (lang: "no" | "en") => {
+const atlas = (lang) => {
   return {
     label: lang === "no" ? "Atlas" : "Engelske atlas",
     name: lang === "no" ? "atlas" : "atlas_eng",
@@ -206,7 +206,7 @@ const atlas = (lang: "no" | "en") => {
   };
 };
 
-const staticPages = (lang: "no" | "en") => {
+const staticPages = (lang) => {
   return {
     label: lang === "no" ? "Statiske sider" : "Statiske engelske sider",
     name: lang === "no" ? "statiske_sider" : "statiske_sider_en",
