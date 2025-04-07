@@ -4,7 +4,7 @@ import React from "react";
 import Script from "next/script";
 import { config } from "../../src/helpers/config/CMS-config";
 
-/* global window, process */
+/* global window */
 export function CMS() {
   React.useEffect(() => {
     window.CMS_MANUAL_INIT = true;
