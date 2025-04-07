@@ -3,14 +3,11 @@ import crypto from "crypto";
 import compression from "compression";
 import helmet from "helmet";
 import cors from "cors";
-import * as CMS from "./controllers/CMS";
 import rateLimit from "express-rate-limit";
 
 //router
 import registerInfoRouter from "./routes/info";
 import registerDataRouter from "./routes/data";
-
-const PORT = process.env.PORT ?? 4000;
 
 const app = express();
 
@@ -69,12 +66,3 @@ app.use("/info", cache, registerInfoRouter);
 app.get("/", (req: Request, res: Response): any =>
   res.json({ status: "OK", version: process.env.VERSION ?? "local" }),
 );
-
-// Auth routes for CMS
-app.get("/auth", CMS.auth);
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-(app as any).get("/callback", CMS.callback);
-
-app.listen(PORT, () => {
-  console.log(`API listening at http://localhost:${PORT}`);
-});
