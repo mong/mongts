@@ -1,9 +1,4 @@
-"use client";
-
-import React from "react";
-import Script from "next/script";
-
-const atlas = (lang) => {
+const atlas = (lang: "no" | "en") => {
   return {
     label: lang === "no" ? "Atlas" : "Engelske atlas",
     name: lang === "no" ? "atlas" : "atlas_eng",
@@ -206,7 +201,7 @@ const atlas = (lang) => {
   };
 };
 
-const staticPages = (lang) => {
+const staticPages = (lang: "no" | "en") => {
   return {
     label: lang === "no" ? "Statiske sider" : "Statiske engelske sider",
     name: lang === "no" ? "statiske_sider" : "statiske_sider_en",
@@ -238,7 +233,7 @@ const staticPages = (lang) => {
   };
 };
 
-const config = {
+export const config = {
   local_backend: true,
   backend: {
     name: "github",
@@ -253,24 +248,3 @@ const config = {
   locale: "nb_no",
   collections: [atlas("no"), staticPages("no"), atlas("en"), staticPages("en")],
 };
-
-/* global window, process */
-export function CMS() {
-  React.useEffect(() => {
-    window.CMS_MANUAL_INIT = true;
-  }, []);
-
-  return (
-    <>
-      <Script src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
-      <Script
-        src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"
-        onLoad={() => {
-          window.initCMS({ config });
-        }}
-      />
-    </>
-  );
-}
-
-export default CMS;
