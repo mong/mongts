@@ -13,7 +13,7 @@
         {
           "type": "tekst",
           "beskrivelse": "Hovedfunn",
-          "tekst": "* 73% av alle barn mottar årlig helsehjelp i somatisk spesialisthelsetjeneste eller i allmennlegetjenesten.\n* Til sammen har barn årlig 3,3 millioner kontakter (konsultasjoner og innleggelser) i spesialist- og allmennlegetjenesten\n* Andelen barn som behandles i spesialisthelsetjenesten varierer med 9 prosentpoeng mellom opptaksområdene"
+          "tekst": "**Hovedfunn**\n\n* 73% av alle barn mottar årlig helsehjelp i somatisk spesialisthelsetjeneste eller i allmennlegetjenesten.\n* Til sammen har barn årlig 3,3 millioner kontakter (konsultasjoner og innleggelser) i spesialist- og allmennlegetjenesten\n* Andelen barn som behandles i spesialisthelsetjenesten varierer med 9 prosentpoeng mellom opptaksområdene"
         },
         {
           "utvalg": "Alle barn i alderen 0-18 år som er i kontakt med somatisk spesialisthelsetjeneste eller har konsultasjon i allmennlegetjenesten (fastlege/legevakt).\n\n\nPå grunn av utfordringer med datakvalitet i KPR (les mer i avsnittet \"Om atlaset/Data og datakvalitet\") kan vi ikke vise trend fra 2017 - 2024. Analysen vil derfor kun vise resultater fra de siste tre årene. I tillegg vet vi at manglende rapportering fra avtalespesialistene er et økende problem (se mer i \"Om atlaset/Data og datakvalitet\"), og som muligens har den konsekvens at andelen barn behandlet i spesialisthelsetjenesten er litt for lav. Men det er sannsynlig at barn behandlet hos avtalespesialist har hatt en konsultasjon hos allmennlege i forkant, og således tenker vi at denne analysen beskriver andelen barn som mottar helsehjelp riktig.\n\n\n**Ekskludert:**\n\nAll aktivitet tilknyttet fødsels- og barselomsorg er ekskludert. Fødselsoppholdene er tatt ut ved å identifisere alle opphold hvor hoved- eller bitilstand er Z38\\*. Videre er alle kontakter hvor hovedtilstand starter på Z3\\* eller O* tatt ut. I tillegg er alle polikliniske konsultasjoner i første leveuke til nyfødte barn tatt ut.\n\nSkadelegevaktene i Oslo og Bergen er fremskutte deler av spesialisthelsetjenesten. Pasienter kan komme dit uten henvisning fra fastlege/legevakt, og skadelegevaktene har en del aktivitet som kan sidestilles med aktivitet som i andre deler av landet går til kommunal legevakt. All aktiviteten ved skadelegevaktene er derfor ekskludert fra analysene i atlaset her. Dette gjør at også aktivitet ved skadelegevaktene som i andre opptaksområder gjøres ved sykehusene er tatt ut. I stor grad gjelder dette skader, som vi definerer som kirurgiske kontakter, og har derfor liten til ingen praktisk betydning for de fleste analysene i atlaset. Det vil derimot ha betydning i overordnede analyser av poliklinisk aktivitet (lenke til resultatboks) hvor vi altså ekskluderer noe aktivitet i Oslo og Bergen som er inkludert i andre opptaksområder. Dette medfører at opptaksområdet Bergen har lavest rate pr 1 000 barn i alderen 0-18 år, og opptaksområdet OUS ligger rett under landsgjennomsnittet. Hvis vi hadde inkludert aktivitet fra skadelegevaktene ville Bergen hatt en rate lik landsgjennomsnittet og OUS ville ha hatt høyeste rate.",
@@ -63,6 +63,11 @@
           "kart": "barn_kart_2025.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-03-18T11:08:00.000Z"
+        },
+        {
+          "type": "tekst",
+          "beskrivelse": "Hovedfunn",
+          "tekst": "**Hovedfunn**\n\n* 83% forskjell på høyeste og laveste rate\n* Antall innleggelser pr. 1000 barn er redusert med 9% i 2017 - 2024"
         }
       ]
     },
@@ -72,7 +77,7 @@
         {
           "type": "tekst",
           "beskrivelse": "Hovedfunn",
-          "tekst": "* 36% forskjell på høyeste og laveste rate\n* Antall konsultasjoner pr 1 000 barn har økt med over 6% fra 2017 til 2024\n* Størst økning av polikliniske konsultasjoner til barn i barnehagealder"
+          "tekst": "**Hovedfunn**\n\n* 36% forskjell på høyeste og laveste rate\n* Antall konsultasjoner pr 1 000 barn har økt med over 6% fra 2017 til 2024\n* Størst økning av polikliniske konsultasjoner til barn i barnehagealder"
         },
         {
           "utvalg": "Polikliniske konsultasjoner og dagbehandling i somatisk spesialisthelsetjeneste. Barn i alderen 0-18 år.\n\nAll aktivitet tilknyttet fødsels- og barselomsorg er ekskludert. Fødselsoppholdene er tatt ut ved å identifisere alle opphold hvor hoved- eller bitilstand er Z38\\*. Videre er alle kontakter hvor hovedtilstand starter på Z3\\* eller O* tatt ut. I tillegg er alle polikliniske konsultasjoner i første leveuke til barn tatt ut.\n\nDet viser seg også at den pliktige rapporteringen fra avtalespesialistene til NPR er ufullstendig. Det kan skyldes flere grunner, som tekniske problemer ved innsending, forsinket rapportering, eller manglende rapportering. Vi ser også at i deler av rapporteringen som er mottatt mangler det informasjon om takster/normaltariff, og det gjør at vi ikke kan skille ut spesialistkonsultasjoner, som tilsvarer poliklinske kontakter utført i sykehusene. \n\nFor å kunne si noe om det totale omfanget av poliklinisk helsehjelp til barn i somatisk spesialisthelsetjeneste har vi derfor innhentet statistikk fra KUHR-databasen som gir oss spesialistkonsultasjoner hos avtalespesialistene. Statistikken fra KUHR-databasen har også gitt oss muligheten for å se utviklingen over tid, og vi ser at differansen mellom det som rapporteres til KUHR og til NPR blir stadig større. I 2022 var differansen 46 000 spesialistkonsultasjoner, mens den i  2024 var økt til 66 000 spesialistkonsultasjoner.",
@@ -93,7 +98,7 @@
         {
           "type": "tekst",
           "beskrivelse": "Hovedfunn",
-          "tekst": "**Hovedfunn**\n\n* Polikliniske konsultasjoner hos barneleger har økt med 18%"
+          "tekst": "**Hovedfunn**\n\n* Antall polikliniske konsultasjoner pr. 1000 barn hos barneleger har økt med 18%"
         },
         {
           "utvalg": "**Barneleger**\n\nDefinisjonen av  aktivitet hos barneleger tar utgangspunkt i poliklinisk aktivitet som er definert som medisin, se beskrivelse i resultatboksen \"Poliklinikk/Alle spesialister\". Polikliniske konsultasjoner definert som medisin er i hovedsak konsultasjoner i barneavdelinger eller hos private barneleger med offentlig avtale, men for å skille ut den medisinske aktiviteten som utføres av andre spesialister, som hudleger, nevrologer og lignende, er følgende definert som aktivitet hos barneleger:\n\n1) Dag- og polikliniske konsultasjoner definert som medisinske, og som er a) utført ved avdelinger med tjenesteenhetkode som starter på 44 (barneavdelinger) eller b) hvor avdelingsbeskrivelsen i fagenhetlokal inneholder ordene “barn, pediatri, nyfødt eller barnemedisin” og tjenesteenhetkodene angir habiliteringsavdelinger (50, 58, 39), eller c) avdelingsbeskrivelsen i fagenhetlokal inneholder ordet “barnemedisin” og er organisert under medisinsk klinikk (tjenesteenhetkode som starter på 30).\n\n2) All poliklinisk aktivitet ved Statens senter for epilepsi.\n\nDen polikliniske aktiviteten vi har definert som aktivitet hos barneleger er kontrollert mot ICD-10 diagnoser, og vi har kontaktet barneavdelinger i flere av opptaksområdene for å sjekke at aktiviteten samsvarer med aktiviteten de har registrert i sine journalsystemer.",
@@ -132,6 +137,11 @@
     {
       "overskrift": "Atopikere",
       "innhold": [
+        {
+          "type": "tekst",
+          "beskrivelse": "Hovefunn",
+          "tekst": "**Hovedfunn**"
+        },
         {
           "utvalg": "xzfv",
           "data": "aad_rb1_ped.json",
@@ -236,6 +246,11 @@
       "overskrift": "Funksjonelle lidelser",
       "innhold": [
         {
+          "type": "tekst",
+          "beskrivelse": "Hovedfunn",
+          "tekst": "**Hovedfunn**"
+        },
+        {
           "utvalg": "bfb",
           "data": "magetarm_rb1_ped.json",
           "publisert": "2025-03-14T12:05:00.000Z",
@@ -262,6 +277,11 @@
     {
       "overskrift": "Diabetes",
       "innhold": [
+        {
+          "type": "tekst",
+          "beskrivelse": "Hovedfunn",
+          "tekst": "**Hovedfunn**"
+        },
         {
           "utvalg": "fdhfg",
           "data": "diabetes_rb1_ped.json",
@@ -300,6 +320,11 @@
     {
       "overskrift": "Epilepsi",
       "innhold": [
+        {
+          "type": "tekst",
+          "beskrivelse": "Hovedfunn",
+          "tekst": "**Hovedfunn**"
+        },
         {
           "utvalg": "test",
           "data": "epilepsi_rb1_ped.json",
