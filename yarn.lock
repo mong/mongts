@@ -1453,25 +1453,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iframe-resizer/core@npm:5.4.3":
-  version: 5.4.3
-  resolution: "@iframe-resizer/core@npm:5.4.3"
+"@iframe-resizer/core@npm:5.4.4":
+  version: 5.4.4
+  resolution: "@iframe-resizer/core@npm:5.4.4"
   dependencies:
-    auto-console-group: "npm:1.2.1"
-  checksum: 10/66c9954f420c809676a278b1697ce694b767135bfbec6efa1ac941dcbfe9c922810c090ae31889bf47ed4c858a081fd40cc310417c7841aa244fa581eae67e47
+    auto-console-group: "npm:1.2.5"
+  checksum: 10/6fe08419ef31817196d0cb3d113cbcf1fb1ed73d22501ad080c6dc9ffe46905e1482543720a32c496f6321a9dadbb11dcc7a49239c0c1d84bff677cdb8c7439a
   languageName: node
   linkType: hard
 
-"@iframe-resizer/react@npm:5.4.3":
-  version: 5.4.3
-  resolution: "@iframe-resizer/react@npm:5.4.3"
+"@iframe-resizer/react@npm:5.4.4":
+  version: 5.4.4
+  resolution: "@iframe-resizer/react@npm:5.4.4"
   dependencies:
     "@babel/runtime": "npm:^7.27.0"
-    "@iframe-resizer/core": "npm:5.4.3"
+    "@iframe-resizer/core": "npm:5.4.4"
+    auto-console-group: "npm:1.2.5"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0  || ^19.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0  || ^19.0.0
-  checksum: 10/46abdf3e2d2c3519c1fd2edc59db3115d745bf41dcd8969c8d0b8308b1c82c3a88eb86f55f076dcc13dcb121bccd5248fe2dc0b1a6ae181edfe2895c38e86d41
+  checksum: 10/b2430553582d3b0efe3bf43a9d914caab5645b1bce83dff5351e2a9fb3fec99335520d537e616c11edb0782766e71a54fe6d604ac65f7947b14f7c4de2c8991a
   languageName: node
   linkType: hard
 
@@ -4542,10 +4543,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"auto-console-group@npm:1.2.1":
-  version: 1.2.1
-  resolution: "auto-console-group@npm:1.2.1"
-  checksum: 10/4d2bd9e67d427161d40a2b0d7724c682db052bac9fe617aaef91ca161e37b10112c587f66139cdd2e0c850c828dd5ef1ae16b3b0c8ee4f1201846a9ca4f48522
+"auto-console-group@npm:1.2.5":
+  version: 1.2.5
+  resolution: "auto-console-group@npm:1.2.5"
+  checksum: 10/200645e447b1640e6de0107f1f0640002f69a0d66b8011f6fb0d0d478d45ebc497c9225983bb3750bb1ffb5d6b90a52e5e35465d858d46d3ea10438747717b60
   languageName: node
   linkType: hard
 
@@ -12047,7 +12048,7 @@ __metadata:
   dependencies:
     "@cypress/code-coverage": "npm:3.14.0"
     "@emotion/styled": "npm:^11.14.0"
-    "@iframe-resizer/react": "npm:5.4.3"
+    "@iframe-resizer/react": "npm:5.4.4"
     "@mui/icons-material": "npm:7.0.1"
     "@mui/material": "npm:7.0.1"
     "@tanstack/react-query": "npm:5.71.5"
