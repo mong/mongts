@@ -32,7 +32,6 @@ export default function BeadLine({ boxData, lang }: BeadLineProps) {
       lang={lang}
       x={abacusX}
       label={(boxData[0] as BarchartItem).xLabel[lang]}
-      backgroundColor="inherit"
       format={(boxData[0] as BarchartItem).format}
       national={nationalName}
     />

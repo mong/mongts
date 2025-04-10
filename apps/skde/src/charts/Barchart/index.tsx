@@ -34,15 +34,6 @@ type BarchartProps = {
   xMin?: number;
   xMax?: number;
   xLegend?: { en: string[]; nb: string[]; nn: string[] };
-  xAxisLineStroke?: string;
-  xAxisTickStroke?: string;
-  xAxisLineStrokeWidth?: number;
-  yAxisLineStroke?: string;
-  yAxisTickStroke?: string;
-  yAxisLineStrokeWidth?: number;
-  tickLength?: number;
-  yInnerPadding?: number;
-  yOuterPadding?: number;
   annualVar?: string[];
   annualVarLabels?: { en: number[]; nn: number[]; nb: number[] };
   errorBars?: string[];
@@ -68,15 +59,6 @@ export const Barchart = ({
   y,
   xMin = 0,
   xMax,
-  xAxisLineStroke = "black",
-  xAxisLineStrokeWidth = 2,
-  xAxisTickStroke = "black",
-  yAxisLineStroke = "black",
-  yAxisLineStrokeWidth = 0,
-  yAxisTickStroke = "white",
-  tickLength = 3,
-  yInnerPadding = 0.2,
-  yOuterPadding = 0.1,
   xLegend,
   annualVar,
   annualVarLabels,
@@ -149,8 +131,8 @@ export const Barchart = ({
   const yScale = scaleBand<string>({
     domain: sorted.map((s) => s[y] as string),
     range: [0, innerHeight],
-    paddingInner: yInnerPadding,
-    paddingOuter: yOuterPadding,
+    paddingInner: 0.2,
+    paddingOuter: 0.1,
   });
 
   //annual var scales
@@ -193,13 +175,11 @@ export const Barchart = ({
               top={5}
               left={-10}
               scale={yScale}
-              strokeWidth={yAxisLineStrokeWidth}
-              stroke={yAxisLineStroke}
+              strokeWidth={0}
               tickValues={data.map((s) => s[y] as string)}
               tickFormat={(name) =>
                 name === national ? nationalLabel[lang] : name
               }
-              tickStroke={yAxisTickStroke}
               tickLabelProps={() => ({
                 fontSize: 14,
                 fill: "black",
@@ -222,14 +202,14 @@ export const Barchart = ({
             <AxisBottom
               top={0}
               scale={xScale}
-              strokeWidth={xAxisLineStrokeWidth}
-              stroke={xAxisLineStroke}
+              strokeWidth={2}
+              stroke={"black"}
               numTicks={4}
               tickFormat={(val) =>
                 format ? customFormat(format, lang)(val) : val.toString()
               }
-              tickLength={tickLength}
-              tickStroke={xAxisTickStroke}
+              tickLength={3}
+              tickStroke={"black"}
               tickTransform={`translate(0,0)`}
               label={xLabel[lang]}
               labelProps={{

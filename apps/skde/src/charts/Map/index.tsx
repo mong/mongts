@@ -30,8 +30,6 @@ type MapData = {
 type MapProps = {
   mapData: MapData;
   data: DataItemPoint[];
-  dataToMap?: { [k: string]: number | string }[];
-  connection?: { [k: string]: string };
   attrName?: string;
   jenks: number[];
   caption?: string;
