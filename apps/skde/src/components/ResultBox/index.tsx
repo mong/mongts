@@ -277,7 +277,6 @@ export const ResultBox = ({
                 lang={atlas.lang}
                 x={abacusX}
                 label={(boxData[0] as BarchartItem).xLabel[atlas.lang]}
-                backgroundColor="inherit"
                 format={(boxData[0] as BarchartItem).format}
                 national={nationalName}
               />
