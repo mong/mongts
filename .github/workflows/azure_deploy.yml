@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Log into Azure
-        uses: azure/login@v2
+        uses: azure/login@v1
         with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
@@ -59,12 +59,22 @@ jobs:
             --container '$web' \
             --source ./apps/skde/out \
             --delete-destination true
-          az afd endpoint purge \
-            --resource-group rg-nettsider-felles \
-            --profile-name interaktiveNettsiderFrontDoor \
-            --endpoint-name prod \
-            --no-wait 1 \
-            --content-paths '/*'
+          az storage blob upload-batch \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --destination '$web' \
+            --source ./apps/skde/out \
+            --pattern '*.html' \
+            --content-cache-control "public, max-age=60, s-maxage=60" \
+            --overwrite
+          az storage blob upload-batch \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --destination '$web' \
+            --source ./apps/skde/out \
+            --pattern '*.xml' \
+            --content-cache-control "public, max-age=60, s-maxage=60" \
+            --overwrite
       - name: Build and upload verify version to Azure
         if: github.ref == 'refs/heads/main'
         env:
@@ -80,12 +90,22 @@ jobs:
             --container '$web' \
             --source ./apps/skde/out \
             --delete-destination true
-          az afd endpoint purge \
-            --resource-group rg-nettsider-felles \
-            --profile-name interaktiveNettsiderFrontDoor \
-            --endpoint-name verify \
-            --no-wait 1 \
-            --content-paths '/*'
+          az storage blob upload-batch \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --destination '$web' \
+            --source ./apps/skde/out \
+            --pattern '*.html' \
+            --content-cache-control "public, max-age=60, s-maxage=60" \
+            --overwrite
+          az storage blob upload-batch \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --destination '$web' \
+            --source ./apps/skde/out \
+            --pattern '*.xml' \
+            --content-cache-control "public, max-age=60, s-maxage=60" \
+            --overwrite
       - name: Upload develop version to Azure
         if: github.ref == 'refs/heads/develop'
         env:
@@ -100,9 +120,19 @@ jobs:
             --container '$web' \
             --source ./apps/skde/out \
             --delete-destination true
-          az afd endpoint purge \
-            --resource-group rg-nettsider-felles \
-            --profile-name interaktiveNettsiderFrontDoor \
-            --endpoint-name test \
-            --no-wait 1 \
-            --content-paths '/*'
+          az storage blob upload-batch \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --destination '$web' \
+            --source ./apps/skde/out \
+            --pattern '*.html' \
+            --content-cache-control "public, max-age=60, s-maxage=60" \
+            --overwrite
+          az storage blob upload-batch \
+            --account-name $AZURE_STORAGE_ACCOUNT \
+            --account-key $AZURE_STORAGE_KEY \
+            --destination '$web' \
+            --source ./apps/skde/out \
+            --pattern '*.xml' \
+            --content-cache-control "public, max-age=60, s-maxage=60" \
+            --overwrite
