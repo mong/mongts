@@ -19,15 +19,6 @@ type AbacusProps = {
   label?: string;
   xMin?: number;
   xMax?: number;
-  backgroundColor?: string;
-  axisLineStroke?: string;
-  axisTickStroke?: string;
-  axisLineStrokeWidth?: number;
-  circleFillDefalt?: string;
-  circleRadiusDefalt?: number;
-  tickLength?: number;
-  tickLabelSize?: number;
-  labelSize?: number;
   markerOpacity?: number;
   format?: string;
   national: string;
@@ -48,14 +39,6 @@ export const Abacus = ({
   x,
   xMin = 0,
   xMax,
-  backgroundColor = "white",
-  axisLineStroke = "black",
-  axisLineStrokeWidth = 2,
-  axisTickStroke = "black",
-  circleRadiusDefalt = 20,
-  tickLength = 20,
-  tickLabelSize = 22,
-  labelSize = 22,
   format,
   national,
 }: AbacusProps) => {
@@ -96,31 +79,31 @@ export const Abacus = ({
       <svg
         width="100%"
         height={height}
-        style={{ backgroundColor, display: "block", margin: "auto" }}
+        style={{ display: "block", margin: "auto" }}
         viewBox={`0 0 ${width} ${height + margin.top}`}
       >
         <Group left={margin.left} top={margin.top}>
           <AxisBottom
             top={0}
             scale={xScale}
-            strokeWidth={axisLineStrokeWidth}
-            stroke={axisLineStroke}
+            strokeWidth={2}
+            stroke={"black"}
             numTicks={4}
             tickFormat={(val) =>
               format ? customFormat(format, lang)(val) : val.toString()
             }
-            tickLength={tickLength}
-            tickStroke={axisTickStroke}
-            tickTransform={`translate(0,-${tickLength / 2})`}
+            tickLength={20}
+            tickStroke={"black"}
+            tickTransform={`translate(0,-${20 / 2})`}
             tickLabelProps={() => ({
-              fontSize: tickLabelSize,
+              fontSize: 22,
               fill: "black",
               textAnchor: "middle",
               y: 50,
             })}
             label={label}
             labelProps={{
-              fontSize: labelSize,
+              fontSize: 22,
               textAnchor: "middle",
               fontWeight: "bold",
             }}
@@ -130,7 +113,7 @@ export const Abacus = ({
           {figData.map((d, i) => (
             <circle
               key={`${d[x]}${i}`}
-              r={circleRadiusDefalt}
+              r={20}
               cx={xScale(d[x] as number)}
               fill={
                 selectedAreas.has(d["area"] as string)
