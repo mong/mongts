@@ -68,7 +68,7 @@ const IndicatorRow = (
         )}
       </TableCell>
       <TableCell align="right">
-        {point2[0] ? (
+        {point2 ? (
           <Stack
             direction="row"
             alignItems="center"
