@@ -173,7 +173,7 @@ export const Barchart = ({
           <Group left={margin.left} top={margin.top}>
             <AxisLeft
               top={5}
-              left={-10}
+              left={-5}
               scale={yScale}
               strokeWidth={0}
               tickValues={data.map((s) => s[y] as string)}

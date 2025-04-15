@@ -42,8 +42,8 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall pasienter med polikliniske pr. 1000 barn (0-18 år)",
-        "en": "Rate: Number of patients with consultations per 1,000 children (0-18 years)"
+        "nb": "Rate: Antall pasienter pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number of patients per 1,000 children (0-18 years)"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -72,23 +72,6 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": [
-        "pr_pas_justsnitt"
-      ],
-      "y": "area",
-      "xLabel": {
-        "nb": "Antall polikliniske konsultasjoner pr. pasient, barn (0-18 år)",
-        "en": "Number of consultations per patients, children (0-18 years)"
-      },
-      "yLabel": {
-        "nb": "Opptaksområder",
-        "en": "Referral areas"
-      },
-      "format": ",.1f"
-    },
-    {
-      "type": "barchart",
-      "data": "datasett_1",
-      "x": [
         "privratesnitt",
         "offratesnitt"
       ],
@@ -104,8 +87,8 @@
         ]
       },
       "xLabel": {
-        "nb": "Rate: Antall polikliniske konsultasjoner offentlig/privat pr. 1 000 barn (0-18 år)",
-        "en": "Number (rate) public/private per 1,000 children (0-18 years)"
+        "nb": "Rate: Antall konsultasjoner, offentlig/privat, pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number (rate) of consultations ,public/private, per 1,000 children (0-18 years)"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -126,12 +109,12 @@
       ],
       "linevarsLabels": {
         "nb": [
-          "Justert rate",
-          "Ujustert rate"
+          "Korrigert rate (med KUHR)",
+          "NPR rate"
         ],
         "en": [
-          "Adjusted rate",
-          "Unadjusted rtate"
+          "Corrected rate (with KUHR)",
+          "NPR rate"
         ]
       },
       "x": [
@@ -143,7 +126,7 @@
         "en": "Year"
       },
       "yLabel": {
-        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
         "en": "Rate: Number of consultations polikliniske per 1,000 children (0-18 years)"
       },
       "format_y": ",.0f"
@@ -188,28 +171,28 @@
       "data": "datasett_4",
       "linevars": [
         "rate_med",
+        "rate_orto",
         "rate_onh",
-        "rate_oye",
-        "rate_orto"
+        "rate_oye"
       ],
       "linecolors": [
         "#253776",
         "#74A5CD",
-        "#1D74D1",
-        "#74B2F4"
+        "#AB6CA6",
+        "#782D87"
       ],
       "linevarsLabels": {
         "nb": [
           "Medisin",
+          "Ortopedi med mer",
           "ØNH",
-          "Øye",
-          "Ortopedi"
+          "Øye"
         ],
         "en": [
           "Medisin",
-          "ØNH",
-          "Øye",
-          "Ortopedi"
+          "Orthopedics",
+          "Ear/Nose/Throath",
+          "Eye"
         ]
       },
       "x": [
@@ -221,8 +204,8 @@
         "en": "Year"
       },
       "yLabel": {
-        "nb": "Antall barn (0-18 år) med polikliniske konsultasjoner",
-        "en": "Number of children with consultations"
+        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number of polikliniske per 1,000 children (0-18 years)"
       },
       "format_y": ",.0f"
     },
@@ -230,8 +213,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2021-2023. Antall (rate) pr. 1  000 barn (0-18 år)",
-        "en": "Årlige gjennomsnittsverdier for perioden 2021-2023. Antall (rate) pr. 1  000 barn (0-18 år)"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. Antall (rate) pr. 1 000 barn (0-18 år) /<br> \t*Rate er korrigert rate med KUHR",
+        "en": "Yearly average for the period 2022-2024. Number (rate) per 1,000 children (0-18 years) /<br> \t*Rate is corrected rate with KUHR"
       },
       "columns": [
         {
@@ -243,8 +226,8 @@
         },
         {
           "id": "ratesnitt",
-          "label_no": "Rate",
-          "label_en": "Rate",
+          "label_no": "Konsultasjons-rate",
+          "label_en": "Rate consultations",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -325,7 +308,7 @@
       "description": "Hoveddatasettet for gitt resultatboks",
       "data": [
         {
-          "area": "                1",
+          "area": "Finnmark",
           "pasrate2022": 316.932667461,
           "pasrate2023": 325.475774238,
           "pasrate2024": 310.20939108,
@@ -343,7 +326,7 @@
           "pct_privsnitt": 0.0471164087621
         },
         {
-          "area": "                2",
+          "area": "UNN",
           "pasrate2022": 289.683577014,
           "pasrate2023": 300.446475488,
           "pasrate2024": 294.998117514,
@@ -361,7 +344,7 @@
           "pct_privsnitt": 0.127659700917
         },
         {
-          "area": "Oslo",
+          "area": "Nordland",
           "pasrate2022": 294.451292754,
           "pasrate2023": 295.340103738,
           "pasrate2024": 291.289748725,
@@ -379,7 +362,7 @@
           "pct_privsnitt": 0.200550884493
         },
         {
-          "area": "                4",
+          "area": "Helgeland",
           "pasrate2022": 307.613412771,
           "pasrate2023": 318.141972682,
           "pasrate2024": 308.144977869,
@@ -397,7 +380,7 @@
           "pct_privsnitt": 0.0923788224378
         },
         {
-          "area": "                6",
+          "area": "Nord-Trøndelag",
           "pasrate2022": 361.04791499,
           "pasrate2023": 368.103143811,
           "pasrate2024": 326.791295929,
@@ -415,7 +398,7 @@
           "pct_privsnitt": 0.272389892394
         },
         {
-          "area": "                7",
+          "area": "St. Olav",
           "pasrate2022": 326.357262384,
           "pasrate2023": 343.786790047,
           "pasrate2024": 343.722296892,
@@ -433,7 +416,7 @@
           "pct_privsnitt": 0.248918922964
         },
         {
-          "area": "                8",
+          "area": "Møre og Romsdal",
           "pasrate2022": 326.542241863,
           "pasrate2023": 324.525668435,
           "pasrate2024": 308.522138552,
@@ -451,7 +434,7 @@
           "pct_privsnitt": 0.164779583766
         },
         {
-          "area": "               10",
+          "area": "Førde",
           "pasrate2022": 294.422731783,
           "pasrate2023": 297.321516094,
           "pasrate2024": 300.746050071,
@@ -469,7 +452,7 @@
           "pct_privsnitt": 0.104191957868
         },
         {
-          "area": "Rogaland",
+          "area": "Bergen",
           "pasrate2022": 278.415281711,
           "pasrate2023": 280.153928371,
           "pasrate2024": 273.806187869,
@@ -487,7 +470,7 @@
           "pct_privsnitt": 0.25465765774
         },
         {
-          "area": "               12",
+          "area": "Fonna",
           "pasrate2022": 291.929409775,
           "pasrate2023": 291.418251769,
           "pasrate2024": 279.230100056,
@@ -505,7 +488,7 @@
           "pct_privsnitt": 0.140559775996
         },
         {
-          "area": "               13",
+          "area": "Stavanger",
           "pasrate2022": 268.327935853,
           "pasrate2023": 277.388224563,
           "pasrate2024": 268.116486444,
@@ -523,7 +506,7 @@
           "pct_privsnitt": 0.186610055563
         },
         {
-          "area": "               14",
+          "area": "Østfold",
           "pasrate2022": 334.332948956,
           "pasrate2023": 326.992576617,
           "pasrate2024": 319.248725522,
@@ -541,7 +524,7 @@
           "pct_privsnitt": 0.349889434575
         },
         {
-          "area": "Møre og Romsdal",
+          "area": "Akershus",
           "pasrate2022": 312.968010511,
           "pasrate2023": 307.031962968,
           "pasrate2024": 306.694411594,
@@ -559,7 +542,7 @@
           "pct_privsnitt": 0.383933076862
         },
         {
-          "area": "               16",
+          "area": "OUS",
           "pasrate2022": 280.011480394,
           "pasrate2023": 293.851062376,
           "pasrate2024": 267.758808131,
@@ -577,7 +560,7 @@
           "pct_privsnitt": 0.426268367323
         },
         {
-          "area": "               19",
+          "area": "Innlandet",
           "pasrate2022": 311.782380272,
           "pasrate2023": 306.623291916,
           "pasrate2024": 299.459152084,
@@ -595,7 +578,7 @@
           "pct_privsnitt": 0.191768078644
         },
         {
-          "area": "               20",
+          "area": "Vestre Viken",
           "pasrate2022": 304.096091536,
           "pasrate2023": 309.928401591,
           "pasrate2024": 302.649220686,
@@ -613,7 +596,7 @@
           "pct_privsnitt": 0.317835999643
         },
         {
-          "area": "               21",
+          "area": "Vestfold",
           "pasrate2022": 284.124622308,
           "pasrate2023": 289.78681478,
           "pasrate2024": 282.636964309,
@@ -631,7 +614,7 @@
           "pct_privsnitt": 0.212155545567
         },
         {
-          "area": "               22",
+          "area": "Telemark",
           "pasrate2022": 359.33079713,
           "pasrate2023": 367.090580235,
           "pasrate2024": 354.293171756,
@@ -649,7 +632,7 @@
           "pct_privsnitt": 0.295491734664
         },
         {
-          "area": "               23",
+          "area": "Sørlandet",
           "pasrate2022": 294.810853107,
           "pasrate2023": 299.765494969,
           "pasrate2024": 310.236222951,
@@ -693,49 +676,49 @@
       "data": [
         {
           "aar": 2017,
-          "area": "Norge",
+          "area":         8888,
           "totrate": 806.598450079,
           "nprrate": 776.986097526
         },
         {
           "aar": 2018,
-          "area": "Norge",
+          "area":         8888,
           "totrate": 811.622994327,
           "nprrate": 788.622151925
         },
         {
           "aar": 2019,
-          "area": "Norge",
+          "area":         8888,
           "totrate": 816.025883905,
           "nprrate": 780.80164978
         },
         {
           "aar": 2020,
-          "area": "Norge",
+          "area":         8888,
           "totrate": 772.895788101,
           "nprrate": 741.650572754
         },
         {
           "aar": 2021,
-          "area": "Norge",
+          "area":         8888,
           "totrate": 820.49873047,
           "nprrate": 784.67958678
         },
         {
           "aar": 2022,
-          "area": "Norge",
+          "area":         8888,
           "totrate": 835.299248486,
           "nprrate": 796.165697887
         },
         {
           "aar": 2023,
-          "area": "Norge",
+          "area":         8888,
           "totrate": 859.633790529,
           "nprrate": 813.967244498
         },
         {
           "aar": 2024,
-          "area": "Norge",
+          "area":         8888,
           "totrate": 857.83298312,
           "nprrate": 801.980362223
         }
