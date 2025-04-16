@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 
 import { imgLoader } from "qmongjs";
 import classNames from "./Header.module.css";

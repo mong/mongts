@@ -3,7 +3,7 @@ import React from "react";
 import { ThemeProvider, styled, Toolbar } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 import { PageWrapper } from "../src/components/StyledComponents/PageWrapper";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { imgLoader } from "qmongjs";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
