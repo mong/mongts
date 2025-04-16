@@ -57,8 +57,9 @@ export const ExpandableItemBox = (
   };
 
   return (
-    <Box ref={outerRef}>
+    <Box>
       <Box
+        ref={outerRef}
         sx={{
           backgroundColor: "white",
           borderTopLeftRadius: "1.5rem",
