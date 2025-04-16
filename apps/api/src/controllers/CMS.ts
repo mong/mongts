@@ -2,6 +2,7 @@ import crypto from "crypto";
 import { RequestHandler } from "express";
 import { AuthorizationCode } from "simple-oauth2";
 import { type Request, type Response } from "express";
+import _ from "lodash";
 
 const redirect_uri =
   process.env.REDIRECT_URI ?? "http://localhost:4000/callback";
@@ -9,7 +10,10 @@ const scope = process.env.SCOPE ?? "";
 const provider = process.env.PROVIDER ?? "github";
 const originPattern = process.env.ORIGIN ?? "";
 
-if ("".match(originPattern)) {
+// Escape special characters just in case
+const safeOriginPattern = _.escapeRegExp(originPattern);
+
+if ("".match(safeOriginPattern)) {
   console.warn(
     "Insecure ORIGIN pattern used. This can give unauthorized users access to your repository.",
   );
@@ -85,7 +89,7 @@ export const callback = async (
       (function() {
         function receiveMessage(e) {
           console.log("receiveMessage %o", e)
-          if (!e.origin.match(${JSON.stringify(originPattern)})) {
+          if (!e.origin.match(${JSON.stringify(safeOriginPattern)})) {
             console.log('Invalid origin: %s', e.origin);
             return;
           }
