@@ -1453,25 +1453,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@iframe-resizer/core@npm:5.4.3":
-  version: 5.4.3
-  resolution: "@iframe-resizer/core@npm:5.4.3"
+"@iframe-resizer/core@npm:5.4.5":
+  version: 5.4.5
+  resolution: "@iframe-resizer/core@npm:5.4.5"
   dependencies:
-    auto-console-group: "npm:1.2.1"
-  checksum: 10/66c9954f420c809676a278b1697ce694b767135bfbec6efa1ac941dcbfe9c922810c090ae31889bf47ed4c858a081fd40cc310417c7841aa244fa581eae67e47
+    auto-console-group: "npm:1.2.9"
+  checksum: 10/4d99f01c9bed7e23e6dd93ec9377ae34850a4a2bac9bdd6f92e6ffc746eb1a1b145de18abb29719efe0faac2b914e891b9db3cb1f49ebc026cba37252ba8b84b
   languageName: node
   linkType: hard
 
-"@iframe-resizer/react@npm:5.4.3":
-  version: 5.4.3
-  resolution: "@iframe-resizer/react@npm:5.4.3"
+"@iframe-resizer/react@npm:5.4.5":
+  version: 5.4.5
+  resolution: "@iframe-resizer/react@npm:5.4.5"
   dependencies:
     "@babel/runtime": "npm:^7.27.0"
-    "@iframe-resizer/core": "npm:5.4.3"
+    "@iframe-resizer/core": "npm:5.4.5"
+    auto-console-group: "npm:1.2.9"
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0  || ^19.0.0
     react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0  || ^19.0.0
-  checksum: 10/46abdf3e2d2c3519c1fd2edc59db3115d745bf41dcd8969c8d0b8308b1c82c3a88eb86f55f076dcc13dcb121bccd5248fe2dc0b1a6ae181edfe2895c38e86d41
+  checksum: 10/23626927f23a81014ab515075d3d17d2ffaeffcd612b182033c2c9be2e5ffd2a10e9edd3916a6ba0e1d241bdbd0b8096258b2447648e2da2255e3bb0728cd5fb
   languageName: node
   linkType: hard
 
@@ -4537,10 +4538,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"auto-console-group@npm:1.2.1":
-  version: 1.2.1
-  resolution: "auto-console-group@npm:1.2.1"
-  checksum: 10/4d2bd9e67d427161d40a2b0d7724c682db052bac9fe617aaef91ca161e37b10112c587f66139cdd2e0c850c828dd5ef1ae16b3b0c8ee4f1201846a9ca4f48522
+"auto-console-group@npm:1.2.9":
+  version: 1.2.9
+  resolution: "auto-console-group@npm:1.2.9"
+  checksum: 10/cd8e58ec75a1c208bb53cf6835cae0750caa79aa13dc1919010ed7e2f85f997611e8f81c2b6a2f23c3f29076289410bd217a860142d8aec906fbf210e89ab9a1
   languageName: node
   linkType: hard
 
@@ -8781,9 +8782,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lint-staged@npm:15.5.0":
-  version: 15.5.0
-  resolution: "lint-staged@npm:15.5.0"
+"lint-staged@npm:15.5.1":
+  version: 15.5.1
+  resolution: "lint-staged@npm:15.5.1"
   dependencies:
     chalk: "npm:^5.4.1"
     commander: "npm:^13.1.0"
@@ -8797,7 +8798,7 @@ __metadata:
     yaml: "npm:^2.7.0"
   bin:
     lint-staged: bin/lint-staged.js
-  checksum: 10/5873584649c5f840b990036c20abd4b58d6b1313dad5505627b4d0cc077f0ec8ac0d6cf4cf4d959e66e0ab085db384bb12dce9490ff29217bf4ed96d0442ed51
+  checksum: 10/58662ea6e40c9292a3499ffd01cf6c1e8415f79bee7526fc8d9abbb173ba020d0099d7996a407f67be8e0f23cc6a6f898d86b7e27f41f37ba924ec25597b7914
   languageName: node
   linkType: hard
 
@@ -9936,7 +9937,7 @@ __metadata:
     eslint: "npm:9.23.0"
     husky: "npm:9.1.7"
     knip: "npm:5.46.5"
-    lint-staged: "npm:15.5.0"
+    lint-staged: "npm:15.5.1"
     prettier: "npm:3.5.3"
     turbo: "npm:2.4.4"
     typescript: "npm:5.8.2"
@@ -12041,7 +12042,7 @@ __metadata:
   dependencies:
     "@cypress/code-coverage": "npm:3.14.0"
     "@emotion/styled": "npm:^11.14.0"
-    "@iframe-resizer/react": "npm:5.4.3"
+    "@iframe-resizer/react": "npm:5.4.5"
     "@mui/icons-material": "npm:7.0.1"
     "@mui/material": "npm:7.0.1"
     "@tanstack/react-query": "npm:5.71.5"

@@ -130,12 +130,12 @@ export const Footer = ({
               <Stack spacing={3}>
                 <h4>OM NETTSTEDET</h4>
                 <ArrowLink
-                  href={"https://www.skde.no/om-skde/personvern/"}
+                  href={"https://www.skde.no/personvern/"}
                   text="Personvern"
                   textVariant="body2"
                 />
                 <ArrowLink
-                  href={"https://www.skde.no/om-skde/informasjonskapsler/"}
+                  href={"https://www.skde.no/informasjonskapsler/"}
                   text="Informasjonskapsler"
                   textVariant="body2"
                 />
@@ -154,7 +154,7 @@ export const Footer = ({
               <Stack spacing={3}>
                 <h4>KONTAKT</h4>
                 <ArrowLink
-                  href={"https://www.skde.no/om-skde/kontaktinformasjon/"}
+                  href={"https://www.skde.no/alt-om-oss/kontakt-skde/"}
                   text="Kontakt SKDE"
                   textVariant="body2"
                 />
