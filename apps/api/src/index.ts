@@ -14,6 +14,9 @@ const PORT = process.env.PORT ?? 4000;
 
 const app = express();
 
+// Required for migrating from Express 4 to 5
+app.set("query parser", "extended");
+
 const maxRequests = parseInt(process.env.RATELIMIT ?? "1000");
 
 const rateLimiter = rateLimit({
