@@ -78,8 +78,6 @@ export { indicatorTableTheme } from "./components/IndicatorTable/Indicatortableb
 export { LinechartGrid } from "./components/Charts/LinechartGrid";
 export { BarchartBase } from "./components/Charts/BarchartBase";
 export { LowLevelIndicatorList } from "./components/LowLevelIndicatorList";
-export { HeatMap, createHeatmapData } from "./components/Charts/HeatMap";
-export { QualityAtlasFigure } from "./components/QualityAtlasFigure";
 export { ArrowLink } from "./components/ArrowLink";
 export { Hoverbox } from "./components/Hoverbox";
 export { CustomAccordionExpandIcon } from "./components/FilterMenu/CustomAccordionExpandIcon";
