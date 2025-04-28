@@ -211,19 +211,6 @@ export const Skde = (): JSX.Element => {
                 {showRotateMessage ? (
                   TurnDeviceMessage
                 ) : (
-                  <SelectedIndicatorTable
-                    unitName={unitName}
-                    titlePadding={titlePadding}
-                    titleStyle={titleStyle}
-                    lastYear={lastYear}
-                  />
-                )}
-              </Grid>
-
-              <Grid size={{ xs: 12 }}>
-                {showRotateMessage ? (
-                  TurnDeviceMessage
-                ) : (
                   <HospitalProfileLinePlot
                     unitFullName={unitFullName}
                     unitNames={unitName}
@@ -232,6 +219,19 @@ export const Skde = (): JSX.Element => {
                     titlePadding={titlePadding}
                     titleStyle={titleStyle}
                     textMargin={textMargin}
+                  />
+                )}
+              </Grid>
+
+              <Grid size={{ xs: 12 }}>
+                {showRotateMessage ? (
+                  TurnDeviceMessage
+                ) : (
+                  <SelectedIndicatorTable
+                    unitName={unitName}
+                    titlePadding={titlePadding}
+                    titleStyle={titleStyle}
+                    lastYear={lastYear}
                   />
                 )}
               </Grid>
