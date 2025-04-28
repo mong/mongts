@@ -72,7 +72,7 @@ export const Footer = ({
           loader={imgLoader}
           src={"/img/logos/nsm-hvit.svg"}
           alt="NSM-logo"
-          layout="fill"
+          fill={true}
         />
       </Box>
     </Link>
