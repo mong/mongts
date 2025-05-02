@@ -114,7 +114,7 @@ jobs:
             --source ./apps/skde/out \
             --delete-destination true
       - name: Purge test version from Azure Front Door
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/develop'
         uses: azure/cli@v2
         with:
           azcliversion: latest
