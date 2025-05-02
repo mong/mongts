@@ -58,13 +58,19 @@ jobs:
             --container '$web' \
             --source ./apps/skde/out \
             --delete-destination true
-          az afd endpoint purge \
-            --resource-group rg-nettsider-felles \
-            --profile-name interaktiveNettsiderFrontDoor \
-            --endpoint-name prod \
-            --domains apps.skde.no \
-            --content-paths '/*'
-            --no-wait true
+      - name: Purge prod version from Azure Front Door
+        if: github.ref == 'refs/heads/main'
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az afd endpoint purge \
+              --resource-group rg-nettsider-felles \
+              --profile-name interaktiveNettsiderFrontDoor \
+              --endpoint-name prod \
+              --domains apps.skde.no \
+              --content-paths '/*'
+              --no-wait true
       - name: Build and upload verify version to Azure
         if: github.ref == 'refs/heads/main'
         env:
@@ -80,13 +86,19 @@ jobs:
             --container '$web' \
             --source ./apps/skde/out \
             --delete-destination true
-          az afd endpoint purge \
-            --resource-group rg-nettsider-felles \
-            --profile-name interaktiveNettsiderFrontDoor \
-            --endpoint-name verify \
-            --domains verify.skde.no, verify.skde.org \
-            --content-paths '/*'
-            --no-wait true            
+      - name: Purge verify version from Azure Front Door
+        if: github.ref == 'refs/heads/main'
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az afd endpoint purge \
+              --resource-group rg-nettsider-felles \
+              --profile-name interaktiveNettsiderFrontDoor \
+              --endpoint-name verify \
+              --domains verify.skde.no, verify.skde.org \
+              --content-paths '/*'
+              --no-wait true
       - name: Upload develop version to Azure
         if: github.ref == 'refs/heads/develop'
         env:
@@ -101,10 +113,16 @@ jobs:
             --container '$web' \
             --source ./apps/skde/out \
             --delete-destination true
-          az afd endpoint purge \
-            --resource-group rg-nettsider-felles \
-            --profile-name interaktiveNettsiderFrontDoor \
-            --endpoint-name test \
-            --domains test.skde.no, test.skde.org \
-            --content-paths '/*'
-            --no-wait true            
+      - name: Purge test version from Azure Front Door
+        if: github.ref == 'refs/heads/main'
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az afd endpoint purge \
+              --resource-group rg-nettsider-felles \
+              --profile-name interaktiveNettsiderFrontDoor \
+              --endpoint-name test \
+              --domains test.skde.no, test.skde.org \
+              --content-paths '/*'
+              --no-wait true
