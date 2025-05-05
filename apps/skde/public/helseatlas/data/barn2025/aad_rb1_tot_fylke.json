@@ -1,0 +1,718 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "snittprev"
+      ],
+      "y": "area",
+      "xLabel": {
+        "nb": "Rate: Antall barn med resept på legemiddel pr. 1 000 innbyggere",
+        "en": "Rate: Number of children with prescription per 1,000 children (0-18 years)"
+      },
+      "yLabel": {
+        "nb": "Fylker",
+        "en": "Counties"
+      },
+      "annualVar": [
+        "rate2021",
+        "rate2022",
+        "rate2023"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2021",
+          "2022",
+          "2023"
+        ]
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "snittprev"
+      ],
+      "y": "area",
+      "xLabel": {
+        "nb": "Legemiddelrate (søyle) og pasientrate (linje) pr. 1 000 innbyggere",
+        "en": "Presciption rate (bar) and patient rate (line) per 1,000 children (0-18 years)"
+      },
+      "yLabel": {
+        "nb": "Fylker",
+        "en": "Counties"
+      },
+      "annualVar": [
+        "start",
+        "nprratesnitt"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "0",
+          "Pasientrate"
+        ],
+        "en": [
+          "0",
+          "Pasientrate"
+        ]
+      },
+      "format": ",.1f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "as_ratesnitt"
+      ],
+      "y": "area",
+      "xLabel": {
+        "nb": "Rate: Antall barn med resept på astmamedisin pr. 1 000 innbyggere",
+        "en": "Rate: Number of children with prescription per 1,000 children (0-18 years)"
+      },
+      "yLabel": {
+        "nb": "Fylker",
+        "en": "Counties"
+      },
+      "annualVar": [
+        "as_rate2021",
+        "as_rate2022",
+        "as_rate2023"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2021",
+          "2022",
+          "2023"
+        ]
+      },
+      "format": ",.1f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "al_ratesnitt"
+      ],
+      "y": "area",
+      "xLabel": {
+        "nb": "Rate: Antall barn med resept på allergimedisin pr. 1 000 innbyggere",
+        "en": "Rate: Number of children with prescription per 1,000 children (0-18 years)"
+      },
+      "yLabel": {
+        "nb": "Fylker",
+        "en": "Counties"
+      },
+      "annualVar": [
+        "al_rate2021",
+        "al_rate2022",
+        "al_rate2023"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2021",
+          "2022",
+          "2023"
+        ]
+      },
+      "format": ",.1f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "d_ratesnitt"
+      ],
+      "y": "area",
+      "xLabel": {
+        "nb": "Rate: Antall barn med resept på dermatittmedisin pr. 1 000 innbyggere",
+        "en": "Rate: Number of children with prescription per 1,000 children (0-18 years)"
+      },
+      "yLabel": {
+        "nb": "Fylker",
+        "en": "Counties"
+      },
+      "annualVar": [
+        "d_rate2021",
+        "d_rate2022",
+        "d_rate2023"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2021",
+          "2022",
+          "2023"
+        ],
+        "en": [
+          "2021",
+          "2022",
+          "2023"
+        ]
+      },
+      "format": ",.1f"
+    },
+    {
+      "type": "table",
+      "data": "datasett_1",
+      "caption": {
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. Antall (rate) pr. 1 000 barn (0-18 år)",
+        "en": "Yearly average for the period 2022-2024. Number (rate) per 1,000 children (0-18 years)"
+      },
+      "columns": [
+        {
+          "id": "area",
+          "label_no": "Fylker",
+          "label_en": "Counties",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "snittprev",
+          "label_no": "Legemiddel-rate",
+          "label_en": "Prescription rate",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "nprratesnitt",
+          "label_no": "Pasient-rate",
+          "label_en": "Patient rate",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "as_ratesnitt",
+          "label_no": "Medisinrate astma",
+          "label_en": "Rate astmamedisin",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "al_ratesnitt",
+          "label_no": "Medisinrate allergi",
+          "label_en": "Rate astmamedisin",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "d_ratesnitt",
+          "label_no": "Medisinrate dermatitt",
+          "label_en": "Rate astmamedisin",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "popsnitt",
+          "label_no": "Innbyggere (0-18 år)",
+          "label_en": "Children",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "datasett_1",
+      "x": "snittprev",
+      "caption": {
+        "nb": "Rate: Antall barn med resept på legemiddel pr. 1 000 innbyggere",
+        "en": "Rate: Number of children with prescription per 1,000 children (0-18 years)"
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": 255.896473717,
+          "min": 250.661520055,
+          "lag_min": 258.492490034,
+          "grense": 257.194481875
+        },
+        {
+          "cluster": 2,
+          "max": 265.732636705,
+          "min": 258.492490034,
+          "lag_min": 273.367129911,
+          "grense": 269.549883308
+        },
+        {
+          "cluster": 3,
+          "max": 283.068588904,
+          "min": 273.367129911,
+          "lag_min": 292.616350187,
+          "grense": 287.842469546
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "datasett_1",
+      "national": "Norge",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "data": [
+        {
+          "area": "Oslo",
+          "rate2021": 276.568029516,
+          "rate2022": 267.255538651,
+          "rate2023": 282.558886914,
+          "ratesnitt": 275.460818361,
+          "snittpas": 36469,
+          "snittprev": 275.460818361,
+          "popsnitt": 138837,
+          "nprratesnitt": 47.0906562603,
+          "nprpassnitt": 6664.66666667,
+          "npr_rate_andel": 0.170952284759,
+          "npr_pas_andel": 0.182748818631,
+          "start": 0,
+          "fylke": 3,
+          "as_rate2021": 61.9456366237,
+          "as_rate2022": 65.6312208119,
+          "as_rate2023": 64.2443948732,
+          "as_ratesnitt": 63.9404174363,
+          "al_rate2021": 118.296814999,
+          "al_rate2022": 109.955569684,
+          "al_rate2023": 122.197436576,
+          "al_ratesnitt": 116.816607086,
+          "d_rate2021": 96.3255778932,
+          "d_rate2022": 91.668748155,
+          "d_rate2023": 96.1170554652,
+          "d_ratesnitt": 94.7037938378
+        },
+        {
+          "area": "Rogaland",
+          "rate2021": 247.496692057,
+          "rate2022": 250.315749872,
+          "rate2023": 254.172118234,
+          "ratesnitt": 250.661520055,
+          "snittpas": 28061.6666667,
+          "snittprev": 250.661520055,
+          "popsnitt": 118414.666667,
+          "nprratesnitt": 25.0894778249,
+          "nprpassnitt": 2966,
+          "npr_rate_andel": 0.100093057041,
+          "npr_pas_andel": 0.105695789036,
+          "start": 0,
+          "fylke": 11,
+          "as_rate2021": 50.1376819368,
+          "as_rate2022": 53.4401060561,
+          "as_rate2023": 50.8041618826,
+          "as_ratesnitt": 51.4606499585,
+          "al_rate2021": 118.844544577,
+          "al_rate2022": 116.84984638,
+          "al_rate2023": 120.708837325,
+          "al_ratesnitt": 118.801076094,
+          "d_rate2021": 78.5144655438,
+          "d_rate2022": 80.0257974364,
+          "d_rate2023": 82.6591190266,
+          "d_ratesnitt": 80.3997940023
+        },
+        {
+          "area": "Møre og Romsdal",
+          "rate2021": 254.101640656,
+          "rate2022": 258.430461274,
+          "rate2023": 262.945368171,
+          "ratesnitt": 258.492490034,
+          "snittpas": 14161.6666667,
+          "snittprev": 258.492490034,
+          "popsnitt": 58081.6666667,
+          "nprratesnitt": 31.4242990157,
+          "nprpassnitt": 1813.33333333,
+          "npr_rate_andel": 0.121567551195,
+          "npr_pas_andel": 0.128045192421,
+          "start": 0,
+          "fylke": 15,
+          "as_rate2021": 64.844119466,
+          "as_rate2022": 70.2431705487,
+          "as_rate2023": 68.33546501,
+          "as_ratesnitt": 67.8075850083,
+          "al_rate2021": 113.827349121,
+          "al_rate2022": 107.734250636,
+          "al_rate2023": 114.946099032,
+          "al_ratesnitt": 112.16923293,
+          "d_rate2021": 75.4301720688,
+          "d_rate2022": 80.4530400893,
+          "d_rate2023": 79.6638041294,
+          "d_ratesnitt": 78.5156720958
+        },
+        {
+          "area": "Nordland",
+          "rate2021": 258.625513872,
+          "rate2022": 258.10804928,
+          "rate2023": 263.385826772,
+          "ratesnitt": 260.039796641,
+          "snittpas": 11972,
+          "snittprev": 260.039796641,
+          "popsnitt": 48649.6666667,
+          "nprratesnitt": 31.3400945443,
+          "nprpassnitt": 1510,
+          "npr_rate_andel": 0.120520377839,
+          "npr_pas_andel": 0.126127631139,
+          "start": 0,
+          "fylke": 18,
+          "as_rate2021": 74.9445771723,
+          "as_rate2022": 77.0319097993,
+          "as_rate2023": 77.7996500437,
+          "as_ratesnitt": 76.5920456718,
+          "al_rate2021": 110.845655496,
+          "al_rate2022": 105.872622002,
+          "al_rate2023": 109.033245844,
+          "al_ratesnitt": 108.583841114,
+          "d_rate2021": 72.8352812036,
+          "d_rate2022": 75.2035174786,
+          "d_rate2023": 76.5529308836,
+          "d_ratesnitt": 74.8639098553
+        },
+        {
+          "area": "Østfold",
+          "rate2021": 256.139655486,
+          "rate2022": 255.426893639,
+          "rate2023": 268.092347465,
+          "ratesnitt": 259.886298863,
+          "snittpas": 15793,
+          "snittprev": 259.886298863,
+          "popsnitt": 64634.6666667,
+          "nprratesnitt": 34.241627571,
+          "nprpassnitt": 2189.33333333,
+          "npr_rate_andel": 0.13175618615,
+          "npr_pas_andel": 0.138626817788,
+          "start": 0,
+          "fylke": 31,
+          "as_rate2021": 60.0670531305,
+          "as_rate2022": 66.8382158881,
+          "as_rate2023": 65.7100315788,
+          "as_ratesnitt": 64.2051001991,
+          "al_rate2021": 122.561892021,
+          "al_rate2022": 117.857614146,
+          "al_rate2023": 124.368015446,
+          "al_ratesnitt": 121.595840538,
+          "d_rate2021": 73.5107103338,
+          "d_rate2022": 70.7310636052,
+          "d_rate2023": 78.0143004401,
+          "d_ratesnitt": 74.0853581264
+        },
+        {
+          "area": "Akershus",
+          "rate2021": 295.799924369,
+          "rate2022": 294.353096648,
+          "rate2023": 311.978330026,
+          "ratesnitt": 300.710450348,
+          "snittpas": 47335.3333333,
+          "snittprev": 300.710450348,
+          "popsnitt": 167682.666667,
+          "nprratesnitt": 57.7261560199,
+          "nprpassnitt": 9646.33333333,
+          "npr_rate_andel": 0.191965912569,
+          "npr_pas_andel": 0.203787163923,
+          "start": 0,
+          "fylke": 32,
+          "as_rate2021": 81.6877215247,
+          "as_rate2022": 87.0797224834,
+          "as_rate2023": 86.0184572742,
+          "as_ratesnitt": 84.9286337608,
+          "al_rate2021": 133.590990956,
+          "al_rate2022": 127.44288292,
+          "al_rate2023": 140.010708999,
+          "al_ratesnitt": 133.681527625,
+          "d_rate2021": 80.5212118881,
+          "d_rate2022": 79.830491245,
+          "d_rate2023": 85.9491637532,
+          "d_ratesnitt": 82.1002889621
+        },
+        {
+          "area": "Buskerud",
+          "rate2021": 280.202295715,
+          "rate2022": 278.174633331,
+          "rate2023": 290.828837666,
+          "ratesnitt": 283.068588904,
+          "snittpas": 14951,
+          "snittprev": 283.068588904,
+          "popsnitt": 56094.6666667,
+          "nprratesnitt": 38.6829359918,
+          "nprpassnitt": 2157.66666667,
+          "npr_rate_andel": 0.136655699389,
+          "npr_pas_andel": 0.144315876307,
+          "start": 0,
+          "fylke": 33,
+          "as_rate2021": 76.7890290563,
+          "as_rate2022": 80.5912303367,
+          "as_rate2023": 78.5075640397,
+          "as_ratesnitt": 78.6292744776,
+          "al_rate2021": 131.435390385,
+          "al_rate2022": 126.054411429,
+          "al_rate2023": 134.549364319,
+          "al_ratesnitt": 130.679722045,
+          "d_rate2021": 71.9778762738,
+          "d_rate2022": 71.5289915647,
+          "d_rate2023": 77.771909307,
+          "d_ratesnitt": 73.7595923818
+        },
+        {
+          "area": "Innlandet",
+          "rate2021": 253.37061381,
+          "rate2022": 255.751675569,
+          "rate2023": 269.6639164,
+          "ratesnitt": 259.595401926,
+          "snittpas": 17621.3333333,
+          "snittprev": 259.595401926,
+          "popsnitt": 72110.3333333,
+          "nprratesnitt": 33.2046646894,
+          "nprpassnitt": 2368.33333333,
+          "npr_rate_andel": 0.127909294398,
+          "npr_pas_andel": 0.134401483051,
+          "start": 0,
+          "fylke": 34,
+          "as_rate2021": 63.9428496143,
+          "as_rate2022": 71.9051916732,
+          "as_rate2023": 74.0800873788,
+          "as_ratesnitt": 69.9760428887,
+          "al_rate2021": 125.118941313,
+          "al_rate2022": 116.513042063,
+          "al_rate2023": 123.319213001,
+          "al_ratesnitt": 121.650398792,
+          "d_rate2021": 64.3088228836,
+          "d_rate2022": 67.3334418323,
+          "d_rate2023": 72.2646160204,
+          "d_ratesnitt": 67.9689602454
+        },
+        {
+          "area": "Vestfold",
+          "rate2021": 293.48609887,
+          "rate2022": 292.333867094,
+          "rate2023": 299.804336541,
+          "ratesnitt": 295.208100835,
+          "snittpas": 14757.6666667,
+          "snittprev": 295.208100835,
+          "popsnitt": 53110.3333333,
+          "nprratesnitt": 24.297751508,
+          "nprpassnitt": 1288,
+          "npr_rate_andel": 0.082307197666,
+          "npr_pas_andel": 0.0872766697536,
+          "start": 0,
+          "fylke": 39,
+          "as_rate2021": 83.8474481211,
+          "as_rate2022": 85.7085668535,
+          "as_rate2023": 85.6327117358,
+          "as_ratesnitt": 85.0629089035,
+          "al_rate2021": 136.207034693,
+          "al_rate2022": 132.185748599,
+          "al_rate2023": 135.327237152,
+          "al_ratesnitt": 134.573340148,
+          "d_rate2021": 73.4316160564,
+          "d_rate2022": 74.4395516413,
+          "d_rate2023": 78.8443876532,
+          "d_ratesnitt": 75.5718517837
+        },
+        {
+          "area": "Telemark",
+          "rate2021": 269.698948994,
+          "rate2022": 271.638215034,
+          "rate2023": 278.764225705,
+          "ratesnitt": 273.367129911,
+          "snittpas": 9170.33333333,
+          "snittprev": 273.367129911,
+          "popsnitt": 35651.6666667,
+          "nprratesnitt": 45.7946456639,
+          "nprpassnitt": 1619.33333333,
+          "npr_rate_andel": 0.167520673311,
+          "npr_pas_andel": 0.17658391189,
+          "start": 0,
+          "fylke": 40,
+          "as_rate2021": 72.8875957485,
+          "as_rate2022": 82.2701407607,
+          "as_rate2023": 82.7623190133,
+          "as_ratesnitt": 79.3066851742,
+          "al_rate2021": 124.814440948,
+          "al_rate2022": 120.964360587,
+          "al_rate2023": 126.109753918,
+          "al_ratesnitt": 123.962851817,
+          "d_rate2021": 71.9969122974,
+          "d_rate2022": 68.4037136867,
+          "d_rate2023": 69.8921527736,
+          "d_ratesnitt": 70.0975929192
+        },
+        {
+          "area": "Agder",
+          "rate2021": 248.596955956,
+          "rate2022": 257.063711911,
+          "rate2023": 262.028753283,
+          "ratesnitt": 255.896473717,
+          "snittpas": 17146.6666667,
+          "snittprev": 255.896473717,
+          "popsnitt": 71108,
+          "nprratesnitt": 32.1973065739,
+          "nprpassnitt": 2286.66666667,
+          "npr_rate_andel": 0.125821611007,
+          "npr_pas_andel": 0.133359253499,
+          "start": 0,
+          "fylke": 42,
+          "as_rate2021": 66.7624478068,
+          "as_rate2022": 76.2596391405,
+          "as_rate2023": 73.470720019,
+          "as_ratesnitt": 72.1642689888,
+          "al_rate2021": 115.146889358,
+          "al_rate2022": 113.76806169,
+          "al_rate2023": 118.039791694,
+          "al_ratesnitt": 115.651580914,
+          "d_rate2021": 66.6876187911,
+          "d_rate2022": 67.0360110803,
+          "d_rate2023": 70.5182415691,
+          "d_ratesnitt": 68.0806238135
+        },
+        {
+          "area": "Vestland",
+          "rate2021": 263.079686842,
+          "rate2022": 261.955745896,
+          "rate2023": 261.904939256,
+          "ratesnitt": 262.313457331,
+          "snittpas": 35326.3333333,
+          "snittprev": 262.313457331,
+          "popsnitt": 141959.333333,
+          "nprratesnitt": 26.5607539715,
+          "nprpassnitt": 3770.33333333,
+          "npr_rate_andel": 0.101255780934,
+          "npr_pas_andel": 0.106728691533,
+          "start": 0,
+          "fylke": 46,
+          "as_rate2021": 77.084580866,
+          "as_rate2022": 79.0952890792,
+          "as_rate2023": 74.7703927717,
+          "as_ratesnitt": 76.9834209057,
+          "al_rate2021": 107.927284556,
+          "al_rate2022": 102.977040209,
+          "al_rate2023": 107.224527192,
+          "al_ratesnitt": 106.042950652,
+          "d_rate2021": 78.0678214199,
+          "d_rate2022": 79.8834166072,
+          "d_rate2023": 79.9100192922,
+          "d_ratesnitt": 79.2870857731
+        },
+        {
+          "area": "Trøndelag",
+          "rate2021": 264.929662841,
+          "rate2022": 259.963502119,
+          "rate2023": 272.304745156,
+          "ratesnitt": 265.732636705,
+          "snittpas": 25383,
+          "snittprev": 265.732636705,
+          "popsnitt": 101022.666667,
+          "nprratesnitt": 38.9222162754,
+          "nprpassnitt": 3923.33333333,
+          "npr_rate_andel": 0.14647134337,
+          "npr_pas_andel": 0.154565391535,
+          "start": 0,
+          "fylke": 50,
+          "as_rate2021": 62.5404987354,
+          "as_rate2022": 67.174980073,
+          "as_rate2023": 68.9319473668,
+          "as_ratesnitt": 66.2158087251,
+          "al_rate2021": 118.810225539,
+          "al_rate2022": 110.699752486,
+          "al_rate2023": 117.765285934,
+          "al_ratesnitt": 115.75842132,
+          "d_rate2021": 83.5789385673,
+          "d_rate2022": 82.0887695599,
+          "d_rate2023": 85.607511855,
+          "d_ratesnitt": 83.7584066608
+        },
+        {
+          "area": "Troms",
+          "rate2021": 260.099681144,
+          "rate2022": 265.414710485,
+          "rate2023": 268.605053652,
+          "ratesnitt": 264.70648176,
+          "snittpas": 8472.66666667,
+          "snittprev": 264.70648176,
+          "popsnitt": 33736,
+          "nprratesnitt": 25.268239221,
+          "nprpassnitt": 842.333333333,
+          "npr_rate_andel": 0.0954575764557,
+          "npr_pas_andel": 0.0994177354631,
+          "start": 0,
+          "fylke": 55,
+          "as_rate2021": 81.107017924,
+          "as_rate2022": 85.4773082942,
+          "as_rate2023": 83.2310645395,
+          "as_ratesnitt": 83.2717969192,
+          "al_rate2021": 93.3659412438,
+          "al_rate2022": 92.7073552426,
+          "al_rate2023": 93.8040844583,
+          "al_ratesnitt": 93.2924603149,
+          "d_rate2021": 85.6267219763,
+          "d_rate2022": 87.2300469484,
+          "d_rate2023": 91.569904654,
+          "d_ratesnitt": 88.1422245262
+        },
+        {
+          "area": "Finnmark",
+          "rate2021": 285.593875114,
+          "rate2022": 290.255750822,
+          "rate2023": 301.999424626,
+          "ratesnitt": 292.616350187,
+          "snittpas": 4109.33333333,
+          "snittprev": 292.616350187,
+          "popsnitt": 14841.3333333,
+          "nprratesnitt": 60.3715148947,
+          "nprpassnitt": 889,
+          "npr_rate_andel": 0.206316273359,
+          "npr_pas_andel": 0.216336794289,
+          "start": 0,
+          "fylke": 56,
+          "as_rate2021": 90.39825806,
+          "as_rate2022": 97.0138591227,
+          "as_rate2023": 98.748561565,
+          "as_ratesnitt": 95.3868929159,
+          "al_rate2021": 100.091311372,
+          "al_rate2022": 101.80025718,
+          "al_rate2023": 105.293440736,
+          "al_ratesnitt": 102.395003096,
+          "d_rate2021": 95.1043056824,
+          "d_rate2022": 91.4416345192,
+          "d_rate2023": 97.9574223245,
+          "d_ratesnitt": 94.8344541754
+        },
+        {
+          "area": "Norge",
+          "rate2021": 268.331999029,
+          "rate2022": 267.91776084,
+          "rate2023": 277.275216217,
+          "ratesnitt": 271.174992029,
+          "snittpas": 301226,
+          "snittprev": 271.174992029,
+          "popsnitt": 1175934.66667,
+          "nprratesnitt": 37.4204024318,
+          "nprpassnitt": 43934.6666667,
+          "npr_rate_andel": 0.137993559627,
+          "npr_pas_andel": 0.145852836962,
+          "start": 0,
+          "fylke": 8888,
+          "as_rate2021": 69.4609108654,
+          "as_rate2022": 74.2203815347,
+          "as_rate2023": 72.9523975648,
+          "as_ratesnitt": 72.2112299883,
+          "al_rate2021": 120.0028785,
+          "al_rate2022": 114.867260309,
+          "al_rate2023": 121.893631579,
+          "al_ratesnitt": 118.921256796,
+          "d_rate2021": 78.8682096628,
+          "d_rate2022": 78.8301189962,
+          "d_rate2023": 82.4291870731,
+          "d_ratesnitt": 80.042505244
+        }
+      ]
+    }
+  ]
+}
