@@ -100,6 +100,9 @@ const Stadiumfigur = ({ registry }) => {
 
   return (
     <div>
+      <Typography variant="h3" padding={2}>
+        Vurdert stadium og nivå
+      </Typography>
       <Stack
         direction="row"
         spacing={2}
