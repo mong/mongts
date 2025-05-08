@@ -69,7 +69,7 @@ jobs:
               --profile-name interaktiveNettsiderFrontDoor \
               --endpoint-name prod \
               --domains apps.skde.no \
-              --content-paths '/*'
+              --content-paths '/*' \
               --no-wait true
       - name: Build and upload verify version to Azure
         if: github.ref == 'refs/heads/main'
@@ -96,8 +96,15 @@ jobs:
               --resource-group rg-nettsider-felles \
               --profile-name interaktiveNettsiderFrontDoor \
               --endpoint-name verify \
-              --domains verify.skde.no, verify.skde.org \
-              --content-paths '/*'
+              --domains verify.skde.no \
+              --content-paths '/*' \
+              --no-wait true
+            az afd endpoint purge \
+              --resource-group rg-nettsider-felles \
+              --profile-name interaktiveNettsiderFrontDoor \
+              --endpoint-name verify \
+              --domains verify.skde.org \
+              --content-paths '/*' \
               --no-wait true
       - name: Upload develop version to Azure
         if: github.ref == 'refs/heads/develop'
@@ -123,6 +130,6 @@ jobs:
               --resource-group rg-nettsider-felles \
               --profile-name interaktiveNettsiderFrontDoor \
               --endpoint-name test \
-              --domains test.skde.no, test.skde.org \
-              --content-paths '/*'
+              --domains test.skde.no \
+              --content-paths '/*' \
               --no-wait true
