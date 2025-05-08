@@ -271,7 +271,7 @@ export default function TreatmentQualityPage() {
       <CssBaseline />
       <PageWrapper>
         <LayoutHead
-          title="Behandlingskvalitet (cache test)"
+          title="Behandlingskvalitet"
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
           href="/favicon.ico"
         />
