@@ -22,12 +22,11 @@ jobs:
     name: Deploy app to Azure
     runs-on: ubuntu-latest
     steps:
-      - name: Log into Azure
-        uses: azure/login@v1
+      - name: Log in to Azure
+        uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          creds: ${{ secrets.AZURE_FRONTDOOR_CREDENTIALS }}
+          enable-AzPSSession: true
       - name: Check out the repo
         uses: actions/checkout@v4
       - name: Enable Corepack before setting up Node
@@ -59,22 +58,19 @@ jobs:
             --container '$web' \
             --source ./apps/skde/out \
             --delete-destination true
-          az storage blob upload-batch \
-            --account-name $AZURE_STORAGE_ACCOUNT \
-            --account-key $AZURE_STORAGE_KEY \
-            --destination '$web' \
-            --source ./apps/skde/out \
-            --pattern '*.html' \
-            --content-cache-control "public, max-age=60, s-maxage=60" \
-            --overwrite
-          az storage blob upload-batch \
-            --account-name $AZURE_STORAGE_ACCOUNT \
-            --account-key $AZURE_STORAGE_KEY \
-            --destination '$web' \
-            --source ./apps/skde/out \
-            --pattern '*.xml' \
-            --content-cache-control "public, max-age=60, s-maxage=60" \
-            --overwrite
+      - name: Purge prod version from Azure Front Door
+        if: github.ref == 'refs/heads/main'
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az afd endpoint purge \
+              --resource-group rg-nettsider-felles \
+              --profile-name interaktiveNettsiderFrontDoor \
+              --endpoint-name prod \
+              --domains apps.skde.no \
+              --content-paths '/*'
+              --no-wait true
       - name: Build and upload verify version to Azure
         if: github.ref == 'refs/heads/main'
         env:
@@ -90,22 +86,19 @@ jobs:
             --container '$web' \
             --source ./apps/skde/out \
             --delete-destination true
-          az storage blob upload-batch \
-            --account-name $AZURE_STORAGE_ACCOUNT \
-            --account-key $AZURE_STORAGE_KEY \
-            --destination '$web' \
-            --source ./apps/skde/out \
-            --pattern '*.html' \
-            --content-cache-control "public, max-age=60, s-maxage=60" \
-            --overwrite
-          az storage blob upload-batch \
-            --account-name $AZURE_STORAGE_ACCOUNT \
-            --account-key $AZURE_STORAGE_KEY \
-            --destination '$web' \
-            --source ./apps/skde/out \
-            --pattern '*.xml' \
-            --content-cache-control "public, max-age=60, s-maxage=60" \
-            --overwrite
+      - name: Purge verify version from Azure Front Door
+        if: github.ref == 'refs/heads/main'
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az afd endpoint purge \
+              --resource-group rg-nettsider-felles \
+              --profile-name interaktiveNettsiderFrontDoor \
+              --endpoint-name verify \
+              --domains verify.skde.no, verify.skde.org \
+              --content-paths '/*'
+              --no-wait true
       - name: Upload develop version to Azure
         if: github.ref == 'refs/heads/develop'
         env:
@@ -120,19 +113,16 @@ jobs:
             --container '$web' \
             --source ./apps/skde/out \
             --delete-destination true
-          az storage blob upload-batch \
-            --account-name $AZURE_STORAGE_ACCOUNT \
-            --account-key $AZURE_STORAGE_KEY \
-            --destination '$web' \
-            --source ./apps/skde/out \
-            --pattern '*.html' \
-            --content-cache-control "public, max-age=60, s-maxage=60" \
-            --overwrite
-          az storage blob upload-batch \
-            --account-name $AZURE_STORAGE_ACCOUNT \
-            --account-key $AZURE_STORAGE_KEY \
-            --destination '$web' \
-            --source ./apps/skde/out \
-            --pattern '*.xml' \
-            --content-cache-control "public, max-age=60, s-maxage=60" \
-            --overwrite
+      - name: Purge test version from Azure Front Door
+        if: github.ref == 'refs/heads/develop'
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az afd endpoint purge \
+              --resource-group rg-nettsider-felles \
+              --profile-name interaktiveNettsiderFrontDoor \
+              --endpoint-name test \
+              --domains test.skde.no, test.skde.org \
+              --content-paths '/*'
+              --no-wait true
