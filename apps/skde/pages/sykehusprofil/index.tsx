@@ -49,6 +49,8 @@ export const Skde = (): JSX.Element => {
   const titlePadding = 2;
   const boxWidthLimit = 640;
   const rotateDeviceBoxHeight = 400;
+  const topRowBoxHeightXxl = 400;
+  const topRowBoxHeightXs = 650;
 
   // On screen resize
   const { width } = useScreenSize();
@@ -160,7 +162,11 @@ export const Skde = (): JSX.Element => {
                 data-testid={`hospital_profile_box_${unitName}`}
               >
                 <HospitalInfoBox
-                  boxHeight={width > breakpoints.xxl ? 350 : 450}
+                  boxHeight={
+                    width > breakpoints.xxl
+                      ? topRowBoxHeightXxl
+                      : topRowBoxHeightXs
+                  }
                   unitNames={unitNamesQuery.data}
                   selectedTreatmentUnit={unitName}
                   unitUrl={unitUrl}
@@ -168,7 +174,11 @@ export const Skde = (): JSX.Element => {
               </Grid>
               <Grid size={{ xs: 12, sm: 5 }}>
                 <AffiliatedHospitals
-                  boxHeight={width > breakpoints.xxl ? 350 : 450}
+                  boxHeight={
+                    width > breakpoints.xxl
+                      ? topRowBoxHeightXxl
+                      : topRowBoxHeightXs
+                  }
                   titleStyle={titleStyle}
                   unitNames={unitNamesQuery.data}
                   selectedTreatmentUnit={unitName}
