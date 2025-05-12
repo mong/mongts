@@ -8,8 +8,8 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall astma konsultasjoner (poliklinikk) pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of consultations astma per 1,000 children"
+        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number of consultations per 1,000 children (0-18 years)"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -42,8 +42,8 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall astma pasienter (poliklinikk) pr. 1000 barn (0-18 år)",
-        "en": "Rate: Number of patients astma per 1,000 children"
+        "nb": "Rate: Antall pasienter pr. 1000 barn (0-18 år)",
+        "en": "Rate: Number of patients per 1,000 children (0-18 years)"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -76,8 +76,8 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Antall astma konsultasjoner (poliklinikk) pr. pasient",
-        "en": "Number of consultations per patients astma"
+        "nb": "Antall polikliniske konsultasjoner pr. pasient",
+        "en": "Number of consultations per patients"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -104,8 +104,8 @@
         ]
       },
       "xLabel": {
-        "nb": "Rate: Antall astma konsultasjoner (poliklinikk) offentlig/privat pr. 1 000 barn (0-18 år)",
-        "en": "Number (rate) public/private per 1,000 children"
+        "nb": "Rate: Antall konsultasjoner, offentlig/privat, pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number of &usnavn_en, public/private, per 1,000 children (0-18 years)"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -121,10 +121,10 @@
       ],
       "linevarsLabels": {
         "nb": [
-          "Rate: Antall astma konsulatsjoner (poliklinikk) pr. 1 000 barn (0-18 år), Norge"
+          "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)"
         ],
         "en": [
-          "Rate Norway"
+          "Rate: Number of &usnavn_en per 1,000 children (0-18 years)"
         ]
       },
       "x": [
@@ -136,8 +136,8 @@
         "en": "Year"
       },
       "yLabel": {
-        "nb": "Rate: Antall astma konsultasjoner (poliklinikk) pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of consultations astma per 1,000 children"
+        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number of &usnavn_en per 1,000 children (0-18 years)"
       },
       "format_y": ",.0f"
     },
@@ -171,8 +171,8 @@
         "en": "Age"
       },
       "yLabel": {
-        "nb": "Antall barn med astma konsultasjon (poliklinikk)",
-        "en": "Number of children with consultation"
+        "nb": "Antall barn (0-18 år) med polikliniske konsultasjoner",
+        "en": "Number of children with &usnavn_en"
       },
       "format_y": ",.0f"
     },
@@ -180,8 +180,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2021-2023. Antall (rate) pr. 1  000 barn",
-        "en": "Årlige gjennomsnittsverdier for perioden 2021-2023. Antall (rate) pr. 1  000 barn"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. Antall (rate) pr. 1 000 barn (0-18 år)",
+        "en": "Yearly average for the period 2022-2024. Number (rate) per 1,000 children (0-18 years)"
       },
       "columns": [
         {
@@ -193,8 +193,8 @@
         },
         {
           "id": "ratesnitt",
-          "label_no": "Rate",
-          "label_en": "Rate",
+          "label_no": "Konsultasjons-rate",
+          "label_en": "Rate consultations",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -240,8 +240,8 @@
       "data": "datasett_1",
       "x": "ratesnitt",
       "caption": {
-        "nb": "Rate: Antall astma konsultasjoner (poliklinikk) pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of consultations astma per 1,000 children"
+        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number of consultations per 1,000 children (0-18 years)"
       },
       "jenks": [
         {
