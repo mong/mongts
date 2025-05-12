@@ -52,7 +52,10 @@ export const Map = ({
   const width = 1000;
   const height = 1000;
   const initCenter = geoPath().centroid(mapData);
-  const initOffset: [number, number] = [width / 2, height / 2 - height * 0.11];
+  const initOffset: [number, number] = [
+    (width / 2) * 1.02,
+    height / 2 - height * 0.08,
+  ];
   const initScale = 150;
   const initialProjection = geoMercator()
     .scale(initScale)
@@ -63,7 +66,7 @@ export const Map = ({
   const bounds = initPath.bounds(mapData);
   const hscale = (initScale * width) / (bounds[1][0] - bounds[0][0]);
   const vscale = (initScale * height) / (bounds[1][1] - bounds[0][1]);
-  const scale = hscale < vscale ? 0.98 * hscale : 0.98 * vscale;
+  const scale = hscale < vscale ? 0.98 * hscale : 0.95 * vscale;
   const offset: [number, number] = [
     width - (bounds[0][0] + bounds[1][0]) / 2,
     height - (bounds[0][1] + bounds[1][1]) / 2,
