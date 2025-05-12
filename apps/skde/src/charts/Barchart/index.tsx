@@ -11,6 +11,7 @@ import { toBarchart } from "../../helpers/functions/dataTransformation";
 import { customFormat } from "qmongjs";
 
 import { AnnualVariation } from "./AnnualVariation";
+import { Lollipop, LollipopLegend } from "./Lollipop";
 import { ErrorBars } from "./errorBars";
 import {
   mainBarColors,
@@ -36,6 +37,8 @@ type BarchartProps = {
   xLegend?: { en: string[]; nb: string[]; nn: string[] };
   annualVar?: string[];
   annualVarLabels?: { en: number[]; nn: number[]; nb: number[] };
+  lollipopVar?: string;
+  lollipopLabel?: { en: string; nb: string; nn: string };
   errorBars?: string[];
   format: string;
   national: string;
@@ -62,6 +65,8 @@ export const Barchart = ({
   xLegend,
   annualVar,
   annualVarLabels,
+  lollipopVar,
+  lollipopLabel,
   errorBars,
   format,
   national,
@@ -213,9 +218,9 @@ export const Barchart = ({
               tickTransform={`translate(0,0)`}
               label={xLabel[lang]}
               labelProps={{
-                fontSize: 14,
+                fontSize: 12,
                 textAnchor: "middle",
-                fontWeight: "bold",
+                fontWeight: "none",
                 fill: "",
                 fontFamily: "",
               }}
@@ -279,6 +284,20 @@ export const Barchart = ({
                   />
                 );
               })}
+            {lollipopVar &&
+              data.map((d, i) => {
+                return (
+                  <Lollipop
+                    data={d}
+                    xScale={xScale}
+                    yScale={yScale}
+                    lollipopVar={lollipopVar}
+                    y={y}
+                    label={lollipopLabel[lang]}
+                    key={`${d[y]}${i}`}
+                  />
+                );
+              })}
             {errorBars &&
               data.map((d) => {
                 return (
@@ -303,6 +322,7 @@ export const Barchart = ({
           labels={varLabels}
         />
       )}
+      {lollipopVar && <LollipopLegend label={lollipopLabel[lang]} />}
       {x.length > 1 && (
         <ColorLegend
           colorScale={colorScale}
