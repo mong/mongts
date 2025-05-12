@@ -470,15 +470,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.27.0":
-  version: 7.27.0
-  resolution: "@babel/runtime@npm:7.27.0"
-  dependencies:
-    regenerator-runtime: "npm:^0.14.0"
-  checksum: 10/e6966e03b695feb4c0ac0856a4355231c2580bf9ebd0298f47739f85c0ea658679dd84409daf26378d42c86c1cbe7e33feab709b14e784254b6c441d91606465
-  languageName: node
-  linkType: hard
-
 "@babel/template@npm:^7.22.15":
   version: 7.24.0
   resolution: "@babel/template@npm:7.24.0"
@@ -1450,29 +1441,6 @@ __metadata:
   version: 0.4.2
   resolution: "@humanwhocodes/retry@npm:0.4.2"
   checksum: 10/8910c4cdf8d46ce406e6f0cb4407ff6cfef70b15039bd5713cc059f32e02fe5119d833cfe2ebc5f522eae42fdd453b6d88f3fa7a1d8c4275aaad6eb3d3e9b117
-  languageName: node
-  linkType: hard
-
-"@iframe-resizer/core@npm:5.4.6":
-  version: 5.4.6
-  resolution: "@iframe-resizer/core@npm:5.4.6"
-  dependencies:
-    auto-console-group: "npm:1.2.9"
-  checksum: 10/a3593ab933bbb30766dc4621b6de9464e2fcc3b8173b840edebf2c3642e761637828052d67cbcb8593f40768782ee9a20ea4bde69fff0db51830c21ec9875974
-  languageName: node
-  linkType: hard
-
-"@iframe-resizer/react@npm:5.4.6":
-  version: 5.4.6
-  resolution: "@iframe-resizer/react@npm:5.4.6"
-  dependencies:
-    "@babel/runtime": "npm:^7.27.0"
-    "@iframe-resizer/core": "npm:5.4.6"
-    auto-console-group: "npm:1.2.9"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0  || ^19.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0  || ^19.0.0
-  checksum: 10/430f83cc75fa6d30704965dab12248fda78ce3e7525ea03feca4b3389235e4aa48fcfc254982cd3b8950226cea53c0304e5dc9775a24cf102d8065697470f11a
   languageName: node
   linkType: hard
 
@@ -4545,13 +4513,6 @@ __metadata:
   version: 1.0.0
   resolution: "at-least-node@npm:1.0.0"
   checksum: 10/463e2f8e43384f1afb54bc68485c436d7622acec08b6fad269b421cb1d29cebb5af751426793d0961ed243146fe4dc983402f6d5a51b720b277818dbf6f2e49e
-  languageName: node
-  linkType: hard
-
-"auto-console-group@npm:1.2.9":
-  version: 1.2.9
-  resolution: "auto-console-group@npm:1.2.9"
-  checksum: 10/cd8e58ec75a1c208bb53cf6835cae0750caa79aa13dc1919010ed7e2f85f997611e8f81c2b6a2f23c3f29076289410bd217a860142d8aec906fbf210e89ab9a1
   languageName: node
   linkType: hard
 
@@ -12248,7 +12209,6 @@ __metadata:
   dependencies:
     "@cypress/code-coverage": "npm:3.14.0"
     "@emotion/styled": "npm:^11.14.0"
-    "@iframe-resizer/react": "npm:5.4.6"
     "@mui/icons-material": "npm:7.0.1"
     "@mui/material": "npm:7.0.1"
     "@tanstack/react-query": "npm:5.71.5"
