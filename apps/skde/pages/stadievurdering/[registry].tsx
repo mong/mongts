@@ -65,7 +65,7 @@ const Stadiumfigur = ({ registry }) => {
 
   const checkList = RequirementList({
     registry: registry,
-    year: defaultYear - 1,
+    year: defaultYear,
   });
 
   if (rankQuery.isFetching || evaluationQuery.isFetching) {
@@ -180,14 +180,16 @@ const Stadiumfigur = ({ registry }) => {
         >
           <Tab label="Utvikling over tid" {...a11yProps(0)} />
           <Tab label="Ekspertgruppens vurdering" {...a11yProps(1)} />
-          <Tab label="Oppnådde krav" {...a11yProps(2)} />
+          <Tab label="Innfridde krav" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
         <PlotComponent />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <h2>{"Ekspertgruppens vurdering for " + defaultYear}</h2>
+        <h2>
+          {"Ekspertgruppens vurdering av årsrapporten for " + defaultYear}
+        </h2>
         <div style={{ whiteSpace: "pre-wrap" }}>
           {evaluationData
             ? evaluationData.evaluation_text
