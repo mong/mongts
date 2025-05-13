@@ -3,6 +3,8 @@ import { Toolbar, Typography, styled, Container } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { Breakpoint } from "@mui/material";
 import { useRouter } from "next/router";
+import { useScreenSize } from "@visx/responsive";
+import { breakpoints } from "qmongjs";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   paddingTop: theme.spacing(12),
@@ -34,6 +36,7 @@ type HeaderMiddleProps = PropsWithChildren<{
 export const HeaderMiddle = (props: HeaderMiddleProps) => {
   const router = useRouter();
   const mainUrl = "https://apps.skde.no" + router.asPath;
+  const { width } = useScreenSize({ debounceTime: 150 });
 
   return (
     <StyledToolbar
@@ -59,7 +62,9 @@ export const HeaderMiddle = (props: HeaderMiddleProps) => {
                 <br />
               </>
             )}
-            <Typography variant="h1">{props.title}</Typography>
+            <Typography variant={width > breakpoints.sm ? "h1" : "h2"}>
+              {props.title}
+            </Typography>
           </Grid>
           <Grid size={{ xs: 12 }}>
             <Typography variant="h6">{props.children}</Typography>

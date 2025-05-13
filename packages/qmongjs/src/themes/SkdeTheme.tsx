@@ -47,6 +47,7 @@ const fonts = {
     fontWeight: "300",
     fontSize: "3rem",
     letterSpacing: `-${0.5 / 16}rem`,
+    color: "#001b52",
   },
   h3: {
     fontFamily: `${jakartaStyle.fontFamily}`,
