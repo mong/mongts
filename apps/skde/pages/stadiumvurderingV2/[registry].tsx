@@ -187,7 +187,9 @@ const Stadiumfigur = ({ registry }) => {
         <PlotComponent />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <h2>{"Ekspertgruppens vurdering for " + defaultYear}</h2>
+        <h2>
+          {"Ekspertgruppens vurdering av årsrapporten for " + defaultYear}
+        </h2>
         <div style={{ whiteSpace: "pre-wrap" }}>
           {evaluationData
             ? evaluationData.evaluation_text
