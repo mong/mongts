@@ -4,20 +4,16 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
 import { Stack, Typography } from "@mui/material";
 import Link from "next/link";
+import { TypographyVariant } from "@mui/material";
 
 type ArrowLinkProps = {
   href: string;
   text: string;
   externalLink?: boolean;
   button?: boolean;
-  fontSize?: "small" | "inherit" | "large" | "medium";
-  textVariant?:
-    | "subtitle1"
-    | "subtitle2"
-    | "body1"
-    | "body2"
-    | "button"
-    | "overline";
+  fontSize?: "small" | "medium" | "large" | "inherit";
+  textVariant?: TypographyVariant;
+  bold?: boolean;
 };
 
 /**
@@ -28,6 +24,7 @@ type ArrowLinkProps = {
  * @param {string} props.text - The text to display as the link content.
  * @param {boolean} [props.externalLink] - Whether it is an external or internal link. If externalLink is true, the link will open in a new tab and the arrow will be an arrow_outward.
  * @param {boolean} [props.button] - Whether to render the link as a button.
+ * @param {boolean} [props.bold] - Whether to render the text as bold.
  * @return {JSX.Element} The rendered link with arrow icon.
  */
 export const ArrowLink = (props: ArrowLinkProps) => {
@@ -38,6 +35,7 @@ export const ArrowLink = (props: ArrowLinkProps) => {
     button = false,
     fontSize = "inherit",
     textVariant,
+    bold = false,
   } = props;
 
   let arrow: JSX.Element;
@@ -61,7 +59,9 @@ export const ArrowLink = (props: ArrowLinkProps) => {
   ) : (
     <Link href={href} target={target}>
       <Stack alignItems="center" direction="row" gap={1}>
-        <Typography variant={textVariant}>{text}</Typography>
+        <Typography variant={textVariant}>
+          {bold ? <b>{text}</b> : text}
+        </Typography>
         {arrow}
       </Stack>
     </Link>
