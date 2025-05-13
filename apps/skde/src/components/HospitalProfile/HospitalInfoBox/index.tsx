@@ -1,6 +1,7 @@
 import { ItemBox } from "../HospitalProfileStyles";
 import Grid from "@mui/material/Grid";
-import { Stack, Typography, Link } from "@mui/material";
+import { Stack, Typography, Link, IconButton } from "@mui/material";
+import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
 import { ArrowLink } from "qmongjs";
 import { getUnitFullName } from "qmongjs";
 import { NestedTreatmentUnitName, OptsTu } from "types";
@@ -76,15 +77,20 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
             paddingLeft={width < breakpoints.xxl ? leftPaddingXs : 0}
             paddingTop={width > breakpoints.xxl ? 5 : 0}
           >
-            <Typography variant="h5">
-              <b>
-                {unitNames &&
-                  getUnitFullName(
-                    unitNames.nestedUnitNames,
-                    selectedTreatmentUnit,
-                  )}
-              </b>
-            </Typography>
+            <Stack direction="row" alignItems="center" spacing={2}>
+              <Typography variant="h5">
+                <b>
+                  {unitNames &&
+                    getUnitFullName(
+                      unitNames.nestedUnitNames,
+                      selectedTreatmentUnit,
+                    )}
+                </b>
+              </Typography>
+              {unitUrl && <IconButton href={unitUrl} sx={{background: "lightgrey"}}>
+                <ArrowOutwardIcon fontSize="large"/>
+              </IconButton>}
+            </Stack>
             <Typography variant="body1">
               Her ser du kvalitetsindikatorene samlet fra de tilknyttede
               behandlingsstedene.
@@ -96,17 +102,6 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
               For å se en mer detaljert visning, besøk{" "}
               <Link href="/behandlingskvalitet">Behandlingskvalitet</Link>.
             </Typography>
-            <div>
-              {unitUrl ? (
-                <ArrowLink
-                  href={unitUrl}
-                  text="Nettside"
-                  externalLink={true}
-                  button={true}
-                  textVariant="subtitle1"
-                />
-              ) : null}
-            </div>
           </Stack>
         </Grid>
       </Grid>
