@@ -8,8 +8,8 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Legemiddelrate (søyle) og pasientrate (linje) pr. 1000 barn",
-        "en": "Rate: Number of patients epilepsi per 1,000 children"
+        "nb": "Legemiddelrate (søyle) og pasientrate (linje) pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number of patients polikliniske per 1,000 children (0-18 years)"
       },
       "yLabel": {
         "nb": "Fylker",
@@ -39,8 +39,8 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Legemiddelrate pr. 1000 barn",
-        "en": "Number of consultations per patients epilepsi"
+        "nb": "Legemiddelrate pr. 1 000 barn (0-18 år)",
+        "en": "Number of consultations per patients polikliniske"
       },
       "yLabel": {
         "nb": "Fylker",
@@ -56,8 +56,8 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Pasientrate: Antall pasienter pr. 1000 barn",
-        "en": "Rate: Number of patients epilepsi per 1,000 children"
+        "nb": "Pasientrate: Antall pasienter pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number of patients polikliniske per 1,000 children"
       },
       "yLabel": {
         "nb": "Fylker",
@@ -84,7 +84,7 @@
         ]
       },
       "xLabel": {
-        "nb": "Rate: Antall epilepsi xxx yyyy pr. 1 000 barn",
+        "nb": "Rate: Antall polikliniske xxx yyyy pr. 1 000 barn (0-18 år)",
         "en": "Number (rate) public/private per 1,000 children"
       },
       "yLabel": {
@@ -97,8 +97,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2021-2023. Antall (rate) pr. 1  000 barn",
-        "en": "Årlige gjennomsnittsverdier for perioden 2021-2023. Antall (rate) pr. 1  000 barn"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. Antall (rate) pr. 1 000 barn (0-18 år)",
+        "en": "Yearly average for the period 2022-2024. Number (rate) per 1,000 children (0-18 years)"
       },
       "columns": [
         {
@@ -110,17 +110,17 @@
         },
         {
           "id": "snittprev",
-          "label_no": "Rate legemilder",
-          "label_en": "Rate legemilder",
+          "label_no": "Legemiddelrate",
+          "label_en": "Legemiddelrate",
           "typeVar": "number",
-          "format": ",.0f"
+          "format": ",.1f"
         },
         {
           "id": "pasratesnitt",
-          "label_no": "Rate pasienter",
+          "label_no": "Pasientrate",
           "label_en": "Rate",
           "typeVar": "number",
-          "format": ",.0f"
+          "format": ",.1f"
         },
         {
           "id": "passnitt",
@@ -143,8 +143,8 @@
       "data": "datasett_1",
       "x": "snittprev",
       "caption": {
-        "nb": "tmp",
-        "en": "tmp"
+        "nb": "Rate: Legemiddelbruk pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number of polikliniske per 1,000 children (0-18 years)"
       },
       "jenks": [
         {
