@@ -1,7 +1,6 @@
 import { ItemBox } from "../HospitalProfileStyles";
 import Grid from "@mui/material/Grid";
-import { Stack, Typography, Link, IconButton } from "@mui/material";
-import ArrowOutwardIcon from '@mui/icons-material/ArrowOutward';
+import { Stack, Typography, Link } from "@mui/material";
 import { ArrowLink } from "qmongjs";
 import { getUnitFullName } from "qmongjs";
 import { NestedTreatmentUnitName, OptsTu } from "types";
@@ -77,7 +76,19 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
             paddingLeft={width < breakpoints.xxl ? leftPaddingXs : 0}
             paddingTop={width > breakpoints.xxl ? 5 : 0}
           >
-            <Stack direction="row" alignItems="center" spacing={2}>
+            {unitUrl ? (
+              <ArrowLink
+                bold={true}
+                textVariant="h5"
+                externalLink={true}
+                href={unitUrl}
+                fontSize="large"
+                text={getUnitFullName(
+                  unitNames.nestedUnitNames,
+                  selectedTreatmentUnit,
+                )}
+              />
+            ) : (
               <Typography variant="h5">
                 <b>
                   {unitNames &&
@@ -87,10 +98,7 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
                     )}
                 </b>
               </Typography>
-              {unitUrl && <IconButton href={unitUrl} sx={{background: "lightgrey"}}>
-                <ArrowOutwardIcon fontSize="large"/>
-              </IconButton>}
-            </Stack>
+            )}
             <Typography variant="body1">
               Her ser du kvalitetsindikatorene samlet fra de tilknyttede
               behandlingsstedene.
