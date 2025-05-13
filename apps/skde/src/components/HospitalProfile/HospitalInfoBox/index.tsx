@@ -1,6 +1,6 @@
 import { ItemBox } from "../HospitalProfileStyles";
 import Grid from "@mui/material/Grid";
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, Link } from "@mui/material";
 import { ArrowLink } from "qmongjs";
 import { getUnitFullName } from "qmongjs";
 import { NestedTreatmentUnitName, OptsTu } from "types";
@@ -19,6 +19,8 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
   const { boxHeight, unitNames, selectedTreatmentUnit, unitUrl } = props;
 
   const imgSize = 270;
+  const leftPaddingXs = 5;
+
   const { width } = useScreenSize({ debounceTime: 150 });
 
   const [imgSrc, setImgSrc] = useState<string | null>(null);
@@ -69,35 +71,45 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
         <Grid size={{ xs: 12, xxl: 6 }}>
           <Stack
             direction="column"
-            alignItems={width > breakpoints.xxl ? "left" : "center"}
             justifyContent="space-between"
             height={width > breakpoints.xxl ? 300 : 100}
-            paddingTop={width > breakpoints.xxl ? 10 : 0}
+            paddingLeft={width < breakpoints.xxl ? leftPaddingXs : 0}
+            paddingTop={width > breakpoints.xxl ? 5 : 0}
           >
-            <Typography
-              variant="h5"
-              marginLeft={width > breakpoints.xxl ? -5 : 0}
-            >
-              <b>
-                {unitNames &&
-                  getUnitFullName(
-                    unitNames.nestedUnitNames,
-                    selectedTreatmentUnit,
-                  )}
-              </b>
+            {unitUrl ? (
+              <ArrowLink
+                bold={true}
+                textVariant="h5"
+                externalLink={true}
+                href={unitUrl}
+                fontSize="large"
+                text={getUnitFullName(
+                  unitNames.nestedUnitNames,
+                  selectedTreatmentUnit,
+                )}
+              />
+            ) : (
+              <Typography variant="h5">
+                <b>
+                  {unitNames &&
+                    getUnitFullName(
+                      unitNames.nestedUnitNames,
+                      selectedTreatmentUnit,
+                    )}
+                </b>
+              </Typography>
+            )}
+            <Typography variant="body1">
+              Her ser du kvalitetsindikatorene samlet fra de tilknyttede
+              behandlingsstedene.
             </Typography>
-
-            <div style={{ marginLeft: width > breakpoints.xxl ? -40 : 0 }}>
-              {unitUrl ? (
-                <ArrowLink
-                  href={unitUrl}
-                  text="Nettside"
-                  externalLink={true}
-                  button={true}
-                  textVariant="subtitle1"
-                />
-              ) : null}
-            </div>
+            <Typography paddingY={1}>
+              Under kan du navigere mellom ulike visninger av indikatorene.
+            </Typography>
+            <Typography paddingY={1}>
+              For å se en mer detaljert visning, besøk{" "}
+              <Link href="/behandlingskvalitet">Behandlingskvalitet</Link>.
+            </Typography>
           </Stack>
         </Grid>
       </Grid>
