@@ -8,7 +8,7 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall barn med resept på legemiddel pr. 1 000 barn (0-18 år)",
+        "nb": "Rate: Antall barn med resept på legemiddel pr. 1 000 innbyggere",
         "en": "Rate: Number of children with prescription per 1,000 children (0-18 years)"
       },
       "yLabel": {
@@ -42,7 +42,7 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Legemiddelrate (søyle) og pasientrate (linje) pr. 1 000 barn (0-18 år)",
+        "nb": "Legemiddelrate (søyle) og pasientrate (linje) pr. 1 000 innbyggere",
         "en": "Presciption rate (bar) and patient rate (line) per 1,000 children (0-18 years)"
       },
       "yLabel": {
@@ -99,7 +99,7 @@
           "format": ",.1f"
         },
         {
-          "id": "npr_rate_andel",
+          "id": "unpr_rate_andel",
           "label_no": "Andel i spesialist-helsetjenesten",
           "label_en": "Percent xx",
           "typeVar": "number",
@@ -119,7 +119,7 @@
       "data": "datasett_1",
       "x": "ratesnitt",
       "caption": {
-        "nb": "Rate: Antall barn med resept på legemiddel pr. 1 000 barn (0-18 år)",
+        "nb": "Rate: Antall barn med resept på legemiddel pr. 1 000 innbyggere",
         "en": "Rate: Number of children with prescription per 1,000 children (0-18 years)"
       },
       "jenks": [
