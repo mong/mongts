@@ -168,8 +168,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. <br>Rate, antall pr. 1 000 barn (0-18 år)",
-        "en": "Yearly average for the period 2022-2024. <br>Rate, number per 1,000 children (0-18 years)"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. <br>Rate, antall pr. 1 000 barn (0-18 år), kjønns- og aldersjustert.",
+        "en": "Yearly average for the period 2022-2024. <br>Rate, number per 1,000 children (0-18 years), age- and gender adjusted."
       },
       "columns": [
         {
@@ -196,21 +196,21 @@
         {
           "id": "as_ratesnitt",
           "label_no": "Medisinrate astma",
-          "label_en": "Rate astmamedisin",
+          "label_en": "Prescription rate, astmha",
           "typeVar": "number",
           "format": ",.1f"
         },
         {
           "id": "al_ratesnitt",
           "label_no": "Medisinrate allergi",
-          "label_en": "Rate astmamedisin",
+          "label_en": "Prescription rate, allergy",
           "typeVar": "number",
           "format": ",.1f"
         },
         {
           "id": "d_ratesnitt",
           "label_no": "Medisinrate eksem",
-          "label_en": "Rate astmamedisin",
+          "label_en": "Prescription rate, eczema",
           "typeVar": "number",
           "format": ",.1f"
         },
