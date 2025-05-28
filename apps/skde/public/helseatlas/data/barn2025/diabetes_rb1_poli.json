@@ -1,0 +1,791 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "ratesnitt"
+      ],
+      "y": "area",
+      "xLabel": {
+        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number of consultations per 1,000 children (0-18 years)"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "rate2022",
+        "rate2023",
+        "rate2024"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2022",
+          "2023",
+          "2024"
+        ],
+        "en": [
+          "2022",
+          "2023",
+          "2024"
+        ]
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "pasratesnitt"
+      ],
+      "y": "area",
+      "xLabel": {
+        "nb": "Rate: Antall pasienter pr. 1000 barn (0-18 år)",
+        "en": "Rate: Number of patients per 1,000 children (0-18 years)"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "pasrate2022",
+        "pasrate2023",
+        "pasrate2024"
+      ],
+      "annualVarLabels": {
+        "nb": [
+          "2022",
+          "2023",
+          "2024"
+        ],
+        "en": [
+          "2022",
+          "2023",
+          "2024"
+        ]
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "barchart",
+      "data": "datasett_1",
+      "x": [
+        "privratesnitt",
+        "offratesnitt"
+      ],
+      "y": "area",
+      "xLegend": {
+        "nb": [
+          "Private",
+          "Offentlig"
+        ],
+        "en": [
+          "Private",
+          "Public"
+        ]
+      },
+      "xLabel": {
+        "nb": "Rate: Antall konsultasjoner, offentlig/privat, pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number of consultations, public/private, per 1,000 children (0-18 years)"
+      },
+      "yLabel": {
+        "nb": "Opptaksområder",
+        "en": "Referral areas"
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "linechart",
+      "data": "datasett_2",
+      "linevars": [
+        "rate"
+      ],
+      "linevarsLabels": {
+        "nb": [
+          "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)"
+        ],
+        "en": [
+          "Rate: Number of consultations per 1,000 children (0-18 years)"
+        ]
+      },
+      "x": [
+        "aar"
+      ],
+      "y": "rate",
+      "xLabel": {
+        "nb": "År",
+        "en": "Year"
+      },
+      "yLabel": {
+        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number of consultations per 1,000 children (0-18 years)"
+      },
+      "format_y": ",.0f"
+    },
+    {
+      "type": "linechart",
+      "data": "datasett_3",
+      "linevars": [
+        "jenter",
+        "gutter"
+      ],
+      "linecolors": [
+        "#6CACE4",
+        "#003087"
+      ],
+      "linevarsLabels": {
+        "nb": [
+          "Jenter",
+          "Gutter"
+        ],
+        "en": [
+          "Girls",
+          "Boys"
+        ]
+      },
+      "x": [
+        "alder"
+      ],
+      "y": "pasienter",
+      "xLabel": {
+        "nb": "Alder",
+        "en": "Age"
+      },
+      "yLabel": {
+        "nb": "Antall barn (0-18 år) med polikliniske konsultasjoner",
+        "en": "Number of children with consultations"
+      },
+      "format_y": ",.0f"
+    },
+    {
+      "type": "table",
+      "data": "datasett_1",
+      "caption": {
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. <br>Rate, antall pr. 1 000 barn (0-18 år), kjønns- og aldersjustert.",
+        "en": "Yearly average for the period 2022-2024. <br>Rate, number per 1,000 children (0-18 years), age- and gender adjusted."
+      },
+      "columns": [
+        {
+          "id": "area",
+          "label_no": "Opptaksområder",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "ratesnitt",
+          "label_no": "Konsultasjons-rate",
+          "label_en": "Rate consultations",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "antsnitt",
+          "label_no": "Konsultasjoner",
+          "label_en": "Number",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "passnitt",
+          "label_no": "Pasienter",
+          "label_en": "Patients",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "pr_pas_justsnitt",
+          "label_no": "Antall pr. pasient",
+          "label_en": "Number per patient",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "pct_privsnitt",
+          "label_no": "Andel private",
+          "label_en": "Percent private",
+          "typeVar": "number",
+          "format": ",.1%"
+        },
+        {
+          "id": "popsnitt",
+          "label_no": "Innbyggere (0-18 år)",
+          "label_en": "Children",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "datasett_1",
+      "x": "ratesnitt",
+      "caption": {
+        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number of consultations per 1,000 children (0-18 years)"
+      },
+      "jenks": [
+        {
+          "cluster": 1,
+          "max": 16.3367653399,
+          "min": 15.205715489,
+          "lag_min": 18.0372537132,
+          "grense": 17.1870095265
+        },
+        {
+          "cluster": 2,
+          "max": 21.2778445551,
+          "min": 18.0372537132,
+          "lag_min": 22.4055862925,
+          "grense": 21.8417154238
+        },
+        {
+          "cluster": 3,
+          "max": 25.7429928242,
+          "min": 22.4055862925,
+          "lag_min": 34.0778287404,
+          "grense": 29.9104107823
+        }
+      ],
+      "format": ",.0f"
+    },
+    {
+      "type": "data",
+      "label": "datasett_1",
+      "national": "Norge",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "data": [
+        {
+          "area": "Finnmark",
+          "rate2022": 23.2449992803,
+          "pasrate2022": 3.81323580314,
+          "rate2023": 24.3787884937,
+          "pasrate2023": 3.74731872287,
+          "rate2024": 22.288338888,
+          "pasrate2024": 3.39262211378,
+          "ratesnitt": 23.2917542176,
+          "antsnitt": 348.666666667,
+          "popsnitt": 14841.3333333,
+          "pasratesnitt": 3.64654931248,
+          "passnitt": 54.6666666667,
+          "pr_pas_justsnitt": 6.38734107829,
+          "offratesnitt": 20.8669422736,
+          "privratesnitt": 0.0451048479883,
+          "pct_privsnitt": 0.00193651571139
+        },
+        {
+          "area": "UNN",
+          "rate2022": 22.6516367831,
+          "pasrate2022": 4.27474930098,
+          "rate2023": 20.3136541086,
+          "pasrate2023": 4.08614125126,
+          "rate2024": 20.8679216646,
+          "pasrate2024": 4.29761489345,
+          "ratesnitt": 21.2778445551,
+          "antsnitt": 835,
+          "popsnitt": 38460,
+          "pasratesnitt": 4.21949060079,
+          "passnitt": 166.333333333,
+          "pr_pas_justsnitt": 5.0427519737,
+          "offratesnitt": 18.3984217666,
+          "privratesnitt": 0.295337978902,
+          "pct_privsnitt": 0.0138800703303
+        },
+        {
+          "area": "Nordland",
+          "rate2022": 23.091793538,
+          "pasrate2022": 3.74264144824,
+          "rate2023": 24.2442887578,
+          "pasrate2023": 3.80912862712,
+          "rate2024": 23.5168018543,
+          "pasrate2024": 3.98051513063,
+          "ratesnitt": 23.6166640019,
+          "antsnitt": 677.333333333,
+          "popsnitt": 28283.6666667,
+          "pasratesnitt": 3.84419683117,
+          "passnitt": 110.333333333,
+          "pr_pas_justsnitt": 6.14345857901,
+          "offratesnitt": 21.9196597348,
+          "privratesnitt": 0.48758441181,
+          "pct_privsnitt": 0.0206457784118
+        },
+        {
+          "area": "Helgeland",
+          "rate2022": 19.2555851607,
+          "pasrate2022": 3.68442556036,
+          "rate2023": 20.5517381503,
+          "pasrate2023": 3.5388663866,
+          "rate2024": 22.6962207998,
+          "pasrate2024": 3.78260142263,
+          "ratesnitt": 20.8226319754,
+          "antsnitt": 335.666666667,
+          "popsnitt": 15642,
+          "pasratesnitt": 3.66647880823,
+          "passnitt": 59.3333333333,
+          "pr_pas_justsnitt": 5.67919059799,
+          "offratesnitt": 18.995310692,
+          "privratesnitt": 0.228745364075,
+          "pct_privsnitt": 0.0109854203035
+        },
+        {
+          "area": "Nord-Trøndelag",
+          "rate2022": 18.6610382881,
+          "pasrate2022": 3.60815522816,
+          "rate2023": 20.2112876704,
+          "pasrate2023": 3.93029883707,
+          "rate2024": 19.5004695452,
+          "pasrate2024": 3.91565704712,
+          "ratesnitt": 19.4610952367,
+          "antsnitt": 588.666666667,
+          "popsnitt": 29524,
+          "pasratesnitt": 3.82025703528,
+          "passnitt": 116,
+          "pr_pas_justsnitt": 5.09418477789,
+          "offratesnitt": 17.8127467179,
+          "privratesnitt": 0.44569859832,
+          "pct_privsnitt": 0.0229020305845
+        },
+        {
+          "area": "St. Olav",
+          "rate2022": 15.7641486457,
+          "pasrate2022": 3.06259265471,
+          "rate2023": 15.4450299747,
+          "pasrate2023": 3.02109886711,
+          "rate2024": 15.1603236321,
+          "pasrate2024": 3.09071164501,
+          "ratesnitt": 15.4422117976,
+          "antsnitt": 1098,
+          "popsnitt": 71498.6666667,
+          "pasratesnitt": 3.05679402664,
+          "passnitt": 217.333333333,
+          "pr_pas_justsnitt": 5.05176719891,
+          "offratesnitt": 12.8598896424,
+          "privratesnitt": 0.657878546875,
+          "pct_privsnitt": 0.0426026113033
+        },
+        {
+          "area": "Møre og Romsdal",
+          "rate2022": 25.6993086868,
+          "pasrate2022": 4.30273908396,
+          "rate2023": 26.8337677676,
+          "pasrate2023": 4.16189967111,
+          "rate2024": 24.5737630941,
+          "pasrate2024": 4.25277840782,
+          "ratesnitt": 25.6972044351,
+          "antsnitt": 1518.33333333,
+          "popsnitt": 58081.6666667,
+          "pasratesnitt": 4.23822543133,
+          "passnitt": 251.333333333,
+          "pr_pas_justsnitt": 6.06319905617,
+          "offratesnitt": 23.6340164102,
+          "privratesnitt": 0.227963804322,
+          "pct_privsnitt": 0.00887115191452
+        },
+        {
+          "area": "Førde",
+          "rate2022": 21.2255184124,
+          "pasrate2022": 3.97119898164,
+          "rate2023": 25.9593896764,
+          "pasrate2023": 4.1698410167,
+          "rate2024": 30.0027191525,
+          "pasrate2024": 4.09590215625,
+          "ratesnitt": 25.7429928242,
+          "antsnitt": 639.333333333,
+          "popsnitt": 24149,
+          "pasratesnitt": 4.08098554612,
+          "passnitt": 102,
+          "pr_pas_justsnitt": 6.30803332512,
+          "offratesnitt": 23.6655214479,
+          "privratesnitt": 0.544341144261,
+          "pct_privsnitt": 0.0211452160197
+        },
+        {
+          "area": "Bergen",
+          "rate2022": 17.5396201466,
+          "pasrate2022": 3.45462840805,
+          "rate2023": 20.0594421573,
+          "pasrate2023": 3.45056390792,
+          "rate2024": 20.2083424158,
+          "pasrate2024": 3.64347103352,
+          "ratesnitt": 19.2731218066,
+          "antsnitt": 1942.33333333,
+          "popsnitt": 101317,
+          "pasratesnitt": 3.51665452723,
+          "passnitt": 354.333333333,
+          "pr_pas_justsnitt": 5.48052748922,
+          "offratesnitt": 17.6489181951,
+          "privratesnitt": 0.185732643306,
+          "pct_privsnitt": 0.00963687383755
+        },
+        {
+          "area": "Fonna",
+          "rate2022": 22.1258194076,
+          "pasrate2022": 4.39447834593,
+          "rate2023": 20.8838280327,
+          "pasrate2023": 4.47446902548,
+          "rate2024": 24.1768817727,
+          "pasrate2024": 4.50795982455,
+          "ratesnitt": 22.4055862925,
+          "antsnitt": 960.333333333,
+          "popsnitt": 41979.6666667,
+          "pasratesnitt": 4.45978204492,
+          "passnitt": 191.333333333,
+          "pr_pas_justsnitt": 5.02391956979,
+          "offratesnitt": 20.2730539601,
+          "privratesnitt": 0.392259959038,
+          "pct_privsnitt": 0.0175072392178
+        },
+        {
+          "area": "Stavanger",
+          "rate2022": 19.8301831752,
+          "pasrate2022": 2.99265657615,
+          "rate2023": 21.5662461461,
+          "pasrate2023": 3.10503488279,
+          "rate2024": 19.5602866142,
+          "pasrate2024": 3.02871943726,
+          "ratesnitt": 20.3070431308,
+          "antsnitt": 1877.66666667,
+          "popsnitt": 92928.3333333,
+          "pasratesnitt": 3.04218757632,
+          "passnitt": 280.666666667,
+          "pr_pas_justsnitt": 6.67514498083,
+          "offratesnitt": 18.3260486876,
+          "privratesnitt": 0.438407418063,
+          "pct_privsnitt": 0.0215889342057
+        },
+        {
+          "area": "Østfold",
+          "rate2022": 19.3016563796,
+          "pasrate2022": 3.44443902684,
+          "rate2023": 17.494598366,
+          "pasrate2023": 3.3841848253,
+          "rate2024": 17.3524466179,
+          "pasrate2024": 3.25918155239,
+          "ratesnitt": 18.0372537132,
+          "antsnitt": 1286.33333333,
+          "popsnitt": 69305.6666667,
+          "pasratesnitt": 3.36143907874,
+          "passnitt": 240.333333333,
+          "pr_pas_justsnitt": 5.36593205787,
+          "offratesnitt": 16.1729156343,
+          "privratesnitt": 0.166253663131,
+          "pct_privsnitt": 0.00921723815468
+        },
+        {
+          "area": "Akershus",
+          "rate2022": 13.7378324879,
+          "pasrate2022": 3.06474102436,
+          "rate2023": 15.7281814044,
+          "pasrate2023": 3.10472531,
+          "rate2024": 16.1291448186,
+          "pasrate2024": 3.15884395044,
+          "ratesnitt": 15.205715489,
+          "antsnitt": 2108.66666667,
+          "popsnitt": 137894.666667,
+          "pasratesnitt": 3.1100065923,
+          "passnitt": 431.333333333,
+          "pr_pas_justsnitt": 4.88928722101,
+          "offratesnitt": 12.5918561323,
+          "privratesnitt": 0.622781436439,
+          "pct_privsnitt": 0.0409570622895
+        },
+        {
+          "area": "OUS",
+          "rate2022": 15.5082145157,
+          "pasrate2022": 2.8594874351,
+          "rate2023": 17.1546201118,
+          "pasrate2023": 2.93778549642,
+          "rate2024": 16.2789144934,
+          "pasrate2024": 2.91715121012,
+          "ratesnitt": 16.3367653399,
+          "antsnitt": 1732.66666667,
+          "popsnitt": 113541,
+          "pasratesnitt": 2.90706139155,
+          "passnitt": 305.333333333,
+          "pr_pas_justsnitt": 5.61968363909,
+          "offratesnitt": 14.5223483531,
+          "privratesnitt": 0.37252089348,
+          "pct_privsnitt": 0.0228026102921
+        },
+        {
+          "area": "Innlandet",
+          "rate2022": 19.56555657,
+          "pasrate2022": 4.06583988592,
+          "rate2023": 19.7253939698,
+          "pasrate2023": 3.9172370606,
+          "rate2024": 21.6721876084,
+          "pasrate2024": 4.09416775759,
+          "ratesnitt": 20.3249231668,
+          "antsnitt": 1392,
+          "popsnitt": 66724.6666667,
+          "pasratesnitt": 4.02623276522,
+          "passnitt": 276.333333333,
+          "pr_pas_justsnitt": 5.0481242273,
+          "offratesnitt": 18.305092602,
+          "privratesnitt": 0.491004957671,
+          "pct_privsnitt": 0.0241577768162
+        },
+        {
+          "area": "Vestre Viken",
+          "rate2022": 20.0052313326,
+          "pasrate2022": 2.87873695683,
+          "rate2023": 20.4811416526,
+          "pasrate2023": 2.98803448979,
+          "rate2024": 20.2598984479,
+          "pasrate2024": 3.03243966218,
+          "ratesnitt": 20.2452126842,
+          "antsnitt": 2298,
+          "popsnitt": 111893.333333,
+          "pasratesnitt": 2.96609442194,
+          "passnitt": 337.666666667,
+          "pr_pas_justsnitt": 6.82554558426,
+          "offratesnitt": 18.6715164084,
+          "privratesnitt": 0.107082666585,
+          "pct_privsnitt": 0.00528928336072
+        },
+        {
+          "area": "Vestfold",
+          "rate2022": 23.2130399428,
+          "pasrate2022": 3.62405929708,
+          "rate2023": 22.7078975281,
+          "pasrate2023": 3.45961476452,
+          "rate2024": 22.0281202439,
+          "pasrate2024": 3.66556027972,
+          "ratesnitt": 22.6586771503,
+          "antsnitt": 1234,
+          "popsnitt": 53110.3333333,
+          "pasratesnitt": 3.58442146101,
+          "passnitt": 195.666666667,
+          "pr_pas_justsnitt": 6.32143217443,
+          "offratesnitt": 20.2963468999,
+          "privratesnitt": 0.128152640786,
+          "pct_privsnitt": 0.00565578651991
+        },
+        {
+          "area": "Telemark",
+          "rate2022": 36.3762351416,
+          "pasrate2022": 4.13237619488,
+          "rate2023": 31.1885424281,
+          "pasrate2023": 3.96747094447,
+          "rate2024": 34.6329369633,
+          "pasrate2024": 4.19735150765,
+          "ratesnitt": 34.0778287404,
+          "antsnitt": 1251.66666667,
+          "popsnitt": 35651.6666667,
+          "pasratesnitt": 4.10169893123,
+          "passnitt": 151.333333333,
+          "pr_pas_justsnitt": 8.30822283933,
+          "offratesnitt": 30.9701578799,
+          "privratesnitt": 1.24273988022,
+          "pct_privsnitt": 0.0364676954534
+        },
+        {
+          "area": "Sørlandet",
+          "rate2022": 23.8367742285,
+          "pasrate2022": 3.98132582812,
+          "rate2023": 24.1276138985,
+          "pasrate2023": 4.03803734805,
+          "rate2024": 26.3250453881,
+          "pasrate2024": 4.0192425897,
+          "ratesnitt": 24.7563897406,
+          "antsnitt": 1795,
+          "popsnitt": 71108,
+          "pasratesnitt": 4.01187678899,
+          "passnitt": 292,
+          "pr_pas_justsnitt": 6.17077518644,
+          "offratesnitt": 22.1628330719,
+          "privratesnitt": 0.449916546969,
+          "pct_privsnitt": 0.0181737543997
+        },
+        {
+          "area": "Norge",
+          "rate2022": 19.7578787517,
+          "pasrate2022": 3.47142832767,
+          "rate2023": 20.3692425185,
+          "pasrate2023": 3.47471582328,
+          "rate2024": 20.5395524783,
+          "pasrate2024": 3.53093001183,
+          "ratesnitt": 20.2232835741,
+          "antsnitt": 23919.6666667,
+          "popsnitt": 1175934.66667,
+          "pasratesnitt": 3.49251255024,
+          "passnitt": 4133.66666667,
+          "pr_pas_justsnitt": 5.79046840439,
+          "offratesnitt": 18.1030707238,
+          "privratesnitt": 0.39017818161,
+          "pct_privsnitt": 0.0192935128551
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "datasett_2",
+      "description": "Ekstradatasettet for gitt resultatboks",
+      "data": [
+        {
+          "area": "Norge",
+          "aar": 2017,
+          "rate": 17.1690321413
+        },
+        {
+          "area": "Norge",
+          "aar": 2018,
+          "rate": 17.7982506107
+        },
+        {
+          "area": "Norge",
+          "aar": 2019,
+          "rate": 19.0009415611
+        },
+        {
+          "area": "Norge",
+          "aar": 2020,
+          "rate": 19.3428898531
+        },
+        {
+          "area": "Norge",
+          "aar": 2021,
+          "rate": 19.6538986317
+        },
+        {
+          "area": "Norge",
+          "aar": 2022,
+          "rate": 19.7578787517
+        },
+        {
+          "area": "Norge",
+          "aar": 2023,
+          "rate": 20.3692425185
+        },
+        {
+          "area": "Norge",
+          "aar": 2024,
+          "rate": 20.5395524783
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "datasett_3",
+      "description": "Ekstradatasettet for gitt resultatboks",
+      "data": [
+        {
+          "alder": 0,
+          "andel": 3.90061239615e-05,
+          "jenter": 1,
+          "gutter": null
+        },
+        {
+          "alder": 1,
+          "andel": 0.000174735712235,
+          "jenter": 4.66666666667,
+          "gutter": 6.33333333333
+        },
+        {
+          "alder": 2,
+          "andel": 0.000413731001837,
+          "jenter": 11.3333333333,
+          "gutter": 16.6666666667
+        },
+        {
+          "alder": 3,
+          "andel": 0.0010384596589,
+          "jenter": 28.3333333333,
+          "gutter": 30.3333333333
+        },
+        {
+          "alder": 4,
+          "andel": 0.00125698825614,
+          "jenter": 35,
+          "gutter": 39
+        },
+        {
+          "alder": 5,
+          "andel": 0.00142053724253,
+          "jenter": 40.6666666667,
+          "gutter": 54
+        },
+        {
+          "alder": 6,
+          "andel": 0.00174922477538,
+          "jenter": 51.3333333333,
+          "gutter": 66.3333333333
+        },
+        {
+          "alder": 7,
+          "andel": 0.00202742594882,
+          "jenter": 60.6666666667,
+          "gutter": 75
+        },
+        {
+          "alder": 8,
+          "andel": 0.00254688585321,
+          "jenter": 77,
+          "gutter": 80.6666666667
+        },
+        {
+          "alder": 9,
+          "andel": 0.00292324578085,
+          "jenter": 89.6666666667,
+          "gutter": 92.3333333333
+        },
+        {
+          "alder": 10,
+          "andel": 0.00361834005973,
+          "jenter": 112.666666667,
+          "gutter": 110
+        },
+        {
+          "alder": 11,
+          "andel": 0.00410574385186,
+          "jenter": 130.666666667,
+          "gutter": 146.666666667
+        },
+        {
+          "alder": 12,
+          "andel": 0.00497368990125,
+          "jenter": 161,
+          "gutter": 166.666666667
+        },
+        {
+          "alder": 13,
+          "andel": 0.00528448662078,
+          "jenter": 173,
+          "gutter": 191
+        },
+        {
+          "alder": 14,
+          "andel": 0.00542508460671,
+          "jenter": 176.333333333,
+          "gutter": 207.333333333
+        },
+        {
+          "alder": 15,
+          "andel": 0.00557322366445,
+          "jenter": 179.333333333,
+          "gutter": 231.333333333
+        },
+        {
+          "alder": 16,
+          "andel": 0.00587736115913,
+          "jenter": 187,
+          "gutter": 236.666666667
+        },
+        {
+          "alder": 17,
+          "andel": 0.0060815858419,
+          "jenter": 192.666666667,
+          "gutter": 231.333333333
+        },
+        {
+          "alder": 18,
+          "andel": 0.00633882557118,
+          "jenter": 199.666666667,
+          "gutter": 240.666666667
+        }
+      ]
+    }
+  ]
+}
