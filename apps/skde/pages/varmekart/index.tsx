@@ -85,7 +85,7 @@ export const Skde = (): JSX.Element => {
   const specificIndIDs = indicatorsPerHospital.find(
     (row) => row.unit == unitName,
   )?.specificInd;
-  console.log(specificIndIDs ? "foo" : "bar");
+
   const allIndIDs = specificIndIDs
     ? commonIndIDs.concat(specificIndIDs)
     : commonIndIDs;
