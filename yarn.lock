@@ -689,9 +689,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/code-coverage@npm:3.14.0":
-  version: 3.14.0
-  resolution: "@cypress/code-coverage@npm:3.14.0"
+"@cypress/code-coverage@npm:3.14.4":
+  version: 3.14.4
+  resolution: "@cypress/code-coverage@npm:3.14.4"
   dependencies:
     "@cypress/webpack-preprocessor": "npm:^6.0.0"
     chalk: "npm:4.1.2"
@@ -705,10 +705,10 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.1
     "@babel/preset-env": ^7.0.0
-    babel-loader: ^8.3 || ^9
+    babel-loader: ^8.3 || ^9 || ^10
     cypress: "*"
     webpack: ^4 || ^5
-  checksum: 10/03caa53eb460c6507130d4d794b8cfe2c4112398e1893a27cdfef97bdd04808efa7ac6573053e97ee12384e8c3a654f01739c89d500d2d1ed09e6f65c7dc7087
+  checksum: 10/de8a629958f7839e8aa6ccd2d0c9fe6fba90f9ba05387042b4d4af4b06c2aa5ed92ac822b9b980e0a1d31438d4ba5fe797dd7bac1ffadfe884798a5bd6c71e2f
   languageName: node
   linkType: hard
 
@@ -12342,7 +12342,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "skde@workspace:apps/skde"
   dependencies:
-    "@cypress/code-coverage": "npm:3.14.0"
+    "@cypress/code-coverage": "npm:3.14.4"
     "@emotion/styled": "npm:^11.14.0"
     "@mui/icons-material": "npm:7.0.2"
     "@mui/material": "npm:7.0.2"
