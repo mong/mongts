@@ -11,25 +11,15 @@ import {
 import { BreadCrumbPath } from "../../src/components/Header";
 import { Header } from "../../src/components/Header";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { HeatMapFilterMenu } from "../../src/components/HeatMap/HeatMapFilterMenu";
 import { RegisterName, Medfield, NestedTreatmentUnitName } from "types";
-import { defaultTableContext } from "../behandlingskvalitet/utils/valueOrDefault";
+import { indicatorsPerHospital, indicatorInfo } from "qmongjs/src/data/indicators";
 
 export const Skde = (): JSX.Element => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [selectedYear, setSelectedYear] = useState(defaultYear);
-  const [selectedMedicalFields, setSelectedMedicalFields] = useState<string[]>(
-    [],
-  );
+  const selectedYear = defaultYear;
+
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState([
     "Nasjonalt",
   ]);
-  const [selectedTableContext, setSelectedTableContext] =
-    useState(defaultTableContext);
-
-  const toggleDrawer = (newOpen: boolean) => {
-    setDrawerOpen(newOpen);
-  };
 
   // ########################### //
   // ##### Page parameters ##### //
@@ -68,8 +58,8 @@ export const Skde = (): JSX.Element => {
     return null;
   }
 
-  const registers = registryNameQuery.data as RegisterName[];
-  const medicalFields = medfieldsQuery.data as Medfield[];
+  const indIDs = indicatorInfo.map(row => row.indId)
+
   const nestedUnitNames = unitNamesQuery.data
     ?.nestedUnitNames as NestedTreatmentUnitName[];
 
@@ -150,9 +140,6 @@ export const Skde = (): JSX.Element => {
       </Header>
 
       <Stack direction="row" spacing={2} sx={{ marginLeft: 2, marginTop: 2 }}>
-        <Button variant="contained" onClick={() => setDrawerOpen(true)}>
-          Åpne filtermeny
-        </Button>
 
         <SelectUnitLevelButton
           buttonVariant="outlined"
@@ -178,21 +165,10 @@ export const Skde = (): JSX.Element => {
         minBoxWidth={minBoxWidth}
         maxBoxWidth={maxBoxWidth}
         gap={gap}
-        context={selectedTableContext}
+        context={"caregiver"}
         year={selectedYear}
-        medField={selectedMedicalFields}
+        indIDs={indIDs}
         unitNames={selectedTreatmentUnits}
-      />
-
-      <HeatMapFilterMenu
-        registryNameData={registers}
-        medicalFieldData={medicalFields}
-        drawerOpen={drawerOpen}
-        toggleDrawer={toggleDrawer}
-        setSelectedYear={setSelectedYear}
-        setSelectedMedicalFields={setSelectedMedicalFields}
-        setSelectedTreatmentUnits={setSelectedTreatmentUnits}
-        setSelectedTableContext={setSelectedTableContext}
       />
     </ThemeProvider>
   );

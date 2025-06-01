@@ -1,5 +1,5 @@
 import { ItemBox } from "../HospitalProfileStyles";
-import { indicatorsPerHospital, indicatorInfo } from "./indicators";
+import { indicatorsPerHospital, indicatorInfo } from "qmongjs/src/data/indicators";
 import {
   Typography,
   Box,
