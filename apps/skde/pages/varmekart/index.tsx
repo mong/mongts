@@ -11,8 +11,8 @@ import {
 import { BreadCrumbPath } from "../../src/components/Header";
 import { Header } from "../../src/components/Header";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { RegisterName, Medfield, NestedTreatmentUnitName } from "types";
-import { indicatorsPerHospital, indicatorInfo } from "qmongjs/src/data/indicators";
+import { NestedTreatmentUnitName } from "types";
+import { indicatorInfo } from "qmongjs/src/data/indicators";
 
 export const Skde = (): JSX.Element => {
   const selectedYear = defaultYear;
@@ -58,7 +58,7 @@ export const Skde = (): JSX.Element => {
     return null;
   }
 
-  const indIDs = indicatorInfo.map(row => row.indId)
+  const indIDs = indicatorInfo.map((row) => row.indId);
 
   const nestedUnitNames = unitNamesQuery.data
     ?.nestedUnitNames as NestedTreatmentUnitName[];
@@ -140,7 +140,6 @@ export const Skde = (): JSX.Element => {
       </Header>
 
       <Stack direction="row" spacing={2} sx={{ marginLeft: 2, marginTop: 2 }}>
-
         <SelectUnitLevelButton
           buttonVariant="outlined"
           setSelectedTreatmentUnits={setSelectedTreatmentUnits}
