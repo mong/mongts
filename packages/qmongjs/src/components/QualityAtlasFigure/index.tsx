@@ -3,7 +3,6 @@ import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "qmongjs/src/helpers/hooks";
 import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
 import { Indicator } from "types";
-import { HeatMapColumn } from "../Charts/HeatMap";
 
 type QualityAtlasFigureProps = {
   width: number;
@@ -14,6 +13,7 @@ type QualityAtlasFigureProps = {
   year: number;
   indIDs: string[];
   unitNames: string[];
+  indNameKey: { indID: string; indTitle: string; registryShortName: string }[];
 };
 
 export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
@@ -26,6 +26,7 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
     year,
     indIDs,
     unitNames,
+    indNameKey,
   } = props;
 
   const queryParams: FetchIndicatorParams = {
@@ -61,33 +62,8 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
     validUnitNames.includes(row.unit_name),
   );
 
-  const filteredIndIDs = indIDs.filter((indID) =>
-    filteredData.map((row) => row.ind_id).includes(indID),
-  );
-
-  // Map indicator IDs to description
-  const indNameKey = filteredData.map((row) => {
-    return {
-      indID: row.ind_id,
-      indTitle: row.ind_title,
-      registryShortName: row.registry_short_name,
-    };
-  });
-
   // Transform the data
-  const heatmapData = createHeatmapData(
-    filteredData,
-    validUnitNames,
-    filteredIndIDs,
-  );
-
-  // Remove columns whith no data
-  heatmapData.data = heatmapData.data.filter((col) => {
-    const nRows = heatmapData.data[0].bins.length;
-    const counts = col.bins.map((bin) => bin.count);
-    const invalidCounts = counts.filter((bin) => bin == -1);
-    return invalidCounts.length === nRows ? false : true;
-  });
+  const heatmapData = createHeatmapData(filteredData, validUnitNames, indIDs);
 
   // Sort the columns according to the number of data-less units
   const combinedList = [];
@@ -95,36 +71,16 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
   for (let i = 0; i < heatmapData.data.length; i++) {
     combinedList.push({
       column: heatmapData.data[i],
-      indID: filteredIndIDs[i],
+      indID: indIDs[i],
     });
   }
 
-  combinedList.sort((a, b) => {
-    const count = (
-      x: { column: HeatMapColumn; indID: string },
-      score: number[],
-    ) =>
-      x.column.bins.filter((val) => {
-        return score.includes(val.count);
-      }).length;
-
-    return count(a, [2]) > count(b, [2])
-      ? -1
-      : count(a, [2]) < count(b, [2])
-        ? 1
-        : count(a, [1]) > count(b, [1])
-          ? -1
-          : count(a, [1]) < count(b, [1])
-            ? 1
-            : count(a, [0]) > count(b, [0])
-              ? -1
-              : count(a, [0]) < count(b, [0])
-                ? 1
-                : 0;
-  });
-
   heatmapData.data = combinedList.map((x) => x.column);
   const sortedIndIDs = combinedList.map((x) => x.indID);
+
+  if (heatmapData.data.length === 0) {
+    return null;
+  }
 
   return (
     <div style={{ margin: 40 }}>
@@ -136,7 +92,7 @@ export const QualityAtlasFigure = (props: QualityAtlasFigureProps) => {
           maxBoxWidth={maxBoxWidth}
           separation={gap}
           year={year}
-        ></HeatMap>
+        />
       </>
       <>
         <h3>Indikatorer</h3>

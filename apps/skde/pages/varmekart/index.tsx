@@ -1,5 +1,12 @@
 import React, { useState, type JSX } from "react";
-import { Typography, Button, ThemeProvider, Stack } from "@mui/material";
+import {
+  Typography,
+  Button,
+  ThemeProvider,
+  Stack,
+  Grid,
+  Box,
+} from "@mui/material";
 import {
   QualityAtlasFigure,
   useRegisterNamesQuery,
@@ -12,7 +19,12 @@ import { BreadCrumbPath } from "../../src/components/Header";
 import { Header } from "../../src/components/Header";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { NestedTreatmentUnitName } from "types";
-import { indicatorInfo } from "qmongjs/src/data/indicators";
+import {
+  commonIndicators,
+  indicatorsPerHospital,
+  indicatorInfo,
+} from "qmongjs/src/data/indicators";
+import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterMenu";
 
 export const Skde = (): JSX.Element => {
   const selectedYear = defaultYear;
@@ -30,6 +42,14 @@ export const Skde = (): JSX.Element => {
   const maxBoxWidth = 75;
   const gap = 2;
 
+  const indNameKey = indicatorInfo.map((row) => {
+    return {
+      indID: row.indId,
+      indTitle: row.title,
+      registryShortName: row.registry,
+    };
+  });
+
   // Header settings
   const breadcrumbs: BreadCrumbPath = [
     {
@@ -41,6 +61,8 @@ export const Skde = (): JSX.Element => {
       text: "Varmekart",
     },
   ];
+
+  const [unitName, setUnitName] = useState<string>("Helse Nord RHF");
 
   // ################### //
   // ##### Queries ##### //
@@ -58,17 +80,21 @@ export const Skde = (): JSX.Element => {
     return null;
   }
 
-  const indIDs = indicatorInfo.map((row) => row.indId);
+  const commonIndIDs = commonIndicators;
+
+  const specificIndIDs = indicatorsPerHospital.find(
+    (row) => row.unit == unitName,
+  )?.specificInd;
+  console.log(specificIndIDs ? "foo" : "bar");
+  const allIndIDs = specificIndIDs
+    ? commonIndIDs.concat(specificIndIDs)
+    : commonIndIDs;
 
   const nestedUnitNames = unitNamesQuery.data
     ?.nestedUnitNames as NestedTreatmentUnitName[];
 
-  const RHFs = nestedUnitNames
-    .map((row) => row.rhf)
-    .filter((row) => !row.includes("Private"));
-
   const HFs = nestedUnitNames
-    .filter((row) => !row.rhf.includes("Private"))
+    .filter((row) => row.rhf == "Helse Nord RHF")
     .map((row) => {
       return row.hf.map((hf) => hf.hf);
     })
@@ -76,7 +102,7 @@ export const Skde = (): JSX.Element => {
     .filter((row) => !row.includes("Private"));
 
   const hospitals = nestedUnitNames
-    .filter((row) => !row.rhf.includes("Private"))
+    .filter((row) => row.rhf == "Helse Nord RHF")
     .map((rhf) => {
       return rhf.hf
         .filter((hf) => !hf.hf.includes("Private"))
@@ -104,9 +130,7 @@ export const Skde = (): JSX.Element => {
 
     let unitData = [] as string[];
 
-    if (unitLevel === "RHF") {
-      unitData = RHFs;
-    } else if (unitLevel === "HF") {
+    if (unitLevel === "HF") {
       unitData = HFs;
     } else if (unitLevel === "sykehus") {
       unitData = hospitals;
@@ -139,36 +163,60 @@ export const Skde = (): JSX.Element => {
         kvalitetsregistre i et varmekart.
       </Header>
 
-      <Stack direction="row" spacing={2} sx={{ marginLeft: 2, marginTop: 2 }}>
-        <SelectUnitLevelButton
-          buttonVariant="outlined"
-          setSelectedTreatmentUnits={setSelectedTreatmentUnits}
-          unitLevel="RHF"
-        />
+      <Grid container spacing={2}>
+        <Grid size={6}>
+          <Stack
+            direction="row"
+            spacing={2}
+            sx={{ marginLeft: 2, marginTop: 2, marginBottom: 4 }}
+          >
+            <SelectUnitLevelButton
+              buttonVariant="outlined"
+              setSelectedTreatmentUnits={setSelectedTreatmentUnits}
+              unitLevel="HF"
+            />
 
-        <SelectUnitLevelButton
-          buttonVariant="outlined"
-          setSelectedTreatmentUnits={setSelectedTreatmentUnits}
-          unitLevel="HF"
-        />
+            <SelectUnitLevelButton
+              buttonVariant="outlined"
+              setSelectedTreatmentUnits={setSelectedTreatmentUnits}
+              unitLevel="sykehus"
+            />
+          </Stack>
 
-        <SelectUnitLevelButton
-          buttonVariant="outlined"
-          setSelectedTreatmentUnits={setSelectedTreatmentUnits}
-          unitLevel="sykehus"
-        />
-      </Stack>
-
-      <QualityAtlasFigure
-        width={width}
-        minBoxWidth={minBoxWidth}
-        maxBoxWidth={maxBoxWidth}
-        gap={gap}
-        context={"caregiver"}
-        year={selectedYear}
-        indIDs={indIDs}
-        unitNames={selectedTreatmentUnits}
-      />
+          <QualityAtlasFigure
+            width={width}
+            minBoxWidth={minBoxWidth}
+            maxBoxWidth={maxBoxWidth}
+            gap={gap}
+            context={"caregiver"}
+            year={selectedYear}
+            indIDs={commonIndIDs}
+            unitNames={selectedTreatmentUnits}
+            indNameKey={indNameKey}
+          />
+        </Grid>
+        <Grid size={6}>
+          <Box sx={{ marginTop: 2 }}>
+            <UnitFilterMenu
+              width={Math.min(400, 0.8 * width)}
+              setUnitName={setUnitName}
+              unitNamesQuery={unitNamesQuery}
+              unitName={unitName}
+            />
+            <QualityAtlasFigure
+              width={width}
+              minBoxWidth={minBoxWidth}
+              maxBoxWidth={maxBoxWidth}
+              gap={gap}
+              context={"caregiver"}
+              year={selectedYear}
+              indIDs={allIndIDs}
+              unitNames={[unitName]}
+              indNameKey={indNameKey}
+            />
+          </Box>
+        </Grid>
+      </Grid>
     </ThemeProvider>
   );
 };

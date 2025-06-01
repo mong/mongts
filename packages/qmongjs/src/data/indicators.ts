@@ -1,4 +1,4 @@
-const commonIndicators = [
+export const commonIndicators = [
   "hjerteinfarkt_reper_stemi_tid",
   "hjerneslag_beh_tromb",
   "hjerneslag_rapport_3mnd",
