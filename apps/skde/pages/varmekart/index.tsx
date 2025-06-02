@@ -134,12 +134,12 @@ export const Skde = (): JSX.Element => {
     <ThemeProvider theme={skdeTheme}>
       <Header
         bgcolor="surface2.light"
-        title={"Varmekart"}
+        title={"Utvalgte indikatorer i Helse Nord"}
         breadcrumbs={breadcrumbs}
         maxWidth={false}
       >
-        Her vises alle kvalitetsindikatorer fra nasjonale medisinske
-        kvalitetsregistre i et varmekart.
+        Her vises alle utvalgte nasjonale kvalitetsindikatorer i Helse Nord RHF
+        i et varmekart.
       </Header>
 
       <Stack
