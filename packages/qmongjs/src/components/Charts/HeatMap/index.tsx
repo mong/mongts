@@ -21,7 +21,7 @@ type HeatMapBox = {
   count: number;
 };
 
-export type HeatMapColumn = {
+type HeatMapColumn = {
   bin: number;
   bins: HeatMapBox[];
 };
@@ -29,6 +29,11 @@ export type HeatMapColumn = {
 type HeatMapData = {
   data: HeatMapColumn[];
   xTicks: string[];
+};
+
+const tickLabelProps = {
+  fontSize: 20,
+  fontFamily: "sans-serif",
 };
 
 export const createHeatmapData = (
@@ -249,8 +254,18 @@ export const HeatMap = withTooltip<HeatmapProps, HeatMapBox>(
               }
             </HeatmapRect>
 
-            <AxisLeft scale={yAxisScale} hideAxisLine={true} numTicks={nRows} />
-            <AxisTop scale={xAxisScale} hideAxisLine={true} numTicks={nCols} />
+            <AxisLeft
+              scale={yAxisScale}
+              hideAxisLine={true}
+              numTicks={nRows}
+              tickLabelProps={tickLabelProps}
+            />
+            <AxisTop
+              scale={xAxisScale}
+              hideAxisLine={true}
+              numTicks={nCols}
+              tickLabelProps={tickLabelProps}
+            />
           </Group>
         </svg>
         {tooltipData && (
