@@ -1,12 +1,5 @@
 import React, { useState, type JSX } from "react";
-import {
-  Typography,
-  Button,
-  ThemeProvider,
-  Stack,
-  Grid,
-  Box,
-} from "@mui/material";
+import { Typography, Button, ThemeProvider, Stack } from "@mui/material";
 import {
   QualityAtlasFigure,
   useRegisterNamesQuery,
@@ -19,18 +12,14 @@ import { BreadCrumbPath } from "../../src/components/Header";
 import { Header } from "../../src/components/Header";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { NestedTreatmentUnitName } from "types";
-import {
-  commonIndicators,
-  indicatorsPerHospital,
-  indicatorInfo,
-} from "qmongjs/src/data/indicators";
-import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterMenu";
+import { indicatorInfo } from "qmongjs/src/data/indicators";
 
 export const Skde = (): JSX.Element => {
   const selectedYear = defaultYear;
 
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState([
     "Nasjonalt",
+    "Helse Nord RHF",
   ]);
 
   // ########################### //
@@ -62,8 +51,6 @@ export const Skde = (): JSX.Element => {
     },
   ];
 
-  const [unitName, setUnitName] = useState<string>("Helse Nord RHF");
-
   // ################### //
   // ##### Queries ##### //
   // ################### //
@@ -80,15 +67,7 @@ export const Skde = (): JSX.Element => {
     return null;
   }
 
-  const commonIndIDs = commonIndicators;
-
-  const specificIndIDs = indicatorsPerHospital.find(
-    (row) => row.unit == unitName,
-  )?.specificInd;
-
-  const allIndIDs = specificIndIDs
-    ? commonIndIDs.concat(specificIndIDs)
-    : commonIndIDs;
+  const allIndIDs = indicatorInfo.map((row) => row.indId);
 
   const nestedUnitNames = unitNamesQuery.data
     ?.nestedUnitNames as NestedTreatmentUnitName[];
@@ -163,60 +142,35 @@ export const Skde = (): JSX.Element => {
         kvalitetsregistre i et varmekart.
       </Header>
 
-      <Grid container spacing={2}>
-        <Grid size={6}>
-          <Stack
-            direction="row"
-            spacing={2}
-            sx={{ marginLeft: 2, marginTop: 2, marginBottom: 4 }}
-          >
-            <SelectUnitLevelButton
-              buttonVariant="outlined"
-              setSelectedTreatmentUnits={setSelectedTreatmentUnits}
-              unitLevel="HF"
-            />
+      <Stack
+        direction="row"
+        spacing={2}
+        sx={{ marginLeft: 2, marginTop: 2, marginBottom: 4 }}
+      >
+        <SelectUnitLevelButton
+          buttonVariant="outlined"
+          setSelectedTreatmentUnits={setSelectedTreatmentUnits}
+          unitLevel="HF"
+        />
 
-            <SelectUnitLevelButton
-              buttonVariant="outlined"
-              setSelectedTreatmentUnits={setSelectedTreatmentUnits}
-              unitLevel="sykehus"
-            />
-          </Stack>
+        <SelectUnitLevelButton
+          buttonVariant="outlined"
+          setSelectedTreatmentUnits={setSelectedTreatmentUnits}
+          unitLevel="sykehus"
+        />
+      </Stack>
 
-          <QualityAtlasFigure
-            width={width}
-            minBoxWidth={minBoxWidth}
-            maxBoxWidth={maxBoxWidth}
-            gap={gap}
-            context={"caregiver"}
-            year={selectedYear}
-            indIDs={commonIndIDs}
-            unitNames={selectedTreatmentUnits}
-            indNameKey={indNameKey}
-          />
-        </Grid>
-        <Grid size={6}>
-          <Box sx={{ marginTop: 2 }}>
-            <UnitFilterMenu
-              width={Math.min(400, 0.8 * width)}
-              setUnitName={setUnitName}
-              unitNamesQuery={unitNamesQuery}
-              unitName={unitName}
-            />
-            <QualityAtlasFigure
-              width={width}
-              minBoxWidth={minBoxWidth}
-              maxBoxWidth={maxBoxWidth}
-              gap={gap}
-              context={"caregiver"}
-              year={selectedYear}
-              indIDs={allIndIDs}
-              unitNames={[unitName]}
-              indNameKey={indNameKey}
-            />
-          </Box>
-        </Grid>
-      </Grid>
+      <QualityAtlasFigure
+        width={width}
+        minBoxWidth={minBoxWidth}
+        maxBoxWidth={maxBoxWidth}
+        gap={gap}
+        context={"caregiver"}
+        year={selectedYear}
+        indIDs={allIndIDs}
+        unitNames={selectedTreatmentUnits}
+        indNameKey={indNameKey}
+      />
     </ThemeProvider>
   );
 };
