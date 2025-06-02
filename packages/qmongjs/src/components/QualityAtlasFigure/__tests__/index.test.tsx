@@ -6,7 +6,7 @@ import { indicatorInfo } from "../../../data/indicators";
 describe("QualityAtlasFigure", () => {
   test("renders", () => {
     const allIndIDs = indicatorInfo.map((row) => row.indId);
-    const selectedTreatmentUnits = ["Bodø, Harstad"];
+    const selectedTreatmentUnits = ["Bodø", "Harstad"];
 
     const indNameKey = indicatorInfo.map((row) => {
       return {
