@@ -89,3 +89,5 @@ export {
 } from "./helpers/functions/getUnitName";
 export { IndicatorTableSkeleton } from "./components/IndicatorTable/IndicatorTableSkeleton";
 export { RequirementList } from "./components/RequirementList";
+export { HeatMap, createHeatmapData } from "./components/Charts/HeatMap";
+export { QualityAtlasFigure } from "./components/QualityAtlasFigure";
