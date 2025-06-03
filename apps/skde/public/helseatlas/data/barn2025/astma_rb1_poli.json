@@ -98,6 +98,34 @@
     },
     {
       "type": "linechart",
+      "data": "datasett_2",
+      "linevars": [
+        "rate"
+      ],
+      "linevarsLabels": {
+        "nb": [
+          "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)"
+        ],
+        "en": [
+          "Rate: Number of &usnavn_en per 1,000 children (0-18 years)"
+        ]
+      },
+      "x": [
+        "aar"
+      ],
+      "y": "rate",
+      "xLabel": {
+        "nb": "År",
+        "en": "Year"
+      },
+      "yLabel": {
+        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "en": "Rate: Number of &usnavn_en per 1,000 children (0-18 years)"
+      },
+      "format_y": ",.0f"
+    },
+    {
+      "type": "linechart",
       "data": "datasett_3",
       "linevars": [
         "jenter",
@@ -135,8 +163,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024.\t<br>Konsultasjonsrate: Antall konsultasjoner pr. 1 000 barn (0-18 år) (raten er korrigert rate med KUHR).\t<br>Antall pr. pasient: Antall konsultasjoner pr. pasient.\t<br>Andel private: Andel av konsultasjonene som er utført av private avtalespesialister",
-        "en": "Yearly average for the period 2022-2024. \t<br> Consultation rate: Number of consultations per 1,000 children (0-18 years) (rate is corrected rate with KUHR).\t<br>Proportion private: Proportion of consultations by private."
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024.\t<br>Konsultasjonsrate: Antall konsultasjoner pr. 1 000 barn (0-18 år).\t<br>Antall pr. pasient: Antall konsultasjoner pr. pasient.\t<br>Andel private: Andel av konsultasjonene som er utført av private avtalespesialister",
+        "en": "Yearly average for the period 2022-2024. \t<br> Consultation rate: Number of consultations per 1,000 children (0-18 years)\t<br>Proportion private: Proportion of consultations by private."
       },
       "columns": [
         {
@@ -588,6 +616,53 @@
           "offratesnitt": 8.95048309835,
           "privratesnitt": 13.5636156099,
           "pct_privsnitt": 0.602449859783
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "datasett_2",
+      "description": "Ekstradatasettet for gitt resultatboks",
+      "data": [
+        {
+          "area": "Norge",
+          "aar": 2017,
+          "rate": 27.5787844992
+        },
+        {
+          "area": "Norge",
+          "aar": 2018,
+          "rate": 27.2513279445
+        },
+        {
+          "area": "Norge",
+          "aar": 2019,
+          "rate": 23.8151761831
+        },
+        {
+          "area": "Norge",
+          "aar": 2020,
+          "rate": 23.1922794789
+        },
+        {
+          "area": "Norge",
+          "aar": 2021,
+          "rate": 21.9488446894
+        },
+        {
+          "area": "Norge",
+          "aar": 2022,
+          "rate": 23.3137679799
+        },
+        {
+          "area": "Norge",
+          "aar": 2023,
+          "rate": 22.0303121854
+        },
+        {
+          "area": "Norge",
+          "aar": 2024,
+          "rate": 22.199640249
         }
       ]
     },
