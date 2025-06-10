@@ -119,6 +119,7 @@ export const ResultBox = ({
                   data={figData}
                   lang={atlas.lang}
                   national={nationalName}
+                  areaType={(boxData[0] as BarchartItem).yLabel[atlas.lang]}
                   forfatter={atlas.forfatter}
                 />
               </CarouselItem>
@@ -184,6 +185,7 @@ export const ResultBox = ({
                       data={figData}
                       format={dataItem.format}
                       caption={dataItem.caption[atlas.lang]}
+                      areaType={(boxData[0] as BarchartItem).yLabel[atlas.lang]}
                       lang={atlas.lang}
                     />
                   </div>
@@ -277,6 +279,7 @@ export const ResultBox = ({
                 lang={atlas.lang}
                 x={abacusX}
                 label={(boxData[0] as BarchartItem).xLabel[atlas.lang]}
+                yLabel={(boxData[0] as BarchartItem).yLabel}
                 format={(boxData[0] as BarchartItem).format}
                 national={nationalName}
               />

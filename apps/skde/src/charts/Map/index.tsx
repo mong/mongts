@@ -34,6 +34,7 @@ type MapProps = {
   jenks: number[];
   caption?: string;
   format?: string;
+  areaType: string;
   lang: "en" | "nb" | "nn";
 };
 
@@ -44,10 +45,11 @@ export const Map = ({
   jenks,
   caption,
   format,
+  areaType,
   lang,
 }: MapProps) => {
   // Pick out area query from the url
-  const [selectedAreas, toggleArea] = useAreaQueryParam();
+  const [selectedAreas, toggleArea] = useAreaQueryParam("", areaType);
 
   const width = 1000;
   const height = 1000;
