@@ -81,7 +81,8 @@ export const ResultBox = ({
 
   const boxData: AtlasDataItem[] = atlasData[data_filename];
 
-  const areaType = boxData && (boxData[0] as BarchartItem).yLabel[atlas.lang] || "area";
+  const areaType =
+    (boxData && (boxData[0] as BarchartItem).yLabel[atlas.lang]) || "area";
 
   const transitions = useTransition(expandedResultBox, {
     initial: { transform: "translate(0,0)" },
