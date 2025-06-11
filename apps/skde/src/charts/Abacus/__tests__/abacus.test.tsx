@@ -28,7 +28,7 @@ vi.mock("next/font/google", () => ({
 
 test("Standard render", async () => {
   const { container } = render(
-    <Abacus data={atlasData} yLabel={{nb: "Opptaksområder", en: "area"}} lang="nb" x="rateSnitt" national="Norge" />,
+    <Abacus data={atlasData} areaType="Opptaksområder" lang="nb" x="rateSnitt" national="Norge" />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -36,7 +36,7 @@ test("Standard render", async () => {
 test("Render with picked HF", async () => {
   mockRouter.push("/test_atlas/?Opptaksområder=UNN");
   const { container } = render(
-    <Abacus data={atlasData} yLabel={{nb: "Opptaksområder", en: "area"}} lang="nb" x="rateSnitt" national="Norge" />,
+    <Abacus data={atlasData} areaType="Opptaksområder" lang="nb" x="rateSnitt" national="Norge" />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -44,7 +44,7 @@ test("Render with picked HF", async () => {
 test("Render with another national", async () => {
   mockRouter.push("/test_atlas");
   const { container } = render(
-    <Abacus data={atlasData} yLabel={{nb: "Opptaksområder", en: "area"}} lang="nb" x="rateSnitt" national="Finnmark" />,
+    <Abacus data={atlasData} areaType="Opptaksområder" lang="nb" x="rateSnitt" national="Finnmark" />,
   );
   expect(container).toMatchSnapshot();
 });
@@ -57,7 +57,7 @@ test("Render with many picked HF", async () => {
       lang="nb"
       x="rateSnitt"
       national="Norge"
-      yLabel={{nb: "Opptaksområder", en: ""}}
+      areaType="Opptaksområder"
       format=",.1f"
     />,
   );
@@ -72,7 +72,7 @@ test("Render english with many picked HF", async () => {
       lang="en"
       x="rateSnitt"
       national="Norge"
-      yLabel={{nb: "", en: "Referral areas"}}
+      areaType="Referral areas"
       format=",.1f"
     />,
   );
@@ -87,7 +87,7 @@ test("Click on dots", async () => {
       lang="nb"
       x="rateSnitt"
       national="Norge"
-      yLabel={{nb: "Opptaksområder", en: "area"}}
+      areaType="Opptaksområder"
       format=",.1f"
     />,
   );

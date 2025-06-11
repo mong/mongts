@@ -24,6 +24,7 @@ type DataTableProps = {
     format?: string;
   }[];
   lang: "en" | "nb" | "nn";
+  areaType: string;
   national: string;
 };
 
@@ -32,11 +33,12 @@ export const DataTable = ({
   data,
   headers,
   lang,
+  areaType,
   national,
 }: DataTableProps) => {
   // Pick out area query from the url
   const [selectedAreas, toggleArea] =
-    useAreaQueryParam(national, headers.find((h) => h.id === "area")[lang === "en" ? "label_en" : "label_no"]);
+    useAreaQueryParam(national, areaType);
 
   const [order, setOrder] = React.useState<"asc" | "desc">("desc");
   const [orderBy, setOrderBy] = React.useState(headers[1].id);

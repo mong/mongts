@@ -32,7 +32,7 @@ export default function BeadLine({ boxData, lang }: BeadLineProps) {
       lang={lang}
       x={abacusX}
       label={(boxData[0] as BarchartItem).xLabel[lang]}
-      yLabel={(boxData[0] as BarchartItem).yLabel}
+      areaType={(boxData[0] as BarchartItem).yLabel[lang]}
       format={(boxData[0] as BarchartItem).format}
       national={nationalName}
     />

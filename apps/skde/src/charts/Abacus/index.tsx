@@ -19,7 +19,7 @@ type AbacusProps = {
   label?: string;
   xMin?: number;
   xMax?: number;
-  yLabel: { en: string; nb: string; nn?: string };
+  areaType: string;
   markerOpacity?: number;
   format?: string;
   national: string;
@@ -40,12 +40,12 @@ export const Abacus = ({
   x,
   xMin = 0,
   xMax,
-  yLabel,
+  areaType,
   format,
   national,
 }: AbacusProps) => {
   // Pick out area query from the url
-  const [selectedAreas, toggleArea] = useAreaQueryParam(national, yLabel[lang]);
+  const [selectedAreas, toggleArea] = useAreaQueryParam(national, areaType);
 
   // Move Norge and selected area to the end of data to plot,
   // so they will be on top of the other circles.
@@ -143,7 +143,7 @@ export const Abacus = ({
                 <circle r={7} cx={10} cy={10} fill={colors[0]} />
               </svg>
             </div>
-            {yLabel[lang]}
+            {areaType}
           </li>
           <li key={"national"} className={classNames.legendLI}>
             <div className={classNames.legendAnnualVar}>
@@ -163,7 +163,7 @@ export const Abacus = ({
                 </div>
                 {selectedAreas.size === 1
                   ? Array.from(selectedAreas)[0]
-                  : `${selectedText[lang]} ${yLabel[lang].toLowerCase()}`}
+                  : `${selectedText[lang]} ${areaType.toLowerCase()}`}
               </>
             </li>
           )}

@@ -38,6 +38,7 @@ test("Standard render", async () => {
       lang="nb"
       caption="rateSnitt"
       national="Norge"
+      areaType="Opptaksområder"
       headers={testHeaders}
     />,
   );
@@ -51,6 +52,7 @@ test("Click in table", async () => {
       lang="nb"
       caption="rateSnitt"
       national="OUS"
+      areaType="Opptaksområder"
       headers={testHeaders}
     />,
   );
@@ -94,6 +96,7 @@ test("Render with picked HF", async () => {
       lang="nb"
       caption="rateSnitt"
       national="Norge"
+      areaType="Opptaksområder"
       headers={testHeaders}
     />,
   );
@@ -108,6 +111,7 @@ test("Render with another national", async () => {
       lang="nb"
       caption="rateSnitt"
       national="Finnmark"
+      areaType="Opptaksområder"
       headers={testHeaders}
     />,
   );
@@ -122,6 +126,7 @@ test("Render with many picked HF", async () => {
       lang="nb"
       caption="rateSnitt"
       national="Norge"
+      areaType="Opptaksområder"
       headers={testHeaders}
     />,
   );
@@ -136,6 +141,7 @@ test("Render english with many picked HF", async () => {
       lang="en"
       caption="rateSnitt"
       national="Norge"
+      areaType="Referral areas"
       headers={testHeaders}
     />,
   );
@@ -150,6 +156,7 @@ test("Markdown in caption", async () => {
       lang="nb"
       caption="**Dette** er _litt_ tekst<br>og litt til, med en lenke til [Avisa](https://klassekampen.no/)."
       national="OUS"
+      areaType="Opptaksområder"
       headers={testHeaders}
     />,
   );

@@ -81,6 +81,8 @@ export const ResultBox = ({
 
   const boxData: AtlasDataItem[] = atlasData[data_filename];
 
+  const areaType = (boxData[0] as BarchartItem).yLabel[atlas.lang];
+
   const transitions = useTransition(expandedResultBox, {
     initial: { transform: "translate(0,0)" },
     from: { transform: "translate(0,-2.5rem)" },
@@ -119,7 +121,7 @@ export const ResultBox = ({
                   data={figData}
                   lang={atlas.lang}
                   national={nationalName}
-                  areaType={(boxData[0] as BarchartItem).yLabel[atlas.lang]}
+                  areaType={areaType}
                   forfatter={atlas.forfatter}
                 />
               </CarouselItem>
@@ -153,6 +155,7 @@ export const ResultBox = ({
                   headers={dataItem.columns}
                   data={figData}
                   caption={dataItem.caption[atlas.lang]}
+                  areaType={areaType}
                   lang={atlas.lang}
                   national={nationalName}
                 />
@@ -185,7 +188,7 @@ export const ResultBox = ({
                       data={figData}
                       format={dataItem.format}
                       caption={dataItem.caption[atlas.lang]}
-                      areaType={(boxData[0] as BarchartItem).yLabel[atlas.lang]}
+                      areaType={areaType}
                       lang={atlas.lang}
                     />
                   </div>
@@ -279,7 +282,7 @@ export const ResultBox = ({
                 lang={atlas.lang}
                 x={abacusX}
                 label={(boxData[0] as BarchartItem).xLabel[atlas.lang]}
-                yLabel={(boxData[0] as BarchartItem).yLabel}
+                areaType={areaType}
                 format={(boxData[0] as BarchartItem).format}
                 national={nationalName}
               />
