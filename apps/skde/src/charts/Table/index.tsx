@@ -37,8 +37,7 @@ export const DataTable = ({
   national,
 }: DataTableProps) => {
   // Pick out area query from the url
-  const [selectedAreas, toggleArea] =
-    useAreaQueryParam(national, areaType);
+  const [selectedAreas, toggleArea] = useAreaQueryParam(national, areaType);
 
   const [order, setOrder] = React.useState<"asc" | "desc">("desc");
   const [orderBy, setOrderBy] = React.useState(headers[1].id);

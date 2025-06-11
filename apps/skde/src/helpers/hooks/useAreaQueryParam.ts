@@ -43,7 +43,8 @@ const borhfSet = new Set(Object.keys(borhf));
  * set of selected areas and the second element is a function to toggle a given area.
  */
 export const useAreaQueryParam = (
-  national: string = "", type: string = "area"
+  national: string = "",
+  type: string = "area",
 ): [Set<string>, (area: string) => void] => {
   const router = useRouter();
   const selectedAreas = [router.query[type]].flat().filter(Boolean);
