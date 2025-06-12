@@ -38,6 +38,7 @@ test("Standard render", async () => {
       lang="nb"
       caption="rateSnitt"
       national="Norge"
+      areaType="area"
       headers={testHeaders}
     />,
   );
@@ -51,6 +52,7 @@ test("Click in table", async () => {
       lang="nb"
       caption="rateSnitt"
       national="OUS"
+      areaType="area"
       headers={testHeaders}
     />,
   );
@@ -81,7 +83,9 @@ test("Click in table", async () => {
   fireEvent.click(getByTestId("tablerow_Fonna"));
   expect(mockRouter.query).toEqual({ area: ["UNN", "Fonna"] });
   fireEvent.click(getByTestId("tablerow_Norge"));
-  expect(mockRouter.query).toEqual({ area: ["UNN", "Fonna", "Norge"] });
+  expect(mockRouter.query).toEqual({
+    area: ["UNN", "Fonna", "Norge"],
+  });
   fireEvent.click(getByTestId("tablerow_Fonna"));
   expect(mockRouter.query).toEqual({ area: ["UNN", "Norge"] });
 });
@@ -94,6 +98,7 @@ test("Render with picked HF", async () => {
       lang="nb"
       caption="rateSnitt"
       national="Norge"
+      areaType="area"
       headers={testHeaders}
     />,
   );
@@ -108,6 +113,7 @@ test("Render with another national", async () => {
       lang="nb"
       caption="rateSnitt"
       national="Finnmark"
+      areaType="area"
       headers={testHeaders}
     />,
   );
@@ -122,6 +128,7 @@ test("Render with many picked HF", async () => {
       lang="nb"
       caption="rateSnitt"
       national="Norge"
+      areaType="area"
       headers={testHeaders}
     />,
   );
@@ -136,6 +143,7 @@ test("Render english with many picked HF", async () => {
       lang="en"
       caption="rateSnitt"
       national="Norge"
+      areaType="area"
       headers={testHeaders}
     />,
   );
@@ -143,12 +151,14 @@ test("Render english with many picked HF", async () => {
 });
 
 test("Markdown in caption", async () => {
+  mockRouter.push("/test_atlas/?area=OUS&area=UNN&area=Fonna");
   const { container } = render(
     <DataTable
       data={atlasData}
       lang="nb"
       caption="**Dette** er _litt_ tekst<br>og litt til, med en lenke til [Avisa](https://klassekampen.no/)."
       national="OUS"
+      areaType="area"
       headers={testHeaders}
     />,
   );

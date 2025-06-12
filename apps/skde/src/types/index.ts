@@ -65,8 +65,8 @@ export type BarchartItem = {
   x: string[];
   y: string;
   format: string;
-  xLabel?: { en: string; nb: string; nn?: string };
-  yLabel?: { en: string; nb: string; nn?: string };
+  xLabel: { en: string; nb: string; nn?: string };
+  yLabel: { en: string; nb: string; nn?: string };
 };
 
 type TableItem = {

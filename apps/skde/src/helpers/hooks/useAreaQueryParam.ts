@@ -44,9 +44,10 @@ const borhfSet = new Set(Object.keys(borhf));
  */
 export const useAreaQueryParam = (
   national: string = "",
+  type: string = "area",
 ): [Set<string>, (area: string) => void] => {
   const router = useRouter();
-  const selectedAreas = [router.query.area].flat().filter(Boolean);
+  const selectedAreas = [router.query[type]].flat().filter(Boolean);
 
   function toggleArea(area: string) {
     if (area && area != national) {
@@ -78,7 +79,7 @@ export const useAreaQueryParam = (
         {
           query: {
             ...router.query,
-            area: Array.from(newSelection),
+            [type]: Array.from(newSelection),
           },
         },
         undefined,
