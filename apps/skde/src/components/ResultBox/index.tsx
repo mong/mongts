@@ -82,12 +82,16 @@ export const ResultBox = ({
   const boxData: AtlasDataItem[] = atlasData[data_filename];
 
   const areaName = boxData && (boxData[0] as BarchartItem).yLabel[atlas.lang];
-  const areaType = ({
-    Opptaksområde: "area",
-    Opptaksområder: "area",
-    "Referral areas": "area",
-    Fylker: "county"
-  }[areaName] || areaName || "area").toLowerCase();
+  const areaType = (
+    {
+      Opptaksområde: "area",
+      Opptaksområder: "area",
+      "Referral areas": "area",
+      Fylker: "county",
+    }[areaName] ||
+    areaName ||
+    "area"
+  ).toLowerCase();
 
   const transitions = useTransition(expandedResultBox, {
     initial: { transform: "translate(0,0)" },

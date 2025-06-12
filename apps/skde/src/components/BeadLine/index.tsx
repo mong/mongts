@@ -27,12 +27,16 @@ export default function BeadLine({ boxData, lang }: BeadLineProps) {
   ];
 
   const areaName = boxData && (boxData[0] as BarchartItem).yLabel[atlas.lang];
-  const areaType = ({
-    Opptaksområde: "area",
-    Opptaksområder: "area",
-    "Referral areas": "area",
-    Fylker: "county"
-  }[areaName] || areaName || "area").toLowerCase();
+  const areaType = (
+    {
+      Opptaksområde: "area",
+      Opptaksområder: "area",
+      "Referral areas": "area",
+      Fylker: "county",
+    }[areaName] ||
+    areaName ||
+    "area"
+  ).toLowerCase();
 
   return (
     <Abacus

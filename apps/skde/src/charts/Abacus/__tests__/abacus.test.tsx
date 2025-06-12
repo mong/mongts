@@ -71,9 +71,7 @@ test("Render with another national", async () => {
 });
 
 test("Render with many picked HF", async () => {
-  mockRouter.push(
-    "/test_atlas/?area=OUS&area=UNN&area=Fonna",
-  );
+  mockRouter.push("/test_atlas/?area=OUS&area=UNN&area=Fonna");
   const { container } = render(
     <Abacus
       data={atlasData}
@@ -89,9 +87,7 @@ test("Render with many picked HF", async () => {
 });
 
 test("Render english with many picked HF", async () => {
-  mockRouter.push(
-    "/test_atlas/?area=OUS&area=UNN&area=Fonna",
-  );
+  mockRouter.push("/test_atlas/?area=OUS&area=UNN&area=Fonna");
   const { container } = render(
     <Abacus
       data={atlasData}
