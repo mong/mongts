@@ -26,7 +26,7 @@ export default function BeadLine({ boxData, lang }: BeadLineProps) {
     "data"
   ];
 
-  const areaName = boxData && (boxData[0] as BarchartItem).yLabel[atlas.lang];
+  const areaName = boxData && (boxData[0] as BarchartItem).yLabel[lang];
   const areaType = (
     {
       Opptaksområde: "area",
