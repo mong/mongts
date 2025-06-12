@@ -213,8 +213,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024.\t<br>Konsultasjonsrate: Antall konsultasjoner pr. 1 000 barn (0-18 år) (raten er korrigert rate med KUHR).\t<br>Andel private: Andel av konsultasjonene som er utført av private avtalespesialister",
-        "en": "Yearly average for the period 2022-2024. \t<br> Consultation rate: Number of consultations per 1,000 children (0-18 years) (rate is corrected rate with KUHR).\t<br>Proportion private: Proportion of consultations by private."
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024.\t<br>Konsultasjonsrate: Antall konsultasjoner pr. 1 000 barn (0-18 år) (raten er korrigert rate med KUHR).\t<br>Antall pr. pasient: Antall konsultasjoner pr. pasient.\t<br>Andel private: Andel av konsultasjonene som er utført av private avtalespesialister\t<br>*Kjønns- og aldersjustert",
+        "en": "Yearly average for the period 2022-2024. \t<br> Consultation rate: Number of consultations per 1,000 children (0-18 years) (rate is corrected rate with KUHR).\t<br>Proportion private: Proportion of consultations by private.\t<br>*Age- and gender adjusted"
       },
       "columns": [
         {
@@ -247,7 +247,7 @@
         },
         {
           "id": "pr_pas_justsnitt",
-          "label_no": "Konsultasjoner pr. pasient",
+          "label_no": "Antall pr. pasient",
           "label_en": "Number per patient",
           "typeVar": "number",
           "format": ",.1f"
@@ -262,7 +262,7 @@
         {
           "id": "popsnitt",
           "label_no": "Innbyggere (0-18 år)",
-          "label_en": "Children",
+          "label_en": "Inhabitants (0-18 years)",
           "typeVar": "number",
           "format": ",.0f"
         }
