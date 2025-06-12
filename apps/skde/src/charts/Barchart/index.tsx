@@ -30,8 +30,8 @@ type BarchartProps = {
   width?: number;
   height?: number;
   margin?: { top: number; bottom: number; right: number; left: number };
-  xLabel?: { en: string; nb: string; nn?: string };
-  yLabel?: { en: string; nb: string; nn?: string };
+  xLabel: { en: string; nb: string; nn?: string };
+  yLabel: { en: string; nb: string; nn?: string };
   xMin?: number;
   xMax?: number;
   xLegend?: { en: string[]; nb: string[]; nn: string[] };
@@ -40,6 +40,7 @@ type BarchartProps = {
   lollipopVar?: string;
   lollipopLabel?: { en: string; nb: string; nn: string };
   errorBars?: string[];
+  areaType: string;
   format: string;
   national: string;
   forfatter: "SKDE" | "Helse Førde";
@@ -68,6 +69,7 @@ export const Barchart = ({
   lollipopVar,
   lollipopLabel,
   errorBars,
+  areaType,
   format,
   national,
   forfatter,
@@ -90,7 +92,7 @@ export const Barchart = ({
   const series = toBarchart(sorted, x);
 
   // Pick out area query from the url
-  const [selectedAreas, toggleArea] = useAreaQueryParam(national);
+  const [selectedAreas, toggleArea] = useAreaQueryParam(national, areaType);
 
   // Find max values
   const annualValues = annualVar
