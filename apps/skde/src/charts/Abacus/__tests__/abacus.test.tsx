@@ -30,7 +30,8 @@ test("Standard render", async () => {
   const { container } = render(
     <Abacus
       data={atlasData}
-      areaType="Opptaksområder"
+      areaType="area"
+      areaName="Opptaksområder"
       lang="nb"
       x="rateSnitt"
       national="Norge"
@@ -40,11 +41,12 @@ test("Standard render", async () => {
 });
 
 test("Render with picked HF", async () => {
-  mockRouter.push("/test_atlas/?Opptaksområder=UNN");
+  mockRouter.push("/test_atlas/?area=UNN");
   const { container } = render(
     <Abacus
       data={atlasData}
-      areaType="Opptaksområder"
+      areaType="area"
+      areaName="Opptaksområder"
       lang="nb"
       x="rateSnitt"
       national="Norge"
@@ -58,7 +60,8 @@ test("Render with another national", async () => {
   const { container } = render(
     <Abacus
       data={atlasData}
-      areaType="Opptaksområder"
+      areaType="area"
+      areaName="Opptaksområder"
       lang="nb"
       x="rateSnitt"
       national="Finnmark"
@@ -69,7 +72,7 @@ test("Render with another national", async () => {
 
 test("Render with many picked HF", async () => {
   mockRouter.push(
-    "/test_atlas/?Opptaksområder=OUS&Opptaksområder=UNN&Opptaksområder=Fonna",
+    "/test_atlas/?area=OUS&area=UNN&area=Fonna",
   );
   const { container } = render(
     <Abacus
@@ -77,7 +80,8 @@ test("Render with many picked HF", async () => {
       lang="nb"
       x="rateSnitt"
       national="Norge"
-      areaType="Opptaksområder"
+      areaType="area"
+      areaName="Opptaksområder"
       format=",.1f"
     />,
   );
@@ -86,7 +90,7 @@ test("Render with many picked HF", async () => {
 
 test("Render english with many picked HF", async () => {
   mockRouter.push(
-    "/test_atlas/?Referral+areas=OUS&Referral+areas=UNN&Referral+areas=Fonna",
+    "/test_atlas/?area=OUS&area=UNN&area=Fonna",
   );
   const { container } = render(
     <Abacus
@@ -94,7 +98,8 @@ test("Render english with many picked HF", async () => {
       lang="en"
       x="rateSnitt"
       national="Norge"
-      areaType="Referral areas"
+      areaType="area"
+      areaName="Referral areas"
       format=",.1f"
     />,
   );
@@ -109,18 +114,19 @@ test("Click on dots", async () => {
       lang="nb"
       x="rateSnitt"
       national="Norge"
-      areaType="Opptaksområder"
+      areaType="area"
+      areaName="Opptaksområder"
       format=",.1f"
     />,
   );
   fireEvent.click(getByTestId("circle_Finnmark_unselected"));
   expect(container).toMatchSnapshot();
-  expect(mockRouter.query).toEqual({ Opptaksområder: ["Finnmark"] });
+  expect(mockRouter.query).toEqual({ area: ["Finnmark"] });
   fireEvent.click(getByTestId("circle_Finnmark_selected"));
-  expect(mockRouter.query).toEqual({ Opptaksområder: [] });
+  expect(mockRouter.query).toEqual({ area: [] });
   fireEvent.click(getByTestId("circle_OUS_unselected"));
   fireEvent.click(getByTestId("circle_UNN_unselected"));
   fireEvent.click(getByTestId("circle_Fonna_unselected"));
-  expect(mockRouter.query).toEqual({ Opptaksområder: ["OUS", "UNN", "Fonna"] });
+  expect(mockRouter.query).toEqual({ area: ["OUS", "UNN", "Fonna"] });
   expect(container).toMatchSnapshot();
 });

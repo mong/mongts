@@ -111,7 +111,7 @@ context("v2 atlas", () => {
     cy.visit("/helseatlas/v2/test_atlas");
     cy.get('[data-testid="circle_UNN_selected"]').should("not.exist");
     cy.get('[data-testid="rect_UNN_selected"]').should("not.exist");
-    cy.visit("/helseatlas/v2/test_atlas?Opptaksomr%C3%A5der=UNN");
+    cy.visit("/helseatlas/v2/test_atlas?area=UNN");
     cy.get('[data-testid="circle_UNN_selected"]').should("exist");
     cy.get('[data-testid="circle_UNN_selected"]').should("be.visible");
     cy.get('[data-testid="rect_UNN_selected"]').should("exist");

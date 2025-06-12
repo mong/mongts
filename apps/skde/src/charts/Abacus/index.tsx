@@ -20,6 +20,7 @@ type AbacusProps = {
   xMin?: number;
   xMax?: number;
   areaType: string;
+  areaName: string;
   markerOpacity?: number;
   format?: string;
   national: string;
@@ -41,6 +42,7 @@ export const Abacus = ({
   xMin = 0,
   xMax,
   areaType,
+  areaName,
   format,
   national,
 }: AbacusProps) => {
@@ -143,7 +145,7 @@ export const Abacus = ({
                 <circle r={7} cx={10} cy={10} fill={colors[0]} />
               </svg>
             </div>
-            {areaType}
+            {areaName}
           </li>
           <li key={"national"} className={classNames.legendLI}>
             <div className={classNames.legendAnnualVar}>
@@ -163,7 +165,7 @@ export const Abacus = ({
                 </div>
                 {selectedAreas.size === 1
                   ? Array.from(selectedAreas)[0]
-                  : `${selectedText[lang]} ${areaType.toLowerCase()}`}
+                  : `${selectedText[lang]} ${areaName.toLowerCase()}`}
               </>
             </li>
           )}
