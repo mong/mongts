@@ -42,9 +42,9 @@ export const app_text: appTextTypes = {
   },
 };
 
-export const maxYear = 2024;
+export const maxYear = 2025;
 export const minYear = maxYear - 4;
-export const defaultYear = 2023;
+export const defaultYear = 2024;
 
 export const minDG = 0.6;
 
