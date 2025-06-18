@@ -8,7 +8,7 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall barn med legemiddel på resept pr. 1 000 barn (0-18 år)",
+        "nb": "Legemiddelrate: Antall barn med legemiddel på resept pr. 1 000 barn (0-18 år)",
         "en": "Rate: Number of children with prescription per 1,000 children (0-18 years)"
       },
       "yLabel": {
@@ -66,7 +66,7 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. <br>Legemiddelrate*: Antall barn med legemiddel på resept pr. 1 000 barn (0-18 år).<br>Pasienter i spesialisthelsetjenesten: Antall barn som har kontakt i spesialisthelsetjenesten med aad som hoveddiagnose.<br>Pasientrate*: Antall barn med kontakt i spesialisthelsetjenesten med aad som hoveddiagnose pr. 1 000 barn (0-18 år).<br>Andel i spesialisthelsetjenesten**: Andel av barn med legemiddel på resept som har kontakt i spesialisthelsetjenesten med aad som hoveddiagnose.<br>*Ujusterte rater.<br>**Andel er antall barn med kontakt i spesialisthelsetjenesten delt på antall barn med legemiddel på resept.",
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. <br>Legemiddelrate*: Antall barn med legemiddel på resept pr. 1 000 barn (0-18 år).<br>Pasienter i spesialisthelsetjenesten: Antall barn som har kontakt i spesialisthelsetjenesten med diabetes som hoveddiagnose.<br>Pasientrate*: Antall barn med kontakt i spesialisthelsetjenesten med diabetes som hoveddiagnose pr. 1 000 barn (0-18 år).<br>Andel i spesialisthelsetjenesten**: Andel av barn med legemiddel på resept som har kontakt i spesialisthelsetjenesten med diabetes som hoveddiagnose.<br>*Ujusterte rater.<br>**Andel er antall barn med kontakt i spesialisthelsetjenesten delt på antall barn med legemiddel på resept.",
         "en": "Yearly average for the period 2022-2024. <br>Prescription rate*: number of children with prescription per 1,000 children (0-18 years).<br>Patients: patients with consultation in specialist health care.<br>Patient rate*: number of children with consultation in specialist health care per 1,000 children (0-18 years).<br>Proprotion in specialist health care**: proportion of children with prescription who have contact with specialist health care.<br>*Unadjusted rate.<br>**The proportion is the number of children with contact in specialist health care divided by the number of children with prescription."
       },
       "columns": [
@@ -126,7 +126,7 @@
       "data": "datasett_1",
       "x": "ratesnitt",
       "caption": {
-        "nb": "Rate: Antall barn med legemiddel på resept pr. 1 000 barn (0-18 år)",
+        "nb": "Legemiddelrate: Antall barn med legemiddel på resept pr. 1 000 barn (0-18 år)",
         "en": "Rate: Number of children with prescription per 1,000 children (0-18 years)"
       },
       "jenks": [
@@ -151,7 +151,8 @@
           "lag_min": 4.16268211734,
           "grense": 3.99296772278
         }
-      ]
+      ],
+      "format": ",.1f"
     },
     {
       "type": "data",

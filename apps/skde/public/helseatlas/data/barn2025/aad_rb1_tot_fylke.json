@@ -8,7 +8,7 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall barn med legemiddel på resept pr. 1 000 barn (0-18 år)",
+        "nb": "Legemiddelrate: Antall barn med legemiddel på resept pr. 1 000 barn (0-18 år)",
         "en": "Rate: Number of children with prescription per 1,000 children (0-18 years)"
       },
       "yLabel": {
@@ -70,7 +70,7 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall barn med astmamedisin på resept pr. 1 000 barn (0-18 år)",
+        "nb": "Medisinrate astma: Antall barn med astmamedisin på resept pr. 1 000 barn (0-18 år)",
         "en": "Rate: Number of children with prescription per 1,000 children (0-18 years)"
       },
       "yLabel": {
@@ -104,7 +104,7 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall barn med allergimedisin på resept pr. 1 000 barn (0-18 år)",
+        "nb": "Medisinrate allergi: Antall barn med allergimedisin på resept pr. 1 000 barn (0-18 år)",
         "en": "Rate: Number of children with prescription per 1,000 children (0-18 years)"
       },
       "yLabel": {
@@ -138,7 +138,7 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall barn med eksemmedisin på resept pr. 1 000 barn (0-18 år)",
+        "nb": "Medisinrate eksem: Antall barn med eksemmedisin på resept pr. 1 000 barn (0-18 år)",
         "en": "Rate: Number of children with prescription per 1,000 children (0-18 years)"
       },
       "yLabel": {
@@ -168,8 +168,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. <br>Legemiddelrate*: Antall barn med legemiddel på resept pr. 1 000 barn (0-18 år).<br>Pasientrate*: Antall barn med kontakt i spesialisthelsetjenesten med aktuell hoveddiagnose pr. 1 000 barn (0-18 år).<br>Medisinrate astma*: Antall barn med astmamedisin på resept pr. 1 000 barn (0-18 år).<br>Medisinrate allergi*: Antall barn med allergimedisin på resept pr. 1 000 barn (0-18 år).<br>Medisinrate eksem*: Antall barn med eksemmedisin på resept pr. 1 000 barn (0-18 år).<br>*Ujusterte rater.<br>**Andel er antall barn med kontakt i spesialisthelsetjenesten delt på antall barn med legemiddel på resept.",
-        "en": "Yearly average for the period 2022-2024. <br>Prescription rate*: number of children with prescription per 1,000 children (0-18 years).<br>Patient rate*: number of children with consultation in specialist health care per 1,000 children (0-18 years).<br>Prescription rate, astmha*: number of children with prescription for astmha per 1,000 children (0-18 years).<br>Prescription rate, allergy*: number of children with prescription for allergy per 1,000 children (0-18 years).<br>Prescription rate, eczema*: number of children with prescription for eczema per 1,000 children (0-18 years).<br>Proprotion in specialist health care: proportion of children with prescription who have contact with specialist health care.<br>*Unadjusted rate.<br>**The proportion is the number of children with contact in specialist health care divided by the number of children with prescription."
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. <br>Legemiddelrate*: Antall barn med legemiddel på resept pr. 1 000 barn (0-18 år).<br>Pasientrate*: Antall barn med kontakt i spesialisthelsetjenesten med aktuell hoveddiagnose pr. 1 000 barn (0-18 år).<br>Medisinrate astma*: Antall barn med astmamedisin på resept pr. 1 000 barn (0-18 år).<br>Medisinrate allergi*: Antall barn med allergimedisin på resept pr. 1 000 barn (0-18 år).<br>Medisinrate eksem*: Antall barn med eksemmedisin på resept pr. 1 000 barn (0-18 år).<br>*Ujusterte rater.",
+        "en": "Yearly average for the period 2022-2024. <br>Prescription rate*: number of children with prescription per 1,000 children (0-18 years).<br>Patient rate*: number of children with consultation in specialist health care per 1,000 children (0-18 years).<br>Prescription rate, astmha*: number of children with prescription for astmha per 1,000 children (0-18 years).<br>Prescription rate, allergy*: number of children with prescription for allergy per 1,000 children (0-18 years).<br>Prescription rate, eczema*: number of children with prescription for eczema per 1,000 children (0-18 years).<br>Proprotion in specialist health care: proportion of children with prescription who have contact with specialist health care.<br>*Unadjusted rate."
       },
       "columns": [
         {
@@ -228,7 +228,7 @@
       "data": "datasett_1",
       "x": "ratesnitt",
       "caption": {
-        "nb": "Rate: Antall barn med legemiddel på resept pr. 1 000 barn (0-18 år)",
+        "nb": "Legemiddelrate: Antall barn med legemiddel på resept pr. 1 000 barn (0-18 år)",
         "en": "Rate: Number of children with prescription per 1,000 children (0-18 years)"
       },
       "jenks": [
@@ -253,7 +253,8 @@
           "lag_min": 229.007537767,
           "grense": 223.073211017
         }
-      ]
+      ],
+      "format": ",.0f"
     },
     {
       "type": "data",

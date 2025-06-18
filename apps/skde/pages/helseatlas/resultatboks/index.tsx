@@ -4,7 +4,7 @@ import { ThemeProvider } from "@mui/material";
 import { skdeTheme } from "qmongjs";
 import { Carousel, CarouselItem } from "../../../src/components/Carousel";
 import { Map } from "../../../src/charts/Map";
-import { AtlasDataItem, DataItemPoint } from "../../../src/types";
+import { AtlasDataItem, BarchartItem, DataItemPoint } from "../../../src/types";
 import { Barchart } from "../../../src/charts/Barchart";
 import { Linechart } from "../../../src/charts/Linechart";
 import { DataTable } from "../../../src/charts/Table";
@@ -37,6 +37,7 @@ export default function ResultBoxPage() {
   }
 
   const boxData: AtlasDataItem[] = dataFetchResult.data["innhold"];
+  const areaType = (boxData[0] as BarchartItem).yLabel[lang];
   const nationalName = boxData.find((o) => o.type === "data")["national"];
 
   const dataCarousel = (
@@ -59,6 +60,7 @@ export default function ResultBoxPage() {
                   data={figData}
                   lang={lang}
                   national={nationalName}
+                  areaType={areaType}
                   forfatter="SKDE"
                 />
               </CarouselItem>
@@ -93,6 +95,7 @@ export default function ResultBoxPage() {
                   data={figData}
                   caption={dataItem.caption[lang]}
                   lang={lang}
+                  areaType={areaType}
                   national={nationalName}
                 />
               </CarouselItem>
@@ -123,6 +126,7 @@ export default function ResultBoxPage() {
                       attrName={dataItem.x}
                       data={figData}
                       format={dataItem.format}
+                      areaType={areaType}
                       caption={dataItem.caption[lang]}
                       lang={lang}
                     />
