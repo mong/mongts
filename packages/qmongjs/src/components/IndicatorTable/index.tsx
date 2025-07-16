@@ -124,6 +124,14 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
   } else {
     return (
       <table>
+        <IndicatorTableHeader
+          colspan={colspan}
+          unitNames={[]}
+          selection_bar_height={selection_bar_height}
+          legend_height={legend_height}
+          descriptionHeader={descriptionHeader}
+          treatmentYear={showTreatmentYear ? treatmentYear : undefined}
+        />
         <tbody>{<NoDataAvailable colspan={colspan} />}</tbody>
       </table>
     );
