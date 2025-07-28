@@ -16,6 +16,7 @@ import {
 import { RegistryEvaluation, RegistryRank, RegisterName } from "types";
 import { FaCircle } from "react-icons/fa";
 import { styled, Box, Tabs, Tab, Stack, Typography } from "@mui/material";
+import { Markdown } from "../../src/components/Markdown";
 
 const levelAColour = "#58A55C";
 const levelBColour = "#FD9C00";
@@ -190,11 +191,13 @@ const Stadiumfigur = ({ registry }) => {
         <h2>
           {"Ekspertgruppens vurdering av årsrapporten for " + defaultYear}
         </h2>
-        <div style={{ whiteSpace: "pre-wrap" }}>
-          {evaluationData
-            ? evaluationData.evaluation_text
-            : "Ingen evaluering tilgjengelig"}
-        </div>
+        <Typography style={{ width: "50%" }} variant="body1">
+          <Markdown>
+            {evaluationData
+              ? evaluationData.evaluation_text
+              : "Ingen evaluering tilgjengelig"}
+          </Markdown>
+        </Typography>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
         {checkList}
