@@ -23,6 +23,8 @@ const levelBColour = "#FD9C00";
 const levelCColour = "#D85140";
 const noLevelColour = "#777777";
 
+const reportYear = defaultYear - 1;
+
 const Stadiumfigur = ({ registry }) => {
   // Copy-paste code from https://mui.com/material-ui/react-tabs/
   const [value, setValue] = React.useState(0);
@@ -62,11 +64,11 @@ const Stadiumfigur = ({ registry }) => {
   // End copy-paste code
 
   const rankQuery = useRegistryRankQuery();
-  const evaluationQuery = useRegistryEvaluationQuery(defaultYear);
+  const evaluationQuery = useRegistryEvaluationQuery(reportYear);
 
   const checkList = RequirementList({
     registry: registry,
-    year: defaultYear,
+    year: reportYear,
   });
 
   if (rankQuery.isFetching || evaluationQuery.isFetching) {
@@ -188,9 +190,7 @@ const Stadiumfigur = ({ registry }) => {
         <PlotComponent />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <h2>
-          {"Ekspertgruppens vurdering av årsrapporten for " + defaultYear}
-        </h2>
+        <h2>{"Ekspertgruppens vurdering av årsrapporten for " + reportYear}</h2>
         <Typography style={{ width: "50%" }} variant="body1">
           <Markdown>
             {evaluationData
