@@ -16,7 +16,7 @@ interface IndicatorTableHeaderProps {
 export const IndicatorTableHeader = (props: IndicatorTableHeaderProps) => {
   const {
     colspan = 2,
-    descriptionHeader = "Kvalitetsindikator",
+    descriptionHeader = "Kvalitetsindikatorer",
     unitNames = [],
     selection_bar_height,
     legend_height,
