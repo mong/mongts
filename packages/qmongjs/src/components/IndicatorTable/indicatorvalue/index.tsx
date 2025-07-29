@@ -42,12 +42,13 @@ export const IndicatorData = ({
 }: IndicatorValueProps) => {
   const numberFormat = format === undefined ? ",.0%" : format;
   const theLevel = level(indicatorData);
-  const denominator =
-    indicatorData.type === "andel" ? indicatorData.denominator : 0;
-  const numerator =
-    indicatorData.type === "andel"
-      ? Math.round(indicatorData.var * denominator)
-      : 0;
+
+  const showN = indicatorData.type
+    ? ["andel", "dg_andel"].includes(indicatorData.type)
+    : false;
+
+  const denominator = showN ? indicatorData.denominator : 0;
+  const numerator = showN ? Math.round(indicatorData.var * denominator) : 0;
 
   return (
     <>
@@ -57,7 +58,7 @@ export const IndicatorData = ({
           <i style={{ paddingLeft: "0.2em" }}>{levelSymbols(theLevel)}</i>
         </h4>
       </div>
-      {indicatorData.type === "andel" && (
+      {showN && (
         <div className={style.summary}>{`${numerator} av ${denominator}`}</div>
       )}
     </>

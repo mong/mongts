@@ -42,8 +42,8 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall kontakter pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of consultations per 1,000 children (0-18 years)"
+        "nb": "Konsultasjonsrate: Antall konsultasjoner pr. 1 000 barn (0-18 år)",
+        "en": "Consultations rate: Number of consultations per 1,000 children (0-18 years)"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -76,8 +76,8 @@
         "gutter"
       ],
       "linecolors": [
-        "#253776",
-        "#74A5CD"
+        "#6CACE4",
+        "#003087"
       ],
       "linevarsLabels": {
         "nb": [
@@ -107,8 +107,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. Antall (rate) pr. 1 000 barn (0-18 år)",
-        "en": "Yearly average for the period 2022-2024. Number (rate) per 1,000 children (0-18 years)"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. <br>Konsultasjonsrate*: antall konsultasjoner pr. 1 000 barn (0-18 år).<br>*Kjønns- og aldersjustert",
+        "en": "Yearly average for the period 2022-2024. <br>Consultations rate*: number of consultations per 1,000 children (0-18 years). <br>*Age- and gender adjusted"
       },
       "columns": [
         {
@@ -123,11 +123,18 @@
           "label_no": "Andel %",
           "label_en": "Proportion %",
           "typeVar": "number",
-          "format": ",.1f"
+          "format": ",.0f"
+        },
+        {
+          "id": "ratesnitt",
+          "label_no": "Konsultasjons-rate",
+          "label_en": "Rate",
+          "typeVar": "number",
+          "format": ",.0f"
         },
         {
           "id": "antsnitt",
-          "label_no": "Kontakter",
+          "label_no": "Konsultasjoner",
           "label_en": "Number",
           "typeVar": "number",
           "format": ",.0f"
@@ -160,7 +167,7 @@
       "data": "datasett_1",
       "x": "pasratesnitt",
       "caption": {
-        "nb": "Andel barn (0-18 år) i med allmennlegetjenesten",
+        "nb": "Andel barn (0-18 år) i allmennlegetjenesten",
         "en": "Proportion of children (0-18 years) in primary health care"
       },
       "jenks": [

@@ -19,7 +19,12 @@ vi.mock("next/font/google", () => ({
 describe("BeadLine component", () => {
   it("renders with valid boxData and lang", () => {
     const boxData = [
-      { type: "map", x: "xValue", xLabel: { nb: "test" } },
+      {
+        type: "barchart",
+        xLabel: { nb: "test" },
+        yLabel: { nb: "Opptaksområder" },
+      },
+      { type: "map", x: "xValue" },
       { type: "data", national: "Norge", data: atlasData },
     ];
     const lang = "nb";
@@ -28,7 +33,9 @@ describe("BeadLine component", () => {
   });
 
   it("throws error with invalid boxData (missing type property)", () => {
-    const boxData = [{ x: "xValue", xLabel: { nb: "test" } }];
+    const boxData = [
+      { x: "xValue", xLabel: { nb: "test" }, yLabel: { nb: "Opptaksområder" } },
+    ];
     const lang = "nb";
     expect(() =>
       render(<BeadLine boxData={boxData} lang={lang} />),
@@ -37,7 +44,12 @@ describe("BeadLine component", () => {
 
   it("throws error with invalid boxData (missing x property in map data)", () => {
     const boxData = [
-      { type: "map", xLabel: { nb: "test" } },
+      {
+        type: "barchart",
+        xLabel: { nb: "test" },
+        yLabel: { nb: "Opptaksområder" },
+      },
+      { type: "map" },
       { type: "data", national: "nationalValue", data: [] },
     ];
     const lang = "nb";
@@ -48,7 +60,12 @@ describe("BeadLine component", () => {
 
   it("throws error with invalid boxData (missing national property in data)", () => {
     const boxData = [
-      { type: "map", x: "xValue", xLabel: { nb: "test" } },
+      {
+        type: "barchart",
+        xLabel: { nb: "test" },
+        yLabel: { nb: "Opptaksområder" },
+      },
+      { type: "map", x: "xValue" },
       { type: "data", data: [] },
     ];
     const lang = "nb";

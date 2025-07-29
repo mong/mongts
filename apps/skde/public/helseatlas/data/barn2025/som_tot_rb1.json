@@ -42,8 +42,8 @@
         "gutter"
       ],
       "linecolors": [
-        "#253776",
-        "#74A5CD"
+        "#6CACE4",
+        "#003087"
       ],
       "linevarsLabels": {
         "nb": [
@@ -73,8 +73,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. Antall (rate) pr. 1 000 barn (0-18 år)",
-        "en": "Yearly average for the period 2022-2024. Number (rate) per 1,000 children (0-18 years)"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. <br>Andel: Andel barn i kontakt med somatisk spesialisthelsetjeneste.",
+        "en": "Yearly average for the period 2022-2024. <br>Proportion: Proportion of children with consultations in specialist health care."
       },
       "columns": [
         {
@@ -86,10 +86,10 @@
         },
         {
           "id": "pasratesnitt",
-          "label_no": "Andel %",
+          "label_no": "Andel barn %",
           "label_en": "Proportion %",
           "typeVar": "number",
-          "format": ",.1f"
+          "format": ",.0f"
         },
         {
           "id": "korrantsnitt",

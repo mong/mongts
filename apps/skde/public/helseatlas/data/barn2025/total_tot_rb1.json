@@ -42,8 +42,8 @@
         "gutter"
       ],
       "linecolors": [
-        "#253776",
-        "#74A5CD"
+        "#6CACE4",
+        "#003087"
       ],
       "linevarsLabels": {
         "nb": [
@@ -73,8 +73,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. Antall (rate) pr. 1 000 barn (0-18 år)",
-        "en": "Yearly average for the period 2022-2024. Number (rate) per 1,000 children (0-18 years)"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. <br>Andel: Andel barn i kontakt med somatisk spesialisthelsetjeneste eller med konsultasjoner hos fastlege/legevakt. <br>Andel spesialist: andel pasienter i spesialisthelsetjenesten.",
+        "en": "Yearly average for the period 2022-2024. <br>Proportion: Proportion of children with consultations in specialist or primary health care. <br>Proportion specialist: Proportion of children in specialist health care."
       },
       "columns": [
         {
@@ -89,7 +89,7 @@
           "label_no": "Andel %",
           "label_en": "Proportion %",
           "typeVar": "number",
-          "format": ",.1f"
+          "format": ",.0f"
         },
         {
           "id": "korrantsnitt",
@@ -110,7 +110,7 @@
           "label_no": "Andel spesialist",
           "label_en": "Proportion specialist",
           "typeVar": "number",
-          "format": ",.1%"
+          "format": ",.0%"
         },
         {
           "id": "popsnitt",
@@ -126,7 +126,7 @@
       "data": "datasett_1",
       "x": "pasratesnitt",
       "caption": {
-        "nb": "Andel barn (0-18 år) i med spesialist- og allmennlegetjenesten",
+        "nb": "Andel barn (0-18 år) i spesialist- og allmennlegetjenesten",
         "en": "Proportion of children (0-18 years) in specialist and primary health care"
       },
       "jenks": [

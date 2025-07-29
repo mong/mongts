@@ -8,7 +8,7 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "nb": "Konsultasjonsrate: Antall konsultasjoner pr. 1 000 barn (0-18 år)",
         "en": "Rate: Number of consultations per 1,000 children (0-18 years)"
       },
       "yLabel": {
@@ -42,7 +42,7 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall pasienter pr. 1000 barn (0-18 år)",
+        "nb": "Pasientrate: Antall pasienter pr. 1000 barn (0-18 år)",
         "en": "Rate: Number of patients per 1,000 children (0-18 years)"
       },
       "yLabel": {
@@ -72,23 +72,6 @@
       "type": "barchart",
       "data": "datasett_1",
       "x": [
-        "pr_pas_justsnitt"
-      ],
-      "y": "area",
-      "xLabel": {
-        "nb": "Antall polikliniske konsultasjoner pr. pasient",
-        "en": "Number of consultations per patients"
-      },
-      "yLabel": {
-        "nb": "Opptaksområder",
-        "en": "Referral areas"
-      },
-      "format": ",.1f"
-    },
-    {
-      "type": "barchart",
-      "data": "datasett_1",
-      "x": [
         "privratesnitt",
         "offratesnitt"
       ],
@@ -104,7 +87,7 @@
         ]
       },
       "xLabel": {
-        "nb": "Rate: Antall konsultasjoner, spesialist/allmennlege pr. 1 000 barn (0-18 år)",
+        "nb": "Konsultasjonsrate: Antall konsultasjoner, spesialist/allmennlege pr. 1 000 barn (0-18 år)",
         "en": "Rate: Number of consultations, public/private per 1,000 children (0-18 years)"
       },
       "yLabel": {
@@ -115,42 +98,14 @@
     },
     {
       "type": "linechart",
-      "data": "datasett_2",
-      "linevars": [
-        "rate"
-      ],
-      "linevarsLabels": {
-        "nb": [
-          "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)"
-        ],
-        "en": [
-          "Rate: Number of &usnavn_en per 1,000 children (0-18 years)"
-        ]
-      },
-      "x": [
-        "aar"
-      ],
-      "y": "rate",
-      "xLabel": {
-        "nb": "År",
-        "en": "Year"
-      },
-      "yLabel": {
-        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of &usnavn_en per 1,000 children (0-18 years)"
-      },
-      "format_y": ",.0f"
-    },
-    {
-      "type": "linechart",
       "data": "datasett_3",
       "linevars": [
         "jenter",
         "gutter"
       ],
       "linecolors": [
-        "#253776",
-        "#74A5CD"
+        "#6CACE4",
+        "#003087"
       ],
       "linevarsLabels": {
         "nb": [
@@ -171,8 +126,8 @@
         "en": "Age"
       },
       "yLabel": {
-        "nb": "Antall barn (0-18 år) med polikliniske konsultasjoner",
-        "en": "Number of children with &usnavn_en"
+        "nb": "Antall barn (0-18 år) med konsultasjoner",
+        "en": "Number of children with consultations"
       },
       "format_y": ",.0f"
     },
@@ -180,8 +135,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. Antall (rate) pr. 1 000 barn (0-18 år)",
-        "en": "Yearly average for the period 2022-2024. Number (rate) per 1,000 children (0-18 years)"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024.\t<br>Konsultasjonsrate*: Antall konsultasjoner pr. 1 000 barn (0-18 år).\t<br>Antall pr. pasient: Antall konsultasjoner pr. pasient.\t<br>Andel spesialist: Andel av konsultasjonene som er utført i spesialisthelsetjenesten\t<br>*Kjønns- og aldersjustert",
+        "en": "Yearly average for the period 2022-2024. \t<br> Consultation rate*: Number of consultations per 1,000 children (0-18 years)\t<br>Proportion specialist: Proportion of consultations by specialist health care.\t<br>*Age- and gender adjusted"
       },
       "columns": [
         {
@@ -221,7 +176,7 @@
         },
         {
           "id": "pct_privsnitt",
-          "label_no": "Andel poliklinikk",
+          "label_no": "Andel spesialist",
           "label_en": "Percent spesialist",
           "typeVar": "number",
           "format": ",.0%"
@@ -240,7 +195,7 @@
       "data": "datasett_1",
       "x": "ratesnitt",
       "caption": {
-        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "nb": "Konsultasjonsrate: Antall konsultasjoner pr. 1 000 barn (0-18 år)",
         "en": "Rate: Number of consultations per 1,000 children (0-18 years)"
       },
       "jenks": [
@@ -633,53 +588,6 @@
           "offratesnitt": 28.0115969016,
           "privratesnitt": 22.5140987083,
           "pct_privsnitt": 0.445597006365
-        }
-      ]
-    },
-    {
-      "type": "data",
-      "label": "datasett_2",
-      "description": "Ekstradatasettet for gitt resultatboks",
-      "data": [
-        {
-          "area": "Norge",
-          "aar": 2017,
-          "rate": 58.7131054336
-        },
-        {
-          "area": "Norge",
-          "aar": 2018,
-          "rate": 54.3108993186
-        },
-        {
-          "area": "Norge",
-          "aar": 2019,
-          "rate": 49.3045240399
-        },
-        {
-          "area": "Norge",
-          "aar": 2020,
-          "rate": 51.4858074394
-        },
-        {
-          "area": "Norge",
-          "aar": 2021,
-          "rate": 51.0235482133
-        },
-        {
-          "area": "Norge",
-          "aar": 2022,
-          "rate": 53.2163393451
-        },
-        {
-          "area": "Norge",
-          "aar": 2023,
-          "rate": 50.2297131869
-        },
-        {
-          "area": "Norge",
-          "aar": 2024,
-          "rate": 48.1087988802
         }
       ]
     },

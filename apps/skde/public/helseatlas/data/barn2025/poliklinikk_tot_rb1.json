@@ -8,8 +8,8 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of consultations per 1,000 children (0-18 years)"
+        "nb": "Konsultasjonsrate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "en": "Consultations rate: Number of consultations per 1,000 children (0-18 years)"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -42,8 +42,8 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall pasienter pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of patients per 1,000 children (0-18 years)"
+        "nb": "Pasientrate: Antall pasienter pr. 1 000 barn (0-18 år)",
+        "en": "Patient rate: Number of patients per 1,000 children (0-18 years)"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -87,8 +87,8 @@
         ]
       },
       "xLabel": {
-        "nb": "Rate: Antall konsultasjoner, offentlig/privat, pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number (rate) of consultations ,public/private, per 1,000 children (0-18 years)"
+        "nb": "Konsultasjonsrate: Antall konsultasjoner, offentlig/privat, pr. 1 000 barn (0-18 år)",
+        "en": "Consultations rate: Number (rate) of consultations ,public/private, per 1,000 children (0-18 years)"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -104,8 +104,8 @@
         "nprrate"
       ],
       "linecolors": [
-        "#253776",
-        "#74A5CD"
+        "#6CACE4",
+        "#003087"
       ],
       "linevarsLabels": {
         "nb": [
@@ -126,8 +126,8 @@
         "en": "Year"
       },
       "yLabel": {
-        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of consultations polikliniske per 1,000 children (0-18 years)"
+        "nb": "Konsultasjonsrate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "en": "Consultations rate: Number of consultations polikliniske per 1,000 children (0-18 years)"
       },
       "format_y": ",.0f"
     },
@@ -139,8 +139,8 @@
         "gutter"
       ],
       "linecolors": [
-        "#253776",
-        "#74A5CD"
+        "#6CACE4",
+        "#003087"
       ],
       "linevarsLabels": {
         "nb": [
@@ -176,21 +176,21 @@
         "rate_oye"
       ],
       "linecolors": [
-        "#253776",
-        "#74A5CD",
-        "#AB6CA6",
-        "#782D87"
+        "#6CACE4",
+        "#003087",
+        "#E9899E",
+        "#9F1852"
       ],
       "linevarsLabels": {
         "nb": [
           "Medisin",
-          "Ortopedi med mer",
+          "Kirurgi",
           "ØNH",
           "Øye"
         ],
         "en": [
           "Medisin",
-          "Orthopedics",
+          "Surgery",
           "Ear/Nose/Throath",
           "Eye"
         ]
@@ -204,8 +204,8 @@
         "en": "Year"
       },
       "yLabel": {
-        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of polikliniske per 1,000 children (0-18 years)"
+        "nb": "Konsultasjonsrate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "en": "Consultations rate: Number of polikliniske per 1,000 children (0-18 years)"
       },
       "format_y": ",.0f"
     },
@@ -213,8 +213,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. Antall (rate) pr. 1 000 barn (0-18 år) /<br> \t*Rate er korrigert rate med KUHR",
-        "en": "Yearly average for the period 2022-2024. Number (rate) per 1,000 children (0-18 years) /<br> \t*Rate is corrected rate with KUHR"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024.\t<br>Konsultasjonsrate: Antall konsultasjoner pr. 1 000 barn (0-18 år) (raten er korrigert rate med KUHR).\t<br>Antall pr. pasient: Antall konsultasjoner pr. pasient.\t<br>Andel private: Andel av konsultasjonene som er utført av private avtalespesialister\t<br>*Kjønns- og aldersjustert",
+        "en": "Yearly average for the period 2022-2024. \t<br> Consultation rate: Number of consultations per 1,000 children (0-18 years) (rate is corrected rate with KUHR).\t<br>Proportion private: Proportion of consultations by private.\t<br>*Age- and gender adjusted"
       },
       "columns": [
         {
@@ -257,12 +257,12 @@
           "label_no": "Andel private",
           "label_en": "Percent private",
           "typeVar": "number",
-          "format": ",.1%"
+          "format": ",.0%"
         },
         {
           "id": "popsnitt",
           "label_no": "Innbyggere (0-18 år)",
-          "label_en": "Children",
+          "label_en": "Inhabitants (0-18 years)",
           "typeVar": "number",
           "format": ",.0f"
         }
@@ -273,8 +273,8 @@
       "data": "datasett_1",
       "x": "ratesnitt",
       "caption": {
-        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of consultations per 1,000 children (0-18 years)"
+        "nb": "Konsultasjonsrate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "en": "Consultations rate: Number of consultations per 1,000 children (0-18 years)"
       },
       "jenks": [
         {
@@ -676,49 +676,49 @@
       "data": [
         {
           "aar": 2017,
-          "area":         8888,
+          "area": "Norge",
           "totrate": 806.598450079,
           "nprrate": 776.986097526
         },
         {
           "aar": 2018,
-          "area":         8888,
+          "area": "Norge",
           "totrate": 811.622994327,
           "nprrate": 788.622151925
         },
         {
           "aar": 2019,
-          "area":         8888,
+          "area": "Norge",
           "totrate": 816.025883905,
           "nprrate": 780.80164978
         },
         {
           "aar": 2020,
-          "area":         8888,
+          "area": "Norge",
           "totrate": 772.895788101,
           "nprrate": 741.650572754
         },
         {
           "aar": 2021,
-          "area":         8888,
+          "area": "Norge",
           "totrate": 820.49873047,
           "nprrate": 784.67958678
         },
         {
           "aar": 2022,
-          "area":         8888,
+          "area": "Norge",
           "totrate": 835.299248486,
           "nprrate": 796.165697887
         },
         {
           "aar": 2023,
-          "area":         8888,
+          "area": "Norge",
           "totrate": 859.633790529,
           "nprrate": 813.967244498
         },
         {
           "aar": 2024,
-          "area":         8888,
+          "area": "Norge",
           "totrate": 857.83298312,
           "nprrate": 801.980362223
         }

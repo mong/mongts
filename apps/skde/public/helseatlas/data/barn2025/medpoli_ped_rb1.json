@@ -8,8 +8,8 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of consultations per 1,000 children (0-18 years)"
+        "nb": "Konsultasjonsrate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "en": "Consultations rate: Number of consultations per 1,000 children (0-18 years)"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -42,8 +42,8 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall pasienter pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of patients per 1,000 children (0-18 years)"
+        "nb": "Pasientrate: Antall pasienter pr. 1 000 barn (0-18 år)",
+        "en": "Patient rate: Number of patients per 1,000 children (0-18 years)"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -87,8 +87,8 @@
         ]
       },
       "xLabel": {
-        "nb": "Rate: Antall konsultasjoner, offentlig/privat, pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of consultations, public/private, per 1,000 children (0-18 years)"
+        "nb": "Konsultasjonsrate: Antall konsultasjoner, offentlig/privat, pr. 1 000 barn (0-18 år)",
+        "en": "Consultations rate: Number of consultations, public/private, per 1,000 children (0-18 years)"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -104,10 +104,10 @@
       ],
       "linevarsLabels": {
         "nb": [
-          "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)"
+          "Konsultasjonsrate"
         ],
         "en": [
-          "Rate: Number of consultations per 1,000 children (0-18 years)"
+          "Consultations rate"
         ]
       },
       "x": [
@@ -119,8 +119,8 @@
         "en": "Year"
       },
       "yLabel": {
-        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of consultations per 1,000 children (0-18 years)"
+        "nb": "Konsultasjonsrate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "en": "Consultations rate: Number of consultations per 1,000 children (0-18 years)"
       },
       "format_y": ",.0f"
     },
@@ -132,8 +132,8 @@
         "gutter"
       ],
       "linecolors": [
-        "#253776",
-        "#74A5CD"
+        "#6CACE4",
+        "#003087"
       ],
       "linevarsLabels": {
         "nb": [
@@ -163,8 +163,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. Antall (rate) pr. 1 000 barn (0-18 år)",
-        "en": "Yearly average for the period 2022-2024. Number (rate) per 1,000 children (0-18 years)"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. <br>Konsultasjonsrate*, antall konsultasjoner pr. 1 000 barn (0-18 år)<br>Andel private: Andel av konsultasjonene som er utført hos private avtalespesialister<br>*Kjønns- og aldersjustert",
+        "en": "Yearly average for the period 2022-2024. <br>Consultation rate*, number of consultations per 1,000 children (0-18 years)<br>Proportion private: Proportion of consultations by private.<br>*Age- and gender adjusted"
       },
       "columns": [
         {
@@ -223,8 +223,8 @@
       "data": "datasett_1",
       "x": "ratesnitt",
       "caption": {
-        "nb": "Rate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of consultations per 1,000 children (0-18 years)"
+        "nb": "Konsultasjonsrate: Antall polikliniske konsultasjoner pr. 1 000 barn (0-18 år)",
+        "en": "Consultations rate: Number of consultations per 1,000 children (0-18 years)"
       },
       "jenks": [
         {
@@ -625,42 +625,42 @@
       "description": "Ekstradatasettet for gitt resultatboks",
       "data": [
         {
-          "area":         8888,
+          "area": "Norge",
           "aar": 2017,
           "rate": 284.251128796
         },
         {
-          "area":         8888,
+          "area": "Norge",
           "aar": 2018,
           "rate": 288.619911996
         },
         {
-          "area":         8888,
+          "area": "Norge",
           "aar": 2019,
           "rate": 289.652734317
         },
         {
-          "area":         8888,
+          "area": "Norge",
           "aar": 2020,
           "rate": 292.763424481
         },
         {
-          "area":         8888,
+          "area": "Norge",
           "aar": 2021,
           "rate": 315.612958005
         },
         {
-          "area":         8888,
+          "area": "Norge",
           "aar": 2022,
           "rate": 326.085621172
         },
         {
-          "area":         8888,
+          "area": "Norge",
           "aar": 2023,
           "rate": 328.128020759
         },
         {
-          "area":         8888,
+          "area": "Norge",
           "aar": 2024,
           "rate": 335.135505366
         }

@@ -8,8 +8,8 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall innleggelser pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of innleggelser per 1,000 children (0-18 years)"
+        "nb": "Innleggelsesrate: Antall innleggelser pr. 1 000 barn (0-18 år)",
+        "en": "Admission rate: Number of innleggelser per 1,000 children (0-18 years)"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -42,8 +42,8 @@
       ],
       "y": "area",
       "xLabel": {
-        "nb": "Rate: Antall pasienter med innleggelser pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of patients with admissions per 1,000 children (0-18 years)"
+        "nb": "Pasientrate: Antall pasienter med innleggelser pr. 1 000 barn (0-18 år)",
+        "en": "Patient rate: Number of patients with admissions per 1,000 children (0-18 years)"
       },
       "yLabel": {
         "nb": "Opptaksområder",
@@ -76,10 +76,10 @@
       ],
       "linevarsLabels": {
         "nb": [
-          "Rate: Antall innleggelser pr. 1 000 barn (0-18 år), Norge"
+          "Innleggelsesrate"
         ],
         "en": [
-          "Rate: Number of admissions per 1,000 children (0-18 years), Norway"
+          "Admission rate"
         ]
       },
       "x": [
@@ -91,8 +91,8 @@
         "en": "Year"
       },
       "yLabel": {
-        "nb": "Rate: Antall innleggelser pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of admissions per 1,000 children (0-18 years)"
+        "nb": "Innleggelsesrate: Antall innleggelser pr. 1 000 barn (0-18 år)",
+        "en": "Admission rate: Number of admissions per 1,000 children (0-18 years)"
       },
       "format_y": ",.0f"
     },
@@ -106,17 +106,17 @@
         "rate_kir_el"
       ],
       "linecolors": [
-        "#253776",
-        "#74A5CD",
-        "#AB6CA6",
-        "#782D87"
+        "#6CACE4",
+        "#003087",
+        "#E9899E",
+        "#9F1852"
       ],
       "linevarsLabels": {
         "nb": [
           "Medisin akutt",
           "Kirurgi akutt",
-          "Medisin elektiv",
-          "Kirurgi elektiv"
+          "Medisin planlagt",
+          "Kirurgi planlagt"
         ],
         "en": [
           "Acute Medicine",
@@ -134,8 +134,8 @@
         "en": "Year"
       },
       "yLabel": {
-        "nb": "Rate: Antall innleggelser pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of admissions per 1,000 children (0-18 years)"
+        "nb": "Innleggelsesrate: Antall innleggelser pr. 1 000 barn (0-18 år)",
+        "en": "Admission rate: Number of admissions per 1,000 children (0-18 years)"
       },
       "format_y": ",.0f"
     },
@@ -147,8 +147,8 @@
         "gutter"
       ],
       "linecolors": [
-        "#253776",
-        "#74A5CD"
+        "#6CACE4",
+        "#003087"
       ],
       "linevarsLabels": {
         "nb": [
@@ -178,8 +178,8 @@
       "type": "table",
       "data": "datasett_1",
       "caption": {
-        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. Antall (rate) pr. 1 000 barn (0-18 år)",
-        "en": "Yearly average for the period 2022-2024. Number (rate) per 1,000 children (0-18 years)"
+        "nb": "Årlige gjennomsnittsverdier for perioden 2022-2024. <br>Innleggelsesrate*: antall innleggelser pr. 1 000 barn (0-18 år).<br>Pasientrate*: antall pasienter med innleggelser pr. 1 000 barn (0-18 år). <br>*Kjønns- og aldersjustert",
+        "en": "Yearly average for the period 2022-2024. <br>Admission rate*: number of admissions per 1,000 children (0-18 years).<br>Patient rate*: number of patients with admissions per 1,000 children (0-18 years). <br>*Age- and gender adjusted"
       },
       "columns": [
         {
@@ -238,8 +238,8 @@
       "data": "datasett_1",
       "x": "ratesnitt",
       "caption": {
-        "nb": "Rate: Antall innleggelser pr. 1 000 barn (0-18 år)",
-        "en": "Rate: Number of innleggelser per 1,000 children (0-18 years)"
+        "nb": "Innleggelsesrate: Antall innleggelser pr. 1 000 barn (0-18 år)",
+        "en": "Admission rate: Number of innleggelser per 1,000 children (0-18 years)"
       },
       "jenks": [
         {
@@ -580,42 +580,42 @@
       "description": "Ekstradatasettet for gitt resultatboks",
       "data": [
         {
-          "area":         8888,
+          "area": "Norge",
           "aar": 2017,
           "rate": 47.7211132224
         },
         {
-          "area":         8888,
+          "area": "Norge",
           "aar": 2018,
           "rate": 47.0594844647
         },
         {
-          "area":         8888,
+          "area": "Norge",
           "aar": 2019,
           "rate": 45.6665630445
         },
         {
-          "area":         8888,
+          "area": "Norge",
           "aar": 2020,
           "rate": 38.6254490362
         },
         {
-          "area":         8888,
+          "area": "Norge",
           "aar": 2021,
           "rate": 42.2760409847
         },
         {
-          "area":         8888,
+          "area": "Norge",
           "aar": 2022,
           "rate": 44.3394133807
         },
         {
-          "area":         8888,
+          "area": "Norge",
           "aar": 2023,
           "rate": 43.5846438797
         },
         {
-          "area":         8888,
+          "area": "Norge",
           "aar": 2024,
           "rate": 43.3496820436
         }
