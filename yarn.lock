@@ -519,6 +519,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.27.6":
+  version: 7.28.2
+  resolution: "@babel/runtime@npm:7.28.2"
+  checksum: 10/a0965fbdd6aaa40709290923bbe05e1c4314021f0cef608eb1d69f04f717c41829e50a53d79c4a0f461512b4be9b3c0190dc19387b219bcdaacdd793b2fe1b8a
+  languageName: node
+  linkType: hard
+
 "@babel/template@npm:^7.22.15":
   version: 7.24.0
   resolution: "@babel/template@npm:7.24.0"
@@ -1723,6 +1730,22 @@ __metadata:
     "@types/react":
       optional: true
   checksum: 10/70fc9f41636bf8b1da107f55ec4951c6a146a526b4cf4784a2ff4c93e11496e644f2090e16939a923bf0147e1e1f7575af3426bf316a486eea40cc9dfa2cf651
+  languageName: node
+  linkType: hard
+
+"@mui/icons-material@npm:7.2.0":
+  version: 7.2.0
+  resolution: "@mui/icons-material@npm:7.2.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.27.6"
+  peerDependencies:
+    "@mui/material": ^7.2.0
+    "@types/react": ^17.0.0 || ^18.0.0 || ^19.0.0
+    react: ^17.0.0 || ^18.0.0 || ^19.0.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10/62d7cf8a8d6b7968fe8b4a6ebdad9f8513505b972baa1589b9f4b246bca4218603c724e69de45cd8010a7d9e35be0f7f43e38c8564544d0ca16edec4fc370771
   languageName: node
   linkType: hard
 
@@ -11118,7 +11141,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "qmongjs@workspace:packages/qmongjs"
   dependencies:
-    "@mui/icons-material": "npm:7.0.2"
+    "@mui/icons-material": "npm:7.2.0"
     "@mui/material": "npm:7.0.2"
     "@mui/system": "npm:7.0.1"
     "@mui/x-tree-view": "npm:7.28.1"
