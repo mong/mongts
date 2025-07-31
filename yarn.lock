@@ -6127,9 +6127,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"decap-server@npm:3.3.0":
-  version: 3.3.0
-  resolution: "decap-server@npm:3.3.0"
+"decap-server@npm:3.3.1":
+  version: 3.3.1
+  resolution: "decap-server@npm:3.3.1"
   dependencies:
     "@hapi/joi": "npm:^17.0.2"
     async-mutex: "npm:^0.3.0"
@@ -6142,7 +6142,7 @@ __metadata:
     winston: "npm:^3.3.3"
   bin:
     decap-server: ./dist/index.js
-  checksum: 10/42ea70e086229f729a22b86f0905c6e429d91280987a462b70867b71da33469eb599268a6c899fbe6efb3157d757c054ce53dd894ebe4c73da232bb433f7165c
+  checksum: 10/1a75d2aa8d0c06275c10f226f1f08bb0dbbcfdd0b3676dea82218955928296346bd4cae67d79297a31af273feab9e0a57ac5d1dcb0111cb20c48ec3472c80cd5
   languageName: node
   linkType: hard
 
@@ -10081,7 +10081,7 @@ __metadata:
   resolution: "mongts@workspace:."
   dependencies:
     "@types/node": "npm:22.17.0"
-    decap-server: "npm:3.3.0"
+    decap-server: "npm:3.3.1"
     eslint: "npm:9.32.0"
     husky: "npm:9.1.7"
     knip: "npm:5.46.5"
