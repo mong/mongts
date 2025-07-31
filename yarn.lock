@@ -4410,7 +4410,7 @@ __metadata:
     cors: "npm:2.8.5"
     eslint: "npm:9.32.0"
     express: "npm:5.1.0"
-    express-rate-limit: "npm:7.5.1"
+    express-rate-limit: "npm:8.0.1"
     helmet: "npm:8.1.0"
     knex: "npm:3.1.0"
     lodash: "npm:4.17.21"
@@ -6952,12 +6952,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-rate-limit@npm:7.5.1":
-  version: 7.5.1
-  resolution: "express-rate-limit@npm:7.5.1"
+"express-rate-limit@npm:8.0.1":
+  version: 8.0.1
+  resolution: "express-rate-limit@npm:8.0.1"
+  dependencies:
+    ip-address: "npm:10.0.1"
   peerDependencies:
     express: ">= 4.11"
-  checksum: 10/357c3398450144ab7bbce2841d0bf4f93a0f3fd9d1d5ed9a0ee331b557af969cc790941dc37b47f8d9b5672964aa0e31666f770e1f48b334dc7d1e69f6433040
+  checksum: 10/182a4706ae000659a8164de204d61c73261a4d9da5f8a5c24cb961287cd801855085485119573376b5c00279d2e54aadc9a7ea97f2ae1d5443720d07346404e0
   languageName: node
   linkType: hard
 
@@ -8171,6 +8173,13 @@ __metadata:
   version: 2.2.0
   resolution: "interpret@npm:2.2.0"
   checksum: 10/a62d4de5c1f8ab1fd0ccc8a1a8cca8dc31e14928b70364f0787576fe4639c0c463bd79cfe58c9bd9f54db9b7e53d3e646e68fb7627c6b65e3b0e3893156c5126
+  languageName: node
+  linkType: hard
+
+"ip-address@npm:10.0.1":
+  version: 10.0.1
+  resolution: "ip-address@npm:10.0.1"
+  checksum: 10/09731acda32cd8e14c46830c137e7e5940f47b36d63ffb87c737331270287d631cf25aa95570907a67d3f919fdb25f4470c404eda21e62f22e0a55927f4dd0fb
   languageName: node
   linkType: hard
 
