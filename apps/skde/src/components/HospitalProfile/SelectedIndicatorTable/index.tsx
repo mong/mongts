@@ -71,7 +71,7 @@ const IndicatorRow = (
         )}
       </TableCell>
       <TableCell align="right">
-        {point2 ? (
+        {point1 && point2 ? (
           <Stack
             direction="row"
             alignItems="center"
