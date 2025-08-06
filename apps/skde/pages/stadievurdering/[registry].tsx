@@ -8,7 +8,7 @@ import {
   lineStyle,
   LinechartBaseProps,
   fetchRegisterNames,
-  defaultYear,
+  defaultReviewYear,
   useRegistryRankQuery,
   useRegistryEvaluationQuery,
   RequirementList,
@@ -23,7 +23,7 @@ const levelBColour = "#FD9C00";
 const levelCColour = "#D85140";
 const noLevelColour = "#777777";
 
-const reportYear = defaultYear - 1;
+const reportYear = defaultReviewYear;
 
 const Stadiumfigur = ({ registry }) => {
   // Copy-paste code from https://mui.com/material-ui/react-tabs/
@@ -105,6 +105,9 @@ const Stadiumfigur = ({ registry }) => {
     })
     .sort((a: XyData, b: XyData) => {
       return a.x - b.x;
+    })
+    .filter((row: XyData) => {
+      return row.x <= defaultReviewYear;
     })
     .map((row: XyData) => {
       return {
