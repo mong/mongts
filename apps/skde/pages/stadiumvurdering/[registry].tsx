@@ -63,7 +63,7 @@ const Stadiumfigur = ({ registry }) => {
         colour: levelToColour(row.y.substring(1, 2)),
       } as LinechartData;
     });
-  console.log(plotData);
+
   const style = {
     text: "test",
     strokeDash: "0",
