@@ -68,6 +68,7 @@ export { IndicatorTableBodyV2 } from "./components/IndicatorTable/Indicatortable
 export { IndicatorTable } from "./components/IndicatorTable";
 export {
   defaultYear,
+  defaultReviewYear,
   mainHospitals,
   mainQueryParamsConfig,
   minDG,
