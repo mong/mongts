@@ -6,14 +6,13 @@ import {
   LineStyles,
   lineStyle,
   LinechartBaseProps,
+  useRegistryRankQuery,
+  fetchRegisterNames,
+  defaultReviewYear,
 } from "qmongjs";
-import { useRegistryRankQuery } from "qmongjs";
-import { RegistryRank } from "types";
-import { Stack, Typography } from "@mui/material";
+import { RegistryRank, RegisterName } from "types";
+import { Stack, Typography, styled } from "@mui/material";
 import { FaCircle } from "react-icons/fa";
-import { fetchRegisterNames } from "qmongjs";
-import { RegisterName } from "types";
-import { styled } from "@mui/material";
 
 const levelAColour = "#58A55C";
 const levelBColour = "#FD9C00";
@@ -50,6 +49,9 @@ const Stadiumfigur = ({ registry }) => {
   const plotData = rankData
     .map((row: RegistryRank) => {
       return { x: row.year, y: row.verdict };
+    })
+    .filter((row: XyData) => {
+      return row.x <= defaultReviewYear;
     })
     .sort((a: XyData, b: XyData) => {
       return a.x - b.x;
