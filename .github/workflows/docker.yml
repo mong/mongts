@@ -89,7 +89,7 @@ jobs:
             az afd endpoint purge \
               --resource-group rg-nettsider-felles \
               --profile-name interaktiveNettsiderFrontDoor \
-              --endpoint-name prod-api-route \
+              --endpoint-name prod-api \
               --domains prod-api.skde.org \
               --content-paths '/*' \
               --no-wait true
@@ -102,7 +102,7 @@ jobs:
             az afd endpoint purge \
               --resource-group rg-nettsider-felles \
               --profile-name interaktiveNettsiderFrontDoor \
-              --endpoint-name verify-api-route \
+              --endpoint-name verify-api \
               --domains verify-api.skde.org \
               --content-paths '/*' \
               --no-wait true
@@ -115,7 +115,7 @@ jobs:
             az afd endpoint purge \
               --resource-group rg-nettsider-felles \
               --profile-name interaktiveNettsiderFrontDoor \
-              --endpoint-name test-api-route \
+              --endpoint-name test-api \
               --domains test-api.skde.org \
               --content-paths '/*' \
               --no-wait true
