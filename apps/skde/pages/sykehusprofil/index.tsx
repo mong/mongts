@@ -242,6 +242,7 @@ export const Skde = (): JSX.Element => {
                     titlePadding={titlePadding}
                     titleStyle={titleStyle}
                     lastYear={lastYear}
+                    textMargin={textMargin}
                   />
                 )}
               </Grid>
