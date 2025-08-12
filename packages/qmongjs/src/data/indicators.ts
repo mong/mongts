@@ -1,7 +1,6 @@
 const commonIndicators = [
   "hjerteinfarkt_reper_stemi_tid",
   "hjerneslag_beh_tromb",
-  "hjerneslag_rapport_3mnd",
   "NDV_andel_HbA1C_stoerre_eller_lik_75",
   "hoftebrudd_ventetid48",
   "hoftebrudd_stammefiks",
@@ -18,7 +17,11 @@ export const indicatorsPerHospital = [
     ],
   },
   { unit: "Hammerfest", commonInd: commonIndicators, specificInd: [] },
-  { unit: "Tromsø", commonInd: commonIndicators, specificInd: [] },
+  {
+    unit: "Tromsø",
+    commonInd: commonIndicators,
+    specificInd: ["hjerneslag_test_svelg"],
+  },
   {
     unit: "Harstad",
     commonInd: commonIndicators,
@@ -28,7 +31,11 @@ export const indicatorsPerHospital = [
       "norgast_saarruptur",
     ],
   },
-  { unit: "Narvik", commonInd: commonIndicators, specificInd: [] },
+  {
+    unit: "Narvik",
+    commonInd: commonIndicators,
+    specificInd: ["hjerteinfarkt_ef_maalt"],
+  },
   {
     unit: "Vesterålen",
     commonInd: commonIndicators,
@@ -46,9 +53,13 @@ export const indicatorsPerHospital = [
   {
     unit: "Lofoten",
     commonInd: commonIndicators,
-    specificInd: ["hjerteinfarkt_ef_maalt"],
+    specificInd: ["hjerteinfarkt_ef_maalt", "hjerneslag_test_svelg"],
   },
-  { unit: "Mo i Rana", commonInd: commonIndicators, specificInd: [] },
+  {
+    unit: "Mo i Rana",
+    commonInd: commonIndicators,
+    specificInd: ["hjerneslag_test_svelg"],
+  },
   {
     unit: "Mosjøen",
     commonInd: commonIndicators,
@@ -57,7 +68,11 @@ export const indicatorsPerHospital = [
   {
     unit: "Sandnessjøen",
     commonInd: commonIndicators,
-    specificInd: ["hjerneslag_tverrfaglig"],
+    specificInd: [
+      "hjerneslag_tverrfaglig",
+      "traume_registrerte",
+      "NDV_prosentandel_maalt_AKR",
+    ],
   },
 ];
 
@@ -79,16 +94,6 @@ export const indicatorInfo = [
     sformat: ",.0%",
     level_green: 0.195,
     level_yellow: 0.13,
-    level_direction: 1,
-    registry: "Hjerneslag",
-  },
-  {
-    indId: "hjerneslag_rapport_3mnd",
-    title: "Andel med rapportert status 3 måneder etter hjerneslaget",
-    include: 0,
-    sformat: ",.0%",
-    level_green: 0.8,
-    level_yellow: 0.7,
     level_direction: 1,
     registry: "Hjerneslag",
   },
@@ -224,5 +229,25 @@ export const indicatorInfo = [
     level_yellow: 0.7,
     level_direction: 1,
     registry: "Hjerneslag",
+  },
+  {
+    indId: "traume_registrerte",
+    title: "Antall registrerte",
+    include: 1,
+    sformat: ",.0%",
+    level_green: 0.8,
+    level_yellow: 0.6,
+    level_direction: 1,
+    registry: "Traume",
+  },
+  {
+    indId: "NDV_prosentandel_maalt_AKR",
+    title: "Prosentandel som har fått målt U-AKR",
+    include: 1,
+    sformat: ",.0%",
+    level_green: 0.9,
+    level_yellow: 0.7,
+    level_direction: 1,
+    registry: "Voksendiabetes",
   },
 ];
