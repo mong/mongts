@@ -49,10 +49,27 @@ const IndicatorRow = (
 
   return (
     <TableRow key={rowNumber}>
-      <TableCell>
+      <TableCell sx={{ width: "8rem" }}>
         <b>{"Indikator " + rowNumber}</b>
       </TableCell>
       <TableCell>{indInfo.title}</TableCell>
+      <TableCell>{indInfo.registry}</TableCell>
+      <TableCell>
+        <Stack direction="column" alignItems="center">
+          <Stack direction="row-reverse" spacing={1} alignItems="center">
+            {newLevelSymbols("H")}
+            <Typography variant="body2">
+              {customFormat(indInfo.sformat)(indInfo.level_green)}
+            </Typography>
+          </Stack>
+          <Stack direction="row-reverse" spacing={1} alignItems="center">
+            {newLevelSymbols("M")}
+            <Typography variant="body2">
+              {customFormat(indInfo.sformat)(indInfo.level_yellow)}
+            </Typography>
+          </Stack>
+        </Stack>
+      </TableCell>
       <TableCell align="right">
         {point1 ? (
           <Stack
@@ -96,10 +113,11 @@ type SelectedIndicatorTableProps = {
   titlePadding: number;
   titleStyle: { marginTop: number; marginLeft: number };
   lastYear: number;
+  textMargin: number;
 };
 
 export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
-  const { unitName, titlePadding, titleStyle, lastYear } = props;
+  const { unitName, titlePadding, titleStyle, lastYear, textMargin } = props;
 
   const selectedIndicator = indicatorsPerHospital.find(
     (row) => row.unit === unitName,
@@ -133,19 +151,19 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
     <>
       <TableHead>
         <TableRow>
-          <TableCell colSpan={2}></TableCell>
-          <TableCell colSpan={2} align="center">
-            <b>{"Andel"}</b>
-          </TableCell>
-        </TableRow>
-        <TableRow>
           <TableCell colSpan={2} align="center">
             <b>{"Felles indikatorer"}</b>
           </TableCell>
-          <TableCell align="center">
-            <b>{lastYear - 1}</b>
+          <TableCell>
+            <b>{"Register"}</b>
           </TableCell>
           <TableCell align="center">
+            <b>{"Ønsket målnivå"}</b>
+          </TableCell>
+          <TableCell align="right">
+            <b>{lastYear - 1}</b>
+          </TableCell>
+          <TableCell align="right">
             <b>{lastYear}</b>
           </TableCell>
         </TableRow>
@@ -165,7 +183,7 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
           <TableCell colSpan={2} align="center">
             <b>{"Sykehusspesifikke indikatorer"}</b>
           </TableCell>
-          <TableCell colSpan={2}></TableCell>
+          <TableCell colSpan={4}></TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -187,6 +205,11 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
         <Typography variant="h5" style={titleStyle}>
           <b>Utvalgte indikatorer</b>
         </Typography>
+        <div style={{ margin: textMargin }}>
+          <Typography variant="body1">
+            {`Kvalitetsindikatorer til "Styringskrav og rammer 2025" Helse Nord.`}
+          </Typography>
+        </div>
         <Table>
           {CommonIndTable}
           {selectedIndicator.specificInd.length > 0 && SpecificIndTable}
