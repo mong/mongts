@@ -49,7 +49,7 @@ const IndicatorRow = (
 
   return (
     <TableRow key={rowNumber}>
-      <TableCell>
+      <TableCell sx={{ width: "8rem" }}>
         <b>{"Indikator " + rowNumber}</b>
       </TableCell>
       <TableCell>{indInfo.title}</TableCell>
