@@ -19,6 +19,7 @@ import {
   FilterSettingsValue,
   TreatmentQualityFilterMenu,
   defaultYear,
+  defaultReviewYear,
   levelKey,
   tableContextKey,
   treatmentUnitsKey,
@@ -101,7 +102,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
   let registryRank = "NA";
   if (!process.env.NEXT_PUBLIC_VERIFY) {
     // Fetch the registry's stage and level
-    const registryRankQuery = useRegistryRankQuery(defaultYear);
+    const registryRankQuery = useRegistryRankQuery(defaultReviewYear);
 
     if (registryRankQuery.isFetched) {
       // Fetch the registry's stage and level
@@ -252,7 +253,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
           >
             Stadium og nivå
           </Link>{" "}
-          for {defaultYear}: <b>{registryRank}</b>
+          for {defaultReviewYear}: <b>{registryRank}</b>
         </>
       )}
     </>
