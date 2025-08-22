@@ -111,6 +111,33 @@
       ]
     },
     {
+      "overskrift": "Poliklinikk behandling for Depresjon",
+      "innhold": [
+        {
+          "utvalg": "sektor 2 og 7",
+          "data": "depresjon_vaksne.json",
+          "publisert": "2025-09-30T14:47:00.000+02:00",
+          "resultat": "stor variasjon....",
+          "overskrift": "Kontaktdagar for depresjon for vaksne 18-64",
+          "ingress": "depresjon er blant vanlig plager",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-08-21T14:47:00.000+02:00"
+        },
+        {
+          "utvalg": "F32-F34, aldrer 65+\n\nsektor 2 og 7",
+          "data": "depresjon_eldre.json",
+          "publisert": "2025-11-30T10:35:00.000+01:00",
+          "resultat": "geografiske variasjon",
+          "overskrift": "Depresjon behandling among eldre 65+",
+          "ingress": "eldre depresjon er.....",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-08-22T10:35:00.000+02:00"
+        }
+      ]
+    },
+    {
       "overskrift": "Storbrukarar",
       "innhold": [
         {
@@ -127,22 +154,6 @@
           "type": "faktaboks",
           "tekst": "Data\n\nNorsk pasientregister (NPR) og Norsk pasient- og brukarregister (KPR), begge forvalta av Folkehelseinstituttet (FHI), utgjer datakjeldene. Aktivitetsdata gjeld høvesvis behandling i psykisk helsevern for vaksne, samt konsultasjonar hjå allmennlege og legevakt for dei to datakjeldene, i perioden 2020-2024.\n\n\n\nKvalitetskontrollar\n\nHelsedata kan målast på fleire måtar, og i bruk av registerdata utgjer polikliniske kontaktar og innleggingar standard aktivitetsmål. I dette atlaset nyttar vi kontaktdagar som aktivitetsmål, då vi ser helsetenestebruk frå pasienten sitt perspektiv, og såleis ikkje treng skilje mellom ulike måtar å strukturere dagen på. \n\nISF-reglementet nyttar ei liknande praktisk tilnærming, ved at polikliniske kontaktar i løpet av same dagen som hovudregel skal slåast saman til eitt opphald, med enkelte unntak. Strukturerte polikliniske opphald tel som berre eitt opphald uavhengig av desse unntaka. Ettersom ISF-reglementet liknar kontaktdagsmålet er det òg aktuelt som aktivitetsmål, og vi undersøkte difor utslaga av å nytte ISF-reglane strengt, som vi omtaler som ISF-opphald. (Litt meir om resultata av desse testane...)",
           "overskrift": "Metode"
-        }
-      ]
-    },
-    {
-      "overskrift": "Poliklinikk behandling for Depresjon",
-      "innhold": [
-        {
-          "utvalg": "sektor 2 og 7",
-          "data": "depresjon_vaksne.json",
-          "publisert": "2025-09-30T14:47:00.000+02:00",
-          "resultat": "stor variasjon....",
-          "overskrift": "Kontaktdagar for depresjon",
-          "ingress": "depresjon er blant vanlig plager",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-08-21T14:47:00.000+02:00"
         }
       ]
     }
