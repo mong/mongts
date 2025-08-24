@@ -6,8 +6,8 @@
       "x": ["Snitt_rate"],
       "y": "area",
       "xLabel": {
-        "nn": "Tal pasientar med depresjon  pr. 1 000 innbyggjarar under 18 år",
-        "en": "Patients with depression pr. 1,000 population (under 18 years)"
+        "nn": "Tal pasientar pr. 1 000 innbyggjarar (18-64 år)",
+        "en": "Number of patients pr. 1,000 population (18-64 years)"
       },
       "yLabel": {
         "nn": "Opptaksområde",
@@ -16,13 +16,38 @@
       "errorBars": ["lowercl", "uppercl"],
       "format": ",.1f"
     },
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snitt_rate"],
+      "y": "area",
+      "xLabel": {
+        "nn": "Tal pasientar pr. 1 000 innbyggjarar (18-64 år)",
+        "en": "Number of patients pr. 1,000 population (18-64 years)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "Rate.2020",
+        "Rate.2021",
+        "Rate.2022",
+        "Rate.2023",
+        "Rate.2024"
+      ],
+      "annualVarLabels": {
+        "nn": ["2020", "2021", "2022", "2023", "2024"],
+        "en": ["2020", "2021", "2022", "2023", "2024"]
+      }
+    },
 
     {
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nn": "Årlege gjennomsnittsverdiar for perioden 2019-2023. Pasientrate for depresjon pr.1000 innbyggjarar under 18 år.",
-        "en": "Annual average during 2019–2023. Patient rate for depression pr. 1000 population under 18 years"
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2020–2024. Pasientrate pr. 1 000 innbyggjarar 18-64 år",
+        "en": "Annual average during 2020–2024. Patient rate pr. 1 000 population 18-64 years"
       },
       "columns": [
         {
@@ -48,74 +73,13 @@
         },
         {
           "id": "Innbyggarar",
-          "label_no": "Innbyggjarar (under 18 år)",
-          "label_en": "Population (under 18 years)",
+          "label_no": "Innbyggjarar (18-64 år)",
+          "label_en": "Population (18-64 years)",
           "typeVar": "number",
           "format": ",.0f"
         }
       ]
     },
-    {
-      "type": "table",
-      "data": "qwerty",
-      "caption": {
-        "nn": "Prosentdel av komorbiditet av ulike tilstandar i pasientar med depresjon ",
-        "en": "Percent of comorbidity with different diagnosis among patients with depression during 2019-2023"
-      },
-      "columns": [
-        {
-          "id": "area",
-          "label_no": "Opptaksområde",
-          "label_en": "Referral areas",
-          "typeVar": "string",
-          "format": ""
-        },
-        {
-          "id": "Angst",
-          "label_no": "Angst",
-          "label_en": "Anxiety",
-          "typeVar": "number",
-          "format": ",.0%"
-        },
-        {
-          "id": "Autisme",
-          "label_no": "Autisme",
-          "label_en": "Autism",
-          "typeVar": "number",
-          "format": ",.0%"
-        },
-        {
-          "id": "ADHD",
-          "label_no": "ADHD",
-          "label_en": "ADHD",
-          "typeVar": "number",
-          "format": ",.0%"
-        },
-        {
-          "id": "Eteforstyrring",
-          "label_no": "Eteforstyrring",
-          "label_en": "Eating disorder",
-          "typeVar": "number",
-          "format": ",.0%"
-        },
-
-        {
-          "id": "Tilpassingsforstyrring",
-          "label_no": "Tilpassingsforstyrring",
-          "label_en": "Adjustment disorder",
-          "typeVar": "number",
-          "format": ",.0%"
-        },
-        {
-          "id": "Utviklingsforstyrring",
-          "label_no": "Spesifikk utviklingsforstyrring",
-          "label_en": "Development disorder",
-          "typeVar": "number",
-          "format": ",.0%"
-        }
-      ]
-    },
-
     {
       "type": "map",
       "data": "qwerty",
@@ -124,6 +88,7 @@
         "nn": "Tal pasientar med depresjon i poliklinikk pr. 1 000 innbyggjarar under 18 år",
         "en": "Number of patients with depression pr. 1 000 population under 18 years"
       },
+
       "jenks": [
         {
           "grense": 14.5
