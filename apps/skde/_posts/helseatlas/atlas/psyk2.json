@@ -41,28 +41,6 @@
           "tekst": "(Skildring av tema, samt argumentasjon og skildring av metode og resultat)"
         },
         {
-          "utvalg": "Sektor 2 og 7",
-          "data": "pasient_polyklinikk_18.json",
-          "publisert": "2025-11-30T13:49:00.000+01:00",
-          "resultat": "litt mer",
-          "overskrift": "Vaksne pasient i poliklinikk behandling (18-64 år)",
-          "ingress": "poliklinikk vaksne pasient",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-08-21T14:19:00.000+02:00"
-        },
-        {
-          "utvalg": "sektor 2 og 7",
-          "data": "polyklinikk_kontakt_18.json",
-          "publisert": "2025-11-30T13:30:00.000+01:00",
-          "resultat": "litt mer",
-          "overskrift": "Kontaktdagar i poliklinikk (18-64 år)",
-          "ingress": "Rundt.....",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-08-22T13:30:00.000+02:00"
-        },
-        {
           "type": "faktaboks",
           "overskrift": "Vaksne i døgnbehandling (skal bli ein resultatboks)",
           "tekst": "(Skildring av resultat)"
@@ -89,28 +67,6 @@
           "tekst": "Psykiske lidingar hos eldre er vanleg. Dei [vanlegaste førekommande sjukdommane](https://www.kvalitetsregistre.no/49d8bb/siteassets/dokumenter/arsrapporter/alderspsykiatriregister/arsrapport-kvalap-2024.pdf) hos eldre er unipolar liding (depresjon), demens, angst, bipolar liding og psykoseliding. Som hovudregel skal eldre utgreiast og behandlast i [primærhelsetenesta](https://www.helsedirektoratet.no/faglige-rad/psykiske-lidelser-hos-eldre), men det er ofte nødvendig å involvere spesialisthelsetenesta òg. Psykiske lidingar hos eldre skal følgjast opp aktivt, og ikkje oppfattast som del av aldringa i seg sjølv (ibid.).\n\nAlderspsykiatrien skal behandle pasientar med alvorleg psykisk liding som debuterer etter fylte 65 år, samt demens eller åtferdsproblem, eller når andre sjukdommar eller høg alder gjer alderspsykiatri føremålstenleg (ibid.; [Norsk psykiatrisk forening, 2010](<Norsk psykiatrisk forening. (2010). Plandokument for norsk alderspsykiatri 2011-2020 (2, ed.). Oslo: Norsk psykiatrisk forening.>)). Ifølgje [prioriteringsrettleiaren](<Nygaard, E., & Kårikstad, V. (2008). Psykisk helsevern for voksne : prioriteringsveileder.>) for psykisk helsevern for vaksne skal spesialisthelsetenesta prioriterast når den blir vurdert som mest nyttig."
         },
         {
-          "utvalg": "Sektor 2 og 7",
-          "data": "pasient_polyklinikk_65.json",
-          "publisert": "2025-11-30T10:20:00.000+01:00",
-          "resultat": "litt mer",
-          "overskrift": "Eldre pasient i poliklinikk behandling (65+ år)",
-          "ingress": "Poliklinikk eldre pasient",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-08-22T10:20:00.000+02:00"
-        },
-        {
-          "utvalg": "sektor 2 og 7",
-          "data": "poliklinikk_kontakt_65.json",
-          "publisert": "2025-11-30T13:32:00.000+01:00",
-          "resultat": "litt mer",
-          "overskrift": "Kontaktdagar i poliklinikk (65+ år)",
-          "ingress": "rundt....",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-08-22T13:32:00.000+02:00"
-        },
-        {
           "type": "faktaboks",
           "overskrift": "Eldre i døgnbehandling (skal bli ein resultatboks)",
           "tekst": "\n(Skildring av resultat, samt tolking)"
@@ -129,55 +85,6 @@
           "type": "faktaboks",
           "overskrift": "Pasientgrupper i psykisk helsevern",
           "tekst": "(Forklaring, motivasjon og argumentasjon for diagnosespesifikke analysar, og eitt delkapittel for kvar av diagnosegruppene)\n\n(For kvar diagnosegruppe: vise kor mange som får oppfølging i primær-, begge- og spesialisthelsetenesta, då dette vil harmonisere med pasientforløp?)\n\nECT-behandling her?"
-        }
-      ]
-    },
-    {
-      "overskrift": "poliklinikk behandling for angst",
-      "innhold": [
-        {
-          "utvalg": "F40-F43 hoved diagnose\n\nsektor 2 og 7",
-          "data": "angst_pol_kon_eldre.json",
-          "publisert": "2025-11-30T13:00:00.000+01:00",
-          "resultat": "geografisk variasjon",
-          "overskrift": "kontaktdagar for eldre med angst",
-          "ingress": "eldre med angst",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-08-22T13:00:00.000+02:00"
-        },
-        {
-          "utvalg": "F40_F43",
-          "data": "angst_pol_kon_v.json",
-          "publisert": "2025-11-30T13:17:00.000+01:00",
-          "resultat": "geografisk",
-          "overskrift": "Kontaktdagar for vaksne med angst",
-          "ingress": "angst",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-08-22T13:17:00.000+02:00"
-        },
-        {
-          "utvalg": "sektor 2 og 7 \n\nangst hoved diagnose\n\n18-64",
-          "data": "angst_pol_pas_v.json",
-          "publisert": "2025-11-30T20:29:00.000+01:00",
-          "resultat": "variation i pasient rate",
-          "overskrift": "Vaksne pasientar med angst i poliklinikk behandling",
-          "ingress": "angs pasienter 18-64",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-08-24T20:29:00.000+02:00"
-        },
-        {
-          "utvalg": "sektor 2 og 7\n\nangst hoved diagnose\n\n65 og eldre",
-          "data": "angst_pas_eldre_pol_pas.json",
-          "publisert": "2025-11-30T20:33:00.000+01:00",
-          "resultat": "geografisk variasjon",
-          "overskrift": "Eldre pasientar med angst i poliklinikk behandling (65+)",
-          "ingress": "eldre 65 plus",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-08-24T20:33:00.000+02:00"
         }
       ]
     },
