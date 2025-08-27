@@ -153,7 +153,7 @@
       ]
     },
     {
-      "overskrift": "Poliklinikk behandling for vaksne ,18-64 år med depresjon",
+      "overskrift": "Poliklinikk behandling for depresjon",
       "innhold": [
         {
           "utvalg": "Depresjon som hoved tilstand\n\nsektor 2 og 7\n\nalder 18-64\n\npoliklinikk er definert som  inndato og utdato likt",
@@ -176,6 +176,28 @@
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-08-27T10:21:00.000+02:00"
+        },
+        {
+          "utvalg": "F32-F34 som hoved tilstand\n\nalder 65+\n\nsektor 2 og 7\n\ninndato=utdato",
+          "data": "depresjon_eldre_pas.json",
+          "publisert": "2025-11-30T11:07:00.000+01:00",
+          "resultat": "mer kvinner",
+          "overskrift": "Eldre (65+ år) med depresjon i poliklinikk behandling",
+          "ingress": "eldre",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-08-27T11:07:00.000+02:00"
+        },
+        {
+          "utvalg": "F32-F34\n\naldre 65+\n\nkontakt dagar",
+          "data": "depresjon_eldre_konrate.json",
+          "publisert": "2025-11-30T11:11:00.000+01:00",
+          "resultat": "mer kvinner",
+          "overskrift": "kontaktdagar for depresjon hos eldre (65+ år)",
+          "ingress": "eldre",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-08-27T11:11:00.000+02:00"
         }
       ]
     }
