@@ -1950,6 +1950,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mui/icons-material@npm:7.3.0":
+  version: 7.3.0
+  resolution: "@mui/icons-material@npm:7.3.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.28.2"
+  peerDependencies:
+    "@mui/material": ^7.3.0
+    "@types/react": ^17.0.0 || ^18.0.0 || ^19.0.0
+    react: ^17.0.0 || ^18.0.0 || ^19.0.0
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+  checksum: 10/a70024dd845bd5d1f0d0111134f2b5cdfdc1f36befb726f141667b5b98e52f2587d0285f2bf72f3e115697f14f07b3c94eaa8b4b343ee7fa21f95bd4ea9c2b82
+  languageName: node
+  linkType: hard
+
 "@mui/material@npm:7.2.0":
   version: 7.2.0
   resolution: "@mui/material@npm:7.2.0"
@@ -3574,12 +3590,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:22.17.1":
-  version: 22.17.1
-  resolution: "@types/node@npm:22.17.1"
+"@types/node@npm:22.18.5":
+  version: 22.18.5
+  resolution: "@types/node@npm:22.18.5"
   dependencies:
     undici-types: "npm:~6.21.0"
-  checksum: 10/775d3996693ce2e717267c810669a8122308676487130c91590022ded38a999fef63fd63b4631fdbbceeea9470f0ecf6a2333a3abbc4f917f40b404bbb57e9bc
+  checksum: 10/5a721e6e25e4997ecde0333a72463cf625f6a7f7e17b84fd107d4646efd0735a7f4cf37908e2c20a0072eda9e9ddfe1ccacf75cdef7c0ada8f5650d1331a1af4
   languageName: node
   linkType: hard
 
@@ -10305,7 +10321,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "mongts@workspace:."
   dependencies:
-    "@types/node": "npm:22.17.1"
+    "@types/node": "npm:22.18.5"
     decap-server: "npm:3.3.1"
     eslint: "npm:9.33.0"
     husky: "npm:9.1.7"
@@ -11304,7 +11320,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "qmongjs@workspace:packages/qmongjs"
   dependencies:
-    "@mui/icons-material": "npm:7.2.0"
+    "@mui/icons-material": "npm:7.3.0"
     "@mui/material": "npm:7.2.0"
     "@mui/system": "npm:7.3.0"
     "@mui/x-tree-view": "npm:8.9.2"
@@ -12504,7 +12520,7 @@ __metadata:
     "@types/d3-scale": "npm:4.0.9"
     "@types/d3-shape": "npm:3.1.7"
     "@types/d3-time-format": "npm:4.0.3"
-    "@types/node": "npm:22.17.1"
+    "@types/node": "npm:22.18.5"
     "@types/react": "npm:19.1.13"
     "@visx/axis": "npm:3.12.0"
     "@visx/group": "npm:3.12.0"
