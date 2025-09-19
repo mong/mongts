@@ -1,0 +1,421 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snittrate"],
+      "y": "area",
+      "xLabel": {
+        "nn": "Tal opphald for psykoselidingar pr. 1 000 innbyggjarar 18-64 år",
+        "en": "Admissions for psychotic disorders per 1,000 population 18-64 years"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "Rate.2020",
+        "Rate.2021",
+        "Rate.2022",
+        "Rate.2023",
+        "Rate.2024"
+      ],
+      "annualVarLabels": {
+        "nn": ["2020", "2021", "2022", "2023", "2024"
+ ],
+        "en": [ "2020", "2021", "2022", "2023", "Rate.2024"
+]
+      }
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2020-2024. Opphaldsrate for psykoselidingar pr.1000 innbyggjarar 18-64 år",
+        "en": "Annual average during 2020–2024. Admission rate for psychotic disorders per 1,000 population 18-64 years"
+      },
+      "columns": [
+        {
+          "id": "area",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "Snittrate",
+          "label_no": "Kontaktdagsrate",
+          "label_en": "Admission rate",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Snitt_kontaktar",
+          "label_no": "Tal opphald",
+          "label_en": "Number of admissions",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Snitt_innbyggarar",
+          "label_no": "Innbyggjarar 18-64 år",
+          "label_en": "Population 18-64 years",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2020–2024. Tal opphald per pasient for psykoselidingar.",
+        "en": "Annual average during 2019–2023. Number of admissions per patient for psychotic disorders"
+      },
+      "columns": [
+        {
+          "id": "area",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "kontakt_p_pas",
+          "label_no": "Opphald per pasient",
+          "label_en": "Admission per patient",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Snitt_opphald",
+          "label_no": "Tal opphald",
+          "label_en": "Number of contact days",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Tal_pas",
+          "label_no": "Tal pasientar",
+          "label_en": "Number of patients",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "Snittrate",
+      "caption": {
+        "nn": "Tal døgnopphald for psykoselidingar  pr. 1 000 innbyggjarar 18-64 år.",
+        "en": "Admissions for psychotic disorders treatment per 1,000 population 18-64 years"
+      },
+      "jenks": [
+        {
+          "grense": 2.2  
+        },
+        {
+          "grense": 3.1  
+        },
+        {
+          "grense": 4.3
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data": [
+  {
+    "area": "Akershus",
+    "Snitt_opphald": 905.4,
+    "Snitt_innbyggarar": 368532.8,
+    "Snittrate": 2.46,
+    "Rate.2020": 2.36,
+    "Rate.2021": 2.08,
+    "Rate.2022": 2.35,
+    "Rate.2023": 2.66,
+    "Rate.2024": 2.83,
+    "Tal_pas": 542.4,
+    "opphald_p_pas": 1.6692
+  },
+  {
+    "area": "Diakonhjemmet",
+    "Snitt_opphald": 167.4,
+    "Snitt_innbyggarar": 94447.6,
+    "Snittrate": 1.76,
+    "Rate.2020": 1.8,
+    "Rate.2021": 1.84,
+    "Rate.2022": 1.79,
+    "Rate.2023": 1.48,
+    "Rate.2024": 1.88,
+    "Tal_pas": 125.4,
+    "opphald_p_pas": 1.3349
+  },
+  {
+    "area": "Finnmark",
+    "Snitt_opphald": 189.8,
+    "Snitt_innbyggarar": 46116.4,
+    "Snittrate": 4.12,
+    "Rate.2020": 4.55,
+    "Rate.2021": 4.25,
+    "Rate.2022": 4.06,
+    "Rate.2023": 4.32,
+    "Rate.2024": 3.4,
+    "Tal_pas": 89,
+    "opphald_p_pas": 2.1326
+  },
+  {
+    "area": "Helgeland",
+    "Snitt_opphald": 170.6,
+    "Snitt_innbyggarar": 45312.6,
+    "Snittrate": 3.78,
+    "Rate.2020": 3.06,
+    "Rate.2021": 3.61,
+    "Rate.2022": 3.57,
+    "Rate.2023": 3.92,
+    "Rate.2024": 4.75,
+    "Tal_pas": 88.6,
+    "opphald_p_pas": 1.9255
+  },
+  {
+    "area": "Bergen",
+    "Snitt_opphald": 974.4,
+    "Snitt_innbyggarar": 287355.8,
+    "Snittrate": 3.4,
+    "Rate.2020": 3.41,
+    "Rate.2021": 3.51,
+    "Rate.2022": 3.32,
+    "Rate.2023": 3.19,
+    "Rate.2024": 3.55,
+    "Tal_pas": 533.2,
+    "opphald_p_pas": 1.8275
+  },
+  {
+    "area": "Fonna",
+    "Snitt_opphald": 406.8,
+    "Snitt_innbyggarar": 106977.8,
+    "Snittrate": 3.78,
+    "Rate.2020": 3.52,
+    "Rate.2021": 3.37,
+    "Rate.2022": 4.25,
+    "Rate.2023": 3.97,
+    "Rate.2024": 3.81,
+    "Tal_pas": 163.8,
+    "opphald_p_pas": 2.4835
+  },
+  {
+    "area": "Førde",
+    "Snitt_opphald": 175,
+    "Snitt_innbyggarar": 62894.8,
+    "Snittrate": 2.82,
+    "Rate.2020": 2.71,
+    "Rate.2021": 2.47,
+    "Rate.2022": 3.26,
+    "Rate.2023": 3,
+    "Rate.2024": 2.67,
+    "Tal_pas": 91.6,
+    "opphald_p_pas": 1.9105
+  },
+  {
+    "area": "Møre og Romsdal",
+    "Snitt_opphald": 441,
+    "Snitt_innbyggarar": 157277.8,
+    "Snittrate": 2.82,
+    "Rate.2020": 2.91,
+    "Rate.2021": 2.71,
+    "Rate.2022": 2.9,
+    "Rate.2023": 2.84,
+    "Rate.2024": 2.75,
+    "Tal_pas": 212.8,
+    "opphald_p_pas": 2.0724
+  },
+  {
+    "area": "Nord-Trøndelag",
+    "Snitt_opphald": 221.2,
+    "Snitt_innbyggarar": 77970.8,
+    "Snittrate": 2.94,
+    "Rate.2020": 3.07,
+    "Rate.2021": 3.34,
+    "Rate.2022": 2.91,
+    "Rate.2023": 2.82,
+    "Rate.2024": 2.57,
+    "Tal_pas": 107.6,
+    "opphald_p_pas": 2.0558
+  },
+  {
+    "area": "Stavanger",
+    "Snitt_opphald": 948.6,
+    "Snitt_innbyggarar": 233727.6,
+    "Snittrate": 4.02,
+    "Rate.2020": 3.89,
+    "Rate.2021": 3.93,
+    "Rate.2022": 3.77,
+    "Rate.2023": 4.07,
+    "Rate.2024": 4.46,
+    "Tal_pas": 485,
+    "opphald_p_pas": 1.9559
+  },
+  {
+    "area": "Lovisenberg",
+    "Snitt_opphald": 408,
+    "Snitt_innbyggarar": 128888,
+    "Snittrate": 3.61,
+    "Rate.2020": 3.87,
+    "Rate.2021": 3.61,
+    "Rate.2022": 3.5,
+    "Rate.2023": 3.32,
+    "Rate.2024": 3.73,
+    "Tal_pas": 254.2,
+    "opphald_p_pas": 1.605
+  },
+  {
+    "area": "Nordland",
+    "Snitt_opphald": 275.8,
+    "Snitt_innbyggarar": 82794.2,
+    "Snittrate": 3.35,
+    "Rate.2020": 2.47,
+    "Rate.2021": 2.54,
+    "Rate.2022": 3.31,
+    "Rate.2023": 3.61,
+    "Rate.2024": 4.85,
+    "Tal_pas": 151.2,
+    "opphald_p_pas": 1.8241
+  },
+  {
+    "area": "Noreg",
+    "Snitt_opphald": 10281.2,
+    "Snitt_innbyggarar": 3342976,
+    "Snittrate": 3.07,
+    "Rate.2020": 2.99,
+    "Rate.2021": 2.97,
+    "Rate.2022": 3.08,
+    "Rate.2023": 3.1,
+    "Rate.2024": 3.23,
+    "Tal_pas": 5438.2,
+    "opphald_p_pas": 1.8906
+  },
+  {
+    "area": "OUS",
+    "Snitt_opphald": 516,
+    "Snitt_innbyggarar": 186077,
+    "Snittrate": 2.76,
+    "Rate.2020": 2.43,
+    "Rate.2021": 2.78,
+    "Rate.2022": 2.65,
+    "Rate.2023": 2.74,
+    "Rate.2024": 3.18,
+    "Tal_pas": 335.6,
+    "opphald_p_pas": 1.5375
+  },
+  {
+    "area": "St. Olav",
+    "Snitt_opphald": 601,
+    "Snitt_innbyggarar": 213371.8,
+    "Snittrate": 2.81,
+    "Rate.2020": 2.99,
+    "Rate.2021": 2.79,
+    "Rate.2022": 3.02,
+    "Rate.2023": 2.72,
+    "Rate.2024": 2.56,
+    "Tal_pas": 323.4,
+    "opphald_p_pas": 1.8584
+  },
+  {
+    "area": "Vestfold",
+    "Snitt_opphald": 387.6,
+    "Snitt_innbyggarar": 149498,
+    "Snittrate": 2.64,
+    "Rate.2020": 2.67,
+    "Rate.2021": 2.58,
+    "Rate.2022": 2.42,
+    "Rate.2023": 2.58,
+    "Rate.2024": 2.95,
+    "Tal_pas": 236.8,
+    "opphald_p_pas": 1.6368
+  },
+  {
+    "area": "Innlandet",
+    "Snitt_opphald": 434,
+    "Snitt_innbyggarar": 200048.4,
+    "Snittrate": 2.21,
+    "Rate.2020": 2.07,
+    "Rate.2021": 2.25,
+    "Rate.2022": 2.38,
+    "Rate.2023": 2.25,
+    "Rate.2024": 2.12,
+    "Tal_pas": 252.6,
+    "opphald_p_pas": 1.7181
+  },
+  {
+    "area": "Telemark",
+    "Snitt_opphald": 427.2,
+    "Snitt_innbyggarar": 102993.2,
+    "Snittrate": 4.29,
+    "Rate.2020": 4.03,
+    "Rate.2021": 3.79,
+    "Rate.2022": 4.39,
+    "Rate.2023": 4.66,
+    "Rate.2024": 4.59,
+    "Tal_pas": 219.4,
+    "opphald_p_pas": 1.9471
+  },
+  {
+    "area": "Østfold",
+    "Snitt_opphald": 494.6,
+    "Snitt_innbyggarar": 194134.4,
+    "Snittrate": 2.62,
+    "Rate.2020": 2.62,
+    "Rate.2021": 2.63,
+    "Rate.2022": 2.5,
+    "Rate.2023": 2.57,
+    "Rate.2024": 2.75,
+    "Tal_pas": 290,
+    "opphald_p_pas": 1.7055
+  },
+  {
+    "area": "Sørlandet",
+    "Snitt_opphald": 703.4,
+    "Snitt_innbyggarar": 187992.4,
+    "Snittrate": 3.8,
+    "Rate.2020": 3.84,
+    "Rate.2021": 3.96,
+    "Rate.2022": 3.85,
+    "Rate.2023": 3.75,
+    "Rate.2024": 3.59,
+    "Tal_pas": 338.4,
+    "opphald_p_pas": 2.0786
+  },
+  {
+    "area": "UNN",
+    "Snitt_opphald": 696.2,
+    "Snitt_innbyggarar": 117962,
+    "Snittrate": 5.92,
+    "Rate.2020": 5.77,
+    "Rate.2021": 5.86,
+    "Rate.2022": 5.69,
+    "Rate.2023": 5.96,
+    "Rate.2024": 6.31,
+    "Tal_pas": 243,
+    "opphald_p_pas": 2.865
+  },
+  {
+    "area": "Vestre Viken",
+    "Snitt_opphald": 737.2,
+    "Snitt_innbyggarar": 298602.6,
+    "Snittrate": 2.52,
+    "Rate.2020": 2.31,
+    "Rate.2021": 2.35,
+    "Rate.2022": 2.61,
+    "Rate.2023": 2.73,
+    "Rate.2024": 2.58,
+    "Tal_pas": 409.8,
+    "opphald_p_pas": 1.7989
+  }
+] 
+    }
+  ]
+}
