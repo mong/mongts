@@ -68,7 +68,7 @@
           "oppdatert": "2025-08-26T13:02:00.000+02:00"
         },
         {
-          "utvalg": "Vaksne (18-64 år) som i 2020-2024 hadde minst eit døgnopphald i psykisk helsevern\n\n\n\nDøgnopphald er definert som: \n\n* Opphold på meir enn null døgn.\n* Alle samanhengande opphald blir rekna som eitt opphald. Med samanhengande opphald meiner vi opphald som kjem rett etter kvarandre utan opphald i dagar, basert på kalenderdato (dvs utdata frå den førrige opphald og inndato til neste opphald er same kalenderdato).\n* For slike samanhengande opphald nyttar vi innleggingsdatoen frå det første opphaldet og utskrivingsdatoen frå det siste opphaldet til pasienten.",
+          "utvalg": "Vaksne (18-64 år) som i 2020-2024 hadde minst eit døgnopphald i psykisk helsevern\n\nDøgnopphald er definert som: \n\n* Opphold på meir enn null døgn.\n* Alle samanhengande opphald blir rekna som eitt opphald. Med samanhengande opphald meiner vi opphald som kjem rett etter kvarandre utan opphald i dagar, basert på kalenderdato (dvs utdata frå den førrige opphald og inndato til neste opphald er same kalenderdato).\n* For slike samanhengande opphald nyttar vi innleggingsdatoen frå det første opphaldet og utskrivingsdatoen frå det siste opphaldet til pasienten.\n\n\nRatane er justerte for alder og kjønn. Strekane markerer eit 95 prosents konfidensintervall for pasientraten.",
           "data": "opphold_pasient_18.json",
           "publisert": "2025-11-30T12:22:00.000+01:00",
           "resultat": "Rundt.....",
@@ -83,7 +83,7 @@
           "data": "opphold_kontakt_18.json",
           "publisert": "2025-11-30T12:42:00.000+01:00",
           "resultat": "Rundt.....",
-          "overskrift": "Oppholdsrate i døgnbehandling for vaksne (18-64 år)",
+          "overskrift": "Oppholdsrate  for vaksne (18-64 år)",
           "ingress": "Rundt.....",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
@@ -134,9 +134,26 @@
           "oppdatert": "2025-08-26T13:05:00.000+02:00"
         },
         {
-          "type": "faktaboks",
-          "overskrift": "Eldre i døgnbehandling (skal bli ein resultatboks)",
-          "tekst": "\n(Skildring av resultat, samt tolking)"
+          "utvalg": "\n\n\nVaksne (18-64 år) som i 2020-2024 hadde minst eit døgnopphald i psykisk helsevern\n\nDøgnopphald er definert som:\n\n* Opphold på meir enn null døgn.\n* Alle samanhengande opphald blir rekna som eitt opphald. Med samanhengande opphald meiner vi opphald som kjem rett etter kvarandre utan opphald i dagar, basert på kalenderdato (dvs utdata frå den førrige opphald og inndato til neste opphald er same kalenderdato).\n* For slike samanhengande opphald nyttar vi innleggingsdatoen frå det første opphaldet og utskrivingsdatoen frå det siste opphaldet til pasienten.\n\n\n\nRatane er justerte for alder og kjønn. Strekane markerer eit 95 prosents konfidensintervall for pasientraten.",
+          "data": "opphold_pasient_65.json",
+          "publisert": "2025-11-30T12:59:00.000+01:00",
+          "resultat": "Rundt.....",
+          "overskrift": "Eldre pasientar i døgnbehandling (65+ år)",
+          "ingress": "Rundt....",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-09-19T12:59:00.000+02:00"
+        },
+        {
+          "utvalg": "Vaksne (65+  år) som i 2020-2024 hadde minst eit døgnopphald i psykisk helsevern\n\n\n\nDøgnopphald er definert som: \n\nOpphold på meir enn null døgn.\n\nAlle samanhengande opphald blir rekna som eitt opphald. Med samanhengande opphald meiner vi opphald som kjem rett etter kvarandre utan opphald i dagar, basert på kalenderdato (dvs utdata frå den førrige opphald og inndato til neste opphald er same kalenderdato).\n\nFor slike samanhengande opphald nyttar vi innleggingsdatoen frå det første opphaldet og utskrivingsdatoen frå det siste opphaldet til pasienten.\n\n\n\nRatane er justerte for alder og kjønn.",
+          "data": "opphold_kontakt_65.json",
+          "publisert": "2025-11-30T13:04:00.000+01:00",
+          "resultat": "Rundt.....",
+          "overskrift": "Oppholdsrate for eldre (65+ år)",
+          "ingress": "Rundt.....",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-09-19T13:04:00.000+02:00"
         },
         {
           "type": "faktaboks",
