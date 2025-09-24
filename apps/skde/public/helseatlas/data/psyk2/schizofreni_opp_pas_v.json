@@ -1,0 +1,400 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snitt_rate"],
+      "y": "area",
+      "xLabel": {
+        "nn": "Tal pasientar pr. 1 000 innbyggjarar (18-64 år)",
+        "en": "Number of patients pr. 1,000 population (18-64 years)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "errorBars": ["lowercl", "uppercl"],
+      "format": ",.1f"
+    },
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snitt_rate"],
+      "y": "area",
+      "xLabel": {
+        "nn": "Tal pasientar pr. 1 000 innbyggjarar (18-64 år)",
+        "en": "Number of patients pr. 1,000 population (18-64 years)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "Rate.2020",
+        "Rate.2021",
+        "Rate.2022",
+        "Rate.2023",
+        "Rate.2024"
+      ],
+      "annualVarLabels": {
+        "nn": ["2020", "2021", "2022", "2023", "2024"],
+        "en": ["2020", "2021", "2022", "2023", "2024"]
+      }
+    },
+
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2020–2024. Pasientrate pr. 1 000 innbyggjarar 18-64 år",
+        "en": "Annual average during 2020–2024. Patient rate pr. 1 000 population 18-64 years"
+      },
+      "columns": [
+        {
+          "id": "area",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "Snitt_rate",
+          "label_no": "Rate",
+          "label_en": "Rate",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Tal_pas",
+          "label_no": "Tal pasientar",
+          "label_en": "Number of patients",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Innbyggarar",
+          "label_no": "Innbyggjarar (18-64 år)",
+          "label_en": "Population (18-64 years)",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "Snitt_rate",
+      "caption": {
+        "nn": "Tal pasientar pr. 1 000 innbyggjarar (18-64 år)",
+        "en": "Number of patient pr. 1,000 population (18-64 years)"
+      },
+      "jenks": [
+        {
+          "grense": 1.4    
+        },
+        {
+          "grense": 1.6 
+        },
+        {
+          "grense": 2.0
+        }
+      ],
+      "format": ",.1f"
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data":[
+  {
+    "area": "Akershus",
+    "Tal_pas": 543.6,
+    "Innbyggarar": 368532.8,
+    "Snitt_rate": 1.49,
+    "lowercl": 1.43,
+    "uppercl": 1.54,
+    "Rate.2020": 1.43,
+    "Rate.2021": 1.42,
+    "Rate.2022": 1.5,
+    "Rate.2023": 1.53,
+    "Rate.2024": 1.54
+  },
+  {
+    "area": "Diakonhjemmet",
+    "Tal_pas": 126.2,
+    "Innbyggarar": 94447.6,
+    "Snitt_rate": 1.33,
+    "lowercl": 1.23,
+    "uppercl": 1.44,
+    "Rate.2020": 1.43,
+    "Rate.2021": 1.33,
+    "Rate.2022": 1.34,
+    "Rate.2023": 1.2,
+    "Rate.2024": 1.37
+  },
+  {
+    "area": "Finnmark",
+    "Tal_pas": 89.2,
+    "Innbyggarar": 46116.4,
+    "Snitt_rate": 1.93,
+    "lowercl": 1.75,
+    "uppercl": 2.11,
+    "Rate.2020": 2.14,
+    "Rate.2021": 1.94,
+    "Rate.2022": 1.72,
+    "Rate.2023": 1.95,
+    "Rate.2024": 1.89
+  },
+  {
+    "area": "Helgeland",
+    "Tal_pas": 88.8,
+    "Innbyggarar": 45312.6,
+    "Snitt_rate": 1.99,
+    "lowercl": 1.8,
+    "uppercl": 2.18,
+    "Rate.2020": 1.87,
+    "Rate.2021": 1.92,
+    "Rate.2022": 1.87,
+    "Rate.2023": 2.08,
+    "Rate.2024": 2.21
+  },
+  {
+    "area": "Bergen",
+    "Tal_pas": 534.6,
+    "Innbyggarar": 287355.8,
+    "Snitt_rate": 1.85,
+    "lowercl": 1.78,
+    "uppercl": 1.92,
+    "Rate.2020": 1.77,
+    "Rate.2021": 1.86,
+    "Rate.2022": 1.8,
+    "Rate.2023": 1.85,
+    "Rate.2024": 1.99
+  },
+  {
+    "area": "Fonna",
+    "Tal_pas": 164,
+    "Innbyggarar": 106977.8,
+    "Snitt_rate": 1.54,
+    "lowercl": 1.43,
+    "uppercl": 1.64,
+    "Rate.2020": 1.49,
+    "Rate.2021": 1.59,
+    "Rate.2022": 1.61,
+    "Rate.2023": 1.53,
+    "Rate.2024": 1.45
+  },
+  {
+    "area": "Førde",
+    "Tal_pas": 91.6,
+    "Innbyggarar": 62894.8,
+    "Snitt_rate": 1.48,
+    "lowercl": 1.34,
+    "uppercl": 1.62,
+    "Rate.2020": 1.48,
+    "Rate.2021": 1.38,
+    "Rate.2022": 1.51,
+    "Rate.2023": 1.51,
+    "Rate.2024": 1.53
+  },
+  {
+    "area": "Møre og Romsdal",
+    "Tal_pas": 213.2,
+    "Innbyggarar": 157277.8,
+    "Snitt_rate": 1.37,
+    "lowercl": 1.29,
+    "uppercl": 1.45,
+    "Rate.2020": 1.42,
+    "Rate.2021": 1.34,
+    "Rate.2022": 1.32,
+    "Rate.2023": 1.36,
+    "Rate.2024": 1.41
+  },
+  {
+    "area": "Nord-Trøndelag",
+    "Tal_pas": 108.6,
+    "Innbyggarar": 77970.8,
+    "Snitt_rate": 1.44,
+    "lowercl": 1.31,
+    "uppercl": 1.56,
+    "Rate.2020": 1.44,
+    "Rate.2021": 1.46,
+    "Rate.2022": 1.42,
+    "Rate.2023": 1.45,
+    "Rate.2024": 1.41
+  },
+  {
+    "area": "Stavanger",
+    "Tal_pas": 486.2,
+    "Innbyggarar": 233727.6,
+    "Snitt_rate": 2.06,
+    "lowercl": 1.98,
+    "uppercl": 2.14,
+    "Rate.2020": 1.96,
+    "Rate.2021": 1.91,
+    "Rate.2022": 1.99,
+    "Rate.2023": 2.18,
+    "Rate.2024": 2.26
+  },
+  {
+    "area": "Lovisenberg",
+    "Tal_pas": 255.2,
+    "Innbyggarar": 128888,
+    "Snitt_rate": 2.24,
+    "lowercl": 2.11,
+    "uppercl": 2.38,
+    "Rate.2020": 2.28,
+    "Rate.2021": 2.15,
+    "Rate.2022": 2.2,
+    "Rate.2023": 2.18,
+    "Rate.2024": 2.41
+  },
+  {
+    "area": "Nordland",
+    "Tal_pas": 151.4,
+    "Innbyggarar": 82794.2,
+    "Snitt_rate": 1.85,
+    "lowercl": 1.72,
+    "uppercl": 1.98,
+    "Rate.2020": 1.48,
+    "Rate.2021": 1.61,
+    "Rate.2022": 1.68,
+    "Rate.2023": 2,
+    "Rate.2024": 2.48
+  },
+  {
+    "area": "Noreg",
+    "Tal_pas": 5438.2,
+    "Innbyggarar": 3342976,
+    "Snitt_rate": 1.63,
+    "lowercl": 1.61,
+    "uppercl": 1.65,
+    "Rate.2020": 1.57,
+    "Rate.2021": 1.58,
+    "Rate.2022": 1.62,
+    "Rate.2023": 1.64,
+    "Rate.2024": 1.71
+  },
+  {
+    "area": "OUS",
+    "Tal_pas": 337.2,
+    "Innbyggarar": 186077,
+    "Snitt_rate": 1.8,
+    "lowercl": 1.71,
+    "uppercl": 1.89,
+    "Rate.2020": 1.71,
+    "Rate.2021": 1.76,
+    "Rate.2022": 1.79,
+    "Rate.2023": 1.78,
+    "Rate.2024": 1.96
+  },
+  {
+    "area": "St. Olav",
+    "Tal_pas": 323.6,
+    "Innbyggarar": 213371.8,
+    "Snitt_rate": 1.51,
+    "lowercl": 1.43,
+    "uppercl": 1.58,
+    "Rate.2020": 1.49,
+    "Rate.2021": 1.42,
+    "Rate.2022": 1.66,
+    "Rate.2023": 1.49,
+    "Rate.2024": 1.48
+  },
+  {
+    "area": "Vestfold",
+    "Tal_pas": 238.4,
+    "Innbyggarar": 149498,
+    "Snitt_rate": 1.62,
+    "lowercl": 1.53,
+    "uppercl": 1.71,
+    "Rate.2020": 1.63,
+    "Rate.2021": 1.54,
+    "Rate.2022": 1.5,
+    "Rate.2023": 1.6,
+    "Rate.2024": 1.84
+  },
+  {
+    "area": "Innlandet",
+    "Tal_pas": 254,
+    "Innbyggarar": 200048.4,
+    "Snitt_rate": 1.3,
+    "lowercl": 1.23,
+    "uppercl": 1.37,
+    "Rate.2020": 1.21,
+    "Rate.2021": 1.29,
+    "Rate.2022": 1.38,
+    "Rate.2023": 1.28,
+    "Rate.2024": 1.34
+  },
+  {
+    "area": "Telemark",
+    "Tal_pas": 220.4,
+    "Innbyggarar": 102993.2,
+    "Snitt_rate": 2.2,
+    "lowercl": 2.07,
+    "uppercl": 2.33,
+    "Rate.2020": 2.08,
+    "Rate.2021": 2.04,
+    "Rate.2022": 2.34,
+    "Rate.2023": 2.31,
+    "Rate.2024": 2.25
+  },
+  {
+    "area": "Østfold",
+    "Tal_pas": 291.4,
+    "Innbyggarar": 194134.4,
+    "Snitt_rate": 1.54,
+    "lowercl": 1.46,
+    "uppercl": 1.62,
+    "Rate.2020": 1.52,
+    "Rate.2021": 1.6,
+    "Rate.2022": 1.47,
+    "Rate.2023": 1.5,
+    "Rate.2024": 1.61
+  },
+  {
+    "area": "Sørlandet",
+    "Tal_pas": 339.2,
+    "Innbyggarar": 187992.4,
+    "Snitt_rate": 1.82,
+    "lowercl": 1.74,
+    "uppercl": 1.91,
+    "Rate.2020": 1.82,
+    "Rate.2021": 1.82,
+    "Rate.2022": 1.77,
+    "Rate.2023": 1.81,
+    "Rate.2024": 1.91
+  },
+  {
+    "area": "UNN",
+    "Tal_pas": 243.8,
+    "Innbyggarar": 117962,
+    "Snitt_rate": 2.08,
+    "lowercl": 1.96,
+    "uppercl": 2.19,
+    "Rate.2020": 1.91,
+    "Rate.2021": 2.04,
+    "Rate.2022": 2.16,
+    "Rate.2023": 2.16,
+    "Rate.2024": 2.12
+  },
+  {
+    "area": "Vestre Viken",
+    "Tal_pas": 411,
+    "Innbyggarar": 298602.6,
+    "Snitt_rate": 1.41,
+    "lowercl": 1.35,
+    "uppercl": 1.47,
+    "Rate.2020": 1.33,
+    "Rate.2021": 1.34,
+    "Rate.2022": 1.41,
+    "Rate.2023": 1.5,
+    "Rate.2024": 1.48
+  }
+] 
+    }
+  ]
+}
+
