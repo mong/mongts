@@ -258,25 +258,36 @@
       ]
     },
     {
-      "overskrift": "Poliklinikk behandling for angst",
+      "overskrift": "Angst",
       "innhold": [
         {
           "utvalg": "\n\nPasientar i poliklinisk behandling for angst er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F40 eller F41 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri.\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
           "data": "angst_pol_pas_v.json",
           "publisert": "2025-11-30T14:48:00.000+01:00",
           "resultat": "kvinner",
-          "overskrift": "Pasientar med angst i poliklinikk behandling",
+          "overskrift": "Vaksne pasientar med angst",
           "ingress": "angst",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-08-27T14:48:00.000+02:00"
         },
         {
+          "utvalg": "Kontaktdagar for angst er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F40 eller F41 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n* Kun ein kontakt per pasient per dag er inkludert.\n\nAlder: 65 + år.\n\nRatane er justerte for alder og kjønn.",
+          "data": "angst_pol_kon_v.json",
+          "publisert": "2025-11-30T13:17:00.000+01:00",
+          "resultat": "meir kvinner",
+          "overskrift": "Kontaktdagar i poliklinikk for vaksne med angstlidingar",
+          "ingress": "angst kontaktdagar",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-09-15T13:17:00.000+02:00"
+        },
+        {
           "utvalg": "\n\n\nPasientar i poliklinisk behandling for angst er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F40 eller F41 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri.\n\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 65 + år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
           "data": "angst_eldre_pol_pas_utanårsprikke.json",
           "publisert": "2025-11-30T15:13:00.000+01:00",
           "resultat": "Kvinner",
-          "overskrift": "Eldre med angst i poliklinikk behandling",
+          "overskrift": "Eldre pasientar med angst",
           "ingress": "eldre",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
@@ -287,22 +298,11 @@
           "data": "angst_pol_kon_eldre.json",
           "publisert": "2025-11-30T15:16:00.000+01:00",
           "resultat": "kvinner",
-          "overskrift": "Kontaktdagar for angst hos eldre (65+)",
+          "overskrift": "Kontaktdagar i poliklinikk for eldre med angstlidingar",
           "ingress": "eldre",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-08-27T15:16:00.000+02:00"
-        },
-        {
-          "utvalg": "Kontaktdagar for angst er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F40 eller F41 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n* Kun ein kontakt per pasient per dag er inkludert.\n\nAlder: 65 + år.\n\nRatane er justerte for alder og kjønn.",
-          "data": "angst_pol_kon_v.json",
-          "publisert": "2025-11-30T13:17:00.000+01:00",
-          "resultat": "meir kvinner",
-          "overskrift": "Kontaktdagar for vaksne med angst (18-64 år) ",
-          "ingress": "angst kontaktdagar",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-09-15T13:17:00.000+02:00"
         }
       ]
     },
