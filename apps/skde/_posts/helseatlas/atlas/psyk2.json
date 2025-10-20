@@ -93,17 +93,6 @@
           "type": "faktaboks",
           "overskrift": "Lokale variasjonar per DPS-område (skal bli ein resultatboks)",
           "tekst": "(Skildring av resultat etter DPS-område)"
-        },
-        {
-          "utvalg": "Pasientar i kommunehelsetjenester er definerte etter følgjande kriterium:\n\nVaksne (18-64 år) som i 2020-2024 hadde minst ein kontakt hos fastlege/legevakt\n\nPasienter med ICPC koder P01-P29  (symptom og plager) og P70-P99 (diagnoser/sjukdommar)​ \nunntatt P16-P19 \n\nTakstkode: 2AD, 2AE, 2AK, 2ED, 2FK (eksakt treff)\n\n\n\nRatane er justerte for alder og kjønn.",
-          "data": "ny-55-kpr_pasient_all.json",
-          "publisert": "2025-11-30T12:10:00.000+01:00",
-          "resultat": "litt mer....",
-          "overskrift": "Tilvising og oppfølgjing av vaksne pasientar hos allmenlege (18-64 år)",
-          "ingress": "Mer....",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-10-20T12:10:00.000+02:00"
         }
       ]
     },
@@ -158,12 +147,6 @@
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-09-19T13:04:00.000+02:00"
-        },
-        {
-          "type": "faktaboks",
-          "overskrift": "Eldre i primærhelsetenesta (skal bli ein resultatboks)",
-          "tekst": "Skildring",
-          "utvalg": "Eldre (65+  år) som i 2020-2024 hadde minst eit døgnopphald i psykisk helsevern\n\n\n\nDøgnopphald er definert som: \n\nOpphold på meir enn null døgn.\n\nAlle samanhengande opphald blir rekna som eitt opphald. Med samanhengande opphald meiner vi opphald som kjem rett etter kvarandre utan opphald i dagar, basert på kalenderdato (dvs utdata frå den førrige opphald og inndato til neste opphald er same kalenderdato).\n\nFor slike samanhengande opphald nyttar vi innleggingsdatoen frå det første opphaldet og utskrivingsdatoen frå det siste opphaldet til pasienten.\n\n\n\nRatane er justerte for alder og kjønn."
         }
       ]
     },
@@ -174,6 +157,28 @@
           "type": "faktaboks",
           "overskrift": "Tilvising og oppfølgjing hjå allmennlege",
           "tekst": "Skildring av kommunehelsetenesta si rolle i oppfølgjing og behandling av vaksne og eldre sine psykiske lidingar."
+        },
+        {
+          "utvalg": "\n\n\nPasientar i kommunehelsetjenester er definerte etter følgjande kriterium:\n\nVaksne (18-64 år) som i 2020-2024 hadde minst ein kontakt hos fastlege/legevakt\n\nPasienter med ICPC koder P01-P29  (symptom og plager) og P70-P99 (diagnoser/sjukdommar)​ \nunntatt P16-P19 \n\nTakstkode: 2AD, 2AE, 2AK, 2ED, 2FK (eksakt treff)\n\n\n\n\nRatane er justerte for alder og kjønn.",
+          "data": "ny-55-kpr_pasient_all.json",
+          "publisert": "2025-11-30T12:42:00.000+01:00",
+          "resultat": "Mer.........",
+          "overskrift": "Tilvising og oppfølgjing av vaksne pasientar hos allmenlege (18-64 år)",
+          "ingress": "mer....",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-10-20T12:42:00.000+02:00"
+        },
+        {
+          "utvalg": "\n\n\nPasientar i kommunehelsetjenester er definerte etter følgjande kriterium:\n\nEldre (65+år) som i 2020-2024 hadde minst ein kontakt hos fastlege/legevakt\n\nPasienter med ICPC koder P01-P29  (symptom og plager) og P70-P99 (diagnoser/sjukdommar)​ \nunntatt P16-P19 \n\nTakstkode: 2AD, 2AE, 2AK, 2ED, 2FK (eksakt treff)\n\n\n\n\n\nRatane er justerte for alder og kjønn.",
+          "data": "kpr-pasient_65.json",
+          "publisert": "2025-11-30T12:45:00.000+01:00",
+          "resultat": "Mer...",
+          "overskrift": "Tilvising og oppfølgjing av eldre pasientar hos allmenlege (65+ år)",
+          "ingress": "Mer.....",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-10-20T12:45:00.000+02:00"
         }
       ]
     },
