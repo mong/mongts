@@ -61,7 +61,7 @@ export const DataTable = ({
                 key={`${header.id}${i}`}
                 align={header.typeVar === "number" ? "right" : "left"}
                 padding={"none"}
-                sx={{ fontSize: "0.875rem" }}
+                sx={{ fontSize: "0.865rem" }}
                 sortDirection={orderBy === header.id ? order : false}
               >
                 <TableSortLabel
@@ -106,6 +106,7 @@ export const DataTable = ({
                     align={cell.typeVar === "number" ? "right" : "left"}
                     sx={{
                       paddingTop: "0.125rem",
+                      paddingLeft: cell.typeVar === "number" ? ".5em" : 0,
                       fontFamily:
                         cell.typeVar === "number" ? "Monospace" : "default",
                       fontWeight: row.area === national ? "bolder" : "normal",
