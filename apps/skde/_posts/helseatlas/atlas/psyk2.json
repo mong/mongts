@@ -219,51 +219,29 @@
       ]
     },
     {
-      "overskrift": "Depresjon",
+      "overskrift": "ADHD",
       "innhold": [
         {
-          "utvalg": "\n\nPasientar i poliklinisk behandling for Depresjon er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F32, F33 eller F34 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri.\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
-          "data": "depresjon_pol_pas_vaksne.json",
-          "publisert": "2025-11-27T10:11:00.000+01:00",
-          "resultat": "meir kvinner",
-          "overskrift": "Vaksne pasientar med depresjon",
-          "ingress": "vaksne",
+          "utvalg": "\nPasientar i poliklinisk behandling for ADHD er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F90 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri.\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
+          "data": "adhd_pol_pas_v.json",
+          "publisert": "2025-11-30T13:43:00.000+01:00",
+          "resultat": "variasjon mål",
+          "overskrift": "Vaksne pasientar med ADHD",
+          "ingress": "ADHD",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
-          "oppdatert": "2025-08-27T10:11:00.000+02:00"
+          "oppdatert": "2025-09-10T13:43:00.000+02:00"
         },
         {
-          "utvalg": "Kontaktdagar for Depresjon er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F32, F33 eller F34 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n* Kun ein kontakt per pasient per dag er inkludert.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.",
-          "data": "depresjon_vaksne_pol.json",
-          "publisert": "2025-11-30T10:21:00.000+01:00",
-          "resultat": "meir kvinner",
-          "overskrift": "Kontaktdagar i poliklinikk for vaksne med depresjon",
-          "ingress": "Depresjon hos eldre",
+          "utvalg": "F90 som hoved diagnose\n\n\nindato=utdato\n\nkun en kontakt per pasient per dag\n\n18-64 år",
+          "data": "adhd_pol_v.json",
+          "publisert": "2025-11-30T13:47:00.000+01:00",
+          "resultat": "variasjon in kontaktdagsrate",
+          "overskrift": "Kontaktdagar i poliklinikk for vaksne med ADHD",
+          "ingress": "ADHD hos vaksne",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
-          "oppdatert": "2025-08-27T10:21:00.000+02:00"
-        },
-        {
-          "utvalg": "Pasientar i poliklinisk behandling for Depresjon er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F32, F33 eller F34  (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri.\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\n  Alder 65+ år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
-          "data": "depresjon_eldre_pas.json",
-          "publisert": "2025-11-30T11:07:00.000+01:00",
-          "resultat": "mer kvinner",
-          "overskrift": "Eldre pasientar med depresjon",
-          "ingress": "eldre",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-08-27T11:07:00.000+02:00"
-        },
-        {
-          "utvalg": "Kontaktdagar for Depresjon er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F32, F33 eller F34 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n* Kun ein kontakt per pasient per dag er inkludert.\n\n\n Alder: 65 + år.\n\n Ratane er justerte for alder og kjønn.",
-          "data": "depresjon_eldre_konrate.json",
-          "publisert": "2025-11-30T11:11:00.000+01:00",
-          "resultat": "mer kvinner",
-          "overskrift": "Kontaktdagar i poliklinikk for eldre med depresjon",
-          "ingress": "eldre",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-08-27T11:11:00.000+02:00"
+          "oppdatert": "2025-09-10T13:47:00.000+02:00"
         }
       ]
     },
@@ -317,6 +295,131 @@
       ]
     },
     {
+      "overskrift": "Bipolare lidingar",
+      "innhold": [
+        {
+          "utvalg": "Pasientar i poliklinisk behandling for PTSD er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F30-F31 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
+          "data": "bipolar_pol_pas_v.json",
+          "publisert": "2025-11-30T14:08:00.000+01:00",
+          "resultat": "variasjon",
+          "overskrift": "Vaksne pasientar med bipolare lidingar",
+          "ingress": "vaksne med bipolare lidingar",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-09-10T14:08:00.000+02:00"
+        },
+        {
+          "utvalg": "Bipolare hoved tilstand",
+          "data": "bipolar_pol_kon_v.json",
+          "publisert": "2025-11-30T14:11:00.000+01:00",
+          "resultat": "kontaktdagsrate",
+          "overskrift": "Kontaktdagar i poliklinikk for vaksne med bipolare lidingar",
+          "ingress": "bipolare lidingar",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-09-10T14:11:00.000+02:00"
+        },
+        {
+          "utvalg": "Pasientar i poliklinisk behandling for bipolare lidingar er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F30-F31 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 65 + år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
+          "data": "bipolar_pol_pas_eldre.json",
+          "publisert": "2025-11-30T14:13:00.000+01:00",
+          "resultat": "variasjon",
+          "overskrift": "Eldre pasientar med bipolare lidingar",
+          "ingress": "eldre med bipolare..",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-09-10T14:13:00.000+02:00"
+        },
+        {
+          "utvalg": "Kontaktdagar for bipolare lidingar er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode  F30-F31  (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n* Kun ein kontakt per pasient per dag er inkludert.\n\n\n\n\nAlder: 65 + år.\n\nRatane er justerte for alder og kjønn.",
+          "data": "bipolar_pol_kon_eldre.json",
+          "publisert": "2025-11-30T14:17:00.000+01:00",
+          "resultat": "variasjon",
+          "overskrift": "Kontaktdagar i poliklinikk for eldre med bipolare lidingar",
+          "ingress": "eldre med bipolar lidingar",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-09-10T14:17:00.000+02:00"
+        }
+      ]
+    },
+    {
+      "overskrift": "Depresjon",
+      "innhold": [
+        {
+          "utvalg": "\n\nPasientar i poliklinisk behandling for Depresjon er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F32, F33 eller F34 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri.\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
+          "data": "depresjon_pol_pas_vaksne.json",
+          "publisert": "2025-11-27T10:11:00.000+01:00",
+          "resultat": "meir kvinner",
+          "overskrift": "Vaksne pasientar med depresjon",
+          "ingress": "vaksne",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-08-27T10:11:00.000+02:00"
+        },
+        {
+          "utvalg": "Kontaktdagar for Depresjon er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F32, F33 eller F34 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n* Kun ein kontakt per pasient per dag er inkludert.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.",
+          "data": "depresjon_vaksne_pol.json",
+          "publisert": "2025-11-30T10:21:00.000+01:00",
+          "resultat": "meir kvinner",
+          "overskrift": "Kontaktdagar i poliklinikk for vaksne med depresjon",
+          "ingress": "Depresjon hos eldre",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-08-27T10:21:00.000+02:00"
+        },
+        {
+          "utvalg": "Pasientar i poliklinisk behandling for Depresjon er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F32, F33 eller F34  (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri.\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\n  Alder 65+ år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
+          "data": "depresjon_eldre_pas.json",
+          "publisert": "2025-11-30T11:07:00.000+01:00",
+          "resultat": "mer kvinner",
+          "overskrift": "Eldre pasientar med depresjon",
+          "ingress": "eldre",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-08-27T11:07:00.000+02:00"
+        },
+        {
+          "utvalg": "Kontaktdagar for Depresjon er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F32, F33 eller F34 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n* Kun ein kontakt per pasient per dag er inkludert.\n\n\n Alder: 65 + år.\n\n Ratane er justerte for alder og kjønn.",
+          "data": "depresjon_eldre_konrate.json",
+          "publisert": "2025-11-30T11:11:00.000+01:00",
+          "resultat": "mer kvinner",
+          "overskrift": "Kontaktdagar i poliklinikk for eldre med depresjon",
+          "ingress": "eldre",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-08-27T11:11:00.000+02:00"
+        }
+      ]
+    },
+    {
+      "overskrift": "Eteforstyrring",
+      "innhold": [
+        {
+          "utvalg": "\n\nPasientar i poliklinisk behandling for eteforstyrring er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F50 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
+          "data": "eteforstyrring_pol_pas_v.json",
+          "publisert": "2025-11-30T14:20:00.000+01:00",
+          "resultat": "eteforstyrring",
+          "overskrift": "Vaksne pasientar med eteforstyrring",
+          "ingress": "ete forstyrring",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-09-10T14:20:00.000+02:00"
+        },
+        {
+          "utvalg": "F50 hoved tilstand\n\n18-64\n\nsektor 2 og 7",
+          "data": "eteforstyrring_pol_kon_v.json",
+          "publisert": "2025-11-30T14:23:00.000+01:00",
+          "resultat": "stor forskjell",
+          "overskrift": "Kontaktdagar i poliklinikk for vaksne med eteforstyrring",
+          "ingress": "eteforstyrring",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-09-10T14:23:00.000+02:00"
+        }
+      ]
+    },
+    {
       "overskrift": "OCD",
       "innhold": [
         {
@@ -344,56 +447,29 @@
       ]
     },
     {
-      "overskrift": "PTSD",
+      "overskrift": "Personlegdomsforstyrring",
       "innhold": [
         {
-          "utvalg": "Pasientar i poliklinisk behandling for PTSD er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F43.1 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
-          "data": "ptsd_pol_pas_v.json",
-          "publisert": "2025-11-30T08:53:00.000+01:00",
-          "resultat": "variasjon",
-          "overskrift": "Vaksne pasientar med PTSD",
-          "ingress": "PTSD",
+          "utvalg": "\n\n\nPasientar i poliklinisk behandling for PTSD er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F60 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
+          "data": "personlegdomsforstyrring_pol_pas_v.json",
+          "publisert": "2025-11-30T14:28:00.000+01:00",
+          "resultat": "stor variasjon",
+          "overskrift": "Vaksne pasientar med personlegdomsforstyrring",
+          "ingress": "personlegdomsforstyrring",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
-          "oppdatert": "2025-09-09T08:53:00.000+02:00"
+          "oppdatert": "2025-09-10T14:28:00.000+02:00"
         },
         {
-          "utvalg": "F431",
-          "data": "ptsd_pol_kon_v.json",
-          "publisert": "2025-11-30T08:55:00.000+01:00",
-          "resultat": "variasjon",
-          "overskrift": "Kontaktdagar i poliklinikk for vaksne med PTSD",
-          "ingress": "PTSD",
+          "utvalg": "personlegdomsforstyrring hoved diagnose\n\nsektor 2 og 7\n\n18-64 år",
+          "data": "personlegdomsforstyrring_pol_kon_v.json",
+          "publisert": "2025-11-30T14:30:00.000+01:00",
+          "resultat": "stort variasjon?",
+          "overskrift": "Kontaktdagar i poliklinikk for vaksne med personlegdomsforstyrring",
+          "ingress": "personlegdomsforstyrring",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
-          "oppdatert": "2025-09-09T08:55:00.000+02:00"
-        }
-      ]
-    },
-    {
-      "overskrift": "ADHD",
-      "innhold": [
-        {
-          "utvalg": "\nPasientar i poliklinisk behandling for ADHD er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F90 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri.\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
-          "data": "adhd_pol_pas_v.json",
-          "publisert": "2025-11-30T13:43:00.000+01:00",
-          "resultat": "variasjon mål",
-          "overskrift": "Vaksne pasientar med ADHD",
-          "ingress": "ADHD",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-09-10T13:43:00.000+02:00"
-        },
-        {
-          "utvalg": "F90 som hoved diagnose\n\n\nindato=utdato\n\nkun en kontakt per pasient per dag\n\n18-64 år",
-          "data": "adhd_pol_v.json",
-          "publisert": "2025-11-30T13:47:00.000+01:00",
-          "resultat": "variasjon in kontaktdagsrate",
-          "overskrift": "Kontaktdagar i poliklinikk for vaksne med ADHD",
-          "ingress": "ADHD hos vaksne",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-09-10T13:47:00.000+02:00"
+          "oppdatert": "2025-09-10T14:30:00.000+02:00"
         }
       ]
     },
@@ -447,105 +523,29 @@
       ]
     },
     {
-      "overskrift": "Bipolare lidingar",
+      "overskrift": "PTSD",
       "innhold": [
         {
-          "utvalg": "Pasientar i poliklinisk behandling for PTSD er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F30-F31 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
-          "data": "bipolar_pol_pas_v.json",
-          "publisert": "2025-11-30T14:08:00.000+01:00",
+          "utvalg": "Pasientar i poliklinisk behandling for PTSD er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F43.1 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
+          "data": "ptsd_pol_pas_v.json",
+          "publisert": "2025-11-30T08:53:00.000+01:00",
           "resultat": "variasjon",
-          "overskrift": "Vaksne pasientar med bipolare lidingar",
-          "ingress": "vaksne med bipolare lidingar",
+          "overskrift": "Vaksne pasientar med PTSD",
+          "ingress": "PTSD",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
-          "oppdatert": "2025-09-10T14:08:00.000+02:00"
+          "oppdatert": "2025-09-09T08:53:00.000+02:00"
         },
         {
-          "utvalg": "Bipolare hoved tilstand",
-          "data": "bipolar_pol_kon_v.json",
-          "publisert": "2025-11-30T14:11:00.000+01:00",
-          "resultat": "kontaktdagsrate",
-          "overskrift": "Kontaktdagar i poliklinikk for vaksne med bipolare lidingar",
-          "ingress": "bipolare lidingar",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-09-10T14:11:00.000+02:00"
-        },
-        {
-          "utvalg": "Pasientar i poliklinisk behandling for bipolare lidingar er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F30-F31 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 65 + år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
-          "data": "bipolar_pol_pas_eldre.json",
-          "publisert": "2025-11-30T14:13:00.000+01:00",
+          "utvalg": "F431",
+          "data": "ptsd_pol_kon_v.json",
+          "publisert": "2025-11-30T08:55:00.000+01:00",
           "resultat": "variasjon",
-          "overskrift": "Eldre pasientar med bipolare lidingar",
-          "ingress": "eldre med bipolare..",
+          "overskrift": "Kontaktdagar i poliklinikk for vaksne med PTSD",
+          "ingress": "PTSD",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
-          "oppdatert": "2025-09-10T14:13:00.000+02:00"
-        },
-        {
-          "utvalg": "Kontaktdagar for bipolare lidingar er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode  F30-F31  (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n* Kun ein kontakt per pasient per dag er inkludert.\n\n\n\n\nAlder: 65 + år.\n\nRatane er justerte for alder og kjønn.",
-          "data": "bipolar_pol_kon_eldre.json",
-          "publisert": "2025-11-30T14:17:00.000+01:00",
-          "resultat": "variasjon",
-          "overskrift": "Kontaktdagar i poliklinikk for eldre med bipolare lidingar",
-          "ingress": "eldre med bipolar lidingar",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-09-10T14:17:00.000+02:00"
-        }
-      ]
-    },
-    {
-      "overskrift": "Eteforstyrring",
-      "innhold": [
-        {
-          "utvalg": "\n\nPasientar i poliklinisk behandling for eteforstyrring er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F50 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
-          "data": "eteforstyrring_pol_pas_v.json",
-          "publisert": "2025-11-30T14:20:00.000+01:00",
-          "resultat": "eteforstyrring",
-          "overskrift": "Vaksne pasientar med eteforstyrring",
-          "ingress": "ete forstyrring",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-09-10T14:20:00.000+02:00"
-        },
-        {
-          "utvalg": "F50 hoved tilstand\n\n18-64\n\nsektor 2 og 7",
-          "data": "eteforstyrring_pol_kon_v.json",
-          "publisert": "2025-11-30T14:23:00.000+01:00",
-          "resultat": "stor forskjell",
-          "overskrift": "Kontaktdagar i poliklinikk for vaksne med eteforstyrring",
-          "ingress": "eteforstyrring",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-09-10T14:23:00.000+02:00"
-        }
-      ]
-    },
-    {
-      "overskrift": "Personlegdomsforstyrring",
-      "innhold": [
-        {
-          "utvalg": "\n\n\nPasientar i poliklinisk behandling for PTSD er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F60 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
-          "data": "personlegdomsforstyrring_pol_pas_v.json",
-          "publisert": "2025-11-30T14:28:00.000+01:00",
-          "resultat": "stor variasjon",
-          "overskrift": "Vaksne pasientar med personlegdomsforstyrring",
-          "ingress": "personlegdomsforstyrring",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-09-10T14:28:00.000+02:00"
-        },
-        {
-          "utvalg": "personlegdomsforstyrring hoved diagnose\n\nsektor 2 og 7\n\n18-64 år",
-          "data": "personlegdomsforstyrring_pol_kon_v.json",
-          "publisert": "2025-11-30T14:30:00.000+01:00",
-          "resultat": "stort variasjon?",
-          "overskrift": "Kontaktdagar i poliklinikk for vaksne med personlegdomsforstyrring",
-          "ingress": "personlegdomsforstyrring",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-09-10T14:30:00.000+02:00"
+          "oppdatert": "2025-09-09T08:55:00.000+02:00"
         }
       ]
     },
