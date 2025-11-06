@@ -1,11 +1,11 @@
 {
-  "frontpagetext": "Psykisk helsevern for vaksne og eldre består av aktiviteter i sektorar 2 og 7",
+  "frontpagetext": "Psykisk helsevern for vaksne består av aktiviteter i sektorar 2 og 7",
   "filename": "Psyk2",
   "publisert": false,
   "lang": "nn",
   "date": "2025-11-30T12:49:00.000+01:00",
   "forfatter": "Helse Førde",
-  "ingress": "Psykisk helsevern for vaksne og eldre består av aktiviteter i sektorar 2 og 7\n\nlitt meir intro",
+  "ingress": "Psykisk helsevern for vaksne består av aktiviteter i sektorar 2 og 7\n\nlitt meir intro",
   "kapittel": [
     {
       "innhold": [
@@ -25,7 +25,7 @@
           "tekst": "Felles henvisingsmottak er oppretta i alle helseregionane. Tilvisingar til spesialisthelsetenesta skal avgjerast i eitt felles tilvisingsmottak uavhengig om behandlinga skjer ved distriktspsykiatriske senter eller hjå private avtalespesialistar. Hensikta er lik behandling av tilvisingar og såleis meir rettvis behandling av tilvisingane."
         }
       ],
-      "overskrift": "Psykisk helsevern for vaksne og eldre"
+      "overskrift": "Psykisk helsevern for vaksne"
     },
     {
       "overskrift": "Vaksne i psykisk helsevern",
@@ -97,60 +97,6 @@
       ]
     },
     {
-      "overskrift": "Eldre i psykisk helsevern",
-      "innhold": [
-        {
-          "type": "faktaboks",
-          "overskrift": "Eldre og psykisk helse",
-          "tekst": "Psykiske lidingar hos eldre er vanleg. Dei [vanlegaste førekommande sjukdommane](https://www.kvalitetsregistre.no/49d8bb/siteassets/dokumenter/arsrapporter/alderspsykiatriregister/arsrapport-kvalap-2024.pdf) hos eldre er unipolar liding (depresjon), demens, angst, bipolar liding og psykoseliding. Som hovudregel skal eldre utgreiast og behandlast i [primærhelsetenesta](https://www.helsedirektoratet.no/faglige-rad/psykiske-lidelser-hos-eldre), men det er ofte nødvendig å involvere spesialisthelsetenesta òg. Psykiske lidingar hos eldre skal følgjast opp aktivt, og ikkje oppfattast som del av aldringa i seg sjølv (ibid.).\n\nAlderspsykiatrien skal behandle pasientar med alvorleg psykisk liding som debuterer etter fylte 65 år, samt demens eller åtferdsproblem, eller når andre sjukdommar eller høg alder gjer alderspsykiatri føremålstenleg (ibid.; [Norsk psykiatrisk forening, 2010](<Norsk psykiatrisk forening. (2010). Plandokument for norsk alderspsykiatri 2011-2020 (2, ed.). Oslo: Norsk psykiatrisk forening.>)). Ifølgje [prioriteringsrettleiaren](<Nygaard, E., & Kårikstad, V. (2008). Psykisk helsevern for voksne : prioriteringsveileder.>) for psykisk helsevern for vaksne skal spesialisthelsetenesta prioriterast når den blir vurdert som mest nyttig."
-        },
-        {
-          "utvalg": "\n\n\nEldre (65+ år) som i 2020-2024 hadde minst ein poliklinisk kontakt i psykisk helsevern\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Raten inkluderer både direkte og indirekte kontaktar. Raten inkluderer berre ein kontakt per dag, per pasient.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
-          "data": "pasient_polyklinikk_65.json",
-          "publisert": "2025-11-30T13:04:00.000+01:00",
-          "resultat": "Litt mer....",
-          "overskrift": "Eldre pasientar i poliklinisk behandling (65+ år)",
-          "ingress": "Rundt....",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-08-26T13:04:00.000+02:00"
-        },
-        {
-          "utvalg": "\n\n\n\n\n\nEldre (65+ år) som i 2020-2024 hadde minst ein poliklinisk kontakt i psykisk helsevern\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Raten inkluderer både direkte og indirekte kontaktar. Raten inkluderer berre ein kontakt per dag, per pasient.\n\nRatane er justerte for alder og kjønn.",
-          "data": "poliklinikk_kontakt_65.json",
-          "publisert": "2025-11-30T13:05:00.000+01:00",
-          "resultat": "Litt mer.",
-          "overskrift": "Kontaktdagar i poliklinikk for eldre (65+ år)",
-          "ingress": "Rundt...",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-08-26T13:05:00.000+02:00"
-        },
-        {
-          "utvalg": "\n\n\nVaksne (18-64 år) som i 2020-2024 hadde minst eit døgnopphald i psykisk helsevern\n\nDøgnopphald er definert som:\n\n* Opphold på meir enn null døgn.\n* Alle samanhengande opphald blir rekna som eitt opphald. Med samanhengande opphald meiner vi opphald som kjem rett etter kvarandre utan opphald i dagar, basert på kalenderdato (dvs utdata frå den førrige opphald og inndato til neste opphald er same kalenderdato).\n* For slike samanhengande opphald nyttar vi innleggingsdatoen frå det første opphaldet og utskrivingsdatoen frå det siste opphaldet til pasienten.\n\n\n\nRatane er justerte for alder og kjønn. Strekane markerer eit 95 prosents konfidensintervall for pasientraten.",
-          "data": "opphold_pasient_65.json",
-          "publisert": "2025-11-30T12:59:00.000+01:00",
-          "resultat": "Rundt.....",
-          "overskrift": "Eldre pasientar i døgnbehandling (65+ år)",
-          "ingress": "Rundt....",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-09-19T12:59:00.000+02:00"
-        },
-        {
-          "utvalg": "Vaksne (65+  år) som i 2020-2024 hadde minst eit døgnopphald i psykisk helsevern\n\n\n\nDøgnopphald er definert som: \n\nOpphold på meir enn null døgn.\n\nAlle samanhengande opphald blir rekna som eitt opphald. Med samanhengande opphald meiner vi opphald som kjem rett etter kvarandre utan opphald i dagar, basert på kalenderdato (dvs utdata frå den førrige opphald og inndato til neste opphald er same kalenderdato).\n\nFor slike samanhengande opphald nyttar vi innleggingsdatoen frå det første opphaldet og utskrivingsdatoen frå det siste opphaldet til pasienten.\n\n\n\nRatane er justerte for alder og kjønn.",
-          "data": "opphold_kontakt_65.json",
-          "publisert": "2025-11-30T13:04:00.000+01:00",
-          "resultat": "Rundt.....",
-          "overskrift": "Oppholdsrate for eldre (65+ år)",
-          "ingress": "Rundt.....",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-09-19T13:04:00.000+02:00"
-        }
-      ]
-    },
-    {
       "overskrift": "Tilvising og oppfølgjing hjå allmennlege",
       "innhold": [
         {
@@ -176,17 +122,6 @@
           "resultat": "Mer",
           "overskrift": "Konsultasjonar av vaksne pasientar hos allmenlege (18-64 år)",
           "ingress": "Mer",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-10-22T10:46:00.000+02:00"
-        },
-        {
-          "utvalg": "\n\n\nKonsultasjonar er definerte etter følgjande kriterium:\n\nVaksne (18-64 år) som i 2020-2024 hadde minst ein kontakt hos fastlege/legevakt\n\nPasienter med ICPC koder P01-P29  (symptom og plager) og P70-P99 (diagnoser/sjukdommar)​ \nunntatt P16-P19 \n\nTakstkode: 2AD, 2AE, 2AK, 2ED, 2FK (eksakt treff)\n\nRatane er justerte for alder og kjønn.",
-          "data": "kpr-pasient_65.json",
-          "publisert": "2025-11-30T12:45:00.000+01:00",
-          "resultat": "Mer.......",
-          "overskrift": "Tilvising og oppfølgjing av eldre pasientar hos allmenlege (65+ år)",
-          "ingress": "litt mer....",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-10-22T10:46:00.000+02:00"
@@ -598,6 +533,6 @@
     }
   ],
   "image": "/helseatlas/img/no/psyk/frontpage.jpg",
-  "shortTitle": "Psykisk helsevern for vaksne og eldre",
-  "mainTitle": "Psykisk helsevern for vaksne og eldre"
+  "shortTitle": "Psykisk helsevern for vaksne",
+  "mainTitle": "Psykisk helsevern for vaksne"
 }
