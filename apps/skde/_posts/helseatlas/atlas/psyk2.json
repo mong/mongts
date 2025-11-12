@@ -311,7 +311,7 @@
           "data": "schizofreni_pol_pas_v.json",
           "publisert": "2025-12-31T11:31:00.000+01:00",
           "resultat": ".",
-          "overskrift": "Vaksne pasientar med psykose",
+          "overskrift": "Vaksne pasientar i poliklinikk med psykose",
           "ingress": ".",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
@@ -327,33 +327,55 @@
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-11-12T11:34:00.000+01:00"
-        }
-      ]
-    },
-    {
-      "overskrift": "Personlegdomsforstyrring",
-      "innhold": [
+        },
         {
-          "utvalg": "\n\n\nPasientar i poliklinisk behandling for PTSD er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F60 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
-          "data": "personlegdomsforstyrring_pol_pas_v.json",
-          "publisert": "2025-11-30T14:28:00.000+01:00",
-          "resultat": "stor variasjon",
-          "overskrift": "Vaksne pasientar med personlegdomsforstyrring",
-          "ingress": "personlegdomsforstyrring",
+          "utvalg": "F2%\n18-64 år",
+          "data": "schizofreni_opp_pas_v.json",
+          "publisert": "2025-12-31T12:43:00.000+01:00",
+          "resultat": ".",
+          "overskrift": "Vaksne pasientar i døgnopphald for psykose",
+          "ingress": ".",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
-          "oppdatert": "2025-09-10T14:28:00.000+02:00"
+          "oppdatert": "2025-11-12T12:44:00.000+01:00"
+        },
+        {
+          "utvalg": "F20 \nsammenhengande opphald er slått sammen",
+          "data": "schizofreni_opp_v.json",
+          "publisert": "2025-12-31T12:45:00.000+01:00",
+          "resultat": ".",
+          "overskrift": "Opphaldsrate for vaksne med psykoselidingar",
+          "ingress": ".",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-11-12T12:45:00.000+01:00"
+        },
+        {
+          "type": "tekst",
+          "beskrivelse": "Pesonlegdomsforstyrring",
+          "tekst": "."
+        },
+        {
+          "utvalg": "Pasientar i poliklinisk behandling for personlegdomsforstyrring er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F60 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
+          "data": "personlegdomsforstyrring_pol_pas_v.json",
+          "publisert": "2025-12-31T12:48:00.000+01:00",
+          "resultat": ".",
+          "overskrift": "Vaksne pasientar med personlegdomsforstyrring",
+          "ingress": ".",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-11-12T12:48:00.000+01:00"
         },
         {
           "utvalg": "personlegdomsforstyrring hoved diagnose\n\nsektor 2 og 7\n\n18-64 år",
           "data": "personlegdomsforstyrring_pol_kon_v.json",
-          "publisert": "2025-11-30T14:30:00.000+01:00",
-          "resultat": "stort variasjon?",
+          "publisert": "2025-12-31T12:49:00.000+01:00",
+          "resultat": ".",
           "overskrift": "Kontaktdagar i poliklinikk for vaksne med personlegdomsforstyrring",
-          "ingress": "personlegdomsforstyrring",
+          "ingress": ".",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
-          "oppdatert": "2025-09-10T14:30:00.000+02:00"
+          "oppdatert": "2025-11-12T12:49:00.000+01:00"
         }
       ]
     },
@@ -408,33 +430,6 @@
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-09-10T14:23:00.000+02:00"
-        }
-      ]
-    },
-    {
-      "overskrift": "Døgnopphald for psykoselidingar",
-      "innhold": [
-        {
-          "utvalg": "F2%\n18-64 år ",
-          "data": "schizofreni_opp_pas_v.json",
-          "publisert": "2025-11-30T15:15:00.000+01:00",
-          "resultat": "stor var?",
-          "overskrift": "Vaksne pasientar i døgn behandling for psykose lidinger ",
-          "ingress": "schizophreni",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-09-16T15:15:00.000+02:00"
-        },
-        {
-          "utvalg": "F20 \nsammenhengde opphald er slåt sammen",
-          "data": "schizofreni_opp_v.json",
-          "publisert": "2025-11-30T15:17:00.000+01:00",
-          "resultat": "liten var?",
-          "overskrift": "Opphaldsrate for vaksne med psykose lidingar",
-          "ingress": "psykose",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-09-16T15:17:00.000+02:00"
         }
       ]
     },
