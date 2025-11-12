@@ -380,56 +380,61 @@
       ]
     },
     {
-      "overskrift": "ADHD",
+      "overskrift": "Nevro-, utviklings- og åtferdslidingar",
       "innhold": [
         {
-          "utvalg": "\nPasientar i poliklinisk behandling for ADHD er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F90 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri.\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
-          "data": "adhd_pol_pas_v.json",
-          "publisert": "2025-11-30T13:43:00.000+01:00",
-          "resultat": "variasjon mål",
-          "overskrift": "Vaksne pasientar med ADHD",
-          "ingress": "ADHD",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-09-10T13:43:00.000+02:00"
+          "type": "tekst",
+          "beskrivelse": "ADHD",
+          "tekst": "."
         },
         {
-          "utvalg": "F90 som hoved diagnose\n\n\nindato=utdato\n\nkun en kontakt per pasient per dag\n\n18-64 år",
-          "data": "adhd_pol_v.json",
-          "publisert": "2025-11-30T13:47:00.000+01:00",
-          "resultat": "variasjon in kontaktdagsrate",
-          "overskrift": "Kontaktdagar i poliklinikk for vaksne med ADHD",
-          "ingress": "ADHD hos vaksne",
-          "kart": "kart_opt_2025.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-09-10T13:47:00.000+02:00"
-        }
-      ]
-    },
-    {
-      "overskrift": "Eteforstyrring",
-      "innhold": [
-        {
-          "utvalg": "\n\nPasientar i poliklinisk behandling for eteforstyrring er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F50 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
-          "data": "eteforstyrring_pol_pas_v.json",
-          "publisert": "2025-11-30T14:20:00.000+01:00",
-          "resultat": "eteforstyrring",
-          "overskrift": "Vaksne pasientar med eteforstyrring",
-          "ingress": "ete forstyrring",
+          "utvalg": "Pasientar i poliklinisk behandling for ADHD er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F90 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri.\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
+          "data": "adhd_pol_pas_v.json",
+          "publisert": "2025-12-31T12:59:00.000+01:00",
+          "resultat": ".",
+          "overskrift": "Vaksne pasientar med ADHD",
+          "ingress": ".",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
-          "oppdatert": "2025-09-10T14:20:00.000+02:00"
+          "oppdatert": "2025-11-12T12:59:00.000+01:00"
+        },
+        {
+          "utvalg": "F90 som hoved diagnose\n\nindato=utdato\n\nkun en kontakt per pasient per dag\n\n18-64 år",
+          "data": "adhd_pol_v.json",
+          "publisert": "2025-12-31T13:04:00.000+01:00",
+          "resultat": ".",
+          "overskrift": "Kontaktdagar i poliklinikk for vaksne med ADHD",
+          "ingress": ".",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-11-12T13:04:00.000+01:00"
+        },
+        {
+          "type": "tekst",
+          "beskrivelse": "Eteforstyrring",
+          "tekst": "."
+        },
+        {
+          "utvalg": "Pasientar i poliklinisk behandling for eteforstyrring er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F50 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
+          "data": "eteforstyrring_pol_pas_v.json",
+          "publisert": "2025-12-31T13:05:00.000+01:00",
+          "resultat": ".",
+          "overskrift": "Vaksne pasientar med eteforstyrring",
+          "ingress": ".",
+          "kart": "kart_2024.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-11-12T13:05:00.000+01:00"
         },
         {
           "utvalg": "F50 hoved tilstand\n\n18-64\n\nsektor 2 og 7",
           "data": "eteforstyrring_pol_kon_v.json",
-          "publisert": "2025-11-30T14:23:00.000+01:00",
-          "resultat": "stor forskjell",
+          "publisert": "2025-12-31T13:06:00.000+01:00",
+          "resultat": ".",
           "overskrift": "Kontaktdagar i poliklinikk for vaksne med eteforstyrring",
-          "ingress": "eteforstyrring",
+          "ingress": ".",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
-          "oppdatert": "2025-09-10T14:23:00.000+02:00"
+          "oppdatert": "2025-11-12T13:06:00.000+01:00"
         }
       ]
     },
@@ -452,8 +457,7 @@
           "overskrift": "Metode"
         }
       ]
-    },
-    {}
+    }
   ],
   "image": "/helseatlas/img/no/psyk/frontpage.jpg",
   "shortTitle": "Psykisk helsevern for vaksne",
