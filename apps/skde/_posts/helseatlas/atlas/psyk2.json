@@ -182,87 +182,60 @@
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-11-12T10:50:00.000+01:00"
-        }
-      ]
-    },
-    {
-      "overskrift": "Angst",
-      "innhold": [
-        {
-          "utvalg": "\n\n\nPasientar i poliklinisk behandling for angst er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F40 eller F41 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri.\n\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 65 + år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
-          "data": "angst_eldre_pol_pas_utanårsprikke.json",
-          "publisert": "2025-11-30T15:13:00.000+01:00",
-          "resultat": "Kvinner",
-          "overskrift": "Eldre pasientar med angst",
-          "ingress": "eldre",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-08-27T15:14:00.000+02:00"
         },
         {
-          "utvalg": "\nKontaktdagar for angst er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F40 eller F41 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n* Kun ein kontakt per pasient per dag er inkludert.\n\n\nAlder: 65 + år.\n\nRatane er justerte for alder og kjønn.",
-          "data": "angst_pol_kon_eldre.json",
-          "publisert": "2025-11-30T15:16:00.000+01:00",
-          "resultat": "kvinner",
-          "overskrift": "Kontaktdagar i poliklinikk for eldre med angstlidingar",
-          "ingress": "eldre",
-          "kart": "kart_2024.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-08-27T15:16:00.000+02:00"
-        }
-      ]
-    },
-    {
-      "overskrift": "OCD",
-      "innhold": [
+          "type": "tekst",
+          "beskrivelse": "Obsessiv-kompulsiv liding (OCD)",
+          "tekst": "."
+        },
         {
           "utvalg": "Pasientar i poliklinisk behandling for OCD er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F42 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri.\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
           "data": "ocd_pol_pas_v.json",
-          "publisert": "2025-11-30T09:01:00.000+01:00",
-          "resultat": "variasjom mål",
+          "publisert": "2025-12-31T10:54:00.000+01:00",
+          "resultat": ".",
           "overskrift": "Vaksne pasientar med OCD",
-          "ingress": "OCD",
+          "ingress": ".",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
-          "oppdatert": "2025-09-08T09:01:00.000+02:00"
+          "oppdatert": "2025-11-12T10:54:00.000+01:00"
         },
         {
           "utvalg": "F42 som hoved diagnose\n\nkun en kontakt per pasient \n\ninndato=utdato\n\n18-64 år",
           "data": "ocd_pol_kon_v.json",
-          "publisert": "2025-11-30T09:04:00.000+01:00",
-          "resultat": "kontaktdagars rate",
+          "publisert": "2025-12-31T10:54:00.000+01:00",
+          "resultat": ".",
           "overskrift": "Kontaktdagar i poliklinikk for vaksne med OCD",
-          "ingress": "kontaktdagar",
+          "ingress": ".",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
-          "oppdatert": "2025-09-08T09:04:00.000+02:00"
-        }
-      ]
-    },
-    {
-      "overskrift": "PTSD",
-      "innhold": [
+          "oppdatert": "2025-11-12T10:54:00.000+01:00"
+        },
         {
-          "utvalg": "Pasientar i poliklinisk behandling for PTSD er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F43.1 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
+          "type": "tekst",
+          "beskrivelse": "Post-traumatisk stressliding (PTSD)",
+          "tekst": "."
+        },
+        {
+          "utvalg": "Pasientar i poliklinisk behandling for PTSD er definerte etter følgjande kriterium:\n\n* Pasientar som hadde ein hovuddiagnose med ICD-10-kode F43.1 (inkludert undergrupper) innan psykisk helsevern for vaksne og hjå avtalespesialistar i psykiatri (sektor 2 og 7).\n* Poliklinisk behandling er definert som kontaktar der pasienten blei skriven inn og ut same dato, uavhengig av oppgitt omsorgsnivå, og inkluderer både direkte og indirekte kontaktar.\n\nAlder: 18-64 år.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.",
           "data": "ptsd_pol_pas_v.json",
-          "publisert": "2025-11-30T08:53:00.000+01:00",
-          "resultat": "variasjon",
+          "publisert": "2025-12-31T10:55:00.000+01:00",
+          "resultat": ".",
           "overskrift": "Vaksne pasientar med PTSD",
-          "ingress": "PTSD",
+          "ingress": ".",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
-          "oppdatert": "2025-09-09T08:53:00.000+02:00"
+          "oppdatert": "2025-11-12T10:56:00.000+01:00"
         },
         {
           "utvalg": "F431",
           "data": "ptsd_pol_kon_v.json",
-          "publisert": "2025-11-30T08:55:00.000+01:00",
-          "resultat": "variasjon",
+          "publisert": "2025-12-31T10:56:00.000+01:00",
+          "resultat": ".",
           "overskrift": "Kontaktdagar i poliklinikk for vaksne med PTSD",
-          "ingress": "PTSD",
+          "ingress": ".",
           "kart": "kart_2024.geojson",
           "type": "resultatboks",
-          "oppdatert": "2025-09-09T08:55:00.000+02:00"
+          "oppdatert": "2025-11-12T10:56:00.000+01:00"
         }
       ]
     },
