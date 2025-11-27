@@ -1,0 +1,418 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snittrate"],
+      "y": "area",
+      "xLabel": {
+        "nn": "Tal kontaktdagar for angst pr. 10 000 innbyggjarar 18-64 år",
+        "en": "Contact days for anxiety per 10,000 population 18-64 years"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "Rate.2020",
+        "Rate.2021",
+        "Rate.2022",
+        "Rate.2023",
+        "Rate.2024"
+      ],
+      "annualVarLabels": {
+        "nn": ["2020", "2021", "2022", "2023", "2024"
+ ],
+        "en": [ "2020", "2021", "2022", "2023", "Rate.2024"
+]
+      }
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2020-2024. Kontaktdagsrate for angst pr.10 000 innbyggjarar 18-64 år",
+        "en": "Annual average during 2020–2024. Contact days rate for anxiety per 10,000 population 18-64 years"
+      },
+      "columns": [
+        {
+          "id": "area",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "Snittrate",
+          "label_no": "Kontaktdagsrate",
+          "label_en": "Contact days rate",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Snitt_kontaktar",
+          "label_no": "Tal kontaktdagar",
+          "label_en": "Number of contact days",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Snitt_innbyggarar",
+          "label_no": "Innbyggjarar 18-64 år",
+          "label_en": "Population 18-64 years",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2020–2024. Tal kontaktdagar per pasient for angst.",
+        "en": "Annual average during 2019–2023. Number of contact days per patient for anxiety"
+      },
+      "columns": [
+        {
+          "id": "area",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "kontakt_p_pas",
+          "label_no": "Kontaktdagar per pasient",
+          "label_en": "Contact days per patient",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Snitt_kontaktar",
+          "label_no": "Tal kontaktdagar",
+          "label_en": "Number of contact days",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Tal_pas",
+          "label_no": "Tal pasientar",
+          "label_en": "Number of patients",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "Snittrate",
+      "caption": {
+        "nn": "Tal kontaktdagar for angst  pr. 1 000 innbyggjarar 18-64 år.",
+        "en": "Outpatient contact days for anxiety treatment per 10,000 population 18-64 years"
+      },
+      "jenks": [
+        {
+          "grense": 578.0 
+},
+        {
+          "grense": 737.0        },
+        {
+          "grense":  841.0       }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data": [
+  {
+    "area": "Akershus",
+    "Snitt_kontaktar": 26841,
+    "Snitt_innbyggarar": 368532.8,
+    "Snittrate": 736.87,
+    "Rate.2020": 787.4,
+    "Rate.2021": 805.73,
+    "Rate.2022": 736.38,
+    "Rate.2023": 691.57,
+    "Rate.2024": 663.25,
+    "Tal_pas": 2679.8,
+    "kontakt_p_pas": 10.016
+  },
+  {
+    "area": "Diakonhjemmet",
+    "Snitt_kontaktar": 8327.8,
+    "Snitt_innbyggarar": 94447.6,
+    "Snittrate": 815.78,
+    "Rate.2020": 904.17,
+    "Rate.2021": 927.03,
+    "Rate.2022": 758.86,
+    "Rate.2023": 711.96,
+    "Rate.2024": 776.86,
+    "Tal_pas": 837.8,
+    "kontakt_p_pas": 9.9401
+  },
+  {
+    "area": "Finnmark",
+    "Snitt_kontaktar": 3032,
+    "Snitt_innbyggarar": 46116.4,
+    "Snittrate": 670.07,
+    "Rate.2020": 648.11,
+    "Rate.2021": 665.29,
+    "Rate.2022": 672.29,
+    "Rate.2023": 685.07,
+    "Rate.2024": 679.6,
+    "Tal_pas": 400,
+    "kontakt_p_pas": 7.58
+  },
+  {
+    "area": "Helgeland",
+    "Snitt_kontaktar": 1998.4,
+    "Snitt_innbyggarar": 45312.6,
+    "Snittrate": 463.77,
+    "Rate.2020": 533.63,
+    "Rate.2021": 513.05,
+    "Rate.2022": 439.89,
+    "Rate.2023": 445.42,
+    "Rate.2024": 386.84,
+    "Tal_pas": 236.4,
+    "kontakt_p_pas": 8.4535
+  },
+  {
+    "area": "Bergen",
+    "Snitt_kontaktar": 23844.6,
+    "Snitt_innbyggarar": 289188.8,
+    "Snittrate": 804.88,
+    "Rate.2020": 882.37,
+    "Rate.2021": 845.55,
+    "Rate.2022": 813.68,
+    "Rate.2023": 760.61,
+    "Rate.2024": 722.2,
+    "Tal_pas": 3110.8,
+    "kontakt_p_pas": 7.6651
+  },
+  {
+    "area": "Fonna",
+    "Snitt_kontaktar": 6018.2,
+    "Snitt_innbyggarar": 106442.8,
+    "Snittrate": 577.95,
+    "Rate.2020": 599.85,
+    "Rate.2021": 609.13,
+    "Rate.2022": 566.76,
+    "Rate.2023": 529.05,
+    "Rate.2024": 584.95,
+    "Tal_pas": 755.6,
+    "kontakt_p_pas": 7.9648
+  },
+  {
+    "area": "Førde",
+    "Snitt_kontaktar": 3207.4,
+    "Snitt_innbyggarar": 61596.8,
+    "Snittrate": 536.42,
+    "Rate.2020": 609.96,
+    "Rate.2021": 578.78,
+    "Rate.2022": 557.02,
+    "Rate.2023": 508.68,
+    "Rate.2024": 427.64,
+    "Tal_pas": 458,
+    "kontakt_p_pas": 7.0031
+  },
+  {
+    "area": "Møre og Romsdal",
+    "Snitt_kontaktar": 7293,
+    "Snitt_innbyggarar": 157277.8,
+    "Snittrate": 476.75,
+    "Rate.2020": 561.11,
+    "Rate.2021": 530.13,
+    "Rate.2022": 500.44,
+    "Rate.2023": 409.48,
+    "Rate.2024": 382.6,
+    "Tal_pas": 888.4,
+    "kontakt_p_pas": 8.2091
+  },
+  {
+    "area": "Nord-Trøndelag",
+    "Snitt_kontaktar": 4235,
+    "Snitt_innbyggarar": 77970.8,
+    "Snittrate": 561.04,
+    "Rate.2020": 661.64,
+    "Rate.2021": 653.48,
+    "Rate.2022": 563.91,
+    "Rate.2023": 497.2,
+    "Rate.2024": 428.96,
+    "Tal_pas": 512.6,
+    "kontakt_p_pas": 8.2618
+  },
+  {
+    "area": "Stavanger",
+    "Snitt_kontaktar": 12785,
+    "Snitt_innbyggarar": 233727.6,
+    "Snittrate": 540.26,
+    "Rate.2020": 612.11,
+    "Rate.2021": 613.41,
+    "Rate.2022": 519.08,
+    "Rate.2023": 503.55,
+    "Rate.2024": 453.15,
+    "Tal_pas": 1264.8,
+    "kontakt_p_pas": 10.1083
+  },
+  {
+    "area": "Lovisenberg",
+    "Snitt_kontaktar": 18742.6,
+    "Snitt_innbyggarar": 128888,
+    "Snittrate": 1253.79,
+    "Rate.2020": 1349.86,
+    "Rate.2021": 1356.69,
+    "Rate.2022": 1204.09,
+    "Rate.2023": 1172.22,
+    "Rate.2024": 1186.11,
+    "Tal_pas": 1707.2,
+    "kontakt_p_pas": 10.9786
+  },
+  {
+    "area": "Nordland",
+    "Snitt_kontaktar": 5309.6,
+    "Snitt_innbyggarar": 82794.2,
+    "Snittrate": 654.59,
+    "Rate.2020": 601.68,
+    "Rate.2021": 706.62,
+    "Rate.2022": 682.28,
+    "Rate.2023": 709.84,
+    "Rate.2024": 572.54,
+    "Tal_pas": 606,
+    "kontakt_p_pas": 8.7617
+  },
+  {
+    "area": "Noreg",
+    "Snitt_kontaktar": 233849.8,
+    "Snitt_innbyggarar": 3342976,
+    "Snittrate": 699.39,
+    "Rate.2020": 758.73,
+    "Rate.2021": 768.85,
+    "Rate.2022": 702.95,
+    "Rate.2023": 662.44,
+    "Rate.2024": 604.01,
+    "Tal_pas": 24571.2,
+    "kontakt_p_pas": 9.5172
+  },
+  {
+    "area": "OUS",
+    "Snitt_kontaktar": 20185.2,
+    "Snitt_innbyggarar": 186077,
+    "Snittrate": 1019.57,
+    "Rate.2020": 1155.09,
+    "Rate.2021": 1122.4,
+    "Rate.2022": 993.1,
+    "Rate.2023": 925.13,
+    "Rate.2024": 902.16,
+    "Tal_pas": 1879.6,
+    "kontakt_p_pas": 10.7391
+  },
+  {
+    "area": "St. Olav",
+    "Snitt_kontaktar": 11062.2,
+    "Snitt_innbyggarar": 213371.8,
+    "Snittrate": 502.31,
+    "Rate.2020": 577.18,
+    "Rate.2021": 589.94,
+    "Rate.2022": 523.04,
+    "Rate.2023": 424.16,
+    "Rate.2024": 397.22,
+    "Tal_pas": 1362.8,
+    "kontakt_p_pas": 8.1173
+  },
+  {
+    "area": "Vestfold",
+    "Snitt_kontaktar": 10226.2,
+    "Snitt_innbyggarar": 149498,
+    "Snittrate": 709.64,
+    "Rate.2020": 792.3,
+    "Rate.2021": 784.18,
+    "Rate.2022": 714.84,
+    "Rate.2023": 709.42,
+    "Rate.2024": 547.44,
+    "Tal_pas": 1091.6,
+    "kontakt_p_pas": 9.3681
+  },
+  {
+    "area": "Innlandet",
+    "Snitt_kontaktar": 11750.8,
+    "Snitt_innbyggarar": 200048.4,
+    "Snittrate": 613.22,
+    "Rate.2020": 625.23,
+    "Rate.2021": 680.54,
+    "Rate.2022": 650.78,
+    "Rate.2023": 601.68,
+    "Rate.2024": 507.87,
+    "Tal_pas": 1192.2,
+    "kontakt_p_pas": 9.8564
+  },
+  {
+    "area": "Telemark",
+    "Snitt_kontaktar": 7631.8,
+    "Snitt_innbyggarar": 102993.2,
+    "Snittrate": 771.07,
+    "Rate.2020": 885.59,
+    "Rate.2021": 872.81,
+    "Rate.2022": 746.86,
+    "Rate.2023": 679.98,
+    "Rate.2024": 670.09,
+    "Tal_pas": 919.6,
+    "kontakt_p_pas": 8.299
+  },
+  {
+    "area": "Østfold",
+    "Snitt_kontaktar": 10479.2,
+    "Snitt_innbyggarar": 194134.4,
+    "Snittrate": 559.06,
+    "Rate.2020": 595.85,
+    "Rate.2021": 629.82,
+    "Rate.2022": 569.51,
+    "Rate.2023": 570.81,
+    "Rate.2024": 429.33,
+    "Tal_pas": 1100.8,
+    "kontakt_p_pas": 9.5196
+  },
+  {
+    "area": "Sørlandet",
+    "Snitt_kontaktar": 10037,
+    "Snitt_innbyggarar": 187992.4,
+    "Snittrate": 539.32,
+    "Rate.2020": 579.25,
+    "Rate.2021": 572.81,
+    "Rate.2022": 556.48,
+    "Rate.2023": 552.1,
+    "Rate.2024": 435.99,
+    "Tal_pas": 1028.2,
+    "kontakt_p_pas": 9.7617
+  },
+  {
+    "area": "UNN",
+    "Snitt_kontaktar": 6496,
+    "Snitt_innbyggarar": 117962,
+    "Snittrate": 553.25,
+    "Rate.2020": 505.92,
+    "Rate.2021": 600.21,
+    "Rate.2022": 591.33,
+    "Rate.2023": 604.39,
+    "Rate.2024": 464.42,
+    "Tal_pas": 633.4,
+    "kontakt_p_pas": 10.2558
+  },
+  {
+    "area": "Vestre Viken",
+    "Snitt_kontaktar": 24346.8,
+    "Snitt_innbyggarar": 298602.6,
+    "Snittrate": 840.72,
+    "Rate.2020": 910.98,
+    "Rate.2021": 934.92,
+    "Rate.2022": 862.58,
+    "Rate.2023": 797.41,
+    "Rate.2024": 697.72,
+    "Tal_pas": 2397,
+    "kontakt_p_pas": 10.1572
+  }
+]  }
+  ]
+}
