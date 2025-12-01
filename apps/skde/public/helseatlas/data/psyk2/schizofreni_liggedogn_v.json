@@ -48,9 +48,9 @@
           "format": ",.1f"
         },
         {
-          "id": "Snitt_opphald",
+          "id": "Talliggedøgn",
           "label_no": "Tal liggedøgn",
-          "label_en": "Number of inpatient days",
+          "label_en": "Number of bed days",
           "typeVar": "number",
           "format": ",.0f"
         },
@@ -67,8 +67,8 @@
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nn": "Årlege gjennomsnittsverdiar for perioden 2020–2024. Gjennomsnittleg liggetid (liggedøgn per opphald) ved psykoselidingar.",
-        "en": "Annual average during 2020–2024. Average length of stay (inpatient days per admission) for psychotic disorders."
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2020–2024. Gjennomsnittleg liggedøgn per opphald ved psykoselidingar.",
+        "en": "Annual average during 2020–2024. Average bed days per admission for psychotic disorders."
       },
       "columns": [
         {
@@ -81,10 +81,18 @@
         {
           "id": "liggedogn_peropphald",
           "label_no": "Liggedøgn per opphald",
-          "label_en": "Inpatient days per admission",
+          "label_en": "Bed days per admission",
           "typeVar": "number",
           "format": ",.1f"
         },
+         {
+          "id": "Talliggedøgn",
+          "label_no": "Tal liggedøgn",
+          "label_en": "Number of bed days",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+
         {
           "id": "Tal_opphald",
           "label_no": "Tal opphald",
