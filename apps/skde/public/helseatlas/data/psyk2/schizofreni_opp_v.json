@@ -1,0 +1,422 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snittrate"],
+      "y": "area",
+      "xLabel": {
+        "nn": "Tal opphald for psykoselidingar pr. 10 000 innbyggjarar 18-64 år",
+        "en": "Admissions for psychotic disorders per 10,000 population 18-64 years"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "Rate.2020",
+        "Rate.2021",
+        "Rate.2022",
+        "Rate.2023",
+        "Rate.2024"
+      ],
+      "annualVarLabels": {
+        "nn": ["2020", "2021", "2022", "2023", "2024"
+ ],
+        "en": [ "2020", "2021", "2022", "2023", "Rate.2024"
+]
+      }
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2020-2024. Opphaldsrate for psykoselidingar pr.10 000 innbyggjarar 18-64 år",
+        "en": "Annual average during 2020–2024. Admission rate for psychotic disorders per 10,000 population 18-64 years"
+      },
+      "columns": [
+        {
+          "id": "area",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "Snittrate",
+          "label_no": "Kontaktdagsrate",
+          "label_en": "Admission rate",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Snitt_opphald",
+          "label_no": "Tal opphald",
+          "label_en": "Number of admissions",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Snitt_innbyggarar",
+          "label_no": "Innbyggjarar 18-64 år",
+          "label_en": "Population 18-64 years",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2020–2024. Tal opphald per pasient for psykoselidingar.",
+        "en": "Annual average during 2019–2023. Number of admissions per patient for psychotic disorders"
+      },
+      "columns": [
+        {
+          "id": "area",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "opphald_p_pas",
+          "label_no": "Opphald per pasient",
+          "label_en": "Admission per patient",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Snitt_opphald",
+          "label_no": "Tal opphald",
+          "label_en": "Number of contact days",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Tal_pas",
+          "label_no": "Tal pasientar",
+          "label_en": "Number of patients",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "Snittrate",
+      "caption": {
+        "nn": "Tal døgnopphald for psykoselidingar  pr. 10 000 innbyggjarar 18-64 år.",
+        "en": "Admissions for psychotic disorders treatment per 10,000 population 18-64 years"
+      },
+      "jenks": [
+        {
+          "grense": 18.5  
+        },
+        {
+          "grense": 24.1  
+        },
+        {
+          "grense": 33.9
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data": [
+  {
+    "area": "Akershus",
+    "Snitt_kontaktar": 818.6,
+    "Snitt_innbyggarar": 438884.4,
+    "Snittrate": 18.46,
+    "Rate.2020": 21.47,
+    "Rate.2021": 18.69,
+    "Rate.2022": 20.6,
+    "Rate.2023": 23.97,
+    "Rate.2024": 25.99,
+    "Tal_pas": 474,
+    "kontakt_p_pas": 1.727
+  },
+  {
+    "area": "Diakonhjemmet",
+    "Snitt_kontaktar": 151,
+    "Snitt_innbyggarar": 112895.8,
+    "Snittrate": 13.18,
+    "Rate.2020": 15.56,
+    "Rate.2021": 16.51,
+    "Rate.2022": 16.27,
+    "Rate.2023": 13.19,
+    "Rate.2024": 17.43,
+    "Tal_pas": 112.6,
+    "kontakt_p_pas": 1.341
+  },
+  {
+    "area": "Finnmark",
+    "Snitt_kontaktar": 180,
+    "Snitt_innbyggarar": 55543.2,
+    "Snittrate": 32.55,
+    "Rate.2020": 43.34,
+    "Rate.2021": 42.59,
+    "Rate.2022": 37.48,
+    "Rate.2023": 40.42,
+    "Rate.2024": 31.47,
+    "Tal_pas": 84.2,
+    "kontakt_p_pas": 2.1378
+  },
+  {
+    "area": "Helgeland",
+    "Snitt_kontaktar": 166.4,
+    "Snitt_innbyggarar": 54586,
+    "Snittrate": 30.71,
+    "Rate.2020": 30.09,
+    "Rate.2021": 36.23,
+    "Rate.2022": 34.52,
+    "Rate.2023": 37.87,
+    "Rate.2024": 45.55,
+    "Tal_pas": 85.4,
+    "kontakt_p_pas": 1.9485
+  },
+  {
+    "area": "Bergen",
+    "Snitt_kontaktar": 833.4,
+    "Snitt_innbyggarar": 346015.2,
+    "Snittrate": 24.12,
+    "Rate.2020": 28.95,
+    "Rate.2021": 30.57,
+    "Rate.2022": 28.19,
+    "Rate.2023": 26.73,
+    "Rate.2024": 30.29,
+    "Tal_pas": 439.8,
+    "kontakt_p_pas": 1.895
+  },
+  {
+    "area": "Fonna",
+    "Snitt_kontaktar": 387.8,
+    "Snitt_innbyggarar": 127730.8,
+    "Snittrate": 30.2,
+    "Rate.2020": 34.32,
+    "Rate.2021": 31.36,
+    "Rate.2022": 40.9,
+    "Rate.2023": 38.81,
+    "Rate.2024": 35.85,
+    "Tal_pas": 148.2,
+    "kontakt_p_pas": 2.6167
+  },
+  {
+    "area": "Førde",
+    "Snitt_kontaktar": 158.4,
+    "Snitt_innbyggarar": 74016.6,
+    "Snittrate": 21.73,
+    "Rate.2020": 25.23,
+    "Rate.2021": 23.07,
+    "Rate.2022": 30.6,
+    "Rate.2023": 26.19,
+    "Rate.2024": 25.29,
+    "Tal_pas": 77.8,
+    "kontakt_p_pas": 2.036
+  },
+  {
+    "area": "Møre og Romsdal",
+    "Snitt_kontaktar": 419.4,
+    "Snitt_innbyggarar": 188784,
+    "Snittrate": 22.36,
+    "Rate.2020": 28.19,
+    "Rate.2021": 25.67,
+    "Rate.2022": 27.86,
+    "Rate.2023": 26.42,
+    "Rate.2024": 26,
+    "Tal_pas": 197.2,
+    "kontakt_p_pas": 2.1268
+  },
+  {
+    "area": "Nord-Trøndelag",
+    "Snitt_kontaktar": 211.2,
+    "Snitt_innbyggarar": 93811.2,
+    "Snittrate": 23.42,
+    "Rate.2020": 29.32,
+    "Rate.2021": 32.54,
+    "Rate.2022": 28.39,
+    "Rate.2023": 25.61,
+    "Rate.2024": 24.68,
+    "Tal_pas": 101.2,
+    "kontakt_p_pas": 2.087
+  },
+  {
+    "area": "Stavanger",
+    "Snitt_kontaktar": 856.2,
+    "Snitt_innbyggarar": 279420.6,
+    "Snittrate": 30.26,
+    "Rate.2020": 36.36,
+    "Rate.2021": 35.93,
+    "Rate.2022": 33.35,
+    "Rate.2023": 35.84,
+    "Rate.2024": 40.09,
+    "Tal_pas": 422.8,
+    "kontakt_p_pas": 2.0251
+  },
+  {
+    "area": "Lovisenberg",
+    "Snitt_kontaktar": 380.4,
+    "Snitt_innbyggarar": 153174.2,
+    "Snittrate": 28.2,
+    "Rate.2020": 36.91,
+    "Rate.2021": 35.23,
+    "Rate.2022": 30.77,
+    "Rate.2023": 30.77,
+    "Rate.2024": 35.55,
+    "Tal_pas": 234.4,
+    "kontakt_p_pas": 1.6229
+  },
+  {
+    "area": "Nordland",
+    "Snitt_kontaktar": 269,
+    "Snitt_innbyggarar": 99552.8,
+    "Snittrate": 27.27,
+    "Rate.2020": 23.95,
+    "Rate.2021": 24.4,
+    "Rate.2022": 33.62,
+    "Rate.2023": 35.34,
+    "Rate.2024": 46.31,
+    "Tal_pas": 141.6,
+    "kontakt_p_pas": 1.8997
+  },
+  {
+    "area": "Noreg",
+    "Snitt_kontaktar": 9554.4,
+    "Snitt_innbyggarar": 3342976,
+    "Snittrate": 28.59,
+    "Rate.2020": 29.87,
+    "Rate.2021": 27.59,
+    "Rate.2022": 28.34,
+    "Rate.2023": 28.83,
+    "Rate.2024": 28.3,
+    "Tal_pas": 4906.8,
+    "kontakt_p_pas": 1.9472
+  },
+  {
+    "area": "OUS",
+    "Snitt_kontaktar": 455.2,
+    "Snitt_innbyggarar": 222167.2,
+    "Snittrate": 20.29,
+    "Rate.2020": 20.96,
+    "Rate.2021": 24.5,
+    "Rate.2022": 23.69,
+    "Rate.2023": 24.03,
+    "Rate.2024": 28.53,
+    "Tal_pas": 295.2,
+    "kontakt_p_pas": 1.542
+  },
+  {
+    "area": "St. Olav",
+    "Snitt_kontaktar": 564.6,
+    "Snitt_innbyggarar": 254893.2,
+    "Snittrate": 22.05,
+    "Rate.2020": 28.65,
+    "Rate.2021": 26.18,
+    "Rate.2022": 27.35,
+    "Rate.2023": 26,
+    "Rate.2024": 24.15,
+    "Tal_pas": 299.6,
+    "kontakt_p_pas": 1.8845
+  },
+  {
+    "area": "Vestfold",
+    "Snitt_kontaktar": 356.4,
+    "Snitt_innbyggarar": 178935.4,
+    "Snittrate": 20.23,
+    "Rate.2020": 24.28,
+    "Rate.2021": 24.28,
+    "Rate.2022": 21.24,
+    "Rate.2023": 24.13,
+    "Rate.2024": 27.49,
+    "Tal_pas": 212,
+    "kontakt_p_pas": 1.6811
+  },
+  {
+    "area": "Innlandet",
+    "Snitt_kontaktar": 411,
+    "Snitt_innbyggarar": 240260.2,
+    "Snittrate": 17.47,
+    "Rate.2020": 19.98,
+    "Rate.2021": 21.26,
+    "Rate.2022": 22.13,
+    "Rate.2023": 21.74,
+    "Rate.2024": 19.66,
+    "Tal_pas": 233,
+    "kontakt_p_pas": 1.7639
+  },
+  {
+    "area": "Telemark",
+    "Snitt_kontaktar": 405.8,
+    "Snitt_innbyggarar": 123683.6,
+    "Snittrate": 33.94,
+    "Rate.2020": 38.25,
+    "Rate.2021": 35.5,
+    "Rate.2022": 41.01,
+    "Rate.2023": 45.24,
+    "Rate.2024": 43.65,
+    "Tal_pas": 199.8,
+    "kontakt_p_pas": 2.031
+  },
+  {
+    "area": "Østfold",
+    "Snitt_kontaktar": 470.4,
+    "Snitt_innbyggarar": 232036.8,
+    "Snittrate": 20.76,
+    "Rate.2020": 26.43,
+    "Rate.2021": 24.41,
+    "Rate.2022": 22.76,
+    "Rate.2023": 24.54,
+    "Rate.2024": 26.39,
+    "Tal_pas": 269,
+    "kontakt_p_pas": 1.7487
+  },
+  {
+    "area": "Sørlandet",
+    "Snitt_kontaktar": 669.6,
+    "Snitt_innbyggarar": 224953.2,
+    "Snittrate": 30.13,
+    "Rate.2020": 37.5,
+    "Rate.2021": 38.14,
+    "Rate.2022": 35.89,
+    "Rate.2023": 35.15,
+    "Rate.2024": 34.09,
+    "Tal_pas": 315.8,
+    "kontakt_p_pas": 2.1203
+  },
+  {
+    "area": "UNN",
+    "Snitt_kontaktar": 678,
+    "Snitt_innbyggarar": 141750,
+    "Snittrate": 48.01,
+    "Rate.2020": 56.78,
+    "Rate.2021": 57.24,
+    "Rate.2022": 54.9,
+    "Rate.2023": 57.14,
+    "Rate.2024": 62.02,
+    "Tal_pas": 231.6,
+    "kontakt_p_pas": 2.9275
+  },
+  {
+    "area": "Vestre Viken",
+    "Snitt_kontaktar": 711.6,
+    "Snitt_innbyggarar": 357254.2,
+    "Snittrate": 20.19,
+    "Rate.2020": 22.43,
+    "Rate.2021": 23.14,
+    "Rate.2022": 24.58,
+    "Rate.2023": 25.74,
+    "Rate.2024": 25.21,
+    "Tal_pas": 378.6,
+    "kontakt_p_pas": 1.8796
+  }
+]
+
+    }
+  ]
+}
