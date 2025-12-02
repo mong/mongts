@@ -1,0 +1,420 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snittrate"],
+      "y": "area",
+      "xLabel": {
+        "nn": "Liggedøgn pr. 1 0000 innbyggjarar (18-64 år)",
+        "en": "Innpatient bed days pr. 1,0000 population (18-64 years)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "Rate.2020",
+        "Rate.2021",
+        "Rate.2022",
+        "Rate.2023",
+        "Rate.2024"
+      ],
+      "annualVarLabels": {
+        "nn": ["2020", "2021", "2022", "2023", "2024"],
+        "en": ["2020", "2021", "2022", "2023", "2024"]
+      }
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2020–2024. Liggedøgnrate pr. 1 0000 innbyggjarar 18-64 år",
+        "en": "Annual average during 2020–2024. Inpatient bed days pr. 1 0000 population 18-64 years"
+      },
+      "columns": [
+        {
+          "id": "area",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "Snittrate",
+          "label_no": "Liggeøgnsrate",
+          "label_en": "Inpatient bed days rate",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Snitt_liggedøgn",
+          "label_no": "Tal liggedøgn",
+          "label_en": "Number of inpatient bed days",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Snitt_innbyggarar",
+          "label_no": "Innbyggjarar (18-64 år)",
+          "label_en": "Population (18-64 years)",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2020–2024. Liggedøgnsrate per pasient for døgnbehandling.",
+        "en": "Annual average during 2020–2024. Inpatient bed days per patient 18-64 years"
+      },
+      "columns": [
+        {
+          "id": "area",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "døgn_p_opphold",
+          "label_no": "Døgn per opphold",
+          "label_en": "Bed days per admission",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Tal_Opphold",
+          "label_no": "Tal opphold",
+          "label_en": "Number of admission",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Tal_pas",
+          "label_no": "Tal pasientar",
+          "label_en": "Number of patients",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "Snittrate",
+      "caption": {
+        "nn": "Liggedøgnsrate pr. 1 0000 innbyggjarar (18-64 år)",
+        "en": "Inpatient bed days pr. 1,0000 population (18-64 years)"
+      },
+      "jenks": [
+        {
+          "grense": 1871
+        },
+        {
+          "grense": 2346
+        },
+        {
+          "grense": 2914
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data":[
+  {
+    "area": "Diakonhjemmet",
+    "Snitt_liggedogn": 15506.2,
+    "Snitt_innbyggarar": 94447.6,
+    "Snittrate": 1627.84,
+    "Rate.2020": 2078.76,
+    "Rate.2021": 1578.54,
+    "Rate.2022": 1621.96,
+    "Rate.2023": 1413.35,
+    "Rate.2024": 1446.59,
+    "Tal_Opphold": 547.8,
+    "dogn_p_opphold": 28.3063
+  },
+  {
+    "area": "Nord-Trøndelag",
+    "Snitt_liggedogn": 14218.2,
+    "Snitt_innbyggarar": 77970.8,
+    "Snittrate": 1871.09,
+    "Rate.2020": 1863.61,
+    "Rate.2021": 1887.77,
+    "Rate.2022": 1814.3,
+    "Rate.2023": 1893.95,
+    "Rate.2024": 1895.82,
+    "Tal_Opphold": 899.2,
+    "dogn_p_opphold": 15.8121
+  },
+  {
+    "area": "Vestfold",
+    "Snitt_liggedogn": 30107,
+    "Snitt_innbyggarar": 149498,
+    "Snittrate": 2054.98,
+    "Rate.2020": 1976.74,
+    "Rate.2021": 2103.66,
+    "Rate.2022": 1916.19,
+    "Rate.2023": 2146.94,
+    "Rate.2024": 2131.39,
+    "Tal_Opphold": 1651.2,
+    "dogn_p_opphold": 18.2334
+  },
+  {
+    "area": "Helgeland",
+    "Snitt_liggedogn": 9335.2,
+    "Snitt_innbyggarar": 45312.6,
+    "Snittrate": 2085.76,
+    "Rate.2020": 1847.68,
+    "Rate.2021": 2174.53,
+    "Rate.2022": 1917.16,
+    "Rate.2023": 2104.02,
+    "Rate.2024": 2385.41,
+    "Tal_Opphold": 531,
+    "dogn_p_opphold": 17.5804
+  },
+  {
+    "area": "Akershus",
+    "Snitt_liggedogn": 80586,
+    "Snitt_innbyggarar": 368532.8,
+    "Snittrate": 2210.26,
+    "Rate.2020": 2110.71,
+    "Rate.2021": 2117.7,
+    "Rate.2022": 2429,
+    "Rate.2023": 2403.8,
+    "Rate.2024": 1990.1,
+    "Tal_Opphold": 3538.4,
+    "dogn_p_opphold": 22.7747
+  },
+  {
+    "area": "Møre og Romsdal",
+    "Snitt_liggedogn": 34236.6,
+    "Snitt_innbyggarar": 157277.8,
+    "Snittrate": 2211.6,
+    "Rate.2020": 2184.2,
+    "Rate.2021": 2244.96,
+    "Rate.2022": 2337.75,
+    "Rate.2023": 2116.4,
+    "Rate.2024": 2174.66,
+    "Tal_Opphold": 1897,
+    "dogn_p_opphold": 18.0478
+  },
+  {
+    "area": "St. Olav",
+    "Snitt_liggedogn": 49475.4,
+    "Snitt_innbyggarar": 213371.8,
+    "Snittrate": 2287.38,
+    "Rate.2020": 2196.14,
+    "Rate.2021": 2346.16,
+    "Rate.2022": 2168.08,
+    "Rate.2023": 2264.72,
+    "Rate.2024": 2461.81,
+    "Tal_Opphold": 2623.6,
+    "dogn_p_opphold": 18.8578
+  },
+  {
+    "area": "Vestre Viken",
+    "Snitt_liggedogn": 68067.2,
+    "Snitt_innbyggarar": 298602.6,
+    "Snittrate": 2344.02,
+    "Rate.2020": 2408.22,
+    "Rate.2021": 2177.88,
+    "Rate.2022": 2258.17,
+    "Rate.2023": 2564.44,
+    "Rate.2024": 2311.41,
+    "Tal_Opphold": 2795.2,
+    "dogn_p_opphold": 24.3515
+  },
+  {
+    "area": "Fonna",
+    "Snitt_liggedogn": 24729.8,
+    "Snitt_innbyggarar": 106442.8,
+    "Snittrate": 2345.82,
+    "Rate.2020": 2129.58,
+    "Rate.2021": 2976.37,
+    "Rate.2022": 2187.37,
+    "Rate.2023": 2001.29,
+    "Rate.2024": 2434.52,
+    "Tal_Opphold": 1355.8,
+    "dogn_p_opphold": 18.24
+  },
+  {
+    "area": "Førde",
+    "Snitt_liggedogn": 15167.2,
+    "Snitt_innbyggarar": 61596.8,
+    "Snittrate": 2498.92,
+    "Rate.2020": 2673.18,
+    "Rate.2021": 2800.74,
+    "Rate.2022": 2446.18,
+    "Rate.2023": 2226.53,
+    "Rate.2024": 2347.95,
+    "Tal_Opphold": 685.8,
+    "dogn_p_opphold": 22.1161
+  },
+  {
+    "area": "Noreg",
+    "Snitt_liggedogn": 846379,
+    "Snitt_innbyggarar": 3342976,
+    "Snittrate": 2531,
+    "Rate.2020": 2543.37,
+    "Rate.2021": 2498.56,
+    "Rate.2022": 2547.59,
+    "Rate.2023": 2535.99,
+    "Rate.2024": 2529.5,
+    "Tal_Opphold": 39234.4,
+    "dogn_p_opphold": 21.5724
+  },
+  {
+    "area": "Bergen",
+    "Snitt_liggedogn": 75656,
+    "Snitt_innbyggarar": 289188.8,
+    "Snittrate": 2593.19,
+    "Rate.2020": 2812.78,
+    "Rate.2021": 2553.92,
+    "Rate.2022": 2621.24,
+    "Rate.2023": 2552.31,
+    "Rate.2024": 2425.7,
+    "Tal_Opphold": 3375.6,
+    "dogn_p_opphold": 22.4126
+  },
+  {
+    "area": "Lovisenberg",
+    "Snitt_liggedogn": 33353.8,
+    "Snitt_innbyggarar": 128888,
+    "Snittrate": 2670.62,
+    "Rate.2020": 2847.74,
+    "Rate.2021": 2256.78,
+    "Rate.2022": 2666.33,
+    "Rate.2023": 2662.45,
+    "Rate.2024": 2919.8,
+    "Tal_Opphold": 1360.6,
+    "dogn_p_opphold": 24.514
+  },
+  {
+    "area": "OUS",
+    "Snitt_liggedogn": 51033.2,
+    "Snitt_innbyggarar": 186077,
+    "Snittrate": 2705.84,
+    "Rate.2020": 2936.88,
+    "Rate.2021": 2782.92,
+    "Rate.2022": 2420.75,
+    "Rate.2023": 2580.97,
+    "Rate.2024": 2807.66,
+    "Tal_Opphold": 1507.4,
+    "dogn_p_opphold": 33.8551
+  },
+  {
+    "area": "Nordland",
+    "Snitt_liggedogn": 22642.2,
+    "Snitt_innbyggarar": 82794.2,
+    "Snittrate": 2758.49,
+    "Rate.2020": 2214.2,
+    "Rate.2021": 2570.29,
+    "Rate.2022": 3045.8,
+    "Rate.2023": 2922.56,
+    "Rate.2024": 3039.61,
+    "Tal_Opphold": 1238.8,
+    "dogn_p_opphold": 18.2775
+  },
+  {
+    "area": "Østfold",
+    "Snitt_liggedogn": 53956.6,
+    "Snitt_innbyggarar": 194134.4,
+    "Snittrate": 2839.09,
+    "Rate.2020": 2910.53,
+    "Rate.2021": 2855.79,
+    "Rate.2022": 2995.11,
+    "Rate.2023": 2740.4,
+    "Rate.2024": 2693.61,
+    "Tal_Opphold": 2535,
+    "dogn_p_opphold": 21.2847
+  },
+  {
+    "area": "Sørlandet",
+    "Snitt_liggedogn": 53897.4,
+    "Snitt_innbyggarar": 187992.4,
+    "Snittrate": 2887.21,
+    "Rate.2020": 2537.75,
+    "Rate.2021": 2846.74,
+    "Rate.2022": 2765.04,
+    "Rate.2023": 3358.28,
+    "Rate.2024": 2928.22,
+    "Tal_Opphold": 2742.4,
+    "dogn_p_opphold": 19.6534
+  },
+  {
+    "area": "Stavanger",
+    "Snitt_liggedogn": 68721.2,
+    "Snitt_innbyggarar": 233727.6,
+    "Snittrate": 2914.49,
+    "Rate.2020": 3207.68,
+    "Rate.2021": 2701.97,
+    "Rate.2022": 2874.9,
+    "Rate.2023": 2739.5,
+    "Rate.2024": 3048.38,
+    "Tal_Opphold": 2852,
+    "dogn_p_opphold": 24.0958
+  },
+  {
+    "area": "Innlandet",
+    "Snitt_liggedogn": 58812.4,
+    "Snitt_innbyggarar": 200048.4,
+    "Snittrate": 3005.74,
+    "Rate.2020": 3023.5,
+    "Rate.2021": 3247.29,
+    "Rate.2022": 2966.11,
+    "Rate.2023": 2953.63,
+    "Rate.2024": 2838.16,
+    "Tal_Opphold": 2446.2,
+    "dogn_p_opphold": 24.0424
+  },
+  {
+    "area": "Telemark",
+    "Snitt_liggedogn": 32397.2,
+    "Snitt_innbyggarar": 102993.2,
+    "Snittrate": 3235.29,
+    "Rate.2020": 2700.71,
+    "Rate.2021": 3296.95,
+    "Rate.2022": 3383.37,
+    "Rate.2023": 3034.65,
+    "Rate.2024": 3760.75,
+    "Tal_Opphold": 1477.8,
+    "dogn_p_opphold": 21.9226
+  },
+  {
+    "area": "Finnmark",
+    "Snitt_liggedogn": 15122,
+    "Snitt_innbyggarar": 46116.4,
+    "Snittrate": 3324.89,
+    "Rate.2020": 3694.57,
+    "Rate.2021": 3013.73,
+    "Rate.2022": 4211.38,
+    "Rate.2023": 2999.24,
+    "Rate.2024": 2705.52,
+    "Tal_Opphold": 746.2,
+    "dogn_p_opphold": 20.2653
+  },
+  {
+    "area": "UNN",
+    "Snitt_liggedogn": 39358.2,
+    "Snitt_innbyggarar": 117962,
+    "Snittrate": 3357.44,
+    "Rate.2020": 3361.58,
+    "Rate.2021": 3135.54,
+    "Rate.2022": 3559.98,
+    "Rate.2023": 3312.38,
+    "Rate.2024": 3417.71,
+    "Tal_Opphold": 2427.4,
+    "dogn_p_opphold": 16.2141
+
+     }
+      ]
+    }
+  ]
+}
