@@ -40,11 +40,6 @@
       "overskrift": "Vaksne i psykisk helsevern",
       "innhold": [
         {
-          "type": "tekst",
-          "beskrivelse": "Forløpsintensitet",
-          "tekst": "(Skildring av tema, samt argumentasjon og skildring av metode og resultat)"
-        },
-        {
           "utvalg": "Vaksne (18-64 år) som i 2020-2024 hadde minst ein poliklinisk kontakt i psykisk helsevern \neller hos avtalespesialistar i psykisk helsevern\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato (inkluderer både polikliniske konsultasjonar og dagbehandlig). Raten inkluderer både direkte og indirekte kontaktar. Raten inkluderer berre ein kontakt per dag, per pasient.\n\nRatane er justerte for alder og kjønn.\n\nStrekane markerer eit 95 prosents konfidensintervall for pasientraten.\n\n\\*Manglande informasjon om kjønn blir imputert frå datasettet dersom pasienten finst i datasettet utan manglande kjønn i ei anna konsultasjon.",
           "data": "pasient_polyklinikk_18.json",
           "publisert": "2025-11-30T13:00:00.000+01:00",
@@ -65,6 +60,11 @@
           "kart": "kart_opt_2025.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-11-26T15:28:00.000+01:00"
+        },
+        {
+          "type": "tekst",
+          "beskrivelse": "Forløpsintensitet",
+          "tekst": "Forløpsintensitet her"
         },
         {
           "utvalg": "Vaksne (18-64 år) som i 2020-2024 hadde minst eit døgnopphald i psykisk helsevern\n\nDøgnopphald er definert som: \n\n* Opphold på meir enn null døgn .\n* Alle samanhengande opphald blir rekna som eitt opphald. Med samanhengande opphald meiner vi opphald som kjem rett etter kvarandre utan opphald i dagar, basert på kalenderdato (dvs utdata frå den førrige opphald og inndato til neste opphald er same kalenderdato).\n* For slike samanhengande opphald nyttar vi innleggingsdatoen frå det første opphaldet og utskrivingsdatoen frå det siste opphaldet til pasienten.\n\nRatane er justerte for alder og kjønn. Strekane markerer eit 95 prosents konfidensintervall for pasientraten.",
@@ -131,52 +131,11 @@
           "kart": "kart_dps_p5_rewind.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-12-03T09:06:00.000+01:00"
-        }
-      ]
-    },
-    {
-      "overskrift": "Samhandling med kommunehelsetenesta",
-      "innhold": [
-        {
-          "type": "tekst",
-          "tekst": "Kvar enkelt kommune avgjer korleis helsetenester innan psykisk helse og rus best kan o[rganiserast.](https://www.helsedirektoratet.no/veiledere/psykisk-helse-og-rusarbeid-for-voksne)[](https://www.helsedirektoratet.no/veiledere/psykisk-helse-og-rusarbeid-for-voksne)\n\n(meir utfyllande om samhandling og rolla kommunehelsetenesta spelar)\n\n\nDette er ei brei pasientgruppe, frå personar med symptom som blir tilvist, til behandling\nfor lettare psykiske lidingar, til personar med kontakt etter innlegging for alvorlege psykiske lidingar. Sistnemnde undersøker vi nærare i ein eigen forløpsanalyse seinare, som viser forløpet etter innlegging. Blant personar med lettare psykiske lidingar viser ratane både personar som seinare blir tilvist spesialisthelsetenesta, samt personar som får behandling for desse hjå allmennlege. Dei kan skiljast frå kvarandre ved å berre analysere aktivitet for psykiske lidingar, men ein slik analyse føreset eit design som fell utanfor form og føremål med helseatlaset."
-        },
-        {
-          "utvalg": "Pasientar i kommunehelsetjenester er definerte etter følgjande kriterium:\n\nVaksne (18-64 år) som i 2020-2024 hadde minst ein kontakt hos fastlege/legevakt\n\nPasienter med ICPC koder P01-P29  (symptom og plager) og P70-P99 (diagnoser/sjukdommar)​ \nunntatt P16-P19 \n\nTakstkode: 2AD, 2AE, 2AK, 2ED, 2FK (eksakt treff)\n\nRatane er justerte for alder og kjønn.",
-          "data": "ny-55-kpr_pasient_all.json",
-          "publisert": "2025-12-31T12:58:00.000+01:00",
-          "resultat": "(2024-tala her stemmer ikkje. Det er feil i takstkodar i 2024, som vi arbeider med å finne ut av. Rate for 2024 skal vere i nærleiken av 2023, ifølgje andre kjelder, og ved bruk av diagnosekodar får vi liknande tal.) \n\nI perioden 2020-2024 mottok årleg i gjennomsnitt 536 000 personar konsultasjonar hjå fastlege eller legevakt for psykiske symptom, plager og lidingar. Det gir ein rate på 1604 personar per 10 000 innbyggarar i den vaksne befolkninga. Med andre ord hadde rundt 16,1 prosent av den vaksne befolkninga minst ein konsultasjon årleg for psykiske symptom, plager eller lidingar. \n\nRaten auka jamt i løpet av femårsperiode, eit trekk vi òg ser i psykisk helsevern for barn og unge, og elles for somatiske sjukdommar. Auken er imidlertid mindre for vaksne enn for barn og unge, men vi må òg ta omsyn til at fastlege og legevakt har ei meir inngåande rolle når det gjeld behandling for vaksne, medan rolla avgrensar seg meir til tilvising for barn og unge.\n\nVariasjonen i pasientrate mellom opptaksområda var liten. Dei fleste opptaksområda i Helse\nSør-øst og Helse Nord har høge ratar, medan opptaksområda i Helse Vest har blant dei lågaste. Raten varierer frå 1792 personar i Østfold, som har høgast rate, til Førde med lågast, der 1350 per 10 000 innbyggarar hadde minst ein konsultasjon.",
-          "overskrift": "Tilvising og oppfølgjing av vaksne pasientar hos allmenlege",
-          "ingress": "Variasjonen i rate for oppfølging i kommunehelsetenesta var liten, men raten auka klart i\nløpet av femårsperioden",
-          "kart": "kart_opt_2025.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-11-28T15:46:00.000+01:00"
-        },
-        {
-          "utvalg": "Konsultasjonar er definerte etter følgjande kriterium:\n\nVaksne (18-64 år) som i 2020-2024 hadde minst ein kontakt hos fastlege/legevakt\n\nPasienter med ICPC koder P01-P29  (symptom og plager) og P70-P99 (diagnoser/sjukdommar)​ \nunntatt P16-P19 \n\nTakstkode: 2AD, 2AE, 2AK, 2ED, 2FK (eksakt treff)\n\nRatane er justerte for alder og kjønn.",
-          "data": "kpr_kontakt_voksne.json",
-          "publisert": "2025-12-31T12:59:00.000+01:00",
-          "resultat": "(2024-tala her stemmer ikkje. Det er feil i takstkodar i 2024, som vi arbeider med å finne ut av. Rate for 2024 skal vere i nærleiken av 2023, ifølgje andre kjelder, og ved bruk av diagnosekodar får vi liknande tal.) \n\nI perioden 2020-2024 mottok årleg i gjennomsnitt 536 000 personar konsultasjonar hjå fastlege eller legevakt for psykiske symptom, plager og lidingar. Det gir ein rate på 1604 personar per 10 000 innbyggarar i den vaksne befolkninga. Med andre ord hadde rundt 16,1 prosent av den vaksne befolkninga minst ein konsultasjon årleg for psykiske symptom, plager eller lidingar. \n\nRaten auka jamt i løpet av femårsperiode, eit trekk vi òg ser i psykisk helsevern for barn og unge, og elles for somatiske sjukdommar. Auken er imidlertid mindre for vaksne enn for barn og unge, men vi må òg ta omsyn til at fastlege og legevakt har ei meir inngåande rolle når det gjeld behandling for vaksne, medan rolla avgrensar seg meir til tilvising for barn og unge.\n\nVariasjonen i pasientrate mellom opptaksområda var liten. Dei fleste opptaksområda i Helse\nSør-øst og Helse Nord har høge ratar, medan opptaksområda i Helse Vest har blant dei lågaste. Raten varierer frå 1792 personar i Østfold, som har høgast rate, til Førde med lågast, der 1350 per 10 000 innbyggarar hadde minst ein konsultasjon.",
-          "overskrift": "Konsultasjonar av vaksne pasientar hos allmenlege",
-          "ingress": "Variasjonen i rate for oppfølging i kommunehelsetenesta var liten, men raten auka klart i\nløpet av femårsperioden",
-          "kart": "kart_dps_p5_rewind.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-11-28T15:47:00.000+01:00"
-        }
-      ]
-    },
-    {
-      "overskrift": "Forløp for innlagde pasientar",
-      "innhold": [
-        {
-          "type": "tekst",
-          "tekst": "(Dette skal bli ein analyse av forløp etter innlegging, som viser kor mange pasientar som brukar kva for tenester i etterkant av innlegginga)",
-          "beskrivelse": "Definisjon"
         },
         {
           "type": "tekst",
-          "beskrivelse": "Resultat",
-          "tekst": "(dette viser vi på torsdag i eigen presentasjon)"
+          "beskrivelse": "Forløp for innlagde pasientar",
+          "tekst": "resultat for forløpsanalyse, enten som frittståande tekst eller som resultatboks"
         }
       ]
     },
@@ -705,6 +664,37 @@
       ]
     },
     {
+      "overskrift": "Kommunehelsetenesta",
+      "innhold": [
+        {
+          "type": "tekst",
+          "tekst": "Kvar enkelt kommune avgjer korleis helsetenester innan psykisk helse og rus best kan o[rganiserast.](https://www.helsedirektoratet.no/veiledere/psykisk-helse-og-rusarbeid-for-voksne)[](https://www.helsedirektoratet.no/veiledere/psykisk-helse-og-rusarbeid-for-voksne)\n\n(meir utfyllande om samhandling og rolla kommunehelsetenesta spelar)\n\n\nDette er ei brei pasientgruppe, frå personar med symptom som blir tilvist, til behandling\nfor lettare psykiske lidingar, til personar med kontakt etter innlegging for alvorlege psykiske lidingar. Sistnemnde undersøker vi nærare i ein eigen forløpsanalyse seinare, som viser forløpet etter innlegging. Blant personar med lettare psykiske lidingar viser ratane både personar som seinare blir tilvist spesialisthelsetenesta, samt personar som får behandling for desse hjå allmennlege. Dei kan skiljast frå kvarandre ved å berre analysere aktivitet for psykiske lidingar, men ein slik analyse føreset eit design som fell utanfor form og føremål med helseatlaset."
+        },
+        {
+          "utvalg": "Pasientar i kommunehelsetjenester er definerte etter følgjande kriterium:\n\nVaksne (18-64 år) som i 2020-2024 hadde minst ein kontakt hos fastlege/legevakt\n\nPasienter med ICPC koder P01-P29  (symptom og plager) og P70-P99 (diagnoser/sjukdommar)​ \nunntatt P16-P19 \n\nTakstkode: 2AD, 2AE, 2AK, 2ED, 2FK (eksakt treff)\n\nRatane er justerte for alder og kjønn.",
+          "data": "ny-55-kpr_pasient_all.json",
+          "publisert": "2025-12-31T12:58:00.000+01:00",
+          "resultat": "(2024-tala her stemmer ikkje. Det er feil i takstkodar i 2024, som vi arbeider med å finne ut av. Rate for 2024 skal vere i nærleiken av 2023, ifølgje andre kjelder, og ved bruk av diagnosekodar får vi liknande tal.) \n\nI perioden 2020-2024 mottok årleg i gjennomsnitt 536 000 personar konsultasjonar hjå fastlege eller legevakt for psykiske symptom, plager og lidingar. Det gir ein rate på 1604 personar per 10 000 innbyggarar i den vaksne befolkninga. Med andre ord hadde rundt 16,1 prosent av den vaksne befolkninga minst ein konsultasjon årleg for psykiske symptom, plager eller lidingar. \n\nRaten auka jamt i løpet av femårsperiode, eit trekk vi òg ser i psykisk helsevern for barn og unge, og elles for somatiske sjukdommar. Auken er imidlertid mindre for vaksne enn for barn og unge, men vi må òg ta omsyn til at fastlege og legevakt har ei meir inngåande rolle når det gjeld behandling for vaksne, medan rolla avgrensar seg meir til tilvising for barn og unge.\n\nVariasjonen i pasientrate mellom opptaksområda var liten. Dei fleste opptaksområda i Helse\nSør-øst og Helse Nord har høge ratar, medan opptaksområda i Helse Vest har blant dei lågaste. Raten varierer frå 1792 personar i Østfold, som har høgast rate, til Førde med lågast, der 1350 per 10 000 innbyggarar hadde minst ein konsultasjon.",
+          "overskrift": "Tilvising og oppfølgjing av vaksne pasientar hos allmenlege",
+          "ingress": "Variasjonen i rate for oppfølging i kommunehelsetenesta var liten, men raten auka klart i\nløpet av femårsperioden",
+          "kart": "kart_opt_2025.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-11-28T15:46:00.000+01:00"
+        },
+        {
+          "utvalg": "Konsultasjonar er definerte etter følgjande kriterium:\n\nVaksne (18-64 år) som i 2020-2024 hadde minst ein kontakt hos fastlege/legevakt\n\nPasienter med ICPC koder P01-P29  (symptom og plager) og P70-P99 (diagnoser/sjukdommar)​ \nunntatt P16-P19 \n\nTakstkode: 2AD, 2AE, 2AK, 2ED, 2FK (eksakt treff)\n\nRatane er justerte for alder og kjønn.",
+          "data": "kpr_kontakt_voksne.json",
+          "publisert": "2025-12-31T12:59:00.000+01:00",
+          "resultat": "(2024-tala her stemmer ikkje. Det er feil i takstkodar i 2024, som vi arbeider med å finne ut av. Rate for 2024 skal vere i nærleiken av 2023, ifølgje andre kjelder, og ved bruk av diagnosekodar får vi liknande tal.) \n\nI perioden 2020-2024 mottok årleg i gjennomsnitt 536 000 personar konsultasjonar hjå fastlege eller legevakt for psykiske symptom, plager og lidingar. Det gir ein rate på 1604 personar per 10 000 innbyggarar i den vaksne befolkninga. Med andre ord hadde rundt 16,1 prosent av den vaksne befolkninga minst ein konsultasjon årleg for psykiske symptom, plager eller lidingar. \n\nRaten auka jamt i løpet av femårsperiode, eit trekk vi òg ser i psykisk helsevern for barn og unge, og elles for somatiske sjukdommar. Auken er imidlertid mindre for vaksne enn for barn og unge, men vi må òg ta omsyn til at fastlege og legevakt har ei meir inngåande rolle når det gjeld behandling for vaksne, medan rolla avgrensar seg meir til tilvising for barn og unge.\n\nVariasjonen i pasientrate mellom opptaksområda var liten. Dei fleste opptaksområda i Helse\nSør-øst og Helse Nord har høge ratar, medan opptaksområda i Helse Vest har blant dei lågaste. Raten varierer frå 1792 personar i Østfold, som har høgast rate, til Førde med lågast, der 1350 per 10 000 innbyggarar hadde minst ein konsultasjon.",
+          "overskrift": "Konsultasjonar av vaksne pasientar hos allmenlege",
+          "ingress": "Variasjonen i rate for oppfølging i kommunehelsetenesta var liten, men raten auka klart i\nløpet av femårsperioden",
+          "kart": "kart_dps_p5_rewind.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-11-28T15:47:00.000+01:00"
+        }
+      ]
+    },
+    {
       "overskrift": "Storbrukarar",
       "innhold": [
         {
@@ -719,7 +709,7 @@
       "innhold": [
         {
           "type": "faktaboks",
-          "tekst": "Data\n\nNorsk pasientregister (NPR) og Norsk pasient- og brukarregister (KPR), begge forvalta av Folkehelseinstituttet (FHI), utgjer datakjeldene. Aktivitetsdata gjeld høvesvis behandling i psykisk helsevern for vaksne, samt konsultasjonar hjå allmennlege og legevakt for dei to datakjeldene, i perioden 2020-2024.\n\nKvalitetskontrollar\n\nManglande kjønn i sektor 7. \n\nDistriktspsykiatriske senter og deira kommunar.\n\n\n\nAldersgrupper vaksne og eldre\n\nVaksne er personar frå og med 18 til og med 64 år. Psykisk helsevern for vaksne behandlar personar frå dei er 18 år. Overgangen frå barne- og ungdomspsykiatrien (BUP) til psykisk helsevern for vaksne føreset at personen er i ein stabil fase av sjukdommen. Difor vert ein del av personar med psykiske lidingar framleis behandla i BUP sjølv om dei er over 18 år.\n\n\nYrkesdeltaking er nær knytt til helse; deltaking i arbeidslivet er helsefremjande (REF). Større variasjon no i pensjonsalder enn tidlegare, og 65 er eit rimeleg anslag for gjennomsnittleg pensjonstid.\n\n\nSektorar\n\nHelseatlas er for psykisk helsevern og tilhøyrande avtalespesialistar, men for demens vert ein så stor del behandla i somatikken, at inklusjon er nødvendig for at atlaset skal femne om breidda av spesialistbehandling for psykiske lidingar.\n\n\nRuslidingar\n\n\nRus er eit eige område, med eigne årsaker til sjukdom og eiga behandling, som gjer\nområdet veleigna som eit eige atlas.\n\n\n\nDistriktspsykiatriske senter\n\n\nDei fleste HF er delt inn i rundt 2-5 område tilknytt distriktspsykiatriske senter (DPS), med kvar sine sett av kommunar som opptaksområde. DPS’a er del av styringslinja i HF, men skjulte lokale variasjonar kan gjere det vanskelegare å tydeleggjere kvart DPS sin praksis.\n\n\n\n\nPolikliniske kontaktar\n\nHelsedata kan målast på fleire måtar, og i bruk av registerdata utgjer polikliniske kontaktar og innleggingar standard aktivitetsmål. I dette atlaset nyttar vi kontaktdagar som aktivitetsmål, då vi ser helsetenestebruk frå pasienten sitt perspektiv, og såleis ikkje treng skilje mellom ulike måtar å strukturere dagen på. \n\nISF-reglementet nyttar ei liknande praktisk tilnærming, ved at polikliniske kontaktar i løpet av same dagen som hovudregel skal slåast saman til eitt opphald, med enkelte unntak. Strukturerte polikliniske opphald tel som berre eitt opphald uavhengig av desse unntaka. Ettersom ISF-reglementet liknar kontaktdagsmålet er det òg aktuelt som aktivitetsmål, og vi undersøkte difor utslaga av å nytte ISF-reglane strengt, som vi omtaler som ISF-opphald. Tala viser særs små utslag av å nytte ISF-opphald samanlikna med polikliniske kontaktdagar, og vi valde førstnemnde av grunnen nemdt innleingsvis.\n\nVi skil mindre mellom fysiske konsultasjonar og konsultasjonar som skjer via video eller telefon i takt med at e-konsultasjonar er blitt normalisert. Administrative kontaktar er ikkje konsultasjonar, men er eit mål på den breiare oppfølginga pasienten får. \n\n\nInnleggingar\n\n\nAggregerte opphald, med samanslåtte opphald ved flytting mellom institusjonar, er mest rett då desse opphalda er del av eit større sjukehusopphald med planlagd funksjonsdeling mellom institusjonane. Eventuelle fleire opphald undervegs er rekna skal òg slåast saman med desse. Inndeling i kvar av desse delopphalda er irrelevant for utrekning av opphaldsrater og liggetider; innleggingar skal sjåast frå pasienten sitt perspektiv uavhengig av ulik organisering.\n8-timarsregelen stammar frå somatikken og er truleg lite relevant i psykisk helsevern. Aktuelt å ta høgde for lange reiseavstandar ved å slakke datoen med eitt døgn; bør sjekke dette ved bruk av sensitivitetsanalyse.",
+          "tekst": "Data\n\nNorsk pasientregister (NPR) og Norsk pasient- og brukarregister (KPR), begge forvalta av Folkehelseinstituttet (FHI), utgjer datakjeldene. Aktivitetsdata gjeld høvesvis behandling i psykisk helsevern for vaksne, samt konsultasjonar hjå allmennlege og legevakt for dei to datakjeldene, i perioden 2020-2024.\n\nKvalitetskontrollar\n\nDistriktspsykiatriske senter og deira kommunar.\n\nAldersgrupper vaksne og eldre\n\nVaksne er personar frå og med 18 til og med 64 år. Psykisk helsevern for vaksne behandlar personar frå dei er 18 år. Overgangen frå barne- og ungdomspsykiatrien (BUP) til psykisk helsevern for vaksne føreset at personen er i ein stabil fase av sjukdommen. Difor vert ein del av personar med psykiske lidingar framleis behandla i BUP sjølv om dei er over 18 år.\n\nYrkesdeltaking er nær knytt til helse; deltaking i arbeidslivet er helsefremjande (REF). Større variasjon no i pensjonsalder enn tidlegare, og 65 er eit rimeleg anslag for gjennomsnittleg pensjonstid.\n\nSektorar\n\nHelseatlas er for psykisk helsevern og tilhøyrande avtalespesialistar, men for demens vert ein så stor del behandla i somatikken, at inklusjon er nødvendig for at atlaset skal femne om breidda av spesialistbehandling for psykiske lidingar.\n\nRuslidingar\n\nRus er eit eige område, med eigne årsaker til sjukdom og eiga behandling, som gjer\nområdet veleigna som eit eige atlas.\n\nDistriktspsykiatriske senter\n\nDei fleste HF er delt inn i rundt 2-5 område tilknytt distriktspsykiatriske senter (DPS), med kvar sine sett av kommunar som opptaksområde. DPS’a er del av styringslinja i HF, men skjulte lokale variasjonar kan gjere det vanskelegare å tydeleggjere kvart DPS sin praksis.\n\nPolikliniske kontaktar\n\nHelsedata kan målast på fleire måtar, og i bruk av registerdata utgjer polikliniske kontaktar og innleggingar standard aktivitetsmål. I dette atlaset nyttar vi kontaktdagar som aktivitetsmål, då vi ser helsetenestebruk frå pasienten sitt perspektiv, og såleis ikkje treng skilje mellom ulike måtar å strukturere dagen på. \n\nISF-reglementet nyttar ei liknande praktisk tilnærming, ved at polikliniske kontaktar i løpet av same dagen som hovudregel skal slåast saman til eitt opphald, med enkelte unntak. Strukturerte polikliniske opphald tel som berre eitt opphald uavhengig av desse unntaka. Ettersom ISF-reglementet liknar kontaktdagsmålet er det òg aktuelt som aktivitetsmål, og vi undersøkte difor utslaga av å nytte ISF-reglane strengt, som vi omtaler som ISF-opphald. Tala viser særs små utslag av å nytte ISF-opphald samanlikna med polikliniske kontaktdagar, og vi valde førstnemnde av grunnen nemdt innleingsvis.\n\nVi skil mindre mellom fysiske konsultasjonar og konsultasjonar som skjer via video eller telefon i takt med at e-konsultasjonar er blitt normalisert. Administrative kontaktar er ikkje konsultasjonar, men er eit mål på den breiare oppfølginga pasienten får. \n\nInnleggingar\n\nAggregerte opphald, med samanslåtte opphald ved flytting mellom institusjonar, er mest rett då desse opphalda er del av eit større sjukehusopphald med planlagd funksjonsdeling mellom institusjonane. Eventuelle fleire opphald undervegs er rekna skal òg slåast saman med desse. Inndeling i kvar av desse delopphalda er irrelevant for utrekning av opphaldsrater og liggetider; innleggingar skal sjåast frå pasienten sitt perspektiv uavhengig av ulik organisering.\n8-timarsregelen stammar frå somatikken og er truleg lite relevant i psykisk helsevern. Aktuelt å ta høgde for lange reiseavstandar ved å slakke datoen med eitt døgn; bør sjekke dette ved bruk av sensitivitetsanalyse.",
           "overskrift": "Metode"
         }
       ]
