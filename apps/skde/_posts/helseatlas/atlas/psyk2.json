@@ -114,6 +114,11 @@
           "oppdatert": "2025-12-04T10:17:00.000+01:00"
         },
         {
+          "type": "tekst",
+          "tekst": "a",
+          "beskrivelse": ""
+        },
+        {
           "utvalg": "Analysane omfattar vaksne i alderen 18-64 år som i perioden 2020-2024 hadde minst ein poliklinisk kontakt i psykisk helsevern, enten ved offentlege tenester eller hos avtalespesialistar i psykisk helsevern.\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato, og omfattar både polikliniske konsultasjonar og dagbehandlig. Raten inkluderer både direkte og indirekte kontaktar, men tel berre ein kontakt per pasient, per dag.\n\nRatane er justerte for alder og kjønn.\n\nStrekane i figuren viser eit 95 prosents konfidensintervall for pasientraten.",
           "data": "poliklinikk_pasient_dps_18.json",
           "publisert": "2025-11-30T13:04:00.000+01:00",
@@ -149,7 +154,7 @@
         {
           "type": "tekst",
           "beskrivelse": "Forløp for innlagde pasientar",
-          "tekst": "resultat for forløpsanalyse, enten som frittståande tekst eller som resultatboks"
+          "tekst": "### **Storbrukarar**\n\nPasientar med forskjellege diagnosar brukar ulikt omfang av helsetenester. Det kan illustrerast ved å sortere pasientane etter tal kontaktdagar per pasient i poliklinisk behandling, frå lågaste til høgaste tal. Figuren nedanfor viser dette, der tala 1-5 under søylene er kategoriar av pasientar med ulikt tal kontaktdagar per pasient. Gruppe 1 er pasientar med høgast tal kontaktdagar per pasient i året, og denne gruppa står for totalt 10 prosent av kontaktdagane. Vidare er gruppe 2 pasientar med noko lågare tal kontaktdagar per pasient enn gruppe 1, og denne står òg for 10 prosent av kontaktdagane osv. Sidan gruppene til høgre har høgare tal kontaktdagar per pasient, er desse mindre tal pasientar enn gruppene til venstre. \n\nAv pasientane som står for høgast tal kontaktdagar per pasient, i gruppe 1, står psykoselidingar for ein langt større prosentdel enn dei andre psykiske lidingane, med nær halvparten, eller rundt 800 pasientar. Angst og stemningslidingar utgjer òg betydelege prosentdelar. I gruppe 2, som står for eit lågare tal kontaktdagar per pasient, men framleis langt over mediantalet, er gruppene angst, psykoselidingar og stemningslidingar meir like store. Nærmar vi oss median tal kontaktdagar per pasient (gruppe 5), utgjer angstlidingar og stemningslidingar store prosentdelar av tal pasientar i gruppa. Som vi ser av dei tette søylene, er det ikkje store endringar over tid, men talet pasientar med psykoselidingar aukar noko. \n\n![](/helseatlas/img/no/psyk2/storbrukarar_pol.png)\n\n\nTilsvarande viser figuren under tal pasientar som brukar dei 10 prosent fleste liggedøgna (kolonnene over 1), dei 10 prosent nest fleste liggedøgna (kolonnene over 2) osv. Når figuren såleis viser fem grupper representerer desse halvparten av døgnopphalda. I gruppa som brukar mest står psykoselidingar for nær 90 prosent av liggedøgn. Andelen er òg høg i gruppa som brukar nest mest, men her står stemningslidingar òg for ein betydeleg andel. I gruppene 3, 4 og 5 er dominerer psykoselidingar og stemningslidingar, medan angstlidingar har større andel av pasientane i gruppe 5, som er nær median tal liggedøgn.\n\n![](/helseatlas/img/no/psyk2/storbrukarar_dogn.png)"
         }
       ]
     },
