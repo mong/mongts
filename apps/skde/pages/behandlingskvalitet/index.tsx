@@ -8,6 +8,8 @@ import {
   ThemeProvider,
   Typography,
   useMediaQuery,
+  Switch,
+  FormControlLabel,
 } from "@mui/material";
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import Grid from "@mui/material/Grid";
@@ -32,7 +34,6 @@ import {
   useUnitNamesQuery,
 } from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
-import { useSearchParams } from "next/navigation";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import {
   FilterDrawer,
@@ -62,8 +63,7 @@ export default function TreatmentQualityPage() {
     setDrawerOpen(newOpen);
   };
 
-  const searchParams = useSearchParams();
-  const displayV2Table = searchParams.get("newtable") === "true";
+  const [useNewTable, setUseNewTable] = useState(false);
 
   const defaultTreatmentUnits = ["Nasjonalt"];
 
@@ -314,8 +314,21 @@ export default function TreatmentQualityPage() {
           <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
+                <FormControlLabel
+                  sx={{ paddingLeft: 4, paddingTop: 2 }}
+                  control={
+                    <Switch
+                      checked={useNewTable}
+                      onChange={() => {
+                        setUseNewTable(!useNewTable);
+                      }}
+                      slotProps={{ input: { "aria-label": "controlled" } }}
+                    />
+                  }
+                  label="Bruk ny tabell"
+                ></FormControlLabel>
                 {queriesReady && paramsReady ? (
-                  displayV2Table ? (
+                  useNewTable ? (
                     <IndicatorTableBodyV2
                       key={"indicator-table2"}
                       context={selectedTableContext}
