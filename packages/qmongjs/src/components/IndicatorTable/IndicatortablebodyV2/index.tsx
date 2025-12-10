@@ -170,28 +170,6 @@ const IndicatorRow = (props: {
     }
   }
 
-  const description = {
-    id: indData.indicatorID,
-    dg_id: null,
-    include: null,
-    title: null,
-    name: null,
-    type: indData.indType,
-    sformat: indData.format ? indData.format : "",
-    measure_unit: null,
-    min_denominator: null,
-    min_value: null,
-    max_value: null,
-    level_green: indData.levelGreen,
-    level_yellow: indData.levelYellow,
-    level_direction: indData.levelDirection,
-    short_description: indData.shortDescription,
-    long_description: indData.longDescription,
-    registry_id: indData.registerID,
-    rname: null,
-    full_name: registryName,
-  };
-
   return (
     <React.Fragment key={indData.indicatorTitle + "-indicatorSection"}>
       <StyledTableRow
