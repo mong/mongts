@@ -1,5 +1,5 @@
 import { DataPoint, IndicatorData } from "types";
-import { LineChart } from "@mui/x-charts/LineChart";
+import { LineChart, LineSeries } from "@mui/x-charts/LineChart";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -72,7 +72,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
 
   // Add unit name label
   const labelledData = paddedData.map((row, i) => {
-    return { data: row.map((point) => point.y), label: unitNames[i] };
+    return { data: row.map((point) => point.y), label: unitNames[i], curve: "linear" } as LineSeries;
   });
 
   return (

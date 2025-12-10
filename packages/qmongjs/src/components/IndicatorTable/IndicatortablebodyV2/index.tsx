@@ -102,7 +102,7 @@ const IndicatorRow = (props: {
     }
     router.replace(pathname + "?" + params.toString(), { scroll: false });
   };
-
+  console.log(openRowID)
   const format = indData.format === null ? ",.0%" : indData.format;
 
   if (indData.data === undefined) {
@@ -286,8 +286,6 @@ const IndicatorRow = (props: {
         })}
       </StyledTableRow>
 
-      {!open ? EmptyRow : null}
-
       <TableRow>
         <StyledTableCell
           style={{
@@ -340,11 +338,15 @@ const IndicatorRow = (props: {
             <div style={{ display: "flex", justifyContent: "center" }}>
               <table width={1500}>
                 <tbody>
-                  <ChartRowV2
-                    data={indData}
-                    unitNames={unitNames}
-                    context={context}
-                  />
+                  <tr>
+                    <td colSpan={unitNames.length + 1}>
+                      <ChartRowV2
+                        data={indData}
+                        unitNames={unitNames}
+                        context={context}
+                      />
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
