@@ -102,7 +102,7 @@ const IndicatorRow = (props: {
     }
     router.replace(pathname + "?" + params.toString(), { scroll: false });
   };
-  console.log(openRowID)
+
   const format = indData.format === null ? ",.0%" : indData.format;
 
   if (indData.data === undefined) {
