@@ -342,7 +342,7 @@ const IndicatorRow = (props: {
             <div style={{ display: "flex", justifyContent: "center" }}>
               <table width={1500}>
                 <tbody>
-                  <ChartRowV2 />
+                  <ChartRowV2 data = {indData} unitNames = {unitNames} context = {context}/>
                 </tbody>
               </table>
             </div>
