@@ -5,7 +5,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Indicator, RegisterData, IndicatorData } from "types";
+import { RegisterData, IndicatorData } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
 import { newLevelSymbols, level2, skdeTheme } from "qmongjs";
@@ -21,8 +21,6 @@ import {
   StyledTableCellEnd,
 } from "./IndicatorTableBodyV2Styles";
 import { customFormat, useIndicatorQuery } from "qmongjs";
-import { ChartRow } from "../chartrow";
-import { getLastCompleteYear } from "../../../helpers/functions";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { ChartRowV2 } from "../chartrowV2";
 
@@ -193,7 +191,7 @@ const IndicatorRow = (props: {
     rname: null,
     full_name: registryName,
   };
-  
+
   return (
     <React.Fragment key={indData.indicatorTitle + "-indicatorSection"}>
       <StyledTableRow
@@ -342,7 +340,11 @@ const IndicatorRow = (props: {
             <div style={{ display: "flex", justifyContent: "center" }}>
               <table width={1500}>
                 <tbody>
-                  <ChartRowV2 data = {indData} unitNames = {unitNames} context = {context}/>
+                  <ChartRowV2
+                    data={indData}
+                    unitNames={unitNames}
+                    context={context}
+                  />
                 </tbody>
               </table>
             </div>
@@ -601,7 +603,7 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const nestedDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
     ...queryParams,
-    nested: true
+    nested: true,
   });
 
   if (nestedDataQuery.isFetching) {
