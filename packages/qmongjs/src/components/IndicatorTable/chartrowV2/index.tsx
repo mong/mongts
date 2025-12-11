@@ -79,6 +79,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     <LineChart
       series={labelledData}
       xAxis={[{ scaleType: "point", data: uniqueYears }]}
+      height={500}
     />
   );
 };
