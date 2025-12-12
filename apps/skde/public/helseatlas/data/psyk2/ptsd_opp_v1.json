@@ -50,12 +50,13 @@
           "format": ",.1f"
         },
         {
-          "id": "Snitt_opphald",
+          "id": "Snitt_kontaktar",
           "label_no": "Tal opphald",
           "label_en": "Number of admissions",
           "typeVar": "number",
           "format": ",.0f"
         },
+
         {
           "id": "Snitt_innbyggarar",
           "label_no": "Innbyggjarar 18-64 år",
@@ -80,15 +81,15 @@
           "typeVar": "string",
           "format": ""
         },
-        {
-          "id": "opphald_p_pas",
+       {
+          "id": "kontakt_p_pas",
           "label_no": "Opphald per pasient",
           "label_en": "Admission per patient",
           "typeVar": "number",
           "format": ",.1f"
         },
         {
-          "id": "Snitt_opphald",
+          "id": "Snitt_kontaktar",
           "label_no": "Tal opphald",
           "label_en": "Number of contact days",
           "typeVar": "number",
@@ -103,6 +104,7 @@
         }
       ]
     },
+
     {
       "type": "map",
       "data": "qwerty",

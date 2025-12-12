@@ -6,8 +6,8 @@
       "x": ["Snittrate"],
       "y": "area",
       "xLabel": {
-        "nn": "Tal opphald for PTSD pr. 1 000 innbyggjarar 18-64 år",
-        "en": "Admissions for PTSD per 1,000 population 18-64 years"
+        "nn": "Tal opphald for personlegdomsforstyrring pr. 1 000 innbyggjarar 18-64 år",
+        "en": "Admissions for personality disorder per 1,000 population 18-64 years"
       },
       "yLabel": {
         "nn": "Opptaksområde",
@@ -31,8 +31,8 @@
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nn": "Årlege gjennomsnittsverdiar for perioden 2020-2024. Opphaldsrate for PTSD pr.1000 innbyggjarar 18-64 år",
-        "en": "Annual average during 2020–2024. Admission rate for PTSD per 1,000 population 18-64 years"
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2020-2024. Opphaldsrate for personlegdomsforstyrring pr.1000 innbyggjarar 18-64 år",
+        "en": "Annual average during 2020–2024. Admission rate for personality disorder per 1,000 population 18-64 years"
       },
       "columns": [
         {
@@ -49,13 +49,14 @@
           "typeVar": "number",
           "format": ",.1f"
         },
-        {
-          "id": "Snitt_opphald",
+       {
+          "id": "Snitt_kontaktar",
           "label_no": "Tal opphald",
           "label_en": "Number of admissions",
           "typeVar": "number",
           "format": ",.0f"
         },
+
         {
           "id": "Snitt_innbyggarar",
           "label_no": "Innbyggjarar 18-64 år",
@@ -69,8 +70,8 @@
       "type": "table",
       "data": "qwerty",
       "caption": {
-        "nn": "Årlege gjennomsnittsverdiar for perioden 2020–2024. Tal opphald per pasient for PTSDt.",
-        "en": "Annual average during 2019–2023. Number of admissions per patient for PTSD"
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2020–2024. Tal opphald per pasient for personlegdomsforstyrring.",
+        "en": "Annual average during 2019–2023. Number of admissions per patient for personality disorder"
       },
       "columns": [
         {
@@ -81,14 +82,14 @@
           "format": ""
         },
         {
-          "id": "opphald_p_pas",
+          "id": "kontakt_p_pas",
           "label_no": "Opphald per pasient",
           "label_en": "Admission per patient",
           "typeVar": "number",
           "format": ",.1f"
         },
         {
-          "id": "Snitt_opphald",
+          "id": "Snitt_kontaktar",
           "label_no": "Tal opphald",
           "label_en": "Number of contact days",
           "typeVar": "number",
@@ -103,13 +104,14 @@
         }
       ]
     },
+
     {
       "type": "map",
       "data": "qwerty",
       "x": "Snittrate",
       "caption": {
-        "nn": "Tal døgnopphald for PTSD  pr. 1 000 innbyggjarar 18-64 år.",
-        "en": "Admissions for PTSD treatment per 1,000 population 18-64 years"
+        "nn": "Tal døgnopphald for personlegdomsforstyrring  pr. 1 000 innbyggjarar 18-64 år.",
+        "en": "Admissions for personality disorder treatment per 1,000 population 18-64 years"
       },
       "jenks": [
         {
