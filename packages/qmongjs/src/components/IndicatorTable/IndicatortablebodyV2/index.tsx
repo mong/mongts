@@ -68,11 +68,8 @@ const IndicatorRow = (props: {
     rowID,
     openRowID,
     setOpenRowID,
-    registryName,
     context,
-    type,
     year,
-    chartColours,
   } = props;
 
   const router = useRouter();
