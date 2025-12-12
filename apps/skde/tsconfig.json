@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "types": ["cypress", "@vitest/browser/matchers"],
     "allowJs": true,
@@ -27,7 +27,8 @@
     "**/*.ts",
     "**/*.tsx",
     "vitest.config.ts",
-    ".next/types/**/*.ts"
-, "../../packages/qmongjs/src/data/indicators.ts"  ],
+    ".next/types/**/*.ts",
+    "../../packages/qmongjs/src/data/indicators.ts"
+  ],
   "exclude": ["./cypress.config.ts", "node_modules", "**/*.test.tsx"]
 }
