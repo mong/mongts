@@ -5,7 +5,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Indicator, RegisterData, IndicatorData } from "types";
+import { RegisterData, IndicatorData } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import { FetchIndicatorParams } from "../../../helpers/hooks";
 import { newLevelSymbols, level2, skdeTheme } from "qmongjs";
@@ -21,9 +21,8 @@ import {
   StyledTableCellEnd,
 } from "./IndicatorTableBodyV2Styles";
 import { customFormat, useIndicatorQuery } from "qmongjs";
-import { ChartRow } from "../chartrow";
-import { getLastCompleteYear } from "../../../helpers/functions";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { ChartRowV2 } from "../chartrowV2";
 
 const remarkPlugins = [remarkGfm];
 
@@ -53,7 +52,6 @@ const IndicatorRow = (props: {
   unitNames: string[];
   levels: string;
   indData: IndicatorData;
-  chartData: Indicator[];
   rowID: string;
   openRowID: string;
   registryName: string;
@@ -67,15 +65,11 @@ const IndicatorRow = (props: {
     unitNames,
     levels,
     indData,
-    chartData,
     rowID,
     openRowID,
     setOpenRowID,
-    registryName,
     context,
-    type,
     year,
-    chartColours,
   } = props;
 
   const router = useRouter();
@@ -112,24 +106,26 @@ const IndicatorRow = (props: {
     return null;
   }
 
-  const rowData = indData.data.map((row) => {
-    return {
-      unitName: row.unitName,
-      result: row.var !== null ? customFormat(format)(row.var) : undefined,
-      symbol: newLevelSymbols(level2(indData, row), Math.random().toString()),
-      showCell:
-        levels === undefined
-          ? true
-          : level2(indData, row) == null
+  const rowData = indData.data
+    .filter((row) => row.year == year)
+    .map((row) => {
+      return {
+        unitName: row.unitName,
+        result: row.var !== null ? customFormat(format)(row.var) : undefined,
+        symbol: newLevelSymbols(level2(indData, row), Math.random().toString()),
+        showCell:
+          levels === undefined
             ? true
-            : level2(indData, row) === levels,
-      numerator:
-        row.var !== null ? Math.round(row.var * row.denominator) : undefined,
-      denominator: row.denominator,
-      minDenominator: indData.minDenominator,
-      dg: row.dg,
-    };
-  });
+            : level2(indData, row) == null
+              ? true
+              : level2(indData, row) === levels,
+        numerator:
+          row.var !== null ? Math.round(row.var * row.denominator) : undefined,
+        denominator: row.denominator,
+        minDenominator: indData.minDenominator,
+        dg: row.dg,
+      };
+    });
 
   // Get the units in the right order
   const rowDataSorted = unitNames.map((row) => {
@@ -170,28 +166,6 @@ const IndicatorRow = (props: {
       levelSignLow = ">";
     }
   }
-
-  const description = {
-    id: indData.indicatorID,
-    dg_id: null,
-    include: null,
-    title: null,
-    name: null,
-    type: indData.indType,
-    sformat: indData.format ? indData.format : "",
-    measure_unit: null,
-    min_denominator: null,
-    min_value: null,
-    max_value: null,
-    level_green: indData.levelGreen,
-    level_yellow: indData.levelYellow,
-    level_direction: indData.levelDirection,
-    short_description: indData.shortDescription,
-    long_description: indData.longDescription,
-    registry_id: indData.registerID,
-    rname: null,
-    full_name: registryName,
-  };
 
   return (
     <React.Fragment key={indData.indicatorTitle + "-indicatorSection"}>
@@ -287,8 +261,6 @@ const IndicatorRow = (props: {
         })}
       </StyledTableRow>
 
-      {!open ? EmptyRow : null}
-
       <TableRow>
         <StyledTableCell
           style={{
@@ -341,23 +313,15 @@ const IndicatorRow = (props: {
             <div style={{ display: "flex", justifyContent: "center" }}>
               <table width={1500}>
                 <tbody>
-                  <ChartRow
-                    context={{ context: context, type: type }}
-                    colspan={1}
-                    treatmentYear={year}
-                    indicatorData={chartData.filter(
-                      (chartDataRow: Indicator) => chartDataRow.year === year,
-                    )}
-                    selectedTreatmentUnits={unitNames}
-                    update_selected_row={onClick}
-                    description={description}
-                    showDescription={false}
-                    lastCompleteYear={getLastCompleteYear(
-                      indData.data[0].affirmTime,
-                      year,
-                    )}
-                    chartColours={chartColours}
-                  ></ChartRow>
+                  <tr>
+                    <td colSpan={unitNames.length + 1}>
+                      <ChartRowV2
+                        data={indData}
+                        unitNames={unitNames}
+                        context={context}
+                      />
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </div>
@@ -408,7 +372,6 @@ const IndicatorSection = (props: {
   unitNames: string[];
   levels: string;
   data: IndicatorData[];
-  chartData: Indicator[];
   openRowID: string;
   registryName: string;
   setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
@@ -421,7 +384,6 @@ const IndicatorSection = (props: {
     unitNames,
     levels,
     data,
-    chartData,
     openRowID,
     setOpenRowID,
     registryName,
@@ -452,10 +414,6 @@ const IndicatorSection = (props: {
         unitNames={unitNames}
         levels={levels}
         indData={indDataRow}
-        chartData={chartData.filter(
-          (chartDataRow: Indicator) =>
-            chartDataRow.ind_id === indDataRow.indicatorID,
-        )}
         rowID={indDataRow.indicatorID}
         openRowID={openRowID}
         setOpenRowID={setOpenRowID}
@@ -479,7 +437,6 @@ const RegistrySection = (props: {
   unitNames: string[];
   levels: string;
   regData: RegisterData;
-  chartData: Indicator[];
   openRowID: string;
   setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
   context: string;
@@ -491,7 +448,6 @@ const RegistrySection = (props: {
     unitNames,
     levels,
     regData,
-    chartData,
     openRowID,
     setOpenRowID,
     context,
@@ -584,7 +540,6 @@ const RegistrySection = (props: {
             unitNames={unitNames}
             levels={levels}
             data={regData.indicatorData}
-            chartData={chartData}
             openRowID={openRowID}
             setOpenRowID={setOpenRowID}
             registryName={regData.registerFullName}
@@ -622,23 +577,15 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
     unitNames: unitNames,
     type: type,
   };
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const indicatorQuery: UseQueryResult<any, unknown> =
-    useIndicatorQuery(queryParams);
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const nestedDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
     ...queryParams,
     nested: true,
-    treatmentYear: year,
   });
 
-  if (indicatorQuery.isFetching || nestedDataQuery.isFetching) {
+  if (nestedDataQuery.isFetching) {
     return <Skeleton variant="rectangular" width={"100%"} height={2000} />;
   }
-
-  const chartData = indicatorQuery.data as Indicator[];
 
   const rowData = nestedDataQuery.data as RegisterData[];
 
@@ -664,10 +611,6 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
           levels={levels}
           unitNames={props.unitNames}
           regData={row}
-          chartData={chartData.filter(
-            (chartDataRow: Indicator) =>
-              chartDataRow.registry_name === row.registerName,
-          )}
           openRowID={openRowID}
           setOpenRowID={setOpenRowID}
           context={context}
