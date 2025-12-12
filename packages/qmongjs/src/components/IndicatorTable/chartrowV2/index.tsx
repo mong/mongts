@@ -45,7 +45,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   });
 
   // Make datapoints for the missing years with value null
-  const missingData = missingYears.map((row, i) => {
+  const missingData = missingYears.map((row) => {
     return row.map((element) => {
       return { x: element, y: null } as Point;
     });
@@ -72,7 +72,11 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
 
   // Add unit name label
   const labelledData = paddedData.map((row, i) => {
-    return { data: row.map((point) => point.y), label: unitNames[i], curve: "linear" } as LineSeries;
+    return {
+      data: row.map((point) => point.y),
+      label: unitNames[i],
+      curve: "linear",
+    } as LineSeries;
   });
 
   return (
