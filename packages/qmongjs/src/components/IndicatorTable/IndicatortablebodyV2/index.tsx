@@ -436,7 +436,7 @@ const IndicatorSection = (props: {
 const RegistrySection = (props: {
   unitNames: string[];
   levels: string;
-  regData: RegisterData;
+  medfield: string;
   openRowID: string;
   setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
   context: string;
@@ -447,7 +447,7 @@ const RegistrySection = (props: {
   const {
     unitNames,
     levels,
-    regData,
+    medfield,
     openRowID,
     setOpenRowID,
     context,
@@ -455,6 +455,42 @@ const RegistrySection = (props: {
     year,
     chartColours,
   } = props;
+
+  const queryParams: FetchIndicatorParams = {
+    context: context,
+    registerShortName: medfield, // Not the same as the short_name column in the database
+    unitNames: unitNames,
+    type: type,
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const nestedDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
+    ...queryParams,
+    nested: true,
+  });
+
+  if (nestedDataQuery.isFetching) {
+    return <Skeleton variant="rectangular" width={"100%"} height={2000} />;
+  }
+
+  const rowData = nestedDataQuery.data as RegisterData[];
+
+  rowData.sort((a: RegisterData, b: RegisterData) => {
+    return (
+      Math.min(...a.medfieldID) - Math.min(...b.medfieldID) ||
+      (a.registerShortName === b.registerShortName
+        ? 0
+        : a.registerShortName < b.registerShortName
+          ? -1
+          : 1)
+    );
+  });
+
+  const regData = rowData[0];
+
+  if (!regData || !regData.indicatorData) {
+    return null;
+  }
 
   regData.indicatorData.sort((a: IndicatorData, b: IndicatorData) => {
     return a.sortingName === b.sortingName
@@ -572,45 +608,15 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
     openRowParam ? openRowParam : "",
   );
 
-  const queryParams: FetchIndicatorParams = {
-    context: context,
-    unitNames: unitNames,
-    type: type,
-  };
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const nestedDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
-    ...queryParams,
-    nested: true,
-  });
-
-  if (nestedDataQuery.isFetching) {
-    return <Skeleton variant="rectangular" width={"100%"} height={2000} />;
-  }
-
-  const rowData = nestedDataQuery.data as RegisterData[];
-
-  const rowDataFiltered = rowData.filter((row) =>
-    medfields.includes(row.registerName),
-  );
-  rowDataFiltered.sort((a: RegisterData, b: RegisterData) => {
-    return (
-      Math.min(...a.medfieldID) - Math.min(...b.medfieldID) ||
-      (a.registerShortName === b.registerShortName
-        ? 0
-        : a.registerShortName < b.registerShortName
-          ? -1
-          : 1)
-    );
-  });
-
+  console.log(medfields);
   return (
     <StyledTable sx={{ marginTop: "0.625rem" }}>
-      {rowDataFiltered.map((row) => (
+      {medfields.map((medfield) => (
         <RegistrySection
-          key={row.registerName}
+          key={medfield}
           levels={levels}
-          unitNames={props.unitNames}
-          regData={row}
+          unitNames={unitNames}
+          medfield={medfield}
           openRowID={openRowID}
           setOpenRowID={setOpenRowID}
           context={context}
