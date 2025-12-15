@@ -11,11 +11,11 @@ table, th, td {
 </style>
 <body>
 
-<h2>Kommunar og bydelar som inngår i opptaksområda</h2>
+<h2>Kommunar og bydelar som inngår i DPS områder</h2>
 
 <table style="auto">
   <tr>
-    <th>Opptaksområde</th>
+    <th>DPS områder</th>
     <th>Kommunenr/bydelsnr og Namn </th>
    </tr>
 
@@ -156,8 +156,6 @@ table, th, td {
 <TR><TD>Solvang *</TD> <TD> 4204 Kristiansand  (* Kristiansand kommune er i praksis delt mellom Solvang og Strømme. I denne rapporten er Kristiansand kommune lagt under Solvang )</TD> </TR>
 
 <TR><TD>Strømme *</TD> <TD> 4205 Lindesnes, 4223 Vennesla, 4224 Åseral (* Kristiansand kommune er i praksis delt mellom Solvang og Strømme. I denne rapporten er Kristiansand kommune lagt under Solvang )</TD> </TR>
-
-
 
    </table>
 </body>
