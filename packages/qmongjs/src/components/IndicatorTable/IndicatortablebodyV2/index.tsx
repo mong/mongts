@@ -319,6 +319,7 @@ const IndicatorRow = (props: {
                         data={indData}
                         unitNames={unitNames}
                         context={context}
+                        year={year}
                       />
                     </td>
                   </tr>

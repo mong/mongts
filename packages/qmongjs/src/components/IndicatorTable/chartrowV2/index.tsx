@@ -1,25 +1,20 @@
 import { DataPoint, IndicatorData } from "types";
 import { LineChart, LineSeries } from "@mui/x-charts/LineChart";
-import {
-  Box,
-  Select,
-  FormControl,
-  InputLabel,
-  SelectChangeEvent,
-  MenuItem,
-} from "@mui/material";
+import { BarChart, BarSeries } from "@mui/x-charts";
+import { Box, Select, FormControl, InputLabel, SelectChangeEvent, MenuItem } from "@mui/material";
 import { useState } from "react";
 
 type chartRowV2Props = {
   data: IndicatorData;
   unitNames: string[];
   context: string;
+  year: number;
 };
 
 type Point = { x: number; y: number | null };
 
 export const ChartRowV2 = (props: chartRowV2Props) => {
-  const { data, unitNames, context } = props;
+  const { data, unitNames, context, year } = props;
 
   if (data.data === undefined) {
     return <div>No data</div>;
@@ -86,7 +81,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     });
 
   // Add unit name label
-  const labelledData = paddedData.map((row, i) => {
+  const lineData = paddedData.map((row, i) => {
     return {
       data: row.map((point) => point.y),
       label: unitNames[i],
@@ -94,24 +89,55 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     } as LineSeries;
   });
 
+  const barData = paddedData.map((row, i) => {
+ 
+  const data = {}
+  
+  row.map((point) => {
+    data[point.x.toString()] =  point.y
+  })
+
+    data["unitName"] = unitNames[i]
+
+    return(data)
+    
+  }) as BarSeries[]
+
+  const valueFormatter = (value: number | null) => {
+  return `${value?.toPrecision(2)*100}%`;
+}
+
   return (
     <Box>
-      <Box sx={{ width: "10rem", paddingLeft: 4 }}>
-        <FormControl fullWidth>
-          <InputLabel>Figurtype</InputLabel>
-          <Select value={figureType} label="Figurtype" onChange={handleChange}>
+    <Box sx={{width: "10rem", paddingLeft: 4}}>
+      <FormControl fullWidth>
+        <InputLabel>Figurtype</InputLabel>
+        <Select
+          value={figureType}
+          label="Figurtype"
+          onChange={handleChange}
+          >
             <MenuItem value={"line"}>Linje</MenuItem>
             <MenuItem value={"bar"}>Søyle</MenuItem>
           </Select>
         </FormControl>
       </Box>
-      {figureType == "line" ? (
-        <LineChart
-          series={labelledData}
-          xAxis={[{ scaleType: "point", data: uniqueYears }]}
-          height={500}
-        />
-      ) : null}
+      {figureType == "line" ? 
+      <LineChart
+        series={lineData}
+        xAxis={[{ scaleType: "point", data: uniqueYears }]}
+        height={500}
+        
+      />
+      : figureType === "bar" ? 
+      <BarChart
+        yAxis={[{ data: unitNames, dataKey: "unitName" }]}
+        dataset={barData}
+        series={[{dataKey: "2025", label: "2025", valueFormatter}]}
+        height={500}
+        layout="horizontal"
+        /> 
+      : null}
     </Box>
   );
 };
