@@ -1,5 +1,14 @@
 import { DataPoint, IndicatorData } from "types";
 import { LineChart, LineSeries } from "@mui/x-charts/LineChart";
+import {
+  Box,
+  Select,
+  FormControl,
+  InputLabel,
+  SelectChangeEvent,
+  MenuItem,
+} from "@mui/material";
+import { useState } from "react";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -15,6 +24,12 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   if (data.data === undefined) {
     return <div>No data</div>;
   }
+
+  const [figureType, setFigureType] = useState("line");
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setFigureType(event.target.value as string);
+  };
 
   // Format to {x, y}
   const reshapedData = unitNames.map((unitName: string) => {
@@ -80,10 +95,23 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   });
 
   return (
-    <LineChart
-      series={labelledData}
-      xAxis={[{ scaleType: "point", data: uniqueYears }]}
-      height={500}
-    />
+    <Box>
+      <Box sx={{ width: "10rem", paddingLeft: 4 }}>
+        <FormControl fullWidth>
+          <InputLabel>Figurtype</InputLabel>
+          <Select value={figureType} label="Figurtype" onChange={handleChange}>
+            <MenuItem value={"line"}>Linje</MenuItem>
+            <MenuItem value={"bar"}>Søyle</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      {figureType == "line" ? (
+        <LineChart
+          series={labelledData}
+          xAxis={[{ scaleType: "point", data: uniqueYears }]}
+          height={500}
+        />
+      ) : null}
+    </Box>
   );
 };
