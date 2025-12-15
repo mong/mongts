@@ -1,5 +1,5 @@
 ---
-filename: "Kommunar og Bydel P5 DPS områder "
+filename: "Kommunar og Bydel P5 DPS omrader "
 title: "DPS områder (tilpassa Helseatlas voksenpsykatri) "
 lang: nb
 ---
