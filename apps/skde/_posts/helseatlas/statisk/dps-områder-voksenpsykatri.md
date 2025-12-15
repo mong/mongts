@@ -14,7 +14,7 @@ table, th, td {
 <h2>Kommunar og bydelar som inngår i DPS områder</h2>
 
 <I>DPS områder er basert på SSB KLASS inndeling <A HREF="https://www.ssb.no/klass/klassifikasjoner/632/koder"> 
-https://www.ssb.no/klass/klassifikasjoner/632/koder</A> pr 2025. <BR>Endringar er markert med *-stjerne for å kunne tilpasse data som er på rapportdata som er på kommune  og  bydelsnivå.   </I>
+https://www.ssb.no/klass/klassifikasjoner/632/koder</A> pr 2025. <BR>Endringar er markert med *-stjerne for å kunne tilpasse helsedata som er på kommune  og  bydelsnivå.   </I>
 
 <table style="auto">
   <tr>
