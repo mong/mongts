@@ -608,7 +608,6 @@ export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
     openRowParam ? openRowParam : "",
   );
 
-  console.log(medfields);
   return (
     <StyledTable sx={{ marginTop: "0.625rem" }}>
       {medfields.map((medfield) => (
