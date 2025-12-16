@@ -1,0 +1,486 @@
+{
+  "innhold": [
+    {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["Snittrate"],
+      "y": "area",
+      "xLabel": {
+        "nn": "Tal kontaktdagar pr. 10 000 innbyggjarar (18-64 år)",
+        "en": "Outpatient contact days per 10,000 population (18-64 years)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "annualVar": [
+        "Rate.2020",
+        "Rate.2021",
+        "Rate.2022",
+        "Rate.2023",
+        "Rate.2024"
+      ],
+      "annualVarLabels": {
+        "nn": ["2020", "2021", "2022", "2023", "2024"],
+        "en": ["2020", "2021", "2022", "2023", "2024"]
+      }
+    },
+ {
+      "type": "barchart",
+      "data": "qwerty",
+      "x": ["PHV", "Avtalespesialister"],
+      "y": "area",
+      "xLabel": {
+        "nn": "Tal kontaktdagar pr. 10 000 innbyggjarar (18-64 år)",
+        "en": "Outpatient contact days per 10,000 population (18-64 years)"
+      },
+      "yLabel": {
+        "nn": "Opptaksområde",
+        "en": "Referral areas"
+      },
+      "xLegend": {
+        "nn": ["Benadling i psykisk helsevern", "Behandling i avtalespesialister"],
+        "en": [
+          "Treatment in mental healthcare",
+          "Treatment in private specialist"
+        ]
+      },
+      "format": ",.0f"
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2020–2024. Rate pr. 10 000 innbyggjarar 18-64 år",
+        "en": "Annual average during 2020–2024. Rate pr. 10,000 population 18-64 years"
+      },
+      "columns": [
+        {
+          "id": "area",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "Snittrate",
+          "label_no": "Kontaktdagsrate",
+          "label_en": "Contact days rate",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Snitt_kontaktar",
+          "label_no": "Tal kontaktdagar",
+          "label_en": "Number of contact days",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Snitt_innbyggarar",
+          "label_no": "Innbyggjarar (18-64 år)",
+          "label_en": "Population (18-64 years)",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "data": "qwerty",
+      "caption": {
+        "nn": "Årlege gjennomsnittsverdiar for perioden 2020–2024. Tal kontaktdagar per pasient.",
+        "en": "Annual average during 2020–2024. Number of contact days per patient"
+      },
+      "columns": [
+        {
+          "id": "area",
+          "label_no": "Opptaksområde",
+          "label_en": "Referral areas",
+          "typeVar": "string",
+          "format": ""
+        },
+        {
+          "id": "kontakt_p_pas",
+          "label_no": "Kontaktdagar per pasient",
+          "label_en": "Contact days per patient",
+          "typeVar": "number",
+          "format": ",.1f"
+        },
+        {
+          "id": "Snitt_kontaktar",
+          "label_no": "Tal kontaktdagar",
+          "label_en": "Number of contact days",
+          "typeVar": "number",
+          "format": ",.0f"
+        },
+        {
+          "id": "Tal_pas",
+          "label_no": "Tal pasientar",
+          "label_en": "Number of patients",
+          "typeVar": "number",
+          "format": ",.0f"
+        }
+      ]
+    },
+    {
+      "type": "map",
+      "data": "qwerty",
+      "x": "Snittrate",
+      "caption": {
+        "nn": "Tal kontaktdagar pr. 10 000 innbyggjarar (18-64 år)",
+        "en": "Outpatient contact days per 10,000 population (18-64 years)"
+      },
+      "jenks": [
+        {
+          "grense": 6056
+        },
+        {
+          "grense": 7021
+        },
+        {
+          "grense": 7710
+        }
+      ]
+    },
+    {
+      "type": "data",
+      "label": "qwerty",
+      "description": "Hoveddatasettet for gitt resultatboks",
+      "national": "Noreg",
+      "data":[
+  {
+    "area": "Førde",
+    "Snitt_kontaktar": 31089.8,
+    "Snitt_innbyggarar": 61596.8,
+    "Snittrate": 5187.38,
+    "Rate.2020": 5189.96,
+    "Rate.2021": 5130.58,
+    "Rate.2022": 5432.59,
+    "Rate.2023": 5271.97,
+    "Rate.2024": 4911.8,
+    "PHV": 4433.56,
+    "Avtalespesialister": 758.42,
+    "Tal_pas": 3397.6,
+    "kontakt_p_pas": 9.1505
+  },
+  {
+    "area": "Nord-Trøndelag",
+    "Snitt_kontaktar": 40427.6,
+    "Snitt_innbyggarar": 77970.8,
+    "Snittrate": 5327.46,
+    "Rate.2020": 5283.34,
+    "Rate.2021": 5476.2,
+    "Rate.2022": 5684.89,
+    "Rate.2023": 5114.71,
+    "Rate.2024": 5078.16,
+    "PHV": 4544.74,
+    "Avtalespesialister": 791.68,
+    "Tal_pas": 3928.6,
+    "kontakt_p_pas": 10.2906
+  },
+  {
+    "area": "Fonna",
+    "Snitt_kontaktar": 58686,
+    "Snitt_innbyggarar": 106442.8,
+    "Snittrate": 5614.14,
+    "Rate.2020": 5381.87,
+    "Rate.2021": 5700.02,
+    "Rate.2022": 5804.94,
+    "Rate.2023": 5602.37,
+    "Rate.2024": 5581.49,
+    "PHV": 4305.26,
+    "Avtalespesialister": 1312.27,
+    "Tal_pas": 5618,
+    "kontakt_p_pas": 10.4461
+  },
+  {
+    "area": "Stavanger",
+    "Snitt_kontaktar": 133985,
+    "Snitt_innbyggarar": 233727.6,
+    "Snittrate": 5679.95,
+    "Rate.2020": 5853.7,
+    "Rate.2021": 5851.67,
+    "Rate.2022": 5603.61,
+    "Rate.2023": 5646.45,
+    "Rate.2024": 5444.32,
+    "PHV": 4389.75,
+    "Avtalespesialister": 1294.51,
+    "Tal_pas": 10964,
+    "kontakt_p_pas": 12.2204
+  },
+  {
+    "area": "Møre og Romsdal",
+    "Snitt_kontaktar": 89601.4,
+    "Snitt_innbyggarar": 157277.8,
+    "Snittrate": 5821.44,
+    "Rate.2020": 5665.18,
+    "Rate.2021": 5872.76,
+    "Rate.2022": 5964.9,
+    "Rate.2023": 5895.48,
+    "Rate.2024": 5708.9,
+    "PHV": 4886.18,
+    "Avtalespesialister": 940.29,
+    "Tal_pas": 8310.4,
+    "kontakt_p_pas": 10.7818
+  },
+  {
+    "area": "Østfold",
+    "Snitt_kontaktar": 111460.2,
+    "Snitt_innbyggarar": 194134.4,
+    "Snittrate": 5912.67,
+    "Rate.2020": 5972.71,
+    "Rate.2021": 6110.05,
+    "Rate.2022": 5942,
+    "Rate.2023": 5948.92,
+    "Rate.2024": 5589.66,
+    "PHV": 4375.69,
+    "Avtalespesialister": 1541.62,
+    "Tal_pas": 10371,
+    "kontakt_p_pas": 10.7473
+  },
+  {
+    "area": "Helgeland",
+    "Snitt_kontaktar": 26312.2,
+    "Snitt_innbyggarar": 45312.6,
+    "Snittrate": 6056.14,
+    "Rate.2020": 6248.81,
+    "Rate.2021": 5980.08,
+    "Rate.2022": 5828.92,
+    "Rate.2023": 6315.21,
+    "Rate.2024": 5907.69,
+    "PHV": 5555.91,
+    "Avtalespesialister": 501.25,
+    "Tal_pas": 2388,
+    "kontakt_p_pas": 11.0185
+  },
+  {
+    "area": "Akershus",
+    "Snitt_kontaktar": 239989.8,
+    "Snitt_innbyggarar": 368532.8,
+    "Snittrate": 6571.51,
+    "Rate.2020": 6504.85,
+    "Rate.2021": 6838.91,
+    "Rate.2022": 6519.8,
+    "Rate.2023": 6505.51,
+    "Rate.2024": 6488.48,
+    "PHV": 4718.09,
+    "Avtalespesialister": 1859.78,
+    "Tal_pas": 19184.6,
+    "kontakt_p_pas": 12.5095
+  },
+  {
+    "area": "Finnmark",
+    "Snitt_kontaktar": 29883,
+    "Snitt_innbyggarar": 46116.4,
+    "Snittrate": 6651.44,
+    "Rate.2020": 5913.2,
+    "Rate.2021": 6403.64,
+    "Rate.2022": 6532.09,
+    "Rate.2023": 7045.67,
+    "Rate.2024": 7362.62,
+    "PHV": 5846.63,
+    "Avtalespesialister": 808.19,
+    "Tal_pas": 2947.2,
+    "kontakt_p_pas": 10.1395
+  },
+  {
+    "area": "St. Olav",
+    "Snitt_kontaktar": 146335,
+    "Snitt_innbyggarar": 213371.8,
+    "Snittrate": 6680.06,
+    "Rate.2020": 6676.27,
+    "Rate.2021": 6904.97,
+    "Rate.2022": 6635.51,
+    "Rate.2023": 6506.13,
+    "Rate.2024": 6677.46,
+    "PHV": 5836.43,
+    "Avtalespesialister": 847.19,
+    "Tal_pas": 12844,
+    "kontakt_p_pas": 11.3933
+  },
+  {
+    "area": "Telemark",
+    "Snitt_kontaktar": 66795.4,
+    "Snitt_innbyggarar": 102993.2,
+    "Snittrate": 6716.15,
+    "Rate.2020": 6854.17,
+    "Rate.2021": 6503.17,
+    "Rate.2022": 6709.99,
+    "Rate.2023": 6993.69,
+    "Rate.2024": 6519.72,
+    "PHV": 5028.68,
+    "Avtalespesialister": 1692.92,
+    "Tal_pas": 6433.4,
+    "kontakt_p_pas": 10.3826
+  },
+  {
+    "area": "Nordland",
+    "Snitt_kontaktar": 54854.4,
+    "Snitt_innbyggarar": 82794.2,
+    "Snittrate": 6745.78,
+    "Rate.2020": 6024.99,
+    "Rate.2021": 6623.55,
+    "Rate.2022": 6854.81,
+    "Rate.2023": 7077.28,
+    "Rate.2024": 7148.24,
+    "PHV": 5194.47,
+    "Avtalespesialister": 1554.01,
+    "Tal_pas": 4652,
+    "kontakt_p_pas": 11.7916
+  },
+  {
+    "area": "Noreg",
+    "Snitt_kontaktar": 2259097.2,
+    "Snitt_innbyggarar": 3342976,
+    "Snittrate": 6751.76,
+    "Rate.2020": 6655.34,
+    "Rate.2021": 6848.38,
+    "Rate.2022": 6772.1,
+    "Rate.2023": 6774.82,
+    "Rate.2024": 6708.17,
+    "PHV": 5066.5,
+    "Avtalespesialister": 1691.15,
+    "Tal_pas": 183144.8,
+    "kontakt_p_pas": 12.335
+  },
+  {
+    "area": "UNN",
+    "Snitt_kontaktar": 79539.4,
+    "Snitt_innbyggarar": 117962,
+    "Snittrate": 6781.51,
+    "Rate.2020": 5781.68,
+    "Rate.2021": 6466.62,
+    "Rate.2022": 6718.13,
+    "Rate.2023": 7232.86,
+    "Rate.2024": 7708.24,
+    "PHV": 5404.31,
+    "Avtalespesialister": 1381.31,
+    "Tal_pas": 6324.6,
+    "kontakt_p_pas": 12.5762
+  },
+  {
+    "area": "Vestre Viken",
+    "Snitt_kontaktar": 198382.2,
+    "Snitt_innbyggarar": 298602.6,
+    "Snittrate": 6805.1,
+    "Rate.2020": 6685.03,
+    "Rate.2021": 6961.96,
+    "Rate.2022": 6943.89,
+    "Rate.2023": 6801.73,
+    "Rate.2024": 6632.9,
+    "PHV": 5056.18,
+    "Avtalespesialister": 1754.28,
+    "Tal_pas": 16418,
+    "kontakt_p_pas": 12.0832
+  },
+  {
+    "area": "Innlandet",
+    "Snitt_kontaktar": 133279.4,
+    "Snitt_innbyggarar": 200048.4,
+    "Snittrate": 6922.04,
+    "Rate.2020": 6444.38,
+    "Rate.2021": 6987.87,
+    "Rate.2022": 7137.42,
+    "Rate.2023": 7159.38,
+    "Rate.2024": 6881.12,
+    "PHV": 5547.3,
+    "Avtalespesialister": 1379.76,
+    "Tal_pas": 10575.6,
+    "kontakt_p_pas": 12.6025
+  },
+  {
+    "area": "Sørlandet",
+    "Snitt_kontaktar": 130902.8,
+    "Snitt_innbyggarar": 187992.4,
+    "Snittrate": 7021.45,
+    "Rate.2020": 6892.97,
+    "Rate.2021": 7007.22,
+    "Rate.2022": 7119.9,
+    "Rate.2023": 7152.75,
+    "Rate.2024": 6934.44,
+    "PHV": 5899.82,
+    "Avtalespesialister": 1125.12,
+    "Tal_pas": 10047.6,
+    "kontakt_p_pas": 13.0283
+  },
+  {
+    "area": "Bergen",
+    "Snitt_kontaktar": 211879,
+    "Snitt_innbyggarar": 289188.8,
+    "Snittrate": 7195.8,
+    "Rate.2020": 7173.46,
+    "Rate.2021": 7283.41,
+    "Rate.2022": 7303.07,
+    "Rate.2023": 7048.79,
+    "Rate.2024": 7170.25,
+    "PHV": 5132.5,
+    "Avtalespesialister": 2071.32,
+    "Tal_pas": 17642,
+    "kontakt_p_pas": 12.0099
+  },
+  {
+    "area": "Vestfold",
+    "Snitt_kontaktar": 104558.4,
+    "Snitt_innbyggarar": 149498,
+    "Snittrate": 7234.19,
+    "Rate.2020": 7316.08,
+    "Rate.2021": 7087.15,
+    "Rate.2022": 7121.53,
+    "Rate.2023": 7355.01,
+    "Rate.2024": 7291.19,
+    "PHV": 5468.29,
+    "Avtalespesialister": 1772.73,
+    "Tal_pas": 8935,
+    "kontakt_p_pas": 11.7021
+  },
+  {
+    "area": "Diakonhjemmet",
+    "Snitt_kontaktar": 71918.2,
+    "Snitt_innbyggarar": 94447.6,
+    "Snittrate": 7262.82,
+    "Rate.2020": 7670.86,
+    "Rate.2021": 7589.31,
+    "Rate.2022": 7181.11,
+    "Rate.2023": 6770.93,
+    "Rate.2024": 7101.91,
+    "PHV": 4643.91,
+    "Avtalespesialister": 2627.43,
+    "Tal_pas": 5271,
+    "kontakt_p_pas": 13.6441
+  },
+  {
+    "area": "OUS",
+    "Snitt_kontaktar": 150342,
+    "Snitt_innbyggarar": 186077,
+    "Snittrate": 7709.71,
+    "Rate.2020": 7712.68,
+    "Rate.2021": 7766.14,
+    "Rate.2022": 7528.04,
+    "Rate.2023": 7715.11,
+    "Rate.2024": 7826.59,
+    "PHV": 4671.48,
+    "Avtalespesialister": 3047.72,
+    "Tal_pas": 11383.2,
+    "kontakt_p_pas": 13.2074
+  },
+  {
+    "area": "Lovisenberg",
+    "Snitt_kontaktar": 148876,
+    "Snitt_innbyggarar": 128888,
+    "Snittrate": 11088.44,
+    "Rate.2020": 11312.46,
+    "Rate.2021": 11510.04,
+    "Rate.2022": 10788.26,
+    "Rate.2023": 11008.86,
+    "Rate.2024": 10822.57,
+    "PHV": 7021.25,
+    "Avtalespesialister": 4082.25,
+    "Tal_pas": 10171.2,
+    "kontakt_p_pas": 14.637
+ 
+      }
+      ]
+    }
+  ]
+}
