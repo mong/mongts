@@ -1,5 +1,20 @@
 import { DataPoint, IndicatorData } from "types";
-import { LineChart, LineSeries } from "@mui/x-charts/LineChart";
+import { LinePlot } from "@mui/x-charts/LineChart";
+import {
+  ChartDataProvider,
+  ChartsAxisHighlight,
+  ChartsLegend,
+  ChartsSurface,
+  ChartsTooltip,
+  ChartsXAxis,
+  ChartsYAxis,
+  LineSeriesType,
+  MarkPlot,
+  useXScale,
+  useYScale,
+} from "@mui/x-charts";
+import { LinechartGrid } from "../../Charts/LinechartGrid";
+import { Box } from "@mui/material";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -76,14 +91,91 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
       data: row.map((point) => point.y),
       label: unitNames[i],
       curve: "linear",
-    } as LineSeries;
+      type: "line",
+    } as LineSeriesType;
   });
 
+  type BackgroundProps = {
+    data: IndicatorData;
+  };
+
+  const Background = (props: BackgroundProps) => {
+    const { data } = props;
+
+    const levelGreen = data.levelGreen;
+    const levelYellow = data.levelYellow;
+    const levelDirection = data.levelDirection;
+
+    const yMin = 0;
+    const yMax = 1;
+    const xMin = Math.min(...years);
+    const xMax = Math.max(...years);
+
+    const xScale = useXScale();
+    const yScale = useYScale();
+
+    const xStart = xScale(xMin);
+    const xStop = xScale(xMax);
+    const yStart = yScale(yMax);
+    const yStop = yScale(yMin);
+
+    const greenStart = levelGreen && yScale(levelGreen);
+    const yellowStart = levelYellow && yScale(levelYellow);
+
+    const validGrid =
+      xStart &&
+      yStart &&
+      xStop &&
+      yStop &&
+      greenStart &&
+      yellowStart &&
+      (levelDirection === 0 || levelDirection === 1);
+
+    return (
+      validGrid &&
+      LinechartGrid({
+        xStart: xStart,
+        xStop: xStop,
+        yStart: yStart,
+        yStop: yStop,
+        levelGreen: greenStart,
+        levelYellow: yellowStart,
+        levelDirection: levelDirection,
+      })
+    );
+  };
+
   return (
-    <LineChart
-      series={labelledData}
-      xAxis={[{ scaleType: "point", data: uniqueYears }]}
-      height={500}
-    />
+    <Box
+      sx={{
+        width: "100%",
+        height: 500,
+        overflow: "auto",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <ChartDataProvider
+        series={labelledData}
+        xAxis={[{ scaleType: "point", data: uniqueYears }]}
+        yAxis={[{ min: 0, max: 1, position: "left" }]}
+      >
+        <ChartsLegend
+          slotProps={{
+            legend: { position: { vertical: "top", horizontal: "start" } },
+          }}
+        />
+        <ChartsTooltip />
+        <ChartsSurface>
+          <Background data={data} />
+          <ChartsXAxis />
+          <ChartsYAxis />
+          <LinePlot />
+          <MarkPlot />
+          <ChartsAxisHighlight x="line" />
+        </ChartsSurface>
+      </ChartDataProvider>
+    </Box>
   );
 };
