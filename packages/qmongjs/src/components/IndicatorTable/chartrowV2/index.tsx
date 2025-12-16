@@ -1,5 +1,16 @@
 import { DataPoint, IndicatorData } from "types";
-import { LineChart, LineSeries } from "@mui/x-charts/LineChart";
+import { LineChart, LinePlot, LineSeries } from "@mui/x-charts/LineChart";
+import {
+  ChartContainer,
+  ChartsXAxis,
+  ChartsYAxis,
+  LineSeriesType,
+  useXScale,
+  useYScale,
+} from "@mui/x-charts";
+import { LinechartGrid } from "../../Charts/LinechartGrid";
+import { Box } from "@mui/material";
+import { green } from "@mui/material/colors";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -76,14 +87,71 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
       data: row.map((point) => point.y),
       label: unitNames[i],
       curve: "linear",
-    } as LineSeries;
+      type: "line",
+    } as LineSeriesType;
   });
 
+  type BackgroundProps = {
+    data: IndicatorData;
+    paddedData: Point[][];
+  };
+
+  const Background = (props: BackgroundProps) => {
+    const levelGreen = data.levelGreen;
+    const levelYellow = data.levelYellow;
+    const levelDirection = data.levelDirection;
+
+    const yMin = 0;
+    const yMax = 1;
+    const xMin = Math.min(...years);
+    const xMax = Math.max(...years);
+
+    const xScale = useXScale();
+    const yScale = useYScale("left_axis_id");
+
+    const xStart = xScale(xMin);
+    const xStop = xScale(xMax);
+    const yStart = yScale(yMax);
+    const yStop = yScale(yMin);
+
+    const greenStart = levelGreen && yScale(levelGreen);
+    const yellowStart = levelYellow && yScale(levelYellow);
+
+    const validGrid =
+      xStart &&
+      yStart &&
+      xStop &&
+      yStop &&
+      greenStart &&
+      yellowStart &&
+      (levelDirection === 0 || levelDirection === 1);
+
+    return (
+      validGrid &&
+      LinechartGrid({
+        xStart: xStart,
+        xStop: xStop,
+        yStart: yStart,
+        yStop: yStop,
+        levelGreen: greenStart,
+        levelYellow: yellowStart,
+        levelDirection: levelDirection,
+      })
+    );
+  };
+
   return (
-    <LineChart
-      series={labelledData}
-      xAxis={[{ scaleType: "point", data: uniqueYears }]}
-      height={500}
-    />
+    <Box sx={{ width: "100%", height: 500 }}>
+      <ChartContainer
+        series={labelledData}
+        xAxis={[{ scaleType: "point", data: uniqueYears }]}
+        yAxis={[{ min: 0, max: 1, position: "left", id: "left_axis_id" }]}
+      >
+        <Background data={data} paddedData={paddedData} />
+        <LinePlot />
+        <ChartsXAxis />
+        <ChartsYAxis />
+      </ChartContainer>
+    </Box>
   );
 };
