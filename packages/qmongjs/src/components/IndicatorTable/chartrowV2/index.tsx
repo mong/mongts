@@ -1,4 +1,13 @@
 import { DataPoint, IndicatorData } from "types";
+import { BarChart } from "@mui/x-charts";
+import {
+  Select,
+  FormControl,
+  InputLabel,
+  SelectChangeEvent,
+  MenuItem,
+} from "@mui/material";
+import { useState } from "react";
 import { LinePlot } from "@mui/x-charts/LineChart";
 import {
   ChartDataProvider,
@@ -20,16 +29,23 @@ type chartRowV2Props = {
   data: IndicatorData;
   unitNames: string[];
   context: string;
+  year: number;
 };
 
 type Point = { x: number; y: number | null };
 
 export const ChartRowV2 = (props: chartRowV2Props) => {
-  const { data, unitNames, context } = props;
+  const { data, unitNames, context, year } = props;
 
   if (data.data === undefined) {
     return <div>No data</div>;
   }
+
+  const [figureType, setFigureType] = useState("line");
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setFigureType(event.target.value as string);
+  };
 
   // Format to {x, y}
   const reshapedData = unitNames.map((unitName: string) => {
@@ -86,7 +102,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     });
 
   // Add unit name label
-  const labelledData = paddedData.map((row, i) => {
+  const lineData = paddedData.map((row, i) => {
     return {
       data: row.map((point) => point.y),
       label: unitNames[i],
@@ -94,6 +110,20 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
       type: "line",
     } as LineSeriesType;
   });
+
+  const barData = paddedData
+    .map((row) => {
+      return row
+        .filter((point) => {
+          return point.x === year;
+        })
+        .map((row) => row.y);
+    })
+    .flat();
+
+  const valueFormatter = (value: number | null) => {
+    return `${value && Math.round(value * 100)} %`;
+  };
 
   type BackgroundProps = {
     data: IndicatorData;
@@ -146,36 +176,58 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   };
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        height: 500,
-        overflow: "auto",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <ChartDataProvider
-        series={labelledData}
-        xAxis={[{ scaleType: "point", data: uniqueYears }]}
-        yAxis={[{ min: 0, max: 1, position: "left" }]}
+    <Box>
+      <Box sx={{ width: "10rem", paddingLeft: 4 }}>
+        <FormControl fullWidth>
+          <InputLabel>Figurtype</InputLabel>
+          <Select value={figureType} label="Figurtype" onChange={handleChange}>
+            <MenuItem value={"line"}>Linje</MenuItem>
+            <MenuItem value={"bar"}>Søyle</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      <Box
+        sx={{
+          width: "100%",
+          height: 500,
+          overflow: "auto",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
       >
-        <ChartsLegend
-          slotProps={{
-            legend: { position: { vertical: "top", horizontal: "start" } },
-          }}
-        />
-        <ChartsTooltip />
-        <ChartsSurface>
-          <Background data={data} />
-          <ChartsXAxis />
-          <ChartsYAxis />
-          <LinePlot />
-          <MarkPlot />
-          <ChartsAxisHighlight x="line" />
-        </ChartsSurface>
-      </ChartDataProvider>
+        {figureType == "line" ? (
+          <ChartDataProvider
+            series={lineData}
+            xAxis={[{ scaleType: "point", data: uniqueYears }]}
+            yAxis={[{ min: 0, max: 1, position: "left" }]}
+          >
+            <ChartsLegend
+              slotProps={{
+                legend: { position: { vertical: "top", horizontal: "start" } },
+              }}
+            />
+            <ChartsTooltip />
+            <ChartsSurface>
+              <Background data={data} />
+              <ChartsXAxis />
+              <ChartsYAxis />
+              <LinePlot />
+              <MarkPlot />
+              <ChartsAxisHighlight x="line" />
+            </ChartsSurface>
+          </ChartDataProvider>
+        ) : figureType === "bar" ? (
+          <Box width={"100%"}>
+            <BarChart
+              yAxis={[{ data: unitNames, dataKey: "unitName" }]}
+              series={[{ data: barData, valueFormatter }]}
+              height={500}
+              layout="horizontal"
+            />
+          </Box>
+        ) : null}
+      </Box>
     </Box>
   );
 };
