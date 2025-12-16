@@ -1,16 +1,20 @@
 import { DataPoint, IndicatorData } from "types";
-import { LineChart, LinePlot, LineSeries } from "@mui/x-charts/LineChart";
+import { LinePlot } from "@mui/x-charts/LineChart";
 import {
-  ChartContainer,
+  ChartDataProvider,
+  ChartsAxisHighlight,
+  ChartsLegend,
+  ChartsSurface,
+  ChartsTooltip,
   ChartsXAxis,
   ChartsYAxis,
   LineSeriesType,
+  MarkPlot,
   useXScale,
   useYScale,
 } from "@mui/x-charts";
 import { LinechartGrid } from "../../Charts/LinechartGrid";
 import { Box } from "@mui/material";
-import { green } from "@mui/material/colors";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -93,10 +97,11 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
 
   type BackgroundProps = {
     data: IndicatorData;
-    paddedData: Point[][];
   };
 
   const Background = (props: BackgroundProps) => {
+    const { data } = props;
+
     const levelGreen = data.levelGreen;
     const levelYellow = data.levelYellow;
     const levelDirection = data.levelDirection;
@@ -107,7 +112,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     const xMax = Math.max(...years);
 
     const xScale = useXScale();
-    const yScale = useYScale("left_axis_id");
+    const yScale = useYScale();
 
     const xStart = xScale(xMin);
     const xStop = xScale(xMax);
@@ -141,17 +146,36 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   };
 
   return (
-    <Box sx={{ width: "100%", height: 500 }}>
-      <ChartContainer
+    <Box
+      sx={{
+        width: "100%",
+        height: 500,
+        overflow: "auto",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
+      <ChartDataProvider
         series={labelledData}
         xAxis={[{ scaleType: "point", data: uniqueYears }]}
-        yAxis={[{ min: 0, max: 1, position: "left", id: "left_axis_id" }]}
+        yAxis={[{ min: 0, max: 1, position: "left" }]}
       >
-        <Background data={data} paddedData={paddedData} />
-        <LinePlot />
-        <ChartsXAxis />
-        <ChartsYAxis />
-      </ChartContainer>
+        <ChartsLegend
+          slotProps={{
+            legend: { position: { vertical: "top", horizontal: "start" } },
+          }}
+        />
+        <ChartsTooltip />
+        <ChartsSurface>
+          <Background data={data} />
+          <ChartsXAxis />
+          <ChartsYAxis />
+          <LinePlot />
+          <MarkPlot />
+          <ChartsAxisHighlight x="line" />
+        </ChartsSurface>
+      </ChartDataProvider>
     </Box>
   );
 };
