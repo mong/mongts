@@ -173,6 +173,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
       label: unitNames[i],
       curve: "linear",
       type: "line",
+      connectNulls: true,
     } as LineSeriesType;
   });
 
