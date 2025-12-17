@@ -148,29 +148,29 @@ export const BarchartGrid = (props: BarchartGridProps) => {
     return (
       <React.Fragment>
         <rect
-          x={xStop}
-          width={levelYellow - xStop}
-          y={yStart}
-          height={yStop - yStart}
-          fill="#FFE5E2"
-          opacity={opacity}
-        />
-
-        <rect
-          x={levelYellow}
-          width={levelYellow - levelGreen}
-          y={yStart}
-          height={yStop - yStart}
-          fill="#FFEFC7"
+          x={xStart}
+          width={levelGreen - xStart}
+          y={yStop}
+          height={yStart - yStop}
+          fill="#EAF6EB"
           opacity={opacity}
         />
 
         <rect
           x={levelGreen}
-          width={levelGreen - xStart}
-          y={yStart}
-          height={yStop - yStart}
-          fill="#EAF6EB"
+          width={levelYellow - levelGreen}
+          y={yStop}
+          height={yStart - yStop}
+          fill="#FFEFC7"
+          opacity={opacity}
+        />
+
+        <rect
+          x={levelYellow}
+          width={xStop - levelYellow}
+          y={yStop}
+          height={yStart - yStop}
+          fill="#FFE5E2"
           opacity={opacity}
         />
       </React.Fragment>
