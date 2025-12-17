@@ -1,5 +1,4 @@
 import { DataPoint, IndicatorData } from "types";
-import { BarChart } from "@mui/x-charts";
 import {
   Select,
   FormControl,
@@ -9,6 +8,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { LinePlot } from "@mui/x-charts/LineChart";
+import { BarPlot } from "@mui/x-charts";
 import {
   ChartDataProvider,
   ChartsAxisHighlight,
@@ -23,6 +23,7 @@ import {
   useYScale,
 } from "@mui/x-charts";
 import { LinechartGrid } from "../../Charts/LinechartGrid";
+import { BarchartGrid } from "../../Charts/LinechartGrid";
 import { Box } from "@mui/material";
 
 type chartRowV2Props = {
@@ -36,6 +37,9 @@ type Point = { x: number; y: number | null };
 
 export const ChartRowV2 = (props: chartRowV2Props) => {
   const { data, unitNames, context, year } = props;
+
+  const figureHeight = 500;
+  const backgroundMargin = 20;
 
   if (data.data === undefined) {
     return <div>No data</div>;
@@ -129,7 +133,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     data: IndicatorData;
   };
 
-  const Background = (props: BackgroundProps) => {
+  const LineBackground = (props: BackgroundProps) => {
     const { data } = props;
 
     const levelGreen = data.levelGreen;
@@ -137,7 +141,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     const levelDirection = data.levelDirection;
 
     const yMin = 0;
-    const yMax = 1;
+    const yMax = figureHeight;
     const xMin = Math.min(...years);
     const xMax = Math.max(...years);
 
@@ -175,6 +179,47 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     );
   };
 
+  const BarBackground = (props: BackgroundProps) => {
+    const { data } = props;
+
+    const levelGreen = data.levelGreen;
+    const levelYellow = data.levelYellow;
+    const levelDirection = data.levelDirection;
+
+    const xMin = 0;
+    const xMax = 1;
+
+    const xScale = useXScale();
+
+    const xStart = xScale(xMin);
+    const xStop = xScale(xMax);
+    const yStart = figureHeight - backgroundMargin - 27; // Hardkodet, må fikses
+    const yStop = 0 + backgroundMargin;
+
+    const greenStart = levelGreen && xScale(levelGreen);
+    const yellowStart = levelYellow && xScale(levelYellow);
+
+    const validGrid =
+      xStart &&
+      xStop &&
+      greenStart &&
+      yellowStart &&
+      (levelDirection === 0 || levelDirection === 1);
+
+    return (
+      validGrid &&
+      BarchartGrid({
+        xStart: xStart,
+        xStop: xStop,
+        yStart: yStart,
+        yStop: yStop,
+        levelGreen: greenStart,
+        levelYellow: yellowStart,
+        levelDirection: levelDirection,
+      })
+    );
+  };
+
   return (
     <Box>
       <Box sx={{ width: "10rem", paddingLeft: 4 }}>
@@ -189,7 +234,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
       <Box
         sx={{
           width: "100%",
-          height: 500,
+          height: figureHeight,
           overflow: "auto",
           display: "flex",
           flexDirection: "column",
@@ -209,7 +254,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             />
             <ChartsTooltip />
             <ChartsSurface>
-              <Background data={data} />
+              <LineBackground data={data} />
               <ChartsXAxis />
               <ChartsYAxis />
               <LinePlot />
@@ -219,12 +264,27 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
           </ChartDataProvider>
         ) : figureType === "bar" ? (
           <Box width={"100%"}>
-            <BarChart
-              yAxis={[{ data: unitNames, dataKey: "unitName" }]}
-              series={[{ data: barData, valueFormatter }]}
-              height={500}
-              layout="horizontal"
-            />
+            <ChartDataProvider
+              series={[
+                {
+                  type: "bar",
+                  layout: "horizontal",
+                  data: barData,
+                  valueFormatter,
+                },
+              ]}
+              height={figureHeight}
+              yAxis={[{ scaleType: "band", data: unitNames, position: "left" }]}
+              xAxis={[{ min: 0, max: 1, position: "bottom" }]}
+            >
+              <ChartsTooltip />
+              <ChartsSurface>
+                <BarBackground data={data} />
+                <ChartsXAxis />
+                <ChartsYAxis />
+                <BarPlot />
+              </ChartsSurface>
+            </ChartDataProvider>
           </Box>
         ) : null}
       </Box>
