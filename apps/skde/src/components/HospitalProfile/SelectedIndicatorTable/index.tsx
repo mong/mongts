@@ -61,7 +61,6 @@ const IndicatorRow = (
     return row.ind_id === indId && row.year === lastYear;
   });
 
-  console.log(getLowDG(point1));
   const var1 = point1 ? point1.var : undefined;
   const var2 = point2 ? point2.var : undefined;
 
