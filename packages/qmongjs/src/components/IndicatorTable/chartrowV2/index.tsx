@@ -282,6 +282,14 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     );
   };
 
+  // The delivery_latest_affirm date can be different depending on the year.
+  // Find the latest year and use that.
+  const affirmYears = data.data.map((row) => {
+    return getLastCompleteYear(row.affirmTime, 0, true);
+  }) as number[];
+
+  const lastAffirmYear = Math.max(...affirmYears);
+
   return (
     <Box>
       <Box sx={{ width: "10rem", paddingLeft: 4 }}>
@@ -325,11 +333,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
                 slots={{ line: CustomAnimatedLine }}
                 slotProps={{
                   line: {
-                    limit: getLastCompleteYear(
-                      data.data[0].affirmTime,
-                      0,
-                      true,
-                    ),
+                    limit: lastAffirmYear,
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   } as any,
                 }}
