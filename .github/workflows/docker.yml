@@ -39,7 +39,7 @@ jobs:
       - run: corepack enable && yarn install
       - run: yarn workspace api run build
       - name: Lint Dockerfile
-        uses: hadolint/hadolint-action@v3.1.0
+        uses: hadolint/hadolint-action@v3.3.0
         with:
           dockerfile: "apps/api/Dockerfile"
       - name: Prepare
