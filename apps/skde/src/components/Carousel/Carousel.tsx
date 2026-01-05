@@ -15,7 +15,7 @@ type CarouselProps = {
   popupState?: React.Dispatch<React.SetStateAction<boolean>>;
   lang?: "nb" | "en" | "nn";
   children: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  | React.ReactElement<CarouselItemProps & React.RefObject<any>>
+    | React.ReactElement<CarouselItemProps & React.RefObject<any>>
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     | Array<React.ReactElement<CarouselItemProps & React.RefObject<any>>>;
 };
