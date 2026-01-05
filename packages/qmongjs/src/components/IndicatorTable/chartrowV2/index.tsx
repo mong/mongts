@@ -215,16 +215,16 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     const yStart = yScale(yMax);
     const yStop = yScale(yMin);
 
-    const greenStart = levelGreen && yScale(levelGreen);
-    const yellowStart = levelYellow && yScale(levelYellow);
+    const greenStart = levelGreen !== null ? yScale(levelGreen) : undefined;
+    const yellowStart = levelYellow !== null ? yScale(levelYellow) : undefined;
 
     const validGrid =
-      xStart &&
-      yStart &&
-      xStop &&
-      yStop &&
-      greenStart &&
-      yellowStart &&
+      xStart !== undefined &&
+      yStart !== undefined &&
+      xStop !== undefined &&
+      yStop !== undefined &&
+      greenStart !== undefined &&
+      yellowStart !== undefined &&
       (levelDirection === 0 || levelDirection === 1);
 
     return (
