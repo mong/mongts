@@ -58,5 +58,3 @@ export const valueOrDefault = (
       break;
   }
 };
-
-export default valueOrDefault;
