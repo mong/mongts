@@ -39,11 +39,9 @@ const getLowN = (point: Indicator) => {
     ? false
     : point.min_denominator == null && point.denominator < 5
       ? true
-      : point.denominator == null
-        ? false
-        : point.denominator < point.min_denominator
-          ? true
-          : false;
+      : point.denominator < point.min_denominator
+        ? true
+        : false;
 };
 
 const IndicatorRow = (
