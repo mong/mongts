@@ -207,7 +207,7 @@ export default function Stadiumfigur({ registry }) {
       </CustomTabPanel>
     </Box>
   );
-};
+}
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const registries: RegisterName[] = await fetchRegisterNames();
