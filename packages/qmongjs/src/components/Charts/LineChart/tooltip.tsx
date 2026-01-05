@@ -4,6 +4,7 @@ import React from "react";
 import { Indicator } from "types";
 import { IndicatorData } from "../../IndicatorTable/indicatorvalue";
 
+// @ts-expect-error Type discrepancy between visx and React
 const tooltipStyles: React.CSSProperties = {
   ...defaultStyles,
   display: "flex",
@@ -35,6 +36,7 @@ export const LineChartTooltip = ({
   return (
     <>
       {tooltipOpen && tooltipData && (
+        // @ts-expect-error Type discrepancy between visx and React
         <Tooltip top={tooltipTop} left={tooltipLeft} style={tooltipStyles}>
           <div
             style={{
