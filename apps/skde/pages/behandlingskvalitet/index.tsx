@@ -42,17 +42,20 @@ import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
-import scrollToSelectedRow from "./utils/scrollToSelectedRow";
-import getMedicalFieldFilterRegisters from "./utils/getMedicalFieldFilterRegisters";
+import scrollToSelectedRow from "../../src/utils/scrollToSelectedRow";
+import getMedicalFieldFilterRegisters from "../../src/utils/getMedicalFieldFilterRegisters";
 import { IndicatorTableSkeleton } from "qmongjs";
 import { LayoutHead } from "../../src/components/LayoutHead";
-import { valueOrDefault, defaultTableContext } from "./utils/valueOrDefault";
+import {
+  valueOrDefault,
+  defaultTableContext,
+} from "../../src/utils/valueOrDefault";
 import {
   ColourMap,
   updateColourMap,
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
-import checkParamsReady from "./utils/checkParamsReady";
+import checkParamsReady from "../../src/utils/checkParamsReady";
 
 export default function TreatmentQualityPage() {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
