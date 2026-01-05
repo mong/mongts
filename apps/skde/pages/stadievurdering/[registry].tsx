@@ -25,7 +25,7 @@ const noLevelColour = "#777777";
 
 const reportYear = defaultReviewYear;
 
-const Stadiumfigur = ({ registry }) => {
+export default function Stadiumfigur({ registry }) {
   // Copy-paste code from https://mui.com/material-ui/react-tabs/
   const [value, setValue] = React.useState(0);
 
@@ -230,5 +230,3 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return { paths, fallback: false };
 };
-
-export default Stadiumfigur;

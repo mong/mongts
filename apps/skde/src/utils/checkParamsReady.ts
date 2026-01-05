@@ -1,4 +1,4 @@
-import { areArraysEqual } from "../../../src/helpers/functions/areArraysEqual";
+import { areArraysEqual } from "../helpers/functions/areArraysEqual";
 import { useEffect, useState } from "react";
 
 export interface SelectedFiltersParam {
