@@ -41,16 +41,16 @@ import { Footer } from "../../src/components/Footer";
 import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
-import scrollToSelectedRow from "./utils/scrollToSelectedRow";
+import scrollToSelectedRow from "../../src/utils/scrollToSelectedRow";
 import { RegisterName, RegistryRank } from "types";
-import valueOrDefault from "./utils/valueOrDefault";
+import { valueOrDefault } from "../../src/utils/valueOrDefault";
 import { LayoutHead } from "../../src/components/LayoutHead";
 import {
   ColourMap,
   updateColourMap,
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
-import checkParamsReady from "./utils/checkParamsReady";
+import checkParamsReady from "../../src/utils/checkParamsReady";
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
