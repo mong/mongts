@@ -18,13 +18,31 @@ import { newLevelSymbols, useIndicatorQuery } from "qmongjs";
 import { Indicator } from "types";
 import { customFormat } from "qmongjs";
 import { level } from "qmongjs";
-import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 
 const colourMap = new Map();
 colourMap.set("H", "#58A55C");
 colourMap.set("M", "#FD9C00");
 colourMap.set("L", "#D85140");
 colourMap.set(undefined, undefined);
+
+const getLowDG = (point: Indicator) => {
+  return point?.dg == null ? false : point?.dg < 0.6 ? true : false;
+};
+
+// Muligens unødvendig. Sjekk api-et.
+const getNoData = (point: Indicator) => {
+  return point?.denominator == null ? true : false;
+};
+
+const getLowN = (point: Indicator) => {
+  return point?.denominator == null
+    ? false
+    : point.min_denominator == null && point.denominator < 5
+      ? true
+      : point.denominator < point.min_denominator
+        ? true
+        : false;
+};
 
 const IndicatorRow = (
   indId: string,
@@ -71,7 +89,10 @@ const IndicatorRow = (
         </Stack>
       </TableCell>
       <TableCell align="right">
-        {point1 ? (
+        {point1 &&
+        !getLowDG(point1) &&
+        !getLowN(point1) &&
+        !getNoData(point1) ? (
           <Stack
             direction="row"
             alignItems="center"
@@ -83,12 +104,22 @@ const IndicatorRow = (
             </Typography>
             {newLevelSymbols(level1)}
           </Stack>
+        ) : getLowDG(point1) ? (
+          "Lav DG"
+        ) : getNoData(point1) ? (
+          "Ingen data"
+        ) : getLowN(point1) ? (
+          "Lav N"
         ) : (
-          <ErrorOutlineIcon />
+          "Ingen data"
         )}
       </TableCell>
       <TableCell align="right">
-        {point1 && point2 ? (
+        {point1 &&
+        point2 &&
+        !getLowDG(point2) &&
+        !getLowN(point2) &&
+        !getNoData(point2) ? (
           <Stack
             direction="row"
             alignItems="center"
@@ -96,12 +127,18 @@ const IndicatorRow = (
             spacing={1}
           >
             <Typography variant="body2">
-              {customFormat(point1.sformat)(var2)}
+              {customFormat(point2.sformat)(var2)}
             </Typography>
             {newLevelSymbols(level2)}
           </Stack>
+        ) : getLowDG(point2) ? (
+          "Lav DG"
+        ) : getNoData(point2) ? (
+          "Ingen data"
+        ) : getLowN(point2) ? (
+          "Lav N"
         ) : (
-          <ErrorOutlineIcon />
+          "Ingen data"
         )}
       </TableCell>
     </TableRow>
