@@ -35,7 +35,7 @@ jobs:
           echo "descr='Main commits deploy'" >> $GITHUB_ENV
           echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_QA }}" >> $GITHUB_ENV
       - name: Check out the repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - run: corepack enable && yarn install
       - run: yarn workspace api run build
       - name: Lint Dockerfile
