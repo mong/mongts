@@ -51,7 +51,7 @@
       ]
     },
     {
-      "overskrift": "Vaksne i poliklinisk behandling",
+      "overskrift": "Vaksne i behandling",
       "innhold": [
         {
           "utvalg": "Analysane omfattar vaksne i alderen 18-64 år som i perioden 2020-2024 hadde minst ein poliklinisk kontakt i psykisk helsevern enten ved offentlege tenester eller hos avtalespesialistar.\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato, og omfattar både polikliniske konsultasjonar og dagbehandlig. Raten inkluderer både direkte og indirekte kontaktar, men tel berre ein kontakt per dag.\n\nRatane er justerte for alder og kjønn.\n\nStrekane i figurar markerer eit 95 prosents konfidensintervall for ratene.",
@@ -63,6 +63,17 @@
           "kart": "kart_opt_2025.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-12-22T14:09:00.000+01:00"
+        },
+        {
+          "utvalg": "Analysane omfattar vaksne i alderen 18-64 år som i perioden 2020-2024 hadde minst ein poliklinisk kontakt i psykisk helsevern, enten ved offentlege tenester eller hos avtalespesialistar i psykisk helsevern.\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato, og omfattar både polikliniske konsultasjonar og dagbehandlig. Raten inkluderer både direkte og indirekte kontaktar, men tel berre ein kontakt per pasient, per dag.\n\nRatane er justerte for alder og kjønn.\n\nStrekane i figuren viser eit 95 prosents konfidensintervall for pasientraten.",
+          "data": "poliklinikk_dps_18.json",
+          "publisert": "2025-11-30T13:04:00.000+01:00",
+          "resultat": "Når vi ser nærare på opptaksområda for dei distriktspykiatriske sentra (DPS) , er det meir lokale variasjonar enn det enn det som kjem fram på helseføretaksnivå. Figuren viser variasjonar mellom om lag 70 DPS-opptaksområde. Troms, Lofoten og Voss skil seg ut med dei største endringane gjennom femårsperioden.  \n\nPasientratane varierer frå 455 på Jæren til 788 i Nord-Troms, noko som viser at forskjellane mellom dei DPS-områda ikkje er mindre enn dei vi ser mellom helseføretaka sine opptaksområde. Det er nokre systematiske skilnader mellom dei regionale helseføretaka; Helse Midt og Helse Sør-Øst ligg begge rundt 554, noko over landsraten på 547 pasientar per 10 000 innbyggjarar. Helse Vest ligg noko lågare med ein rate på 538 pasientar per 10 000 innbyggjarar, medan Helse Nord ligg høgast med ein pasientrate på 563 per 10 000 innbyggjarar.  \n\nDesse variasjonane kan indikere ulik organisering, avstand, kapasitet og bruk av polikliniske tenester mellom DPS-områda.  \n\n![](/helseatlas/img/no/psyk2/pasientrate-dps.png \"Justert pasient rate per 10 000 (DPS- og RHF-område)\")\n\n\nKvart år hadde om lag 183 000  personar til saman rundt 2 259 000 kontaktdagar i poliklinikk. Det svarer til eit gjennomsnitt på 12,3 kontaktdagar per person. Raten er stabil på landsbasis gjennom perioden, men for enkelte av DPS-områda varendringane betydelege. Nord-Troms, Tromsø og omegn, Vesterålen og Midt-Finnmark hadde markant auke, medan Kongsvinger og Voss hadde ein tydeleg nedgang.   \n\nVariasjonen mellom DPS-områda var stor. Lovisenberg og Nord-Troms skil seg ut med høgaste ratar samanlikna med andre DPS-område.   \n\nNår ein ser på tal kontaktdagar per pasient, er forskjellane også store. Gjøvik, Tromsø og omegn og fleire bydelar i Oslo er blant DPS-områda med høgast tal kontaktdagar per pasient. I nedre del er samtlege DPS i Helse Førde, samt fleire DPS i Finnmark og Fonna .   \n\nMellom dei regionale helseføretaka har Helse Midt klart lågast tal kontaktdagar per pasient, medan Helse Vest og Helse Nord ligg noko høgare. Helse Sør-Øst er den einaste regionen som ligg over landssnittet på 12,3, med 12,8 kontaktdagar per pasient, om lag  ein kontakt meir per pasient enn dei andre  regionane. \n\n![](/helseatlas/img/no/psyk2/kontakt-rate-dps.png \"Justert kontaktdagsrate per 10 000 (DPS- og RHF-område)\")",
+          "overskrift": "Poliklinisk behandling (DPS-område)",
+          "ingress": "Variasjonen i ratar mellom DPS-områda var liten, men tydelege skilnader kjem fram på lokalt nivå.",
+          "kart": "kart_dps_p5_rewind.geojson",
+          "type": "resultatboks",
+          "oppdatert": "2025-12-22T15:26:00.000+01:00"
         },
         {
           "type": "tekst",
@@ -79,17 +90,6 @@
           "kart": "kart_opt_2025.geojson",
           "type": "resultatboks",
           "oppdatert": "2025-12-22T14:45:00.000+01:00"
-        },
-        {
-          "utvalg": "Analysane omfattar vaksne i alderen 18-64 år som i perioden 2020-2024 hadde minst ein poliklinisk kontakt i psykisk helsevern, enten ved offentlege tenester eller hos avtalespesialistar i psykisk helsevern.\n\nPolikliniske kontaktar er definert som kontaktar der pasienten blei skriven inn og ut same dato, og omfattar både polikliniske konsultasjonar og dagbehandlig. Raten inkluderer både direkte og indirekte kontaktar, men tel berre ein kontakt per pasient, per dag.\n\nRatane er justerte for alder og kjønn.\n\nStrekane i figuren viser eit 95 prosents konfidensintervall for pasientraten.",
-          "data": "poliklinikk_dps_18.json",
-          "publisert": "2025-11-30T13:04:00.000+01:00",
-          "resultat": "Når vi ser nærare på opptaksområda for dei distriktspykiatriske sentra (DPS) , er det meir lokale variasjonar enn det enn det som kjem fram på helseføretaksnivå. Figuren viser variasjonar mellom om lag 70 DPS-opptaksområde. Troms, Lofoten og Voss skil seg ut med dei største endringane gjennom femårsperioden.  \n\nPasientratane varierer frå 455 på Jæren til 788 i Nord-Troms, noko som viser at forskjellane mellom dei DPS-områda ikkje er mindre enn dei vi ser mellom helseføretaka sine opptaksområde. Det er nokre systematiske skilnader mellom dei regionale helseføretaka; Helse Midt og Helse Sør-Øst ligg begge rundt 554, noko over landsraten på 547 pasientar per 10 000 innbyggjarar. Helse Vest ligg noko lågare med ein rate på 538 pasientar per 10 000 innbyggjarar, medan Helse Nord ligg høgast med ein pasientrate på 563 per 10 000 innbyggjarar.  \n\nDesse variasjonane kan indikere ulik organisering, avstand, kapasitet og bruk av polikliniske tenester mellom DPS-områda.  \n\n![](/helseatlas/img/no/psyk2/pasientrate-dps.png \"Justert pasient rate per 10 000 (DPS- og RHF-område)\")\n\n\nKvart år hadde om lag 183 000  personar til saman rundt 2 259 000 kontaktdagar i poliklinikk. Det svarer til eit gjennomsnitt på 12,3 kontaktdagar per person. Raten er stabil på landsbasis gjennom perioden, men for enkelte av DPS-områda varendringane betydelege. Nord-Troms, Tromsø og omegn, Vesterålen og Midt-Finnmark hadde markant auke, medan Kongsvinger og Voss hadde ein tydeleg nedgang.   \n\nVariasjonen mellom DPS-områda var stor. Lovisenberg og Nord-Troms skil seg ut med høgaste ratar samanlikna med andre DPS-område.   \n\nNår ein ser på tal kontaktdagar per pasient, er forskjellane også store. Gjøvik, Tromsø og omegn og fleire bydelar i Oslo er blant DPS-områda med høgast tal kontaktdagar per pasient. I nedre del er samtlege DPS i Helse Førde, samt fleire DPS i Finnmark og Fonna .   \n\nMellom dei regionale helseføretaka har Helse Midt klart lågast tal kontaktdagar per pasient, medan Helse Vest og Helse Nord ligg noko høgare. Helse Sør-Øst er den einaste regionen som ligg over landssnittet på 12,3, med 12,8 kontaktdagar per pasient, om lag  ein kontakt meir per pasient enn dei andre  regionane. \n\n![](/helseatlas/img/no/psyk2/kontakt-rate-dps.png \"Justert kontaktdagsrate per 10 000 (DPS- og RHF-område)\")",
-          "overskrift": "Poliklinisk behandling (DPS-område)",
-          "ingress": "Variasjonen i ratar mellom DPS-områda var liten, men tydelege skilnader kjem fram på lokalt nivå.",
-          "kart": "kart_dps_p5_rewind.geojson",
-          "type": "resultatboks",
-          "oppdatert": "2025-12-22T15:26:00.000+01:00"
         },
         {
           "utvalg": "Analysane omfattar vaksne i aldersgruppa 18-64 år som i 2020-2024 hadde minst eit døgnopphald i psykisk helsevern\n\nDøgnopphald er definert på følgjande møte: \n\n* omsorgsnivå lik 1 eller utdato større enn inndato, innan sektor psykisk helsevern for vaksne. Opphald vert slått saman når dei inngår i same behandlingsforløp, t.d. ved flytting mellom institusjonar, og det ikkje går meir enn 8 timar mellom utskriving og ny innskriving.\n\n\n\nRatane er justerte for alder og kjønn.",
@@ -228,7 +228,7 @@
           "data": "depresjon_dogn2_updated.json",
           "publisert": "2025-12-15T20:13:00.000+01:00",
           "resultat": "Kvart år var 3500 personar innlagde i døgnbehandling for depresjon. Det svarer til ein rate på 10 per 10 000 innbyggjarar på landsbasis. Pasientraten gjekk noko ned i løpet av femårsperioden på landsbasis, men for kvart av opptaksområda endra pasientratane seg ulikt.  \n\nVariasjonen mellom opptaksområda var middels. Finnmark og Nordland hadde nær fire gonger så høg rate for innlagde pasientar som Diakonhjemmet, som hadde lågast. Mange av opptaksområda hadde pasientratar i nærleiken av landsraten. Det var regionale forskjellar i pasientraten, ved at samtlege av helseføretaka i Helse Nord hadde ratar over landsraten, medan dei øvrige regionane hadde større variasjon.",
-          "overskrift": "Pasientar med depresjon i døgnbehandling",
+          "overskrift": "Døgnbehandling for depresjon",
           "ingress": "Variasjonen i innlagde pasientar med depresjon var middels",
           "kart": "kart_opt_2025.geojson",
           "type": "resultatboks",
@@ -267,7 +267,7 @@
           "data": "psykose_dogn2_updated.json",
           "publisert": "2025-12-15T18:11:00.000+01:00",
           "resultat": "I perioden 2020-2024 mottok i gjennomsnitt 5400 personar døgnbehandling for psykoselidingar. Rate for innlagde pasientar er såleis rundt halvparten så stor som raten for pasientar i poliklinikk, for psykoselidingar. Det var lita endring i pasientraten i løpet av femårsperioden, både på landsbasis og for dei fleste opptaksområda. Nordland hadde imidlertid ein stor auke i pasientraten. \n\nVariasjonen i pasientratane var middels mellom opptaksområda. Lovisenberg hadde høgast rate, men Telemark, UNN og Stavanger hadde òg høge ratar. Pasientratane var mellom 2,2 og 1,3 per 10 000 innbyggarar i den vaksne befolkninga. Sjølv om Lovisenberg har langt høgare rate i bruk av poliklinikk, skil opptaksområdet seg ikkje særleg frå andre i rate for pasientar i døgnbehandling.",
-          "overskrift": "Pasientar med psykoselidingar i døgnbehandling",
+          "overskrift": "Døgnbehandling for psykoselidingar",
           "ingress": "Variasjonen i pasientrate i døgnbehandling var middels",
           "kart": "kart_opt_2025.geojson",
           "type": "resultatboks",
