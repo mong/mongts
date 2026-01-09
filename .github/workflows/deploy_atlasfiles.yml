@@ -19,7 +19,7 @@ jobs:
       AWS_DEFAULT_REGION: "eu-west-1"
     steps:
       - name: Check out the repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Sync main to S3 bucket skde.org
         if: github.ref == 'refs/heads/main'
         run: |
