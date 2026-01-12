@@ -32,6 +32,7 @@ import { BarchartGrid } from "../../Charts/LinechartGrid";
 import { Box } from "@mui/material";
 import { useDrawingArea, useChartId } from "@mui/x-charts";
 import { getLastCompleteYear } from "../../../helpers/functions";
+import { customFormat } from "../../../helpers/functions";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -101,6 +102,9 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
 
   const figureHeight = 500;
   const backgroundMargin = 20;
+
+  const dataFormat = data.format ? data.format : ",.0%";
+  const percentage = dataFormat.includes("%");
 
   if (data.data === undefined) {
     return <div>No data</div>;
@@ -174,6 +178,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
       curve: "linear",
       type: "line",
       connectNulls: true,
+      valueFormatter: (value: number) => customFormat(dataFormat)(value),
     } as LineSeriesType;
   });
 
@@ -187,12 +192,13 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     })
     .flat();
 
-  const valueFormatter = (value: number | null) => {
-    return `${value && Math.round(value * 100)} %`;
+  const barValueFormatter = (value: number | null) => {
+    return `${value && customFormat(dataFormat)(value)}`;
   };
 
   type BackgroundProps = {
     data: IndicatorData;
+    percentage: boolean;
   };
 
   const LineBackground = (props: BackgroundProps) => {
@@ -249,7 +255,16 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     const levelDirection = data.levelDirection;
 
     const xMin = 0;
-    const xMax = 1;
+
+    if (data.data === undefined) {
+      return null;
+    }
+
+    const xMax = percentage
+      ? 1
+      : Math.max(
+          ...data.data.map((row: DataPoint) => (row.var != null ? row.var : 0)),
+        );
 
     const xScale = useXScale();
 
@@ -290,6 +305,10 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
 
   const lastAffirmYear = Math.max(...affirmYears);
 
+  const valueAxisFormatter = (value: number) => {
+    return percentage ? `${Math.round(value * 100)} %` : `${value}`;
+  };
+
   return (
     <Box>
       <Box sx={{ width: "10rem", paddingLeft: 4 }}>
@@ -314,8 +333,22 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
         {figureType == "line" ? (
           <ChartDataProvider
             series={lineData}
-            xAxis={[{ scaleType: "point", data: uniqueYears }]}
-            yAxis={[{ min: 0, max: 1, position: "left" }]}
+            xAxis={[
+              {
+                scaleType: "point",
+                data: uniqueYears,
+                valueFormatter: (value: number) => value.toString(),
+              },
+            ]}
+            yAxis={[
+              {
+                min: 0,
+                max: percentage ? 1 : undefined,
+                position: "left",
+                scaleType: "linear",
+                valueFormatter: valueAxisFormatter,
+              },
+            ]}
           >
             <ChartsLegend
               slotProps={{
@@ -326,7 +359,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             <ChartsSurface
               sx={{ "& .line-after path": { strokeDasharray: "10 5" } }}
             >
-              <LineBackground data={data} />
+              <LineBackground data={data} percentage={percentage} />
               <ChartsXAxis />
               <ChartsYAxis />
               <LinePlot
@@ -350,16 +383,23 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
                   type: "bar",
                   layout: "horizontal",
                   data: barData,
-                  valueFormatter,
+                  valueFormatter: barValueFormatter,
                 },
               ]}
               height={figureHeight}
               yAxis={[{ scaleType: "band", data: unitNames, position: "left" }]}
-              xAxis={[{ min: 0, max: 1, position: "bottom" }]}
+              xAxis={[
+                {
+                  min: 0,
+                  max: percentage ? 1 : undefined,
+                  position: "bottom",
+                  valueFormatter: valueAxisFormatter,
+                },
+              ]}
             >
               <ChartsTooltip />
               <ChartsSurface>
-                <BarBackground data={data} />
+                <BarBackground data={data} percentage={percentage} />
                 <ChartsXAxis />
                 <ChartsYAxis />
                 <BarPlot />
