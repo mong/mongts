@@ -167,7 +167,9 @@ const IndicatorRow = (props: {
     }
   }
 
-  const CollapseContent = (open: boolean) => {
+  const CollapseContent = (props: { open: boolean }) => {
+    const { open } = props;
+
     if (!open || indData.data === undefined) {
       return null;
     } else {
@@ -363,7 +365,7 @@ const IndicatorRow = (props: {
           colSpan={unitNames.length + 1}
         >
           <Collapse in={open} timeout="auto" mountOnEnter>
-            {CollapseContent(open)}
+            <CollapseContent open={open} />
           </Collapse>
         </StyledTableCell>
       </TableRow>
