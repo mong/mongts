@@ -167,6 +167,98 @@ const IndicatorRow = (props: {
     }
   }
 
+  const CollapseContent = (props: { open: boolean }) => {
+    const { open } = props;
+
+    if (!open || indData.data === undefined) {
+      return null;
+    } else {
+      return (
+        <React.Fragment>
+          <Typography variant="body2" sx={{ margin: "2rem" }}>
+            {indData.shortDescription}
+            <br />
+            <br />
+            {"Ønsket målnivå: "}
+            {indData.levelGreen === null ? (
+              <b>{"Ikke oppgitt"}</b>
+            ) : (
+              <b>{levelSignHigh + customFormat(",.0%")(indData.levelGreen)}</b>
+            )}
+            <br />
+            {"Lavt målnivå: "}
+            {indData.levelYellow === null ? (
+              <b>{"Ikke oppgitt"}</b>
+            ) : (
+              <b>{levelSignLow + customFormat(",.0%")(indData.levelYellow)}</b>
+            )}
+            <br />
+            <br />
+            {"Siste levering av data: " +
+              (indData.data[0].deliveryTime === null
+                ? "Ikke oppgitt"
+                : new Date(indData.data[0].deliveryTime).toLocaleString(
+                    "no-NO",
+                    {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                      timeZone: "CET",
+                    },
+                  ))}
+          </Typography>
+
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <table width={1500}>
+              <tbody>
+                <tr>
+                  <td colSpan={unitNames.length + 1}>
+                    <ChartRowV2
+                      data={indData}
+                      unitNames={unitNames}
+                      context={context}
+                      year={year}
+                    />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <Typography variant="body2" sx={{ margin: "2rem" }}>
+            <b>Om kvalitetsindikatoren</b>
+          </Typography>
+          <ReactMarkdown
+            remarkPlugins={remarkPlugins}
+            components={{
+              p({ children }) {
+                return (
+                  <Typography variant="body2" sx={{ margin: "2rem" }}>
+                    {children}
+                  </Typography>
+                );
+              },
+              a({ href, children }) {
+                return (
+                  <a
+                    href={href}
+                    target={href?.startsWith("#") ? "_self" : "_blank"}
+                    rel="noreferrer"
+                    style={{ color: "#006492" }}
+                  >
+                    {children}
+                  </a>
+                );
+              },
+            }}
+          >
+            {indData.longDescription}
+          </ReactMarkdown>
+        </React.Fragment>
+      );
+    }
+  };
+
   return (
     <React.Fragment key={indData.indicatorTitle + "-indicatorSection"}>
       <StyledTableRow
@@ -272,90 +364,8 @@ const IndicatorRow = (props: {
           }}
           colSpan={unitNames.length + 1}
         >
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <Typography variant="body2" sx={{ margin: "2rem" }}>
-              {indData.shortDescription}
-              <br />
-              <br />
-              {"Ønsket målnivå: "}
-              {indData.levelGreen === null ? (
-                <b>{"Ikke oppgitt"}</b>
-              ) : (
-                <b>
-                  {levelSignHigh + customFormat(",.0%")(indData.levelGreen)}
-                </b>
-              )}
-              <br />
-              {"Lavt målnivå: "}
-              {indData.levelYellow === null ? (
-                <b>{"Ikke oppgitt"}</b>
-              ) : (
-                <b>
-                  {levelSignLow + customFormat(",.0%")(indData.levelYellow)}
-                </b>
-              )}
-              <br />
-              <br />
-              {"Siste levering av data: " +
-                (indData.data[0].deliveryTime === null
-                  ? "Ikke oppgitt"
-                  : new Date(indData.data[0].deliveryTime).toLocaleString(
-                      "no-NO",
-                      {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                        timeZone: "CET",
-                      },
-                    ))}
-            </Typography>
-
-            <div style={{ display: "flex", justifyContent: "center" }}>
-              <table width={1500}>
-                <tbody>
-                  <tr>
-                    <td colSpan={unitNames.length + 1}>
-                      <ChartRowV2
-                        data={indData}
-                        unitNames={unitNames}
-                        context={context}
-                        year={year}
-                      />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <Typography variant="body2" sx={{ margin: "2rem" }}>
-              <b>Om kvalitetsindikatoren</b>
-            </Typography>
-            <ReactMarkdown
-              remarkPlugins={remarkPlugins}
-              components={{
-                p({ children }) {
-                  return (
-                    <Typography variant="body2" sx={{ margin: "2rem" }}>
-                      {children}
-                    </Typography>
-                  );
-                },
-                a({ href, children }) {
-                  return (
-                    <a
-                      href={href}
-                      target={href?.startsWith("#") ? "_self" : "_blank"}
-                      rel="noreferrer"
-                      style={{ color: "#006492" }}
-                    >
-                      {children}
-                    </a>
-                  );
-                },
-              }}
-            >
-              {indData.longDescription}
-            </ReactMarkdown>
+          <Collapse in={open} timeout="auto" mountOnEnter>
+            <CollapseContent open={open} />
           </Collapse>
         </StyledTableCell>
       </TableRow>
@@ -505,6 +515,7 @@ const RegistrySection = (props: {
             : 1;
   });
 
+  // Sjekk om hele registerseksjonen skal filtreres bort på grunn av målnivåfilter
   let showSection;
 
   if (levels === undefined) {
