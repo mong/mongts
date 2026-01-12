@@ -32,6 +32,7 @@ import { BarchartGrid } from "../../Charts/LinechartGrid";
 import { Box } from "@mui/material";
 import { useDrawingArea, useChartId } from "@mui/x-charts";
 import { getLastCompleteYear } from "../../../helpers/functions";
+import { customFormat } from "../../../helpers/functions";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -101,6 +102,9 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
 
   const figureHeight = 500;
   const backgroundMargin = 20;
+
+  const dataFormat = data.format ? data.format : ",.0%";
+  const percentage = dataFormat.includes("%");
 
   if (data.data === undefined) {
     return <div>No data</div>;
@@ -174,6 +178,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
       curve: "linear",
       type: "line",
       connectNulls: true,
+      valueFormatter: (value: number) => customFormat(dataFormat)(value),
     } as LineSeriesType;
   });
 
@@ -290,6 +295,10 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
 
   const lastAffirmYear = Math.max(...affirmYears);
 
+  const yAxisFormatter = (value: number) => {
+    return percentage ? `${value * 100} %` : `${value * 100}`;
+  };
+
   return (
     <Box>
       <Box sx={{ width: "10rem", paddingLeft: 4 }}>
@@ -314,8 +323,22 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
         {figureType == "line" ? (
           <ChartDataProvider
             series={lineData}
-            xAxis={[{ scaleType: "point", data: uniqueYears }]}
-            yAxis={[{ min: 0, max: 1, position: "left" }]}
+            xAxis={[
+              {
+                scaleType: "point",
+                data: uniqueYears,
+                valueFormatter: (value: number) => value.toString(),
+              },
+            ]}
+            yAxis={[
+              {
+                min: 0,
+                max: percentage ? 1 : undefined,
+                position: "left",
+                scaleType: "linear",
+                valueFormatter: yAxisFormatter,
+              },
+            ]}
           >
             <ChartsLegend
               slotProps={{
