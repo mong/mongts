@@ -296,7 +296,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   const lastAffirmYear = Math.max(...affirmYears);
 
   const yAxisFormatter = (value: number) => {
-    return percentage ? `${value * 100} %` : `${value * 100}`;
+    return percentage ? `${value * 100} %` : `${value}`;
   };
 
   return (
