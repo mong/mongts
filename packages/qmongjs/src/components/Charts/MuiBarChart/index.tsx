@@ -9,7 +9,7 @@ import { BarPlot } from "@mui/x-charts";
 import { BarBackground } from "./BarBackground";
 import { IndicatorData } from "types";
 
-export type MuiBarChartProps = {
+type MuiBarChartProps = {
   barData: (number | null)[];
   data: IndicatorData;
   figureHeight: number;
@@ -23,13 +23,13 @@ export type MuiBarChartProps = {
 export const MuiBarChart = (props: MuiBarChartProps) => {
   const {
     barData,
-    barValueFormatter,
+    data,
     figureHeight,
+    backgroundMargin,
     unitNames,
     percentage,
+    barValueFormatter,
     valueAxisFormatter,
-    data,
-    backgroundMargin,
   } = props;
 
   return (

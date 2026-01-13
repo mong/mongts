@@ -14,7 +14,7 @@ import {
 import { LinePlot } from "@mui/x-charts/LineChart";
 import { IndicatorData } from "types";
 
-export type MuiLineChartProps = {
+type MuiLineChartProps = {
   data: IndicatorData;
   lineData: LineSeriesType[];
   uniqueYears: number[];
