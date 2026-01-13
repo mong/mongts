@@ -12,7 +12,7 @@ import { getLastCompleteYear } from "../../../helpers/functions";
 import { customFormat } from "../../../helpers/functions";
 import { MuiLineChart } from "../../Charts/MuiLineChart";
 import { MuiBarChart } from "../../Charts/MuiBarChart";
-import { formatData } from "./formatData";
+import { formatMuiChartData } from "./formatMuiChartData";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -30,7 +30,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   const dataFormat = data.format ? data.format : ",.0%";
   const percentage = dataFormat.includes("%");
 
-  const { barData, lineData, uniqueYears } = formatData(
+  const { barData, lineData, uniqueYears } = formatMuiChartData(
     data,
     unitNames,
     context,

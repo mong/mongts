@@ -4,7 +4,7 @@ import { LineSeriesType } from "@mui/x-charts";
 
 type Point = { x: number; y: number | null };
 
-export const formatData = (
+export const formatMuiChartData = (
   data: IndicatorData,
   unitNames: string[],
   context: string,
