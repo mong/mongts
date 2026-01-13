@@ -1,4 +1,3 @@
-import React from "react";
 import { DataPoint, IndicatorData } from "types";
 import {
   Select,
@@ -8,11 +7,7 @@ import {
   MenuItem,
 } from "@mui/material";
 import { useState } from "react";
-import {
-  LinePlot,
-  AnimatedLine,
-  AnimatedLineProps,
-} from "@mui/x-charts/LineChart";
+import { LinePlot } from "@mui/x-charts/LineChart";
 import { BarPlot } from "@mui/x-charts";
 import {
   ChartDataProvider,
@@ -30,9 +25,9 @@ import {
 import { LinechartGrid } from "../../Charts/LinechartGrid";
 import { BarchartGrid } from "../../Charts/LinechartGrid";
 import { Box } from "@mui/material";
-import { useDrawingArea, useChartId } from "@mui/x-charts";
 import { getLastCompleteYear } from "../../../helpers/functions";
 import { customFormat } from "../../../helpers/functions";
+import { CustomAnimatedLine } from "../../Charts/MuiLineChart/CustomAnimatedLine";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -42,60 +37,6 @@ type chartRowV2Props = {
 };
 
 type Point = { x: number; y: number | null };
-
-// Hentet fra https://mui.com/x/react-charts/line-demo/#line-with-forecast
-interface CustomAnimatedLineProps extends AnimatedLineProps {
-  limit?: number;
-}
-
-function CustomAnimatedLine(props: CustomAnimatedLineProps) {
-  const { limit, ...other } = props;
-  const { top, bottom, height, left, width } = useDrawingArea();
-  const scale = useXScale();
-  const chartId = useChartId();
-
-  if (limit === undefined) {
-    return <AnimatedLine {...other} />;
-  }
-
-  const limitPosition = scale(limit); // Convert value to x coordinate.
-
-  if (limitPosition === undefined) {
-    return <AnimatedLine {...other} />;
-  }
-
-  const clipIdleft = `${chartId}-${props.ownerState.id}-line-limit-${limit}-1`;
-  const clipIdRight = `${chartId}-${props.ownerState.id}-line-limit-${limit}-2`;
-
-  return (
-    <React.Fragment>
-      {/* Clip to show the line before the limit */}
-      <clipPath id={clipIdleft}>
-        <rect
-          x={left}
-          y={0}
-          width={limitPosition - left}
-          height={top + height + bottom}
-        />
-      </clipPath>
-      {/* Clip to show the line after the limit */}
-      <clipPath id={clipIdRight}>
-        <rect
-          x={limitPosition}
-          y={0}
-          width={left + width - limitPosition}
-          height={top + height + bottom}
-        />
-      </clipPath>
-      <g clipPath={`url(#${clipIdleft})`} className="line-before">
-        <AnimatedLine {...other} />
-      </g>
-      <g clipPath={`url(#${clipIdRight})`} className="line-after">
-        <AnimatedLine {...other} />
-      </g>
-    </React.Fragment>
-  );
-}
 
 export const ChartRowV2 = (props: chartRowV2Props) => {
   const { data, unitNames, context, year } = props;
