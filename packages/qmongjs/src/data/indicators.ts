@@ -14,9 +14,14 @@ export const indicatorsPerHospital = [
       "hjerneslag_test_svelg",
       "hjerteinfarkt_invasivt_nstemi",
       "nyre_transplant_bt",
+      "hjertesvikt_6min_gangtest",
     ],
   },
-  { unit: "Hammerfest", commonInd: commonIndicators, specificInd: [] },
+  {
+    unit: "Hammerfest",
+    commonInd: commonIndicators,
+    specificInd: ["barnediabetes_hba1c_ge_9", "NDV_prosentandel_maalt_AKR"],
+  },
   {
     unit: "Tromsø",
     commonInd: commonIndicators,
@@ -34,7 +39,7 @@ export const indicatorsPerHospital = [
   {
     unit: "Narvik",
     commonInd: commonIndicators,
-    specificInd: ["hjerteinfarkt_ef_maalt"],
+    specificInd: ["hjerteinfarkt_ef_maalt", "NDV_prosentandel_maalt_AKR"],
   },
   {
     unit: "Vesterålen",
@@ -58,12 +63,17 @@ export const indicatorsPerHospital = [
   {
     unit: "Mo i Rana",
     commonInd: commonIndicators,
-    specificInd: ["hjerneslag_test_svelg"],
+    specificInd: ["hjerneslag_test_svelg", "hjertesvikt_6min_gangtest"],
   },
   {
     unit: "Mosjøen",
     commonInd: commonIndicators,
-    specificInd: ["NDV_andel_HbA1C_mindre_eller_lik_53"],
+    specificInd: [
+      "NDV_andel_HbA1C_mindre_eller_lik_53",
+      "NDV_andel_oppnaadd_kolesterolmaal_med_hjertekarsykdom",
+      "NDV_andel_oppnaadd_kolesterolmaal_uten_hjertekarsykdom",
+      "NDV_prosentandel_maalt_AKR",
+    ],
   },
   {
     unit: "Sandnessjøen",
@@ -72,6 +82,8 @@ export const indicatorsPerHospital = [
       "hjerneslag_tverrfaglig",
       "traume_registrerte",
       "NDV_prosentandel_maalt_AKR",
+      "NDV_andel_oppnaadd_kolesterolmaal_uten_hjertekarsykdom",
+      "nnrr_tverrfaglig_behandling",
     ],
   },
 ];
@@ -249,5 +261,46 @@ export const indicatorInfo = [
     level_yellow: 0.7,
     level_direction: 1,
     registry: "Voksendiabetes",
+  },
+  {
+    indId: "barnediabetes_hba1c_ge_9",
+    title: "Andel HbA1c ≥ 75 mmol/mol",
+    include: 1,
+    sformat: ",.0%",
+    level_green: 0,
+    level_yellow: 0.02,
+    level_direction: 0,
+    registry: "Barne- og ungdomsdiabetes",
+  },
+  {
+    indId: "hjertesvikt_6min_gangtest",
+    title: "Andel utført 6-minutter gangtest",
+    include: 1,
+    sformat: ",.0%",
+    level_green: 0.8,
+    level_yellow: 0.7,
+    level_direction: 1,
+    registry: "Hjertesvikt",
+  },
+  {
+    indId: "NDV_andel_oppnaadd_kolesterolmaal_uten_hjertekarsykdom",
+    title:
+      "Andel pasienter uten kjent hjerte/karsykdom som har oppnådd kolesterolmål, LDL mindre eller lik 2,5 mmol/L",
+    include: 1,
+    sformat: ",.0%",
+    level_green: 0.7,
+    level_yellow: 0.45,
+    level_direction: 1,
+    registry: "Voksendiabetes",
+  },
+  {
+    indId: "nnrr_tverrfaglig_behandling",
+    title: "Andel pasienter med tverrfaglig behandling",
+    include: 1,
+    sformat: ",.0%",
+    level_green: 0.3,
+    level_yellow: 0.3,
+    level_direction: 1,
+    registry: "Nakke- og rygg",
   },
 ];
