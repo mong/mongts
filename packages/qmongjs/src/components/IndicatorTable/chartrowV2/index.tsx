@@ -5,9 +5,9 @@ import {
   InputLabel,
   SelectChangeEvent,
   MenuItem,
+  Box,
 } from "@mui/material";
 import { useState } from "react";
-
 import { BarPlot } from "@mui/x-charts";
 import {
   ChartDataProvider,
@@ -16,13 +16,11 @@ import {
   ChartsXAxis,
   ChartsYAxis,
   LineSeriesType,
-  useXScale,
 } from "@mui/x-charts";
-import { BarchartGrid } from "../../Charts/LinechartGrid";
-import { Box } from "@mui/material";
 import { getLastCompleteYear } from "../../../helpers/functions";
 import { customFormat } from "../../../helpers/functions";
 import { MuiLineChart } from "../../Charts/MuiLineChart";
+import { BarBackground } from "../../Charts/MuiBarChart/BarBackground";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -132,61 +130,6 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     return `${value && customFormat(dataFormat)(value)}`;
   };
 
-  type BackgroundProps = {
-    data: IndicatorData;
-    percentage: boolean;
-  };
-
-  const BarBackground = (props: BackgroundProps) => {
-    const { data } = props;
-
-    const levelGreen = data.levelGreen;
-    const levelYellow = data.levelYellow;
-    const levelDirection = data.levelDirection;
-
-    const xMin = 0;
-
-    if (data.data === undefined) {
-      return null;
-    }
-
-    const xMax = percentage
-      ? 1
-      : Math.max(
-          ...data.data.map((row: DataPoint) => (row.var != null ? row.var : 0)),
-        );
-
-    const xScale = useXScale();
-
-    const xStart = xScale(xMin);
-    const xStop = xScale(xMax);
-    const yStart = figureHeight - backgroundMargin - 27; // Hardkodet, må fikses
-    const yStop = 0 + backgroundMargin;
-
-    const greenStart = levelGreen && xScale(levelGreen);
-    const yellowStart = levelYellow && xScale(levelYellow);
-
-    const validGrid =
-      xStart &&
-      xStop &&
-      greenStart &&
-      yellowStart &&
-      (levelDirection === 0 || levelDirection === 1);
-
-    return (
-      validGrid &&
-      BarchartGrid({
-        xStart: xStart,
-        xStop: xStop,
-        yStart: yStart,
-        yStop: yStop,
-        levelGreen: greenStart,
-        levelYellow: yellowStart,
-        levelDirection: levelDirection,
-      })
-    );
-  };
-
   // The delivery_latest_affirm date can be different depending on the year.
   // Find the latest year and use that.
   const affirmYears = data.data.map((row) => {
@@ -254,7 +197,12 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             >
               <ChartsTooltip />
               <ChartsSurface>
-                <BarBackground data={data} percentage={percentage} />
+                <BarBackground
+                  data={data}
+                  percentage={percentage}
+                  figureHeight={figureHeight}
+                  backgroundMargin={backgroundMargin}
+                />
                 <ChartsXAxis />
                 <ChartsYAxis />
                 <BarPlot />
