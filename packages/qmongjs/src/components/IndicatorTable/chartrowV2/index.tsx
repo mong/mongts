@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IndicatorData } from "types";
+import { IndicatorData, OptsTu } from "types";
 import {
   Select,
   FormControl,
@@ -13,17 +13,30 @@ import { getLastCompleteYear } from "../../../helpers/functions";
 import { customFormat } from "../../../helpers/functions";
 import { MuiLineChart } from "../../Charts/MuiLineChart";
 import { MuiBarChart } from "../../Charts/MuiBarChart";
-import { formatMuiChartData } from "./formatMuiChartData";
+import { formatMuiChartData } from "../../../helpers/functions/formatMuiChartData";
 
 type chartRowV2Props = {
   data: IndicatorData;
   unitNames: string[];
+  medfield: string;
   context: string;
+  type: string;
   year: number;
+  treatmentUnitsByLevel: OptsTu[];
+  indID: string;
 };
 
 export const ChartRowV2 = (props: chartRowV2Props) => {
-  const { data, unitNames, context, year } = props;
+  const {
+    data,
+    unitNames,
+    context,
+    type,
+    year,
+    treatmentUnitsByLevel,
+    medfield,
+    indID,
+  } = props;
 
   if (data.data === undefined) {
     return <div>No data</div>;
@@ -132,8 +145,15 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
               backgroundMargin={backgroundMargin}
               unitNames={unitNames}
               percentage={percentage}
+              barChartType={barChartType}
               barValueFormatter={barValueFormatter}
               valueAxisFormatter={valueAxisFormatter}
+              treatmentUnitsByLevel={treatmentUnitsByLevel}
+              context={context}
+              type={type}
+              medfield={medfield}
+              year={year}
+              indID={indID}
             />
           </Box>
         ) : null}

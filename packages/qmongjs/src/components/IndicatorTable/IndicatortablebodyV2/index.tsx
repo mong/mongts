@@ -5,9 +5,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { RegisterData, IndicatorData } from "types";
+import { RegisterData, IndicatorData, OptsTu } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
-import { FetchIndicatorParams } from "../../../helpers/hooks";
+import {
+  FetchIndicatorParams,
+  useUnitNamesQuery,
+} from "../../../helpers/hooks";
 import { newLevelSymbols, level2, skdeTheme } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -50,6 +53,7 @@ type IndicatorTableBodyV2Props = {
 
 const IndicatorRow = (props: {
   unitNames: string[];
+  medfield: string;
   levels: string;
   indData: IndicatorData;
   rowID: string;
@@ -60,6 +64,7 @@ const IndicatorRow = (props: {
   type: string;
   year: number;
   chartColours: string[];
+  treatmentUnitsByLevel: OptsTu[];
 }) => {
   const {
     unitNames,
@@ -69,7 +74,10 @@ const IndicatorRow = (props: {
     openRowID,
     setOpenRowID,
     context,
+    type,
     year,
+    treatmentUnitsByLevel,
+    medfield,
   } = props;
 
   const router = useRouter();
@@ -216,8 +224,12 @@ const IndicatorRow = (props: {
                     <ChartRowV2
                       data={indData}
                       unitNames={unitNames}
+                      medfield={medfield}
                       context={context}
+                      type={type}
                       year={year}
+                      treatmentUnitsByLevel={treatmentUnitsByLevel}
+                      indID={rowID}
                     />
                   </td>
                 </tr>
@@ -381,6 +393,7 @@ const IndicatorRow = (props: {
 
 const IndicatorSection = (props: {
   unitNames: string[];
+  medfield: string;
   levels: string;
   data: IndicatorData[];
   openRowID: string;
@@ -390,6 +403,7 @@ const IndicatorSection = (props: {
   type: string;
   year: number;
   chartColours: string[];
+  treatmentUnitsByLevel: OptsTu[];
 }) => {
   const {
     unitNames,
@@ -402,6 +416,8 @@ const IndicatorSection = (props: {
     type,
     year,
     chartColours,
+    treatmentUnitsByLevel,
+    medfield,
   } = props;
 
   // Map indicators to rows and show only rows where there is at least
@@ -423,6 +439,7 @@ const IndicatorSection = (props: {
       <IndicatorRow
         key={"IndicatorRow" + indDataRow.indicatorID}
         unitNames={unitNames}
+        medfield={medfield}
         levels={levels}
         indData={indDataRow}
         rowID={indDataRow.indicatorID}
@@ -433,6 +450,7 @@ const IndicatorSection = (props: {
         type={type}
         year={year}
         chartColours={chartColours}
+        treatmentUnitsByLevel={treatmentUnitsByLevel}
       />
     ) : null;
 
@@ -480,9 +498,14 @@ const RegistrySection = (props: {
     nested: true,
   });
 
-  if (nestedDataQuery.isFetching) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const unitNamesByLevelQuery = useUnitNamesQuery(medfield, context, type);
+
+  if (nestedDataQuery.isFetching || unitNamesByLevelQuery.isFetching) {
     return <Skeleton variant="rectangular" width={"100%"} height={2000} />;
   }
+
+  const treatmentUnitsByLevel = unitNamesByLevelQuery.data.opts_tu as OptsTu[];
 
   const rowData = nestedDataQuery.data as RegisterData[];
 
@@ -586,6 +609,7 @@ const RegistrySection = (props: {
           <IndicatorSection
             key={regData.registerName}
             unitNames={unitNames}
+            medfield={medfield}
             levels={levels}
             data={regData.indicatorData}
             openRowID={openRowID}
@@ -595,6 +619,7 @@ const RegistrySection = (props: {
             type={type}
             year={year}
             chartColours={chartColours}
+            treatmentUnitsByLevel={treatmentUnitsByLevel}
           />
         </TableBody>
       </React.Fragment>
