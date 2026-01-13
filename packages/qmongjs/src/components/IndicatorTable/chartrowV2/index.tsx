@@ -7,26 +7,22 @@ import {
   MenuItem,
 } from "@mui/material";
 import { useState } from "react";
-import { LinePlot } from "@mui/x-charts/LineChart";
+
 import { BarPlot } from "@mui/x-charts";
 import {
   ChartDataProvider,
-  ChartsAxisHighlight,
-  ChartsLegend,
   ChartsSurface,
   ChartsTooltip,
   ChartsXAxis,
   ChartsYAxis,
   LineSeriesType,
-  MarkPlot,
   useXScale,
 } from "@mui/x-charts";
 import { BarchartGrid } from "../../Charts/LinechartGrid";
 import { Box } from "@mui/material";
 import { getLastCompleteYear } from "../../../helpers/functions";
 import { customFormat } from "../../../helpers/functions";
-import { CustomAnimatedLine } from "../../Charts/MuiLineChart/CustomAnimatedLine";
-import { LineBackground } from "../../Charts/MuiLineChart/LineBackground";
+import { MuiLineChart } from "../../Charts/MuiLineChart";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -225,54 +221,15 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
         }}
       >
         {figureType == "line" ? (
-          <ChartDataProvider
-            series={lineData}
-            xAxis={[
-              {
-                scaleType: "point",
-                data: uniqueYears,
-                valueFormatter: (value: number) => value.toString(),
-              },
-            ]}
-            yAxis={[
-              {
-                min: 0,
-                max: percentage ? 1 : undefined,
-                position: "left",
-                scaleType: "linear",
-                valueFormatter: valueAxisFormatter,
-              },
-            ]}
-          >
-            <ChartsLegend
-              slotProps={{
-                legend: { position: { vertical: "top", horizontal: "start" } },
-              }}
-            />
-            <ChartsTooltip />
-            <ChartsSurface
-              sx={{ "& .line-after path": { strokeDasharray: "10 5" } }}
-            >
-              <LineBackground
-                data={data}
-                figureHeight={figureHeight}
-                years={years}
-              />
-              <ChartsXAxis />
-              <ChartsYAxis />
-              <LinePlot
-                slots={{ line: CustomAnimatedLine }}
-                slotProps={{
-                  line: {
-                    limit: lastAffirmYear,
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  } as any,
-                }}
-              />
-              <MarkPlot />
-              <ChartsAxisHighlight x="line" />
-            </ChartsSurface>
-          </ChartDataProvider>
+          <MuiLineChart
+            data={data}
+            lineData={lineData}
+            uniqueYears={uniqueYears}
+            percentage={percentage}
+            valueAxisFormatter={valueAxisFormatter}
+            figureHeight={figureHeight}
+            lastAffirmYear={lastAffirmYear}
+          />
         ) : figureType === "bar" ? (
           <Box width={"100%"}>
             <ChartDataProvider
