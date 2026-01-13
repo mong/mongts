@@ -20,14 +20,13 @@ import {
   LineSeriesType,
   MarkPlot,
   useXScale,
-  useYScale,
 } from "@mui/x-charts";
-import { LinechartGrid } from "../../Charts/LinechartGrid";
 import { BarchartGrid } from "../../Charts/LinechartGrid";
 import { Box } from "@mui/material";
 import { getLastCompleteYear } from "../../../helpers/functions";
 import { customFormat } from "../../../helpers/functions";
 import { CustomAnimatedLine } from "../../Charts/MuiLineChart/CustomAnimatedLine";
+import { LineBackground } from "../../Charts/MuiLineChart/LineBackground";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -142,52 +141,6 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     percentage: boolean;
   };
 
-  const LineBackground = (props: BackgroundProps) => {
-    const { data } = props;
-
-    const levelGreen = data.levelGreen;
-    const levelYellow = data.levelYellow;
-    const levelDirection = data.levelDirection;
-
-    const yMin = 0;
-    const yMax = figureHeight;
-    const xMin = Math.min(...years);
-    const xMax = Math.max(...years);
-
-    const xScale = useXScale();
-    const yScale = useYScale();
-
-    const xStart = xScale(xMin);
-    const xStop = xScale(xMax);
-    const yStart = yScale(yMax);
-    const yStop = yScale(yMin);
-
-    const greenStart = levelGreen !== null ? yScale(levelGreen) : undefined;
-    const yellowStart = levelYellow !== null ? yScale(levelYellow) : undefined;
-
-    const validGrid =
-      xStart !== undefined &&
-      yStart !== undefined &&
-      xStop !== undefined &&
-      yStop !== undefined &&
-      greenStart !== undefined &&
-      yellowStart !== undefined &&
-      (levelDirection === 0 || levelDirection === 1);
-
-    return (
-      validGrid &&
-      LinechartGrid({
-        xStart: xStart,
-        xStop: xStop,
-        yStart: yStart,
-        yStop: yStop,
-        levelGreen: greenStart,
-        levelYellow: yellowStart,
-        levelDirection: levelDirection,
-      })
-    );
-  };
-
   const BarBackground = (props: BackgroundProps) => {
     const { data } = props;
 
@@ -300,7 +253,11 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             <ChartsSurface
               sx={{ "& .line-after path": { strokeDasharray: "10 5" } }}
             >
-              <LineBackground data={data} percentage={percentage} />
+              <LineBackground
+                data={data}
+                figureHeight={figureHeight}
+                years={years}
+              />
               <ChartsXAxis />
               <ChartsYAxis />
               <LinePlot
