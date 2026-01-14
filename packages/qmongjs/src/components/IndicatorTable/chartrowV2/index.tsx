@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { IndicatorData } from "types";
+import { IndicatorData, OptsTu } from "types";
 import {
   Select,
   FormControl,
@@ -7,22 +7,53 @@ import {
   SelectChangeEvent,
   MenuItem,
   Box,
+  Stack,
 } from "@mui/material";
 import { getLastCompleteYear } from "../../../helpers/functions";
 import { customFormat } from "../../../helpers/functions";
 import { MuiLineChart } from "../../Charts/MuiLineChart";
 import { MuiBarChart } from "../../Charts/MuiBarChart";
-import { formatMuiChartData } from "./formatMuiChartData";
+import { formatMuiChartData } from "../../../helpers/functions/formatMuiChartData";
 
 type chartRowV2Props = {
   data: IndicatorData;
   unitNames: string[];
+  medfield: string;
   context: string;
+  type: string;
   year: number;
+  treatmentUnitsByLevel: OptsTu[];
+  indID: string;
 };
 
 export const ChartRowV2 = (props: chartRowV2Props) => {
-  const { data, unitNames, context, year } = props;
+  const {
+    data,
+    unitNames,
+    context,
+    type,
+    year,
+    treatmentUnitsByLevel,
+    medfield,
+    indID,
+  } = props;
+
+  if (data.data === undefined) {
+    return <div>No data</div>;
+  }
+
+  // States
+  const [figureType, setFigureType] = useState("line");
+  const [barChartType, setBarChartType] = useState("selected");
+
+  // Callback dunctions for dropdown menus
+  const handleBarChartTypeChange = (event: SelectChangeEvent) => {
+    setBarChartType(event.target.value as string);
+  };
+
+  const handleFigureTypeChange = (event: SelectChangeEvent) => {
+    setFigureType(event.target.value as string);
+  };
 
   const figureHeight = 500;
   const backgroundMargin = 20;
@@ -38,20 +69,6 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     dataFormat,
   );
 
-  if (data.data === undefined) {
-    return <div>No data</div>;
-  }
-
-  const [figureType, setFigureType] = useState("line");
-
-  const handleChange = (event: SelectChangeEvent) => {
-    setFigureType(event.target.value as string);
-  };
-
-  const barValueFormatter = (value: number | null) => {
-    return `${value && customFormat(dataFormat)(value)}`;
-  };
-
   // The delivery_latest_affirm date can be different depending on the year.
   // Find the latest year and use that.
   const affirmYears = data.data.map((row) => {
@@ -60,21 +77,45 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
 
   const lastAffirmYear = Math.max(...affirmYears);
 
+  // Formatting functions
+  const barValueFormatter = (value: number | null) => {
+    return `${value && customFormat(dataFormat)(value)}`;
+  };
+
   const valueAxisFormatter = (value: number) => {
     return percentage ? `${Math.round(value * 100)} %` : `${value}`;
   };
 
   return (
     <Box>
-      <Box sx={{ width: "10rem", paddingLeft: 4 }}>
-        <FormControl fullWidth>
+      <Stack direction={"row"} spacing={2} sx={{ paddingLeft: 4 }}>
+        <FormControl sx={{ width: "10rem" }}>
           <InputLabel>Figurtype</InputLabel>
-          <Select value={figureType} label="Figurtype" onChange={handleChange}>
+          <Select
+            value={figureType}
+            label="Figurtype"
+            onChange={handleFigureTypeChange}
+          >
             <MenuItem value={"line"}>Linje</MenuItem>
             <MenuItem value={"bar"}>Søyle</MenuItem>
           </Select>
         </FormControl>
-      </Box>
+        {figureType === "bar" && (
+          <FormControl sx={{ width: "15rem" }}>
+            <InputLabel>Enheter</InputLabel>
+            <Select
+              value={barChartType}
+              label="Enheter"
+              onChange={handleBarChartTypeChange}
+            >
+              <MenuItem value={"selected"}>Valgte enheter</MenuItem>
+              <MenuItem value={"rhf"}>Regioner</MenuItem>
+              <MenuItem value={"hf"}>Helseforetak</MenuItem>
+              <MenuItem value={"hospital"}>Sykehus</MenuItem>
+            </Select>
+          </FormControl>
+        )}
+      </Stack>
       <Box
         sx={{
           width: "100%",
@@ -104,8 +145,15 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
               backgroundMargin={backgroundMargin}
               unitNames={unitNames}
               percentage={percentage}
+              barChartType={barChartType}
               barValueFormatter={barValueFormatter}
               valueAxisFormatter={valueAxisFormatter}
+              treatmentUnitsByLevel={treatmentUnitsByLevel}
+              context={context}
+              type={type}
+              medfield={medfield}
+              year={year}
+              indID={indID}
             />
           </Box>
         ) : null}

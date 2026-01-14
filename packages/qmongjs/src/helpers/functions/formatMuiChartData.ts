@@ -1,17 +1,15 @@
 import { IndicatorData, DataPoint } from "types";
-import { customFormat } from "../../../helpers/functions";
+import { customFormat } from ".";
 import { LineSeriesType } from "@mui/x-charts";
 
 type Point = { x: number; y: number | null };
 
-export const formatMuiChartData = (
+// Format to {x, y}
+export const reshapeData = (
   data: IndicatorData,
   unitNames: string[],
   context: string,
-  year: number,
-  dataFormat: string,
 ) => {
-  // Format to {x, y}
   const reshapedData = unitNames.map((unitName: string) => {
     return data
       .data!.filter((row: DataPoint) => {
@@ -22,24 +20,31 @@ export const formatMuiChartData = (
       });
   });
 
-  // Get the years from the data
-  const years = reshapedData
+  return reshapedData;
+};
+
+// Get the years from the data
+const getUniqueYears = (data: Point[][]) => {
+  const years = data
     .map((row: Point[]) => {
       return row.map((point) => point.x);
     })
     .flat();
 
-  // Unique years
   const uniqueYears = [...new Set(years)];
 
+  return uniqueYears;
+};
+
+// Make datapoints for the missing years with value null
+const padData = (data: Point[][], uniqueYears: number[]) => {
   // missing years from each series
-  const missingYears = reshapedData.map((row: Point[]) => {
+  const missingYears = data.map((row: Point[]) => {
     return uniqueYears.filter(
       (year: number) => !row.map((point: Point) => point.x).includes(year),
     );
   });
 
-  // Make datapoints for the missing years with value null
   const missingData = missingYears.map((row) => {
     return row.map((element) => {
       return { x: element, y: null } as Point;
@@ -47,7 +52,7 @@ export const formatMuiChartData = (
   });
 
   // Combine and sort by year
-  const paddedData = reshapedData
+  const paddedData = data
     .map((row, i) => {
       return row.concat(missingData[i]);
     })
@@ -65,8 +70,16 @@ export const formatMuiChartData = (
       });
     });
 
+  return paddedData;
+};
+
+const formatLineData = (
+  data: Point[][],
+  unitNames: string[],
+  dataFormat: string,
+) => {
   // Add unit name label
-  const lineData = paddedData.map((row, i) => {
+  const lineData = data.map((row, i) => {
     return {
       data: row.map((point) => point.y),
       label: unitNames[i],
@@ -77,7 +90,11 @@ export const formatMuiChartData = (
     } as LineSeriesType;
   });
 
-  const barData = paddedData
+  return lineData;
+};
+
+export const formatBarData = (data: Point[][], year: number) => {
+  const barData = data
     .map((row) => {
       return row
         .filter((point) => {
@@ -86,6 +103,22 @@ export const formatMuiChartData = (
         .map((row) => row.y);
     })
     .flat();
+
+  return barData;
+};
+
+export const formatMuiChartData = (
+  data: IndicatorData,
+  unitNames: string[],
+  context: string,
+  year: number,
+  dataFormat: string,
+) => {
+  const reshapedData = reshapeData(data, unitNames, context);
+  const barData = formatBarData(reshapedData, year);
+  const uniqueYears = getUniqueYears(reshapedData);
+  const paddedData = padData(reshapedData, uniqueYears);
+  const lineData = formatLineData(paddedData, unitNames, dataFormat);
 
   return {
     lineData: lineData,
