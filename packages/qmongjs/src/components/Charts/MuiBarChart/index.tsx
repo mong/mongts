@@ -53,8 +53,8 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     indID,
   } = props;
 
-  var currentData = barData;
-  var currentUnitNames = unitNames;
+  let currentData = barData;
+  let currentUnitNames = unitNames;
 
   const getDataByLevel = (level: string) => {
     const newUnitBlock = treatmentUnitsByLevel.find(
