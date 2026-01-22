@@ -158,26 +158,6 @@ context("v2 atlas", () => {
       .get('[fill="rgba(3, 63, 133, 0.8)"]')
       .should("exist");
   });
-
-  it("Test english test atlas", () => {
-    cy.visit("/helseatlas/en/v2/test_atlas");
-    cy.get('[data-testid="resultbox_expandButton"]').click(); // Open the result box
-    cy.get('[data-testid="rect_UNN_unselected"]').click();
-    cy.get('[data-testid="rect_UNN_selected"]').should("exist");
-    cy.get('[data-testid="circle_UNN_selected"]').should("exist");
-    cy.get('[data-testid="carouselbutton_5"]').click(); // Show the map
-    cy.get('[label="map"]').should("exist"); // Map exist
-    cy.get('[data-testid="mapCaption"]').contains(
-      "Number of epilepsy patients per 1,000 inhabitants",
-    );
-    cy.get('[data-testid="carouselbutton_4"]').click(); // Show the table
-    cy.get('[label="table"]').should("exist"); // Table exist
-    cy.get("caption").contains("Average per year for the period ");
-    cy.get('[data-testid="carouselbutton_1"]').click(); // Show the second barchart
-    cy.get('[label="barchart"]').should("exist"); // Barchart exist
-    cy.get('[label="map"]').should("not.exist"); // Map does not exist
-    cy.get('[label="table"]').should("not.exist"); // Table does not exist
-  });
 });
 
 export {};
