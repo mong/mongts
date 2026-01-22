@@ -56,7 +56,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
   let currentData = barData;
   let currentUnitNames = unitNames;
 
-  const getDataByLevel = (level: string) => {
+  const getDataByUnitLevel = (level: string) => {
     const newUnitBlock = treatmentUnitsByLevel.find(
       (row) => row.label === level,
     );
@@ -95,17 +95,35 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
       return null;
     }
 
-    const reshapedData = reshapeData(newDataSelection, newUnitNames, context);
+    // Sorter etter måloppnåelse
+    newDataSelection.data!.sort((a, b) =>
+      a.var !== null && b.var !== null ? b.var - a.var : 0,
+    );
+
+    // Filterer vekk lav dekningsgrad
+    newDataSelection.data = newDataSelection.data!.filter((row) =>
+      row.dg !== null ? row.dg >= 0.6 : true,
+    );
+
+    // Hent enhetsnavn i riktig rekkefølge
+    const orderedUnitNames = newDataSelection.data!.map((row) => row.unitName);
+
+    const reshapedData = reshapeData(
+      newDataSelection,
+      orderedUnitNames,
+      context,
+    );
+
     const newData = formatBarData(reshapedData, year);
 
     return {
       newData: newData,
-      newUnitNames: newUnitNames,
+      newUnitNames: orderedUnitNames,
     };
   };
 
   if (barChartType === "rhf") {
-    const returnData = getDataByLevel("RHF");
+    const returnData = getDataByUnitLevel("RHF");
 
     if (!returnData) {
       return null;
@@ -114,7 +132,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     currentData = returnData.newData;
     currentUnitNames = returnData.newUnitNames;
   } else if (barChartType === "hf") {
-    const returnData = getDataByLevel("HF");
+    const returnData = getDataByUnitLevel("HF");
 
     if (!returnData) {
       return null;
@@ -123,7 +141,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     currentData = returnData.newData;
     currentUnitNames = returnData.newUnitNames;
   } else if (barChartType === "hospital") {
-    const returnData = getDataByLevel("Sykehus");
+    const returnData = getDataByUnitLevel("Sykehus");
 
     if (!returnData) {
       return null;
