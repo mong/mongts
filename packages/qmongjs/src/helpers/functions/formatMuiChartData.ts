@@ -2,7 +2,7 @@ import { IndicatorData, DataPoint } from "types";
 import { customFormat } from ".";
 import { LineSeriesType } from "@mui/x-charts";
 
-export type Point = { x: number; y: number | null };
+type Point = { x: number; y: number | null };
 
 // Format to {x, y}
 export const reshapeData = (
