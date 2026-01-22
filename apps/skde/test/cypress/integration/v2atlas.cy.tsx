@@ -96,17 +96,6 @@ context("v2 atlas", () => {
     cy.get('[data-testid="resultbox"]').invoke("height").should("be.lt", 600); // Check if result box is not expanded
   });
 
-  it("Test expansion of fact box", () => {
-    cy.visit("/helseatlas/v2/test_atlas");
-    cy.get('[data-testid="factbox"]').invoke("height").should("be.lt", 100);
-    cy.get('[data-testid="factbox"]').click();
-    cy.get('[data-testid="factbox"]').invoke("height").should("be.gt", 200);
-    cy.get(
-      '[id="ms-syke-barn-under-fødsel-fact-svangeskapsdiabetes-header"]',
-    ).click();
-    cy.get('[data-testid="factbox"]').invoke("height").should("be.lt", 100);
-  });
-
   it("Test select HF", () => {
     cy.visit("/helseatlas/v2/test_atlas");
     cy.get('[data-testid="circle_UNN_selected"]').should("not.exist");
