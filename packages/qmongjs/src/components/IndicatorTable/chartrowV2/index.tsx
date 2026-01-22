@@ -155,6 +155,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
               year={year}
               indID={indID}
               tickFontSize={15}
+              yAxisWidth={160}
             />
           </Box>
         ) : null}

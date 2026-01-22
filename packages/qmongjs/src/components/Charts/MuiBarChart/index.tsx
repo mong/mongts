@@ -33,6 +33,7 @@ type MuiBarChartProps = {
   year: number;
   indID: string;
   tickFontSize: number;
+  yAxisWidth: number;
 };
 
 export const MuiBarChart = (props: MuiBarChartProps) => {
@@ -53,6 +54,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     year,
     indID,
     tickFontSize,
+    yAxisWidth,
   } = props;
 
   let currentData = barData;
@@ -173,7 +175,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
           scaleType: "band",
           data: currentUnitNames,
           position: "left",
-          width: 140,
+          width: yAxisWidth,
           tickLabelStyle: { fontSize: tickFontSize },
         },
       ]}
