@@ -19,7 +19,7 @@ import {
 type MuiBarChartProps = {
   barData: (number | null)[];
   data: IndicatorData;
-  figureHeight: number;
+  figureSpacing: number;
   backgroundMargin: number;
   unitNames: string[];
   percentage: boolean;
@@ -32,13 +32,15 @@ type MuiBarChartProps = {
   medfield: string;
   year: number;
   indID: string;
+  tickFontSize: number;
+  yAxisWidth: number;
 };
 
 export const MuiBarChart = (props: MuiBarChartProps) => {
   const {
     barData,
     data,
-    figureHeight,
+    figureSpacing,
     backgroundMargin,
     unitNames,
     percentage,
@@ -51,6 +53,8 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     medfield,
     year,
     indID,
+    tickFontSize,
+    yAxisWidth,
   } = props;
 
   let currentData = barData;
@@ -66,6 +70,8 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     }
 
     const newUnitNames = newUnitBlock.options.map((row) => row.value);
+
+    newUnitNames.push("Nasjonalt");
 
     const queryParams: FetchIndicatorParams = {
       context: context,
@@ -151,6 +157,8 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     currentUnitNames = returnData.newUnitNames;
   }
 
+  const figureHeight = (currentUnitNames.length + 1.5) * figureSpacing;
+
   return (
     <ChartDataProvider
       series={[
@@ -162,7 +170,15 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
         },
       ]}
       height={figureHeight}
-      yAxis={[{ scaleType: "band", data: currentUnitNames, position: "left" }]}
+      yAxis={[
+        {
+          scaleType: "band",
+          data: currentUnitNames,
+          position: "left",
+          width: yAxisWidth,
+          tickLabelStyle: { fontSize: tickFontSize },
+        },
+      ]}
       xAxis={[
         {
           min: 0,
