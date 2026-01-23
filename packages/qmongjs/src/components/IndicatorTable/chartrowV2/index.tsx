@@ -119,7 +119,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
       <Box
         sx={{
           width: "100%",
-          height: figureHeight,
+          height: figureType === "bar" ? "100%" : figureHeight,
           overflow: "auto",
           display: "flex",
           flexDirection: "column",
@@ -141,7 +141,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             <MuiBarChart
               barData={barData}
               data={data}
-              figureHeight={figureHeight}
+              figureSpacing={60}
               backgroundMargin={backgroundMargin}
               unitNames={unitNames}
               percentage={percentage}
@@ -154,6 +154,8 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
               medfield={medfield}
               year={year}
               indID={indID}
+              tickFontSize={15}
+              yAxisWidth={160}
             />
           </Box>
         ) : null}
