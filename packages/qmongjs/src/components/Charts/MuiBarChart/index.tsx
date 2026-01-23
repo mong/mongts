@@ -4,6 +4,7 @@ import {
   ChartsTooltip,
   ChartsXAxis,
   ChartsYAxis,
+  HighlightScope,
 } from "@mui/x-charts";
 import { BarPlot } from "@mui/x-charts";
 import { BarBackground } from "./BarBackground";
@@ -167,6 +168,10 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
           layout: "horizontal",
           data: currentData,
           valueFormatter: barValueFormatter,
+          highlightScope: {
+            highlight: "item",
+            fade: "none",
+          } as HighlightScope,
         },
       ]}
       height={figureHeight}
