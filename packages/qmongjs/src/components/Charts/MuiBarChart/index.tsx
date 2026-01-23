@@ -170,7 +170,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
           valueFormatter: barValueFormatter,
           highlightScope: {
             highlight: "item",
-            fade: "none",
+            fade: "series",
           } as HighlightScope,
         },
       ]}
