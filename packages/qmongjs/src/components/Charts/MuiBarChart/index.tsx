@@ -200,6 +200,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
           percentage={percentage}
           figureHeight={figureHeight}
           backgroundMargin={backgroundMargin}
+          lines={true}
         />
         <ChartsXAxis />
         <ChartsYAxis />

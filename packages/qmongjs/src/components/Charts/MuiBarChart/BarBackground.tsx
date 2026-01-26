@@ -7,10 +7,11 @@ type BarBackgroundProps = {
   figureHeight: number;
   percentage: boolean;
   backgroundMargin: number;
+  lines: boolean;
 };
 
 export const BarBackground = (props: BarBackgroundProps) => {
-  const { data, figureHeight, percentage, backgroundMargin } = props;
+  const { data, figureHeight, percentage, backgroundMargin, lines } = props;
 
   const levelGreen = data.levelGreen;
   const levelYellow = data.levelYellow;
@@ -55,6 +56,7 @@ export const BarBackground = (props: BarBackgroundProps) => {
       levelGreen: greenStart,
       levelYellow: yellowStart,
       levelDirection: levelDirection,
+      lines: lines,
     })
   );
 };
