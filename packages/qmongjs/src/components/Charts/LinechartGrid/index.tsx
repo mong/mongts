@@ -8,6 +8,7 @@ type LinechartGridProps = {
   levelGreen: number;
   levelYellow: number;
   levelDirection: number;
+  lines?: boolean;
 };
 
 export const LinechartGrid = (props: LinechartGridProps) => {
@@ -19,6 +20,7 @@ export const LinechartGrid = (props: LinechartGridProps) => {
     levelGreen,
     levelYellow,
     levelDirection,
+    lines,
   } = props;
 
   const opacity = "100%";
@@ -53,22 +55,27 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           opacity={opacity}
         />
 
-        <line
-          x1={xStart}
-          y1={levelGreen}
-          x2={xStop}
-          y2={levelGreen}
-          stroke="#66CCA1"
-          strokeWidth={"2px"}
-        />
-        <line
-          x1={xStart}
-          y1={levelYellow}
-          x2={xStop}
-          y2={levelYellow}
-          stroke="#E8D360"
-          strokeWidth={"2px"}
-        />
+        {lines && (
+          <line
+            x1={xStart}
+            y1={levelGreen}
+            x2={xStop}
+            y2={levelGreen}
+            stroke="#66CCA1"
+            strokeWidth={"2px"}
+          />
+        )}
+
+        {lines && (
+          <line
+            x1={xStart}
+            y1={levelYellow}
+            x2={xStop}
+            y2={levelYellow}
+            stroke="#E8D360"
+            strokeWidth={"2px"}
+          />
+        )}
       </React.Fragment>
     );
   } else if (levelDirection === 0) {
@@ -101,22 +108,26 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           opacity={opacity}
         />
 
-        <line
-          x1={xStart}
-          y1={levelGreen}
-          x2={xStop}
-          y2={levelGreen}
-          stroke="#66CCA1"
-          strokeWidth={"2px"}
-        />
-        <line
-          x1={xStart}
-          y1={levelYellow}
-          x2={xStop}
-          y2={levelYellow}
-          stroke="#E8D360"
-          strokeWidth={"2px"}
-        />
+        {lines && (
+          <line
+            x1={xStart}
+            y1={levelGreen}
+            x2={xStop}
+            y2={levelGreen}
+            stroke="#66CCA1"
+            strokeWidth={"2px"}
+          />
+        )}
+        {lines && (
+          <line
+            x1={xStart}
+            y1={levelYellow}
+            x2={xStop}
+            y2={levelYellow}
+            stroke="#E8D360"
+            strokeWidth={"2px"}
+          />
+        )}
       </React.Fragment>
     );
   } else {
@@ -132,6 +143,7 @@ type BarchartGridProps = {
   levelGreen: number;
   levelYellow: number;
   levelDirection: number;
+  lines?: boolean;
 };
 
 export const BarchartGrid = (props: BarchartGridProps) => {
@@ -143,6 +155,7 @@ export const BarchartGrid = (props: BarchartGridProps) => {
     levelGreen,
     levelYellow,
     levelDirection,
+    lines,
   } = props;
 
   const opacity = "100%";
@@ -177,22 +190,26 @@ export const BarchartGrid = (props: BarchartGridProps) => {
           opacity={opacity}
         />
 
-        <line
-          x1={levelGreen}
-          y1={yStart}
-          x2={levelGreen}
-          y2={yStop}
-          stroke="#66CCA1"
-          strokeWidth={"2px"}
-        />
-        <line
-          x1={levelYellow}
-          y1={yStart}
-          x2={levelYellow}
-          y2={yStop}
-          stroke="#E8D360"
-          strokeWidth={"2px"}
-        />
+        {lines && (
+          <line
+            x1={levelGreen}
+            y1={yStart}
+            x2={levelGreen}
+            y2={yStop}
+            stroke="#66CCA1"
+            strokeWidth={"2px"}
+          />
+        )}
+        {lines && (
+          <line
+            x1={levelYellow}
+            y1={yStart}
+            x2={levelYellow}
+            y2={yStop}
+            stroke="#E8D360"
+            strokeWidth={"2px"}
+          />
+        )}
       </React.Fragment>
     );
   } else if (levelDirection === 0) {

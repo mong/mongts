@@ -60,7 +60,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
       />
       <ChartsTooltip />
       <ChartsSurface sx={{ "& .line-after path": { strokeDasharray: "10 5" } }}>
-        <LineBackground data={data} years={uniqueYears} />
+        <LineBackground data={data} years={uniqueYears} lines={true} />
         <ChartsXAxis />
         <ChartsYAxis />
         <ChartsAxisHighlight y="line" />
