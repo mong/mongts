@@ -100,6 +100,23 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           fill="#EAF6EB"
           opacity={opacity}
         />
+
+        <line
+          x1={xStart}
+          y1={levelGreen}
+          x2={xStop}
+          y2={levelGreen}
+          stroke="#66CCA1"
+          strokeWidth={"2px"}
+        />
+        <line
+          x1={xStart}
+          y1={levelYellow}
+          x2={xStop}
+          y2={levelYellow}
+          stroke="#E8D360"
+          strokeWidth={"2px"}
+        />
       </React.Fragment>
     );
   } else {
@@ -159,6 +176,23 @@ export const BarchartGrid = (props: BarchartGridProps) => {
           fill="#EAF6EB"
           opacity={opacity}
         />
+
+        <line
+          x1={levelGreen}
+          y1={yStart}
+          x2={levelGreen}
+          y2={yStop}
+          stroke="#66CCA1"
+          strokeWidth={"2px"}
+        />
+        <line
+          x1={levelYellow}
+          y1={yStart}
+          x2={levelYellow}
+          y2={yStop}
+          stroke="#E8D360"
+          strokeWidth={"2px"}
+        />
       </React.Fragment>
     );
   } else if (levelDirection === 0) {
@@ -189,6 +223,23 @@ export const BarchartGrid = (props: BarchartGridProps) => {
           height={yStart - yStop}
           fill="#FFE5E2"
           opacity={opacity}
+        />
+
+        <line
+          x1={levelGreen}
+          y1={yStart}
+          x2={levelGreen}
+          y2={yStop}
+          stroke="#66CCA1"
+          strokeWidth={"2px"}
+        />
+        <line
+          x1={levelYellow}
+          y1={yStart}
+          x2={levelYellow}
+          y2={yStop}
+          stroke="#E8D360"
+          strokeWidth={"2px"}
         />
       </React.Fragment>
     );
