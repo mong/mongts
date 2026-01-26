@@ -133,7 +133,6 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             uniqueYears={uniqueYears}
             percentage={percentage}
             valueAxisFormatter={valueAxisFormatter}
-            figureHeight={figureHeight}
             lastAffirmYear={lastAffirmYear}
           />
         ) : figureType === "bar" ? (

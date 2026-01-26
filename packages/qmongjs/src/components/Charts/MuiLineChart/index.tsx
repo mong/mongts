@@ -20,7 +20,6 @@ type MuiLineChartProps = {
   uniqueYears: number[];
   percentage: boolean;
   valueAxisFormatter: (value: number) => string;
-  figureHeight: number;
   lastAffirmYear: number;
 };
 
@@ -31,7 +30,6 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
     uniqueYears,
     percentage,
     valueAxisFormatter,
-    figureHeight,
     lastAffirmYear,
   } = props;
 
@@ -62,11 +60,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
       />
       <ChartsTooltip />
       <ChartsSurface sx={{ "& .line-after path": { strokeDasharray: "10 5" } }}>
-        <LineBackground
-          data={data}
-          figureHeight={figureHeight}
-          years={uniqueYears}
-        />
+        <LineBackground data={data} years={uniqueYears} />
         <ChartsXAxis />
         <ChartsYAxis />
         <ChartsAxisHighlight y="line" />
