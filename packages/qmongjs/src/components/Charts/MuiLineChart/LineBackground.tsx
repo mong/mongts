@@ -4,19 +4,18 @@ import { useXScale, useYScale } from "@mui/x-charts";
 
 type LineBackgroundProps = {
   data: IndicatorData;
-  figureHeight: number;
   years: number[];
 };
 
 export const LineBackground = (props: LineBackgroundProps) => {
-  const { data, figureHeight, years } = props;
+  const { data, years } = props;
 
   const levelGreen = data.levelGreen;
   const levelYellow = data.levelYellow;
   const levelDirection = data.levelDirection;
 
   const yMin = 0;
-  const yMax = figureHeight;
+  const yMax = 1;
   const xMin = Math.min(...years);
   const xMax = Math.max(...years);
 
