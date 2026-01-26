@@ -5,10 +5,11 @@ import { useXScale, useYScale } from "@mui/x-charts";
 type LineBackgroundProps = {
   data: IndicatorData;
   years: number[];
+  lines: boolean;
 };
 
 export const LineBackground = (props: LineBackgroundProps) => {
-  const { data, years } = props;
+  const { data, years, lines } = props;
 
   const levelGreen = data.levelGreen;
   const levelYellow = data.levelYellow;
@@ -49,6 +50,7 @@ export const LineBackground = (props: LineBackgroundProps) => {
       levelGreen: greenStart,
       levelYellow: yellowStart,
       levelDirection: levelDirection,
+      lines,
     })
   );
 };
