@@ -175,6 +175,8 @@ const IndicatorRow = (props: {
     }
   }
 
+  const indFormat = indData.format ? indData.format : ",.0%";
+
   const CollapseContent = (props: { open: boolean }) => {
     const { open } = props;
 
@@ -191,14 +193,18 @@ const IndicatorRow = (props: {
             {indData.levelGreen === null ? (
               <b>{"Ikke oppgitt"}</b>
             ) : (
-              <b>{levelSignHigh + customFormat(",.0%")(indData.levelGreen)}</b>
+              <b>
+                {levelSignHigh + customFormat(indFormat)(indData.levelGreen)}
+              </b>
             )}
             <br />
             {"Lavt målnivå: "}
             {indData.levelYellow === null ? (
               <b>{"Ikke oppgitt"}</b>
             ) : (
-              <b>{levelSignLow + customFormat(",.0%")(indData.levelYellow)}</b>
+              <b>
+                {levelSignLow + customFormat(indFormat)(indData.levelYellow)}
+              </b>
             )}
             <br />
             <br />
