@@ -69,6 +69,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
         />
         <ChartsXAxis />
         <ChartsYAxis />
+        <ChartsAxisHighlight y="line" />
         <LinePlot
           slots={{ line: CustomAnimatedLine }}
           slotProps={{

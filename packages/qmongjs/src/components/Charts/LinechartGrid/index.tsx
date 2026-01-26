@@ -52,6 +52,23 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           fill="#FFE5E2"
           opacity={opacity}
         />
+
+        <line
+          x1={xStart}
+          y1={levelGreen}
+          x2={xStop}
+          y2={levelGreen}
+          stroke="#66CCA1"
+          strokeWidth={"2px"}
+        />
+        <line
+          x1={xStart}
+          y1={levelYellow}
+          x2={xStop}
+          y2={levelYellow}
+          stroke="#E8D360"
+          strokeWidth={"2px"}
+        />
       </React.Fragment>
     );
   } else if (levelDirection === 0) {
