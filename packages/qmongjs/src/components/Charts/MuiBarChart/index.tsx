@@ -106,7 +106,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     if (!newDataSelection) {
       return null;
     }
-    console.log(newDataSelection);
+
     // Sorter etter måloppnåelse
     newDataSelection.data!.sort((a, b) =>
       a.var !== null && b.var !== null ? b.var - a.var : 0,
