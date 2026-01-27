@@ -336,10 +336,14 @@ const IndicatorRow = (props: {
             </Stack>
           ) : null;
 
+          const lowCountText =
+            "Færre observasjoner enn " +
+            (row?.minDenominator ? row.minDenominator : 5);
+
           const patientCounts = lowDG
             ? "Lav dekning"
             : lowN
-              ? "Lite data"
+              ? lowCountText
               : noData
                 ? "Ingen data"
                 : row?.numerator + " av " + row?.denominator;
