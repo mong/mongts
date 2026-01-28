@@ -115,14 +115,12 @@ export const formatMuiChartData = (
   dataFormat: string,
 ) => {
   const reshapedData = reshapeData(data, unitNames, context);
-  const barData = formatBarData(reshapedData, year);
   const uniqueYears = getUniqueYears(reshapedData);
   const paddedData = padData(reshapedData, uniqueYears);
   const lineData = formatLineData(paddedData, unitNames, dataFormat);
 
   return {
     lineData: lineData,
-    barData: barData,
     uniqueYears: uniqueYears,
   };
 };
