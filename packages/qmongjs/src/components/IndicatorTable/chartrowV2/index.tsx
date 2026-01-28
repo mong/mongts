@@ -140,7 +140,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             <MuiBarChart
               barData={barData}
               data={data}
-              figureSpacing={60}
+              figureSpacing={30}
               backgroundMargin={backgroundMargin}
               unitNames={unitNames}
               percentage={percentage}
