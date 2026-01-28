@@ -21,6 +21,7 @@ type MuiLineChartProps = {
   percentage: boolean;
   valueAxisFormatter: (value: number) => string;
   lastAffirmYear: number;
+  zoom: boolean;
 };
 
 export const MuiLineChart = (props: MuiLineChartProps) => {
@@ -31,6 +32,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
     percentage,
     valueAxisFormatter,
     lastAffirmYear,
+    zoom
   } = props;
 
   return (

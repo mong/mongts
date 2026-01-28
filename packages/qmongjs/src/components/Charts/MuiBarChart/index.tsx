@@ -35,6 +35,7 @@ type MuiBarChartProps = {
   indID: string;
   tickFontSize: number;
   yAxisWidth: number;
+  zoom: boolean;
 };
 
 export const MuiBarChart = (props: MuiBarChartProps) => {
@@ -56,6 +57,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     indID,
     tickFontSize,
     yAxisWidth,
+    zoom
   } = props;
 
   let currentData = barData;
