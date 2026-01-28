@@ -22,7 +22,8 @@ export const LinechartGrid = (props: LinechartGridProps) => {
     levelDirection,
     lines,
   } = props;
-
+  console.log(levelGreen);
+  console.log(yStart);
   const opacity = "100%";
 
   if (levelDirection === 1) {
@@ -85,7 +86,7 @@ export const LinechartGrid = (props: LinechartGridProps) => {
   } else if (levelDirection === 0) {
     return (
       <React.Fragment>
-        {levelYellow < yStop && (
+        {levelYellow > yStart && (
           <rect
             x={xStart}
             width={xStop - xStart}
@@ -95,30 +96,27 @@ export const LinechartGrid = (props: LinechartGridProps) => {
             opacity={opacity}
           />
         )}
-
-        {levelGreen > levelYellow && (
+        {levelGreen > yStart && (
           <rect
             x={xStart}
             width={xStop - xStart}
-            y={levelYellow}
-            height={levelGreen - levelYellow}
+            y={Math.max(yStart, levelYellow)}
+            height={levelGreen - Math.max(yStart, levelYellow)}
             fill="#FFEFC7"
             opacity={opacity}
           />
         )}
-
-        {yStop > levelGreen && (
-          <rect
-            x={xStart}
-            width={xStop - xStart}
-            y={levelGreen}
-            height={yStop - levelGreen}
-            fill="#EAF6EB"
-            opacity={opacity}
-          />
-        )}
-
-        {lines && levelGreen < yStop && (
+        (
+        <rect
+          x={xStart}
+          width={xStop - xStart}
+          y={Math.max(yStart, levelGreen)}
+          height={yStop - Math.max(yStart, levelGreen)}
+          fill="#EAF6EB"
+          opacity={opacity}
+        />
+        )
+        {lines && levelGreen > yStart && (
           <line
             x1={xStart}
             y1={levelGreen}
@@ -128,7 +126,7 @@ export const LinechartGrid = (props: LinechartGridProps) => {
             strokeWidth={"2px"}
           />
         )}
-        {lines && levelYellow < yStop && (
+        {lines && levelYellow > yStart && (
           <line
             x1={xStart}
             y1={levelYellow}
