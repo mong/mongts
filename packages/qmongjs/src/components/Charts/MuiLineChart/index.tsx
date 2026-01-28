@@ -40,10 +40,13 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
     return null;
   }
 
-  const yLimit =
-    Math.max(
-      ...data.data.map((row: DataPoint) => (row.var != null ? row.var : 0)),
-    ) * 1.2;
+  const yMaxLimit = Math.max(
+    ...data.data.map((row: DataPoint) => (row.var != null ? row.var : 0)),
+  );
+
+  const yMinLimit = Math.min(
+    ...data.data.map((row: DataPoint) => (row.var != null ? row.var : 0)),
+  );
 
   return (
     <ChartDataProvider
@@ -57,8 +60,8 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
       ]}
       yAxis={[
         {
-          min: 0,
-          max: percentage && !zoom ? 1 : yLimit,
+          min: zoom ? yMinLimit : 0,
+          max: percentage && !zoom ? 1 : yMaxLimit,
           position: "left",
           scaleType: "linear",
           valueFormatter: valueAxisFormatter,
@@ -78,7 +81,8 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
           lines={true}
           percentage={percentage}
           zoom={zoom}
-          yLimit={yLimit}
+          yMaxLimit={yMaxLimit}
+          yMinLimit={yMinLimit}
         />
         <ChartsXAxis />
         <ChartsYAxis />
