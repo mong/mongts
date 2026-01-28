@@ -228,47 +228,56 @@ export const BarchartGrid = (props: BarchartGridProps) => {
       <React.Fragment>
         <rect
           x={xStart}
-          width={levelGreen - xStart}
+          width={Math.min(xStop, levelGreen) - xStart}
           y={yStop}
           height={yStart - yStop}
           fill="#EAF6EB"
           opacity={opacity}
         />
 
-        <rect
-          x={levelGreen}
-          width={levelYellow - levelGreen}
-          y={yStop}
-          height={yStart - yStop}
-          fill="#FFEFC7"
-          opacity={opacity}
-        />
+        {levelGreen < xStop && (
+          <rect
+            x={levelGreen}
+            width={Math.min(xStop, levelYellow) - levelGreen}
+            y={yStop}
+            height={yStart - yStop}
+            fill="#FFEFC7"
+            opacity={opacity}
+          />
+        )}
 
-        <rect
-          x={levelYellow}
-          width={xStop - levelYellow}
-          y={yStop}
-          height={yStart - yStop}
-          fill="#FFE5E2"
-          opacity={opacity}
-        />
+        {levelYellow < xStop && (
+          <rect
+            x={levelYellow}
+            width={xStop - levelYellow}
+            y={yStop}
+            height={yStart - yStop}
+            fill="#FFE5E2"
+            opacity={opacity}
+          />
+        )}
 
-        <line
-          x1={levelGreen}
-          y1={yStart}
-          x2={levelGreen}
-          y2={yStop}
-          stroke="#66CCA1"
-          strokeWidth={"2px"}
-        />
-        <line
-          x1={levelYellow}
-          y1={yStart}
-          x2={levelYellow}
-          y2={yStop}
-          stroke="#E8D360"
-          strokeWidth={"2px"}
-        />
+        {lines && levelGreen < xStop && (
+          <line
+            x1={levelGreen}
+            y1={yStart}
+            x2={levelGreen}
+            y2={yStop}
+            stroke="#66CCA1"
+            strokeWidth={"2px"}
+          />
+        )}
+
+        {lines && levelYellow < xStop && (
+          <line
+            x1={levelYellow}
+            y1={yStart}
+            x2={levelYellow}
+            y2={yStop}
+            stroke="#E8D360"
+            strokeWidth={"2px"}
+          />
+        )}
       </React.Fragment>
     );
   } else {

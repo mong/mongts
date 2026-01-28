@@ -207,6 +207,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
           data: currentData,
           valueFormatter: barValueFormatter,
           barLabel: (item) => ` n = ${currentDenominator[item.dataIndex]}`,
+          barLabelPlacement: "center",
           highlightScope: {
             highlight: "item",
             fade: "series",
