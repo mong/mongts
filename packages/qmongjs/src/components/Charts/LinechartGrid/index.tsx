@@ -28,34 +28,38 @@ export const LinechartGrid = (props: LinechartGridProps) => {
   if (levelDirection === 1) {
     return (
       <React.Fragment>
-        <rect
-          x={xStart}
-          width={xStop - xStart}
-          y={yStart}
-          height={levelGreen - yStart}
-          fill="#EAF6EB"
-          opacity={opacity}
-        />
+        {levelGreen > yStart && (
+          <rect
+            x={xStart}
+            width={xStop - xStart}
+            y={yStart}
+            height={levelGreen - yStart}
+            fill="#EAF6EB"
+            opacity={opacity}
+          />
+        )}
 
-        <rect
-          x={xStart}
-          width={xStop - xStart}
-          y={levelGreen}
-          height={levelYellow - levelGreen}
-          fill="#FFEFC7"
-          opacity={opacity}
-        />
+        {levelYellow > yStart && (
+          <rect
+            x={xStart}
+            width={xStop - xStart}
+            y={levelGreen}
+            height={levelYellow - Math.max(yStart, levelGreen)}
+            fill="#FFEFC7"
+            opacity={opacity}
+          />
+        )}
 
         <rect
           x={xStart}
           width={xStop - xStart}
           y={levelYellow}
-          height={yStop - levelYellow}
+          height={yStop - Math.max(yStart, levelYellow)}
           fill="#FFE5E2"
           opacity={opacity}
         />
 
-        {lines && (
+        {lines && levelGreen > yStart && (
           <line
             x1={xStart}
             y1={levelGreen}
@@ -66,7 +70,7 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           />
         )}
 
-        {lines && (
+        {lines && levelYellow > yStart && (
           <line
             x1={xStart}
             y1={levelYellow}
@@ -81,34 +85,40 @@ export const LinechartGrid = (props: LinechartGridProps) => {
   } else if (levelDirection === 0) {
     return (
       <React.Fragment>
-        <rect
-          x={xStart}
-          width={xStop - xStart}
-          y={yStart}
-          height={levelYellow - yStart}
-          fill="#FFE5E2"
-          opacity={opacity}
-        />
+        {levelYellow < yStop && (
+          <rect
+            x={xStart}
+            width={xStop - xStart}
+            y={yStart}
+            height={levelYellow - yStart}
+            fill="#FFE5E2"
+            opacity={opacity}
+          />
+        )}
 
-        <rect
-          x={xStart}
-          width={xStop - xStart}
-          y={levelYellow}
-          height={levelGreen - levelYellow}
-          fill="#FFEFC7"
-          opacity={opacity}
-        />
+        {levelGreen > levelYellow && (
+          <rect
+            x={xStart}
+            width={xStop - xStart}
+            y={levelYellow}
+            height={levelGreen - levelYellow}
+            fill="#FFEFC7"
+            opacity={opacity}
+          />
+        )}
 
-        <rect
-          x={xStart}
-          width={xStop - xStart}
-          y={levelGreen}
-          height={yStop - levelGreen}
-          fill="#EAF6EB"
-          opacity={opacity}
-        />
+        {yStop > levelGreen && (
+          <rect
+            x={xStart}
+            width={xStop - xStart}
+            y={levelGreen}
+            height={yStop - levelGreen}
+            fill="#EAF6EB"
+            opacity={opacity}
+          />
+        )}
 
-        {lines && (
+        {lines && levelGreen < yStop && (
           <line
             x1={xStart}
             y1={levelGreen}
@@ -118,7 +128,7 @@ export const LinechartGrid = (props: LinechartGridProps) => {
             strokeWidth={"2px"}
           />
         )}
-        {lines && (
+        {lines && levelYellow < yStop && (
           <line
             x1={xStart}
             y1={levelYellow}

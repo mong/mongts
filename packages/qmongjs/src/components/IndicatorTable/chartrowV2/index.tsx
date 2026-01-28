@@ -46,7 +46,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   // States
   const [figureType, setFigureType] = useState("line");
   const [barChartType, setBarChartType] = useState("selected");
-  const [zoom, setZoom] = useState(false)
+  const [zoom, setZoom] = useState<boolean>(false);
 
   // Callback dunctions for dropdown menus
   const handleBarChartTypeChange = (event: SelectChangeEvent) => {
@@ -117,7 +117,12 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             </Select>
           </FormControl>
         )}
-        <Button variant="outlined" onClick={() => {setZoom(!zoom)}}>
+        <Button
+          variant="outlined"
+          onClick={() => {
+            setZoom(!zoom);
+          }}
+        >
           Zoom
         </Button>
       </Stack>
@@ -160,6 +165,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
               indID={indID}
               tickFontSize={15}
               yAxisWidth={160}
+              zoom={zoom}
             />
           </Box>
         ) : null}

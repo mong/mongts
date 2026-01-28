@@ -55,7 +55,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     indID,
     tickFontSize,
     yAxisWidth,
-    zoom
+    zoom,
   } = props;
 
   let currentUnitNames: string[];
@@ -220,7 +220,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
       xAxis={[
         {
           min: 0,
-          max: percentage ? 1 : undefined,
+          max: percentage && !zoom ? 1 : undefined,
           position: "bottom",
           valueFormatter: valueAxisFormatter,
         },
@@ -234,6 +234,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
           figureHeight={figureHeight}
           backgroundMargin={backgroundMargin}
           lines={true}
+          zoom={zoom}
         />
         <ChartsXAxis />
         <ChartsYAxis />

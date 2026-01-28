@@ -8,26 +8,28 @@ type BarBackgroundProps = {
   percentage: boolean;
   backgroundMargin: number;
   lines: boolean;
+  zoom: boolean;
 };
 
 export const BarBackground = (props: BarBackgroundProps) => {
-  const { data, figureHeight, percentage, backgroundMargin, lines } = props;
+  const { data, figureHeight, percentage, backgroundMargin, lines, zoom } =
+    props;
 
   const levelGreen = data.levelGreen;
   const levelYellow = data.levelYellow;
   const levelDirection = data.levelDirection;
-
   const xMin = 0;
 
   if (data.data === undefined) {
     return null;
   }
 
-  const xMax = percentage
-    ? 1
-    : Math.max(
-        ...data.data.map((row: DataPoint) => (row.var != null ? row.var : 0)),
-      );
+  const xMax =
+    percentage && !zoom
+      ? 1
+      : Math.max(
+          ...data.data.map((row: DataPoint) => (row.var != null ? row.var : 0)),
+        );
 
   const xScale = useXScale();
 
