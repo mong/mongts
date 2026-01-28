@@ -18,7 +18,6 @@ import {
 } from "../../../helpers/functions/formatMuiChartData";
 
 type MuiBarChartProps = {
-  barData: (number | null)[];
   data: IndicatorData;
   figureSpacing: number;
   backgroundMargin: number;
@@ -39,7 +38,6 @@ type MuiBarChartProps = {
 
 export const MuiBarChart = (props: MuiBarChartProps) => {
   const {
-    barData,
     data,
     figureSpacing,
     backgroundMargin,
@@ -58,21 +56,28 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     yAxisWidth,
   } = props;
 
-  let currentData = barData;
-  let currentUnitNames = unitNames;
+  let currentUnitNames: string[];
+  let currentData: (number | null)[];
+  let currentDenominator: number[];
 
-  const getDataByUnitLevel = (level: string) => {
-    const newUnitBlock = treatmentUnitsByLevel.find(
-      (row) => row.label === level,
-    );
+  const getDataByUnitLevel = (level?: string) => {
+    let newUnitNames = ["Nasjonalt"];
 
-    if (!newUnitBlock) {
-      return null;
+    if (!level) {
+      newUnitNames = newUnitNames.concat(unitNames);
+    } else {
+      const newUnitBlock = treatmentUnitsByLevel.find(
+        (row) => row.label === level,
+      );
+
+      if (!newUnitBlock) {
+        return null;
+      }
+
+      newUnitNames = newUnitNames.concat(
+        newUnitBlock.options.map((row) => row.value),
+      );
     }
-
-    const newUnitNames = newUnitBlock.options.map((row) => row.value);
-
-    newUnitNames.push("Nasjonalt");
 
     const queryParams: FetchIndicatorParams = {
       context: context,
@@ -112,8 +117,19 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
       row.dg !== null ? row.dg >= 0.6 : true,
     );
 
+    // Filterer vekk lav n
+    newDataSelection.data = newDataSelection.data!.filter((row) =>
+      data.minDenominator
+        ? row.denominator >= data.minDenominator
+        : row.denominator >= 5,
+    );
+
     // Hent enhetsnavn i riktig rekkefølge
     const orderedUnitNames = newDataSelection.data!.map((row) => row.unitName);
+
+    const orderedDenominator = newDataSelection.data!.map(
+      (row) => row.denominator,
+    );
 
     const reshapedData = reshapeData(
       newDataSelection,
@@ -126,6 +142,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     return {
       newData: newData,
       newUnitNames: orderedUnitNames,
+      newDenominator: orderedDenominator,
     };
   };
 
@@ -138,6 +155,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
 
     currentData = returnData.newData;
     currentUnitNames = returnData.newUnitNames;
+    currentDenominator = returnData.newDenominator;
   } else if (barChartType === "hf") {
     const returnData = getDataByUnitLevel("HF");
 
@@ -147,6 +165,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
 
     currentData = returnData.newData;
     currentUnitNames = returnData.newUnitNames;
+    currentDenominator = returnData.newDenominator;
   } else if (barChartType === "hospital") {
     const returnData = getDataByUnitLevel("Sykehus");
 
@@ -156,6 +175,17 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
 
     currentData = returnData.newData;
     currentUnitNames = returnData.newUnitNames;
+    currentDenominator = returnData.newDenominator;
+  } else {
+    const returnData = getDataByUnitLevel();
+
+    if (!returnData) {
+      return null;
+    }
+
+    currentData = returnData.newData;
+    currentUnitNames = returnData.newUnitNames;
+    currentDenominator = returnData.newDenominator;
   }
 
   const figureHeight = (currentUnitNames.length + 1.5) * figureSpacing;
@@ -168,6 +198,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
           layout: "horizontal",
           data: currentData,
           valueFormatter: barValueFormatter,
+          barLabel: (item) => ` n = ${currentDenominator[item.dataIndex]}`,
           highlightScope: {
             highlight: "item",
             fade: "series",
