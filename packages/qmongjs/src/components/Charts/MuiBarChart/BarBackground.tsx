@@ -1,4 +1,4 @@
-import { IndicatorData, DataPoint } from "types";
+import { IndicatorData } from "types";
 import { useXScale } from "@mui/x-charts";
 import { BarchartGrid } from "../../Charts/LinechartGrid";
 
@@ -9,11 +9,19 @@ type BarBackgroundProps = {
   backgroundMargin: number;
   lines: boolean;
   zoom: boolean;
+  xMaxLimit: number;
 };
 
 export const BarBackground = (props: BarBackgroundProps) => {
-  const { data, figureHeight, percentage, backgroundMargin, lines, zoom } =
-    props;
+  const {
+    data,
+    figureHeight,
+    percentage,
+    backgroundMargin,
+    lines,
+    zoom,
+    xMaxLimit,
+  } = props;
 
   const levelGreen = data.levelGreen;
   const levelYellow = data.levelYellow;
@@ -24,12 +32,7 @@ export const BarBackground = (props: BarBackgroundProps) => {
     return null;
   }
 
-  const xMax =
-    percentage && !zoom
-      ? 1
-      : Math.max(
-          ...data.data.map((row: DataPoint) => (row.var != null ? row.var : 0)),
-        );
+  const xMax = percentage && !zoom ? 1 : xMaxLimit;
 
   const xScale = useXScale();
 

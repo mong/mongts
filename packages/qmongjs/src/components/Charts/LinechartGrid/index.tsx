@@ -172,32 +172,36 @@ export const BarchartGrid = (props: BarchartGridProps) => {
       <React.Fragment>
         <rect
           x={xStart}
-          width={levelYellow - xStart}
+          width={Math.min(xStop, levelYellow) - xStart}
           y={yStop}
           height={yStart - yStop}
           fill="#FFE5E2"
           opacity={opacity}
         />
 
-        <rect
-          x={levelYellow}
-          width={levelGreen - levelYellow}
-          y={yStop}
-          height={yStart - yStop}
-          fill="#FFEFC7"
-          opacity={opacity}
-        />
+        {levelYellow < xStop && (
+          <rect
+            x={levelYellow}
+            width={Math.min(xStop, levelGreen) - levelYellow}
+            y={yStop}
+            height={yStart - yStop}
+            fill="#FFEFC7"
+            opacity={opacity}
+          />
+        )}
 
-        <rect
-          x={levelGreen}
-          width={xStop - levelGreen}
-          y={yStop}
-          height={yStart - yStop}
-          fill="#EAF6EB"
-          opacity={opacity}
-        />
+        {levelGreen < xStop && (
+          <rect
+            x={levelGreen}
+            width={xStop - levelGreen}
+            y={yStop}
+            height={yStart - yStop}
+            fill="#EAF6EB"
+            opacity={opacity}
+          />
+        )}
 
-        {lines && (
+        {lines && levelGreen < xStop && (
           <line
             x1={levelGreen}
             y1={yStart}
@@ -207,7 +211,7 @@ export const BarchartGrid = (props: BarchartGridProps) => {
             strokeWidth={"2px"}
           />
         )}
-        {lines && (
+        {lines && levelYellow < xStop && (
           <line
             x1={levelYellow}
             y1={yStart}
