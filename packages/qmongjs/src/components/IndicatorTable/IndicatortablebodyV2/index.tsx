@@ -343,7 +343,7 @@ const IndicatorRow = (props: {
             " observasjoner";
 
           const patientCounts = lowDG
-            ? "Lav dekning"
+            ? "Lav dekningsgrad"
             : lowN
               ? lowCountText
               : noData
