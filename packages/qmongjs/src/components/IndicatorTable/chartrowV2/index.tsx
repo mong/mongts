@@ -8,6 +8,7 @@ import {
   MenuItem,
   Box,
   Stack,
+  Button,
 } from "@mui/material";
 import { getLastCompleteYear } from "../../../helpers/functions";
 import { customFormat } from "../../../helpers/functions";
@@ -45,6 +46,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   // States
   const [figureType, setFigureType] = useState("line");
   const [barChartType, setBarChartType] = useState("selected");
+  const [zoom, setZoom] = useState<boolean>(false);
 
   // Callback dunctions for dropdown menus
   const handleBarChartTypeChange = (event: SelectChangeEvent) => {
@@ -115,6 +117,14 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             </Select>
           </FormControl>
         )}
+        <Button
+          variant="outlined"
+          onClick={() => {
+            setZoom(!zoom);
+          }}
+        >
+          Zoom
+        </Button>
       </Stack>
       <Box
         sx={{
@@ -134,12 +144,13 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             percentage={percentage}
             valueAxisFormatter={valueAxisFormatter}
             lastAffirmYear={lastAffirmYear}
+            zoom={zoom}
           />
         ) : figureType === "bar" ? (
           <Box width={"100%"}>
             <MuiBarChart
               data={data}
-              figureSpacing={30}
+              figureSpacing={unitNames.length === 1 ? 60 : 30}
               backgroundMargin={backgroundMargin}
               unitNames={unitNames}
               percentage={percentage}
@@ -154,6 +165,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
               indID={indID}
               tickFontSize={15}
               yAxisWidth={160}
+              zoom={zoom}
             />
           </Box>
         ) : null}

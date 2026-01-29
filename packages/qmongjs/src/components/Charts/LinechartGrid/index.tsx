@@ -28,34 +28,38 @@ export const LinechartGrid = (props: LinechartGridProps) => {
   if (levelDirection === 1) {
     return (
       <React.Fragment>
-        <rect
-          x={xStart}
-          width={xStop - xStart}
-          y={yStart}
-          height={levelGreen - yStart}
-          fill="#EAF6EB"
-          opacity={opacity}
-        />
+        {levelGreen > yStart && (
+          <rect
+            x={xStart}
+            width={xStop - xStart}
+            y={yStart}
+            height={Math.min(yStop, levelGreen) - yStart}
+            fill="#EAF6EB"
+            opacity={opacity}
+          />
+        )}
+
+        {levelYellow > yStart && (
+          <rect
+            x={xStart}
+            width={xStop - xStart}
+            y={Math.max(yStart, levelGreen)}
+            height={Math.min(yStop, levelYellow) - Math.max(yStart, levelGreen)}
+            fill="#FFEFC7"
+            opacity={opacity}
+          />
+        )}
 
         <rect
           x={xStart}
           width={xStop - xStart}
-          y={levelGreen}
-          height={levelYellow - levelGreen}
-          fill="#FFEFC7"
-          opacity={opacity}
-        />
-
-        <rect
-          x={xStart}
-          width={xStop - xStart}
-          y={levelYellow}
-          height={yStop - levelYellow}
+          y={Math.max(yStart, levelYellow)}
+          height={yStop - Math.max(yStart, levelYellow)}
           fill="#FFE5E2"
           opacity={opacity}
         />
 
-        {lines && (
+        {lines && levelGreen > yStart && levelGreen < yStop && (
           <line
             x1={xStart}
             y1={levelGreen}
@@ -66,7 +70,7 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           />
         )}
 
-        {lines && (
+        {lines && levelYellow > yStart && levelYellow < yStop && (
           <line
             x1={xStart}
             y1={levelYellow}
@@ -81,34 +85,37 @@ export const LinechartGrid = (props: LinechartGridProps) => {
   } else if (levelDirection === 0) {
     return (
       <React.Fragment>
+        {levelYellow > yStart && (
+          <rect
+            x={xStart}
+            width={xStop - xStart}
+            y={yStart}
+            height={Math.min(yStop, levelYellow) - yStart}
+            fill="#FFE5E2"
+            opacity={opacity}
+          />
+        )}
+        {levelGreen >= yStart && (
+          <rect
+            x={xStart}
+            width={xStop - xStart}
+            y={Math.max(yStart, levelYellow)}
+            height={Math.min(yStop, levelGreen) - Math.max(yStart, levelYellow)}
+            fill="#FFEFC7"
+            opacity={opacity}
+          />
+        )}
+        (
         <rect
           x={xStart}
           width={xStop - xStart}
-          y={yStart}
-          height={levelYellow - yStart}
-          fill="#FFE5E2"
-          opacity={opacity}
-        />
-
-        <rect
-          x={xStart}
-          width={xStop - xStart}
-          y={levelYellow}
-          height={levelGreen - levelYellow}
-          fill="#FFEFC7"
-          opacity={opacity}
-        />
-
-        <rect
-          x={xStart}
-          width={xStop - xStart}
-          y={levelGreen}
-          height={yStop - levelGreen}
+          y={Math.max(yStart, levelGreen)}
+          height={yStop - Math.max(yStart, levelGreen)}
           fill="#EAF6EB"
           opacity={opacity}
         />
-
-        {lines && (
+        )
+        {lines && levelGreen >= yStart && levelGreen <= yStop && (
           <line
             x1={xStart}
             y1={levelGreen}
@@ -118,7 +125,7 @@ export const LinechartGrid = (props: LinechartGridProps) => {
             strokeWidth={"2px"}
           />
         )}
-        {lines && (
+        {lines && levelYellow >= yStart && levelYellow <= yStop && (
           <line
             x1={xStart}
             y1={levelYellow}
@@ -165,32 +172,36 @@ export const BarchartGrid = (props: BarchartGridProps) => {
       <React.Fragment>
         <rect
           x={xStart}
-          width={levelYellow - xStart}
+          width={Math.min(xStop, levelYellow) - xStart}
           y={yStop}
           height={yStart - yStop}
           fill="#FFE5E2"
           opacity={opacity}
         />
 
-        <rect
-          x={levelYellow}
-          width={levelGreen - levelYellow}
-          y={yStop}
-          height={yStart - yStop}
-          fill="#FFEFC7"
-          opacity={opacity}
-        />
+        {levelYellow < xStop && (
+          <rect
+            x={levelYellow}
+            width={Math.min(xStop, levelGreen) - levelYellow}
+            y={yStop}
+            height={yStart - yStop}
+            fill="#FFEFC7"
+            opacity={opacity}
+          />
+        )}
 
-        <rect
-          x={levelGreen}
-          width={xStop - levelGreen}
-          y={yStop}
-          height={yStart - yStop}
-          fill="#EAF6EB"
-          opacity={opacity}
-        />
+        {levelGreen < xStop && (
+          <rect
+            x={levelGreen}
+            width={xStop - levelGreen}
+            y={yStop}
+            height={yStart - yStop}
+            fill="#EAF6EB"
+            opacity={opacity}
+          />
+        )}
 
-        {lines && (
+        {lines && levelGreen < xStop && (
           <line
             x1={levelGreen}
             y1={yStart}
@@ -200,7 +211,7 @@ export const BarchartGrid = (props: BarchartGridProps) => {
             strokeWidth={"2px"}
           />
         )}
-        {lines && (
+        {lines && levelYellow < xStop && (
           <line
             x1={levelYellow}
             y1={yStart}
@@ -217,47 +228,56 @@ export const BarchartGrid = (props: BarchartGridProps) => {
       <React.Fragment>
         <rect
           x={xStart}
-          width={levelGreen - xStart}
+          width={Math.min(xStop, levelGreen) - xStart}
           y={yStop}
           height={yStart - yStop}
           fill="#EAF6EB"
           opacity={opacity}
         />
 
-        <rect
-          x={levelGreen}
-          width={levelYellow - levelGreen}
-          y={yStop}
-          height={yStart - yStop}
-          fill="#FFEFC7"
-          opacity={opacity}
-        />
+        {levelGreen < xStop && (
+          <rect
+            x={levelGreen}
+            width={Math.min(xStop, levelYellow) - levelGreen}
+            y={yStop}
+            height={yStart - yStop}
+            fill="#FFEFC7"
+            opacity={opacity}
+          />
+        )}
 
-        <rect
-          x={levelYellow}
-          width={xStop - levelYellow}
-          y={yStop}
-          height={yStart - yStop}
-          fill="#FFE5E2"
-          opacity={opacity}
-        />
+        {levelYellow < xStop && (
+          <rect
+            x={levelYellow}
+            width={xStop - levelYellow}
+            y={yStop}
+            height={yStart - yStop}
+            fill="#FFE5E2"
+            opacity={opacity}
+          />
+        )}
 
-        <line
-          x1={levelGreen}
-          y1={yStart}
-          x2={levelGreen}
-          y2={yStop}
-          stroke="#66CCA1"
-          strokeWidth={"2px"}
-        />
-        <line
-          x1={levelYellow}
-          y1={yStart}
-          x2={levelYellow}
-          y2={yStop}
-          stroke="#E8D360"
-          strokeWidth={"2px"}
-        />
+        {lines && levelGreen < xStop && (
+          <line
+            x1={levelGreen}
+            y1={yStart}
+            x2={levelGreen}
+            y2={yStop}
+            stroke="#66CCA1"
+            strokeWidth={"2px"}
+          />
+        )}
+
+        {lines && levelYellow < xStop && (
+          <line
+            x1={levelYellow}
+            y1={yStart}
+            x2={levelYellow}
+            y2={yStop}
+            stroke="#E8D360"
+            strokeWidth={"2px"}
+          />
+        )}
       </React.Fragment>
     );
   } else {
