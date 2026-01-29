@@ -338,8 +338,9 @@ const IndicatorRow = (props: {
           ) : null;
 
           const lowCountText =
-            "Færre observasjoner enn " +
-            (row?.minDenominator ? row.minDenominator : 5);
+            "Færre enn " +
+            (row?.minDenominator ? row.minDenominator : 5) +
+            " observasjoner";
 
           const patientCounts = lowDG
             ? "Lav dekning"
