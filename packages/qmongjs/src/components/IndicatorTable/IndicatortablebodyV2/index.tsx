@@ -109,6 +109,7 @@ const IndicatorRow = (props: {
   };
 
   const format = indData.format === null ? ",.0%" : indData.format;
+  const indType = indData.indType;
 
   if (indData.data === undefined) {
     return null;
@@ -346,7 +347,9 @@ const IndicatorRow = (props: {
               ? lowCountText
               : noData
                 ? "Ingen data"
-                : row?.numerator + " av " + row?.denominator;
+                : indType === "andel"
+                  ? row?.numerator + " av " + row?.denominator
+                  : "";
 
           let CellType;
 

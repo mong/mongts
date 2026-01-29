@@ -61,7 +61,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   const dataFormat = data.format ? data.format : ",.0%";
   const percentage = dataFormat.includes("%");
 
-  const { barData, lineData, uniqueYears } = formatMuiChartData(
+  const { lineData, uniqueYears } = formatMuiChartData(
     data,
     unitNames,
     context,
@@ -138,9 +138,8 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
         ) : figureType === "bar" ? (
           <Box width={"100%"}>
             <MuiBarChart
-              barData={barData}
               data={data}
-              figureSpacing={60}
+              figureSpacing={30}
               backgroundMargin={backgroundMargin}
               unitNames={unitNames}
               percentage={percentage}
