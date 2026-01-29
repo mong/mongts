@@ -11,7 +11,6 @@ import {
 } from "@mui/material";
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import Grid from "@mui/material/Grid";
-import { useQueryParam } from "use-query-params";
 import {
   FilterSettingsAction,
   FilterSettingsValue,
@@ -39,10 +38,7 @@ import {
   IndicatorTableWrapper,
 } from "../../src/components/TreatmentQuality";
 import { Footer } from "../../src/components/Footer";
-import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
-import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
-import scrollToSelectedRow from "../../src/utils/scrollToSelectedRow";
 import getMedicalFieldFilterRegisters from "../../src/utils/getMedicalFieldFilterRegisters";
 import { IndicatorTableSkeleton } from "qmongjs";
 import { LayoutHead } from "../../src/components/LayoutHead";
@@ -85,11 +81,6 @@ export default function TreatmentQualityPage() {
     useState<boolean>(false);
 
   const [colourMap, setColourMap] = useState<ColourMap[]>([]);
-
-  const selectedRow = useQueryParam(
-    "selected_row",
-    mainQueryParamsConfig.selected_row,
-  )[0];
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
@@ -262,12 +253,6 @@ export default function TreatmentQualityPage() {
       valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
     );
   };
-
-  // Use the custom hook to observe the addition of the selected row element, if
-  // not already available.
-  if (typeof document !== "undefined") {
-    useOnElementAdded(selectedRow, queriesReady, scrollToSelectedRow);
-  }
 
   return (
     <ThemeProvider theme={skdeTheme}>
