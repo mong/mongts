@@ -13,6 +13,7 @@ import {
 } from "@mui/x-charts";
 import { LinePlot } from "@mui/x-charts/LineChart";
 import { IndicatorData } from "types";
+import { DataPoint } from "types";
 
 type MuiLineChartProps = {
   data: IndicatorData;
@@ -21,6 +22,7 @@ type MuiLineChartProps = {
   percentage: boolean;
   valueAxisFormatter: (value: number) => string;
   lastAffirmYear: number;
+  zoom: boolean;
 };
 
 export const MuiLineChart = (props: MuiLineChartProps) => {
@@ -31,7 +33,20 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
     percentage,
     valueAxisFormatter,
     lastAffirmYear,
+    zoom,
   } = props;
+
+  if (data.data === undefined) {
+    return null;
+  }
+
+  const yMaxLimit = Math.max(
+    ...data.data.map((row: DataPoint) => (row.var != null ? row.var : 0)),
+  );
+
+  const yMinLimit = Math.min(
+    ...data.data.map((row: DataPoint) => (row.var != null ? row.var : 0)),
+  );
 
   return (
     <ChartDataProvider
@@ -45,8 +60,8 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
       ]}
       yAxis={[
         {
-          min: 0,
-          max: percentage ? 1 : undefined,
+          min: zoom ? yMinLimit : 0,
+          max: percentage && !zoom ? 1 : yMaxLimit,
           position: "left",
           scaleType: "linear",
           valueFormatter: valueAxisFormatter,
@@ -60,7 +75,15 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
       />
       <ChartsTooltip />
       <ChartsSurface sx={{ "& .line-after path": { strokeDasharray: "10 5" } }}>
-        <LineBackground data={data} years={uniqueYears} lines={true} />
+        <LineBackground
+          data={data}
+          years={uniqueYears}
+          lines={true}
+          percentage={percentage}
+          zoom={zoom}
+          yMaxLimit={yMaxLimit}
+          yMinLimit={yMinLimit}
+        />
         <ChartsXAxis />
         <ChartsYAxis />
         <ChartsAxisHighlight y="line" />
