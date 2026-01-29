@@ -34,6 +34,7 @@ type MuiBarChartProps = {
   indID: string;
   tickFontSize: number;
   yAxisWidth: number;
+  zoom: boolean;
 };
 
 export const MuiBarChart = (props: MuiBarChartProps) => {
@@ -54,7 +55,12 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     indID,
     tickFontSize,
     yAxisWidth,
+    zoom,
   } = props;
+
+  if (!data.data) {
+    return null;
+  }
 
   let currentUnitNames: string[];
   let currentData: (number | null)[];
@@ -188,6 +194,8 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     currentDenominator = returnData.newDenominator;
   }
 
+  const xMaxLimit = Math.max(...currentData.map((el) => (el != null ? el : 0)));
+
   const figureHeight = (currentUnitNames.length + 1.5) * figureSpacing;
 
   return (
@@ -199,6 +207,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
           data: currentData,
           valueFormatter: barValueFormatter,
           barLabel: (item) => ` n = ${currentDenominator[item.dataIndex]}`,
+          barLabelPlacement: "center",
           highlightScope: {
             highlight: "item",
             fade: "series",
@@ -218,7 +227,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
       xAxis={[
         {
           min: 0,
-          max: percentage ? 1 : undefined,
+          max: percentage && !zoom ? 1 : xMaxLimit,
           position: "bottom",
           valueFormatter: valueAxisFormatter,
         },
@@ -232,6 +241,8 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
           figureHeight={figureHeight}
           backgroundMargin={backgroundMargin}
           lines={true}
+          zoom={zoom}
+          xMaxLimit={xMaxLimit}
         />
         <ChartsXAxis />
         <ChartsYAxis />

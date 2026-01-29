@@ -6,17 +6,26 @@ type LineBackgroundProps = {
   data: IndicatorData;
   years: number[];
   lines: boolean;
+  percentage: boolean;
+  zoom: boolean;
+  yMaxLimit: number;
+  yMinLimit: number;
 };
 
 export const LineBackground = (props: LineBackgroundProps) => {
-  const { data, years, lines } = props;
+  const { data, years, lines, percentage, zoom, yMaxLimit, yMinLimit } = props;
+
+  if (data.data === undefined) {
+    return null;
+  }
 
   const levelGreen = data.levelGreen;
   const levelYellow = data.levelYellow;
   const levelDirection = data.levelDirection;
 
-  const yMin = 0;
-  const yMax = 1;
+  const yMin = zoom ? yMinLimit : 0;
+  const yMax = percentage && !zoom ? 1 : yMaxLimit;
+
   const xMin = Math.min(...years);
   const xMax = Math.max(...years);
 
