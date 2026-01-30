@@ -150,7 +150,9 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
           <Box width={"100%"}>
             <MuiBarChart
               data={data}
-              figureSpacing={unitNames.length === 1 ? 60 : 30}
+              figureSpacing={
+                unitNames.length === 1 && barChartType === "selected" ? 40 : 30
+              }
               backgroundMargin={backgroundMargin}
               unitNames={unitNames}
               percentage={percentage}
