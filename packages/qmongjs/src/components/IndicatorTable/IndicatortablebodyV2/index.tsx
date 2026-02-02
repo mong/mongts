@@ -286,7 +286,10 @@ const IndicatorRow = (props: {
         style={{ cursor: "pointer" }}
         id={rowID}
       >
-        <StyledTableCellStart key={indData.indicatorID}>
+        <StyledTableCellStart
+          key={indData.indicatorID}
+          id={indData.indicatorID + "_scrollAnchor"}
+        >
           <Stack direction="row" alignItems="center">
             <IconButton
               aria-label="expand"
@@ -385,7 +388,19 @@ const IndicatorRow = (props: {
           }}
           colSpan={unitNames.length + 1}
         >
-          <Collapse in={open} timeout="auto" mountOnEnter>
+          <Collapse
+            in={open}
+            timeout="auto"
+            mountOnEnter
+            onEnter={() => {
+              const element = document.getElementById(
+                indData.indicatorID + "_scrollAnchor",
+              );
+              // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+              element &&
+                element.scrollIntoView({ behavior: "instant", block: "start" });
+            }}
+          >
             <CollapseContent open={open} />
           </Collapse>
         </StyledTableCell>

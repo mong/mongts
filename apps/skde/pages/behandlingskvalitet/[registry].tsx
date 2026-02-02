@@ -13,7 +13,6 @@ import {
 
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import Grid from "@mui/material/Grid";
-import { useQueryParam } from "use-query-params";
 import {
   FilterSettingsAction,
   FilterSettingsValue,
@@ -38,10 +37,7 @@ import {
   IndicatorTableWrapper,
 } from "../../src/components/TreatmentQuality";
 import { Footer } from "../../src/components/Footer";
-import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
-import useOnElementAdded from "../../src/helpers/hooks/useOnElementAdded";
-import scrollToSelectedRow from "../../src/utils/scrollToSelectedRow";
 import { RegisterName, RegistryRank } from "types";
 import { valueOrDefault } from "../../src/utils/valueOrDefault";
 import { LayoutHead } from "../../src/components/LayoutHead";
@@ -93,11 +89,6 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState(
     defaultTreatmentUnits,
   );
-
-  const selectedRow = useQueryParam(
-    "selected_row",
-    mainQueryParamsConfig.selected_row,
-  )[0];
 
   let registryRank = "NA";
   if (!process.env.NEXT_PUBLIC_VERIFY) {
@@ -225,12 +216,6 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
       valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
     );
   };
-
-  // Use the custom hook to observe the addition of the selected row element, if
-  // not already available.
-  if (typeof document !== "undefined") {
-    useOnElementAdded(selectedRow, true, scrollToSelectedRow);
-  }
 
   if (!mounted) {
     return null;
