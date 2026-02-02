@@ -166,17 +166,26 @@ const IndicatorRow = (props: {
     }
   }
 
-  let levelSignLow = "";
-
-  if (indData.levelYellow != null) {
-    if (indData.levelDirection === 1 && indData.levelYellow > 0) {
-      levelSignLow = "<";
-    } else if (indData.levelDirection === 0 && indData.levelYellow < 1) {
-      levelSignLow = ">";
-    }
-  }
-
   const indFormat = indData.format ? indData.format : ",.0%";
+
+  const targetLevel = (
+    <Typography variant="button" sx={{ margin: "2rem" }}>
+      {indData.levelGreen === null
+        ? "Ikke oppgitt"
+        : levelSignHigh + " " + customFormat(indFormat)(indData.levelGreen)}
+    </Typography>
+  );
+
+  const lastDeliveryText =
+    "Siste levering av data: " +
+    (indData.data[0].deliveryTime === null
+      ? "Ikke oppgitt"
+      : new Date(indData.data[0].deliveryTime).toLocaleString("no-NO", {
+          day: "numeric",
+          month: "long",
+          year: "numeric",
+          timeZone: "CET",
+        }));
 
   const CollapseContent = (props: { open: boolean }) => {
     const { open } = props;
@@ -188,41 +197,7 @@ const IndicatorRow = (props: {
         <React.Fragment>
           <Typography variant="body2" sx={{ margin: "2rem" }}>
             {indData.shortDescription}
-            <br />
-            <br />
-            {"Ønsket målnivå: "}
-            {indData.levelGreen === null ? (
-              <b>{"Ikke oppgitt"}</b>
-            ) : (
-              <b>
-                {levelSignHigh + customFormat(indFormat)(indData.levelGreen)}
-              </b>
-            )}
-            <br />
-            {"Lavt målnivå: "}
-            {indData.levelYellow === null ? (
-              <b>{"Ikke oppgitt"}</b>
-            ) : (
-              <b>
-                {levelSignLow + customFormat(indFormat)(indData.levelYellow)}
-              </b>
-            )}
-            <br />
-            <br />
-            {"Siste levering av data: " +
-              (indData.data[0].deliveryTime === null
-                ? "Ikke oppgitt"
-                : new Date(indData.data[0].deliveryTime).toLocaleString(
-                    "no-NO",
-                    {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                      timeZone: "CET",
-                    },
-                  ))}
           </Typography>
-
           <div style={{ display: "flex", justifyContent: "center" }}>
             <table width={1500}>
               <tbody>
@@ -273,6 +248,9 @@ const IndicatorRow = (props: {
           >
             {indData.longDescription}
           </ReactMarkdown>
+          <Typography variant="body2" sx={{ margin: "2rem" }}>
+            {lastDeliveryText}
+          </Typography>
         </React.Fragment>
       );
     }
@@ -303,7 +281,7 @@ const IndicatorRow = (props: {
             </div>
           </Stack>
         </StyledTableCellStart>
-
+        <StyledTableCellMiddle>{targetLevel}</StyledTableCellMiddle>
         {rowDataSorted.map((row, index, arr) => {
           const lowDG = row?.dg == null ? false : row?.dg < 0.6 ? true : false;
           const noData = row?.denominator == null ? true : false;
@@ -391,7 +369,7 @@ const IndicatorRow = (props: {
             paddingRight: 0,
             backgroundColor: "white",
           }}
-          colSpan={unitNames.length + 1}
+          colSpan={unitNames.length + 2}
         >
           <Collapse
             in={open}
@@ -595,8 +573,9 @@ const RegistrySection = (props: {
               key={regData.registerName}
               sx={{
                 backgroundColor: skdeTheme.palette.secondary.light,
-                width: "12rem",
+                width: "3rem",
               }}
+              colSpan={1}
             >
               <div
                 lang="no"
@@ -605,7 +584,14 @@ const RegistrySection = (props: {
                 {regData.registerFullName}
               </div>
             </StyledTableCellStart>
-
+            <StyledTableCellMiddle
+              sx={{
+                backgroundColor: skdeTheme.palette.secondary.light,
+                width: "3rem",
+              }}
+            >
+              Ønsket målnivå
+            </StyledTableCellMiddle>
             {unitNames.map((row, index, arr) => {
               let CellType;
 
