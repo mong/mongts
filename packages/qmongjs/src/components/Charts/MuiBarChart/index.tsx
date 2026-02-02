@@ -19,7 +19,8 @@ import {
 
 type MuiBarChartProps = {
   data: IndicatorData;
-  figureSpacing: number;
+  figureSpacingFactor: number;
+  figureSpacingConstant: number;
   backgroundMargin: number;
   unitNames: string[];
   percentage: boolean;
@@ -40,7 +41,8 @@ type MuiBarChartProps = {
 export const MuiBarChart = (props: MuiBarChartProps) => {
   const {
     data,
-    figureSpacing,
+    figureSpacingFactor,
+    figureSpacingConstant,
     backgroundMargin,
     unitNames,
     percentage,
@@ -196,7 +198,8 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
 
   const xMaxLimit = Math.max(...currentData.map((el) => (el != null ? el : 0)));
 
-  const figureHeight = (currentUnitNames.length + 1.5) * figureSpacing;
+  const figureHeight =
+    (currentUnitNames.length + figureSpacingConstant) * figureSpacingFactor;
 
   const tickNumber = zoom && xMaxLimit < 0.1 ? 3 : 10;
 
