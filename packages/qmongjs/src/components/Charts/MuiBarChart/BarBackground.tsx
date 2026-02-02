@@ -38,7 +38,7 @@ export const BarBackground = (props: BarBackgroundProps) => {
 
   const xStart = xScale(xMin);
   const xStop = xScale(xMax);
-  const yStart = figureHeight - backgroundMargin - 27; // Hardkodet, må fikses
+  const yStart = figureHeight - backgroundMargin - 26; // Hardkodet, må fikses
   const yStop = 0 + backgroundMargin;
 
   const greenStart = levelGreen && xScale(levelGreen);
