@@ -28,7 +28,7 @@ jobs:
       - name: Find dead links
         run: scripts/atlas/checklinks.py apps/skde/out/ apps/skde/out/ https://apps.skde.no/
       - name: Send email
-        uses: dawidd6/action-send-mail@v7
+        uses: dawidd6/action-send-mail@v8
         if: failure()
         with:
           server_address: smtp.gmail.com
