@@ -43,8 +43,13 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     return <div>No data</div>;
   }
 
+  const numberOfTimePoints = data.data.length / unitNames.length;
+
+  console.log(numberOfTimePoints);
   // States
-  const [figureType, setFigureType] = useState("line");
+  const [figureType, setFigureType] = useState(
+    numberOfTimePoints > 1 ? "line" : "bar",
+  );
   const [barChartType, setBarChartType] = useState("selected");
   const [zoom, setZoom] = useState<boolean>(false);
 
@@ -98,7 +103,9 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             label="Figurtype"
             onChange={handleFigureTypeChange}
           >
-            <MenuItem value={"line"}>Linje</MenuItem>
+            <MenuItem value={"line"} disabled={numberOfTimePoints === 1}>
+              Linje
+            </MenuItem>
             <MenuItem value={"bar"}>Søyle</MenuItem>
           </Select>
         </FormControl>
