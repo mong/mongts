@@ -15,6 +15,7 @@ import { customFormat } from "../../../helpers/functions";
 import { MuiLineChart } from "../../Charts/MuiLineChart";
 import { MuiBarChart } from "../../Charts/MuiBarChart";
 import { formatMuiChartData } from "../../../helpers/functions/formatMuiChartData";
+import { DataPoint } from "types";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -43,9 +44,14 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     return <div>No data</div>;
   }
 
-  const numberOfTimePoints = data.data.length / unitNames.length;
+  const numberOfTimePointsArray = unitNames.map(
+    (unitName: string) =>
+      data.data!.filter((point: DataPoint) => point.unitName === unitName)
+        .length,
+  );
 
-  console.log(numberOfTimePoints);
+  const numberOfTimePoints = Math.max(...numberOfTimePointsArray);
+
   // States
   const [figureType, setFigureType] = useState(
     numberOfTimePoints > 1 ? "line" : "bar",
