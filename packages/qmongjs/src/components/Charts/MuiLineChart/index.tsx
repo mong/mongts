@@ -48,6 +48,8 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
     ...data.data.map((row: DataPoint) => (row.var != null ? row.var : 0)),
   );
 
+  const yDifference = yMaxLimit - yMinLimit;
+
   return (
     <ChartDataProvider
       series={lineData}
@@ -65,6 +67,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
           position: "left",
           scaleType: "linear",
           valueFormatter: valueAxisFormatter,
+          tickNumber: zoom && yDifference < 0.1 ? 3 : 10,
         },
       ]}
     >

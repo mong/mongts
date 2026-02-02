@@ -198,6 +198,8 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
 
   const figureHeight = (currentUnitNames.length + 1.5) * figureSpacing;
 
+  const tickNumber = zoom && xMaxLimit < 0.1 ? 3 : 10;
+
   return (
     <ChartDataProvider
       series={[
@@ -230,6 +232,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
           max: percentage && !zoom ? 1 : xMaxLimit,
           position: "bottom",
           valueFormatter: valueAxisFormatter,
+          tickNumber: tickNumber,
         },
       ]}
     >
