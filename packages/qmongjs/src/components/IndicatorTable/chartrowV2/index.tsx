@@ -15,6 +15,7 @@ import { customFormat } from "../../../helpers/functions";
 import { MuiLineChart } from "../../Charts/MuiLineChart";
 import { MuiBarChart } from "../../Charts/MuiBarChart";
 import { formatMuiChartData } from "../../../helpers/functions/formatMuiChartData";
+import { DataPoint } from "types";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -43,8 +44,18 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     return <div>No data</div>;
   }
 
+  const numberOfTimePointsArray = unitNames.map(
+    (unitName: string) =>
+      data.data!.filter((point: DataPoint) => point.unitName === unitName)
+        .length,
+  );
+
+  const numberOfTimePoints = Math.max(...numberOfTimePointsArray);
+
   // States
-  const [figureType, setFigureType] = useState("line");
+  const [figureType, setFigureType] = useState(
+    numberOfTimePoints > 1 ? "line" : "bar",
+  );
   const [barChartType, setBarChartType] = useState("selected");
   const [zoom, setZoom] = useState<boolean>(false);
 
@@ -98,7 +109,9 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             label="Figurtype"
             onChange={handleFigureTypeChange}
           >
-            <MenuItem value={"line"}>Linje</MenuItem>
+            <MenuItem value={"line"} disabled={numberOfTimePoints === 1}>
+              Linje
+            </MenuItem>
             <MenuItem value={"bar"}>Søyle</MenuItem>
           </Select>
         </FormControl>
