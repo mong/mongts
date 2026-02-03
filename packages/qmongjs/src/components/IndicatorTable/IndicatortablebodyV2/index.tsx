@@ -346,7 +346,7 @@ const IndicatorRow = (props: {
           return (
             <CellType
               sx={{ opacity: cellOpacity }}
-              align={"center"}
+              align={"left"}
               key={indData.indicatorID + index}
             >
               <Stack
