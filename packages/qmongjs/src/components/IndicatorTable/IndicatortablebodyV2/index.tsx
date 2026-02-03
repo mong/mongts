@@ -121,6 +121,7 @@ const IndicatorRow = (props: {
       return {
         unitName: row.unitName,
         result: row.var !== null ? customFormat(format)(row.var) : undefined,
+        level: level2(indData, row),
         symbol: newLevelSymbols(level2(indData, row), Math.random().toString()),
         showCell:
           levels === undefined
@@ -306,17 +307,15 @@ const IndicatorRow = (props: {
 
           const cellData = Array.from([lowDG, noData, lowN]).every(
             (x) => x == false,
-          ) ? (
-            <Stack
-              direction="row"
-              alignItems="center"
-              justifyContent="center"
-              spacing="0.25rem"
-            >
-              <b>{row?.result}</b>
-              {row?.symbol}
-            </Stack>
-          ) : null;
+          )
+            ? (row?.level === "H"
+                ? "Høy "
+                : row?.level === "M"
+                  ? "Middels "
+                  : row?.level === "L"
+                    ? "Lav "
+                    : "") + row?.result
+            : null;
 
           const lowCountText =
             "Færre enn " +
@@ -348,12 +347,20 @@ const IndicatorRow = (props: {
               key={indData.indicatorID + index}
             >
               <Stack
-                direction="column"
+                direction="row"
                 alignItems="center"
-                justifyContent="center"
+                justifyContent="flex-start"
+                spacing={1}
               >
-                {cellData}
-                {patientCounts}
+                {row?.symbol}
+                <Stack
+                  direction="column"
+                  alignItems="flex-start"
+                  justifyContent="center"
+                >
+                  <b>{cellData}</b>
+                  <Typography variant="body2">{patientCounts}</Typography>
+                </Stack>
               </Stack>
             </CellType>
           );

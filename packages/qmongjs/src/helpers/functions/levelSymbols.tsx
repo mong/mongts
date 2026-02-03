@@ -1,5 +1,6 @@
-import { FaCircle, FaAdjust, FaRegCircle, FaSquare } from "react-icons/fa";
-import { IoTriangle } from "react-icons/io5";
+import { FaCircle, FaAdjust, FaRegCircle } from "react-icons/fa";
+import Image from "next/image";
+import { imgLoader } from "qmongjs";
 
 export const levelSymbols = (level: string | undefined, key?: string) => {
   return level === "H" ? (
@@ -13,13 +14,36 @@ export const levelSymbols = (level: string | undefined, key?: string) => {
   );
 };
 
+const size = 40;
+
 export const newLevelSymbols = (level: string | undefined, key?: string) => {
   return level === "H" ? (
-    <FaCircle style={{ color: "#58A55C", fontSize: "1.2rem" }} key={key} />
+    <Image
+      loader={imgLoader}
+      src={"/img/icons/Icon high green.svg"}
+      width={size}
+      height={size}
+      key={key}
+      alt={"Høy måloppnåelse"}
+    />
   ) : level === "M" ? (
-    <FaSquare style={{ color: "#FD9C00", fontSize: "1.2rem" }} key={key} />
+    <Image
+      loader={imgLoader}
+      src={"/img/icons/Icon medium yellow.svg"}
+      width={size}
+      height={size}
+      key={key}
+      alt={"Middels måloppnåelse"}
+    />
   ) : level === "L" ? (
-    <IoTriangle style={{ color: "#D85140", fontSize: "1.2rem" }} key={key} />
+    <Image
+      loader={imgLoader}
+      src={"/img/icons/Icon low red.svg"}
+      width={size}
+      height={size}
+      key={key}
+      alt={"Lav måloppnåelse"}
+    />
   ) : (
     <></>
   );
