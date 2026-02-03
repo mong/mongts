@@ -610,7 +610,7 @@ const RegistrySection = (props: {
 
               return (
                 <CellType
-                  align="center"
+                  align="left"
                   key={regData.registerName + index}
                   sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
                   width={"12rem"}
