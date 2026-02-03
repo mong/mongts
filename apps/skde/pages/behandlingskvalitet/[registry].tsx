@@ -30,7 +30,6 @@ import {
   fetchRegisterNames,
   useRegistryRankQuery,
 } from "qmongjs";
-import { useSearchParams } from "next/navigation";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import {
   FilterDrawer,
@@ -66,9 +65,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     setDrawerOpen(newOpen);
   };
 
-  const searchParams = useSearchParams();
-
-  const displayV2Table = searchParams.get("newtable") === "true";
+  const [useBeta, setUseBeta] = useState(false);
 
   const defaultTreatmentUnits = ["Nasjonalt"];
 
@@ -255,6 +252,8 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
         />
         <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
+          useBeta={useBeta}
+          setUseBeta={setUseBeta}
           extraBreadcrumbs={[
             { link: registryName, text: registryInfo[0].short_name },
           ]}
@@ -295,7 +294,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
                 {paramsReady ? (
-                  displayV2Table ? (
+                  useBeta ? (
                     <>
                       <IndicatorTableBodyV2
                         key={`indicator-table2-${selectedTableContext}`}
