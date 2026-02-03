@@ -11,7 +11,7 @@ import {
   FetchIndicatorParams,
   useUnitNamesQuery,
 } from "../../../helpers/hooks";
-import { newLevelSymbols, level2, skdeTheme } from "qmongjs";
+import { newestLevelSymbols, level2, skdeTheme } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Skeleton, Collapse, Typography, Stack } from "@mui/material";
@@ -121,7 +121,11 @@ const IndicatorRow = (props: {
       return {
         unitName: row.unitName,
         result: row.var !== null ? customFormat(format)(row.var) : undefined,
-        symbol: newLevelSymbols(level2(indData, row), Math.random().toString()),
+        level: level2(indData, row),
+        symbol: newestLevelSymbols(
+          level2(indData, row),
+          Math.random().toString(),
+        ),
         showCell:
           levels === undefined
             ? true
@@ -169,7 +173,7 @@ const IndicatorRow = (props: {
   const indFormat = indData.format ? indData.format : ",.0%";
 
   const targetLevel = (
-    <Typography variant="button" sx={{ margin: "2rem" }}>
+    <Typography variant="body2">
       {indData.levelGreen === null
         ? "Ikke oppgitt"
         : levelSignHigh + " " + customFormat(indFormat)(indData.levelGreen)}
@@ -306,17 +310,15 @@ const IndicatorRow = (props: {
 
           const cellData = Array.from([lowDG, noData, lowN]).every(
             (x) => x == false,
-          ) ? (
-            <Stack
-              direction="row"
-              alignItems="center"
-              justifyContent="center"
-              spacing="0.25rem"
-            >
-              <b>{row?.result}</b>
-              {row?.symbol}
-            </Stack>
-          ) : null;
+          )
+            ? (row?.level === "H"
+                ? "Høy "
+                : row?.level === "M"
+                  ? "Middels "
+                  : row?.level === "L"
+                    ? "Lav "
+                    : "") + row?.result
+            : null;
 
           const lowCountText =
             "Færre enn " +
@@ -344,16 +346,24 @@ const IndicatorRow = (props: {
           return (
             <CellType
               sx={{ opacity: cellOpacity }}
-              align={"center"}
+              align={"left"}
               key={indData.indicatorID + index}
             >
               <Stack
-                direction="column"
+                direction="row"
                 alignItems="center"
-                justifyContent="center"
+                justifyContent="flex-start"
+                spacing={1}
               >
-                {cellData}
-                {patientCounts}
+                {!lowDG && row?.symbol}
+                <Stack
+                  direction="column"
+                  alignItems="flex-start"
+                  justifyContent="center"
+                >
+                  <b>{cellData}</b>
+                  <Typography variant="body2">{patientCounts}</Typography>
+                </Stack>
               </Stack>
             </CellType>
           );
@@ -603,7 +613,7 @@ const RegistrySection = (props: {
 
               return (
                 <CellType
-                  align="center"
+                  align="left"
                   key={regData.registerName + index}
                   sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
                   width={"12rem"}
