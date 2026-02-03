@@ -31,7 +31,6 @@ import {
   useUnitNamesQuery,
 } from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
-import { useSearchParams } from "next/navigation";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import {
   FilterDrawer,
@@ -61,10 +60,7 @@ export default function TreatmentQualityPage() {
     setDrawerOpen(newOpen);
   };
 
-  const searchParams = useSearchParams();
-  const [useBeta, setUseBeta] = useState(
-    searchParams.get("newtable") === "true",
-  );
+  const [useBeta, setUseBeta] = useState(false);
 
   const defaultTreatmentUnits = ["Nasjonalt"];
 
