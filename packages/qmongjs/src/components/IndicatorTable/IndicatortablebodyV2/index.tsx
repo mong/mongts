@@ -173,7 +173,7 @@ const IndicatorRow = (props: {
   const indFormat = indData.format ? indData.format : ",.0%";
 
   const targetLevel = (
-    <Typography variant="button" sx={{ margin: "2rem" }}>
+    <Typography variant="body2">
       {indData.levelGreen === null
         ? "Ikke oppgitt"
         : levelSignHigh + " " + customFormat(indFormat)(indData.levelGreen)}
