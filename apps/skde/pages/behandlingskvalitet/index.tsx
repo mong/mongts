@@ -31,7 +31,6 @@ import {
   useUnitNamesQuery,
 } from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
-import { useSearchParams } from "next/navigation";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import {
   FilterDrawer,
@@ -61,8 +60,7 @@ export default function TreatmentQualityPage() {
     setDrawerOpen(newOpen);
   };
 
-  const searchParams = useSearchParams();
-  const displayV2Table = searchParams.get("newtable") === "true";
+  const [useBeta, setUseBeta] = useState(false);
 
   const defaultTreatmentUnits = ["Nasjonalt"];
 
@@ -263,7 +261,11 @@ export default function TreatmentQualityPage() {
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
           href="/favicon.ico"
         />
-        <TreatmentQualityAppBar openDrawer={() => toggleDrawer(true)}>
+        <TreatmentQualityAppBar
+          openDrawer={() => toggleDrawer(true)}
+          useBeta={useBeta}
+          setUseBeta={setUseBeta}
+        >
           Resultater fra nasjonale medisinske kvalitetsregistre. Se{" "}
           <Link
             href="https://www.kvalitetsregistre.no/"
@@ -303,7 +305,7 @@ export default function TreatmentQualityPage() {
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
                 {queriesReady && paramsReady ? (
-                  displayV2Table ? (
+                  useBeta ? (
                     <IndicatorTableBodyV2
                       key={"indicator-table2"}
                       context={selectedTableContext}

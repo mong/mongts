@@ -1,9 +1,11 @@
 import { level } from "../.";
 import { Indicator } from "types";
+import { test, expect } from "vitest";
 
 const indicator: Indicator = {
   id: 1,
   ind_id: "a",
+  ind_title: "Title",
   unit_level: "a",
   unit_name: "a",
   year: 2,
@@ -20,6 +22,13 @@ const indicator: Indicator = {
   type: "a",
   delivery_latest_update: new Date("October 13, 2014 11:13:00"),
   delivery_latest_affirm: new Date("October 13, 2019 11:13:00"),
+  registry_id: 1,
+  registry_name: "Test registry",
+  registry_full_name: "Test registry",
+  registry_short_name: "Test registry",
+  medfield_id: 1,
+  medfield_name: "Test medical field",
+  medfield_full_name: "Test medical field",
 };
 
 test("Returns correct level with direction 0", () => {
