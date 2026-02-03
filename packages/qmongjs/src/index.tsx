@@ -15,6 +15,7 @@ export {
   level2,
   levelSymbols,
   newLevelSymbols,
+  newestLevelSymbols,
 } from "./helpers/functions";
 export { FilterMenu } from "./components/FilterMenu";
 export type {
