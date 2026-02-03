@@ -62,7 +62,9 @@ export default function TreatmentQualityPage() {
   };
 
   const searchParams = useSearchParams();
-  const displayV2Table = searchParams.get("newtable") === "true";
+  const [useBeta, setUseBeta] = useState(
+    searchParams.get("newtable") === "true",
+  );
 
   const defaultTreatmentUnits = ["Nasjonalt"];
 
@@ -263,7 +265,11 @@ export default function TreatmentQualityPage() {
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
           href="/favicon.ico"
         />
-        <TreatmentQualityAppBar openDrawer={() => toggleDrawer(true)}>
+        <TreatmentQualityAppBar
+          openDrawer={() => toggleDrawer(true)}
+          useBeta={useBeta}
+          setUseBeta={setUseBeta}
+        >
           Resultater fra nasjonale medisinske kvalitetsregistre. Se{" "}
           <Link
             href="https://www.kvalitetsregistre.no/"
@@ -303,7 +309,7 @@ export default function TreatmentQualityPage() {
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
                 {queriesReady && paramsReady ? (
-                  displayV2Table ? (
+                  useBeta ? (
                     <IndicatorTableBodyV2
                       key={"indicator-table2"}
                       context={selectedTableContext}
