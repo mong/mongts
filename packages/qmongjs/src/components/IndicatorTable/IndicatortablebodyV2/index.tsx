@@ -11,7 +11,7 @@ import {
   FetchIndicatorParams,
   useUnitNamesQuery,
 } from "../../../helpers/hooks";
-import { newLevelSymbols, level2, skdeTheme } from "qmongjs";
+import { newestLevelSymbols, level2, skdeTheme } from "qmongjs";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Skeleton, Collapse, Typography, Stack } from "@mui/material";
@@ -122,7 +122,10 @@ const IndicatorRow = (props: {
         unitName: row.unitName,
         result: row.var !== null ? customFormat(format)(row.var) : undefined,
         level: level2(indData, row),
-        symbol: newLevelSymbols(level2(indData, row), Math.random().toString()),
+        symbol: newestLevelSymbols(
+          level2(indData, row),
+          Math.random().toString(),
+        ),
         showCell:
           levels === undefined
             ? true
