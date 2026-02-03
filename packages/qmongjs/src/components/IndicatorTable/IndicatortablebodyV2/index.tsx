@@ -352,7 +352,7 @@ const IndicatorRow = (props: {
                 justifyContent="flex-start"
                 spacing={1}
               >
-                {row?.symbol}
+                {!lowDG && row?.symbol}
                 <Stack
                   direction="column"
                   alignItems="flex-start"
