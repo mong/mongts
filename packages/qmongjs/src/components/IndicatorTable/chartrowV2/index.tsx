@@ -110,9 +110,9 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             onChange={handleFigureTypeChange}
           >
             <MenuItem value={"line"} disabled={numberOfTimePoints === 1}>
-              Linje
+              Tidstrend
             </MenuItem>
-            <MenuItem value={"bar"}>Søyle</MenuItem>
+            <MenuItem value={"bar"}>Enkeltår</MenuItem>
           </Select>
         </FormControl>
         {figureType === "bar" && (
