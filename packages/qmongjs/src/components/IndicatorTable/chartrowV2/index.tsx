@@ -163,7 +163,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
           />
         ) : figureType === "bar" ? (
           <Box width={"100%"}>
-            <Typography variant="button" sx={{ paddingLeft: 15}}>
+            <Typography variant="button" sx={{ paddingLeft: 15 }}>
               {year}
             </Typography>
             <MuiBarChart
