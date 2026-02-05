@@ -9,6 +9,7 @@ import {
   Box,
   Stack,
   Button,
+  Typography,
 } from "@mui/material";
 import { getLastCompleteYear } from "../../../helpers/functions";
 import { customFormat } from "../../../helpers/functions";
@@ -141,6 +142,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
       </Stack>
       <Box
         sx={{
+          paddingTop: 4,
           width: "100%",
           height: figureType === "bar" ? "100%" : figureHeight,
           overflow: "auto",
@@ -161,6 +163,9 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
           />
         ) : figureType === "bar" ? (
           <Box width={"100%"}>
+            <Typography variant="button" sx={{ paddingLeft: 15}}>
+              {year}
+            </Typography>
             <MuiBarChart
               data={data}
               figureSpacingFactor={30}
