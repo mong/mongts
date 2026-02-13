@@ -2,43 +2,32 @@ import { useState } from "react";
 import {
   Box,
   CssBaseline,
-  Divider,
-  IconButton,
   Link,
   ThemeProvider,
-  Typography,
-  useMediaQuery,
+  FormControl,
+  Select,
+  MenuItem,
+  FormHelperText,
+  InputLabel,
+  SelectChangeEvent
 } from "@mui/material";
-import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
-import Grid from "@mui/material/Grid";
 import {
-  FilterSettingsAction,
-  FilterSettingsValue,
-  TreatmentQualityFilterMenu,
   useRegisterNamesQuery,
   defaultYear,
-  levelKey,
-  tableContextKey,
   treatmentUnitsKey,
   yearKey,
-  medicalFieldKey,
   useMedicalFieldsQuery,
-  dataQualityKey,
-  FilterSettingsActionType,
   IndicatorTableBodyV2,
   skdeTheme,
   useUnitNamesQuery,
 } from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
-import { FilterDrawer } from "../../src/components/TreatmentQuality";
 import { Footer } from "../../src/components/Footer";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
-import getMedicalFieldFilterRegisters from "../../src/utils/getMedicalFieldFilterRegisters";
 import { IndicatorTableSkeleton } from "qmongjs";
 import { LayoutHead } from "../../src/components/LayoutHead";
 import {
-  valueOrDefault,
   defaultTableContext,
 } from "../../src/utils/valueOrDefault";
 import {
@@ -49,12 +38,6 @@ import {
 import checkParamsReady from "../../src/utils/checkParamsReady";
 
 export default function TreatmentQualityPage() {
-  const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
-
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const toggleDrawer = (newOpen: boolean) => {
-    setDrawerOpen(newOpen);
-  };
 
   const [useBeta, setUseBeta] = useState(false);
 
@@ -108,143 +91,33 @@ export default function TreatmentQualityPage() {
 
   const registers = registryNameQuery?.data;
   const medicalFields = medicalFieldsQuery?.data;
-
-  /**
-   * Handle that the initial filter settings are loaded, which can happen
-   * more than once due to Next's pre-rendering and hydration behaviour combined
-   * with reading of query params.
-   *
-   * @param filterSettings Initial values for the filter settings
-   */
-  const handleFilterInitialized = (
-    filterSettings: Map<string, FilterSettingsValue[]>,
-  ): void => {
-    setSelectedTableContext(
-      filterSettings.get(tableContextKey)?.[0].value ?? defaultTableContext,
-    );
-
-    setSelectedYear(
-      parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString()),
-    );
-
-    setSelectedLevel(filterSettings.get(levelKey)?.[0]?.value ?? undefined);
-
-    const medicalFieldFilter = filterSettings
-      .get(medicalFieldKey)
-      ?.map((value) => value.value);
-    const registerFilter = getMedicalFieldFilterRegisters(
-      medicalFieldFilter,
-      registers,
-      medicalFields,
-    );
-    setSelectedMedicalFields(registerFilter);
-
-    setSelectedTreatmentUnits(
-      filterSettings.get(treatmentUnitsKey).map((value) => value.value),
-    );
-
-    setDataQualitySelected(
-      filterSettings.get(dataQualityKey)?.[0].value === "true" ? true : false,
-    );
+  const treatmentUnits = unitNamesQuery?.data && unitNamesQuery?.data.opts_tu[0].options.map(row => row.label)
 
     updateColourMap(
       colourMap,
       setColourMap,
-      filterSettings.get(treatmentUnitsKey).map((value) => value.value),
+      selectedTreatmentUnits,
     );
-  };
 
-  const setAllSelected = (newFilterSettings: {
-    map: Map<string, FilterSettingsValue[]>;
-  }) => {
-    setSelectedTableContext(
-      valueOrDefault(tableContextKey, newFilterSettings) as string,
-    );
-    setSelectedYear(
-      parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
-    );
-    setSelectedLevel(
-      valueOrDefault(levelKey, newFilterSettings) as string | undefined,
-    );
+    const handleMedfieldChange = (event: SelectChangeEvent) => {
+    const {
+      target: { value },
+    } = event;
     setSelectedMedicalFields(
-      valueOrDefault(
-        medicalFieldKey,
-        newFilterSettings,
-        registers,
-        medicalFields,
-      ) as string[],
-    );
-    setSelectedTreatmentUnits(
-      valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
-    );
-    setDataQualitySelected(
-      valueOrDefault(dataQualityKey, newFilterSettings) as boolean,
+      // On autofill we get a stringified value.
+      typeof value === 'string' ? value.split(',') : value,
     );
   };
 
-  /**
-   * Handle filter changes
-   */
-  const handleFilterChanged = (
-    newFilterSettings: { map: Map<string, FilterSettingsValue[]> },
-    oldFilterSettings: { map: Map<string, FilterSettingsValue[]> },
-    action: FilterSettingsAction,
-  ): void => {
-    switch (action.sectionSetting.key) {
-      case tableContextKey: {
-        setSelectedTableContext(
-          valueOrDefault(tableContextKey, newFilterSettings) as string,
-        );
-        break;
-      }
-      case yearKey: {
-        setSelectedYear(
-          parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
-        );
-        break;
-      }
-      case levelKey: {
-        setSelectedLevel(
-          valueOrDefault(levelKey, newFilterSettings) as string | undefined,
-        );
-        break;
-      }
-      case medicalFieldKey: {
-        setSelectedMedicalFields(
-          valueOrDefault(
-            medicalFieldKey,
-            newFilterSettings,
-            registers,
-            medicalFields,
-          ) as string[],
-        );
-        break;
-      }
-      case treatmentUnitsKey: {
-        setSelectedTreatmentUnits(
-          valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
-        );
-        break;
-      }
-      case dataQualityKey: {
-        setDataQualitySelected(
-          valueOrDefault(dataQualityKey, newFilterSettings) as boolean,
-        );
-        break;
-      }
-      default:
-        break;
-    }
-
-    if (action.type === FilterSettingsActionType.RESET_SELECTIONS) {
-      setAllSelected(newFilterSettings);
-    }
-
-    updateColourMap(
-      colourMap,
-      setColourMap,
-      valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+  const handleUnitChange = (event: SelectChangeEvent) => {
+    const {
+      target: { value },
+    } = event;
+    setSelectedTreatmentUnits(
+      // On autofill we get a stringified value.
+      typeof value === 'string' ? value.split(',') : value,
     );
+    console.log(selectedTreatmentUnits)
   };
 
   return (
@@ -257,7 +130,7 @@ export default function TreatmentQualityPage() {
           href="/favicon.ico"
         />
         <TreatmentQualityAppBar
-          openDrawer={() => toggleDrawer(true)}
+          openDrawer={() => false}
           useBeta={useBeta}
           setUseBeta={setUseBeta}
         >
@@ -271,92 +144,71 @@ export default function TreatmentQualityPage() {
           </Link>{" "}
           for mer informasjon.
         </TreatmentQualityAppBar>
-        <Grid container size={{ xs: 12 }}>
-          {isXxlScreen ? ( // Permanent menu on large screens
-            <Grid size={{ xxl: 4, xxml: 3, xxxl: 2 }} className="menu-wrapper">
-              {queriesReady && (
-                <Box
-                  sx={{
-                    mt: 4,
-                    position: "sticky",
-                    top: 100,
-                    overflow: "auto",
-                    maxHeight: window.innerHeight - 150,
-                  }}
-                >
-                  <TreatmentQualityFilterMenu
-                    onSelectionChanged={handleFilterChanged}
-                    onFilterInitialized={handleFilterInitialized}
-                    registryNameData={registers}
-                    medicalFieldData={medicalFields}
-                    testIdPrefix="permanentFilterMenu"
-                  />
-                  <Divider />
-                </Box>
+        <Box>
+          <FormControl sx={{ m: 3, minWidth: 200 }}>
+            <InputLabel>Register</InputLabel>
+            <Select
+              value={selectedMedicalFields[0]}
+              label="Register"
+              onChange={handleMedfieldChange}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              {registers && registers.map((register) => {
+                return(
+                  <MenuItem value={register.rname}>
+                    {register.short_name}
+                  </MenuItem>
+                )
+              })}
+            </Select>
+          </FormControl>
+          <FormControl sx={{ m: 3, minWidth: 200 }}>
+            <InputLabel>Behandlingshenhet</InputLabel>
+            <Select
+              value={selectedTreatmentUnits[0]}
+              label="Behandlingshenhet"
+              onChange={handleUnitChange}
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              {treatmentUnits && treatmentUnits.map((unit) => {
+                return(
+                  <MenuItem value={unit}>
+                    {unit}
+                  </MenuItem>
+                )
+              })}
+            </Select>
+          </FormControl>
+        </Box>
+          {queriesReady && paramsReady ? (
+            <IndicatorTableBodyV2
+              key={"indicator-table2"}
+              context={selectedTableContext}
+              unitNames={getSortedList(
+                colourMap,
+                selectedTreatmentUnits,
+                "units",
               )}
-            </Grid>
-          ) : null}
-          <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
-            <Grid container spacing={2}>
-              <Grid size={{ xs: 12 }}>
-                {queriesReady && paramsReady ? (
-                  <IndicatorTableBodyV2
-                    key={"indicator-table2"}
-                    context={selectedTableContext}
-                    unitNames={getSortedList(
-                      colourMap,
-                      selectedTreatmentUnits,
-                      "units",
-                    )}
-                    year={selectedYear}
-                    type={dataQualitySelected ? "dg" : "ind"}
-                    levels={selectedLevel}
-                    medfields={selectedMedicalFields}
-                    chartColours={getSortedList(
-                      colourMap,
-                      selectedTreatmentUnits,
-                      "colours",
-                    )}
-                  />
-                ) : (
-                  <IndicatorTableSkeleton nRows={10} />
-                )}
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
+              year={selectedYear}
+              type={dataQualitySelected ? "dg" : "ind"}
+              levels={selectedLevel}
+              medfields={selectedMedicalFields}
+              chartColours={getSortedList(
+                colourMap,
+                selectedTreatmentUnits,
+                "colours",
+              )}
+            />
+          ) : (
+            <IndicatorTableSkeleton nRows={10} />
+          )}
         <Footer page="behandlingskvalitet" />
       </PageWrapper>
-      <FilterDrawer
-        ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
-        }}
-        open={drawerOpen}
-        onClose={() => toggleDrawer(false)}
-      >
-        <Box sx={{ display: "flex", m: 2, justifyContent: "space-between" }}>
-          <Typography variant="h3">Filtermeny</Typography>
-          <IconButton
-            aria-label="Lukk sidemeny"
-            onClick={() => toggleDrawer(false)}
-          >
-            <ChevronLeftRoundedIcon fontSize="large" />
-          </IconButton>
-        </Box>
-        <Divider />
-        {queriesReady && (
-          <Box sx={{ mt: 4 }}>
-            <TreatmentQualityFilterMenu
-              onSelectionChanged={handleFilterChanged}
-              onFilterInitialized={handleFilterInitialized}
-              registryNameData={registers}
-              medicalFieldData={medicalFields}
-              testIdPrefix="drawerFilterMenu"
-            />
-            <Divider />
-          </Box>
-        )}
-      </FilterDrawer>
+  
     </ThemeProvider>
   );
 }
