@@ -119,18 +119,7 @@ export const IndicatorTableWrapper = styled(Box)(({ theme }) => ({
       },
       ...theme.typography.body2,
     },
-    "& div.linechart-wrapper": {
-      [theme.breakpoints.up("xl")]: {
-        width: `${breakpoints.xl}px !important`,
-      },
-      [theme.breakpoints.down("sm")]: {
-        width: "100% !important",
-        "& text": {
-          fontSize: `0.625rem !important`,
-        },
-      },
-      ...theme.typography.body2,
-    },
+
     "& button": {
       ...theme.typography.body2,
       [theme.breakpoints.down("sm")]: {
