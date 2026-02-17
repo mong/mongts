@@ -14,7 +14,7 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useMedicalFieldsQuery } from "qmongjs";
 
-export type MedicalFieldPopupProps = {
+type MedicalFieldPopupProps = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   onSubmit: Dispatch<SetStateAction<string[]>>;
