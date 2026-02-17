@@ -33,32 +33,39 @@ import {
 import { MedicalFieldPopup } from "../../src/components/Popups";
 
 export default function TreatmentQualityPage() {
-  const [useBeta, setUseBeta] = useState(false);
-
   const numberOfYearOptions = 5;
 
   const defaultTreatmentUnits = ["Nasjonalt"];
 
   // Used by indicator table
   const [selectedYear, setSelectedYear] = useState(defaultYear);
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedTableContext, setSelectedTableContext] =
     useState(defaultTableContext);
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedLevel, setSelectedLevel] = useState<string | undefined>();
   const [selectedMedicalFields, setSelectedMedicalFields] = useState<string[]>(
     [],
   );
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState(
     defaultTreatmentUnits,
   );
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [dataQualitySelected, setDataQualitySelected] =
     useState<boolean>(false);
 
   const [medicalFieldPopupOpen, setMedicalFieldPopupOpen] = useState(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [treatmentUnitPopupOpen, setTreatmentUnitPopupOpen] = useState(false);
 
   const [colourMap, setColourMap] = useState<ColourMap[]>([]);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     selectedMedicalFields[0] ? selectedMedicalFields[0] : "all",
     selectedTableContext,
@@ -66,10 +73,11 @@ export default function TreatmentQualityPage() {
   );
 
   // Load register names and medical fields
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
   const registryNameQuery: UseQueryResult<any, unknown> =
     useRegisterNamesQuery();
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
 
@@ -95,10 +103,7 @@ export default function TreatmentQualityPage() {
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
           href="/favicon.ico"
         />
-        <TreatmentQualityAppBar
-          openDrawer={() => false}
-          setUseBeta={setUseBeta}
-        >
+        <TreatmentQualityAppBar openDrawer={() => false}>
           Resultater fra nasjonale medisinske kvalitetsregistre. Se{" "}
           <Link
             href="https://www.kvalitetsregistre.no/"
