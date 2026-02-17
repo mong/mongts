@@ -97,7 +97,6 @@ export default function TreatmentQualityPage() {
         />
         <TreatmentQualityAppBar
           openDrawer={() => false}
-          useBeta={useBeta}
           setUseBeta={setUseBeta}
         >
           Resultater fra nasjonale medisinske kvalitetsregistre. Se{" "}
