@@ -14,7 +14,6 @@ import {
 import {
   useRegisterNamesQuery,
   defaultYear,
-  useMedicalFieldsQuery,
   IndicatorTableBodyV2,
   skdeTheme,
   useUnitNamesQuery,
@@ -76,10 +75,6 @@ export default function TreatmentQualityPage() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
   const registryNameQuery: UseQueryResult<any, unknown> =
     useRegisterNamesQuery();
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
-  const medicalFieldsQuery: UseQueryResult<any, unknown> =
-    useMedicalFieldsQuery();
 
   updateColourMap(colourMap, setColourMap, selectedTreatmentUnits);
 

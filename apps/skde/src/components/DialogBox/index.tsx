@@ -11,6 +11,8 @@ import {
   FormControl,
 } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
+import { UseQueryResult } from "@tanstack/react-query";
+import { useMedicalFieldsQuery } from "qmongjs";
 
 export type MedicalFieldPopupProps = {
   open: boolean;
@@ -22,6 +24,12 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const { open, setOpen, onSubmit } = props;
 
   const [selection, setSelection] = useState<string>("");
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
+  const medicalFieldsQuery: UseQueryResult<any, unknown> =
+    useMedicalFieldsQuery();
+
+  const registries = medicalFieldsQuery.data.map((row) => row.registers).flat();
 
   const handleClose = () => {
     setOpen(false);
@@ -46,9 +54,9 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
         <FormControl sx={{ m: 1, width: 300 }}>
           <InputLabel>Fagområde</InputLabel>
           <Select value={selection} onChange={handleChange}>
-            <MenuItem value="Ingen">Ingen</MenuItem>
-            <MenuItem value="hjerneslag">Hjerneslag</MenuItem>
-            <MenuItem value="hjerteinfarkt">Hjerteinfarkt</MenuItem>
+            {registries.map((registry) => {
+              return <MenuItem value={registry}>{registry}</MenuItem>;
+            })}
           </Select>
         </FormControl>
       </DialogContent>
