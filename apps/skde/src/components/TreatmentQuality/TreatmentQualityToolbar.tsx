@@ -1,17 +1,9 @@
-import {
-  Button,
-  Toolbar,
-  Tooltip,
-  styled,
-  Switch,
-  FormControlLabel,
-} from "@mui/material";
+import { Button, Toolbar, Tooltip, styled } from "@mui/material";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import TuneRoundedIcon from "@mui/icons-material/TuneRounded";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
-import { SetStateAction } from "react";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
@@ -20,8 +12,6 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 type StickyToolbarProps = {
   openDrawer: () => void;
-  useBeta: boolean;
-  setUseBeta: (value: SetStateAction<boolean>) => void;
 };
 
 const scrollToTop = () => {
@@ -31,7 +21,7 @@ const scrollToTop = () => {
 };
 
 export const TreatmentQualityToolbar = (props: StickyToolbarProps) => {
-  const { openDrawer, useBeta, setUseBeta } = props;
+  const { openDrawer } = props;
 
   const theme = useTheme();
   const notLargeScreen = useMediaQuery(theme.breakpoints.down("xxl"));
@@ -44,17 +34,6 @@ export const TreatmentQualityToolbar = (props: StickyToolbarProps) => {
         sx={{ flexGrow: 1 }}
         justifyContent="space-between"
       >
-        <FormControlLabel
-          control={
-            <Switch
-              checked={useBeta}
-              onChange={() => {
-                setUseBeta(!useBeta);
-              }}
-            />
-          }
-          label="Prøv betaversjonen av Behandlingskvalitet"
-        />
         <Grid sx={{ xs: "auto" }}>
           {notLargeScreen ? (
             <Tooltip title="Åpne sidemeny">
