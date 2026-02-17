@@ -8,7 +8,7 @@ import {
   Button,
   SelectChangeEvent,
   InputLabel,
-  FormControl
+  FormControl,
 } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 
@@ -16,33 +16,28 @@ export type MedicalFieldPopupProps = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   onSubmit: Dispatch<SetStateAction<string[]>>;
-  initialSelection: string[];
 };
 
 export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
-  const { open, setOpen, onSubmit, initialSelection } = props;
+  const { open, setOpen, onSubmit } = props;
 
-  const [selection, setSelection] = useState<string[]>(initialSelection);
+  const [selection, setSelection] = useState<string>("");
 
   const handleClose = () => {
     setOpen(false);
   };
 
   const handleSubmit = () => {
-    onSubmit(selection);
+    onSubmit([selection]);
     setOpen(false);
   };
 
-  const handleChange = (event: SelectChangeEvent<string[]>) => {
+  const handleChange = (event: SelectChangeEvent) => {
     const {
       target: { value },
     } = event;
-    setSelection(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value,
-    );
+    setSelection(value);
   };
-
 
   return (
     <Dialog open={open}>
@@ -50,7 +45,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
       <DialogContent>
         <FormControl sx={{ m: 1, width: 300 }}>
           <InputLabel>Fagområde</InputLabel>
-          <Select multiple value={selection} onChange={handleChange}>
+          <Select value={selection} onChange={handleChange}>
             <MenuItem value="Ingen">Ingen</MenuItem>
             <MenuItem value="hjerneslag">Hjerneslag</MenuItem>
             <MenuItem value="hjerteinfarkt">Hjerteinfarkt</MenuItem>
