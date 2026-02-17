@@ -29,7 +29,9 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
 
-  const registries = medicalFieldsQuery.data.map((row) => row.registers).flat();
+  const registries = medicalFieldsQuery.data
+    ? medicalFieldsQuery.data.map((row) => row.registers).flat()
+    : [];
 
   const handleClose = () => {
     setOpen(false);
