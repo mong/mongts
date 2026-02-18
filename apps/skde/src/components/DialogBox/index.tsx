@@ -9,10 +9,14 @@ import {
   SelectChangeEvent,
   InputLabel,
   FormControl,
+  FormControlLabel,
+  Checkbox,
 } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useMedicalFieldsQuery, useUnitNamesQuery } from "qmongjs";
+import { Medfield } from "types";
+import { NestedTreatmentUnitName } from "types";
 
 type MedicalFieldPopupProps = {
   open: boolean;
@@ -23,30 +27,58 @@ type MedicalFieldPopupProps = {
 export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const { open, setOpen, onSubmit } = props;
 
-  const [selection, setSelection] = useState<string>("");
+  const [selection, setSelection] = useState<string[]>([]);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
 
-  const registries = medicalFieldsQuery.data
-    ? medicalFieldsQuery.data.map((row) => row.registers).flat()
-    : [];
+  const MedfieldCheckboxes =
+    medicalFieldsQuery.data &&
+    medicalFieldsQuery.data.map((medfield: Medfield) => {
+      const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.checked && !selection.includes(medfield.name)) {
+          const newSelection = [...selection, medfield.name];
+          setSelection([...newSelection]);
+        } else if (!event.target.checked && selection.includes(medfield.name)) {
+          const ind = selection.indexOf(medfield.name);
+          const newSelection = [...selection];
+          newSelection.splice(ind, 1);
+          setSelection(newSelection);
+        }
+      };
+
+      return (
+        <FormControlLabel
+          label={medfield.name}
+          key={medfield.shortName}
+          control={
+            <Checkbox
+              checked={selection.includes(medfield.name)}
+              onChange={handleChange}
+              key={medfield.name}
+            />
+          }
+        />
+      );
+    });
 
   const handleClose = () => {
     setOpen(false);
   };
 
   const handleSubmit = () => {
-    onSubmit([selection]);
-    setOpen(false);
-  };
+    const selectedRegistries = medicalFieldsQuery.data
+      .filter((medfield: Medfield) => {
+        return selection.includes(medfield.name);
+      })
+      .map((medfield: Medfield) => {
+        return medfield.registers;
+      })
+      .flat();
 
-  const handleChange = (event: SelectChangeEvent) => {
-    const {
-      target: { value },
-    } = event;
-    setSelection(value);
+    onSubmit(selectedRegistries);
+    setOpen(false);
   };
 
   return (
@@ -54,12 +86,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
       <DialogTitle>Velg fagområde</DialogTitle>
       <DialogContent>
         <FormControl sx={{ m: 1, width: 300 }}>
-          <InputLabel>Fagområde</InputLabel>
-          <Select value={selection} onChange={handleChange} label="Fagområde">
-            {registries.map((registry) => {
-              return <MenuItem value={registry}>{registry}</MenuItem>;
-            })}
-          </Select>
+          {MedfieldCheckboxes && MedfieldCheckboxes.map((row) => row)}
         </FormControl>
       </DialogContent>
       <DialogActions>
@@ -83,7 +110,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
 
   const [selection, setSelection] = useState<string>("");
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     "all",
     context,
@@ -91,7 +118,9 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   );
 
   const rhfs = unitNamesQuery.data
-    ? unitNamesQuery.data.nestedUnitNames.map((row) => row.rhf)
+    ? unitNamesQuery.data.nestedUnitNames.map(
+        (row: NestedTreatmentUnitName) => row.rhf,
+      )
     : [];
 
   const handleClose = () => {
