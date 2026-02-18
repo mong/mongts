@@ -91,7 +91,7 @@ export default function TreatmentQualityPage() {
   const handleTreatmentUnitButtonClick = () => {
     setTreatmentUnitPopupOpen(true);
   };
-  console.log(selectedMedicalFields);
+
   return (
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
