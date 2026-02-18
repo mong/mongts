@@ -29,7 +29,10 @@ import {
   updateColourMap,
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
-import { MedicalFieldPopup } from "../../src/components/DialogBox";
+import {
+  MedicalFieldPopup,
+  TreatmentUnitPopup,
+} from "../../src/components/DialogBox";
 
 export default function TreatmentQualityPage() {
   const numberOfYearOptions = 5;
@@ -121,6 +124,13 @@ export default function TreatmentQualityPage() {
           <Button variant="outlined" onClick={handleTreatmentUnitButtonClick}>
             Velg behandlingsenheter
           </Button>
+          <TreatmentUnitPopup
+            open={treatmentUnitPopupOpen}
+            setOpen={setTreatmentUnitPopupOpen}
+            onSubmit={setSelectedTreatmentUnits}
+            context={selectedTableContext}
+            type={"ind"}
+          />
           <FormControl>
             <InputLabel>År</InputLabel>
             <Select
