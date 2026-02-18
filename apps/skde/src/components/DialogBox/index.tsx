@@ -90,8 +90,8 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
         </FormControl>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleSubmit}>Subscribe</Button>
+        <Button onClick={handleClose}>Avbryt</Button>
+        <Button onClick={handleSubmit}>OK</Button>
       </DialogActions>
     </Dialog>
   );
