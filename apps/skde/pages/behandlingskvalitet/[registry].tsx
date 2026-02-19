@@ -65,7 +65,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     setDrawerOpen(newOpen);
   };
 
-  const useBeta = false;
+  const [useBeta, setUseBeta] = useState(false);
 
   const defaultTreatmentUnits = ["Nasjonalt"];
 
@@ -252,6 +252,8 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
         />
         <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
+          useBeta={useBeta}
+          setUseBeta={setUseBeta}
           extraBreadcrumbs={[
             { link: registryName, text: registryInfo[0].short_name },
           ]}
