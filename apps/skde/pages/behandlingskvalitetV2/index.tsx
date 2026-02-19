@@ -37,6 +37,8 @@ import {
 export default function TreatmentQualityPage() {
   const numberOfYearOptions = 5;
 
+  const [useBeta, setUseBeta] = useState(false);
+
   const defaultTreatmentUnits = ["Nasjonalt"];
 
   // Used by indicator table
@@ -101,7 +103,11 @@ export default function TreatmentQualityPage() {
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
           href="/favicon.ico"
         />
-        <TreatmentQualityAppBar openDrawer={() => false}>
+        <TreatmentQualityAppBar
+          openDrawer={() => false}
+          useBeta={useBeta}
+          setUseBeta={setUseBeta}
+        >
           Resultater fra nasjonale medisinske kvalitetsregistre. Se{" "}
           <Link
             href="https://www.kvalitetsregistre.no/"
