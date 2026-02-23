@@ -1,0 +1,161 @@
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  FormControl,
+  FormControlLabel,
+  Checkbox,
+  Grid,
+} from "@mui/material";
+import { Dispatch, SetStateAction, useState } from "react";
+import { UseQueryResult } from "@tanstack/react-query";
+import { useMedicalFieldsQuery, useRegisterNamesQuery } from "qmongjs";
+import { Medfield, RegisterName } from "types";
+
+type MedicalFieldPopupProps = {
+  open: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  onSubmit: Dispatch<SetStateAction<string[]>>;
+};
+
+export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
+  const { open, setOpen, onSubmit } = props;
+  const [registrySelection, setRegistrySelection] = useState<string[]>([]);
+  const [highlightetMedField, setHighlightetMedField] = useState<string>("");
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const medicalFieldsQuery: UseQueryResult<any, unknown> =
+    useMedicalFieldsQuery();
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const registryQuery: UseQueryResult<any, unknown> = useRegisterNamesQuery();
+
+  const MedfieldCheckboxes =
+    medicalFieldsQuery.data &&
+    medicalFieldsQuery.data.map((medfield: Medfield) => {
+      const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        // Add medfield to the selection
+        if (event.target.checked) {
+          // May contain duplicates
+          const newRegistrySelection = [
+            ...registrySelection,
+            ...medfield.registers,
+          ];
+
+          setRegistrySelection([...new Set(newRegistrySelection)]);
+
+          // Remove medfield from the selection
+        } else if (!event.target.checked) {
+          const newRegistrySelection = [...registrySelection].filter(
+            (registry) => {
+              return !medfield.registers.includes(registry);
+            },
+          );
+          setRegistrySelection(newRegistrySelection);
+        }
+      };
+
+      const registryChecked = (row: string) => {
+        return registrySelection.includes(row);
+      };
+
+      return (
+        <FormControlLabel
+          label={medfield.name}
+          key={medfield.shortName}
+          onMouseEnter={() => {
+            setHighlightetMedField(medfield.name);
+          }}
+          control={
+            <Checkbox
+              checked={medfield.registers.every(registryChecked)}
+              indeterminate={
+                !medfield.registers.every(registryChecked) &&
+                medfield.registers.some(registryChecked)
+              }
+              onChange={handleChange}
+              key={medfield.name}
+            />
+          }
+        />
+      );
+    });
+
+  const RegistryCheckBoxes = {};
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  medicalFieldsQuery.data &&
+    registryQuery.data &&
+    medicalFieldsQuery.data.map((medfield: Medfield) => {
+      const CheckBoxes = medfield.registers.map((registry) => {
+        const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+          if (event.target.checked) {
+            const newSelection = [...registrySelection, registry];
+            setRegistrySelection([...newSelection]);
+          } else if (!event.target.checked) {
+            const newSelection = [
+              ...registrySelection.filter((row) => {
+                return row != registry;
+              }),
+            ];
+            setRegistrySelection(newSelection);
+          }
+        };
+
+        return (
+          <FormControlLabel
+            label={
+              registryQuery.data.find((row: RegisterName) => {
+                return row.rname == registry;
+              }).short_name
+            }
+            key={registry}
+            control={
+              <Checkbox
+                checked={registrySelection.includes(registry)}
+                onChange={handleChange}
+                key={registry + "_box"}
+              />
+            }
+          />
+        );
+      });
+      RegistryCheckBoxes[medfield.name] = CheckBoxes;
+    });
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleSubmit = () => {
+    onSubmit(registrySelection);
+    setOpen(false);
+  };
+
+  return (
+    <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
+      <DialogTitle>Velg fagområde</DialogTitle>
+      <DialogContent>
+        <Grid container spacing={2}>
+          <Grid size={6}>
+            <FormControl sx={{ m: 1, width: "50%" }}>
+              {MedfieldCheckboxes && MedfieldCheckboxes.map((row) => row)}
+            </FormControl>
+          </Grid>
+          <Grid size={6}>
+            <FormControl sx={{ m: 1, width: "50%" }}>
+              {RegistryCheckBoxes[highlightetMedField] &&
+                RegistryCheckBoxes[highlightetMedField].map((row) => row)}
+            </FormControl>
+          </Grid>
+        </Grid>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose}>Avbryt</Button>
+        <Button onClick={handleSubmit}>OK</Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
