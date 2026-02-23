@@ -36,10 +36,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
     medicalFieldsQuery.data.map((medfield: Medfield) => {
       const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         // Add medfield to the selection
-        if (
-          event.target.checked &&
-          !medFieldSelection.includes(medfield.name)
-        ) {
+        if (event.target.checked) {
           const newMedFieldSelection = [...medFieldSelection, medfield.name];
           setMedFieldSelection([...newMedFieldSelection]);
 
@@ -52,10 +49,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
           setRegistrySelection([...new Set(newRegistrySelection)]);
 
           // Remove medfield from the selection
-        } else if (
-          !event.target.checked &&
-          medFieldSelection.includes(medfield.name)
-        ) {
+        } else if (!event.target.checked) {
           const newSelection = [
             ...medFieldSelection.filter((row) => {
               return row != medfield.name;
@@ -72,6 +66,10 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
         }
       };
 
+      const registryChecked = (row: string) => {
+        return registrySelection.includes(row);
+      };
+
       return (
         <FormControlLabel
           label={medfield.name}
@@ -81,7 +79,11 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
           }}
           control={
             <Checkbox
-              checked={medFieldSelection.includes(medfield.name)}
+              checked={medfield.registers.every(registryChecked)}
+              indeterminate={
+                !medfield.registers.every(registryChecked) &&
+                medfield.registers.some(registryChecked)
+              }
               onChange={handleChange}
               key={medfield.name}
             />
@@ -97,13 +99,10 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
     medicalFieldsQuery.data.map((medfield: Medfield) => {
       const CheckBoxes = medfield.registers.map((registry) => {
         const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-          if (event.target.checked && !registrySelection.includes(registry)) {
+          if (event.target.checked) {
             const newSelection = [...registrySelection, registry];
             setRegistrySelection([...newSelection]);
-          } else if (
-            !event.target.checked &&
-            registrySelection.includes(registry)
-          ) {
+          } else if (!event.target.checked) {
             const newSelection = [
               ...registrySelection.filter((row) => {
                 return row != registry;
