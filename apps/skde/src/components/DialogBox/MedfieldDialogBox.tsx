@@ -8,7 +8,6 @@ import {
   FormControlLabel,
   Checkbox,
   Grid,
-  Typography,
 } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
@@ -71,6 +70,44 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
       );
     });
 
+  const RegistryCheckBoxes = {};
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  medicalFieldsQuery.data &&
+    medicalFieldsQuery.data.map((medfield: Medfield) => {
+      const CheckBoxes = medfield.registers.map((registry) => {
+        const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+          if (event.target.checked && !registrySelection.includes(registry)) {
+            const newSelection = [...registrySelection, registry];
+            setRegistrySelection([...newSelection]);
+          } else if (
+            !event.target.checked &&
+            registrySelection.includes(registry)
+          ) {
+            const ind = registrySelection.indexOf(registry);
+            const newSelection = [...registrySelection];
+            newSelection.splice(ind, 1);
+            setRegistrySelection(newSelection);
+          }
+        };
+
+        return (
+          <FormControlLabel
+            label={registry}
+            key={registry}
+            control={
+              <Checkbox
+                checked={registrySelection.includes(registry)}
+                onChange={handleChange}
+                key={registry + "_box"}
+              />
+            }
+          />
+        );
+      });
+      RegistryCheckBoxes[medfield.name] = CheckBoxes;
+    });
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -100,7 +137,10 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
             </FormControl>
           </Grid>
           <Grid size={6}>
-            <Typography>{highlightetMedField}</Typography>
+            <FormControl sx={{ m: 1, width: "50%" }}>
+              {RegistryCheckBoxes[highlightetMedField] &&
+                RegistryCheckBoxes[highlightetMedField].map((row) => row)}
+            </FormControl>
           </Grid>
         </Grid>
       </DialogContent>
