@@ -35,20 +35,40 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
     medicalFieldsQuery.data &&
     medicalFieldsQuery.data.map((medfield: Medfield) => {
       const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        // Add medfield to the selection
         if (
           event.target.checked &&
           !medFieldSelection.includes(medfield.name)
         ) {
-          const newSelection = [...medFieldSelection, medfield.name];
-          setMedFieldSelection([...newSelection]);
+          const newMedFieldSelection = [...medFieldSelection, medfield.name];
+          setMedFieldSelection([...newMedFieldSelection]);
+
+          // May contain duplicates
+          const newRegistrySelection = [
+            ...registrySelection,
+            ...medfield.registers,
+          ];
+
+          setRegistrySelection([...new Set(newRegistrySelection)]);
+
+          // Remove medfield from the selection
         } else if (
           !event.target.checked &&
           medFieldSelection.includes(medfield.name)
         ) {
-          const ind = medFieldSelection.indexOf(medfield.name);
-          const newSelection = [...medFieldSelection];
-          newSelection.splice(ind, 1);
+          const newSelection = [
+            ...medFieldSelection.filter((row) => {
+              return row != medfield.name;
+            }),
+          ];
           setMedFieldSelection(newSelection);
+
+          const newRegistrySelection = [...registrySelection].filter(
+            (registry) => {
+              return !medfield.registers.includes(registry);
+            },
+          );
+          setRegistrySelection(newRegistrySelection);
         }
       };
 
@@ -84,9 +104,11 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
             !event.target.checked &&
             registrySelection.includes(registry)
           ) {
-            const ind = registrySelection.indexOf(registry);
-            const newSelection = [...registrySelection];
-            newSelection.splice(ind, 1);
+            const newSelection = [
+              ...registrySelection.filter((row) => {
+                return row != registry;
+              }),
+            ];
             setRegistrySelection(newSelection);
           }
         };
@@ -113,16 +135,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   };
 
   const handleSubmit = () => {
-    const selectedRegistries = medicalFieldsQuery.data
-      .filter((medfield: Medfield) => {
-        return medFieldSelection.includes(medfield.name);
-      })
-      .map((medfield: Medfield) => {
-        return medfield.registers;
-      })
-      .flat();
-
-    onSubmit(selectedRegistries);
+    onSubmit(registrySelection);
     setOpen(false);
   };
 
