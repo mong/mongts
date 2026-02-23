@@ -29,10 +29,8 @@ import {
   updateColourMap,
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
-import {
-  MedicalFieldPopup,
-  TreatmentUnitPopup,
-} from "../../src/components/DialogBox";
+import { TreatmentUnitPopup } from "../../src/components/DialogBox/TreatmentunitsDialogPopup";
+import { MedicalFieldPopup } from "../../src/components/DialogBox/MedfieldDialogBox";
 
 export default function TreatmentQualityPage() {
   const numberOfYearOptions = 5;
