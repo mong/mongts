@@ -11,8 +11,8 @@ import {
 } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
-import { useMedicalFieldsQuery } from "qmongjs";
-import { Medfield } from "types";
+import { useMedicalFieldsQuery, useRegisterNamesQuery } from "qmongjs";
+import { Medfield, RegisterName } from "types";
 
 type MedicalFieldPopupProps = {
   open: boolean;
@@ -30,6 +30,9 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const registryQuery: UseQueryResult<any, unknown> = useRegisterNamesQuery();
 
   const MedfieldCheckboxes =
     medicalFieldsQuery.data &&
@@ -96,6 +99,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-expressions
   medicalFieldsQuery.data &&
+    registryQuery.data &&
     medicalFieldsQuery.data.map((medfield: Medfield) => {
       const CheckBoxes = medfield.registers.map((registry) => {
         const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -114,7 +118,11 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
 
         return (
           <FormControlLabel
-            label={registry}
+            label={
+              registryQuery.data.find((row: RegisterName) => {
+                return row.rname == registry;
+              }).short_name
+            }
             key={registry}
             control={
               <Checkbox
