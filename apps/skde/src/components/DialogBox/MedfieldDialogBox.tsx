@@ -22,8 +22,6 @@ type MedicalFieldPopupProps = {
 
 export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const { open, setOpen, onSubmit } = props;
-
-  const [medFieldSelection, setMedFieldSelection] = useState<string[]>([]);
   const [registrySelection, setRegistrySelection] = useState<string[]>([]);
   const [highlightetMedField, setHighlightetMedField] = useState<string>("");
 
@@ -40,9 +38,6 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
       const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         // Add medfield to the selection
         if (event.target.checked) {
-          const newMedFieldSelection = [...medFieldSelection, medfield.name];
-          setMedFieldSelection([...newMedFieldSelection]);
-
           // May contain duplicates
           const newRegistrySelection = [
             ...registrySelection,
@@ -53,13 +48,6 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
 
           // Remove medfield from the selection
         } else if (!event.target.checked) {
-          const newSelection = [
-            ...medFieldSelection.filter((row) => {
-              return row != medfield.name;
-            }),
-          ];
-          setMedFieldSelection(newSelection);
-
           const newRegistrySelection = [...registrySelection].filter(
             (registry) => {
               return !medfield.registers.includes(registry);
