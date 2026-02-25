@@ -37,9 +37,17 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
     type,
   );
 
-  const RHFCheckboxes =
+  const unitNames =
     unitNamesQuery.data &&
-    (unitNamesQuery.data.nestedUnitNames.map((row: NestedTreatmentUnitName) => {
+    unitNamesQuery.data.nestedUnitNames.sort(
+      (a: NestedTreatmentUnitName, b: NestedTreatmentUnitName) => {
+        return a.rhf_sort > b.rhf_sort;
+      },
+    );
+
+  const RHFCheckboxes =
+    unitNames &&
+    (unitNames.map((row: NestedTreatmentUnitName) => {
       const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         // Add RHF to the selection
         if (event.target.checked) {
