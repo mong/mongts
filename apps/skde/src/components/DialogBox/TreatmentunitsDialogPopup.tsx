@@ -26,6 +26,8 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const { open, setOpen, onSubmit, context, type } = props;
 
   const [rhfSelection, setRHFSelection] = useState<string[]>([]);
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [highlightedRHF, setHighlightetMedField] = useState<string>("");
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
