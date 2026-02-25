@@ -92,7 +92,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
 
   return (
     <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
-      <DialogTitle>Velg fagområde</DialogTitle>
+      <DialogTitle>Velg behandlingsenheter</DialogTitle>
       <DialogContent>
         <Grid container spacing={2}>
           <Grid size={6}>
