@@ -1,14 +1,13 @@
 import {
   Dialog,
   DialogTitle,
-  Select,
-  MenuItem,
   DialogContent,
   DialogActions,
   Button,
-  SelectChangeEvent,
-  InputLabel,
   FormControl,
+  Grid,
+  FormControlLabel,
+  Checkbox,
 } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
@@ -26,7 +25,10 @@ type TreatmentUnitPopupProps = {
 export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const { open, setOpen, onSubmit, context, type } = props;
 
-  const [selection, setSelection] = useState<string>("");
+  const [unitSelection, setUnitSelection] = useState<string[]>([]);
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [highlightedRHF, setHighlightedRHF] = useState<string>("");
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
@@ -35,44 +37,130 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
     type,
   );
 
-  const rhfs = unitNamesQuery.data
-    ? unitNamesQuery.data.nestedUnitNames.map(
-        (row: NestedTreatmentUnitName) => row.rhf,
-      )
-    : [];
+  const unitNames =
+    unitNamesQuery.data &&
+    unitNamesQuery.data.nestedUnitNames.sort(
+      (a: NestedTreatmentUnitName, b: NestedTreatmentUnitName) => {
+        return a.rhf_sort - b.rhf_sort;
+      },
+    );
+
+  const RHFCheckboxes =
+    unitNames &&
+    (unitNames.map((row: NestedTreatmentUnitName) => {
+      const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        // Add RHF to the selection
+        if (event.target.checked) {
+          // May contain duplicates
+          const newRHFSelection = [...unitSelection, row.rhf];
+
+          setUnitSelection([...new Set(newRHFSelection)]);
+        } else {
+          const newRHFSelection = [...unitSelection].filter((rhf) => {
+            return rhf !== row.rhf;
+          });
+          setUnitSelection([...new Set(newRHFSelection)]);
+        }
+      };
+
+      const hfChecked = () => {
+        const selectedSet = new Set([...unitSelection]);
+        const hfSet = new Set(row.hf.map((el) => el.hf));
+        return selectedSet.intersection(hfSet).size > 0;
+      };
+
+      return (
+        <FormControlLabel
+          label={row.rhf}
+          key={row.rhf}
+          onMouseEnter={() => {
+            setHighlightedRHF(row.rhf);
+          }}
+          control={
+            <Checkbox
+              checked={unitSelection.includes(row.rhf)}
+              indeterminate={!unitSelection.includes(row.rhf) && hfChecked()}
+              onChange={handleChange}
+              key={row.rhf + "_checkbox"}
+            />
+          }
+        />
+      );
+    }) as JSX.Element[]);
+
+  const HFCheckBoxes = {};
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  unitNames &&
+    unitNames.map((unitName: NestedTreatmentUnitName) => {
+      const hfs = unitName.hf.sort((a, b) => {
+        return a.hf_sort - b.hf_sort;
+      });
+
+      const CheckBoxes = hfs.map((hf) => {
+        const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+          if (event.target.checked) {
+            const newHFSelection = [...unitSelection, hf.hf];
+            setUnitSelection([...newHFSelection]);
+          } else {
+            const newHFSelection = [
+              ...unitSelection.filter((row) => {
+                return row != hf.hf;
+              }),
+            ];
+            setUnitSelection(newHFSelection);
+          }
+        };
+        return (
+          <FormControlLabel
+            label={hf.hf}
+            key={hf.hf}
+            control={
+              <Checkbox
+                checked={unitSelection.includes(hf.hf)}
+                onChange={handleChange}
+                key={hf.hf + "_checkbox"}
+              />
+            }
+          />
+        );
+      });
+      HFCheckBoxes[unitName.rhf] = CheckBoxes;
+    });
 
   const handleClose = () => {
     setOpen(false);
+    setHighlightedRHF("");
   };
 
   const handleSubmit = () => {
-    onSubmit([selection]);
+    onSubmit(["Nasjonalt", ...unitSelection]);
     setOpen(false);
-  };
-
-  const handleChange = (event: SelectChangeEvent) => {
-    const {
-      target: { value },
-    } = event;
-    setSelection(value);
+    setHighlightedRHF("");
   };
 
   return (
-    <Dialog open={open}>
-      <DialogTitle>Velg behandlingssted</DialogTitle>
-      <DialogContent>
-        <FormControl sx={{ m: 1, width: 300 }}>
-          <InputLabel>Behandlingsenhet</InputLabel>
-          <Select
-            value={selection}
-            onChange={handleChange}
-            label="Behandlingsenhet"
-          >
-            {rhfs.map((rhf) => {
-              return <MenuItem value={rhf}>{rhf}</MenuItem>;
-            })}
-          </Select>
-        </FormControl>
+    <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
+      <DialogTitle>Velg behandlingsenheter</DialogTitle>
+      <DialogContent
+        sx={{ height: 1000 }}
+        onMouseLeave={() => {
+          setHighlightedRHF("");
+        }}
+      >
+        <Grid container spacing={2}>
+          <Grid size={6}>
+            <FormControl sx={{ m: 1, width: "50%" }}>
+              {RHFCheckboxes && RHFCheckboxes.map((row: JSX.Element) => row)}
+            </FormControl>
+          </Grid>
+          <Grid size={6}>
+            <FormControl sx={{ m: 1, width: "50%" }}>
+              {HFCheckBoxes[highlightedRHF] &&
+                HFCheckBoxes[highlightedRHF].map((row: JSX.Element) => row)}
+            </FormControl>
+          </Grid>
+        </Grid>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Avbryt</Button>

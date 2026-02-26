@@ -23,7 +23,7 @@ type MedicalFieldPopupProps = {
 export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const { open, setOpen, onSubmit } = props;
   const [registrySelection, setRegistrySelection] = useState<string[]>([]);
-  const [highlightetMedField, setHighlightetMedField] = useState<string>("");
+  const [highlightedMedField, setHighlightedMedField] = useState<string>("");
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
@@ -34,7 +34,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
 
   const MedfieldCheckboxes =
     medicalFieldsQuery.data &&
-    medicalFieldsQuery.data.map((medfield: Medfield) => {
+    (medicalFieldsQuery.data.map((medfield: Medfield) => {
       const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         // Add medfield to the selection
         if (event.target.checked) {
@@ -47,7 +47,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
           setRegistrySelection([...new Set(newRegistrySelection)]);
 
           // Remove medfield from the selection
-        } else if (!event.target.checked) {
+        } else {
           const newRegistrySelection = [...registrySelection].filter(
             (registry) => {
               return !medfield.registers.includes(registry);
@@ -66,7 +66,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
           label={medfield.name}
           key={medfield.shortName}
           onMouseEnter={() => {
-            setHighlightetMedField(medfield.name);
+            setHighlightedMedField(medfield.name);
           }}
           control={
             <Checkbox
@@ -81,7 +81,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
           }
         />
       );
-    });
+    }) as JSX.Element[]);
 
   const RegistryCheckBoxes = {};
 
@@ -94,7 +94,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
           if (event.target.checked) {
             const newSelection = [...registrySelection, registry];
             setRegistrySelection([...newSelection]);
-          } else if (!event.target.checked) {
+          } else {
             const newSelection = [
               ...registrySelection.filter((row) => {
                 return row != registry;
@@ -116,7 +116,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
               <Checkbox
                 checked={registrySelection.includes(registry)}
                 onChange={handleChange}
-                key={registry + "_box"}
+                key={registry + "_checkbox"}
               />
             }
           />
@@ -137,17 +137,24 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   return (
     <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
       <DialogTitle>Velg fagområde</DialogTitle>
-      <DialogContent>
-        <Grid container spacing={2}>
+      <DialogContent
+        onMouseLeave={() => {
+          setHighlightedMedField("");
+        }}
+      >
+        <Grid container spacing={0}>
           <Grid size={6}>
             <FormControl sx={{ m: 1, width: "50%" }}>
-              {MedfieldCheckboxes && MedfieldCheckboxes.map((row) => row)}
+              {MedfieldCheckboxes &&
+                MedfieldCheckboxes.map((row: JSX.Element) => row)}
             </FormControl>
           </Grid>
           <Grid size={6}>
             <FormControl sx={{ m: 1, width: "50%" }}>
-              {RegistryCheckBoxes[highlightetMedField] &&
-                RegistryCheckBoxes[highlightetMedField].map((row) => row)}
+              {RegistryCheckBoxes[highlightedMedField] &&
+                RegistryCheckBoxes[highlightedMedField].map(
+                  (row: JSX.Element) => row,
+                )}
             </FormControl>
           </Grid>
         </Grid>
