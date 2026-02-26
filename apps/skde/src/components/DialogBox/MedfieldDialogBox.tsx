@@ -23,7 +23,7 @@ type MedicalFieldPopupProps = {
 export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const { open, setOpen, onSubmit } = props;
   const [registrySelection, setRegistrySelection] = useState<string[]>([]);
-  const [highlightedMedField, setHighlightetMedField] = useState<string>("");
+  const [highlightedMedField, setHighlightedMedField] = useState<string>("");
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
@@ -66,7 +66,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
           label={medfield.name}
           key={medfield.shortName}
           onMouseEnter={() => {
-            setHighlightetMedField(medfield.name);
+            setHighlightedMedField(medfield.name);
           }}
           control={
             <Checkbox
@@ -94,7 +94,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
           if (event.target.checked) {
             const newSelection = [...registrySelection, registry];
             setRegistrySelection([...newSelection]);
-          } else if (!event.target.checked) {
+          } else {
             const newSelection = [
               ...registrySelection.filter((row) => {
                 return row != registry;
@@ -137,8 +137,12 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   return (
     <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
       <DialogTitle>Velg fagområde</DialogTitle>
-      <DialogContent>
-        <Grid container spacing={2}>
+      <DialogContent
+        onMouseLeave={() => {
+          setHighlightedMedField("");
+        }}
+      >
+        <Grid container spacing={0}>
           <Grid size={6}>
             <FormControl sx={{ m: 1, width: "50%" }}>
               {MedfieldCheckboxes &&
