@@ -72,6 +72,18 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
         return selectedSet.intersection(hfSet).size > 0;
       };
 
+      const hospitalsChecked = () => {
+        const selectedSet = new Set([...unitSelection]);
+        const hospitals = row.hf
+          .map((hf) => {
+            return hf.hospital;
+          })
+          .flat();
+
+        const hospitalSet = new Set([...hospitals]);
+        return selectedSet.intersection(hospitalSet).size > 0;
+      };
+
       return (
         <FormControlLabel
           label={row.rhf}
@@ -82,7 +94,10 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           control={
             <Checkbox
               checked={unitSelection.includes(row.rhf)}
-              indeterminate={!unitSelection.includes(row.rhf) && hfChecked()}
+              indeterminate={
+                !unitSelection.includes(row.rhf) &&
+                (hfChecked() || hospitalsChecked())
+              }
               onChange={handleChange}
               key={row.rhf + "_checkbox"}
             />
@@ -148,6 +163,13 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
             setUnitSelection(newHFSelection);
           }
         };
+
+        const hospitalChecked = () => {
+          const selectedSet = new Set([...unitSelection]);
+          const hospitalSet = new Set([...hf.hospital]);
+          return selectedSet.intersection(hospitalSet).size > 0;
+        };
+
         return (
           <FormControlLabel
             label={hf.hf}
@@ -158,6 +180,9 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
             control={
               <Checkbox
                 checked={unitSelection.includes(hf.hf)}
+                indeterminate={
+                  !unitSelection.includes(hf.hf) && hospitalChecked()
+                }
                 onChange={handleChange}
                 key={hf.hf + "_checkbox"}
               />
