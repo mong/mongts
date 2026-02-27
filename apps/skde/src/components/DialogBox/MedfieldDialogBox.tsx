@@ -26,7 +26,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const [registrySelection, setRegistrySelection] = useState<string[]>([]);
   const [highlightedMedField, setHighlightedMedField] = useState<string>("");
 
-  const columnColour1 = "#F78FBFF";
+  const columnColour1 = "#F7FBFF";
   const columnColour2 = "#E6F1FF";
 
   const checkboxWidth = 18;
@@ -161,7 +161,13 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
       >
         <Grid container height="100%">
           <Grid size={6}>
-            <Box sx={{ background: columnColour1, height: "100%" }}>
+            <Box
+              sx={{
+                background: columnColour1,
+                height: "100%",
+                paddingLeft: rippleOffset + "px",
+              }}
+            >
               <FormControl sx={{ width: "100%" }}>
                 {MedfieldCheckboxes &&
                   MedfieldCheckboxes.map((row: JSX.Element) => row)}

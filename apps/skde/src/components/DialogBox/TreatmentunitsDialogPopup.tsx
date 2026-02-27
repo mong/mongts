@@ -26,7 +26,7 @@ type TreatmentUnitPopupProps = {
 export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const { open, setOpen, onSubmit, context, type } = props;
 
-  const columnColour1 = "#F78FBFF";
+  const columnColour1 = "#F7FBFF";
   const columnColour2 = "#E6F1FF";
   const columnColour3 = "#F2F9FF";
 
@@ -237,7 +237,13 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
       >
         <Grid container height="100%">
           <Grid size={4}>
-            <Box sx={{ background: columnColour1, height: "100%" }}>
+            <Box
+              sx={{
+                background: columnColour1,
+                height: "100%",
+                paddingLeft: rippleOffset + "px",
+              }}
+            >
               <FormControl sx={{ width: "100%" }}>
                 {RHFCheckboxes && RHFCheckboxes.map((row: JSX.Element) => row)}
               </FormControl>
