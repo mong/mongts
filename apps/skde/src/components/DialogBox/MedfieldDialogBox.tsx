@@ -8,6 +8,7 @@ import {
   FormControlLabel,
   Checkbox,
   Grid,
+  Box,
 } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
@@ -24,6 +25,13 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const { open, setOpen, onSubmit } = props;
   const [registrySelection, setRegistrySelection] = useState<string[]>([]);
   const [highlightedMedField, setHighlightedMedField] = useState<string>("");
+
+  const columnColour1 = "#F78FBFF";
+  const columnColour2 = "#E6F1FF";
+
+  const checkboxWidth = 18;
+  const rippleWidth = 42;
+  const rippleOffset = (rippleWidth - checkboxWidth) / 2;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
@@ -67,6 +75,13 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
           key={medfield.shortName}
           onMouseEnter={() => {
             setHighlightedMedField(medfield.name);
+          }}
+          sx={{
+            width: "100%",
+            background:
+              highlightedMedField === medfield.name
+                ? columnColour2
+                : columnColour1,
           }}
           control={
             <Checkbox
@@ -112,6 +127,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
               }).short_name
             }
             key={registry}
+            sx={{ width: "100%", background: columnColour2 }}
             control={
               <Checkbox
                 checked={registrySelection.includes(registry)}
@@ -138,24 +154,37 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
     <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
       <DialogTitle>Velg fagområde</DialogTitle>
       <DialogContent
+        sx={{ height: 800 }}
         onMouseLeave={() => {
           setHighlightedMedField("");
         }}
       >
-        <Grid container spacing={0}>
+        <Grid container height="100%">
           <Grid size={6}>
-            <FormControl sx={{ m: 1, width: "50%" }}>
-              {MedfieldCheckboxes &&
-                MedfieldCheckboxes.map((row: JSX.Element) => row)}
-            </FormControl>
+            <Box sx={{ background: columnColour1, height: "100%" }}>
+              <FormControl sx={{ width: "100%" }}>
+                {MedfieldCheckboxes &&
+                  MedfieldCheckboxes.map((row: JSX.Element) => row)}
+              </FormControl>
+            </Box>
           </Grid>
           <Grid size={6}>
-            <FormControl sx={{ m: 1, width: "50%" }}>
-              {RegistryCheckBoxes[highlightedMedField] &&
-                RegistryCheckBoxes[highlightedMedField].map(
-                  (row: JSX.Element) => row,
-                )}
-            </FormControl>
+            <Box
+              sx={{
+                background: highlightedMedField && columnColour2,
+                height: "100%",
+                marginLeft: "-" + rippleOffset + "px",
+              }}
+            >
+              <FormControl
+                sx={{ width: "100%", marginLeft: rippleOffset + "px" }}
+              >
+                {RegistryCheckBoxes[highlightedMedField] &&
+                  RegistryCheckBoxes[highlightedMedField].map(
+                    (row: JSX.Element) => row,
+                  )}
+              </FormControl>
+            </Box>
           </Grid>
         </Grid>
       </DialogContent>

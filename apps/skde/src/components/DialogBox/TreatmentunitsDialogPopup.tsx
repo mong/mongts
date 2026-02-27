@@ -8,6 +8,7 @@ import {
   Grid,
   FormControlLabel,
   Checkbox,
+  Box,
 } from "@mui/material";
 import { Dispatch, SetStateAction, useState } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
@@ -25,7 +26,15 @@ type TreatmentUnitPopupProps = {
 export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const { open, setOpen, onSubmit, context, type } = props;
 
+  const columnColour1 = "#F78FBFF";
+  const columnColour2 = "#E6F1FF";
+  const columnColour3 = "#F2F9FF";
+
   const [unitSelection, setUnitSelection] = useState<string[]>([]);
+
+  const checkboxWidth = 18;
+  const rippleWidth = 42;
+  const rippleOffset = (rippleWidth - checkboxWidth) / 2;
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");
@@ -90,6 +99,12 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           key={row.rhf}
           onMouseEnter={() => {
             setHighlightedRHF(row.rhf);
+            setHighlightedHF("");
+          }}
+          sx={{
+            width: "100%",
+            background:
+              highlightedRHF === row.rhf ? columnColour2 : columnColour1,
           }}
           control={
             <Checkbox
@@ -136,6 +151,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
             <FormControlLabel
               label={hospital}
               key={hospital}
+              sx={{ width: "100%", background: columnColour3 }}
               control={
                 <Checkbox
                   checked={unitSelection.includes(hospital)}
@@ -177,6 +193,11 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
             onMouseEnter={() => {
               setHighlightedHF(hf.hf);
             }}
+            sx={{
+              width: "100%",
+              background:
+                highlightedHF === hf.hf ? columnColour3 : columnColour2,
+            }}
             control={
               <Checkbox
                 checked={unitSelection.includes(hf.hf)}
@@ -208,31 +229,52 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
     <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
       <DialogTitle>Velg behandlingsenheter</DialogTitle>
       <DialogContent
-        sx={{ height: 1000 }}
+        sx={{ height: 600 }}
         onMouseLeave={() => {
           setHighlightedRHF("");
           setHighlightedHF("");
         }}
       >
-        <Grid container spacing={2}>
+        <Grid container height="100%">
           <Grid size={4}>
-            <FormControl sx={{ m: 1, width: "100%" }}>
-              {RHFCheckboxes && RHFCheckboxes.map((row: JSX.Element) => row)}
-            </FormControl>
+            <Box sx={{ background: columnColour1, height: "100%" }}>
+              <FormControl sx={{ width: "100%" }}>
+                {RHFCheckboxes && RHFCheckboxes.map((row: JSX.Element) => row)}
+              </FormControl>
+            </Box>
           </Grid>
           <Grid size={4}>
-            <FormControl sx={{ m: 1, width: "100%" }}>
-              {HFCheckBoxes[highlightedRHF] &&
-                HFCheckBoxes[highlightedRHF].map((row: JSX.Element) => row)}
-            </FormControl>
+            <Box
+              sx={{
+                background: highlightedRHF && columnColour2,
+                height: "100%",
+                marginLeft: "-" + rippleOffset + "px",
+              }}
+            >
+              <FormControl
+                sx={{ width: "100%", marginLeft: rippleOffset + "px" }}
+              >
+                {HFCheckBoxes[highlightedRHF] &&
+                  HFCheckBoxes[highlightedRHF].map((row: JSX.Element) => row)}
+              </FormControl>
+            </Box>
           </Grid>
           <Grid size={4}>
-            <FormControl sx={{ m: 1, width: "100%" }}>
-              {HospitalCheckBoxes[highlightedHF] &&
-                HospitalCheckBoxes[highlightedHF].map(
-                  (row: JSX.Element) => row,
-                )}
-            </FormControl>
+            <Box
+              sx={{
+                background: highlightedHF && columnColour3,
+                height: "100%",
+              }}
+            >
+              <FormControl
+                sx={{ width: "100%", marginLeft: rippleOffset + "px" }}
+              >
+                {HospitalCheckBoxes[highlightedHF] &&
+                  HospitalCheckBoxes[highlightedHF].map(
+                    (row: JSX.Element) => row,
+                  )}
+              </FormControl>
+            </Box>
           </Grid>
         </Grid>
       </DialogContent>
