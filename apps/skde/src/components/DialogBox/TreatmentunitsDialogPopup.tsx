@@ -34,7 +34,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
 
   const checkboxWidth = 18;
   const rippleWidth = 42;
-  const rippleOffset = (rippleWidth - checkboxWidth) / 2;
+  const rippleOffset = (rippleWidth - checkboxWidth) / 2 - 1;
 
   const borderRadius = "8px";
   const marginTop = "8px";
