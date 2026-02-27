@@ -33,6 +33,9 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const rippleWidth = 42;
   const rippleOffset = (rippleWidth - checkboxWidth) / 2;
 
+  const borderRadius = "8px";
+  const marginTop = "8px";
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
@@ -166,9 +169,11 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
                 background: columnColour1,
                 height: "100%",
                 paddingLeft: rippleOffset + "px",
+                borderTopLeftRadius: borderRadius,
+                borderBottomLeftRadius: borderRadius,
               }}
             >
-              <FormControl sx={{ width: "100%" }}>
+              <FormControl sx={{ width: "100%", marginTop: marginTop }}>
                 {MedfieldCheckboxes &&
                   MedfieldCheckboxes.map((row: JSX.Element) => row)}
               </FormControl>
@@ -180,10 +185,16 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
                 background: highlightedMedField && columnColour2,
                 height: "100%",
                 marginLeft: "-" + rippleOffset + "px",
+                borderTopRightRadius: borderRadius,
+                borderBottomRightRadius: borderRadius,
               }}
             >
               <FormControl
-                sx={{ width: "100%", marginLeft: rippleOffset + "px" }}
+                sx={{
+                  width: "100%",
+                  marginLeft: rippleOffset + "px",
+                  marginTop: marginTop,
+                }}
               >
                 {RegistryCheckBoxes[highlightedMedField] &&
                   RegistryCheckBoxes[highlightedMedField].map(

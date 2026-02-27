@@ -36,6 +36,9 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const rippleWidth = 42;
   const rippleOffset = (rippleWidth - checkboxWidth) / 2;
 
+  const borderRadius = "8px";
+  const marginTop = "8px";
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");
 
@@ -242,9 +245,11 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                 background: columnColour1,
                 height: "100%",
                 paddingLeft: rippleOffset + "px",
+                borderTopLeftRadius: borderRadius,
+                borderBottomLeftRadius: borderRadius,
               }}
             >
-              <FormControl sx={{ width: "100%" }}>
+              <FormControl sx={{ width: "100%", marginTop: marginTop }}>
                 {RHFCheckboxes && RHFCheckboxes.map((row: JSX.Element) => row)}
               </FormControl>
             </Box>
@@ -258,7 +263,11 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
               }}
             >
               <FormControl
-                sx={{ width: "100%", marginLeft: rippleOffset + "px" }}
+                sx={{
+                  width: "100%",
+                  marginLeft: rippleOffset + "px",
+                  marginTop: marginTop,
+                }}
               >
                 {HFCheckBoxes[highlightedRHF] &&
                   HFCheckBoxes[highlightedRHF].map((row: JSX.Element) => row)}
@@ -270,10 +279,16 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
               sx={{
                 background: highlightedHF && columnColour3,
                 height: "100%",
+                borderTopRightRadius: borderRadius,
+                borderBottomRightRadius: borderRadius,
               }}
             >
               <FormControl
-                sx={{ width: "100%", marginLeft: rippleOffset + "px" }}
+                sx={{
+                  width: "100%",
+                  marginLeft: rippleOffset + "px",
+                  marginTop: marginTop,
+                }}
               >
                 {HospitalCheckBoxes[highlightedHF] &&
                   HospitalCheckBoxes[highlightedHF].map(
