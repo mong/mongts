@@ -27,7 +27,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const [highlightedMedField, setHighlightedMedField] = useState<string>("");
 
   const columnColour1 = "#F7FBFF";
-  const columnColour2 = "#E6F1FF";
+  const columnColour2 = "#E0F1FF";
 
   const checkboxWidth = 18;
   const rippleWidth = 42;

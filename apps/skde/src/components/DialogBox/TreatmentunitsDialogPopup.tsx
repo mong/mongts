@@ -27,7 +27,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const { open, setOpen, onSubmit, context, type } = props;
 
   const columnColour1 = "#F7FBFF";
-  const columnColour2 = "#E6F1FF";
+  const columnColour2 = "#E0F1FF";
   const columnColour3 = "#F2F9FF";
 
   const [unitSelection, setUnitSelection] = useState<string[]>([]);
