@@ -14,6 +14,14 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useUnitNamesQuery } from "qmongjs";
 import { NestedTreatmentUnitName } from "types";
+import {
+  columnColour1,
+  columnColour2,
+  columnColour3,
+  rippleOffset,
+  borderRadius,
+  marginTop,
+} from "./styles";
 
 type TreatmentUnitPopupProps = {
   open: boolean;
@@ -26,18 +34,7 @@ type TreatmentUnitPopupProps = {
 export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const { open, setOpen, onSubmit, context, type } = props;
 
-  const columnColour1 = "#F7FBFF";
-  const columnColour2 = "#E0F1FF";
-  const columnColour3 = "#F2F9FF";
-
   const [unitSelection, setUnitSelection] = useState<string[]>([]);
-
-  const checkboxWidth = 18;
-  const rippleWidth = 42;
-  const rippleOffset = (rippleWidth - checkboxWidth) / 2 - 1;
-
-  const borderRadius = "8px";
-  const marginTop = "8px";
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");
@@ -52,6 +49,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
     type,
   );
 
+  // Sort nested unit names by RHF
   const unitNames =
     unitNamesQuery.data &&
     unitNamesQuery.data.nestedUnitNames.sort(
@@ -60,33 +58,39 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
       },
     );
 
+  // ####################################### //
+  // Map RHFs and return checkbox components //
+  // ####################################### //
+
   const RHFCheckboxes =
     unitNames &&
-    (unitNames.map((row: NestedTreatmentUnitName) => {
+    (unitNames.map((rhf: NestedTreatmentUnitName) => {
       const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         // Add RHF to the selection
         if (event.target.checked) {
           // May contain duplicates
-          const newRHFSelection = [...unitSelection, row.rhf];
+          const newRHFSelection = [...unitSelection, rhf.rhf];
 
           setUnitSelection([...new Set(newRHFSelection)]);
         } else {
-          const newRHFSelection = [...unitSelection].filter((rhf) => {
-            return rhf !== row.rhf;
+          const newRHFSelection = [...unitSelection].filter((row) => {
+            return row !== rhf.rhf;
           });
           setUnitSelection([...new Set(newRHFSelection)]);
         }
       };
 
+      // Check if at least one subunit is checked.
+      // The RHF checkbox should then be indeterminate.
       const hfChecked = () => {
         const selectedSet = new Set([...unitSelection]);
-        const hfSet = new Set(row.hf.map((el) => el.hf));
+        const hfSet = new Set(rhf.hf.map((el) => el.hf));
         return selectedSet.intersection(hfSet).size > 0;
       };
 
       const hospitalsChecked = () => {
         const selectedSet = new Set([...unitSelection]);
-        const hospitals = row.hf
+        const hospitals = rhf.hf
           .map((hf) => {
             return hf.hospital;
           })
@@ -98,31 +102,35 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
 
       return (
         <FormControlLabel
-          label={row.rhf}
-          key={row.rhf}
+          label={rhf.rhf}
+          key={rhf.rhf}
           onMouseEnter={() => {
-            setHighlightedRHF(row.rhf);
+            setHighlightedRHF(rhf.rhf);
             setHighlightedHF("");
           }}
           sx={{
             width: "100%",
             background:
-              highlightedRHF === row.rhf ? columnColour2 : columnColour1,
+              highlightedRHF === rhf.rhf ? columnColour2 : columnColour1,
           }}
           control={
             <Checkbox
-              checked={unitSelection.includes(row.rhf)}
+              checked={unitSelection.includes(rhf.rhf)}
               indeterminate={
-                !unitSelection.includes(row.rhf) &&
+                !unitSelection.includes(rhf.rhf) &&
                 (hfChecked() || hospitalsChecked())
               }
               onChange={handleChange}
-              key={row.rhf + "_checkbox"}
+              key={rhf.rhf + "_checkbox"}
             />
           }
         />
       );
     }) as JSX.Element[]);
+
+  // #################################################### //
+  // Map HFs and hospitals and return checkbox components //
+  // #################################################### //
 
   const HFCheckBoxes = {};
   const HospitalCheckBoxes = {};
@@ -134,7 +142,9 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
         return a.hf_sort - b.hf_sort;
       });
 
-      // Add hospitals to the list
+      // ######################### //
+      // ##### Map hospitals ##### ∕∕
+      // ######################### //
       hfs.map((hf) => {
         const CheckBoxes = hf.hospital.map((hospital) => {
           const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -168,6 +178,9 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
         HospitalCheckBoxes[hf.hf] = CheckBoxes;
       });
 
+      // ################### //
+      // ##### Map HFs ##### ∕∕
+      // ################### //
       const CheckBoxes = hfs.map((hf) => {
         const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
           if (event.target.checked) {
@@ -183,6 +196,8 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           }
         };
 
+        // Check if at least one hospital is checked.
+        // The correspinding HF checkbox should then be indeterminate.
         const hospitalChecked = () => {
           const selectedSet = new Set([...unitSelection]);
           const hospitalSet = new Set([...hf.hospital]);
