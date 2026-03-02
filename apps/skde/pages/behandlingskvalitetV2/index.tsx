@@ -22,7 +22,6 @@ import {
 import { UseQueryResult } from "@tanstack/react-query";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import { Footer } from "../../src/components/Footer";
-import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { LayoutHead } from "../../src/components/LayoutHead";
 import { defaultTableContext } from "../../src/utils/valueOrDefault";
 import {
