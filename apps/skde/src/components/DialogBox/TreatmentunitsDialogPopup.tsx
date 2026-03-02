@@ -49,6 +49,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
     type,
   );
 
+  // Sort nested unit names by RHF
   const unitNames =
     unitNamesQuery.data &&
     unitNamesQuery.data.nestedUnitNames.sort(
@@ -56,6 +57,10 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
         return a.rhf_sort - b.rhf_sort;
       },
     );
+
+  // ####################################### //
+  // Map RHFs and return checkbox components //
+  // ####################################### //
 
   const RHFCheckboxes =
     unitNames &&
@@ -75,6 +80,8 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
         }
       };
 
+      // Check if at least one subunit is checked.
+      // The RHF checkbox should then be indeterminate.
       const hfChecked = () => {
         const selectedSet = new Set([...unitSelection]);
         const hfSet = new Set(row.hf.map((el) => el.hf));
@@ -121,6 +128,10 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
       );
     }) as JSX.Element[]);
 
+  // #################################################### //
+  // Map HFs and hospitals and return checkbox components //
+  // #################################################### //
+
   const HFCheckBoxes = {};
   const HospitalCheckBoxes = {};
 
@@ -131,7 +142,9 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
         return a.hf_sort - b.hf_sort;
       });
 
-      // Add hospitals to the list
+      // ######################### //
+      // ##### Map hospitals ##### ∕∕
+      // ######################### //
       hfs.map((hf) => {
         const CheckBoxes = hf.hospital.map((hospital) => {
           const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -165,6 +178,9 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
         HospitalCheckBoxes[hf.hf] = CheckBoxes;
       });
 
+      // ################### //
+      // ##### Map HFs ##### ∕∕
+      // ################### //
       const CheckBoxes = hfs.map((hf) => {
         const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
           if (event.target.checked) {
@@ -180,6 +196,8 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           }
         };
 
+        // Check if at least one hospital is checked.
+        // The correspinding HF checkbox should then be indeterminate.
         const hospitalChecked = () => {
           const selectedSet = new Set([...unitSelection]);
           const hospitalSet = new Set([...hf.hospital]);

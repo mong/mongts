@@ -69,7 +69,9 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
         }
       };
 
-      // Check if a registry is selected
+      // Check if a registry is selected.
+      // The corresponding medfield checkbox should then be indeterminate
+      // if some if its registries are selected and checked if all are selected.
       const registryChecked = (registry: string) => {
         return registrySelection.includes(registry);
       };
