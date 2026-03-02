@@ -14,6 +14,14 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useUnitNamesQuery } from "qmongjs";
 import { NestedTreatmentUnitName } from "types";
+import {
+  columnColour1,
+  columnColour2,
+  columnColour3,
+  rippleOffset,
+  borderRadius,
+  marginTop,
+} from "./styles";
 
 type TreatmentUnitPopupProps = {
   open: boolean;
@@ -26,18 +34,7 @@ type TreatmentUnitPopupProps = {
 export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const { open, setOpen, onSubmit, context, type } = props;
 
-  const columnColour1 = "#F7FBFF";
-  const columnColour2 = "#E0F1FF";
-  const columnColour3 = "#F2F9FF";
-
   const [unitSelection, setUnitSelection] = useState<string[]>([]);
-
-  const checkboxWidth = 18;
-  const rippleWidth = 42;
-  const rippleOffset = (rippleWidth - checkboxWidth) / 2 - 1;
-
-  const borderRadius = "8px";
-  const marginTop = "8px";
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");

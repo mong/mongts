@@ -14,6 +14,13 @@ import { Dispatch, SetStateAction, useState } from "react";
 import { UseQueryResult } from "@tanstack/react-query";
 import { useMedicalFieldsQuery, useRegisterNamesQuery } from "qmongjs";
 import { Medfield, RegisterName } from "types";
+import {
+  columnColour1,
+  columnColour2,
+  rippleOffset,
+  borderRadius,
+  marginTop,
+} from "./styles";
 
 type MedicalFieldPopupProps = {
   open: boolean;
@@ -26,22 +33,16 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const [registrySelection, setRegistrySelection] = useState<string[]>([]);
   const [highlightedMedField, setHighlightedMedField] = useState<string>("");
 
-  const columnColour1 = "#F7FBFF";
-  const columnColour2 = "#E0F1FF";
-
-  const checkboxWidth = 18;
-  const rippleWidth = 42;
-  const rippleOffset = (rippleWidth - checkboxWidth) / 2 - 1;
-
-  const borderRadius = "8px";
-  const marginTop = "8px";
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const registryQuery: UseQueryResult<any, unknown> = useRegisterNamesQuery();
+
+  // ################################################# //
+  // Map medical fields and return checkbox components //
+  // ################################################# //
 
   const MedfieldCheckboxes =
     medicalFieldsQuery.data &&
@@ -68,8 +69,9 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
         }
       };
 
-      const registryChecked = (row: string) => {
-        return registrySelection.includes(row);
+      // Check if a registry is selected
+      const registryChecked = (registry: string) => {
+        return registrySelection.includes(registry);
       };
 
       return (
@@ -100,6 +102,10 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
         />
       );
     }) as JSX.Element[]);
+
+  // ############################################# //
+  // Map registries and return checkbox components //
+  // ############################################# //
 
   const RegistryCheckBoxes = {};
 
@@ -144,6 +150,10 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
       RegistryCheckBoxes[medfield.name] = CheckBoxes;
     });
 
+  // ############## //
+  // Event handlers //
+  // ############## //
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -152,6 +162,10 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
     onSubmit(registrySelection);
     setOpen(false);
   };
+
+  // ################## //
+  // ##### Return ##### //
+  // ################## //
 
   return (
     <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
