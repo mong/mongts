@@ -10,6 +10,7 @@ import {
   SelectChangeEvent,
   Stack,
   Button,
+  Box,
 } from "@mui/material";
 import {
   useRegisterNamesQuery,
@@ -21,7 +22,6 @@ import {
 import { UseQueryResult } from "@tanstack/react-query";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import { Footer } from "../../src/components/Footer";
-import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { LayoutHead } from "../../src/components/LayoutHead";
 import { defaultTableContext } from "../../src/utils/valueOrDefault";
 import {
@@ -95,7 +95,11 @@ export default function TreatmentQualityPage() {
   return (
     <ThemeProvider theme={skdeTheme}>
       <CssBaseline />
-      <PageWrapper>
+      <Box
+        sx={{
+          background: "#F5F5F5",
+        }}
+      >
         <LayoutHead
           title="Behandlingskvalitet"
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
@@ -157,22 +161,33 @@ export default function TreatmentQualityPage() {
             </Select>
           </FormControl>
         </Stack>
-        <IndicatorTableBodyV2
-          key={"indicator-table2"}
-          context={selectedTableContext}
-          unitNames={getSortedList(colourMap, selectedTreatmentUnits, "units")}
-          year={selectedYear}
-          type={dataQualitySelected ? "dg" : "ind"}
-          levels={selectedLevel}
-          medfields={selectedMedicalFields}
-          chartColours={getSortedList(
-            colourMap,
-            selectedTreatmentUnits,
-            "colours",
-          )}
-        />
-        <Footer page="behandlingskvalitet" />
-      </PageWrapper>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <IndicatorTableBodyV2
+            key={"indicator-table2"}
+            context={selectedTableContext}
+            unitNames={getSortedList(
+              colourMap,
+              selectedTreatmentUnits,
+              "units",
+            )}
+            year={selectedYear}
+            type={dataQualitySelected ? "dg" : "ind"}
+            levels={selectedLevel}
+            medfields={selectedMedicalFields}
+            chartColours={getSortedList(
+              colourMap,
+              selectedTreatmentUnits,
+              "colours",
+            )}
+          />
+        </Box>
+      </Box>
+      <Footer page="behandlingskvalitet" />
     </ThemeProvider>
   );
 }
