@@ -29,7 +29,7 @@ import {
   updateColourMap,
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
-import { TreatmentUnitPopup } from "../../src/components/DialogBox/TreatmentunitsDialogPopup";
+import { TreatmentUnitPopup } from "../../src/components/DialogBox/TreatmentunitsDialogBox";
 import { MedicalFieldPopup } from "../../src/components/DialogBox/MedfieldDialogBox";
 
 export default function TreatmentQualityPage() {

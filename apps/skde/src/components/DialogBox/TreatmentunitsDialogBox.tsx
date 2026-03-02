@@ -64,17 +64,17 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
 
   const RHFCheckboxes =
     unitNames &&
-    (unitNames.map((row: NestedTreatmentUnitName) => {
+    (unitNames.map((rhf: NestedTreatmentUnitName) => {
       const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         // Add RHF to the selection
         if (event.target.checked) {
           // May contain duplicates
-          const newRHFSelection = [...unitSelection, row.rhf];
+          const newRHFSelection = [...unitSelection, rhf.rhf];
 
           setUnitSelection([...new Set(newRHFSelection)]);
         } else {
-          const newRHFSelection = [...unitSelection].filter((rhf) => {
-            return rhf !== row.rhf;
+          const newRHFSelection = [...unitSelection].filter((row) => {
+            return row !== rhf.rhf;
           });
           setUnitSelection([...new Set(newRHFSelection)]);
         }
@@ -84,13 +84,13 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
       // The RHF checkbox should then be indeterminate.
       const hfChecked = () => {
         const selectedSet = new Set([...unitSelection]);
-        const hfSet = new Set(row.hf.map((el) => el.hf));
+        const hfSet = new Set(rhf.hf.map((el) => el.hf));
         return selectedSet.intersection(hfSet).size > 0;
       };
 
       const hospitalsChecked = () => {
         const selectedSet = new Set([...unitSelection]);
-        const hospitals = row.hf
+        const hospitals = rhf.hf
           .map((hf) => {
             return hf.hospital;
           })
@@ -102,26 +102,26 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
 
       return (
         <FormControlLabel
-          label={row.rhf}
-          key={row.rhf}
+          label={rhf.rhf}
+          key={rhf.rhf}
           onMouseEnter={() => {
-            setHighlightedRHF(row.rhf);
+            setHighlightedRHF(rhf.rhf);
             setHighlightedHF("");
           }}
           sx={{
             width: "100%",
             background:
-              highlightedRHF === row.rhf ? columnColour2 : columnColour1,
+              highlightedRHF === rhf.rhf ? columnColour2 : columnColour1,
           }}
           control={
             <Checkbox
-              checked={unitSelection.includes(row.rhf)}
+              checked={unitSelection.includes(rhf.rhf)}
               indeterminate={
-                !unitSelection.includes(row.rhf) &&
+                !unitSelection.includes(rhf.rhf) &&
                 (hfChecked() || hospitalsChecked())
               }
               onChange={handleChange}
-              key={row.rhf + "_checkbox"}
+              key={rhf.rhf + "_checkbox"}
             />
           }
         />
