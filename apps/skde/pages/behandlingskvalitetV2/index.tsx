@@ -11,6 +11,7 @@ import {
   Stack,
   Button,
   Box,
+  Typography,
 } from "@mui/material";
 import {
   useRegisterNamesQuery,
@@ -167,24 +168,56 @@ export default function TreatmentQualityPage() {
             justifyContent: "center",
           }}
         >
-          <IndicatorTableBodyV2
-            key={"indicator-table2"}
-            context={selectedTableContext}
-            unitNames={getSortedList(
-              colourMap,
-              selectedTreatmentUnits,
-              "units",
-            )}
-            year={selectedYear}
-            type={dataQualitySelected ? "dg" : "ind"}
-            levels={selectedLevel}
-            medfields={selectedMedicalFields}
-            chartColours={getSortedList(
-              colourMap,
-              selectedTreatmentUnits,
-              "colours",
-            )}
-          />
+          {selectedMedicalFields.length > 0 ? (
+            <IndicatorTableBodyV2
+              key={"indicator-table2"}
+              context={selectedTableContext}
+              unitNames={getSortedList(
+                colourMap,
+                selectedTreatmentUnits,
+                "units",
+              )}
+              year={selectedYear}
+              type={dataQualitySelected ? "dg" : "ind"}
+              levels={selectedLevel}
+              medfields={selectedMedicalFields}
+              chartColours={getSortedList(
+                colourMap,
+                selectedTreatmentUnits,
+                "colours",
+              )}
+            />
+          ) : (
+            <Stack
+              width="80%"
+              height="484px"
+              spacing={6}
+              justifyContent="center"
+              alignItems="center"
+              sx={{
+                background: "#FFFFFF",
+                border: "1px solid #2354AE",
+                borderRadius: "16px",
+              }}
+            >
+              <Typography variant="h3" color="#0D244E">
+                Velg et fagområde du vil se resultater fra
+              </Typography>
+              <Button
+                variant="contained"
+                onClick={handleMedicalFieldButtonClick}
+                sx={{
+                  width: "200px",
+                  background: "#2354AE",
+                  color: "#FFFFFF",
+                  height: "48px",
+                  fontSize: "14px",
+                }}
+              >
+                Velg fagområde
+              </Button>
+            </Stack>
+          )}
         </Box>
       </Box>
       <Footer page="behandlingskvalitet" />
