@@ -18,13 +18,11 @@ import {
   defaultYear,
   IndicatorTableBodyV2,
   skdeTheme,
-  useUnitNamesQuery,
 } from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import { Footer } from "../../src/components/Footer";
 import { LayoutHead } from "../../src/components/LayoutHead";
-import { defaultTableContext } from "../../src/utils/valueOrDefault";
 import {
   ColourMap,
   updateColourMap,
@@ -32,17 +30,30 @@ import {
 } from "../../src/helpers/functions/chartColours";
 import { TreatmentUnitPopup } from "../../src/components/DialogBox/TreatmentunitPopup";
 import { MedicalFieldPopup } from "../../src/components/DialogBox/MedicalFieldPopup";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, usePathname } from "next/navigation";
 import { useRouter } from "next/router";
 
 type TreatmentQualityPageComponentProps = {
   urlYear: number;
+  urlUnits: string[];
+  //urlRegistries: string[];
+  //urlIndicator: string[];
 };
 
 const TreatmentQualityPageComponent = (
   props: TreatmentQualityPageComponentProps,
 ) => {
-  const { urlYear } = props;
+  const { urlYear, urlUnits } = props;
+
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const params = new URLSearchParams(searchParams.toString());
+
+  if (!router.isReady) {
+    return null;
+  }
+
   const numberOfYearOptions = 5;
 
   const [useBeta, setUseBeta] = useState(false);
@@ -53,10 +64,6 @@ const TreatmentQualityPageComponent = (
   const [selectedYear, setSelectedYear] = useState(urlYear ?? defaultYear);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [selectedTableContext, setSelectedTableContext] =
-    useState(defaultTableContext);
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedLevel, setSelectedLevel] = useState<string | undefined>();
   const [selectedMedicalFields, setSelectedMedicalFields] = useState<string[]>(
     [],
@@ -64,7 +71,7 @@ const TreatmentQualityPageComponent = (
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState(
-    defaultTreatmentUnits,
+    urlUnits ?? defaultTreatmentUnits,
   );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -77,13 +84,6 @@ const TreatmentQualityPageComponent = (
 
   const [colourMap, setColourMap] = useState<ColourMap[]>([]);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
-  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
-    selectedMedicalFields[0] ? selectedMedicalFields[0] : "all",
-    selectedTableContext,
-    dataQualitySelected ? "dg" : "ind",
-  );
-
   // Load register names and medical fields
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
   const registryNameQuery: UseQueryResult<any, unknown> =
@@ -93,6 +93,8 @@ const TreatmentQualityPageComponent = (
 
   const handleYearChange = (event: SelectChangeEvent) => {
     setSelectedYear(Number(event.target.value));
+    params.set("year", event.target.value);
+    router.replace(pathname + "?" + params.toString());
   };
 
   const handleMedicalFieldButtonClick = () => {
@@ -145,8 +147,9 @@ const TreatmentQualityPageComponent = (
           <TreatmentUnitPopup
             open={treatmentUnitPopupOpen}
             setOpen={setTreatmentUnitPopupOpen}
+            selectedTreatmentUnits={selectedTreatmentUnits}
             onSubmit={setSelectedTreatmentUnits}
-            context={selectedTableContext}
+            context={"caregiver"}
             type={"ind"}
           />
           <FormControl>
@@ -180,7 +183,7 @@ const TreatmentQualityPageComponent = (
           {selectedMedicalFields.length > 0 ? (
             <IndicatorTableBodyV2
               key={"indicator-table2"}
-              context={selectedTableContext}
+              context={"caregiver"}
               unitNames={getSortedList(
                 colourMap,
                 selectedTreatmentUnits,
@@ -239,8 +242,12 @@ export default function TreatmentQualityPage() {
   const searchParams = useSearchParams();
 
   const urlYear = searchParams.get("year") && Number(searchParams.get("year"));
+  const urlUnits =
+    searchParams.get("units") && searchParams.get("units").split("_");
 
   if (router.isReady) {
-    return <TreatmentQualityPageComponent urlYear={urlYear} />;
+    return (
+      <TreatmentQualityPageComponent urlYear={urlYear} urlUnits={urlUnits} />
+    );
   }
 }

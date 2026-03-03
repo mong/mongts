@@ -29,12 +29,16 @@ type TreatmentUnitPopupProps = {
   onSubmit: Dispatch<SetStateAction<string[]>>;
   context: string;
   type: string;
+  selectedTreatmentUnits: string[];
 };
 
 export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
-  const { open, setOpen, onSubmit, context, type } = props;
+  const { open, setOpen, onSubmit, context, type, selectedTreatmentUnits } =
+    props;
 
-  const [unitSelection, setUnitSelection] = useState<string[]>([]);
+  const [unitSelection, setUnitSelection] = useState<string[]>(
+    selectedTreatmentUnits ?? [],
+  );
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");
