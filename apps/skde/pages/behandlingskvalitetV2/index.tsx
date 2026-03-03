@@ -32,8 +32,17 @@ import {
 } from "../../src/helpers/functions/chartColours";
 import { TreatmentUnitPopup } from "../../src/components/DialogBox/TreatmentunitPopup";
 import { MedicalFieldPopup } from "../../src/components/DialogBox/MedicalFieldPopup";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 
-export default function TreatmentQualityPage() {
+type TreatmentQualityPageComponentProps = {
+  urlYear: number;
+};
+
+const TreatmentQualityPageComponent = (
+  props: TreatmentQualityPageComponentProps,
+) => {
+  const { urlYear } = props;
   const numberOfYearOptions = 5;
 
   const [useBeta, setUseBeta] = useState(false);
@@ -41,7 +50,7 @@ export default function TreatmentQualityPage() {
   const defaultTreatmentUnits = ["Nasjonalt"];
 
   // Used by indicator table
-  const [selectedYear, setSelectedYear] = useState(defaultYear);
+  const [selectedYear, setSelectedYear] = useState(urlYear ?? defaultYear);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedTableContext, setSelectedTableContext] =
@@ -223,4 +232,15 @@ export default function TreatmentQualityPage() {
       <Footer page="behandlingskvalitet" />
     </ThemeProvider>
   );
+};
+
+export default function TreatmentQualityPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const urlYear = searchParams.get("year") && Number(searchParams.get("year"));
+
+  if (router.isReady) {
+    return <TreatmentQualityPageComponent urlYear={urlYear} />;
+  }
 }
