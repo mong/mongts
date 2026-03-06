@@ -59,22 +59,6 @@ yarn export
 npx serve apps/skde/out
 ```
 
-### Run CMS locally
-
-Start up `decap-server`:
-
-```bash
-yarn run cms
-```
-
-Run the SKDE web site (in another terminal):
-
-```bash
-yarn run dev
-```
-
-Open the admin page [helseatlas/admin](http://localhost:3000/helseatlas/admin).
-
 ### Commit without `--no-verify`
 
 This repository is set up with a hook that will run linting on staged files when you commit. You will therefore often end up with the following error:
