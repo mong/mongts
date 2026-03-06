@@ -1,4 +1,3 @@
-import "../src/styles/globals.css";
 import { useState, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { QueryParamProvider } from "use-query-params";
