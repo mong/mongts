@@ -16,6 +16,7 @@ import {
   reshapeData,
   formatBarData,
 } from "../../../helpers/functions/formatMuiChartData";
+import { customFormat } from "../../../helpers/functions";
 
 type MuiBarChartProps = {
   data: IndicatorData;
@@ -25,7 +26,6 @@ type MuiBarChartProps = {
   unitNames: string[];
   percentage: boolean;
   barChartType: string;
-  barValueFormatter: (value: number | null) => string;
   valueAxisFormatter: (value: number) => string;
   treatmentUnitsByLevel: OptsTu[];
   context: string;
@@ -36,6 +36,7 @@ type MuiBarChartProps = {
   tickFontSize: number;
   yAxisWidth: number;
   zoom: boolean;
+  dataFormat: string;
 };
 
 export const MuiBarChart = (props: MuiBarChartProps) => {
@@ -47,7 +48,6 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     unitNames,
     percentage,
     barChartType,
-    barValueFormatter,
     valueAxisFormatter,
     treatmentUnitsByLevel,
     context,
@@ -58,6 +58,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     tickFontSize,
     yAxisWidth,
     zoom,
+    dataFormat,
   } = props;
 
   if (!data.data) {
@@ -203,6 +204,14 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
 
   const tickNumber = zoom && xMaxLimit < 0.1 ? 3 : 10;
 
+  // Formatting functions
+  const barValueFormatter = (
+    value: number | null,
+    { dataIndex }: { dataIndex: number },
+  ) => {
+    return `${value && customFormat(dataFormat)(value) + " (N =  " + currentDenominator[dataIndex] + ")"}`;
+  };
+
   return (
     <ChartDataProvider
       series={[
@@ -211,7 +220,6 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
           layout: "horizontal",
           data: currentData,
           valueFormatter: barValueFormatter,
-          barLabel: (item) => ` n = ${currentDenominator[item.dataIndex]}`,
           barLabelPlacement: "center",
           highlightScope: {
             highlight: "item",
