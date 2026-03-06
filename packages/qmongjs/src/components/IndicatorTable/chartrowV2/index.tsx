@@ -12,7 +12,6 @@ import {
   Typography,
 } from "@mui/material";
 import { getLastCompleteYear } from "../../../helpers/functions";
-import { customFormat } from "../../../helpers/functions";
 import { MuiLineChart } from "../../Charts/MuiLineChart";
 import { MuiBarChart } from "../../Charts/MuiBarChart";
 import { formatMuiChartData } from "../../../helpers/functions/formatMuiChartData";
@@ -90,11 +89,6 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   }) as number[];
 
   const lastAffirmYear = Math.max(...affirmYears);
-
-  // Formatting functions
-  const barValueFormatter = (value: number | null) => {
-    return `${value && customFormat(dataFormat)(value)}`;
-  };
 
   const valueAxisFormatter = (value: number) => {
     return percentage ? `${Math.round(value * 100)} %` : `${value}`;
@@ -174,7 +168,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
               unitNames={unitNames}
               percentage={percentage}
               barChartType={barChartType}
-              barValueFormatter={barValueFormatter}
+              dataFormat={dataFormat}
               valueAxisFormatter={valueAxisFormatter}
               treatmentUnitsByLevel={treatmentUnitsByLevel}
               context={context}
