@@ -2,15 +2,15 @@
 // @ts-check
 
 import tseslint from 'typescript-eslint';
-import { defineConfig, globalIgnores } from "eslint/config";
+import { defineConfig } from "eslint/config";
 import globals from "globals";
 
 export default defineConfig([
-  globalIgnores(["**/*.test.tsx"]),
 	{
     languageOptions: {
       globals: {
         ...globals.browser,
+        ...globals.vitest,
         JSX: "readonly",
         React: "readonly"
       }
