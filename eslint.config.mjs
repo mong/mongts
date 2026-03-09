@@ -1,16 +1,28 @@
 
 // @ts-check
 
-import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
+import { defineConfig } from "eslint/config";
+import globals from "globals";
 
-export default tseslint.config(
-  eslint.configs.recommended,
-  ...tseslint.configs.recommended,
-  {
-    plugins: {
-      ['@typescript-eslint']: tseslint.plugin,
+export default defineConfig([
+	{
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+        ...globals.vitest,
+        JSX: "readonly",
+        React: "readonly"
+      }
     },
-    files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"]
-  },
-)
+		files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+		plugins: {
+			['@typescript-eslint']: tseslint.plugin,
+		},
+		extends: tseslint.configs.recommended,
+		rules: {
+			"no-unused-vars": "warn",
+			"no-undef": "warn",
+		},
+	},
+]);
