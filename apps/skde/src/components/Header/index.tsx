@@ -42,5 +42,4 @@ export const Header = (props: HeaderProps) => {
   );
 };
 
-export { HeaderTop } from "./HeaderTop";
 export type { BreadCrumbPath } from "./HeaderTop";
