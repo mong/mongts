@@ -1,5 +1,5 @@
 import React from "react";
-import { useIntersectionByID } from "../../helpers/hooks/useintersectionobserver";
+import { useIntersectionByID } from "../../helpers/hooks";
 import style from "./ListItem.module.css";
 
 type ListItemProps = {
