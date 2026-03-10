@@ -1,7 +1,7 @@
 <!-- badges: start -->
 
 [![CodeQL](https://github.com/mong/mongts/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/mong/mongts/actions/workflows/codeql-analysis.yml)
-[![Deploy app to AWS](https://github.com/mong/mongts/actions/workflows/aws_deploy.yml/badge.svg)](https://github.com/mong/mongts/actions/workflows/aws_deploy.yml)
+[![Deploy app to Azure](https://github.com/mong/mongts/actions/workflows/azure_deploy.yml/badge.svg)](https://github.com/mong/mongts/actions/workflows/azure_deploy.yml)
 [![Node.js CI](https://github.com/mong/mongts/actions/workflows/node.js.yml/badge.svg)](https://github.com/mong/mongts/actions/workflows/node.js.yml)
 [![Codecov test coverage](https://codecov.io/gh/mong/mongts/branch/develop/graph/badge.svg)](https://codecov.io/gh/mong/mongts?branch=develop)
 [![GitHub open issues](https://img.shields.io/github/issues/mong/mongts.svg)](https://github.com/mong/mongts/issues)
@@ -58,22 +58,6 @@ yarn install
 yarn export
 npx serve apps/skde/out
 ```
-
-### Run CMS locally
-
-Start up `decap-server`:
-
-```bash
-yarn run cms
-```
-
-Run the SKDE web site (in another terminal):
-
-```bash
-yarn run dev
-```
-
-Open the admin page [helseatlas/admin](http://localhost:3000/helseatlas/admin).
 
 ### Commit without `--no-verify`
 
