@@ -217,7 +217,13 @@ const TableBlock = (props: TableBlockProps) => {
                   se disse dataene.
                 </div>
                 <div style={{ fontSize: "0.875rem" }}>
-                  <Link href={"/behandlingskvalitet/" + registerName.rname}>
+                  <Link
+                    href={
+                      "/behandlingskvalitet/" +
+                      registerName.rname +
+                      "/?context=resident"
+                    }
+                  >
                     År og opptaksområder med data vises her.
                   </Link>
                 </div>
