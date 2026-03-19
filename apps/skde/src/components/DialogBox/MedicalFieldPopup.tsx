@@ -26,13 +26,17 @@ type MedicalFieldPopupProps = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   onSubmit: Dispatch<SetStateAction<string[]>>;
+  registries: string[];
+  updateRegistries: (newValue, updateType?) => void;
 };
 
 export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
-  const { open, setOpen, onSubmit } = props;
-  const [registrySelection, setRegistrySelection] = useState<string[]>([]);
+  const { open, setOpen, onSubmit, registries, updateRegistries } = props;
+
   const [highlightedMedField, setHighlightedMedField] = useState<string>("");
 
+  const [registrySelection, setRegistrySelection] =
+    useState<string[]>(registries);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
@@ -161,6 +165,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   };
 
   const handleSubmit = () => {
+    updateRegistries(registrySelection);
     onSubmit(registrySelection);
     setOpen(false);
   };
