@@ -1,7 +1,6 @@
 import { CustomAnimatedLine } from "../../Charts/MuiLineChart/CustomAnimatedLine";
 import { LineBackground } from "../../Charts/MuiLineChart/LineBackground";
 import {
-  ChartDataProvider,
   ChartsAxisHighlight,
   ChartsLegend,
   ChartsSurface,
@@ -10,10 +9,17 @@ import {
   ChartsYAxis,
   LineSeriesType,
   MarkPlot,
+  LinePlot,
 } from "@mui/x-charts";
-import { LinePlot } from "@mui/x-charts/LineChart";
-import { IndicatorData } from "types";
-import { DataPoint } from "types";
+import { DataPoint, IndicatorData } from "types";
+import { Box } from "@mui/material";
+import { RefObject } from "react";
+import {
+  ChartProApi,
+  LineChartProPluginSignatures,
+  ChartsDataProviderPro,
+} from "@mui/x-charts-pro";
+import { CustomChartWrapper } from "../utils";
 
 type MuiLineChartProps = {
   data: IndicatorData;
@@ -23,6 +29,10 @@ type MuiLineChartProps = {
   valueAxisFormatter: (value: number) => string;
   lastAffirmYear: number;
   zoom: boolean;
+  figureHeight: number;
+  apiRef: RefObject<
+    ChartProApi<"line", LineChartProPluginSignatures> | undefined
+  >;
 };
 
 export const MuiLineChart = (props: MuiLineChartProps) => {
@@ -34,6 +44,8 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
     valueAxisFormatter,
     lastAffirmYear,
     zoom,
+    figureHeight,
+    apiRef,
   } = props;
 
   if (data.data === undefined) {
@@ -51,57 +63,65 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
   const yDifference = yMaxLimit - yMinLimit;
 
   return (
-    <ChartDataProvider
-      series={lineData}
-      xAxis={[
-        {
-          scaleType: "point",
-          data: uniqueYears,
-          valueFormatter: (value: number) => value.toString(),
-        },
-      ]}
-      yAxis={[
-        {
-          min: zoom ? yMinLimit : 0,
-          max: percentage && !zoom ? 1 : yMaxLimit,
-          position: "left",
-          scaleType: "linear",
-          valueFormatter: valueAxisFormatter,
-          tickNumber: zoom && yDifference < 0.1 ? 3 : 10,
-        },
-      ]}
-    >
-      <ChartsLegend
-        slotProps={{
-          legend: { position: { vertical: "top", horizontal: "start" } },
-        }}
-      />
-      <ChartsTooltip />
-      <ChartsSurface sx={{ "& .line-after path": { strokeDasharray: "10 5" } }}>
-        <LineBackground
-          data={data}
-          years={uniqueYears}
-          lines={true}
-          percentage={percentage}
-          zoom={zoom}
-          yMaxLimit={yMaxLimit}
-          yMinLimit={yMinLimit}
-        />
-        <ChartsXAxis />
-        <ChartsYAxis />
-        <ChartsAxisHighlight y="line" />
-        <LinePlot
-          slots={{ line: CustomAnimatedLine }}
-          slotProps={{
-            line: {
-              limit: lastAffirmYear,
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            } as any,
-          }}
-        />
-        <MarkPlot />
-        <ChartsAxisHighlight x="line" />
-      </ChartsSurface>
-    </ChartDataProvider>
+    <Box width={"100%"}>
+      <ChartsDataProviderPro
+        apiRef={apiRef}
+        series={lineData}
+        height={figureHeight}
+        xAxis={[
+          {
+            scaleType: "point",
+            data: uniqueYears,
+            valueFormatter: (value: number) => value.toString(),
+          },
+        ]}
+        yAxis={[
+          {
+            min: zoom ? yMinLimit : 0,
+            max: percentage && !zoom ? 1 : yMaxLimit,
+            position: "left",
+            scaleType: "linear",
+            valueFormatter: valueAxisFormatter,
+            tickNumber: zoom && yDifference < 0.1 ? 3 : 10,
+          },
+        ]}
+      >
+        <CustomChartWrapper>
+          <ChartsLegend
+            slotProps={{
+              legend: { position: { vertical: "top", horizontal: "start" } },
+            }}
+          />
+          <ChartsTooltip />
+          <ChartsSurface
+            sx={{ "& .line-after path": { strokeDasharray: "10 5" } }}
+          >
+            <LineBackground
+              data={data}
+              years={uniqueYears}
+              lines={true}
+              percentage={percentage}
+              zoom={zoom}
+              yMaxLimit={yMaxLimit}
+              yMinLimit={yMinLimit}
+            />
+            <ChartsXAxis />
+            <ChartsYAxis />
+            <ChartsAxisHighlight y="line" />
+            <LinePlot
+              slots={{ line: CustomAnimatedLine }}
+              slotProps={{
+                line: {
+                  limit: lastAffirmYear,
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                } as any,
+              }}
+            />
+            <MarkPlot />
+            <ChartsAxisHighlight x="line" />
+          </ChartsSurface>
+        </CustomChartWrapper>
+      </ChartsDataProviderPro>
+    </Box>
   );
 };

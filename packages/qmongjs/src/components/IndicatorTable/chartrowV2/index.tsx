@@ -16,6 +16,7 @@ import { MuiLineChart } from "../../Charts/MuiLineChart";
 import { MuiBarChart } from "../../Charts/MuiBarChart";
 import { formatMuiChartData } from "../../../helpers/functions/formatMuiChartData";
 import { DataPoint } from "types";
+import { useChartProApiRef } from "@mui/x-charts-pro";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -67,6 +68,9 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   const handleFigureTypeChange = (event: SelectChangeEvent) => {
     setFigureType(event.target.value as string);
   };
+
+  const lineChartApiRef = useChartProApiRef<"line">();
+  const barChartApiRef = useChartProApiRef<"bar">();
 
   const figureHeight = 500;
   const backgroundMargin = 20;
@@ -133,12 +137,23 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
         >
           Zoom
         </Button>
+        <Button
+          onClick={() =>
+            figureType === "line"
+              ? lineChartApiRef.current!.exportAsImage()
+              : barChartApiRef.current!.exportAsImage()
+          }
+          variant="outlined"
+          sx={{ marginLeft: "90%" }}
+        >
+          Last ned
+        </Button>
       </Stack>
       <Box
         sx={{
           paddingTop: 4,
           width: "100%",
-          height: figureType === "bar" ? "100%" : figureHeight,
+          height: "100%",
           overflow: "auto",
           display: "flex",
           flexDirection: "column",
@@ -148,12 +163,14 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
         {figureType == "line" ? (
           <MuiLineChart
             data={data}
+            figureHeight={figureHeight}
             lineData={lineData}
             uniqueYears={uniqueYears}
             percentage={percentage}
             valueAxisFormatter={valueAxisFormatter}
             lastAffirmYear={lastAffirmYear}
             zoom={zoom}
+            apiRef={lineChartApiRef}
           />
         ) : figureType === "bar" ? (
           <Box width={"100%"}>
@@ -179,6 +196,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
               tickFontSize={15}
               yAxisWidth={160}
               zoom={zoom}
+              apiRef={barChartApiRef}
             />
           </Box>
         ) : null}
