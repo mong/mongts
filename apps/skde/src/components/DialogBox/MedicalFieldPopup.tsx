@@ -21,22 +21,25 @@ import {
   borderRadius,
   marginTop,
 } from "./styles";
+import { useQueryParam } from "use-query-params";
+import { mainQueryParamsConfig } from "qmongjs";
 
 type MedicalFieldPopupProps = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   onSubmit: Dispatch<SetStateAction<string[]>>;
-  registries: string[];
   updateRegistries: (newValue, updateType?) => void;
 };
 
 export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
-  const { open, setOpen, onSubmit, registries, updateRegistries } = props;
+  const { open, setOpen, onSubmit, updateRegistries } = props;
 
   const [highlightedMedField, setHighlightedMedField] = useState<string>("");
 
-  const [registrySelection, setRegistrySelection] =
-    useState<string[]>(registries);
+  const [registrySelection = [], setRegistrySelection] = useQueryParam<
+    string[] | undefined
+  >("registries", mainQueryParamsConfig.registries);
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery();
