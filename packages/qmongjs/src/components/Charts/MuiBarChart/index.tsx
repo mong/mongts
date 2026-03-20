@@ -23,6 +23,8 @@ import {
   BarChartProPluginSignatures,
   ChartsDataProviderPro,
 } from "@mui/x-charts-pro";
+import { BarChartLogo } from "../ChartLogo";
+import { Box } from "@mui/material";
 
 type MuiBarChartProps = {
   data: IndicatorData;
@@ -223,58 +225,67 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
   };
 
   return (
-    <ChartsDataProviderPro
-      apiRef={apiRef}
-      series={[
-        {
-          type: "bar",
-          layout: "horizontal",
-          data: currentData,
-          valueFormatter: barValueFormatter,
-          barLabelPlacement: "center",
-          highlightScope: {
-            highlight: "item",
-            fade: "series",
-          } as HighlightScope,
-        },
-      ]}
-      height={figureHeight}
-      yAxis={[
-        {
-          scaleType: "band",
-          data: currentUnitNames,
-          position: "left",
-          width: yAxisWidth,
-          tickLabelStyle: { fontSize: tickFontSize },
-        },
-      ]}
-      xAxis={[
-        {
-          min: 0,
-          max: percentage && !zoom ? 1 : xMaxLimit,
-          position: "bottom",
-          valueFormatter: valueAxisFormatter,
-          tickNumber: tickNumber,
-        },
-      ]}
-    >
-      <CustomChartWrapper>
-        <ChartsTooltip />
-        <ChartsSurface>
-          <BarBackground
-            data={data}
-            percentage={percentage}
-            figureHeight={figureHeight}
-            backgroundMargin={backgroundMargin}
-            lines={true}
-            zoom={zoom}
-            xMaxLimit={xMaxLimit}
-          />
-          <ChartsXAxis />
-          <ChartsYAxis />
-          <BarPlot />
-        </ChartsSurface>
-      </CustomChartWrapper>
-    </ChartsDataProviderPro>
+    <Box width={"100%"}>
+      <ChartsDataProviderPro
+        apiRef={apiRef}
+        series={[
+          {
+            type: "bar",
+            layout: "horizontal",
+            data: currentData,
+            valueFormatter: barValueFormatter,
+            barLabelPlacement: "center",
+            highlightScope: {
+              highlight: "item",
+              fade: "series",
+            } as HighlightScope,
+          },
+        ]}
+        height={figureHeight}
+        yAxis={[
+          {
+            scaleType: "band",
+            data: currentUnitNames,
+            position: "left",
+            width: yAxisWidth,
+            tickLabelStyle: { fontSize: tickFontSize },
+          },
+        ]}
+        xAxis={[
+          {
+            min: 0,
+            max: percentage && !zoom ? 1 : xMaxLimit,
+            position: "bottom",
+            valueFormatter: valueAxisFormatter,
+            tickNumber: tickNumber,
+          },
+        ]}
+      >
+        {" "}
+        <BarChartLogo
+          percentage={percentage}
+          zoom={zoom}
+          xMaxLimit={xMaxLimit}
+          width={100}
+        />
+        <CustomChartWrapper>
+          <ChartsTooltip />
+          <ChartsSurface>
+            <BarBackground
+              data={data}
+              percentage={percentage}
+              figureHeight={figureHeight}
+              backgroundMargin={backgroundMargin}
+              lines={true}
+              zoom={zoom}
+              xMaxLimit={xMaxLimit}
+            />
+            <ChartsXAxis />
+            <ChartsYAxis />
+            <BarPlot />
+          </ChartsSurface>
+        </CustomChartWrapper>
+      </ChartsDataProviderPro>
+    </Box>
   );
 };

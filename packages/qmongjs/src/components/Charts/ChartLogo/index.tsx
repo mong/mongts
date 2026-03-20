@@ -1,4 +1,3 @@
-import { IndicatorData } from "types";
 import { useXScale } from "@mui/x-charts";
 
 type LineChartLogoProps = {
@@ -31,11 +30,7 @@ export const LineChartLogo = (props: LineChartLogoProps) => {
 };
 
 type BarChartLogoProps = {
-  data: IndicatorData;
-  figureHeight: number;
   percentage: boolean;
-  backgroundMargin: number;
-  lines: boolean;
   zoom: boolean;
   xMaxLimit: number;
   width: number;
@@ -58,7 +53,7 @@ export const BarChartLogo = (props: BarChartLogoProps) => {
       style={{
         position: "relative",
         left: xStop && xStop - width,
-        top: width / widthHeightRatio,
+        top: width / widthHeightRatio / 2,
       }}
     />
   );
