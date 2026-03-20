@@ -143,7 +143,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
               ? lineChartApiRef.current!.exportAsImage()
               : barChartApiRef.current!.exportAsImage()
           }
-          variant="contained"
+          variant="outlined"
           sx={{ marginLeft: "90%" }}
         >
           Last ned
