@@ -1,3 +1,5 @@
+import { useChartRootRef } from "@mui/x-charts";
+
 export function levelColor(level: string) {
   switch (level) {
     case "high":
@@ -10,3 +12,16 @@ export function levelColor(level: string) {
       throw new Error(`${level} is not a valid level`);
   }
 }
+
+export const CustomChartWrapper = ({ children }: React.PropsWithChildren) => {
+  const chartRootRef = useChartRootRef();
+
+  return (
+    <div
+      ref={chartRootRef}
+      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
+      {children}
+    </div>
+  );
+};

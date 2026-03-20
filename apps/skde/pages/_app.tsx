@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { useRouter } from "next/router";
+import { LicenseInfo } from "@mui/x-license";
 
 const plus_jakarta_sans = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -19,6 +20,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
+
+  LicenseInfo.setLicenseKey(process.env.NEXT_PUBLIC_MUI_X_LICENSE_KEY);
 
   return (
     <main className={plus_jakarta_sans.className}>
