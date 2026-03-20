@@ -1,5 +1,4 @@
 import {
-  ChartDataProvider,
   ChartsSurface,
   ChartsTooltip,
   ChartsXAxis,
@@ -17,6 +16,13 @@ import {
   formatBarData,
 } from "../../../helpers/functions/formatMuiChartData";
 import { customFormat } from "../../../helpers/functions";
+import { CustomChartWrapper } from "../utils";
+import { RefObject } from "react";
+import {
+  ChartProApi,
+  BarChartProPluginSignatures,
+  ChartsDataProviderPro,
+} from "@mui/x-charts-pro";
 
 type MuiBarChartProps = {
   data: IndicatorData;
@@ -37,6 +43,9 @@ type MuiBarChartProps = {
   yAxisWidth: number;
   zoom: boolean;
   dataFormat: string;
+  apiRef: RefObject<
+    ChartProApi<"bar", BarChartProPluginSignatures> | undefined
+  >;
 };
 
 export const MuiBarChart = (props: MuiBarChartProps) => {
@@ -59,6 +68,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     yAxisWidth,
     zoom,
     dataFormat,
+    apiRef,
   } = props;
 
   if (!data.data) {
@@ -213,7 +223,8 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
   };
 
   return (
-    <ChartDataProvider
+    <ChartsDataProviderPro
+      apiRef={apiRef}
       series={[
         {
           type: "bar",
@@ -247,21 +258,23 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
         },
       ]}
     >
-      <ChartsTooltip />
-      <ChartsSurface>
-        <BarBackground
-          data={data}
-          percentage={percentage}
-          figureHeight={figureHeight}
-          backgroundMargin={backgroundMargin}
-          lines={true}
-          zoom={zoom}
-          xMaxLimit={xMaxLimit}
-        />
-        <ChartsXAxis />
-        <ChartsYAxis />
-        <BarPlot />
-      </ChartsSurface>
-    </ChartDataProvider>
+      <CustomChartWrapper>
+        <ChartsTooltip />
+        <ChartsSurface>
+          <BarBackground
+            data={data}
+            percentage={percentage}
+            figureHeight={figureHeight}
+            backgroundMargin={backgroundMargin}
+            lines={true}
+            zoom={zoom}
+            xMaxLimit={xMaxLimit}
+          />
+          <ChartsXAxis />
+          <ChartsYAxis />
+          <BarPlot />
+        </ChartsSurface>
+      </CustomChartWrapper>
+    </ChartsDataProviderPro>
   );
 };
