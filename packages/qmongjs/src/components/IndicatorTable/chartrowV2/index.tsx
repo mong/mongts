@@ -138,7 +138,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
         sx={{
           paddingTop: 4,
           width: "100%",
-          height: figureType === "bar" ? "100%" : figureHeight,
+          height: "100%",
           overflow: "auto",
           display: "flex",
           flexDirection: "column",
@@ -148,6 +148,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
         {figureType == "line" ? (
           <MuiLineChart
             data={data}
+            figureHeight={figureHeight}
             lineData={lineData}
             uniqueYears={uniqueYears}
             percentage={percentage}
