@@ -316,7 +316,9 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Avbryt</Button>
-        <Button onClick={handleSubmit}>OK</Button>
+        <Button onClick={handleSubmit}>
+          {"OK (" + unitSelection.length + ")"}
+        </Button>
       </DialogActions>
     </Dialog>
   );
