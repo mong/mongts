@@ -9,13 +9,18 @@ import {
   ChartsYAxis,
   LineSeriesType,
   MarkPlot,
-  useChartRootRef,
   LinePlot,
 } from "@mui/x-charts";
-import { IndicatorData } from "types";
-import { DataPoint } from "types";
-import { useChartProApiRef, ChartsDataProviderPro } from "@mui/x-charts-pro";
-import { Button, Stack } from "@mui/material";
+import { DataPoint, IndicatorData } from "types";
+import { Box } from "@mui/material";
+import { RefObject } from "react";
+import {
+  ChartProApi,
+  LineChartProPluginSignatures,
+  ChartsDataProviderPro,
+} from "@mui/x-charts-pro";
+import { CustomChartWrapper } from "../utils";
+
 type MuiLineChartProps = {
   data: IndicatorData;
   lineData: LineSeriesType[];
@@ -25,20 +30,10 @@ type MuiLineChartProps = {
   lastAffirmYear: number;
   zoom: boolean;
   figureHeight: number;
+  apiRef: RefObject<
+    ChartProApi<"line", LineChartProPluginSignatures> | undefined
+  >;
 };
-
-function CustomChartWrapper({ children }: React.PropsWithChildren) {
-  const chartRootRef = useChartRootRef();
-
-  return (
-    <div
-      ref={chartRootRef}
-      style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-    >
-      {children}
-    </div>
-  );
-}
 
 export const MuiLineChart = (props: MuiLineChartProps) => {
   const {
@@ -50,13 +45,12 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
     lastAffirmYear,
     zoom,
     figureHeight,
+    apiRef,
   } = props;
 
   if (data.data === undefined) {
     return null;
   }
-
-  const apiRef = useChartProApiRef<"composition">();
 
   const yMaxLimit = Math.max(
     ...data.data.map((row: DataPoint) => (row.var != null ? row.var : 0)),
@@ -69,14 +63,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
   const yDifference = yMaxLimit - yMinLimit;
 
   return (
-    <Stack width="100%" height={"100%"} sx={{ display: "block" }}>
-      <Button
-        onClick={() => apiRef.current!.exportAsImage()}
-        variant="contained"
-        sx={{ marginLeft: "90%" }}
-      >
-        Last ned
-      </Button>
+    <Box width={"100%"}>
       <ChartsDataProviderPro
         apiRef={apiRef}
         series={lineData}
@@ -135,6 +122,6 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
           </ChartsSurface>
         </CustomChartWrapper>
       </ChartsDataProviderPro>
-    </Stack>
+    </Box>
   );
 };
