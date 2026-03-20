@@ -130,7 +130,6 @@ export default function TreatmentQualityPage() {
           </Button>
           <MedicalFieldPopup
             open={medicalFieldPopupOpen}
-            registries={selectedMedicalFields}
             updateRegistries={setSelectedMedicalFields}
             setOpen={setMedicalFieldPopupOpen}
             onSubmit={setSelectedMedicalFields}
