@@ -32,6 +32,8 @@ import {
 } from "../../src/helpers/functions/chartColours";
 import { TreatmentUnitPopup } from "../../src/components/DialogBox/TreatmentunitPopup";
 import { MedicalFieldPopup } from "../../src/components/DialogBox/MedicalFieldPopup";
+import { useQueryParam } from "use-query-params";
+import { mainQueryParamsConfig } from "qmongjs";
 
 export default function TreatmentQualityPage() {
   const numberOfYearOptions = 5;
@@ -49,9 +51,10 @@ export default function TreatmentQualityPage() {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedLevel, setSelectedLevel] = useState<string | undefined>();
-  const [selectedMedicalFields, setSelectedMedicalFields] = useState<string[]>(
-    [],
-  );
+
+  const [selectedMedicalFields = [], setSelectedMedicalFields] = useQueryParam<
+    string[] | undefined
+  >("registries", mainQueryParamsConfig.registries);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState(
@@ -127,6 +130,8 @@ export default function TreatmentQualityPage() {
           </Button>
           <MedicalFieldPopup
             open={medicalFieldPopupOpen}
+            registries={selectedMedicalFields}
+            updateRegistries={setSelectedMedicalFields}
             setOpen={setMedicalFieldPopupOpen}
             onSubmit={setSelectedMedicalFields}
           />
