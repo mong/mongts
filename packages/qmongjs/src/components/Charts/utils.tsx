@@ -1,4 +1,5 @@
 import { useChartRootRef } from "@mui/x-charts";
+import { Box } from "@mui/material";
 
 export function levelColor(level: string) {
   switch (level) {
@@ -17,11 +18,12 @@ export const CustomChartWrapper = ({ children }: React.PropsWithChildren) => {
   const chartRootRef = useChartRootRef();
 
   return (
-    <div
+    <Box
       ref={chartRootRef}
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+      sx={{ padding: 4 }}
     >
       {children}
-    </div>
+    </Box>
   );
 };

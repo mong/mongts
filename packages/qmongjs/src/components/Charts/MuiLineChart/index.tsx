@@ -20,6 +20,7 @@ import {
   ChartsDataProviderPro,
 } from "@mui/x-charts-pro";
 import { CustomChartWrapper } from "../utils";
+import { ChartLogo } from "../ChartLogo";
 
 type MuiLineChartProps = {
   data: IndicatorData;
@@ -92,6 +93,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
               legend: { position: { vertical: "top", horizontal: "start" } },
             }}
           />
+          <ChartLogo width={100} marginRight={6} />
           <ChartsTooltip />
           <ChartsSurface
             sx={{ "& .line-after path": { strokeDasharray: "10 5" } }}
