@@ -1,6 +1,5 @@
 import {
   ChartsSurface,
-  ChartsTooltip,
   ChartsXAxis,
   ChartsYAxis,
   HighlightScope,
@@ -23,7 +22,7 @@ import {
   BarChartProPluginSignatures,
   ChartsDataProviderPro,
 } from "@mui/x-charts-pro";
-import { BarChartLogo } from "../ChartLogo";
+import { ChartLogo } from "../ChartLogo";
 import { Box } from "@mui/material";
 
 type MuiBarChartProps = {
@@ -261,15 +260,8 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
           },
         ]}
       >
-        {" "}
-        <BarChartLogo
-          percentage={percentage}
-          zoom={zoom}
-          xMaxLimit={xMaxLimit}
-          width={100}
-        />
         <CustomChartWrapper>
-          <ChartsTooltip />
+          <ChartLogo width={100} marginRight={6} />
           <ChartsSurface>
             <BarBackground
               data={data}

@@ -20,7 +20,7 @@ import {
   ChartsDataProviderPro,
 } from "@mui/x-charts-pro";
 import { CustomChartWrapper } from "../utils";
-import { LineChartLogo } from "../ChartLogo";
+import { ChartLogo } from "../ChartLogo";
 
 type MuiLineChartProps = {
   data: IndicatorData;
@@ -87,13 +87,13 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
           },
         ]}
       >
-        <LineChartLogo width={100} years={uniqueYears} />
         <CustomChartWrapper>
           <ChartsLegend
             slotProps={{
               legend: { position: { vertical: "top", horizontal: "start" } },
             }}
           />
+          <ChartLogo width={100} marginRight={6} />
           <ChartsTooltip />
           <ChartsSurface
             sx={{ "& .line-after path": { strokeDasharray: "10 5" } }}
