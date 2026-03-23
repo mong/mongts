@@ -4429,7 +4429,7 @@ __metadata:
     express: "npm:5.2.1"
     express-rate-limit: "npm:8.3.1"
     helmet: "npm:8.1.0"
-    knex: "npm:3.1.0"
+    knex: "npm:3.2.3"
     mysql2: "npm:3.20.0"
     prettier: "npm:3.8.1"
     ts-node-dev: "npm:2.0.0"
@@ -8451,9 +8451,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knex@npm:3.1.0":
-  version: 3.1.0
-  resolution: "knex@npm:3.1.0"
+"knex@npm:3.2.3":
+  version: 3.2.3
+  resolution: "knex@npm:3.2.3"
   dependencies:
     colorette: "npm:2.0.19"
     commander: "npm:^10.0.0"
@@ -8469,6 +8469,8 @@ __metadata:
     resolve-from: "npm:^5.0.0"
     tarn: "npm:^3.0.2"
     tildify: "npm:2.0.0"
+  peerDependencies:
+    pg-query-stream: ^4.14.0
   peerDependenciesMeta:
     better-sqlite3:
       optional: true
@@ -8480,13 +8482,15 @@ __metadata:
       optional: true
     pg-native:
       optional: true
+    pg-query-stream:
+      optional: true
     sqlite3:
       optional: true
     tedious:
       optional: true
   bin:
     knex: bin/cli.js
-  checksum: 10/12eb978ebec9944d6d0225d33d31d44feb54046b3a02f9f14dfa33a4e665a54d784290991b17a68fd8141a14a3336b325c7706af35557f845dae9e500f3c8aae
+  checksum: 10/2a40108ffcd1e63163d551565f2a228656e35c9d92ae5cea4f2ed735a4427daa51ae04b0d7afc80dca14cabacb4ba40a94770fdd535120d55812737581c541c1
   languageName: node
   linkType: hard
 
