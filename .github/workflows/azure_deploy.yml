@@ -42,6 +42,7 @@ jobs:
       - name: Test build
         env:
           NEXT_PUBLIC_API_HOST: https://prod-api.skde.org
+          NEXT_PUBLIC_MUI_X_LICENSE_KEY: ${{ secrets.NEXT_PUBLIC_MUI_X_LICENSE_KEY }}
         run: |
           yarn run export
       - name: Build and upload main branch version to Azure
