@@ -2580,40 +2580,41 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tanstack/query-core@npm:5.95.0":
-  version: 5.95.0
-  resolution: "@tanstack/query-core@npm:5.95.0"
-  checksum: 10/c79912b117fe8f04f1eecab7990775b2962a40d6180e4d5b5b850a1537417a8f80d62b5dc57e6e8f7c2c61cb23cf0b1af54527cf783abb4b9a94a23402e8bb5d
+"@tanstack/query-core@npm:5.95.2":
+  version: 5.95.2
+  resolution: "@tanstack/query-core@npm:5.95.2"
+  checksum: 10/ebacd841a28bffd7e5ad05ac7b5ca3dcb08533d87c6457f6df34c9478129f2dd5c573eaf0037e74c25df53192eba57733f587593a34539dab139fcd2fe93e432
   languageName: node
   linkType: hard
 
-"@tanstack/query-devtools@npm:5.95.0":
-  version: 5.95.0
-  resolution: "@tanstack/query-devtools@npm:5.95.0"
-  checksum: 10/4d056b14ceb7cd569c6f687d37a1df745529859f5aa0fb7ee3e603cfd4843f3ad8e60bd50c74060f630f46220372059806dada586b923d2860f98f94c338997b
+"@tanstack/query-devtools@npm:5.95.2":
+  version: 5.95.2
+  resolution: "@tanstack/query-devtools@npm:5.95.2"
+  checksum: 10/682ebde752a4c81d766e63cf73dc274599a24c959eeeaae8925265d93028844bc7a31c74b5f3d79e6afad889bbf90698aea1310d1b62c67ce15720949558c004
   languageName: node
   linkType: hard
 
-"@tanstack/react-query-devtools@npm:5.95.0":
-  version: 5.95.0
-  resolution: "@tanstack/react-query-devtools@npm:5.95.0"
+"@tanstack/react-query-devtools@npm:5.95.2":
+  version: 5.95.2
+  resolution: "@tanstack/react-query-devtools@npm:5.95.2"
   dependencies:
-    "@tanstack/query-devtools": "npm:5.95.0"
+    "@tanstack/query-devtools": "npm:5.95.2"
   peerDependencies:
-    "@tanstack/react-query": ^5.95.0
+    "@tanstack/react-query": ^5.95.2
     react: ^18 || ^19
-  checksum: 10/ea6b9902979be7397d4cc21507894ef8820f2ba5cf4a019b1b549df850d664ac173b7cc08141995114307bd0227c022b20015e4c929cbd81b16a5c7f43af27c5
+  checksum: 10/7181ef52bb043311833f12f5e1f969d5e19f62e17525dc87247239232d7c0a12e5820b7897b1d4d3222566f5b015abc431cc8ab7069dddb28823013b63fd9fb8
   languageName: node
   linkType: hard
 
-"@tanstack/react-query@npm:5.95.0":
-  version: 5.95.0
-  resolution: "@tanstack/react-query@npm:5.95.0"
+"@tanstack/react-query@npm:5.95.2":
+  version: 5.95.2
+  resolution: "@tanstack/react-query@npm:5.95.2"
   dependencies:
-    "@tanstack/query-core": "npm:5.95.0"
+    "@tanstack/query-core": "npm:5.95.2"
   peerDependencies:
+    "@tanstack/react-query": ^5.95.2
     react: ^18 || ^19
-  checksum: 10/41f319e4093f2a684ff76a9b35c4e2c8a467721f9be8798c22228ccd297453ca6b56427aed3a825a27c89014669148dd5a8a656c8a7a5ec15c2e228901407e8e
+  checksum: 10/5fb9948d2dcfce44ad305c888ad8246501d3de264356995ae0b025c3bceb80e710a9946ea6012a39adec71e64d255d05416861ddb525b66bc5547df8f6dd2253
   languageName: node
   linkType: hard
 
@@ -4429,7 +4430,7 @@ __metadata:
     express: "npm:5.2.1"
     express-rate-limit: "npm:8.3.1"
     helmet: "npm:8.1.0"
-    knex: "npm:3.2.3"
+    knex: "npm:3.2.6"
     mysql2: "npm:3.20.0"
     prettier: "npm:3.8.1"
     ts-node-dev: "npm:2.0.0"
@@ -5460,9 +5461,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:15.12.0":
-  version: 15.12.0
-  resolution: "cypress@npm:15.12.0"
+"cypress@npm:15.13.0":
+  version: 15.13.0
+  resolution: "cypress@npm:15.13.0"
   dependencies:
     "@cypress/request": "npm:^3.0.10"
     "@cypress/xvfb": "npm:^1.2.4"
@@ -5509,7 +5510,7 @@ __metadata:
     yauzl: "npm:^2.10.0"
   bin:
     cypress: bin/cypress
-  checksum: 10/22ed809a60c8c2e7a9732f7a9bdcd49b0f9f13359b9a4c52d62a4fba6f1b5a1333ab2ea9743acf0b5c236402fb46c892aa37fbbe631c40856d8533962a5741b6
+  checksum: 10/c0ad6c3d70a960d6c4cc71e38029fcf9a01569f8b9d33a36eea187b05861bc8cda7aa144eef81cbd7d6499e084b7b65637014eb74da0196b21d0f17c5fdfc487
   languageName: node
   linkType: hard
 
@@ -8451,9 +8452,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knex@npm:3.2.3":
-  version: 3.2.3
-  resolution: "knex@npm:3.2.3"
+"knex@npm:3.2.6":
+  version: 3.2.6
+  resolution: "knex@npm:3.2.6"
   dependencies:
     colorette: "npm:2.0.19"
     commander: "npm:^10.0.0"
@@ -8490,7 +8491,7 @@ __metadata:
       optional: true
   bin:
     knex: bin/cli.js
-  checksum: 10/2a40108ffcd1e63163d551565f2a228656e35c9d92ae5cea4f2ed735a4427daa51ae04b0d7afc80dca14cabacb4ba40a94770fdd535120d55812737581c541c1
+  checksum: 10/5cdc0defd051c58682800cd7e6662948d7dbe9e7cbccc5f7b3caafbe69de77bd2066413117c56e7934b38e9435b21dac94cd8ddadf7e2d358e4abfad7408c7b9
   languageName: node
   linkType: hard
 
@@ -10640,7 +10641,7 @@ __metadata:
     "@mui/x-charts": "npm:^8.22.0"
     "@mui/x-charts-pro": "npm:^8.27.5"
     "@mui/x-tree-view": "npm:8.27.2"
-    "@tanstack/react-query": "npm:5.95.0"
+    "@tanstack/react-query": "npm:5.95.2"
     "@testing-library/dom": "npm:10.4.1"
     "@testing-library/react": "npm:16.3.2"
     "@types/d3": "npm:7.4.3"
@@ -11713,8 +11714,8 @@ __metadata:
     "@mui/icons-material": "npm:7.3.9"
     "@mui/material": "npm:7.3.9"
     "@mui/x-license": "npm:^8.26.0"
-    "@tanstack/react-query": "npm:5.95.0"
-    "@tanstack/react-query-devtools": "npm:5.95.0"
+    "@tanstack/react-query": "npm:5.95.2"
+    "@tanstack/react-query-devtools": "npm:5.95.2"
     "@testing-library/react": "npm:16.3.2"
     "@types/d3-array": "npm:3.2.2"
     "@types/d3-geo": "npm:3.1.0"
@@ -11731,7 +11732,7 @@ __metadata:
     "@vitejs/plugin-react": "npm:5.2.0"
     "@vitest/browser": "npm:4.0.18"
     "@vitest/coverage-v8": "npm:4.0.18"
-    cypress: "npm:15.12.0"
+    cypress: "npm:15.13.0"
     d3-array: "npm:3.2.4"
     d3-geo: "npm:3.1.1"
     d3-scale: "npm:4.0.2"

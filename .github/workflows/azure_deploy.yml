@@ -61,7 +61,7 @@ jobs:
             --delete-destination true
       - name: Purge prod version from Azure Front Door
         if: github.ref == 'refs/heads/main'
-        uses: azure/cli@v2
+        uses: azure/cli@v3
         with:
           azcliversion: latest
           inlineScript: |
@@ -89,7 +89,7 @@ jobs:
             --delete-destination true
       - name: Purge verify version from Azure Front Door
         if: github.ref == 'refs/heads/main'
-        uses: azure/cli@v2
+        uses: azure/cli@v3
         with:
           azcliversion: latest
           inlineScript: |
@@ -123,7 +123,7 @@ jobs:
             --delete-destination true
       - name: Purge test version from Azure Front Door
         if: github.ref == 'refs/heads/develop'
-        uses: azure/cli@v2
+        uses: azure/cli@v3
         with:
           azcliversion: latest
           inlineScript: |
