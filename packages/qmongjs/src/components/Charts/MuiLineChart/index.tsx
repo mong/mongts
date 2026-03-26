@@ -78,7 +78,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
             data: uniqueYears,
             valueFormatter: (value: number) => value.toString(),
             tickLabelStyle: {
-              fontSize: 14,
+              fontSize: tickFontSize,
             },
           },
         ]}
