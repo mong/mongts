@@ -480,14 +480,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cypress/code-coverage@npm:4.0.2":
-  version: 4.0.2
-  resolution: "@cypress/code-coverage@npm:4.0.2"
+"@cypress/code-coverage@npm:4.0.3":
+  version: 4.0.3
+  resolution: "@cypress/code-coverage@npm:4.0.3"
   dependencies:
     "@cypress/webpack-preprocessor": "npm:^6.0.0"
     chalk: "npm:4.1.2"
     dayjs: "npm:1.11.20"
-    debug: "npm:4.4.0"
+    debug: "npm:4.4.3"
     execa: "npm:4.1.0"
     istanbul-lib-coverage: "npm:^3.0.0"
     js-yaml: "npm:^4.1.1"
@@ -499,7 +499,7 @@ __metadata:
     babel-loader: ^8.3 || ^9 || ^10
     cypress: ">=15.10.0"
     webpack: ^4 || ^5
-  checksum: 10/bed50af30e38b1811a084924d9d632d09ff1436ee58660c62748ffa4b8dc81e11421f4d728cf76547eb1f63c60f8fd73fa0ee75dcb852d4a5e3ab9525ba5fdf7
+  checksum: 10/f364c111e302b943a6e38571838c521a4fddba17a5bce01ff6be4b05a798b7d2df69757c94738a0786ddb34634be3247de5998cce4b692fa717a47a656fe5d45
   languageName: node
   linkType: hard
 
@@ -5981,18 +5981,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:4.4.0, debug@npm:^4.4.0":
-  version: 4.4.0
-  resolution: "debug@npm:4.4.0"
-  dependencies:
-    ms: "npm:^2.1.3"
-  peerDependenciesMeta:
-    supports-color:
-      optional: true
-  checksum: 10/1847944c2e3c2c732514b93d11886575625686056cd765336212dc15de2d2b29612b6cd80e1afba767bb8e1803b778caf9973e98169ef1a24a7a7009e1820367
-  languageName: node
-  linkType: hard
-
 "debug@npm:4.4.3, debug@npm:^4.4.3":
   version: 4.4.3
   resolution: "debug@npm:4.4.3"
@@ -6023,6 +6011,18 @@ __metadata:
     supports-color:
       optional: true
   checksum: 10/cb6eab424c410e07813ca1392888589972ce9a32b8829c6508f5e1f25f3c3e70a76731610ae55b4bbe58d1a2fffa1424b30e97fa8d394e49cd2656a9643aedd2
+  languageName: node
+  linkType: hard
+
+"debug@npm:^4.4.0":
+  version: 4.4.0
+  resolution: "debug@npm:4.4.0"
+  dependencies:
+    ms: "npm:^2.1.3"
+  peerDependenciesMeta:
+    supports-color:
+      optional: true
+  checksum: 10/1847944c2e3c2c732514b93d11886575625686056cd765336212dc15de2d2b29612b6cd80e1afba767bb8e1803b778caf9973e98169ef1a24a7a7009e1820367
   languageName: node
   linkType: hard
 
@@ -11708,7 +11708,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "skde@workspace:apps/skde"
   dependencies:
-    "@cypress/code-coverage": "npm:4.0.2"
+    "@cypress/code-coverage": "npm:4.0.3"
     "@emotion/styled": "npm:^11.14.0"
     "@mui/icons-material": "npm:7.3.9"
     "@mui/material": "npm:7.3.9"
