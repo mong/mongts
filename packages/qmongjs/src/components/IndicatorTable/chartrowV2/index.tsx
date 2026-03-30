@@ -171,6 +171,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             lastAffirmYear={lastAffirmYear}
             zoom={zoom}
             apiRef={lineChartApiRef}
+            tickFontSize={14}
           />
         ) : figureType === "bar" ? (
           <Box width={"100%"}>
@@ -193,7 +194,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
               medfield={medfield}
               year={year}
               indID={indID}
-              tickFontSize={15}
+              tickFontSize={14}
               yAxisWidth={160}
               zoom={zoom}
               apiRef={barChartApiRef}

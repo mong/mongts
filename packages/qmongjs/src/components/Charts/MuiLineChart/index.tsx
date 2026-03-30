@@ -20,6 +20,7 @@ import {
   ChartsDataProviderPro,
 } from "@mui/x-charts-pro";
 import { CustomChartWrapper } from "../utils";
+import { legendClasses } from "@mui/x-charts/ChartsLegend";
 import { ChartLogo } from "../ChartLogo";
 
 type MuiLineChartProps = {
@@ -34,6 +35,7 @@ type MuiLineChartProps = {
   apiRef: RefObject<
     ChartProApi<"line", LineChartProPluginSignatures> | undefined
   >;
+  tickFontSize: number;
 };
 
 export const MuiLineChart = (props: MuiLineChartProps) => {
@@ -47,6 +49,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
     zoom,
     figureHeight,
     apiRef,
+    tickFontSize,
   } = props;
 
   if (data.data === undefined) {
@@ -74,23 +77,38 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
             scaleType: "point",
             data: uniqueYears,
             valueFormatter: (value: number) => value.toString(),
+            tickLabelStyle: {
+              fontSize: tickFontSize,
+            },
           },
         ]}
         yAxis={[
           {
             min: zoom ? yMinLimit : 0,
             max: percentage && !zoom ? 1 : yMaxLimit,
+            width: 65,
             position: "left",
             scaleType: "linear",
             valueFormatter: valueAxisFormatter,
             tickNumber: zoom && yDifference < 0.1 ? 3 : 10,
+            tickLabelStyle: {
+              fontSize: tickFontSize,
+            },
           },
         ]}
       >
         <CustomChartWrapper>
           <ChartsLegend
             slotProps={{
-              legend: { position: { vertical: "top", horizontal: "start" } },
+              legend: {
+                sx: {
+                  fontSize: tickFontSize,
+                  [`.${legendClasses.mark}`]: {
+                    width: 40,
+                  },
+                },
+                position: { vertical: "top", horizontal: "start" },
+              },
             }}
           />
           <ChartLogo width={100} marginRight={6} />
