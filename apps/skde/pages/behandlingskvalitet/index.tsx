@@ -364,7 +364,7 @@ export default function TreatmentQualityPage() {
             </Grid>
           </Grid>
         </Grid>
-        <Footer page="behandlingskvalitet" />
+        <Footer />
       </PageWrapper>
       <FilterDrawer
         ModalProps={{
