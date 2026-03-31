@@ -74,7 +74,6 @@ export {
   mainQueryParamsConfig,
   minDG,
 } from "./app_config";
-export { SelectTreatmentUnits } from "./components/SelectTreatmentUnits";
 export { skdeTheme, breakpoints } from "./themes/SkdeTheme";
 export { indicatorTableTheme } from "./components/IndicatorTable/IndicatortablebodyV2/IndicatorTableBodyV2Styles";
 export { LinechartGrid } from "./components/Charts/LinechartGrid";
