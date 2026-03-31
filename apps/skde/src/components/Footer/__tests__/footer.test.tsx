@@ -22,11 +22,6 @@ describe("Footer component", () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('renders with page prop set to "helseatlas"', () => {
-    const { container } = render(<Footer page="helseatlas" />);
-    expect(container).toMatchSnapshot();
-  });
-
   it("renders with maxWidth prop set to false", () => {
     const { container } = render(
       <Footer page="sykehusprofil" maxWidth={false} />,

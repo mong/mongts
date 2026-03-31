@@ -249,11 +249,7 @@ export const Skde = (): JSX.Element => {
             </Grid>
           </Box>
         </Container>
-        <Footer
-          page="sykehusprofil"
-          maxWidth={maxWidth}
-          className="hospital-profile-footer"
-        />
+        <Footer maxWidth={maxWidth} className="hospital-profile-footer" />
       </PageWrapper>
     </ThemeProvider>
   );
