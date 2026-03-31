@@ -393,7 +393,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
             </Grid>
           </Grid>
         </Grid>
-        <Footer page="behandlingskvalitet" />
+        <Footer />
       </PageWrapper>
       <FilterDrawer
         ModalProps={{

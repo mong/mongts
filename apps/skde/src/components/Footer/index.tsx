@@ -13,11 +13,6 @@ const StyledLink = styled(Link)(() => ({
 }));
 
 type FooterProps = {
-  page:
-    | "behandlingskvalitet"
-    | "helseatlas"
-    | "sykehusprofil"
-    | "pasientstrømmer";
   maxWidth?: false | Breakpoint;
   className?: string;
 };
@@ -29,13 +24,9 @@ type FooterProps = {
  * @param className - The class name of the footer.
  */
 export const Footer = ({
-  page,
   maxWidth = false,
   className = "footer",
 }: FooterProps) => {
-  const kvalitet = ["behandlingskvalitet", "sykehusprofil"].includes(page);
-  const helseatlas = page === "helseatlas";
-
   // Logo components
   const skdeLogo = (
     <Link href={"https://www.skde.no/"}>
@@ -47,18 +38,6 @@ export const Footer = ({
         alt="SKDE-logo"
         width={129}
         height={52}
-      />
-    </Link>
-  );
-
-  const helseFordeLogo = (
-    <Link href="https://helse-forde.no/" title="Link til Helse Førde">
-      <Image
-        loader={imgLoader}
-        src={`/helseatlas/img/logos/helse-forde-hvit.svg`}
-        height={52}
-        width={234}
-        alt="Helse Førde logo"
       />
     </Link>
   );
@@ -76,34 +55,6 @@ export const Footer = ({
         />
       </Box>
     </Link>
-  );
-
-  const helseVestLogo = (
-    <Link href="https://helse-vest.no/" title="Link til Helse Vest">
-      <Image
-        loader={imgLoader}
-        src={`/helseatlas/img/logos/helse-vest-hvit.svg`}
-        height={52}
-        width={234}
-        alt="Helse Vest logo"
-      />
-    </Link>
-  );
-
-  // Logo grids
-  const atlasLogoGrid = (
-    <>
-      <Grid>{skdeLogo}</Grid>
-      <Grid>{helseFordeLogo}</Grid>
-      <Grid>{helseVestLogo}</Grid>
-    </>
-  );
-
-  const kvalitetLogoGrid = (
-    <>
-      <Grid>{skdeLogo}</Grid>
-      <Grid>{nsmLogo}</Grid>
-    </>
   );
 
   return (
@@ -185,13 +136,8 @@ export const Footer = ({
               gap={1}
               justifyContent="space-between"
             >
-              {helseatlas ? (
-                atlasLogoGrid
-              ) : kvalitet ? (
-                kvalitetLogoGrid
-              ) : (
-                <Grid>{skdeLogo}</Grid>
-              )}
+              <Grid>{skdeLogo}</Grid>
+              <Grid>{nsmLogo}</Grid>
             </Grid>
 
             <Grid size={{ xs: 12 }}>
