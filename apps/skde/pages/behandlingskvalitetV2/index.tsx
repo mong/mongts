@@ -224,7 +224,7 @@ export default function TreatmentQualityPage() {
           )}
         </Box>
       </Box>
-      <Footer page="behandlingskvalitet" />
+      <Footer />
     </ThemeProvider>
   );
 }
