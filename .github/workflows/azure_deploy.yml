@@ -49,6 +49,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         env:
           NEXT_PUBLIC_API_HOST: https://prod-api.skde.org
+          NEXT_PUBLIC_MUI_X_LICENSE_KEY: ${{ secrets.NEXT_PUBLIC_MUI_X_LICENSE_KEY }}
           AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT_PROD }}
           AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY_PROD }}
         run: |
@@ -77,6 +78,7 @@ jobs:
         env:
           NEXT_PUBLIC_VERIFY: "true"
           NEXT_PUBLIC_API_HOST: https://verify-api.skde.org
+          NEXT_PUBLIC_MUI_X_LICENSE_KEY: ${{ secrets.NEXT_PUBLIC_MUI_X_LICENSE_KEY }}
           AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT_VERIFY }}
           AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY_VERIFY }}
         run: |
@@ -111,6 +113,7 @@ jobs:
         if: github.ref == 'refs/heads/develop'
         env:
           NEXT_PUBLIC_API_HOST: https://prod-api.skde.org
+          NEXT_PUBLIC_MUI_X_LICENSE_KEY: ${{ secrets.NEXT_PUBLIC_MUI_X_LICENSE_KEY }}
           AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT_TEST }}
           AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY_TEST }}
         run: |

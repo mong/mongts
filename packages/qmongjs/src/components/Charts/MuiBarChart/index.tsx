@@ -1,5 +1,6 @@
 import {
   ChartsSurface,
+  ChartsTooltip,
   ChartsXAxis,
   ChartsYAxis,
   HighlightScope,
@@ -262,6 +263,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
       >
         <CustomChartWrapper>
           <ChartLogo width={100} marginRight={6} />
+          <ChartsTooltip />
           <ChartsSurface>
             <BarBackground
               data={data}
