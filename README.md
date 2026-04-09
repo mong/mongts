@@ -37,6 +37,12 @@ git push
 
 ### Run and develop it locally
 
+You need an SSH key in order to clone the repository. Follow the directions [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) for making a new key and adding it to your Github account. 
+
+Install the [nvm package](https://github.com/nvm-sh/nvm) by running the command `wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash`. Then run `nvm install 24` to update to the current node version. 
+
+Install [yarn](https://yarnpkg.com/getting-started/install) by running the command `npm install -g corepack`
+
 Run the development server:
 
 ```bash
