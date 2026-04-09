@@ -25,8 +25,6 @@ import {
   useMedicalFieldsQuery,
   dataQualityKey,
   FilterSettingsActionType,
-  IndicatorTable,
-  IndicatorTableBodyV2,
   skdeTheme,
   useUnitNamesQuery,
 } from "qmongjs";
@@ -34,12 +32,10 @@ import { UseQueryResult } from "@tanstack/react-query";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import {
   FilterDrawer,
-  IndicatorTableWrapper,
 } from "../../src/components/TreatmentQuality";
 import { Footer } from "../../src/components/Footer";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import getMedicalFieldFilterRegisters from "../../src/utils/getMedicalFieldFilterRegisters";
-import { IndicatorTableSkeleton } from "qmongjs";
 import { LayoutHead } from "../../src/components/LayoutHead";
 import {
   valueOrDefault,
@@ -51,6 +47,8 @@ import {
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
 import checkParamsReady from "../../src/utils/checkParamsReady";
+import { IndicatorTableBodyV2 } from "../../src/components/IndicatorTable/IndicatortablebodyV2";
+import { IndicatorTableSkeleton } from "../../src/components/IndicatorTable/IndicatorTableSkeleton";
 
 export default function TreatmentQualityPage() {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
@@ -59,8 +57,6 @@ export default function TreatmentQualityPage() {
   const toggleDrawer = (newOpen: boolean) => {
     setDrawerOpen(newOpen);
   };
-
-  const [useBeta, setUseBeta] = useState(false);
 
   const defaultTreatmentUnits = ["Nasjonalt"];
 
@@ -263,8 +259,6 @@ export default function TreatmentQualityPage() {
         />
         <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
-          useBeta={useBeta}
-          setUseBeta={setUseBeta}
         >
           Resultater fra nasjonale medisinske kvalitetsregistre. Se{" "}
           <Link
@@ -305,7 +299,6 @@ export default function TreatmentQualityPage() {
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
                 {queriesReady && paramsReady ? (
-                  useBeta ? (
                     <IndicatorTableBodyV2
                       key={"indicator-table2"}
                       context={selectedTableContext}
@@ -324,39 +317,6 @@ export default function TreatmentQualityPage() {
                         "colours",
                       )}
                     />
-                  ) : (
-                    <IndicatorTableWrapper className="table-wrapper">
-                      <IndicatorTable
-                        key={"indicator-table"}
-                        context={selectedTableContext}
-                        dataQuality={dataQualitySelected}
-                        tableType="allRegistries"
-                        registerNames={registers}
-                        unitNames={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "units",
-                        )}
-                        treatmentYear={selectedYear}
-                        colspan={selectedTreatmentUnits.length + 1}
-                        medicalFieldFilter={selectedMedicalFields}
-                        showLevelFilter={selectedLevel}
-                        selection_bar_height={0}
-                        legend_height={0}
-                        blockTitle={registers.map(
-                          (register: { full_name: string }) =>
-                            register.full_name,
-                        )}
-                        showTreatmentYear={true}
-                        nestedUnitNames={nestedUnitNames}
-                        chartColours={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "colours",
-                        )}
-                      />
-                    </IndicatorTableWrapper>
-                  )
                 ) : (
                   <IndicatorTableSkeleton nRows={10} />
                 )}

@@ -20,8 +20,6 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
 
 type StickyToolbarProps = {
   openDrawer: () => void;
-  useBeta: boolean;
-  setUseBeta: (value: SetStateAction<boolean>) => void;
 };
 
 const scrollToTop = () => {
@@ -31,7 +29,7 @@ const scrollToTop = () => {
 };
 
 export const TreatmentQualityToolbar = (props: StickyToolbarProps) => {
-  const { openDrawer, useBeta, setUseBeta } = props;
+  const { openDrawer } = props;
 
   const theme = useTheme();
   const notLargeScreen = useMediaQuery(theme.breakpoints.down("xxl"));
@@ -44,17 +42,6 @@ export const TreatmentQualityToolbar = (props: StickyToolbarProps) => {
         sx={{ flexGrow: 1 }}
         justifyContent="space-between"
       >
-        <FormControlLabel
-          control={
-            <Switch
-              checked={useBeta}
-              onChange={() => {
-                setUseBeta(!useBeta);
-              }}
-            />
-          }
-          label="Prøv betaversjonen av Behandlingskvalitet"
-        />
         <Grid sx={{ xs: "auto" }}>
           {notLargeScreen ? (
             <Tooltip title="Åpne sidemeny">

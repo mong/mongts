@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import {
   IndicatorLinechart,
   IndicatorLinechartParams,
-} from "../../../charts/IndicatorLinechart";
-import { LineStyles } from "qmongjs";
+} from "../../Charts/IndicatorLinechart";
+import { LineStyles } from "../../Charts/LinechartBase";
 import { ThemeProvider, Box, Typography, Stack, Button } from "@mui/material";
 import { ChipSelection } from "../../ChipSelection";
 import {
