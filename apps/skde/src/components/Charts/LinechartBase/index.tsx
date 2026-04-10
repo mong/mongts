@@ -6,7 +6,7 @@ import { scaleTime, scaleLinear, scaleOrdinal } from "@visx/scale";
 import { AxisBottom, AxisLeft } from "@visx/axis";
 import { Legend, LegendItem, LegendLabel } from "@visx/legend";
 import { customFormat } from "qmongjs";
-import { LinechartGrid } from "qmongjs";
+import { LinechartGrid } from "../LinechartGrid";
 import { GridRows } from "@visx/grid";
 import { Group } from "@visx/group";
 import { withTooltip, TooltipWithBounds, defaultStyles } from "@visx/tooltip";
