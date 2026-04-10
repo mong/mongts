@@ -73,7 +73,7 @@ const mapLevel = (indicatorLevel: string) => {
   return mappedLevel;
 };
 
-export const countLevels = (levels: IndicatorLevels[]) => {
+const countLevels = (levels: IndicatorLevels[]) => {
   return _(levels)
     .countBy((row) => {
       return [row.level, row.year];
@@ -98,7 +98,7 @@ export const countLevels = (levels: IndicatorLevels[]) => {
 
 // GroupedLevels only contains datapoint for the years where there is data.
 // This function adds years without data in the range [minYear, maxYear] and sets the value to 0.
-export const setMissingToZero = (
+const setMissingToZero = (
   groupedLevels: GroupedLevels,
   minYear: number,
   maxYear: number,
