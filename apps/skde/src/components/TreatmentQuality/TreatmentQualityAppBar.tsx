@@ -2,7 +2,6 @@ import { AppBar, styled } from "@mui/material";
 import { TreatmentQualityToolbar } from "./TreatmentQualityToolbar";
 import { Header, BreadCrumbPath } from "../Header";
 import { PropsWithChildren } from "react";
-import { SetStateAction } from "react";
 
 const StyledAppBar = styled(AppBar)(() => ({
   elevation: 0,
@@ -33,9 +32,7 @@ const TreatmentQualityAppBar = ({
     <>
       <Header title={title} breadcrumbs={breadcrumbs} children={children} />
       <StyledAppBar position="sticky" elevation={0}>
-        <TreatmentQualityToolbar
-          openDrawer={openDrawer}
-        />
+        <TreatmentQualityToolbar openDrawer={openDrawer} />
       </StyledAppBar>
     </>
   );

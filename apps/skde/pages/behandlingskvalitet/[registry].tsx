@@ -30,10 +30,7 @@ import {
   useRegistryRankQuery,
 } from "qmongjs";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
-import {
-  FilterDrawer,
-  IndicatorTableWrapper,
-} from "../../src/components/TreatmentQuality";
+import { FilterDrawer } from "../../src/components/TreatmentQuality";
 import { Footer } from "../../src/components/Footer";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { RegisterName, RegistryRank } from "types";
@@ -86,6 +83,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
   );
 
   let registryRank = "NA";
+  // eslint-disable-next-line no-undef
   if (!process.env.NEXT_PUBLIC_VERIFY) {
     // Fetch the registry's stage and level
     const registryRankQuery = useRegistryRankQuery(defaultReviewYear);
@@ -219,23 +217,26 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const subtitle = (
     <>
       Resultater fra {registryInfo[0].full_name}.{" "}
-      {!process.env.NEXT_PUBLIC_VERIFY && (
-        <>
-          Se{" "}
-          <Link href={registryInfo[0].url} target="_blank" rel="noopener">
-            kvalitetsregistre.no
-          </Link>{" "}
-          for mer informasjon.{" "}
-          <Link
-            href="https://www.kvalitetsregistre.no/registerdrift/stadieinndeling"
-            target="_blank"
-            rel="noopener"
-          >
-            Stadium og nivå
-          </Link>{" "}
-          for {defaultReviewYear}: <b>{registryRank}</b>
-        </>
-      )}
+      {
+        // eslint-disable-next-line no-undef
+        !process.env.NEXT_PUBLIC_VERIFY && (
+          <>
+            Se{" "}
+            <Link href={registryInfo[0].url} target="_blank" rel="noopener">
+              kvalitetsregistre.no
+            </Link>{" "}
+            for mer informasjon.{" "}
+            <Link
+              href="https://www.kvalitetsregistre.no/registerdrift/stadieinndeling"
+              target="_blank"
+              rel="noopener"
+            >
+              Stadium og nivå
+            </Link>{" "}
+            for {defaultReviewYear}: <b>{registryRank}</b>
+          </>
+        )
+      }
     </>
   );
 
@@ -290,44 +291,44 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
                 {paramsReady ? (
-                    <Stack spacing={4}>
-                      <IndicatorTableBodyV2
-                        key={`indicator-table2-${selectedTableContext}`}
-                        context={selectedTableContext}
-                        unitNames={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "units",
-                        )}
-                        year={selectedYear}
-                        type="ind"
-                        levels={selectedLevel}
-                        medfields={selectedMedicalFields}
-                        chartColours={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "colours",
-                        )}
-                      />
-                      <IndicatorTableBodyV2
-                        key={`dataquality-table2-${selectedTableContext}`}
-                        context={selectedTableContext}
-                        unitNames={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "units",
-                        )}
-                        year={selectedYear}
-                        type="dg"
-                        levels={selectedLevel}
-                        medfields={selectedMedicalFields}
-                        chartColours={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "colours",
-                        )}
-                      />
-                    </Stack>
+                  <Stack spacing={4}>
+                    <IndicatorTableBodyV2
+                      key={`indicator-table2-${selectedTableContext}`}
+                      context={selectedTableContext}
+                      unitNames={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "units",
+                      )}
+                      year={selectedYear}
+                      type="ind"
+                      levels={selectedLevel}
+                      medfields={selectedMedicalFields}
+                      chartColours={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "colours",
+                      )}
+                    />
+                    <IndicatorTableBodyV2
+                      key={`dataquality-table2-${selectedTableContext}`}
+                      context={selectedTableContext}
+                      unitNames={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "units",
+                      )}
+                      year={selectedYear}
+                      type="dg"
+                      levels={selectedLevel}
+                      medfields={selectedMedicalFields}
+                      chartColours={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "colours",
+                      )}
+                    />
+                  </Stack>
                 ) : (
                   <></>
                 )}

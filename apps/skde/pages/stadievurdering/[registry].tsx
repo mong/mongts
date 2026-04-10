@@ -11,14 +11,14 @@ import { RegistryEvaluation, RegistryRank, RegisterName } from "types";
 import { FaCircle } from "react-icons/fa";
 import { styled, Box, Tabs, Tab, Stack, Typography } from "@mui/material";
 import { Markdown } from "../../src/components/Markdown";
-import { LinechartBase,
+import {
+  LinechartBase,
   LinechartData,
   font,
   LineStyles,
   lineStyle,
-  LinechartBaseProps
+  LinechartBaseProps,
 } from "../../src/components/Charts/LinechartBase";
-
 
 const levelAColour = "#58A55C";
 const levelBColour = "#FD9C00";

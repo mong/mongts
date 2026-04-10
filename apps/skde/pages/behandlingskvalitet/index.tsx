@@ -30,9 +30,7 @@ import {
 } from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
-import {
-  FilterDrawer,
-} from "../../src/components/TreatmentQuality";
+import { FilterDrawer } from "../../src/components/TreatmentQuality";
 import { Footer } from "../../src/components/Footer";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import getMedicalFieldFilterRegisters from "../../src/utils/getMedicalFieldFilterRegisters";
@@ -108,7 +106,6 @@ export default function TreatmentQualityPage() {
 
   const registers = registryNameQuery?.data;
   const medicalFields = medicalFieldsQuery?.data;
-  const nestedUnitNames = unitNamesQuery?.data?.nestedUnitNames;
 
   /**
    * Handle that the initial filter settings are loaded, which can happen
@@ -257,9 +254,7 @@ export default function TreatmentQualityPage() {
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
           href="/favicon.ico"
         />
-        <TreatmentQualityAppBar
-          openDrawer={() => toggleDrawer(true)}
-        >
+        <TreatmentQualityAppBar openDrawer={() => toggleDrawer(true)}>
           Resultater fra nasjonale medisinske kvalitetsregistre. Se{" "}
           <Link
             href="https://www.kvalitetsregistre.no/"
@@ -299,24 +294,24 @@ export default function TreatmentQualityPage() {
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
                 {queriesReady && paramsReady ? (
-                    <IndicatorTableBodyV2
-                      key={"indicator-table2"}
-                      context={selectedTableContext}
-                      unitNames={getSortedList(
-                        colourMap,
-                        selectedTreatmentUnits,
-                        "units",
-                      )}
-                      year={selectedYear}
-                      type={dataQualitySelected ? "dg" : "ind"}
-                      levels={selectedLevel}
-                      medfields={selectedMedicalFields}
-                      chartColours={getSortedList(
-                        colourMap,
-                        selectedTreatmentUnits,
-                        "colours",
-                      )}
-                    />
+                  <IndicatorTableBodyV2
+                    key={"indicator-table2"}
+                    context={selectedTableContext}
+                    unitNames={getSortedList(
+                      colourMap,
+                      selectedTreatmentUnits,
+                      "units",
+                    )}
+                    year={selectedYear}
+                    type={dataQualitySelected ? "dg" : "ind"}
+                    levels={selectedLevel}
+                    medfields={selectedMedicalFields}
+                    chartColours={getSortedList(
+                      colourMap,
+                      selectedTreatmentUnits,
+                      "colours",
+                    )}
+                  />
                 ) : (
                   <IndicatorTableSkeleton nRows={10} />
                 )}
