@@ -12,8 +12,6 @@ type AppBarProps = PropsWithChildren<{
   openDrawer: () => void;
   title?: string;
   extraBreadcrumbs?: { link: string; text: string }[];
-  useBeta: boolean;
-  setUseBeta: (value: SetStateAction<boolean>) => void;
 }>;
 
 const TreatmentQualityAppBar = ({
@@ -21,8 +19,6 @@ const TreatmentQualityAppBar = ({
   title = "Behandlingskvalitet",
   extraBreadcrumbs,
   children,
-  useBeta,
-  setUseBeta,
 }: AppBarProps) => {
   let breadcrumbs: BreadCrumbPath = [
     { link: "https://www.skde.no", text: "Forside" },
@@ -39,8 +35,6 @@ const TreatmentQualityAppBar = ({
       <StyledAppBar position="sticky" elevation={0}>
         <TreatmentQualityToolbar
           openDrawer={openDrawer}
-          useBeta={useBeta}
-          setUseBeta={setUseBeta}
         />
       </StyledAppBar>
     </>
