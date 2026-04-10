@@ -16,7 +16,6 @@ import {
 import {
   useRegisterNamesQuery,
   defaultYear,
-  IndicatorTableBodyV2,
   skdeTheme,
   useUnitNamesQuery,
 } from "qmongjs";
@@ -35,6 +34,7 @@ import { MedicalFieldPopup } from "../../src/components/DialogBox/MedicalFieldPo
 import { useQueryParam } from "use-query-params";
 import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
+import { IndicatorTableBodyV2 } from "../../src/components/IndicatorTable/IndicatortablebodyV2";
 
 export default function TreatmentQualityPage() {
   const numberOfYearOptions = 5;
@@ -113,8 +113,6 @@ export default function TreatmentQualityPage() {
           />
           <TreatmentQualityAppBar
             openDrawer={() => false}
-            useBeta={useBeta}
-            setUseBeta={setUseBeta}
           >
             Resultater fra nasjonale medisinske kvalitetsregistre. Se{" "}
             <Link

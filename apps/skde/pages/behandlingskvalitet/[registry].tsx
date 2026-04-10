@@ -9,6 +9,7 @@ import {
   ThemeProvider,
   Typography,
   useMediaQuery,
+  Stack,
 } from "@mui/material";
 
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
@@ -24,8 +25,6 @@ import {
   treatmentUnitsKey,
   yearKey,
   FilterSettingsActionType,
-  IndicatorTable,
-  IndicatorTableBodyV2,
   skdeTheme,
   fetchRegisterNames,
   useRegistryRankQuery,
@@ -46,6 +45,7 @@ import {
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
 import checkParamsReady from "../../src/utils/checkParamsReady";
+import { IndicatorTableBodyV2 } from "../../src/components/IndicatorTable/IndicatortablebodyV2";
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
@@ -64,8 +64,6 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const toggleDrawer = (newOpen: boolean) => {
     setDrawerOpen(newOpen);
   };
-
-  const [useBeta, setUseBeta] = useState(false);
 
   const defaultTreatmentUnits = ["Nasjonalt"];
 
@@ -252,8 +250,6 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
         />
         <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
-          useBeta={useBeta}
-          setUseBeta={setUseBeta}
           extraBreadcrumbs={[
             { link: registryName, text: registryInfo[0].short_name },
           ]}
@@ -294,8 +290,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
                 {paramsReady ? (
-                  useBeta ? (
-                    <>
+                    <Stack spacing={4}>
                       <IndicatorTableBodyV2
                         key={`indicator-table2-${selectedTableContext}`}
                         context={selectedTableContext}
@@ -332,60 +327,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                           "colours",
                         )}
                       />
-                    </>
-                  ) : (
-                    <IndicatorTableWrapper className="table-wrapper">
-                      <IndicatorTable
-                        key={`indicator-table-${selectedTableContext}`}
-                        context={selectedTableContext}
-                        dataQuality={false}
-                        tableType="allRegistries"
-                        registerNames={registryInfo}
-                        unitNames={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "units",
-                        )}
-                        treatmentYear={selectedYear}
-                        colspan={selectedTreatmentUnits.length + 1}
-                        medicalFieldFilter={selectedMedicalFields}
-                        showLevelFilter={selectedLevel}
-                        selection_bar_height={0}
-                        legend_height={0}
-                        showTreatmentYear={true}
-                        chartColours={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "colours",
-                        )}
-                      />
-                      <IndicatorTable
-                        key={`dataquality-table-${selectedTableContext}`}
-                        context={selectedTableContext}
-                        dataQuality={true}
-                        tableType="allRegistries"
-                        registerNames={registryInfo}
-                        unitNames={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "units",
-                        )}
-                        treatmentYear={selectedYear}
-                        colspan={selectedTreatmentUnits.length + 1}
-                        medicalFieldFilter={selectedMedicalFields}
-                        showLevelFilter={selectedLevel}
-                        selection_bar_height={0}
-                        legend_height={0}
-                        descriptionHeader="Datakvalitet"
-                        showTreatmentYear={true}
-                        chartColours={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "colours",
-                        )}
-                      />
-                    </IndicatorTableWrapper>
-                  )
+                    </Stack>
                 ) : (
                   <></>
                 )}
