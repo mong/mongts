@@ -1,5 +1,5 @@
 import { countLevels, setMissingToZero, IndicatorLevels } from "..";
-import { levelData } from "../../../../test/test_data/data";
+import { levelData } from "./data";
 import { vi, test, expect } from "vitest";
 
 type LinechartData = {
