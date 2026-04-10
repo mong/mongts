@@ -1,17 +1,9 @@
-import {
-  Button,
-  Toolbar,
-  Tooltip,
-  styled,
-  Switch,
-  FormControlLabel,
-} from "@mui/material";
+import { Button, Toolbar, Tooltip, styled } from "@mui/material";
 import KeyboardArrowUpRoundedIcon from "@mui/icons-material/KeyboardArrowUpRounded";
 import TuneRoundedIcon from "@mui/icons-material/TuneRounded";
 import { useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
-import { SetStateAction } from "react";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,

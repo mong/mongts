@@ -1,4 +1,4 @@
-import { createTheme, styled, Table, TableCell, TableRow } from "@mui/material";
+import { styled, Table, TableCell, TableRow } from "@mui/material";
 import { skdeTheme } from "qmongjs/src/themes/SkdeTheme";
 
 declare module "@mui/material/styles" {
