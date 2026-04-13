@@ -35,6 +35,8 @@ import { useQueryParam } from "use-query-params";
 import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { IndicatorTableBodyV2 } from "../../src/components/IndicatorTable/IndicatortablebodyV2";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import DoneIcon from "@mui/icons-material/Done";
 
 export default function TreatmentQualityPage() {
   const numberOfYearOptions = 5;
@@ -65,10 +67,14 @@ export default function TreatmentQualityPage() {
     useState<boolean>(false);
 
   const [medicalFieldPopupOpen, setMedicalFieldPopupOpen] = useState(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [treatmentUnitPopupOpen, setTreatmentUnitPopupOpen] = useState(false);
 
   const [colourMap, setColourMap] = useState<ColourMap[]>([]);
+
+  // State for the copy url button.
+  // When the button is pressed it should change for a duration of time to show the user that the action is done.
+  const [urlCopied, setUrlCopied] = useState<boolean>(false);
+  const urlCopiedTimeout = 3000;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
@@ -161,6 +167,19 @@ export default function TreatmentQualityPage() {
                 ]}
               </Select>
             </FormControl>
+            <Button
+              variant="outlined"
+              startIcon={urlCopied ? <DoneIcon /> : <ContentCopyIcon />}
+              onClick={() => {
+                navigator.clipboard.writeText(window.location.href);
+                setUrlCopied(true);
+                setTimeout(() => {
+                  setUrlCopied(false);
+                }, urlCopiedTimeout);
+              }}
+            >
+              {urlCopied ? "URL kopiert" : "Kopier URL"}
+            </Button>
           </Stack>
           <Box
             sx={{
