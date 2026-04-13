@@ -455,6 +455,7 @@ const IndicatorSection = (props: {
     const returnVal = showRow ? (
       <IndicatorRow
         key={"IndicatorRow" + indDataRow.indicatorID}
+        data-testid={"indicatorrow" + indDataRow.indicatorID}
         unitNames={unitNames}
         medfield={medfield}
         levels={levels}

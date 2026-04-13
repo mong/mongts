@@ -253,6 +253,7 @@ export default function TreatmentQualityPage() {
           title="Behandlingskvalitet"
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
           href="/favicon.ico"
+          data-testid="tu_header_Nasjonalt"
         />
         <TreatmentQualityAppBar openDrawer={() => toggleDrawer(true)}>
           Resultater fra nasjonale medisinske kvalitetsregistre. Se{" "}
