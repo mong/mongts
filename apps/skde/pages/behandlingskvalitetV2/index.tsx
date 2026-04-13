@@ -44,7 +44,9 @@ export default function TreatmentQualityPage() {
   const defaultTreatmentUnits = ["Nasjonalt"];
 
   // Used by indicator table
-  const [selectedYear, setSelectedYear] = useState(defaultYear);
+  const [selectedYear = defaultYear, setSelectedYear] = useQueryParam<
+    number | undefined
+  >("year", mainQueryParamsConfig.year);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedTableContext, setSelectedTableContext] =
