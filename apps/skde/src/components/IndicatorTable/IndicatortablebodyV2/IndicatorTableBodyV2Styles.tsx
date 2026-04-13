@@ -19,7 +19,6 @@ declare module "@mui/material/styles" {
 export const StyledTable = styled(Table)(() => ({
   margin: 0,
   tableLayout: "fixed",
-  width: "95%",
   wordBreak: "break-word",
 }));
 
