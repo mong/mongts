@@ -259,7 +259,11 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
         </TreatmentQualityAppBar>
         <Grid container size={{ xs: 12 }}>
           {isXxlScreen ? ( // Permanent menu on large screens
-            <Grid size={{ xxl: 4, xxml: 3, xxxl: 2 }} className="menu-wrapper">
+            <Grid
+              size={{ xxl: 4, xxml: 3, xxxl: 2 }}
+              className="menu-wrapper"
+              data-testid={"tu_header_" + selectedTreatmentUnits}
+            >
               <Box
                 sx={{
                   mt: 4,

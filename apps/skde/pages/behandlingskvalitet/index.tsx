@@ -292,7 +292,10 @@ export default function TreatmentQualityPage() {
           ) : null}
           <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
             <Grid container spacing={2}>
-              <Grid size={{ xs: 12 }}>
+              <Grid
+                size={{ xs: 12 }}
+                data-testid={"tu_header_" + selectedTreatmentUnits}
+              >
                 {queriesReady && paramsReady ? (
                   <IndicatorTableBodyV2
                     key={"indicator-table2"}
