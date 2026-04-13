@@ -267,6 +267,7 @@ const IndicatorRow = (props: {
         onClick={onClick}
         style={{ cursor: "pointer" }}
         id={rowID}
+        data-testid={"indicatorrow_" + indData.indicatorID}
       >
         <StyledTableCellStart
           key={indData.indicatorID}
@@ -455,7 +456,6 @@ const IndicatorSection = (props: {
     const returnVal = showRow ? (
       <IndicatorRow
         key={"IndicatorRow" + indDataRow.indicatorID}
-        data-testid={"indicatorrow" + indDataRow.indicatorID}
         unitNames={unitNames}
         medfield={medfield}
         levels={levels}

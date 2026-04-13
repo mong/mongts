@@ -253,7 +253,6 @@ export default function TreatmentQualityPage() {
           title="Behandlingskvalitet"
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
           href="/favicon.ico"
-          data-testid="tu_header_Nasjonalt"
         />
         <TreatmentQualityAppBar openDrawer={() => toggleDrawer(true)}>
           Resultater fra nasjonale medisinske kvalitetsregistre. Se{" "}
@@ -293,7 +292,10 @@ export default function TreatmentQualityPage() {
           ) : null}
           <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
             <Grid container spacing={2}>
-              <Grid size={{ xs: 12 }}>
+              <Grid
+                size={{ xs: 12 }}
+                data-testid={"tu_header_" + selectedTreatmentUnits}
+              >
                 {queriesReady && paramsReady ? (
                   <IndicatorTableBodyV2
                     key={"indicator-table2"}
