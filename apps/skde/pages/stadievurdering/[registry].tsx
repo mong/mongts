@@ -11,7 +11,6 @@ import { RegistryEvaluation, RegistryRank, RegisterName } from "types";
 import { FaCircle } from "react-icons/fa";
 import { styled, Box, Tabs, Tab, Stack, Typography } from "@mui/material";
 import { Markdown } from "../../src/components/Markdown";
-import { font } from "../../src/components/Charts/LinechartBase";
 import { LineChartPro } from "@mui/x-charts-pro";
 
 const levelAColour = "#58A55C";
@@ -113,19 +112,15 @@ export default function Stadiumfigur({ registry }) {
       } as { x: number; y: number; colour: string };
     });
 
-  const font = {
+  const StyledTypography = styled(Typography)(() => ({
     fontSize: 26,
     fontWeight: 500,
     fontFamily: "Arial",
-  } as font;
-
-  const StyledTypography = styled(Typography)(() => ({
-    ...font,
   }));
 
   const PlotComponent = () => {
     return (
-      <div>
+      <Stack direction="column">
         <Stack
           direction="row"
           spacing={2}
@@ -174,7 +169,7 @@ export default function Stadiumfigur({ registry }) {
             },
           ]}
         />
-      </div>
+      </Stack>
     );
   };
 
