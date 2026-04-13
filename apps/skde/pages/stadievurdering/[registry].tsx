@@ -120,7 +120,7 @@ export default function Stadiumfigur({ registry }) {
 
   const PlotComponent = () => {
     return (
-      <Stack direction="column">
+      <Stack direction="column" alignItems="center">
         <Stack
           direction="row"
           spacing={2}
