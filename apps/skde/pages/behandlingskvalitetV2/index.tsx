@@ -60,9 +60,10 @@ export default function TreatmentQualityPage() {
   >("registries", mainQueryParamsConfig.registries);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState(
-    defaultTreatmentUnits,
-  );
+  const [
+    selectedTreatmentUnits = defaultTreatmentUnits,
+    setSelectedTreatmentUnits,
+  ] = useQueryParam<string[] | undefined>("units", mainQueryParamsConfig.units);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [dataQualitySelected, setDataQualitySelected] =
