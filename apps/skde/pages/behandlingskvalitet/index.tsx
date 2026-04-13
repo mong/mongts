@@ -25,21 +25,15 @@ import {
   useMedicalFieldsQuery,
   dataQualityKey,
   FilterSettingsActionType,
-  IndicatorTable,
-  IndicatorTableBodyV2,
   skdeTheme,
   useUnitNamesQuery,
 } from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
-import {
-  FilterDrawer,
-  IndicatorTableWrapper,
-} from "../../src/components/TreatmentQuality";
+import { FilterDrawer } from "../../src/components/TreatmentQuality";
 import { Footer } from "../../src/components/Footer";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import getMedicalFieldFilterRegisters from "../../src/utils/getMedicalFieldFilterRegisters";
-import { IndicatorTableSkeleton } from "qmongjs";
 import { LayoutHead } from "../../src/components/LayoutHead";
 import {
   valueOrDefault,
@@ -51,6 +45,8 @@ import {
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
 import checkParamsReady from "../../src/utils/checkParamsReady";
+import { IndicatorTableBodyV2 } from "../../src/components/IndicatorTable/IndicatortablebodyV2";
+import { IndicatorTableSkeleton } from "../../src/components/IndicatorTable/IndicatorTableSkeleton";
 
 export default function TreatmentQualityPage() {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
@@ -59,8 +55,6 @@ export default function TreatmentQualityPage() {
   const toggleDrawer = (newOpen: boolean) => {
     setDrawerOpen(newOpen);
   };
-
-  const [useBeta, setUseBeta] = useState(false);
 
   const defaultTreatmentUnits = ["Nasjonalt"];
 
@@ -112,7 +106,6 @@ export default function TreatmentQualityPage() {
 
   const registers = registryNameQuery?.data;
   const medicalFields = medicalFieldsQuery?.data;
-  const nestedUnitNames = unitNamesQuery?.data?.nestedUnitNames;
 
   /**
    * Handle that the initial filter settings are loaded, which can happen
@@ -261,11 +254,7 @@ export default function TreatmentQualityPage() {
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
           href="/favicon.ico"
         />
-        <TreatmentQualityAppBar
-          openDrawer={() => toggleDrawer(true)}
-          useBeta={useBeta}
-          setUseBeta={setUseBeta}
-        >
+        <TreatmentQualityAppBar openDrawer={() => toggleDrawer(true)}>
           Resultater fra nasjonale medisinske kvalitetsregistre. Se{" "}
           <Link
             href="https://www.kvalitetsregistre.no/"
@@ -305,58 +294,24 @@ export default function TreatmentQualityPage() {
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
                 {queriesReady && paramsReady ? (
-                  useBeta ? (
-                    <IndicatorTableBodyV2
-                      key={"indicator-table2"}
-                      context={selectedTableContext}
-                      unitNames={getSortedList(
-                        colourMap,
-                        selectedTreatmentUnits,
-                        "units",
-                      )}
-                      year={selectedYear}
-                      type={dataQualitySelected ? "dg" : "ind"}
-                      levels={selectedLevel}
-                      medfields={selectedMedicalFields}
-                      chartColours={getSortedList(
-                        colourMap,
-                        selectedTreatmentUnits,
-                        "colours",
-                      )}
-                    />
-                  ) : (
-                    <IndicatorTableWrapper className="table-wrapper">
-                      <IndicatorTable
-                        key={"indicator-table"}
-                        context={selectedTableContext}
-                        dataQuality={dataQualitySelected}
-                        tableType="allRegistries"
-                        registerNames={registers}
-                        unitNames={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "units",
-                        )}
-                        treatmentYear={selectedYear}
-                        colspan={selectedTreatmentUnits.length + 1}
-                        medicalFieldFilter={selectedMedicalFields}
-                        showLevelFilter={selectedLevel}
-                        selection_bar_height={0}
-                        legend_height={0}
-                        blockTitle={registers.map(
-                          (register: { full_name: string }) =>
-                            register.full_name,
-                        )}
-                        showTreatmentYear={true}
-                        nestedUnitNames={nestedUnitNames}
-                        chartColours={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "colours",
-                        )}
-                      />
-                    </IndicatorTableWrapper>
-                  )
+                  <IndicatorTableBodyV2
+                    key={"indicator-table2"}
+                    context={selectedTableContext}
+                    unitNames={getSortedList(
+                      colourMap,
+                      selectedTreatmentUnits,
+                      "units",
+                    )}
+                    year={selectedYear}
+                    type={dataQualitySelected ? "dg" : "ind"}
+                    levels={selectedLevel}
+                    medfields={selectedMedicalFields}
+                    chartColours={getSortedList(
+                      colourMap,
+                      selectedTreatmentUnits,
+                      "colours",
+                    )}
+                  />
                 ) : (
                   <IndicatorTableSkeleton nRows={10} />
                 )}

@@ -9,6 +9,7 @@ import {
   ThemeProvider,
   Typography,
   useMediaQuery,
+  Stack,
 } from "@mui/material";
 
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
@@ -24,17 +25,12 @@ import {
   treatmentUnitsKey,
   yearKey,
   FilterSettingsActionType,
-  IndicatorTable,
-  IndicatorTableBodyV2,
   skdeTheme,
   fetchRegisterNames,
   useRegistryRankQuery,
 } from "qmongjs";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
-import {
-  FilterDrawer,
-  IndicatorTableWrapper,
-} from "../../src/components/TreatmentQuality";
+import { FilterDrawer } from "../../src/components/TreatmentQuality";
 import { Footer } from "../../src/components/Footer";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { RegisterName, RegistryRank } from "types";
@@ -46,6 +42,7 @@ import {
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
 import checkParamsReady from "../../src/utils/checkParamsReady";
+import { IndicatorTableBodyV2 } from "../../src/components/IndicatorTable/IndicatortablebodyV2";
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
@@ -64,8 +61,6 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const toggleDrawer = (newOpen: boolean) => {
     setDrawerOpen(newOpen);
   };
-
-  const [useBeta, setUseBeta] = useState(false);
 
   const defaultTreatmentUnits = ["Nasjonalt"];
 
@@ -88,6 +83,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
   );
 
   let registryRank = "NA";
+  // eslint-disable-next-line no-undef
   if (!process.env.NEXT_PUBLIC_VERIFY) {
     // Fetch the registry's stage and level
     const registryRankQuery = useRegistryRankQuery(defaultReviewYear);
@@ -221,23 +217,26 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const subtitle = (
     <>
       Resultater fra {registryInfo[0].full_name}.{" "}
-      {!process.env.NEXT_PUBLIC_VERIFY && (
-        <>
-          Se{" "}
-          <Link href={registryInfo[0].url} target="_blank" rel="noopener">
-            kvalitetsregistre.no
-          </Link>{" "}
-          for mer informasjon.{" "}
-          <Link
-            href="https://www.kvalitetsregistre.no/registerdrift/stadieinndeling"
-            target="_blank"
-            rel="noopener"
-          >
-            Stadium og nivå
-          </Link>{" "}
-          for {defaultReviewYear}: <b>{registryRank}</b>
-        </>
-      )}
+      {
+        // eslint-disable-next-line no-undef
+        !process.env.NEXT_PUBLIC_VERIFY && (
+          <>
+            Se{" "}
+            <Link href={registryInfo[0].url} target="_blank" rel="noopener">
+              kvalitetsregistre.no
+            </Link>{" "}
+            for mer informasjon.{" "}
+            <Link
+              href="https://www.kvalitetsregistre.no/registerdrift/stadieinndeling"
+              target="_blank"
+              rel="noopener"
+            >
+              Stadium og nivå
+            </Link>{" "}
+            for {defaultReviewYear}: <b>{registryRank}</b>
+          </>
+        )
+      }
     </>
   );
 
@@ -252,8 +251,6 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
         />
         <TreatmentQualityAppBar
           openDrawer={() => toggleDrawer(true)}
-          useBeta={useBeta}
-          setUseBeta={setUseBeta}
           extraBreadcrumbs={[
             { link: registryName, text: registryInfo[0].short_name },
           ]}
@@ -294,98 +291,44 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
             <Grid container spacing={2}>
               <Grid size={{ xs: 12 }}>
                 {paramsReady ? (
-                  useBeta ? (
-                    <>
-                      <IndicatorTableBodyV2
-                        key={`indicator-table2-${selectedTableContext}`}
-                        context={selectedTableContext}
-                        unitNames={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "units",
-                        )}
-                        year={selectedYear}
-                        type="ind"
-                        levels={selectedLevel}
-                        medfields={selectedMedicalFields}
-                        chartColours={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "colours",
-                        )}
-                      />
-                      <IndicatorTableBodyV2
-                        key={`dataquality-table2-${selectedTableContext}`}
-                        context={selectedTableContext}
-                        unitNames={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "units",
-                        )}
-                        year={selectedYear}
-                        type="dg"
-                        levels={selectedLevel}
-                        medfields={selectedMedicalFields}
-                        chartColours={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "colours",
-                        )}
-                      />
-                    </>
-                  ) : (
-                    <IndicatorTableWrapper className="table-wrapper">
-                      <IndicatorTable
-                        key={`indicator-table-${selectedTableContext}`}
-                        context={selectedTableContext}
-                        dataQuality={false}
-                        tableType="allRegistries"
-                        registerNames={registryInfo}
-                        unitNames={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "units",
-                        )}
-                        treatmentYear={selectedYear}
-                        colspan={selectedTreatmentUnits.length + 1}
-                        medicalFieldFilter={selectedMedicalFields}
-                        showLevelFilter={selectedLevel}
-                        selection_bar_height={0}
-                        legend_height={0}
-                        showTreatmentYear={true}
-                        chartColours={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "colours",
-                        )}
-                      />
-                      <IndicatorTable
-                        key={`dataquality-table-${selectedTableContext}`}
-                        context={selectedTableContext}
-                        dataQuality={true}
-                        tableType="allRegistries"
-                        registerNames={registryInfo}
-                        unitNames={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "units",
-                        )}
-                        treatmentYear={selectedYear}
-                        colspan={selectedTreatmentUnits.length + 1}
-                        medicalFieldFilter={selectedMedicalFields}
-                        showLevelFilter={selectedLevel}
-                        selection_bar_height={0}
-                        legend_height={0}
-                        descriptionHeader="Datakvalitet"
-                        showTreatmentYear={true}
-                        chartColours={getSortedList(
-                          colourMap,
-                          selectedTreatmentUnits,
-                          "colours",
-                        )}
-                      />
-                    </IndicatorTableWrapper>
-                  )
+                  <Stack spacing={4}>
+                    <IndicatorTableBodyV2
+                      key={`indicator-table2-${selectedTableContext}`}
+                      context={selectedTableContext}
+                      unitNames={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "units",
+                      )}
+                      year={selectedYear}
+                      type="ind"
+                      levels={selectedLevel}
+                      medfields={selectedMedicalFields}
+                      chartColours={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "colours",
+                      )}
+                    />
+                    <IndicatorTableBodyV2
+                      key={`dataquality-table2-${selectedTableContext}`}
+                      context={selectedTableContext}
+                      unitNames={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "units",
+                      )}
+                      year={selectedYear}
+                      type="dg"
+                      levels={selectedLevel}
+                      medfields={selectedMedicalFields}
+                      chartColours={getSortedList(
+                        colourMap,
+                        selectedTreatmentUnits,
+                        "colours",
+                      )}
+                    />
+                  </Stack>
                 ) : (
                   <></>
                 )}

@@ -53,20 +53,11 @@ export {
   encodeRegisterQueryParam,
   decodeRegisterQueryParam,
 } from "./components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
-export { LinechartBase, LineStyles } from "./components/Charts/LinechartBase";
-export type {
-  LinechartData,
-  font,
-  lineStyle,
-  LinechartBaseProps,
-} from "./components/Charts/LinechartBase";
 export {
   customFormat,
   imgLoader,
   validateTreatmentUnits,
 } from "./helpers/functions";
-export { IndicatorTableBodyV2 } from "./components/IndicatorTable/IndicatortablebodyV2";
-export { IndicatorTable } from "./components/IndicatorTable";
 export {
   defaultYear,
   defaultReviewYear,
@@ -75,8 +66,6 @@ export {
   minDG,
 } from "./app_config";
 export { skdeTheme, breakpoints } from "./themes/SkdeTheme";
-export { indicatorTableTheme } from "./components/IndicatorTable/IndicatortablebodyV2/IndicatorTableBodyV2Styles";
-export { LinechartGrid } from "./components/Charts/LinechartGrid";
 export { LowLevelIndicatorList } from "./components/LowLevelIndicatorList";
 export { ArrowLink } from "./components/ArrowLink";
 export { Hoverbox } from "./components/Hoverbox";
@@ -87,5 +76,4 @@ export {
   getUnitFullName,
   getUnitShortestName,
 } from "./helpers/functions/getUnitName";
-export { IndicatorTableSkeleton } from "./components/IndicatorTable/IndicatorTableSkeleton";
 export { RequirementList } from "./components/RequirementList";
