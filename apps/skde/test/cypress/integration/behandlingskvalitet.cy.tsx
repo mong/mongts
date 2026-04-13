@@ -6,7 +6,9 @@ context("Testing of behandlingskvalitet page", () => {
   });
   it("Main page", () => {
     cy.viewport(1550, 1750);
-    cy.get('[data-testid="tu_header_Nasjonalt"]').should("exist"); // main page
+    cy.get('[data-testid="tu_header_Nasjonalt"]', {
+      timeout: 4000,
+    }).should("exist"); // main page
     cy.get('[data-testid="indicatorrow_hjerneslag_beh_enhet"]').should("exist"); // indicator row
     cy.get(
       '[data-testid="permanentFilterMenu-context-toggle-caregiver"]',

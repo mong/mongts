@@ -267,6 +267,7 @@ const IndicatorRow = (props: {
         onClick={onClick}
         style={{ cursor: "pointer" }}
         id={rowID}
+        data-testid={"indicatorrow_" + indData.indicatorID}
       >
         <StyledTableCellStart
           key={indData.indicatorID}
