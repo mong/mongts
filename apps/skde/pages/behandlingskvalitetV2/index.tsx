@@ -220,7 +220,6 @@ export default function TreatmentQualityPage() {
               <Stack
                 height="484px"
                 spacing={6}
-                margin={4}
                 justifyContent="center"
                 alignItems="center"
                 sx={{
