@@ -11,14 +11,8 @@ import { RegistryEvaluation, RegistryRank, RegisterName } from "types";
 import { FaCircle } from "react-icons/fa";
 import { styled, Box, Tabs, Tab, Stack, Typography } from "@mui/material";
 import { Markdown } from "../../src/components/Markdown";
-import {
-  LinechartBase,
-  LinechartData,
-  font,
-  LineStyles,
-  lineStyle,
-  LinechartBaseProps,
-} from "../../src/components/Charts/LinechartBase";
+import { font } from "../../src/components/Charts/LinechartBase";
+import { LineChartPro } from "@mui/x-charts-pro";
 
 const levelAColour = "#58A55C";
 const levelBColour = "#FD9C00";
@@ -79,7 +73,7 @@ export default function Stadiumfigur({ registry }) {
 
   const rankData = rankQuery.data.filter(
     (row: RegistryRank) => row.name === registry,
-  );
+  ) as RegistryRank[];
 
   const evaluationData = evaluationQuery.data.find(
     (row: RegistryEvaluation) => row.name === registry,
@@ -113,43 +107,17 @@ export default function Stadiumfigur({ registry }) {
     })
     .map((row: XyData) => {
       return {
-        x: new Date(row.x, 0),
+        x: new Date(row.x, 0).getFullYear(),
         y: Number(row.y.substring(0, 1)),
         colour: levelToColour(row.y.substring(1, 2)),
-      } as LinechartData;
+      } as { x: number; y: number; colour: string };
     });
-
-  const style = {
-    text: "test",
-    strokeDash: "0",
-    colour: "#000000",
-  } as lineStyle;
 
   const font = {
     fontSize: 26,
     fontWeight: 500,
     fontFamily: "Arial",
   } as font;
-
-  const lineStyles = new LineStyles([style], font);
-
-  const yAxisText = { text: "Stadium", font: font };
-
-  const linechartProps = {
-    data: [plotData],
-    lineStyles: lineStyles,
-    width: 1000,
-    height: 700,
-    yAxisText: yAxisText,
-    yMin: 1,
-    yMax: 4,
-    numYTicks: 4,
-    circleRadius: 7,
-    individualPointColour: true,
-    nGridLines: 3,
-    xTicksFont: font,
-    yTicksFont: font,
-  } as LinechartBaseProps;
 
   const StyledTypography = styled(Typography)(() => ({
     ...font,
@@ -173,7 +141,39 @@ export default function Stadiumfigur({ registry }) {
           <FaCircle style={{ color: noLevelColour, fontSize: "1.2rem" }} />
           <StyledTypography>Ingen nivå</StyledTypography>
         </Stack>
-        <LinechartBase {...linechartProps} />
+        <LineChartPro
+          dataset={plotData}
+          series={[
+            {
+              curve: "linear",
+              dataKey: "y",
+              colorGetter: (data) => {
+                return plotData[data.dataIndex].colour;
+              },
+            },
+          ]}
+          xAxis={[
+            {
+              scaleType: "point",
+              dataKey: "x",
+              tickLabelStyle: { fontSize: 16 },
+              label: "År",
+              labelStyle: { fontSize: 20 },
+              valueFormatter: (value) => value.toString(),
+              height: 60,
+            },
+          ]}
+          width={1000}
+          height={700}
+          yAxis={[
+            {
+              min: 1,
+              max: 4,
+              tickMinStep: 1,
+              tickLabelStyle: { fontSize: 16 },
+            },
+          ]}
+        />
       </div>
     );
   };
