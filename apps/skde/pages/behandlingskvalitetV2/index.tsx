@@ -218,9 +218,9 @@ export default function TreatmentQualityPage() {
               />
             ) : (
               <Stack
-                width="80%"
                 height="484px"
                 spacing={6}
+                margin={4}
                 justifyContent="center"
                 alignItems="center"
                 sx={{
