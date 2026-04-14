@@ -2,7 +2,6 @@ import { UseQueryResult } from "@tanstack/react-query";
 import _ from "lodash";
 import { useIndicatorQuery, level, minDG } from "qmongjs";
 import { Indicator } from "types";
-import { LinechartData, font, LineStyles } from "../LinechartBase";
 import { LineChartPro } from "@mui/x-charts-pro";
 
 export type IndicatorLinechartParams = {
@@ -13,11 +12,7 @@ export type IndicatorLinechartParams = {
   type: "ind" | "dg";
   width: number;
   height: number;
-  lineStyles: LineStyles;
-  font: font;
   yAxisText: string;
-  xTicksFont?: font;
-  yTicksFont?: font;
   normalise: boolean;
   yMin?: number;
   yMax?: number;
@@ -117,20 +112,20 @@ export const setMissingToZero = (
   }
 
   // Reassemble into array
-  const chartData: LinechartData[][] = [0, 1, 2].map((i) => {
+  const chartData: { x: number; y: number }[][] = [0, 1, 2].map((i) => {
     return dataAllLevels[i].map((row) => {
-      return { x: row.year, y: row.number } as LinechartData;
+      return { x: row.year, y: row.number } as { x: number; y: number };
     });
   });
 
   return chartData;
 };
 
-const normaliseChartData = (data: LinechartData[][]) => {
+const normaliseChartData = (data: { x: number; y: number }[][]) => {
   // Count instances per year
-  const sum0 = data[0].map((point: LinechartData) => point.y);
-  const sum1 = data[1].map((point: LinechartData) => point.y);
-  const sum2 = data[2].map((point: LinechartData) => point.y);
+  const sum0 = data[0].map((point) => point.y);
+  const sum1 = data[1].map((point) => point.y);
+  const sum2 = data[2].map((point) => point.y);
 
   for (let i = 0; i < data[0].length; i++) {
     // Sum of the number of indicators or year at index i
@@ -260,7 +255,7 @@ export const IndicatorLinechart = (
           tickLabelStyle: { fontSize: 16 },
           valueFormatter: (value: number) => {
             const returnValue = normalise
-              ? (100 * value).toString() + " %"
+              ? Math.round(100 * value).toString() + " %"
               : value.toString();
             return returnValue;
           },

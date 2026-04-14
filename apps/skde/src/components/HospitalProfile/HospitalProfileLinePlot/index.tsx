@@ -3,7 +3,6 @@ import {
   IndicatorLinechart,
   IndicatorLinechartParams,
 } from "../../Charts/IndicatorLinechart";
-import { LineStyles } from "../../Charts/LinechartBase";
 import { ThemeProvider, Box, Typography, Stack, Button } from "@mui/material";
 import { ChipSelection } from "../../ChipSelection";
 import {
@@ -48,40 +47,7 @@ export const HospitalProfileLinePlot = (
     type: "ind",
     width: 600,
     height: 600,
-    lineStyles: new LineStyles(
-      [
-        {
-          text: "Høy måloppnåelse",
-          strokeDash: "0",
-          colour: "#3BAA34",
-          marker: "circle",
-          markEnd: true,
-        },
-        {
-          text: "Moderat måloppnåelse",
-          strokeDash: "0",
-          colour: "#FD9C00",
-          marker: "square",
-          markEnd: true,
-        },
-        {
-          text: "Lav måloppnåelse",
-          strokeDash: "0",
-          colour: "#E30713",
-          marker: "triangle",
-          markEnd: true,
-        },
-      ],
-      { fontSize: 16, fontFamily: "Arial", fontWeight: 500 },
-    ),
-    font: {
-      fontSize: 18,
-      fontWeight: 500,
-      fontFamily: "Arial",
-    },
     yAxisText: normalise ? "Andel" : "Antall indikatorer",
-    xTicksFont: { fontFamily: "Arial", fontSize: 16, fontWeight: 500 },
-    yTicksFont: { fontFamily: "Arial", fontSize: 14, fontWeight: 500 },
     startYear: lastYear - pastYears,
     endYear: lastYear,
     yMin: 0,
