@@ -4,7 +4,7 @@ import { vi, test, expect } from "vitest";
 
 type LinechartData = {
   id?: number;
-  x: Date;
+  x: number;
   y: number;
 };
 
@@ -31,19 +31,19 @@ test("Levels counts are correct", async () => {
 
   const expectedChartData: LinechartData[][] = [
     [
-      { x: new Date(2018, 0), y: 2 },
-      { x: new Date(2019, 0), y: 0 },
-      { x: new Date(2020, 0), y: 0 },
+      { x: 2018, y: 2 },
+      { x: 2019, y: 0 },
+      { x: 2020, y: 0 },
     ] as LinechartData[],
     [
-      { x: new Date(2018, 0), y: 1 },
-      { x: new Date(2019, 0), y: 3 },
-      { x: new Date(2020, 0), y: 0 },
+      { x: 2018, y: 1 },
+      { x: 2019, y: 3 },
+      { x: 2020, y: 0 },
     ] as LinechartData[],
     [
-      { x: new Date(2018, 0), y: 0 },
-      { x: new Date(2019, 0), y: 0 },
-      { x: new Date(2020, 0), y: 3 },
+      { x: 2018, y: 0 },
+      { x: 2019, y: 0 },
+      { x: 2020, y: 3 },
     ] as LinechartData[],
   ];
 
