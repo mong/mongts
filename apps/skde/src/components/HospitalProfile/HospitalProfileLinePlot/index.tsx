@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   IndicatorLinechart,
   IndicatorLinechartParams,
 } from "../../Charts/IndicatorLinechart";
-import { LineStyles } from "../../Charts/LinechartBase";
 import { ThemeProvider, Box, Typography, Stack, Button } from "@mui/material";
 import { ChipSelection } from "../../ChipSelection";
 import {
@@ -42,57 +41,13 @@ export const HospitalProfileLinePlot = (
   const [normalise, setNormalise] = useState<boolean>(true);
   const [zoomIn, setZoomIn] = useState<boolean>(false);
 
-  // Set the line plot width to fill the available space
-  const [plotWidth, setPlotWidth] = useState(null);
-
-  useEffect(() => {
-    const resizeObserver = new ResizeObserver((event) => {
-      setPlotWidth(event[0].contentBoxSize[0].inlineSize);
-    });
-
-    resizeObserver.observe(document.getElementById("plot-window"));
-  });
-
   const indicatorParams: IndicatorLinechartParams = {
     unitNames: [unitNames],
     context: "caregiver",
     type: "ind",
-    width: plotWidth,
+    width: 600,
     height: 600,
-    lineStyles: new LineStyles(
-      [
-        {
-          text: "Høy måloppnåelse",
-          strokeDash: "0",
-          colour: "#3BAA34",
-          marker: "circle",
-          markEnd: true,
-        },
-        {
-          text: "Moderat måloppnåelse",
-          strokeDash: "0",
-          colour: "#FD9C00",
-          marker: "square",
-          markEnd: true,
-        },
-        {
-          text: "Lav måloppnåelse",
-          strokeDash: "0",
-          colour: "#E30713",
-          marker: "triangle",
-          markEnd: true,
-        },
-      ],
-      { fontSize: 16, fontFamily: "Arial", fontWeight: 500 },
-    ),
-    font: {
-      fontSize: 18,
-      fontWeight: 500,
-      fontFamily: "Arial",
-    },
     yAxisText: normalise ? "Andel" : "Antall indikatorer",
-    xTicksFont: { fontFamily: "Arial", fontSize: 16, fontWeight: 500 },
-    yTicksFont: { fontFamily: "Arial", fontSize: 14, fontWeight: 500 },
     startYear: lastYear - pastYears,
     endYear: lastYear,
     yMin: 0,
@@ -158,17 +113,19 @@ export const HospitalProfileLinePlot = (
 
       <ThemeProvider theme={lineChartTheme}>
         <div id="plot-window">
-          <IndicatorLinechart {...indicatorParams} />
-          <img
-            src="/img/logos/logo-skde-graa.svg"
-            height={plotWidth / 30}
-            style={{
-              position: "relative",
-              left: "85%",
-              width: "auto",
-              bottom: 50,
-            }}
-          />
+          <Box margin={2}>
+            <IndicatorLinechart {...indicatorParams} />
+            <img
+              src="/img/logos/logo-skde.svg"
+              height={50}
+              style={{
+                position: "relative",
+                left: "85%",
+                width: "auto",
+                bottom: 50,
+              }}
+            />
+          </Box>
         </div>
       </ThemeProvider>
     </ItemBox>
