@@ -2,12 +2,7 @@ import { UseQueryResult } from "@tanstack/react-query";
 import _ from "lodash";
 import { useIndicatorQuery, level, minDG } from "qmongjs";
 import { Indicator } from "types";
-import {
-  LinechartBase,
-  LinechartData,
-  font,
-  LineStyles,
-} from "../LinechartBase";
+import { LineChartPro } from "@mui/x-charts-pro";
 
 export type IndicatorLinechartParams = {
   registerShortName?: string;
@@ -17,11 +12,7 @@ export type IndicatorLinechartParams = {
   type: "ind" | "dg";
   width: number;
   height: number;
-  lineStyles: LineStyles;
-  font: font;
   yAxisText: string;
-  xTicksFont?: font;
-  yTicksFont?: font;
   normalise: boolean;
   yMin?: number;
   yMax?: number;
@@ -121,20 +112,20 @@ export const setMissingToZero = (
   }
 
   // Reassemble into array
-  const chartData: LinechartData[][] = [0, 1, 2].map((i) => {
+  const chartData: { x: number; y: number }[][] = [0, 1, 2].map((i) => {
     return dataAllLevels[i].map((row) => {
-      return { x: new Date(row.year, 0), y: row.number } as LinechartData;
+      return { x: row.year, y: row.number } as { x: number; y: number };
     });
   });
 
   return chartData;
 };
 
-const normaliseChartData = (data: LinechartData[][]) => {
+const normaliseChartData = (data: { x: number; y: number }[][]) => {
   // Count instances per year
-  const sum0 = data[0].map((point: LinechartData) => point.y);
-  const sum1 = data[1].map((point: LinechartData) => point.y);
-  const sum2 = data[2].map((point: LinechartData) => point.y);
+  const sum0 = data[0].map((point) => point.y);
+  const sum1 = data[1].map((point) => point.y);
+  const sum2 = data[2].map((point) => point.y);
 
   for (let i = 0; i < data[0].length; i++) {
     // Sum of the number of indicators or year at index i
@@ -149,6 +140,10 @@ const normaliseChartData = (data: LinechartData[][]) => {
 
   return data;
 };
+
+const levelAColour = "#58A55C";
+const levelBColour = "#FD9C00";
+const levelCColour = "#D85140";
 
 export const IndicatorLinechart = (
   indicatorParams: IndicatorLinechartParams,
@@ -212,31 +207,61 @@ export const IndicatorLinechart = (
     chartData = normaliseChartData(chartData);
   }
 
-  // Visx defaults to 10 ticks on the y axis.
-  // If the maximum count is less than 10, specify the number of ticks.
-  let maxYValue: number;
-
-  if (!normalise) {
-    maxYValue = Math.max(...chartData.flat().map((row) => row.y));
-  }
+  const legendValueFormatter = (value: number) => {
+    const returnValue = normalise
+      ? Math.round(100 * value).toString() + " %"
+      : value.toString();
+    return returnValue;
+  };
 
   return (
-    <LinechartBase
-      data={chartData}
+    <LineChartPro
+      series={[
+        {
+          data: chartData[0].map((row) => row.y),
+          curve: "linear",
+          color: levelAColour,
+          valueFormatter: legendValueFormatter,
+        },
+        {
+          data: chartData[1].map((row) => row.y),
+          curve: "linear",
+          color: levelBColour,
+          valueFormatter: legendValueFormatter,
+        },
+        {
+          data: chartData[2].map((row) => row.y),
+          curve: "linear",
+          color: levelCColour,
+          valueFormatter: legendValueFormatter,
+        },
+      ]}
+      xAxis={[
+        {
+          scaleType: "point",
+          data: chartData[1].map((row) => row.x),
+          tickLabelStyle: { fontSize: 16 },
+          label: "År",
+          labelStyle: { fontSize: 20 },
+          valueFormatter: (value: number) => value.toString(),
+          height: 60,
+        },
+      ]}
+      yAxis={[
+        {
+          width: 70,
+          min: indicatorParams.yMin,
+          max: indicatorParams.yMax,
+          tickLabelStyle: { fontSize: 16 },
+          valueFormatter: (value: number) => {
+            const returnValue = normalise
+              ? Math.round(100 * value).toString() + " %"
+              : value.toString();
+            return returnValue;
+          },
+        },
+      ]}
       height={indicatorParams.height}
-      width={indicatorParams.width}
-      lineStyles={indicatorParams.lineStyles}
-      yAxisText={{
-        text: indicatorParams.yAxisText,
-        font: indicatorParams.font,
-      }}
-      xTicksFont={indicatorParams.xTicksFont}
-      yTicksFont={indicatorParams.yTicksFont}
-      yMin={indicatorParams.yMin}
-      yMax={indicatorParams.yMax}
-      format_y={normalise ? ",.0%" : ",.0f"}
-      useTooltip={indicatorParams.useToolTip}
-      numYTicks={maxYValue < 10 ? maxYValue : undefined}
     />
   );
 };
