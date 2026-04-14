@@ -49,7 +49,7 @@ export function parseQuery(req: Request): Query {
       query.filter.ind_id = req.query.ind_id;
     }
     query.filter.register =
-      req.params.register === "all" ? "" : req.params.register;
+      req.params.register === "all" ? "" : (req.params.register as string);
   }
   return query;
 }

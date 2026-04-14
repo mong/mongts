@@ -35,7 +35,7 @@ function parseQuery(req: Request): Query {
   const query: Query = { filter: {} };
 
   if (typeof req.query === "object" && !Array.isArray(req.query)) {
-    query.filter.register = req.params.register;
+    query.filter.register = req.params.register as string;
   }
   if (typeof req.query.context === "string") {
     query.filter.context = req.query.context;
