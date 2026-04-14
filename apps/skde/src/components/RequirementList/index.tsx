@@ -3,7 +3,7 @@ import {
   useRegistryScoresQuery,
   useRegistryRequirementsQuery,
   useRegistryRankQuery,
-} from "../../helpers/hooks";
+} from "qmongjs/src/helpers/hooks";
 import {
   Accordion,
   AccordionDetails,

@@ -1,4 +1,4 @@
-import { decodeRegisterQueryParam } from "qmongjs";
+import { decodeRegisterQueryParam } from "../components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 
 /**
  * Get the register names for the selected medical fields and registers

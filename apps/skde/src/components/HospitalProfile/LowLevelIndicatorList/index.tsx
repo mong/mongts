@@ -5,14 +5,13 @@ import {
   FetchIndicatorParams,
   useIndicatorQuery,
   useMedicalFieldsQuery,
-} from "../../helpers/hooks";
-import { getTrend } from "../../helpers/functions";
+} from "qmongjs/src/helpers/hooks";
+import { getTrend } from "qmongjs/src/helpers/functions";
 import {
   customFormat,
   newLevelSymbols,
   level2,
   skdeTheme,
-  Hoverbox,
   minDG,
 } from "qmongjs";
 import { styled } from "@mui/system";
@@ -34,12 +33,13 @@ import {
   SelectChangeEvent,
   Collapse,
 } from "@mui/material";
-import { ArrowLink } from "../ArrowLink";
+import { ArrowLink } from "../../ArrowLink";
 import ExpandCircleDownOutlinedIcon from "@mui/icons-material/ExpandCircleDownOutlined";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import TrendingDownIcon from "@mui/icons-material/TrendingDown";
 import TrendingFlatIcon from "@mui/icons-material/TrendingFlat";
 import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import { Hoverbox } from "../../Hoverbox";
 
 const ExpandCircleUpOutlined = styled(ExpandCircleDownOutlinedIcon)({
   transform: "rotate(180deg)",

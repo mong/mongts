@@ -1,7 +1,7 @@
 import React from "react";
 import { MedfieldTable, createMedfieldTableData } from "..";
 import { vi, test, expect } from "vitest";
-import * as hooks from "../../../helpers/hooks";
+import * as hooks from "qmongjs/src/helpers/hooks";
 import { render } from "@testing-library/react";
 import { Indicator } from "types";
 
@@ -201,6 +201,8 @@ vi.mock("next/font/google", () => ({
   }),
 }));
 
+vi.mock("qmongjs/src/helpers/hooks");
+
 const data = createMedfieldTableData(medfieldTableData);
 
 test("Levels counts are correct", () => {
@@ -211,6 +213,7 @@ test("Table renders correctly", async () => {
   vi.spyOn(hooks, "useIndicatorQuery").mockReturnValue({
     data: medfieldTableData,
     isLoading: false,
+    // @ts-expect-error No idea what type is expected here
     error: false,
   });
 

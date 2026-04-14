@@ -5,13 +5,13 @@ import {
   defaultReviewYear,
   useRegistryRankQuery,
   useRegistryEvaluationQuery,
-  RequirementList,
 } from "qmongjs";
 import { RegistryEvaluation, RegistryRank, RegisterName } from "types";
 import { FaCircle } from "react-icons/fa";
 import { styled, Box, Tabs, Tab, Stack, Typography } from "@mui/material";
 import { Markdown } from "../../src/components/Markdown";
 import { LineChartPro } from "@mui/x-charts-pro";
+import { RequirementList } from "../../src/components/RequirementList";
 
 const levelAColour = "#58A55C";
 const levelBColour = "#FD9C00";

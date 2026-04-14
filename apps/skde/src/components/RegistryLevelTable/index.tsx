@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { RegistryRank } from "types";
 import _ from "lodash";
-import { ArrowLink } from "qmongjs";
+import { ArrowLink } from "../ArrowLink";
 
 type RegistryLevelTableProps = {
   year: number;

@@ -1,13 +1,11 @@
-import {
-  FilterSettingsValue,
-  defaultYear,
-  levelKey,
-  tableContextKey,
-  treatmentUnitsKey,
-  yearKey,
-  medicalFieldKey,
-  dataQualityKey,
-} from "qmongjs";
+import { defaultYear } from "qmongjs";
+import { FilterSettingsValue } from "../components/FilterMenu/FilterSettingsContext";
+import { levelKey } from "../components/FilterMenu/TreatmentQualityFilterMenu";
+import { tableContextKey } from "../components/FilterMenu/TreatmentQualityFilterMenu";
+import { treatmentUnitsKey } from "../components/FilterMenu/TreatmentQualityFilterMenu";
+import { yearKey } from "../components/FilterMenu/TreatmentQualityFilterMenu";
+import { medicalFieldKey } from "../components/FilterMenu/TreatmentQualityFilterMenu";
+import { dataQualityKey } from "../components/FilterMenu/TreatmentQualityFilterMenu";
 import getMedicalFieldFilterRegisters from "./getMedicalFieldFilterRegisters";
 
 export const defaultTableContext = "caregiver";

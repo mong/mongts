@@ -13,14 +13,9 @@ import {
 import { styled } from "@mui/system";
 import ExpandCircleDownOutlinedIcon from "@mui/icons-material/ExpandCircleDownOutlined";
 import { UseQueryResult } from "@tanstack/react-query";
-import {
-  ArrowLink,
-  useIndicatorQuery,
-  level,
-  newLevelSymbols,
-  minDG,
-} from "qmongjs";
+import { useIndicatorQuery, level, newLevelSymbols, minDG } from "qmongjs";
 import { Indicator } from "types";
+import { ArrowLink } from "../../ArrowLink";
 
 const colWidth1 = "5%";
 const colWidt2 = "20%";

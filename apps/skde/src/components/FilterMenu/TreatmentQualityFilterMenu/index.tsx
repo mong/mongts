@@ -8,19 +8,20 @@ import {
   useQueryParams,
   withDefault,
 } from "use-query-params";
+
 import {
   FilterMenu,
-  ToggleButtonFilterSection,
-  SelectedFiltersSection,
-  TreeViewFilterSection,
-  RadioGroupFilterSection,
-  FilterSettingsValue,
-  FilterSettingsAction,
-  FilterSettingsActionType,
   FilterMenuSelectionChangedHandler,
   FilterMenuFilterInitializedHandler,
-  SwitchFilterSection,
-} from "qmongjs";
+} from "..";
+import { ToggleButtonFilterSection } from "../ToggleButtonFilterSection";
+import { SelectedFiltersSection } from "../SelectedFiltersSection";
+import { RadioGroupFilterSection } from "../RadioGroupFilterSection";
+import { TreeViewFilterSection } from "../TreeViewFilterSection";
+import { FilterSettingsValue } from "../FilterSettingsContext";
+import { FilterSettingsAction } from "../FilterSettingsReducer";
+import { FilterSettingsActionType } from "../FilterSettingsReducer";
+import { SwitchFilterSection } from "../SwitchFilterSection";
 import {
   getAchievementLevelOptions,
   getMedicalFields,
@@ -31,14 +32,14 @@ import {
 import {
   useUnitNamesQuery,
   useSelectionYearsQuery,
-} from "../../../helpers/hooks";
+} from "qmongjs/src/helpers/hooks";
 import { UseQueryResult } from "@tanstack/react-query";
 import {
   TreeViewFilterSectionNode,
   TreeViewFilterSettingsValue,
   getFilterSettingsValuesMap,
 } from "../TreeViewFilterSection";
-import { useShouldReinitialize } from "../../../helpers/hooks/useShouldReinitialize";
+import { useShouldReinitialize } from "qmongjs/src/helpers/hooks/useShouldReinitialize";
 
 // The keys used for the different filter sections
 export const tableContextKey = "context";
