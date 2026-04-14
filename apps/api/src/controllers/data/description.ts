@@ -3,7 +3,7 @@ import { descriptionModel, Filter } from "../../models/data";
 
 export const descriptionController: RequestHandler = async (req, res) => {
   try {
-    const register: string = req.params.register;
+    const register: string = req.params.register as string;
     const query = parseQuery(req);
     const rows = await descriptionModel(register, query.filter);
     res.json(rows);
