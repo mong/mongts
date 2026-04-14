@@ -10,7 +10,7 @@ interface Query {
   filter: Filter;
 }
 
-export const unitNamesContoller: RequestHandler = async (req, res) => {
+export const unitNamesController: RequestHandler = async (req, res) => {
   const query = parseQuery(req);
 
   try {

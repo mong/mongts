@@ -5,7 +5,7 @@ interface Query {
   filter: Filter;
 }
 
-export const selectionYearsContoller: RequestHandler = async (req, res) => {
+export const selectionYearsController: RequestHandler = async (req, res) => {
   const query = parseQuery(req);
 
   try {
