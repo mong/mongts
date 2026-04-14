@@ -5,7 +5,7 @@ interface Query {
   filter: Filter;
 }
 
-export const selectionYearsController: RequestHandler = async (req, res) => {
+export const selectionYearsContoller: RequestHandler = async (req, res) => {
   const query = parseQuery(req);
 
   try {
@@ -22,7 +22,7 @@ function parseQuery(req: Request): Query {
   const query: Query = { filter: {} };
 
   if (typeof req.query === "object" && !Array.isArray(req.query)) {
-    query.filter.register = req.params.register as string;
+    query.filter.register = req.params.register;
   }
   if (typeof req.query.context === "string") {
     query.filter.context = req.query.context;
