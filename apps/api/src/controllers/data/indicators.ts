@@ -1,7 +1,7 @@
 import { RequestHandler, Request } from "express";
 import { indicatorsModel, Filter } from "../../models/data";
 
-export const indicatorsController: RequestHandler = async (req, res) => {
+export const indicatorsContoller: RequestHandler = async (req, res) => {
   const query = parseQuery(req);
 
   try {
@@ -49,7 +49,7 @@ export function parseQuery(req: Request): Query {
       query.filter.ind_id = req.query.ind_id;
     }
     query.filter.register =
-      req.params.register === "all" ? "" : (req.params.register as string);
+      req.params.register === "all" ? "" : req.params.register;
   }
   return query;
 }

@@ -1,9 +1,9 @@
 import express from "express";
 import {
   descriptionController,
-  indicatorsController,
-  unitNamesController,
-  selectionYearsController,
+  indicatorsContoller,
+  unitNamesContoller,
+  selectionYearsContoller,
   dataController,
   registryRankController,
   registryEvaluationController,
@@ -17,12 +17,12 @@ const Router = express.Router();
 Router.get("/:register/descriptions", descriptionController);
 
 //indicator veridier per enhet(en, flere eller ingen), unit level, per år, enheter (alle per år),
-Router.get("/:register/indicators", indicatorsController);
+Router.get("/:register/indicators", indicatorsContoller);
 
 //reg all-all eller per register
-Router.get("/:register/unitNames", unitNamesController);
+Router.get("/:register/unitNames", unitNamesContoller);
 
-Router.get("/:register/years", selectionYearsController);
+Router.get("/:register/years", selectionYearsContoller);
 
 // Nested data output
 Router.get("/:register/nestedData", dataController);
