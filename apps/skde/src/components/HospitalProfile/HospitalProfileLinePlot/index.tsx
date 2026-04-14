@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   IndicatorLinechart,
   IndicatorLinechartParams,
@@ -42,22 +42,11 @@ export const HospitalProfileLinePlot = (
   const [normalise, setNormalise] = useState<boolean>(true);
   const [zoomIn, setZoomIn] = useState<boolean>(false);
 
-  // Set the line plot width to fill the available space
-  const [plotWidth, setPlotWidth] = useState(null);
-
-  useEffect(() => {
-    const resizeObserver = new ResizeObserver((event) => {
-      setPlotWidth(event[0].contentBoxSize[0].inlineSize);
-    });
-
-    resizeObserver.observe(document.getElementById("plot-window"));
-  });
-
   const indicatorParams: IndicatorLinechartParams = {
     unitNames: [unitNames],
     context: "caregiver",
     type: "ind",
-    width: plotWidth,
+    width: 600,
     height: 600,
     lineStyles: new LineStyles(
       [
@@ -158,17 +147,19 @@ export const HospitalProfileLinePlot = (
 
       <ThemeProvider theme={lineChartTheme}>
         <div id="plot-window">
-          <IndicatorLinechart {...indicatorParams} />
-          <img
-            src="/img/logos/logo-skde-graa.svg"
-            height={plotWidth / 30}
-            style={{
-              position: "relative",
-              left: "85%",
-              width: "auto",
-              bottom: 50,
-            }}
-          />
+          <Box margin={2}>
+            <IndicatorLinechart {...indicatorParams} />
+            <img
+              src="/img/logos/logo-skde.svg"
+              height={50}
+              style={{
+                position: "relative",
+                left: "85%",
+                width: "auto",
+                bottom: 50,
+              }}
+            />
+          </Box>
         </div>
       </ThemeProvider>
     </ItemBox>
