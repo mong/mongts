@@ -75,6 +75,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
         xAxis={[
           {
             scaleType: "point",
+            height: 60,
             data: uniqueYears,
             valueFormatter: (value: number) => value.toString(),
             tickLabelStyle: {
