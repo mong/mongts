@@ -53,7 +53,7 @@ export const dataQualityKey = "dg";
  * The properties for the TreatmentQualityFilterMenu component.
  * The onSelectionChanged handler is called when the selection changes.
  */
-export type TreatmentQualityFilterMenuProps = PropsWithChildren<{
+type TreatmentQualityFilterMenuProps = PropsWithChildren<{
   onSelectionChanged?: FilterMenuSelectionChangedHandler;
   onFilterInitialized?: FilterMenuFilterInitializedHandler;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
