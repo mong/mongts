@@ -4,6 +4,7 @@ import compression from "compression";
 import helmet from "helmet";
 import cors from "cors";
 import rateLimit from "express-rate-limit";
+import { parse } from "qs";
 
 //router
 import registerInfoRouter from "./routes/info";
@@ -14,7 +15,7 @@ const PORT = process.env.PORT ?? 4000;
 const app = express();
 
 // Required for migrating from Express 4 to 5
-app.set("query parser", "extended");
+app.set("query parser", (str: string) => parse(str, { arrayLimit: 100 }));
 
 const maxRequests = parseInt(process.env.RATELIMIT ?? "1000");
 
