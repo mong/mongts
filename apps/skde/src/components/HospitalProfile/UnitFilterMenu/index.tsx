@@ -1,14 +1,11 @@
 import { useEffect, useState, useRef } from "react";
-import {
-  skdeTheme,
-  FilterSettingsValue,
-  FilterMenu,
-  TreeViewFilterSection,
-  FilterSettings,
-  CustomAccordionExpandIcon,
-  getTreatmentUnitsTree,
-  useShouldReinitialize,
-} from "qmongjs";
+import { skdeTheme, useShouldReinitialize } from "qmongjs";
+import { FilterSettingsValue } from "../../FilterMenu/FilterSettingsContext";
+import { FilterMenu } from "../../FilterMenu";
+import { TreeViewFilterSection } from "../../FilterMenu/TreeViewFilterSection";
+import { FilterSettings } from "../../FilterMenu/FilterSettingsContext";
+import { CustomAccordionExpandIcon } from "../../FilterMenu/CustomAccordionExpandIcon";
+import { getTreatmentUnitsTree } from "../../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import {
   Box,
   Accordion,

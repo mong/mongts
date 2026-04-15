@@ -15,20 +15,20 @@ import {
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import Grid from "@mui/material/Grid";
 import {
-  FilterSettingsAction,
-  FilterSettingsValue,
-  TreatmentQualityFilterMenu,
   defaultYear,
   defaultReviewYear,
-  levelKey,
-  tableContextKey,
-  treatmentUnitsKey,
-  yearKey,
-  FilterSettingsActionType,
   skdeTheme,
   fetchRegisterNames,
   useRegistryRankQuery,
 } from "qmongjs";
+import { FilterSettingsAction } from "../../src/components/FilterMenu/FilterSettingsReducer";
+import { FilterSettingsValue } from "../../src/components/FilterMenu/FilterSettingsContext";
+import { TreatmentQualityFilterMenu } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
+import { levelKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
+import { tableContextKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
+import { treatmentUnitsKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
+import { yearKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
+import { FilterSettingsActionType } from "../../src/components/FilterMenu/FilterSettingsReducer";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import { FilterDrawer } from "../../src/components/TreatmentQuality";
 import { Footer } from "../../src/components/Footer";

@@ -12,7 +12,7 @@ import {
 import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
 import { FilterSettingsActionType } from "./FilterSettingsReducer";
 import { getSelectedValue } from "./utils";
-import { useElementWidth } from "../../hooks/useElementWidth";
+import { useElementWidth } from "qmongjs/src/hooks/useElementWidth";
 
 const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
   borderRadius: 30,

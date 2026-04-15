@@ -1,5 +1,10 @@
 import { FilterSettingsValue } from "../FilterSettingsContext";
-import { maxYear, minYear, defaultYear, app_text } from "../../../app_config";
+import {
+  maxYear,
+  minYear,
+  defaultYear,
+  app_text,
+} from "qmongjs/src/app_config";
 import { UseQueryResult } from "@tanstack/react-query";
 import { TreeViewFilterSectionNode } from "../TreeViewFilterSection";
 
@@ -140,7 +145,7 @@ const registerQueryParamPrefix = "reg-";
  * @param register Plain register short name
  * @returns Register name formatted for use in query parameters
  */
-export const encodeRegisterQueryParam = (register: string) => {
+const encodeRegisterQueryParam = (register: string) => {
   return `${registerQueryParamPrefix}${register}`;
 };
 

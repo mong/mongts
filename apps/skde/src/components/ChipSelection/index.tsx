@@ -3,7 +3,7 @@
 // If the left chip is selected when the state is true, set trueChip=left, and vice versa.
 
 import { Chip, Stack } from "@mui/material";
-import { Hoverbox } from "qmongjs";
+import { Hoverbox } from "../Hoverbox";
 
 type ChipSelectionProps = {
   leftChipLabel: string;

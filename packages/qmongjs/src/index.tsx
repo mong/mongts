@@ -17,42 +17,6 @@ export {
   newLevelSymbols,
   newestLevelSymbols,
 } from "./helpers/functions";
-export { FilterMenu } from "./components/FilterMenu";
-export type {
-  FilterMenuSelectionChangedHandler,
-  FilterMenuFilterInitializedHandler,
-} from "./components/FilterMenu";
-export { FilterSettingsContext } from "./components/FilterMenu/FilterSettingsContext";
-export type {
-  FilterSettings,
-  FilterSettingsValue,
-} from "./components/FilterMenu/FilterSettingsContext";
-export {
-  FilterSettingsDispatchContext,
-  filterSettingsReducer,
-  FilterSettingsActionType,
-} from "./components/FilterMenu/FilterSettingsReducer";
-export type { FilterSettingsAction } from "./components/FilterMenu/FilterSettingsReducer";
-export { ToggleButtonFilterSection } from "./components/FilterMenu/ToggleButtonFilterSection";
-export { RadioGroupFilterSection } from "./components/FilterMenu/RadioGroupFilterSection";
-export { SelectedFiltersSection } from "./components/FilterMenu/SelectedFiltersSection";
-export { SwitchFilterSection } from "./components/FilterMenu/SwitchFilterSection";
-export { TreeViewFilterSection } from "./components/FilterMenu/TreeViewFilterSection";
-export { getTreatmentUnitsTree } from "./components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
-export {
-  TreatmentQualityFilterMenu,
-  levelKey,
-  treatmentUnitsKey,
-  tableContextKey,
-  yearKey,
-  medicalFieldKey,
-  dataQualityKey,
-} from "./components/FilterMenu/TreatmentQualityFilterMenu";
-export type { TreatmentQualityFilterMenuProps } from "./components/FilterMenu/TreatmentQualityFilterMenu";
-export {
-  encodeRegisterQueryParam,
-  decodeRegisterQueryParam,
-} from "./components/FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 export {
   customFormat,
   imgLoader,
@@ -66,14 +30,8 @@ export {
   minDG,
 } from "./app_config";
 export { skdeTheme, breakpoints } from "./themes/SkdeTheme";
-export { LowLevelIndicatorList } from "./components/LowLevelIndicatorList";
-export { ArrowLink } from "./components/ArrowLink";
-export { Hoverbox } from "./components/Hoverbox";
-export { CustomAccordionExpandIcon } from "./components/FilterMenu/CustomAccordionExpandIcon";
-export { MedfieldTable } from "./components/MedfieldTable";
-export type { MedfieldTableProps } from "./components/MedfieldTable";
+
 export {
   getUnitFullName,
   getUnitShortestName,
 } from "./helpers/functions/getUnitName";
-export { RequirementList } from "./components/RequirementList";
