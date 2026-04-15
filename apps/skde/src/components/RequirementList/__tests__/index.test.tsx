@@ -2,14 +2,14 @@ import React from "react";
 import { render } from "@testing-library/react";
 import { RequirementList } from "..";
 import { vi, test, expect } from "vitest";
-import * as hooks from "../../../helpers/hooks";
+import * as hooks from "qmongjs/src/helpers/hooks";
 import {
   requirementsTestData,
   rankTestData,
   scoresTestData,
-} from "../../../test/test_data/registryRequirements.ts";
+} from "qmongjs/src/test/test_data/registryRequirements.ts";
 
-vi.mock("../../../helpers/hooks");
+vi.mock("qmongjs/src/helpers/hooks");
 
 test("The requirement list renders correctly 3A", async () => {
   vi.spyOn(hooks, "useRegistryRequirementsQuery").mockReturnValue({

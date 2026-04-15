@@ -12,22 +12,23 @@ import {
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import Grid from "@mui/material/Grid";
 import {
-  FilterSettingsAction,
-  FilterSettingsValue,
-  TreatmentQualityFilterMenu,
   useRegisterNamesQuery,
   defaultYear,
-  levelKey,
-  tableContextKey,
-  treatmentUnitsKey,
-  yearKey,
-  medicalFieldKey,
   useMedicalFieldsQuery,
-  dataQualityKey,
-  FilterSettingsActionType,
   skdeTheme,
   useUnitNamesQuery,
 } from "qmongjs";
+import { FilterSettingsAction } from "../../src/components/FilterMenu/FilterSettingsReducer";
+import { FilterSettingsValue } from "../../src/components/FilterMenu/FilterSettingsContext";
+import { TreatmentQualityFilterMenu } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
+import { levelKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
+import { tableContextKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
+import { treatmentUnitsKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
+import { yearKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
+import { medicalFieldKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
+import { dataQualityKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
+import { FilterSettingsActionType } from "../../src/components/FilterMenu/FilterSettingsReducer";
+
 import { UseQueryResult } from "@tanstack/react-query";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import { FilterDrawer } from "../../src/components/TreatmentQuality";

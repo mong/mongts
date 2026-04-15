@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { LowLevelIndicatorList } from "qmongjs";
+import { LowLevelIndicatorList } from "../LowLevelIndicatorList";
 import { ExpandableItemBox } from "../ExpandableItemBox";
 import { ChipSelection } from "../../ChipSelection";
 import { Box, Typography } from "@mui/material";

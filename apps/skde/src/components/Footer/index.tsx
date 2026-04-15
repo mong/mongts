@@ -4,7 +4,7 @@ import Link from "next/link";
 import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import { Stack, Container, Box } from "@mui/material";
-import { ArrowLink } from "qmongjs/src/components/ArrowLink";
+import { ArrowLink } from "../ArrowLink";
 import { Breakpoint } from "@mui/material/styles";
 
 const StyledLink = styled(Link)(() => ({

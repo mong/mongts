@@ -1,5 +1,6 @@
 import { Stack, Typography } from "@mui/material";
-import { newLevelSymbols, Hoverbox } from "qmongjs";
+import { newLevelSymbols } from "qmongjs";
+import { Hoverbox } from "../../Hoverbox";
 
 export const LinePlotLegend = (props: {
   itemSpacing: number;
