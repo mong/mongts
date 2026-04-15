@@ -75,6 +75,10 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
         xAxis={[
           {
             scaleType: "point",
+            // The height must be set so that the axis ticks are not truncated.
+            // If this occurs they will not be visible.
+            // TODO: set automatically according to the axis tick font.
+            height: 60,
             data: uniqueYears,
             valueFormatter: (value: number) => value.toString(),
             tickLabelStyle: {
