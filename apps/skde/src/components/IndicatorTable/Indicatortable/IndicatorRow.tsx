@@ -1,57 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import IconButton from "@mui/material/IconButton";
-import TableBody from "@mui/material/TableBody";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { RegisterData, IndicatorData, OptsTu } from "types";
-import { UseQueryResult } from "@tanstack/react-query";
-import {
-  FetchIndicatorParams,
-  useUnitNamesQuery,
-} from "qmongjs/src/helpers/hooks";
+import { IndicatorData, OptsTu } from "types";
 import { newestLevelSymbols, level2, skdeTheme } from "qmongjs";
 import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import { Skeleton, Collapse, Typography, Stack } from "@mui/material";
+import { Collapse, Typography, Stack } from "@mui/material";
 import {
-  StyledTable,
   StyledTableRow,
   StyledTableCell,
   StyledTableCellStart,
   StyledTableCellMiddle,
   StyledTableCellEnd,
-} from "./IndicatorTableBodyV2Styles";
-import { customFormat, useIndicatorQuery } from "qmongjs";
+} from "./IndicatorTableStyles";
+import { customFormat } from "qmongjs";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { ChartRowV2 } from "../chartrowV2";
+import remarkGfm from "remark-gfm";
+import { StyledComponent } from "@emotion/styled";
+import { TableCellProps } from "@mui/material";
+import { MUIStyledCommonProps } from "@mui/system";
 
-const remarkPlugins = [remarkGfm];
-
-// ###########################
-// ########## Types ##########
-// ###########################
-
-type IndicatorTableBodyV2Props = {
-  context: string;
-  type: string;
-  year: number;
-  unitNames: string[];
-  levels: string;
-  medfields: string[];
-  chartColours: string[];
-};
-
-// ################################
-// ########## Components ##########
-// ################################
-
-// #############################
-// Component for individual rows
-// #############################
-
-const IndicatorRow = (props: {
+type IndicatorRowProps = {
   unitNames: string[];
   medfield: string;
   levels: string;
@@ -65,7 +36,9 @@ const IndicatorRow = (props: {
   year: number;
   chartColours: string[];
   treatmentUnitsByLevel: OptsTu[];
-}) => {
+};
+
+export const IndicatorRow = (props: IndicatorRowProps) => {
   const {
     unitNames,
     levels,
@@ -79,6 +52,8 @@ const IndicatorRow = (props: {
     treatmentUnitsByLevel,
     medfield,
   } = props;
+
+  const remarkPlugins = [remarkGfm];
 
   const router = useRouter();
   const pathname = usePathname();
@@ -336,7 +311,7 @@ const IndicatorRow = (props: {
                   ? row?.numerator + " av " + row?.denominator
                   : "";
 
-          let CellType;
+          let CellType: StyledComponent<TableCellProps & MUIStyledCommonProps>;
 
           if (index === arr.length - 1) {
             CellType = StyledTableCellEnd;
@@ -402,290 +377,5 @@ const IndicatorRow = (props: {
 
       {open ? EmptyRow : null}
     </React.Fragment>
-  );
-};
-
-// ###################################################
-// Component for collection of indicators per registry
-// ###################################################
-
-const IndicatorSection = (props: {
-  unitNames: string[];
-  medfield: string;
-  levels: string;
-  data: IndicatorData[];
-  openRowID: string;
-  registryName: string;
-  setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
-  context: string;
-  type: string;
-  year: number;
-  chartColours: string[];
-  treatmentUnitsByLevel: OptsTu[];
-}) => {
-  const {
-    unitNames,
-    levels,
-    data,
-    openRowID,
-    setOpenRowID,
-    registryName,
-    context,
-    type,
-    year,
-    chartColours,
-    treatmentUnitsByLevel,
-    medfield,
-  } = props;
-
-  // Map indicators to rows and show only rows where there is at least
-  // one indicator not removed by the filter
-  return data.map((indDataRow) => {
-    const showRow =
-      levels === undefined
-        ? true
-        : indDataRow.data &&
-            indDataRow.data
-              .map(
-                (dataPointRow) => level2(indDataRow, dataPointRow) === levels,
-              )
-              .every((x) => x === false)
-          ? false
-          : true;
-
-    const returnVal = showRow ? (
-      <IndicatorRow
-        key={"IndicatorRow" + indDataRow.indicatorID}
-        unitNames={unitNames}
-        medfield={medfield}
-        levels={levels}
-        indData={indDataRow}
-        rowID={indDataRow.indicatorID}
-        openRowID={openRowID}
-        setOpenRowID={setOpenRowID}
-        registryName={registryName}
-        context={context}
-        type={type}
-        year={year}
-        chartColours={chartColours}
-        treatmentUnitsByLevel={treatmentUnitsByLevel}
-      />
-    ) : null;
-
-    return returnVal;
-  });
-};
-
-// ################################################################
-// Component for registry and unit names header plus indicator rows
-// ################################################################
-
-const RegistrySection = (props: {
-  unitNames: string[];
-  levels: string;
-  medfield: string;
-  openRowID: string;
-  setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
-  context: string;
-  type: string;
-  year: number;
-  chartColours: string[];
-}) => {
-  const {
-    unitNames,
-    levels,
-    medfield,
-    openRowID,
-    setOpenRowID,
-    context,
-    type,
-    year,
-    chartColours,
-  } = props;
-
-  const queryParams: FetchIndicatorParams = {
-    context: context,
-    registerShortName: medfield, // Not the same as the short_name column in the database
-    unitNames: unitNames,
-    type: type,
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const nestedDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
-    ...queryParams,
-    nested: true,
-  });
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const unitNamesByLevelQuery = useUnitNamesQuery(medfield, context, type);
-
-  if (nestedDataQuery.isFetching || unitNamesByLevelQuery.isFetching) {
-    return <Skeleton variant="rectangular" width={"100%"} height={2000} />;
-  }
-
-  const treatmentUnitsByLevel = unitNamesByLevelQuery.data.opts_tu as OptsTu[];
-
-  const rowData = nestedDataQuery.data as RegisterData[];
-
-  rowData.sort((a: RegisterData, b: RegisterData) => {
-    return (
-      Math.min(...a.medfieldID) - Math.min(...b.medfieldID) ||
-      (a.registerShortName === b.registerShortName
-        ? 0
-        : a.registerShortName < b.registerShortName
-          ? -1
-          : 1)
-    );
-  });
-
-  const regData = rowData[0];
-
-  if (!regData || !regData.indicatorData) {
-    return null;
-  }
-
-  regData.indicatorData.sort((a: IndicatorData, b: IndicatorData) => {
-    return a.sortingName === b.sortingName
-      ? 0
-      : a.sortingName === null
-        ? 1
-        : b.sortingName === null
-          ? -1
-          : a.sortingName < b.sortingName
-            ? -1
-            : 1;
-  });
-
-  // Sjekk om hele registerseksjonen skal filtreres bort på grunn av målnivåfilter
-  let showSection;
-
-  if (levels === undefined) {
-    showSection = true;
-  } else {
-    showSection = !regData.indicatorData
-      .map((indRow) => {
-        return indRow.data
-          ? !indRow.data
-              .map((dataRow) => {
-                return level2(indRow, dataRow) === levels;
-              })
-              .every((x) => x == false)
-          : null;
-      })
-      .every((x) => x == false);
-  }
-
-  if (showSection) {
-    return (
-      <React.Fragment>
-        <TableHead>
-          <TableRow key={regData.registerName + "-row"}>
-            <StyledTableCellStart
-              key={regData.registerName}
-              sx={{
-                backgroundColor: skdeTheme.palette.secondary.light,
-                width: "3rem",
-              }}
-              colSpan={1}
-            >
-              <div
-                lang="no"
-                style={{ wordWrap: "break-word", hyphens: "auto" }}
-              >
-                {regData.registerFullName}
-              </div>
-            </StyledTableCellStart>
-            <StyledTableCellMiddle
-              sx={{
-                backgroundColor: skdeTheme.palette.secondary.light,
-                width: "3rem",
-              }}
-            >
-              Ønsket målnivå
-            </StyledTableCellMiddle>
-            {unitNames.map((row, index, arr) => {
-              let CellType;
-
-              if (index === arr.length - 1) {
-                CellType = StyledTableCellEnd;
-              } else {
-                CellType = StyledTableCellMiddle;
-              }
-
-              return (
-                <CellType
-                  align="left"
-                  key={regData.registerName + index}
-                  sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
-                  width={"12rem"}
-                >
-                  <div
-                    lang="no"
-                    style={{ wordWrap: "break-word", hyphens: "auto" }}
-                  >
-                    {row}
-                  </div>
-                </CellType>
-              );
-            })}
-          </TableRow>
-        </TableHead>
-
-        <TableBody>
-          <IndicatorSection
-            key={regData.registerName}
-            unitNames={unitNames}
-            medfield={medfield}
-            levels={levels}
-            data={regData.indicatorData}
-            openRowID={openRowID}
-            setOpenRowID={setOpenRowID}
-            registryName={regData.registerFullName}
-            context={context}
-            type={type}
-            year={year}
-            chartColours={chartColours}
-            treatmentUnitsByLevel={treatmentUnitsByLevel}
-          />
-        </TableBody>
-      </React.Fragment>
-    );
-  } else {
-    return null;
-  }
-};
-
-// #################################
-// Top level component for the table
-// #################################
-
-export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
-  const { context, type, year, unitNames, levels, medfields, chartColours } =
-    props;
-
-  const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams.toString());
-  const openRowParam = params.get("selected_row");
-
-  const [openRowID, setOpenRowID] = useState<string>(
-    openRowParam ? openRowParam : "",
-  );
-  return (
-    <StyledTable sx={{ marginTop: "0.625rem" }}>
-      {medfields.map((medfield) => (
-        <RegistrySection
-          key={medfield}
-          levels={levels}
-          unitNames={unitNames}
-          medfield={medfield}
-          openRowID={openRowID}
-          setOpenRowID={setOpenRowID}
-          context={context}
-          type={type}
-          year={year}
-          chartColours={chartColours}
-        />
-      ))}
-    </StyledTable>
   );
 };
