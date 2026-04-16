@@ -46,7 +46,7 @@ import {
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
 import checkParamsReady from "../../src/utils/checkParamsReady";
-import { IndicatorTableBodyV2 } from "../../src/components/IndicatorTable/IndicatortablebodyV2";
+import { IndicatorTable } from "../../src/components/IndicatorTable/Indicatortable";
 import { IndicatorTableSkeleton } from "../../src/components/IndicatorTable/IndicatorTableSkeleton";
 
 export default function TreatmentQualityPage() {
@@ -298,7 +298,7 @@ export default function TreatmentQualityPage() {
                 data-testid={"tu_header_" + selectedTreatmentUnits}
               >
                 {queriesReady && paramsReady ? (
-                  <IndicatorTableBodyV2
+                  <IndicatorTable
                     key={"indicator-table2"}
                     context={selectedTableContext}
                     unitNames={getSortedList(

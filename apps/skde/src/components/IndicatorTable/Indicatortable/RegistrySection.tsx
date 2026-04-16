@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import TableBody from "@mui/material/TableBody";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
@@ -11,30 +11,14 @@ import {
 import { level2, skdeTheme } from "qmongjs";
 import { Skeleton } from "@mui/material";
 import {
-  StyledTable,
   StyledTableCellStart,
   StyledTableCellMiddle,
   StyledTableCellEnd,
-} from "./IndicatorTableBodyV2Styles";
+} from "./IndicatorTableStyles";
 import { useIndicatorQuery } from "qmongjs";
-import { useSearchParams } from "next/navigation";
 import { IndicatorSection } from "./IndicatorSection";
 
-type IndicatorTableBodyV2Props = {
-  context: string;
-  type: string;
-  year: number;
-  unitNames: string[];
-  levels: string;
-  medfields: string[];
-  chartColours: string[];
-};
-
-// ################################################################
-// Component for registry and unit names header plus indicator rows
-// ################################################################
-
-const RegistrySection = (props: {
+type RegistrySectionProps = {
   unitNames: string[];
   levels: string;
   medfield: string;
@@ -44,7 +28,9 @@ const RegistrySection = (props: {
   type: string;
   year: number;
   chartColours: string[];
-}) => {
+};
+
+export const RegistrySection = (props: RegistrySectionProps) => {
   const {
     unitNames,
     levels,
@@ -111,7 +97,7 @@ const RegistrySection = (props: {
   });
 
   // Sjekk om hele registerseksjonen skal filtreres bort på grunn av målnivåfilter
-  let showSection;
+  let showSection: boolean;
 
   if (levels === undefined) {
     showSection = true;
@@ -207,39 +193,4 @@ const RegistrySection = (props: {
   } else {
     return null;
   }
-};
-
-// #################################
-// Top level component for the table
-// #################################
-
-export const IndicatorTableBodyV2 = (props: IndicatorTableBodyV2Props) => {
-  const { context, type, year, unitNames, levels, medfields, chartColours } =
-    props;
-
-  const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams.toString());
-  const openRowParam = params.get("selected_row");
-
-  const [openRowID, setOpenRowID] = useState<string>(
-    openRowParam ? openRowParam : "",
-  );
-  return (
-    <StyledTable sx={{ marginTop: "0.625rem" }}>
-      {medfields.map((medfield) => (
-        <RegistrySection
-          key={medfield}
-          levels={levels}
-          unitNames={unitNames}
-          medfield={medfield}
-          openRowID={openRowID}
-          setOpenRowID={setOpenRowID}
-          context={context}
-          type={type}
-          year={year}
-          chartColours={chartColours}
-        />
-      ))}
-    </StyledTable>
-  );
 };

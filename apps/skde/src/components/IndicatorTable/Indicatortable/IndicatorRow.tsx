@@ -13,7 +13,7 @@ import {
   StyledTableCellStart,
   StyledTableCellMiddle,
   StyledTableCellEnd,
-} from "./IndicatorTableBodyV2Styles";
+} from "./IndicatorTableStyles";
 import { customFormat } from "qmongjs";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { ChartRowV2 } from "../chartrowV2";
