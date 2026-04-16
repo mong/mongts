@@ -42,7 +42,7 @@ import {
   getSortedList,
 } from "../../src/helpers/functions/chartColours";
 import checkParamsReady from "../../src/utils/checkParamsReady";
-import { IndicatorTableBodyV2 } from "../../src/components/IndicatorTable/IndicatortablebodyV2";
+import { IndicatorTable } from "../../src/components/IndicatorTable/Indicatortable";
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
@@ -296,7 +296,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
               <Grid size={{ xs: 12 }}>
                 {paramsReady ? (
                   <Stack spacing={4}>
-                    <IndicatorTableBodyV2
+                    <IndicatorTable
                       key={`indicator-table2-${selectedTableContext}`}
                       context={selectedTableContext}
                       unitNames={getSortedList(
@@ -314,7 +314,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                         "colours",
                       )}
                     />
-                    <IndicatorTableBodyV2
+                    <IndicatorTable
                       key={`dataquality-table2-${selectedTableContext}`}
                       context={selectedTableContext}
                       unitNames={getSortedList(
