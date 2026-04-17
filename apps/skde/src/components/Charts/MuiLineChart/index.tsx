@@ -103,12 +103,14 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
       >
         <Box sx={{ mt: -4 }}>
           <CustomChartWrapper>
-            <Box sx={{
-              display: "flex",
-              width: "95%",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}>
+            <Box
+              sx={{
+                display: "flex",
+                width: "95%",
+                justifyContent: "space-between",
+                alignItems: "center",
+              }}
+            >
               <ChartsLegend
                 slotProps={{
                   legend: {
