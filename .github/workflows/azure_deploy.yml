@@ -102,13 +102,6 @@ jobs:
               --domains verify.skde.no \
               --content-paths '/*' \
               --no-wait true
-            az afd endpoint purge \
-              --resource-group rg-nettsider-felles \
-              --profile-name interaktiveNettsiderFrontDoor \
-              --endpoint-name verify \
-              --domains verify.skde.org \
-              --content-paths '/*' \
-              --no-wait true
       - name: Upload develop version to Azure
         if: github.ref == 'refs/heads/develop'
         env:
