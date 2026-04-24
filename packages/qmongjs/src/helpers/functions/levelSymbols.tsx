@@ -1,19 +1,7 @@
-import { FaCircle, FaAdjust, FaRegCircle, FaSquare } from "react-icons/fa";
+import { FaCircle, FaSquare } from "react-icons/fa";
 import { IoTriangle } from "react-icons/io5";
 import { imgLoader } from "./imgLoader";
 import Image from "next/image";
-
-export const levelSymbols = (level: string | undefined, key?: string) => {
-  return level === "H" ? (
-    <FaCircle style={{ color: "#3baa34", fontSize: "1.2rem" }} key={key} />
-  ) : level === "M" ? (
-    <FaAdjust style={{ color: "#fd9c00", fontSize: "1.2rem" }} key={key} />
-  ) : level === "L" ? (
-    <FaRegCircle style={{ color: "#e30713", fontSize: "1.2rem" }} key={key} />
-  ) : (
-    <></>
-  );
-};
 
 export const newLevelSymbols = (level: string | undefined, key?: string) => {
   return level === "H" ? (
