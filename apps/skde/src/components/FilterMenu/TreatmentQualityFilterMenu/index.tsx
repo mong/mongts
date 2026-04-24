@@ -32,14 +32,14 @@ import {
 import {
   useUnitNamesQuery,
   useSelectionYearsQuery,
-} from "qmongjs/src/helpers/hooks";
+} from "../../../helpers/hooks/apihooks";
 import { UseQueryResult } from "@tanstack/react-query";
 import {
   TreeViewFilterSectionNode,
   TreeViewFilterSettingsValue,
   getFilterSettingsValuesMap,
 } from "../TreeViewFilterSection";
-import { useShouldReinitialize } from "qmongjs/src/helpers/hooks/useShouldReinitialize";
+import { useShouldReinitialize } from "../../../helpers/hooks/useShouldReinitialize";
 
 // The keys used for the different filter sections
 export const tableContextKey = "context";

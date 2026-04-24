@@ -1,5 +1,5 @@
 import { DataPoint } from "types";
-import { getTrend } from "../";
+import { getTrend } from "../../../../../../packages/qmongjs/src/helpers/functions";
 
 const point1: DataPoint = {
   id: 1,

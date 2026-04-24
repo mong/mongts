@@ -1,5 +1,5 @@
-import { filterOrderIndID } from "../.";
-import { hisreg_data, hisreg_descr } from "../../../test/test_data/hisreg";
+import { filterOrderIndID } from "../../../../../../packages/qmongjs/src/helpers/functions";
+import { hisreg_data, hisreg_descr } from "../../../data/hisreg";
 
 const hisreg_national = hisreg_data.filter((d) => {
   return d.unit_name === "Nasjonalt";

@@ -1,4 +1,4 @@
-import { level } from "../.";
+import { level } from "../../../../../../packages/qmongjs/src/helpers/functions";
 import { Indicator } from "types";
 import { test, expect } from "vitest";
 

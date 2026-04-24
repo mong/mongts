@@ -1,4 +1,4 @@
-import { minYear, maxYear, mainHospitals } from "../app_config";
+import { minYear, maxYear, mainHospitals } from "qmongjs/src/app_config";
 import { test, expect } from "vitest";
 
 test("Number of selectable years are 5", () => {

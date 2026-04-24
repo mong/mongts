@@ -11,13 +11,13 @@ import {
 } from "@mui/material";
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import Grid from "@mui/material/Grid";
+import { defaultYear } from "../../src/app_config";
 import {
   useRegisterNamesQuery,
-  defaultYear,
   useMedicalFieldsQuery,
-  skdeTheme,
   useUnitNamesQuery,
-} from "qmongjs";
+} from "../../src/helpers/hooks/apihooks";
+import { skdeTheme } from "../../src/themes/SkdeTheme";
 import { FilterSettingsAction } from "../../src/components/FilterMenu/FilterSettingsReducer";
 import { FilterSettingsValue } from "../../src/components/FilterMenu/FilterSettingsContext";
 import { TreatmentQualityFilterMenu } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";

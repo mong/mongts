@@ -1,5 +1,8 @@
 import { Indicator, Description } from "types";
-import { buildIndicator, buildDescription } from "./dataBuilder";
+import {
+  buildIndicator,
+  buildDescription,
+} from "../helpers/functions/dataBuilder";
 
 export const hisreg_data: Indicator[] = [
   buildIndicator({

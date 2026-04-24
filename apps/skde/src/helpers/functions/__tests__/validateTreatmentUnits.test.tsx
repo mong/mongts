@@ -1,4 +1,4 @@
-import { validateTreatmentUnits } from "../";
+import { validateTreatmentUnits } from "../../../../../../packages/qmongjs/src/helpers/functions";
 
 const optstu = [
   { label: "Sykehus", options: [{ value: "Narvik", label: "Narvik" }] },
