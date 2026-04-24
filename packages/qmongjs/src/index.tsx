@@ -13,7 +13,6 @@ export {
 export {
   level,
   level2,
-  levelSymbols,
   newLevelSymbols,
   newestLevelSymbols,
 } from "./helpers/functions";
