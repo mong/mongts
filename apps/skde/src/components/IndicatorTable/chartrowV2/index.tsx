@@ -9,7 +9,6 @@ import {
   Box,
   Stack,
   Button,
-  Typography,
 } from "@mui/material";
 import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
 import { MuiLineChart } from "../../Charts/MuiLineChart";
@@ -175,9 +174,6 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
           />
         ) : figureType === "bar" ? (
           <Box width={"100%"}>
-            <Typography variant="button" sx={{ paddingLeft: 15 }}>
-              {year}
-            </Typography>
             <Box mt={-4}>
               <MuiBarChart
                 data={data}
