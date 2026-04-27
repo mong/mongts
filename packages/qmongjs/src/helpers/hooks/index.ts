@@ -1,5 +1,3 @@
-export { useResizeObserver } from "./useResizeObserver";
-export { useEventListener } from "./useEventListener";
 export { useShouldReinitialize } from "./useShouldReinitialize";
 export {
   useDescriptionQuery,

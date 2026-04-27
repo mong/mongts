@@ -5,7 +5,7 @@ __metadata:
   version: 8
   cacheKey: 10
 
-"@asamuzakjp/css-color@npm:^5.1.5":
+"@asamuzakjp/css-color@npm:^5.1.11":
   version: 5.1.11
   resolution: "@asamuzakjp/css-color@npm:5.1.11"
   dependencies:
@@ -18,7 +18,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@asamuzakjp/dom-selector@npm:^7.0.6":
+"@asamuzakjp/dom-selector@npm:^7.1.1":
   version: 7.1.1
   resolution: "@asamuzakjp/dom-selector@npm:7.1.1"
   dependencies:
@@ -1242,7 +1242,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@csstools/css-syntax-patches-for-csstree@npm:^1.1.1":
+"@csstools/css-syntax-patches-for-csstree@npm:^1.1.3":
   version: 1.1.3
   resolution: "@csstools/css-syntax-patches-for-csstree@npm:1.1.3"
   peerDependencies:
@@ -4170,7 +4170,7 @@ __metadata:
     dotenv: "npm:17.4.2"
     eslint: "npm:10.2.1"
     express: "npm:5.2.1"
-    express-rate-limit: "npm:8.4.0"
+    express-rate-limit: "npm:8.4.1"
     helmet: "npm:8.1.0"
     knex: "npm:3.2.9"
     mysql2: "npm:3.22.2"
@@ -6024,14 +6024,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"express-rate-limit@npm:8.4.0":
-  version: 8.4.0
-  resolution: "express-rate-limit@npm:8.4.0"
+"express-rate-limit@npm:8.4.1":
+  version: 8.4.1
+  resolution: "express-rate-limit@npm:8.4.1"
   dependencies:
     ip-address: "npm:10.1.0"
   peerDependencies:
     express: ">= 4.11"
-  checksum: 10/c7a392e81d97b4ee058c61ac4050097cd0f4841c81a68d0d0f330bb643c221256b62d36b0a18c874699f0c9986198ae6b98f3ddf8a03c32b9fed0c8dd8be45c4
+  checksum: 10/2f979a261e6c95e31a62f2ce1cb9621566b0061706d0337091c8399617d6f09b28402ba4383aa3d72518374a7eec35be24f9703de59e563cc127ba14e2748a4d
   languageName: node
   linkType: hard
 
@@ -7366,26 +7366,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsdom@npm:29.0.2":
-  version: 29.0.2
-  resolution: "jsdom@npm:29.0.2"
+"jsdom@npm:29.1.0":
+  version: 29.1.0
+  resolution: "jsdom@npm:29.1.0"
   dependencies:
-    "@asamuzakjp/css-color": "npm:^5.1.5"
-    "@asamuzakjp/dom-selector": "npm:^7.0.6"
+    "@asamuzakjp/css-color": "npm:^5.1.11"
+    "@asamuzakjp/dom-selector": "npm:^7.1.1"
     "@bramus/specificity": "npm:^2.4.2"
-    "@csstools/css-syntax-patches-for-csstree": "npm:^1.1.1"
+    "@csstools/css-syntax-patches-for-csstree": "npm:^1.1.3"
     "@exodus/bytes": "npm:^1.15.0"
     css-tree: "npm:^3.2.1"
     data-urls: "npm:^7.0.0"
     decimal.js: "npm:^10.6.0"
     html-encoding-sniffer: "npm:^6.0.0"
     is-potential-custom-element-name: "npm:^1.0.1"
-    lru-cache: "npm:^11.2.7"
-    parse5: "npm:^8.0.0"
+    lru-cache: "npm:^11.3.5"
+    parse5: "npm:^8.0.1"
     saxes: "npm:^6.0.0"
     symbol-tree: "npm:^3.2.4"
     tough-cookie: "npm:^6.0.1"
-    undici: "npm:^7.24.5"
+    undici: "npm:^7.25.0"
     w3c-xmlserializer: "npm:^5.0.0"
     webidl-conversions: "npm:^8.0.1"
     whatwg-mimetype: "npm:^5.0.0"
@@ -7396,7 +7396,7 @@ __metadata:
   peerDependenciesMeta:
     canvas:
       optional: true
-  checksum: 10/3ad1d9a5b6aba067427bc43be98e1c51fab489bf689a6530e596278c6326fe053c94fc47a9c133f126fbe914f421283ae723fb92214dfe4959ca6cf2ee1666f6
+  checksum: 10/91194be30c10b518c8e21c3a15cf1ef0e6c74722fb8fe402f201efed3e5de55f13005f2a4108d02ccde75d1e16719ca898690be93cd22d498a4c062d035adae5
   languageName: node
   linkType: hard
 
@@ -7551,9 +7551,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:6.6.2":
-  version: 6.6.2
-  resolution: "knip@npm:6.6.2"
+"knip@npm:6.7.0":
+  version: 6.7.0
+  resolution: "knip@npm:6.7.0"
   dependencies:
     fdir: "npm:^6.5.0"
     formatly: "npm:^0.3.0"
@@ -7572,7 +7572,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10/fd86e1b69f5077027ad8fc2b884c0f68089427acfebd40efd39363f2f6ff351894b8c76cbddf09d8488c1616ebe472f82ef8384ab0760c7af648e222ef8fa785
+  checksum: 10/d6e9fe38c979deca3652f2cf93696f65d1575a9c5074ca23b1a45f2d68dd0b325d597b97fcb45dbbd1880fab7c1f791e8d378de7b2d4ef1a09db35e5235648d7
   languageName: node
   linkType: hard
 
@@ -7884,7 +7884,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lru-cache@npm:^11.0.0, lru-cache@npm:^11.2.7":
+"lru-cache@npm:^11.0.0, lru-cache@npm:^11.3.5":
   version: 11.3.5
   resolution: "lru-cache@npm:11.3.5"
   checksum: 10/3701b77e87765a3aea453402a7850bdbf7e02445210f35bd5ba1561f601f605f488bf9932be4a3851a6664073924f671a1ec99c4a1a98c457e0d126872a3e04f
@@ -8669,7 +8669,7 @@ __metadata:
     eslint: "npm:10.2.1"
     globals: "npm:17.5.0"
     husky: "npm:9.1.7"
-    knip: "npm:6.6.2"
+    knip: "npm:6.7.0"
     lint-staged: "npm:16.4.0"
     prettier: "npm:3.8.3"
     turbo: "npm:2.9.6"
@@ -9299,7 +9299,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"parse5@npm:^8.0.0":
+"parse5@npm:^8.0.1":
   version: 8.0.1
   resolution: "parse5@npm:8.0.1"
   dependencies:
@@ -9611,13 +9611,12 @@ __metadata:
     "@vitest/coverage-v8": "npm:4.1.5"
     d3-format: "npm:3.1.2"
     eslint: "npm:10.2.1"
-    jsdom: "npm:29.0.2"
+    jsdom: "npm:29.1.0"
     next: "npm:16.2.4"
     prettier: "npm:3.8.3"
     react: "npm:19.2.5"
     react-dom: "npm:19.2.5"
     react-icons: "npm:5.6.0"
-    resize-observer-polyfill: "npm:1.5.1"
     types: "npm:*"
     typescript: "npm:5.9.3"
     use-query-params: "npm:2.2.2"
@@ -9983,13 +9982,6 @@ __metadata:
   version: 5.1.1
   resolution: "reselect@npm:5.1.1"
   checksum: 10/1fdae11a39ed9c8d85a24df19517c8372ee24fefea9cce3fae9eaad8e9cefbba5a3d4940c6fe31296b6addf76e035588c55798f7e6e147e1b7c0855f119e7fa5
-  languageName: node
-  linkType: hard
-
-"resize-observer-polyfill@npm:1.5.1":
-  version: 1.5.1
-  resolution: "resize-observer-polyfill@npm:1.5.1"
-  checksum: 10/e10ee50cd6cf558001de5c6fb03fee15debd011c2f694564b71f81742eef03fb30d6c2596d1d5bf946d9991cb692fcef529b7bd2e4057041377ecc9636c753ce
   languageName: node
   linkType: hard
 
@@ -10540,7 +10532,7 @@ __metadata:
     cypress: "npm:15.14.1"
     eslint: "npm:10.2.1"
     husky: "npm:9.1.7"
-    jsdom: "npm:29.0.2"
+    jsdom: "npm:29.1.0"
     lodash: "npm:4.18.1"
     next: "npm:16.2.4"
     next-query-params: "npm:5.1.0"
@@ -11461,7 +11453,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici@npm:^7.24.5":
+"undici@npm:^7.25.0":
   version: 7.25.0
   resolution: "undici@npm:7.25.0"
   checksum: 10/038d3568c72bb976e3cc389284f7f1cc64cd70d578300e4676a449fbcb624a35fe99ac127b5f3729f18b8246d6c090444ab61b1b67736bb88f52a3e913d76bf8

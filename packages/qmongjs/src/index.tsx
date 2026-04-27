@@ -13,15 +13,10 @@ export {
 export {
   level,
   level2,
-  levelSymbols,
   newLevelSymbols,
   newestLevelSymbols,
 } from "./helpers/functions";
-export {
-  customFormat,
-  imgLoader,
-  validateTreatmentUnits,
-} from "./helpers/functions";
+export { customFormat, imgLoader } from "./helpers/functions";
 export {
   defaultYear,
   defaultReviewYear,
