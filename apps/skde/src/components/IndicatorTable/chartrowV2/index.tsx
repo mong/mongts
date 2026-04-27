@@ -9,7 +9,6 @@ import {
   Box,
   Stack,
   Button,
-  Typography,
 } from "@mui/material";
 import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
 import { MuiLineChart } from "../../Charts/MuiLineChart";
@@ -175,30 +174,29 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
           />
         ) : figureType === "bar" ? (
           <Box width={"100%"}>
-            <Typography variant="button" sx={{ paddingLeft: 15 }}>
-              {year}
-            </Typography>
-            <MuiBarChart
-              data={data}
-              figureSpacingFactor={30}
-              figureSpacingConstant={2.2}
-              backgroundMargin={backgroundMargin}
-              unitNames={unitNames}
-              percentage={percentage}
-              barChartType={barChartType}
-              dataFormat={dataFormat}
-              valueAxisFormatter={valueAxisFormatter}
-              treatmentUnitsByLevel={treatmentUnitsByLevel}
-              context={context}
-              type={type}
-              medfield={medfield}
-              year={year}
-              indID={indID}
-              tickFontSize={14}
-              yAxisWidth={160}
-              zoom={zoom}
-              apiRef={barChartApiRef}
-            />
+            <Box mt={-4}>
+              <MuiBarChart
+                data={data}
+                figureSpacingFactor={30}
+                figureSpacingConstant={2.2}
+                backgroundMargin={backgroundMargin}
+                unitNames={unitNames}
+                percentage={percentage}
+                barChartType={barChartType}
+                dataFormat={dataFormat}
+                valueAxisFormatter={valueAxisFormatter}
+                treatmentUnitsByLevel={treatmentUnitsByLevel}
+                context={context}
+                type={type}
+                medfield={medfield}
+                year={year}
+                indID={indID}
+                tickFontSize={14}
+                yAxisWidth={160}
+                zoom={zoom}
+                apiRef={barChartApiRef}
+              />
+            </Box>
           </Box>
         ) : null}
       </Box>
