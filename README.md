@@ -37,9 +37,9 @@ git push
 
 ### Run and develop it locally
 
-You need an SSH key in order to clone the repository. Follow the directions [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) for making a new key and adding it to your Github account. 
+You need an SSH key in order to clone the repository. Follow the directions [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) for making a new key and adding it to your Github account.
 
-Install the [nvm package](https://github.com/nvm-sh/nvm) by running the command `wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash`. Then run `nvm install 24` to update to the current node version. 
+Install the [nvm package](https://github.com/nvm-sh/nvm) by running the command `wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash`. Then run `nvm install 24` to update to the current node version.
 
 Install [yarn](https://yarnpkg.com/getting-started/install) by running the command `npm install -g corepack`
 
@@ -86,3 +86,70 @@ husky - pre-commit script failed (code 1)
 ```
 
 It might help running `npx husky` (or `yarn prepare`).
+
+---
+
+### Conventional Commits
+
+Conventional Commits is a specification for adding human and machine readable meaning to commit messages
+
+It is a prerequisite for automatic CHANGELOG and releases with [Release Please](https://github.com/marketplace/actions/release-please-action).
+
+It works by scanning the commit history to figure out if a new release should be created and which changes it should include since the previous release. For this to work commit messages must follow [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) and is enforced by `husky` and [commitlint](https://commitlint.js.org/).
+
+We **highly** recommend using squash-merges when merging pull requests. A linear git history makes it much easier to:
+
+- **Follow history** — commits are sorted by merge date and are not interleaved between pull requests
+- **Find and revert bugs** — `git bisect` is useful for tracking down which change introduced a bug
+- **Control the changelog** — commit messages that only make sense within a PR's context (e.g. a fix for a bug introduced earlier in the same PR) will not pollute the release notes
+- **Keep a clean main branch** — with red/green development, merge commits can leave points in history where tests do not pass
+
+#### Basic syntax
+
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+### Allowed types
+
+`build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, `test`
+
+**Tip:** Write commit messages as if pre worded with "This will..." — e.g. `feat(button): add loading state to landing page` would be "This will add loading state to landing page"
+
+#### Version bumps by commit message
+
+| Commit type                                | Version bump            | Example                             |
+| ------------------------------------------ | ----------------------- | ----------------------------------- |
+| `fix: ...`                                 | Patch (`1.0.6 → 1.0.7`) | `fix: correct button border radius` |
+| `feat: ...`                                | Minor (`1.0.6 → 1.1.0`) | `feat(button): add loading state`   |
+| `feat!: ...` or `BREAKING CHANGE:` in body | Major (`1.0.6 → 2.0.0`) | `feat!: drop React 18 support`      |
+
+---
+
+### Releases
+
+Releases are automated via a [Release Please](https://github.com/googleapis/release-please) GitHub Action. When commits are merged to `main`, it opens a PR with a version bump and an updated **CHANGELOG.md**. The version bump follows SemVer and is determined automatically from the commit types in the commit history.
+
+> **Note:** The PR can be closed if you want to delay the release to add more changes later.
+
+When a commit or merge is done on the main branch, the release-please action-workflow is run and a new release is created along with any [other features](https://github.com/googleapis/release-please/blob/main/docs/manifest-releaser.md) defined in the release-please manifest.
+
+Current and previous releases: [github.com/mong/material-ui/releases](https://github.com/mong/material-ui/releases)
+
+#### Manually trigger a release or override the version
+
+If the repo is `private` this will requires a `GITHUB_TOKEN` with **`write:packages`** scope (and `delete:packages` to delete versions).
+
+Push an empty commit to `main` with `Release-As: x.x.x` in the commit body. Additional changelog entries can be appended as extra `-m` arguments:
+
+```bash
+# Minimal
+git commit --allow-empty -m "chore: release 2.0.0" -m "Release-As: 2.0.0"
+
+# With extra changelog entries not already in the commit history
+git commit --allow-empty -m "chore: release 2.0.0" -m "Release-As: 2.0.0" -m "feat: add i18n support" -m "docs: update README.md"
+```
