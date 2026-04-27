@@ -18,16 +18,26 @@
     "apps/*",
     "packages/*"
   ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "devDependencies": {
     "@types/node": "24.12.2",
     "eslint": "10.2.1",
     "globals": "17.5.0",
-    "husky": "9.1.7",
+    "husky": "^9.1.7",
     "knip": "6.7.0",
     "lint-staged": "16.4.0",
     "prettier": "3.8.3",
     "turbo": "2.9.6",
     "typescript": "5.9.3",
     "typescript-eslint": "8.59.0"
+  },
+  "dependencies": {
+    "@commitlint/cli": "^20.5.2",
+    "@commitlint/config-conventional": "^20.5.0",
+    "commitlint": "^20.5.2"
   }
 }
