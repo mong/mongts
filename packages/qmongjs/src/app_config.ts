@@ -121,3 +121,7 @@ export const mainHospitals = [
   "Flekkefjord",
   "Kristiansand",
 ];
+
+export const levelGreenColour = "#EAF6EB";
+export const levelYellowColour = "#FFEFC7";
+export const levelRedColout = "#FFE5E2";
