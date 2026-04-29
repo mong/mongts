@@ -1,10 +1,5 @@
 import { FilterSettingsValue } from "../FilterSettingsContext";
-import {
-  maxYear,
-  minYear,
-  defaultYear,
-  app_text,
-} from "skde/src/app_config";
+import { maxYear, minYear, defaultYear, app_text } from "skde/src/app_config";
 import { UseQueryResult } from "@tanstack/react-query";
 import { TreeViewFilterSectionNode } from "../TreeViewFilterSection";
 
