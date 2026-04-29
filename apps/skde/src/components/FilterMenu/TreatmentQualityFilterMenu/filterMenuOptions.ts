@@ -4,7 +4,7 @@ import {
   minYear,
   defaultYear,
   app_text,
-} from "qmongjs/src/app_config";
+} from "skde/src/app_config";
 import { UseQueryResult } from "@tanstack/react-query";
 import { TreeViewFilterSectionNode } from "../TreeViewFilterSection";
 
