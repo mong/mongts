@@ -122,6 +122,6 @@ export const mainHospitals = [
   "Kristiansand",
 ];
 
-export const levelGreenColours = ["#D5F6E8", "#66CCA1", "#32634E"];
-export const levelYellowColours = ["#F5F0D5", "#E8D360", "#483D01"];
-export const levelRedColours = ["#F0DEDB", "#CC7566", "#491006"];
+const levelGreenColours = ["#D5F6E8", "#66CCA1", "#32634E"];
+const levelYellowColours = ["#F5F0D5", "#E8D360", "#483D01"];
+const levelRedColours = ["#F0DEDB", "#CC7566", "#491006"];
