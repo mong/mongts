@@ -24,7 +24,7 @@ import {
   ChartsDataProviderPro,
 } from "@mui/x-charts-pro";
 import { ChartLogo } from "../ChartLogo";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 type MuiBarChartProps = {
   data: IndicatorData;
@@ -262,7 +262,22 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
         ]}
       >
         <CustomChartWrapper>
-          <ChartLogo width={100} marginRight={6} />
+          <Box
+            sx={{
+              display: "flex",
+              width: "100%",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <Typography
+              variant="button"
+              sx={{ paddingLeft: 15, whiteSpace: "nowrap" }}
+            >
+              {year}
+            </Typography>
+            <ChartLogo width={100} marginRight={6} />
+          </Box>
           <ChartsTooltip />
           <ChartsSurface>
             <BarBackground
