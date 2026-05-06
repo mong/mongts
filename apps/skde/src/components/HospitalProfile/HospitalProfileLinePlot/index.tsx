@@ -5,11 +5,7 @@ import {
 } from "../../Charts/IndicatorLinechart";
 import { ThemeProvider, Box, Typography, Stack, Button } from "@mui/material";
 import { ChipSelection } from "../../ChipSelection";
-import {
-  LinePlotLegend,
-  ItemBox,
-  lineChartTheme,
-} from "../..//HospitalProfile";
+import { ItemBox, lineChartTheme } from "../..//HospitalProfile";
 import { formatUnitNameIfNational } from "../../../helpers/functions/formatUnitNameIfNational";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import ZoomOutIcon from "@mui/icons-material/ZoomOut";
@@ -105,9 +101,6 @@ export const HospitalProfileLinePlot = (
               formatUnitNameIfNational(unitFullName, false) +
               ". Her vises andel eller antall av kvalitetsindikatorer som har hatt høy, middels eller lav måloppnåelse de siste årene."}
           </Typography>
-        </div>
-        <div style={{ margin: textMargin }}>
-          <LinePlotLegend itemSpacing={6} symbolSpacing={2} />
         </div>
       </Box>
 
