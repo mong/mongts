@@ -36,6 +36,7 @@ type IndicatorRowProps = {
   year: number;
   chartColours: string[];
   treatmentUnitsByLevel: OptsTu[];
+  residentData: boolean;
 };
 
 export const IndicatorRow = (props: IndicatorRowProps) => {
@@ -51,6 +52,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
     year,
     treatmentUnitsByLevel,
     medfield,
+    residentData,
   } = props;
 
   const remarkPlugins = [remarkGfm];
@@ -59,6 +61,8 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const params = new URLSearchParams(searchParams.toString());
+
+  const residentBackgroundColour = "#F2F9FF";
 
   let open: boolean;
 
@@ -247,6 +251,9 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
         <StyledTableCellStart
           key={indData.indicatorID}
           id={indData.indicatorID + "_scrollAnchor"}
+          sx={{
+            backgroundColor: residentData ? residentBackgroundColour : "white",
+          }}
         >
           <Stack direction="row" alignItems="center">
             <IconButton
@@ -261,7 +268,13 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
             </div>
           </Stack>
         </StyledTableCellStart>
-        <StyledTableCellMiddle>{targetLevel}</StyledTableCellMiddle>
+        <StyledTableCellMiddle
+          sx={{
+            backgroundColor: residentData ? residentBackgroundColour : "white",
+          }}
+        >
+          {targetLevel}
+        </StyledTableCellMiddle>
         {rowDataSorted.map((row, index, arr) => {
           const lowDG = row?.dg == null ? false : row?.dg < 0.6 ? true : false;
           const noData = row?.denominator == null ? true : false;
@@ -321,7 +334,12 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
 
           return (
             <CellType
-              sx={{ opacity: cellOpacity }}
+              sx={{
+                opacity: cellOpacity,
+                backgroundColor: residentData
+                  ? residentBackgroundColour
+                  : "white",
+              }}
               align={"left"}
               key={indData.indicatorID + index}
             >
@@ -353,7 +371,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
             paddingTop: 0,
             paddingLeft: 0,
             paddingRight: 0,
-            backgroundColor: "white",
+            backgroundColor: residentData ? residentBackgroundColour : "white",
           }}
           colSpan={unitNames.length + 2}
         >

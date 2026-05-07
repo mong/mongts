@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import TableBody from "@mui/material/TableBody";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { RegisterData, IndicatorData, OptsTu } from "types";
+import { RegisterData, IndicatorData, OptsTu, ResidentData } from "types";
 import { UseQueryResult } from "@tanstack/react-query";
 import {
   FetchIndicatorParams,
   useUnitNamesQuery,
+  useResidentDataQuery,
 } from "qmongjs/src/helpers/hooks";
 import { level2, skdeTheme } from "qmongjs";
-import { Skeleton } from "@mui/material";
+import { Skeleton, Chip, Stack, Typography } from "@mui/material";
 import {
   StyledTableCellStart,
   StyledTableCellMiddle,
@@ -43,8 +44,10 @@ export const RegistrySection = (props: RegistrySectionProps) => {
     chartColours,
   } = props;
 
+  const [currentContext, setCurrentContext] = useState(context);
+
   const queryParams: FetchIndicatorParams = {
-    context: context,
+    context: currentContext,
     registerShortName: medfield, // Not the same as the short_name column in the database
     unitNames: unitNames,
     type: type,
@@ -57,15 +60,30 @@ export const RegistrySection = (props: RegistrySectionProps) => {
   });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const residentDataQuery: UseQueryResult<any> = useResidentDataQuery(medfield);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const unitNamesByLevelQuery = useUnitNamesQuery(medfield, context, type);
 
-  if (nestedDataQuery.isFetching || unitNamesByLevelQuery.isFetching) {
+  if (
+    nestedDataQuery.isFetching ||
+    unitNamesByLevelQuery.isFetching ||
+    residentDataQuery.isFetching
+  ) {
     return <Skeleton variant="rectangular" width={"100%"} height={2000} />;
   }
 
   const treatmentUnitsByLevel = unitNamesByLevelQuery.data.opts_tu as OptsTu[];
 
   const rowData = nestedDataQuery.data as RegisterData[];
+
+  // Check if the registry has resident data for the selected year
+  // and treatment units
+  const registryHasResidentData =
+    residentDataQuery.data &&
+    residentDataQuery.data.map((row: ResidentData) => {
+      return row.year == year && unitNames.includes(row.unitName);
+    }).length > 0;
 
   rowData.sort((a: RegisterData, b: RegisterData) => {
     return (
@@ -115,29 +133,58 @@ export const RegistrySection = (props: RegistrySectionProps) => {
       .every((x) => x == false);
   }
 
-  if (showSection) {
+  const handleClick = () => {
+    setCurrentContext(
+      currentContext === "caregiver" ? "resident" : "caregiver",
+    );
+  };
+
+  if (true) {
     return (
       <React.Fragment>
         <TableHead>
-          <TableRow key={regData.registerName + "-row"}>
+          <TableRow key={regData.registerName + "-toprow"}>
             <StyledTableCellStart
               key={regData.registerName}
               sx={{
-                backgroundColor: skdeTheme.palette.secondary.light,
+                backgroundColor: skdeTheme.palette.background.paper,
                 width: "3rem",
               }}
-              colSpan={1}
+              colSpan={unitNames.length + 2}
             >
-              <div
-                lang="no"
-                style={{ wordWrap: "break-word", hyphens: "auto" }}
-              >
-                {regData.registerFullName}
-              </div>
+              <Stack direction="row" spacing={2} alignItems="center">
+                <div
+                  lang="no"
+                  style={{ wordWrap: "break-word", hyphens: "auto" }}
+                >
+                  <Typography variant="h3">
+                    {regData.registerShortName}
+                  </Typography>
+                </div>
+                {registryHasResidentData && (
+                  <Chip
+                    label="Opptaksområde"
+                    onClick={handleClick}
+                    variant={
+                      currentContext === "caregiver" ? "outlined" : "filled"
+                    }
+                  />
+                )}
+              </Stack>
+            </StyledTableCellStart>
+          </TableRow>
+          <TableRow key={regData.registerName + "-row"}>
+            <StyledTableCellStart
+              sx={{
+                backgroundColor: skdeTheme.palette.background.paper,
+                width: "3rem",
+              }}
+            >
+              {"Kvalitetsindikatorer fra " + regData.registerFullName}
             </StyledTableCellStart>
             <StyledTableCellMiddle
               sx={{
-                backgroundColor: skdeTheme.palette.secondary.light,
+                backgroundColor: skdeTheme.palette.background.paper,
                 width: "3rem",
               }}
             >
@@ -156,7 +203,7 @@ export const RegistrySection = (props: RegistrySectionProps) => {
                 <CellType
                   align="left"
                   key={regData.registerName + index}
-                  sx={{ backgroundColor: skdeTheme.palette.secondary.light }}
+                  sx={{ backgroundColor: skdeTheme.palette.background.paper }}
                   width={"12rem"}
                 >
                   <div
@@ -181,11 +228,12 @@ export const RegistrySection = (props: RegistrySectionProps) => {
             openRowID={openRowID}
             setOpenRowID={setOpenRowID}
             registryName={regData.registerFullName}
-            context={context}
+            context={currentContext}
             type={type}
             year={year}
             chartColours={chartColours}
             treatmentUnitsByLevel={treatmentUnitsByLevel}
+            residentData={currentContext === "resident"}
           />
         </TableBody>
       </React.Fragment>
