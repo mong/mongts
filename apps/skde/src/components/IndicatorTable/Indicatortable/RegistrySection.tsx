@@ -139,7 +139,7 @@ export const RegistrySection = (props: RegistrySectionProps) => {
     );
   };
 
-  if (true) {
+  if (showSection) {
     return (
       <React.Fragment>
         <TableHead>
