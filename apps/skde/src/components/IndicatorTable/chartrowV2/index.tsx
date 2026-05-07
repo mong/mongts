@@ -71,7 +71,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   const lineChartApiRef = useChartProApiRef<"line">();
   const barChartApiRef = useChartProApiRef<"bar">();
 
-  const figureHeight = 500;
+  const figureHeight = 650;
   const backgroundMargin = 20;
 
   const dataFormat = data.format ? data.format : ",.0%";
