@@ -1,22 +1,17 @@
 {
-  "compilerOptions": {
-    "target": "es2015",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "es2015",
-    "moduleResolution": "bundler",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-    "incremental": true,
-  },
-  "exclude": ["node_modules", "vitest.config.mts", "**/*.test.ts*",],
-  "include": ["src", "../../apps/skde/src/components/HospitalProfile/LowLevelIndicatorList", "../../apps/skde/src/components/HospitalProfile/MedfieldTable", "../../apps/skde/src/components/ArrowLink", "../../apps/skde/src/components/HospitalProfile/SelectedIndicatorTable/indicators.ts",]
+	"extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"lib": ["DOM", "DOM.Iterable", "ES2022"],
+		"allowJs": true,
+		"jsx": "react-jsx",
+		"incremental": true
+	},
+	"include": [
+		"src",
+		"../../apps/skde/src/components/HospitalProfile/LowLevelIndicatorList",
+		"../../apps/skde/src/components/HospitalProfile/MedfieldTable",
+		"../../apps/skde/src/components/ArrowLink",
+		"../../apps/skde/src/components/HospitalProfile/SelectedIndicatorTable/indicators.ts"
+	],
+	"exclude": ["node_modules", "vitest.config.mts", "**/*.test.ts*"]
 }

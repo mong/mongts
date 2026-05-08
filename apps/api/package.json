@@ -1,44 +1,43 @@
 {
-  "name": "api",
-  "description": "",
-  "main": "index.js",
-  "private": true,
-  "scripts": {
-    "start": "ts-node-dev -r dotenv/config src",
-    "dev": "yarn run start",
-    "build": "tsc",
-    "lint": "eslint src",
-    "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
-    "format": "yarn run prettier --write",
-    "check-format": "yarn run prettier --check",
-    "check-types": "tsc --noEmit",
-    "validate": "yarn run check-types && yarn run check-format && yarn run lint && yarn run build"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@types/node": "^25.6.0",
-    "compression": "1.8.1",
-    "cors": "2.8.6",
-    "express": "5.2.1",
-    "express-rate-limit": "8.4.1",
-    "helmet": "8.1.0",
-    "knex": "3.2.9",
-    "mysql2": "3.22.3",
-    "qs": "^6.15.1",
-    "typescript": "5.9.3"
-  },
-  "devDependencies": {
-    "@types/compression": "1.8.1",
-    "@types/cors": "2.8.19",
-    "@types/express": "5.0.6",
-    "@types/qs": "^6",
-    "dotenv": "17.4.2",
-    "eslint": "10.3.0",
-    "prettier": "3.8.3",
-    "ts-node-dev": "2.0.0",
-    "types": "*"
-  },
-  "packageManager": "yarn@4.13.0"
+	"name": "api",
+	"description": "",
+	"main": "index.js",
+	"private": true,
+	"scripts": {
+		"start": "ts-node-dev -r dotenv/config src",
+		"dev": "yarn run start",
+		"build": "tsc",
+		"lint": "biome lint src",
+		"lint:fix": "biome lint --write src",
+		"lint:fix:unsafe": "biome lint --write --unsafe src",
+		"format": "biome format --write src",
+		"check-format": "biome format src",
+		"check-types": "tsc --noEmit",
+		"validate": "yarn run check-types && yarn run check-format && yarn run lint && yarn run build"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@types/node": "^25.6.0",
+		"compression": "1.8.1",
+		"cors": "2.8.6",
+		"express": "5.2.1",
+		"express-rate-limit": "8.4.1",
+		"helmet": "8.1.0",
+		"knex": "3.2.9",
+		"mysql2": "3.22.3",
+		"qs": "^6.15.1",
+		"typescript": "5.9.3"
+	},
+	"devDependencies": {
+		"@types/compression": "1.8.1",
+		"@types/cors": "2.8.19",
+		"@types/express": "5.0.6",
+		"@types/qs": "^6",
+		"dotenv": "17.4.2",
+		"ts-node-dev": "2.0.0",
+		"types": "*"
+	},
+	"packageManager": "yarn@4.13.0"
 }

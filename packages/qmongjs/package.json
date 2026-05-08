@@ -1,39 +1,38 @@
 {
-  "name": "qmongjs",
-  "version": "0.0.0",
-  "main": "./src/index.tsx",
-  "types": "./src/index.tsx",
-  "scripts": {
-    "test": "yarn run test:base run --coverage",
-    "test:base": "vitest",
-    "lint": "eslint src",
-    "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
-    "format": "yarn run prettier --write",
-    "check-format": "yarn run prettier --check",
-    "check-types": "tsc --noEmit"
-  },
-  "devDependencies": {
-    "@emotion/react": "11.14.0",
-    "@types/d3-format": "3.0.4",
-    "@types/react": "19.2.14",
-    "@vitejs/plugin-react": "6.0.1",
-    "@vitest/coverage-v8": "4.1.5",
-    "eslint": "10.3.0",
-    "jsdom": "29.1.1",
-    "prettier": "3.8.3",
-    "types": "*",
-    "typescript": "5.9.3",
-    "vite": "8.0.10",
-    "vitest": "4.1.5"
-  },
-  "dependencies": {
-    "@mui/material": "7.3.10",
-    "@tanstack/react-query": "5.100.9",
-    "d3-format": "3.1.2",
-    "next": "16.2.4",
-    "react": "19.2.5",
-    "react-dom": "19.2.5",
-    "react-icons": "5.6.0",
-    "use-query-params": "2.2.2"
-  }
+	"name": "qmongjs",
+	"version": "0.0.0",
+	"main": "./src/index.tsx",
+	"types": "./src/index.tsx",
+	"scripts": {
+		"test": "yarn run test:base run --coverage",
+		"test:base": "vitest",
+		"lint": "biome lint src",
+		"lint:fix": "biome lint --write src",
+		"lint:fix:unsafe": "biome lint --write --unsafe src",
+		"format": "biome format --write src",
+		"check-format": "biome format src",
+		"check-types": "tsc"
+	},
+	"devDependencies": {
+		"@emotion/react": "11.14.0",
+		"@types/d3-format": "3.0.4",
+		"@types/react": "19.2.14",
+		"@vitejs/plugin-react": "6.0.1",
+		"@vitest/coverage-v8": "4.1.5",
+		"jsdom": "29.1.1",
+		"types": "*",
+		"typescript": "5.9.3",
+		"vite": "8.0.10",
+		"vitest": "4.1.5"
+	},
+	"dependencies": {
+		"@mui/material": "7.3.10",
+		"@tanstack/react-query": "5.100.9",
+		"d3-format": "3.1.2",
+		"next": "16.2.4",
+		"react": "19.2.5",
+		"react-dom": "19.2.5",
+		"react-icons": "5.6.0",
+		"use-query-params": "2.2.2"
+	}
 }
