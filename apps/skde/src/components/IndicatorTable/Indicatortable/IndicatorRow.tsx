@@ -159,16 +159,20 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
     </Typography>
   );
 
-  const lastDeliveryText =
-    "Siste levering av data: " +
-    (indData.data[0].deliveryTime === null
-      ? "Ikke oppgitt"
-      : new Date(indData.data[0].deliveryTime).toLocaleString("no-NO", {
-          day: "numeric",
-          month: "long",
-          year: "numeric",
-          timeZone: "CET",
-        }));
+  const dates = indData.data.map((row) => {
+    return new Date(row.deliveryTime);
+  });
+  const maxDate = (dates: Date[]) => {
+    const numericDates = dates.map((row) => row.getTime());
+    return new Date(Math.max(...numericDates));
+  };
+
+  const lastDeliveryText = maxDate(dates).toLocaleString("no-NO", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "CET",
+  });
 
   const CollapseContent = (props: { open: boolean }) => {
     const { open } = props;
