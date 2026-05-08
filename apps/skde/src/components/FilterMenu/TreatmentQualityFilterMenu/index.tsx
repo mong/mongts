@@ -1,45 +1,46 @@
-import { PropsWithChildren, useEffect, useState } from "react";
-import {
-  ArrayParam,
-  DelimitedArrayParam,
-  StringParam,
-  UrlUpdateType,
-  useQueryParam,
-  useQueryParams,
-  withDefault,
-} from "use-query-params";
-
-import {
-  FilterMenu,
-  FilterMenuSelectionChangedHandler,
-  FilterMenuFilterInitializedHandler,
-} from "..";
-import { ToggleButtonFilterSection } from "../ToggleButtonFilterSection";
-import { SelectedFiltersSection } from "../SelectedFiltersSection";
-import { RadioGroupFilterSection } from "../RadioGroupFilterSection";
-import { TreeViewFilterSection } from "../TreeViewFilterSection";
-import { FilterSettingsValue } from "../FilterSettingsContext";
-import { FilterSettingsAction } from "../FilterSettingsReducer";
-import { FilterSettingsActionType } from "../FilterSettingsReducer";
-import { SwitchFilterSection } from "../SwitchFilterSection";
-import {
-  getAchievementLevelOptions,
-  getMedicalFields,
-  getTableContextOptions,
-  getTreatmentUnitsTree,
-  getYearOptions,
-} from "./filterMenuOptions";
-import {
-  useUnitNamesQuery,
-  useSelectionYearsQuery,
-} from "qmongjs/src/helpers/hooks";
 import { UseQueryResult } from "@tanstack/react-query";
 import {
-  TreeViewFilterSectionNode,
-  TreeViewFilterSettingsValue,
-  getFilterSettingsValuesMap,
-} from "../TreeViewFilterSection";
+	useSelectionYearsQuery,
+	useUnitNamesQuery,
+} from "qmongjs/src/helpers/hooks";
 import { useShouldReinitialize } from "qmongjs/src/helpers/hooks/useShouldReinitialize";
+import { PropsWithChildren, useEffect, useState } from "react";
+import {
+	ArrayParam,
+	DelimitedArrayParam,
+	StringParam,
+	UrlUpdateType,
+	useQueryParam,
+	useQueryParams,
+	withDefault,
+} from "use-query-params";
+import {
+	FilterMenu,
+	FilterMenuFilterInitializedHandler,
+	FilterMenuSelectionChangedHandler,
+} from "..";
+import { FilterSettingsValue } from "../FilterSettingsContext";
+import {
+	FilterSettingsAction,
+	FilterSettingsActionType,
+} from "../FilterSettingsReducer";
+import { RadioGroupFilterSection } from "../RadioGroupFilterSection";
+import { SelectedFiltersSection } from "../SelectedFiltersSection";
+import { SwitchFilterSection } from "../SwitchFilterSection";
+import { ToggleButtonFilterSection } from "../ToggleButtonFilterSection";
+import {
+	getFilterSettingsValuesMap,
+	TreeViewFilterSection,
+	TreeViewFilterSectionNode,
+	TreeViewFilterSettingsValue,
+} from "../TreeViewFilterSection";
+import {
+	getAchievementLevelOptions,
+	getMedicalFields,
+	getTableContextOptions,
+	getTreatmentUnitsTree,
+	getYearOptions,
+} from "./filterMenuOptions";
 
 // The keys used for the different filter sections
 export const tableContextKey = "context";
@@ -54,33 +55,33 @@ export const dataQualityKey = "dg";
  * The onSelectionChanged handler is called when the selection changes.
  */
 type TreatmentQualityFilterMenuProps = PropsWithChildren<{
-  onSelectionChanged?: FilterMenuSelectionChangedHandler;
-  onFilterInitialized?: FilterMenuFilterInitializedHandler;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  registryNameData: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  medicalFieldData: any;
-  register?: string;
-  testIdPrefix?: string;
-  skipSections?: SkipSections;
-  treatmentUnitSelectionLimit?: number;
-  initialContext?: "caregiver" | "resident";
+	onSelectionChanged?: FilterMenuSelectionChangedHandler;
+	onFilterInitialized?: FilterMenuFilterInitializedHandler;
+	// biome-ignore lint: no-explicit-any -- reason: global replace, please state reason here
+	registryNameData: any;
+	// biome-ignore lint: no-explicit-any -- reason: global replace, please state reason here
+	medicalFieldData: any;
+	register?: string;
+	testIdPrefix?: string;
+	skipSections?: SkipSections;
+	treatmentUnitSelectionLimit?: number;
+	initialContext?: "caregiver" | "resident";
 }>;
 
 interface SkipSections {
-  selectedFilters?: boolean;
-  context?: boolean;
-  years?: boolean;
-  achievmentLevels?: boolean;
-  medicalFields?: boolean;
-  treatmentUnits?: boolean;
-  dataQuality?: boolean;
+	selectedFilters?: boolean;
+	context?: boolean;
+	years?: boolean;
+	achievmentLevels?: boolean;
+	medicalFields?: boolean;
+	treatmentUnits?: boolean;
+	dataQuality?: boolean;
 }
 
 // Types defined because of useQueryParam
 type SetSelectedType = (
-  newValue: string | (string | undefined)[] | undefined,
-  updateType?: UrlUpdateType,
+	newValue: string | (string | undefined)[] | undefined,
+	updateType?: UrlUpdateType,
 ) => void;
 type StringNullOrUndefined = string | null | undefined;
 type UndefinedOrArrayOfStringOrNull = (string | null)[] | undefined;
@@ -90,14 +91,14 @@ type UndefinedOrArrayOfStringOrNull = (string | null)[] | undefined;
  * setSectionSelections().
  */
 type OptionsMapEntry = {
-  options: FilterSettingsValue[] | TreeViewFilterSectionNode[];
-  default: FilterSettingsValue | null;
-  multiselect: boolean;
-  selected: StringNullOrUndefined | UndefinedOrArrayOfStringOrNull;
-  setSelected: (
-    newValue: string | (string | undefined)[] | undefined,
-    updateType?: UrlUpdateType | undefined,
-  ) => void;
+	options: FilterSettingsValue[] | TreeViewFilterSectionNode[];
+	default: FilterSettingsValue | null;
+	multiselect: boolean;
+	selected: StringNullOrUndefined | UndefinedOrArrayOfStringOrNull;
+	setSelected: (
+		newValue: string | (string | undefined)[] | undefined,
+		updateType?: UrlUpdateType | undefined,
+	) => void;
 };
 
 /**
@@ -106,410 +107,410 @@ type OptionsMapEntry = {
  * @returns The treatment quality filter menu component
  */
 export function TreatmentQualityFilterMenu({
-  onSelectionChanged,
-  onFilterInitialized,
-  registryNameData,
-  medicalFieldData,
-  register,
-  testIdPrefix,
-  skipSections,
-  treatmentUnitSelectionLimit,
-  initialContext: initialContext,
+	onSelectionChanged,
+	onFilterInitialized,
+	registryNameData,
+	medicalFieldData,
+	register,
+	testIdPrefix,
+	skipSections,
+	treatmentUnitSelectionLimit,
+	initialContext: initialContext,
 }: TreatmentQualityFilterMenuProps) {
-  const isRegisterPage = !!register;
-  const selectedRegister = register ?? "all";
-  const queryContextType = "ind";
+	const isRegisterPage = !!register;
+	const selectedRegister = register ?? "all";
+	const queryContextType = "ind";
 
-  const [mounted, setMounted] = useState(false);
-  const [isMobile, setIsMobile] = useState<boolean>();
+	const [mounted, setMounted] = useState(false);
+	const [isMobile, setIsMobile] = useState<boolean>();
 
-  useEffect(() => {
-    setIsMobile(
-      screen.orientation.type === "portrait-primary" ||
-        screen.orientation.angle != 0,
-    );
-    setMounted(true);
-  }, []);
+	useEffect(() => {
+		setIsMobile(
+			screen.orientation.type === "portrait-primary" ||
+				screen.orientation.angle != 0,
+		);
+		setMounted(true);
+	}, []);
 
-  // Restrict max number of treatment units
-  const maxSelectedTreatmentUnits =
-    treatmentUnitSelectionLimit ?? (isMobile ? 5 : 10);
+	// Restrict max number of treatment units
+	const maxSelectedTreatmentUnits =
+		treatmentUnitSelectionLimit ?? (isMobile ? 5 : 10);
 
-  // Map for filter options, defaults, and query parameter values and setters
-  const optionsMap = new Map<string, OptionsMapEntry>();
+	// Map for filter options, defaults, and query parameter values and setters
+	const optionsMap = new Map<string, OptionsMapEntry>();
 
-  // All params
-  const [, setAllQueries] = useQueryParams({
-    year: StringParam,
-    level: StringParam,
-    indicator: ArrayParam,
-    selected_treatment_units: DelimitedArrayParam,
-    dg: StringParam,
-    context: StringParam,
-  });
+	// All params
+	const [, setAllQueries] = useQueryParams({
+		year: StringParam,
+		level: StringParam,
+		indicator: ArrayParam,
+		selected_treatment_units: DelimitedArrayParam,
+		dg: StringParam,
+		context: StringParam,
+	});
 
-  // Table context options
-  const tableContextOptions = getTableContextOptions();
-  const [selectedTableContext, setSelectedTableContext] = useQueryParam<string>(
-    tableContextKey,
-    withDefault(
-      StringParam,
-      initialContext ?? tableContextOptions.default.value,
-    ),
-  );
+	// Table context options
+	const tableContextOptions = getTableContextOptions();
+	const [selectedTableContext, setSelectedTableContext] = useQueryParam<string>(
+		tableContextKey,
+		withDefault(
+			StringParam,
+			initialContext ?? tableContextOptions.default.value,
+		),
+	);
 
-  optionsMap.set(tableContextKey, {
-    options: tableContextOptions.values,
-    default: tableContextOptions.default,
-    multiselect: false,
-    selected: selectedTableContext,
-    setSelected: setSelectedTableContext as SetSelectedType,
-  });
+	optionsMap.set(tableContextKey, {
+		options: tableContextOptions.values,
+		default: tableContextOptions.default,
+		multiselect: false,
+		selected: selectedTableContext,
+		setSelected: setSelectedTableContext as SetSelectedType,
+	});
 
-  // Get list of all years with data from given register
-  let listOfYears: [number] | undefined = undefined;
-  if (isRegisterPage) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const selectionYearQuery: UseQueryResult<any, unknown> =
-      useSelectionYearsQuery(register as string, selectedTableContext, "");
+	// Get list of all years with data from given register
+	let listOfYears: [number] | undefined = undefined;
+	if (isRegisterPage) {
+		// biome-ignore lint: no-explicit-any -- reason: global replace, please state reason here
+		const selectionYearQuery: UseQueryResult<any, unknown> =
+			useSelectionYearsQuery(register as string, selectedTableContext, "");
 
-    listOfYears = selectionYearQuery.data as [number];
-  }
+		listOfYears = selectionYearQuery.data as [number];
+	}
 
-  // Year selection
-  const yearOptions = listOfYears
-    ? getYearOptions(Math.min(...listOfYears), Math.max(...listOfYears))
-    : getYearOptions();
+	// Year selection
+	const yearOptions = listOfYears
+		? getYearOptions(Math.min(...listOfYears), Math.max(...listOfYears))
+		: getYearOptions();
 
-  const [selectedYear, setSelectedYear] = useQueryParam<string>(
-    yearKey,
-    withDefault(StringParam, yearOptions.default.value),
-  );
+	const [selectedYear, setSelectedYear] = useQueryParam<string>(
+		yearKey,
+		withDefault(StringParam, yearOptions.default.value),
+	);
 
-  optionsMap.set(yearKey, {
-    options: yearOptions.values,
-    default: yearOptions.default,
-    multiselect: false,
-    selected: selectedYear,
-    setSelected: setSelectedYear as SetSelectedType,
-  });
+	optionsMap.set(yearKey, {
+		options: yearOptions.values,
+		default: yearOptions.default,
+		multiselect: false,
+		selected: selectedYear,
+		setSelected: setSelectedYear as SetSelectedType,
+	});
 
-  // Achievement level selection
-  const achievementLevelOptions = getAchievementLevelOptions();
-  const [selectedAchievementLevel, setSelectedAchievementLevel] =
-    useQueryParam<string>(levelKey);
-  optionsMap.set(levelKey, {
-    options: achievementLevelOptions.values,
-    default: null,
-    multiselect: false,
-    selected: selectedAchievementLevel,
-    setSelected: setSelectedAchievementLevel as SetSelectedType,
-  });
+	// Achievement level selection
+	const achievementLevelOptions = getAchievementLevelOptions();
+	const [selectedAchievementLevel, setSelectedAchievementLevel] =
+		useQueryParam<string>(levelKey);
+	optionsMap.set(levelKey, {
+		options: achievementLevelOptions.values,
+		default: null,
+		multiselect: false,
+		selected: selectedAchievementLevel,
+		setSelected: setSelectedAchievementLevel as SetSelectedType,
+	});
 
-  // Medical fields
-  const medicalFields = getMedicalFields(medicalFieldData, registryNameData);
-  const medicalFieldsMap = getFilterSettingsValuesMap(medicalFields.treedata);
+	// Medical fields
+	const medicalFields = getMedicalFields(medicalFieldData, registryNameData);
+	const medicalFieldsMap = getFilterSettingsValuesMap(medicalFields.treedata);
 
-  const [selectedMedicalFields, setSelectedMedicalFields] = useQueryParam(
-    medicalFieldKey,
-    ArrayParam,
-  );
+	const [selectedMedicalFields, setSelectedMedicalFields] = useQueryParam(
+		medicalFieldKey,
+		ArrayParam,
+	);
 
-  optionsMap.set(medicalFieldKey, {
-    options: medicalFields.treedata,
-    default: medicalFields.defaults[0],
-    multiselect: true,
-    selected: selectedMedicalFields,
-    setSelected: setSelectedMedicalFields as SetSelectedType,
-  });
+	optionsMap.set(medicalFieldKey, {
+		options: medicalFields.treedata,
+		default: medicalFields.defaults[0],
+		multiselect: true,
+		selected: selectedMedicalFields,
+		setSelected: setSelectedMedicalFields as SetSelectedType,
+	});
 
-  // Treatment units
-  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useQueryParam(
-    treatmentUnitsKey,
-    withDefault(DelimitedArrayParam, ["Nasjonalt"]),
-  );
+	// Treatment units
+	const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useQueryParam(
+		treatmentUnitsKey,
+		withDefault(DelimitedArrayParam, ["Nasjonalt"]),
+	);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
-    selectedRegister,
-    selectedTableContext,
-    queryContextType,
-  );
+	// biome-ignore lint: no-explicit-any -- reason: global replace, please state reason here
+	const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
+		selectedRegister,
+		selectedTableContext,
+		queryContextType,
+	);
 
-  // Hook for deciding if the initial state should be refreshed
-  const shouldRefreshInitialState = useShouldReinitialize([unitNamesQuery]);
+	// Hook for deciding if the initial state should be refreshed
+	const shouldRefreshInitialState = useShouldReinitialize([unitNamesQuery]);
 
-  const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
+	const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
-  optionsMap.set(treatmentUnitsKey, {
-    options: treatmentUnits.treedata,
-    default: treatmentUnits.defaults[0],
-    multiselect: true,
-    selected: selectedTreatmentUnits,
-    setSelected: setSelectedTreatmentUnits as SetSelectedType,
-  });
+	optionsMap.set(treatmentUnitsKey, {
+		options: treatmentUnits.treedata,
+		default: treatmentUnits.defaults[0],
+		multiselect: true,
+		selected: selectedTreatmentUnits,
+		setSelected: setSelectedTreatmentUnits as SetSelectedType,
+	});
 
-  // Data quality selection
-  const [dataQualitySelected, setDataQualitySelected] = useQueryParam<string>(
-    dataQualityKey,
-    withDefault(StringParam, "false"),
-  );
-  const dataQualitySelectedValue = {
-    value: "true",
-    valueLabel: "Vis datakvalitet",
-  };
-  const dataQualityEmptyValue = { value: "", valueLabel: "" };
-  optionsMap.set(dataQualityKey, {
-    options: [dataQualityEmptyValue, dataQualitySelectedValue],
-    default: dataQualityEmptyValue,
-    multiselect: false,
-    selected: dataQualitySelected,
-    setSelected: setDataQualitySelected as SetSelectedType,
-  });
+	// Data quality selection
+	const [dataQualitySelected, setDataQualitySelected] = useQueryParam<string>(
+		dataQualityKey,
+		withDefault(StringParam, "false"),
+	);
+	const dataQualitySelectedValue = {
+		value: "true",
+		valueLabel: "Vis datakvalitet",
+	};
+	const dataQualityEmptyValue = { value: "", valueLabel: "" };
+	optionsMap.set(dataQualityKey, {
+		options: [dataQualityEmptyValue, dataQualitySelectedValue],
+		default: dataQualityEmptyValue,
+		multiselect: false,
+		selected: dataQualitySelected,
+		setSelected: setDataQualitySelected as SetSelectedType,
+	});
 
-  /**
-   * Handler function for setting section selections,
-   * called by handleFilterChanged
-   */
-  const setSectionSelections = (
-    filterKey: string,
-    newSelections: FilterSettingsValue[] | undefined,
-  ) => {
-    const options = optionsMap.get(filterKey);
-    if (options) {
-      const setSelected = options.setSelected;
-      const defaultOption = options.default;
-      const multiselect = options.multiselect;
+	/**
+	 * Handler function for setting section selections,
+	 * called by handleFilterChanged
+	 */
+	const setSectionSelections = (
+		filterKey: string,
+		newSelections: FilterSettingsValue[] | undefined,
+	) => {
+		const options = optionsMap.get(filterKey);
+		if (options) {
+			const setSelected = options.setSelected;
+			const defaultOption = options.default;
+			const multiselect = options.multiselect;
 
-      if (!multiselect) {
-        const selectedValue = newSelections?.[0]?.value ?? defaultOption?.value;
-        setSelected(selectedValue);
-      } else {
-        const selectedValues = newSelections?.map(
-          (filterSettingsValue) => filterSettingsValue.value,
-        ) ?? [defaultOption?.value];
-        setSelected(selectedValues);
-      }
-    }
-  };
+			if (!multiselect) {
+				const selectedValue = newSelections?.[0]?.value ?? defaultOption?.value;
+				setSelected(selectedValue);
+			} else {
+				const selectedValues = newSelections?.map(
+					(filterSettingsValue) => filterSettingsValue.value,
+				) ?? [defaultOption?.value];
+				setSelected(selectedValues);
+			}
+		}
+	};
 
-  /**
-   * Handler function for filter selection changes
-   */
-  const handleFilterChanged = (
-    newFilterSettings: { map: Map<string, FilterSettingsValue[]> },
-    oldFilterSettings: { map: Map<string, FilterSettingsValue[]> },
-    action: FilterSettingsAction,
-  ) => {
-    switch (action.type) {
-      case FilterSettingsActionType.DEL_SECTION_SELECTIONS:
-      case FilterSettingsActionType.SET_SECTION_SELECTIONS: {
-        const key = action.sectionSetting.key;
-        setSectionSelections(key, newFilterSettings.map.get(key));
-        break;
-      }
-      case FilterSettingsActionType.RESET_SELECTIONS: {
-        setAllQueries({
-          year:
-            newFilterSettings.map.get(yearKey)?.[0].value ??
-            yearOptions.default.value,
-          level: newFilterSettings.map.get(levelKey)?.[0]?.value, //??
-          //achievementLevelOptions.default.value,
-          indicator: [
-            newFilterSettings.map.get(medicalFieldKey)?.[0].value ?? null,
-            // medicalFields.defaults[0].value, "Alle fagområder" som default
-          ],
-          selected_treatment_units: [
-            newFilterSettings.map.get(treatmentUnitsKey)?.[0].value ??
-              treatmentUnits.defaults[0].value,
-          ],
-          dg:
-            newFilterSettings.map.get(dataQualityKey)?.[0].value ??
-            dataQualityEmptyValue.value,
-          context:
-            newFilterSettings.map.get(tableContextKey)?.[0].value ??
-            tableContextOptions.default.value,
-        });
-        break;
-      }
-      default:
-        break;
-    }
+	/**
+	 * Handler function for filter selection changes
+	 */
+	const handleFilterChanged = (
+		newFilterSettings: { map: Map<string, FilterSettingsValue[]> },
+		oldFilterSettings: { map: Map<string, FilterSettingsValue[]> },
+		action: FilterSettingsAction,
+	) => {
+		switch (action.type) {
+			case FilterSettingsActionType.DEL_SECTION_SELECTIONS:
+			case FilterSettingsActionType.SET_SECTION_SELECTIONS: {
+				const key = action.sectionSetting.key;
+				setSectionSelections(key, newFilterSettings.map.get(key));
+				break;
+			}
+			case FilterSettingsActionType.RESET_SELECTIONS: {
+				setAllQueries({
+					year:
+						newFilterSettings.map.get(yearKey)?.[0].value ??
+						yearOptions.default.value,
+					level: newFilterSettings.map.get(levelKey)?.[0]?.value, //??
+					//achievementLevelOptions.default.value,
+					indicator: [
+						newFilterSettings.map.get(medicalFieldKey)?.[0].value ?? null,
+						// medicalFields.defaults[0].value, "Alle fagområder" som default
+					],
+					selected_treatment_units: [
+						newFilterSettings.map.get(treatmentUnitsKey)?.[0].value ??
+							treatmentUnits.defaults[0].value,
+					],
+					dg:
+						newFilterSettings.map.get(dataQualityKey)?.[0].value ??
+						dataQualityEmptyValue.value,
+					context:
+						newFilterSettings.map.get(tableContextKey)?.[0].value ??
+						tableContextOptions.default.value,
+				});
+				break;
+			}
+			default:
+				break;
+		}
 
-    onSelectionChanged?.(newFilterSettings, oldFilterSettings, action);
-  };
+		onSelectionChanged?.(newFilterSettings, oldFilterSettings, action);
+	};
 
-  const getFilterSettingsValue = (
-    filterKey: string,
-    value: string,
-  ): FilterSettingsValue[] => {
-    const result: FilterSettingsValue[] = [];
+	const getFilterSettingsValue = (
+		filterKey: string,
+		value: string,
+	): FilterSettingsValue[] => {
+		const result: FilterSettingsValue[] = [];
 
-    const findAndAddValue = (
-      value: string,
-      filterSettingsValues: FilterSettingsValue[],
-      result: FilterSettingsValue[],
-    ) => {
-      const filterSettingsValue = filterSettingsValues.find(
-        (settingsVal) => settingsVal.value === value,
-      );
-      if (filterSettingsValue) {
-        result.push(filterSettingsValue);
-      }
-    };
+		const findAndAddValue = (
+			value: string,
+			filterSettingsValues: FilterSettingsValue[],
+			result: FilterSettingsValue[],
+		) => {
+			const filterSettingsValue = filterSettingsValues.find(
+				(settingsVal) => settingsVal.value === value,
+			);
+			if (filterSettingsValue) {
+				result.push(filterSettingsValue);
+			}
+		};
 
-    switch (filterKey) {
-      case levelKey: {
-        findAndAddValue(value, achievementLevelOptions.values, result);
-        break;
-      }
-      default:
-        break;
-    }
+		switch (filterKey) {
+			case levelKey: {
+				findAndAddValue(value, achievementLevelOptions.values, result);
+				break;
+			}
+			default:
+				break;
+		}
 
-    return result;
-  };
+		return result;
+	};
 
-  const getValueLabel = (
-    value: string | null,
-    medicalFieldsMap: Map<string, TreeViewFilterSettingsValue[]>,
-  ): string | null => {
-    if (value === null) {
-      return null;
-    }
-    const filterSettingsValueArray = medicalFieldsMap.get(value);
+	const getValueLabel = (
+		value: string | null,
+		medicalFieldsMap: Map<string, TreeViewFilterSettingsValue[]>,
+	): string | null => {
+		if (value === null) {
+			return null;
+		}
+		const filterSettingsValueArray = medicalFieldsMap.get(value);
 
-    const valueLabel =
-      Array.isArray(filterSettingsValueArray) &&
-      filterSettingsValueArray.length > 0
-        ? filterSettingsValueArray[0].valueLabel
-        : null;
+		const valueLabel =
+			Array.isArray(filterSettingsValueArray) &&
+			filterSettingsValueArray.length > 0
+				? filterSettingsValueArray[0].valueLabel
+				: null;
 
-    return valueLabel;
-  };
+		return valueLabel;
+	};
 
-  if (!mounted) {
-    return <></>;
-  }
+	if (!mounted) {
+		return <></>;
+	}
 
-  return (
-    <>
-      <FilterMenu
-        refreshState={shouldRefreshInitialState}
-        onSelectionChanged={handleFilterChanged}
-        onFilterInitialized={onFilterInitialized}
-      >
-        <ToggleButtonFilterSection
-          accordion={false}
-          noShadow={true}
-          skip={skipSections?.context}
-          filterkey={tableContextKey}
-          sectionid={tableContextKey}
-          testIdPrefix={testIdPrefix}
-          sectiontitle="Tabellkontekst"
-          options={tableContextOptions.values}
-          defaultvalues={[tableContextOptions.default]}
-          initialselections={[
-            {
-              value: selectedTableContext,
-              valueLabel:
-                selectedTableContext === "resident"
-                  ? "Opptaksområder"
-                  : "Behandlingsenheter",
-            },
-          ]}
-        />
-        <SelectedFiltersSection
-          accordion={false}
-          noShadow={false}
-          filterkey="selectedfilters"
-          sectionid="selectedfilters"
-          sectiontitle="Valgte filtre"
-          skip={skipSections?.selectedFilters}
-        />
-        <TreeViewFilterSection
-          refreshState={shouldRefreshInitialState}
-          treedata={treatmentUnits.treedata}
-          defaultvalues={treatmentUnits.defaults}
-          initialselections={
-            selectedTreatmentUnits.map((value) => ({
-              value: value,
-              valueLabel: value,
-            })) as FilterSettingsValue[]
-          }
-          sectionid={treatmentUnitsKey}
-          sectiontitle={
-            selectedTableContext === "resident"
-              ? "Opptaksområder"
-              : "Behandlingsenheter"
-          }
-          filterkey={treatmentUnitsKey}
-          searchbox={true}
-          maxselections={maxSelectedTreatmentUnits}
-          skip={skipSections?.treatmentUnits}
-        />
-        <TreeViewFilterSection
-          skip={isRegisterPage || skipSections?.medicalFields}
-          refreshState={shouldRefreshInitialState}
-          treedata={medicalFields.treedata}
-          defaultvalues={medicalFields.defaults}
-          // Automatic clearing selections when "Alle fagområder" is clicked
-          // autouncheckid={medicalFields.defaults[0].value}
-          initialselections={
-            selectedMedicalFields?.map((value) => ({
-              value: value,
-              valueLabel: getValueLabel(value, medicalFieldsMap),
-            })) as FilterSettingsValue[]
-          }
-          sectionid={medicalFieldKey}
-          sectiontitle="Fagområder"
-          filterkey={medicalFieldKey}
-          searchbox={true}
-        />
-        <RadioGroupFilterSection
-          radios={yearOptions.values}
-          defaultvalues={[yearOptions.default]}
-          initialselections={[
-            { value: selectedYear, valueLabel: selectedYear },
-          ]}
-          sectiontitle={"År"}
-          sectionid={yearKey}
-          filterkey={yearKey}
-          skip={skipSections?.years}
-        />
-        <RadioGroupFilterSection
-          radios={achievementLevelOptions.values}
-          defaultvalues={
-            achievementLevelOptions.default
-              ? [achievementLevelOptions.default]
-              : []
-          }
-          initialselections={getFilterSettingsValue(
-            levelKey,
-            selectedAchievementLevel,
-          )}
-          sectiontitle={"Måloppnåelse"}
-          sectionid={levelKey}
-          filterkey={levelKey}
-          skip={skipSections?.achievmentLevels}
-        />
-        <SwitchFilterSection
-          skip={isRegisterPage || skipSections?.dataQuality}
-          sectionid={dataQualityKey}
-          filterkey={dataQualityKey}
-          sectiontitle={"Datakvalitet"}
-          label={dataQualitySelectedValue.valueLabel}
-          initialselections={
-            dataQualitySelected === "true"
-              ? [dataQualitySelectedValue]
-              : undefined
-          }
-          activatedswitchvalue={dataQualitySelectedValue}
-          helperText={
-            "Bytter visning av kvalitetsindikatorer til indikatorer for dekningsgrad. Dekningsgrad sier noe om datakvalitet for kvalitetsindikatoren."
-          }
-        />
-      </FilterMenu>
-    </>
-  );
+	return (
+		<>
+			<FilterMenu
+				refreshState={shouldRefreshInitialState}
+				onSelectionChanged={handleFilterChanged}
+				onFilterInitialized={onFilterInitialized}
+			>
+				<ToggleButtonFilterSection
+					accordion={false}
+					noShadow={true}
+					skip={skipSections?.context}
+					filterkey={tableContextKey}
+					sectionid={tableContextKey}
+					testIdPrefix={testIdPrefix}
+					sectiontitle="Tabellkontekst"
+					options={tableContextOptions.values}
+					defaultvalues={[tableContextOptions.default]}
+					initialselections={[
+						{
+							value: selectedTableContext,
+							valueLabel:
+								selectedTableContext === "resident"
+									? "Opptaksområder"
+									: "Behandlingsenheter",
+						},
+					]}
+				/>
+				<SelectedFiltersSection
+					accordion={false}
+					noShadow={false}
+					filterkey="selectedfilters"
+					sectionid="selectedfilters"
+					sectiontitle="Valgte filtre"
+					skip={skipSections?.selectedFilters}
+				/>
+				<TreeViewFilterSection
+					refreshState={shouldRefreshInitialState}
+					treedata={treatmentUnits.treedata}
+					defaultvalues={treatmentUnits.defaults}
+					initialselections={
+						selectedTreatmentUnits.map((value) => ({
+							value: value,
+							valueLabel: value,
+						})) as FilterSettingsValue[]
+					}
+					sectionid={treatmentUnitsKey}
+					sectiontitle={
+						selectedTableContext === "resident"
+							? "Opptaksområder"
+							: "Behandlingsenheter"
+					}
+					filterkey={treatmentUnitsKey}
+					searchbox={true}
+					maxselections={maxSelectedTreatmentUnits}
+					skip={skipSections?.treatmentUnits}
+				/>
+				<TreeViewFilterSection
+					skip={isRegisterPage || skipSections?.medicalFields}
+					refreshState={shouldRefreshInitialState}
+					treedata={medicalFields.treedata}
+					defaultvalues={medicalFields.defaults}
+					// Automatic clearing selections when "Alle fagområder" is clicked
+					// autouncheckid={medicalFields.defaults[0].value}
+					initialselections={
+						selectedMedicalFields?.map((value) => ({
+							value: value,
+							valueLabel: getValueLabel(value, medicalFieldsMap),
+						})) as FilterSettingsValue[]
+					}
+					sectionid={medicalFieldKey}
+					sectiontitle="Fagområder"
+					filterkey={medicalFieldKey}
+					searchbox={true}
+				/>
+				<RadioGroupFilterSection
+					radios={yearOptions.values}
+					defaultvalues={[yearOptions.default]}
+					initialselections={[
+						{ value: selectedYear, valueLabel: selectedYear },
+					]}
+					sectiontitle={"År"}
+					sectionid={yearKey}
+					filterkey={yearKey}
+					skip={skipSections?.years}
+				/>
+				<RadioGroupFilterSection
+					radios={achievementLevelOptions.values}
+					defaultvalues={
+						achievementLevelOptions.default
+							? [achievementLevelOptions.default]
+							: []
+					}
+					initialselections={getFilterSettingsValue(
+						levelKey,
+						selectedAchievementLevel,
+					)}
+					sectiontitle={"Måloppnåelse"}
+					sectionid={levelKey}
+					filterkey={levelKey}
+					skip={skipSections?.achievmentLevels}
+				/>
+				<SwitchFilterSection
+					skip={isRegisterPage || skipSections?.dataQuality}
+					sectionid={dataQualityKey}
+					filterkey={dataQualityKey}
+					sectiontitle={"Datakvalitet"}
+					label={dataQualitySelectedValue.valueLabel}
+					initialselections={
+						dataQualitySelected === "true"
+							? [dataQualitySelectedValue]
+							: undefined
+					}
+					activatedswitchvalue={dataQualitySelectedValue}
+					helperText={
+						"Bytter visning av kvalitetsindikatorer til indikatorer for dekningsgrad. Dekningsgrad sier noe om datakvalitet for kvalitetsindikatoren."
+					}
+				/>
+			</FilterMenu>
+		</>
+	);
 }

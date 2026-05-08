@@ -1,9 +1,9 @@
 {
-  "ignore": ["apps/skde/test/cypress/plugins/index.ts", "eslint.config.mjs"],
-  "ignoreDependencies": [
-    "mysql2",
-    "@vitest/coverage-v8",
-    "express-serve-static-core",
-    "dotenv"
-  ]
+	"ignore": ["apps/skde/test/cypress/plugins/index.ts"],
+	"ignoreDependencies": [
+		"mysql2",
+		"@vitest/coverage-v8",
+		"express-serve-static-core",
+		"dotenv"
+	]
 }

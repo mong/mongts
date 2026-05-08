@@ -2,9 +2,9 @@ import { UseQueryResult } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// biome-ignore lint: no-explicit-any -- reason: global replace, please state reason here
 const anyQueriesLoading = (queries: UseQueryResult<any, unknown>[]) => {
-  return queries.some((query) => query.isLoading);
+	return queries.some((query) => query.isLoading);
 };
 
 /**
@@ -17,37 +17,37 @@ const anyQueriesLoading = (queries: UseQueryResult<any, unknown>[]) => {
  * @returns True the first time the page is finished hydrated and all queries have finished loading
  */
 export function useShouldReinitialize(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  queries: UseQueryResult<any, unknown>[],
+	// biome-ignore lint: no-explicit-any -- reason: global replace, please state reason here
+	queries: UseQueryResult<any, unknown>[],
 ) {
-  const router = useRouter();
+	const router = useRouter();
 
-  const [previousPrerenderingStatus, setPreviousPrerenderingStatus] = useState(
-    router.isReady,
-  );
+	const [previousPrerenderingStatus, setPreviousPrerenderingStatus] = useState(
+		router.isReady,
+	);
 
-  const prerenderingJustCompleted =
-    previousPrerenderingStatus !== router.isReady;
+	const prerenderingJustCompleted =
+		previousPrerenderingStatus !== router.isReady;
 
-  useEffect(() => {
-    setPreviousPrerenderingStatus(router.isReady);
-  }, [router.isReady]);
+	useEffect(() => {
+		setPreviousPrerenderingStatus(router.isReady);
+	}, [router.isReady]);
 
-  const areQueriesStillLoading = anyQueriesLoading(queries);
+	const areQueriesStillLoading = anyQueriesLoading(queries);
 
-  const [previousQueryLoadingStatus, setPreviousQueryLoadingStatus] = useState(
-    areQueriesStillLoading,
-  );
+	const [previousQueryLoadingStatus, setPreviousQueryLoadingStatus] = useState(
+		areQueriesStillLoading,
+	);
 
-  const queriesJustCompleted =
-    previousQueryLoadingStatus && !anyQueriesLoading(queries);
+	const queriesJustCompleted =
+		previousQueryLoadingStatus && !anyQueriesLoading(queries);
 
-  useEffect(() => {
-    setPreviousQueryLoadingStatus(areQueriesStillLoading);
-  }, [areQueriesStillLoading]);
+	useEffect(() => {
+		setPreviousQueryLoadingStatus(areQueriesStillLoading);
+	}, [areQueriesStillLoading]);
 
-  return (
-    (prerenderingJustCompleted && !areQueriesStillLoading) ||
-    queriesJustCompleted
-  );
+	return (
+		(prerenderingJustCompleted && !areQueriesStillLoading) ||
+		queriesJustCompleted
+	);
 }

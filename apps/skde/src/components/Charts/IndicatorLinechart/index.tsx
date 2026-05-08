@@ -1,144 +1,144 @@
+import { LineChartPro } from "@mui/x-charts-pro";
 import { UseQueryResult } from "@tanstack/react-query";
 import _ from "lodash";
-import { useIndicatorQuery, level, minDG } from "qmongjs";
+import { level, minDG, useIndicatorQuery } from "qmongjs";
 import { Indicator } from "types";
-import { LineChartPro } from "@mui/x-charts-pro";
 
 export type IndicatorLinechartParams = {
-  registerShortName?: string;
-  unitNames?: string[];
-  unitLevel?: "nation" | "rhf" | "hf" | "hospital";
-  context: "caregiver" | "resident";
-  type: "ind" | "dg";
-  width: number;
-  height: number;
-  yAxisText: string;
-  normalise: boolean;
-  yMin?: number;
-  yMax?: number;
-  startYear?: number;
-  endYear?: number;
-  useToolTip?: boolean;
+	registerShortName?: string;
+	unitNames?: string[];
+	unitLevel?: "nation" | "rhf" | "hf" | "hospital";
+	context: "caregiver" | "resident";
+	type: "ind" | "dg";
+	width: number;
+	height: number;
+	yAxisText: string;
+	normalise: boolean;
+	yMin?: number;
+	yMax?: number;
+	startYear?: number;
+	endYear?: number;
+	useToolTip?: boolean;
 };
 
 export type IndicatorLevels = {
-  ind_id: string;
-  year: number;
-  level: 0 | 1 | 2;
+	ind_id: string;
+	year: number;
+	level: 0 | 1 | 2;
 };
 
 type DataPoint = {
-  year: number;
-  number: number;
+	year: number;
+	number: number;
 };
 
 type GroupedLevels = {
-  0: DataPoint[];
-  1: DataPoint[];
-  2: DataPoint[];
+	0: DataPoint[];
+	1: DataPoint[];
+	2: DataPoint[];
 };
 
 // Define high achievement as 0, medium as 1 and low as 2
 // If the limits are not set the level is undefined
 // Let -1 be undefined
 const mapLevel = (indicatorLevel: string) => {
-  let mappedLevel: number;
-  switch (indicatorLevel) {
-    case "H":
-      mappedLevel = 0;
-      break;
-    case "M":
-      mappedLevel = 1;
-      break;
-    case "L":
-      mappedLevel = 2;
-      break;
-    default:
-      mappedLevel = -1;
-  }
+	let mappedLevel: number;
+	switch (indicatorLevel) {
+		case "H":
+			mappedLevel = 0;
+			break;
+		case "M":
+			mappedLevel = 1;
+			break;
+		case "L":
+			mappedLevel = 2;
+			break;
+		default:
+			mappedLevel = -1;
+	}
 
-  return mappedLevel;
+	return mappedLevel;
 };
 
 export const countLevels = (levels: IndicatorLevels[]) => {
-  return _(levels)
-    .countBy((row) => {
-      return [row.level, row.year];
-    })
-    .reduce(
-      (result, value, key) => {
-        const [level, year] = key.split(",");
+	return _(levels)
+		.countBy((row) => {
+			return [row.level, row.year];
+		})
+		.reduce(
+			(result, value, key) => {
+				const [level, year] = key.split(",");
 
-        if (level !== "-1") {
-          result[level].push({ year: parseInt(year), number: value });
-        }
+				if (level !== "-1") {
+					result[level].push({ year: parseInt(year), number: value });
+				}
 
-        return result;
-      },
-      {
-        0: new Array<DataPoint>(),
-        1: new Array<DataPoint>(),
-        2: new Array<DataPoint>(),
-      } as GroupedLevels,
-    );
+				return result;
+			},
+			{
+				0: new Array<DataPoint>(),
+				1: new Array<DataPoint>(),
+				2: new Array<DataPoint>(),
+			} as GroupedLevels,
+		);
 };
 
 // GroupedLevels only contains datapoint for the years where there is data.
 // This function adds years without data in the range [minYear, maxYear] and sets the value to 0.
 export const setMissingToZero = (
-  groupedLevels: GroupedLevels,
-  minYear: number,
-  maxYear: number,
+	groupedLevels: GroupedLevels,
+	minYear: number,
+	maxYear: number,
 ) => {
-  const dataAllLevels = [[], [], []];
+	const dataAllLevels = [[], [], []];
 
-  // i is the index of the year.
-  // i = 0 corresponds to minYear.
-  let i = 0;
+	// i is the index of the year.
+	// i = 0 corresponds to minYear.
+	let i = 0;
 
-  for (let year = minYear; year <= maxYear; year++) {
-    for (let level = 0; level < 3; level++) {
-      // Initialise the array for the current level and year
-      dataAllLevels[level][i] = { year: year, number: 0 };
+	for (let year = minYear; year <= maxYear; year++) {
+		for (let level = 0; level < 3; level++) {
+			// Initialise the array for the current level and year
+			dataAllLevels[level][i] = { year: year, number: 0 };
 
-      for (let j = 0; j < groupedLevels[level].length; j++) {
-        // Iterate over groupedLevels and copy the value to the current level and year
-        if (dataAllLevels[level][i].year === groupedLevels[level][j].year) {
-          dataAllLevels[level][i].number = groupedLevels[level][j].number;
-        }
-      }
-    }
-    i++;
-  }
+			for (let j = 0; j < groupedLevels[level].length; j++) {
+				// Iterate over groupedLevels and copy the value to the current level and year
+				if (dataAllLevels[level][i].year === groupedLevels[level][j].year) {
+					dataAllLevels[level][i].number = groupedLevels[level][j].number;
+				}
+			}
+		}
+		i++;
+	}
 
-  // Reassemble into array
-  const chartData: { x: number; y: number }[][] = [0, 1, 2].map((i) => {
-    return dataAllLevels[i].map((row) => {
-      return { x: row.year, y: row.number } as { x: number; y: number };
-    });
-  });
+	// Reassemble into array
+	const chartData: { x: number; y: number }[][] = [0, 1, 2].map((i) => {
+		return dataAllLevels[i].map((row) => {
+			return { x: row.year, y: row.number } as { x: number; y: number };
+		});
+	});
 
-  return chartData;
+	return chartData;
 };
 
 const normaliseChartData = (data: { x: number; y: number }[][]) => {
-  // Count instances per year
-  const sum0 = data[0].map((point) => point.y);
-  const sum1 = data[1].map((point) => point.y);
-  const sum2 = data[2].map((point) => point.y);
+	// Count instances per year
+	const sum0 = data[0].map((point) => point.y);
+	const sum1 = data[1].map((point) => point.y);
+	const sum2 = data[2].map((point) => point.y);
 
-  for (let i = 0; i < data[0].length; i++) {
-    // Sum of the number of indicators or year at index i
-    const sumAll = sum0[i] + sum1[i] + sum2[i];
+	for (let i = 0; i < data[0].length; i++) {
+		// Sum of the number of indicators or year at index i
+		const sumAll = sum0[i] + sum1[i] + sum2[i];
 
-    if (sumAll != 0) {
-      data[0][i].y = data[0][i].y / sumAll;
-      data[1][i].y = data[1][i].y / sumAll;
-      data[2][i].y = data[2][i].y / sumAll;
-    } // Otherwise all the y values are zero
-  }
+		if (sumAll != 0) {
+			data[0][i].y = data[0][i].y / sumAll;
+			data[1][i].y = data[1][i].y / sumAll;
+			data[2][i].y = data[2][i].y / sumAll;
+		} // Otherwise all the y values are zero
+	}
 
-  return data;
+	return data;
 };
 
 const levelAColour = "#58A55C";
@@ -146,122 +146,122 @@ const levelBColour = "#FD9C00";
 const levelCColour = "#D85140";
 
 export const IndicatorLinechart = (
-  indicatorParams: IndicatorLinechartParams,
+	indicatorParams: IndicatorLinechartParams,
 ) => {
-  // Fetch aggregated data
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const indicatorQuery: UseQueryResult<any, unknown> =
-    useIndicatorQuery(indicatorParams);
+	// Fetch aggregated data
+	// biome-ignore lint: no-explicit-any -- reason: global replace, please state reason here
+	const indicatorQuery: UseQueryResult<any, unknown> =
+		useIndicatorQuery(indicatorParams);
 
-  if (indicatorQuery.isFetching) {
-    return null;
-  }
+	if (indicatorQuery.isFetching) {
+		return null;
+	}
 
-  // Set indicator colour from value and colour limits
-  const levels: IndicatorLevels[] = indicatorQuery.data.map(
-    (row: Indicator) => {
-      const indicatorLevel =
-        // TODO: Do not allow null to go through
-        row.dg === null || row.dg >= minDG ? mapLevel(level(row)) : -1;
-      return { ind_id: row.ind_id, year: row.year, level: indicatorLevel };
-    },
-  );
+	// Set indicator colour from value and colour limits
+	const levels: IndicatorLevels[] = indicatorQuery.data.map(
+		(row: Indicator) => {
+			const indicatorLevel =
+				// TODO: Do not allow null to go through
+				row.dg === null || row.dg >= minDG ? mapLevel(level(row)) : -1;
+			return { ind_id: row.ind_id, year: row.year, level: indicatorLevel };
+		},
+	);
 
-  // Remove duplicates due to registries under multiple medfields
-  const uniqueLevels = levels.filter(
-    (obj1, i, arr) =>
-      arr.findIndex(
-        (obj2) =>
-          obj2.ind_id == obj1.ind_id &&
-          obj2.year === obj1.year &&
-          obj2.level === obj1.level,
-      ) === i,
-  );
+	// Remove duplicates due to registries under multiple medfields
+	const uniqueLevels = levels.filter(
+		(obj1, i, arr) =>
+			arr.findIndex(
+				(obj2) =>
+					obj2.ind_id == obj1.ind_id &&
+					obj2.year === obj1.year &&
+					obj2.level === obj1.level,
+			) === i,
+	);
 
-  // Count indicators per level per year
-  const groupedLevels = countLevels(uniqueLevels);
+	// Count indicators per level per year
+	const groupedLevels = countLevels(uniqueLevels);
 
-  // Time series bounds
-  const minYear =
-    indicatorParams.startYear ??
-    _.min(
-      levels.map((row) => {
-        return row.year;
-      }),
-    );
+	// Time series bounds
+	const minYear =
+		indicatorParams.startYear ??
+		_.min(
+			levels.map((row) => {
+				return row.year;
+			}),
+		);
 
-  const maxYear =
-    indicatorParams.endYear ??
-    _.max(
-      levels.map((row) => {
-        return row.year;
-      }),
-    );
+	const maxYear =
+		indicatorParams.endYear ??
+		_.max(
+			levels.map((row) => {
+				return row.year;
+			}),
+		);
 
-  // Fill missing years with zero
-  let chartData = setMissingToZero(groupedLevels, minYear, maxYear);
+	// Fill missing years with zero
+	let chartData = setMissingToZero(groupedLevels, minYear, maxYear);
 
-  const normalise = indicatorParams.normalise ?? false;
+	const normalise = indicatorParams.normalise ?? false;
 
-  if (normalise) {
-    chartData = normaliseChartData(chartData);
-  }
+	if (normalise) {
+		chartData = normaliseChartData(chartData);
+	}
 
-  const legendValueFormatter = (value: number) => {
-    const returnValue = normalise
-      ? Math.round(100 * value).toString() + " %"
-      : value.toString();
-    return returnValue;
-  };
+	const legendValueFormatter = (value: number) => {
+		const returnValue = normalise
+			? Math.round(100 * value).toString() + " %"
+			: value.toString();
+		return returnValue;
+	};
 
-  return (
-    <LineChartPro
-      series={[
-        {
-          data: chartData[0].map((row) => row.y),
-          curve: "linear",
-          color: levelAColour,
-          valueFormatter: legendValueFormatter,
-        },
-        {
-          data: chartData[1].map((row) => row.y),
-          curve: "linear",
-          color: levelBColour,
-          valueFormatter: legendValueFormatter,
-        },
-        {
-          data: chartData[2].map((row) => row.y),
-          curve: "linear",
-          color: levelCColour,
-          valueFormatter: legendValueFormatter,
-        },
-      ]}
-      xAxis={[
-        {
-          scaleType: "point",
-          data: chartData[1].map((row) => row.x),
-          tickLabelStyle: { fontSize: 16 },
-          label: "År",
-          labelStyle: { fontSize: 20 },
-          valueFormatter: (value: number) => value.toString(),
-          height: 60,
-        },
-      ]}
-      yAxis={[
-        {
-          width: 70,
-          min: indicatorParams.yMin,
-          max: indicatorParams.yMax,
-          tickLabelStyle: { fontSize: 16 },
-          valueFormatter: (value: number) => {
-            const returnValue = normalise
-              ? Math.round(100 * value).toString() + " %"
-              : value.toString();
-            return returnValue;
-          },
-        },
-      ]}
-      height={indicatorParams.height}
-    />
-  );
+	return (
+		<LineChartPro
+			series={[
+				{
+					data: chartData[0].map((row) => row.y),
+					curve: "linear",
+					color: levelAColour,
+					valueFormatter: legendValueFormatter,
+				},
+				{
+					data: chartData[1].map((row) => row.y),
+					curve: "linear",
+					color: levelBColour,
+					valueFormatter: legendValueFormatter,
+				},
+				{
+					data: chartData[2].map((row) => row.y),
+					curve: "linear",
+					color: levelCColour,
+					valueFormatter: legendValueFormatter,
+				},
+			]}
+			xAxis={[
+				{
+					scaleType: "point",
+					data: chartData[1].map((row) => row.x),
+					tickLabelStyle: { fontSize: 16 },
+					label: "År",
+					labelStyle: { fontSize: 20 },
+					valueFormatter: (value: number) => value.toString(),
+					height: 60,
+				},
+			]}
+			yAxis={[
+				{
+					width: 70,
+					min: indicatorParams.yMin,
+					max: indicatorParams.yMax,
+					tickLabelStyle: { fontSize: 16 },
+					valueFormatter: (value: number) => {
+						const returnValue = normalise
+							? Math.round(100 * value).toString() + " %"
+							: value.toString();
+						return returnValue;
+					},
+				},
+			]}
+			height={indicatorParams.height}
+		/>
+	);
 };

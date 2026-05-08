@@ -1,400 +1,403 @@
-import { useEffect, useState } from "react";
-import { GetStaticProps, GetStaticPaths } from "next";
-import {
-  Box,
-  CssBaseline,
-  Divider,
-  IconButton,
-  Link,
-  ThemeProvider,
-  Typography,
-  useMediaQuery,
-  Stack,
-} from "@mui/material";
-
 import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
+import {
+	Box,
+	CssBaseline,
+	Divider,
+	IconButton,
+	Link,
+	Stack,
+	ThemeProvider,
+	Typography,
+	useMediaQuery,
+} from "@mui/material";
 import Grid from "@mui/material/Grid";
+import { GetStaticPaths, GetStaticProps } from "next";
 import {
-  defaultYear,
-  defaultReviewYear,
-  skdeTheme,
-  fetchRegisterNames,
-  useRegistryRankQuery,
+	defaultReviewYear,
+	defaultYear,
+	fetchRegisterNames,
+	skdeTheme,
+	useRegistryRankQuery,
 } from "qmongjs";
-import { FilterSettingsAction } from "../../src/components/FilterMenu/FilterSettingsReducer";
-import { FilterSettingsValue } from "../../src/components/FilterMenu/FilterSettingsContext";
-import { TreatmentQualityFilterMenu } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
-import { levelKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
-import { tableContextKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
-import { treatmentUnitsKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
-import { yearKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
-import { FilterSettingsActionType } from "../../src/components/FilterMenu/FilterSettingsReducer";
-import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
-import { FilterDrawer } from "../../src/components/TreatmentQuality";
-import { Footer } from "../../src/components/Footer";
-import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
+import { useEffect, useState } from "react";
 import { RegisterName, RegistryRank } from "types";
-import { valueOrDefault } from "../../src/utils/valueOrDefault";
-import { LayoutHead } from "../../src/components/LayoutHead";
+import { FilterSettingsValue } from "../../src/components/FilterMenu/FilterSettingsContext";
 import {
-  ColourMap,
-  updateColourMap,
-  getSortedList,
+	FilterSettingsAction,
+	FilterSettingsActionType,
+} from "../../src/components/FilterMenu/FilterSettingsReducer";
+import {
+	levelKey,
+	TreatmentQualityFilterMenu,
+	tableContextKey,
+	treatmentUnitsKey,
+	yearKey,
+} from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
+import { Footer } from "../../src/components/Footer";
+import { IndicatorTable } from "../../src/components/IndicatorTable/Indicatortable";
+import { LayoutHead } from "../../src/components/LayoutHead";
+import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
+import { FilterDrawer } from "../../src/components/TreatmentQuality";
+import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
+import {
+	ColourMap,
+	updateColourMap,
+	getSortedList,
 } from "../../src/helpers/functions/chartColours";
 import checkParamsReady from "../../src/utils/checkParamsReady";
-import { IndicatorTable } from "../../src/components/IndicatorTable/Indicatortable";
+import { valueOrDefault } from "../../src/utils/valueOrDefault";
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
-  const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
-  const [drawerOpen, setDrawerOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const [colourMap, setColourMap] = useState<ColourMap[]>([]);
+	const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
+	const [drawerOpen, setDrawerOpen] = useState(false);
+	const [mounted, setMounted] = useState(false);
+	const [colourMap, setColourMap] = useState<ColourMap[]>([]);
 
-  const registryName = registryInfo[0].rname;
-  const skipTableContextSection =
-    registryInfo[0].resident_data + registryInfo[0].caregiver_data !== 2;
+	const registryName = registryInfo[0].rname;
+	const skipTableContextSection =
+		registryInfo[0].resident_data + registryInfo[0].caregiver_data !== 2;
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+	useEffect(() => {
+		setMounted(true);
+	}, []);
 
-  const toggleDrawer = (newOpen: boolean) => {
-    setDrawerOpen(newOpen);
-  };
+	const toggleDrawer = (newOpen: boolean) => {
+		setDrawerOpen(newOpen);
+	};
 
-  const defaultTreatmentUnits = ["Nasjonalt"];
+	const defaultTreatmentUnits = ["Nasjonalt"];
 
-  // Context (caregiver or resident)
-  const defaultTableContext =
-    registryInfo[0].caregiver_data === 0 ? "resident" : "caregiver";
-  const [selectedTableContext, setSelectedTableContext] =
-    useState(defaultTableContext);
+	// Context (caregiver or resident)
+	const defaultTableContext =
+		registryInfo[0].caregiver_data === 0 ? "resident" : "caregiver";
+	const [selectedTableContext, setSelectedTableContext] =
+		useState(defaultTableContext);
 
-  // Used by indicator table
-  const [selectedYear, setSelectedYear] = useState(defaultYear);
-  const [selectedLevel, setSelectedLevel] = useState<string | undefined>(
-    undefined,
-  );
-  const [selectedMedicalFields, setSelectedMedicalFields] = useState<string[]>(
-    [],
-  );
-  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState(
-    defaultTreatmentUnits,
-  );
+	// Used by indicator table
+	const [selectedYear, setSelectedYear] = useState(defaultYear);
+	const [selectedLevel, setSelectedLevel] = useState<string | undefined>(
+		undefined,
+	);
+	const [selectedMedicalFields, setSelectedMedicalFields] = useState<string[]>(
+		[],
+	);
+	const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useState(
+		defaultTreatmentUnits,
+	);
 
-  let registryRank = "NA";
-  // eslint-disable-next-line no-undef
-  if (!process.env.NEXT_PUBLIC_VERIFY) {
-    // Fetch the registry's stage and level
-    const registryRankQuery = useRegistryRankQuery(defaultReviewYear);
+	let registryRank = "NA";
+	// biome-ignore lint: no-undecleared-variables -- reason: global replace, please state reason hereno-undef
+	if (!process.env.NEXT_PUBLIC_VERIFY) {
+		// Fetch the registry's stage and level
+		const registryRankQuery = useRegistryRankQuery(defaultReviewYear);
 
-    if (registryRankQuery.isFetched) {
-      // Fetch the registry's stage and level
-      const registryRankData = registryRankQuery.data as RegistryRank[];
+		if (registryRankQuery.isFetched) {
+			// Fetch the registry's stage and level
+			const registryRankData = registryRankQuery.data as RegistryRank[];
 
-      const filteredRegistryRank = registryRankData.find(
-        (row: RegistryRank) => row.name === registryName,
-      );
+			const filteredRegistryRank = registryRankData.find(
+				(row: RegistryRank) => row.name === registryName,
+			);
 
-      if (filteredRegistryRank) {
-        registryRank = filteredRegistryRank.verdict;
-      }
-    }
-  }
+			if (filteredRegistryRank) {
+				registryRank = filteredRegistryRank.verdict;
+			}
+		}
+	}
 
-  const paramsReady = checkParamsReady({
-    treatmentUnits: selectedTreatmentUnits,
-    treatmentUnitsKey: treatmentUnitsKey,
-    defaultTreatmentUnits: defaultTreatmentUnits,
-    year: selectedYear,
-    yearKey: yearKey,
-    defaultYear: defaultYear,
-    medicalFields: selectedMedicalFields,
-  });
+	const paramsReady = checkParamsReady({
+		treatmentUnits: selectedTreatmentUnits,
+		treatmentUnitsKey: treatmentUnitsKey,
+		defaultTreatmentUnits: defaultTreatmentUnits,
+		year: selectedYear,
+		yearKey: yearKey,
+		defaultYear: defaultYear,
+		medicalFields: selectedMedicalFields,
+	});
 
-  /**
-   * Handle that the initial filter settings are loaded, which can happen
-   * more than once due to Next's pre-rendering and hydration behaviour combined
-   * with reading of query params.
-   *
-   * @param filterSettings Initial values for the filter settings
-   */
-  const handleFilterInitialized = (
-    filterSettings: Map<string, FilterSettingsValue[]>,
-  ): void => {
-    setSelectedTableContext(
-      filterSettings.get(tableContextKey)?.[0].value ?? defaultTableContext,
-    );
+	/**
+	 * Handle that the initial filter settings are loaded, which can happen
+	 * more than once due to Next's pre-rendering and hydration behaviour combined
+	 * with reading of query params.
+	 *
+	 * @param filterSettings Initial values for the filter settings
+	 */
+	const handleFilterInitialized = (
+		filterSettings: Map<string, FilterSettingsValue[]>,
+	): void => {
+		setSelectedTableContext(
+			filterSettings.get(tableContextKey)?.[0].value ?? defaultTableContext,
+		);
 
-    setSelectedYear(
-      parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString()),
-    );
+		setSelectedYear(
+			parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString()),
+		);
 
-    setSelectedLevel(filterSettings.get(levelKey)?.[0]?.value ?? undefined);
+		setSelectedLevel(filterSettings.get(levelKey)?.[0]?.value ?? undefined);
 
-    setSelectedMedicalFields([registryName]);
+		setSelectedMedicalFields([registryName]);
 
-    setSelectedTreatmentUnits(
-      filterSettings.get(treatmentUnitsKey).map((value) => value.value),
-    );
+		setSelectedTreatmentUnits(
+			filterSettings.get(treatmentUnitsKey).map((value) => value.value),
+		);
 
-    updateColourMap(
-      colourMap,
-      setColourMap,
-      filterSettings.get(treatmentUnitsKey).map((value) => value.value),
-    );
-  };
+		updateColourMap(
+			colourMap,
+			setColourMap,
+			filterSettings.get(treatmentUnitsKey).map((value) => value.value),
+		);
+	};
 
-  const setAllSelected = (newFilterSettings: {
-    map: Map<string, FilterSettingsValue[]>;
-  }) => {
-    setSelectedTableContext(
-      valueOrDefault(tableContextKey, newFilterSettings) as string,
-    );
-    setSelectedYear(
-      parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
-    );
-    setSelectedLevel(
-      valueOrDefault(levelKey, newFilterSettings) as string | undefined,
-    );
-    setSelectedTreatmentUnits(
-      valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
-    );
-  };
+	const setAllSelected = (newFilterSettings: {
+		map: Map<string, FilterSettingsValue[]>;
+	}) => {
+		setSelectedTableContext(
+			valueOrDefault(tableContextKey, newFilterSettings) as string,
+		);
+		setSelectedYear(
+			parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
+		);
+		setSelectedLevel(
+			valueOrDefault(levelKey, newFilterSettings) as string | undefined,
+		);
+		setSelectedTreatmentUnits(
+			valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+		);
+	};
 
-  /**
-   * Handle filter changes
-   */
-  const handleFilterChanged = (
-    newFilterSettings: { map: Map<string, FilterSettingsValue[]> },
-    oldFilterSettings: { map: Map<string, FilterSettingsValue[]> },
-    action: FilterSettingsAction,
-  ): void => {
-    switch (action.sectionSetting.key) {
-      case tableContextKey: {
-        setSelectedTableContext(
-          valueOrDefault(tableContextKey, newFilterSettings) as string,
-        );
-        break;
-      }
-      case yearKey: {
-        setSelectedYear(
-          parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
-        );
-        break;
-      }
-      case levelKey: {
-        setSelectedLevel(
-          valueOrDefault(levelKey, newFilterSettings) as string | undefined,
-        );
-        break;
-      }
-      case treatmentUnitsKey: {
-        setSelectedTreatmentUnits(
-          valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
-        );
-        break;
-      }
-      default:
-        break;
-    }
+	/**
+	 * Handle filter changes
+	 */
+	const handleFilterChanged = (
+		newFilterSettings: { map: Map<string, FilterSettingsValue[]> },
+		oldFilterSettings: { map: Map<string, FilterSettingsValue[]> },
+		action: FilterSettingsAction,
+	): void => {
+		switch (action.sectionSetting.key) {
+			case tableContextKey: {
+				setSelectedTableContext(
+					valueOrDefault(tableContextKey, newFilterSettings) as string,
+				);
+				break;
+			}
+			case yearKey: {
+				setSelectedYear(
+					parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
+				);
+				break;
+			}
+			case levelKey: {
+				setSelectedLevel(
+					valueOrDefault(levelKey, newFilterSettings) as string | undefined,
+				);
+				break;
+			}
+			case treatmentUnitsKey: {
+				setSelectedTreatmentUnits(
+					valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+				);
+				break;
+			}
+			default:
+				break;
+		}
 
-    if (action.type === FilterSettingsActionType.RESET_SELECTIONS) {
-      setAllSelected(newFilterSettings);
-    }
+		if (action.type === FilterSettingsActionType.RESET_SELECTIONS) {
+			setAllSelected(newFilterSettings);
+		}
 
-    updateColourMap(
-      colourMap,
-      setColourMap,
-      valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
-    );
-  };
+		updateColourMap(
+			colourMap,
+			setColourMap,
+			valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+		);
+	};
 
-  if (!mounted) {
-    return null;
-  }
+	if (!mounted) {
+		return null;
+	}
 
-  const subtitle = (
-    <>
-      Resultater fra {registryInfo[0].full_name}.{" "}
-      {
-        // eslint-disable-next-line no-undef
-        !process.env.NEXT_PUBLIC_VERIFY && (
-          <>
-            Se{" "}
-            <Link href={registryInfo[0].url} target="_blank" rel="noopener">
-              kvalitetsregistre.no
-            </Link>{" "}
-            for mer informasjon.{" "}
-            <Link
-              href="https://www.kvalitetsregistre.no/registerdrift/stadieinndeling"
-              target="_blank"
-              rel="noopener"
-            >
-              Stadium og nivå
-            </Link>{" "}
-            for {defaultReviewYear}: <b>{registryRank}</b>
-          </>
-        )
-      }
-    </>
-  );
+	const subtitle = (
+		<>
+			Resultater fra {registryInfo[0].full_name}.{" "}
+			{
+				// biome-ignore lint: no-undecleared-variables -- reason: global replace, please state reason hereno-undef
+				!process.env.NEXT_PUBLIC_VERIFY && (
+					<>
+						Se{" "}
+						<Link href={registryInfo[0].url} target="_blank" rel="noopener">
+							kvalitetsregistre.no
+						</Link>{" "}
+						for mer informasjon.{" "}
+						<Link
+							href="https://www.kvalitetsregistre.no/registerdrift/stadieinndeling"
+							target="_blank"
+							rel="noopener"
+						>
+							Stadium og nivå
+						</Link>{" "}
+						for {defaultReviewYear}: <b>{registryRank}</b>
+					</>
+				)
+			}
+		</>
+	);
 
-  return (
-    <ThemeProvider theme={skdeTheme}>
-      <CssBaseline />
-      <PageWrapper>
-        <LayoutHead
-          title="Behandlingskvalitet"
-          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
-          href="/favicon.ico"
-        />
-        <TreatmentQualityAppBar
-          openDrawer={() => toggleDrawer(true)}
-          extraBreadcrumbs={[
-            { link: registryName, text: registryInfo[0].short_name },
-          ]}
-        >
-          {subtitle}
-        </TreatmentQualityAppBar>
-        <Grid container size={{ xs: 12 }}>
-          {isXxlScreen ? ( // Permanent menu on large screens
-            <Grid
-              size={{ xxl: 4, xxml: 3, xxxl: 2 }}
-              className="menu-wrapper"
-              data-testid={"tu_header_" + selectedTreatmentUnits}
-            >
-              <Box
-                sx={{
-                  mt: 4,
-                  position: "sticky",
-                  top: 100,
-                  overflow: "auto",
-                  maxHeight: window.innerHeight - 150,
-                }}
-              >
-                <TreatmentQualityFilterMenu
-                  onSelectionChanged={handleFilterChanged}
-                  onFilterInitialized={handleFilterInitialized}
-                  testIdPrefix="permanentFilterMenu"
-                  registryNameData={registryInfo}
-                  medicalFieldData={[]}
-                  register={registryName}
-                  initialContext={
-                    selectedTableContext as "caregiver" | "resident"
-                  }
-                  skipSections={{
-                    context: skipTableContextSection,
-                  }}
-                />
-                <Divider />
-              </Box>
-            </Grid>
-          ) : null}
-          <Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
-            <Grid container spacing={2}>
-              <Grid size={{ xs: 12 }}>
-                {paramsReady ? (
-                  <Stack spacing={4}>
-                    <IndicatorTable
-                      key={`indicator-table2-${selectedTableContext}`}
-                      context={selectedTableContext}
-                      unitNames={getSortedList(
-                        colourMap,
-                        selectedTreatmentUnits,
-                        "units",
-                      )}
-                      year={selectedYear}
-                      type="ind"
-                      levels={selectedLevel}
-                      medfields={selectedMedicalFields}
-                      chartColours={getSortedList(
-                        colourMap,
-                        selectedTreatmentUnits,
-                        "colours",
-                      )}
-                    />
-                    <IndicatorTable
-                      key={`dataquality-table2-${selectedTableContext}`}
-                      context={selectedTableContext}
-                      unitNames={getSortedList(
-                        colourMap,
-                        selectedTreatmentUnits,
-                        "units",
-                      )}
-                      year={selectedYear}
-                      type="dg"
-                      levels={selectedLevel}
-                      medfields={selectedMedicalFields}
-                      chartColours={getSortedList(
-                        colourMap,
-                        selectedTreatmentUnits,
-                        "colours",
-                      )}
-                    />
-                  </Stack>
-                ) : (
-                  <></>
-                )}
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Footer />
-      </PageWrapper>
-      <FilterDrawer
-        ModalProps={{
-          keepMounted: true, // Better open performance on mobile.
-        }}
-        open={drawerOpen}
-        onClose={() => toggleDrawer(false)}
-      >
-        <Box sx={{ display: "flex", m: 2, justifyContent: "space-between" }}>
-          <Typography variant="h3">Filtermeny</Typography>
-          <IconButton
-            aria-label="Lukk sidemeny"
-            onClick={() => toggleDrawer(false)}
-          >
-            <ChevronLeftRoundedIcon fontSize="large" />
-          </IconButton>
-        </Box>
-        <Divider />
-        <Box sx={{ mt: 4 }}>
-          <TreatmentQualityFilterMenu
-            onSelectionChanged={handleFilterChanged}
-            onFilterInitialized={handleFilterInitialized}
-            testIdPrefix="drawerFilterMenu"
-            registryNameData={registryInfo}
-            medicalFieldData={[]}
-            register={registryName}
-            initialContext={selectedTableContext as "caregiver" | "resident"}
-            skipSections={{
-              context: skipTableContextSection,
-            }}
-          />
-          <Divider />
-        </Box>
-      </FilterDrawer>
-    </ThemeProvider>
-  );
+	return (
+		<ThemeProvider theme={skdeTheme}>
+			<CssBaseline />
+			<PageWrapper>
+				<LayoutHead
+					title="Behandlingskvalitet"
+					content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
+					href="/favicon.ico"
+				/>
+				<TreatmentQualityAppBar
+					openDrawer={() => toggleDrawer(true)}
+					extraBreadcrumbs={[
+						{ link: registryName, text: registryInfo[0].short_name },
+					]}
+				>
+					{subtitle}
+				</TreatmentQualityAppBar>
+				<Grid container size={{ xs: 12 }}>
+					{isXxlScreen ? ( // Permanent menu on large screens
+						<Grid
+							size={{ xxl: 4, xxml: 3, xxxl: 2 }}
+							className="menu-wrapper"
+							data-testid={"tu_header_" + selectedTreatmentUnits}
+						>
+							<Box
+								sx={{
+									mt: 4,
+									position: "sticky",
+									top: 100,
+									overflow: "auto",
+									maxHeight: window.innerHeight - 150,
+								}}
+							>
+								<TreatmentQualityFilterMenu
+									onSelectionChanged={handleFilterChanged}
+									onFilterInitialized={handleFilterInitialized}
+									testIdPrefix="permanentFilterMenu"
+									registryNameData={registryInfo}
+									medicalFieldData={[]}
+									register={registryName}
+									initialContext={
+										selectedTableContext as "caregiver" | "resident"
+									}
+									skipSections={{
+										context: skipTableContextSection,
+									}}
+								/>
+								<Divider />
+							</Box>
+						</Grid>
+					) : null}
+					<Grid size={{ xs: 12, xxl: 8, xxml: 9, xxxl: 10 }}>
+						<Grid container spacing={2}>
+							<Grid size={{ xs: 12 }}>
+								{paramsReady ? (
+									<Stack spacing={4}>
+										<IndicatorTable
+											key={`indicator-table2-${selectedTableContext}`}
+											context={selectedTableContext}
+											unitNames={getSortedList(
+												colourMap,
+												selectedTreatmentUnits,
+												"units",
+											)}
+											year={selectedYear}
+											type="ind"
+											levels={selectedLevel}
+											medfields={selectedMedicalFields}
+											chartColours={getSortedList(
+												colourMap,
+												selectedTreatmentUnits,
+												"colours",
+											)}
+										/>
+										<IndicatorTable
+											key={`dataquality-table2-${selectedTableContext}`}
+											context={selectedTableContext}
+											unitNames={getSortedList(
+												colourMap,
+												selectedTreatmentUnits,
+												"units",
+											)}
+											year={selectedYear}
+											type="dg"
+											levels={selectedLevel}
+											medfields={selectedMedicalFields}
+											chartColours={getSortedList(
+												colourMap,
+												selectedTreatmentUnits,
+												"colours",
+											)}
+										/>
+									</Stack>
+								) : (
+									<></>
+								)}
+							</Grid>
+						</Grid>
+					</Grid>
+				</Grid>
+				<Footer />
+			</PageWrapper>
+			<FilterDrawer
+				ModalProps={{
+					keepMounted: true, // Better open performance on mobile.
+				}}
+				open={drawerOpen}
+				onClose={() => toggleDrawer(false)}
+			>
+				<Box sx={{ display: "flex", m: 2, justifyContent: "space-between" }}>
+					<Typography variant="h3">Filtermeny</Typography>
+					<IconButton
+						aria-label="Lukk sidemeny"
+						onClick={() => toggleDrawer(false)}
+					>
+						<ChevronLeftRoundedIcon fontSize="large" />
+					</IconButton>
+				</Box>
+				<Divider />
+				<Box sx={{ mt: 4 }}>
+					<TreatmentQualityFilterMenu
+						onSelectionChanged={handleFilterChanged}
+						onFilterInitialized={handleFilterInitialized}
+						testIdPrefix="drawerFilterMenu"
+						registryNameData={registryInfo}
+						medicalFieldData={[]}
+						register={registryName}
+						initialContext={selectedTableContext as "caregiver" | "resident"}
+						skipSections={{
+							context: skipTableContextSection,
+						}}
+					/>
+					<Divider />
+				</Box>
+			</FilterDrawer>
+		</ThemeProvider>
+	);
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const registries: RegisterName[] = await fetchRegisterNames();
+	const registries: RegisterName[] = await fetchRegisterNames();
 
-  const registryInfo = registries.filter(
-    (register) => register.rname === context.params?.registry,
-  );
+	const registryInfo = registries.filter(
+		(register) => register.rname === context.params?.registry,
+	);
 
-  return {
-    props: { registryInfo: registryInfo },
-  };
+	return {
+		props: { registryInfo: registryInfo },
+	};
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const registries = await fetchRegisterNames();
-  const paths = registries.flatMap((registry: RegisterName) => {
-    return [{ params: { registry: registry.rname } }];
-  });
-  return { paths, fallback: false };
+	const registries = await fetchRegisterNames();
+	const paths = registries.flatMap((registry: RegisterName) => {
+		return [{ params: { registry: registry.rname } }];
+	});
+	return { paths, fallback: false };
 };
