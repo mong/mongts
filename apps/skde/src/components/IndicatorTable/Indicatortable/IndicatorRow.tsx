@@ -167,12 +167,14 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
     return new Date(Math.max(...numericDates));
   };
 
-  const lastDeliveryText = maxDate(dates).toLocaleString("no-NO", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "CET",
-  });
+  const lastDeliveryText =
+    "Siste levering av data: " +
+    maxDate(dates).toLocaleString("no-NO", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      timeZone: "CET",
+    });
 
   const CollapseContent = (props: { open: boolean }) => {
     const { open } = props;
