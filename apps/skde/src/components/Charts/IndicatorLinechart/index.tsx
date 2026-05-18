@@ -2,7 +2,12 @@ import { UseQueryResult } from "@tanstack/react-query";
 import _ from "lodash";
 import { useIndicatorQuery, level, minDG } from "qmongjs";
 import { Indicator } from "types";
-import { LineChartPro } from "@mui/x-charts-pro";
+import { legendClasses, LineChartPro } from "@mui/x-charts-pro";
+import {
+  levelGreenColours,
+  levelYellowColours,
+  levelRedColours,
+} from "../../../app_config";
 
 export type IndicatorLinechartParams = {
   registerShortName?: string;
@@ -141,10 +146,6 @@ const normaliseChartData = (data: { x: number; y: number }[][]) => {
   return data;
 };
 
-const levelAColour = "#58A55C";
-const levelBColour = "#FD9C00";
-const levelCColour = "#D85140";
-
 export const IndicatorLinechart = (
   indicatorParams: IndicatorLinechartParams,
 ) => {
@@ -216,24 +217,39 @@ export const IndicatorLinechart = (
 
   return (
     <LineChartPro
+      slotProps={{
+        legend: {
+          position: { vertical: "top", horizontal: "start" },
+          sx: {
+            marginLeft: 5,
+            fontSize: 14,
+            [`.${legendClasses.mark}`]: {
+              width: 20,
+            },
+          },
+        },
+      }}
       series={[
         {
           data: chartData[0].map((row) => row.y),
           curve: "linear",
-          color: levelAColour,
+          color: levelGreenColours[1],
           valueFormatter: legendValueFormatter,
+          label: "Høy",
         },
         {
           data: chartData[1].map((row) => row.y),
           curve: "linear",
-          color: levelBColour,
+          color: levelYellowColours[1],
           valueFormatter: legendValueFormatter,
+          label: "Middels",
         },
         {
           data: chartData[2].map((row) => row.y),
           curve: "linear",
-          color: levelCColour,
+          color: levelRedColours[1],
           valueFormatter: legendValueFormatter,
+          label: "Lav",
         },
       ]}
       xAxis={[
