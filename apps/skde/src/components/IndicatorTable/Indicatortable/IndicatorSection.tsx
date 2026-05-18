@@ -1,6 +1,5 @@
 import React from "react";
 import { IndicatorData, OptsTu } from "types";
-import { level2 } from "qmongjs";
 import { IndicatorRow } from "./IndicatorRow";
 
 type IndicatorSectionProps = {
@@ -39,17 +38,7 @@ export const IndicatorSection = (props: IndicatorSectionProps) => {
   // Map indicators to rows and show only rows where there is at least
   // one indicator not removed by the filter
   return data.map((indDataRow) => {
-    const showRow =
-      levels === undefined
-        ? true
-        : indDataRow.data &&
-            indDataRow.data
-              .map(
-                (dataPointRow) => level2(indDataRow, dataPointRow) === levels,
-              )
-              .every((x) => x === false)
-          ? false
-          : true;
+    const showRow = indDataRow.data.length > 0;
 
     const returnVal = showRow ? (
       <IndicatorRow
