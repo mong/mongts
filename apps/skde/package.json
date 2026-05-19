@@ -10,14 +10,14 @@
     "export": "next build",
     "lint": "eslint src pages",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
-    "format": "yarn prettier --write",
-    "test": "yarn run test:base run --coverage",
+    "format": "pnpm prettier --write",
+    "test": "pnpm run test:base run --coverage",
     "test:base": "vitest",
     "cypress": "cypress open",
     "cypress:headless": "cypress run",
     "e2e": "start-server-and-test start http://localhost:3000 cypress",
     "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless",
-    "check-format": "yarn prettier --list-different",
+    "check-format": "pnpm prettier --list-different",
     "check-types": "tsc --noEmit",
     "start-server": "npx serve out/"
   },
@@ -75,5 +75,5 @@
     "vitest": "4.1.5",
     "webpack": "^5.106.1"
   },
-  "packageManager": "yarn@4.13.0"
+  "packageManager": "pnpm@11.1.3"
 }

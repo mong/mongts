@@ -4,12 +4,12 @@
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "scripts": {
-    "test": "yarn run test:base run --coverage",
+    "test": "pnpm run test:base run --coverage",
     "test:base": "vitest",
     "lint": "eslint src",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
-    "format": "yarn run prettier --write",
-    "check-format": "yarn run prettier --check",
+    "format": "pnpm run prettier --write",
+    "check-format": "pnpm run prettier --check",
     "check-types": "tsc --noEmit"
   },
   "devDependencies": {

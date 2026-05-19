@@ -1,0 +1,12 @@
+packages:
+  - apps/skde
+  - apps/api
+  - packages/qmongjs
+  - packages/types
+allowBuilds:
+  "@mui/x-telemetry": true
+  cypress: true
+  sharp: true
+overrides:
+  qmongjs: link:packages/qmongjs
+  types: link:packages/types

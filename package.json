@@ -1,6 +1,6 @@
 {
   "name": "mongts",
-  "packageManager": "yarn@4.13.0",
+  "packageManager": "pnpm@11.1.3",
   "scripts": {
     "build": "turbo run build",
     "export": "turbo run export",
@@ -14,10 +14,6 @@
     "prepare": "husky",
     "knip": "knip"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
@@ -38,6 +34,8 @@
   "dependencies": {
     "@commitlint/cli": "^20.5.2",
     "@commitlint/config-conventional": "^20.5.0",
-    "commitlint": "^20.5.2"
+    "commitlint": "^20.5.2",
+    "qmongjs": "link:packages/qmongjs",
+    "types": "link:packages/types"
   }
 }
