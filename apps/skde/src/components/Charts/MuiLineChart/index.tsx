@@ -125,11 +125,10 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
                   },
                 }}
               />
-              <ChartLogo width={100} marginRight={0} />
             </Box>
             <ChartsTooltip />
             <ChartsSurface
-              sx={{ "& .line-after path": { strokeDasharray: "10 5" } }}
+              sx={{ "& .line-after path": { strokeDasharray: "10 5" }, mb: -6 }}
             >
               <LineBackground
                 data={data}
@@ -156,6 +155,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
               <ChartsAxisHighlight x="line" />
             </ChartsSurface>
           </CustomChartWrapper>
+          <ChartLogo width={100} marginRight={0} />
         </Box>
       </ChartsDataProviderPro>
     </Box>

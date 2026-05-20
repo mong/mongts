@@ -276,10 +276,9 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
             >
               {year}
             </Typography>
-            <ChartLogo width={100} marginRight={6} />
           </Box>
           <ChartsTooltip />
-          <ChartsSurface>
+          <ChartsSurface sx={{ mb: 2 }}>
             <BarBackground
               data={data}
               percentage={percentage}
@@ -293,6 +292,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
             <ChartsYAxis />
             <BarPlot />
           </ChartsSurface>
+          <ChartLogo width={100} marginRight={6} />
         </CustomChartWrapper>
       </ChartsDataProviderPro>
     </Box>
