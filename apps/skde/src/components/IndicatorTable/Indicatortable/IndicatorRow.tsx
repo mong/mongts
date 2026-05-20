@@ -51,6 +51,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
     year,
     treatmentUnitsByLevel,
     medfield,
+    registryName,
   } = props;
 
   const remarkPlugins = [remarkGfm];
@@ -191,6 +192,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
                       year={year}
                       treatmentUnitsByLevel={treatmentUnitsByLevel}
                       indID={rowID}
+                      registryName={registryName}
                     />
                   </td>
                 </tr>

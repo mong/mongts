@@ -16,6 +16,7 @@ import { MuiBarChart } from "../../Charts/MuiBarChart";
 import { formatMuiChartData } from "../../../helpers/functions/formatMuiChartData";
 import { DataPoint } from "types";
 import { useChartProApiRef } from "@mui/x-charts-pro";
+import { makeOnBeforeExport } from "../../../helpers/functions/formatMuiChartData";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -26,6 +27,7 @@ type chartRowV2Props = {
   year: number;
   treatmentUnitsByLevel: OptsTu[];
   indID: string;
+  registryName: string;
 };
 
 export const ChartRowV2 = (props: chartRowV2Props) => {
@@ -38,6 +40,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     treatmentUnitsByLevel,
     medfield,
     indID,
+    registryName,
   } = props;
 
   if (data.data === undefined) {
@@ -137,11 +140,13 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
           Zoom
         </Button>
         <Button
-          onClick={() =>
-            figureType === "line"
-              ? lineChartApiRef.current!.exportAsImage()
-              : barChartApiRef.current!.exportAsImage()
-          }
+          onClick={() => {
+            const apiRef =
+              figureType === "line" ? lineChartApiRef : barChartApiRef;
+            apiRef.current!.exportAsImage({
+              onBeforeExport: makeOnBeforeExport(data.indicatorTitle, registryName),
+            });
+          }}
           variant="outlined"
           sx={{ marginLeft: "90%" }}
         >
@@ -174,7 +179,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
           />
         ) : figureType === "bar" ? (
           <Box width={"100%"}>
-            <Box mt={-4}>
+            <Box mt={-4} mb={-6}>
               <MuiBarChart
                 data={data}
                 figureSpacingFactor={30}
