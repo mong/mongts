@@ -278,7 +278,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
             </Typography>
           </Box>
           <ChartsTooltip />
-          <ChartsSurface sx={{ mb: 2 }}>
+          <ChartsSurface>
             <BarBackground
               data={data}
               percentage={percentage}
