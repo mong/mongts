@@ -1,7 +1,7 @@
 import { FaCircle, FaSquare } from "react-icons/fa";
 import { IoTriangle } from "react-icons/io5";
 import { imgLoader } from "./imgLoader";
-import Image from "next/image";
+import Image from "next/image.js";
 
 export const newLevelSymbols = (level: string | undefined, key?: string) => {
   return level === "H" ? (

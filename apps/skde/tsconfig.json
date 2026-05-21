@@ -1,8 +1,15 @@
 {
   "compilerOptions": {
     "target": "es2015",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "types": ["cypress", "@vitest/browser/matchers"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "types": [
+      "cypress",
+      "@vitest/browser/matchers"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -30,5 +37,9 @@
     ".next/types/**/*.ts",
     "src/components/HospitalProfile/SelectedIndicatorTable/indicators.ts"
   ],
-  "exclude": ["./cypress.config.ts", "node_modules", "**/*.test.tsx"]
+  "exclude": [
+    "./cypress.config.ts",
+    "node_modules",
+    "**/*.test.tsx"
+  ]
 }

@@ -9,9 +9,9 @@ import {
   InputLabel,
   SelectChangeEvent,
   Stack,
-  Button,
   Box,
   Typography,
+  Button
 } from "@mui/material";
 import {
   useRegisterNamesQuery,
@@ -37,6 +37,7 @@ import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import { IndicatorTable } from "../../src/components/IndicatorTable/Indicatortable";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DoneIcon from "@mui/icons-material/Done";
+import { Dropdown } from "@mong/material-ui"
 
 export default function TreatmentQualityPage() {
   const numberOfYearOptions = 5;
@@ -137,7 +138,6 @@ export default function TreatmentQualityPage() {
             >
               <Stack direction="row" spacing={1}>
                 <Button
-                  variant="outlined"
                   onClick={handleMedicalFieldButtonClick}
                 >
                   Velg fagområde
@@ -149,7 +149,6 @@ export default function TreatmentQualityPage() {
                   onSubmit={setSelectedMedicalFields}
                 />
                 <Button
-                  variant="outlined"
                   onClick={handleTreatmentUnitButtonClick}
                 >
                   Velg behandlingsenheter
@@ -163,7 +162,7 @@ export default function TreatmentQualityPage() {
                 />
                 <FormControl>
                   <InputLabel>År</InputLabel>
-                  <Select
+                  <Dropdown
                     value={selectedYear.toString()}
                     label="År"
                     onChange={handleYearChange}
@@ -180,11 +179,10 @@ export default function TreatmentQualityPage() {
                           );
                         }),
                     ]}
-                  </Select>
+                  </Dropdown>
                 </FormControl>
               </Stack>
               <Button
-                variant="outlined"
                 startIcon={urlCopied ? <DoneIcon /> : <ContentCopyIcon />}
                 onClick={() => {
                   navigator.clipboard.writeText(window.location.href);
@@ -232,15 +230,7 @@ export default function TreatmentQualityPage() {
                   Velg et fagområde du vil se resultater fra
                 </Typography>
                 <Button
-                  variant="contained"
                   onClick={handleMedicalFieldButtonClick}
-                  sx={{
-                    width: "200px",
-                    background: "#2354AE",
-                    color: "#FFFFFF",
-                    height: "48px",
-                    fontSize: "14px",
-                  }}
                 >
                   Velg fagområde
                 </Button>

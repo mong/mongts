@@ -1,4 +1,4 @@
-import { ImageLoader } from "next/image";
+import { ImageLoader } from "next/image.js";
 
 export const imgLoader: ImageLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`;
