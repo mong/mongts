@@ -42,21 +42,6 @@ export const Footer = ({
     </Link>
   );
 
-  const nsmLogo = (
-    <Link href={"https://www.kvalitetsregistre.no/"}>
-      <Box sx={{ width: "min(467px, 85vw)", height: 52, position: "relative" }}>
-        <Image
-          className="footer-logo"
-          id="nsm-footer-logo"
-          loader={imgLoader}
-          src={"/img/logos/nsm-hvit.svg"}
-          alt="NSM-logo"
-          fill={true}
-        />
-      </Box>
-    </Link>
-  );
-
   return (
     <Grid
       container
@@ -137,7 +122,6 @@ export const Footer = ({
               justifyContent="space-between"
             >
               <Grid>{skdeLogo}</Grid>
-              <Grid>{nsmLogo}</Grid>
             </Grid>
 
             <Grid size={{ xs: 12 }}>
@@ -174,19 +158,6 @@ export const Footer = ({
                   <b>ORGANISASJONSNUMMER</b>
                   883658752
                 </Stack>
-              </Grid>
-              <Grid paddingTop="3.5rem">
-                <Link href={"https://www.helse-nord.no/"}>
-                  <Image
-                    className="footer-logo"
-                    id="helse-nord-logo"
-                    loader={imgLoader}
-                    src={"/img/logos/logo-helse-nord-neg.svg"}
-                    alt="Helse Nord logo"
-                    width={220}
-                    height={52}
-                  />
-                </Link>
               </Grid>
             </Grid>
           </Grid>
