@@ -144,7 +144,10 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             const apiRef =
               figureType === "line" ? lineChartApiRef : barChartApiRef;
             apiRef.current!.exportAsImage({
-              onBeforeExport: makeOnBeforeExport(data.indicatorTitle, registryName),
+              onBeforeExport: makeOnBeforeExport(
+                data.indicatorTitle,
+                registryName,
+              ),
             });
           }}
           variant="outlined"

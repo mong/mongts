@@ -127,32 +127,31 @@ export const formatMuiChartData = (
 
 // added for export image title and source
 export const makeOnBeforeExport =
-    (titleText: string, sourceName: string) =>
-    (iframe: HTMLIFrameElement) => {
-      const doc = iframe.contentDocument;
-      if (!doc) return;
-      doc.body.style.padding = "16px";
-      doc.body.style.boxSizing = "border-box";
-      const figure = doc.body.firstElementChild as HTMLElement | null;
+  (titleText: string, sourceName: string) => (iframe: HTMLIFrameElement) => {
+    const doc = iframe.contentDocument;
+    if (!doc) return;
+    doc.body.style.padding = "16px";
+    doc.body.style.boxSizing = "border-box";
+    const figure = doc.body.firstElementChild as HTMLElement | null;
 
-      if (figure) {
-        figure.style.padding = "0";
-        figure.style.margin = "0";
-      }
-      const title = doc.createElement("div");
-      title.textContent = titleText;
-      title.style.cssText = `
+    if (figure) {
+      figure.style.padding = "0";
+      figure.style.margin = "0";
+    }
+    const title = doc.createElement("div");
+    title.textContent = titleText;
+    title.style.cssText = `
         font-size: 20px;
         font-weight: 600;
         text-align: left;
       `;
 
-      const source = doc.createElement("div");
-      source.textContent = `Kilde: ${sourceName}`;
-      source.style.cssText = `
+    const source = doc.createElement("div");
+    source.textContent = `Kilde: ${sourceName}`;
+    source.style.cssText = `
         font-size: 12px;
       `;
 
-      doc.body.prepend(title);
-      doc.body.appendChild(source);
-    };
+    doc.body.prepend(title);
+    doc.body.appendChild(source);
+  };
