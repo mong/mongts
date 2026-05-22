@@ -17,23 +17,15 @@ jobs:
   push_to_registries:
     name: Push Docker image to docker hub
     runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      AWS_DEFAULT_REGION: "eu-west-1"
     steps:
       - name: Set release variables
         if: github.ref == 'refs/heads/main'
         run: |
           echo "version_label=${GITHUB_SHA:0:7}_prod_${RANDOM}" >> $GITHUB_ENV
-          echo "descr='Release tag deploy'" >> $GITHUB_ENV
-          echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_PROD }}" >> $GITHUB_ENV
       - name: Set QA variables
         if: github.ref == 'refs/heads/develop'
         run: |
           echo "version_label=${GITHUB_SHA:0:7}_qa_${RANDOM}" >> $GITHUB_ENV
-          echo "descr='Main commits deploy'" >> $GITHUB_ENV
-          echo "cloudfront_id=${{ secrets.CLOUDFRONT_ID_QA }}" >> $GITHUB_ENV
       - name: Check out the repo
         uses: actions/checkout@v6
       - run: corepack enable && yarn install
