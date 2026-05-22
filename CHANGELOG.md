@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.2](https://github.com/mong/mongts/compare/v1.2.1...v1.2.2) (2026-05-22)
+
+
+### Bug Fixes
+
+* fiks advarsler på ikoner pga mellomrom i filnavn ([#4671](https://github.com/mong/mongts/issues/4671)) ([a43723b](https://github.com/mong/mongts/commit/a43723b2a2a106ed89aa544832137ca16f01f33b))
+
+
+### Miscellaneous Chores
+
+* release 1.2.2 ([db7d052](https://github.com/mong/mongts/commit/db7d0524bdeade6d32880d6d401fb8332acc3191))
+
 ## [1.2.1](https://github.com/mong/mongts/compare/v1.1.0...v1.2.1) (2026-05-22)
 
 
