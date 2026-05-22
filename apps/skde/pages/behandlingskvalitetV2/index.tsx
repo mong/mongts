@@ -34,7 +34,7 @@ import { MedicalFieldPopup } from "../../src/components/DialogBox/MedicalFieldPo
 import { useQueryParam } from "use-query-params";
 import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
-import { IndicatorTable } from "../../src/components/IndicatorTable/Indicatortable";
+import { IndicatorTableV2 } from "../../src/components/IndicatorTable/Indicatortable";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DoneIcon from "@mui/icons-material/Done";
 
@@ -198,7 +198,7 @@ export default function TreatmentQualityPage() {
               </Button>
             </Stack>
             {selectedMedicalFields.length > 0 ? (
-              <IndicatorTable
+              <IndicatorTableV2
                 key={"indicator-table2"}
                 context={selectedTableContext}
                 unitNames={getSortedList(
