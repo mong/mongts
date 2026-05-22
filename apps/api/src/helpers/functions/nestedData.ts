@@ -21,13 +21,13 @@ export const nestedData = (
         }
       });
 
-    if (currentDatapoints.length > 0) {
-      const entry = {
-        ...cur,
-        data: currentDatapoints,
-      };
-      acc = [...acc, entry];
-    }
+    const entry = {
+      ...cur,
+      data: currentDatapoints,
+    };
+
+    acc = [...acc, entry];
+
     return acc;
   }, [] as IndicatorData[]);
 
