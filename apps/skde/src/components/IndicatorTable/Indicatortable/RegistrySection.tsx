@@ -9,7 +9,6 @@ import {
   useUnitNamesQuery,
 } from "qmongjs/src/helpers/hooks";
 import { level2, skdeTheme } from "qmongjs";
-import { Skeleton } from "@mui/material";
 import {
   StyledTableCellStart,
   StyledTableCellMiddle,
@@ -60,7 +59,7 @@ export const RegistrySection = (props: RegistrySectionProps) => {
   const unitNamesByLevelQuery = useUnitNamesQuery(medfield, context, type);
 
   if (nestedDataQuery.isFetching || unitNamesByLevelQuery.isFetching) {
-    return <Skeleton variant="rectangular" width={"100%"} height={2000} />;
+    return null;
   }
 
   const treatmentUnitsByLevel = unitNamesByLevelQuery.data.opts_tu as OptsTu[];
