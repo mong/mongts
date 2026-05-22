@@ -43,31 +43,24 @@ export default function TreatmentQualityPage() {
 
   const defaultTreatmentUnits = ["Nasjonalt"];
 
+  const dataQualitySelected = false;
+
+  const selectedLevel = undefined;
+
   // Used by indicator table
   const [selectedYear = defaultYear, setSelectedYear] = useQueryParam<
     number | undefined
   >("year", mainQueryParamsConfig.year);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [selectedTableContext, setSelectedTableContext] =
-    useState(defaultTableContext);
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [selectedLevel, setSelectedLevel] = useState<string | undefined>();
-
+  console.log(selectedLevel)
   const [selectedMedicalFields = [], setSelectedMedicalFields] = useQueryParam<
     string[] | undefined
   >("registries", mainQueryParamsConfig.registries);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [
     selectedTreatmentUnits = defaultTreatmentUnits,
     setSelectedTreatmentUnits,
   ] = useQueryParam<string[] | undefined>("units", mainQueryParamsConfig.units);
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [dataQualitySelected, setDataQualitySelected] =
-    useState<boolean>(false);
 
   const [medicalFieldPopupOpen, setMedicalFieldPopupOpen] = useState(false);
   const [treatmentUnitPopupOpen, setTreatmentUnitPopupOpen] = useState(false);
@@ -78,18 +71,6 @@ export default function TreatmentQualityPage() {
   // When the button is pressed it should change for a duration of time to show the user that the action is done.
   const [urlCopied, setUrlCopied] = useState<boolean>(false);
   const urlCopiedTimeout = 3000;
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
-  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
-    selectedMedicalFields[0] ? selectedMedicalFields[0] : "all",
-    selectedTableContext,
-    dataQualitySelected ? "dg" : "ind",
-  );
-
-  // Load register names and medical fields
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
-  const registryNameQuery: UseQueryResult<any, unknown> =
-    useRegisterNamesQuery();
 
   updateColourMap(colourMap, setColourMap, selectedTreatmentUnits);
 
@@ -158,7 +139,7 @@ export default function TreatmentQualityPage() {
                   open={treatmentUnitPopupOpen}
                   setOpen={setTreatmentUnitPopupOpen}
                   onSubmit={setSelectedTreatmentUnits}
-                  context={selectedTableContext}
+                  context={defaultTableContext}
                   type={"ind"}
                 />
                 <FormControl>
@@ -200,7 +181,7 @@ export default function TreatmentQualityPage() {
             {selectedMedicalFields.length > 0 ? (
               <IndicatorTableV2
                 key={"indicator-table2"}
-                context={selectedTableContext}
+                context={defaultTableContext}
                 unitNames={getSortedList(
                   colourMap,
                   selectedTreatmentUnits,

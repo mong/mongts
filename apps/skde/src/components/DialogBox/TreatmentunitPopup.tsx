@@ -37,10 +37,8 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
 
   const [unitSelection, setUnitSelection] = useState<string[]>([]);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [highlightedHF, setHighlightedHF] = useState<string>("");
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

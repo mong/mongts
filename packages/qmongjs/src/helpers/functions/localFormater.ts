@@ -22,8 +22,8 @@ export function customFormat(
         };
   try {
     return formatLocale(formatDefinition).format(numberFormat);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
+    console.log(error)
     return formatLocale(formatDefinition).format(".0f");
   }
 }
