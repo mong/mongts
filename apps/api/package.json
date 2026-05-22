@@ -5,14 +5,14 @@
   "private": true,
   "scripts": {
     "start": "ts-node-dev -r dotenv/config src",
-    "dev": "yarn run start",
+    "dev": "pnpm run start",
     "build": "tsc",
     "lint": "eslint src",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
-    "format": "yarn run prettier --write",
-    "check-format": "yarn run prettier --check",
+    "format": "pnpm run prettier --write",
+    "check-format": "pnpm run prettier --check",
     "check-types": "tsc --noEmit",
-    "validate": "yarn run check-types && yarn run check-format && yarn run lint && yarn run build"
+    "validate": "pnpm run check-types && pnpm run check-format && pnpm run lint && pnpm run build"
   },
   "keywords": [],
   "author": "",
@@ -38,7 +38,7 @@
     "eslint": "10.3.0",
     "prettier": "3.8.3",
     "ts-node-dev": "2.0.0",
-    "types": "*"
+    "types": "workspace:*"
   },
-  "packageManager": "yarn@4.13.0"
+  "packageManager": "pnpm@11.1.3"
 }

@@ -10,14 +10,15 @@ class MyDocument extends Document<{ lang: string; pathname: string }> {
   }
 
   render() {
-    const { lang, pathname } = this.props;
+    // const { lang, pathname } = this.props;
+    const { lang } = this.props;
 
     return (
       <Html lang={lang}>
         <Head>
-          {pathname === "/" && (
+          {/* {pathname === "/" && (<></>
             <meta httpEquiv="refresh" content="0; url=https://www.skde.no/" />
-          )}
+          )} */}
           <meta
             name="google-site-verification"
             content="XnhRhaBwfeuAccfCFysPPpe1f49t46JAfInHBDfK6HE"
