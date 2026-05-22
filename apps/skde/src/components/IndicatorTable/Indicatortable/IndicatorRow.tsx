@@ -52,6 +52,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
     year,
     treatmentUnitsByLevel,
     medfield,
+    registryName,
     residentData,
   } = props;
 
@@ -201,6 +202,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
                       year={year}
                       treatmentUnitsByLevel={treatmentUnitsByLevel}
                       indID={rowID}
+                      registryName={registryName}
                     />
                   </td>
                 </tr>
