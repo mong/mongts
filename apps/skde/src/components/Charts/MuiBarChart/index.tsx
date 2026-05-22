@@ -114,7 +114,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
       nested: true,
     });
 
-    if (nestedDataQuery.isFetching) {
+    if (nestedDataQuery.isFetching || nestedDataQuery.data.length === 0) {
       return null;
     }
 
