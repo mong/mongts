@@ -5,6 +5,7 @@ import {
   Divider,
   IconButton,
   Link,
+  Skeleton,
   ThemeProvider,
   Typography,
   useMediaQuery,
@@ -315,7 +316,13 @@ export default function TreatmentQualityPage() {
                       "colours",
                     )}
                   />
-                ) : null}
+                ) : (
+                  <Skeleton
+                    variant="rectangular"
+                    width={"100%"}
+                    height={2000}
+                  />
+                )}
               </Grid>
             </Grid>
           </Grid>
