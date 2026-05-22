@@ -179,7 +179,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
           />
         ) : figureType === "bar" ? (
           <Box width={"100%"}>
-            <Box mt={-4} mb={-6}>
+            <Box mt={-4}>
               <MuiBarChart
                 data={data}
                 figureSpacingFactor={30}
