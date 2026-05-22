@@ -13,13 +13,7 @@ import {
   Box,
   Typography,
 } from "@mui/material";
-import {
-  useRegisterNamesQuery,
-  defaultYear,
-  skdeTheme,
-  useUnitNamesQuery,
-} from "qmongjs";
-import { UseQueryResult } from "@tanstack/react-query";
+import { defaultYear, skdeTheme } from "qmongjs";
 import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
 import { Footer } from "../../src/components/Footer";
 import { LayoutHead } from "../../src/components/LayoutHead";
@@ -52,7 +46,7 @@ export default function TreatmentQualityPage() {
     number | undefined
   >("year", mainQueryParamsConfig.year);
 
-  console.log(selectedLevel)
+  console.log(selectedLevel);
   const [selectedMedicalFields = [], setSelectedMedicalFields] = useQueryParam<
     string[] | undefined
   >("registries", mainQueryParamsConfig.registries);

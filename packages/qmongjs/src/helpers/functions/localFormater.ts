@@ -23,7 +23,7 @@ export function customFormat(
   try {
     return formatLocale(formatDefinition).format(numberFormat);
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return formatLocale(formatDefinition).format(".0f");
   }
 }
