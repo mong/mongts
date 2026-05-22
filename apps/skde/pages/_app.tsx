@@ -1,15 +1,14 @@
-import { useState, useEffect } from "react";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { QueryParamProvider } from "use-query-params";
-import { NextAdapter } from "next-query-params";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import type { AppProps } from "next/app";
-import { Plus_Jakarta_Sans } from "next/font/google";
-import { useRouter } from "next/router";
-import { LicenseInfo } from "@mui/x-license";
 import { MongProvider } from "@mong/material-ui";
+import { LicenseInfo } from "@mui/x-license";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { Metadata } from "next";
-import { Roboto, Roboto_Mono } from "next/font/google";
+import type { AppProps } from "next/app";
+import { Plus_Jakarta_Sans, Roboto, Roboto_Mono } from "next/font/google";
+import { useRouter } from "next/router";
+import { NextAdapter } from "next-query-params";
+import { useEffect, useState } from "react";
+import { QueryParamProvider } from "use-query-params";
 import "../app/global.css";
 import "@mong/material-ui/index.css"; //Denne må nederst
 

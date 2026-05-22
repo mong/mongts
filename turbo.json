@@ -9,13 +9,15 @@
       "dependsOn": ["^build"],
       "outputs": ["out/**"]
     },
-    "check-format": {},
-    "check-types": {},
+    "check": {
+      "cache": true
+    },
+    "typecheck": {
+      "cache": true
+    },
     "test": {
       "cache": false
     },
-    "format": {},
-    "lint": {},
     "start": {
       "dependsOn": ["build"]
     },
