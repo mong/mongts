@@ -10,7 +10,7 @@ import {
   useResidentDataQuery,
 } from "qmongjs/src/helpers/hooks";
 import { level2, skdeTheme } from "qmongjs";
-import { Skeleton, Chip, Stack, Typography } from "@mui/material";
+import { Chip, Stack, Typography } from "@mui/material";
 import {
   StyledTableCellStart,
   StyledTableCellMiddle,
@@ -70,7 +70,7 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
     unitNamesByLevelQuery.isFetching ||
     residentDataQuery.isFetching
   ) {
-    return <Skeleton variant="rectangular" width={"100%"} height={2000} />;
+    return null;
   }
 
   const treatmentUnitsByLevel = unitNamesByLevelQuery.data.opts_tu as OptsTu[];

@@ -47,7 +47,6 @@ import {
 } from "../../src/helpers/functions/chartColours";
 import checkParamsReady from "../../src/utils/checkParamsReady";
 import { IndicatorTable } from "../../src/components/IndicatorTable/Indicatortable";
-import { IndicatorTableSkeleton } from "../../src/components/IndicatorTable/IndicatorTableSkeleton";
 
 export default function TreatmentQualityPage() {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
@@ -316,9 +315,7 @@ export default function TreatmentQualityPage() {
                       "colours",
                     )}
                   />
-                ) : (
-                  <IndicatorTableSkeleton nRows={10} />
-                )}
+                ) : null}
               </Grid>
             </Grid>
           </Grid>
