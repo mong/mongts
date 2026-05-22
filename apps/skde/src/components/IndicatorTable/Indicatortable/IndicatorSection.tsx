@@ -16,6 +16,7 @@ type IndicatorSectionProps = {
   year: number;
   chartColours: string[];
   treatmentUnitsByLevel: OptsTu[];
+  residentData: boolean;
 };
 
 export const IndicatorSection = (props: IndicatorSectionProps) => {
@@ -32,6 +33,7 @@ export const IndicatorSection = (props: IndicatorSectionProps) => {
     chartColours,
     treatmentUnitsByLevel,
     medfield,
+    residentData,
   } = props;
 
   // Map indicators to rows and show only rows where there is at least
@@ -65,6 +67,7 @@ export const IndicatorSection = (props: IndicatorSectionProps) => {
         year={year}
         chartColours={chartColours}
         treatmentUnitsByLevel={treatmentUnitsByLevel}
+        residentData={residentData}
       />
     ) : null;
 

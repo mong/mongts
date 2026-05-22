@@ -23,7 +23,7 @@ export {
   mainHospitals,
   mainQueryParamsConfig,
   minDG,
-} from "./app_config";
+} from "../../../apps/skde/src/app_config";
 export { skdeTheme, breakpoints } from "./themes/SkdeTheme";
 
 export {
