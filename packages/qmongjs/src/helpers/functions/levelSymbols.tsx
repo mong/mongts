@@ -21,7 +21,7 @@ export const newestLevelSymbols = (level: string | undefined, key?: string) => {
   return level === "H" ? (
     <Image
       loader={imgLoader}
-      src={"/img/icons/Icon high green.svg"}
+      src={"/img/icons/Icon_high_green.svg"}
       width={size}
       height={size}
       key={key}
@@ -30,7 +30,7 @@ export const newestLevelSymbols = (level: string | undefined, key?: string) => {
   ) : level === "M" ? (
     <Image
       loader={imgLoader}
-      src={"/img/icons/Icon medium yellow.svg"}
+      src={"/img/icons/Icon_medium_yellow.svg"}
       width={size}
       height={size}
       key={key}
@@ -39,7 +39,7 @@ export const newestLevelSymbols = (level: string | undefined, key?: string) => {
   ) : level === "L" ? (
     <Image
       loader={imgLoader}
-      src={"/img/icons/Icon low red.svg"}
+      src={"/img/icons/Icon_low_red.svg"}
       width={size}
       height={size}
       key={key}

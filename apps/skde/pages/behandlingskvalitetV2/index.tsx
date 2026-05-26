@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   CssBaseline,
-  Link,
   ThemeProvider,
   FormControl,
   Select,
@@ -20,7 +19,7 @@ import {
   useUnitNamesQuery,
 } from "qmongjs";
 import { UseQueryResult } from "@tanstack/react-query";
-import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
+import { TreatmentQualityAppBarV2 } from "../../src/components/IndicatorTable/Indicatortable/StickyHeader";
 import { Footer } from "../../src/components/Footer";
 import { LayoutHead } from "../../src/components/LayoutHead";
 import { defaultTableContext } from "../../src/utils/valueOrDefault";
@@ -34,7 +33,7 @@ import { MedicalFieldPopup } from "../../src/components/DialogBox/MedicalFieldPo
 import { useQueryParam } from "use-query-params";
 import { mainQueryParamsConfig } from "qmongjs";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
-import { IndicatorTable } from "../../src/components/IndicatorTable/Indicatortable";
+import { IndicatorTableV2 } from "../../src/components/IndicatorTable/Indicatortable";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DoneIcon from "@mui/icons-material/Done";
 
@@ -118,87 +117,80 @@ export default function TreatmentQualityPage() {
             content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
             href="/favicon.ico"
           />
-          <TreatmentQualityAppBar openDrawer={() => false}>
-            Resultater fra nasjonale medisinske kvalitetsregistre. Se{" "}
-            <Link
-              href="https://www.kvalitetsregistre.no/"
-              target="_blank"
-              rel="noopener"
-            >
-              kvalitetsregistre.no
-            </Link>{" "}
-            for mer informasjon.
-          </TreatmentQualityAppBar>
+
           <Box padding={4}>
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              sx={{ paddingBottom: 2 }}
-            >
-              <Stack direction="row" spacing={1}>
-                <Button
-                  variant="outlined"
-                  onClick={handleMedicalFieldButtonClick}
-                >
-                  Velg fagområde
-                </Button>
-                <MedicalFieldPopup
-                  open={medicalFieldPopupOpen}
-                  updateRegistries={setSelectedMedicalFields}
-                  setOpen={setMedicalFieldPopupOpen}
-                  onSubmit={setSelectedMedicalFields}
-                />
-                <Button
-                  variant="outlined"
-                  onClick={handleTreatmentUnitButtonClick}
-                >
-                  Velg behandlingsenheter
-                </Button>
-                <TreatmentUnitPopup
-                  open={treatmentUnitPopupOpen}
-                  setOpen={setTreatmentUnitPopupOpen}
-                  onSubmit={setSelectedTreatmentUnits}
-                  context={selectedTableContext}
-                  type={"ind"}
-                />
-                <FormControl>
-                  <InputLabel>År</InputLabel>
-                  <Select
-                    value={selectedYear.toString()}
-                    label="År"
-                    onChange={handleYearChange}
-                  >
-                    {[
-                      ...Array(numberOfYearOptions)
-                        .keys()
-                        .map((i: number) => {
-                          const year = defaultYear - i;
-                          return (
-                            <MenuItem key={year} value={year}>
-                              {year}
-                            </MenuItem>
-                          );
-                        }),
-                    ]}
-                  </Select>
-                </FormControl>
-              </Stack>
-              <Button
-                variant="outlined"
-                startIcon={urlCopied ? <DoneIcon /> : <ContentCopyIcon />}
-                onClick={() => {
-                  navigator.clipboard.writeText(window.location.href);
-                  setUrlCopied(true);
-                  setTimeout(() => {
-                    setUrlCopied(false);
-                  }, urlCopiedTimeout);
-                }}
+            <TreatmentQualityAppBarV2>
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                sx={{ paddingTop: 2, paddingBottom: 2 }}
+                width="100%"
               >
-                {urlCopied ? "URL kopiert" : "Kopier URL"}
-              </Button>
-            </Stack>
+                <Stack direction="row" spacing={3}>
+                  <Button
+                    variant="outlined"
+                    onClick={handleMedicalFieldButtonClick}
+                  >
+                    Velg fagområde
+                  </Button>
+                  <MedicalFieldPopup
+                    open={medicalFieldPopupOpen}
+                    updateRegistries={setSelectedMedicalFields}
+                    setOpen={setMedicalFieldPopupOpen}
+                    onSubmit={setSelectedMedicalFields}
+                  />
+                  <Button
+                    variant="outlined"
+                    onClick={handleTreatmentUnitButtonClick}
+                  >
+                    Velg behandlingsenheter
+                  </Button>
+                  <TreatmentUnitPopup
+                    open={treatmentUnitPopupOpen}
+                    setOpen={setTreatmentUnitPopupOpen}
+                    onSubmit={setSelectedTreatmentUnits}
+                    context={selectedTableContext}
+                    type={"ind"}
+                  />
+                  <FormControl>
+                    <InputLabel>År</InputLabel>
+                    <Select
+                      value={selectedYear.toString()}
+                      label="År"
+                      onChange={handleYearChange}
+                    >
+                      {[
+                        ...Array(numberOfYearOptions)
+                          .keys()
+                          .map((i: number) => {
+                            const year = defaultYear - i;
+                            return (
+                              <MenuItem key={year} value={year}>
+                                {year}
+                              </MenuItem>
+                            );
+                          }),
+                      ]}
+                    </Select>
+                  </FormControl>
+                </Stack>
+                <Button
+                  variant="outlined"
+                  startIcon={urlCopied ? <DoneIcon /> : <ContentCopyIcon />}
+                  onClick={() => {
+                    navigator.clipboard.writeText(window.location.href);
+                    setUrlCopied(true);
+                    setTimeout(() => {
+                      setUrlCopied(false);
+                    }, urlCopiedTimeout);
+                  }}
+                >
+                  {urlCopied ? "URL kopiert" : "Kopier URL"}
+                </Button>
+              </Stack>
+            </TreatmentQualityAppBarV2>
             {selectedMedicalFields.length > 0 ? (
-              <IndicatorTable
+              <IndicatorTableV2
                 key={"indicator-table2"}
                 context={selectedTableContext}
                 unitNames={getSortedList(

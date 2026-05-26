@@ -114,7 +114,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
       nested: true,
     });
 
-    if (nestedDataQuery.isFetching) {
+    if (nestedDataQuery.isFetching || nestedDataQuery.data.length === 0) {
       return null;
     }
 
@@ -276,7 +276,6 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
             >
               {year}
             </Typography>
-            <ChartLogo width={100} marginRight={6} />
           </Box>
           <ChartsTooltip />
           <ChartsSurface>
@@ -293,6 +292,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
             <ChartsYAxis />
             <BarPlot />
           </ChartsSurface>
+          <ChartLogo width={100} marginRight={6} />
         </CustomChartWrapper>
       </ChartsDataProviderPro>
     </Box>
