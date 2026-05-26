@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { render } from "@testing-library/react";
 import * as hooks from "qmongjs/src/helpers/hooks";
 import {

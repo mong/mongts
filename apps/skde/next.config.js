@@ -6,7 +6,10 @@ module.exports = {
   // },
   trailingSlash: true,
   reactStrictMode: true,
-
+  // Image optimization is not compatible with export
+  images: {
+    unoptimized: true,
+  },
   // 1. Force Next.js to parse @mong component library
   transpilePackages: ["qmongjs", "@mong/material-ui"],
 

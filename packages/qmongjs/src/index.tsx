@@ -1,32 +1,32 @@
 export {
-  useRegisterNamesQuery,
-  fetchRegisterNames,
-  useIndicatorQuery,
-  useMedicalFieldsQuery,
-  useUnitUrlsQuery,
-  useUnitNamesQuery,
-  useRegistryRankQuery,
-  useShouldReinitialize,
-  useRegistryRequirementsQuery,
-  useRegistryEvaluationQuery,
-} from "./helpers/hooks";
-export {
-  level,
-  level2,
-  newLevelSymbols,
-  newestLevelSymbols,
-} from "./helpers/functions";
-export { customFormat, imgLoader } from "./helpers/functions";
-export {
-  defaultYear,
   defaultReviewYear,
+  defaultYear,
   mainHospitals,
   mainQueryParamsConfig,
   minDG,
 } from "../../../apps/skde/src/app_config";
-export { skdeTheme, breakpoints } from "./themes/SkdeTheme";
-
+export {
+  customFormat,
+  imgLoader,
+  level,
+  level2,
+  newestLevelSymbols,
+  newLevelSymbols,
+} from "./helpers/functions";
 export {
   getUnitFullName,
   getUnitShortestName,
 } from "./helpers/functions/getUnitName";
+export {
+  fetchRegisterNames,
+  useIndicatorQuery,
+  useMedicalFieldsQuery,
+  useRegisterNamesQuery,
+  useRegistryEvaluationQuery,
+  useRegistryRankQuery,
+  useRegistryRequirementsQuery,
+  useShouldReinitialize,
+  useUnitNamesQuery,
+  useUnitUrlsQuery,
+} from "./helpers/hooks";
+export { breakpoints, skdeTheme } from "./themes/SkdeTheme";

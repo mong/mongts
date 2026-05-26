@@ -64,7 +64,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams.toString());
+  const params = new URLSearchParams(searchParams?.toString());
 
   const residentBackgroundColour = "#F2F9FF";
 

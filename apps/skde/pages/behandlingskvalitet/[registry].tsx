@@ -130,7 +130,9 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
 
     setSelectedYear(
       // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-      parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString()),
+      parseInt(
+        filterSettings.get(yearKey)?.[0]?.value ?? defaultYear.toString(),
+      ),
     );
 
     setSelectedLevel(filterSettings.get(levelKey)?.[0]?.value ?? undefined);
@@ -138,13 +140,13 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     setSelectedMedicalFields([registryName]);
 
     setSelectedTreatmentUnits(
-      filterSettings.get(treatmentUnitsKey).map((value) => value.value),
+      filterSettings.get(treatmentUnitsKey)?.map((value) => value.value) ?? [],
     );
 
     updateColourMap(
       colourMap,
       setColourMap,
-      filterSettings.get(treatmentUnitsKey).map((value) => value.value),
+      filterSettings.get(treatmentUnitsKey)?.map((value) => value.value) ?? [],
     );
   };
 
@@ -309,7 +311,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                       )}
                       year={selectedYear}
                       type="ind"
-                      levels={selectedLevel}
+                      levels={selectedLevel || ""}
                       medfields={selectedMedicalFields}
                       chartColours={getSortedList(
                         colourMap,
@@ -327,7 +329,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                       )}
                       year={selectedYear}
                       type="dg"
-                      levels={selectedLevel}
+                      levels={selectedLevel || ""}
                       medfields={selectedMedicalFields}
                       chartColours={getSortedList(
                         colourMap,

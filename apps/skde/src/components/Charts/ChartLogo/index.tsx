@@ -1,5 +1,5 @@
 import { Stack } from "@mui/material";
-import Image from "next/Image";
+import Image from "next/image";
 
 type LineChartLogoProps = {
   width: number;

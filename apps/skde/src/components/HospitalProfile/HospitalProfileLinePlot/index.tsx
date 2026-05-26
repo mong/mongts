@@ -110,6 +110,7 @@ export const HospitalProfileLinePlot = (
           <Box margin={2}>
             <IndicatorLinechart {...indicatorParams} />
             <Image
+              alt="SKDE Logo"
               src="/img/logos/logo-skde.svg"
               height={50}
               style={{

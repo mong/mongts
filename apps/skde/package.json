@@ -13,11 +13,12 @@
     "cypress:headless": "cypress run",
     "e2e": "start-server-and-test start http://localhost:3000 cypress",
     "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless",
-    "start-server": "npx serve out/",
+    "start-server": "serve out/",
     "format": "biome check --write",
     "check": "biome check --no-errors-on-unmatched",
     "typecheck": "tsc --noEmit",
-    "validate": "pnpm run check && pnpm run typecheck"
+    "validate": "pnpm run check && pnpm run typecheck",
+    "knip": "knip"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -67,9 +68,7 @@
     "@vitest/coverage-v8": "4.1.5",
     "babel-loader": "^10.1.1",
     "cypress": "15.14.2",
-    "eslint": "10.3.0",
     "jsdom": "29.1.1",
-    "prettier": "3.8.3",
     "react-markdown": "10.1.0",
     "serve": "14.2.6",
     "start-server-and-test": "3.0.2",

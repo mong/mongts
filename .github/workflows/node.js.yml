@@ -26,25 +26,19 @@ jobs:
 
     steps:
       - uses: actions/checkout@v6
-      
-      # Migrate to pnpm, remove lines that are commented out when it works !
-      # - name: Enable Corepack before setting up Node
-      #   run: corepack enable
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 11.1.3
-            
+      - name: Enable Corepack before setting up Node
+        run: corepack enable
+      - run: corepack prepare pnpm@11.1.3 --activate
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
           cache: "pnpm"
       - run: pnpm install --frozen-lockfile
-      - run: pnpm format
       - run: pnpm check
       - run: pnpm knip
-      - run: pnpm run test
+      - run: pnpm test
 
       - name: Code coverage
         if: matrix.node-version == '22.x'

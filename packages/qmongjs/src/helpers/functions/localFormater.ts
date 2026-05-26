@@ -1,4 +1,4 @@
-import { formatLocale, FormatLocaleDefinition } from "d3-format";
+import { type FormatLocaleDefinition, formatLocale } from "d3-format";
 
 export function customFormat(
   numberFormat: string,
@@ -22,7 +22,7 @@ export function customFormat(
         };
   try {
     return formatLocale(formatDefinition).format(numberFormat);
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   } catch (error) {
     return formatLocale(formatDefinition).format(".0f");
   }

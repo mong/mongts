@@ -41,14 +41,17 @@ export const app_text: appTextTypes = {
     max_nr_tu: 5,
   },
 };
-
 export const maxYear = 2025;
 export const minYear = maxYear - 4;
 export const defaultYear = 2024;
+
+/** @public */
 export const defaultReviewYear = 2024;
 
+/** @public */
 export const minDG = 0.6;
 
+/** @public */
 export const mainQueryParamsConfig = {
   selected_row: withDefault(StringParam, undefined),
   indicator: withDefault(StringParam, undefined),

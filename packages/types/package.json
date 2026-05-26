@@ -5,9 +5,6 @@
   "types": "./src/index",
   "private": true,
   "scripts": {
-    "lint": "eslint src"
-  },
-  "devDependencies": {
-    "eslint": "10.3.0"
+    "check": "biome check --no-errors-on-unmatched"
   }
 }

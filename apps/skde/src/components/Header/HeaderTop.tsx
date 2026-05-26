@@ -71,10 +71,10 @@ const SkdeBreadcrumbs = ({ path }: { path: BreadCrumbPath }): JSX.Element => {
         <Link
           underline="hover"
           key="mobile_breadcrumb"
-          href={secondToLastElement.link}
+          href={secondToLastElement?.link}
           variant="h6"
         >
-          {secondToLastElement.text}
+          {secondToLastElement?.text}
         </Link>
       </Breadcrumbs>
     );
@@ -92,7 +92,7 @@ const SkdeBreadcrumbs = ({ path }: { path: BreadCrumbPath }): JSX.Element => {
           {row.text}
         </Link>
       ))}
-      <Typography color="text.primary">{path.at(-1).text}</Typography>
+      <Typography color="text.primary">{path?.at(-1)?.text}</Typography>
     </Breadcrumbs>
   );
 };

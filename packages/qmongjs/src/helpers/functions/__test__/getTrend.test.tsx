@@ -1,4 +1,4 @@
-import { DataPoint } from "types";
+import type { DataPoint } from "types";
 import { getTrend } from "../";
 
 const point1: DataPoint = {

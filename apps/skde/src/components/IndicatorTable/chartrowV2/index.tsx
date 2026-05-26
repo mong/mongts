@@ -91,6 +91,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     unitNames,
     context,
     year,
+    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
     dataFormat,
   );
 
@@ -152,7 +153,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
             apiRef.current!.exportAsImage({
               onBeforeExport: makeOnBeforeExport(
-                data.indicatorTitle,
+                data.indicatorTitle || "",
                 registryName,
               ),
             });

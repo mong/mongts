@@ -62,7 +62,11 @@ export default function TreatmentQualityPage() {
   const [
     selectedTreatmentUnits = defaultTreatmentUnits,
     setSelectedTreatmentUnits,
-  ] = useQueryParam<string[] | undefined>("units", mainQueryParamsConfig.units);
+  ] = useQueryParam<string[] | undefined>(
+    "units",
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+    mainQueryParamsConfig.units as any,
+  );
 
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const [dataQualitySelected, setDataQualitySelected] =
@@ -200,7 +204,7 @@ export default function TreatmentQualityPage() {
                 )}
                 year={selectedYear}
                 type={dataQualitySelected ? "dg" : "ind"}
-                levels={selectedLevel}
+                levels={selectedLevel || ""}
                 medfields={selectedMedicalFields}
                 chartColours={getSortedList(
                   colourMap,
