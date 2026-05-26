@@ -1,5 +1,5 @@
 import { Autocomplete, TextField } from "@mui/material";
-import { TreeViewFilterSettingsValue } from "./TreeViewFilterSection";
+import type { TreeViewFilterSettingsValue } from "./TreeViewFilterSection";
 
 type TreeViewSearchBoxProps = {
   hintText?: string;
@@ -22,6 +22,7 @@ function TreeViewSearchBox(props: TreeViewSearchBoxProps) {
           value: optionArray[0].value,
         };
       } else {
+        // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
         console.debug(
           `Invalid non-array value found when mapping options in TreeViewSearchBox. Value: ${optionArray}`,
         );
@@ -31,24 +32,22 @@ function TreeViewSearchBox(props: TreeViewSearchBoxProps) {
     .filter((value) => value !== null);
 
   return (
-    <>
-      <Autocomplete
-        autoHighlight
-        options={Array.from(
-          new Set<string>(options.map((option) => option.label)),
-        )}
-        renderInput={(params) => <TextField {...params} label={hintText} />}
-        onChange={(_, newValue) => {
-          if (newValue) {
-            props.onSearch(
-              options
-                .filter((option) => option.label === newValue)
-                .map((option) => option.value),
-            );
-          }
-        }}
-      />
-    </>
+    <Autocomplete
+      autoHighlight
+      options={Array.from(
+        new Set<string>(options.map((option) => option.label)),
+      )}
+      renderInput={(params) => <TextField {...params} label={hintText} />}
+      onChange={(_, newValue) => {
+        if (newValue) {
+          props.onSearch(
+            options
+              .filter((option) => option.label === newValue)
+              .map((option) => option.value),
+          );
+        }
+      }}
+    />
   );
 }
 

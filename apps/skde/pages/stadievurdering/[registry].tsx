@@ -1,16 +1,16 @@
-import React from "react";
-import { GetStaticProps, GetStaticPaths } from "next";
-import {
-  fetchRegisterNames,
-  defaultReviewYear,
-  useRegistryRankQuery,
-  useRegistryEvaluationQuery,
-} from "qmongjs";
-import { RegistryEvaluation, RegistryRank, RegisterName } from "types";
-import { FaCircle } from "react-icons/fa";
-import { styled, Box, Tabs, Tab, Stack, Typography } from "@mui/material";
-import { Markdown } from "../../src/components/Markdown";
+import { Box, Stack, styled, Tab, Tabs, Typography } from "@mui/material";
 import { LineChartPro } from "@mui/x-charts-pro";
+import type { GetStaticPaths, GetStaticProps } from "next";
+import {
+  defaultReviewYear,
+  fetchRegisterNames,
+  useRegistryEvaluationQuery,
+  useRegistryRankQuery,
+} from "qmongjs";
+import React from "react";
+import { FaCircle } from "react-icons/fa";
+import type { RegisterName, RegistryEvaluation, RegistryRank } from "types";
+import { Markdown } from "../../src/components/Markdown";
 import { RequirementList } from "../../src/components/RequirementList";
 
 const levelAColour = "#58A55C";
@@ -24,7 +24,7 @@ export default function Stadiumfigur({ registry }) {
   // Copy-paste code from https://mui.com/material-ui/react-tabs/
   const [value, setValue] = React.useState(0);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (newValue: number) => {
     setValue(newValue);
   };
 
@@ -190,7 +190,7 @@ export default function Stadiumfigur({ registry }) {
         <PlotComponent />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <h2>{"Ekspertgruppens vurdering av årsrapporten for " + reportYear}</h2>
+        <h2>{`Ekspertgruppens·vurdering·av·årsrapporten·for·${reportYear}`}</h2>
         <Typography style={{ width: "50%" }} variant="body1">
           <Markdown>
             {evaluationData

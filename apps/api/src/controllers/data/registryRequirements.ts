@@ -1,4 +1,4 @@
-import { RequestHandler } from "express";
+import type { RequestHandler } from "express";
 import { registryRequirementsModel } from "../../models/data";
 
 export const registryRequirementsController: RequestHandler = async (

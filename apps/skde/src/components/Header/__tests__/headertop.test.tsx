@@ -1,8 +1,6 @@
-import React from "react";
 import { render } from "@testing-library/react";
-import { HeaderTop } from "../HeaderTop";
-import { BreadCrumbPath } from "../HeaderTop";
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+import { type BreadCrumbPath, HeaderTop } from "../HeaderTop";
 
 describe("HeaderTop component", () => {
   it("renders with breadcrumbs", () => {

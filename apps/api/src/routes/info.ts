@@ -2,8 +2,8 @@ import express from "express";
 import {
   medicalFields,
   registerNames,
-  unitURLs,
   residentData,
+  unitURLs,
 } from "../controllers/info";
 
 const Router = express.Router();

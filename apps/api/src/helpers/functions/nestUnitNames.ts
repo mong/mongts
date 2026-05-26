@@ -1,4 +1,4 @@
-import { TuName, NestedTreatmentUnitName, OptsTu } from "types";
+import type { NestedTreatmentUnitName, OptsTu, TuName } from "types";
 
 export const nestTuNames = (
   tu_names: TuName[],
@@ -40,8 +40,7 @@ export const nestTuNames = (
       const hf_names = acc
         .filter((acc_data) => acc_data.rhf === cur.rhf)
         .map((data) => data.hf)
-        .map((data) => data.map((d) => d.hf))
-        .flat();
+        .flatMap((data) => data.map((d) => d.hf));
 
       if (!hf_names.includes(cur.hf)) {
         const hf_entry = {

@@ -1,11 +1,10 @@
-import Image from "next/image";
-import { imgLoader } from "qmongjs";
-import Link from "next/link";
-import { styled } from "@mui/material/styles";
+import { Box, Container, Stack } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import { Stack, Container, Box } from "@mui/material";
+import { type Breakpoint, styled } from "@mui/material/styles";
+import Image from "next/image";
+import Link from "next/link";
+import { imgLoader } from "qmongjs";
 import { ArrowLink } from "../ArrowLink";
-import { Breakpoint } from "@mui/material/styles";
 
 const StyledLink = styled(Link)(() => ({
   color: "#c4dbf3",

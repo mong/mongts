@@ -1,6 +1,6 @@
-import { ItemBox } from "../HospitalProfileStyles";
-import { Typography, Stack } from "@mui/material";
 import ScreenRotationIcon from "@mui/icons-material/ScreenRotation";
+import { Stack, Typography } from "@mui/material";
+import { ItemBox } from "../HospitalProfileStyles";
 
 type TurnDeviceBoxProps = {
   height: number;

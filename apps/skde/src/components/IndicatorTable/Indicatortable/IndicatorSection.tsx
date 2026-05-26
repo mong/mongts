@@ -1,5 +1,5 @@
-import React from "react";
-import { IndicatorData, OptsTu } from "types";
+import type React from "react";
+import type { IndicatorData, OptsTu } from "types";
 import { IndicatorRow } from "./IndicatorRow";
 
 type IndicatorSectionProps = {
@@ -42,7 +42,7 @@ export const IndicatorSection = (props: IndicatorSectionProps) => {
 
     const returnVal = showRow ? (
       <IndicatorRow
-        key={"IndicatorRow" + indDataRow.indicatorID}
+        key={`IndicatorRow${indDataRow.indicatorID}`}
         unitNames={unitNames}
         medfield={medfield}
         levels={levels}

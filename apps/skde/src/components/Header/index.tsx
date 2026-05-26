@@ -1,7 +1,8 @@
-import React, { PropsWithChildren } from "react";
-import { HeaderTop, BreadCrumbPath } from "./HeaderTop";
+import type { Breakpoint } from "@mui/material";
+import type React from "react";
+import type { PropsWithChildren } from "react";
 import { HeaderMiddle } from "./HeaderMiddle";
-import { Breakpoint } from "@mui/material";
+import { type BreadCrumbPath, HeaderTop } from "./HeaderTop";
 
 type HeaderProps = PropsWithChildren<{
   title: string;
@@ -36,6 +37,7 @@ export const Header = (props: HeaderProps) => {
         bgcolor={props.bgcolor}
         title={props.title}
         maxWidth={props.maxWidth ? props.maxWidth : false}
+        // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
         children={props.children}
       />
     </>

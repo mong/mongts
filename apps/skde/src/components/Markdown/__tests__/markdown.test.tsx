@@ -7,8 +7,8 @@
  */
 
 import { render } from "@testing-library/react";
+import { expect, test } from "vitest";
 import { Markdown } from "..";
-import { test, expect } from "vitest";
 
 test("Standard render", async () => {
   const markdownText = "Dette er en test";

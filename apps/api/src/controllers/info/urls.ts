@@ -1,4 +1,4 @@
-import { RequestHandler } from "express";
+import type { RequestHandler } from "express";
 import { urlModel } from "../../models/info";
 
 export const unitURLs: RequestHandler = async (req, res) => {

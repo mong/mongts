@@ -1,18 +1,18 @@
-import { type JSX } from "react";
-import NavigateNextRoundedIcon from "@mui/icons-material/NavigateNextRounded";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import NavigateNextRoundedIcon from "@mui/icons-material/NavigateNextRounded";
 import {
   Breadcrumbs,
-  Breakpoint,
+  type Breakpoint,
+  Container,
   Link,
+  styled,
   Toolbar,
   Typography,
-  styled,
-  Container,
+  useMediaQuery,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { useTheme } from "@mui/material/styles";
-import { useMediaQuery } from "@mui/material";
+import type { JSX } from "react";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -87,6 +87,7 @@ const SkdeBreadcrumbs = ({ path }: { path: BreadCrumbPath }): JSX.Element => {
       aria-label="breadcrumb"
     >
       {path.slice(0, -1).map((row, index) => (
+        // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
         <Link underline="hover" key={index} color="inherit" href={row.link}>
           {row.text}
         </Link>

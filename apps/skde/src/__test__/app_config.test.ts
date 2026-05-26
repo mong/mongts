@@ -1,5 +1,5 @@
-import { minYear, maxYear, mainHospitals } from "../app_config";
-import { test, expect } from "vitest";
+import { expect, test } from "vitest";
+import { mainHospitals, maxYear, minYear } from "../app_config";
 
 test("Number of selectable years are 5", () => {
   expect(maxYear - minYear + 1).toBe(5);

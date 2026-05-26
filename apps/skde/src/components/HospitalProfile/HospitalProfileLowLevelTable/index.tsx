@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { LowLevelIndicatorList } from "../LowLevelIndicatorList";
-import { ExpandableItemBox } from "../ExpandableItemBox";
-import { ChipSelection } from "../../ChipSelection";
 import { Box, Typography } from "@mui/material";
+import { useState } from "react";
 import { formatUnitNameIfNational } from "../../../helpers/functions/formatUnitNameIfNational";
+import { ChipSelection } from "../../ChipSelection";
+import { ExpandableItemBox } from "../ExpandableItemBox";
+import { LowLevelIndicatorList } from "../LowLevelIndicatorList";
 
 type HospitalProfileLowLevelTableProps = {
   unitName: string;
@@ -37,7 +37,7 @@ export const HospitalProfileLowLevelTable = (
     >
       <Box padding={titlePadding}>
         <Typography variant="h5" style={titleStyle}>
-          <b>{"Siste års måloppnåelse for " + lastYear}</b>
+          <b>{`Siste års måloppnåelse for ${lastYear}`}</b>
         </Typography>
         <div style={{ margin: textMargin }}>
           <Typography variant="body1">

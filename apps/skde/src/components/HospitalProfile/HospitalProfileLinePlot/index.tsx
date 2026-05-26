@@ -1,14 +1,15 @@
-import { useState } from "react";
-import {
-  IndicatorLinechart,
-  IndicatorLinechartParams,
-} from "../../Charts/IndicatorLinechart";
-import { ThemeProvider, Box, Typography, Stack, Button } from "@mui/material";
-import { ChipSelection } from "../../ChipSelection";
-import { ItemBox, lineChartTheme } from "../..//HospitalProfile";
-import { formatUnitNameIfNational } from "../../../helpers/functions/formatUnitNameIfNational";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import ZoomOutIcon from "@mui/icons-material/ZoomOut";
+import { Box, Button, Stack, ThemeProvider, Typography } from "@mui/material";
+import Image from "next/image";
+import { useState } from "react";
+import { formatUnitNameIfNational } from "../../../helpers/functions/formatUnitNameIfNational";
+import {
+  IndicatorLinechart,
+  type IndicatorLinechartParams,
+} from "../../Charts/IndicatorLinechart";
+import { ChipSelection } from "../../ChipSelection";
+import { ItemBox, lineChartTheme } from "../..//HospitalProfile";
 
 type HospitalProfileLinePlotProps = {
   unitFullName: string;
@@ -108,7 +109,7 @@ export const HospitalProfileLinePlot = (
         <div id="plot-window">
           <Box margin={2}>
             <IndicatorLinechart {...indicatorParams} />
-            <img
+            <Image
               src="/img/logos/logo-skde.svg"
               height={50}
               style={{

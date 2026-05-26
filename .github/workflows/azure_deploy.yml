@@ -50,6 +50,7 @@ jobs:
       # - run: yarn run check-types
       # - run: yarn run check-format
       - run: pnpm install --frozen-lockfile
+      - run: pnpm format
       - run: pnpm check
       
       - name: Test build

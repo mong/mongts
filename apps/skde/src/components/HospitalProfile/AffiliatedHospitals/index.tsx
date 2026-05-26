@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
+import type { NestedTreatmentUnitName, OptsTu } from "types";
 import { ItemBox } from "../HospitalProfileStyles";
 import { SubUnits } from "../SubUnits";
-import { NestedTreatmentUnitName, OptsTu } from "types";
 
 type AffiliatedHospitalProps = {
   boxHeight: number;

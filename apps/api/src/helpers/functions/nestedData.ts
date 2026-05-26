@@ -1,4 +1,4 @@
-import { RegisterData, IndicatorData, DataPoint, Registry } from "types";
+import type { DataPoint, IndicatorData, RegisterData, Registry } from "types";
 
 export const nestedData = (
   registries: Registry[],

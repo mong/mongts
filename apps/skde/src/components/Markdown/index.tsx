@@ -1,7 +1,8 @@
-import ReactMarkdown, { Components } from "react-markdown";
+import Image from "next/image";
+import ReactMarkdown, { type Components } from "react-markdown";
 import rehypeRaw from "rehype-raw";
-import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
 
 /**
  * ## Wrapper for markdown content
@@ -40,7 +41,7 @@ export const Markdown = ({ children, lang }: MarkdownProp) => {
             flexDirection: "column",
           }}
         >
-          <img
+          <Image
             src={src}
             alt={alt ? alt : title ? title : ""}
             title={alt}
@@ -100,14 +101,12 @@ export const Markdown = ({ children, lang }: MarkdownProp) => {
     },
   };
   return (
-    <>
-      <ReactMarkdown
-        rehypePlugins={rehypePlugins}
-        remarkPlugins={remarkPlugins}
-        components={components}
-      >
-        {children}
-      </ReactMarkdown>
-    </>
+    <ReactMarkdown
+      rehypePlugins={rehypePlugins}
+      remarkPlugins={remarkPlugins}
+      components={components}
+    >
+      {children}
+    </ReactMarkdown>
   );
 };

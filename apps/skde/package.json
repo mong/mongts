@@ -14,6 +14,7 @@
     "e2e": "start-server-and-test start http://localhost:3000 cypress",
     "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless",
     "start-server": "npx serve out/",
+    "format": "biome check --write",
     "check": "biome check --no-errors-on-unmatched",
     "typecheck": "tsc --noEmit",
     "validate": "pnpm run check && pnpm run typecheck"

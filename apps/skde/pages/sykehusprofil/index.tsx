@@ -1,36 +1,36 @@
-import React, { useState, useEffect, type JSX } from "react";
-import { UseQueryResult } from "@tanstack/react-query";
-import { Header, BreadCrumbPath } from "../../src/components/Header";
 import {
-  skdeTheme,
-  useUnitNamesQuery,
-  defaultYear,
-  mainHospitals,
-  useUnitUrlsQuery,
-} from "qmongjs";
-import { Footer } from "../../src/components/Footer";
-import {
-  ThemeProvider,
   Box,
   Container,
-  Typography,
   CssBaseline,
+  ThemeProvider,
+  Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
-import { HospitalInfoBox } from "../../src/components/HospitalProfile";
-import { getUnitFullName } from "qmongjs";
-import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
+import type { UseQueryResult } from "@tanstack/react-query";
 import { useScreenSize } from "@visx/responsive";
-import { breakpoints } from "qmongjs";
-import { HospitalProfileMedfieldTable } from "../../src/components/HospitalProfile/HospitalProfileMedfieldTable";
-import { HospitalProfileLowLevelTable } from "../../src/components/HospitalProfile/HospitalProfileLowLevelTable";
+import {
+  breakpoints,
+  defaultYear,
+  getUnitFullName,
+  mainHospitals,
+  skdeTheme,
+  useUnitNamesQuery,
+  useUnitUrlsQuery,
+} from "qmongjs";
+import { type JSX, useEffect, useState } from "react";
+import type { URLs } from "types";
+import { Footer } from "../../src/components/Footer";
+import { type BreadCrumbPath, Header } from "../../src/components/Header";
+import { HospitalInfoBox } from "../../src/components/HospitalProfile";
+import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
 import { HospitalProfileLinePlot } from "../../src/components/HospitalProfile/HospitalProfileLinePlot";
-import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterMenu";
-import { TurnDeviceBox } from "../../src/components/HospitalProfile/TurnDeviceBox";
-import { URLs } from "types";
-import { LayoutHead } from "../../src/components/LayoutHead";
+import { HospitalProfileLowLevelTable } from "../../src/components/HospitalProfile/HospitalProfileLowLevelTable";
+import { HospitalProfileMedfieldTable } from "../../src/components/HospitalProfile/HospitalProfileMedfieldTable";
 import { SelectedIndicatorTable } from "../../src/components/HospitalProfile/SelectedIndicatorTable";
+import { TurnDeviceBox } from "../../src/components/HospitalProfile/TurnDeviceBox";
+import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterMenu";
+import { LayoutHead } from "../../src/components/LayoutHead";
+import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 
 export const Skde = (): JSX.Element => {
   // States
@@ -85,26 +85,27 @@ export const Skde = (): JSX.Element => {
   // Queries //
   // ####### //
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const unitNamesQuery: UseQueryResult<any, Error> = useUnitNamesQuery(
+  const unitNamesQuery: UseQueryResult<unknown, Error> = useUnitNamesQuery(
     "all",
     "caregiver",
     "ind",
   );
 
   // URLs for the web pages to the different treatment units
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const unitUrlsQuery: UseQueryResult<any, Error> = useUnitUrlsQuery();
+  const unitUrlsQuery: UseQueryResult<unknown, Error> = useUnitUrlsQuery();
 
   if (unitNamesQuery.isFetching || unitUrlsQuery.isFetching) {
-    return null;
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+    return <></>;
   }
 
   let unitFullName: string;
 
   if (unitNamesQuery.data) {
     // Only keep the "real" hospitals
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
     unitNamesQuery.data.nestedUnitNames.map((rhf) => {
+      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
       rhf.hf.map((hf) => {
         hf.hospital = hf.hospital.filter((unit) =>
           mainHospitals.includes(unit),

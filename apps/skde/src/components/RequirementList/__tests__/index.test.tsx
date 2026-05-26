@@ -1,13 +1,12 @@
-import React from "react";
 import { render } from "@testing-library/react";
-import { RequirementList } from "..";
-import { vi, test, expect } from "vitest";
 import * as hooks from "qmongjs/src/helpers/hooks";
 import {
-  requirementsTestData,
   rankTestData,
+  requirementsTestData,
   scoresTestData,
-} from "qmongjs/src/test/test_data/registryRequirements.ts";
+} from "qmongjs/src/test/test_data/registryRequirements";
+import { expect, test, vi } from "vitest";
+import { RequirementList } from "..";
 
 vi.mock("qmongjs/src/helpers/hooks");
 

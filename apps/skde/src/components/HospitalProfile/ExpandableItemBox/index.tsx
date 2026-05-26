@@ -1,5 +1,5 @@
-import { useState, useRef, PropsWithChildren, useEffect } from "react";
-import { Button, Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import { type PropsWithChildren, useEffect, useRef, useState } from "react";
 
 type ExpandableItemBoxProps = {
   collapsedHeight: number;

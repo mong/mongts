@@ -1,10 +1,10 @@
-import { ReactElement } from "react";
-import { NestedTreatmentUnitName } from "types";
-import { Button, List, ListItem, Stack, Typography, Box } from "@mui/material";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import UndoIcon from "@mui/icons-material/Undo";
+import { Box, Button, List, ListItem, Stack, Typography } from "@mui/material";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { skdeTheme } from "qmongjs";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import type { ReactElement } from "react";
+import type { NestedTreatmentUnitName } from "types";
 
 // Find the unit one level above the given unit
 const getParentUnit = (
@@ -27,7 +27,7 @@ const getParentUnit = (
   }
 
   // Check if unit is a HF
-  const HFs = nestedUnitNames.map((row) => row.hf).flat();
+  const HFs = nestedUnitNames.flatMap((row) => row.hf);
   const isHF = HFs.map((row) => row.hf).includes(unitShortName);
 
   if (isHF) {
@@ -53,7 +53,7 @@ const getUnitLevel = (
   selectedUnit: string,
 ) => {
   const RHFNames = RHFs.map((row) => row.rhf);
-  const HFs = RHFs.map((row) => row.hf).flat();
+  const HFs = RHFs.flatMap((row) => row.hf);
   const HFNames = HFs.map((row) => row.hf);
 
   const unitLevel =
@@ -82,7 +82,7 @@ const UnitButton = (props: {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const params = new URLSearchParams(searchParams.toString());
+  const params = new URLSearchParams(searchParams?.toString());
   params.set("selected_treatment_units", unitName);
 
   // Symbol and text for the button
@@ -91,7 +91,7 @@ const UnitButton = (props: {
   return (
     <Button
       onClick={() => {
-        router.replace(pathname + "?" + params.toString(), { scroll: false });
+        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
         setUnitName(unitName);
       }}
       variant={buttonVariant}
@@ -113,7 +113,7 @@ const UnitButton = (props: {
 export const SubUnits = (props: SubUnitsProps) => {
   const { RHFs, selectedUnit, setUnitName } = props;
 
-  const HFs = RHFs.map((row) => row.hf).flat();
+  const HFs = RHFs.flatMap((row) => row.hf);
   const unitLevel = getUnitLevel(RHFs, selectedUnit);
 
   const buttonVariant = "outlined";
@@ -131,7 +131,7 @@ export const SubUnits = (props: SubUnitsProps) => {
           .map((row) => row.rhf)
           .map((rhf) => {
             return (
-              <ListItem key={"subunit-link-" + rhf}>
+              <ListItem key={`subunit-link-${rhf}`}>
                 <UnitButton
                   unitName={rhf}
                   buttonVariant={buttonVariant}
@@ -153,7 +153,7 @@ export const SubUnits = (props: SubUnitsProps) => {
           )
           .map((row) => {
             return (
-              <ListItem key={"subunit-link-" + row.hf}>
+              <ListItem key={`subunit-link-${row.hf}`}>
                 <UnitButton
                   unitName={row.hf}
                   buttonVariant={buttonVariant}
@@ -169,7 +169,7 @@ export const SubUnits = (props: SubUnitsProps) => {
       <List>
         {HFs.find((row) => row.hf === selectedUnit).hospital.map((hospital) => {
           return (
-            <ListItem key={"subunit-link-" + hospital}>
+            <ListItem key={`subunit-link-${hospital}`}>
               <UnitButton
                 unitName={hospital}
                 buttonVariant={buttonVariant}

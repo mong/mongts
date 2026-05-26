@@ -1,14 +1,17 @@
-import express, { RequestHandler, type Request, type Response } from "express";
-import crypto from "crypto";
 import compression from "compression";
-import helmet from "helmet";
 import cors from "cors";
+import crypto from "crypto";
+import express, {
+  type Request,
+  type RequestHandler,
+  type Response,
+} from "express";
 import rateLimit from "express-rate-limit";
+import helmet from "helmet";
 import { parse } from "qs";
-
+import registerDataRouter from "./routes/data";
 //router
 import registerInfoRouter from "./routes/info";
-import registerDataRouter from "./routes/data";
 
 const PORT = process.env.PORT ?? 4000;
 

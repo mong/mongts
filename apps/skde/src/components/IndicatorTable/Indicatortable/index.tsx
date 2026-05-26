@@ -1,6 +1,6 @@
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { StyledTable } from "./IndicatorTableStyles";
-import { useSearchParams } from "next/navigation";
 import { RegistrySection } from "./RegistrySection";
 import { RegistrySectionV2 } from "./RegistrySectionV2";
 

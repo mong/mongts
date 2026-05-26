@@ -1,6 +1,6 @@
+import type { ResidentData } from "types";
 import db from "../../db";
-import { ResidentData } from "types";
-import { Filter } from ".";
+import type { Filter } from ".";
 
 export const residentDataModel = (filter?: Filter): Promise<ResidentData[]> =>
   db

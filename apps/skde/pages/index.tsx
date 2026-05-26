@@ -1,12 +1,17 @@
-import Link from "next/link";
+import {
+  Accordion,
+  AccordionBody,
+  AccordionHeading,
+  PageContent,
+} from "@mong/material-ui";
 // import { ThemeProvider, styled, Toolbar } from "@mui/material";
 // import { skdeTheme } from "qmongjs";
 // import { PageWrapper } from "../src/components/StyledComponents/PageWrapper";
 import { styled, Toolbar } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import { imgLoader } from "qmongjs";
-import { PageContent } from "@mong/material-ui";
-import { Accordion, AccordionBody, AccordionHeading } from "@mong/material-ui";
+
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
   paddingTop: theme.spacing(5),

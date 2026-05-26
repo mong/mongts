@@ -1,9 +1,8 @@
-import React from "react";
-import { MedfieldTable, createMedfieldTableData } from "..";
-import { vi, test, expect } from "vitest";
-import * as hooks from "qmongjs/src/helpers/hooks";
 import { render } from "@testing-library/react";
-import { Indicator } from "types";
+import * as hooks from "qmongjs/src/helpers/hooks";
+import type { Indicator } from "types";
+import { expect, test, vi } from "vitest";
+import { createMedfieldTableData, MedfieldTable } from "..";
 
 const medfieldTableData: Indicator[] = [
   {

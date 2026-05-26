@@ -7,6 +7,7 @@
     "start": "ts-node-dev -r dotenv/config src",
     "dev": "pnpm run start",
     "build": "tsc",
+    "format": "biome check --write",
     "check": "biome check --no-errors-on-unmatched",
     "typecheck": "tsc --noEmit",
     "validate": "pnpm run check && pnpm run typecheck && pnpm run build"

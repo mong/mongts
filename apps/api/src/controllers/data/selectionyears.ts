@@ -1,5 +1,5 @@
-import { RequestHandler, Request } from "express";
-import { selectionYearsModel, Filter } from "../../models/data";
+import type { Request, RequestHandler } from "express";
+import { type Filter, selectionYearsModel } from "../../models/data";
 
 interface Query {
   filter: Filter;

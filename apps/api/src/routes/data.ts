@@ -1,14 +1,14 @@
 import express from "express";
 import {
+  dataController,
   descriptionController,
   indicatorsController,
-  unitNamesController,
-  selectionYearsController,
-  dataController,
-  registryRankController,
   registryEvaluationController,
-  registryScoresController,
+  registryRankController,
   registryRequirementsController,
+  registryScoresController,
+  selectionYearsController,
+  unitNamesController,
 } from "../controllers/data";
 
 const Router = express.Router();

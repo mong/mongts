@@ -1,12 +1,15 @@
-import React, { useContext } from "react";
-import { Stack, Chip, Link, Box, styled, Typography } from "@mui/material";
 import ClearRoundedIcon from "@mui/icons-material/ClearRounded";
+import { Box, Chip, Link, Stack, styled, Typography } from "@mui/material";
 import _ from "lodash";
-import { FilterMenuSectionProps } from ".";
+import type React from "react";
+import { useContext } from "react";
+import type { FilterMenuSectionProps } from ".";
 import { FilterSettingsContext } from "./FilterSettingsContext";
-import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
-import { FilterSettingsAction } from "./FilterSettingsReducer";
-import { FilterSettingsActionType } from "./FilterSettingsReducer";
+import {
+  type FilterSettingsAction,
+  FilterSettingsActionType,
+  FilterSettingsDispatchContext,
+} from "./FilterSettingsReducer";
 
 type SelectedFiltersSectionProps = FilterMenuSectionProps;
 

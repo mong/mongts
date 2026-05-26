@@ -1,10 +1,9 @@
-import { type JSX } from "react";
-import Button from "@mui/material/Button";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward";
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, type TypographyVariant } from "@mui/material";
+import Button from "@mui/material/Button";
 import Link from "next/link";
-import { TypographyVariant } from "@mui/material";
+import type { JSX } from "react";
 
 type ArrowLinkProps = {
   href: string;

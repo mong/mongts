@@ -1,8 +1,8 @@
 import {
+  BooleanParam,
   DelimitedArrayParam,
   NumberParam,
   StringParam,
-  BooleanParam,
   withDefault,
 } from "use-query-params";
 

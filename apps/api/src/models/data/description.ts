@@ -1,7 +1,7 @@
-import { Knex } from "knex";
+import type { Knex } from "knex";
+import type { Description } from "types";
 import db from "../../db";
-import { Filter } from ".";
-import { Description } from "types";
+import type { Filter } from ".";
 
 export const descriptionModel = (
   register: string,
