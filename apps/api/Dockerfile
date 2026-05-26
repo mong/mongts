@@ -8,10 +8,15 @@ WORKDIR /app
 
 COPY . .
 
-RUN corepack enable && \
-    yarn install && \
-    yarn workspace api build && \
-    yarn workspaces focus api --production
+# Migrate to pnpm, remove lines that are commented out when it works !
+# RUN corepack enable && \
+#     yarn install && \
+#     yarn workspace api build && \
+#     yarn workspaces focus api --production
+RUN pnpm install \
+    && pnpm install \
+    && pnpm --filter api build \
+    && pnpm --filter api --prod
 
 FROM base AS runner
 WORKDIR /app

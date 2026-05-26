@@ -27,24 +27,40 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_FRONTDOOR_CREDENTIALS }}
           enable-AzPSSession: true
+      
       - name: Check out the repo
         uses: actions/checkout@v6
-      - name: Enable Corepack before setting up Node
-        run: corepack enable
+
+      # Migrate to pnpm, remove lines that are commented out when it works !
+      # - name: Enable Corepack before setting up Node
+      #   run: corepack enable
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11.1.3  
+      
       - name: Set up Node.js
         uses: actions/setup-node@v6
         with:
           node-version: "24.x"
-          cache: "yarn"
-      - run: corepack enable && yarn install
-      - run: yarn run check-types
-      - run: yarn run check-format
+          cache: "pnpm"
+          
+      # - run: corepack enable && yarn install
+      # - run: yarn run check-types
+      # - run: yarn run check-format
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      
       - name: Test build
         env:
           NEXT_PUBLIC_API_HOST: https://prod-api.skde.org
           NEXT_PUBLIC_MUI_X_LICENSE_KEY: ${{ secrets.NEXT_PUBLIC_MUI_X_LICENSE_KEY }}
+        # run: | 
+        #   yarn run export
         run: |
-          yarn run export
+          pnpm export
+
       - name: Build and upload main branch version to Azure
         if: github.ref == 'refs/heads/main'
         env:
@@ -52,14 +68,16 @@ jobs:
           NEXT_PUBLIC_MUI_X_LICENSE_KEY: ${{ secrets.NEXT_PUBLIC_MUI_X_LICENSE_KEY }}
           AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT_PROD }}
           AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY_PROD }}
+        
         run: |
-          yarn run export
+          pnpm export
           az storage blob sync \
             --account-name $AZURE_STORAGE_ACCOUNT \
             --account-key $AZURE_STORAGE_KEY \
             --container '$web' \
             --source ./apps/skde/out \
             --delete-destination true
+
       - name: Purge prod version from Azure Front Door
         if: github.ref == 'refs/heads/main'
         uses: azure/cli@v3
@@ -73,6 +91,7 @@ jobs:
               --domains apps.skde.no \
               --content-paths '/*' \
               --no-wait true
+
       - name: Build and upload verify version to Azure
         if: github.ref == 'refs/heads/main'
         env:
@@ -82,13 +101,14 @@ jobs:
           AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT_VERIFY }}
           AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY_VERIFY }}
         run: |
-          yarn run export
+          pnpm export
           az storage blob sync \
             --account-name $AZURE_STORAGE_ACCOUNT \
             --account-key $AZURE_STORAGE_KEY \
             --container '$web' \
             --source ./apps/skde/out \
             --delete-destination true
+
       - name: Purge verify version from Azure Front Door
         if: github.ref == 'refs/heads/main'
         uses: azure/cli@v3
@@ -102,6 +122,7 @@ jobs:
               --domains verify.skde.no \
               --content-paths '/*' \
               --no-wait true
+
       - name: Upload develop version to Azure
         if: github.ref == 'refs/heads/develop'
         env:
@@ -110,13 +131,14 @@ jobs:
           AZURE_STORAGE_ACCOUNT: ${{ secrets.AZURE_STORAGE_ACCOUNT_TEST }}
           AZURE_STORAGE_KEY: ${{ secrets.AZURE_STORAGE_KEY_TEST }}
         run: |
-          yarn run export
+          pnpm export
           az storage blob sync \
             --account-name $AZURE_STORAGE_ACCOUNT \
             --account-key $AZURE_STORAGE_KEY \
             --container '$web' \
             --source ./apps/skde/out \
             --delete-destination true
+            
       - name: Purge test version from Azure Front Door
         if: github.ref == 'refs/heads/develop'
         uses: azure/cli@v3
