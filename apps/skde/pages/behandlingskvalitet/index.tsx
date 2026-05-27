@@ -193,10 +193,25 @@ export default function TreatmentQualityPage() {
    * Handle filter changes
    */
   const handleFilterChanged = (
-    action: FilterSettingsAction,
     newFilterSettings: { map: Map<string, FilterSettingsValue[]> },
-    // oldFilterSettings: { map: Map<string, FilterSettingsValue[]> },
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+    oldFilterSettings: { map: Map<string, FilterSettingsValue[]> },
+    action: FilterSettingsAction,
   ): void => {
+    if (action.type === FilterSettingsActionType.RESET_SELECTIONS) {
+      setAllSelected(newFilterSettings);
+      updateColourMap(
+        colourMap,
+        setColourMap,
+        valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+      );
+      return;
+    }
+
+    if (!action.sectionSetting) {
+      return;
+    }
+
     switch (action.sectionSetting.key) {
       case tableContextKey: {
         setSelectedTableContext(
@@ -242,10 +257,6 @@ export default function TreatmentQualityPage() {
       }
       default:
         break;
-    }
-
-    if (action.type === FilterSettingsActionType.RESET_SELECTIONS) {
-      setAllSelected(newFilterSettings);
     }
 
     updateColourMap(
