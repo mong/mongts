@@ -38,8 +38,18 @@ jobs:
       - name: Export (with retry)
         run: |
           for i in 1 2 3; do
-            pnpm export && break || (echo "Attempt $i failed, retrying..." && sleep 15)
+            if pnpm export; then
+              exit 0
+            fi
+
+            if [ "$i" -lt 3 ]; then
+              echo "Attempt $i failed, retrying..."
+              sleep 15
+            fi
           done
+
+          echo "Export failed after 3 attempts"
+          exit 1
         env:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
@@ -49,8 +59,8 @@ jobs:
         with:
           install: false
           working-directory: apps/skde
-          start: pnpm --filter skde start-server
-          wait-on: http://localhost:3000
+          start: pnpm start-server
+          wait-on: http://localhost:3000/behandlingskvalitet/
           wait-on-timeout: 120
           command: pnpm exec cypress run --browser chrome
 
