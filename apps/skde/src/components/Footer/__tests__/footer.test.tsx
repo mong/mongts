@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 import { Footer } from "../.";
-import { vi, describe, it, expect } from "vitest";
 
 vi.mock("next/font/google", () => ({
   Plus_Jakarta_Sans: () => ({

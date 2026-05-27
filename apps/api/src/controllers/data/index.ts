@@ -1,9 +1,9 @@
+export { dataController } from "./data";
 export * from "./description";
 export * from "./indicators";
-export * from "./unitNames";
-export * from "./selectionyears";
-export { dataController } from "./data";
-export { registryRankController } from "./registryRank";
 export { registryEvaluationController } from "./registryEvaluation";
-export { registryScoresController } from "./registryScores";
+export { registryRankController } from "./registryRank";
 export { registryRequirementsController } from "./registryRequirements";
+export { registryScoresController } from "./registryScores";
+export * from "./selectionyears";
+export * from "./unitNames";

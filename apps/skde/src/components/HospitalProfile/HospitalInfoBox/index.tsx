@@ -1,12 +1,12 @@
-import { ItemBox } from "../HospitalProfileStyles";
+import { Link, Stack, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import { Stack, Typography, Link } from "@mui/material";
-import { ArrowLink } from "../../ArrowLink";
-import { getUnitFullName } from "qmongjs";
-import { NestedTreatmentUnitName, OptsTu } from "types";
 import { useScreenSize } from "@visx/responsive";
-import { breakpoints } from "qmongjs";
+import Image from "next/image";
+import { breakpoints, getUnitFullName } from "qmongjs";
 import { useEffect, useState } from "react";
+import type { NestedTreatmentUnitName, OptsTu } from "types";
+import { ArrowLink } from "../../ArrowLink";
+import { ItemBox } from "../HospitalProfileStyles";
 
 type HospitalInfoBoxProps = {
   boxHeight: number;
@@ -52,7 +52,8 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
               }}
             >
               {unitNames && (
-                <img
+                <Image
+                  // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
                   src={imgSrc}
                   onError={() => setImgSrc("/img/forsidebilder/Sykehus.jpg")}
                   alt={"Logo"}

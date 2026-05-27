@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { MedfieldTable, MedfieldTableProps } from "../MedfieldTable";
-import { ExpandableItemBox } from "../ExpandableItemBox";
-import { ChipSelection } from "../../ChipSelection";
 import { Box, Typography } from "@mui/material";
-import { LinePlotLegend } from "../LinePlotLegend";
+import { useState } from "react";
 import { formatUnitNameIfNational } from "../../../helpers/functions/formatUnitNameIfNational";
+import { ChipSelection } from "../../ChipSelection";
+import { ExpandableItemBox } from "../ExpandableItemBox";
+import { LinePlotLegend } from "../LinePlotLegend";
+import { MedfieldTable, type MedfieldTableProps } from "../MedfieldTable";
 
 type HospitalProfileMedfieldTableProps = {
   boxMaxHeight: number;
@@ -50,7 +50,7 @@ export const HospitalProfileMedfieldTable = (
     >
       <Box padding={titlePadding}>
         <Typography variant="h5" style={titleStyle}>
-          <b>{"Kvalitetsindikatorer fordelt på fagområder for " + lastYear}</b>
+          <b>{`Kvalitetsindikatorer fordelt på fagområder for ${lastYear}`}</b>
         </Typography>
         <ChipSelection
           leftChipLabel="Vis kvalitetsindikatorer"

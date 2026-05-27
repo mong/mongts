@@ -4,13 +4,12 @@
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
   "scripts": {
-    "test": "yarn run test:base run --coverage",
+    "test": "pnpm run test:base run --coverage",
     "test:base": "vitest",
-    "lint": "eslint src",
-    "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json|html|yml|yaml|css|md)\"",
-    "format": "yarn run prettier --write",
-    "check-format": "yarn run prettier --check",
-    "check-types": "tsc --noEmit"
+    "format": "biome check --write",
+    "check": "biome check --no-errors-on-unmatched",
+    "typecheck": "tsc --noEmit",
+    "validate": "pnpm run check && pnpm run typecheck"
   },
   "devDependencies": {
     "@emotion/react": "11.14.0",
@@ -18,9 +17,7 @@
     "@types/react": "19.2.15",
     "@vitejs/plugin-react": "6.0.1",
     "@vitest/coverage-v8": "4.1.5",
-    "eslint": "10.3.0",
     "jsdom": "29.1.1",
-    "prettier": "3.8.3",
     "types": "*",
     "typescript": "5.9.3",
     "vite": "8.0.10",

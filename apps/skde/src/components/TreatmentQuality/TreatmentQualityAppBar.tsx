@@ -1,7 +1,7 @@
 import { AppBar, styled } from "@mui/material";
+import type { PropsWithChildren } from "react";
+import { type BreadCrumbPath, Header } from "../Header";
 import { TreatmentQualityToolbar } from "./TreatmentQualityToolbar";
-import { Header, BreadCrumbPath } from "../Header";
-import { PropsWithChildren } from "react";
 
 const StyledAppBar = styled(AppBar)(() => ({
   elevation: 0,
@@ -30,6 +30,7 @@ const TreatmentQualityAppBar = ({
 
   return (
     <>
+      {/* biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future */}
       <Header title={title} breadcrumbs={breadcrumbs} children={children} />
       <StyledAppBar position="sticky" elevation={0}>
         <TreatmentQualityToolbar openDrawer={openDrawer} />

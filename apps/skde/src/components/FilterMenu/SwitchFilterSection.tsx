@@ -1,18 +1,21 @@
-import React, { useContext } from "react";
 import {
+  FormControl,
   FormControlLabel,
   FormGroup,
-  Switch,
   FormHelperText,
-  FormControl,
+  Switch,
 } from "@mui/material";
-import { FilterMenuSectionProps } from ".";
+import type React from "react";
+import { useContext } from "react";
+import type { FilterMenuSectionProps } from ".";
 import {
   FilterSettingsContext,
-  FilterSettingsValue,
+  type FilterSettingsValue,
 } from "./FilterSettingsContext";
-import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
-import { FilterSettingsActionType } from "./FilterSettingsReducer";
+import {
+  FilterSettingsActionType,
+  FilterSettingsDispatchContext,
+} from "./FilterSettingsReducer";
 import { getSelectedValue } from "./utils";
 
 type SwitchFilterSectionProps = FilterMenuSectionProps & {
@@ -46,27 +49,25 @@ export function SwitchFilterSection(props: SwitchFilterSectionProps) {
   };
 
   return (
-    <>
-      <FormControl>
-        {props.helperText && (
-          <FormHelperText sx={{ fontSize: "body1.fontSize" }}>
-            {props.helperText}
-          </FormHelperText>
-        )}
-        <FormGroup aria-label={props.label} row>
-          <FormControlLabel
-            labelPlacement="start"
-            label={labelText}
-            control={
-              <Switch
-                checked={isChecked}
-                onChange={handleChange}
-                color="primary"
-              />
-            }
-          />
-        </FormGroup>
-      </FormControl>
-    </>
+    <FormControl>
+      {props.helperText && (
+        <FormHelperText sx={{ fontSize: "body1.fontSize" }}>
+          {props.helperText}
+        </FormHelperText>
+      )}
+      <FormGroup aria-label={props.label} row>
+        <FormControlLabel
+          labelPlacement="start"
+          label={labelText}
+          control={
+            <Switch
+              checked={isChecked}
+              onChange={handleChange}
+              color="primary"
+            />
+          }
+        />
+      </FormGroup>
+    </FormControl>
   );
 }

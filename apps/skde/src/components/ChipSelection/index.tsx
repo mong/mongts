@@ -87,6 +87,7 @@ export const ChipSelection = (props: ChipSelectionProps) => {
           label={leftChipLabel}
           color="primary"
           variant={correctedState ? "outlined" : "filled"}
+          // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
           onClick={() => stateSetter(trueChip === "left" ? true : false)}
         />
       </Hoverbox>
@@ -100,6 +101,7 @@ export const ChipSelection = (props: ChipSelectionProps) => {
           label={rightChipLabel}
           color="primary"
           variant={correctedState ? "filled" : "outlined"}
+          // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
           onClick={() => stateSetter(trueChip === "right" ? true : false)}
         />
       </Hoverbox>

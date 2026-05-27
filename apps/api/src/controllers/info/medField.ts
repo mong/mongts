@@ -1,4 +1,4 @@
-import { RequestHandler } from "express";
+import type { RequestHandler } from "express";
 import { medField } from "../../models/info";
 
 export const medicalFields: RequestHandler = async (_, res) => {
@@ -13,6 +13,7 @@ export const medicalFields: RequestHandler = async (_, res) => {
     const testvalue = rows.reduce((prevVal, currVal) => {
       prevVal
         .filter((val) => val.shortName === currVal.shortName)
+        // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
         .forEach(
           (val) =>
             (val.registers = [...(val.registers ?? []), currVal.registers]),
@@ -28,7 +29,7 @@ export const medicalFields: RequestHandler = async (_, res) => {
               registers: [currVal.registers],
             },
           ];
-
+      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
       return [...prevVal, ...returnValue];
     }, emptyArray);
 

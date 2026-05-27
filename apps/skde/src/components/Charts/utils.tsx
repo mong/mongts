@@ -1,5 +1,5 @@
-import { useChartRootRef } from "@mui/x-charts";
 import { Box } from "@mui/material";
+import { useChartRootRef } from "@mui/x-charts";
 
 export const CustomChartWrapper = ({ children }: React.PropsWithChildren) => {
   const chartRootRef = useChartRootRef();

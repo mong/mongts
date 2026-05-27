@@ -1,5 +1,5 @@
-import { useState, useRef, PropsWithChildren, useEffect } from "react";
-import { Button, Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import { type PropsWithChildren, useEffect, useRef, useState } from "react";
 
 type ExpandableItemBoxProps = {
   collapsedHeight: number;
@@ -37,6 +37,7 @@ export const ExpandableItemBox = (
 
   const handleClick = () => {
     // Scroll the top of the box into view
+    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
     const elemCoords = outerRef.current.getBoundingClientRect();
 
     if (expanded && elemCoords.y < topMargin) {

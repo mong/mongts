@@ -1,13 +1,13 @@
-import { useRegistryRankQuery } from "qmongjs";
 import {
   Table,
-  TableRow,
-  TableCell,
   TableBody,
+  TableCell,
   TableHead,
+  TableRow,
 } from "@mui/material";
-import { RegistryRank } from "types";
 import _ from "lodash";
+import { useRegistryRankQuery } from "qmongjs";
+import type { RegistryRank } from "types";
 import { ArrowLink } from "../ArrowLink";
 
 type RegistryLevelTableProps = {
@@ -64,14 +64,14 @@ export const RegistryLevelTable = (props: RegistryLevelTableProps) => {
         <TableRow>
           <TableCell>Register</TableCell>
           {years.map((year) => {
-            return <TableCell key={"tablehead-" + year}>{year}</TableCell>;
+            return <TableCell key={`tablehead-${year}`}>{year}</TableCell>;
           })}
         </TableRow>
       </TableHead>
       <TableBody>
         {tableData.map((row) => {
           return (
-            <TableRow key={"Rank-" + row.registry}>
+            <TableRow key={`Rank-${row.registry}`}>
               <TableCell>
                 {
                   <ArrowLink
@@ -85,7 +85,7 @@ export const RegistryLevelTable = (props: RegistryLevelTableProps) => {
 
               {_.range(numberOfYears).map((i) => {
                 return (
-                  <TableCell key={"year-" + i}>{row.verdicts[i]}</TableCell>
+                  <TableCell key={`year-${i}`}>{row.verdicts[i]}</TableCell>
                 );
               })}
             </TableRow>

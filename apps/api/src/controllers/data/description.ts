@@ -1,5 +1,5 @@
-import { RequestHandler, Request } from "express";
-import { descriptionModel, Filter } from "../../models/data";
+import type { Request, RequestHandler } from "express";
+import { descriptionModel, type Filter } from "../../models/data";
 
 export const descriptionController: RequestHandler = async (req, res) => {
   try {

@@ -1,5 +1,5 @@
+import type { RegistryRequirement } from "types";
 import db from "../../db";
-import { RegistryRequirement } from "types";
 
 export const registryRequirementsModel = (): Promise<RegistryRequirement[]> =>
   db

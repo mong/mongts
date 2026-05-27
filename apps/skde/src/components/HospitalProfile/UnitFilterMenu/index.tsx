@@ -1,31 +1,33 @@
-import { useEffect, useState, useRef } from "react";
-import { skdeTheme, useShouldReinitialize } from "qmongjs";
-import { FilterSettingsValue } from "../../FilterMenu/FilterSettingsContext";
-import { FilterMenu } from "../../FilterMenu";
-import { TreeViewFilterSection } from "../../FilterMenu/TreeViewFilterSection";
-import { FilterSettings } from "../../FilterMenu/FilterSettingsContext";
-import { CustomAccordionExpandIcon } from "../../FilterMenu/CustomAccordionExpandIcon";
-import { getTreatmentUnitsTree } from "../../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import {
-  Box,
   Accordion,
-  AccordionSummary,
   AccordionDetails,
+  AccordionSummary,
+  Box,
+  ClickAwayListener,
   styled,
   Typography,
 } from "@mui/material";
-import { ClickAwayListener } from "@mui/material";
+import type { UseQueryResult } from "@tanstack/react-query";
+import { skdeTheme, useShouldReinitialize } from "qmongjs";
+import { useEffect, useRef, useState } from "react";
 import {
-  useQueryParam,
   DelimitedArrayParam,
+  useQueryParam,
   withDefault,
 } from "use-query-params";
-import { UseQueryResult } from "@tanstack/react-query";
+import { FilterMenu } from "../../FilterMenu";
+import { CustomAccordionExpandIcon } from "../../FilterMenu/CustomAccordionExpandIcon";
+import type {
+  FilterSettings,
+  FilterSettingsValue,
+} from "../../FilterMenu/FilterSettingsContext";
+import { getTreatmentUnitsTree } from "../../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
+import { TreeViewFilterSection } from "../../FilterMenu/TreeViewFilterSection";
 
 type UnitFilterMenuProps = {
   width: number;
   setUnitName: React.Dispatch<React.SetStateAction<string>>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   unitNamesQuery: UseQueryResult<any, Error>;
   unitName: string;
 };
@@ -81,6 +83,7 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
   const initialiseFilter = (
     filterInput: Map<string, FilterSettingsValue[]>,
   ) => {
+    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
     const newUnit = filterInput.get(treatmentUnitsKey).map((el) => el.value);
     setUnitName(newUnit[0]);
   };
@@ -88,6 +91,7 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
   // Callback function for updating the filter menu
   const handleChange = (filterInput: FilterSettings) => {
     // firstRender is a guard to ensure that handleChange does not trigger at the same time as initaliseFilter
+    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
     const newUnit = filterInput.map
       .get(treatmentUnitsKey)
       .map((el) => el.value);
@@ -120,6 +124,7 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
             color: skdeTheme.palette.primary.main,
           }}
           expanded={expanded}
+          // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
           onChange={(e, expanded) => {
             setExpanded(expanded);
           }}

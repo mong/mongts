@@ -1,5 +1,5 @@
+import type { RegisterName } from "types";
 import db from "../../db";
-import { RegisterName } from "types";
 
 export const registerNamesModel = (): Promise<RegisterName[]> =>
   db

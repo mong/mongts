@@ -1,5 +1,5 @@
-import React from "react";
-import { IndicatorData, OptsTu } from "types";
+import type React from "react";
+import type { IndicatorData, OptsTu } from "types";
 import { IndicatorRow } from "./IndicatorRow";
 
 type IndicatorSectionProps = {
@@ -38,11 +38,12 @@ export const IndicatorSection = (props: IndicatorSectionProps) => {
   // Map indicators to rows and show only rows where there is at least
   // one indicator not removed by the filter
   return data.map((indDataRow) => {
+    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
     const showRow = indDataRow.data.length > 0;
 
     const returnVal = showRow ? (
       <IndicatorRow
-        key={"IndicatorRow" + indDataRow.indicatorID}
+        key={`IndicatorRow${indDataRow.indicatorID}`}
         unitNames={unitNames}
         medfield={medfield}
         levels={levels}

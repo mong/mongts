@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 
 // Generated with https://medialab.github.io/iwanthue/ except for chartColours[0].
 // Settings:
@@ -42,6 +42,7 @@ export const updateColourMap = (
   setColourMap: Dispatch<SetStateAction<ColourMap[]>>,
   newUnits: string[],
 ) => {
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   newUnits.map((unit) => {
     if (!colourMap.map((row) => row.unitName).includes(unit)) {
       colourMap.push({

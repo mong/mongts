@@ -1,5 +1,5 @@
-import { RequestHandler, Request } from "express";
-import { residentDataModel, Filter } from "../../models/info";
+import type { Request, RequestHandler } from "express";
+import { type Filter, residentDataModel } from "../../models/info";
 
 export const residentData: RequestHandler = async (req, res) => {
   const query = parseQuery(req);

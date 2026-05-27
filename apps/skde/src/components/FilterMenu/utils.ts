@@ -1,4 +1,7 @@
-import { FilterSettings, FilterSettingsValue } from "./FilterSettingsContext";
+import type {
+  FilterSettings,
+  FilterSettingsValue,
+} from "./FilterSettingsContext";
 
 export const getDefaultValue = (defaultValues?: FilterSettingsValue[]) => {
   if (defaultValues == null || defaultValues.length === 0) {

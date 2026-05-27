@@ -1,6 +1,6 @@
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { StyledTable } from "./IndicatorTableStyles";
-import { useSearchParams } from "next/navigation";
 import { RegistrySection } from "./RegistrySection";
 import { RegistrySectionV2 } from "./RegistrySectionV2";
 
@@ -19,7 +19,7 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
     props;
 
   const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams.toString());
+  const params = new URLSearchParams(searchParams?.toString());
   const openRowParam = params.get("selected_row");
 
   const [openRowID, setOpenRowID] = useState<string>(
@@ -51,7 +51,7 @@ export const IndicatorTableV2 = (props: IndicatorTableProps) => {
     props;
 
   const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams.toString());
+  const params = new URLSearchParams(searchParams?.toString());
   const openRowParam = params.get("selected_row");
 
   const [openRowID, setOpenRowID] = useState<string>(

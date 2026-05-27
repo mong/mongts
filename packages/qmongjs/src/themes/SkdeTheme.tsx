@@ -1,5 +1,5 @@
-import { Plus_Jakarta_Sans } from "next/font/google";
 import { createTheme, responsiveFontSizes } from "@mui/material";
+import { Plus_Jakarta_Sans } from "next/font/google";
 
 // Custom colour tokens
 declare module "@mui/material/styles" {

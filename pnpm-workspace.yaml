@@ -1,0 +1,10 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+allowBuilds:
+  "@mong/material-ui": true
+  "@mui/x-telemetry": true
+  cypress: true
+  sharp: true
+minimumReleaseAgeExclude:
+  - "@mong/material-ui"

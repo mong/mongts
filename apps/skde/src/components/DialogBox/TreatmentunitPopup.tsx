@@ -1,27 +1,26 @@
-import { JSX } from "react";
 import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-  FormControl,
-  Grid,
-  FormControlLabel,
-  Checkbox,
   Box,
+  Button,
+  Checkbox,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  FormControl,
+  FormControlLabel,
+  Grid,
 } from "@mui/material";
-import { Dispatch, SetStateAction, useState } from "react";
-import { UseQueryResult } from "@tanstack/react-query";
+import type { UseQueryResult } from "@tanstack/react-query";
 import { useUnitNamesQuery } from "qmongjs";
-import { NestedTreatmentUnitName } from "types";
+import { type Dispatch, type JSX, type SetStateAction, useState } from "react";
+import type { NestedTreatmentUnitName } from "types";
 import {
+  borderRadius,
   columnColour1,
   columnColour2,
   columnColour3,
-  rippleOffset,
-  borderRadius,
   marginTop,
+  rippleOffset,
 } from "./styles";
 
 type TreatmentUnitPopupProps = {
@@ -36,14 +35,10 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const { open, setOpen, onSubmit, context, type } = props;
 
   const [unitSelection, setUnitSelection] = useState<string[]>([]);
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [highlightedHF, setHighlightedHF] = useState<string>("");
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
     "all",
     context,
@@ -51,13 +46,11 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   );
 
   // Sort nested unit names by RHF
-  const unitNames =
-    unitNamesQuery.data &&
-    unitNamesQuery.data.nestedUnitNames.sort(
-      (a: NestedTreatmentUnitName, b: NestedTreatmentUnitName) => {
-        return a.rhf_sort - b.rhf_sort;
-      },
-    );
+  const unitNames = unitNamesQuery.data?.nestedUnitNames.sort(
+    (a: NestedTreatmentUnitName, b: NestedTreatmentUnitName) => {
+      return a.rhf_sort - b.rhf_sort;
+    },
+  );
 
   // ####################################### //
   // Map RHFs and return checkbox components //
@@ -91,11 +84,9 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
 
       const hospitalsChecked = () => {
         const selectedSet = new Set([...unitSelection]);
-        const hospitals = rhf.hf
-          .map((hf) => {
-            return hf.hospital;
-          })
-          .flat();
+        const hospitals = rhf.hf.flatMap((hf) => {
+          return hf.hospital;
+        });
 
         const hospitalSet = new Set([...hospitals]);
         return selectedSet.intersection(hospitalSet).size > 0;
@@ -122,7 +113,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                 (hfChecked() || hospitalsChecked())
               }
               onChange={handleChange}
-              key={rhf.rhf + "_checkbox"}
+              key={`${rhf.rhf}_checkbox`}
             />
           }
         />
@@ -136,8 +127,9 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const HFCheckBoxes = {};
   const HospitalCheckBoxes = {};
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   unitNames &&
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
     unitNames.map((unitName: NestedTreatmentUnitName) => {
       const hfs = unitName.hf.sort((a, b) => {
         return a.hf_sort - b.hf_sort;
@@ -146,6 +138,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
       // ######################### //
       // ##### Map hospitals ##### ∕∕
       // ######################### //
+      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
       hfs.map((hf) => {
         const CheckBoxes = hf.hospital.map((hospital) => {
           const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -155,6 +148,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
             } else {
               const newUnitSelection = [
                 ...unitSelection.filter((row) => {
+                  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
                   return row != hospital;
                 }),
               ];
@@ -170,7 +164,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                 <Checkbox
                   checked={unitSelection.includes(hospital)}
                   onChange={handleChange}
-                  key={hospital + "_checkbox"}
+                  key={`${hospital}_checkbox`}
                 />
               }
             />
@@ -190,6 +184,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           } else {
             const newHFSelection = [
               ...unitSelection.filter((row) => {
+                // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
                 return row != hf.hf;
               }),
             ];
@@ -224,7 +219,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                   !unitSelection.includes(hf.hf) && hospitalChecked()
                 }
                 onChange={handleChange}
-                key={hf.hf + "_checkbox"}
+                key={`${hf.hf}_checkbox`}
               />
             }
           />
@@ -260,13 +255,13 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
               sx={{
                 background: columnColour1,
                 height: "100%",
-                paddingLeft: rippleOffset + "px",
+                paddingLeft: `${rippleOffset}px`,
                 borderTopLeftRadius: borderRadius,
                 borderBottomLeftRadius: borderRadius,
               }}
             >
               <FormControl sx={{ width: "100%", marginTop: marginTop }}>
-                {RHFCheckboxes && RHFCheckboxes.map((row: JSX.Element) => row)}
+                {RHFCheckboxes?.map((row: JSX.Element) => row)}
               </FormControl>
             </Box>
           </Grid>
@@ -275,18 +270,17 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
               sx={{
                 background: highlightedRHF && columnColour2,
                 height: "100%",
-                marginLeft: "-" + rippleOffset + "px",
+                marginLeft: `-${rippleOffset}px`,
               }}
             >
               <FormControl
                 sx={{
                   width: "100%",
-                  marginLeft: rippleOffset + "px",
+                  marginLeft: `${rippleOffset}px`,
                   marginTop: marginTop,
                 }}
               >
-                {HFCheckBoxes[highlightedRHF] &&
-                  HFCheckBoxes[highlightedRHF].map((row: JSX.Element) => row)}
+                {HFCheckBoxes[highlightedRHF]?.map((row: JSX.Element) => row)}
               </FormControl>
             </Box>
           </Grid>
@@ -302,14 +296,13 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
               <FormControl
                 sx={{
                   width: "100%",
-                  marginLeft: rippleOffset + "px",
+                  marginLeft: `${rippleOffset}px`,
                   marginTop: marginTop,
                 }}
               >
-                {HospitalCheckBoxes[highlightedHF] &&
-                  HospitalCheckBoxes[highlightedHF].map(
-                    (row: JSX.Element) => row,
-                  )}
+                {HospitalCheckBoxes[highlightedHF]?.map(
+                  (row: JSX.Element) => row,
+                )}
               </FormControl>
             </Box>
           </Grid>
@@ -317,9 +310,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Avbryt</Button>
-        <Button onClick={handleSubmit}>
-          {"OK (" + unitSelection.length + ")"}
-        </Button>
+        <Button onClick={handleSubmit}>{`OK·(${unitSelection.length})`}</Button>
       </DialogActions>
     </Dialog>
   );

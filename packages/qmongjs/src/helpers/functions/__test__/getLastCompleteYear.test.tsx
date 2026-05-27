@@ -1,5 +1,5 @@
+import { describe, expect, it } from "vitest";
 import { getLastCompleteYear } from "../getLastCompleteYear";
-import { describe, it, expect } from "vitest";
 
 describe("getLastCompleteYear", () => {
   it("should return the last complete year if it is before the treatment year", () => {

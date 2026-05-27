@@ -1,6 +1,6 @@
 import { AppBar, Toolbar } from "@mui/material";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
 import Slide from "@mui/material/Slide";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
 
 type Props = {
   children?: React.ReactElement<unknown>;
@@ -25,12 +25,10 @@ type AppBarProps = {
 
 export const TreatmentQualityAppBarV2 = ({ children }: AppBarProps) => {
   return (
-    <>
-      <HideOnScroll {...children}>
-        <AppBar position="sticky" color="secondary">
-          <Toolbar>{children}</Toolbar>
-        </AppBar>
-      </HideOnScroll>
-    </>
+    <HideOnScroll {...children}>
+      <AppBar position="sticky" color="secondary">
+        <Toolbar>{children}</Toolbar>
+      </AppBar>
+    </HideOnScroll>
   );
 };

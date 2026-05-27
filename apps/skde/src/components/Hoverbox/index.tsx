@@ -1,5 +1,8 @@
-import Tooltip, { TooltipProps, tooltipClasses } from "@mui/material/Tooltip";
 import { styled } from "@mui/material";
+import Tooltip, {
+  type TooltipProps,
+  tooltipClasses,
+} from "@mui/material/Tooltip";
 
 type HoverboxProps = {
   title: string;

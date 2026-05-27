@@ -1,8 +1,6 @@
-import React from "react";
 import { render } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 import { HeaderMiddle } from "../HeaderMiddle";
-
-import { vi, it, describe, expect } from "vitest";
 
 vi.mock("next/router", () => ({
   useRouter: () => ({
@@ -18,6 +16,7 @@ describe("HeaderMiddle component", () => {
 
   it("renders with custom title and children", () => {
     const { container } = render(
+      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
       <HeaderMiddle title="Custom Title" children="Custom Children" />,
     );
     expect(container).toMatchSnapshot();

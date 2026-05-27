@@ -1,7 +1,6 @@
-import React from "react";
-import { screen, render, fireEvent } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, test, vi } from "vitest";
 import { ChipSelection } from "../.";
-import { vi, describe, test, expect } from "vitest";
 
 vi.mock("next/font/google", () => ({
   Plus_Jakarta_Sans: () => ({

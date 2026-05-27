@@ -1,8 +1,13 @@
-import React, { PropsWithChildren } from "react";
-import { Toolbar, Typography, styled, Container } from "@mui/material";
+import {
+  type Breakpoint,
+  Container,
+  styled,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import Grid from "@mui/material/Grid";
-import { Breakpoint } from "@mui/material";
 import { useRouter } from "next/router";
+import type { PropsWithChildren } from "react";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   paddingTop: theme.spacing(12),
@@ -33,7 +38,7 @@ type HeaderMiddleProps = PropsWithChildren<{
  */
 export const HeaderMiddle = (props: HeaderMiddleProps) => {
   const router = useRouter();
-  const mainUrl = "https://apps.skde.no" + router.asPath;
+  const mainUrl = `https://apps.skde.no${router.asPath}`;
 
   return (
     <StyledToolbar

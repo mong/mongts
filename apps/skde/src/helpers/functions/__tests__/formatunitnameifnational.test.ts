@@ -1,5 +1,5 @@
+import { describe, expect, it } from "vitest";
 import { formatUnitNameIfNational } from "../formatUnitNameIfNational";
-import { describe, it, expect } from "vitest";
 
 describe("formatUnitNameIfNational", () => {
   it('returns the original unit name when it\'s not "Nasjonalt"', () => {

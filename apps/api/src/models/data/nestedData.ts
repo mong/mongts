@@ -1,7 +1,7 @@
-import { Knex } from "knex";
+import type { Knex } from "knex";
+import type { DataPoint, IndicatorData, Registry } from "types";
 import db from "../../db";
-import { Filter } from ".";
-import { IndicatorData, Registry, DataPoint } from "types";
+import type { Filter } from ".";
 
 export const aggData = (filter?: Filter): Promise<DataPoint[]> =>
   db

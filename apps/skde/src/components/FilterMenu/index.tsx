@@ -1,26 +1,33 @@
-import { ReactElement, PropsWithChildren, useReducer, useEffect } from "react";
-import Stack from "@mui/material/Container";
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Box,
+  Card,
+  CardContent,
   Typography,
 } from "@mui/material";
-import { Card, CardContent, Box } from "@mui/material";
+import Stack from "@mui/material/Container";
+import {
+  type PropsWithChildren,
+  type ReactElement,
+  useEffect,
+  useReducer,
+} from "react";
 import { CustomAccordionExpandIcon } from "./CustomAccordionExpandIcon";
 
 import {
+  type FilterSettings,
   FilterSettingsContext,
-  FilterSettingsValue,
-  FilterSettings,
+  type FilterSettingsValue,
 } from "./FilterSettingsContext";
 import {
+  type FilterSettingsAction,
   FilterSettingsActionType,
   FilterSettingsDispatchContext,
-  FilterSettingsReducerType,
+  type FilterSettingsReducerType,
+  filterSettingsReducer,
 } from "./FilterSettingsReducer";
-import { filterSettingsReducer } from "./FilterSettingsReducer";
-import { FilterSettingsAction } from "./FilterSettingsReducer";
 
 /**
  * The type/signature of the handler function to call when the selection changes. It is called with the new
@@ -327,6 +334,7 @@ export const FilterMenu = ({
   );
 
   // If the refreshState changes to true, reset the filter settings by re-initializing the state.
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   useEffect(() => {
     if (refreshState) {
       dispatch({

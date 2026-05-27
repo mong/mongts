@@ -1,9 +1,9 @@
-import { UseQueryResult } from "@tanstack/react-query";
+import type { UseQueryResult } from "@tanstack/react-query";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const anyQueriesLoading = (queries: UseQueryResult<any, unknown>[]) => {
+const anyQueriesLoading = (queries: UseQueryResult<unknown, unknown>[]) => {
   return queries.some((query) => query.isLoading);
 };
 
@@ -18,7 +18,7 @@ const anyQueriesLoading = (queries: UseQueryResult<any, unknown>[]) => {
  */
 export function useShouldReinitialize(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  queries: UseQueryResult<any, unknown>[],
+  queries: UseQueryResult<unknown, unknown>[],
 ) {
   const router = useRouter();
 
