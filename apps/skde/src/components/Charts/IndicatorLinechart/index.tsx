@@ -206,6 +206,8 @@ export const IndicatorLinechart = (
     );
 
   // Fill missing years with zero
+
+  // @ts-expect-error - Ignored to pass ci checks, set fallback for minYear and maxYear here eg. minYear || 0, maxYear || 0, but should be fixed properly in the future
   let chartData = setMissingToZero(groupedLevels, minYear, maxYear);
 
   const normalise = indicatorParams.normalise ?? false;

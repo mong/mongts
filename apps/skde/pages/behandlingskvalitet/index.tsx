@@ -300,7 +300,6 @@ export default function TreatmentQualityPage() {
                   }}
                 >
                   <TreatmentQualityFilterMenu
-                    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
                     onSelectionChanged={handleFilterChanged}
                     onFilterInitialized={handleFilterInitialized}
                     registryNameData={registers}
@@ -370,7 +369,6 @@ export default function TreatmentQualityPage() {
         {queriesReady && (
           <Box sx={{ mt: 4 }}>
             <TreatmentQualityFilterMenu
-              // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
               onSelectionChanged={handleFilterChanged}
               onFilterInitialized={handleFilterInitialized}
               registryNameData={registers}
