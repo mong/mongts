@@ -8,5 +8,11 @@
       "matchUpdateTypes": ["patch", "pin", "digest"],
       "automerge": true
     }
+  ],
+  "hostRules": [
+    {
+      "matchHost": "https://npm.pkg.github.com",
+      "token": "{{ secrets.NODE_AUTH_TOKEN }}"
+    }
   ]
 }
