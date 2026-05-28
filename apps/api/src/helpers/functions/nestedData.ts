@@ -13,8 +13,7 @@ export const nestedData = (
         if (
           cur.minDenominator != null &&
           point.denominator < cur.minDenominator &&
-          // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-          cur.indType != "dg_andel"
+          cur.indType !== "dg_andel"
         ) {
           return { ...point, var: null };
         } else {
@@ -26,8 +25,7 @@ export const nestedData = (
       ...cur,
       data: currentDatapoints,
     };
-    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-    acc = [...acc, entry];
+    acc.push(entry);
 
     return acc;
   }, [] as IndicatorData[]);
@@ -47,8 +45,7 @@ export const nestedData = (
         medfieldID: medfieldList,
         indicatorData: myIndicators,
       };
-      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-      acc = [...acc, entry];
+      acc.push(entry);
     }
     return acc;
   }, [] as RegisterData[]);

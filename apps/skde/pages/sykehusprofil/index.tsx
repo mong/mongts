@@ -115,9 +115,10 @@ export const Skde = (): JSX.Element => {
     });
 
     unitFullName =
-      unitNamesQuery.data &&
-      // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-      getUnitFullName(unitNamesQuery.data.nestedUnitNames, unitName);
+      (unitNamesQuery.data &&
+        // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+        getUnitFullName(unitNamesQuery.data.nestedUnitNames, unitName)) ||
+      "";
   }
 
   // ############ //

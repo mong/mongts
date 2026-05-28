@@ -4,7 +4,7 @@ export {
   mainHospitals,
   mainQueryParamsConfig,
   minDG,
-} from "../../../apps/skde/src/app_config";
+} from "./app_config";
 export {
   customFormat,
   imgLoader,

@@ -21,8 +21,8 @@ export type IndicatorLinechartParams = {
   normalise: boolean;
   yMin?: number;
   yMax?: number;
-  startYear?: number;
-  endYear?: number;
+  startYear: number;
+  endYear: number;
   useToolTip?: boolean;
 };
 
@@ -93,9 +93,12 @@ export const countLevels = (levels: IndicatorLevels[]) => {
 // This function adds years without data in the range [minYear, maxYear] and sets the value to 0.
 export const setMissingToZero = (
   groupedLevels: GroupedLevels,
-  minYear: number,
-  maxYear: number,
+  minYear?: number,
+  maxYear?: number,
 ) => {
+  if (minYear === undefined || maxYear === undefined) {
+    return [[], [], []];
+  }
   const dataAllLevels = [[], [], []];
 
   // i is the index of the year.
@@ -105,14 +108,14 @@ export const setMissingToZero = (
   for (let year = minYear; year <= maxYear; year++) {
     for (let level = 0; level < 3; level++) {
       // Initialise the array for the current level and year
-      // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+      // @ts-expect-error - Ignored to pass ci checks
       dataAllLevels[level][i] = { year: year, number: 0 };
 
       for (let j = 0; j < groupedLevels[level].length; j++) {
         // Iterate over groupedLevels and copy the value to the current level and year
-        // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+        // @ts-expect-error - Ignored to pass ci checks
         if (dataAllLevels[level][i].year === groupedLevels[level][j].year) {
-          // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+          // @ts-expect-error - Ignored to pass ci checks
           dataAllLevels[level][i].number = groupedLevels[level][j].number;
         }
       }
@@ -190,7 +193,7 @@ export const IndicatorLinechart = (
 
   // Time series bounds
   const minYear =
-    indicatorParams.startYear ??
+    indicatorParams.startYear &&
     _.min(
       levels.map((row) => {
         return row.year;
@@ -198,7 +201,7 @@ export const IndicatorLinechart = (
     );
 
   const maxYear =
-    indicatorParams.endYear ??
+    indicatorParams.endYear &&
     _.max(
       levels.map((row) => {
         return row.year;

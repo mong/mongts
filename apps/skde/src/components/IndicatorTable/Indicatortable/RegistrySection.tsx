@@ -96,7 +96,7 @@ export const RegistrySection = (props: RegistrySectionProps) => {
   // Sjekk om hele registerseksjonen skal filtreres bort på grunn av målnivåfilter
   let showSection: boolean;
 
-  if (levels === undefined) {
+  if (levels === undefined || levels === null || levels === "") {
     showSection = true;
   } else {
     showSection = !regData.indicatorData

@@ -177,6 +177,20 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     oldFilterSettings: { map: Map<string, FilterSettingsValue[]> },
     action: FilterSettingsAction,
   ): void => {
+    if (action.type === FilterSettingsActionType.RESET_SELECTIONS) {
+      setAllSelected(newFilterSettings);
+      updateColourMap(
+        colourMap,
+        setColourMap,
+        valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+      );
+      return;
+    }
+
+    if (!action.sectionSetting) {
+      return;
+    }
+
     switch (action.sectionSetting.key) {
       case tableContextKey: {
         setSelectedTableContext(
@@ -205,10 +219,6 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
       }
       default:
         break;
-    }
-
-    if (action.type === FilterSettingsActionType.RESET_SELECTIONS) {
-      setAllSelected(newFilterSettings);
     }
 
     updateColourMap(
