@@ -1,6 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 
-const API_HOST = process.env.NEXT_PUBLIC_API_HOST ?? "http://localhost:4000"; //"https://test-api.skde.org";
+const API_HOST =
+  process.env.NEXT_PUBLIC_API_HOST ??
+  (process.env.NODE_ENV === "production"
+    ? "https://prod-api.skde.org"
+    : "http://localhost:4000");
 
 interface FetchDescriptionParams {
   registerShortName: string;
