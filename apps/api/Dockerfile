@@ -10,10 +10,7 @@ WORKDIR /app
 ENV CI=true
 COPY . ./
 
-RUN --mount=type=secret,id=NODE_AUTH_TOKEN \
-    NODE_AUTH_TOKEN="$(cat /run/secrets/NODE_AUTH_TOKEN)" \
-    && export NODE_AUTH_TOKEN \
-    && pnpm install --frozen-lockfile --filter api... \
+RUN pnpm install --frozen-lockfile --filter api... \
     && pnpm --filter api build \
     && pnpm --filter api deploy --prod /prod/api
 
@@ -24,6 +21,4 @@ ENV NODE_ENV=production
 COPY --from=builder /prod/api ./
 EXPOSE 80
 ARG version="none"
-ENV PORT=80
-ENV VERSION=${version}
-CMD ["node", "build"]
+ENV PORT=80env

@@ -1,6 +1,7 @@
 packages:
   - "apps/*"
   - "packages/*"
+injectWorkspacePackages: true
 allowBuilds:
   "@mong/material-ui": true
   "@mui/x-telemetry": true

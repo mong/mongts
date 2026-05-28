@@ -17,8 +17,6 @@ jobs:
   push_to_registries:
     name: Push Docker image to docker hub
     runs-on: ubuntu-latest
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
     steps:
       - name: Set release variables
         if: github.ref == 'refs/heads/main'
@@ -61,7 +59,7 @@ jobs:
           
       - name: Test docker image
         run: |
-          docker build -t test --file apps/api/Dockerfile --secret id=NODE_AUTH_TOKEN,env=NODE_AUTH_TOKEN .
+          docker build -t test --file apps/api/Dockerfile .
           docker run -e ORIGIN="skde.no" -d test
           sleep 5 # wait for it to die, if not working
           docker kill $(docker ps --filter ancestor=test -q) || true
@@ -72,8 +70,6 @@ jobs:
           context: .
           file: ./apps/api/Dockerfile
           build-args: version=${{ env.version_label }}
-          secrets: |
-            NODE_AUTH_TOKEN=${{ secrets.NODE_AUTH_TOKEN }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}

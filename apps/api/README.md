@@ -19,10 +19,12 @@ yarn start # start opp api på http://localhost:4000, som qmongjs kan bruke
 
 ## Kjøre Dockerfile lokalt
 
-Dette gjøres på roten av repoet.
+> **Viktig:** Bygget må kjøres fra roten av repoet, ikke fra `apps/api/`.
+> Dockerfilen er avhengig av workspace-filer (`pnpm-workspace.yaml`,
+> `pnpm-lock.yaml`, samt andre pakker som `types`) for å løse `--filter api...`.
 
 ```sh
-docker build -t api -f apps/api/Dockerfile .
+DOCKER_BUILDKIT=1 docker build -t api -f apps/api/Dockerfile .
 docker run -e ORIGIN="somestring" -p 3030:80 api # Kjører ikke hvis ORIGIN ikke defineres som en miljøvariabel
 ```
 
