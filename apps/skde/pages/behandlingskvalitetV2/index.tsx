@@ -1,14 +1,12 @@
 // @ts-nocheck
+
+import { Button, Dropdown, Footer } from "@mong/material-ui";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DoneIcon from "@mui/icons-material/Done";
 import {
   Box,
-  Button,
   CssBaseline,
-  FormControl,
-  InputLabel,
   MenuItem,
-  Select,
   type SelectChangeEvent,
   Stack,
   ThemeProvider,
@@ -26,7 +24,6 @@ import { useState } from "react";
 import { useQueryParam } from "use-query-params";
 import { MedicalFieldPopup } from "../../src/components/DialogBox/MedicalFieldPopup";
 import { TreatmentUnitPopup } from "../../src/components/DialogBox/TreatmentunitPopup";
-import { Footer } from "../../src/components/Footer";
 import { IndicatorTableV2 } from "../../src/components/IndicatorTable/Indicatortable";
 import { TreatmentQualityAppBarV2 } from "../../src/components/IndicatorTable/Indicatortable/StickyHeader";
 import { LayoutHead } from "../../src/components/LayoutHead";
@@ -130,7 +127,7 @@ export default function TreatmentQualityPage() {
               >
                 <Stack direction="row" spacing={3}>
                   <Button
-                    variant="outlined"
+                    variant="contained"
                     onClick={handleMedicalFieldButtonClick}
                   >
                     Velg fagområde
@@ -142,7 +139,7 @@ export default function TreatmentQualityPage() {
                     onSubmit={setSelectedMedicalFields}
                   />
                   <Button
-                    variant="outlined"
+                    variant="contained"
                     onClick={handleTreatmentUnitButtonClick}
                   >
                     Velg behandlingsenheter
@@ -154,27 +151,23 @@ export default function TreatmentQualityPage() {
                     context={selectedTableContext}
                     type={"ind"}
                   />
-                  <FormControl>
-                    <InputLabel>År</InputLabel>
-                    <Select
-                      value={selectedYear.toString()}
-                      label="År"
-                      onChange={handleYearChange}
-                    >
-                      {[
-                        ...Array(numberOfYearOptions)
-                          .keys()
-                          .map((i: number) => {
-                            const year = defaultYear - i;
-                            return (
-                              <MenuItem key={year} value={year}>
-                                {year}
-                              </MenuItem>
-                            );
-                          }),
-                      ]}
-                    </Select>
-                  </FormControl>
+                  <Dropdown
+                    value={selectedYear.toString()}
+                    onChange={handleYearChange}
+                  >
+                    {[
+                      ...Array(numberOfYearOptions)
+                        .keys()
+                        .map((i: number) => {
+                          const year = defaultYear - i;
+                          return (
+                            <MenuItem key={year} value={year}>
+                              {year}
+                            </MenuItem>
+                          );
+                        }),
+                    ]}
+                  </Dropdown>
                 </Stack>
                 <Button
                   variant="outlined"
@@ -242,7 +235,6 @@ export default function TreatmentQualityPage() {
             )}
           </Box>
         </Box>
-        <Footer />
       </PageWrapper>
     </ThemeProvider>
   );
