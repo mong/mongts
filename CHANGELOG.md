@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.2.3](https://github.com/mong/mongts/compare/v1.2.2...v1.2.3) (2026-05-28)
+
+
+### Features
+
+* add @mong/material-ui component library ([4dbb0a6](https://github.com/mong/mongts/commit/4dbb0a68920e2977d5c91268af8c9158a625b01d))
+* sticky toolbar i BKV2 ([#4677](https://github.com/mong/mongts/issues/4677)) ([6813110](https://github.com/mong/mongts/commit/6813110ec6ef05052068bfc392796916d401b407))
+
+
+### Bug Fixes
+
+* **showSection:** fix filter guard so it handles empty strings ([#4679](https://github.com/mong/mongts/issues/4679)) ([6ca8090](https://github.com/mong/mongts/commit/6ca809090b6c678cf8abf5824184c951f381a3cd))
+
+
+### Miscellaneous Chores
+
+* release 1.2.3 ([9f125f0](https://github.com/mong/mongts/commit/9f125f03552023d938c00aca561cedc09adf2ef4))
+
 ## [1.2.2](https://github.com/mong/mongts/compare/v1.2.1...v1.2.2) (2026-05-22)
 
 
