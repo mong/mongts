@@ -8,21 +8,20 @@ FROM base AS builder
 
 WORKDIR /app
 ENV CI=true
-
 COPY . ./
 
 RUN --mount=type=secret,id=NODE_AUTH_TOKEN \
     NODE_AUTH_TOKEN="$(cat /run/secrets/NODE_AUTH_TOKEN)" \
     && export NODE_AUTH_TOKEN \
-    && pnpm install --frozen-lockfile \
-    && pnpm --filter api build
+    && pnpm install --frozen-lockfile --filter api... \
+    && pnpm --filter api build \
+    && pnpm --filter api deploy --prod /prod/api
 
 FROM base AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 
-COPY --from=builder /app/apps/api/build ./build
-COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /prod/api ./
 EXPOSE 80
 ARG version="none"
 ENV PORT=80
