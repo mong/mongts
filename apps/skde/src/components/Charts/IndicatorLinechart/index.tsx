@@ -105,14 +105,14 @@ export const setMissingToZero = (
   for (let year = minYear; year <= maxYear; year++) {
     for (let level = 0; level < 3; level++) {
       // Initialise the array for the current level and year
-      // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+      // @ts-expect-error - Ignored to pass ci checks
       dataAllLevels[level][i] = { year: year, number: 0 };
 
       for (let j = 0; j < groupedLevels[level].length; j++) {
         // Iterate over groupedLevels and copy the value to the current level and year
-        // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+        // @ts-expect-error - Ignored to pass ci checks
         if (dataAllLevels[level][i].year === groupedLevels[level][j].year) {
-          // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+          // @ts-expect-error - Ignored to pass ci checks
           dataAllLevels[level][i].number = groupedLevels[level][j].number;
         }
       }
@@ -206,9 +206,9 @@ export const IndicatorLinechart = (
     );
 
   // Fill missing years with zero
-
-  // @ts-expect-error - Ignored to pass ci checks, set fallback for minYear and maxYear here eg. minYear || 0, maxYear || 0, but should be fixed properly in the future
-  let chartData = setMissingToZero(groupedLevels, minYear, maxYear);
+  // NOTE: Konstantene over kan bli undefined så må ha en fallback her.
+  // Ser minYear settes til 0 i setMissingToZero, men usikker på om dett er  greit for max.
+  let chartData = setMissingToZero(groupedLevels, minYear || 0, maxYear || 0);
 
   const normalise = indicatorParams.normalise ?? false;
 
