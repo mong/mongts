@@ -6,6 +6,50 @@ const API_HOST =
     ? "https://prod-api.skde.org"
     : "http://localhost:4000");
 
+const RETRYABLE_STATUSES = new Set([429, 500, 502, 503, 504]);
+const MAX_FETCH_ATTEMPTS = 3;
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const fetchJsonWithRetry = async (url: string) => {
+  let lastError: unknown;
+
+  for (let attempt = 1; attempt <= MAX_FETCH_ATTEMPTS; attempt++) {
+    try {
+      const response = await fetch(url);
+
+      if (response.ok) {
+        return await response.json();
+      }
+
+      const shouldRetry =
+        attempt < MAX_FETCH_ATTEMPTS && RETRYABLE_STATUSES.has(response.status);
+
+      if (shouldRetry) {
+        await sleep(300 * attempt);
+        continue;
+      }
+
+      throw new Error(
+        response.statusText || `Request failed with ${response.status}`,
+      );
+    } catch (error) {
+      lastError = error;
+
+      if (attempt < MAX_FETCH_ATTEMPTS) {
+        await sleep(300 * attempt);
+        continue;
+      }
+    }
+  }
+
+  if (lastError instanceof Error) {
+    throw lastError;
+  }
+
+  throw new Error("Request failed");
+};
+
 interface FetchDescriptionParams {
   registerShortName: string;
   type?: "ind" | "dg";
@@ -17,11 +61,7 @@ const descriptionUrl = (params: FetchDescriptionParams): string => {
 };
 
 const fetchDescription = async (params: FetchDescriptionParams) => {
-  const response = await fetch(descriptionUrl(params));
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-  return response.json();
+  return await fetchJsonWithRetry(descriptionUrl(params));
 };
 
 export const useDescriptionQuery = (params: FetchDescriptionParams) => {
@@ -77,12 +117,7 @@ const indicatorUrl = (params: FetchIndicatorParams): string => {
 };
 
 const fetchIndicators = async (params: FetchIndicatorParams) => {
-  const response = await fetch(indicatorUrl(params));
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  return await response.json();
+  return await fetchJsonWithRetry(indicatorUrl(params));
 };
 
 export const useIndicatorQuery = (params: FetchIndicatorParams) => {
@@ -108,14 +143,9 @@ const fetchSelectionYears = async (
   context: string,
   type: string,
 ) => {
-  const response = await fetch(
+  return await fetchJsonWithRetry(
     selectionYearsUrl(registerShortName, context, type),
   );
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  return await response.json();
 };
 
 export const useSelectionYearsQuery = (
@@ -145,12 +175,9 @@ const fetchUnitNames = async (
   context: string,
   type: string,
 ) => {
-  const response = await fetch(unitNamesUrl(registerShortName, context, type));
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  return await response.json();
+  return await fetchJsonWithRetry(
+    unitNamesUrl(registerShortName, context, type),
+  );
 };
 
 export const useUnitNamesQuery = (
@@ -168,12 +195,7 @@ export const useUnitNamesQuery = (
 };
 
 export const fetchRegisterNames = async () => {
-  const response = await fetch(`${API_HOST}/info/names`);
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  return await response.json();
+  return await fetchJsonWithRetry(`${API_HOST}/info/names`);
 };
 
 export const useRegisterNamesQuery = () => {
@@ -187,12 +209,7 @@ export const useRegisterNamesQuery = () => {
 };
 
 const fetchUnitUrls = async () => {
-  const response = await fetch(`${API_HOST}/info/url`);
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  return await response.json();
+  return await fetchJsonWithRetry(`${API_HOST}/info/url`);
 };
 
 export const useUnitUrlsQuery = () => {
@@ -206,12 +223,7 @@ export const useUnitUrlsQuery = () => {
 };
 
 const fetchMedicalFields = async () => {
-  const response = await fetch(`${API_HOST}/info/medicalfields`);
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  return response.json();
+  return await fetchJsonWithRetry(`${API_HOST}/info/medicalfields`);
 };
 
 export const useMedicalFieldsQuery = () => {
@@ -226,64 +238,32 @@ export const useMedicalFieldsQuery = () => {
 
 const fetchRegistryRanks = async (year?: number) => {
   const yearQuery: string = year ? `year=${year}&` : "";
-
-  const response = await fetch(`${API_HOST}/data/registryRank?${yearQuery}`);
-
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  return await response.json();
+  return await fetchJsonWithRetry(`${API_HOST}/data/registryRank?${yearQuery}`);
 };
 
 const fetchRegistryScores = async (year?: number) => {
   const yearQuery: string = year ? `year=${year}&` : "";
-
-  const response = await fetch(`${API_HOST}/data/registryScores?${yearQuery}`);
-
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  return await response.json();
+  return await fetchJsonWithRetry(
+    `${API_HOST}/data/registryScores?${yearQuery}`,
+  );
 };
 
 const fetchRegistryEvaluation = async (year?: number) => {
   const yearQuery: string = year ? `year=${year}&` : "";
-
-  const response = await fetch(
+  return await fetchJsonWithRetry(
     `${API_HOST}/data/registryEvaluation?${yearQuery}`,
   );
-
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  return await response.json();
 };
 
 const fetchRegistryRequirements = async () => {
-  const response = await fetch(`${API_HOST}/data/registryRequirements`);
-
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  return await response.json();
+  return await fetchJsonWithRetry(`${API_HOST}/data/registryRequirements`);
 };
 
 const fetchResidentData = async (registry?: string) => {
   const registryQuery: string = registry ? `registry=${registry}&` : "";
-
-  const response = await fetch(
+  return await fetchJsonWithRetry(
     `${API_HOST}/info/residentData?${registryQuery}`,
   );
-
-  if (!response.ok) {
-    throw new Error(response.statusText);
-  }
-
-  return await response.json();
 };
 
 export const useRegistryRankQuery = (year?: number) => {

@@ -38,7 +38,7 @@ jobs:
       - name: Export (with retry)
         run: |
           for i in 1 2 3; do
-            if pnpm export; then
+            if pnpm --dir apps/skde export; then
               exit 0
             fi
 

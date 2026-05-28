@@ -178,8 +178,7 @@ export default function Stadiumfigur({ registry }) {
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           value={value}
-          // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-          onChange={handleChange}
+          onChange={() => handleChange}
           aria-label="basic tabs example"
         >
           <Tab label="Utvikling over tid" {...a11yProps(0)} />
