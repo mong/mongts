@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.4](https://github.com/mong/mongts/compare/v1.2.3...v1.2.4) (2026-05-28)
+
+
+### Bug Fixes
+
+* legg til autentiseringstoken til Renovate for @mong/material-ui ([#4681](https://github.com/mong/mongts/issues/4681)) ([bf2cd96](https://github.com/mong/mongts/commit/bf2cd960af236c39af28e0f7f1c30669558d3075))
+
 ## [1.2.3](https://github.com/mong/mongts/compare/v1.2.2...v1.2.3) (2026-05-28)
 
 
