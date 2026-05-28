@@ -21,8 +21,8 @@ export type IndicatorLinechartParams = {
   normalise: boolean;
   yMin?: number;
   yMax?: number;
-  startYear?: number;
-  endYear?: number;
+  startYear: number;
+  endYear: number;
   useToolTip?: boolean;
 };
 
@@ -93,9 +93,12 @@ export const countLevels = (levels: IndicatorLevels[]) => {
 // This function adds years without data in the range [minYear, maxYear] and sets the value to 0.
 export const setMissingToZero = (
   groupedLevels: GroupedLevels,
-  minYear: number,
-  maxYear: number,
+  minYear?: number,
+  maxYear?: number,
 ) => {
+  if (minYear === undefined || maxYear === undefined) {
+    return [[], [], []];
+  }
   const dataAllLevels = [[], [], []];
 
   // i is the index of the year.
@@ -190,7 +193,7 @@ export const IndicatorLinechart = (
 
   // Time series bounds
   const minYear =
-    indicatorParams.startYear ??
+    indicatorParams.startYear &&
     _.min(
       levels.map((row) => {
         return row.year;
@@ -198,7 +201,7 @@ export const IndicatorLinechart = (
     );
 
   const maxYear =
-    indicatorParams.endYear ??
+    indicatorParams.endYear &&
     _.max(
       levels.map((row) => {
         return row.year;
@@ -206,9 +209,7 @@ export const IndicatorLinechart = (
     );
 
   // Fill missing years with zero
-  // NOTE: Konstantene over kan bli undefined så må ha en fallback her.
-  // Ser minYear settes til 0 i setMissingToZero, men usikker på om dett er  greit for max.
-  let chartData = setMissingToZero(groupedLevels, minYear || 0, maxYear || 0);
+  let chartData = setMissingToZero(groupedLevels, minYear, maxYear);
 
   const normalise = indicatorParams.normalise ?? false;
 
