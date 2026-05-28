@@ -3,6 +3,9 @@
   "description": "",
   "main": "index.js",
   "private": true,
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "start": "ts-node-dev -r dotenv/config src",
     "dev": "pnpm run start",
