@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.4](https://github.com/mong/mongts/compare/v1.2.3...v1.2.4) (2026-05-28)
+
+
+### Bug Fixes
+
+* api docker-konfig ([#4683](https://github.com/mong/mongts/issues/4683)) ([27bbb7b](https://github.com/mong/mongts/commit/27bbb7bddaddd545e0dcc1145c47550e89050411))
+* hostRule in renovate.json ([#4686](https://github.com/mong/mongts/issues/4686)) ([3c132a9](https://github.com/mong/mongts/commit/3c132a93901393fe83be786dfabcff08736c9521))
+* legg til autentiseringstoken til Renovate for @mong/material-ui ([#4681](https://github.com/mong/mongts/issues/4681)) ([bf2cd96](https://github.com/mong/mongts/commit/bf2cd960af236c39af28e0f7f1c30669558d3075))
+
 ## [1.2.3](https://github.com/mong/mongts/compare/v1.2.2...v1.2.3) (2026-05-28)
 
 
