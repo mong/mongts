@@ -3,7 +3,6 @@ lockfileVersion: '9.0'
 settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
-  injectWorkspacePackages: true
 
 importers:
 
@@ -162,7 +161,7 @@ importers:
         version: 8.5.15
       qmongjs:
         specifier: workspace:*
-        version: file:packages/qmongjs(@babel/core@7.29.0)(@emotion/react@11.14.0(@types/react@19.2.15)(react@19.2.6))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.15)(react@19.2.6))(@types/react@19.2.15)(react@19.2.6))(@types/react@19.2.15)
+        version: link:../../packages/qmongjs
       react:
         specifier: 19.2.6
         version: 19.2.6
@@ -263,34 +262,22 @@ importers:
 
   packages/qmongjs:
     dependencies:
+      d3-format:
+        specifier: 3.1.2
+        version: 3.1.2
+      react-icons:
+        specifier: 5.6.0
+        version: 5.6.0(react@19.2.6)
+    devDependencies:
+      '@emotion/react':
+        specifier: 11.14.0
+        version: 11.14.0(@types/react@19.2.15)(react@19.2.6)
       '@mui/material':
         specifier: 7.3.10
         version: 7.3.10(@emotion/react@11.14.0(@types/react@19.2.15)(react@19.2.6))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.15)(react@19.2.6))(@types/react@19.2.15)(react@19.2.6))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@tanstack/react-query':
         specifier: 5.100.9
         version: 5.100.9(react@19.2.6)
-      d3-format:
-        specifier: 3.1.2
-        version: 3.1.2
-      next:
-        specifier: 16.2.6
-        version: 16.2.6(@babel/core@7.29.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      react:
-        specifier: 19.2.6
-        version: 19.2.6
-      react-dom:
-        specifier: 19.2.6
-        version: 19.2.6(react@19.2.6)
-      react-icons:
-        specifier: 5.6.0
-        version: 5.6.0(react@19.2.6)
-      use-query-params:
-        specifier: 2.2.2
-        version: 2.2.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-    devDependencies:
-      '@emotion/react':
-        specifier: 11.14.0
-        version: 11.14.0(@types/react@19.2.15)(react@19.2.6)
       '@types/d3-format':
         specifier: 3.0.4
         version: 3.0.4
@@ -306,12 +293,24 @@ importers:
       jsdom:
         specifier: 29.1.1
         version: 29.1.1
+      next:
+        specifier: 16.2.6
+        version: 16.2.6(@babel/core@7.29.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      react:
+        specifier: 19.2.6
+        version: 19.2.6
+      react-dom:
+        specifier: 19.2.6
+        version: 19.2.6(react@19.2.6)
       types:
         specifier: '*'
         version: 0.1.1
       typescript:
         specifier: 5.9.3
         version: 5.9.3
+      use-query-params:
+        specifier: 2.2.2
+        version: 2.2.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       vite:
         specifier: 8.0.10
         version: 8.0.10(@types/node@25.9.1)(jiti@2.7.0)(terser@5.47.1)(yaml@2.9.0)
@@ -4567,9 +4566,6 @@ packages:
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
     engines: {node: '>=6'}
-
-  qmongjs@file:packages/qmongjs:
-    resolution: {directory: packages/qmongjs, type: directory}
 
   qs@6.14.2:
     resolution: {integrity: sha512-V/yCWTTF7VJ9hIh18Ugr2zhJMP01MY7c5kh4J870L7imm6/DIzBsNLTXzMwUA3yZ5b/KBqLx8Kp3uRvd7xSe3Q==}
@@ -10176,30 +10172,6 @@ snapshots:
     optional: true
 
   punycode@2.3.1: {}
-
-  qmongjs@file:packages/qmongjs(@babel/core@7.29.0)(@emotion/react@11.14.0(@types/react@19.2.15)(react@19.2.6))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.15)(react@19.2.6))(@types/react@19.2.15)(react@19.2.6))(@types/react@19.2.15):
-    dependencies:
-      '@mui/material': 7.3.10(@emotion/react@11.14.0(@types/react@19.2.15)(react@19.2.6))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.15)(react@19.2.6))(@types/react@19.2.15)(react@19.2.6))(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      '@tanstack/react-query': 5.100.9(react@19.2.6)
-      d3-format: 3.1.2
-      next: 16.2.6(@babel/core@7.29.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-      react: 19.2.6
-      react-dom: 19.2.6(react@19.2.6)
-      react-icons: 5.6.0(react@19.2.6)
-      use-query-params: 2.2.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
-    transitivePeerDependencies:
-      - '@babel/core'
-      - '@emotion/react'
-      - '@emotion/styled'
-      - '@mui/material-pigment-css'
-      - '@opentelemetry/api'
-      - '@playwright/test'
-      - '@reach/router'
-      - '@types/react'
-      - babel-plugin-macros
-      - babel-plugin-react-compiler
-      - react-router-dom
-      - sass
 
   qs@6.14.2:
     dependencies:
