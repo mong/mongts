@@ -15,7 +15,9 @@ jobs:
     name: Cypress testing
     runs-on: ubuntu-latest
     env:
-      NEXT_PUBLIC_API_HOST: https://test-api.skde.org
+      PRIMARY_API_HOST: https://test-api.skde.org
+      FALLBACK_API_HOST: https://prod-api.skde.org
+      API_HEALTH_PATH: /info/names
       NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
       TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
@@ -35,11 +37,49 @@ jobs:
           cache: "pnpm"
 
       - run: pnpm install --frozen-lockfile
+
+      - name: Select API host (fallback if primary unhealthy)
+        run: |
+          check() {
+            curl -sS -o /dev/null -w "%{http_code}" --max-time 10 "$1$API_HEALTH_PATH" || echo "000"
+          }
+
+          primary_status=$(check "$PRIMARY_API_HOST")
+          echo "Primary $PRIMARY_API_HOST -> $primary_status"
+
+          if [ "$primary_status" = "200" ]; then
+            selected="$PRIMARY_API_HOST"
+          else
+            fallback_status=$(check "$FALLBACK_API_HOST")
+            echo "Fallback $FALLBACK_API_HOST -> $fallback_status"
+
+            if [ "$fallback_status" = "200" ]; then
+              echo "Primary API unhealthy ($primary_status); using fallback."
+              selected="$FALLBACK_API_HOST"
+            else
+              echo "Both APIs unhealthy (primary=$primary_status, fallback=$fallback_status)."
+              exit 1
+            fi
+          fi
+
+          echo "NEXT_PUBLIC_API_HOST=$selected" >> "$GITHUB_ENV"
+          echo "Using NEXT_PUBLIC_API_HOST=$selected"
+
       - name: Export (with retry)
         run: |
           for i in 1 2 3; do
-            pnpm export && break || (echo "Attempt $i failed, retrying..." && sleep 15)
+            if pnpm --dir apps/skde export; then
+              exit 0
+            fi
+
+            if [ "$i" -lt 3 ]; then
+              echo "Attempt $i failed, retrying..."
+              sleep 15
+            fi
           done
+
+          echo "Export failed after 3 attempts"
+          exit 1
         env:
           TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
@@ -49,8 +89,8 @@ jobs:
         with:
           install: false
           working-directory: apps/skde
-          start: pnpm --filter skde start-server
-          wait-on: http://localhost:3000
+          start: pnpm start-server
+          wait-on: http://localhost:3000/behandlingskvalitet/
           wait-on-timeout: 120
           command: pnpm exec cypress run --browser chrome
 

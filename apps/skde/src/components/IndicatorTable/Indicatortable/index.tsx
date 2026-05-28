@@ -30,6 +30,7 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
     <StyledTable sx={{ marginTop: "0.625rem" }}>
       {medfields.map((medfield) => (
         <RegistrySection
+          data-testid={`indicator-${medfield}`}
           key={medfield}
           levels={levels}
           unitNames={unitNames}
@@ -59,7 +60,7 @@ export const IndicatorTableV2 = (props: IndicatorTableProps) => {
   );
 
   return (
-    <StyledTable sx={{ marginTop: "0.625rem" }}>
+    <StyledTable sx={{ marginTop: "0.625rem" }} data-testid={`indicator-table`}>
       {medfields.map((medfield) => (
         <RegistrySectionV2
           key={medfield}

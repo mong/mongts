@@ -113,6 +113,7 @@ export const HospitalProfileLinePlot = (
               alt="SKDE Logo"
               src="/img/logos/logo-skde.svg"
               height={50}
+              width={50 * 0.42}
               style={{
                 position: "relative",
                 left: "85%",

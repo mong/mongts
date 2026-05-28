@@ -84,10 +84,12 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
                 externalLink={true}
                 href={unitUrl}
                 fontSize="large"
-                text={getUnitFullName(
-                  unitNames.nestedUnitNames,
-                  selectedTreatmentUnit,
-                )}
+                text={
+                  getUnitFullName(
+                    unitNames.nestedUnitNames,
+                    selectedTreatmentUnit,
+                  ) || ""
+                }
               />
             ) : (
               <Typography variant="h5">

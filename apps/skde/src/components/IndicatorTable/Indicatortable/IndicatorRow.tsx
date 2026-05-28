@@ -93,7 +93,6 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
 
   const format = indData.format === null ? ",.0%" : indData.format;
   const indType = indData.indType;
-
   if (indData.data === undefined) {
     return null;
   }
@@ -110,7 +109,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
           Math.random().toString(),
         ),
         showCell:
-          levels === undefined
+          levels === undefined || levels === ""
             ? true
             : level2(indData, row) == null
               ? true
@@ -303,9 +302,9 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
 
           const cellAlpha = 0.3;
           const cellOpacity =
-            levels === undefined
+            levels === undefined || levels === ""
               ? 1
-              : levels !== undefined && lowDG
+              : levels !== undefined && levels !== "" && lowDG
                 ? cellAlpha
                 : row?.showCell && !lowDG
                   ? 1

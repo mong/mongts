@@ -42,7 +42,6 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
     year,
     chartColours,
   } = props;
-
   const [currentContext, setCurrentContext] = useState(context);
 
   const queryParams: FetchIndicatorParams = {
@@ -79,8 +78,7 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
   const registryHasResidentData =
     residentDataQuery.data &&
     residentDataQuery.data.map((row: ResidentData) => {
-      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-      return row.year == year && unitNames.includes(row.unitName);
+      return row.year === year && unitNames.includes(row.unitName);
     }).length > 0;
 
   rowData.sort((a: RegisterData, b: RegisterData) => {
@@ -96,7 +94,7 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
 
   const regData = rowData[0];
 
-  if (!regData.indicatorData) {
+  if (!regData?.indicatorData) {
     return null;
   }
 
@@ -115,7 +113,7 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
   // Sjekk om hele registerseksjonen skal filtreres bort på grunn av målnivåfilter
   let showSection: boolean;
 
-  if (levels === undefined) {
+  if (levels === undefined || levels === "") {
     showSection = true;
   } else {
     showSection = !regData.indicatorData
@@ -125,12 +123,10 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
               .map((dataRow) => {
                 return level2(indRow, dataRow) === levels;
               })
-              // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-              .every((x) => x == false)
+              .every((x) => x === false)
           : null;
       })
-      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-      .every((x) => x == false);
+      .every((x) => x === false);
   }
 
   const handleClick = () => {
@@ -138,7 +134,6 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
       currentContext === "caregiver" ? "resident" : "caregiver",
     );
   };
-
   if (showSection) {
     return (
       <React.Fragment>
@@ -220,7 +215,6 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
             })}
           </TableRow>
         </TableHead>
-
         <TableBody>
           <IndicatorSection
             key={regData.registerName}
