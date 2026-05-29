@@ -1,24 +1,19 @@
 // @ts-nocheck
+
+import { Button, Dropdown } from "@mong/material-ui";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DoneIcon from "@mui/icons-material/Done";
 import {
   Box,
-  Button,
-  CssBaseline,
-  FormControl,
-  InputLabel,
   MenuItem,
-  Select,
   type SelectChangeEvent,
   Stack,
-  ThemeProvider,
   Typography,
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import {
   defaultYear,
   mainQueryParamsConfig,
-  skdeTheme,
   useRegisterNamesQuery,
   useUnitNamesQuery,
 } from "qmongjs";
@@ -26,7 +21,6 @@ import { useState } from "react";
 import { useQueryParam } from "use-query-params";
 import { MedicalFieldPopup } from "../../src/components/DialogBox/MedicalFieldPopup";
 import { TreatmentUnitPopup } from "../../src/components/DialogBox/TreatmentunitPopup";
-import { Footer } from "../../src/components/Footer";
 import { IndicatorTableV2 } from "../../src/components/IndicatorTable/Indicatortable";
 import { TreatmentQualityAppBarV2 } from "../../src/components/IndicatorTable/Indicatortable/StickyHeader";
 import { LayoutHead } from "../../src/components/LayoutHead";
@@ -106,144 +100,136 @@ export default function TreatmentQualityPage() {
   };
 
   return (
-    <ThemeProvider theme={skdeTheme}>
-      <CssBaseline />
-      <PageWrapper>
-        <Box
-          sx={{
-            background: "#F5F5F5",
-          }}
-        >
-          <LayoutHead
-            title="Behandlingskvalitet"
-            content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
-            href="/favicon.ico"
-          />
+    <PageWrapper>
+      <Box
+        sx={{
+          background: "#F5F5F5",
+        }}
+      >
+        <LayoutHead
+          title="Behandlingskvalitet"
+          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
+          href="/favicon.ico"
+        />
 
-          <Box padding={4}>
-            <TreatmentQualityAppBarV2>
-              <Stack
-                direction="row"
-                justifyContent="space-between"
-                sx={{ paddingTop: 2, paddingBottom: 2 }}
-                width="100%"
-              >
-                <Stack direction="row" spacing={3}>
-                  <Button
-                    variant="outlined"
-                    onClick={handleMedicalFieldButtonClick}
-                  >
-                    Velg fagområde
-                  </Button>
-                  <MedicalFieldPopup
-                    open={medicalFieldPopupOpen}
-                    updateRegistries={setSelectedMedicalFields}
-                    setOpen={setMedicalFieldPopupOpen}
-                    onSubmit={setSelectedMedicalFields}
-                  />
-                  <Button
-                    variant="outlined"
-                    onClick={handleTreatmentUnitButtonClick}
-                  >
-                    Velg behandlingsenheter
-                  </Button>
-                  <TreatmentUnitPopup
-                    open={treatmentUnitPopupOpen}
-                    setOpen={setTreatmentUnitPopupOpen}
-                    onSubmit={setSelectedTreatmentUnits}
-                    context={selectedTableContext}
-                    type={"ind"}
-                  />
-                  <FormControl>
-                    <InputLabel>År</InputLabel>
-                    <Select
-                      value={selectedYear.toString()}
-                      label="År"
-                      onChange={handleYearChange}
-                    >
-                      {[
-                        ...Array(numberOfYearOptions)
-                          .keys()
-                          .map((i: number) => {
-                            const year = defaultYear - i;
-                            return (
-                              <MenuItem key={year} value={year}>
-                                {year}
-                              </MenuItem>
-                            );
-                          }),
-                      ]}
-                    </Select>
-                  </FormControl>
-                </Stack>
-                <Button
-                  variant="outlined"
-                  startIcon={urlCopied ? <DoneIcon /> : <ContentCopyIcon />}
-                  onClick={() => {
-                    navigator.clipboard.writeText(window.location.href);
-                    setUrlCopied(true);
-                    setTimeout(() => {
-                      setUrlCopied(false);
-                    }, urlCopiedTimeout);
-                  }}
-                >
-                  {urlCopied ? "URL kopiert" : "Kopier URL"}
-                </Button>
-              </Stack>
-            </TreatmentQualityAppBarV2>
-            {selectedMedicalFields.length > 0 ? (
-              <IndicatorTableV2
-                key={"indicator-table2"}
-                context={selectedTableContext}
-                unitNames={getSortedList(
-                  colourMap,
-                  selectedTreatmentUnits,
-                  "units",
-                )}
-                year={selectedYear}
-                type={dataQualitySelected ? "dg" : "ind"}
-                levels={selectedLevel || ""}
-                medfields={selectedMedicalFields}
-                chartColours={getSortedList(
-                  colourMap,
-                  selectedTreatmentUnits,
-                  "colours",
-                )}
-              />
-            ) : (
-              <Stack
-                height="484px"
-                spacing={6}
-                justifyContent="center"
-                alignItems="center"
-                sx={{
-                  background: "#FFFFFF",
-                  border: "1px solid #2354AE",
-                  borderRadius: "16px",
-                }}
-              >
-                <Typography variant="h3" color="#0D244E">
-                  Velg et fagområde du vil se resultater fra
-                </Typography>
+        <Box padding={4}>
+          <TreatmentQualityAppBarV2>
+            <Stack
+              direction="row"
+              justifyContent="space-between"
+              sx={{ paddingTop: 2, paddingBottom: 2 }}
+              width="100%"
+            >
+              <Stack direction="row" spacing={3}>
                 <Button
                   variant="contained"
                   onClick={handleMedicalFieldButtonClick}
-                  sx={{
-                    width: "200px",
-                    background: "#2354AE",
-                    color: "#FFFFFF",
-                    height: "48px",
-                    fontSize: "14px",
-                  }}
                 >
                   Velg fagområde
                 </Button>
+                <MedicalFieldPopup
+                  open={medicalFieldPopupOpen}
+                  updateRegistries={setSelectedMedicalFields}
+                  setOpen={setMedicalFieldPopupOpen}
+                  onSubmit={setSelectedMedicalFields}
+                />
+                <Button
+                  variant="contained"
+                  onClick={handleTreatmentUnitButtonClick}
+                >
+                  Velg behandlingsenheter
+                </Button>
+                <TreatmentUnitPopup
+                  open={treatmentUnitPopupOpen}
+                  setOpen={setTreatmentUnitPopupOpen}
+                  onSubmit={setSelectedTreatmentUnits}
+                  context={selectedTableContext}
+                  type={"ind"}
+                />
+                <Dropdown
+                  value={selectedYear.toString()}
+                  onChange={handleYearChange}
+                >
+                  {[
+                    ...Array(numberOfYearOptions)
+                      .keys()
+                      .map((i: number) => {
+                        const year = defaultYear - i;
+                        return (
+                          <MenuItem key={year} value={year}>
+                            {year}
+                          </MenuItem>
+                        );
+                      }),
+                  ]}
+                </Dropdown>
               </Stack>
-            )}
-          </Box>
+              <Button
+                variant="outlined"
+                startIcon={urlCopied ? <DoneIcon /> : <ContentCopyIcon />}
+                onClick={() => {
+                  navigator.clipboard.writeText(window.location.href);
+                  setUrlCopied(true);
+                  setTimeout(() => {
+                    setUrlCopied(false);
+                  }, urlCopiedTimeout);
+                }}
+              >
+                {urlCopied ? "URL kopiert" : "Kopier URL"}
+              </Button>
+            </Stack>
+          </TreatmentQualityAppBarV2>
+          {selectedMedicalFields.length > 0 ? (
+            <IndicatorTableV2
+              key={"indicator-table2"}
+              context={selectedTableContext}
+              unitNames={getSortedList(
+                colourMap,
+                selectedTreatmentUnits,
+                "units",
+              )}
+              year={selectedYear}
+              type={dataQualitySelected ? "dg" : "ind"}
+              levels={selectedLevel || ""}
+              medfields={selectedMedicalFields}
+              chartColours={getSortedList(
+                colourMap,
+                selectedTreatmentUnits,
+                "colours",
+              )}
+            />
+          ) : (
+            <Stack
+              height="484px"
+              spacing={6}
+              justifyContent="center"
+              alignItems="center"
+              sx={{
+                background: "#FFFFFF",
+                border: "1px solid #2354AE",
+                borderRadius: "16px",
+              }}
+            >
+              <Typography variant="h3" color="#0D244E">
+                Velg et fagområde du vil se resultater fra
+              </Typography>
+              <Button
+                variant="contained"
+                onClick={handleMedicalFieldButtonClick}
+                sx={{
+                  width: "200px",
+                  background: "#2354AE",
+                  color: "#FFFFFF",
+                  height: "48px",
+                  fontSize: "14px",
+                }}
+              >
+                Velg fagområde
+              </Button>
+            </Stack>
+          )}
         </Box>
-        <Footer />
-      </PageWrapper>
-    </ThemeProvider>
+      </Box>
+    </PageWrapper>
   );
 }

@@ -38,7 +38,6 @@ const fetchJsonWithRetry = async (url: string) => {
 
       if (attempt < MAX_FETCH_ATTEMPTS) {
         await sleep(300 * attempt);
-        continue;
       }
     }
   }
