@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { Button, Dropdown } from "@mong/material-ui";
+import { Button, Dropdown, PageContent } from "@mong/material-ui";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DoneIcon from "@mui/icons-material/Done";
 import {
@@ -24,7 +24,6 @@ import { TreatmentUnitPopup } from "../../src/components/DialogBox/Treatmentunit
 import { IndicatorTableV2 } from "../../src/components/IndicatorTable/Indicatortable";
 import { TreatmentQualityAppBarV2 } from "../../src/components/IndicatorTable/Indicatortable/StickyHeader";
 import { LayoutHead } from "../../src/components/LayoutHead";
-import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import {
   type ColourMap,
   getSortedList,
@@ -100,7 +99,7 @@ export default function TreatmentQualityPage() {
   };
 
   return (
-    <PageWrapper>
+    <PageContent>
       <Box
         sx={{
           background: "#F5F5F5",
@@ -117,28 +116,29 @@ export default function TreatmentQualityPage() {
             <Stack
               direction="row"
               justifyContent="space-between"
+              alignItems="center"
               sx={{ paddingTop: 2, paddingBottom: 2 }}
               width="100%"
             >
               <Stack direction="row" spacing={3}>
-                <Button
-                  variant="contained"
-                  onClick={handleMedicalFieldButtonClick}
-                >
-                  Velg fagområde
-                </Button>
+                <div className="flex flex-col text-small text-brand-primary-900">
+                  Fagområde
+                  <Button onClick={handleMedicalFieldButtonClick}>
+                    Velg fagområde
+                  </Button>
+                </div>
                 <MedicalFieldPopup
                   open={medicalFieldPopupOpen}
                   updateRegistries={setSelectedMedicalFields}
                   setOpen={setMedicalFieldPopupOpen}
                   onSubmit={setSelectedMedicalFields}
                 />
-                <Button
-                  variant="contained"
-                  onClick={handleTreatmentUnitButtonClick}
-                >
-                  Velg behandlingsenheter
-                </Button>
+                <div className="flex flex-col text-small text-brand-primary-900">
+                  Behandlingsenheter
+                  <Button onClick={handleTreatmentUnitButtonClick}>
+                    Velg behandlingsenheter
+                  </Button>
+                </div>
                 <TreatmentUnitPopup
                   open={treatmentUnitPopupOpen}
                   setOpen={setTreatmentUnitPopupOpen}
@@ -146,26 +146,29 @@ export default function TreatmentQualityPage() {
                   context={selectedTableContext}
                   type={"ind"}
                 />
-                <Dropdown
-                  value={selectedYear.toString()}
-                  onChange={handleYearChange}
-                >
-                  {[
-                    ...Array(numberOfYearOptions)
-                      .keys()
-                      .map((i: number) => {
-                        const year = defaultYear - i;
-                        return (
-                          <MenuItem key={year} value={year}>
-                            {year}
-                          </MenuItem>
-                        );
-                      }),
-                  ]}
-                </Dropdown>
+                <div className="flex flex-col text-small text-brand-primary-900">
+                  År
+                  <Dropdown
+                    value={selectedYear.toString()}
+                    onChange={handleYearChange}
+                  >
+                    {[
+                      ...Array(numberOfYearOptions)
+                        .keys()
+                        .map((i: number) => {
+                          const year = defaultYear - i;
+                          return (
+                            <MenuItem key={year} value={year}>
+                              {year}
+                            </MenuItem>
+                          );
+                        }),
+                    ]}
+                  </Dropdown>
+                </div>
               </Stack>
               <Button
-                variant="outlined"
+                variant="text"
                 startIcon={urlCopied ? <DoneIcon /> : <ContentCopyIcon />}
                 onClick={() => {
                   navigator.clipboard.writeText(window.location.href);
@@ -214,7 +217,6 @@ export default function TreatmentQualityPage() {
                 Velg et fagområde du vil se resultater fra
               </Typography>
               <Button
-                variant="contained"
                 onClick={handleMedicalFieldButtonClick}
                 sx={{
                   width: "200px",
@@ -230,6 +232,6 @@ export default function TreatmentQualityPage() {
           )}
         </Box>
       </Box>
-    </PageWrapper>
+    </PageContent>
   );
 }
