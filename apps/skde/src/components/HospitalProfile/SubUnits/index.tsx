@@ -71,8 +71,8 @@ const getUnitLevel = (
   return unitLevel;
 };
 
-// Use design-system Variants (replace with import from @mong/material-ui)
-export type ButtonsVariants = "filled" | "outline" | "text" | "secondary";
+// Use design-system Variants (replace with import {type ButtonVariant} from @mong/material-ui when available)
+type ButtonsVariants = "filled" | "outline" | "text" | "secondary";
 
 // This button sets the new unit name and updates the URL query parameter "selected_treatment_unit"
 const UnitButton = (props: {
