@@ -1,6 +1,7 @@
+import { Button } from "@mong/material-ui";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 import UndoIcon from "@mui/icons-material/Undo";
-import { Box, Button, List, ListItem, Stack, Typography } from "@mui/material";
+import { Box, List, ListItem, Stack, Typography } from "@mui/material";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { skdeTheme } from "qmongjs";
 import type { ReactElement } from "react";
@@ -70,14 +71,22 @@ const getUnitLevel = (
   return unitLevel;
 };
 
+// Use design-system Variants (replace with import from @mong/material-ui)
+export type ButtonsVariants = "filled" | "outline" | "text" | "secondary";
+
 // This button sets the new unit name and updates the URL query parameter "selected_treatment_unit"
 const UnitButton = (props: {
   unitName: string;
-  buttonVariant: "outlined" | "text" | "contained";
+  buttonVariant?: ButtonsVariants;
   setUnitName: React.Dispatch<React.SetStateAction<string>>;
   returnButton?: boolean;
 }) => {
-  const { unitName, buttonVariant, setUnitName, returnButton } = props;
+  const {
+    unitName,
+    buttonVariant = "filled",
+    setUnitName,
+    returnButton,
+  } = props;
 
   // Router for updating the query parameter
   const router = useRouter();
@@ -118,7 +127,7 @@ export const SubUnits = (props: SubUnitsProps) => {
   const HFs = RHFs.flatMap((row) => row.hf);
   const unitLevel = getUnitLevel(RHFs, selectedUnit);
 
-  const buttonVariant = "outlined";
+  const buttonVariant = "outlined" as ButtonsVariants;
 
   let buttonList: ReactElement;
 
@@ -212,7 +221,6 @@ export const SubUnits = (props: SubUnitsProps) => {
       <Box marginLeft={2} marginTop={4}>
         {parentUnit && (
           <UnitButton
-            buttonVariant="contained"
             unitName={parentUnit}
             setUnitName={setUnitName}
             returnButton={true}

@@ -1,8 +1,6 @@
-// @ts-nocheck
+import crypto from "node:crypto";
 import compression from "compression";
 import cors from "cors";
-// biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future1
-import crypto from "crypto";
 import express, {
   type Request,
   type RequestHandler,
@@ -35,7 +33,6 @@ const rateLimiter = rateLimit({
 app.use(rateLimiter);
 
 // Adds a nonce to response for use on inline scripts
-// @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
 // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
 app.use((req, res, next) => {
   res.locals.nonce = crypto.randomBytes(16).toString("hex");

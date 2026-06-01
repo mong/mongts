@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { Button, Dropdown } from "@mong/material-ui";
+import { Button, Dropdown, HeroBanner, PageContent } from "@mong/material-ui";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DoneIcon from "@mui/icons-material/Done";
 import {
@@ -100,19 +100,23 @@ export default function TreatmentQualityPage() {
   };
 
   return (
-    <PageWrapper>
-      <Box
-        sx={{
-          background: "#F5F5F5",
-        }}
-      >
-        <LayoutHead
-          title="Behandlingskvalitet"
-          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
-          href="/favicon.ico"
-        />
-
-        <Box padding={4}>
+    <Box
+      sx={{
+        background: "#F5F5F5",
+      }}
+    >
+      <LayoutHead
+        title="Behandlingskvalitet"
+        content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
+        href="/favicon.ico"
+      />
+      <HeroBanner
+        description="Her kan du se resultater fra nasjonale medisinske kvalitetsregistre, og sammenligne indikatorer ved å velge flere sykehus eller regioner"
+        title="Behandlingskvalitet"
+        image="/hero-bg-4.jpg"
+      />
+      <div className="flex bg-neutral-0 w-full items-center justify-center">
+        <div className="flex flex-col w-full h-full md:px-6 px-3 min-w-180 md:min-w-360 max-w-260">
           <TreatmentQualityAppBarV2>
             <Stack
               direction="row"
@@ -121,10 +125,7 @@ export default function TreatmentQualityPage() {
               width="100%"
             >
               <Stack direction="row" spacing={3}>
-                <Button
-                  variant="contained"
-                  onClick={handleMedicalFieldButtonClick}
-                >
+                <Button onClick={handleMedicalFieldButtonClick}>
                   Velg fagområde
                 </Button>
                 <MedicalFieldPopup
@@ -133,10 +134,7 @@ export default function TreatmentQualityPage() {
                   setOpen={setMedicalFieldPopupOpen}
                   onSubmit={setSelectedMedicalFields}
                 />
-                <Button
-                  variant="contained"
-                  onClick={handleTreatmentUnitButtonClick}
-                >
+                <Button onClick={handleTreatmentUnitButtonClick}>
                   Velg behandlingsenheter
                 </Button>
                 <TreatmentUnitPopup
@@ -164,72 +162,78 @@ export default function TreatmentQualityPage() {
                   ]}
                 </Dropdown>
               </Stack>
-              <Button
-                variant="outlined"
-                startIcon={urlCopied ? <DoneIcon /> : <ContentCopyIcon />}
-                onClick={() => {
-                  navigator.clipboard.writeText(window.location.href);
-                  setUrlCopied(true);
-                  setTimeout(() => {
-                    setUrlCopied(false);
-                  }, urlCopiedTimeout);
-                }}
+              <div
+                className="flex items-center justify-center"
+                data-testid="copy-url-button"
               >
-                {urlCopied ? "URL kopiert" : "Kopier URL"}
-              </Button>
+                <Button
+                  variant="secondary"
+                  startIcon={urlCopied ? <DoneIcon /> : <ContentCopyIcon />}
+                  onClick={() => {
+                    navigator.clipboard.writeText(window.location.href);
+                    setUrlCopied(true);
+                    setTimeout(() => {
+                      setUrlCopied(false);
+                    }, urlCopiedTimeout);
+                  }}
+                >
+                  {urlCopied ? "URL kopiert" : "Kopier URL"}
+                </Button>
+              </div>
             </Stack>
           </TreatmentQualityAppBarV2>
-          {selectedMedicalFields.length > 0 ? (
-            <IndicatorTableV2
-              key={"indicator-table2"}
-              context={selectedTableContext}
-              unitNames={getSortedList(
-                colourMap,
-                selectedTreatmentUnits,
-                "units",
-              )}
-              year={selectedYear}
-              type={dataQualitySelected ? "dg" : "ind"}
-              levels={selectedLevel || ""}
-              medfields={selectedMedicalFields}
-              chartColours={getSortedList(
-                colourMap,
-                selectedTreatmentUnits,
-                "colours",
-              )}
-            />
-          ) : (
-            <Stack
-              height="484px"
-              spacing={6}
-              justifyContent="center"
-              alignItems="center"
+        </div>
+      </div>
+      <PageContent>
+        {selectedMedicalFields.length > 0 ? (
+          <IndicatorTableV2
+            key={"indicator-table2"}
+            context={selectedTableContext}
+            unitNames={getSortedList(
+              colourMap,
+              selectedTreatmentUnits,
+              "units",
+            )}
+            year={selectedYear}
+            type={dataQualitySelected ? "dg" : "ind"}
+            levels={selectedLevel || ""}
+            medfields={selectedMedicalFields}
+            chartColours={getSortedList(
+              colourMap,
+              selectedTreatmentUnits,
+              "colours",
+            )}
+          />
+        ) : (
+          <Stack
+            height="484px"
+            spacing={6}
+            justifyContent="center"
+            alignItems="center"
+            sx={{
+              background: "#FFFFFF",
+              border: "1px solid #2354AE",
+              borderRadius: "16px",
+            }}
+          >
+            <Typography variant="h3" color="#0D244E">
+              Velg et fagområde du vil se resultater fra
+            </Typography>
+            <Button
+              onClick={handleMedicalFieldButtonClick}
               sx={{
-                background: "#FFFFFF",
-                border: "1px solid #2354AE",
-                borderRadius: "16px",
+                width: "200px",
+                background: "#2354AE",
+                color: "#FFFFFF",
+                height: "48px",
+                fontSize: "14px",
               }}
             >
-              <Typography variant="h3" color="#0D244E">
-                Velg et fagområde du vil se resultater fra
-              </Typography>
-              <Button
-                variant="contained"
-                onClick={handleMedicalFieldButtonClick}
-                sx={{
-                  width: "200px",
-                  background: "#2354AE",
-                  color: "#FFFFFF",
-                  height: "48px",
-                  fontSize: "14px",
-                }}
-              >
-                Velg fagområde
-              </Button>
-            </Stack>
-          )}
-        </Box>
-      </Box>
-    </PageWrapper>
+              Velg fagområde
+            </Button>
+          </Stack>
+        )}
+      </PageContent>
+    </Box>
   );
 }

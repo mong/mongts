@@ -65,6 +65,19 @@ yarn export
 npx serve apps/skde/out
 ```
 
+### Build and run the API container
+
+The Docker build needs the monorepo root as its context so it can copy
+`apps/api/` and `packages/types/` before building the image.
+
+It's importaint that these commands are run from the repository root, not from `apps/api/`.
+
+Build and run api docker-container:
+```bash
+DOCKER_BUILDKIT=1 docker build -t api -f apps/api/Dockerfile .
+docker run --rm -e ORIGIN="somestring" -p 3030:80 api
+```
+
 ### Commit without `--no-verify`
 
 This repository is set up with a hook that will run linting on staged files when you commit. You will therefore often end up with the following error:
