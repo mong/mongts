@@ -24,7 +24,6 @@ import { TreatmentUnitPopup } from "../../src/components/DialogBox/Treatmentunit
 import { IndicatorTableV2 } from "../../src/components/IndicatorTable/Indicatortable";
 import { TreatmentQualityAppBarV2 } from "../../src/components/IndicatorTable/Indicatortable/StickyHeader";
 import { LayoutHead } from "../../src/components/LayoutHead";
-import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 import {
   type ColourMap,
   getSortedList,
@@ -121,6 +120,7 @@ export default function TreatmentQualityPage() {
             <Stack
               direction="row"
               justifyContent="space-between"
+              alignItems="center"
               sx={{ paddingTop: 2, paddingBottom: 2 }}
               width="100%"
             >
