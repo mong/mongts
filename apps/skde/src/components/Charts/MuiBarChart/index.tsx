@@ -75,6 +75,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     apiRef,
   } = props;
 
+  console.log(data);
   if (!data.data) {
     return null;
   }

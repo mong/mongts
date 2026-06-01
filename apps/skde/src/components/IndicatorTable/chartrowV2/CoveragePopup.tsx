@@ -68,6 +68,7 @@ export const CoveragePopup = (props: CoveragePopupProps) => {
     );
   }
 
+  // TODO: pick out the correct indicator
   const indData = nestedDataQuery.data?.[0].indicatorData[0];
 
   return (

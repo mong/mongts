@@ -41,7 +41,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   } = props;
 
   const [coveragePopupOpen, setCoveragePopupOpen] = useState(false);
-  console.log(data);
+
   if (data.data === undefined) {
     return <div>No data</div>;
   }
@@ -113,16 +113,18 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
         alignItems={"end"}
         sx={{ paddingLeft: 4 }}
       >
-        <Dropdown
-          value={figureType}
-          label="Figurtype"
-          onChange={handleFigureTypeChange}
-        >
-          <MenuItem value={"line"} disabled={numberOfTimePoints === 1}>
-            Tidstrend
-          </MenuItem>
-          <MenuItem value={"bar"}>Enkeltår</MenuItem>
-        </Dropdown>
+        {!coverage && (
+          <Dropdown
+            value={figureType}
+            label="Figurtype"
+            onChange={handleFigureTypeChange}
+          >
+            <MenuItem value={"line"} disabled={numberOfTimePoints === 1}>
+              Tidstrend
+            </MenuItem>
+            <MenuItem value={"bar"}>Enkeltår</MenuItem>
+          </Dropdown>
+        )}
         {figureType === "bar" && (
           <Dropdown
             value={barChartType}
