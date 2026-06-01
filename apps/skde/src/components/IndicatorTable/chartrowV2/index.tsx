@@ -41,7 +41,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   } = props;
 
   const [coveragePopupOpen, setCoveragePopupOpen] = useState(false);
-
+  console.log(data);
   if (data.data === undefined) {
     return <div>No data</div>;
   }
@@ -155,6 +155,13 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
         <CoveragePopup
           open={coveragePopupOpen}
           setOpen={setCoveragePopupOpen}
+          unitNames={unitNames}
+          year={year}
+          context={context}
+          medfield={medfield}
+          treatmentUnitsByLevel={treatmentUnitsByLevel}
+          indID={indID}
+          registryName={registryName}
         />
 
         <Button
