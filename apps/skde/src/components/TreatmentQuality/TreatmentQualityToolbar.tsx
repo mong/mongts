@@ -37,7 +37,6 @@ export const TreatmentQualityToolbar = (props: StickyToolbarProps) => {
           {notLargeScreen ? (
             <Tooltip title="Åpne sidemeny">
               <Button
-                variant="contained"
                 aria-label="Åpne sidemeny"
                 color="primary"
                 sx={{

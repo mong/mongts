@@ -9,13 +9,16 @@ FROM base AS builder
 WORKDIR /app
 ENV CI=true
 
-COPY pnpm-lock.yaml pnpm-workspace.yaml package.json ./
+COPY package.json .npmrc ./
 COPY apps/api ./apps/api
 COPY packages/types ./packages/types
 
-RUN pnpm install --frozen-lockfile --filter api... \
+RUN printf 'packages:\n  - "apps/api"\n  - "packages/types"\n' > pnpm-workspace.yaml
+
+RUN pnpm install --filter api... \
     && pnpm --filter api build \
-    && pnpm --filter api deploy --prod --legacy /prod/api
+    && pnpm --filter api deploy --prod --legacy /prod/api \
+    && cp -R apps/api/dist /prod/api/dist
 
 FROM base AS runner
 WORKDIR /app
@@ -26,4 +29,4 @@ EXPOSE 80
 ARG version="none"
 ENV PORT=80
 ENV VERSION=${version}
-CMD ["node", "build"]
+CMD ["node", "dist/index.js"]
