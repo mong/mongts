@@ -1,13 +1,6 @@
-import {
-  Box,
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  type SelectChangeEvent,
-  Stack,
-} from "@mui/material";
+import { Button, Dropdown } from "@mong/material-ui";
+import SearchIcon from "@mui/icons-material/Search";
+import { Box, MenuItem, type SelectChangeEvent, Stack } from "@mui/material";
 import { useChartProApiRef } from "@mui/x-charts-pro";
 import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
 import { useState } from "react";
@@ -18,6 +11,7 @@ import {
 } from "../../../helpers/functions/formatMuiChartData";
 import { MuiBarChart } from "../../Charts/MuiBarChart";
 import { MuiLineChart } from "../../Charts/MuiLineChart";
+import { CoveragePopup } from "./CoveragePopup";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -29,6 +23,7 @@ type chartRowV2Props = {
   treatmentUnitsByLevel: OptsTu[];
   indID: string;
   registryName: string;
+  coverage?: boolean;
 };
 
 export const ChartRowV2 = (props: chartRowV2Props) => {
@@ -42,7 +37,10 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     medfield,
     indID,
     registryName,
+    coverage,
   } = props;
+
+  const [coveragePopupOpen, setCoveragePopupOpen] = useState(false);
 
   if (data.data === undefined) {
     return <div>No data</div>;
@@ -109,43 +107,56 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
 
   return (
     <Box>
-      <Stack direction={"row"} spacing={2} sx={{ paddingLeft: 4 }}>
-        <FormControl sx={{ width: "10rem" }}>
-          <InputLabel>Figurtype</InputLabel>
-          <Select
-            value={figureType}
-            label="Figurtype"
-            onChange={handleFigureTypeChange}
-          >
-            <MenuItem value={"line"} disabled={numberOfTimePoints === 1}>
-              Tidstrend
-            </MenuItem>
-            <MenuItem value={"bar"}>Enkeltår</MenuItem>
-          </Select>
-        </FormControl>
+      <Stack
+        direction={"row"}
+        spacing={2}
+        alignItems={"end"}
+        sx={{ paddingLeft: 4 }}
+      >
+        <Dropdown
+          value={figureType}
+          label="Figurtype"
+          onChange={handleFigureTypeChange}
+        >
+          <MenuItem value={"line"} disabled={numberOfTimePoints === 1}>
+            Tidstrend
+          </MenuItem>
+          <MenuItem value={"bar"}>Enkeltår</MenuItem>
+        </Dropdown>
         {figureType === "bar" && (
-          <FormControl sx={{ width: "15rem" }}>
-            <InputLabel>Enheter</InputLabel>
-            <Select
-              value={barChartType}
-              label="Enheter"
-              onChange={handleBarChartTypeChange}
-            >
-              <MenuItem value={"selected"}>Valgte enheter</MenuItem>
-              <MenuItem value={"rhf"}>Regioner</MenuItem>
-              <MenuItem value={"hf"}>Helseforetak</MenuItem>
-              <MenuItem value={"hospital"}>Sykehus</MenuItem>
-            </Select>
-          </FormControl>
+          <Dropdown
+            value={barChartType}
+            label="Enheter"
+            onChange={handleBarChartTypeChange}
+          >
+            <MenuItem value={"selected"}>Valgte enheter</MenuItem>
+            <MenuItem value={"rhf"}>Regioner</MenuItem>
+            <MenuItem value={"hf"}>Helseforetak</MenuItem>
+            <MenuItem value={"hospital"}>Sykehus</MenuItem>
+          </Dropdown>
         )}
         <Button
-          variant="outlined"
           onClick={() => {
             setZoom(!zoom);
           }}
         >
           Zoom
         </Button>
+        {!coverage && (
+          <Button
+            startIcon={<SearchIcon />}
+            onClick={() => {
+              setCoveragePopupOpen(true);
+            }}
+          >
+            Dekningsgrad
+          </Button>
+        )}
+        <CoveragePopup
+          open={coveragePopupOpen}
+          setOpen={setCoveragePopupOpen}
+        />
+
         <Button
           onClick={() => {
             const apiRef =
@@ -158,8 +169,6 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
               ),
             });
           }}
-          variant="outlined"
-          sx={{ marginLeft: "90%" }}
         >
           Last ned
         </Button>
