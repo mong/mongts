@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { Button, Dropdown, HeroBanner, PageContent } from "@mong/material-ui";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DoneIcon from "@mui/icons-material/Done";
@@ -155,6 +153,7 @@ export default function TreatmentQualityPage() {
                   <Dropdown
                     value={selectedYear.toString()}
                     onChange={handleYearChange}
+                    label="Årstall"
                   >
                     {[
                       ...Array(numberOfYearOptions)
@@ -228,16 +227,7 @@ export default function TreatmentQualityPage() {
             <Typography variant="h3" color="#0D244E">
               Velg et fagområde du vil se resultater fra
             </Typography>
-            <Button
-              onClick={handleMedicalFieldButtonClick}
-              sx={{
-                width: "200px",
-                background: "#2354AE",
-                color: "#FFFFFF",
-                height: "48px",
-                fontSize: "14px",
-              }}
-            >
+            <Button onClick={handleMedicalFieldButtonClick}>
               Velg fagområde
             </Button>
           </Stack>
