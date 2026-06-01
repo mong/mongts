@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 import { Button, Dropdown, HeroBanner, PageContent } from "@mong/material-ui";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DoneIcon from "@mui/icons-material/Done";
@@ -114,13 +112,13 @@ export default function TreatmentQualityPage() {
         title="Behandlingskvalitet"
         image="/hero-bg-4.jpg"
       />
-      <div className="flex bg-neutral-0 w-full items-center justify-center">
-        <div className="flex flex-col w-full h-full md:px-6 px-3 min-w-180 md:min-w-360 max-w-260">
+      <div className="flex bg-neutral-0 w-full align-middle items-center justify-center">
+        <div className="flex flex-col w-full h-full md:px-6 md:min-w-360 max-w-260 ">
           <TreatmentQualityAppBarV2>
             <Stack
               direction="row"
               justifyContent="space-between"
-              alignItems="center"
+              alignItems="end"
               sx={{ paddingTop: 2, paddingBottom: 2 }}
               width="100%"
             >
@@ -150,11 +148,13 @@ export default function TreatmentQualityPage() {
                   context={selectedTableContext}
                   type={"ind"}
                 />
-                <div className="flex flex-col text-small font-semibold  text-brand-primary-900">
-                  År
+                <div className="flex flex-col text-small  font-semibold  text-brand-primary-900">
+                  Årstall
+                  {/* @ts-expect-error Component will support empty label in next version */}
                   <Dropdown
                     value={selectedYear.toString()}
                     onChange={handleYearChange}
+                    // label="Årstall"
                   >
                     {[
                       ...Array(numberOfYearOptions)
@@ -171,10 +171,7 @@ export default function TreatmentQualityPage() {
                   </Dropdown>
                 </div>
               </Stack>
-              <div
-                className="flex items-center justify-center"
-                data-testid="copy-url-button"
-              >
+              <div className="pb-4 pl-6" data-testid="copy-url-button">
                 <Button
                   variant="secondary"
                   startIcon={urlCopied ? <DoneIcon /> : <ContentCopyIcon />}
@@ -228,16 +225,7 @@ export default function TreatmentQualityPage() {
             <Typography variant="h3" color="#0D244E">
               Velg et fagområde du vil se resultater fra
             </Typography>
-            <Button
-              onClick={handleMedicalFieldButtonClick}
-              sx={{
-                width: "200px",
-                background: "#2354AE",
-                color: "#FFFFFF",
-                height: "48px",
-                fontSize: "14px",
-              }}
-            >
+            <Button onClick={handleMedicalFieldButtonClick}>
               Velg fagområde
             </Button>
           </Stack>

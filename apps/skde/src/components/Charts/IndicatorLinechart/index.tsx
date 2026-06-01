@@ -99,7 +99,7 @@ export const setMissingToZero = (
   if (minYear === undefined || maxYear === undefined) {
     return [[], [], []];
   }
-  const dataAllLevels = [[], [], []];
+  const dataAllLevels = [[], [], []] as { year: number; number: number }[][];
 
   // i is the index of the year.
   // i = 0 corresponds to minYear.
@@ -108,14 +108,11 @@ export const setMissingToZero = (
   for (let year = minYear; year <= maxYear; year++) {
     for (let level = 0; level < 3; level++) {
       // Initialise the array for the current level and year
-      // @ts-expect-error - Ignored to pass ci checks
       dataAllLevels[level][i] = { year: year, number: 0 };
 
       for (let j = 0; j < groupedLevels[level].length; j++) {
         // Iterate over groupedLevels and copy the value to the current level and year
-        // @ts-expect-error - Ignored to pass ci checks
         if (dataAllLevels[level][i].year === groupedLevels[level][j].year) {
-          // @ts-expect-error - Ignored to pass ci checks
           dataAllLevels[level][i].number = groupedLevels[level][j].number;
         }
       }
@@ -126,7 +123,6 @@ export const setMissingToZero = (
   // Reassemble into array
   const chartData: { x: number; y: number }[][] = [0, 1, 2].map((i) => {
     return dataAllLevels[i].map((row) => {
-      // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
       return { x: row.year, y: row.number } as { x: number; y: number };
     });
   });
