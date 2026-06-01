@@ -11,6 +11,7 @@ import {
 } from "../../../helpers/functions/formatMuiChartData";
 import { MuiBarChart } from "../../Charts/MuiBarChart";
 import { MuiLineChart } from "../../Charts/MuiLineChart";
+import { CoveragePopup } from "./CoveragePopup";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -38,6 +39,8 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     registryName,
     coverage,
   } = props;
+
+  const [coveragePopupOpen, setCoveragePopupOpen] = useState(false);
 
   if (data.data === undefined) {
     return <div>No data</div>;
@@ -139,11 +142,21 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
         >
           Zoom
         </Button>
-        {true && (
-          <Button startIcon={<SearchIcon />} onClick={() => null}>
+        {!coverage && (
+          <Button
+            startIcon={<SearchIcon />}
+            onClick={() => {
+              setCoveragePopupOpen(true);
+            }}
+          >
             Dekningsgrad
           </Button>
         )}
+        <CoveragePopup
+          open={coveragePopupOpen}
+          setOpen={setCoveragePopupOpen}
+        />
+
         <Button
           onClick={() => {
             const apiRef =
