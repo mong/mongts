@@ -125,18 +125,24 @@ export default function TreatmentQualityPage() {
               width="100%"
             >
               <Stack direction="row" spacing={3}>
-                <Button onClick={handleMedicalFieldButtonClick}>
-                  Velg fagområde
-                </Button>
+                <div className="flex flex-col text-small font-semibold  text-brand-primary-900">
+                  Fagområde
+                  <Button onClick={handleMedicalFieldButtonClick}>
+                    Velg fagområde
+                  </Button>
+                </div>
                 <MedicalFieldPopup
                   open={medicalFieldPopupOpen}
                   updateRegistries={setSelectedMedicalFields}
                   setOpen={setMedicalFieldPopupOpen}
                   onSubmit={setSelectedMedicalFields}
                 />
-                <Button onClick={handleTreatmentUnitButtonClick}>
-                  Velg behandlingsenheter
-                </Button>
+                <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                  Behandlingsenheter
+                  <Button onClick={handleTreatmentUnitButtonClick}>
+                    Velg behandlingsenheter
+                  </Button>
+                </div>
                 <TreatmentUnitPopup
                   open={treatmentUnitPopupOpen}
                   setOpen={setTreatmentUnitPopupOpen}
@@ -144,23 +150,26 @@ export default function TreatmentQualityPage() {
                   context={selectedTableContext}
                   type={"ind"}
                 />
-                <Dropdown
-                  value={selectedYear.toString()}
-                  onChange={handleYearChange}
-                >
-                  {[
-                    ...Array(numberOfYearOptions)
-                      .keys()
-                      .map((i: number) => {
-                        const year = defaultYear - i;
-                        return (
-                          <MenuItem key={year} value={year}>
-                            {year}
-                          </MenuItem>
-                        );
-                      }),
-                  ]}
-                </Dropdown>
+                <div className="flex flex-col text-small font-semibold  text-brand-primary-900">
+                  År
+                  <Dropdown
+                    value={selectedYear.toString()}
+                    onChange={handleYearChange}
+                  >
+                    {[
+                      ...Array(numberOfYearOptions)
+                        .keys()
+                        .map((i: number) => {
+                          const year = defaultYear - i;
+                          return (
+                            <MenuItem key={year} value={year}>
+                              {year}
+                            </MenuItem>
+                          );
+                        }),
+                    ]}
+                  </Dropdown>
+                </div>
               </Stack>
               <div
                 className="flex items-center justify-center"
