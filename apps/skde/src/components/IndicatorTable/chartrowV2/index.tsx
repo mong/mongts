@@ -11,7 +11,7 @@ import {
 } from "../../../helpers/functions/formatMuiChartData";
 import { MuiBarChart } from "../../Charts/MuiBarChart";
 import { MuiLineChart } from "../../Charts/MuiLineChart";
-import { CoveragePopup } from "./CoveragePopup";
+import { DataQualityPopup } from "./DataQualityPopup";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -113,18 +113,16 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
         alignItems={"end"}
         sx={{ paddingLeft: 4 }}
       >
-        {!coverage && (
-          <Dropdown
-            value={figureType}
-            label="Figurtype"
-            onChange={handleFigureTypeChange}
-          >
-            <MenuItem value={"line"} disabled={numberOfTimePoints === 1}>
-              Tidstrend
-            </MenuItem>
-            <MenuItem value={"bar"}>Enkeltår</MenuItem>
-          </Dropdown>
-        )}
+        <Dropdown
+          value={figureType}
+          label="Figurtype"
+          onChange={handleFigureTypeChange}
+        >
+          <MenuItem value={"line"} disabled={numberOfTimePoints === 1}>
+            Tidstrend
+          </MenuItem>
+          <MenuItem value={"bar"}>Enkeltår</MenuItem>
+        </Dropdown>
         {figureType === "bar" && (
           <Dropdown
             value={barChartType}
@@ -154,7 +152,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             Dekningsgrad
           </Button>
         )}
-        <CoveragePopup
+        <DataQualityPopup
           open={coveragePopupOpen}
           setOpen={setCoveragePopupOpen}
           unitNames={unitNames}
@@ -164,6 +162,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
           treatmentUnitsByLevel={treatmentUnitsByLevel}
           indID={indID}
           registryName={registryName}
+          dataQualityIndId={data.dataQualityIndicatorID}
         />
 
         <Button

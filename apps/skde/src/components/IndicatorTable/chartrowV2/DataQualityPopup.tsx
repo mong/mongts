@@ -9,7 +9,7 @@ import type { UseQueryResult } from "@tanstack/react-query";
 import type { FetchIndicatorParams } from "qmongjs/src/helpers/hooks";
 import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
 import type { Dispatch, SetStateAction } from "react";
-import type { OptsTu } from "types";
+import type { DataPoint, OptsTu } from "types";
 import { ChartRowV2 } from ".";
 
 type CoveragePopupProps = {
@@ -21,10 +21,11 @@ type CoveragePopupProps = {
   year: number;
   treatmentUnitsByLevel: OptsTu[];
   indID: string;
+  dataQualityIndId: string;
   registryName: string;
 };
 
-export const CoveragePopup = (props: CoveragePopupProps) => {
+export const DataQualityPopup = (props: CoveragePopupProps) => {
   const {
     open,
     setOpen,
@@ -34,6 +35,7 @@ export const CoveragePopup = (props: CoveragePopupProps) => {
     year,
     treatmentUnitsByLevel,
     indID,
+    dataQualityIndId,
     registryName,
   } = props;
 
@@ -56,34 +58,71 @@ export const CoveragePopup = (props: CoveragePopupProps) => {
     nested: true,
   });
 
-  if (nestedDataQuery.isFetching) {
-    return (
-      <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
-        <DialogTitle>Dekningsgrad</DialogTitle>
-        <DialogContent>Laster</DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Lukk</Button>
-        </DialogActions>
-      </Dialog>
-    );
+  const LoadingDialog = (
+    <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
+      <DialogTitle>Dekningsgrad</DialogTitle>
+      <DialogContent>Laster</DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose}>Lukk</Button>
+      </DialogActions>
+    </Dialog>
+  );
+
+  const NoDataDialog = (
+    <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
+      <DialogTitle>Dekningsgrad</DialogTitle>
+      <DialogContent>Ingen data</DialogContent>
+      <DialogActions>
+        <Button onClick={handleClose}>Lukk</Button>
+      </DialogActions>
+    </Dialog>
+  );
+
+  // No data
+  if (!dataQualityIndId) {
+    return NoDataDialog;
   }
 
-  // TODO: pick out the correct indicator
-  const indData = nestedDataQuery.data?.[0].indicatorData[0];
+  // Loading
+  if (nestedDataQuery.isFetching) {
+    return LoadingDialog;
+  }
+
+  const regData = nestedDataQuery.data;
+
+  // No data
+  if (!regData) {
+    return NoDataDialog;
+  }
+
+  const indData = regData[0].indicatorData;
+
+  // No data
+  if (!indData) {
+    return NoDataDialog;
+  }
+
+  const dgIndData = indData.filter((row: DataPoint) => {
+    return row.indicatorID === dataQualityIndId;
+  });
+
+  if (!dgIndData[0]) {
+    return NoDataDialog;
+  }
 
   return (
     <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
-      <DialogTitle>Dekningsgrad</DialogTitle>
+      <DialogTitle>Datakvalitet</DialogTitle>
       <DialogContent>
         <ChartRowV2
-          data={indData}
+          data={dgIndData[0]}
           unitNames={unitNames}
           year={year}
           context={context}
           type={type}
           medfield={medfield}
           treatmentUnitsByLevel={treatmentUnitsByLevel}
-          indID={indID}
+          indID={dataQualityIndId}
           registryName={registryName}
           coverage={true}
         />
