@@ -11,7 +11,7 @@ import {
 } from "../../../helpers/functions/formatMuiChartData";
 import { MuiBarChart } from "../../Charts/MuiBarChart";
 import { MuiLineChart } from "../../Charts/MuiLineChart";
-import { CoveragePopup } from "./CoveragePopup";
+import { DataQualityPopup } from "./DataQualityPopup";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -152,9 +152,17 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             Dekningsgrad
           </Button>
         )}
-        <CoveragePopup
+        <DataQualityPopup
           open={coveragePopupOpen}
           setOpen={setCoveragePopupOpen}
+          unitNames={unitNames}
+          year={year}
+          context={context}
+          medfield={medfield}
+          treatmentUnitsByLevel={treatmentUnitsByLevel}
+          indID={indID}
+          registryName={registryName}
+          dataQualityIndId={data.dataQualityIndicatorID}
         />
 
         <Button
