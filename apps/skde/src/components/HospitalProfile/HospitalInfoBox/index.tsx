@@ -23,7 +23,10 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
 
   const { width } = useScreenSize({ debounceTime: 150 });
 
-  const [imgSrc, setImgSrc] = useState<string | null>(null);
+  // Added default, replaces onError useEffect if image for unit is not found
+  const [imgSrc, setImgSrc] = useState<string>(
+    "/img/forsidebilder/Sykehus.jpg",
+  );
 
   useEffect(() => {
     if (selectedTreatmentUnit) {
@@ -53,7 +56,6 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
             >
               {unitNames && (
                 <Image
-                  // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
                   src={imgSrc}
                   onError={() => setImgSrc("/img/forsidebilder/Sykehus.jpg")}
                   alt={"Logo"}
