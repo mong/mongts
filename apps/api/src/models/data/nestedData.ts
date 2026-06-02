@@ -37,6 +37,7 @@ export const indTable = (filter?: Filter): Promise<IndicatorData[]> =>
       "name as sortingName",
       "sformat as format",
       "registry_id as registerID",
+      "dg_id as dataQualityIndicatorID",
     )
     .from("ind")
     .where("include", 1)

@@ -128,6 +128,7 @@ export type IndicatorInfo = {
   sortingName: string | null;
   format: string | null;
   registerID: number;
+  dataQualityIndicatorID: string;
 };
 
 export type IndicatorData = IndicatorInfo & { data?: DataPoint[] };
