@@ -48,15 +48,19 @@ export const metadata: Metadata = {
 const plus_jakarta_sans = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
+type Languages = "en" | "no";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
   const { pathname } = useRouter();
-  const lang =
+  const pathLang =
     pathname.includes("/en/") || pathname.endsWith("/en") ? "en" : "no";
+
   useEffect(() => {
-    document.documentElement.lang = lang;
-  }, [lang]);
+    document.documentElement.lang = pathLang;
+  }, [pathLang]);
+
+  const [lang, setLang] = useState<Languages>(pathLang);
 
   LicenseInfo.setLicenseKey(process.env.NEXT_PUBLIC_MUI_X_LICENSE_KEY || "");
 
@@ -66,7 +70,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     >
       <SkdeProvider>
         <MainLayout>
-          <Header />
+          <Header
+            currentLang={lang}
+            onLangChange={(lang) => setLang(lang as Languages)}
+          />
           <Breadcrumbs toolName="Material-UI" autoByPath />
           <PageLayout>
             <QueryParamProvider adapter={NextAdapter}>
@@ -76,7 +83,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               </QueryClientProvider>
             </QueryParamProvider>
           </PageLayout>
-          <Footer />
+          <Footer lang={lang} />
         </MainLayout>
       </SkdeProvider>
     </main>
