@@ -71,7 +71,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <SkdeProvider>
         <MainLayout>
           <Header
-            currentLang={lang}
+            lang={lang}
             onLangChange={(lang) => setLang(lang as Languages)}
           />
           <Breadcrumbs toolName="Material-UI" autoByPath />
