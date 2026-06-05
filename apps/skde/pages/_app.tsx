@@ -8,7 +8,16 @@ import { useEffect, useState } from "react";
 import { QueryParamProvider } from "use-query-params";
 import "../app/global.css";
 import "@mong/material-ui/index.css"; //Denne må nederst
-import { PageContent, SkdePagesProvider } from "@mong/material-ui";
+import {
+  Breadcrumbs,
+  Footer,
+  Header,
+  MainLayout,
+  PageContent,
+  PageLayout,
+  SkdePagesProvider,
+  SkdeProvider,
+} from "@mong/material-ui";
 import type { AppProps } from "next/app";
 import "@mong/material-ui/index.css";
 
@@ -55,14 +64,21 @@ function MyApp({ Component, pageProps }: AppProps) {
     <main
       className={`min-h-full  flex flex-col ${plus_jakarta_sans.className} ${roboto.variable} ${robotoSans.variable} ${robotoMono.variable} antialiased`}
     >
-      <SkdePagesProvider pageProps={pageProps}>
-        <QueryParamProvider adapter={NextAdapter}>
-          <QueryClientProvider client={queryClient}>
-            <Component {...pageProps} />
-            <ReactQueryDevtools initialIsOpen={false} />
-          </QueryClientProvider>
-        </QueryParamProvider>
-      </SkdePagesProvider>
+      <SkdeProvider>
+        <MainLayout>
+          <Header />
+          <Breadcrumbs toolName="Material-UI" autoByPath />
+          <PageLayout>
+            <QueryParamProvider adapter={NextAdapter}>
+              <QueryClientProvider client={queryClient}>
+                <Component {...pageProps} />
+                <ReactQueryDevtools initialIsOpen={false} />
+              </QueryClientProvider>
+            </QueryParamProvider>
+          </PageLayout>
+          <Footer />
+        </MainLayout>
+      </SkdeProvider>
     </main>
   );
 }
