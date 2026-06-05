@@ -110,17 +110,24 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
       treatmentYear: year,
     };
 
-    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-    const nestedDataQuery: UseQueryResult<unknown, unknown> = useIndicatorQuery(
-      {
+    const nestedDataQuery: UseQueryResult<IndicatorData[], unknown> =
+      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+      useIndicatorQuery({
         ...queryParams,
         nested: true,
-      },
-    );
-    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-    if (nestedDataQuery.isFetching || nestedDataQuery.data.length === 0) {
-      return null;
+      });
+
+    if (nestedDataQuery.isFetching) {
+      return <Typography>Henter data</Typography>;
     }
+
+    if (
+      nestedDataQuery.data === undefined ||
+      nestedDataQuery.data.length === 0
+    ) {
+      return <Typography>Ingen data</Typography>;
+    }
+
     // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
     const newDataBlock = nestedDataQuery.data[0] as RegisterData;
 
@@ -129,7 +136,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
     );
 
     if (!newDataSelection) {
-      return null;
+      return <Typography>Ingen data</Typography>;
     }
 
     // Sorter etter måloppnåelse
