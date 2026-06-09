@@ -8,7 +8,16 @@ import { useEffect, useState } from "react";
 import { QueryParamProvider } from "use-query-params";
 import "../app/global.css";
 import "@mong/material-ui/index.css"; //Denne må nederst
-import { PageContent, SkdePagesProvider } from "@mong/material-ui";
+import {
+  Breadcrumbs,
+  Footer,
+  Header,
+  MainLayout,
+  PageContent,
+  PageLayout,
+  SkdePagesProvider,
+  SkdeProvider,
+} from "@mong/material-ui";
 import type { AppProps } from "next/app";
 import "@mong/material-ui/index.css";
 
@@ -39,15 +48,19 @@ export const metadata: Metadata = {
 const plus_jakarta_sans = Plus_Jakarta_Sans({
   subsets: ["latin"],
 });
+type Languages = "en" | "no";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
   const { pathname } = useRouter();
-  const lang =
+  const pathLang =
     pathname.includes("/en/") || pathname.endsWith("/en") ? "en" : "no";
+
   useEffect(() => {
-    document.documentElement.lang = lang;
-  }, [lang]);
+    document.documentElement.lang = pathLang;
+  }, [pathLang]);
+
+  const [lang, setLang] = useState<Languages>(pathLang);
 
   LicenseInfo.setLicenseKey(process.env.NEXT_PUBLIC_MUI_X_LICENSE_KEY || "");
 
@@ -55,14 +68,24 @@ function MyApp({ Component, pageProps }: AppProps) {
     <main
       className={`min-h-full  flex flex-col ${plus_jakarta_sans.className} ${roboto.variable} ${robotoSans.variable} ${robotoMono.variable} antialiased`}
     >
-      <SkdePagesProvider pageProps={pageProps}>
-        <QueryParamProvider adapter={NextAdapter}>
-          <QueryClientProvider client={queryClient}>
-            <Component {...pageProps} />
-            <ReactQueryDevtools initialIsOpen={false} />
-          </QueryClientProvider>
-        </QueryParamProvider>
-      </SkdePagesProvider>
+      <SkdeProvider>
+        <MainLayout>
+          <Header
+            lang={lang}
+            onLangChange={(lang) => setLang(lang as Languages)}
+          />
+          <Breadcrumbs toolName="Material-UI" autoByPath />
+          <PageLayout>
+            <QueryParamProvider adapter={NextAdapter}>
+              <QueryClientProvider client={queryClient}>
+                <Component {...pageProps} />
+                <ReactQueryDevtools initialIsOpen={false} />
+              </QueryClientProvider>
+            </QueryParamProvider>
+          </PageLayout>
+          <Footer lang={lang} />
+        </MainLayout>
+      </SkdeProvider>
     </main>
   );
 }
