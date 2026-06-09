@@ -40,6 +40,7 @@ type IndicatorRowProps = {
   chartColours: string[];
   treatmentUnitsByLevel: OptsTu[];
   residentData: boolean;
+  showDGButton?: boolean;
 };
 
 export const IndicatorRow = (props: IndicatorRowProps) => {
@@ -57,6 +58,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
     medfield,
     registryName,
     residentData,
+    showDGButton,
   } = props;
 
   const remarkPlugins = [remarkGfm];
@@ -205,6 +207,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
                       treatmentUnitsByLevel={treatmentUnitsByLevel}
                       indID={rowID}
                       registryName={registryName}
+                      showDGButton={showDGButton}
                     />
                   </td>
                 </tr>
