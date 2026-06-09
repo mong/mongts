@@ -13,13 +13,13 @@ import {
 import Grid from "@mui/material/Grid";
 import type { UseQueryResult } from "@tanstack/react-query";
 import {
-  defaultYear,
   skdeTheme,
   useMedicalFieldsQuery,
   useRegisterNamesQuery,
   useUnitNamesQuery,
 } from "qmongjs";
 import { useState } from "react";
+import { defaultYear } from "../../src/app_config";
 import type { FilterSettingsValue } from "../../src/components/FilterMenu/FilterSettingsContext";
 import {
   type FilterSettingsAction,
