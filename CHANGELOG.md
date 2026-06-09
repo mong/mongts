@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/mong/mongts/compare/v1.3.0...v1.4.0) (2026-06-09)
+
+
+### Miscellaneous Chores
+
+* release 1.4.0 ([efbefad](https://github.com/mong/mongts/commit/efbefadc0f7f1de00c47289ad8a001a52518a69f))
+
 ## [1.3.0](https://github.com/mong/mongts/compare/v1.2.3...v1.3.0) (2026-06-01)
 
 
