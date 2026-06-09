@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.4.1](https://github.com/mong/mongts/compare/v1.4.0...v1.4.1) (2026-06-09)
+
+
+### Bug Fixes
+
+* bruk riktig defaultYear ([#4709](https://github.com/mong/mongts/issues/4709)) ([fd4086a](https://github.com/mong/mongts/commit/fd4086a417b2df0fd398865c244e28e7845c0c87))
+
+
+### Miscellaneous Chores
+
+* release 1.4.1 ([4dc382c](https://github.com/mong/mongts/commit/4dc382cd5079eb59b4d4962da7ba6c30c96f580a))
+
 ## [1.4.0](https://github.com/mong/mongts/compare/v1.3.0...v1.4.0) (2026-06-09)
 
 
