@@ -300,11 +300,8 @@ importers:
         specifier: 19.2.6
         version: 19.2.6(react@19.2.6)
       types:
-        specifier: '*'
-        version: 0.1.1
-      typescript:
-        specifier: 5.9.3
-        version: 5.9.3
+        specifier: workspace:*
+        version: link:../types
       use-query-params:
         specifier: 2.2.2
         version: 2.2.2(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -5177,10 +5174,6 @@ packages:
 
   typedarray-to-buffer@3.1.5:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
-
-  types@0.1.1:
-    resolution: {integrity: sha512-JuntZtJj4MKLE9x/XBs7IjsznYhzETwr34pw3XJTKvgYtAMdeMG+o8x8U85E5Lm6eCPa1DdOdGVsHMwq4ZnZAg==}
-    engines: {node: '>= 0.6.0'}
 
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
@@ -10817,8 +10810,6 @@ snapshots:
   typedarray-to-buffer@3.1.5:
     dependencies:
       is-typedarray: 1.0.0
-
-  types@0.1.1: {}
 
   typescript@5.9.3: {}
 
