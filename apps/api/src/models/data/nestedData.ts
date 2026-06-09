@@ -1,7 +1,7 @@
-import { Knex } from "knex";
+import type { Knex } from "knex";
+import type { DataPoint, IndicatorData, Registry } from "types";
 import db from "../../db";
-import { Filter } from ".";
-import { IndicatorData, Registry, DataPoint } from "types";
+import type { Filter } from ".";
 
 export const aggData = (filter?: Filter): Promise<DataPoint[]> =>
   db
@@ -37,6 +37,7 @@ export const indTable = (filter?: Filter): Promise<IndicatorData[]> =>
       "name as sortingName",
       "sformat as format",
       "registry_id as registerID",
+      "dg_id as dataQualityIndicatorID",
     )
     .from("ind")
     .where("include", 1)

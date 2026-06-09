@@ -1,6 +1,7 @@
+import { useChartId, useDrawingArea, useXScale } from "@mui/x-charts";
+import { AnimatedLine, type AnimatedLineProps } from "@mui/x-charts/LineChart";
 import React from "react";
-import { AnimatedLine, AnimatedLineProps } from "@mui/x-charts/LineChart";
-import { useXScale, useDrawingArea, useChartId } from "@mui/x-charts";
+
 // Hentet fra https://mui.com/x/react-charts/line-demo/#line-with-forecast
 interface CustomAnimatedLineProps extends AnimatedLineProps {
   limit?: number;

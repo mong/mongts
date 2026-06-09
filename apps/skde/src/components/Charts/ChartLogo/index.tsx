@@ -1,4 +1,5 @@
 import { Stack } from "@mui/material";
+import Image from "next/image";
 
 type LineChartLogoProps = {
   width: number;
@@ -14,7 +15,12 @@ export const ChartLogo = (props: LineChartLogoProps) => {
       width="100%"
       sx={{ justifyContent: "flex-end", marginRight: marginRight }}
     >
-      <img src="/img/logos/logo-skde.svg" width={width} />
+      <Image
+        src="/img/logos/logo-skde.svg"
+        width={width}
+        height={width * 0.233}
+        alt="SKDE Logo"
+      />
     </Stack>
   );
 };

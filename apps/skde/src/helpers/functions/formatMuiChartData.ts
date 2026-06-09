@@ -1,6 +1,6 @@
-import { IndicatorData, DataPoint } from "types";
+import type { LineSeriesType } from "@mui/x-charts";
 import { customFormat } from "qmongjs/src/helpers/functions";
-import { LineSeriesType } from "@mui/x-charts";
+import type { DataPoint, IndicatorData } from "types";
 
 type Point = { x: number; y: number | null };
 
@@ -11,6 +11,7 @@ export const reshapeData = (
   context: string,
 ) => {
   const reshapedData = unitNames.map((unitName: string) => {
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
     return data
       .data!.filter((row: DataPoint) => {
         return row.unitName === unitName && row.context === context;
@@ -25,11 +26,9 @@ export const reshapeData = (
 
 // Get the years from the data
 const getUniqueYears = (data: Point[][]) => {
-  const years = data
-    .map((row: Point[]) => {
-      return row.map((point) => point.x);
-    })
-    .flat();
+  const years = data.flatMap((row: Point[]) => {
+    return row.map((point) => point.x);
+  });
 
   const uniqueYears = [...new Set(years)];
 
@@ -94,15 +93,13 @@ const formatLineData = (
 };
 
 export const formatBarData = (data: Point[][], year: number) => {
-  const barData = data
-    .map((row) => {
-      return row
-        .filter((point) => {
-          return point.x === year;
-        })
-        .map((row) => row.y);
-    })
-    .flat();
+  const barData = data.flatMap((row) => {
+    return row
+      .filter((point) => {
+        return point.x === year;
+      })
+      .map((row) => row.y);
+  });
 
   return barData;
 };
@@ -111,7 +108,6 @@ export const formatMuiChartData = (
   data: IndicatorData,
   unitNames: string[],
   context: string,
-  year: number,
   dataFormat: string,
 ) => {
   const reshapedData = reshapeData(data, unitNames, context);

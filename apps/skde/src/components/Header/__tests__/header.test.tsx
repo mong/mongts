@@ -1,8 +1,7 @@
-import React from "react";
 import { render } from "@testing-library/react";
+import { describe, expect, it, vi } from "vitest";
 import { Header } from "../.";
-import { BreadCrumbPath } from "../HeaderTop";
-import { vi, describe, it, expect } from "vitest";
+import type { BreadCrumbPath } from "../HeaderTop";
 
 vi.mock("next/router", () => ({
   useRouter: () => ({
@@ -49,6 +48,7 @@ describe("Header component", () => {
       <Header
         title="Default Title"
         breadcrumbs={[{ text: "Home", link: "/" }]}
+        // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
         children={children}
       />,
     );

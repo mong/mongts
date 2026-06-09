@@ -1,48 +1,51 @@
-import { useEffect, useState } from "react";
-import { GetStaticProps, GetStaticPaths } from "next";
+import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import {
   Box,
   CssBaseline,
   Divider,
   IconButton,
   Link,
+  Stack,
   ThemeProvider,
   Typography,
   useMediaQuery,
-  Stack,
 } from "@mui/material";
-
-import ChevronLeftRoundedIcon from "@mui/icons-material/ChevronLeftRounded";
 import Grid from "@mui/material/Grid";
+import type { GetStaticPaths, GetStaticProps } from "next";
 import {
-  defaultYear,
   defaultReviewYear,
-  skdeTheme,
+  defaultYear,
   fetchRegisterNames,
+  skdeTheme,
   useRegistryRankQuery,
 } from "qmongjs";
-import { FilterSettingsAction } from "../../src/components/FilterMenu/FilterSettingsReducer";
-import { FilterSettingsValue } from "../../src/components/FilterMenu/FilterSettingsContext";
-import { TreatmentQualityFilterMenu } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
-import { levelKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
-import { tableContextKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
-import { treatmentUnitsKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
-import { yearKey } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
-import { FilterSettingsActionType } from "../../src/components/FilterMenu/FilterSettingsReducer";
-import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
-import { FilterDrawer } from "../../src/components/TreatmentQuality";
-import { Footer } from "../../src/components/Footer";
-import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
-import { RegisterName, RegistryRank } from "types";
-import { valueOrDefault } from "../../src/utils/valueOrDefault";
-import { LayoutHead } from "../../src/components/LayoutHead";
+import { useEffect, useState } from "react";
+import type { RegisterName, RegistryRank } from "types";
+import type { FilterSettingsValue } from "../../src/components/FilterMenu/FilterSettingsContext";
 import {
-  ColourMap,
-  updateColourMap,
+  type FilterSettingsAction,
+  FilterSettingsActionType,
+} from "../../src/components/FilterMenu/FilterSettingsReducer";
+import {
+  levelKey,
+  TreatmentQualityFilterMenu,
+  tableContextKey,
+  treatmentUnitsKey,
+  yearKey,
+} from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
+import { Footer } from "../../src/components/Footer";
+import { IndicatorTable } from "../../src/components/IndicatorTable/Indicatortable";
+import { LayoutHead } from "../../src/components/LayoutHead";
+import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
+import { FilterDrawer } from "../../src/components/TreatmentQuality";
+import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
+import {
+  type ColourMap,
   getSortedList,
+  updateColourMap,
 } from "../../src/helpers/functions/chartColours";
 import checkParamsReady from "../../src/utils/checkParamsReady";
-import { IndicatorTable } from "../../src/components/IndicatorTable/Indicatortable";
+import { valueOrDefault } from "../../src/utils/valueOrDefault";
 
 export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const isXxlScreen = useMediaQuery(skdeTheme.breakpoints.up("xxl"));
@@ -82,12 +85,11 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     defaultTreatmentUnits,
   );
 
-  let registryRank = "NA";
-  // eslint-disable-next-line no-undef
-  if (!process.env.NEXT_PUBLIC_VERIFY) {
-    // Fetch the registry's stage and level
-    const registryRankQuery = useRegistryRankQuery(defaultReviewYear);
+  // Fetch the registry's stage and level
+  const registryRankQuery = useRegistryRankQuery(defaultReviewYear);
 
+  let registryRank = "NA";
+  if (!process.env.NEXT_PUBLIC_VERIFY) {
     if (registryRankQuery.isFetched) {
       // Fetch the registry's stage and level
       const registryRankData = registryRankQuery.data as RegistryRank[];
@@ -127,7 +129,10 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     );
 
     setSelectedYear(
-      parseInt(filterSettings.get(yearKey)[0].value ?? defaultYear.toString()),
+      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+      parseInt(
+        filterSettings.get(yearKey)?.[0]?.value ?? defaultYear.toString(),
+      ),
     );
 
     setSelectedLevel(filterSettings.get(levelKey)?.[0]?.value ?? undefined);
@@ -135,13 +140,13 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
     setSelectedMedicalFields([registryName]);
 
     setSelectedTreatmentUnits(
-      filterSettings.get(treatmentUnitsKey).map((value) => value.value),
+      filterSettings.get(treatmentUnitsKey)?.map((value) => value.value) ?? [],
     );
 
     updateColourMap(
       colourMap,
       setColourMap,
-      filterSettings.get(treatmentUnitsKey).map((value) => value.value),
+      filterSettings.get(treatmentUnitsKey)?.map((value) => value.value) ?? [],
     );
   };
 
@@ -152,6 +157,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
       valueOrDefault(tableContextKey, newFilterSettings) as string,
     );
     setSelectedYear(
+      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
       parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
     );
     setSelectedLevel(
@@ -167,9 +173,24 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
    */
   const handleFilterChanged = (
     newFilterSettings: { map: Map<string, FilterSettingsValue[]> },
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
     oldFilterSettings: { map: Map<string, FilterSettingsValue[]> },
     action: FilterSettingsAction,
   ): void => {
+    if (action.type === FilterSettingsActionType.RESET_SELECTIONS) {
+      setAllSelected(newFilterSettings);
+      updateColourMap(
+        colourMap,
+        setColourMap,
+        valueOrDefault(treatmentUnitsKey, newFilterSettings) as string[],
+      );
+      return;
+    }
+
+    if (!action.sectionSetting) {
+      return;
+    }
+
     switch (action.sectionSetting.key) {
       case tableContextKey: {
         setSelectedTableContext(
@@ -179,6 +200,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
       }
       case yearKey: {
         setSelectedYear(
+          // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
           parseInt(valueOrDefault(yearKey, newFilterSettings) as string),
         );
         break;
@@ -199,10 +221,6 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
         break;
     }
 
-    if (action.type === FilterSettingsActionType.RESET_SELECTIONS) {
-      setAllSelected(newFilterSettings);
-    }
-
     updateColourMap(
       colourMap,
       setColourMap,
@@ -217,26 +235,23 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
   const subtitle = (
     <>
       Resultater fra {registryInfo[0].full_name}.{" "}
-      {
-        // eslint-disable-next-line no-undef
-        !process.env.NEXT_PUBLIC_VERIFY && (
-          <>
-            Se{" "}
-            <Link href={registryInfo[0].url} target="_blank" rel="noopener">
-              kvalitetsregistre.no
-            </Link>{" "}
-            for mer informasjon.{" "}
-            <Link
-              href="https://www.kvalitetsregistre.no/registerdrift/stadieinndeling"
-              target="_blank"
-              rel="noopener"
-            >
-              Stadium og nivå
-            </Link>{" "}
-            for {defaultReviewYear}: <b>{registryRank}</b>
-          </>
-        )
-      }
+      {!process.env.NEXT_PUBLIC_VERIFY && (
+        <>
+          Se{" "}
+          <Link href={registryInfo[0].url} target="_blank" rel="noopener">
+            kvalitetsregistre.no
+          </Link>{" "}
+          for mer informasjon.{" "}
+          <Link
+            href="https://www.kvalitetsregistre.no/registerdrift/stadieinndeling"
+            target="_blank"
+            rel="noopener"
+          >
+            Stadium og nivå
+          </Link>{" "}
+          for {defaultReviewYear}: <b>{registryRank}</b>
+        </>
+      )}
     </>
   );
 
@@ -262,7 +277,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
             <Grid
               size={{ xxl: 4, xxml: 3, xxxl: 2 }}
               className="menu-wrapper"
-              data-testid={"tu_header_" + selectedTreatmentUnits}
+              data-testid={`tu_header_${selectedTreatmentUnits}`}
             >
               <Box
                 sx={{
@@ -306,7 +321,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                       )}
                       year={selectedYear}
                       type="ind"
-                      levels={selectedLevel}
+                      levels={selectedLevel || ""}
                       medfields={selectedMedicalFields}
                       chartColours={getSortedList(
                         colourMap,
@@ -324,7 +339,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                       )}
                       year={selectedYear}
                       type="dg"
-                      levels={selectedLevel}
+                      levels={selectedLevel || ""}
                       medfields={selectedMedicalFields}
                       chartColours={getSortedList(
                         colourMap,
@@ -334,6 +349,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
                     />
                   </Stack>
                 ) : (
+                  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
                   <></>
                 )}
               </Grid>

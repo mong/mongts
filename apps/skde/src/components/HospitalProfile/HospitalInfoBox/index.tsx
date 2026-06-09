@@ -1,12 +1,12 @@
-import { ItemBox } from "../HospitalProfileStyles";
+import { Link, Stack, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import { Stack, Typography, Link } from "@mui/material";
-import { ArrowLink } from "../../ArrowLink";
-import { getUnitFullName } from "qmongjs";
-import { NestedTreatmentUnitName, OptsTu } from "types";
 import { useScreenSize } from "@visx/responsive";
-import { breakpoints } from "qmongjs";
+import Image from "next/image";
+import { breakpoints, getUnitFullName } from "qmongjs";
 import { useEffect, useState } from "react";
+import type { NestedTreatmentUnitName, OptsTu } from "types";
+import { ArrowLink } from "../../ArrowLink";
+import { ItemBox } from "../HospitalProfileStyles";
 
 type HospitalInfoBoxProps = {
   boxHeight: number;
@@ -23,7 +23,10 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
 
   const { width } = useScreenSize({ debounceTime: 150 });
 
-  const [imgSrc, setImgSrc] = useState<string | null>(null);
+  // Added default, replaces onError useEffect if image for unit is not found
+  const [imgSrc, setImgSrc] = useState<string>(
+    "/img/forsidebilder/Sykehus.jpg",
+  );
 
   useEffect(() => {
     if (selectedTreatmentUnit) {
@@ -52,7 +55,7 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
               }}
             >
               {unitNames && (
-                <img
+                <Image
                   src={imgSrc}
                   onError={() => setImgSrc("/img/forsidebilder/Sykehus.jpg")}
                   alt={"Logo"}
@@ -83,10 +86,12 @@ export const HospitalInfoBox = (props: HospitalInfoBoxProps) => {
                 externalLink={true}
                 href={unitUrl}
                 fontSize="large"
-                text={getUnitFullName(
-                  unitNames.nestedUnitNames,
-                  selectedTreatmentUnit,
-                )}
+                text={
+                  getUnitFullName(
+                    unitNames.nestedUnitNames,
+                    selectedTreatmentUnit,
+                  ) || ""
+                }
               />
             ) : (
               <Typography variant="h5">

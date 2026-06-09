@@ -1,2 +1,2 @@
 export { HospitalInfoBox } from "./HospitalInfoBox/index";
-export { lineChartTheme, ItemBox } from "./HospitalProfileStyles/index";
+export { ItemBox, lineChartTheme } from "./HospitalProfileStyles/index";

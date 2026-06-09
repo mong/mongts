@@ -1,22 +1,17 @@
-import { useState } from "react";
-import { IndicatorData, OptsTu } from "types";
-import {
-  Select,
-  FormControl,
-  InputLabel,
-  SelectChangeEvent,
-  MenuItem,
-  Box,
-  Stack,
-  Button,
-} from "@mui/material";
-import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
-import { MuiLineChart } from "../../Charts/MuiLineChart";
-import { MuiBarChart } from "../../Charts/MuiBarChart";
-import { formatMuiChartData } from "../../../helpers/functions/formatMuiChartData";
-import { DataPoint } from "types";
+import { Button, Dropdown } from "@mong/material-ui";
+import SearchIcon from "@mui/icons-material/Search";
+import { Box, MenuItem, type SelectChangeEvent, Stack } from "@mui/material";
 import { useChartProApiRef } from "@mui/x-charts-pro";
-import { makeOnBeforeExport } from "../../../helpers/functions/formatMuiChartData";
+import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
+import { useState } from "react";
+import type { DataPoint, IndicatorData, OptsTu } from "types";
+import {
+  formatMuiChartData,
+  makeOnBeforeExport,
+} from "../../../helpers/functions/formatMuiChartData";
+import { MuiBarChart } from "../../Charts/MuiBarChart";
+import { MuiLineChart } from "../../Charts/MuiLineChart";
+import { DataQualityPopup } from "./DataQualityPopup";
 
 type chartRowV2Props = {
   data: IndicatorData;
@@ -28,6 +23,7 @@ type chartRowV2Props = {
   treatmentUnitsByLevel: OptsTu[];
   indID: string;
   registryName: string;
+  coverage?: boolean;
 };
 
 export const ChartRowV2 = (props: chartRowV2Props) => {
@@ -41,7 +37,10 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     medfield,
     indID,
     registryName,
+    coverage,
   } = props;
+
+  const [coveragePopupOpen, setCoveragePopupOpen] = useState(false);
 
   if (data.data === undefined) {
     return <div>No data</div>;
@@ -49,6 +48,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
 
   const numberOfTimePointsArray = unitNames.map(
     (unitName: string) =>
+      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
       data.data!.filter((point: DataPoint) => point.unitName === unitName)
         .length,
   );
@@ -56,10 +56,13 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   const numberOfTimePoints = Math.max(...numberOfTimePointsArray);
 
   // States
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const [figureType, setFigureType] = useState(
     numberOfTimePoints > 1 ? "line" : "bar",
   );
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const [barChartType, setBarChartType] = useState("selected");
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const [zoom, setZoom] = useState<boolean>(false);
 
   // Callback dunctions for dropdown menus
@@ -70,8 +73,9 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   const handleFigureTypeChange = (event: SelectChangeEvent) => {
     setFigureType(event.target.value as string);
   };
-
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const lineChartApiRef = useChartProApiRef<"line">();
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const barChartApiRef = useChartProApiRef<"bar">();
 
   const figureHeight = 650;
@@ -85,6 +89,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     unitNames,
     context,
     year,
+    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
     dataFormat,
   );
 
@@ -102,56 +107,76 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
 
   return (
     <Box>
-      <Stack direction={"row"} spacing={2} sx={{ paddingLeft: 4 }}>
-        <FormControl sx={{ width: "10rem" }}>
-          <InputLabel>Figurtype</InputLabel>
-          <Select
-            value={figureType}
-            label="Figurtype"
-            onChange={handleFigureTypeChange}
-          >
-            <MenuItem value={"line"} disabled={numberOfTimePoints === 1}>
-              Tidstrend
-            </MenuItem>
-            <MenuItem value={"bar"}>Enkeltår</MenuItem>
-          </Select>
-        </FormControl>
+      <Stack
+        direction={"row"}
+        spacing={2}
+        alignItems={"end"}
+        sx={{ paddingLeft: 4 }}
+      >
+        <Dropdown
+          value={figureType}
+          label="Figurtype"
+          onChange={handleFigureTypeChange}
+        >
+          <MenuItem value={"line"} disabled={numberOfTimePoints === 1}>
+            Tidstrend
+          </MenuItem>
+          <MenuItem value={"bar"}>Enkeltår</MenuItem>
+        </Dropdown>
         {figureType === "bar" && (
-          <FormControl sx={{ width: "15rem" }}>
-            <InputLabel>Enheter</InputLabel>
-            <Select
-              value={barChartType}
-              label="Enheter"
-              onChange={handleBarChartTypeChange}
-            >
-              <MenuItem value={"selected"}>Valgte enheter</MenuItem>
-              <MenuItem value={"rhf"}>Regioner</MenuItem>
-              <MenuItem value={"hf"}>Helseforetak</MenuItem>
-              <MenuItem value={"hospital"}>Sykehus</MenuItem>
-            </Select>
-          </FormControl>
+          <Dropdown
+            value={barChartType}
+            label="Enheter"
+            onChange={handleBarChartTypeChange}
+          >
+            <MenuItem value={"selected"}>Valgte enheter</MenuItem>
+            <MenuItem value={"rhf"}>Regioner</MenuItem>
+            <MenuItem value={"hf"}>Helseforetak</MenuItem>
+            <MenuItem value={"hospital"}>Sykehus</MenuItem>
+          </Dropdown>
         )}
         <Button
-          variant="outlined"
           onClick={() => {
             setZoom(!zoom);
           }}
         >
           Zoom
         </Button>
+        {!coverage && (
+          <Button
+            startIcon={<SearchIcon />}
+            onClick={() => {
+              setCoveragePopupOpen(true);
+            }}
+          >
+            Dekningsgrad
+          </Button>
+        )}
+        <DataQualityPopup
+          open={coveragePopupOpen}
+          setOpen={setCoveragePopupOpen}
+          unitNames={unitNames}
+          year={year}
+          context={context}
+          medfield={medfield}
+          treatmentUnitsByLevel={treatmentUnitsByLevel}
+          indID={indID}
+          registryName={registryName}
+          dataQualityIndId={data.dataQualityIndicatorID}
+        />
+
         <Button
           onClick={() => {
             const apiRef =
               figureType === "line" ? lineChartApiRef : barChartApiRef;
+            // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
             apiRef.current!.exportAsImage({
               onBeforeExport: makeOnBeforeExport(
-                data.indicatorTitle,
+                data.indicatorTitle || "",
                 registryName,
               ),
             });
           }}
-          variant="outlined"
-          sx={{ marginLeft: "90%" }}
         >
           Last ned
         </Button>
@@ -167,6 +192,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
           alignItems: "center",
         }}
       >
+        {/* biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future */}
         {figureType == "line" ? (
           <MuiLineChart
             data={data}

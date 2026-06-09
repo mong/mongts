@@ -1,6 +1,6 @@
-import { Knex } from "knex";
+import type { Knex } from "knex";
 import db from "../../db";
-import { Filter } from ".";
+import type { Filter } from ".";
 
 export const selectionYearsModel = (
   filter: Filter,

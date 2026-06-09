@@ -19,10 +19,12 @@ yarn start # start opp api på http://localhost:4000, som qmongjs kan bruke
 
 ## Kjøre Dockerfile lokalt
 
-Dette gjøres på roten av repoet.
+> **Viktig:** Bygget må kjøres fra roten av repoet, ikke fra `apps/api/`.
+> Dockerfilen kopierer workspace-pakkene direkte fra monorepoet, så den må se
+> både `apps/api/` og `packages/types/` i build context.
 
 ```sh
-docker build -t api -f apps/api/Dockerfile .
+DOCKER_BUILDKIT=1 docker build -t api -f apps/api/Dockerfile .
 docker run -e ORIGIN="somestring" -p 3030:80 api # Kjører ikke hvis ORIGIN ikke defineres som en miljøvariabel
 ```
 

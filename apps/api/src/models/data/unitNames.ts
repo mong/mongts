@@ -1,7 +1,7 @@
-import { Knex } from "knex";
+import type { Knex } from "knex";
+import type { TuName } from "types";
 import db from "../../db";
-import { Filter } from ".";
-import { TuName } from "types";
+import type { Filter } from ".";
 
 export const distinctUnitNamesRegister = (
   filter: Filter,

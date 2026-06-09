@@ -1,13 +1,13 @@
-import { PropsWithChildren } from "react";
-import Checkbox from "@mui/material/Checkbox";
-import { TreeItem } from "@mui/x-tree-view/TreeItem";
-import { FilterSettingsValue } from "./FilterSettingsContext";
-import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
-import RadioButtonUncheckedRoundedIcon from "@mui/icons-material/RadioButtonUncheckedRounded";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
-import Box from "@mui/system/Box";
+import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
+import RadioButtonUncheckedRoundedIcon from "@mui/icons-material/RadioButtonUncheckedRounded";
 import { Typography } from "@mui/material";
+import Checkbox from "@mui/material/Checkbox";
+import Box from "@mui/system/Box";
+import { TreeItem } from "@mui/x-tree-view/TreeItem";
+import type { PropsWithChildren } from "react";
+import type { FilterSettingsValue } from "./FilterSettingsContext";
 
 /**
  * Props for the TreeViewFilterSectionItem component, which extends the

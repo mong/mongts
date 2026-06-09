@@ -1,12 +1,12 @@
-export * from "./unitNames";
-export * from "./indicators";
 export * from "./description";
-export * from "./selectionyears";
-export { registryRankModel } from "./registryRank";
+export * from "./indicators";
+export { aggData, indTable, medfieldTable, regTable } from "./nestedData";
 export { registryEvaluationModel } from "./registryEvaluation";
-export { registryScoresModel } from "./registryScores";
+export { registryRankModel } from "./registryRank";
 export { registryRequirementsModel } from "./registryRequirements";
-export { aggData, indTable, regTable, medfieldTable } from "./nestedData";
+export { registryScoresModel } from "./registryScores";
+export * from "./selectionyears";
+export * from "./unitNames";
 
 export interface Filter {
   unit_level?: string;

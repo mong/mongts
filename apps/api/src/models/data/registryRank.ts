@@ -1,6 +1,6 @@
+import type { RegistryRank } from "types";
 import db from "../../db";
-import { RegistryRank } from "types";
-import { Filter } from ".";
+import type { Filter } from ".";
 
 export const registryRankModel = (filter?: Filter): Promise<RegistryRank[]> =>
   db

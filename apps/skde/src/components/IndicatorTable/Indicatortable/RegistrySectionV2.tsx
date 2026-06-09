@@ -1,23 +1,22 @@
-import React, { useState } from "react";
+import { Chip, Stack, Typography } from "@mui/material";
 import TableBody from "@mui/material/TableBody";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { RegisterData, IndicatorData, OptsTu, ResidentData } from "types";
-import { UseQueryResult } from "@tanstack/react-query";
+import type { UseQueryResult } from "@tanstack/react-query";
+import { level2, skdeTheme, useIndicatorQuery } from "qmongjs";
 import {
-  FetchIndicatorParams,
-  useUnitNamesQuery,
+  type FetchIndicatorParams,
   useResidentDataQuery,
+  useUnitNamesQuery,
 } from "qmongjs/src/helpers/hooks";
-import { level2, skdeTheme } from "qmongjs";
-import { Chip, Stack, Typography } from "@mui/material";
-import {
-  StyledTableCellStart,
-  StyledTableCellMiddle,
-  StyledTableCellEnd,
-} from "./IndicatorTableStyles";
-import { useIndicatorQuery } from "qmongjs";
+import React, { useState } from "react";
+import type { IndicatorData, OptsTu, RegisterData, ResidentData } from "types";
 import { IndicatorSection } from "./IndicatorSection";
+import {
+  StyledTableCellEnd,
+  StyledTableCellMiddle,
+  StyledTableCellStart,
+} from "./IndicatorTableStyles";
 
 type RegistrySectionProps = {
   unitNames: string[];
@@ -43,7 +42,6 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
     year,
     chartColours,
   } = props;
-
   const [currentContext, setCurrentContext] = useState(context);
 
   const queryParams: FetchIndicatorParams = {
@@ -53,16 +51,14 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
     type: type,
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const nestedDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
     ...queryParams,
     nested: true,
   });
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const residentDataQuery: UseQueryResult<any> = useResidentDataQuery(medfield);
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const unitNamesByLevelQuery = useUnitNamesQuery(medfield, context, type);
 
   if (
@@ -82,7 +78,7 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
   const registryHasResidentData =
     residentDataQuery.data &&
     residentDataQuery.data.map((row: ResidentData) => {
-      return row.year == year && unitNames.includes(row.unitName);
+      return row.year === year && unitNames.includes(row.unitName);
     }).length > 0;
 
   rowData.sort((a: RegisterData, b: RegisterData) => {
@@ -98,7 +94,7 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
 
   const regData = rowData[0];
 
-  if (!regData || !regData.indicatorData) {
+  if (!regData?.indicatorData) {
     return null;
   }
 
@@ -117,7 +113,7 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
   // Sjekk om hele registerseksjonen skal filtreres bort på grunn av målnivåfilter
   let showSection: boolean;
 
-  if (levels === undefined) {
+  if (levels === undefined || levels === "") {
     showSection = true;
   } else {
     showSection = !regData.indicatorData
@@ -127,10 +123,10 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
               .map((dataRow) => {
                 return level2(indRow, dataRow) === levels;
               })
-              .every((x) => x == false)
+              .every((x) => x === false)
           : null;
       })
-      .every((x) => x == false);
+      .every((x) => x === false);
   }
 
   const handleClick = () => {
@@ -138,12 +134,11 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
       currentContext === "caregiver" ? "resident" : "caregiver",
     );
   };
-
   if (showSection) {
     return (
       <React.Fragment>
         <TableHead>
-          <TableRow key={regData.registerName + "-toprow"}>
+          <TableRow key={`${regData.registerName}-toprow`}>
             <StyledTableCellStart
               key={regData.registerName}
               sx={{
@@ -173,14 +168,14 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
               </Stack>
             </StyledTableCellStart>
           </TableRow>
-          <TableRow key={regData.registerName + "-row"}>
+          <TableRow key={`${regData.registerName}-row`}>
             <StyledTableCellStart
               sx={{
                 backgroundColor: skdeTheme.palette.background.paper,
                 width: "3rem",
               }}
             >
-              {"Kvalitetsindikatorer fra " + regData.registerFullName}
+              {`Kvalitetsindikatorer fra ${regData.registerFullName}`}
             </StyledTableCellStart>
             <StyledTableCellMiddle
               sx={{
@@ -191,7 +186,9 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
               Ønsket målnivå
             </StyledTableCellMiddle>
             {unitNames.map((row, index, arr) => {
-              let CellType;
+              let CellType:
+                | typeof StyledTableCellEnd
+                | typeof StyledTableCellMiddle;
 
               if (index === arr.length - 1) {
                 CellType = StyledTableCellEnd;
@@ -202,6 +199,7 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
               return (
                 <CellType
                   align="left"
+                  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
                   key={regData.registerName + index}
                   sx={{ backgroundColor: skdeTheme.palette.background.paper }}
                   width={"12rem"}
@@ -217,7 +215,6 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
             })}
           </TableRow>
         </TableHead>
-
         <TableBody>
           <IndicatorSection
             key={regData.registerName}

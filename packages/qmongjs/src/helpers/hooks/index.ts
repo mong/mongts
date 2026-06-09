@@ -1,22 +1,22 @@
-export { useShouldReinitialize } from "./useShouldReinitialize";
 export {
+  type FetchIndicatorParams,
+  fetchRegisterNames,
   useDescriptionQuery,
   useIndicatorQuery,
+  useMedicalFieldsQuery,
+  useRegisterNamesQuery,
+  useRegistryEvaluationQuery,
+  useRegistryRankQuery,
+  useRegistryRequirementsQuery,
+  useRegistryScoresQuery,
+  useResidentDataQuery,
   useSelectionYearsQuery,
   useUnitNamesQuery,
-  fetchRegisterNames,
-  useRegisterNamesQuery,
-  useMedicalFieldsQuery,
   useUnitUrlsQuery,
-  useRegistryRankQuery,
-  useRegistryEvaluationQuery,
-  useRegistryScoresQuery,
-  useRegistryRequirementsQuery,
-  useResidentDataQuery,
-  type FetchIndicatorParams,
 } from "./apihooks";
 export {
   elementDimensions,
   useLegendItemPosition,
   useTextWidth,
 } from "./chartHooks";
+export { useShouldReinitialize } from "./useShouldReinitialize";

@@ -1,5 +1,5 @@
+import type { URLs } from "types";
 import db from "../../db";
-import { URLs } from "types";
 
 export const urlModel = (): Promise<URLs[]> =>
   db

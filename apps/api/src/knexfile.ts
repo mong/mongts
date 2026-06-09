@@ -1,6 +1,6 @@
 // Update with your config settings.
 
-import { Knex } from "knex";
+import type { Knex } from "knex";
 
 const connections: { [env: string]: Knex.Config } = {
   test: {

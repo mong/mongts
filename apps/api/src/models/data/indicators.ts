@@ -1,7 +1,7 @@
-import { Knex } from "knex";
+import type { Knex } from "knex";
+import type { Indicator } from "types";
 import db from "../../db";
-import { Filter } from ".";
-import { Indicator } from "types";
+import type { Filter } from ".";
 
 export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
   db

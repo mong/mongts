@@ -1,10 +1,10 @@
-import { RequestHandler, Request } from "express";
+import type { Request, RequestHandler } from "express";
+import { createOptsTu, nestTuNames } from "../../helpers/functions";
 import {
   distinctUnitNamesRegister,
+  type Filter,
   unitNamesAllLevels,
-  Filter,
 } from "../../models/data";
-import { createOptsTu, nestTuNames } from "../../helpers/functions";
 
 interface Query {
   filter: Filter;

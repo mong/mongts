@@ -1,7 +1,7 @@
+import Image from "next/image";
 import { FaCircle, FaSquare } from "react-icons/fa";
 import { IoTriangle } from "react-icons/io5";
 import { imgLoader } from "./imgLoader";
-import Image from "next/image";
 
 export const newLevelSymbols = (level: string | undefined, key?: string) => {
   return level === "H" ? (
@@ -10,9 +10,7 @@ export const newLevelSymbols = (level: string | undefined, key?: string) => {
     <FaSquare style={{ color: "#FD9C00", fontSize: "1.2rem" }} key={key} />
   ) : level === "L" ? (
     <IoTriangle style={{ color: "#D85140", fontSize: "1.2rem" }} key={key} />
-  ) : (
-    <></>
-  );
+  ) : null;
 };
 
 const size = 40;
@@ -45,7 +43,5 @@ export const newestLevelSymbols = (level: string | undefined, key?: string) => {
       key={key}
       alt={"Lav måloppnåelse"}
     />
-  ) : (
-    <></>
-  );
+  ) : null;
 };

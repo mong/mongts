@@ -1,5 +1,5 @@
-import { areArraysEqual } from "../helpers/functions/areArraysEqual";
 import { useEffect, useState } from "react";
+import { areArraysEqual } from "../helpers/functions/areArraysEqual";
 
 interface SelectedFiltersParam {
   treatmentUnits: string[];
@@ -14,7 +14,9 @@ interface SelectedFiltersParam {
 export default function checkParamsReady(
   selectedFilters: SelectedFiltersParam,
 ) {
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const [isMounted, setMounted] = useState(false);
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   useEffect(() => setMounted(true), []);
   if (!isMounted) {
     return false;

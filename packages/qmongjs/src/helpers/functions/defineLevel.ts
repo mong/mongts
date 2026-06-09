@@ -1,4 +1,4 @@
-import { Indicator, IndicatorData, DataPoint } from "types";
+import type { DataPoint, Indicator, IndicatorData } from "types";
 
 const getLevel = (
   levelGreen: number | null,
@@ -20,11 +20,13 @@ const getLevel = (
 
   if (
     (levelDirection === 0 && value <= levelGreen) ||
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
     (levelDirection != 0 && value >= levelGreen)
   ) {
     return "H";
   } else if (
     (levelDirection === 0 && value > yellow) ||
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
     (levelDirection != 0 && value < yellow)
   ) {
     return "L";

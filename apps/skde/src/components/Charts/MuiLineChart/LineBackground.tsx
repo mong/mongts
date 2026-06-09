@@ -1,6 +1,6 @@
-import { IndicatorData } from "types";
-import { LinechartGrid } from "../LinechartGrid";
 import { useXScale, useYScale } from "@mui/x-charts";
+import type { IndicatorData } from "types";
+import { LinechartGrid } from "../LinechartGrid";
 
 type LineBackgroundProps = {
   data: IndicatorData;
@@ -14,7 +14,8 @@ type LineBackgroundProps = {
 
 export const LineBackground = (props: LineBackgroundProps) => {
   const { data, years, lines, percentage, zoom, yMaxLimit, yMinLimit } = props;
-
+  const xScale = useXScale();
+  const yScale = useYScale();
   if (data.data === undefined) {
     return null;
   }
@@ -28,9 +29,6 @@ export const LineBackground = (props: LineBackgroundProps) => {
 
   const xMin = Math.min(...years);
   const xMax = Math.max(...years);
-
-  const xScale = useXScale();
-  const yScale = useYScale();
 
   const xStart = xScale(xMin);
   const xStop = xScale(xMax);

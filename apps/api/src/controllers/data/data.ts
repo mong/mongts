@@ -1,7 +1,7 @@
-import { RequestHandler } from "express";
-import { regTable, indTable, aggData, medfieldTable } from "../../models/data";
-import { parseQuery } from "./indicators";
+import type { RequestHandler } from "express";
 import { nestedData } from "../../helpers/functions";
+import { aggData, indTable, medfieldTable, regTable } from "../../models/data";
+import { parseQuery } from "./indicators";
 
 export const dataController: RequestHandler = async (req, res) => {
   const query = parseQuery(req);

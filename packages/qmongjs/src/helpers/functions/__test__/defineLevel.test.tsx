@@ -1,6 +1,6 @@
+import type { Indicator } from "types";
+import { expect, test } from "vitest";
 import { level } from "../.";
-import { Indicator } from "types";
-import { test, expect } from "vitest";
 
 const indicator: Indicator = {
   id: 1,

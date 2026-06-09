@@ -1,7 +1,14 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, {
+  type DocumentContext,
+  Head,
+  Html,
+  Main,
+  NextScript,
+} from "next/document";
+import "@mong/material-ui/styles.css";
 
 class MyDocument extends Document<{ lang: string; pathname: string }> {
-  static async getInitialProps(ctx) {
+  static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);
     const { pathname } = ctx;
     const lang =
@@ -10,14 +17,15 @@ class MyDocument extends Document<{ lang: string; pathname: string }> {
   }
 
   render() {
-    const { lang, pathname } = this.props;
+    // const { lang, pathname } = this.props;
+    const { lang } = this.props;
 
     return (
       <Html lang={lang}>
         <Head>
-          {pathname === "/" && (
-            <meta httpEquiv="refresh" content="0; url=https://www.skde.no/" />
-          )}
+          {/* {pathname === "/" && (<></>
+            <meta httpEquiv="refresh" content="4; url=https://www.skde.no/" />
+          )} */}
           <meta
             name="google-site-verification"
             content="XnhRhaBwfeuAccfCFysPPpe1f49t46JAfInHBDfK6HE"

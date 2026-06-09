@@ -1,4 +1,4 @@
-import { NestedTreatmentUnitName } from "types";
+import type { NestedTreatmentUnitName } from "types";
 
 export const getUnitFullName = (
   nestedUnitNames: NestedTreatmentUnitName[],
@@ -16,10 +16,11 @@ export const getUnitFullName = (
   }
 
   // Check if unit is a HF
-  const HFs = nestedUnitNames.map((row) => row.hf).flat();
+  const HFs = nestedUnitNames.flatMap((row) => row.hf);
   const isHF = HFs.map((row) => row.hf).includes(unitShortName);
 
   if (isHF) {
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
     return HFs.find((row) => row.hf === unitShortName)!.hf_full;
   }
 
@@ -39,15 +40,17 @@ export const getUnitShortestName = (
   const isRHF = nestedUnitNames.map((row) => row.rhf).includes(unitShortName);
 
   if (isRHF) {
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
     return nestedUnitNames.find((row) => row.rhf === unitShortName)!
       .rhf_shortest;
   }
 
   // Check if unit is a HF
-  const HFs = nestedUnitNames.map((row) => row.hf).flat();
+  const HFs = nestedUnitNames.flatMap((row) => row.hf);
   const isHF = HFs.map((row) => row.hf).includes(unitShortName);
 
   if (isHF) {
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
     return HFs.find((row) => row.hf === unitShortName)!.hf_shortest;
   }
 

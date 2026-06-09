@@ -1,4 +1,4 @@
-import { RegisterData, IndicatorData, DataPoint, Registry } from "types";
+import type { DataPoint, IndicatorData, RegisterData, Registry } from "types";
 
 export const nestedData = (
   registries: Registry[],
@@ -13,7 +13,7 @@ export const nestedData = (
         if (
           cur.minDenominator != null &&
           point.denominator < cur.minDenominator &&
-          cur.indType != "dg_andel"
+          cur.indType !== "dg_andel"
         ) {
           return { ...point, var: null };
         } else {
@@ -25,8 +25,7 @@ export const nestedData = (
       ...cur,
       data: currentDatapoints,
     };
-
-    acc = [...acc, entry];
+    acc.push(entry);
 
     return acc;
   }, [] as IndicatorData[]);
@@ -46,8 +45,7 @@ export const nestedData = (
         medfieldID: medfieldList,
         indicatorData: myIndicators,
       };
-
-      acc = [...acc, entry];
+      acc.push(entry);
     }
     return acc;
   }, [] as RegisterData[]);

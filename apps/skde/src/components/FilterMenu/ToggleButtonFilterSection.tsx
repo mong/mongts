@@ -1,18 +1,20 @@
-import { useContext } from "react";
+import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import { Box, Stack, styled, Typography } from "@mui/material";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
-import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import { FilterMenuSectionProps } from ".";
+import { useElementWidth } from "qmongjs/src/hooks/useElementWidth";
+import { useContext } from "react";
+import type { FilterMenuSectionProps } from ".";
 import {
   FilterSettingsContext,
-  FilterSettingsValue,
+  type FilterSettingsValue,
 } from "./FilterSettingsContext";
-import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
-import { FilterSettingsActionType } from "./FilterSettingsReducer";
+import {
+  FilterSettingsActionType,
+  FilterSettingsDispatchContext,
+} from "./FilterSettingsReducer";
 import { getSelectedValue } from "./utils";
-import { useElementWidth } from "qmongjs/src/hooks/useElementWidth";
 
 const StyledToggleButton = styled(ToggleButton)(({ theme }) => ({
   borderRadius: 30,

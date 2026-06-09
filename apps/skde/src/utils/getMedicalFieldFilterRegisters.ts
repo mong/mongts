@@ -8,10 +8,8 @@ import { decodeRegisterQueryParam } from "../components/FilterMenu/TreatmentQual
  */
 export default function getMedicalFieldFilterRegisters(
   medicalFieldFilter: string[],
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  registers: any,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  medicalFields: any,
+  registers: unknown,
+  medicalFields: unknown,
 ) {
   if (!Array.isArray(medicalFields) || !Array.isArray(registers)) {
     return [];

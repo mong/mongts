@@ -1,6 +1,6 @@
+import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { StyledTable } from "./IndicatorTableStyles";
-import { useSearchParams } from "next/navigation";
 import { RegistrySection } from "./RegistrySection";
 import { RegistrySectionV2 } from "./RegistrySectionV2";
 
@@ -19,7 +19,7 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
     props;
 
   const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams.toString());
+  const params = new URLSearchParams(searchParams?.toString());
   const openRowParam = params.get("selected_row");
 
   const [openRowID, setOpenRowID] = useState<string>(
@@ -30,6 +30,7 @@ export const IndicatorTable = (props: IndicatorTableProps) => {
     <StyledTable sx={{ marginTop: "0.625rem" }}>
       {medfields.map((medfield) => (
         <RegistrySection
+          data-testid={`indicator-${medfield}`}
           key={medfield}
           levels={levels}
           unitNames={unitNames}
@@ -51,7 +52,7 @@ export const IndicatorTableV2 = (props: IndicatorTableProps) => {
     props;
 
   const searchParams = useSearchParams();
-  const params = new URLSearchParams(searchParams.toString());
+  const params = new URLSearchParams(searchParams?.toString());
   const openRowParam = params.get("selected_row");
 
   const [openRowID, setOpenRowID] = useState<string>(
@@ -59,7 +60,7 @@ export const IndicatorTableV2 = (props: IndicatorTableProps) => {
   );
 
   return (
-    <StyledTable sx={{ marginTop: "0.625rem" }}>
+    <StyledTable sx={{ marginTop: "0.625rem" }} data-testid={`indicator-table`}>
       {medfields.map((medfield) => (
         <RegistrySectionV2
           key={medfield}

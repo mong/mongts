@@ -1,16 +1,19 @@
-import React, { useContext } from "react";
-import { FilterMenuSectionProps } from ".";
-import {
-  FilterSettingsContext,
-  FilterSettingsValue,
-} from "./FilterSettingsContext";
-import { FilterSettingsDispatchContext } from "./FilterSettingsReducer";
-import { FilterSettingsActionType } from "./FilterSettingsReducer";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormLabel from "@mui/material/FormLabel";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import FormLabel from "@mui/material/FormLabel";
 import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import type React from "react";
+import { useContext } from "react";
+import type { FilterMenuSectionProps } from ".";
+import {
+  FilterSettingsContext,
+  type FilterSettingsValue,
+} from "./FilterSettingsContext";
+import {
+  FilterSettingsActionType,
+  FilterSettingsDispatchContext,
+} from "./FilterSettingsReducer";
 import { getDefaultValue, getSelectedValue } from "./utils";
 
 type RadioGroupFilterSectionProps = FilterMenuSectionProps & {

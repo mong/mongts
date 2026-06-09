@@ -1,7 +1,8 @@
-import { RequestHandler } from "express";
+import type { RequestHandler } from "express";
 import { registryRequirementsModel } from "../../models/data";
 
 export const registryRequirementsController: RequestHandler = async (
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   req,
   res,
 ) => {

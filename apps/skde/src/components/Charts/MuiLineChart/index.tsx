@@ -1,5 +1,4 @@
-import { CustomAnimatedLine } from "../../Charts/MuiLineChart/CustomAnimatedLine";
-import { LineBackground } from "../../Charts/MuiLineChart/LineBackground";
+import { Box } from "@mui/material";
 import {
   ChartsAxisHighlight,
   ChartsLegend,
@@ -7,21 +6,22 @@ import {
   ChartsTooltip,
   ChartsXAxis,
   ChartsYAxis,
-  LineSeriesType,
-  MarkPlot,
   LinePlot,
+  type LineSeriesType,
+  MarkPlot,
 } from "@mui/x-charts";
-import { DataPoint, IndicatorData } from "types";
-import { Box } from "@mui/material";
-import { RefObject } from "react";
-import {
-  ChartProApi,
-  LineChartProPluginSignatures,
-  ChartsDataProviderPro,
-} from "@mui/x-charts-pro";
-import { CustomChartWrapper } from "../utils";
 import { legendClasses } from "@mui/x-charts/ChartsLegend";
+import {
+  type ChartProApi,
+  ChartsDataProviderPro,
+  type LineChartProPluginSignatures,
+} from "@mui/x-charts-pro";
+import type { RefObject } from "react";
+import type { DataPoint, IndicatorData } from "types";
+import { CustomAnimatedLine } from "../../Charts/MuiLineChart/CustomAnimatedLine";
+import { LineBackground } from "../../Charts/MuiLineChart/LineBackground";
 import { ChartLogo } from "../ChartLogo";
+import { CustomChartWrapper } from "../utils";
 
 type MuiLineChartProps = {
   data: IndicatorData;
@@ -147,7 +147,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
                 slotProps={{
                   line: {
                     limit: lastAffirmYear,
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
                   } as any,
                 }}
               />

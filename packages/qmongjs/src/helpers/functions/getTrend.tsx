@@ -1,4 +1,4 @@
-import { DataPoint } from "types";
+import type { DataPoint } from "types";
 
 // Return 1 if the result is better, -1 if it is worse and 0 if it is unchanged.
 // numberOfDecimals is the format of the number in the results table.
@@ -22,7 +22,7 @@ export const getTrend = (
   let tolerance = 1;
 
   if (numberOfDecimals !== undefined) {
-    tolerance /= Math.pow(10, numberOfDecimals);
+    tolerance /= 10 ** numberOfDecimals;
   }
 
   let difference = point2.var - point1.var;

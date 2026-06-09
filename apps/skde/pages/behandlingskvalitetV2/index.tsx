@@ -1,42 +1,33 @@
-import { useState } from "react";
-import {
-  CssBaseline,
-  Link,
-  ThemeProvider,
-  FormControl,
-  Select,
-  MenuItem,
-  InputLabel,
-  SelectChangeEvent,
-  Stack,
-  Button,
-  Box,
-  Typography,
-} from "@mui/material";
-import {
-  useRegisterNamesQuery,
-  defaultYear,
-  skdeTheme,
-  useUnitNamesQuery,
-} from "qmongjs";
-import { UseQueryResult } from "@tanstack/react-query";
-import TreatmentQualityAppBar from "../../src/components/TreatmentQuality/TreatmentQualityAppBar";
-import { Footer } from "../../src/components/Footer";
-import { LayoutHead } from "../../src/components/LayoutHead";
-import { defaultTableContext } from "../../src/utils/valueOrDefault";
-import {
-  ColourMap,
-  updateColourMap,
-  getSortedList,
-} from "../../src/helpers/functions/chartColours";
-import { TreatmentUnitPopup } from "../../src/components/DialogBox/TreatmentunitPopup";
-import { MedicalFieldPopup } from "../../src/components/DialogBox/MedicalFieldPopup";
-import { useQueryParam } from "use-query-params";
-import { mainQueryParamsConfig } from "qmongjs";
-import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
-import { IndicatorTableV2 } from "../../src/components/IndicatorTable/Indicatortable";
+import { Button, Dropdown, HeroBanner, PageContent } from "@mong/material-ui";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DoneIcon from "@mui/icons-material/Done";
+import {
+  Box,
+  MenuItem,
+  type SelectChangeEvent,
+  Stack,
+  Typography,
+} from "@mui/material";
+import type { UseQueryResult } from "@tanstack/react-query";
+import {
+  defaultYear,
+  mainQueryParamsConfig,
+  useRegisterNamesQuery,
+  useUnitNamesQuery,
+} from "qmongjs";
+import { useState } from "react";
+import { useQueryParam } from "use-query-params";
+import { MedicalFieldPopup } from "../../src/components/DialogBox/MedicalFieldPopup";
+import { TreatmentUnitPopup } from "../../src/components/DialogBox/TreatmentunitPopup";
+import { IndicatorTableV2 } from "../../src/components/IndicatorTable/Indicatortable";
+import { TreatmentQualityAppBarV2 } from "../../src/components/IndicatorTable/Indicatortable/StickyHeader";
+import { LayoutHead } from "../../src/components/LayoutHead";
+import {
+  type ColourMap,
+  getSortedList,
+  updateColourMap,
+} from "../../src/helpers/functions/chartColours";
+import { defaultTableContext } from "../../src/utils/valueOrDefault";
 
 export default function TreatmentQualityPage() {
   const numberOfYearOptions = 5;
@@ -48,24 +39,25 @@ export default function TreatmentQualityPage() {
     number | undefined
   >("year", mainQueryParamsConfig.year);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const [selectedTableContext, setSelectedTableContext] =
     useState(defaultTableContext);
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const [selectedLevel, setSelectedLevel] = useState<string | undefined>();
 
   const [selectedMedicalFields = [], setSelectedMedicalFields] = useQueryParam<
     string[] | undefined
-  >("registries", mainQueryParamsConfig.registries);
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+  >("registries", mainQueryParamsConfig.registries as any);
   const [
     selectedTreatmentUnits = defaultTreatmentUnits,
     setSelectedTreatmentUnits,
-  ] = useQueryParam<string[] | undefined>("units", mainQueryParamsConfig.units);
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  ] = useQueryParam<string[] | undefined>(
+    "units",
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+    mainQueryParamsConfig.units as any,
+  );
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const [dataQualitySelected, setDataQualitySelected] =
     useState<boolean>(false);
 
@@ -79,16 +71,16 @@ export default function TreatmentQualityPage() {
   const [urlCopied, setUrlCopied] = useState<boolean>(false);
   const urlCopiedTimeout = 3000;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
-  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+  const unitNamesQuery: UseQueryResult<unknown, unknown> = useUnitNamesQuery(
     selectedMedicalFields[0] ? selectedMedicalFields[0] : "all",
     selectedTableContext,
     dataQualitySelected ? "dg" : "ind",
   );
 
   // Load register names and medical fields
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
-  const registryNameQuery: UseQueryResult<any, unknown> =
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+  const registryNameQuery: UseQueryResult<unknown, unknown> =
     useRegisterNamesQuery();
 
   updateColourMap(colourMap, setColourMap, selectedTreatmentUnits);
@@ -105,55 +97,50 @@ export default function TreatmentQualityPage() {
   };
 
   return (
-    <ThemeProvider theme={skdeTheme}>
-      <CssBaseline />
-      <PageWrapper>
-        <Box
-          sx={{
-            background: "#F5F5F5",
-          }}
-        >
-          <LayoutHead
-            title="Behandlingskvalitet"
-            content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
-            href="/favicon.ico"
-          />
-          <TreatmentQualityAppBar openDrawer={() => false}>
-            Resultater fra nasjonale medisinske kvalitetsregistre. Se{" "}
-            <Link
-              href="https://www.kvalitetsregistre.no/"
-              target="_blank"
-              rel="noopener"
-            >
-              kvalitetsregistre.no
-            </Link>{" "}
-            for mer informasjon.
-          </TreatmentQualityAppBar>
-          <Box padding={4}>
+    <Box
+      sx={{
+        background: "#F5F5F5",
+      }}
+    >
+      <LayoutHead
+        title="Behandlingskvalitet"
+        content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
+        href="/favicon.ico"
+      />
+      <HeroBanner
+        description="Her kan du se resultater fra nasjonale medisinske kvalitetsregistre, og sammenligne indikatorer ved å velge flere sykehus eller regioner"
+        title="Behandlingskvalitet"
+        image="/hero-bg-4.jpg"
+      />
+      <div className="flex bg-neutral-0 w-full align-middle items-center justify-center">
+        <div className="flex flex-col w-full h-full md:px-6 md:min-w-360 max-w-260 ">
+          <TreatmentQualityAppBarV2>
             <Stack
               direction="row"
               justifyContent="space-between"
-              sx={{ paddingBottom: 2 }}
+              alignItems="end"
+              sx={{ paddingTop: 2, paddingBottom: 2 }}
+              width="100%"
             >
-              <Stack direction="row" spacing={1}>
-                <Button
-                  variant="outlined"
-                  onClick={handleMedicalFieldButtonClick}
-                >
-                  Velg fagområde
-                </Button>
+              <Stack direction="row" spacing={3}>
+                <div className="flex flex-col text-small font-semibold  text-brand-primary-900">
+                  Fagområde
+                  <Button onClick={handleMedicalFieldButtonClick}>
+                    Velg fagområde
+                  </Button>
+                </div>
                 <MedicalFieldPopup
                   open={medicalFieldPopupOpen}
                   updateRegistries={setSelectedMedicalFields}
                   setOpen={setMedicalFieldPopupOpen}
                   onSubmit={setSelectedMedicalFields}
                 />
-                <Button
-                  variant="outlined"
-                  onClick={handleTreatmentUnitButtonClick}
-                >
-                  Velg behandlingsenheter
-                </Button>
+                <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                  Behandlingsenheter
+                  <Button onClick={handleTreatmentUnitButtonClick}>
+                    Velg behandlingsenheter
+                  </Button>
+                </div>
                 <TreatmentUnitPopup
                   open={treatmentUnitPopupOpen}
                   setOpen={setTreatmentUnitPopupOpen}
@@ -161,12 +148,13 @@ export default function TreatmentQualityPage() {
                   context={selectedTableContext}
                   type={"ind"}
                 />
-                <FormControl>
-                  <InputLabel>År</InputLabel>
-                  <Select
+                <div className="flex flex-col text-small  font-semibold  text-brand-primary-900">
+                  Årstall
+                  {/* @ts-expect-error Component will support empty label in next version */}
+                  <Dropdown
                     value={selectedYear.toString()}
-                    label="År"
                     onChange={handleYearChange}
+                    // label="Årstall"
                   >
                     {[
                       ...Array(numberOfYearOptions)
@@ -180,76 +168,69 @@ export default function TreatmentQualityPage() {
                           );
                         }),
                     ]}
-                  </Select>
-                </FormControl>
+                  </Dropdown>
+                </div>
               </Stack>
-              <Button
-                variant="outlined"
-                startIcon={urlCopied ? <DoneIcon /> : <ContentCopyIcon />}
-                onClick={() => {
-                  navigator.clipboard.writeText(window.location.href);
-                  setUrlCopied(true);
-                  setTimeout(() => {
-                    setUrlCopied(false);
-                  }, urlCopiedTimeout);
-                }}
-              >
-                {urlCopied ? "URL kopiert" : "Kopier URL"}
-              </Button>
-            </Stack>
-            {selectedMedicalFields.length > 0 ? (
-              <IndicatorTableV2
-                key={"indicator-table2"}
-                context={selectedTableContext}
-                unitNames={getSortedList(
-                  colourMap,
-                  selectedTreatmentUnits,
-                  "units",
-                )}
-                year={selectedYear}
-                type={dataQualitySelected ? "dg" : "ind"}
-                levels={selectedLevel}
-                medfields={selectedMedicalFields}
-                chartColours={getSortedList(
-                  colourMap,
-                  selectedTreatmentUnits,
-                  "colours",
-                )}
-              />
-            ) : (
-              <Stack
-                height="484px"
-                spacing={6}
-                justifyContent="center"
-                alignItems="center"
-                sx={{
-                  background: "#FFFFFF",
-                  border: "1px solid #2354AE",
-                  borderRadius: "16px",
-                }}
-              >
-                <Typography variant="h3" color="#0D244E">
-                  Velg et fagområde du vil se resultater fra
-                </Typography>
+              <div className="pb-4 pl-6" data-testid="copy-url-button">
                 <Button
-                  variant="contained"
-                  onClick={handleMedicalFieldButtonClick}
-                  sx={{
-                    width: "200px",
-                    background: "#2354AE",
-                    color: "#FFFFFF",
-                    height: "48px",
-                    fontSize: "14px",
+                  variant="secondary"
+                  startIcon={urlCopied ? <DoneIcon /> : <ContentCopyIcon />}
+                  onClick={() => {
+                    navigator.clipboard.writeText(window.location.href);
+                    setUrlCopied(true);
+                    setTimeout(() => {
+                      setUrlCopied(false);
+                    }, urlCopiedTimeout);
                   }}
                 >
-                  Velg fagområde
+                  {urlCopied ? "URL kopiert" : "Kopier URL"}
                 </Button>
-              </Stack>
+              </div>
+            </Stack>
+          </TreatmentQualityAppBarV2>
+        </div>
+      </div>
+      <PageContent>
+        {selectedMedicalFields.length > 0 ? (
+          <IndicatorTableV2
+            key={"indicator-table2"}
+            context={selectedTableContext}
+            unitNames={getSortedList(
+              colourMap,
+              selectedTreatmentUnits,
+              "units",
             )}
-          </Box>
-        </Box>
-        <Footer />
-      </PageWrapper>
-    </ThemeProvider>
+            year={selectedYear}
+            type={dataQualitySelected ? "dg" : "ind"}
+            levels={selectedLevel || ""}
+            medfields={selectedMedicalFields}
+            chartColours={getSortedList(
+              colourMap,
+              selectedTreatmentUnits,
+              "colours",
+            )}
+          />
+        ) : (
+          <Stack
+            height="484px"
+            spacing={6}
+            justifyContent="center"
+            alignItems="center"
+            sx={{
+              background: "#FFFFFF",
+              border: "1px solid #2354AE",
+              borderRadius: "16px",
+            }}
+          >
+            <Typography variant="h3" color="#0D244E">
+              Velg et fagområde du vil se resultater fra
+            </Typography>
+            <Button onClick={handleMedicalFieldButtonClick}>
+              Velg fagområde
+            </Button>
+          </Stack>
+        )}
+      </PageContent>
+    </Box>
   );
 }

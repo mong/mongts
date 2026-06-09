@@ -1,6 +1,9 @@
-import React, { createContext } from "react";
-import { FilterSettings } from "./FilterSettingsContext";
-import { FilterSettingsValue } from "./FilterSettingsContext";
+import type React from "react";
+import { createContext } from "react";
+import type {
+  FilterSettings,
+  FilterSettingsValue,
+} from "./FilterSettingsContext";
 
 /**
  * The types of actions that can be performed on the filter settings
