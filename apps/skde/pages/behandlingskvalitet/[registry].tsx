@@ -33,7 +33,6 @@ import {
   treatmentUnitsKey,
   yearKey,
 } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
-import { Footer } from "../../src/components/Footer";
 import { IndicatorTable } from "../../src/components/IndicatorTable/Indicatortable";
 import { LayoutHead } from "../../src/components/LayoutHead";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
@@ -264,12 +263,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
           href="/favicon.ico"
         />
-        <TreatmentQualityAppBar
-          openDrawer={() => toggleDrawer(true)}
-          extraBreadcrumbs={[
-            { link: registryName, text: registryInfo[0].short_name },
-          ]}
-        >
+        <TreatmentQualityAppBar openDrawer={() => toggleDrawer(true)}>
           {subtitle}
         </TreatmentQualityAppBar>
         <Grid container size={{ xs: 12 }}>
@@ -356,7 +350,6 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
             </Grid>
           </Grid>
         </Grid>
-        <Footer />
       </PageWrapper>
       <FilterDrawer
         ModalProps={{
