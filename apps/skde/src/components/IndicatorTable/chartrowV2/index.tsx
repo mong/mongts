@@ -23,7 +23,7 @@ type chartRowV2Props = {
   treatmentUnitsByLevel: OptsTu[];
   indID: string;
   registryName: string;
-  coverage?: boolean;
+  showDGButton?: boolean;
 };
 
 export const ChartRowV2 = (props: chartRowV2Props) => {
@@ -37,7 +37,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     medfield,
     indID,
     registryName,
-    coverage,
+    showDGButton,
   } = props;
 
   const [coveragePopupOpen, setCoveragePopupOpen] = useState(false);
@@ -142,7 +142,7 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
         >
           Zoom
         </Button>
-        {!coverage && (
+        {showDGButton && (
           <Button
             startIcon={<SearchIcon />}
             onClick={() => {
@@ -160,7 +160,6 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
           context={context}
           medfield={medfield}
           treatmentUnitsByLevel={treatmentUnitsByLevel}
-          indID={indID}
           registryName={registryName}
           dataQualityIndId={data.dataQualityIndicatorID}
         />
