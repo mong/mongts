@@ -24,7 +24,7 @@ export default function Stadiumfigur({ registry }) {
   // Copy-paste code from https://mui.com/material-ui/react-tabs/
   const [value, setValue] = React.useState(0);
 
-  const handleChange = (newValue: number) => {
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
@@ -178,7 +178,7 @@ export default function Stadiumfigur({ registry }) {
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           value={value}
-          onChange={() => handleChange}
+          onChange={handleChange}
           aria-label="basic tabs example"
         >
           <Tab label="Utvikling over tid" {...a11yProps(0)} />

@@ -20,7 +20,6 @@ type CoveragePopupProps = {
   unitNames: string[];
   year: number;
   treatmentUnitsByLevel: OptsTu[];
-  indID: string;
   dataQualityIndId: string;
   registryName: string;
 };
@@ -34,7 +33,6 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
     unitNames,
     year,
     treatmentUnitsByLevel,
-    indID,
     dataQualityIndId,
     registryName,
   } = props;
@@ -124,7 +122,7 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
           treatmentUnitsByLevel={treatmentUnitsByLevel}
           indID={dataQualityIndId}
           registryName={registryName}
-          coverage={true}
+          showDGButton={false}
         />
       </DialogContent>
       <DialogActions>

@@ -34,7 +34,6 @@ import {
   treatmentUnitsKey,
   yearKey,
 } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
-import { Footer } from "../../src/components/Footer";
 import { IndicatorTable } from "../../src/components/IndicatorTable/Indicatortable";
 import { LayoutHead } from "../../src/components/LayoutHead";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
@@ -347,7 +346,6 @@ export default function TreatmentQualityPage() {
             </Grid>
           </Grid>
         </Grid>
-        <Footer />
       </PageWrapper>
       <FilterDrawer
         ModalProps={{

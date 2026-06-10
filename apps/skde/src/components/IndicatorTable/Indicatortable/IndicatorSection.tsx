@@ -16,6 +16,7 @@ type IndicatorSectionProps = {
   chartColours: string[];
   treatmentUnitsByLevel: OptsTu[];
   residentData: boolean;
+  showDGButton?: boolean;
 };
 
 export const IndicatorSection = (props: IndicatorSectionProps) => {
@@ -33,6 +34,7 @@ export const IndicatorSection = (props: IndicatorSectionProps) => {
     treatmentUnitsByLevel,
     medfield,
     residentData,
+    showDGButton,
   } = props;
 
   // Map indicators to rows and show only rows where there is at least
@@ -58,6 +60,7 @@ export const IndicatorSection = (props: IndicatorSectionProps) => {
         chartColours={chartColours}
         treatmentUnitsByLevel={treatmentUnitsByLevel}
         residentData={residentData}
+        showDGButton={showDGButton}
       />
     ) : null;
 

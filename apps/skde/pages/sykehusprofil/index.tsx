@@ -19,8 +19,7 @@ import {
 } from "qmongjs";
 import { type JSX, useEffect, useState } from "react";
 import type { URLs } from "types";
-import { Footer } from "../../src/components/Footer";
-import { type BreadCrumbPath, Header } from "../../src/components/Header";
+import { Header } from "../../src/components/Header";
 import { HospitalInfoBox } from "../../src/components/HospitalProfile";
 import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
 import { HospitalProfileLinePlot } from "../../src/components/HospitalProfile/HospitalProfileLinePlot";
@@ -68,18 +67,6 @@ export const Skde = (): JSX.Element => {
   // Years for filtering
   const lastYear = defaultYear;
   const pastYears = 5;
-
-  // Header settings
-  const breadcrumbs: BreadCrumbPath = [
-    {
-      link: "https://www.skde.no",
-      text: "Forside",
-    },
-    {
-      link: "/sykehusprofil/",
-      text: "Sykehusprofil",
-    },
-  ];
 
   // ####### //
   // Queries //
@@ -142,7 +129,6 @@ export const Skde = (): JSX.Element => {
         <Header
           bgcolor="surface2.light"
           title={"Sykehusprofil"}
-          breadcrumbs={breadcrumbs}
           maxWidth={maxWidth}
         >
           <Box sx={{ mb: 6 }}>
@@ -259,7 +245,6 @@ export const Skde = (): JSX.Element => {
             </Grid>
           </Box>
         </Container>
-        <Footer maxWidth={maxWidth} className="hospital-profile-footer" />
       </PageWrapper>
     </ThemeProvider>
   );

@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.4.3](https://github.com/mong/mongts/compare/v1.4.2...v1.4.3) (2026-06-10)
+
+
+### Bug Fixes
+
+* fjern header og footer der de ikke skal være og fiks stadievurdering ([#4714](https://github.com/mong/mongts/issues/4714)) ([3fe1917](https://github.com/mong/mongts/commit/3fe19172b6fa4baf1222823e416f01a10364b3a4))
+
+## [1.4.2](https://github.com/mong/mongts/compare/v1.4.1...v1.4.2) (2026-06-09)
+
+
+### Miscellaneous Chores
+
+* release 1.4.2 ([ea08e44](https://github.com/mong/mongts/commit/ea08e44851048df3e3b62cc11f1382c932ab1589))
+
 ## [1.4.1](https://github.com/mong/mongts/compare/v1.4.0...v1.4.1) (2026-06-09)
 
 
