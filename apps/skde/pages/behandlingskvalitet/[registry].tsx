@@ -263,12 +263,7 @@ export default function TreatmentQualityRegistryPage({ registryInfo }) {
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
           href="/favicon.ico"
         />
-        <TreatmentQualityAppBar
-          openDrawer={() => toggleDrawer(true)}
-          extraBreadcrumbs={[
-            { link: registryName, text: registryInfo[0].short_name },
-          ]}
-        >
+        <TreatmentQualityAppBar openDrawer={() => toggleDrawer(true)}>
           {subtitle}
         </TreatmentQualityAppBar>
         <Grid container size={{ xs: 12 }}>
