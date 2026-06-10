@@ -2,11 +2,9 @@ import type { Breakpoint } from "@mui/material";
 import type React from "react";
 import type { PropsWithChildren } from "react";
 import { HeaderMiddle } from "./HeaderMiddle";
-import { type BreadCrumbPath, HeaderTop } from "./HeaderTop";
 
 type HeaderProps = PropsWithChildren<{
   title: string;
-  breadcrumbs: BreadCrumbPath;
   menu?: React.ReactNode;
   bgcolor?: string;
   maxWidth?: false | Breakpoint;
@@ -20,28 +18,18 @@ type HeaderProps = PropsWithChildren<{
  *
  * @param {HeaderProps} props - The properties for the Header component.
  * @param {string} props.title - The title to be displayed in the header.
- * @param {BreadCrumbPath} props.breadcrumbs - The breadcrumb path for navigation.
  * @param {React.ReactNode} [props.children] - Optional children content to be displayed below the title.
  * @param {string} [props.bgcolor] - Optional background color for the middle section of the header.
  * @param {false | Breakpoint} [props.maxWidth] - Optional maximum width for the header sections.
  */
 export const Header = (props: HeaderProps) => {
   return (
-    <>
-      <HeaderTop
-        breadcrumbs={props.breadcrumbs}
-        maxWidth={props.maxWidth}
-        menu={props.menu}
-      />
-      <HeaderMiddle
-        bgcolor={props.bgcolor}
-        title={props.title}
-        maxWidth={props.maxWidth ? props.maxWidth : false}
-        // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-        children={props.children}
-      />
-    </>
+    <HeaderMiddle
+      bgcolor={props.bgcolor}
+      title={props.title}
+      maxWidth={props.maxWidth ? props.maxWidth : false}
+      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+      children={props.children}
+    />
   );
 };
-
-export type { BreadCrumbPath } from "./HeaderTop";

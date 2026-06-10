@@ -55,6 +55,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter();
   const pathLang =
     pathname.includes("/en/") || pathname.endsWith("/en") ? "en" : "no";
+  // Do not show header and footer on the stadievurdering page
+  const applyLayout = !pathname.includes("stadievurdering");
 
   useEffect(() => {
     document.documentElement.lang = pathLang;
@@ -68,24 +70,35 @@ function MyApp({ Component, pageProps }: AppProps) {
     <main
       className={`min-h-full  flex flex-col ${plus_jakarta_sans.className} ${roboto.variable} ${robotoSans.variable} ${robotoMono.variable} antialiased`}
     >
-      <SkdeProvider>
-        <MainLayout>
-          <Header
-            lang={lang}
-            onLangChange={(lang) => setLang(lang as Languages)}
-          />
-          <Breadcrumbs toolName="Material-UI" autoByPath />
-          <PageLayout>
-            <QueryParamProvider adapter={NextAdapter}>
-              <QueryClientProvider client={queryClient}>
-                <Component {...pageProps} />
-                <ReactQueryDevtools initialIsOpen={false} />
-              </QueryClientProvider>
-            </QueryParamProvider>
-          </PageLayout>
-          <Footer lang={lang} />
-        </MainLayout>
-      </SkdeProvider>
+      {applyLayout ? (
+        <SkdePagesProvider>
+          <MainLayout>
+            <Header
+              lang={lang}
+              onLangChange={(lang) => setLang(lang as Languages)}
+            />
+            <Breadcrumbs toolName="Material-UI" autoByPath />
+            <PageLayout>
+              <QueryParamProvider adapter={NextAdapter}>
+                <QueryClientProvider client={queryClient}>
+                  <Component {...pageProps} />
+                  <ReactQueryDevtools initialIsOpen={false} />
+                </QueryClientProvider>
+              </QueryParamProvider>
+            </PageLayout>
+            <Footer lang={lang} />
+          </MainLayout>
+        </SkdePagesProvider>
+      ) : (
+        <SkdePagesProvider>
+          <QueryParamProvider adapter={NextAdapter}>
+            <QueryClientProvider client={queryClient}>
+              <Component {...pageProps} />
+              <ReactQueryDevtools initialIsOpen={false} />
+            </QueryClientProvider>
+          </QueryParamProvider>
+        </SkdePagesProvider>
+      )}
     </main>
   );
 }
