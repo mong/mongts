@@ -77,7 +77,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               lang={lang}
               onLangChange={(lang) => setLang(lang as Languages)}
             />
-            <Breadcrumbs toolName="Material-UI" autoByPath />
+            <Breadcrumbs toolName="Analyseverktøy" autoByPath />
             <PageLayout>
               <QueryParamProvider adapter={NextAdapter}>
                 <QueryClientProvider client={queryClient}>
