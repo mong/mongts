@@ -1,4 +1,10 @@
-import { Button, Dropdown, HeroBanner, PageContent } from "@mong/material-ui";
+import {
+  Button,
+  Dropdown,
+  HeroBanner,
+  Icon,
+  PageContent,
+} from "@mong/material-ui";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import DoneIcon from "@mui/icons-material/Done";
 import {
@@ -173,8 +179,8 @@ export default function TreatmentQualityPage() {
               </Stack>
               <div className="pb-4 pl-6" data-testid="copy-url-button">
                 <Button
+                  startIcon={<Icon size="small" symbol="content_copy" />}
                   variant="secondary"
-                  startIcon={urlCopied ? <DoneIcon /> : <ContentCopyIcon />}
                   onClick={() => {
                     navigator.clipboard.writeText(window.location.href);
                     setUrlCopied(true);
@@ -183,7 +189,7 @@ export default function TreatmentQualityPage() {
                     }, urlCopiedTimeout);
                   }}
                 >
-                  {urlCopied ? "URL kopiert" : "Kopier URL"}
+                  {urlCopied ? "Link kopiert" : "Kopier denne visningen"}
                 </Button>
               </div>
             </Stack>
