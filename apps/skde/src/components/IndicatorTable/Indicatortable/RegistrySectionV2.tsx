@@ -1,3 +1,4 @@
+import { TagButton } from "@mong/material-ui";
 import { Chip, Stack, Typography } from "@mui/material";
 import TableBody from "@mui/material/TableBody";
 import TableHead from "@mui/material/TableHead";
@@ -157,13 +158,7 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
                   </Typography>
                 </div>
                 {registryHasResidentData && (
-                  <Chip
-                    label="Opptaksområde"
-                    onClick={handleClick}
-                    variant={
-                      currentContext === "caregiver" ? "outlined" : "filled"
-                    }
-                  />
+                  <TagButton label="Opptaksområde" onClick={handleClick} />
                 )}
               </Stack>
             </StyledTableCellStart>
@@ -231,6 +226,7 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
             chartColours={chartColours}
             treatmentUnitsByLevel={treatmentUnitsByLevel}
             residentData={currentContext === "resident"}
+            showDGButton={true}
           />
         </TableBody>
       </React.Fragment>

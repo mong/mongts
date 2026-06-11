@@ -13,13 +13,13 @@ import {
 import Grid from "@mui/material/Grid";
 import type { UseQueryResult } from "@tanstack/react-query";
 import {
-  defaultYear,
   skdeTheme,
   useMedicalFieldsQuery,
   useRegisterNamesQuery,
   useUnitNamesQuery,
 } from "qmongjs";
 import { useState } from "react";
+import { defaultYear } from "../../src/app_config";
 import type { FilterSettingsValue } from "../../src/components/FilterMenu/FilterSettingsContext";
 import {
   type FilterSettingsAction,
@@ -34,7 +34,6 @@ import {
   treatmentUnitsKey,
   yearKey,
 } from "../../src/components/FilterMenu/TreatmentQualityFilterMenu";
-import { Footer } from "../../src/components/Footer";
 import { IndicatorTable } from "../../src/components/IndicatorTable/Indicatortable";
 import { LayoutHead } from "../../src/components/LayoutHead";
 import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
@@ -347,7 +346,6 @@ export default function TreatmentQualityPage() {
             </Grid>
           </Grid>
         </Grid>
-        <Footer />
       </PageWrapper>
       <FilterDrawer
         ModalProps={{
