@@ -2,6 +2,7 @@ import ExpandCircleDownOutlinedIcon from "@mui/icons-material/ExpandCircleDownOu
 import {
   Collapse,
   IconButton,
+  Stack,
   Table,
   TableBody,
   TableCell,
@@ -37,34 +38,34 @@ const createSymbols = (
   red: number,
   lineBreak: boolean,
 ) => {
-  const symbols = [];
+  const symbols = [[], [], []];
 
   for (let i = 0; i < green; i++) {
     // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-    symbols.push(newLevelSymbols("H", `green${i.toString()}`));
-  }
-
-  if (lineBreak && green > 0 && yellow > 0) {
-    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-    symbols.push(<br key="break 1" />);
+    symbols[0].push(newLevelSymbols("H", `green${i.toString()}`));
   }
 
   for (let i = 0; i < yellow; i++) {
     // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-    symbols.push(newLevelSymbols("M", `yellow${i.toString()}`));
-  }
-
-  if (lineBreak && (green > 0 || yellow > 0) && red > 0) {
-    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-    symbols.push(<br key="break 2" />);
+    symbols[1].push(newLevelSymbols("M", `yellow${i.toString()}`));
   }
 
   for (let i = 0; i < red; i++) {
     // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-    symbols.push(newLevelSymbols("L", `red${i.toString()}`));
+    symbols[2].push(newLevelSymbols("L", `red${i.toString()}`));
   }
 
-  return symbols;
+  return (
+    <div>
+      {symbols.map((row) => {
+        return (
+          <div key={Math.random()} className="flex flex-row">
+            {row}
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
 type RowData = {
@@ -259,7 +260,7 @@ const Row = (props: {
                         registerRow.green,
                         registerRow.yellow,
                         registerRow.red,
-                        false,
+                        true,
                       )}
                     </TableCell>
                   </TableRow>
