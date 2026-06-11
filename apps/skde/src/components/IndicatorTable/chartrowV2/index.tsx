@@ -1,4 +1,4 @@
-import { Button, Dropdown } from "@mong/material-ui";
+import { Button, Dropdown, Icon, SplitButton } from "@mong/material-ui";
 import SearchIcon from "@mui/icons-material/Search";
 import { Box, MenuItem, type SelectChangeEvent, Stack } from "@mui/material";
 import { useChartProApiRef } from "@mui/x-charts-pro";
@@ -133,16 +133,9 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             <MenuItem value={"hospital"}>Sykehus</MenuItem>
           </Dropdown>
         )}
-        <Button
-          onClick={() => {
-            setZoom(!zoom);
-          }}
-        >
-          Zoom
-        </Button>
         {showDGButton && (
           <Button
-            startIcon={<SearchIcon />}
+            startIcon={<Icon symbol="data_loss_prevention" size="medium" />}
             onClick={() => {
               setCoveragePopupOpen(true);
             }}
@@ -150,6 +143,16 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
             Dekningsgrad
           </Button>
         )}
+        <Button
+          onClick={() => {
+            setZoom(!zoom);
+          }}
+          startIcon={<Icon symbol="search" size="medium" />}
+          variant="filled"
+        >
+          Zoom
+        </Button>
+
         <DataQualityPopup
           open={coveragePopupOpen}
           setOpen={setCoveragePopupOpen}
@@ -162,7 +165,8 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
           dataQualityIndId={data.dataQualityIndicatorID}
         />
 
-        <Button
+        <SplitButton
+          label="Last ned"
           onClick={() => {
             const apiRef =
               figureType === "line" ? lineChartApiRef : barChartApiRef;
@@ -174,9 +178,9 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
               ),
             });
           }}
-        >
-          Last ned
-        </Button>
+          options={["Last ned som bilde"]}
+          steps="one-step"
+        ></SplitButton>
       </Stack>
       <Box
         sx={{
