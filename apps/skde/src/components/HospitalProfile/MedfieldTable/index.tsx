@@ -32,12 +32,7 @@ export type MedfieldTableProps = {
   type: string;
 };
 
-const createSymbols = (
-  green: number,
-  yellow: number,
-  red: number,
-  lineBreak: boolean,
-) => {
+const createSymbols = (green: number, yellow: number, red: number) => {
   const symbols = [[], [], []];
 
   for (let i = 0; i < green; i++) {
@@ -202,7 +197,7 @@ const Row = (props: {
           <Typography variant="body1">{name}</Typography>
         </TableCell>
         <TableCell sx={{ border: 0 }}>
-          {createSymbols(green, yellow, red, true)}
+          {createSymbols(green, yellow, red)}
         </TableCell>
       </TableRow>
       <TableRow key={`${row.name}-collapse`}>
@@ -260,7 +255,6 @@ const Row = (props: {
                         registerRow.green,
                         registerRow.yellow,
                         registerRow.red,
-                        true,
                       )}
                     </TableCell>
                   </TableRow>
