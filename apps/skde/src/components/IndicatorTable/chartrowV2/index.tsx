@@ -88,8 +88,6 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     data,
     unitNames,
     context,
-    year,
-    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
     dataFormat,
   );
 
