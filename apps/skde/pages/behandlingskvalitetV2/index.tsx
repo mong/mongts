@@ -5,15 +5,7 @@ import {
   Icon,
   PageContent,
 } from "@mong/material-ui";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import DoneIcon from "@mui/icons-material/Done";
-import {
-  Box,
-  MenuItem,
-  type SelectChangeEvent,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, type SelectChangeEvent, Stack, Typography } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import {
   defaultYear,
@@ -102,6 +94,17 @@ export default function TreatmentQualityPage() {
     setTreatmentUnitPopupOpen(true);
   };
 
+  const yearDropdownItems = {
+    groups: [
+      {
+        items: Array.from({ length: numberOfYearOptions }, (_, i) => {
+          const year = defaultYear - i;
+          return { value: year.toString(), label: year.toString() };
+        }),
+      },
+    ],
+  };
+
   return (
     <Box
       sx={{
@@ -156,25 +159,11 @@ export default function TreatmentQualityPage() {
                 />
                 <div className="flex flex-col text-small  font-semibold  text-brand-primary-900">
                   Årstall
-                  {/* @ts-expect-error Component will support empty label in next version */}
                   <Dropdown
                     value={selectedYear.toString()}
                     onChange={handleYearChange}
-                    // label="Årstall"
-                  >
-                    {[
-                      ...Array(numberOfYearOptions)
-                        .keys()
-                        .map((i: number) => {
-                          const year = defaultYear - i;
-                          return (
-                            <MenuItem key={year} value={year}>
-                              {year}
-                            </MenuItem>
-                          );
-                        }),
-                    ]}
-                  </Dropdown>
+                    items={yearDropdownItems}
+                  />
                 </div>
               </Stack>
               <div className="pb-4 pl-6" data-testid="copy-url-button">

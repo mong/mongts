@@ -1,7 +1,7 @@
+import { SkdeLogo } from "@mong/material-ui";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import ZoomOutIcon from "@mui/icons-material/ZoomOut";
 import { Box, Button, Stack, ThemeProvider, Typography } from "@mui/material";
-import Image from "next/image";
 import { useState } from "react";
 import { formatUnitNameIfNational } from "../../../helpers/functions/formatUnitNameIfNational";
 import {
@@ -109,18 +109,9 @@ export const HospitalProfileLinePlot = (
         <div id="plot-window">
           <Box margin={2}>
             <IndicatorLinechart {...indicatorParams} />
-            <Image
-              alt="SKDE Logo"
-              src="/img/logos/logo-skde.svg"
-              height={50}
-              width={50 * 0.42}
-              style={{
-                position: "relative",
-                left: "85%",
-                width: "auto",
-                bottom: 50,
-              }}
-            />
+            <div className="flex items-end justify-end pb-12 pr-4">
+              <SkdeLogo height={"auto"} width={192} />
+            </div>
           </Box>
         </div>
       </ThemeProvider>

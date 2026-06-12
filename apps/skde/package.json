@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "next build",
     "start": "next start",
     "export": "next build",
@@ -23,9 +23,9 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "11.14.1",
-    "@mong/material-ui": "^6.1.0",
+    "@mong/material-ui": "^8.0.0",
     "@mui/icons-material": "7.3.10",
-    "@mui/material": "7.3.10",
+    "@mui/material": "^7.3.10",
     "@mui/material-nextjs": "^9.0.1",
     "@mui/system": "^7.0.0",
     "@mui/x-charts": "8.28.2",
