@@ -188,6 +188,7 @@ export const RegistrySection = (props: RegistrySectionProps) => {
             chartColours={chartColours}
             treatmentUnitsByLevel={treatmentUnitsByLevel}
             residentData={false}
+            showDGButton={true}
           />
         </TableBody>
       </React.Fragment>
