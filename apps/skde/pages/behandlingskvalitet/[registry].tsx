@@ -12,15 +12,10 @@ import {
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import type { GetStaticPaths, GetStaticProps } from "next";
-import {
-  defaultReviewYear,
-  defaultYear,
-  fetchRegisterNames,
-  skdeTheme,
-  useRegistryRankQuery,
-} from "qmongjs";
+import { fetchRegisterNames, skdeTheme, useRegistryRankQuery } from "qmongjs";
 import { useEffect, useState } from "react";
 import type { RegisterName, RegistryRank } from "types";
+import { defaultReviewYear, defaultYear } from "../../src/app_config";
 import type { FilterSettingsValue } from "../../src/components/FilterMenu/FilterSettingsContext";
 import {
   type FilterSettingsAction,
