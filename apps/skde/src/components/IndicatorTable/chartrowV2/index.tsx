@@ -1,5 +1,4 @@
 import { Button, Dropdown, Icon, SplitButton } from "@mong/material-ui";
-import SearchIcon from "@mui/icons-material/Search";
 import { Box, MenuItem, type SelectChangeEvent, Stack } from "@mui/material";
 import { useChartProApiRef } from "@mui/x-charts-pro";
 import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
@@ -106,81 +105,93 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
   return (
     <Box>
       <Stack
-        direction={"row"}
-        spacing={2}
-        alignItems={"end"}
-        sx={{ paddingLeft: 4 }}
+        direction="row"
+        justifyContent="space-between"
+        alignItems="end"
+        sx={{ paddingLeft: 7, paddingRight: 7 }}
+        width="100%"
       >
-        <Dropdown
-          value={figureType}
-          label="Figurtype"
-          onChange={handleFigureTypeChange}
-        >
-          <MenuItem value={"line"} disabled={numberOfTimePoints === 1}>
-            Tidstrend
-          </MenuItem>
-          <MenuItem value={"bar"}>Enkeltår</MenuItem>
-        </Dropdown>
-        {figureType === "bar" && (
-          <Dropdown
-            value={barChartType}
-            label="Enheter"
-            onChange={handleBarChartTypeChange}
-          >
-            <MenuItem value={"selected"}>Valgte enheter</MenuItem>
-            <MenuItem value={"rhf"}>Regioner</MenuItem>
-            <MenuItem value={"hf"}>Helseforetak</MenuItem>
-            <MenuItem value={"hospital"}>Sykehus</MenuItem>
-          </Dropdown>
-        )}
-        {showDGButton && (
+        <Stack direction="row" alignItems="end" spacing={1}>
+          <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+            Årstall
+            {/* @ts-expect-error Component will support empty label in next version */}
+            <Dropdown
+              value={figureType}
+              //label="Figurtype"
+              onChange={handleFigureTypeChange}
+            >
+              <MenuItem value={"line"} disabled={numberOfTimePoints === 1}>
+                Tidstrend
+              </MenuItem>
+              <MenuItem value={"bar"}>Enkeltår</MenuItem>
+            </Dropdown>
+          </div>
+          {figureType === "bar" && (
+            <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+              Behandlingsenheter
+              {/* @ts-expect-error Component will support empty label in next version */}
+              <Dropdown
+                value={barChartType}
+                //label="Enheter"
+                onChange={handleBarChartTypeChange}
+              >
+                <MenuItem value={"selected"}>Valgte enheter</MenuItem>
+                <MenuItem value={"rhf"}>Regioner</MenuItem>
+                <MenuItem value={"hf"}>Helseforetak</MenuItem>
+                <MenuItem value={"hospital"}>Sykehus</MenuItem>
+              </Dropdown>
+            </div>
+          )}
+          {showDGButton && (
+            <Button
+              startIcon={<Icon symbol="data_loss_prevention" size="medium" />}
+              onClick={() => {
+                setCoveragePopupOpen(true);
+              }}
+            >
+              Datakvalitet
+            </Button>
+          )}
           <Button
-            startIcon={<Icon symbol="data_loss_prevention" size="medium" />}
             onClick={() => {
-              setCoveragePopupOpen(true);
+              setZoom(!zoom);
             }}
+            startIcon={<Icon symbol="search" size="medium" />}
+            variant="filled"
           >
-            Dekningsgrad
+            Zoom
           </Button>
+
+          <DataQualityPopup
+            open={coveragePopupOpen}
+            setOpen={setCoveragePopupOpen}
+            unitNames={unitNames}
+            year={year}
+            context={context}
+            medfield={medfield}
+            treatmentUnitsByLevel={treatmentUnitsByLevel}
+            registryName={registryName}
+            dataQualityIndId={data.dataQualityIndicatorID}
+          />
+        </Stack>
+        {showDGButton && (
+          <SplitButton
+            label="Last ned"
+            onClick={() => {
+              const apiRef =
+                figureType === "line" ? lineChartApiRef : barChartApiRef;
+              // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+              apiRef.current!.exportAsImage({
+                onBeforeExport: makeOnBeforeExport(
+                  data.indicatorTitle || "",
+                  registryName,
+                ),
+              });
+            }}
+            options={["Last ned som bilde"]}
+            steps="one-step"
+          />
         )}
-        <Button
-          onClick={() => {
-            setZoom(!zoom);
-          }}
-          startIcon={<Icon symbol="search" size="medium" />}
-          variant="filled"
-        >
-          Zoom
-        </Button>
-
-        <DataQualityPopup
-          open={coveragePopupOpen}
-          setOpen={setCoveragePopupOpen}
-          unitNames={unitNames}
-          year={year}
-          context={context}
-          medfield={medfield}
-          treatmentUnitsByLevel={treatmentUnitsByLevel}
-          registryName={registryName}
-          dataQualityIndId={data.dataQualityIndicatorID}
-        />
-
-        <SplitButton
-          label="Last ned"
-          onClick={() => {
-            const apiRef =
-              figureType === "line" ? lineChartApiRef : barChartApiRef;
-            // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-            apiRef.current!.exportAsImage({
-              onBeforeExport: makeOnBeforeExport(
-                data.indicatorTitle || "",
-                registryName,
-              ),
-            });
-          }}
-          options={["Last ned som bilde"]}
-          steps="one-step"
-        ></SplitButton>
       </Stack>
       <Box
         sx={{

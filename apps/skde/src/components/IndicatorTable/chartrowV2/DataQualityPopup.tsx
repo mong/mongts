@@ -1,9 +1,11 @@
-import { Button } from "@mong/material-ui";
+import { Button, ContextCard } from "@mong/material-ui";
 import {
+  Box,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
+  Typography,
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import type { FetchIndicatorParams } from "qmongjs/src/helpers/hooks";
@@ -108,9 +110,21 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
     return NoDataDialog;
   }
 
+  const contextCardDescription =
+    "Data anses å ha god kvalitet når de er relevante, korrekte, komplette og tilgjengelige for brukerne i rett tid og format. " +
+    "Arbeidet med datakvalitet omfatter derfor mer enn bare selve datainnsamlingen. " +
+    "Det handler om planlegging, design, dokumentasjon, tekniske løsninger, rutiner for oppfølging og hvordan data faktisk blir brukt.";
+
   return (
     <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
-      <DialogTitle>Datakvalitet</DialogTitle>
+      <DialogTitle>
+        <Typography variant="h4">Datakvalitet</Typography>
+      </DialogTitle>
+      <Typography variant="h6" sx={{ paddingLeft: 4, paddingRight: 4 }}>
+        God datakvalitet er en forutsetning for at kvalitetsregistre skal kunne
+        gi pålitelig kunnskap om helsetjenesten, støtte kvalitetsforbedring og
+        legge grunnlag for god forskning.
+      </Typography>
       <DialogContent>
         <ChartRowV2
           data={dgIndData[0]}
@@ -125,6 +139,13 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
           showDGButton={false}
         />
       </DialogContent>
+      <Box sx={{ paddingLeft: 4, paddingRight: 4 }}>
+        {/* @ts-expect-error Component will support empty label in next version */}
+        <ContextCard
+          title="Om datakvalitet"
+          description={contextCardDescription}
+        />
+      </Box>
       <DialogActions>
         <Button onClick={handleClose}>Lukk</Button>
       </DialogActions>
