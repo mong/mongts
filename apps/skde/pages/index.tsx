@@ -1,4 +1,4 @@
-import { Frame, HeroBanner, PageContent } from "@mong/material-ui";
+import { Frame, PageContent } from "@mong/material-ui";
 import Link from "next/link";
 
 export default function Home() {

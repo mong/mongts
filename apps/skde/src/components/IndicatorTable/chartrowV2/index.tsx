@@ -1,5 +1,5 @@
 import { Button, Dropdown, Icon, SplitButton } from "@mong/material-ui";
-import { Box, MenuItem, type SelectChangeEvent, Stack } from "@mui/material";
+import { Box, type SelectChangeEvent, Stack } from "@mui/material";
 import { useChartProApiRef } from "@mui/x-charts-pro";
 import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
 import { useState } from "react";
@@ -102,6 +102,33 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
     return percentage ? `${Math.round(value * 100)} %` : `${value}`;
   };
 
+  const figureTypeItems = {
+    groups: [
+      {
+        items:
+          numberOfTimePoints > 1
+            ? [
+                { value: "line", label: "Tidstrend" },
+                { value: "bar", label: "Enkeltår" },
+              ]
+            : [{ value: "bar", label: "Enkeltår" }],
+      },
+    ],
+  };
+
+  const barChartTypeItems = {
+    groups: [
+      {
+        items: [
+          { value: "selected", label: "Valgte enheter" },
+          { value: "rhf", label: "Regioner" },
+          { value: "hf", label: "Helseforetak" },
+          { value: "hospital", label: "Sykehus" },
+        ],
+      },
+    ],
+  };
+
   return (
     <Box>
       <Stack
@@ -114,32 +141,20 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
         <Stack direction="row" alignItems="end" spacing={1}>
           <div className="flex flex-col text-small font-semibold text-brand-primary-900">
             Årstall
-            {/* @ts-expect-error Component will support empty label in next version */}
             <Dropdown
               value={figureType}
-              //label="Figurtype"
               onChange={handleFigureTypeChange}
-            >
-              <MenuItem value={"line"} disabled={numberOfTimePoints === 1}>
-                Tidstrend
-              </MenuItem>
-              <MenuItem value={"bar"}>Enkeltår</MenuItem>
-            </Dropdown>
+              items={figureTypeItems}
+            />
           </div>
           {figureType === "bar" && (
             <div className="flex flex-col text-small font-semibold text-brand-primary-900">
               Behandlingsenheter
-              {/* @ts-expect-error Component will support empty label in next version */}
               <Dropdown
                 value={barChartType}
-                //label="Enheter"
                 onChange={handleBarChartTypeChange}
-              >
-                <MenuItem value={"selected"}>Valgte enheter</MenuItem>
-                <MenuItem value={"rhf"}>Regioner</MenuItem>
-                <MenuItem value={"hf"}>Helseforetak</MenuItem>
-                <MenuItem value={"hospital"}>Sykehus</MenuItem>
-              </Dropdown>
+                items={barChartTypeItems}
+              />
             </div>
           )}
           {showDGButton && (

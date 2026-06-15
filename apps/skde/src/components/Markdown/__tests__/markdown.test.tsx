@@ -7,13 +7,18 @@
  */
 
 import { render } from "@testing-library/react";
+import { createElement } from "react";
 import { expect, test, vi } from "vitest";
 import { Markdown } from "..";
 
 vi.mock("next/image", () => ({
-  default: ({ src, alt, title, ...props }: any) => (
-    <img alt={alt} src={src} title={title} {...props} />
-  ),
+  default: ({
+    src,
+    alt,
+    title,
+    ...props
+  }: Record<string, string | undefined>) =>
+    createElement("img", { alt, src, title, ...props }),
 }));
 
 test("Standard render", async () => {

@@ -5,7 +5,6 @@ import Document, {
   Main,
   NextScript,
 } from "next/document";
-import "@mong/material-ui/styles.css";
 
 class MyDocument extends Document<{ lang: string; pathname: string }> {
   static async getInitialProps(ctx: DocumentContext) {
