@@ -120,7 +120,7 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
       <DialogTitle>
         <Typography variant="h4">Datakvalitet</Typography>
       </DialogTitle>
-      <Typography variant="h6" sx={{ paddingLeft: 4, paddingRight: 4 }}>
+      <Typography variant="body2" sx={{ paddingLeft: 4, paddingRight: 4 }}>
         God datakvalitet er en forutsetning for at kvalitetsregistre skal kunne
         gi pålitelig kunnskap om helsetjenesten, støtte kvalitetsforbedring og
         legge grunnlag for god forskning.
