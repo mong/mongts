@@ -1,7 +1,9 @@
 import type { StyledComponent } from "@emotion/styled";
+import { ContextCard } from "@mong/material-ui";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import {
+  Box,
   Collapse,
   Stack,
   type TableCellProps,
@@ -13,7 +15,6 @@ import type { MUIStyledCommonProps } from "@mui/system";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { customFormat, level2, newestLevelSymbols, skdeTheme } from "qmongjs";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import type { IndicatorData, OptsTu } from "types";
 import { ChartRowV2 } from "../chartrowV2";
@@ -215,38 +216,17 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
             </table>
           </div>
 
-          <Typography variant="body2" sx={{ margin: "2rem" }}>
-            <b>Om kvalitetsindikatoren</b>
-          </Typography>
-          <ReactMarkdown
-            remarkPlugins={remarkPlugins}
-            components={{
-              p({ children }) {
-                return (
-                  <Typography variant="body2" sx={{ margin: "2rem" }}>
-                    {children}
-                  </Typography>
-                );
-              },
-              a({ href, children }) {
-                return (
-                  <a
-                    href={href}
-                    target={href?.startsWith("#") ? "_self" : "_blank"}
-                    rel="noreferrer"
-                    style={{ color: "#006492" }}
-                  >
-                    {children}
-                  </a>
-                );
-              },
-            }}
-          >
-            {indData.longDescription}
-          </ReactMarkdown>
-          <Typography variant="body2" sx={{ margin: "2rem" }}>
-            {lastDeliveryText}
-          </Typography>
+          <Box paddingLeft={4} paddingRight={4} paddingBottom={4}>
+            <ContextCard
+              title="Om kvalitetsindikatoren"
+              description={
+                indData.longDescription
+                  ? indData.longDescription
+                  : "Mangler beskrivelse"
+              }
+              updated={lastDeliveryText}
+            />
+          </Box>
         </React.Fragment>
       );
     }
