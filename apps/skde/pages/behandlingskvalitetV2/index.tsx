@@ -7,14 +7,10 @@ import {
 } from "@mong/material-ui";
 import { Box, type SelectChangeEvent, Stack, Typography } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
-import {
-  defaultYear,
-  mainQueryParamsConfig,
-  useRegisterNamesQuery,
-  useUnitNamesQuery,
-} from "qmongjs";
+import { useRegisterNamesQuery, useUnitNamesQuery } from "qmongjs";
 import { useState } from "react";
 import { useQueryParam } from "use-query-params";
+import { defaultYear, mainQueryParamsConfig } from "../../src/app_config";
 import { MedicalFieldPopup } from "../../src/components/DialogBox/MedicalFieldPopup";
 import { TreatmentUnitPopup } from "../../src/components/DialogBox/TreatmentunitPopup";
 import { IndicatorTableV2 } from "../../src/components/IndicatorTable/Indicatortable";
