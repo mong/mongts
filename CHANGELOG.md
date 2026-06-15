@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.5](https://github.com/mong/mongts/compare/v1.4.4...v1.4.5) (2026-06-15)
+
+
+### Bug Fixes
+
+* bruk riktig config i BKV2 ([#4740](https://github.com/mong/mongts/issues/4740)) ([fd01dfb](https://github.com/mong/mongts/commit/fd01dfb7b83f0d1e4ec721874da944f486dcf55b))
+* vis ny knapperad på registersider ([#4734](https://github.com/mong/mongts/issues/4734)) ([26fd102](https://github.com/mong/mongts/commit/26fd1020a371092cb9e83d380b4994a30162a14b))
+
 ## [1.4.4](https://github.com/mong/mongts/compare/v1.4.3...v1.4.4) (2026-06-12)
 
 
