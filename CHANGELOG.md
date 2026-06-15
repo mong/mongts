@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.4.4](https://github.com/mong/mongts/compare/v1.4.3...v1.4.4) (2026-06-12)
+
+
+### Bug Fixes
+
+* endre navn på mellomside i brødsmuler ([#4723](https://github.com/mong/mongts/issues/4723)) ([1aff894](https://github.com/mong/mongts/commit/1aff8941046da4174cc2d0a58433ae5e7f7519ed))
+* reparer MedfieldTable i Sykehusprofil ([#4719](https://github.com/mong/mongts/issues/4719)) ([909358c](https://github.com/mong/mongts/commit/909358c4ac9c5e75b707d231714208a7ef69b041))
+* sett riktig standardår på registerspesifikke sider ([#4733](https://github.com/mong/mongts/issues/4733)) ([4087bcf](https://github.com/mong/mongts/commit/4087bcf194265fdf4494f366ae852ed01fe119b5))
+* tooltip i linjdiagram i BK ([#4721](https://github.com/mong/mongts/issues/4721)) ([b6546b7](https://github.com/mong/mongts/commit/b6546b79f1a24f3e15974e88b2ce30448e1b45d5))
+
 ## [1.4.3](https://github.com/mong/mongts/compare/v1.4.2...v1.4.3) (2026-06-10)
 
 
