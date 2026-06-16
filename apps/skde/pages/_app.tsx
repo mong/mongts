@@ -1,13 +1,3 @@
-import { LicenseInfo } from "@mui/x-license";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { useRouter } from "next/router";
-import { NextAdapter } from "next-query-params";
-import { useEffect, useState } from "react";
-import { QueryParamProvider } from "use-query-params";
-import "../app/global.css";
-import "@mong/material-ui/index.css"; //Denne må nederst
 import {
   Breadcrumbs,
   Footer,
@@ -16,7 +6,16 @@ import {
   PageLayout,
   SkdeThemeProvider,
 } from "@mong/material-ui";
+import { LicenseInfo } from "@mui/x-license";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import type { AppProps } from "next/app";
+import { useRouter } from "next/router";
+import { NextAdapter } from "next-query-params";
+import { useEffect, useState } from "react";
+import { QueryParamProvider } from "use-query-params";
+
+import "../app/global.css";
 
 type Languages = "en" | "no";
 

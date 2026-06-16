@@ -7,7 +7,7 @@ type AppBarProps = {
 export const TreatmentQualityAppBarV2 = ({ children }: AppBarProps) => {
   return (
     <AppBar position="sticky" color="transparent" elevation={0}>
-      <Toolbar>{children}</Toolbar>
+      <Toolbar disableGutters={true}>{children}</Toolbar>
     </AppBar>
   );
 };
