@@ -28,7 +28,6 @@ jobs:
         uses: azure/login@v3
         with:
           creds: ${{ secrets.AZURE_FRONTDOOR_CREDENTIALS }}
-          enable-AzPSSession: true
       
       - name: Check out the repo
         uses: actions/checkout@v6
