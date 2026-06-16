@@ -2,7 +2,7 @@ import type { LineSeriesType } from "@mui/x-charts";
 import { customFormat } from "qmongjs/src/helpers/functions";
 import type { DataPoint, IndicatorData } from "types";
 
-type Point = { x: number; y: number | null };
+type Point = { x: number; y: number | null; n: number | null };
 
 // Format to {x, y}
 export const reshapeData = (
@@ -17,7 +17,7 @@ export const reshapeData = (
         return row.unitName === unitName && row.context === context;
       })
       .map((row: DataPoint) => {
-        return { x: row.year, y: row.var } as Point;
+        return { x: row.year, y: row.var, n: row.denominator } as Point;
       });
   });
 
@@ -46,7 +46,7 @@ const padData = (data: Point[][], uniqueYears: number[]) => {
 
   const missingData = missingYears.map((row) => {
     return row.map((element) => {
-      return { x: element, y: null } as Point;
+      return { x: element, y: null, n: null } as Point;
     });
   });
 
@@ -78,6 +78,7 @@ const formatLineData = (
   dataFormat: string,
 ) => {
   // Add unit name label
+
   const lineData = data.map((row, i) => {
     return {
       data: row.map((point) => point.y),
@@ -85,7 +86,13 @@ const formatLineData = (
       curve: "linear",
       type: "line",
       connectNulls: true,
-      valueFormatter: (value: number) => customFormat(dataFormat)(value),
+      valueFormatter: (
+        value: number | null,
+        { dataIndex }: { dataIndex: number },
+      ) => {
+        // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+        return `${value && customFormat(dataFormat)(value) + " (N =  " + row[dataIndex].n + ")"}`;
+      },
     } as LineSeriesType;
   });
 
