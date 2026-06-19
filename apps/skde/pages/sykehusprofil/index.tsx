@@ -10,7 +10,6 @@ import type { UseQueryResult } from "@tanstack/react-query";
 import { useScreenSize } from "@visx/responsive";
 import {
   breakpoints,
-  defaultYear,
   getUnitFullName,
   mainHospitals,
   skdeTheme,
@@ -19,6 +18,7 @@ import {
 } from "qmongjs";
 import { type JSX, useEffect, useState } from "react";
 import type { URLs } from "types";
+import { defaultYear } from "../../src/app_config";
 import { Header } from "../../src/components/Header";
 import { HospitalInfoBox } from "../../src/components/HospitalProfile";
 import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
@@ -66,7 +66,7 @@ export const Skde = (): JSX.Element => {
 
   // Years for filtering
   const lastYear = defaultYear;
-  const pastYears = 5;
+  const pastYears = 10;
 
   // ####### //
   // Queries //
