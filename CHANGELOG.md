@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.0](https://github.com/mong/mongts/compare/v1.4.5...v1.5.0) (2026-06-19)
+
+
+### Features
+
+* n i tooltip i linjediagram ([#4771](https://github.com/mong/mongts/issues/4771)) ([c407021](https://github.com/mong/mongts/commit/c407021a00571f57b90fb9e7c026392327650fd1))
+
+
+### Bug Fixes
+
+* treeview-ekspanderingen i filtermenyen fungerer igjen ([#4787](https://github.com/mong/mongts/issues/4787)) ([106f4ae](https://github.com/mong/mongts/commit/106f4ae609a68dd02c5cd3276d2f220977acc54f))
+
 ## [1.4.5](https://github.com/mong/mongts/compare/v1.4.4...v1.4.5) (2026-06-15)
 
 
