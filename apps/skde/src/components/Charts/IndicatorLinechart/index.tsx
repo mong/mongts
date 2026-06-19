@@ -187,25 +187,12 @@ export const IndicatorLinechart = (
   // Count indicators per level per year
   const groupedLevels = countLevels(uniqueLevels);
 
-  // Time series bounds
-  const minYear =
-    indicatorParams.startYear &&
-    _.min(
-      levels.map((row) => {
-        return row.year;
-      }),
-    );
-
-  const maxYear =
-    indicatorParams.endYear &&
-    _.max(
-      levels.map((row) => {
-        return row.year;
-      }),
-    );
-
   // Fill missing years with zero
-  let chartData = setMissingToZero(groupedLevels, minYear, maxYear);
+  let chartData = setMissingToZero(
+    groupedLevels,
+    indicatorParams.startYear,
+    indicatorParams.endYear,
+  );
 
   const normalise = indicatorParams.normalise ?? false;
 
