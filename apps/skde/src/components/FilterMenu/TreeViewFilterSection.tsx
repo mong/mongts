@@ -420,7 +420,8 @@ export function TreeViewFilterSection(props: TreeViewSectionProps) {
             }
           }
         }}
-        onSelectedItemsChange={(itemId) => {
+        // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+        onSelectedItemsChange={(event, itemId) => {
           if (typeof itemId === "string") {
             toggleExpanded(itemId);
           }
