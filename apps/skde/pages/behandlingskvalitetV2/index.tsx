@@ -117,18 +117,21 @@ export default function TreatmentQualityPage() {
         title="Behandlingskvalitet"
         image="/hero-bg-4.jpg"
       />
-      <div className="flex bg-neutral-0 w-full align-middle items-center justify-center">
-        <div className="flex flex-col w-full h-full md:px-6 md:min-w-360 max-w-260 ">
+      <div className="flex bg-neutral-0 w-full align-middle items-center justify-center px-12">
+        <div className="flex flex-col w-full h-full max-w-360">
           <TreatmentQualityAppBarV2>
             <Stack
               direction="row"
               justifyContent="space-between"
-              alignItems="end"
-              sx={{ paddingTop: 2, paddingBottom: 2 }}
+              alignItems="center"
+              sx={{
+                paddingTop: 2,
+                paddingBottom: 2,
+              }}
               width="100%"
             >
               <Stack direction="row" spacing={3}>
-                <div className="flex flex-col text-small font-semibold  text-brand-primary-900">
+                <div className="flex flex-col text-small font-semibold text-brand-primary-900">
                   Fagområde
                   <Button onClick={handleMedicalFieldButtonClick}>
                     Velg fagområde
@@ -213,9 +216,7 @@ export default function TreatmentQualityPage() {
               borderRadius: "16px",
             }}
           >
-            <Typography variant="h3" color="#0D244E">
-              Velg et fagområde du vil se resultater fra
-            </Typography>
+            <h3>Velg et fagområde du vil se resultater fra</h3>
             <Button onClick={handleMedicalFieldButtonClick}>
               Velg fagområde
             </Button>
