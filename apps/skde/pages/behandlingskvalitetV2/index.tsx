@@ -5,7 +5,7 @@ import {
   Icon,
   PageContent,
 } from "@mong/material-ui";
-import { Box, type SelectChangeEvent, Stack, Typography } from "@mui/material";
+import { Box, type SelectChangeEvent, Stack } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useRegisterNamesQuery, useUnitNamesQuery } from "qmongjs";
 import { useState } from "react";

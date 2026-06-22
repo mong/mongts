@@ -15,7 +15,6 @@ import type { MUIStyledCommonProps } from "@mui/system";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { customFormat, level2, newestLevelSymbols, skdeTheme } from "qmongjs";
 import React from "react";
-import remarkGfm from "remark-gfm";
 import type { IndicatorData, OptsTu } from "types";
 import { ChartRowV2 } from "../chartrowV2";
 import {
@@ -61,8 +60,6 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
     residentData,
     showDGButton,
   } = props;
-
-  const remarkPlugins = [remarkGfm];
 
   const router = useRouter();
   const pathname = usePathname();

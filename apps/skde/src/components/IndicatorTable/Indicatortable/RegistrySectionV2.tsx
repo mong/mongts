@@ -1,17 +1,27 @@
 import { TagButton } from "@mong/material-ui";
-import { Stack, Typography } from "@mui/material";
-import TableBody from "@mui/material/TableBody";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import {
+  Box,
+  Stack,
+  TableBody,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
-import { level2, skdeTheme, useIndicatorQuery } from "qmongjs";
+import { skdeTheme, useIndicatorQuery } from "qmongjs";
 import {
   type FetchIndicatorParams,
   useResidentDataQuery,
   useUnitNamesQuery,
 } from "qmongjs/src/helpers/hooks";
 import React, { useState } from "react";
-import type { IndicatorData, OptsTu, RegisterData, ResidentData } from "types";
+import type {
+  DataPoint,
+  IndicatorData,
+  OptsTu,
+  RegisterData,
+  ResidentData,
+} from "types";
 import { IndicatorSection } from "./IndicatorSection";
 import {
   StyledTableCellEnd,
@@ -111,58 +121,45 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
             : 1;
   });
 
-  // Sjekk om hele registerseksjonen skal filtreres bort på grunn av målnivåfilter
-  let showSection: boolean;
-
-  if (levels === undefined || levels === "") {
-    showSection = true;
-  } else {
-    showSection = !regData.indicatorData
-      .map((indRow) => {
-        return indRow.data
-          ? !indRow.data
-              .map((dataRow) => {
-                return level2(indRow, dataRow) === levels;
-              })
-              .every((x) => x === false)
-          : null;
-      })
-      .every((x) => x === false);
-  }
+  const dataAvailable =
+    regData.indicatorData
+      .flatMap((row: IndicatorData) => row.data)
+      .filter((row: DataPoint) => row.year === year).length > 0;
 
   const handleClick = () => {
     setCurrentContext(
       currentContext === "caregiver" ? "resident" : "caregiver",
     );
   };
-  if (showSection) {
-    return (
-      <React.Fragment>
-        <TableHead>
-          <TableRow key={`${regData.registerName}-toprow`}>
-            <StyledTableCellStart
-              key={regData.registerName}
-              sx={{
-                backgroundColor: skdeTheme.palette.background.paper,
-                width: "3rem",
-              }}
-              colSpan={unitNames.length + 2}
-            >
-              <Stack direction="row" spacing={2} alignItems="center">
-                <div
-                  lang="no"
-                  style={{ wordWrap: "break-word", hyphens: "auto" }}
-                >
-                  <Typography variant="h3">
-                    {regData.registerShortName}
-                  </Typography>
-                </div>
-                {registryHasResidentData && (
-                  <TagButton label="Opptaksområde" onClick={handleClick} />
-                )}
-              </Stack>
-            </StyledTableCellStart>
-          </TableRow>
+
+  return (
+    <React.Fragment>
+      <TableHead>
+        <TableRow key={`${regData.registerName}-toprow`}>
+          <StyledTableCellStart
+            key={regData.registerName}
+            sx={{
+              backgroundColor: skdeTheme.palette.background.paper,
+              width: "3rem",
+            }}
+            colSpan={unitNames.length + 2}
+          >
+            <Stack direction="row" spacing={2} alignItems="center">
+              <div
+                lang="no"
+                style={{ wordWrap: "break-word", hyphens: "auto" }}
+              >
+                <Typography variant="h3">
+                  {regData.registerShortName}
+                </Typography>
+              </div>
+              {registryHasResidentData && (
+                <TagButton label="Opptaksområde" onClick={handleClick} />
+              )}
+            </Stack>
+          </StyledTableCellStart>
+        </TableRow>
+        {dataAvailable && (
           <TableRow key={`${regData.registerName}-row`}>
             <StyledTableCellStart
               sx={{
@@ -209,29 +206,36 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
               );
             })}
           </TableRow>
-        </TableHead>
-        <TableBody>
-          <IndicatorSection
-            key={regData.registerName}
-            unitNames={unitNames}
-            medfield={medfield}
-            levels={levels}
-            data={regData.indicatorData}
-            openRowID={openRowID}
-            setOpenRowID={setOpenRowID}
-            registryName={regData.registerFullName}
-            context={currentContext}
-            type={type}
-            year={year}
-            chartColours={chartColours}
-            treatmentUnitsByLevel={treatmentUnitsByLevel}
-            residentData={currentContext === "resident"}
-            showDGButton={true}
-          />
-        </TableBody>
-      </React.Fragment>
-    );
-  } else {
-    return null;
-  }
+        )}
+      </TableHead>
+      <TableBody>
+        {registryHasResidentData &&
+          currentContext === "caregiver" &&
+          !dataAvailable && (
+            <Box marginLeft={2} marginBottom={4}>
+              <Typography variant="h6">
+                Registeret har data på opptaksområde
+              </Typography>
+            </Box>
+          )}
+        <IndicatorSection
+          key={regData.registerName}
+          unitNames={unitNames}
+          medfield={medfield}
+          levels={levels}
+          data={regData.indicatorData}
+          openRowID={openRowID}
+          setOpenRowID={setOpenRowID}
+          registryName={regData.registerFullName}
+          context={currentContext}
+          type={type}
+          year={year}
+          chartColours={chartColours}
+          treatmentUnitsByLevel={treatmentUnitsByLevel}
+          residentData={currentContext === "resident"}
+          showDGButton={true}
+        />
+      </TableBody>
+    </React.Fragment>
+  );
 };
