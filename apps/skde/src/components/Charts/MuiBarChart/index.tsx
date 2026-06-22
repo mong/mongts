@@ -281,10 +281,10 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
             }}
           >
             <Typography
-              variant="button"
+              variant="body1"
               sx={{ paddingLeft: 15, whiteSpace: "nowrap" }}
             >
-              {year}
+              Valgt år: {year}
             </Typography>
           </Box>
           <ChartsTooltip />
