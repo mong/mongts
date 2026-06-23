@@ -6,8 +6,6 @@ import {
   PageContent,
 } from "@mong/material-ui";
 import { Box, type SelectChangeEvent, Stack } from "@mui/material";
-import type { UseQueryResult } from "@tanstack/react-query";
-import { useRegisterNamesQuery, useUnitNamesQuery } from "qmongjs";
 import { useState } from "react";
 import { useQueryParam } from "use-query-params";
 import { defaultYear, mainQueryParamsConfig } from "../../src/app_config";
@@ -21,7 +19,6 @@ import {
   getSortedList,
   updateColourMap,
 } from "../../src/helpers/functions/chartColours";
-import { defaultTableContext } from "../../src/utils/valueOrDefault";
 
 export default function TreatmentQualityPage() {
   const numberOfYearOptions = 5;
@@ -33,16 +30,13 @@ export default function TreatmentQualityPage() {
     number | undefined
   >("year", mainQueryParamsConfig.year);
 
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  const [selectedTableContext, setSelectedTableContext] =
-    useState(defaultTableContext);
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  const [selectedLevel, setSelectedLevel] = useState<string | undefined>();
+  const selectedTableContext = "caregiver";
 
   const [selectedMedicalFields = [], setSelectedMedicalFields] = useQueryParam<
     string[] | undefined
     // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   >("registries", mainQueryParamsConfig.registries as any);
+
   const [
     selectedTreatmentUnits = defaultTreatmentUnits,
     setSelectedTreatmentUnits,
@@ -51,9 +45,6 @@ export default function TreatmentQualityPage() {
     // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
     mainQueryParamsConfig.units as any,
   );
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  const [dataQualitySelected, setDataQualitySelected] =
-    useState<boolean>(false);
 
   const [medicalFieldPopupOpen, setMedicalFieldPopupOpen] = useState(false);
   const [treatmentUnitPopupOpen, setTreatmentUnitPopupOpen] = useState(false);
@@ -64,18 +55,6 @@ export default function TreatmentQualityPage() {
   // When the button is pressed it should change for a duration of time to show the user that the action is done.
   const [urlCopied, setUrlCopied] = useState<boolean>(false);
   const urlCopiedTimeout = 3000;
-
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  const unitNamesQuery: UseQueryResult<unknown, unknown> = useUnitNamesQuery(
-    selectedMedicalFields[0] ? selectedMedicalFields[0] : "all",
-    selectedTableContext,
-    dataQualitySelected ? "dg" : "ind",
-  );
-
-  // Load register names and medical fields
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  const registryNameQuery: UseQueryResult<unknown, unknown> =
-    useRegisterNamesQuery();
 
   updateColourMap(colourMap, setColourMap, selectedTreatmentUnits);
 
@@ -195,8 +174,8 @@ export default function TreatmentQualityPage() {
               "units",
             )}
             year={selectedYear}
-            type={dataQualitySelected ? "dg" : "ind"}
-            levels={selectedLevel || ""}
+            type={"ind"}
+            levels={""}
             medfields={selectedMedicalFields}
             chartColours={getSortedList(
               colourMap,
