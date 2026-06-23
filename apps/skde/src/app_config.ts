@@ -63,6 +63,8 @@ export const mainQueryParamsConfig = {
   chart_show_N: withDefault(BooleanParam, undefined),
   registries: withDefault(DelimitedArrayParam, undefined),
   units: withDefault(DelimitedArrayParam, undefined),
+  chart: withDefault(StringParam, undefined),
+  chartsetting: withDefault(StringParam, undefined),
 };
 
 /** List of hospitals shown on main page of Behandlingskvalitet and Sykehusprofil apps **/
