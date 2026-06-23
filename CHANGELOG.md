@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.0](https://github.com/mong/mongts/compare/v1.5.0...v1.6.0) (2026-06-23)
+
+
+### Features
+
+* behold innstillinger for figurer i tabellen ([#4794](https://github.com/mong/mongts/issues/4794)) ([4569c13](https://github.com/mong/mongts/commit/4569c133e411b4f51ea882d07f50fa00ea635cef))
+* lagt til knapp for å skrolle til toppen av BKV2 ([#4796](https://github.com/mong/mongts/issues/4796)) ([8843a9c](https://github.com/mong/mongts/commit/8843a9ca40382ac4f249e64dea3318da52d4ea34))
+
 ## [1.5.0](https://github.com/mong/mongts/compare/v1.4.5...v1.5.0) (2026-06-19)
 
 
