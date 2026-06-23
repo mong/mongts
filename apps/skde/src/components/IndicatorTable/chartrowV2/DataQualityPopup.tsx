@@ -12,7 +12,7 @@ import type { FetchIndicatorParams } from "qmongjs/src/helpers/hooks";
 import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
 import type { Dispatch, SetStateAction } from "react";
 import type { DataPoint, OptsTu } from "types";
-import { ChartRowV2 } from ".";
+import { DataQualityChartRow } from "./DataQualityChartRow";
 
 type CoveragePopupProps = {
   open: boolean;
@@ -126,7 +126,7 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
         legge grunnlag for god forskning.
       </Typography>
       <DialogContent>
-        <ChartRowV2
+        <DataQualityChartRow
           data={dgIndData[0]}
           unitNames={unitNames}
           year={year}
