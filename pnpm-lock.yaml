@@ -60,8 +60,8 @@ importers:
         specifier: 8.1.0
         version: 8.1.0
       knex:
-        specifier: 3.2.9
-        version: 3.2.9(mysql2@3.22.3(@types/node@25.9.4))
+        specifier: 3.2.10
+        version: 3.2.10(mysql2@3.22.3(@types/node@25.9.4))
       mysql2:
         specifier: 3.22.3
         version: 3.22.3(@types/node@25.9.4)
@@ -3824,8 +3824,8 @@ packages:
     resolution: {integrity: sha512-gqXddjPqQ6G40VdnI6T6yObEC+pDNvyP95wdQhkWkg7crHH3km5qP1FsOXEkzEQwnz6gz5qGTn1c2Y52wP3OyQ==}
     engines: {'0': node >=0.6.0}
 
-  knex@3.2.9:
-    resolution: {integrity: sha512-dtAILTjBMaG8YloP5oBxohDIKyIsdQ/TkcVvSjhsksvsjeH63Y0PADyuMDfNZKbVT3Rlx3vEYVBlecbPT/KerA==}
+  knex@3.2.10:
+    resolution: {integrity: sha512-oypTHfrc9i72iyxaUQBKHOxhcr0xM65MPf6FpN02nimsftXwzXprIkLjfXdubvhbu4PMWLp023q8o8CYvHSuZw==}
     engines: {node: '>=16'}
     hasBin: true
     peerDependencies:
@@ -9189,7 +9189,7 @@ snapshots:
       json-schema: 0.4.0
       verror: 1.10.0
 
-  knex@3.2.9(mysql2@3.22.3(@types/node@25.9.4)):
+  knex@3.2.10(mysql2@3.22.3(@types/node@25.9.4)):
     dependencies:
       colorette: 2.0.19
       commander: 10.0.1
