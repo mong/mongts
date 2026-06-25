@@ -1,9 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:recommended"],
-  "baseBranchPatterns": [
-    "develop"
-  ],
+  "baseBranchPatterns": ["develop"],
   "commitMessageExtra": "from v{{currentVersion}} to {{prettyNewVersion}}",
   "packageRules": [
     {
@@ -15,7 +13,7 @@
     {
       "matchHost": "https://npm.pkg.github.com",
       "hostType": "github",
-      "token": "{{ secrets.NODE_AUTH_TOKEN }}"
+      "token": "{{ env.NODE_AUTH_TOKEN }}"
     }
   ]
 }
