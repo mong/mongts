@@ -4,8 +4,6 @@ import { useChartProApiRef } from "@mui/x-charts-pro";
 import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
 import { useState } from "react";
 import type { DataPoint, IndicatorData, OptsTu } from "types";
-import { useQueryParam } from "use-query-params";
-import { mainQueryParamsConfig } from "../../../app_config";
 import {
   formatMuiChartData,
   makeOnBeforeExport,
@@ -27,7 +25,7 @@ type chartRowV2Props = {
   showDGButton?: boolean;
 };
 
-export const ChartRowV2 = (props: chartRowV2Props) => {
+export const DataQualityChartRow = (props: chartRowV2Props) => {
   const {
     data,
     unitNames,
@@ -52,17 +50,11 @@ export const ChartRowV2 = (props: chartRowV2Props) => {
 
   const numberOfTimePoints = Math.max(...numberOfTimePointsArray);
 
-  const [figureType = numberOfTimePoints > 1 ? "line" : "bar", setFigureType] =
-    useQueryParam<string | undefined>(
-      "chart",
-      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-      mainQueryParamsConfig.chart as any,
-    );
+  const [figureType, setFigureType] = useState(
+    numberOfTimePoints > 1 ? "line" : "bar",
+  );
 
-  const [barChartType = "selected", setBarChartType] = useQueryParam<
-    string | undefined
-    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  >("chartsetting", mainQueryParamsConfig.chartsetting as any);
+  const [barChartType, setBarChartType] = useState("selected");
 
   const [zoom, setZoom] = useState<boolean>(false);
 

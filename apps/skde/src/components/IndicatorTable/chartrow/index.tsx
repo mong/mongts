@@ -14,7 +14,7 @@ import { MuiBarChart } from "../../Charts/MuiBarChart";
 import { MuiLineChart } from "../../Charts/MuiLineChart";
 import { DataQualityPopup } from "./DataQualityPopup";
 
-type chartRowV2Props = {
+type ChartRowProps = {
   data: IndicatorData;
   unitNames: string[];
   medfield: string;
@@ -27,7 +27,7 @@ type chartRowV2Props = {
   showDGButton?: boolean;
 };
 
-export const DataQualityChartRow = (props: chartRowV2Props) => {
+export const ChartRow = (props: ChartRowProps) => {
   const {
     data,
     unitNames,
@@ -52,11 +52,17 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
 
   const numberOfTimePoints = Math.max(...numberOfTimePointsArray);
 
-  const [figureType, setFigureType] = useState(
-    numberOfTimePoints > 1 ? "line" : "bar",
-  );
+  const [figureType = numberOfTimePoints > 1 ? "line" : "bar", setFigureType] =
+    useQueryParam<string | undefined>(
+      "chart",
+      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+      mainQueryParamsConfig.chart as any,
+    );
 
-  const [barChartType, setBarChartType] = useState("selected");
+  const [barChartType = "selected", setBarChartType] = useQueryParam<
+    string | undefined
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+  >("chartsetting", mainQueryParamsConfig.chartsetting as any);
 
   const [zoom, setZoom] = useState<boolean>(false);
 
