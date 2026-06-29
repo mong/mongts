@@ -30,7 +30,7 @@ jobs:
           creds: ${{ secrets.AZURE_FRONTDOOR_CREDENTIALS }}
       
       - name: Check out the repo
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Enable Corepack
         run: corepack enable
