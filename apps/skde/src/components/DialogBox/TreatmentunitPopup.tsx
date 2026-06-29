@@ -246,6 +246,11 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
     setHighlightedRHF("");
   };
 
+  const handleSearch = (itemId: string[]) => {
+    const newUnitSelection = [...unitSelection, ...itemId];
+    setUnitSelection([...newUnitSelection]);
+  };
+
   return (
     <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
       <DialogTitle>Velg behandlingsenheter</DialogTitle>
@@ -258,7 +263,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
       >
         <TreeViewSearchBox
           options={Array.from(treatmentUnitsValueMap.values())}
-          onSearch={() => null}
+          onSearch={handleSearch}
         />
         <Grid container height="100%">
           <Grid size={4}>
