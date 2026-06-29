@@ -47,9 +47,8 @@ Run the development server:
 
 ```bash
 nvm use # To pick (and install) correct (major) version of node
-corepack enable # To enable yarn > v1
-yarn install
-yarn dev
+pnpm install
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -60,8 +59,8 @@ In production we build static html files that we serve in an S3 bucket on AWS. T
 
 ```bash
 export NEXT_PUBLIC_API_HOST="https://prod-api.skde.org" # Our API in production
-yarn install
-yarn export
+pnpm install
+pnpm export
 npx serve apps/skde/out
 ```
 
