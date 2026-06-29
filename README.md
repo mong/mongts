@@ -41,15 +41,16 @@ You need an SSH key in order to clone the repository. Follow the directions [her
 
 Install the [nvm package](https://github.com/nvm-sh/nvm) by running the command `wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash`. Then run `nvm install 24` to update to the current node version.
 
-Install [yarn](https://yarnpkg.com/getting-started/install) by running the command `npm install -g corepack`
+Make a classic Github token in order to get access to the component library. 
 
 Run the development server:
 
 ```bash
 nvm use # To pick (and install) correct (major) version of node
-corepack enable # To enable yarn > v1
-yarn install
-yarn dev
+export NODE_AUTH_TOKEN=[your token]
+export NEXT_PUBLIC_API_HOST="https://prod-api.skde.org" # Our API in production
+pnpm install
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -60,8 +61,8 @@ In production we build static html files that we serve in an S3 bucket on AWS. T
 
 ```bash
 export NEXT_PUBLIC_API_HOST="https://prod-api.skde.org" # Our API in production
-yarn install
-yarn export
+pnpm install
+pnpm export
 npx serve apps/skde/out
 ```
 
