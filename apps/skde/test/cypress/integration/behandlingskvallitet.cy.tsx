@@ -2,7 +2,7 @@
 
 context("Testing of behandlingskvalitet page", () => {
   beforeEach(() => {
-    cy.visit("behandlingskvalitetV2/?registries=hjerneslag&year=2024");
+    cy.visit("behandlingskvalitet/?registries=hjerneslag&year=2024");
   });
   it("Main page", () => {
     cy.get('[data-testid="indicatorrow_hjerneslag_tromb_40min"]', {
