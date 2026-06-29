@@ -41,10 +41,14 @@ You need an SSH key in order to clone the repository. Follow the directions [her
 
 Install the [nvm package](https://github.com/nvm-sh/nvm) by running the command `wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash`. Then run `nvm install 24` to update to the current node version.
 
+Make a classic Github token in order to get access to the component library. 
+
 Run the development server:
 
 ```bash
 nvm use # To pick (and install) correct (major) version of node
+export NODE_AUTH_TOKEN=[your token]
+export NEXT_PUBLIC_API_HOST="https://prod-api.skde.org" # Our API in production
 pnpm install
 pnpm dev
 ```
