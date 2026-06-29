@@ -41,8 +41,6 @@ You need an SSH key in order to clone the repository. Follow the directions [her
 
 Install the [nvm package](https://github.com/nvm-sh/nvm) by running the command `wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash`. Then run `nvm install 24` to update to the current node version.
 
-Install [yarn](https://yarnpkg.com/getting-started/install) by running the command `npm install -g corepack`
-
 Run the development server:
 
 ```bash
