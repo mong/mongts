@@ -261,10 +261,12 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           setHighlightedHF("");
         }}
       >
-        <TreeViewSearchBox
-          options={Array.from(treatmentUnitsValueMap.values())}
-          onSearch={handleSearch}
-        />
+        <Box marginTop={2} marginBottom={2}>
+          <TreeViewSearchBox
+            options={Array.from(treatmentUnitsValueMap.values())}
+            onSearch={handleSearch}
+          />
+        </Box>
         <Grid container height="100%">
           <Grid size={4}>
             <Box
