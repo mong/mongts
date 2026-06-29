@@ -16,7 +16,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { customFormat, level2, newestLevelSymbols, skdeTheme } from "qmongjs";
 import React from "react";
 import type { IndicatorData, OptsTu } from "types";
-import { ChartRowV2 } from "../chartrowV2";
+import { ChartRow } from "../chartrow";
 import {
   StyledTableCell,
   StyledTableCellEnd,
@@ -195,7 +195,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
               <tbody>
                 <tr>
                   <td colSpan={unitNames.length + 1}>
-                    <ChartRowV2
+                    <ChartRow
                       data={indData}
                       unitNames={unitNames}
                       medfield={medfield}

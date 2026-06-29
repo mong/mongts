@@ -10,7 +10,7 @@ import {
 } from "../components/FilterMenu/TreatmentQualityFilterMenu";
 import getMedicalFieldFilterRegisters from "./getMedicalFieldFilterRegisters";
 
-export const defaultTableContext = "caregiver";
+const defaultTableContext = "caregiver";
 
 export const valueOrDefault = (
   key: string,
