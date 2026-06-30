@@ -14,6 +14,9 @@ import type { UseQueryResult } from "@tanstack/react-query";
 import { useUnitNamesQuery } from "qmongjs";
 import { type Dispatch, type JSX, type SetStateAction, useState } from "react";
 import type { NestedTreatmentUnitName } from "types";
+import { getTreatmentUnitsTree } from "../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
+import { getFilterSettingsValuesMap } from "../FilterMenu/TreeViewFilterSection";
+import TreeViewSearchBox from "../FilterMenu/TreeViewSearchBox";
 import {
   borderRadius,
   columnColour1,
@@ -52,6 +55,11 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
     },
   );
 
+  const treatmentUnitsTree = getTreatmentUnitsTree(unitNamesQuery);
+  const treatmentUnitsValueMap = getFilterSettingsValuesMap(
+    treatmentUnitsTree.treedata,
+  );
+
   // ####################################### //
   // Map RHFs and return checkbox components //
   // ####################################### //
@@ -73,7 +81,6 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           setUnitSelection([...new Set(newRHFSelection)]);
         }
       };
-
       // Check if at least one subunit is checked.
       // The RHF checkbox should then be indeterminate.
       const hfChecked = () => {
@@ -239,6 +246,11 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
     setHighlightedRHF("");
   };
 
+  const handleSearch = (itemId: string[]) => {
+    const newUnitSelection = [...unitSelection, ...itemId];
+    setUnitSelection([...newUnitSelection]);
+  };
+
   return (
     <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
       <DialogTitle>Velg behandlingsenheter</DialogTitle>
@@ -249,6 +261,12 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           setHighlightedHF("");
         }}
       >
+        <Box marginTop={2} marginBottom={2}>
+          <TreeViewSearchBox
+            options={Array.from(treatmentUnitsValueMap.values())}
+            onSearch={handleSearch}
+          />
+        </Box>
         <Grid container height="100%">
           <Grid size={4}>
             <Box
