@@ -91,7 +91,7 @@ export default function TreatmentQualityPage() {
     return;
   }
 
-  const indicatorData = nestedDataQuery.data;
+  const registerData = nestedDataQuery.data;
 
   return (
     <Box
@@ -180,7 +180,7 @@ export default function TreatmentQualityPage() {
         {selectedMedicalFields.length > 0 ? (
           <IndicatorTableV3
             key={"indicator-table2"}
-            data={indicatorData}
+            data={registerData}
             unitNames={getSortedList(
               colourMap,
               selectedTreatmentUnits,
