@@ -47,7 +47,11 @@ const reshapeData = (
                   : "";
 
             const dataQualityResult =
-              row.dg == null ? "Ingen DG" : row.dg < 0.6 ? "Lav dg" : "";
+              row.dg == null
+                ? "Ingen dekning"
+                : row.dg < 0.6
+                  ? "Lav dekning"
+                  : "";
 
             return ind === 0
               ? {
