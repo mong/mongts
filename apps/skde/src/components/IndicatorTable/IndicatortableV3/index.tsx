@@ -25,15 +25,10 @@ resultStringMap.set("H", "Høy");
 
 const reshapeData = (
   data: RegisterData[],
-  medfields: string[],
   unitNames: string[],
   year: number,
 ) => {
-  const medfieldFilteredData = data.filter((row: RegisterData) =>
-    medfields.includes(row.registerName),
-  );
-
-  const reshapedData = medfieldFilteredData.map((registry: RegisterData) => {
+  const reshapedData = data.map((registry: RegisterData) => {
     return {
       description: `Kvalitetsindikatorer fra ${registry.registerFullName}`,
       fullName: registry.registerFullName,
@@ -46,7 +41,7 @@ const reshapeData = (
             const indicatorResult =
               indicator.format !== null && row.var !== null
                 ? customFormat(indicator.format)(row.var)
-                : "NA";
+                : "";
 
             return ind === 0
               ? {
@@ -76,9 +71,7 @@ const reshapeData = (
               <Box key={`testbox-${registry.registerName}`}>test</Box>
             ) as JSX.Element,
             indicatorTarget:
-              levelTarget !== undefined
-                ? levelDirectionSign + levelTarget
-                : "NA",
+              levelTarget !== undefined ? levelDirectionSign + levelTarget : "",
             indicatorTitle: indicator.indicatorTitle,
             residentAreaResults: indicator.data
               ?.filter((row: DataPoint) => {
@@ -116,10 +109,56 @@ const reshapeData = (
   return reshapedData;
 };
 
+const fillMissingUnitnames = (
+  data: RenderRegisterProps[],
+  unitNames: string[],
+) => {
+  for (let i = 0; i < data.length; i++) {
+    for (let j = 0; j < data[i].indicators.length; j++) {
+      const missingTreatmentUnits = unitNames.filter(
+        (unitName) =>
+          !data[i].indicators[j].treatmentUnitResults
+            .map((row) => row.unitName)
+            .includes(unitName),
+      );
+      const missingResidentAreas = unitNames.filter(
+        (unitName) =>
+          !data[i].indicators[j].residentsAreaResults
+            ?.map((row) => row.unitName)
+            .includes(unitName),
+      );
+
+      missingTreatmentUnits.forEach((unitName) => {
+        data[i].indicators[j].treatmentUnitResults.push({
+          result: "Ingen data",
+          resultLevel: "low" as "low" | "medium" | "high", // Placeholder value
+          resultSubtitle: "",
+          unitName: unitName,
+        });
+      });
+
+      missingResidentAreas.forEach((residentArea) => {
+        data[i].indicators[j].residentsAreaResults?.push({
+          result: "Ingen data",
+          resultLevel: "low" as "low" | "medium" | "high", // Placeholder value
+          resultSubtitle: "",
+          unitName: residentArea,
+        });
+      });
+    }
+  }
+};
+
 export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
   const { data, medfields, unitNames, year, chartColours } = props;
 
-  const reshapedData = reshapeData(data, medfields, unitNames, year);
+  const medfieldFilteredData = data.filter((row: RegisterData) =>
+    medfields.includes(row.registerName),
+  );
+
+  const reshapedData = reshapeData(medfieldFilteredData, unitNames, year);
+
+  fillMissingUnitnames(reshapedData, unitNames);
 
   return <RegisterAccordion registries={reshapedData} />;
 };
