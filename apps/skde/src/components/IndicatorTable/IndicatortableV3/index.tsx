@@ -84,7 +84,7 @@ const reshapeData = (
             indicatorTarget:
               levelTarget !== undefined ? levelDirectionSign + levelTarget : "",
             indicatorTitle: indicator.indicatorTitle,
-            residentAreaResults: indicator.data
+            residentsAreaResults: indicator.data
               ?.filter((row: DataPoint) => {
                 return (
                   row.context === "resident" &&
@@ -140,21 +140,40 @@ const fillMissingUnitnames = (
       );
 
       missingTreatmentUnits.forEach((unitName) => {
-        data[i].indicators[j].treatmentUnitResults.push({
-          result: "Ingen data",
-          resultLevel: "undefined", // Placeholder value
-          resultSubtitle: "",
-          unitName: unitName,
-        });
+        if (unitName === "Nasjonalt") {
+          data[i].indicators[j].treatmentUnitResults.push({
+            displayHeaderAs: "text",
+            result: "Ingen data",
+            resultLevel: "undefined", // Placeholder value
+            resultSubtitle: "",
+            unitName: unitName,
+          });
+        } else {
+          data[i].indicators[j].treatmentUnitResults.push({
+            result: "Ingen data",
+            resultLevel: "undefined", // Placeholder value
+            resultSubtitle: "",
+            unitName: unitName,
+          });
+        }
       });
 
       missingResidentAreas.forEach((residentArea) => {
-        data[i].indicators[j].residentsAreaResults?.push({
-          result: "Ingen data",
-          resultLevel: "low" as "low" | "medium" | "high", // Placeholder value
-          resultSubtitle: "",
-          unitName: residentArea,
-        });
+        if (residentArea === "Nasjonalt") {
+          data[i].indicators[j].residentsAreaResults?.push({
+            result: "Ingen data",
+            resultLevel: "low" as "low" | "medium" | "high", // Placeholder value
+            resultSubtitle: "",
+            unitName: residentArea,
+          });
+        } else {
+          data[i].indicators[j].residentsAreaResults?.push({
+            result: "Ingen data",
+            resultLevel: "low" as "low" | "medium" | "high", // Placeholder value
+            resultSubtitle: "",
+            unitName: residentArea,
+          });
+        }
       });
     }
   }
