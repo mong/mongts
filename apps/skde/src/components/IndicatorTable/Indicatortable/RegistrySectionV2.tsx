@@ -1,4 +1,4 @@
-import { TagButton } from "@mong/material-ui";
+import { ToggleButton, ToggleButtonGroup } from "@mong/material-ui";
 import {
   Box,
   Stack,
@@ -154,7 +154,17 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
                 </Typography>
               </div>
               {registryHasResidentData && (
-                <TagButton label="Opptaksområde" onClick={handleClick} />
+                <ToggleButtonGroup
+                  onChange={handleClick}
+                  value={[currentContext]}
+                >
+                  <ToggleButton aria-label="toggle caregiver" value="caregiver">
+                    Behandlingssted
+                  </ToggleButton>
+                  <ToggleButton aria-label="toggle resident" value="resident">
+                    Opptaksområde
+                  </ToggleButton>
+                </ToggleButtonGroup>
               )}
             </Stack>
           </StyledTableCellStart>

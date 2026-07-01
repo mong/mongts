@@ -1,5 +1,5 @@
 import { RegisterAccordion, type RenderRegisterProps } from "@mong/material-ui";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { customFormat, level2 } from "qmongjs";
 import type { JSX } from "react";
 import type { DataPoint, IndicatorData, RegisterData } from "types";
@@ -16,12 +16,13 @@ const levelStringMap = new Map();
 levelStringMap.set("L", "low");
 levelStringMap.set("M", "medium");
 levelStringMap.set("H", "high");
-levelStringMap.set(undefined, "low");
+levelStringMap.set(undefined, "undefined");
 
 const resultStringMap = new Map();
 resultStringMap.set("L", "Lav");
 resultStringMap.set("M", "Middels");
 resultStringMap.set("H", "Høy");
+resultStringMap.set(undefined, "");
 
 const reshapeData = (
   data: RegisterData[],
@@ -41,26 +42,30 @@ const reshapeData = (
             const indicatorResult =
               indicator.format !== null && row.var !== null
                 ? customFormat(indicator.format)(row.var)
-                : "";
+                : row.var === null
+                  ? `N < ${indicator.minDenominator}`
+                  : "";
+
+            const dataQualityResult =
+              row.dg == null ? "Ingen DG" : row.dg < 0.6 ? "Lav dg" : "";
 
             return ind === 0
               ? {
                   displayHeaderAs: "text",
                   result: `${resultStringMap.get(level)} ${indicatorResult}`,
                   resultLevel: levelStringMap.get(level),
-                  resultSubtitle: "test",
+                  resultSubtitle: dataQualityResult,
                   unitName: row.unitName,
                 }
               : {
                   result: `${resultStringMap.get(level)} ${indicatorResult}`,
                   resultLevel: levelStringMap.get(level),
-                  resultSubtitle: "test",
+                  resultSubtitle: dataQualityResult,
                   unitName: row.unitName,
                 };
           };
 
-          const levelDirectionSign =
-            indicator.levelDirection === 1 ? ">=" : "<=";
+          const levelDirectionSign = indicator.levelDirection === 1 ? "≥" : "≤";
           const levelTarget =
             indicator.levelGreen !== null && indicator.format !== null
               ? customFormat(indicator.format)(indicator.levelGreen)
@@ -68,7 +73,9 @@ const reshapeData = (
 
           return {
             chart: (
-              <Box key={`testbox-${registry.registerName}`}>test</Box>
+              <Box key={`testbox-${registry.registerName}`}>
+                <Typography>Innhold kommer</Typography>
+              </Box>
             ) as JSX.Element,
             indicatorTarget:
               levelTarget !== undefined ? levelDirectionSign + levelTarget : "",
@@ -131,7 +138,7 @@ const fillMissingUnitnames = (
       missingTreatmentUnits.forEach((unitName) => {
         data[i].indicators[j].treatmentUnitResults.push({
           result: "Ingen data",
-          resultLevel: "low" as "low" | "medium" | "high", // Placeholder value
+          resultLevel: "undefined", // Placeholder value
           resultSubtitle: "",
           unitName: unitName,
         });
