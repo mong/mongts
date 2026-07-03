@@ -87,11 +87,7 @@ export default function TreatmentQualityPage() {
     nested: true,
   });
 
-  if (nestedDataQuery.isFetching) {
-    return;
-  }
-
-  const registerData = nestedDataQuery.data;
+  const registerData = nestedDataQuery?.data;
 
   return (
     <Box
@@ -177,7 +173,7 @@ export default function TreatmentQualityPage() {
         </div>
       </div>
       <PageContent>
-        {selectedMedicalFields.length > 0 ? (
+        {selectedMedicalFields.length > 0 && registerData ? (
           <IndicatorTableV3
             key={"indicator-table2"}
             data={registerData}
