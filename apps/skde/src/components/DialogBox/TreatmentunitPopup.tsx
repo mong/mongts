@@ -11,9 +11,10 @@ import {
   Grid,
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
-import { useUnitNamesQuery } from "qmongjs";
+import { mainQueryParamsConfig, useUnitNamesQuery } from "qmongjs";
 import { type Dispatch, type JSX, type SetStateAction, useState } from "react";
 import type { NestedTreatmentUnitName } from "types";
+import { useQueryParam } from "use-query-params";
 import { getTreatmentUnitsTree } from "../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { getFilterSettingsValuesMap } from "../FilterMenu/TreeViewFilterSection";
 import TreeViewSearchBox from "../FilterMenu/TreeViewSearchBox";
@@ -37,9 +38,14 @@ type TreatmentUnitPopupProps = {
 export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const { open, setOpen, onSubmit, context, type } = props;
 
-  const [unitSelection, setUnitSelection] = useState<string[]>([]);
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");
   const [highlightedHF, setHighlightedHF] = useState<string>("");
+
+  const [unitSelection = [], setUnitSelection] = useQueryParam<
+    string[] | undefined,
+    string[]
+    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+  >("units", mainQueryParamsConfig.units);
 
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
