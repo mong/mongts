@@ -82,7 +82,6 @@ export default function TreatmentQualityPage() {
     ],
   };
 
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const nestedDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
     nested: true,
   });
