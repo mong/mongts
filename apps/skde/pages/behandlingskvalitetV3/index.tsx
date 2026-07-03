@@ -82,16 +82,11 @@ export default function TreatmentQualityPage() {
     ],
   };
 
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const nestedDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
     nested: true,
   });
 
-  if (nestedDataQuery.isFetching) {
-    return;
-  }
-
-  const registerData = nestedDataQuery.data;
+  const registerData = nestedDataQuery?.data;
 
   return (
     <Box
@@ -177,7 +172,7 @@ export default function TreatmentQualityPage() {
         </div>
       </div>
       <PageContent>
-        {selectedMedicalFields.length > 0 ? (
+        {selectedMedicalFields.length > 0 && registerData ? (
           <IndicatorTableV3
             key={"indicator-table2"}
             data={registerData}
