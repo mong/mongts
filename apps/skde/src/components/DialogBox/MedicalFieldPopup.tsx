@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import {
+  fetchRegisterNames,
   mainQueryParamsConfig,
   useMedicalFieldsQuery,
   useRegisterNamesQuery,
@@ -19,6 +20,9 @@ import {
 import { type Dispatch, type JSX, type SetStateAction, useState } from "react";
 import type { Medfield, RegisterName } from "types";
 import { useQueryParam } from "use-query-params";
+import { getMedicalFields } from "../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
+import { getFilterSettingsValuesMap } from "../FilterMenu/TreeViewFilterSection";
+import TreeViewSearchBox from "../FilterMenu/TreeViewSearchBox";
 import {
   borderRadius,
   columnColour1,
@@ -51,6 +55,18 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
 
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const registryQuery: UseQueryResult<any, unknown> = useRegisterNamesQuery();
+
+  const registries = useRegisterNamesQuery();
+
+  const medicalFieldsTree = getMedicalFields(
+    medicalFieldsQuery?.data,
+    registries?.data,
+    true,
+  );
+
+  const medicalFieldsValueMap = getFilterSettingsValuesMap(
+    medicalFieldsTree.treedata,
+  );
 
   // ################################################# //
   // Map medical fields and return checkbox components //
@@ -178,6 +194,11 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
     setOpen(false);
   };
 
+  const handleSearch = (itemId: string[]) => {
+    const newRegistrySelection = [...registrySelection, ...itemId];
+    setRegistrySelection([...newRegistrySelection]);
+  };
+
   // ################## //
   // ##### Return ##### //
   // ################## //
@@ -191,6 +212,12 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
           setHighlightedMedField("");
         }}
       >
+        <Box marginTop={2} marginBottom={2}>
+          <TreeViewSearchBox
+            options={Array.from(medicalFieldsValueMap.values())}
+            onSearch={handleSearch}
+          />
+        </Box>
         <Grid container height="100%">
           <Grid size={6}>
             <Box
