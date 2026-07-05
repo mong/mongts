@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import {
-  fetchRegisterNames,
   mainQueryParamsConfig,
   useMedicalFieldsQuery,
   useRegisterNamesQuery,
@@ -23,6 +22,7 @@ import { useQueryParam } from "use-query-params";
 import { getMedicalFields } from "../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { getFilterSettingsValuesMap } from "../FilterMenu/TreeViewFilterSection";
 import TreeViewSearchBox from "../FilterMenu/TreeViewSearchBox";
+import { LoadingComponent } from "../Placeholders/LoadingComponent/LoadingComponent";
 import {
   borderRadius,
   columnColour1,
@@ -56,11 +56,14 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const registryQuery: UseQueryResult<any, unknown> = useRegisterNamesQuery();
 
-  const registries = useRegisterNamesQuery();
+  const registriesQuery = useRegisterNamesQuery();
+
+  const dataIsFetching =
+    medicalFieldsQuery.isFetching && registryQuery.isFetching;
 
   const medicalFieldsTree = getMedicalFields(
     medicalFieldsQuery?.data,
-    registries?.data,
+    registriesQuery?.data,
     true,
   );
 
@@ -212,52 +215,58 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
           setHighlightedMedField("");
         }}
       >
-        <Box marginTop={2} marginBottom={2}>
-          <TreeViewSearchBox
-            options={Array.from(medicalFieldsValueMap.values())}
-            onSearch={handleSearch}
-          />
-        </Box>
-        <Grid container height="100%">
-          <Grid size={6}>
-            <Box
-              sx={{
-                background: columnColour1,
-                height: "100%",
-                paddingLeft: `${rippleOffset}px`,
-                borderTopLeftRadius: borderRadius,
-                borderBottomLeftRadius: borderRadius,
-              }}
-            >
-              <FormControl sx={{ width: "100%", marginTop: marginTop }}>
-                {MedfieldCheckboxes?.map((row: JSX.Element) => row)}
-              </FormControl>
+        {dataIsFetching ? (
+          LoadingComponent
+        ) : (
+          <div>
+            <Box marginTop={2} marginBottom={2}>
+              <TreeViewSearchBox
+                options={Array.from(medicalFieldsValueMap.values())}
+                onSearch={handleSearch}
+              />
             </Box>
-          </Grid>
-          <Grid size={6}>
-            <Box
-              sx={{
-                background: highlightedMedField && columnColour2,
-                height: "100%",
-                marginLeft: `-${rippleOffset}px`,
-                borderTopRightRadius: borderRadius,
-                borderBottomRightRadius: borderRadius,
-              }}
-            >
-              <FormControl
-                sx={{
-                  width: "100%",
-                  marginLeft: `${rippleOffset}px`,
-                  marginTop: marginTop,
-                }}
-              >
-                {RegistryCheckBoxes[highlightedMedField]?.map(
-                  (row: JSX.Element) => row,
-                )}
-              </FormControl>
-            </Box>
-          </Grid>
-        </Grid>
+            <Grid container height="100%">
+              <Grid size={6}>
+                <Box
+                  sx={{
+                    background: columnColour1,
+                    height: "100%",
+                    paddingLeft: `${rippleOffset}px`,
+                    borderTopLeftRadius: borderRadius,
+                    borderBottomLeftRadius: borderRadius,
+                  }}
+                >
+                  <FormControl sx={{ width: "100%", marginTop: marginTop }}>
+                    {MedfieldCheckboxes?.map((row: JSX.Element) => row)}
+                  </FormControl>
+                </Box>
+              </Grid>
+              <Grid size={6}>
+                <Box
+                  sx={{
+                    background: highlightedMedField && columnColour2,
+                    height: "100%",
+                    marginLeft: `-${rippleOffset}px`,
+                    borderTopRightRadius: borderRadius,
+                    borderBottomRightRadius: borderRadius,
+                  }}
+                >
+                  <FormControl
+                    sx={{
+                      width: "100%",
+                      marginLeft: `${rippleOffset}px`,
+                      marginTop: marginTop,
+                    }}
+                  >
+                    {RegistryCheckBoxes[highlightedMedField]?.map(
+                      (row: JSX.Element) => row,
+                    )}
+                  </FormControl>
+                </Box>
+              </Grid>
+            </Grid>
+          </div>
+        )}
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Avbryt</Button>
