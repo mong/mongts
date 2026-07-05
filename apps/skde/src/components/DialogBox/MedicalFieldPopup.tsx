@@ -61,6 +61,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const medicalFieldsTree = getMedicalFields(
     medicalFieldsQuery?.data,
     registries?.data,
+    true,
   );
 
   const medicalFieldsValueMap = getFilterSettingsValuesMap(

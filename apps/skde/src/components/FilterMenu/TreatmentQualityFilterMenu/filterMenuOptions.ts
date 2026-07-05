@@ -165,7 +165,11 @@ export const decodeRegisterQueryParam = (registerParam: string) => {
  * @returns The tree structure with medical field options and the default value
  */
 // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-export const getMedicalFields = (medicalFieldData: any, registryData: any) => {
+export const getMedicalFields = (
+  medicalFieldData: any,
+  registryData: any,
+  noPrefix = false,
+) => {
   let medicalFields: TreeViewFilterSectionNode[];
   if (medicalFieldData && registryData) {
     medicalFields = medicalFieldData.map(
@@ -175,7 +179,9 @@ export const getMedicalFields = (medicalFieldData: any, registryData: any) => {
           valueLabel: field.name,
         },
         children: field.registers?.map((register: string) => {
-          const prefixedRegister = encodeRegisterQueryParam(register);
+          const prefixedRegister = noPrefix
+            ? register
+            : encodeRegisterQueryParam(register);
           return {
             nodeValue: {
               value: prefixedRegister,
