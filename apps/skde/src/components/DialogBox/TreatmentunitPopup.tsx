@@ -41,7 +41,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");
   const [highlightedHF, setHighlightedHF] = useState<string>("");
 
-  const [unitSelection = [], setUnitSelection] = useQueryParam<
+  const [unitSelection = ["Nasjonalt"], setUnitSelection] = useQueryParam<
     string[] | undefined,
     string[]
     // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
@@ -247,7 +247,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   };
 
   const handleSubmit = () => {
-    onSubmit(["Nasjonalt", ...unitSelection]);
+    onSubmit(unitSelection);
     setOpen(false);
     setHighlightedRHF("");
   };
