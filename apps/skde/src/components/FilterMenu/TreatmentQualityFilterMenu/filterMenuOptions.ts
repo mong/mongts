@@ -164,9 +164,10 @@ export const decodeRegisterQueryParam = (registerParam: string) => {
  *
  * @returns The tree structure with medical field options and the default value
  */
-// biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
 export const getMedicalFields = (
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   medicalFieldData: any,
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   registryData: any,
   noPrefix = false,
 ) => {
