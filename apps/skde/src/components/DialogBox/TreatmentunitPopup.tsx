@@ -18,6 +18,7 @@ import { useQueryParam } from "use-query-params";
 import { getTreatmentUnitsTree } from "../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { getFilterSettingsValuesMap } from "../FilterMenu/TreeViewFilterSection";
 import TreeViewSearchBox from "../FilterMenu/TreeViewSearchBox";
+import { LoadingComponent } from "../Placeholders/LoadingComponent/LoadingComponent";
 import {
   borderRadius,
   columnColour1,
@@ -267,70 +268,78 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           setHighlightedHF("");
         }}
       >
-        <Box marginTop={2} marginBottom={2}>
-          <TreeViewSearchBox
-            options={Array.from(treatmentUnitsValueMap.values())}
-            onSearch={handleSearch}
-          />
-        </Box>
-        <Grid container height="100%">
-          <Grid size={4}>
-            <Box
-              sx={{
-                background: columnColour1,
-                height: "100%",
-                paddingLeft: `${rippleOffset}px`,
-                borderTopLeftRadius: borderRadius,
-                borderBottomLeftRadius: borderRadius,
-              }}
-            >
-              <FormControl sx={{ width: "100%", marginTop: marginTop }}>
-                {RHFCheckboxes?.map((row: JSX.Element) => row)}
-              </FormControl>
+        {unitNamesQuery.isFetching ? (
+          LoadingComponent
+        ) : (
+          <div>
+            <Box marginTop={2} marginBottom={2}>
+              <TreeViewSearchBox
+                options={Array.from(treatmentUnitsValueMap.values())}
+                onSearch={handleSearch}
+              />
             </Box>
-          </Grid>
-          <Grid size={4}>
-            <Box
-              sx={{
-                background: highlightedRHF && columnColour2,
-                height: "100%",
-                marginLeft: `-${rippleOffset}px`,
-              }}
-            >
-              <FormControl
-                sx={{
-                  width: "100%",
-                  marginLeft: `${rippleOffset}px`,
-                  marginTop: marginTop,
-                }}
-              >
-                {HFCheckBoxes[highlightedRHF]?.map((row: JSX.Element) => row)}
-              </FormControl>
-            </Box>
-          </Grid>
-          <Grid size={4}>
-            <Box
-              sx={{
-                background: highlightedHF && columnColour3,
-                height: "100%",
-                borderTopRightRadius: borderRadius,
-                borderBottomRightRadius: borderRadius,
-              }}
-            >
-              <FormControl
-                sx={{
-                  width: "100%",
-                  marginLeft: `${rippleOffset}px`,
-                  marginTop: marginTop,
-                }}
-              >
-                {HospitalCheckBoxes[highlightedHF]?.map(
-                  (row: JSX.Element) => row,
-                )}
-              </FormControl>
-            </Box>
-          </Grid>
-        </Grid>
+            <Grid container height="100%">
+              <Grid size={4}>
+                <Box
+                  sx={{
+                    background: columnColour1,
+                    height: "100%",
+                    paddingLeft: `${rippleOffset}px`,
+                    borderTopLeftRadius: borderRadius,
+                    borderBottomLeftRadius: borderRadius,
+                  }}
+                >
+                  <FormControl sx={{ width: "100%", marginTop: marginTop }}>
+                    {RHFCheckboxes?.map((row: JSX.Element) => row)}
+                  </FormControl>
+                </Box>
+              </Grid>
+              <Grid size={4}>
+                <Box
+                  sx={{
+                    background: highlightedRHF && columnColour2,
+                    height: "100%",
+                    marginLeft: `-${rippleOffset}px`,
+                  }}
+                >
+                  <FormControl
+                    sx={{
+                      width: "100%",
+                      marginLeft: `${rippleOffset}px`,
+                      marginTop: marginTop,
+                    }}
+                  >
+                    {HFCheckBoxes[highlightedRHF]?.map(
+                      (row: JSX.Element) => row,
+                    )}
+                  </FormControl>
+                </Box>
+              </Grid>
+              <Grid size={4}>
+                <Box
+                  sx={{
+                    background: highlightedHF && columnColour3,
+                    height: "100%",
+                    borderTopRightRadius: borderRadius,
+                    borderBottomRightRadius: borderRadius,
+                  }}
+                >
+                  <FormControl
+                    sx={{
+                      width: "100%",
+                      marginLeft: `${rippleOffset}px`,
+                      marginTop: marginTop,
+                    }}
+                  >
+                    {HospitalCheckBoxes[highlightedHF]?.map(
+                      (row: JSX.Element) => row,
+                    )}
+                  </FormControl>
+                </Box>
+              </Grid>
+            </Grid>
+          </div>
+        )}
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Avbryt</Button>

@@ -5,7 +5,6 @@ import {
   Icon,
   PageContent,
 } from "@mong/material-ui";
-import AutorenewIcon from "@mui/icons-material/Autorenew";
 import { Box, type SelectChangeEvent, Stack } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
@@ -22,6 +21,7 @@ import {
   getSortedList,
   updateColourMap,
 } from "../../../../src/helpers/functions/chartColours";
+import { LoadingComponent } from "../../Placeholders/LoadingComponent/LoadingComponent";
 
 export const TreatmentQualityPageV3 = () => {
   const numberOfYearOptions = 5;
@@ -88,25 +88,6 @@ export const TreatmentQualityPageV3 = () => {
   });
 
   const registerData = nestedDataQuery?.data;
-
-  const LoadingComponent = (
-    <Stack
-      height="484px"
-      spacing={6}
-      justifyContent="center"
-      alignItems="center"
-      sx={{
-        background: "#FFFFFF",
-        border: "1px solid #2354AE",
-        borderRadius: "16px",
-      }}
-    >
-      <h3 className="animate-pulse">Laster data...</h3>
-      <div className="animate-spin">
-        <AutorenewIcon fontSize="large" />
-      </div>
-    </Stack>
-  );
 
   return (
     <Box
