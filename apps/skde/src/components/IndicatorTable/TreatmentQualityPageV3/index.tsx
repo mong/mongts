@@ -105,7 +105,7 @@ export const TreatmentQualityPageV3 = () => {
         title="Behandlingskvalitet"
         image="/hero-bg-4.jpg"
       />
-      <div className="flex bg-neutral-0 w-full align-middle items-center justify-center px-12">
+      <div className="flex bg-neutral-0 w-full align-middle items-center justify-center px-12 sticky top-0 z-60 shadow-xs">
         <div className="flex flex-col w-full h-full max-w-360">
           {registerData && (
             <TreatmentQualityAppBarV2>
