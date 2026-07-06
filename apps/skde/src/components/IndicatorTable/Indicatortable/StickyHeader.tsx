@@ -51,7 +51,7 @@ export const TreatmentQualityAppBarV2 = ({ children }: AppBarProps) => {
   return (
     <React.Fragment>
       <AppBar
-        position="sticky"
+        position="static"
         color="transparent"
         elevation={0}
         id="back-to-top-anchor"

@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <main className={`min-h-full flex flex-col antialiased`}>
       {applyLayout ? (
         <SkdeThemeProvider>
-          <div>
+          <MainLayout>
             <Header
               lang={lang}
               onLangChange={(lang) => setLang(lang as Languages)}
@@ -57,7 +57,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               </QueryParamProvider>
             </PageLayout>
             <Footer lang={lang} />
-          </div>
+          </MainLayout>
         </SkdeThemeProvider>
       ) : (
         <SkdeThemeProvider>
