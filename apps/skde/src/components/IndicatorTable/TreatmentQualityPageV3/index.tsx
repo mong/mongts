@@ -68,6 +68,7 @@ export const TreatmentQualityPageV3 = () => {
   const handleMedicalFieldButtonClick = () => {
     setMedicalFieldPopupOpen(true);
   };
+
   const handleTreatmentUnitButtonClick = () => {
     setTreatmentUnitPopupOpen(true);
   };
@@ -83,11 +84,15 @@ export const TreatmentQualityPageV3 = () => {
     ],
   };
 
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const nestedDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
     nested: true,
   });
 
   const registerData = nestedDataQuery?.data;
+  const isInitialLoading =
+    nestedDataQuery.status === "pending" && !registerData;
+  const hasLoadingError = nestedDataQuery.status === "error";
 
   return (
     <Box
@@ -145,7 +150,7 @@ export const TreatmentQualityPageV3 = () => {
                     context={selectedTableContext}
                     type={"ind"}
                   />
-                  <div className="flex flex-col text-small  font-semibold  text-brand-primary-900">
+                  <div className="flex flex-col text-small font-semibold text-brand-primary-900">
                     Årstall
                     <Dropdown
                       value={selectedYear.toString()}
@@ -175,27 +180,42 @@ export const TreatmentQualityPageV3 = () => {
         </div>
       </div>
       <PageContent>
-        {selectedMedicalFields.length > 0 && registerData ? (
-          registerData ? (
-            <IndicatorTableV3
-              key={"indicator-table2"}
-              data={registerData}
-              unitNames={getSortedList(
-                colourMap,
-                selectedTreatmentUnits,
-                "units",
-              )}
-              year={selectedYear}
-              medfields={selectedMedicalFields}
-              chartColours={getSortedList(
-                colourMap,
-                selectedTreatmentUnits,
-                "colours",
-              )}
-            />
-          ) : (
-            LoadingComponent
-          )
+        {isInitialLoading ? (
+          LoadingComponent
+        ) : hasLoadingError ? (
+          <Stack
+            height="484px"
+            spacing={4}
+            justifyContent="center"
+            alignItems="center"
+            sx={{
+              background: "#FFFFFF",
+              border: "1px solid #AE2323",
+              borderRadius: "16px",
+            }}
+          >
+            <h3>Kunne ikke laste data. Proev igjen.</h3>
+            <Button onClick={() => nestedDataQuery.refetch()}>
+              Last pa nytt
+            </Button>
+          </Stack>
+        ) : selectedMedicalFields.length > 0 && registerData ? (
+          <IndicatorTableV3
+            key={"indicator-table2"}
+            data={registerData}
+            unitNames={getSortedList(
+              colourMap,
+              selectedTreatmentUnits,
+              "units",
+            )}
+            year={selectedYear}
+            medfields={selectedMedicalFields}
+            chartColours={getSortedList(
+              colourMap,
+              selectedTreatmentUnits,
+              "colours",
+            )}
+          />
         ) : registerData ? (
           <Stack
             height="484px"
@@ -214,7 +234,22 @@ export const TreatmentQualityPageV3 = () => {
             </Button>
           </Stack>
         ) : (
-          LoadingComponent
+          <Stack
+            height="484px"
+            spacing={4}
+            justifyContent="center"
+            alignItems="center"
+            sx={{
+              background: "#FFFFFF",
+              border: "1px solid #2354AE",
+              borderRadius: "16px",
+            }}
+          >
+            <h3>Ingen data tilgjengelig for dette valget.</h3>
+            <Button onClick={() => nestedDataQuery.refetch()}>
+              Last pa nytt
+            </Button>
+          </Stack>
         )}
       </PageContent>
     </Box>
