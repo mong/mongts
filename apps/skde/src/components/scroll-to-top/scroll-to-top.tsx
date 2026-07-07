@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
 export const ScrollToTop: React.FC = () => {
-  const [isVisible, setIsVisible] = useState<boolean>(true);
+  const [isVisible, setIsVisible] = useState<boolean>(false);
 
   // Show button when page is scrolled down past 300px
   const toggleVisibility = useCallback((): void => {
