@@ -5,7 +5,7 @@ import {
   Icon,
   PageContent,
 } from "@mong/material-ui";
-import { Box, type SelectChangeEvent, Stack } from "@mui/material";
+import { type SelectChangeEvent, Stack, Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import { useState } from "react";
@@ -22,6 +22,7 @@ import {
   updateColourMap,
 } from "../../../../src/helpers/functions/chartColours";
 import { LoadingComponent } from "../../Placeholders/LoadingComponent/LoadingComponent";
+import { ScrollToTop } from "../../scroll-to-top/scroll-to-top";
 
 export const TreatmentQualityPageV3 = () => {
   const numberOfYearOptions = 5;
@@ -95,11 +96,7 @@ export const TreatmentQualityPageV3 = () => {
   const hasLoadingError = nestedDataQuery.status === "error";
 
   return (
-    <Box
-      sx={{
-        background: "#F5F5F5",
-      }}
-    >
+    <>
       <LayoutHead
         title="Behandlingskvalitet"
         content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
@@ -110,10 +107,10 @@ export const TreatmentQualityPageV3 = () => {
         title="Behandlingskvalitet"
         image="/hero-bg-4.jpg"
       />
-      <div className="flex bg-neutral-0 w-full align-middle items-center justify-center px-12">
+      <div className="flex bg-neutral-0 w-full align-middle items-center justify-center px-12  sticky top-0 z-60 shadow-xs">
         <div className="flex flex-col w-full h-full max-w-360">
           {registerData && (
-            <TreatmentQualityAppBarV2>
+            <Toolbar disableGutters={true}>
               <Stack
                 direction="row"
                 justifyContent="space-between"
@@ -175,7 +172,7 @@ export const TreatmentQualityPageV3 = () => {
                   </Button>
                 </div>
               </Stack>
-            </TreatmentQualityAppBarV2>
+            </Toolbar>
           )}
         </div>
       </div>
@@ -251,7 +248,8 @@ export const TreatmentQualityPageV3 = () => {
             </Button>
           </Stack>
         )}
+        <ScrollToTop />
       </PageContent>
-    </Box>
+    </>
   );
 };
