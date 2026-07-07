@@ -8,6 +8,7 @@ const API_HOST =
 
 const RETRYABLE_STATUSES = new Set([429, 500, 502, 503, 504]);
 const MAX_FETCH_ATTEMPTS = 3;
+const REQUEST_TIMEOUT_MS = 15000;
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -15,12 +16,21 @@ const fetchJsonWithRetry = async (url: string) => {
   let lastError: unknown;
 
   for (let attempt = 1; attempt <= MAX_FETCH_ATTEMPTS; attempt++) {
+    const abortController = new AbortController();
+    const timeout = setTimeout(
+      () => abortController.abort(),
+      REQUEST_TIMEOUT_MS,
+    );
+
     try {
-      const response = await fetch(url);
+      const response = await fetch(url, { signal: abortController.signal });
 
       if (response.ok) {
+        clearTimeout(timeout);
         return await response.json();
       }
+
+      clearTimeout(timeout);
 
       const shouldRetry =
         attempt < MAX_FETCH_ATTEMPTS && RETRYABLE_STATUSES.has(response.status);
@@ -34,7 +44,12 @@ const fetchJsonWithRetry = async (url: string) => {
         response.statusText || `Request failed with ${response.status}`,
       );
     } catch (error) {
+      clearTimeout(timeout);
       lastError = error;
+
+      if (error instanceof Error && error.name === "AbortError") {
+        lastError = new Error("Request timed out");
+      }
 
       if (attempt < MAX_FETCH_ATTEMPTS) {
         await sleep(300 * attempt);
