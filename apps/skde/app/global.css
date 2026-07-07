@@ -6,3 +6,8 @@
 
 /* Make Tailwind scan the shipped components so their classes are generated */
 @source "../node_modules/@mong/material-ui/dist";
+
+main > div.flex.flex-col.bg-neutral-0.overflow-x-auto {
+  overflow-x: clip;
+  overflow-y: visible;
+}
