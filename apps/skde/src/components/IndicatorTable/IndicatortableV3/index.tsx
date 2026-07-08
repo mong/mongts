@@ -180,7 +180,7 @@ const fillMissingUnitnames = (
 };
 
 export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
-  const { data, medfields, unitNames, year, chartColours } = props;
+  const { data, medfields, unitNames, year } = props;
 
   const medfieldFilteredData = data.filter((row: RegisterData) =>
     medfields.includes(row.registerName),
