@@ -156,7 +156,11 @@ export const TreatmentQualityPageV3 = () => {
                     />
                   </div>
                 </Stack>
-                <div className="pb-4 pl-6" data-testid="copy-url-button">
+                <div
+                  className="pb-4 pl-6"
+                  data-testid="copy-url-button"
+                  class="hidden lg:block"
+                >
                   <Button
                     startIcon={<Icon size="small" symbol="content_copy" />}
                     variant="secondary"
