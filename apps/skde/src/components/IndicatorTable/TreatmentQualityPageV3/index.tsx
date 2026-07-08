@@ -13,7 +13,6 @@ import { useQueryParam } from "use-query-params";
 import { defaultYear, mainQueryParamsConfig } from "../../../../src/app_config";
 import { MedicalFieldPopup } from "../../../../src/components/DialogBox/MedicalFieldPopup";
 import { TreatmentUnitPopup } from "../../../../src/components/DialogBox/TreatmentunitPopup";
-import { TreatmentQualityAppBarV2 } from "../../../../src/components/IndicatorTable/Indicatortable/StickyHeader";
 import { IndicatorTableV3 } from "../../../../src/components/IndicatorTable/IndicatortableV3";
 import { LayoutHead } from "../../../../src/components/LayoutHead";
 import {
@@ -156,7 +155,10 @@ export const TreatmentQualityPageV3 = () => {
                     />
                   </div>
                 </Stack>
-                <div className="pb-4 pl-6" data-testid="copy-url-button">
+                <div
+                  className="pb-4 pl-6 hidden md:block"
+                  data-testid="copy-url-button"
+                >
                   <Button
                     startIcon={<Icon size="small" symbol="content_copy" />}
                     variant="secondary"
