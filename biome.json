@@ -34,7 +34,9 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
+      "style": {
+        "noDefaultExport": "off"
+      },
       "suspicious": {
         "noUnknownAtRules": "off",
         "noConsole": "warn"

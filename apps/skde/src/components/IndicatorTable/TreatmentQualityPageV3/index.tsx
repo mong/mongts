@@ -106,21 +106,12 @@ export const TreatmentQualityPageV3 = () => {
         title="Behandlingskvalitet"
         image="/hero-bg-4.jpg"
       />
-      <div className="flex bg-neutral-0 w-full align-middle items-center justify-center px-12  sticky top-0 z-60 shadow-xs">
+      <div className="flex bg-neutral-0 w-full align-middle justify-center px-6 md:px-12 sticky top-0 z-60 shadow-xs">
         <div className="flex flex-col w-full h-full max-w-360">
           {registerData && (
             <Toolbar disableGutters={true}>
-              <Stack
-                direction="row"
-                justifyContent="space-between"
-                alignItems="center"
-                sx={{
-                  paddingTop: 2,
-                  paddingBottom: 2,
-                }}
-                width="100%"
-              >
-                <Stack direction="row" spacing={3}>
+              <div className="flex flex-row max-w-360 w-full justify-between items-center pb-2 md:pb-4">
+                <div className="flex flex-row gap-2 md:gap-4">
                   <div className="flex flex-col text-small font-semibold text-brand-primary-900">
                     Fagområde
                     <Button onClick={handleMedicalFieldButtonClick}>
@@ -154,7 +145,7 @@ export const TreatmentQualityPageV3 = () => {
                       items={yearDropdownItems}
                     />
                   </div>
-                </Stack>
+                </div>
                 <div
                   className="pb-4 pl-6 hidden md:block"
                   data-testid="copy-url-button"
@@ -173,7 +164,7 @@ export const TreatmentQualityPageV3 = () => {
                     {urlCopied ? "Link kopiert" : "Kopier denne visningen"}
                   </Button>
                 </div>
-              </Stack>
+              </div>
             </Toolbar>
           )}
         </div>
@@ -193,9 +184,9 @@ export const TreatmentQualityPageV3 = () => {
               borderRadius: "16px",
             }}
           >
-            <h3>Kunne ikke laste data. Proev igjen.</h3>
+            <h3>Kunne ikke laste data. Prøv igjen.</h3>
             <Button onClick={() => nestedDataQuery.refetch()}>
-              Last pa nytt
+              Last på nytt
             </Button>
           </Stack>
         ) : selectedMedicalFields.length > 0 && registerData ? (
@@ -246,7 +237,7 @@ export const TreatmentQualityPageV3 = () => {
           >
             <h3>Ingen data tilgjengelig for dette valget.</h3>
             <Button onClick={() => nestedDataQuery.refetch()}>
-              Last pa nytt
+              Last på nytt
             </Button>
           </Stack>
         )}

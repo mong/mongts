@@ -14,7 +14,7 @@
     "e2e": "start-server-and-test start http://localhost:3000 cypress",
     "e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless",
     "start-server": "serve out/",
-    "format": "biome check --write",
+    "format": "biome check --write --no-errors-on-unmatched",
     "check": "biome check --no-errors-on-unmatched",
     "typecheck": "tsc --noEmit",
     "validate": "pnpm run check && pnpm run typecheck",
@@ -23,7 +23,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "11.14.1",
-    "@mong/material-ui": "^13.1.5",
+    "@mong/material-ui": "^13.2.1",
     "@mui/icons-material": "7.3.10",
     "@mui/material": "^7.3.10",
     "@mui/system": "^7.0.0",
