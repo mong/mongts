@@ -4,7 +4,6 @@ import {
   HeroBanner,
   Icon,
   PageContent,
-  RotateDevice,
 } from "@mong/material-ui";
 import { type SelectChangeEvent, Stack, Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";

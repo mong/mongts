@@ -190,5 +190,10 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
 
   fillMissingUnitnames(reshapedData, unitNames);
 
-  return <RegisterAccordion registries={reshapedData} />;
+  return (
+    <RegisterAccordion
+      registries={reshapedData}
+      smallScreenMessage="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din."
+    />
+  );
 };
