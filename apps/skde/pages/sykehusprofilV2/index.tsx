@@ -1,5 +1,5 @@
-import { PageContent, SkdeThemeProvider } from "@mong/material-ui";
-import { Box, Container, Typography } from "@mui/material";
+import { HeroBanner, PageContent } from "@mong/material-ui";
+import { Box, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useScreenSize } from "@visx/responsive";
@@ -23,7 +23,6 @@ import { SelectedIndicatorTable } from "../../src/components/HospitalProfile/Sel
 import { TurnDeviceBox } from "../../src/components/HospitalProfile/TurnDeviceBox";
 import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterMenu";
 import { LayoutHead } from "../../src/components/LayoutHead";
-import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 
 export const Skde = (): JSX.Element => {
   // States
@@ -112,131 +111,135 @@ export const Skde = (): JSX.Element => {
     "";
 
   return (
-    <PageContent>
-      <LayoutHead
+    <>
+      <HeroBanner
         title="Sykehusprofil"
-        content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service for individual treatment units."
-        href="/favicon.ico"
+        description="Her vises alle kvalitetsindikatorer fra nasjonale medisinske
+            kvalitetsregistre per behandlingsenhet."
+        image="/hero-bg-4.jpg"
       />
-      <Header
-        bgcolor="surface2.light"
-        title={"Sykehusprofil"}
-        maxWidth={maxWidth}
-      >
-        <Box sx={{ mb: 6 }}>
-          Her vises alle kvalitetsindikatorer fra nasjonale medisinske
-          kvalitetsregistre per behandlingsenhet.
-        </Box>
-        <Typography>
-          <UnitFilterMenu
-            width={Math.min(400, 0.8 * width)}
-            setUnitName={setUnitName}
-            unitNamesQuery={unitNamesQuery}
-            unitName={unitName || ""}
-          />
-        </Typography>
-      </Header>
-      <Container maxWidth={maxWidth} disableGutters={true}>
-        <Box marginTop={2} className="hospital-profile-box">
-          <Grid container spacing={2}>
-            <Grid
-              size={{ xs: 12, sm: 7 }}
-              data-testid={`hospital_profile_box_${unitName}`}
-            >
-              <HospitalInfoBox
-                boxHeight={
-                  width > breakpoints.xxl
-                    ? topRowBoxHeightXxl
-                    : topRowBoxHeightXs
-                }
-                // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                unitNames={unitNamesQuery.data}
-                // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                selectedTreatmentUnit={unitName}
-                unitUrl={unitUrl}
-              />
-            </Grid>
-            <Grid size={{ xs: 12, sm: 5 }}>
-              <AffiliatedHospitals
-                boxHeight={
-                  width > breakpoints.xxl
-                    ? topRowBoxHeightXxl
-                    : topRowBoxHeightXs
-                }
-                titleStyle={titleStyle}
-                // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                unitNames={unitNamesQuery.data}
-                selectedTreatmentUnit={unitName || ""}
-                setUnitName={setUnitName}
-              />
-            </Grid>
 
-            <Grid size={{ xs: 12 }}>
-              {showRotateMessage ? (
-                TurnDeviceMessage
-              ) : (
-                <HospitalProfileMedfieldTable
-                  boxMaxHeight={boxMaxHeight}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                  unitName={unitName || ""}
-                  lastYear={lastYear}
-                />
-              )}
-            </Grid>
+      <PageContent>
+        {/* <LayoutHead
+          title="Sykehusprofil"
+          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service for individual treatment units."
+          href="/favicon.ico"
+        /> */}
 
-            <Grid size={{ xs: 12 }}>
-              {showRotateMessage ? (
-                TurnDeviceMessage
-              ) : (
-                <HospitalProfileLowLevelTable
-                  unitName={unitName?.toString() || ""}
-                  boxMaxHeight={boxMaxHeight}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                  // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                  unitFullName={unitFullName}
-                  lastYear={lastYear}
-                />
-              )}
-            </Grid>
-
-            <Grid size={{ xs: 12 }}>
-              {showRotateMessage ? (
-                TurnDeviceMessage
-              ) : (
-                <HospitalProfileLinePlot
-                  // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                  unitFullName={unitFullName}
-                  unitNames={unitName?.toString() || ""}
-                  lastYear={lastYear}
-                  pastYears={pastYears}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                />
-              )}
-            </Grid>
-
-            <Grid size={{ xs: 12 }}>
-              {showRotateMessage ? (
-                TurnDeviceMessage
-              ) : (
-                <SelectedIndicatorTable
-                  unitName={unitName || ""}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  lastYear={lastYear}
-                  textMargin={textMargin}
-                />
-              )}
-            </Grid>
+        <Header
+          bgcolor="surface2.light"
+          title={"Sykehusprofil"}
+          maxWidth={maxWidth}
+        >
+          <Box sx={{ mb: 6 }}>
+            Her vises alle kvalitetsindikatorer fra nasjonale medisinske
+            kvalitetsregistre per behandlingsenhet.
+          </Box>
+          <Typography>
+            <UnitFilterMenu
+              width={Math.min(400, 0.8 * width)}
+              setUnitName={setUnitName}
+              unitNamesQuery={unitNamesQuery}
+              unitName={unitName || ""}
+            />
+          </Typography>
+        </Header>
+        {/* <PageContent rounded={true}> */}
+        <Grid container spacing={2}>
+          <Grid
+            size={{ xs: 12, sm: 7 }}
+            data-testid={`hospital_profile_box_${unitName}`}
+          >
+            <HospitalInfoBox
+              boxHeight={
+                width > breakpoints.xxl ? topRowBoxHeightXxl : topRowBoxHeightXs
+              }
+              // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+              unitNames={unitNamesQuery.data}
+              // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+              selectedTreatmentUnit={unitName}
+              unitUrl={unitUrl}
+            />
           </Grid>
-        </Box>
-      </Container>
-    </PageContent>
+          <Grid size={{ xs: 12, sm: 5 }}>
+            <AffiliatedHospitals
+              boxHeight={
+                width > breakpoints.xxl ? topRowBoxHeightXxl : topRowBoxHeightXs
+              }
+              titleStyle={titleStyle}
+              // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+              unitNames={unitNamesQuery.data}
+              selectedTreatmentUnit={unitName || ""}
+              setUnitName={setUnitName}
+            />
+          </Grid>
+
+          <Grid size={{ xs: 12 }}>
+            {showRotateMessage ? (
+              TurnDeviceMessage
+            ) : (
+              <HospitalProfileMedfieldTable
+                boxMaxHeight={boxMaxHeight}
+                titlePadding={titlePadding}
+                titleStyle={titleStyle}
+                textMargin={textMargin}
+                unitName={unitName || ""}
+                lastYear={lastYear}
+              />
+            )}
+          </Grid>
+
+          <Grid size={{ xs: 12 }}>
+            {showRotateMessage ? (
+              TurnDeviceMessage
+            ) : (
+              <HospitalProfileLowLevelTable
+                unitName={unitName?.toString() || ""}
+                boxMaxHeight={boxMaxHeight}
+                titlePadding={titlePadding}
+                titleStyle={titleStyle}
+                textMargin={textMargin}
+                // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+                unitFullName={unitFullName}
+                lastYear={lastYear}
+              />
+            )}
+          </Grid>
+
+          <Grid size={{ xs: 12 }}>
+            {showRotateMessage ? (
+              TurnDeviceMessage
+            ) : (
+              <HospitalProfileLinePlot
+                // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+                unitFullName={unitFullName}
+                unitNames={unitName?.toString() || ""}
+                lastYear={lastYear}
+                pastYears={pastYears}
+                titlePadding={titlePadding}
+                titleStyle={titleStyle}
+                textMargin={textMargin}
+              />
+            )}
+          </Grid>
+
+          <Grid size={{ xs: 12 }}>
+            {showRotateMessage ? (
+              TurnDeviceMessage
+            ) : (
+              <SelectedIndicatorTable
+                unitName={unitName || ""}
+                titlePadding={titlePadding}
+                titleStyle={titleStyle}
+                lastYear={lastYear}
+                textMargin={textMargin}
+              />
+            )}
+          </Grid>
+        </Grid>
+        {/* </PageContent> */}
+      </PageContent>
+    </>
   );
 };
 
