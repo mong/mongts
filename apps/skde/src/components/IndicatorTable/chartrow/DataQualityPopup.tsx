@@ -140,7 +140,6 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
         />
       </DialogContent>
       <Box sx={{ paddingLeft: 4, paddingRight: 4 }}>
-        {/* @ts-expect-error Component will support empty label in next version */}
         <ContextCard
           title="Om datakvalitet"
           description={contextCardDescription}
