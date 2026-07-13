@@ -111,39 +111,43 @@ export const TreatmentQualityPageV3 = () => {
           {registerData && (
             <Toolbar disableGutters={true}>
               <div className="flex flex-row max-w-360 w-full justify-between items-center pb-2 md:pb-4">
-                <div className="flex flex-row gap-2 md:gap-4">
-                  <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                    Fagområde
-                    <Button onClick={handleMedicalFieldButtonClick}>
-                      Velg fagområde
-                    </Button>
-                  </div>
-                  <MedicalFieldPopup
-                    open={medicalFieldPopupOpen}
-                    updateRegistries={setSelectedMedicalFields}
-                    setOpen={setMedicalFieldPopupOpen}
-                    onSubmit={setSelectedMedicalFields}
-                  />
-                  <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                    Behandlingsenheter
-                    <Button onClick={handleTreatmentUnitButtonClick}>
-                      Velg behandlingsenheter
-                    </Button>
-                  </div>
-                  <TreatmentUnitPopup
-                    open={treatmentUnitPopupOpen}
-                    setOpen={setTreatmentUnitPopupOpen}
-                    onSubmit={setSelectedTreatmentUnits}
-                    context={selectedTableContext}
-                    type={"ind"}
-                  />
-                  <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                    Årstall
-                    <Dropdown
-                      value={selectedYear.toString()}
-                      onChange={handleYearChange}
-                      items={yearDropdownItems}
+                <div className="flex flex-row md:flex-row gap-6 md:gap-4 w-full">
+                  <div className="flex flex-col md:flex-row gap-3">
+                    <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                      Fagområde
+                      <Button onClick={handleMedicalFieldButtonClick}>
+                        Velg fagområde
+                      </Button>
+                    </div>
+                    <MedicalFieldPopup
+                      open={medicalFieldPopupOpen}
+                      updateRegistries={setSelectedMedicalFields}
+                      setOpen={setMedicalFieldPopupOpen}
+                      onSubmit={setSelectedMedicalFields}
                     />
+                    <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                      Behandlingsenheter
+                      <Button onClick={handleTreatmentUnitButtonClick}>
+                        Velg behandlingsenheter
+                      </Button>
+                    </div>
+                    <TreatmentUnitPopup
+                      open={treatmentUnitPopupOpen}
+                      setOpen={setTreatmentUnitPopupOpen}
+                      onSubmit={setSelectedTreatmentUnits}
+                      context={selectedTableContext}
+                      type={"ind"}
+                    />
+                  </div>
+                  <div className="flex items-end">
+                    <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                      Årstall
+                      <Dropdown
+                        value={selectedYear.toString()}
+                        onChange={handleYearChange}
+                        items={yearDropdownItems}
+                      />
+                    </div>
                   </div>
                 </div>
                 <div
