@@ -1,5 +1,15 @@
-import { HeroBanner, PageContent } from "@mong/material-ui";
-import { Box, Typography } from "@mui/material";
+import {
+  Button,
+  Dropdown,
+  Frame,
+  HeroBanner,
+  Icon,
+  PageContent,
+  SplitButton,
+  ToggleButton,
+  ToggleButtonGroup,
+} from "@mong/material-ui";
+import { Box, Toolbar, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useScreenSize } from "@visx/responsive";
@@ -119,6 +129,72 @@ export const Skde = (): JSX.Element => {
         image="/hero-bg-4.jpg"
       />
 
+      {/* Toolbar */}
+      <div className="flex justify-center w-full bg-neutral-0">
+        <div className="flex flex-wrap w-full justify-between items-center bg-neutral-0 max-w-360 mb-4">
+          <div className="grid grid-cols-[repeat(3,max-content)] gap-x-4 text-small text-dark font-semibold items-center">
+            <div>Behandlingssted</div>
+            <div>Vis</div>
+            <div></div>
+            <div>
+              <Button
+              // onClick={handleTreatmentUnitButtonClick}
+              >
+                Velg behandlingssted
+              </Button>
+            </div>
+            <div>
+              <ToggleButtonGroup
+                onChange={() => {}}
+                orientation="horizontal"
+                value={["item2"]}
+                compact={false}
+              >
+                <ToggleButton aria-label="toggle item1" value="item1">
+                  Måloppnåelse
+                </ToggleButton>
+                <ToggleButton aria-label="toggle item2" value="item2">
+                  Dekningsgrad
+                </ToggleButton>
+              </ToggleButtonGroup>
+            </div>
+            <div>
+              <Button variant="text">Tøm filter</Button>
+            </div>
+          </div>
+
+          <div className="">
+            <Button
+              startIcon={<Icon size="small" symbol="content_copy" />}
+              variant="secondary"
+              onClick={() => {
+                navigator.clipboard.writeText(window.location.href);
+                // setUrlCopied(true);
+                // setTimeout(() => {
+                //   setUrlCopied(false);
+                // }, urlCopiedTimeout);
+              }}
+            >
+              Kopier denne visningen
+              {/* {urlCopied ? "Link kopiert" : "Kopier denne visningen"} */}
+            </Button>
+          </div>
+        </div>
+      </div>
+      {/* End Toolbar */}
+      <div className="flex justify-center w-full">
+        <div className="flex flex-wrap w-full justify-between items-center max-w-360 my-6">
+          <Frame className="flex justify-between items-center bg-neutral-0 border-none">
+            <h3>[Placeholder Behandlingssted]</h3>
+            <SplitButton
+              label="Last ned"
+              onClick={() => {}}
+              options={["PDF", "SVG", "PNG", "CSV"]}
+              steps="one-step"
+            />
+          </Frame>
+        </div>
+      </div>
       <PageContent>
         {/* <LayoutHead
           title="Sykehusprofil"
