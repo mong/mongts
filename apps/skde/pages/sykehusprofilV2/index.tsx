@@ -23,7 +23,9 @@ import {
 } from "qmongjs";
 import { type JSX, useEffect, useState } from "react";
 import type { URLs } from "types";
-import { defaultYear } from "../../src/app_config";
+import { useQueryParam } from "use-query-params";
+import { defaultYear, mainQueryParamsConfig } from "../../src/app_config";
+import { TreatmentUnitPopup } from "../../src/components/DialogBox/TreatmentunitPopup";
 import { HospitalInfoBox } from "../../src/components/HospitalProfile";
 import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
 import { HospitalProfileLinePlot } from "../../src/components/HospitalProfile/HospitalProfileLinePlot";
@@ -37,6 +39,23 @@ export const Skde = (): JSX.Element => {
   // States
   const [unitName, setUnitName] = useState<string>();
   const [isMobileAndVertical, setIsMobileAndVertical] = useState<boolean>();
+
+  //Treatment unit popup
+  const [treatmentUnitPopupOpen, setTreatmentUnitPopupOpen] = useState(false);
+  const [selectedTreatmentUnits = [], setSelectedTreatmentUnits] =
+    useQueryParam<string[] | undefined>(
+      "units",
+      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+      mainQueryParamsConfig.units as any,
+    );
+
+  const selectedTableContext = "caregiver";
+  const handleTreatmentUnitButtonClick = () => {
+    setTreatmentUnitPopupOpen(true);
+  };
+  const handleClearFilters = () => {
+    setSelectedTreatmentUnits([]);
+  };
 
   // ############### //
   // Page parameters //
@@ -137,44 +156,45 @@ export const Skde = (): JSX.Element => {
                   <div className="flex gap-6">
                     <div className="flex flex-col text-small font-semibold text-brand-primary-900">
                       Behandlingssted
-                      <Button
-                      //  onClick={handleMedicalFieldButtonClick}
-                      >
+                      <Button onClick={handleTreatmentUnitButtonClick}>
                         Velg behandlingssted
                       </Button>
                     </div>
-                    {/* <MedicalFieldPopup
-                      open={medicalFieldPopupOpen}
-                      updateRegistries={setSelectedMedicalFields}
-                      setOpen={setMedicalFieldPopupOpen}
-                      onSubmit={setSelectedMedicalFields}
-                    /> */}
-                    <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                      Vis
-                      <ToggleButtonGroup
-                        onChange={() => {}}
-                        orientation="horizontal"
-                        value={["item2"]}
-                      >
-                        <ToggleButton aria-label="toggle item1" value="item1">
-                          Måloppnåelse{" "}
-                        </ToggleButton>
-                        <ToggleButton aria-label="toggle item2" value="item2">
-                          Dekningsgrad{" "}
-                        </ToggleButton>
-                      </ToggleButtonGroup>
-                    </div>
-                    {/* <TreatmentUnitPopup
+                    <TreatmentUnitPopup
                       open={treatmentUnitPopupOpen}
                       setOpen={setTreatmentUnitPopupOpen}
                       onSubmit={setSelectedTreatmentUnits}
                       context={selectedTableContext}
                       type={"ind"}
-                    /> */}
+                    />
+                    <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                      Vis
+                      <ToggleButtonGroup
+                        onChange={() => {}}
+                        orientation="horizontal"
+                        value={["måloppnåelse"]}
+                      >
+                        <ToggleButton
+                          aria-label="toggle item1"
+                          value="måloppnåelse"
+                        >
+                          Måloppnåelse
+                        </ToggleButton>
+                        <ToggleButton
+                          aria-label="toggle item2"
+                          value="dekningsgrad"
+                          disabled
+                        >
+                          Dekningsgrad
+                        </ToggleButton>
+                      </ToggleButtonGroup>
+                    </div>
                   </div>
                   <div className="flex items-end">
                     <div className="flex text-small font-semibold text-brand-primary-900">
-                      <Button variant="text">Tøm filter</Button>
+                      <Button variant="text" onClick={handleClearFilters}>
+                        Tøm filter
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -220,7 +240,7 @@ export const Skde = (): JSX.Element => {
             <div className="flex flex-wrap w-full justify-between items-center max-w-360  my-6">
               <Box className="flex justify-between items-center bg-neutral-0 border-none w-full h-20 md:h-28">
                 <h3 className="text-brand-primary-600">
-                  [Placeholder Behandlingssted]
+                  {selectedTreatmentUnits}
                 </h3>
                 <SplitButton
                   label="Last ned"

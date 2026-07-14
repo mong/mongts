@@ -126,9 +126,9 @@ export const TreatmentQualityPageV3 = () => {
                       onSubmit={setSelectedMedicalFields}
                     />
                     <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                      Behandlingsenheter
+                      Behandlingssted
                       <Button onClick={handleTreatmentUnitButtonClick}>
-                        Velg behandlingsenheter
+                        Velg behandlingssted
                       </Button>
                     </div>
                     <TreatmentUnitPopup
