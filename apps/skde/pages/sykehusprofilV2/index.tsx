@@ -1,7 +1,7 @@
 import {
+  Box,
   Button,
   Dropdown,
-  Frame,
   HeroBanner,
   Icon,
   PageContent,
@@ -9,7 +9,7 @@ import {
   ToggleButton,
   ToggleButtonGroup,
 } from "@mong/material-ui";
-import { Box, Toolbar, Typography } from "@mui/material";
+import { Toolbar, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useScreenSize } from "@visx/responsive";
@@ -130,61 +130,77 @@ export const Skde = (): JSX.Element => {
       />
 
       {/* Toolbar */}
-      <div className="flex justify-center w-full bg-neutral-0">
-        <div className="flex flex-wrap w-full justify-between items-center bg-neutral-0 max-w-360 mb-4">
-          <div className="grid grid-cols-[repeat(3,max-content)] gap-x-4 text-small text-dark font-semibold items-center">
-            <div>Behandlingssted</div>
-            <div>Vis</div>
-            <div></div>
-            <div>
-              <Button
-              // onClick={handleTreatmentUnitButtonClick}
-              >
-                Velg behandlingssted
-              </Button>
-            </div>
-            <div>
-              <ToggleButtonGroup
-                onChange={() => {}}
-                orientation="horizontal"
-                value={["item2"]}
-                compact={false}
-              >
-                <ToggleButton aria-label="toggle item1" value="item1">
-                  Måloppnåelse
-                </ToggleButton>
-                <ToggleButton aria-label="toggle item2" value="item2">
-                  Dekningsgrad
-                </ToggleButton>
-              </ToggleButtonGroup>
-            </div>
-            <div>
-              <Button variant="text">Tøm filter</Button>
-            </div>
-          </div>
-
-          <div className="">
-            <Button
-              startIcon={<Icon size="small" symbol="content_copy" />}
-              variant="secondary"
-              onClick={() => {
-                navigator.clipboard.writeText(window.location.href);
-                // setUrlCopied(true);
-                // setTimeout(() => {
-                //   setUrlCopied(false);
-                // }, urlCopiedTimeout);
-              }}
-            >
-              Kopier denne visningen
-              {/* {urlCopied ? "Link kopiert" : "Kopier denne visningen"} */}
-            </Button>
-          </div>
+      <div className="flex bg-neutral-0 w-full align-middle justify-center px-6 md:px-12 sticky top-0 z-60 shadow-xs">
+        <div className="flex flex-col w-full h-full max-w-360">
+          {
+            <Toolbar disableGutters={true}>
+              <div className="flex flex-row max-w-360 w-full justify-between items-center pb-2 md:pb-4">
+                <div className="flex flex-row md:flex-row gap-2 md:gap-4 flex-wrap">
+                  <div className="flex gap-3">
+                    <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                      Fagområde
+                      <Button
+                      //  onClick={handleMedicalFieldButtonClick}
+                      >
+                        Velg fagområde
+                      </Button>
+                    </div>
+                    {/* <MedicalFieldPopup
+                      open={medicalFieldPopupOpen}
+                      updateRegistries={setSelectedMedicalFields}
+                      setOpen={setMedicalFieldPopupOpen}
+                      onSubmit={setSelectedMedicalFields}
+                    /> */}
+                    <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                      Behandlingsenheter
+                      <Button>
+                        {/* // onClick={handleTreatmentUnitButtonClick}> */}
+                        Velg behandlingsenheter
+                      </Button>
+                    </div>
+                    {/* <TreatmentUnitPopup
+                      open={treatmentUnitPopupOpen}
+                      setOpen={setTreatmentUnitPopupOpen}
+                      onSubmit={setSelectedTreatmentUnits}
+                      context={selectedTableContext}
+                      type={"ind"}
+                    /> */}
+                  </div>
+                  <div className="flex items-end">
+                    <div className="flex text-small font-semibold text-brand-primary-900">
+                      <Button variant="text">Tøm filter</Button>
+                    </div>
+                  </div>
+                </div>
+                <div className="hidden md:flex align-middle justify-center items-center">
+                  <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                    <div className="whitespace-nowrap">&nbsp;</div>
+                    <Button
+                      startIcon={<Icon size="small" symbol="content_copy" />}
+                      variant="secondary"
+                      // onClick={() => {
+                      //   navigator.clipboard.writeText(window.location.href);
+                      //   setUrlCopied(true);
+                      //   setTimeout(() => {
+                      //     setUrlCopied(false);
+                      //   }, urlCopiedTimeout);
+                      // }}
+                    >
+                      Kopier denne visningen
+                      {/* {urlCopied ? "Link kopiert" : "Kopier denne visningen"} */}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </Toolbar>
+          }
         </div>
       </div>
       {/* End Toolbar */}
+
       <div className="flex justify-center w-full">
         <div className="flex flex-wrap w-full justify-between items-center max-w-360 my-6">
-          <Frame className="flex justify-between items-center bg-neutral-0 border-none">
+          <Box className="flex justify-between items-center bg-neutral-0 border-none w-full h-20 md:h-28">
             <h3>[Placeholder Behandlingssted]</h3>
             <SplitButton
               label="Last ned"
@@ -192,7 +208,7 @@ export const Skde = (): JSX.Element => {
               options={["PDF", "SVG", "PNG", "CSV"]}
               steps="one-step"
             />
-          </Frame>
+          </Box>
         </div>
       </div>
       <PageContent>
