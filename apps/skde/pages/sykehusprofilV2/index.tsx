@@ -1,15 +1,16 @@
 import {
   Box,
   Button,
-  Dropdown,
+  // Dropdown,
   HeroBanner,
   Icon,
   PageContent,
   SplitButton,
+  SubjectAreaResultCard,
   ToggleButton,
   ToggleButtonGroup,
 } from "@mong/material-ui";
-import { Toolbar, Typography } from "@mui/material";
+import { Toolbar } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useScreenSize } from "@visx/responsive";
@@ -23,7 +24,6 @@ import {
 import { type JSX, useEffect, useState } from "react";
 import type { URLs } from "types";
 import { defaultYear } from "../../src/app_config";
-import { Header } from "../../src/components/Header";
 import { HospitalInfoBox } from "../../src/components/HospitalProfile";
 import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
 import { HospitalProfileLinePlot } from "../../src/components/HospitalProfile/HospitalProfileLinePlot";
@@ -32,7 +32,6 @@ import { HospitalProfileMedfieldTable } from "../../src/components/HospitalProfi
 import { SelectedIndicatorTable } from "../../src/components/HospitalProfile/SelectedIndicatorTable";
 import { TurnDeviceBox } from "../../src/components/HospitalProfile/TurnDeviceBox";
 import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterMenu";
-import { LayoutHead } from "../../src/components/LayoutHead";
 
 export const Skde = (): JSX.Element => {
   // States
@@ -128,7 +127,6 @@ export const Skde = (): JSX.Element => {
             kvalitetsregistre per behandlingsenhet."
         image="/hero-bg-4.jpg"
       />
-
       {/* Toolbar */}
       <div className="flex bg-neutral-0 w-full align-middle justify-center px-6 md:px-12 sticky top-0 z-60 shadow-xs">
         <div className="flex flex-col w-full h-full max-w-360">
@@ -136,13 +134,13 @@ export const Skde = (): JSX.Element => {
             <Toolbar disableGutters={true}>
               <div className="flex flex-row max-w-360 w-full justify-between items-center pb-2 md:pb-4">
                 <div className="flex flex-row md:flex-row gap-2 md:gap-4 flex-wrap">
-                  <div className="flex gap-3">
+                  <div className="flex gap-6">
                     <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                      Fagområde
+                      Behandlingssted
                       <Button
                       //  onClick={handleMedicalFieldButtonClick}
                       >
-                        Velg fagområde
+                        Velg behandlingssted
                       </Button>
                     </div>
                     {/* <MedicalFieldPopup
@@ -152,11 +150,19 @@ export const Skde = (): JSX.Element => {
                       onSubmit={setSelectedMedicalFields}
                     /> */}
                     <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                      Behandlingsenheter
-                      <Button>
-                        {/* // onClick={handleTreatmentUnitButtonClick}> */}
-                        Velg behandlingsenheter
-                      </Button>
+                      Vis
+                      <ToggleButtonGroup
+                        onChange={() => {}}
+                        orientation="horizontal"
+                        value={["item2"]}
+                      >
+                        <ToggleButton aria-label="toggle item1" value="item1">
+                          Måloppnåelse{" "}
+                        </ToggleButton>
+                        <ToggleButton aria-label="toggle item2" value="item2">
+                          Dekningsgrad{" "}
+                        </ToggleButton>
+                      </ToggleButtonGroup>
                     </div>
                     {/* <TreatmentUnitPopup
                       open={treatmentUnitPopupOpen}
@@ -197,140 +203,241 @@ export const Skde = (): JSX.Element => {
         </div>
       </div>
       {/* End Toolbar */}
-
-      <div className="flex justify-center w-full">
-        <div className="flex flex-wrap w-full justify-between items-center max-w-360 my-6">
-          <Box className="flex justify-between items-center bg-neutral-0 border-none w-full h-20 md:h-28">
-            <h3>[Placeholder Behandlingssted]</h3>
-            <SplitButton
-              label="Last ned"
-              onClick={() => {}}
-              options={["PDF", "SVG", "PNG", "CSV"]}
-              steps="one-step"
-            />
-          </Box>
-        </div>
-      </div>
-      <PageContent>
-        {/* <LayoutHead
+      <div className="px-12 flex justify-center">
+        <div className="w-full max-w-360">
+          {/* <LayoutHead
           title="Sykehusprofil"
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service for individual treatment units."
           href="/favicon.ico"
         /> */}
 
-        <Header
+          {/* <Header
           bgcolor="surface2.light"
           title={"Sykehusprofil"}
           maxWidth={maxWidth}
-        >
-          <Box sx={{ mb: 6 }}>
-            Her vises alle kvalitetsindikatorer fra nasjonale medisinske
-            kvalitetsregistre per behandlingsenhet.
-          </Box>
-          <Typography>
-            <UnitFilterMenu
-              width={Math.min(400, 0.8 * width)}
-              setUnitName={setUnitName}
-              unitNamesQuery={unitNamesQuery}
-              unitName={unitName || ""}
-            />
-          </Typography>
-        </Header>
-        {/* <PageContent rounded={true}> */}
-        <Grid container spacing={2}>
-          <Grid
-            size={{ xs: 12, sm: 7 }}
-            data-testid={`hospital_profile_box_${unitName}`}
-          >
-            <HospitalInfoBox
-              boxHeight={
-                width > breakpoints.xxl ? topRowBoxHeightXxl : topRowBoxHeightXs
-              }
-              // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-              unitNames={unitNamesQuery.data}
-              // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-              selectedTreatmentUnit={unitName}
-              unitUrl={unitUrl}
-            />
-          </Grid>
-          <Grid size={{ xs: 12, sm: 5 }}>
-            <AffiliatedHospitals
-              boxHeight={
-                width > breakpoints.xxl ? topRowBoxHeightXxl : topRowBoxHeightXs
-              }
-              titleStyle={titleStyle}
-              // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-              unitNames={unitNamesQuery.data}
-              selectedTreatmentUnit={unitName || ""}
-              setUnitName={setUnitName}
-            />
-          </Grid>
+        > */}
+          <div className="flex justify-center w-full">
+            <div className="flex flex-wrap w-full justify-between items-center max-w-360  my-6">
+              <Box className="flex justify-between items-center bg-neutral-0 border-none w-full h-20 md:h-28">
+                <h3 className="text-brand-primary-600">
+                  [Placeholder Behandlingssted]
+                </h3>
+                <SplitButton
+                  label="Last ned"
+                  onClick={() => {}}
+                  options={["PDF", "SVG", "PNG", "CSV"]}
+                  steps="one-step"
+                />
+              </Box>
+            </div>
+          </div>
 
-          <Grid size={{ xs: 12 }}>
-            {showRotateMessage ? (
-              TurnDeviceMessage
-            ) : (
-              <HospitalProfileMedfieldTable
-                boxMaxHeight={boxMaxHeight}
-                titlePadding={titlePadding}
-                titleStyle={titleStyle}
-                textMargin={textMargin}
-                unitName={unitName || ""}
-                lastYear={lastYear}
-              />
-            )}
-          </Grid>
-
-          <Grid size={{ xs: 12 }}>
-            {showRotateMessage ? (
-              TurnDeviceMessage
-            ) : (
-              <HospitalProfileLowLevelTable
-                unitName={unitName?.toString() || ""}
-                boxMaxHeight={boxMaxHeight}
-                titlePadding={titlePadding}
-                titleStyle={titleStyle}
-                textMargin={textMargin}
+          {/* <UnitFilterMenu
+            width={Math.min(400, 0.8 * width)}
+            setUnitName={setUnitName}
+            unitNamesQuery={unitNamesQuery}
+            unitName={unitName || ""}
+          /> */}
+          {/* </Header> */}
+          {/* <PageContent rounded={true}> */}
+          <div className="grid grid-cols-2 py-6">
+            <div className="grid gap-4">
+              <Box>
+                <h4 className="pb-8">Måloppnåelse for [yyyy]</h4>
+                [insert graph here]
+              </Box>
+              <Box>
+                <h4 className="pb-8">Måloppnåelse [yyyy-yyyy]</h4>
+                [insert graph here]
+              </Box>
+            </div>
+            <div className="grid row-span-2 ml-4">
+              <Box>
+                <h4 className="pb-8">Måloppnåelse siste [x] år</h4>
+                [insert graph here]
+              </Box>
+            </div>
+          </div>
+          <div className="flex flex-col gap-2 pb-14 ">
+            <h4 className="pb-8 pt-14 text-brand-primary-600">
+              Måloppnåelse sortert på fagområde
+            </h4>
+            <SubjectAreaResultCard
+              headers={{ first: "Fagområde", second: "Målnivå" }}
+              buttonHref="#"
+              high="Høy 92%"
+              low="Lavt 50%"
+              middle="Middels 75%"
+              title="Dagkirurgi"
+            />
+            <SubjectAreaResultCard
+              buttonHref="#"
+              high="Høy 92%"
+              low="Lavt 50%"
+              middle="Middels 75%"
+              title="Dagkirurgi"
+            />
+            <SubjectAreaResultCard
+              buttonHref="#"
+              high="Høy 92%"
+              low="Lavt 50%"
+              middle="Middels 75%"
+              title="Andel trombolyse innen 30 minutter etter innleggelse"
+            />
+            <SubjectAreaResultCard
+              buttonHref="#"
+              high="Høy 92%"
+              low="Lavt 50%"
+              middle="Middels 75%"
+              title="Dagkirurgi"
+            />
+            <SubjectAreaResultCard
+              buttonHref="#"
+              high="Høy 92%"
+              low="Lavt 50%"
+              middle="Middels 75%"
+              title="Dagkirurgi"
+            />
+          </div>
+          <div className="flex flex-col gap-2 pb-14">
+            <h4 className="pb-8 pt-14 text-brand-primary-600">
+              Utvalgte indikatorer for [placeholder behandlingssted]
+            </h4>
+            <SubjectAreaResultCard
+              headers={{ first: "Fagområde", second: "Målnivå" }}
+              buttonHref="#"
+              high="Høy 92%"
+              low="Lavt 50%"
+              middle="Middels 75%"
+              title="Dagkirurgi"
+            />
+            <SubjectAreaResultCard
+              buttonHref="#"
+              high="Høy 92%"
+              low="Lavt 50%"
+              middle="Middels 75%"
+              title="Dagkirurgi"
+            />
+            <SubjectAreaResultCard
+              buttonHref="#"
+              high="Høy 92%"
+              low="Lavt 50%"
+              middle="Middels 75%"
+              title="Dagkirurgi"
+            />
+            <SubjectAreaResultCard
+              buttonHref="#"
+              high="Høy 92%"
+              low="Lavt 50%"
+              middle="Middels 75%"
+              title="Dagkirurgi"
+            />
+            <SubjectAreaResultCard
+              buttonHref="#"
+              high="Høy 92%"
+              low="Lavt 50%"
+              middle="Middels 75%"
+              title="Dagkirurgi"
+            />
+          </div>
+          {/* <Grid container spacing={2}>
+            <Grid
+              size={{ xs: 12, sm: 7 }}
+              data-testid={`hospital_profile_box_${unitName}`}
+            >
+              <HospitalInfoBox
+                boxHeight={
+                  width > breakpoints.xxl
+                    ? topRowBoxHeightXxl
+                    : topRowBoxHeightXs
+                }
                 // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                unitFullName={unitFullName}
-                lastYear={lastYear}
-              />
-            )}
-          </Grid>
-
-          <Grid size={{ xs: 12 }}>
-            {showRotateMessage ? (
-              TurnDeviceMessage
-            ) : (
-              <HospitalProfileLinePlot
+                unitNames={unitNamesQuery.data}
                 // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                unitFullName={unitFullName}
-                unitNames={unitName?.toString() || ""}
-                lastYear={lastYear}
-                pastYears={pastYears}
-                titlePadding={titlePadding}
-                titleStyle={titleStyle}
-                textMargin={textMargin}
+                selectedTreatmentUnit={unitName}
+                unitUrl={unitUrl}
               />
-            )}
-          </Grid>
+            </Grid>
+            <Grid size={{ xs: 12, sm: 5 }}>
+              <AffiliatedHospitals
+                boxHeight={
+                  width > breakpoints.xxl
+                    ? topRowBoxHeightXxl
+                    : topRowBoxHeightXs
+                }
+                titleStyle={titleStyle}
+                // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+                unitNames={unitNamesQuery.data}
+                selectedTreatmentUnit={unitName || ""}
+                setUnitName={setUnitName}
+              />
+            </Grid>
 
-          <Grid size={{ xs: 12 }}>
-            {showRotateMessage ? (
-              TurnDeviceMessage
-            ) : (
-              <SelectedIndicatorTable
-                unitName={unitName || ""}
-                titlePadding={titlePadding}
-                titleStyle={titleStyle}
-                lastYear={lastYear}
-                textMargin={textMargin}
-              />
-            )}
-          </Grid>
-        </Grid>
-        {/* </PageContent> */}
-      </PageContent>
+            <Grid size={{ xs: 12 }}>
+              {showRotateMessage ? (
+                TurnDeviceMessage
+              ) : (
+                <HospitalProfileMedfieldTable
+                  boxMaxHeight={boxMaxHeight}
+                  titlePadding={titlePadding}
+                  titleStyle={titleStyle}
+                  textMargin={textMargin}
+                  unitName={unitName || ""}
+                  lastYear={lastYear}
+                />
+              )}
+            </Grid>
+
+            <Grid size={{ xs: 12 }}>
+              {showRotateMessage ? (
+                TurnDeviceMessage
+              ) : (
+                <HospitalProfileLowLevelTable
+                  unitName={unitName?.toString() || ""}
+                  boxMaxHeight={boxMaxHeight}
+                  titlePadding={titlePadding}
+                  titleStyle={titleStyle}
+                  textMargin={textMargin}
+                  // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+                  unitFullName={unitFullName}
+                  lastYear={lastYear}
+                />
+              )}
+            </Grid>
+
+            <Grid size={{ xs: 12 }}>
+              {showRotateMessage ? (
+                TurnDeviceMessage
+              ) : (
+                <HospitalProfileLinePlot
+                  // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+                  unitFullName={unitFullName}
+                  unitNames={unitName?.toString() || ""}
+                  lastYear={lastYear}
+                  pastYears={pastYears}
+                  titlePadding={titlePadding}
+                  titleStyle={titleStyle}
+                  textMargin={textMargin}
+                />
+              )}
+            </Grid>
+
+            <Grid size={{ xs: 12 }}>
+              {showRotateMessage ? (
+                TurnDeviceMessage
+              ) : (
+                <SelectedIndicatorTable
+                  unitName={unitName || ""}
+                  titlePadding={titlePadding}
+                  titleStyle={titleStyle}
+                  lastYear={lastYear}
+                  textMargin={textMargin}
+                />
+              )}
+            </Grid>
+          </Grid> */}
+        </div>
+      </div>
     </>
   );
 };

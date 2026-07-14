@@ -1,10 +1,4 @@
-import {
-  Box,
-  Container,
-  CssBaseline,
-  ThemeProvider,
-  Typography,
-} from "@mui/material";
+import { Box, Container, CssBaseline, ThemeProvider } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useScreenSize } from "@visx/responsive";
@@ -135,14 +129,12 @@ export const Skde = (): JSX.Element => {
             Her vises alle kvalitetsindikatorer fra nasjonale medisinske
             kvalitetsregistre per behandlingsenhet.
           </Box>
-          <Typography>
-            <UnitFilterMenu
-              width={Math.min(400, 0.8 * width)}
-              setUnitName={setUnitName}
-              unitNamesQuery={unitNamesQuery}
-              unitName={unitName || ""}
-            />
-          </Typography>
+          <UnitFilterMenu
+            width={Math.min(400, 0.8 * width)}
+            setUnitName={setUnitName}
+            unitNamesQuery={unitNamesQuery}
+            unitName={unitName || ""}
+          />
         </Header>
 
         <Container maxWidth={maxWidth} disableGutters={true}>
