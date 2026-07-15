@@ -143,7 +143,7 @@ export const Skde = (): JSX.Element => {
       <HeroBanner
         title="Sykehusprofil"
         description="Her vises alle kvalitetsindikatorer fra nasjonale medisinske
-            kvalitetsregistre per behandlingsenhet."
+            kvalitetsregistre per Behandlingssted."
         image="/hero-bg-4.jpg"
       />
       {/* Toolbar */}
@@ -166,6 +166,7 @@ export const Skde = (): JSX.Element => {
                       onSubmit={setSelectedTreatmentUnits}
                       context={selectedTableContext}
                       type={"ind"}
+                      selectionType="single"
                     />
                     <div className="flex flex-col text-small font-semibold text-brand-primary-900">
                       Vis

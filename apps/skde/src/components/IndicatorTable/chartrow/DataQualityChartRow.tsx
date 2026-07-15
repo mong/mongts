@@ -147,7 +147,7 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
           </div>
           {figureType === "bar" && (
             <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-              Behandlingsenheter
+              Behandlingssteder
               <Dropdown
                 value={barChartType}
                 onChange={handleBarChartTypeChange}

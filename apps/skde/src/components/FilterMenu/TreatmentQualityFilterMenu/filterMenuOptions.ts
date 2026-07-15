@@ -67,7 +67,7 @@ export const getTableContextOptions = (): {
   default: FilterSettingsValue;
 } => {
   const tableContextValues = [
-    { value: "caregiver", valueLabel: "Behandlingsenheter" },
+    { value: "caregiver", valueLabel: "Behandlingssteder" },
     { value: "resident", valueLabel: "Opptaksområder" },
   ];
   return {

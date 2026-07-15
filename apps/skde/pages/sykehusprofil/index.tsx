@@ -127,7 +127,7 @@ export const Skde = (): JSX.Element => {
         >
           <Box sx={{ mb: 6 }}>
             Her vises alle kvalitetsindikatorer fra nasjonale medisinske
-            kvalitetsregistre per behandlingsenhet.
+            kvalitetsregistre per behandlingssted.
           </Box>
           <UnitFilterMenu
             width={Math.min(400, 0.8 * width)}

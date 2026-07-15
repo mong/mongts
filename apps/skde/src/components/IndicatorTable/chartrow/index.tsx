@@ -155,7 +155,7 @@ export const ChartRow = (props: ChartRowProps) => {
           </div>
           {figureType === "bar" && (
             <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-              Behandlingsenheter
+              Behandlingssteder
               <Dropdown
                 value={barChartType}
                 onChange={handleBarChartTypeChange}

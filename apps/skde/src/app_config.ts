@@ -37,7 +37,7 @@ export const app_text: appTextTypes = {
     desired_level: "Ønsket målnivå",
   },
   tu_list: {
-    header_text: "Velg behandlingsenheter",
+    header_text: "Velg behandlingssted(er)",
     max_nr_tu: 5,
   },
 };
