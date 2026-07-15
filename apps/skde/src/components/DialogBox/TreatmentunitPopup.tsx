@@ -61,12 +61,10 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
     mainQueryParamsConfig.units,
   );
 
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
-    "all",
-    context,
-    type,
-  );
+  const unitNamesQuery: UseQueryResult<
+    { nestedUnitNames: NestedTreatmentUnitName[] },
+    unknown
+  > = useUnitNamesQuery("all", context, type);
 
   // Sort nested unit names by RHF
   const unitNames = unitNamesQuery.data?.nestedUnitNames.sort(
@@ -172,120 +170,113 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const HFCheckBoxes = {};
   const HospitalCheckBoxes = {};
 
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  unitNames &&
-    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-    unitNames.map((unitName: NestedTreatmentUnitName) => {
-      const hfs = unitName.hf.sort((a, b) => {
-        return a.hf_sort - b.hf_sort;
-      });
+  unitNames?.forEach((unitName: NestedTreatmentUnitName) => {
+    const hfs = unitName.hf.sort((a, b) => {
+      return a.hf_sort - b.hf_sort;
+    });
 
-      // ######################### //
-      // ##### Map hospitals ##### ∕∕
-      // ######################### //
-      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-      hfs.map((hf) => {
-        const CheckBoxes = hf.hospital.map((hospital) => {
-          const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-            if (event.target.checked) {
-              const newUnitSelection = [...unitSelection, hospital];
-              setUnitSelection([...newUnitSelection]);
-            } else {
-              const newUnitSelection = [
-                ...unitSelection.filter((row) => {
-                  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-                  return row != hospital;
-                }),
-              ];
-              setUnitSelection(newUnitSelection);
-            }
-          };
-
-          return selectionType === "multiple" ? (
-            <FormControlLabel
-              label={hospital}
-              key={hospital}
-              sx={{ width: "100%", background: columnColour3 }}
-              control={
-                <Checkbox
-                  checked={unitSelection.includes(hospital)}
-                  onChange={handleChange}
-                  key={`${hospital}_checkbox`}
-                />
-              }
-            />
-          ) : (
-            <FormControlLabel
-              label={hospital}
-              value={hospital}
-              key={hospital}
-              sx={{ width: "100%", background: columnColour3 }}
-              control={<Radio />}
-            />
-          );
-        });
-        HospitalCheckBoxes[hf.hf] = CheckBoxes;
-      });
-
-      // ################### //
-      // ##### Map HFs ##### ∕∕
-      // ################### //
-      const CheckBoxes = hfs.map((hf) => {
+    // ######################### //
+    // ##### Map hospitals ##### ∕∕
+    // ######################### //
+    hfs.forEach((hf) => {
+      const CheckBoxes = hf.hospital.map((hospital) => {
         const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
           if (event.target.checked) {
-            const newHFSelection = [...unitSelection, hf.hf];
-            setUnitSelection([...newHFSelection]);
+            const newUnitSelection = [...unitSelection, hospital];
+            setUnitSelection([...newUnitSelection]);
           } else {
-            const newHFSelection = [
+            const newUnitSelection = [
               ...unitSelection.filter((row) => {
-                // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-                return row != hf.hf;
+                return row !== hospital;
               }),
             ];
-            setUnitSelection(newHFSelection);
+            setUnitSelection(newUnitSelection);
           }
         };
 
-        // Check if at least one hospital is checked.
-        // The correspinding HF checkbox should then be indeterminate.
-        const hospitalChecked = () => {
-          const selectedSet = new Set([...unitSelection]);
-          const hospitalSet = new Set([...hf.hospital]);
-          return selectedSet.intersection(hospitalSet).size > 0;
-        };
-
-        return (
+        return selectionType === "multiple" ? (
           <FormControlLabel
-            label={hf.hf}
-            key={hf.hf}
-            value={hf.hf}
-            onMouseEnter={() => {
-              setHighlightedHF(hf.hf);
-            }}
-            sx={{
-              width: "100%",
-              background:
-                highlightedHF === hf.hf ? columnColour3 : columnColour2,
-            }}
+            label={hospital}
+            key={hospital}
+            sx={{ width: "100%", background: columnColour3 }}
             control={
-              selectionType === "multiple" ? (
-                <Checkbox
-                  checked={unitSelection.includes(hf.hf)}
-                  indeterminate={
-                    !unitSelection.includes(hf.hf) && hospitalChecked()
-                  }
-                  onChange={handleChange}
-                  key={`${hf.hf}_checkbox`}
-                />
-              ) : (
-                <Radio />
-              )
+              <Checkbox
+                checked={unitSelection.includes(hospital)}
+                onChange={handleChange}
+                key={`${hospital}_checkbox`}
+              />
             }
+          />
+        ) : (
+          <FormControlLabel
+            label={hospital}
+            value={hospital}
+            key={hospital}
+            sx={{ width: "100%", background: columnColour3 }}
+            control={<Radio />}
           />
         );
       });
-      HFCheckBoxes[unitName.rhf] = CheckBoxes;
+      HospitalCheckBoxes[hf.hf] = CheckBoxes;
     });
+
+    // ################### //
+    // ##### Map HFs ##### ∕∕
+    // ################### //
+    const CheckBoxes = hfs.map((hf) => {
+      const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if (event.target.checked) {
+          const newHFSelection = [...unitSelection, hf.hf];
+          setUnitSelection([...newHFSelection]);
+        } else {
+          const newHFSelection = [
+            ...unitSelection.filter((row) => {
+              return row !== hf.hf;
+            }),
+          ];
+          setUnitSelection(newHFSelection);
+        }
+      };
+
+      // Check if at least one hospital is checked.
+      // The correspinding HF checkbox should then be indeterminate.
+      const hospitalChecked = () => {
+        const selectedSet = new Set([...unitSelection]);
+        const hospitalSet = new Set([...hf.hospital]);
+        return selectedSet.intersection(hospitalSet).size > 0;
+      };
+
+      return (
+        <FormControlLabel
+          label={hf.hf}
+          key={hf.hf}
+          value={hf.hf}
+          onMouseEnter={() => {
+            setHighlightedHF(hf.hf);
+          }}
+          sx={{
+            width: "100%",
+            background: highlightedHF === hf.hf ? columnColour3 : columnColour2,
+          }}
+          control={
+            selectionType === "multiple" ? (
+              <Checkbox
+                checked={unitSelection.includes(hf.hf)}
+                indeterminate={
+                  !unitSelection.includes(hf.hf) && hospitalChecked()
+                }
+                onChange={handleChange}
+                key={`${hf.hf}_checkbox`}
+              />
+            ) : (
+              <Radio />
+            )
+          }
+        />
+      );
+    });
+    HFCheckBoxes[unitName.rhf] = CheckBoxes;
+  });
 
   const handleClose = () => {
     setOpen(false);
@@ -303,10 +294,8 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
     setUnitSelection([...newUnitSelection]);
   };
 
-  // might be another way
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUnitSelection([event.target.value]);
-    // setRadioValue((event.target as HTMLInputElement).value);
   };
 
   return (
