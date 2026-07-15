@@ -143,7 +143,7 @@ export const Skde = (): JSX.Element => {
       <HeroBanner
         title="Sykehusprofil"
         description="Her vises alle kvalitetsindikatorer fra nasjonale medisinske
-            kvalitetsregistre per Behandlingssted."
+            kvalitetsregistre per behandlingssted."
         image="/hero-bg-4.jpg"
       />
       {/* Toolbar */}

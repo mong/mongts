@@ -8,11 +8,20 @@ import {
   DialogTitle,
   FormControl,
   FormControlLabel,
+  FormLabel,
   Grid,
+  Radio,
+  RadioGroup,
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { mainQueryParamsConfig, useUnitNamesQuery } from "qmongjs";
-import { type Dispatch, type JSX, type SetStateAction, useState } from "react";
+import React, {
+  type Dispatch,
+  type JSX,
+  type SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import type { NestedTreatmentUnitName } from "types";
 import { useQueryParam } from "use-query-params";
 import { getTreatmentUnitsTree } from "../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
@@ -34,15 +43,23 @@ type TreatmentUnitPopupProps = {
   onSubmit: Dispatch<SetStateAction<string[]>>;
   context: string;
   type: string;
+  selectionType?: "multiple" | "single";
 };
 
 export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
-  const { open, setOpen, onSubmit, context, type } = props;
-
+  const {
+    open,
+    setOpen,
+    onSubmit,
+    context,
+    type,
+    selectionType = "multiple",
+  } = props;
+  const [radioValue, setRadioValue] = useState<string>("");
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");
   const [highlightedHF, setHighlightedHF] = useState<string>("");
 
-  const [unitSelection = ["Nasjonalt"], setUnitSelection] = useQueryParam<
+  const [unitSelection = [], setUnitSelection] = useQueryParam<
     string[] | undefined,
     string[]
     // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
@@ -88,6 +105,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           setUnitSelection([...new Set(newRHFSelection)]);
         }
       };
+
       // Check if at least one subunit is checked.
       // The RHF checkbox should then be indeterminate.
       const hfChecked = () => {
@@ -106,8 +124,9 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
         return selectedSet.intersection(hospitalSet).size > 0;
       };
 
-      return (
+      return selectionType === "multiple" ? (
         <FormControlLabel
+          value={rhf.rhf}
           label={rhf.rhf}
           key={rhf.rhf}
           onMouseEnter={() => {
@@ -130,6 +149,22 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
               key={`${rhf.rhf}_checkbox`}
             />
           }
+        />
+      ) : (
+        <FormControlLabel
+          value={rhf.rhf}
+          label={rhf.rhf}
+          key={rhf.rhf}
+          onMouseEnter={() => {
+            setHighlightedRHF(rhf.rhf);
+            setHighlightedHF("");
+          }}
+          sx={{
+            width: "100%",
+            background:
+              highlightedRHF === rhf.rhf ? columnColour2 : columnColour1,
+          }}
+          control={<Radio />}
         />
       );
     }) as JSX.Element[]);
@@ -169,7 +204,8 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
               setUnitSelection(newUnitSelection);
             }
           };
-          return (
+
+          return selectionType === "multiple" ? (
             <FormControlLabel
               label={hospital}
               key={hospital}
@@ -181,6 +217,14 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                   key={`${hospital}_checkbox`}
                 />
               }
+            />
+          ) : (
+            <FormControlLabel
+              label={hospital}
+              value={hospital}
+              key={hospital}
+              sx={{ width: "100%", background: columnColour3 }}
+              control={<Radio />}
             />
           );
         });
@@ -218,6 +262,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           <FormControlLabel
             label={hf.hf}
             key={hf.hf}
+            value={hf.hf}
             onMouseEnter={() => {
               setHighlightedHF(hf.hf);
             }}
@@ -227,14 +272,18 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                 highlightedHF === hf.hf ? columnColour3 : columnColour2,
             }}
             control={
-              <Checkbox
-                checked={unitSelection.includes(hf.hf)}
-                indeterminate={
-                  !unitSelection.includes(hf.hf) && hospitalChecked()
-                }
-                onChange={handleChange}
-                key={`${hf.hf}_checkbox`}
-              />
+              selectionType === "multiple" ? (
+                <Checkbox
+                  checked={unitSelection.includes(hf.hf)}
+                  indeterminate={
+                    !unitSelection.includes(hf.hf) && hospitalChecked()
+                  }
+                  onChange={handleChange}
+                  key={`${hf.hf}_checkbox`}
+                />
+              ) : (
+                <Radio />
+              )
             }
           />
         );
@@ -258,9 +307,19 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
     setUnitSelection([...newUnitSelection]);
   };
 
+  // might be another way
+  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUnitSelection([event.target.value]);
+    // setRadioValue((event.target as HTMLInputElement).value);
+  };
+
+  useEffect(() => {
+    console.log("UnitSelection", unitSelection);
+  }, [unitSelection]);
+
   return (
     <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
-      <DialogTitle>Velg behandlingsenheter</DialogTitle>
+      <DialogTitle>Velg behandlingssted</DialogTitle>
       <DialogContent
         sx={{ height: 600 }}
         onMouseLeave={() => {
@@ -289,8 +348,21 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                     borderBottomLeftRadius: borderRadius,
                   }}
                 >
+                  {/* RHF Column */}
                   <FormControl sx={{ width: "100%", marginTop: marginTop }}>
-                    {RHFCheckboxes?.map((row: JSX.Element) => row)}
+                    {selectionType === "single" ? (
+                      <RadioGroup
+                        aria-labelledby={`RHF-label`}
+                        aria-label="RHF"
+                        name="row-radio-buttons-group"
+                        value={unitSelection[0] || ""}
+                        onChange={handleRadioChange}
+                      >
+                        {RHFCheckboxes?.map((row: JSX.Element) => row)}
+                      </RadioGroup>
+                    ) : (
+                      RHFCheckboxes?.map((row: JSX.Element) => row)
+                    )}
                   </FormControl>
                 </Box>
               </Grid>
@@ -302,6 +374,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                     marginLeft: `-${rippleOffset}px`,
                   }}
                 >
+                  {/* HF Column */}
                   <FormControl
                     sx={{
                       width: "100%",
@@ -309,8 +382,22 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                       marginTop: marginTop,
                     }}
                   >
-                    {HFCheckBoxes[highlightedRHF]?.map(
-                      (row: JSX.Element) => row,
+                    {selectionType === "multiple" ? (
+                      HFCheckBoxes[highlightedRHF]?.map(
+                        (row: JSX.Element) => row,
+                      )
+                    ) : (
+                      <RadioGroup
+                        aria-labelledby={`HF-label`}
+                        aria-label="HF"
+                        name="row-radio-buttons-group"
+                        value={unitSelection[0] || ""}
+                        onChange={handleRadioChange}
+                      >
+                        {HFCheckBoxes[highlightedRHF]?.map(
+                          (row: JSX.Element) => row,
+                        )}
+                      </RadioGroup>
                     )}
                   </FormControl>
                 </Box>
@@ -324,6 +411,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                     borderBottomRightRadius: borderRadius,
                   }}
                 >
+                  {/* Hospitals Column */}
                   <FormControl
                     sx={{
                       width: "100%",
@@ -331,8 +419,22 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                       marginTop: marginTop,
                     }}
                   >
-                    {HospitalCheckBoxes[highlightedHF]?.map(
-                      (row: JSX.Element) => row,
+                    {selectionType === "single" ? (
+                      <RadioGroup
+                        aria-labelledby={`Hospital-label`}
+                        aria-label="Hospital"
+                        name="row-radio-buttons-group"
+                        value={unitSelection[0] || ""}
+                        onChange={handleRadioChange}
+                      >
+                        {HospitalCheckBoxes[highlightedHF]?.map(
+                          (row: JSX.Element) => row,
+                        )}
+                      </RadioGroup>
+                    ) : (
+                      HospitalCheckBoxes[highlightedHF]?.map(
+                        (row: JSX.Element) => row,
+                      )
                     )}
                   </FormControl>
                 </Box>
@@ -345,7 +447,8 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
         <Button onClick={handleClose}>Avbryt</Button>
         <Button
           onClick={handleSubmit}
-        >{`OK·(${unitSelection.length - 1})`}</Button>
+          disabled={unitSelection.length === 0}
+        >{`${selectionType === "single" ? "OK" : `OK·(${unitSelection.length - 1})`}`}</Button>
       </DialogActions>
     </Dialog>
   );
