@@ -8,7 +8,6 @@ import {
   DialogTitle,
   FormControl,
   FormControlLabel,
-  FormLabel,
   Grid,
   Radio,
   RadioGroup,
@@ -19,7 +18,6 @@ import React, {
   type Dispatch,
   type JSX,
   type SetStateAction,
-  useEffect,
   useState,
 } from "react";
 import type { NestedTreatmentUnitName } from "types";
@@ -55,15 +53,13 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
     type,
     selectionType = "multiple",
   } = props;
-  const [radioValue, setRadioValue] = useState<string>("");
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");
   const [highlightedHF, setHighlightedHF] = useState<string>("");
 
-  const [unitSelection = [], setUnitSelection] = useQueryParam<
-    string[] | undefined,
-    string[]
-    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-  >("units", mainQueryParamsConfig.units);
+  const [unitSelection = ["Nasjonalt"], setUnitSelection] = useQueryParam(
+    "units",
+    mainQueryParamsConfig.units,
+  );
 
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
@@ -297,7 +293,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   };
 
   const handleSubmit = () => {
-    onSubmit(unitSelection);
+    onSubmit(unitSelection.filter((unit): unit is string => unit !== null));
     setOpen(false);
     setHighlightedRHF("");
   };
@@ -312,10 +308,6 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
     setUnitSelection([event.target.value]);
     // setRadioValue((event.target as HTMLInputElement).value);
   };
-
-  useEffect(() => {
-    console.log("UnitSelection", unitSelection);
-  }, [unitSelection]);
 
   return (
     <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
@@ -447,7 +439,6 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
         <Button onClick={handleClose}>Avbryt</Button>
         <Button
           onClick={handleSubmit}
-          disabled={unitSelection.length === 0}
         >{`${selectionType === "single" ? "OK" : `OK·(${unitSelection.length - 1})`}`}</Button>
       </DialogActions>
     </Dialog>
