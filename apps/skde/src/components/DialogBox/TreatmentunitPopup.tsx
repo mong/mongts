@@ -56,10 +56,10 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");
   const [highlightedHF, setHighlightedHF] = useState<string>("");
 
-  const [unitSelection = ["Nasjonalt"], setUnitSelection] = useQueryParam(
-    "units",
-    mainQueryParamsConfig.units,
-  );
+  const [
+    unitSelection = [selectionType === "single" ? "" : "Nasjonalt"],
+    setUnitSelection,
+  ] = useQueryParam("units", mainQueryParamsConfig.units);
 
   const unitNamesQuery: UseQueryResult<
     { nestedUnitNames: NestedTreatmentUnitName[] },
