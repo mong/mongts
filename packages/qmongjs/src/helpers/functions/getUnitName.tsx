@@ -10,7 +10,7 @@ export const getUnitFullName = (
 
   // Check if unit is a RHF
   const isRHF = nestedUnitNames.map((row) => row.rhf).includes(unitShortName);
-
+  console.log("isRHF", isRHF);
   if (isRHF) {
     return unitShortName;
   }
