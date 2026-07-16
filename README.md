@@ -35,6 +35,38 @@ git merge main
 git push
 ```
 
+### Authentication for github npm registry
+
+The @mong/material-ui npm package is in a private repository, you need to authenitcate to install or upgrade it. To achieve this create a personal access token (classic) on github that has the **`read:packages`** scope and configure pnpm to use it.
+
+See [Authenticating to GitHub Packages](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#authenticating-to-github-packages) for details.
+
+#### Summary
+
+1. Create a Personal Access Token (classic).
+2. Go to [github.com/settings/tokens](https://github.com/settings/tokens).
+3. Click **Generate new token (classic)**.
+4. Give the token a descriptive name and select the **`read:packages`** scope.
+5. Configure pnpm with youtoken to use GitHub Packages.
+
+#### Configure pnpm for @mong packages
+pnpm no longer accepts enviroment variable expansion for auth tokens, so to configure it for authentication you add a `.npmrc` file in you home folder or add the npm configuration to pnpm. 
+
+```ini
+#### .npmrc
+@mong:registry=https://npm.pkg.github.com
+```
+
+```ini
+#### pnpm 
+pnpm config set "//npm.pkg.github.com/:_authToken" "YOUR_AUTH_TOKEN (as plaintext)"
+```
+
+See [GitHub documentation on personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) and [pnpm authentication settings](https://pnpm.io/npmrc) for more details.
+
+> **Important:** Never commit your token to version control. Add it to pnpm or add a .npmrc file to your home folder. ![Uploading SkdeThemeProvider.svg…]()
+
+
 ### Run and develop it locally
 
 You need an SSH key in order to clone the repository. Follow the directions [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh) for making a new key and adding it to your Github account.
@@ -54,6 +86,7 @@ pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
 
 ### Build static page and run it locally
 
