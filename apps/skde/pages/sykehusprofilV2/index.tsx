@@ -131,7 +131,7 @@ export const Skde = (): JSX.Element => {
       });
     });
 
-    /** NB: Denne er alltid blank */
+    /** NB: Denne er alltid blank? */
     unitFullName =
       (unitNamesQuery.data &&
         getUnitFullName(unitNamesQuery.data.nestedUnitNames, unitName)) ||
@@ -260,7 +260,7 @@ export const Skde = (): JSX.Element => {
 
         {/* Page Content */}
         <PageContent>
-          <div className="flex w-full flex-1 min-h-0 mt-3 md:mt-6">
+          <div className="flex w-full flex-1 min-h-0">
             {/* End Toolbar */}
             {hasLoadingError ? (
               <Box border className={boxclasses}>
@@ -306,10 +306,10 @@ export const Skde = (): JSX.Element => {
           maxWidth={maxWidth}
         > */}
                 <div className="flex justify-center w-full">
-                  <div className="flex flex-wrap w-full justify-between items-center max-w-360  my-6">
+                  <div className="flex flex-wrap w-full justify-between items-center max-w-360  my-4">
                     <Box className="flex justify-between items-center bg-neutral-0 border-none w-full h-20 md:h-28">
                       <h3 className="text-brand-primary-600">
-                        {selectedTreatmentUnit} -
+                        {selectedTreatmentUnit}
                       </h3>
                       <SplitButton
                         label="Last ned"
@@ -321,35 +321,34 @@ export const Skde = (): JSX.Element => {
                   </div>
                 </div>
 
-                {/* <UnitFilterMenu
-            width={Math.min(400, 0.8 * width)}
-            setUnitName={setUnitName}
-            unitNamesQuery={unitNamesQuery}
-            unitName={unitName || ""}
-          /> */}
                 {/* </Header> */}
                 {/* <PageContent rounded={true}> */}
-                <div className="grid grid-cols-2 py-6">
-                  <div className="grid gap-4">
-                    <Box>
+                <div className="flex w-full debug">
+                  <div className="w-1/2 flex flex-col gap-4">
+                    <Box className="p-10!">
                       <h4 className="pb-8">Måloppnåelse for [yyyy]</h4>
                       [insert graph here]
                     </Box>
-                    <Box>
-                      <h4 className="pb-8">Måloppnåelse [yyyy-yyyy]</h4>
-                      [insert graph here]
+
+                    <Box className="*:rounded-none! *:my-5 *:border [&>Box]:border-gray-200">
+                      <h4>Måloppnåelse [yyyy-yyyy]</h4>
+                      <Box className="p-10!">s</Box>
+                      <Box>s</Box>
+                      <Box>s</Box>
                     </Box>
                   </div>
-                  <div className="grid row-span-2 ml-4">
-                    <Box>
+                  <div className="w-1/2 flex flex-col ml-4 gap-4 h-full">
+                    <Box className="h-full">
                       <h4 className="pb-8">Måloppnåelse siste [x] år</h4>
                       [insert graph here]
                     </Box>
+                    <Box className="h-fit">10-års trendanalyse</Box>
                   </div>
                 </div>
+
                 <div className="flex flex-col gap-2 pb-14">
                   <h4 className="pb-8 pt-14 text-brand-primary-600">
-                    Måloppnåelse sortert på fagområde
+                    Måloppnåelse sortert på fagområde [mock data]
                   </h4>
                   <SubjectAreaResultCard
                     headers={{ first: "Fagområde", second: "Målnivå" }}
