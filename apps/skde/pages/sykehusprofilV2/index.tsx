@@ -275,8 +275,8 @@ export const Skde = (): JSX.Element => {
                 </Button>
               </Box>
             ) : isLoading ? (
-              <Box border className={boxclasses}>
-                <h4>Laster data...</h4>
+              <Box padded={false} color="transparent" className="p-52">
+                <LoadingLogo message="Laster data" />
               </Box>
             ) : !selectedUnit ? (
               <Box border className={boxclasses}>
