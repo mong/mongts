@@ -177,7 +177,9 @@ export const TreatmentQualityPageV3 = () => {
         </div>
         <PageContent>
           {isInitialLoading ? (
-            <LoadingLogo />
+            <Box padded={false} color="transparent" className="p-52">
+              <LoadingLogo message="Laster data" />
+            </Box>
           ) : hasLoadingError ? (
             <Stack
               height="484px"
