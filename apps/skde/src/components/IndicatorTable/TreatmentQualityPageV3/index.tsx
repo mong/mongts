@@ -113,7 +113,13 @@ export const TreatmentQualityPageV3 = () => {
         title="Behandlingskvalitet"
         image="/hero-bg-4.jpg"
       />
-      <Suspense fallback={<LoadingLogo />}>
+      <Suspense
+        fallback={
+          <Box color="gray" className="p-20">
+            <LoadingLogo />
+          </Box>
+        }
+      >
         <div className="flex bg-neutral-0 w-full align-middle justify-center px-6 md:px-12 sticky top-0 z-60 shadow-xs">
           <div className="flex flex-col w-full h-full max-w-360">
             {registerData && (
@@ -188,7 +194,7 @@ export const TreatmentQualityPageV3 = () => {
             )}
           </div>
         </div>
-        <PageContent>
+        <PageContent className="pt-10">
           {isInitialLoading ? (
             <Box padded={false} color="transparent" className="p-52">
               <LoadingLogo message="Laster data" />

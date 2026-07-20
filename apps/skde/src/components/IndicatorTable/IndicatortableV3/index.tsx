@@ -1,4 +1,8 @@
-import { RegisterAccordion, type RenderRegisterProps } from "@mong/material-ui";
+import {
+  HeroBanner,
+  RegisterAccordion,
+  type RenderRegisterProps,
+} from "@mong/material-ui";
 import { Box, Typography } from "@mui/material";
 import { customFormat, level2 } from "qmongjs";
 import type { JSX } from "react";
@@ -77,9 +81,7 @@ const reshapeData = (
 
           return {
             chart: (
-              <Box key={`testbox-${registry.registerName}`}>
-                <Typography>Innhold kommer</Typography>
-              </Box>
+              <HeroBanner title="Innhold kommer" image="/hero-bg-4.jpg" />
             ) as JSX.Element,
             indicatorTarget:
               levelTarget !== undefined ? levelDirectionSign + levelTarget : "",
@@ -157,10 +159,10 @@ const fillMissingUnitnames = (
           });
         }
       });
-
       missingResidentAreas.forEach((residentArea) => {
         if (residentArea === "Nasjonalt") {
           data[i].indicators[j].residentsAreaResults?.push({
+            displayHeaderAs: "text",
             result: "Ingen data",
             resultLevel: "low" as "low" | "medium" | "high", // Placeholder value
             resultSubtitle: "",
@@ -187,13 +189,19 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
   );
 
   const reshapedData = reshapeData(medfieldFilteredData, unitNames, year);
+  // const filteredData = reshapedData.filter((row) =>
+  //   row.indicators.filter((unit) => unit.residentsAreaResults?.length === 0),
+  // );
+  // console.log(filteredData);
 
-  fillMissingUnitnames(reshapedData, unitNames);
-
+  // fillMissingUnitnames(reshapedData, unitNames);
+  console.log(reshapedData);
   return (
-    <RegisterAccordion
-      registries={reshapedData}
-      smallScreenMessage="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din."
-    />
+    <div className="w-full max-w-360">
+      <RegisterAccordion
+        registries={reshapedData}
+        smallScreenMessage="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din."
+      />
+    </div>
   );
 };
