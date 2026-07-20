@@ -168,7 +168,7 @@ export const Skde = (): JSX.Element => {
         title="Sykehusprofil"
         description="Her vises alle kvalitetsindikatorer fra nasjonale medisinske
             kvalitetsregistre per behandlingssted."
-        image="/hero-bg-4.jpg"
+        image="/hero-bg-2.jpg"
       />
       <Suspense
         fallback={
