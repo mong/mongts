@@ -181,22 +181,19 @@ export const TreatmentQualityPageV3 = () => {
               <LoadingLogo message="Laster data" />
             </Box>
           ) : hasLoadingError ? (
-            <Stack
-              height="484px"
-              spacing={4}
-              justifyContent="center"
-              alignItems="center"
-              sx={{
-                background: "#FFFFFF",
-                border: "1px solid #AE2323",
-                borderRadius: "16px",
-              }}
+            <Box
+              border
+              className="flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-50 md:min-h-100 my-10"
             >
-              <h3>Kunne ikke laste data. Prøv igjen.</h3>
-              <Button onClick={() => nestedDataQuery.refetch()}>
+              <h4>Feil ved innhenting av data. Prøv igjen.</h4>
+              <Button
+                onClick={() => {
+                  nestedDataQuery.refetch();
+                }}
+              >
                 Last på nytt
               </Button>
-            </Stack>
+            </Box>
           ) : selectedMedicalFields.length > 0 && registerData ? (
             <IndicatorTableV3
               key={"indicator-table2"}
