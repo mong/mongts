@@ -85,6 +85,12 @@ export const TreatmentQualityPageV3 = () => {
     ],
   };
 
+  const handleClearFilters = () => {
+    setSelectedTreatmentUnits(defaultTreatmentUnits);
+    setSelectedYear(defaultYear);
+    setSelectedMedicalFields([]);
+  };
+
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const nestedDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
     nested: true,
@@ -149,6 +155,13 @@ export const TreatmentQualityPageV3 = () => {
                           onChange={handleYearChange}
                           items={yearDropdownItems}
                         />
+                      </div>
+                    </div>
+                    <div className="flex items-end">
+                      <div className="flex text-small font-semibold text-brand-primary-900">
+                        <Button variant="text" onClick={handleClearFilters}>
+                          Tøm filter
+                        </Button>
                       </div>
                     </div>
                   </div>
