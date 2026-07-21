@@ -284,177 +284,92 @@ export const Skde = (): JSX.Element => {
                 <div className="flex md:hidden flex-col gap-(--spacing-4) p-8 text-brand-primary-600">
                   <RotateDevice message="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din." />
                 </div>
-                <div className="hidden md:flex">
-                  <Box border className={boxclasses} color="white">
-                    {!selectedUnit ? (
-                      <>
-                        <h3>
-                          Velg ett behandlingssted du vil se resultater fra
-                        </h3>
-                        <Button onClick={handleTreatmentUnitButtonClick}>
-                          Velg behandlingssted
-                        </Button>
-                      </>
-                    ) : !isValidUnit ? (
-                      <>
-                        <h3>
-                          "{selectedUnit}" Er ikke et gyldig behandlingssted
-                        </h3>
-                        <Button onClick={handleTreatmentUnitButtonClick}>
-                          Velg behandlingssted
-                        </Button>
-                      </>
-                    ) : (
-                      <div>
-                        {" "}
-                        <div className="w-full">
-                          {/* <LayoutHead
+                <div className="hidden md:flex flex-col">
+                  {!selectedUnit ? (
+                    <>
+                      <h3>Velg ett behandlingssted du vil se resultater fra</h3>
+                      <Button onClick={handleTreatmentUnitButtonClick}>
+                        Velg behandlingssted
+                      </Button>
+                    </>
+                  ) : !isValidUnit ? (
+                    <>
+                      <h3>
+                        "{selectedUnit}" Er ikke et gyldig behandlingssted
+                      </h3>
+                      <Button onClick={handleTreatmentUnitButtonClick}>
+                        Velg behandlingssted
+                      </Button>
+                    </>
+                  ) : (
+                    <>
+                      <div className="w-full">
+                        {/* <LayoutHead
           title="Sykehusprofil"
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service for individual treatment units."
           href="/favicon.ico"
         /> */}
 
-                          {/* <Header
+                        {/* <Header
           bgcolor="surface2.light"
           title={"Sykehusprofil"}
           maxWidth={maxWidth}
         > */}
-                          <div className="flex justify-center w-full">
-                            <div className="flex flex-wrap w-full justify-between items-center max-w-360  my-4">
-                              <Box className="flex justify-between items-center bg-neutral-0 border-none w-full h-20 md:h-28">
-                                <h3 className="text-brand-primary-600">
-                                  {selectedTreatmentUnit}
-                                </h3>
-                                <SplitButton
-                                  label="Last ned"
-                                  onClick={() => {}}
-                                  options={["PDF", "SVG", "PNG", "CSV"]}
-                                  steps="one-step"
-                                />
+                        <div className="flex justify-center w-full">
+                          <div className="flex flex-wrap w-full justify-between items-center max-w-360  my-4">
+                            <Box className="flex justify-between items-center bg-neutral-0 border-none w-full h-20 md:h-28">
+                              <h3 className="text-brand-primary-600">
+                                {selectedTreatmentUnit}
+                              </h3>
+                              <SplitButton
+                                label="Last ned"
+                                onClick={() => {}}
+                                options={["PDF", "SVG", "PNG", "CSV"]}
+                                steps="one-step"
+                              />
+                            </Box>
+                          </div>
+                        </div>
+
+                        {/* </Header> */}
+                        {/* <PageContent rounded={true}> */}
+                        <div className="flex w-full">
+                          <div className="w-1/2 flex flex-col gap-4">
+                            <Box className="rounded-md" color="white">
+                              <h4 className="pb-8">Måloppnåelse for [yyyy]</h4>
+                              [insert graph here]
+                            </Box>
+
+                            <Box color="white">
+                              <h4>Måloppnåelse [yyyy-yyyy]</h4>
+                              <Box color="white">s</Box>
+                              <Box
+                                className="border-y border-neutral-100"
+                                color="white"
+                                rounded={false}
+                              >
+                                s
                               </Box>
-                            </div>
+                              <Box color="white">s</Box>
+                            </Box>
                           </div>
 
-                          {/* </Header> */}
-                          {/* <PageContent rounded={true}> */}
-                          <div className="flex w-full debug">
-                            <div className="w-1/2 flex flex-col gap-4">
-                              <Box className="p-10!">
-                                <h4 className="pb-8">
-                                  Måloppnåelse for [yyyy]
-                                </h4>
-                                [insert graph here]
-                              </Box>
+                          <div className="w-1/2 flex flex-col ml-4 gap-4">
+                            {/* This box should expand to use whole available height */}
+                            <Box className="flex-1 flex flex-col" color="white">
+                              <h4 className="pb-8">
+                                Måloppnåelse siste [x] år
+                              </h4>
+                              [insert graph here]
+                            </Box>
+                            <Box className="h-fit" color="white">
+                              10-års trendanalyse
+                            </Box>
+                          </div>
+                        </div>
 
-                              <Box className="*:rounded-none! *:my-5 *:border [&>Box]:border-gray-200">
-                                <h4>Måloppnåelse [yyyy-yyyy]</h4>
-                                <Box className="p-10!">s</Box>
-                                <Box>s</Box>
-                                <Box>s</Box>
-                              </Box>
-                            </div>
-                            <div className="w-1/2 flex flex-col ml-4 gap-4 h-full">
-                              <Box className="h-full">
-                                <h4 className="pb-8">
-                                  Måloppnåelse siste [x] år
-                                </h4>
-                                [insert graph here]
-                              </Box>
-                              <Box className="h-fit">10-års trendanalyse</Box>
-                            </div>
-                          </div>
-
-                          <div className="flex flex-col w-full gap-2 pb-14 debug">
-                            <h4 className="pb-8 pt-14 text-brand-primary-600">
-                              Måloppnåelse sortert på fagområde [mock data]
-                            </h4>
-                            <SubjectAreaResultCard
-                              headers={{
-                                first: "Fagområde",
-                                second: "Målnivå",
-                              }}
-                              buttonHref="#"
-                              high="Høy 92%"
-                              low="Lavt 50%"
-                              middle="Middels 75%"
-                              title="Dagkirurgi"
-                            />
-                            <SubjectAreaResultCard
-                              buttonHref="#"
-                              high="Høy 92%"
-                              low="Lavt 50%"
-                              middle="Middels 75%"
-                              title="Dagkirurgi"
-                            />
-                            <SubjectAreaResultCard
-                              buttonHref="#"
-                              high="Høy 92%"
-                              low="Lavt 50%"
-                              middle="Middels 75%"
-                              title="Andel trombolyse"
-                            />
-                            <SubjectAreaResultCard
-                              buttonHref="#"
-                              high="Høy 92%"
-                              low="Lavt 50%"
-                              middle="Middels 75%"
-                              title="Dagkirurgi"
-                            />
-                            <SubjectAreaResultCard
-                              buttonHref="#"
-                              high="Høy 92%"
-                              low="Lavt 50%"
-                              middle="Middels 75%"
-                              title="Dagkirurgi"
-                            />
-                          </div>
-                          <div className="flex flex-col gap-2 pb-14">
-                            <h4 className="pb-8 pt-14 text-brand-primary-600">
-                              Utvalgte indikatorer for [placeholder
-                              behandlingssted]
-                            </h4>
-                            <SubjectAreaResultCard
-                              headers={{
-                                first: "Fagområde",
-                                second: "Målnivå",
-                              }}
-                              buttonHref="#"
-                              high="Høy 92%"
-                              low="Lavt 50%"
-                              middle="Middels 75%"
-                              title="Dagkirurgi"
-                            />
-                            <SubjectAreaResultCard
-                              buttonHref="#"
-                              high="Høy 92%"
-                              low="Lavt 50%"
-                              middle="Middels 75%"
-                              title="Dagkirurgi"
-                            />
-                            <SubjectAreaResultCard
-                              buttonHref="#"
-                              high="Høy 92%"
-                              low="Lavt 50%"
-                              middle="Middels 75%"
-                              title="Dagkirurgi"
-                            />
-                            <SubjectAreaResultCard
-                              buttonHref="#"
-                              high="Høy 92%"
-                              low="Lavt 50%"
-                              middle="Middels 75%"
-                              title="Dagkirurgi"
-                            />
-                            <SubjectAreaResultCard
-                              buttonHref="#"
-                              high="Høy 92%"
-                              low="Lavt 50%"
-                              middle="Middels 75%"
-                              title="Dagkirurgi"
-                            />
-                          </div>
-                          <>
-                            {/* <Grid container spacing={2}>
+                        <>
+                          {/* <Grid container spacing={2}>
             <Grid
               size={{ xs: 12, sm: 7 }}
               data-testid={`hospital_profile_box_${unitName}`}
@@ -550,11 +465,101 @@ export const Skde = (): JSX.Element => {
               )}
             </Grid>
           </Grid> */}
-                          </>
+                        </>
+                      </div>
+                      <div className="w-full flex flex-col">
+                        <div className="flex flex-col w-full gap-2 pb-14">
+                          <h4 className="pb-8 pt-14 text-brand-primary-600">
+                            Måloppnåelse sortert på fagområde [mock data]
+                          </h4>
+                          <SubjectAreaResultCard
+                            headers={{
+                              first: "Fagområde",
+                              second: "Målnivå",
+                            }}
+                            buttonHref="#"
+                            high="Høy 92%"
+                            low="Lavt 50%"
+                            middle="Middels 75%"
+                            title="Dagkirurgi"
+                          />
+                          <SubjectAreaResultCard
+                            buttonHref="#"
+                            high="Høy 92%"
+                            low="Lavt 50%"
+                            middle="Middels 75%"
+                            title="Dagkirurgi"
+                          />
+                          <SubjectAreaResultCard
+                            buttonHref="#"
+                            high="Høy 92%"
+                            low="Lavt 50%"
+                            middle="Middels 75%"
+                            title="Andel trombolyse"
+                          />
+                          <SubjectAreaResultCard
+                            buttonHref="#"
+                            high="Høy 92%"
+                            low="Lavt 50%"
+                            middle="Middels 75%"
+                            title="Dagkirurgi"
+                          />
+                          <SubjectAreaResultCard
+                            buttonHref="#"
+                            high="Høy 92%"
+                            low="Lavt 50%"
+                            middle="Middels 75%"
+                            title="Dagkirurgi"
+                          />
+                        </div>
+                        <div className="flex flex-col gap-2 pb-14 debug">
+                          <h4 className="pb-8 pt-14 text-brand-primary-600">
+                            Utvalgte indikatorer for [placeholder
+                            behandlingssted]
+                          </h4>
+                          <SubjectAreaResultCard
+                            headers={{
+                              first: "Fagområde",
+                              second: "Målnivå",
+                            }}
+                            buttonHref="#"
+                            high="Høy 92%"
+                            low="Lavt 50%"
+                            middle="Middels 75%"
+                            title="Dagkirurgi"
+                          />
+                          <SubjectAreaResultCard
+                            buttonHref="#"
+                            high="Høy 92%"
+                            low="Lavt 50%"
+                            middle="Middels 75%"
+                            title="Dagkirurgi"
+                          />
+                          <SubjectAreaResultCard
+                            buttonHref="#"
+                            high="Høy 92%"
+                            low="Lavt 50%"
+                            middle="Middels 75%"
+                            title="Dagkirurgi"
+                          />
+                          <SubjectAreaResultCard
+                            buttonHref="#"
+                            high="Høy 92%"
+                            low="Lavt 50%"
+                            middle="Middels 75%"
+                            title="Dagkirurgi"
+                          />
+                          <SubjectAreaResultCard
+                            buttonHref="#"
+                            high="Høy 92%"
+                            low="Lavt 50%"
+                            middle="Middels 75%"
+                            title="Dagkirurgi"
+                          />
                         </div>
                       </div>
-                    )}
-                  </Box>
+                    </>
+                  )}
                 </div>
               </div>
             )}
