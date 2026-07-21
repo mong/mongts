@@ -2,6 +2,7 @@ import {
   HeroBanner,
   RegisterAccordion,
   type RenderRegisterProps,
+  RotateDevice,
 } from "@mong/material-ui";
 import { customFormat, level2 } from "qmongjs";
 import type { JSX } from "react";
@@ -204,10 +205,15 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
   fillMissingUnitnames(reshapedData, unitNames);
   return (
     <div className="w-full max-w-360">
-      <RegisterAccordion
-        registries={reshapedData}
-        smallScreenMessage="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din."
-      />
+      <div className="flex md:hidden flex-col gap-(--spacing-4) p-8 text-brand-primary-600">
+        <RotateDevice message="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din." />
+      </div>
+      <div className="hidden md:flex">
+        <RegisterAccordion
+          registries={reshapedData}
+          smallScreenMessage="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din."
+        />
+      </div>
     </div>
   );
 };

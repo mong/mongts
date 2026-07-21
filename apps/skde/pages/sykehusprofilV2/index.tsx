@@ -6,6 +6,7 @@ import {
   Icon,
   LoadingLogo,
   PageContent,
+  RotateDevice,
   SplitButton,
   SubjectAreaResultCard,
   ToggleButton,
@@ -181,80 +182,80 @@ export const Skde = (): JSX.Element => {
         }
       >
         {/* Toolbar */}
-        <div className="flex bg-neutral-0 w-full align-middle justify-center px-6 md:px-12 sticky top-0 z-60 shadow-xs">
+        <div
+          className={`${hasLoadingError || isLoading ? "hidden" : "hidden md:flex"} bg-neutral-0 w-full align-middle justify-center px-6 md:px-12 sticky top-0 z-60 shadow-xs`}
+        >
           <div className="flex flex-col w-full h-full max-w-360">
-            {
-              <Toolbar disableGutters={true}>
-                <div className="flex flex-row max-w-360 w-full justify-between items-center pb-2 md:pb-4">
-                  <div className="flex flex-row md:flex-row gap-2 md:gap-4 flex-wrap">
-                    <div className="flex gap-6">
-                      <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                        Behandlingssted
-                        <Button onClick={handleTreatmentUnitButtonClick}>
-                          Velg behandlingssted
-                        </Button>
-                      </div>
-                      <TreatmentUnitPopup
-                        open={treatmentUnitPopupOpen}
-                        setOpen={setTreatmentUnitPopupOpen}
-                        onSubmit={setSelectedTreatmentUnit}
-                        context={selectedTableContext}
-                        type={"ind"}
-                        selectionType="single"
-                      />
-                      <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                        Vis
-                        <ToggleButtonGroup
-                          onChange={() => {}}
-                          orientation="horizontal"
-                          value={["måloppnåelse"]}
-                        >
-                          <ToggleButton
-                            aria-label="toggle item1"
-                            value="måloppnåelse"
-                          >
-                            Måloppnåelse
-                          </ToggleButton>
-                          <ToggleButton
-                            aria-label="toggle item2"
-                            value="dekningsgrad"
-                            disabled
-                          >
-                            Dekningsgrad
-                          </ToggleButton>
-                        </ToggleButtonGroup>
-                      </div>
+            <Toolbar disableGutters={true}>
+              <div className="flex flex-row max-w-360 w-full justify-between items-center pb-2 md:pb-4">
+                <div className="flex flex-row md:flex-row gap-2 md:gap-4 flex-wrap">
+                  <div className="flex gap-6">
+                    <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                      Behandlingssted
+                      <Button onClick={handleTreatmentUnitButtonClick}>
+                        Velg behandlingssted
+                      </Button>
                     </div>
-                    <div className="flex items-end">
-                      <div className="flex text-small font-semibold text-brand-primary-900">
-                        <Button variant="text" onClick={handleClearFilters}>
-                          Tøm filter
-                        </Button>
-                      </div>
+                    <TreatmentUnitPopup
+                      open={treatmentUnitPopupOpen}
+                      setOpen={setTreatmentUnitPopupOpen}
+                      onSubmit={setSelectedTreatmentUnit}
+                      context={selectedTableContext}
+                      type={"ind"}
+                      selectionType="single"
+                    />
+                    <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                      Vis
+                      <ToggleButtonGroup
+                        onChange={() => {}}
+                        orientation="horizontal"
+                        value={["måloppnåelse"]}
+                      >
+                        <ToggleButton
+                          aria-label="toggle item1"
+                          value="måloppnåelse"
+                        >
+                          Måloppnåelse
+                        </ToggleButton>
+                        <ToggleButton
+                          aria-label="toggle item2"
+                          value="dekningsgrad"
+                          disabled
+                        >
+                          Dekningsgrad
+                        </ToggleButton>
+                      </ToggleButtonGroup>
                     </div>
                   </div>
-                  <div className="hidden md:flex align-middle justify-center items-center">
-                    <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                      <div className="whitespace-nowrap">&nbsp;</div>
-                      <Button
-                        startIcon={<Icon size="small" symbol="content_copy" />}
-                        variant="secondary"
-                        // onClick={() => {
-                        //   navigator.clipboard.writeText(window.location.href);
-                        //   setUrlCopied(true);
-                        //   setTimeout(() => {
-                        //     setUrlCopied(false);
-                        //   }, urlCopiedTimeout);
-                        // }}
-                      >
-                        Kopier denne visningen
-                        {/* {urlCopied ? "Link kopiert" : "Kopier denne visningen"} */}
+                  <div className="flex items-end">
+                    <div className="flex text-small font-semibold text-brand-primary-900">
+                      <Button variant="text" onClick={handleClearFilters}>
+                        Tøm filter
                       </Button>
                     </div>
                   </div>
                 </div>
-              </Toolbar>
-            }
+                <div className="hidden md:flex align-middle justify-center items-center">
+                  <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                    <div className="whitespace-nowrap">&nbsp;</div>
+                    <Button
+                      startIcon={<Icon size="small" symbol="content_copy" />}
+                      variant="secondary"
+                      // onClick={() => {
+                      //   navigator.clipboard.writeText(window.location.href);
+                      //   setUrlCopied(true);
+                      //   setTimeout(() => {
+                      //     setUrlCopied(false);
+                      //   }, urlCopiedTimeout);
+                      // }}
+                    >
+                      Kopier denne visningen
+                      {/* {urlCopied ? "Link kopiert" : "Kopier denne visningen"} */}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </Toolbar>
           </div>
         </div>
 
@@ -278,159 +279,182 @@ export const Skde = (): JSX.Element => {
               <Box padded={false} color="transparent" className="p-52">
                 <LoadingLogo message="Laster data" />
               </Box>
-            ) : !selectedUnit ? (
-              <Box border className={boxclasses}>
-                <h3 className="text-center">
-                  Velg ett behandlingssted du vil se resultater fra
-                </h3>
-                <Button onClick={handleTreatmentUnitButtonClick}>
-                  Velg behandlingssted
-                </Button>
-              </Box>
-            ) : !isValidUnit ? (
-              <Box border className={boxclasses}>
-                <h4>Ingen data tilgjengelig for "{selectedUnit}".</h4>
-                <Button onClick={handleTreatmentUnitButtonClick}>
-                  Velg et annet behandlingssted
-                </Button>
-              </Box>
             ) : (
-              <div className="w-full">
-                {/* <LayoutHead
+              <div className="w-full max-w-360">
+                <div className="flex md:hidden flex-col gap-(--spacing-4) p-8 text-brand-primary-600">
+                  <RotateDevice message="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din." />
+                </div>
+                <div className="hidden md:flex">
+                  <Box border className={boxclasses} color="white">
+                    {!selectedUnit ? (
+                      <>
+                        <h3>
+                          Velg ett behandlingssted du vil se resultater fra
+                        </h3>
+                        <Button onClick={handleTreatmentUnitButtonClick}>
+                          Velg behandlingssted
+                        </Button>
+                      </>
+                    ) : !isValidUnit ? (
+                      <>
+                        <h3>
+                          "{selectedUnit}" Er ikke et gyldig behandlingssted
+                        </h3>
+                        <Button onClick={handleTreatmentUnitButtonClick}>
+                          Velg behandlingssted
+                        </Button>
+                      </>
+                    ) : (
+                      <div>
+                        {" "}
+                        <div className="w-full">
+                          {/* <LayoutHead
           title="Sykehusprofil"
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service for individual treatment units."
           href="/favicon.ico"
         /> */}
 
-                {/* <Header
+                          {/* <Header
           bgcolor="surface2.light"
           title={"Sykehusprofil"}
           maxWidth={maxWidth}
         > */}
-                <div className="flex justify-center w-full">
-                  <div className="flex flex-wrap w-full justify-between items-center max-w-360  my-4">
-                    <Box className="flex justify-between items-center bg-neutral-0 border-none w-full h-20 md:h-28">
-                      <h3 className="text-brand-primary-600">
-                        {selectedTreatmentUnit}
-                      </h3>
-                      <SplitButton
-                        label="Last ned"
-                        onClick={() => {}}
-                        options={["PDF", "SVG", "PNG", "CSV"]}
-                        steps="one-step"
-                      />
-                    </Box>
-                  </div>
-                </div>
+                          <div className="flex justify-center w-full">
+                            <div className="flex flex-wrap w-full justify-between items-center max-w-360  my-4">
+                              <Box className="flex justify-between items-center bg-neutral-0 border-none w-full h-20 md:h-28">
+                                <h3 className="text-brand-primary-600">
+                                  {selectedTreatmentUnit}
+                                </h3>
+                                <SplitButton
+                                  label="Last ned"
+                                  onClick={() => {}}
+                                  options={["PDF", "SVG", "PNG", "CSV"]}
+                                  steps="one-step"
+                                />
+                              </Box>
+                            </div>
+                          </div>
 
-                {/* </Header> */}
-                {/* <PageContent rounded={true}> */}
-                <div className="flex w-full debug">
-                  <div className="w-1/2 flex flex-col gap-4">
-                    <Box className="p-10!">
-                      <h4 className="pb-8">Måloppnåelse for [yyyy]</h4>
-                      [insert graph here]
-                    </Box>
+                          {/* </Header> */}
+                          {/* <PageContent rounded={true}> */}
+                          <div className="flex w-full debug">
+                            <div className="w-1/2 flex flex-col gap-4">
+                              <Box className="p-10!">
+                                <h4 className="pb-8">
+                                  Måloppnåelse for [yyyy]
+                                </h4>
+                                [insert graph here]
+                              </Box>
 
-                    <Box className="*:rounded-none! *:my-5 *:border [&>Box]:border-gray-200">
-                      <h4>Måloppnåelse [yyyy-yyyy]</h4>
-                      <Box className="p-10!">s</Box>
-                      <Box>s</Box>
-                      <Box>s</Box>
-                    </Box>
-                  </div>
-                  <div className="w-1/2 flex flex-col ml-4 gap-4 h-full">
-                    <Box className="h-full">
-                      <h4 className="pb-8">Måloppnåelse siste [x] år</h4>
-                      [insert graph here]
-                    </Box>
-                    <Box className="h-fit">10-års trendanalyse</Box>
-                  </div>
-                </div>
+                              <Box className="*:rounded-none! *:my-5 *:border [&>Box]:border-gray-200">
+                                <h4>Måloppnåelse [yyyy-yyyy]</h4>
+                                <Box className="p-10!">s</Box>
+                                <Box>s</Box>
+                                <Box>s</Box>
+                              </Box>
+                            </div>
+                            <div className="w-1/2 flex flex-col ml-4 gap-4 h-full">
+                              <Box className="h-full">
+                                <h4 className="pb-8">
+                                  Måloppnåelse siste [x] år
+                                </h4>
+                                [insert graph here]
+                              </Box>
+                              <Box className="h-fit">10-års trendanalyse</Box>
+                            </div>
+                          </div>
 
-                <div className="flex flex-col gap-2 pb-14">
-                  <h4 className="pb-8 pt-14 text-brand-primary-600">
-                    Måloppnåelse sortert på fagområde [mock data]
-                  </h4>
-                  <SubjectAreaResultCard
-                    headers={{ first: "Fagområde", second: "Målnivå" }}
-                    buttonHref="#"
-                    high="Høy 92%"
-                    low="Lavt 50%"
-                    middle="Middels 75%"
-                    title="Dagkirurgi"
-                  />
-                  <SubjectAreaResultCard
-                    buttonHref="#"
-                    high="Høy 92%"
-                    low="Lavt 50%"
-                    middle="Middels 75%"
-                    title="Dagkirurgi"
-                  />
-                  <SubjectAreaResultCard
-                    buttonHref="#"
-                    high="Høy 92%"
-                    low="Lavt 50%"
-                    middle="Middels 75%"
-                    title="Andel trombolyse"
-                  />
-                  <SubjectAreaResultCard
-                    buttonHref="#"
-                    high="Høy 92%"
-                    low="Lavt 50%"
-                    middle="Middels 75%"
-                    title="Dagkirurgi"
-                  />
-                  <SubjectAreaResultCard
-                    buttonHref="#"
-                    high="Høy 92%"
-                    low="Lavt 50%"
-                    middle="Middels 75%"
-                    title="Dagkirurgi"
-                  />
-                </div>
-                <div className="flex flex-col gap-2 pb-14">
-                  <h4 className="pb-8 pt-14 text-brand-primary-600">
-                    Utvalgte indikatorer for [placeholder behandlingssted]
-                  </h4>
-                  <SubjectAreaResultCard
-                    headers={{ first: "Fagområde", second: "Målnivå" }}
-                    buttonHref="#"
-                    high="Høy 92%"
-                    low="Lavt 50%"
-                    middle="Middels 75%"
-                    title="Dagkirurgi"
-                  />
-                  <SubjectAreaResultCard
-                    buttonHref="#"
-                    high="Høy 92%"
-                    low="Lavt 50%"
-                    middle="Middels 75%"
-                    title="Dagkirurgi"
-                  />
-                  <SubjectAreaResultCard
-                    buttonHref="#"
-                    high="Høy 92%"
-                    low="Lavt 50%"
-                    middle="Middels 75%"
-                    title="Dagkirurgi"
-                  />
-                  <SubjectAreaResultCard
-                    buttonHref="#"
-                    high="Høy 92%"
-                    low="Lavt 50%"
-                    middle="Middels 75%"
-                    title="Dagkirurgi"
-                  />
-                  <SubjectAreaResultCard
-                    buttonHref="#"
-                    high="Høy 92%"
-                    low="Lavt 50%"
-                    middle="Middels 75%"
-                    title="Dagkirurgi"
-                  />
-                </div>
-                {/* <Grid container spacing={2}>
+                          <div className="flex flex-col w-full gap-2 pb-14 debug">
+                            <h4 className="pb-8 pt-14 text-brand-primary-600">
+                              Måloppnåelse sortert på fagområde [mock data]
+                            </h4>
+                            <SubjectAreaResultCard
+                              headers={{
+                                first: "Fagområde",
+                                second: "Målnivå",
+                              }}
+                              buttonHref="#"
+                              high="Høy 92%"
+                              low="Lavt 50%"
+                              middle="Middels 75%"
+                              title="Dagkirurgi"
+                            />
+                            <SubjectAreaResultCard
+                              buttonHref="#"
+                              high="Høy 92%"
+                              low="Lavt 50%"
+                              middle="Middels 75%"
+                              title="Dagkirurgi"
+                            />
+                            <SubjectAreaResultCard
+                              buttonHref="#"
+                              high="Høy 92%"
+                              low="Lavt 50%"
+                              middle="Middels 75%"
+                              title="Andel trombolyse"
+                            />
+                            <SubjectAreaResultCard
+                              buttonHref="#"
+                              high="Høy 92%"
+                              low="Lavt 50%"
+                              middle="Middels 75%"
+                              title="Dagkirurgi"
+                            />
+                            <SubjectAreaResultCard
+                              buttonHref="#"
+                              high="Høy 92%"
+                              low="Lavt 50%"
+                              middle="Middels 75%"
+                              title="Dagkirurgi"
+                            />
+                          </div>
+                          <div className="flex flex-col gap-2 pb-14">
+                            <h4 className="pb-8 pt-14 text-brand-primary-600">
+                              Utvalgte indikatorer for [placeholder
+                              behandlingssted]
+                            </h4>
+                            <SubjectAreaResultCard
+                              headers={{
+                                first: "Fagområde",
+                                second: "Målnivå",
+                              }}
+                              buttonHref="#"
+                              high="Høy 92%"
+                              low="Lavt 50%"
+                              middle="Middels 75%"
+                              title="Dagkirurgi"
+                            />
+                            <SubjectAreaResultCard
+                              buttonHref="#"
+                              high="Høy 92%"
+                              low="Lavt 50%"
+                              middle="Middels 75%"
+                              title="Dagkirurgi"
+                            />
+                            <SubjectAreaResultCard
+                              buttonHref="#"
+                              high="Høy 92%"
+                              low="Lavt 50%"
+                              middle="Middels 75%"
+                              title="Dagkirurgi"
+                            />
+                            <SubjectAreaResultCard
+                              buttonHref="#"
+                              high="Høy 92%"
+                              low="Lavt 50%"
+                              middle="Middels 75%"
+                              title="Dagkirurgi"
+                            />
+                            <SubjectAreaResultCard
+                              buttonHref="#"
+                              high="Høy 92%"
+                              low="Lavt 50%"
+                              middle="Middels 75%"
+                              title="Dagkirurgi"
+                            />
+                          </div>
+                          <>
+                            {/* <Grid container spacing={2}>
             <Grid
               size={{ xs: 12, sm: 7 }}
               data-testid={`hospital_profile_box_${unitName}`}
@@ -526,6 +550,12 @@ export const Skde = (): JSX.Element => {
               )}
             </Grid>
           </Grid> */}
+                          </>
+                        </div>
+                      </div>
+                    )}
+                  </Box>
+                </div>
               </div>
             )}
           </div>

@@ -207,7 +207,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   // ################## //
 
   return (
-    <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
+    <Dialog open={open} fullWidth={true} maxWidth={"sm"}>
       <DialogTitle>Velg fagområde</DialogTitle>
       <DialogContent
         sx={{ height: 800 }}

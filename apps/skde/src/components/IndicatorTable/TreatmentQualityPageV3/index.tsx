@@ -6,6 +6,7 @@ import {
   Icon,
   LoadingLogo,
   PageContent,
+  RotateDevice,
 } from "@mong/material-ui";
 import { type SelectChangeEvent, Stack, Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
@@ -231,17 +232,21 @@ export const TreatmentQualityPageV3 = () => {
               )}
             />
           ) : registerData ? (
-            <Box
-              border
-              className="flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
-            >
-              <h3 className="text-center">
-                Velg et fagområde du vil se resultater fra
-              </h3>
-              <Button onClick={handleMedicalFieldButtonClick}>
-                Velg fagområde
-              </Button>
-            </Box>
+            <>
+              <Box
+                border
+                className="hidden md:flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
+                color="white"
+              >
+                <h3>Velg et fagområde du vil se resultater fra</h3>
+                <Button onClick={handleMedicalFieldButtonClick}>
+                  Velg fagområde
+                </Button>
+              </Box>
+              <div className="flex md:hidden flex-col py-8 text-brand-primary-600">
+                <RotateDevice message="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din." />
+              </div>
+            </>
           ) : (
             <Stack
               height="484px"
