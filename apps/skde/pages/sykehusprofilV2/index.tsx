@@ -280,7 +280,9 @@ export const Skde = (): JSX.Element => {
               </Box>
             ) : !selectedUnit ? (
               <Box border className={boxclasses}>
-                <h3>Velg ett behandlingssted du vil se resultater fra</h3>
+                <h3 className="text-center">
+                  Velg ett behandlingssted du vil se resultater fra
+                </h3>
                 <Button onClick={handleTreatmentUnitButtonClick}>
                   Velg behandlingssted
                 </Button>

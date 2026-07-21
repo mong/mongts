@@ -235,7 +235,9 @@ export const TreatmentQualityPageV3 = () => {
               border
               className="flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
             >
-              <h3>Velg et fagområde du vil se resultater fra</h3>
+              <h3 className="text-center">
+                Velg et fagområde du vil se resultater fra
+              </h3>
               <Button onClick={handleMedicalFieldButtonClick}>
                 Velg fagområde
               </Button>
