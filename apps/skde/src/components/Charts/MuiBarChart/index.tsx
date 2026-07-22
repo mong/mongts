@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mong/material-ui";
 import {
   BarPlot,
   ChartsSurface,
@@ -235,7 +235,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
   };
 
   return (
-    <Box width={"100%"}>
+    <Box>
       <ChartsDataProviderPro
         apiRef={apiRef}
         series={[
@@ -272,20 +272,10 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
         ]}
       >
         <CustomChartWrapper>
-          <Box
-            sx={{
-              display: "flex",
-              width: "100%",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
-            <Typography
-              variant="body1"
-              sx={{ paddingLeft: 15, whiteSpace: "nowrap" }}
-            >
+          <Box>
+            <h6 className="font-semibold text-main tracking-wider">
               Valgt år: {year}
-            </Typography>
+            </h6>
           </Box>
           <ChartsTooltip />
           <ChartsSurface>

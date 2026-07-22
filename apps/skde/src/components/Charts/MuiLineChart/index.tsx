@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box } from "@mong/material-ui";
 import {
   ChartsAxisHighlight,
   ChartsLegend,
@@ -67,7 +67,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
   const yDifference = yMaxLimit - yMinLimit;
 
   return (
-    <Box width={"100%"}>
+    <Box>
       <ChartsDataProviderPro
         apiRef={apiRef}
         series={lineData}
@@ -101,16 +101,9 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
           },
         ]}
       >
-        <Box sx={{ mt: -4 }}>
+        <Box>
           <CustomChartWrapper>
-            <Box
-              sx={{
-                display: "flex",
-                width: "95%",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
+            <Box>
               <ChartsLegend
                 slotProps={{
                   legend: {
