@@ -286,12 +286,16 @@ export const Skde = (): JSX.Element => {
                 </div>
                 <div className="hidden md:flex flex-col">
                   {!selectedUnit ? (
-                    <>
+                    <Box
+                      border
+                      className="hidden md:flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
+                      color="white"
+                    >
                       <h3>Velg ett behandlingssted du vil se resultater fra</h3>
                       <Button onClick={handleTreatmentUnitButtonClick}>
                         Velg behandlingssted
                       </Button>
-                    </>
+                    </Box>
                   ) : !isValidUnit ? (
                     <>
                       <h3>
