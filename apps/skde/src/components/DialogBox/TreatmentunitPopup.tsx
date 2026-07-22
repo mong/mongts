@@ -1,6 +1,6 @@
+import { Box, Button, Icon, IconButton } from "@mong/material-ui";
 import {
-  Box,
-  Button,
+  // Box,
   Checkbox,
   Dialog,
   DialogActions,
@@ -56,10 +56,10 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");
   const [highlightedHF, setHighlightedHF] = useState<string>("");
 
-  const [
-    unitSelection = [selectionType === "single" ? "" : "Nasjonalt"],
-    setUnitSelection,
-  ] = useQueryParam("units", mainQueryParamsConfig.units);
+  const [unitSelection = [""], setUnitSelection] = useQueryParam(
+    selectionType === "single" ? "selected_treatment_units" : "units",
+    mainQueryParamsConfig.units,
+  );
 
   const unitNamesQuery: UseQueryResult<
     { nestedUnitNames: NestedTreatmentUnitName[] },
@@ -123,12 +123,13 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           value={rhf.rhf}
           label={rhf.rhf}
           key={rhf.rhf}
-          onMouseEnter={() => {
+          onClick={() => {
             setHighlightedRHF(rhf.rhf);
             setHighlightedHF("");
           }}
           sx={{
             width: "100%",
+
             background:
               highlightedRHF === rhf.rhf ? columnColour2 : columnColour1,
           }}
@@ -149,16 +150,24 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           value={rhf.rhf}
           label={rhf.rhf}
           key={rhf.rhf}
-          onMouseEnter={() => {
+          onClick={() => {
             setHighlightedRHF(rhf.rhf);
             setHighlightedHF("");
           }}
           sx={{
             width: "100%",
+            margin: "0px",
+            paddingLeft: "20px",
             background:
               highlightedRHF === rhf.rhf ? columnColour2 : columnColour1,
           }}
-          control={<Radio />}
+          control={
+            <Radio
+              sx={{
+                color: "var(--brand-primary-400)",
+              }}
+            />
+          }
         />
       );
     }) as JSX.Element[]);
@@ -198,7 +207,10 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           <FormControlLabel
             label={hospital}
             key={hospital}
-            sx={{ width: "100%", background: columnColour3 }}
+            sx={{
+              width: "100%",
+              background: columnColour3,
+            }}
             control={
               <Checkbox
                 checked={unitSelection.includes(hospital)}
@@ -212,8 +224,19 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
             label={hospital}
             value={hospital}
             key={hospital}
-            sx={{ width: "100%", background: columnColour3 }}
-            control={<Radio />}
+            sx={{
+              width: "100%",
+              margin: "0px",
+              background: columnColour3,
+              paddingLeft: "20px",
+            }}
+            control={
+              <Radio
+                sx={{
+                  color: "var(--brand-primary-400)",
+                }}
+              />
+            }
           />
         );
       });
@@ -251,11 +274,13 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           label={hf.hf}
           key={hf.hf}
           value={hf.hf}
-          onMouseEnter={() => {
+          onClick={() => {
             setHighlightedHF(hf.hf);
           }}
           sx={{
             width: "100%",
+            margin: "0px",
+            paddingLeft: "20px",
             background: highlightedHF === hf.hf ? columnColour3 : columnColour2,
           }}
           control={
@@ -269,7 +294,11 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                 key={`${hf.hf}_checkbox`}
               />
             ) : (
-              <Radio />
+              <Radio
+                sx={{
+                  color: "var(--brand-primary-400)",
+                }}
+              />
             )
           }
         />
@@ -281,6 +310,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const handleClose = () => {
     setOpen(false);
     setHighlightedRHF("");
+    onSubmit([]);
   };
 
   const handleSubmit = () => {
@@ -299,38 +329,53 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   };
 
   return (
-    <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
-      <DialogTitle>Velg behandlingssted</DialogTitle>
-      <DialogContent
-        sx={{ height: 600 }}
-        onMouseLeave={() => {
-          setHighlightedRHF("");
-          setHighlightedHF("");
-        }}
-      >
-        {unitNamesQuery.isFetching ? (
-          LoadingComponent
-        ) : (
-          <div>
-            <Box marginTop={2} marginBottom={2}>
-              <TreeViewSearchBox
-                options={Array.from(treatmentUnitsValueMap.values())}
-                onSearch={handleSearch}
-              />
-            </Box>
-            <Grid container height="100%">
-              <Grid size={4}>
-                <Box
-                  sx={{
-                    background: columnColour1,
-                    height: "100%",
-                    paddingLeft: `${rippleOffset}px`,
-                    borderTopLeftRadius: borderRadius,
-                    borderBottomLeftRadius: borderRadius,
-                  }}
+    <Dialog
+      open={open}
+      fullWidth
+      sx={{
+        "& .MuiDialog-container": {
+          "& .MuiPaper-root": {
+            width: "100%",
+            maxWidth: "780px", // Set your custom width here
+          },
+        },
+      }}
+    >
+      <div className="text-right pt-4 pr-4 text-brand-primary-400">
+        <IconButton onClick={handleClose} aria-label="Small Star">
+          <Icon symbol="close" />
+        </IconButton>
+      </div>
+      <div className="flex flex-1 flex-col p-6 pt-0">
+        <div className="flex flex-row justify-between text-brand-primary-700">
+          <h4>Velg behandlingssted</h4>
+        </div>
+        <DialogContent
+          className="flex flex-col h-auto flex-1 px-0!"
+          // sx={{ height: "auto", maxHeight: "600px" }}
+          // onMouseLeave={() => {
+          //   setHighlightedRHF("");
+          //   setHighlightedHF("");
+          // }}
+        >
+          {unitNamesQuery.isFetching ? (
+            LoadingComponent
+          ) : (
+            <div>
+              <Box padded={false} color="transparent" className="pb-6">
+                <div className="text-sm font-semibold pb-2">Søk</div>
+                <TreeViewSearchBox
+                  size="small"
+                  options={Array.from(treatmentUnitsValueMap.values())}
+                  onSearch={handleSearch}
+                />
+              </Box>
+              <div className="flex outline -outline-offset-1 outline-neutral-0 rounded-md">
+                <div
+                  className={`flex flex-1 w-full py-5 bg-brand-primary-50 text-brand-primary-700 rounded-l-md`}
                 >
                   {/* RHF Column */}
-                  <FormControl sx={{ width: "100%", marginTop: marginTop }}>
+                  <FormControl sx={{ width: "100%" }}>
                     {selectionType === "single" ? (
                       <RadioGroup
                         aria-labelledby={`RHF-label`}
@@ -345,22 +390,18 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                       RHFCheckboxes?.map((row: JSX.Element) => row)
                     )}
                   </FormControl>
-                </Box>
-              </Grid>
-              <Grid size={4}>
-                <Box
-                  sx={{
-                    background: highlightedRHF && columnColour2,
-                    height: "100%",
-                    marginLeft: `-${rippleOffset}px`,
-                  }}
+                </div>
+
+                <div
+                  className={`flex flex-1 w-full py-5 bg-brand-primary-200 h-full text-brand-primary-700`}
                 >
                   {/* HF Column */}
+                  {highlightedRHF
+                    ? ""
+                    : "Velg et behandlingssted på venstre side"}
                   <FormControl
                     sx={{
                       width: "100%",
-                      marginLeft: `${rippleOffset}px`,
-                      marginTop: marginTop,
                     }}
                   >
                     {selectionType === "multiple" ? (
@@ -381,55 +422,57 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                       </RadioGroup>
                     )}
                   </FormControl>
-                </Box>
-              </Grid>
-              <Grid size={4}>
-                <Box
-                  sx={{
-                    background: highlightedHF && columnColour3,
-                    height: "100%",
-                    borderTopRightRadius: borderRadius,
-                    borderBottomRightRadius: borderRadius,
-                  }}
-                >
-                  {/* Hospitals Column */}
-                  <FormControl
-                    sx={{
-                      width: "100%",
-                      marginLeft: `${rippleOffset}px`,
-                      marginTop: marginTop,
-                    }}
-                  >
-                    {selectionType === "single" ? (
-                      <RadioGroup
-                        aria-labelledby={`Hospital-label`}
-                        aria-label="Hospital"
-                        name="row-radio-buttons-group"
-                        value={unitSelection[0] || ""}
-                        onChange={handleRadioChange}
-                      >
-                        {HospitalCheckBoxes[highlightedHF]?.map(
+                </div>
+                {highlightedHF && (
+                  <div className="flex flex-1 w-full h-full py-5 bg-brand-primary-100  rounded-r-md">
+                    {/* Hospitals Column */}
+                    <FormControl
+                      sx={{
+                        width: "100%",
+                      }}
+                    >
+                      {/* <div className=""> */}
+                      {selectionType === "single" ? (
+                        <RadioGroup
+                          aria-labelledby={`Hospital-label`}
+                          aria-label="Hospital"
+                          name="row-radio-buttons-group"
+                          value={unitSelection[0] || ""}
+                          onChange={handleRadioChange}
+                        >
+                          {HospitalCheckBoxes[highlightedHF]?.map(
+                            (row: JSX.Element) => row,
+                          )}
+                        </RadioGroup>
+                      ) : (
+                        HospitalCheckBoxes[highlightedHF]?.map(
                           (row: JSX.Element) => row,
-                        )}
-                      </RadioGroup>
-                    ) : (
-                      HospitalCheckBoxes[highlightedHF]?.map(
-                        (row: JSX.Element) => row,
-                      )
-                    )}
-                  </FormControl>
-                </Box>
-              </Grid>
-            </Grid>
-          </div>
-        )}
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>Avbryt</Button>
-        <Button
-          onClick={handleSubmit}
-        >{`${selectionType === "single" ? "OK" : `OK·(${unitSelection.length - 1})`}`}</Button>
-      </DialogActions>
+                        )
+                      )}
+                      {/* </div> */}
+                    </FormControl>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </DialogContent>
+        <DialogActions className="p-0!">
+          <Button
+            variant="text"
+            onClick={() => {
+              setHighlightedRHF("");
+              setHighlightedHF("");
+              setUnitSelection([]);
+            }}
+          >
+            Tøm filter
+          </Button>
+          <Button onClick={handleSubmit} disabled={unitSelection.length === 0}>
+            Vis resultat
+          </Button>
+        </DialogActions>
+      </div>
     </Dialog>
   );
 };
