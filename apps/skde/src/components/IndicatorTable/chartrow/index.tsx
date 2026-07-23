@@ -139,7 +139,7 @@ export const ChartRow = (props: ChartRowProps) => {
     <Box>
       <div className="flex flex-row justify-between items-end w-full">
         <div className="flex flex-row items-end gap-2">
-          <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+          <div className="pl-21 flex flex-col text-small font-semibold text-brand-primary-900">
             Årstall
             <Dropdown
               value={figureType}
@@ -189,24 +189,26 @@ export const ChartRow = (props: ChartRowProps) => {
             dataQualityIndId={data.dataQualityIndicatorID}
           />
         </div>
-        {showDGButton && (
-          <SplitButton
-            label="Last ned"
-            onClick={() => {
-              const apiRef =
-                figureType === "line" ? lineChartApiRef : barChartApiRef;
-              // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-              apiRef.current!.exportAsImage({
-                onBeforeExport: makeOnBeforeExport(
-                  data.indicatorTitle || "",
-                  registryName,
-                ),
-              });
-            }}
-            options={["Last ned som bilde"]}
-            steps="one-step"
-          />
-        )}
+        <div className="pr-5">
+          {showDGButton && (
+            <SplitButton
+              label="Last ned"
+              onClick={() => {
+                const apiRef =
+                  figureType === "line" ? lineChartApiRef : barChartApiRef;
+                // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+                apiRef.current!.exportAsImage({
+                  onBeforeExport: makeOnBeforeExport(
+                    data.indicatorTitle || "",
+                    registryName,
+                  ),
+                });
+              }}
+              options={["Last ned som bilde"]}
+              steps="one-step"
+            />
+          )}
+        </div>
       </div>
       {/* biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future */}
       {figureType == "line" ? (

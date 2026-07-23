@@ -248,22 +248,16 @@ export const TreatmentQualityPageV3 = () => {
               </div>
             </>
           ) : (
-            <Stack
-              height="484px"
-              spacing={4}
-              justifyContent="center"
-              alignItems="center"
-              sx={{
-                background: "#FFFFFF",
-                border: "1px solid #2354AE",
-                borderRadius: "16px",
-              }}
+            <Box
+              className="hidden md:flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
+              border
+              color="white"
             >
               <h3>Ingen data tilgjengelig for dette valget.</h3>
               <Button onClick={() => nestedDataQuery.refetch()}>
                 Last på nytt
               </Button>
-            </Stack>
+            </Box>
           )}
           <ScrollToTop />
         </PageContent>
