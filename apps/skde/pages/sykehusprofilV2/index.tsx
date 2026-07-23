@@ -41,6 +41,125 @@ import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterM
 
 const delayResolved = false;
 const delayPromise: Promise<void> | null = null;
+
+export interface AchievementIndicator {
+  year: number;
+  indicators: {
+    result: number; // % in number
+    level: "high" | "medium" | "low"; // Icon
+    label: string; // Høy
+  }[];
+}
+
+// Mocked "Måloppnåelse 3år"
+const mockedAchievementsIndicator: AchievementIndicator[] = [
+  {
+    year: 2024,
+    indicators: [
+      {
+        result: 60,
+        level: "high",
+        label: "Høy",
+      },
+      {
+        result: 30,
+        level: "medium",
+        label: "Middels",
+      },
+      {
+        result: 10,
+        level: "low",
+        label: "Lav",
+      },
+    ],
+  },
+  {
+    year: 2023,
+    indicators: [
+      {
+        result: 60,
+        level: "high",
+      },
+      {
+        result: 30,
+        level: "medium",
+      },
+      {
+        result: 10,
+        level: "low",
+      },
+    ],
+  },
+  {
+    year: 2022,
+    indicators: [
+      {
+        result: 60,
+        level: "high",
+      },
+      {
+        result: 30,
+        level: "medium",
+      },
+      {
+        result: 10,
+        level: "low",
+      },
+    ],
+  },
+  {
+    year: 2021,
+    indicators: [
+      {
+        result: 60,
+        level: "high",
+      },
+      {
+        result: 30,
+        level: "medium",
+      },
+      {
+        result: 10,
+        level: "low",
+      },
+    ],
+  },
+];
+
+const generateAchievements = (
+  achievements: AchievementIndicator[],
+): JSX.Element[] => {
+  return achievements.map(({ year, indicators }, index) => (
+    <>
+      {index > 0 && <div className="border-y border-neutral-100" />}
+      <Box key={year} padded={false} rounded={false} className="flex gap-6">
+        <div>
+          <h6>{year}</h6>
+        </div>
+        <div className="flex flex-col gap-2 text-small font-semibold">
+          {indicators.map((indicator) => (
+            <div
+              key={`${year}-${indicator.level}`}
+              className="flex gap-2 items-center"
+            >
+              <Icon symbol={`target_level_${indicator.level}`} />
+              <div className="flex gap-2 w-auto text-left items-center">
+                <div
+                  className={`bg-bar-1 h-2 w-${indicator.result} rounded-r-lg`}
+                />
+                <div className="flex">
+                  {indicator.label}
+                  <span className="font-normal pl-1">{indicator.result} %</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Box>
+    </>
+  ));
+};
+
 export const Skde = (): JSX.Element => {
   // States
   const router = useRouter();
@@ -166,6 +285,7 @@ export const Skde = (): JSX.Element => {
 
   const boxclasses =
     "flex flex-col items-center justify-center  text-dark gap-10 min-h-50 md:min-h-100 my-6";
+
   return (
     <>
       <HeroBanner
@@ -352,240 +472,21 @@ export const Skde = (): JSX.Element => {
                             className="flex flex-col h-60 text-brand-primary-500 rounded-lg p-10"
                           >
                             <h4 className="pb-6">Måloppnåelse 2024</h4>
-                            <Box
-                              padded={false}
-                              className="flex gap-6"
-                              rounded={false}
-                            >
-                              <div>
-                                <h6>2024</h6>
-                              </div>
-                              <div className="flex flex-col gap-2 text-small font-semibold">
-                                <div className="flex gap-2 items-center">
-                                  <Icon
-                                    symbol="target_level_high"
-                                    size="small"
-                                  />
-                                  <div className="flex gap-2 w-auto text-left items-center">
-                                    <div className="bg-bar-1 h-2 w-8 rounded-r-lg" />
-                                    <div className="flex">
-                                      Høy
-                                      <span className="font-normal pl-1">
-                                        60%
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="flex gap-2 items-center">
-                                  <Icon
-                                    symbol="target_level_medium"
-                                    size="small"
-                                  />
-                                  <div className="flex gap-2 items-center">
-                                    <div className="bg-bar-1 h-2 w-30 rounded-r-lg" />
-                                    <div className="flex">
-                                      Middels
-                                      <span className="font-normal pl-1">
-                                        30%
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="flex gap-2 items-center">
-                                  <Icon
-                                    symbol="target_level_low"
-                                    size="small"
-                                  />
-                                  <div className="flex gap-2 items-center">
-                                    <div className="bg-bar-1 h-2 w-4 rounded-r-lg" />
-                                    <div className="flex">
-                                      Lav
-                                      <span className="font-normal pl-1">
-                                        10%
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </Box>
+
+                            {generateAchievements(
+                              mockedAchievementsIndicator.slice(0, 1),
+                            )}
                           </Box>
 
                           <Box
                             rounded={false}
                             padded={false}
-                            className="flex flex-col justify-between h-full text-brand-primary-500 rounded-lg p-10"
+                            className="flex flex-col justify-between h-full text-brand-primary-500 rounded-lg py-10 px-10"
                           >
-                            <h4 className="pb-3">Måloppnåelse [yyyy-yyyy]</h4>
-                            <Box
-                              padded={false}
-                              className="flex gap-6 h-28"
-                              rounded={false}
-                            >
-                              <div>
-                                <h6>2023</h6>
-                              </div>
-                              <div className="flex flex-col gap-2 text-small font-semibold">
-                                <div className="flex gap-2 items-center">
-                                  <Icon
-                                    symbol="target_level_high"
-                                    size="small"
-                                  />
-                                  <div className="flex gap-2 w-auto text-left items-center">
-                                    <div className="bg-bar-1 h-2 w-8 rounded-r-lg" />
-                                    <div className="flex">
-                                      Høy
-                                      <span className="font-normal pl-1">
-                                        60%
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="flex gap-2 items-center">
-                                  <Icon
-                                    symbol="target_level_medium"
-                                    size="small"
-                                  />
-                                  <div className="flex gap-2 items-center">
-                                    <div className="bg-bar-1 h-2 w-30 rounded-r-lg" />
-                                    <div className="flex">
-                                      Middels
-                                      <span className="font-normal pl-1">
-                                        30%
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="flex gap-2 items-center">
-                                  <Icon
-                                    symbol="target_level_low"
-                                    size="small"
-                                  />
-                                  <div className="flex gap-2 items-center">
-                                    <div className="bg-bar-1 h-2 w-4 rounded-r-lg" />
-                                    <div className="flex">
-                                      Lav
-                                      <span className="font-normal pl-1">
-                                        10%
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </Box>
-                            <div className="border-y border-neutral-100" />
-                            <Box
-                              className="flex gap-6 h-28"
-                              rounded={false}
-                              padded={false}
-                            >
-                              <div>
-                                <h6>2022</h6>
-                              </div>
-                              <div className="flex flex-col gap-2 text-small font-semibold">
-                                <div className="flex gap-2 items-center">
-                                  <Icon
-                                    symbol="target_level_high"
-                                    size="small"
-                                  />
-                                  <div className="flex gap-2 w-auto text-left items-center">
-                                    <div className="bg-bar-1 h-2 w-8 rounded-r-lg" />
-                                    <div className="flex">
-                                      Høy
-                                      <span className="font-normal pl-1">
-                                        60%
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="flex gap-2 items-center">
-                                  <Icon
-                                    symbol="target_level_medium"
-                                    size="small"
-                                  />
-                                  <div className="flex gap-2 items-center">
-                                    <div className="bg-bar-1 h-2 w-30 rounded-r-lg" />
-                                    <div className="flex">
-                                      Middels
-                                      <span className="font-normal pl-1">
-                                        30%
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="flex gap-2 items-center">
-                                  <Icon
-                                    symbol="target_level_low"
-                                    size="small"
-                                  />
-                                  <div className="flex gap-2 items-center">
-                                    <div className="bg-bar-1 h-2 w-4 rounded-r-lg" />
-                                    <div className="flex">
-                                      Lav
-                                      <span className="font-normal pl-1">
-                                        10%
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </Box>
-                            <div className="border-y border-neutral-100" />
-                            <Box
-                              padded={false}
-                              rounded={false}
-                              className="flex gap-6 h-28"
-                            >
-                              <div>
-                                <h6>2021</h6>
-                              </div>
-                              <div className="flex flex-col gap-2 text-small font-semibold">
-                                <div className="flex gap-2 items-center">
-                                  <Icon
-                                    symbol="target_level_high"
-                                    size="small"
-                                  />
-                                  <div className="flex gap-2 w-auto text-left items-center">
-                                    <div className="bg-bar-1 h-2 w-8 rounded-r-lg" />
-                                    <div className="flex">
-                                      Høy
-                                      <span className="font-normal pl-1">
-                                        60%
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="flex gap-2 items-center">
-                                  <Icon
-                                    symbol="target_level_medium"
-                                    size="small"
-                                  />
-                                  <div className="flex gap-2 items-center">
-                                    <div className="bg-bar-1 h-2 w-30 rounded-r-lg" />
-                                    <div className="flex">
-                                      Middels
-                                      <span className="font-normal pl-1">
-                                        30%
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div className="flex gap-2 items-center">
-                                  <Icon
-                                    symbol="target_level_low"
-                                    size="small"
-                                  />
-                                  <div className="flex gap-2 items-center">
-                                    <div className="bg-bar-1 h-2 w-4 rounded-r-lg" />
-                                    <div className="flex">
-                                      Lav
-                                      <span className="font-normal pl-1">
-                                        10%
-                                      </span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </Box>
+                            <h4 className="-mt-0.5">Måloppnåelse 2021-2023</h4>
+                            {generateAchievements(
+                              mockedAchievementsIndicator.slice(1),
+                            )}
                           </Box>
                         </div>
 
@@ -615,102 +516,6 @@ export const Skde = (): JSX.Element => {
                           </Box>
                         </div>
                       </div>
-                      {/* <Grid container spacing={2}>
-            <Grid
-              size={{ xs: 12, sm: 7 }}
-              data-testid={`hospital_profile_box_${unitName}`}
-            >
-              <HospitalInfoBox
-                boxHeight={
-                  width > breakpoints.xxl
-                    ? topRowBoxHeightXxl
-                    : topRowBoxHeightXs
-                }
-                // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                unitNames={unitNamesQuery.data}
-                // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                selectedTreatmentUnit={unitName}
-                unitUrl={unitUrl}
-              />
-            </Grid>
-            <Grid size={{ xs: 12, sm: 5 }}>
-              <AffiliatedHospitals
-                boxHeight={
-                  width > breakpoints.xxl
-                    ? topRowBoxHeightXxl
-                    : topRowBoxHeightXs
-                }
-                titleStyle={titleStyle}
-                // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                unitNames={unitNamesQuery.data}
-                selectedTreatmentUnit={unitName || ""}
-                setUnitName={setUnitName}
-              />
-            </Grid>
-
-            <Grid size={{ xs: 12 }}>
-              {showRotateMessage ? (
-                TurnDeviceMessage
-              ) : (
-                <HospitalProfileMedfieldTable
-                  boxMaxHeight={boxMaxHeight}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                  unitName={unitName || ""}
-                  lastYear={lastYear}
-                />
-              )}
-            </Grid>
-
-            <Grid size={{ xs: 12 }}>
-              {showRotateMessage ? (
-                TurnDeviceMessage
-              ) : (
-                <HospitalProfileLowLevelTable
-                  unitName={unitName?.toString() || ""}
-                  boxMaxHeight={boxMaxHeight}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                  // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                  unitFullName={unitFullName}
-                  lastYear={lastYear}
-                />
-              )}
-            </Grid>
-
-            <Grid size={{ xs: 12 }}>
-              {showRotateMessage ? (
-                TurnDeviceMessage
-              ) : (
-                <HospitalProfileLinePlot
-                  // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                  unitFullName={unitFullName}
-                  unitNames={unitName?.toString() || ""}
-                  lastYear={lastYear}
-                  pastYears={pastYears}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                />
-              )}
-            </Grid>
-
-            <Grid size={{ xs: 12 }}>
-              {showRotateMessage ? (
-                TurnDeviceMessage
-              ) : (
-                <SelectedIndicatorTable
-                  unitName={unitName || ""}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  lastYear={lastYear}
-                  textMargin={textMargin}
-                />
-              )}
-            </Grid>
-          </Grid> */}
                     </div>
                     <div className="w-full flex flex-col">
                       <div className="flex flex-col w-full gap-2 pb-14">
@@ -808,8 +613,104 @@ export const Skde = (): JSX.Element => {
             )}
           </div>
         </PageContent>
-        {/* ssssss */}
       </Suspense>
+      {/*
+                       <Grid container spacing={2}>
+            <Grid
+              size={{ xs: 12, sm: 7 }}
+              data-testid={`hospital_profile_box_${unitName}`}
+            >
+              <HospitalInfoBox
+                boxHeight={
+                  width > breakpoints.xxl
+                    ? topRowBoxHeightXxl
+                    : topRowBoxHeightXs
+                }
+                // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+                unitNames={unitNamesQuery.data}
+                // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+                selectedTreatmentUnit={unitName}
+                unitUrl={unitUrl}
+              />
+            </Grid>
+            <Grid size={{ xs: 12, sm: 5 }}>
+              <AffiliatedHospitals
+                boxHeight={
+                  width > breakpoints.xxl
+                    ? topRowBoxHeightXxl
+                    : topRowBoxHeightXs
+                }
+                titleStyle={titleStyle}
+                // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+                unitNames={unitNamesQuery.data}
+                selectedTreatmentUnit={unitName || ""}
+                setUnitName={setUnitName}
+              />
+            </Grid>
+
+            <Grid size={{ xs: 12 }}>
+              {showRotateMessage ? (
+                TurnDeviceMessage
+              ) : (
+                <HospitalProfileMedfieldTable
+                  boxMaxHeight={boxMaxHeight}
+                  titlePadding={titlePadding}
+                  titleStyle={titleStyle}
+                  textMargin={textMargin}
+                  unitName={unitName || ""}
+                  lastYear={lastYear}
+                />
+              )}
+            </Grid>
+
+            <Grid size={{ xs: 12 }}>
+              {showRotateMessage ? (
+                TurnDeviceMessage
+              ) : (
+                <HospitalProfileLowLevelTable
+                  unitName={unitName?.toString() || ""}
+                  boxMaxHeight={boxMaxHeight}
+                  titlePadding={titlePadding}
+                  titleStyle={titleStyle}
+                  textMargin={textMargin}
+                  // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+                  unitFullName={unitFullName}
+                  lastYear={lastYear}
+                />
+              )}
+            </Grid>
+
+            <Grid size={{ xs: 12 }}>
+              {showRotateMessage ? (
+                TurnDeviceMessage
+              ) : (
+                <HospitalProfileLinePlot
+                  // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
+                  unitFullName={unitFullName}
+                  unitNames={unitName?.toString() || ""}
+                  lastYear={lastYear}
+                  pastYears={pastYears}
+                  titlePadding={titlePadding}
+                  titleStyle={titleStyle}
+                  textMargin={textMargin}
+                />
+              )}
+            </Grid>
+
+            <Grid size={{ xs: 12 }}>
+              {showRotateMessage ? (
+                TurnDeviceMessage
+              ) : (
+                <SelectedIndicatorTable
+                  unitName={unitName || ""}
+                  titlePadding={titlePadding}
+                  titleStyle={titleStyle}
+                  lastYear={lastYear}
+                  textMargin={textMargin}
+                />
+              )}
+            </Grid>
+          </Grid> */}
     </>
   );
 };
