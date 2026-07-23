@@ -4,7 +4,7 @@ export const ChartLogo = (props) => {
   props;
 
   return (
-    <div className="flex w-full justify-end pe-6" padded={false}>
+    <div className="flex w-full justify-end pe-6">
       <SkdeLogo />
     </div>
   );
