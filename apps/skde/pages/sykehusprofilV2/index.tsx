@@ -46,6 +46,8 @@ export const Skde = (): JSX.Element => {
   const router = useRouter();
   const [unitName, setUnitName] = useState<(string | null)[] | undefined>([]);
   const [isMobileAndVertical, setIsMobileAndVertical] = useState<boolean>();
+  const [urlCopied, setUrlCopied] = useState<boolean>(false);
+  const urlCopiedTimeout = 3000;
 
   //Treatment unit popup
   const [treatmentUnitPopupOpen, setTreatmentUnitPopupOpen] = useState(false);
@@ -245,16 +247,15 @@ export const Skde = (): JSX.Element => {
                     <Button
                       startIcon={<Icon size="small" symbol="content_copy" />}
                       variant="secondary"
-                      // onClick={() => {
-                      //   navigator.clipboard.writeText(window.location.href);
-                      //   setUrlCopied(true);
-                      //   setTimeout(() => {
-                      //     setUrlCopied(false);
-                      //   }, urlCopiedTimeout);
-                      // }}
+                      onClick={() => {
+                        navigator.clipboard.writeText(window.location.href);
+                        setUrlCopied(true);
+                        setTimeout(() => {
+                          setUrlCopied(false);
+                        }, urlCopiedTimeout);
+                      }}
                     >
-                      Kopier denne visningen
-                      {/* {urlCopied ? "Link kopiert" : "Kopier denne visningen"} */}
+                      {urlCopied ? "Link kopiert" : "Kopier denne visningen"}
                     </Button>
                   </div>
                 </div>
@@ -310,7 +311,7 @@ export const Skde = (): JSX.Element => {
                   </>
                 ) : (
                   <>
-                    <div className="w-full">
+                    <div className="w-full h-250 py-6">
                       {/* <LayoutHead
           title="Sykehusprofil"
           content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service for individual treatment units."
@@ -323,8 +324,11 @@ export const Skde = (): JSX.Element => {
           maxWidth={maxWidth}
         > */}
                       <div className="flex justify-center w-full">
-                        <div className="flex flex-wrap w-full justify-between items-center max-w-360  my-4">
-                          <Box className="flex justify-between items-center bg-neutral-0 border-none w-full h-20 md:h-28">
+                        <div className="flex flex-wrap w-full justify-between items-center max-w-360">
+                          <Box
+                            rounded={false}
+                            className="flex justify-between items-center bg-neutral-0 border-none w-full h-28 rounded-lg"
+                          >
                             <h3 className="text-brand-primary-600">
                               {selectedTreatmentUnit}
                             </h3>
@@ -340,29 +344,257 @@ export const Skde = (): JSX.Element => {
 
                       {/* </Header> */}
                       {/* <PageContent rounded={true}> */}
-                      <div className="flex w-full">
-                        <div className="w-1/2 flex flex-col gap-4">
-                          <Box className="rounded-md" color="white">
-                            <h4 className="pb-8">Måloppnåelse for [yyyy]</h4>
-                            [insert graph here]
-                          </Box>
-
-                          <Box>
-                            <h4>Måloppnåelse [yyyy-yyyy]</h4>
-                            <Box color="white">s</Box>
+                      <div className="flex w-full pt-5">
+                        <div className="w-1/2 flex flex-col gap-5">
+                          <Box
+                            rounded={false}
+                            padded={false}
+                            className="flex flex-col h-60 text-brand-primary-500 rounded-lg p-10"
+                          >
+                            <h4 className="pb-6">Måloppnåelse 2024</h4>
                             <Box
-                              className="border-y border-neutral-100"
-                              color="white"
+                              padded={false}
+                              className="flex gap-6"
                               rounded={false}
                             >
-                              s
+                              <div>
+                                <h6>2024</h6>
+                              </div>
+                              <div className="flex flex-col gap-2 text-small font-semibold">
+                                <div className="flex gap-2 items-center">
+                                  <Icon
+                                    symbol="target_level_high"
+                                    size="small"
+                                  />
+                                  <div className="flex gap-2 w-auto text-left items-center">
+                                    <div className="bg-bar-1 h-2 w-8 rounded-r-lg" />
+                                    <div className="flex">
+                                      Høy
+                                      <span className="font-normal pl-1">
+                                        60%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                  <Icon
+                                    symbol="target_level_medium"
+                                    size="small"
+                                  />
+                                  <div className="flex gap-2 items-center">
+                                    <div className="bg-bar-1 h-2 w-30 rounded-r-lg" />
+                                    <div className="flex">
+                                      Middels
+                                      <span className="font-normal pl-1">
+                                        30%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                  <Icon
+                                    symbol="target_level_low"
+                                    size="small"
+                                  />
+                                  <div className="flex gap-2 items-center">
+                                    <div className="bg-bar-1 h-2 w-4 rounded-r-lg" />
+                                    <div className="flex">
+                                      Lav
+                                      <span className="font-normal pl-1">
+                                        10%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
                             </Box>
-                            <Box color="white">s</Box>
+                          </Box>
+
+                          <Box
+                            rounded={false}
+                            padded={false}
+                            className="flex flex-col justify-between h-full text-brand-primary-500 rounded-lg p-10"
+                          >
+                            <h4 className="pb-3">Måloppnåelse [yyyy-yyyy]</h4>
+                            <Box
+                              padded={false}
+                              className="flex gap-6 h-28"
+                              rounded={false}
+                            >
+                              <div>
+                                <h6>2023</h6>
+                              </div>
+                              <div className="flex flex-col gap-2 text-small font-semibold">
+                                <div className="flex gap-2 items-center">
+                                  <Icon
+                                    symbol="target_level_high"
+                                    size="small"
+                                  />
+                                  <div className="flex gap-2 w-auto text-left items-center">
+                                    <div className="bg-bar-1 h-2 w-8 rounded-r-lg" />
+                                    <div className="flex">
+                                      Høy
+                                      <span className="font-normal pl-1">
+                                        60%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                  <Icon
+                                    symbol="target_level_medium"
+                                    size="small"
+                                  />
+                                  <div className="flex gap-2 items-center">
+                                    <div className="bg-bar-1 h-2 w-30 rounded-r-lg" />
+                                    <div className="flex">
+                                      Middels
+                                      <span className="font-normal pl-1">
+                                        30%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                  <Icon
+                                    symbol="target_level_low"
+                                    size="small"
+                                  />
+                                  <div className="flex gap-2 items-center">
+                                    <div className="bg-bar-1 h-2 w-4 rounded-r-lg" />
+                                    <div className="flex">
+                                      Lav
+                                      <span className="font-normal pl-1">
+                                        10%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </Box>
+                            <div className="border-y border-neutral-100" />
+                            <Box
+                              className="flex gap-6 h-28"
+                              rounded={false}
+                              padded={false}
+                            >
+                              <div>
+                                <h6>2022</h6>
+                              </div>
+                              <div className="flex flex-col gap-2 text-small font-semibold">
+                                <div className="flex gap-2 items-center">
+                                  <Icon
+                                    symbol="target_level_high"
+                                    size="small"
+                                  />
+                                  <div className="flex gap-2 w-auto text-left items-center">
+                                    <div className="bg-bar-1 h-2 w-8 rounded-r-lg" />
+                                    <div className="flex">
+                                      Høy
+                                      <span className="font-normal pl-1">
+                                        60%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                  <Icon
+                                    symbol="target_level_medium"
+                                    size="small"
+                                  />
+                                  <div className="flex gap-2 items-center">
+                                    <div className="bg-bar-1 h-2 w-30 rounded-r-lg" />
+                                    <div className="flex">
+                                      Middels
+                                      <span className="font-normal pl-1">
+                                        30%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                  <Icon
+                                    symbol="target_level_low"
+                                    size="small"
+                                  />
+                                  <div className="flex gap-2 items-center">
+                                    <div className="bg-bar-1 h-2 w-4 rounded-r-lg" />
+                                    <div className="flex">
+                                      Lav
+                                      <span className="font-normal pl-1">
+                                        10%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </Box>
+                            <div className="border-y border-neutral-100" />
+                            <Box
+                              padded={false}
+                              rounded={false}
+                              className="flex gap-6 h-28"
+                            >
+                              <div>
+                                <h6>2021</h6>
+                              </div>
+                              <div className="flex flex-col gap-2 text-small font-semibold">
+                                <div className="flex gap-2 items-center">
+                                  <Icon
+                                    symbol="target_level_high"
+                                    size="small"
+                                  />
+                                  <div className="flex gap-2 w-auto text-left items-center">
+                                    <div className="bg-bar-1 h-2 w-8 rounded-r-lg" />
+                                    <div className="flex">
+                                      Høy
+                                      <span className="font-normal pl-1">
+                                        60%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                  <Icon
+                                    symbol="target_level_medium"
+                                    size="small"
+                                  />
+                                  <div className="flex gap-2 items-center">
+                                    <div className="bg-bar-1 h-2 w-30 rounded-r-lg" />
+                                    <div className="flex">
+                                      Middels
+                                      <span className="font-normal pl-1">
+                                        30%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="flex gap-2 items-center">
+                                  <Icon
+                                    symbol="target_level_low"
+                                    size="small"
+                                  />
+                                  <div className="flex gap-2 items-center">
+                                    <div className="bg-bar-1 h-2 w-4 rounded-r-lg" />
+                                    <div className="flex">
+                                      Lav
+                                      <span className="font-normal pl-1">
+                                        10%
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </Box>
                           </Box>
                         </div>
 
-                        <div className="w-1/2 flex flex-col ml-4 gap-4">
-                          <Box>
+                        <div className="w-1/2 flex flex-col ml-4 gap-5">
+                          <Box
+                            rounded={false}
+                            padded={false}
+                            className="rounded-lg p-10 h-[637px]"
+                          >
                             <HospitalProfileLinePlotV2
                               unitFullName={unitFullName}
                               unitNames={unitName?.toString() || ""}
@@ -370,8 +602,16 @@ export const Skde = (): JSX.Element => {
                               pastYears={pastYears}
                             />
                           </Box>
-                          <Box className="h-fit" color="white">
-                            10-års trendanalyse
+                          <Box
+                            padded={false}
+                            rounded={false}
+                            className="p-10 rounded-lg text-dark"
+                            color="white"
+                          >
+                            <h4 className="pb-4">10-års trendanalyse</h4>
+                            Siden 2015 har høy måloppnåelse økt med 23 %, mens
+                            lavmåloppnåelse har blitt redusert med 12 %. Den
+                            største forbedringen skjedde mellom 2022 og 2024.
                           </Box>
                         </div>
                       </div>
@@ -517,7 +757,7 @@ export const Skde = (): JSX.Element => {
                           title="Dagkirurgi"
                         />
                       </div>
-                      <div className="flex flex-col gap-2 pb-14 debug">
+                      <div className="flex flex-col gap-2 pb-14">
                         <h4 className="pb-8 pt-14 text-brand-primary-600">
                           Utvalgte indikatorer for [placeholder behandlingssted]
                         </h4>
