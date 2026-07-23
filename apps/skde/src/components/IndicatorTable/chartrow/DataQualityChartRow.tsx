@@ -1,5 +1,5 @@
-import { Button, Dropdown, Icon, SplitButton } from "@mong/material-ui";
-import { Box, type SelectChangeEvent, Stack } from "@mui/material";
+import { Box, Button, Dropdown, Icon, SplitButton } from "@mong/material-ui";
+import { type SelectChangeEvent, Stack } from "@mui/material";
 import { useChartProApiRef } from "@mui/x-charts-pro";
 import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
 import { useState } from "react";
@@ -128,65 +128,58 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
   };
 
   return (
-    <Box>
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="end"
-        sx={{ paddingLeft: 7, paddingRight: 7 }}
-        width="100%"
-      >
-        <Stack direction="row" alignItems="end" spacing={1}>
+    <Box className="w-full flex-row justify-between items-end px-7">
+      <div className="flex flex-row items-end gap-1">
+        <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+          Årstall
+          <Dropdown
+            value={figureType}
+            onChange={handleFigureTypeChange}
+            items={figureTypeItems}
+          />
+        </div>
+        {figureType === "bar" && (
           <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-            Årstall
+            Behandlingssteder
             <Dropdown
-              value={figureType}
-              onChange={handleFigureTypeChange}
-              items={figureTypeItems}
+              value={barChartType}
+              onChange={handleBarChartTypeChange}
+              items={barChartTypeItems}
             />
           </div>
-          {figureType === "bar" && (
-            <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-              Behandlingssteder
-              <Dropdown
-                value={barChartType}
-                onChange={handleBarChartTypeChange}
-                items={barChartTypeItems}
-              />
-            </div>
-          )}
-          {showDGButton && (
-            <Button
-              startIcon={<Icon symbol="data_loss_prevention" size="medium" />}
-              onClick={() => {
-                setCoveragePopupOpen(true);
-              }}
-            >
-              Datakvalitet
-            </Button>
-          )}
+        )}
+        {showDGButton && (
           <Button
+            startIcon={<Icon symbol="data_loss_prevention" size="medium" />}
             onClick={() => {
-              setZoom(!zoom);
+              setCoveragePopupOpen(true);
             }}
-            startIcon={<Icon symbol="search" size="medium" />}
-            variant="filled"
           >
-            Zoom
+            Datakvalitet
           </Button>
-
-          <DataQualityPopup
-            open={coveragePopupOpen}
-            setOpen={setCoveragePopupOpen}
-            unitNames={unitNames}
-            year={year}
-            context={context}
-            medfield={medfield}
-            treatmentUnitsByLevel={treatmentUnitsByLevel}
-            registryName={registryName}
-            dataQualityIndId={data.dataQualityIndicatorID}
-          />
-        </Stack>
+        )}
+        <Button
+          onClick={() => {
+            setZoom(!zoom);
+          }}
+          startIcon={<Icon symbol="search" size="medium" />}
+          variant="filled"
+        >
+          Zoom
+        </Button>
+        <DataQualityPopup
+          open={coveragePopupOpen}
+          setOpen={setCoveragePopupOpen}
+          unitNames={unitNames}
+          year={year}
+          context={context}
+          medfield={medfield}
+          treatmentUnitsByLevel={treatmentUnitsByLevel}
+          registryName={registryName}
+          dataQualityIndId={data.dataQualityIndicatorID}
+        />
+      </div>
+      <Box padded={false}>
         {showDGButton && (
           <SplitButton
             label="Last ned"
@@ -205,17 +198,10 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
             steps="one-step"
           />
         )}
-      </Stack>
+      </Box>
       <Box
-        sx={{
-          paddingTop: 4,
-          width: "100%",
-          height: "100%",
-          overflow: "auto",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
+        className="w-full h-full overflow-auto flex flex-col items-center"
+        padded={false}
       >
         {/* biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future */}
         {figureType == "line" ? (
@@ -232,31 +218,27 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
             tickFontSize={14}
           />
         ) : figureType === "bar" ? (
-          <Box width={"100%"}>
-            <Box mt={-4}>
-              <MuiBarChart
-                data={data}
-                figureSpacingFactor={30}
-                figureSpacingConstant={2.2}
-                backgroundMargin={backgroundMargin}
-                unitNames={unitNames}
-                percentage={percentage}
-                barChartType={barChartType}
-                dataFormat={dataFormat}
-                valueAxisFormatter={valueAxisFormatter}
-                treatmentUnitsByLevel={treatmentUnitsByLevel}
-                context={context}
-                type={type}
-                medfield={medfield}
-                year={year}
-                indID={indID}
-                tickFontSize={14}
-                yAxisWidth={160}
-                zoom={zoom}
-                apiRef={barChartApiRef}
-              />
-            </Box>
-          </Box>
+          <MuiBarChart
+            data={data}
+            figureSpacingFactor={30}
+            figureSpacingConstant={2.2}
+            backgroundMargin={backgroundMargin}
+            unitNames={unitNames}
+            percentage={percentage}
+            barChartType={barChartType}
+            dataFormat={dataFormat}
+            valueAxisFormatter={valueAxisFormatter}
+            treatmentUnitsByLevel={treatmentUnitsByLevel}
+            context={context}
+            type={type}
+            medfield={medfield}
+            year={year}
+            indID={indID}
+            tickFontSize={14}
+            yAxisWidth={160}
+            zoom={zoom}
+            apiRef={barChartApiRef}
+          />
         ) : null}
       </Box>
     </Box>

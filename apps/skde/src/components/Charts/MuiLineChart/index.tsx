@@ -67,7 +67,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
   const yDifference = yMaxLimit - yMinLimit;
 
   return (
-    <Box>
+    <Box padded={false}>
       <ChartsDataProviderPro
         apiRef={apiRef}
         series={lineData}
@@ -103,7 +103,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
       >
         <Box>
           {/* <CustomChartWrapper> */}
-          <Box>
+          <div className="pl-20">
             <ChartsLegend
               slotProps={{
                 legend: {
@@ -118,7 +118,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
                 },
               }}
             />
-          </Box>
+          </div>
           <ChartsTooltip />
           <ChartsSurface
             sx={{ "& .line-after path": { strokeDasharray: "10 5" }, mb: -4 }}
@@ -147,7 +147,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
             <MarkPlot />
             <ChartsAxisHighlight x="line" />
           </ChartsSurface>
-          <ChartLogo width={100} marginRight={0} />
+          <ChartLogo />
           {/* </CustomChartWrapper> */}
         </Box>
       </ChartsDataProviderPro>
