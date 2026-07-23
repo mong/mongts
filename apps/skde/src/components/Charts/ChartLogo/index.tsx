@@ -1,16 +1,11 @@
 import { Box, SkdeLogo } from "@mong/material-ui";
 
-type LineChartLogoProps = {
-  width: number;
-  marginRight: number;
-};
-
-export const ChartLogo = (props: LineChartLogoProps) => {
+export const ChartLogo = (props) => {
   props;
 
   return (
-    <Box className="flex w-full justify-end pe-6" padded={false}>
+    <div className="flex w-full justify-end pe-6" padded={false}>
       <SkdeLogo />
-    </Box>
+    </div>
   );
 };
