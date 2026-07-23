@@ -56,7 +56,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");
   const [highlightedHF, setHighlightedHF] = useState<string>("");
 
-  const [unitSelection = [""], setUnitSelection] = useQueryParam(
+  const [unitSelection = ["Nasjonalt"], setUnitSelection] = useQueryParam(
     selectionType === "single" ? "selected_treatment_units" : "units",
     mainQueryParamsConfig.units,
   );
@@ -461,9 +461,11 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           <Button
             variant="text"
             onClick={() => {
+              const unitSelection =
+                selectionType === "single" ? [""] : ["Nasjonalt"];
               setHighlightedRHF("");
               setHighlightedHF("");
-              setUnitSelection([]);
+              setUnitSelection(unitSelection);
             }}
           >
             Tøm filter
