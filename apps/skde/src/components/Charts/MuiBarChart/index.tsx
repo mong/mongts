@@ -271,29 +271,29 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
           },
         ]}
       >
-        <CustomChartWrapper>
-          <Box>
-            <h6 className="font-semibold text-main tracking-wider">
-              Valgt år: {year}
-            </h6>
-          </Box>
-          <ChartsTooltip />
-          <ChartsSurface>
-            <BarBackground
-              data={data}
-              percentage={percentage}
-              figureHeight={figureHeight}
-              backgroundMargin={backgroundMargin}
-              lines={true}
-              zoom={zoom}
-              xMaxLimit={xMaxLimit}
-            />
-            <ChartsXAxis />
-            <ChartsYAxis />
-            <BarPlot />
-          </ChartsSurface>
-          <ChartLogo width={100} marginRight={6} />
-        </CustomChartWrapper>
+        {/* <CustomChartWrapper> */}
+        <Box>
+          <h6 className="font-semibold text-main tracking-wider">
+            Valgt år: {year}
+          </h6>
+        </Box>
+        <ChartsTooltip />
+        <ChartsSurface>
+          <BarBackground
+            data={data}
+            percentage={percentage}
+            figureHeight={figureHeight}
+            backgroundMargin={backgroundMargin}
+            lines={true}
+            zoom={zoom}
+            xMaxLimit={xMaxLimit}
+          />
+          <ChartsXAxis />
+          <ChartsYAxis />
+          <BarPlot />
+        </ChartsSurface>
+        <ChartLogo width={100} marginRight={6} />
+        {/* </CustomChartWrapper> */}
       </ChartsDataProviderPro>
     </Box>
   );
