@@ -79,14 +79,17 @@ const mockedAchievementsIndicator: AchievementIndicator[] = [
       {
         result: 60,
         level: "high",
+        label: "Høy",
       },
       {
         result: 30,
         level: "medium",
+        label: "Middels",
       },
       {
         result: 10,
         level: "low",
+        label: "Lav",
       },
     ],
   },
@@ -96,14 +99,17 @@ const mockedAchievementsIndicator: AchievementIndicator[] = [
       {
         result: 60,
         level: "high",
+        label: "Høy",
       },
       {
         result: 30,
         level: "medium",
+        label: "Middels",
       },
       {
         result: 10,
         level: "low",
+        label: "Lav",
       },
     ],
   },
@@ -113,14 +119,17 @@ const mockedAchievementsIndicator: AchievementIndicator[] = [
       {
         result: 60,
         level: "high",
+        label: "Høy",
       },
       {
         result: 30,
         level: "medium",
+        label: "Middels",
       },
       {
         result: 10,
         level: "low",
+        label: "Lav",
       },
     ],
   },
@@ -254,13 +263,14 @@ export const Skde = (): JSX.Element => {
       });
     });
 
-    /** NB: Denne er alltid blank? */
     unitFullName =
       (unitNamesQuery.data &&
-        getUnitFullName(unitNamesQuery.data.nestedUnitNames, unitName)) ||
+        getUnitFullName(
+          unitNamesQuery.data.nestedUnitNames,
+          unitName?.[0] ?? "",
+        )) ||
       "";
   }
-
   /**
    *  Check if the selected unit exists in the loaded data. Guards against
    *  invalid units coming from the URL.
@@ -280,8 +290,8 @@ export const Skde = (): JSX.Element => {
   // ############ //
 
   const unitUrl: string =
-    unitUrlsQuery.data?.find((row: URLs) => row.shortName === unitName)?.url ||
-    "";
+    unitUrlsQuery.data?.find((row: URLs) => row.shortName === unitName?.[0])
+      ?.url || "";
 
   const boxclasses =
     "flex flex-col items-center justify-center  text-dark gap-10 min-h-50 md:min-h-100 my-6";
@@ -324,12 +334,6 @@ export const Skde = (): JSX.Element => {
                       type={"ind"}
                       selectionType="single"
                     />
-                    {/* <UnitFilterMenu
-                      width={Math.min(400, 0.8 * width)}
-                      setUnitName={setUnitName}
-                      unitNamesQuery={unitNamesQuery}
-                      unitName={unitName || ""}
-                    /> */}
                     <div className="flex flex-col text-small font-semibold text-brand-primary-900">
                       Vis
                       <ToggleButtonGroup
@@ -432,17 +436,6 @@ export const Skde = (): JSX.Element => {
                 ) : (
                   <>
                     <div className="w-full h-250 py-6">
-                      {/* <LayoutHead
-          title="Sykehusprofil"
-          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service for individual treatment units."
-          href="/favicon.ico"
-        /> */}
-
-                      {/* <Header
-          bgcolor="surface2.light"
-          title={"Sykehusprofil"}
-          maxWidth={maxWidth}
-        > */}
                       <div className="flex justify-center w-full">
                         <div className="flex flex-wrap w-full justify-between items-center max-w-360">
                           <Box
@@ -462,8 +455,6 @@ export const Skde = (): JSX.Element => {
                         </div>
                       </div>
 
-                      {/* </Header> */}
-                      {/* <PageContent rounded={true}> */}
                       <div className="flex w-full pt-5">
                         <div className="w-1/2 flex flex-col gap-5">
                           <Box
@@ -494,7 +485,7 @@ export const Skde = (): JSX.Element => {
                           <Box
                             rounded={false}
                             padded={false}
-                            className="rounded-lg p-10 h-[637px]"
+                            className="rounded-lg p-10 h-159"
                           >
                             <HospitalProfileLinePlotV2
                               unitFullName={unitFullName}
@@ -614,103 +605,6 @@ export const Skde = (): JSX.Element => {
           </div>
         </PageContent>
       </Suspense>
-      {/*
-                       <Grid container spacing={2}>
-            <Grid
-              size={{ xs: 12, sm: 7 }}
-              data-testid={`hospital_profile_box_${unitName}`}
-            >
-              <HospitalInfoBox
-                boxHeight={
-                  width > breakpoints.xxl
-                    ? topRowBoxHeightXxl
-                    : topRowBoxHeightXs
-                }
-                // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                unitNames={unitNamesQuery.data}
-                // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                selectedTreatmentUnit={unitName}
-                unitUrl={unitUrl}
-              />
-            </Grid>
-            <Grid size={{ xs: 12, sm: 5 }}>
-              <AffiliatedHospitals
-                boxHeight={
-                  width > breakpoints.xxl
-                    ? topRowBoxHeightXxl
-                    : topRowBoxHeightXs
-                }
-                titleStyle={titleStyle}
-                // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                unitNames={unitNamesQuery.data}
-                selectedTreatmentUnit={unitName || ""}
-                setUnitName={setUnitName}
-              />
-            </Grid>
-
-            <Grid size={{ xs: 12 }}>
-              {showRotateMessage ? (
-                TurnDeviceMessage
-              ) : (
-                <HospitalProfileMedfieldTable
-                  boxMaxHeight={boxMaxHeight}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                  unitName={unitName || ""}
-                  lastYear={lastYear}
-                />
-              )}
-            </Grid>
-
-            <Grid size={{ xs: 12 }}>
-              {showRotateMessage ? (
-                TurnDeviceMessage
-              ) : (
-                <HospitalProfileLowLevelTable
-                  unitName={unitName?.toString() || ""}
-                  boxMaxHeight={boxMaxHeight}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                  // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                  unitFullName={unitFullName}
-                  lastYear={lastYear}
-                />
-              )}
-            </Grid>
-
-            <Grid size={{ xs: 12 }}>
-              {showRotateMessage ? (
-                TurnDeviceMessage
-              ) : (
-                <HospitalProfileLinePlot
-                  // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                  unitFullName={unitFullName}
-                  unitNames={unitName?.toString() || ""}
-                  lastYear={lastYear}
-                  pastYears={pastYears}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  textMargin={textMargin}
-                />
-              )}
-            </Grid>
-
-            <Grid size={{ xs: 12 }}>
-              {showRotateMessage ? (
-                TurnDeviceMessage
-              ) : (
-                <SelectedIndicatorTable
-                  unitName={unitName || ""}
-                  titlePadding={titlePadding}
-                  titleStyle={titleStyle}
-                  lastYear={lastYear}
-                  textMargin={textMargin}
-                />
-              )}
-            </Grid>
-          </Grid> */}
     </>
   );
 };
