@@ -174,11 +174,8 @@ export const Skde = (): JSX.Element => {
       />
       <Suspense
         fallback={
-          <Box
-            color="gray"
-            className="w-full flex-1 flex justify-center items-center"
-          >
-            <LoadingLogo message="Laster data..." />
+          <Box padded={false} color="transparent" className="p-10">
+            <LoadingLogo message="Laster data" />
           </Box>
         }
       >
@@ -284,7 +281,7 @@ export const Skde = (): JSX.Element => {
               </Box>
             ) : isLoading ? (
               <Box padded={false} color="transparent" className="p-10">
-                <LoadingLogo message="Laster data" height={40} />
+                <LoadingLogo message="Laster data" />
               </Box>
             ) : (
               <div className="w-full max-w-360">

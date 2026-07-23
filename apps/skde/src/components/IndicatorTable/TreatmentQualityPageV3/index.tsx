@@ -116,8 +116,8 @@ export const TreatmentQualityPageV3 = () => {
       />
       <Suspense
         fallback={
-          <Box color="gray" className="p-20">
-            <LoadingLogo />
+          <Box padded={false} color="transparent" className="p-10">
+            <LoadingLogo message="Laster data" />
           </Box>
         }
       >
@@ -197,7 +197,7 @@ export const TreatmentQualityPageV3 = () => {
         </div>
         <PageContent className="pt-10">
           {isInitialLoading ? (
-            <Box padded={false} color="transparent" className="p-52">
+            <Box padded={false} color="transparent" className="p-10">
               <LoadingLogo message="Laster data" />
             </Box>
           ) : hasLoadingError ? (
