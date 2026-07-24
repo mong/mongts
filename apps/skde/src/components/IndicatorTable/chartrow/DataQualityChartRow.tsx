@@ -179,7 +179,7 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
           dataQualityIndId={data.dataQualityIndicatorID}
         />
       </div>
-      <Box padded={false}>
+      <div>
         {showDGButton && (
           <SplitButton
             label="Last ned"
@@ -198,11 +198,8 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
             steps="one-step"
           />
         )}
-      </Box>
-      <Box
-        className="w-full h-full overflow-auto flex flex-col items-center"
-        padded={false}
-      >
+      </div>
+      <div className="w-full min-h-max flex-shrink-0 block clear-both">
         {/* biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future */}
         {figureType == "line" ? (
           <MuiLineChart
@@ -240,7 +237,7 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
             apiRef={barChartApiRef}
           />
         ) : null}
-      </Box>
+      </div>
     </Box>
   );
 };

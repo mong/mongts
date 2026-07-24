@@ -1,11 +1,9 @@
-import { Button, ContextCard } from "@mong/material-ui";
+import { Box, Button, ContextCard, LoadingLogo } from "@mong/material-ui";
 import {
-  Box,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
-  Typography,
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import type { FetchIndicatorParams } from "qmongjs/src/helpers/hooks";
@@ -59,9 +57,13 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
   });
 
   const LoadingDialog = (
-    <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
-      <DialogTitle>Dekningsgrad</DialogTitle>
-      <DialogContent>Laster</DialogContent>
+    <Dialog open={open} fullWidth={true} maxWidth={"lg"} scroll="body">
+      <DialogTitle>
+        <h3 className="font-regular">Datakvalitet</h3>
+      </DialogTitle>
+      <DialogContent>
+        <LoadingLogo />
+      </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Lukk</Button>
       </DialogActions>
@@ -69,9 +71,13 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
   );
 
   const NoDataDialog = (
-    <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
-      <DialogTitle>Dekningsgrad</DialogTitle>
-      <DialogContent>Ingen data</DialogContent>
+    <Dialog open={open} fullWidth={true} maxWidth={"lg"} scroll="body">
+      <DialogTitle>
+        <h3 className="font-regular">Datakvalitet</h3>
+      </DialogTitle>
+      <DialogContent>
+        <h6 className="pl-7 pr-6 font-regular">Ingen data</h6>
+      </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Lukk</Button>
       </DialogActions>
@@ -116,15 +122,15 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
     "Det handler om planlegging, design, dokumentasjon, tekniske løsninger, rutiner for oppfølging og hvordan data faktisk blir brukt.";
 
   return (
-    <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
+    <Dialog open={open} fullWidth={true} maxWidth={"lg"} scroll="body">
       <DialogTitle>
-        <Typography variant="h4">Datakvalitet</Typography>
+        <h3 className="font-regular">Datakvalitet</h3>
       </DialogTitle>
-      <Typography variant="body2" sx={{ paddingLeft: 4, paddingRight: 4 }}>
+      <h6 className="pl-7 pr-6 font-regular">
         God datakvalitet er en forutsetning for at kvalitetsregistre skal kunne
         gi pålitelig kunnskap om helsetjenesten, støtte kvalitetsforbedring og
         legge grunnlag for god forskning.
-      </Typography>
+      </h6>
       <DialogContent>
         <DataQualityChartRow
           data={dgIndData[0]}
@@ -139,7 +145,7 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
           showDGButton={false}
         />
       </DialogContent>
-      <Box sx={{ paddingLeft: 4, paddingRight: 4 }}>
+      <Box>
         <ContextCard
           title="Om datakvalitet"
           description={contextCardDescription}
