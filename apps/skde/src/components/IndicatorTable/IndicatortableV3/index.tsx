@@ -208,7 +208,7 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
       <div className="flex md:hidden flex-col gap-(--spacing-4) p-8 text-brand-primary-600">
         <RotateDevice message="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din." />
       </div>
-      <div className="hidden md:flex">
+      <div className="hidden md:flex flex-col w-full justify-between">
         <RegisterAccordion
           registries={reshapedData}
           smallScreenMessage="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din."
