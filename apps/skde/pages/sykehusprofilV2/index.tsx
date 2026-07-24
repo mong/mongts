@@ -51,8 +51,8 @@ export const Skde = (): JSX.Element => {
     mainQueryParamsConfig.units,
   );
 
-  const selectedTableContext = "caregiver";
-  const handleTreatmentUnitButtonClick = () => {
+  const treatmentUnitContext = "caregiver";
+  const openTreatmentUnitPopup = () => {
     setTreatmentUnitPopupOpen(true);
   };
   const handleClearFilters = () => {
@@ -81,40 +81,33 @@ export const Skde = (): JSX.Element => {
     { shortName: string; url: string }[],
     Error
   > = useUnitUrlsQuery();
-  const unitsData = unitNamesQuery?.data && unitUrlsQuery?.data;
+  const hasUnitsData = !!(unitNamesQuery.data && unitUrlsQuery.data);
 
   const hasLoadingError =
     unitNamesQuery.status === "error" || unitUrlsQuery.status === "error";
-  const isLoading = !router.isReady || !unitsData;
+  const isLoading = !router.isReady || !hasUnitsData;
   const selectedUnit = selectedTreatmentUnit[0] ?? null;
 
-  let unitFullName = "";
+  // Keep only main hospitals without mutating query-cache data.
+  const nestedUnitNames = (unitNamesQuery.data?.nestedUnitNames ?? []).map(
+    (rhf) => ({
+      ...rhf,
+      hf: rhf.hf.map((hf) => ({
+        ...hf,
+        hospital: hf.hospital.filter((unit) => mainHospitals.includes(unit)),
+      })),
+    }),
+  );
 
-  if (unitNamesQuery.data) {
-    // Only keep the "real" hospitals
-    unitNamesQuery.data.nestedUnitNames.forEach((rhf) => {
-      rhf.hf.forEach((hf) => {
-        hf.hospital = hf.hospital.filter((unit) =>
-          mainHospitals.includes(unit),
-        );
-      });
-    });
-
-    unitFullName =
-      (unitNamesQuery.data &&
-        getUnitFullName(
-          unitNamesQuery.data.nestedUnitNames,
-          unitName?.[0] ?? "",
-        )) ||
-      "";
-  }
+  const selectedUnitName = unitName?.[0] ?? "";
+  const unitFullName = getUnitFullName(nestedUnitNames, selectedUnitName) || "";
   /**
    *  Check if the selected unit exists in the loaded data. Guards against
    *  invalid units coming from the URL.
    **/
   const isValidUnit =
     !!selectedUnit &&
-    !!unitNamesQuery.data?.nestedUnitNames.some(
+    !!nestedUnitNames.some(
       (tu) =>
         tu.rhf === selectedUnit ||
         tu.hf.some(
@@ -122,9 +115,9 @@ export const Skde = (): JSX.Element => {
         ),
     );
 
-  const boxclasses =
+  const emptyStateClassName =
     "flex flex-col items-center justify-center  text-dark gap-10 min-h-50 md:min-h-100 my-6";
-  const selectedUnitName = unitName?.toString() || "";
+  const selectedUnitNamesAsString = unitName?.toString() || "";
 
   return (
     <>
@@ -152,7 +145,7 @@ export const Skde = (): JSX.Element => {
                   <div className="flex gap-6">
                     <div className="flex flex-col text-small font-semibold text-brand-primary-900">
                       Behandlingssted
-                      <Button onClick={handleTreatmentUnitButtonClick}>
+                      <Button onClick={openTreatmentUnitPopup}>
                         Velg behandlingssted
                       </Button>
                     </div>
@@ -160,7 +153,7 @@ export const Skde = (): JSX.Element => {
                       open={treatmentUnitPopupOpen}
                       setOpen={setTreatmentUnitPopupOpen}
                       onSubmit={setUnitName}
-                      context={selectedTableContext}
+                      context={treatmentUnitContext}
                       type={"ind"}
                       selectionType="single"
                     />
@@ -223,7 +216,7 @@ export const Skde = (): JSX.Element => {
         <PageContent>
           <div className="flex w-full flex-1 min-h-0">
             {hasLoadingError ? (
-              <Box border className={boxclasses}>
+              <Box border className={emptyStateClassName}>
                 <h4>Feil ved innhenting av data. Prøv igjen.</h4>
                 <Button
                   onClick={() => {
@@ -247,19 +240,19 @@ export const Skde = (): JSX.Element => {
                 {!selectedUnit ? (
                   <Box
                     border
-                    className={`${boxclasses} hidden md:flex flex-col justify-center`}
+                    className={`${emptyStateClassName} hidden md:flex flex-col justify-center`}
                   >
                     <h3 className="text-nowrap">
                       Velg ett behandlingssted du vil se resultater fra
                     </h3>
-                    <Button onClick={handleTreatmentUnitButtonClick}>
+                    <Button onClick={openTreatmentUnitPopup}>
                       Velg behandlingssted
                     </Button>
                   </Box>
                 ) : !isValidUnit ? (
                   <>
                     <h3>"{selectedUnit}" Er ikke et gyldig behandlingssted</h3>
-                    <Button onClick={handleTreatmentUnitButtonClick}>
+                    <Button onClick={openTreatmentUnitPopup}>
                       Velg behandlingssted
                     </Button>
                   </>
@@ -267,7 +260,7 @@ export const Skde = (): JSX.Element => {
                   <>
                     <TopSummarySection
                       selectedTreatmentUnit={selectedTreatmentUnit}
-                      unitName={selectedUnitName}
+                      unitName={selectedUnitNamesAsString}
                       unitFullName={unitFullName}
                       lastYear={lastYear}
                       pastYears={pastYears}

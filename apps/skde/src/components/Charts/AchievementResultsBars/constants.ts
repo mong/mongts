@@ -25,4 +25,4 @@ export const LEVEL_ICONS: Record<DisplayLevel, string> = {
   low: "target_level_low",
 };
 
-export const MAX_BAR_WIDTH_PX = 128;
+export const MAX_BAR_WIDTH_PX = 228;

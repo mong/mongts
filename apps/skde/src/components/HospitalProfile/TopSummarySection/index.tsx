@@ -47,7 +47,7 @@ const AchievementSummaryCard = ({
       padded={false}
       className="flex flex-col justify-between h-full text-brand-primary-500 rounded-lg py-10 px-10"
     >
-      <h4 className="-mt-0.5">{title}</h4>
+      <h4 className="-mt-0.5 mb-6">{title}</h4>
       <AchievementResultsBars
         unitNames={[unitName]}
         startYear={startYear}
@@ -115,7 +115,7 @@ export const TopSummarySection = ({
       <SummaryHeader selectedTreatmentUnit={selectedTreatmentUnit} />
 
       <div className="flex w-full pt-5">
-        <div className="w-1/2 flex flex-col gap-5">
+        <div className="w-1/2 flex flex-col gap-5 z-50">
           <AchievementSummaryCard
             title={`Måloppnåelse ${lastYear}`}
             unitName={unitName}

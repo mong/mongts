@@ -28,11 +28,11 @@ export const AchievementRows = ({
 
   return filteredData.map(({ year, indicators }, index) => (
     <div key={year}>
-      {index > 0 && <div className="border-y border-neutral-100" />}
+      {index > 0 && <div className="border-y border-neutral-100 my-5.5" />}
       <Box
         padded={false}
         rounded={false}
-        className="flex gap-6 py-3"
+        className="flex gap-6"
         color="transparent"
       >
         <div>
@@ -44,12 +44,15 @@ export const AchievementRows = ({
               key={`${year}-${indicator.level}`}
               className="flex gap-2 items-center"
             >
-              <Icon symbol={LEVEL_ICONS[indicator.level] as IconName} />
+              <Icon
+                symbol={LEVEL_ICONS[indicator.level] as IconName}
+                size="small"
+              />
               <div className="flex w-auto text-left items-center gap-2">
                 <div
                   className="h-2 rounded-r-lg"
                   style={{
-                    width: getBarWidth(indicator.result),
+                    width: getBarWidth(indicator.result * 2),
                     backgroundColor: LEVEL_COLORS[indicator.level],
                   }}
                 />
