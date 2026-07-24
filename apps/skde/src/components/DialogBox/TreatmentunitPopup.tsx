@@ -332,6 +332,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
     <Dialog
       open={open}
       fullWidth
+      scroll="body"
       sx={{
         "& .MuiDialog-container": {
           "& .MuiPaper-root": {
@@ -372,7 +373,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
               </Box>
               <div className="flex outline -outline-offset-1 outline-neutral-0 rounded-md">
                 <div
-                  className={`flex flex-1 w-full py-5 bg-brand-primary-50 text-brand-primary-700 rounded-l-md`}
+                  className={`flex flex-1 w-full py-0,5 bg-brand-primary-50 text-brand-primary-700 rounded-l-md`}
                 >
                   {/* RHF Column */}
                   <FormControl sx={{ width: "100%" }}>
@@ -393,12 +394,14 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                 </div>
 
                 <div
-                  className={`flex flex-1 w-full py-5 bg-brand-primary-200 h-full text-brand-primary-700`}
+                  className={`flex flex-2 w-full py-0,5 bg-brand-primary-200 h-full text-brand-primary-700`}
                 >
                   {/* HF Column */}
-                  {highlightedRHF
-                    ? ""
-                    : "Velg et behandlingssted på venstre side"}
+                  {!highlightedRHF && selectionType === "single" && (
+                    <h6 className="pl-2 py-2 text-center w-full flex flex-row whitespace-nowrap font-regular">
+                      Velg et behandlingssted på venstre side
+                    </h6>
+                  )}
                   <FormControl
                     sx={{
                       width: "100%",
@@ -424,7 +427,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                   </FormControl>
                 </div>
                 {highlightedHF && (
-                  <div className="flex flex-1 w-full h-full py-5 bg-brand-primary-100  rounded-r-md">
+                  <div className="flex flex-1 w-full h-full py-0,5 bg-brand-primary-100  rounded-r-md">
                     {/* Hospitals Column */}
                     <FormControl
                       sx={{
