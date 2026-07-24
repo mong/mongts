@@ -87,6 +87,14 @@ const colors = {
   low: levelRedColours[1],
 };
 
+const DISPLAY_LEVELS = ["high", "medium", "low"] as const;
+const LEVEL_LABELS: Record<(typeof DISPLAY_LEVELS)[number], string> = {
+  high: "Høy",
+  medium: "Middels",
+  low: "Lav",
+};
+const MAX_BAR_WIDTH_PX = 128;
+
 type DisplayLevel = "high" | "medium" | "low";
 
 type YearAchievement = {
@@ -160,12 +168,12 @@ const normaliseChartData = (data: { x: number; y: number }[][]) => {
 };
 
 export const AchievementResultsBars = (
-  achivementParams: AchievementResultsBarsProps,
+  achievementParams: AchievementResultsBarsProps,
 ) => {
   // Fetch aggregated data
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const indicatorQuery: UseQueryResult<any, unknown> =
-    useIndicatorQuery(achivementParams);
+    useIndicatorQuery(achievementParams);
 
   if (indicatorQuery.isFetching) {
     return null;
@@ -202,8 +210,8 @@ export const AchievementResultsBars = (
   // Fill missing years with zero
   let chartData = setMissingToZero(
     groupedLevels,
-    achivementParams.startYear,
-    achivementParams.endYear,
+    achievementParams.startYear,
+    achievementParams.endYear,
   );
 
   chartData = normaliseChartData(chartData);
@@ -219,40 +227,43 @@ export const AchievementResultsBars = (
       return "0px";
     }
 
+    const clampedResult = Math.min(result, 100);
+    const scaledWidthPx = Math.round((clampedResult / 100) * MAX_BAR_WIDTH_PX);
+
     // Ensure very small non-zero percentages are still visible.
-    return `max(6px, ${result}%)`;
+    return `${Math.max(6, scaledWidthPx)}px`;
   };
 
   const yearlyAchievements: YearAchievement[] = chartData[0].map(
-    (row, index) => {
-      return {
-        year: row.x,
-        indicators: [
-          { level: "high", label: "Høy", result: chartData[0][index].y },
-          { level: "medium", label: "Middels", result: chartData[1][index].y },
-          { level: "low", label: "Lav", result: chartData[2][index].y },
-        ],
-      };
-    },
+    (row, index) => ({
+      year: row.x,
+      indicators: DISPLAY_LEVELS.map((displayLevel, levelIndex) => ({
+        level: displayLevel,
+        label: LEVEL_LABELS[displayLevel],
+        result: chartData[levelIndex][index].y,
+      })),
+    }),
   );
 
-  const yearsToShow = _.range(
-    achivementParams.endYear,
-    achivementParams.startYear - 1,
-    -1,
+  const minYear = Math.min(
+    achievementParams.startYear,
+    achievementParams.endYear,
   );
+  const maxYear = Math.max(
+    achievementParams.startYear,
+    achievementParams.endYear,
+  );
+  const yearsToShow = _.range(maxYear, minYear - 1, -1);
 
-  const RenderAchievementBars = ({
-    barData,
-    years,
-  }: {
-    barData: YearAchievement[];
-    years: number[];
-  }): JSX.Element[] => {
+  const renderAchievementBars = (
+    barData: YearAchievement[],
+    years: number[],
+  ): JSX.Element[] => {
     const achievementByYear = new Map(
       barData.map((achievement) => [achievement.year, achievement] as const),
     );
-    const filteredData = years
+    const uniqueYears = [...new Set(years)];
+    const filteredData = uniqueYears
       .map((year) => achievementByYear.get(year))
       .filter(
         (achievement): achievement is YearAchievement =>
@@ -262,7 +273,12 @@ export const AchievementResultsBars = (
     return filteredData.map(({ year, indicators }, index) => (
       <div key={year}>
         {index > 0 && <div className="border-y border-neutral-100" />}
-        <Box padded={false} rounded={false} className="flex gap-6 py-3">
+        <Box
+          padded={false}
+          rounded={false}
+          className="flex gap-6 py-3"
+          color="transparent"
+        >
           <div>
             <h6>{year}</h6>
           </div>
@@ -273,16 +289,14 @@ export const AchievementResultsBars = (
                 className="flex gap-2 items-center"
               >
                 <Icon symbol={iconByLevel[indicator.level]} />
-                <div className="flex gap-3 w-auto text-left items-center">
-                  <div className="w-32 h-2 bg-neutral-100 rounded-r-lg overflow-hidden">
-                    <div
-                      className="h-2 rounded-r-lg"
-                      style={{
-                        width: getBarWidth(indicator.result),
-                        backgroundColor: colors[indicator.level],
-                      }}
-                    />
-                  </div>
+                <div className="flex w-auto text-left items-center gap-2">
+                  <div
+                    className="h-2 rounded-r-lg"
+                    style={{
+                      width: getBarWidth(indicator.result),
+                      backgroundColor: colors[indicator.level],
+                    }}
+                  />
                   <div className="flex whitespace-nowrap">
                     {indicator.label}
                     <span className="font-normal pl-1">
@@ -298,14 +312,5 @@ export const AchievementResultsBars = (
     ));
   };
 
-  return (
-    <Box
-      rounded={false}
-      padded={false}
-      className="flex flex-col text-brand-primary-500 rounded-lg p-10"
-    >
-      <h4 className="pb-6">Måloppnåelse {achivementParams.endYear}</h4>
-      <RenderAchievementBars barData={yearlyAchievements} years={yearsToShow} />
-    </Box>
-  );
+  return renderAchievementBars(yearlyAchievements, yearsToShow);
 };
