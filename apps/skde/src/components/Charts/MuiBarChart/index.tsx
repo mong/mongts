@@ -272,7 +272,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
         ]}
       >
         {/* <CustomChartWrapper> */}
-        <div className="pl-10">
+        <div className="pl-10 pt-2">
           <h6 className="font-semibold text-main tracking-wider">
             Valgt år: {year}
           </h6>

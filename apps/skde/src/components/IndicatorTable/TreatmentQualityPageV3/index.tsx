@@ -195,7 +195,7 @@ export const TreatmentQualityPageV3 = () => {
             )}
           </div>
         </div>
-        <PageContent className="pt-10">
+        <PageContent>
           {isInitialLoading ? (
             <Box padded={false} color="transparent" className="p-10">
               <LoadingLogo message="Laster data" />

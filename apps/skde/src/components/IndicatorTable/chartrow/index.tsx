@@ -139,7 +139,7 @@ export const ChartRow = (props: ChartRowProps) => {
     <Box>
       <div className="flex flex-row justify-between items-end w-full">
         <div className="flex flex-row items-end gap-2">
-          <div className="pl-21 flex flex-col text-small font-semibold text-brand-primary-900">
+          <div className="pl-10 flex flex-col text-small font-semibold text-brand-primary-900">
             Årstall
             <Dropdown
               value={figureType}
