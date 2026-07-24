@@ -35,7 +35,6 @@ export const Skde = (): JSX.Element => {
   const urlCopiedTimeout = 3000;
 
   // Grab URL params and setUnitNames on load.
-  // This is needed to ensure that the unitName state is set correctly when the page is loaded with a URL param.
   const searchParams = useSearchParams();
   const urlTreatmentUnits = searchParams?.get("selected_treatment_units");
   useEffect(() => {
@@ -86,12 +85,7 @@ export const Skde = (): JSX.Element => {
 
   const hasLoadingError =
     unitNamesQuery.status === "error" || unitUrlsQuery.status === "error";
-
-  // While the router isn't ready the URL params aren't populated yet, so treat
-  // it as loading to avoid flashing the "choose a unit" message before the
-  // selected unit from the URL is known.
   const isLoading = !router.isReady || !unitsData;
-
   const selectedUnit = selectedTreatmentUnit[0] ?? null;
 
   let unitFullName = "";
@@ -223,11 +217,11 @@ export const Skde = (): JSX.Element => {
             </Toolbar>
           </div>
         </div>
+        {/* End Toolbar */}
 
         {/* Page Content */}
         <PageContent>
           <div className="flex w-full flex-1 min-h-0">
-            {/* End Toolbar */}
             {hasLoadingError ? (
               <Box border className={boxclasses}>
                 <h4>Feil ved innhenting av data. Prøv igjen.</h4>
