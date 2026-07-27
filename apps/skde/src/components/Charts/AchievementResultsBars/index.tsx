@@ -14,8 +14,10 @@ import {
   setMissingToZero,
 } from "./utils";
 
-export type { AchievementLevel, AchievementResultsBarsProps } from "./types";
-export { countLevels, setMissingToZero } from "./utils";
+export type { AchievementResultsBarsProps } from "./types";
+
+// Denne eksporten blir ikke importert av noe annet. Kommentert ut for å tilfredstille knip
+// export { countLevels, setMissingToZero } from "./utils";
 
 export const AchievementResultsBars = (
   achievementParams: AchievementResultsBarsProps,

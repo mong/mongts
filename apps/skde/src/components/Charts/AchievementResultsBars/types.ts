@@ -12,7 +12,7 @@ export type AchievementLevel = {
   level: 0 | 1 | 2 | -1;
 };
 
-export type DataPoint = {
+type DataPoint = {
   year: number;
   number: number;
 };
