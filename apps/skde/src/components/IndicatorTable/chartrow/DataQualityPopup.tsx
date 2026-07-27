@@ -149,6 +149,7 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
         <ContextCard
           title="Om datakvalitet"
           description={contextCardDescription}
+          updated="" //denne er required, men kan settes til blank
         />
       </Box>
       <DialogActions>
