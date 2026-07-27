@@ -35,7 +35,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "pnpm"
-
+      - run: pnpm config set //npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
       - run: pnpm install
 
       - name: Select API host (fallback if primary unhealthy)
