@@ -15,7 +15,6 @@ import { Suspense, useState } from "react";
 import { useQueryParam } from "use-query-params";
 import { defaultYear, mainQueryParamsConfig } from "../../../../src/app_config";
 import { MedicalFieldPopup } from "../../../../src/components/DialogBox/MedicalFieldPopup";
-import { TreatmentUnitPopup } from "../../../../src/components/DialogBox/TreatmentunitPopup";
 import { IndicatorTableV3 } from "../../../../src/components/IndicatorTable/IndicatortableV3";
 import { LayoutHead } from "../../../../src/components/LayoutHead";
 import {
@@ -23,6 +22,7 @@ import {
   getSortedList,
   updateColourMap,
 } from "../../../../src/helpers/functions/chartColours";
+import { TreatmentUnitPopupSingleSelect } from "../../DialogBox/TreatmentUnitPopupSingleSelect";
 import { ScrollToTop } from "../../scroll-to-top/scroll-to-top";
 
 export const TreatmentQualityPageV3 = () => {
@@ -146,7 +146,7 @@ export const TreatmentQualityPageV3 = () => {
                           Velg behandlingssted
                         </Button>
                       </div>
-                      <TreatmentUnitPopup
+                      <TreatmentUnitPopupSingleSelect
                         open={treatmentUnitPopupOpen}
                         setOpen={setTreatmentUnitPopupOpen}
                         onSubmit={setSelectedTreatmentUnits}

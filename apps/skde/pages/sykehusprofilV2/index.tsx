@@ -24,7 +24,7 @@ import { type JSX, Suspense, useEffect, useState } from "react";
 import type { NestedTreatmentUnitName, OptsTu } from "types";
 import { useQueryParam } from "use-query-params";
 import { mainQueryParamsConfig } from "../../src/app_config";
-import { TreatmentUnitPopup } from "../../src/components/DialogBox/TreatmentunitPopup";
+import { TreatmentUnitPopupSingleSelect } from "../../src/components/DialogBox/TreatmentUnitPopupSingleSelect";
 import { TopSummarySection } from "../../src/components/HospitalProfile";
 
 export const Skde = (): JSX.Element => {
@@ -136,7 +136,7 @@ export const Skde = (): JSX.Element => {
       >
         {/* Toolbar */}
         <div
-          className={`${hasLoadingError || isLoading ? "hidden" : "hidden md:flex"} bg-neutral-0 w-full align-middle justify-center px-6 md:px-12 sticky top-0 z-60 shadow-xs`}
+          className={`${hasLoadingError || isLoading ? "hidden" : "hidden md:flex"} truncate bg-neutral-0 w-full align-middle justify-center px-6 md:px-12 sticky top-0 z-60 shadow-xs`}
         >
           <div className="flex flex-col w-full h-full max-w-360">
             <Toolbar disableGutters={true}>
@@ -149,7 +149,7 @@ export const Skde = (): JSX.Element => {
                         Velg behandlingssted
                       </Button>
                     </div>
-                    <TreatmentUnitPopup
+                    <TreatmentUnitPopupSingleSelect
                       open={treatmentUnitPopupOpen}
                       setOpen={setTreatmentUnitPopupOpen}
                       onSubmit={setUnitName}
