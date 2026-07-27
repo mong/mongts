@@ -9,7 +9,6 @@ FROM base AS builder
 WORKDIR /app
 ENV CI=true
 
-COPY package.json .npmrc ./
 COPY apps/api ./apps/api
 COPY packages/types ./packages/types
 
