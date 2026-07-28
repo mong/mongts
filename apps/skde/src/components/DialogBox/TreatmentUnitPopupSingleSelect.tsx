@@ -114,6 +114,7 @@ export const TreatmentUnitPopupSingleSelect = (
             width: "100%",
             margin: "0px",
             paddingLeft: "20px",
+            paddingRight: "10px",
             background:
               highlightedRHF === rhf.rhf ? columnColour2 : columnColour1,
             display: "flex",
@@ -165,6 +166,7 @@ export const TreatmentUnitPopupSingleSelect = (
               width: "100%",
               margin: "0px",
               paddingLeft: "20px",
+              paddingRight: "10px",
               display: "flex",
               alignItems: "center",
               minWidth: 0,
@@ -206,6 +208,7 @@ export const TreatmentUnitPopupSingleSelect = (
             width: "100%",
             margin: "0px",
             paddingLeft: "20px",
+            paddingRight: "10px",
             background: highlightedHF === hf.hf ? columnColour3 : columnColour2,
             display: "flex",
             alignItems: "center",
@@ -344,7 +347,7 @@ export const TreatmentUnitPopupSingleSelect = (
               <div className="flex flex-1 min-h-0">
                 {/* Column 1: RHF */}
                 <div
-                  className={`flex ${columnScrollClass} ${highlightedHF ? "w-1/3" : "w-1/2"} bg-brand-primary-50 text-brand-primary-700 py-5 transition-all`}
+                  className={`flex  flex-col py-5 ${columnScrollClass} ${highlightedHF ? "w-1/3" : "w-1/2"} rounded-l-md bg-brand-primary-50 text-brand-primary-700 py-5 transition-all`}
                 >
                   {/* RHF Column */}
                   <FormControl sx={{ width: "100%" }}>
@@ -354,6 +357,7 @@ export const TreatmentUnitPopupSingleSelect = (
                       name="row-radio-buttons-group"
                       value={unitSelection[0] || ""}
                       onChange={handleRadioChange}
+                      sx={{ width: "100%", height: "100%" }}
                     >
                       {RHFCheckboxes?.map((row: JSX.Element) => row)}
                     </RadioGroup>
@@ -362,7 +366,7 @@ export const TreatmentUnitPopupSingleSelect = (
 
                 {/* Column 2: HF */}
                 <div
-                  className={`flex flex-1 ${columnScrollClass} bg-brand-primary-200 text-dark pt-5 ${highlightedHF ? "w-1/3" : "w-1/2"} transition-all`}
+                  className={`flex flex-col py-5 flex-1 ${columnScrollClass} bg-brand-primary-200 text-dark pt-5 ${highlightedHF ? "w-1/3" : "w-1/2"} transition-all`}
                 >
                   <h6
                     className={`${highlightedRHF || highlightedHF ? "hidden" : "flex pt-3.25 pl-5"} flex-1 grow text-center h-full flex-row font-regular`}
@@ -377,7 +381,7 @@ export const TreatmentUnitPopupSingleSelect = (
                       name="row-radio-buttons-group"
                       value={unitSelection[0] || ""}
                       onChange={handleRadioChange}
-                      sx={{ width: "100%" }}
+                      sx={{ width: "100%", height: "100%" }}
                     >
                       {HFCheckBoxes[highlightedRHF]?.map(
                         (row: JSX.Element) => row,
@@ -389,7 +393,7 @@ export const TreatmentUnitPopupSingleSelect = (
                 {/* Column 3: Hospital */}
                 {highlightedHF && (
                   <div
-                    className={`flex flex-1 ${columnScrollClass} bg-brand-primary-50 text-dark py-5 ${highlightedHF ? "w-1/3" : "w-1/2"} transition-all`}
+                    className={`flex flex-col py-5 pr-5 flex-1 ${columnScrollClass} bg-brand-primary-100 rounded-r-md text-dark ${highlightedHF ? "w-1/3" : "w-1/2"} transition-all`}
                   >
                     {/* Hospitals Column */}
                     <FormControl
@@ -405,9 +409,7 @@ export const TreatmentUnitPopupSingleSelect = (
                         onChange={handleRadioChange}
                         sx={{
                           width: "100%",
-                          backgroundColor: columnColour3,
-                          borderTopRightRadius: "var(--radius-8)",
-                          borderBottomRightRadius: "var(--radius-8)",
+                          height: "100%",
                         }}
                       >
                         {HospitalCheckBoxes[highlightedHF]?.map(
