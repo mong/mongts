@@ -313,21 +313,23 @@ export const TreatmentUnitPopupSingleSelect = (
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",
+            // paddingX: "var(--spacing-1)",
+            paddingY: "var(--spacing-3)",
           },
         },
       }}
     >
-      <div className="text-right pt-4 pr-4 text-brand-primary-400 truncate">
+      <div className="text-right pr-4 text-brand-primary-400 truncate">
         <IconButton onClick={handleClose} aria-label="Small Star">
           <Icon symbol="close" />
         </IconButton>
       </div>
-      <div className="flex flex-1 min-h-0 w-full flex-col p-6 pt-0">
+      <div className="flex flex-1 min-h-0 w-full flex-col px-8 pt-0 pb-4">
         <div className="flex flex-row justify-between text-brand-primary-700">
           <h4>Velg behandlingssted</h4>
         </div>
         <DialogContent
-          className="flex flex-col flex-1 min-h-0 px-0!"
+          className="flex flex-col flex-1 min-h-0 px-0! pt-4!"
           sx={{
             overflow: "hidden",
           }}
@@ -423,7 +425,7 @@ export const TreatmentUnitPopupSingleSelect = (
             </div>
           )}
         </DialogContent>
-        <DialogActions className="p-0!">
+        <DialogActions className="p-0! pt-2!">
           <Button
             variant="text"
             onClick={() => {
