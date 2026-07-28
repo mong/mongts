@@ -1,4 +1,4 @@
-import { LineChartPro, legendClasses } from "@mui/x-charts-pro";
+import { axisClasses, LineChartPro, legendClasses } from "@mui/x-charts-pro";
 import type { UseQueryResult } from "@tanstack/react-query";
 import _ from "lodash";
 import { level, minDG, useIndicatorQuery } from "qmongjs";
@@ -154,8 +154,7 @@ export const IndicatorLinechartV2 = (
   indicatorParams: IndicatorLinechartParamsV2,
 ) => {
   // Fetch aggregated data
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  const indicatorQuery: UseQueryResult<any, unknown> =
+  const indicatorQuery: UseQueryResult<Indicator[], unknown> =
     useIndicatorQuery(indicatorParams);
 
   if (indicatorQuery.isFetching) {
@@ -163,15 +162,23 @@ export const IndicatorLinechartV2 = (
   }
 
   // Set indicator colour from value and colour limits
-  const levels: IndicatorLevelsV2[] = indicatorQuery.data.map(
-    (row: Indicator) => {
-      const indicatorLevel =
-        // TODO: Do not allow null to go through
-        // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-        row.dg === null || row.dg >= minDG ? mapLevel(level(row)) : -1;
-      return { ind_id: row.ind_id, year: row.year, level: indicatorLevel };
-    },
-  );
+  const levels: IndicatorLevelsV2[] =
+    indicatorQuery.data
+      ?.map((row: Indicator) => {
+        const rowLevel = level(row);
+        const indicatorLevel =
+          row.dg !== null && row.dg >= minDG && rowLevel != null
+            ? mapLevel(rowLevel)
+            : -1;
+        return indicatorLevel !== -1
+          ? {
+              ind_id: row.ind_id,
+              year: row.year,
+              level: indicatorLevel as 0 | 1 | 2,
+            }
+          : null;
+      })
+      .filter((item): item is IndicatorLevelsV2 => item !== null) ?? [];
 
   // Remove duplicates due to registries under multiple medfields
   const uniqueLevels = levels.filter(
@@ -202,22 +209,44 @@ export const IndicatorLinechartV2 = (
 
   const legendValueFormatter = (value: number) => {
     const returnValue = normalise
-      ? // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-        Math.round(100 * value).toString() + " %"
+      ? `${Math.round(100 * value).toString()} %`
       : value.toString();
     return returnValue;
   };
 
   return (
     <LineChartPro
-      className="-ml-7"
-      margin={0}
+      className="-ml-8"
+      margin={{ top: 6, right: 30, bottom: 6, left: 6 }}
+      // Add gridlines
+      grid={{ horizontal: true }}
+      sx={{
+        "& .MuiChartsAxis-tickLabel": {
+          fill: "var(--text-dark)",
+        },
+        "& .MuiChartsAxis-root .MuiChartsAxis-line": {
+          stroke: "transparent",
+        },
+        "& .MuiChartsAxis-root .MuiChartsAxis-tick": {
+          stroke: "transparent",
+        },
+        // Move Y-axis labels away from axis line
+        "& .MuiChartsAxis-left .MuiChartsAxis-tickLabel": {
+          transform: "translateX(-8px)",
+        },
+        // Move X-axis labels away from axis line
+        "& .MuiChartsAxis-bottom .MuiChartsAxis-tickLabel": {
+          transform: "translateY(20px)",
+        },
+      }}
       slotProps={{
         legend: {
           position: { vertical: "top", horizontal: "start" },
           sx: {
-            paddingBottom: "32px",
+            color: "var(--text-dark)",
+            paddingBottom: "28px",
             marginLeft: "0px",
+            marginRight: "0px",
             fontSize: 14,
             [`.${legendClasses.mark}`]: {
               width: 20,
@@ -252,10 +281,9 @@ export const IndicatorLinechartV2 = (
         {
           scaleType: "point",
           data: chartData[1].map((row) => row.x),
-          tickLabelStyle: { fontSize: 16 },
-          labelStyle: { fontSize: 20 },
+          tickLabelStyle: { fontSize: 14 },
           valueFormatter: (value: number) => value.toString(),
-          height: 60,
+          height: 80,
         },
       ]}
       yAxis={[
@@ -263,7 +291,7 @@ export const IndicatorLinechartV2 = (
           width: 70,
           min: indicatorParams.yMin,
           max: indicatorParams.yMax,
-          tickLabelStyle: { fontSize: 16 },
+          tickLabelStyle: { fontSize: 14 },
           valueFormatter: (value: number) => {
             const returnValue = normalise
               ? `${Math.round(100 * value).toString()} %`

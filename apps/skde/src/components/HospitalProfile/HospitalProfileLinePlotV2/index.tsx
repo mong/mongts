@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { formatUnitNameIfNational } from "../../../helpers/functions/formatUnitNameIfNational";
 import {
   type IndicatorLinechartParamsV2,
   IndicatorLinechartV2,
 } from "../../Charts/IndicatorLinechartV2";
-import { ItemBox, lineChartTheme } from "../..//HospitalProfile";
 
 type HospitalProfileLinePlotProps = {
   unitFullName: string;
@@ -16,22 +14,20 @@ type HospitalProfileLinePlotProps = {
 export const HospitalProfileLinePlotV2 = (
   props: HospitalProfileLinePlotProps,
 ) => {
-  const { unitFullName, unitNames, lastYear, pastYears } = props;
+  const { unitNames, lastYear, pastYears } = props;
 
   // States
-  const [normalise, setNormalise] = useState<boolean>(true);
-  const [zoomIn, setZoomIn] = useState<boolean>(false);
+  const [normalise] = useState<boolean>(true);
 
   const indicatorParams: IndicatorLinechartParamsV2 = {
     unitNames: [unitNames],
     context: "caregiver",
     type: "ind",
     height: 455,
-    yAxisText: normalise ? "Andel" : "Antall indikatorer",
+    yAxisText: "",
     startYear: lastYear - pastYears,
     endYear: lastYear,
     yMin: 0,
-    yMax: normalise && !zoomIn ? 1 : undefined,
     normalise: normalise,
     useToolTip: true,
   };

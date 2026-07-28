@@ -48,7 +48,6 @@ export const TreatmentUnitPopupSingleSelect = (
     { nestedUnitNames: NestedTreatmentUnitName[] },
     unknown
   > = useUnitNamesQuery("all", context, type);
-
   // Sort nested unit names by RHF
   const unitNames = unitNamesQuery.data?.nestedUnitNames.sort(
     (a: NestedTreatmentUnitName, b: NestedTreatmentUnitName) => {
@@ -65,80 +64,50 @@ export const TreatmentUnitPopupSingleSelect = (
   // Map RHFs and return checkbox components //
   // ####################################### //
 
-  const RHFCheckboxes =
-    unitNames &&
-    (unitNames.map((rhf: NestedTreatmentUnitName) => {
-      // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      //   // Add RHF to the selection
-      //   if (event.target.checked) {
-      //     // May contain duplicates
-      //     const newRHFSelection = [...unitSelection, rhf.rhf];
-      //
-      //     setUnitSelection([...new Set(newRHFSelection)]);
-      //   } else {
-      //     const newRHFSelection = [...unitSelection].filter((row) => {
-      //       return row !== rhf.rhf;
-      //     });
-      //     setUnitSelection([...new Set(newRHFSelection)]);
-      //   }
-      // };
-
-      // // Check if at least one subunit is checked.
-      // // The RHF checkbox should then be indeterminate.
-      // const hfChecked = () => {
-      //   const selectedSet = new Set([...unitSelection]);
-      //   const hfSet = new Set(rhf.hf.map((el) => el.hf));
-      //   return selectedSet.intersection(hfSet).size > 0;
-      // };
-
-      // const hospitalsChecked = () => {
-      //   const selectedSet = new Set([...unitSelection]);
-      //   const hospitals = rhf.hf.flatMap((hf) => {
-      //     return hf.hospital;
-      //   });
-      //
-      //   const hospitalSet = new Set([...hospitals]);
-      //   return selectedSet.intersection(hospitalSet).size > 0;
-      // };
-
-      return (
-        <FormControlLabel
-          value={rhf.rhf}
-          label={rhf.rhf}
-          key={rhf.rhf}
-          onClick={() => {
-            setHighlightedRHF(rhf.rhf);
-            setHighlightedHF("");
-          }}
-          sx={{
-            width: "100%",
-            margin: "0px",
-            paddingLeft: "20px",
-            paddingRight: "10px",
-            background:
-              highlightedRHF === rhf.rhf ? columnColour2 : columnColour1,
-            display: "flex",
-            alignItems: "center",
-            minWidth: 0,
-            "& .MuiFormControlLabel-label": {
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-              flex: 1,
+  const RHFCheckboxes = (() => {
+    return (
+      unitNames &&
+      (unitNames.map((rhf: NestedTreatmentUnitName) => {
+        return (
+          <FormControlLabel
+            value={rhf.rhf}
+            label={rhf.rhf}
+            key={rhf.rhf}
+            onClick={() => {
+              setHighlightedRHF(rhf.rhf);
+              setHighlightedHF("");
+            }}
+            sx={{
+              width: "100%",
+              margin: "0px",
+              paddingLeft: "20px",
+              paddingRight: "10px",
+              background:
+                highlightedRHF === rhf.rhf ? columnColour2 : columnColour1,
+              display: "flex",
+              alignItems: "center",
               minWidth: 0,
-            },
-          }}
-          control={
-            <Radio
-              sx={{
-                color: "var(--brand-primary-400)",
-                flexShrink: 0,
-              }}
-            />
-          }
-        />
-      );
-    }) as JSX.Element[]);
+              "& .MuiFormControlLabel-label": {
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+                flex: 1,
+                minWidth: 0,
+              },
+            }}
+            control={
+              <Radio
+                sx={{
+                  color: "var(--brand-primary-400)",
+                  flexShrink: 0,
+                }}
+              />
+            }
+          />
+        );
+      }) as JSX.Element[])
+    );
+  })();
 
   // #################################################### //
   // Map HFs and hospitals and return checkbox components //
@@ -313,7 +282,6 @@ export const TreatmentUnitPopupSingleSelect = (
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",
-            // paddingX: "var(--spacing-1)",
             paddingY: "var(--spacing-3)",
           },
         },

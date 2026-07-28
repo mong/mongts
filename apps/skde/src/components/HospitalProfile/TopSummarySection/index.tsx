@@ -72,7 +72,11 @@ const TrendAnalysisCard = ({
 }: TrendAnalysisCardProps) => {
   return (
     <>
-      <Box rounded={false} padded={false} className="rounded-lg p-10 h-159">
+      <Box
+        rounded={false}
+        padded={false}
+        className="rounded-lg py-10 pl-12 pr-0 h-159"
+      >
         <HospitalProfileLinePlotV2
           unitFullName={unitFullName}
           unitNames={unitName}
