@@ -1,14 +1,12 @@
+import { Button, Icon, IconButton } from "@mong/material-ui";
 import {
   Box,
-  Button,
   Checkbox,
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
   FormControl,
   FormControlLabel,
-  Grid,
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { mainQueryParamsConfig, useUnitNamesQuery } from "qmongjs";
@@ -19,14 +17,7 @@ import { getTreatmentUnitsTree } from "../FilterMenu/TreatmentQualityFilterMenu/
 import { getFilterSettingsValuesMap } from "../FilterMenu/TreeViewFilterSection";
 import TreeViewSearchBox from "../FilterMenu/TreeViewSearchBox";
 import { LoadingComponent } from "../Placeholders/LoadingComponent/LoadingComponent";
-import {
-  borderRadius,
-  columnColour1,
-  columnColour2,
-  columnColour3,
-  marginTop,
-  rippleOffset,
-} from "./styles";
+import { columnColour1, columnColour2, columnColour3 } from "./styles";
 
 type TreatmentUnitPopupProps = {
   open: boolean;
@@ -110,14 +101,27 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
         <FormControlLabel
           label={rhf.rhf}
           key={rhf.rhf}
-          onMouseEnter={() => {
+          onClick={() => {
             setHighlightedRHF(rhf.rhf);
             setHighlightedHF("");
           }}
           sx={{
             width: "100%",
+            margin: "0px",
+            paddingLeft: "20px",
+            paddingRight: "10px",
             background:
               highlightedRHF === rhf.rhf ? columnColour2 : columnColour1,
+            display: "flex",
+            alignItems: "center",
+            minWidth: 0,
+            "& .MuiFormControlLabel-label": {
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+              flex: 1,
+              minWidth: 0,
+            },
           }}
           control={
             <Checkbox
@@ -128,6 +132,10 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
               }
               onChange={handleChange}
               key={`${rhf.rhf}_checkbox`}
+              sx={{
+                color: "var(--brand-primary-400)",
+                flexShrink: 0,
+              }}
             />
           }
         />
@@ -138,8 +146,8 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   // Map HFs and hospitals and return checkbox components //
   // #################################################### //
 
-  const HFCheckBoxes = {};
-  const HospitalCheckBoxes = {};
+  const HFCheckBoxes: Record<string, JSX.Element[]> = {};
+  const HospitalCheckBoxes: Record<string, JSX.Element[]> = {};
 
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   unitNames &&
@@ -173,12 +181,32 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
             <FormControlLabel
               label={hospital}
               key={hospital}
-              sx={{ width: "100%", background: columnColour3 }}
+              sx={{
+                width: "100%",
+                margin: "0px",
+                paddingLeft: "20px",
+                paddingRight: "10px",
+                background: columnColour3,
+                display: "flex",
+                alignItems: "center",
+                minWidth: 0,
+                "& .MuiFormControlLabel-label": {
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  flex: 1,
+                  minWidth: 0,
+                },
+              }}
               control={
                 <Checkbox
                   checked={unitSelection.includes(hospital)}
                   onChange={handleChange}
                   key={`${hospital}_checkbox`}
+                  sx={{
+                    color: "var(--brand-primary-400)",
+                    flexShrink: 0,
+                  }}
                 />
               }
             />
@@ -218,13 +246,26 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           <FormControlLabel
             label={hf.hf}
             key={hf.hf}
-            onMouseEnter={() => {
+            onClick={() => {
               setHighlightedHF(hf.hf);
             }}
             sx={{
               width: "100%",
+              margin: "0px",
+              paddingLeft: "20px",
+              paddingRight: "10px",
               background:
                 highlightedHF === hf.hf ? columnColour3 : columnColour2,
+              display: "flex",
+              alignItems: "center",
+              minWidth: 0,
+              "& .MuiFormControlLabel-label": {
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+                flex: 1,
+                minWidth: 0,
+              },
             }}
             control={
               <Checkbox
@@ -234,6 +275,10 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                 }
                 onChange={handleChange}
                 key={`${hf.hf}_checkbox`}
+                sx={{
+                  color: "var(--brand-primary-400)",
+                  flexShrink: 0,
+                }}
               />
             }
           />
@@ -245,108 +290,130 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const handleClose = () => {
     setOpen(false);
     setHighlightedRHF("");
+    setHighlightedHF("");
   };
 
   const handleSubmit = () => {
     onSubmit(unitSelection);
     setOpen(false);
     setHighlightedRHF("");
+    setHighlightedHF("");
   };
 
   const handleSearch = (itemId: string[]) => {
     const newUnitSelection = [...unitSelection, ...itemId];
-    setUnitSelection([...newUnitSelection]);
+    setUnitSelection([...new Set(newUnitSelection)]);
   };
 
+  const handleClear = () => {
+    setHighlightedRHF("");
+    setHighlightedHF("");
+    setUnitSelection(["Nasjonalt"]);
+  };
+
+  const selectedCount = Math.max(
+    0,
+    unitSelection.filter((unit) => unit !== "Nasjonalt").length,
+  );
+
+  const columnScrollClass =
+    "min-h-0 overflow-y-auto [scrollbar-width:thin] [scrollbar-color:var(--brand-primary-300)_transparent] [scrollbar-gutter:stable] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-brand-primary-300 hover:[&::-webkit-scrollbar-thumb]:bg-brand-primary-400";
+
   return (
-    <Dialog open={open} fullWidth={true} maxWidth={"lg"}>
-      <DialogTitle>Velg behandlingsenheter</DialogTitle>
-      <DialogContent
-        sx={{ height: 600 }}
-        onMouseLeave={() => {
-          setHighlightedRHF("");
-          setHighlightedHF("");
-        }}
-      >
-        {unitNamesQuery.isFetching ? (
-          LoadingComponent
-        ) : (
-          <div>
-            <Box marginTop={2} marginBottom={2}>
-              <TreeViewSearchBox
-                options={Array.from(treatmentUnitsValueMap.values())}
-                onSearch={handleSearch}
-              />
-            </Box>
-            <Grid container height="100%">
-              <Grid size={4}>
-                <Box
-                  sx={{
-                    background: columnColour1,
-                    height: "100%",
-                    paddingLeft: `${rippleOffset}px`,
-                    borderTopLeftRadius: borderRadius,
-                    borderBottomLeftRadius: borderRadius,
-                  }}
+    <Dialog
+      open={open}
+      fullWidth
+      scroll="paper"
+      slotProps={{
+        paper: {
+          sx: {
+            maxWidth: "80dvh",
+            height: "50dvh",
+            maxHeight: "80dvh",
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+            paddingY: "var(--spacing-3)",
+          },
+        },
+      }}
+    >
+      <div className="text-right pr-4 text-brand-primary-400 truncate">
+        <IconButton onClick={handleClose} aria-label="Lukk popup">
+          <Icon symbol="close" />
+        </IconButton>
+      </div>
+      <div className="flex flex-1 min-h-0 w-full flex-col px-8 pt-0 pb-4">
+        <div className="flex flex-row justify-between text-brand-primary-700">
+          <h4>Velg behandlingsenheter</h4>
+        </div>
+        <DialogContent
+          className="flex flex-col flex-1 min-h-0 px-0! pt-4!"
+          sx={{ overflow: "hidden" }}
+        >
+          {unitNamesQuery.isFetching ? (
+            LoadingComponent
+          ) : (
+            <div className="flex flex-1 min-h-0 flex-col">
+              <Box marginTop={0} marginBottom={0} className="pb-6">
+                <div className="text-sm font-semibold pb-2">Søk</div>
+                <TreeViewSearchBox
+                  options={Array.from(treatmentUnitsValueMap.values())}
+                  onSearch={handleSearch}
+                  size="small"
+                />
+              </Box>
+              <div className="flex flex-1 min-h-0">
+                <div
+                  className={`flex flex-col py-5 ${columnScrollClass} ${highlightedHF ? "w-1/3" : "w-1/2"} rounded-l-md text-brand-primary-700 transition-all`}
+                  style={{ background: columnColour1 }}
                 >
-                  <FormControl sx={{ width: "100%", marginTop: marginTop }}>
+                  <FormControl sx={{ width: "100%" }}>
                     {RHFCheckboxes?.map((row: JSX.Element) => row)}
                   </FormControl>
-                </Box>
-              </Grid>
-              <Grid size={4}>
-                <Box
-                  sx={{
-                    background: highlightedRHF && columnColour2,
-                    height: "100%",
-                    marginLeft: `-${rippleOffset}px`,
-                  }}
+                </div>
+
+                <div
+                  className={`flex flex-col py-5 flex-1 ${columnScrollClass} text-dark transition-all ${highlightedHF ? "w-1/3" : "w-1/2"}`}
+                  style={{ background: columnColour2 }}
                 >
-                  <FormControl
-                    sx={{
-                      width: "100%",
-                      marginLeft: `${rippleOffset}px`,
-                      marginTop: marginTop,
-                    }}
+                  <h6
+                    className={`${highlightedRHF || highlightedHF ? "hidden" : "flex pt-3.25 pl-5"} flex-1 grow text-center h-full flex-row font-regular`}
                   >
+                    Velg et behandlingssted på venstre side
+                  </h6>
+                  <FormControl sx={{ width: "100%" }}>
                     {HFCheckBoxes[highlightedRHF]?.map(
                       (row: JSX.Element) => row,
                     )}
                   </FormControl>
-                </Box>
-              </Grid>
-              <Grid size={4}>
-                <Box
-                  sx={{
-                    background: highlightedHF && columnColour3,
-                    height: "100%",
-                    borderTopRightRadius: borderRadius,
-                    borderBottomRightRadius: borderRadius,
-                  }}
-                >
-                  <FormControl
-                    sx={{
-                      width: "100%",
-                      marginLeft: `${rippleOffset}px`,
-                      marginTop: marginTop,
-                    }}
+                </div>
+
+                {highlightedHF && (
+                  <div
+                    className={`flex flex-col py-5 pr-5 flex-1 ${columnScrollClass} rounded-r-md text-dark w-1/3 transition-all`}
+                    style={{ background: columnColour3 }}
                   >
-                    {HospitalCheckBoxes[highlightedHF]?.map(
-                      (row: JSX.Element) => row,
-                    )}
-                  </FormControl>
-                </Box>
-              </Grid>
-            </Grid>
-          </div>
-        )}
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>Avbryt</Button>
-        <Button
-          onClick={handleSubmit}
-        >{`OK·(${unitSelection.length - 1})`}</Button>
-      </DialogActions>
+                    <FormControl sx={{ width: "100%" }}>
+                      {HospitalCheckBoxes[highlightedHF]?.map(
+                        (row: JSX.Element) => row,
+                      )}
+                    </FormControl>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </DialogContent>
+        <DialogActions className="p-0! pt-2!">
+          <Button variant="text" onClick={handleClear}>
+            Tøm filter
+          </Button>
+          <Button
+            onClick={handleSubmit}
+          >{`Vis resultat (${selectedCount})`}</Button>
+        </DialogActions>
+      </div>
     </Dialog>
   );
 };
