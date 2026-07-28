@@ -23,6 +23,7 @@ import {
   updateColourMap,
 } from "../../../../src/helpers/functions/chartColours";
 import { TreatmentUnitPopupSingleSelect } from "../../DialogBox/TreatmentUnitPopupSingleSelect";
+import { TreatmentUnitPopup } from "../../DialogBox/TreatmentunitPopup";
 import { ScrollToTop } from "../../scroll-to-top/scroll-to-top";
 
 export const TreatmentQualityPageV3 = () => {
@@ -146,7 +147,7 @@ export const TreatmentQualityPageV3 = () => {
                           Velg behandlingssted
                         </Button>
                       </div>
-                      <TreatmentUnitPopupSingleSelect
+                      <TreatmentUnitPopup
                         open={treatmentUnitPopupOpen}
                         setOpen={setTreatmentUnitPopupOpen}
                         onSubmit={setSelectedTreatmentUnits}

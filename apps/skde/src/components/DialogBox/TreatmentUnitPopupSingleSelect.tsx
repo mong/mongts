@@ -1,14 +1,10 @@
 import { Box, Button, Icon, IconButton } from "@mong/material-ui";
 import {
-  // Box,
-  Checkbox,
   Dialog,
   DialogActions,
   DialogContent,
-  DialogTitle,
   FormControl,
   FormControlLabel,
-  Grid,
   Radio,
   RadioGroup,
 } from "@mui/material";
@@ -160,20 +156,6 @@ export const TreatmentUnitPopupSingleSelect = (
     // ######################### //
     hfs.forEach((hf) => {
       const CheckBoxes = hf.hospital.map((hospital) => {
-        // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        //   if (event.target.checked) {
-        //     const newUnitSelection = [...unitSelection, hospital];
-        //     setUnitSelection([...newUnitSelection]);
-        //   } else {
-        //     const newUnitSelection = [
-        //       ...unitSelection.filter((row) => {
-        //         return row !== hospital;
-        //       }),
-        //     ];
-        //     setUnitSelection(newUnitSelection);
-        //   }
-        // };
-
         return (
           <FormControlLabel
             label={hospital}
@@ -212,28 +194,6 @@ export const TreatmentUnitPopupSingleSelect = (
     // ##### Map HFs ##### ∕∕
     // ################### //
     const CheckBoxes = hfs.map((hf) => {
-      // const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      //   if (event.target.checked) {
-      //     const newHFSelection = [...unitSelection, hf.hf];
-      //     setUnitSelection([...newHFSelection]);
-      //   } else {
-      //     const newHFSelection = [
-      //       ...unitSelection.filter((row) => {
-      //         return row !== hf.hf;
-      //       }),
-      //     ];
-      //     setUnitSelection(newHFSelection);
-      //   }
-      // };
-
-      // // Check if at least one hospital is checked.
-      // // The correspinding HF checkbox should then be indeterminate.
-      // const hospitalChecked = () => {
-      //   const selectedSet = new Set([...unitSelection]);
-      //   const hospitalSet = new Set([...hf.hospital]);
-      //   return selectedSet.intersection(hospitalSet).size > 0;
-      // };
-
       return (
         <FormControlLabel
           label={hf.hf}
@@ -285,13 +245,15 @@ export const TreatmentUnitPopupSingleSelect = (
   };
 
   const handleSearch = (itemId: string[]) => {
-    const newUnitSelection = [...unitSelection, ...itemId];
     setUnitSelection([itemId[0]]);
   };
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUnitSelection([event.target.value]);
   };
+
+  const columnScrollClass =
+    "min-h-0 overflow-y-auto [scrollbar-width:thin] [scrollbar-color:var(--brand-primary-300)_transparent] [scrollbar-gutter:stable] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-brand-primary-300 hover:[&::-webkit-scrollbar-thumb]:bg-brand-primary-400";
 
   // Restore highlights when dialog opens with existing selection
   React.useEffect(() => {
@@ -338,12 +300,16 @@ export const TreatmentUnitPopupSingleSelect = (
     <Dialog
       open={open}
       fullWidth
-      scroll="body"
-      sx={{
-        "& .MuiDialog-container": {
-          "& .MuiPaper-root": {
-            width: "100%",
-            maxWidth: "780px", // Set your custom width here
+      scroll="paper"
+      slotProps={{
+        paper: {
+          sx: {
+            maxWidth: "80dvh", // Set your custom width here
+            height: "50dvh", // Set fixed dialog height
+            maxHeight: "80dvh", // Keep bounded to viewport
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
           },
         },
       }}
@@ -353,22 +319,20 @@ export const TreatmentUnitPopupSingleSelect = (
           <Icon symbol="close" />
         </IconButton>
       </div>
-      <div className="flex flex-1 w-full flex-col p-6 pt-0">
+      <div className="flex flex-1 min-h-0 w-full flex-col p-6 pt-0">
         <div className="flex flex-row justify-between text-brand-primary-700">
           <h4>Velg behandlingssted</h4>
         </div>
         <DialogContent
-          className="flex flex-col h-auto flex-1 px-0!"
-          // sx={{ height: "auto", maxHeight: "600px" }}
-          // onMouseLeave={() => {
-          //   setHighlightedRHF("");
-          //   setHighlightedHF("");
-          // }}
+          className="flex flex-col flex-1 min-h-0 px-0!"
+          sx={{
+            overflow: "hidden",
+          }}
         >
           {unitNamesQuery.isFetching ? (
             LoadingComponent
           ) : (
-            <div>
+            <div className="flex flex-1 min-h-0 flex-col">
               <Box padded={false} color="transparent" className="pb-6">
                 <div className="text-sm font-semibold pb-2">Søk</div>
                 <TreeViewSearchBox
@@ -377,10 +341,10 @@ export const TreatmentUnitPopupSingleSelect = (
                   onSearch={handleSearch}
                 />
               </Box>
-              <div className="flex">
+              <div className="flex flex-1 min-h-0">
                 {/* Column 1: RHF */}
                 <div
-                  className={`flex ${highlightedHF ? "w-1/3" : "w-1/2"} bg-brand-primary-50 text-brand-primary-700 py-5 transition-all`}
+                  className={`flex ${columnScrollClass} ${highlightedHF ? "w-1/3" : "w-1/2"} bg-brand-primary-50 text-brand-primary-700 py-5 transition-all`}
                 >
                   {/* RHF Column */}
                   <FormControl sx={{ width: "100%" }}>
@@ -398,7 +362,7 @@ export const TreatmentUnitPopupSingleSelect = (
 
                 {/* Column 2: HF */}
                 <div
-                  className={`flex flex-1 bg-brand-primary-200 text-dark pt-5 ${highlightedHF ? "w-1/3" : "w-1/2"} transition-all`}
+                  className={`flex flex-1 ${columnScrollClass} bg-brand-primary-200 text-dark pt-5 ${highlightedHF ? "w-1/3" : "w-1/2"} transition-all`}
                 >
                   <h6
                     className={`${highlightedRHF || highlightedHF ? "hidden" : "flex pt-3.25 pl-5"} flex-1 grow text-center h-full flex-row font-regular`}
@@ -406,18 +370,14 @@ export const TreatmentUnitPopupSingleSelect = (
                     Velg et behandlingssted på venstre side
                   </h6>
 
-                  <FormControl>
+                  <FormControl sx={{ width: "100%" }}>
                     <RadioGroup
                       aria-labelledby={`HF-label`}
                       aria-label="HF"
                       name="row-radio-buttons-group"
                       value={unitSelection[0] || ""}
                       onChange={handleRadioChange}
-                      sx={{
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                        whiteSpace: "nowrap",
-                      }}
+                      sx={{ width: "100%" }}
                     >
                       {HFCheckBoxes[highlightedRHF]?.map(
                         (row: JSX.Element) => row,
@@ -429,7 +389,7 @@ export const TreatmentUnitPopupSingleSelect = (
                 {/* Column 3: Hospital */}
                 {highlightedHF && (
                   <div
-                    className={`flex flex-1 bg-brand-primary-50 text-dark py-5 ${highlightedHF ? "w-1/3" : "w-1/2"} transition-all`}
+                    className={`flex flex-1 ${columnScrollClass} bg-brand-primary-50 text-dark py-5 ${highlightedHF ? "w-1/3" : "w-1/2"} transition-all`}
                   >
                     {/* Hospitals Column */}
                     <FormControl
@@ -445,9 +405,6 @@ export const TreatmentUnitPopupSingleSelect = (
                         onChange={handleRadioChange}
                         sx={{
                           width: "100%",
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                          whiteSpace: "nowrap",
                           backgroundColor: columnColour3,
                           borderTopRightRadius: "var(--radius-8)",
                           borderBottomRightRadius: "var(--radius-8)",
