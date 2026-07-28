@@ -155,7 +155,6 @@ export const Skde = (): JSX.Element => {
                       onSubmit={setUnitName}
                       context={treatmentUnitContext}
                       type={"ind"}
-                      selectionType="single"
                     />
                     <div className="flex flex-col text-small font-semibold text-brand-primary-900">
                       Vis
