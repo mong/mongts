@@ -249,12 +249,18 @@ export const Skde = (): JSX.Element => {
                     </Button>
                   </Box>
                 ) : !isValidUnit ? (
-                  <>
-                    <h3>"{selectedUnit}" Er ikke et gyldig behandlingssted</h3>
+                  <Box
+                    border
+                    className={`${emptyStateClassName} hidden md:flex flex-col justify-center`}
+                  >
+                    <h3 className="text-center">
+                      {selectedUnit} har ingen data eller ikke et gyldig
+                      behandlingssted.
+                    </h3>
                     <Button onClick={openTreatmentUnitPopup}>
-                      Velg behandlingssted
+                      Velg et annet behandlingssted
                     </Button>
-                  </>
+                  </Box>
                 ) : (
                   <>
                     <TopSummarySection

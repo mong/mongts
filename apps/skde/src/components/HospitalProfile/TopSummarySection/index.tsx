@@ -123,7 +123,7 @@ export const TopSummarySection = ({
             endYear={lastYear}
           />
           <AchievementSummaryCard
-            title="Måloppnåelse 2021-2023"
+            title={`Måloppnåelse ${lastYear - 3} - ${lastYear - 1}`}
             unitName={unitName}
             startYear={lastYear - 3}
             endYear={lastYear - 1}

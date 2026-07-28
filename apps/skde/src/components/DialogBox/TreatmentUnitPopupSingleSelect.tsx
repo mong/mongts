@@ -380,7 +380,7 @@ export const TreatmentUnitPopupSingleSelect = (
               <div className="flex">
                 {/* Column 1: RHF */}
                 <div
-                  className={`flex ${highlightedHF ? "w-1/3" : "w-1/2"} bg-brand-primary-50 text-brand-primary-700 py-5 border transition-all`}
+                  className={`flex ${highlightedHF ? "w-1/3" : "w-1/2"} bg-brand-primary-50 text-brand-primary-700 py-5 transition-all`}
                 >
                   {/* RHF Column */}
                   <FormControl sx={{ width: "100%" }}>
@@ -398,7 +398,7 @@ export const TreatmentUnitPopupSingleSelect = (
 
                 {/* Column 2: HF */}
                 <div
-                  className={`flex flex-1 bg-brand-primary-200 text-dark pt-5 border ${highlightedHF ? "w-1/3" : "w-1/2"} transition-all`}
+                  className={`flex flex-1 bg-brand-primary-200 text-dark pt-5 ${highlightedHF ? "w-1/3" : "w-1/2"} transition-all`}
                 >
                   <h6
                     className={`${highlightedRHF || highlightedHF ? "hidden" : "flex pt-3.25 pl-5"} flex-1 grow text-center h-full flex-row font-regular`}
@@ -428,7 +428,9 @@ export const TreatmentUnitPopupSingleSelect = (
 
                 {/* Column 3: Hospital */}
                 {highlightedHF && (
-                  <div className={`flex h-full w-1/3 transition-all`}>
+                  <div
+                    className={`flex flex-1 bg-brand-primary-50 text-dark pt-5 ${highlightedHF ? "w-1/3" : "w-1/2"} transition-all`}
+                  >
                     {/* Hospitals Column */}
                     <FormControl
                       sx={{

@@ -266,8 +266,7 @@ export const IndicatorLinechartV2 = (
           tickLabelStyle: { fontSize: 16 },
           valueFormatter: (value: number) => {
             const returnValue = normalise
-              ? // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-                Math.round(100 * value).toString() + " %"
+              ? `${Math.round(100 * value).toString()} %`
               : value.toString();
             return returnValue;
           },
