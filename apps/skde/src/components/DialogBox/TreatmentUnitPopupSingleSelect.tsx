@@ -286,7 +286,7 @@ export const TreatmentUnitPopupSingleSelect = (
 
   const handleSearch = (itemId: string[]) => {
     const newUnitSelection = [...unitSelection, ...itemId];
-    setUnitSelection([...newUnitSelection]);
+    setUnitSelection([itemId[0]]);
   };
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -429,7 +429,7 @@ export const TreatmentUnitPopupSingleSelect = (
                 {/* Column 3: Hospital */}
                 {highlightedHF && (
                   <div
-                    className={`flex flex-1 bg-brand-primary-50 text-dark pt-5 ${highlightedHF ? "w-1/3" : "w-1/2"} transition-all`}
+                    className={`flex flex-1 bg-brand-primary-50 text-dark py-5 ${highlightedHF ? "w-1/3" : "w-1/2"} transition-all`}
                   >
                     {/* Hospitals Column */}
                     <FormControl
