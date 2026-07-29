@@ -156,7 +156,7 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
                   })) as FilterSettingsValue[]
                 }
                 sectionid={treatmentUnitsKey}
-                sectiontitle={"Behandlingsenheter"}
+                sectiontitle={"Behandlingssteder"}
                 filterkey={treatmentUnitsKey}
                 searchbox={true}
                 multiselect={false}

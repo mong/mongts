@@ -1,5 +1,9 @@
-import { RegisterAccordion, type RenderRegisterProps } from "@mong/material-ui";
-import { Box, Typography } from "@mui/material";
+import {
+  HeroBanner,
+  RegisterAccordion,
+  type RenderRegisterProps,
+  RotateDevice,
+} from "@mong/material-ui";
 import { customFormat, level2 } from "qmongjs";
 import type { JSX } from "react";
 import type { DataPoint, IndicatorData, RegisterData } from "types";
@@ -77,9 +81,11 @@ const reshapeData = (
 
           return {
             chart: (
-              <Box key={`testbox-${registry.registerName}`}>
-                <Typography>Innhold kommer</Typography>
-              </Box>
+              <HeroBanner
+                title="Innhold kommer"
+                description="denne blir erstattet med en chart"
+                image="/hero-bg-4.jpg"
+              />
             ) as JSX.Element,
             indicatorTarget:
               levelTarget !== undefined ? levelDirectionSign + levelTarget : "",
@@ -126,19 +132,28 @@ const fillMissingUnitnames = (
 ) => {
   for (let i = 0; i < data.length; i++) {
     for (let j = 0; j < data[i].indicators.length; j++) {
-      const missingTreatmentUnits = unitNames.filter(
-        (unitName) =>
-          !data[i].indicators[j].treatmentUnitResults
-            .map((row) => row.unitName)
-            .includes(unitName),
-      );
-      const missingResidentAreas = unitNames.filter(
-        (unitName) =>
-          !data[i].indicators[j].residentsAreaResults
-            ?.map((row) => row.unitName)
-            .includes(unitName),
-      );
+      const hasTreatmentUnitResults =
+        (data[i].indicators[j].treatmentUnitResults?.length ?? 0) > 0;
+      const hasResidentAreaResults =
+        (data[i].indicators[j].residentsAreaResults?.length ?? 0) > 0;
 
+      const missingTreatmentUnits = hasTreatmentUnitResults
+        ? unitNames.filter(
+            (unitName) =>
+              !data[i].indicators[j].treatmentUnitResults
+                .map((row) => row.unitName)
+                .includes(unitName),
+          )
+        : [];
+      const missingResidentAreas = hasResidentAreaResults
+        ? unitNames.filter(
+            (unitName) =>
+              !data[i].indicators[j].residentsAreaResults
+                ?.map((row) => row.unitName)
+                .includes(unitName),
+          )
+        : [];
+      // console.log("data[i]", data[i].indicators[j].treatmentUnitResults.length);
       missingTreatmentUnits.forEach((unitName) => {
         if (unitName === "Nasjonalt") {
           data[i].indicators[j].treatmentUnitResults.push({
@@ -157,10 +172,10 @@ const fillMissingUnitnames = (
           });
         }
       });
-
       missingResidentAreas.forEach((residentArea) => {
         if (residentArea === "Nasjonalt") {
           data[i].indicators[j].residentsAreaResults?.push({
+            displayHeaderAs: "text",
             result: "Ingen data",
             resultLevel: "low" as "low" | "medium" | "high", // Placeholder value
             resultSubtitle: "",
@@ -187,13 +202,18 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
   );
 
   const reshapedData = reshapeData(medfieldFilteredData, unitNames, year);
-
   fillMissingUnitnames(reshapedData, unitNames);
-
   return (
-    <RegisterAccordion
-      registries={reshapedData}
-      smallScreenMessage="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din."
-    />
+    <div className="w-full max-w-360">
+      <div className="flex md:hidden flex-col gap-(--spacing-4) p-8 text-brand-primary-600">
+        <RotateDevice message="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din." />
+      </div>
+      <div className="hidden md:flex flex-col w-full justify-between">
+        <RegisterAccordion
+          registries={reshapedData}
+          smallScreenMessage="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din."
+        />
+      </div>
+    </div>
   );
 };

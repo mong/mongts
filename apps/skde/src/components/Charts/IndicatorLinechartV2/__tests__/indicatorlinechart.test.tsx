@@ -1,5 +1,9 @@
 import { expect, test, vi } from "vitest";
-import { countLevels, type IndicatorLevels, setMissingToZero } from "../index";
+import {
+  countLevels,
+  type IndicatorLevelsV2,
+  setMissingToZero,
+} from "../index";
 import { levelData } from "./data";
 
 type LinechartData = {
@@ -47,7 +51,7 @@ test("Levels counts are correct", async () => {
     ] as LinechartData[],
   ];
 
-  const groupedLevels = countLevels(levelData as IndicatorLevels[]);
+  const groupedLevels = countLevels(levelData as IndicatorLevelsV2[]);
   expect(groupedLevels).toEqual(expectedGroupedLevels);
 
   const chartData = setMissingToZero(groupedLevels, 2018, 2020);

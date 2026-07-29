@@ -1,5 +1,5 @@
-import { Button, Dropdown, Icon, SplitButton } from "@mong/material-ui";
-import { Box, type SelectChangeEvent, Stack } from "@mui/material";
+import { Box, Button, Dropdown, Icon, SplitButton } from "@mong/material-ui";
+import type { SelectChangeEvent } from "@mui/material";
 import { useChartProApiRef } from "@mui/x-charts-pro";
 import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
 import { useState } from "react";
@@ -137,15 +137,9 @@ export const ChartRow = (props: ChartRowProps) => {
 
   return (
     <Box>
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="end"
-        sx={{ paddingLeft: 7, paddingRight: 7 }}
-        width="100%"
-      >
-        <Stack direction="row" alignItems="end" spacing={1}>
-          <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+      <div className="flex flex-row justify-between items-end w-full">
+        <div className="flex flex-row items-end gap-2">
+          <div className="pl-10 flex flex-col text-small font-semibold text-brand-primary-900">
             Årstall
             <Dropdown
               value={figureType}
@@ -155,7 +149,7 @@ export const ChartRow = (props: ChartRowProps) => {
           </div>
           {figureType === "bar" && (
             <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-              Behandlingsenheter
+              Behandlingssteder
               <Dropdown
                 value={barChartType}
                 onChange={handleBarChartTypeChange}
@@ -194,79 +188,65 @@ export const ChartRow = (props: ChartRowProps) => {
             registryName={registryName}
             dataQualityIndId={data.dataQualityIndicatorID}
           />
-        </Stack>
-        {showDGButton && (
-          <SplitButton
-            label="Last ned"
-            onClick={() => {
-              const apiRef =
-                figureType === "line" ? lineChartApiRef : barChartApiRef;
-              // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-              apiRef.current!.exportAsImage({
-                onBeforeExport: makeOnBeforeExport(
-                  data.indicatorTitle || "",
-                  registryName,
-                ),
-              });
-            }}
-            options={["Last ned som bilde"]}
-            steps="one-step"
-          />
-        )}
-      </Stack>
-      <Box
-        sx={{
-          paddingTop: 4,
-          width: "100%",
-          height: "100%",
-          overflow: "auto",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        {/* biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future */}
-        {figureType == "line" ? (
-          <MuiLineChart
-            data={data}
-            figureHeight={figureHeight}
-            lineData={lineData}
-            uniqueYears={uniqueYears}
-            percentage={percentage}
-            valueAxisFormatter={valueAxisFormatter}
-            lastAffirmYear={lastAffirmYear}
-            zoom={zoom}
-            apiRef={lineChartApiRef}
-            tickFontSize={14}
-          />
-        ) : figureType === "bar" ? (
-          <Box width={"100%"}>
-            <Box mt={-4}>
-              <MuiBarChart
-                data={data}
-                figureSpacingFactor={30}
-                figureSpacingConstant={2.2}
-                backgroundMargin={backgroundMargin}
-                unitNames={unitNames}
-                percentage={percentage}
-                barChartType={barChartType}
-                dataFormat={dataFormat}
-                valueAxisFormatter={valueAxisFormatter}
-                treatmentUnitsByLevel={treatmentUnitsByLevel}
-                context={context}
-                type={type}
-                medfield={medfield}
-                year={year}
-                indID={indID}
-                tickFontSize={14}
-                yAxisWidth={160}
-                zoom={zoom}
-                apiRef={barChartApiRef}
-              />
-            </Box>
-          </Box>
-        ) : null}
-      </Box>
+        </div>
+        <div className="pr-5">
+          {showDGButton && (
+            <SplitButton
+              label="Last ned"
+              onClick={() => {
+                const apiRef =
+                  figureType === "line" ? lineChartApiRef : barChartApiRef;
+                // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+                apiRef.current!.exportAsImage({
+                  onBeforeExport: makeOnBeforeExport(
+                    data.indicatorTitle || "",
+                    registryName,
+                  ),
+                });
+              }}
+              options={["Last ned som bilde"]}
+              steps="one-step"
+            />
+          )}
+        </div>
+      </div>
+      {/* biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future */}
+      {figureType == "line" ? (
+        <MuiLineChart
+          data={data}
+          figureHeight={figureHeight}
+          lineData={lineData}
+          uniqueYears={uniqueYears}
+          percentage={percentage}
+          valueAxisFormatter={valueAxisFormatter}
+          lastAffirmYear={lastAffirmYear}
+          zoom={zoom}
+          apiRef={lineChartApiRef}
+          tickFontSize={14}
+        />
+      ) : figureType === "bar" ? (
+        <MuiBarChart
+          data={data}
+          figureSpacingFactor={30}
+          figureSpacingConstant={2.2}
+          backgroundMargin={backgroundMargin}
+          unitNames={unitNames}
+          percentage={percentage}
+          barChartType={barChartType}
+          dataFormat={dataFormat}
+          valueAxisFormatter={valueAxisFormatter}
+          treatmentUnitsByLevel={treatmentUnitsByLevel}
+          context={context}
+          type={type}
+          medfield={medfield}
+          year={year}
+          indID={indID}
+          tickFontSize={14}
+          yAxisWidth={160}
+          zoom={zoom}
+          apiRef={barChartApiRef}
+        />
+      ) : null}
     </Box>
   );
 };

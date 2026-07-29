@@ -1,11 +1,14 @@
 @import "tailwindcss";
 
 /* Add design tokens + SKDE theme (base styles, components, utilities, @theme) */
+@import "@mong/material-ui/index.css";
 @import "@mong/material-ui/variables.css";
 @import "@mong/material-ui/theme.css";
 
-/* Make Tailwind scan the shipped components so their classes are generated */
+/* Make Tailwind scan the shipped components and application code so their classes are generated */
 @source "../node_modules/@mong/material-ui/dist";
+@source "../pages";
+@source "../src";
 
 main > div.flex.flex-col.bg-neutral-0.overflow-x-auto {
   overflow-x: clip;

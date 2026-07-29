@@ -41,7 +41,7 @@ jobs:
         with:
           node-version: "24.x"
           cache: "pnpm"
-
+      - run: pnpm config set //npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
       - run: pnpm install
       - run: pnpm check
 

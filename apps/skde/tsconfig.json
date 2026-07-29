@@ -30,7 +30,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    "node_modules/@mong/material-ui/dist/**/*.ts"
   ],
   "exclude": ["node_modules", ".next", ".turbo", "out"]
 }

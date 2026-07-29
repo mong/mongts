@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box } from "@mong/material-ui";
 import {
   ChartsAxisHighlight,
   ChartsLegend,
@@ -21,7 +21,6 @@ import type { DataPoint, IndicatorData } from "types";
 import { CustomAnimatedLine } from "../../Charts/MuiLineChart/CustomAnimatedLine";
 import { LineBackground } from "../../Charts/MuiLineChart/LineBackground";
 import { ChartLogo } from "../ChartLogo";
-import { CustomChartWrapper } from "../utils";
 
 type MuiLineChartProps = {
   data: IndicatorData;
@@ -67,7 +66,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
   const yDifference = yMaxLimit - yMinLimit;
 
   return (
-    <Box width={"100%"}>
+    <Box padded={false}>
       <ChartsDataProviderPro
         apiRef={apiRef}
         series={lineData}
@@ -101,62 +100,55 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
           },
         ]}
       >
-        <Box sx={{ mt: -4 }}>
-          <CustomChartWrapper>
-            <Box
-              sx={{
-                display: "flex",
-                width: "95%",
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <ChartsLegend
-                slotProps={{
-                  legend: {
-                    sx: {
-                      leftmargin: 0,
-                      fontSize: tickFontSize,
-                      [`.${legendClasses.mark}`]: {
-                        width: 40,
-                      },
+        <div className="pt-5">
+          {/* <CustomChartWrapper> */}
+          <div className="pl-20">
+            <ChartsLegend
+              slotProps={{
+                legend: {
+                  sx: {
+                    leftmargin: 0,
+                    fontSize: tickFontSize,
+                    [`.${legendClasses.mark}`]: {
+                      width: 40,
                     },
-                    position: { vertical: "top", horizontal: "start" },
                   },
-                }}
-              />
-            </Box>
-            <ChartsTooltip />
-            <ChartsSurface
-              sx={{ "& .line-after path": { strokeDasharray: "10 5" }, mb: -4 }}
-            >
-              <LineBackground
-                data={data}
-                years={uniqueYears}
-                lines={true}
-                percentage={percentage}
-                zoom={zoom}
-                yMaxLimit={yMaxLimit}
-                yMinLimit={yMinLimit}
-              />
-              <ChartsXAxis />
-              <ChartsYAxis />
-              <ChartsAxisHighlight y="line" />
-              <LinePlot
-                slots={{ line: CustomAnimatedLine }}
-                slotProps={{
-                  line: {
-                    limit: lastAffirmYear,
-                    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-                  } as any,
-                }}
-              />
-              <MarkPlot />
-              <ChartsAxisHighlight x="line" />
-            </ChartsSurface>
-            <ChartLogo width={100} marginRight={0} />
-          </CustomChartWrapper>
-        </Box>
+                  position: { vertical: "top", horizontal: "start" },
+                },
+              }}
+            />
+          </div>
+          <ChartsTooltip />
+          <ChartsSurface
+            sx={{ "& .line-after path": { strokeDasharray: "10 5" }, mb: -4 }}
+          >
+            <LineBackground
+              data={data}
+              years={uniqueYears}
+              lines={true}
+              percentage={percentage}
+              zoom={zoom}
+              yMaxLimit={yMaxLimit}
+              yMinLimit={yMinLimit}
+            />
+            <ChartsXAxis />
+            <ChartsYAxis />
+            <ChartsAxisHighlight y="line" />
+            <LinePlot
+              slots={{ line: CustomAnimatedLine }}
+              slotProps={{
+                line: {
+                  limit: lastAffirmYear,
+                  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+                } as any,
+              }}
+            />
+            <MarkPlot />
+            <ChartsAxisHighlight x="line" />
+          </ChartsSurface>
+          <ChartLogo />
+          {/* </CustomChartWrapper> */}
+        </div>
       </ChartsDataProviderPro>
     </Box>
   );

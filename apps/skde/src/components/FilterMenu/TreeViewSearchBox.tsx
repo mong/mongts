@@ -5,6 +5,7 @@ type TreeViewSearchBoxProps = {
   hintText?: string;
   options: TreeViewFilterSettingsValue[][];
   onSearch: (nodeValues: string[]) => void;
+  size?: "small" | "medium";
 };
 
 interface AutocompleteOption {
@@ -13,6 +14,7 @@ interface AutocompleteOption {
 }
 
 function TreeViewSearchBox(props: TreeViewSearchBoxProps) {
+  const size = props.size || "medium";
   const hintText = props.hintText || "Søk...";
   const options: AutocompleteOption[] = props.options
     .map((optionArray) => {
@@ -33,6 +35,7 @@ function TreeViewSearchBox(props: TreeViewSearchBoxProps) {
 
   return (
     <Autocomplete
+      size={size}
       autoHighlight
       options={Array.from(
         new Set<string>(options.map((option) => option.label)),

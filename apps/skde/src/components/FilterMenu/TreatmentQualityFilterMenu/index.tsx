@@ -418,7 +418,7 @@ export function TreatmentQualityFilterMenu({
             valueLabel:
               selectedTableContext === "resident"
                 ? "Opptaksområder"
-                : "Behandlingsenheter",
+                : "Behandlingssteder",
           },
         ]}
       />
@@ -444,7 +444,7 @@ export function TreatmentQualityFilterMenu({
         sectiontitle={
           selectedTableContext === "resident"
             ? "Opptaksområder"
-            : "Behandlingsenheter"
+            : "Behandlingssteder"
         }
         filterkey={treatmentUnitsKey}
         searchbox={true}

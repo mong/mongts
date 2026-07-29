@@ -123,9 +123,9 @@ export default function TreatmentQualityPage() {
                   onSubmit={setSelectedMedicalFields}
                 />
                 <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                  Behandlingsenheter
+                  Behandlingssteder
                   <Button onClick={handleTreatmentUnitButtonClick}>
-                    Velg behandlingsenheter
+                    Velg Behandlingssteder
                   </Button>
                 </div>
                 <TreatmentUnitPopup
