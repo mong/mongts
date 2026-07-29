@@ -10,7 +10,7 @@ import { useState } from "react";
 import { useQueryParam } from "use-query-params";
 import { defaultYear, mainQueryParamsConfig } from "../../src/app_config";
 import { MedicalFieldPopup } from "../../src/components/DialogBox/MedicalFieldPopup";
-import { TreatmentUnitPopupSingleSelect } from "../../src/components/DialogBox/TreatmentunitPopup";
+import { TreatmentUnitPopup } from "../../src/components/DialogBox/TreatmentunitPopup";
 import { IndicatorTableV2 } from "../../src/components/IndicatorTable/Indicatortable";
 import { TreatmentQualityAppBarV2 } from "../../src/components/IndicatorTable/Indicatortable/StickyHeader";
 import { LayoutHead } from "../../src/components/LayoutHead";
@@ -128,7 +128,7 @@ export default function TreatmentQualityPage() {
                     Velg Behandlingssteder
                   </Button>
                 </div>
-                <TreatmentUnitPopupSingleSelect
+                <TreatmentUnitPopup
                   open={treatmentUnitPopupOpen}
                   setOpen={setTreatmentUnitPopupOpen}
                   onSubmit={setSelectedTreatmentUnits}
