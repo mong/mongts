@@ -6,7 +6,6 @@ import {
   LoadingLogo,
   PageContent,
   RotateDevice,
-  SubjectAreaResultCard,
   ToggleButton,
   ToggleButtonGroup,
 } from "@mong/material-ui";
@@ -262,105 +261,13 @@ export const Skde = (): JSX.Element => {
                     </Button>
                   </Box>
                 ) : (
-                  <>
-                    <TopSummarySection
-                      selectedTreatmentUnit={selectedTreatmentUnit}
-                      unitName={selectedUnitNamesAsString}
-                      unitFullName={unitFullName}
-                      lastYear={lastYear}
-                      pastYears={pastYears}
-                    />
-                    <div className="w-full flex flex-col">
-                      <div className="flex flex-col w-full gap-2 pb-14">
-                        <h4 className="pb-8 pt-14 text-brand-primary-600">
-                          Måloppnåelse sortert på fagområde [mock data]
-                        </h4>
-                        <SubjectAreaResultCard
-                          headers={{
-                            first: "Fagområde",
-                            second: "Målnivå",
-                          }}
-                          buttonHref="#"
-                          high="Høy 92%"
-                          low="Lavt 50%"
-                          middle="Middels 75%"
-                          title="Dagkirurgi"
-                        />
-                        <SubjectAreaResultCard
-                          buttonHref="#"
-                          high="Høy 92%"
-                          low="Lavt 50%"
-                          middle="Middels 75%"
-                          title="Dagkirurgi"
-                        />
-                        <SubjectAreaResultCard
-                          buttonHref="#"
-                          high="Høy 92%"
-                          low="Lavt 50%"
-                          middle="Middels 75%"
-                          title="Andel trombolyse"
-                        />
-                        <SubjectAreaResultCard
-                          buttonHref="#"
-                          high="Høy 92%"
-                          low="Lavt 50%"
-                          middle="Middels 75%"
-                          title="Dagkirurgi"
-                        />
-                        <SubjectAreaResultCard
-                          buttonHref="#"
-                          high="Høy 92%"
-                          low="Lavt 50%"
-                          middle="Middels 75%"
-                          title="Dagkirurgi"
-                        />
-                      </div>
-                      <div className="flex flex-col gap-2 pb-14">
-                        <h4 className="pb-8 pt-14 text-brand-primary-600">
-                          Utvalgte indikatorer for [placeholder behandlingssted]
-                        </h4>
-                        <SubjectAreaResultCard
-                          headers={{
-                            first: "Fagområde",
-                            second: "Målnivå",
-                          }}
-                          buttonHref="#"
-                          high="Høy 92%"
-                          low="Lavt 50%"
-                          middle="Middels 75%"
-                          title="Dagkirurgi"
-                        />
-                        <SubjectAreaResultCard
-                          buttonHref="#"
-                          high="Høy 92%"
-                          low="Lavt 50%"
-                          middle="Middels 75%"
-                          title="Dagkirurgi"
-                        />
-                        <SubjectAreaResultCard
-                          buttonHref="#"
-                          high="Høy 92%"
-                          low="Lavt 50%"
-                          middle="Middels 75%"
-                          title="Dagkirurgi"
-                        />
-                        <SubjectAreaResultCard
-                          buttonHref="#"
-                          high="Høy 92%"
-                          low="Lavt 50%"
-                          middle="Middels 75%"
-                          title="Dagkirurgi"
-                        />
-                        <SubjectAreaResultCard
-                          buttonHref="#"
-                          high="Høy 92%"
-                          low="Lavt 50%"
-                          middle="Middels 75%"
-                          title="Dagkirurgi"
-                        />
-                      </div>
-                    </div>
-                  </>
+                  <TopSummarySection
+                    selectedTreatmentUnit={selectedTreatmentUnit}
+                    unitName={selectedUnitNamesAsString}
+                    unitFullName={unitFullName}
+                    lastYear={lastYear}
+                    pastYears={pastYears}
+                  />
                 )}
               </div>
             )}
