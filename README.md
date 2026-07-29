@@ -50,7 +50,7 @@ See [Authenticating to GitHub Packages](https://docs.github.com/en/packages/work
 5. Configure pnpm with youtoken to use GitHub Packages.
 
 #### Configure pnpm for @mong packages
-pnpm no longer accepts enviroment variable expansion for auth tokens, so to configure it for authentication you add a `.npmrc` file in you home folder or add the npm configuration to pnpm. 
+pnpm no longer accepts enviroment variable expansion for auth tokens, so to configure it for authentication you add a `.npmrc` file in you home folder or add the npm configuration to pnpm. **NB** the .npmrc file in the project root is for CI and does not contain a enviroment based token. CI grabs it from github-secrets
 
 ```ini
 #### .npmrc
