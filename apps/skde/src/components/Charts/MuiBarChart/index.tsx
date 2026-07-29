@@ -25,7 +25,6 @@ import {
   reshapeData,
 } from "../../../helpers/functions/formatMuiChartData";
 import { ChartLogo } from "../ChartLogo";
-import { CustomChartWrapper } from "../utils";
 import { BarBackground } from "./BarBackground";
 
 type MuiBarChartProps = {

@@ -1,4 +1,4 @@
-import { Box, SkdeLogo } from "@mong/material-ui";
+import { SkdeLogo } from "@mong/material-ui";
 
 export const ChartLogo = (props) => {
   props;

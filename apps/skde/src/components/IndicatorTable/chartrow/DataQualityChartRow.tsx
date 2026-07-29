@@ -1,5 +1,5 @@
 import { Box, Button, Dropdown, Icon, SplitButton } from "@mong/material-ui";
-import { type SelectChangeEvent, Stack } from "@mui/material";
+import type { SelectChangeEvent } from "@mui/material";
 import { useChartProApiRef } from "@mui/x-charts-pro";
 import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
 import { useState } from "react";

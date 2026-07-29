@@ -8,7 +8,7 @@ import {
   PageContent,
   RotateDevice,
 } from "@mong/material-ui";
-import { type SelectChangeEvent, Stack, Toolbar } from "@mui/material";
+import { type SelectChangeEvent, Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import { Suspense, useState } from "react";
@@ -22,7 +22,6 @@ import {
   getSortedList,
   updateColourMap,
 } from "../../../../src/helpers/functions/chartColours";
-import { TreatmentUnitPopupSingleSelect } from "../../DialogBox/TreatmentUnitPopupSingleSelect";
 import { TreatmentUnitPopup } from "../../DialogBox/TreatmentunitPopup";
 import { ScrollToTop } from "../../scroll-to-top/scroll-to-top";
 

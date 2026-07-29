@@ -21,7 +21,6 @@ import type { DataPoint, IndicatorData } from "types";
 import { CustomAnimatedLine } from "../../Charts/MuiLineChart/CustomAnimatedLine";
 import { LineBackground } from "../../Charts/MuiLineChart/LineBackground";
 import { ChartLogo } from "../ChartLogo";
-import { CustomChartWrapper } from "../utils";
 
 type MuiLineChartProps = {
   data: IndicatorData;

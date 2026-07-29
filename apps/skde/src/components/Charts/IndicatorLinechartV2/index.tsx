@@ -1,4 +1,4 @@
-import { axisClasses, LineChartPro, legendClasses } from "@mui/x-charts-pro";
+import { LineChartPro, legendClasses } from "@mui/x-charts-pro";
 import type { UseQueryResult } from "@tanstack/react-query";
 import _ from "lodash";
 import { level, minDG, useIndicatorQuery } from "qmongjs";
