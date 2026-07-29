@@ -1,5 +1,35 @@
 # Changelog
 
+## [1.7.0](https://github.com/mong/mongts/compare/v1.6.0...v1.7.0) (2026-07-29)
+
+
+### Features
+
+* boks med animasjon mens BKV3 laster data ([#4838](https://github.com/mong/mongts/issues/4838)) ([5b9977c](https://github.com/mong/mongts/commit/5b9977c23a0575a2cf297231a5e1ec97e2526888))
+* bruk indikatortabell fra komponentbibliotek ([#4829](https://github.com/mong/mongts/issues/4829)) ([f6b5410](https://github.com/mong/mongts/commit/f6b5410fced1a0cde0d77e04cbf5d0e6d86d41f4))
+* enable tailwinds sticky utilities and stick toolbar ([#4844](https://github.com/mong/mongts/issues/4844)) ([c06f5f8](https://github.com/mong/mongts/commit/c06f5f8be674b4bcbe1813a53753b8edafa07fbf))
+* søkefelt for registre ([#4833](https://github.com/mong/mongts/issues/4833)) ([0d71c47](https://github.com/mong/mongts/commit/0d71c4762ec724def65017a3c30ee069c10863f9))
+* søkefelt i popup for behandlingsenheter ([#4821](https://github.com/mong/mongts/issues/4821)) ([a0aa5c3](https://github.com/mong/mongts/commit/a0aa5c3040d62ce72d965ccd87cf5dcbc601ddc0))
+* spinner for dialogbokser ([#4842](https://github.com/mong/mongts/issues/4842)) ([dea87a0](https://github.com/mong/mongts/commit/dea87a020bc58b5d00b34dfb169b06e1e3a59850))
+
+
+### Bug Fixes
+
+* **Api-hooks and query states:** add explicit pending/error/empty/timeouts handling ([#4846](https://github.com/mong/mongts/issues/4846)) ([ec757eb](https://github.com/mong/mongts/commit/ec757eb3dd4c4ccccd23e11e1902d29e7efc2ed6))
+* bruk useQueryParams i popup for enheter og fiks typeadvarsler ([#4832](https://github.com/mong/mongts/issues/4832)) ([614c2ef](https://github.com/mong/mongts/commit/614c2ef05cbf45e88df7b2f30bee025fcc1ccb04))
+* **deps:** update dependency helmet from v8.1.0 to v8.2.0 ([#4812](https://github.com/mong/mongts/issues/4812)) ([f80a84b](https://github.com/mong/mongts/commit/f80a84ba0292762107ecfdede8bfadbb1c447fb0))
+* **deps:** update dependency knex from v3.2.10 to v3.3.0 ([#4814](https://github.com/mong/mongts/issues/4814)) ([4867c51](https://github.com/mong/mongts/commit/4867c51d8e24eb11a4d8f694a0f1f804bf699347))
+* **deps:** update dependency knex from v3.2.9 to v3.2.10 ([#4801](https://github.com/mong/mongts/issues/4801)) ([6835d11](https://github.com/mong/mongts/commit/6835d11c56affc24c718dcd9c618b58c7b79bfe7))
+* **deps:** update dependency mysql2 from v3.22.3 to v3.22.5 ([#4802](https://github.com/mong/mongts/issues/4802)) ([257418e](https://github.com/mong/mongts/commit/257418e2fda53915ee7fb5f9c61bca28144de29b))
+* **deps:** update dependency next from v16.2.6 to v16.2.9 ([#4804](https://github.com/mong/mongts/issues/4804)) ([bbff425](https://github.com/mong/mongts/commit/bbff42526271e58c13cf0f6890ef55201a5b8451))
+* **deps:** update tanstack-query monorepo from v5.100.9 to v5.101.1 ([#4672](https://github.com/mong/mongts/issues/4672)) ([b7e86f0](https://github.com/mong/mongts/commit/b7e86f044e9b4504b569aff8ebd9b1c68e128de3))
+* **deps:** update tanstack-query monorepo from v5.101.1 to v5.101.2 ([#4813](https://github.com/mong/mongts/issues/4813)) ([d142512](https://github.com/mong/mongts/commit/d1425123b9a1438d3027711c403b726698ce4023))
+* ikke tell med Nasjonalt i popup for behandlingsenheter ([#4840](https://github.com/mong/mongts/issues/4840)) ([4df2932](https://github.com/mong/mongts/commit/4df293269b780fb48a2767429370bf4cbea5a4f6))
+* **register-component:** add minimum width and rotate-device component. ([#4852](https://github.com/mong/mongts/issues/4852)) ([72adf83](https://github.com/mong/mongts/commit/72adf832f9ec1cd11f4fc5d6f94c083f36d3eb64))
+* **scroll-to-top:** hide scroll-to-top arrow on page load ([#4847](https://github.com/mong/mongts/issues/4847)) ([535394f](https://github.com/mong/mongts/commit/535394f2a6965606b2b8bf4903d91cdd89a48b10))
+* sett Nasjonalt slik at den ikke kommer to ganger i url-en ([#4839](https://github.com/mong/mongts/issues/4839)) ([ebffa69](https://github.com/mong/mongts/commit/ebffa69fa155f6a0bc8f272c0918062e6f8b5516))
+* vis innhold når siden er tom ([#4831](https://github.com/mong/mongts/issues/4831)) ([0699078](https://github.com/mong/mongts/commit/06990786480c8a55680c5cfac4eebf3d6ad0ed22))
+
 ## [1.6.0](https://github.com/mong/mongts/compare/v1.5.0...v1.6.0) (2026-06-23)
 
 
