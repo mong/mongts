@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/mong/mongts/compare/v1.7.0...v1.8.0) (2026-07-29)
+
+
+### Features
+
+* **sykehusprofil:** migrate to material-ui and design-system styles  ([#4854](https://github.com/mong/mongts/issues/4854)) ([ec9b846](https://github.com/mong/mongts/commit/ec9b8464f3249ac830b768b811f50613f7aaec5a))
+
 ## [1.7.0](https://github.com/mong/mongts/compare/v1.6.0...v1.7.0) (2026-07-29)
 
 
