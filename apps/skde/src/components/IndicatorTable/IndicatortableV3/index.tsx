@@ -1,12 +1,12 @@
 import {
-  HeroBanner,
   RegisterAccordion,
   type RenderRegisterProps,
   RotateDevice,
 } from "@mong/material-ui";
 import { customFormat, level2 } from "qmongjs";
 import type { JSX } from "react";
-import type { DataPoint, IndicatorData, RegisterData } from "types";
+import type { DataPoint, IndicatorData, OptsTu, RegisterData } from "types";
+import { ChartRowV2 } from "../chartrowV2";
 
 type IndicatorTableV3Props = {
   data: RegisterData[];
@@ -14,6 +14,7 @@ type IndicatorTableV3Props = {
   unitNames: string[];
   year: number;
   chartColours: string[];
+  unitNamesByLevel: OptsTu[];
 };
 
 const levelStringMap = new Map();
@@ -32,6 +33,7 @@ const reshapeData = (
   data: RegisterData[],
   unitNames: string[],
   year: number,
+  unitNamesByLevel: OptsTu[],
 ) => {
   const reshapedData = data.map((registry: RegisterData) => {
     return {
@@ -81,10 +83,17 @@ const reshapeData = (
 
           return {
             chart: (
-              <HeroBanner
-                title="Innhold kommer"
-                description="denne blir erstattet med en chart"
-                image="/hero-bg-4.jpg"
+              <ChartRowV2
+                data={indicator}
+                unitNames={unitNames}
+                medfield={registry.registerShortName}
+                context={"caregiver"}
+                type={"ind"}
+                year={year}
+                treatmentUnitsByLevel={unitNamesByLevel}
+                indID={indicator.indicatorID}
+                registryName={registry.registerFullName}
+                showDGButton={true}
               />
             ) as JSX.Element,
             indicatorTarget:
@@ -195,13 +204,18 @@ const fillMissingUnitnames = (
 };
 
 export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
-  const { data, medfields, unitNames, year } = props;
+  const { data, medfields, unitNames, year, unitNamesByLevel } = props;
 
   const medfieldFilteredData = data.filter((row: RegisterData) =>
     medfields.includes(row.registerName),
   );
 
-  const reshapedData = reshapeData(medfieldFilteredData, unitNames, year);
+  const reshapedData = reshapeData(
+    medfieldFilteredData,
+    unitNames,
+    year,
+    unitNamesByLevel,
+  );
   fillMissingUnitnames(reshapedData, unitNames);
   return (
     <div className="w-full max-w-360">
