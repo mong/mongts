@@ -93,7 +93,7 @@ export const Skde = (): JSX.Element => {
       ...rhf,
       hf: rhf.hf.map((hf) => ({
         ...hf,
-        hospital: hf.hospital.filter((unit) => mainHospitals.includes(unit)),
+        hospital: hf.hospital,
       })),
     }),
   );

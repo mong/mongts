@@ -37,7 +37,8 @@ export const AchievementResultsBars = (
   // Set indicator colour from value and colour limits
   const levels: AchievementLevel[] = indicatorRows.map((row: Indicator) => {
     const hasValidDg =
-      row.dg !== null && row.dg !== undefined && row.dg >= minDG;
+      // TODO: do no show data if row.dg is not defined
+      row.dg ? row.dg >= minDG : true;
     const indicatorLevel: AchievementLevel["level"] = hasValidDg
       ? mapIndicatorLevel(level(row) ?? "")
       : -1;
