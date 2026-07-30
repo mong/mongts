@@ -2,6 +2,8 @@ export type AchievementResultsBarsProps = {
   registerShortName?: string;
   unitNames?: string[];
   unitLevel?: "nation" | "rhf" | "hf" | "hospital";
+  type?: "ind" | "dg";
+  context?: "caregiver" | "resident";
   startYear: number;
   endYear: number;
 };

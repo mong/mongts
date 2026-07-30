@@ -5,7 +5,6 @@ import { useScreenSize } from "@visx/responsive";
 import {
   breakpoints,
   getUnitFullName,
-  mainHospitals,
   skdeTheme,
   useUnitNamesQuery,
   useUnitUrlsQuery,
@@ -83,18 +82,6 @@ export const Skde = (): JSX.Element => {
   let unitFullName: string;
 
   if (unitNamesQuery.data) {
-    // Only keep the "real" hospitals
-    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-    unitNamesQuery.data.nestedUnitNames.map((rhf) => {
-      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-      rhf.hf.map((hf) => {
-        hf.hospital = hf.hospital.filter((unit) =>
-          mainHospitals.includes(unit),
-        );
-      });
-    });
-
     unitFullName =
       (unitNamesQuery.data &&
         // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future

@@ -66,15 +66,6 @@ export const UnitFilterMenu = (props: UnitFilterMenuProps) => {
   // Get thre treatment unit structure and trim it
   const treatmentUnits = getTreatmentUnitsTree(unitNamesQuery);
 
-  if (treatmentUnits.treedata.length > 1) {
-    // Find the index of "Private" and remove the children. The sub units should not be shown.
-    // TreetmentUnits.treedata starts with one element "Nasjonalt". Need to wait for it to build up the rest.
-    const indPrivate = treatmentUnits.treedata.findIndex(
-      (x) => x.nodeValue.value === "Private",
-    );
-    treatmentUnits.treedata[indPrivate].children = [];
-  }
-
   // ###################################### //
   // Callback functions for the filter menu //
   // ###################################### //
