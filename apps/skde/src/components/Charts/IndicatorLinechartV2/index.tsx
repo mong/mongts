@@ -46,7 +46,7 @@ type GroupedLevels = {
 // Define high achievement as 0, medium as 1 and low as 2
 // If the limits are not set the level is undefined
 // Let -1 be undefined
-const mapLevel = (indicatorLevel: string) => {
+const mapLevel = (indicatorLevel: string | undefined) => {
   let mappedLevel: number;
   switch (indicatorLevel) {
     case "H":
@@ -167,9 +167,7 @@ export const IndicatorLinechartV2 = (
       ?.map((row: Indicator) => {
         const rowLevel = level(row);
         const indicatorLevel =
-          row.dg !== null && row.dg >= minDG && rowLevel != null
-            ? mapLevel(rowLevel)
-            : -1;
+          row.dg === null || row.dg >= minDG ? mapLevel(rowLevel) : -1;
         return indicatorLevel !== -1
           ? {
               ind_id: row.ind_id,

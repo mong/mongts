@@ -50,6 +50,8 @@ const AchievementSummaryCard = ({
       <h4 className="-mt-0.5 mb-6">{title}</h4>
       <AchievementResultsBars
         unitNames={[unitName]}
+        type={"ind"}
+        context={"caregiver"}
         startYear={startYear}
         endYear={endYear}
       />
