@@ -13,12 +13,7 @@ import { Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
-import {
-  getUnitFullName,
-  mainHospitals,
-  useUnitNamesQuery,
-  useUnitUrlsQuery,
-} from "qmongjs";
+import { getUnitFullName, useUnitNamesQuery, useUnitUrlsQuery } from "qmongjs";
 import { type JSX, Suspense, useEffect, useState } from "react";
 import type { NestedTreatmentUnitName, OptsTu } from "types";
 import { useQueryParam } from "use-query-params";
