@@ -18,11 +18,9 @@ type ChartRowV2Props = {
   data: IndicatorData;
   unitNames: string[];
   medfield: string;
-  context: string;
-  type: string;
+  context: "caregiver" | "resident" | undefined;
   year: number;
   treatmentUnitsByLevel: OptsTu[];
-  indID: string;
   registryName: string;
   showDGButton?: boolean;
 };
@@ -32,11 +30,10 @@ export const ChartRowV2 = (props: ChartRowV2Props) => {
     data,
     unitNames,
     context,
-    type,
     year,
     treatmentUnitsByLevel,
     medfield,
-    indID,
+
     registryName,
     showDGButton,
   } = props;

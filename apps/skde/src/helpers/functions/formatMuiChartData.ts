@@ -8,7 +8,7 @@ type Point = { x: number; y: number | null; n: number | null };
 export const reshapeData = (
   data: IndicatorData,
   unitNames: string[],
-  context: string,
+  context: "caregiver" | "resident" | undefined,
 ) => {
   const reshapedData = unitNames.map((unitName: string) => {
     // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
@@ -114,7 +114,7 @@ export const formatBarData = (data: Point[][], year: number) => {
 export const formatMuiChartData = (
   data: IndicatorData,
   unitNames: string[],
-  context: string,
+  context: "caregiver" | "resident" | undefined,
   dataFormat: string,
 ) => {
   const reshapedData = reshapeData(data, unitNames, context);

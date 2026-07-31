@@ -4,7 +4,7 @@ import {
   RotateDevice,
 } from "@mong/material-ui";
 import { customFormat, level2 } from "qmongjs";
-import type { JSX } from "react";
+import { type JSX, useState } from "react";
 import type { DataPoint, IndicatorData, OptsTu, RegisterData } from "types";
 import { ChartRowV2 } from "../chartrowV2";
 
@@ -33,6 +33,7 @@ const reshapeData = (
   data: RegisterData[],
   unitNames: string[],
   year: number,
+  context: "caregiver" | "resident" | undefined,
   unitNamesByLevel: OptsTu[],
 ) => {
   const reshapedData = data.map((registry: RegisterData) => {
@@ -80,18 +81,15 @@ const reshapeData = (
             indicator.levelGreen !== null && indicator.format !== null
               ? customFormat(indicator.format)(indicator.levelGreen)
               : undefined;
-
           return {
             chart: (
               <ChartRowV2
                 data={indicator}
                 unitNames={unitNames}
                 medfield={registry.registerShortName}
-                context={"caregiver"}
-                type={"ind"}
+                context={context}
                 year={year}
                 treatmentUnitsByLevel={unitNamesByLevel}
-                indID={indicator.indicatorID}
                 registryName={registry.registerFullName}
                 showDGButton={true}
               />
@@ -206,6 +204,10 @@ const fillMissingUnitnames = (
 export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
   const { data, medfields, unitNames, year, unitNamesByLevel } = props;
 
+  const [clickedIndicatorContext, setClickedIndicatorContext] = useState<
+    "caregiver" | "resident" | undefined
+  >();
+
   const medfieldFilteredData = data.filter((row: RegisterData) =>
     medfields.includes(row.registerName),
   );
@@ -214,6 +216,7 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
     medfieldFilteredData,
     unitNames,
     year,
+    clickedIndicatorContext,
     unitNamesByLevel,
   );
   fillMissingUnitnames(reshapedData, unitNames);
@@ -226,6 +229,7 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
         <RegisterAccordion
           registries={reshapedData}
           smallScreenMessage="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din."
+          setCurrentContext={setClickedIndicatorContext}
         />
       </div>
     </div>

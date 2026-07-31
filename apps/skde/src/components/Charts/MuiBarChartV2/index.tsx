@@ -12,14 +12,9 @@ import {
   type ChartProApi,
   ChartsDataProviderPro,
 } from "@mui/x-charts-pro";
-import type { UseQueryResult } from "@tanstack/react-query";
 import { customFormat } from "qmongjs/src/helpers/functions";
-import {
-  type FetchIndicatorParams,
-  useIndicatorQuery,
-} from "qmongjs/src/helpers/hooks";
 import type { RefObject } from "react";
-import type { DataPoint, IndicatorData, OptsTu, RegisterData } from "types";
+import type { DataPoint, IndicatorData, OptsTu } from "types";
 import {
   formatBarData,
   reshapeData,
@@ -37,7 +32,7 @@ type MuiBarChartV2Props = {
   barChartType: string;
   valueAxisFormatter: (value: number) => string;
   treatmentUnitsByLevel: OptsTu[];
-  context: string;
+  context: "caregiver" | "resident" | undefined;
   year: number;
   tickFontSize: number;
   yAxisWidth: number;
