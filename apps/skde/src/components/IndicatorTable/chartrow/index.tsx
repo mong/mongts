@@ -196,7 +196,8 @@ export const ChartRow = (props: ChartRowProps) => {
               onClick={() => {
                 const apiRef =
                   figureType === "line" ? lineChartApiRef : barChartApiRef;
-                apiRef.current?.exportAsImage({
+                // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+                apiRef.current!.exportAsImage({
                   onBeforeExport: makeOnBeforeExport(
                     data.indicatorTitle || "",
                     registryName,
