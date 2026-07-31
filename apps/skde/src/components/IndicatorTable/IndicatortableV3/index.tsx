@@ -5,7 +5,7 @@ import {
   RotateDevice,
 } from "@mong/material-ui";
 import { customFormat, level2 } from "qmongjs";
-import type { JSX } from "react";
+import { type JSX, useEffect, useState } from "react";
 import type { DataPoint, IndicatorData, RegisterData } from "types";
 
 type IndicatorTableV3Props = {
@@ -196,10 +196,16 @@ const fillMissingUnitnames = (
 
 export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
   const { data, medfields, unitNames, year } = props;
-
+  const [clickedIndicatorContext, setClickedIndicatorContext] = useState<
+    "caregiver" | "resident" | "undefined"
+  >();
   const medfieldFilteredData = data.filter((row: RegisterData) =>
     medfields.includes(row.registerName),
   );
+  // debug current context
+  useEffect(() => {
+    console.log("currentContext", clickedIndicatorContext);
+  }, [clickedIndicatorContext]);
 
   const reshapedData = reshapeData(medfieldFilteredData, unitNames, year);
   fillMissingUnitnames(reshapedData, unitNames);
@@ -212,6 +218,7 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
         <RegisterAccordion
           registries={reshapedData}
           smallScreenMessage="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din."
+          setCurrentContext={setClickedIndicatorContext}
         />
       </div>
     </div>
