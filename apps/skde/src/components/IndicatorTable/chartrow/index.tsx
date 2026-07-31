@@ -210,8 +210,7 @@ export const ChartRow = (props: ChartRowProps) => {
           )}
         </div>
       </div>
-      {/* biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future */}
-      {figureType == "line" ? (
+      {figureType === "line" ? (
         <MuiLineChart
           data={data}
           figureHeight={figureHeight}
