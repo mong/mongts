@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.1](https://github.com/mong/mongts/compare/v1.8.0...v1.8.1) (2026-07-30)
+
+
+### Bug Fixes
+
+* **Sykehusprofil:** vis alle private enheter med data og fiks datahenting ([#4871](https://github.com/mong/mongts/issues/4871)) ([5e0c4df](https://github.com/mong/mongts/commit/5e0c4df40b5bc8be69c96661d73ade110d38b4c4))
+
 ## [1.8.0](https://github.com/mong/mongts/compare/v1.7.0...v1.8.0) (2026-07-29)
 
 
