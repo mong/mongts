@@ -5,7 +5,7 @@ import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
 import { useState } from "react";
 import type { DataPoint, IndicatorData, OptsTu } from "types";
 import {
-  formatMuiChartData,
+  formatMuiChartDataV2,
   makeOnBeforeExport,
 } from "../../../helpers/functions/formatMuiChartData";
 import { MuiBarChart } from "../../Charts/MuiBarChart";
@@ -81,7 +81,7 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
   const dataFormat = data.format ? data.format : ",.0%";
   const percentage = dataFormat.includes("%");
 
-  const { lineData, uniqueYears } = formatMuiChartData(
+  const { lineData, uniqueYears } = formatMuiChartDataV2(
     data,
     unitNames,
     context,
@@ -199,7 +199,7 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
           />
         )}
       </div>
-      <div className="w-full min-h-max flex-shrink-0 block clear-both">
+      <div className="w-full min-h-max shrink-0 block clear-both">
         {/* biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future */}
         {figureType == "line" ? (
           <MuiLineChart
@@ -226,7 +226,7 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
             dataFormat={dataFormat}
             valueAxisFormatter={valueAxisFormatter}
             treatmentUnitsByLevel={treatmentUnitsByLevel}
-            context={context}
+            context={context as string}
             type={type}
             medfield={medfield}
             year={year}

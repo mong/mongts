@@ -17,7 +17,7 @@ import type { RefObject } from "react";
 import type { DataPoint, IndicatorData, OptsTu } from "types";
 import {
   formatBarData,
-  reshapeData,
+  reshapeDataV2,
 } from "../../../helpers/functions/formatMuiChartData";
 import { ChartLogo } from "../ChartLogo";
 import { BarBackground } from "./BarBackground";
@@ -126,7 +126,7 @@ export const MuiBarChartV2 = (props: MuiBarChartV2Props) => {
 
     const orderedDenominator = newDataSelection.map((row) => row.denominator);
 
-    const reshapedData = reshapeData(
+    const reshapedData = reshapeDataV2(
       { ...data, data: newDataSelection },
       orderedUnitNames,
       context,

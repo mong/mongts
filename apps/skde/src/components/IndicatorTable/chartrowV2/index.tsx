@@ -7,7 +7,7 @@ import type { DataPoint, IndicatorData, OptsTu } from "types";
 import { useQueryParam } from "use-query-params";
 import { mainQueryParamsConfig } from "../../../app_config";
 import {
-  formatMuiChartData,
+  formatMuiChartDataV2,
   makeOnBeforeExport,
 } from "../../../helpers/functions/formatMuiChartData";
 import { MuiBarChartV2 } from "../../Charts/MuiBarChartV2";
@@ -86,7 +86,7 @@ export const ChartRowV2 = (props: ChartRowV2Props) => {
   const dataFormat = data.format ? data.format : ",.0%";
   const percentage = dataFormat.includes("%");
 
-  const { lineData, uniqueYears } = formatMuiChartData(
+  const { lineData, uniqueYears } = formatMuiChartDataV2(
     data,
     unitNames,
     context,

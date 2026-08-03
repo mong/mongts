@@ -37,7 +37,7 @@ type MuiBarChartProps = {
   barChartType: string;
   valueAxisFormatter: (value: number) => string;
   treatmentUnitsByLevel: OptsTu[];
-  context: "caregiver" | "resident" | undefined;
+  context: string;
   type: string;
   medfield: string;
   year: number;
