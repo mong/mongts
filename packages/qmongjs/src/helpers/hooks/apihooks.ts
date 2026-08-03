@@ -195,13 +195,22 @@ const fetchUnitNames = async (
 };
 
 export const useUnitNamesQuery = (
-  registerShortName: string,
-  context: string,
-  type: string,
+  registerShortName?: string,
+  context?: string,
+  type?: string,
 ) => {
+  const registerShortNameQuery: string = registerShortName
+    ? registerShortName
+    : "all";
+
+  const contextQuery: string = context ? context : "caregiver";
+
+  const typeQuery: string = type ? type : "ind";
+
   return useQuery({
     queryKey: ["unitNames", registerShortName, context, type],
-    queryFn: () => fetchUnitNames(registerShortName, context, type),
+    queryFn: () =>
+      fetchUnitNames(registerShortNameQuery, contextQuery, typeQuery),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
     gcTime: 1000 * 60 * 60,

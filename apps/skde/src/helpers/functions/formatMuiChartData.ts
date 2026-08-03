@@ -24,6 +24,25 @@ export const reshapeData = (
   return reshapedData;
 };
 
+export const reshapeDataV2 = (
+  data: IndicatorData,
+  unitNames: string[],
+  context: "caregiver" | "resident" | undefined,
+) => {
+  const reshapedData = unitNames.map((unitName: string) => {
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+    return data
+      .data!.filter((row: DataPoint) => {
+        return row.unitName === unitName && row.context === context;
+      })
+      .map((row: DataPoint) => {
+        return { x: row.year, y: row.var, n: row.denominator } as Point;
+      });
+  });
+
+  return reshapedData;
+};
+
 // Get the years from the data
 const getUniqueYears = (data: Point[][]) => {
   const years = data.flatMap((row: Point[]) => {
@@ -118,6 +137,23 @@ export const formatMuiChartData = (
   dataFormat: string,
 ) => {
   const reshapedData = reshapeData(data, unitNames, context);
+  const uniqueYears = getUniqueYears(reshapedData);
+  const paddedData = padData(reshapedData, uniqueYears);
+  const lineData = formatLineData(paddedData, unitNames, dataFormat);
+
+  return {
+    lineData: lineData,
+    uniqueYears: uniqueYears,
+  };
+};
+
+export const formatMuiChartDataV2 = (
+  data: IndicatorData,
+  unitNames: string[],
+  context: "caregiver" | "resident" | undefined,
+  dataFormat: string,
+) => {
+  const reshapedData = reshapeDataV2(data, unitNames, context);
   const uniqueYears = getUniqueYears(reshapedData);
   const paddedData = padData(reshapedData, uniqueYears);
   const lineData = formatLineData(paddedData, unitNames, dataFormat);

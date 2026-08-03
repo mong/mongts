@@ -10,8 +10,9 @@ import {
 } from "@mong/material-ui";
 import { type SelectChangeEvent, Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
-import { useIndicatorQuery } from "qmongjs";
+import { useIndicatorQuery, useUnitNamesQuery } from "qmongjs";
 import { Suspense, useState } from "react";
+import type { OptsTu } from "types";
 import { useQueryParam } from "use-query-params";
 import { defaultYear, mainQueryParamsConfig } from "../../../../src/app_config";
 import { MedicalFieldPopup } from "../../../../src/components/DialogBox/MedicalFieldPopup";
@@ -97,10 +98,21 @@ export const TreatmentQualityPageV3 = () => {
     nested: true,
   });
 
+  // Default: all registries, caregiver and ind
+  const unitNamesByLevelQuery = useUnitNamesQuery();
+
   const registerData = nestedDataQuery?.data;
+  const unitNamesByLevel = unitNamesByLevelQuery?.data?.opts_tu as OptsTu[];
+
   const isInitialLoading =
-    nestedDataQuery.status === "pending" && !registerData;
-  const hasLoadingError = nestedDataQuery.status === "error";
+    nestedDataQuery.status === "pending" &&
+    unitNamesByLevelQuery.status === "pending" &&
+    !registerData &&
+    !unitNamesByLevel;
+
+  const hasLoadingError =
+    nestedDataQuery.status === "error" ||
+    unitNamesByLevelQuery.status === "error";
 
   return (
     <>
@@ -230,6 +242,7 @@ export const TreatmentQualityPageV3 = () => {
                 selectedTreatmentUnits,
                 "colours",
               )}
+              unitNamesByLevel={unitNamesByLevel}
             />
           ) : registerData ? (
             <>
