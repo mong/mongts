@@ -3,6 +3,8 @@
   "extends": ["config:recommended"],
   "baseBranchPatterns": ["develop"],
   "commitMessageExtra": "from v{{currentVersion}} to {{prettyNewVersion}}",
+  "allowScripts": true,
+  "ignoreScripts": false,
   "packageRules": [
     {
       "matchUpdateTypes": ["patch", "pin", "digest"],
