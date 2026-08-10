@@ -97,6 +97,7 @@ const reshapeData = (
             indicatorTarget:
               levelTarget !== undefined ? levelDirectionSign + levelTarget : "",
             indicatorTitle: indicator.indicatorTitle,
+            indicatorID: indicator.indicatorID,
             residentsAreaResults: indicator.data
               ?.filter((row: DataPoint) => {
                 return (
@@ -204,9 +205,13 @@ const fillMissingUnitnames = (
 export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
   const { data, medfields, unitNames, year, unitNamesByLevel } = props;
 
+  const [expandedRow, setExpandedRow] = useState<string | null>(
+    "hjerteinfarkt_ace_aiiantag_ind",
+  );
+
   const [clickedIndicatorContext, setClickedIndicatorContext] = useState<
     "caregiver" | "resident" | undefined
-  >();
+  >("caregiver");
 
   const medfieldFilteredData = data.filter((row: RegisterData) =>
     medfields.includes(row.registerName),
@@ -219,7 +224,9 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
     clickedIndicatorContext,
     unitNamesByLevel,
   );
+
   fillMissingUnitnames(reshapedData, unitNames);
+
   return (
     <div className="w-full max-w-360">
       <div className="flex md:hidden flex-col gap-(--spacing-4) p-8 text-brand-primary-600">
@@ -230,6 +237,8 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
           registries={reshapedData}
           smallScreenMessage="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din."
           setCurrentContext={setClickedIndicatorContext}
+          currentExpandedRow={expandedRow}
+          setCurrentExpandedRow={setExpandedRow}
         />
       </div>
     </div>
