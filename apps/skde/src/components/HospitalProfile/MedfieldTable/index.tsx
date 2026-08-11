@@ -62,7 +62,7 @@ const createSymbols = (green: number, yellow: number, red: number) => {
   );
 };
 
-type RowData = {
+export type RowData = {
   name: string;
   green: number;
   yellow: number;
