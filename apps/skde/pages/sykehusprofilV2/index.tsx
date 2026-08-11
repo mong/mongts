@@ -20,6 +20,7 @@ import { useQueryParam } from "use-query-params";
 import { mainQueryParamsConfig } from "../../src/app_config";
 import { TreatmentUnitPopupSingleSelect } from "../../src/components/DialogBox/TreatmentUnitPopupSingleSelect";
 import { TopSummarySection } from "../../src/components/HospitalProfile";
+import { MedfieldTable2 } from "../../src/components/HospitalProfile/MedfieldTable2";
 
 export const Skde = (): JSX.Element => {
   // States
@@ -256,13 +257,19 @@ export const Skde = (): JSX.Element => {
                     </Button>
                   </Box>
                 ) : (
-                  <TopSummarySection
-                    selectedTreatmentUnit={selectedTreatmentUnit}
-                    unitName={selectedUnitNamesAsString}
-                    unitFullName={unitFullName}
-                    lastYear={lastYear}
-                    pastYears={pastYears}
-                  />
+                  <>
+                    <TopSummarySection
+                      selectedTreatmentUnit={selectedTreatmentUnit}
+                      unitName={selectedUnitNamesAsString}
+                      unitFullName={unitFullName}
+                      lastYear={lastYear}
+                      pastYears={pastYears}
+                    />
+                    <MedfieldTable2
+                      unitName={selectedUnitNamesAsString}
+                      year={lastYear}
+                    />
+                  </>
                 )}
               </div>
             )}
