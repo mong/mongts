@@ -276,8 +276,8 @@ export const TreatmentUnitPopupSingleSelect = (
       slotProps={{
         paper: {
           sx: {
-            maxWidth: "80dvh", // Set your custom width here
-            height: "50dvh", // Set fixed dialog height
+            maxWidth: "100dvh", // Set your custom width here
+            height: "80dvh", // Set fixed dialog height
             maxHeight: "80dvh", // Keep bounded to viewport
             overflow: "hidden",
             display: "flex",
