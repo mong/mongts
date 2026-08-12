@@ -327,8 +327,8 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
       slotProps={{
         paper: {
           sx: {
-            maxWidth: "80dvh",
-            height: "50dvh",
+            maxWidth: "100dvh",
+            height: "80dvh",
             maxHeight: "80dvh",
             overflow: "hidden",
             display: "flex",
