@@ -2,7 +2,7 @@ import _ from "lodash";
 import { level, minDG } from "qmongjs";
 import type { Indicator, IndicatorLineChartDataPoint } from "types";
 
-type IndicatorLevelsV2 = {
+export type IndicatorLevelsV2 = {
   ind_id: string;
   year: number;
   level: 0 | 1 | 2;
@@ -36,7 +36,7 @@ const mapLevel = (indicatorLevel: string | undefined) => {
   return mappedLevel;
 };
 
-const countLevels = (levels: IndicatorLevelsV2[]) => {
+export const countLevels = (levels: IndicatorLevelsV2[]) => {
   return _(levels)
     .countBy((row) => {
       return [row.level, row.year];
@@ -62,7 +62,7 @@ const countLevels = (levels: IndicatorLevelsV2[]) => {
 
 // GroupedLevels only contains datapoint for the years where there is data.
 // This function adds years without data in the range [minYear, maxYear] and sets the value to 0.
-const setMissingToZero = (
+export const setMissingToZero = (
   groupedLevels: GroupedLevels,
   minYear?: number,
   maxYear?: number,
