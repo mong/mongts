@@ -3,7 +3,7 @@ import {
   countLevels,
   type IndicatorLevelsV2,
   setMissingToZero,
-} from "../index";
+} from "../functions";
 import { levelData } from "./data";
 
 type LinechartData = {
