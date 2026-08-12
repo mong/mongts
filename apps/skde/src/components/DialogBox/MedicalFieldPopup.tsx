@@ -253,8 +253,8 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
       slotProps={{
         paper: {
           sx: {
-            maxWidth: "70dvh",
-            height: "50dvh",
+            maxWidth: "100dvh",
+            height: "80dvh",
             maxHeight: "80dvh",
             overflow: "hidden",
             display: "flex",
