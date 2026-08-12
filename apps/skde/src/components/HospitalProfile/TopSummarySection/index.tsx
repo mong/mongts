@@ -1,7 +1,11 @@
 import { Box, SplitButton } from "@mong/material-ui";
+import type { UseQueryResult } from "@tanstack/react-query";
+import { useIndicatorQuery } from "qmongjs";
 import type { JSX } from "react";
+import type { Indicator } from "types";
 import { AchievementResultsBars } from "../../Charts/AchievementResultsBars";
 import { HospitalProfileLinePlotV2 } from "../HospitalProfileLinePlotV2";
+import { formatChartData } from "./functions";
 
 type SummaryHeaderProps = {
   selectedTreatmentUnit: (string | null | undefined)[] | undefined;
@@ -60,18 +64,34 @@ const AchievementSummaryCard = ({
 };
 
 type TrendAnalysisCardProps = {
-  unitFullName: string;
   unitName: string;
   lastYear: number;
   pastYears: number;
 };
 
 const TrendAnalysisCard = ({
-  unitFullName,
   unitName,
   lastYear,
   pastYears,
 }: TrendAnalysisCardProps) => {
+  // Fetch aggregated data
+  const indicatorQuery: UseQueryResult<Indicator[], unknown> =
+    useIndicatorQuery({
+      unitNames: [unitName],
+      context: "caregiver",
+      type: "ind",
+    });
+
+  if (indicatorQuery.isFetching || indicatorQuery.data === undefined) {
+    return null;
+  }
+
+  const chartData = formatChartData(
+    indicatorQuery.data,
+    lastYear - pastYears,
+    lastYear,
+  );
+
   return (
     <>
       <Box
@@ -79,12 +99,7 @@ const TrendAnalysisCard = ({
         padded={false}
         className="rounded-lg py-10 pl-12 pr-0 h-159"
       >
-        <HospitalProfileLinePlotV2
-          unitFullName={unitFullName}
-          unitNames={unitName}
-          lastYear={lastYear}
-          pastYears={pastYears}
-        />
+        <HospitalProfileLinePlotV2 chartData={chartData} />
       </Box>
       <Box
         padded={false}
@@ -102,7 +117,6 @@ const TrendAnalysisCard = ({
 };
 
 export type TopSummarySectionProps = {
-  selectedTreatmentUnit: (string | null | undefined)[] | undefined;
   unitName: string;
   unitFullName: string;
   lastYear: number;
@@ -110,7 +124,6 @@ export type TopSummarySectionProps = {
 };
 
 export const TopSummarySection = ({
-  selectedTreatmentUnit,
   unitName,
   unitFullName,
   lastYear,
@@ -118,7 +131,7 @@ export const TopSummarySection = ({
 }: TopSummarySectionProps): JSX.Element => {
   return (
     <div className="w-full h-250 py-6">
-      <SummaryHeader selectedTreatmentUnit={selectedTreatmentUnit} />
+      <SummaryHeader selectedTreatmentUnit={[unitFullName]} />
 
       <div className="flex w-full pt-5">
         <div className="w-1/2 flex flex-col gap-5 z-50">
@@ -138,7 +151,6 @@ export const TopSummarySection = ({
 
         <div className="w-1/2 flex flex-col ml-4 gap-5">
           <TrendAnalysisCard
-            unitFullName={unitFullName}
             unitName={unitName}
             lastYear={lastYear}
             pastYears={pastYears}
