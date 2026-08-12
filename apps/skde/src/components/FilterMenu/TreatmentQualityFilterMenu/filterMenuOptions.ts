@@ -1,80 +1,5 @@
 import type { UseQueryResult } from "@tanstack/react-query";
-import { app_text, defaultYear, maxYear, minYear } from "../../../app_config";
-import type { FilterSettingsValue } from "../FilterSettingsContext";
 import type { TreeViewFilterSectionNode } from "../TreeViewFilterSection";
-
-/**
- * Gets the years available for selection
- *
- * @returns An object with year values and the default year
- */
-export const getYearOptions = (
-  min?: number,
-  max?: number,
-): {
-  values: FilterSettingsValue[];
-  default: FilterSettingsValue;
-} => {
-  const yearValues: FilterSettingsValue[] = [];
-  let yearString: string;
-
-  const startYear = min ?? minYear;
-  const endYear = max ?? maxYear;
-
-  for (let year = startYear; year <= endYear; year++) {
-    yearString = year.toString();
-    yearValues.push({ value: yearString, valueLabel: yearString });
-  }
-
-  const defaultYearString = defaultYear.toString();
-
-  return {
-    values: yearValues,
-    default: { value: defaultYearString, valueLabel: defaultYearString },
-  };
-};
-
-/**
- * Gets the goal achievement options available for selection
- *
- * @returns An object with values and the default value
- */
-export const getAchievementLevelOptions = (): {
-  values: FilterSettingsValue[];
-  // default: FilterSettingsValue;
-  default: FilterSettingsValue | null;
-} => {
-  const goalAchievementValues = [
-    // { value: "", valueLabel: "Alle måloppnåelser" },
-    { value: "H", valueLabel: app_text.indicators.high.text },
-    { value: "M", valueLabel: app_text.indicators.moderate.text },
-    { value: "L", valueLabel: app_text.indicators.low.text },
-  ];
-  return {
-    values: goalAchievementValues,
-    // default: goalAchievementValues[0],
-    default: null,
-  };
-};
-
-/**
- * Gets the options for table context
- *
- * @returns An object with values and the default value
- */
-export const getTableContextOptions = (): {
-  values: FilterSettingsValue[];
-  default: FilterSettingsValue;
-} => {
-  const tableContextValues = [
-    { value: "caregiver", valueLabel: "Behandlingssteder" },
-    { value: "resident", valueLabel: "Opptaksområder" },
-  ];
-  return {
-    values: tableContextValues,
-    default: tableContextValues[0],
-  };
-};
 
 /**
  * Builds tree data for the treatment units filter section from
@@ -142,21 +67,6 @@ const registerQueryParamPrefix = "reg-";
  */
 const encodeRegisterQueryParam = (register: string) => {
   return `${registerQueryParamPrefix}${register}`;
-};
-
-/**
- * Decode a register name formatted for query parameters, i.e., remove prefix.
- *
- * @param register Plain register short name
- * @returns Register name formatted for use in query parameters
- */
-export const decodeRegisterQueryParam = (registerParam: string) => {
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  if (registerParam && registerParam.startsWith(registerQueryParamPrefix)) {
-    return registerParam.substring(registerQueryParamPrefix.length);
-  } else {
-    return registerParam;
-  }
 };
 
 /**

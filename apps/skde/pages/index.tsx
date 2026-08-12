@@ -1,5 +1,4 @@
-import { Box, HeroBanner, PageContent, ProductCard } from "@mong/material-ui";
-import Link from "next/link";
+import { HeroBanner, PageContent, ProductCard } from "@mong/material-ui";
 
 export default function Home() {
   return (

@@ -43,7 +43,7 @@ export type FilterMenuSelectionChangedHandler = (
  * The type/signature of the handler function to call when the filter settings are initialized. It is called
  * with the filter settings.
  */
-export type FilterMenuFilterInitializedHandler = (
+type FilterMenuFilterInitializedHandler = (
   filterSettings: Map<string, FilterSettingsValue[]>,
 ) => void;
 
