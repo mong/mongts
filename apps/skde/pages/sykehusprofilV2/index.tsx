@@ -21,6 +21,7 @@ import { mainQueryParamsConfig } from "../../src/app_config";
 import { TreatmentUnitPopupSingleSelect } from "../../src/components/DialogBox/TreatmentUnitPopupSingleSelect";
 import { TopSummarySection } from "../../src/components/HospitalProfile";
 import { MedfieldTable2 } from "../../src/components/HospitalProfile/MedfieldTable2";
+import { SelectedIndicatorTable } from "../../src/components/HospitalProfile/SelectedIndicatorTable";
 
 export const Skde = (): JSX.Element => {
   // States
@@ -61,6 +62,10 @@ export const Skde = (): JSX.Element => {
   // Years for filtering
   const lastYear = new Date().getFullYear() - 1; // Last year is always the previous year
   const pastYears = 10;
+
+  const titleStyle = { marginTop: 20, marginLeft: 20 };
+  const textMargin = 20;
+  const titlePadding = 2;
 
   // ####### //
   // Queries //
@@ -268,6 +273,13 @@ export const Skde = (): JSX.Element => {
                     <MedfieldTable2
                       unitName={selectedUnitNamesAsString}
                       year={lastYear}
+                    />
+                    <SelectedIndicatorTable
+                      unitName={selectedUnitNamesAsString || ""}
+                      titlePadding={titlePadding}
+                      titleStyle={titleStyle}
+                      lastYear={lastYear}
+                      textMargin={textMargin}
                     />
                   </>
                 )}
