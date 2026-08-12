@@ -201,8 +201,3 @@ export type ResidentData = {
   unitName: string;
   level: string;
 };
-
-export type IndicatorLineChartDataPoint = {
-  x: number;
-  y: number;
-};
