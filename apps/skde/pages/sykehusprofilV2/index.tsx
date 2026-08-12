@@ -264,7 +264,6 @@ export const Skde = (): JSX.Element => {
                 ) : (
                   <>
                     <TopSummarySection
-                      selectedTreatmentUnit={selectedTreatmentUnit}
                       unitName={selectedUnitNamesAsString}
                       unitFullName={unitFullName}
                       lastYear={lastYear}
