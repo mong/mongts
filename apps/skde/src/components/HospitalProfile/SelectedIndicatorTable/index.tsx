@@ -12,7 +12,7 @@ import type { UseQueryResult } from "@tanstack/react-query";
 import {
   customFormat,
   level,
-  newLevelSymbols,
+  newestLevelSymbols,
   useIndicatorQuery,
 } from "qmongjs";
 import type { Indicator } from "types";
@@ -56,6 +56,8 @@ const IndicatorRow = (
 ) => {
   const indInfo = indicatorInfo.find((row) => row.indId === indId);
 
+  const symbolSize = 30;
+
   const point1 = data.find((row) => {
     return row.ind_id === indId && row.year === lastYear - 1;
   });
@@ -79,13 +81,13 @@ const IndicatorRow = (
       <TableCell>
         <Stack direction="column" alignItems="center">
           <Stack direction="row-reverse" spacing={1} alignItems="center">
-            {newLevelSymbols("H")}
+            {newestLevelSymbols("H", Math.random().toString(), symbolSize)}
             <Typography variant="body2">
               {customFormat(indInfo?.sformat || "")(indInfo?.level_green || 0)}
             </Typography>
           </Stack>
           <Stack direction="row-reverse" spacing={1} alignItems="center">
-            {newLevelSymbols("M")}
+            {newestLevelSymbols("M", Math.random().toString(), symbolSize)}
             <Typography variant="body2">
               {customFormat(indInfo?.sformat || "")(indInfo?.level_yellow || 0)}
             </Typography>
@@ -109,7 +111,7 @@ const IndicatorRow = (
                 customFormat(point1.sformat)(var1)
               }
             </Typography>
-            {newLevelSymbols(level1)}
+            {newestLevelSymbols(level1, Math.random().toString(), symbolSize)}
           </Stack>
         ) : getLowDG(
             // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
@@ -148,7 +150,7 @@ const IndicatorRow = (
                 customFormat(point2.sformat)(var2)
               }
             </Typography>
-            {newLevelSymbols(level2)}
+            {newestLevelSymbols(level2, Math.random().toString(), symbolSize)}
           </Stack>
         ) : getLowDG(
             // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
