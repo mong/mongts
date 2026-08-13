@@ -6,7 +6,7 @@ context("Testing of sykehusprofil page", () => {
   });
   it("Main page", () => {
     cy.viewport(1550, 1750);
-    cy.get('[data-testid="hospital_profile_welcome_box"]').should("exist");
+    cy.get('[data-testid="hospital_profile_welcome_text"]').should("exist");
   });
 });
 
