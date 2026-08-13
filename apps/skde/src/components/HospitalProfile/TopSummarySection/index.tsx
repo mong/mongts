@@ -20,12 +20,6 @@ const SummaryHeader = ({ selectedTreatmentUnit }: SummaryHeaderProps) => {
           className="flex justify-between items-center bg-neutral-0 border-none w-full h-28 rounded-lg"
         >
           <h3 className="text-brand-primary-600">{selectedTreatmentUnit}</h3>
-          <SplitButton
-            label="Last ned"
-            onClick={() => {}}
-            options={["PDF", "SVG", "PNG", "CSV"]}
-            steps="one-step"
-          />
         </Box>
       </div>
     </div>
