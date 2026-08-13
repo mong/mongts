@@ -22,6 +22,7 @@ import { TreatmentUnitPopupSingleSelect } from "../../src/components/DialogBox/T
 import { TopSummarySection } from "../../src/components/HospitalProfile";
 import { MedfieldTable2 } from "../../src/components/HospitalProfile/MedfieldTable2";
 import { SelectedIndicatorTable } from "../../src/components/HospitalProfile/SelectedIndicatorTable";
+import { LayoutHead } from "../../src/components/LayoutHead";
 
 export const Skde = (): JSX.Element => {
   // States
@@ -121,6 +122,11 @@ export const Skde = (): JSX.Element => {
 
   return (
     <>
+      <LayoutHead
+        title="Sykehusprofil"
+        content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
+        href="/favicon.ico"
+      />
       <HeroBanner
         title="Sykehusprofil"
         description="Her vises alle kvalitetsindikatorer fra nasjonale medisinske
