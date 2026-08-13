@@ -142,3 +142,27 @@ export const formatChartData = (
 
   return chartData;
 };
+
+export const trendAnalysisString = (
+  greenDifference: number,
+  redDifference: number,
+  lastYear: number,
+  pastYears: number,
+) => {
+  const firstYear = lastYear - pastYears;
+
+  const greenChangeVerb =
+    greenDifference > 0 ? "økt" : greenDifference < 0 ? "minket" : "";
+  const redChangeVerb =
+    redDifference > 0 ? "økt" : redDifference < 0 ? "minket" : "";
+
+  if (greenDifference === 0 && redDifference === 0) {
+    return `I ${lastYear} er høy måloppnåelse og lav måloppnåelse lik det de var i ${firstYear}.`;
+  } else if (greenDifference !== 0 && redDifference === 0) {
+    return `Siden ${firstYear} har høy måloppnåelse ${greenChangeVerb} med ${Math.abs(greenDifference)} %. Lav måloppnåelse er lik det den var i ${firstYear}.`;
+  } else if (greenDifference === 0 && redDifference !== 0) {
+    return `I ${lastYear} er høy måloppnåelse det samme som i 2015. Lav måloppnåelse har ${redChangeVerb} med ${Math.abs(redDifference)} % siden 2015.`;
+  } else if (greenDifference !== 0 && redDifference !== 0) {
+    return `Siden ${firstYear} har høy måloppnåelse ${greenChangeVerb} med ${Math.abs(greenDifference)} %, mens lav måloppnåelse har ${redChangeVerb} med ${Math.abs(redDifference)} %.`;
+  } else return "Trendanalyse er ikke tilgjengelig";
+};
