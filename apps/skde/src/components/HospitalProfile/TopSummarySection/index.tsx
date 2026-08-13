@@ -1,4 +1,4 @@
-import { Box, SplitButton } from "@mong/material-ui";
+import { Box } from "@mong/material-ui";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import type { JSX } from "react";

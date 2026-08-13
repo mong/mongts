@@ -1,4 +1,3 @@
-import { first } from "lodash";
 import { expect, test, vi } from "vitest";
 import {
   countLevels,

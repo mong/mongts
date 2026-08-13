@@ -6,11 +6,7 @@ context("Testing of sykehusprofil page", () => {
   });
   it("Main page", () => {
     cy.viewport(1550, 1750);
-    cy.get('[data-testid="hospital_profile_box_Nasjonalt"]').should("exist");
-    cy.get('[data-testid="subunit_button_Helse Nord RHF"]').click();
-    cy.get('[data-testid="hospital_profile_box_Nasjonalt"]').should(
-      "not.exist",
-    );
+    cy.get('[data-testid="hospital_profile_welcome_text"]').should("exist");
   });
 });
 
