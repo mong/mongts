@@ -2,10 +2,10 @@ import { Box, SplitButton } from "@mong/material-ui";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import type { JSX } from "react";
-import type { Indicator } from "types";
+import type { Indicator, IndicatorLineChartDataPoint } from "types";
 import { AchievementResultsBars } from "../../Charts/AchievementResultsBars";
 import { HospitalProfileLinePlotV2 } from "../HospitalProfileLinePlotV2";
-import { formatChartData } from "./functions";
+import { formatChartData, trendAnalysisString } from "./functions";
 
 type SummaryHeaderProps = {
   selectedTreatmentUnit: (string | null | undefined)[] | undefined;
@@ -57,6 +57,37 @@ const AchievementSummaryCard = ({
   );
 };
 
+type TrendAnalysisProps = {
+  data: IndicatorLineChartDataPoint[][];
+  lastYear: number;
+  pastYears: number;
+};
+
+const TrendAnalysis = (props: TrendAnalysisProps) => {
+  const { data, lastYear, pastYears } = props;
+
+  // High result level is index 0, medium index 1 and low index 2
+  const greenData = data[0];
+  const redData = data[2];
+
+  const greenDifference = Math.round(
+    (greenData[pastYears].y - greenData[0].y) * 100,
+  );
+  const redDifference = Math.round((redData[pastYears].y - redData[0].y) * 100);
+
+  return (
+    <Box
+      padded={false}
+      rounded={false}
+      className="p-10 rounded-lg text-dark"
+      color="white"
+    >
+      <h4 className="pb-4">10-års trendanalyse</h4>
+      {trendAnalysisString(greenDifference, redDifference, lastYear, pastYears)}
+    </Box>
+  );
+};
+
 type TrendAnalysisCardProps = {
   unitName: string;
   lastYear: number;
@@ -95,17 +126,12 @@ const TrendAnalysisCard = ({
       >
         <HospitalProfileLinePlotV2 chartData={chartData} />
       </Box>
-      <Box
-        padded={false}
-        rounded={false}
-        className="p-10 rounded-lg text-dark"
-        color="white"
-      >
-        <h4 className="pb-4">10-års trendanalyse</h4>
-        Siden 2015 har høy måloppnåelse økt med 23 %, mens lavmåloppnåelse har
-        blitt redusert med 12 %. Den største forbedringen skjedde mellom 2022 og
-        2024.
-      </Box>
+
+      <TrendAnalysis
+        data={chartData}
+        lastYear={lastYear}
+        pastYears={pastYears}
+      />
     </>
   );
 };
