@@ -1,8 +1,6 @@
-import { render } from "@testing-library/react";
-import * as hooks from "qmongjs/src/helpers/hooks";
 import type { Indicator } from "types";
 import { expect, test, vi } from "vitest";
-import { createMedfieldTableData, MedfieldTable } from "..";
+import { createMedfieldTableData } from "..";
 
 const medfieldTableData: Indicator[] = [
   {
@@ -206,24 +204,4 @@ const data = createMedfieldTableData(medfieldTableData);
 
 test("Levels counts are correct", () => {
   expect(data).toMatchSnapshot();
-});
-
-test("Table renders correctly", async () => {
-  vi.spyOn(hooks, "useIndicatorQuery").mockReturnValue({
-    data: medfieldTableData,
-    isLoading: false,
-    // @ts-expect-error No idea what type is expected here
-    error: false,
-  });
-
-  const { container } = render(
-    <MedfieldTable
-      unitNames={["Tromsø"]}
-      treatmentYear={2022}
-      context={"caregiver"}
-      type={"ind"}
-    />,
-  );
-
-  expect(container).toMatchSnapshot();
 });

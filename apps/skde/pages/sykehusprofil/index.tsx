@@ -1,231 +1,293 @@
-import { Box, Container, CssBaseline, ThemeProvider } from "@mui/material";
-import Grid from "@mui/material/Grid";
-import type { UseQueryResult } from "@tanstack/react-query";
-import { useScreenSize } from "@visx/responsive";
 import {
-  breakpoints,
-  getUnitFullName,
-  skdeTheme,
-  useUnitNamesQuery,
-  useUnitUrlsQuery,
-} from "qmongjs";
-import { type JSX, useEffect, useState } from "react";
-import type { URLs } from "types";
-import { defaultYear } from "../../src/app_config";
-import { Header } from "../../src/components/Header";
-import { HospitalInfoBox } from "../../src/components/HospitalProfile";
-import { AffiliatedHospitals } from "../../src/components/HospitalProfile/AffiliatedHospitals";
-import { HospitalProfileLinePlot } from "../../src/components/HospitalProfile/HospitalProfileLinePlot";
-import { HospitalProfileLowLevelTable } from "../../src/components/HospitalProfile/HospitalProfileLowLevelTable";
-import { HospitalProfileMedfieldTable } from "../../src/components/HospitalProfile/HospitalProfileMedfieldTable";
+  Box,
+  Button,
+  HeroBanner,
+  Icon,
+  LoadingLogo,
+  PageContent,
+  RotateDevice,
+  ToggleButton,
+  ToggleButtonGroup,
+} from "@mong/material-ui";
+import { Toolbar } from "@mui/material";
+import type { UseQueryResult } from "@tanstack/react-query";
+import { useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
+import { getUnitFullName, useUnitNamesQuery, useUnitUrlsQuery } from "qmongjs";
+import { type JSX, Suspense, useEffect, useState } from "react";
+import type { NestedTreatmentUnitName, OptsTu } from "types";
+import { useQueryParam } from "use-query-params";
+import { mainQueryParamsConfig } from "../../src/app_config";
+import { TreatmentUnitPopupSingleSelect } from "../../src/components/DialogBox/TreatmentUnitPopupSingleSelect";
+import { TopSummarySection } from "../../src/components/HospitalProfile";
+import { MedfieldTable2 } from "../../src/components/HospitalProfile/MedfieldTable2";
 import { SelectedIndicatorTable } from "../../src/components/HospitalProfile/SelectedIndicatorTable";
-import { TurnDeviceBox } from "../../src/components/HospitalProfile/TurnDeviceBox";
-import { UnitFilterMenu } from "../../src/components/HospitalProfile/UnitFilterMenu";
-import { LayoutHead } from "../../src/components/LayoutHead";
-import { PageWrapper } from "../../src/components/StyledComponents/PageWrapper";
 
 export const Skde = (): JSX.Element => {
   // States
-  const [unitName, setUnitName] = useState<string>();
-  const [isMobileAndVertical, setIsMobileAndVertical] = useState<boolean>();
+  const router = useRouter();
+  const [unitName, setUnitName] = useState<(string | null)[] | undefined>([]);
+  const [urlCopied, setUrlCopied] = useState<boolean>(false);
+  const urlCopiedTimeout = 3000;
+
+  // Grab URL params and setUnitNames on load.
+  const searchParams = useSearchParams();
+  const urlTreatmentUnits = searchParams?.get("selected_treatment_units");
+  useEffect(() => {
+    setUnitName([urlTreatmentUnits || ""]);
+  }, [urlTreatmentUnits]);
+
+  //Treatment unit popup
+  const [treatmentUnitPopupOpen, setTreatmentUnitPopupOpen] = useState(false);
+  const [
+    selectedTreatmentUnit = [urlTreatmentUnits],
+    setSelectedTreatmentUnit,
+  ] = useQueryParam<(string | null)[] | undefined>(
+    "selected_treatment_units",
+    mainQueryParamsConfig.units,
+  );
+
+  const treatmentUnitContext = "caregiver";
+  const openTreatmentUnitPopup = () => {
+    setTreatmentUnitPopupOpen(true);
+  };
+  const handleClearFilters = () => {
+    setSelectedTreatmentUnit([]);
+  };
 
   // ############### //
   // Page parameters //
   // ############### //
 
-  // Styling
-  const boxMaxHeight = 800;
+  // Years for filtering
+  const lastYear = new Date().getFullYear() - 1; // Last year is always the previous year
+  const pastYears = 10;
+
   const titleStyle = { marginTop: 20, marginLeft: 20 };
   const textMargin = 20;
-  const maxWidth = "xxl";
   const titlePadding = 2;
-  const boxWidthLimit = 640;
-  const rotateDeviceBoxHeight = 400;
-  const topRowBoxHeightXxl = 400;
-  const topRowBoxHeightXs = 650;
-
-  // On screen resize
-  const { width } = useScreenSize();
-
-  useEffect(() => {
-    setIsMobileAndVertical(screen.orientation.type === "portrait-primary");
-  });
-
-  const showRotateMessage = isMobileAndVertical && width < boxWidthLimit;
-
-  const TurnDeviceMessage = (
-    <TurnDeviceBox height={rotateDeviceBoxHeight} padding={titlePadding} />
-  );
-
-  // Years for filtering
-  const lastYear = defaultYear;
-  const pastYears = 10;
 
   // ####### //
   // Queries //
   // ####### //
 
-  const unitNamesQuery: UseQueryResult<unknown, Error> = useUnitNamesQuery(
-    "all",
-    "caregiver",
-    "ind",
-  );
+  const unitNamesQuery: UseQueryResult<
+    { nestedUnitNames: NestedTreatmentUnitName[]; opts_tu: OptsTu[] },
+    Error
+  > = useUnitNamesQuery("all", "caregiver", "ind");
 
   // URLs for the web pages to the different treatment units
-  const unitUrlsQuery: UseQueryResult<unknown, Error> = useUnitUrlsQuery();
+  const unitUrlsQuery: UseQueryResult<
+    { shortName: string; url: string }[],
+    Error
+  > = useUnitUrlsQuery();
+  const hasUnitsData = !!(unitNamesQuery.data && unitUrlsQuery.data);
 
-  if (unitNamesQuery.isFetching || unitUrlsQuery.isFetching) {
-    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-    return <></>;
-  }
+  const hasLoadingError =
+    unitNamesQuery.status === "error" || unitUrlsQuery.status === "error";
+  const isLoading = !router.isReady || !hasUnitsData;
+  const selectedUnit = selectedTreatmentUnit[0] ?? null;
 
-  let unitFullName: string;
+  // Keep only main hospitals without mutating query-cache data.
+  const nestedUnitNames = (unitNamesQuery.data?.nestedUnitNames ?? []).map(
+    (rhf) => ({
+      ...rhf,
+      hf: rhf.hf.map((hf) => ({
+        ...hf,
+        hospital: hf.hospital,
+      })),
+    }),
+  );
 
-  if (unitNamesQuery.data) {
-    unitFullName =
-      (unitNamesQuery.data &&
-        // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-        getUnitFullName(unitNamesQuery.data.nestedUnitNames, unitName)) ||
-      "";
-  }
+  const selectedUnitName = unitName?.[0] ?? "";
+  const unitFullName = getUnitFullName(nestedUnitNames, selectedUnitName) || "";
+  /**
+   *  Check if the selected unit exists in the loaded data. Guards against
+   *  invalid units coming from the URL.
+   **/
+  const isValidUnit =
+    !!selectedUnit &&
+    !!nestedUnitNames.some(
+      (tu) =>
+        tu.rhf === selectedUnit ||
+        tu.hf.some(
+          (hf) => hf.hf === selectedUnit || hf.hospital.includes(selectedUnit),
+        ),
+    );
 
-  // ############ //
-  // Set unit URL //
-  // ############ //
-
-  const unitUrl: string =
-    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-    unitUrlsQuery.data.find((row: URLs) => row.shortName === unitName)?.url ||
-    "";
+  const emptyStateClassName =
+    "flex flex-col items-center justify-center  text-dark gap-10 min-h-50 md:min-h-100 my-6";
+  const selectedUnitNamesAsString = unitName?.toString() || "";
 
   return (
-    <ThemeProvider theme={skdeTheme}>
-      <CssBaseline />
-      <PageWrapper>
-        <LayoutHead
-          title="Sykehusprofil"
-          content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service for individual treatment units."
-          href="/favicon.ico"
-        />
-        <Header
-          bgcolor="surface2.light"
-          title={"Sykehusprofil"}
-          maxWidth={maxWidth}
+    <>
+      <HeroBanner
+        title="Sykehusprofil"
+        description="Her vises alle kvalitetsindikatorer fra nasjonale medisinske
+            kvalitetsregistre per behandlingssted."
+        image="/hero-bg-2.jpg"
+      />
+      <Suspense
+        fallback={
+          <Box padded={false} color="transparent" className="p-10">
+            <LoadingLogo message="Laster data" />
+          </Box>
+        }
+      >
+        {/* Toolbar */}
+        <div
+          className={`${hasLoadingError || isLoading ? "hidden" : "hidden md:flex"} truncate bg-neutral-0 w-full align-middle justify-center px-6 md:px-12 sticky top-0 z-60 shadow-xs`}
         >
-          <Box sx={{ mb: 6 }}>
-            Her vises alle kvalitetsindikatorer fra nasjonale medisinske
-            kvalitetsregistre per behandlingssted.
-          </Box>
-          <UnitFilterMenu
-            width={Math.min(400, 0.8 * width)}
-            setUnitName={setUnitName}
-            unitNamesQuery={unitNamesQuery}
-            unitName={unitName || ""}
-          />
-        </Header>
+          <div className="flex flex-col w-full h-full max-w-360">
+            <Toolbar disableGutters={true}>
+              <div className="flex flex-row max-w-360 w-full justify-between items-center pb-2 md:pb-4">
+                <div className="flex flex-row md:flex-row gap-2 md:gap-4 flex-wrap">
+                  <div className="flex gap-6">
+                    <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                      Behandlingssted
+                      <Button onClick={openTreatmentUnitPopup}>
+                        Velg behandlingssted
+                      </Button>
+                    </div>
+                    <TreatmentUnitPopupSingleSelect
+                      open={treatmentUnitPopupOpen}
+                      setOpen={setTreatmentUnitPopupOpen}
+                      onSubmit={setUnitName}
+                      context={treatmentUnitContext}
+                      type={"ind"}
+                    />
+                    <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                      Vis
+                      <ToggleButtonGroup
+                        onChange={() => {}}
+                        orientation="horizontal"
+                        value={["måloppnåelse"]}
+                      >
+                        <ToggleButton
+                          aria-label="toggle item1"
+                          value="måloppnåelse"
+                        >
+                          Måloppnåelse
+                        </ToggleButton>
+                        <ToggleButton
+                          aria-label="toggle item2"
+                          value="dekningsgrad"
+                          disabled
+                        >
+                          Dekningsgrad
+                        </ToggleButton>
+                      </ToggleButtonGroup>
+                    </div>
+                  </div>
+                  <div className="flex items-end">
+                    <div className="flex text-small font-semibold text-brand-primary-900">
+                      <Button variant="text" onClick={handleClearFilters}>
+                        Tøm filter
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+                <div className="hidden md:flex align-middle justify-center items-center">
+                  <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                    <div className="whitespace-nowrap">&nbsp;</div>
+                    <Button
+                      startIcon={<Icon size="small" symbol="content_copy" />}
+                      variant="secondary"
+                      onClick={() => {
+                        navigator.clipboard.writeText(window.location.href);
+                        setUrlCopied(true);
+                        setTimeout(() => {
+                          setUrlCopied(false);
+                        }, urlCopiedTimeout);
+                      }}
+                    >
+                      {urlCopied ? "Link kopiert" : "Kopier denne visningen"}
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </Toolbar>
+          </div>
+        </div>
+        {/* End Toolbar */}
 
-        <Container maxWidth={maxWidth} disableGutters={true}>
-          <Box marginTop={2} className="hospital-profile-box">
-            <Grid container spacing={2}>
-              <Grid
-                size={{ xs: 12, sm: 7 }}
-                data-testid={`hospital_profile_box_${unitName}`}
-              >
-                <HospitalInfoBox
-                  boxHeight={
-                    width > breakpoints.xxl
-                      ? topRowBoxHeightXxl
-                      : topRowBoxHeightXs
-                  }
-                  // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                  unitNames={unitNamesQuery.data}
-                  // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                  selectedTreatmentUnit={unitName}
-                  unitUrl={unitUrl}
-                />
-              </Grid>
-              <Grid size={{ xs: 12, sm: 5 }}>
-                <AffiliatedHospitals
-                  boxHeight={
-                    width > breakpoints.xxl
-                      ? topRowBoxHeightXxl
-                      : topRowBoxHeightXs
-                  }
-                  titleStyle={titleStyle}
-                  // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                  unitNames={unitNamesQuery.data}
-                  selectedTreatmentUnit={unitName || ""}
-                  setUnitName={setUnitName}
-                />
-              </Grid>
+        {/* Page Content */}
+        <PageContent>
+          <div className="flex w-full flex-1 min-h-0">
+            {hasLoadingError ? (
+              <Box border className={emptyStateClassName}>
+                <h4>Feil ved innhenting av data. Prøv igjen.</h4>
+                <Button
+                  onClick={() => {
+                    unitNamesQuery.refetch();
+                    unitUrlsQuery.refetch();
+                  }}
+                >
+                  Last på nytt
+                </Button>
+              </Box>
+            ) : isLoading ? (
+              <Box padded={false} color="transparent" className="p-10">
+                <LoadingLogo message="Laster data" />
+              </Box>
+            ) : (
+              <div className="w-full max-w-360">
+                <div className="flex md:hidden flex-col gap-(--spacing-4) p-8 text-brand-primary-600">
+                  <RotateDevice message="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din." />
+                </div>
 
-              <Grid size={{ xs: 12 }}>
-                {showRotateMessage ? (
-                  TurnDeviceMessage
+                {!selectedUnit ? (
+                  <Box
+                    border
+                    className={`${emptyStateClassName} hidden md:flex flex-col justify-center`}
+                  >
+                    <h3 className="text-nowrap">
+                      Velg ett behandlingssted du vil se resultater fra
+                    </h3>
+                    <Button onClick={openTreatmentUnitPopup}>
+                      Velg behandlingssted
+                    </Button>
+                  </Box>
+                ) : !isValidUnit ? (
+                  <Box
+                    border
+                    className={`${emptyStateClassName} hidden md:flex flex-col justify-center`}
+                  >
+                    <h3 className="text-center">
+                      {selectedUnit} har ingen data eller ikke et gyldig
+                      behandlingssted.
+                    </h3>
+                    <Button onClick={openTreatmentUnitPopup}>
+                      Velg et annet behandlingssted
+                    </Button>
+                  </Box>
                 ) : (
-                  <HospitalProfileMedfieldTable
-                    boxMaxHeight={boxMaxHeight}
-                    titlePadding={titlePadding}
-                    titleStyle={titleStyle}
-                    textMargin={textMargin}
-                    unitName={unitName || ""}
-                    lastYear={lastYear}
-                  />
+                  <>
+                    <TopSummarySection
+                      unitName={selectedUnitNamesAsString}
+                      unitFullName={unitFullName}
+                      lastYear={lastYear}
+                      pastYears={pastYears}
+                    />
+                    <MedfieldTable2
+                      unitName={selectedUnitNamesAsString}
+                      year={lastYear}
+                    />
+                    <SelectedIndicatorTable
+                      unitName={selectedUnitNamesAsString || ""}
+                      titlePadding={titlePadding}
+                      titleStyle={titleStyle}
+                      lastYear={lastYear}
+                      textMargin={textMargin}
+                    />
+                  </>
                 )}
-              </Grid>
-
-              <Grid size={{ xs: 12 }}>
-                {showRotateMessage ? (
-                  TurnDeviceMessage
-                ) : (
-                  <HospitalProfileLowLevelTable
-                    unitName={unitName?.toString() || ""}
-                    boxMaxHeight={boxMaxHeight}
-                    titlePadding={titlePadding}
-                    titleStyle={titleStyle}
-                    textMargin={textMargin}
-                    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                    unitFullName={unitFullName}
-                    lastYear={lastYear}
-                  />
-                )}
-              </Grid>
-
-              <Grid size={{ xs: 12 }}>
-                {showRotateMessage ? (
-                  TurnDeviceMessage
-                ) : (
-                  <HospitalProfileLinePlot
-                    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                    unitFullName={unitFullName}
-                    unitNames={unitName?.toString() || ""}
-                    lastYear={lastYear}
-                    pastYears={pastYears}
-                    titlePadding={titlePadding}
-                    titleStyle={titleStyle}
-                    textMargin={textMargin}
-                  />
-                )}
-              </Grid>
-
-              <Grid size={{ xs: 12 }}>
-                {showRotateMessage ? (
-                  TurnDeviceMessage
-                ) : (
-                  <SelectedIndicatorTable
-                    unitName={unitName || ""}
-                    titlePadding={titlePadding}
-                    titleStyle={titleStyle}
-                    lastYear={lastYear}
-                    textMargin={textMargin}
-                  />
-                )}
-              </Grid>
-            </Grid>
-          </Box>
-        </Container>
-      </PageWrapper>
-    </ThemeProvider>
+              </div>
+            )}
+          </div>
+        </PageContent>
+      </Suspense>
+    </>
   );
 };
 
