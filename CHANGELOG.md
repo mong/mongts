@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.9.0](https://github.com/mong/mongts/compare/v1.8.1...v1.9.0) (2026-08-13)
+
+
+### Features
+
+* **Behandlingskvalitet:** chart-komponent i ny tabellkomponent ([#4874](https://github.com/mong/mongts/issues/4874)) ([7000abb](https://github.com/mong/mongts/commit/7000abb7308c5e6cdaf1944692028c9c81cc961c))
+* **Sykehusprofil:** legg til tabell for måloppnåelse per fagområde ([#4885](https://github.com/mong/mongts/issues/4885)) ([f69ad81](https://github.com/mong/mongts/commit/f69ad81940e77a4b5749f392b064b5fb3e711839))
+* **Sykehusprofil:** ny versjon av sykehusprofil ([#4899](https://github.com/mong/mongts/issues/4899)) ([7643790](https://github.com/mong/mongts/commit/76437905282ea772a8ecb2832c012e7c473ccff0))
+* **Sykehusprofil:** utvalgte indikatorer i SykehusprofilV2 ([#4887](https://github.com/mong/mongts/issues/4887)) ([03ae205](https://github.com/mong/mongts/commit/03ae2057d38e425383ed74f4f387313ac4c1ef4f))
+* **SykehusprofilV2:** 10 års trendanalyse ([#4898](https://github.com/mong/mongts/issues/4898)) ([e06f8df](https://github.com/mong/mongts/commit/e06f8df80bc7a9ab3dc5615a93885529d7961dc0))
+
+
+### Bug Fixes
+
+* **Behandlingskvalitet:** fiks nedlasting av figurer ([e0a6a4f](https://github.com/mong/mongts/commit/e0a6a4fb13b8d3012006b9b19920c75a10cfd65c))
+* **Behandlingskvalitet:** fiks nedlasting av figurer ([#4877](https://github.com/mong/mongts/issues/4877)) ([9e6aa3a](https://github.com/mong/mongts/commit/9e6aa3a1a16a33d247b6c8fe686e7d4bb675d1c9))
+* **Behandlingskvalitet:** fiks nedlasting på DG-popup og rydd kode ([#4875](https://github.com/mong/mongts/issues/4875)) ([87d3689](https://github.com/mong/mongts/commit/87d3689c4c63285217ae5dda1a7d3f92e136ecda))
+* **Behandlingskvalitet:** nedlasting av grafer ([#4894](https://github.com/mong/mongts/issues/4894)) ([c17de2d](https://github.com/mong/mongts/commit/c17de2de32138576a2eb718718de423f7fc816b0))
+* **behandlingskvalitet:** resized dialogboxes ([#4883](https://github.com/mong/mongts/issues/4883)) ([a7cadc3](https://github.com/mong/mongts/commit/a7cadc38f54e37e418c15562bae618dbee9deeb2))
+* flytt .npmrc-filen til roten og refresh lock-fil ([#4878](https://github.com/mong/mongts/issues/4878)) ([b3fae3d](https://github.com/mong/mongts/commit/b3fae3deac1d6483abe0c00c908d34a7f3fb5124))
+
 ## [1.8.1](https://github.com/mong/mongts/compare/v1.8.0...v1.8.1) (2026-07-30)
 
 
