@@ -25,6 +25,7 @@ import {
   reshapeData,
 } from "../../../helpers/functions/formatMuiChartData";
 import { ChartLogo } from "../ChartLogo";
+import { CustomChartWrapper } from "../CustomChartWrapper";
 import { BarBackground } from "./BarBackground";
 
 type MuiBarChartProps = {
@@ -270,28 +271,32 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
           },
         ]}
       >
-        {/* <CustomChartWrapper> */}
-        <div className="pl-10 pt-2 flex flex-row">
-          <h6 className="font-semibold text-main tracking-wider">Valgt år:</h6>
-          <h6 className="pl-1 font-regular text-main tracking-wider">{year}</h6>
-        </div>
-        <ChartsTooltip />
-        <ChartsSurface>
-          <BarBackground
-            data={data}
-            percentage={percentage}
-            figureHeight={figureHeight}
-            backgroundMargin={backgroundMargin}
-            lines={true}
-            zoom={zoom}
-            xMaxLimit={xMaxLimit}
-          />
-          <ChartsXAxis />
-          <ChartsYAxis />
-          <BarPlot />
-        </ChartsSurface>
-        <ChartLogo />
-        {/* </CustomChartWrapper> */}
+        <CustomChartWrapper>
+          <div className="pl-10 pt-2 flex flex-row">
+            <h6 className="font-semibold text-main tracking-wider">
+              Valgt år:
+            </h6>
+            <h6 className="pl-1 font-regular text-main tracking-wider">
+              {year}
+            </h6>
+          </div>
+          <ChartsTooltip />
+          <ChartsSurface>
+            <BarBackground
+              data={data}
+              percentage={percentage}
+              figureHeight={figureHeight}
+              backgroundMargin={backgroundMargin}
+              lines={true}
+              zoom={zoom}
+              xMaxLimit={xMaxLimit}
+            />
+            <ChartsXAxis />
+            <ChartsYAxis />
+            <BarPlot />
+          </ChartsSurface>
+          <ChartLogo />
+        </CustomChartWrapper>
       </ChartsDataProviderPro>
     </Box>
   );

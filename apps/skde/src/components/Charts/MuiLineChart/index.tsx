@@ -21,6 +21,7 @@ import type { DataPoint, IndicatorData } from "types";
 import { CustomAnimatedLine } from "../../Charts/MuiLineChart/CustomAnimatedLine";
 import { LineBackground } from "../../Charts/MuiLineChart/LineBackground";
 import { ChartLogo } from "../ChartLogo";
+import { CustomChartWrapper } from "../CustomChartWrapper";
 
 type MuiLineChartProps = {
   data: IndicatorData;
@@ -101,53 +102,53 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
         ]}
       >
         <div className="pt-5">
-          {/* <CustomChartWrapper> */}
-          <div className="pl-20">
-            <ChartsLegend
-              slotProps={{
-                legend: {
-                  sx: {
-                    leftmargin: 0,
-                    fontSize: tickFontSize,
-                    [`.${legendClasses.mark}`]: {
-                      width: 40,
+          <CustomChartWrapper>
+            <div className="pl-20">
+              <ChartsLegend
+                slotProps={{
+                  legend: {
+                    sx: {
+                      leftmargin: 0,
+                      fontSize: tickFontSize,
+                      [`.${legendClasses.mark}`]: {
+                        width: 40,
+                      },
                     },
+                    position: { vertical: "top", horizontal: "start" },
                   },
-                  position: { vertical: "top", horizontal: "start" },
-                },
-              }}
-            />
-          </div>
-          <ChartsTooltip />
-          <ChartsSurface
-            sx={{ "& .line-after path": { strokeDasharray: "10 5" }, mb: -4 }}
-          >
-            <LineBackground
-              data={data}
-              years={uniqueYears}
-              lines={true}
-              percentage={percentage}
-              zoom={zoom}
-              yMaxLimit={yMaxLimit}
-              yMinLimit={yMinLimit}
-            />
-            <ChartsXAxis />
-            <ChartsYAxis />
-            <ChartsAxisHighlight y="line" />
-            <LinePlot
-              slots={{ line: CustomAnimatedLine }}
-              slotProps={{
-                line: {
-                  limit: lastAffirmYear,
-                  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-                } as any,
-              }}
-            />
-            <MarkPlot />
-            <ChartsAxisHighlight x="line" />
-          </ChartsSurface>
-          <ChartLogo />
-          {/* </CustomChartWrapper> */}
+                }}
+              />
+            </div>
+            <ChartsTooltip />
+            <ChartsSurface
+              sx={{ "& .line-after path": { strokeDasharray: "10 5" }, mb: -4 }}
+            >
+              <LineBackground
+                data={data}
+                years={uniqueYears}
+                lines={true}
+                percentage={percentage}
+                zoom={zoom}
+                yMaxLimit={yMaxLimit}
+                yMinLimit={yMinLimit}
+              />
+              <ChartsXAxis />
+              <ChartsYAxis />
+              <ChartsAxisHighlight y="line" />
+              <LinePlot
+                slots={{ line: CustomAnimatedLine }}
+                slotProps={{
+                  line: {
+                    limit: lastAffirmYear,
+                    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+                  } as any,
+                }}
+              />
+              <MarkPlot />
+              <ChartsAxisHighlight x="line" />
+            </ChartsSurface>
+            <ChartLogo />
+          </CustomChartWrapper>
         </div>
       </ChartsDataProviderPro>
     </Box>
