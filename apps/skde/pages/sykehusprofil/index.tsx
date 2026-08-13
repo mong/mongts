@@ -246,9 +246,10 @@ export const Skde = (): JSX.Element => {
                   <Box
                     border
                     className={`${emptyStateClassName} hidden md:flex flex-col justify-center`}
+                    data-testid="hospital_profile_welcome_box"
                   >
                     <h3 className="text-nowrap">
-                      Velg ett behandlingssted du vil se resultater fra
+                      Velg et behandlingssted du vil se resultater fra
                     </h3>
                     <Button onClick={openTreatmentUnitPopup}>
                       Velg behandlingssted

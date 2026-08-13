@@ -150,10 +150,7 @@ export const TopSummarySection = ({
   pastYears,
 }: TopSummarySectionProps): JSX.Element => {
   return (
-    <div
-      className="w-full h-250 py-6"
-      data-testid={`hospital_profile-title-${unitName}`}
-    >
+    <div className="w-full h-250 py-6">
       <SummaryHeader selectedTreatmentUnit={[unitFullName]} />
 
       <div className="flex w-full pt-5">
