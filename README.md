@@ -175,6 +175,13 @@ We **highly** recommend using squash-merges when merging pull requests. A linear
 | `feat: ...`                                | Minor (`1.0.6 → 1.1.0`) | `feat(button): add loading state`   |
 | `feat!: ...` or `BREAKING CHANGE:` in body | Major (`1.0.6 → 2.0.0`) | `feat!: drop React 18 support`      |
 
+feat: ✨ A new feature for the application.
+fix: 🐛 A bug fix that solves a problem.
+docs: 📚 Changes only to documentation (like README files or guides).
+style: 💄 Changes that do not affect code logic, like formatting, semicolons, or whitespace.
+refactor: ♻️ A code change that improves structure but doesn't add a feature or fix a bug.
+test: 🧪 Adding new tests or correcting existing ones.
+chore: 🔧 Regular maintenance tasks that don't affect the app's code directly (e.g., updating dependencies, build process changes).
 ---
 
 ### Releases
