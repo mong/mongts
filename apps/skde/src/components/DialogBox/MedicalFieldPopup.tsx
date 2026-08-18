@@ -103,6 +103,10 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
           id={`${medfield.name}_control`}
           label={medfield.name}
           key={medfield.shortName}
+          // If the user clicks on the label
+          // the checkbox should not be checked.
+          // Only the highlighted medfield should
+          // be changed.
           onClick={(event) => {
             const child = document.getElementById(`${medfield.name}_checkbox`);
 
