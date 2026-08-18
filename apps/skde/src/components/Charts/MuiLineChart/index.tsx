@@ -66,6 +66,9 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
 
   const yDifference = yMaxLimit - yMinLimit;
 
+  // The highest value can be over 100
+  const yDefaultLimit = yMaxLimit <= 1 ? 1 : yMaxLimit;
+
   return (
     <Box padded={false}>
       <ChartsDataProviderPro
@@ -89,7 +92,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
         yAxis={[
           {
             min: zoom ? yMinLimit : 0,
-            max: percentage && !zoom ? 1 : yMaxLimit,
+            max: percentage && !zoom ? yDefaultLimit : yMaxLimit,
             width: 65,
             position: "left",
             scaleType: "linear",

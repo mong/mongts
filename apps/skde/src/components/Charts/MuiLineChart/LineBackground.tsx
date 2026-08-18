@@ -24,8 +24,11 @@ export const LineBackground = (props: LineBackgroundProps) => {
   const levelYellow = data.levelYellow;
   const levelDirection = data.levelDirection;
 
+  // The highest value can be over 100
+  const yDefaultLimit = yMaxLimit <= 1 ? 1 : yMaxLimit;
+
   const yMin = zoom ? yMinLimit : 0;
-  const yMax = percentage && !zoom ? 1 : yMaxLimit;
+  const yMax = percentage && !zoom ? yDefaultLimit : yMaxLimit;
 
   const xMin = Math.min(...years);
   const xMax = Math.max(...years);
