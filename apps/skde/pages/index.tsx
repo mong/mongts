@@ -5,7 +5,7 @@ export default function Home() {
     <>
       <HeroBanner
         description="Her får du oversikt over kvalitet, resultater og variasjon i helsetjenesten"
-        image="/hero-bg-3.jpg"
+        image="/hero-bg-5.jpg"
         title="Utforsk våre analyseverktøy"
       />
       <PageContent color="gray">
