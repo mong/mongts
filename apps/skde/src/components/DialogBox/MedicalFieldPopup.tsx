@@ -100,9 +100,16 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
 
       return (
         <FormControlLabel
+          id={`${medfield.name}_control`}
           label={medfield.name}
           key={medfield.shortName}
-          onClick={() => {
+          onClick={(event) => {
+            const child = document.getElementById(`${medfield.name}_checkbox`);
+
+            if (event.target !== child) {
+              event.preventDefault();
+            }
+
             setHighlightedMedField(medfield.name);
           }}
           sx={{
@@ -127,12 +134,15 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
           }}
           control={
             <Checkbox
+              id={`${medfield.name}_checkbox`}
               checked={medfield.registers.every(registryChecked)}
               indeterminate={
                 !medfield.registers.every(registryChecked) &&
                 medfield.registers.some(registryChecked)
               }
-              onChange={handleChange}
+              onChange={(event) => {
+                handleChange(event);
+              }}
               key={medfield.name}
               sx={{
                 color: "var(--brand-primary-400)",
