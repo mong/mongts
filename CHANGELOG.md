@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.1](https://github.com/mong/mongts/compare/v1.9.0...v1.9.1) (2026-08-18)
+
+
+### Bug Fixes
+
+* **Behandlingskvalitet:** ikke sjekk bokser når kolonner ekspanderes i popup ([#4904](https://github.com/mong/mongts/issues/4904)) ([46fca1f](https://github.com/mong/mongts/commit/46fca1f3d690da82933ba72f2efce9dfb13410f6))
+
 ## [1.9.0](https://github.com/mong/mongts/compare/v1.8.1...v1.9.0) (2026-08-13)
 
 
