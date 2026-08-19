@@ -101,7 +101,17 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
         <FormControlLabel
           label={rhf.rhf}
           key={rhf.rhf}
-          onClick={() => {
+          onClick={(event) => {
+            // If the user clicks on the label
+            // the checkbox should not be checked.
+            // Only the highlighted RHF should
+            // be changed.
+            const child = document.getElementById(`${rhf.rhf}_checkbox`);
+
+            if (event.target !== child) {
+              event.preventDefault();
+            }
+
             setHighlightedRHF(rhf.rhf);
             setHighlightedHF("");
           }}
@@ -125,6 +135,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           }}
           control={
             <Checkbox
+              id={`${rhf.rhf}_checkbox`}
               checked={unitSelection.includes(rhf.rhf)}
               indeterminate={
                 !unitSelection.includes(rhf.rhf) &&
@@ -246,7 +257,16 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           <FormControlLabel
             label={hf.hf}
             key={hf.hf}
-            onClick={() => {
+            onClick={(event) => {
+              // If the user clicks on the label
+              // the checkbox should not be checked.
+              // Only the highlighted HF should
+              // be changed.
+              const child = document.getElementById(`${hf.hf}_checkbox`);
+
+              if (event.target !== child) {
+                event.preventDefault();
+              }
               setHighlightedHF(hf.hf);
             }}
             sx={{
@@ -269,6 +289,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
             }}
             control={
               <Checkbox
+                id={`${hf.hf}_checkbox`}
                 checked={unitSelection.includes(hf.hf)}
                 indeterminate={
                   !unitSelection.includes(hf.hf) && hospitalChecked()
