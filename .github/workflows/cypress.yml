@@ -85,7 +85,7 @@ jobs:
           TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
       - name: Cypress run
-        uses: cypress-io/github-action@v7.4.2
+        uses: cypress-io/github-action@v7.4.3
         with:
           install: false
           working-directory: apps/skde
