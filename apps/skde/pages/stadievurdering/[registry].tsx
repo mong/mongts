@@ -120,12 +120,20 @@ export default function Stadiumfigur({ registry }) {
 
   const PlotComponent = () => {
     return (
-      <Stack direction="column" alignItems="center">
+      <Stack
+        direction="column"
+        sx={{
+          alignItems: "center",
+        }}
+      >
         <Stack
           direction="row"
           spacing={2}
-          sx={{ marginLeft: 10, marginTop: 10 }}
-          alignItems="center"
+          sx={{
+            alignItems: "center",
+            marginLeft: 10,
+            marginTop: 10,
+          }}
         >
           <FaCircle style={{ color: levelAColour, fontSize: "1.2rem" }} />
           <StyledTypography>A</StyledTypography>
@@ -142,6 +150,8 @@ export default function Stadiumfigur({ registry }) {
             {
               curve: "linear",
               dataKey: "y",
+              showMark: true,
+              shape: "circle",
               colorGetter: (data) => {
                 return plotData[data.dataIndex].colour;
               },
@@ -162,8 +172,8 @@ export default function Stadiumfigur({ registry }) {
           height={700}
           yAxis={[
             {
-              min: 1,
-              max: 4,
+              min: 0.8,
+              max: 4.2,
               tickMinStep: 1,
               tickLabelStyle: { fontSize: 16 },
             },

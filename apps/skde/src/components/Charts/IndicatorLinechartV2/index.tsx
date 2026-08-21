@@ -102,6 +102,7 @@ export const IndicatorLinechartV2 = (
           color: levelGreenColours[1],
           valueFormatter: legendValueFormatter,
           label: "Høy",
+          showMark: true,
         },
         {
           data: chartData[1].map((row) => row.y),
@@ -109,6 +110,7 @@ export const IndicatorLinechartV2 = (
           color: levelYellowColours[1],
           valueFormatter: legendValueFormatter,
           label: "Middels",
+          showMark: true,
         },
         {
           data: chartData[2].map((row) => row.y),
@@ -116,6 +118,7 @@ export const IndicatorLinechartV2 = (
           color: levelRedColours[1],
           valueFormatter: legendValueFormatter,
           label: "Lav",
+          showMark: true,
         },
       ]}
       xAxis={[

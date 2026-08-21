@@ -248,7 +248,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
             highlightScope: {
               highlight: "item",
               fade: "series",
-            } as HighlightScope,
+            } as HighlightScope<"bar">,
           },
         ]}
         height={figureHeight}

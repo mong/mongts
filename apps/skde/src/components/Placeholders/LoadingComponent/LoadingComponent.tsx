@@ -3,11 +3,11 @@ import { Stack } from "@mui/material";
 
 export const LoadingComponent = (
   <Stack
-    height="484px"
     spacing={6}
-    justifyContent="center"
-    alignItems="center"
     sx={{
+      height: "484px",
+      justifyContent: "center",
+      alignItems: "center",
       background: "#FFFFFF",
       border: "1px solid #2354AE",
       borderRadius: "16px",
