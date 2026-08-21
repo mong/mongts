@@ -105,6 +105,7 @@ const formatLineData = (
       curve: "linear",
       type: "line",
       connectNulls: true,
+      showMark: true,
       valueFormatter: (
         value: number | null,
         { dataIndex }: { dataIndex: number },
