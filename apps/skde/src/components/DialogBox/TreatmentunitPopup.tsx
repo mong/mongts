@@ -376,7 +376,13 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
             LoadingComponent
           ) : (
             <div className="flex flex-1 min-h-0 flex-col">
-              <Box marginTop={0} marginBottom={0} className="pb-6">
+              <Box
+                className="pb-6"
+                sx={{
+                  marginTop: 0,
+                  marginBottom: 0,
+                }}
+              >
                 <div className="text-sm font-semibold pb-2">Søk</div>
                 <TreeViewSearchBox
                   options={Array.from(treatmentUnitsValueMap.values())}

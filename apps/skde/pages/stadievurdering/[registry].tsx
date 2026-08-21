@@ -120,12 +120,20 @@ export default function Stadiumfigur({ registry }) {
 
   const PlotComponent = () => {
     return (
-      <Stack direction="column" alignItems="center">
+      <Stack
+        direction="column"
+        sx={{
+          alignItems: "center",
+        }}
+      >
         <Stack
           direction="row"
           spacing={2}
-          sx={{ marginLeft: 10, marginTop: 10 }}
-          alignItems="center"
+          sx={{
+            alignItems: "center",
+            marginLeft: 10,
+            marginTop: 10,
+          }}
         >
           <FaCircle style={{ color: levelAColour, fontSize: "1.2rem" }} />
           <StyledTypography>A</StyledTypography>

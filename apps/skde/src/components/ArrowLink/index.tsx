@@ -50,14 +50,26 @@ export const ArrowLink = (props: ArrowLinkProps) => {
 
   return button ? (
     <Button href={href} target={target} variant="text">
-      <Stack alignItems="center" direction="row" gap={1}>
+      <Stack
+        direction="row"
+        sx={{
+          alignItems: "center",
+          gap: 1,
+        }}
+      >
         <Typography variant={textVariant}>{text}</Typography>
         {arrow}
       </Stack>
     </Button>
   ) : (
     <Link href={href} target={target}>
-      <Stack alignItems="center" direction="row" gap={1}>
+      <Stack
+        direction="row"
+        sx={{
+          alignItems: "center",
+          gap: 1,
+        }}
+      >
         <Typography variant={textVariant}>
           {bold ? <b>{text}</b> : text}
         </Typography>

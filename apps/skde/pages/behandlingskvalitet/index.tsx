@@ -101,13 +101,13 @@ export default function TreatmentQualityPage() {
           <TreatmentQualityAppBarV2>
             <Stack
               direction="row"
-              justifyContent="space-between"
-              alignItems="center"
               sx={{
+                justifyContent: "space-between",
+                alignItems: "center",
+                width: "100%",
                 paddingTop: 2,
                 paddingBottom: 2,
               }}
-              width="100%"
             >
               <Stack direction="row" spacing={3}>
                 <div className="flex flex-col text-small font-semibold text-brand-primary-900">
@@ -185,11 +185,11 @@ export default function TreatmentQualityPage() {
           />
         ) : (
           <Stack
-            height="484px"
             spacing={6}
-            justifyContent="center"
-            alignItems="center"
             sx={{
+              height: "484px",
+              justifyContent: "center",
+              alignItems: "center",
               background: "#FFFFFF",
               border: "1px solid #2354AE",
               borderRadius: "16px",
