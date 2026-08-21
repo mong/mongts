@@ -150,6 +150,8 @@ export default function Stadiumfigur({ registry }) {
             {
               curve: "linear",
               dataKey: "y",
+              showMark: true,
+              shape: "circle",
               colorGetter: (data) => {
                 return plotData[data.dataIndex].colour;
               },
@@ -170,8 +172,8 @@ export default function Stadiumfigur({ registry }) {
           height={700}
           yAxis={[
             {
-              min: 1,
-              max: 4,
+              min: 0.8,
+              max: 4.2,
               tickMinStep: 1,
               tickLabelStyle: { fontSize: 16 },
             },
