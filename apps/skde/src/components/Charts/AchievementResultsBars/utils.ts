@@ -87,7 +87,11 @@ export const setMissingToZero = (
 
   return [0, 1, 2].map((level) =>
     dataByLevel[level].map(
-      (row) => ({ x: row.year, y: row.number }) as ChartPoint,
+      (row) =>
+        ({
+          x: row.year,
+          y: row.number,
+        }) as ChartPoint,
     ),
   ) as ChartData;
 };

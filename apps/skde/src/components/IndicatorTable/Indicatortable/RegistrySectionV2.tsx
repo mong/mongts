@@ -144,7 +144,13 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
             }}
             colSpan={unitNames.length + 2}
           >
-            <Stack direction="row" spacing={2} alignItems="center">
+            <Stack
+              direction="row"
+              spacing={2}
+              sx={{
+                alignItems: "center",
+              }}
+            >
               <div
                 lang="no"
                 style={{ wordWrap: "break-word", hyphens: "auto" }}
@@ -222,7 +228,12 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
         {registryHasResidentData &&
           currentContext === "caregiver" &&
           !dataAvailable && (
-            <Box marginLeft={2} marginBottom={4}>
+            <Box
+              sx={{
+                marginLeft: 2,
+                marginBottom: 4,
+              }}
+            >
               <Typography variant="h6">
                 Registeret har data på opptaksområde
               </Typography>

@@ -212,8 +212,13 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
               </tbody>
             </table>
           </div>
-
-          <Box paddingLeft={4} paddingRight={4} paddingBottom={4}>
+          <Box
+            sx={{
+              paddingLeft: 4,
+              paddingRight: 4,
+              paddingBottom: 4,
+            }}
+          >
             <ContextCard
               title="Om kvalitetsindikatoren"
               description={
@@ -245,7 +250,12 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
             backgroundColor: residentData ? residentBackgroundColour : "white",
           }}
         >
-          <Stack direction="row" alignItems="center">
+          <Stack
+            direction="row"
+            sx={{
+              alignItems: "center",
+            }}
+          >
             <IconButton
               aria-label="expand"
               size="small"
@@ -340,15 +350,19 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
             >
               <Stack
                 direction="row"
-                alignItems="center"
-                justifyContent="flex-start"
                 spacing={1}
+                sx={{
+                  alignItems: "center",
+                  justifyContent: "flex-start",
+                }}
               >
                 {!lowDG && row?.symbol}
                 <Stack
                   direction="column"
-                  alignItems="flex-start"
-                  justifyContent="center"
+                  sx={{
+                    alignItems: "flex-start",
+                    justifyContent: "center",
+                  }}
                 >
                   <b>{cellData}</b>
                   <Typography variant="body2">{patientCounts}</Typography>
@@ -358,7 +372,6 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
           );
         })}
       </StyledTableRow>
-
       <TableRow>
         <StyledTableCell
           style={{
@@ -387,7 +400,6 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
           </Collapse>
         </StyledTableCell>
       </TableRow>
-
       {open ? EmptyRow : null}
     </React.Fragment>
   );

@@ -79,14 +79,31 @@ const IndicatorRow = (
       <TableCell>{indInfo?.title}</TableCell>
       <TableCell>{indInfo?.registry}</TableCell>
       <TableCell>
-        <Stack direction="column" alignItems="center">
-          <Stack direction="row-reverse" spacing={1} alignItems="center">
+        <Stack
+          direction="column"
+          sx={{
+            alignItems: "center",
+          }}
+        >
+          <Stack
+            direction="row-reverse"
+            spacing={1}
+            sx={{
+              alignItems: "center",
+            }}
+          >
             {newestLevelSymbols("H", Math.random().toString(), symbolSize)}
             <Typography variant="body2">
               {customFormat(indInfo?.sformat || "")(indInfo?.level_green || 0)}
             </Typography>
           </Stack>
-          <Stack direction="row-reverse" spacing={1} alignItems="center">
+          <Stack
+            direction="row-reverse"
+            spacing={1}
+            sx={{
+              alignItems: "center",
+            }}
+          >
             {newestLevelSymbols("M", Math.random().toString(), symbolSize)}
             <Typography variant="body2">
               {customFormat(indInfo?.sformat || "")(indInfo?.level_yellow || 0)}
@@ -101,9 +118,11 @@ const IndicatorRow = (
         !getNoData(point1) ? (
           <Stack
             direction="row"
-            alignItems="center"
-            justifyContent="flex-end"
             spacing={1}
+            sx={{
+              alignItems: "center",
+              justifyContent: "flex-end",
+            }}
           >
             <Typography variant="body2">
               {
@@ -140,9 +159,11 @@ const IndicatorRow = (
         !getNoData(point2) ? (
           <Stack
             direction="row"
-            alignItems="center"
-            justifyContent="flex-end"
             spacing={1}
+            sx={{
+              alignItems: "center",
+              justifyContent: "flex-end",
+            }}
           >
             <Typography variant="body2">
               {
@@ -269,7 +290,11 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
 
   return (
     <ItemBox>
-      <Box padding={titlePadding}>
+      <Box
+        sx={{
+          padding: titlePadding,
+        }}
+      >
         <Typography variant="h5" style={titleStyle}>
           <b>Utvalgte indikatorer</b>
         </Typography>
