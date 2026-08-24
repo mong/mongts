@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.9.2](https://github.com/mong/mongts/compare/v1.9.1...v1.9.2) (2026-08-24)
+
+
+### Bug Fixes
+
+* **Behandlingskvalitet:** ta høyde for indikatorverdier over 100 % ([#4906](https://github.com/mong/mongts/issues/4906)) ([b62f8d1](https://github.com/mong/mongts/commit/b62f8d1c745c2a487f4524f58550b4a51fae19c5))
+* **deps:** update dependency express-rate-limit from v8.4.1 to v8.6.2 ([#4633](https://github.com/mong/mongts/issues/4633)) ([0c5582f](https://github.com/mong/mongts/commit/0c5582fc8f5cb2e14d6f301d90c94c9dfa9b785b))
+* **deps:** update dependency mysql2 from v3.22.5 to v3.23.4 ([#4919](https://github.com/mong/mongts/issues/4919)) ([da21ac1](https://github.com/mong/mongts/commit/da21ac1c204c4303cf2f420c469b33e12061856e))
+* **deps:** update material-ui monorepo ([#4635](https://github.com/mong/mongts/issues/4635)) ([3866dfb](https://github.com/mong/mongts/commit/3866dfb871187ef58e584fee8ed526a6da09856e))
+* **deps:** update material-ui monorepo (major) ([#4920](https://github.com/mong/mongts/issues/4920)) ([bd9e6dc](https://github.com/mong/mongts/commit/bd9e6dc904146b6d946eeb651e5c3894062fa608))
+* **deps:** update react monorepo ([#4805](https://github.com/mong/mongts/issues/4805)) ([4b34434](https://github.com/mong/mongts/commit/4b34434b93d1d258f9b2ecd44272fa8c2ce6b3ae))
+* **deps:** update tanstack-query monorepo from v5.101.2 to v5.101.4 ([#4911](https://github.com/mong/mongts/issues/4911)) ([ec4454c](https://github.com/mong/mongts/commit/ec4454c053cdbe35e5f50ebe7f69a4152fdd78e9))
+
 ## [1.9.1](https://github.com/mong/mongts/compare/v1.9.0...v1.9.1) (2026-08-18)
 
 
