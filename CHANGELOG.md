@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.3](https://github.com/mong/mongts/compare/v1.9.2...v1.9.3) (2026-08-25)
+
+
+### Bug Fixes
+
+* **deps:** oppdater @mong/material-ui til 13.14.3 ([#4933](https://github.com/mong/mongts/issues/4933)) ([c5a94bd](https://github.com/mong/mongts/commit/c5a94bdfcada4644ce19fedd93c3b3f9d9a68137))
+
 ## [1.9.2](https://github.com/mong/mongts/compare/v1.9.1...v1.9.2) (2026-08-24)
 
 
