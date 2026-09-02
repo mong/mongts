@@ -70,6 +70,18 @@ export const ChartRow = (props: ChartRowProps) => {
     return <div>No data</div>;
   }
 
+  // Filterer vekk lav dekningsgrad
+  data.data = data.data.filter((row) =>
+    row.dg !== null ? row.dg >= 0.6 : true,
+  );
+
+  // Filterer vekk lav n
+  data.data = data.data.filter((row) =>
+    data.minDenominator
+      ? row.denominator >= data.minDenominator
+      : row.denominator >= 5,
+  );
+
   // Callback functions for dropdown menus
   const handleBarChartTypeChange = (event: SelectChangeEvent) => {
     setBarChartType(event.target.value as string);
