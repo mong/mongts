@@ -276,19 +276,22 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
           {targetLevel}
         </StyledTableCellMiddle>
         {rowDataSorted.map((row, index, arr) => {
-          // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-          const lowDG = row?.dg == null ? false : row?.dg < 0.6 ? true : false;
-          // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-          const noData = row?.denominator == null ? true : false;
+          const lowDG =
+            row?.dg === null || row?.dg === undefined ? false : row?.dg < 0.6;
+
+          const noData = row?.denominator == null;
+
           const lowN =
-            row?.denominator == null
+            row?.denominator === null || row?.denominator === undefined
               ? false
-              : row.minDenominator == null
-                ? false
-                : // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-                  row.denominator < row.minDenominator
-                  ? true
-                  : false;
+              : (row?.minDenominator == null ||
+                    row?.denominator !== undefined) &&
+                  row?.denominator < 5
+                ? true
+                : row?.minDenominator === null ||
+                    row?.minDenominator === undefined
+                  ? false
+                  : row?.denominator < row?.minDenominator;
 
           const cellAlpha = 0.3;
           const cellOpacity =
@@ -301,8 +304,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
                   : cellAlpha;
 
           const cellData = Array.from([lowDG, noData, lowN]).every(
-            // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-            (x) => x == false,
+            (x) => x === false,
           )
             ? (row?.level === "H"
                 ? "Høy "
