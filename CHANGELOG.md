@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.5](https://github.com/mong/mongts/compare/v1.9.4...v1.9.5) (2026-09-02)
+
+
+### Bug Fixes
+
+* **Behandlingskvalitet:** filtrer ut lav N i tabell ([#4956](https://github.com/mong/mongts/issues/4956)) ([59975e9](https://github.com/mong/mongts/commit/59975e98119082f31e5c456eaab0cf105a895a9c))
+
 ## [1.9.4](https://github.com/mong/mongts/compare/v1.9.3...v1.9.4) (2026-09-02)
 
 
