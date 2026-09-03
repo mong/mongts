@@ -13,17 +13,6 @@ type LinechartData = {
   y: number;
 };
 
-vi.mock("next/font/google", () => ({
-  Plus_Jakarta_Sans: () => ({
-    weight: ["200", "300", "400", "500", "600", "700", "800"],
-    subsets: ["latin"],
-    display: "swap",
-    style: {
-      fontFamily: "Plus Jakarta Sans",
-    },
-  }),
-}));
-
 test("Levels counts are correct", async () => {
   const expectedGroupedLevels = {
     0: [{ number: 2, year: 2018 }],
