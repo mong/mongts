@@ -73,14 +73,14 @@ export const RegistryLevelTable = (props: RegistryLevelTableProps) => {
           return (
             <TableRow key={`Rank-${row.registry}`}>
               <TableCell>
-                {
+                {row.url && (
                   <ArrowLink
                     href={row.url}
                     text={row.registry}
                     externalLink={true}
                     button={false}
                   />
-                }
+                )}
               </TableCell>
 
               {_.range(numberOfYears).map((i) => {

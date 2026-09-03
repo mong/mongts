@@ -1,5 +1,5 @@
-import { defaultReviewYear } from "qmongjs";
 import type { JSX } from "react";
+import { defaultReviewYear } from "../../src/app_config";
 import { RegistryLevelTable } from "../../src/components/RegistryLevelTable";
 
 export const Skde = (): JSX.Element => {
