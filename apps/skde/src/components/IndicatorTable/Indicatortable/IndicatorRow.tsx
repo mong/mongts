@@ -13,7 +13,8 @@ import IconButton from "@mui/material/IconButton";
 import TableRow from "@mui/material/TableRow";
 import type { MUIStyledCommonProps } from "@mui/system";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { customFormat, level2, newestLevelSymbols, skdeTheme } from "qmongjs";
+import { customFormat, level2, newestLevelSymbols } from "qmongjs";
+import { backgroundColour } from "qmongjs/src/app_config";
 import React from "react";
 import type { IndicatorData, OptsTu } from "types";
 import { ChartRow } from "../chartrow";
@@ -135,7 +136,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
           paddingTop: 0,
           paddingLeft: 0,
           paddingRight: 0,
-          backgroundColor: skdeTheme.palette.background.paper,
+          backgroundColor: backgroundColour,
         }}
         colSpan={unitNames.length + 1}
       ></StyledTableCell>

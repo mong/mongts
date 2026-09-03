@@ -1,5 +1,5 @@
 import { styled, Table, TableCell, TableRow } from "@mui/material";
-import { skdeTheme } from "qmongjs/src/themes/SkdeTheme";
+import { backgroundColour } from "qmongjs/src/app_config";
 
 declare module "@mui/material/styles" {
   interface Theme {
@@ -32,7 +32,7 @@ export const StyledTableCell = styled(TableCell)(() => ({
   borderTopLeftRadius: "0.5rem",
   borderBottomLeftRadius: "0.5rem",
   backgroundColor: "#FFFFFF",
-  borderColor: skdeTheme.palette.background.paper,
+  borderColor: backgroundColour,
   fontSize: "1rem",
 }));
 
@@ -40,7 +40,7 @@ export const StyledTableCellStart = styled(TableCell)(() => ({
   borderTopLeftRadius: "0.5rem",
   borderBottomLeftRadius: "0.5rem",
   backgroundColor: "#FFFFFF",
-  borderColor: skdeTheme.palette.background.paper,
+  borderColor: backgroundColour,
   fontSize: "1rem",
 }));
 
@@ -48,12 +48,12 @@ export const StyledTableCellEnd = styled(TableCell)(() => ({
   borderTopRightRadius: "0.5rem",
   borderBottomRightRadius: "0.5rem",
   backgroundColor: "#FFFFFF",
-  borderColor: skdeTheme.palette.background.paper,
+  borderColor: backgroundColour,
   fontSize: "1rem",
 }));
 
 export const StyledTableCellMiddle = styled(TableCell)(() => ({
   backgroundColor: "#FFFFFF",
-  borderColor: skdeTheme.palette.background.paper,
+  borderColor: backgroundColour,
   fontSize: "1rem",
 }));
