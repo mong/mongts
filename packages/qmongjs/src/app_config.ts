@@ -16,6 +16,9 @@ export const defaultReviewYear = 2024;
 export const minDG = 0.6;
 
 /** @public */
+export const backgroundColour = "#f4f4f4";
+
+/** @public */
 export const mainQueryParamsConfig = {
   selected_row: withDefault(StringParam, undefined),
   indicator: withDefault(StringParam, undefined),

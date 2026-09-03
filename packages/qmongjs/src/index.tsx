@@ -29,4 +29,3 @@ export {
   useUnitNamesQuery,
   useUnitUrlsQuery,
 } from "./helpers/hooks";
-export { breakpoints, skdeTheme } from "./themes/SkdeTheme";

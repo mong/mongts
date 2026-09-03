@@ -8,7 +8,8 @@ import {
   Typography,
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
-import { skdeTheme, useIndicatorQuery } from "qmongjs";
+import { useIndicatorQuery } from "qmongjs";
+import { backgroundColour } from "qmongjs/src/app_config";
 import {
   type FetchIndicatorParams,
   useResidentDataQuery,
@@ -139,7 +140,7 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
           <StyledTableCellStart
             key={regData.registerName}
             sx={{
-              backgroundColor: skdeTheme.palette.background.paper,
+              backgroundColor: backgroundColour,
               width: "3rem",
             }}
             colSpan={unitNames.length + 2}
@@ -179,7 +180,7 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
           <TableRow key={`${regData.registerName}-row`}>
             <StyledTableCellStart
               sx={{
-                backgroundColor: skdeTheme.palette.background.paper,
+                backgroundColor: backgroundColour,
                 width: "3rem",
               }}
             >
@@ -187,7 +188,7 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
             </StyledTableCellStart>
             <StyledTableCellMiddle
               sx={{
-                backgroundColor: skdeTheme.palette.background.paper,
+                backgroundColor: backgroundColour,
                 width: "3rem",
               }}
             >
@@ -209,7 +210,7 @@ export const RegistrySectionV2 = (props: RegistrySectionProps) => {
                   align="left"
                   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
                   key={regData.registerName + index}
-                  sx={{ backgroundColor: skdeTheme.palette.background.paper }}
+                  sx={{ backgroundColor: backgroundColour }}
                   width={"12rem"}
                 >
                   <div
