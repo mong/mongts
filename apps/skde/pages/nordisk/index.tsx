@@ -6,6 +6,7 @@ type DataPoint = (typeof testData)[number];
 
 type ChartSeries = {
   data: Array<number | null>;
+  denominators: Array<number | null>;
   label: string;
 };
 
@@ -87,13 +88,26 @@ function ChartCard({
             data: series.data,
             label: series.label,
             showMark: true,
-            valueFormatter: (value: number | null) =>
-              value == null ? "" : `${(value * 100).toFixed(1)}%`,
+            // Format the value with its corresponding denominator if available
+            valueFormatter: (
+              value: number | null,
+              context: { dataIndex: number },
+            ) => {
+              if (value == null) return "";
+              // Get the corresponding denominator for this data point
+              const denominator =
+                series.denominators[context.dataIndex] ?? null;
+              const denominatorText =
+                denominator == null ? "" : ` (N = ${denominator})`;
+
+              return `${(value * 100).toFixed(1)}%${denominatorText}`;
+            },
           }))}
           xAxis={[
             {
               scaleType: "point",
               data: item.xLabels,
+              valueFormatter: (value: number) => `${value}`,
               height: 44,
               tickLabelStyle: {
                 fontSize: 12,
@@ -119,6 +133,7 @@ function ChartCard({
                 fill: "#4b5563",
               },
               disableLine: true,
+              disableTicks: true,
               labelStyle: {
                 fontSize: 14,
                 fontWeight: 600,
@@ -129,6 +144,7 @@ function ChartCard({
           margin={margin}
           height={500}
           width={chartWidth}
+          axisHighlight={{ x: "line", y: "line" }}
           sx={{
             width: "100%",
             maxWidth: "100%",
@@ -142,6 +158,20 @@ function ChartCard({
               strokeWidth: 2,
             },
           }}
+          slotProps={{
+            tooltip: {
+              trigger: "axis",
+              sx: {
+                "& .MuiChartsTooltip-table caption": {
+                  captionSide: "bottom",
+                  fontSize: 14,
+                  lineHeight: 1.25,
+                  color: "#6b7280",
+                  paddingTop: 1,
+                },
+              },
+            },
+          }}
           grid={{ horizontal: true }}
         />
       )}
@@ -150,7 +180,7 @@ function ChartCard({
 }
 
 function buildChartData(records: DataPoint[]): ChartItem[] {
-  // Filter out only the records that are at the national level
+  // Double check data is national level
   const nationRecords = records.filter(
     (record) => record.unit_level === "nation",
   );
@@ -175,16 +205,21 @@ function buildChartData(records: DataPoint[]): ChartItem[] {
     // Build the series data for each unit name
     const series = unitNames.map((unitName) => {
       const valuesByYear = new Map<number, number>();
+      const denominatorsByYear = new Map<number, number>();
 
       for (const record of indicatorRecords) {
         if (record.unit_name === unitName) {
           valuesByYear.set(record.year, record.var);
+          denominatorsByYear.set(record.year, record.denominator);
         }
       }
       // Return the series data for the current unit name
       return {
         label: formatUnitName(unitName),
         data: xLabels.map((year) => valuesByYear.get(year) ?? null),
+        denominators: xLabels.map(
+          (year) => denominatorsByYear.get(year) ?? null,
+        ),
       };
     });
     // Return the chart data for the current indicator
