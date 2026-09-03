@@ -72,8 +72,8 @@ export default function TreatmentQualityPage() {
   const yearDropdownItems = {
     groups: [
       {
-        items: Array.from({ length: numberOfYearOptions }, (_, i) => {
-          const year = defaultYear - i;
+        items: Array.from({ length: numberOfYearOptions + 1 }, (_, i) => {
+          const year = defaultYear + 1 - i;
           return { value: year.toString(), label: year.toString() };
         }),
       },
