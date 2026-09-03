@@ -13,7 +13,8 @@ import IconButton from "@mui/material/IconButton";
 import TableRow from "@mui/material/TableRow";
 import type { MUIStyledCommonProps } from "@mui/system";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { customFormat, level2, newestLevelSymbols, skdeTheme } from "qmongjs";
+import { customFormat, level2, newestLevelSymbols } from "qmongjs";
+import { backgroundColour } from "qmongjs/src/app_config";
 import React from "react";
 import type { IndicatorData, OptsTu } from "types";
 import { ChartRow } from "../chartrow";
@@ -135,7 +136,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
           paddingTop: 0,
           paddingLeft: 0,
           paddingRight: 0,
-          backgroundColor: skdeTheme.palette.background.paper,
+          backgroundColor: backgroundColour,
         }}
         colSpan={unitNames.length + 1}
       ></StyledTableCell>
@@ -276,19 +277,22 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
           {targetLevel}
         </StyledTableCellMiddle>
         {rowDataSorted.map((row, index, arr) => {
-          // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-          const lowDG = row?.dg == null ? false : row?.dg < 0.6 ? true : false;
-          // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-          const noData = row?.denominator == null ? true : false;
+          const lowDG =
+            row?.dg === null || row?.dg === undefined ? false : row?.dg < 0.6;
+
+          const noData = row?.denominator == null;
+
           const lowN =
-            row?.denominator == null
+            row?.denominator === null || row?.denominator === undefined
               ? false
-              : row.minDenominator == null
-                ? false
-                : // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-                  row.denominator < row.minDenominator
-                  ? true
-                  : false;
+              : (row?.minDenominator == null ||
+                    row?.denominator !== undefined) &&
+                  row?.denominator < 5
+                ? true
+                : row?.minDenominator === null ||
+                    row?.minDenominator === undefined
+                  ? false
+                  : row?.denominator < row?.minDenominator;
 
           const cellAlpha = 0.3;
           const cellOpacity =
@@ -301,8 +305,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
                   : cellAlpha;
 
           const cellData = Array.from([lowDG, noData, lowN]).every(
-            // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-            (x) => x == false,
+            (x) => x === false,
           )
             ? (row?.level === "H"
                 ? "Høy "

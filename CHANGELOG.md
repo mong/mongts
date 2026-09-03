@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.9.5](https://github.com/mong/mongts/compare/v1.9.4...v1.9.5) (2026-09-02)
+
+
+### Bug Fixes
+
+* **Behandlingskvalitet:** filtrer ut lav N i tabell ([#4956](https://github.com/mong/mongts/issues/4956)) ([59975e9](https://github.com/mong/mongts/commit/59975e98119082f31e5c456eaab0cf105a895a9c))
+
+## [1.9.4](https://github.com/mong/mongts/compare/v1.9.3...v1.9.4) (2026-09-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency helmet from v8.2.0 to v8.3.0 ([#4918](https://github.com/mong/mongts/issues/4918)) ([76ddc82](https://github.com/mong/mongts/commit/76ddc82b28369150dfd2a6f4f5c3ab907c9ee21f))
+* **deps:** update dependency react-icons from v5.6.0 to v5.7.0 ([#4924](https://github.com/mong/mongts/issues/4924)) ([b0a47ff](https://github.com/mong/mongts/commit/b0a47ffa5a1030b7aa40961a5e15fc3e3f79e497))
+* filtrer vekk lav DG og lav N i linjediagram ([#4955](https://github.com/mong/mongts/issues/4955)) ([3118e61](https://github.com/mong/mongts/commit/3118e61411bf9626d8811a0e53a363c7a506dbba))
+
 ## [1.9.3](https://github.com/mong/mongts/compare/v1.9.2...v1.9.3) (2026-08-25)
 
 

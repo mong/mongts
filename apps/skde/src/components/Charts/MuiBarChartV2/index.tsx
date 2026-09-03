@@ -112,16 +112,6 @@ export const MuiBarChartV2 = (props: MuiBarChartV2Props) => {
       a.var !== null && b.var !== null ? b.var - a.var : 0,
     );
 
-    // Filterer vekk lav dekningsgrad
-    newDataSelection.filter((row) => (row.dg !== null ? row.dg >= 0.6 : true));
-
-    // Filterer vekk lav n
-    newDataSelection.filter((row) =>
-      data.minDenominator
-        ? row.denominator >= data.minDenominator
-        : row.denominator >= 5,
-    );
-
     // Hent enhetsnavn i riktig rekkefølge
     const orderedUnitNames = newDataSelection.map((row) => row.unitName);
 
