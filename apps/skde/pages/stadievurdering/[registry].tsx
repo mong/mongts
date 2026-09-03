@@ -1,15 +1,14 @@
 import { Box, Stack, styled, Tab, Tabs, Typography } from "@mui/material";
 import { LineChartPro } from "@mui/x-charts-pro";
-import type { GetStaticPaths, GetStaticProps } from "next";
+import { useRouter } from "next/router";
 import {
   defaultReviewYear,
-  fetchRegisterNames,
   useRegistryEvaluationQuery,
   useRegistryRankQuery,
 } from "qmongjs";
 import React from "react";
 import { FaCircle } from "react-icons/fa";
-import type { RegisterName, RegistryEvaluation, RegistryRank } from "types";
+import type { RegistryEvaluation, RegistryRank } from "types";
 import { Markdown } from "../../src/components/Markdown";
 import { RequirementList } from "../../src/components/RequirementList";
 
@@ -20,7 +19,11 @@ const noLevelColour = "#777777";
 
 const reportYear = defaultReviewYear;
 
-export default function Stadiumfigur({ registry }) {
+export default function Stadiumfigur() {
+  const router = useRouter();
+
+  const registry = router.query.registry as string;
+
   // Copy-paste code from https://mui.com/material-ui/react-tabs/
   const [value, setValue] = React.useState(0);
 
@@ -79,7 +82,14 @@ export default function Stadiumfigur({ registry }) {
   );
 
   if (rankData.length === 0) {
-    return null;
+    return (
+      <Box
+        className="hidden md:flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
+        sx={{ border: "1px solid blue", borderRadius: 1, margin: 2 }}
+      >
+        <h3>Ingen data tilgjengelig for dette valget.</h3>
+      </Box>
+    );
   }
 
   type XyData = { x: number; y: string };
@@ -215,25 +225,3 @@ export default function Stadiumfigur({ registry }) {
     </Box>
   );
 }
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const registries: RegisterName[] = await fetchRegisterNames();
-
-  const filteredRegistries = registries.find(
-    (register) => register.rname === context.params?.registry,
-  );
-
-  return {
-    props: { registry: filteredRegistries?.rname },
-  };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const registries: RegisterName[] = await fetchRegisterNames();
-
-  const paths = registries.flatMap((registry: RegisterName) => {
-    return [{ params: { registry: registry.rname } }];
-  });
-
-  return { paths, fallback: false };
-};
