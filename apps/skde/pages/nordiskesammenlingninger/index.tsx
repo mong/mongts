@@ -1,6 +1,6 @@
 import { LineChart } from "@mui/x-charts";
 import { useEffect, useRef, useState } from "react";
-import { testData } from "./data";
+import { testData } from "../../src/data/data";
 
 type DataPoint = (typeof testData)[number];
 
