@@ -187,17 +187,6 @@ const medfieldTableData: Indicator[] = [
   },
 ];
 
-vi.mock("next/font/google", () => ({
-  Plus_Jakarta_Sans: () => ({
-    weight: ["200", "300", "400", "500", "600", "700", "800"],
-    subsets: ["latin"],
-    display: "swap",
-    style: {
-      fontFamily: "Plus Jakarta Sans",
-    },
-  }),
-}));
-
 vi.mock("qmongjs/src/helpers/hooks");
 
 const data = createMedfieldTableData(medfieldTableData);
