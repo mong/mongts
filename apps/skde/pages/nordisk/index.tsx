@@ -1,3 +1,6 @@
+import { Button, Dropdown, HeroBanner, PageContent } from "@mong/material-ui";
+import { type SelectChangeEvent, Stack } from "@mui/material";
+import { Box } from "@mui/system";
 import { LineChart } from "@mui/x-charts";
 import { useEffect, useRef, useState } from "react";
 import { testData } from "../../src/data/data";
@@ -48,14 +51,74 @@ export default function NordiskeSammenlingninger() {
   const chartData = buildChartData(testData);
   const margin = { top: 20, right: 25, bottom: 20, left: 20 };
 
+  const [selectedLanguage, setSelectedLanguage] = useState("no");
+  const handleLanguageChange = (
+    event: SelectChangeEvent<string | string[]>,
+  ) => {
+    const nextValue = event.target.value;
+    setSelectedLanguage(
+      Array.isArray(nextValue) ? (nextValue[0] ?? "no") : nextValue,
+    );
+  };
+  const languageDropdownItems = {
+    groups: [
+      {
+        items: [
+          { value: "no", label: "Norsk" },
+          { value: "sv", label: "Svensk" },
+          { value: "da", label: "Dansk" },
+          { value: "fi", label: "Finsk" },
+        ],
+      },
+    ],
+  };
+
   return (
-    <div className="flex w-full items-center justify-center bg-neutral-0 px-6 py-12 sm:px-12">
-      <div className="grid h-full w-full max-w-360 grid-cols-1 gap-12">
-        {chartData.map((item) => (
-          <ChartCard key={item.title} item={item} margin={margin} />
-        ))}
+    <Box>
+      <HeroBanner
+        description="Her kan du se resultater fra nasjonale medisinske kvalitetsregistre, og sammenligne indikatorer mellom nordiske land"
+        title="Nordisk profil"
+        image="/hero-bg-4.jpg"
+      />
+      <div className="flex bg-neutral-0 w-full align-middle items-center justify-center px-12">
+        <div className="flex flex-col w-full h-full max-w-360">
+          <Stack
+            direction="row"
+            sx={{
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%",
+              paddingTop: 2,
+              paddingBottom: 2,
+            }}
+          >
+            <Stack direction="row" spacing={3}>
+              <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                Fagområde
+                <Button>Velg fagområde</Button>
+              </div>
+              <div className="flex flex-col text-small  font-semibold  text-brand-primary-900">
+                Språk
+                <Dropdown
+                  value={selectedLanguage.toString()}
+                  onChange={handleLanguageChange}
+                  items={languageDropdownItems}
+                />
+              </div>
+            </Stack>
+          </Stack>
+        </div>
       </div>
-    </div>
+      <PageContent>
+        <div className="flex w-full items-center justify-center px-6 py-12 sm:px-12">
+          <div className="grid h-full w-full max-w-360 md:grid-cols-1 lg:grid-cols-2 gap-12">
+            {chartData.map((item) => (
+              <ChartCard key={item.title} item={item} margin={margin} />
+            ))}
+          </div>
+        </div>
+      </PageContent>
+    </Box>
   );
 }
 
