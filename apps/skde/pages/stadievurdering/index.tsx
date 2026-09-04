@@ -1,9 +1,227 @@
-import type { JSX } from "react";
-import { defaultReviewYear } from "../../src/app_config";
-import { RegistryLevelTable } from "../../src/components/RegistryLevelTable";
+import { Box, Stack, styled, Tab, Tabs, Typography } from "@mui/material";
+import { LineChartPro } from "@mui/x-charts-pro";
+import { useSearchParams } from "next/navigation";
+import {
+  defaultReviewYear,
+  useRegistryEvaluationQuery,
+  useRegistryRankQuery,
+} from "qmongjs";
+import React from "react";
+import { FaCircle } from "react-icons/fa";
+import type { RegistryEvaluation, RegistryRank } from "types";
+import { Markdown } from "../../src/components/Markdown";
+import { RequirementList } from "../../src/components/RequirementList";
 
-export const Skde = (): JSX.Element => {
-  return <RegistryLevelTable year={defaultReviewYear} numberOfYears={5} />;
-};
+const levelAColour = "#58A55C";
+const levelBColour = "#FD9C00";
+const levelCColour = "#D85140";
+const noLevelColour = "#777777";
 
-export default Skde;
+const reportYear = defaultReviewYear;
+
+export default function Stadiumfigur() {
+  // Copy-paste code from https://mui.com/material-ui/react-tabs/
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
+  };
+
+  interface TabPanelProps {
+    children?: React.ReactNode;
+    index: number;
+    value: number;
+  }
+
+  function CustomTabPanel(props: TabPanelProps) {
+    const { children, value, index, ...other } = props;
+
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      </div>
+    );
+  }
+
+  function a11yProps(index: number) {
+    return {
+      id: `simple-tab-${index}`,
+      "aria-controls": `simple-tabpanel-${index}`,
+    };
+  }
+  // End copy-paste code
+
+  const rankQuery = useRegistryRankQuery();
+  const evaluationQuery = useRegistryEvaluationQuery(reportYear);
+
+  const searchParams = useSearchParams();
+
+  const registry = searchParams?.get("registry");
+
+  const checkList = RequirementList({
+    registry: registry ? registry : "",
+    year: reportYear,
+  });
+
+  if (rankQuery.isFetching || evaluationQuery.isFetching) {
+    return null;
+  }
+
+  const rankData = rankQuery.data.filter(
+    (row: RegistryRank) => row.name === registry,
+  ) as RegistryRank[];
+
+  const evaluationData = evaluationQuery.data.find(
+    (row: RegistryEvaluation) => row.name === registry,
+  );
+
+  if (rankData.length === 0) {
+    return (
+      <Box
+        className="hidden md:flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
+        sx={{ border: "1px solid blue", borderRadius: 1, margin: 2 }}
+      >
+        <h3>Ingen data tilgjengelig for dette valget.</h3>
+      </Box>
+    );
+  }
+
+  type XyData = { x: number; y: string };
+
+  const levelToColour = (level: string) => {
+    return level === "A"
+      ? levelAColour
+      : level === "B"
+        ? levelBColour
+        : level === "C"
+          ? levelCColour
+          : noLevelColour;
+  };
+
+  const plotData = rankData
+    .map((row: RegistryRank) => {
+      return { x: row.year, y: row.verdict };
+    })
+    .sort((a: XyData, b: XyData) => {
+      return a.x - b.x;
+    })
+    .filter((row: XyData) => {
+      return row.x <= defaultReviewYear;
+    })
+    .map((row: XyData) => {
+      return {
+        x: new Date(row.x, 0).getFullYear(),
+        y: Number(row.y.substring(0, 1)),
+        colour: levelToColour(row.y.substring(1, 2)),
+      } as { x: number; y: number; colour: string };
+    });
+
+  const StyledTypography = styled(Typography)(() => ({
+    fontSize: 26,
+    fontWeight: 500,
+    fontFamily: "Arial",
+  }));
+
+  const PlotComponent = () => {
+    return (
+      <Stack
+        direction="column"
+        sx={{
+          alignItems: "center",
+        }}
+      >
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            alignItems: "center",
+            marginLeft: 10,
+            marginTop: 10,
+          }}
+        >
+          <FaCircle style={{ color: levelAColour, fontSize: "1.2rem" }} />
+          <StyledTypography>A</StyledTypography>
+          <FaCircle style={{ color: levelBColour, fontSize: "1.2rem" }} />
+          <StyledTypography>B</StyledTypography>
+          <FaCircle style={{ color: levelCColour, fontSize: "1.2rem" }} />
+          <StyledTypography>C</StyledTypography>
+          <FaCircle style={{ color: noLevelColour, fontSize: "1.2rem" }} />
+          <StyledTypography>Ingen nivå</StyledTypography>
+        </Stack>
+        <LineChartPro
+          dataset={plotData}
+          series={[
+            {
+              curve: "linear",
+              dataKey: "y",
+              showMark: true,
+              shape: "circle",
+              colorGetter: (data) => {
+                return plotData[data.dataIndex].colour;
+              },
+            },
+          ]}
+          xAxis={[
+            {
+              scaleType: "point",
+              dataKey: "x",
+              tickLabelStyle: { fontSize: 16 },
+              label: "År",
+              labelStyle: { fontSize: 20 },
+              valueFormatter: (value) => value.toString(),
+              height: 60,
+            },
+          ]}
+          width={1000}
+          height={700}
+          yAxis={[
+            {
+              min: 0.8,
+              max: 4.2,
+              tickMinStep: 1,
+              tickLabelStyle: { fontSize: 16 },
+            },
+          ]}
+        />
+      </Stack>
+    );
+  };
+
+  return (
+    <Box sx={{ width: "100%" }}>
+      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Tabs
+          value={value}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+        >
+          <Tab label="Utvikling over tid" {...a11yProps(0)} />
+          <Tab label="Ekspertgruppens vurdering" {...a11yProps(1)} />
+          <Tab label="Innfridde krav" {...a11yProps(2)} />
+        </Tabs>
+      </Box>
+      <CustomTabPanel value={value} index={0}>
+        <PlotComponent />
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={1}>
+        <h2>{`Ekspertgruppens·vurdering·av·årsrapporten·for·${reportYear}`}</h2>
+        <Typography style={{ width: "50%" }} variant="body1">
+          <Markdown>
+            {evaluationData
+              ? evaluationData.evaluation_text
+              : "Ingen evaluering tilgjengelig"}
+          </Markdown>
+        </Typography>
+      </CustomTabPanel>
+      <CustomTabPanel value={value} index={2}>
+        {checkList}
+      </CustomTabPanel>
+    </Box>
+  );
+}
