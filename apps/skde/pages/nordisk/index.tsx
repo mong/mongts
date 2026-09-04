@@ -175,6 +175,14 @@ export default function NordiskeSammenlingninger() {
             </Box>
           </Stack>
         )}
+        {/* TEMP visible charts */}
+        <div className="flex w-full items-center justify-center px-6 py-12 sm:px-12">
+          <div className="grid h-full w-full max-w-360 md:grid-cols-1 lg:grid-cols-2 gap-12">
+            {chartData.map((item) => (
+              <ChartCard key={item.title} item={item} margin={margin} />
+            ))}
+          </div>
+        </div>
       </PageContent>
     </Box>
   );
