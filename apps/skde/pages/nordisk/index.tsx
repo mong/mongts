@@ -1,3 +1,5 @@
+import { HeroBanner } from "@mong/material-ui";
+import { Box } from "@mui/system";
 import { LineChart } from "@mui/x-charts";
 import { useEffect, useRef, useState } from "react";
 import { testData } from "../../src/data/data";
@@ -49,13 +51,20 @@ export default function NordiskeSammenlingninger() {
   const margin = { top: 20, right: 25, bottom: 20, left: 20 };
 
   return (
-    <div className="flex w-full items-center justify-center bg-neutral-0 px-6 py-12 sm:px-12">
-      <div className="grid h-full w-full max-w-360 grid-cols-1 gap-12">
-        {chartData.map((item) => (
-          <ChartCard key={item.title} item={item} margin={margin} />
-        ))}
+    <Box>
+      <HeroBanner
+        description="Her kan du se resultater fra nasjonale medisinske kvalitetsregistre, og sammenligne indikatorer mellom nordiske land"
+        title="Nordisk profil"
+        image="/hero-bg-4.jpg"
+      />
+      <div className="flex w-full items-center justify-center bg-neutral-0 px-6 py-12 sm:px-12">
+        <div className="grid h-full w-full max-w-360 grid-cols-1 gap-12 lg:grid-cols-2">
+          {chartData.map((item) => (
+            <ChartCard key={item.title} item={item} margin={margin} />
+          ))}
+        </div>
       </div>
-    </div>
+    </Box>
   );
 }
 
