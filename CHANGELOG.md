@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.7](https://github.com/mong/mongts/compare/v1.9.6...v1.9.7) (2026-09-04)
+
+
+### Bug Fixes
+
+* hent data dynamisk i stadiefigur ([#4984](https://github.com/mong/mongts/issues/4984)) ([7fb085d](https://github.com/mong/mongts/commit/7fb085d7dec6c5f8e7b99873476fb373fca1cac6))
+
 ## [1.9.6](https://github.com/mong/mongts/compare/v1.9.5...v1.9.6) (2026-09-04)
 
 
