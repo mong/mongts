@@ -51,6 +51,8 @@ const getUniqueYears = (data: Point[][]) => {
 
   const uniqueYears = [...new Set(years)];
 
+  uniqueYears.sort((a, b) => a - b);
+
   return uniqueYears;
 };
 
