@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.9.6](https://github.com/mong/mongts/compare/v1.9.5...v1.9.6) (2026-09-04)
+
+
+### Features
+
+* la bruker velge neste år i nedtrekksmeny i BK ([#4974](https://github.com/mong/mongts/issues/4974)) ([e5cac59](https://github.com/mong/mongts/commit/e5cac593deb2d4bd27cb77c188e6cbe5834a19b4))
+* legg til N= i hover tooltip ([#4972](https://github.com/mong/mongts/issues/4972)) ([8ed8fd1](https://github.com/mong/mongts/commit/8ed8fd1dbb82347f7b8649cc39d53053add68d2d))
+* ny side for nordiske sammenligninger ([#4958](https://github.com/mong/mongts/issues/4958)) ([7c49fb1](https://github.com/mong/mongts/commit/7c49fb1bc7257d808523a610899d288db2f760ac))
+
+
+### Bug Fixes
+
+* **deps:** update dependency next from v16.2.11 to v16.3.3 ([#4923](https://github.com/mong/mongts/issues/4923)) ([45b55f0](https://github.com/mong/mongts/commit/45b55f00cd5dc7c7488a3710d8912c6ca20c84ea))
+* endre navn på side fra /nordiskesammenlingninger til /nordisk ([#4962](https://github.com/mong/mongts/issues/4962)) ([619e2ff](https://github.com/mong/mongts/commit/619e2ff1732ea322cfe7681e73d86906ae60df54))
+* hent adresser til registre i stadievurdering dynamisk ([#4975](https://github.com/mong/mongts/issues/4975)) ([dab6f0f](https://github.com/mong/mongts/commit/dab6f0fb32cc4b3cbd8104dcf43aebcfd614efd7))
+* sorter år for linjediagram ([#4977](https://github.com/mong/mongts/issues/4977)) ([d474d68](https://github.com/mong/mongts/commit/d474d68bfa69c7c4b6b539230daa3b24e3fcea93))
+* ta hensyn til manglende url i stadievurdering ([#4971](https://github.com/mong/mongts/issues/4971)) ([fb7c04f](https://github.com/mong/mongts/commit/fb7c04f9ddb046c740a3182ec35dcb48b5f1b9a1))
+
+
+### Miscellaneous Chores
+
+* release 1.9.6 ([88dddba](https://github.com/mong/mongts/commit/88dddba312441a0ea6a064334f81f6ab7db7622d))
+
 ## [1.9.5](https://github.com/mong/mongts/compare/v1.9.4...v1.9.5) (2026-09-02)
 
 
