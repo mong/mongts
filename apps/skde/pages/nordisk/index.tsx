@@ -3,6 +3,9 @@ import { type SelectChangeEvent, Stack } from "@mui/material";
 import { Box } from "@mui/system";
 import { LineChart } from "@mui/x-charts";
 import { useEffect, useRef, useState } from "react";
+import { useQueryParam } from "use-query-params";
+import { mainQueryParamsConfig } from "../../src/app_config";
+import { MedicalFieldPopup } from "../../src/components/DialogBox/MedicalFieldPopup";
 import { testData } from "../../src/data/data";
 
 type DataPoint = (typeof testData)[number];
@@ -73,6 +76,17 @@ export default function NordiskeSammenlingninger() {
     ],
   };
 
+  const [selectedMedicalFields = [], setSelectedMedicalFields] = useQueryParam<
+    string[] | undefined
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+  >("registries", mainQueryParamsConfig.registries as any);
+
+  const [medicalFieldPopupOpen, setMedicalFieldPopupOpen] = useState(false);
+
+  const handleMedicalFieldButtonClick = () => {
+    setMedicalFieldPopupOpen(true);
+  };
+
   return (
     <Box>
       <HeroBanner
@@ -95,8 +109,16 @@ export default function NordiskeSammenlingninger() {
             <Stack direction="row" spacing={3}>
               <div className="flex flex-col text-small font-semibold text-brand-primary-900">
                 Fagområde
-                <Button>Velg fagområde</Button>
+                <Button onClick={handleMedicalFieldButtonClick}>
+                  Velg fagområde
+                </Button>
               </div>
+              <MedicalFieldPopup
+                open={medicalFieldPopupOpen}
+                updateRegistries={setSelectedMedicalFields}
+                setOpen={setMedicalFieldPopupOpen}
+                onSubmit={setSelectedMedicalFields}
+              />
               <div className="flex flex-col text-small  font-semibold  text-brand-primary-900">
                 Språk
                 <Dropdown
@@ -110,6 +132,50 @@ export default function NordiskeSammenlingninger() {
         </div>
       </div>
       <PageContent>
+        {selectedMedicalFields.length > 0 ? (
+          <div className="flex w-full items-center justify-center px-6 py-12 sm:px-12">
+            <div className="grid h-full w-full max-w-360 md:grid-cols-1 lg:grid-cols-2 gap-12">
+              {chartData.map((item) => (
+                <ChartCard key={item.title} item={item} margin={margin} />
+              ))}
+            </div>
+          </div>
+        ) : (
+          <Stack
+            spacing={6}
+            sx={{
+              width: "100%",
+              height: "100px",
+              marginTop: 3,
+              background: "#FFFFFF",
+              border: "1px solid #F5F5F5",
+              borderRadius: "16px",
+              justifyContent: "center",
+              paddingLeft: 4,
+              paddingRight: 4,
+            }}
+          >
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 2,
+                width: "100%",
+              }}
+            >
+              <h3>
+                {selectedMedicalFields.length === 0
+                  ? "Velg et fagområde du vil se resultater fra"
+                  : ""}
+              </h3>
+              <Button onClick={handleMedicalFieldButtonClick}>
+                Velg fagområde
+              </Button>
+            </Box>
+          </Stack>
+        )}
+        {/* TEMP visible charts */}
         <div className="flex w-full items-center justify-center px-6 py-12 sm:px-12">
           <div className="grid h-full w-full max-w-360 md:grid-cols-1 lg:grid-cols-2 gap-12">
             {chartData.map((item) => (
