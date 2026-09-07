@@ -222,15 +222,42 @@ function ChartCard({
 }) {
   const { ref, width } = useElementWidth();
   const chartWidth = Math.max(width - 40, 0);
+  const [fitYAxis, setFitYAxis] = useState(false);
+
+  const yValues = item.series
+    .flatMap((series) => series.data)
+    .filter((value): value is number => value != null);
+
+  const yAxisBounds =
+    yValues.length === 0
+      ? { min: 0, max: 1 }
+      : (() => {
+          const rawMin = Math.min(...yValues);
+          const rawMax = Math.max(...yValues);
+
+          return {
+            min: rawMin,
+            max: rawMax,
+          };
+        })();
 
   return (
     <div
       ref={ref}
       className="min-w-0 overflow-hidden rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm"
     >
-      <div className="mb-4 flex flex-col gap-1">
-        <h3 className="text-lg font-semibold text-neutral-800">{item.title}</h3>
-        <p className="text-sm text-neutral-500">{item.registryFullName}</p>
+      <div className="mb-4 flex flex-col gap-3">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex flex-col gap-1">
+            <h3 className="text-lg font-semibold text-neutral-800">
+              {item.title}
+            </h3>
+            <p className="text-sm text-neutral-500">{item.registryFullName}</p>
+          </div>
+          <Button onClick={() => setFitYAxis((currentValue) => !currentValue)}>
+            {fitYAxis ? "- Zoom" : "+ Zoom"}
+          </Button>
+        </div>
       </div>
 
       {chartWidth > 0 && (
@@ -275,9 +302,9 @@ function ChartCard({
           ]}
           yAxis={[
             {
-              width: 72,
-              min: 0,
-              max: 1,
+              width: 48,
+              min: fitYAxis ? yAxisBounds.min : 0,
+              max: fitYAxis ? yAxisBounds.max : 1,
               valueFormatter: (value: number | null) =>
                 value == null ? "" : `${(value * 100).toFixed(0)}%`,
               tickLabelStyle: {
