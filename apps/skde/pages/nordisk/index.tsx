@@ -29,6 +29,7 @@ type ChartItem = {
   xLabels: number[];
 };
 
+// Hook for tracking the width of an element
 function useElementWidth<T extends HTMLElement = HTMLDivElement>() {
   const ref = useRef<T | null>(null);
   const [width, setWidth] = useState(0);
@@ -213,6 +214,7 @@ export default function NordiskeSammenlingninger() {
   );
 }
 
+// Component for rendering individual chart cards
 function ChartCard({
   item,
   margin,
@@ -254,7 +256,10 @@ function ChartCard({
             </h3>
             <p className="text-sm text-neutral-500">{item.registryFullName}</p>
           </div>
-          <Button onClick={() => setFitYAxis((currentValue) => !currentValue)}>
+          <Button
+            variant="outline"
+            onClick={() => setFitYAxis((currentValue) => !currentValue)}
+          >
             {fitYAxis ? "- Zoom" : "+ Zoom"}
           </Button>
         </div>
@@ -267,6 +272,7 @@ function ChartCard({
             data: series.data,
             label: series.label,
             showMark: true,
+            shape: "circle",
             // Format the value with its corresponding denominator if available
             valueFormatter: (
               value: number | null,
@@ -359,14 +365,12 @@ function ChartCard({
 }
 
 function buildChartData(records: DataPoint[]): ChartItem[] {
-  // Check data is national level
-  const nationRecords = records.filter(
-    (record) => record.unit_level === "nation",
-  );
+  // Select only the records that are relevant for the Nordic level
+  const nordicRecords = records.filter((record) => record.nordic === 1);
 
-  // Group the national records by indicator ID
+  // Group the records by indicator ID
   const groupedByIndicator = new Map<string, DataPoint[]>();
-  for (const record of nationRecords) {
+  for (const record of nordicRecords) {
     const currentRecords = groupedByIndicator.get(record.ind_id) ?? [];
     currentRecords.push(record);
     groupedByIndicator.set(record.ind_id, currentRecords);
@@ -374,6 +378,7 @@ function buildChartData(records: DataPoint[]): ChartItem[] {
 
   // Build the chart data for each indicator
   return Array.from(groupedByIndicator.values()).map((indicatorRecords) => {
+    // Extract the unique years for the x-axis labels
     const xLabels = Array.from(
       new Set(indicatorRecords.map((record) => record.year)),
     ).sort((left, right) => left - right);
@@ -419,6 +424,7 @@ function formatUnitName(unitName: string) {
   return unitName.charAt(0).toUpperCase() + unitName.slice(1);
 }
 
+// Group chart data by registry
 function groupChartDataByRegistry(chartItems: ChartItem[]) {
   const groupedByRegistry = new Map<string, ChartItem[]>();
 
