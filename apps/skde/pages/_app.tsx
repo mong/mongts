@@ -26,8 +26,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter();
   const pathLang =
     pathname.includes("/en/") || pathname.endsWith("/en") ? "en" : "no";
-  // Do not show header and footer on the stadievurdering page
-  const applyLayout = !pathname.includes("stadievurdering");
+  // Do not show header and footer on the stadievurdering and stadietabell pages
+  const applyLayout =
+    !pathname.includes("stadievurdering") && !pathname.includes("stadietabell");
 
   useEffect(() => {
     document.documentElement.lang = pathLang;

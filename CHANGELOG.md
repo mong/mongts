@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.9.8](https://github.com/mong/mongts/compare/v1.9.7...v1.9.8) (2026-09-04)
+
+
+### Bug Fixes
+
+* ingen header og footer på stadietabell og fjern ubrukt import ([#4989](https://github.com/mong/mongts/issues/4989)) ([de498f4](https://github.com/mong/mongts/commit/de498f4cd7a0b7e466fc251046aca702e34cc281))
+
 ## [1.9.7](https://github.com/mong/mongts/compare/v1.9.6...v1.9.7) (2026-09-04)
 
 
