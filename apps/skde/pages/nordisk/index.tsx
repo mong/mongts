@@ -1,5 +1,10 @@
 import { Button, Dropdown, HeroBanner, PageContent } from "@mong/material-ui";
-import { type SelectChangeEvent, Stack } from "@mui/material";
+import {
+  Paper,
+  type SelectChangeEvent,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { Box } from "@mui/system";
 import { LineChart } from "@mui/x-charts";
 import { useEffect, useRef, useState } from "react";
@@ -17,11 +22,14 @@ type ChartSeries = {
 };
 
 type ChartItem = {
+  registryFullName: string;
+  registryShortName: string;
   series: ChartSeries[];
   title: string;
   xLabels: number[];
 };
 
+// Hook for tracking the width of an element
 function useElementWidth<T extends HTMLElement = HTMLDivElement>() {
   const ref = useRef<T | null>(null);
   const [width, setWidth] = useState(0);
@@ -52,6 +60,7 @@ function useElementWidth<T extends HTMLElement = HTMLDivElement>() {
 
 export default function NordiskeSammenlingninger() {
   const chartData = buildChartData(testData);
+  const chartDataByRegistry = groupChartDataByRegistry(chartData);
   const margin = { top: 20, right: 25, bottom: 20, left: 20 };
 
   const [selectedLanguage, setSelectedLanguage] = useState("no");
@@ -132,62 +141,80 @@ export default function NordiskeSammenlingninger() {
         </div>
       </div>
       <PageContent>
-        {selectedMedicalFields.length > 0 ? (
+        {selectedMedicalFields.length === 0 ? (
           <div className="flex w-full items-center justify-center px-6 py-12 sm:px-12">
-            <div className="grid h-full w-full max-w-360 md:grid-cols-1 lg:grid-cols-2 gap-12">
-              {chartData.map((item) => (
-                <ChartCard key={item.title} item={item} margin={margin} />
+            <Stack spacing={5} className="h-full w-full max-w-360">
+              {chartDataByRegistry.map(([registryKey, items]) => (
+                <Stack key={registryKey} spacing={3}>
+                  <Paper
+                    elevation={0}
+                    sx={{
+                      alignItems: "center",
+                      backgroundColor: "#FFFFFF",
+                      border: "1px solid #E5E7EB",
+                      borderRadius: "16px",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      px: 4,
+                      py: 2.5,
+                    }}
+                  >
+                    <Stack spacing={0.5} sx={{ minWidth: 0 }}>
+                      <Typography
+                        variant="h4"
+                        sx={{
+                          color: "#1E4EA1",
+                          fontSize: { xs: "1.6rem", md: "2rem" },
+                          fontWeight: 700,
+                          lineHeight: 1.2,
+                        }}
+                      >
+                        {items[0]?.registryShortName ?? "Ukjent register"}
+                      </Typography>
+                    </Stack>
+                    <Button variant="secondary">Last ned</Button>
+                  </Paper>
+
+                  <div
+                    // Container for chart, if only 1 chart it will span the full width, otherwise it will be a responsive grid
+                    className={`grid h-full w-full gap-12 ${
+                      items.length === 1
+                        ? "grid-cols-1"
+                        : "md:grid-cols-1 lg:grid-cols-2"
+                    }`}
+                  >
+                    {items.map((item) => (
+                      <ChartCard key={item.title} item={item} margin={margin} />
+                    ))}
+                  </div>
+                </Stack>
               ))}
-            </div>
+            </Stack>
           </div>
         ) : (
           <Stack
             spacing={6}
             sx={{
-              width: "100%",
-              height: "100px",
-              marginTop: 3,
-              background: "#FFFFFF",
-              border: "1px solid #F5F5F5",
-              borderRadius: "16px",
+              height: "484px",
               justifyContent: "center",
-              paddingLeft: 4,
-              paddingRight: 4,
+              alignItems: "center",
+              background: "#FFFFFF",
+              border: "1px solid #2354AE",
+              borderRadius: "16px",
             }}
           >
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: 2,
-                width: "100%",
-              }}
-            >
-              <h3>
-                {selectedMedicalFields.length === 0
-                  ? "Velg et fagområde du vil se resultater fra"
-                  : ""}
-              </h3>
-              <Button onClick={handleMedicalFieldButtonClick}>
-                Velg fagområde
-              </Button>
-            </Box>
+            <h3>Velg et fagområde du vil se resultater fra</h3>
+            <Button onClick={handleMedicalFieldButtonClick}>
+              Velg fagområde
+            </Button>
           </Stack>
         )}
-        {/* TEMP visible charts */}
-        <div className="flex w-full items-center justify-center px-6 py-12 sm:px-12">
-          <div className="grid h-full w-full max-w-360 md:grid-cols-1 lg:grid-cols-2 gap-12">
-            {chartData.map((item) => (
-              <ChartCard key={item.title} item={item} margin={margin} />
-            ))}
-          </div>
-        </div>
       </PageContent>
     </Box>
   );
 }
 
+// Component for rendering individual chart cards
 function ChartCard({
   item,
   margin,
@@ -197,17 +224,45 @@ function ChartCard({
 }) {
   const { ref, width } = useElementWidth();
   const chartWidth = Math.max(width - 40, 0);
+  const [fitYAxis, setFitYAxis] = useState(false);
+
+  const yValues = item.series
+    .flatMap((series) => series.data)
+    .filter((value): value is number => value != null);
+
+  const yAxisBounds =
+    yValues.length === 0
+      ? { min: 0, max: 1 }
+      : (() => {
+          const rawMin = Math.min(...yValues);
+          const rawMax = Math.max(...yValues);
+
+          return {
+            min: rawMin,
+            max: rawMax,
+          };
+        })();
 
   return (
     <div
       ref={ref}
       className="min-w-0 overflow-hidden rounded-3xl border border-neutral-200 bg-white p-5 shadow-sm"
     >
-      <div className="mb-4 flex flex-col gap-1">
-        <h3 className="text-lg font-semibold text-neutral-800">{item.title}</h3>
-        <p className="text-sm text-neutral-500">
-          Nordisk sammenligning av utvikling over tid
-        </p>
+      <div className="mb-4 flex flex-col gap-3">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex flex-col gap-1">
+            <h3 className="text-lg font-semibold text-neutral-800">
+              {item.title}
+            </h3>
+            <p className="text-sm text-neutral-500">{item.registryFullName}</p>
+          </div>
+          <Button
+            variant="outline"
+            onClick={() => setFitYAxis((currentValue) => !currentValue)}
+          >
+            {fitYAxis ? "- Zoom" : "+ Zoom"}
+          </Button>
+        </div>
       </div>
 
       {chartWidth > 0 && (
@@ -217,6 +272,7 @@ function ChartCard({
             data: series.data,
             label: series.label,
             showMark: true,
+            shape: "circle",
             // Format the value with its corresponding denominator if available
             valueFormatter: (
               value: number | null,
@@ -252,9 +308,9 @@ function ChartCard({
           ]}
           yAxis={[
             {
-              width: 72,
-              min: 0,
-              max: 1,
+              width: 48,
+              min: fitYAxis ? yAxisBounds.min : 0,
+              max: fitYAxis ? yAxisBounds.max : 1,
               valueFormatter: (value: number | null) =>
                 value == null ? "" : `${(value * 100).toFixed(0)}%`,
               tickLabelStyle: {
@@ -309,14 +365,12 @@ function ChartCard({
 }
 
 function buildChartData(records: DataPoint[]): ChartItem[] {
-  // Double check data is national level
-  const nationRecords = records.filter(
-    (record) => record.unit_level === "nation",
-  );
+  // Select only the records that are relevant for the Nordic level
+  const nordicRecords = records.filter((record) => record.nordic === 1);
 
-  // Group the national records by indicator ID
+  // Group the records by indicator ID
   const groupedByIndicator = new Map<string, DataPoint[]>();
-  for (const record of nationRecords) {
+  for (const record of nordicRecords) {
     const currentRecords = groupedByIndicator.get(record.ind_id) ?? [];
     currentRecords.push(record);
     groupedByIndicator.set(record.ind_id, currentRecords);
@@ -324,6 +378,7 @@ function buildChartData(records: DataPoint[]): ChartItem[] {
 
   // Build the chart data for each indicator
   return Array.from(groupedByIndicator.values()).map((indicatorRecords) => {
+    // Extract the unique years for the x-axis labels
     const xLabels = Array.from(
       new Set(indicatorRecords.map((record) => record.year)),
     ).sort((left, right) => left - right);
@@ -353,6 +408,10 @@ function buildChartData(records: DataPoint[]): ChartItem[] {
     });
     // Return the chart data for the current indicator
     return {
+      registryShortName:
+        indicatorRecords[0]?.registry_short_name ?? "Ukjent register",
+      registryFullName:
+        indicatorRecords[0]?.registry_full_name ?? "Ukjent register",
       series,
       title: indicatorRecords[0]?.ind_title ?? "Uten tittel",
       xLabels,
@@ -363,4 +422,18 @@ function buildChartData(records: DataPoint[]): ChartItem[] {
 // Format capital first letter
 function formatUnitName(unitName: string) {
   return unitName.charAt(0).toUpperCase() + unitName.slice(1);
+}
+
+// Group chart data by registry
+function groupChartDataByRegistry(chartItems: ChartItem[]) {
+  const groupedByRegistry = new Map<string, ChartItem[]>();
+
+  for (const item of chartItems) {
+    const groupKey = `${item.registryShortName}::${item.registryFullName}`;
+    const currentItems = groupedByRegistry.get(groupKey) ?? [];
+    currentItems.push(item);
+    groupedByRegistry.set(groupKey, currentItems);
+  }
+
+  return Array.from(groupedByRegistry.entries());
 }
