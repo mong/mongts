@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.10.0](https://github.com/mong/mongts/compare/v1.9.8...v1.10.0) (2026-09-11)
+
+
+### Features
+
+* fagområde knapp funksjonalitet ([#4988](https://github.com/mong/mongts/issues/4988)) ([77513ce](https://github.com/mong/mongts/commit/77513ce40c975c74d3d33c294c4a5b5eb5a838d1))
+* lagt til slik at registernavn og fagområde vises på valgt grafside ([#4992](https://github.com/mong/mongts/issues/4992)) ([8357391](https://github.com/mong/mongts/commit/8357391bbeb759576a817f2eb1270be7d33cb6f3))
+
+
+### Bug Fixes
+
+* aksemerker formatering med zoom ([#4996](https://github.com/mong/mongts/issues/4996)) ([94eb0e0](https://github.com/mong/mongts/commit/94eb0e0006df98a65bb43347096091e7981e357a))
+
 ## [1.9.8](https://github.com/mong/mongts/compare/v1.9.7...v1.9.8) (2026-09-04)
 
 
