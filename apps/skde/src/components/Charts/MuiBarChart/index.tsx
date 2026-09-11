@@ -223,7 +223,20 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
   const figureHeight =
     (currentUnitNames.length + figureSpacingConstant) * figureSpacingFactor;
 
-  const tickNumber = zoom && xMaxLimit < 0.1 ? 3 : 10;
+  const tickNumber = zoom && xMaxLimit < 0.1 ? 5 : 10;
+
+  const AxisValueFormatter = (value: number) => {
+    if (percentage && zoom) {
+      const percentageValue = value * 100;
+      const formattedValue = Number.isInteger(percentageValue)
+        ? percentageValue.toFixed(0)
+        : percentageValue.toFixed(1);
+
+      return `${formattedValue} %`;
+    }
+
+    return valueAxisFormatter(value);
+  };
 
   // Formatting functions
   const barValueFormatter = (
@@ -266,7 +279,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
             min: 0,
             max: percentage && !zoom ? 1 : xMaxLimit,
             position: "bottom",
-            valueFormatter: valueAxisFormatter,
+            valueFormatter: AxisValueFormatter,
             tickNumber: tickNumber,
           },
         ]}

@@ -69,6 +69,19 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
   // The highest value can be over 100
   const yDefaultLimit = yMaxLimit <= 1 ? 1 : yMaxLimit;
 
+  const AxisValueFormatter = (value: number) => {
+    if (percentage && zoom) {
+      const percentageValue = value * 100;
+      const formattedValue = Number.isInteger(percentageValue)
+        ? percentageValue.toFixed(0)
+        : percentageValue.toFixed(1);
+
+      return `${formattedValue} %`;
+    }
+
+    return valueAxisFormatter(value);
+  };
+
   return (
     <Box padded={false}>
       <ChartsDataProviderPro
@@ -96,8 +109,8 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
             width: 65,
             position: "left",
             scaleType: "linear",
-            valueFormatter: valueAxisFormatter,
-            tickNumber: zoom && yDifference < 0.1 ? 3 : 10,
+            valueFormatter: AxisValueFormatter,
+            tickNumber: zoom && yDifference < 0.1 ? 5 : 10,
             tickLabelStyle: {
               fontSize: tickFontSize,
             },
