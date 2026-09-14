@@ -8,6 +8,8 @@ import { Stack } from "@mui/material";
 import { customFormat, level2 } from "qmongjs";
 import { type JSX, useState } from "react";
 import type { DataPoint, IndicatorData, OptsTu, RegisterData } from "types";
+import { useQueryParam } from "use-query-params";
+import { mainQueryParamsConfig } from "../../../app_config";
 import { ChartRowV2 } from "../chartrowV2";
 
 type IndicatorTableV3Props = {
@@ -236,7 +238,13 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
 
   const [clickedIndicatorContext, setClickedIndicatorContext] = useState<
     "caregiver" | "resident" | undefined
-  >();
+  >("caregiver");
+
+  // Expanded indicator row is kept in the URL so views can be shared.
+  const [selectedRow, setSelectedRow] = useQueryParam(
+    "selected_row",
+    mainQueryParamsConfig.selected_row,
+  );
 
   const medfieldFilteredData = data.filter((row: RegisterData) =>
     medfields.includes(row.registerName),
@@ -260,6 +268,8 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
           registries={reshapedData}
           smallScreenMessage="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din."
           setCurrentContext={setClickedIndicatorContext}
+          expandedKey={selectedRow ?? null}
+          onExpandedChange={(key) => setSelectedRow(key ?? undefined)}
         />
       </div>
     </div>

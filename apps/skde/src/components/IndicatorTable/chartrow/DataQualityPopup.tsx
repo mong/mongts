@@ -101,7 +101,7 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
     return NoDataDialog;
   }
 
-  const indData = regData[0].indicatorData;
+  const indData = regData[0]?.indicatorData;
 
   // No data
   if (!indData) {
