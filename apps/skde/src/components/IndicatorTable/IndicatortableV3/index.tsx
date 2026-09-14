@@ -88,7 +88,7 @@ const reshapeData = (
               <ChartRowV2
                 data={indicator}
                 unitNames={unitNames}
-                medfield={registry.registerShortName}
+                medfield={registry.registerName}
                 context={context}
                 year={year}
                 treatmentUnitsByLevel={unitNamesByLevel}
