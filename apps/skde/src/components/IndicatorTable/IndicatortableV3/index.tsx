@@ -1,8 +1,10 @@
 import {
+  ContextCard,
   RegisterAccordion,
   type RenderRegisterProps,
   RotateDevice,
 } from "@mong/material-ui";
+import { Stack } from "@mui/material";
 import { customFormat, level2 } from "qmongjs";
 import { type JSX, useState } from "react";
 import type { DataPoint, IndicatorData, OptsTu, RegisterData } from "types";
@@ -77,22 +79,50 @@ const reshapeData = (
           };
 
           const levelDirectionSign = indicator.levelDirection === 1 ? "≥" : "≤";
+
           const levelTarget =
             indicator.levelGreen !== null && indicator.format !== null
               ? customFormat(indicator.format)(indicator.levelGreen)
               : undefined;
+
+          const dates = indicator?.data?.map((row) => {
+            return new Date(row.deliveryTime);
+          });
+
+          const maxDate = (dates: Date[]) => {
+            const numericDates = dates.map((row) => row.getTime());
+            return new Date(Math.max(...numericDates));
+          };
+
+          const lastDeliveryText =
+            dates &&
+            "Siste levering av data: " +
+              maxDate(dates).toLocaleString("no-NO", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+                timeZone: "CET",
+              });
+
           return {
             chart: (
-              <ChartRowV2
-                data={indicator}
-                unitNames={unitNames}
-                medfield={registry.registerShortName}
-                context={context}
-                year={year}
-                treatmentUnitsByLevel={unitNamesByLevel}
-                registryName={registry.registerFullName}
-                showDGButton={true}
-              />
+              <Stack>
+                <ChartRowV2
+                  data={indicator}
+                  unitNames={unitNames}
+                  medfield={registry.registerShortName}
+                  context={context}
+                  year={year}
+                  treatmentUnitsByLevel={unitNamesByLevel}
+                  registryName={registry.registerFullName}
+                  showDGButton={true}
+                />
+                <ContextCard
+                  title="Om indikatoren"
+                  description={indicator.longDescription ?? "Ingen beskrivelse"}
+                  updated={lastDeliveryText ?? "Ingen beskrivelse"}
+                />
+              </Stack>
             ) as JSX.Element,
             indicatorTarget:
               levelTarget !== undefined ? levelDirectionSign + levelTarget : "",
