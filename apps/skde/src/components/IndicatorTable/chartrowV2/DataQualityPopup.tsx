@@ -116,21 +116,11 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
     return NoDataDialog;
   }
 
-  const contextCardDescription =
-    "Data anses å ha god kvalitet når de er relevante, korrekte, komplette og tilgjengelige for brukerne i rett tid og format. " +
-    "Arbeidet med datakvalitet omfatter derfor mer enn bare selve datainnsamlingen. " +
-    "Det handler om planlegging, design, dokumentasjon, tekniske løsninger, rutiner for oppfølging og hvordan data faktisk blir brukt.";
-
   return (
     <Dialog open={open} fullWidth={true} maxWidth={"lg"} scroll="body">
       <DialogTitle>
-        <h3 className="font-regular">Datakvalitet</h3>
+        <h3 className="font-regular">{dgIndData[0].indicatorTitle}</h3>
       </DialogTitle>
-      <h6 className="pl-7 pr-6 font-regular">
-        God datakvalitet er en forutsetning for at kvalitetsregistre skal kunne
-        gi pålitelig kunnskap om helsetjenesten, støtte kvalitetsforbedring og
-        legge grunnlag for god forskning.
-      </h6>
       <DialogContent>
         <DataQualityChartRow
           data={dgIndData[0]}
@@ -147,8 +137,8 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
       </DialogContent>
       <Box>
         <ContextCard
-          title="Om datakvalitet"
-          description={contextCardDescription}
+          title="Om datakvalitetsindikatoren"
+          description={dgIndData[0].longDescription}
           updated="" //denne er required, men kan settes til blank
         />
       </Box>
