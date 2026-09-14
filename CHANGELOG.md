@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.10.0](https://github.com/mong/mongts/compare/v1.9.8...v1.10.0) (2026-09-14)
+
+
+### Features
+
+* **BehandlingskvalitetV3:** indikatorbeskrivelse og siste leverte dato ([#5000](https://github.com/mong/mongts/issues/5000)) ([7d28b7e](https://github.com/mong/mongts/commit/7d28b7e9a7a551c2d5b003554133886b03063a7e))
+* **BehandlingskvalitetV3:** tittel og beskrivelse til datakvalitetsindikatorer ([#4998](https://github.com/mong/mongts/issues/4998)) ([373649e](https://github.com/mong/mongts/commit/373649e995e6a523a685e11878b4d1c9440f8b32))
+* fagområde knapp funksjonalitet ([#4988](https://github.com/mong/mongts/issues/4988)) ([77513ce](https://github.com/mong/mongts/commit/77513ce40c975c74d3d33c294c4a5b5eb5a838d1))
+* lagt til slik at registernavn og fagområde vises på valgt grafside ([#4992](https://github.com/mong/mongts/issues/4992)) ([8357391](https://github.com/mong/mongts/commit/8357391bbeb759576a817f2eb1270be7d33cb6f3))
+
+
+### Bug Fixes
+
+* aksemerker formatering med zoom ([#4996](https://github.com/mong/mongts/issues/4996)) ([94eb0e0](https://github.com/mong/mongts/commit/94eb0e0006df98a65bb43347096091e7981e357a))
+* **BehandlingskvalitetV3:** popup for datakvalitet fungerer ([#4997](https://github.com/mong/mongts/issues/4997)) ([e8afdc3](https://github.com/mong/mongts/commit/e8afdc39c5807801691d20d7861d352458370713))
+* **behandlingskvalitetV3:** switch to controlled component to remember expanded and fix context bug ([#5001](https://github.com/mong/mongts/issues/5001)) ([7ed9560](https://github.com/mong/mongts/commit/7ed95604e37061fcd66f72aab4305ab0346fb0e8))
+
 ## [1.9.8](https://github.com/mong/mongts/compare/v1.9.7...v1.9.8) (2026-09-04)
 
 
