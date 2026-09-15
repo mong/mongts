@@ -1,5 +1,5 @@
-import { Box, Button, Dropdown, Icon } from "@mong/material-ui";
-import type { SelectChangeEvent } from "@mui/material";
+import { Button, Dropdown, Icon } from "@mong/material-ui";
+import { type SelectChangeEvent, Typography } from "@mui/material";
 import { useChartProApiRef } from "@mui/x-charts-pro";
 import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
 import { useState } from "react";
@@ -145,7 +145,7 @@ export const ChartRowV2 = (props: ChartRowV2Props) => {
   };
 
   return (
-    <Box>
+    <div>
       <div className="flex flex-row justify-between items-end w-full">
         <div className="flex flex-row items-end gap-2">
           <div className="pl-10 flex flex-col text-small font-semibold text-brand-primary-900">
@@ -220,6 +220,9 @@ export const ChartRowV2 = (props: ChartRowV2Props) => {
           </Button>
         </div>
       </div>
+      <div className="pt-10 pl-20 pb-4">
+        <h6>{data.indicatorTitle}</h6>
+      </div>
       {/* biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future */}
       {figureType == "line" ? (
         <MuiLineChart
@@ -254,6 +257,6 @@ export const ChartRowV2 = (props: ChartRowV2Props) => {
           apiRef={barChartApiRef}
         />
       ) : null}
-    </Box>
+    </div>
   );
 };
