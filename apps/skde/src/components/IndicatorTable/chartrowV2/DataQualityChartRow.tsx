@@ -1,4 +1,4 @@
-import { Box, Button, Dropdown, Icon, SplitButton } from "@mong/material-ui";
+import { Box, Button, Dropdown, Icon } from "@mong/material-ui";
 import type { SelectChangeEvent } from "@mui/material";
 import { useChartProApiRef } from "@mui/x-charts-pro";
 import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
@@ -128,76 +128,79 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
   };
 
   return (
-    <Box className="w-full flex-row justify-between items-end px-7">
-      <div className="flex flex-row items-end gap-1">
-        <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-          Årstall
-          <Dropdown
-            value={figureType}
-            onChange={handleFigureTypeChange}
-            items={figureTypeItems}
-          />
-        </div>
-        {figureType === "bar" && (
-          <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-            Behandlingssteder
+    <Box>
+      <div className="flex flex-row justify-between items-end w-full">
+        <div className="flex flex-row items-end gap-2">
+          <div className="pl-10 flex flex-col text-small font-semibold text-brand-primary-900">
+            Årstall
             <Dropdown
-              value={barChartType}
-              onChange={handleBarChartTypeChange}
-              items={barChartTypeItems}
+              value={figureType}
+              onChange={handleFigureTypeChange}
+              items={figureTypeItems}
             />
           </div>
-        )}
-        {showDGButton && (
+          {figureType === "bar" && (
+            <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+              Behandlingssteder
+              <Dropdown
+                value={barChartType}
+                onChange={handleBarChartTypeChange}
+                items={barChartTypeItems}
+              />
+            </div>
+          )}
+          {showDGButton && (
+            <Button
+              startIcon={<Icon symbol="data_loss_prevention" size="medium" />}
+              onClick={() => {
+                setCoveragePopupOpen(true);
+              }}
+            >
+              Datakvalitet
+            </Button>
+          )}
           <Button
-            startIcon={<Icon symbol="data_loss_prevention" size="medium" />}
             onClick={() => {
-              setCoveragePopupOpen(true);
+              setZoom(!zoom);
             }}
+            startIcon={<Icon symbol="search" size="medium" />}
+            variant="filled"
           >
-            Datakvalitet
+            Zoom
           </Button>
-        )}
-        <Button
-          onClick={() => {
-            setZoom(!zoom);
-          }}
-          startIcon={<Icon symbol="search" size="medium" />}
-          variant="filled"
-        >
-          Zoom
-        </Button>
-        <DataQualityPopup
-          open={coveragePopupOpen}
-          setOpen={setCoveragePopupOpen}
-          unitNames={unitNames}
-          year={year}
-          context={context}
-          medfield={medfield}
-          treatmentUnitsByLevel={treatmentUnitsByLevel}
-          registryName={registryName}
-          dataQualityIndId={data.dataQualityIndicatorID}
-        />
-      </div>
-      <div>
-        {showDGButton && (
-          <SplitButton
-            label="Last ned"
+          <DataQualityPopup
+            open={coveragePopupOpen}
+            setOpen={setCoveragePopupOpen}
+            unitNames={unitNames}
+            year={year}
+            context={context}
+            medfield={medfield}
+            treatmentUnitsByLevel={treatmentUnitsByLevel}
+            registryName={registryName}
+            dataQualityIndId={data.dataQualityIndicatorID}
+          />
+        </div>
+        <div className="pr-5">
+          <Button
+            disabled={false}
+            fullWidth={false}
+            loading={false}
             onClick={() => {
               const apiRef =
                 figureType === "line" ? lineChartApiRef : barChartApiRef;
-              // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-              apiRef.current!.exportAsImage({
+              apiRef.current?.exportAsImage({
                 onBeforeExport: makeOnBeforeExport(
                   data.indicatorTitle || "",
                   registryName,
                 ),
               });
             }}
-            options={["Last ned som bilde"]}
-            steps="one-step"
-          />
-        )}
+            startIcon={<Icon size="small" symbol="more_vert" />}
+            variant="secondary"
+          >
+            Last ned
+          </Button>
+        </div>
       </div>
       <div className="w-full min-h-max shrink-0 block clear-both">
         {/* biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future */}
