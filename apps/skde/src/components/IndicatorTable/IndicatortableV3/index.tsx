@@ -129,6 +129,7 @@ const reshapeData = (
             indicatorTarget:
               levelTarget !== undefined ? levelDirectionSign + levelTarget : "",
             indicatorTitle: indicator.indicatorTitle,
+            indicatorId: indicator.indicatorID,
             residentsAreaResults: indicator.data
               ?.filter((row: DataPoint) => {
                 return (
