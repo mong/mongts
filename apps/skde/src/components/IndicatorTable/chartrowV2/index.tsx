@@ -1,4 +1,4 @@
-import { Box, Button, Dropdown, Icon, SplitButton } from "@mong/material-ui";
+import { Box, Button, Dropdown, Icon } from "@mong/material-ui";
 import type { SelectChangeEvent } from "@mui/material";
 import { useChartProApiRef } from "@mui/x-charts-pro";
 import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
@@ -199,27 +199,25 @@ export const ChartRowV2 = (props: ChartRowV2Props) => {
           />
         </div>
         <div className="pr-5">
-          {showDGButton && (
-            <Button
-              disabled={false}
-              fullWidth={false}
-              loading={false}
-              onClick={() => {
-                const apiRef =
-                  figureType === "line" ? lineChartApiRef : barChartApiRef;
-                apiRef.current?.exportAsImage({
-                  onBeforeExport: makeOnBeforeExport(
-                    data.indicatorTitle || "",
-                    registryName,
-                  ),
-                });
-              }}
-              startIcon={<Icon size="small" symbol="more_vert" />}
-              variant="secondary"
-            >
-              Last ned
-            </Button>
-          )}
+          <Button
+            disabled={false}
+            fullWidth={false}
+            loading={false}
+            onClick={() => {
+              const apiRef =
+                figureType === "line" ? lineChartApiRef : barChartApiRef;
+              apiRef.current?.exportAsImage({
+                onBeforeExport: makeOnBeforeExport(
+                  data.indicatorTitle || "",
+                  registryName,
+                ),
+              });
+            }}
+            startIcon={<Icon size="small" symbol="more_vert" />}
+            variant="secondary"
+          >
+            Last ned
+          </Button>
         </div>
       </div>
       {/* biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future */}
