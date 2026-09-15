@@ -117,7 +117,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
           },
         ]}
       >
-        <div className="pt-5">
+        <div>
           <CustomChartWrapper>
             <div className="pl-20">
               <ChartsLegend

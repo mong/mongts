@@ -10,7 +10,7 @@ export const CustomChartWrapper = ({ children }: React.PropsWithChildren) => {
     <Box
       ref={chartRootRef}
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
-      sx={{ padding: 4 }}
+      sx={{ paddingLeft: 4, paddingRight: 4, paddingBottom: 2 }}
     >
       {children}
     </Box>
