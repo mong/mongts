@@ -1,21 +1,8 @@
 import { PageContent, ProductCard } from "@mong/material-ui";
-import Head from "next/head";
 import "./index.css";
 export default function Home() {
   return (
     <PageContent color="gray">
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=arrow_circle_down"
-        />
-      </Head>
       <div
         className="bg-landing-gradient h-150 rounded-b-lg flex flex-col w-full items-start justify-center text-neutral-0"
         style={
