@@ -14,10 +14,7 @@ import { useRouter } from "next/router";
 import { NextAdapter } from "next-query-params";
 import { useEffect, useState } from "react";
 import { QueryParamProvider } from "use-query-params";
-
 import "../app/global.css";
-
-import "@mong/material-ui/index.css";
 
 type Languages = "en" | "no";
 
