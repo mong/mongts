@@ -200,22 +200,25 @@ export const ChartRowV2 = (props: ChartRowV2Props) => {
         </div>
         <div className="pr-5">
           {showDGButton && (
-            <SplitButton
-              label="Last ned"
+            <Button
+              disabled={false}
+              fullWidth={false}
+              loading={false}
               onClick={() => {
                 const apiRef =
                   figureType === "line" ? lineChartApiRef : barChartApiRef;
-                // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-                apiRef.current!.exportAsImage({
+                apiRef.current?.exportAsImage({
                   onBeforeExport: makeOnBeforeExport(
                     data.indicatorTitle || "",
                     registryName,
                   ),
                 });
               }}
-              options={["Last ned som bilde"]}
-              steps="one-step"
-            />
+              startIcon={<Icon size="small" symbol="more_vert" />}
+              variant="secondary"
+            >
+              Last ned
+            </Button>
           )}
         </div>
       </div>
