@@ -14,10 +14,7 @@ import { useRouter } from "next/router";
 import { NextAdapter } from "next-query-params";
 import { useEffect, useState } from "react";
 import { QueryParamProvider } from "use-query-params";
-
 import "../app/global.css";
-
-import "@mong/material-ui/index.css";
 
 type Languages = "en" | "no";
 
@@ -26,6 +23,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter();
   const pathLang =
     pathname.includes("/en/") || pathname.endsWith("/en") ? "en" : "no";
+  const isLandingPage = pathname === "/";
+
   // Do not show header and footer on the stadievurdering and stadietabell pages
   const applyLayout =
     !pathname.includes("stadievurdering") && !pathname.includes("stadietabell");
@@ -37,7 +36,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [lang, setLang] = useState<Languages>(pathLang);
 
   LicenseInfo.setLicenseKey(process.env.NEXT_PUBLIC_MUI_X_LICENSE_KEY || "");
-
   return (
     <main className={`min-h-full flex flex-col antialiased`}>
       {applyLayout ? (
@@ -47,10 +45,13 @@ function MyApp({ Component, pageProps }: AppProps) {
               lang={lang}
               onLangChange={(lang) => setLang(lang as Languages)}
             />
-            <Breadcrumbs
-              leading={[{ name: "Analyseverktøy", href: "/" }]}
-              pathname={pathname}
-            />
+            {!isLandingPage && (
+              <Breadcrumbs
+                leading={[{ name: "Analyseverktøy", href: "/" }]}
+                pathname={pathname}
+              />
+            )}
+
             <PageLayout>
               <QueryParamProvider adapter={NextAdapter}>
                 <QueryClientProvider client={queryClient}>
