@@ -132,7 +132,7 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
           treatmentUnitsByLevel={treatmentUnitsByLevel}
           indID={dataQualityIndId}
           registryName={registryName}
-          showDGButton={true}
+          showDGButton={false}
         />
       </DialogContent>
       <Box>
