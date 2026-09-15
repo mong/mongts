@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.10.1](https://github.com/mong/mongts/compare/v1.10.0...v1.10.1) (2026-09-15)
+
+
+### Bug Fixes
+
+* **Indicator Table Graphs:** replace split-button with secondary-button ([#5006](https://github.com/mong/mongts/issues/5006)) ([beaa2af](https://github.com/mong/mongts/commit/beaa2afe54a6485cc5d12aed7f1a662c0d46ae48))
+* refresh lockfil ([#5009](https://github.com/mong/mongts/issues/5009)) ([32cee5f](https://github.com/mong/mongts/commit/32cee5f3f4401ae6ecc3b29418871351a42258c5))
+* **RegisterAccordion:** use indicator-id as unique keys on rows ([#5002](https://github.com/mong/mongts/issues/5002)) ([43a5bec](https://github.com/mong/mongts/commit/43a5bec54b673c0ed65c05591959c30cb4327b4c))
+
 ## [1.10.0](https://github.com/mong/mongts/compare/v1.9.8...v1.10.0) (2026-09-14)
 
 
