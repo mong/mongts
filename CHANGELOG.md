@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.10.2](https://github.com/mong/mongts/compare/v1.10.1...v1.10.2) (2026-09-15)
+
+
+### Bug Fixes
+
+* legg til indikatortittel i grafvindu i BKV3 ([#5007](https://github.com/mong/mongts/issues/5007)) ([f82f189](https://github.com/mong/mongts/commit/f82f18910e320c5519656cbc09895541e4fd5404))
+
 ## [1.10.1](https://github.com/mong/mongts/compare/v1.10.0...v1.10.1) (2026-09-15)
 
 
