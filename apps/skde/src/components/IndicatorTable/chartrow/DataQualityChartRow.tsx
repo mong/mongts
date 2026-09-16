@@ -15,7 +15,7 @@ type DataQualityChartRowProps = {
   data: IndicatorData;
   unitNames: string[];
   medfield: string;
-  context: string;
+  context: "caregiver" | "resident" | undefined;
   type: string;
   year: number;
   treatmentUnitsByLevel: OptsTu[];

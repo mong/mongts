@@ -106,11 +106,16 @@ const reshapeData = (
                 timeZone: "CET",
               });
 
+          const dgIndicator = registry.indicatorData.find(
+            (row) => row.indicatorID === indicator.dataQualityIndicatorID,
+          );
+
           return {
             chart: (
               <Stack>
                 <ChartRowV2
                   data={indicator}
+                  dgData={dgIndicator}
                   unitNames={unitNames}
                   medfield={registry.registerName}
                   context={context}

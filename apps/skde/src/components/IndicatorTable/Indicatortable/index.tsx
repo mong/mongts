@@ -4,7 +4,7 @@ import { StyledTable } from "./IndicatorTableStyles";
 import { RegistrySectionV2 } from "./RegistrySectionV2";
 
 type IndicatorTableProps = {
-  context: string;
+  context: "caregiver" | "resident" | undefined;
   type: string;
   year: number;
   unitNames: string[];
