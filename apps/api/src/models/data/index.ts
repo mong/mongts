@@ -17,4 +17,5 @@ export interface Filter {
   context?: string;
   id?: number;
   ind_id?: string;
+  nordic?: boolean;
 }
