@@ -53,7 +53,16 @@ const getUniqueYears = (data: Point[][]) => {
 
   uniqueYears.sort((a, b) => a - b);
 
-  return uniqueYears;
+  if (uniqueYears.length === 0) {
+    return uniqueYears;
+  }
+
+  const minYear = uniqueYears[0];
+  const maxYear = uniqueYears[uniqueYears.length - 1];
+
+  return Array.from({ length: maxYear - minYear + 1 }, (_, index) => {
+    return minYear + index;
+  });
 };
 
 // Make datapoints for the missing years with value null
@@ -106,7 +115,7 @@ const formatLineData = (
       label: unitNames[i],
       curve: "linear",
       type: "line",
-      connectNulls: true,
+      connectNulls: false,
       showMark: true,
       shape: "circle",
       labelMarkType: "line",
@@ -114,8 +123,19 @@ const formatLineData = (
         value: number | null,
         { dataIndex }: { dataIndex: number },
       ) => {
-        // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-        return `${value && customFormat(dataFormat)(value) + " (N =  " + row[dataIndex].n + ")"}`;
+        // If the value is null, display "Ingen data" (No data)
+        if (value === null) {
+          return "Ingen data";
+        }
+
+        const denominator = row[dataIndex]?.n;
+        const formattedValue = customFormat(dataFormat)(value);
+
+        if (denominator === null || denominator === undefined) {
+          return formattedValue;
+        }
+
+        return `${formattedValue} (N = ${denominator})`;
       },
     } as LineSeriesType;
   });
