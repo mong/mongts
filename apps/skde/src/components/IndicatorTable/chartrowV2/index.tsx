@@ -220,11 +220,10 @@ export const ChartRowV2 = (props: ChartRowV2Props) => {
           </Button>
         </div>
       </div>
-      <div className="pt-10 pl-20 pb-4">
-        <h6>{data.indicatorTitle}</h6>
+      <div className="pt-10 text-center pb-4">
+        <h5>{data.indicatorTitle}</h5>
       </div>
-      {/* biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future */}
-      {figureType == "line" ? (
+      {figureType === "line" ? (
         <MuiLineChart
           data={data}
           figureHeight={figureHeight}
