@@ -8,6 +8,7 @@ export const registerNamesModel = (): Promise<RegisterName[]> =>
       "name as rname",
       "full_name",
       "short_name",
+      "registry.nordic",
       "vw_registry_contexts.*",
     )
     .from("registry")
