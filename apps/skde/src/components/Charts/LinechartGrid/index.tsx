@@ -24,6 +24,9 @@ export const LinechartGrid = (props: LinechartGridProps) => {
   } = props;
 
   const opacity = "100%";
+  const showYellow =
+    levelDirection === 1 ? levelYellow > levelGreen : levelYellow < levelGreen;
+  const yellowBoundary = showYellow ? levelYellow : levelGreen;
 
   if (levelDirection === 1) {
     return (
@@ -39,7 +42,7 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           />
         )}
 
-        {levelYellow > yStart && (
+        {showYellow && levelYellow > yStart && (
           <rect
             x={xStart}
             width={xStop - xStart}
@@ -53,8 +56,8 @@ export const LinechartGrid = (props: LinechartGridProps) => {
         <rect
           x={xStart}
           width={xStop - xStart}
-          y={Math.max(yStart, levelYellow)}
-          height={yStop - Math.max(yStart, levelYellow)}
+          y={Math.max(yStart, yellowBoundary)}
+          height={yStop - Math.max(yStart, yellowBoundary)}
           fill="#FFE5E2"
           opacity={opacity}
         />
@@ -70,7 +73,7 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           />
         )}
 
-        {lines && levelYellow > yStart && levelYellow < yStop && (
+        {lines && showYellow && levelYellow > yStart && levelYellow < yStop && (
           <line
             x1={xStart}
             y1={levelYellow}
@@ -85,27 +88,27 @@ export const LinechartGrid = (props: LinechartGridProps) => {
   } else if (levelDirection === 0) {
     return (
       <React.Fragment>
-        {levelYellow > yStart && (
+        <rect
+          x={xStart}
+          width={xStop - xStart}
+          y={yStart}
+          height={Math.min(yStop, yellowBoundary) - yStart}
+          fill="#FFE5E2"
+          opacity={opacity}
+        />
+
+        {showYellow && levelYellow > yStart && (
           <rect
             x={xStart}
             width={xStop - xStart}
-            y={yStart}
-            height={Math.min(yStop, levelYellow) - yStart}
-            fill="#FFE5E2"
-            opacity={opacity}
-          />
-        )}
-        {levelGreen >= yStart && (
-          <rect
-            x={xStart}
-            width={xStop - xStart}
-            y={Math.max(yStart, levelYellow)}
-            height={Math.min(yStop, levelGreen) - Math.max(yStart, levelYellow)}
+            y={Math.max(yStart, yellowBoundary)}
+            height={
+              Math.min(yStop, levelGreen) - Math.max(yStart, yellowBoundary)
+            }
             fill="#FFEFC7"
             opacity={opacity}
           />
         )}
-        (
         <rect
           x={xStart}
           width={xStop - xStart}
@@ -114,7 +117,6 @@ export const LinechartGrid = (props: LinechartGridProps) => {
           fill="#EAF6EB"
           opacity={opacity}
         />
-        )
         {lines && levelGreen >= yStart && levelGreen <= yStop && (
           <line
             x1={xStart}
@@ -125,16 +127,19 @@ export const LinechartGrid = (props: LinechartGridProps) => {
             strokeWidth={"2px"}
           />
         )}
-        {lines && levelYellow >= yStart && levelYellow <= yStop && (
-          <line
-            x1={xStart}
-            y1={levelYellow}
-            x2={xStop}
-            y2={levelYellow}
-            stroke="#E8D360"
-            strokeWidth={"2px"}
-          />
-        )}
+        {lines &&
+          showYellow &&
+          levelYellow >= yStart &&
+          levelYellow <= yStop && (
+            <line
+              x1={xStart}
+              y1={levelYellow}
+              x2={xStop}
+              y2={levelYellow}
+              stroke="#E8D360"
+              strokeWidth={"2px"}
+            />
+          )}
       </React.Fragment>
     );
   } else {
