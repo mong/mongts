@@ -15,7 +15,7 @@ import { DataQualityChartRow } from "./DataQualityChartRow";
 type CoveragePopupProps = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
-  context: string;
+  context: "caregiver" | "resident" | undefined;
   medfield: string;
   unitNames: string[];
   year: number;

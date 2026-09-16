@@ -35,7 +35,7 @@ type IndicatorRowProps = {
   openRowID: string;
   registryName: string;
   setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
-  context: string;
+  context: "caregiver" | "resident" | undefined;
   type: string;
   year: number;
   chartColours: string[];

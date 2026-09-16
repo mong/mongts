@@ -1,5 +1,5 @@
 import { Button, Dropdown, Icon } from "@mong/material-ui";
-import { type SelectChangeEvent, Typography } from "@mui/material";
+import type { SelectChangeEvent } from "@mui/material";
 import { useChartProApiRef } from "@mui/x-charts-pro";
 import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
 import { useState } from "react";
@@ -16,6 +16,7 @@ import { DataQualityPopup } from "./DataQualityPopup";
 
 type ChartRowV2Props = {
   data: IndicatorData;
+  dgData: IndicatorData | undefined;
   unitNames: string[];
   medfield: string;
   context: "caregiver" | "resident" | undefined;
@@ -28,6 +29,7 @@ type ChartRowV2Props = {
 export const ChartRowV2 = (props: ChartRowV2Props) => {
   const {
     data,
+    dgData,
     unitNames,
     context,
     year,
@@ -187,6 +189,7 @@ export const ChartRowV2 = (props: ChartRowV2Props) => {
           </Button>
 
           <DataQualityPopup
+            data={dgData}
             open={coveragePopupOpen}
             setOpen={setCoveragePopupOpen}
             unitNames={unitNames}

@@ -9,10 +9,11 @@ import type { UseQueryResult } from "@tanstack/react-query";
 import type { FetchIndicatorParams } from "qmongjs/src/helpers/hooks";
 import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
 import type { Dispatch, SetStateAction } from "react";
-import type { DataPoint, OptsTu } from "types";
+import type { DataPoint, IndicatorData, OptsTu } from "types";
 import { DataQualityChartRow } from "./DataQualityChartRow";
 
 type CoveragePopupProps = {
+  data: IndicatorData | undefined;
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   context: "caregiver" | "resident" | undefined;
@@ -26,6 +27,7 @@ type CoveragePopupProps = {
 
 export const DataQualityPopup = (props: CoveragePopupProps) => {
   const {
+    data,
     open,
     setOpen,
     context,
@@ -37,38 +39,9 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
     registryName,
   } = props;
 
-  const type = "dg";
-
   const handleClose = () => {
     setOpen(false);
   };
-
-  const queryParams: FetchIndicatorParams = {
-    context: context,
-    registerShortName: medfield, // Not the same as the short_name column in the database
-    unitNames: unitNames,
-    type: type,
-  };
-
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  const nestedDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
-    ...queryParams,
-    nested: true,
-  });
-
-  const LoadingDialog = (
-    <Dialog open={open} fullWidth={true} maxWidth={"lg"} scroll="body">
-      <DialogTitle>
-        <h3 className="font-regular">Datakvalitet</h3>
-      </DialogTitle>
-      <DialogContent>
-        <LoadingLogo />
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={handleClose}>Lukk</Button>
-      </DialogActions>
-    </Dialog>
-  );
 
   const NoDataDialog = (
     <Dialog open={open} fullWidth={true} maxWidth={"lg"} scroll="body">
@@ -85,60 +58,32 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
   );
 
   // No data
-  if (!dataQualityIndId) {
-    return NoDataDialog;
-  }
-
-  // Loading
-  if (nestedDataQuery.isFetching) {
-    return LoadingDialog;
-  }
-
-  const regData = nestedDataQuery.data;
-
-  // No data
-  if (!regData) {
-    return NoDataDialog;
-  }
-
-  const indData = regData[0]?.indicatorData;
-
-  // No data
-  if (!indData) {
-    return NoDataDialog;
-  }
-
-  const dgIndData = indData.filter((row: DataPoint) => {
-    return row.indicatorID === dataQualityIndId;
-  });
-
-  if (!dgIndData[0]) {
+  if (data === undefined) {
     return NoDataDialog;
   }
 
   return (
     <Dialog open={open} fullWidth={true} maxWidth={"lg"} scroll="body">
       <DialogTitle>
-        <h3 className="font-regular">{dgIndData[0].indicatorTitle}</h3>
+        <h3 className="font-regular">{data.indicatorTitle}</h3>
       </DialogTitle>
       <DialogContent>
         <DataQualityChartRow
-          data={dgIndData[0]}
+          data={data}
           unitNames={unitNames}
           year={year}
           context={context}
-          type={type}
+          type={"dg"}
           medfield={medfield}
           treatmentUnitsByLevel={treatmentUnitsByLevel}
           indID={dataQualityIndId}
           registryName={registryName}
-          showDGButton={false}
         />
       </DialogContent>
       <Box>
         <ContextCard
           title="Om datakvalitetsindikatoren"
-          description={dgIndData[0].longDescription}
+          description={data.longDescription ?? "Ingen beskrivelse"}
           updated="" //denne er required, men kan settes til blank
         />
       </Box>
