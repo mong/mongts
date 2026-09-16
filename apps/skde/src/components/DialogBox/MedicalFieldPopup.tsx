@@ -28,10 +28,11 @@ type MedicalFieldPopupProps = {
   setOpen: Dispatch<SetStateAction<boolean>>;
   onSubmit: Dispatch<SetStateAction<string[]>>;
   updateRegistries: (newValue, updateType?) => void;
+  nordicOnly?: boolean;
 };
 
 export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
-  const { open, setOpen, onSubmit, updateRegistries } = props;
+  const { open, setOpen, onSubmit, updateRegistries, nordicOnly } = props;
 
   const [highlightedMedField, setHighlightedMedField] = useState<string>("");
 
@@ -43,17 +44,24 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
 
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
-    useMedicalFieldsQuery();
+    useMedicalFieldsQuery(nordicOnly);
 
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const registryQuery: UseQueryResult<any, unknown> = useRegisterNamesQuery();
+
+  const registryData: RegisterName[] = (
+    (registryQuery.data as RegisterName[] | undefined) ?? []
+  ).filter((row) => (nordicOnly ? row.nordic === 1 : true));
+
+  const medicalFieldsData: Medfield[] =
+    (medicalFieldsQuery.data as Medfield[] | undefined) ?? [];
 
   const dataIsFetching =
     medicalFieldsQuery.isFetching && registryQuery.isFetching;
 
   const medicalFieldsTree = getMedicalFields(
-    medicalFieldsQuery?.data,
-    registryQuery?.data,
+    medicalFieldsData,
+    registryData,
     true,
   );
 
@@ -66,107 +74,110 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   // ################################################# //
 
   const MedfieldCheckboxes =
-    medicalFieldsQuery.data &&
-    (medicalFieldsQuery.data.map((medfield: Medfield) => {
-      const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        // Add medfield to the selection
-        if (event.target.checked) {
-          // May contain duplicates
+    medicalFieldsData.length > 0
+      ? (medicalFieldsData.map((medfield: Medfield) => {
+          const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+            // Add medfield to the selection
+            if (event.target.checked) {
+              // May contain duplicates
 
-          const newRegistrySelection = [
-            ...registrySelection,
-            ...medfield.registers,
-          ];
+              const newRegistrySelection = [
+                ...registrySelection,
+                ...medfield.registers,
+              ];
 
-          setRegistrySelection([...new Set(newRegistrySelection)]);
+              setRegistrySelection([...new Set(newRegistrySelection)]);
 
-          // Remove medfield from the selection
-        } else {
-          const newRegistrySelection = [...registrySelection].filter(
-            (registry) => {
-              return !medfield.registers.includes(registry);
-            },
-          );
-          setRegistrySelection(newRegistrySelection);
-        }
-      };
-
-      // Check if a registry is selected.
-      // The corresponding medfield checkbox should then be indeterminate
-      // if some if its registries are selected and checked if all are selected.
-      const registryChecked = (registry: string) => {
-        return registrySelection.includes(registry);
-      };
-
-      return (
-        <FormControlLabel
-          id={`${medfield.name}_control`}
-          label={medfield.name}
-          key={medfield.shortName}
-          // If the user clicks on the label
-          // the checkbox should not be checked.
-          // Only the highlighted medfield should
-          // be changed.
-          onClick={(event) => {
-            const child = document.getElementById(`${medfield.name}_checkbox`);
-
-            if (event.target !== child) {
-              event.preventDefault();
+              // Remove medfield from the selection
+            } else {
+              const newRegistrySelection = [...registrySelection].filter(
+                (registry) => {
+                  return !medfield.registers.includes(registry);
+                },
+              );
+              setRegistrySelection(newRegistrySelection);
             }
+          };
 
-            setHighlightedMedField(medfield.name);
-          }}
-          sx={{
-            width: "100%",
-            margin: "0px",
-            paddingLeft: "20px",
-            paddingRight: "10px",
-            background:
-              highlightedMedField === medfield.name
-                ? columnColour2
-                : columnColour1,
-            display: "flex",
-            alignItems: "center",
-            minWidth: 0,
-            "& .MuiFormControlLabel-label": {
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
-              flex: 1,
-              minWidth: 0,
-            },
-          }}
-          control={
-            <Checkbox
-              id={`${medfield.name}_checkbox`}
-              checked={medfield.registers.every(registryChecked)}
-              indeterminate={
-                !medfield.registers.every(registryChecked) &&
-                medfield.registers.some(registryChecked)
-              }
-              onChange={(event) => {
-                handleChange(event);
+          // Check if a registry is selected.
+          // The corresponding medfield checkbox should then be indeterminate
+          // if some if its registries are selected and checked if all are selected.
+          const registryChecked = (registry: string) => {
+            return registrySelection.includes(registry);
+          };
+
+          return (
+            <FormControlLabel
+              id={`${medfield.name}_control`}
+              label={medfield.name}
+              key={medfield.shortName}
+              // If the user clicks on the label
+              // the checkbox should not be checked.
+              // Only the highlighted medfield should
+              // be changed.
+              onClick={(event) => {
+                const child = document.getElementById(
+                  `${medfield.name}_checkbox`,
+                );
+
+                if (event.target !== child) {
+                  event.preventDefault();
+                }
+
+                setHighlightedMedField(medfield.name);
               }}
-              key={medfield.name}
               sx={{
-                color: "var(--brand-primary-400)",
-                flexShrink: 0,
+                width: "100%",
+                margin: "0px",
+                paddingLeft: "20px",
+                paddingRight: "10px",
+                background:
+                  highlightedMedField === medfield.name
+                    ? columnColour2
+                    : columnColour1,
+                display: "flex",
+                alignItems: "center",
+                minWidth: 0,
+                "& .MuiFormControlLabel-label": {
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  flex: 1,
+                  minWidth: 0,
+                },
               }}
+              control={
+                <Checkbox
+                  id={`${medfield.name}_checkbox`}
+                  checked={medfield.registers.every(registryChecked)}
+                  indeterminate={
+                    !medfield.registers.every(registryChecked) &&
+                    medfield.registers.some(registryChecked)
+                  }
+                  onChange={(event) => {
+                    handleChange(event);
+                  }}
+                  key={medfield.name}
+                  sx={{
+                    color: "var(--brand-primary-400)",
+                    flexShrink: 0,
+                  }}
+                />
+              }
             />
-          }
-        />
-      );
-    }) as JSX.Element[]);
+          );
+        }) as JSX.Element[])
+      : [];
 
   // ############################################# //
   // Map registries and return checkbox components //
   // ############################################# //
 
   const RegistryCheckBoxes: Record<string, JSX.Element[]> = {};
-  medicalFieldsQuery.data &&
-    registryQuery.data &&
+  medicalFieldsData.length > 0 &&
+    registryData.length > 0 &&
     // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-    medicalFieldsQuery.data.map((medfield: Medfield) => {
+    medicalFieldsData.map((medfield: Medfield) => {
       const CheckBoxes = medfield.registers.map((registry) => {
         const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
           if (event.target.checked) {
@@ -185,9 +196,9 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
         return (
           <FormControlLabel
             label={
-              registryQuery.data.find((row: RegisterName) => {
+              registryData.find((row: RegisterName) => {
                 return row.rname === registry;
-              }).short_name
+              })?.short_name ?? registry
             }
             key={registry}
             sx={{

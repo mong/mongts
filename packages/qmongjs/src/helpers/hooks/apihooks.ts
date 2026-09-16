@@ -97,6 +97,7 @@ export interface FetchIndicatorParams {
   type?: string;
   id?: number;
   nested?: boolean;
+  nordic?: boolean;
 }
 
 const indicatorUrl = (params: FetchIndicatorParams): string => {
@@ -122,12 +123,14 @@ const indicatorUrl = (params: FetchIndicatorParams): string => {
     ? `year=${params.treatmentYear}&`
     : "";
 
+  const nordicQuery: string = params.nordic ? "nordic=1&" : "";
+
   const idQuery: string = params.id ? `id=${params.id}&` : "";
   const typeQuery: string = params.type ? `type=${params.type}` : "";
 
   const structure: string = params.nested ? "/nestedData?" : "/indicators?";
 
-  return `${API_HOST}/data/${registerShortNameQuery}${structure}${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}${typeQuery}${idQuery}`;
+  return `${API_HOST}/data/${registerShortNameQuery}${structure}${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}${nordicQuery}${typeQuery}${idQuery}`;
 };
 
 const fetchIndicators = async (params: FetchIndicatorParams) => {
@@ -245,14 +248,17 @@ export const useUnitUrlsQuery = () => {
   });
 };
 
-const fetchMedicalFields = async () => {
-  return await fetchJsonWithRetry(`${API_HOST}/info/medicalfields`);
+const fetchMedicalFields = async (nordicOnly?: boolean) => {
+  const nordicQuery = nordicOnly ? "?nordic=1" : "";
+  return await fetchJsonWithRetry(
+    `${API_HOST}/info/medicalfields${nordicQuery}`,
+  );
 };
 
-export const useMedicalFieldsQuery = () => {
+export const useMedicalFieldsQuery = (nordicOnly?: boolean) => {
   return useQuery({
-    queryKey: [`medicalFields`],
-    queryFn: () => fetchMedicalFields(),
+    queryKey: ["medicalFields", nordicOnly],
+    queryFn: () => fetchMedicalFields(nordicOnly),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
     gcTime: 1000 * 60 * 60,

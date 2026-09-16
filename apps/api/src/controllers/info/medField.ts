@@ -1,9 +1,12 @@
 import type { RequestHandler } from "express";
 import { medField } from "../../models/info";
 
-export const medicalFields: RequestHandler = async (_, res) => {
+export const medicalFields: RequestHandler = async (req, res) => {
   try {
-    const rows = await medField();
+    const nordicParam = req.query.nordic;
+    const nordicOnly = typeof nordicParam === "string" && nordicParam === "1";
+
+    const rows = await medField(nordicOnly);
     const emptyArray: {
       shortName?: string;
       name?: string;
