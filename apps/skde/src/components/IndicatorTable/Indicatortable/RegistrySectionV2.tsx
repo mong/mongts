@@ -36,7 +36,7 @@ type RegistrySectionProps = {
   medfield: string;
   openRowID: string;
   setOpenRowID: React.Dispatch<React.SetStateAction<string>>;
-  context: string;
+  context: "caregiver" | "resident" | undefined;
   type: string;
   year: number;
   chartColours: string[];
