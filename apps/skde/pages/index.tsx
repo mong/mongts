@@ -1,5 +1,6 @@
 import { PageContent, ProductCard } from "@mong/material-ui";
 import "./index.css";
+
 export default function Home() {
   return (
     <PageContent color="gray">
@@ -24,7 +25,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="flex w-full flex-wrap justify-center  px-6 md:px-10 gap-5 md:gap-10 relative z-1 mt-5 md:-mt-38">
+      <div className="flex w-full flex-wrap justify-center  px-6 md:px-10 gap-5 md:gap-10 relative z-1 mt-5 md:-mt-28">
         <ProductCard
           description="Hvordan varierer behandlingskvaliteten mellom fagområder på tvers av sykehus og helseforetak?"
           iconName="behandlingskvalitet"

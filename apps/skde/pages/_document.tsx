@@ -26,6 +26,10 @@ class MyDocument extends Document<{ lang: string; pathname: string }> {
             name="google-site-verification"
             content="XnhRhaBwfeuAccfCFysPPpe1f49t46JAfInHBDfK6HE"
           />
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=arrow_circle_down"
+          />
         </Head>
         <body>
           <Main />
