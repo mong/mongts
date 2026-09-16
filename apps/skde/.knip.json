@@ -1,7 +1,8 @@
 {
   "workspaces": {
     ".": {
-      "ignoreBinaries": ["biome", "knip"]
+      "ignoreBinaries": ["biome", "knip"],
+      "ignore": ["src/fonts/materialSymbolsOutlined.ts"]
     }
   }
 }
