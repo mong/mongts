@@ -59,7 +59,7 @@ const reshapeData = (
 
             const dataQualityResult =
               row.dg == null
-                ? "Ingen dekning"
+                ? "Ukjent dekning"
                 : row.dg < 0.6
                   ? "Lav dekning"
                   : "";
