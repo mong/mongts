@@ -56,13 +56,14 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
     return null;
   }
 
-  const yMaxLimit = Math.max(
-    ...data.data.map((row: DataPoint) => (row.var != null ? row.var : 0)),
-  );
+  const numericValues = data.data
+    .map((row: DataPoint) => row.var)
+    .filter((value): value is number => value != null);
 
-  const yMinLimit = Math.min(
-    ...data.data.map((row: DataPoint) => (row.var != null ? row.var : 0)),
-  );
+  const yMaxLimit =
+    numericValues.length > 0 ? Math.max(...numericValues) : percentage ? 1 : 0;
+
+  const yMinLimit = numericValues.length > 0 ? Math.min(...numericValues) : 0;
 
   const yDifference = yMaxLimit - yMinLimit;
 
