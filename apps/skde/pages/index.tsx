@@ -50,7 +50,7 @@ export default function Home() {
           FLERE VERKTØY
         </h6>
       </div>
-      <div className="flex w-full flex-wrap justify-center px-6 md:px-10 pt-5 md:pt-10 gap-5 md:gap-10">
+      <div className="flex w-full flex-wrap justify-center px-6 md:px-10 py-5 md:pt-10 gap-5 md:gap-10">
         <ProductCard
           description="Standardiserte metodebøker og prosedyrer, som gjør innholdet enklere tilgjengelig for helsepersonell."
           iconName="metodebok"
