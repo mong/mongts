@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.11.0](https://github.com/mong/mongts/compare/v1.10.1...v1.11.0) (2026-09-17)
+
+
+### Features
+
+* **Sykehusprofil:** add sortable headers for indicator-levels ([#5027](https://github.com/mong/mongts/issues/5027)) ([2bd6088](https://github.com/mong/mongts/commit/2bd6088e17719d2cb0284d6de79746bbec7d358c))
+
+
+### Bug Fixes
+
+* år på xaksen vises selv om det mangler data ([#5014](https://github.com/mong/mongts/issues/5014)) ([c0c0385](https://github.com/mong/mongts/commit/c0c0385e56cb1fe16363611bdf74456be9941675))
+* **BKV3:** endre til 'ukjent dekning' og midtstill indikatortittel ([#5023](https://github.com/mong/mongts/issues/5023)) ([410f689](https://github.com/mong/mongts/commit/410f689635883b45b4fa1816958a43c0673db1c3))
+* **deps:** update dependency compression from v1.8.1 to v1.8.2 ([#5018](https://github.com/mong/mongts/issues/5018)) ([03fbbeb](https://github.com/mong/mongts/commit/03fbbebf92d8d3a91c61a63355b22fb3d8292f6d))
+* **deps:** update dependency express-rate-limit from v8.6.2 to v8.7.0 ([#5028](https://github.com/mong/mongts/issues/5028)) ([bea7ee0](https://github.com/mong/mongts/commit/bea7ee08e4cc402e65fc2418b48b60ee98c00d01))
+* **deps:** update dependency mysql2 from v3.23.4 to v3.24.4 ([#4932](https://github.com/mong/mongts/issues/4932)) ([532abee](https://github.com/mong/mongts/commit/532abeefe854e0165b517236293dbf3dda0df17b))
+* **deps:** update material-ui monorepo ([#4925](https://github.com/mong/mongts/issues/4925)) ([a5c985a](https://github.com/mong/mongts/commit/a5c985adc473beacef249d5bb015989612102c77))
+* **Google material symbols font:** change loading strategy of google fonts ([#5013](https://github.com/mong/mongts/issues/5013)) ([969a897](https://github.com/mong/mongts/commit/969a897071826185dc0b7624256276fbbe40a905))
+* **Landingpage Icon:** move google symbol font loading to document header ([#5012](https://github.com/mong/mongts/issues/5012)) ([f67572c](https://github.com/mong/mongts/commit/f67572c40703ee911beec4e5f8fc7aad01d8622a))
+* legg til indikatortittel i grafvindu i BKV3 ([#5007](https://github.com/mong/mongts/issues/5007)) ([f82f189](https://github.com/mong/mongts/commit/f82f18910e320c5519656cbc09895541e4fd5404))
+* popup for datakvalitet bruker allerede innlastet data i V3 ([#5022](https://github.com/mong/mongts/issues/5022)) ([2e1b9cf](https://github.com/mong/mongts/commit/2e1b9cfdb303c9880177074094e595ec9cf6e05e))
+
 ## [1.10.1](https://github.com/mong/mongts/compare/v1.10.0...v1.10.1) (2026-09-15)
 
 
