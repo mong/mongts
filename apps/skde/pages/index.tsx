@@ -29,13 +29,13 @@ export default function Home() {
         <ProductCard
           description="Hvordan varierer behandlingskvaliteten mellom fagområder på tvers av sykehus og helseforetak?"
           iconName="behandlingskvalitet"
-          targetUrl="https://apps.skde.no/behandlingskvalitet/"
+          targetUrl="/behandlingskvalitet/"
           title="Behandlingskvalitet"
         />
         <ProductCard
           description="Hvordan er behandlingskvaliteten for ditt sykehus eller helseforetak, og hvordan har den utviklet seg over tid?"
           iconName="sykehusprofil"
-          targetUrl="https://apps.skde.no/sykehusprofil/"
+          targetUrl="/sykehusprofil/"
           title="Sykehusprofil"
         />
         <ProductCard
