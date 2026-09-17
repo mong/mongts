@@ -59,7 +59,7 @@ const reshapeData = (
 
             const dataQualityResult =
               row.dg == null
-                ? "Ingen dekning"
+                ? "Ukjent dekning"
                 : row.dg < 0.6
                   ? "Lav dekning"
                   : "";
@@ -106,11 +106,16 @@ const reshapeData = (
                 timeZone: "CET",
               });
 
+          const dgIndicator = registry.indicatorData.find(
+            (row) => row.indicatorID === indicator.dataQualityIndicatorID,
+          );
+
           return {
             chart: (
               <Stack>
                 <ChartRowV2
                   data={indicator}
+                  dgData={dgIndicator}
                   unitNames={unitNames}
                   medfield={registry.registerName}
                   context={context}

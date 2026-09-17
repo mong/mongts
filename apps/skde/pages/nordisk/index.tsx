@@ -7,13 +7,14 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import { LineChart } from "@mui/x-charts";
+import { useIndicatorQuery, useRegisterNamesQuery } from "qmongjs";
 import { useEffect, useRef, useState } from "react";
+import type { Indicator, RegisterName } from "types";
 import { useQueryParam } from "use-query-params";
 import { mainQueryParamsConfig } from "../../src/app_config";
 import { MedicalFieldPopup } from "../../src/components/DialogBox/MedicalFieldPopup";
-import { testData } from "../../src/data/data";
 
-type DataPoint = (typeof testData)[number];
+type DataPoint = Indicator;
 
 type ChartSeries = {
   data: Array<number | null>;
@@ -22,6 +23,7 @@ type ChartSeries = {
 };
 
 type ChartItem = {
+  registryName: string;
   registryFullName: string;
   registryShortName: string;
   series: ChartSeries[];
@@ -59,8 +61,45 @@ function useElementWidth<T extends HTMLElement = HTMLDivElement>() {
 }
 
 export default function NordiskeSammenlingninger() {
-  const chartData = buildChartData(testData);
-  const chartDataByRegistry = groupChartDataByRegistry(chartData);
+  const [selectedMedicalFields = [], setSelectedMedicalFields] = useQueryParam<
+    string[] | undefined
+    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+  >("registries", mainQueryParamsConfig.registries as any);
+
+  const indicatorQuery = useIndicatorQuery({
+    registerShortName: "all",
+    context: "caregiver",
+    type: "ind",
+    unitLevel: "hf",
+    nordic: true,
+  });
+
+  const registerNamesQuery = useRegisterNamesQuery();
+
+  const nordicRegistries = new Set(
+    ((registerNamesQuery.data as RegisterName[] | undefined) ?? [])
+      .filter((registry) => registry.nordic === 1)
+      .map((registry) => registry.rname),
+  );
+
+  const indicatorRows = Array.isArray(indicatorQuery.data)
+    ? (indicatorQuery.data as DataPoint[])
+    : [];
+
+  const nordicRows =
+    nordicRegistries.size === 0
+      ? indicatorRows
+      : indicatorRows.filter((row) => nordicRegistries.has(row.registry_name));
+
+  const chartData = buildChartData(nordicRows);
+  const selectedRegistriesSet = new Set(selectedMedicalFields);
+  const filteredChartData =
+    selectedRegistriesSet.size === 0
+      ? []
+      : chartData.filter((item) =>
+          selectedRegistriesSet.has(item.registryName),
+        );
+  const chartDataByRegistry = groupChartDataByRegistry(filteredChartData);
   const margin = { top: 20, right: 25, bottom: 20, left: 20 };
 
   const [selectedLanguage, setSelectedLanguage] = useState("no");
@@ -77,18 +116,14 @@ export default function NordiskeSammenlingninger() {
       {
         items: [
           { value: "no", label: "Norsk" },
-          { value: "sv", label: "Svensk" },
+          { value: "sv", label: "Svenska" },
           { value: "da", label: "Dansk" },
-          { value: "fi", label: "Finsk" },
+          { value: "fi", label: "Suomi" },
+          { value: "is", label: "Íslenska" },
         ],
       },
     ],
   };
-
-  const [selectedMedicalFields = [], setSelectedMedicalFields] = useQueryParam<
-    string[] | undefined
-    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  >("registries", mainQueryParamsConfig.registries as any);
 
   const [medicalFieldPopupOpen, setMedicalFieldPopupOpen] = useState(false);
 
@@ -127,6 +162,7 @@ export default function NordiskeSammenlingninger() {
                 updateRegistries={setSelectedMedicalFields}
                 setOpen={setMedicalFieldPopupOpen}
                 onSubmit={setSelectedMedicalFields}
+                nordicOnly
               />
               <div className="flex flex-col text-small  font-semibold  text-brand-primary-900">
                 Språk
@@ -141,7 +177,29 @@ export default function NordiskeSammenlingninger() {
         </div>
       </div>
       <PageContent>
-        {selectedMedicalFields.length === 0 ? (
+        {indicatorQuery.isLoading ? (
+          <Stack
+            spacing={2}
+            sx={{
+              minHeight: "320px",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h5">Laster nordiske data...</Typography>
+          </Stack>
+        ) : indicatorQuery.isError ? (
+          <Stack
+            spacing={2}
+            sx={{
+              minHeight: "320px",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h5">Kunne ikke hente nordiske data</Typography>
+          </Stack>
+        ) : chartDataByRegistry.length > 0 ? (
           <div className="flex w-full items-center justify-center px-6 py-12 sm:px-12">
             <Stack spacing={5} className="h-full w-full max-w-360">
               {chartDataByRegistry.map(([registryKey, items]) => (
@@ -203,10 +261,16 @@ export default function NordiskeSammenlingninger() {
               borderRadius: "16px",
             }}
           >
-            <h3>Velg et fagområde du vil se resultater fra</h3>
-            <Button onClick={handleMedicalFieldButtonClick}>
-              Velg fagområde
-            </Button>
+            <h3>
+              {selectedMedicalFields.length > 0
+                ? "Ingen nordiske data for valgt fagområde"
+                : "Velg et fagområde for å se resultater"}
+            </h3>
+            {selectedMedicalFields.length === 0 && (
+              <Button onClick={handleMedicalFieldButtonClick}>
+                Velg fagområde
+              </Button>
+            )}
           </Stack>
         )}
       </PageContent>
@@ -365,12 +429,9 @@ function ChartCard({
 }
 
 function buildChartData(records: DataPoint[]): ChartItem[] {
-  // Select only the records that are relevant for the Nordic level
-  const nordicRecords = records.filter((record) => record.nordic === 1);
-
   // Group the records by indicator ID
   const groupedByIndicator = new Map<string, DataPoint[]>();
-  for (const record of nordicRecords) {
+  for (const record of records) {
     const currentRecords = groupedByIndicator.get(record.ind_id) ?? [];
     currentRecords.push(record);
     groupedByIndicator.set(record.ind_id, currentRecords);
@@ -408,6 +469,7 @@ function buildChartData(records: DataPoint[]): ChartItem[] {
     });
     // Return the chart data for the current indicator
     return {
+      registryName: indicatorRecords[0]?.registry_name ?? "",
       registryShortName:
         indicatorRecords[0]?.registry_short_name ?? "Ukjent register",
       registryFullName:
@@ -429,7 +491,7 @@ function groupChartDataByRegistry(chartItems: ChartItem[]) {
   const groupedByRegistry = new Map<string, ChartItem[]>();
 
   for (const item of chartItems) {
-    const groupKey = `${item.registryShortName}::${item.registryFullName}`;
+    const groupKey = `${item.registryName}::${item.registryShortName}::${item.registryFullName}`;
     const currentItems = groupedByRegistry.get(groupKey) ?? [];
     currentItems.push(item);
     groupedByRegistry.set(groupKey, currentItems);

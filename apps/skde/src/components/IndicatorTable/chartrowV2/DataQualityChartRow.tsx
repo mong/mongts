@@ -5,14 +5,13 @@ import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
 import { useState } from "react";
 import type { DataPoint, IndicatorData, OptsTu } from "types";
 import {
-  formatMuiChartDataV2,
+  formatMuiChartData,
   makeOnBeforeExport,
 } from "../../../helpers/functions/formatMuiChartData";
-import { MuiBarChart } from "../../Charts/MuiBarChart";
+import { MuiBarChartV2 } from "../../Charts/MuiBarChartV2";
 import { MuiLineChart } from "../../Charts/MuiLineChart";
-import { DataQualityPopup } from "./DataQualityPopup";
 
-type chartRowV2Props = {
+type DataQualityChartRowProps = {
   data: IndicatorData;
   unitNames: string[];
   medfield: string;
@@ -22,10 +21,9 @@ type chartRowV2Props = {
   treatmentUnitsByLevel: OptsTu[];
   indID: string;
   registryName: string;
-  showDGButton?: boolean;
 };
 
-export const DataQualityChartRow = (props: chartRowV2Props) => {
+export const DataQualityChartRow = (props: DataQualityChartRowProps) => {
   const {
     data,
     unitNames,
@@ -36,10 +34,7 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
     medfield,
     indID,
     registryName,
-    showDGButton,
   } = props;
-
-  const [coveragePopupOpen, setCoveragePopupOpen] = useState(false);
 
   const numberOfTimePointsArray = unitNames.map(
     (unitName: string) =>
@@ -58,6 +53,9 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
 
   const [zoom, setZoom] = useState<boolean>(false);
 
+  const lineChartApiRef = useChartProApiRef<"line">();
+  const barChartApiRef = useChartProApiRef<"bar">();
+
   if (data.data === undefined) {
     return <div>No data</div>;
   }
@@ -70,10 +68,6 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
   const handleFigureTypeChange = (event: SelectChangeEvent) => {
     setFigureType(event.target.value as string);
   };
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  const lineChartApiRef = useChartProApiRef<"line">();
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  const barChartApiRef = useChartProApiRef<"bar">();
 
   const figureHeight = 650;
   const backgroundMargin = 20;
@@ -81,7 +75,7 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
   const dataFormat = data.format ? data.format : ",.0%";
   const percentage = dataFormat.includes("%");
 
-  const { lineData, uniqueYears } = formatMuiChartDataV2(
+  const { lineData, uniqueYears } = formatMuiChartData(
     data,
     unitNames,
     context,
@@ -130,8 +124,8 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
   return (
     <Box>
       <div className="flex flex-row justify-between items-end w-full">
-        <div className="flex flex-row items-end gap-2">
-          <div className="pl-10 flex flex-col text-small font-semibold text-brand-primary-900">
+        <div className="flex flex-row items-end gap-1">
+          <div className="flex flex-col text-small font-semibold text-brand-primary-900">
             Årstall
             <Dropdown
               value={figureType}
@@ -149,16 +143,6 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
               />
             </div>
           )}
-          {showDGButton && (
-            <Button
-              startIcon={<Icon symbol="data_loss_prevention" size="medium" />}
-              onClick={() => {
-                setCoveragePopupOpen(true);
-              }}
-            >
-              Datakvalitet
-            </Button>
-          )}
           <Button
             onClick={() => {
               setZoom(!zoom);
@@ -168,26 +152,13 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
           >
             Zoom
           </Button>
-          <DataQualityPopup
-            open={coveragePopupOpen}
-            setOpen={setCoveragePopupOpen}
-            unitNames={unitNames}
-            year={year}
-            context={context}
-            medfield={medfield}
-            treatmentUnitsByLevel={treatmentUnitsByLevel}
-            registryName={registryName}
-            dataQualityIndId={data.dataQualityIndicatorID}
-          />
         </div>
-        <div className="pr-5">
+        <div>
           <Button
-            disabled={false}
-            fullWidth={false}
-            loading={false}
             onClick={() => {
               const apiRef =
                 figureType === "line" ? lineChartApiRef : barChartApiRef;
+
               apiRef.current?.exportAsImage({
                 onBeforeExport: makeOnBeforeExport(
                   data.indicatorTitle || "",
@@ -195,16 +166,13 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
                 ),
               });
             }}
-            startIcon={<Icon size="small" symbol="more_vert" />}
-            variant="secondary"
           >
             Last ned
           </Button>
         </div>
       </div>
       <div className="w-full min-h-max shrink-0 block clear-both">
-        {/* biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future */}
-        {figureType == "line" ? (
+        {figureType === "line" ? (
           <MuiLineChart
             data={data}
             figureHeight={figureHeight}
@@ -218,7 +186,7 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
             tickFontSize={14}
           />
         ) : figureType === "bar" ? (
-          <MuiBarChart
+          <MuiBarChartV2
             data={data}
             figureSpacingFactor={30}
             figureSpacingConstant={2.2}
@@ -229,11 +197,8 @@ export const DataQualityChartRow = (props: chartRowV2Props) => {
             dataFormat={dataFormat}
             valueAxisFormatter={valueAxisFormatter}
             treatmentUnitsByLevel={treatmentUnitsByLevel}
-            context={context as string}
-            type={type}
-            medfield={medfield}
+            context={context}
             year={year}
-            indID={indID}
             tickFontSize={14}
             yAxisWidth={160}
             zoom={zoom}
