@@ -1,4 +1,4 @@
-import { Button, SubjectAreaResultCard } from "@mong/material-ui";
+import { Icon, IconButton, SubjectAreaResultCard } from "@mong/material-ui";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import { useState } from "react";
@@ -12,7 +12,7 @@ type MedfieldTable2Props = {
 
 const levelFields = {
   high: "green",
-  medium: "yellow",
+  middle: "yellow",
   low: "red",
 } as const satisfies Record<string, keyof RowData>;
 
@@ -40,6 +40,17 @@ export const MedfieldTable2 = (props: MedfieldTable2Props) => {
   const { unitName, year } = props;
   const [sortConfig, setSortConfig] = useState<SortConfig>();
 
+  // Clickhandler for sorting
+  const handleSort = (level: Level) => {
+    setSortConfig((currentSort) => ({
+      level,
+      direction:
+        currentSort?.level === level && currentSort.direction === "desc"
+          ? "asc"
+          : "desc",
+    }));
+  };
+
   // Fetch aggregated data
   const indicatorQuery: UseQueryResult<Indicator[], unknown> =
     useIndicatorQuery({
@@ -55,20 +66,9 @@ export const MedfieldTable2 = (props: MedfieldTable2Props) => {
 
   const rowData: RowData[] = createMedfieldTableData(
     indicatorQuery?.data,
-  ).filter(Boolean) as NonNullable<RowData>[]; //Removes empty elements from Array
+  ).filter(Boolean) as NonNullable<RowData>[]; //Removes empty or undefined elements
 
-  const handleSort = (level: Level) => {
-    return () => {
-      setSortConfig((currentSort) => ({
-        level,
-        direction:
-          currentSort?.level === level && currentSort.direction === "desc"
-            ? "asc"
-            : "desc",
-      }));
-    };
-  };
-
+  // Sort the row data based on the current sort configuration
   const rowDataToRender = sortConfig
     ? [...rowData].sort((firstRow, secondRow) => {
         const field = levelFields[sortConfig.level];
@@ -80,10 +80,6 @@ export const MedfieldTable2 = (props: MedfieldTable2Props) => {
       })
     : rowData;
 
-  if (rowDataToRender.length === 0) {
-    return null;
-  }
-  if (rowDataToRender.length === 0) return null;
   return (
     <div className="flex flex-col w-full gap-2 pb-14">
       <h4 className="pb-8 pt-14 text-brand-primary-600">
@@ -109,34 +105,28 @@ export const MedfieldTable2 = (props: MedfieldTable2Props) => {
         ].filter((row) => row !== undefined);
 
         const externalUrl = `/behandlingskvalitet/?units=Nasjonalt_${unitName}&registries=${registries.join("_")}`;
-        if (index === 1) {
+        if (index === 0) {
           return (
-            <>
-              <div className="flex gap-4">
-                <Button variant="text" onClick={handleSort("high")}>
-                  Høy
-                </Button>
-                <Button variant="text" onClick={handleSort("medium")}>
-                  Middels
-                </Button>
-                <Button variant="text" onClick={handleSort("low")}>
-                  Lav
-                </Button>
-              </div>
-
-              <SubjectAreaResultCard
-                key={row.name}
-                headers={{
-                  first: "Fagområde",
-                  second: "Målnivå",
-                }}
-                buttonHref={externalUrl}
-                high={greenPercentage}
-                low={redPercentage}
-                middle={yellowPercentage}
-                title={row.name}
-              />
-            </>
+            <SubjectAreaResultCard
+              key={row.name}
+              headers={{
+                first: "Fagområde",
+                second: "Målnivå:",
+                sortHeaders: {
+                  highLabel: "Høy",
+                  middleLabel: "Middels",
+                  lowLabel: "Lav",
+                  onClick: (level) => {
+                    handleSort(level);
+                  },
+                },
+              }}
+              buttonHref={externalUrl}
+              high={greenPercentage}
+              low={redPercentage}
+              middle={yellowPercentage}
+              title={row.name}
+            />
           );
         } else {
           return (
