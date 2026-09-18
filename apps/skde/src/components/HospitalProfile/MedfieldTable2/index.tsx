@@ -111,7 +111,6 @@ export const MedfieldTable2 = (props: MedfieldTable2Props) => {
               key={row.name}
               headers={{
                 first: "Fagområde",
-                second: "Målnivå:",
                 sortHeaders: {
                   highLabel: "Høy",
                   middleLabel: "Middels",
