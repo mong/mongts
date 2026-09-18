@@ -20,7 +20,7 @@ import { useQueryParam } from "use-query-params";
 import { mainQueryParamsConfig } from "../../src/app_config";
 import { TreatmentUnitPopupSingleSelect } from "../../src/components/DialogBox/TreatmentUnitPopupSingleSelect";
 import { TopSummarySection } from "../../src/components/HospitalProfile";
-import { MedfieldTable2 } from "../../src/components/HospitalProfile/MedfieldTable2";
+import { MedfieldTable } from "../../src/components/HospitalProfile/MedfieldTable";
 import { SelectedIndicatorTable } from "../../src/components/HospitalProfile/SelectedIndicatorTable";
 import { LayoutHead } from "../../src/components/LayoutHead";
 
@@ -278,7 +278,7 @@ export const Skde = (): JSX.Element => {
                       lastYear={lastYear}
                       pastYears={pastYears}
                     />
-                    <MedfieldTable2
+                    <MedfieldTable
                       unitName={selectedUnitNamesAsString}
                       year={lastYear}
                     />
