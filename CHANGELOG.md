@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.11.1](https://github.com/mong/mongts/compare/v1.11.0...v1.11.1) (2026-09-18)
+
+
+### Bug Fixes
+
+* aksemerker formatering ved zoom på MuiBarChartV2 ([#5036](https://github.com/mong/mongts/issues/5036)) ([b5fca2f](https://github.com/mong/mongts/commit/b5fca2f5fc4a7824f4783ea94a790c3605943b46))
+* **BK:** kopier dataobjekt som sendes til ChartRow slik at data ikke endres ([#5037](https://github.com/mong/mongts/issues/5037)) ([102857b](https://github.com/mong/mongts/commit/102857bc6c23bfaef34cb7f21381ef308c0e4732))
+* fjern gult felt når målniva for middels og høy er det samme ([#5024](https://github.com/mong/mongts/issues/5024)) ([362b5bf](https://github.com/mong/mongts/commit/362b5bf0472bb61e6c04027064123d184ef86def))
+
 ## [1.11.0](https://github.com/mong/mongts/compare/v1.10.1...v1.11.0) (2026-09-17)
 
 
