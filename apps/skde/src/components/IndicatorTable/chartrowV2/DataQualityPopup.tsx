@@ -1,15 +1,12 @@
-import { Box, Button, ContextCard, LoadingLogo } from "@mong/material-ui";
+import { Box, Button, ContextCard } from "@mong/material-ui";
 import {
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
 } from "@mui/material";
-import type { UseQueryResult } from "@tanstack/react-query";
-import type { FetchIndicatorParams } from "qmongjs/src/helpers/hooks";
-import { useIndicatorQuery } from "qmongjs/src/helpers/hooks";
 import type { Dispatch, SetStateAction } from "react";
-import type { DataPoint, IndicatorData, OptsTu } from "types";
+import type { IndicatorData, OptsTu } from "types";
 import { DataQualityChartRow } from "./DataQualityChartRow";
 
 type CoveragePopupProps = {

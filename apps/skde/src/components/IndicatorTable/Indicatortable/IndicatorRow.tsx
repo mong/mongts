@@ -197,7 +197,7 @@ export const IndicatorRow = (props: IndicatorRowProps) => {
                 <tr>
                   <td colSpan={unitNames.length + 1}>
                     <ChartRow
-                      data={indData}
+                      data={{ ...indData }}
                       unitNames={unitNames}
                       medfield={medfield}
                       context={context}

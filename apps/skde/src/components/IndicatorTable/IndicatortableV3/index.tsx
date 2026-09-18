@@ -114,7 +114,7 @@ const reshapeData = (
             chart: (
               <Stack>
                 <ChartRowV2
-                  data={indicator}
+                  data={{ ...indicator }}
                   dgData={dgIndicator}
                   unitNames={unitNames}
                   medfield={registry.registerName}
