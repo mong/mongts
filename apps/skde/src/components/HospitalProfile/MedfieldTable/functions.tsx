@@ -31,7 +31,7 @@ export const levelFields = {
 
 export type Level = keyof typeof levelFields;
 
-export type SortDirection = "asc" | "desc";
+type SortDirection = "asc" | "desc";
 
 export type SortConfig = {
   level: Level;
