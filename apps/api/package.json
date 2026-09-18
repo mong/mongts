@@ -4,7 +4,7 @@
   "main": "index.js",
   "private": true,
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=26.9.0"
   },
   "scripts": {
     "start": "ts-node-dev -r dotenv/config src",
@@ -19,7 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^25.6.0",
+    "@types/node": "^26.6.1",
     "compression": "1.8.2",
     "cors": "2.8.6",
     "express": "5.2.1",

@@ -23,7 +23,7 @@ jobs:
       TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     strategy:
       matrix:
-        node-version: [22.x]
+        node-version: [26.9]
 
     steps:
       - uses: actions/checkout@v7
