@@ -85,6 +85,9 @@ function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
         .modify(registerFilter, filter.register ?? "");
     });
   }
+  if (filter?.nordic) {
+    builder.where("registry.nordic", 1);
+  }
 }
 
 function registerFilter(builder: Knex.QueryBuilder, registerName: string) {

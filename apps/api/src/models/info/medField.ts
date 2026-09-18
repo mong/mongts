@@ -6,7 +6,7 @@ interface MedFieldInterface {
   registers: string;
 }
 
-export const medField = (): Promise<MedFieldInterface[]> =>
+export const medField = (nordicOnly?: boolean): Promise<MedFieldInterface[]> =>
   db
     .select(
       "mf.name as shortName",
@@ -16,5 +16,10 @@ export const medField = (): Promise<MedFieldInterface[]> =>
     .from("registry_medfield as rmf")
     .leftJoin("medfield as mf", "rmf.medfield_id", "mf.id")
     .join("registry as r", "rmf.registry_id", "r.id")
+    .modify((builder) => {
+      if (nordicOnly) {
+        builder.where("r.nordic", 1);
+      }
+    })
     .orderBy("mf.id")
     .orderBy("r.id");

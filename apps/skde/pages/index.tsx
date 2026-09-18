@@ -29,13 +29,13 @@ export default function Home() {
         <ProductCard
           description="Hvordan varierer behandlingskvaliteten mellom fagområder på tvers av sykehus og helseforetak?"
           iconName="behandlingskvalitet"
-          targetUrl="https://apps.skde.no/behandlingskvalitet/"
+          targetUrl="/behandlingskvalitet/"
           title="Behandlingskvalitet"
         />
         <ProductCard
           description="Hvordan er behandlingskvaliteten for ditt sykehus eller helseforetak, og hvordan har den utviklet seg over tid?"
           iconName="sykehusprofil"
-          targetUrl="https://apps.skde.no/sykehusprofil/"
+          targetUrl="/sykehusprofil/"
           title="Sykehusprofil"
         />
         <ProductCard
@@ -50,7 +50,7 @@ export default function Home() {
           FLERE VERKTØY
         </h6>
       </div>
-      <div className="flex w-full flex-wrap justify-center px-6 md:px-10 pt-5 md:pt-10 gap-5 md:gap-10">
+      <div className="flex w-full flex-wrap justify-center px-6 md:px-10 py-5 md:pt-10 gap-5 md:gap-10">
         <ProductCard
           description="Standardiserte metodebøker og prosedyrer, som gjør innholdet enklere tilgjengelig for helsepersonell."
           iconName="metodebok"

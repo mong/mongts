@@ -48,6 +48,9 @@ export function parseQuery(req: Request): Query {
     if (typeof req.query.ind_id === "string") {
       query.filter.ind_id = req.query.ind_id;
     }
+    if (typeof req.query.nordic === "string") {
+      query.filter.nordic = req.query.nordic === "1";
+    }
     query.filter.register =
       req.params.register === "all" ? "" : (req.params.register as string);
   }
