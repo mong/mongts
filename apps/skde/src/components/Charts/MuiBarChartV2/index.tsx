@@ -179,7 +179,7 @@ export const MuiBarChartV2 = (props: MuiBarChartV2Props) => {
   const figureHeight =
     (currentUnitNames.length + figureSpacingConstant) * figureSpacingFactor;
 
-  const tickNumber = zoom && xMaxLimit < 0.1 ? 3 : 10;
+  const tickNumber = zoom && xMaxLimit < 0.1 ? 5 : 10;
 
   const formatSmallPercentage = (percentageValue: number): string => {
     const absValue = Math.abs(percentageValue);
