@@ -1,3 +1,4 @@
+import { Button } from "@mong/material-ui";
 import {
   Table,
   TableBody,
@@ -8,7 +9,6 @@ import {
 import _ from "lodash";
 import { useRegistryRankQuery } from "qmongjs";
 import type { RegistryRank } from "types";
-import { ArrowLink } from "../ArrowLink";
 
 type RegistryLevelTableProps = {
   year: number;
@@ -74,12 +74,15 @@ export const RegistryLevelTable = (props: RegistryLevelTableProps) => {
             <TableRow key={`Rank-${row.registry}`}>
               <TableCell>
                 {row.url && (
-                  <ArrowLink
+                  <Button
+                    disabled={false}
+                    fullWidth={false}
+                    loading={false}
                     href={row.url}
-                    text={row.registry}
-                    externalLink={true}
-                    button={false}
-                  />
+                    variant="secondary"
+                  >
+                    {row.registry}
+                  </Button>
                 )}
               </TableCell>
 
