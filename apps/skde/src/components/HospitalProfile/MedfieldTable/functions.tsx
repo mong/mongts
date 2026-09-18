@@ -18,7 +18,7 @@ export type RowData = {
   unitNames: string[];
 };
 
-export type MedfieldTable2Props = {
+export type MedfieldTableProps = {
   unitName: string;
   year: number;
 };

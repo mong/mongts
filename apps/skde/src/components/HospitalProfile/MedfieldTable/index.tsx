@@ -8,12 +8,12 @@ import {
   formatPercentageString,
   type Level,
   levelFields,
-  type MedfieldTable2Props,
+  type MedfieldTableProps,
   type RowData,
   type SortConfig,
 } from "./functions";
 
-export const MedfieldTable2 = (props: MedfieldTable2Props) => {
+export const MedfieldTable = (props: MedfieldTableProps) => {
   const { unitName, year } = props;
   const [sortConfig, setSortConfig] = useState<SortConfig>();
 
