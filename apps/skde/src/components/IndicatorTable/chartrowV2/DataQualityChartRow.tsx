@@ -28,11 +28,8 @@ export const DataQualityChartRow = (props: DataQualityChartRowProps) => {
     data,
     unitNames,
     context,
-    type,
     year,
     treatmentUnitsByLevel,
-    medfield,
-    indID,
     registryName,
   } = props;
 
