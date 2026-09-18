@@ -1,4 +1,4 @@
-FROM alpine:3.24
+FROM alpine:3.24 as base
 
 ENV NODE_VERSION=26.9.0
 
