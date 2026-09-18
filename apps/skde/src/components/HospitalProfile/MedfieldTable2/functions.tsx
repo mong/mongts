@@ -18,6 +18,26 @@ export type RowData = {
   unitNames: string[];
 };
 
+export type MedfieldTable2Props = {
+  unitName: string;
+  year: number;
+};
+
+export const levelFields = {
+  high: "green",
+  middle: "yellow",
+  low: "red",
+} as const satisfies Record<string, keyof RowData>;
+
+export type Level = keyof typeof levelFields;
+
+export type SortDirection = "asc" | "desc";
+
+export type SortConfig = {
+  level: Level;
+  direction: SortDirection;
+};
+
 export const createMedfieldTableData = (data: Indicator[]) => {
   // Set indicator colour from value and colour limits
   const levels = data.map((row) => {
@@ -83,4 +103,16 @@ export const createMedfieldTableData = (data: Indicator[]) => {
   }
 
   return rowData;
+};
+
+export const formatPercentageString = (
+  numerator: number,
+  denominator: number,
+  prefix: string,
+) => {
+  if (denominator > 0) {
+    return `${prefix} ${Math.round((numerator / denominator) * 100)} %`;
+  } else {
+    return "Tomt";
+  }
 };

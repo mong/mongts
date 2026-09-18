@@ -3,38 +3,15 @@ import type { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery } from "qmongjs";
 import { useState } from "react";
 import type { Indicator } from "types";
-import { createMedfieldTableData, type RowData } from "../MedfieldTable";
-
-type MedfieldTable2Props = {
-  unitName: string;
-  year: number;
-};
-
-const levelFields = {
-  high: "green",
-  middle: "yellow",
-  low: "red",
-} as const satisfies Record<string, keyof RowData>;
-
-type Level = keyof typeof levelFields;
-type SortDirection = "asc" | "desc";
-
-type SortConfig = {
-  level: Level;
-  direction: SortDirection;
-};
-
-const formatPercentageString = (
-  numerator: number,
-  denominator: number,
-  prefix: string,
-) => {
-  if (denominator > 0) {
-    return `${prefix} ${Math.round((numerator / denominator) * 100)} %`;
-  } else {
-    return "Tomt";
-  }
-};
+import {
+  createMedfieldTableData,
+  formatPercentageString,
+  type Level,
+  levelFields,
+  type MedfieldTable2Props,
+  type RowData,
+  type SortConfig,
+} from "./functions";
 
 export const MedfieldTable2 = (props: MedfieldTable2Props) => {
   const { unitName, year } = props;
