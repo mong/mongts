@@ -289,7 +289,7 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
             position: "bottom",
             valueFormatter: (value: number) =>
               percentage && zoom
-                ? `${formatSmallPercentage(value * 100)}·%`
+                ? `${formatSmallPercentage(value * 100)} %`
                 : valueAxisFormatter(value),
             tickNumber: tickNumber,
           },

@@ -120,7 +120,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
             scaleType: "linear",
             valueFormatter: (value: number) =>
               percentage && zoom
-                ? `${formatSmallPercentage(value * 100)}·%`
+                ? `${formatSmallPercentage(value * 100)} %`
                 : valueAxisFormatter(value),
             tickNumber: zoom && yDifference < 0.1 ? 5 : 10,
             tickLabelStyle: {
