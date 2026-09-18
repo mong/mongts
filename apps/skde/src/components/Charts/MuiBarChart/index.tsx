@@ -225,17 +225,25 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
 
   const tickNumber = zoom && xMaxLimit < 0.1 ? 5 : 10;
 
-  const AxisValueFormatter = (value: number) => {
-    if (percentage && zoom) {
-      const percentageValue = value * 100;
-      const formattedValue = Number.isInteger(percentageValue)
-        ? percentageValue.toFixed(0)
-        : percentageValue.toFixed(1);
+  const formatSmallPercentage = (percentageValue: number): string => {
+    const absValue = Math.abs(percentageValue);
+    if (absValue === 0) return "0";
 
-      return `${formattedValue} %`;
+    // Determine decimals needed so we get at least 2 significant figures
+    // for values under 1%
+    if (absValue >= 1 || Number.isInteger(percentageValue)) {
+      return percentageValue.toFixed(Number.isInteger(percentageValue) ? 0 : 1);
     }
 
-    return valueAxisFormatter(value);
+    const magnitude = Math.floor(Math.log10(absValue));
+    const decimals = Math.min(6, Math.max(1, -magnitude + 1));
+
+    // Remove trailing zeros after the decimal point
+    let formatted = percentageValue.toFixed(decimals);
+    if (formatted.includes(".")) {
+      formatted = formatted.replace(/\.?0+$/, "");
+    }
+    return formatted;
   };
 
   // Formatting functions
@@ -279,7 +287,10 @@ export const MuiBarChart = (props: MuiBarChartProps) => {
             min: 0,
             max: percentage && !zoom ? 1 : xMaxLimit,
             position: "bottom",
-            valueFormatter: AxisValueFormatter,
+            valueFormatter: (value: number) =>
+              percentage && zoom
+                ? formatSmallPercentage(value * 100) + " %"
+                : valueAxisFormatter(value),
             tickNumber: tickNumber,
           },
         ]}
