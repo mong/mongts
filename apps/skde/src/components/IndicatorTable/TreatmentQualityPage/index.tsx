@@ -14,19 +14,19 @@ import { useIndicatorQuery, useUnitNamesQuery } from "qmongjs";
 import { Suspense, useState } from "react";
 import type { OptsTu } from "types";
 import { useQueryParam } from "use-query-params";
-import { defaultYear, mainQueryParamsConfig } from "../../../../src/app_config";
-import { MedicalFieldPopup } from "../../../../src/components/DialogBox/MedicalFieldPopup";
-import { IndicatorTableV3 } from "../../../../src/components/IndicatorTable/IndicatortableV3";
-import { LayoutHead } from "../../../../src/components/LayoutHead";
+import { defaultYear, mainQueryParamsConfig } from "../../../app_config";
 import {
   type ColourMap,
   getSortedList,
   updateColourMap,
-} from "../../../../src/helpers/functions/chartColours";
+} from "../../../helpers/functions/chartColours";
+import { MedicalFieldPopup } from "../../DialogBox/MedicalFieldPopup";
 import { TreatmentUnitPopup } from "../../DialogBox/TreatmentunitPopup";
+import { LayoutHead } from "../../LayoutHead";
 import { ScrollToTop } from "../../scroll-to-top/scroll-to-top";
+import { IndicatorTableV3 } from "../IndicatortableV3";
 
-export const TreatmentQualityPageV3 = () => {
+export const TreatmentQualityPage = () => {
   const numberOfYearOptions = 5;
 
   const defaultTreatmentUnits = ["Nasjonalt"];

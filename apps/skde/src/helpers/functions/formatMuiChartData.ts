@@ -5,7 +5,7 @@ import type { DataPoint, IndicatorData } from "types";
 type Point = { x: number; y: number | null; n: number | null };
 
 // Format to {x, y}
-export const reshapeData = (
+const reshapeData = (
   data: IndicatorData,
   unitNames: string[],
   context: "caregiver" | "resident" | undefined,
