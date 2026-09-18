@@ -20,14 +20,17 @@ jobs:
     env:
       NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
     steps:
-      - name: Set release variables
-        if: github.ref == 'refs/heads/main'
+      - name: Set version variable
+        id: version
         run: |
-          echo "version_label=${GITHUB_SHA:0:7}_prod_${RANDOM}" >> $GITHUB_ENV
-      - name: Set QA variables
-        if: github.ref == 'refs/heads/develop'
-        run: |
-          echo "version_label=${GITHUB_SHA:0:7}_qa_${RANDOM}" >> $GITHUB_ENV
+          version_label="${GITHUB_SHA}"
+          if [ "${GITHUB_REF}" = "refs/heads/main" ]; then
+            version_label="${GITHUB_SHA:0:7}_prod_${RANDOM}"
+          elif [ "${GITHUB_REF}" = "refs/heads/develop" ]; then
+            version_label="${GITHUB_SHA:0:7}_qa_${RANDOM}"
+          fi
+          echo "version_label=${version_label}" >> "$GITHUB_ENV"
+          echo "version_label=${version_label}" >> "$GITHUB_OUTPUT"
       - name: Check out the repo
         uses: actions/checkout@v7
       - run: corepack enable
@@ -72,7 +75,7 @@ jobs:
         with:
           context: .
           file: ./apps/api/Dockerfile
-          build-args: version=${{ env.version_label }}
+          build-args: version=${{ steps.version.outputs.version_label }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
