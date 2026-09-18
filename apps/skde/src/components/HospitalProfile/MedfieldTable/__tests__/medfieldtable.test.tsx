@@ -1,6 +1,6 @@
 import type { Indicator } from "types";
 import { expect, test, vi } from "vitest";
-import { createMedfieldTableData } from "..";
+import { createMedfieldTableData } from "../functions";
 
 const medfieldTableData: Indicator[] = [
   {

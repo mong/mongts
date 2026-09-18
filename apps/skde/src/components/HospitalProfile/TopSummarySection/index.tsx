@@ -4,7 +4,7 @@ import { useIndicatorQuery } from "qmongjs";
 import type { JSX } from "react";
 import type { Indicator, IndicatorLineChartDataPoint } from "types";
 import { AchievementResultsBars } from "../../Charts/AchievementResultsBars";
-import { HospitalProfileLinePlotV2 } from "../HospitalProfileLinePlotV2";
+import { HospitalProfileLinePlot } from "../HospitalProfileLinePlot";
 import { formatChartData, trendAnalysisString } from "./functions";
 
 type SummaryHeaderProps = {
@@ -124,7 +124,7 @@ const TrendAnalysisCard = ({
         padded={false}
         className="rounded-lg py-10 pl-12 pr-0 h-159"
       >
-        <HospitalProfileLinePlotV2 chartData={chartData} />
+        <HospitalProfileLinePlot chartData={chartData} />
       </Box>
 
       <TrendAnalysis

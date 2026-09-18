@@ -9,7 +9,7 @@ type HospitalProfileLinePlotProps = {
   chartData: IndicatorLineChartDataPoint[][];
 };
 
-export const HospitalProfileLinePlotV2 = (
+export const HospitalProfileLinePlot = (
   props: HospitalProfileLinePlotProps,
 ) => {
   // States
