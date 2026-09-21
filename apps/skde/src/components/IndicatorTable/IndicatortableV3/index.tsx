@@ -265,7 +265,7 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
   );
   fillMissingUnitnames(reshapedData, unitNames);
   return (
-    <div className="w-full max-w-360">
+    <div className="w-full max-w-360" data-testid="IndicatorTable">
       <div className="flex md:hidden flex-col gap-(--spacing-4) p-8 text-brand-primary-600">
         <RotateDevice message="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din." />
       </div>

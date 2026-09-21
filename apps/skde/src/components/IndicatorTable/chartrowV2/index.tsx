@@ -151,7 +151,7 @@ export const ChartRowV2 = (props: ChartRowV2Props) => {
       <div className="flex flex-row justify-between items-end w-full">
         <div className="flex flex-row items-end gap-2">
           <div className="pl-10 flex flex-col text-small font-semibold text-brand-primary-900">
-            Årstall
+            Figurtype
             <Dropdown
               value={figureType}
               onChange={handleFigureTypeChange}

@@ -61,9 +61,9 @@ export const DataQualityPopup = (props: CoveragePopupProps) => {
 
   return (
     <Dialog open={open} fullWidth={true} maxWidth={"lg"} scroll="body">
-      <DialogTitle>
-        <h3 className="font-regular">{data.indicatorTitle}</h3>
-      </DialogTitle>
+      <h3 className="font-normal mt-10 px-13 text-brand-primary-600">
+        {data.indicatorTitle}
+      </h3>
       <DialogContent>
         <DataQualityChartRow
           data={data}
