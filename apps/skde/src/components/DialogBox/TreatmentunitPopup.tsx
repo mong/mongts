@@ -343,6 +343,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   return (
     <Dialog
       open={open}
+      data-testid={"TreatmentUnitPopUp"}
       fullWidth
       scroll="paper"
       slotProps={{
@@ -438,6 +439,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           </Button>
           <Button
             onClick={handleSubmit}
+            data-testid="TreatmentUnitPopUpSubmit"
           >{`Vis resultat (${selectedCount})`}</Button>
         </DialogActions>
       </div>

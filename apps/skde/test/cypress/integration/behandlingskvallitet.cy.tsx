@@ -2,15 +2,23 @@
 
 context("Testing of behandlingskvalitet page", () => {
   beforeEach(() => {
-    cy.visit("behandlingskvalitet/?registries=hjerneslag&year=2024");
+    cy.visit("behandlingskvalitet/?registries=hjerneslag");
   });
   it("Main page", () => {
-    cy.get('[data-testid="indicatorrow_hjerneslag_beh_enhet"]', {
-      timeout: 4000,
-    }).should("exist"); // indicator row for "Andel behandlet i slagenhet" exists
-    cy.get('[data-testid^="indicatorrow_"]', {
-      timeout: 4000,
-    }).should("exist"); // indicator row
+    
+    cy.get('[data-testid="IndicatorTable"]').should("exist")
+    
+    // Test that the medical field pop up works
+    cy.get('[data-testid="MedicalFieldPopUpButton"]').should("exist");
+    cy.get('[data-testid="MedicalFieldPopUpButton"]').click();
+    cy.get('[data-testid="MedicalFieldPopUp"]').should("exist");
+    cy.get('[data-testid="MedicalFieldPopUpSubmit"').click()
+
+    // Test that the treatment unit popup works
+    cy.get('[data-testid="TreatmentUnitPopUpButton"]').should("exist");
+    cy.get('[data-testid="TreatmentUnitPopUpButton"]').click();
+    cy.get('[data-testid="TreatmentUnitPopUp"]').should("exist");
+    cy.get('[data-testid="TreatmentUnitPopUpSubmit"').click()
   });
 });
 

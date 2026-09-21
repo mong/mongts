@@ -142,7 +142,10 @@ export const TreatmentQualityPage = () => {
                     <div className="flex flex-col md:flex-row gap-3">
                       <div className="flex flex-col text-small font-semibold text-brand-primary-900">
                         Fagområde
-                        <Button onClick={handleMedicalFieldButtonClick}>
+                        <Button
+                          onClick={handleMedicalFieldButtonClick}
+                          data-testid="MedicalFieldPopUpButton"
+                        >
                           Velg fagområde
                         </Button>
                       </div>
@@ -154,7 +157,10 @@ export const TreatmentQualityPage = () => {
                       />
                       <div className="flex flex-col text-small font-semibold text-brand-primary-900">
                         Behandlingssted
-                        <Button onClick={handleTreatmentUnitButtonClick}>
+                        <Button
+                          onClick={handleTreatmentUnitButtonClick}
+                          data-testid="TreatmentUnitPopUpButton"
+                        >
                           Velg behandlingssted
                         </Button>
                       </div>
