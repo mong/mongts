@@ -225,7 +225,7 @@ export const TreatmentUnitPopupSingleSelect = (
   };
 
   const columnScrollClass =
-    "min-h-0 overflow-y-auto [scrollbar-width:thin] [scrollbar-color:var(--brand-primary-300)_transparent] [scrollbar-gutter:stable] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-brand-primary-300 hover:[&::-webkit-scrollbar-thumb]:bg-brand-primary-400";
+    "min-h-0 overflow-y-auto [scrollbar-width:none] [scrollbar-color:var(--brand-primary-300)_transparent] [scrollbar-gutter:stable] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-brand-primary-300 hover:[&::-webkit-scrollbar-thumb]:bg-brand-primary-400";
 
   // Restore highlights when dialog opens with existing selection
   React.useEffect(() => {
