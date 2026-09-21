@@ -111,10 +111,6 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
               id={`${medfield.name}_control`}
               label={medfield.name}
               key={medfield.shortName}
-              // If the user clicks on the label
-              // the checkbox should not be checked.
-              // Only the highlighted medfield should
-              // be changed.
               onClick={(event) => {
                 const child = document.getElementById(
                   `${medfield.name}_checkbox`,
@@ -264,7 +260,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const selectedCount = registrySelection.length;
 
   const columnScrollClass =
-    "min-h-0 overflow-y-auto [scrollbar-width:thin] [scrollbar-color:var(--brand-primary-300)_transparent] [scrollbar-gutter:stable] [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-brand-primary-300 hover:[&::-webkit-scrollbar-thumb]:bg-brand-primary-400";
+    "min-h-0 overflow-y-auto [scrollbar-width:none] hover:[&::-webkit-scrollbar-thumb]:bg-brand-primary-400";
 
   // ################## //
   // ##### Return ##### //
