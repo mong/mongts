@@ -79,6 +79,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           setUnitSelection([...new Set(newRHFSelection)]);
         }
       };
+
       // Check if at least one subunit is checked.
       // The RHF checkbox should then be indeterminate.
       const hfChecked = () => {
@@ -102,10 +103,6 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           label={rhf.rhf}
           key={rhf.rhf}
           onClick={(event) => {
-            // If the user clicks on the label
-            // the checkbox should not be checked.
-            // Only the highlighted RHF should
-            // be changed.
             const child = document.getElementById(`${rhf.rhf}_checkbox`);
 
             if (event.target !== child) {
@@ -181,8 +178,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
             } else {
               const newUnitSelection = [
                 ...unitSelection.filter((row) => {
-                  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-                  return row != hospital;
+                  return row !== hospital;
                 }),
               ];
               setUnitSelection(newUnitSelection);
@@ -237,8 +233,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
           } else {
             const newHFSelection = [
               ...unitSelection.filter((row) => {
-                // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-                return row != hf.hf;
+                return row !== hf.hf;
               }),
             ];
             setUnitSelection(newHFSelection);
@@ -258,10 +253,6 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
             label={hf.hf}
             key={hf.hf}
             onClick={(event) => {
-              // If the user clicks on the label
-              // the checkbox should not be checked.
-              // Only the highlighted HF should
-              // be changed.
               const child = document.getElementById(`${hf.hf}_checkbox`);
 
               if (event.target !== child) {
@@ -273,7 +264,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
               width: "100%",
               margin: "0px",
               paddingLeft: "20px",
-              paddingRight: "10px",
+              paddingRight: "0px",
               background:
                 highlightedHF === hf.hf ? columnColour3 : columnColour2,
               display: "flex",
