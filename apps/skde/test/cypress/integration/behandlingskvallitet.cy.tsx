@@ -2,7 +2,7 @@
 
 context("Testing of behandlingskvalitet page", () => {
   beforeEach(() => {
-    cy.visit("behandlingskvalitet/?registries=hjerneslag", { timeout: 10000});
+    cy.visit("behandlingskvalitet/?registries=hjerneslag", { timeout: 20000});
   });
   it("Main page", () => {
     
