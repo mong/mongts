@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.1](https://github.com/mong/mongts/compare/v1.12.0...v1.12.1) (2026-09-22)
+
+
+### Miscellaneous Chores
+
+* release 1.12.1 ([7e46e51](https://github.com/mong/mongts/commit/7e46e515d84326cadf5193cf9253dfc4ebfd8f56))
+
 ## [1.12.0](https://github.com/mong/mongts/compare/v1.11.1...v1.12.0) (2026-09-21)
 
 
