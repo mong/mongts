@@ -1,4 +1,6 @@
-import Head from "next/head";
+"use client";
+
+import { useEffect } from "react";
 
 export const LayoutHead = (props: {
   title: string;
@@ -7,14 +9,17 @@ export const LayoutHead = (props: {
 }) => {
   const { title, content, href } = props;
 
-  return (
-    <Head>
-      <title>{title}</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <meta property="og:site_name" content="Helse Nord RHF"></meta>
-      <meta name="description" content={content} />
-      <link rel="icon" href={href} />
-    </Head>
-  );
+  useEffect(() => {
+    document.title = title;
+
+    const description = document.querySelector<HTMLMetaElement>(
+      'meta[name="description"]',
+    );
+    description?.setAttribute("content", content);
+
+    const icon = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
+    icon?.setAttribute("href", href);
+  }, [content, href, title]);
+
+  return null;
 };

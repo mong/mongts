@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Stack, styled, Tab, Tabs, Typography } from "@mui/material";
 import { LineChartPro } from "@mui/x-charts-pro";
 import { useSearchParams } from "next/navigation";

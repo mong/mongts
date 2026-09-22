@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Box,
   Button,
@@ -12,7 +14,6 @@ import {
 import { Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/router";
 import { getUnitFullName, useUnitNamesQuery, useUnitUrlsQuery } from "qmongjs";
 import { type JSX, Suspense, useEffect, useState } from "react";
 import type { NestedTreatmentUnitName, OptsTu } from "types";
@@ -24,9 +25,8 @@ import { MedfieldTable } from "../../src/components/HospitalProfile/MedfieldTabl
 import { SelectedIndicatorTable } from "../../src/components/HospitalProfile/SelectedIndicatorTable";
 import { LayoutHead } from "../../src/components/LayoutHead";
 
-export const Skde = (): JSX.Element => {
+const Skde = (): JSX.Element => {
   // States
-  const router = useRouter();
   const [unitName, setUnitName] = useState<(string | null)[] | undefined>([]);
   const [urlCopied, setUrlCopied] = useState<boolean>(false);
   const urlCopiedTimeout = 3000;
@@ -86,7 +86,7 @@ export const Skde = (): JSX.Element => {
 
   const hasLoadingError =
     unitNamesQuery.status === "error" || unitUrlsQuery.status === "error";
-  const isLoading = !router.isReady || !hasUnitsData;
+  const isLoading = !hasUnitsData;
   const selectedUnit = selectedTreatmentUnit[0] ?? null;
 
   // Keep only main hospitals without mutating query-cache data.

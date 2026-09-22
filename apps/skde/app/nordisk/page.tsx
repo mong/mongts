@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, Dropdown, HeroBanner, PageContent } from "@mong/material-ui";
 import {
   Paper,

@@ -1,5 +1,7 @@
+"use client";
+
 import { PageContent, ProductCard } from "@mong/material-ui";
-import "./index.css";
+import type { CSSProperties } from "react";
 
 export default function Home() {
   return (
@@ -9,7 +11,7 @@ export default function Home() {
         style={
           {
             "--landing-page-image": `url("/hero-bg-5.jpg")`,
-          } as React.CSSProperties
+          } as CSSProperties
         }
       >
         <div className="flex flex-col gap-(--spacing-2) md:w-1/2 pl-8 md:pl-30">

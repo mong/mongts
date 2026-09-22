@@ -1,3 +1,5 @@
+"use client";
+
 import {
   type Breakpoint,
   Container,
@@ -6,7 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import { useRouter } from "next/router";
+import { usePathname, useSearchParams } from "next/navigation";
 import type { PropsWithChildren } from "react";
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -37,8 +39,10 @@ type HeaderMiddleProps = PropsWithChildren<{
  *              the full width of the page.
  */
 export const HeaderMiddle = (props: HeaderMiddleProps) => {
-  const router = useRouter();
-  const mainUrl = `https://apps.skde.no${router.asPath}`;
+  const pathname = usePathname() ?? "/";
+  const searchParams = useSearchParams();
+  const queryString = searchParams?.toString() ?? "";
+  const mainUrl = `https://apps.skde.no${pathname}${queryString ? `?${queryString}` : ""}`;
 
   return (
     <StyledToolbar
