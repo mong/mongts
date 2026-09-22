@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@mong/material-ui";
 import {
   Table,
