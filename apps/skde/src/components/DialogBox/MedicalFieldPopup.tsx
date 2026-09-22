@@ -31,6 +31,30 @@ type MedicalFieldPopupProps = {
   nordicOnly?: boolean;
 };
 
+export const filterSelectableMedicalFields = (
+  medicalFieldData: Medfield[],
+  registryData: RegisterName[],
+  nordicOnly?: boolean,
+) => {
+  const filteredRegistryData = registryData.filter((row) =>
+    nordicOnly ? row.nordic === 1 : row.nordic !== 1,
+  );
+
+  const filteredMedicalFields = medicalFieldData
+    .map((field) => ({
+      ...field,
+      registers: field.registers.filter((registry) =>
+        filteredRegistryData.some((row) => row.rname === registry),
+      ),
+    }))
+    .filter((field) => field.registers.length > 0);
+
+  return {
+    registryData: filteredRegistryData,
+    medicalFields: filteredMedicalFields,
+  };
+};
+
 export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const { open, setOpen, onSubmit, updateRegistries, nordicOnly } = props;
 
@@ -49,12 +73,12 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const registryQuery: UseQueryResult<any, unknown> = useRegisterNamesQuery();
 
-  const registryData: RegisterName[] = (
-    (registryQuery.data as RegisterName[] | undefined) ?? []
-  ).filter((row) => (nordicOnly ? row.nordic === 1 : true));
-
-  const medicalFieldsData: Medfield[] =
-    (medicalFieldsQuery.data as Medfield[] | undefined) ?? [];
+  const { registryData, medicalFields: medicalFieldsData } =
+    filterSelectableMedicalFields(
+      (medicalFieldsQuery.data as Medfield[] | undefined) ?? [],
+      (registryQuery.data as RegisterName[] | undefined) ?? [],
+      nordicOnly,
+    );
 
   const dataIsFetching =
     medicalFieldsQuery.isFetching && registryQuery.isFetching;
