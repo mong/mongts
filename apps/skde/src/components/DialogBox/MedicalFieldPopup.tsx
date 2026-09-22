@@ -31,7 +31,7 @@ type MedicalFieldPopupProps = {
   nordicOnly?: boolean;
 };
 
-export const filterSelectableMedicalFields = (
+const filterSelectableMedicalFields = (
   medicalFieldData: Medfield[],
   registryData: RegisterName[],
   nordicOnly?: boolean,
