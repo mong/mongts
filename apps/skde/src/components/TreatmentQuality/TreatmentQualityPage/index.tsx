@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Box,
   Button,
@@ -14,7 +13,7 @@ import { type SelectChangeEvent, Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery, useUnitNamesQuery } from "qmongjs";
 import { Suspense, useState } from "react";
-import type { OptsTu } from "types";
+import type { OptsTu, RegisterData } from "types";
 import { useQueryParam } from "use-query-params";
 import { defaultYear, mainQueryParamsConfig } from "@/app_config";
 import { MedicalFieldPopup } from "@/components/DialogBox/MedicalFieldPopup";
@@ -102,8 +101,15 @@ export const TreatmentQualityPage = () => {
   // Default: all registries, caregiver and ind
   const unitNamesByLevelQuery = useUnitNamesQuery();
 
-  const registerData = nestedDataQuery?.data;
+  const registerData = nestedDataQuery?.data as RegisterData[] | undefined;
   const unitNamesByLevel = unitNamesByLevelQuery?.data?.opts_tu as OptsTu[];
+
+  const hasMatchingSelectedMedicalFields =
+    selectedMedicalFields.length > 0 &&
+    Array.isArray(registerData) &&
+    registerData.some((row) =>
+      selectedMedicalFields.includes(row.registerName),
+    );
 
   const isInitialLoading =
     nestedDataQuery.status === "pending" &&
@@ -114,7 +120,6 @@ export const TreatmentQualityPage = () => {
   const hasLoadingError =
     nestedDataQuery.status === "error" ||
     unitNamesByLevelQuery.status === "error";
-
   return (
     <>
       <HeroBanner
@@ -228,7 +233,9 @@ export const TreatmentQualityPage = () => {
                 Last på nytt
               </Button>
             </Box>
-          ) : selectedMedicalFields.length > 0 && registerData ? (
+          ) : selectedMedicalFields.length > 0 &&
+            hasMatchingSelectedMedicalFields &&
+            registerData ? (
             <IndicatorTableV3
               key={"indicator-table2"}
               data={registerData}
@@ -246,6 +253,17 @@ export const TreatmentQualityPage = () => {
               )}
               unitNamesByLevel={unitNamesByLevel}
             />
+          ) : selectedMedicalFields.length > 0 && registerData ? (
+            <Box
+              className="hidden md:flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
+              border
+              color="white"
+            >
+              <h3>Ingen data tilgjengelig for dette valget.</h3>
+              <Button onClick={() => nestedDataQuery.refetch()}>
+                Last på nytt
+              </Button>
+            </Box>
           ) : registerData ? (
             <>
               <Box
