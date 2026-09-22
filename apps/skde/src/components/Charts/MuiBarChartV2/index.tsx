@@ -252,6 +252,8 @@ export const MuiBarChartV2 = (props: MuiBarChartV2Props) => {
             type: "bar",
             layout: "horizontal",
             data: currentData,
+            color: "var(--bar-1)",
+
             valueFormatter: barValueFormatter,
             ...(showBarLabels
               ? {
