@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.12.1](https://github.com/mong/mongts/compare/v1.12.0...v1.12.1) (2026-09-22)
+
+
+### Miscellaneous Chores
+
+* release 1.12.1 ([7e46e51](https://github.com/mong/mongts/commit/7e46e515d84326cadf5193cf9253dfc4ebfd8f56))
+
+## [1.12.0](https://github.com/mong/mongts/compare/v1.11.1...v1.12.0) (2026-09-21)
+
+
+### Features
+
+* ny hovedversjon av Behandlingskvalitet (pizza) ([#5045](https://github.com/mong/mongts/issues/5045)) ([ee0c8c5](https://github.com/mong/mongts/commit/ee0c8c54987c7c21c517da796e43b2d3730bede5))
+
+
+### Bug Fixes
+
+* **popups:** fix paddings for background color  on selected rows ([#5056](https://github.com/mong/mongts/issues/5056)) ([eef75b6](https://github.com/mong/mongts/commit/eef75b6f93750ef2c5a3057a9407c86cde1cd926))
+
 ## [1.11.1](https://github.com/mong/mongts/compare/v1.11.0...v1.11.1) (2026-09-18)
 
 

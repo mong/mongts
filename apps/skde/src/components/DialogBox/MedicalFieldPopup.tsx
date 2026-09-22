@@ -269,6 +269,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   return (
     <Dialog
       open={open}
+      data-testid={"MedicalFieldPopUp"}
       fullWidth
       scroll="paper"
       slotProps={{
@@ -351,6 +352,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
           </Button>
           <Button
             onClick={handleSubmit}
+            data-testid="MedicalFieldPopUpSubmit"
           >{`Vis resultat (${selectedCount})`}</Button>
         </DialogActions>
       </div>
