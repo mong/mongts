@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import HospitalProfilePage from "@/components/HospitalProfile/HospitalProfilePage";
+import { TreatmentQualityPage } from "@/components/TreatmentQuality/TreatmentQualityPage";
 
 export const metadata: Metadata = {
   title: "Behandlingskvalitet",
@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <HospitalProfilePage />;
+  return <TreatmentQualityPage />;
 }

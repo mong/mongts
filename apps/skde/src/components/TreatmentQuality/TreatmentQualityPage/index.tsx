@@ -1,28 +1,33 @@
 "use client";
 
 import {
+  Box,
   Button,
   Dropdown,
   HeroBanner,
   Icon,
+  LoadingLogo,
   PageContent,
+  RotateDevice,
 } from "@mong/material-ui";
-import { Box, type SelectChangeEvent, Stack } from "@mui/material";
-import { useState } from "react";
+import { type SelectChangeEvent, Toolbar } from "@mui/material";
+import type { UseQueryResult } from "@tanstack/react-query";
+import { useIndicatorQuery, useUnitNamesQuery } from "qmongjs";
+import { Suspense, useState } from "react";
+import type { OptsTu } from "types";
 import { useQueryParam } from "use-query-params";
 import { defaultYear, mainQueryParamsConfig } from "@/app_config";
 import { MedicalFieldPopup } from "@/components/DialogBox/MedicalFieldPopup";
 import { TreatmentUnitPopup } from "@/components/DialogBox/TreatmentunitPopup";
-import { IndicatorTableV2 } from "@/components/IndicatorTable/Indicatortable";
-import { TreatmentQualityAppBarV2 } from "@/components/IndicatorTable/Indicatortable/StickyHeader";
-import { LayoutHead } from "@/components/LayoutHead";
+import { IndicatorTableV3 } from "@/components/IndicatorTable/IndicatortableV3";
+import { ScrollToTop } from "@/components/scroll-to-top/scroll-to-top";
 import {
   type ColourMap,
   getSortedList,
   updateColourMap,
 } from "@/helpers/functions/chartColours";
 
-export default function TreatmentQualityPage() {
+export const TreatmentQualityPage = () => {
   const numberOfYearOptions = 5;
 
   const defaultTreatmentUnits = ["Nasjonalt"];
@@ -67,6 +72,7 @@ export default function TreatmentQualityPage() {
   const handleMedicalFieldButtonClick = () => {
     setMedicalFieldPopupOpen(true);
   };
+
   const handleTreatmentUnitButtonClick = () => {
     setTreatmentUnitPopupOpen(true);
   };
@@ -74,131 +80,203 @@ export default function TreatmentQualityPage() {
   const yearDropdownItems = {
     groups: [
       {
-        items: Array.from({ length: numberOfYearOptions + 1 }, (_, i) => {
-          const year = defaultYear + 1 - i;
+        items: Array.from({ length: numberOfYearOptions }, (_, i) => {
+          const year = defaultYear - i;
           return { value: year.toString(), label: year.toString() };
         }),
       },
     ],
   };
 
+  const handleClearFilters = () => {
+    setSelectedTreatmentUnits(defaultTreatmentUnits);
+    setSelectedYear(defaultYear);
+    setSelectedMedicalFields([]);
+  };
+
+  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+  const nestedDataQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
+    nested: true,
+  });
+
+  // Default: all registries, caregiver and ind
+  const unitNamesByLevelQuery = useUnitNamesQuery();
+
+  const registerData = nestedDataQuery?.data;
+  const unitNamesByLevel = unitNamesByLevelQuery?.data?.opts_tu as OptsTu[];
+
+  const isInitialLoading =
+    nestedDataQuery.status === "pending" &&
+    unitNamesByLevelQuery.status === "pending" &&
+    !registerData &&
+    !unitNamesByLevel;
+
+  const hasLoadingError =
+    nestedDataQuery.status === "error" ||
+    unitNamesByLevelQuery.status === "error";
+
   return (
-    <Box
-      sx={{
-        background: "#F5F5F5",
-      }}
-    >
+    <>
       <HeroBanner
         description="Her kan du se resultater fra nasjonale medisinske kvalitetsregistre, og sammenligne indikatorer ved å velge flere sykehus eller regioner"
         title="Behandlingskvalitet"
         image="/hero-bg-4.jpg"
       />
-      <div className="flex bg-neutral-0 w-full align-middle items-center justify-center px-12">
-        <div className="flex flex-col w-full h-full max-w-360">
-          <TreatmentQualityAppBarV2>
-            <Stack
-              direction="row"
-              sx={{
-                justifyContent: "space-between",
-                alignItems: "center",
-                width: "100%",
-                paddingTop: 2,
-                paddingBottom: 2,
-              }}
-            >
-              <Stack direction="row" spacing={3}>
-                <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                  Fagområde
-                  <Button onClick={handleMedicalFieldButtonClick}>
-                    Velg fagområde
-                  </Button>
+      <Suspense
+        fallback={
+          <Box padded={false} color="transparent" className="p-10">
+            <LoadingLogo message="Laster data" />
+          </Box>
+        }
+      >
+        <div className="flex bg-neutral-0 w-full align-middle justify-center px-6 md:px-12 sticky top-0 z-60 shadow-xs">
+          <div className="flex flex-col w-full h-full max-w-360">
+            {registerData && (
+              <Toolbar disableGutters={true}>
+                <div className="flex flex-row max-w-360 w-full justify-between items-center pb-2 md:pb-4">
+                  <div className="flex flex-row md:flex-row gap-6 md:gap-4 w-full">
+                    <div className="flex flex-col md:flex-row gap-3">
+                      <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                        Fagområde
+                        <Button
+                          onClick={handleMedicalFieldButtonClick}
+                          data-testid="MedicalFieldPopUpButton"
+                        >
+                          Velg fagområde
+                        </Button>
+                      </div>
+                      <MedicalFieldPopup
+                        open={medicalFieldPopupOpen}
+                        updateRegistries={setSelectedMedicalFields}
+                        setOpen={setMedicalFieldPopupOpen}
+                        onSubmit={setSelectedMedicalFields}
+                      />
+                      <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                        Behandlingssted
+                        <Button
+                          onClick={handleTreatmentUnitButtonClick}
+                          data-testid="TreatmentUnitPopUpButton"
+                        >
+                          Velg behandlingssted
+                        </Button>
+                      </div>
+                      <TreatmentUnitPopup
+                        open={treatmentUnitPopupOpen}
+                        setOpen={setTreatmentUnitPopupOpen}
+                        onSubmit={setSelectedTreatmentUnits}
+                        context={selectedTableContext}
+                        type={"ind"}
+                      />
+                    </div>
+                    <div className="flex items-end">
+                      <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                        Årstall
+                        <Dropdown
+                          value={selectedYear.toString()}
+                          onChange={handleYearChange}
+                          items={yearDropdownItems}
+                        />
+                      </div>
+                    </div>
+                    <div className="flex items-end">
+                      <div className="flex text-small font-semibold text-brand-primary-900">
+                        <Button variant="text" onClick={handleClearFilters}>
+                          Tøm filter
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className="pb-4 pl-6 hidden md:block"
+                    data-testid="copy-url-button"
+                  >
+                    <Button
+                      startIcon={<Icon size="small" symbol="content_copy" />}
+                      variant="secondary"
+                      onClick={() => {
+                        navigator.clipboard.writeText(window.location.href);
+                        setUrlCopied(true);
+                        setTimeout(() => {
+                          setUrlCopied(false);
+                        }, urlCopiedTimeout);
+                      }}
+                    >
+                      {urlCopied ? "Link kopiert" : "Kopier denne visningen"}
+                    </Button>
+                  </div>
                 </div>
-                <MedicalFieldPopup
-                  open={medicalFieldPopupOpen}
-                  updateRegistries={setSelectedMedicalFields}
-                  setOpen={setMedicalFieldPopupOpen}
-                  onSubmit={setSelectedMedicalFields}
-                />
-                <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                  Behandlingssteder
-                  <Button onClick={handleTreatmentUnitButtonClick}>
-                    Velg Behandlingssteder
-                  </Button>
-                </div>
-                <TreatmentUnitPopup
-                  open={treatmentUnitPopupOpen}
-                  setOpen={setTreatmentUnitPopupOpen}
-                  onSubmit={setSelectedTreatmentUnits}
-                  context={selectedTableContext}
-                  type={"ind"}
-                />
-                <div className="flex flex-col text-small  font-semibold  text-brand-primary-900">
-                  Årstall
-                  <Dropdown
-                    value={selectedYear.toString()}
-                    onChange={handleYearChange}
-                    items={yearDropdownItems}
-                  />
-                </div>
-              </Stack>
-              <div className="pb-4 pl-6" data-testid="copy-url-button">
-                <Button
-                  startIcon={<Icon size="small" symbol="content_copy" />}
-                  variant="secondary"
-                  onClick={() => {
-                    navigator.clipboard.writeText(window.location.href);
-                    setUrlCopied(true);
-                    setTimeout(() => {
-                      setUrlCopied(false);
-                    }, urlCopiedTimeout);
-                  }}
-                >
-                  {urlCopied ? "Link kopiert" : "Kopier denne visningen"}
-                </Button>
-              </div>
-            </Stack>
-          </TreatmentQualityAppBarV2>
+              </Toolbar>
+            )}
+          </div>
         </div>
-      </div>
-      <PageContent>
-        {selectedMedicalFields.length > 0 ? (
-          <IndicatorTableV2
-            key={"indicator-table2"}
-            context={selectedTableContext}
-            unitNames={getSortedList(
-              colourMap,
-              selectedTreatmentUnits,
-              "units",
-            )}
-            year={selectedYear}
-            type={"ind"}
-            levels={""}
-            medfields={selectedMedicalFields}
-            chartColours={getSortedList(
-              colourMap,
-              selectedTreatmentUnits,
-              "colours",
-            )}
-          />
-        ) : (
-          <Stack
-            spacing={6}
-            sx={{
-              height: "484px",
-              justifyContent: "center",
-              alignItems: "center",
-              background: "#FFFFFF",
-              border: "1px solid #2354AE",
-              borderRadius: "16px",
-            }}
-          >
-            <h3>Velg et fagområde du vil se resultater fra</h3>
-            <Button onClick={handleMedicalFieldButtonClick}>
-              Velg fagområde
-            </Button>
-          </Stack>
-        )}
-      </PageContent>
-    </Box>
+        <PageContent>
+          {isInitialLoading ? (
+            <Box padded={false} color="transparent" className="p-10">
+              <LoadingLogo message="Laster data" />
+            </Box>
+          ) : hasLoadingError ? (
+            <Box
+              border
+              className="flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-50 md:min-h-100 my-10"
+            >
+              <h4>Feil ved innhenting av data. Prøv igjen.</h4>
+              <Button
+                onClick={() => {
+                  nestedDataQuery.refetch();
+                }}
+              >
+                Last på nytt
+              </Button>
+            </Box>
+          ) : selectedMedicalFields.length > 0 && registerData ? (
+            <IndicatorTableV3
+              key={"indicator-table2"}
+              data={registerData}
+              unitNames={getSortedList(
+                colourMap,
+                selectedTreatmentUnits,
+                "units",
+              )}
+              year={selectedYear}
+              medfields={selectedMedicalFields}
+              chartColours={getSortedList(
+                colourMap,
+                selectedTreatmentUnits,
+                "colours",
+              )}
+              unitNamesByLevel={unitNamesByLevel}
+            />
+          ) : registerData ? (
+            <>
+              <Box
+                border
+                className="hidden md:flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
+                color="white"
+              >
+                <h3>Velg et fagområde du vil se resultater fra</h3>
+                <Button onClick={handleMedicalFieldButtonClick}>
+                  Velg fagområde
+                </Button>
+              </Box>
+              <div className="flex md:hidden flex-col py-8 text-brand-primary-600">
+                <RotateDevice message="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din." />
+              </div>
+            </>
+          ) : (
+            <Box
+              className="hidden md:flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
+              border
+              color="white"
+            >
+              <h3>Ingen data tilgjengelig for dette valget.</h3>
+              <Button onClick={() => nestedDataQuery.refetch()}>
+                Last på nytt
+              </Button>
+            </Box>
+          )}
+          <ScrollToTop />
+        </PageContent>
+      </Suspense>
+    </>
   );
-}
+};
