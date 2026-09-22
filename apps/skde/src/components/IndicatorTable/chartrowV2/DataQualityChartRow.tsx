@@ -1,4 +1,4 @@
-import { Box, Button, Dropdown, Icon } from "@mong/material-ui";
+import { Button, Dropdown, Icon } from "@mong/material-ui";
 import type { SelectChangeEvent } from "@mui/material";
 import { useChartProApiRef } from "@mui/x-charts-pro";
 import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
@@ -119,11 +119,11 @@ export const DataQualityChartRow = (props: DataQualityChartRowProps) => {
   };
 
   return (
-    <Box>
-      <div className="flex flex-row justify-between items-end w-full">
-        <div className="flex flex-row items-end gap-1">
+    <>
+      <div className="flex flex-row justify-between items-end w-full px-7 pb-5">
+        <div className="flex flex-row items-end gap-4">
           <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-            Årstall
+            Figurtype
             <Dropdown
               value={figureType}
               onChange={handleFigureTypeChange}
@@ -203,6 +203,6 @@ export const DataQualityChartRow = (props: DataQualityChartRowProps) => {
           />
         ) : null}
       </div>
-    </Box>
+    </>
   );
 };
