@@ -7,16 +7,17 @@ import {
   ChartsYAxis,
   type HighlightScope,
 } from "@mui/x-charts";
+import type { BarLabelProps } from "@mui/x-charts/BarChart";
 import {
   type BarChartProPluginSignatures,
   type ChartProApi,
   ChartsDataProviderPro,
 } from "@mui/x-charts-pro";
-import { customFormat } from "qmongjs/src/helpers/functions";
 import type { RefObject } from "react";
 import type { DataPoint, IndicatorData, OptsTu } from "types";
 import {
   formatBarData,
+  formatBarValueLabel,
   reshapeDataV2,
 } from "../../../helpers/functions/formatMuiChartData";
 import { ChartLogo } from "../ChartLogo";
@@ -39,6 +40,7 @@ type MuiBarChartV2Props = {
   yAxisWidth: number;
   zoom: boolean;
   dataFormat: string;
+  showBarLabels?: boolean;
   apiRef: RefObject<
     ChartProApi<"bar", BarChartProPluginSignatures> | undefined
   >;
@@ -61,6 +63,7 @@ export const MuiBarChartV2 = (props: MuiBarChartV2Props) => {
     yAxisWidth,
     zoom,
     dataFormat,
+    showBarLabels = false,
     apiRef,
   } = props;
 
@@ -207,8 +210,37 @@ export const MuiBarChartV2 = (props: MuiBarChartV2Props) => {
     value: number | null,
     { dataIndex }: { dataIndex: number },
   ) => {
-    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-    return `${value && customFormat(dataFormat)(value) + " (N =  " + currentDenominator[dataIndex] + ")"}`;
+    return formatBarValueLabel({
+      value,
+      denominator: currentDenominator[dataIndex],
+      dataFormat,
+    });
+  };
+
+  const barLabelFormatter = (item: {
+    value: number | null;
+    dataIndex: number;
+  }) => {
+    return formatBarValueLabel({
+      value: item.value,
+      denominator: currentDenominator[item.dataIndex],
+      dataFormat,
+    });
+  };
+
+  const ExportBarLabel = (props: BarLabelProps) => {
+    const { x, y, xOrigin, height, layout, ...otherProps } = props;
+
+    return (
+      <text
+        {...otherProps}
+        x={xOrigin + 8}
+        y={y + height / 2}
+        textAnchor="start"
+        dominantBaseline="central"
+        style={{ fontSize: 12, fontWeight: 700, pointerEvents: "none" }}
+      />
+    );
   };
 
   return (
@@ -220,8 +252,14 @@ export const MuiBarChartV2 = (props: MuiBarChartV2Props) => {
             type: "bar",
             layout: "horizontal",
             data: currentData,
+            color: "var(--bar-1)",
+
             valueFormatter: barValueFormatter,
-            barLabelPlacement: "center",
+            ...(showBarLabels
+              ? {
+                  barLabel: (item) => barLabelFormatter(item),
+                }
+              : {}),
             highlightScope: {
               highlight: "item",
               fade: "series",
@@ -273,7 +311,15 @@ export const MuiBarChartV2 = (props: MuiBarChartV2Props) => {
             />
             <ChartsXAxis />
             <ChartsYAxis />
-            <BarPlot />
+            <BarPlot
+              slots={
+                showBarLabels
+                  ? {
+                      barLabel: ExportBarLabel,
+                    }
+                  : undefined
+              }
+            />
           </ChartsSurface>
           <ChartLogo />
         </CustomChartWrapper>

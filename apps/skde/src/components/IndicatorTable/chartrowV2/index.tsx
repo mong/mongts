@@ -64,6 +64,7 @@ export const ChartRowV2 = (props: ChartRowV2Props) => {
   >("chartsetting", mainQueryParamsConfig.chartsetting as any);
 
   const [zoom, setZoom] = useState<boolean>(false);
+  const [showBarLabelsForExport, setShowBarLabelsForExport] = useState(false);
 
   if (data.data === undefined) {
     return <div>No data</div>;
@@ -209,11 +210,19 @@ export const ChartRowV2 = (props: ChartRowV2Props) => {
             onClick={() => {
               const apiRef =
                 figureType === "line" ? lineChartApiRef : barChartApiRef;
+
+              if (figureType === "bar") {
+                setShowBarLabelsForExport(true);
+              }
+
               apiRef.current?.exportAsImage({
-                onBeforeExport: makeOnBeforeExport(
-                  data.indicatorTitle || "",
-                  registryName,
-                ),
+                onBeforeExport: (iframe) => {
+                  makeOnBeforeExport(
+                    data.indicatorTitle || "",
+                    registryName,
+                  )(iframe);
+                  setShowBarLabelsForExport(false);
+                },
               });
             }}
             startIcon={<Icon size="small" symbol="more_vert" />}
@@ -256,6 +265,7 @@ export const ChartRowV2 = (props: ChartRowV2Props) => {
           tickFontSize={14}
           yAxisWidth={160}
           zoom={zoom}
+          showBarLabels={showBarLabelsForExport}
           apiRef={barChartApiRef}
         />
       ) : null}
