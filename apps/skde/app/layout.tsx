@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./global.css";
+import { materialSymbolsOutlined } from "@/fonts/materialSymbolsOutlined";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
@@ -21,14 +22,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="no">
-      <head>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap&icon_names=arrow_circle_down"
-        />
-      </head>
       <body>
-        <main className="min-h-full flex flex-col antialiased">
+        <main
+          className={`${materialSymbolsOutlined.variable} min-h-full flex flex-col antialiased`}
+        >
           <Providers>{children}</Providers>
         </main>
       </body>
