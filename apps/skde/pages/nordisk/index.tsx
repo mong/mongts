@@ -139,7 +139,7 @@ export default function NordiskeSammenlingninger() {
       <HeroBanner
         description="Her kan du se resultater fra nasjonale medisinske kvalitetsregistre, og sammenligne indikatorer mellom nordiske land"
         title="Nordisk profil"
-        image="/hero-bg-4.jpg"
+        image="/hero-bg-6.jpg"
       />
       <div className="flex bg-neutral-0 w-full align-middle items-center justify-center px-12">
         <div className="flex flex-col w-full h-full max-w-360">

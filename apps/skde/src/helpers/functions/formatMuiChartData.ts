@@ -123,19 +123,12 @@ const formatLineData = (
         value: number | null,
         { dataIndex }: { dataIndex: number },
       ) => {
-        // If the value is null, display "Ingen data" (No data)
-        if (value === null) {
-          return "Ingen data";
-        }
-
         const denominator = row[dataIndex]?.n;
-        const formattedValue = customFormat(dataFormat)(value);
-
-        if (denominator === null || denominator === undefined) {
-          return formattedValue;
-        }
-
-        return `${formattedValue} (N = ${denominator})`;
+        return formatBarValueLabel({
+          value,
+          denominator,
+          dataFormat,
+        });
       },
     } as LineSeriesType;
   });
@@ -153,6 +146,28 @@ export const formatBarData = (data: Point[][], year: number) => {
   });
 
   return barData;
+};
+
+export const formatBarValueLabel = ({
+  value,
+  denominator,
+  dataFormat,
+}: {
+  value: number | null;
+  denominator: number | null | undefined;
+  dataFormat: string;
+}) => {
+  if (value === null || value === undefined) {
+    return "Ingen data";
+  }
+
+  const formattedValue = customFormat(dataFormat)(value);
+
+  if (denominator === null || denominator === undefined) {
+    return formattedValue;
+  }
+
+  return `${formattedValue} (N = ${denominator})`;
 };
 
 export const formatMuiChartData = (
