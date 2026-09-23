@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.13.0](https://github.com/mong/mongts/compare/v1.12.1...v1.13.0) (2026-09-23)
+
+
+### Features
+
+* endre herobanner bilde på nordisk ([#5066](https://github.com/mong/mongts/issues/5066)) ([bb79a67](https://github.com/mong/mongts/commit/bb79a67b1ae16172cee4f25b0b253d809e6dd66a))
+* lagt til N= i nedlastet søylediagram + MedicalFieldPopup fix ([#5068](https://github.com/mong/mongts/issues/5068)) ([38fa648](https://github.com/mong/mongts/commit/38fa6486dca2a5d5b5af639865dabd17959ea6fe))
+* legg til slik at språk dropdown endrer språket på grafene ([#5054](https://github.com/mong/mongts/issues/5054)) ([f55a666](https://github.com/mong/mongts/commit/f55a666e47d6537dc151efcfbe451d24f3a33e5e))
+* **Nexjs App Router:** migrate apps from pages to apps router ([#5069](https://github.com/mong/mongts/issues/5069)) ([192a8c6](https://github.com/mong/mongts/commit/192a8c67e5b11a48226db3e858dd868bcdaa6f11))
+
 ## [1.12.1](https://github.com/mong/mongts/compare/v1.12.0...v1.12.1) (2026-09-22)
 
 
