@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.13.2](https://github.com/mong/mongts/compare/v1.13.1...v1.13.2) (2026-09-23)
+
+
+### Bug Fixes
+
+* **BK:** sorter indikatorer i rett rekkefølge ([#5079](https://github.com/mong/mongts/issues/5079)) ([184c762](https://github.com/mong/mongts/commit/184c7627cd73f6bd3666f5a76fb94515e9c8e631))
+
 ## [1.13.1](https://github.com/mong/mongts/compare/v1.13.0...v1.13.1) (2026-09-23)
 
 
