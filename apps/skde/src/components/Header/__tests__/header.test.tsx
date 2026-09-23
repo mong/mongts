@@ -2,10 +2,9 @@ import { render } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { Header } from "../.";
 
-vi.mock("next/router", () => ({
-  useRouter: () => ({
-    asPath: "/test-path",
-  }),
+vi.mock("next/navigation", () => ({
+  usePathname: () => "/test-path",
+  useSearchParams: () => new URLSearchParams(),
 }));
 
 describe("Header component", () => {

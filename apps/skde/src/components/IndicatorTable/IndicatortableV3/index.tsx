@@ -5,11 +5,10 @@ import {
   RotateDevice,
 } from "@mong/material-ui";
 import { Stack } from "@mui/material";
+import { useRouter, useSearchParams } from "next/navigation";
 import { customFormat, level2 } from "qmongjs";
-import { type JSX, useState } from "react";
+import { type JSX, useCallback, useEffect, useState } from "react";
 import type { DataPoint, IndicatorData, OptsTu, RegisterData } from "types";
-import { useQueryParam } from "use-query-params";
-import { mainQueryParamsConfig } from "../../../app_config";
 import { ChartRowV2 } from "../chartrowV2";
 
 type IndicatorTableV3Props = {
@@ -240,17 +239,43 @@ const fillMissingUnitnames = (
 };
 
 export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const { data, medfields, unitNames, year, unitNamesByLevel } = props;
+
+  // Expanded indicator row is kept in the URL so views can be shared.
+  const [selectedRow, setSelectedRow] = useState(
+    searchParams.get("selected_row"),
+  );
+
+  const createQueryString = useCallback(
+    (name: string, value: string | null) => {
+      const params = new URLSearchParams(searchParams.toString());
+      if (value) {
+        params.set(name, value);
+      } else {
+        params.delete(name);
+      }
+
+      return params.toString();
+    },
+    [searchParams],
+  );
+
+  useEffect(() => {
+    const selectedRowFromUrl = searchParams.get("selected_row") ?? "";
+    const nextSelectedRow = selectedRow ?? "";
+
+    if (selectedRowFromUrl === nextSelectedRow) {
+      return;
+    }
+
+    router.replace(`?${createQueryString("selected_row", selectedRow)}`);
+  }, [selectedRow, createQueryString, router, searchParams]);
 
   const [clickedIndicatorContext, setClickedIndicatorContext] = useState<
     "caregiver" | "resident" | undefined
   >("caregiver");
-
-  // Expanded indicator row is kept in the URL so views can be shared.
-  const [selectedRow, setSelectedRow] = useQueryParam(
-    "selected_row",
-    mainQueryParamsConfig.selected_row,
-  );
 
   const medfieldFilteredData = data.filter((row: RegisterData) =>
     medfields.includes(row.registerName),
@@ -264,6 +289,7 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
     unitNamesByLevel,
   );
   fillMissingUnitnames(reshapedData, unitNames);
+
   return (
     <div className="w-full max-w-360" data-testid="IndicatorTable">
       <div className="flex md:hidden flex-col gap-(--spacing-4) p-8 text-brand-primary-600">
@@ -274,8 +300,10 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
           registries={reshapedData}
           smallScreenMessage="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din."
           setCurrentContext={setClickedIndicatorContext}
-          expandedKey={selectedRow ?? null}
-          onExpandedChange={(key) => setSelectedRow(key ?? undefined)}
+          expandedKey={selectedRow}
+          onExpandedChange={(key) => {
+            setSelectedRow(key ?? "");
+          }}
         />
       </div>
     </div>

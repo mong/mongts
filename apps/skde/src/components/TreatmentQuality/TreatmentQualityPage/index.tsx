@@ -1,3 +1,4 @@
+"use client";
 import {
   Box,
   Button,
@@ -12,19 +13,18 @@ import { type SelectChangeEvent, Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useIndicatorQuery, useUnitNamesQuery } from "qmongjs";
 import { Suspense, useState } from "react";
-import type { OptsTu } from "types";
+import type { OptsTu, RegisterData } from "types";
 import { useQueryParam } from "use-query-params";
-import { defaultYear, mainQueryParamsConfig } from "../../../app_config";
+import { defaultYear, mainQueryParamsConfig } from "@/app_config";
+import { MedicalFieldPopup } from "@/components/DialogBox/MedicalFieldPopup";
+import { TreatmentUnitPopup } from "@/components/DialogBox/TreatmentunitPopup";
+import { IndicatorTableV3 } from "@/components/IndicatorTable/IndicatortableV3";
+import { ScrollToTop } from "@/components/scroll-to-top/scroll-to-top";
 import {
   type ColourMap,
   getSortedList,
   updateColourMap,
-} from "../../../helpers/functions/chartColours";
-import { MedicalFieldPopup } from "../../DialogBox/MedicalFieldPopup";
-import { TreatmentUnitPopup } from "../../DialogBox/TreatmentunitPopup";
-import { LayoutHead } from "../../LayoutHead";
-import { ScrollToTop } from "../../scroll-to-top/scroll-to-top";
-import { IndicatorTableV3 } from "../IndicatortableV3";
+} from "@/helpers/functions/chartColours";
 
 export const TreatmentQualityPage = () => {
   const numberOfYearOptions = 5;
@@ -101,8 +101,15 @@ export const TreatmentQualityPage = () => {
   // Default: all registries, caregiver and ind
   const unitNamesByLevelQuery = useUnitNamesQuery();
 
-  const registerData = nestedDataQuery?.data;
+  const registerData = nestedDataQuery?.data as RegisterData[] | undefined;
   const unitNamesByLevel = unitNamesByLevelQuery?.data?.opts_tu as OptsTu[];
+
+  const hasMatchingSelectedMedicalFields =
+    selectedMedicalFields.length > 0 &&
+    Array.isArray(registerData) &&
+    registerData.some((row) =>
+      selectedMedicalFields.includes(row.registerName),
+    );
 
   const isInitialLoading =
     nestedDataQuery.status === "pending" &&
@@ -113,14 +120,8 @@ export const TreatmentQualityPage = () => {
   const hasLoadingError =
     nestedDataQuery.status === "error" ||
     unitNamesByLevelQuery.status === "error";
-
   return (
     <>
-      <LayoutHead
-        title="Behandlingskvalitet"
-        content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
-        href="/favicon.ico"
-      />
       <HeroBanner
         description="Her kan du se resultater fra nasjonale medisinske kvalitetsregistre, og sammenligne indikatorer ved å velge flere sykehus eller regioner"
         title="Behandlingskvalitet"
@@ -232,7 +233,9 @@ export const TreatmentQualityPage = () => {
                 Last på nytt
               </Button>
             </Box>
-          ) : selectedMedicalFields.length > 0 && registerData ? (
+          ) : selectedMedicalFields.length > 0 &&
+            hasMatchingSelectedMedicalFields &&
+            registerData ? (
             <IndicatorTableV3
               key={"indicator-table2"}
               data={registerData}
@@ -250,6 +253,17 @@ export const TreatmentQualityPage = () => {
               )}
               unitNamesByLevel={unitNamesByLevel}
             />
+          ) : selectedMedicalFields.length > 0 && registerData ? (
+            <Box
+              className="hidden md:flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
+              border
+              color="white"
+            >
+              <h3>Ingen data tilgjengelig for dette valget.</h3>
+              <Button onClick={() => nestedDataQuery.refetch()}>
+                Last på nytt
+              </Button>
+            </Box>
           ) : registerData ? (
             <>
               <Box

@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, Stack, styled, Tab, Tabs, Typography } from "@mui/material";
 import { LineChartPro } from "@mui/x-charts-pro";
 import { useSearchParams } from "next/navigation";
@@ -9,8 +11,8 @@ import {
 import React from "react";
 import { FaCircle } from "react-icons/fa";
 import type { RegistryEvaluation, RegistryRank } from "types";
-import { Markdown } from "../../src/components/Markdown";
-import { RequirementList } from "../../src/components/RequirementList";
+import { Markdown } from "../Markdown";
+import { RequirementList } from "../RequirementList";
 
 const levelAColour = "#58A55C";
 const levelBColour = "#FD9C00";

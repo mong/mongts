@@ -1,3 +1,5 @@
+"use client";
+
 import { Button, Dropdown, HeroBanner, PageContent } from "@mong/material-ui";
 import {
   Paper,
@@ -11,8 +13,8 @@ import { useIndicatorQuery, useRegisterNamesQuery } from "qmongjs";
 import { useEffect, useRef, useState } from "react";
 import type { Indicator, RegisterName } from "types";
 import { useQueryParam } from "use-query-params";
-import { mainQueryParamsConfig } from "../../src/app_config";
-import { MedicalFieldPopup } from "../../src/components/DialogBox/MedicalFieldPopup";
+import { mainQueryParamsConfig } from "@/app_config";
+import { MedicalFieldPopup } from "@/components/DialogBox/MedicalFieldPopup";
 
 type DataPoint = Indicator;
 

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Box,
   Button,
@@ -12,21 +14,18 @@ import {
 import { Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/router";
 import { getUnitFullName, useUnitNamesQuery, useUnitUrlsQuery } from "qmongjs";
 import { type JSX, Suspense, useEffect, useState } from "react";
 import type { NestedTreatmentUnitName, OptsTu } from "types";
 import { useQueryParam } from "use-query-params";
-import { mainQueryParamsConfig } from "../../src/app_config";
-import { TreatmentUnitPopupSingleSelect } from "../../src/components/DialogBox/TreatmentUnitPopupSingleSelect";
-import { TopSummarySection } from "../../src/components/HospitalProfile";
-import { MedfieldTable } from "../../src/components/HospitalProfile/MedfieldTable";
-import { SelectedIndicatorTable } from "../../src/components/HospitalProfile/SelectedIndicatorTable";
-import { LayoutHead } from "../../src/components/LayoutHead";
+import { mainQueryParamsConfig } from "../../../app_config";
+import { TreatmentUnitPopupSingleSelect } from "../../DialogBox/TreatmentUnitPopupSingleSelect";
+import { TopSummarySection } from "..";
+import { MedfieldTable } from "../MedfieldTable";
+import { SelectedIndicatorTable } from "../SelectedIndicatorTable";
 
-export const Skde = (): JSX.Element => {
+const SykehusprofilPage = (): JSX.Element => {
   // States
-  const router = useRouter();
   const [unitName, setUnitName] = useState<(string | null)[] | undefined>([]);
   const [urlCopied, setUrlCopied] = useState<boolean>(false);
   const urlCopiedTimeout = 3000;
@@ -86,7 +85,7 @@ export const Skde = (): JSX.Element => {
 
   const hasLoadingError =
     unitNamesQuery.status === "error" || unitUrlsQuery.status === "error";
-  const isLoading = !router.isReady || !hasUnitsData;
+  const isLoading = !hasUnitsData;
   const selectedUnit = selectedTreatmentUnit[0] ?? null;
 
   // Keep only main hospitals without mutating query-cache data.
@@ -122,11 +121,6 @@ export const Skde = (): JSX.Element => {
 
   return (
     <>
-      <LayoutHead
-        title="Sykehusprofil"
-        content="This page shows the quality indicators from national health registries in the Norwegian specialist healthcare service."
-        href="/favicon.ico"
-      />
       <HeroBanner
         title="Sykehusprofil"
         description="Her vises alle kvalitetsindikatorer fra nasjonale medisinske
@@ -300,4 +294,4 @@ export const Skde = (): JSX.Element => {
   );
 };
 
-export default Skde;
+export default SykehusprofilPage;
