@@ -249,9 +249,13 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
   );
 
   const createQueryString = useCallback(
-    (name: string, value: string) => {
+    (name: string, value: string | null) => {
       const params = new URLSearchParams(searchParams.toString());
-      params.set(name, value);
+      if (value) {
+        params.set(name, value);
+      } else {
+        params.delete(name);
+      }
 
       return params.toString();
     },
@@ -259,8 +263,15 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
   );
 
   useEffect(() => {
-    router.replace(`?${createQueryString("selected_row", selectedRow ?? "")}`);
-  }, [selectedRow, createQueryString, router]);
+    const selectedRowFromUrl = searchParams.get("selected_row") ?? "";
+    const nextSelectedRow = selectedRow ?? "";
+
+    if (selectedRowFromUrl === nextSelectedRow) {
+      return;
+    }
+
+    router.replace(`?${createQueryString("selected_row", selectedRow)}`);
+  }, [selectedRow, createQueryString, router, searchParams]);
 
   const [clickedIndicatorContext, setClickedIndicatorContext] = useState<
     "caregiver" | "resident" | undefined
