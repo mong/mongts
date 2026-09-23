@@ -49,6 +49,7 @@ export const DataQualityChartRow = (props: DataQualityChartRowProps) => {
   const [barChartType, setBarChartType] = useState("selected");
 
   const [zoom, setZoom] = useState<boolean>(false);
+  const [showBarLabelsForExport, setShowBarLabelsForExport] = useState(false);
 
   const lineChartApiRef = useChartProApiRef<"line">();
   const barChartApiRef = useChartProApiRef<"bar">();
@@ -156,11 +157,18 @@ export const DataQualityChartRow = (props: DataQualityChartRowProps) => {
               const apiRef =
                 figureType === "line" ? lineChartApiRef : barChartApiRef;
 
+              if (figureType === "bar") {
+                setShowBarLabelsForExport(true);
+              }
+
               apiRef.current?.exportAsImage({
-                onBeforeExport: makeOnBeforeExport(
-                  data.indicatorTitle || "",
-                  registryName,
-                ),
+                onBeforeExport: (iframe) => {
+                  makeOnBeforeExport(
+                    data.indicatorTitle || "",
+                    registryName,
+                  )(iframe);
+                  setShowBarLabelsForExport(false);
+                },
               });
             }}
           >
@@ -199,6 +207,7 @@ export const DataQualityChartRow = (props: DataQualityChartRowProps) => {
             tickFontSize={14}
             yAxisWidth={160}
             zoom={zoom}
+            showBarLabels={showBarLabelsForExport}
             apiRef={barChartApiRef}
           />
         ) : null}

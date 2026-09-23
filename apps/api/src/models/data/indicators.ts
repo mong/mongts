@@ -3,6 +3,8 @@ import type { Indicator } from "types";
 import db from "../../db";
 import type { Filter } from ".";
 
+const DEFAULT_LANGUAGE = "no";
+
 export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
   db
     .select(
@@ -32,7 +34,7 @@ export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
       "medfield.id as medfield_id",
       "medfield.name as medfield_name",
       "medfield.full_name as medfield_full_name",
-      "ind.title as ind_title",
+      db.raw("COALESCE(ind_description.title, ind.title) as ind_title"),
     )
     .from("agg_data")
     .modify((queryBuilder) => {
@@ -41,6 +43,12 @@ export const indicatorsModel = (filter?: Filter): Promise<Indicator[]> =>
       }
     })
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
+    .leftJoin("ind_description", function () {
+      this.on("ind.id", "=", "ind_description.ind_id").andOnVal(
+        "ind_description.language",
+        filter?.language ?? DEFAULT_LANGUAGE,
+      );
+    })
     .leftJoin("registry", "ind.registry_id", "registry.id")
     .leftJoin(
       "registry_medfield",

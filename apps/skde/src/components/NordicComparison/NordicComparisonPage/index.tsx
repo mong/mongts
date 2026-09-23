@@ -68,9 +68,20 @@ export default function NordiskeSammenlingninger() {
     // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   >("registries", mainQueryParamsConfig.registries as any);
 
+  const [selectedLanguage, setSelectedLanguage] = useState("no");
+  const handleLanguageChange = (
+    event: SelectChangeEvent<string | string[]>,
+  ) => {
+    const nextValue = event.target.value;
+    setSelectedLanguage(
+      Array.isArray(nextValue) ? (nextValue[0] ?? "no") : nextValue,
+    );
+  };
+
   const indicatorQuery = useIndicatorQuery({
     registerShortName: "all",
     context: "caregiver",
+    language: selectedLanguage,
     type: "ind",
     unitLevel: "hf",
     nordic: true,
@@ -104,24 +115,16 @@ export default function NordiskeSammenlingninger() {
   const chartDataByRegistry = groupChartDataByRegistry(filteredChartData);
   const margin = { top: 20, right: 25, bottom: 20, left: 20 };
 
-  const [selectedLanguage, setSelectedLanguage] = useState("no");
-  const handleLanguageChange = (
-    event: SelectChangeEvent<string | string[]>,
-  ) => {
-    const nextValue = event.target.value;
-    setSelectedLanguage(
-      Array.isArray(nextValue) ? (nextValue[0] ?? "no") : nextValue,
-    );
-  };
   const languageDropdownItems = {
     groups: [
       {
         items: [
           { value: "no", label: "Norsk" },
-          { value: "sv", label: "Svenska" },
-          { value: "da", label: "Dansk" },
+          { value: "se", label: "Svenska" },
+          { value: "dk", label: "Dansk" },
           { value: "fi", label: "Suomi" },
           { value: "is", label: "Íslenska" },
+          { value: "en", label: "English" },
         ],
       },
     ],
@@ -138,7 +141,7 @@ export default function NordiskeSammenlingninger() {
       <HeroBanner
         description="Her kan du se resultater fra nasjonale medisinske kvalitetsregistre, og sammenligne indikatorer mellom nordiske land"
         title="Nordisk profil"
-        image="/hero-bg-4.jpg"
+        image="/hero-bg-6.jpg"
       />
       <div className="flex bg-neutral-0 w-full align-middle items-center justify-center px-12">
         <div className="flex flex-col w-full h-full max-w-360">

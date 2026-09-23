@@ -94,6 +94,7 @@ export interface FetchIndicatorParams {
   unitNames?: string[];
   unitLevel?: string;
   context?: string;
+  language?: string;
   type?: string;
   id?: number;
   nested?: boolean;
@@ -119,6 +120,10 @@ const indicatorUrl = (params: FetchIndicatorParams): string => {
     ? `context=${params.context}&`
     : "";
 
+  const languageQuery: string = params.language
+    ? `language=${params.language}&`
+    : "";
+
   const yearQuery: string = params.treatmentYear
     ? `year=${params.treatmentYear}&`
     : "";
@@ -130,7 +135,7 @@ const indicatorUrl = (params: FetchIndicatorParams): string => {
 
   const structure: string = params.nested ? "/nestedData?" : "/indicators?";
 
-  return `${API_HOST}/data/${registerShortNameQuery}${structure}${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}${nordicQuery}${typeQuery}${idQuery}`;
+  return `${API_HOST}/data/${registerShortNameQuery}${structure}${unitQuery}${unitLevelQuery}${yearQuery}${contextQuery}${languageQuery}${nordicQuery}${typeQuery}${idQuery}`;
 };
 
 const fetchIndicators = async (params: FetchIndicatorParams) => {

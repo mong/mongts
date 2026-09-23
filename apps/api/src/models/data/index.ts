@@ -13,6 +13,7 @@ export interface Filter {
   year?: number;
   unit_name?: string[];
   register?: string;
+  language?: string;
   type?: string;
   context?: string;
   id?: number;
