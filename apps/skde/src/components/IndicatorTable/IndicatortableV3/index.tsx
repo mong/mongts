@@ -45,6 +45,17 @@ const reshapeData = (
       fullName: registry.registerFullName,
       indicators: registry.indicatorData
         .filter((indicator: IndicatorData) => indicator.indType !== "dg_andel")
+        .sort((a, b) => {
+          if (a.sortingName === null || b.sortingName === null) {
+            return 0;
+          } else {
+            return a.sortingName > b.sortingName
+              ? 1
+              : a.sortingName < b.sortingName
+                ? -1
+                : 0;
+          }
+        })
         .map((indicator: IndicatorData) => {
           const mapDataPoints = (row: DataPoint, ind: number) => {
             const level = level2(indicator, row);
