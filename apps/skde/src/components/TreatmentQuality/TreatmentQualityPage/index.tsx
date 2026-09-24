@@ -124,7 +124,7 @@ export const TreatmentQualityPage = () => {
     unitNamesByLevelQuery.status === "error";
 
   const selectedTableContext = "caregiver";
-
+  console.log("selectedMedicalFields", selectedMedicalFields);
   return (
     <>
       <HeroBanner
@@ -238,7 +238,7 @@ export const TreatmentQualityPage = () => {
                 Last på nytt
               </Button>
             </Box>
-          ) : selectedMedicalFields &&
+          ) : selectedMedicalFields.length > 0 &&
             hasMatchingSelectedMedicalFields &&
             registerData ? (
             <IndicatorTableV3
@@ -258,7 +258,7 @@ export const TreatmentQualityPage = () => {
               )}
               unitNamesByLevel={unitNamesByLevel}
             />
-          ) : selectedMedicalFields && registerData ? (
+          ) : selectedMedicalFields.length > 0 && registerData ? (
             <Box
               className="hidden md:flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
               border
@@ -285,18 +285,7 @@ export const TreatmentQualityPage = () => {
                 <RotateDevice message="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din." />
               </div>
             </>
-          ) : (
-            <Box
-              className="hidden md:flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
-              border
-              color="white"
-            >
-              <h3>Ingen data tilgjengelig for dette valget.</h3>
-              <Button onClick={() => nestedDataQuery.refetch()}>
-                Last på nytt
-              </Button>
-            </Box>
-          )}
+          ) : null}
           <ScrollToTop />
         </PageContent>
       </Suspense>

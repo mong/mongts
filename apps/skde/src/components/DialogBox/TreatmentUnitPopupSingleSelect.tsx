@@ -207,8 +207,6 @@ export const TreatmentUnitPopupSingleSelect = (
 
   const handleClose = () => {
     setOpen(false);
-    setHighlightedRHF("");
-    onSubmit([]);
   };
 
   const handleSubmit = () => {
@@ -271,6 +269,7 @@ export const TreatmentUnitPopupSingleSelect = (
   return (
     <Dialog
       open={open}
+      onClose={handleClose}
       fullWidth
       scroll="paper"
       slotProps={{
@@ -288,7 +287,7 @@ export const TreatmentUnitPopupSingleSelect = (
       }}
     >
       <div className="text-right pr-4 text-brand-primary-400 truncate">
-        <IconButton onClick={handleClose} aria-label="Small Star">
+        <IconButton onClick={handleClose} aria-label="Lukk popup">
           <Icon symbol="close" />
         </IconButton>
       </div>

@@ -291,6 +291,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
       data-testid={"MedicalFieldPopUp"}
       fullWidth
       scroll="paper"
+      onClose={handleClose}
       slotProps={{
         paper: {
           sx: {
