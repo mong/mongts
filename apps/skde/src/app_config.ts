@@ -35,7 +35,7 @@ export const mainQueryStateConfig = {
   chart_type: parseAsString,
   chart_show_level: parseAsBoolean,
   chart_show_N: parseAsBoolean,
-  registries: parseAsArrayOf(parseAsString),
+  registries: parseAsArrayOf(parseAsString).withDefault([]),
   units: parseAsArrayOf(parseAsString).withDefault(defaultTreatmentUnits),
   chart: parseAsString,
   chartsetting: parseAsString,
