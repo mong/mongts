@@ -337,6 +337,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
       data-testid={"TreatmentUnitPopUp"}
       fullWidth
       scroll="paper"
+      onClose={handleClose}
       slotProps={{
         paper: {
           sx: {

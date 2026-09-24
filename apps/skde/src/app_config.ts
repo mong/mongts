@@ -17,7 +17,8 @@ import {
 export const maxYear = 2025;
 export const minYear = maxYear - 4;
 export const defaultYear = 2025;
-export const defaultUnits = [];
+const defaultTreatmentUnits = ["Nasjonalt"];
+
 /** @public */
 export const defaultReviewYear = 2024;
 
@@ -34,8 +35,8 @@ export const mainQueryStateConfig = {
   chart_type: parseAsString,
   chart_show_level: parseAsBoolean,
   chart_show_N: parseAsBoolean,
-  registries: parseAsArrayOf(parseAsString).withDefault([]),
-  units: parseAsArrayOf(parseAsString).withDefault([]),
+  registries: parseAsArrayOf(parseAsString),
+  units: parseAsArrayOf(parseAsString).withDefault(defaultTreatmentUnits),
   chart: parseAsString,
   chartsetting: parseAsString,
 };

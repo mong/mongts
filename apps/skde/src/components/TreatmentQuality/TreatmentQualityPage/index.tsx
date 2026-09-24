@@ -14,7 +14,7 @@ import { type SelectChangeEvent, Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useQueryState } from "nuqs";
 import { useIndicatorQuery, useUnitNamesQuery } from "qmongjs";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import type { OptsTu, RegisterData } from "types";
 import { defaultYear, mainQueryStateConfig } from "@/app_config";
 import { MedicalFieldPopup } from "@/components/DialogBox/MedicalFieldPopup";
@@ -30,34 +30,26 @@ import {
 export const TreatmentQualityPage = () => {
   const numberOfYearOptions = 5;
 
-  const defaultTreatmentUnits = ["Nasjonalt"];
-
-  // Used by indicator table
-  // const [selectedYear = defaultYear, setSelectedYear] = useQueryParam<
-  //   number | undefined
-  // >("year", mainQueryParamsConfig.year);
-
-  // use nuqs
   const [selectedYear, setSelectedYear] = useQueryState(
     "year",
     mainQueryStateConfig.year,
   );
 
-  const selectedTableContext = "caregiver";
-
   const [selectedMedicalFields, setSelectedMedicalFields] = useQueryState(
     "registries",
     mainQueryStateConfig.registries,
   );
-
   const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useQueryState(
     "units",
     mainQueryStateConfig.units,
   );
+  const [, setSelectedRow] = useQueryState(
+    "selected_row",
+    mainQueryStateConfig.selected_row,
+  );
 
   const [medicalFieldPopupOpen, setMedicalFieldPopupOpen] = useState(false);
   const [treatmentUnitPopupOpen, setTreatmentUnitPopupOpen] = useState(false);
-
   const [colourMap, setColourMap] = useState<ColourMap[]>([]);
 
   // State for the copy url button.
@@ -65,7 +57,13 @@ export const TreatmentQualityPage = () => {
   const [urlCopied, setUrlCopied] = useState<boolean>(false);
   const urlCopiedTimeout = 3000;
 
-  updateColourMap(colourMap, setColourMap, selectedTreatmentUnits);
+  selectedTreatmentUnits &&
+    updateColourMap(colourMap, setColourMap, selectedTreatmentUnits);
+
+  useEffect(() => {
+    selectedTreatmentUnits &&
+      updateColourMap(colourMap, setColourMap, selectedTreatmentUnits);
+  }, [selectedTreatmentUnits, colourMap]);
 
   const handleYearChange = (event: SelectChangeEvent) => {
     setSelectedYear(Number(event.target.value));
@@ -91,9 +89,10 @@ export const TreatmentQualityPage = () => {
   };
 
   const handleClearFilters = () => {
-    setSelectedTreatmentUnits(defaultTreatmentUnits);
-    setSelectedYear(defaultYear);
-    setSelectedMedicalFields([]);
+    setSelectedTreatmentUnits(null);
+    setSelectedMedicalFields(null);
+    setSelectedYear(null);
+    setSelectedRow(null);
   };
 
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
@@ -108,7 +107,7 @@ export const TreatmentQualityPage = () => {
   const unitNamesByLevel = unitNamesByLevelQuery?.data?.opts_tu as OptsTu[];
 
   const hasMatchingSelectedMedicalFields =
-    selectedMedicalFields.length > 0 &&
+    selectedMedicalFields &&
     Array.isArray(registerData) &&
     registerData.some((row) =>
       selectedMedicalFields.includes(row.registerName),
@@ -123,6 +122,9 @@ export const TreatmentQualityPage = () => {
   const hasLoadingError =
     nestedDataQuery.status === "error" ||
     unitNamesByLevelQuery.status === "error";
+
+  const selectedTableContext = "caregiver";
+
   return (
     <>
       <HeroBanner
@@ -236,7 +238,7 @@ export const TreatmentQualityPage = () => {
                 Last på nytt
               </Button>
             </Box>
-          ) : selectedMedicalFields.length > 0 &&
+          ) : selectedMedicalFields &&
             hasMatchingSelectedMedicalFields &&
             registerData ? (
             <IndicatorTableV3
@@ -244,19 +246,19 @@ export const TreatmentQualityPage = () => {
               data={registerData}
               unitNames={getSortedList(
                 colourMap,
-                selectedTreatmentUnits,
+                selectedTreatmentUnits || [],
                 "units",
               )}
               year={selectedYear}
               medfields={selectedMedicalFields}
               chartColours={getSortedList(
                 colourMap,
-                selectedTreatmentUnits,
+                selectedTreatmentUnits || [],
                 "colours",
               )}
               unitNamesByLevel={unitNamesByLevel}
             />
-          ) : selectedMedicalFields.length > 0 && registerData ? (
+          ) : selectedMedicalFields && registerData ? (
             <Box
               className="hidden md:flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
               border

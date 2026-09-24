@@ -56,9 +56,10 @@ export const updateColourMap = (
 
 export const getSortedList = (
   colourMap: ColourMap[],
-  selectedTreatmentUnits: string[],
+  selectedTreatmentUnits: string[] | null,
   value: "units" | "colours",
 ) => {
+  if (!selectedTreatmentUnits) return [];
   const sortedMap = colourMap
     .filter((el) => selectedTreatmentUnits.includes(el.unitName))
     .sort(
