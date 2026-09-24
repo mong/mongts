@@ -31,6 +31,7 @@ type ChartSeries = {
 };
 
 type ChartItem = {
+  indicatorId: string;
   registryName: string;
   registryFullName: string;
   registryShortName: string;
@@ -262,7 +263,11 @@ export default function NordiskeSammenlingninger() {
                     }`}
                   >
                     {items.map((item) => (
-                      <ChartCard key={item.title} item={item} margin={margin} />
+                      <ChartCard
+                        key={`${item.registryName}-${item.indicatorId}`}
+                        item={item}
+                        margin={margin}
+                      />
                     ))}
                   </div>
                 </Stack>
@@ -492,6 +497,7 @@ function buildChartData(records: DataPoint[], language: string): ChartItem[] {
     });
     // Return the chart data for the current indicator
     return {
+      indicatorId: indicatorRecords[0]?.ind_id ?? "",
       registryName: indicatorRecords[0]?.registry_name ?? "",
       registryShortName:
         indicatorRecords[0]?.registry_short_name ?? "Ukjent register",
