@@ -11,6 +11,7 @@ import {
   Paper,
   type SelectChangeEvent,
   Stack,
+  Toolbar,
   Typography,
 } from "@mui/material";
 import { Box } from "@mui/system";
@@ -143,6 +144,9 @@ export default function NordiskeSammenlingninger() {
     setMedicalFieldPopupOpen(true);
   };
 
+  const [urlCopied, setUrlCopied] = useState<boolean>(false);
+  const urlCopiedTimeout = 3000;
+
   return (
     <Box>
       <HeroBanner
@@ -150,42 +154,58 @@ export default function NordiskeSammenlingninger() {
         title="Nordisk profil"
         image="/hero-bg-6.jpg"
       />
-      <div className="flex bg-neutral-0 w-full align-middle items-center justify-center px-12">
+      <div className="flex bg-neutral-0 w-full align-middle justify-center px-6 md:px-12 sticky top-0 z-60 shadow-xs">
         <div className="flex flex-col w-full h-full max-w-360">
-          <Stack
-            direction="row"
-            sx={{
-              justifyContent: "space-between",
-              alignItems: "center",
-              width: "100%",
-              paddingTop: 2,
-              paddingBottom: 2,
-            }}
-          >
-            <Stack direction="row" spacing={3}>
-              <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                Fagområde
-                <Button onClick={handleMedicalFieldButtonClick}>
-                  Velg fagområde
+          <Toolbar disableGutters={true}>
+            <div className="flex flex-row max-w-360 w-full justify-between items-center pb-2 md:pb-4">
+              <div className="flex flex-row md:flex-row gap-6 md:gap-4 w-full">
+                <div className="flex flex-col md:flex-row gap-3">
+                  <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                    Fagområde
+                    <Button
+                      onClick={handleMedicalFieldButtonClick}
+                      data-testid="MedicalFieldPopUpButton"
+                    >
+                      Velg fagområde
+                    </Button>
+                  </div>
+                  <MedicalFieldPopup
+                    open={medicalFieldPopupOpen}
+                    updateRegistries={setSelectedMedicalFields}
+                    setOpen={setMedicalFieldPopupOpen}
+                    onSubmit={setSelectedMedicalFields}
+                    nordicOnly
+                  />
+                  <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                    Språk
+                    <Dropdown
+                      value={selectedLanguage.toString()}
+                      onChange={handleLanguageChange}
+                      items={languageDropdownItems}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                className="pb-4 pl-6 hidden md:block"
+                data-testid="copy-url-button"
+              >
+                <Button
+                  startIcon={<Icon size="small" symbol="content_copy" />}
+                  variant="secondary"
+                  onClick={() => {
+                    navigator.clipboard.writeText(window.location.href);
+                    setUrlCopied(true);
+                    setTimeout(() => {
+                      setUrlCopied(false);
+                    }, urlCopiedTimeout);
+                  }}
+                >
+                  {urlCopied ? "Link kopiert" : "Kopier denne visningen"}
                 </Button>
               </div>
-              <MedicalFieldPopup
-                open={medicalFieldPopupOpen}
-                updateRegistries={setSelectedMedicalFields}
-                setOpen={setMedicalFieldPopupOpen}
-                onSubmit={setSelectedMedicalFields}
-                nordicOnly
-              />
-              <div className="flex flex-col text-small  font-semibold  text-brand-primary-900">
-                Språk
-                <Dropdown
-                  value={selectedLanguage.toString()}
-                  onChange={handleLanguageChange}
-                  items={languageDropdownItems}
-                />
-              </div>
-            </Stack>
-          </Stack>
+            </div>
+          </Toolbar>
         </div>
       </div>
       <PageContent>
