@@ -1,6 +1,12 @@
 "use client";
 
-import { Button, Dropdown, HeroBanner, PageContent } from "@mong/material-ui";
+import {
+  Button,
+  Dropdown,
+  HeroBanner,
+  Icon,
+  PageContent,
+} from "@mong/material-ui";
 import {
   Paper,
   type SelectChangeEvent,
@@ -83,7 +89,7 @@ export default function NordiskeSammenlingninger() {
     context: "caregiver",
     language: selectedLanguage,
     type: "ind",
-    unitLevel: "hf",
+    unitLevel: "nation",
     nordic: true,
   });
 
@@ -104,7 +110,7 @@ export default function NordiskeSammenlingninger() {
       ? indicatorRows
       : indicatorRows.filter((row) => nordicRegistries.has(row.registry_name));
 
-  const chartData = buildChartData(nordicRows);
+  const chartData = buildChartData(nordicRows, selectedLanguage);
   const selectedRegistriesSet = new Set(selectedMedicalFields);
   const filteredChartData =
     selectedRegistriesSet.size === 0
@@ -235,7 +241,16 @@ export default function NordiskeSammenlingninger() {
                         {items[0]?.registryShortName ?? "Ukjent register"}
                       </Typography>
                     </Stack>
-                    <Button variant="secondary">Last ned</Button>
+                    <Button
+                      disabled={false}
+                      fullWidth={false}
+                      loading={false}
+                      onClick={() => {}}
+                      startIcon={<Icon size="small" symbol="more_vert" />}
+                      variant="secondary"
+                    >
+                      Last ned
+                    </Button>
                   </Paper>
 
                   <div
@@ -293,7 +308,7 @@ function ChartCard({
 }) {
   const { ref, width } = useElementWidth();
   const chartWidth = Math.max(width - 40, 0);
-  const [fitYAxis, setFitYAxis] = useState(false);
+  const [zoom, setZoom] = useState<boolean>(false);
 
   const yValues = item.series
     .flatMap((series) => series.data)
@@ -326,10 +341,13 @@ function ChartCard({
             <p className="text-sm text-neutral-500">{item.registryFullName}</p>
           </div>
           <Button
-            variant="outline"
-            onClick={() => setFitYAxis((currentValue) => !currentValue)}
+            onClick={() => {
+              setZoom(!zoom);
+            }}
+            startIcon={<Icon symbol="search" size="medium" />}
+            variant="filled"
           >
-            {fitYAxis ? "- Zoom" : "+ Zoom"}
+            Zoom
           </Button>
         </div>
       </div>
@@ -378,8 +396,8 @@ function ChartCard({
           yAxis={[
             {
               width: 48,
-              min: fitYAxis ? yAxisBounds.min : 0,
-              max: fitYAxis ? yAxisBounds.max : 1,
+              min: zoom ? yAxisBounds.min : 0,
+              max: zoom ? yAxisBounds.max : 1,
               valueFormatter: (value: number | null) =>
                 value == null ? "" : `${(value * 100).toFixed(0)}%`,
               tickLabelStyle: {
@@ -433,7 +451,7 @@ function ChartCard({
   );
 }
 
-function buildChartData(records: DataPoint[]): ChartItem[] {
+function buildChartData(records: DataPoint[], language: string): ChartItem[] {
   // Group the records by indicator ID
   const groupedByIndicator = new Map<string, DataPoint[]>();
   for (const record of records) {
@@ -465,7 +483,7 @@ function buildChartData(records: DataPoint[]): ChartItem[] {
       }
       // Return the series data for the current unit name
       return {
-        label: formatUnitName(unitName),
+        label: formatUnitName(unitName, language),
         data: xLabels.map((year) => valuesByYear.get(year) ?? null),
         denominators: xLabels.map(
           (year) => denominatorsByYear.get(year) ?? null,
@@ -486,8 +504,57 @@ function buildChartData(records: DataPoint[]): ChartItem[] {
   });
 }
 
-// Format capital first letter
-function formatUnitName(unitName: string) {
+// Format unit names based on the selected language
+function formatUnitName(unitName: string, language: string) {
+  const translations: Record<string, Record<string, string>> = {
+    no: {
+      Nasjonalt: "Norge",
+      Sverige: "Sverige",
+      Danmark: "Danmark",
+      Finland: "Finland",
+      Island: "Island",
+    },
+    se: {
+      Nasjonalt: "Norge",
+      Sverige: "Sverige",
+      Danmark: "Danmark",
+      Finland: "Finland",
+      Island: "Island",
+    },
+    dk: {
+      Nasjonalt: "Norge",
+      Sverige: "Sverige",
+      Danmark: "Danmark",
+      Finland: "Finland",
+      Island: "Island",
+    },
+    fi: {
+      Nasjonalt: "Norja",
+      Sverige: "Ruotsi",
+      Danmark: "Tanska",
+      Finland: "Suomi",
+      Island: "Islanti",
+    },
+    is: {
+      Nasjonalt: "Noregur",
+      Sverige: "Svíþjóð",
+      Danmark: "Danmörk",
+      Finland: "Finnland",
+      Island: "Ísland",
+    },
+    en: {
+      Nasjonalt: "Norway",
+      Sverige: "Sweden",
+      Danmark: "Denmark",
+      Finland: "Finland",
+      Island: "Iceland",
+    },
+  };
+
+  const translatedUnitName = translations[language]?.[unitName];
+  if (translatedUnitName) return translatedUnitName;
+
+  // If no translation is found, return the original unit name with the first letter capitalized
   return unitName.charAt(0).toUpperCase() + unitName.slice(1);
 }
 
