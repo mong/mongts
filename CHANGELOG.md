@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.14.0](https://github.com/mong/mongts/compare/v1.13.2...v1.14.0) (2026-09-24)
+
+
+### Features
+
+* **BK:** legge til fast farge på Nasjonalt ([#5086](https://github.com/mong/mongts/issues/5086)) ([231193b](https://github.com/mong/mongts/commit/231193b21afa757c07f555df1c252d8ed12fe6df))
+* **nordisk:** legg til kopier visning knapp i toolbar ([#5085](https://github.com/mong/mongts/issues/5085)) ([11f2faf](https://github.com/mong/mongts/commit/11f2faf426aa2d840875b7d19cf225f905c3332d))
+* **nordisk:** legge til lokaliserte nasjonale landbetegnelser ([#5082](https://github.com/mong/mongts/issues/5082)) ([2995bfa](https://github.com/mong/mongts/commit/2995bfa87166ce3c27ffe8c212471cf05aae48e6))
+
 ## [1.13.2](https://github.com/mong/mongts/compare/v1.13.1...v1.13.2) (2026-09-23)
 
 
