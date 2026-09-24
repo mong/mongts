@@ -27,7 +27,7 @@ import { columnColour1, columnColour2, columnColour3 } from "./styles";
 type TreatmentUnitPopupSingleSelectProps = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
-  onSubmit: Dispatch<SetStateAction<(string | null)[] | undefined>>;
+  onSubmit: (value: string[]) => void;
   context: string;
   type: string;
 };

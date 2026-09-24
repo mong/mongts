@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Box,
   Button,
@@ -11,11 +12,11 @@ import {
 } from "@mong/material-ui";
 import { type SelectChangeEvent, Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
+import { useQueryState } from "nuqs";
 import { useIndicatorQuery, useUnitNamesQuery } from "qmongjs";
 import { Suspense, useState } from "react";
 import type { OptsTu, RegisterData } from "types";
-import { useQueryParam } from "use-query-params";
-import { defaultYear, mainQueryParamsConfig } from "@/app_config";
+import { defaultYear, mainQueryStateConfig } from "@/app_config";
 import { MedicalFieldPopup } from "@/components/DialogBox/MedicalFieldPopup";
 import { TreatmentUnitPopup } from "@/components/DialogBox/TreatmentunitPopup";
 import { IndicatorTableV3 } from "@/components/IndicatorTable/IndicatortableV3";
@@ -32,24 +33,26 @@ export const TreatmentQualityPage = () => {
   const defaultTreatmentUnits = ["Nasjonalt"];
 
   // Used by indicator table
-  const [selectedYear = defaultYear, setSelectedYear] = useQueryParam<
-    number | undefined
-  >("year", mainQueryParamsConfig.year);
+  // const [selectedYear = defaultYear, setSelectedYear] = useQueryParam<
+  //   number | undefined
+  // >("year", mainQueryParamsConfig.year);
+
+  // use nuqs
+  const [selectedYear, setSelectedYear] = useQueryState(
+    "year",
+    mainQueryStateConfig.year,
+  );
 
   const selectedTableContext = "caregiver";
 
-  const [selectedMedicalFields = [], setSelectedMedicalFields] = useQueryParam<
-    string[] | undefined
-    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  >("registries", mainQueryParamsConfig.registries as any);
+  const [selectedMedicalFields, setSelectedMedicalFields] = useQueryState(
+    "registries",
+    mainQueryStateConfig.registries,
+  );
 
-  const [
-    selectedTreatmentUnits = defaultTreatmentUnits,
-    setSelectedTreatmentUnits,
-  ] = useQueryParam<string[] | undefined>(
+  const [selectedTreatmentUnits, setSelectedTreatmentUnits] = useQueryState(
     "units",
-    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-    mainQueryParamsConfig.units as any,
+    mainQueryStateConfig.units,
   );
 
   const [medicalFieldPopupOpen, setMedicalFieldPopupOpen] = useState(false);

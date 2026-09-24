@@ -1,6 +1,12 @@
 "use client";
 
 import {
+  parseAsArrayOf,
+  parseAsBoolean,
+  parseAsInteger,
+  parseAsString,
+} from "nuqs";
+import {
   BooleanParam,
   DelimitedArrayParam,
   NumberParam,
@@ -11,12 +17,28 @@ import {
 export const maxYear = 2025;
 export const minYear = maxYear - 4;
 export const defaultYear = 2025;
-
+export const defaultUnits = [];
 /** @public */
 export const defaultReviewYear = 2024;
 
 /** @public */
 export const minDG = 0.6;
+
+/** @public */
+export const mainQueryStateConfig = {
+  selected_row: parseAsString,
+  indicator: parseAsString,
+  level: parseAsString,
+  year: parseAsInteger.withDefault(defaultYear),
+  selected_treatment_units: parseAsArrayOf(parseAsString),
+  chart_type: parseAsString,
+  chart_show_level: parseAsBoolean,
+  chart_show_N: parseAsBoolean,
+  registries: parseAsArrayOf(parseAsString).withDefault([]),
+  units: parseAsArrayOf(parseAsString).withDefault([]),
+  chart: parseAsString,
+  chartsetting: parseAsString,
+};
 
 /** @public */
 export const mainQueryParamsConfig = {
