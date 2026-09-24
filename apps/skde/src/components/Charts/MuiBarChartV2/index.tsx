@@ -244,7 +244,7 @@ export const MuiBarChartV2 = (props: MuiBarChartV2Props) => {
   };
 
   const colorDefault = "var(--bar-1)";
-  const colorNasjonalt = "var(--bar-2)";
+  const colorNasjonalt = "var(--bar-3)";
 
   return (
     <Box>
