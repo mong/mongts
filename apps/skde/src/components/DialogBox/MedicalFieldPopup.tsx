@@ -57,12 +57,6 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
 
   const [highlightedMedField, setHighlightedMedField] = useState<string>("");
 
-  // const [registrySelection = [], setRegistrySelection] = useQueryParam<
-  //   string[] | undefined,
-  //   string[]
-  //   // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-  // >("registries", mainQueryParamsConfig.registries);
-
   const [registrySelection, setRegistrySelection] = useQueryState(
     "registries",
     mainQueryStateConfig.registries,

@@ -9,7 +9,8 @@ import {
   RadioGroup,
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
-import { mainQueryParamsConfig, useUnitNamesQuery } from "qmongjs";
+import { useQueryState } from "nuqs";
+import { useUnitNamesQuery } from "qmongjs";
 import React, {
   type Dispatch,
   type JSX,
@@ -17,7 +18,7 @@ import React, {
   useState,
 } from "react";
 import type { NestedTreatmentUnitName } from "types";
-import { useQueryParam } from "use-query-params";
+import { mainQueryStateConfig } from "@/app_config";
 import { getTreatmentUnitsTree } from "../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { getFilterSettingsValuesMap } from "../FilterMenu/TreeViewFilterSection";
 import TreeViewSearchBox from "../FilterMenu/TreeViewSearchBox";
@@ -39,9 +40,9 @@ export const TreatmentUnitPopupSingleSelect = (
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");
   const [highlightedHF, setHighlightedHF] = useState<string>("");
 
-  const [unitSelection = [], setUnitSelection] = useQueryParam(
+  const [unitSelection, setUnitSelection] = useQueryState(
     "selected_treatment_units",
-    mainQueryParamsConfig.units,
+    mainQueryStateConfig.units,
   );
 
   const unitNamesQuery: UseQueryResult<
