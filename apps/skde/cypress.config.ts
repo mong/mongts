@@ -12,5 +12,6 @@ export default defineConfig({
     },
     specPattern: "test/cypress/integration/**/*.cy.{js,jsx,ts,tsx}",
     baseUrl: "http://localhost:3000",
+    supportFile: false,
   },
 });
