@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.15.0](https://github.com/mong/mongts/compare/v1.14.0...v1.15.0) (2026-09-25)
+
+
+### Features
+
+* (query-params): migrate query params handling to nuqs ([#5083](https://github.com/mong/mongts/issues/5083)) ([561c411](https://github.com/mong/mongts/commit/561c411aff3465883f6f74aeda4972775325d0e1))
+
+
+### Bug Fixes
+
+* **deps:** update tanstack-query monorepo from v5.101.4 to v5.103.2 ([#4929](https://github.com/mong/mongts/issues/4929)) ([b2cf13b](https://github.com/mong/mongts/commit/b2cf13b2ed42db9ed5f2901344350c38d0ec6f4f))
+* **TreatmentunitPopup:** filtrere bort nordisk data ([#5090](https://github.com/mong/mongts/issues/5090)) ([ac330b4](https://github.com/mong/mongts/commit/ac330b452bfca89da33d8b764bdaf106158781a8))
+
 ## [1.14.0](https://github.com/mong/mongts/compare/v1.13.2...v1.14.0) (2026-09-24)
 
 
