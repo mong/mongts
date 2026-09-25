@@ -13,12 +13,11 @@ import {
 } from "@mong/material-ui";
 import { Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
-import { useSearchParams } from "next/navigation";
+import { useQueryState } from "nuqs";
 import { getUnitFullName, useUnitNamesQuery, useUnitUrlsQuery } from "qmongjs";
-import { type JSX, Suspense, useEffect, useState } from "react";
+import { type JSX, Suspense, useState } from "react";
 import type { NestedTreatmentUnitName, OptsTu } from "types";
-import { useQueryParam } from "use-query-params";
-import { mainQueryParamsConfig } from "../../../app_config";
+import { mainQueryStateConfig } from "@/app_config";
 import { TreatmentUnitPopupSingleSelect } from "../../DialogBox/TreatmentUnitPopupSingleSelect";
 import { TopSummarySection } from "..";
 import { MedfieldTable } from "../MedfieldTable";
@@ -26,33 +25,22 @@ import { SelectedIndicatorTable } from "../SelectedIndicatorTable";
 
 const SykehusprofilPage = (): JSX.Element => {
   // States
-  const [unitName, setUnitName] = useState<(string | null)[] | undefined>([]);
+  const [unitName, setUnitName] = useState<string | null>(null);
   const [urlCopied, setUrlCopied] = useState<boolean>(false);
   const urlCopiedTimeout = 3000;
 
-  // Grab URL params and setUnitNames on load.
-  const searchParams = useSearchParams();
-  const urlTreatmentUnits = searchParams?.get("selected_treatment_units");
-  useEffect(() => {
-    setUnitName([urlTreatmentUnits || ""]);
-  }, [urlTreatmentUnits]);
-
   //Treatment unit popup
   const [treatmentUnitPopupOpen, setTreatmentUnitPopupOpen] = useState(false);
-  const [
-    selectedTreatmentUnit = [urlTreatmentUnits],
-    setSelectedTreatmentUnit,
-  ] = useQueryParam<(string | null)[] | undefined>(
-    "selected_treatment_units",
-    mainQueryParamsConfig.units,
+  const [selectedTreatmentUnit, setSelectedTreatmentUnit] = useQueryState(
+    "selected_treatment_unit",
+    mainQueryStateConfig.selected_treatment_unit,
   );
-
   const treatmentUnitContext = "caregiver";
   const openTreatmentUnitPopup = () => {
     setTreatmentUnitPopupOpen(true);
   };
   const handleClearFilters = () => {
-    setSelectedTreatmentUnit([]);
+    setSelectedTreatmentUnit(null);
   };
 
   // ############### //
@@ -86,7 +74,7 @@ const SykehusprofilPage = (): JSX.Element => {
   const hasLoadingError =
     unitNamesQuery.status === "error" || unitUrlsQuery.status === "error";
   const isLoading = !hasUnitsData;
-  const selectedUnit = selectedTreatmentUnit[0] ?? null;
+  const selectedUnit = selectedTreatmentUnit;
 
   // Keep only main hospitals without mutating query-cache data.
   const nestedUnitNames = (unitNamesQuery.data?.nestedUnitNames ?? []).map(
@@ -99,8 +87,9 @@ const SykehusprofilPage = (): JSX.Element => {
     }),
   );
 
-  const selectedUnitName = unitName?.[0] ?? "";
-  const unitFullName = getUnitFullName(nestedUnitNames, selectedUnitName) || "";
+  const selectedUnitName = unitName;
+  const unitFullName =
+    getUnitFullName(nestedUnitNames, selectedUnitName || "") || "";
   /**
    *  Check if the selected unit exists in the loaded data. Guards against
    *  invalid units coming from the URL.

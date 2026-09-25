@@ -14,12 +14,11 @@ import {
   withDefault,
 } from "use-query-params";
 
+/** @public */
 export const maxYear = 2025;
 export const minYear = maxYear - 4;
-export const defaultYear = 2025;
-const defaultTreatmentUnits = ["Nasjonalt"];
-
-/** @public */
+export const defaultYear = new Date().getFullYear() - 1;
+export const defaultTreatmentUnits = ["Nasjonalt"];
 export const defaultReviewYear = 2024;
 
 /** @public */
@@ -31,7 +30,7 @@ export const mainQueryStateConfig = {
   indicator: parseAsString,
   level: parseAsString,
   year: parseAsInteger.withDefault(defaultYear),
-  selected_treatment_units: parseAsArrayOf(parseAsString),
+  selected_treatment_unit: parseAsString.withDefault(""),
   chart_type: parseAsString,
   chart_show_level: parseAsBoolean,
   chart_show_N: parseAsBoolean,

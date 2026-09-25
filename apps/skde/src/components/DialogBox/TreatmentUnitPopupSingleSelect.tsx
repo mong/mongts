@@ -28,7 +28,7 @@ import { columnColour1, columnColour2, columnColour3 } from "./styles";
 type TreatmentUnitPopupSingleSelectProps = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
-  onSubmit: (value: string[]) => void;
+  onSubmit: (value: string) => void;
   context: string;
   type: string;
 };
@@ -41,8 +41,8 @@ export const TreatmentUnitPopupSingleSelect = (
   const [highlightedHF, setHighlightedHF] = useState<string>("");
 
   const [unitSelection, setUnitSelection] = useQueryState(
-    "selected_treatment_units",
-    mainQueryStateConfig.units,
+    "selected_treatment_unit",
+    mainQueryStateConfig.selected_treatment_unit,
   );
 
   const unitNamesQuery: UseQueryResult<
@@ -210,38 +210,38 @@ export const TreatmentUnitPopupSingleSelect = (
   };
 
   const handleSubmit = () => {
-    onSubmit(unitSelection.filter((unit): unit is string => unit !== null));
+    onSubmit(unitSelection);
     setOpen(false);
     setHighlightedRHF("");
   };
 
   const handleSearch = (itemId: string[]) => {
-    setUnitSelection([itemId[0]]);
+    setUnitSelection(itemId[0]);
   };
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUnitSelection([event.target.value]);
+    setUnitSelection(event.target.value);
   };
 
   const columnScrollClass = "min-h-0 overflow-y-auto";
 
   // Restore highlights when dialog opens with existing selection
   React.useEffect(() => {
-    if (open && unitSelection[0]) {
+    if (open && unitSelection) {
       // Find which RHF and HF the selected unit belongs to
       let foundRHF = "";
       let foundHF = "";
 
       unitNames?.forEach((rhfItem: NestedTreatmentUnitName) => {
         // Check if selection is the RHF itself
-        if (rhfItem.rhf === unitSelection[0]) {
+        if (rhfItem.rhf === unitSelection) {
           foundRHF = rhfItem.rhf;
           return;
         }
 
         // Check if selection is an HF
         rhfItem.hf.forEach((hfItem) => {
-          if (hfItem.hf === unitSelection[0]) {
+          if (hfItem.hf === unitSelection) {
             foundRHF = rhfItem.rhf;
             foundHF = hfItem.hf;
             return;
@@ -249,7 +249,7 @@ export const TreatmentUnitPopupSingleSelect = (
 
           // Check if selection is a hospital
           hfItem.hospital.forEach((hospital) => {
-            if (hospital === unitSelection[0]) {
+            if (hospital === unitSelection) {
               foundRHF = rhfItem.rhf;
               foundHF = hfItem.hf;
             }
@@ -324,7 +324,7 @@ export const TreatmentUnitPopupSingleSelect = (
                       aria-labelledby={`RHF-label`}
                       aria-label="RHF"
                       name="row-radio-buttons-group"
-                      value={unitSelection[0] || ""}
+                      value={unitSelection}
                       onChange={handleRadioChange}
                       sx={{ width: "100%", height: "100%" }}
                     >
@@ -374,7 +374,7 @@ export const TreatmentUnitPopupSingleSelect = (
                         aria-labelledby={`Hospital-label`}
                         aria-label="Hospital"
                         name="row-radio-buttons-group"
-                        value={unitSelection[0] || ""}
+                        value={unitSelection}
                         onChange={handleRadioChange}
                         sx={{
                           width: "100%",
@@ -398,12 +398,12 @@ export const TreatmentUnitPopupSingleSelect = (
             onClick={() => {
               setHighlightedRHF("");
               setHighlightedHF("");
-              setUnitSelection([""]);
+              setUnitSelection(null);
             }}
           >
             Tøm filter
           </Button>
-          <Button onClick={handleSubmit} disabled={unitSelection.length === 0}>
+          <Button onClick={handleSubmit} disabled={unitSelection === null}>
             Vis resultat
           </Button>
         </DialogActions>

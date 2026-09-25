@@ -124,7 +124,6 @@ export const TreatmentQualityPage = () => {
     unitNamesByLevelQuery.status === "error";
 
   const selectedTableContext = "caregiver";
-  console.log("selectedMedicalFields", selectedMedicalFields);
   return (
     <>
       <HeroBanner
@@ -265,8 +264,8 @@ export const TreatmentQualityPage = () => {
               color="white"
             >
               <h3>Ingen data tilgjengelig for dette valget.</h3>
-              <Button onClick={() => nestedDataQuery.refetch()}>
-                Last på nytt
+              <Button onClick={handleClearFilters}>
+                Tøm filter og prøv igjen
               </Button>
             </Box>
           ) : registerData ? (
