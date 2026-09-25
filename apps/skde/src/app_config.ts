@@ -7,19 +7,11 @@ import {
   parseAsString,
 } from "nuqs";
 
-import {
-  BooleanParam,
-  DelimitedArrayParam,
-  NumberParam,
-  StringParam,
-  withDefault,
-} from "use-query-params";
-
 /** @public */
 export const maxYear = 2025;
 export const minYear = maxYear - 4;
 export const defaultYear = new Date().getFullYear() - 1;
-export const defaultTreatmentUnits = ["Nasjonalt"];
+const defaultTreatmentUnits = ["Nasjonalt"];
 export const defaultReviewYear = 2024;
 
 /** @public */
@@ -39,22 +31,6 @@ export const mainQueryStateConfig = {
   units: parseAsArrayOf(parseAsString).withDefault(defaultTreatmentUnits),
   chart: parseAsString,
   chartsetting: parseAsString,
-};
-
-/** @public */
-export const mainQueryParamsConfig = {
-  selected_row: withDefault(StringParam, undefined),
-  indicator: withDefault(StringParam, undefined),
-  level: withDefault(StringParam, undefined),
-  year: withDefault(NumberParam, undefined),
-  selected_treatment_units: withDefault(DelimitedArrayParam, undefined),
-  chart_type: withDefault(StringParam, undefined),
-  chart_show_level: withDefault(BooleanParam, undefined),
-  chart_show_N: withDefault(BooleanParam, undefined),
-  registries: withDefault(DelimitedArrayParam, undefined),
-  units: withDefault(DelimitedArrayParam, undefined),
-  chart: withDefault(StringParam, undefined),
-  chartsetting: withDefault(StringParam, undefined),
 };
 
 /** List of hospitals shown on main page of Behandlingskvalitet and Sykehusprofil apps **/

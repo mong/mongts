@@ -3,10 +3,5 @@
     "apps/skde/src/app_config.ts",
     "apps/skde/.github/workflows/azure_deploy.yml"
   ],
-  "ignoreDependencies": ["mysql2", "express-serve-static-core", "dotenv"],
-  "workspaces": {
-    ".": {
-      "ignoreBinaries": []
-    }
-  }
+  "ignoreDependencies": ["mysql2", "express-serve-static-core", "dotenv"]
 }

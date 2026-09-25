@@ -299,9 +299,6 @@ importers:
       next:
         specifier: 16.3.5
         version: 16.3.5(@types/node@26.6.1)(babel-plugin-macros@3.1.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
-      next-query-params:
-        specifier: 5.1.0
-        version: 5.1.0(next@16.3.5(@types/node@26.6.1)(babel-plugin-macros@3.1.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)(use-query-params@2.2.2(react-dom@19.3.0(react@19.3.0))(react@19.3.0))
       nuqs:
         specifier: ^2.10.1
         version: 2.10.1(next@16.3.5(@types/node@26.6.1)(babel-plugin-macros@3.1.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)
@@ -335,9 +332,6 @@ importers:
       types:
         specifier: workspace:*
         version: link:../../packages/types
-      use-query-params:
-        specifier: 2.2.2
-        version: 2.2.2(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
     devDependencies:
       '@testing-library/dom':
         specifier: ^10.4.1
@@ -3598,13 +3592,6 @@ packages:
   negotiator@1.1.0:
     resolution: {integrity: sha512-NMPBRMJgiQHjbd8phG3Vebdx4kZ1H121rbl5IkMqeOsahptB9BKo/d7oJ3zTXqTgagn2bWlNSXkh0QUGM31RYg==}
     engines: {node: '>=18'}
-
-  next-query-params@5.1.0:
-    resolution: {integrity: sha512-sSdMLXdC6CExNNJgbpzeFEZvhR/i1LRYvh8IF4QvuZa5eZ4DSmxMNFQ2qXOd56wQkALOPGWd4vl9+d1L/XS0PQ==}
-    peerDependencies:
-      next: ^10.0.0 || ^11.0.0 || ^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
-      use-query-params: ^2.0.0
 
   next@16.3.5:
     resolution: {integrity: sha512-MdtsTgzyfCPRLC6uJ1mN8ao7lyJ4BB0U6Inhnx3gta1UcCIdHK3yxLG0E8OWQteWD8/Q0qb8A5o7wJaL8M9y2w==}
@@ -7845,13 +7832,6 @@ snapshots:
   negotiator@1.1.0:
     dependencies:
       content-type: 2.1.0
-
-  next-query-params@5.1.0(next@16.3.5(@types/node@26.6.1)(babel-plugin-macros@3.1.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))(react@19.3.0)(use-query-params@2.2.2(react-dom@19.3.0(react@19.3.0))(react@19.3.0)):
-    dependencies:
-      next: 16.3.5(@types/node@26.6.1)(babel-plugin-macros@3.1.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
-      react: 19.3.0
-      tslib: 2.8.1
-      use-query-params: 2.2.2(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
 
   next@16.3.5(@types/node@26.6.1)(babel-plugin-macros@3.1.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
     dependencies:
