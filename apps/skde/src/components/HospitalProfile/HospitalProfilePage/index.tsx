@@ -74,7 +74,7 @@ const SykehusprofilPage = (): JSX.Element => {
   const unitNamesQuery: UseQueryResult<
     { nestedUnitNames: NestedTreatmentUnitName[]; opts_tu: OptsTu[] },
     Error
-  > = useUnitNamesQuery("all", "caregiver", "ind");
+  > = useUnitNamesQuery("all", "caregiver", "ind", false);
 
   // URLs for the web pages to the different treatment units
   const unitUrlsQuery: UseQueryResult<

@@ -47,6 +47,9 @@ function parseQuery(req: Request): Query {
     const year = Number(req.query.year) || undefined;
     query.filter.year = year;
   }
+  if (typeof req.query.nordic === "string") {
+    query.filter.nordic = req.query.nordic === "1";
+  }
 
   return query;
 }
