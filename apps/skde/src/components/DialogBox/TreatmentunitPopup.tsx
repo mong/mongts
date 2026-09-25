@@ -44,6 +44,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
     "all",
     context,
     type,
+    false,
   );
 
   // Sort nested unit names by RHF
