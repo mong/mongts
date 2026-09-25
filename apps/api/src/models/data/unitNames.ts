@@ -10,6 +10,7 @@ export const distinctUnitNamesRegister = (
     .distinct({ unit_name: "agg_data.unit_name" })
     .from("agg_data")
     .leftJoin("ind", "agg_data.ind_id", "ind.id")
+    .leftJoin("registry", "ind.registry_id", "registry.id")
     .where("include", 1)
     .where(function () {
       this.whereRaw("denominator >= min_denominator").orWhereNull(
@@ -52,6 +53,9 @@ function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
   }
   if (filter?.year && typeof filter?.year === "number") {
     builder.where("year", filter.year);
+  }
+  if (filter?.nordic !== undefined) {
+    builder.where("registry.nordic", filter.nordic ? 1 : 0);
   }
 }
 

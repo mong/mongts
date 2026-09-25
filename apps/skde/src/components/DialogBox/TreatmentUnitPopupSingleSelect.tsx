@@ -48,7 +48,7 @@ export const TreatmentUnitPopupSingleSelect = (
   const unitNamesQuery: UseQueryResult<
     { nestedUnitNames: NestedTreatmentUnitName[] },
     unknown
-  > = useUnitNamesQuery("all", context, type);
+  > = useUnitNamesQuery("all", context, type, false);
   // Sort nested unit names by RHF
   const unitNames = unitNamesQuery.data?.nestedUnitNames.sort(
     (a: NestedTreatmentUnitName, b: NestedTreatmentUnitName) => {
