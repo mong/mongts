@@ -9,8 +9,8 @@ import {
   TableRow,
 } from "@mui/material";
 import _ from "lodash";
-import { useRegistryRankQuery } from "qmongjs";
 import type { RegistryRank } from "types";
+import { useRegistryRankQuery } from "@/helpers/hooks/apihooks";
 
 type RegistryLevelTableProps = {
   year: number;

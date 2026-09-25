@@ -1,15 +1,16 @@
 // @ts-nocheck
 import { render } from "@testing-library/react";
-import * as hooks from "qmongjs/src/helpers/hooks";
+import { expect, test, vi } from "vitest";
+import * as hooks from "@/helpers/hooks/apihooks";
 import {
   rankTestData,
   requirementsTestData,
   scoresTestData,
-} from "qmongjs/src/test/test_data/registryRequirements";
-import { expect, test, vi } from "vitest";
+} from "../../../../test/test_data/registryRequirements";
+
 import { RequirementList } from "..";
 
-vi.mock("qmongjs/src/helpers/hooks");
+vi.mock("@/helpers/hooks/apihooks");
 
 test("The requirement list renders correctly 3A", async () => {
   vi.spyOn(hooks, "useRegistryRequirementsQuery").mockReturnValue({

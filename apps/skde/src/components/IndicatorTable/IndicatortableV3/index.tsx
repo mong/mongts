@@ -6,9 +6,9 @@ import {
 } from "@mong/material-ui";
 import { Stack } from "@mui/material";
 import { useRouter, useSearchParams } from "next/navigation";
-import { customFormat, level2 } from "qmongjs";
 import { type JSX, useCallback, useEffect, useState } from "react";
 import type { DataPoint, IndicatorData, OptsTu, RegisterData } from "types";
+import { customFormat, level2 } from "@/helpers/functions";
 import { ChartRowV2 } from "../chartrowV2";
 
 type IndicatorTableV3Props = {

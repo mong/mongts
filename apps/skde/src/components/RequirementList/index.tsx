@@ -8,12 +8,12 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import type { RegistryRank, RegistryRequirement, RegistryScores } from "types";
 import {
   useRegistryRankQuery,
   useRegistryRequirementsQuery,
   useRegistryScoresQuery,
-} from "qmongjs/src/helpers/hooks";
-import type { RegistryRank, RegistryRequirement, RegistryScores } from "types";
+} from "../../helpers/hooks/apihooks";
 
 type RequirementListProps = {
   registry: string;

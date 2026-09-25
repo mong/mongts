@@ -12,7 +12,6 @@ import {
 import { type SelectChangeEvent, Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useQueryState } from "nuqs";
-import { useIndicatorQuery, useUnitNamesQuery } from "qmongjs";
 import { useEffect, useState } from "react";
 import type { OptsTu, RegisterData } from "types";
 import { defaultYear, mainQueryStateConfig } from "@/app_config";
@@ -26,6 +25,7 @@ import {
   getSortedList,
   updateColourMap,
 } from "@/helpers/functions/chartColours";
+import { useIndicatorQuery, useUnitNamesQuery } from "@/helpers/hooks/apihooks";
 
 export const TreatmentQualityPage = () => {
   const numberOfYearOptions = 5;
