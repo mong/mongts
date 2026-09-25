@@ -13,7 +13,7 @@ import {
   useRegistryRankQuery,
   useRegistryRequirementsQuery,
   useRegistryScoresQuery,
-} from "@/helpers/hooks/apihooks";
+} from "../../helpers/hooks/apihooks";
 
 type RequirementListProps = {
   registry: string;

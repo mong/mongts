@@ -187,7 +187,7 @@ const medfieldTableData: Indicator[] = [
   },
 ];
 
-vi.mock("../../../helpers/hooks");
+vi.mock("@/helpers/hooks");
 
 const data = createMedfieldTableData(medfieldTableData);
 

@@ -1,16 +1,16 @@
 // @ts-nocheck
 import { render } from "@testing-library/react";
 import { expect, test, vi } from "vitest";
+import * as hooks from "@/helpers/hooks/apihooks";
 import {
   rankTestData,
   requirementsTestData,
   scoresTestData,
 } from "../../../../test/test_data/registryRequirements";
-import * as hooks from "../../../helpers/hooks";
 
 import { RequirementList } from "..";
 
-vi.mock("../../../helpers/hooks");
+vi.mock("@/helpers/hooks/apihooks");
 
 test("The requirement list renders correctly 3A", async () => {
   vi.spyOn(hooks, "useRegistryRequirementsQuery").mockReturnValue({
