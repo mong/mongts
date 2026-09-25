@@ -24,17 +24,18 @@ import { MedfieldTable } from "../MedfieldTable";
 import { SelectedIndicatorTable } from "../SelectedIndicatorTable";
 
 const SykehusprofilPage = (): JSX.Element => {
-  // States
-  const [unitName, setUnitName] = useState<string | null>(null);
+  //  Params
+  const [selectedTreatmentUnit, setSelectedTreatmentUnit] = useQueryState(
+    "selected_treatment_unit",
+    mainQueryStateConfig.selected_treatment_unit,
+  );
+
   const [urlCopied, setUrlCopied] = useState<boolean>(false);
   const urlCopiedTimeout = 3000;
 
   //Treatment unit popup
   const [treatmentUnitPopupOpen, setTreatmentUnitPopupOpen] = useState(false);
-  const [selectedTreatmentUnit, setSelectedTreatmentUnit] = useQueryState(
-    "selected_treatment_unit",
-    mainQueryStateConfig.selected_treatment_unit,
-  );
+
   const treatmentUnitContext = "caregiver";
   const openTreatmentUnitPopup = () => {
     setTreatmentUnitPopupOpen(true);
@@ -87,7 +88,7 @@ const SykehusprofilPage = (): JSX.Element => {
     }),
   );
 
-  const selectedUnitName = unitName;
+  const selectedUnitName = selectedTreatmentUnit;
   const unitFullName =
     getUnitFullName(nestedUnitNames, selectedUnitName || "") || "";
   /**
@@ -106,7 +107,6 @@ const SykehusprofilPage = (): JSX.Element => {
 
   const emptyStateClassName =
     "flex flex-col items-center justify-center  text-dark gap-10 min-h-50 md:min-h-100 my-6";
-  const selectedUnitNamesAsString = unitName?.toString() || "";
 
   return (
     <>
@@ -134,7 +134,7 @@ const SykehusprofilPage = (): JSX.Element => {
                   <TreatmentUnitPopupSingleSelect
                     open={treatmentUnitPopupOpen}
                     setOpen={setTreatmentUnitPopupOpen}
-                    onSubmit={setUnitName}
+                    onSubmit={setSelectedTreatmentUnit}
                     context={treatmentUnitContext}
                     type={"ind"}
                   />
@@ -247,17 +247,17 @@ const SykehusprofilPage = (): JSX.Element => {
               ) : (
                 <>
                   <TopSummarySection
-                    unitName={selectedUnitNamesAsString}
+                    unitName={selectedTreatmentUnit}
                     unitFullName={unitFullName}
                     lastYear={lastYear}
                     pastYears={pastYears}
                   />
                   <MedfieldTable
-                    unitName={selectedUnitNamesAsString}
+                    unitName={selectedTreatmentUnit}
                     year={lastYear}
                   />
                   <SelectedIndicatorTable
-                    unitName={selectedUnitNamesAsString || ""}
+                    unitName={selectedTreatmentUnit}
                     titlePadding={titlePadding}
                     titleStyle={titleStyle}
                     lastYear={lastYear}
