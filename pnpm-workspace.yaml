@@ -9,13 +9,13 @@ allowBuilds:
   sharp: true
 minimumReleaseAgeExclude:
   - "@mong/material-ui"
-  - '@turbo/darwin-64@2.10.0'
-  - '@turbo/darwin-arm64@2.10.0'
-  - '@turbo/linux-64@2.10.0'
-  - '@turbo/linux-arm64@2.10.0'
-  - '@turbo/windows-64@2.10.0'
-  - '@turbo/windows-arm64@2.10.0'
-  - turbo@2.10.0
+  - '@turbo/darwin-64@2.10.0 || 2.11.4'
+  - '@turbo/darwin-arm64@2.10.0 || 2.11.4'
+  - '@turbo/linux-64@2.10.0 || 2.11.4'
+  - '@turbo/linux-arm64@2.10.0 || 2.11.4'
+  - '@turbo/windows-64@2.10.0 || 2.11.4'
+  - '@turbo/windows-arm64@2.10.0 || 2.11.4'
+  - turbo@2.10.0 || 2.11.4
   - knip@6.23.0 || 6.36.0
   - vite@8.2.2
   - '@next/env@16.3.3'
