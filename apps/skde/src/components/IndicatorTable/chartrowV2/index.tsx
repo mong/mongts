@@ -1,11 +1,11 @@
 import { Button, Dropdown, Icon } from "@mong/material-ui";
 import type { SelectChangeEvent } from "@mui/material";
 import { useChartProApiRef } from "@mui/x-charts-pro";
+import { useQueryState } from "nuqs";
 import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
 import { useState } from "react";
 import type { DataPoint, IndicatorData, OptsTu } from "types";
-import { useQueryParam } from "use-query-params";
-import { mainQueryParamsConfig } from "../../../app_config";
+import { mainQueryStateConfig } from "../../../app_config";
 import {
   formatMuiChartDataV2,
   makeOnBeforeExport,
@@ -51,17 +51,28 @@ export const ChartRowV2 = (props: ChartRowV2Props) => {
 
   const numberOfTimePoints = Math.max(...numberOfTimePointsArray);
 
-  const [figureType = numberOfTimePoints > 1 ? "line" : "bar", setFigureType] =
-    useQueryParam<string | undefined>(
-      "chart",
-      // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-      mainQueryParamsConfig.chart as any,
-    );
+  // const [figureType = numberOfTimePoints > 1 ? "line" : "bar", setFigureType] =
+  //   useQueryParam<string | undefined>(
+  //     "chart",
+  //     // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+  //     mainQueryParamsConfig.chart as any,
+  //   );
 
-  const [barChartType = "selected", setBarChartType] = useQueryParam<
-    string | undefined
-    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  >("chartsetting", mainQueryParamsConfig.chartsetting as any);
+  // const [barChartType = "selected", setBarChartType] = useQueryParam<
+  //   string | undefined
+  //   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
+  // >("chartsetting", mainQueryParamsConfig.chartsetting as any);
+
+  const [figureType, setFigureType] = useQueryState<string | null>(
+    "chart",
+    mainQueryStateConfig.chart.withDefault(
+      numberOfTimePoints > 1 ? "line" : "bar",
+    ),
+  );
+
+  const [barChartType = "selected", setBarChartType] = useQueryState<
+    string | null
+  >("chartsetting", mainQueryStateConfig.chartsetting.withDefault("selected"));
 
   const [zoom, setZoom] = useState<boolean>(false);
   const [showBarLabelsForExport, setShowBarLabelsForExport] = useState(false);

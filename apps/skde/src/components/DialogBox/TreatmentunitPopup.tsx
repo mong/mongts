@@ -9,10 +9,11 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
-import { mainQueryParamsConfig, useUnitNamesQuery } from "qmongjs";
+import { useQueryState } from "nuqs";
+import { useUnitNamesQuery } from "qmongjs";
 import { type Dispatch, type JSX, type SetStateAction, useState } from "react";
 import type { NestedTreatmentUnitName } from "types";
-import { useQueryParam } from "use-query-params";
+import { mainQueryStateConfig } from "@/app_config";
 import { getTreatmentUnitsTree } from "../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { getFilterSettingsValuesMap } from "../FilterMenu/TreeViewFilterSection";
 import TreeViewSearchBox from "../FilterMenu/TreeViewSearchBox";
@@ -22,7 +23,7 @@ import { columnColour1, columnColour2, columnColour3 } from "./styles";
 type TreatmentUnitPopupProps = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
-  onSubmit: Dispatch<SetStateAction<(string | null)[] | undefined>>;
+  onSubmit: (value: string[]) => void;
   context: string;
   type: string;
 };
@@ -33,11 +34,10 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");
   const [highlightedHF, setHighlightedHF] = useState<string>("");
 
-  const [unitSelection = ["Nasjonalt"], setUnitSelection] = useQueryParam<
-    string[] | undefined,
-    string[]
-    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-  >("units", mainQueryParamsConfig.units);
+  const [unitSelection, setUnitSelection] = useQueryState(
+    "units",
+    mainQueryStateConfig.units,
+  );
 
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
@@ -338,6 +338,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
       data-testid={"TreatmentUnitPopUp"}
       fullWidth
       scroll="paper"
+      onClose={handleClose}
       slotProps={{
         paper: {
           sx: {

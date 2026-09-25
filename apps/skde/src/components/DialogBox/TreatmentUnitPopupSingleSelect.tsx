@@ -9,7 +9,8 @@ import {
   RadioGroup,
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
-import { mainQueryParamsConfig, useUnitNamesQuery } from "qmongjs";
+import { useQueryState } from "nuqs";
+import { useUnitNamesQuery } from "qmongjs";
 import React, {
   type Dispatch,
   type JSX,
@@ -17,7 +18,7 @@ import React, {
   useState,
 } from "react";
 import type { NestedTreatmentUnitName } from "types";
-import { useQueryParam } from "use-query-params";
+import { mainQueryStateConfig } from "@/app_config";
 import { getTreatmentUnitsTree } from "../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { getFilterSettingsValuesMap } from "../FilterMenu/TreeViewFilterSection";
 import TreeViewSearchBox from "../FilterMenu/TreeViewSearchBox";
@@ -27,7 +28,7 @@ import { columnColour1, columnColour2, columnColour3 } from "./styles";
 type TreatmentUnitPopupSingleSelectProps = {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
-  onSubmit: Dispatch<SetStateAction<(string | null)[] | undefined>>;
+  onSubmit: (value: string) => void;
   context: string;
   type: string;
 };
@@ -39,9 +40,9 @@ export const TreatmentUnitPopupSingleSelect = (
   const [highlightedRHF, setHighlightedRHF] = useState<string>("");
   const [highlightedHF, setHighlightedHF] = useState<string>("");
 
-  const [unitSelection = [], setUnitSelection] = useQueryParam(
-    "selected_treatment_units",
-    mainQueryParamsConfig.units,
+  const [unitSelection, setUnitSelection] = useQueryState(
+    "selected_treatment_unit",
+    mainQueryStateConfig.selected_treatment_unit,
   );
 
   const unitNamesQuery: UseQueryResult<
@@ -206,43 +207,41 @@ export const TreatmentUnitPopupSingleSelect = (
 
   const handleClose = () => {
     setOpen(false);
-    setHighlightedRHF("");
-    onSubmit([]);
   };
 
   const handleSubmit = () => {
-    onSubmit(unitSelection.filter((unit): unit is string => unit !== null));
+    onSubmit(unitSelection);
     setOpen(false);
     setHighlightedRHF("");
   };
 
   const handleSearch = (itemId: string[]) => {
-    setUnitSelection([itemId[0]]);
+    setUnitSelection(itemId[0]);
   };
 
   const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUnitSelection([event.target.value]);
+    setUnitSelection(event.target.value);
   };
 
   const columnScrollClass = "min-h-0 overflow-y-auto";
 
   // Restore highlights when dialog opens with existing selection
   React.useEffect(() => {
-    if (open && unitSelection[0]) {
+    if (open && unitSelection) {
       // Find which RHF and HF the selected unit belongs to
       let foundRHF = "";
       let foundHF = "";
 
       unitNames?.forEach((rhfItem: NestedTreatmentUnitName) => {
         // Check if selection is the RHF itself
-        if (rhfItem.rhf === unitSelection[0]) {
+        if (rhfItem.rhf === unitSelection) {
           foundRHF = rhfItem.rhf;
           return;
         }
 
         // Check if selection is an HF
         rhfItem.hf.forEach((hfItem) => {
-          if (hfItem.hf === unitSelection[0]) {
+          if (hfItem.hf === unitSelection) {
             foundRHF = rhfItem.rhf;
             foundHF = hfItem.hf;
             return;
@@ -250,7 +249,7 @@ export const TreatmentUnitPopupSingleSelect = (
 
           // Check if selection is a hospital
           hfItem.hospital.forEach((hospital) => {
-            if (hospital === unitSelection[0]) {
+            if (hospital === unitSelection) {
               foundRHF = rhfItem.rhf;
               foundHF = hfItem.hf;
             }
@@ -270,6 +269,7 @@ export const TreatmentUnitPopupSingleSelect = (
   return (
     <Dialog
       open={open}
+      onClose={handleClose}
       fullWidth
       scroll="paper"
       slotProps={{
@@ -287,7 +287,7 @@ export const TreatmentUnitPopupSingleSelect = (
       }}
     >
       <div className="text-right pr-4 text-brand-primary-400 truncate">
-        <IconButton onClick={handleClose} aria-label="Small Star">
+        <IconButton onClick={handleClose} aria-label="Lukk popup">
           <Icon symbol="close" />
         </IconButton>
       </div>
@@ -324,7 +324,7 @@ export const TreatmentUnitPopupSingleSelect = (
                       aria-labelledby={`RHF-label`}
                       aria-label="RHF"
                       name="row-radio-buttons-group"
-                      value={unitSelection[0] || ""}
+                      value={unitSelection}
                       onChange={handleRadioChange}
                       sx={{ width: "100%", height: "100%" }}
                     >
@@ -374,7 +374,7 @@ export const TreatmentUnitPopupSingleSelect = (
                         aria-labelledby={`Hospital-label`}
                         aria-label="Hospital"
                         name="row-radio-buttons-group"
-                        value={unitSelection[0] || ""}
+                        value={unitSelection}
                         onChange={handleRadioChange}
                         sx={{
                           width: "100%",
@@ -398,12 +398,12 @@ export const TreatmentUnitPopupSingleSelect = (
             onClick={() => {
               setHighlightedRHF("");
               setHighlightedHF("");
-              setUnitSelection([""]);
+              setUnitSelection(null);
             }}
           >
             Tøm filter
           </Button>
-          <Button onClick={handleSubmit} disabled={unitSelection.length === 0}>
+          <Button onClick={handleSubmit} disabled={unitSelection === null}>
             Vis resultat
           </Button>
         </DialogActions>

@@ -81,7 +81,7 @@ export const MedfieldTable = (props: MedfieldTableProps) => {
           ...new Set(row.registers.map((reg) => reg.name)),
         ].filter((row) => row !== undefined);
 
-        const externalUrl = `/behandlingskvalitet/?units=Nasjonalt_${unitName}&registries=${registries.join("_")}`;
+        const externalUrl = `/behandlingskvalitet/?units=Nasjonalt,${unitName}&registries=${registries.join(",")}`;
         if (index === 0) {
           return (
             <SubjectAreaResultCard

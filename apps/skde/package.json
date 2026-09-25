@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
     "start": "next start",
     "export": "next build",
     "test": "pnpm run test:base run --coverage",
@@ -17,7 +17,7 @@
     "format": "biome check --write --no-errors-on-unmatched",
     "check": "biome check --no-errors-on-unmatched",
     "typecheck": "tsc --noEmit",
-    "validate": "pnpm run check && pnpm run typecheck",
+    "validate": "pnpm run check && pnpm run typecheck && pnpm run knip && pnpm run cypress:headless && pnpm run build",
     "knip": "knip"
   },
   "dependencies": {
@@ -35,7 +35,7 @@
     "@tanstack/react-query-devtools": "5.101.4",
     "lodash": "4.18.1",
     "next": "16.3.5",
-    "next-query-params": "5.1.0",
+    "nuqs": "^2.10.1",
     "postcss": "^8.5.15",
     "qmongjs": "workspace:*",
     "react": "19.3.0",
@@ -45,8 +45,7 @@
     "rehype-slug": "6.0.0",
     "remark-gfm": "4.0.1",
     "tailwindcss": "^4.3.0",
-    "types": "workspace:*",
-    "use-query-params": "2.2.2"
+    "types": "workspace:*"
   },
   "devDependencies": {
     "@testing-library/dom": "^10.4.1",

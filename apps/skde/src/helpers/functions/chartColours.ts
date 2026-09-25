@@ -42,7 +42,6 @@ export const updateColourMap = (
   setColourMap: Dispatch<SetStateAction<ColourMap[]>>,
   newUnits: string[],
 ) => {
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   newUnits.map((unit) => {
     if (!colourMap.map((row) => row.unitName).includes(unit)) {
       colourMap.push({
@@ -51,14 +50,16 @@ export const updateColourMap = (
       });
       setColourMap(colourMap);
     }
+    return null;
   });
 };
 
 export const getSortedList = (
   colourMap: ColourMap[],
-  selectedTreatmentUnits: string[],
+  selectedTreatmentUnits: string[] | null,
   value: "units" | "colours",
 ) => {
+  if (!selectedTreatmentUnits) return [];
   const sortedMap = colourMap
     .filter((el) => selectedTreatmentUnits.includes(el.unitName))
     .sort(

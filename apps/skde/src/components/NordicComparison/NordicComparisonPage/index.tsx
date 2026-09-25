@@ -16,11 +16,11 @@ import {
 } from "@mui/material";
 import { Box } from "@mui/system";
 import { LineChart } from "@mui/x-charts";
+import { useQueryState } from "nuqs";
 import { useIndicatorQuery, useRegisterNamesQuery } from "qmongjs";
 import { useEffect, useRef, useState } from "react";
 import type { Indicator, RegisterName } from "types";
-import { useQueryParam } from "use-query-params";
-import { mainQueryParamsConfig } from "@/app_config";
+import { mainQueryStateConfig } from "@/app_config";
 import { MedicalFieldPopup } from "@/components/DialogBox/MedicalFieldPopup";
 
 type DataPoint = Indicator;
@@ -71,10 +71,10 @@ function useElementWidth<T extends HTMLElement = HTMLDivElement>() {
 }
 
 export default function NordiskeSammenlingninger() {
-  const [selectedMedicalFields = [], setSelectedMedicalFields] = useQueryParam<
-    string[] | undefined
-    // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  >("registries", mainQueryParamsConfig.registries as any);
+  const [selectedMedicalFields, setSelectedMedicalFields] = useQueryState(
+    "registries",
+    mainQueryStateConfig.registries,
+  );
 
   const [selectedLanguage, setSelectedLanguage] = useState("no");
   const handleLanguageChange = (

@@ -9,14 +9,11 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
-import {
-  mainQueryParamsConfig,
-  useMedicalFieldsQuery,
-  useRegisterNamesQuery,
-} from "qmongjs";
+import { useQueryState } from "nuqs";
+import { useMedicalFieldsQuery, useRegisterNamesQuery } from "qmongjs";
 import { type Dispatch, type JSX, type SetStateAction, useState } from "react";
 import type { Medfield, RegisterName } from "types";
-import { useQueryParam } from "use-query-params";
+import { mainQueryStateConfig } from "@/app_config";
 import { getMedicalFields } from "../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { getFilterSettingsValuesMap } from "../FilterMenu/TreeViewFilterSection";
 import TreeViewSearchBox from "../FilterMenu/TreeViewSearchBox";
@@ -60,12 +57,10 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
 
   const [highlightedMedField, setHighlightedMedField] = useState<string>("");
 
-  const [registrySelection = [], setRegistrySelection] = useQueryParam<
-    string[] | undefined,
-    string[]
-    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-  >("registries", mainQueryParamsConfig.registries);
-
+  const [registrySelection, setRegistrySelection] = useQueryState(
+    "registries",
+    mainQueryStateConfig.registries,
+  );
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery(nordicOnly);
@@ -296,6 +291,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
       data-testid={"MedicalFieldPopUp"}
       fullWidth
       scroll="paper"
+      onClose={handleClose}
       slotProps={{
         paper: {
           sx: {

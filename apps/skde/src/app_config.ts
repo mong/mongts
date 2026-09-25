@@ -1,37 +1,36 @@
 "use client";
 
 import {
-  BooleanParam,
-  DelimitedArrayParam,
-  NumberParam,
-  StringParam,
-  withDefault,
-} from "use-query-params";
-
-export const maxYear = 2025;
-export const minYear = maxYear - 4;
-export const defaultYear = 2025;
+  parseAsArrayOf,
+  parseAsBoolean,
+  parseAsInteger,
+  parseAsString,
+} from "nuqs";
 
 /** @public */
+export const maxYear = 2025;
+export const minYear = maxYear - 4;
+export const defaultYear = new Date().getFullYear() - 1;
+const defaultTreatmentUnits = ["Nasjonalt"];
 export const defaultReviewYear = 2024;
 
 /** @public */
 export const minDG = 0.6;
 
 /** @public */
-export const mainQueryParamsConfig = {
-  selected_row: withDefault(StringParam, undefined),
-  indicator: withDefault(StringParam, undefined),
-  level: withDefault(StringParam, undefined),
-  year: withDefault(NumberParam, undefined),
-  selected_treatment_units: withDefault(DelimitedArrayParam, undefined),
-  chart_type: withDefault(StringParam, undefined),
-  chart_show_level: withDefault(BooleanParam, undefined),
-  chart_show_N: withDefault(BooleanParam, undefined),
-  registries: withDefault(DelimitedArrayParam, undefined),
-  units: withDefault(DelimitedArrayParam, undefined),
-  chart: withDefault(StringParam, undefined),
-  chartsetting: withDefault(StringParam, undefined),
+export const mainQueryStateConfig = {
+  selected_row: parseAsString,
+  indicator: parseAsString,
+  level: parseAsString,
+  year: parseAsInteger.withDefault(defaultYear),
+  selected_treatment_unit: parseAsString.withDefault(""),
+  chart_type: parseAsString,
+  chart_show_level: parseAsBoolean,
+  chart_show_N: parseAsBoolean,
+  registries: parseAsArrayOf(parseAsString).withDefault([]),
+  units: parseAsArrayOf(parseAsString).withDefault(defaultTreatmentUnits),
+  chart: parseAsString,
+  chartsetting: parseAsString,
 };
 
 /** List of hospitals shown on main page of Behandlingskvalitet and Sykehusprofil apps **/
