@@ -188,17 +188,20 @@ const unitNamesUrl = (
   registerShortName: string,
   context: string,
   type: string,
+  nordic?: boolean,
 ): string => {
-  return `${API_HOST}/data/${registerShortName}/unitnames?context=${context}&type=${type}`;
+  const nordicQuery = nordic === undefined ? "" : `&nordic=${nordic ? 1 : 0}`;
+  return `${API_HOST}/data/${registerShortName}/unitnames?context=${context}&type=${type}${nordicQuery}`;
 };
 
 const fetchUnitNames = async (
   registerShortName: string,
   context: string,
   type: string,
+  nordic?: boolean,
 ) => {
   return await fetchJsonWithRetry(
-    unitNamesUrl(registerShortName, context, type),
+    unitNamesUrl(registerShortName, context, type, nordic),
   );
 };
 
@@ -206,6 +209,7 @@ export const useUnitNamesQuery = (
   registerShortName?: string,
   context?: string,
   type?: string,
+  nordic?: boolean,
 ) => {
   const registerShortNameQuery: string = registerShortName
     ? registerShortName
@@ -216,9 +220,9 @@ export const useUnitNamesQuery = (
   const typeQuery: string = type ? type : "ind";
 
   return useQuery({
-    queryKey: ["unitNames", registerShortName, context, type],
+    queryKey: ["unitNames", registerShortName, context, type, nordic],
     queryFn: () =>
-      fetchUnitNames(registerShortNameQuery, contextQuery, typeQuery),
+      fetchUnitNames(registerShortNameQuery, contextQuery, typeQuery, nordic),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
     gcTime: 1000 * 60 * 60,
