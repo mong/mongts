@@ -243,6 +243,9 @@ export const MuiBarChartV2 = (props: MuiBarChartV2Props) => {
     );
   };
 
+  const colorDefault = "var(--bar-1)";
+  const colorNasjonalt = "var(--bar-3)";
+
   return (
     <Box>
       <ChartsDataProviderPro
@@ -252,7 +255,10 @@ export const MuiBarChartV2 = (props: MuiBarChartV2Props) => {
             type: "bar",
             layout: "horizontal",
             data: currentData,
-            color: "var(--bar-1)",
+            colorGetter: (params) =>
+              currentUnitNames[params.dataIndex] === "Nasjonalt"
+                ? colorNasjonalt
+                : colorDefault,
 
             valueFormatter: barValueFormatter,
             ...(showBarLabels
