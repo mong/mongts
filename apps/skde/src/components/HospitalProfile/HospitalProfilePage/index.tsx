@@ -5,7 +5,6 @@ import {
   Button,
   HeroBanner,
   Icon,
-  LoadingLogo,
   PageContent,
   RotateDevice,
   ToggleButton,
@@ -15,9 +14,10 @@ import { Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useQueryState } from "nuqs";
 import { getUnitFullName, useUnitNamesQuery, useUnitUrlsQuery } from "qmongjs";
-import { type JSX, Suspense, useState } from "react";
+import { type JSX, useState } from "react";
 import type { NestedTreatmentUnitName, OptsTu } from "types";
 import { mainQueryStateConfig } from "@/app_config";
+import LoadingFallback from "@/components/LoadingFallback";
 import { TreatmentUnitPopupSingleSelect } from "../../DialogBox/TreatmentUnitPopupSingleSelect";
 import { TopSummarySection } from "..";
 import { MedfieldTable } from "../MedfieldTable";
@@ -116,169 +116,159 @@ const SykehusprofilPage = (): JSX.Element => {
             kvalitetsregistre per behandlingssted."
         image="/hero-bg-2.jpg"
       />
-      <Suspense
-        fallback={
-          <Box padded={false} color="transparent" className="p-10">
-            <LoadingLogo message="Laster data" />
-          </Box>
-        }
+      {/* Toolbar */}
+      <div
+        className={`${hasLoadingError || isLoading ? "hidden" : "hidden md:flex"} truncate bg-neutral-0 w-full align-middle justify-center px-6 md:px-12 sticky top-0 z-60 shadow-xs`}
       >
-        {/* Toolbar */}
-        <div
-          className={`${hasLoadingError || isLoading ? "hidden" : "hidden md:flex"} truncate bg-neutral-0 w-full align-middle justify-center px-6 md:px-12 sticky top-0 z-60 shadow-xs`}
-        >
-          <div className="flex flex-col w-full h-full max-w-360">
-            <Toolbar disableGutters={true}>
-              <div className="flex flex-row max-w-360 w-full justify-between items-center pb-2 md:pb-4">
-                <div className="flex flex-row md:flex-row gap-2 md:gap-4 flex-wrap">
-                  <div className="flex gap-6">
-                    <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                      Behandlingssted
-                      <Button onClick={openTreatmentUnitPopup}>
-                        Velg behandlingssted
-                      </Button>
-                    </div>
-                    <TreatmentUnitPopupSingleSelect
-                      open={treatmentUnitPopupOpen}
-                      setOpen={setTreatmentUnitPopupOpen}
-                      onSubmit={setUnitName}
-                      context={treatmentUnitContext}
-                      type={"ind"}
-                    />
-                    <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                      Vis
-                      <ToggleButtonGroup
-                        onChange={() => {}}
-                        orientation="horizontal"
-                        value={["måloppnåelse"]}
-                      >
-                        <ToggleButton
-                          aria-label="toggle item1"
-                          value="måloppnåelse"
-                        >
-                          Måloppnåelse
-                        </ToggleButton>
-                        <ToggleButton
-                          aria-label="toggle item2"
-                          value="dekningsgrad"
-                          disabled
-                        >
-                          Dekningsgrad
-                        </ToggleButton>
-                      </ToggleButtonGroup>
-                    </div>
-                  </div>
-                  <div className="flex items-end">
-                    <div className="flex text-small font-semibold text-brand-primary-900">
-                      <Button variant="text" onClick={handleClearFilters}>
-                        Tøm filter
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-                <div className="hidden md:flex align-middle justify-center items-center">
+        <div className="flex flex-col w-full h-full max-w-360">
+          <Toolbar disableGutters={true}>
+            <div className="flex flex-row max-w-360 w-full justify-between items-center pb-2 md:pb-4">
+              <div className="flex flex-row md:flex-row gap-2 md:gap-4 flex-wrap">
+                <div className="flex gap-6">
                   <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                    <div className="whitespace-nowrap">&nbsp;</div>
-                    <Button
-                      startIcon={<Icon size="small" symbol="content_copy" />}
-                      variant="secondary"
-                      onClick={() => {
-                        navigator.clipboard.writeText(window.location.href);
-                        setUrlCopied(true);
-                        setTimeout(() => {
-                          setUrlCopied(false);
-                        }, urlCopiedTimeout);
-                      }}
-                    >
-                      {urlCopied ? "Link kopiert" : "Kopier denne visningen"}
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </Toolbar>
-          </div>
-        </div>
-        {/* End Toolbar */}
-
-        {/* Page Content */}
-        <PageContent>
-          <div className="flex w-full flex-1 min-h-0">
-            {hasLoadingError ? (
-              <Box border className={emptyStateClassName}>
-                <h4>Feil ved innhenting av data. Prøv igjen.</h4>
-                <Button
-                  onClick={() => {
-                    unitNamesQuery.refetch();
-                    unitUrlsQuery.refetch();
-                  }}
-                >
-                  Last på nytt
-                </Button>
-              </Box>
-            ) : isLoading ? (
-              <Box padded={false} color="transparent" className="p-10">
-                <LoadingLogo message="Laster data" />
-              </Box>
-            ) : (
-              <div className="w-full max-w-360">
-                <div className="flex md:hidden flex-col gap-(--spacing-4) p-8 text-brand-primary-600">
-                  <RotateDevice message="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din." />
-                </div>
-
-                {!selectedUnit ? (
-                  <Box
-                    border
-                    className={`${emptyStateClassName} hidden md:flex flex-col justify-center`}
-                  >
-                    <h3
-                      className="text-nowrap"
-                      data-testid="hospital_profile_welcome_text"
-                    >
-                      Velg et behandlingssted du vil se resultater fra
-                    </h3>
+                    Behandlingssted
                     <Button onClick={openTreatmentUnitPopup}>
                       Velg behandlingssted
                     </Button>
-                  </Box>
-                ) : !isValidUnit ? (
-                  <Box
-                    border
-                    className={`${emptyStateClassName} hidden md:flex flex-col justify-center`}
-                  >
-                    <h3 className="text-center">
-                      {selectedUnit} har ingen data eller ikke et gyldig
-                      behandlingssted.
-                    </h3>
-                    <Button onClick={openTreatmentUnitPopup}>
-                      Velg et annet behandlingssted
+                  </div>
+                  <TreatmentUnitPopupSingleSelect
+                    open={treatmentUnitPopupOpen}
+                    setOpen={setTreatmentUnitPopupOpen}
+                    onSubmit={setUnitName}
+                    context={treatmentUnitContext}
+                    type={"ind"}
+                  />
+                  <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                    Vis
+                    <ToggleButtonGroup
+                      onChange={() => {}}
+                      orientation="horizontal"
+                      value={["måloppnåelse"]}
+                    >
+                      <ToggleButton
+                        aria-label="toggle item1"
+                        value="måloppnåelse"
+                      >
+                        Måloppnåelse
+                      </ToggleButton>
+                      <ToggleButton
+                        aria-label="toggle item2"
+                        value="dekningsgrad"
+                        disabled
+                      >
+                        Dekningsgrad
+                      </ToggleButton>
+                    </ToggleButtonGroup>
+                  </div>
+                </div>
+                <div className="flex items-end">
+                  <div className="flex text-small font-semibold text-brand-primary-900">
+                    <Button variant="text" onClick={handleClearFilters}>
+                      Tøm filter
                     </Button>
-                  </Box>
-                ) : (
-                  <>
-                    <TopSummarySection
-                      unitName={selectedUnitNamesAsString}
-                      unitFullName={unitFullName}
-                      lastYear={lastYear}
-                      pastYears={pastYears}
-                    />
-                    <MedfieldTable
-                      unitName={selectedUnitNamesAsString}
-                      year={lastYear}
-                    />
-                    <SelectedIndicatorTable
-                      unitName={selectedUnitNamesAsString || ""}
-                      titlePadding={titlePadding}
-                      titleStyle={titleStyle}
-                      lastYear={lastYear}
-                      textMargin={textMargin}
-                    />
-                  </>
-                )}
+                  </div>
+                </div>
               </div>
-            )}
-          </div>
-        </PageContent>
-      </Suspense>
+              <div className="hidden md:flex align-middle justify-center items-center">
+                <div className="flex flex-col text-small font-semibold text-brand-primary-900">
+                  <div className="whitespace-nowrap">&nbsp;</div>
+                  <Button
+                    startIcon={<Icon size="small" symbol="content_copy" />}
+                    variant="secondary"
+                    onClick={() => {
+                      navigator.clipboard.writeText(window.location.href);
+                      setUrlCopied(true);
+                      setTimeout(() => {
+                        setUrlCopied(false);
+                      }, urlCopiedTimeout);
+                    }}
+                  >
+                    {urlCopied ? "Link kopiert" : "Kopier denne visningen"}
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </Toolbar>
+        </div>
+      </div>
+      {/* End Toolbar */}
+
+      {/* Page Content */}
+      <PageContent>
+        <div className="flex w-full flex-1 min-h-0">
+          {hasLoadingError ? (
+            <Box border className={emptyStateClassName}>
+              <h4>Feil ved innhenting av data. Prøv igjen.</h4>
+              <Button
+                onClick={() => {
+                  unitNamesQuery.refetch();
+                  unitUrlsQuery.refetch();
+                }}
+              >
+                Last på nytt
+              </Button>
+            </Box>
+          ) : isLoading ? (
+            <LoadingFallback />
+          ) : (
+            <div className="w-full max-w-360">
+              <div className="flex md:hidden flex-col gap-(--spacing-4) p-8 text-brand-primary-600">
+                <RotateDevice message="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din." />
+              </div>
+
+              {!selectedUnit ? (
+                <Box
+                  border
+                  className={`${emptyStateClassName} hidden md:flex flex-col justify-center`}
+                >
+                  <h3
+                    className="text-nowrap"
+                    data-testid="hospital_profile_welcome_text"
+                  >
+                    Velg et behandlingssted du vil se resultater fra
+                  </h3>
+                  <Button onClick={openTreatmentUnitPopup}>
+                    Velg behandlingssted
+                  </Button>
+                </Box>
+              ) : !isValidUnit ? (
+                <Box
+                  border
+                  className={`${emptyStateClassName} hidden md:flex flex-col justify-center`}
+                >
+                  <h3 className="text-center">
+                    {selectedUnit} har ingen data eller ikke et gyldig
+                    behandlingssted.
+                  </h3>
+                  <Button onClick={openTreatmentUnitPopup}>
+                    Velg et annet behandlingssted
+                  </Button>
+                </Box>
+              ) : (
+                <>
+                  <TopSummarySection
+                    unitName={selectedUnitNamesAsString}
+                    unitFullName={unitFullName}
+                    lastYear={lastYear}
+                    pastYears={pastYears}
+                  />
+                  <MedfieldTable
+                    unitName={selectedUnitNamesAsString}
+                    year={lastYear}
+                  />
+                  <SelectedIndicatorTable
+                    unitName={selectedUnitNamesAsString || ""}
+                    titlePadding={titlePadding}
+                    titleStyle={titleStyle}
+                    lastYear={lastYear}
+                    textMargin={textMargin}
+                  />
+                </>
+              )}
+            </div>
+          )}
+        </div>
+      </PageContent>
     </>
   );
 };

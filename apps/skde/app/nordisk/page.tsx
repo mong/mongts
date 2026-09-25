@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import LoadingFallback from "@/components/LoadingFallback";
 import NordiskeSammenlingninger from "@/components/NordicComparison/NordicComparisonPage";
 
 export const metadata: Metadata = {
@@ -8,5 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <NordiskeSammenlingninger />;
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <NordiskeSammenlingninger />
+    </Suspense>
+  );
 }

@@ -12,10 +12,8 @@ import { LicenseInfo } from "@mui/x-license";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { usePathname } from "next/navigation";
-import NextAdapterApp from "next-query-params/app";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { type ReactNode, useEffect, useState } from "react";
-import { QueryParamProvider } from "use-query-params";
 
 type Languages = "en" | "no";
 
@@ -42,12 +40,10 @@ export function Providers({ children }: ProvidersProps) {
 
   const content = (
     <NuqsAdapter>
-      <QueryParamProvider adapter={NextAdapterApp}>
-        <QueryClientProvider client={queryClient}>
-          {children}
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
-      </QueryParamProvider>
+      <QueryClientProvider client={queryClient}>
+        {children}
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
     </NuqsAdapter>
   );
 

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
+import LoadingFallback from "@/components/LoadingFallback";
 import { TreatmentQualityPage } from "@/components/TreatmentQuality/TreatmentQualityPage";
 
 export const metadata: Metadata = {
@@ -8,5 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <TreatmentQualityPage />;
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <TreatmentQualityPage />
+    </Suspense>
+  );
 }
