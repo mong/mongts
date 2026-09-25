@@ -13,11 +13,12 @@ import {
 import { Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useQueryState } from "nuqs";
-import { getUnitFullName, useUnitNamesQuery, useUnitUrlsQuery } from "qmongjs";
 import { type JSX, useState } from "react";
 import type { NestedTreatmentUnitName, OptsTu } from "types";
 import { mainQueryStateConfig } from "@/app_config";
 import LoadingFallback from "@/components/LoadingFallback";
+import { getUnitFullName } from "@/helpers/functions";
+import { useUnitNamesQuery, useUnitUrlsQuery } from "@/helpers/hooks/apihooks";
 import { TreatmentUnitPopupSingleSelect } from "../../DialogBox/TreatmentUnitPopupSingleSelect";
 import { TopSummarySection } from "..";
 import { MedfieldTable } from "../MedfieldTable";

@@ -187,7 +187,7 @@ const medfieldTableData: Indicator[] = [
   },
 ];
 
-vi.mock("qmongjs/src/helpers/hooks");
+vi.mock("../../../helpers/hooks");
 
 const data = createMedfieldTableData(medfieldTableData);
 

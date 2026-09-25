@@ -3,14 +3,14 @@
 import { Box, Stack, styled, Tab, Tabs, Typography } from "@mui/material";
 import { LineChartPro } from "@mui/x-charts-pro";
 import { useSearchParams } from "next/navigation";
-import {
-  defaultReviewYear,
-  useRegistryEvaluationQuery,
-  useRegistryRankQuery,
-} from "qmongjs";
 import React from "react";
 import { FaCircle } from "react-icons/fa";
 import type { RegistryEvaluation, RegistryRank } from "types";
+import { defaultReviewYear } from "@/app_config";
+import {
+  useRegistryEvaluationQuery,
+  useRegistryRankQuery,
+} from "@/helpers/hooks/apihooks";
 import { Markdown } from "../Markdown";
 import { RequirementList } from "../RequirementList";
 

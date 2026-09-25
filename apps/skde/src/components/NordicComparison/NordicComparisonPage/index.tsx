@@ -17,11 +17,14 @@ import {
 import { Box } from "@mui/system";
 import { LineChart } from "@mui/x-charts";
 import { useQueryState } from "nuqs";
-import { useIndicatorQuery, useRegisterNamesQuery } from "qmongjs";
 import { useEffect, useRef, useState } from "react";
 import type { Indicator, RegisterName } from "types";
 import { mainQueryStateConfig } from "@/app_config";
 import { MedicalFieldPopup } from "@/components/DialogBox/MedicalFieldPopup";
+import {
+  useIndicatorQuery,
+  useRegisterNamesQuery,
+} from "@/helpers/hooks/apihooks";
 
 type DataPoint = Indicator;
 

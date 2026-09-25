@@ -10,7 +10,6 @@ import {
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useQueryState } from "nuqs";
-import { useUnitNamesQuery } from "qmongjs";
 import React, {
   type Dispatch,
   type JSX,
@@ -19,6 +18,7 @@ import React, {
 } from "react";
 import type { NestedTreatmentUnitName } from "types";
 import { mainQueryStateConfig } from "@/app_config";
+import { useUnitNamesQuery } from "@/helpers/hooks/apihooks";
 import { getTreatmentUnitsTree } from "../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { getFilterSettingsValuesMap } from "../FilterMenu/TreeViewFilterSection";
 import TreeViewSearchBox from "../FilterMenu/TreeViewSearchBox";
