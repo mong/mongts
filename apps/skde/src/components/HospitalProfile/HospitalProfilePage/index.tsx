@@ -139,28 +139,6 @@ const SykehusprofilPage = (): JSX.Element => {
                     context={treatmentUnitContext}
                     type={"ind"}
                   />
-                  <div className="flex flex-col text-small font-semibold text-brand-primary-900">
-                    Vis
-                    <ToggleButtonGroup
-                      onChange={() => {}}
-                      orientation="horizontal"
-                      value={["måloppnåelse"]}
-                    >
-                      <ToggleButton
-                        aria-label="toggle item1"
-                        value="måloppnåelse"
-                      >
-                        Måloppnåelse
-                      </ToggleButton>
-                      <ToggleButton
-                        aria-label="toggle item2"
-                        value="dekningsgrad"
-                        disabled
-                      >
-                        Dekningsgrad
-                      </ToggleButton>
-                    </ToggleButtonGroup>
-                  </div>
                 </div>
                 <div className="flex items-end">
                   <div className="flex text-small font-semibold text-brand-primary-900">
