@@ -1,6 +1,6 @@
 import type { LineSeriesType } from "@mui/x-charts";
-import { customFormat } from "qmongjs/src/helpers/functions";
 import type { DataPoint, IndicatorData } from "types";
+import { customFormat } from "@/helpers/functions/customFormat";
 
 type Point = { x: number; y: number | null; n: number | null };
 

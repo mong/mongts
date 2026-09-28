@@ -1,6 +1,7 @@
 import _ from "lodash";
-import { level, minDG } from "qmongjs";
 import type { Indicator, IndicatorLineChartDataPoint } from "types";
+import { minDG } from "@/app_config";
+import { level } from "@/helpers/functions";
 
 export type IndicatorLevelsV2 = {
   ind_id: string;

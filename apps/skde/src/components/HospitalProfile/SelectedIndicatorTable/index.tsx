@@ -9,13 +9,9 @@ import {
   Typography,
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
-import {
-  customFormat,
-  level,
-  newestLevelSymbols,
-  useIndicatorQuery,
-} from "qmongjs";
 import type { Indicator } from "types";
+import { customFormat, level, newestLevelSymbols } from "@/helpers/functions";
+import { useIndicatorQuery } from "@/helpers/hooks/apihooks";
 import { ItemBox } from "../HospitalProfileStyles";
 import { indicatorInfo, indicatorsPerHospital } from "./indicators";
 

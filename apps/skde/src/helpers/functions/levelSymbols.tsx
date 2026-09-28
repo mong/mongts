@@ -1,17 +1,5 @@
 import Image from "next/image";
-import { FaCircle, FaSquare } from "react-icons/fa";
-import { IoTriangle } from "react-icons/io5";
-import { imgLoader } from "./imgLoader";
-
-export const newLevelSymbols = (level: string | undefined, key?: string) => {
-  return level === "H" ? (
-    <FaCircle style={{ color: "#58A55C", fontSize: "1.2rem" }} key={key} />
-  ) : level === "M" ? (
-    <FaSquare style={{ color: "#FD9C00", fontSize: "1.2rem" }} key={key} />
-  ) : level === "L" ? (
-    <IoTriangle style={{ color: "#D85140", fontSize: "1.2rem" }} key={key} />
-  ) : null;
-};
+import { imgLoader } from "./";
 
 const defaultSize = 40;
 

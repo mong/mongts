@@ -10,10 +10,13 @@ import {
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useQueryState } from "nuqs";
-import { useMedicalFieldsQuery, useRegisterNamesQuery } from "qmongjs";
 import { type Dispatch, type JSX, type SetStateAction, useState } from "react";
 import type { Medfield, RegisterName } from "types";
 import { mainQueryStateConfig } from "@/app_config";
+import {
+  useMedicalFieldsQuery,
+  useRegisterNamesQuery,
+} from "@/helpers/hooks/apihooks";
 import { getMedicalFields } from "../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
 import { getFilterSettingsValuesMap } from "../FilterMenu/TreeViewFilterSection";
 import TreeViewSearchBox from "../FilterMenu/TreeViewSearchBox";

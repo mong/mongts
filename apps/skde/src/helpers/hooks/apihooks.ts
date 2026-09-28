@@ -64,30 +64,6 @@ const fetchJsonWithRetry = async (url: string) => {
   throw new Error("Request failed");
 };
 
-interface FetchDescriptionParams {
-  registerShortName: string;
-  type?: "ind" | "dg";
-}
-
-const descriptionUrl = (params: FetchDescriptionParams): string => {
-  const typeQuery: string = params.type ? `?type=${params.type}` : "";
-  return `${API_HOST}/data/${params.registerShortName}/descriptions${typeQuery}`;
-};
-
-const fetchDescription = async (params: FetchDescriptionParams) => {
-  return await fetchJsonWithRetry(descriptionUrl(params));
-};
-
-export const useDescriptionQuery = (params: FetchDescriptionParams) => {
-  return useQuery({
-    queryKey: ["descriptions", params.registerShortName],
-    queryFn: () => fetchDescription(params),
-    staleTime: 1000 * 60 * 60,
-    refetchOnWindowFocus: false,
-    gcTime: 1000 * 60 * 60,
-  });
-};
-
 export interface FetchIndicatorParams {
   registerShortName?: string;
   treatmentYear?: number;
@@ -152,38 +128,6 @@ export const useIndicatorQuery = (params: FetchIndicatorParams) => {
   });
 };
 
-const selectionYearsUrl = (
-  registerShortName: string,
-  context: string,
-  type: string,
-): string => {
-  return `${API_HOST}/data/${registerShortName}/years?context=${context}&type=${type}`;
-};
-
-const fetchSelectionYears = async (
-  registerShortName: string,
-  context: string,
-  type: string,
-) => {
-  return await fetchJsonWithRetry(
-    selectionYearsUrl(registerShortName, context, type),
-  );
-};
-
-export const useSelectionYearsQuery = (
-  registerShortName: string,
-  context: string,
-  type: string,
-) => {
-  return useQuery({
-    queryKey: ["selectionYears", registerShortName, context, type],
-    queryFn: () => fetchSelectionYears(registerShortName, context, type),
-    staleTime: 1000 * 60 * 60,
-    refetchOnWindowFocus: false,
-    gcTime: 1000 * 60 * 60,
-  });
-};
-
 const unitNamesUrl = (
   registerShortName: string,
   context: string,
@@ -229,7 +173,7 @@ export const useUnitNamesQuery = (
   });
 };
 
-export const fetchRegisterNames = async () => {
+const fetchRegisterNames = async () => {
   return await fetchJsonWithRetry(`${API_HOST}/info/names`);
 };
 
@@ -297,13 +241,6 @@ const fetchRegistryRequirements = async () => {
   return await fetchJsonWithRetry(`${API_HOST}/data/registryRequirements`);
 };
 
-const fetchResidentData = async (registry?: string) => {
-  const registryQuery: string = registry ? `registry=${registry}&` : "";
-  return await fetchJsonWithRetry(
-    `${API_HOST}/info/residentData?${registryQuery}`,
-  );
-};
-
 export const useRegistryRankQuery = (year?: number) => {
   return useQuery({
     queryKey: ["registryRank", year],
@@ -338,16 +275,6 @@ export const useRegistryRequirementsQuery = () => {
   return useQuery({
     queryKey: ["registryRequirements"],
     queryFn: () => fetchRegistryRequirements(),
-    staleTime: 1000 * 60 * 60,
-    refetchOnWindowFocus: false,
-    gcTime: 1000 * 60 * 60,
-  });
-};
-
-export const useResidentDataQuery = (registry?: string) => {
-  return useQuery({
-    queryKey: ["residentData", registry],
-    queryFn: () => fetchResidentData(registry),
     staleTime: 1000 * 60 * 60,
     refetchOnWindowFocus: false,
     gcTime: 1000 * 60 * 60,

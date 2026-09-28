@@ -1,8 +1,8 @@
 import { Box } from "@mong/material-ui";
 import type { UseQueryResult } from "@tanstack/react-query";
-import { useIndicatorQuery } from "qmongjs";
 import type { JSX } from "react";
 import type { Indicator, IndicatorLineChartDataPoint } from "types";
+import { useIndicatorQuery } from "@/helpers/hooks/apihooks";
 import { AchievementResultsBars } from "../../Charts/AchievementResultsBars";
 import { HospitalProfileLinePlot } from "../HospitalProfileLinePlot";
 import { formatChartData, trendAnalysisString } from "./functions";

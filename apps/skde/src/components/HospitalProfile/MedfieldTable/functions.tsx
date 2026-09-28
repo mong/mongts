@@ -1,5 +1,6 @@
-import { level, minDG } from "qmongjs";
 import type { Indicator } from "types";
+import { minDG } from "@/app_config";
+import { level } from "@/helpers/functions";
 
 export type RowData = {
   name: string;

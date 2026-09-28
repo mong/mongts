@@ -1,9 +1,9 @@
 import { Button, Dropdown, Icon } from "@mong/material-ui";
 import type { SelectChangeEvent } from "@mui/material";
 import { useChartProApiRef } from "@mui/x-charts-pro";
-import { getLastCompleteYear } from "qmongjs/src/helpers/functions";
 import { useState } from "react";
 import type { DataPoint, IndicatorData, OptsTu } from "types";
+import { getLastCompleteYear } from "@/helpers/functions";
 import {
   formatMuiChartData,
   makeOnBeforeExport,

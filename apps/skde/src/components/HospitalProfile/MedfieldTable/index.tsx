@@ -1,8 +1,8 @@
 import { SubjectAreaResultCard } from "@mong/material-ui";
 import type { UseQueryResult } from "@tanstack/react-query";
-import { useIndicatorQuery } from "qmongjs";
 import { useState } from "react";
 import type { Indicator } from "types";
+import { useIndicatorQuery } from "@/helpers/hooks/apihooks";
 import {
   createMedfieldTableData,
   formatPercentageString,

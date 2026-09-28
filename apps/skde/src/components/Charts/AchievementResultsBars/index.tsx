@@ -1,6 +1,8 @@
 import type { UseQueryResult } from "@tanstack/react-query";
-import { level, minDG, useIndicatorQuery } from "qmongjs";
 import type { Indicator } from "types";
+import { minDG } from "@/app_config";
+import { level } from "@/helpers/functions/defineLevel";
+import { useIndicatorQuery } from "@/helpers/hooks/apihooks";
 import { AchievementRows } from "./AchievementRows";
 import type { AchievementLevel, AchievementResultsBarsProps } from "./types";
 import {

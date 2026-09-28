@@ -6,10 +6,7 @@ coverage:
     project:
       default:
         target: auto
-        threshold: 5%
-      qmongjs:
-        paths:
-          - packages/qmongjs
+        removed_code_behavior: adjust_base # Accounts for deleted lines automatically
         threshold: 5%
       skde:
         paths:
