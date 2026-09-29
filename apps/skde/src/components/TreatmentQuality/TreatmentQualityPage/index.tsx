@@ -7,6 +7,7 @@ import {
   HeroBanner,
   Icon,
   PageContent,
+  type RenderRegisterProps,
   RotateDevice,
 } from "@mong/material-ui";
 import { type SelectChangeEvent, Toolbar } from "@mui/material";
@@ -124,6 +125,17 @@ export const TreatmentQualityPage = () => {
     unitNamesByLevelQuery.status === "error";
 
   const selectedTableContext = "caregiver";
+
+  const handleRemoveUnit = (unitName: string) => {
+    setSelectedTreatmentUnits(
+      (prev) => prev?.filter((unit) => unit !== unitName) ?? null,
+    );
+  };
+  // debug: log selected treatment units whenever they change
+  useEffect(() => {
+    console.log("Selected treatment units updated:", selectedTreatmentUnits);
+  }, [selectedTreatmentUnits]);
+
   return (
     <>
       <HeroBanner
@@ -248,6 +260,7 @@ export const TreatmentQualityPage = () => {
               "colours",
             )}
             unitNamesByLevel={unitNamesByLevel}
+            onRemoveUnit={handleRemoveUnit}
           />
         ) : selectedMedicalFields.length > 0 && registerData ? (
           <Box
