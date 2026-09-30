@@ -9,6 +9,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { type JSX, useCallback, useEffect, useState } from "react";
 import type { DataPoint, IndicatorData, OptsTu, RegisterData } from "types";
 import { customFormat, level2 } from "@/helpers/functions";
+import { stringifyDataObject } from "@/helpers/functions/stringifyDataObject";
 import { ChartRowV2 } from "../chartrowV2";
 
 type IndicatorTableV3Props = {
@@ -18,6 +19,7 @@ type IndicatorTableV3Props = {
   year: number;
   chartColours: string[];
   unitNamesByLevel: OptsTu[];
+  onRemoveUnit?: (unitName: string) => void;
 };
 
 const levelStringMap = new Map();
@@ -208,7 +210,6 @@ const fillMissingUnitnames = (
                 .includes(unitName),
           )
         : [];
-      // console.log("data[i]", data[i].indicators[j].treatmentUnitResults.length);
       missingTreatmentUnits.forEach((unitName) => {
         if (unitName === "Nasjonalt") {
           data[i].indicators[j].treatmentUnitResults.push({
@@ -252,7 +253,8 @@ const fillMissingUnitnames = (
 export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { data, medfields, unitNames, year, unitNamesByLevel } = props;
+  const { data, medfields, unitNames, year, unitNamesByLevel, onRemoveUnit } =
+    props;
 
   // Expanded indicator row is kept in the URL so views can be shared.
   const [selectedRow, setSelectedRow] = useState(
@@ -315,6 +317,7 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
           onExpandedChange={(key) => {
             setSelectedRow(key ?? "");
           }}
+          onRemoveUnit={onRemoveUnit}
         />
       </div>
     </div>

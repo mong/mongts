@@ -17,5 +17,8 @@
       "hostType": "github",
       "token": "{{ env.NODE_AUTH_TOKEN }}"
     }
-  ]
+  ],
+  "npm": {
+    "minimumReleaseAge": "14 days"
+  }
 }
