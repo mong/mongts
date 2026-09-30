@@ -210,7 +210,6 @@ const fillMissingUnitnames = (
                 .includes(unitName),
           )
         : [];
-      // console.log("data[i]", data[i].indicators[j].treatmentUnitResults.length);
       missingTreatmentUnits.forEach((unitName) => {
         if (unitName === "Nasjonalt") {
           data[i].indicators[j].treatmentUnitResults.push({
