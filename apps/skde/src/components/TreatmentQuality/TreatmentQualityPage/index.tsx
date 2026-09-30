@@ -132,11 +132,6 @@ export const TreatmentQualityPage = () => {
     );
   };
 
-  // debug: log selected treatment units whenever they change
-  useEffect(() => {
-    console.log("Selected treatment units updated:", selectedTreatmentUnits);
-  }, [selectedTreatmentUnits]);
-
   return (
     <>
       <HeroBanner
