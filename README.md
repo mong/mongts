@@ -64,7 +64,7 @@ pnpm config set "//npm.pkg.github.com/:_authToken" "YOUR_AUTH_TOKEN (as plaintex
 
 See [GitHub documentation on personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) and [pnpm authentication settings](https://pnpm.io/npmrc) for more details.
 
-> **Important:** Never commit your token to version control. Add it to pnpm or add a .npmrc file to your home folder. ![Uploading SkdeThemeProvider.svg…]()
+> **Important:** Never commit your token to version control. Add it to pnpm or add a .npmrc file to your home folder. 
 
 
 ### Run and develop it locally
