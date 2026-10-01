@@ -99,7 +99,8 @@ Instead of the commands in the previous section, run:
 nvm use # To pick (and install) correct (major) version of node
 export NODE_AUTH_TOKEN=[your token]
 export DB_PORT=3331 # or 3332 for the verify database
-yarn install && yarn dev # inside the mongts folder
+pnpm install
+pnpm dev
 ```
 
 The data can then be seen at [localhost:3000/](http://localhost:3000/)
