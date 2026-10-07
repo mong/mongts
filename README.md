@@ -64,7 +64,7 @@ pnpm config set "//npm.pkg.github.com/:_authToken" "YOUR_AUTH_TOKEN (as plaintex
 
 See [GitHub documentation on personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) and [pnpm authentication settings](https://pnpm.io/npmrc) for more details.
 
-> **Important:** Never commit your token to version control. Add it to pnpm or add a .npmrc file to your home folder. ![Uploading SkdeThemeProvider.svg…]()
+> **Important:** Never commit your token to version control. Add it to pnpm or add a .npmrc file to your home folder. 
 
 
 ### Run and develop it locally
@@ -87,6 +87,33 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+### Run the API locally
+
+The `mongts` app can be used to display data through the local API from a local database in a docker container. 
+
+Start an `imongr` docker container following the steps [here](https://github.com/mong/imongr).
+
+Instead of the commands in the previous section, run:
+
+```bash
+nvm use # To pick (and install) correct (major) version of node
+export NODE_AUTH_TOKEN=[your token]
+export DB_PORT=3331 # or 3332 for the verify database
+pnpm install
+pnpm dev
+```
+
+The data can then be seen at [localhost:3000/](http://localhost:3000/)
+
+### Build docker image and run the container app locally
+
+```bash
+R CMD build .
+docker build -t hnskde/imongr:latest .
+docker compose up
+```
+
+Navigate a browser to [localhost:3838/](http://localhost:3838/).
 
 ### Build static page and run it locally
 

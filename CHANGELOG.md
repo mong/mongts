@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.15.1](https://github.com/mong/mongts/compare/v1.15.0...v1.15.1) (2026-09-30)
+
+
+### Bug Fixes
+
+* **register-accordion:** added callback on remove unit and update package to align data-rows with headers ([#5100](https://github.com/mong/mongts/issues/5100)) ([50af93e](https://github.com/mong/mongts/commit/50af93e3b9bcd2695aeb0e59851b395b0d3faa41))
+* **SP:** fjern toggleknapp for dekningsgrad ([#5096](https://github.com/mong/mongts/issues/5096)) ([4fbad19](https://github.com/mong/mongts/commit/4fbad19794216814371466a9b92dea3ae60fbd06))
+
 ## [1.15.0](https://github.com/mong/mongts/compare/v1.14.0...v1.15.0) (2026-09-25)
 
 
