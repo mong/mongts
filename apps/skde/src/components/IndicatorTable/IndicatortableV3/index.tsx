@@ -9,7 +9,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { type JSX, useCallback, useEffect, useState } from "react";
 import type { DataPoint, IndicatorData, OptsTu, RegisterData } from "types";
 import { customFormat, level2 } from "@/helpers/functions";
-import { stringifyDataObject } from "@/helpers/functions/stringifyDataObject";
 import { ChartRowV2 } from "../chartrowV2";
 
 type IndicatorTableV3Props = {
