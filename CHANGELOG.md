@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.15.2](https://github.com/mong/mongts/compare/v1.15.1...v1.15.2) (2026-10-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency next from v16.3.5 to v16.3.6 [security] ([#5105](https://github.com/mong/mongts/issues/5105)) ([cb10f1a](https://github.com/mong/mongts/commit/cb10f1a8411a9a4b3f8398320c76d9c933b1d46c))
+* fjern ubrukte importer og fiks tittel på stadievurdering ([#5102](https://github.com/mong/mongts/issues/5102)) ([3826fae](https://github.com/mong/mongts/commit/3826faee814a09f3e87543d07535f75df710f496))
+
+
+### Miscellaneous Chores
+
+* release 1.15.2 ([bb517e3](https://github.com/mong/mongts/commit/bb517e32b9f1ad8c8c1424bd0a591fd2583193cb))
+
 ## [1.15.1](https://github.com/mong/mongts/compare/v1.15.0...v1.15.1) (2026-09-30)
 
 
