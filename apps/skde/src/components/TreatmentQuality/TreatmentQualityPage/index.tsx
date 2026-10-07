@@ -7,7 +7,6 @@ import {
   HeroBanner,
   Icon,
   PageContent,
-  type RenderRegisterProps,
   RotateDevice,
 } from "@mong/material-ui";
 import { type SelectChangeEvent, Toolbar } from "@mui/material";
