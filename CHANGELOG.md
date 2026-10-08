@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.3](https://github.com/mong/mongts/compare/v1.15.2...v1.15.3) (2026-10-08)
+
+
+### Bug Fixes
+
+* spesifiser tabell i spørring for å løse ambiguitet ([#5110](https://github.com/mong/mongts/issues/5110)) ([266f069](https://github.com/mong/mongts/commit/266f0699212679ee753f433245f829653f9195e9))
+
 ## [1.15.2](https://github.com/mong/mongts/compare/v1.15.1...v1.15.2) (2026-10-07)
 
 
