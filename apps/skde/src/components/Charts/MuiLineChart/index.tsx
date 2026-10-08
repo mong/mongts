@@ -18,6 +18,7 @@ import {
 } from "@mui/x-charts-pro";
 import type { RefObject } from "react";
 import type { DataPoint, IndicatorData } from "types";
+import { kellyColourPalette } from "@/app_config";
 import { CustomAnimatedLine } from "../../Charts/MuiLineChart/CustomAnimatedLine";
 import { LineBackground } from "../../Charts/MuiLineChart/LineBackground";
 import { ChartLogo } from "../ChartLogo";
@@ -97,6 +98,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
         apiRef={apiRef}
         series={lineData}
         height={figureHeight}
+        colors={kellyColourPalette}
         xAxis={[
           {
             scaleType: "point",

@@ -96,3 +96,27 @@ export const mainHospitals = [
 export const levelGreenColours = ["#D5F6E8", "#66CCA1", "#32634E"];
 export const levelYellowColours = ["#F5F0D5", "#E8D360", "#483D01"];
 export const levelRedColours = ["#F0DEDB", "#CC7566", "#491006"];
+
+// https://gist.github.com/Myndex/997244b95d84788df96f4aab8b9edeb1
+export const kellyColourPalette = [
+  "#ebce2b",
+  "#702c8c",
+  "#db6917",
+  "#96cde6",
+  "#ba1c30",
+  "#c0bd7f",
+  "#7f7e80",
+  "#5fa641",
+  "#d485b2",
+  "#4277b6",
+  "#df8461",
+  "#463397",
+  "#e1a11a",
+  "#91218c",
+  "#e8e948",
+  "#7e1510",
+  "#92ae31",
+  "#6f340d",
+  "#d32b1e",
+  "#2b3514",
+];
