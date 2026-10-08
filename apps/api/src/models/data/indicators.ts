@@ -87,7 +87,7 @@ function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
     }
   }
   if (filter?.register) {
-    builder.whereIn("ind_id", function (this: Knex.QueryBuilder) {
+    builder.whereIn("agg_data.ind_id", function (this: Knex.QueryBuilder) {
       this.select("ind.id")
         .from("ind")
         .modify(registerFilter, filter.register ?? "");
