@@ -99,7 +99,8 @@ export const levelRedColours = ["#F0DEDB", "#CC7566", "#491006"];
 
 // https://gist.github.com/Myndex/997244b95d84788df96f4aab8b9edeb1
 export const kellyColourPalette = [
-  "#ebce2b",
+  "var(--bar-3)",
+  "var(--bar-1)",
   "#702c8c",
   "#db6917",
   "#96cde6",
@@ -119,4 +120,5 @@ export const kellyColourPalette = [
   "#6f340d",
   "#d32b1e",
   "#2b3514",
+  "#ebce2b",
 ];
