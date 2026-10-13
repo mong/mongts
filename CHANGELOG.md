@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.4](https://github.com/mong/mongts/compare/v1.15.3...v1.15.4) (2026-10-13)
+
+
+### Miscellaneous Chores
+
+* release 1.15.4 ([118d488](https://github.com/mong/mongts/commit/118d488d4458d8583736890b0743758f402d86e7))
+
 ## [1.15.3](https://github.com/mong/mongts/compare/v1.15.2...v1.15.3) (2026-10-08)
 
 
