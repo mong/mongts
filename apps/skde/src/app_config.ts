@@ -12,7 +12,7 @@ export const maxYear = 2025;
 export const minYear = maxYear - 4;
 export const defaultYear = new Date().getFullYear() - 1;
 const defaultTreatmentUnits = ["Nasjonalt"];
-export const defaultReviewYear = 2024;
+export const defaultReviewYear = 2025;
 
 /** @public */
 export const minDG = 0.6;
