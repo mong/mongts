@@ -28,7 +28,11 @@ export const Markdown = ({ children, lang }: MarkdownProp) => {
       ) {
         return <>{children}</>;
       }
-      return <p>{children}</p>;
+      return (
+        <p style={{ paddingBottom: "2rem", paddingTop: "0.5rem" }}>
+          {children}
+        </p>
+      );
     },
     img({ src, alt, title }) {
       return (

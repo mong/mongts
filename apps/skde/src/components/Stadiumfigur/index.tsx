@@ -212,9 +212,9 @@ export default function Stadiumfigur() {
         <PlotComponent />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-        <h2>{`Ekspertgruppens vurdering av årsrapporten for ${reportYear}`}</h2>
+        <h3>{`Ekspertgruppens vurdering av årsrapporten for ${reportYear}`}</h3>
         <Typography
-          style={{ width: "50%", paddingTop: "4rem" }}
+          style={{ width: "50%", paddingTop: "2rem" }}
           variant="body1"
         >
           <Markdown>
