@@ -2,7 +2,9 @@
 
 exports[`Longer text 1`] = `
 <div>
-  <p>
+  <p
+    style="padding-bottom: 2rem; padding-top: 0.5rem;"
+  >
     Dette er en test
   </p>
   
@@ -14,7 +16,9 @@ exports[`Longer text 1`] = `
   </h1>
   
 
-  <p>
+  <p
+    style="padding-bottom: 2rem; padding-top: 0.5rem;"
+  >
     Litt mer tekst
   </p>
   
@@ -46,7 +50,9 @@ run;
   </pre>
   
 
-  <p>
+  <p
+    style="padding-bottom: 2rem; padding-top: 0.5rem;"
+  >
     Og litt tekst her
   </p>
 </div>
@@ -54,7 +60,9 @@ run;
 
 exports[`Standard render 1`] = `
 <div>
-  <p>
+  <p
+    style="padding-bottom: 2rem; padding-top: 0.5rem;"
+  >
     Dette er en test
   </p>
 </div>
@@ -81,7 +89,9 @@ exports[`Text with details tag 1`] = `
 
 exports[`Text with image 1`] = `
 <div>
-  <p>
+  <p
+    style="padding-bottom: 2rem; padding-top: 0.5rem;"
+  >
     Dette er en test
   </p>
   
@@ -115,7 +125,9 @@ exports[`Text with image 1`] = `
 
 exports[`Text with image without alt-text 1`] = `
 <div>
-  <p>
+  <p
+    style="padding-bottom: 2rem; padding-top: 0.5rem;"
+  >
     Dette er en test
   </p>
   
@@ -149,7 +161,9 @@ exports[`Text with image without alt-text 1`] = `
 
 exports[`Text with image, language english 1`] = `
 <div>
-  <p>
+  <p
+    style="padding-bottom: 2rem; padding-top: 0.5rem;"
+  >
     Dette er en test
   </p>
   
@@ -183,7 +197,9 @@ exports[`Text with image, language english 1`] = `
 
 exports[`Text with table 1`] = `
 <div>
-  <p>
+  <p
+    style="padding-bottom: 2rem; padding-top: 0.5rem;"
+  >
     Listen under viser hvilke helseforetak eller sykehus det er definert opptaksområder for og kortnavnene på disse som brukes i atlaset.
   </p>
   
@@ -569,7 +585,9 @@ exports[`Text with url 1`] = `
   </h2>
   
 
-  <p>
+  <p
+    style="padding-bottom: 2rem; padding-top: 0.5rem;"
+  >
     Test 
     <a
       href="https://no.wikipedia.org"
