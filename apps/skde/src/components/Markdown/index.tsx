@@ -104,6 +104,23 @@ export const Markdown = ({ children, lang }: MarkdownProp) => {
         </a>
       );
     },
+    ul({ children }) {
+      return (
+        <ul style={{ padding: "2rem", listStyle: "inherit" }}>
+          {<li>{children}</li>}
+        </ul>
+      );
+    },
+    ol({ children }) {
+      return (
+        <ol style={{ padding: "2rem", listStyle: "inherit" }}>
+          {<li>{children}</li>}
+        </ol>
+      );
+    },
+    li({ children }) {
+      return <li>{children}</li>;
+    },
   };
   return (
     <ReactMarkdown
