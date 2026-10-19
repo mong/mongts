@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.15.5](https://github.com/mong/mongts/compare/v1.15.4...v1.15.5) (2026-10-19)
+
+
+### Bug Fixes
+
+* lagt inn støtte for lister i markdown ([#5124](https://github.com/mong/mongts/issues/5124)) ([1b20204](https://github.com/mong/mongts/commit/1b20204b7f9c8f072cc6ec942800203a6a06d651))
+* luft mellom avsnitt i stadievurdering ([#5122](https://github.com/mong/mongts/issues/5122)) ([5612a6f](https://github.com/mong/mongts/commit/5612a6f9bf4593edbe1587f14105173c61fd8cd9))
+
 ## [1.15.4](https://github.com/mong/mongts/compare/v1.15.3...v1.15.4) (2026-10-13)
 
 
