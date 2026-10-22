@@ -303,7 +303,7 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
         </Typography>
         <div style={{ margin: textMargin }}>
           <Typography variant="body1">
-            {`Kvalitetsindikatorer til "Styringskrav og rammer 2025" Helse Nord.`}
+            {`Kvalitetsindikatorer til "Styringskrav og rammer 2026" Helse Nord.`}
           </Typography>
         </div>
         <Table>
