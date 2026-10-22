@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.6](https://github.com/mong/mongts/compare/v1.15.5...v1.15.6) (2026-10-22)
+
+
+### Bug Fixes
+
+* **SP:** skill mellom lav dg, lav n og ingen data i utvalgte indikatorer ([#5134](https://github.com/mong/mongts/issues/5134)) ([84eee0b](https://github.com/mong/mongts/commit/84eee0bb52f846be944e16e846b58636a346a544))
+
 ## [1.15.5](https://github.com/mong/mongts/compare/v1.15.4...v1.15.5) (2026-10-19)
 
 
