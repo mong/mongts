@@ -86,7 +86,7 @@ export const IndicatorLinechartV2 = (
           sx: {
             color: "var(--text-dark)",
             paddingBottom: "28px",
-            marginLeft: "0px",
+            marginLeft: "35px",
             marginRight: "0px",
             fontSize: 14,
             [`.${legendClasses.mark}`]: {
