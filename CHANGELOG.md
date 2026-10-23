@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.15.8](https://github.com/mong/mongts/compare/v1.15.7...v1.15.8) (2026-10-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency next from v16.3.6 to v16.3.8 [security] ([#5127](https://github.com/mong/mongts/issues/5127)) ([27cac1f](https://github.com/mong/mongts/commit/27cac1fee74accfaa6e4f13597e140cc0303044c))
+
 ## [1.15.7](https://github.com/mong/mongts/compare/v1.15.6...v1.15.7) (2026-10-22)
 
 
