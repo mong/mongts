@@ -9,8 +9,8 @@ import {
   Typography,
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
-import type { Indicator } from "types";
-import { customFormat, level, newestLevelSymbols } from "@/helpers/functions";
+import type { DataPoint, IndicatorData, RegisterData } from "types";
+import { customFormat, level2, newestLevelSymbols } from "@/helpers/functions";
 import { useIndicatorQuery } from "@/helpers/hooks/apihooks";
 import { ItemBox } from "../HospitalProfileStyles";
 import { indicatorInfo, indicatorsPerHospital } from "./indicators";
@@ -21,25 +21,25 @@ colourMap.set("M", "#FD9C00");
 colourMap.set("L", "#D85140");
 colourMap.set(undefined, undefined);
 
-const getLowDG = (point: Indicator) => {
+const getLowDG = (point: DataPoint) => {
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   return point?.dg == null ? false : point?.dg < 0.6 ? true : false;
 };
 
 // Muligens unødvendig. Sjekk api-et.
-const getNoData = (point: Indicator) => {
+const getNoData = (point: DataPoint) => {
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   return point?.denominator == null ? true : false;
 };
 
-const getLowN = (point: Indicator) => {
+const getLowN = (indInfo: IndicatorData, point: DataPoint) => {
   return point?.denominator == null
     ? false
-    : point.min_denominator == null && point.denominator < 5
+    : indInfo.minDenominator == null && point.denominator < 5
       ? true
       : // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
         // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-        point.denominator < point.min_denominator
+        point.denominator < indInfo.minDenominator
         ? true
         : false;
 };
@@ -48,32 +48,37 @@ const IndicatorRow = (
   indId: string,
   rowNumber: number,
   lastYear: number,
-  data: Indicator[],
+  data: IndicatorData[],
 ) => {
-  const indInfo = indicatorInfo.find((row) => row.indId === indId);
+  //const indInfo = indicatorInfo.find((row) => row.indId === indId);
 
   const symbolSize = 30;
 
-  const point1 = data.find((row) => {
-    return row.ind_id === indId && row.year === lastYear - 1;
-  });
-  const point2 = data.find((row) => {
-    return row.ind_id === indId && row.year === lastYear;
-  });
+  const indInfo = data.find((row: IndicatorData) => row.indicatorID === indId);
+
+  const point1 = indInfo?.data?.find(
+    (row: DataPoint) => row.year === lastYear - 1,
+  );
+
+  const point2 = indInfo?.data?.find((row: DataPoint) => row.year === lastYear);
 
   const var1 = point1 ? point1.var : undefined;
   const var2 = point2 ? point2.var : undefined;
 
-  const level1 = point1 ? level(point1) : undefined;
-  const level2 = point2 ? level(point2) : undefined;
+  const lvl1 = indInfo && point1 ? level2(indInfo, point1) : undefined;
+  const lvl2 = indInfo && point2 ? level2(indInfo, point2) : undefined;
+
+  const registerName = indicatorInfo.find(
+    (row) => row.indId === indInfo?.indicatorID,
+  )?.registry;
 
   return (
     <TableRow key={rowNumber}>
       <TableCell sx={{ width: "8rem" }}>
         <b>{`Indikator ${rowNumber}`}</b>
       </TableCell>
-      <TableCell>{indInfo?.title}</TableCell>
-      <TableCell>{indInfo?.registry}</TableCell>
+      <TableCell>{indInfo?.indicatorTitle}</TableCell>
+      <TableCell>{registerName}</TableCell>
       <TableCell>
         <Stack
           direction="column"
@@ -90,7 +95,7 @@ const IndicatorRow = (
           >
             {newestLevelSymbols("H", Math.random().toString(), symbolSize)}
             <Typography variant="body2">
-              {customFormat(indInfo?.sformat || "")(indInfo?.level_green || 0)}
+              {customFormat(indInfo?.format || "")(indInfo?.levelGreen || 0)}
             </Typography>
           </Stack>
           <Stack
@@ -102,7 +107,7 @@ const IndicatorRow = (
           >
             {newestLevelSymbols("M", Math.random().toString(), symbolSize)}
             <Typography variant="body2">
-              {customFormat(indInfo?.sformat || "")(indInfo?.level_yellow || 0)}
+              {customFormat(indInfo?.format || "")(indInfo?.levelYellow || 0)}
             </Typography>
           </Stack>
         </Stack>
@@ -110,7 +115,8 @@ const IndicatorRow = (
       <TableCell align="right">
         {point1 &&
         !getLowDG(point1) &&
-        !getLowN(point1) &&
+        indInfo &&
+        !getLowN(indInfo, point1) &&
         !getNoData(point1) ? (
           <Stack
             direction="row"
@@ -123,10 +129,10 @@ const IndicatorRow = (
             <Typography variant="body2">
               {
                 // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                customFormat(point1.sformat)(var1)
+                customFormat(indInfo.format)(var1)
               }
             </Typography>
-            {newestLevelSymbols(level1, Math.random().toString(), symbolSize)}
+            {newestLevelSymbols(lvl1, Math.random().toString(), symbolSize)}
           </Stack>
         ) : getLowDG(
             // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
@@ -138,7 +144,9 @@ const IndicatorRow = (
             point1,
           ) ? (
           "Ingen data"
-        ) : getLowN(
+        ) : indInfo &&
+          getLowN(
+            indInfo,
             // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
             point1,
           ) ? (
@@ -151,7 +159,8 @@ const IndicatorRow = (
         {point1 &&
         point2 &&
         !getLowDG(point2) &&
-        !getLowN(point2) &&
+        indInfo &&
+        !getLowN(indInfo, point2) &&
         !getNoData(point2) ? (
           <Stack
             direction="row"
@@ -164,10 +173,10 @@ const IndicatorRow = (
             <Typography variant="body2">
               {
                 // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-                customFormat(point2.sformat)(var2)
+                customFormat(indInfo.format)(var2)
               }
             </Typography>
-            {newestLevelSymbols(level2, Math.random().toString(), symbolSize)}
+            {newestLevelSymbols(lvl2, Math.random().toString(), symbolSize)}
           </Stack>
         ) : getLowDG(
             // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
@@ -179,10 +188,7 @@ const IndicatorRow = (
             point2,
           ) ? (
           "Ingen data"
-        ) : getLowN(
-            // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-            point2,
-          ) ? (
+        ) : indInfo && point2 && !getLowN(indInfo, point2) ? (
           "Lav N"
         ) : (
           "Ingen data"
@@ -214,23 +220,24 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
   const selectedIndIds = selectedIndicator.commonInd.concat(
     selectedIndicator.specificInd,
   );
-  // Fetch aggregated data
+
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const indicatorQuery: UseQueryResult<any, unknown> = useIndicatorQuery({
     unitNames: [unitName],
     context: "caregiver",
     type: "ind",
+    nested: true,
   });
 
   if (indicatorQuery.isFetching) {
     return null;
   }
 
-  const data = indicatorQuery.data
-    .filter((row: Indicator) => [lastYear - 1, lastYear].includes(row.year))
-    .filter((row: Indicator) => selectedIndIds.includes(row.ind_id))
-    // @ts-expect-error - Ignored to pass ci checks, but should be fixed properly in the future
-    .filter((row: Indicator) => row.dg >= 0.6 || row.dg === null); // TODO: filter out dg = null?
+  const data = indicatorQuery.data;
+
+  const indicatorData = data
+    .flatMap((row: RegisterData) => row.indicatorData)
+    .filter((row: IndicatorData) => selectedIndIds.includes(row.indicatorID));
 
   const CommonIndTable = (
     <>
@@ -255,7 +262,7 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
       </TableHead>
       <TableBody>
         {selectedIndicator.commonInd.map((row, index) =>
-          IndicatorRow(row, index + 1, lastYear, data),
+          IndicatorRow(row, index + 1, lastYear, indicatorData),
         )}
       </TableBody>
     </>
@@ -277,7 +284,7 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
             row,
             index + selectedIndicator.commonInd.length + 1,
             lastYear,
-            data,
+            indicatorData,
           ),
         )}
       </TableBody>
@@ -296,7 +303,7 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
         </Typography>
         <div style={{ margin: textMargin }}>
           <Typography variant="body1">
-            {`Kvalitetsindikatorer til "Styringskrav og rammer 2025" Helse Nord.`}
+            {`Kvalitetsindikatorer til "Styringskrav og rammer 2026" Helse Nord.`}
           </Typography>
         </div>
         <Table>

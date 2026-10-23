@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.15.7](https://github.com/mong/mongts/compare/v1.15.6...v1.15.7) (2026-10-22)
+
+
+### Bug Fixes
+
+* endret årstall fra 2025 til 2026 ([#5139](https://github.com/mong/mongts/issues/5139)) ([5470ebe](https://github.com/mong/mongts/commit/5470ebe67ad0585f6b1fee503e1eb1baca25919f))
+* **SP:** flyttet tegnforklaring i plot mot høyre ([#5136](https://github.com/mong/mongts/issues/5136)) ([414efa5](https://github.com/mong/mongts/commit/414efa5bd7f6b1e20636e21e17f874c30649e9e7))
+
+## [1.15.6](https://github.com/mong/mongts/compare/v1.15.5...v1.15.6) (2026-10-22)
+
+
+### Bug Fixes
+
+* **SP:** skill mellom lav dg, lav n og ingen data i utvalgte indikatorer ([#5134](https://github.com/mong/mongts/issues/5134)) ([84eee0b](https://github.com/mong/mongts/commit/84eee0bb52f846be944e16e846b58636a346a544))
+
 ## [1.15.5](https://github.com/mong/mongts/compare/v1.15.4...v1.15.5) (2026-10-19)
 
 
