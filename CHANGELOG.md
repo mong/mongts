@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.15.8](https://github.com/mong/mongts/compare/v1.15.7...v1.15.8) (2026-10-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency next from v16.3.6 to v16.3.8 [security] ([#5127](https://github.com/mong/mongts/issues/5127)) ([27cac1f](https://github.com/mong/mongts/commit/27cac1fee74accfaa6e4f13597e140cc0303044c))
+
+## [1.15.7](https://github.com/mong/mongts/compare/v1.15.6...v1.15.7) (2026-10-22)
+
+
+### Bug Fixes
+
+* endret årstall fra 2025 til 2026 ([#5139](https://github.com/mong/mongts/issues/5139)) ([5470ebe](https://github.com/mong/mongts/commit/5470ebe67ad0585f6b1fee503e1eb1baca25919f))
+* **SP:** flyttet tegnforklaring i plot mot høyre ([#5136](https://github.com/mong/mongts/issues/5136)) ([414efa5](https://github.com/mong/mongts/commit/414efa5bd7f6b1e20636e21e17f874c30649e9e7))
+
 ## [1.15.6](https://github.com/mong/mongts/compare/v1.15.5...v1.15.6) (2026-10-22)
 
 
