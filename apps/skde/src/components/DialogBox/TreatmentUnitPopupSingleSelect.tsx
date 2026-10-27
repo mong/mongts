@@ -348,7 +348,7 @@ export const TreatmentUnitPopupSingleSelect = (
                       aria-labelledby={`HF-label`}
                       aria-label="HF"
                       name="row-radio-buttons-group"
-                      value={unitSelection[0] || ""}
+                      value={unitSelection}
                       onChange={handleRadioChange}
                       sx={{ width: "100%", height: "100%" }}
                     >
