@@ -38,7 +38,7 @@ const options = {
     },
     servers: [
       {
-        url: `http://localhost:${PORT}/api-docs`,
+        url: "https://prod-api.skde.org/",
       },
     ],
   },
