@@ -3,7 +3,7 @@ import type { IndicatorLineChartDataPoint } from "types";
 import {
   type IndicatorLinechartParamsV2,
   IndicatorLinechartV2,
-} from "../../Charts/IndicatorLinechartV2";
+} from "../../Charts/IndicatorLinechart";
 
 type HospitalProfileLinePlotProps = {
   chartData: IndicatorLineChartDataPoint[][];
