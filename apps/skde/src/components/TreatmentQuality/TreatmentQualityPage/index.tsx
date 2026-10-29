@@ -17,9 +17,9 @@ import type { OptsTu, RegisterData } from "types";
 import { defaultYear, mainQueryStateConfig } from "@/app_config";
 import { MedicalFieldPopup } from "@/components/DialogBox/MedicalFieldPopup";
 import { TreatmentUnitPopup } from "@/components/DialogBox/TreatmentunitPopup";
-import { IndicatorTableV3 } from "@/components/IndicatorTable/IndicatortableV3";
 import LoadingFallback from "@/components/LoadingFallback";
 import { ScrollToTop } from "@/components/scroll-to-top/scroll-to-top";
+import { IndicatorTableV3 } from "@/components/TreatmentQuality/IndicatorTable";
 import {
   type ColourMap,
   getSortedList,

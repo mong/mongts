@@ -9,7 +9,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { type JSX, useCallback, useEffect, useState } from "react";
 import type { DataPoint, IndicatorData, OptsTu, RegisterData } from "types";
 import { customFormat, level2 } from "@/helpers/functions";
-import { ChartRowV2 } from "../chartrowV2";
+import { ChartRowV2 } from "../chartrow";
 
 type IndicatorTableV3Props = {
   data: RegisterData[];
