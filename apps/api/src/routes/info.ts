@@ -45,6 +45,30 @@
  *        resident_data: 1
  *        dg_data: 1
  *        url: https://www.kvalitetsregistre.no/registeroversikt/norsk-hjerneslagregister
+ *    Medfield:
+ *      type: object
+ *      properties:
+ *        shortName:
+ *          type: string
+ *          description: Short name of the medical field
+ *        name:
+ *          type: string
+ *          description: Full name of the medical field
+ *        registers:
+ *          type: array
+ *          items:
+ *            type: string
+ *          description: A list of the registries belonging to the medical field
+ *      example:
+ *        - shortName: hjerte
+ *          name: Hjerte- og karsykdommer
+ *          registers: [hjerneslag,hjerteinfarkt,noric,norkar,hjertesvikt,hjertestans,ablanor,hjertekirurgi]
+ *        - shortname: luft
+ *          name: Luftveier
+ *          registers: [mekvent]
+ * tags:
+ *  name: Info
+ *  description: Information avbout the registries
  */
 
 import express from "express";
@@ -59,28 +83,42 @@ const Router = express.Router();
 
 /**
  * @swagger
- * tags:
- *   name: Quality indicator API
- *   description: The API for national quality indicators
  * /info/names:
- *   get:
- *     summary: List of all registries
- *     tags: [RegisterName]
- *     responses:
- *       200:
- *          description: The list of all registries
- *          content:
- *            application/json:
- *              schema:
- *                type: array
- *                items:
- *                  @ref: '#/components/schemas/RegisterName
- *       500:
- *         description: Some server error
+ *  get:
+ *    summary: List of all registries
+ *    tags: [Info]
+ *    responses:
+ *      200:
+ *        description: The list of all registries
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                $ref: "#/components/schemas/RegisterName"
+ *      500:
+ *        description: Some server error
  */
 Router.get("/names", registerNames);
 
-// the medical fields and the registers within them
+/**
+ * @swagger
+ * /info/medicalFields:
+ *  get:
+ *    summary: List of all medical fields
+ *    tags: [Info]
+ *    responses:
+ *      200:
+ *        description: The list of medical fields
+ *        content:
+ *          appliation/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                $ref: "#/components/schemas/Medfield"
+ *      500:
+ *        description: Some server error
+ */
 Router.get("/medicalFields", medicalFields);
 
 // the urls to the unit web sites
