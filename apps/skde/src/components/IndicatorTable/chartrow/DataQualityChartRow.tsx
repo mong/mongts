@@ -8,7 +8,7 @@ import {
   formatMuiChartData,
   makeOnBeforeExport,
 } from "../../../helpers/functions/formatMuiChartData";
-import { MuiBarChartV2 } from "../../Charts/MuiBarChartV2";
+import { MuiBarChartV2 } from "../../Charts/MuiBarChart";
 import { MuiLineChart } from "../../Charts/MuiLineChart";
 
 type DataQualityChartRowProps = {
