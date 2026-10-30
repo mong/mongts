@@ -82,6 +82,24 @@
  *          url: https://www.hnt.no/
  *        - shortName: Finnmark HF
  *          url: https://www.finnmarkssykehuset.no/
+ *    ResidentData:
+ *      type: object
+ *      properties:
+ *        indicatorID:
+ *          type: string
+ *          description: The unique ID string of the indicator
+ *        registry:
+ *          type: string
+ *          description: The unique ID string of the registry
+ *        year:
+ *          type: integer
+ *          description: The year for which the data applies
+ *        unitName:
+ *          type: string
+ *          description: The name of the resident area
+ *        level:
+ *          type: string
+ *          description: the level of the indicator for the given tear and resident area
  * tags:
  *  name: Info
  *  description: Information avbout the registries
@@ -152,7 +170,7 @@ Router.get("/medicalFields", medicalFields);
  *    tags: [Info]
  *    responses:
  *      200:
- *        description: Te list of URLs
+ *        description: The list of URLs
  *        content:
  *          application/json:
  *            schema:
@@ -164,7 +182,31 @@ Router.get("/medicalFields", medicalFields);
  */
 Router.get("/url", unitURLs);
 
-// indicators, units and years with resident data
+/**
+ * @swagger
+ * /info/residentData:
+ *  get:
+ *    summary: Resident data results
+ *    tags: [Info]
+ *    parameters:
+ *      - in: query
+ *        name: registry
+ *        schema:
+ *          type: string
+ *        required: false
+ *        description: Filter for single registries
+ *    responses:
+ *      200:
+ *        description: The list of resident data results
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                $ref: "#/components/schemas/ResidentData"
+ *      500:
+ *        description: Some server error
+ */
 Router.get("/residentData", residentData);
 
 export default Router;
