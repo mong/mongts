@@ -12,7 +12,7 @@ ENV CI=true
 COPY apps/api ./apps/api
 COPY packages/types ./packages/types
 
-RUN printf 'packages:\n  - "apps/api"\n  - "packages/types"\n' > pnpm-workspace.yaml
+COPY pnpm-workspace.yaml pnpm-workspace.yaml
 
 RUN pnpm install --filter api... \
     && pnpm --filter api build \
