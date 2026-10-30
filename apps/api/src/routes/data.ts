@@ -302,6 +302,46 @@
  *                hf_ sort: 2
  *                hf_shortest: UNN HF
  *                hospital: [Tromsø, Bodø]
+ *    RegistryRank:
+ *      type: object
+ *      properties:
+ *        id:
+ *          type: integer
+ *          description: The unique registry ID number
+ *        name:
+ *          type: string
+ *          description: The unique registry ID string
+ *        full_name:
+ *          type: string
+ *          description: The official registry name
+ *        short_name:
+ *          type: string
+ *          description: The unofficial registry short name
+ *        url:
+ *          type: string
+ *          format: uri
+ *          description: Link to the registry page on kvalitetsregistre.no
+ *        verdict:
+ *          type: string
+ *          description: The registry rank
+ *        year:
+ *          type: integer
+ *          description: The year for which the rank was given
+ *      example:
+ *        - id: 1
+ *          name: hjerneslag
+ *          full_name: Norsk hjerneslagregister
+ *          short_name: Hjerneslag
+ *          url: https://www.kvalitetsregistre.no/registeroversikt/norsk-hjerneslagregister
+ *          verdict: 3
+ *          year: 2013
+ *        - id: 7
+ *          name: nger
+ *          full_name: Norsk gynekologisk endoskopiregister
+ *          short_name: Gynekologisk endoskopi
+ *          url: https://www.kvalitetsregistre.no/registeroversikt/norsk-gynekologisk-endoskopiregister
+ *          verdict: 2
+ *          year: 2013
  *
  * tags:
  *  name: Data
@@ -510,7 +550,30 @@ Router.get("/:register/years", selectionYearsController);
 // Nested data output
 Router.get("/:register/nestedData", dataController);
 
-// Registry rank output
+/**
+ * @swagger
+ * /data/registryRank:
+ *  get:
+ *    summary: List of the rank of each registry
+ *    tags: [Data]
+ *    parameters:
+ *      - in: query
+ *        name: year
+ *        schema:
+ *          type: integer
+ *        description: Filter for the desired year
+ *    responses:
+ *      200:
+ *        description: The list of ranks
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                $ref: "#/components/schemas/RegistryRank"
+ *      500:
+ *        description: Some server error
+ */
 Router.get("/registryRank", registryRankController);
 
 // Registry evaluation output
