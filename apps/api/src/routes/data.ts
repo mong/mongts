@@ -10,6 +10,7 @@
  *          description: Unique indicator ID string
  *        dg_id:
  *          type: string
+ *          nullable: true
  *          description: Unique DG indicator ID string
  *        include:
  *          type: integer
@@ -28,21 +29,26 @@
  *          description: A formatting specification for number of decimals and percentage sign
  *        measure_unit:
  *          type: string
+ *          nullable: true
  *          description: A unit for what the indicator measures
  *        min_denominator:
  *          type: integer
  *          description: The minimum number of data points in the given year that is acceptable for showing the data
  *        min_value:
  *          type: number
+ *          nullable: true
  *          description: A minimum value for graphical presentations on an axis
  *        max_value:
  *          type: number
+ *          nullable: true
  *          description: A maximum value for graphical presentations on an axis
  *        level_green:
  *          type: number
+ *          nullable: true
  *          description: The threshold for good results
  *        level_yellow:
  *          type: number
+ *          nullable: true
  *          description: The threshold for mediocre results
  *        level_direction:
  *          type: integer
@@ -83,103 +89,109 @@
  *          rname: ms
  *          full_name: Norsk MS-register og biobank
  *    Indicator:
- *      type: object
+ *      tye: object
  *      properties:
- *         id:
- *           type: integer
- *           description: A unique ID number for the row in the data table
- *         ind_id:
- *           type: string
- *           description: The unique ID string of the indicator
- *         unit_level:
- *           type: string
- *           description: The organizational level of the treatment unit (hospital, HF, RHF or nation)
- *         unit_name:
- *           type: string
- *           description: The name of the treatment unit
- *         context:
- *           type: string
- *           description: Caregiver or resident
- *         year:
- *           type: integer
- *           description:  The year for which the data applies
- *         denominator:
- *           type: integer
- *           description: The number of observations
- *         var:
- *           type: number
- *           description: The value of the data point (integer for uncalculated fractions and float for calculated ratio)
- *         dg:
- *           type: number
- *           minimum: 0
- *           maximum: 1
- *           description: The percentage of coverage of the indicator
- *         delivery_time:
- *           type: string
- *           format: date-time
- *           description: The time stamp for the data delivery
- *         delivery_latest_update:
- *           type: string
- *           format: date-time
- *           description: A user defined time stamp for when the data were updated before delivery
- *         delivery_latest_affirm:
- *           type: string
- *           format: date-time
- *           description: A user defined time stamp for the point in time before which the dataset is complete
- *         type:
- *           type: string
- *           description:  The indicator type (e.g. andel, dg_andel, antall etc. )
- *         include:
- *           type: integer
- *           minimum: 0
- *           maximum: 1
- *           description: 1 if the indicator is active and 0 otherwise
- *         min_denominator:
- *           type: integer
- *           minimum: 5
- *           description: The minimum number of observations that is acceptable for showing the indicator data
- *         level_direction:
- *           type: integer
- *           minimum: 0
- *           maximum: 1
- *           description: 1 if higher values give better results and 0 otherwise
- *         level_green:
- *           type: number
- *           minimum: 0
- *           maximum: 1
- *           description: The threshold for good results
- *         level_yellow:
- *           type: number
- *           minimum: 0
- *           maximum: 1
- *           description: The threshold for mediocre results
- *         sformat:
- *           type: string
- *           description: A formatting string for the number of decimals and optional percentage sign
- *         registry_id:
- *           type: integer
- *           description: The unique ID number of the registry
- *         registry_name:
- *           type: string
- *           description: The unique ID string of the registry
- *         registry_full_name:
- *           type: string
- *           description: The official name of the registry
- *         registry_short_name:
- *           type: string
- *           description: The unifficial short name of the registry
- *         medfield_id:
- *           type: integer
- *           description: The unique ID number of the medical field to which the registry belongs
- *         medfield_name:
- *           type: string
- *           description: The unique ID string of the medical field to which the registry belongs
- *         medfield_full_name:
- *           type: string
- *           description: The name of the medical field to which the registry belongs
- *         ind_title:
- *           type: string
- *           description: The title of the indicator
+ *        id:
+ *          type: integer
+ *          description: A unique ID number for the row in the data table
+ *        ind_id:
+ *          type: string
+ *          description: The unique ID string of the indicator
+ *        unit_level:
+ *          type: string
+ *          description: The organizational level of the treatment unit (hospital, HF, RHF or nation)
+ *        unit_name:
+ *          type: string
+ *          description: The name of the treatment unit
+ *        context:
+ *          type: string
+ *          description: Caregiver or resident
+ *        year:
+ *          type: integer
+ *          description:  The year for which the data applies
+ *        denominator:
+ *          type: integer
+ *          description: The number of observations
+ *        var:
+ *          type: number
+ *          description: The value of the data point (integer for uncalculated fractions and float for calculated ratio)
+ *        dg:
+ *          type: number
+ *          nullable: true
+ *          minimum: 0
+ *          maximum: 1
+ *          description: The percentage of coverage of the indicator
+ *        delivery_time:
+ *          type: string
+ *          format: date-time
+ *          nullable: true
+ *          description: The time stamp for the data delivery
+ *        delivery_latest_update:
+ *          type: string
+ *          format: date-time
+ *          nullable: true
+ *          description: A user defined time stamp for when the data were updated before delivery
+ *        delivery_latest_affirm:
+ *          type: string
+ *          format: date-time
+ *          nullable: true
+ *          description: A user defined time stamp for the point in time before which the dataset is complete
+ *        type:
+ *          type: string
+ *          description:  The indicator type (e.g. andel, dg_andel, antall etc. )
+ *        include:
+ *          type: integer
+ *          minimum: 0
+ *          maximum: 1
+ *          description: 1 if the indicator is active and 0 otherwise
+ *        min_denominator:
+ *          type: integer
+ *          minimum: 5
+ *          description: The minimum number of observations that is acceptable for showing the indicator data
+ *        level_direction:
+ *          type: integer
+ *          minimum: 0
+ *          maximum: 1
+ *          description: 1 if higher values give better results and 0 otherwise
+ *        level_green:
+ *          type: number
+ *          nullable: true
+ *          minimum: 0
+ *          maximum: 1
+ *          description: The threshold for good results
+ *        level_yellow:
+ *          type: number
+ *          nullable: true
+ *          minimum: 0
+ *          maximum: 1
+ *          description: The threshold for mediocre results
+ *        sformat:
+ *          type: string
+ *          description: A formatting string for the number of decimals and optional percentage sign
+ *        registry_id:
+ *          type: integer
+ *          description: The unique ID number of the registry
+ *        registry_name:
+ *          type: string
+ *          description: The unique ID string of the registry
+ *        registry_full_name:
+ *          type: string
+ *          description: The official name of the registry
+ *        registry_short_name:
+ *          type: string
+ *          description: The unifficial short name of the registry
+ *        medfield_id:
+ *          type: integer
+ *          description: The unique ID number of the medical field to which the registry belongs
+ *        medfield_name:
+ *          type: string
+ *          description: The unique ID string of the medical field to which the registry belongs
+ *        medfield_full_name:
+ *          type: string
+ *          description: The name of the medical field to which the registry belongs
+ *        ind_title:
+ *          type: string
+ *          description: The title of the indicator
  *      example:
  *        id: 6483625
  *        ind_id: ms_dg_nydiag
@@ -268,7 +280,7 @@ Router.get("/:register/descriptions", descriptionController);
  *        schema:
  *          type: string
  *        required: true
- *        description: The registry ID string
+ *        description: The registry ID string. To fetch all registry data, use the parameter value "all"
  *      - in: query
  *        name: id
  *        schema:
@@ -297,17 +309,37 @@ Router.get("/:register/descriptions", descriptionController);
  *        description: Filter for the desired treatment unit
  *      - in: query
  *        name: context
- *
+ *        schema:
+ *          type: string
+ *        description: Filter for caregiver or resident
  *      - in: query
  *        name: type
- *
+ *        schema:
+ *          type: string
+ *        description: Filter for indicator type (ind or dg)
  *      - in: query
  *        name: register
- *
+ *        schema:
+ *          type: string
+ *        description: Filter for registry
  *      - in: query
  *        name: nordic
- *
- *
+ *        schema:
+ *          type: integer
+ *        minimum: 0
+ *        maxuimum: 1
+ *        description: Filter flag for nordic indicators
+ *    responses:
+ *      200:
+ *        description: The indicator data
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                $ref: "#/components/schemas/Indicator"
+ *      500:
+ *        description: Some server error
  */
 Router.get("/:register/indicators", indicatorsController);
 
