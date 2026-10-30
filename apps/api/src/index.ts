@@ -9,13 +9,50 @@ import express, {
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import { parse } from "qs";
+import swaggerJSDoc from "swagger-jsdoc";
+import { serve, setup } from "swagger-ui-express";
 import registerDataRouter from "./routes/data";
-//router
 import registerInfoRouter from "./routes/info";
 
 const PORT = process.env.PORT ?? 4000;
 
 const app = express();
+
+// Swagger
+const options = {
+  definition: {
+    openapi: "3.1.0",
+    info: {
+      title: "SKDE API",
+      version: "1.0.0",
+      description: "API for å hente data fra nasjonale kalitetsindikatorer",
+      license: {
+        name: "MIT",
+        url: "https://spdx.org/licenses/MIT.html",
+      },
+      contact: {
+        name: "Nasjonalt servicemiljø ved SKDE",
+        url: "https://www.skde.no/",
+        email: "Servicemiljoet@skde.no",
+      },
+    },
+    servers: [
+      {
+        url: "https://prod-api.skde.org/",
+      },
+      {
+        url: "https://test-api.skde.org/",
+      },
+      {
+        url: `http://localhost:${PORT}`,
+      },
+    ],
+  },
+  apis: ["src/routes/*.ts"],
+};
+
+const specs = swaggerJSDoc(options);
+app.use("/docs", serve, setup(specs, { explorer: true }));
 
 // Required for migrating from Express 4 to 5
 app.set("query parser", (str: string) => parse(str, { arrayLimit: 100 }));
