@@ -57,13 +57,16 @@ const filterSelectableMedicalFields = (
 
 export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const { open, setOpen, onSubmit, updateRegistries, nordicOnly } = props;
-
   const [highlightedMedField, setHighlightedMedField] = useState<string>("");
-
   const [registrySelection, setRegistrySelection] = useQueryState(
     "registries",
     mainQueryStateConfig.registries,
   );
+  const [, setSelectedRow] = useQueryState(
+    "selected_row",
+    mainQueryStateConfig.selected_row,
+  );
+
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   const medicalFieldsQuery: UseQueryResult<any, unknown> =
     useMedicalFieldsQuery(nordicOnly);
@@ -277,6 +280,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const handleClear = () => {
     setHighlightedMedField("");
     setRegistrySelection([]);
+    setSelectedRow(null);
   };
 
   const selectedCount = registrySelection.length;
