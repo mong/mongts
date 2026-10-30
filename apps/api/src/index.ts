@@ -40,13 +40,19 @@ const options = {
       {
         url: "https://prod-api.skde.org/",
       },
+      {
+        url: "https://test-api.skde.org/",
+      },
+      {
+        url: `http://localhost:${PORT}`,
+      },
     ],
   },
   apis: ["src/routes/*.ts"],
 };
 
 const specs = swaggerJSDoc(options);
-app.use("/api-docs", serve, setup(specs, { explorer: true }));
+app.use("/docs", serve, setup(specs, { explorer: true }));
 
 // Required for migrating from Express 4 to 5
 app.set("query parser", (str: string) => parse(str, { arrayLimit: 100 }));

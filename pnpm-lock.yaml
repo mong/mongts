@@ -196,6 +196,9 @@ importers:
 
   apps/api:
     dependencies:
+      '@scarf/scarf':
+        specifier: ^1.4.0
+        version: 1.4.0
       '@types/node':
         specifier: ^26.6.1
         version: 26.6.1
