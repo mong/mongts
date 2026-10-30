@@ -18,19 +18,22 @@
  *          type: string
  *          descripton: The unofficial short name of the registry
  *        nordic:
- *          type: 0 | 1
+ *          type: integer
  *          description: Flag to indicate whether the registry has data from other Nordic countries
  *        registry_name:
  *          type: string
  *          description: Same as rname
  *        caregiver_data:
- *          type: 0 | 1 | null
+ *          type: integer
+ *          nullable: true
  *          description: Flag to indicate whether the registry has caregiver data
  *        resident_data:
- *          type: 0 | 1 | null
+ *          type: integer
+ *          nullable: true
  *          description: Flag to indicate whether the registry has resident data
  *        dg_data:
- *          type: 0 | 1 | null
+ *          type: integer
+ *          nullable: true
  *          description: Flag to indicate whether the registry has coverage data
  *        url:
  *          type: string
@@ -66,6 +69,19 @@
  *        - shortname: luft
  *          name: Luftveier
  *          registers: [mekvent]
+ *    URLs:
+ *      type: object
+ *      properties:
+ *        shortName:
+ *          type: string
+ *          description: The short name of the HF or RHF
+ *      example:
+ *        - shortName: Førde HF
+ *          url: https://www.helse-forde.no/
+ *        - shortName: Nord-Trøndelag HF
+ *          url: https://www.hnt.no/
+ *        - shortName: Finnmark HF
+ *          url: https://www.finnmarkssykehuset.no/
  * tags:
  *  name: Info
  *  description: Information avbout the registries
@@ -107,11 +123,18 @@ Router.get("/names", registerNames);
  *  get:
  *    summary: List of all medical fields
  *    tags: [Info]
+ *    parameters:
+ *      - in: query
+ *        name: nordic
+ *        schema:
+ *          type: integer
+ *        required: false
+ *        description: 1 for Nordic registries and 0 for non-Nordic
  *    responses:
  *      200:
  *        description: The list of medical fields
  *        content:
- *          appliation/json:
+ *          application/json:
  *            schema:
  *              type: array
  *              items:
@@ -121,7 +144,24 @@ Router.get("/names", registerNames);
  */
 Router.get("/medicalFields", medicalFields);
 
-// the urls to the unit web sites
+/**
+ * @swagger
+ * /info/url:
+ *  get:
+ *    summary: List of URLs to tHF and RHF websites
+ *    tags: [Info]
+ *    responses:
+ *      200:
+ *        description: Te list of URLs
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                $ref: "#/components/schemas/URLs"
+ *      500:
+ *        description: Some server error
+ */
 Router.get("/url", unitURLs);
 
 // indicators, units and years with resident data
