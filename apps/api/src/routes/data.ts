@@ -400,11 +400,6 @@ Router.get("/:register/descriptions", descriptionController);
  *          type: string
  *        description: Filter for indicator type (ind or dg)
  *      - in: query
- *        name: register
- *        schema:
- *          type: string
- *        description: Filter for registry
- *      - in: query
  *        name: nordic
  *        schema:
  *          type: integer
@@ -438,6 +433,29 @@ Router.get("/:register/indicators", indicatorsController);
  *          type: string
  *        required: true
  *        description: The registry ID string. To fetch all registry data, use the parameter value "all"
+ *      - in: query
+ *        name: year
+ *        schema:
+ *          type: integer
+ *        description: Filter for the desired year
+ *      - in: query
+ *        name: context
+ *        schema:
+ *          type: string
+ *        description: Filter for caregiver or resident
+ *        required: true
+ *      - in: query
+ *        name: type
+ *        schema:
+ *          type: string
+ *        description: Filter for indicator type (ind or dg)
+ *      - in: query
+ *        name: nordic
+ *        schema:
+ *          type: integer
+ *        minimum: 0
+ *        maxuimum: 1
+ *        description: Filter flag for nordic indicators
  *    responses:
  *      200:
  *        description: The units
