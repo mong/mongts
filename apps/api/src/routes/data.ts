@@ -468,6 +468,43 @@ Router.get("/:register/indicators", indicatorsController);
  */
 Router.get("/:register/unitNames", unitNamesController);
 
+/**
+ * @swagger
+ * /data/{registry}/years:
+ *  get:
+ *    summary: A list of the years for which there is data
+ *    tags: [Data]
+ *    parameters:
+ *      - in: path
+ *        name: registry
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: The registry ID string. To fetch all registry data, use the parameter value "all"
+ *      - in: query
+ *        name: context
+ *        schema:
+ *          type: string
+ *        description: Filter for caregiver or resident
+ *        required: true
+ *      - in: query
+ *        name: type
+ *        schema:
+ *          type: string
+ *        description: Filter for indicator type (ind or dg)
+ *    responses:
+ *      200:
+ *        description: The list of years
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                type: integer
+ *              example: [2020,2021,2022,2023,2024,2025]
+ *      500:
+ *        description: Some server error
+ */
 Router.get("/:register/years", selectionYearsController);
 
 // Nested data output
