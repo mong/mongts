@@ -342,7 +342,34 @@
  *          url: https://www.kvalitetsregistre.no/registeroversikt/norsk-gynekologisk-endoskopiregister
  *          verdict: 2
  *          year: 2013
- *
+ *    RegistryEvaluation:
+ *      type: object
+ *      properties:
+ *        id:
+ *          type: integer
+ *          description: The unique registry ID number
+ *        name:
+ *          type: string
+ *          description: The unique registry ID string
+ *        full_name:
+ *          type: string
+ *          description: The official registry name
+ *        short_name:
+ *          type: string
+ *          description: The unofficial registry short name
+ *        year:
+ *          type: integer
+ *          description: The year for which the rank was given
+ *        evaluation_text:
+ *          type: string
+ *          description: The written evaluation for the given year
+ *      example:
+ *        id: 1,
+ *        name: hjerneslag
+ *        full_name: Norsk hjerneslagregister
+ *        short_name: Hjerneslag
+ *        year: 2013
+ *        evaluation_text": "Bra register."
  * tags:
  *  name: Data
  *  description: Quality indicator data from the registries
@@ -576,7 +603,30 @@ Router.get("/:register/nestedData", dataController);
  */
 Router.get("/registryRank", registryRankController);
 
-// Registry evaluation output
+/**
+ * @swagger
+ * /data/registryEvaluation:
+ *  get:
+ *    summary: List of the written evaluation of each registry
+ *    tags: [Data]
+ *    parameters:
+ *      - in: query
+ *        name: year
+ *        schema:
+ *          type: integer
+ *        description: Filter for the desired year
+ *    responses:
+ *      200:
+ *        description: The list of evaluations
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                $ref: "#/components/schemas/RegistryEvaluation"
+ *      500:
+ *        description: Some server error
+ */
 Router.get("/registryEvaluation", registryEvaluationController);
 
 // Registry scores output
