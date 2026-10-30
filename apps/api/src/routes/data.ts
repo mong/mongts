@@ -89,7 +89,7 @@
  *          rname: ms
  *          full_name: Norsk MS-register og biobank
  *    Indicator:
- *      tye: object
+ *      type: object
  *      properties:
  *        id:
  *          type: integer
@@ -220,6 +220,88 @@
  *        medfield_name: nerve
  *        medfield_full_name: Nervesystemet
  *        ind_title: Dekningsgrad - nydiagnostiserte
+ *    UnitNames:
+ *      type: object
+ *      properties:
+ *        opts_tu:
+ *          type: array
+ *          items:
+ *            type: object
+ *            properties:
+ *              label:
+ *                type: string
+ *                description: A label for unit levels
+ *              options:
+ *                type: array
+ *                items:
+ *                  type: object
+ *                  properties:
+ *                    label:
+ *                      type: string
+ *                      description: The unit name label
+ *                    value:
+ *                      type: string
+ *                      description: Identical to the label
+ *        nestedUnitNames:
+ *          type: array
+ *          items:
+ *            type: object
+ *            properties:
+ *              rhf:
+ *                type: string
+ *                description: The name of the RHF
+ *              rhf_sort:
+ *                type: integer
+ *                description: An integer number used for sorting
+ *              rhf_shortest:
+ *                type: string
+ *                description: The shortest name of the RHF
+ *              hf:
+ *                type: array
+ *                items:
+ *                  type: object
+ *                  properties:
+ *                    hf:
+ *                      type: string
+ *                      description: The short name of the HF
+ *                    hf_full:
+ *                      type: string
+ *                      description: The full name of the HF
+ *                    hf_sort:
+ *                      type: integer
+ *                      description: An integer number used for sorting
+ *                    hf_shortest:
+ *                      type: string
+ *                      description: The shortest name of the HF
+ *                    hospital:
+ *                       type: array
+ *                       items:
+ *                          type: string
+ *                          description: The hospital locations
+ *      example:
+ *        opts_tu:
+ *          - label: Sykehus
+ *            options:
+ *              - label: St. Olav
+ *                value: St. Olav
+ *              - label: Bodø
+ *                value: Bodø
+ *          - label: HF
+ *            options:
+ *              - label: UNN
+ *                value: UNN
+ *              - label: Bergen HF
+ *                value: Bergen HF
+ *        nestedUnitNames:
+ *          - rhf: Helse Nord RHF
+ *            rhf_sort: 1
+ *            rhf_shortest: HN RHF
+ *            hf:
+ *              - hf: UNN HF
+ *                hf_full: Universitetssykehuset Nord-Norge HF
+ *                hf_ sort: 2
+ *                hf_shortest: UNN HF
+ *                hospital: [Tromsø, Bodø]
  *
  * tags:
  *  name: Data
@@ -343,7 +425,29 @@ Router.get("/:register/descriptions", descriptionController);
  */
 Router.get("/:register/indicators", indicatorsController);
 
-//reg all-all eller per register
+/**
+ * @swagger
+ * /data/{registry}/unitnames:
+ *  get:
+ *    summary: Units that report to the selected registry
+ *    tags: [Data]
+ *    parameters:
+ *      - in: path
+ *        name: registry
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: The registry ID string. To fetch all registry data, use the parameter value "all"
+ *    responses:
+ *      200:
+ *        description: The units
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: "#/components/schemas/UnitNames"
+ *      500:
+ *        description: Some server error
+ */
 Router.get("/:register/unitNames", unitNamesController);
 
 Router.get("/:register/years", selectionYearsController);
