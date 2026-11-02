@@ -102,7 +102,7 @@
  *          description: the level of the indicator for the given tear and resident area
  * tags:
  *  name: Info
- *  description: Information avbout the registries
+ *  description: Information about the registries
  */
 
 import express from "express";

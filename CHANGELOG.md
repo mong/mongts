@@ -1,5 +1,21 @@
 # Changelog
 
+## [1.16.0](https://github.com/mong/mongts/compare/v1.15.8...v1.16.0) (2026-10-30)
+
+
+### Features
+
+* dokumentering av API med Swagger ([#5154](https://github.com/mong/mongts/issues/5154)) ([77f4670](https://github.com/mong/mongts/commit/77f4670ad802793274c13c928379bb8dd763c783))
+
+
+### Bug Fixes
+
+* **api:** fikset skrivefeil i docs ([#5159](https://github.com/mong/mongts/issues/5159)) ([07d6c88](https://github.com/mong/mongts/commit/07d6c882d5e3f0f27e6e6c29d721e4fa747a281d))
+* clear selected-row when filters are cleared ([#5150](https://github.com/mong/mongts/issues/5150)) ([#5158](https://github.com/mong/mongts/issues/5158)) ([13308ec](https://github.com/mong/mongts/commit/13308ec1fc0dfde3c5734c7bfb8156841dcde142))
+* **deps:** update dependency next from v16.3.8 to v16.4.1 [security] ([#5145](https://github.com/mong/mongts/issues/5145)) ([c602148](https://github.com/mong/mongts/commit/c602148ba769bc410bc05bcf631646e8864a5253))
+* huk av sjekkboks for HF i popup ([#5148](https://github.com/mong/mongts/issues/5148)) ([a5e2c27](https://github.com/mong/mongts/commit/a5e2c27baa4a0968cfcff9175609bdda7de8dc8e))
+* ikke dytt .env-filer til Github ([#5141](https://github.com/mong/mongts/issues/5141)) ([bfc1bd1](https://github.com/mong/mongts/commit/bfc1bd1d763a21237440b4f0361781a0c995da27))
+
 ## [1.15.8](https://github.com/mong/mongts/compare/v1.15.7...v1.15.8) (2026-10-23)
 
 
