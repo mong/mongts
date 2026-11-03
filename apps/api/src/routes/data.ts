@@ -370,6 +370,66 @@
  *        short_name: Hjerneslag
  *        year: 2013
  *        evaluation_text": "Bra register."
+ *    RegistryScores:
+ *      type: object
+ *      properties:
+ *        id:
+ *          type: integer
+ *          description: The unique registry ID number
+ *        name:
+ *          type: string
+ *          description: The unique registry ID string
+ *        full_name:
+ *          type: string
+ *          description: The official registry name
+ *        short_name:
+ *          type: string
+ *          description: The unofficial registry short name
+ *        year:
+ *          type: integer
+ *          description: The year for which the rank was given
+ *        scores:
+ *          type: integer
+ *          description: Comma separated string with the scores (0 or 1) for each requirement
+ *      example:
+ *        id: 1
+ *        name: hjerneslag
+ *        full_name: Norsk hjerneslagregister
+ *        short_name: Hjerneslag
+ *        year: 2013
+ *        scores: 1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0
+ *    RegistryRequirements:
+ *      type: object
+ *      properties:
+ *        id:
+ *          type: number
+ *          description: The unique ID number of the requirement
+ *        stage_or_level:
+ *          type: string
+ *          description: The stage or level to which the requrements belongs
+ *        criteria:
+ *          type: string
+ *          description: Short specification of the criteria for the requirement
+ *        guide:
+ *          type: string
+ *          description: Elaboration on the requirement
+ *        section:
+ *          type: string
+ *          description: The section number in the annual report template where this requirement is reported
+ *        introduction_year:
+ *          type: integer
+ *          description: The year that the requirement was introduced
+ *        last_year:
+ *          type: integer
+ *          description: The last year the requirement was in effect
+ *      example:
+ *        id: 1
+ *        stage_or_level: 2
+ *        criteria: Registeret samler data fra alle aktuelle helseregioner
+ *        guide: Registeret dokumenterer at det samler data fra alle helseregioner. Dersom registerets pasientgruppe ikke behandles i alle regioner presiseres dette.
+ *        section: Kapittel 4.1
+ *        introduction_year: 2013
+ *        last_year: 2050
  * tags:
  *  name: Data
  *  description: Quality indicator data from the registries
@@ -629,10 +689,50 @@ Router.get("/registryRank", registryRankController);
  */
 Router.get("/registryEvaluation", registryEvaluationController);
 
-// Registry scores output
+/**
+ * @swagger
+ * /data/registryScores:
+ *  get:
+ *    summary: Evaluated scores for each registry
+ *    tags: [Data]
+ *    parameters:
+ *      - in: query
+ *        name: year
+ *        schema:
+ *          type: integer
+ *        description: Filter for the desired year
+ *    responses:
+ *      200:
+ *        description: The list of scpres
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                $ref: "#/components/schemas/RegistryScores"
+ *      500:
+ *        description: Some server error
+ */
 Router.get("/registryScores", registryScoresController);
 
-// Registry requirements output
+/**
+ * @swagger
+ * /data/registryRequirements:
+ *  get:
+ *    summary: List of requirements for registry evaluation
+ *    tags: [Data]
+ *    responses:
+ *      200:
+ *        description: The list of scores
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                $ref: "#/components/schemas/RegistryRequirements"
+ *      500:
+ *        description: Some server error
+ */
 Router.get("/registryRequirements", registryRequirementsController);
 
 export default Router;
