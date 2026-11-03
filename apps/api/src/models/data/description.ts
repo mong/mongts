@@ -11,17 +11,17 @@ export const descriptionModel = (
     .select("ind.*", "registry.name as rname", "registry.full_name")
     .from("ind")
     .leftJoin("registry", "ind.registry_id", "registry.id")
-    .modify(withFilter, filter)
     .where("registry_id", function (this: Knex) {
       this.select("id").from("registry").where("name", register);
-    });
+    })
+    .modify(withFilter, filter);
 
 function withFilter(builder: Knex.QueryBuilder, filter?: Filter) {
   if (filter?.type) {
     if (filter.type === "dg") {
-      builder.where("type", filter.type).orWhereNull("type");
+      builder.where("type", "dg_andel").orWhereNull("type");
     } else if (filter.type === "ind") {
-      builder.whereNot("type", "dg").whereNotNull("type");
+      builder.whereNot("type", "dg_andel").whereNotNull("type");
     }
   }
 }
