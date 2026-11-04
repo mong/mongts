@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.1](https://github.com/mong/mongts/compare/v1.16.0...v1.16.1) (2026-11-04)
+
+
+### Bug Fixes
+
+* **api:** fikset filtrering på type i /info/descriptions ([#5156](https://github.com/mong/mongts/issues/5156)) ([5495f0f](https://github.com/mong/mongts/commit/5495f0fe11bd2522651f3d52cdc8f7d1bfc213df))
+
 ## [1.16.0](https://github.com/mong/mongts/compare/v1.15.8...v1.16.0) (2026-10-30)
 
 
