@@ -370,6 +370,205 @@
  *        short_name: Hjerneslag
  *        year: 2013
  *        evaluation_text": "Bra register."
+ *    RegistryScores:
+ *      type: object
+ *      properties:
+ *        id:
+ *          type: integer
+ *          description: The unique registry ID number
+ *        name:
+ *          type: string
+ *          description: The unique registry ID string
+ *        full_name:
+ *          type: string
+ *          description: The official registry name
+ *        short_name:
+ *          type: string
+ *          description: The unofficial registry short name
+ *        year:
+ *          type: integer
+ *          description: The year for which the rank was given
+ *        scores:
+ *          type: integer
+ *          description: Comma separated string with the scores (0 or 1) for each requirement
+ *      example:
+ *        id: 1
+ *        name: hjerneslag
+ *        full_name: Norsk hjerneslagregister
+ *        short_name: Hjerneslag
+ *        year: 2013
+ *        scores: 1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0
+ *    RegistryRequirements:
+ *      type: object
+ *      properties:
+ *        id:
+ *          type: number
+ *          description: The unique ID number of the requirement
+ *        stage_or_level:
+ *          type: string
+ *          description: The stage or level to which the requrements belongs
+ *        criteria:
+ *          type: string
+ *          description: Short specification of the criteria for the requirement
+ *        guide:
+ *          type: string
+ *          description: Elaboration on the requirement
+ *        section:
+ *          type: string
+ *          description: The section number in the annual report template where this requirement is reported
+ *        introduction_year:
+ *          type: integer
+ *          description: The year that the requirement was introduced
+ *        last_year:
+ *          type: integer
+ *          description: The last year the requirement was in effect
+ *      example:
+ *        id: 1
+ *        stage_or_level: 2
+ *        criteria: Registeret samler data fra alle aktuelle helseregioner
+ *        guide: Registeret dokumenterer at det samler data fra alle helseregioner. Dersom registerets pasientgruppe ikke behandles i alle regioner presiseres dette.
+ *        section: Kapittel 4.1
+ *        introduction_year: 2013
+ *        last_year: 2050
+ *    RegisterData:
+ *      type: object
+ *      properties:
+ *        registerFullName:
+ *          type: string
+ *          description: The official name of the registry
+ *        registerName:
+ *          type: string
+ *          description: The unique ID string of the registry
+ *        registerID:
+ *          type: integer
+ *          description: The unique ID number of the registry
+ *        medfieldID:
+ *          type: array
+ *          items:
+ *            type: integer
+ *          description: The unique ID numbers of the medical fields to which the registry belongs
+ *        indicatorData:
+ *          type: object
+ *          properties:
+ *            indicatorID:
+ *              type: string
+ *              description: The unique string of the indicator
+ *            indicatorTitle:
+ *              type: string
+ *              description: The official title of the indicator
+ *            levelGreen:
+ *              type: number
+ *              nullable: true
+ *              minimum: 0
+ *              maximum: 1
+ *              description: The threshold for good results
+ *            levelYellow:
+ *              type: number
+ *              nullable: true
+ *              minimum: 0
+ *              maximum: 1
+ *              description: The threshold for mediocre results
+ *            levelDirection:
+ *              type: integer
+ *              minimum: 0
+ *              maximum: 1
+ *              description: 1 if higher values give better results and 0 otherwise
+ *            minDenominator:
+ *              type: integer
+ *              minimum: 5
+ *              description: The minimum number of observations that is acceptable for showing the indicator data
+ *            minValue:
+ *              type: number
+ *              description: The mininum value that the indicator can take
+ *            maxValue:
+ *              type: number
+ *              description: The maximum value that the indicator can take
+ *            shortDescription:
+ *              type: string
+ *              description: A short indicator description of 1023 characters or less
+ *            longDescription:
+ *              type: string
+ *              description: A long indicator description of 2047 characters or less
+ *            indType:
+ *              type: string
+ *              description:  The indicator type (e.g. andel, dg_andel, antall etc. )
+ *            format:
+ *             type: string
+ *             description: A formatting string for the number of decimals and optional percentage sign
+ *            registerID:
+ *             type: integer
+ *             description: The unique ID number of the registry
+ *            dataQualityIndicatorID:
+ *             type: string
+ *             description: The unique ID string of the corresponding data quality indicator
+ *            data:
+ *              type: object
+ *              properties:
+ *                id:
+ *                  type: integer
+ *                  description: The row number of the data point in the database
+ *                indicatorID:
+ *                  type: string
+ *                  description: The unique ID string of the indicator
+ *                unitName:
+ *                  type: string
+ *                  description: The name of the treatment unit
+ *                year:
+ *                  type: integer
+ *                  description: The year of the data point
+ *                var:
+ *                  type: number
+ *                  description: The result of the indicator (numerator or percentage depending on the indicator type)
+ *                denominator:
+ *                  type: integer
+ *                  description: The number of observations
+ *                dg:
+ *                  type: number
+ *                  description: The coverage of the data point
+ *                context:
+ *                  type: string
+ *                  description: The context of the data point (caregiver or resident)
+ *                deliveryTime:
+ *                  type: string
+ *                  format: date-time
+ *                  description: The time stamp for the data upload
+ *                affirmTime:
+ *                  type: string
+ *                  format: date-time
+ *                  description: The date before which the data is complete
+ *      example:
+ *        registerFullName: Norsk MS-register og biobank
+ *        registerName: ms
+ *        registerShortName: Multippel sklerose
+ *        registerID: 28
+ *        medfieldID: [5]
+ *        indicatorData:
+ *        - indicatorID: ms_tid_henvis_diag
+ *          indicatorTitle: Tid fra henvisning til diagnose
+ *          levelGreen: 0.8
+ *          levelYellow: 0.6
+ *          levelDirection: 1
+ *          minDenominator: 1
+ *          minValue: null
+ *          maxValue: null
+ *          shortDescription: Andel pasienter som diagnostiseres med MS innen 28 dager fra henvisningstidspunkt.
+ *          longDescription: En lengre beskrivelse.
+ *          indType: andel
+ *          sortingName: null
+ *          format: ,.0%
+ *          registerID: 28
+ *          dataQualityIndicatorID: ms_dg_nydiag
+ *          data:
+ *          - id: 6485301
+ *            indicatorID: ms_tid_henvis_diag
+ *            unitName: Akershus HF
+ *            year: 2025
+ *            var: 0.59091
+ *            denominator: 66
+ *            dg: 1.21053
+ *            context: resident
+ *            deliveryTime: 2026-06-01T09:47:12.000Z
+ *            affirmTime: 2026-01-01T00:00:00.000Z
  * tags:
  *  name: Data
  *  description: Quality indicator data from the registries
@@ -574,7 +773,73 @@ Router.get("/:register/unitNames", unitNamesController);
  */
 Router.get("/:register/years", selectionYearsController);
 
-// Nested data output
+/**
+ * @swagger
+ * /data/{registry}/nestedData:
+ *  get:
+ *    summary: Hierarchical quality indicator data
+ *    tags: [Data]
+ *    parameters:
+ *      - in: path
+ *        name: registry
+ *        schema:
+ *          type: string
+ *        required: true
+ *        description: The registry ID string. To fetch all registry data, use the parameter value "all"
+ *      - in: query
+ *        name: context
+ *        schema:
+ *          type: string
+ *        description: Filter for caregiver or resident
+ *      - in: query
+ *        name: type
+ *        schema:
+ *          type: string
+ *        description: Filter for indicator type (ind or dg)
+ *      - in: query
+ *        name: year
+ *        schema:
+ *          type: integer
+ *        description: Filter for year
+ *      - in: query
+ *        name: unit_name
+ *        schema:
+ *          type: string
+ *        description: Filter for treatment units
+ *        style: deepObject
+ *        explode: true
+ *      - in: query
+ *        name: ind_id
+ *        schema:
+ *          type: string
+ *        description: Filter for indicator ID string
+ *      - in: query
+ *        name: id
+ *        schema:
+ *          type: integer
+ *        dscription: Filter for data row ID
+ *      - in: query
+ *        name: language
+ *        schema:
+ *          type: string
+ *        description: The desired language of the incidator's title and description
+ *      - in: query
+ *        name: nordic
+ *        schema:
+ *          type: integer
+ *        minimum: 0
+ *        maxuimum: 1
+ *        description: Filter flag for nordic indicators
+ *    responses:
+ *      200:
+ *        description: The quality indicator data
+ *        content:
+ *          application/json:
+ *            schema:
+ *              $ref: "#/components/schemas/RegisterData"
+ *      500:
+ *        description: Some server error
+ */
 Router.get("/:register/nestedData", dataController);
 
 /**
@@ -629,10 +894,50 @@ Router.get("/registryRank", registryRankController);
  */
 Router.get("/registryEvaluation", registryEvaluationController);
 
-// Registry scores output
+/**
+ * @swagger
+ * /data/registryScores:
+ *  get:
+ *    summary: Evaluated scores for each registry
+ *    tags: [Data]
+ *    parameters:
+ *      - in: query
+ *        name: year
+ *        schema:
+ *          type: integer
+ *        description: Filter for the desired year
+ *    responses:
+ *      200:
+ *        description: The list of scpres
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                $ref: "#/components/schemas/RegistryScores"
+ *      500:
+ *        description: Some server error
+ */
 Router.get("/registryScores", registryScoresController);
 
-// Registry requirements output
+/**
+ * @swagger
+ * /data/registryRequirements:
+ *  get:
+ *    summary: List of requirements for registry evaluation
+ *    tags: [Data]
+ *    responses:
+ *      200:
+ *        description: The list of scores
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: array
+ *              items:
+ *                $ref: "#/components/schemas/RegistryRequirements"
+ *      500:
+ *        description: Some server error
+ */
 Router.get("/registryRequirements", registryRequirementsController);
 
 export default Router;
