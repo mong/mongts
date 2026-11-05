@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.16.2](https://github.com/mong/mongts/compare/v1.16.1...v1.16.2) (2026-11-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency express from v5.2.1 to v5.3.0 ([#5175](https://github.com/mong/mongts/issues/5175)) ([f9bec5b](https://github.com/mong/mongts/commit/f9bec5b34fd50a99ceb85b909785583f615b699c))
+* **deps:** update dependency express-rate-limit from v8.7.0 to v8.7.1 ([#5132](https://github.com/mong/mongts/issues/5132)) ([7093af4](https://github.com/mong/mongts/commit/7093af4ca58c4d750a4532a20d048a466969583a))
+* **deps:** update dependency mysql2 from v3.24.4 to v3.24.6 ([#5120](https://github.com/mong/mongts/issues/5120)) ([4bbc341](https://github.com/mong/mongts/commit/4bbc341b8e545c55aa5d50cab9de5c201da7a911))
+* **deps:** update material-ui monorepo from v9.14.0 to v9.16.0 ([#5176](https://github.com/mong/mongts/issues/5176)) ([42514a9](https://github.com/mong/mongts/commit/42514a999022c84bae1360af234520636c1253d4))
+* **deps:** update react monorepo from v19.3.0 to v19.3.1 ([#5169](https://github.com/mong/mongts/issues/5169)) ([9fcc501](https://github.com/mong/mongts/commit/9fcc501ce9280174f8c9e6b65fc9b629ed4ba750))
+* **deps:** update tanstack-query monorepo from v5.103.2 to v5.104.5 ([#5117](https://github.com/mong/mongts/issues/5117)) ([560f0b4](https://github.com/mong/mongts/commit/560f0b4891eff26eb5c11bc57d7b15bce6a8016b))
+
 ## [1.16.1](https://github.com/mong/mongts/compare/v1.16.0...v1.16.1) (2026-11-04)
 
 
