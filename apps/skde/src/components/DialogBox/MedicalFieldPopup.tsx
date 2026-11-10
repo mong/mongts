@@ -70,11 +70,11 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   );
 
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  const medicalFieldsQuery: UseQueryResult<any, unknown> =
+  const medicalFieldsQuery: UseQueryResult<any, Error> =
     useMedicalFieldsQuery(nordicOnly);
 
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  const registryQuery: UseQueryResult<any, unknown> = useRegisterNamesQuery();
+  const registryQuery: UseQueryResult<any, Error> = useRegisterNamesQuery();
 
   const { registryData, medicalFields: medicalFieldsData } =
     filterSelectableMedicalFields(

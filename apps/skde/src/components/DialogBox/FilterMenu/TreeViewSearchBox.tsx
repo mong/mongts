@@ -24,10 +24,6 @@ function TreeViewSearchBox(props: TreeViewSearchBoxProps) {
           value: optionArray[0].value,
         };
       } else {
-        // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-        console.debug(
-          `Invalid non-array value found when mapping options in TreeViewSearchBox. Value: ${optionArray}`,
-        );
         return null;
       }
     })

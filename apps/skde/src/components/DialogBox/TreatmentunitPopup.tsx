@@ -11,7 +11,7 @@ import {
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useQueryState } from "nuqs";
 import { type Dispatch, type JSX, type SetStateAction, useState } from "react";
-import type { NestedTreatmentUnitName } from "types";
+import type { NestedTreatmentUnitName, UnitNames } from "types";
 import { mainQueryStateConfig } from "@/app_config";
 import { useUnitNamesQuery } from "@/helpers/hooks/apihooks";
 import { LoadingComponent } from "../Placeholders/LoadingComponent/LoadingComponent";
@@ -41,8 +41,7 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
     mainQueryStateConfig.units,
   );
 
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  const unitNamesQuery: UseQueryResult<any, unknown> = useUnitNamesQuery(
+  const unitNamesQuery: UseQueryResult<UnitNames> = useUnitNamesQuery(
     "all",
     context,
     type,

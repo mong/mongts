@@ -82,6 +82,11 @@ export interface OptsTu {
   }[];
 }
 
+export type UnitNames = {
+  opts_tu: OptsTu[];
+  nestedUnitNames: NestedTreatmentUnitName[];
+};
+
 export interface RegisterName {
   id: number;
   rname: string;

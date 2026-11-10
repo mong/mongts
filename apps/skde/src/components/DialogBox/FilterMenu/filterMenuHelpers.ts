@@ -2,6 +2,7 @@ import type { UseQueryResult } from "@tanstack/react-query";
 import type {
   TreeViewFilterSectionNode,
   TreeViewFilterSettingsValue,
+  UnitNames,
 } from "types";
 
 /**
@@ -69,8 +70,7 @@ export const getFilterSettingsValuesMap = (
  * @returns
  */
 export const getTreatmentUnitsTree = (
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  unitNamesQuery: UseQueryResult<any, unknown>,
+  unitNamesQuery: UseQueryResult<UnitNames, unknown>,
 ) => {
   const unitnames = unitNamesQuery.data?.nestedUnitNames;
   if (unitnames === undefined)
