@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.3](https://github.com/mong/mongts/compare/v1.16.2...v1.16.3) (2026-11-10)
+
+
+### Bug Fixes
+
+* advarsel i Vite om native configLoader ([#5179](https://github.com/mong/mongts/issues/5179)) ([8fdb3e8](https://github.com/mong/mongts/commit/8fdb3e81e3d04080a0b66add2bcae9ad893708b6))
+
 ## [1.16.2](https://github.com/mong/mongts/compare/v1.16.1...v1.16.2) (2026-11-10)
 
 
