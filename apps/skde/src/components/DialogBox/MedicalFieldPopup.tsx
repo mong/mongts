@@ -17,10 +17,12 @@ import {
   useMedicalFieldsQuery,
   useRegisterNamesQuery,
 } from "@/helpers/hooks/apihooks";
-import { getMedicalFields } from "../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
-import { getFilterSettingsValuesMap } from "../FilterMenu/TreeViewFilterSection";
-import TreeViewSearchBox from "../FilterMenu/TreeViewSearchBox";
 import { LoadingComponent } from "../Placeholders/LoadingComponent/LoadingComponent";
+import {
+  getFilterSettingsValuesMap,
+  getMedicalFields,
+} from "./FilterMenu/filterMenuHelpers";
+import TreeViewSearchBox from "./FilterMenu/TreeViewSearchBox";
 import { columnColour1, columnColour2 } from "./styles";
 
 type MedicalFieldPopupProps = {
@@ -67,28 +69,23 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
     mainQueryStateConfig.selected_row,
   );
 
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  const medicalFieldsQuery: UseQueryResult<any, unknown> =
+  const medicalFieldsQuery: UseQueryResult<Medfield[], Error> =
     useMedicalFieldsQuery(nordicOnly);
 
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  const registryQuery: UseQueryResult<any, unknown> = useRegisterNamesQuery();
+  const registryQuery: UseQueryResult<RegisterName[], Error> =
+    useRegisterNamesQuery();
 
   const { registryData, medicalFields: medicalFieldsData } =
     filterSelectableMedicalFields(
-      (medicalFieldsQuery.data as Medfield[] | undefined) ?? [],
-      (registryQuery.data as RegisterName[] | undefined) ?? [],
+      medicalFieldsQuery.data ?? [],
+      registryQuery.data ?? [],
       nordicOnly,
     );
 
   const dataIsFetching =
     medicalFieldsQuery.isFetching && registryQuery.isFetching;
 
-  const medicalFieldsTree = getMedicalFields(
-    medicalFieldsData,
-    registryData,
-    true,
-  );
+  const medicalFieldsTree = getMedicalFields(medicalFieldsData, registryData);
 
   const medicalFieldsValueMap = getFilterSettingsValuesMap(
     medicalFieldsTree.treedata,

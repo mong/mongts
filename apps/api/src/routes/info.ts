@@ -63,12 +63,9 @@
  *            type: string
  *          description: A list of the registries belonging to the medical field
  *      example:
- *        - shortName: hjerte
- *          name: Hjerte- og karsykdommer
- *          registers: [hjerneslag,hjerteinfarkt,noric,norkar,hjertesvikt,hjertestans,ablanor,hjertekirurgi]
- *        - shortname: luft
- *          name: Luftveier
- *          registers: [mekvent]
+ *        shortName: hjerte
+ *        name: Hjerte- og karsykdommer
+ *        registers: [hjerneslag,hjerteinfarkt,noric,norkar,hjertesvikt,hjertestans,ablanor,hjertekirurgi]
  *    URLs:
  *      type: object
  *      properties:
@@ -76,12 +73,8 @@
  *          type: string
  *          description: The short name of the HF or RHF
  *      example:
- *        - shortName: Førde HF
- *          url: https://www.helse-forde.no/
- *        - shortName: Nord-Trøndelag HF
- *          url: https://www.hnt.no/
- *        - shortName: Finnmark HF
- *          url: https://www.finnmarkssykehuset.no/
+ *        shortName: Førde HF
+ *        url: https://www.helse-forde.no/
  *    ResidentData:
  *      type: object
  *      properties:

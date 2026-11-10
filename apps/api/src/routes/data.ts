@@ -328,20 +328,13 @@
  *          type: integer
  *          description: The year for which the rank was given
  *      example:
- *        - id: 1
- *          name: hjerneslag
- *          full_name: Norsk hjerneslagregister
- *          short_name: Hjerneslag
- *          url: https://www.kvalitetsregistre.no/registeroversikt/norsk-hjerneslagregister
- *          verdict: 3
- *          year: 2013
- *        - id: 7
- *          name: nger
- *          full_name: Norsk gynekologisk endoskopiregister
- *          short_name: Gynekologisk endoskopi
- *          url: https://www.kvalitetsregistre.no/registeroversikt/norsk-gynekologisk-endoskopiregister
- *          verdict: 2
- *          year: 2013
+ *        id: 1
+ *        name: hjerneslag
+ *        full_name: Norsk hjerneslagregister
+ *        short_name: Hjerneslag
+ *        url: https://www.kvalitetsregistre.no/registeroversikt/norsk-hjerneslagregister
+ *        verdict: 3
+ *        year: 2013
  *    RegistryEvaluation:
  *      type: object
  *      properties:

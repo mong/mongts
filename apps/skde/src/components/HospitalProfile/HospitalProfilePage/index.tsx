@@ -12,7 +12,7 @@ import { Toolbar } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
 import { useQueryState } from "nuqs";
 import { type JSX, useState } from "react";
-import type { NestedTreatmentUnitName, OptsTu } from "types";
+import type { UnitNames } from "types";
 import { mainQueryStateConfig } from "@/app_config";
 import LoadingFallback from "@/components/LoadingFallback";
 import { getUnitFullName } from "@/helpers/functions";
@@ -59,10 +59,12 @@ const SykehusprofilPage = (): JSX.Element => {
   // Queries //
   // ####### //
 
-  const unitNamesQuery: UseQueryResult<
-    { nestedUnitNames: NestedTreatmentUnitName[]; opts_tu: OptsTu[] },
-    Error
-  > = useUnitNamesQuery("all", "caregiver", "ind", false);
+  const unitNamesQuery: UseQueryResult<UnitNames, Error> = useUnitNamesQuery(
+    "all",
+    "caregiver",
+    "ind",
+    false,
+  );
 
   // URLs for the web pages to the different treatment units
   const unitUrlsQuery: UseQueryResult<
