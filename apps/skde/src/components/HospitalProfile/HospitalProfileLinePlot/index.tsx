@@ -27,27 +27,29 @@ export const HospitalProfileLinePlot = (
 
   return (
     <>
-      <h4 className="pb-6">Måloppnåelse siste 10 år</h4>
+      <div className="flex items-center justify-between">
+        <h4 className="pb-6">Måloppnåelse siste 10 år</h4>
 
-      <div className="mt-2 mb-3">
-        <ToggleButtonGroup
-          compact={false}
-          disabled={false}
-          exclusive
-          onChange={(_e, newValue: boolean | null) => {
-            if (newValue === null) return;
-            setNormalise(newValue);
-          }}
-          orientation="horizontal"
-          value={normalise}
-        >
-          <ToggleButton aria-label="andel" value={true}>
-            Andel
-          </ToggleButton>
-          <ToggleButton aria-label="antall" value={false}>
-            Antall
-          </ToggleButton>
-        </ToggleButtonGroup>
+        <div className="mr-13 mb-6">
+          <ToggleButtonGroup
+            compact={true}
+            disabled={false}
+            exclusive
+            onChange={(_e, newValue: boolean | null) => {
+              if (newValue === null) return;
+              setNormalise(newValue);
+            }}
+            orientation="horizontal"
+            value={normalise}
+          >
+            <ToggleButton aria-label="andel" value={true}>
+              Andel
+            </ToggleButton>
+            <ToggleButton aria-label="antall" value={false}>
+              Antall
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </div>
       </div>
 
       <div id="plot-window" className="p-0">
