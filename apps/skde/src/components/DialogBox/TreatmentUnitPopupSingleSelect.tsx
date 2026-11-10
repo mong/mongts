@@ -19,10 +19,12 @@ import React, {
 import type { NestedTreatmentUnitName } from "types";
 import { mainQueryStateConfig } from "@/app_config";
 import { useUnitNamesQuery } from "@/helpers/hooks/apihooks";
-import { getTreatmentUnitsTree } from "../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
-import { getFilterSettingsValuesMap } from "../FilterMenu/TreeViewFilterSection";
-import TreeViewSearchBox from "../FilterMenu/TreeViewSearchBox";
 import { LoadingComponent } from "../Placeholders/LoadingComponent/LoadingComponent";
+import {
+  getFilterSettingsValuesMap,
+  getTreatmentUnitsTree,
+} from "./FilterMenu/filterMenuHelpers";
+import TreeViewSearchBox from "./FilterMenu/TreeViewSearchBox";
 import { columnColour1, columnColour2, columnColour3 } from "./styles";
 
 type TreatmentUnitPopupSingleSelectProps = {

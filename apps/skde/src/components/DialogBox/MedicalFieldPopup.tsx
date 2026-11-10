@@ -17,10 +17,12 @@ import {
   useMedicalFieldsQuery,
   useRegisterNamesQuery,
 } from "@/helpers/hooks/apihooks";
-import { getMedicalFields } from "../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
-import { getFilterSettingsValuesMap } from "../FilterMenu/TreeViewFilterSection";
-import TreeViewSearchBox from "../FilterMenu/TreeViewSearchBox";
 import { LoadingComponent } from "../Placeholders/LoadingComponent/LoadingComponent";
+import {
+  getFilterSettingsValuesMap,
+  getMedicalFields,
+} from "./FilterMenu/filterMenuHelpers";
+import TreeViewSearchBox from "./FilterMenu/TreeViewSearchBox";
 import { columnColour1, columnColour2 } from "./styles";
 
 type MedicalFieldPopupProps = {
@@ -84,11 +86,7 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   const dataIsFetching =
     medicalFieldsQuery.isFetching && registryQuery.isFetching;
 
-  const medicalFieldsTree = getMedicalFields(
-    medicalFieldsData,
-    registryData,
-    true,
-  );
+  const medicalFieldsTree = getMedicalFields(medicalFieldsData, registryData);
 
   const medicalFieldsValueMap = getFilterSettingsValuesMap(
     medicalFieldsTree.treedata,

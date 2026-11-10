@@ -207,3 +207,22 @@ export type IndicatorLineChartDataPoint = {
   x: number;
   y: number;
 };
+
+type FilterSettingsValue = { valueLabel: string; value: string };
+
+/**
+ * The structure of a node in the tree data used with the TreeViewFilterSection
+ * component
+ */
+export type TreeViewFilterSectionNode = {
+  nodeValue: FilterSettingsValue;
+  children?: TreeViewFilterSectionNode[];
+};
+
+/**
+ * Same as FilterSettingsValue with the addition of a property with the
+ * parent ids as an array of strings.
+ */
+export type TreeViewFilterSettingsValue = FilterSettingsValue & {
+  parentIds: string[];
+};

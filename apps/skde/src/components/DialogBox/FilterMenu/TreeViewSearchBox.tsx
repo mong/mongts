@@ -1,5 +1,5 @@
 import { Autocomplete, TextField } from "@mui/material";
-import type { TreeViewFilterSettingsValue } from "./TreeViewFilterSection";
+import type { TreeViewFilterSettingsValue } from "types";
 
 type TreeViewSearchBoxProps = {
   hintText?: string;
