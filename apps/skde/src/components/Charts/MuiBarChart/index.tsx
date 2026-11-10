@@ -46,6 +46,21 @@ type MuiBarChartV2Props = {
   >;
 };
 
+const ExportBarLabel = (props: BarLabelProps) => {
+  const { x, y, xOrigin, height, layout, ...otherProps } = props;
+
+  return (
+    <text
+      {...otherProps}
+      x={xOrigin + 8}
+      y={y + height / 2}
+      textAnchor="start"
+      dominantBaseline="central"
+      style={{ fontSize: 12, fontWeight: 700, pointerEvents: "none" }}
+    />
+  );
+};
+
 export const MuiBarChartV2 = (props: MuiBarChartV2Props) => {
   const {
     data,
@@ -226,21 +241,6 @@ export const MuiBarChartV2 = (props: MuiBarChartV2Props) => {
       denominator: currentDenominator[item.dataIndex],
       dataFormat,
     });
-  };
-
-  const ExportBarLabel = (props: BarLabelProps) => {
-    const { x, y, xOrigin, height, layout, ...otherProps } = props;
-
-    return (
-      <text
-        {...otherProps}
-        x={xOrigin + 8}
-        y={y + height / 2}
-        textAnchor="start"
-        dominantBaseline="central"
-        style={{ fontSize: 12, fontWeight: 700, pointerEvents: "none" }}
-      />
-    );
   };
 
   const colorDefault = "var(--bar-1)";
