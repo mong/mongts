@@ -25,7 +25,7 @@ export const LineBackground = (props: LineBackgroundProps) => {
   const levelDirection = data.levelDirection;
 
   // The highest value can be over 100
-  const yDefaultLimit = Math.max(yMaxLimit, 1);
+  const yDefaultLimit = yMaxLimit <= 1 ? 1 : yMaxLimit;
 
   const yMin = zoom ? yMinLimit : 0;
   const yMax = percentage && !zoom ? yDefaultLimit : yMaxLimit;

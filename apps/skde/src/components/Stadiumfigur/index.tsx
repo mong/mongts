@@ -18,110 +18,8 @@ const levelAColour = "#58A55C";
 const levelBColour = "#FD9C00";
 const levelCColour = "#D85140";
 const noLevelColour = "#777777";
+
 const reportYear = defaultReviewYear;
-
-type XyData = { x: number; y: string };
-
-type PlotData = {
-  x: number;
-  y: number;
-  colour: string;
-};
-
-const StyledTypography = styled(Typography)(() => ({
-  fontSize: 26,
-  fontWeight: 500,
-  fontFamily: "Arial",
-}));
-
-const PlotComponent = (props: { plotData: PlotData[] }) => {
-  const { plotData } = props;
-
-  return (
-    <Stack
-      direction="column"
-      sx={{
-        alignItems: "center",
-      }}
-    >
-      <Stack
-        direction="row"
-        spacing={2}
-        sx={{
-          alignItems: "center",
-          marginLeft: 10,
-          marginTop: 10,
-        }}
-      >
-        <FaCircle style={{ color: levelAColour, fontSize: "1.2rem" }} />
-        <StyledTypography>A</StyledTypography>
-        <FaCircle style={{ color: levelBColour, fontSize: "1.2rem" }} />
-        <StyledTypography>B</StyledTypography>
-        <FaCircle style={{ color: levelCColour, fontSize: "1.2rem" }} />
-        <StyledTypography>C</StyledTypography>
-        <FaCircle style={{ color: noLevelColour, fontSize: "1.2rem" }} />
-        <StyledTypography>Ingen nivå</StyledTypography>
-      </Stack>
-      <LineChartPro
-        dataset={plotData}
-        series={[
-          {
-            curve: "linear",
-            dataKey: "y",
-            showMark: true,
-            shape: "circle",
-            colorGetter: (data) => {
-              return plotData[data.dataIndex].colour;
-            },
-          },
-        ]}
-        xAxis={[
-          {
-            scaleType: "point",
-            dataKey: "x",
-            tickLabelStyle: { fontSize: 16 },
-            label: "År",
-            labelStyle: { fontSize: 20 },
-            valueFormatter: (value) => value.toString(),
-            height: 60,
-          },
-        ]}
-        width={1000}
-        height={700}
-        yAxis={[
-          {
-            min: 0.8,
-            max: 4.2,
-            tickMinStep: 1,
-            tickLabelStyle: { fontSize: 16 },
-          },
-        ]}
-      />
-    </Stack>
-  );
-};
-
-type TabPanelProps = {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-};
-
-function CustomTabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-    </div>
-  );
-}
 
 export default function Stadiumfigur() {
   // Copy-paste code from https://mui.com/material-ui/react-tabs/
@@ -130,6 +28,28 @@ export default function Stadiumfigur() {
   const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+
+  interface TabPanelProps {
+    children?: React.ReactNode;
+    index: number;
+    value: number;
+  }
+
+  function CustomTabPanel(props: TabPanelProps) {
+    const { children, value, index, ...other } = props;
+
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+      </div>
+    );
+  }
 
   function a11yProps(index: number) {
     return {
@@ -174,6 +94,8 @@ export default function Stadiumfigur() {
     );
   }
 
+  type XyData = { x: number; y: string };
+
   const levelToColour = (level: string) => {
     return level === "A"
       ? levelAColour
@@ -199,8 +121,79 @@ export default function Stadiumfigur() {
         x: new Date(row.x, 0).getFullYear(),
         y: Number(row.y.substring(0, 1)),
         colour: levelToColour(row.y.substring(1, 2)),
-      } as PlotData;
+      } as { x: number; y: number; colour: string };
     });
+
+  const StyledTypography = styled(Typography)(() => ({
+    fontSize: 26,
+    fontWeight: 500,
+    fontFamily: "Arial",
+  }));
+
+  const PlotComponent = () => {
+    return (
+      <Stack
+        direction="column"
+        sx={{
+          alignItems: "center",
+        }}
+      >
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            alignItems: "center",
+            marginLeft: 10,
+            marginTop: 10,
+          }}
+        >
+          <FaCircle style={{ color: levelAColour, fontSize: "1.2rem" }} />
+          <StyledTypography>A</StyledTypography>
+          <FaCircle style={{ color: levelBColour, fontSize: "1.2rem" }} />
+          <StyledTypography>B</StyledTypography>
+          <FaCircle style={{ color: levelCColour, fontSize: "1.2rem" }} />
+          <StyledTypography>C</StyledTypography>
+          <FaCircle style={{ color: noLevelColour, fontSize: "1.2rem" }} />
+          <StyledTypography>Ingen nivå</StyledTypography>
+        </Stack>
+        <LineChartPro
+          dataset={plotData}
+          series={[
+            {
+              curve: "linear",
+              dataKey: "y",
+              showMark: true,
+              shape: "circle",
+              colorGetter: (data) => {
+                return plotData[data.dataIndex].colour;
+              },
+            },
+          ]}
+          xAxis={[
+            {
+              scaleType: "point",
+              dataKey: "x",
+              tickLabelStyle: { fontSize: 16 },
+              label: "År",
+              labelStyle: { fontSize: 20 },
+              valueFormatter: (value) => value.toString(),
+              height: 60,
+            },
+          ]}
+          width={1000}
+          height={700}
+          yAxis={[
+            {
+              min: 0.8,
+              max: 4.2,
+              tickMinStep: 1,
+              tickLabelStyle: { fontSize: 16 },
+            },
+          ]}
+        />
+      </Stack>
+    );
+  };
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -216,7 +209,7 @@ export default function Stadiumfigur() {
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-        <PlotComponent plotData={plotData} />
+        <PlotComponent />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
         <h3>{`Ekspertgruppens vurdering av årsrapporten for ${reportYear}`}</h3>

@@ -69,7 +69,7 @@ export const MuiLineChart = (props: MuiLineChartProps) => {
   const yDifference = yMaxLimit - yMinLimit;
 
   // The highest value can be over 100
-  const yDefaultLimit = Math.max(yMaxLimit, 1);
+  const yDefaultLimit = yMaxLimit <= 1 ? 1 : yMaxLimit;
 
   const formatSmallPercentage = (percentageValue: number): string => {
     const absValue = Math.abs(percentageValue);
