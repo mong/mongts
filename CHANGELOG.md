@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.4](https://github.com/mong/mongts/compare/v1.16.3...v1.16.4) (2026-11-11)
+
+
+### Bug Fixes
+
+* **BK:** strekk ut bakgrunnsfarge i søylediagram til høyeste resultat ([#5185](https://github.com/mong/mongts/issues/5185)) ([c7133f1](https://github.com/mong/mongts/commit/c7133f1695b418b166de347c80008af2b7d82a15))
+
 ## [1.16.3](https://github.com/mong/mongts/compare/v1.16.2...v1.16.3) (2026-11-10)
 
 
