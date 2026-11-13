@@ -16,13 +16,15 @@ import React, {
   type SetStateAction,
   useState,
 } from "react";
-import type { NestedTreatmentUnitName } from "types";
+import type { NestedTreatmentUnitName, UnitNames } from "types";
 import { mainQueryStateConfig } from "@/app_config";
 import { useUnitNamesQuery } from "@/helpers/hooks/apihooks";
-import { getTreatmentUnitsTree } from "../FilterMenu/TreatmentQualityFilterMenu/filterMenuOptions";
-import { getFilterSettingsValuesMap } from "../FilterMenu/TreeViewFilterSection";
-import TreeViewSearchBox from "../FilterMenu/TreeViewSearchBox";
 import { LoadingComponent } from "../Placeholders/LoadingComponent/LoadingComponent";
+import {
+  getFilterSettingsValuesMap,
+  getTreatmentUnitsTree,
+} from "./FilterMenu/filterMenuHelpers";
+import TreeViewSearchBox from "./FilterMenu/TreeViewSearchBox";
 import { columnColour1, columnColour2, columnColour3 } from "./styles";
 
 type TreatmentUnitPopupSingleSelectProps = {
@@ -45,10 +47,12 @@ export const TreatmentUnitPopupSingleSelect = (
     mainQueryStateConfig.selected_treatment_unit,
   );
 
-  const unitNamesQuery: UseQueryResult<
-    { nestedUnitNames: NestedTreatmentUnitName[] },
-    unknown
-  > = useUnitNamesQuery("all", context, type, false);
+  const unitNamesQuery: UseQueryResult<UnitNames, Error> = useUnitNamesQuery(
+    "all",
+    context,
+    type,
+    false,
+  );
   // Sort nested unit names by RHF
   const unitNames = unitNamesQuery.data?.nestedUnitNames.sort(
     (a: NestedTreatmentUnitName, b: NestedTreatmentUnitName) => {

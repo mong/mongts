@@ -25,7 +25,7 @@ export const AchievementResultsBars = (
   achievementParams: AchievementResultsBarsProps,
 ) => {
   // Fetch aggregated data
-  const indicatorQuery: UseQueryResult<Indicator[], unknown> =
+  const indicatorQuery: UseQueryResult<Indicator[], Error> =
     useIndicatorQuery(achievementParams);
 
   if (indicatorQuery.isFetching) {

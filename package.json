@@ -1,6 +1,6 @@
 {
   "name": "mongts",
-  "packageManager": "pnpm@12.9.1",
+  "packageManager": "pnpm@12.18.0",
   "private": true,
   "scripts": {
     "build": "turbo run build",
@@ -21,12 +21,12 @@
     ]
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.15",
+    "@biomejs/biome": "2.6.4",
     "@commitlint/cli": "^21.0.0",
     "@commitlint/config-conventional": "^21.0.0",
-    "@types/node": "26.6.1",
+    "@types/node": "26.6.6",
     "husky": "^9.1.7",
-    "knip": "6.40.0",
+    "knip": "6.43.0",
     "lint-staged": "17.6.0",
     "turbo": "2.11.10",
     "typescript": "5.9.3"

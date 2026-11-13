@@ -1,5 +1,66 @@
 import type { UseQueryResult } from "@tanstack/react-query";
-import type { TreeViewFilterSectionNode } from "../TreeViewFilterSection";
+import type {
+  TreeViewFilterSectionNode,
+  TreeViewFilterSettingsValue,
+  UnitNames,
+} from "types";
+
+/**
+ * Flattens the tree data into an array of FilterSettingsValues
+ *
+ * @param parent The parent node
+ * @param treeData The tree data with the TreeViewFilterSectionNode structure
+ * @returns A flat array of the tree's FilterSettingsValue objects
+ */
+const flattenTreeValues = (
+  parentIds: string[],
+  treeData: TreeViewFilterSectionNode[],
+) => {
+  const flattenedValues: TreeViewFilterSettingsValue[] = [];
+
+  treeData.forEach((node) => {
+    const nodeWithParentIds = { ...node.nodeValue, parentIds: parentIds };
+    flattenedValues.push(nodeWithParentIds);
+    if (node.children) {
+      flattenedValues.push(
+        ...flattenTreeValues(
+          [...parentIds, node.nodeValue.value],
+          node.children,
+        ),
+      );
+    }
+  });
+
+  return flattenedValues;
+};
+
+/**
+ * Creates a map from treeData that can be used for looking up
+ * FilterSettingValues by values/nodeIds
+ *
+ * @param treeData The TreeViewFilterSectionNode structure
+ * @returns A map with the string values as keys and TreeViewFilterSettingsValue-objects as values
+ */
+export const getFilterSettingsValuesMap = (
+  treeData: TreeViewFilterSectionNode[],
+) => {
+  const filterSettingsValuesMap = new Map<
+    string,
+    TreeViewFilterSettingsValue[]
+  >();
+  const treeValues = flattenTreeValues([], treeData);
+  treeValues.forEach((value) => {
+    const mapEntry: TreeViewFilterSettingsValue[] = filterSettingsValuesMap.has(
+      value.value,
+    )
+      ? (filterSettingsValuesMap.get(value.value) ?? [])
+      : [];
+
+    mapEntry.push(value);
+    filterSettingsValuesMap.set(value.value, mapEntry);
+  });
+  return filterSettingsValuesMap;
+};
 
 /**
  * Builds tree data for the treatment units filter section from
@@ -9,8 +70,7 @@ import type { TreeViewFilterSectionNode } from "../TreeViewFilterSection";
  * @returns
  */
 export const getTreatmentUnitsTree = (
-  // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
-  unitNamesQuery: UseQueryResult<any, unknown>,
+  unitNamesQuery: UseQueryResult<UnitNames, unknown>,
 ) => {
   const unitnames = unitNamesQuery.data?.nestedUnitNames;
   if (unitnames === undefined)
@@ -56,19 +116,6 @@ export const getTreatmentUnitsTree = (
   };
 };
 
-/** The prefix used in the query params for the register names */
-const registerQueryParamPrefix = "reg-";
-
-/**
- * Formats a register name for use in query parameters, i.e., adding a prefix.
- *
- * @param register Plain register short name
- * @returns Register name formatted for use in query parameters
- */
-const encodeRegisterQueryParam = (register: string) => {
-  return `${registerQueryParamPrefix}${register}`;
-};
-
 /**
  * Gets the medical field options available for selection
  *
@@ -79,7 +126,6 @@ export const getMedicalFields = (
   medicalFieldData: any,
   // biome-ignore lint: ignored to pass ci checks, but should be fixed properly in the future
   registryData: any,
-  noPrefix = false,
 ) => {
   let medicalFields: TreeViewFilterSectionNode[];
   if (medicalFieldData && registryData) {
@@ -90,12 +136,9 @@ export const getMedicalFields = (
           valueLabel: field.name,
         },
         children: field.registers?.map((register: string) => {
-          const prefixedRegister = noPrefix
-            ? register
-            : encodeRegisterQueryParam(register);
           return {
             nodeValue: {
-              value: prefixedRegister,
+              value: register,
               valueLabel:
                 registryData.find(
                   (reg: { rname: string }) => reg.rname === register,
@@ -108,11 +151,6 @@ export const getMedicalFields = (
   } else {
     medicalFields = [];
   }
-
-  // Add the option "Alle fagområder" to the top of the selection tree
-  // medicalFields.unshift({
-  //   nodeValue: { value: "all", valueLabel: "Alle fagområder" },
-  // });
 
   const medicalFieldOptions = {
     treedata: medicalFields,

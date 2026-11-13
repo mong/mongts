@@ -26,14 +26,18 @@ export const BarBackground = (props: BarBackgroundProps) => {
   const levelGreen = data.levelGreen;
   const levelYellow = data.levelYellow;
   const levelDirection = data.levelDirection;
-  const xMin = 0;
+
   const xScale = useXScale();
 
   if (data.data === undefined) {
     return null;
   }
 
-  const xMax = percentage && !zoom ? 1 : xMaxLimit;
+  // The highest value can be over 100
+  const xDefaultLimit = Math.max(xMaxLimit, 1);
+
+  const xMin = 0;
+  const xMax = percentage && !zoom ? xDefaultLimit : xMaxLimit;
 
   const xStart = xScale(xMin);
   const xStop = xScale(xMax);
