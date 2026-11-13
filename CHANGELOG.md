@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.16.5](https://github.com/mong/mongts/compare/v1.16.4...v1.16.5) (2026-11-13)
+
+
+### Bug Fixes
+
+* fjern hoisted nodelinker ([#5201](https://github.com/mong/mongts/issues/5201)) ([3b79aa0](https://github.com/mong/mongts/commit/3b79aa0aa4988b0db701dda7f3bd15ea8114db5e))
+
 ## [1.16.4](https://github.com/mong/mongts/compare/v1.16.3...v1.16.4) (2026-11-11)
 
 
