@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import type { UseQueryResult } from "@tanstack/react-query";
+import Link from "next/link";
 import type { DataPoint, IndicatorData, RegisterData } from "types";
 import { customFormat, level2, newestLevelSymbols } from "@/helpers/functions";
 import { useIndicatorQuery } from "@/helpers/hooks/apihooks";
@@ -49,6 +50,8 @@ const IndicatorRow = (
   rowNumber: number,
   lastYear: number,
   data: IndicatorData[],
+  registerData: RegisterData[],
+  unitName: string,
 ) => {
   //const indInfo = indicatorInfo.find((row) => row.indId === indId);
 
@@ -72,12 +75,34 @@ const IndicatorRow = (
     (row) => row.indId === indInfo?.indicatorID,
   )?.registry;
 
+  /* We only have the pretty name of the registries so
+   * we'll use this func to find the actual name */
+  const registryKey = registerData.find((reg) =>
+    reg.indicatorData.some((ind) => ind.indicatorID === indId),
+  )?.registerName;
+
+  const href = registryKey
+    ? `/behandlingskvalitet/?${new URLSearchParams({
+        registries: registryKey,
+        units: `Nasjonalt,${unitName}`,
+        selected_row: indId,
+      })}`
+    : undefined;
+
   return (
     <TableRow key={rowNumber}>
       <TableCell sx={{ width: "8rem" }}>
         <b>{`Indikator ${rowNumber}`}</b>
       </TableCell>
-      <TableCell>{indInfo?.indicatorTitle}</TableCell>
+      <TableCell>
+        {href ? (
+          <Link href={href} className="no-underline">
+            {indInfo?.indicatorTitle}
+          </Link>
+        ) : (
+          indInfo?.indicatorTitle
+        )}
+      </TableCell>
       <TableCell>{registerName}</TableCell>
       <TableCell>
         <Stack
@@ -262,7 +287,7 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
       </TableHead>
       <TableBody>
         {selectedIndicator.commonInd.map((row, index) =>
-          IndicatorRow(row, index + 1, lastYear, indicatorData),
+          IndicatorRow(row, index + 1, lastYear, indicatorData, data, unitName),
         )}
       </TableBody>
     </>
@@ -285,6 +310,8 @@ export const SelectedIndicatorTable = (props: SelectedIndicatorTableProps) => {
             index + selectedIndicator.commonInd.length + 1,
             lastYear,
             indicatorData,
+            data,
+            unitName,
           ),
         )}
       </TableBody>
