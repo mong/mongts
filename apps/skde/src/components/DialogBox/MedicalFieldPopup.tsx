@@ -270,8 +270,13 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
   };
 
   const handleSearch = (itemId: string[]) => {
-    const newRegistrySelection = [...registrySelection, ...itemId];
-    setRegistrySelection([...new Set(newRegistrySelection)]);
+    const children = medicalFieldsTree.treedata
+      .filter((node) => itemId.includes(node.nodeValue.value))
+      .flatMap((node) => node.children?.map((c) => c.nodeValue.value) ?? []);
+
+    setRegistrySelection((prev) => [
+      ...new Set([...prev, ...itemId, ...children]),
+    ]);
   };
 
   const handleClear = () => {
@@ -334,7 +339,6 @@ export const MedicalFieldPopup = (props: MedicalFieldPopupProps) => {
                   marginBottom: 0,
                 }}
               >
-                <div className="text-sm font-semibold pb-2">Søk</div>
                 <TreeViewSearchBox
                   options={Array.from(medicalFieldsValueMap.values())}
                   onSearch={handleSearch}

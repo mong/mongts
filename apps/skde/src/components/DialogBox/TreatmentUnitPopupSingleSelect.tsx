@@ -310,7 +310,6 @@ export const TreatmentUnitPopupSingleSelect = (
           ) : (
             <div className="flex flex-1 min-h-0 flex-col">
               <Box padded={false} color="transparent" className="pb-6">
-                <div className="text-sm font-semibold pb-2">Søk</div>
                 <TreeViewSearchBox
                   size="small"
                   options={Array.from(treatmentUnitsValueMap.values())}
