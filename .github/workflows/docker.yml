@@ -70,9 +70,9 @@ jobs:
       - name: Test docker image
         run: |
           docker build -t test --file apps/api/Dockerfile .
-          docker run --name t -e ORIGIN="skde.no" -d test
-          sleep 5 # wait for it to die, if not working
-          docker inspect -f '{{.State.Running}}' t | grep -q true
+          docker run --name api-test -e ORIGIN="skde.no" -d test
+          sleep 5 # a crash on startup fails the next line
+          docker inspect -f '{{.State.Running}}' api-test | grep -q true
 
       - name: Build and push to Docker Hub
         uses: docker/build-push-action@v7
