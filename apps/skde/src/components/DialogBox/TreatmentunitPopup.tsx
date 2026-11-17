@@ -378,7 +378,6 @@ export const TreatmentUnitPopup = (props: TreatmentUnitPopupProps) => {
                   marginBottom: 0,
                 }}
               >
-                <div className="text-sm font-semibold pb-2">Søk</div>
                 <TreeViewSearchBox
                   options={Array.from(treatmentUnitsValueMap.values())}
                   onSearch={handleSearch}
