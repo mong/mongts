@@ -4,10 +4,14 @@ on:
     branches: [main, develop]
     paths:
       - "apps/api/**"
+      - "pnpm-workspace.yaml"
+      - ".github/workflows/docker.yml"
   pull_request:
     branches: [main, develop, dependency_updates]
     paths:
       - "apps/api/**"
+      - "pnpm-workspace.yaml"
+      - ".github/workflows/docker.yml"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -66,9 +70,9 @@ jobs:
       - name: Test docker image
         run: |
           docker build -t test --file apps/api/Dockerfile .
-          docker run -e ORIGIN="skde.no" -d test
-          sleep 5 # wait for it to die, if not working
-          docker kill $(docker ps --filter ancestor=test -q) || true
+          docker run --name api-test -e ORIGIN="skde.no" -d test
+          sleep 5 # a crash on startup fails the next line
+          docker inspect -f '{{.State.Running}}' api-test | grep -q true
 
       - name: Build and push to Docker Hub
         uses: docker/build-push-action@v7
