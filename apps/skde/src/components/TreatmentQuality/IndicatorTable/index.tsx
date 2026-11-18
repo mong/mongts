@@ -304,13 +304,12 @@ export const IndicatorTableV3 = (props: IndicatorTableV3Props) => {
 
   return (
     <div className="w-full max-w-360" data-testid="IndicatorTable">
-      <div className="flex md:hidden flex-col gap-(--spacing-4) p-8 text-brand-primary-600">
+      <div className="flex sm:hidden flex-col gap-(--spacing-4) p-8 text-brand-primary-600">
         <RotateDevice message="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din." />
       </div>
-      <div className="hidden md:flex flex-col w-full justify-between">
+      <div className="hidden sm:flex flex-col w-full justify-between">
         <RegisterAccordion
           registries={reshapedData}
-          smallScreenMessage="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din."
           setCurrentContext={setClickedIndicatorContext}
           expandedKey={selectedRow}
           onExpandedChange={(key) => {
