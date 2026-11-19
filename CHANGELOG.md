@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.17.0](https://github.com/mong/mongts/compare/v1.16.4...v1.17.0) (2026-11-19)
+
+
+### Features
+
+* added links to profile indicators ([#5197](https://github.com/mong/mongts/issues/5197)) ([901c2b1](https://github.com/mong/mongts/commit/901c2b15b5e0743d1d559fb6d9801d296ac5c44c)), closes [#5144](https://github.com/mong/mongts/issues/5144)
+
+
+### Bug Fixes
+
+* broad category selection ([#5210](https://github.com/mong/mongts/issues/5210)) ([ebac2a0](https://github.com/mong/mongts/commit/ebac2a0508bf9cb75c11c39d2a5f93beaaf2f855))
+* **deps:** update dependency express-rate-limit from v8.7.1 to v8.7.3 ([#5199](https://github.com/mong/mongts/issues/5199)) ([1f72b11](https://github.com/mong/mongts/commit/1f72b11a98f34aa8362d176e4104d3a77dff26b3))
+* **deps:** update material-ui monorepo from v9.16.0 to v9.17.0 ([#5206](https://github.com/mong/mongts/issues/5206)) ([5f03821](https://github.com/mong/mongts/commit/5f03821082b57e2af7d8bd25376bb79886712838))
+* **deps:** update tanstack-query monorepo from v5.105.0 to v5.106.1 ([#5207](https://github.com/mong/mongts/issues/5207)) ([36880da](https://github.com/mong/mongts/commit/36880da7e381b23a32c6ec08a170f6fe5e68699d))
+* fail docker test step when container crashes ([#5212](https://github.com/mong/mongts/issues/5212)) ([fb82166](https://github.com/mong/mongts/commit/fb82166542ed0f436bf3bd12b71a489d3f896832))
+* fjern hoisted nodelinker ([#5201](https://github.com/mong/mongts/issues/5201)) ([3b79aa0](https://github.com/mong/mongts/commit/3b79aa0aa4988b0db701dda7f3bd15ea8114db5e))
+* oppdater schema i biome.json ([#5217](https://github.com/mong/mongts/issues/5217)) ([d95fcd0](https://github.com/mong/mongts/commit/d95fcd0568b4e2c1630ecd94b82592421e0d49ff))
+
 ## [1.16.4](https://github.com/mong/mongts/compare/v1.16.3...v1.16.4) (2026-11-11)
 
 
