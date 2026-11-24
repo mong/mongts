@@ -259,7 +259,7 @@ export const TreatmentQualityPage = () => {
           />
         ) : selectedMedicalFields.length > 0 && registerData ? (
           <Box
-            className="hidden md:flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
+            className="hidden sm:flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
             border
             color="white"
           >
@@ -272,7 +272,7 @@ export const TreatmentQualityPage = () => {
           <>
             <Box
               border
-              className="hidden md:flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
+              className="hidden sm:flex flex-col items-center justify-center text-brand-primary-600 gap-10 min-h-100 my-10"
               color="white"
             >
               <h3>Velg et fagområde du vil se resultater fra</h3>
@@ -280,7 +280,7 @@ export const TreatmentQualityPage = () => {
                 Velg fagområde
               </Button>
             </Box>
-            <div className="flex md:hidden flex-col py-8 text-brand-primary-600">
+            <div className="flex sm:hidden flex-col py-8 text-brand-primary-600">
               <RotateDevice message="Innholdet støttes kun på bredere skjermer. Prøv å snu enheten din." />
             </div>
           </>
