@@ -71,9 +71,9 @@ const TrendAnalysis = (props: TrendAnalysisProps) => {
   const redData = data[2];
 
   const greenDifference = Math.round(
-    (greenData[pastYears].y - greenData[0].y) * 100,
+    (greenData[pastYears].y - greenData[0].y) / 10,
   );
-  const redDifference = Math.round((redData[pastYears].y - redData[0].y) * 100);
+  const redDifference = Math.round((redData[pastYears].y - redData[0].y) / 10);
 
   return (
     <Box
@@ -122,16 +122,16 @@ const TrendAnalysisCard = ({
       <Box
         rounded={false}
         padded={false}
-        className="rounded-lg py-10 pl-12 pr-0 h-159"
+        className="rounded-lg py-10 pl-12 pr-0 h-full"
       >
         <HospitalProfileLinePlot chartData={chartData} />
       </Box>
 
-      <TrendAnalysis
+      {/* <TrendAnalysis
         data={chartData}
         lastYear={lastYear}
         pastYears={pastYears}
-      />
+      /> */}
     </>
   );
 };
