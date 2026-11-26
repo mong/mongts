@@ -18,7 +18,7 @@ export const HospitalProfileLinePlot = (
 
   const indicatorParams: IndicatorLinechartParamsV2 = {
     chartData: structuredClone(props.chartData),
-    height: 455,
+    height: 650,
     yAxisText: "",
     yMin: 0,
     normalise: normalise,
