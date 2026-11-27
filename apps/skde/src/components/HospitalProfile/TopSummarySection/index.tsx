@@ -66,14 +66,18 @@ type TrendAnalysisProps = {
 const TrendAnalysis = (props: TrendAnalysisProps) => {
   const { data, lastYear, pastYears } = props;
 
-  // High result level is index 0, medium index 1 and low index 2
-  const greenData = data[0];
-  const redData = data[2];
+  /* High result level is index 0, medium index 1 and low index 2
+   *
+   * Sums up a total amount of indicators across Hi, Mid and Lo,
+   * then divides given level by total count */
+  const share = (level: number, i: number) => {
+    const total = data[0][i].y + data[1][i].y + data[2][i].y;
+    return total !== 0 ? data[level][i].y / total : 0;
+  };
 
-  const greenDifference = Math.round(
-    (greenData[pastYears].y - greenData[0].y) / 10,
-  );
-  const redDifference = Math.round((redData[pastYears].y - redData[0].y) / 10);
+  /* Calculate change between years and turn to % */
+  const greenDifference = Math.round((share(0, pastYears) - share(0, 0)) * 100);
+  const redDifference = Math.round((share(2, pastYears) - share(2, 0)) * 100);
 
   return (
     <Box
@@ -122,16 +126,16 @@ const TrendAnalysisCard = ({
       <Box
         rounded={false}
         padded={false}
-        className="rounded-lg py-10 pl-12 pr-0 h-full"
+        className="rounded-lg py-10 pl-12 pr-0 h-159"
       >
         <HospitalProfileLinePlot chartData={chartData} />
       </Box>
 
-      {/* <TrendAnalysis
+      <TrendAnalysis
         data={chartData}
         lastYear={lastYear}
         pastYears={pastYears}
-      /> */}
+      />
     </>
   );
 };
