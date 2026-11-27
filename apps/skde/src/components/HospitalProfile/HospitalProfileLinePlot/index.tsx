@@ -16,9 +16,11 @@ export const HospitalProfileLinePlot = (
   // States
   const [normalise, setNormalise] = useState<boolean>(true);
 
+  const chartData = structuredClone(props.chartData);
+
   const indicatorParams: IndicatorLinechartParamsV2 = {
-    chartData: structuredClone(props.chartData),
-    height: 650,
+    chartData: chartData,
+    height: 455,
     yAxisText: "",
     yMin: 0,
     normalise: normalise,
